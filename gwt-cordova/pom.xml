@@ -6,14 +6,14 @@
 
     <!-- POM file generated with GWT webAppCreator -->
     <modelVersion>4.0.0</modelVersion>
-    <groupId>nl.ru.languageininteraction</groupId>
-    <artifactId>lingquest</artifactId>
+    <groupId>nl.mpi.tg.eg</groupId>
+    <artifactId>gwttemplate</artifactId>
     <packaging>war</packaging>
-    <version>0.1.353-stable</version>
-    <name>LingQuest</name>
+    <version>0.1.358-stable</version>
+    <name>ExperimentTemplate</name>
     <organization>
-        <name>Language In Interaction</name>
-        <url>https://www.languageininteraction.nl</url>
+        <name></name>
+        <url>https://www.mpi.nl</url>
     </organization>
     <properties>
         <netbeans.hint.license>gpl20</netbeans.hint.license>
