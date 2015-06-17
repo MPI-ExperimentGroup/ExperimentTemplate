@@ -147,8 +147,8 @@
                             <stylesheet>src/main/xsl/config2java.xsl</stylesheet>
                             <fileMappers>
                                 <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.RegExpFileMapper">
-                                    <pattern>\.xml$</pattern>
-                                    <replacement>.java</replacement>
+                                    <pattern>experimentConfig\.xml$</pattern>
+                                    <replacement>applicationController.java</replacement>
                                 </fileMapper>
                             </fileMappers>
                             <outputDir>${project.build.directory}/generated-sources/gwt/nl/mpi/tg/eg/experiment/client/presenter</outputDir>

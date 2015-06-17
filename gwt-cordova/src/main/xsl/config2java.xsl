@@ -16,10 +16,12 @@
     </xsl:template>
     <xsl:template match="presenter">        
     <xsl:variable name="classname" select="concat(@name, 'Presenter')"/>
-    <xsl:variable name="filename" select="replace(base-uri(), 'experimentConfig.java', concat(@classname, '.java'))"/>
-    <xsl:text>creating presenter {$classname} {$filename}</xsl:text>
+    <xsl:variable name="filename" select="replace(base-uri(), 'applicationController.java', concat(@classname, '.java'))"/>
+    <xsl:text>creating presenter </xsl:text><xsl:value-of select="$classname" /><xsl:text> </xsl:text><xsl:value-of select="$filename" /><xsl:text>
+                                                                                                                                             
+    </xsl:text>
 <!--        <xsl:value-of select="@name"/>-->
-      <xsl:result-document href="{$filename}" method="text">
+      <!--<xsl:result-document href="{$filename}" method="text">-->
         <xsl:text>package nl.mpi.tg.eg.experiment.client.presenter;
             
 import com.google.gwt.core.client.GWT;
@@ -33,6 +35,6 @@ public class </xsl:text><xsl:value-of select="$classname" /><xsl:text> implement
     }
 </xsl:text>  
         <xsl:text>}</xsl:text>
-        </xsl:result-document>
+        <!--</xsl:result-document>-->
     </xsl:template>
     </xsl:stylesheet>
