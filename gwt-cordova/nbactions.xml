@@ -17,7 +17,7 @@
             <goal>gwt:debug</goal>
         </goals>
         <properties>
-            <runTarget>LanguageMemory.html</runTarget>
+            <runTarget>annotator.html</runTarget>
         </properties>
         <activatedProfiles>
             <activatedProfile>dev</activatedProfile>

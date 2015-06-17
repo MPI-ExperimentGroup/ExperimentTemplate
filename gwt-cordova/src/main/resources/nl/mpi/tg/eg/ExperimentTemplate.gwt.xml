@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module rename-to='LanguageMemory'>
+<module rename-to='ExperimentTemplate'>
     <!--<stylesheet src='../LanguageMemory.css' />-->
     <!-- Inherit the core Web Toolkit stuff.                        -->
     <inherits name='com.google.gwt.user.User' />
@@ -21,10 +21,10 @@
     <set-property-fallback name="locale" value="en"/>
     
     <!-- Specify the app entry point class.                         -->
-    <entry-point class='nl.ru.languageininteraction.language.client.LanguageMemory' />
+    <entry-point class='nl.mpi.tg.eg.annotator.annotator' />
 
     <!-- Specify the paths for translatable code                    -->
-     <source path='client' />
+     <source path='annotator' />
     <!--<source path='synaesthesia' />-->
     <!--<source path='language' />-->
 

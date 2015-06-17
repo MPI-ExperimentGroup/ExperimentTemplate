@@ -7,26 +7,17 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import nl.ru.languageininteraction.language.client.Messages;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
+ * Peter Withers <peter.withers@mpi.nl>
  */
 public class annotator implements EntryPoint {
 
     /**
-     * The message displayed to the user when the server cannot be reached or
-     * returns an error.
-     */
-    private static final String SERVER_ERROR = "An error occurred while "
-            + "attempting to contact the server. Please check your network "
-            + "connection and try again.";
-
-    private final Messages messages = GWT.create(Messages.class);
-
-    /**
      * This is the entry point method.
      */
+    @Override
     public void onModuleLoad() {
         final Label errorLabel = new Label();
 

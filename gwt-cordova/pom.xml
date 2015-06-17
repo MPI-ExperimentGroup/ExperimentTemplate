@@ -242,7 +242,7 @@
                 <!-- Plugin configuration. There are many available options, see 
                 gwt-maven-plugin documentation at codehaus.org -->
                 <configuration>
-                    <runTarget>LanguageMemory.html</runTarget>
+                    <runTarget>annotator.html</runTarget>
                     <hostedWebapp>${webappDirectory}</hostedWebapp>
                     <i18nMessagesBundles>
                         <i18nMessagesBundle>nl.ru.languageininteraction.language.client.Messages</i18nMessagesBundle>
