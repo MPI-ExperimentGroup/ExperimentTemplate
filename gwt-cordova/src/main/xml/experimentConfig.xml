@@ -22,10 +22,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 -->
 
 <experiment>
-    <menuPresenter name="version" back="menu">
+    <presenter type="menu" name="version" back="menu">
         <menuItem>version</menuItem>
-    </menuPresenter>
-    <abstractPresenter name="version" back="menu">
+    </presenter>
+    <presenter type="abstract" name="version" back="menu">
         <title>versionScreenTitle</title>
         <Image url="languageInteractionUrl" width="100">images/LIL-logo-diap.png</Image>
         <Image width="10">images/icon.png</Image>
@@ -41,5 +41,5 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <HtmlText>aboutScreenTextEheading</HtmlText>
         <HtmlText>aboutScreenTextEbody</HtmlText>
         <versionData/>
-    </abstractPresenter>
+    </presenter>
 </experiment>

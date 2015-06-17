@@ -15,8 +15,9 @@
         <xsl:apply-templates select="experiment"/>
     </xsl:template>
     <xsl:template match="presenter">        
-    <xsl:variable name="filename" select="replace(base-uri(), 'Presenter', @name)"/>
-    <xsl:variable name="classname" select="@name"/>
+    <xsl:variable name="classname" select="concat(@name, 'Presenter')"/>
+    <xsl:variable name="filename" select="replace(base-uri(), 'experimentConfig.java', concat(@classname, '.java'))"/>
+    <xsl:text>creating presenter {$classname} {$filename}</xsl:text>
 <!--        <xsl:value-of select="@name"/>-->
       <xsl:result-document href="{$filename}" method="text">
         <xsl:text>package nl.mpi.tg.eg.experiment.client.presenter;
@@ -28,7 +29,7 @@ import com.google.gwt.user.client.DOM;
 import com.google.gwt.dom.client.Element;
                         
 // generated with config2java.xsl
-public class </xsl:text><xsl:value-of select="$classname" /><xsl:text>Presenter implements abstractPresenter {
+public class </xsl:text><xsl:value-of select="$classname" /><xsl:text> implements </xsl:text><xsl:value-of select="@type" /><xsl:text>Presenter {
     }
 </xsl:text>  
         <xsl:text>}</xsl:text>
