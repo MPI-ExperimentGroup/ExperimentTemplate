@@ -9,7 +9,7 @@
     <groupId>nl.mpi.tg.eg</groupId>
     <artifactId>gwttemplate</artifactId>
     <packaging>war</packaging>
-    <version>0.1.358-stable</version>
+    <version>0.1.357-pretesting</version>
     <name>ExperimentTemplate</name>
     <organization>
         <name></name>
@@ -138,6 +138,20 @@
                                 </fileMapper>
                             </fileMappers>
                             <outputDir>${project.build.directory}/generated-sources/gwt/nl/ru/languageininteraction/language/client</outputDir>
+                        </transformationSet>
+                        <transformationSet>
+                            <dir>src/main/xml</dir>
+                            <includes>
+                                <include>*.xml</include>
+                            </includes>
+                            <stylesheet>src/main/xsl/config2java.xsl</stylesheet>
+                            <fileMappers>
+                                <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.RegExpFileMapper">
+                                    <pattern>\.xml$</pattern>
+                                    <replacement>Presenter.java</replacement>
+                                </fileMapper>
+                            </fileMappers>
+                            <outputDir>${project.build.directory}/generated-sources/gwt/nl/mpi/tg/eg/experiment/client/presenter</outputDir>
                         </transformationSet>
                         <transformationSet>
                             <dir>src/main/csv</dir>
