@@ -23,23 +23,26 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 <experiment name="testData">
     <presenter type="menu" name="MainMenu" back="menu">
-        <menuItem>version</menuItem>
+        <menuItem label="aboutScreenMenuLabel" target="AboutPage" />
+    </presenter>
+    <presenter type="text" name="OptionMenu" back="menu">
+        <optionButton label="aboutScreenMenuLabel" target="AboutPage" />
     </presenter>
     <presenter type="text" name="AboutPage" back="menu">
         <title field="versionScreenTitle"></title>
-        <Image link="languageInteractionUrl" width="100" image="images/LIL-logo-diap.png"/>
+        <image link="languageInteractionUrl" width="100" image="images/LIL-logo-diap.png"/>
         <!--<Image width="10" image="images/icon.png"/>-->
-        <HighlightedText field="aboutScreenTextAheading"></HighlightedText>
-        <HtmlText field="aboutScreenTextAbody"></HtmlText>
-        <Padding/>
-        <HtmlText field="aboutScreenTextBheading"></HtmlText>
-        <HtmlText field="aboutScreenTextBbody"></HtmlText>
-        <HtmlText field="aboutScreenTextCheading"></HtmlText>
-        <HtmlText field="aboutScreenTextCbody"></HtmlText>
-        <HtmlText field="aboutScreenTextDheading"></HtmlText>
-        <HtmlText field="aboutScreenTextDbody"></HtmlText>
-        <HtmlText field="aboutScreenTextEheading"></HtmlText>
-        <HtmlText field="aboutScreenTextEbody"></HtmlText>
+        <highlightedText field="aboutScreenTextAheading"></highlightedText>
+        <htmlText field="aboutScreenTextAbody"></htmlText>
+        <padding/>
+        <htmlText field="aboutScreenTextBheading"></htmlText>
+        <htmlText field="aboutScreenTextBbody"></htmlText>
+        <htmlText field="aboutScreenTextCheading"></htmlText>
+        <htmlText field="aboutScreenTextCbody"></htmlText>
+        <htmlText field="aboutScreenTextDheading"></htmlText>
+        <htmlText field="aboutScreenTextDbody"></htmlText>
+        <htmlText field="aboutScreenTextEheading"></htmlText>
+        <htmlText field="aboutScreenTextEbody"></htmlText>
         <versionData/>
     </presenter>
 </experiment>

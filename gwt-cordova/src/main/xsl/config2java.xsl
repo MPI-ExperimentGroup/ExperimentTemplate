@@ -18,9 +18,12 @@
            <xsl:value-of select="concat(@name, 'Presenter.java')" />                                                                                                                                  
       <xsl:result-document href="target/generated-sources/gwt/nl/mpi/tg/eg/experiment/client/presenter/{@name}Presenter.java" method="text">
         <xsl:text>package nl.mpi.tg.eg.experiment.client.presenter;
-            
+    
+import com.google.gwt.user.client.ui.Button;        
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import nl.ru.languageininteraction.language.client.Version;
 import nl.ru.languageininteraction.language.client.listener.AppEventListner;
 import nl.ru.languageininteraction.language.client.listener.PresenterEventListner;
 import nl.ru.languageininteraction.language.client.presenter.AbstractPresenter;
@@ -30,7 +33,13 @@ import nl.ru.languageininteraction.language.client.view.MenuView;
                         
 // generated with config2java.xsl
 public class </xsl:text><xsl:value-of select="@name" /><xsl:text>Presenter extends AbstractPresenter implements Presenter {
-    
+</xsl:text> 
+<xsl:if test="versionData">
+    <xsl:text>
+    private final Version version = GWT.create(Version.class);
+</xsl:text> 
+</xsl:if>
+<xsl:text>    
     public </xsl:text><xsl:value-of select="@name" /><xsl:text>Presenter(RootLayoutPanel widgetTag) {
 </xsl:text>  
 <xsl:choose>
@@ -55,16 +64,19 @@ public class </xsl:text><xsl:value-of select="@name" /><xsl:text>Presenter exten
 
     @Override
     protected void setContent(AppEventListner appEventListner) {
-</xsl:text><xsl:apply-templates select="HtmlText|Padding|Image"/><xsl:text>
-    }
+</xsl:text><xsl:apply-templates select="htmlText|padding|image|menuItem|text|versionData|optionButton"/><xsl:text>    }
 }</xsl:text>
         </xsl:result-document>
     </xsl:template>
-<xsl:template match="HtmlText">
+<xsl:template match="htmlText">
 <xsl:text>    ((ComplexView) simpleView).addHtmlText(messages.</xsl:text><xsl:value-of select="@field" /><xsl:text>());
 </xsl:text>
     </xsl:template>
-<xsl:template match="Image">
+<xsl:template match="text">
+<xsl:text>    ((ComplexView) simpleView).addText(messages.</xsl:text><xsl:value-of select="@field" /><xsl:text>());
+</xsl:text>
+    </xsl:template>
+<xsl:template match="image">
     <!--<xsl:choose>-->
         <!--<xsl:when test="@link">-->
 <xsl:text>    ((ComplexView) simpleView).addImage(UriUtils.fromString("</xsl:text><xsl:value-of select="@image" /><xsl:text>"), messages.</xsl:text><xsl:value-of select="@link" /><xsl:text>(), </xsl:text><xsl:value-of select="@width" /><xsl:text>);
@@ -75,8 +87,47 @@ public class </xsl:text><xsl:value-of select="@name" /><xsl:text>Presenter exten
 </xsl:otherwise>
        </xsl:choose>-->
     </xsl:template>
-<xsl:template match="Padding">
+<xsl:template match="menuItem">
+<xsl:text>    ((MenuView) simpleView).addMenuItem(new PresenterEventListner() {
+
+                    @Override
+                    public void eventFired(Button button) {
+                        appEventListner.requestApplicationState(AppEventListner.ApplicationState.</xsl:text><xsl:value-of select="@target" /><xsl:text>);
+                    }
+
+                    @Override
+                    public String getLabel() {
+                        return messages.</xsl:text><xsl:value-of select="@label" /><xsl:text>();
+                    }
+                }, true);
+</xsl:text>
+    </xsl:template>
+<xsl:template match="optionButton">
+<xsl:text>    ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
+
+            @Override
+            public String getLabel() {
+                return messages.</xsl:text><xsl:value-of select="@label" /><xsl:text>();
+            }
+
+            @Override
+            public void eventFired(Button button) {
+                appEventListner.requestApplicationState(AppEventListner.ApplicationState.</xsl:text><xsl:value-of select="@target" /><xsl:text>);
+            }
+        });
+</xsl:text>
+    </xsl:template>
+<xsl:template match="padding">
 <xsl:text>    ((ComplexView) simpleView).addPadding();
+</xsl:text>
+    </xsl:template>
+<xsl:template match="versionData">
+<xsl:text>    ((ComplexView) simpleView).addText("Version: " + version.majorVersion() + "."
+                + version.minorVersion() + "."
+                + version.buildVersion() + "-"
+                + version.projectVersion() + "\n"
+                + "Compile Date: " + version.compileDate() + "\n"
+                + "Last Commit Date: " + version.lastCommitDate());
 </xsl:text>
     </xsl:template>
 </xsl:stylesheet>
