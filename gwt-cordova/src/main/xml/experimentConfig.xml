@@ -26,20 +26,20 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <menuItem>version</menuItem>
     </presenter>
     <presenter type="text" name="AboutPage" back="menu">
-        <title>versionScreenTitle</title>
-        <Image url="languageInteractionUrl" width="100">images/LIL-logo-diap.png</Image>
-        <Image width="10">images/icon.png</Image>
-        <HighlightedText>aboutScreenTextAheading</HighlightedText>
-        <HtmlText>aboutScreenTextAbody</HtmlText>
+        <title field="versionScreenTitle"></title>
+        <Image url="languageInteractionUrl" width="100" image="images/LIL-logo-diap.png"/>
+        <Image width="10" url="images/icon.png"/>
+        <HighlightedText field="aboutScreenTextAheading"></HighlightedText>
+        <HtmlText field="aboutScreenTextAbody"></HtmlText>
         <Padding/>
-        <HtmlText>aboutScreenTextBheading</HtmlText>
-        <HtmlText>aboutScreenTextBbody</HtmlText>
-        <HtmlText>aboutScreenTextCheading</HtmlText>
-        <HtmlText>aboutScreenTextCbody</HtmlText>
-        <HtmlText>aboutScreenTextDheading</HtmlText>
-        <HtmlText>aboutScreenTextDbody</HtmlText>
-        <HtmlText>aboutScreenTextEheading</HtmlText>
-        <HtmlText>aboutScreenTextEbody</HtmlText>
+        <HtmlText field="aboutScreenTextBheading"></HtmlText>
+        <HtmlText field="aboutScreenTextBbody"></HtmlText>
+        <HtmlText field="aboutScreenTextCheading"></HtmlText>
+        <HtmlText field="aboutScreenTextCbody"></HtmlText>
+        <HtmlText field="aboutScreenTextDheading"></HtmlText>
+        <HtmlText field="aboutScreenTextDbody"></HtmlText>
+        <HtmlText field="aboutScreenTextEheading"></HtmlText>
+        <HtmlText field="aboutScreenTextEbody"></HtmlText>
         <versionData/>
     </presenter>
 </experiment>

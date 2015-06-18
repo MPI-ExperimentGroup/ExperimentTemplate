@@ -25,6 +25,7 @@ import nl.ru.languageininteraction.language.client.listener.PresenterEventListne
 import nl.ru.languageininteraction.language.client.presenter.AbstractPresenter;
 import nl.ru.languageininteraction.language.client.presenter.Presenter;
 import nl.ru.languageininteraction.language.client.view.ComplexView;
+import nl.ru.languageininteraction.language.client.view.MenuView;
                         
 // generated with config2java.xsl
 public class </xsl:text><xsl:value-of select="@name" /><xsl:text>Presenter extends AbstractPresenter implements Presenter {
@@ -48,7 +49,7 @@ public class </xsl:text><xsl:value-of select="@name" /><xsl:text>Presenter exten
 
     @Override
     protected void setTitle(PresenterEventListner titleBarListner) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        simpleView.addTitle(messages.</xsl:text><xsl:value-of select="//title//@field" /><xsl:text>(), titleBarListner);
     }
 
     @Override
