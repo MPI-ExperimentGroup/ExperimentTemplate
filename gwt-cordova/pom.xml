@@ -9,7 +9,7 @@
     <groupId>nl.mpi.tg.eg</groupId>
     <artifactId>gwttemplate</artifactId>
     <packaging>war</packaging>
-    <version>0.1.358-pretesting</version>
+    <version>0.1.360-pretesting</version>
     <name>ExperimentTemplate</name>
     <organization>
         <name></name>

@@ -21,11 +21,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     Author     : Peter Withers <peter.withers@mpi.nl>
 -->
 
-<experiment>
-    <presenter type="menu" name="version" back="menu">
+<experiment name="testData">
+    <presenter type="menu" name="MainMenu" back="menu">
         <menuItem>version</menuItem>
     </presenter>
-    <presenter type="abstract" name="version" back="menu">
+    <presenter type="text" name="AboutPage" back="menu">
         <title>versionScreenTitle</title>
         <Image url="languageInteractionUrl" width="100">images/LIL-logo-diap.png</Image>
         <Image width="10">images/icon.png</Image>

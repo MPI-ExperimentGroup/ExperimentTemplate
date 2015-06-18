@@ -15,26 +15,47 @@
         <xsl:apply-templates select="experiment"/>
     </xsl:template>
     <xsl:template match="presenter">        
-    <xsl:variable name="classname" select="concat(@name, 'Presenter')"/>
-    <xsl:variable name="filename" select="replace(base-uri(), 'applicationController.java', concat(@classname, '.java'))"/>
-    <xsl:text>creating presenter </xsl:text><xsl:value-of select="$classname" /><xsl:text> </xsl:text><xsl:value-of select="$filename" /><xsl:text>
-                                                                                                                                             
-    </xsl:text>
-<!--        <xsl:value-of select="@name"/>-->
-      <!--<xsl:result-document href="{$filename}" method="text">-->
+           <xsl:value-of select="concat(@name, 'Presenter.java')" />                                                                                                                                  
+      <xsl:result-document href="target/generated-sources/gwt/nl/mpi/tg/eg/experiment/client/presenter/{@name}Presenter.java" method="text">
         <xsl:text>package nl.mpi.tg.eg.experiment.client.presenter;
             
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
-import nl.ru.languageininteraction.language.client.util.SvgTemplate;
-import com.google.gwt.user.client.DOM;
-import com.google.gwt.dom.client.Element;
+import com.google.gwt.user.client.ui.RootLayoutPanel;
+import nl.ru.languageininteraction.language.client.listener.AppEventListner;
+import nl.ru.languageininteraction.language.client.listener.PresenterEventListner;
+import nl.ru.languageininteraction.language.client.presenter.AbstractPresenter;
+import nl.ru.languageininteraction.language.client.presenter.Presenter;
+import nl.ru.languageininteraction.language.client.view.ComplexView;
                         
 // generated with config2java.xsl
-public class </xsl:text><xsl:value-of select="$classname" /><xsl:text> implements </xsl:text><xsl:value-of select="@type" /><xsl:text>Presenter {
-    }
+public class </xsl:text><xsl:value-of select="@name" /><xsl:text>Presenter extends AbstractPresenter implements Presenter {
+    
+    public </xsl:text><xsl:value-of select="@name" /><xsl:text>Presenter(RootLayoutPanel widgetTag) {
 </xsl:text>  
-        <xsl:text>}</xsl:text>
-        <!--</xsl:result-document>-->
+<xsl:choose>
+  <xsl:when test="@type = 'menu'"><xsl:text>
+        super(widgetTag, new MenuView());
+</xsl:text>
+    </xsl:when>
+    <xsl:when  test="@type = 'text'"><xsl:text>
+        super(widgetTag, new ComplexView());
+</xsl:text>
+    </xsl:when>
+  <xsl:otherwise>
+      no type attribute
+  </xsl:otherwise>
+</xsl:choose>
+<xsl:text>    }
+
+    @Override
+    protected void setTitle(PresenterEventListner titleBarListner) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected void setContent(AppEventListner appEventListner) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+}</xsl:text>
+        </xsl:result-document>
     </xsl:template>
     </xsl:stylesheet>
