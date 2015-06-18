@@ -19,6 +19,7 @@
       <xsl:result-document href="target/generated-sources/gwt/nl/mpi/tg/eg/experiment/client/presenter/{@name}Presenter.java" method="text">
         <xsl:text>package nl.mpi.tg.eg.experiment.client.presenter;
             
+import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.ru.languageininteraction.language.client.listener.AppEventListner;
 import nl.ru.languageininteraction.language.client.listener.PresenterEventListner;
@@ -54,9 +55,28 @@ public class </xsl:text><xsl:value-of select="@name" /><xsl:text>Presenter exten
 
     @Override
     protected void setContent(AppEventListner appEventListner) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+</xsl:text><xsl:apply-templates select="HtmlText|Padding|Image"/><xsl:text>
     }
 }</xsl:text>
         </xsl:result-document>
     </xsl:template>
-    </xsl:stylesheet>
+<xsl:template match="HtmlText">
+<xsl:text>    ((ComplexView) simpleView).addHtmlText(messages.</xsl:text><xsl:value-of select="@field" /><xsl:text>());
+</xsl:text>
+    </xsl:template>
+<xsl:template match="Image">
+    <!--<xsl:choose>-->
+        <!--<xsl:when test="@link">-->
+<xsl:text>    ((ComplexView) simpleView).addImage(UriUtils.fromString("</xsl:text><xsl:value-of select="@image" /><xsl:text>"), messages.</xsl:text><xsl:value-of select="@link" /><xsl:text>(), </xsl:text><xsl:value-of select="@width" /><xsl:text>);
+</xsl:text>
+<!--</xsl:when>
+<xsl:otherwise><xsl:text>    ((ComplexView) simpleView).addImage(UriUtils.fromString("</xsl:text><xsl:value-of select="@image" /><xsl:text>"), "",</xsl:text><xsl:value-of select="@width" /><xsl:text>);
+</xsl:text>
+</xsl:otherwise>
+       </xsl:choose>-->
+    </xsl:template>
+<xsl:template match="Padding">
+<xsl:text>    ((ComplexView) simpleView).addPadding();
+</xsl:text>
+    </xsl:template>
+</xsl:stylesheet>

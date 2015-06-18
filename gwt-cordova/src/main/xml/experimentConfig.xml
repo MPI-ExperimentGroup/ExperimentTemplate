@@ -27,8 +27,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     </presenter>
     <presenter type="text" name="AboutPage" back="menu">
         <title field="versionScreenTitle"></title>
-        <Image url="languageInteractionUrl" width="100" image="images/LIL-logo-diap.png"/>
-        <Image width="10" url="images/icon.png"/>
+        <Image link="languageInteractionUrl" width="100" image="images/LIL-logo-diap.png"/>
+        <!--<Image width="10" image="images/icon.png"/>-->
         <HighlightedText field="aboutScreenTextAheading"></HighlightedText>
         <HtmlText field="aboutScreenTextAbody"></HtmlText>
         <Padding/>
