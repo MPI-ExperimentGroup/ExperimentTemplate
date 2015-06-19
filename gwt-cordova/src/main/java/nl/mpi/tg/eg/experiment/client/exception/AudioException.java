@@ -15,23 +15,15 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.ru.languageininteraction.language.client.exception;
-
-import nl.ru.languageininteraction.language.client.model.MetadataField;
+package nl.mpi.tg.eg.experiment.client.exception;
 
 /**
- * @since Jan 13, 2015 3:21:11 PM (creation date)
+ * @since Jan 6, 2015 11:46:18 AM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public class MetadataFieldException extends Exception {
+public class AudioException extends Exception {
 
-    final private MetadataField metadataField;
-
-    public MetadataFieldException(MetadataField metadataField) {
-        this.metadataField = metadataField;
-    }
-
-    public MetadataField getMetadataField() {
-        return metadataField;
+    public AudioException(String message) {
+        super(message);
     }
 }
