@@ -15,12 +15,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.ru.languageininteraction.language.client.view;
+package nl.mpi.tg.eg.experiment.client.view;
 
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
-import nl.ru.languageininteraction.language.client.listener.PresenterEventListner;
-import nl.ru.languageininteraction.language.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 
 /**
  * @since Feb 24, 2015 2:30:02 PM (creation date)
