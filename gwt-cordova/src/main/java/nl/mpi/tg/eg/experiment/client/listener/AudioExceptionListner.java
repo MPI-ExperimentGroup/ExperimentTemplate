@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 Language In Interaction
+ * Copyright (C) 2015 Language In Interaction
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -15,17 +15,15 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.ru.languageininteraction.language.client.listener;
+package nl.mpi.tg.eg.experiment.client.listener;
 
-import com.google.gwt.user.client.ui.Button;
+import nl.ru.languageininteraction.language.client.exception.AudioException;
 
 /**
- * @since Oct 28, 2014 12:16:19 PM (creation date)
+ * @since Jan 23, 2015 2:58:03 PM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public interface PresenterEventListner {
+public interface AudioExceptionListner {
 
-    public String getLabel();
-
-    public void eventFired(Button button);
+    public void audioExceptionFired(AudioException audioException);
 }

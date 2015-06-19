@@ -15,15 +15,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.ru.languageininteraction.language.client.listener;
-
-import nl.ru.languageininteraction.language.client.model.RoundSample;
+package nl.mpi.tg.eg.experiment.client.listener;
 
 /**
- * @since Jan 26, 2015 4:36:43 PM (creation date)
+ * @since Jan 16, 2015 4:47:57 PM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public interface LanguageSampleListener {
+public interface AudioEventListner {
 
-    public void eventFired(RoundSample roundSample);
+    public void audioEnded();
 }

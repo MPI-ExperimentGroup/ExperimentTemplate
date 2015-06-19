@@ -15,15 +15,15 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.ru.languageininteraction.language.client.listener;
+package nl.mpi.tg.eg.experiment.client.listener;
 
-import nl.ru.languageininteraction.language.client.exception.AudioException;
+import nl.ru.languageininteraction.language.client.model.RoundSample;
 
 /**
- * @since Jan 23, 2015 2:58:03 PM (creation date)
+ * @since Jan 26, 2015 4:36:43 PM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public interface AudioExceptionListner {
+public interface LanguageSampleListener {
 
-    public void audioExceptionFired(AudioException audioException);
+    public void eventFired(RoundSample roundSample);
 }
