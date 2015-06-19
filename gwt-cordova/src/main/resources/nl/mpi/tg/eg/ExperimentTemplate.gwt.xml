@@ -21,10 +21,10 @@
     <set-property-fallback name="locale" value="en"/>
     
     <!-- Specify the app entry point class.                         -->
-    <entry-point class='nl.mpi.tg.eg.annotator.annotator' />
+    <entry-point class='nl.mpi.tg.eg.experiment.client.ExperimentTemplate' />
 
     <!-- Specify the paths for translatable code                    -->
-     <source path='annotator' />
+     <source path='experiment.client' />
     <!--<source path='synaesthesia' />-->
     <!--<source path='language' />-->
 

@@ -256,7 +256,7 @@
                 <!-- Plugin configuration. There are many available options, see 
                 gwt-maven-plugin documentation at codehaus.org -->
                 <configuration>
-                    <runTarget>annotator.html</runTarget>
+                    <runTarget>ExperimentTemplate.html</runTarget>
                     <hostedWebapp>${webappDirectory}</hostedWebapp>
                     <i18nMessagesBundles>
                         <i18nMessagesBundle>nl.mpi.tg.eg.experiment.client.Messages</i18nMessagesBundle>

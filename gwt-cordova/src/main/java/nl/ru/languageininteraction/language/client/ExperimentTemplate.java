@@ -6,7 +6,7 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
-public class LanguageMemory implements EntryPoint {
+public class ExperimentTemplate implements EntryPoint {
 
     /**
      * This is the entry point method.
