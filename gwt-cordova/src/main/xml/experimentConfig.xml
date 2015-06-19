@@ -23,19 +23,20 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 <experiment name="testData">
     <presenter type="menu" menuLabel="Main Menu" self="MainMenu">
-        <menuItem fieldName="aboutScreenMenuLabel" target="AboutPage" />
+        <menuItem fieldName="aboutScreenMenuLabel" target="AboutPage">About Page</menuItem>
+        <menuItem fieldName="menuLabelStrayMessages" target="StrayMessages"/>
     </presenter>
     <presenter type="text" menuLabel="Option Menu" back="MainMenu" self="OptionMenu" next="AboutPage">
         <optionButton fieldName="aboutScreenMenuLabel" target="AboutPage" />
     </presenter>
     <presenter type="text" menuLabel="Stray Messages Screen" back="MainMenu" self="StrayMessages" next="AboutPage">
-       <htmlText fieldName="aboutScreenTextJheading">---</htmlText>
-       <htmlText fieldName="errorScreenTitle">---</htmlText>
-       <htmlText fieldName="localeScreenTitle">---</htmlText>
-       <htmlText fieldName="languageInteractionUrl">---</htmlText>
-       <htmlText fieldName="stopSharingScreenTitle">---</htmlText>
-       <!--<htmlText fieldName="errorScreenText"></htmlText>-->
-       <!--<userInfo fieldName="stopSharingDetailsExplanation">({0}) and unique id ({1})</userInfo>-->
+        <htmlText fieldName="aboutScreenTextJheading">---</htmlText>
+        <htmlText fieldName="errorScreenTitle">---</htmlText>
+        <htmlText fieldName="localeScreenTitle">---</htmlText>
+        <htmlText fieldName="languageInteractionUrl">---</htmlText>
+        <htmlText fieldName="stopSharingScreenTitle">---</htmlText>
+        <!--<htmlText fieldName="errorScreenText"></htmlText>-->
+        <!--<userInfo fieldName="stopSharingDetailsExplanation">({0}) and unique id ({1})</userInfo>-->
     </presenter>
     <presenter type="text" menuLabel="About Page" back="MainMenu" self="AboutPage" next="OptionMenu">
         <title fieldName="versionScreenTitle">Version</title>
@@ -44,7 +45,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <highlightedText fieldName="aboutScreenTextAheading">A Heading</highlightedText>
         <htmlText fieldName="aboutScreenTextAbody">A body</htmlText>
         <padding/>
-        <htmlText fieldName="aboutScreenTextBheading">B h</htmlText>
+        <htmlText fieldName="aboutScreenTextBheading">&lt;b&gt;B h&lt;/b&gt;</htmlText>
         <htmlText fieldName="aboutScreenTextBbody">Bh</htmlText>
         <htmlText fieldName="aboutScreenTextCheading">Ch</htmlText>
         <htmlText fieldName="aboutScreenTextCbody">Cb</htmlText>

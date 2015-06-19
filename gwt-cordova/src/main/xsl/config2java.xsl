@@ -125,7 +125,7 @@ public class ApplicationController extends AppController {
             <xsl:for-each select="experiment/presenter">
                     <xsl:text>menuLabel</xsl:text><xsl:value-of select="@self" /><xsl:text>=</xsl:text><xsl:value-of select="@menuLabel" /><xsl:text>
 </xsl:text>
-                    <xsl:for-each select="*[@fieldName]">
+                    <xsl:for-each select="*[@fieldName][. != '']">
                         <xsl:value-of select="@fieldName" />
                         <xsl:text>=</xsl:text>
                         <xsl:value-of select="."/>
