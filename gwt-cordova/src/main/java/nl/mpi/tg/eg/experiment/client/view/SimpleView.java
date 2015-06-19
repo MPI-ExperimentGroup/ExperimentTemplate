@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.ru.languageininteraction.language.client.view;
+package nl.mpi.tg.eg.experiment.client.view;
 
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.user.client.ui.Button;
@@ -27,8 +27,8 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import nl.ru.languageininteraction.language.client.listener.PresenterEventListner;
-import nl.ru.languageininteraction.language.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 
 /**
  * @since Oct 7, 2014 2:06:28 PM (creation date)
