@@ -59,7 +59,7 @@ public class AppController implements AppEventListner, AudioExceptionListner {
 
     final LocalStorage localStorage = new LocalStorage();
     private final RootLayoutPanel widgetTag;
-    private Presenter presenter;
+    protected Presenter presenter;
     private final UserResults userResults;
     final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
 

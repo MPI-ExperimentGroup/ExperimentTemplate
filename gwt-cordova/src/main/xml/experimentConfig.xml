@@ -22,13 +22,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 -->
 
 <experiment name="testData">
-    <presenter type="menu" name="MainMenu" back="menu">
+    <presenter type="menu" menuLabel="Main Menu" self="MainMenu">
         <menuItem label="aboutScreenMenuLabel" target="AboutPage" />
     </presenter>
-    <presenter type="text" name="OptionMenu" back="menu">
+    <presenter type="text" menuLabel="Option Menu" back="MainMenu" self="OptionMenu" next="AboutPage">
         <optionButton label="aboutScreenMenuLabel" target="AboutPage" />
     </presenter>
-    <presenter type="text" name="AboutPage" back="menu">
+    <presenter type="text" menuLabel="About Page" back="MainMenu" self="AboutPage" next="OptionMenu">
         <title field="versionScreenTitle"></title>
         <image link="languageInteractionUrl" width="100" image="images/LIL-logo-diap.png"/>
         <!--<Image width="10" image="images/icon.png"/>-->
