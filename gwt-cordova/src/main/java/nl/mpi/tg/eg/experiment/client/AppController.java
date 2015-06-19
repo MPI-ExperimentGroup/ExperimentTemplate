@@ -27,7 +27,7 @@ import nl.ru.languageininteraction.language.client.model.UserData;
 import nl.ru.languageininteraction.language.client.model.UserId;
 import nl.ru.languageininteraction.language.client.presenter.AutotypRegionsMapScreen;
 import nl.ru.languageininteraction.language.client.presenter.Presenter;
-import nl.ru.languageininteraction.language.client.presenter.ErrorPresenter;
+import nl.mpi.tg.eg.experiment.client.presenter.ErrorPresenter;
 import nl.ru.languageininteraction.language.client.presenter.MatchLanguagePresenter;
 import nl.ru.languageininteraction.language.client.presenter.VersionPresenter;
 import nl.ru.languageininteraction.language.client.model.UserResults;

@@ -15,11 +15,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.ru.languageininteraction.language.client.presenter;
+package nl.mpi.tg.eg.experiment.client.presenter;
 
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.ru.languageininteraction.language.client.listener.AppEventListner;
 import nl.ru.languageininteraction.language.client.listener.PresenterEventListner;
+import nl.ru.languageininteraction.language.client.presenter.AbstractPresenter;
+import nl.ru.languageininteraction.language.client.presenter.Presenter;
 import nl.ru.languageininteraction.language.client.view.SimpleView;
 
 /**
