@@ -17,6 +17,7 @@
  */
 package nl.ru.languageininteraction.language.client.presenter;
 
+import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.ru.languageininteraction.language.client.listener.AppEventListner;
 
 /**
@@ -25,7 +26,7 @@ import nl.ru.languageininteraction.language.client.listener.AppEventListner;
  */
 public interface Presenter {
 
-    void setState(AppEventListner appEventListner, final AppEventListner.ApplicationState prevState, final AppEventListner.ApplicationState nextState);
+    void setState(AppEventListner appEventListner, final ApplicationState prevState, final ApplicationState nextState);
 
     void fireBackEvent();
 

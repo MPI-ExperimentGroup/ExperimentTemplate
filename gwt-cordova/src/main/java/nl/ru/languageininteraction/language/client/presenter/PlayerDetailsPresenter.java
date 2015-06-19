@@ -21,6 +21,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.TextBox;
+import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.ru.languageininteraction.language.client.Messages;
 import nl.ru.languageininteraction.language.client.exception.AudioException;
 import nl.ru.languageininteraction.language.client.listener.AppEventListner;
@@ -120,7 +121,7 @@ public class PlayerDetailsPresenter extends AbstractSvgPresenter implements Pres
 ////                    userResults.getUserData().setMetadataValue(metadataFieldProvider.shareMetadataField, metadataFieldProvider.shareMetadataField.getControlledVocabulary()[0]);
 //                    playerDetailsView.setShareData(Boolean.TRUE);
 //                }
-                appEventListner.requestApplicationState(AppEventListner.ApplicationState.stopSharing);
+                appEventListner.requestApplicationState(ApplicationState.stopSharing);
             }
         });
         playerDetailsView.setEditNameListner(new PresenterEventListner() {

@@ -20,6 +20,7 @@ package nl.ru.languageininteraction.language.client.presenter;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.ru.languageininteraction.language.client.listener.AppEventListner;
 import nl.ru.languageininteraction.language.client.Messages;
 import nl.ru.languageininteraction.language.client.listener.PresenterEventListner;
@@ -43,7 +44,7 @@ public abstract class AbstractPresenter implements Presenter {
     }
 
     @Override
-    public void setState(final AppEventListner appEventListner, final AppEventListner.ApplicationState prevState, final AppEventListner.ApplicationState nextState) {
+    public void setState(final AppEventListner appEventListner, final ApplicationState prevState, final ApplicationState nextState) {
         widgetTag.clear();
         if (prevState != null) {
             backEventListner = new PresenterEventListner() {
@@ -63,12 +64,12 @@ public abstract class AbstractPresenter implements Presenter {
 
                 @Override
                 public void eventFired(Button button) {
-                    appEventListner.requestApplicationState(AppEventListner.ApplicationState.end);
+                    appEventListner.requestApplicationState(ApplicationState.end);
                 }
 
                 @Override
                 public String getLabel() {
-                    return AppEventListner.ApplicationState.menu.label;
+                    return ApplicationState.menu.label;
                 }
             };
         }

@@ -18,6 +18,7 @@
 package nl.ru.languageininteraction.language.client.listener;
 
 import com.google.gwt.core.client.GWT;
+import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.ru.languageininteraction.language.client.Messages;
 
 /**
@@ -27,60 +28,6 @@ import nl.ru.languageininteraction.language.client.Messages;
 public interface AppEventListner {
 
     final Messages messages = GWT.create(Messages.class);
-
-    enum ApplicationState {
-
-        start(messages.startButton()),
-        locale(messages.localeMenuLabel()),
-        version(messages.versionMenuLabel()),
-        @Deprecated
-        intro(messages.introMenuLabel()),
-        @Deprecated
-        instructions(messages.instructionsMenuLabel()),
-        menu(messages.menuButton()),
-        @Deprecated
-        setuser(messages.setUserMenuLabel()),
-        //        adddummyresults("Add Dummy Results"), // todo: remove this option when testing complete
-        //        stimulus(messages.stimulusMenuLabel()),
-        tutorial("Tutorial"),
-        tutorialorguessround("First Run Tutorial or Game"),
-        explaindatasharing("Explain Data Sharing Screen"),
-        guessround("Guess"),
-        scores("Scores"),
-        matchlanguage("Match"),
-        chooseplayer("Choose Player"),
-        playerdetails(messages.playerScreenButtonLabel()),
-        createplayer("New Player"),
-        startscreen(messages.startScreenButtonLabel()),
-        infoscreen("Information"),
-        stopSharing(""),
-        @Deprecated
-        map(messages.mapMenuLabel()),
-        @Deprecated
-        autotyp_regions("AutotypRegions"),
-        @Deprecated
-        alien("Alien"),
-        @Deprecated
-        report(messages.reportMenuLabel()),
-        @Deprecated
-        feedback(messages.feedbackMenuLabel()),
-        @Deprecated
-        metadata(messages.metadataMenuLabel()),
-        registration(messages.registerMenuLabel()),
-        highscoresubmitted(""),
-        highscoresfailednon202(""),
-        highscoresfailedbuildererror(""),
-        highscoresfailedconnectionerror(""),
-        @Deprecated
-        moreinfo(messages.moreInfoMenuLabel()),
-        end(messages.exitButton());
-
-        final public String label;
-
-        ApplicationState(String label) {
-            this.label = label;
-        }
-    }
 
     public void requestApplicationState(ApplicationState applicationState);
 }

@@ -9,7 +9,7 @@
     <groupId>nl.mpi.tg.eg</groupId>
     <artifactId>gwttemplate</artifactId>
     <packaging>war</packaging>
-    <version>0.1.360-pretesting</version>
+    <version>0.1.365-pretesting</version>
     <name>ExperimentTemplate</name>
     <organization>
         <name></name>
@@ -148,10 +148,10 @@
                             <fileMappers>
                                 <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.RegExpFileMapper">
                                     <pattern>experimentConfig\.xml$</pattern>
-                                    <replacement>applicationController.java</replacement>
+                                    <replacement>ApplicationController.java</replacement>
                                 </fileMapper>
                             </fileMappers>
-                            <outputDir>${project.build.directory}/generated-sources/gwt/nl/mpi/tg/eg/experiment/client/presenter</outputDir>
+                            <outputDir>${project.build.directory}/generated-sources/gwt/nl/mpi/tg/eg/experiment/client</outputDir>
                         </transformationSet>
                         <transformationSet>
                             <dir>src/main/csv</dir>

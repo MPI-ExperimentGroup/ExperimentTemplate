@@ -35,8 +35,29 @@ public class ApplicationController extends AppController {
         highscoresfailednon202(""),
         highscoresfailedbuildererror(""),
         highscoresfailedconnectionerror(""),
-        end(messages.exitButton());
-
+        end(messages.exitButton()),
+        menu("temporary"),
+        playerdetails("temporary"),
+        locale("temporary"),
+        tutorial("temporary"),
+        stopSharing("temporary"),
+        tutorialorguessround("temporary"),
+        chooseplayer("temporary"),
+        guessround("temporary"),
+        metadata("temporary"),
+        registration("temporary"),
+        infoscreen("temporary"),
+        explaindatasharing("temporary"),
+        moreinfo("temporary"),
+        alien("temporary"),
+        scores("temporary"),
+        map("temporary"),
+        setuser("temporary"),
+        matchlanguage("temporary"),
+        autotyp_regions("temporary"),
+        startscreen("temporary"),
+        version("temporary");
+        
         final public String label;
 
         ApplicationState(String label) {
@@ -49,7 +70,7 @@ public class ApplicationController extends AppController {
     }
             
     public void requestApplicationState(ApplicationState applicationState) {
-try {
+<!--        try {-->
             trackView(applicationState.name());
             History.newItem(applicationState.name(), false);
             // todo:
@@ -62,7 +83,21 @@ try {
             <xsl:text>
                 case </xsl:text><xsl:value-of select="@self" /><xsl:text>:
                     this.presenter = new </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter(widgetTag);
-                    presenter.setState(this, ApplicationState.</xsl:text><xsl:value-of select="@back" /><xsl:text>, ApplicationState.</xsl:text><xsl:value-of select="@next" /><xsl:text>);
+                    presenter.setState(this, </xsl:text>
+                    <xsl:choose>
+                        <xsl:when test="@back">
+                            <xsl:text>ApplicationState.</xsl:text><xsl:value-of select="@back" />
+                        </xsl:when>
+                        <xsl:otherwise><xsl:text>null</xsl:text></xsl:otherwise>
+                    </xsl:choose>
+                    <xsl:text>, </xsl:text>
+                    <xsl:choose>
+                        <xsl:when test="@next">
+                            <xsl:text>ApplicationState.</xsl:text><xsl:value-of select="@next" />
+                        </xsl:when>
+                        <xsl:otherwise><xsl:text>null</xsl:text></xsl:otherwise>
+                    </xsl:choose>
+                    <xsl:text>);
                     break;                                                                                                                                                  
             </xsl:text>
         </xsl:for-each>
@@ -80,11 +115,11 @@ try {
                     presenter.setState(this, ApplicationState.start, applicationState);
                     break;
             }
-        } catch (AudioException error) {
+<!--        } catch (AudioException error) {
             logger.warning(error.getMessage());
             this.presenter = new ErrorPresenter(widgetTag, error.getMessage());
             presenter.setState(this, ApplicationState.start, applicationState);
-        }
+        }-->
     }
 }</xsl:text>
         <xsl:apply-templates select="experiment"/>
@@ -98,6 +133,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.ru.languageininteraction.language.client.Version;
 import nl.ru.languageininteraction.language.client.listener.AppEventListner;
 import nl.ru.languageininteraction.language.client.listener.PresenterEventListner;
@@ -138,7 +174,7 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
     }
 
     @Override
-    protected void setContent(AppEventListner appEventListner) {
+    protected void setContent(final AppEventListner appEventListner) {
 </xsl:text><xsl:apply-templates select="htmlText|padding|image|menuItem|text|versionData|optionButton"/><xsl:text>    }
 }</xsl:text>
         </xsl:result-document>
@@ -167,7 +203,7 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
 
                     @Override
                     public void eventFired(Button button) {
-                        appEventListner.requestApplicationState(AppEventListner.ApplicationState.</xsl:text><xsl:value-of select="@target" /><xsl:text>);
+                        appEventListner.requestApplicationState(ApplicationState.</xsl:text><xsl:value-of select="@target" /><xsl:text>);
                     }
 
                     @Override
@@ -187,7 +223,7 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
 
             @Override
             public void eventFired(Button button) {
-                appEventListner.requestApplicationState(AppEventListner.ApplicationState.</xsl:text><xsl:value-of select="@target" /><xsl:text>);
+                appEventListner.requestApplicationState(ApplicationState.</xsl:text><xsl:value-of select="@target" /><xsl:text>);
             }
         });
 </xsl:text>

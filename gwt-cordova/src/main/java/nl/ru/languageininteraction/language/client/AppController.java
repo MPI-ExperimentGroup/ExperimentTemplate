@@ -36,7 +36,6 @@ import nl.ru.languageininteraction.language.client.presenter.ExplainDataSharingS
 import nl.ru.languageininteraction.language.client.presenter.GuessRoundPresenter;
 import nl.ru.languageininteraction.language.client.presenter.InfoScreenPresenter;
 import nl.ru.languageininteraction.language.client.presenter.InstructionsPresenter;
-import nl.ru.languageininteraction.language.client.presenter.LocalStoragePresenter;
 import nl.ru.languageininteraction.language.client.presenter.LocalePresenter;
 import nl.ru.languageininteraction.language.client.presenter.MapPresenter;
 import nl.ru.languageininteraction.language.client.presenter.MetadataPresenter;
@@ -48,6 +47,7 @@ import nl.ru.languageininteraction.language.client.presenter.TutorialPresenter;
 import nl.ru.languageininteraction.language.client.service.AudioPlayer;
 import nl.ru.languageininteraction.language.client.service.LocalStorage;
 import nl.ru.languageininteraction.language.client.service.MetadataFieldProvider;
+import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 
 /**
  * @since Oct 7, 2014 11:07:35 AM (creation date)
@@ -55,10 +55,10 @@ import nl.ru.languageininteraction.language.client.service.MetadataFieldProvider
  */
 public class AppController implements AppEventListner, AudioExceptionListner {
 
-    private static final Logger logger = Logger.getLogger(AppController.class.getName());
+    protected static final Logger logger = Logger.getLogger(AppController.class.getName());
 
     final LocalStorage localStorage = new LocalStorage();
-    private final RootLayoutPanel widgetTag;
+    protected final RootLayoutPanel widgetTag;
     protected Presenter presenter;
     private final UserResults userResults;
     final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
@@ -255,7 +255,7 @@ public class AppController implements AppEventListner, AudioExceptionListner {
 
     public void start() {
         setBackButtonAction();
-        requestApplicationState(AppEventListner.ApplicationState.start);
+        requestApplicationState(ApplicationState.start);
         addKeyboardEvents();
     }
 
@@ -297,7 +297,7 @@ public class AppController implements AppEventListner, AudioExceptionListner {
      }
      }-*/;
 
-    private native void exitApplication() /*-{
+    protected native void exitApplication() /*-{
      $doc.navigator.app.exitApp();
      }-*/;
 }

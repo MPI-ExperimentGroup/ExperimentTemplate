@@ -21,6 +21,7 @@ import com.google.gwt.storage.client.Storage;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.ru.languageininteraction.language.client.listener.AppEventListner;
 import nl.ru.languageininteraction.language.client.listener.PresenterEventListner;
 import nl.ru.languageininteraction.language.client.view.ComplexView;
@@ -65,19 +66,19 @@ public class LocalStoragePresenter extends AbstractPresenter {
 
             @Override
             public void eventFired(Button button) {
-                appEventListner.requestApplicationState(AppEventListner.ApplicationState.metadata);
+                appEventListner.requestApplicationState(ApplicationState.metadata);
             }
         });
         ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
 
             @Override
             public String getLabel() {
-                return AppEventListner.ApplicationState.scores.label;
+                return ApplicationState.scores.label;
             }
 
             @Override
             public void eventFired(Button button) {
-                appEventListner.requestApplicationState(AppEventListner.ApplicationState.scores);
+                appEventListner.requestApplicationState(ApplicationState.scores);
             }
         });
 

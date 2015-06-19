@@ -19,6 +19,7 @@ package nl.ru.languageininteraction.language.client.presenter;
 
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.ru.languageininteraction.language.client.view.MetadataView;
 import nl.ru.languageininteraction.language.client.listener.AppEventListner;
 import nl.ru.languageininteraction.language.client.service.LocalStorage;
@@ -44,7 +45,7 @@ public class MetadataPresenter extends AbstractPresenter implements Presenter {
     }
 
     @Override
-    public void setState(final AppEventListner appEventListner, AppEventListner.ApplicationState prevState, final AppEventListner.ApplicationState nextState) {
+    public void setState(final AppEventListner appEventListner, ApplicationState prevState, final ApplicationState nextState) {
         super.setState(appEventListner, prevState, null);
         saveEventListner = new PresenterEventListner() {
 

@@ -19,6 +19,7 @@ package nl.ru.languageininteraction.language.client.presenter;
 
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.ru.languageininteraction.language.client.exception.AudioException;
 import nl.ru.languageininteraction.language.client.listener.AppEventListner;
 import nl.ru.languageininteraction.language.client.listener.AudioEventListner;
@@ -48,7 +49,7 @@ public abstract class AbstractSvgPresenter implements Presenter {
     }
 
     @Override
-    public void setState(final AppEventListner appEventListner, final AppEventListner.ApplicationState prevState, final AppEventListner.ApplicationState nextState) {
+    public void setState(final AppEventListner appEventListner, final ApplicationState prevState, final ApplicationState nextState) {
         widgetTag.clear();
         if (prevState != null) {
             backEventListner = new PresenterEventListner() {
@@ -70,12 +71,12 @@ public abstract class AbstractSvgPresenter implements Presenter {
                 @Override
                 public void eventFired(Button button) {
                     audioPlayer.stopAll();
-                    appEventListner.requestApplicationState(AppEventListner.ApplicationState.menu);
+                    appEventListner.requestApplicationState(ApplicationState.menu);
                 }
 
                 @Override
                 public String getLabel() {
-                    return AppEventListner.ApplicationState.menu.label;
+                    return ApplicationState.menu.label;
                 }
             };
         }

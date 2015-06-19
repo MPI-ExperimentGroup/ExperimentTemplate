@@ -19,6 +19,7 @@ package nl.ru.languageininteraction.language.client.presenter;
 
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.ru.languageininteraction.language.client.StartScreenBuilder;
 import nl.ru.languageininteraction.language.client.exception.AudioException;
 import nl.ru.languageininteraction.language.client.listener.AppEventListner;
@@ -45,7 +46,7 @@ public class StartScreenPresenter extends AbstractSvgPresenter implements Presen
 
             @Override
             public void eventFired(Button button) {
-                appEventListner.requestApplicationState(AppEventListner.ApplicationState.version);
+                appEventListner.requestApplicationState(ApplicationState.version);
             }
         }, new PresenterEventListner() {
 
@@ -56,7 +57,7 @@ public class StartScreenPresenter extends AbstractSvgPresenter implements Presen
 
             @Override
             public void eventFired(Button button) {
-                appEventListner.requestApplicationState(AppEventListner.ApplicationState.chooseplayer);
+                appEventListner.requestApplicationState(ApplicationState.chooseplayer);
             }
         }, new PresenterEventListner() {
 
@@ -67,7 +68,7 @@ public class StartScreenPresenter extends AbstractSvgPresenter implements Presen
 
             @Override
             public void eventFired(Button button) {
-                appEventListner.requestApplicationState(AppEventListner.ApplicationState.locale);
+                appEventListner.requestApplicationState(ApplicationState.locale);
             }
         }, new PresenterEventListner() {
 
@@ -78,7 +79,7 @@ public class StartScreenPresenter extends AbstractSvgPresenter implements Presen
 
             @Override
             public void eventFired(Button button) {
-                appEventListner.requestApplicationState(AppEventListner.ApplicationState.tutorial);
+                appEventListner.requestApplicationState(ApplicationState.tutorial);
             }
         },
                 audioPlayer));

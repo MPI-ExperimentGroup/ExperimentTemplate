@@ -21,6 +21,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.ArrayList;
+import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.ru.languageininteraction.language.client.Messages;
 import nl.ru.languageininteraction.language.client.exception.AudioException;
 import nl.ru.languageininteraction.language.client.listener.AppEventListner;
@@ -62,7 +63,7 @@ public class ChoosePlayerPresenter extends AbstractSvgPresenter implements Prese
 
                     @Override
                     public void eventFired(Button button) {
-                        appEventListner.requestApplicationState(AppEventListner.ApplicationState.playerdetails);
+                        appEventListner.requestApplicationState(ApplicationState.playerdetails);
                     }
                 });
         ((ChoosePlayerView) abstractSvgView).setInfoButtonListner(
@@ -75,7 +76,7 @@ public class ChoosePlayerPresenter extends AbstractSvgPresenter implements Prese
 
                     @Override
                     public void eventFired(Button button) {
-                        appEventListner.requestApplicationState(AppEventListner.ApplicationState.version);
+                        appEventListner.requestApplicationState(ApplicationState.version);
                     }
                 });
         ((ChoosePlayerView) abstractSvgView).setLocaleButtonListner(
@@ -88,7 +89,7 @@ public class ChoosePlayerPresenter extends AbstractSvgPresenter implements Prese
 
                     @Override
                     public void eventFired(Button button) {
-                        appEventListner.requestApplicationState(AppEventListner.ApplicationState.locale);
+                        appEventListner.requestApplicationState(ApplicationState.locale);
                     }
                 });
         ((ChoosePlayerView) abstractSvgView).setTutorialButtonListner(
@@ -101,7 +102,7 @@ public class ChoosePlayerPresenter extends AbstractSvgPresenter implements Prese
 
                     @Override
                     public void eventFired(Button button) {
-                        appEventListner.requestApplicationState(AppEventListner.ApplicationState.tutorial);
+                        appEventListner.requestApplicationState(ApplicationState.tutorial);
                     }
                 });
         ((ChoosePlayerView) abstractSvgView).setGoButtonListner(new PresenterEventListner() {
@@ -113,7 +114,7 @@ public class ChoosePlayerPresenter extends AbstractSvgPresenter implements Prese
 
             @Override
             public void eventFired(Button button) {
-                appEventListner.requestApplicationState(AppEventListner.ApplicationState.tutorialorguessround);
+                appEventListner.requestApplicationState(ApplicationState.tutorialorguessround);
             }
         });
         ((ChoosePlayerView) abstractSvgView).setCreateButtonListner(new PresenterEventListner() {
@@ -126,7 +127,7 @@ public class ChoosePlayerPresenter extends AbstractSvgPresenter implements Prese
             @Override
             public void eventFired(Button button) {
                 userResults.setUser(new UserData());
-                appEventListner.requestApplicationState(AppEventListner.ApplicationState.playerdetails);
+                appEventListner.requestApplicationState(ApplicationState.playerdetails);
             }
         });
         ((ChoosePlayerView) abstractSvgView).setSwitchButtonListner(new PresenterEventListner() {

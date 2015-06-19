@@ -25,6 +25,7 @@ import com.google.gwt.i18n.shared.DateTimeFormat;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.Date;
+import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.ru.languageininteraction.language.client.Messages;
 import nl.ru.languageininteraction.language.client.exception.AudioException;
 import nl.ru.languageininteraction.language.client.exception.MetadataFieldException;
@@ -66,7 +67,7 @@ public class ScorePagePresenter implements Presenter {
     }
 
     @Override
-    public void setState(final AppEventListner appEventListner, final AppEventListner.ApplicationState prevState, final AppEventListner.ApplicationState nextState) {
+    public void setState(final AppEventListner appEventListner, final ApplicationState prevState, final ApplicationState nextState) {
         widgetTag.clear();
         if (prevState != null) {
             backEventListner = new PresenterEventListner() {
@@ -88,12 +89,12 @@ public class ScorePagePresenter implements Presenter {
                 @Override
                 public void eventFired(Button button) {
                     audioPlayer.stopAll();
-                    appEventListner.requestApplicationState(AppEventListner.ApplicationState.chooseplayer);
+                    appEventListner.requestApplicationState(ApplicationState.chooseplayer);
                 }
 
                 @Override
                 public String getLabel() {
-                    return AppEventListner.ApplicationState.menu.label;
+                    return ApplicationState.menu.label;
                 }
             };
         }
@@ -101,12 +102,12 @@ public class ScorePagePresenter implements Presenter {
 
             @Override
             public void eventFired(Button button) {
-                appEventListner.requestApplicationState(AppEventListner.ApplicationState.playerdetails);
+                appEventListner.requestApplicationState(ApplicationState.playerdetails);
             }
 
             @Override
             public String getLabel() {
-                return AppEventListner.ApplicationState.playerdetails.label;
+                return ApplicationState.playerdetails.label;
             }
         });
         scorePageView.setJustContinueListner(new PresenterEventListner() {
@@ -121,7 +122,7 @@ public class ScorePagePresenter implements Presenter {
                     appEventListner.requestApplicationState(nextState);
                 } catch (MetadataFieldException exception) {
                     // if the user has not entered their name etc then all actions force them to go to the edit details screen (which can only happen if they are playing for the first time or the clicked new player)
-                    appEventListner.requestApplicationState(AppEventListner.ApplicationState.playerdetails);
+                    appEventListner.requestApplicationState(ApplicationState.playerdetails);
                 }
             }
 
@@ -152,7 +153,7 @@ public class ScorePagePresenter implements Presenter {
                     appEventListner.requestApplicationState(nextState);
                 } catch (MetadataFieldException exception) {
                     // if the user has not entered their name etc then all actions force them to go to the edit details screen (which can only happen if they are playing for the first time or the clicked new player)
-                    appEventListner.requestApplicationState(AppEventListner.ApplicationState.playerdetails);
+                    appEventListner.requestApplicationState(ApplicationState.playerdetails);
                 }
             }
 
@@ -209,13 +210,13 @@ public class ScorePagePresenter implements Presenter {
                 // todo: store the serialised data for later upload
                 switch (exception.getErrorType()) {
                     case buildererror:
-                        appEventListner.requestApplicationState(AppEventListner.ApplicationState.highscoresfailedbuildererror);
+                        appEventListner.requestApplicationState(ApplicationState.highscoresfailedbuildererror);
                         break;
                     case connectionerror:
-                        appEventListner.requestApplicationState(AppEventListner.ApplicationState.highscoresfailedconnectionerror);
+                        appEventListner.requestApplicationState(ApplicationState.highscoresfailedconnectionerror);
                         break;
                     case non202response:
-                        appEventListner.requestApplicationState(AppEventListner.ApplicationState.highscoresfailednon202);
+                        appEventListner.requestApplicationState(ApplicationState.highscoresfailednon202);
                         break;
                 }
             }
@@ -230,7 +231,7 @@ public class ScorePagePresenter implements Presenter {
                     userResults.clearResults();
                     new LocalStorage().clearStoredGameData(userResults.getUserData().getUserId());
                 }
-                appEventListner.requestApplicationState(AppEventListner.ApplicationState.highscoresubmitted);
+                appEventListner.requestApplicationState(ApplicationState.highscoresubmitted);
             }
         }, messages.reportDateFormat());
     }
