@@ -122,6 +122,22 @@ public class ApplicationController extends AppController {
         }-->
     }
 }</xsl:text>
+
+        <xsl:result-document href="target/generated-sources/gwt/nl/mpi/tg/eg/experiment/client/Messages.properties" method="text">
+            <xsl:for-each select="experiment/presenter">
+                    <xsl:text>menuLabel</xsl:text><xsl:value-of select="@self" /><xsl:text>=</xsl:text><xsl:value-of select="@menuLabel" /><xsl:text>
+</xsl:text>
+                    <xsl:for-each select="*[@fieldName]">
+                        <xsl:value-of select="@fieldName" />
+                        <xsl:text>=</xsl:text>
+                        <xsl:value-of select="."/>
+                        <xsl:text>
+</xsl:text>
+                    </xsl:for-each>
+                </xsl:for-each>
+                <xsl:text>errorScreenText={0}
+stopSharingDetailsExplanation=({0}) and unique id ({1})</xsl:text>
+        </xsl:result-document>
         <xsl:apply-templates select="experiment"/>
     </xsl:template>
     <xsl:template match="presenter">        
@@ -170,21 +186,21 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
 
     @Override
     protected void setTitle(PresenterEventListner titleBarListner) {
-        simpleView.addTitle(messages.</xsl:text><xsl:value-of select="//title//@field" /><xsl:text>(), titleBarListner);
+        simpleView.addTitle(messages.</xsl:text><xsl:value-of select="//title//@fieldName" /><xsl:text>(), titleBarListner);
     }
 
     @Override
     protected void setContent(final AppEventListner appEventListner) {
-</xsl:text><xsl:apply-templates select="htmlText|padding|image|menuItem|text|versionData|optionButton"/><xsl:text>    }
+</xsl:text><xsl:apply-templates select="htmlText|padding|image|menuItem|text|versionData|optionButton|userInfo"/><xsl:text>    }
 }</xsl:text>
         </xsl:result-document>
     </xsl:template>
 <xsl:template match="htmlText">
-<xsl:text>    ((ComplexView) simpleView).addHtmlText(messages.</xsl:text><xsl:value-of select="@field" /><xsl:text>());
+<xsl:text>    ((ComplexView) simpleView).addHtmlText(messages.</xsl:text><xsl:value-of select="@fieldName" /><xsl:text>());
 </xsl:text>
     </xsl:template>
 <xsl:template match="text">
-<xsl:text>    ((ComplexView) simpleView).addText(messages.</xsl:text><xsl:value-of select="@field" /><xsl:text>());
+<xsl:text>    ((ComplexView) simpleView).addText(messages.</xsl:text><xsl:value-of select="@fieldName" /><xsl:text>());
 </xsl:text>
     </xsl:template>
 <xsl:template match="image">
@@ -208,7 +224,7 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
 
                     @Override
                     public String getLabel() {
-                        return messages.</xsl:text><xsl:value-of select="@label" /><xsl:text>();
+                        return messages.</xsl:text><xsl:value-of select="@fieldName" /><xsl:text>();
                     }
                 }, true);
 </xsl:text>
@@ -218,7 +234,7 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
 
             @Override
             public String getLabel() {
-                return messages.</xsl:text><xsl:value-of select="@label" /><xsl:text>();
+                return messages.</xsl:text><xsl:value-of select="@fieldName" /><xsl:text>();
             }
 
             @Override
@@ -230,6 +246,10 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
     </xsl:template>
 <xsl:template match="padding">
 <xsl:text>    ((ComplexView) simpleView).addPadding();
+</xsl:text>
+    </xsl:template>
+<xsl:template match="userInfo">
+<xsl:text>    ((ComplexView) simpleView).addHtmlText(messages.</xsl:text><xsl:value-of select="@fieldName" /><xsl:text>(userNameValue, userResults.getUserData().getUserId().toString()));
 </xsl:text>
     </xsl:template>
 <xsl:template match="versionData">

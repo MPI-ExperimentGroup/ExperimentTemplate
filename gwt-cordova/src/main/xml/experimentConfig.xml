@@ -23,26 +23,35 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 <experiment name="testData">
     <presenter type="menu" menuLabel="Main Menu" self="MainMenu">
-        <menuItem label="aboutScreenMenuLabel" target="AboutPage" />
+        <menuItem fieldName="aboutScreenMenuLabel" target="AboutPage" />
     </presenter>
     <presenter type="text" menuLabel="Option Menu" back="MainMenu" self="OptionMenu" next="AboutPage">
-        <optionButton label="aboutScreenMenuLabel" target="AboutPage" />
+        <optionButton fieldName="aboutScreenMenuLabel" target="AboutPage" />
+    </presenter>
+    <presenter type="text" menuLabel="Stray Messages Screen" back="MainMenu" self="StrayMessages" next="AboutPage">
+       <htmlText fieldName="aboutScreenTextJheading">---</htmlText>
+       <htmlText fieldName="errorScreenTitle">---</htmlText>
+       <htmlText fieldName="localeScreenTitle">---</htmlText>
+       <htmlText fieldName="languageInteractionUrl">---</htmlText>
+       <htmlText fieldName="stopSharingScreenTitle">---</htmlText>
+       <!--<htmlText fieldName="errorScreenText"></htmlText>-->
+       <!--<userInfo fieldName="stopSharingDetailsExplanation">({0}) and unique id ({1})</userInfo>-->
     </presenter>
     <presenter type="text" menuLabel="About Page" back="MainMenu" self="AboutPage" next="OptionMenu">
-        <title field="versionScreenTitle"></title>
+        <title fieldName="versionScreenTitle">Version</title>
         <image link="languageInteractionUrl" width="100" image="images/LIL-logo-diap.png"/>
         <!--<Image width="10" image="images/icon.png"/>-->
-        <highlightedText field="aboutScreenTextAheading"></highlightedText>
-        <htmlText field="aboutScreenTextAbody"></htmlText>
+        <highlightedText fieldName="aboutScreenTextAheading">A Heading</highlightedText>
+        <htmlText fieldName="aboutScreenTextAbody">A body</htmlText>
         <padding/>
-        <htmlText field="aboutScreenTextBheading"></htmlText>
-        <htmlText field="aboutScreenTextBbody"></htmlText>
-        <htmlText field="aboutScreenTextCheading"></htmlText>
-        <htmlText field="aboutScreenTextCbody"></htmlText>
-        <htmlText field="aboutScreenTextDheading"></htmlText>
-        <htmlText field="aboutScreenTextDbody"></htmlText>
-        <htmlText field="aboutScreenTextEheading"></htmlText>
-        <htmlText field="aboutScreenTextEbody"></htmlText>
+        <htmlText fieldName="aboutScreenTextBheading">B h</htmlText>
+        <htmlText fieldName="aboutScreenTextBbody">Bh</htmlText>
+        <htmlText fieldName="aboutScreenTextCheading">Ch</htmlText>
+        <htmlText fieldName="aboutScreenTextCbody">Cb</htmlText>
+        <htmlText fieldName="aboutScreenTextDheading">Dh</htmlText>
+        <htmlText fieldName="aboutScreenTextDbody">Db</htmlText>
+        <htmlText fieldName="aboutScreenTextEheading">Eh</htmlText>
+        <htmlText fieldName="aboutScreenTextEbody">Eb</htmlText>
         <versionData/>
     </presenter>
 </experiment>

@@ -9,7 +9,7 @@
     <groupId>nl.mpi.tg.eg</groupId>
     <artifactId>gwttemplate</artifactId>
     <packaging>war</packaging>
-    <version>0.1.365-pretesting</version>
+    <version>0.1.366-pretesting</version>
     <name>ExperimentTemplate</name>
     <organization>
         <name></name>
@@ -259,6 +259,7 @@
                     <runTarget>annotator.html</runTarget>
                     <hostedWebapp>${webappDirectory}</hostedWebapp>
                     <i18nMessagesBundles>
+                        <i18nMessagesBundle>nl.mpi.tg.eg.experiment.client.Messages</i18nMessagesBundle>
                         <i18nMessagesBundle>nl.ru.languageininteraction.language.client.Messages</i18nMessagesBundle>
                         <i18nMessagesBundle>nl.ru.languageininteraction.language.client.MetadataFields</i18nMessagesBundle>
                         <!--<i18nMessagesBundle>nl.ru.languageininteraction.language.client.Stimuli</i18nMessagesBundle>-->
