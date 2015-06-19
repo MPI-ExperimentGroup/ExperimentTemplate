@@ -15,15 +15,15 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.ru.languageininteraction.language.client.service;
+package nl.mpi.tg.eg.experiment.client.service;
 
-import nl.ru.languageininteraction.language.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import com.google.gwt.storage.client.Storage;
 import java.util.ArrayList;
 import java.util.List;
 import nl.ru.languageininteraction.language.client.model.MetadataField;
-import nl.ru.languageininteraction.language.client.model.UserData;
-import nl.ru.languageininteraction.language.client.model.UserId;
+import nl.mpi.tg.eg.experiment.client.model.UserData;
+import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.ru.languageininteraction.language.client.model.UserLabelData;
 
 /**
