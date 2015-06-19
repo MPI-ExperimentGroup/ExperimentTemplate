@@ -23,8 +23,8 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.Version;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
-import nl.ru.languageininteraction.language.client.model.UserResults;
-import nl.ru.languageininteraction.language.client.service.MetadataFieldProvider;
+import nl.mpi.tg.eg.experiment.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 
 /**

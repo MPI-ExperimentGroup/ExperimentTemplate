@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.Set;
 import nl.mpi.tg.eg.experiment.client.exception.MetadataFieldException;
 import nl.ru.languageininteraction.language.client.model.MetadataField;
-import nl.ru.languageininteraction.language.client.service.MetadataFieldProvider;
+import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
 
 /**
  * @since Mar 10, 2015 11:11:43 AM (creation date)

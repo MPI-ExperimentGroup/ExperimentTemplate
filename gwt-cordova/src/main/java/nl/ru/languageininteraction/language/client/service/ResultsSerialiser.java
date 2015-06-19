@@ -20,8 +20,8 @@ package nl.ru.languageininteraction.language.client.service;
 import java.util.Date;
 import nl.ru.languageininteraction.language.client.model.RoundData;
 import nl.ru.languageininteraction.language.client.model.RoundSample;
-import nl.ru.languageininteraction.language.client.model.UserId;
-import nl.ru.languageininteraction.language.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.model.UserId;
+import nl.mpi.tg.eg.experiment.client.model.UserResults;
 
 /**
  * @since Oct 31, 2014 3:48:38 PM (creation date)

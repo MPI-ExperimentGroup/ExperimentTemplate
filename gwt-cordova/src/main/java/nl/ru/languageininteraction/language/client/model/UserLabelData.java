@@ -17,6 +17,8 @@
  */
 package nl.ru.languageininteraction.language.client.model;
 
+import nl.mpi.tg.eg.experiment.client.model.UserId;
+
 /**
  * @since Mar 10, 2015 3:51:42 PM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>

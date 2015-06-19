@@ -24,7 +24,7 @@ import nl.ru.languageininteraction.language.client.GuessRound_TutorialBuilder;
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
-import nl.ru.languageininteraction.language.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.ru.languageininteraction.language.client.service.AudioPlayer;
 import nl.ru.languageininteraction.language.client.view.TutorialView;
 

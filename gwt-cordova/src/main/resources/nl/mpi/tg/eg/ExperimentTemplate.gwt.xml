@@ -24,7 +24,7 @@
     <entry-point class='nl.mpi.tg.eg.experiment.client.ExperimentTemplate' />
 
     <!-- Specify the paths for translatable code                    -->
-     <source path='experiment.client' />
+     <source path='experiment' />
     <!--<source path='synaesthesia' />-->
     <!--<source path='language' />-->
 

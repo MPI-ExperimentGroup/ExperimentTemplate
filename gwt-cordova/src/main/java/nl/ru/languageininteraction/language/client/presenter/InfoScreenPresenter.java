@@ -20,7 +20,7 @@ package nl.ru.languageininteraction.language.client.presenter;
 import nl.mpi.tg.eg.experiment.client.presenter.Presenter;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
-import nl.ru.languageininteraction.language.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.ru.languageininteraction.language.client.service.AudioPlayer;
 import nl.ru.languageininteraction.language.client.view.InfoScreenView;
 
