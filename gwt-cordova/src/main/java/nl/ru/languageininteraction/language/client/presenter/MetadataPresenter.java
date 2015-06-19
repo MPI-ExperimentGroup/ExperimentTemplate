@@ -17,17 +17,19 @@
  */
 package nl.ru.languageininteraction.language.client.presenter;
 
+import nl.mpi.tg.eg.experiment.client.presenter.Presenter;
+import nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.ru.languageininteraction.language.client.view.MetadataView;
-import nl.ru.languageininteraction.language.client.listener.AppEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.ru.languageininteraction.language.client.service.LocalStorage;
-import nl.ru.languageininteraction.language.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.ru.languageininteraction.language.client.model.MetadataField;
 import nl.ru.languageininteraction.language.client.model.UserResults;
 import nl.ru.languageininteraction.language.client.service.MetadataFieldProvider;
-import nl.ru.languageininteraction.language.client.exception.MetadataFieldException;
+import nl.mpi.tg.eg.experiment.client.exception.MetadataFieldException;
 
 /**
  * @since Oct 21, 2014 11:50:56 AM (creation date)

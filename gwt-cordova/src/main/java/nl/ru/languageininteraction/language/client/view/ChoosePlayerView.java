@@ -22,8 +22,8 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ListBox;
 import java.util.List;
 import nl.ru.languageininteraction.language.client.ChoosePlayerScreenBuilder;
-import nl.ru.languageininteraction.language.client.exception.AudioException;
-import nl.ru.languageininteraction.language.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.exception.AudioException;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.ru.languageininteraction.language.client.service.AudioPlayer;
 
 /**

@@ -17,14 +17,14 @@
         <!--                                           -->
         <!-- Any title is fine                         -->
         <!--                                           -->
-        <title>LingQuest</title>
+        <title>ExperimentTemplate</title>
 
         <!--                                           -->
         <!-- This script loads your compiled module.   -->
         <!-- If you add any GWT meta tags, they must   -->
         <!-- be added before this line.                -->
         <!--                                           -->
-        <script type="text/javascript" language="javascript" src="LanguageMemory/LanguageMemory.nocache.js"></script>
+        <script type="text/javascript" language="javascript" src="ExperimentTemplate/ExperimentTemplate.nocache.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript">
             function onLoad() {
@@ -38,9 +38,9 @@
                 Keyboard.automaticScrollToTopOnHiding = true;
                 StatusBar.hide(); // hide the status bar on iOS
 //                document.getElementById("platformTag").innerHTML = device.platform;
-                console.log("starting analytics");
-                analytics.startTrackerWithId('UA-59465111-2');
-                analytics.trackView("start");
+                //console.log("starting analytics");
+                //analytics.startTrackerWithId('UA-');
+                //analytics.trackView("start");
                 console.log("splashscreen.hide");
                 navigator.splashscreen.hide();
                 console.log("setting device style name");

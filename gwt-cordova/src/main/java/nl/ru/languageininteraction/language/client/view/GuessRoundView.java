@@ -27,8 +27,8 @@ import nl.ru.languageininteraction.language.client.GuessRoundBuilder.SvgGroupSta
 import nl.ru.languageininteraction.language.client.GuessRoundBuilder;
 import nl.ru.languageininteraction.language.client.GuessRoundBuilder.SvgTextElements;
 import nl.ru.languageininteraction.language.client.Messages;
-import nl.ru.languageininteraction.language.client.exception.AudioException;
-import nl.ru.languageininteraction.language.client.listener.LanguageSampleListener;
+import nl.mpi.tg.eg.experiment.client.exception.AudioException;
+import nl.mpi.tg.eg.experiment.client.listener.LanguageSampleListener;
 import nl.ru.languageininteraction.language.client.model.RoundData;
 import nl.ru.languageininteraction.language.client.service.AudioPlayer;
 import nl.ru.languageininteraction.language.client.util.SvgTemplate;

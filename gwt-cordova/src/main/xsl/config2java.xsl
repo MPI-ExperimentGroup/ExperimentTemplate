@@ -17,15 +17,12 @@
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.presenter.*;
-import nl.ru.languageininteraction.language.client.AppController;
-import nl.ru.languageininteraction.language.client.exception.AudioException;
-import nl.ru.languageininteraction.language.client.presenter.ErrorPresenter;
 
 public class ApplicationController extends AppController {
 
     public enum ApplicationState {
         
-        start(messages.startButton()),
+        start("temporary"),
 </xsl:text>
         <xsl:for-each select="experiment/presenter">
             <xsl:text>        </xsl:text><xsl:value-of select="@self" /><xsl:text>("</xsl:text><xsl:value-of select="@menuLabel" /><xsl:text>"),
@@ -35,7 +32,7 @@ public class ApplicationController extends AppController {
         highscoresfailednon202(""),
         highscoresfailedbuildererror(""),
         highscoresfailedconnectionerror(""),
-        end(messages.exitButton()),
+        end("temporary"),
         menu("temporary"),
         playerdetails("temporary"),
         locale("temporary"),
@@ -78,6 +75,7 @@ public class ApplicationController extends AppController {
             // when any stored data is uploaded then delete the store 
             // on new game play erase any in memory game data regardless of its shared or not shared state
             switch (applicationState) {
+                case start:
         </xsl:text>
         <xsl:for-each select="experiment/presenter">
             <xsl:text>
@@ -145,18 +143,16 @@ stopSharingDetailsExplanation=({0}) and unique id ({1})</xsl:text>
       <xsl:result-document href="target/generated-sources/gwt/nl/mpi/tg/eg/experiment/client/presenter/{@self}Presenter.java" method="text">
         <xsl:text>package nl.mpi.tg.eg.experiment.client.presenter;
     
-import com.google.gwt.user.client.ui.Button;        
-import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.GWT;        
 import com.google.gwt.safehtml.shared.UriUtils;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import nl.mpi.tg.eg.experiment.client.Version;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
-import nl.ru.languageininteraction.language.client.Version;
-import nl.ru.languageininteraction.language.client.listener.AppEventListner;
-import nl.ru.languageininteraction.language.client.listener.PresenterEventListner;
-import nl.ru.languageininteraction.language.client.presenter.AbstractPresenter;
-import nl.ru.languageininteraction.language.client.presenter.Presenter;
-import nl.ru.languageininteraction.language.client.view.ComplexView;
-import nl.ru.languageininteraction.language.client.view.MenuView;
+import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.view.ComplexView;
+import nl.mpi.tg.eg.experiment.client.view.MenuView;            
                         
 // generated with config2java.xsl
 public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter extends AbstractPresenter implements Presenter {

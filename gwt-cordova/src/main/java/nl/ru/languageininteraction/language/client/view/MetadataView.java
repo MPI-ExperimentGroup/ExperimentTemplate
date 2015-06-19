@@ -17,6 +17,7 @@
  */
 package nl.ru.languageininteraction.language.client.view;
 
+import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import com.google.gwt.event.dom.client.BlurEvent;
 import com.google.gwt.event.dom.client.BlurHandler;
 import com.google.gwt.event.dom.client.FocusEvent;

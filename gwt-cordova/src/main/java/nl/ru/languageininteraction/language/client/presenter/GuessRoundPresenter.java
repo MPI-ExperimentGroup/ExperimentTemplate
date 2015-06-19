@@ -17,10 +17,11 @@
  */
 package nl.ru.languageininteraction.language.client.presenter;
 
+import nl.mpi.tg.eg.experiment.client.presenter.Presenter;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.ru.languageininteraction.language.client.LanguageDataProvider;
-import nl.ru.languageininteraction.language.client.exception.AudioException;
-import nl.ru.languageininteraction.language.client.listener.LanguageSampleListener;
+import nl.mpi.tg.eg.experiment.client.exception.AudioException;
+import nl.mpi.tg.eg.experiment.client.listener.LanguageSampleListener;
 import nl.ru.languageininteraction.language.client.model.RoundData;
 import nl.ru.languageininteraction.language.client.model.RoundSample;
 import nl.ru.languageininteraction.language.client.model.UserResults;

@@ -17,6 +17,7 @@
  */
 package nl.ru.languageininteraction.language.client.view;
 
+import nl.mpi.tg.eg.experiment.client.view.SimpleView;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
@@ -30,7 +31,7 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import nl.ru.languageininteraction.language.client.AutotypRegions;
-import nl.ru.languageininteraction.language.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.ru.languageininteraction.language.client.util.SvgTemplate;
 
 /**

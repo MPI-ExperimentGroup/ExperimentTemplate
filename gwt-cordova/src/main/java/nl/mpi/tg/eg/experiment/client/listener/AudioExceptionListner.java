@@ -17,7 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.listener;
 
-import nl.ru.languageininteraction.language.client.exception.AudioException;
+import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 
 /**
  * @since Jan 23, 2015 2:58:03 PM (creation date)

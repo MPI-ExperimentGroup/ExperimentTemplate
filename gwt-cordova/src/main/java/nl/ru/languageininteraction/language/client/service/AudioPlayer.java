@@ -19,9 +19,9 @@ package nl.ru.languageininteraction.language.client.service;
 
 import com.google.gwt.dom.client.AudioElement;
 import com.google.gwt.media.client.Audio;
-import nl.ru.languageininteraction.language.client.exception.AudioException;
-import nl.ru.languageininteraction.language.client.listener.AudioEventListner;
-import nl.ru.languageininteraction.language.client.listener.AudioExceptionListner;
+import nl.mpi.tg.eg.experiment.client.exception.AudioException;
+import nl.mpi.tg.eg.experiment.client.listener.AudioEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.AudioExceptionListner;
 import nl.ru.languageininteraction.language.client.model.RoundSample;
 
 /**

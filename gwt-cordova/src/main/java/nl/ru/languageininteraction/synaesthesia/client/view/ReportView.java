@@ -17,9 +17,9 @@
  */
 package nl.ru.languageininteraction.synaesthesia.client.view;
 
-import nl.ru.languageininteraction.language.client.view.ComplexView;
+import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
-import nl.ru.languageininteraction.language.client.view.SimpleView;
+import nl.mpi.tg.eg.experiment.client.view.SimpleView;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;

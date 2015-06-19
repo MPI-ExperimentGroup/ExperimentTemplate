@@ -17,15 +17,16 @@
  */
 package nl.ru.languageininteraction.language.client.presenter;
 
+import nl.mpi.tg.eg.experiment.client.presenter.Presenter;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.ru.languageininteraction.language.client.Messages;
-import nl.ru.languageininteraction.language.client.exception.AudioException;
-import nl.ru.languageininteraction.language.client.listener.AppEventListner;
-import nl.ru.languageininteraction.language.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.exception.AudioException;
+import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.ru.languageininteraction.language.client.model.UserResults;
 import nl.ru.languageininteraction.language.client.service.AudioPlayer;
 import nl.ru.languageininteraction.language.client.service.LocalStorage;

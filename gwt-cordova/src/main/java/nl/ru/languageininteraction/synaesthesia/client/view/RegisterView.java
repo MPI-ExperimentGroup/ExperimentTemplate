@@ -17,15 +17,15 @@
  */
 package nl.ru.languageininteraction.synaesthesia.client.view;
 
-import nl.ru.languageininteraction.language.client.view.ComplexView;
+import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.user.client.ui.CheckBox;
-import nl.ru.languageininteraction.language.client.view.SimpleView;
+import nl.mpi.tg.eg.experiment.client.view.SimpleView;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import nl.ru.languageininteraction.language.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 
 /**
  * @since Oct 21, 2014 5:15:19 PM (creation date)

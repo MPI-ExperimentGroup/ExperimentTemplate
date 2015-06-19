@@ -17,17 +17,13 @@
  */
 package nl.mpi.tg.eg.experiment.client.listener;
 
-import com.google.gwt.core.client.GWT;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
-import nl.ru.languageininteraction.language.client.Messages;
 
 /**
  * @since Oct 8, 2014 11:01:07 AM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
 public interface AppEventListner {
-
-    final Messages messages = GWT.create(Messages.class);
 
     public void requestApplicationState(ApplicationState applicationState);
 }

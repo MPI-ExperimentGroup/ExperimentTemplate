@@ -18,11 +18,9 @@
 package nl.mpi.tg.eg.experiment.client.presenter;
 
 import com.google.gwt.user.client.ui.RootLayoutPanel;
-import nl.ru.languageininteraction.language.client.listener.AppEventListner;
-import nl.ru.languageininteraction.language.client.listener.PresenterEventListner;
-import nl.ru.languageininteraction.language.client.presenter.AbstractPresenter;
-import nl.ru.languageininteraction.language.client.presenter.Presenter;
-import nl.ru.languageininteraction.language.client.view.SimpleView;
+import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.view.SimpleView;
 
 /**
  * @since Oct 22, 2014 3:00:25 PM (creation date)

@@ -19,8 +19,8 @@ package nl.ru.languageininteraction.language.client.view;
 
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import nl.ru.languageininteraction.language.client.GuessRound_TutorialBuilder;
-import nl.ru.languageininteraction.language.client.exception.AudioException;
-import nl.ru.languageininteraction.language.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.exception.AudioException;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.ru.languageininteraction.language.client.service.AudioPlayer;
 import nl.ru.languageininteraction.language.client.util.SvgTemplate;
 

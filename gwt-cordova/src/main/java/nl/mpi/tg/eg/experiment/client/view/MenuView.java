@@ -24,7 +24,6 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
-import nl.ru.languageininteraction.language.client.view.ComplexView;
 
 /**
  * @since Oct 31, 2014 11:36:28 AM (creation date)

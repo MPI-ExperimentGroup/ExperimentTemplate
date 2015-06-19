@@ -24,8 +24,8 @@ import nl.ru.languageininteraction.language.client.ScorePage;
 import nl.ru.languageininteraction.language.client.ScorePageBuilder.SvgGroupStates;
 import nl.ru.languageininteraction.language.client.ScorePageBuilder.SvgTextElements;
 import nl.ru.languageininteraction.language.client.ScorePageBuilder;
-import nl.ru.languageininteraction.language.client.exception.AudioException;
-import nl.ru.languageininteraction.language.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.exception.AudioException;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.ru.languageininteraction.language.client.service.AudioPlayer;
 
 /**

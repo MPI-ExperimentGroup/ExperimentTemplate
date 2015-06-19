@@ -19,7 +19,7 @@ package nl.ru.languageininteraction.language.client.view;
 
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import nl.ru.languageininteraction.language.client.InfoScreenBuilder;
-import nl.ru.languageininteraction.language.client.exception.AudioException;
+import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.ru.languageininteraction.language.client.service.AudioPlayer;
 
 /**

@@ -18,7 +18,7 @@
 package nl.mpi.tg.eg.experiment.client.presenter;
 
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
-import nl.ru.languageininteraction.language.client.listener.AppEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 
 /**
  * @since Oct 10, 2014 10:05:41 AM (creation date)

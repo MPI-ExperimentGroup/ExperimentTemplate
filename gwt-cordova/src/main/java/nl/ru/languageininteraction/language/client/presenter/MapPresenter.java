@@ -17,9 +17,11 @@
  */
 package nl.ru.languageininteraction.language.client.presenter;
 
+import nl.mpi.tg.eg.experiment.client.presenter.Presenter;
+import nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
-import nl.ru.languageininteraction.language.client.listener.AppEventListner;
-import nl.ru.languageininteraction.language.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.ru.languageininteraction.language.client.view.MapView;
 
 /**

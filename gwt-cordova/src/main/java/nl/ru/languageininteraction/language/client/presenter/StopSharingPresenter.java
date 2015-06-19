@@ -17,14 +17,15 @@
  */
 package nl.ru.languageininteraction.language.client.presenter;
 
+import nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
-import nl.ru.languageininteraction.language.client.Version;
-import nl.ru.languageininteraction.language.client.listener.AppEventListner;
-import nl.ru.languageininteraction.language.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.Version;
+import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.ru.languageininteraction.language.client.model.UserResults;
 import nl.ru.languageininteraction.language.client.service.MetadataFieldProvider;
-import nl.ru.languageininteraction.language.client.view.ComplexView;
+import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 
 /**
  * @since Oct 29, 2014 4:42:44 PM (creation date)

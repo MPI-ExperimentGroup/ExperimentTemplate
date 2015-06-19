@@ -30,7 +30,7 @@ import com.google.gwt.i18n.shared.DateTimeFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import nl.ru.languageininteraction.language.client.Version;
+import nl.mpi.tg.eg.experiment.client.Version;
 import nl.ru.languageininteraction.language.client.ServiceLocations;
 import nl.ru.languageininteraction.language.client.model.HighScoreData;
 import nl.ru.languageininteraction.language.client.model.MetadataField;

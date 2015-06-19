@@ -17,6 +17,7 @@
  */
 package nl.ru.languageininteraction.language.client.view;
 
+import nl.mpi.tg.eg.experiment.client.view.AbstractView;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -36,9 +37,9 @@ import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import nl.ru.languageininteraction.language.client.MatchLanguageBuilder;
 import nl.ru.languageininteraction.language.client.Messages;
-import nl.ru.languageininteraction.language.client.exception.AudioException;
-import nl.ru.languageininteraction.language.client.listener.PresenterEventListner;
-import nl.ru.languageininteraction.language.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.exception.AudioException;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.ru.languageininteraction.language.client.service.AudioPlayer;
 
 /**

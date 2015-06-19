@@ -15,7 +15,7 @@ public class ExperimentTemplate implements EntryPoint {
     public void onModuleLoad() {
         final RootLayoutPanel widgetTag = RootLayoutPanel.get();
         widgetTag.getElement().setId("widgetTag");
-        final AppController appController = new AppController(widgetTag);
+        final AppController appController = new ApplicationController(widgetTag);
         appController.start();
     }
 }
