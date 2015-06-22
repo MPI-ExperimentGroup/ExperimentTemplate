@@ -11,6 +11,10 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
     <xsl:output method="text" encoding="UTF-8" />
     <xsl:template match="/">
+        <xsl:result-document href="target/generated-sources/gwt/nl/mpi/tg/eg/experiment/client/service/ServiceLocations.properties" method="text">
+            <xsl:text>dataSubmitUrl=</xsl:text><xsl:value-of select="experiment/@dataSubmitUrl" />
+        </xsl:result-document>
+        
         <xsl:result-document href="target/generated-sources/gwt/nl/mpi/tg/eg/experiment/client/MetadataFields.properties" method="text">
             <xsl:for-each select="experiment/metadata/field">
                    <xsl:text>postName_</xsl:text><xsl:value-of select="@postName" /><xsl:text>=</xsl:text><xsl:value-of select="@postName" /><xsl:text>

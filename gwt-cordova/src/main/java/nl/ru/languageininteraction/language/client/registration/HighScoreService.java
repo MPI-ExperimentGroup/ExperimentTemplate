@@ -31,12 +31,12 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import nl.mpi.tg.eg.experiment.client.Version;
-import nl.ru.languageininteraction.language.client.ServiceLocations;
 import nl.ru.languageininteraction.language.client.model.HighScoreData;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
+import nl.mpi.tg.eg.experiment.client.service.ServiceLocations;
 import nl.ru.languageininteraction.language.client.service.ResultsSerialiser;
 
 /**
@@ -51,7 +51,7 @@ public class HighScoreService {
     private final Version version = GWT.create(Version.class);
 
     public void submitScores(final boolean isShareData,UserResults userResults, HighScoreListener highScoreListener, final String reportDateFormat) {
-        final String highScoresUrl = serviceLocations.highScoresUrl();
+        final String highScoresUrl = serviceLocations.dataSubmitUrl();
         final RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, highScoresUrl);
         builder.setHeader("Content-type", "application/x-www-form-urlencoded");
         StringBuilder stringBuilder = new StringBuilder();        
