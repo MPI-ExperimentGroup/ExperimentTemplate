@@ -49,7 +49,7 @@ public class StopSharingPresenter extends AbstractPresenter {
 
     @Override
     protected void setContent(final AppEventListner appEventListner) {
-        final String userNameValue = userResults.getUserData().getMetadataValue(metadataFieldProvider.firstNameMetadataField);
+        final String userNameValue = userResults.getUserData().getMetadataValue(metadataFieldProvider.playernameMetadataField);
         ((ComplexView) simpleView).addHtmlText(messages.stopSharingDetailsExplanation(userNameValue, userResults.getUserData().getUserId().toString()));
     }
 }

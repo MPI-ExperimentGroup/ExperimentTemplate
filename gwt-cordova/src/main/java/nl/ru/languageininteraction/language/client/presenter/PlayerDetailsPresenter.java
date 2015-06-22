@@ -136,7 +136,7 @@ public class PlayerDetailsPresenter extends AbstractSvgPresenter implements Pres
             public void eventFired(Button button) {
                 final TextBox userNameBox = new TextBox();
                 userNameBox.setStylePrimaryName("popupTextBox");
-                userNameBox.setValue(userResults.getUserData().getMetadataValue(metadataFieldProvider.firstNameMetadataField));
+                userNameBox.setValue(userResults.getUserData().getMetadataValue(metadataFieldProvider.playernameMetadataField));
                 playerDetailsView.showWidgetPopup(new PresenterEventListner() {
 
                     @Override
@@ -146,13 +146,13 @@ public class PlayerDetailsPresenter extends AbstractSvgPresenter implements Pres
 
                     @Override
                     public void eventFired(Button button) {
-                        userResults.getUserData().setMetadataValue(metadataFieldProvider.firstNameMetadataField, userNameBox.getValue());
-                        playerDetailsView.setUserNameField(userResults.getUserData().getMetadataValue(metadataFieldProvider.firstNameMetadataField));
+                        userResults.getUserData().setMetadataValue(metadataFieldProvider.playernameMetadataField, userNameBox.getValue());
+                        playerDetailsView.setUserNameField(userResults.getUserData().getMetadataValue(metadataFieldProvider.playernameMetadataField));
                     }
                 }, userNameBox);
             }
         });
-        final String userNameValue = userResults.getUserData().getMetadataValue(metadataFieldProvider.firstNameMetadataField);
+        final String userNameValue = userResults.getUserData().getMetadataValue(metadataFieldProvider.playernameMetadataField);
         playerDetailsView.setUserNameField((userNameValue.isEmpty()) ? messages.defaultUserName() : userNameValue);
         playerDetailsView.setUserScoreField(userResults.getUserData().getBestScore());
     }

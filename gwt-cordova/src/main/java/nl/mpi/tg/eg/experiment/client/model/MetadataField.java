@@ -35,9 +35,9 @@ public class MetadataField {
     public MetadataField(String postName, String fieldLabel, String controlledVocabulary, String controlledRegex, String controlledMessage) {
         this.postName = postName;
         this.fieldLabel = fieldLabel;
-        this.controlledVocabulary = (controlledVocabulary != null) ? controlledVocabulary.split(",") : null;
-        this.controlledRegex = controlledRegex;
-        this.controlledMessage = controlledMessage;
+        this.controlledMessage = (controlledMessage.isEmpty()) ? null : controlledMessage;
+        this.controlledRegex = (controlledRegex.isEmpty()) ? null : controlledRegex;
+        this.controlledVocabulary = (controlledVocabulary != null && !controlledVocabulary.isEmpty()) ? controlledVocabulary.split(",") : null;
     }
 
     public String getPostName() {

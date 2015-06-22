@@ -90,7 +90,7 @@ public class UserData {
     }
 
     public void validateNameField() throws MetadataFieldException {
-        final MetadataField firstNameMetadataField = new MetadataFieldProvider().firstNameMetadataField;
+        final MetadataField firstNameMetadataField = new MetadataFieldProvider().playernameMetadataField;
         final String nameValue = metadataValues.get(firstNameMetadataField);
         firstNameMetadataField.validateValue(nameValue);
     }

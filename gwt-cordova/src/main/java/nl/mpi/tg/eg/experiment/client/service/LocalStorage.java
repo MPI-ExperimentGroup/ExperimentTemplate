@@ -120,7 +120,7 @@ public class LocalStorage {
     }
 
     public List<UserLabelData> getUserIdList() {
-        final String postName = metadataFieldProvider.firstNameMetadataField.getPostName();
+        final String postName = metadataFieldProvider.playernameMetadataField.getPostName();
         ArrayList<UserLabelData> userIdList = new ArrayList<>();
         loadStorage();
         if (dataStore != null) {

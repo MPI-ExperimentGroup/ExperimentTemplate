@@ -17,40 +17,37 @@
 </xsl:text>
                    <xsl:text>registrationField_</xsl:text><xsl:value-of select="@postName" /><xsl:text>=</xsl:text><xsl:value-of select="@registrationField" /><xsl:text>
 </xsl:text>
-                <xsl:if test="@fieldValues">
+                <!--<xsl:if test="@fieldValues">-->
                    <xsl:text>fieldValues_</xsl:text><xsl:value-of select="@postName" /><xsl:text>=</xsl:text><xsl:value-of select="@fieldValues" /><xsl:text>
 </xsl:text>
-                </xsl:if>
-                <xsl:if test="@controlledMessage">
+                <!--</xsl:if>-->
+                <!--<xsl:if test="@controlledMessage">-->
                    <xsl:text>controlledMessage_</xsl:text><xsl:value-of select="@postName" /><xsl:text>=</xsl:text><xsl:value-of select="@controlledMessage" /><xsl:text>
 </xsl:text>
-                </xsl:if>
-                <xsl:if test="@controlledRegex">
+                <!--</xsl:if>-->
+                <!--<xsl:if test="@controlledRegex">-->
                    <xsl:text>controlledRegex_</xsl:text><xsl:value-of select="@postName" /><xsl:text>=</xsl:text><xsl:value-of select="@controlledRegex" /><xsl:text>
 </xsl:text>
-                </xsl:if>
+                <!--</xsl:if>-->
             </xsl:for-each>
             </xsl:result-document>
-    </xsl:template>
-                    <!--<xsl:for-each select="*[@fieldNapostName=-->
-<!--            <xsl:result-document href="target/generated-sources/gwt/nl/mpi/tg/eg/experiment/client/MetadataFields.properties" method="text">
+            <xsl:result-document href="target/generated-sources/gwt/nl/mpi/tg/eg/experiment/client/service/MetadataFieldProvider.java" method="text">
             <xsl:text>package nl.mpi.tg.eg.experiment.client.service;
 
 import com.google.gwt.core.client.GWT;
-
+import nl.mpi.tg.eg.experiment.client.MetadataFields;
+import nl.mpi.tg.eg.experiment.client.model.MetadataField;
+                
 public class MetadataFieldProvider {
 
     private final MetadataFields mateadataFields = GWT.create(MetadataFields.class);
-    public final MetadataField ageMetadataField = new MetadataField(mateadataFields.postName_age(), mateadataFields.registrationField_age(), mateadataFields.fieldValues_age(), null, null);
-    public final MetadataField shareMetadataField = new MetadataField(mateadataFields.postName_share(), mateadataFields.registrationField_share(), mateadataFields.fieldValues_share(), mateadataFields.controlledRegex_share(), mateadataFields.controlledMessage_share());
-    public final MetadataField firstNameMetadataField = new MetadataField(mateadataFields.postName_playername(), mateadataFields.registrationField_playername(), null, mateadataFields.controlledRegex_playername(), mateadataFields.controlledMessage_playername());
+    </xsl:text><xsl:for-each select="experiment/metadata/field"><xsl:text>
+    public final MetadataField </xsl:text><xsl:value-of select="@postName" /><xsl:text>MetadataField = new MetadataField(mateadataFields.postName_</xsl:text><xsl:value-of select="@postName" /><xsl:text>(), mateadataFields.registrationField_</xsl:text><xsl:value-of select="@postName" /><xsl:text>(), mateadataFields.fieldValues_</xsl:text><xsl:value-of select="@postName" /><xsl:text>(), mateadataFields.controlledRegex_</xsl:text><xsl:value-of select="@postName" /><xsl:text>(), mateadataFields.controlledMessage_</xsl:text><xsl:value-of select="@postName" /><xsl:text>());</xsl:text>
+    </xsl:for-each><xsl:text>
     public final MetadataField[] metadataFieldArray = new MetadataField[]{
-        firstNameMetadataField,
-        ageMetadataField,
-        new MetadataField(mateadataFields.postName_language(), mateadataFields.registrationField_language(), null, null, null),
-        shareMetadataField
+        </xsl:text><xsl:value-of select="experiment/metadata/field/@postName" separator="MetadataField, " /><xsl:text>MetadataField
     };
 }</xsl:text>
         </xsl:result-document>
-    </xsl:template>-->
+    </xsl:template>
 </xsl:stylesheet>

@@ -158,7 +158,7 @@ public class ChoosePlayerPresenter extends AbstractSvgPresenter implements Prese
                         @Override
                         public void eventFired(Button button) {
                             userResults.setUser(localStorage.getStoredData(labelData.getUserId()));
-                            ((ChoosePlayerView) abstractSvgView).setUserNameField(userResults.getUserData().getMetadataValue(metadataFieldProvider.firstNameMetadataField));
+                            ((ChoosePlayerView) abstractSvgView).setUserNameField(userResults.getUserData().getMetadataValue(metadataFieldProvider.playernameMetadataField));
                         }
                     });
                 }
@@ -166,7 +166,7 @@ public class ChoosePlayerPresenter extends AbstractSvgPresenter implements Prese
             }
         }, localStorage.getUserIdList().size()
         );
-        final String userNameValue = userResults.getUserData().getMetadataValue(metadataFieldProvider.firstNameMetadataField);
+        final String userNameValue = userResults.getUserData().getMetadataValue(metadataFieldProvider.playernameMetadataField);
         ((ChoosePlayerView) abstractSvgView).setUserNameField(userNameValue);
     }
 

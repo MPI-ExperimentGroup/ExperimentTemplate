@@ -193,7 +193,7 @@ public class ScorePagePresenter implements Presenter {
             }
         });
         widgetTag.add(scorePageView);
-        final String userNameValue = userResults.getUserData().getMetadataValue(metadataFieldProvider.firstNameMetadataField);
+        final String userNameValue = userResults.getUserData().getMetadataValue(metadataFieldProvider.playernameMetadataField);
         scorePageView.setUserName((userNameValue.isEmpty()) ? messages.defaultUserName() : userNameValue);
         scorePageView.setUserScore(userResults.getUserData().getBestScore());
         scorePageView.setUserLevel(userResults.getGameData().getChoicesPerRound());
