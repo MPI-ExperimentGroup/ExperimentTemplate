@@ -22,6 +22,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 -->
 
 <experiment name="testData">
+    <metadata>
+        <field postName="playername" registrationField="Player name *" controlledRegex=".'{'3,'}'" controlledMessage="Please enter at least three letters." />
+        <field postName="age" fieldValues="0-10,11-20,&gt;20" registrationField="Age" />
+        <field postName="share" registrationField="Share" fieldValues="true,false" controlledRegex="true" controlledMessage="Data will not be shared unless you agree to do so."/>
+        <field registrationField="Spoken languages" postName="languages" />
+    </metadata>
     <presenter type="menu" menuLabel="Main Menu" self="MainMenu">
         <menuItem fieldName="aboutScreenMenuLabel" target="AboutPage">About Page</menuItem>
         <menuItem fieldName="menuLabelStrayMessages" target="StrayMessages"/>

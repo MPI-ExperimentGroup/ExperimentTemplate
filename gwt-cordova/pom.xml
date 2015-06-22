@@ -154,6 +154,14 @@
                             <outputDir>${project.build.directory}/generated-sources/gwt/nl/mpi/tg/eg/experiment/client</outputDir>
                         </transformationSet>
                         <transformationSet>
+                            <dir>src/main/xml</dir>
+                            <includes>
+                                <include>*.xml</include>
+                            </includes>
+                            <stylesheet>src/main/xsl/config2metadata.xsl</stylesheet>
+                            <outputDir>${project.build.directory}/generated-sources/gwt/nl/mpi/tg/eg/experiment/client</outputDir>
+                        </transformationSet>
+                        <transformationSet>
                             <dir>src/main/csv</dir>
                             <includes>
                                 <include>*.xml</include>
@@ -165,7 +173,7 @@
                                     <replacement>Provider.java</replacement>
                                 </fileMapper>
                             </fileMappers>
-                            <outputDir>${project.build.directory}/generated-sources/gwt/nl/ru/languageininteraction/language/client</outputDir>
+                            <outputDir>${project.build.directory}/generated-sources/gwt/nl/mpi/tg/eg/experiment/client</outputDir>
                         </transformationSet>
                         <transformationSet>
                             <dir>src/main/csv</dir>
@@ -185,7 +193,7 @@
                                     <replacement>.properties</replacement>
                                 </fileMapper>
                             </fileMappers>
-                            <outputDir>${project.build.directory}/generated-sources/gwt/nl/ru/languageininteraction/language/client</outputDir>
+                            <outputDir>${project.build.directory}/generated-sources/gwt/nl/mpi/tg/eg/experiment/client</outputDir>
                         </transformationSet>
                         <transformationSet>
                             <dir>src/main/csv</dir>
@@ -261,7 +269,7 @@
                     <i18nMessagesBundles>
                         <i18nMessagesBundle>nl.mpi.tg.eg.experiment.client.Messages</i18nMessagesBundle>
                         <i18nMessagesBundle>nl.ru.languageininteraction.language.client.Messages</i18nMessagesBundle>
-                        <i18nMessagesBundle>nl.ru.languageininteraction.language.client.MetadataFields</i18nMessagesBundle>
+                        <i18nMessagesBundle>nl.mpi.tg.eg.experiment.client.MetadataFields</i18nMessagesBundle>
                         <!--<i18nMessagesBundle>nl.ru.languageininteraction.language.client.Stimuli</i18nMessagesBundle>-->
                         <i18nMessagesBundle>nl.ru.languageininteraction.language.client.ServiceLocations</i18nMessagesBundle>
                         <i18nMessagesBundle>nl.mpi.tg.eg.experiment.client.Version</i18nMessagesBundle>
@@ -270,7 +278,7 @@
                         <i18nMessagesBundle>nl.ru.languageininteraction.language.client.GuessRound</i18nMessagesBundle>
                         <i18nMessagesBundle>nl.ru.languageininteraction.language.client.GuessRound_Tutorial</i18nMessagesBundle>
                         <i18nMessagesBundle>nl.ru.languageininteraction.language.client.ScorePage</i18nMessagesBundle>
-                        <i18nMessagesBundle>nl.ru.languageininteraction.language.client.LanguageData</i18nMessagesBundle>
+                        <i18nMessagesBundle>nl.mpi.tg.eg.experiment.client.LanguageData</i18nMessagesBundle>
                         <i18nMessagesBundle>nl.ru.languageininteraction.language.client.InfoScreen</i18nMessagesBundle>
                         <i18nMessagesBundle>nl.ru.languageininteraction.language.client.UserDetails</i18nMessagesBundle>
                         <i18nMessagesBundle>nl.ru.languageininteraction.language.client.ChoosePlayerScreen</i18nMessagesBundle>
