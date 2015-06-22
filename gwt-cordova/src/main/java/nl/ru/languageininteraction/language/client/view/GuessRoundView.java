@@ -29,7 +29,7 @@ import nl.ru.languageininteraction.language.client.GuessRoundBuilder.SvgTextElem
 import nl.ru.languageininteraction.language.client.Messages;
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.mpi.tg.eg.experiment.client.listener.LanguageSampleListener;
-import nl.ru.languageininteraction.language.client.model.RoundData;
+import nl.mpi.tg.eg.experiment.client.model.RoundData;
 import nl.ru.languageininteraction.language.client.service.AudioPlayer;
 import nl.ru.languageininteraction.language.client.util.SvgTemplate;
 

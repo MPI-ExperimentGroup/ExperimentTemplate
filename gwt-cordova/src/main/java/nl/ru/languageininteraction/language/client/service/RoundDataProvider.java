@@ -21,11 +21,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
-import java.util.List;
 import java.util.Random;
-import nl.ru.languageininteraction.language.client.LanguageDataProvider;
-import nl.ru.languageininteraction.language.client.model.RoundData;
-import nl.ru.languageininteraction.language.client.model.RoundSample;
+import nl.mpi.tg.eg.experiment.client.LanguageDataProvider;
+import nl.mpi.tg.eg.experiment.client.model.RoundData;
+import nl.mpi.tg.eg.experiment.client.model.RoundSample;
 import nl.ru.languageininteraction.language.client.util.GameState;
 
 /**

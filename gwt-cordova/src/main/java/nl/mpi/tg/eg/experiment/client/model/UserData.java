@@ -20,7 +20,6 @@ package nl.mpi.tg.eg.experiment.client.model;
 import java.util.HashMap;
 import java.util.Set;
 import nl.mpi.tg.eg.experiment.client.exception.MetadataFieldException;
-import nl.ru.languageininteraction.language.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
 
 /**

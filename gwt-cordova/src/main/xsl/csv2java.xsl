@@ -14,7 +14,7 @@
     <xsl:variable name="classname" select="substring-before($filename, '.xml')"/>
     <xsl:variable name="csvfilepath" select="string-join((substring-before(base-uri(), '.xml'),'.csv'),'')"/>
     <xsl:template match="/">
-        <xsl:text>package nl.ru.languageininteraction.language.client;
+        <xsl:text>package nl.mpi.tg.eg.experiment.client;
             
 import com.google.gwt.core.client.GWT;
                         

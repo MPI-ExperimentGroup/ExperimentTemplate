@@ -19,9 +19,10 @@ package nl.ru.languageininteraction.language.client.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import nl.ru.languageininteraction.language.client.LanguageDataProvider;
+import nl.mpi.tg.eg.experiment.client.LanguageDataProvider;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  * @since Mar 23, 2015 1:38:38 PM (creation date)

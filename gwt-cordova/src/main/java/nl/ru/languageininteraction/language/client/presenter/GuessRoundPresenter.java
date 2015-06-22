@@ -19,11 +19,11 @@ package nl.ru.languageininteraction.language.client.presenter;
 
 import nl.mpi.tg.eg.experiment.client.presenter.Presenter;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
-import nl.ru.languageininteraction.language.client.LanguageDataProvider;
+import nl.mpi.tg.eg.experiment.client.LanguageDataProvider;
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.mpi.tg.eg.experiment.client.listener.LanguageSampleListener;
-import nl.ru.languageininteraction.language.client.model.RoundData;
-import nl.ru.languageininteraction.language.client.model.RoundSample;
+import nl.mpi.tg.eg.experiment.client.model.RoundData;
+import nl.mpi.tg.eg.experiment.client.model.RoundSample;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.ru.languageininteraction.language.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;

@@ -17,7 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.listener;
 
-import nl.ru.languageininteraction.language.client.model.RoundSample;
+import nl.mpi.tg.eg.experiment.client.model.RoundSample;
 
 /**
  * @since Jan 26, 2015 4:36:43 PM (creation date)

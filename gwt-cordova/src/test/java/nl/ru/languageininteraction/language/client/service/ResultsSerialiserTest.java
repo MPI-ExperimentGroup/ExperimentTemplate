@@ -19,14 +19,15 @@ package nl.ru.languageininteraction.language.client.service;
 
 import java.util.Arrays;
 import java.util.Date;
-import nl.ru.languageininteraction.language.client.LanguageDataProvider;
-import nl.ru.languageininteraction.language.client.model.RoundData;
-import nl.ru.languageininteraction.language.client.model.RoundSample;
-import nl.ru.languageininteraction.language.client.model.UserData;
-import nl.ru.languageininteraction.language.client.model.UserId;
-import nl.ru.languageininteraction.language.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.LanguageDataProvider;
+import nl.mpi.tg.eg.experiment.client.model.RoundData;
+import nl.mpi.tg.eg.experiment.client.model.RoundSample;
+import nl.mpi.tg.eg.experiment.client.model.UserData;
+import nl.mpi.tg.eg.experiment.client.model.UserId;
+import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  * @since Oct 31, 2014 4:33:24 PM (creation date)

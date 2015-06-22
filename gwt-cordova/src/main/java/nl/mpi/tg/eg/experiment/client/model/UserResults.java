@@ -17,8 +17,6 @@
  */
 package nl.mpi.tg.eg.experiment.client.model;
 
-import nl.ru.languageininteraction.language.client.model.GameData;
-
 /**
  * @since Oct 14, 2014 1:11:22 PM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>

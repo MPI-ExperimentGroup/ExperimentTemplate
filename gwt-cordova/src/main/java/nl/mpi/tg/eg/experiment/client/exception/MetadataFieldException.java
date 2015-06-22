@@ -17,7 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.exception;
 
-import nl.ru.languageininteraction.language.client.model.MetadataField;
+import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 
 /**
  * @since Jan 13, 2015 3:21:11 PM (creation date)

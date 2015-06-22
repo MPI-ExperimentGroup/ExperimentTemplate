@@ -18,8 +18,8 @@
 package nl.mpi.tg.eg.experiment.client.service;
 
 import com.google.gwt.core.client.GWT;
-import nl.ru.languageininteraction.language.client.MetadataFields;
-import nl.ru.languageininteraction.language.client.model.MetadataField;
+import nl.mpi.tg.eg.experiment.client.MetadataFields;
+import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 
 /**
  * @since Oct 31, 2014 4:15:00 PM (creation date)
@@ -34,7 +34,7 @@ public class MetadataFieldProvider {
     public final MetadataField[] metadataFieldArray = new MetadataField[]{
         firstNameMetadataField,
         ageMetadataField,
-        new MetadataField(mateadataFields.postName_language(), mateadataFields.registrationField_language(), null, null, null),
+        new MetadataField(mateadataFields.postName_languages(), mateadataFields.registrationField_languages(), null, null, null),
         shareMetadataField
     };
 }
