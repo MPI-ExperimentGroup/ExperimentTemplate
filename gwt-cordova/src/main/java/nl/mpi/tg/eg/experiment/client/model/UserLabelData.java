@@ -15,9 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.ru.languageininteraction.language.client.model;
-
-import nl.mpi.tg.eg.experiment.client.model.UserId;
+package nl.mpi.tg.eg.experiment.client.model;
 
 /**
  * @since Mar 10, 2015 3:51:42 PM (creation date)
