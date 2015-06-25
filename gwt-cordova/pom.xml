@@ -6,11 +6,11 @@
 
     <!-- POM file generated with GWT webAppCreator -->
     <modelVersion>4.0.0</modelVersion>
-    <groupId>nl.mpi.tg.eg</groupId>
+    <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>gwttemplate</artifactId>
     <packaging>war</packaging>
-    <version>0.1.393-pretesting</version>
-    <name>ExperimentTemplate</name>
+    <version>0.1.397-pretesting</version>
+    <name>FRINEX GWT-Cordova Template</name>
     <organization>
         <name></name>
         <url>https://www.mpi.nl</url>
@@ -159,6 +159,14 @@
                                 <include>*.xml</include>
                             </includes>
                             <stylesheet>src/main/xsl/config2metadata.xsl</stylesheet>
+                            <outputDir>${project.build.directory}/generated-sources/gwt/nl/mpi/tg/eg/experiment/client</outputDir>
+                        </transformationSet>
+                        <transformationSet>
+                            <dir>src/main/xml</dir>
+                            <includes>
+                                <include>*.xml</include>
+                            </includes>
+                            <stylesheet>src/main/xsl/config2properties.xsl</stylesheet>
                             <outputDir>${project.build.directory}/generated-sources/gwt/nl/mpi/tg/eg/experiment/client</outputDir>
                         </transformationSet>
                         <transformationSet>

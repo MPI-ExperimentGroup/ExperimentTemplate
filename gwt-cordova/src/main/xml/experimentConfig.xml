@@ -21,7 +21,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     Author     : Peter Withers <peter.withers@mpi.nl>
 -->
 
-<experiment name="testData" dataSubmitUrl="http://localhost:8080/example/data/submit">
+<experiment name="testData" dataSubmitUrl="http://localhost:8080/example/data/submit" staticFilesUrl="static/">
     <metadata>
         <field postName="playername" registrationField="Player name *" controlledRegex=".'{'3,'}'" controlledMessage="Please enter at least three letters." />
         <field postName="age" fieldValues="0-10,11-20,&gt;20" registrationField="Age" />
@@ -31,9 +31,22 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     <presenter type="menu" menuLabel="Main Menu" self="MainMenu">
         <menuItem fieldName="aboutScreenMenuLabel" target="AboutPage">About Page</menuItem>
         <menuItem fieldName="menuLabelStrayMessages" target="StrayMessages"/>
+        <menuItem fieldName="menuLabelResultsPage" target="ResultsPage"/>
+        <menuItem fieldName="menuLabelStimulusPage" target="StimulusPage"/>
     </presenter>
     <presenter type="text" menuLabel="Option Menu" back="MainMenu" self="OptionMenu" next="AboutPage">
         <optionButton fieldName="aboutScreenMenuLabel" target="AboutPage" />
+    </presenter>
+    <presenter type="debug" menuLabel="Debug Page" back="MainMenu" self="ResultsPage" next="StimulusPage">
+        <localStorageData/>
+    </presenter>
+    <presenter type="stimulus" menuLabel="Stimulus Screen" back="MainMenu" self="StimulusPage" next="ResultsPage">
+        <htmlText fieldName="stimulusHeading">Some Stimulus</htmlText>
+        <stimulusImage width="100" timeToNext="1000">
+            <stimulusAudio timeToNext="2000">
+                <optionButton fieldName="completeLabel" target="AboutPage">Done</optionButton>
+            </stimulusAudio>
+        </stimulusImage>
     </presenter>
     <presenter type="text" menuLabel="Stray Messages Screen" back="MainMenu" self="StrayMessages" next="AboutPage">
         <htmlText fieldName="aboutScreenTextJheading">---</htmlText>
@@ -46,7 +59,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     </presenter>
     <presenter type="text" menuLabel="About Page" back="MainMenu" self="AboutPage" next="OptionMenu">
         <title fieldName="versionScreenTitle">Version</title>
-        <image link="languageInteractionUrl" width="100" image="images/LIL-logo-diap.png"/>
         <!--<Image width="10" image="images/icon.png"/>-->
         <highlightedText fieldName="aboutScreenTextAheading">A Heading</highlightedText>
         <htmlText fieldName="aboutScreenTextAbody">A body</htmlText>

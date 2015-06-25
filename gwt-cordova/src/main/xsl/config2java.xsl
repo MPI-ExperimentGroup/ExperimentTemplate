@@ -121,21 +121,6 @@ public class ApplicationController extends AppController {
     }
 }</xsl:text>
 
-        <xsl:result-document href="target/generated-sources/gwt/nl/mpi/tg/eg/experiment/client/Messages.properties" method="text">
-            <xsl:for-each select="experiment/presenter">
-                    <xsl:text>menuLabel</xsl:text><xsl:value-of select="@self" /><xsl:text>=</xsl:text><xsl:value-of select="@menuLabel" /><xsl:text>
-</xsl:text>
-                    <xsl:for-each select="*[@fieldName][. != '']">
-                        <xsl:value-of select="@fieldName" />
-                        <xsl:text>=</xsl:text>
-                        <xsl:value-of select="."/>
-                        <xsl:text>
-</xsl:text>
-                    </xsl:for-each>
-                </xsl:for-each>
-                <xsl:text>errorScreenText={0}
-stopSharingDetailsExplanation=({0}) and unique id ({1})</xsl:text>
-        </xsl:result-document>
         <xsl:apply-templates select="experiment"/>
     </xsl:template>
     <xsl:template match="presenter">        
@@ -256,14 +241,24 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
 </xsl:text>
     </xsl:template>
 <xsl:template match="stimulusImage">
-<xsl:text>    addStimulusImage(currentStimulus.getJpg(), </xsl:text><xsl:value-of select="@width" /><xsl:text>, </xsl:text><xsl:value-of select="@timeToNext" /><xsl:text>);
+<xsl:text>    addStimulusImage(currentStimulus.getJpg(), </xsl:text><xsl:value-of select="@width" /><xsl:text>, </xsl:text><xsl:value-of select="@timeToNext" /><xsl:text>, new PostLoadMsCallback() {
+
+        @Override
+        public void postLoadMsEvent() {
+            </xsl:text><xsl:apply-templates/><xsl:text>
+        }
+    });
 </xsl:text>
-    <xsl:apply-templates/>
     </xsl:template>
 <xsl:template match="stimulusAudio">
-<xsl:text>    playStimulusAudio(currentStimulus.getOgg(), currentStimulus.getMp3(), </xsl:text><xsl:value-of select="@timeToNext" /><xsl:text>);
+<xsl:text>    playStimulusAudio(currentStimulus.getOgg(), currentStimulus.getMp3(), </xsl:text><xsl:value-of select="@timeToNext" /><xsl:text>, new PostLoadMsCallback() {
+
+        @Override
+        public void postLoadMsEvent() {
+            </xsl:text><xsl:apply-templates/><xsl:text>
+        }
+    });
 </xsl:text>
-    <xsl:apply-templates/>
     </xsl:template>
 <xsl:template match="userInfo">
 <xsl:text>    ((ComplexView) simpleView).addHtmlText(messages.</xsl:text><xsl:value-of select="@fieldName" /><xsl:text>(userNameValue, userResults.getUserData().getUserId().toString()));
