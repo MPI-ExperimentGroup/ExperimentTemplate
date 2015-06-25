@@ -17,7 +17,13 @@
  */
 package nl.mpi.tg.eg.experiment.client.presenter;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import nl.mpi.tg.eg.experiment.client.model.Stimulus;
+import nl.mpi.tg.eg.experiment.client.service.ServiceLocations;
+import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
+import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.SimpleView;
 
 /**
@@ -26,7 +32,25 @@ import nl.mpi.tg.eg.experiment.client.view.SimpleView;
  */
 public abstract class AbstractStimulusPresenter extends AbstractPresenter implements Presenter {
 
+    private final StimulusProvider stimulusProvider = new StimulusProvider();
+    protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
+    final Stimulus currentStimulus;
+
+    protected interface PostLoadMsCallback {
+
+        void postLoadMsEvent();
+    }
+
     public AbstractStimulusPresenter(RootLayoutPanel widgetTag, SimpleView simpleView) {
         super(widgetTag, simpleView);
+        currentStimulus = stimulusProvider.getNext();
+    }
+
+    protected void addStimulusImage(String image, int width, long postLoadMs, PostLoadMsCallback callback) {
+        ((ComplexView) simpleView).addImage(UriUtils.fromString(serviceLocations.staticFilesUrl() + image), "", width);
+    }
+
+    protected void playStimulusAudio(String ogg, String mp3, long postLoadMs, PostLoadMsCallback callback) {
+//         AudioElement getAudioElement()
     }
 }

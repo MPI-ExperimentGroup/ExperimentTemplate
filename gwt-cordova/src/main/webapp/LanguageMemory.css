@@ -3,7 +3,7 @@
 }
 
 .Android .gwt-Label.headerArrow {
-    border-right: 10px solid rgb(142,207,230);
+    border-right: 10px solid #e8c571;
 }
 
 .gwt-Label.headerArrow {
@@ -32,7 +32,7 @@
     display: inline-block;
     color: black;
     text-decoration: none;
-    /*border-color: rgb(0,158,200);*/
+    /*border-color: #eddbc2;*/
     border-radius: 15px;
     /*    border-top-left-radius: 5px;
         border-bottom-left-radius: 5px;*/
@@ -107,7 +107,7 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
-    border-color: rgb(0,158,200);
+    border-color: #eddbc2;
     outline: none;
     height: 40px;
     width: 100%;
@@ -140,7 +140,7 @@
 
 /*.gwt-Button.nextButton:hover, .gwt-Button.menuButton:hover, .gwt-Button.optionButton:hover, .gwt-Label.headerButton:hover, */
 .gwt-Button.nextButton:active, .gwt-Button.menuButton:active, .gwt-Button.optionButton:active, .gwt-Label.headerButton:active {
-    /*background:rgb(0,158,200);*/
+    /*background:#eddbc2;*/
     /*background:rgb(246,170,139);*/
     background:lightgrey;
     border: none;
@@ -160,7 +160,7 @@
     display: inline-block;
     color: black;
     text-decoration: none;
-    border-color: rgb(0,158,200);
+    border-color: #eddbc2;
     border-radius: 15px;
     outline: none;
     width: 80%;
@@ -175,8 +175,8 @@
     padding: 5px 10px;
     margin: 0 10px 10px 0;
     color: black;
-    border-color: rgb(0,158,200);
-    /*border-color: rgb(142,207,230);*/
+    border-color: #eddbc2;
+    /*border-color: #e8c571;*/
     text-decoration: none;
     /*border-color: transparent;*/
     border-radius: 15px;
@@ -267,7 +267,7 @@ canvas {
 
 .menuTable {
     padding: 10px 10px;
-    border-color: rgb(142,207,230);
+    border-color: #e8c571;
     border-radius: 15px;
     outline: none;
     border-width: 1px;
@@ -340,11 +340,13 @@ table#screenExample td, .stimulusHelpPanel .gwt-Button,
 
 #widgetTag {
     height: 100%;
-    background-color:rgb(0,158,200);
-    background: -webkit-linear-gradient(rgb(0,158,200), rgb(142,207,230)); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(rgb(0,158,200), rgb(142,207,230)); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(rgb(0,158,200), rgb(142,207,230)); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(rgb(0,158,200), rgb(142,207,230)); /* Standard syntax (must be last) */
+    background-color:#eddbc2;
+   
+
+/*    background: -webkit-linear-gradient(#eddbc2, #e8c571);  For Safari 5.1 to 6.0 
+    background: -o-linear-gradient(#eddbc2, #e8c571);  For Opera 11.1 to 12.0 
+    background: -moz-linear-gradient(#eddbc2, #e8c571);  For Firefox 3.6 to 15 
+    background: linear-gradient(#eddbc2, #e8c571);  Standard syntax (must be last) */
 }
 
 /* example stimulus screen table */
@@ -437,10 +439,10 @@ In order to suggest, more depth use can be made of a color gradient.
 /*PMS 632 - 50% r142 g207 b230 to PMS 632 r0 g158 b200 */
 .gradientPMS632-632-50 {
     height: 100%;
-    background: -webkit-linear-gradient(rgb(0,158,200), rgb(142,207,230)); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(rgb(0,158,200), rgb(142,207,230)); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(rgb(0,158,200), rgb(142,207,230)); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(rgb(0,158,200), rgb(142,207,230)); /* Standard syntax (must be last) */
+    background: -webkit-linear-gradient(#eddbc2, #e8c571); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#eddbc2, #e8c571); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#eddbc2, #e8c571); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#eddbc2, #e8c571); /* Standard syntax (must be last) */
 }
 
 /*

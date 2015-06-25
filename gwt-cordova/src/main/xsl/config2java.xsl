@@ -191,10 +191,13 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
 
     @Override
     protected void setContent(final AppEventListner appEventListner) {
-</xsl:text><xsl:apply-templates select="htmlText|padding|image|menuItem|text|versionData|optionButton|userInfo|localStorageData"/><xsl:text>    }
+</xsl:text>
+<xsl:apply-templates/> <!--select="htmlText|padding|image|menuItem|text|versionData|optionButton|userInfo|localStorageData|stimulusImage|stimulusAudio"-->
+<xsl:text>    }
 }</xsl:text>
         </xsl:result-document>
     </xsl:template>
+<xsl:template match="text()" /><!--prevent text nodes slipping into the output-->
 <xsl:template match="htmlText">
 <xsl:text>    ((ComplexView) simpleView).addHtmlText(messages.</xsl:text><xsl:value-of select="@fieldName" /><xsl:text>());
 </xsl:text>
@@ -251,6 +254,16 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
 <xsl:template match="localStorageData">
 <xsl:text>    super.setContent(appEventListner);
 </xsl:text>
+    </xsl:template>
+<xsl:template match="stimulusImage">
+<xsl:text>    addStimulusImage(currentStimulus.getJpg(), </xsl:text><xsl:value-of select="@width" /><xsl:text>, </xsl:text><xsl:value-of select="@timeToNext" /><xsl:text>);
+</xsl:text>
+    <xsl:apply-templates/>
+    </xsl:template>
+<xsl:template match="stimulusAudio">
+<xsl:text>    playStimulusAudio(currentStimulus.getOgg(), currentStimulus.getMp3(), </xsl:text><xsl:value-of select="@timeToNext" /><xsl:text>);
+</xsl:text>
+    <xsl:apply-templates/>
     </xsl:template>
 <xsl:template match="userInfo">
 <xsl:text>    ((ComplexView) simpleView).addHtmlText(messages.</xsl:text><xsl:value-of select="@fieldName" /><xsl:text>(userNameValue, userResults.getUserData().getUserId().toString()));
