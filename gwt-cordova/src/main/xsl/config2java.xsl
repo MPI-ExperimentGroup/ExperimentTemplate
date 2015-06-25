@@ -155,7 +155,7 @@ import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.MenuView;            
                         
 // generated with config2java.xsl
-public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter extends AbstractPresenter implements Presenter {
+public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter extends </xsl:text><xsl:value-of select="if(@type = 'stimulus') then 'AbstractStimulus' else if(@type = 'debug') then 'LocalStorage' else 'Abstract'" /><xsl:text>Presenter implements Presenter {
 </xsl:text> 
 <xsl:if test="versionData">
     <xsl:text>
@@ -170,13 +170,17 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
         super(widgetTag, new MenuView());
 </xsl:text>
     </xsl:when>
-    <xsl:when  test="@type = 'text'"><xsl:text>
+    <xsl:when  test="@type = 'stimulus' or @type = 'text'"><xsl:text>
         super(widgetTag, new ComplexView());
 </xsl:text>
     </xsl:when>
-  <xsl:otherwise>
-      no type attribute
-  </xsl:otherwise>
+    <xsl:when  test="@type = 'debug'"><xsl:text>
+        super(widgetTag);
+</xsl:text>
+    </xsl:when>
+  <xsl:otherwise><xsl:text>
+      no type attribute configured for "</xsl:text><xsl:value-of select="@type" /><xsl:text>" in config2java.xsl
+</xsl:text></xsl:otherwise>
 </xsl:choose>
 <xsl:text>    }
 
@@ -187,7 +191,7 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
 
     @Override
     protected void setContent(final AppEventListner appEventListner) {
-</xsl:text><xsl:apply-templates select="htmlText|padding|image|menuItem|text|versionData|optionButton|userInfo"/><xsl:text>    }
+</xsl:text><xsl:apply-templates select="htmlText|padding|image|menuItem|text|versionData|optionButton|userInfo|localStorageData"/><xsl:text>    }
 }</xsl:text>
         </xsl:result-document>
     </xsl:template>
@@ -242,6 +246,10 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
     </xsl:template>
 <xsl:template match="padding">
 <xsl:text>    ((ComplexView) simpleView).addPadding();
+</xsl:text>
+    </xsl:template>
+<xsl:template match="localStorageData">
+<xsl:text>    super.setContent(appEventListner);
 </xsl:text>
     </xsl:template>
 <xsl:template match="userInfo">
