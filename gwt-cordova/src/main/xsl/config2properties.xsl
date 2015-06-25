@@ -11,20 +11,26 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
     <xsl:output method="text" encoding="UTF-8" />
     <xsl:template match="/">
-       <xsl:result-document href="target/generated-sources/gwt/nl/mpi/tg/eg/experiment/client/Messages.properties" method="text">
-            <xsl:for-each select="experiment/presenter">
-                    <xsl:text>menuLabel</xsl:text><xsl:value-of select="@self" /><xsl:text>=</xsl:text><xsl:value-of select="@menuLabel" /><xsl:text>
+        <xsl:apply-templates/>
+        <xsl:text>errorScreenText={0}
+stopSharingDetailsExplanation=({0}) and unique id ({1})
 </xsl:text>
-                    <xsl:for-each select="*[@fieldName][. != '']">
-                        <xsl:value-of select="@fieldName" />
-                        <xsl:text>=</xsl:text>
-                        <xsl:value-of select="."/>
-                        <xsl:text>
+    </xsl:template>
+    <xsl:template match="text()" /><!--prevent text nodes slipping into the output-->
+    <xsl:template match="experiment/presenter">
+        <xsl:text>menuLabel</xsl:text>
+        <xsl:value-of select="@self" />
+        <xsl:text>=</xsl:text>
+        <xsl:value-of select="@menuLabel" />
+        <xsl:text>
+</xsl:text>        
+        <xsl:apply-templates/>
+    </xsl:template>
+    <xsl:template match="*[@fieldName][. != '']">
+        <xsl:value-of select="@fieldName" />
+        <xsl:text>=</xsl:text>
+        <xsl:value-of select="."/>
+        <xsl:text>
 </xsl:text>
-                    </xsl:for-each>
-                </xsl:for-each>
-                <xsl:text>errorScreenText={0}
-stopSharingDetailsExplanation=({0}) and unique id ({1})</xsl:text>
-        </xsl:result-document>
     </xsl:template>
 </xsl:stylesheet>
