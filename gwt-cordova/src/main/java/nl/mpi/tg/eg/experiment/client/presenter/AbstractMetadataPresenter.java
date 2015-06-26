@@ -22,7 +22,7 @@ import nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
-import nl.ru.languageininteraction.language.client.view.MetadataView;
+import nl.mpi.tg.eg.experiment.client.view.MetadataView;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
@@ -35,13 +35,13 @@ import nl.mpi.tg.eg.experiment.client.exception.MetadataFieldException;
  * @since Oct 21, 2014 11:50:56 AM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public class MetadataPresenter extends AbstractPresenter implements Presenter {
+public class AbstractMetadataPresenter extends AbstractPresenter implements Presenter {
 
     final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
     protected final UserResults userResults;
     protected PresenterEventListner saveEventListner = null;
 
-    public MetadataPresenter(RootLayoutPanel widgetTag, UserResults userResults) {
+    public AbstractMetadataPresenter(RootLayoutPanel widgetTag, UserResults userResults) {
         super(widgetTag, new MetadataView());
         this.userResults = userResults;
     }
