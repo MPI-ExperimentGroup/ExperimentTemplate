@@ -38,7 +38,7 @@ import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.ru.languageininteraction.language.client.registration.HighScoreException;
 import nl.ru.languageininteraction.language.client.registration.HighScoreListener;
 import nl.ru.languageininteraction.language.client.registration.HighScoreService;
-import nl.ru.languageininteraction.language.client.service.AudioPlayer;
+import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
 import nl.ru.languageininteraction.language.client.service.ResultsSerialiser;

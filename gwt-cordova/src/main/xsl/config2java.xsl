@@ -16,7 +16,9 @@
 
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.mpi.tg.eg.experiment.client.presenter.*;
+import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 
 public class ApplicationController extends AppController {
 
@@ -66,8 +68,9 @@ public class ApplicationController extends AppController {
         super(widgetTag);
     }
             
+    @Override
     public void requestApplicationState(ApplicationState applicationState) {
-<!--        try {-->
+        try {
             trackView(applicationState.name());
             History.newItem(applicationState.name(), false);
             // todo:
@@ -80,7 +83,7 @@ public class ApplicationController extends AppController {
         <xsl:for-each select="experiment/presenter">
             <xsl:text>
                 case </xsl:text><xsl:value-of select="@self" /><xsl:text>:
-                    this.presenter = new </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter(widgetTag);
+                    this.presenter = new </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter(widgetTag</xsl:text><xsl:value-of select="if(@type = 'stimulus') then ', new AudioPlayer(this)' else ''" /><xsl:text>);
                     presenter.setState(this, </xsl:text>
                     <xsl:choose>
                         <xsl:when test="@back">
@@ -113,11 +116,11 @@ public class ApplicationController extends AppController {
                     presenter.setState(this, ApplicationState.start, applicationState);
                     break;
             }
-<!--        } catch (AudioException error) {
+        } catch (AudioException error) {
             logger.warning(error.getMessage());
             this.presenter = new ErrorPresenter(widgetTag, error.getMessage());
             presenter.setState(this, ApplicationState.start, applicationState);
-        }-->
+        }
     }
 }</xsl:text>
 
@@ -137,7 +140,9 @@ import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
-import nl.mpi.tg.eg.experiment.client.view.MenuView;            
+import nl.mpi.tg.eg.experiment.client.view.MenuView;     
+import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;      
+import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;     
                         
 // generated with config2java.xsl
 public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter extends </xsl:text><xsl:value-of select="if(@type = 'stimulus') then 'AbstractStimulus' else if(@type = 'debug') then 'LocalStorage' else 'Abstract'" /><xsl:text>Presenter implements Presenter {
@@ -148,19 +153,23 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
 </xsl:text> 
 </xsl:if>
 <xsl:text>    
-    public </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter(RootLayoutPanel widgetTag) {
+    public </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter(RootLayoutPanel widgetTag</xsl:text><xsl:value-of select="if(@type = 'stimulus') then ', AudioPlayer audioPlayer' else ''" /><xsl:text>) {
 </xsl:text>  
 <xsl:choose>
   <xsl:when test="@type = 'menu'"><xsl:text>
         super(widgetTag, new MenuView());
 </xsl:text>
     </xsl:when>
-    <xsl:when  test="@type = 'stimulus' or @type = 'text'"><xsl:text>
+    <xsl:when  test="@type = 'text'"><xsl:text>
         super(widgetTag, new ComplexView());
 </xsl:text>
     </xsl:when>
     <xsl:when  test="@type = 'debug'"><xsl:text>
         super(widgetTag);
+</xsl:text>
+    </xsl:when>
+    <xsl:when  test="@type = 'stimulus'"><xsl:text>
+        super(widgetTag, audioPlayer);
 </xsl:text>
     </xsl:when>
   <xsl:otherwise><xsl:text>
@@ -241,20 +250,20 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
 </xsl:text>
     </xsl:template>
 <xsl:template match="stimulusImage">
-<xsl:text>    addStimulusImage(currentStimulus.getJpg(), </xsl:text><xsl:value-of select="@width" /><xsl:text>, </xsl:text><xsl:value-of select="@timeToNext" /><xsl:text>, new PostLoadMsCallback() {
+<xsl:text>    addStimulusImage(currentStimulus.getJpg(), </xsl:text><xsl:value-of select="@width" /><xsl:text>, </xsl:text><xsl:value-of select="@timeToNext" /><xsl:text>, new TimedStimulusListener() {
 
         @Override
-        public void postLoadMsEvent() {
+        public void postLoadTimerFired() {
             </xsl:text><xsl:apply-templates/><xsl:text>
         }
     });
 </xsl:text>
     </xsl:template>
 <xsl:template match="stimulusAudio">
-<xsl:text>    playStimulusAudio(currentStimulus.getOgg(), currentStimulus.getMp3(), </xsl:text><xsl:value-of select="@timeToNext" /><xsl:text>, new PostLoadMsCallback() {
+<xsl:text>    playStimulusAudio(currentStimulus.getOgg(), currentStimulus.getMp3(), </xsl:text><xsl:value-of select="@timeToNext" /><xsl:text>, new TimedStimulusListener() {
 
         @Override
-        public void postLoadMsEvent() {
+        public void postLoadTimerFired() {
             </xsl:text><xsl:apply-templates/><xsl:text>
         }
     });

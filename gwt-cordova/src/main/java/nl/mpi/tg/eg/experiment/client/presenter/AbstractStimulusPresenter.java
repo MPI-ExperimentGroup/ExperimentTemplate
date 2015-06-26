@@ -17,14 +17,16 @@
  */
 package nl.mpi.tg.eg.experiment.client.presenter;
 
+import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
+import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
-import nl.mpi.tg.eg.experiment.client.view.ComplexView;
-import nl.mpi.tg.eg.experiment.client.view.SimpleView;
+import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
 
 /**
  * @since Jun 23, 2015 11:36:37 AM (creation date)
@@ -35,22 +37,21 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     private final StimulusProvider stimulusProvider = new StimulusProvider();
     protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
     final Stimulus currentStimulus;
+    private final Duration duration;
 
-    protected interface PostLoadMsCallback {
-
-        void postLoadMsEvent();
-    }
-
-    public AbstractStimulusPresenter(RootLayoutPanel widgetTag, SimpleView simpleView) {
-        super(widgetTag, simpleView);
+    public AbstractStimulusPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer) {
+        super(widgetTag, new TimedStimulusView(audioPlayer));
         currentStimulus = stimulusProvider.getNext();
+        duration = new Duration();
     }
 
-    protected void addStimulusImage(String image, int width, long postLoadMs, PostLoadMsCallback callback) {
-        ((ComplexView) simpleView).addImage(UriUtils.fromString(serviceLocations.staticFilesUrl() + image), "", width);
+    protected void addStimulusImage(String image, int width, int postLoadMs, TimedStimulusListener timedStimulusListener) {
+        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString(serviceLocations.staticFilesUrl() + image), width, postLoadMs, timedStimulusListener);
+        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
     }
 
-    protected void playStimulusAudio(String ogg, String mp3, long postLoadMs, PostLoadMsCallback callback) {
-//         AudioElement getAudioElement()
+    protected void playStimulusAudio(String ogg, String mp3, long postLoadMs, TimedStimulusListener timedStimulusListener) {
+        ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromString(serviceLocations.staticFilesUrl() + ogg), UriUtils.fromString(serviceLocations.staticFilesUrl() + mp3), postLoadMs, timedStimulusListener);
+        ((TimedStimulusView) simpleView).addText("playStimulusAudio: " + duration.elapsedMillis() + "ms");
     }
 }

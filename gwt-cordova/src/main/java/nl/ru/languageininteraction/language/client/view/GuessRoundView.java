@@ -30,7 +30,7 @@ import nl.ru.languageininteraction.language.client.Messages;
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.mpi.tg.eg.experiment.client.listener.LanguageSampleListener;
 import nl.mpi.tg.eg.experiment.client.model.RoundData;
-import nl.ru.languageininteraction.language.client.service.AudioPlayer;
+import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.ru.languageininteraction.language.client.util.SvgTemplate;
 
 /**

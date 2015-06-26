@@ -26,7 +26,7 @@ import nl.ru.languageininteraction.language.client.ScorePageBuilder.SvgTextEleme
 import nl.ru.languageininteraction.language.client.ScorePageBuilder;
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
-import nl.ru.languageininteraction.language.client.service.AudioPlayer;
+import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 
 /**
  * @since Nov 26, 2014 4:11:13 PM (creation date)

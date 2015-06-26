@@ -42,10 +42,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     </presenter>
     <presenter type="stimulus" menuLabel="Stimulus Screen" back="MainMenu" self="StimulusPage" next="ResultsPage">
         <htmlText fieldName="stimulusHeading">Some Stimulus</htmlText>
-        <stimulusImage width="100" timeToNext="1000">
-            <stimulusAudio timeToNext="2000">
-                <optionButton fieldName="completeLabel" target="AboutPage">Done</optionButton>
-            </stimulusAudio>
+        <stimulusImage width="10" timeToNext="1000">
+            <stimulusImage width="50" timeToNext="1000">
+                <stimulusAudio timeToNext="2000">
+                    <optionButton fieldName="completeLabel" target="AboutPage">Done</optionButton>
+                </stimulusAudio>
+            </stimulusImage>
         </stimulusImage>
     </presenter>
     <presenter type="text" menuLabel="Stray Messages Screen" back="MainMenu" self="StrayMessages" next="AboutPage">

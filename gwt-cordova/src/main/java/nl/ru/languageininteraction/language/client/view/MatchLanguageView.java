@@ -23,7 +23,7 @@ import com.google.gwt.user.client.DOM;
 import nl.ru.languageininteraction.language.client.MatchLanguageBuilder;
 import nl.ru.languageininteraction.language.client.MatchLanguageBuilder.SvgGroupStates;
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
-import nl.ru.languageininteraction.language.client.service.AudioPlayer;
+import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.ru.languageininteraction.language.client.util.SvgTemplate;
 
 /**

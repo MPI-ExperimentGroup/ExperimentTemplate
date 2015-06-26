@@ -21,7 +21,7 @@ import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import nl.ru.languageininteraction.language.client.ExplainDataSharingScreenBuilder;
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
-import nl.ru.languageininteraction.language.client.service.AudioPlayer;
+import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 
 /**
  * @since Feb 4, 2015 1:22:32 PM (creation date)

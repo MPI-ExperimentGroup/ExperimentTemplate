@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.experiment.client.service;
 
 import com.google.gwt.dom.client.AudioElement;
 import com.google.gwt.media.client.Audio;
+import com.google.gwt.safehtml.shared.SafeUri;
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.mpi.tg.eg.experiment.client.listener.AudioEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.AudioExceptionListner;
@@ -51,7 +52,7 @@ public class AudioPlayer {
     private native void onEndedSetup(final AudioElement audioElement) /*-{
      var audioPlayer = this;
      audioElement.addEventListener("ended", function(){
-     audioPlayer.@nl.ru.languageininteraction.language.client.service.AudioPlayer::onEndedAction()();
+     audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::onEndedAction()();
      }, false);
      }-*/;
 
@@ -80,6 +81,21 @@ public class AudioPlayer {
             }
         }
         audioPlayer.setSrc(sample);
+        //audioPlayer.setCurrentTime(0); // on android the if the ready state is not correct then this will fail and audio will not play
+        audioPlayer.play();
+    }
+
+    public void playSample(SafeUri ogg, SafeUri mp3) {
+        if (audioPlayer == null) {
+            try {
+                createPlayer();
+            } catch (AudioException audioException) {
+                audioExceptionListner.audioExceptionFired(audioException);
+                return;
+            }
+        }
+        audioPlayer.addSource(ogg.asString(), AudioElement.TYPE_OGG);
+        audioPlayer.addSource(mp3.asString(), AudioElement.TYPE_MP3);
         //audioPlayer.setCurrentTime(0); // on android the if the ready state is not correct then this will fail and audio will not play
         audioPlayer.play();
     }

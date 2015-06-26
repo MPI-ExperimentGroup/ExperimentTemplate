@@ -40,7 +40,7 @@ import nl.ru.languageininteraction.language.client.Messages;
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
-import nl.ru.languageininteraction.language.client.service.AudioPlayer;
+import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 
 /**
  * @since Jan 15, 2015 5:30:25 PM (creation date)

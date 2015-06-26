@@ -20,7 +20,7 @@ package nl.ru.languageininteraction.language.client.view;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import nl.ru.languageininteraction.language.client.InfoScreenBuilder;
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
-import nl.ru.languageininteraction.language.client.service.AudioPlayer;
+import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 
 /**
  * @since Feb 4, 2015 1:20:51 PM (creation date)

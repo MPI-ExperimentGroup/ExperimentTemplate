@@ -25,7 +25,7 @@ import nl.mpi.tg.eg.experiment.client.listener.LanguageSampleListener;
 import nl.mpi.tg.eg.experiment.client.model.RoundData;
 import nl.mpi.tg.eg.experiment.client.model.RoundSample;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
-import nl.ru.languageininteraction.language.client.service.AudioPlayer;
+import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.ru.languageininteraction.language.client.service.RoundDataProvider;
 import nl.ru.languageininteraction.language.client.util.GameState;

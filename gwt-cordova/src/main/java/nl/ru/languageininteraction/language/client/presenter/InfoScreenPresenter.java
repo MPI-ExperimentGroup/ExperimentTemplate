@@ -21,7 +21,7 @@ import nl.mpi.tg.eg.experiment.client.presenter.Presenter;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
-import nl.ru.languageininteraction.language.client.service.AudioPlayer;
+import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.ru.languageininteraction.language.client.view.InfoScreenView;
 
 /**

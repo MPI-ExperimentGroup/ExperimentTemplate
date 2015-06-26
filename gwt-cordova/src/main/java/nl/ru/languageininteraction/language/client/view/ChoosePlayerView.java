@@ -24,7 +24,7 @@ import java.util.List;
 import nl.ru.languageininteraction.language.client.ChoosePlayerScreenBuilder;
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
-import nl.ru.languageininteraction.language.client.service.AudioPlayer;
+import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 
 /**
  * @since Feb 4, 2015 1:20:10 PM (creation date)
