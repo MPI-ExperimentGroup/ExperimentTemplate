@@ -109,11 +109,9 @@ public class AbstractMetadataPresenter extends AbstractPresenter implements Pres
 
     @Override
     protected void setContent(AppEventListner appEventListner) {
-        throw new UnsupportedOperationException();
-//        ((MetadataView) simpleView).addText(messages.metadataScreenText());
-//        for (MetadataField metadataField : metadataFieldProvider.metadataFieldArray) {
-//            ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel());
-//        }
+        for (MetadataField metadataField : metadataFieldProvider.metadataFieldArray) {
+            ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel());
+        }
     }
 
     public void focusFirstTextBox() {
