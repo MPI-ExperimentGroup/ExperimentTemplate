@@ -40,11 +40,16 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     <presenter type="debug" menuLabel="Debug Page" back="MainMenu" self="ResultsPage" next="StimulusPage">
         <localStorageData/>
     </presenter>
-    <presenter type="stimulus" menuLabel="Stimulus Screen" back="MainMenu" self="StimulusPage" next="ResultsPage">
+    <presenter type="stimulus" menuLabel="Stimulus Screen" back="MainMenu" self="StimulusPage">
         <htmlText fieldName="stimulusHeading">Some Stimulus</htmlText>
+        <showCurrentMs/>
         <stimulusImage width="10" timeToNext="1000">
+            <showCurrentMs/>
             <stimulusImage width="50" timeToNext="1000">
+                <showCurrentMs/>
                 <stimulusAudio timeToNext="2000">
+                    <showCurrentMs/>
+                    <optionButton fieldName="showMore" target="StimulusPage">More</optionButton>
                     <optionButton fieldName="completeLabel" target="AboutPage">Done</optionButton>
                 </stimulusAudio>
             </stimulusImage>

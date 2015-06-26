@@ -22,6 +22,7 @@ import com.google.gwt.event.dom.client.LoadHandler;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Image;
+import nl.mpi.tg.eg.experiment.client.listener.AudioEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 
@@ -55,7 +56,14 @@ public class TimedStimulusView extends ComplexView {
         outerPanel.add(image);
     }
 
-    public void addTimedAudio(SafeUri oggPath, SafeUri mp3Path, long postLoadMs, TimedStimulusListener timedStimulusListener) {
+    public void addTimedAudio(SafeUri oggPath, SafeUri mp3Path, long postLoadMs, final TimedStimulusListener timedStimulusListener) {
+        audioPlayer.addOnEndedListener(new AudioEventListner() {
+
+            @Override
+            public void audioEnded() {
+                timedStimulusListener.postLoadTimerFired();
+            }
+        });
         audioPlayer.playSample(oggPath, mp3Path);
     }
 }

@@ -249,6 +249,10 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
 <xsl:text>    super.setContent(appEventListner);
 </xsl:text>
     </xsl:template>
+<xsl:template match="showCurrentMs">
+<xsl:text>    showCurrentMs();
+</xsl:text>
+    </xsl:template>
 <xsl:template match="stimulusImage">
 <xsl:text>    addStimulusImage(currentStimulus.getJpg(), </xsl:text><xsl:value-of select="@width" /><xsl:text>, </xsl:text><xsl:value-of select="@timeToNext" /><xsl:text>, new TimedStimulusListener() {
 
