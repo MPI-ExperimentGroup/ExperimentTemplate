@@ -22,7 +22,6 @@ import nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
-import nl.ru.languageininteraction.language.client.view.MetadataView;
 import nl.mpi.tg.eg.experiment.client.view.SimpleView;
 
 /**

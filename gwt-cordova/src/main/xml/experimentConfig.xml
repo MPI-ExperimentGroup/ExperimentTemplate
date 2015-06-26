@@ -33,9 +33,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <menuItem fieldName="menuLabelStrayMessages" target="StrayMessages"/>
         <menuItem fieldName="menuLabelResultsPage" target="ResultsPage"/>
         <menuItem fieldName="menuLabelStimulusPage" target="StimulusPage"/>
+        <menuItem fieldName="menuLabelMetadata" target="Metadata"/>
     </presenter>
     <presenter type="text" menuLabel="Option Menu" back="MainMenu" self="OptionMenu" next="AboutPage">
         <optionButton fieldName="aboutScreenMenuLabel" target="AboutPage" />
+    </presenter>
+    <presenter type="metadata" menuLabel="User Info" back="MainMenu" self="Metadata" next="StimulusPage">
+        <allMetadataFields/>
     </presenter>
     <presenter type="debug" menuLabel="Debug Page" back="MainMenu" self="ResultsPage" next="StimulusPage">
         <localStorageData/>
@@ -50,7 +54,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 <stimulusAudio timeToNext="2000">
                     <showCurrentMs/>
                     <optionButton fieldName="showMore" target="StimulusPage">More</optionButton>
-                    <optionButton fieldName="completeLabel" target="AboutPage">Done</optionButton>
+                    <optionButton fieldName="completeLabel" target="ResultsPage">Done</optionButton>
                 </stimulusAudio>
             </stimulusImage>
         </stimulusImage>
