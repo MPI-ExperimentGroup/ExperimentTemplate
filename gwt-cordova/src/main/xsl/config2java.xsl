@@ -147,7 +147,7 @@ import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.view.MetadataView; 
                         
 // generated with config2java.xsl
-public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter extends </xsl:text><xsl:value-of select="if(@type = 'stimulus') then 'AbstractStimulus' else if(@type = 'debug') then 'LocalStorage' else if(@type = 'metadata') then 'AbstractMetadata' else 'Abstract'" /><xsl:text>Presenter implements Presenter {
+public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter extends </xsl:text><xsl:value-of select="if(@type = 'stimulus') then 'AbstractStimulus' else if(@type = 'preload') then 'AbstractPreloadStimulus' else if(@type = 'debug') then 'LocalStorage' else if(@type = 'metadata') then 'AbstractMetadata' else 'Abstract'" /><xsl:text>Presenter implements Presenter {
 </xsl:text> 
 <xsl:if test="versionData">
     <xsl:text>
@@ -166,7 +166,7 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
         super(widgetTag, new ComplexView());
 </xsl:text>
     </xsl:when>
-    <xsl:when  test="@type = 'debug'"><xsl:text>
+    <xsl:when  test="@type = 'debug' or @type = 'preload'"><xsl:text>
         super(widgetTag);
 </xsl:text>
     </xsl:when>
@@ -251,12 +251,24 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
 <xsl:text>    ((ComplexView) simpleView).addPadding();
 </xsl:text>
     </xsl:template>
-<xsl:template match="localStorageData|allMetadataFields">
-<xsl:text>    super.setContent(appEventListner);
+<xsl:template match="localStorageData|allMetadataFields">    
+    <xsl:text>    </xsl:text>    
+    <xsl:value-of select ="local-name()"/>
+<xsl:text>();
 </xsl:text>
     </xsl:template>
 <xsl:template match="showCurrentMs">
 <xsl:text>    showCurrentMs();
+</xsl:text>
+    </xsl:template>
+<xsl:template match="preloadAllStimuli">
+<xsl:text>    </xsl:text><xsl:value-of select="local-name()" /><xsl:text>(new TimedStimulusListener() {
+
+        @Override
+        public void postLoadTimerFired() {
+            </xsl:text><xsl:apply-templates/><xsl:text>
+        }
+    });
 </xsl:text>
     </xsl:template>
 <xsl:template match="stimulusImage">

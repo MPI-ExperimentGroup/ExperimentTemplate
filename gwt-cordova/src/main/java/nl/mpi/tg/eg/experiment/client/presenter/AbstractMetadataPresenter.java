@@ -35,7 +35,7 @@ import nl.mpi.tg.eg.experiment.client.exception.MetadataFieldException;
  * @since Oct 21, 2014 11:50:56 AM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public class AbstractMetadataPresenter extends AbstractPresenter implements Presenter {
+public abstract class AbstractMetadataPresenter extends AbstractPresenter implements Presenter {
 
     final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
     protected final UserResults userResults;
@@ -107,8 +107,7 @@ public class AbstractMetadataPresenter extends AbstractPresenter implements Pres
 //        simpleView.addTitle(messages.metadataScreenTitle(), titleBarListner);
     }
 
-    @Override
-    protected void setContent(AppEventListner appEventListner) {
+    protected void allMetadataFields() {
         for (MetadataField metadataField : metadataFieldProvider.metadataFieldArray) {
             ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel());
         }

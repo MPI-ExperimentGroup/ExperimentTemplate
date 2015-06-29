@@ -38,6 +38,19 @@ public class TimedStimulusView extends ComplexView {
         this.audioPlayer = audioPlayer;
     }
 
+    public void preloadImage(SafeUri imagePath, final TimedStimulusListener timedStimulusListener) {
+        final Image image = new Image(imagePath);
+        image.setVisible(false);
+        image.addLoadHandler(new LoadHandler() {
+
+            @Override
+            public void onLoad(LoadEvent event) {
+                timedStimulusListener.postLoadTimerFired();
+            }
+        });
+        outerPanel.add(image);
+    }
+
     public void addTimedImage(SafeUri imagePath, int percentWidth, final int postLoadMs, final TimedStimulusListener timedStimulusListener) {
         final Image image = new Image(imagePath);
         image.setWidth(percentWidth + "%");

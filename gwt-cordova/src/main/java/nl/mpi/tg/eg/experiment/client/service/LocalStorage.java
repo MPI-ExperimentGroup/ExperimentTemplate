@@ -17,10 +17,12 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
+import com.google.gwt.core.client.GWT;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import com.google.gwt.storage.client.Storage;
 import java.util.ArrayList;
 import java.util.List;
+import nl.mpi.tg.eg.experiment.client.Messages;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
@@ -32,13 +34,22 @@ import nl.mpi.tg.eg.experiment.client.model.UserLabelData;
  */
 public class LocalStorage {
 
+    protected final Messages messages = GWT.create(Messages.class);
     private Storage dataStore = null;
-    private static final String USER_RESULTS = "UserResults.";
-    private static final String LAST_USER_ID = "LastUserId.";
-    private static final String GAME_DATA = "GameData.";
-    protected static final String MAX_SCORE = "maxScore";
-    protected static final String GAMES_PLAYED = "gamesPlayed";
+    private final String USER_RESULTS;
+    private final String LAST_USER_ID;
+    private final String GAME_DATA;
+    protected final String MAX_SCORE;
+    protected final String GAMES_PLAYED;
     final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
+
+    public LocalStorage() {
+        USER_RESULTS = messages.localStorageName() + ".UserResults.";
+        LAST_USER_ID = messages.localStorageName() + ".LastUserId.";
+        GAME_DATA = messages.localStorageName() + ".GameData.";
+        MAX_SCORE = messages.localStorageName() + ".maxScore";
+        GAMES_PLAYED = messages.localStorageName() + ".gamesPlayed";
+    }
 
     private Storage loadStorage() {
         if (dataStore == null) {
@@ -131,7 +142,7 @@ public class LocalStorage {
                     final String userIdString = key.split("\\.")[1];
                     final String cleanStoredData = getCleanStoredData(key);
 //                    if (!cleanStoredData.isEmpty()) {
-                        userIdList.add(new UserLabelData(new UserId(userIdString), cleanStoredData));
+                    userIdList.add(new UserLabelData(new UserId(userIdString), cleanStoredData));
 //                    }
                 }
             }

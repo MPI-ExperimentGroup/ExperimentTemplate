@@ -41,7 +41,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     public AbstractStimulusPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer) {
         super(widgetTag, new TimedStimulusView(audioPlayer));
-        currentStimulus = stimulusProvider.getNext();
+        currentStimulus = stimulusProvider.getNextStimulus();
         duration = new Duration();
     }
 

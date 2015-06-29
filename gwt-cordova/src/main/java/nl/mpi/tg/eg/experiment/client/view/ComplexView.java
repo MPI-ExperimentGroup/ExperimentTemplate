@@ -23,6 +23,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
@@ -120,5 +121,21 @@ public class ComplexView extends SimpleView {
         nextButton.addTouchStartHandler(singleShotEventListner);
         nextButton.addTouchMoveHandler(singleShotEventListner);
         nextButton.addTouchEndHandler(singleShotEventListner);
+    }
+
+    public HorizontalPanel addProgressBar(int minimum, int value, int maximum) {
+        final HorizontalPanel bargraphOuter = new HorizontalPanel();
+        final HorizontalPanel bargraphInner = new HorizontalPanel();
+        bargraphOuter.setPixelSize(100, 10);
+        bargraphInner.setPixelSize((int) (100.0 / maximum * value), 10);
+        bargraphOuter.setStyleName("bargraphOuter");
+        bargraphInner.setStyleName("bargraphInner");
+        bargraphOuter.add(bargraphInner);
+        outerPanel.add(bargraphOuter);
+        return bargraphInner;
+    }
+
+    public void updateProgressBar(HorizontalPanel bargraphInner, int minimum, int value, int maximum) {
+        bargraphInner.setPixelSize((int) (100.0 / maximum * value), 10);
     }
 }

@@ -81,7 +81,9 @@ public class LocalStoragePresenter extends AbstractPresenter {
                 appEventListner.requestApplicationState(ApplicationState.scores);
             }
         });
+    }
 
+    protected void localStorageData() {
         final Storage localStorage = Storage.getLocalStorageIfSupported();
         for (int itemIndex = 0; itemIndex < localStorage.getLength(); itemIndex++) {
             final String key = localStorage.key(itemIndex);
