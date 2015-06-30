@@ -17,8 +17,13 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.util.Random;
+import nl.mpi.tg.eg.frinex.model.ExperimentData;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -31,5 +36,11 @@ public class ExperimentService {
     @RequestMapping("/experiment/{name}")
     public String test(@PathVariable String name) {
         return "Experiment: " + name;
+    }
+
+    @RequestMapping(value = "/experimentData", method = RequestMethod.GET)
+    public @ResponseBody
+    ExperimentData getOne(@RequestParam(value = "name", required = false, defaultValue = "param12") String name) {
+        return new ExperimentData(new Random().nextLong(), name, new Random().nextBoolean() + "");
     }
 }
