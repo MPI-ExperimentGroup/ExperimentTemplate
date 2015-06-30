@@ -12,7 +12,7 @@
             </goals>
             <properties>
                 <netbeans.deploy>true</netbeans.deploy>
-                <netbeans.deploy.clientUrlPart>experiment</netbeans.deploy.clientUrlPart>
+                <netbeans.deploy.clientUrlPart>experimentData</netbeans.deploy.clientUrlPart>
             </properties>
         </action>
         <action>
@@ -28,7 +28,7 @@
             <properties>
                 <netbeans.deploy.debugmode>true</netbeans.deploy.debugmode>
                 <netbeans.deploy>true</netbeans.deploy>
-                <netbeans.deploy.clientUrlPart>experiment</netbeans.deploy.clientUrlPart>
+                <netbeans.deploy.clientUrlPart>experimentData</netbeans.deploy.clientUrlPart>
             </properties>
         </action>
         <action>
