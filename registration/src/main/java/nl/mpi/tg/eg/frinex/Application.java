@@ -15,8 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-
-package nl.mpi.tg.eg.frinex.rest;
+package nl.mpi.tg.eg.frinex;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -24,6 +23,8 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.hateoas.config.EnableEntityLinks;
+import org.springframework.web.context.WebApplicationContext;
 
 /**
  * @since Jun 29, 2015 4:32:46 PM (creation date)
@@ -32,6 +33,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan
 @EnableAutoConfiguration
+@EnableEntityLinks
 public class Application extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
@@ -44,4 +46,9 @@ public class Application extends SpringBootServletInitializer {
     }
 
     private static Class<Application> applicationClass = Application.class;
+
+    @Override
+    protected WebApplicationContext run(SpringApplication application) {
+        return super.run(application);
+    }
 }

@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.frinex.rest;
 
 import java.util.Random;
 import nl.mpi.tg.eg.frinex.model.ExperimentData;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,9 +39,15 @@ public class ExperimentService {
         return "Experiment: " + name;
     }
 
-    @RequestMapping(value = "/experimentData", method = RequestMethod.GET)
+    @RequestMapping(value = "/experimentData", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
     ExperimentData getOne(@RequestParam(value = "name", required = false, defaultValue = "param12") String name) {
         return new ExperimentData(new Random().nextLong(), name, new Random().nextBoolean() + "");
     }
+
+//    @RequestMapping(value = "/experimentData/csv", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
+//    public @ResponseBody
+//    ExperimentData getCsv(@RequestParam(value = "name", required = false, defaultValue = "param12") String name) {
+//        return new ExperimentData(new Random().nextLong(), name, new Random().nextBoolean() + "");
+//    }
 }
