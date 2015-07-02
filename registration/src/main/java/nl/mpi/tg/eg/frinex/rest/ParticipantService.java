@@ -19,8 +19,9 @@ package nl.mpi.tg.eg.frinex.rest;
 
 import nl.mpi.tg.eg.frinex.model.Participant;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -33,9 +34,17 @@ public class ParticipantService {
     @Autowired
     private ParticipantRepository participantRepository;
 
-    @RequestMapping("/createuser/{name}")
-    public String createuser(@PathVariable String name) {
-        participantRepository.save(new Participant(name, "blogs", name + "@blogs", "password"));
-        return "Created: " + name;
+    @RequestMapping(value = "/createuser", method = RequestMethod.POST)
+    public String createuser(@RequestBody Participant participant) {
+
+        if (participant.getEmail() == null || participant.getEmail().isEmpty()) {
+            throw new IllegalArgumentException("The 'email' parameter is required");
+        }
+        if (participant.getToken() == null || participant.getToken().isEmpty()) {
+            throw new IllegalArgumentException("The 'token' parameter is required");
+        }
+
+        participantRepository.save(participant);
+        return "Created: " + participant.getEmail();
     }
 }
