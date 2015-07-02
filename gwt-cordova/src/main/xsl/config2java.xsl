@@ -71,7 +71,7 @@ public class ApplicationController extends AppController {
     @Override
     public void requestApplicationState(ApplicationState applicationState) {
         try {
-            trackView(applicationState.name());
+            submissionService.submitScreenChange(applicationState.name());
             History.newItem(applicationState.name(), false);
             // todo:
             // on each state change check if there is an completed game data, if the share is true then upload or store if offline

@@ -28,6 +28,7 @@ import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
 
@@ -39,6 +40,7 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
 
     protected static final Logger logger = Logger.getLogger(AppController.class.getName());
 
+    final DataSubmissionService submissionService = new DataSubmissionService();
     final LocalStorage localStorage = new LocalStorage();
     protected final RootLayoutPanel widgetTag;
     protected Presenter presenter;
@@ -248,14 +250,6 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
     public void resizeAction() {
         presenter.fireResizeEvent();
     }
-
-    public static native void trackView(String applicationState) /*-{
-     if($wnd.analytics) $wnd.analytics.trackView(applicationState);
-     }-*/;
-
-    public static native void trackEvent(String applicationState, String label, String value) /*-{
-     if($wnd.analytics) $wnd.analytics.trackEvent(applicationState, "view", label, value);
-     }-*/;
 
     private native void setBackButtonAction() /*-{
      var appController = this;
