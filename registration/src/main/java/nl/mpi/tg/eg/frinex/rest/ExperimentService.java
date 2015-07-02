@@ -19,8 +19,11 @@ package nl.mpi.tg.eg.frinex.rest;
 
 import java.util.Random;
 import nl.mpi.tg.eg.frinex.model.ExperimentData;
+import nl.mpi.tg.eg.frinex.model.ScreenData;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,9 +37,32 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ExperimentService {
 
+    @Autowired
+    ScreenDataRepository screenDataRepository;
+
     @RequestMapping("/experiment/{name}")
     public String test(@PathVariable String name) {
         return "Experiment: " + name;
+    }
+
+    @RequestMapping(value = "/addscreenview", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ScreenData registerScreenData(@RequestBody ScreenData screenData) {
+        if (screenData.getExperimentName() == null || screenData.getExperimentName().isEmpty()) {
+            throw new IllegalArgumentException("The 'ExperimentName' parameter is required");
+        }
+        if (screenData.getScreenName() == null || screenData.getScreenName().isEmpty()) {
+            throw new IllegalArgumentException("The 'ScreenName' parameter is required");
+        }
+        if (screenData.getViewDate() == null) {
+            throw new IllegalArgumentException("The 'ViewDate' parameter is required");
+        }
+
+        if (screenData.getSubmitDate() != null) {
+            throw new IllegalArgumentException("SubmitDate cannot be provided");
+        }
+        screenData.setSubmitDate(new java.util.Date());
+        screenDataRepository.save(screenData);
+        return screenData;
     }
 
     @RequestMapping(value = "/experimentData", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
