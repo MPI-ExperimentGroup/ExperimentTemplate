@@ -17,11 +17,15 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import nl.mpi.tg.eg.frinex.model.ExperimentData;
 import nl.mpi.tg.eg.frinex.model.ScreenData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,23 +50,33 @@ public class ExperimentService {
     }
 
     @RequestMapping(value = "/addscreenview", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ScreenData registerScreenData(@RequestBody ScreenData screenData) {
-        if (screenData.getExperimentName() == null || screenData.getExperimentName().isEmpty()) {
-            throw new IllegalArgumentException("The 'ExperimentName' parameter is required");
+    public ResponseEntity<List<ScreenData>> registerScreenData(@RequestBody List<ScreenData> screenDataList) {
+        ArrayList<ScreenData> invalidScreenData = new ArrayList<>();
+        for (ScreenData screenData : screenDataList) {
+            if (screenData.getExperimentName() == null || screenData.getExperimentName().isEmpty()) {
+//                throw new IllegalArgumentException("The 'ExperimentName' parameter is required");
+                invalidScreenData.add(screenData);
+            } else if (screenData.getScreenName() == null || screenData.getScreenName().isEmpty()) {
+//                throw new IllegalArgumentException("The 'ScreenName' parameter is required");
+                invalidScreenData.add(screenData);
+            } else if (screenData.getViewDate() == null) {
+//                throw new IllegalArgumentException("The 'ViewDate' parameter is required");
+                invalidScreenData.add(screenData);
+            } else if (screenData.getSubmitDate() != null) {
+//                throw new IllegalArgumentException("SubmitDate cannot be provided");
+                invalidScreenData.add(screenData);
+            } else {
+                screenData.setSubmitDate(new java.util.Date());
+                screenDataRepository.save(screenData);
+            }
         }
-        if (screenData.getScreenName() == null || screenData.getScreenName().isEmpty()) {
-            throw new IllegalArgumentException("The 'ScreenName' parameter is required");
+        final ResponseEntity responseEntity;
+        if (invalidScreenData.isEmpty()) {
+            responseEntity = new ResponseEntity(HttpStatus.OK);
+        } else {
+            responseEntity = new ResponseEntity(screenData, HttpStatus.MULTI_STATUS);
         }
-        if (screenData.getViewDate() == null) {
-            throw new IllegalArgumentException("The 'ViewDate' parameter is required");
-        }
-
-        if (screenData.getSubmitDate() != null) {
-            throw new IllegalArgumentException("SubmitDate cannot be provided");
-        }
-        screenData.setSubmitDate(new java.util.Date());
-        screenDataRepository.save(screenData);
-        return screenData;
+        return responseEntity;
     }
 
     @RequestMapping(value = "/experimentData", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
