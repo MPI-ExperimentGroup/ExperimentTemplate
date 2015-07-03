@@ -39,6 +39,7 @@ public class LocalStorage {
     private final String USER_RESULTS;
     private final String LAST_USER_ID;
     private final String GAME_DATA;
+    private final String SCREEN_DATA;
     protected final String MAX_SCORE;
     protected final String GAMES_PLAYED;
     final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
@@ -47,6 +48,7 @@ public class LocalStorage {
         USER_RESULTS = messages.localStorageName() + ".UserResults.";
         LAST_USER_ID = messages.localStorageName() + ".LastUserId.";
         GAME_DATA = messages.localStorageName() + ".GameData.";
+        SCREEN_DATA = messages.localStorageName() + ".ScreenData.";
         MAX_SCORE = messages.localStorageName() + ".maxScore";
         GAMES_PLAYED = messages.localStorageName() + ".gamesPlayed";
     }
@@ -71,6 +73,26 @@ public class LocalStorage {
     public void addStoredGameData(UserId userId, String serialisedGameData) {
         loadStorage();
         dataStore.setItem(GAME_DATA + userId.toString(), getCleanStoredData(GAME_DATA + userId.toString()) + serialisedGameData);
+    }
+
+    public void clearStoredScreenData(UserId userId) {
+        loadStorage();
+        dataStore.setItem(SCREEN_DATA + userId.toString(), "");
+    }
+
+    public String getStoredScreenData(UserId userId) {
+        loadStorage();
+        return getCleanStoredData(SCREEN_DATA + userId.toString());
+    }
+
+    public void addStoredScreenData(UserId userId, String serialisedScreenData) {
+        loadStorage();
+        final String cleanStoredData = getCleanStoredData(SCREEN_DATA + userId.toString());
+        if (cleanStoredData.isEmpty()) {
+            dataStore.setItem(SCREEN_DATA + userId.toString(), cleanStoredData + serialisedScreenData);
+        } else {
+            dataStore.setItem(SCREEN_DATA + userId.toString(), cleanStoredData + "," + serialisedScreenData);
+        }
     }
 
     public UserData getStoredData(UserId userId) {

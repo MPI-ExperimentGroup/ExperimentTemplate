@@ -17,21 +17,48 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.i18n.shared.DateTimeFormat;
+import java.util.Date;
+import java.util.logging.Logger;
+import nl.mpi.tg.eg.experiment.client.Messages;
+import nl.mpi.tg.eg.experiment.client.model.UserId;
+
 /**
  * @since Jul 2, 2015 5:17:27 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public class DataSubmissionService {
 
-    public void submitScreenChange(String applicationState) {
+    private static final Logger logger = Logger.getLogger(HighScoreService.class.getName());
+    final private ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
+    protected final Messages messages = GWT.create(Messages.class);
+    
+    private final LocalStorage localStorage;
+
+    public DataSubmissionService(LocalStorage localStorage) {
+        this.localStorage = localStorage;
+    }
+
+    public void submitScreenChange(UserId userId, String applicationState) {
+        // todo: sumbit this to http://localhost:8080/frinex/addscreenview
+
+        final DateTimeFormat format = DateTimeFormat.getFormat(messages.jsonDateFormat());
+
+        localStorage.addStoredScreenData(userId, "{\"viewDate\" :\"" + format.format(new Date()) + "\",\n"
+                + "\"experimentName\": \"experiment name\",\n"
+                + "\"screenName\": \"" + applicationState + "\" ");
+        final String storedScreenData = localStorage.getStoredScreenData(userId);
+
+        // todo: optionally include the analytics call also
         trackView(applicationState);
     }
 
-    public static native void trackView(String applicationState) /*-{
+    private static native void trackView(String applicationState) /*-{
      if($wnd.analytics) $wnd.analytics.trackView(applicationState);
      }-*/;
 
-    public static native void trackEvent(String applicationState, String label, String value) /*-{
+    private static native void trackEvent(String applicationState, String label, String value) /*-{
      if($wnd.analytics) $wnd.analytics.trackEvent(applicationState, "view", label, value);
      }-*/;
 

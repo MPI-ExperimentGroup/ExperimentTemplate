@@ -13,6 +13,7 @@
     <xsl:template match="/">
     <xsl:text>localStorageName=</xsl:text>
         <xsl:value-of select="@localStorageName" /><xsl:text>
+jsonDateFormat=yyyy-MM-dd HH:mm:ss vvvv
 </xsl:text>
         <xsl:apply-templates/>
         <xsl:text>errorScreenText={0}
