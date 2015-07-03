@@ -37,10 +37,10 @@ import nl.ru.languageininteraction.language.client.model.HighScoreData;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionException;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionListener;
-import nl.mpi.tg.eg.experiment.client.service.AbstractSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
+import nl.ru.languageininteraction.language.client.registration.GameDataSubmissionService;
 import nl.ru.languageininteraction.language.client.service.ResultsSerialiser;
 import nl.ru.languageininteraction.language.client.view.ScorePageView;
 import nl.ru.languageininteraction.language.client.service.SocialMediaPost;
@@ -202,7 +202,7 @@ public class ScorePagePresenter implements Presenter {
 
         // clear the highscores text
         scorePageView.clearHighScoreText();
-        final AbstractSubmissionService registrationService = new AbstractSubmissionService();
+        final GameDataSubmissionService registrationService = new GameDataSubmissionService();
         final boolean isShareData = metadataFieldProvider.shareMetadataField.getControlledVocabulary()[0].equals(userResults.getUserData().getMetadataValue(metadataFieldProvider.shareMetadataField));
         registrationService.submitScores(isShareData, userResults, new DataSubmissionListener() {
 

@@ -23,18 +23,12 @@ import com.google.gwt.core.client.JsonUtils;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.RequestCallback;
-import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.Response;
-import com.google.gwt.http.client.URL;
-import com.google.gwt.i18n.shared.DateTimeFormat;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import nl.mpi.tg.eg.experiment.client.Version;
 import nl.ru.languageininteraction.language.client.model.HighScoreData;
-import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
-import nl.ru.languageininteraction.language.client.service.ResultsSerialiser;
 
 /**
  * @since Oct 29, 2014 11:18:31 AM (creation date)
@@ -42,58 +36,12 @@ import nl.ru.languageininteraction.language.client.service.ResultsSerialiser;
  */
 public class AbstractSubmissionService {
 
-    private static final Logger logger = Logger.getLogger(AbstractSubmissionService.class.getName());
-    final private ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
-    final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
-    private final Version version = GWT.create(Version.class);
+    final protected static Logger logger = Logger.getLogger(AbstractSubmissionService.class.getName());
+    final protected ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
+    final protected MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
+    final protected Version version = GWT.create(Version.class);
 
-    public void submitScores(final boolean isShareData,UserResults userResults, DataSubmissionListener highScoreListener, final String reportDateFormat) {
-        final String highScoresUrl = serviceLocations.dataSubmitUrl();
-        final RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, highScoresUrl);
-        builder.setHeader("Content-type", "application/x-www-form-urlencoded");
-        StringBuilder stringBuilder = new StringBuilder();        
-        if (isShareData) {
-            for (MetadataField key : userResults.getUserData().getMetadataFields()) {
-                String value = URL.encodeQueryString(userResults.getUserData().getMetadataValue(key));
-                if (stringBuilder.length() > 0) {
-                    stringBuilder.append("&");
-                }
-                stringBuilder.append(key.getPostName()).append("=").append(value);
-            }
-        }
-        if (stringBuilder.length() > 0) {
-            stringBuilder.append("&");
-        }
-        stringBuilder.append("userid").append("=").append(userResults.getUserData().getUserId()).append("&");
-        stringBuilder.append("highscore").append("=").append(userResults.getUserData().getBestScore()).append("&");
-        stringBuilder.append("gamesplayed").append("=").append(userResults.getUserData().getGamesPlayed()).append("&");
-        stringBuilder.append("applicationversion").append("=").append(version.projectVersion()).append("&");
-        if (!isShareData) {
-            stringBuilder.append(metadataFieldProvider.shareMetadataField.getPostName()).append("=").append(userResults.getUserData().getMetadataValue(metadataFieldProvider.shareMetadataField)).append("&");
-        }
-
-        if (isShareData) {
-//            String scoreLog = URL.encodeQueryString(userResults.getScoreLog());
-//            stringBuilder.append("scorelog").append("=").append(scoreLog).append("&");
-            String restultsData = URL.encodeQueryString(new ResultsSerialiser() {
-                final DateTimeFormat format = DateTimeFormat.getFormat(reportDateFormat);
-
-                @Override
-                protected String formatDate(Date date) {
-                    return format.format(date);
-                }
-            }.serialise(userResults));
-            stringBuilder.append("quest_results=").append(new LocalStorage().getStoredGameData(userResults.getUserData().getUserId())).append(restultsData);
-        }
-        try {
-            builder.sendRequest(stringBuilder.toString(), geRequestBuilder(builder, highScoreListener, highScoresUrl, userResults));
-        } catch (RequestException exception) {
-            highScoreListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.buildererror, exception));
-            logger.log(Level.SEVERE, "SubmitHighScore", exception);
-        }
-    }
-
-    private RequestCallback geRequestBuilder(final RequestBuilder builder, final DataSubmissionListener highScoreListener, final String targetUri, final UserResults userResults) {
+    protected RequestCallback geRequestBuilder(final RequestBuilder builder, final DataSubmissionListener highScoreListener, final String targetUri, final UserResults userResults) {
         return new RequestCallback() {
             @Override
             public void onError(Request request, Throwable exception) {
