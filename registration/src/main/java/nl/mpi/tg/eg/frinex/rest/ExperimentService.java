@@ -74,7 +74,7 @@ public class ExperimentService {
         if (invalidScreenData.isEmpty()) {
             responseEntity = new ResponseEntity(HttpStatus.OK);
         } else {
-            responseEntity = new ResponseEntity(screenData, HttpStatus.MULTI_STATUS);
+            responseEntity = new ResponseEntity(invalidScreenData, HttpStatus.MULTI_STATUS);
         }
         return responseEntity;
     }
