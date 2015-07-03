@@ -34,23 +34,20 @@ import nl.mpi.tg.eg.experiment.client.Version;
 import nl.ru.languageininteraction.language.client.model.HighScoreData;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
-import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
-import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
-import nl.mpi.tg.eg.experiment.client.service.ServiceLocations;
 import nl.ru.languageininteraction.language.client.service.ResultsSerialiser;
 
 /**
  * @since Oct 29, 2014 11:18:31 AM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public class HighScoreService {
+public class AbstractSubmissionService {
 
-    private static final Logger logger = Logger.getLogger(HighScoreService.class.getName());
+    private static final Logger logger = Logger.getLogger(AbstractSubmissionService.class.getName());
     final private ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
     final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
     private final Version version = GWT.create(Version.class);
 
-    public void submitScores(final boolean isShareData,UserResults userResults, HighScoreListener highScoreListener, final String reportDateFormat) {
+    public void submitScores(final boolean isShareData,UserResults userResults, DataSubmissionListener highScoreListener, final String reportDateFormat) {
         final String highScoresUrl = serviceLocations.dataSubmitUrl();
         final RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, highScoresUrl);
         builder.setHeader("Content-type", "application/x-www-form-urlencoded");
@@ -91,16 +88,16 @@ public class HighScoreService {
         try {
             builder.sendRequest(stringBuilder.toString(), geRequestBuilder(builder, highScoreListener, highScoresUrl, userResults));
         } catch (RequestException exception) {
-            highScoreListener.scoreSubmissionFailed(new HighScoreException(HighScoreException.ErrorType.buildererror, exception));
+            highScoreListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.buildererror, exception));
             logger.log(Level.SEVERE, "SubmitHighScore", exception);
         }
     }
 
-    private RequestCallback geRequestBuilder(final RequestBuilder builder, final HighScoreListener highScoreListener, final String targetUri, final UserResults userResults) {
+    private RequestCallback geRequestBuilder(final RequestBuilder builder, final DataSubmissionListener highScoreListener, final String targetUri, final UserResults userResults) {
         return new RequestCallback() {
             @Override
             public void onError(Request request, Throwable exception) {
-                highScoreListener.scoreSubmissionFailed(new HighScoreException(HighScoreException.ErrorType.connectionerror, exception));
+                highScoreListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.connectionerror, exception));
                 logger.warning(builder.getUrl());
                 logger.log(Level.WARNING, "RequestCallback", exception);
             }
@@ -112,7 +109,7 @@ public class HighScoreService {
                     logger.info(text);
                     highScoreListener.scoreSubmissionComplete(JsonUtils.<JsArray<HighScoreData>>safeEval(response.getText()));
                 } else {
-                    highScoreListener.scoreSubmissionFailed(new HighScoreException(HighScoreException.ErrorType.non202response, "An error occured on the server: " + response.getStatusText()));
+                    highScoreListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.non202response, "An error occured on the server: " + response.getStatusText()));
                     logger.warning(targetUri);
                     logger.warning(response.getStatusText());
                 }

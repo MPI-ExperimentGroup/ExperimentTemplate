@@ -40,8 +40,8 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
 
     protected static final Logger logger = Logger.getLogger(AppController.class.getName());
 
-    final DataSubmissionService submissionService = new DataSubmissionService();
     final LocalStorage localStorage = new LocalStorage();
+    final DataSubmissionService submissionService = new DataSubmissionService(localStorage);
     protected final RootLayoutPanel widgetTag;
     protected Presenter presenter;
     protected final UserResults userResults;

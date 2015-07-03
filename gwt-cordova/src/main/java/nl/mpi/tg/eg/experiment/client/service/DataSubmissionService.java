@@ -30,7 +30,7 @@ import nl.mpi.tg.eg.experiment.client.model.UserId;
  */
 public class DataSubmissionService {
 
-    private static final Logger logger = Logger.getLogger(HighScoreService.class.getName());
+    private static final Logger logger = Logger.getLogger(DataSubmissionService.class.getName());
     final private ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
     protected final Messages messages = GWT.create(Messages.class);
     

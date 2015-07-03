@@ -17,33 +17,16 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
+import com.google.gwt.core.client.JsArray;
+import nl.ru.languageininteraction.language.client.model.HighScoreData;
+
 /**
- * @since Oct 29, 2014 11:23:33 AM (creation date)
+ * @since Oct 29, 2014 11:27:39 AM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public class HighScoreException extends Exception {
+public interface DataSubmissionListener {
 
-    private final ErrorType errorType;
+    void scoreSubmissionFailed(DataSubmissionException exception);
 
-    public enum ErrorType {
-
-        non202response,
-        buildererror,
-        connectionerror
-    }
-
-    public HighScoreException(ErrorType errorType, Throwable cause) {
-        super(cause);
-        this.errorType = errorType;
-    }
-
-    public HighScoreException(ErrorType errorType, String message) {
-        super(message);
-        this.errorType = errorType;
-    }
-
-    public ErrorType getErrorType() {
-        return errorType;
-    }
-
+    void scoreSubmissionComplete(JsArray<HighScoreData> highScoreData);
 }
