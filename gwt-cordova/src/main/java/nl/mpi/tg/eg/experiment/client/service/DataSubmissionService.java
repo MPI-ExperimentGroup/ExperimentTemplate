@@ -17,38 +17,70 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
-import com.google.gwt.core.client.GWT;
+import com.google.gwt.http.client.Request;
+import com.google.gwt.http.client.RequestBuilder;
+import com.google.gwt.http.client.RequestCallback;
+import com.google.gwt.http.client.RequestException;
+import com.google.gwt.http.client.Response;
 import com.google.gwt.i18n.shared.DateTimeFormat;
 import java.util.Date;
-import java.util.logging.Logger;
-import nl.mpi.tg.eg.experiment.client.Messages;
+import java.util.logging.Level;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 
 /**
  * @since Jul 2, 2015 5:17:27 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class DataSubmissionService {
+public class DataSubmissionService extends AbstractSubmissionService {
 
-    private static final Logger logger = Logger.getLogger(DataSubmissionService.class.getName());
-    final private ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
-    protected final Messages messages = GWT.create(Messages.class);
-    
     private final LocalStorage localStorage;
 
     public DataSubmissionService(LocalStorage localStorage) {
         this.localStorage = localStorage;
     }
 
-    public void submitScreenChange(UserId userId, String applicationState) {
-        // todo: sumbit this to http://localhost:8080/frinex/addscreenview
-
+    public void submitScreenChange(final UserId userId, String applicationState) {
         final DateTimeFormat format = DateTimeFormat.getFormat(messages.jsonDateFormat());
 
         localStorage.addStoredScreenData(userId, "{\"viewDate\" :\"" + format.format(new Date()) + "\",\n"
                 + "\"experimentName\": \"experiment name\",\n"
                 + "\"screenName\": \"" + applicationState + "\" ");
+
         final String storedScreenData = localStorage.getStoredScreenData(userId);
+
+        final RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, messages.dataSubmitUrl());
+        builder.setHeader("Content-type", "application/json");
+        RequestCallback requestCallback = new RequestCallback() {
+            @Override
+            public void onError(Request request, Throwable exception) {
+                logger.warning(builder.getUrl());
+                logger.log(Level.WARNING, "RequestCallback", exception);
+            }
+
+            @Override
+            public void onResponseReceived(Request request, Response response) {
+                if (200 == response.getStatusCode()) {
+                    final String text = response.getText();
+                    logger.info(text);
+                    localStorage.clearStoredScreenData(userId);
+                } else if (207 == response.getStatusCode()) {
+                    final String text = response.getText();
+                    logger.info(text);
+                    localStorage.clearStoredScreenData(userId);
+                    // if there was an issue on the server then store the problematic data. // todo: this might be removed when prodution status is reached
+                    localStorage.addStoredScreenData(userId, text);
+
+                } else {
+                    logger.warning(builder.getUrl());
+                    logger.warning(response.getStatusText());
+                }
+            }
+        };
+        try {
+            builder.sendRequest(storedScreenData, requestCallback);
+        } catch (RequestException exception) {
+            logger.log(Level.SEVERE, "submit data failed", exception);
+        }
 
         // todo: optionally include the analytics call also
         trackView(applicationState);

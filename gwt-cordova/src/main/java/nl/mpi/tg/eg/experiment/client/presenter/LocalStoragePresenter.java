@@ -43,20 +43,7 @@ public class LocalStoragePresenter extends AbstractPresenter {
 
     @Override
     protected void setContent(final AppEventListner appEventListner) {
-        ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
 
-            @Override
-            public String getLabel() {
-                return "Erase Stored Data";
-            }
-
-            @Override
-            public void eventFired(Button button) {
-                final Storage localStorage = Storage.getLocalStorageIfSupported();
-                localStorage.clear();
-                Window.Location.replace(Window.Location.getPath());
-            }
-        });
         ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
 
             @Override
@@ -79,6 +66,23 @@ public class LocalStoragePresenter extends AbstractPresenter {
             @Override
             public void eventFired(Button button) {
                 appEventListner.requestApplicationState(ApplicationState.scores);
+            }
+        });
+    }
+
+    protected void eraseLocalStorageButton() {
+        ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
+
+            @Override
+            public String getLabel() {
+                return "Erase Stored Data";
+            }
+
+            @Override
+            public void eventFired(Button button) {
+                final Storage localStorage = Storage.getLocalStorageIfSupported();
+                localStorage.clear();
+                Window.Location.replace(Window.Location.getPath());
             }
         });
     }

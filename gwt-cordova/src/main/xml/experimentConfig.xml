@@ -21,7 +21,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     Author     : Peter Withers <peter.withers@mpi.nl>
 -->
 
-<experiment displayName="Test Experiment" localStorageName="TestExperiment" dataSubmitUrl="http://localhost:8080/example/data/submit" staticFilesUrl="static/">
+<experiment displayName="Test Experiment" localStorageName="TestExperiment" dataSubmitUrl="http://localhost:8080/frinex/addscreenview" staticFilesUrl="static/">
     <metadata>
         <field postName="playername" registrationField="Player name *" controlledRegex=".'{'3,'}'" controlledMessage="Please enter at least three letters." />
         <field postName="age" fieldValues="0-10,11-20,&gt;20" registrationField="Age" />
@@ -50,6 +50,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <allMetadataFields/>
     </presenter>
     <presenter type="debug" menuLabel="Debug Page" back="MainMenu" self="ResultsPage" next="StimulusPage">
+        <eraseLocalStorageButton/>
         <localStorageData/>
     </presenter>
     <presenter type="stimulus" menuLabel="Stimulus Screen" back="MainMenu" self="StimulusPage">

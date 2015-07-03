@@ -251,7 +251,7 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
 <xsl:text>    ((ComplexView) simpleView).addPadding();
 </xsl:text>
     </xsl:template>
-<xsl:template match="localStorageData|allMetadataFields">    
+<xsl:template match="localStorageData|allMetadataFields|eraseLocalStorageButton">    
     <xsl:text>    </xsl:text>    
     <xsl:value-of select ="local-name()"/>
 <xsl:text>();

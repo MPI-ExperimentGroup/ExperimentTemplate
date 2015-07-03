@@ -17,8 +17,13 @@
  */
 package nl.ru.languageininteraction.language.client.registration;
 
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.core.client.JsonUtils;
+import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
+import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.RequestException;
+import com.google.gwt.http.client.Response;
 import com.google.gwt.http.client.URL;
 import com.google.gwt.i18n.shared.DateTimeFormat;
 import java.util.Date;
@@ -29,6 +34,7 @@ import nl.mpi.tg.eg.experiment.client.service.AbstractSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionException;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
+import nl.ru.languageininteraction.language.client.model.HighScoreData;
 import nl.ru.languageininteraction.language.client.service.ResultsSerialiser;
 
 /**
@@ -76,10 +82,34 @@ public class GameDataSubmissionService extends AbstractSubmissionService {
             stringBuilder.append("quest_results=").append(new LocalStorage().getStoredGameData(userResults.getUserData().getUserId())).append(restultsData);
         }
         try {
-            builder.sendRequest(stringBuilder.toString(), geRequestBuilder(builder, highScoreListener, highScoresUrl, userResults));
+            builder.sendRequest(stringBuilder.toString(), getRequestCallback(builder, highScoreListener));
         } catch (RequestException exception) {
             highScoreListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.buildererror, exception));
             logger.log(Level.SEVERE, "SubmitHighScore", exception);
         }
+    }
+
+    protected RequestCallback getRequestCallback(final RequestBuilder builder, final DataSubmissionListener highScoreListener) {
+        return new RequestCallback() {
+            @Override
+            public void onError(Request request, Throwable exception) {
+                highScoreListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.connectionerror, exception));
+                logger.warning(builder.getUrl());
+                logger.log(Level.WARNING, "RequestCallback", exception);
+            }
+
+            @Override
+            public void onResponseReceived(Request request, Response response) {
+                if (200 == response.getStatusCode()) {
+                    final String text = response.getText();
+                    logger.info(text);
+                    highScoreListener.scoreSubmissionComplete(JsonUtils.<JsArray<HighScoreData>>safeEval(response.getText()));
+                } else {
+                    highScoreListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.non202response, "An error occured on the server: " + response.getStatusText()));
+                    logger.warning(builder.getUrl());
+                    logger.warning(response.getStatusText());
+                }
+            }
+        };
     }
 }

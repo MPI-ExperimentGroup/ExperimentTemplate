@@ -9,10 +9,10 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>gwttemplate</artifactId>
     <packaging>war</packaging>
-    <version>0.1.406-pretesting</version>
+    <version>0.1.413-pretesting</version>
     <name>FRINEX GWT-Cordova Template</name>
     <organization>
-        <name></name>
+        <name>Max Planck Institute for Psycholinguistics, Nijmegen</name>
         <url>https://www.mpi.nl</url>
     </organization>
     <properties>
