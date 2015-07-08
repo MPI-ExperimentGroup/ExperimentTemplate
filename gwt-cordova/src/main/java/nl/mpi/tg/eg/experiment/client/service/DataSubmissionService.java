@@ -33,26 +33,44 @@ import nl.mpi.tg.eg.experiment.client.model.UserId;
  */
 public class DataSubmissionService extends AbstractSubmissionService {
 
-    private final LocalStorage localStorage;
+    private enum ServiceEndpoint {
 
-    public DataSubmissionService(LocalStorage localStorage) {
+        timeStamp, screenChange
+    }
+    private final LocalStorage localStorage;
+    private final String experimentName;
+    final DateTimeFormat format = DateTimeFormat.getFormat(messages.jsonDateFormat());
+
+    public DataSubmissionService(LocalStorage localStorage, String experimentName) {
         this.localStorage = localStorage;
+        this.experimentName = experimentName;
     }
 
     public void submitTimeStamp(final UserId userId, String tagName, int eventMs) {
-        submitScreenChange(userId, tagName + eventMs); // todo: make an endpoint for this
+        submitData(ServiceEndpoint.timeStamp, userId, "{\"tagDate\" :\"" + format.format(new Date()) + "\",\n"
+                + "\"experimentName\": \"" + experimentName + "\",\n"
+                + "\"userId\": \"" + userId + "\",\n"
+                + "\"tagName\": \"" + tagName + "\",\n"
+                + "\"eventMs\": \"" + eventMs + "\" \n}");
     }
 
     public void submitScreenChange(final UserId userId, String applicationState) {
-        final DateTimeFormat format = DateTimeFormat.getFormat(messages.jsonDateFormat());
-
-        localStorage.addStoredScreenData(userId, "{\"viewDate\" :\"" + format.format(new Date()) + "\",\n"
-                + "\"experimentName\": \"experiment name\",\n"
+        submitData(ServiceEndpoint.screenChange, userId, "{\"viewDate\" :\"" + format.format(new Date()) + "\",\n"
+                + "\"experimentName\": \"" + experimentName + "\",\n"
+                + "\"userId\": \"" + userId + "\",\n"
                 + "\"screenName\": \"" + applicationState + "\" \n}");
+
+        // todo: optionally include the analytics call also
+        trackView(applicationState);
+    }
+
+    private void submitData(final ServiceEndpoint endpoint, final UserId userId, String jsonData) {
+
+        localStorage.addStoredScreenData(userId, jsonData);
 
         final String storedScreenData = localStorage.getStoredScreenData(userId);
 
-        final RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, messages.dataSubmitUrl());
+        final RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, messages.dataSubmitUrl() + endpoint.name());
         builder.setHeader("Content-type", "application/json");
         RequestCallback requestCallback = new RequestCallback() {
             @Override
@@ -85,9 +103,6 @@ public class DataSubmissionService extends AbstractSubmissionService {
         } catch (RequestException exception) {
             logger.log(Level.SEVERE, "submit data failed", exception);
         }
-
-        // todo: optionally include the analytics call also
-        trackView(applicationState);
     }
 
     private static native void trackView(String applicationState) /*-{
