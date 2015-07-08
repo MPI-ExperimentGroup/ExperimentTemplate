@@ -23,7 +23,9 @@ import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
+import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
+import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
 import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
@@ -36,13 +38,17 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     private final StimulusProvider stimulusProvider = new StimulusProvider();
     protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
+    private final DataSubmissionService submissionService;
+    final UserResults userResults;
     final Stimulus currentStimulus;
     private final Duration duration;
 
-    public AbstractStimulusPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer) {
+    public AbstractStimulusPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults) {
         super(widgetTag, new TimedStimulusView(audioPlayer));
         currentStimulus = stimulusProvider.getNextStimulus();
         duration = new Duration();
+        this.submissionService = submissionService;
+        this.userResults = userResults;
     }
 
     protected void addStimulusImage(String image, int width, int postLoadMs, TimedStimulusListener timedStimulusListener) {
@@ -57,5 +63,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void showCurrentMs() {
         ((TimedStimulusView) simpleView).addText(duration.elapsedMillis() + "ms");
+    }
+
+    protected void logTimeStamp(String tagName) {
+        submissionService.submitTimeStamp(userResults.getUserData().getUserId(), tagName, duration.elapsedMillis());
     }
 }

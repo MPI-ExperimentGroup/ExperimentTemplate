@@ -39,12 +39,16 @@ public class DataSubmissionService extends AbstractSubmissionService {
         this.localStorage = localStorage;
     }
 
+    public void submitTimeStamp(final UserId userId, String tagName, int eventMs) {
+        submitScreenChange(userId, tagName + eventMs); // todo: make an endpoint for this
+    }
+
     public void submitScreenChange(final UserId userId, String applicationState) {
         final DateTimeFormat format = DateTimeFormat.getFormat(messages.jsonDateFormat());
 
         localStorage.addStoredScreenData(userId, "{\"viewDate\" :\"" + format.format(new Date()) + "\",\n"
                 + "\"experimentName\": \"experiment name\",\n"
-                + "\"screenName\": \"" + applicationState + "\" ");
+                + "\"screenName\": \"" + applicationState + "\" \n}");
 
         final String storedScreenData = localStorage.getStoredScreenData(userId);
 
@@ -62,14 +66,14 @@ public class DataSubmissionService extends AbstractSubmissionService {
                 if (200 == response.getStatusCode()) {
                     final String text = response.getText();
                     logger.info(text);
-                    localStorage.clearStoredScreenData(userId);
+                    localStorage.stowSentScreenData(userId);
                 } else if (207 == response.getStatusCode()) {
                     final String text = response.getText();
                     logger.info(text);
-                    localStorage.clearStoredScreenData(userId);
+                    localStorage.stowSentScreenData(userId);
                     // if there was an issue on the server then store the problematic data. // todo: this might be removed when prodution status is reached
+                    // todo: add handling of 200 responses given by some wifi login services that do not provide propper redirect codes, to make sure we dont get tricked into thinking data has been sent when it might not have
                     localStorage.addStoredScreenData(userId, text);
-
                 } else {
                     logger.warning(builder.getUrl());
                     logger.warning(response.getStatusText());
@@ -77,7 +81,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
             }
         };
         try {
-            builder.sendRequest(storedScreenData, requestCallback);
+            builder.sendRequest("[" + storedScreenData + "]", requestCallback);
         } catch (RequestException exception) {
             logger.log(Level.SEVERE, "submit data failed", exception);
         }

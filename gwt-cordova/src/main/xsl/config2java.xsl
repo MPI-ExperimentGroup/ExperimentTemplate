@@ -83,7 +83,7 @@ public class ApplicationController extends AppController {
         <xsl:for-each select="experiment/presenter">
             <xsl:text>
                 case </xsl:text><xsl:value-of select="@self" /><xsl:text>:
-                    this.presenter = new </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter(widgetTag</xsl:text><xsl:value-of select="if(@type = 'stimulus') then ', new AudioPlayer(this)' else if(@type = 'metadata') then ', userResults' else ''" /><xsl:text>);
+                    this.presenter = new </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter(widgetTag</xsl:text><xsl:value-of select="if(@type = 'stimulus' or @type = 'preload') then ', new AudioPlayer(this), submissionService, userResults' else if(@type = 'metadata') then ', userResults' else ''" /><xsl:text>);
                     presenter.setState(this, </xsl:text>
                     <xsl:choose>
                         <xsl:when test="@back">
@@ -141,10 +141,12 @@ import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.MenuView;     
-import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;      
+import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;  
+import nl.mpi.tg.eg.experiment.client.model.UserId;    
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;    
 import nl.mpi.tg.eg.experiment.client.view.MetadataView; 
+import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService; 
                         
 // generated with config2java.xsl
 public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter extends </xsl:text><xsl:value-of select="if(@type = 'stimulus') then 'AbstractStimulus' else if(@type = 'preload') then 'AbstractPreloadStimulus' else if(@type = 'debug') then 'LocalStorage' else if(@type = 'metadata') then 'AbstractMetadata' else 'Abstract'" /><xsl:text>Presenter implements Presenter {
@@ -155,26 +157,26 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
 </xsl:text> 
 </xsl:if>
 <xsl:text>    
-    public </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter(RootLayoutPanel widgetTag</xsl:text><xsl:value-of select="if(@type = 'stimulus') then ', AudioPlayer audioPlayer' else if(@type = 'metadata') then ', UserResults userResults' else ''" /><xsl:text>) {
+    public </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter(RootLayoutPanel widgetTag</xsl:text><xsl:value-of select="if(@type = 'stimulus' or @type = 'preload') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults' else if(@type = 'metadata') then ', UserResults userResults' else ''" /><xsl:text>) {
 </xsl:text>  
 <xsl:choose>
   <xsl:when test="@type = 'menu'"><xsl:text>
         super(widgetTag, new MenuView());
 </xsl:text>
     </xsl:when>
-    <xsl:when  test="@type = 'text'"><xsl:text>
+    <xsl:when test="@type = 'text'"><xsl:text>
         super(widgetTag, new ComplexView());
 </xsl:text>
     </xsl:when>
-    <xsl:when  test="@type = 'debug' or @type = 'preload'"><xsl:text>
+    <xsl:when test="@type = 'debug'"><xsl:text>
         super(widgetTag);
 </xsl:text>
     </xsl:when>
-    <xsl:when  test="@type = 'stimulus'"><xsl:text>
-        super(widgetTag, audioPlayer);
+    <xsl:when test="@type = 'stimulus' or @type = 'preload'"><xsl:text>
+        super(widgetTag, audioPlayer, submissionService, userResults);
 </xsl:text>
     </xsl:when>
-    <xsl:when  test="@type = 'metadata'"><xsl:text>
+    <xsl:when test="@type = 'metadata'"><xsl:text>
         super(widgetTag, userResults);
 </xsl:text>
     </xsl:when>
@@ -251,14 +253,16 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
 <xsl:text>    ((ComplexView) simpleView).addPadding();
 </xsl:text>
     </xsl:template>
-<xsl:template match="localStorageData|allMetadataFields|eraseLocalStorageButton">    
+<xsl:template match="localStorageData|allMetadataFields|eraseLocalStorageButton|showCurrentMs">    
     <xsl:text>    </xsl:text>    
     <xsl:value-of select ="local-name()"/>
 <xsl:text>();
 </xsl:text>
     </xsl:template>
-<xsl:template match="showCurrentMs">
-<xsl:text>    showCurrentMs();
+<xsl:template match="logTimeStamp">    
+    <xsl:text>    </xsl:text>    
+    <xsl:value-of select ="local-name()"/>
+<xsl:text>("</xsl:text><xsl:value-of select="@tagName" /><xsl:text>");
 </xsl:text>
     </xsl:template>
 <xsl:template match="preloadAllStimuli">

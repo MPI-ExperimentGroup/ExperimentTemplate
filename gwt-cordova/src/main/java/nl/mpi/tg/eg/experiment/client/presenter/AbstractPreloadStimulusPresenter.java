@@ -21,6 +21,9 @@ import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
+import nl.mpi.tg.eg.experiment.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
+import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
 import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
 
@@ -32,8 +35,8 @@ public abstract class AbstractPreloadStimulusPresenter extends AbstractStimulusP
 
     private final StimulusProvider stimulusProvider = new StimulusProvider();
 
-    public AbstractPreloadStimulusPresenter(RootLayoutPanel widgetTag) {
-        super(widgetTag, null);
+    public AbstractPreloadStimulusPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults) {
+        super(widgetTag, null, submissionService, userResults);
     }
 
     private void preloadAllStimuli(final HorizontalPanel progressBar, final TimedStimulusListener timedStimulusListener) {

@@ -40,6 +40,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     <presenter type="preload" menuLabel="Preload Stimulus" back="MainMenu" self="PreloadStimulus">
         <htmlText fieldName="preloadingMessage">Preloading image files</htmlText>
         <preloadAllStimuli>
+            <logTimeStamp tagName="preloaded" />
             <optionButton fieldName="menuLabelStimulusPage" target="StimulusPage"/>
         </preloadAllStimuli>
     </presenter>
@@ -56,9 +57,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     <presenter type="stimulus" menuLabel="Stimulus Screen" back="MainMenu" self="StimulusPage">
         <htmlText fieldName="stimulusHeading">Some Stimulus</htmlText>
         <showCurrentMs/>
-        <stimulusImage width="10" timeToNext="1000">
+        <stimulusImage width="10" timeToNext="1000">            
+            <logTimeStamp tagName="stimulus1Shown" />
             <showCurrentMs/>
-            <stimulusImage width="50" timeToNext="1000">
+            <stimulusImage width="50" timeToNext="1000">         
+            <logTimeStamp tagName="stimulus2Shown" />
                 <showCurrentMs/>
                 <stimulusAudio timeToNext="2000">
                     <showCurrentMs/>
