@@ -50,6 +50,7 @@ public class ExperimentService {
     }
 
     @RequestMapping(value = "/addscreenview", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
     public ResponseEntity<List<ScreenData>> registerScreenData(@RequestBody List<ScreenData> screenDataList) {
         ArrayList<ScreenData> invalidScreenData = new ArrayList<>();
         for (ScreenData screenData : screenDataList) {
@@ -72,9 +73,9 @@ public class ExperimentService {
         }
         final ResponseEntity responseEntity;
         if (invalidScreenData.isEmpty()) {
-            responseEntity = new ResponseEntity(HttpStatus.OK);
+            responseEntity = new ResponseEntity<>(HttpStatus.OK);
         } else {
-            responseEntity = new ResponseEntity(invalidScreenData, HttpStatus.MULTI_STATUS);
+            responseEntity = new ResponseEntity<>(invalidScreenData, HttpStatus.MULTI_STATUS);
         }
         return responseEntity;
     }
