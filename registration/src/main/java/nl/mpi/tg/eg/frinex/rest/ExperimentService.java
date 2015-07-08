@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Random;
 import nl.mpi.tg.eg.frinex.model.ExperimentData;
 import nl.mpi.tg.eg.frinex.model.ScreenData;
+import nl.mpi.tg.eg.frinex.model.TimeStamp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -43,13 +44,14 @@ public class ExperimentService {
 
     @Autowired
     ScreenDataRepository screenDataRepository;
+    TimeStampRepository timeStampRepository;
 
     @RequestMapping("/experiment/{name}")
     public String test(@PathVariable String name) {
         return "Experiment: " + name;
     }
 
-    @RequestMapping(value = "/addscreenview", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/screenChange", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<List<ScreenData>> registerScreenData(@RequestBody List<ScreenData> screenDataList) {
         ArrayList<ScreenData> invalidScreenData = new ArrayList<>();
@@ -78,6 +80,14 @@ public class ExperimentService {
             responseEntity = new ResponseEntity<>(invalidScreenData, HttpStatus.MULTI_STATUS);
         }
         return responseEntity;
+    }
+
+    @RequestMapping(value = "/timeStamp", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseEntity registerScreenData(@RequestBody TimeStamp timeStamp) {
+        timeStamp.setSubmitDate(new java.util.Date());
+        timeStampRepository.save(timeStamp);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/experimentData", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
