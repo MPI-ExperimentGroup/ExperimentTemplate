@@ -16,7 +16,7 @@
 </xsl:text>
     <xsl:text>localStorageName=</xsl:text>
         <xsl:value-of select="experiment/@localStorageName" /><xsl:text>
-jsonDateFormat=yyyy-MM-dd HH:mm:ss vvvv
+jsonDateFormat=yyyy-MM-dd''T''HH:mm:ss.SSSZ
 </xsl:text>
         <xsl:apply-templates/>
         <xsl:text>errorScreenText={0}
