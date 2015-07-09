@@ -133,7 +133,7 @@ public class ApplicationController extends AppController {
     
 import com.google.gwt.core.client.GWT;        
 import com.google.gwt.safehtml.shared.UriUtils;
-import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.Version;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
@@ -223,7 +223,7 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
 <xsl:text>    ((MenuView) simpleView).addMenuItem(new PresenterEventListner() {
 
                     @Override
-                    public void eventFired(Button button) {
+                    public void eventFired(ButtonBase button) {
                         appEventListner.requestApplicationState(ApplicationState.</xsl:text><xsl:value-of select="@target" /><xsl:text>);
                     }
 
@@ -243,7 +243,7 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
             }
 
             @Override
-            public void eventFired(Button button) {
+            public void eventFired(ButtonBase button) {
                 appEventListner.requestApplicationState(ApplicationState.</xsl:text><xsl:value-of select="@target" /><xsl:text>);
             }
         });
@@ -265,7 +265,7 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
 <xsl:text>("</xsl:text><xsl:value-of select="@tagName" /><xsl:text>");
 </xsl:text>
     </xsl:template>
-<xsl:template match="preloadAllStimuli">
+<xsl:template match="preloadAllStimuli|showStimulusGrid">
 <xsl:text>    </xsl:text><xsl:value-of select="local-name()" /><xsl:text>(new TimedStimulusListener() {
 
         @Override

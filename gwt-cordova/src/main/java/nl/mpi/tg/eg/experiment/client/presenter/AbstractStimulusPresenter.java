@@ -20,7 +20,9 @@ package nl.mpi.tg.eg.experiment.client.presenter;
 import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.safehtml.shared.UriUtils;
+import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
@@ -67,5 +69,25 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void logTimeStamp(String tagName) {
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), tagName, duration.elapsedMillis());
+    }
+
+    protected void showStimulusGrid(final TimedStimulusListener listener) {
+        ((TimedStimulusView) simpleView).startGrid();
+        int imageCounter = 0;
+        while (stimulusProvider.hasNextStimulus()) {
+            ((TimedStimulusView) simpleView).addImageItem(new PresenterEventListner() {
+
+                @Override
+                public String getLabel() {
+                    return "";
+                }
+
+                @Override
+                public void eventFired(ButtonBase button) {
+                }
+            }, UriUtils.fromString(serviceLocations.staticFilesUrl() + stimulusProvider.getNextStimulus().getJpg()), imageCounter / 3, imageCounter++ % 3);
+        }
+        ((TimedStimulusView) simpleView).endGrid();
+        listener.postLoadTimerFired();
     }
 }

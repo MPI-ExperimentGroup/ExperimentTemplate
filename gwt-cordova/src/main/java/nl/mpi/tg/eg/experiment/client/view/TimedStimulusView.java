@@ -21,8 +21,13 @@ import com.google.gwt.event.dom.client.LoadEvent;
 import com.google.gwt.event.dom.client.LoadHandler;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.PushButton;
 import nl.mpi.tg.eg.experiment.client.listener.AudioEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 
@@ -33,9 +38,43 @@ import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 public class TimedStimulusView extends ComplexView {
 
     private final AudioPlayer audioPlayer;
+    private FlexTable flexTable = null;
 
     public TimedStimulusView(AudioPlayer audioPlayer) {
         this.audioPlayer = audioPlayer;
+    }
+
+    public void startGrid() {
+        flexTable = new FlexTable();
+        flexTable.setStylePrimaryName("menuTable");
+        outerPanel.setStylePrimaryName("menuOuter");
+        outerPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+        outerPanel.add(flexTable);
+    }
+
+    public void endGrid() {
+        flexTable = null;
+    }
+
+    public void addImageItem(final PresenterEventListner menuItemListerner, final SafeUri imagePath, final int rowIndex, final int columnIndex) {
+        final PushButton pushButton = new PushButton(new Image(imagePath));
+        pushButton.addStyleName("menuButton");
+        pushButton.setEnabled(true);
+        final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
+
+            @Override
+            protected void singleShotFired() {
+                if (pushButton.isEnabled()) {
+                    menuItemListerner.eventFired(pushButton);
+                }
+            }
+        };
+        pushButton.addClickHandler(singleShotEventListner);
+        pushButton.addTouchStartHandler(singleShotEventListner);
+        pushButton.addTouchMoveHandler(singleShotEventListner);
+        pushButton.addTouchEndHandler(singleShotEventListner);
+//        final int rowCount = flexTable.getRowCount();
+        flexTable.setWidget(rowIndex, columnIndex, pushButton);
     }
 
     public void preloadImage(SafeUri imagePath, final TimedStimulusListener timedStimulusListener) {

@@ -21,7 +21,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     Author     : Peter Withers <peter.withers@mpi.nl>
 -->
 
-<experiment displayName="Test Experiment" localStorageName="TestExperiment" dataSubmitUrl="http://localhost:8080/frinex/addscreenview" staticFilesUrl="static/">
+<experiment displayName="Test Experiment" localStorageName="TestExperiment" dataSubmitUrl="http://localhost:8080/frinex/" staticFilesUrl="static/">
     <metadata>
         <field postName="playername" registrationField="Player name *" controlledRegex=".'{'3,'}'" controlledMessage="Please enter at least three letters." />
         <field postName="age" fieldValues="0-10,11-20,&gt;20" registrationField="Age" />
@@ -36,6 +36,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <menuItem fieldName="menuLabelResultsPage" target="ResultsPage"/>
         <menuItem fieldName="menuLabelStimulusPage" target="StimulusPage"/>
         <menuItem fieldName="menuLabelMetadata" target="Metadata"/>
+        <menuItem fieldName="menuLabelStimulusGrid" target="StimulusGrid"/>
+    </presenter>
+    <presenter type="stimulus" menuLabel="Toggle Stimulus" back="MainMenu" self="StimulusGrid">
+        <showStimulusGrid>
+        <stimulusAudio timeToNext="0">
+            <optionButton fieldName="completeLabel" target="ResultsPage">Done</optionButton>
+        </stimulusAudio>
+        </showStimulusGrid>
     </presenter>
     <presenter type="preload" menuLabel="Preload Stimulus" back="MainMenu" self="PreloadStimulus">
         <htmlText fieldName="preloadingMessage">Preloading image files</htmlText>
@@ -61,7 +69,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <logTimeStamp tagName="stimulus1Shown" />
             <showCurrentMs/>
             <stimulusImage width="50" timeToNext="1000">         
-            <logTimeStamp tagName="stimulus2Shown" />
+                <logTimeStamp tagName="stimulus2Shown" />
                 <showCurrentMs/>
                 <stimulusAudio timeToNext="2000">
                     <showCurrentMs/>
