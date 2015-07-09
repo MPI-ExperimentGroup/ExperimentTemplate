@@ -19,7 +19,7 @@ package nl.ru.languageininteraction.language.client.presenter;
 
 import nl.mpi.tg.eg.experiment.client.presenter.Presenter;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.ArrayList;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
@@ -63,7 +63,7 @@ public class ChoosePlayerPresenter extends AbstractSvgPresenter implements Prese
                     }
 
                     @Override
-                    public void eventFired(Button button) {
+                    public void eventFired(ButtonBase button) {
                         appEventListner.requestApplicationState(ApplicationState.playerdetails);
                     }
                 });
@@ -76,7 +76,7 @@ public class ChoosePlayerPresenter extends AbstractSvgPresenter implements Prese
                     }
 
                     @Override
-                    public void eventFired(Button button) {
+                    public void eventFired(ButtonBase button) {
                         appEventListner.requestApplicationState(ApplicationState.version);
                     }
                 });
@@ -89,7 +89,7 @@ public class ChoosePlayerPresenter extends AbstractSvgPresenter implements Prese
                     }
 
                     @Override
-                    public void eventFired(Button button) {
+                    public void eventFired(ButtonBase button) {
                         appEventListner.requestApplicationState(ApplicationState.locale);
                     }
                 });
@@ -102,7 +102,7 @@ public class ChoosePlayerPresenter extends AbstractSvgPresenter implements Prese
                     }
 
                     @Override
-                    public void eventFired(Button button) {
+                    public void eventFired(ButtonBase button) {
                         appEventListner.requestApplicationState(ApplicationState.tutorial);
                     }
                 });
@@ -114,7 +114,7 @@ public class ChoosePlayerPresenter extends AbstractSvgPresenter implements Prese
             }
 
             @Override
-            public void eventFired(Button button) {
+            public void eventFired(ButtonBase button) {
                 appEventListner.requestApplicationState(ApplicationState.tutorialorguessround);
             }
         });
@@ -126,7 +126,7 @@ public class ChoosePlayerPresenter extends AbstractSvgPresenter implements Prese
             }
 
             @Override
-            public void eventFired(Button button) {
+            public void eventFired(ButtonBase button) {
                 userResults.setUser(new UserData());
                 appEventListner.requestApplicationState(ApplicationState.playerdetails);
             }
@@ -139,7 +139,7 @@ public class ChoosePlayerPresenter extends AbstractSvgPresenter implements Prese
             }
 
             @Override
-            public void eventFired(Button button) {
+            public void eventFired(ButtonBase button) {
                 ArrayList<PresenterEventListner> playerListeners = new ArrayList<>();
                 int selectedIndex = 0;
                 int currentIndex = 0;
@@ -156,7 +156,7 @@ public class ChoosePlayerPresenter extends AbstractSvgPresenter implements Prese
                         }
 
                         @Override
-                        public void eventFired(Button button) {
+                        public void eventFired(ButtonBase button) {
                             userResults.setUser(localStorage.getStoredData(labelData.getUserId()));
                             ((ChoosePlayerView) abstractSvgView).setUserNameField(userResults.getUserData().getMetadataValue(metadataFieldProvider.playernameMetadataField));
                         }

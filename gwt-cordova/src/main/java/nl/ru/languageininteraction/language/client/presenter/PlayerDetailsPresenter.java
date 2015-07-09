@@ -19,7 +19,7 @@ package nl.ru.languageininteraction.language.client.presenter;
 
 import nl.mpi.tg.eg.experiment.client.presenter.Presenter;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
@@ -74,7 +74,7 @@ public class PlayerDetailsPresenter extends AbstractSvgPresenter implements Pres
             }
 
             @Override
-            public void eventFired(Button button) {
+            public void eventFired(ButtonBase button) {
                 userResults.getUserData().setMetadataValue(metadataFieldProvider.ageMetadataField, metadataFieldProvider.ageMetadataField.getControlledVocabulary()[0]);
                 playerDetailsView.setAge1();
             }
@@ -87,7 +87,7 @@ public class PlayerDetailsPresenter extends AbstractSvgPresenter implements Pres
             }
 
             @Override
-            public void eventFired(Button button) {
+            public void eventFired(ButtonBase button) {
                 userResults.getUserData().setMetadataValue(metadataFieldProvider.ageMetadataField, metadataFieldProvider.ageMetadataField.getControlledVocabulary()[1]);
                 playerDetailsView.setAge2();
             }
@@ -100,7 +100,7 @@ public class PlayerDetailsPresenter extends AbstractSvgPresenter implements Pres
             }
 
             @Override
-            public void eventFired(Button button) {
+            public void eventFired(ButtonBase button) {
                 userResults.getUserData().setMetadataValue(metadataFieldProvider.ageMetadataField, metadataFieldProvider.ageMetadataField.getControlledVocabulary()[2]);
                 playerDetailsView.setAge3();
             }
@@ -113,7 +113,7 @@ public class PlayerDetailsPresenter extends AbstractSvgPresenter implements Pres
             }
 
             @Override
-            public void eventFired(Button button) {
+            public void eventFired(ButtonBase button) {
 //                boolean shareAgreed = metadataFieldProvider.shareMetadataField.getControlledVocabulary()[0].equals(userResults.getUserData().getMetadataValue(metadataFieldProvider.shareMetadataField));
 //                if (shareAgreed) {
 ////                    userResults.getUserData().setMetadataValue(metadataFieldProvider.shareMetadataField, metadataFieldProvider.shareMetadataField.getControlledVocabulary()[1]);
@@ -133,7 +133,7 @@ public class PlayerDetailsPresenter extends AbstractSvgPresenter implements Pres
             }
 
             @Override
-            public void eventFired(Button button) {
+            public void eventFired(ButtonBase button) {
                 final TextBox userNameBox = new TextBox();
                 userNameBox.setStylePrimaryName("popupTextBox");
                 userNameBox.setValue(userResults.getUserData().getMetadataValue(metadataFieldProvider.playernameMetadataField));
@@ -145,7 +145,7 @@ public class PlayerDetailsPresenter extends AbstractSvgPresenter implements Pres
                     }
 
                     @Override
-                    public void eventFired(Button button) {
+                    public void eventFired(ButtonBase button) {
                         userResults.getUserData().setMetadataValue(metadataFieldProvider.playernameMetadataField, userNameBox.getValue());
                         playerDetailsView.setUserNameField(userResults.getUserData().getMetadataValue(metadataFieldProvider.playernameMetadataField));
                     }

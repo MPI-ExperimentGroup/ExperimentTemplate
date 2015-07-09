@@ -18,7 +18,7 @@
 package nl.mpi.tg.eg.experiment.client.presenter;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.Messages;
@@ -50,7 +50,7 @@ public abstract class AbstractPresenter implements Presenter {
             backEventListner = new PresenterEventListner() {
 
                 @Override
-                public void eventFired(Button button) {
+                public void eventFired(ButtonBase button) {
                     appEventListner.requestApplicationState(prevState);
                 }
 
@@ -63,7 +63,7 @@ public abstract class AbstractPresenter implements Presenter {
             backEventListner = new PresenterEventListner() {
 
                 @Override
-                public void eventFired(Button button) {
+                public void eventFired(ButtonBase button) {
                     appEventListner.requestApplicationState(ApplicationState.end);
                 }
 
@@ -78,7 +78,7 @@ public abstract class AbstractPresenter implements Presenter {
             nextEventListner = new PresenterEventListner() {
 
                 @Override
-                public void eventFired(Button button) {
+                public void eventFired(ButtonBase button) {
                     appEventListner.requestApplicationState(nextState);
                 }
 

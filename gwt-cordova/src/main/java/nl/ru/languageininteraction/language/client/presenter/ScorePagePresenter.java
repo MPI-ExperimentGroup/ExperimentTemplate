@@ -23,7 +23,7 @@ import com.google.gwt.core.client.JsArray;
 import com.google.gwt.http.client.URL;
 import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.i18n.shared.DateTimeFormat;
-import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.Date;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
@@ -74,7 +74,7 @@ public class ScorePagePresenter implements Presenter {
             backEventListner = new PresenterEventListner() {
 
                 @Override
-                public void eventFired(Button button) {
+                public void eventFired(ButtonBase button) {
                     audioPlayer.stopAll();
                     appEventListner.requestApplicationState(prevState);
                 }
@@ -88,7 +88,7 @@ public class ScorePagePresenter implements Presenter {
             backEventListner = new PresenterEventListner() {
 
                 @Override
-                public void eventFired(Button button) {
+                public void eventFired(ButtonBase button) {
                     audioPlayer.stopAll();
                     appEventListner.requestApplicationState(ApplicationState.chooseplayer);
                 }
@@ -102,7 +102,7 @@ public class ScorePagePresenter implements Presenter {
         scorePageView.setEditUserListner(new PresenterEventListner() {
 
             @Override
-            public void eventFired(Button button) {
+            public void eventFired(ButtonBase button) {
                 appEventListner.requestApplicationState(ApplicationState.playerdetails);
             }
 
@@ -114,7 +114,7 @@ public class ScorePagePresenter implements Presenter {
         scorePageView.setJustContinueListner(new PresenterEventListner() {
 
             @Override
-            public void eventFired(Button button) {
+            public void eventFired(ButtonBase button) {
                 audioPlayer.stopAll();
 //                userResults.getUserData().setMetadataValue(metadataFieldProvider.shareMetadataField, metadataFieldProvider.shareMetadataField.getControlledVocabulary()[1]);
                 try {
@@ -135,7 +135,7 @@ public class ScorePagePresenter implements Presenter {
         scorePageView.setShareContinueListner(new PresenterEventListner() {
 
             @Override
-            public void eventFired(Button button) {
+            public void eventFired(ButtonBase button) {
                 audioPlayer.stopAll();
 //                userResults.getUserData().setMetadataValue(metadataFieldProvider.shareMetadataField, metadataFieldProvider.shareMetadataField.getControlledVocabulary()[0]);
                 try {
@@ -171,7 +171,7 @@ public class ScorePagePresenter implements Presenter {
             }
 
             @Override
-            public void eventFired(Button button) {
+            public void eventFired(ButtonBase button) {
                 audioPlayer.stopAll();
                 final NumberFormat numberFormat2 = NumberFormat.getFormat("0");
                 new SocialMediaPost().postImageAndLink(

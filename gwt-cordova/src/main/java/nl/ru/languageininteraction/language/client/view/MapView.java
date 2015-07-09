@@ -26,7 +26,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -58,7 +58,7 @@ public class MapView extends SimpleView {
             }
 
             @Override
-            public void eventFired(Button button) {
+            public void eventFired(ButtonBase button) {
 //                final Element svgElement = Document.get().getElementById("zoomableGroup");
                 zoomFactor *= 0.5;
 //                svgElement.setAttribute("transform", "scale(" + zoomFactor + ")");
@@ -78,7 +78,7 @@ public class MapView extends SimpleView {
             }
 
             @Override
-            public void eventFired(Button button) {
+            public void eventFired(ButtonBase button) {
 //                final Element svgElement = Document.get().getElementById("zoomableGroup");
                 zoomFactor *= 1.5;
 //                svgElement.setAttribute("transform", "scale(" + zoomFactor + ")");

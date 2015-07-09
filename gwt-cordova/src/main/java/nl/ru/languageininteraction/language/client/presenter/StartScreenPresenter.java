@@ -18,7 +18,7 @@
 package nl.ru.languageininteraction.language.client.presenter;
 
 import nl.mpi.tg.eg.experiment.client.presenter.Presenter;
-import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.ru.languageininteraction.language.client.StartScreenBuilder;
@@ -46,7 +46,7 @@ public class StartScreenPresenter extends AbstractSvgPresenter implements Presen
             }
 
             @Override
-            public void eventFired(Button button) {
+            public void eventFired(ButtonBase button) {
                 appEventListner.requestApplicationState(ApplicationState.version);
             }
         }, new PresenterEventListner() {
@@ -57,7 +57,7 @@ public class StartScreenPresenter extends AbstractSvgPresenter implements Presen
             }
 
             @Override
-            public void eventFired(Button button) {
+            public void eventFired(ButtonBase button) {
                 appEventListner.requestApplicationState(ApplicationState.chooseplayer);
             }
         }, new PresenterEventListner() {
@@ -68,7 +68,7 @@ public class StartScreenPresenter extends AbstractSvgPresenter implements Presen
             }
 
             @Override
-            public void eventFired(Button button) {
+            public void eventFired(ButtonBase button) {
                 appEventListner.requestApplicationState(ApplicationState.locale);
             }
         }, new PresenterEventListner() {
@@ -79,7 +79,7 @@ public class StartScreenPresenter extends AbstractSvgPresenter implements Presen
             }
 
             @Override
-            public void eventFired(Button button) {
+            public void eventFired(ButtonBase button) {
                 appEventListner.requestApplicationState(ApplicationState.tutorial);
             }
         },

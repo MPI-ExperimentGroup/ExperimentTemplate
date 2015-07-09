@@ -18,7 +18,7 @@
 package nl.ru.languageininteraction.language.client.presenter;
 
 import nl.mpi.tg.eg.experiment.client.presenter.Presenter;
-import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
@@ -56,7 +56,7 @@ public abstract class AbstractSvgPresenter implements Presenter {
             backEventListner = new PresenterEventListner() {
 
                 @Override
-                public void eventFired(Button button) {
+                public void eventFired(ButtonBase button) {
                     audioPlayer.stopAll();
                     appEventListner.requestApplicationState(prevState);
                 }
@@ -70,7 +70,7 @@ public abstract class AbstractSvgPresenter implements Presenter {
             backEventListner = new PresenterEventListner() {
 
                 @Override
-                public void eventFired(Button button) {
+                public void eventFired(ButtonBase button) {
                     audioPlayer.stopAll();
                     appEventListner.requestApplicationState(ApplicationState.menu);
                 }
@@ -85,7 +85,7 @@ public abstract class AbstractSvgPresenter implements Presenter {
             nextEventListner = new PresenterEventListner() {
 
                 @Override
-                public void eventFired(Button button) {
+                public void eventFired(ButtonBase button) {
                     audioPlayer.stopAll();
                     if (nextEventFired()) {
                         appEventListner.requestApplicationState(nextState);

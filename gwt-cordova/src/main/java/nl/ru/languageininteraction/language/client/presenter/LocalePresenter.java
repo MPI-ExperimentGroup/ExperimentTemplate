@@ -21,7 +21,7 @@ import nl.mpi.tg.eg.experiment.client.presenter.Presenter;
 import nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter;
 import com.google.gwt.i18n.client.LocaleInfo;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
@@ -54,7 +54,7 @@ public class LocalePresenter extends AbstractPresenter implements Presenter {
                 ((MenuView) simpleView).addMenuItem(new PresenterEventListner() {
 
                     @Override
-                    public void eventFired(Button button) {
+                    public void eventFired(ButtonBase button) {
                         final String queryString = Window.Location.getQueryString();
                         final String localeGet = "locale=";
                         final String updatedPathValue;

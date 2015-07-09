@@ -17,7 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.listener;
 
-import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.ButtonBase;
 
 /**
  * @since Oct 28, 2014 12:16:19 PM (creation date)
@@ -27,5 +27,5 @@ public interface PresenterEventListner {
 
     public String getLabel();
 
-    public void eventFired(Button button);
+    public void eventFired(ButtonBase button);
 }

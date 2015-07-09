@@ -18,7 +18,7 @@
 package nl.ru.languageininteraction.language.client.view;
 
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
-import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.ListBox;
 import java.util.List;
 import nl.ru.languageininteraction.language.client.ChoosePlayerScreenBuilder;
@@ -146,7 +146,7 @@ public class ChoosePlayerView extends AbstractSvgView {
             }
 
             @Override
-            public void eventFired(Button button) {
+            public void eventFired(ButtonBase button) {
                 playerListeners.get(listBox.getSelectedIndex()).eventFired(null);
             }
         }, listBox);

@@ -17,9 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.presenter;
 
-import nl.mpi.tg.eg.experiment.client.presenter.Presenter;
-import nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter;
-import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.view.MetadataView;
@@ -52,7 +50,7 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
         saveEventListner = new PresenterEventListner() {
 
             @Override
-            public void eventFired(Button button) {
+            public void eventFired(ButtonBase button) {
                 try {
                     ((MetadataView) simpleView).clearErrors();
                     validateFields();
@@ -80,7 +78,7 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
             }
 
             @Override
-            public void eventFired(Button button) {
+            public void eventFired(ButtonBase button) {
                 saveEventListner.eventFired(button);
             }
         });

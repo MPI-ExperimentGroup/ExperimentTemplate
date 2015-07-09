@@ -19,6 +19,7 @@ package nl.ru.languageininteraction.language.client.presenter;
 
 import nl.mpi.tg.eg.experiment.client.presenter.Presenter;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.ru.languageininteraction.language.client.ExplainDataSharingScreenBuilder;
@@ -48,7 +49,7 @@ public class ExplainDataSharingScreenPresenter extends AbstractSvgPresenter impl
             }
 
             @Override
-            public void eventFired(Button button) {
+            public void eventFired(ButtonBase button) {
                 // shareAgreed
                 final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
                 userResults.getUserData().setMetadataValue(metadataFieldProvider.shareMetadataField, metadataFieldProvider.shareMetadataField.getControlledVocabulary()[0]);
@@ -63,7 +64,7 @@ public class ExplainDataSharingScreenPresenter extends AbstractSvgPresenter impl
             }
 
             @Override
-            public void eventFired(Button button) {
+            public void eventFired(ButtonBase button) {
                 new LocalStorage().storeData(userResults);
                 appEventListner.requestApplicationState(ApplicationState.guessround);
             }
