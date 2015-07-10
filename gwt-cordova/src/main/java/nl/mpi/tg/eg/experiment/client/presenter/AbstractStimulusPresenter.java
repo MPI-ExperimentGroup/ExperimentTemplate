@@ -22,6 +22,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import java.util.ArrayList;
 import java.util.HashSet;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
@@ -72,7 +73,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), tagName, duration.elapsedMillis());
     }
 
-    protected void showStimulusGrid(final TimedStimulusListener listener) {
+    protected void showStimulusGrid(final TimedStimulusListener listener, final int columnCount, final String imageWidth) {
+        final ArrayList<ButtonBase> buttonList = new ArrayList<>();
         ((TimedStimulusView) simpleView).startGrid();
         int imageCounter = 0;
         HashSet<String> hashSet = new HashSet<>();
@@ -80,7 +82,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             final String nextJpg = stimulusProvider.getNextStimulus().getJpg();
             if (!hashSet.contains(nextJpg)) {
                 hashSet.add(nextJpg);
-                ((TimedStimulusView) simpleView).addImageItem(new PresenterEventListner() {
+                buttonList.add(((TimedStimulusView) simpleView).addImageItem(new PresenterEventListner() {
 
                     @Override
                     public String getLabel() {
@@ -89,9 +91,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
                     @Override
                     public void eventFired(ButtonBase button) {
+                        for (ButtonBase currentButton : buttonList) {
+                            currentButton.setEnabled(false);
+                        }
+                        button.addStyleName("stimulusButtonHighlight");
                         listener.postLoadTimerFired();
                     }
-                }, UriUtils.fromString(serviceLocations.staticFilesUrl() + nextJpg), imageCounter / 3, imageCounter++ % 3, "100px");
+                }, UriUtils.fromString(serviceLocations.staticFilesUrl() + nextJpg), imageCounter / columnCount, imageCounter++ % columnCount, imageWidth));
             }
         }
         ((TimedStimulusView) simpleView).endGrid();

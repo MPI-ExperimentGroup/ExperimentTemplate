@@ -77,7 +77,7 @@
     width: 100%;
 }
 
-.svgPopupPanel .gwt-Button,
+.svgPopupPanel .gwt-Button, 
 .stimulusHelpPanel .gwt-Button,
 .choosePlayerList,
 .gwt-Button.stimulusButton, .gwt-Button.stimulusQuitButton {
@@ -116,7 +116,7 @@
 .svgPopupPanel .gwt-Button,
 .choosePlayerList,
 .stimulusHelpPanel .gwt-Button, .stimulusHelpText,
-#widgetTag, .stimulusScreen, .menuTable, .gwt-Label.stimulusProgressLabel, .gwt-Button.nextButton, .gwt-Button.menuButton,.gwt-Button.stimulusHelpButton, .gwt-Button.stimulusQuitButton, .gwt-Button.stimulusButton, .gwt-Button.optionButton, .gwt-Label.headerButton {
+#widgetTag, .stimulusScreen, .menuTable, .gwt-Label.stimulusProgressLabel, .gwt-Button.nextButton, .gwt-Button.menuButton,.gwt-PushButton.stimulusButton,.gwt-Button.stimulusHelpButton, .gwt-Button.stimulusQuitButton, .gwt-Button.stimulusButton, .gwt-Button.optionButton, .gwt-Label.headerButton {
     /* prevent text selection on the buttons */
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -134,12 +134,13 @@
 
 /*.gwt-Button.nextButton:disabled,*/ 
 /*, .gwt-Button.optionButton:disabled, .gwt-Label.headerButton:disabled {*/
+.gwt-PushButton.stimulusButton:hover:disabled,
 .gwt-Button.menuButton:hover:disabled {
     border: none;
 }
 
 /*.gwt-Button.nextButton:hover, .gwt-Button.menuButton:hover, .gwt-Button.optionButton:hover, .gwt-Label.headerButton:hover, */
-.gwt-Button.nextButton:active, .gwt-Button.menuButton:active, .gwt-Button.optionButton:active, .gwt-Label.headerButton:active {
+.gwt-Button.nextButton:active, .gwt-Button.menuButton:active,.gwt-PushButton.stimulusButton:active, .gwt-Button.optionButton:active, .gwt-Label.headerButton:active {
     /*background:#eddbc2;*/
     /*background:rgb(246,170,139);*/
     background:lightgrey;
@@ -147,7 +148,7 @@
 }
 
 .choosePlayerList,
-.gwt-Button.nextButton, .gwt-Button.menuButton,.gwt-Button.stimulusHelpButton, .gwt-Button.stimulusQuitButton, .gwt-Button.stimulusButton, .gwt-Button.optionButton, .gwt-Label.headerButton {
+.gwt-Button.nextButton, .gwt-Button.menuButton,.gwt-PushButton.stimulusButton,.gwt-Button.stimulusHelpButton, .gwt-Button.stimulusQuitButton, .gwt-Button.stimulusButton, .gwt-Button.optionButton, .gwt-Label.headerButton {
     cursor: pointer;
     border-width: 0px;
     border-style: none;
@@ -167,7 +168,7 @@
     height: 40px;
 }
 
-.gwt-Button.menuButton {
+.gwt-Button.menuButton,.gwt-PushButton.stimulusButton {
     /*background:rgb(246,170,139);*/
     display: block;
     display: inline-block;
@@ -297,7 +298,7 @@ canvas {
 .svgPopupPanel .gwt-Button,
 table#screenExample td, .stimulusHelpPanel .gwt-Button, .stimulusHelpText, .popupTextBox,
 .gwt-Label, .gwt-HTML, .gwt-CheckBox, .pageLink, .contentBody, .metadataError, .metadataOK, .metadataErrorMessage,
-.gwt-Button.nextButton, .gwt-Button.menuButton,.gwt-Button.stimulusHelpButton, .gwt-Button.stimulusQuitButton, .gwt-Button.stimulusButton, .gwt-Button.optionButton, .gwt-Label.headerButton {  
+.gwt-Button.nextButton, .gwt-Button.menuButton,.gwt-PushButton.stimulusButton,.gwt-Button.stimulusHelpButton, .gwt-Button.stimulusQuitButton, .gwt-Button.stimulusButton, .gwt-Button.optionButton, .gwt-Label.headerButton {  
     font-size: 17pt;
     /*    
     font-family: Georgia, Times, "Times New Roman", serif;
@@ -328,12 +329,22 @@ table#screenExample td, .stimulusHelpPanel .gwt-Button, .stimulusHelpText, .popu
     line-height: 20pt;
 } 
 
+.gwt-PushButton.stimulusButtonHighlight{
+    border: 7px outset #994646;
+}
+
+.gwt-PushButton.stimulusButton{
+    width: 50%;    
+    margin-left: auto;
+    margin-right: auto; 
+}
+
 .choosePlayerList,
 .svgPopupPanel .gwt-Button,
 .stimulusHelpText, .popupTextBox,
 table#screenExample td, .stimulusHelpPanel .gwt-Button,
 .gwt-Label, .gwt-HTML, .headerLabel, .resultsTableTitle, .gwt-CheckBox, .pageLink, .contentBody, .metadataErrorMessage,
-.gwt-Button.nextButton, .gwt-Button.menuButton,.gwt-Button.stimulusHelpButton, .gwt-Button.stimulusQuitButton, .gwt-Button.stimulusButton, .gwt-Button.optionButton, .gwt-Label.headerButton 
+.gwt-Button.nextButton, .gwt-Button.menuButton,.gwt-PushButton.stimulusButton,.gwt-Button.stimulusHelpButton, .gwt-Button.stimulusQuitButton, .gwt-Button.stimulusButton, .gwt-Button.optionButton, .gwt-Label.headerButton 
 {
     font-family: Calibri, "Open Sans", "Droid Sans", Arial, Candara, Segoe, "Segoe UI", Optima, sans-serif;
 }
@@ -341,12 +352,12 @@ table#screenExample td, .stimulusHelpPanel .gwt-Button,
 #widgetTag {
     height: 100%;
     background-color:#eddbc2;
-   
 
-/*    background: -webkit-linear-gradient(#eddbc2, #e8c571);  For Safari 5.1 to 6.0 
-    background: -o-linear-gradient(#eddbc2, #e8c571);  For Opera 11.1 to 12.0 
-    background: -moz-linear-gradient(#eddbc2, #e8c571);  For Firefox 3.6 to 15 
-    background: linear-gradient(#eddbc2, #e8c571);  Standard syntax (must be last) */
+
+    /*    background: -webkit-linear-gradient(#eddbc2, #e8c571);  For Safari 5.1 to 6.0 
+        background: -o-linear-gradient(#eddbc2, #e8c571);  For Opera 11.1 to 12.0 
+        background: -moz-linear-gradient(#eddbc2, #e8c571);  For Firefox 3.6 to 15 
+        background: linear-gradient(#eddbc2, #e8c571);  Standard syntax (must be last) */
 }
 
 /* example stimulus screen table */

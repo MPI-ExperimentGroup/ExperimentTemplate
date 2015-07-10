@@ -39,7 +39,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <menuItem fieldName="menuLabelStimulusGrid" target="StimulusGrid"/>
     </presenter>
     <presenter type="stimulus" menuLabel="Toggle Stimulus" back="MainMenu" self="StimulusGrid">
-        <showStimulusGrid>
+        <showStimulusGrid columnCount="3" imageWidth="100px">
             <optionButton fieldName="completeLabel" target="ResultsPage">Done</optionButton>
         </showStimulusGrid>
         <stimulusAudio timeToNext="0">

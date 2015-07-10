@@ -21,6 +21,7 @@ import com.google.gwt.event.dom.client.LoadEvent;
 import com.google.gwt.event.dom.client.LoadHandler;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.Image;
@@ -56,11 +57,11 @@ public class TimedStimulusView extends ComplexView {
         flexTable = null;
     }
 
-    public void addImageItem(final PresenterEventListner menuItemListerner, final SafeUri imagePath, final int rowIndex, final int columnIndex,final String widthString) {
+    public ButtonBase addImageItem(final PresenterEventListner menuItemListerner, final SafeUri imagePath, final int rowIndex, final int columnIndex, final String widthString) {
         final Image image = new Image(imagePath);
         image.setHeight(widthString);
         final PushButton pushButton = new PushButton(image);
-        pushButton.addStyleName("menuButton");
+        pushButton.addStyleName("stimulusButton");
         pushButton.setEnabled(true);
         final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
 
@@ -77,6 +78,7 @@ public class TimedStimulusView extends ComplexView {
         pushButton.addTouchEndHandler(singleShotEventListner);
 //        final int rowCount = flexTable.getRowCount();
         flexTable.setWidget(rowIndex, columnIndex, pushButton);
+        return pushButton;
     }
 
     public void preloadImage(SafeUri imagePath, final TimedStimulusListener timedStimulusListener) {
