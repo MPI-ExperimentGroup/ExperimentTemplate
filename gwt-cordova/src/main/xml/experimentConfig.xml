@@ -40,10 +40,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     </presenter>
     <presenter type="stimulus" menuLabel="Toggle Stimulus" back="MainMenu" self="StimulusGrid">
         <showStimulusGrid>
-        <stimulusAudio timeToNext="0">
             <optionButton fieldName="completeLabel" target="ResultsPage">Done</optionButton>
-        </stimulusAudio>
         </showStimulusGrid>
+        <stimulusAudio timeToNext="0">
+        </stimulusAudio>
     </presenter>
     <presenter type="preload" menuLabel="Preload Stimulus" back="MainMenu" self="PreloadStimulus">
         <htmlText fieldName="preloadingMessage">Preloading image files</htmlText>

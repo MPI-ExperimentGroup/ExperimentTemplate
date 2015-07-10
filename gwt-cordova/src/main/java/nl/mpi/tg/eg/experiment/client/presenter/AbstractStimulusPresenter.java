@@ -22,6 +22,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import java.util.HashSet;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
@@ -74,20 +75,25 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     protected void showStimulusGrid(final TimedStimulusListener listener) {
         ((TimedStimulusView) simpleView).startGrid();
         int imageCounter = 0;
+        HashSet<String> hashSet = new HashSet<>();
         while (stimulusProvider.hasNextStimulus()) {
-            ((TimedStimulusView) simpleView).addImageItem(new PresenterEventListner() {
+            final String nextJpg = stimulusProvider.getNextStimulus().getJpg();
+            if (!hashSet.contains(nextJpg)) {
+                hashSet.add(nextJpg);
+                ((TimedStimulusView) simpleView).addImageItem(new PresenterEventListner() {
 
-                @Override
-                public String getLabel() {
-                    return "";
-                }
+                    @Override
+                    public String getLabel() {
+                        return "";
+                    }
 
-                @Override
-                public void eventFired(ButtonBase button) {
-                }
-            }, UriUtils.fromString(serviceLocations.staticFilesUrl() + stimulusProvider.getNextStimulus().getJpg()), imageCounter / 3, imageCounter++ % 3);
+                    @Override
+                    public void eventFired(ButtonBase button) {
+                        listener.postLoadTimerFired();
+                    }
+                }, UriUtils.fromString(serviceLocations.staticFilesUrl() + nextJpg), imageCounter / 3, imageCounter++ % 3, "100px");
+            }
         }
         ((TimedStimulusView) simpleView).endGrid();
-        listener.postLoadTimerFired();
     }
 }

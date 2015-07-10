@@ -56,8 +56,10 @@ public class TimedStimulusView extends ComplexView {
         flexTable = null;
     }
 
-    public void addImageItem(final PresenterEventListner menuItemListerner, final SafeUri imagePath, final int rowIndex, final int columnIndex) {
-        final PushButton pushButton = new PushButton(new Image(imagePath));
+    public void addImageItem(final PresenterEventListner menuItemListerner, final SafeUri imagePath, final int rowIndex, final int columnIndex,final String widthString) {
+        final Image image = new Image(imagePath);
+        image.setHeight(widthString);
+        final PushButton pushButton = new PushButton(image);
         pushButton.addStyleName("menuButton");
         pushButton.setEnabled(true);
         final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
