@@ -272,7 +272,7 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
         public void postLoadTimerFired() {
             </xsl:text><xsl:apply-templates/><xsl:text>
         }
-    }</xsl:text><xsl:value-of select="if(@columnCount) then concat(', ', @columnCount) else ''" /><xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" /><xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" /><xsl:text>);
+    }</xsl:text><xsl:value-of select="if(@columnCount) then concat(', ', @columnCount) else ''" /><xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" /><xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" /><xsl:value-of select="if(@alternativeChoice) then concat(', &quot;', @alternativeChoice, '&quot;') else ''" /><xsl:text>);
 </xsl:text>
     </xsl:template>
 <xsl:template match="stimulusImage">
