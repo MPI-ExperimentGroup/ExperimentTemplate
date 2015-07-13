@@ -94,7 +94,7 @@ public class MatchLanguagePresenter implements Presenter {
             };
         }
         matchLanguageView.setupScreen(backEventListner, nextEventListner);
-        audioPlayer.addOnEndedListener(new AudioEventListner() {
+        audioPlayer.setOnEndedListener(new AudioEventListner() {
 
             @Override
             public void audioEnded() {

@@ -127,18 +127,18 @@
     /* end prevent text selection on the buttons */
 }
 
-.gwt-Button.stimulusHelpButton:active, .gwt-Button.stimulusQuitButton:active, .gwt-Button.stimulusButton:active, .gwt-Button.stimulusHelpButton:hover, .gwt-Button.stimulusQuitButton:hover, .gwt-Button.stimulusButton:hover {
+.gwt-Button.stimulusHelpButton:active, .gwt-Button.stimulusQuitButton:active, .gwt-Button.stimulusButton:active, .gwt-Button.stimulusHelpButton:hover, .gwt-Button.stimulusQuitButton:hover {
     background:lightgrey;
     border: none;
 }
 
 /*.gwt-Button.nextButton:disabled,*/ 
 /*, .gwt-Button.optionButton:disabled, .gwt-Label.headerButton:disabled {*/
-.gwt-PushButton.stimulusButton:hover:disabled,
+/*.gwt-PushButton.stimulusButton:hover:disabled,
 .gwt-Button.stimulusButton:hover:disabled,
 .gwt-Button.menuButton:hover:disabled {
     border: none;
-}
+}*/
 
 /*.gwt-Button.nextButton:hover, .gwt-Button.menuButton:hover, .gwt-Button.optionButton:hover, .gwt-Label.headerButton:hover, */
 .gwt-Button.nextButton:active, .gwt-Button.menuButton:active,.gwt-PushButton.stimulusButton:active,.gwt-Button.stimulusButton:active, .gwt-Button.optionButton:active, .gwt-Label.headerButton:active {
@@ -331,9 +331,15 @@ table#screenExample td, .stimulusHelpPanel .gwt-Button, .stimulusHelpText, .popu
 } 
 
 .gwt-PushButton.stimulusButtonHighlight,
+.gwt-Button.stimulusButton.stimulusButtonHighlight:hover,
 .gwt-Button.stimulusButtonHighlight{
     border: 7px outset #994646;
-}
+} 
+
+
+/*.gwt-PushButton.stimulusButton.gwt-PushButton-up-hovering, .gwt-Button.stimulusButton:hover{*/
+    /*border: 7px outset lightgrey;*/
+/*}*/
 
 .gwt-PushButton.stimulusButton, .gwt-Button.stimulusButton{
     width: 60%;    

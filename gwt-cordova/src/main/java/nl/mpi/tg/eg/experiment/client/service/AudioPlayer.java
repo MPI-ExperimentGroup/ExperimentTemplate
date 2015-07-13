@@ -40,6 +40,11 @@ public class AudioPlayer {
         createPlayer();
     }
 
+    public Audio getAudioPlayer() {
+        audioPlayer.setVisible(true);
+        return audioPlayer;
+    }
+
     private void createPlayer() throws AudioException {
         audioPlayer = Audio.createIfSupported();
         if (audioPlayer == null) {
@@ -62,7 +67,7 @@ public class AudioPlayer {
         }
     }
 
-    public void addOnEndedListener(AudioEventListner audioEventListner) {
+    public void setOnEndedListener(AudioEventListner audioEventListner) {
         this.audioEventListner = audioEventListner;
     }
 
@@ -103,7 +108,8 @@ public class AudioPlayer {
     public void stopAll() {
 //        audioPlayer.pause();
         if (audioPlayer != null) {
-            audioPlayer.setSrc("");
+            audioPlayer.removeFromParent();
+            audioPlayer = null;
         }
         onEndedAction();
     }

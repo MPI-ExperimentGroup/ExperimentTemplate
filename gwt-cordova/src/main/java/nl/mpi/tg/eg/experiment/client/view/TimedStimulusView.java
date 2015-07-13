@@ -123,7 +123,8 @@ public class TimedStimulusView extends ComplexView {
     }
 
     public void addTimedAudio(SafeUri oggPath, SafeUri mp3Path, long postLoadMs, final TimedStimulusListener timedStimulusListener) {
-        audioPlayer.addOnEndedListener(new AudioEventListner() {
+        audioPlayer.stopAll();
+        audioPlayer.setOnEndedListener(new AudioEventListner() {
 
             @Override
             public void audioEnded() {
@@ -131,5 +132,9 @@ public class TimedStimulusView extends ComplexView {
             }
         });
         audioPlayer.playSample(oggPath, mp3Path);
+    }
+
+    public void addAudioPlayerGui() {
+        outerPanel.add(audioPlayer.getAudioPlayer());
     }
 }

@@ -99,7 +99,7 @@ public abstract class AbstractSvgPresenter implements Presenter {
             };
         }
         abstractSvgView.setupScreen(backEventListner, nextEventListner);
-        audioPlayer.addOnEndedListener(new AudioEventListner() {
+        audioPlayer.setOnEndedListener(new AudioEventListner() {
 
             @Override
             public void audioEnded() {

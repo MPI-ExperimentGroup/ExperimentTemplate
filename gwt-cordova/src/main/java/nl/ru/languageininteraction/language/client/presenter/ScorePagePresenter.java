@@ -185,7 +185,7 @@ public class ScorePagePresenter implements Presenter {
         });
 
         scorePageView.setupScreen(backEventListner, nextEventListner);
-        audioPlayer.addOnEndedListener(new AudioEventListner() {
+        audioPlayer.setOnEndedListener(new AudioEventListner() {
 
             @Override
             public void audioEnded() {
