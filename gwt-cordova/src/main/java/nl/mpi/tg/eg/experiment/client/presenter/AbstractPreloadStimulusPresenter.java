@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experiment.client.presenter;
 import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
@@ -39,14 +40,14 @@ public abstract class AbstractPreloadStimulusPresenter extends AbstractStimulusP
         super(widgetTag, null, submissionService, userResults);
     }
 
-    private void preloadAllStimuli(final HorizontalPanel progressBar, final TimedStimulusListener timedStimulusListener) {
+    private void preloadAllStimuli(final AppEventListner appEventListner, final HorizontalPanel progressBar, final TimedStimulusListener timedStimulusListener) {
         ((TimedStimulusView) simpleView).updateProgressBar(progressBar, 0, stimulusProvider.getTotalStimuli() - stimulusProvider.getRemainingStimuli(), stimulusProvider.getTotalStimuli());
         if (stimulusProvider.hasNextStimulus()) {
             ((TimedStimulusView) simpleView).preloadImage(UriUtils.fromString(serviceLocations.staticFilesUrl() + stimulusProvider.getNextStimulus().getJpg()), new TimedStimulusListener() {
 
                 @Override
                 public void postLoadTimerFired() {
-                    preloadAllStimuli(progressBar, timedStimulusListener);
+                    preloadAllStimuli(appEventListner, progressBar, timedStimulusListener);
                 }
             });
         } else {
@@ -54,8 +55,8 @@ public abstract class AbstractPreloadStimulusPresenter extends AbstractStimulusP
         }
     }
 
-    protected void preloadAllStimuli(final TimedStimulusListener timedStimulusListener) {
+    protected void preloadAllStimuli(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener) {
         final HorizontalPanel progressBar = ((TimedStimulusView) simpleView).addProgressBar(0, 0, stimulusProvider.getTotalStimuli());
-        preloadAllStimuli(progressBar, timedStimulusListener);
+        preloadAllStimuli(appEventListner, progressBar, timedStimulusListener);
     }
 }

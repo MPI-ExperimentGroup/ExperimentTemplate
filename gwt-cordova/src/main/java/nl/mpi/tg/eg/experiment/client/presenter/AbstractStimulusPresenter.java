@@ -24,6 +24,7 @@ import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.ArrayList;
 import java.util.HashSet;
+import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
@@ -46,9 +47,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     final UserResults userResults;
     Stimulus currentStimulus;
     private final Duration duration;
+    final ArrayList<ButtonBase> buttonList = new ArrayList<>();
 
     public AbstractStimulusPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults) {
         super(widgetTag, new TimedStimulusView(audioPlayer));
+        stimulusProvider.getSubset(Stimulus.Similarity.sim); // todo: handle this subsetting of the stimulus 
         currentStimulus = stimulusProvider.getNextStimulus();
         duration = new Duration();
         this.submissionService = submissionService;
@@ -73,23 +76,23 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
     }
 
-    protected void showStimulusGrid(final TimedStimulusListener listener, final int columnCount, final String imageWidth, final String eventTag, final String alternativeChoice) {
+    protected void showStimulusGrid(final AppEventListner appEventListner, final TimedStimulusListener listener, final int columnCount, final String imageWidth, final String eventTag, final String alternativeChoice) {
+        ((TimedStimulusView) simpleView).stopAudio();
         TimedStimulusListener stimulusListener = new TimedStimulusListener() {
 
             @Override
             public void postLoadTimerFired() {
                 if (stimulusProvider.hasNextStimulus()) {
                     currentStimulus = stimulusProvider.getNextStimulus();
+                    buttonList.clear();
                     ((TimedStimulusView) simpleView).clearGui();
-                    setContent(null);
-                    //((TimedStimulusView) simpleView).addHtmlText("remaining: " + stimulusProvider.getRemainingStimuli());
+                    setContent(appEventListner);
                 } else {
                     listener.postLoadTimerFired();
                 }
             }
         };
 
-        final ArrayList<ButtonBase> buttonList = new ArrayList<>();
         ((TimedStimulusView) simpleView).startGrid();
         int imageCounter = 0;
         buttonList.add(((TimedStimulusView) simpleView).addStringItem(getEventListener(buttonList, eventTag, alternativeChoice, stimulusListener), alternativeChoice, 0, 0, imageWidth));
@@ -102,6 +105,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 buttonList.add(((TimedStimulusView) simpleView).addImageItem(getEventListener(buttonList, eventTag, nextJpg, stimulusListener), UriUtils.fromString(serviceLocations.staticFilesUrl() + nextJpg), imageCounter / columnCount, 1 + imageCounter++ % columnCount, imageWidth));
             }
         }
+        disableStimulusButtons();
         ((TimedStimulusView) simpleView).endGrid();
         //((TimedStimulusView) simpleView).addAudioPlayerGui();
     }
@@ -124,5 +128,21 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 listener.postLoadTimerFired();
             }
         };
+    }
+
+    public void disableStimulusButtons() {
+        for (ButtonBase currentButton : buttonList) {
+            currentButton.setEnabled(false);
+        }
+    }
+
+    public void enableStimulusButtons() {
+        for (ButtonBase currentButton : buttonList) {
+            currentButton.setEnabled(true);
+        }
+    }
+
+    public void showStimulusProgress() {
+        ((TimedStimulusView) simpleView).addHtmlText(stimulusProvider.getRemainingStimuli() + " / " + stimulusProvider.getTotalStimuli());
     }
 }

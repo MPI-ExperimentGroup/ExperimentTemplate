@@ -253,7 +253,7 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
 <xsl:text>    ((ComplexView) simpleView).addPadding();
 </xsl:text>
     </xsl:template>
-<xsl:template match="localStorageData|allMetadataFields|eraseLocalStorageButton|showCurrentMs">    
+<xsl:template match="localStorageData|allMetadataFields|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|disableStimulusButtons|showStimulusProgress">    
     <xsl:text>    </xsl:text>    
     <xsl:value-of select ="local-name()"/>
 <xsl:text>();
@@ -266,7 +266,7 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
 </xsl:text>
     </xsl:template>
 <xsl:template match="preloadAllStimuli|showStimulusGrid">
-<xsl:text>    </xsl:text><xsl:value-of select="local-name()" /><xsl:text>(new TimedStimulusListener() {
+<xsl:text>    </xsl:text><xsl:value-of select="local-name()" /><xsl:text>(appEventListner, new TimedStimulusListener() {
 
         @Override
         public void postLoadTimerFired() {

@@ -137,4 +137,8 @@ public class TimedStimulusView extends ComplexView {
     public void addAudioPlayerGui() {
         outerPanel.add(audioPlayer.getAudioPlayer());
     }
+
+    public void stopAudio() {
+        audioPlayer.stopAll();
+    }
 }

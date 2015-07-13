@@ -42,8 +42,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <showStimulusGrid columnCount="2" imageWidth="100px" eventTag="stimulusGrid" alternativeChoice="New Word">
             <optionButton fieldName="completeLabel" target="ResultsPage">Done</optionButton>
         </showStimulusGrid>
+        <disableStimulusButtons/>
         <stimulusAudio timeToNext="0">
+            <enableStimulusButtons/>
         </stimulusAudio>
+        <showStimulusProgress/>
     </presenter>
     <presenter type="preload" menuLabel="Preload Stimulus" back="MainMenu" self="PreloadStimulus">
         <htmlText fieldName="preloadingMessage">Preloading image files</htmlText>

@@ -112,5 +112,6 @@ public class AudioPlayer {
             audioPlayer = null;
         }
         onEndedAction();
+        audioEventListner = null;
     }
 }
