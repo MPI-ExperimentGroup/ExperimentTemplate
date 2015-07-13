@@ -35,7 +35,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
 
     private enum ServiceEndpoint {
 
-        timeStamp, screenChange
+        timeStamp, screenChange, tagEvent
     }
     private final LocalStorage localStorage;
     private final String experimentName;
@@ -46,11 +46,20 @@ public class DataSubmissionService extends AbstractSubmissionService {
         this.experimentName = experimentName;
     }
 
-    public void submitTimeStamp(final UserId userId, String tagName, int eventMs) {
+    public void submitTagValue(final UserId userId, String eventTag, String tagValue, int eventMs) {
+        submitData(ServiceEndpoint.tagEvent, userId, "{\"tagDate\" :\"" + format.format(new Date()) + "\",\n"
+                + "\"experimentName\": \"" + experimentName + "\",\n"
+                + "\"userId\": \"" + userId + "\",\n"
+                + "\"eventTag\": \"" + eventTag + "\",\n"
+                + "\"tagValue\": \"" + tagValue + "\",\n"
+                + "\"eventMs\": \"" + eventMs + "\" \n}");
+    }
+
+    public void submitTimeStamp(final UserId userId, String eventTag, int eventMs) {
         submitData(ServiceEndpoint.timeStamp, userId, "{\"tagDate\" :\"" + format.format(new Date()) + "\",\n"
                 + "\"experimentName\": \"" + experimentName + "\",\n"
                 + "\"userId\": \"" + userId + "\",\n"
-                + "\"tagName\": \"" + tagName + "\",\n"
+                + "\"eventTag\": \"" + eventTag + "\",\n"
                 + "\"eventMs\": \"" + eventMs + "\" \n}");
     }
 
@@ -99,6 +108,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
             }
         };
         try {
+            // todo: add the application build number to the submitted data
             builder.sendRequest("[" + storedScreenData + "]", requestCallback);
         } catch (RequestException exception) {
             logger.log(Level.SEVERE, "submit data failed", exception);

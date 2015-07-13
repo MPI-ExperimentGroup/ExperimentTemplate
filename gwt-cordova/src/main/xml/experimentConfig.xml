@@ -39,7 +39,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <menuItem fieldName="menuLabelStimulusGrid" target="StimulusGrid"/>
     </presenter>
     <presenter type="stimulus" menuLabel="Toggle Stimulus" back="MainMenu" self="StimulusGrid">
-        <showStimulusGrid columnCount="3" imageWidth="100px">
+        <showStimulusGrid columnCount="2" imageWidth="100px" eventTag="stimulusGrid" alternativeChoice="New Word">
             <optionButton fieldName="completeLabel" target="ResultsPage">Done</optionButton>
         </showStimulusGrid>
         <stimulusAudio timeToNext="0">
@@ -48,7 +48,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     <presenter type="preload" menuLabel="Preload Stimulus" back="MainMenu" self="PreloadStimulus">
         <htmlText fieldName="preloadingMessage">Preloading image files</htmlText>
         <preloadAllStimuli>
-            <logTimeStamp tagName="preloaded" />
+            <logTimeStamp eventTag="preloaded" />
             <optionButton fieldName="menuLabelStimulusPage" target="StimulusPage"/>
         </preloadAllStimuli>
     </presenter>
@@ -66,10 +66,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <htmlText fieldName="stimulusHeading">Some Stimulus</htmlText>
         <showCurrentMs/>
         <stimulusImage width="10" timeToNext="1000">            
-            <logTimeStamp tagName="stimulus1Shown" />
+            <logTimeStamp eventTag="stimulus1Shown" />
             <showCurrentMs/>
             <stimulusImage width="50" timeToNext="1000">         
-                <logTimeStamp tagName="stimulus2Shown" />
+                <logTimeStamp eventTag="stimulus2Shown" />
                 <showCurrentMs/>
                 <stimulusAudio timeToNext="2000">
                     <showCurrentMs/>

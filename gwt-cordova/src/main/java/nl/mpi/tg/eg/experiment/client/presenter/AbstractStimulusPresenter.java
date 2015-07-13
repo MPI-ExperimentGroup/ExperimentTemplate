@@ -69,37 +69,43 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addText(duration.elapsedMillis() + "ms");
     }
 
-    protected void logTimeStamp(String tagName) {
-        submissionService.submitTimeStamp(userResults.getUserData().getUserId(), tagName, duration.elapsedMillis());
+    protected void logTimeStamp(String eventTag) {
+        submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
     }
 
-    protected void showStimulusGrid(final TimedStimulusListener listener, final int columnCount, final String imageWidth) {
+    protected void showStimulusGrid(final TimedStimulusListener listener, final int columnCount, final String imageWidth, final String eventTag, final String alternativeChoice) {
         final ArrayList<ButtonBase> buttonList = new ArrayList<>();
         ((TimedStimulusView) simpleView).startGrid();
-        int imageCounter = 0;
+        int imageCounter = 0;        
+        buttonList.add(((TimedStimulusView) simpleView).addStringItem(getEventListener(buttonList, eventTag, alternativeChoice, listener), alternativeChoice, 0, 0, imageWidth));
         HashSet<String> hashSet = new HashSet<>();
         while (stimulusProvider.hasNextStimulus()) {
             final String nextJpg = stimulusProvider.getNextStimulus().getJpg();
             if (!hashSet.contains(nextJpg)) {
                 hashSet.add(nextJpg);
-                buttonList.add(((TimedStimulusView) simpleView).addImageItem(new PresenterEventListner() {
-
-                    @Override
-                    public String getLabel() {
-                        return "";
-                    }
-
-                    @Override
-                    public void eventFired(ButtonBase button) {
-                        for (ButtonBase currentButton : buttonList) {
-                            currentButton.setEnabled(false);
-                        }
-                        button.addStyleName("stimulusButtonHighlight");
-                        listener.postLoadTimerFired();
-                    }
-                }, UriUtils.fromString(serviceLocations.staticFilesUrl() + nextJpg), imageCounter / columnCount, imageCounter++ % columnCount, imageWidth));
+                buttonList.add(((TimedStimulusView) simpleView).addImageItem(getEventListener(buttonList, eventTag, nextJpg, listener), UriUtils.fromString(serviceLocations.staticFilesUrl() + nextJpg), imageCounter / columnCount, 1 + imageCounter++ % columnCount, imageWidth));
             }
         }
         ((TimedStimulusView) simpleView).endGrid();
+    }
+
+    private PresenterEventListner getEventListener(final ArrayList<ButtonBase> buttonList, final String eventTag, final String tagValue, final TimedStimulusListener listener) {
+        return new PresenterEventListner() {
+
+            @Override
+            public String getLabel() {
+                return "";
+            }
+
+            @Override
+            public void eventFired(ButtonBase button) {
+                for (ButtonBase currentButton : buttonList) {
+                    currentButton.setEnabled(false);
+                }
+                button.addStyleName("stimulusButtonHighlight");
+                submissionService.submitTagValue(userResults.getUserData().getUserId(), eventTag, tagValue, duration.elapsedMillis());
+                listener.postLoadTimerFired();
+            }
+        };
     }
 }

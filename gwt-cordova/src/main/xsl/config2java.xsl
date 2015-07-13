@@ -262,7 +262,7 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
 <xsl:template match="logTimeStamp">    
     <xsl:text>    </xsl:text>    
     <xsl:value-of select ="local-name()"/>
-<xsl:text>("</xsl:text><xsl:value-of select="@tagName" /><xsl:text>");
+<xsl:text>("</xsl:text><xsl:value-of select="@eventTag" /><xsl:text>");
 </xsl:text>
     </xsl:template>
 <xsl:template match="preloadAllStimuli|showStimulusGrid">
@@ -272,7 +272,7 @@ public class </xsl:text><xsl:value-of select="@self" /><xsl:text>Presenter exten
         public void postLoadTimerFired() {
             </xsl:text><xsl:apply-templates/><xsl:text>
         }
-    }</xsl:text><xsl:value-of select="if(@columnCount) then concat(', ', @columnCount) else ''" /><xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" /><xsl:text>);
+    }</xsl:text><xsl:value-of select="if(@columnCount) then concat(', ', @columnCount) else ''" /><xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" /><xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" /><xsl:text>);
 </xsl:text>
     </xsl:template>
 <xsl:template match="stimulusImage">
