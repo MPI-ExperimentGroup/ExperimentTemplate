@@ -116,7 +116,7 @@
 .svgPopupPanel .gwt-Button,
 .choosePlayerList,
 .stimulusHelpPanel .gwt-Button, .stimulusHelpText,
-#widgetTag, .stimulusScreen, .menuTable, .gwt-Label.stimulusProgressLabel, .gwt-Button.nextButton, .gwt-Button.menuButton,.gwt-PushButton.stimulusButton,.gwt-Button.stimulusHelpButton, .gwt-Button.stimulusQuitButton, .gwt-Button.stimulusButton, .gwt-Button.optionButton, .gwt-Label.headerButton {
+#widgetTag, .stimulusScreen, .menuTable, .gwt-Label.stimulusProgressLabel, .gwt-Button.nextButton, .gwt-Button.menuButton,.gwt-PushButton.stimulusButton,.gwt-Button.stimulusButton,.gwt-Button.stimulusHelpButton, .gwt-Button.stimulusQuitButton, .gwt-Button.stimulusButton, .gwt-Button.optionButton, .gwt-Label.headerButton {
     /* prevent text selection on the buttons */
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -135,12 +135,13 @@
 /*.gwt-Button.nextButton:disabled,*/ 
 /*, .gwt-Button.optionButton:disabled, .gwt-Label.headerButton:disabled {*/
 .gwt-PushButton.stimulusButton:hover:disabled,
+.gwt-Button.stimulusButton:hover:disabled,
 .gwt-Button.menuButton:hover:disabled {
     border: none;
 }
 
 /*.gwt-Button.nextButton:hover, .gwt-Button.menuButton:hover, .gwt-Button.optionButton:hover, .gwt-Label.headerButton:hover, */
-.gwt-Button.nextButton:active, .gwt-Button.menuButton:active,.gwt-PushButton.stimulusButton:active, .gwt-Button.optionButton:active, .gwt-Label.headerButton:active {
+.gwt-Button.nextButton:active, .gwt-Button.menuButton:active,.gwt-PushButton.stimulusButton:active,.gwt-Button.stimulusButton:active, .gwt-Button.optionButton:active, .gwt-Label.headerButton:active {
     /*background:#eddbc2;*/
     /*background:rgb(246,170,139);*/
     background:lightgrey;
@@ -168,7 +169,7 @@
     height: 40px;
 }
 
-.gwt-Button.menuButton,.gwt-PushButton.stimulusButton {
+.gwt-Button.menuButton,.gwt-PushButton.stimulusButton,.gwt-Button.stimulusButton {
     /*background:rgb(246,170,139);*/
     display: block;
     display: inline-block;
@@ -298,7 +299,7 @@ canvas {
 .svgPopupPanel .gwt-Button,
 table#screenExample td, .stimulusHelpPanel .gwt-Button, .stimulusHelpText, .popupTextBox,
 .gwt-Label, .gwt-HTML, .gwt-CheckBox, .pageLink, .contentBody, .metadataError, .metadataOK, .metadataErrorMessage,
-.gwt-Button.nextButton, .gwt-Button.menuButton,.gwt-PushButton.stimulusButton,.gwt-Button.stimulusHelpButton, .gwt-Button.stimulusQuitButton, .gwt-Button.stimulusButton, .gwt-Button.optionButton, .gwt-Label.headerButton {  
+.gwt-Button.nextButton, .gwt-Button.menuButton,.gwt-PushButton.stimulusButton, .gwt-Button.stimulusButton,.gwt-Button.stimulusHelpButton, .gwt-Button.stimulusQuitButton, .gwt-Button.stimulusButton, .gwt-Button.optionButton, .gwt-Label.headerButton {  
     font-size: 17pt;
     /*    
     font-family: Georgia, Times, "Times New Roman", serif;
@@ -329,14 +330,17 @@ table#screenExample td, .stimulusHelpPanel .gwt-Button, .stimulusHelpText, .popu
     line-height: 20pt;
 } 
 
-.gwt-PushButton.stimulusButtonHighlight{
+.gwt-PushButton.stimulusButtonHighlight,
+.gwt-Button.stimulusButtonHighlight{
     border: 7px outset #994646;
 }
 
-.gwt-PushButton.stimulusButton{
-    width: 50%;    
-    margin-left: auto;
-    margin-right: auto; 
+.gwt-PushButton.stimulusButton, .gwt-Button.stimulusButton{
+    width: 60%;    
+    height: 100%;    
+    /*vertical-align: middle;*/
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .choosePlayerList,
@@ -344,7 +348,7 @@ table#screenExample td, .stimulusHelpPanel .gwt-Button, .stimulusHelpText, .popu
 .stimulusHelpText, .popupTextBox,
 table#screenExample td, .stimulusHelpPanel .gwt-Button,
 .gwt-Label, .gwt-HTML, .headerLabel, .resultsTableTitle, .gwt-CheckBox, .pageLink, .contentBody, .metadataErrorMessage,
-.gwt-Button.nextButton, .gwt-Button.menuButton,.gwt-PushButton.stimulusButton,.gwt-Button.stimulusHelpButton, .gwt-Button.stimulusQuitButton, .gwt-Button.stimulusButton, .gwt-Button.optionButton, .gwt-Label.headerButton 
+.gwt-Button.nextButton, .gwt-Button.menuButton,.gwt-PushButton.stimulusButton,.gwt-Button.stimulusButton,.gwt-Button.stimulusHelpButton, .gwt-Button.stimulusQuitButton, .gwt-Button.stimulusButton, .gwt-Button.optionButton, .gwt-Label.headerButton 
 {
     font-family: Calibri, "Open Sans", "Droid Sans", Arial, Candara, Segoe, "Segoe UI", Optima, sans-serif;
 }
