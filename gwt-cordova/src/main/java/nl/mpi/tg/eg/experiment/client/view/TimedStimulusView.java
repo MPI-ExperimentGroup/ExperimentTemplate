@@ -21,6 +21,7 @@ import com.google.gwt.event.dom.client.LoadEvent;
 import com.google.gwt.event.dom.client.LoadHandler;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
@@ -49,7 +50,6 @@ public class TimedStimulusView extends ComplexView {
         flexTable = new FlexTable();
         flexTable.setStylePrimaryName("menuTable");
         outerPanel.setStylePrimaryName("menuOuter");
-        outerPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
         outerPanel.add(flexTable);
     }
 
@@ -57,10 +57,20 @@ public class TimedStimulusView extends ComplexView {
         flexTable = null;
     }
 
+    public ButtonBase addStringItem(final PresenterEventListner menuItemListerner, final String labelString, final int rowIndex, final int columnIndex, final String widthString) {
+        final Button pushButton = new Button(labelString);
+        return addPushButton(menuItemListerner, pushButton, rowIndex, columnIndex, widthString);
+    }
+
     public ButtonBase addImageItem(final PresenterEventListner menuItemListerner, final SafeUri imagePath, final int rowIndex, final int columnIndex, final String widthString) {
         final Image image = new Image(imagePath);
         image.setHeight(widthString);
         final PushButton pushButton = new PushButton(image);
+        return addPushButton(menuItemListerner, pushButton, rowIndex, columnIndex, widthString);
+    }
+
+    public ButtonBase addPushButton(final PresenterEventListner menuItemListerner, final ButtonBase pushButton, final int rowIndex, final int columnIndex, final String widthString) {
+
         pushButton.addStyleName("stimulusButton");
         pushButton.setEnabled(true);
         final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
@@ -76,8 +86,8 @@ public class TimedStimulusView extends ComplexView {
         pushButton.addTouchStartHandler(singleShotEventListner);
         pushButton.addTouchMoveHandler(singleShotEventListner);
         pushButton.addTouchEndHandler(singleShotEventListner);
-//        final int rowCount = flexTable.getRowCount();
         flexTable.setWidget(rowIndex, columnIndex, pushButton);
+        flexTable.getCellFormatter().setHorizontalAlignment(rowIndex, columnIndex, HasHorizontalAlignment.ALIGN_CENTER);
         return pushButton;
     }
 
