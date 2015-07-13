@@ -39,14 +39,22 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <menuItem fieldName="menuLabelStimulusGrid" target="StimulusGrid"/>
     </presenter>
     <presenter type="stimulus" menuLabel="Toggle Stimulus" back="MainMenu" self="StimulusGrid">
-        <showStimulusGrid columnCount="2" imageWidth="100px" eventTag="stimulusGrid" alternativeChoice="New Word">
+        <showCurrentMs/>    
+        <showStimulusGrid  timeToNext="1000" columnCount="2" imageWidth="100px" eventTag="stimulusGrid" alternativeChoice="New Word">    
+            <showCurrentMs/>       
+            <hideStimulusButtons/>        
             <optionButton fieldName="completeLabel" target="ResultsPage">Done</optionButton>
         </showStimulusGrid>
+        <hideStimulusButtons/>
         <disableStimulusButtons/>
-        <stimulusAudio timeToNext="0">
-            <enableStimulusButtons/>
-        </stimulusAudio>
-        <showStimulusProgress/>
+        <showStimulusProgress/>        
+        <pause timeToNext="1000">
+            <showStimulusButtons/>
+            <stimulusAudio timeToNext="3000">
+                <showCurrentMs/>
+                <enableStimulusButtons/> 
+            </stimulusAudio>
+        </pause>
     </presenter>
     <presenter type="preload" menuLabel="Preload Stimulus" back="MainMenu" self="PreloadStimulus">
         <htmlText fieldName="preloadingMessage">Preloading image files</htmlText>
