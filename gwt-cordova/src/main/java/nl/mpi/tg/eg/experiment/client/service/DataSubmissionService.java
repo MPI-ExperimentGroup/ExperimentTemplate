@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.RequestCallback;
@@ -25,6 +26,7 @@ import com.google.gwt.http.client.Response;
 import com.google.gwt.i18n.shared.DateTimeFormat;
 import java.util.Date;
 import java.util.logging.Level;
+import nl.mpi.tg.eg.experiment.client.Messages;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 
 /**
@@ -37,13 +39,14 @@ public class DataSubmissionService extends AbstractSubmissionService {
 
         timeStamp, screenChange, tagEvent
     }
+    protected final Messages messages = GWT.create(Messages.class);
     private final LocalStorage localStorage;
     private final String experimentName;
     final DateTimeFormat format = DateTimeFormat.getFormat(messages.jsonDateFormat());
 
-    public DataSubmissionService(LocalStorage localStorage, String experimentName) {
+    public DataSubmissionService(LocalStorage localStorage) {
         this.localStorage = localStorage;
-        this.experimentName = experimentName;
+        this.experimentName = messages.appNameInternal();
     }
 
     public void submitTagValue(final UserId userId, String eventTag, String tagValue, int eventMs) {

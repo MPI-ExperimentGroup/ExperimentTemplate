@@ -62,10 +62,10 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
 //        try {
 //            trackView(applicationState.name());
 //            History.newItem(applicationState.name(), false);
-            // todo:
-            // on each state change check if there is an completed game data, if the share is true then upload or store if offline
-            // when any stored data is uploaded then delete the store 
-            // on new game play erase any in memory game data regardless of its shared or not shared state
+    // todo:
+    // on each state change check if there is an completed game data, if the share is true then upload or store if offline
+    // when any stored data is uploaded then delete the store 
+    // on new game play erase any in memory game data regardless of its shared or not shared state
 //            switch (applicationState) {
 //                case menu:
 //                    userResults.setPendingStimuliGroup(null);
@@ -119,7 +119,7 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
 //                    break;
 //                case start:
 // todo:            // if no player data then go to game
-                // if one or more player data then go to select player
+    // if one or more player data then go to select player
 //                    this.presenter = new LocalStoragePresenter(widgetTag);
 //                    presenter.setState(this, ApplicationState.infoscreen, ApplicationState.startscreen);
 //                    break;
@@ -229,7 +229,7 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
 //            presenter.setState(this, ApplicationState.start, applicationState);
 //        }
 //    }
-
+    
     @Override
     public void audioExceptionFired(AudioException audioException) {
         logger.warning(audioException.getMessage());

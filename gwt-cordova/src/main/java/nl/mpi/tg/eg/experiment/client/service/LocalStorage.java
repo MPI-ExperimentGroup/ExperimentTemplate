@@ -46,13 +46,13 @@ public class LocalStorage {
     final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
 
     public LocalStorage() {
-        USER_RESULTS = messages.localStorageName() + ".UserResults.";
-        LAST_USER_ID = messages.localStorageName() + ".LastUserId.";
-        GAME_DATA = messages.localStorageName() + ".GameData.";
-        TEMP_SCREEN_DATA = messages.localStorageName() + ".ScreenData.";
-        STOWED_SCREEN_DATA = messages.localStorageName() + ".SentScreenData.";
-        MAX_SCORE = messages.localStorageName() + ".maxScore";
-        GAMES_PLAYED = messages.localStorageName() + ".gamesPlayed";
+        USER_RESULTS = messages.appNameInternal() + ".UserResults.";
+        LAST_USER_ID = messages.appNameInternal() + ".LastUserId.";
+        GAME_DATA = messages.appNameInternal() + ".GameData.";
+        TEMP_SCREEN_DATA = messages.appNameInternal() + ".ScreenData.";
+        STOWED_SCREEN_DATA = messages.appNameInternal() + ".SentScreenData.";
+        MAX_SCORE = messages.appNameInternal() + ".maxScore";
+        GAMES_PLAYED = messages.appNameInternal() + ".gamesPlayed";
     }
 
     private Storage loadStorage() {
