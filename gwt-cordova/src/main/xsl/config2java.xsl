@@ -24,7 +24,7 @@
 
             public enum ApplicationState {
         
-            start("temporary"),
+            start(null),
         </xsl:text>
         <xsl:for-each select="experiment/presenter">
             <xsl:text>        </xsl:text>
@@ -34,32 +34,32 @@
             <xsl:text>"),
             </xsl:text>
         </xsl:for-each>
-        <xsl:text>        highscoresubmitted(""),
-            highscoresfailednon202(""),
-            highscoresfailedbuildererror(""),
-            highscoresfailedconnectionerror(""),
-            end("temporary"),
-            menu("temporary"),
-            playerdetails("temporary"),
-            locale("temporary"),
-            tutorial("temporary"),
-            stopSharing("temporary"),
-            tutorialorguessround("temporary"),
-            chooseplayer("temporary"),
-            guessround("temporary"),
-            metadata("temporary"),
-            registration("temporary"),
-            infoscreen("temporary"),
-            explaindatasharing("temporary"),
-            moreinfo("temporary"),
-            alien("temporary"),
-            scores("temporary"),
-            map("temporary"),
-            setuser("temporary"),
-            matchlanguage("temporary"),
-            autotyp_regions("temporary"),
-            startscreen("temporary"),
-            version("temporary");
+        <xsl:text>        highscoresubmitted(null),
+            highscoresfailednon202(null),
+            highscoresfailedbuildererror(null),
+            highscoresfailedconnectionerror(null),
+            end(null),
+            menu(null),
+            playerdetails(null),
+            locale(null),
+            tutorial(null),
+            stopSharing(null),
+            tutorialorguessround(null),
+            chooseplayer(null),
+            guessround(null),
+            metadata(null),
+            registration(null),
+            infoscreen(null),
+            explaindatasharing(null),
+            moreinfo(null),
+            alien(null),
+            scores(null),
+            map(null),
+            setuser(null),
+            matchlanguage(null),
+            autotyp_regions(null),
+            startscreen(null),
+            version(null);
         
             final public String label;
 
@@ -168,7 +168,7 @@
                 public class </xsl:text>
             <xsl:value-of select="@self" />
             <xsl:text>Presenter extends </xsl:text>
-            <xsl:value-of select="if(@type = 'stimulus') then 'AbstractStimulus' else if(@type = 'preload') then 'AbstractPreloadStimulus' else if(@type = 'debug') then 'LocalStorage' else if(@type = 'metadata') then 'AbstractMetadata' else 'Abstract'" />
+            <xsl:value-of select="if(@type = 'menu') then 'AbstractMenu' else if(@type = 'stimulus') then 'AbstractStimulus' else if(@type = 'preload') then 'AbstractPreloadStimulus' else if(@type = 'debug') then 'LocalStorage' else if(@type = 'metadata') then 'AbstractMetadata' else 'Abstract'" />
             <xsl:text>Presenter implements Presenter {
             </xsl:text> 
             <xsl:if test="versionData">
@@ -310,6 +310,12 @@
         <xsl:text>    </xsl:text>    
         <xsl:value-of select ="local-name()"/>
         <xsl:text>();
+        </xsl:text>
+    </xsl:template>
+    <xsl:template match="allMenuItems">    
+        <xsl:text>    </xsl:text>    
+        <xsl:value-of select ="local-name()"/>
+        <xsl:text>(appEventListner);
         </xsl:text>
     </xsl:template>
     <xsl:template match="logTimeStamp">    

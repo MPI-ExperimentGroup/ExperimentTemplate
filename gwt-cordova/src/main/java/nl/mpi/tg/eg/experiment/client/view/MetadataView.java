@@ -17,17 +17,15 @@
  */
 package nl.mpi.tg.eg.experiment.client.view;
 
-import nl.mpi.tg.eg.experiment.client.view.ComplexView;
-import com.google.gwt.event.dom.client.BlurEvent;
-import com.google.gwt.event.dom.client.BlurHandler;
 import com.google.gwt.event.dom.client.FocusEvent;
 import com.google.gwt.event.dom.client.FocusHandler;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
+import java.util.List;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 
 /**
@@ -38,12 +36,14 @@ public class MetadataView extends ComplexView {
 
     private FlexTable flexTable = null;
     final private HashMap<MetadataField, TextBox> fieldBoxes;
+    final private ArrayList<MetadataField> orderedFields;
     private TextBox firstTextBox = null;
     private final Label errorText;
     private final VerticalPanel keyboardPadding;
 
     public MetadataView() {
         fieldBoxes = new HashMap<>();
+        orderedFields = new ArrayList<>();
         errorText = new Label();
         keyboardPadding = new VerticalPanel();
         keyboardPadding.add(new Label(""));
@@ -79,6 +79,7 @@ public class MetadataView extends ComplexView {
 //        });
         flexTable.setWidget(rowCount + 1, 0, textBox);
         fieldBoxes.put(metadataField, textBox);
+        orderedFields.add(metadataField);
         if (firstTextBox == null) {
             firstTextBox = textBox;
         }
@@ -90,8 +91,8 @@ public class MetadataView extends ComplexView {
         }
     }
 
-    public Set<MetadataField> getFieldNames() {
-        return fieldBoxes.keySet();
+    public List<MetadataField> getFieldNames() {
+        return orderedFields;
     }
 
     public void setFieldValue(MetadataField metadataField, String fieldValue) {
