@@ -60,18 +60,19 @@ public abstract class AbstractPresenter implements Presenter {
                 }
             };
         } else {
-            backEventListner = new PresenterEventListner() {
-
-                @Override
-                public void eventFired(ButtonBase button) {
-                    appEventListner.requestApplicationState(ApplicationState.end);
-                }
-
-                @Override
-                public String getLabel() {
-                    return ApplicationState.menu.label;
-                }
-            };
+            // todo: on android there needs to be a back action available
+//            backEventListner = new PresenterEventListner() {
+//
+//                @Override
+//                public void eventFired(ButtonBase button) {
+//                    appEventListner.requestApplicationState(ApplicationState.end);
+//                }
+//
+//                @Override
+//                public String getLabel() {
+//                    return ApplicationState.menu.label;
+//                }
+//            };
         }
         setTitle(backEventListner);
         if (nextState != null) {

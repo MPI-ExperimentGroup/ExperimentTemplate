@@ -31,7 +31,13 @@ stopSharingDetailsExplanation=({0}) and unique id ({1})
         <xsl:text>=</xsl:text>
         <xsl:value-of select="@menuLabel" />
         <xsl:text>
-</xsl:text>        
+</xsl:text>      
+        <xsl:text>title</xsl:text>
+        <xsl:value-of select="@self" />
+        <xsl:text>Presenter=</xsl:text>
+        <xsl:value-of select="@title" />
+        <xsl:text>
+</xsl:text>      
         <xsl:apply-templates/>
     </xsl:template>
     <xsl:template match="*[@fieldName][. != '']">

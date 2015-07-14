@@ -221,9 +221,9 @@
 
                 @Override
                 protected void setTitle(PresenterEventListner titleBarListner) {
-                simpleView.addTitle(messages.</xsl:text>
-            <xsl:value-of select="//title//@fieldName" />
-            <xsl:text>(), titleBarListner);
+                simpleView.addTitle(messages.title</xsl:text>
+            <xsl:value-of select="@self" />
+            <xsl:text>Presenter(), titleBarListner);
                 }
 
                 @Override

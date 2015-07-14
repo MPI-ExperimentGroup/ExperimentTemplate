@@ -126,8 +126,10 @@ public class ComplexView extends SimpleView {
     public HorizontalPanel addProgressBar(int minimum, int value, int maximum) {
         final HorizontalPanel bargraphOuter = new HorizontalPanel();
         final HorizontalPanel bargraphInner = new HorizontalPanel();
-        bargraphOuter.setPixelSize(100, 10);
-        bargraphInner.setPixelSize((int) (100.0 / maximum * value), 10);
+        bargraphOuter.setWidth("100%");
+        bargraphOuter.setHeight("10px");
+        bargraphInner.setWidth((int) (100.0 / maximum * value) + "%");
+        bargraphInner.setHeight("10px");
         bargraphOuter.setStyleName("bargraphOuter");
         bargraphInner.setStyleName("bargraphInner");
         bargraphOuter.add(bargraphInner);
@@ -136,6 +138,6 @@ public class ComplexView extends SimpleView {
     }
 
     public void updateProgressBar(HorizontalPanel bargraphInner, int minimum, int value, int maximum) {
-        bargraphInner.setPixelSize((int) (100.0 / maximum * value), 10);
+        bargraphInner.setWidth((int) (100.0 / maximum * value) + "%");
     }
 }
