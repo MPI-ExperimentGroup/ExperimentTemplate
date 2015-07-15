@@ -19,6 +19,7 @@ appNameDisplay=</xsl:text>
         <xsl:value-of select="experiment/@appNameDisplay" /><xsl:text>
 popupOkButtonLabel=OK
 popupCancelButtonLabel=Cancel
+errorScreenTitle=An error occurred
 appNameDisplay=</xsl:text>
         <xsl:value-of select="experiment/@appNameDisplay" /><xsl:text>
 jsonDateFormat=yyyy-MM-dd''T''HH:mm:ss.SSSZ
