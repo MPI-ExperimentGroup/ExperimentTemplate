@@ -17,6 +17,10 @@ appNameInternal=</xsl:text>
         <xsl:value-of select="experiment/@appNameInternal" /><xsl:text>
 appNameDisplay=</xsl:text>
         <xsl:value-of select="experiment/@appNameDisplay" /><xsl:text>
+popupOkButtonLabel=OK
+popupCancelButtonLabel=Cancel
+appNameDisplay=</xsl:text>
+        <xsl:value-of select="experiment/@appNameDisplay" /><xsl:text>
 jsonDateFormat=yyyy-MM-dd''T''HH:mm:ss.SSSZ
 </xsl:text>
         <xsl:apply-templates/>

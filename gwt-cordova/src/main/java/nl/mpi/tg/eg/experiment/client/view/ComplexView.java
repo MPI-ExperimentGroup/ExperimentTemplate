@@ -17,15 +17,19 @@
  */
 package nl.mpi.tg.eg.experiment.client.view;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import nl.mpi.tg.eg.experiment.client.Messages;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 
@@ -35,6 +39,7 @@ import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
  */
 public class ComplexView extends SimpleView {
 
+    protected final Messages messages = GWT.create(Messages.class);
     final protected VerticalPanel outerPanel;
 
     public ComplexView() {
@@ -139,5 +144,57 @@ public class ComplexView extends SimpleView {
 
     public void updateProgressBar(HorizontalPanel bargraphInner, int minimum, int value, int maximum) {
         bargraphInner.setWidth((int) (100.0 / maximum * value) + "%");
+    }
+
+    public void showHtmlPopup(final PresenterEventListner saveEventListner, String popupHtmlText) {
+        final PopupPanel popupPanel = new PopupPanel(false); // the close action to this panel causes background buttons to be clicked
+        popupPanel.setGlassEnabled(true);
+        popupPanel.setStylePrimaryName("svgPopupPanel");
+        final VerticalPanel popupverticalPanel = new VerticalPanel();
+        popupverticalPanel.add(new HTML(new SafeHtmlBuilder().appendEscapedLines(popupHtmlText).toSafeHtml()));
+
+        popupverticalPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
+        final SingleShotEventListner cancelSingleShotEventListner = new SingleShotEventListner() {
+
+            @Override
+            protected void singleShotFired() {
+                popupPanel.hide();
+            }
+        };
+        final HorizontalPanel buttonPanel = new HorizontalPanel();
+        final Button cancelButton = new Button(messages.popupCancelButtonLabel());
+        cancelButton.addClickHandler(cancelSingleShotEventListner);
+        cancelButton.addTouchStartHandler(cancelSingleShotEventListner);
+        cancelButton.addTouchMoveHandler(cancelSingleShotEventListner);
+        cancelButton.addTouchEndHandler(cancelSingleShotEventListner);
+        buttonPanel.add(cancelButton);
+        if (saveEventListner != null) {
+            final SingleShotEventListner okSingleShotEventListner = new SingleShotEventListner() {
+
+                @Override
+                protected void singleShotFired() {
+                    popupPanel.hide();
+                    saveEventListner.eventFired(null);
+                }
+            };
+            final Button okButton = new Button(messages.popupOkButtonLabel());
+            okButton.addClickHandler(okSingleShotEventListner);
+            okButton.addTouchStartHandler(okSingleShotEventListner);
+            okButton.addTouchMoveHandler(okSingleShotEventListner);
+            okButton.addTouchEndHandler(okSingleShotEventListner);
+            buttonPanel.add(okButton);
+        }
+        popupverticalPanel.add(buttonPanel);
+        popupPanel.setWidget(popupverticalPanel);
+        popupPanel.setPopupPositionAndShow(new PopupPanel.PositionCallback() {
+
+            @Override
+            public void setPosition(int offsetWidth, int offsetHeight) {
+                final int topPosition = Window.getClientHeight() / 2 - offsetHeight;
+                // topPosition is used to make sure the dialogue is above the half way point on the screen to avoid the software keyboard covering the box
+                // topPosition is also checked to make sure it does not show above the top of the page
+                popupPanel.setPopupPosition(Window.getClientWidth() / 2 - offsetWidth / 2, (topPosition < 0) ? 0 : topPosition);
+            }
+        });
     }
 }

@@ -175,7 +175,57 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     public void showStimulusProgress() {
-        ((TimedStimulusView) simpleView).addHtmlText(stimulusProvider.getRemainingStimuli() + " / " + stimulusProvider.getTotalStimuli());
+        ((TimedStimulusView) simpleView).addHtmlText((stimulusProvider.getTotalStimuli() - stimulusProvider.getRemainingStimuli()) + " / " + stimulusProvider.getTotalStimuli());
         ((TimedStimulusView) simpleView).addText("showStimulusProgress: " + duration.elapsedMillis() + "ms");
+    }
+
+    public void popupMessage(final PresenterEventListner presenterListerner, String message, boolean condition) {
+        if (condition) {
+            ((TimedStimulusView) simpleView).showHtmlPopup(presenterListerner, message);
+        }
+    }
+
+    protected boolean stimulusIndexIn(int[] validIndexes) {
+        int currentIndex = stimulusProvider.getTotalStimuli() - stimulusProvider.getRemainingStimuli();
+        for (int currentValid : validIndexes) {
+            if (currentIndex == currentValid) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    protected boolean hasMoreStimulus() {
+        return stimulusProvider.hasNextStimulus();
+    }
+
+    protected void nextStimulusButton(final AppEventListner appEventListner, final String eventTag, final String buttonLabel) {
+        if (stimulusProvider.hasNextStimulus()) {
+            PresenterEventListner eventListner = new PresenterEventListner() {
+
+                @Override
+                public String getLabel() {
+                    return buttonLabel;
+                }
+
+                @Override
+                public void eventFired(ButtonBase button) {
+                    logTimeStamp(eventTag);
+                    ((TimedStimulusView) simpleView).stopAudio();
+                    currentStimulus = stimulusProvider.getNextStimulus();
+                    buttonList.clear();
+                    ((TimedStimulusView) simpleView).clearGui();
+                    setContent(appEventListner);
+                }
+            };
+            ((TimedStimulusView) simpleView).addOptionButton(eventListner);
+        }
+    }
+
+    protected void endOfStimulusButton(final PresenterEventListner appEventListner, final String eventTag) {
+        logTimeStamp(eventTag);
+        if (!stimulusProvider.hasNextStimulus()) {
+            ((TimedStimulusView) simpleView).addOptionButton(appEventListner);
+        }
     }
 }

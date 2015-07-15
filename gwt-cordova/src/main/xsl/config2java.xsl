@@ -283,6 +283,15 @@
             }, true);
         </xsl:text>
     </xsl:template>
+    <xsl:template match="popupMessage">           
+        <xsl:value-of select ="local-name()"/>
+        <xsl:text>(null, messages.</xsl:text>
+        <xsl:value-of select="@fieldName" />
+        <xsl:text>(), </xsl:text>
+        <xsl:value-of select="if(@condition) then @condition else 'true'" />
+        <xsl:text>);
+        </xsl:text>
+    </xsl:template>
     <xsl:template match="optionButton">
         <xsl:text>    ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
 
@@ -302,6 +311,28 @@
             });
         </xsl:text>
     </xsl:template>
+    <xsl:template match="endOfStimulusButton">
+        <xsl:value-of select ="local-name()"/>
+        <xsl:text>(new PresenterEventListner() {
+
+            @Override
+            public String getLabel() {
+            return messages.</xsl:text>
+        <xsl:value-of select="@fieldName" />
+        <xsl:text>();
+            }
+
+            @Override
+            public void eventFired(ButtonBase button) {
+            appEventListner.requestApplicationState(ApplicationState.</xsl:text>
+        <xsl:value-of select="@target" />
+        <xsl:text>);
+            }
+            }</xsl:text>
+        <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
+        <xsl:text>);
+        </xsl:text>
+    </xsl:template>
     <xsl:template match="padding">
         <xsl:text>    ((ComplexView) simpleView).addPadding();
         </xsl:text>
@@ -312,10 +343,13 @@
         <xsl:text>();
         </xsl:text>
     </xsl:template>
-    <xsl:template match="allMenuItems">    
+    <xsl:template match="allMenuItems|nextStimulusButton">    
         <xsl:text>    </xsl:text>    
         <xsl:value-of select ="local-name()"/>
-        <xsl:text>(appEventListner);
+        <xsl:text>(appEventListner</xsl:text>
+        <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
+        <xsl:value-of select="if(@fieldName) then concat(', messages.', @fieldName, '()') else ''" />
+        <xsl:text>);
         </xsl:text>
     </xsl:template>
     <xsl:template match="logTimeStamp">    

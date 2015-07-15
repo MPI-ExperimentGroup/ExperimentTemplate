@@ -29,7 +29,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <field postName="share" registrationField="Share" fieldValues="true,false" controlledRegex="true" controlledMessage="Data will not be shared unless you agree to do so."/>
         <field registrationField="Spoken languages" postName="languages" />
     </metadata>
-    <presenter type="menu" menuLabel="Main Menu" self="MainMenu">
+    <presenter type="menu" menuLabel="Auto Menu" self="AutoMenu"><allMenuItems/></presenter>
+    <presenter type="menu" menuLabel="Main Menu" back="AutoMenu" self="MainMenu">
         <menuItem fieldName="aboutScreenMenuLabel" target="AboutPage">About Page</menuItem>
         <menuItem fieldName="menuLabelStrayMessages" target="StrayMessages"/>
         <menuItem fieldName="menuLabelPreloadStimulus" target="PreloadStimulus"/>
@@ -37,6 +38,21 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <menuItem fieldName="menuLabelStimulusPage" target="StimulusPage"/>
         <menuItem fieldName="menuLabelMetadata" target="Metadata"/>
         <menuItem fieldName="menuLabelStimulusGrid" target="StimulusGrid"/>
+    </presenter>
+    <presenter type="stimulus" menuLabel="Next (Some Stimulus)" title="Some Stimulus" self="SomeStimulus">
+        <htmlText fieldName="stimulusHeading">Some Stimulus</htmlText>
+        <showCurrentMs/>
+        <stimulusImage width="60" timeToNext="1000">            
+            <logTimeStamp eventTag="stimulus1Shown" />
+            <showCurrentMs/>
+            <stimulusAudio timeToNext="2000">
+                <showCurrentMs/>                
+                <showStimulusProgress/>   
+                <nextStimulusButton fieldName="showMore" eventTag="stimulus1Next">Next</nextStimulusButton>
+                <popupMessage fieldName="pesterPopup1" condition="stimulusIndexIn(new int[]{9,21,28})">Popup boxes are here to annoy the user.</popupMessage>
+                <endOfStimulusButton fieldName="menuLabelIntro3" target="Intro3" eventTag="StimulusGrid"/>
+            </stimulusAudio>
+        </stimulusImage>    
     </presenter>
     <presenter type="stimulus" menuLabel="Toggle Stimulus" back="MainMenu" self="StimulusGrid">
         <showCurrentMs/>    
