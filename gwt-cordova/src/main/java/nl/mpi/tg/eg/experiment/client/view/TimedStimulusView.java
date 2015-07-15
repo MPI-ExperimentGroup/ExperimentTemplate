@@ -128,6 +128,7 @@ public class TimedStimulusView extends ComplexView {
 
             @Override
             public void audioEnded() {
+                audioPlayer.setOnEndedListener(null); // prevent multiple triggering
                 timedStimulusListener.postLoadTimerFired();
             }
         });

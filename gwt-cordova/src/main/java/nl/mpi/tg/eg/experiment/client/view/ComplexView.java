@@ -146,12 +146,14 @@ public class ComplexView extends SimpleView {
         bargraphInner.setWidth((int) (100.0 / maximum * value) + "%");
     }
 
-    public void showHtmlPopup(final PresenterEventListner saveEventListner, String popupHtmlText) {
+    public void showHtmlPopup(final PresenterEventListner saveEventListner, String popupText) {
         final PopupPanel popupPanel = new PopupPanel(false); // the close action to this panel causes background buttons to be clicked
         popupPanel.setGlassEnabled(true);
         popupPanel.setStylePrimaryName("svgPopupPanel");
         final VerticalPanel popupverticalPanel = new VerticalPanel();
-        popupverticalPanel.add(new HTML(new SafeHtmlBuilder().appendEscapedLines(popupHtmlText).toSafeHtml()));
+        final HTML htmlText = new HTML(new SafeHtmlBuilder().appendEscapedLines(popupText).toSafeHtml());
+        htmlText.setStylePrimaryName("popupTextBox");
+        popupverticalPanel.add(htmlText);
 
         popupverticalPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
         final SingleShotEventListner cancelSingleShotEventListner = new SingleShotEventListner() {
