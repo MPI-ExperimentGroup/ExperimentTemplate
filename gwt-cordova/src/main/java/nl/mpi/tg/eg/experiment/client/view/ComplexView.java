@@ -28,6 +28,7 @@ import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.PopupPanel;
+import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import nl.mpi.tg.eg.experiment.client.Messages;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
@@ -71,14 +72,14 @@ public class ComplexView extends SimpleView {
         outerPanel.add(new HTML("&nbsp;"));
     }
 
-    public void addImage(SafeUri imagePath, final String linkUrl, int percentWidth) {
+    public void addImage(SafeUri imagePath, final SafeUri linkUrl, int percentWidth, String align) {
         final Image image = new Image(imagePath);
         image.setWidth(percentWidth + "%");
         final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
 
             @Override
             protected void singleShotFired() {
-                Window.open(linkUrl, "_system", "");
+                Window.open(linkUrl.asString(), "_system", "");
             }
         };
         image.addClickHandler(singleShotEventListner);
@@ -86,6 +87,10 @@ public class ComplexView extends SimpleView {
         image.addTouchMoveHandler(singleShotEventListner);
         image.addTouchEndHandler(singleShotEventListner);
         outerPanel.add(image);
+    }
+
+    public void centrePage() {
+        outerPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
     }
 
     public void addLink(String label, final String target) {
@@ -198,5 +203,12 @@ public class ComplexView extends SimpleView {
                 popupPanel.setPopupPosition(Window.getClientWidth() / 2 - offsetWidth / 2, (topPosition < 0) ? 0 : topPosition);
             }
         });
+    }
+
+    public void addTextField(String value) {
+        final TextBox textBox = new TextBox();
+        textBox.setStylePrimaryName("metadataOK");
+        textBox.setText(value);
+        outerPanel.add(textBox);
     }
 }

@@ -39,7 +39,7 @@ public class LocalePresenter extends AbstractPresenter implements Presenter {
 
     @Override
     protected void setTitle(PresenterEventListner titleBarListner) {
-        simpleView.addTitle(messages.localeScreenTitle(), titleBarListner);
+//        simpleView.addTitle(messages.localeScreenTitle(), titleBarListner);
     }
 
     @Override

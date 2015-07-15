@@ -25,6 +25,7 @@ import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Random;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
@@ -34,6 +35,7 @@ import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
+import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
 
 /**
@@ -228,4 +230,20 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             ((TimedStimulusView) simpleView).addOptionButton(appEventListner);
         }
     }
+
+    public void generateCompletionCode() {
+        final Random random = new Random();
+        final StringBuffer stringBuffer = new StringBuffer();
+        while (stringBuffer.length() < 12) {
+            stringBuffer.append(Integer.toHexString(random.nextInt(16)));
+        }
+        String completionCode = stringBuffer.toString();
+        // todo: consider changing this to something other than just a tag value
+        submissionService.submitTagValue(userResults.getUserData().getUserId(), "CompletionCode", completionCode, duration.elapsedMillis());
+        ((ComplexView) simpleView).addTextField(completionCode);
+    }
+
+//    public void sendAllData() {
+//
+//    }
 }

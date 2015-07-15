@@ -207,6 +207,7 @@
 }
 
 .contentBody, .menuOuter {
+    width: 80%;
     margin-top: 50px;    
     margin-bottom: -50px;    
     margin-left: 10%;   
@@ -338,7 +339,7 @@ table#screenExample td, .stimulusHelpPanel .gwt-Button, .stimulusHelpText, .popu
 
 
 /*.gwt-PushButton.stimulusButton.gwt-PushButton-up-hovering, .gwt-Button.stimulusButton:hover{*/
-    /*border: 7px outset lightgrey;*/
+/*border: 7px outset lightgrey;*/
 /*}*/
 
 .gwt-PushButton.stimulusButton, .gwt-Button.stimulusButton{

@@ -252,11 +252,13 @@
         <!--<xsl:when test="@link">-->
         <xsl:text>    ((ComplexView) simpleView).addImage(UriUtils.fromString("</xsl:text>
         <xsl:value-of select="@image" />
-        <xsl:text>"), messages.</xsl:text>
+        <xsl:text>"), UriUtils.fromString("</xsl:text>
         <xsl:value-of select="@link" />
-        <xsl:text>(), </xsl:text>
+        <xsl:text>"), </xsl:text>
         <xsl:value-of select="@width" />
-        <xsl:text>);
+        <xsl:text>, "</xsl:text>
+        <xsl:value-of select="@align" />
+        <xsl:text>");
         </xsl:text>
         <!--</xsl:when>
  <xsl:otherwise><xsl:text>    ((ComplexView) simpleView).addImage(UriUtils.fromString("</xsl:text><xsl:value-of select="@image" /><xsl:text>"), "",</xsl:text><xsl:value-of select="@width" /><xsl:text>);
@@ -337,8 +339,14 @@
         <xsl:text>    ((ComplexView) simpleView).addPadding();
         </xsl:text>
     </xsl:template>
-    <xsl:template match="localStorageData|allMetadataFields|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|disableStimulusButtons|showStimulusProgress|hideStimulusButtons|showStimulusButtons">    
+    <xsl:template match="localStorageData|allMetadataFields|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|disableStimulusButtons|showStimulusProgress|hideStimulusButtons|showStimulusButtons|generateCompletionCode|sendAllData">
         <xsl:text>    </xsl:text>    
+        <xsl:value-of select ="local-name()"/>
+        <xsl:text>();
+        </xsl:text>
+    </xsl:template>
+    <xsl:template match="centrePage">
+        <xsl:text>    ((ComplexView) simpleView).</xsl:text>    
         <xsl:value-of select ="local-name()"/>
         <xsl:text>();
         </xsl:text>
@@ -418,7 +426,7 @@
         </xsl:text>
     </xsl:template>
     <xsl:template match="versionData">
-        <xsl:text>    ((ComplexView) simpleView).addText("Version: " + version.majorVersion() + "."
+        <xsl:text>    ((ComplexView) simpleView).addText("Framework For Interactive Experiments\n" + "Version: " + version.majorVersion() + "."
             + version.minorVersion() + "."
             + version.buildVersion() + "-"
             + version.projectVersion() + "\n"
