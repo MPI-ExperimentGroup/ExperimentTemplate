@@ -169,7 +169,7 @@ public class ComplexView extends SimpleView {
             }
         };
         final HorizontalPanel buttonPanel = new HorizontalPanel();
-        final Button cancelButton = new Button(messages.popupCancelButtonLabel());
+        final Button cancelButton = new Button((saveEventListner != null) ? messages.popupCancelButtonLabel() : messages.popupOkButtonLabel());
         cancelButton.addClickHandler(cancelSingleShotEventListner);
         cancelButton.addTouchStartHandler(cancelSingleShotEventListner);
         cancelButton.addTouchMoveHandler(cancelSingleShotEventListner);

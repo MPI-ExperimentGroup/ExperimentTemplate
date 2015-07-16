@@ -40,7 +40,8 @@ public class LocalStorage {
     private final String LAST_USER_ID;
     private final String GAME_DATA; // todo: perhaps merge game and screen data concepts
     private final String TEMP_SCREEN_DATA;
-    private final String STOWED_SCREEN_DATA; // todo: send the stowed data to the server when the user has completed the entire application
+    private final String STOWED_DATA; // todo: send the stowed data to the server when the user has completed the entire application
+    private final String FAILED_DATA;
     protected final String MAX_SCORE;
     protected final String GAMES_PLAYED;
     final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
@@ -50,7 +51,8 @@ public class LocalStorage {
         LAST_USER_ID = messages.appNameInternal() + ".LastUserId.";
         GAME_DATA = messages.appNameInternal() + ".GameData.";
         TEMP_SCREEN_DATA = messages.appNameInternal() + ".ScreenData.";
-        STOWED_SCREEN_DATA = messages.appNameInternal() + ".SentScreenData.";
+        STOWED_DATA = messages.appNameInternal() + ".SentData.";
+        FAILED_DATA = messages.appNameInternal() + ".FailedData.";
         MAX_SCORE = messages.appNameInternal() + ".maxScore";
         GAMES_PLAYED = messages.appNameInternal() + ".gamesPlayed";
     }
@@ -72,19 +74,29 @@ public class LocalStorage {
         return getCleanStoredData(GAME_DATA + userId.toString());
     }
 
+    public String getSowedData(UserId userId) {
+        loadStorage();
+        return getCleanStoredData(STOWED_DATA + userId.toString());
+    }
+
     public void addStoredGameData(UserId userId, String serialisedGameData) {
         loadStorage();
         dataStore.setItem(GAME_DATA + userId.toString(), getCleanStoredData(GAME_DATA + userId.toString()) + serialisedGameData);
     }
 
-    public void stowSentScreenData(UserId userId) {
+    public void addFailedData(String serialisedGameData) {
         loadStorage();
-        final String sentStoredData = getCleanStoredData(STOWED_SCREEN_DATA + userId.toString());
+        dataStore.setItem(FAILED_DATA, getCleanStoredData(FAILED_DATA) + serialisedGameData);
+    }
+
+    public void stowSentData(UserId userId) {
+        loadStorage();
+        final String sentStoredData = getCleanStoredData(STOWED_DATA + userId.toString());
         final String serialisedScreenData = getCleanStoredData(TEMP_SCREEN_DATA + userId.toString());
         if (sentStoredData.isEmpty()) {
-            dataStore.setItem(STOWED_SCREEN_DATA + userId.toString(), sentStoredData + serialisedScreenData);
+            dataStore.setItem(STOWED_DATA + userId.toString(), sentStoredData + serialisedScreenData);
         } else {
-            dataStore.setItem(STOWED_SCREEN_DATA + userId.toString(), sentStoredData + "," + serialisedScreenData);
+            dataStore.setItem(STOWED_DATA + userId.toString(), sentStoredData + "," + serialisedScreenData);
         }
         dataStore.setItem(TEMP_SCREEN_DATA + userId.toString(), "");
     }

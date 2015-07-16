@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Language In Interaction
+ * Copyright (C) 2014 Language In Interaction
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -15,22 +15,35 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.ru.languageininteraction.language.client.model;
-
-import com.google.gwt.core.client.JavaScriptObject;
+package nl.mpi.tg.eg.experiment.client.exception;
 
 /**
- * @since Mar 12, 2015 10:35:28 AM (creation date)
+ * @since Oct 29, 2014 11:23:33 AM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public class HighScoreData extends JavaScriptObject {
+public class DataSubmissionException extends Exception {
 
-    protected HighScoreData() {
+    private final ErrorType errorType;
+
+    public enum ErrorType {
+
+        non202response,
+        buildererror,
+        connectionerror
     }
 
-    public final native int getCount() /*-{ return this.scores.length; }-*/;
+    public DataSubmissionException(ErrorType errorType, Throwable cause) {
+        super(cause);
+        this.errorType = errorType;
+    }
 
-    public final native String getPlayerName(int index) /*-{ return this.scores[index].player; }-*/;
+    public DataSubmissionException(ErrorType errorType, String message) {
+        super(message);
+        this.errorType = errorType;
+    }
 
-    public final native int getPlayerHighScore(int index) /*-{ return this.scores[index].highscore; }-*/;
+    public ErrorType getErrorType() {
+        return errorType;
+    }
+
 }

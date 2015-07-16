@@ -15,35 +15,19 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.experiment.client.service;
+package nl.mpi.tg.eg.experiment.client.listener;
+
+import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
+import com.google.gwt.core.client.JsArray;
+import nl.mpi.tg.eg.experiment.client.model.HighScoreData;
 
 /**
- * @since Oct 29, 2014 11:23:33 AM (creation date)
+ * @since Oct 29, 2014 11:27:39 AM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public class DataSubmissionException extends Exception {
+public interface DataSubmissionListener {
 
-    private final ErrorType errorType;
+    void scoreSubmissionFailed(DataSubmissionException exception);
 
-    public enum ErrorType {
-
-        non202response,
-        buildererror,
-        connectionerror
-    }
-
-    public DataSubmissionException(ErrorType errorType, Throwable cause) {
-        super(cause);
-        this.errorType = errorType;
-    }
-
-    public DataSubmissionException(ErrorType errorType, String message) {
-        super(message);
-        this.errorType = errorType;
-    }
-
-    public ErrorType getErrorType() {
-        return errorType;
-    }
-
+    void scoreSubmissionComplete(JsArray<HighScoreData> highScoreData);
 }

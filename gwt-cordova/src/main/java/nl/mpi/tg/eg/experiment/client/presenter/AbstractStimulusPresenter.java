@@ -230,20 +230,4 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             ((TimedStimulusView) simpleView).addOptionButton(appEventListner);
         }
     }
-
-    public void generateCompletionCode() {
-        final Random random = new Random();
-        final StringBuffer stringBuffer = new StringBuffer();
-        while (stringBuffer.length() < 12) {
-            stringBuffer.append(Integer.toHexString(random.nextInt(16)));
-        }
-        String completionCode = stringBuffer.toString();
-        // todo: consider changing this to something other than just a tag value
-        submissionService.submitTagValue(userResults.getUserData().getUserId(), "CompletionCode", completionCode, duration.elapsedMillis());
-        ((ComplexView) simpleView).addTextField(completionCode);
-    }
-
-//    public void sendAllData() {
-//
-//    }
 }

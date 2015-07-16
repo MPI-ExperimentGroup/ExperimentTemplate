@@ -92,7 +92,10 @@
                 this.presenter = new </xsl:text>
             <xsl:value-of select="@self" />
             <xsl:text>Presenter(widgetTag</xsl:text>
-            <xsl:value-of select="if(@type = 'stimulus' or @type = 'preload') then ', new AudioPlayer(this), submissionService, userResults' else if(@type = 'metadata') then ', userResults' else ''" />
+            <xsl:value-of select="
+if(@type = 'transmission') then ', submissionService, userResults' else
+if(@type = 'stimulus' or @type = 'preload') then ', new AudioPlayer(this), submissionService, userResults' else 
+if(@type = 'metadata') then ', userResults' else ''" />
             <xsl:text>);
                 presenter.setState(this, </xsl:text>
             <xsl:choose>
@@ -168,7 +171,7 @@
                 public class </xsl:text>
             <xsl:value-of select="@self" />
             <xsl:text>Presenter extends </xsl:text>
-            <xsl:value-of select="if(@type = 'menu') then 'AbstractMenu' else if(@type = 'stimulus') then 'AbstractStimulus' else if(@type = 'preload') then 'AbstractPreloadStimulus' else if(@type = 'debug') then 'LocalStorage' else if(@type = 'metadata') then 'AbstractMetadata' else 'Abstract'" />
+            <xsl:value-of select="if(@type = 'transmission') then 'AbstractDataSubmission' else if(@type = 'menu') then 'AbstractMenu' else if(@type = 'stimulus') then 'AbstractStimulus' else if(@type = 'preload') then 'AbstractPreloadStimulus' else if(@type = 'debug') then 'LocalStorage' else if(@type = 'metadata') then 'AbstractMetadata' else 'Abstract'" />
             <xsl:text>Presenter implements Presenter {
             </xsl:text> 
             <xsl:if test="versionData">
@@ -180,7 +183,10 @@
                 public </xsl:text>
             <xsl:value-of select="@self" />
             <xsl:text>Presenter(RootLayoutPanel widgetTag</xsl:text>
-            <xsl:value-of select="if(@type = 'stimulus' or @type = 'preload') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults' else if(@type = 'metadata') then ', UserResults userResults' else ''" />
+            <xsl:value-of select="
+if(@type = 'transmission') then ', DataSubmissionService submissionService, UserResults userResults' else 
+if(@type = 'stimulus' or @type = 'preload') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults' else 
+if(@type = 'metadata') then ', UserResults userResults' else ''" />
             <xsl:text>) {
             </xsl:text>  
             <xsl:choose>
@@ -202,6 +208,11 @@
                 <xsl:when test="@type = 'stimulus' or @type = 'preload'">
                     <xsl:text>
                         super(widgetTag, audioPlayer, submissionService, userResults);
+                    </xsl:text>
+                </xsl:when>
+                <xsl:when test="@type = 'transmission'">
+                    <xsl:text>
+                        super(widgetTag, submissionService, userResults);
                     </xsl:text>
                 </xsl:when>
                 <xsl:when test="@type = 'metadata'">

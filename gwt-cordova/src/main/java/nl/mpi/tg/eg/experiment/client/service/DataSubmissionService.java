@@ -17,7 +17,8 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
-import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.core.client.JsonUtils;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.RequestCallback;
@@ -26,8 +27,10 @@ import com.google.gwt.http.client.Response;
 import com.google.gwt.i18n.shared.DateTimeFormat;
 import java.util.Date;
 import java.util.logging.Level;
-import nl.mpi.tg.eg.experiment.client.Messages;
+import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
+import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
+import nl.mpi.tg.eg.experiment.client.model.HighScoreData;
 
 /**
  * @since Jul 2, 2015 5:17:27 PM (creation date)
@@ -37,9 +40,8 @@ public class DataSubmissionService extends AbstractSubmissionService {
 
     private enum ServiceEndpoint {
 
-        timeStamp, screenChange, tagEvent
+        timeStamp, screenChange, tagEvent, stowedData
     }
-    protected final Messages messages = GWT.create(Messages.class);
     private final LocalStorage localStorage;
     private final String experimentName;
     final DateTimeFormat format = DateTimeFormat.getFormat(messages.jsonDateFormat());
@@ -76,11 +78,28 @@ public class DataSubmissionService extends AbstractSubmissionService {
         trackView(applicationState);
     }
 
-    private void submitData(final ServiceEndpoint endpoint, final UserId userId, String jsonData) {
+    public void submitStowedData(final UserId userId, final DataSubmissionListener dataSubmissionListener) {
+        submitData(ServiceEndpoint.stowedData, localStorage.getSowedData(userId), dataSubmissionListener);
+    }
 
+    private void submitData(final ServiceEndpoint endpoint, final UserId userId, String jsonData) {
         localStorage.addStoredScreenData(userId, jsonData);
 
         final String storedScreenData = localStorage.getStoredScreenData(userId);
+        submitData(endpoint, storedScreenData, new DataSubmissionListener() {
+
+            @Override
+            public void scoreSubmissionFailed(DataSubmissionException exception) {
+            }
+
+            @Override
+            public void scoreSubmissionComplete(JsArray<HighScoreData> highScoreData) {
+                localStorage.stowSentData(userId);
+            }
+        });
+    }
+
+    private void submitData(final ServiceEndpoint endpoint, String jsonData, final DataSubmissionListener dataSubmissionListener) {
 
         final RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, messages.dataSubmitUrl() + endpoint.name());
         builder.setHeader("Content-type", "application/json");
@@ -89,6 +108,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
             public void onError(Request request, Throwable exception) {
                 logger.warning(builder.getUrl());
                 logger.log(Level.WARNING, "RequestCallback", exception);
+                dataSubmissionListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.connectionerror, endpoint.name()));
             }
 
             @Override
@@ -96,25 +116,27 @@ public class DataSubmissionService extends AbstractSubmissionService {
                 if (200 == response.getStatusCode()) {
                     final String text = response.getText();
                     logger.info(text);
-                    localStorage.stowSentScreenData(userId);
+                    dataSubmissionListener.scoreSubmissionComplete(JsonUtils.<JsArray<HighScoreData>>safeEval(response.getText()));
                 } else if (207 == response.getStatusCode()) {
                     final String text = response.getText();
                     logger.info(text);
-                    localStorage.stowSentScreenData(userId);
                     // if there was an issue on the server then store the problematic data. // todo: this might be removed when prodution status is reached
                     // todo: add handling of 200 responses given by some wifi login services that do not provide propper redirect codes, to make sure we dont get tricked into thinking data has been sent when it might not have
-                    localStorage.addStoredScreenData(userId, text);
+                    localStorage.addFailedData(text);
+                    dataSubmissionListener.scoreSubmissionComplete(JsonUtils.<JsArray<HighScoreData>>safeEval(response.getText()));
                 } else {
                     logger.warning(builder.getUrl());
                     logger.warning(response.getStatusText());
+                    dataSubmissionListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.non202response, endpoint.name()));
                 }
             }
         };
         try {
             // todo: add the application build number to the submitted data
-            builder.sendRequest("[" + storedScreenData + "]", requestCallback);
+            builder.sendRequest("[" + jsonData + "]", requestCallback);
         } catch (RequestException exception) {
             logger.log(Level.SEVERE, "submit data failed", exception);
+            dataSubmissionListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.buildererror, endpoint.name()));
         }
     }
 
@@ -125,5 +147,4 @@ public class DataSubmissionService extends AbstractSubmissionService {
     private static native void trackEvent(String applicationState, String label, String value) /*-{
      if($wnd.analytics) $wnd.analytics.trackEvent(applicationState, "view", label, value);
      }-*/;
-
 }
