@@ -25,7 +25,6 @@ import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Random;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
@@ -64,7 +63,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     protected void pause(final AppEventListner appEventListner, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
         Timer timer = new Timer() {
             public void run() {
-                ((TimedStimulusView) simpleView).addText("pause: " + duration.elapsedMillis() + "ms");
+//                ((TimedStimulusView) simpleView).addText("pause: " + duration.elapsedMillis() + "ms");
                 timedStimulusListener.postLoadTimerFired();
             }
         };
@@ -73,16 +72,16 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void addStimulusImage(String image, int width, int postLoadMs, TimedStimulusListener timedStimulusListener) {
         ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString(serviceLocations.staticFilesUrl() + image), width, postLoadMs, timedStimulusListener);
-        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
+//        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
     }
 
     protected void playStimulusAudio(String ogg, String mp3, long postLoadMs, TimedStimulusListener timedStimulusListener) {
         ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromString(serviceLocations.staticFilesUrl() + ogg), UriUtils.fromString(serviceLocations.staticFilesUrl() + mp3), postLoadMs, timedStimulusListener);
-        ((TimedStimulusView) simpleView).addText("playStimulusAudio: " + duration.elapsedMillis() + "ms");
+//        ((TimedStimulusView) simpleView).addText("playStimulusAudio: " + duration.elapsedMillis() + "ms");
     }
 
     protected void showCurrentMs() {
-        ((TimedStimulusView) simpleView).addText(duration.elapsedMillis() + "ms");
+//        ((TimedStimulusView) simpleView).addText(duration.elapsedMillis() + "ms");
     }
 
     protected void logTimeStamp(String eventTag) {
@@ -152,33 +151,33 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         for (ButtonBase currentButton : buttonList) {
             currentButton.setEnabled(false);
         }
-        ((TimedStimulusView) simpleView).addText("disableStimulusButtons: " + duration.elapsedMillis() + "ms");
+//        ((TimedStimulusView) simpleView).addText("disableStimulusButtons: " + duration.elapsedMillis() + "ms");
     }
 
     public void hideStimulusButtons() {
         for (ButtonBase currentButton : buttonList) {
             currentButton.setVisible(false);
         }
-        ((TimedStimulusView) simpleView).addText("hideStimulusButtons: " + duration.elapsedMillis() + "ms");
+//        ((TimedStimulusView) simpleView).addText("hideStimulusButtons: " + duration.elapsedMillis() + "ms");
     }
 
     public void showStimulusButtons() {
         for (ButtonBase currentButton : buttonList) {
             currentButton.setVisible(true);
         }
-        ((TimedStimulusView) simpleView).addText("showStimulusButtons: " + duration.elapsedMillis() + "ms");
+//        ((TimedStimulusView) simpleView).addText("showStimulusButtons: " + duration.elapsedMillis() + "ms");
     }
 
     public void enableStimulusButtons() {
         for (ButtonBase currentButton : buttonList) {
             currentButton.setEnabled(true);
         }
-        ((TimedStimulusView) simpleView).addText("enableStimulusButtons: " + duration.elapsedMillis() + "ms");
+//        ((TimedStimulusView) simpleView).addText("enableStimulusButtons: " + duration.elapsedMillis() + "ms");
     }
 
     public void showStimulusProgress() {
         ((TimedStimulusView) simpleView).addHtmlText((stimulusProvider.getTotalStimuli() - stimulusProvider.getRemainingStimuli()) + " / " + stimulusProvider.getTotalStimuli());
-        ((TimedStimulusView) simpleView).addText("showStimulusProgress: " + duration.elapsedMillis() + "ms");
+//        ((TimedStimulusView) simpleView).addText("showStimulusProgress: " + duration.elapsedMillis() + "ms");
     }
 
     public void popupMessage(final PresenterEventListner presenterListerner, String message, boolean condition) {
@@ -201,8 +200,19 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         return stimulusProvider.hasNextStimulus();
     }
 
-    protected void nextStimulusButton(final AppEventListner appEventListner, final String eventTag, final String buttonLabel) {
-        if (stimulusProvider.hasNextStimulus()) {
+    protected void autoNextStimulus(final AppEventListner appEventListner, final String eventTag, boolean condition) {
+        if (condition) {
+            logTimeStamp(eventTag);
+            ((TimedStimulusView) simpleView).stopAudio();
+            currentStimulus = stimulusProvider.getNextStimulus();
+            buttonList.clear();
+            ((TimedStimulusView) simpleView).clearGui();
+            setContent(appEventListner);
+        }
+    }
+
+    protected void nextStimulusButton(final AppEventListner appEventListner, final String eventTag, boolean condition, final String buttonLabel) {
+        if (condition && stimulusProvider.hasNextStimulus()) {
             PresenterEventListner eventListner = new PresenterEventListner() {
 
                 @Override
@@ -212,15 +222,16 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
                 @Override
                 public void eventFired(ButtonBase button) {
-                    logTimeStamp(eventTag);
-                    ((TimedStimulusView) simpleView).stopAudio();
-                    currentStimulus = stimulusProvider.getNextStimulus();
-                    buttonList.clear();
-                    ((TimedStimulusView) simpleView).clearGui();
-                    setContent(appEventListner);
+                    autoNextStimulus(appEventListner, eventTag, true);
                 }
             };
             ((TimedStimulusView) simpleView).addOptionButton(eventListner);
+        }
+    }
+
+    protected void conditionalHtml(final AppEventListner appEventListner, boolean condition, final String label) {
+        if (condition) {
+            ((ComplexView) simpleView).addHtmlText(label);
         }
     }
 
@@ -229,5 +240,25 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         if (!stimulusProvider.hasNextStimulus()) {
             ((TimedStimulusView) simpleView).addOptionButton(appEventListner);
         }
+    }
+
+    protected void audioButton(final String eventTag, final String mp3Path, final String oggPath, final String imagePath) {
+        ((TimedStimulusView) simpleView).addOptionButton(new PresenterEventListner() {
+
+            @Override
+            public String getLabel() {
+                return imagePath;
+            }
+
+            @Override
+            public void eventFired(ButtonBase button) {
+                playStimulusAudio(oggPath, mp3Path, 0, new TimedStimulusListener() {
+
+                    @Override
+                    public void postLoadTimerFired() {
+                    }
+                });
+            }
+        });
     }
 }

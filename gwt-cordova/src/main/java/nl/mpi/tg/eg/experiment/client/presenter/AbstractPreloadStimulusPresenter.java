@@ -37,7 +37,7 @@ public abstract class AbstractPreloadStimulusPresenter extends AbstractStimulusP
     private final StimulusProvider stimulusProvider = new StimulusProvider();
 
     public AbstractPreloadStimulusPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults) {
-        super(widgetTag, null, submissionService, userResults);
+        super(widgetTag, audioPlayer, submissionService, userResults);
     }
 
     private void preloadAllStimuli(final AppEventListner appEventListner, final HorizontalPanel progressBar, final TimedStimulusListener timedStimulusListener) {

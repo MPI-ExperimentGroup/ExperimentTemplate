@@ -56,20 +56,21 @@ public class TimedStimulusView extends ComplexView {
     public void endGrid() {
         flexTable = null;
     }
-
+        
     public ButtonBase addStringItem(final PresenterEventListner menuItemListerner, final String labelString, final int rowIndex, final int columnIndex, final String widthString) {
         final Button pushButton = new Button(labelString);
-        return addPushButton(menuItemListerner, pushButton, rowIndex, columnIndex, widthString);
+        return addButton(menuItemListerner, pushButton, rowIndex, columnIndex, widthString);
     }
 
     public ButtonBase addImageItem(final PresenterEventListner menuItemListerner, final SafeUri imagePath, final int rowIndex, final int columnIndex, final String widthString) {
         final Image image = new Image(imagePath);
         image.setHeight(widthString);
-        final PushButton pushButton = new PushButton(image);
-        return addPushButton(menuItemListerner, pushButton, rowIndex, columnIndex, widthString);
+        final Button imageButton = new Button();
+        imageButton.getElement().appendChild(image.getElement());
+        return addButton(menuItemListerner, imageButton, rowIndex, columnIndex, widthString);
     }
 
-    public ButtonBase addPushButton(final PresenterEventListner menuItemListerner, final ButtonBase pushButton, final int rowIndex, final int columnIndex, final String widthString) {
+    private ButtonBase addButton(final PresenterEventListner menuItemListerner, final ButtonBase pushButton, final int rowIndex, final int columnIndex, final String widthString) {
 
         pushButton.addStyleName("stimulusButton");
         pushButton.setEnabled(true);

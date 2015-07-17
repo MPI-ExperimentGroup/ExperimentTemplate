@@ -113,19 +113,19 @@
     width: 100%;
 }
 
-.svgPopupPanel .gwt-Button,
+/*.svgPopupPanel .gwt-Button,
 .choosePlayerList,
 .stimulusHelpPanel .gwt-Button, .stimulusHelpText,
 #widgetTag, .stimulusScreen, .menuTable, .gwt-Label.stimulusProgressLabel, .gwt-Button.nextButton, .gwt-Button.menuButton,.gwt-PushButton.stimulusButton,.gwt-Button.stimulusButton,.gwt-Button.stimulusHelpButton, .gwt-Button.stimulusQuitButton, .gwt-Button.stimulusButton, .gwt-Button.optionButton, .gwt-Label.headerButton {
-    /* prevent text selection on the buttons */
+     prevent text selection on the buttons 
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    /* end prevent text selection on the buttons */
-}
+     end prevent text selection on the buttons 
+}*/
 
 .gwt-Button.stimulusHelpButton:active, .gwt-Button.stimulusQuitButton:active, .gwt-Button.stimulusButton:active, .gwt-Button.stimulusHelpButton:hover, .gwt-Button.stimulusQuitButton:hover {
     background:lightgrey;
@@ -134,11 +134,15 @@
 
 /*.gwt-Button.nextButton:disabled,*/ 
 /*, .gwt-Button.optionButton:disabled, .gwt-Label.headerButton:disabled {*/
-/*.gwt-PushButton.stimulusButton:hover:disabled,
 .gwt-Button.stimulusButton:hover:disabled,
-.gwt-Button.menuButton:hover:disabled {
-    border: none;
-}*/
+.gwt-Button.stimulusButton:disabled,
+.gwt-Button.stimulusButton:active
+/*.gwt-Button.menuButton:hover:disabled*/ 
+{
+    background: white;
+    opacity: 0.4;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+}
 
 /*.gwt-Button.nextButton:hover, .gwt-Button.menuButton:hover, .gwt-Button.optionButton:hover, .gwt-Label.headerButton:hover, */
 .gwt-Button.nextButton:active, .gwt-Button.menuButton:active,.gwt-PushButton.stimulusButton:active,.gwt-Button.stimulusButton:active, .gwt-Button.optionButton:active, .gwt-Label.headerButton:active {
@@ -322,7 +326,7 @@ table#screenExample td, .stimulusHelpPanel .gwt-Button, .stimulusHelpText, .popu
 
 .gwt-HTML a, .gwt-HTML a:visited, .gwt-HTML a:hover,
 .gwt-Label, .gwt-HTML, .headerLabel, .resultsTableTitle, .gwt-CheckBox, .pageLink, .contentBody {
-    color:rgb(255,255,255);  
+    color:rgb(0,0,0);  
     line-height: 20pt;
 } 
 

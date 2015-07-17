@@ -23,8 +23,9 @@ import com.google.gwt.core.client.JsArray;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.Random;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
+import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
-import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.ServiceLocations;
@@ -41,8 +42,8 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
     private final DataSubmissionService submissionService;
     final UserResults userResults;
     private final Duration duration;
-    private PresenterEventListner successEventListner;
-    private PresenterEventListner errorEventListner;
+    private TimedStimulusListener successEventListner;
+    private TimedStimulusListener errorEventListner;
 
     public AbstractDataSubmissionPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults) {
         super(widgetTag, new ComplexView());
@@ -68,21 +69,21 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
 
             @Override
             public void scoreSubmissionFailed(DataSubmissionException exception) {
-                errorEventListner.eventFired(null);
+                errorEventListner.postLoadTimerFired();
             }
 
             @Override
             public void scoreSubmissionComplete(JsArray<HighScoreData> highScoreData) {
-                successEventListner.eventFired(null);
+                successEventListner.postLoadTimerFired();
             }
         });
     }
 
-    public void onSuccess(final PresenterEventListner appEventListner) {
-        successEventListner = appEventListner;
+    public void onSuccess(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener) {
+        successEventListner = timedStimulusListener;
     }
 
-    public void onError(final PresenterEventListner appEventListner) {
-        errorEventListner = appEventListner;
+    public void onError(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener) {
+        errorEventListner = timedStimulusListener;
     }
 }

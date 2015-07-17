@@ -362,24 +362,28 @@ if(@type = 'metadata') then ', UserResults userResults' else ''" />
         <xsl:text>();
         </xsl:text>
     </xsl:template>
-    <xsl:template match="allMenuItems|nextStimulusButton">    
+    <xsl:template match="allMenuItems|nextStimulusButton|autoNextStimulus|conditionalHtml">    
         <xsl:text>    </xsl:text>    
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(appEventListner</xsl:text>
         <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
+        <xsl:value-of select="if(@condition) then concat(', ', @condition) else ''" />
         <xsl:value-of select="if(@fieldName) then concat(', messages.', @fieldName, '()') else ''" />
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="logTimeStamp">    
+    <xsl:template match="logTimeStamp|audioButton">    
         <xsl:text>    </xsl:text>    
         <xsl:value-of select ="local-name()"/>
-        <xsl:text>("</xsl:text>
-        <xsl:value-of select="@eventTag" />
-        <xsl:text>");
+        <xsl:text>(</xsl:text>
+        <xsl:value-of select="if(@eventTag) then concat('&quot;', @eventTag, '&quot;') else ''" />
+        <xsl:value-of select="if(@mp3File) then concat(', &quot;', @mp3File, '&quot;') else ''" />
+        <xsl:value-of select="if(@oggFile) then concat(', &quot;', @oggFile, '&quot;') else ''" />
+        <xsl:value-of select="if(@image) then concat(', &quot;', @image, '&quot;') else ''" />
+        <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="preloadAllStimuli|showStimulusGrid|pause">
+    <xsl:template match="preloadAllStimuli|showStimulusGrid|pause|onError|onSuccess">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(appEventListner</xsl:text>
