@@ -47,17 +47,25 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
     private final DataSubmissionService submissionService;
     final UserResults userResults;
-    Stimulus currentStimulus;
+    Stimulus currentStimulus = null;
     private final Duration duration;
     final ArrayList<ButtonBase> buttonList = new ArrayList<>();
 
     public AbstractStimulusPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults) {
         super(widgetTag, new TimedStimulusView(audioPlayer));
-        stimulusProvider.getSubset(Stimulus.Similarity.sim); // todo: handle this subsetting of the stimulus 
-        currentStimulus = stimulusProvider.getNextStimulus();
         duration = new Duration();
         this.submissionService = submissionService;
         this.userResults = userResults;
+    }
+
+    protected void loadSubsetStimulus() {
+        stimulusProvider.getSubset(Stimulus.Similarity.sim); // todo: fully handle this subsetting of the stimulus 
+        currentStimulus = stimulusProvider.getNextStimulus();
+    }
+
+    protected void loadNoiseStimulus() {
+        stimulusProvider.getNoisyStimuli();
+        currentStimulus = stimulusProvider.getNextStimulus();
     }
 
     protected void pause(final AppEventListner appEventListner, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
@@ -113,14 +121,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).startGrid();
         int imageCounter = 0;
         buttonList.add(((TimedStimulusView) simpleView).addStringItem(getEventListener(buttonList, eventTag, alternativeChoice, stimulusListener), alternativeChoice, 0, 0, imageWidth));
-        HashSet<String> hashSet = new HashSet<>();
-        StimulusProvider gridStimulusProvider = new StimulusProvider();
-        while (gridStimulusProvider.hasNextStimulus()) {
-            final String nextJpg = gridStimulusProvider.getNextStimulus().getJpg();
-            if (!hashSet.contains(nextJpg)) {
-                hashSet.add(nextJpg);
-                buttonList.add(((TimedStimulusView) simpleView).addImageItem(getEventListener(buttonList, eventTag, nextJpg, stimulusListener), UriUtils.fromString(serviceLocations.staticFilesUrl() + nextJpg), imageCounter / columnCount, 1 + imageCounter++ % columnCount, imageWidth));
-            }
+        for (final String nextJpg : stimulusProvider.getPictureList()) {
+            buttonList.add(((TimedStimulusView) simpleView).addImageItem(getEventListener(buttonList, eventTag, nextJpg, stimulusListener), UriUtils.fromString(serviceLocations.staticFilesUrl() + nextJpg), imageCounter / columnCount, 1 + imageCounter++ % columnCount, imageWidth));
         }
         disableStimulusButtons();
         ((TimedStimulusView) simpleView).endGrid();

@@ -208,7 +208,9 @@ if(@type = 'metadata') then ', UserResults userResults' else ''" />
                 <xsl:when test="@type = 'stimulus' or @type = 'preload'">
                     <xsl:text>
                         super(widgetTag, audioPlayer, submissionService, userResults);
-                    </xsl:text>
+                    </xsl:text>                    
+                    <xsl:value-of select="if(loadNoiseStimulus) then 'loadNoiseStimulus();' else ''" />
+                    <xsl:value-of select="if(loadSubsetStimulus) then 'loadSubsetStimulus();' else ''" />
                 </xsl:when>
                 <xsl:when test="@type = 'transmission'">
                     <xsl:text>
