@@ -40,15 +40,17 @@ public class ScreenData {
     private Date submitDate;
     private String experimentName;
     private String screenName;
+    private String userId;
 
     public ScreenData() {
     }
 
-    public ScreenData(Date viewDate, Date submitDate, String experimentName, String screenName) {
+    public ScreenData(Date viewDate, Date submitDate, String experimentName, String screenName, String userId) {
         this.viewDate = viewDate;
         this.submitDate = submitDate;
         this.experimentName = experimentName;
         this.screenName = screenName;
+        this.userId = userId;
     }
 
     public long getId() {
@@ -73,5 +75,9 @@ public class ScreenData {
 
     public void setSubmitDate(Date submitDate) {
         this.submitDate = submitDate;
+    }
+
+    public String getUserId() {
+        return userId;
     }
 }

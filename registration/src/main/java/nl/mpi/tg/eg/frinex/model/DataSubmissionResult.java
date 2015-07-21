@@ -15,22 +15,30 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.rest;
+package nl.mpi.tg.eg.frinex.model;
 
 import java.util.List;
-import nl.mpi.tg.eg.frinex.model.ScreenData;
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.repository.query.Param;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 /**
- * @since Jul 2, 2015 3:02:49 PM (creation date)
+ * @since Jul 21, 2015 2:24:43 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-@RepositoryRestResource(collectionResourceRel = "screenviews", path = "screenviews")
-public interface ScreenDataRepository extends PagingAndSortingRepository<ScreenData, Long> {
+public class DataSubmissionResult {
 
-    ScreenData findById(@Param("id") long id);
+    public final String userId;
+    public final boolean success;
 
-    List<ScreenData> findAll();
+    public DataSubmissionResult(String userId, boolean success) {
+        this.userId = userId;
+        this.success = success;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public boolean isSuccess() {
+        return success;
+    }
+
 }

@@ -34,11 +34,11 @@ public interface ParticipantRepository extends PagingAndSortingRepository<Partic
 
     Participant findById(@Param("id") long id);
 
-    List<Participant> findByFirstName(@Param("firstName") String firstName);
+//    List<Participant> findByFirstName(@Param("firstName") String firstName);
 
-    Participant findByEmail(@Param("email") String email);
+//    Participant findByEmail(@Param("email") String email);
 
-    List<Participant> findByEmailAndToken(@Param("email") String email, @Param("token") String token);
+//    List<Participant> findByEmailAndToken(@Param("email") String email, @Param("token") String token);
 
     List<Participant> findAll();
 }

@@ -17,60 +17,68 @@
  */
 package nl.mpi.tg.eg.frinex.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import javax.persistence.Column;
+import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.Temporal;
 
 /**
  * @since Jun 30, 2015 4:38:38 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Entity
-public class Participant {
+public class Participant implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private String firstName;
-    private String lastName;
-    @Column(unique = true)
-    private String email;
-    @JsonIgnore
-    private String token; // user password that has been hashed in the remote app
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date submitDate;
+    private String workerId;
+    private String userId;
+    private String otherLanguages;
+    private String nativeLanguage;
 
     public Participant() {
     }
 
-    public Participant(String firstName, String lastName, String email, String token) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.token = token;
+    public Participant(Date submitDate, String workerId, String userId, String otherLanguages, String nativeLanguage) {
+        this.submitDate = submitDate;
+        this.workerId = workerId;
+        this.userId = userId;
+        this.otherLanguages = otherLanguages;
+        this.nativeLanguage = nativeLanguage;
     }
 
     public long getId() {
         return id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getUserId() {
+        return userId;
     }
 
-    public String getLastName() {
-        return lastName;
+    public Date getSubmitDate() {
+        return submitDate;
     }
 
-    public String getEmail() {
-        return email;
+    public void setSubmitDate(Date submitDate) {
+        this.submitDate = submitDate;
     }
 
-    public String getToken() {
-        return token;
+    public String getWorkerId() {
+        return workerId;
     }
-    
+
+    public String getOtherLanguages() {
+        return otherLanguages;
+    }
+
+    public String getNativeLanguage() {
+        return nativeLanguage;
+    }
 }

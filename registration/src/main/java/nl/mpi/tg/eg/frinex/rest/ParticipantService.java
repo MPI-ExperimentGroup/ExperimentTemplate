@@ -34,17 +34,17 @@ public class ParticipantService {
     @Autowired
     private ParticipantRepository participantRepository;
 
-    @RequestMapping(value = "/createuser", method = RequestMethod.POST)
-    public String createuser(@RequestBody Participant participant) {
-
-        if (participant.getEmail() == null || participant.getEmail().isEmpty()) {
-            throw new IllegalArgumentException("The 'email' parameter is required");
-        }
-        if (participant.getToken() == null || participant.getToken().isEmpty()) {
-            throw new IllegalArgumentException("The 'token' parameter is required");
-        }
-
-        participantRepository.save(participant);
-        return "Created: " + participant.getEmail();
-    }
+//    @RequestMapping(value = "/createuser", method = RequestMethod.POST)
+//    public String createuser(@RequestBody Participant participant) {
+//
+//        if (participant.getEmail() == null || participant.getEmail().isEmpty()) {
+//            throw new IllegalArgumentException("The 'email' parameter is required");
+//        }
+//        if (participant.getToken() == null || participant.getToken().isEmpty()) {
+//            throw new IllegalArgumentException("The 'token' parameter is required");
+//        }
+//
+//        participantRepository.save(participant);
+//        return "Created: " + participant.getEmail();
+//    }
 }

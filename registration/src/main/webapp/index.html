@@ -60,29 +60,36 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         </div>
         <div>
             <a href="screenviews">screenviews</a><br>
+            <a href="getScreenChanges">getScreenChanges</a><br>
+            <a href="dataviewer">dataviewer</a><br>
             <textarea id="screenData">[{
 "viewDate" :"2015-07-02T16:55:21.1234Z",
 "experimentName": "experiment name",
-"screenName": "screen1 name"
+"screenName": "screen1 name",
+"userId": "woof"
 },{
 "viewDate" :"2015-07-02T16:55:21.1234Z",
 "experimentName": "experiment name",
-"screenName": "screen2 name"
+"screenName": "screen2 name",
+"userId": "woof"
 },{
 "viewDate" :"2015-07-02T16:55:21.1234Z",
 "experimentName": "experiment name",
-"screenName": "screen3 name"
+"screenName": "screen3 name",
+"userId": "woof"
 },{
 "viewDate" :"2015-07-02T16:55:21.1234Z",
 "experimentName": "experiment name",
-"screenName": "screen4 name"
+"screenName": "screen4 name",
+"userId": "woof"
 },{
 "viewDate" :"2015-07-02T16:55:21.1234Z",
 "experimentName": "experiment name",
-"screenName": "screen5 name"
+"screenName": "screen5 name",
+"userId": "woof"
 }
 ]</textarea>
-            <button onclick="submitPostData('addscreenview', $('#screenData').val())">add screen view</button>
+            <button onclick="submitPostData('screenChange', $('#screenData').val())">add screen view</button>
         </div>
     </body>
 </html>

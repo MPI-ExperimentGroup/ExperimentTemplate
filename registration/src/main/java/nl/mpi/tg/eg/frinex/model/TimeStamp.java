@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.frinex.model;
 
 import java.util.Date;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,6 +28,7 @@ import javax.persistence.Temporal;
  * @since Jul 8, 2015 5:36:54 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
+@Entity
 public class TimeStamp {
 
     @Id
@@ -72,4 +74,7 @@ public class TimeStamp {
         return eventMs;
     }
 
+    public void setSubmitDate(Date submitDate) {
+        this.submitDate = submitDate;
+    }
 }
