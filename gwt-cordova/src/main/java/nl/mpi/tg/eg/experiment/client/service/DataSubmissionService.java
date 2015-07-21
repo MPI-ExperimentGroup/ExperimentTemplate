@@ -127,17 +127,18 @@ public class DataSubmissionService extends AbstractSubmissionService {
 
             @Override
             public void onResponseReceived(Request request, Response response) {
-                if (200 == response.getStatusCode()) {
+                final JsArray<DataSubmissionResult> sumbmissionResult = JsonUtils.<JsArray<DataSubmissionResult>>safeEval("[" + response.getText() + "]");
+                if (200 == response.getStatusCode() && sumbmissionResult.length() > 0 && sumbmissionResult.get(0).getSuccess()) {
                     final String text = response.getText();
                     logger.info(text);
-                    dataSubmissionListener.scoreSubmissionComplete(JsonUtils.<JsArray<DataSubmissionResult>>safeEval(response.getText()));
+                    dataSubmissionListener.scoreSubmissionComplete(sumbmissionResult);
                 } else if (207 == response.getStatusCode()) {
                     final String text = response.getText();
                     logger.info(text);
                     // if there was an issue on the server then store the problematic data. // todo: this might be removed when prodution status is reached
                     // todo: add handling of 200 responses given by some wifi login services that do not provide propper redirect codes, to make sure we dont get tricked into thinking data has been sent when it might not have
                     localStorage.addFailedData(text);
-                    dataSubmissionListener.scoreSubmissionComplete(JsonUtils.<JsArray<DataSubmissionResult>>safeEval(response.getText()));
+                    dataSubmissionListener.scoreSubmissionComplete(sumbmissionResult);
                 } else {
                     logger.warning(builder.getUrl());
                     logger.warning(response.getStatusText());
