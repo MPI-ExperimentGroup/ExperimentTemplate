@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.experiment.client.view;
 
 import com.google.gwt.event.dom.client.FocusEvent;
 import com.google.gwt.event.dom.client.FocusHandler;
+import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
@@ -115,6 +116,14 @@ public class MetadataView extends ComplexView {
             }
         }
         fieldBox.setFocus(true);
+    }
+
+    public void setButtonError(boolean isError, ButtonBase button) {
+        if (isError) {
+            button.addStyleName("metadataError");
+        } else {
+            button.removeStyleName("metadataError");
+        }
     }
 
     public void clearErrors() {

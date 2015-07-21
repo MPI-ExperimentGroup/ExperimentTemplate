@@ -19,7 +19,7 @@ package nl.mpi.tg.eg.experiment.client.listener;
 
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
 import com.google.gwt.core.client.JsArray;
-import nl.mpi.tg.eg.experiment.client.model.HighScoreData;
+import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 
 /**
  * @since Oct 29, 2014 11:27:39 AM (creation date)
@@ -29,5 +29,5 @@ public interface DataSubmissionListener {
 
     void scoreSubmissionFailed(DataSubmissionException exception);
 
-    void scoreSubmissionComplete(JsArray<HighScoreData> highScoreData);
+    void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData);
 }

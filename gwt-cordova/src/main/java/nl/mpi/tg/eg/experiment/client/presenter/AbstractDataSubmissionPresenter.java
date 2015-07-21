@@ -30,7 +30,7 @@ import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
-import nl.mpi.tg.eg.experiment.client.model.HighScoreData;
+import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 
 /**
  * @since Jul 16, 2015 11:05:26 AM (creation date)
@@ -73,7 +73,7 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
             }
 
             @Override
-            public void scoreSubmissionComplete(JsArray<HighScoreData> highScoreData) {
+            public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
                 successEventListner.postLoadTimerFired();
             }
         });

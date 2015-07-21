@@ -292,6 +292,7 @@ canvas {
     width: 100%;
 }
 
+.gwt-Button.metadataError,
 .metadataError {
     background: rgb(246,170,139);
 }

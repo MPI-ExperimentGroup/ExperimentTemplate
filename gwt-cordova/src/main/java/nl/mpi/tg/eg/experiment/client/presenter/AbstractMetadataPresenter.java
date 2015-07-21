@@ -17,9 +17,11 @@
  */
 package nl.mpi.tg.eg.experiment.client.presenter;
 
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
+import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
 import nl.mpi.tg.eg.experiment.client.view.MetadataView;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
@@ -28,6 +30,10 @@ import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
 import nl.mpi.tg.eg.experiment.client.exception.MetadataFieldException;
+import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
+import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
+import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
+import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 
 /**
  * @since Oct 21, 2014 11:50:56 AM (creation date)
@@ -38,10 +44,13 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
     final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
     protected final UserResults userResults;
     protected PresenterEventListner saveEventListner = null;
+    private final DataSubmissionService submissionService;
+    private TimedStimulusListener errorEventListner;
 
-    public AbstractMetadataPresenter(RootLayoutPanel widgetTag, UserResults userResults) {
+    public AbstractMetadataPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults) {
         super(widgetTag, new MetadataView());
         this.userResults = userResults;
+        this.submissionService = submissionService;
     }
 
     @Override
@@ -50,12 +59,28 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
         saveEventListner = new PresenterEventListner() {
 
             @Override
-            public void eventFired(ButtonBase button) {
+            public void eventFired(final ButtonBase button) {
                 try {
+                    ((MetadataView) simpleView).setButtonError(false, button);
                     ((MetadataView) simpleView).clearErrors();
                     validateFields();
                     saveFields();
-                    appEventListner.requestApplicationState(nextState);
+                    // this assumes that the user will not get to this page unless they have already agreed to submit data
+                    submissionService.submitMetadata(userResults, new DataSubmissionListener() {
+
+                        @Override
+                        public void scoreSubmissionFailed(DataSubmissionException exception) {
+                            ((MetadataView) simpleView).setButtonError(true, button);
+                            submissionService.submitScreenChange(userResults.getUserData().getUserId(), "submitMetadataFailed");
+                            errorEventListner.postLoadTimerFired();
+                        }
+
+                        @Override
+                        public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
+                            appEventListner.requestApplicationState(nextState);
+                        }
+                    });
+
                 } catch (MetadataFieldException exception) {
                     ((MetadataView) simpleView).showFieldError(exception.getMetadataField());
                 }
@@ -113,5 +138,9 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
 
     public void focusFirstTextBox() {
         ((MetadataView) simpleView).focusFirstTextBox();
+    }
+
+    public void onError(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener) {
+        errorEventListner = timedStimulusListener;
     }
 }

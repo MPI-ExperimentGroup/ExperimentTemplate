@@ -93,9 +93,8 @@
             <xsl:value-of select="@self" />
             <xsl:text>Presenter(widgetTag</xsl:text>
             <xsl:value-of select="
-if(@type = 'transmission') then ', submissionService, userResults' else
-if(@type = 'stimulus' or @type = 'preload') then ', new AudioPlayer(this), submissionService, userResults' else 
-if(@type = 'metadata') then ', userResults' else ''" />
+if(@type = 'transmission' or @type = 'metadata') then ', submissionService, userResults' else
+if(@type = 'stimulus' or @type = 'preload') then ', new AudioPlayer(this), submissionService, userResults' else ''" />
             <xsl:text>);
                 presenter.setState(this, </xsl:text>
             <xsl:choose>
@@ -184,9 +183,8 @@ if(@type = 'metadata') then ', userResults' else ''" />
             <xsl:value-of select="@self" />
             <xsl:text>Presenter(RootLayoutPanel widgetTag</xsl:text>
             <xsl:value-of select="
-if(@type = 'transmission') then ', DataSubmissionService submissionService, UserResults userResults' else 
-if(@type = 'stimulus' or @type = 'preload') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults' else 
-if(@type = 'metadata') then ', UserResults userResults' else ''" />
+if(@type = 'transmission' or @type = 'metadata') then ', DataSubmissionService submissionService, UserResults userResults' else 
+if(@type = 'stimulus' or @type = 'preload') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults' else ''" />
             <xsl:text>) {
             </xsl:text>  
             <xsl:choose>
@@ -212,14 +210,9 @@ if(@type = 'metadata') then ', UserResults userResults' else ''" />
                     <xsl:value-of select="if(loadNoiseStimulus) then 'loadNoiseStimulus();' else ''" />
                     <xsl:value-of select="if(loadSubsetStimulus) then 'loadSubsetStimulus();' else ''" />
                 </xsl:when>
-                <xsl:when test="@type = 'transmission'">
+                <xsl:when test="@type = 'metadata' or @type = 'transmission'">
                     <xsl:text>
                         super(widgetTag, submissionService, userResults);
-                    </xsl:text>
-                </xsl:when>
-                <xsl:when test="@type = 'metadata'">
-                    <xsl:text>
-                        super(widgetTag, userResults);
                     </xsl:text>
                 </xsl:when>
                 <xsl:otherwise>

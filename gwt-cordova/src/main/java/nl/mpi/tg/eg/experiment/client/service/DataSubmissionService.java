@@ -24,13 +24,16 @@ import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.Response;
+import com.google.gwt.http.client.URL;
 import com.google.gwt.i18n.shared.DateTimeFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
-import nl.mpi.tg.eg.experiment.client.model.HighScoreData;
+import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
+import nl.mpi.tg.eg.experiment.client.model.MetadataField;
+import nl.mpi.tg.eg.experiment.client.model.UserResults;
 
 /**
  * @since Jul 2, 2015 5:17:27 PM (creation date)
@@ -40,7 +43,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
 
     private enum ServiceEndpoint {
 
-        timeStamp, screenChange, tagEvent, stowedData
+        timeStamp, screenChange, tagEvent, metadata, stowedData
     }
     private final LocalStorage localStorage;
     private final String experimentName;
@@ -49,6 +52,17 @@ public class DataSubmissionService extends AbstractSubmissionService {
     public DataSubmissionService(LocalStorage localStorage) {
         this.localStorage = localStorage;
         this.experimentName = messages.appNameInternal();
+    }
+
+    public void submitMetadata(final UserResults userResults, final DataSubmissionListener dataSubmissionListener) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("{");
+        for (MetadataField key : userResults.getUserData().getMetadataFields()) {
+            String value = URL.encodeQueryString(userResults.getUserData().getMetadataValue(key));
+            stringBuilder.append("\"").append(key.getPostName()).append("\": \"").append(value).append("\",\n");
+        }
+        stringBuilder.append("\"userId\": \"").append(userResults.getUserData().getUserId()).append("\"\n}");
+        submitData(ServiceEndpoint.metadata, stringBuilder.toString(), dataSubmissionListener);
     }
 
     public void submitTagValue(final UserId userId, String eventTag, String tagValue, int eventMs) {
@@ -86,14 +100,14 @@ public class DataSubmissionService extends AbstractSubmissionService {
         localStorage.addStoredScreenData(userId, jsonData);
 
         final String storedScreenData = localStorage.getStoredScreenData(userId);
-        submitData(endpoint, storedScreenData, new DataSubmissionListener() {
+        submitData(endpoint, "[" + storedScreenData + "]", new DataSubmissionListener() {
 
             @Override
             public void scoreSubmissionFailed(DataSubmissionException exception) {
             }
 
             @Override
-            public void scoreSubmissionComplete(JsArray<HighScoreData> highScoreData) {
+            public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
                 localStorage.stowSentData(userId);
             }
         });
@@ -116,14 +130,14 @@ public class DataSubmissionService extends AbstractSubmissionService {
                 if (200 == response.getStatusCode()) {
                     final String text = response.getText();
                     logger.info(text);
-                    dataSubmissionListener.scoreSubmissionComplete(JsonUtils.<JsArray<HighScoreData>>safeEval(response.getText()));
+                    dataSubmissionListener.scoreSubmissionComplete(JsonUtils.<JsArray<DataSubmissionResult>>safeEval(response.getText()));
                 } else if (207 == response.getStatusCode()) {
                     final String text = response.getText();
                     logger.info(text);
                     // if there was an issue on the server then store the problematic data. // todo: this might be removed when prodution status is reached
                     // todo: add handling of 200 responses given by some wifi login services that do not provide propper redirect codes, to make sure we dont get tricked into thinking data has been sent when it might not have
                     localStorage.addFailedData(text);
-                    dataSubmissionListener.scoreSubmissionComplete(JsonUtils.<JsArray<HighScoreData>>safeEval(response.getText()));
+                    dataSubmissionListener.scoreSubmissionComplete(JsonUtils.<JsArray<DataSubmissionResult>>safeEval(response.getText()));
                 } else {
                     logger.warning(builder.getUrl());
                     logger.warning(response.getStatusText());
@@ -133,7 +147,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
         };
         try {
             // todo: add the application build number to the submitted data
-            builder.sendRequest("[" + jsonData + "]", requestCallback);
+            builder.sendRequest(jsonData, requestCallback);
         } catch (RequestException exception) {
             logger.log(Level.SEVERE, "submit data failed", exception);
             dataSubmissionListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.buildererror, endpoint.name()));

@@ -23,14 +23,12 @@ import com.google.gwt.core.client.JavaScriptObject;
  * @since Mar 12, 2015 10:35:28 AM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public class HighScoreData extends JavaScriptObject {
+public class DataSubmissionResult extends JavaScriptObject {
 
-    protected HighScoreData() {
+    protected DataSubmissionResult() {
     }
 
-    public final native int getCount() /*-{ return this.scores.length; }-*/;
+    public final native int getSuccess() /*-{ return this.success; }-*/;
 
-    public final native String getPlayerName(int index) /*-{ return this.scores[index].player; }-*/;
-
-    public final native int getPlayerHighScore(int index) /*-{ return this.scores[index].highscore; }-*/;
+    public final native String getUserId() /*-{ return this.userId; }-*/;
 }
