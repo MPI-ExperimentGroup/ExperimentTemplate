@@ -17,31 +17,66 @@
  */
 package nl.mpi.tg.eg.frinex.model;
 
+import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+
 /**
  * @since Jun 30, 2015 12:13:58 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
+@Entity
 public class ExperimentData {
 
-    private final long id;
-    private final String name;
-    private final String value;
-
-    public ExperimentData(long id, String name, String value) {
-        this.id = id;
-        this.name = name;
-        this.value = value;
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date tagDate;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date submitDate;
+    private String experimentName;
+    private String eventTag;
+    private String tagValue;
+    private String userId;
+    private int eventMs;
 
     public long getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public Date getTagDate() {
+        return tagDate;
     }
 
-    public String getValue() {
-        return value;
+    public Date getSubmitDate() {
+        return submitDate;
+    }
+
+    public String getExperimentName() {
+        return experimentName;
+    }
+
+    public String getEventTag() {
+        return eventTag;
+    }
+
+    public String getTagValue() {
+        return tagValue;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public int getEventMs() {
+        return eventMs;
+    }
+
+    public void setSubmitDate(Date submitDate) {
+        this.submitDate = submitDate;
     }
 }

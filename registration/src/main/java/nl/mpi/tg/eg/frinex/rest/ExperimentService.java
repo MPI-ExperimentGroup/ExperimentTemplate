@@ -18,8 +18,6 @@
 package nl.mpi.tg.eg.frinex.rest;
 
 import java.util.List;
-import java.util.Random;
-import javax.servlet.http.HttpServletRequest;
 import nl.mpi.tg.eg.frinex.model.DataSubmissionResult;
 import nl.mpi.tg.eg.frinex.model.ExperimentData;
 import nl.mpi.tg.eg.frinex.model.Participant;
@@ -29,12 +27,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -51,12 +46,10 @@ public class ExperimentService {
     TimeStampRepository timeStampRepository;
     @Autowired
     ParticipantRepository participantRepository;
+    @Autowired
+    ExperimentRepository experimentDataRepository;
 
-    @RequestMapping("/experiment/{name}")
-    public String test(@PathVariable String name) {
-        return "Experiment: " + name;
-    }
-
+    
 //    @RequestMapping(value = "/registerUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 //    @ResponseBody
 //    public ResponseEntity<String> registerUserData(
@@ -151,12 +144,20 @@ public class ExperimentService {
         return new ResponseEntity<>(new DataSubmissionResult(participant.getUserId(), true), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/experimentData", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody
-    ExperimentData getOne(@RequestParam(value = "name", required = false, defaultValue = "param12") String name) {
-        return new ExperimentData(new Random().nextLong(), name, new Random().nextBoolean() + "");
+    @RequestMapping(value = "/tagEvent", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)    
+public ResponseEntity<DataSubmissionResult> registerTagEvent(@RequestBody List<ExperimentData> experimentDataList) {
+        final ResponseEntity responseEntity;
+        if (experimentDataList.isEmpty()) {
+            responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        } else {
+            for (ExperimentData experimentData : experimentDataList) {
+                experimentData.setSubmitDate(new java.util.Date());
+                experimentDataRepository.save(experimentData);
+            }
+            responseEntity = new ResponseEntity<>(new DataSubmissionResult(experimentDataList.get(0).getUserId(), true), HttpStatus.OK);
+        }
+        return responseEntity;
     }
-
 //    @RequestMapping(value = "/experimentData/csv", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
 //    public @ResponseBody
 //    ExperimentData getCsv(@RequestParam(value = "name", required = false, defaultValue = "param12") String name) {

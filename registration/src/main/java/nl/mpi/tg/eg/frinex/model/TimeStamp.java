@@ -62,8 +62,8 @@ public class TimeStamp {
         return experimentName;
     }
 
-    public String getTagName() {
-        return tagName;
+    public String getEventTag() {
+        return eventTag;
     }
 
     public String getUserId() {
