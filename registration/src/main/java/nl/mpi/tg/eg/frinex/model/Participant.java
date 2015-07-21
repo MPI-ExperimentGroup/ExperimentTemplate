@@ -46,14 +46,6 @@ public class Participant implements Serializable {
     public Participant() {
     }
 
-    public Participant(Date submitDate, String workerId, String userId, String otherLanguages, String nativeLanguage) {
-        this.submitDate = submitDate;
-        this.workerId = workerId;
-        this.userId = userId;
-        this.otherLanguages = otherLanguages;
-        this.nativeLanguage = nativeLanguage;
-    }
-
     public long getId() {
         return id;
     }

@@ -70,7 +70,6 @@ public class ExperimentService {
 //        final ResponseEntity<String> responseEntity = new ResponseEntity<>(request.getRemoteAddr() + "<br>" + acceptLang + "<br>" + userAgent, HttpStatus.OK);
 //        return responseEntity;
 //    }
-
 //    @RequestMapping(value = "/getScreenChanges", method = RequestMethod.GET, produces = "text/csv")
 //    public @ResponseBody
 //    ResponseEntity<List<ScreenData>> getScreenChanges() {
@@ -120,7 +119,7 @@ public class ExperimentService {
         if (screenDataList.isEmpty()) {
             responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         } else {
-            responseEntity = new ResponseEntity<>(new DataSubmissionResult(null, true), HttpStatus.OK);
+            responseEntity = new ResponseEntity<>(new DataSubmissionResult(screenDataList.get(0).getUserId(), true), HttpStatus.OK);
         }
 //        } else {
 //            responseEntity = new ResponseEntity<>(new DataSubmissionResult(null, true, invalidScreenData), HttpStatus.MULTI_STATUS);
@@ -130,10 +129,18 @@ public class ExperimentService {
 
     @RequestMapping(value = "/timeStamp", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity registerScreenData(@RequestBody TimeStamp timeStamp) {
-        timeStamp.setSubmitDate(new java.util.Date());
-        timeStampRepository.save(timeStamp);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<DataSubmissionResult> registerTimeStamp(@RequestBody List<TimeStamp> timeStampList) {
+        final ResponseEntity responseEntity;
+        if (timeStampList.isEmpty()) {
+            responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        } else {
+            for (TimeStamp timeStamp : timeStampList) {
+                timeStamp.setSubmitDate(new java.util.Date());
+                timeStampRepository.save(timeStamp);
+            }
+            responseEntity = new ResponseEntity<>(new DataSubmissionResult(timeStampList.get(0).getUserId(), true), HttpStatus.OK);
+        }
+        return responseEntity;
     }
 
     @RequestMapping(value = "/metadata", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)

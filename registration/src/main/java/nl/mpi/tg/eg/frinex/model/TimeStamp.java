@@ -39,7 +39,7 @@ public class TimeStamp {
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date submitDate;
     private String experimentName;
-    private String tagName;
+    private String eventTag;
     private String userId;
     private int eventMs;
 

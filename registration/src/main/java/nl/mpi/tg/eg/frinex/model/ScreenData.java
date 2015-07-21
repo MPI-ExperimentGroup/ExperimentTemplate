@@ -45,14 +45,6 @@ public class ScreenData {
     public ScreenData() {
     }
 
-    public ScreenData(Date viewDate, Date submitDate, String experimentName, String screenName, String userId) {
-        this.viewDate = viewDate;
-        this.submitDate = submitDate;
-        this.experimentName = experimentName;
-        this.screenName = screenName;
-        this.userId = userId;
-    }
-
     public long getId() {
         return id;
     }
