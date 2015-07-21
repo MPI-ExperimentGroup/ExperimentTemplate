@@ -28,7 +28,7 @@ public class DataSubmissionResult extends JavaScriptObject {
     protected DataSubmissionResult() {
     }
 
-    public final native int getSuccess() /*-{ return this.success; }-*/;
+    public final native boolean getSuccess() /*-{ return this.success; }-*/;
 
     public final native String getUserId() /*-{ return this.userId; }-*/;
 }
