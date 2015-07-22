@@ -70,10 +70,14 @@
 
             public ApplicationController(RootLayoutPanel widgetTag) {
             super(widgetTag);
+        </xsl:text>
+        <xsl:value-of select="if(experiment/preventWindowClose) then concat('preventWindowClose(&quot;', experiment/preventWindowClose, '&quot;);') else ''" />
+        <xsl:text>        
             }
             
             @Override
             public void requestApplicationState(ApplicationState applicationState) {
+            localStorage.saveAppState(applicationState.name());
             try {
             submissionService.submitScreenChange(userResults.getUserData().getUserId(), applicationState.name());
             History.newItem(applicationState.name(), false);

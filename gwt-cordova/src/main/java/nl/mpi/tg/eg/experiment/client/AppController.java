@@ -17,6 +17,10 @@
  */
 package nl.mpi.tg.eg.experiment.client;
 
+import com.google.gwt.event.logical.shared.CloseEvent;
+import com.google.gwt.event.logical.shared.CloseHandler;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.Window.ClosingEvent;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.logging.Logger;
@@ -57,6 +61,26 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
         }
     }
 
+    protected void preventWindowClose(final String messageString) {
+
+        // on page close, back etc. provide a warning that their session will be invalide and they will not be paid etc.
+        Window.addWindowClosingHandler(new Window.ClosingHandler() {
+
+            @Override
+            public void onWindowClosing(ClosingEvent event) {
+                event.setMessage(messageString);
+            }
+        });
+        
+        // on page close, back etc. send a screen event to the server
+        Window.addCloseHandler(new CloseHandler<Window>() {
+
+            @Override
+            public void onClose(CloseEvent<Window> event) {
+                submissionService.submitScreenChange(userResults.getUserData().getUserId(), "BrowserWindowClosed");
+            }
+        });
+    }
 //    @Override
 //    public void requestApplicationState(ApplicationState applicationState) {
 //        try {
@@ -229,7 +253,6 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
 //            presenter.setState(this, ApplicationState.start, applicationState);
 //        }
 //    }
-    
     @Override
     public void audioExceptionFired(AudioException audioException) {
         logger.warning(audioException.getMessage());
@@ -239,7 +262,14 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
 
     public void start() {
         setBackButtonAction();
-        requestApplicationState(ApplicationState.start);
+        submissionService.submitScreenChange(userResults.getUserData().getUserId(), "ApplicationStarted");
+        try {
+            final String appState = localStorage.getAppState();
+            final ApplicationState lastAppState = (appState != null) ? ApplicationState.valueOf(appState) : ApplicationState.start;
+            requestApplicationState(lastAppState);
+        } catch (IllegalArgumentException argumentException) {
+            requestApplicationState(ApplicationState.start);
+        }
         addKeyboardEvents();
     }
 

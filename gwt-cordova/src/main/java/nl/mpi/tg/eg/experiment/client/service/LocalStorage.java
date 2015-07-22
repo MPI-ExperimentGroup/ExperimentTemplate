@@ -36,6 +36,7 @@ public class LocalStorage {
 
     protected final Messages messages = GWT.create(Messages.class);
     private Storage dataStore = null;
+    private final String APP_STATE;
     private final String USER_RESULTS;
     private final String LAST_USER_ID;
     private final String GAME_DATA; // todo: perhaps merge game and screen data concepts
@@ -47,6 +48,7 @@ public class LocalStorage {
     final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
 
     public LocalStorage() {
+        APP_STATE = messages.appNameInternal() + ".AppState.";
         USER_RESULTS = messages.appNameInternal() + ".UserResults.";
         LAST_USER_ID = messages.appNameInternal() + ".LastUserId.";
         GAME_DATA = messages.appNameInternal() + ".GameData.";
@@ -162,6 +164,22 @@ public class LocalStorage {
         dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + MAX_SCORE, Integer.toString(userResults.getUserData().getBestScore()));
         dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + GAMES_PLAYED, Integer.toString(userResults.getUserData().getGamesPlayed()));
         dataStore.setItem(LAST_USER_ID, userResults.getUserData().getUserId().toString());
+    }
+
+    public void saveAppState(String appState) {
+        loadStorage();
+        dataStore.setItem(APP_STATE, appState);
+    }
+
+    public String getAppState() {
+        loadStorage();
+        if (dataStore != null) {
+            final String appState = getCleanStoredData(APP_STATE);
+            if (!appState.isEmpty()) {
+                return appState;
+            }
+        }
+        return null;
     }
 
     public UserId getLastUserId() {
