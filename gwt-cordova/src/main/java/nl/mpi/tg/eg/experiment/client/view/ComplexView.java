@@ -133,6 +133,30 @@ public class ComplexView extends SimpleView {
         nextButton.addTouchEndHandler(singleShotEventListner);
     }
 
+    public void addImageButton(final PresenterEventListner presenterListerner, final SafeUri imagePath) {
+
+        final Image image = new Image(imagePath);
+        final Button imageButton = new Button();
+        imageButton.getElement().appendChild(image.getElement());
+        imageButton.addStyleName("imageButton");
+        imageButton.setEnabled(true);
+        outerPanel.add(imageButton);
+        final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
+
+            @Override
+            protected void singleShotFired() {
+                if (imageButton.isEnabled()) {
+                    presenterListerner.eventFired(imageButton);
+                }
+                resetSingleShot();
+            }
+        };
+        imageButton.addClickHandler(singleShotEventListner);
+        imageButton.addTouchStartHandler(singleShotEventListner);
+        imageButton.addTouchMoveHandler(singleShotEventListner);
+        imageButton.addTouchEndHandler(singleShotEventListner);
+    }
+
     public HorizontalPanel addProgressBar(int minimum, int value, int maximum) {
         final HorizontalPanel bargraphOuter = new HorizontalPanel();
         final HorizontalPanel bargraphInner = new HorizontalPanel();

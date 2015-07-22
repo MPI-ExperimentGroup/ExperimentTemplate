@@ -245,7 +245,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void audioButton(final String eventTag, final String mp3Path, final String oggPath, final String imagePath) {
-        ((TimedStimulusView) simpleView).addOptionButton(new PresenterEventListner() {
+        ((TimedStimulusView) simpleView).addImageButton(new PresenterEventListner() {
 
             @Override
             public String getLabel() {
@@ -261,6 +261,6 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     }
                 });
             }
-        });
+        }, UriUtils.fromString(serviceLocations.staticFilesUrl() + imagePath));
     }
 }
