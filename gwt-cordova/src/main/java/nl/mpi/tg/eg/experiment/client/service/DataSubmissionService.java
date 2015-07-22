@@ -62,7 +62,8 @@ public class DataSubmissionService extends AbstractSubmissionService {
             stringBuilder.append("\"").append(key.getPostName()).append("\": \"").append(value).append("\",\n");
         }
         stringBuilder.append("\"userId\": \"").append(userResults.getUserData().getUserId()).append("\"\n}");
-        submitData(ServiceEndpoint.metadata, stringBuilder.toString(), dataSubmissionListener);
+        localStorage.addStoredScreenData(userResults.getUserData().getUserId(), ServiceEndpoint.metadata.name(), stringBuilder.toString());
+        submitData(ServiceEndpoint.metadata, userResults.getUserData().getUserId(), "[" + stringBuilder.toString() + "]", dataSubmissionListener);
     }
 
     public void submitTagValue(final UserId userId, String eventTag, String tagValue, int eventMs) {
@@ -92,15 +93,54 @@ public class DataSubmissionService extends AbstractSubmissionService {
         trackView(applicationState);
     }
 
-    public void submitStowedData(final UserId userId, final DataSubmissionListener dataSubmissionListener) {
-        submitData(ServiceEndpoint.stowedData, localStorage.getSowedData(userId), dataSubmissionListener);
+    public void submitAllData(final UserResults userResults, final DataSubmissionListener dataSubmissionListener) {
+        final UserId userId = userResults.getUserData().getUserId();
+        class ResultCounts {
+
+            int successCounter = 0;
+            int errorCounter = 0;
+
+            void checkOutcome() {
+                if (errorCounter + successCounter >= ServiceEndpoint.values().length) {
+                    if (errorCounter > 0) {
+                        dataSubmissionListener.scoreSubmissionFailed(null);
+                    } else {
+                        dataSubmissionListener.scoreSubmissionComplete(null);
+                    }
+                }
+            }
+        }
+        final ResultCounts resultCounts = new ResultCounts();
+        for (final ServiceEndpoint endpoint : ServiceEndpoint.values()) {
+            final String storedScreenData = localStorage.getStoredScreenData(userId, endpoint.name());
+            if (storedScreenData.isEmpty()) {
+                resultCounts.successCounter++;
+                resultCounts.checkOutcome();
+            } else {
+                submitData(endpoint, userId, "[" + storedScreenData + "]", new DataSubmissionListener() {
+
+                    @Override
+                    public void scoreSubmissionFailed(DataSubmissionException exception) {
+                        resultCounts.errorCounter++;
+                        resultCounts.checkOutcome();
+                    }
+
+                    @Override
+                    public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
+                        localStorage.deleteStoredScreenData(userId, endpoint.name());
+                        resultCounts.successCounter++;
+                        resultCounts.checkOutcome();
+                    }
+                });
+            }
+        }
     }
 
-    private void submitData(final ServiceEndpoint endpoint, final UserId userId, String jsonData) {
-        localStorage.addStoredScreenData(userId, jsonData);
+    private void submitData(final ServiceEndpoint endpoint, final UserId userId, final String jsonData) {
+        localStorage.addStoredScreenData(userId, endpoint.name(), jsonData);
 
-        final String storedScreenData = localStorage.getStoredScreenData(userId);
-        submitData(endpoint, "[" + storedScreenData + "]", new DataSubmissionListener() {
+        final String storedScreenData = localStorage.getStoredScreenData(userId, endpoint.name());
+        submitData(endpoint, userId, "[" + storedScreenData + "]", new DataSubmissionListener() {
 
             @Override
             public void scoreSubmissionFailed(DataSubmissionException exception) {
@@ -108,13 +148,11 @@ public class DataSubmissionService extends AbstractSubmissionService {
 
             @Override
             public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
-                localStorage.stowSentData(userId);
             }
         });
     }
 
-    private void submitData(final ServiceEndpoint endpoint, String jsonData, final DataSubmissionListener dataSubmissionListener) {
-
+    private void submitData(final ServiceEndpoint endpoint, final UserId userId, final String jsonData, final DataSubmissionListener dataSubmissionListener) {
         final RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, messages.dataSubmitUrl() + endpoint.name());
         builder.setHeader("Content-type", "application/json");
         RequestCallback requestCallback = new RequestCallback() {
@@ -128,16 +166,12 @@ public class DataSubmissionService extends AbstractSubmissionService {
             @Override
             public void onResponseReceived(Request request, Response response) {
                 final JsArray<DataSubmissionResult> sumbmissionResult = JsonUtils.<JsArray<DataSubmissionResult>>safeEval("[" + response.getText() + "]");
-                if (200 == response.getStatusCode() && sumbmissionResult.length() > 0 && sumbmissionResult.get(0).getSuccess()) {
+                // here we also check that the JSON return value contains the correct user id, to test for cases where a web cashe or wifi login redirect returns stale data or a 200 code for a wifi login
+                if (200 == response.getStatusCode() && sumbmissionResult.length() > 0 && sumbmissionResult.get(0).getSuccess() && userId.toString().equals(sumbmissionResult.get(0).getUserId())) {
                     final String text = response.getText();
                     logger.info(text);
-                    dataSubmissionListener.scoreSubmissionComplete(sumbmissionResult);
-                } else if (207 == response.getStatusCode()) {
-                    final String text = response.getText();
-                    logger.info(text);
-                    // if there was an issue on the server then store the problematic data. // todo: this might be removed when prodution status is reached
-                    // todo: add handling of 200 responses given by some wifi login services that do not provide propper redirect codes, to make sure we dont get tricked into thinking data has been sent when it might not have
-                    localStorage.addFailedData(text);
+                    localStorage.stowSentData(userId, jsonData);
+                    localStorage.deleteStoredScreenData(userId, endpoint.name());
                     dataSubmissionListener.scoreSubmissionComplete(sumbmissionResult);
                 } else {
                     logger.warning(builder.getUrl());

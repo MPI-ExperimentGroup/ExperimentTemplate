@@ -49,7 +49,6 @@ public class ExperimentService {
     @Autowired
     ExperimentRepository experimentDataRepository;
 
-    
 //    @RequestMapping(value = "/registerUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 //    @ResponseBody
 //    public ResponseEntity<String> registerUserData(
@@ -138,14 +137,22 @@ public class ExperimentService {
 
     @RequestMapping(value = "/metadata", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<DataSubmissionResult> storeMetadataData(@RequestBody Participant participant) {
-        participant.setSubmitDate(new java.util.Date());
-        participantRepository.save(participant);
-        return new ResponseEntity<>(new DataSubmissionResult(participant.getUserId(), true), HttpStatus.OK);
+    public ResponseEntity<DataSubmissionResult> storeMetadataData(@RequestBody List<Participant> participantList) {
+        final ResponseEntity responseEntity;
+        if (participantList.isEmpty()) {
+            responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        } else {
+            for (Participant participant : participantList) {
+                participant.setSubmitDate(new java.util.Date());
+                participantRepository.save(participant);
+            }
+            responseEntity = new ResponseEntity<>(new DataSubmissionResult(participantList.get(0).getUserId(), true), HttpStatus.OK);
+        }
+        return responseEntity;
     }
 
-    @RequestMapping(value = "/tagEvent", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)    
-public ResponseEntity<DataSubmissionResult> registerTagEvent(@RequestBody List<ExperimentData> experimentDataList) {
+    @RequestMapping(value = "/tagEvent", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<DataSubmissionResult> registerTagEvent(@RequestBody List<ExperimentData> experimentDataList) {
         final ResponseEntity responseEntity;
         if (experimentDataList.isEmpty()) {
             responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);

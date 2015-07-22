@@ -65,7 +65,7 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
     }
 
     public void sendAllData() {
-        submissionService.submitStowedData(userResults.getUserData().getUserId(), new DataSubmissionListener() {
+        submissionService.submitAllData(userResults, new DataSubmissionListener() {
 
             @Override
             public void scoreSubmissionFailed(DataSubmissionException exception) {
