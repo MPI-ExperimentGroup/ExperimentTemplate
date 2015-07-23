@@ -24,7 +24,7 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Random;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
@@ -59,7 +59,33 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void loadSubsetStimulus() {
-        stimulusProvider.getSubset(Stimulus.Similarity.sim); // todo: fully handle this subsetting of the stimulus 
+//        Participants will be exposed to 36 audio+picture combinations, 
+//        which are in fact 6 word-picture combination, 
+//        but each word repeats 6 times with a different audio files each time (see xls file).
+//        There will be two conditions.
+//        In one condition, all 36 audio recordings will come from the same speaker (sampled randomly out of 3 speakers). 
+//        In the other condition, each word will be presented twice with recordings of speaker1, 
+//        twice with recordings of speaker2 and twice with recordings of speaker3 
+//        (and the two recordings per speaker will be randomly sampled from the 6 existing recordings per speaker).
+//        The picture should always appear one second before the word is played. 
+//        It should stay on the screen for 3 seconds (including the pre-word 1 sec).
+        switch (new Random().nextInt(4)) {
+            case 0:
+                stimulusProvider.getSubset(Stimulus.Similarity.sim);
+                break;
+            case 1:
+                stimulusProvider.getSubset(Stimulus.Similarity.mid);
+                break;
+            case 2:
+                stimulusProvider.getSubset(Stimulus.Similarity.diff);
+                break;
+            default:
+                stimulusProvider.getSubset();
+                break;
+        }
+
+// todo: fully handle this subsetting of the stimulus 
+//        also store the group that the user is in: sim diff .. and the speaker the user is assigned to
         currentStimulus = stimulusProvider.getNextStimulus();
     }
 
