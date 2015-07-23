@@ -29,7 +29,7 @@ import javax.persistence.Temporal;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Entity
-public class ExperimentData {
+public class TagData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

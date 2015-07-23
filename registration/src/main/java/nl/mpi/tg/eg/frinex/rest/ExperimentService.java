@@ -19,9 +19,10 @@ package nl.mpi.tg.eg.frinex.rest;
 
 import java.util.List;
 import nl.mpi.tg.eg.frinex.model.DataSubmissionResult;
-import nl.mpi.tg.eg.frinex.model.ExperimentData;
+import nl.mpi.tg.eg.frinex.model.TagData;
 import nl.mpi.tg.eg.frinex.model.Participant;
 import nl.mpi.tg.eg.frinex.model.ScreenData;
+import nl.mpi.tg.eg.frinex.model.TagPairData;
 import nl.mpi.tg.eg.frinex.model.TimeStamp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -47,7 +48,9 @@ public class ExperimentService {
     @Autowired
     ParticipantRepository participantRepository;
     @Autowired
-    ExperimentRepository experimentDataRepository;
+    TagRepository tagRepository;
+    @Autowired
+    TagPairRepository tagPairRepository;
 
 //    @RequestMapping(value = "/registerUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 //    @ResponseBody
@@ -152,14 +155,28 @@ public class ExperimentService {
     }
 
     @RequestMapping(value = "/tagEvent", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<DataSubmissionResult> registerTagEvent(@RequestBody List<ExperimentData> experimentDataList) {
+    public ResponseEntity<DataSubmissionResult> registerTagEvent(@RequestBody List<TagData> experimentDataList) {
         final ResponseEntity responseEntity;
         if (experimentDataList.isEmpty()) {
             responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         } else {
-            for (ExperimentData experimentData : experimentDataList) {
+            for (TagData experimentData : experimentDataList) {
                 experimentData.setSubmitDate(new java.util.Date());
-                experimentDataRepository.save(experimentData);
+                tagRepository.save(experimentData);
+            }
+            responseEntity = new ResponseEntity<>(new DataSubmissionResult(experimentDataList.get(0).getUserId(), true), HttpStatus.OK);
+        }
+        return responseEntity;
+    }
+    @RequestMapping(value = "/tagPairEvent", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<DataSubmissionResult> registerTagPairEvent(@RequestBody List<TagPairData> experimentDataList) {
+        final ResponseEntity responseEntity;
+        if (experimentDataList.isEmpty()) {
+            responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        } else {
+            for (TagPairData experimentData : experimentDataList) {
+                experimentData.setSubmitDate(new java.util.Date());
+                tagPairRepository.save(experimentData);
             }
             responseEntity = new ResponseEntity<>(new DataSubmissionResult(experimentDataList.get(0).getUserId(), true), HttpStatus.OK);
         }

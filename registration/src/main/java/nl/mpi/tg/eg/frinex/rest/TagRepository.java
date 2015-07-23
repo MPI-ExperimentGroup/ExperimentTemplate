@@ -17,7 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
-import nl.mpi.tg.eg.frinex.model.ExperimentData;
+import nl.mpi.tg.eg.frinex.model.TagData;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -27,7 +27,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @RepositoryRestResource(collectionResourceRel = "tagevents", path = "tagevents")
-public interface ExperimentRepository extends PagingAndSortingRepository<ExperimentData, Long> {
+public interface TagRepository extends PagingAndSortingRepository<TagData, Long> {
 
-    ExperimentData findById(@Param("id") long id);
+    TagData findById(@Param("id") long id);
 }
