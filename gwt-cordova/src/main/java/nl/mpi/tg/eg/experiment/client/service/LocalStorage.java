@@ -68,9 +68,30 @@ public class LocalStorage {
         return dataStore;
     }
 
-    public void clearStoredGameData(UserId userId) {
+    public void clearStoredData(UserId userId) {
         loadStorage();
-        dataStore.setItem(GAME_DATA + userId.toString(), "");
+        // todo: it would be good to do this on an application basis
+        clear();
+
+//        dataStore.setItem(APP_STATE, "");
+//        dataStore.setItem(USER_RESULTS + userId.toString(), "");
+//        dataStore.setItem(LAST_USER_ID + userId.toString(), "");
+//        dataStore.setItem(GAME_DATA + userId.toString(), "");
+//        dataStore.setItem(SCREEN_DATA + userId.toString(), "");
+//        dataStore.setItem(STOWED_DATA + userId.toString(), "");
+//        dataStore.setItem(MAX_SCORE + userId.toString(), "");
+//        dataStore.setItem(GAMES_PLAYED + userId.toString(), "");
+//        dataStore.setItem(COMPLETION_CODE + userId.toString(), "");
+//
+//        dataStore.removeItem(APP_STATE);
+//        dataStore.removeItem(USER_RESULTS + userId.toString());
+//        dataStore.removeItem(LAST_USER_ID + userId.toString());
+//        dataStore.removeItem(GAME_DATA + userId.toString());
+//        dataStore.removeItem(SCREEN_DATA + userId.toString());
+//        dataStore.removeItem(STOWED_DATA + userId.toString());
+//        dataStore.removeItem(MAX_SCORE + userId.toString());
+//        dataStore.removeItem(GAMES_PLAYED + userId.toString());
+//        dataStore.removeItem(COMPLETION_CODE + userId.toString());
     }
 
     public String getStoredGameData(UserId userId) {

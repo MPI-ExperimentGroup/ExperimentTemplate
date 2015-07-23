@@ -78,6 +78,7 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
             @Override
             public void onClose(CloseEvent<Window> event) {
                 submissionService.submitScreenChange(userResults.getUserData().getUserId(), "BrowserWindowClosed");
+                presenter.fireWindowClosing();
             }
         });
     }

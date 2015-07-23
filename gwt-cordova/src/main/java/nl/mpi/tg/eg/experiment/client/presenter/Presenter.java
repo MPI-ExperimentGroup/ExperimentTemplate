@@ -31,4 +31,6 @@ public interface Presenter {
     void fireBackEvent();
 
     void fireResizeEvent();
+
+    void fireWindowClosing();
 }

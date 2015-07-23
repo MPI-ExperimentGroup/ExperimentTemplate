@@ -204,6 +204,10 @@ public class DataSubmissionService extends AbstractSubmissionService {
         }
     }
 
+    public void terminateAndDeleteStoredData(final UserId userId) {
+        localStorage.clearStoredData(userId);
+    }
+
     private static native void trackView(String applicationState) /*-{
      if($wnd.analytics) $wnd.analytics.trackView(applicationState);
      }-*/;

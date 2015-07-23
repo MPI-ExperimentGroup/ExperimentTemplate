@@ -20,11 +20,13 @@ package nl.mpi.tg.eg.experiment.client.presenter;
 import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JsArray;
+import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.Random;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
@@ -80,5 +82,20 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
 
     public void onError(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener) {
         errorEventListner = timedStimulusListener;
+    }
+
+    protected void eraseLocalStorageOnWindowClosing() {
+        setWindowClosingListener(new PresenterEventListner() {
+
+            @Override
+            public String getLabel() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void eventFired(ButtonBase button) {
+                submissionService.terminateAndDeleteStoredData(userResults.getUserData().getUserId());
+            }
+        });
     }
 }

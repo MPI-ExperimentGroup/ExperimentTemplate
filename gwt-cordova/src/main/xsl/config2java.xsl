@@ -349,7 +349,7 @@ if(@type = 'stimulus' or @type = 'preload') then ', AudioPlayer audioPlayer, Dat
         <xsl:text>    ((ComplexView) simpleView).addPadding();
         </xsl:text>
     </xsl:template>
-    <xsl:template match="localStorageData|allMetadataFields|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|disableStimulusButtons|showStimulusProgress|hideStimulusButtons|showStimulusButtons|generateCompletionCode|sendAllData">
+    <xsl:template match="localStorageData|allMetadataFields|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|disableStimulusButtons|showStimulusProgress|hideStimulusButtons|showStimulusButtons|generateCompletionCode|sendAllData|eraseLocalStorageOnWindowClosing">
         <xsl:text>    </xsl:text>    
         <xsl:value-of select ="local-name()"/>
         <xsl:text>();
