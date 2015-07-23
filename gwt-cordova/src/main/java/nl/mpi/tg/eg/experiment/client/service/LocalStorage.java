@@ -45,6 +45,7 @@ public class LocalStorage {
 //    private final String FAILED_DATA;
     protected final String MAX_SCORE;
     protected final String GAMES_PLAYED;
+    private final String COMPLETION_CODE;
     final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
 
     public LocalStorage() {
@@ -57,6 +58,7 @@ public class LocalStorage {
 //        FAILED_DATA = messages.appNameInternal() + ".FailedData.";
         MAX_SCORE = messages.appNameInternal() + ".maxScore";
         GAMES_PLAYED = messages.appNameInternal() + ".gamesPlayed";
+        COMPLETION_CODE = messages.appNameInternal() + ".completionCode";
     }
 
     private Storage loadStorage() {
@@ -177,6 +179,22 @@ public class LocalStorage {
             final String appState = getCleanStoredData(APP_STATE);
             if (!appState.isEmpty()) {
                 return appState;
+            }
+        }
+        return null;
+    }
+
+    public void saveCompletionCode(String completionCode) {
+        loadStorage();
+        dataStore.setItem(COMPLETION_CODE, completionCode);
+    }
+
+    public String getCompletionCode() {
+        loadStorage();
+        if (dataStore != null) {
+            final String completionCode = getCleanStoredData(COMPLETION_CODE);
+            if (!completionCode.isEmpty()) {
+                return completionCode;
             }
         }
         return null;

@@ -27,6 +27,7 @@ import com.google.gwt.http.client.Response;
 import com.google.gwt.http.client.URL;
 import com.google.gwt.i18n.shared.DateTimeFormat;
 import java.util.Date;
+import java.util.Random;
 import java.util.logging.Level;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
@@ -52,6 +53,20 @@ public class DataSubmissionService extends AbstractSubmissionService {
     public DataSubmissionService(LocalStorage localStorage) {
         this.localStorage = localStorage;
         this.experimentName = messages.appNameInternal();
+    }
+
+    public String getCompletionCode() {
+        String completionCode = localStorage.getCompletionCode();
+        if (completionCode == null) {
+            final Random random = new Random();
+            final StringBuffer stringBuffer = new StringBuffer();
+            while (stringBuffer.length() < 12) {
+                stringBuffer.append(Integer.toHexString(random.nextInt(16)));
+            }
+            completionCode = stringBuffer.toString();
+            localStorage.saveCompletionCode(completionCode);
+        }
+        return completionCode;
     }
 
     public void submitMetadata(final UserResults userResults, final DataSubmissionListener dataSubmissionListener) {
