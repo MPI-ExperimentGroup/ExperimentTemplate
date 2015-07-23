@@ -79,11 +79,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void addStimulusImage(String image, int width, int postLoadMs, TimedStimulusListener timedStimulusListener) {
+        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusImage", image, duration.elapsedMillis());
         ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString(serviceLocations.staticFilesUrl() + image), width, postLoadMs, timedStimulusListener);
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
     }
 
     protected void playStimulusAudio(String ogg, String mp3, long postLoadMs, TimedStimulusListener timedStimulusListener) {
+        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", ogg, duration.elapsedMillis());
         ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromString(serviceLocations.staticFilesUrl() + ogg), UriUtils.fromString(serviceLocations.staticFilesUrl() + mp3), postLoadMs, timedStimulusListener);
 //        ((TimedStimulusView) simpleView).addText("playStimulusAudio: " + duration.elapsedMillis() + "ms");
     }
@@ -120,16 +122,16 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
         ((TimedStimulusView) simpleView).startGrid();
         int imageCounter = 0;
-        buttonList.add(((TimedStimulusView) simpleView).addStringItem(getEventListener(buttonList, eventTag, alternativeChoice, stimulusListener), alternativeChoice, 0, 0, imageWidth));
+        buttonList.add(((TimedStimulusView) simpleView).addStringItem(getEventListener(buttonList, eventTag, currentStimulus.getAudioTag(), alternativeChoice, stimulusListener), alternativeChoice, 0, 0, imageWidth));
         for (final String nextJpg : stimulusProvider.getPictureList()) {
-            buttonList.add(((TimedStimulusView) simpleView).addImageItem(getEventListener(buttonList, eventTag, nextJpg, stimulusListener), UriUtils.fromString(serviceLocations.staticFilesUrl() + nextJpg), imageCounter / columnCount, 1 + imageCounter++ % columnCount, imageWidth));
+            buttonList.add(((TimedStimulusView) simpleView).addImageItem(getEventListener(buttonList, eventTag, currentStimulus.getAudioTag(), nextJpg, stimulusListener), UriUtils.fromString(serviceLocations.staticFilesUrl() + nextJpg), imageCounter / columnCount, 1 + imageCounter++ % columnCount, imageWidth));
         }
         disableStimulusButtons();
         ((TimedStimulusView) simpleView).endGrid();
         //((TimedStimulusView) simpleView).addAudioPlayerGui();
     }
 
-    private PresenterEventListner getEventListener(final ArrayList<ButtonBase> buttonList, final String eventTag, final String tagValue, final TimedStimulusListener listener) {
+    private PresenterEventListner getEventListener(final ArrayList<ButtonBase> buttonList, final String eventTag, final String tagValue1, final String tagValue2, final TimedStimulusListener listener) {
         return new PresenterEventListner() {
 
             @Override
@@ -143,7 +145,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     currentButton.setEnabled(false);
                 }
                 button.addStyleName("stimulusButtonHighlight");
-                submissionService.submitTagValue(userResults.getUserData().getUserId(), eventTag, tagValue, duration.elapsedMillis());
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), eventTag, tagValue1, tagValue2, duration.elapsedMillis());
                 listener.postLoadTimerFired();
             }
         };

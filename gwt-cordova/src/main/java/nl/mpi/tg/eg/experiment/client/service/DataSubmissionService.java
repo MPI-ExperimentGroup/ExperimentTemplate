@@ -44,7 +44,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
 
     private enum ServiceEndpoint {
 
-        timeStamp, screenChange, tagEvent, metadata, stowedData
+        timeStamp, screenChange, tagEvent, tagPairEvent, metadata, stowedData
     }
     private final LocalStorage localStorage;
     private final String experimentName;
@@ -87,6 +87,16 @@ public class DataSubmissionService extends AbstractSubmissionService {
                 + "\"userId\": \"" + userId + "\",\n"
                 + "\"eventTag\": \"" + eventTag + "\",\n"
                 + "\"tagValue\": \"" + tagValue + "\",\n"
+                + "\"eventMs\": \"" + eventMs + "\" \n}");
+    }
+
+    public void submitTagPairValue(final UserId userId, String eventTag, String tagValue1, String tagValue2, int eventMs) {
+        submitData(ServiceEndpoint.tagPairEvent, userId, "{\"tagDate\" :\"" + format.format(new Date()) + "\",\n"
+                + "\"experimentName\": \"" + experimentName + "\",\n"
+                + "\"userId\": \"" + userId + "\",\n"
+                + "\"eventTag\": \"" + eventTag + "\",\n"
+                + "\"tagValue1\": \"" + tagValue1 + "\",\n"
+                + "\"tagValue2\": \"" + tagValue2 + "\",\n"
                 + "\"eventMs\": \"" + eventMs + "\" \n}");
     }
 
