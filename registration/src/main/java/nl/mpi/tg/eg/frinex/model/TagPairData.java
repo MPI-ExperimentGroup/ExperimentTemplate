@@ -40,7 +40,8 @@ public class TagPairData {
     private Date submitDate;
     private String experimentName;
     private String eventTag;
-    private String tagValue;
+    private String tagValue1;
+    private String tagValue2;
     private String userId;
     private int eventMs;
 
@@ -64,8 +65,12 @@ public class TagPairData {
         return eventTag;
     }
 
-    public String getTagValue() {
-        return tagValue;
+    public String getTagValue1() {
+        return tagValue1;
+    }
+
+    public String getTagValue2() {
+        return tagValue2;
     }
 
     public String getUserId() {
