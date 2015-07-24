@@ -37,8 +37,7 @@ public class DataViewController {
     private ScreenDataRepository screenDataRepository;
 
     @RequestMapping("dataviewer")
-    public String greeting(@RequestParam(value = "name", required = false, defaultValue = "World") String name, Model model) {
-        model.addAttribute("name", name);
+    public String greeting(Model model) {
         model.addAttribute("count", this.screenDataRepository.count());
         model.addAttribute("allScreenData", this.screenDataRepository.findAll());
         return "dataviewer";
