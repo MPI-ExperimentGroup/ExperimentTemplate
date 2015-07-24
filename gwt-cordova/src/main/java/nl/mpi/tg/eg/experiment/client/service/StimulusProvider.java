@@ -62,30 +62,32 @@ public class StimulusProvider {
 //            }
 //        }
 
-        List<Stimulus> stimulusListCopy = new ArrayList<>();
+        List<Stimulus> stimulusListSubset = new ArrayList<>();
         for (Speaker speaker : Speaker.values()) {
-            for (final Stimulus currentStimulus : stimulusArray) {
-                ArrayList<String> wordList1 = new ArrayList<>();
-                ArrayList<String> wordList2 = new ArrayList<>();
+            List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
+            ArrayList<String> wordList1 = new ArrayList<>();
+            ArrayList<String> wordList2 = new ArrayList<>();
+            while (!stimulusListCopy.isEmpty()) {
+                Stimulus currentStimulus = stimulusListCopy.remove(new Random().nextInt(stimulusListCopy.size()));
                 if (currentStimulus.getSpeaker().equals(speaker)) {
                     final String word = currentStimulus.getWord();
-                    if (wordList1.contains(word)) {
-                        if (wordList2.contains(word)) {
-
-                        } else {
-                            stimulusListCopy.add(currentStimulus);
-                            wordList2.add(word);
-                        }
-                    } else {
-                        stimulusListCopy.add(currentStimulus);
+                    if (!wordList1.contains(word)) {
+                        stimulusListSubset.add(currentStimulus);
                         wordList1.add(word);
+                    } else {
+                        if (!wordList2.contains(word)) {
+                            stimulusListSubset.add(currentStimulus);
+                            wordList2.add(word);
+                        } else {
+                        }
                     }
                 }
             }
         }
-        while (!stimulusListCopy.isEmpty()) {
+        stimulusSubsetArray.clear();
+        while (!stimulusListSubset.isEmpty()) {
             // randomise the result
-            Stimulus stimulus = stimulusListCopy.remove(new Random().nextInt(stimulusListCopy.size()));
+            Stimulus stimulus = stimulusListSubset.remove(new Random().nextInt(stimulusListSubset.size()));
             stimulusSubsetArray.add(stimulus);
         }
 //        stimulusSubsetArray.addAll(stimulusListCopy);

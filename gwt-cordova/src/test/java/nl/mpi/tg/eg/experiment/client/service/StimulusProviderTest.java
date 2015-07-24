@@ -18,6 +18,8 @@
 package nl.mpi.tg.eg.experiment.client.service;
 
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
+import nl.mpi.tg.eg.experiment.client.model.Stimulus.Speaker;
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 /**
@@ -34,9 +36,34 @@ public class StimulusProviderTest {
         System.out.println("getSubset");
         StimulusProvider instance = new StimulusProvider();
         instance.getSubset();
+        checkStimulus(instance, 12);
+    }
+
+    private void checkStimulus(StimulusProvider instance, final int expectedSpeakerCount) {
+        int speakerCount = 0;
+        int wordCount = 0;
         while (instance.hasNextStimulus()) {
             final Stimulus nextStimulus = instance.getNextStimulus();
+            if (nextStimulus.getSpeaker().equals(Speaker.hielke)) {
+                speakerCount++;
+            }
+            if (nextStimulus.getWord().equals("kijf")) {
+                wordCount++;
+            }
             System.out.println("nextStimulus: " + nextStimulus.getSpeaker() + ", " + nextStimulus.getWord() + ", " + nextStimulus.getSpeakerSimilarity());
         }
+        assertEquals(expectedSpeakerCount, speakerCount);
+        assertEquals(6, wordCount);
+    }
+
+    /**
+     * Test of getSubset method, of class StimulusProvider.
+     */
+    @Test
+    public void testGetSubset_StimulusSimilarity() {
+        System.out.println("getSubset");
+        StimulusProvider instance = new StimulusProvider();
+        instance.getSubset(Stimulus.Similarity.diff);
+        checkStimulus(instance, 36);
     }
 }

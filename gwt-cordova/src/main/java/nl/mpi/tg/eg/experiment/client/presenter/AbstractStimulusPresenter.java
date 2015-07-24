@@ -71,15 +71,19 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //        It should stay on the screen for 3 seconds (including the pre-word 1 sec).
         switch (new Random().nextInt(4)) {
             case 0:
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "SubsetStimulus", "Condition1", Stimulus.Similarity.sim.name(), duration.elapsedMillis());
                 stimulusProvider.getSubset(Stimulus.Similarity.sim);
                 break;
             case 1:
                 stimulusProvider.getSubset(Stimulus.Similarity.mid);
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "SubsetStimulus", "Condition1", Stimulus.Similarity.mid.name(), duration.elapsedMillis());
                 break;
             case 2:
                 stimulusProvider.getSubset(Stimulus.Similarity.diff);
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "SubsetStimulus", "Condition1", Stimulus.Similarity.diff.name(), duration.elapsedMillis());
                 break;
             default:
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "SubsetStimulus", "Condition2", "", duration.elapsedMillis());
                 stimulusProvider.getSubset();
                 break;
         }
