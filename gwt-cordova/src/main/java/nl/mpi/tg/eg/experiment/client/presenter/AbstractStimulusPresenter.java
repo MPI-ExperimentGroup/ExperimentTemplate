@@ -69,7 +69,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //        (and the two recordings per speaker will be randomly sampled from the 6 existing recordings per speaker).
 //        The picture should always appear one second before the word is played. 
 //        It should stay on the screen for 3 seconds (including the pre-word 1 sec).
-        switch (new Random().nextInt(4)) {
+        switch (new Random().nextInt(5)) {
             case 0:
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "SubsetStimulus", "Condition1", Stimulus.Similarity.sim.name(), duration.elapsedMillis());
                 stimulusProvider.getSubset(Stimulus.Similarity.sim);
@@ -232,6 +232,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected boolean hasMoreStimulus() {
         return stimulusProvider.hasNextStimulus();
+    }
+
+    protected void clearStimulus() {
+        ((TimedStimulusView) simpleView).clearGui();
     }
 
     protected void autoNextStimulus(final AppEventListner appEventListner, final String eventTag, boolean condition) {

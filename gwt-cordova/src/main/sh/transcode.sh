@@ -5,8 +5,8 @@
 for filePath in ../webapp/static/*.wav ; do 
     echo $filePath
     echo "${filePath%.*}".flac
-    ffmpeg -i "$filePath" -acodec libmp3lame "${filePath%.*}".mp3 
-    sleep 60
-    ffmpeg -i "$filePath" -acodec libvorbis "${filePath%.*}".ogg 
-    sleep 60 
+    ffmpeg -n -i "$filePath" -acodec libmp3lame "${filePath%.*}".mp3 
+   # sleep 60
+    ffmpeg -n -i "$filePath" -acodec libvorbis "${filePath%.*}".ogg 
+   # sleep 60 
 done

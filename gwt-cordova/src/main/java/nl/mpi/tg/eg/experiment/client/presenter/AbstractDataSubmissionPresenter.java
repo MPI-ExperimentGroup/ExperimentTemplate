@@ -22,7 +22,6 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
-import java.util.Random;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
@@ -58,6 +57,7 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
         String completionCode = submissionService.getCompletionCode();
         // todo: consider changing this to something other than just a tag value
         submissionService.submitTagValue(userResults.getUserData().getUserId(), "CompletionCode", completionCode, duration.elapsedMillis());
+        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "DataSubmissionComplete", "CompletionCode", completionCode, duration.elapsedMillis());
         ((ComplexView) simpleView).addTextField(completionCode);
     }
 

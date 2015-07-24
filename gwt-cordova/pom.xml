@@ -9,7 +9,7 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>gwttemplate</artifactId>
     <packaging>war</packaging>
-    <version>0.1.413-pretesting</version>
+    <version>0.1.451-testing</version>
     <name>FRINEX GWT-Cordova Template</name>
     <organization>
         <name>Max Planck Institute for Psycholinguistics, Nijmegen</name>
@@ -41,7 +41,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.7</version>
+            <version>4.11</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -142,12 +142,12 @@
                         <transformationSet>
                             <dir>src/main/xml</dir>
                             <includes>
-                                <include>*.xml</include>
+                                <include>experimentConfig_1.xml</include>
                             </includes>
                             <stylesheet>src/main/xsl/config2java.xsl</stylesheet>
                             <fileMappers>
                                 <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.RegExpFileMapper">
-                                    <pattern>experimentConfig\.xml$</pattern>
+                                    <pattern>experimentConfig_1\.xml$</pattern>
                                     <replacement>ApplicationController.java</replacement>
                                 </fileMapper>
                             </fileMappers>
@@ -156,7 +156,7 @@
                         <transformationSet>
                             <dir>src/main/xml</dir>
                             <includes>
-                                <include>*.xml</include>
+                                <include>experimentConfig_1.xml</include>
                             </includes>
                             <stylesheet>src/main/xsl/config2metadata.xsl</stylesheet>
                             <outputDir>${project.build.directory}/generated-sources/gwt/nl/mpi/tg/eg/experiment/client</outputDir>
@@ -164,12 +164,12 @@
                         <transformationSet>
                             <dir>src/main/xml</dir>
                             <includes>
-                                <include>*.xml</include>
+                                <include>experimentConfig_1.xml</include>
                             </includes>
                             <stylesheet>src/main/xsl/config2properties.xsl</stylesheet>
                             <fileMappers>
                                 <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.RegExpFileMapper">
-                                    <pattern>experimentConfig\.xml$</pattern>
+                                    <pattern>experimentConfig_1\.xml$</pattern>
                                     <replacement>Messages.properties</replacement>
                                 </fileMapper>
                             </fileMappers>
@@ -345,7 +345,7 @@
                     <allowSnapshots>true</allowSnapshots>
                     <majorVersion>0</majorVersion>
                     <minorVersion>1</minorVersion>
-                    <buildType>pretesting</buildType>
+                    <buildType>testing</buildType>
                     <propertiesPrefix>application</propertiesPrefix>
                     <shortVersionModule></shortVersionModule>
                 </configuration>

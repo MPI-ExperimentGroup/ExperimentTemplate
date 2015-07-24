@@ -71,7 +71,7 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
                 event.setMessage(messageString);
             }
         });
-        
+
         // on page close, back etc. send a screen event to the server
         Window.addCloseHandler(new CloseHandler<Window>() {
 
@@ -254,6 +254,7 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
 //            presenter.setState(this, ApplicationState.start, applicationState);
 //        }
 //    }
+
     @Override
     public void audioExceptionFired(AudioException audioException) {
         logger.warning(audioException.getMessage());

@@ -157,8 +157,8 @@
 /*.gwt-Button.menuButton:hover:disabled*/ 
 {
     background: white;
-    opacity: 0.4;
-    filter: alpha(opacity=40); /* For IE8 and earlier */
+    /*opacity: 0.4;*/
+    /*filter: alpha(opacity=40);  For IE8 and earlier */
 }
 
 /*.gwt-Button.nextButton:hover, .gwt-Button.menuButton:hover, .gwt-Button.optionButton:hover, .gwt-Label.headerButton:hover, */
