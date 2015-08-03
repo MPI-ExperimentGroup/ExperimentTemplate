@@ -42,7 +42,7 @@ public class StimulusProvider {
         noisyList.addAll(Arrays.asList(Stimulus.NOISE_AUDIO));
         Stimulus.fillPictureList(pictureList);
 
-        stimulusSubsetArray.addAll(stimulusArray);
+        //stimulusSubsetArray.addAll(stimulusArray);
         totalStimuli = stimulusSubsetArray.size();
     }
 
@@ -107,7 +107,7 @@ public class StimulusProvider {
     }
 
     public Stimulus getNextStimulus() {
-        return stimulusSubsetArray.remove(new Random().nextInt(stimulusSubsetArray.size()));
+        return stimulusSubsetArray.remove(0);
     }
 
     public boolean hasNextStimulus() {
