@@ -28,11 +28,16 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <field postName="rabbit" fieldValues="true,false" registrationField="Do you have a rabbit?" controlledRegex="yes" controlledMessage="It is unacceptable to give any answer than 'yes'." />
         <field postName="share" registrationField="Share" fieldValues="true,false" controlledRegex="true" controlledMessage="Data will not be shared unless you agree to do so."/>
         <field registrationField="Spoken languages" postName="languages" />
+        <field postName="workerId" registrationField="Please enter your 'Worker ID'" controlledRegex=".'{'10,'}'" controlledMessage="Your worker ID can be found on the mturk/dashboard." />
+        <field postName="nativeLanguage" registrationField="What is your native language" controlledRegex=".'{'2,'}'" controlledMessage="Please enter your native language" />
+        <field postName="otherLanguages" registrationField="What other languages do you know" controlledRegex=".'{'2,'}'" controlledMessage="If you do not know any other languages then enter 'none'" />
     </metadata>
-    <presenter type="menu" menuLabel="Auto Menu" self="AutoMenu"><allMenuItems/></presenter>
+    <presenter type="menu" menuLabel="Auto Menu" self="AutoMenu">
+        <allMenuItems/>
+    </presenter>
     <presenter type="menu" menuLabel="Main Menu" back="AutoMenu" self="MainMenu">
         <menuItem fieldName="aboutScreenMenuLabel" target="AboutPage">About Page</menuItem>
-        <menuItem fieldName="menuLabelStrayMessages" target="StrayMessages"/>
+        <!--<menuItem fieldName="menuLabelStrayMessages" target="StrayMessages"/>-->
         <menuItem fieldName="menuLabelPreloadStimulus" target="PreloadStimulus"/>
         <menuItem fieldName="menuLabelResultsPage" target="ResultsPage"/>
         <menuItem fieldName="menuLabelStimulusPage" target="StimulusPage"/>
@@ -48,9 +53,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <stimulusAudio timeToNext="2000">
                 <showCurrentMs/>                
                 <showStimulusProgress/>   
-                <nextStimulusButton fieldName="showMore" eventTag="stimulus1Next">Next</nextStimulusButton>
+                <nextStimulusButton condition="true" fieldName="showMore" eventTag="stimulus1Next">Next</nextStimulusButton>
                 <popupMessage fieldName="pesterPopup1" condition="stimulusIndexIn(new int[]{9,21,28})">Popup boxes are here to annoy the user.</popupMessage>
-                <endOfStimulusButton fieldName="menuLabelIntro3" target="Intro3" eventTag="StimulusGrid"/>
+                <endOfStimulusButton fieldName="menuLabelStimulusGrid" target="StimulusGrid" eventTag="StimulusGrid">menuLabelStimulusGrid</endOfStimulusButton>
             </stimulusAudio>
         </stimulusImage>    
     </presenter>
@@ -106,14 +111,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             </stimulusImage>
         </stimulusImage>
     </presenter>
-    <presenter type="text" menuLabel="Stray Messages Screen" back="MainMenu" self="StrayMessages" next="AboutPage">
-        <htmlText fieldName="aboutScreenTextJheading">---</htmlText>
-        <htmlText fieldName="errorScreenTitle">---</htmlText>
-        <htmlText fieldName="localeScreenTitle">---</htmlText>
-        <htmlText fieldName="languageInteractionUrl">---</htmlText>
-        <htmlText fieldName="stopSharingScreenTitle">---</htmlText>
-        <!--<htmlText fieldName="errorScreenText"></htmlText>-->
-        <!--<userInfo fieldName="stopSharingDetailsExplanation">({0}) and unique id ({1})</userInfo>-->
+    <presenter type="kindiagram" menuLabel="Kin Diagram Screen" back="MainMenu" self="KinDiagram" next="AboutPage">
+        <kinTypeStringDiagram  timeToNext="1000" kintypestring="EmMD:1:|EmFD:1:|EmS:2:|EmWD:3:|EmD:3:|EmWS:2:|EmZ:1:">
+            <htmlText fieldName="kindiagramloadedtext">diagram loaded</htmlText>
+        </kinTypeStringDiagram>
     </presenter>
     <presenter type="text" menuLabel="About Page" back="MainMenu" self="AboutPage" next="OptionMenu">
         <title fieldName="versionScreenTitle">Version</title>

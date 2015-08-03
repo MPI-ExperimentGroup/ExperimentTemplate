@@ -98,7 +98,7 @@
             <xsl:text>Presenter(widgetTag</xsl:text>
             <xsl:value-of select="
 if(@type = 'transmission' or @type = 'metadata') then ', submissionService, userResults' else
-if(@type = 'stimulus' or @type = 'preload') then ', new AudioPlayer(this), submissionService, userResults' else ''" />
+if(@type = 'stimulus' or @type = 'preload' or @type = 'kindiagram') then ', new AudioPlayer(this), submissionService, userResults' else ''" />
             <xsl:text>);
                 presenter.setState(this, </xsl:text>
             <xsl:choose>
@@ -174,7 +174,7 @@ if(@type = 'stimulus' or @type = 'preload') then ', new AudioPlayer(this), submi
                 public class </xsl:text>
             <xsl:value-of select="@self" />
             <xsl:text>Presenter extends </xsl:text>
-            <xsl:value-of select="if(@type = 'transmission') then 'AbstractDataSubmission' else if(@type = 'menu') then 'AbstractMenu' else if(@type = 'stimulus') then 'AbstractStimulus' else if(@type = 'preload') then 'AbstractPreloadStimulus' else if(@type = 'debug') then 'LocalStorage' else if(@type = 'metadata') then 'AbstractMetadata' else 'Abstract'" />
+            <xsl:value-of select="if(@type = 'transmission') then 'AbstractDataSubmission' else if(@type = 'menu') then 'AbstractMenu' else if(@type = 'stimulus') then 'AbstractStimulus' else if(@type = 'preload') then 'AbstractPreloadStimulus' else if(@type = 'debug') then 'LocalStorage' else if(@type = 'metadata') then 'AbstractMetadata' else if(@type = 'kindiagram') then 'AbstractKinDiagram' else 'Abstract'" />
             <xsl:text>Presenter implements Presenter {
             </xsl:text> 
             <xsl:if test="versionData">
@@ -188,7 +188,7 @@ if(@type = 'stimulus' or @type = 'preload') then ', new AudioPlayer(this), submi
             <xsl:text>Presenter(RootLayoutPanel widgetTag</xsl:text>
             <xsl:value-of select="
 if(@type = 'transmission' or @type = 'metadata') then ', DataSubmissionService submissionService, UserResults userResults' else 
-if(@type = 'stimulus' or @type = 'preload') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults' else ''" />
+if(@type = 'stimulus' or @type = 'preload' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults' else ''" />
             <xsl:text>) {
             </xsl:text>  
             <xsl:choose>
@@ -207,7 +207,7 @@ if(@type = 'stimulus' or @type = 'preload') then ', AudioPlayer audioPlayer, Dat
                         super(widgetTag);
                     </xsl:text>
                 </xsl:when>
-                <xsl:when test="@type = 'stimulus' or @type = 'preload'">
+                <xsl:when test="@type = 'stimulus' or @type = 'preload' or @type = 'kindiagram'">
                     <xsl:text>
                         super(widgetTag, audioPlayer, submissionService, userResults);
                     </xsl:text>                    
@@ -382,7 +382,7 @@ if(@type = 'stimulus' or @type = 'preload') then ', AudioPlayer audioPlayer, Dat
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="preloadAllStimuli|showStimulusGrid|pause|onError|onSuccess">
+    <xsl:template match="preloadAllStimuli|showStimulusGrid|pause|onError|onSuccess|kinTypeStringDiagram">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(appEventListner</xsl:text>
@@ -397,6 +397,7 @@ if(@type = 'stimulus' or @type = 'preload') then ', AudioPlayer audioPlayer, Dat
             }
             }</xsl:text>
         <xsl:value-of select="if(@columnCount) then concat(', ', @columnCount) else ''" />
+        <xsl:value-of select="if(@kintypestring) then concat(', &quot;', @kintypestring, '&quot;') else ''" />
         <xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" />
         <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
         <xsl:value-of select="if(@alternativeChoice) then concat(', &quot;', @alternativeChoice, '&quot;') else ''" />
