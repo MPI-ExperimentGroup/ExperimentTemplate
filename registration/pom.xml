@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>registration</artifactId>
-    <version>0.1.26-pretesting</version>
+    <version>0.1.28-pretesting</version>
     <name>Frinex Web Service</name>
     <packaging>war</packaging>
     <parent>

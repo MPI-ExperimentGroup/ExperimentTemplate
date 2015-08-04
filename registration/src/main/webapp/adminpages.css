@@ -37,19 +37,26 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 .colour-secondary-2-3 { color: #43226E }
 .colour-secondary-2-4 { color: #3E1F67 }
 
-#datatable {
+#datatable, input {
     font-family: "Open Sans", "Droid Sans", Arial, Candara, Segoe, "Segoe UI", Optima, sans-serif;
-    width: 100%;
     border-collapse: collapse;
 }
 
-#datatable td, #datatable th {
+#datatable {    
+    width: 100%;
+}
+
+input[type=submit] {
+    border-radius: 15px;
+}
+
+#datatable td, #datatable th, input[type=submit] {
     font-size: 1em;
     border: 1px solid #A3A82C;
     padding: 3px 7px 2px 7px;
 }
 
-#datatable th {
+#datatable th, input[type=submit] {
     font-size: 1.1em;
     text-align: left;
     padding-top: 5px;
@@ -61,4 +68,26 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #datatable tr.alt td {
     color: #000000;
     background-color: #462573;
+}
+
+#clickablerow:hover {
+    background-color: #929623;  
+}
+
+#loginform form {
+    border-style: solid;
+    border: 1px solid #A3A82C;
+    border-radius: 25px;
+    width: 50%;
+    height: 50%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#loginform div, #loginform form{
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
