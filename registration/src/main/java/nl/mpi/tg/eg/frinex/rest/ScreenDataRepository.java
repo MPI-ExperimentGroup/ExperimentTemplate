@@ -32,5 +32,5 @@ public interface ScreenDataRepository extends PagingAndSortingRepository<ScreenD
 
     ScreenData findById(@Param("id") long id);
 
-    List<ScreenData> findAll();
+    List<ScreenData> findByUserId(@Param("userId") String userId);
 }

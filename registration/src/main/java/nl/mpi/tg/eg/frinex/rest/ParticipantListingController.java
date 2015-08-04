@@ -27,15 +27,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Controller
-public class ParticipantController {
+public class ParticipantListingController {
 
     @Autowired
     private ParticipantRepository participantRepository;
 
-    @RequestMapping("participantviewer")
+    @RequestMapping("participantlisting")
     public String greeting(Model model) {
         model.addAttribute("count", this.participantRepository.count());
         model.addAttribute("allParticipantData", this.participantRepository.findAll());
-        return "participantviewer";
+        return "participantlisting";
     }
 }

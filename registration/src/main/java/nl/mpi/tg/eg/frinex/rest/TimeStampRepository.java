@@ -32,5 +32,5 @@ public interface TimeStampRepository extends PagingAndSortingRepository<TimeStam
 
     TimeStamp findById(@Param("id") long id);
 
-    List<TimeStamp> findAll();
+    List<TimeStamp> findByUserId(@Param("userId") String userId);
 }

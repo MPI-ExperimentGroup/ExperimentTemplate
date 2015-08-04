@@ -22,7 +22,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 -->
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Participant Page</title>
+        <title>Participant Listing</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link type="text/css" rel="stylesheet" href="adminpages.css"/>
@@ -41,7 +41,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </tr>
             </thead>
             <tbody>
-                <tr id="clickablerow" th:each="prod : ${allParticipantData}" th:onclick="'javascript:window.location=\'/participant?id=' + ${prod.userId} + '\';'">
+                <tr id="clickablerow" th:each="prod : ${allParticipantData}" th:onclick="'javascript:window.location=\'/participantdetail?id=' + ${prod.userId} + '\';'">
                     <td th:text="${prod.id}">id</td>
                     <td th:text="${prod.userId}">userId</td>
                     <td th:text="${prod.submitDate}">submitDate</td>
