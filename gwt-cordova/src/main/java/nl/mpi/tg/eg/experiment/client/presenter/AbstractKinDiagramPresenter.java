@@ -19,7 +19,13 @@ package nl.mpi.tg.eg.experiment.client.presenter;
 
 import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.http.client.Request;
+import com.google.gwt.http.client.RequestBuilder;
+import com.google.gwt.http.client.RequestCallback;
+import com.google.gwt.http.client.RequestException;
+import com.google.gwt.http.client.Response;
 import com.google.gwt.safehtml.shared.UriUtils;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.ArrayList;
@@ -54,9 +60,36 @@ public abstract class AbstractKinDiagramPresenter extends AbstractPresenter impl
         this.userResults = userResults;
     }
 
-    public void kinTypeStringDiagram(final AppEventListner appEventListner, int postLoadMs, TimedStimulusListener timedStimulusListener /*, final String imageWidth*/, String kinTypeString) {
+    public void kinTypeStringDiagram(final AppEventListner appEventListner, final int postLoadMs, final TimedStimulusListener timedStimulusListener /*, final String imageWidth*/, String kinTypeString) {
+        // todo: migrate this block into GWT rather than using the REST service to generate
+        RequestBuilder requestBuilder = new RequestBuilder(RequestBuilder.GET, UriUtils.fromString("http://ems12.mpi.nl:8080/kinoath-rest/kinoath/getkin/svg?kts=" + kinTypeString).asString());
+        requestBuilder.setCallback(new RequestCallback() {
+
+            @Override
+            public void onResponseReceived(Request request, Response response) {
+                ((TimedStimulusView) simpleView).addSvgImage(response.getText(), 100);
+                Timer timer = new Timer() {
+                    public void run() {
+                        timedStimulusListener.postLoadTimerFired();
+                    }
+                };
+                timer.schedule(postLoadMs);
+            }
+
+            @Override
+            public void onError(Request request, Throwable exception) {
+                // todo: handle such errors in a more user friendly way
+                ((TimedStimulusView) simpleView).addHtmlText(exception.getMessage());
+            }
+        });
+        try {
+            requestBuilder.send();
+        } catch (RequestException exception) {
+            // todo: handle such errors in a more user friendly way
+            ((TimedStimulusView) simpleView).addHtmlText(exception.getMessage());
+        }
 //        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString("http://ems12.mpi.nl:8080/kinoath-rest/kinoath/getkin/svg?kts=" + kinTypeString), 100, postLoadMs, timedStimulusListener);
-        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString("http://ems12.mpi.nl:8080/kinoath-rest/kinoath/getkin/svg?kts=" + kinTypeString), 100, postLoadMs, timedStimulusListener);
+//        ((TimedStimulusView) simpleView).addSvgImage(UriUtils.fromString("http://ems12.mpi.nl:8080/kinoath-rest/kinoath/getkin/svg?kts=" + kinTypeString), 100, postLoadMs, timedStimulusListener);
     }
 
 }

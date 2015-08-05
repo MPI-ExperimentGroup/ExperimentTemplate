@@ -24,9 +24,9 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.PushButton;
 import nl.mpi.tg.eg.experiment.client.listener.AudioEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
@@ -56,7 +56,7 @@ public class TimedStimulusView extends ComplexView {
     public void endGrid() {
         flexTable = null;
     }
-        
+
     public ButtonBase addStringItem(final PresenterEventListner menuItemListerner, final String labelString, final int rowIndex, final int columnIndex, final String widthString) {
         final Button pushButton = new Button(labelString);
         return addButton(menuItemListerner, pushButton, rowIndex, columnIndex, widthString);
@@ -121,6 +121,12 @@ public class TimedStimulusView extends ComplexView {
             }
         });
         outerPanel.add(image);
+    }
+
+    public void addSvgImage(String svgContent, int percentWidth) {
+        final HTMLPanel htmlPanel = new HTMLPanel(svgContent);
+        htmlPanel.setWidth(percentWidth + "%");
+        outerPanel.add(htmlPanel);
     }
 
     public void addTimedAudio(SafeUri oggPath, SafeUri mp3Path, long postLoadMs, final TimedStimulusListener timedStimulusListener) {
