@@ -33,7 +33,7 @@ public class ParticipantListingController {
     private ParticipantRepository participantRepository;
 
     @RequestMapping("participantlisting")
-    public String greeting(Model model) {
+    public String participantListing(Model model) {
         model.addAttribute("count", this.participantRepository.count());
         model.addAttribute("allParticipantData", this.participantRepository.findAll());
         return "participantlisting";

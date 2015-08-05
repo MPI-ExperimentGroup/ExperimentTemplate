@@ -32,19 +32,23 @@ public class ParticipantDetailController {
 
     @Autowired
     private ParticipantRepository participantRepository;
+    @Autowired
     private ScreenDataRepository screenDataRepository;
+    @Autowired
     private TagPairRepository tagPairRepository;
+    @Autowired
     private TagRepository tagRepository;
+    @Autowired
     private TimeStampRepository timeStampRepository;
 
     @RequestMapping("participantdetail")
-    public String greeting(@RequestParam(value = "id", required = true) String userId, Model model) {
+    public String participantDetail(@RequestParam(value = "id", required=true) String id, Model model) {
         model.addAttribute("count", this.participantRepository.count());
-        model.addAttribute("participantData", this.participantRepository.findByUserId(userId));
-        model.addAttribute("screenData", this.screenDataRepository.findByUserId(userId));
-        model.addAttribute("tagPairData", this.tagPairRepository.findByUserId(userId));
-        model.addAttribute("tagData", this.tagRepository.findByUserId(userId));
-        model.addAttribute("timeStampData", this.timeStampRepository.findByUserId(userId));
+        model.addAttribute("participantData", this.participantRepository.findByUserId(id));
+        model.addAttribute("participantScreenData", this.screenDataRepository.findByUserId(id));
+        model.addAttribute("participantTagPairData", this.tagPairRepository.findByUserId(id));
+        model.addAttribute("participantTagData", this.tagRepository.findByUserId(id));
+        model.addAttribute("participantTimeStampData", this.timeStampRepository.findByUserId(id));
         return "participantdetail";
     }
 }

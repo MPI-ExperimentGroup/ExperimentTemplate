@@ -41,7 +41,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </tr>
             </thead>
             <tbody>
-                <tr id="clickablerow" th:each="prod : ${allParticipantData}" th:onclick="'javascript:window.location=\'/participantdetail?id=' + ${prod.userId} + '\';'">
+                <tr id="clickablerow" th:each="prod : ${allParticipantData}" th:onclick="'javascript:window.location=\'participantdetail?id=' + ${prod.userId} + '\';'">
                     <td th:text="${prod.id}">id</td>
                     <td th:text="${prod.userId}">userId</td>
                     <td th:text="${prod.submitDate}">submitDate</td>
