@@ -28,128 +28,187 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <link type="text/css" rel="stylesheet" href="adminpages.css"/>
     </head>
     <body>
-        <p th:text="'Participant Count, ' + ${count}" />
-        <h3>participantData</h3>
+        <h3>Participant Data</h3>
         <table id="datatable">
             <thead>
                 <tr>
-                    <th>id</th>
-                    <th>userId</th>
-                    <th>submitDate</th>
-                    <th>workerId</th>
-                    <th>nativeLanguage</th>
-                    <th>otherLanguages</th>
+                    <!--<th>id</th>-->
+                    <!--<th>userId</th>-->
+                    <!--<th>submitDate</th>-->
+                    <th>Worker Id</th>
+                    <th>Native Language</th>
+                    <th>Other Languages</th>
                 </tr>
             </thead>
             <tbody>
                 <tr id="clickablerow" th:each="prod : ${participantData}" th:onclick="'javascript:window.location=\'participantdetail?id=' + ${prod.userId} + '\';'">
-                    <td th:text="${prod.id}">id</td>
-                    <td th:text="${prod.userId}">userId</td>
-                    <td th:text="${prod.submitDate}">submitDate</td>
+                    <!--<td th:text="${prod.id}">id</td>-->
+                    <!--<td th:text="${prod.userId}">userId</td>-->
+                    <!--<td th:text="${prod.submitDate}">submitDate</td>-->
                     <td th:text="${prod.workerId}">workerId</td>
                     <td th:text="${prod.nativeLanguage}">nativeLanguage</td>
                     <td th:text="${prod.otherLanguages}">otherLanguages</td>
                 </tr>
             </tbody>            
         </table>
-        <h3>participantScreenData</h3>
+        <!--<h3>Summary</h3>-->
+        <p th:text="'Browser Window Closed Event Count, ' + ${countOfBrowserWindowClosed}" />
+        <p th:text="'Test Audio Event Count, ' + ${participantAudioTestCount}" />
+        <table id="datatable">       
+            <thead>
+                <tr>
+                    <th>Condition</th>
+                    <th>Similarity</th>
+                    <th>Allocation Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="clickablerow" th:each="tagPairData : ${participantSubsetStimulus}">
+                    <td th:text="${tagPairData.tagValue1}">tagValue1</td>
+                    <td th:text="${tagPairData.tagValue2}">tagValue2</td>
+                    <td th:text="${tagPairData.tagDate}">tagDate</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&nbsp;</p>
+        <table id="datatable">       
+            <thead>
+                <tr>
+                    <th> Completion Code</th>
+                    <th>Allocation Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="clickablerow" th:each="tagPairData : ${participantCompletionCode}">
+                    <td th:text="${tagPairData.tagValue}">tagValue</td>
+                    <td th:text="${tagPairData.tagDate}">tagDate</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Next Button Timing</h3>
+        <table id="datatable">       
+            <thead>
+                <tr>
+                    <!--<th>id</th>-->
+                    <!--<th>userId</th>-->
+                    <!--<th>submitDate</th>-->
+                    <!--<th>experimentName</th>-->
+                    <th>Event Tag</th>
+                    <th>Date</th>
+                    <th>Milliseconds From Screen Start</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="clickablerow" th:each="timeStampData : ${participantNextButtonMsData}">
+                    <!--<td th:text="${timeStampData.id}">id</td>-->
+                    <!--<td th:text="${timeStampData.userId}">userId</td>-->
+                    <!--<td th:text="${timeStampData.submitDate}">submitDate</td>-->
+                    <!--<td th:text="${timeStampData.experimentName}">experimentName</td>-->
+                    <td th:text="${timeStampData.eventTag}">eventTag</td>
+                    <td th:text="${timeStampData.tagDate}">tagDate</td>
+                    <td th:text="${timeStampData.eventMs}">eventMs</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Event Sequence</h3>
         <table id="datatable">
             <thead>
                 <tr>
-                    <th>id</th>
-                    <th>userId</th>
-                    <th>viewDate</th>
-                    <th>submitDate</th>
-                    <th>experimentName</th>
-                    <th>screenName</th>
+                    <!--<th>id</th>-->
+                    <!--<th>userId</th>-->
+                    <!--<th>submitDate</th>-->
+                    <!--<th>experimentName</th>-->
+                    <th>Screen Name</th>
+                    <th>View Date</th>
                 </tr>
             </thead>
             <tbody>
                 <tr id="clickablerow" th:each="screenData : ${participantScreenData}">
-                    <td th:text="${screenData.id}">id</td>
-                    <td th:text="${screenData.userId}">userId</td>
-                    <td th:text="${screenData.viewDate}">viewDate</td>
-                    <td th:text="${screenData.submitDate}">submitDate</td>
-                    <td th:text="${screenData.experimentName}">experimentName</td>
+                    <!--<td th:text="${screenData.id}">id</td>-->
+                    <!--<td th:text="${screenData.userId}">userId</td>-->
+                    <!--<td th:text="${screenData.submitDate}">submitDate</td>-->
+                    <!--<td th:text="${screenData.experimentName}">experimentName</td>-->
                     <td th:text="${screenData.screenName}">screenName</td>
+                    <td th:text="${screenData.viewDate}">viewDate</td>
                 </tr>
             </tbody>
         </table>
-        <h3>participantTagPairData</h3>
+        <h3>Tag Pair Data</h3>
         <table id="datatable">       
             <thead>
                 <tr>
-                    <th>id</th>
-                    <th>userId</th>
-                    <th>tagDate</th>
-                    <th>submitDate</th>
-                    <th>experimentName</th>
-                    <th>eventTag</th>
-                    <th>tagValue1</th>
-                    <th>tagValue2</th>
-                    <th>eventMs</th>
+                    <!--<th>id</th>-->
+                    <!--<th>userId</th>-->
+                    <th>Date</th>
+                    <!--<th>submitDate</th>-->
+                    <!--<th>experimentName</th>-->
+                    <th>Tag</th>
+                    <th>Value 1</th>
+                    <th>Value 2</th>
+                    <th>Event Milliseconds</th>
                 </tr>
             </thead>
             <tbody>
                 <tr id="clickablerow" th:each="tagPairData : ${participantTagPairData}">
-                    <td th:text="${tagPairData.id}">id</td>
-                    <td th:text="${tagPairData.userId}">userId</td>
+                    <!--<td th:text="${tagPairData.id}">id</td>-->
+                    <!--<td th:text="${tagPairData.userId}">userId</td>-->
                     <td th:text="${tagPairData.tagDate}">tagDate</td>
-                    <td th:text="${tagPairData.submitDate}">submitDate</td>
-                    <td th:text="${tagPairData.experimentName}">experimentName</td>
+                    <!--<td th:text="${tagPairData.submitDate}">submitDate</td>-->
+                    <!--<td th:text="${tagPairData.experimentName}">experimentName</td>-->
                     <td th:text="${tagPairData.eventTag}">eventTag</td>
                     <td th:text="${tagPairData.tagValue1}">tagValue1</td>
                     <td th:text="${tagPairData.tagValue2}">tagValue2</td>
                     <td th:text="${tagPairData.eventMs}">eventMs</td>
                 </tr>
-            </tbody></table>
-        <h3>participantTagData</h3>
+            </tbody>
+        </table>
+        <h3>Tag Data</h3>
         <table id="datatable">
             <thead>
                 <tr>
-                    <th>id</th>
-                    <th>userId</th>
-                    <th>tagDate</th>
-                    <th>submitDate</th>
-                    <th>experimentName</th>
-                    <th>eventTag</th>
-                    <th>tagValue</th>
-                    <th>eventMs</th>
+                    <!--<th>id</th>-->
+                    <!--<th>userId</th>-->
+                    <th>Date</th>
+                    <!--<th>submitDate</th>-->
+                    <!--<th>experimentName</th>-->
+                    <th>Tag</th>
+                    <th>Value</th>
+                    <th>Event Milliseconds</th>
                 </tr>
             </thead>
             <tbody>
                 <tr id="clickablerow" th:each="tagData : ${participantTagData}">
-                    <td th:text="${tagData.id}">id</td>
-                    <td th:text="${tagData.userId}">userId</td>
+                    <!--<td th:text="${tagData.id}">id</td>-->
+                    <!--<td th:text="${tagData.userId}">userId</td>-->
                     <td th:text="${tagData.tagDate}">tagDate</td>
-                    <td th:text="${tagData.submitDate}">submitDate</td>
-                    <td th:text="${tagData.experimentName}">experimentName</td>
+                    <!--<td th:text="${tagData.submitDate}">submitDate</td>-->
+                    <!--<td th:text="${tagData.experimentName}">experimentName</td>-->
                     <td th:text="${tagData.eventTag}">eventTag</td>
                     <td th:text="${tagData.tagValue}">tagValue</td>
                     <td th:text="${tagData.eventMs}">eventMs</td>
                 </tr>
             </tbody>
         </table>
-        <h3>participantTimeStampData</h3>
+        <h3>Time Stamp Data</h3>
         <table id="datatable">       
             <thead>
                 <tr>
-                    <th>id</th>
-                    <th>userId</th>
-                    <th>tagDate</th>
-                    <th>submitDate</th>
-                    <th>experimentName</th>
-                    <th>eventTag</th>
-                    <th>eventMs</th>
+                    <!--<th>id</th>-->
+                    <!--<th>userId</th>-->
+                    <th>Date</th>
+                    <!--<th>submitDate</th>-->
+                    <!--<th>experimentName</th>-->
+                    <th>Tag</th>
+                    <th>Event Milliseconds</th>
                 </tr>
             </thead>
             <tbody>
                 <tr id="clickablerow" th:each="timeStampData : ${participantTimeStampData}">
-                    <td th:text="${timeStampData.id}">id</td>
-                    <td th:text="${timeStampData.userId}">userId</td>
+                    <!--<td th:text="${timeStampData.id}">id</td>-->
+                    <!--<td th:text="${timeStampData.userId}">userId</td>-->
                     <td th:text="${timeStampData.tagDate}">tagDate</td>
-                    <td th:text="${timeStampData.submitDate}">submitDate</td>
-                    <td th:text="${timeStampData.experimentName}">experimentName</td>
+                    <!--<td th:text="${timeStampData.submitDate}">submitDate</td>-->
+                    <!--<td th:text="${timeStampData.experimentName}">experimentName</td>-->
                     <td th:text="${timeStampData.eventTag}">eventTag</td>
                     <td th:text="${timeStampData.eventMs}">eventMs</td>
                 </tr>

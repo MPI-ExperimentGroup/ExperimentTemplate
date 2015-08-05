@@ -32,5 +32,7 @@ public interface ScreenDataRepository extends PagingAndSortingRepository<ScreenD
 
     ScreenData findById(@Param("id") long id);
 
-    List<ScreenData> findByUserId(@Param("userId") String userId);
+    List<ScreenData> findByUserIdOrderByViewDateAsc(@Param("userId") String userId);
+
+    int countByUserIdAndScreenName(@Param("userId") String userId, @Param("screenName") String screenName);
 }

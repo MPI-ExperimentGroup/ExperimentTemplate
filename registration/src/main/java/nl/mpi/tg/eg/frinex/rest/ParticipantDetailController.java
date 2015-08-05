@@ -42,13 +42,22 @@ public class ParticipantDetailController {
     private TimeStampRepository timeStampRepository;
 
     @RequestMapping("participantdetail")
-    public String participantDetail(@RequestParam(value = "id", required=true) String id, Model model) {
-        model.addAttribute("count", this.participantRepository.count());
+    public String participantDetail(@RequestParam(value = "id", required = true) String id, Model model) {
         model.addAttribute("participantData", this.participantRepository.findByUserId(id));
-        model.addAttribute("participantScreenData", this.screenDataRepository.findByUserId(id));
-        model.addAttribute("participantTagPairData", this.tagPairRepository.findByUserId(id));
-        model.addAttribute("participantTagData", this.tagRepository.findByUserId(id));
-        model.addAttribute("participantTimeStampData", this.timeStampRepository.findByUserId(id));
+        model.addAttribute("participantScreenData", this.screenDataRepository.findByUserIdOrderByViewDateAsc(id));
+        model.addAttribute("countOfBrowserWindowClosed", this.screenDataRepository.countByUserIdAndScreenName(id, BROWSER_WINDOW_CLOSED));
+        model.addAttribute("participantTagPairData", this.tagPairRepository.findByUserIdOrderByTagDateAsc(id));
+        model.addAttribute("participantSubsetStimulus", this.tagPairRepository.findByUserIdAndEventTagOrderByTagDateAsc(id, SUBSET_STIMULUS));
+        model.addAttribute("participantCompletionCode", this.tagRepository.findByUserIdAndEventTagOrderByTagDateAsc(id, COMPLETION_CODE));
+        model.addAttribute("participantAudioTestCount", this.tagRepository.countByUserIdAndTagValue(id, CARLY_BLUE_CHAIROGG));
+        model.addAttribute("participantNextButtonMsData", this.timeStampRepository.findByUserIdAndEventTagOrderByTagDateAsc(id, STIMULUS1_NEXT));
+        model.addAttribute("participantTagData", this.tagRepository.findByUserIdOrderByTagDateAsc(id));
+        model.addAttribute("participantTimeStampData", this.timeStampRepository.findByUserIdOrderByTagDateAsc(id));
         return "participantdetail";
     }
+    private static final String CARLY_BLUE_CHAIROGG = "carly_blue_chair.ogg";
+    private static final String COMPLETION_CODE = "CompletionCode";
+    private static final String BROWSER_WINDOW_CLOSED = "BrowserWindowClosed";
+    private static final String STIMULUS1_NEXT = "stimulus1Next";
+    private static final String SUBSET_STIMULUS = "SubsetStimulus";
 }

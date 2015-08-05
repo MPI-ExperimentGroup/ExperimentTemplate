@@ -32,5 +32,7 @@ public interface TagPairRepository extends PagingAndSortingRepository<TagPairDat
 
     TagPairData findById(@Param("id") long id);
 
-    List<TagPairData> findByUserId(@Param("userId") String userId);
+    List<TagPairData> findByUserIdOrderByTagDateAsc(@Param("userId") String userId);
+
+    List<TagPairData> findByUserIdAndEventTagOrderByTagDateAsc(@Param("userId") String userId, @Param("eventTag") String eventTag);
 }
