@@ -31,10 +31,10 @@ import nl.mpi.tg.eg.experiment.client.model.Stimulus.Speaker;
  */
 public class StimulusProvider {
 
-    List<Stimulus> stimulusArray = new ArrayList<>();
-    List<Stimulus> stimulusSubsetArray = new ArrayList<>();
-    List<String> noisyList = new ArrayList<>();
-    List<String> pictureList = new ArrayList<>();
+    private final List<Stimulus> stimulusArray = new ArrayList<>();
+    private final List<Stimulus> stimulusSubsetArray = new ArrayList<>();
+    private final List<String> noisyList = new ArrayList<>();
+    private final List<String> pictureList = new ArrayList<>();
     private int totalStimuli;
 
     public StimulusProvider() {
@@ -44,6 +44,10 @@ public class StimulusProvider {
 
         //stimulusSubsetArray.addAll(stimulusArray);
         totalStimuli = stimulusSubsetArray.size();
+    }
+
+    public void getAll() {
+        stimulusSubsetArray.addAll(stimulusArray);
     }
 
     public void getSubset() {
@@ -106,6 +110,8 @@ public class StimulusProvider {
         totalStimuli = stimulusSubsetArray.size();
     }
 
+    // todo: audio and image evetns do not indicate phase learning or test
+    // todo: next button could have its own timer to make reporting easier
     public Stimulus getNextStimulus() {
         return stimulusSubsetArray.remove(0);
     }

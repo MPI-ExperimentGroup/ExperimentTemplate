@@ -56,6 +56,7 @@ public abstract class AbstractPreloadStimulusPresenter extends AbstractStimulusP
     }
 
     protected void preloadAllStimuli(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener) {
+        stimulusProvider.getSubset();
         final HorizontalPanel progressBar = ((TimedStimulusView) simpleView).addProgressBar(0, 0, stimulusProvider.getTotalStimuli());
         preloadAllStimuli(appEventListner, progressBar, timedStimulusListener);
     }
