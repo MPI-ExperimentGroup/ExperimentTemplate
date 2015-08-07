@@ -116,6 +116,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <htmlText fieldName="kindiagramloadedtext">diagram loaded</htmlText>
         </kinTypeStringDiagram>
     </presenter>
+    <presenter type="kindiagram" menuLabel="Kin Type Entry Screen" back="MainMenu" self="SavedKinDiagram" next="AboutPage">
+        <loadKinTypeStringDiagram  timeToNext="0" diagramName="kinTypeDiagram"></loadKinTypeStringDiagram>
+        <addKinTypeGui diagramName="kinTypeDiagram"/>
+    </presenter>
     <presenter type="text" menuLabel="About Page" back="MainMenu" self="AboutPage" next="OptionMenu">
         <title fieldName="versionScreenTitle">Version</title>
         <!--<Image width="10" image="images/icon.png"/>-->

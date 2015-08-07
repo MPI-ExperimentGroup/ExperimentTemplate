@@ -98,7 +98,8 @@
             <xsl:text>Presenter(widgetTag</xsl:text>
             <xsl:value-of select="
 if(@type = 'transmission' or @type = 'metadata') then ', submissionService, userResults' else
-if(@type = 'stimulus' or @type = 'preload' or @type = 'kindiagram') then ', new AudioPlayer(this), submissionService, userResults' else ''" />
+if(@type = 'stimulus' or @type = 'preload') then ', new AudioPlayer(this), submissionService, userResults' else
+if(@type = 'kindiagram') then ', new AudioPlayer(this), submissionService, userResults, localStorage' else ''" />
             <xsl:text>);
                 presenter.setState(this, </xsl:text>
             <xsl:choose>
@@ -169,6 +170,7 @@ if(@type = 'stimulus' or @type = 'preload' or @type = 'kindiagram') then ', new 
                 import nl.mpi.tg.eg.experiment.client.model.UserResults;    
                 import nl.mpi.tg.eg.experiment.client.view.MetadataView; 
                 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService; 
+                import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
                         
                 // generated with config2java.xsl
                 public class </xsl:text>
@@ -188,7 +190,8 @@ if(@type = 'stimulus' or @type = 'preload' or @type = 'kindiagram') then ', new 
             <xsl:text>Presenter(RootLayoutPanel widgetTag</xsl:text>
             <xsl:value-of select="
 if(@type = 'transmission' or @type = 'metadata') then ', DataSubmissionService submissionService, UserResults userResults' else 
-if(@type = 'stimulus' or @type = 'preload' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults' else ''" />
+if(@type = 'stimulus' or @type = 'preload') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults' else 
+if(@type = 'kindiagram') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage' else ''" />
             <xsl:text>) {
             </xsl:text>  
             <xsl:choose>
@@ -207,12 +210,17 @@ if(@type = 'stimulus' or @type = 'preload' or @type = 'kindiagram') then ', Audi
                         super(widgetTag);
                     </xsl:text>
                 </xsl:when>
-                <xsl:when test="@type = 'stimulus' or @type = 'preload' or @type = 'kindiagram'">
+                <xsl:when test="@type = 'stimulus' or @type = 'preload'">
                     <xsl:text>
                         super(widgetTag, audioPlayer, submissionService, userResults);
                     </xsl:text>                    
                     <xsl:value-of select="if(loadNoiseStimulus) then 'loadNoiseStimulus();' else ''" />
                     <xsl:value-of select="if(loadSubsetStimulus) then 'loadSubsetStimulus();' else ''" />
+                </xsl:when>
+                <xsl:when test="@type = 'kindiagram'">
+                    <xsl:text>
+                        super(widgetTag, audioPlayer, submissionService, userResults, localStorage);
+                    </xsl:text>                    
                 </xsl:when>
                 <xsl:when test="@type = 'metadata' or @type = 'transmission'">
                     <xsl:text>
@@ -361,10 +369,11 @@ if(@type = 'stimulus' or @type = 'preload' or @type = 'kindiagram') then ', Audi
         <xsl:text>();
         </xsl:text>
     </xsl:template>
-    <xsl:template match="allMenuItems|nextStimulusButton|autoNextStimulus|conditionalHtml">    
+    <xsl:template match="allMenuItems|nextStimulusButton|autoNextStimulus|conditionalHtml|addKinTypeGui">    
         <xsl:text>    </xsl:text>    
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(appEventListner</xsl:text>
+        <xsl:value-of select="if(@diagramName) then concat(', &quot;', @diagramName, '&quot;') else ''" />
         <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
         <xsl:value-of select="if(@condition) then concat(', ', @condition) else ''" />
         <xsl:value-of select="if(@fieldName) then concat(', messages.', @fieldName, '()') else ''" />
@@ -382,7 +391,7 @@ if(@type = 'stimulus' or @type = 'preload' or @type = 'kindiagram') then ', Audi
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="preloadAllStimuli|showStimulusGrid|pause|onError|onSuccess|kinTypeStringDiagram">
+    <xsl:template match="preloadAllStimuli|showStimulusGrid|pause|onError|onSuccess|kinTypeStringDiagram|loadKinTypeStringDiagram">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(appEventListner</xsl:text>
@@ -398,6 +407,7 @@ if(@type = 'stimulus' or @type = 'preload' or @type = 'kindiagram') then ', Audi
             }</xsl:text>
         <xsl:value-of select="if(@columnCount) then concat(', ', @columnCount) else ''" />
         <xsl:value-of select="if(@kintypestring) then concat(', &quot;', @kintypestring, '&quot;') else ''" />
+        <xsl:value-of select="if(@diagramName) then concat(', &quot;', @diagramName, '&quot;') else ''" />
         <xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" />
         <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
         <xsl:value-of select="if(@alternativeChoice) then concat(', &quot;', @alternativeChoice, '&quot;') else ''" />

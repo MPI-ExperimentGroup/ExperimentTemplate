@@ -30,13 +30,16 @@ import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.ArrayList;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
+import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
+import nl.mpi.tg.eg.experiment.client.view.KinTypeView;
 import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
 
 /**
@@ -48,19 +51,21 @@ public abstract class AbstractKinDiagramPresenter extends AbstractPresenter impl
     private final StimulusProvider stimulusProvider = new StimulusProvider();
     protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
     private final DataSubmissionService submissionService;
+    private final LocalStorage localStorage;
     final UserResults userResults;
     Stimulus currentStimulus = null;
     private final Duration duration;
     final ArrayList<ButtonBase> buttonList = new ArrayList<>();
 
-    public AbstractKinDiagramPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults) {
-        super(widgetTag, new TimedStimulusView(audioPlayer));
+    public AbstractKinDiagramPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage) {
+        super(widgetTag, new KinTypeView(audioPlayer));
         duration = new Duration();
         this.submissionService = submissionService;
         this.userResults = userResults;
+        this.localStorage = localStorage;
     }
 
-    public void kinTypeStringDiagram(final AppEventListner appEventListner, final int postLoadMs, final TimedStimulusListener timedStimulusListener /*, final String imageWidth*/, String kinTypeString) {
+    public void kinTypeStringDiagram(final AppEventListner appEventListner, final int postLoadMs, final TimedStimulusListener timedStimulusListener, String kinTypeString) {
         // todo: migrate this block into GWT rather than using the REST service to generate
         RequestBuilder requestBuilder = new RequestBuilder(RequestBuilder.GET, UriUtils.fromString("http://ems12.mpi.nl:8080/kinoath-rest/kinoath/getkin/svg?kts=" + kinTypeString).asString());
         requestBuilder.setCallback(new RequestCallback() {
@@ -89,7 +94,71 @@ public abstract class AbstractKinDiagramPresenter extends AbstractPresenter impl
             ((TimedStimulusView) simpleView).addHtmlText(exception.getMessage());
         }
 //        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString("http://ems12.mpi.nl:8080/kinoath-rest/kinoath/getkin/svg?kts=" + kinTypeString), 100, postLoadMs, timedStimulusListener);
-//        ((TimedStimulusView) simpleView).addSvgImage(UriUtils.fromString("http://ems12.mpi.nl:8080/kinoath-rest/kinoath/getkin/svg?kts=" + kinTypeString), 100, postLoadMs, timedStimulusListener);
+//        ((TimedStimulusView) simpleView).addSvgImage(UriUtils.fromString("http://ems12.mpi.nl:8080/kinoath-rest/kinoath/getkin/svg?kts=" + kinTypeString), 100, postLoadMs, timedStimulusListener);        
     }
 
+    public void loadKinTypeStringDiagram(final AppEventListner appEventListner, final int postLoadMs, final TimedStimulusListener timedStimulusListener, String diagramName) {
+        kinTypeStringDiagram(appEventListner, postLoadMs, timedStimulusListener, loadKinTypeString(diagramName));
+    }
+
+    String kinTypeString = "";
+
+    public void addKinTypeGui(final AppEventListner appEventListner, final String diagramName) {
+        ((KinTypeView) simpleView).addHtmlText(loadKinTypeString(diagramName));
+        ((KinTypeView) simpleView).addKinTypeGui();
+        ((KinTypeView) simpleView).addOptionButton(new PresenterEventListner() {
+
+            @Override
+            public String getLabel() {
+                return "Add";
+            }
+
+            @Override
+            public void eventFired(ButtonBase button) {
+                saveKinTypeString(diagramName, ((KinTypeView) simpleView).getKinTypeString());
+                ((TimedStimulusView) simpleView).clearGui();
+                setContent(appEventListner);
+                submissionService.submitTimeStamp(userResults.getUserData().getUserId(), "AddToDiagram", duration.elapsedMillis());
+            }
+        });
+        ((KinTypeView) simpleView).addOptionButton(new PresenterEventListner() {
+
+            @Override
+            public String getLabel() {
+                return "Save Diagram To Server";
+            }
+
+            @Override
+            public void eventFired(ButtonBase button) {
+                submissionService.submitTagValue(userResults.getUserData().getUserId(), "SaveDiagram", loadKinTypeString(diagramName), duration.elapsedMillis());
+            }
+        });
+        ((KinTypeView) simpleView).addOptionButton(new PresenterEventListner() {
+
+            @Override
+            public String getLabel() {
+                return "Clear Diagram";
+            }
+
+            @Override
+            public void eventFired(ButtonBase button) {
+                clearKinTypeString(diagramName);
+                ((TimedStimulusView) simpleView).clearGui();
+                setContent(appEventListner);
+                submissionService.submitTimeStamp(userResults.getUserData().getUserId(), "ClearDiagram", duration.elapsedMillis());
+            }
+        });
+    }
+
+    public void clearKinTypeString(String diagramName) {
+        localStorage.deleteStoredDataValue(userResults.getUserData().getUserId(), diagramName);
+    }
+
+    public void saveKinTypeString(String diagramName, String kinTypeString) {
+        localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), diagramName, kinTypeString);
+    }
+
+    public String loadKinTypeString(String diagramName) {
+        return localStorage.getStoredDataValue(userResults.getUserData().getUserId(), diagramName);
+    }
 }

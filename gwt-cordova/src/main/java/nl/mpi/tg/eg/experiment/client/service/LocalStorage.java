@@ -133,6 +133,22 @@ public class LocalStorage {
         dataStore.removeItem(SCREEN_DATA + endpoint + "." + userId.toString());
     }
 
+    public String getStoredDataValue(UserId userId, String label) {
+        loadStorage();
+        return getCleanStoredData(GAME_DATA + label + "." + userId.toString());
+    }
+
+    public void deleteStoredDataValue(UserId userId, String label) {
+        loadStorage();
+        dataStore.removeItem(GAME_DATA + label + "." + userId.toString());
+    }
+
+    public void appendStoredDataValue(UserId userId, String label, String value) {
+        loadStorage();
+        final String cleanStoredData = getCleanStoredData(GAME_DATA + label + "." + userId.toString());
+        dataStore.setItem(GAME_DATA + label + "." + userId.toString(), cleanStoredData + value);
+    }
+
     public void addStoredScreenData(UserId userId, String endpoint, String serialisedScreenData) {
         loadStorage();
         final String cleanStoredData = getCleanStoredData(SCREEN_DATA + endpoint + "." + userId.toString());
