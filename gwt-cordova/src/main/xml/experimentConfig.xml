@@ -31,18 +31,34 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <field postName="workerId" registrationField="Please enter your 'Worker ID'" controlledRegex=".'{'10,'}'" controlledMessage="Your worker ID can be found on the mturk/dashboard." />
         <field postName="nativeLanguage" registrationField="What is your native language" controlledRegex=".'{'2,'}'" controlledMessage="Please enter your native language" />
         <field postName="otherLanguages" registrationField="What other languages do you know" controlledRegex=".'{'2,'}'" controlledMessage="If you do not know any other languages then enter 'none'" />
-    </metadata>
-    <presenter type="menu" menuLabel="Auto Menu" self="AutoMenu">
-        <allMenuItems/>
+    </metadata>    
+    <presenter type="text" menuLabel="Introduction" title="Introduction" back="MainMenu" self="OptionMenu" next="KinDiagram">
+        <htmlText fieldName="introductionText1">This is a simple demonstration application produced with the experiment framework currently being developed.</htmlText>
+        <htmlText fieldName="introductionText1a">This framework is based on the code written for SynQuiz and LingQuest.</htmlText>
+        <htmlText fieldName="introductionText2">The main feature being demonstrated here is the display and generation of simple kin type string diagrams.</htmlText>
+        <htmlText fieldName="introductionText3">These diagrams are being produced via a web service that is an extraction from the KinOath application.</htmlText>
+        <htmlText fieldName="introductionText4">When this feature is completed, these kinship diagrams would be produced off line from within mobile app.</htmlText>
+        <htmlText fieldName="introductionText5">One of the intended outcomes of these features in this framework is to provide customisable mobile acquisition applications.</htmlText>
+        <padding/>
+        <optionButton fieldName="introductionButton1" target="KinDiagram">Simple Kinship Diagram</optionButton>
+        <optionButton fieldName="introductionButton2" target="SavedKinDiagram">Skip Ahead</optionButton>
+        <optionButton fieldName="introductionButton3" target="Metadata">Enter Personal Information</optionButton>
     </presenter>
-    <presenter type="menu" menuLabel="Main Menu" back="AutoMenu" self="MainMenu">
+    <presenter type="menu" menuLabel="Menu" self="MainMenu">
+        <menuItem fieldName="optionMenuLabel" target="OptionMenu">Introduction</menuItem>
         <menuItem fieldName="aboutScreenMenuLabel" target="AboutPage">About Page</menuItem>
         <!--<menuItem fieldName="menuLabelStrayMessages" target="StrayMessages"/>-->
-        <menuItem fieldName="menuLabelPreloadStimulus" target="PreloadStimulus"/>
-        <menuItem fieldName="menuLabelResultsPage" target="ResultsPage"/>
-        <menuItem fieldName="menuLabelStimulusPage" target="StimulusPage"/>
+        <!--<menuItem fieldName="menuLabelPreloadStimulus" target="PreloadStimulus"/>-->
+        <!--<menuItem fieldName="menuLabelResultsPage" target="ResultsPage"/>-->
+        <!--<menuItem fieldName="menuLabelStimulusPage" target="StimulusPage"/>-->
         <menuItem fieldName="menuLabelMetadata" target="Metadata"/>
-        <menuItem fieldName="menuLabelStimulusGrid" target="StimulusGrid"/>
+        <!--<menuItem fieldName="menuLabelStimulusGrid" target="StimulusGrid"/>-->
+        <menuItem fieldName="menuLabelKinDiagram" target="KinDiagram"/>
+        <menuItem fieldName="menuLabelSavedKinDiagram" target="SavedKinDiagram"/>
+        <menuItem fieldName="menuLabelAutoMenu" target="AutoMenu"/>
+    </presenter>
+    <presenter  back="MainMenu" type="menu" menuLabel="Here Dragons Live" title="Auto Generated Menu" self="AutoMenu">
+        <allMenuItems/>
     </presenter>
     <presenter type="stimulus" menuLabel="Next (Some Stimulus)" title="Some Stimulus" self="SomeStimulus">
         <htmlText fieldName="stimulusHeading">Some Stimulus</htmlText>
@@ -84,9 +100,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <optionButton fieldName="menuLabelStimulusPage" target="StimulusPage"/>
         </preloadAllStimuli>
     </presenter>
-    <presenter type="text" menuLabel="Option Menu" back="MainMenu" self="OptionMenu" next="AboutPage">
-        <optionButton fieldName="aboutScreenMenuLabel" target="AboutPage" />
-    </presenter>
     <presenter type="metadata" menuLabel="User Info" back="MainMenu" self="Metadata" next="PreloadStimulus">
         <allMetadataFields/>
     </presenter>
@@ -111,29 +124,30 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             </stimulusImage>
         </stimulusImage>
     </presenter>
-    <presenter type="kindiagram" menuLabel="Kin Diagram Screen" back="MainMenu" self="KinDiagram" next="AboutPage">
+    <presenter type="kindiagram" menuLabel="Kin Diagram Screen" title="Kin Diagram Screen" back="MainMenu" self="KinDiagram" next="SavedKinDiagram">
         <kinTypeStringDiagram  timeToNext="1000" kintypestring="EmMD:1:|EmFD:1:|EmS:2:|EmWD:3:|EmD:3:|EmWS:2:|EmZ:1:">
-            <htmlText fieldName="kindiagramloadedtext">diagram loaded</htmlText>
+            <htmlText fieldName="kindiagramloadedtext">This is a simple predefined kin type string diagram.</htmlText>
         </kinTypeStringDiagram>
     </presenter>
-    <presenter type="kindiagram" menuLabel="Kin Type Entry Screen" back="MainMenu" self="SavedKinDiagram" next="AboutPage">
+    <presenter type="kindiagram" menuLabel="Kin Type Entry Screen" title="Kin Type Entry Screen" back="MainMenu" self="SavedKinDiagram" next="AboutPage">
+         <htmlText fieldName="savedKinDiagramText1">Use this form to add individuals to this kin type string diagram below.</htmlText>
+         <padding/>
         <loadKinTypeStringDiagram  timeToNext="0" diagramName="kinTypeDiagram"></loadKinTypeStringDiagram>
         <addKinTypeGui diagramName="kinTypeDiagram"/>
     </presenter>
-    <presenter type="text" menuLabel="About Page" back="MainMenu" self="AboutPage" next="OptionMenu">
-        <title fieldName="versionScreenTitle">Version</title>
+    <presenter type="text" menuLabel="About Page" back="MainMenu" title="Application Version" self="AboutPage" next="OptionMenu">
         <!--<Image width="10" image="images/icon.png"/>-->
-        <highlightedText fieldName="aboutScreenTextAheading">A Heading</highlightedText>
-        <htmlText fieldName="aboutScreenTextAbody">A body</htmlText>
-        <padding/>
-        <htmlText fieldName="aboutScreenTextBheading">&lt;b&gt;B h&lt;/b&gt;</htmlText>
-        <htmlText fieldName="aboutScreenTextBbody">Bh</htmlText>
-        <htmlText fieldName="aboutScreenTextCheading">Ch</htmlText>
-        <htmlText fieldName="aboutScreenTextCbody">Cb</htmlText>
-        <htmlText fieldName="aboutScreenTextDheading">Dh</htmlText>
-        <htmlText fieldName="aboutScreenTextDbody">Db</htmlText>
-        <htmlText fieldName="aboutScreenTextEheading">Eh</htmlText>
-        <htmlText fieldName="aboutScreenTextEbody">Eb</htmlText>
+        <!--<highlightedText fieldName="aboutScreenTextAheading">A Heading</highlightedText>-->
+        <!--<htmlText fieldName="aboutScreenTextAbody">A body</htmlText>-->
+        <!--<padding/>-->
+        <!--<htmlText fieldName="aboutScreenTextBheading">&lt;b&gt;B h&lt;/b&gt;</htmlText>-->
+        <htmlText fieldName="aboutScreenTextBbody">This is a very simple and quick demonstration of what such an application produced by this framework might look like.</htmlText>
+        <!--<htmlText fieldName="aboutScreenTextCheading">Ch</htmlText>-->
+        <!--<htmlText fieldName="aboutScreenTextCbody">Cb</htmlText>-->
+        <!--<htmlText fieldName="aboutScreenTextDheading">Dh</htmlText>-->
+        <!--<htmlText fieldName="aboutScreenTextDbody">Db</htmlText>-->
+        <!--<htmlText fieldName="aboutScreenTextEheading">Eh</htmlText>-->
+        <!--<htmlText fieldName="aboutScreenTextEbody">Eb</htmlText>-->
         <versionData/>
     </presenter>
 </experiment>
