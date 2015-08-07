@@ -32,7 +32,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <field postName="nativeLanguage" registrationField="What is your native language" controlledRegex=".'{'2,'}'" controlledMessage="Please enter your native language" />
         <field postName="otherLanguages" registrationField="What other languages do you know" controlledRegex=".'{'2,'}'" controlledMessage="If you do not know any other languages then enter 'none'" />
     </metadata>    
-    <presenter type="text" menuLabel="Introduction" title="Introduction" back="MainMenu" self="OptionMenu" next="KinDiagram">
+    <presenter type="text" menuLabel="Introduction" title="Introduction" back="MainMenu" self="OptionMenu">
         <htmlText fieldName="introductionText1">This is a simple demonstration application produced with the experiment framework currently being developed.</htmlText>
         <htmlText fieldName="introductionText1a">This framework is based on the code written for SynQuiz and LingQuest.</htmlText>
         <htmlText fieldName="introductionText2">The main feature being demonstrated here is the display and generation of simple kin type string diagrams.</htmlText>
@@ -129,11 +129,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <htmlText fieldName="kindiagramloadedtext">This is a simple predefined kin type string diagram.</htmlText>
         </kinTypeStringDiagram>
     </presenter>
-    <presenter type="kindiagram" menuLabel="Kin Type Entry Screen" title="Kin Type Entry Screen" back="MainMenu" self="SavedKinDiagram" next="AboutPage">
-         <htmlText fieldName="savedKinDiagramText1">Use this form to add individuals to this kin type string diagram below.</htmlText>
-         <padding/>
+    <presenter type="kindiagram" menuLabel="Kin Type Entry Screen" title="Kin Type Entry Screen" back="MainMenu" self="SavedKinDiagram">
+        <htmlText fieldName="savedKinDiagramText1">Use this form to add individuals to this kin type string diagram below.</htmlText>
+        <padding/>
         <loadKinTypeStringDiagram  timeToNext="0" diagramName="kinTypeDiagram"></loadKinTypeStringDiagram>
-        <addKinTypeGui diagramName="kinTypeDiagram"/>
+        <addKinTypeGui diagramName="kinTypeDiagram"/>        
+        <optionButton fieldName="completeLabel" target="AboutPage">About This Application</optionButton>
     </presenter>
     <presenter type="text" menuLabel="About Page" back="MainMenu" title="Application Version" self="AboutPage" next="OptionMenu">
         <!--<Image width="10" image="images/icon.png"/>-->

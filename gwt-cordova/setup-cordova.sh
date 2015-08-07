@@ -1,6 +1,6 @@
 #mvn install
 cd target
-appname=lingquest-0.1.353-stable
+appname=frinexweb-0.1.457-testing
 rm -rf $appname-cordova
 unzip $appname-cordova.zip -d $appname-cordova
 cd $appname-cordova
