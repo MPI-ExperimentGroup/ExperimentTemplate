@@ -2,8 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>nl.mpi.tg.eg.frinex</groupId>
-    <artifactId>registration</artifactId>
-    <version>0.1.28-pretesting</version>
+    <artifactId>frinexservice</artifactId>
+    <version>0.1.33-pretesting</version>
     <name>Frinex Web Service</name>
     <packaging>war</packaging>
     <parent>
@@ -96,6 +96,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-csv</artifactId>
+            <version>1.1</version>
         </dependency>
     </dependencies>
     <reporting>                                                                              
