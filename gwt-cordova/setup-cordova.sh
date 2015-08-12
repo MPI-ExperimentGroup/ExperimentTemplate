@@ -1,6 +1,6 @@
 #mvn install
 cd target
-appname=frinexweb-0.1.457-testing
+appname=frinexweb-0.1.459-testing
 rm -rf $appname-cordova
 unzip $appname-cordova.zip -d $appname-cordova
 cd $appname-cordova
@@ -66,7 +66,8 @@ convert -resize 320x480^ -gravity center -extent 320x480 -quality 100 $splashIma
 convert -resize 720x1280^ -gravity center -extent 720x1280 -quality 100 $splashImage platforms/android/res/drawable-port-xhdpi/screen.png
 
 # copy the ant.properties file with the android key store and alias (key.store= key.alias=) information so that the APK can be signed
-cp ~/android-keys/ant.properties platforms/android/
+#cp ~/android-keys/ant.properties platforms/android/
+cp ~/android-keys/release-signing.properties platforms/android/
 
 echo "building"
 #cordova prepare

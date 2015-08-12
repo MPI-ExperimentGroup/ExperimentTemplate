@@ -7,9 +7,9 @@
     <!-- POM file generated with GWT webAppCreator -->
     <modelVersion>4.0.0</modelVersion>
     <groupId>nl.mpi.tg.eg.frinex</groupId>
-    <artifactId>gwttemplate</artifactId>
+    <artifactId>frinexweb</artifactId>
     <packaging>war</packaging>
-    <version>0.1.455-testing</version>
+    <version>0.1.459-testing</version>
     <name>FRINEX GWT-Cordova Template</name>
     <organization>
         <name>Max Planck Institute for Psycholinguistics, Nijmegen</name>
