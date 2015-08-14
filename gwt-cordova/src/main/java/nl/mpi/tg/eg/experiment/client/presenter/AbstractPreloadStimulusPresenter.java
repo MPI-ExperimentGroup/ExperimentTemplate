@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experiment.client.presenter;
 import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import java.util.List;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
@@ -34,20 +35,18 @@ import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
  */
 public abstract class AbstractPreloadStimulusPresenter extends AbstractStimulusPresenter implements Presenter {
 
-    private final StimulusProvider stimulusProvider = new StimulusProvider();
-
     public AbstractPreloadStimulusPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults) {
-        super(widgetTag, audioPlayer, submissionService, userResults);
+        super(widgetTag, audioPlayer, submissionService, userResults, null);
     }
 
-    private void preloadAllStimuli(final AppEventListner appEventListner, final HorizontalPanel progressBar, final TimedStimulusListener timedStimulusListener) {
-        ((TimedStimulusView) simpleView).updateProgressBar(progressBar, 0, stimulusProvider.getTotalStimuli() - stimulusProvider.getRemainingStimuli(), stimulusProvider.getTotalStimuli());
-        if (stimulusProvider.hasNextStimulus()) {
-            ((TimedStimulusView) simpleView).preloadImage(UriUtils.fromString(serviceLocations.staticFilesUrl() + stimulusProvider.getNextStimulus().getJpg()), new TimedStimulusListener() {
+    private void preloadAllStimuli(final AppEventListner appEventListner, final HorizontalPanel progressBar, final TimedStimulusListener timedStimulusListener, final List<String> pictureList, final int totalImages) {
+        ((TimedStimulusView) simpleView).updateProgressBar(progressBar, 0, totalImages - pictureList.size(), totalImages);
+        if (!pictureList.isEmpty()) {
+            ((TimedStimulusView) simpleView).preloadImage(UriUtils.fromString(serviceLocations.staticFilesUrl() + pictureList.remove(0)), new TimedStimulusListener() {
 
                 @Override
                 public void postLoadTimerFired() {
-                    preloadAllStimuli(appEventListner, progressBar, timedStimulusListener);
+                    preloadAllStimuli(appEventListner, progressBar, timedStimulusListener, pictureList, totalImages);
                 }
             });
         } else {
@@ -56,8 +55,8 @@ public abstract class AbstractPreloadStimulusPresenter extends AbstractStimulusP
     }
 
     protected void preloadAllStimuli(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener) {
-        stimulusProvider.getSubset();
-        final HorizontalPanel progressBar = ((TimedStimulusView) simpleView).addProgressBar(0, 0, stimulusProvider.getTotalStimuli());
-        preloadAllStimuli(appEventListner, progressBar, timedStimulusListener);
+        final List<String> pictureList = new StimulusProvider().getPictureList();
+        final HorizontalPanel progressBar = ((TimedStimulusView) simpleView).addProgressBar(0, 0, pictureList.size());
+        preloadAllStimuli(appEventListner, progressBar, timedStimulusListener, pictureList, pictureList.size());
     }
 }
