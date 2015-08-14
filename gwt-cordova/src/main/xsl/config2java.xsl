@@ -98,8 +98,8 @@
             <xsl:text>Presenter(widgetTag</xsl:text>
             <xsl:value-of select="
 if(@type = 'transmission' or @type = 'metadata') then ', submissionService, userResults' else
-if(@type = 'stimulus' or @type = 'preload') then ', new AudioPlayer(this), submissionService, userResults' else
-if(@type = 'kindiagram') then ', new AudioPlayer(this), submissionService, userResults, localStorage' else ''" />
+if(@type = 'preload') then ', new AudioPlayer(this), submissionService, userResults' else
+if(@type = 'stimulus' or @type = 'kindiagram') then ', new AudioPlayer(this), submissionService, userResults, localStorage' else ''" />
             <xsl:text>);
                 presenter.setState(this, </xsl:text>
             <xsl:choose>
@@ -190,8 +190,8 @@ if(@type = 'kindiagram') then ', new AudioPlayer(this), submissionService, userR
             <xsl:text>Presenter(RootLayoutPanel widgetTag</xsl:text>
             <xsl:value-of select="
 if(@type = 'transmission' or @type = 'metadata') then ', DataSubmissionService submissionService, UserResults userResults' else 
-if(@type = 'stimulus' or @type = 'preload') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults' else 
-if(@type = 'kindiagram') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage' else ''" />
+if(@type = 'preload') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults' else 
+if(@type = 'stimulus' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage' else ''" />
             <xsl:text>) {
             </xsl:text>  
             <xsl:choose>
@@ -210,14 +210,14 @@ if(@type = 'kindiagram') then ', AudioPlayer audioPlayer, DataSubmissionService 
                         super(widgetTag);
                     </xsl:text>
                 </xsl:when>
-                <xsl:when test="@type = 'stimulus' or @type = 'preload'">
+                <xsl:when test="@type = 'preload'">
                     <xsl:text>
                         super(widgetTag, audioPlayer, submissionService, userResults);
                     </xsl:text>                    
                     <xsl:value-of select="if(loadNoiseStimulus) then 'loadNoiseStimulus();' else ''" />
-                    <xsl:value-of select="if(loadSubsetStimulus) then 'loadSubsetStimulus();' else ''" />
+                    <xsl:value-of select="if(loadSubsetStimulus) then concat('loadSubsetStimulus(', loadSubsetStimulus/@setCount, ');') else ''" />
                 </xsl:when>
-                <xsl:when test="@type = 'kindiagram'">
+                <xsl:when test="@type = 'kindiagram' or @type = 'stimulus'">
                     <xsl:text>
                         super(widgetTag, audioPlayer, submissionService, userResults, localStorage);
                     </xsl:text>                    
@@ -357,7 +357,7 @@ if(@type = 'kindiagram') then ', AudioPlayer audioPlayer, DataSubmissionService 
         <xsl:text>    ((ComplexView) simpleView).addPadding();
         </xsl:text>
     </xsl:template>
-    <xsl:template match="localStorageData|allMetadataFields|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|disableStimulusButtons|showStimulusProgress|hideStimulusButtons|showStimulusButtons|generateCompletionCode|sendAllData|eraseLocalStorageOnWindowClosing|clearStimulus">
+    <xsl:template match="localStorageData|allMetadataFields|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|disableStimulusButtons|showStimulusProgress|hideStimulusButtons|showStimulusButtons|generateCompletionCode|sendAllData|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus">
         <xsl:text>    </xsl:text>    
         <xsl:value-of select ="local-name()"/>
         <xsl:text>();
@@ -391,7 +391,7 @@ if(@type = 'kindiagram') then ', AudioPlayer audioPlayer, DataSubmissionService 
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="preloadAllStimuli|showStimulusGrid|pause|onError|onSuccess|kinTypeStringDiagram|loadKinTypeStringDiagram">
+    <xsl:template match="preloadAllStimuli|showStimulusGrid|pause|onError|onSuccess|kinTypeStringDiagram|loadKinTypeStringDiagram|responseCorrect|responseIncorrect">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(appEventListner</xsl:text>
