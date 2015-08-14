@@ -7,9 +7,9 @@
     <!-- POM file generated with GWT webAppCreator -->
     <modelVersion>4.0.0</modelVersion>
     <groupId>nl.mpi.tg.eg.frinex</groupId>
-    <artifactId>frinex-web</artifactId>
+    <artifactId>frinex</artifactId>
     <packaging>war</packaging>
-    <version>0.1.459-testing</version>
+    <version>0.1.461-testing</version>
     <name>FRINEX GWT-Cordova Template</name>
     <organization>
         <name>Max Planck Institute for Psycholinguistics, Nijmegen</name>
@@ -29,7 +29,7 @@
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <experiment.configuration.path>${project.build.sourceDirectory}/../xml</experiment.configuration.path>
-        <experiment.configuration.name>experimentConfig</experiment.configuration.name>
+        <experiment.configuration.name>kinoath</experiment.configuration.name>
         <finalName>${project.artifactId}-${experiment.configuration.name}-${project.version}</finalName>
     </properties>
 
