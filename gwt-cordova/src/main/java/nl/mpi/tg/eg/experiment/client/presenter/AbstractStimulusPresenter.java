@@ -32,6 +32,7 @@ import nl.mpi.tg.eg.experiment.client.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
+import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
@@ -43,22 +44,34 @@ import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
  */
 public abstract class AbstractStimulusPresenter extends AbstractPresenter implements Presenter {
 
+    private static final String STIMULUS_ALLOCATION = "stimulusAllocation";
+    private static final String SEEN_STIMULUS_LIST = "seenStimulusList";
     private final StimulusProvider stimulusProvider = new StimulusProvider();
     protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
+    private final LocalStorage localStorage;
     private final DataSubmissionService submissionService;
     final UserResults userResults;
     Stimulus currentStimulus = null;
     private final Duration duration;
     final ArrayList<ButtonBase> buttonList = new ArrayList<>();
 
-    public AbstractStimulusPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults) {
+    public AbstractStimulusPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage) {
         super(widgetTag, new TimedStimulusView(audioPlayer));
         duration = new Duration();
         this.submissionService = submissionService;
         this.userResults = userResults;
+        this.localStorage = localStorage;
     }
 
-    protected void loadSubsetStimulus() {
+    protected void loadSubsetStimulus(int setCount) {
+        final String storedDataValue = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), STIMULUS_ALLOCATION);
+        int stimulusAllocation;
+        try {
+            stimulusAllocation = Integer.parseInt(storedDataValue);
+        } catch (NumberFormatException exception) {
+            stimulusAllocation = new Random().nextInt(5);
+        }
+        final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST);
 //        Participants will be exposed to 36 audio+picture combinations, 
 //        which are in fact 6 word-picture combination, 
 //        but each word repeats 6 times with a different audio files each time (see xls file).
@@ -69,33 +82,36 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //        (and the two recordings per speaker will be randomly sampled from the 6 existing recordings per speaker).
 //        The picture should always appear one second before the word is played. 
 //        It should stay on the screen for 3 seconds (including the pre-word 1 sec).
-        switch (new Random().nextInt(5)) {
+
+        switch (stimulusAllocation) {
             case 0:
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "SubsetStimulus", "Condition1", Stimulus.Similarity.sim.name(), duration.elapsedMillis());
-                stimulusProvider.getSubset(Stimulus.Similarity.sim);
+                stimulusProvider.getSubset(Stimulus.Similarity.sim, setCount, seenStimulusList);
                 break;
             case 1:
-                stimulusProvider.getSubset(Stimulus.Similarity.mid);
+                stimulusProvider.getSubset(Stimulus.Similarity.mid, setCount, seenStimulusList);
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "SubsetStimulus", "Condition1", Stimulus.Similarity.mid.name(), duration.elapsedMillis());
                 break;
             case 2:
-                stimulusProvider.getSubset(Stimulus.Similarity.diff);
+                stimulusProvider.getSubset(Stimulus.Similarity.diff, setCount, seenStimulusList);
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "SubsetStimulus", "Condition1", Stimulus.Similarity.diff.name(), duration.elapsedMillis());
                 break;
             default:
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "SubsetStimulus", "Condition2", "", duration.elapsedMillis());
-                stimulusProvider.getSubset();
+                stimulusProvider.getSubset(setCount, seenStimulusList);
                 break;
         }
 
 // todo: fully handle this subsetting of the stimulus 
 //        also store the group that the user is in: sim diff .. and the speaker the user is assigned to
         currentStimulus = stimulusProvider.getNextStimulus();
+        localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST, currentStimulus.getAudioTag());
     }
 
     protected void loadNoiseStimulus() {
         stimulusProvider.getNoisyStimuli();
         currentStimulus = stimulusProvider.getNextStimulus();
+        localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST, currentStimulus.getAudioTag());
     }
 
     protected void pause(final AppEventListner appEventListner, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
@@ -106,6 +122,36 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }
         };
         timer.schedule(postLoadMs);
+    }
+
+    protected void responseCorrect(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener) {
+//        Timer timer = new Timer() {
+//            public void run() {
+//                ((TimedStimulusView) simpleView).addText("pause: " + duration.elapsedMillis() + "ms");
+        timedStimulusListener.postLoadTimerFired();
+//            }
+//        };
+//        timer.schedule(postLoadMs);
+        throw new UnsupportedOperationException("todo: responseCorrect");
+    }
+
+    protected void responseIncorrect(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener) {
+//        Timer timer = new Timer() {
+//            public void run() {
+//                ((TimedStimulusView) simpleView).addText("pause: " + duration.elapsedMillis() + "ms");
+        timedStimulusListener.postLoadTimerFired();
+//            }
+//        };
+//        timer.schedule(postLoadMs);
+        throw new UnsupportedOperationException("todo: responseIncorrect");
+    }
+
+    protected void removeStimulus() {
+        throw new UnsupportedOperationException("todo: removeStimulus");
+    }
+
+    protected void keepStimulus() {
+        throw new UnsupportedOperationException("todo: keepStimulus");
     }
 
     protected void addStimulusImage(String image, int width, int postLoadMs, TimedStimulusListener timedStimulusListener) {
@@ -128,6 +174,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
     }
 
+    protected void showStimulusGrid(final AppEventListner appEventListner, final int postLoadMs, final TimedStimulusListener listener, final int columnCount, final String imageWidth, final String eventTag) {
+        showStimulusGrid(appEventListner, postLoadMs, listener, columnCount, imageWidth, eventTag, null);
+    }
+
     protected void showStimulusGrid(final AppEventListner appEventListner, final int postLoadMs, final TimedStimulusListener listener, final int columnCount, final String imageWidth, final String eventTag, final String alternativeChoice) {
         ((TimedStimulusView) simpleView).stopAudio();
         TimedStimulusListener stimulusListener = new TimedStimulusListener() {
@@ -138,6 +188,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     public void run() {
                         if (stimulusProvider.hasNextStimulus()) {
                             currentStimulus = stimulusProvider.getNextStimulus();
+                            localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST, currentStimulus.getAudioTag());
                             buttonList.clear();
                             ((TimedStimulusView) simpleView).clearGui();
                             setContent(appEventListner);
@@ -152,7 +203,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
         ((TimedStimulusView) simpleView).startGrid();
         int imageCounter = 0;
-        buttonList.add(((TimedStimulusView) simpleView).addStringItem(getEventListener(buttonList, eventTag, currentStimulus.getAudioTag(), alternativeChoice, stimulusListener), alternativeChoice, 0, 0, imageWidth));
+        if (alternativeChoice != null) {
+            buttonList.add(((TimedStimulusView) simpleView).addStringItem(getEventListener(buttonList, eventTag, currentStimulus.getAudioTag(), alternativeChoice, stimulusListener), alternativeChoice, 0, 0, imageWidth));
+        }
         for (final String nextJpg : stimulusProvider.getPictureList()) {
             buttonList.add(((TimedStimulusView) simpleView).addImageItem(getEventListener(buttonList, eventTag, currentStimulus.getAudioTag(), nextJpg, stimulusListener), UriUtils.fromString(serviceLocations.staticFilesUrl() + nextJpg), imageCounter / columnCount, 1 + imageCounter++ % columnCount, imageWidth));
         }
@@ -243,6 +296,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             logTimeStamp(eventTag);
             ((TimedStimulusView) simpleView).stopAudio();
             currentStimulus = stimulusProvider.getNextStimulus();
+            localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST, currentStimulus.getAudioTag());
             buttonList.clear();
             ((TimedStimulusView) simpleView).clearGui();
             setContent(appEventListner);
