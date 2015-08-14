@@ -27,12 +27,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <link type="text/css" rel="stylesheet" href="adminpages.css"/>
     </head>
     <body>
-        <div align="right">
-            <div th:inline="text">Logged in as: [[${#httpServletRequest.remoteUser}]]</div>
-            <form th:action="@{/logout}" method="post">
-                <input type="submit" value="Sign Out"/>
-            </form>
-        </div>
+        <div th:replace="fragments/adminpagelayout :: header"></div>
         <a href="dataviewer">Screen Events Viewer</a><br/>
         <a href="participantlisting">Participant Listing</a><br/>
         <a href="tagviewer">Experiment Data Viewer</a><br/>
