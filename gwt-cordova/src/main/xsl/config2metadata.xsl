@@ -13,7 +13,7 @@
     <xsl:template match="/">
         <xsl:result-document href="target/generated-sources/gwt/nl/mpi/tg/eg/experiment/client/service/ServiceLocations.properties" method="text">
             <xsl:text>dataSubmitUrl=</xsl:text><xsl:value-of select="experiment/@dataSubmitUrl" /><xsl:text>
-                staticFilesUrl=</xsl:text><xsl:value-of select="experiment/@staticFilesUrl" />
+staticFilesUrl=</xsl:text><xsl:value-of select="experiment/@staticFilesUrl" />
         </xsl:result-document>
         
         <xsl:result-document href="target/generated-sources/gwt/nl/mpi/tg/eg/experiment/client/MetadataFields.properties" method="text">

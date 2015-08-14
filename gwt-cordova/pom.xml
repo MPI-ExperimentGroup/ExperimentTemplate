@@ -7,7 +7,7 @@
     <!-- POM file generated with GWT webAppCreator -->
     <modelVersion>4.0.0</modelVersion>
     <groupId>nl.mpi.tg.eg.frinex</groupId>
-    <artifactId>frinexweb</artifactId>
+    <artifactId>frinex-web</artifactId>
     <packaging>war</packaging>
     <version>0.1.459-testing</version>
     <name>FRINEX GWT-Cordova Template</name>
@@ -15,6 +15,11 @@
         <name>Max Planck Institute for Psycholinguistics, Nijmegen</name>
         <url>https://www.mpi.nl</url>
     </organization>
+    <parent>
+        <groupId>nl.mpi.tg.eg</groupId>
+        <artifactId>FrinexParent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
     <properties>
         <netbeans.hint.license>gpl20</netbeans.hint.license>
         <plugin.license.copyrightYear>2015</plugin.license.copyrightYear>
@@ -23,6 +28,9 @@
         <!-- GWT needs at least java 1.5 -->
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <experiment.configuration.path>${project.build.sourceDirectory}/../xml</experiment.configuration.path>
+        <experiment.configuration.name>experimentConfig</experiment.configuration.name>
+        <finalName>${project.artifactId}-${experiment.configuration.name}-${project.version}</finalName>
     </properties>
 
     <dependencies>
@@ -72,15 +80,16 @@
     </dependencies>
 
     <build>
+        <finalName>${finalName}</finalName>
         <!-- Generate compiled stuff in the folder used for developing mode -->
         <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
         <resources>
             <resource>
-                <directory>src/main/resources</directory>
+                <directory>${project.build.sourceDirectory}/../resources</directory>
                 <filtering>false</filtering>
             </resource>
             <resource>
-                <directory>src/main/resources</directory>
+                <directory>${project.build.sourceDirectory}/../resources</directory>
                 <filtering>true</filtering>                
                 <includes>
                     <include>**/Version.properties</include>
@@ -103,8 +112,8 @@
                 <configuration>
                     <transformationSets>
                         <transformationSet>
-                            <dir>src/main/svg/mapdata</dir>
-                            <stylesheet>src/main/xsl/map2properties.xsl</stylesheet>
+                            <dir>${project.build.sourceDirectory}/../svg/mapdata</dir>
+                            <stylesheet>${project.build.sourceDirectory}/../xsl/map2properties.xsl</stylesheet>
                             <fileMappers>
                                 <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
                                     <targetExtension>.properties</targetExtension>
@@ -113,11 +122,11 @@
                             <outputDir>${project.build.directory}/generated-sources/gwt/nl/ru/languageininteraction/language/client</outputDir>
                         </transformationSet>
                         <transformationSet>
-                            <dir>src/main/svg/graphics</dir>
+                            <dir>${project.build.sourceDirectory}/../svg/graphics</dir>
                             <includes>
                                 <include>*.svg</include>
                             </includes>
-                            <stylesheet>src/main/xsl/graphics2properties.xsl</stylesheet>
+                            <stylesheet>${project.build.sourceDirectory}/../xsl/graphics2properties.xsl</stylesheet>
                             <fileMappers>
                                 <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
                                     <targetExtension>.properties</targetExtension>
@@ -126,11 +135,11 @@
                             <outputDir>${project.build.directory}/generated-sources/gwt/nl/ru/languageininteraction/language/client</outputDir>
                         </transformationSet>
                         <transformationSet>
-                            <dir>src/main/svg/graphics</dir>
+                            <dir>${project.build.sourceDirectory}/../svg/graphics</dir>
                             <includes>
                                 <include>*.svg</include>
                             </includes>
-                            <stylesheet>src/main/xsl/svg2java.xsl</stylesheet>
+                            <stylesheet>${project.build.sourceDirectory}/../xsl/svg2java.xsl</stylesheet>
                             <fileMappers>
                                 <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.RegExpFileMapper">
                                     <pattern>\.svg$</pattern>
@@ -140,47 +149,47 @@
                             <outputDir>${project.build.directory}/generated-sources/gwt/nl/mpi/tg/eg/experiment/client</outputDir>
                         </transformationSet>
                         <transformationSet>
-                            <dir>src/main/xml</dir>
+                            <dir>${experiment.configuration.path}</dir>
                             <includes>
-                                <include>experimentConfig.xml</include>
+                                <include>${experiment.configuration.name}.xml</include>
                             </includes>
-                            <stylesheet>src/main/xsl/config2java.xsl</stylesheet>
+                            <stylesheet>${project.build.sourceDirectory}/../xsl/config2java.xsl</stylesheet>
                             <fileMappers>
                                 <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.RegExpFileMapper">
-                                    <pattern>experimentConfig\.xml$</pattern>
+                                    <pattern>${experiment.configuration.name}\.xml$</pattern>
                                     <replacement>ApplicationController.java</replacement>
                                 </fileMapper>
                             </fileMappers>
                             <outputDir>${project.build.directory}/generated-sources/gwt/nl/mpi/tg/eg/experiment/client</outputDir>
                         </transformationSet>
                         <transformationSet>
-                            <dir>src/main/xml</dir>
+                            <dir>${experiment.configuration.path}</dir>
                             <includes>
-                                <include>experimentConfig.xml</include>
+                                <include>${experiment.configuration.name}.xml</include>
                             </includes>
-                            <stylesheet>src/main/xsl/config2metadata.xsl</stylesheet>
+                            <stylesheet>${project.build.sourceDirectory}/../xsl/config2metadata.xsl</stylesheet>
                             <outputDir>${project.build.directory}/generated-sources/gwt/nl/mpi/tg/eg/experiment/client</outputDir>
                         </transformationSet>
                         <transformationSet>
-                            <dir>src/main/xml</dir>
+                            <dir>${experiment.configuration.path}</dir>
                             <includes>
-                                <include>experimentConfig.xml</include>
+                                <include>${experiment.configuration.name}.xml</include>
                             </includes>
-                            <stylesheet>src/main/xsl/config2properties.xsl</stylesheet>
+                            <stylesheet>${project.build.sourceDirectory}/../xsl/config2properties.xsl</stylesheet>
                             <fileMappers>
                                 <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.RegExpFileMapper">
-                                    <pattern>experimentConfig\.xml$</pattern>
+                                    <pattern>${experiment.configuration.name}\.xml$</pattern>
                                     <replacement>Messages.properties</replacement>
                                 </fileMapper>
                             </fileMappers>
                             <outputDir>${project.build.directory}/generated-sources/gwt/nl/mpi/tg/eg/experiment/client</outputDir>
                         </transformationSet>
                         <transformationSet>
-                            <dir>src/main/csv</dir>
+                            <dir>${project.build.sourceDirectory}/../csv</dir>
                             <includes>
                                 <include>*.xml</include>
                             </includes>
-                            <stylesheet>src/main/xsl/csv2java.xsl</stylesheet>
+                            <stylesheet>${project.build.sourceDirectory}/../xsl/csv2java.xsl</stylesheet>
                             <fileMappers>
                                 <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.RegExpFileMapper">
                                     <pattern>\.xml$</pattern>
@@ -190,11 +199,11 @@
                             <outputDir>${project.build.directory}/generated-sources/gwt/nl/mpi/tg/eg/experiment/client</outputDir>
                         </transformationSet>
                         <transformationSet>
-                            <dir>src/main/csv</dir>
+                            <dir>${project.build.sourceDirectory}/../csv</dir>
                             <includes>
                                 <include>*.xml</include>
                             </includes>
-                            <stylesheet>src/main/xsl/csv2properties.xsl</stylesheet>
+                            <stylesheet>${project.build.sourceDirectory}/../xsl/csv2properties.xsl</stylesheet>
                             <parameters>
                                 <parameter>
                                     <name>nameField</name>
@@ -210,11 +219,11 @@
                             <outputDir>${project.build.directory}/generated-sources/gwt/nl/mpi/tg/eg/experiment/client</outputDir>
                         </transformationSet>
                         <transformationSet>
-                            <dir>src/main/csv</dir>
+                            <dir>${project.build.sourceDirectory}/../csv</dir>
                             <includes>
                                 <include>*.xml</include>
                             </includes>
-                            <stylesheet>src/main/xsl/csv2properties.xsl</stylesheet>
+                            <stylesheet>${project.build.sourceDirectory}/../xsl/csv2properties.xsl</stylesheet>
                             <parameters>
                                 <parameter>
                                     <name>nameField</name>
@@ -230,11 +239,11 @@
                             <outputDir>${project.build.directory}/generated-sources/gwt/nl/ru/languageininteraction/language/client</outputDir>
                         </transformationSet>
                         <transformationSet>
-                            <dir>src/main/csv</dir>
+                            <dir>${project.build.sourceDirectory}/../csv</dir>
                             <includes>
                                 <include>*.xml</include>
                             </includes>
-                            <stylesheet>src/main/xsl/csv2properties.xsl</stylesheet>
+                            <stylesheet>${project.build.sourceDirectory}/../xsl/csv2properties.xsl</stylesheet>
                             <parameters>
                                 <parameter>
                                     <name>nameField</name>
@@ -385,8 +394,8 @@
                     <encoding>UTF-8</encoding>
                     <finalName>${project.build.finalName}</finalName>
                     <descriptors>
-                        <descriptor>src/main/cordova/cordova-assembly.xml</descriptor>
-                        <!--<descriptor>src/main/chromeapp/chromeapp-assembly.xml</descriptor>-->
+                        <descriptor>${project.build.sourceDirectory}/../cordova/cordova-assembly.xml</descriptor>
+                        <!--<descriptor>${project.build.sourceDirectory}/../chromeapp/chromeapp-assembly.xml</descriptor>-->
                     </descriptors>
                     <runOnlyAtExecutionRoot>true</runOnlyAtExecutionRoot>
                 </configuration>

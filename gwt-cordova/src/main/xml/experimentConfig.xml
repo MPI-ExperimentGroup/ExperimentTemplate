@@ -21,27 +21,25 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     Author     : Peter Withers <peter.withers@mpi.nl>
 -->
 
-<experiment appNameDisplay="Test Experiment" appNameInternal="TestExperiment" dataSubmitUrl="http://localhost:8080/frinex/" staticFilesUrl="static/">
+<!--<experiment appNameDisplay="Test Experiment" appNameInternal="TestExperiment" dataSubmitUrl="http://localhost:8080/frinex/" staticFilesUrl="static/">-->
+<experiment appNameDisplay="Test Experiment" appNameInternal="TestExperiment" dataSubmitUrl="http://ems12.mpi.nl:80/frinex-kinoath-0.1.33-pretesting/" staticFilesUrl="static/">
     <metadata>
         <field postName="playername" registrationField="Player name *" controlledRegex=".'{'3,'}'" controlledMessage="Please enter at least three letters." />
         <field postName="age" fieldValues="0-10,11-20,&gt;20" registrationField="Age" />
         <field postName="rabbit" fieldValues="true,false" registrationField="Do you have a rabbit?" controlledRegex="yes" controlledMessage="It is unacceptable to give any answer than 'yes'." />
-        <field postName="share" registrationField="Share" fieldValues="true,false" controlledRegex="true" controlledMessage="Data will not be shared unless you agree to do so."/>
+        <field postName="share" registrationField="Share" fieldValues="true,false" controlledRegex=".'{'1,'}'" controlledMessage="Data will not be shared unless you agree to do so by typing something here."/>
         <field registrationField="Spoken languages" postName="languages" />
         <field postName="workerId" registrationField="Please enter your 'Worker ID'" controlledRegex=".'{'10,'}'" controlledMessage="Your worker ID can be found on the mturk/dashboard." />
         <field postName="nativeLanguage" registrationField="What is your native language" controlledRegex=".'{'2,'}'" controlledMessage="Please enter your native language" />
         <field postName="otherLanguages" registrationField="What other languages do you know" controlledRegex=".'{'2,'}'" controlledMessage="If you do not know any other languages then enter 'none'" />
     </metadata>    
     <presenter type="text" menuLabel="Introduction" title="Introduction" back="MainMenu" self="OptionMenu">
-        <htmlText fieldName="introductionText1">This is a simple demonstration application produced with the experiment framework currently being developed.</htmlText>
-        <htmlText fieldName="introductionText1a">This framework is based on the code written for SynQuiz and LingQuest.</htmlText>
-        <htmlText fieldName="introductionText2">The main feature being demonstrated here is the display and generation of simple kin type string diagrams.</htmlText>
-        <htmlText fieldName="introductionText3">These diagrams are being produced via a web service that is an extraction from the KinOath application.</htmlText>
-        <htmlText fieldName="introductionText4">When this feature is completed, these kinship diagrams would be produced off line from within mobile app.</htmlText>
-        <htmlText fieldName="introductionText5">One of the intended outcomes of these features in this framework is to provide customisable mobile acquisition applications.</htmlText>
+        <htmlText fieldName="introductionText1">This is a simple demonstration application produced with the experiment framework currently being developed. This framework is based on the code written for SynQuiz and LingQuest, which are both mobile applications developed within the Language In Interaction project. One of the intended outcomes of these features in this framework is to provide customisable mobile and web based acquisition applications.</htmlText>
+        <padding/>
+        <htmlText fieldName="introductionText2">The main feature being demonstrated here is the display and generation of simple kin type string diagrams. These diagrams are being produced via a web service that is an extraction from the KinOath application. Currently this is web based only, however if these features are continued then these kinship diagrams would also be produced off line from within mobile applications.</htmlText>
         <padding/>
         <optionButton fieldName="introductionButton1" target="KinDiagram">Simple Kinship Diagram</optionButton>
-        <optionButton fieldName="introductionButton2" target="SavedKinDiagram">Skip Ahead</optionButton>
+        <optionButton fieldName="menuLabelSavedKinDiagram" target="SavedKinDiagram"></optionButton>
         <optionButton fieldName="introductionButton3" target="Metadata">Enter Personal Information</optionButton>
     </presenter>
     <presenter type="menu" menuLabel="Menu" self="MainMenu">
@@ -52,12 +50,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <!--<menuItem fieldName="menuLabelResultsPage" target="ResultsPage"/>-->
         <!--<menuItem fieldName="menuLabelStimulusPage" target="StimulusPage"/>-->
         <menuItem fieldName="menuLabelMetadata" target="Metadata"/>
+        <menuItem fieldName="menuLabelAdminInfo" target="AdminInfo"/>
         <!--<menuItem fieldName="menuLabelStimulusGrid" target="StimulusGrid"/>-->
         <menuItem fieldName="menuLabelKinDiagram" target="KinDiagram"/>
         <menuItem fieldName="menuLabelSavedKinDiagram" target="SavedKinDiagram"/>
         <menuItem fieldName="menuLabelAutoMenu" target="AutoMenu"/>
     </presenter>
-    <presenter  back="MainMenu" type="menu" menuLabel="Here Dragons Live" title="Auto Generated Menu" self="AutoMenu">
+    <presenter  back="MainMenu" type="menu" menuLabel="Here Dragons Live (features that are not configured in this application)" title="Auto Generated Menu" self="AutoMenu">
         <allMenuItems/>
     </presenter>
     <presenter type="stimulus" menuLabel="Next (Some Stimulus)" title="Some Stimulus" self="SomeStimulus">
@@ -100,8 +99,16 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <optionButton fieldName="menuLabelStimulusPage" target="StimulusPage"/>
         </preloadAllStimuli>
     </presenter>
-    <presenter type="metadata" menuLabel="User Info" back="MainMenu" self="Metadata" next="PreloadStimulus">
+    <presenter type="metadata" menuLabel="Enter User Info" back="MainMenu" self="Metadata" next="AdminInfo">
+        <htmlText fieldName="textMetadataScreen1">This is an example of metadata collection from the user. The data entered will be sent and stored on the server.</htmlText>
         <allMetadataFields/>
+    </presenter>
+    <presenter type="text" menuLabel="Administration Information" self="AdminInfo" next="MainMenu">
+        <htmlText fieldName="textAdminInfo1">The administrative interface can be viewed at &lt;a href=''http://ems12.mpi.nl:80/frinex-kinoath-0.1.33-pretesting''&gt;http://ems12.mpi.nl:80/frinex-kinoath-0.1.33-pretesting&lt;/a&gt;</htmlText>
+        <padding/>
+        <htmlText fieldName="textAdminInfo2">The demo user name is ''kinoath'' with the password ''F339DJWSfx1''.</htmlText>
+        <padding/>
+        <htmlText fieldName="textAdminInfo3">Please remember that this is an early alpha demonstration that is not ready to be released, but is provided here to give you a taste of what will be possible.</htmlText>
     </presenter>
     <presenter type="debug" menuLabel="Debug Page" back="MainMenu" self="ResultsPage" next="StimulusPage">
         <eraseLocalStorageButton/>
@@ -134,15 +141,15 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <padding/>
         <loadKinTypeStringDiagram  timeToNext="0" diagramName="kinTypeDiagram"></loadKinTypeStringDiagram>
         <addKinTypeGui diagramName="kinTypeDiagram"/>        
-        <optionButton fieldName="completeLabel" target="AboutPage">About This Application</optionButton>
+<!--        <optionButton fieldName="completeLabel" target="Metadata">About This Application</optionButton>-->
     </presenter>
     <presenter type="text" menuLabel="About Page" back="MainMenu" title="Application Version" self="AboutPage" next="OptionMenu">
         <!--<Image width="10" image="images/icon.png"/>-->
         <!--<highlightedText fieldName="aboutScreenTextAheading">A Heading</highlightedText>-->
         <!--<htmlText fieldName="aboutScreenTextAbody">A body</htmlText>-->
-        <!--<padding/>-->
         <!--<htmlText fieldName="aboutScreenTextBheading">&lt;b&gt;B h&lt;/b&gt;</htmlText>-->
         <htmlText fieldName="aboutScreenTextBbody">This is a very simple and quick demonstration of what such an application produced by this framework might look like.</htmlText>
+        <padding/>
         <!--<htmlText fieldName="aboutScreenTextCheading">Ch</htmlText>-->
         <!--<htmlText fieldName="aboutScreenTextCbody">Cb</htmlText>-->
         <!--<htmlText fieldName="aboutScreenTextDheading">Dh</htmlText>-->

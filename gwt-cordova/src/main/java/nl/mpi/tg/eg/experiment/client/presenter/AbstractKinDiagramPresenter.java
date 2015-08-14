@@ -67,7 +67,7 @@ public abstract class AbstractKinDiagramPresenter extends AbstractPresenter impl
 
     public void kinTypeStringDiagram(final AppEventListner appEventListner, final int postLoadMs, final TimedStimulusListener timedStimulusListener, String kinTypeString) {
         // todo: migrate this block into GWT rather than using the REST service to generate
-        RequestBuilder requestBuilder = new RequestBuilder(RequestBuilder.GET, UriUtils.fromString("http://ems12.mpi.nl:8080/kinoath-rest/kinoath/getkin/svg?kts=" + kinTypeString).asString());
+        RequestBuilder requestBuilder = new RequestBuilder(RequestBuilder.GET, UriUtils.fromString("http://ems12.mpi.nl:80/kinoath-rest/kinoath/getkin/svg?kts=" + kinTypeString).asString());
         requestBuilder.setCallback(new RequestCallback() {
 
             @Override
@@ -93,8 +93,8 @@ public abstract class AbstractKinDiagramPresenter extends AbstractPresenter impl
             // todo: handle such errors in a more user friendly way
             ((TimedStimulusView) simpleView).addHtmlText(exception.getMessage());
         }
-//        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString("http://ems12.mpi.nl:8080/kinoath-rest/kinoath/getkin/svg?kts=" + kinTypeString), 100, postLoadMs, timedStimulusListener);
-//        ((TimedStimulusView) simpleView).addSvgImage(UriUtils.fromString("http://ems12.mpi.nl:8080/kinoath-rest/kinoath/getkin/svg?kts=" + kinTypeString), 100, postLoadMs, timedStimulusListener);        
+//        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString("http://ems12.mpi.nl:80/kinoath-rest/kinoath/getkin/svg?kts=" + kinTypeString), 100, postLoadMs, timedStimulusListener);
+//        ((TimedStimulusView) simpleView).addSvgImage(UriUtils.fromString("http://ems12.mpi.nl:80/kinoath-rest/kinoath/getkin/svg?kts=" + kinTypeString), 100, postLoadMs, timedStimulusListener);        
     }
 
     public void loadKinTypeStringDiagram(final AppEventListner appEventListner, final int postLoadMs, final TimedStimulusListener timedStimulusListener, String diagramName) {
