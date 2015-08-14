@@ -50,7 +50,7 @@ public class StimulusProvider {
         stimulusSubsetArray.addAll(stimulusArray);
     }
 
-    public void getSubset() {
+    public void getSubset(final int setCount, final String seenList) {
 //        int targetMin = 6 * 6 * 3;
 //        System.out.println("");
 //        System.out.println("stimulusArray: " + stimulusArray);
@@ -98,7 +98,7 @@ public class StimulusProvider {
         totalStimuli = stimulusSubsetArray.size();
     }
 
-    public void getSubset(Similarity similarity) {
+    public void getSubset(final Similarity similarity, final int setCount, final String seenList) {
         stimulusSubsetArray.clear();
         List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
         while (!stimulusListCopy.isEmpty()) {
