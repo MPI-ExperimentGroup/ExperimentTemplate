@@ -24,7 +24,6 @@ import java.util.List;
 import java.util.Random;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus.Similarity;
-import nl.mpi.tg.eg.experiment.client.model.Stimulus.Speaker;
 
 /**
  * @since Jun 23, 2015 11:07:47 AM (creation date)
@@ -51,52 +50,31 @@ public class StimulusProvider {
         stimulusSubsetArray.addAll(stimulusArray);
     }
 
-    public void getSubset(final int setCount, final String seenList) {
-        // todo: handle the subsetting with setCount and seenList
-//        int targetMin = 6 * 6 * 3;
-//        System.out.println("");
-//        System.out.println("stimulusArray: " + stimulusArray);
-//        System.out.println("targetMin: " + targetMin);
-////        ArrayList<
-//        stimulusSubsetArray.clear();
-//        List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
-//        while (targetMin > 0) {
-//            targetMin -= 6;
-//            for (int wordCounter = 0; wordCounter < 4; wordCounter++) {
-//                // remove four from each word from each speaker
-//                stimulusListCopy.remove(targetMin + new Random().nextInt(6));
-//            }
-//        }
-
-        List<Stimulus> stimulusListSubset = new ArrayList<>();
-        for (Speaker speaker : Speaker.values()) {
-            List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
-            ArrayList<String> wordList1 = new ArrayList<>();
-            ArrayList<String> wordList2 = new ArrayList<>();
-            while (!stimulusListCopy.isEmpty()) {
-                Stimulus currentStimulus = stimulusListCopy.remove(new Random().nextInt(stimulusListCopy.size()));
-                if (currentStimulus.getSpeaker().equals(speaker)) {
-                    final String word = currentStimulus.getWord();
-                    if (!wordList1.contains(word)) {
-                        stimulusListSubset.add(currentStimulus);
-                        wordList1.add(word);
-                    } else {
-                        if (!wordList2.contains(word)) {
-                            stimulusListSubset.add(currentStimulus);
-                            wordList2.add(word);
-                        } else {
-                        }
-                    }
+    public void getSubset(final int maxWordUse, final String seenList) {
+        // we now also handle subsetting with setCount and seenList
+        final int maxSpeakerWordCount = 2;
+        HashMap<String, Integer> wordCounter = new HashMap<>();
+        HashMap<String, Integer> similarityCounter = new HashMap<>();
+        stimulusSubsetArray.clear();
+        List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
+        while (!stimulusListCopy.isEmpty()) {
+            Stimulus stimulus = stimulusListCopy.remove(new Random().nextInt(stimulusListCopy.size()));
+            if (!seenList.contains(stimulus.getAudioTag())) {
+                Integer wordCount = wordCounter.getOrDefault(stimulus.getWord(), 0);
+                final String wordAndSpeaker = stimulus.getWord() + stimulus.getSpeaker().name();
+                Integer speakerWordCount = similarityCounter.getOrDefault(wordAndSpeaker, 0);
+                if (wordCount < maxWordUse && speakerWordCount < maxSpeakerWordCount) {
+//                    System.out.println("adding based on: " + stimulus.getWord() + " " + wordCount + " " + wordAndSpeaker + " " + speakerWordCount);
+                    speakerWordCount++;
+                    wordCount++;
+                    similarityCounter.put(wordAndSpeaker, speakerWordCount);
+                    wordCounter.put(stimulus.getWord(), wordCount);
+                    stimulusSubsetArray.add(stimulus);
+//                } else {
+//                    System.out.println("rejecting based on: " + stimulus.getWord() + " " + wordCount + " " + wordAndSpeaker + " " + speakerWordCount);
                 }
             }
         }
-        stimulusSubsetArray.clear();
-        while (!stimulusListSubset.isEmpty()) {
-            // randomise the result
-            Stimulus stimulus = stimulusListSubset.remove(new Random().nextInt(stimulusListSubset.size()));
-            stimulusSubsetArray.add(stimulus);
-        }
-//        stimulusSubsetArray.addAll(stimulusListCopy);
         totalStimuli = stimulusSubsetArray.size();
     }
 
@@ -108,15 +86,14 @@ public class StimulusProvider {
         while (!stimulusListCopy.isEmpty()) {
             Stimulus stimulus = stimulusListCopy.remove(new Random().nextInt(stimulusListCopy.size()));
             if (stimulus.getSpeakerSimilarity().equals(similarity) && !seenList.contains(stimulus.getAudioTag())) {
-                Integer value = wordCounter.get(stimulus.getWord());
-                if (value == null) {
-                    value = 1;
-                } else {
+                Integer value = wordCounter.getOrDefault(stimulus.getWord(), 0);
+                if (value < setCount) {
+//                    System.out.println("adding based on: " + stimulus.getWord() + " " + value);
                     value++;
-                }
-                wordCounter.put(stimulus.getWord(), value);
-                if (value <= setCount) {
+                    wordCounter.put(stimulus.getWord(), value);
                     stimulusSubsetArray.add(stimulus);
+//                } else {
+//                    System.out.println("rejecting based on: " + stimulus.getWord() + " " + value);
                 }
             }
         }
