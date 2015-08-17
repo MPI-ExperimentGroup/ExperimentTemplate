@@ -34,15 +34,50 @@ public class StimulusProviderTest {
      */
     @Test
     public void testGetSubset_0args() {
-        System.out.println("getSubset");
+        System.out.println("getSubset_0args");
         StimulusProvider instance = new StimulusProvider();
         instance.getSubset(6, "");
-        checkStimulus(instance, 12, 6, "");
+        final String seenString = "";
+        final int expectedStimuliCount = 36;
+        final int expectedSpeakerCount = 12;
+        final int expectedKijfCount = 6;
+        checkStimulus(instance, expectedStimuliCount, expectedSpeakerCount, expectedKijfCount, seenString);
     }
 
-    private void checkStimulus(StimulusProvider instance, final int expectedSpeakerCount, final int expectedKijfCount, final String seenString) {
+    /**
+     * Test of getSubset method, of class StimulusProvider.
+     */
+    @Test
+    public void testGetSubset_0args_3() {
+        System.out.println("getSubset_0args_3");
+        StimulusProvider instance = new StimulusProvider();
+        instance.getSubset(3, "");
+        final String seenString = "";
+        final int expectedStimuliCount = 36;
+        final int expectedSpeakerCount = 6;
+        final int expectedKijfCount = 6;
+        checkStimulus(instance, expectedStimuliCount, expectedSpeakerCount, expectedKijfCount, seenString);
+    }
+
+    /**
+     * Test of getSubset method, of class StimulusProvider.
+     */
+    @Test
+    public void testGetSubset_0args_3_seen() {
+        System.out.println("getSubset_0args_3_seen");
+        StimulusProvider instance = new StimulusProvider();
+        final String seenString = "hielke_grijp4,hielke_grijp5,hielke_grijp6,hielke_kijf4,hielke_kijf5,hielke_kijf6";
+        instance.getSubset(3, seenString);
+        final int expectedStimuliCount = 18;
+        final int expectedSpeakerCount = 6;
+        final int expectedKijfCount = 6;
+        checkStimulus(instance, expectedStimuliCount, expectedSpeakerCount, expectedKijfCount, seenString);
+    }
+
+    private void checkStimulus(StimulusProvider instance, final int expectedStimuliCount, final int expectedSpeakerCount, final int expectedKijfCount, final String seenString) {
         int speakerCount = 0;
         int wordCount = 0;
+        assertEquals(expectedStimuliCount, instance.getTotalStimuli());
         while (instance.hasNextStimulus()) {
             final Stimulus nextStimulus = instance.getNextStimulus();
             assertFalse(seenString.contains(nextStimulus.getAudioTag()));
@@ -66,7 +101,11 @@ public class StimulusProviderTest {
         System.out.println("getSubset");
         StimulusProvider instance = new StimulusProvider();
         instance.getSubset(Stimulus.Similarity.diff, 6, "");
-        checkStimulus(instance, 36, 6, "");
+        final String seenString = "";
+        final int expectedStimuliCount = 36;
+        final int expectedSpeakerCount = 36;
+        final int expectedKijfCount = 6;
+        checkStimulus(instance, expectedStimuliCount, expectedSpeakerCount, expectedKijfCount, seenString);
     }
 
     /**
@@ -77,7 +116,11 @@ public class StimulusProviderTest {
         System.out.println("getSubset 3");
         StimulusProvider instance = new StimulusProvider();
         instance.getSubset(Stimulus.Similarity.diff, 3, "");
-        checkStimulus(instance, 18, 3, "");
+        final String seenString = "";
+        final int expectedStimuliCount = 18;
+        final int expectedSpeakerCount = 18;
+        final int expectedKijfCount = 3;
+        checkStimulus(instance, expectedStimuliCount, expectedSpeakerCount, expectedKijfCount, seenString);
     }
 
     /**
@@ -89,6 +132,9 @@ public class StimulusProviderTest {
         StimulusProvider instance = new StimulusProvider();
         final String seenString = "hielke_grijp4,hielke_grijp5,hielke_grijp6,hielke_kijf4,hielke_kijf5,hielke_kijf6";
         instance.getSubset(Stimulus.Similarity.diff, 3, seenString);
-        checkStimulus(instance, 18, 3, seenString);
+        final int expectedStimuliCount = 18;
+        final int expectedSpeakerCount = 18;
+        final int expectedKijfCount = 3;
+        checkStimulus(instance, expectedStimuliCount, expectedSpeakerCount, expectedKijfCount, seenString);
     }
 }
