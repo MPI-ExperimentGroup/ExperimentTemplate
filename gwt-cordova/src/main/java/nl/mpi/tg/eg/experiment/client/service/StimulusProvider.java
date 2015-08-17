@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.experiment.client.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
@@ -51,6 +52,7 @@ public class StimulusProvider {
     }
 
     public void getSubset(final int setCount, final String seenList) {
+        // todo: handle the subsetting with setCount and seenList
 //        int targetMin = 6 * 6 * 3;
 //        System.out.println("");
 //        System.out.println("stimulusArray: " + stimulusArray);
@@ -99,12 +101,23 @@ public class StimulusProvider {
     }
 
     public void getSubset(final Similarity similarity, final int setCount, final String seenList) {
+        // we now also handle subsetting with setCount and seenList
+        HashMap<String, Integer> wordCounter = new HashMap<>();
         stimulusSubsetArray.clear();
         List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
         while (!stimulusListCopy.isEmpty()) {
             Stimulus stimulus = stimulusListCopy.remove(new Random().nextInt(stimulusListCopy.size()));
-            if (stimulus.getSpeakerSimilarity().equals(similarity)) {
-                stimulusSubsetArray.add(stimulus);
+            if (stimulus.getSpeakerSimilarity().equals(similarity) && !seenList.contains(stimulus.getAudioTag())) {
+                Integer value = wordCounter.get(stimulus.getWord());
+                if (value == null) {
+                    value = 1;
+                } else {
+                    value++;
+                }
+                wordCounter.put(stimulus.getWord(), value);
+                if (value <= setCount) {
+                    stimulusSubsetArray.add(stimulus);
+                }
             }
         }
         totalStimuli = stimulusSubsetArray.size();
