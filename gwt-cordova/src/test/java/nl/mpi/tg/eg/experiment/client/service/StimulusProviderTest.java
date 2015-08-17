@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experiment.client.service;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus.Speaker;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import org.junit.Test;
 
 /**
@@ -36,14 +37,15 @@ public class StimulusProviderTest {
         System.out.println("getSubset");
         StimulusProvider instance = new StimulusProvider();
         instance.getSubset(6, "");
-        checkStimulus(instance, 12, 6);
+        checkStimulus(instance, 12, 6, "");
     }
 
-    private void checkStimulus(StimulusProvider instance, final int expectedSpeakerCount, final int expectedKijfCount) {
+    private void checkStimulus(StimulusProvider instance, final int expectedSpeakerCount, final int expectedKijfCount, final String seenString) {
         int speakerCount = 0;
         int wordCount = 0;
         while (instance.hasNextStimulus()) {
             final Stimulus nextStimulus = instance.getNextStimulus();
+            assertFalse(seenString.contains(nextStimulus.getAudioTag()));
             if (nextStimulus.getSpeaker().equals(Speaker.hielke)) {
                 speakerCount++;
             }
@@ -64,7 +66,7 @@ public class StimulusProviderTest {
         System.out.println("getSubset");
         StimulusProvider instance = new StimulusProvider();
         instance.getSubset(Stimulus.Similarity.diff, 6, "");
-        checkStimulus(instance, 36, 6);
+        checkStimulus(instance, 36, 6, "");
     }
 
     /**
@@ -75,7 +77,7 @@ public class StimulusProviderTest {
         System.out.println("getSubset 3");
         StimulusProvider instance = new StimulusProvider();
         instance.getSubset(Stimulus.Similarity.diff, 3, "");
-        checkStimulus(instance, 18, 3);
+        checkStimulus(instance, 18, 3, "");
     }
 
     /**
@@ -85,7 +87,8 @@ public class StimulusProviderTest {
     public void testGetSubset3Seen_StimulusSimilarity() {
         System.out.println("getSubset 3 seen");
         StimulusProvider instance = new StimulusProvider();
-        instance.getSubset(Stimulus.Similarity.diff, 3, "hielke_grijp4,hielke_grijp5,hielke_grijp6,hielke_kijf4,hielke_kijf5,hielke_kijf6");
-        checkStimulus(instance, 18, 3);
+        final String seenString = "hielke_grijp4,hielke_grijp5,hielke_grijp6,hielke_kijf4,hielke_kijf5,hielke_kijf6";
+        instance.getSubset(Stimulus.Similarity.diff, 3, seenString);
+        checkStimulus(instance, 18, 3, seenString);
     }
 }
