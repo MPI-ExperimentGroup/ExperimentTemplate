@@ -53,9 +53,9 @@ public class StimulusProviderTest {
         StimulusProvider instance = new StimulusProvider();
         instance.getSubset(3, "");
         final String seenString = "";
-        final int expectedStimuliCount = 36;
-        final int expectedSpeakerCount = 6;
-        final int expectedKijfCount = 6;
+        final int expectedStimuliCount = 18;
+        final Integer expectedSpeakerCount = null;
+        final int expectedKijfCount = 3;
         checkStimulus(instance, expectedStimuliCount, expectedSpeakerCount, expectedKijfCount, seenString);
     }
 
@@ -66,15 +66,15 @@ public class StimulusProviderTest {
     public void testGetSubset_0args_3_seen() {
         System.out.println("getSubset_0args_3_seen");
         StimulusProvider instance = new StimulusProvider();
-        final String seenString = "hielke_grijp4,hielke_grijp5,hielke_grijp6,hielke_kijf4,hielke_kijf5,hielke_kijf6";
+        final String seenString = "hielke_grijp4,hielke_grijp5,hielke_grijp6,hielke_kijf4,hielke_kijf5";
         instance.getSubset(3, seenString);
-        final int expectedStimuliCount = 18;
-        final int expectedSpeakerCount = 6;
-        final int expectedKijfCount = 6;
+        final int expectedStimuliCount = 13;
+        final Integer expectedSpeakerCount = null;
+        final int expectedKijfCount = 1;
         checkStimulus(instance, expectedStimuliCount, expectedSpeakerCount, expectedKijfCount, seenString);
     }
 
-    private void checkStimulus(StimulusProvider instance, final int expectedStimuliCount, final int expectedSpeakerCount, final int expectedKijfCount, final String seenString) {
+    private void checkStimulus(StimulusProvider instance, final int expectedStimuliCount, final Integer expectedSpeakerCount, final int expectedKijfCount, final String seenString) {
         int speakerCount = 0;
         int wordCount = 0;
         assertEquals(expectedStimuliCount, instance.getTotalStimuli());
@@ -89,7 +89,9 @@ public class StimulusProviderTest {
             }
             System.out.println("nextStimulus: " + nextStimulus.getSpeaker() + ", " + nextStimulus.getWord() + ", " + nextStimulus.getSpeakerSimilarity());
         }
-        assertEquals(expectedSpeakerCount, speakerCount);
+        if (expectedSpeakerCount != null) {
+            assertEquals(expectedSpeakerCount.intValue(), speakerCount);
+        }
         assertEquals(expectedKijfCount, wordCount);
     }
 
@@ -130,11 +132,11 @@ public class StimulusProviderTest {
     public void testGetSubset3Seen_StimulusSimilarity() {
         System.out.println("getSubset 3 seen");
         StimulusProvider instance = new StimulusProvider();
-        final String seenString = "hielke_grijp4,hielke_grijp5,hielke_grijp6,hielke_kijf4,hielke_kijf5,hielke_kijf6";
+        final String seenString = "hielke_grijp4,hielke_grijp5,hielke_grijp6,hielke_kijf4,hielke_kijf5";
         instance.getSubset(Stimulus.Similarity.diff, 3, seenString);
-        final int expectedStimuliCount = 18;
-        final int expectedSpeakerCount = 18;
-        final int expectedKijfCount = 3;
+        final int expectedStimuliCount = 13;
+        final int expectedSpeakerCount = 13;
+        final int expectedKijfCount = 1;
         checkStimulus(instance, expectedStimuliCount, expectedSpeakerCount, expectedKijfCount, seenString);
     }
 }

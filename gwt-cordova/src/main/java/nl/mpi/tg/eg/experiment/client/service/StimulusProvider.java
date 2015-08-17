@@ -50,19 +50,35 @@ public class StimulusProvider {
         stimulusSubsetArray.addAll(stimulusArray);
     }
 
+    private Integer getDefaultInt(Integer foundValue) {
+        return (foundValue == null) ? 0 : foundValue;
+    }
+
     public void getSubset(final int maxWordUse, final String seenList) {
         // we now also handle subsetting with setCount and seenList
         final int maxSpeakerWordCount = 2;
         HashMap<String, Integer> wordCounter = new HashMap<>();
         HashMap<String, Integer> similarityCounter = new HashMap<>();
+        // preload counters
+        for (Stimulus stimulus : new ArrayList<>(stimulusArray)) {
+            if (seenList.contains(stimulus.getAudioTag())) {
+                final String wordAndSpeaker = stimulus.getWord() + stimulus.getSpeaker().name();
+                Integer wordCount = getDefaultInt(wordCounter.get(stimulus.getWord()));
+                Integer speakerWordCount = getDefaultInt(similarityCounter.get(wordAndSpeaker));
+                speakerWordCount++;
+                wordCount++;
+                similarityCounter.put(wordAndSpeaker, speakerWordCount);
+                wordCounter.put(stimulus.getWord(), wordCount);
+            }
+        }
         stimulusSubsetArray.clear();
         List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
         while (!stimulusListCopy.isEmpty()) {
             Stimulus stimulus = stimulusListCopy.remove(new Random().nextInt(stimulusListCopy.size()));
             if (!seenList.contains(stimulus.getAudioTag())) {
-                Integer wordCount = wordCounter.getOrDefault(stimulus.getWord(), 0);
+                Integer wordCount = getDefaultInt(wordCounter.get(stimulus.getWord()));
                 final String wordAndSpeaker = stimulus.getWord() + stimulus.getSpeaker().name();
-                Integer speakerWordCount = similarityCounter.getOrDefault(wordAndSpeaker, 0);
+                Integer speakerWordCount = getDefaultInt(similarityCounter.get(wordAndSpeaker));
                 if (wordCount < maxWordUse && speakerWordCount < maxSpeakerWordCount) {
 //                    System.out.println("adding based on: " + stimulus.getWord() + " " + wordCount + " " + wordAndSpeaker + " " + speakerWordCount);
                     speakerWordCount++;
@@ -81,12 +97,20 @@ public class StimulusProvider {
     public void getSubset(final Similarity similarity, final int setCount, final String seenList) {
         // we now also handle subsetting with setCount and seenList
         HashMap<String, Integer> wordCounter = new HashMap<>();
+        // preload counters
+        for (Stimulus stimulus : new ArrayList<>(stimulusArray)) {
+            if (seenList.contains(stimulus.getAudioTag())) {
+                Integer value = getDefaultInt(wordCounter.get(stimulus.getWord()));
+                value++;
+                wordCounter.put(stimulus.getWord(), value);
+            }
+        }
         stimulusSubsetArray.clear();
         List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
         while (!stimulusListCopy.isEmpty()) {
             Stimulus stimulus = stimulusListCopy.remove(new Random().nextInt(stimulusListCopy.size()));
             if (stimulus.getSpeakerSimilarity().equals(similarity) && !seenList.contains(stimulus.getAudioTag())) {
-                Integer value = wordCounter.getOrDefault(stimulus.getWord(), 0);
+                Integer value = getDefaultInt(wordCounter.get(stimulus.getWord()));
                 if (value < setCount) {
 //                    System.out.println("adding based on: " + stimulus.getWord() + " " + value);
                     value++;
