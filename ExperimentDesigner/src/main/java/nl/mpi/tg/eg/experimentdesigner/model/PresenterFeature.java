@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Max Planck Institute for Psycholinguistics
+ * Copyright (C) 2015 Pivotal Software, Inc.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experimentdesigner.model;
 
 import java.util.List;
+import java.util.Map;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -27,27 +28,19 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 /**
- * @since Aug 18, 2015 1:42:03 PM (creation date)
+ * @since Aug 18, 2015 4:39:26 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Entity
-public class PresenterLayout {
+public class PresenterFeature {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String name;
-    private String description;
-
     @Enumerated(EnumType.STRING)
-    private PresenterType presenterType;
-
+    private FeatureType featureType;
     @OneToMany
     private List<PresenterFeature> presenterFeatures;
-
-    public PresenterLayout(String name, String description, PresenterType presenterType) {
-        this.name = name;
-        this.description = description;
-        this.presenterType = presenterType;
-    }
+    private String featureText;
+    private Map<FeatureAttribute, String> featureAttributes;
 }
