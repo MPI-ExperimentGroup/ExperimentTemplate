@@ -36,6 +36,7 @@ public class StimulusProvider {
     private final List<String> noisyList = new ArrayList<>();
     private final List<String> pictureList = new ArrayList<>();
     private int totalStimuli;
+    private Stimulus currentStimulus = null;
 
     public StimulusProvider() {
         Stimulus.fillStimulusList(stimulusArray);
@@ -126,8 +127,16 @@ public class StimulusProvider {
 
     // todo: audio and image evetns do not indicate phase learning or test
     // todo: next button could have its own timer to make reporting easier
-    public Stimulus getNextStimulus() {
-        return stimulusSubsetArray.remove(0);
+    public Stimulus getCurrentStimulus() {
+        return currentStimulus;
+    }
+
+    public void getNextStimulus() {
+        currentStimulus = stimulusSubsetArray.remove(0);
+    }
+
+    public void pushCurrentStimulusToEnd() {
+        stimulusSubsetArray.add(currentStimulus);
     }
 
     public boolean hasNextStimulus() {

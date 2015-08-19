@@ -79,7 +79,8 @@ public class StimulusProviderTest {
         int wordCount = 0;
         assertEquals(expectedStimuliCount, instance.getTotalStimuli());
         while (instance.hasNextStimulus()) {
-            final Stimulus nextStimulus = instance.getNextStimulus();
+            instance.getNextStimulus();
+            final Stimulus nextStimulus = instance.getCurrentStimulus();
             assertFalse(seenString.contains(nextStimulus.getAudioTag()));
             if (nextStimulus.getSpeaker().equals(Speaker.hielke)) {
                 speakerCount++;

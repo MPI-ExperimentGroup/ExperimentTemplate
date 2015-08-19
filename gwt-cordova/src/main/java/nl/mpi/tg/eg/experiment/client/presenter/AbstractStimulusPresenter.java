@@ -25,6 +25,7 @@ import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.ArrayList;
 import java.util.Random;
+import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
@@ -51,7 +52,6 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     private final LocalStorage localStorage;
     private final DataSubmissionService submissionService;
     final UserResults userResults;
-    Stimulus currentStimulus = null;
     private final Duration duration;
     final ArrayList<ButtonBase> buttonList = new ArrayList<>();
 
@@ -101,17 +101,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 stimulusProvider.getSubset(setCount, seenStimulusList);
                 break;
         }
-
-// todo: fully handle this subsetting of the stimulus 
-//        also store the group that the user is in: sim diff .. and the speaker the user is assigned to
-        currentStimulus = stimulusProvider.getNextStimulus();
-        localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST, currentStimulus.getAudioTag());
     }
 
     protected void loadNoiseStimulus() {
         stimulusProvider.getNoisyStimuli();
-        currentStimulus = stimulusProvider.getNextStimulus();
-        localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST, currentStimulus.getAudioTag());
     }
 
     protected void pause(final AppEventListner appEventListner, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
@@ -124,43 +117,59 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         timer.schedule(postLoadMs);
     }
 
+    protected void autoNextPresenter(final AppEventListner appEventListner, final ApplicationController.ApplicationState state) {
+        Timer timer = new Timer() {
+            public void run() {
+                appEventListner.requestApplicationState(state);
+            }
+        };
+        timer.schedule(100);
+    }
+
+    protected void endOfStimulus(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener) {
+        if (!stimulusProvider.hasNextStimulus()) {
+            timedStimulusListener.postLoadTimerFired();
+        }
+    }
+
+    protected void hasMoreStimulus(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener) {
+        if (stimulusProvider.hasNextStimulus()) {
+            timedStimulusListener.postLoadTimerFired();
+        }
+    }
+
     protected void responseCorrect(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener) {
-//        Timer timer = new Timer() {
-//            public void run() {
-//                ((TimedStimulusView) simpleView).addText("pause: " + duration.elapsedMillis() + "ms");
         timedStimulusListener.postLoadTimerFired();
-//            }
-//        };
-//        timer.schedule(postLoadMs);
         throw new UnsupportedOperationException("todo: responseCorrect");
     }
 
     protected void responseIncorrect(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener) {
-//        Timer timer = new Timer() {
-//            public void run() {
-//                ((TimedStimulusView) simpleView).addText("pause: " + duration.elapsedMillis() + "ms");
         timedStimulusListener.postLoadTimerFired();
-//            }
-//        };
-//        timer.schedule(postLoadMs);
         throw new UnsupportedOperationException("todo: responseIncorrect");
     }
 
+    protected void nextStimulus() {
+        stimulusProvider.getNextStimulus();
+    }
+
     protected void removeStimulus() {
-        throw new UnsupportedOperationException("todo: removeStimulus");
+        localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST, stimulusProvider.getCurrentStimulus().getAudioTag());
     }
 
     protected void keepStimulus() {
-        throw new UnsupportedOperationException("todo: keepStimulus");
+        stimulusProvider.pushCurrentStimulusToEnd();
     }
 
-    protected void addStimulusImage(String image, int width, int postLoadMs, TimedStimulusListener timedStimulusListener) {
+    protected void addStimulusImage(int width, int postLoadMs, TimedStimulusListener timedStimulusListener) {
+        String image = stimulusProvider.getCurrentStimulus().getJpg();
         submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusImage", image, duration.elapsedMillis());
         ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString(serviceLocations.staticFilesUrl() + image), width, postLoadMs, timedStimulusListener);
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
     }
 
-    protected void playStimulusAudio(String ogg, String mp3, long postLoadMs, TimedStimulusListener timedStimulusListener) {
+    protected void playStimulusAudio(long postLoadMs, TimedStimulusListener timedStimulusListener) {
+        String ogg = stimulusProvider.getCurrentStimulus().getOgg();
+        String mp3 = stimulusProvider.getCurrentStimulus().getMp3();
         submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", ogg, duration.elapsedMillis());
         ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromString(serviceLocations.staticFilesUrl() + ogg), UriUtils.fromString(serviceLocations.staticFilesUrl() + mp3), postLoadMs, timedStimulusListener);
 //        ((TimedStimulusView) simpleView).addText("playStimulusAudio: " + duration.elapsedMillis() + "ms");
@@ -187,11 +196,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 Timer timer = new Timer() {
                     public void run() {
                         if (stimulusProvider.hasNextStimulus()) {
-                            currentStimulus = stimulusProvider.getNextStimulus();
-                            localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST, currentStimulus.getAudioTag());
                             buttonList.clear();
                             ((TimedStimulusView) simpleView).clearGui();
                             setContent(appEventListner);
+                            throw new UnsupportedOperationException("todo: handle correct and incorrect responses here");
                         } else {
                             listener.postLoadTimerFired();
                         }
@@ -200,14 +208,15 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 timer.schedule(postLoadMs);
             }
         };
-
+        // todo: the appendStoredDataValue should occur in the correct or incorrect response within stimulusListener
+        //localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST, stimulusProvider.getCurrentStimulus().getAudioTag());
         ((TimedStimulusView) simpleView).startGrid();
         int imageCounter = 0;
         if (alternativeChoice != null) {
-            buttonList.add(((TimedStimulusView) simpleView).addStringItem(getEventListener(buttonList, eventTag, currentStimulus.getAudioTag(), alternativeChoice, stimulusListener), alternativeChoice, 0, 0, imageWidth));
+            buttonList.add(((TimedStimulusView) simpleView).addStringItem(getEventListener(buttonList, eventTag, stimulusProvider.getCurrentStimulus().getAudioTag(), alternativeChoice, stimulusListener), alternativeChoice, 0, 0, imageWidth));
         }
         for (final String nextJpg : stimulusProvider.getPictureList()) {
-            buttonList.add(((TimedStimulusView) simpleView).addImageItem(getEventListener(buttonList, eventTag, currentStimulus.getAudioTag(), nextJpg, stimulusListener), UriUtils.fromString(serviceLocations.staticFilesUrl() + nextJpg), imageCounter / columnCount, 1 + imageCounter++ % columnCount, imageWidth));
+            buttonList.add(((TimedStimulusView) simpleView).addImageItem(getEventListener(buttonList, eventTag, stimulusProvider.getCurrentStimulus().getAudioTag(), nextJpg, stimulusListener), UriUtils.fromString(serviceLocations.staticFilesUrl() + nextJpg), imageCounter / columnCount, 1 + imageCounter++ % columnCount, imageWidth));
         }
         disableStimulusButtons();
         ((TimedStimulusView) simpleView).endGrid();
@@ -283,10 +292,6 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         return false;
     }
 
-    protected boolean hasMoreStimulus() {
-        return stimulusProvider.hasNextStimulus();
-    }
-
     protected void clearStimulus() {
         ((TimedStimulusView) simpleView).clearGui();
     }
@@ -295,8 +300,6 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         if (condition) {
             logTimeStamp(eventTag);
             ((TimedStimulusView) simpleView).stopAudio();
-            currentStimulus = stimulusProvider.getNextStimulus();
-            localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST, currentStimulus.getAudioTag());
             buttonList.clear();
             ((TimedStimulusView) simpleView).clearGui();
             setContent(appEventListner);
@@ -344,7 +347,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
             @Override
             public void eventFired(ButtonBase button) {
-                playStimulusAudio(oggPath, mp3Path, 0, new TimedStimulusListener() {
+                submissionService.submitTagValue(userResults.getUserData().getUserId(), "PlayAudio", eventTag, duration.elapsedMillis());
+                ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromString(serviceLocations.staticFilesUrl() + oggPath), UriUtils.fromString(serviceLocations.staticFilesUrl() + mp3Path), 0, new TimedStimulusListener() {
 
                     @Override
                     public void postLoadTimerFired() {

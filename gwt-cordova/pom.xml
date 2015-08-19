@@ -9,7 +9,7 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex</artifactId>
     <packaging>war</packaging>
-    <version>0.1.467-testing</version>
+    <version>0.1.475-testing</version>
     <name>FRINEX GWT-Cordova Template</name>
     <organization>
         <name>Max Planck Institute for Psycholinguistics, Nijmegen</name>
@@ -21,6 +21,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <properties>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+        <java.version>1.7</java.version>
         <netbeans.hint.license>gpl20</netbeans.hint.license>
         <plugin.license.copyrightYear>2015</plugin.license.copyrightYear>
         <!-- Convenience property to set the GWT version -->
@@ -28,7 +31,7 @@
         <!-- GWT needs at least java 1.5 -->
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-<!--        <experiment.configuration.path>${project.build.sourceDirectory}/../xml</experiment.configuration.path>
+        <!--        <experiment.configuration.path>${project.build.sourceDirectory}/../xml</experiment.configuration.path>
         <experiment.configuration.name>kinoath</experiment.configuration.name>-->
         <experiment.configuration.path>${project.build.sourceDirectory}/../../../../../ExperimentBuilder/src/main/xml</experiment.configuration.path>
         <experiment.configuration.name>experimentConfig_shiri</experiment.configuration.name>

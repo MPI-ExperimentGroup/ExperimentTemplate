@@ -214,8 +214,6 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, 
                     <xsl:text>
                         super(widgetTag, audioPlayer, submissionService, userResults);
                     </xsl:text>                    
-                    <xsl:value-of select="if(loadNoiseStimulus) then 'loadNoiseStimulus();' else ''" />
-                    <xsl:value-of select="if(loadSubsetStimulus) then concat('loadSubsetStimulus(', loadSubsetStimulus/@setCount, ');') else ''" />
                 </xsl:when>
                 <xsl:when test="@type = 'kindiagram' or @type = 'stimulus'">
                     <xsl:text>
@@ -235,6 +233,8 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, 
                     </xsl:text>
                 </xsl:otherwise>
             </xsl:choose>
+            <xsl:value-of select="if(loadNoiseStimulus) then 'loadNoiseStimulus();' else ''" />
+            <xsl:value-of select="if(loadSubsetStimulus) then concat('loadSubsetStimulus(', loadSubsetStimulus/@setCount, ');') else ''" />
             <xsl:text>    }
 
                 @Override
@@ -357,7 +357,7 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, 
         <xsl:text>    ((ComplexView) simpleView).addPadding();
         </xsl:text>
     </xsl:template>
-    <xsl:template match="localStorageData|allMetadataFields|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|disableStimulusButtons|showStimulusProgress|hideStimulusButtons|showStimulusButtons|generateCompletionCode|sendAllData|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus">
+    <xsl:template match="localStorageData|allMetadataFields|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|disableStimulusButtons|showStimulusProgress|hideStimulusButtons|showStimulusButtons|generateCompletionCode|sendAllData|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|nextStimulus">
         <xsl:text>    </xsl:text>    
         <xsl:value-of select ="local-name()"/>
         <xsl:text>();
@@ -369,7 +369,7 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, 
         <xsl:text>();
         </xsl:text>
     </xsl:template>
-    <xsl:template match="allMenuItems|nextStimulusButton|autoNextStimulus|conditionalHtml|addKinTypeGui">    
+    <xsl:template match="allMenuItems|nextStimulusButton|autoNextStimulus|conditionalHtml|addKinTypeGui|autoNextPresenter">    
         <xsl:text>    </xsl:text>    
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(appEventListner</xsl:text>
@@ -377,6 +377,7 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, 
         <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
         <xsl:value-of select="if(@condition) then concat(', ', @condition) else ''" />
         <xsl:value-of select="if(@fieldName) then concat(', messages.', @fieldName, '()') else ''" />
+        <xsl:value-of select="if(@target) then concat(', ApplicationState.', @target) else ''" />
         <xsl:text>);
         </xsl:text>
     </xsl:template>
@@ -391,7 +392,7 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, 
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="preloadAllStimuli|showStimulusGrid|pause|onError|onSuccess|kinTypeStringDiagram|loadKinTypeStringDiagram|responseCorrect|responseIncorrect">
+    <xsl:template match="preloadAllStimuli|showStimulusGrid|pause|onError|onSuccess|kinTypeStringDiagram|loadKinTypeStringDiagram|responseCorrect|responseIncorrect|hasMoreStimulus|endOfStimulus">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(appEventListner</xsl:text>
@@ -415,7 +416,7 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, 
         </xsl:text>
     </xsl:template>
     <xsl:template match="stimulusImage">
-        <xsl:text>    addStimulusImage(currentStimulus.getJpg(), </xsl:text>
+        <xsl:text>    addStimulusImage(</xsl:text>
         <xsl:value-of select="@width" />
         <xsl:text>, </xsl:text>
         <xsl:value-of select="@timeToNext" />
@@ -431,7 +432,7 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, 
         </xsl:text>
     </xsl:template>
     <xsl:template match="stimulusAudio">
-        <xsl:text>    playStimulusAudio(currentStimulus.getOgg(), currentStimulus.getMp3(), </xsl:text>
+        <xsl:text>    playStimulusAudio(</xsl:text>
         <xsl:value-of select="@timeToNext" />
         <xsl:text>, new TimedStimulusListener() {
 
