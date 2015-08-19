@@ -183,29 +183,36 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
     }
 
-    protected void showStimulusGrid(final AppEventListner appEventListner, final int postLoadMs, final TimedStimulusListener listener, final int columnCount, final String imageWidth, final String eventTag) {
-        showStimulusGrid(appEventListner, postLoadMs, listener, columnCount, imageWidth, eventTag, null);
+    protected void showStimulusGrid(final AppEventListner appEventListner, final int postLoadCorrectMs, final TimedStimulusListener correctListener, final int postLoadIncorrectMs, final TimedStimulusListener incorrectListener, final int columnCount, final String imageWidth, final String eventTag) {
+        showStimulusGrid(appEventListner, postLoadCorrectMs, correctListener, postLoadIncorrectMs, incorrectListener, columnCount, imageWidth, eventTag, null);
     }
 
-    protected void showStimulusGrid(final AppEventListner appEventListner, final int postLoadMs, final TimedStimulusListener listener, final int columnCount, final String imageWidth, final String eventTag, final String alternativeChoice) {
+    protected void showStimulusGrid(final AppEventListner appEventListner, final int postLoadCorrectMs, final TimedStimulusListener correctListener, final int postLoadIncorrectMs, final TimedStimulusListener incorrectListener, final int columnCount, final String imageWidth, final String eventTag, final String alternativeChoice) {
         ((TimedStimulusView) simpleView).stopAudio();
-        TimedStimulusListener stimulusListener = new TimedStimulusListener() {
+        TimedStimulusListener correctTimedListener = new TimedStimulusListener() {
 
             @Override
             public void postLoadTimerFired() {
                 Timer timer = new Timer() {
                     public void run() {
-                        if (stimulusProvider.hasNextStimulus()) {
-                            buttonList.clear();
-                            ((TimedStimulusView) simpleView).clearGui();
-                            setContent(appEventListner);
-                            throw new UnsupportedOperationException("todo: handle correct and incorrect responses here");
-                        } else {
-                            listener.postLoadTimerFired();
-                        }
+                        buttonList.clear();
+                        correctListener.postLoadTimerFired();
                     }
                 };
-                timer.schedule(postLoadMs);
+                timer.schedule(postLoadCorrectMs);
+            }
+        };
+        TimedStimulusListener incorrectTimedListener = new TimedStimulusListener() {
+
+            @Override
+            public void postLoadTimerFired() {
+                Timer timer = new Timer() {
+                    public void run() {
+                        buttonList.clear();
+                        incorrectListener.postLoadTimerFired();
+                    }
+                };
+                timer.schedule(postLoadIncorrectMs);
             }
         };
         // todo: the appendStoredDataValue should occur in the correct or incorrect response within stimulusListener
@@ -213,17 +220,17 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).startGrid();
         int imageCounter = 0;
         if (alternativeChoice != null) {
-            buttonList.add(((TimedStimulusView) simpleView).addStringItem(getEventListener(buttonList, eventTag, stimulusProvider.getCurrentStimulus().getAudioTag(), alternativeChoice, stimulusListener), alternativeChoice, 0, 0, imageWidth));
+            buttonList.add(((TimedStimulusView) simpleView).addStringItem(getEventListener(buttonList, eventTag, stimulusProvider.getCurrentStimulus().getAudioTag(), alternativeChoice, correctTimedListener, incorrectTimedListener), alternativeChoice, 0, 0, imageWidth));
         }
         for (final String nextJpg : stimulusProvider.getPictureList()) {
-            buttonList.add(((TimedStimulusView) simpleView).addImageItem(getEventListener(buttonList, eventTag, stimulusProvider.getCurrentStimulus().getAudioTag(), nextJpg, stimulusListener), UriUtils.fromString(serviceLocations.staticFilesUrl() + nextJpg), imageCounter / columnCount, 1 + imageCounter++ % columnCount, imageWidth));
+            buttonList.add(((TimedStimulusView) simpleView).addImageItem(getEventListener(buttonList, eventTag, stimulusProvider.getCurrentStimulus().getAudioTag(), nextJpg, correctTimedListener, incorrectTimedListener), UriUtils.fromString(serviceLocations.staticFilesUrl() + nextJpg), imageCounter / columnCount, 1 + imageCounter++ % columnCount, imageWidth));
         }
         disableStimulusButtons();
         ((TimedStimulusView) simpleView).endGrid();
         //((TimedStimulusView) simpleView).addAudioPlayerGui();
     }
 
-    private PresenterEventListner getEventListener(final ArrayList<ButtonBase> buttonList, final String eventTag, final String tagValue1, final String tagValue2, final TimedStimulusListener listener) {
+    private PresenterEventListner getEventListener(final ArrayList<ButtonBase> buttonList, final String eventTag, final String tagValue1, final String tagValue2, final TimedStimulusListener correctTimedListener, final TimedStimulusListener incorrectTimedListener) {
         return new PresenterEventListner() {
 
             @Override
@@ -238,7 +245,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 }
                 button.addStyleName("stimulusButtonHighlight");
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), eventTag, tagValue1, tagValue2, duration.elapsedMillis());
-                listener.postLoadTimerFired();
+                if (stimulusProvider.getCurrentStimulus().getJpg().equals(tagValue2)) {
+                    correctTimedListener.postLoadTimerFired();
+                } else {
+                    incorrectTimedListener.postLoadTimerFired();
+                }
             }
         };
     }

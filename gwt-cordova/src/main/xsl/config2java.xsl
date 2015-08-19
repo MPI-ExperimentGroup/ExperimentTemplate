@@ -392,7 +392,7 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, 
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="preloadAllStimuli|showStimulusGrid|pause|onError|onSuccess|kinTypeStringDiagram|loadKinTypeStringDiagram|responseCorrect|responseIncorrect|hasMoreStimulus|endOfStimulus">
+    <xsl:template match="preloadAllStimuli|pause|onError|onSuccess|kinTypeStringDiagram|loadKinTypeStringDiagram|hasMoreStimulus|endOfStimulus">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(appEventListner</xsl:text>
@@ -406,9 +406,31 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, 
         <xsl:text>
             }
             }</xsl:text>
-        <xsl:value-of select="if(@columnCount) then concat(', ', @columnCount) else ''" />
         <xsl:value-of select="if(@kintypestring) then concat(', &quot;', @kintypestring, '&quot;') else ''" />
         <xsl:value-of select="if(@diagramName) then concat(', &quot;', @diagramName, '&quot;') else ''" />
+        <xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" />
+        <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
+        <xsl:text>);
+        </xsl:text>
+    </xsl:template>
+    <xsl:template match="responseCorrect|responseIncorrect">
+        <xsl:value-of select="if(@timeToNext) then concat(', ', @timeToNext) else ''" />
+        <xsl:text>, new TimedStimulusListener() {
+
+            @Override
+            public void postLoadTimerFired() {
+        </xsl:text>
+        <xsl:apply-templates />
+        <xsl:text>
+            }
+            }</xsl:text>
+    </xsl:template>
+    <xsl:template match="showStimulusGrid">
+        <xsl:text>    </xsl:text>
+        <xsl:value-of select="local-name()" />
+        <xsl:text>(appEventListner</xsl:text>
+        <xsl:apply-templates select="responseCorrect|responseIncorrect" />
+        <xsl:value-of select="if(@columnCount) then concat(', ', @columnCount) else ''" />
         <xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" />
         <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
         <xsl:value-of select="if(@alternativeChoice) then concat(', &quot;', @alternativeChoice, '&quot;') else ''" />
