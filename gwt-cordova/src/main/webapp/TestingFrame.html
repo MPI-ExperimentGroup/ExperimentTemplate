@@ -31,10 +31,53 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 frameToRotate.style.width = oldHeight;
                 frameToRotate.style.height = oldWidth;
             }
+
+            function big() {
+                var frameToRotate = document.getElementById("testingFrame");
+                frameToRotate.style.width = "640px";
+                frameToRotate.style.height = "800px";
+            }
+
+            function small() {
+                var frameToRotate = document.getElementById("testingFrame");
+                frameToRotate.style.width = "360px";
+                frameToRotate.style.height = "640px";
+            }
+
+            function robot() {
+                var robotMessagesDiv = document.getElementById("robot_messages");
+                robotMessagesDiv.innerHTML = "robot started";
+                var robotTimer = setInterval(function () {
+                    findAndClick()
+                }, 3000);
+            }
+            function findAndClick() {
+                document.getElementById("robot_messages").innerHTML = "robot activated at " + new Date().toLocaleTimeString();
+
+
+                var textinput = document.getElementById('testingFrame').contentWindow.document.getElementsByTagName('input');
+                for (var inputIndex = 0; inputIndex < textinput.length; inputIndex++) {
+                    textinput[inputIndex].value = "robot run " + new Date().toLocaleTimeString();
+                }
+
+                var buttons = document.getElementById('testingFrame').contentWindow.document.getElementsByTagName('button');
+                for (var buttonIndex = 0; buttonIndex < buttons.length; buttonIndex++) {
+                    //buttons[buttonIndex].click();
+                    buttons[buttonIndex].innerHTML = "robot run " + buttonIndex;
+                }
+                var randomIndex = Math.floor((Math.random() * buttons.length));
+                if (buttons[randomIndex] !== 'undefined' && buttons[randomIndex] !== null) {
+                    buttons[randomIndex].click();
+                }
+            }
         </script>
+        <div style="color: white;" id="robot_messages"></div>
         <table>
+            <tr><td><button type="button" onclick="robot();">start robot</button></td><td></td></tr>
             <tr><td><button type="button" onclick="rotate();">rotate</button></td><td></td></tr>
-            <tr><td></td><td><iframe style="margin-left: auto; margin-right: auto; height:360px; width:640px;" id="testingFrame" src="LanguageMemory.html"></iframe></td></tr>
+            <tr><td><button type="button" onclick="big();">big</button></td><td></td></tr>
+            <tr><td><button type="button" onclick="small();">small</button></td><td></td></tr>
+            <tr><td></td><td><iframe style="margin-left: auto; margin-right: auto; height:360px; width:640px;" id="testingFrame" src="ExperimentTemplate.html"></iframe></td></tr>
         </table>
     </body>
 </html>
