@@ -196,7 +196,6 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             public void postLoadTimerFired() {
                 Timer timer = new Timer() {
                     public void run() {
-                        buttonList.clear();
                         correctListener.postLoadTimerFired();
                     }
                 };
@@ -209,7 +208,6 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             public void postLoadTimerFired() {
                 Timer timer = new Timer() {
                     public void run() {
-                        buttonList.clear();
                         incorrectListener.postLoadTimerFired();
                     }
                 };
@@ -307,14 +305,15 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void clearStimulus() {
         ((TimedStimulusView) simpleView).clearGui();
+        buttonList.clear();
     }
 
     protected void autoNextStimulus(final AppEventListner appEventListner, final String eventTag, boolean condition) {
         if (condition) {
             logTimeStamp(eventTag);
             ((TimedStimulusView) simpleView).stopAudio();
-            buttonList.clear();
             ((TimedStimulusView) simpleView).clearGui();
+            buttonList.clear();
             setContent(appEventListner);
         }
     }
