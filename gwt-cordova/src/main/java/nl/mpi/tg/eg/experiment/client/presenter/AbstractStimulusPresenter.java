@@ -244,6 +244,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     currentButton.setEnabled(false);
                 }
                 button.addStyleName("stimulusButtonHighlight");
+                // eventTag is set by the user and is different for each state (correct/incorrect).
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), eventTag, tagValue1, tagValue2, duration.elapsedMillis());
                 if (stimulusProvider.getCurrentStimulus().getJpg().equals(tagValue2)) {
                     correctTimedListener.postLoadTimerFired();
