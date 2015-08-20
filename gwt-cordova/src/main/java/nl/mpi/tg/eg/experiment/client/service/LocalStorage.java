@@ -149,6 +149,11 @@ public class LocalStorage {
         dataStore.setItem(GAME_DATA + label + "." + userId.toString(), cleanStoredData + value);
     }
 
+    public void setStoredDataValue(UserId userId, String label, String value) {
+        loadStorage();
+        dataStore.setItem(GAME_DATA + label + "." + userId.toString(), value);
+    }
+
     public void addStoredScreenData(UserId userId, String endpoint, String serialisedScreenData) {
         loadStorage();
         final String cleanStoredData = getCleanStoredData(SCREEN_DATA + endpoint + "." + userId.toString());

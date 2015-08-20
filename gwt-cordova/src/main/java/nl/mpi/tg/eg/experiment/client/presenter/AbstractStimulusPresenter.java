@@ -70,6 +70,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             stimulusAllocation = Integer.parseInt(storedDataValue);
         } catch (NumberFormatException exception) {
             stimulusAllocation = new Random().nextInt(5);
+            localStorage.setStoredDataValue(userResults.getUserData().getUserId(), STIMULUS_ALLOCATION, Integer.toString(stimulusAllocation));
         }
         final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST);
 //        Participants will be exposed to 36 audio+picture combinations, 
