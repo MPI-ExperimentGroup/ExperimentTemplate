@@ -173,7 +173,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <optionButton fieldName="videoWorksLabel" target="VideoWorksPage">Video Works</optionButton>
         <optionButton fieldName="videoFailedLabel" target="VideoFailedPage">Video Failed</optionButton>
     </presenter>
-    <presenter type="text" menuLabel="Video Faield Page" back="MainMenu" title="Video Failed" self="VideoFailedPage" next="VideoTestPage">
+    <presenter type="text" menuLabel="Video Failed Page" back="MainMenu" title="Video Failed" self="VideoFailedPage" next="VideoTestPage">
         <htmlText fieldName="aboutVideoWorksPage">you have send a message indicating the video does not work on your device</htmlText>
     </presenter>
     <presenter type="text" menuLabel="Video Works Page" back="MainMenu" title="Video Works" self="VideoWorksPage" next="VideoTestPage">

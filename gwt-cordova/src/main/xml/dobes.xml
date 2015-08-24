@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2015 
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+-->
+<!--
+    Created on : Jun 17, 2015, 17:01 PM
+    Author     : Peter Withers <peter.withers@mpi.nl>
+-->
+
+<!--<experiment appNameDisplay="Test Experiment" appNameInternal="TestExperiment" dataSubmitUrl="http://localhost:8080/frinex/" staticFilesUrl="static/">-->
+<experiment appNameDisplay="Dobes Annotator" appNameInternal="DobesAnnotator" dataSubmitUrl="http://ems12.mpi.nl:80/frinex-dobes-0.1.33-pretesting/" staticFilesUrl="static/">
+    <presenter type="text" menuLabel="About Page" back="AutoMenu" title="Application Version" self="AboutPage" next="AutoMenu">
+        <htmlText fieldName="aboutScreenTextBbody">This is a simple video codec testing application.</htmlText>
+        <padding/>
+        <versionData/>
+    </presenter>
+    <presenter  type="menu" menuLabel="Menu" title="Auto Generated Menu" self="AutoMenu">
+        <allMenuItems/>
+    </presenter>
+    <presenter type="text" menuLabel="Video Test Page" back="MainMenu" title="Video Test" self="VideoTestPage">
+        <htmlText fieldName="aboutVideoTestPage">http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4</htmlText>
+        <padding/>
+        <VideoPanel width="70%" poster="images/icon.png" mp4="http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4" />
+        <optionButton fieldName="videoWorksLabel" target="VideoWorksPage">Video Works</optionButton>
+        <optionButton fieldName="videoFailedLabel" target="VideoFailedPage">Video Failed</optionButton>
+    </presenter>
+    <presenter type="text" menuLabel="Video Failed Page" back="MainMenu" title="Video Failed" self="VideoFailedPage" next="VideoTestPage">
+        <htmlText fieldName="aboutVideoWorksPage">you have send a message indicating the video does not work on your device</htmlText>
+    </presenter>
+    <presenter type="text" menuLabel="Video Works Page" back="MainMenu" title="Video Works" self="VideoWorksPage" next="VideoTestPage">
+        <htmlText fieldName="aboutVideoWorksPage">you have send a message indicating the video works on your device</htmlText>
+    </presenter>
+</experiment>
