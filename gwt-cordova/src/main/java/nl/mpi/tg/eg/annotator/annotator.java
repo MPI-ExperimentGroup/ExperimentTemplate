@@ -1,7 +1,7 @@
 package nl.mpi.tg.eg.annotator;
 
+import nl.mpi.tg.eg.experiment.client.view.VideoPanel;
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;

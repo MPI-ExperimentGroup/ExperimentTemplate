@@ -5,7 +5,7 @@
  */
 package nl.mpi.tg.eg.annotator;
 
-import com.google.gwt.dom.client.Element;
+import nl.mpi.tg.eg.experiment.client.view.VideoPanel;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyCodes;

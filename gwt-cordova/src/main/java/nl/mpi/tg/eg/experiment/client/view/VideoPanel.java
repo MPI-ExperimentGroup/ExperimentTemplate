@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package nl.mpi.tg.eg.annotator;
+package nl.mpi.tg.eg.experiment.client.view;
 
 import com.google.gwt.media.client.Video;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import nl.mpi.tg.eg.annotator.AnnotationData;
 
 /**
  * @since Jan 29, 2014 3:34:11 PM (creation date)
