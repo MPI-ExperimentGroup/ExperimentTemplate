@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package nl.mpi.tg.eg.annotator;
+package nl.mpi.tg.eg.experiment.client.model;
 
 /**
  * @since Jan 31, 2014 10:04 AM (creation date)
