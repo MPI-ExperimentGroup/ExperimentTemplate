@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.CloseEvent;
 import com.google.gwt.event.logical.shared.CloseHandler;
 import com.google.gwt.user.client.Window;
@@ -43,7 +44,7 @@ import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
 public abstract class AppController implements AppEventListner, AudioExceptionListner {
 
     protected static final Logger logger = Logger.getLogger(AppController.class.getName());
-
+    private final Version version = GWT.create(Version.class);
     final LocalStorage localStorage = new LocalStorage();
     final DataSubmissionService submissionService = new DataSubmissionService(localStorage);
     protected final RootLayoutPanel widgetTag;
@@ -267,6 +268,18 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
     public void start() {
         setBackButtonAction();
         submissionService.submitScreenChange(userResults.getUserData().getUserId(), "ApplicationStarted");
+        // application specific information
+        submissionService.submitTagValue(userResults.getUserData().getUserId(), "projectVersion", version.projectVersion(), 0);
+        submissionService.submitTagValue(userResults.getUserData().getUserId(), "lastCommitDate", version.lastCommitDate().replace("\"", ""), 0);
+        submissionService.submitTagValue(userResults.getUserData().getUserId(), "compileDate", version.compileDate(), 0);
+        if (hasCordova()) {
+            // cordova specific information
+            submissionService.submitTagValue(userResults.getUserData().getUserId(), "cordovaVersion", getCordovaVersion(), 0);
+            submissionService.submitTagValue(userResults.getUserData().getUserId(), "deviceModel", getDeviceModel(), 0);
+            submissionService.submitTagValue(userResults.getUserData().getUserId(), "devicePlatform", getDevicePlatform(), 0);
+            submissionService.submitTagValue(userResults.getUserData().getUserId(), "deviceUUID", getDeviceUUID(), 0);
+            submissionService.submitTagValue(userResults.getUserData().getUserId(), "deviceVersion", getDeviceVersion(), 0);
+        }
         try {
             final String appState = localStorage.getAppState();
             final ApplicationState lastAppState = (appState != null) ? ApplicationState.valueOf(appState) : ApplicationState.start;
@@ -309,5 +322,29 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
 
     protected native void exitApplication() /*-{
      $doc.navigator.app.exitApp();
+     }-*/;
+
+    protected native boolean hasCordova() /*-{
+     if ($wnd.device) return true; else return false;
+     }-*/;
+
+    protected native String getCordovaVersion() /*-{
+     return $wnd.device.cordova;
+     }-*/;
+
+    protected native String getDevicePlatform() /*-{
+     return $wnd.device.platform;
+     }-*/;
+
+    protected native String getDeviceUUID() /*-{
+     return $wnd.device.uuid;
+     }-*/;
+
+    protected native String getDeviceVersion() /*-{
+     return $wnd.device.version;
+     }-*/;
+
+    protected native String getDeviceModel() /*-{
+     return $wnd.device.model;
      }-*/;
 }
