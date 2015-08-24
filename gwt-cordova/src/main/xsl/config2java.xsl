@@ -78,7 +78,11 @@
             @Override
             public void requestApplicationState(ApplicationState applicationState) {
             localStorage.saveAppState(applicationState.name());
-            try {
+        </xsl:text>
+        <xsl:if test="@type = 'preload' or @type = 'stimulus' or @type = 'kindiagram'">
+            <xsl:text>try {</xsl:text>
+        </xsl:if>
+        <xsl:text>
             submissionService.submitScreenChange(userResults.getUserData().getUserId(), applicationState.name());
             History.newItem(applicationState.name(), false);
             // todo:
@@ -139,11 +143,16 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', new AudioPlayer(this), su
             presenter.setState(this, ApplicationState.start, applicationState);
             break;
             }
-            } catch (AudioException error) {
-            logger.warning(error.getMessage());
-            this.presenter = new ErrorPresenter(widgetTag, error.getMessage());
-            presenter.setState(this, ApplicationState.start, applicationState);
-            }
+        </xsl:text>
+        <xsl:if test="@type = 'preload' or @type = 'stimulus' or @type = 'kindiagram'">
+            <xsl:text>
+                } catch (AudioException error) {
+                logger.warning(error.getMessage());
+                this.presenter = new ErrorPresenter(widgetTag, error.getMessage());
+                presenter.setState(this, ApplicationState.start, applicationState);
+                }</xsl:text>
+        </xsl:if>
+        <xsl:text>
             }
             }</xsl:text>
 

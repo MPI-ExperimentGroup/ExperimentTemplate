@@ -21,27 +21,72 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     Author     : Peter Withers <peter.withers@mpi.nl>
 -->
 
-<!--<experiment appNameDisplay="Test Experiment" appNameInternal="TestExperiment" dataSubmitUrl="http://localhost:8080/frinex/" staticFilesUrl="static/">-->
-<experiment appNameDisplay="Dobes Annotator" appNameInternal="DobesAnnotator" dataSubmitUrl="http://ems12.mpi.nl:80/frinex-dobes-0.1.33-pretesting/" staticFilesUrl="static/">
-    <presenter type="text" menuLabel="About Page" back="AutoMenu" title="Application Version" self="AboutPage" next="AutoMenu">
+<experiment appNameDisplay="Dobes Annotator" appNameInternal="DobesAnnotator" dataSubmitUrl="http://localhost:8080/frinex/" staticFilesUrl="static/">
+    <!--<experiment appNameDisplay="Dobes Annotator" appNameInternal="DobesAnnotator" dataSubmitUrl="http://ems12.mpi.nl:80/frinex-dobes-0.1.33-pretesting/" staticFilesUrl="static/">-->
+    <metadata>
+        <field postName="workerId" registrationField="Reporter name *" controlledRegex=".'{'3,'}'" controlledMessage="Please enter at least three letters." />
+        <field postName="errordevice" registrationField="Device model" controlledRegex=".'{'2,'}'" controlledMessage="Please enter the device model" />
+        <field postName="errordescription" registrationField="Please describe the error" controlledRegex=".'{'2,'}'" controlledMessage="Please enter a short description of the issue" />
+    </metadata>
+    <presenter type="text" menuLabel="Videos" back="AutoMenu" title="Video List" self="VideosPage">
         <htmlText fieldName="aboutScreenTextBbody">This is a simple video codec testing application.</htmlText>
+        <padding/>
+        <optionButton fieldName="menuLabelVideoTestPageAspen" target="VideoTestPageAspen"/>
+        <optionButton fieldName="menuLabelVideoTestPageControlledBurn" target="VideoTestPageControlledBurn"/>
+        <optionButton fieldName="menuLabelVideoTestPageDucksTakeOff" target="VideoTestPageDucksTakeOff"/>
+        <optionButton fieldName="menuLabelVideoTestPageHarbour" target="VideoTestPageHarbour"/>
+        <optionButton fieldName="menuLabelVideoTestPagePedestrianArea" target="VideoTestPagePedestrianArea"/>
         <padding/>
         <versionData/>
     </presenter>
     <presenter  type="menu" menuLabel="Menu" title="Auto Generated Menu" self="AutoMenu">
         <allMenuItems/>
     </presenter>
-    <presenter type="text" menuLabel="Video Test Page" back="MainMenu" title="Video Test" self="VideoTestPage">
+    <presenter type="text" menuLabel="Video Test Page (aspen)" back="VideosPage" title="Video Test" self="VideoTestPageAspen">
         <htmlText fieldName="aboutVideoTestPage">http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4</htmlText>
         <padding/>
         <VideoPanel width="70%" poster="images/icon.png" mp4="http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4" />
         <optionButton fieldName="videoWorksLabel" target="VideoWorksPage">Video Works</optionButton>
         <optionButton fieldName="videoFailedLabel" target="VideoFailedPage">Video Failed</optionButton>
     </presenter>
-    <presenter type="text" menuLabel="Video Failed Page" back="MainMenu" title="Video Failed" self="VideoFailedPage" next="VideoTestPage">
-        <htmlText fieldName="aboutVideoWorksPage">you have send a message indicating the video does not work on your device</htmlText>
+    <presenter type="text" menuLabel="Video Test Page (controlled_burn)" back="VideosPage" title="Video Test" self="VideoTestPageControlledBurn">
+        <htmlText fieldName="aboutVideoTestPage">http://corpus1.mpi.nl/media-archive/Info/enctest/controlled_burn.mp4</htmlText>
+        <padding/>
+        <VideoPanel width="70%" poster="images/icon.png" mp4="http://corpus1.mpi.nl/media-archive/Info/enctest/controlled_burn.mp4" />
+        <optionButton fieldName="videoWorksLabel" target="VideoWorksPage">Video Works</optionButton>
+        <optionButton fieldName="videoFailedLabel" target="VideoFailedPage">Video Failed</optionButton>
     </presenter>
-    <presenter type="text" menuLabel="Video Works Page" back="MainMenu" title="Video Works" self="VideoWorksPage" next="VideoTestPage">
-        <htmlText fieldName="aboutVideoWorksPage">you have send a message indicating the video works on your device</htmlText>
+    <presenter type="text" menuLabel="Video Test Page (ducks_take_off)" back="VideosPage" title="Video Test" self="VideoTestPageDucksTakeOff">
+        <htmlText fieldName="aboutVideoTestPage">http://corpus1.mpi.nl/media-archive/Info/enctest/ducks_take_off.mp4</htmlText>
+        <padding/>
+        <VideoPanel width="70%" poster="images/icon.png" mp4="http://corpus1.mpi.nl/media-archive/Info/enctest/ducks_take_off.mp4" />
+        <optionButton fieldName="videoWorksLabel" target="VideoWorksPage">Video Works</optionButton>
+        <optionButton fieldName="videoFailedLabel" target="VideoFailedPage">Video Failed</optionButton>
+    </presenter>
+    <presenter type="text" menuLabel="Video Test Page (harbour)" back="VideosPage" title="Video Test" self="VideoTestPageHarbour">
+        <htmlText fieldName="aboutVideoTestPage">http://corpus1.mpi.nl/media-archive/Info/enctest/harbour.mp4</htmlText>
+        <padding/>
+        <VideoPanel width="70%" poster="images/icon.png" mp4="http://corpus1.mpi.nl/media-archive/Info/enctest/harbour.mp4" />
+        <optionButton fieldName="videoWorksLabel" target="VideoWorksPage">Video Works</optionButton>
+        <optionButton fieldName="videoFailedLabel" target="VideoFailedPage">Video Failed</optionButton>
+    </presenter>
+    <presenter type="text" menuLabel="Video Test Page (pedestrian_area)" back="VideosPage" title="Video Test" self="VideoTestPagePedestrianArea">
+        <htmlText fieldName="aboutVideoTestPage">http://corpus1.mpi.nl/media-archive/Info/enctest/pedestrian_area.mp4</htmlText>
+        <padding/>
+        <VideoPanel width="70%" poster="images/icon.png" mp4="http://corpus1.mpi.nl/media-archive/Info/enctest/pedestrian_area.mp4" />
+        <optionButton fieldName="videoWorksLabel" target="VideoWorksPage">Video Works</optionButton>
+        <optionButton fieldName="videoFailedLabel" target="VideoFailedPage">Video Failed</optionButton>
+    </presenter>
+    <presenter type="metadata" menuLabel="Video Failed Page" title="Video Failed" self="VideoFailedPage" next="VideosPage">
+        <!--<htmlText fieldName="aboutVideoFailedPage">Please describe in what way the video does not work on your device</htmlText>-->
+        <htmlText fieldName="aboutVideoFailedPage">A message indicating that the video fails on your device has been sent.</htmlText>
+        <!--<padding/>-->
+        <!--        <allMetadataFields/>
+        <padding/>-->
+        <optionButton fieldName="submitLabel" target="VideosPage">Submit</optionButton>
+    </presenter>
+    <presenter type="text" menuLabel="Video Works Page" title="Video Works" self="VideoWorksPage">
+        <htmlText fieldName="aboutVideoWorksPage">A message indicating that the video works on your device has been sent.</htmlText>
+        <optionButton fieldName="menuLabelVideosPage" target="VideosPage"/>
     </presenter>
 </experiment>
