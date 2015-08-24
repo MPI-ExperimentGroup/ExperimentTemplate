@@ -9,8 +9,8 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 /**
- * Entry point classes define <code>onModuleLoad()</code>.
- * Peter Withers <peter.withers@mpi.nl>
+ * Entry point classes define <code>onModuleLoad()</code>. 
+ * @author Peter Withers <peter.withers@mpi.nl>
  */
 public class annotator implements EntryPoint {
 
@@ -45,7 +45,7 @@ public class annotator implements EntryPoint {
         // Create the text area and toolbar
         final AnnotationEditor annotationEditor = new AnnotationEditor();
 //        final VideoPanel videoPanel = new VideoPanel("Screen Shot 2014-01-16 at 7.46.33 PM.png", "SSL_LM_lex_b.mp4", "video/mp4");
-        final VideoPanel videoPanel = new VideoPanel("images/sidebarl.png"); //, "http://hdl.handle.net/1839/00-0000-0000-000D-AB50-0", "video/m4a"
+        final VideoPanel videoPanel = new VideoPanel("", "images/sidebarl.png", ""); //, "http://hdl.handle.net/1839/00-0000-0000-000D-AB50-0", "video/m4a"
 //        videoPanel.addSource("http://download.blender.org/peach/trailer/trailer_480p.mov", "video/mov");
 //        videoPanel.addSource("http://download.blender.org/peach/trailer/trailer_400p.ogg", "video/ogg");
 //        videoPanel.addSource("http://mirror.cessen.com/blender.org/peach/trailer/trailer_iphone.m4v", "video/m4v");

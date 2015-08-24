@@ -5,6 +5,7 @@
  */
 package nl.mpi.tg.eg.annotator;
 
+import nl.mpi.tg.eg.experiment.client.model.AnnotationData;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HTML;

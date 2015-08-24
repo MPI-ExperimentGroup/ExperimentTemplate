@@ -32,7 +32,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <field postName="workerId" registrationField="Please enter your 'Worker ID'" controlledRegex=".'{'10,'}'" controlledMessage="Your worker ID can be found on the mturk/dashboard." />
         <field postName="nativeLanguage" registrationField="What is your native language" controlledRegex=".'{'2,'}'" controlledMessage="Please enter your native language" />
         <field postName="otherLanguages" registrationField="What other languages do you know" controlledRegex=".'{'2,'}'" controlledMessage="If you do not know any other languages then enter 'none'" />
-    </metadata>    
+    </metadata>
     <presenter type="text" menuLabel="Introduction" title="Introduction" back="MainMenu" self="OptionMenu">
         <htmlText fieldName="introductionText1">This is a simple demonstration application produced with the experiment framework currently being developed. This framework is based on the code written for SynQuiz and LingQuest, which are both mobile applications developed within the Language In Interaction project. One of the intended outcomes of these features in this framework is to provide customisable mobile and web based acquisition applications.</htmlText>
         <padding/>
@@ -77,9 +77,15 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     <presenter type="stimulus" menuLabel="Toggle Stimulus" back="MainMenu" self="StimulusGrid">
         <showCurrentMs/>    
         <showStimulusGrid  timeToNext="1000" columnCount="2" imageWidth="100px" eventTag="stimulusGrid" alternativeChoice="New Word">    
-            <showCurrentMs/>       
+            <showCurrentMs/>   
+            <responseCorrect timeToNext="1000">
+                    <autoNextStimulus condition="true" eventTag="StimulusGridCorrectAuto"/>
+                </responseCorrect>
+                <responseIncorrect timeToNext="1000">
+                    <autoNextStimulus condition="true" eventTag="StimulusGridIncorrectAuto"/>
+                </responseIncorrect>    
             <hideStimulusButtons/>        
-            <optionButton fieldName="completeLabel" target="ResultsPage">Done</optionButton>
+            <!--<optionButton fieldName="completeLabel" target="ResultsPage">Done</optionButton>-->
         </showStimulusGrid>
         <hideStimulusButtons/>
         <disableStimulusButtons/>
@@ -143,7 +149,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <padding/>
         <loadKinTypeStringDiagram  timeToNext="0" diagramName="kinTypeDiagram"></loadKinTypeStringDiagram>
         <addKinTypeGui diagramName="kinTypeDiagram"/>        
-<!--        <optionButton fieldName="completeLabel" target="Metadata">About This Application</optionButton>-->
+        <!--        <optionButton fieldName="completeLabel" target="Metadata">About This Application</optionButton>-->
     </presenter>
     <presenter type="text" menuLabel="About Page" back="MainMenu" title="Application Version" self="AboutPage" next="OptionMenu">
         <!--<Image width="10" image="images/icon.png"/>-->
@@ -159,5 +165,18 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <!--<htmlText fieldName="aboutScreenTextEheading">Eh</htmlText>-->
         <!--<htmlText fieldName="aboutScreenTextEbody">Eb</htmlText>-->
         <versionData/>
+    </presenter>
+    <presenter type="text" menuLabel="Video Test Page" back="MainMenu" title="Video Test" self="VideoTestPage">
+        <htmlText fieldName="aboutVideoTestPage">http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4</htmlText>
+        <padding/>
+        <VideoPanel width="70%" poster="images/icon.png" mp4="http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4" />
+        <optionButton fieldName="videoWorksLabel" target="VideoWorksPage">Video Works</optionButton>
+        <optionButton fieldName="videoFailedLabel" target="VideoFailedPage">Video Failed</optionButton>
+    </presenter>
+    <presenter type="text" menuLabel="Video Faield Page" back="MainMenu" title="Video Failed" self="VideoFailedPage" next="VideoTestPage">
+        <htmlText fieldName="aboutVideoWorksPage">you have send a message indicating the video does not work on your device</htmlText>
+    </presenter>
+    <presenter type="text" menuLabel="Video Works Page" back="MainMenu" title="Video Works" self="VideoWorksPage" next="VideoTestPage">
+        <htmlText fieldName="aboutVideoWorksPage">you have send a message indicating the video works on your device</htmlText>
     </presenter>
 </experiment>

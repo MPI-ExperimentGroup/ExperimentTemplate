@@ -162,6 +162,7 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', new AudioPlayer(this), su
                 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
                 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
                 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+                import nl.mpi.tg.eg.experiment.client.view.VideoPanel;
                 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
                 import nl.mpi.tg.eg.experiment.client.view.MenuView;     
                 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;  
@@ -480,6 +481,16 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, 
             + version.projectVersion() + "\n"
             + "Compile Date: " + version.compileDate() + "\n"
             + "Last Commit Date: " + version.lastCommitDate());
+        </xsl:text>
+    </xsl:template>
+    <xsl:template match="VideoPanel">
+        <xsl:text>    ((ComplexView) simpleView).addWidget(new </xsl:text>
+        <xsl:value-of select="local-name()" />
+        <xsl:text>(</xsl:text>
+        <xsl:value-of select="if(@width) then concat('&quot;', @width, '&quot;') else ''" />
+        <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />
+        <xsl:value-of select="if(@mp4) then concat(', &quot;', @mp4, '&quot;') else ''" />
+        <xsl:text>));
         </xsl:text>
     </xsl:template>
 </xsl:stylesheet>

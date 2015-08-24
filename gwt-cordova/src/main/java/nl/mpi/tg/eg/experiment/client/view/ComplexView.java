@@ -27,6 +27,7 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -70,6 +71,10 @@ public class ComplexView extends SimpleView {
 
     public void addPadding() {
         outerPanel.add(new HTML("&nbsp;"));
+    }
+
+    public void addWidget(IsWidget isWidget) {
+        outerPanel.add(isWidget);
     }
 
     public void addImage(SafeUri imagePath, final SafeUri linkUrl, int percentWidth, String align) {

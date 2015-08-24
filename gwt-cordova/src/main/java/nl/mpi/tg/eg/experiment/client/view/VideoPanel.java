@@ -9,7 +9,7 @@ import com.google.gwt.media.client.Video;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import nl.mpi.tg.eg.annotator.AnnotationData;
+import nl.mpi.tg.eg.experiment.client.model.AnnotationData;
 
 /**
  * @since Jan 29, 2014 3:34:11 PM (creation date)
@@ -23,7 +23,7 @@ public class VideoPanel extends VerticalPanel {
 //                                </video>
 
     // GWT video is not yet fully supported and does not allow for event listeners to be registered so for now we are using HTML5 and JS directly
-    public VideoPanel(String poster) {
+    public VideoPanel(String width, String poster, String mp4) {
         video = Video.createIfSupported();
         if (video != null) {
             video.setPoster(poster);
@@ -43,9 +43,10 @@ public class VideoPanel extends VerticalPanel {
             }
         };
         timer.scheduleRepeating(100);
+        addSource(mp4, "video/mp4");
     }
 
-    public void addSource(String source, String type) {
+    public final void addSource(String source, String type) {
         video.addSource(source, type); // add multiple formats with the format type so that more devices will be supported
     }
 
