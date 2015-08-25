@@ -11,6 +11,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 version="2.0">
     <xsl:output method="text" encoding="UTF-8" />
+    <xsl:param name="targetClientDirectory" select="targetClientDirectory"/>
     <xsl:template match="/">
         <xsl:text>package nl.mpi.tg.eg.experiment.client;
 
@@ -160,7 +161,7 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', new AudioPlayer(this), su
     </xsl:template>
     <xsl:template match="presenter">        
         <!--<xsl:value-of select="concat(@self, 'Presenter.java')" />-->                                                                                                                                  
-        <xsl:result-document href="target/generated-sources/gwt/nl/mpi/tg/eg/experiment/client/presenter/{@self}Presenter.java" method="text">
+        <xsl:result-document href="{$targetClientDirectory}/presenter/{@self}Presenter.java" method="text">
             <xsl:text>package nl.mpi.tg.eg.experiment.client.presenter;
     
                 import com.google.gwt.core.client.GWT;        

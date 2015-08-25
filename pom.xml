@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>nl.mpi.tg.eg</groupId>
+    <artifactId>frinex-parent</artifactId>
+    <name>Frinex Parent</name>
+    <version>0.1-testing-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>gwt-cordova</module>
+        <module>registration</module>
+        <module>ExperimentDesigner</module>
+    </modules>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.2.5.RELEASE</version>
+    </parent>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <java.version>1.8</java.version>
+        <netbeans.hint.license>gpl20</netbeans.hint.license> 
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>nl.mpi</groupId>
+                <artifactId>version-control-check</artifactId>
+                <version>1.0.21-testing</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <verbose>true</verbose>
+                    <vcsType>git</vcsType>
+                    <allowSnapshots>true</allowSnapshots>
+                    <majorVersion>0</majorVersion>
+                    <minorVersion>1</minorVersion>
+                    <buildType>testing</buildType>
+                    <propertiesPrefix>application</propertiesPrefix>
+                    <shortVersionModule></shortVersionModule>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>MPI</id>
+            <name>MPI LAT Repository</name>
+            <url>https://lux15.mpi.nl/nexus/content/groups/public/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+</project>

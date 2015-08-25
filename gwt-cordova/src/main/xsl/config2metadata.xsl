@@ -10,13 +10,14 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
     <xsl:output method="text" encoding="UTF-8" />
+    <xsl:param name="targetClientDirectory" select="targetClientDirectory"/>
     <xsl:template match="/">
-        <xsl:result-document href="target/generated-sources/gwt/nl/mpi/tg/eg/experiment/client/service/ServiceLocations.properties" method="text">
+        <xsl:result-document href="{$targetClientDirectory}/service/ServiceLocations.properties" method="text">
             <xsl:text>dataSubmitUrl=</xsl:text><xsl:value-of select="experiment/@dataSubmitUrl" /><xsl:text>
 staticFilesUrl=</xsl:text><xsl:value-of select="experiment/@staticFilesUrl" />
         </xsl:result-document>
         
-        <xsl:result-document href="target/generated-sources/gwt/nl/mpi/tg/eg/experiment/client/MetadataFields.properties" method="text">
+        <xsl:result-document href="{$targetClientDirectory}/MetadataFields.properties" method="text">
             <xsl:for-each select="experiment/metadata/field">
                    <xsl:text>postName_</xsl:text><xsl:value-of select="@postName" /><xsl:text>=</xsl:text><xsl:value-of select="@postName" /><xsl:text>
 </xsl:text>
@@ -36,7 +37,7 @@ staticFilesUrl=</xsl:text><xsl:value-of select="experiment/@staticFilesUrl" />
                 <!--</xsl:if>-->
             </xsl:for-each>
             </xsl:result-document>
-            <xsl:result-document href="target/generated-sources/gwt/nl/mpi/tg/eg/experiment/client/service/MetadataFieldProvider.java" method="text">
+            <xsl:result-document href="{$targetClientDirectory}/service/MetadataFieldProvider.java" method="text">
             <xsl:text>package nl.mpi.tg.eg.experiment.client.service;
 
 import com.google.gwt.core.client.GWT;

@@ -3,13 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-admin</artifactId>
-    <version>0.1.33-pretesting</version>
-    <name>Frinex Web Service</name>
+    <version>0.1.34-testing</version>
+    <name>Frinex Administration</name>
     <packaging>war</packaging>
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.2.4.RELEASE</version>
+        <groupId>nl.mpi.tg.eg</groupId>
+        <artifactId>FrinexParent</artifactId>
+        <version>0.1-testing-SNAPSHOT</version>
     </parent>
     <organization>
         <name>Max Planck Institute for Psycholinguistics</name>
@@ -22,7 +22,10 @@
         <java.version>1.8</java.version>
         <netbeans.hint.license>gpl20</netbeans.hint.license> 
         <experiment.configuration.path>${project.build.sourceDirectory}/../xml</experiment.configuration.path>
-        <experiment.configuration.name>experimentConfig</experiment.configuration.name>
+        <!--<experiment.configuration.name>snspsem</experiment.configuration.name>-->
+        <experiment.configuration.name>dobes</experiment.configuration.name>
+        <experiment.configuration.admin.password></experiment.configuration.admin.password>
+        <experiment.configuration.db.password></experiment.configuration.db.password>
         <finalName>${project.artifactId}-${experiment.configuration.name}-${project.version}</finalName>
     </properties>   
     <build>
@@ -39,31 +42,7 @@
                     <include>**/application.properties</include>
                 </includes>
             </resource>
-        </resources>
-        <plugins>
-            <plugin>
-                <groupId>nl.mpi</groupId>
-                <artifactId>version-control-check</artifactId>
-                <version>1.0.21-testing</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>revision</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <verbose>true</verbose>
-                    <vcsType>git</vcsType>
-                    <allowSnapshots>true</allowSnapshots>
-                    <majorVersion>0</majorVersion>
-                    <minorVersion>1</minorVersion>
-                    <buildType>pretesting</buildType>
-                    <propertiesPrefix>application</propertiesPrefix>
-                    <shortVersionModule></shortVersionModule>
-                </configuration>
-            </plugin>
-        </plugins>
+        </resources>        
     </build>
     <dependencies>
         <dependency>
@@ -138,18 +117,5 @@
                 </configuration>                                                             
             </plugin>                                                                        
         </plugins>                                                                           
-    </reporting>    
-    <pluginRepositories>
-        <pluginRepository>
-            <id>MPI</id>
-            <name>MPI LAT Repository</name>
-            <url>https://lux15.mpi.nl/nexus/content/groups/public/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </pluginRepository>
-    </pluginRepositories> 
+    </reporting>   
 </project>
