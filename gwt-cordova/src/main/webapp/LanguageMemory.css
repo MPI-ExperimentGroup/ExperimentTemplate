@@ -363,13 +363,22 @@ table#screenExample td, .stimulusHelpPanel .gwt-Button, .stimulusHelpText, .popu
 /*.gwt-Button.menuButton:hover:disabled*/ 
 {
     /*border-style: solid;*/
-    background: white;
+    background: lightgrey;
     /*border: 7px solid white;*/
     padding: 7px 7px;
     /*border-bottom-color: white;*/
     border: none;
     /*opacity: 0.4;*/
     /*filter: alpha(opacity=40);  For IE8 and earlier */
+}
+
+.gwt-Button.stimulusImageButton:hover:disabled,
+.gwt-Button.stimulusImageButton:disabled,
+.gwt-Button.stimulusImageButton:hover:active,
+.gwt-Button.stimulusImageButton:active,
+.gwt-Button.stimulusImageButton
+{
+    background: white;
 }
 
 .gwt-PushButton.stimulusButtonHighlight,
@@ -381,7 +390,7 @@ table#screenExample td, .stimulusHelpPanel .gwt-Button, .stimulusHelpText, .popu
 .gwt-Button.stimulusButtonHighlight{
     border: 7px #994646;
     border-style: solid;
-    background: white;
+    /*background: white;*/
     padding: 0px 0px;
 } 
 
