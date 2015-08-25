@@ -67,6 +67,7 @@ public class TimedStimulusView extends ComplexView {
         image.setHeight(widthString);
         final Button imageButton = new Button();
         imageButton.getElement().appendChild(image.getElement());
+        imageButton.addStyleName("stimulusImageButton");
         return addButton(menuItemListerner, imageButton, rowIndex, columnIndex, widthString);
     }
 
