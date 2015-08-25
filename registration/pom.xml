@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-admin</artifactId>
-    <version>0.1.34-testing</version>
+    <version>0.1.36-testing</version>
     <name>Frinex Administration</name>
     <packaging>war</packaging>
     <parent>
@@ -17,15 +17,6 @@
     </organization>
     <properties>
         <!--<start-class>nl.mpi.tg.eg.frinex.Application</start-class>-->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-        <netbeans.hint.license>gpl20</netbeans.hint.license> 
-        <experiment.configuration.path>${project.build.sourceDirectory}/../xml</experiment.configuration.path>
-        <!--<experiment.configuration.name>snspsem</experiment.configuration.name>-->
-        <experiment.configuration.name>dobes</experiment.configuration.name>
-        <experiment.configuration.admin.password></experiment.configuration.admin.password>
-        <experiment.configuration.db.password></experiment.configuration.db.password>
         <finalName>${project.artifactId}-${experiment.configuration.name}-${project.version}</finalName>
     </properties>   
     <build>

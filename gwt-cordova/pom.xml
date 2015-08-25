@@ -9,7 +9,7 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-gui</artifactId>
     <packaging>war</packaging>
-    <version>0.1.485-testing</version>
+    <version>0.1.487-testing</version>
     <name>FRINEX GWT-Cordova Template</name>
     <organization>
         <name>Max Planck Institute for Psycholinguistics, Nijmegen</name>
@@ -17,25 +17,17 @@
     </organization>
     <parent>
         <groupId>nl.mpi.tg.eg</groupId>
-        <artifactId>FrinexParent</artifactId>
+        <artifactId>frinex-parent</artifactId>
         <version>0.1-testing-SNAPSHOT</version>
     </parent>
     <properties>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
         <java.version>1.7</java.version>
-        <netbeans.hint.license>gpl20</netbeans.hint.license>
-        <plugin.license.copyrightYear>2015</plugin.license.copyrightYear>
         <!-- Convenience property to set the GWT version -->
         <gwtVersion>2.7.0</gwtVersion>
         <!-- GWT needs at least java 1.5 -->
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <experiment.configuration.path>${project.build.sourceDirectory}/../xml</experiment.configuration.path>
-        <!--<experiment.configuration.name>kinoath</experiment.configuration.name>-->
-        <experiment.configuration.name>dobes</experiment.configuration.name>
-        <!--<experiment.configuration.path>${project.build.sourceDirectory}/../../../../../ExperimentBuilder/src/main/xml</experiment.configuration.path>-->
-        <!--<experiment.configuration.name>experimentConfig_shiri</experiment.configuration.name>-->
         <finalName>${project.artifactId}-${experiment.configuration.name}-${project.version}</finalName>
     </properties>
 
