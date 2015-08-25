@@ -127,15 +127,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         timer.schedule(100);
     }
 
-    protected void endOfStimulus(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener) {
-        if (!stimulusProvider.hasNextStimulus()) {
-            timedStimulusListener.postLoadTimerFired();
-        }
-    }
-
-    protected void hasMoreStimulus(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener) {
+    protected void showStimulus(final AppEventListner appEventListner, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         if (stimulusProvider.hasNextStimulus()) {
-            timedStimulusListener.postLoadTimerFired();
+            hasMoreStimulusListener.postLoadTimerFired();
+        } else {
+            endOfStimulusListener.postLoadTimerFired();
         }
     }
 
