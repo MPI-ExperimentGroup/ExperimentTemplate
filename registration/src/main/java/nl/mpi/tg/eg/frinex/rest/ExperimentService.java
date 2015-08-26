@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.frinex.rest;
 
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import nl.mpi.tg.eg.frinex.model.DataSubmissionResult;
 import nl.mpi.tg.eg.frinex.model.TagData;
 import nl.mpi.tg.eg.frinex.model.Participant;
@@ -29,6 +30,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -140,13 +142,27 @@ public class ExperimentService {
 
     @RequestMapping(value = "/metadata", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<DataSubmissionResult> storeMetadataData(@RequestBody List<Participant> participantList) {
+    public ResponseEntity<DataSubmissionResult> storeMetadataData(
+            @RequestBody List<Participant> participantList,
+            @RequestHeader("Accept-Language") String acceptLang,
+            @RequestHeader("User-Agent") String userAgent,
+            HttpServletRequest request) {
         final ResponseEntity responseEntity;
         if (participantList.isEmpty()) {
             responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         } else {
             for (Participant participant : participantList) {
                 participant.setSubmitDate(new java.util.Date());
+                final String remoteAddr = request.getRemoteAddr();
+                final int lastIndexOf = remoteAddr.lastIndexOf(".");
+                if (lastIndexOf > 0) {
+                    participant.setRemoteAddr(remoteAddr.substring(0, lastIndexOf) + ".0");
+//                } else {
+                    // todo: IPv6 is not handled at this stage but it should be striped to 80 bits when added
+//                    participant.setRemoteAddr(remoteAddr);
+                }
+                participant.setAcceptLang(acceptLang);
+                participant.setUserAgent(userAgent);
                 participantRepository.save(participant);
             }
             responseEntity = new ResponseEntity<>(new DataSubmissionResult(participantList.get(0).getUserId(), true), HttpStatus.OK);
@@ -168,7 +184,7 @@ public class ExperimentService {
         }
         return responseEntity;
     }
-    
+
     @RequestMapping(value = "/tagPairEvent", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<DataSubmissionResult> registerTagPairEvent(@RequestBody List<TagPairData> experimentDataList) {
         final ResponseEntity responseEntity;

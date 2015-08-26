@@ -42,6 +42,9 @@ public class Participant implements Serializable {
     private String userId;
     private String otherLanguages;
     private String nativeLanguage;
+    private String remoteAddr;
+    private String acceptLang;
+    private String userAgent;
 
     public Participant() {
     }
@@ -72,5 +75,29 @@ public class Participant implements Serializable {
 
     public String getNativeLanguage() {
         return nativeLanguage;
+    }
+
+    public String getRemoteAddr() {
+        return remoteAddr;
+    }
+
+    public void setRemoteAddr(String remoteAddr) {
+        this.remoteAddr = remoteAddr;
+    }
+
+    public String getAcceptLang() {
+        return acceptLang;
+    }
+
+    public void setAcceptLang(String acceptLang) {
+        this.acceptLang = acceptLang;
+    }
+
+    public String getUserAgent() {
+        return userAgent;
+    }
+
+    public void setUserAgent(String userAgent) {
+        this.userAgent = userAgent;
     }
 }
