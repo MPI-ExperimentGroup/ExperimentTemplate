@@ -45,10 +45,10 @@ stopSharingDetailsExplanation=({0}) and unique id ({1})
 </xsl:text>      
         <xsl:apply-templates/>
     </xsl:template>
-    <xsl:template match="*[@fieldName][. != '']">
-        <xsl:value-of select="@fieldName" />
+    <xsl:template match="optionButton[. != '']|text[. != '']|popupMessage[. != '']|menuItem[. != '']|htmlText[. != '']|userInfo[. != '']">
+        <xsl:value-of select="generate-id(.)" />
         <xsl:text>=</xsl:text>
-        <xsl:value-of select="."/>
+        <xsl:value-of select="text()"/>
         <xsl:text>
 </xsl:text>
     </xsl:template>

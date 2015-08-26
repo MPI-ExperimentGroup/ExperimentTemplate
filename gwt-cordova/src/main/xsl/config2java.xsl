@@ -266,13 +266,13 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, 
     <xsl:template match="text()" /><!--prevent text nodes slipping into the output-->
     <xsl:template match="htmlText">
         <xsl:text>    ((ComplexView) simpleView).addHtmlText(messages.</xsl:text>
-        <xsl:value-of select="@fieldName" />
+        <xsl:value-of select="generate-id(.)" />
         <xsl:text>());
         </xsl:text>
     </xsl:template>
     <xsl:template match="text">
         <xsl:text>    ((ComplexView) simpleView).addText(messages.</xsl:text>
-        <xsl:value-of select="@fieldName" />
+        <xsl:value-of select="generate-id(.)" />
         <xsl:text>());
         </xsl:text>
     </xsl:template>
@@ -308,7 +308,7 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, 
             @Override
             public String getLabel() {
             return messages.</xsl:text>
-        <xsl:value-of select="@fieldName" />
+        <xsl:value-of select="generate-id(.)" />
         <xsl:text>();
             }
             }, true);
@@ -317,7 +317,7 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, 
     <xsl:template match="popupMessage">           
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(null, messages.</xsl:text>
-        <xsl:value-of select="@fieldName" />
+        <xsl:value-of select="generate-id(.)" />
         <xsl:text>(), </xsl:text>
         <xsl:value-of select="if(@condition) then @condition else 'true'" />
         <xsl:text>);
@@ -329,7 +329,7 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, 
             @Override
             public String getLabel() {
             return messages.</xsl:text>
-        <xsl:value-of select="@fieldName" />
+        <xsl:value-of select="generate-id(.)" />
         <xsl:text>();
             }
 
@@ -349,7 +349,7 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, 
             @Override
             public String getLabel() {
             return messages.</xsl:text>
-        <xsl:value-of select="@fieldName" />
+        <xsl:value-of select="generate-id(.)" />
         <xsl:text>();
             }
 
@@ -381,13 +381,13 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, 
         </xsl:text>
     </xsl:template>
     <xsl:template match="allMenuItems|nextStimulusButton|autoNextStimulus|conditionalHtml|addKinTypeGui|autoNextPresenter">    
-        <xsl:text>    </xsl:text>    
+        <xsl:text>    </xsl:text>
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(appEventListner</xsl:text>
         <xsl:value-of select="if(@diagramName) then concat(', &quot;', @diagramName, '&quot;') else ''" />
         <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
         <xsl:value-of select="if(@condition) then concat(', ', @condition) else ''" />
-        <xsl:value-of select="if(@fieldName) then concat(', messages.', @fieldName, '()') else ''" />
+        <xsl:value-of select="if(text()) then concat(', messages.', generate-id(.), '()') else ''" />
         <xsl:value-of select="if(@target) then concat(', ApplicationState.', @target) else ''" />
         <xsl:text>);
         </xsl:text>
@@ -483,7 +483,7 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, 
     </xsl:template>
     <xsl:template match="userInfo">
         <xsl:text>    ((ComplexView) simpleView).addHtmlText(messages.</xsl:text>
-        <xsl:value-of select="@fieldName" />
+        <xsl:value-of select="generate-id(.)" />
         <xsl:text>(userNameValue, userResults.getUserData().getUserId().toString()));
         </xsl:text>
     </xsl:template>
