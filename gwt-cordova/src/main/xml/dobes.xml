@@ -21,8 +21,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     Author     : Peter Withers <peter.withers@mpi.nl>
 -->
 
-<experiment appNameDisplay="Dobes Annotator" appNameInternal="DobesAnnotator" dataSubmitUrl="http://localhost:8080/frinex/" staticFilesUrl="static/">
-    <!--<experiment appNameDisplay="Dobes Annotator" appNameInternal="DobesAnnotator" dataSubmitUrl="http://ems12.mpi.nl:80/frinex-dobes-0.1.33-pretesting/" staticFilesUrl="static/">-->
+<!--<experiment appNameDisplay="Dobes Annotator" appNameInternal="DobesAnnotator" dataSubmitUrl="http://localhost:8080/frinex/" staticFilesUrl="static/">-->
+<experiment appNameDisplay="Dobes Annotator" appNameInternal="DobesAnnotator" dataSubmitUrl="http://ems12.mpi.nl/dobes-frinex-admin-0.1.38-testing/" staticFilesUrl="static/">
     <metadata>
         <field postName="workerId" registrationField="Reporter name *" controlledRegex=".'{'3,'}'" controlledMessage="Please enter at least three letters." />
         <field postName="errordevice" registrationField="Device model" controlledRegex=".'{'2,'}'" controlledMessage="Please enter the device model" />

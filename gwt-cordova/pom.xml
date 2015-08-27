@@ -9,7 +9,7 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-gui</artifactId>
     <packaging>war</packaging>
-    <version>0.1.488-testing</version>
+    <version>0.1.493-testing</version>
     <name>FRINEX GWT-Cordova Template</name>
     <organization>
         <name>Max Planck Institute for Psycholinguistics, Nijmegen</name>
@@ -28,7 +28,7 @@
         <gwtVersion>2.7.0</gwtVersion>
         <!-- GWT needs at least java 1.5 -->
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
-        <finalName>${project.artifactId}-${experiment.configuration.name}-${project.version}</finalName>
+        <finalName>${experiment.configuration.name}-${project.artifactId}-${project.version}</finalName>
     </properties>
 
     <dependencies>

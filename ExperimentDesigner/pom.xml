@@ -4,7 +4,7 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-experiment-designer</artifactId>
     <name>Frinex Experiment Designer</name>
-    <version>0.1.5-testing</version>
+    <version>0.1.6-testing</version>
     <packaging>war</packaging>
     <parent>
         <groupId>nl.mpi.tg.eg</groupId>
@@ -12,7 +12,7 @@
         <version>0.1-testing-SNAPSHOT</version>
     </parent>
     <properties>
-        <finalName>${project.artifactId}-${experiment.configuration.name}-${project.version}</finalName>
+        <finalName>${experiment.configuration.name}-${project.artifactId}-${project.version}</finalName>
     </properties>    
     <dependencies>
         <dependency>

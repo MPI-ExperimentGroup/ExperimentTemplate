@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-admin</artifactId>
-    <version>0.1.37-testing</version>
+    <version>0.1.40-testing</version>
     <name>Frinex Administration</name>
     <packaging>war</packaging>
     <parent>
@@ -17,7 +17,7 @@
     </organization>
     <properties>
         <!--<start-class>nl.mpi.tg.eg.frinex.Application</start-class>-->
-        <finalName>${project.artifactId}-${experiment.configuration.name}-${project.version}</finalName>
+        <finalName>${experiment.configuration.name}-${project.artifactId}-${project.version}</finalName>
     </properties>   
     <build>
         <finalName>${finalName}</finalName>
