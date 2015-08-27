@@ -39,6 +39,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <th>Worker Id</th>
                     <th>Native Language</th>
                     <th>Other Languages</th>
+                    <th>Remote Address</th>
+                    <th>Device Language</th>
+                    <th>User Agent</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,6 +52,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <td th:text="${prod.workerId}">workerId</td>
                     <td th:text="${prod.nativeLanguage}">nativeLanguage</td>
                     <td th:text="${prod.otherLanguages}">otherLanguages</td>
+                    <td th:text="${prod.remoteAddr}">remoteAddr</td>
+                    <td th:text="${prod.acceptLang}">acceptLang</td>
+                    <td th:text="${prod.userAgent}">userAgent</td>
                 </tr>
             </tbody>            
         </table>
