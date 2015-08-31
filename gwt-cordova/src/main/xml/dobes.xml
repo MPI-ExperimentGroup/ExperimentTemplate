@@ -31,11 +31,15 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     <presenter type="text" menuLabel="Videos" back="AutoMenu" title="Video List" self="VideosPage">
         <htmlText>This is a simple video codec testing application.</htmlText>
         <padding/>
+        <AudioRecorderPanel src=""/>
         <optionButton target="VideoTestPageAspen">Video Test Page (aspen)</optionButton>
         <optionButton target="VideoTestPageControlledBurn">Video Test Page (controlled_burn)</optionButton>
         <optionButton target="VideoTestPageDucksTakeOff">Video Test Page (ducks_take_off)</optionButton>
         <optionButton target="VideoTestPageHarbour">Video Test Page (harbour)</optionButton>
         <optionButton target="VideoTestPagePedestrianArea">Video Test Page (pedestrian_area)</optionButton>
+        <optionButton target="VideoTestPagemov_bbbmp4  ">Video Test Page (VideoTestPagemov_bbbmp4)</optionButton>
+        <optionButton target="VideoTestPagemov_bbbogg">Video Test Page (VideoTestPagemov_bbbogg)</optionButton>
+        <optionButton target="VideoTestPageWebM">Video Test Page (VideoTestPageWebM)</optionButton>
         <padding/>
         <versionData/>
     </presenter>
