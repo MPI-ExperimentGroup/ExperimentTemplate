@@ -77,6 +77,27 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <optionButton target="VideoWorksPage">Video Works</optionButton>
         <optionButton target="VideoFailedPage">Video Failed</optionButton>
     </presenter>
+    <presenter type="text" menuLabel="mov_bbb.mp4" back="VideosPage" title="Video Test" self="VideoTestPagemov_bbbmp4">
+        <htmlText>http://www.w3schools.com/html/mov_bbb.mp4</htmlText>
+        <padding/>
+        <VideoPanel width="70%" poster="images/icon.png" mp4="http://www.w3schools.com/html/mov_bbb.mp4" />
+        <optionButton target="VideoWorksPage">Video Works</optionButton>
+        <optionButton target="VideoFailedPage">Video Failed</optionButton>
+    </presenter>
+    <presenter type="text" menuLabel="mov_bbb.ogg" back="VideosPage" title="Video Test" self="VideoTestPagemov_bbbogg">
+        <htmlText>http://www.w3schools.com/html/mov_bbb.ogg</htmlText>
+        <padding/>
+        <VideoPanel width="70%" poster="images/icon.png" ogg="http://www.w3schools.com/html/mov_bbb.ogg" />
+        <optionButton target="VideoWorksPage">Video Works</optionButton>
+        <optionButton target="VideoFailedPage">Video Failed</optionButton>
+    </presenter>
+    <presenter type="text" menuLabel="webm" back="VideosPage" title="Video Test" self="VideoTestPageWebM">
+        <htmlText>https://upload.wikimedia.org/wikipedia/commons/transcoded/8/87/Schlossbergbahn.webm/Schlossbergbahn.webm.480p.webm</htmlText>
+        <padding/>
+        <VideoPanel width="70%" poster="images/icon.png" webm="https://upload.wikimedia.org/wikipedia/commons/transcoded/8/87/Schlossbergbahn.webm/Schlossbergbahn.webm.480p.webm" />
+        <optionButton target="VideoWorksPage">Video Works</optionButton>
+        <optionButton target="VideoFailedPage">Video Failed</optionButton>
+    </presenter>
     <presenter type="text" menuLabel="Video Failed Page" title="Video Failed" self="VideoFailedPage">
         <!--next="VideosPage"-->
         <!--<htmlText>Please describe in what way the video does not work on your device</htmlText>-->
