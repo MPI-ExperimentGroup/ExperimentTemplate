@@ -1,6 +1,6 @@
 #mvn install
 cd target
-appname=frinexweb-0.1.459-testing
+appname=dobes-frinex-gui-0.1.496-testing
 rm -rf $appname-cordova
 unzip $appname-cordova.zip -d $appname-cordova
 cd $appname-cordova
@@ -11,6 +11,8 @@ cordova plugin add org.apache.cordova.device
 cordova plugin add org.apache.cordova.statusbar
 cordova plugin add org.apache.cordova.splashscreen
 cordova plugin add org.apache.cordova.inappbrowser
+#cordova plugin add https://github.com/dawsonloudon/VideoPlayer.git
+cordova plugin add cordova-plugin-media
 # (this plugin did not function correctly) cordova plugin add https://github.com/leecrossley/cordova-plugin-social-message.git
 cordova plugin add https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git #cordova plugin add nl.x-services.plugins.socialsharing
 #cordova plugin add https://github.com/driftyco/ionic-plugins-keyboard.git # this provides events for keyboard hide and show which are needed to resize the app window area
