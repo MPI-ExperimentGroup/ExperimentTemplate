@@ -174,6 +174,7 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', new AudioPlayer(this), su
                 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
                 import nl.mpi.tg.eg.experiment.client.view.VideoPanel;
                 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
+                import nl.mpi.tg.eg.experiment.client.view.AudioRecorderPanel;
                 import nl.mpi.tg.eg.experiment.client.view.MenuView;     
                 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;  
                 import nl.mpi.tg.eg.experiment.client.model.UserId;    
@@ -496,15 +497,18 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, 
             + "Last Commit Date: " + version.lastCommitDate());
         </xsl:text>
     </xsl:template>
-    <xsl:template match="VideoPanel">
+    <xsl:template match="VideoPanel|AudioRecorderPanel">
         <xsl:text>    ((ComplexView) simpleView).addWidget(new </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(</xsl:text>
+        <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;') else ''" />
         <xsl:value-of select="if(@width) then concat('&quot;', @width, '&quot;') else ''" />
         <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />
-        <xsl:value-of select="if(@mp4) then concat(', &quot;', @mp4, '&quot;') else ',&quot;&quot;'" />
-        <xsl:value-of select="if(@ogg) then concat(', &quot;', @ogg, '&quot;') else ',&quot;&quot;'" />
-        <xsl:value-of select="if(@webm) then concat(', &quot;', @webm, '&quot;') else ',&quot;&quot;'" />
+        <xsl:if test="@poster">
+            <xsl:value-of select="if(@mp4) then concat(', &quot;', @mp4, '&quot;') else ',&quot;&quot;'" />
+            <xsl:value-of select="if(@ogg) then concat(', &quot;', @ogg, '&quot;') else ',&quot;&quot;'" />
+            <xsl:value-of select="if(@webm) then concat(', &quot;', @webm, '&quot;') else ',&quot;&quot;'" />
+        </xsl:if>
         <xsl:text>));
         </xsl:text>
     </xsl:template>
