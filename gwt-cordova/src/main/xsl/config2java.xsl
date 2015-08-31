@@ -502,7 +502,9 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, 
         <xsl:text>(</xsl:text>
         <xsl:value-of select="if(@width) then concat('&quot;', @width, '&quot;') else ''" />
         <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />
-        <xsl:value-of select="if(@mp4) then concat(', &quot;', @mp4, '&quot;') else ''" />
+        <xsl:value-of select="if(@mp4) then concat(', &quot;', @mp4, '&quot;') else ',&quot;&quot;'" />
+        <xsl:value-of select="if(@ogg) then concat(', &quot;', @ogg, '&quot;') else ',&quot;&quot;'" />
+        <xsl:value-of select="if(@webm) then concat(', &quot;', @webm, '&quot;') else ',&quot;&quot;'" />
         <xsl:text>));
         </xsl:text>
     </xsl:template>
