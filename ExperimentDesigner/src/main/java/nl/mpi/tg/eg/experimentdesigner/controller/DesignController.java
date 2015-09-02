@@ -17,12 +17,18 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterLayoutRepository;
+import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
+import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
+import nl.mpi.tg.eg.experimentdesigner.model.PresenterLayout;
+import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * @since Aug 18, 2015 1:40:11 PM (creation date)
@@ -34,10 +40,32 @@ public class DesignController {
     @Autowired
     PresenterLayoutRepository repository;
 
-    @RequestMapping("/design")
-    public String greeting(@RequestParam(value = "name", required = false, defaultValue = "demo") String name, Model model) {
-        model.addAttribute("name", name);
+    private void populateModel(Model model) {
         model.addAttribute("experiments", repository.findAll());
+        model.addAttribute("featureattributes", FeatureAttribute.values());
+        model.addAttribute("featuretypes", FeatureType.values());
+        model.addAttribute("presentertypes", PresenterType.values());
+
+    }
+
+    @RequestMapping("/design")
+    public String designView(Model model) {
+        populateModel(model);
+        return "design";
+    }
+
+    @RequestMapping(value = "/design", params = {"addRow"}, method = RequestMethod.POST)
+    public String addRow(@ModelAttribute PresenterLayout presenterLayout, Model model) {
+        repository.save(presenterLayout);
+        populateModel(model);
+        return "design";
+    }
+
+    @RequestMapping(value = "/design", params = {"removeRow"})
+    public String removeRow(final HttpServletRequest req, Model model) {
+        final Long rowId = Long.valueOf(req.getParameter("removeRow"));
+        repository.delete(rowId);
+        populateModel(model);
         return "design";
     }
 }

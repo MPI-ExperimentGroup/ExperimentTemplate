@@ -45,9 +45,42 @@ public class PresenterLayout {
     @OneToMany
     private List<PresenterFeature> presenterFeatures;
 
-    public PresenterLayout(String name, String description, PresenterType presenterType) {
+    public PresenterLayout() {
+    }
+
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setPresenterType(PresenterType presenterType) {
         this.presenterType = presenterType;
+    }
+
+    public void setPresenterFeatures(List<PresenterFeature> presenterFeatures) {
+        this.presenterFeatures = presenterFeatures;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public PresenterType getPresenterType() {
+        return presenterType;
+    }
+
+    public List<PresenterFeature> getPresenterFeatures() {
+        return presenterFeatures;
     }
 }
