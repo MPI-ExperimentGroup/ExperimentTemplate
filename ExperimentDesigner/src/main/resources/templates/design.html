@@ -23,9 +23,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
-        <select id="FeatureAttribute" multiple="multiple" name="FeatureAttributeId" >
-            <option th:each="featureattribute : ${featureattributes}" th:value="${featureattribute}" th:text="${featureattribute}" /> th:selected="${selectedTagList.contains(atag.id)}"
-        </select>
         <!--<p th:each="feature : ${features}" th:text="${feature.getFeatureType()}"/>-->       
 
         <table th:each="presenter : ${experiments}">
@@ -63,7 +60,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <td colspan="6">    
                         <div th:each="features : ${presenter.getPresenterFeatures()}">
                             <span th:text="${features.getFeatureType()}"></span>                            
-                            <span th:text="${features.getFeatureText()}"></span>                            
+                            <span th:text="${features.getFeatureText()}"></span>  
+                            <table>
+                                <tr th:each="featureattribute : ${featureattributes}" >
+                                    <td th:text="${featureattribute.name()}" />
+                                    <!--th:selected="${selectedTagList.contains(atag.id)}"-->
+                                </tr>
+                            </table>
                         </div>
                         <form action="#" th:action="@{/design}"  th:object="${PresenterFeature}" method="post">
                             <select id="FeatureType" name="FeatureType">
