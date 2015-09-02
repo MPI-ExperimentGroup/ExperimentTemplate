@@ -17,10 +17,13 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.controller;
 
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import nl.mpi.tg.eg.experimentdesigner.dao.PresenterFeatureRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterLayoutRepository;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
+import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterLayout;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,10 +41,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class DesignController {
 
     @Autowired
-    PresenterLayoutRepository repository;
+    PresenterLayoutRepository presenterLayoutRepository;
+    @Autowired
+    PresenterFeatureRepository presenterFeatureRepository;
 
     private void populateModel(Model model) {
-        model.addAttribute("experiments", repository.findAll());
+        model.addAttribute("experiments", presenterLayoutRepository.findAll());
+//        model.addAttribute("features", presenterFeatureRepository.findAll());
         model.addAttribute("featureattributes", FeatureAttribute.values());
         model.addAttribute("featuretypes", FeatureType.values());
         model.addAttribute("presentertypes", PresenterType.values());
@@ -54,9 +60,20 @@ public class DesignController {
         return "design";
     }
 
+    @RequestMapping(value = "/design", params = {"addFeature"}, method = RequestMethod.POST)
+    public String addFeature(final HttpServletRequest req, Model model, @ModelAttribute PresenterFeature presenterFeature) {
+        final Long rowId = Long.valueOf(req.getParameter("addFeature"));
+        final PresenterLayout presenterLayout = presenterLayoutRepository.findOne(rowId);
+        presenterFeatureRepository.save(presenterFeature);
+        presenterLayout.getPresenterFeatures().add(presenterFeature);
+        presenterLayoutRepository.save(presenterLayout);
+        populateModel(model);
+        return "design";
+    }
+
     @RequestMapping(value = "/design", params = {"addRow"}, method = RequestMethod.POST)
     public String addRow(@ModelAttribute PresenterLayout presenterLayout, Model model) {
-        repository.save(presenterLayout);
+        presenterLayoutRepository.save(presenterLayout);
         populateModel(model);
         return "design";
     }
@@ -64,7 +81,7 @@ public class DesignController {
     @RequestMapping(value = "/design", params = {"removeRow"})
     public String removeRow(final HttpServletRequest req, Model model) {
         final Long rowId = Long.valueOf(req.getParameter("removeRow"));
-        repository.delete(rowId);
+        presenterLayoutRepository.delete(rowId);
         populateModel(model);
         return "design";
     }
