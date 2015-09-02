@@ -28,39 +28,23 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         </select>
         <!--<p th:each="feature : ${features}" th:text="${feature.getFeatureType()}"/>-->       
 
-        <table border="1">
+        <table th:each="presenter : ${experiments}">
             <thead>
                 <tr>
                     <th>id</th>
                     <th>name</th>
                     <th>description</th>
                     <th>presenter type</th>
-                    <th>features</th>
-                    <th>action</th>
-                    <th>delete</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="presenter : ${experiments}">
+                <tr>
                     <td th:text="${presenter.getId()}">1</td>
                     <td th:text="${presenter.getName()}">Name</td>
                     <td th:text="${presenter.getDescription()}">Description</td>
                     <td th:text="${presenter.getPresenterType()}">presenterType</td>
-                    <td>    
-                        <p th:each="features : ${presenter.getPresenterFeatures()}">
-                        <p th:text="${features.getFeatureType()}"></p>                            
-                        <p th:text="${features.getFeatureText()}"></p>                            
-                        </p>
-                        <form action="#" th:action="@{/design}"  th:object="${PresenterFeature}" method="post">
-                            <select id="FeatureType" multiple="multiple" name="FeatureType">
-                                <option th:each="featuretype : ${featuretypes}" th:value="${featuretype}" th:text="${featuretype}" /> th:selected="${selectedTagList.contains(atag.id)}"
-                            </select>
-                            <br/>
-                            <input type="text" name="featureText" id="featureText" />                            
-                            <br/>
-                            <button type="submit" name="addFeature" th:value="${presenter.getId()}">Add Feature</button>
-                        </form>
-                    </td>
                     <td>
                         <form action="#" th:action="@{/design}" method="post">
                             <button type="submit" name="updateRow" th:value="${presenter.getId()}">Update</button>
@@ -72,28 +56,57 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         </form>
                     </td>
                 </tr>            
+                <tr>
+                    <td colspan="6"><b>Features</b></td>
+                </tr>
+                <tr>
+                    <td colspan="6">    
+                        <div th:each="features : ${presenter.getPresenterFeatures()}">
+                            <span th:text="${features.getFeatureType()}"></span>                            
+                            <span th:text="${features.getFeatureText()}"></span>                            
+                        </div>
+                        <form action="#" th:action="@{/design}"  th:object="${PresenterFeature}" method="post">
+                            <select id="FeatureType" name="FeatureType">
+                                <option th:each="featuretype : ${featuretypes}" th:value="${featuretype}" th:text="${featuretype}" /> th:selected="${selectedTagList.contains(atag.id)}"
+                            </select>
+                            <input type="text" name="featureText" id="featureText" /> 
+                            <button type="submit" name="addFeature" th:value="${presenter.getId()}">Add Feature</button>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6"><br/></td>
+                </tr>
             </tbody>
         </table>
         <form action="#" th:action="@{/design}" th:object="${PresenterLayout}" method="post">
             <table>
-                <tr>
-                    <td></td>                           
-                    <td>
-                        <input type="text" name="name" id="name" />
-                    </td>
-                    <td>
-                        <input type="text" name="description" id="description" />
-                    </td>
-                    <td>
-                        <select name="presenterType" id="presenterType">
-                            <option th:each="presentertype : ${presentertypes}" th:value="${presentertype}" th:text="${presentertype}" />
-                        </select>
-                    </td>
-                    <td></td>
-                    <td>
-                        <button type="submit" name="addRow">Add row</button>
-                    </td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>name</th>
+                        <th>description</th>
+                        <th>presenter type</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>                       
+                        <td>
+                            <input type="text" name="name" id="name" />
+                        </td>
+                        <td>
+                            <input type="text" name="description" id="description" />
+                        </td>
+                        <td>
+                            <select name="presenterType" id="presenterType">
+                                <option th:each="presentertype : ${presentertypes}" th:value="${presentertype}" th:text="${presentertype}" />
+                            </select>
+                        </td>
+                        <td>
+                            <button type="submit" name="addRow">Add Presenter</button>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
         </form>
     </body>
