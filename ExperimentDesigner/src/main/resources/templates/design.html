@@ -58,21 +58,30 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </tr>
                 <tr>
                     <td colspan="6">    
-                        <div th:each="features : ${presenter.getPresenterFeatures()}">
-                            <span th:text="${features.getFeatureType()}"></span>                            
-                            <span th:text="${features.getFeatureText()}"></span>  
-                            <table>
-                                <tr th:each="featureattribute : ${featureattributes}" >
-                                    <td th:text="${featureattribute.name()}" />
-                                    <!--th:selected="${selectedTagList.contains(atag.id)}"-->
-                                </tr>
-                            </table>
-                        </div>
+                        <table th:unless="${#lists.isEmpty(presenter.getPresenterFeatures())}" border="1">
+                            <tr th:each="features : ${presenter.getPresenterFeatures()}">
+                                <td th:text="${features.getFeatureType()}"/>                            
+                                <!--<span th:text="${features.getFeatureText()}"></span>-->  
+                                <td>
+                                    <table th:unless="${#lists.isEmpty(features.getFeatureType().getFeatureAttributes())}" border="1">
+                                        <tr th:each="featureattribute : ${features.getFeatureType().getFeatureAttributes()}" >
+                                            <td th:text="${featureattribute.name()}" />
+                                            <td>
+                                                <input th:value="${featureattribute.name()}" />
+                                                <!--th:selected="${selectedTagList.contains(atag.id)}"-->
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>
+                                    <textarea th:if="${features.getFeatureType().canHaveText()}" name="featureText" id="featureText"></textarea>                                     
+                                </td>
+                            </tr>
+                        </table>
                         <form action="#" th:action="@{/design}"  th:object="${PresenterFeature}" method="post">
                             <select id="FeatureType" name="FeatureType">
                                 <option th:each="featuretype : ${featuretypes}" th:value="${featuretype}" th:text="${featuretype}" /> th:selected="${selectedTagList.contains(atag.id)}"
                             </select>
-                            <input type="text" name="featureText" id="featureText" /> 
                             <button type="submit" name="addFeature" th:value="${presenter.getId()}">Add Feature</button>
                         </form>
                     </td>

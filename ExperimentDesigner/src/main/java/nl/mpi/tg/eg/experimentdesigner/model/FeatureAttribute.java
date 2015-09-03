@@ -39,6 +39,8 @@ public enum FeatureAttribute {
     eventTag,
     mp3File,
     oggFile,
+    webmFile,
+    poster,
     columnCount,
     kintypestring,
     diagramName,

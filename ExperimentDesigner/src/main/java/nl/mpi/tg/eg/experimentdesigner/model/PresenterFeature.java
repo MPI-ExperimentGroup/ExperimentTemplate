@@ -41,7 +41,6 @@ public class PresenterFeature {
     private FeatureType featureType;
     @OneToMany
     private List<PresenterFeature> presenterFeatures;
-    private String featureText;
 //    private Map<FeatureAttribute, String> featureAttributes;
 
     public PresenterFeature() {
@@ -53,14 +52,6 @@ public class PresenterFeature {
 
     public void setPresenterFeatures(List<PresenterFeature> presenterFeatures) {
         this.presenterFeatures = presenterFeatures;
-    }
-
-    public String getFeatureText() {
-        return featureText;
-    }
-
-    public void setFeatureText(String featureText) {
-        this.featureText = featureText;
     }
 
     public FeatureType getFeatureType() {

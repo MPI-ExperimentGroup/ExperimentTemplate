@@ -17,6 +17,11 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model;
 
+import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.mp3File;
+import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.poster;
+import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.webmFile;
+import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.width;
+
 /**
  * this can be updated with the output of: grep match=
  * ~/Documents/ExperimentTemplate/gwt-cordova/src/main/xsl/config2java.xsl
@@ -62,16 +67,17 @@ public enum FeatureType {
     preloadAllStimuli(false, false, null),
     showStimulusGrid(false, false, null),
     pause(false, false, null),
-    onError(false, false, null),
-    onSuccess(false, false, null),
+    onError(true, false, null),
+    onSuccess(true, false, null),
     kinTypeStringDiagram(false, false, null),
     loadKinTypeStringDiagram(false, false, null),
-    responseCorrect(false, false, null),
-    responseIncorrect(false, false, null),
-    hasMoreStimulus(false, false, null),
-    endOfStimulus(false, false, null),
+    responseCorrect(true, false, null),
+    responseIncorrect(true, false, null),
+    hasMoreStimulus(true, false, null),
+    endOfStimulus(true, false, null),
     stimulusImage(false, false, null),
-    stimulusAudio(false, false, null),
+    stimulusAudio(false, false, new FeatureAttribute[]{FeatureAttribute.mp3File,}),
+    VideoPanel(false, false, new FeatureAttribute[]{mp3File,width,poster,webmFile}),     
     userInfo(false, false, null),
     versionData(false, false, null),
     preventWindowClose(false, false, null);
@@ -85,11 +91,11 @@ public enum FeatureType {
         this.featureAttributes = featureAttributes;
     }
 
-    public boolean isCanHaveFeatures() {
+    public boolean canHaveFeatures() {
         return canHaveFeatures;
     }
 
-    public boolean isCanHaveText() {
+    public boolean canHaveText() {
         return canHaveText;
     }
 
