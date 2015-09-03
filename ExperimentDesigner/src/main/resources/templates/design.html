@@ -98,13 +98,16 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     <body>
         <div id="header"><h1>Frinex Experiment Designer</h1></div>
         <table id="main"><tr><td>
-                    <table class="presenter" th:each="presenter : ${experiments}">
+                    <table class="presenter" th:each="presenter : ${screens}">
                         <thead>
                             <tr>
-                                <th>id</th>
-                                <th>name</th>
-                                <th>description</th>
-                                <th>presenter type</th>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Menu Label</th>
+                                <th>Screen Type</th>
+                                <th>Back Action</th>
+                                <th>Self (Action)</th>
+                                <th>Next Action</th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -112,9 +115,20 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <tbody>
                             <tr>
                                 <td th:text="${presenter.getId()}">1</td>
-                                <td th:text="${presenter.getName()}">Name</td>
-                                <td th:text="${presenter.getDescription()}">Description</td>
+                                <td th:text="${presenter.getTitle()}">Title</td>
+                                <td th:text="${presenter.getMenuLabel()}">menuLabel</td>
                                 <td th:text="${presenter.getPresenterType()}">presenterType</td>
+                                <td>
+                                    <select name="backPresenterTag" id="nextPresenterTag">
+                                        <option th:each="presenterTags : ${screens}" th:value="${presenterTags.getSelfPresenterTag()}" th:text="${presenterTags.getSelfPresenterTag()}" th:selected="${presenterTags.getSelfPresenterTag() eq presenter.getBackPresenterTag()}" />
+                                    </select>
+                                </td>
+                                <td th:text="${presenter.getSelfPresenterTag()}">SelfTag</td>
+                                <td>
+                                    <select name="nextPresenterTag" id="nextPresenterTag">
+                                        <option th:each="presenterTags : ${screens}" th:value="${presenterTags.getSelfPresenterTag()}" th:text="${presenterTags.getSelfPresenterTag()}" th:selected="${presenterTags.getSelfPresenterTag() eq presenter.getNextPresenterTag()}" />
+                                    </select>
+                                </td>
                                 <td>
                                     <form action="#" th:action="@{/design}" method="post">
                                         <button type="submit" name="updateRow" th:value="${presenter.getId()}">Update</button>
@@ -127,10 +141,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 </td>
                             </tr>            
                             <tr>
-                                <td colspan="6"><b>Features</b></td>
+                                <td colspan="9"><b>Features</b></td>
                             </tr>
                             <tr>
-                                <td colspan="6">    
+                                <td colspan="9">    
                                     <table class="featurestable" th:unless="${#lists.isEmpty(presenter.getPresenterFeatures())}">
                                         <tr class="featuresrow" th:each="features : ${presenter.getPresenterFeatures()}">
                                             <td class="featurescell" th:text="${features.getFeatureType()}">getFeatureType</td>                            
@@ -140,8 +154,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                                     <tr th:each="featureattribute : ${features.getFeatureType().getFeatureAttributes()}" >
                                                         <td th:text="${featureattribute.name()}">featureattribute.name()</td>
                                                         <td>
-                                                            <input th:value="${featureattribute.name()}" />
-                                                            <!--th:selected="${selectedTagList.contains(atag.id)}"-->
+                                                            <input th:value="${featureattribute.name()}" />                                                            
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -172,19 +185,34 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             <table class="addpresenterform">
                                 <thead>
                                     <tr>
-                                        <th>name</th>
-                                        <th>description</th>
-                                        <th>screen type</th>
-                                        <th></th>
+                                        <th>Screen Title</th>
+                                        <th>Menu Label</th>
+                                        <th>Back Action</th>
+                                        <th>Self (Action)</th>
+                                        <th>Next Action</th>
+                                        <th>Screen Type</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>                       
                                         <td>
-                                            <input type="text" name="name" id="name" />
+                                            <input type="text" name="title" id="title" />
                                         </td>
                                         <td>
-                                            <input type="text" name="description" id="description" />
+                                            <input type="text" name="menuLabel" id="menuLabel" />
+                                        </td>
+                                        <td>
+                                            <select name="backPresenterTag" id="backPresenterTag">
+                                                <option th:each="presenter : ${screens}" th:value="${presenter.getSelfPresenterTag()}" th:text="${presenter.getSelfPresenterTag()}" />
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="selfPresenterTag" id="selfPresenterTag" />
+                                        </td>
+                                        <td>
+                                            <select name="nextPresenterTag" id="nextPresenterTag">
+                                                <option th:each="presenter : ${screens}" th:value="${presenter.getSelfPresenterTag()}" th:text="${presenter.getSelfPresenterTag()}" />
+                                            </select>
                                         </td>
                                         <td>
                                             <select name="presenterType" id="presenterType">

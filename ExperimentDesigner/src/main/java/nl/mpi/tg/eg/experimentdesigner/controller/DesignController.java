@@ -46,7 +46,7 @@ public class DesignController {
     PresenterFeatureRepository presenterFeatureRepository;
 
     private void populateModel(Model model) {
-        model.addAttribute("experiments", presenterScreenRepository.findAll());
+        model.addAttribute("screens", presenterScreenRepository.findAll());
 //        model.addAttribute("features", presenterFeatureRepository.findAll());
         model.addAttribute("featureattributes", FeatureAttribute.values());
         model.addAttribute("featuretypes", FeatureType.values());

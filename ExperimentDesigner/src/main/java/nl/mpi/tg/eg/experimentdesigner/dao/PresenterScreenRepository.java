@@ -27,5 +27,4 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface PresenterScreenRepository extends CrudRepository<PresenterScreen, Long> {
 
-    List<PresenterScreen> findByName(String lastName);
 }

@@ -37,8 +37,11 @@ public class PresenterScreen {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String name;
-    private String description;
+    private String title;
+    private String menuLabel;
+    private String backPresenterTag;
+    private String selfPresenterTag;
+    private String nextPresenterTag;
 
     @Enumerated(EnumType.STRING)
     private PresenterType presenterType;
@@ -47,14 +50,6 @@ public class PresenterScreen {
     private List<PresenterFeature> presenterFeatures;
 
     public PresenterScreen() {
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public void setPresenterType(PresenterType presenterType) {
@@ -69,12 +64,44 @@ public class PresenterScreen {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public String getDescription() {
-        return description;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getMenuLabel() {
+        return menuLabel;
+    }
+
+    public void setMenuLabel(String menuLabel) {
+        this.menuLabel = menuLabel;
+    }
+
+    public String getBackPresenterTag() {
+        return backPresenterTag;
+    }
+
+    public void setBackPresenterTag(String backPresenterTag) {
+        this.backPresenterTag = backPresenterTag;
+    }
+
+    public String getSelfPresenterTag() {
+        return selfPresenterTag;
+    }
+
+    public void setSelfPresenterTag(String selfPresenterTag) {
+        this.selfPresenterTag = selfPresenterTag;
+    }
+
+    public String getNextPresenterTag() {
+        return nextPresenterTag;
+    }
+
+    public void setNextPresenterTag(String nextPresenterTag) {
+        this.nextPresenterTag = nextPresenterTag;
     }
 
     public PresenterType getPresenterType() {
