@@ -45,6 +45,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 color: #354671;
                 background: #a9b1c6;
             }
+            .addfeaturediv {
+                margin-top: 10px;                
+            }
             .addpresenterdiv {
                 margin-top: 10px;
                 color: #164f51;
@@ -52,14 +55,36 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 border-color: #2a6366;
                 width: 100%;
             }
-            .addpresenterform {
+            #main {
                 margin-left: auto;
                 margin-right: auto;
             }
+            .addpresenterform {                
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+            }
+            .featurestable {
+                border-collapse: collapse;
+                margin-top: 10px;
+            }
+            .featuresrow {
+                margin-top: 10px;
+                /*border-color: #1f305a;*/
+                border-color: rgba(31, 48, 90, 0.36);
+                border-style: solid;
+                border-width: 1px;
+            }
+            .featurescell {
+                padding-bottom: 10px;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-top: 10px;
+            }
             .presenter {
                 margin-top: 10px;
-                margin-left: auto;
-                margin-right: auto;
+                width: 100%;
                 border-color: #1f305a;
                 border-style: dotted;
                 border-width: 1px;
@@ -72,104 +97,108 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     </head>
     <body>
         <div id="header"><h1>Frinex Experiment Designer</h1></div>
-
-        <table class="presenter" th:each="presenter : ${experiments}">
-            <thead>
-                <tr>
-                    <th>id</th>
-                    <th>name</th>
-                    <th>description</th>
-                    <th>presenter type</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td th:text="${presenter.getId()}">1</td>
-                    <td th:text="${presenter.getName()}">Name</td>
-                    <td th:text="${presenter.getDescription()}">Description</td>
-                    <td th:text="${presenter.getPresenterType()}">presenterType</td>
-                    <td>
-                        <form action="#" th:action="@{/design}" method="post">
-                            <button type="submit" name="updateRow" th:value="${presenter.getId()}">Update</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form action="#" th:action="@{/design}" method="post">
-                            <button type="submit" name="removeRow" th:value="${presenter.getId()}">Remove</button>
-                        </form>
-                    </td>
-                </tr>            
-                <tr>
-                    <td colspan="6"><b>Features</b></td>
-                </tr>
-                <tr>
-                    <td colspan="6">    
-                        <table th:unless="${#lists.isEmpty(presenter.getPresenterFeatures())}" border="1">
-                            <tr th:each="features : ${presenter.getPresenterFeatures()}">
-                                <td th:text="${features.getFeatureType()}"/>                            
-                                <!--<span th:text="${features.getFeatureText()}"></span>-->  
+        <table id="main"><tr><td>
+                    <table class="presenter" th:each="presenter : ${experiments}">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>name</th>
+                                <th>description</th>
+                                <th>presenter type</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td th:text="${presenter.getId()}">1</td>
+                                <td th:text="${presenter.getName()}">Name</td>
+                                <td th:text="${presenter.getDescription()}">Description</td>
+                                <td th:text="${presenter.getPresenterType()}">presenterType</td>
                                 <td>
-                                    <table th:unless="${#lists.isEmpty(features.getFeatureType().getFeatureAttributes())}" border="1">
-                                        <tr th:each="featureattribute : ${features.getFeatureType().getFeatureAttributes()}" >
-                                            <td th:text="${featureattribute.name()}" />
-                                            <td>
-                                                <input th:value="${featureattribute.name()}" />
-                                                <!--th:selected="${selectedTagList.contains(atag.id)}"-->
+                                    <form action="#" th:action="@{/design}" method="post">
+                                        <button type="submit" name="updateRow" th:value="${presenter.getId()}">Update</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="#" th:action="@{/design}" method="post">
+                                        <button type="submit" name="removeRow" th:value="${presenter.getId()}">Remove</button>
+                                    </form>
+                                </td>
+                            </tr>            
+                            <tr>
+                                <td colspan="6"><b>Features</b></td>
+                            </tr>
+                            <tr>
+                                <td colspan="6">    
+                                    <table class="featurestable" th:unless="${#lists.isEmpty(presenter.getPresenterFeatures())}">
+                                        <tr class="featuresrow" th:each="features : ${presenter.getPresenterFeatures()}">
+                                            <td class="featurescell" th:text="${features.getFeatureType()}">getFeatureType</td>                            
+                                            <!--<span th:text="${features.getFeatureText()}"></span>-->  
+                                            <td class="featurescell" th:unless="${#lists.isEmpty(features.getFeatureType().getFeatureAttributes())}" th:attr="colspan=${features.getFeatureType().canHaveText() ? 1 : 2}">
+                                                <table>
+                                                    <tr th:each="featureattribute : ${features.getFeatureType().getFeatureAttributes()}" >
+                                                        <td th:text="${featureattribute.name()}">featureattribute.name()</td>
+                                                        <td>
+                                                            <input th:value="${featureattribute.name()}" />
+                                                            <!--th:selected="${selectedTagList.contains(atag.id)}"-->
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td class="featurescell" th:if="${features.getFeatureType().canHaveText()}" th:attr="colspan=${#lists.isEmpty(features.getFeatureType().getFeatureAttributes()) ? 2 : 1}">
+                                                <textarea name="featureText" id="featureText"></textarea>                                     
                                             </td>
                                         </tr>
                                     </table>
-                                </td>
-                                <td>
-                                    <textarea th:if="${features.getFeatureType().canHaveText()}" name="featureText" id="featureText"></textarea>                                     
+                                    <div class="addfeaturediv">
+                                        <form action="#" th:action="@{/design}"  th:object="${PresenterFeature}" method="post">
+                                            <select id="FeatureType" name="FeatureType">
+                                                <option th:each="featuretype : ${featuretypes}" th:value="${featuretype}" th:text="${featuretype}" /> th:selected="${selectedTagList.contains(atag.id)}"
+                                            </select>
+                                            <button type="submit" name="addFeature" th:value="${presenter.getId()}">Add Feature</button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
-                        </table>
-                        <form action="#" th:action="@{/design}"  th:object="${PresenterFeature}" method="post">
-                            <select id="FeatureType" name="FeatureType">
-                                <option th:each="featuretype : ${featuretypes}" th:value="${featuretype}" th:text="${featuretype}" /> th:selected="${selectedTagList.contains(atag.id)}"
-                            </select>
-                            <button type="submit" name="addFeature" th:value="${presenter.getId()}">Add Feature</button>
+                            <tr>
+                                <td colspan="6"><br/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td></tr><tr><td>
+                    <div class="addpresenterdiv">
+                        <form action="#" th:action="@{/design}" th:object="${PresenterLayout}" method="post">
+                            <table class="addpresenterform">
+                                <thead>
+                                    <tr>
+                                        <th>name</th>
+                                        <th>description</th>
+                                        <th>presenter type</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>                       
+                                        <td>
+                                            <input type="text" name="name" id="name" />
+                                        </td>
+                                        <td>
+                                            <input type="text" name="description" id="description" />
+                                        </td>
+                                        <td>
+                                            <select name="presenterType" id="presenterType">
+                                                <option th:each="presentertype : ${presentertypes}" th:value="${presentertype}" th:text="${presentertype}" />
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <button type="submit" name="addRow">Add Presenter</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </form>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="6"><br/></td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="addpresenterdiv">
-            <form action="#" th:action="@{/design}" th:object="${PresenterLayout}" method="post">
-                <table class="addpresenterform">
-                    <thead>
-                        <tr>
-                            <th>name</th>
-                            <th>description</th>
-                            <th>presenter type</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>                       
-                            <td>
-                                <input type="text" name="name" id="name" />
-                            </td>
-                            <td>
-                                <input type="text" name="description" id="description" />
-                            </td>
-                            <td>
-                                <select name="presenterType" id="presenterType">
-                                    <option th:each="presentertype : ${presentertypes}" th:value="${presentertype}" th:text="${presentertype}" />
-                                </select>
-                            </td>
-                            <td>
-                                <button type="submit" name="addRow">Add Presenter</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </form>
-        </div>
+                    </div>
+                </td></tr></table>
     </body>
 </html>
