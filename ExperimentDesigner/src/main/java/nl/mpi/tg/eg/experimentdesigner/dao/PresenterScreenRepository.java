@@ -18,14 +18,14 @@
 package nl.mpi.tg.eg.experimentdesigner.dao;
 
 import java.util.List;
-import nl.mpi.tg.eg.experimentdesigner.model.PresenterLayout;
+import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  * @since Aug 18, 2015 1:47:15 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public interface PresenterLayoutRepository extends CrudRepository<PresenterLayout, Long> {
+public interface PresenterScreenRepository extends CrudRepository<PresenterScreen, Long> {
 
-    List<PresenterLayout> findByName(String lastName);
+    List<PresenterScreen> findByName(String lastName);
 }

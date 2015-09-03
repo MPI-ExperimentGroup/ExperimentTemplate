@@ -122,7 +122,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 </td>
                                 <td>
                                     <form action="#" th:action="@{/design}" method="post">
-                                        <button type="submit" name="removeRow" th:value="${presenter.getId()}">Remove</button>
+                                        <button type="submit" name="removeScreen" th:value="${presenter.getId()}">Remove</button>
                                     </form>
                                 </td>
                             </tr>            
@@ -168,13 +168,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     </table>
                 </td></tr><tr><td>
                     <div class="addpresenterdiv">
-                        <form action="#" th:action="@{/design}" th:object="${PresenterLayout}" method="post">
+                        <form action="#" th:action="@{/design}" th:object="${PresenterScreen}" method="post">
                             <table class="addpresenterform">
                                 <thead>
                                     <tr>
                                         <th>name</th>
                                         <th>description</th>
-                                        <th>presenter type</th>
+                                        <th>screen type</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -192,7 +192,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                             </select>
                                         </td>
                                         <td>
-                                            <button type="submit" name="addRow">Add Presenter</button>
+                                            <button type="submit" name="addScreen">Add Screen</button>
                                         </td>
                                     </tr>
                                 </tbody>

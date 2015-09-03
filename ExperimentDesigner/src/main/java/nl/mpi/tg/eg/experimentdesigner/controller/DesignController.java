@@ -20,11 +20,11 @@ package nl.mpi.tg.eg.experimentdesigner.controller;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterFeatureRepository;
-import nl.mpi.tg.eg.experimentdesigner.dao.PresenterLayoutRepository;
+import nl.mpi.tg.eg.experimentdesigner.dao.PresenterScreenRepository;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
-import nl.mpi.tg.eg.experimentdesigner.model.PresenterLayout;
+import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,12 +41,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class DesignController {
 
     @Autowired
-    PresenterLayoutRepository presenterLayoutRepository;
+    PresenterScreenRepository presenterScreenRepository;
     @Autowired
     PresenterFeatureRepository presenterFeatureRepository;
 
     private void populateModel(Model model) {
-        model.addAttribute("experiments", presenterLayoutRepository.findAll());
+        model.addAttribute("experiments", presenterScreenRepository.findAll());
 //        model.addAttribute("features", presenterFeatureRepository.findAll());
         model.addAttribute("featureattributes", FeatureAttribute.values());
         model.addAttribute("featuretypes", FeatureType.values());
@@ -63,25 +63,25 @@ public class DesignController {
     @RequestMapping(value = "/design", params = {"addFeature"}, method = RequestMethod.POST)
     public String addFeature(final HttpServletRequest req, Model model, @ModelAttribute PresenterFeature presenterFeature) {
         final Long rowId = Long.valueOf(req.getParameter("addFeature"));
-        final PresenterLayout presenterLayout = presenterLayoutRepository.findOne(rowId);
+        final PresenterScreen presenterScreen = presenterScreenRepository.findOne(rowId);
         presenterFeatureRepository.save(presenterFeature);
-        presenterLayout.getPresenterFeatures().add(presenterFeature);
-        presenterLayoutRepository.save(presenterLayout);
+        presenterScreen.getPresenterFeatures().add(presenterFeature);
+        presenterScreenRepository.save(presenterScreen);
         populateModel(model);
         return "design";
     }
 
-    @RequestMapping(value = "/design", params = {"addRow"}, method = RequestMethod.POST)
-    public String addRow(@ModelAttribute PresenterLayout presenterLayout, Model model) {
-        presenterLayoutRepository.save(presenterLayout);
+    @RequestMapping(value = "/design", params = {"addScreen"}, method = RequestMethod.POST)
+    public String addScreen(@ModelAttribute PresenterScreen prersenterScreen, Model model) {
+        presenterScreenRepository.save(prersenterScreen);
         populateModel(model);
         return "design";
     }
 
-    @RequestMapping(value = "/design", params = {"removeRow"})
-    public String removeRow(final HttpServletRequest req, Model model) {
-        final Long rowId = Long.valueOf(req.getParameter("removeRow"));
-        presenterLayoutRepository.delete(rowId);
+    @RequestMapping(value = "/design", params = {"removeScreen"})
+    public String removeScreen(final HttpServletRequest req, Model model) {
+        final Long rowId = Long.valueOf(req.getParameter("removeScreen"));
+        presenterScreenRepository.delete(rowId);
         populateModel(model);
         return "design";
     }

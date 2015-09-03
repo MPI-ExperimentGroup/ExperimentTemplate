@@ -32,7 +32,7 @@ import javax.persistence.OneToMany;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Entity
-public class PresenterLayout {
+public class PresenterScreen {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,7 +46,7 @@ public class PresenterLayout {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PresenterFeature> presenterFeatures;
 
-    public PresenterLayout() {
+    public PresenterScreen() {
     }
 
     public void setName(String name) {

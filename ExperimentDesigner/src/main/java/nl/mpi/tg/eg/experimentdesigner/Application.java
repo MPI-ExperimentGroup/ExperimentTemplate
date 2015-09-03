@@ -17,7 +17,7 @@
  */
 package nl.mpi.tg.eg.experimentdesigner;
 
-import nl.mpi.tg.eg.experimentdesigner.dao.PresenterLayoutRepository;
+import nl.mpi.tg.eg.experimentdesigner.dao.PresenterScreenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -33,7 +33,7 @@ import org.springframework.web.context.WebApplicationContext;
 public class Application extends SpringBootServletInitializer {
 
     @Autowired
-    PresenterLayoutRepository repository;
+    PresenterScreenRepository repository;
 
     public static void main(String[] args) {
         SpringApplication.run(applicationClass, args);
