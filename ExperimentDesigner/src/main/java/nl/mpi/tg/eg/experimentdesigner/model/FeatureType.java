@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.experimentdesigner.model;
 
 import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.mp3File;
 import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.poster;
+import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.target;
 import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.webmFile;
 import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.width;
 
@@ -36,7 +37,7 @@ public enum FeatureType {
     image(false, false, null),
     menuItem(false, false, null),
     popupMessage(false, false, null),
-    optionButton(false, false, null),
+    optionButton(false, true, new FeatureAttribute[]{target}),
     endOfStimulusButton(false, false, null),
     padding(false, false, null),
     localStorageData(false, false, null),
@@ -77,7 +78,7 @@ public enum FeatureType {
     endOfStimulus(true, false, null),
     stimulusImage(false, false, null),
     stimulusAudio(false, false, new FeatureAttribute[]{FeatureAttribute.mp3File,}),
-    VideoPanel(false, false, new FeatureAttribute[]{mp3File,width,poster,webmFile}),     
+    VideoPanel(false, false, new FeatureAttribute[]{mp3File, width, poster, webmFile}),
     userInfo(false, false, null),
     versionData(false, false, null),
     preventWindowClose(false, false, null);
