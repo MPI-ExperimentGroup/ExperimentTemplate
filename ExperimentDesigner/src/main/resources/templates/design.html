@@ -21,11 +21,59 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <title>Experiment Designer</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style type="text/css">
+            body {
+                background: white;
+                color: rgba(0, 0, 0, 0.5);
+            }
+            #header {
+                background: #526289;
+            }
+            #header h1 {
+                color: rgba(255, 255, 255, 0.56);
+                padding-bottom: 10px;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-top: 10px;
+            }
+            button {
+                color: #a9b1c6;
+                background: #1f305a;
+                border-color: #354671;
+            }
+            button:hover {
+                color: #354671;
+                background: #a9b1c6;
+            }
+            .addpresenterdiv {
+                margin-top: 10px;
+                color: #164f51;
+                background: #9cbabb;
+                border-color: #2a6366;
+                width: 100%;
+            }
+            .addpresenterform {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .presenter {
+                margin-top: 10px;
+                margin-left: auto;
+                margin-right: auto;
+                border-color: #1f305a;
+                border-style: dotted;
+                border-width: 1px;
+                padding-bottom: 10px;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-top: 10px;
+            }
+        </style>
     </head>
     <body>
-        <!--<p th:each="feature : ${features}" th:text="${feature.getFeatureType()}"/>-->       
+        <div id="header"><h1>Frinex Experiment Designer</h1></div>
 
-        <table th:each="presenter : ${experiments}">
+        <table class="presenter" th:each="presenter : ${experiments}">
             <thead>
                 <tr>
                     <th>id</th>
@@ -91,35 +139,37 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </tr>
             </tbody>
         </table>
-        <form action="#" th:action="@{/design}" th:object="${PresenterLayout}" method="post">
-            <table>
-                <thead>
-                    <tr>
-                        <th>name</th>
-                        <th>description</th>
-                        <th>presenter type</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>                       
-                        <td>
-                            <input type="text" name="name" id="name" />
-                        </td>
-                        <td>
-                            <input type="text" name="description" id="description" />
-                        </td>
-                        <td>
-                            <select name="presenterType" id="presenterType">
-                                <option th:each="presentertype : ${presentertypes}" th:value="${presentertype}" th:text="${presentertype}" />
-                            </select>
-                        </td>
-                        <td>
-                            <button type="submit" name="addRow">Add Presenter</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </form>
+        <div class="addpresenterdiv">
+            <form action="#" th:action="@{/design}" th:object="${PresenterLayout}" method="post">
+                <table class="addpresenterform">
+                    <thead>
+                        <tr>
+                            <th>name</th>
+                            <th>description</th>
+                            <th>presenter type</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>                       
+                            <td>
+                                <input type="text" name="name" id="name" />
+                            </td>
+                            <td>
+                                <input type="text" name="description" id="description" />
+                            </td>
+                            <td>
+                                <select name="presenterType" id="presenterType">
+                                    <option th:each="presentertype : ${presentertypes}" th:value="${presentertype}" th:text="${presentertype}" />
+                                </select>
+                            </td>
+                            <td>
+                                <button type="submit" name="addRow">Add Presenter</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
     </body>
 </html>
