@@ -30,7 +30,7 @@ public enum FeatureAttribute {
     back,
     next,
     fieldName,
-    image,
+    src,
     link,
     width,
     align,

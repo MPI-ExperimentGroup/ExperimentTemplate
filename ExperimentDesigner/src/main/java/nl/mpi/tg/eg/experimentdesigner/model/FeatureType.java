@@ -17,11 +17,7 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model;
 
-import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.mp3File;
-import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.poster;
-import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.target;
-import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.webmFile;
-import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.width;
+import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.*;
 
 /**
  * this can be updated with the output of: grep match=
@@ -34,7 +30,7 @@ public enum FeatureType {
 
     htmlText(false, true, null),
     text(false, true, null),
-    image(false, false, null),
+    image(false, false, new FeatureAttribute[]{width, src}),
     menuItem(false, false, null),
     popupMessage(false, false, null),
     optionButton(false, true, new FeatureAttribute[]{target}),
