@@ -46,6 +46,10 @@ public class PresenterFeature {
     public PresenterFeature() {
     }
 
+    public long getId() {
+        return id;
+    }
+
     public List<PresenterFeature> getPresenterFeatures() {
         return presenterFeatures;
     }

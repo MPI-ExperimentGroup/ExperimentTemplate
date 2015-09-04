@@ -71,6 +71,17 @@ public class DesignController {
         return "design";
     }
 
+    @RequestMapping(value = "/design", params = {"addSubFeature"}, method = RequestMethod.POST)
+    public String addSubFeature(final HttpServletRequest req, Model model, @ModelAttribute PresenterFeature childFeature) {
+        final Long rowId = Long.valueOf(req.getParameter("addSubFeature"));
+        final PresenterFeature parentFeature = presenterFeatureRepository.findOne(rowId);
+        presenterFeatureRepository.save(childFeature);
+        parentFeature.getPresenterFeatures().add(childFeature);
+        presenterFeatureRepository.save(parentFeature);
+        populateModel(model);
+        return "design";
+    }
+
     @RequestMapping(value = "/design", params = {"addScreen"}, method = RequestMethod.POST)
     public String addScreen(@ModelAttribute PresenterScreen prersenterScreen, Model model) {
         presenterScreenRepository.save(prersenterScreen);
