@@ -18,7 +18,7 @@
 package nl.mpi.tg.eg.experimentdesigner.model;
 
 import java.util.List;
-import java.util.Map;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -39,9 +39,10 @@ public class PresenterFeature {
     private long id;
     @Enumerated(EnumType.STRING)
     private FeatureType featureType;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PresenterFeature> presenterFeatures;
 //    private Map<FeatureAttribute, String> featureAttributes;
+    private String featureText;
 
     public PresenterFeature() {
     }
@@ -66,4 +67,11 @@ public class PresenterFeature {
         this.featureType = featureType;
     }
 
+    public String getFeatureText() {
+        return featureText;
+    }
+
+    public void setFeatureText(String featureText) {
+        this.featureText = featureText;
+    }
 }

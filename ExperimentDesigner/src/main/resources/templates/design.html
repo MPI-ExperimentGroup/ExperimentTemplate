@@ -74,7 +74,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 /*border-color: #1f305a;*/
                 border-color: rgba(31, 48, 90, 0.36);
                 border-style: solid;
-                border-width: 1px;
+                border-width: 1px;          
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
             }
             .featurescell {
                 padding-bottom: 10px;
@@ -97,6 +101,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     </head>
     <body>
         <div id="header"><h1>Frinex Experiment Designer</h1></div>
+        <div th:text="'screencount ' + ${screencount}"></div>
+        <div th:text="'featurecount ' + ${featurecount}"></div>
         <table id="main"><tr><td>
                     <table class="presenter" th:each="presenter : ${screens}">
                         <thead>
@@ -145,30 +151,36 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             </tr>
                             <tr th:with="objectType=${'PresenterScreen'}">
                                 <td th:fragment="features" colspan="9">    
-                                    <table class="featurestable" th:unless="${#lists.isEmpty(presenter.getPresenterFeatures())}">
-                                        <tr class="featuresrow" th:each="features : ${presenter.getPresenterFeatures()}">
-                                            <td class="featurescell" th:text="${features.getFeatureType()}">getFeatureType</td>                            
-                                            <!--<span th:text="${features.getFeatureText()}"></span>-->  
-                                            <td class="featurescell" th:unless="${#lists.isEmpty(features.getFeatureType().getFeatureAttributes())}" th:attr="colspan=${features.getFeatureType().canHaveText() ? 1 : 2}">
-                                                <table>
-                                                    <tr th:each="featureattribute : ${features.getFeatureType().getFeatureAttributes()}" >
-                                                        <td th:text="${featureattribute.name()}">featureattribute.name()</td>
-                                                        <td>
-                                                            <input th:value="${featureattribute.name()}" />                                                            
-                                                        </td>
-                                                    </tr>
-                                                    <tr th:replace="design :: features(presenter=${features}, objectType='PresenterFeature')"></tr>
-                                                </table>
-                                            </td>
-                                            <td class="featurescell" th:if="${features.getFeatureType().canHaveText()}" th:attr="colspan=${#lists.isEmpty(features.getFeatureType().getFeatureAttributes()) ? 2 : 1}">
-                                                <textarea name="featureText" id="featureText"></textarea>                                     
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <div class="addfeaturediv">
+                                    <div class="featurestable" th:unless="${#lists.isEmpty(presenter.getPresenterFeatures())}">
+                                        <div class="featuresrow" th:each="features : ${presenter.getPresenterFeatures()}">
+                                            <form action="#" th:action="@{/design}"  th:object="${PresenterFeature}" method="post">
+                                                <span class="featurescell" th:text="${features.getFeatureType()}">getFeatureType</span>                            
+                                                <!--<span th:text="${features.getFeatureText()}"></span>-->  
+                                                <span class="featurescell" th:if="${features.getFeatureType().canHaveText()}">
+                                                    <textarea name="featureText" id="featureText" th:text="${features.getFeatureText()}"></textarea>                                     
+                                                </span>
+                                                <span>
+                                                    <button type="submit" name="deleteFeature" th:value="${features.getId()}">Delete Feature</button>
+                                                    <button type="submit" name="saveFeature" th:value="${features.getId()}">Save Changes</button>
+                                                </span>
+                                                <div class="featurescell" th:unless="${#lists.isEmpty(features.getFeatureType().getFeatureAttributes())}" th:attr="colspan=${features.getFeatureType().canHaveText() ? 1 : 2}">
+                                                    <table>
+                                                        <tr th:each="featureattribute : ${features.getFeatureType().getFeatureAttributes()}" >
+                                                            <td th:text="${featureattribute.name()}">featureattribute.name()</td>
+                                                            <td>
+                                                                <input th:value="${featureattribute.name()}" />                                                            
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>                                                
+                                            </form>
+                                            <div th:replace="design :: features(presenter=${features}, objectType='PresenterFeature')"></div>
+                                        </div>
+                                    </div>
+                                    <div class="addfeaturediv" th:if="(${objectType} eq 'PresenterScreen') or ${presenter.getFeatureType().canHaveFeatures()}">
                                         <form action="#" th:action="@{/design}"  th:object="${PresenterFeature}" method="post">
                                             <select id="FeatureType" name="FeatureType">
-                                                <option th:each="featuretype : ${featuretypes}" th:value="${featuretype}" th:text="${featuretype}" /> th:selected="${selectedTagList.contains(atag.id)}"
+                                                <option th:each="featuretype : ${featuretypes}" th:value="${featuretype}" th:text="${featuretype}" />
                                             </select>                                            
                                             <button th:if="${objectType} eq 'PresenterScreen'" type="submit" name="addFeature" th:value="${presenter.getId()}">Add Feature</button>
                                             <button th:unless="${objectType} eq 'PresenterScreen'" type="submit" name="addSubFeature" th:value="${presenter.getId()}">Add Feature</button>
@@ -229,6 +241,35 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             </table>
                         </form>
                     </div>
-                </td></tr></table>
+                </td>
+            </tr><tr>
+                <td>
+                    <textarea rows="100" cols="100">
+<experiment appNameDisplay="Dobes Annotator" appNameInternal="DobesAnnotator" dataSubmitUrl="http://ems12.mpi.nl/dobes-frinex-admin-0.1.38-testing/" staticFilesUrl="static/">
+    <metadata>
+        <field postName="workerId" registrationField="Reporter name *" controlledRegex=".'{'3,'}'" controlledMessage="Please enter at least three letters." />
+        <field postName="errordevice" registrationField="Device model" controlledRegex=".'{'2,'}'" controlledMessage="Please enter the device model" />
+        <field postName="errordescription" registrationField="Please describe the error" controlledRegex=".'{'2,'}'" controlledMessage="Please enter a short description of the issue" />
+    </metadata>
+    <presenter th:each="presenter : ${screens}" th:attr="type=${presenter.getPresenterType()}, menuLabel=${presenter.getMenuLabel()}, title=${presenter.getTitle()}, self=${presenter.getSelfPresenterTag()}, back=${presenter.getBackPresenterTag()}, next=${presenter.getNextPresenterTag()}">
+        <htmlText>This is a simple video codec testing application.</htmlText>
+        <padding/>
+        <AudioRecorderPanel src=""/>
+        <optionButton target="VideoTestPageAspen">Video Test Page (aspen)</optionButton>
+        <optionButton target="VideoTestPageControlledBurn">Video Test Page (controlled_burn)</optionButton>
+        <optionButton target="VideoTestPageDucksTakeOff">Video Test Page (ducks_take_off)</optionButton>
+        <optionButton target="VideoTestPageHarbour">Video Test Page (harbour)</optionButton>
+        <optionButton target="VideoTestPagePedestrianArea">Video Test Page (pedestrian_area)</optionButton>
+        <optionButton target="VideoTestPagemov_bbbmp4  ">Video Test Page (VideoTestPagemov_bbbmp4)</optionButton>
+        <optionButton target="VideoTestPagemov_bbbogg">Video Test Page (VideoTestPagemov_bbbogg)</optionButton>
+        <optionButton target="VideoTestPageWebM">Video Test Page (VideoTestPageWebM)</optionButton>
+        <padding/>
+        <versionData/>
+    </presenter> 
+</experiment>
+                    </textarea>
+                </td>
+            </tr>
+        </table>
     </body>
 </html>
