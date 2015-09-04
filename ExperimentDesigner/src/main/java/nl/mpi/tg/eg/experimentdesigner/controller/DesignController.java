@@ -47,6 +47,8 @@ public class DesignController {
 
     private void populateModel(Model model) {
         model.addAttribute("screens", presenterScreenRepository.findAll());
+        model.addAttribute("screencount", presenterScreenRepository.count());
+        model.addAttribute("featurecount", presenterFeatureRepository.count());
 //        model.addAttribute("features", presenterFeatureRepository.findAll());
         model.addAttribute("featureattributes", FeatureAttribute.values());
         model.addAttribute("featuretypes", FeatureType.values());
@@ -78,6 +80,31 @@ public class DesignController {
         presenterFeatureRepository.save(childFeature);
         parentFeature.getPresenterFeatures().add(childFeature);
         presenterFeatureRepository.save(parentFeature);
+        populateModel(model);
+        return "design";
+    }
+
+    @RequestMapping(value = "/design", params = {"deleteFeature"}, method = RequestMethod.POST)
+    public String deleteFeature(final HttpServletRequest req, Model model) {
+        final Long rowId = Long.valueOf(req.getParameter("deleteFeature"));
+        final PresenterFeature deletableFeature = presenterFeatureRepository.findOne(rowId);
+        final List<PresenterFeature> parentFeatures = presenterFeatureRepository.findByPresenterFeaturesContaining(deletableFeature);
+//        for (PresenterFeature parentFeature : parentFeatures) {
+//            parentFeature.getPresenterFeatures().remove(deletableFeature);
+//            presenterFeatureRepository.save(parentFeature);
+//        }
+//        presenterFeatureRepository.delete(deletableFeature);
+        populateModel(model);
+        return "design";
+    }
+
+    @RequestMapping(value = "/design", params = {"saveFeature"}, method = RequestMethod.POST)
+    public String saveFeature(final HttpServletRequest req, Model model) {
+        final Long rowId = Long.valueOf(req.getParameter("saveFeature"));
+        final PresenterFeature modifiedFeature = presenterFeatureRepository.findOne(rowId);
+        final String featureText = req.getParameter("featureText");
+        modifiedFeature.setFeatureText(featureText);
+        presenterFeatureRepository.save(modifiedFeature);
         populateModel(model);
         return "design";
     }
