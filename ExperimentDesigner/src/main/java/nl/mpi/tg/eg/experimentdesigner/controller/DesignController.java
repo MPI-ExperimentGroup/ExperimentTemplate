@@ -87,13 +87,25 @@ public class DesignController {
     @RequestMapping(value = "/design", params = {"deleteFeature"}, method = RequestMethod.POST)
     public String deleteFeature(final HttpServletRequest req, Model model) {
         final Long rowId = Long.valueOf(req.getParameter("deleteFeature"));
+        final Long presenterId = Long.valueOf(req.getParameter("parentId"));
         final PresenterFeature deletableFeature = presenterFeatureRepository.findOne(rowId);
-        final List<PresenterFeature> parentFeatures = presenterFeatureRepository.findByPresenterFeaturesContaining(deletableFeature);
-//        for (PresenterFeature parentFeature : parentFeatures) {
-//            parentFeature.getPresenterFeatures().remove(deletableFeature);
-//            presenterFeatureRepository.save(parentFeature);
-//        }
-//        presenterFeatureRepository.delete(deletableFeature);
+        final PresenterScreen parentPresenter = presenterScreenRepository.findOne(presenterId);
+        parentPresenter.getPresenterFeatures().remove(deletableFeature);
+        presenterScreenRepository.save(parentPresenter);
+        presenterFeatureRepository.delete(deletableFeature);
+        populateModel(model);
+        return "design";
+    }
+
+    @RequestMapping(value = "/design", params = {"deleteSubFeature"}, method = RequestMethod.POST)
+    public String deleteSubFeature(final HttpServletRequest req, Model model) {
+        final Long rowId = Long.valueOf(req.getParameter("deleteSubFeature"));
+        final Long presenterId = Long.valueOf(req.getParameter("parentId"));
+        final PresenterFeature deletableFeature = presenterFeatureRepository.findOne(rowId);
+        final PresenterFeature parentFeature = presenterFeatureRepository.findOne(presenterId);
+        parentFeature.getPresenterFeatures().remove(deletableFeature);
+        presenterFeatureRepository.save(parentFeature);
+        presenterFeatureRepository.delete(deletableFeature);
         populateModel(model);
         return "design";
     }

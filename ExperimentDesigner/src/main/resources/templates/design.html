@@ -105,27 +105,25 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <div th:text="'featurecount ' + ${featurecount}"></div>
         <table id="main"><tr><td>
                     <table class="presenter" th:each="presenter : ${screens}">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Title</th>
-                                <th>Menu Label</th>
-                                <th>Screen Type</th>
-                                <th>Back Action</th>
-                                <th>Self (Action)</th>
-                                <th>Next Action</th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
                         <tbody>
+                            <tr>
+                                <td><b>ID</b></td>
+                                <td><b>Title</b></td>
+                                <td><b>Menu Label</b></td>
+                                <td><b>Screen Type</b></td>
+                                <td><b>Back Action</b></td>
+                                <td><b>Self (Action)</b></td>
+                                <td><b>Next Action</b></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
                             <tr>
                                 <td th:text="${presenter.getId()}">1</td>
                                 <td th:text="${presenter.getTitle()}">Title</td>
                                 <td th:text="${presenter.getMenuLabel()}">menuLabel</td>
                                 <td th:text="${presenter.getPresenterType()}">presenterType</td>
                                 <td>
-                                    <select name="backPresenterTag" id="nextPresenterTag">
+                                    <select name="backPresenterTag" id="backPresenterTag">
                                         <option th:each="presenterTags : ${screens}" th:value="${presenterTags.getSelfPresenterTag()}" th:text="${presenterTags.getSelfPresenterTag()}" th:selected="${presenterTags.getSelfPresenterTag() eq presenter.getBackPresenterTag()}" />
                                     </select>
                                 </td>
@@ -150,41 +148,45 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 <td colspan="9"><b>Features</b></td>
                             </tr>
                             <tr th:with="objectType=${'PresenterScreen'}">
-                                <td th:fragment="features" colspan="9">    
-                                    <div class="featurestable" th:unless="${#lists.isEmpty(presenter.getPresenterFeatures())}">
-                                        <div class="featuresrow" th:each="features : ${presenter.getPresenterFeatures()}">
-                                            <form action="#" th:action="@{/design}"  th:object="${PresenterFeature}" method="post">
-                                                <span class="featurescell" th:text="${features.getFeatureType()}">getFeatureType</span>                            
-                                                <!--<span th:text="${features.getFeatureText()}"></span>-->  
-                                                <span class="featurescell" th:if="${features.getFeatureType().canHaveText()}">
-                                                    <textarea name="featureText" id="featureText" th:text="${features.getFeatureText()}"></textarea>                                     
-                                                </span>
-                                                <span>
-                                                    <button type="submit" name="deleteFeature" th:value="${features.getId()}">Delete Feature</button>
-                                                    <button type="submit" name="saveFeature" th:value="${features.getId()}">Save Changes</button>
-                                                </span>
-                                                <div class="featurescell" th:unless="${#lists.isEmpty(features.getFeatureType().getFeatureAttributes())}" th:attr="colspan=${features.getFeatureType().canHaveText() ? 1 : 2}">
-                                                    <table>
-                                                        <tr th:each="featureattribute : ${features.getFeatureType().getFeatureAttributes()}" >
-                                                            <td th:text="${featureattribute.name()}">featureattribute.name()</td>
-                                                            <td>
-                                                                <input th:value="${featureattribute.name()}" />                                                            
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </div>                                                
-                                            </form>
-                                            <div th:replace="design :: features(presenter=${features}, objectType='PresenterFeature')"></div>
+                                <td colspan="9">    
+                                    <div th:fragment="features">    
+                                        <div class="featurestable" th:unless="${#lists.isEmpty(presenter.getPresenterFeatures())}">
+                                            <div class="featuresrow" th:each="features : ${presenter.getPresenterFeatures()}">
+                                                <form action="#" th:action="@{/design}"  th:object="${PresenterFeature}" method="post">
+                                                    <span class="featurescell" th:text="${features.getFeatureType()}">getFeatureType</span>                            
+                                                    <!--<span th:text="${features.getFeatureText()}"></span>-->  
+                                                    <span class="featurescell" th:if="${features.getFeatureType() ne null} and ${features.getFeatureType().canHaveText()}">
+                                                        <textarea name="featureText" id="featureText" th:text="${features.getFeatureText()}"></textarea>                                     
+                                                    </span>
+                                                    <span>
+                                                        <input type="hidden" th:value="${presenter.getId()}" name="parentId"/>
+                                                        <button th:if="${objectType} eq 'PresenterScreen'" type="submit" name="deleteFeature" th:value="${features.getId()}">Delete Feature</button>
+                                                        <button th:unless="${objectType} eq 'PresenterScreen'" type="submit" name="deleteSubFeature" th:value="${features.getId()}">Delete Feature</button>
+                                                        <button type="submit" name="saveFeature" th:value="${features.getId()}">Save Changes</button>
+                                                    </span>
+                                                    <div class="featurescell" th:unless="${features.getFeatureType() eq null} or ${#lists.isEmpty(features.getFeatureType().getFeatureAttributes())}">
+                                                        <table>
+                                                            <tr th:each="featureattribute : ${features.getFeatureType().getFeatureAttributes()}" >
+                                                                <td th:text="${featureattribute.name()}">featureattribute.name()</td>
+                                                                <td>
+                                                                    <input th:value="${featureattribute.name()}" />                                                            
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>    
+                                                </form>
+                                                <div th:replace="design :: features(presenter=${features}, objectType='PresenterFeature')"></div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="addfeaturediv" th:if="(${objectType} eq 'PresenterScreen') or ${presenter.getFeatureType().canHaveFeatures()}">
-                                        <form action="#" th:action="@{/design}"  th:object="${PresenterFeature}" method="post">
-                                            <select id="FeatureType" name="FeatureType">
-                                                <option th:each="featuretype : ${featuretypes}" th:value="${featuretype}" th:text="${featuretype}" />
-                                            </select>                                            
-                                            <button th:if="${objectType} eq 'PresenterScreen'" type="submit" name="addFeature" th:value="${presenter.getId()}">Add Feature</button>
-                                            <button th:unless="${objectType} eq 'PresenterScreen'" type="submit" name="addSubFeature" th:value="${presenter.getId()}">Add Feature</button>
-                                        </form>
+                                        <div class="addfeaturediv" th:if="(${objectType} eq 'PresenterScreen') or ${presenter.getFeatureType() ne null and presenter.getFeatureType().canHaveFeatures()}">
+                                            <form action="#" th:action="@{/design}"  th:object="${PresenterFeature}" method="post">
+                                                <select id="FeatureType" name="FeatureType">
+                                                    <option th:each="featuretype : ${featuretypes}" th:value="${featuretype}" th:text="${featuretype}" />
+                                                </select>                                            
+                                                <button th:if="${objectType} eq 'PresenterScreen'" type="submit" name="addFeature" th:value="${presenter.getId()}">Add Feature</button>
+                                                <button th:unless="${objectType} eq 'PresenterScreen'" type="submit" name="addSubFeature" th:value="${presenter.getId()}">Add Feature</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
@@ -244,30 +246,64 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </td>
             </tr><tr>
                 <td>
-                    <textarea rows="100" cols="100">
-<experiment appNameDisplay="Dobes Annotator" appNameInternal="DobesAnnotator" dataSubmitUrl="http://ems12.mpi.nl/dobes-frinex-admin-0.1.38-testing/" staticFilesUrl="static/">
-    <metadata>
-        <field postName="workerId" registrationField="Reporter name *" controlledRegex=".'{'3,'}'" controlledMessage="Please enter at least three letters." />
-        <field postName="errordevice" registrationField="Device model" controlledRegex=".'{'2,'}'" controlledMessage="Please enter the device model" />
-        <field postName="errordescription" registrationField="Please describe the error" controlledRegex=".'{'2,'}'" controlledMessage="Please enter a short description of the issue" />
-    </metadata>
-    <presenter th:each="presenter : ${screens}" th:attr="type=${presenter.getPresenterType()}, menuLabel=${presenter.getMenuLabel()}, title=${presenter.getTitle()}, self=${presenter.getSelfPresenterTag()}, back=${presenter.getBackPresenterTag()}, next=${presenter.getNextPresenterTag()}">
-        <htmlText>This is a simple video codec testing application.</htmlText>
-        <padding/>
-        <AudioRecorderPanel src=""/>
-        <optionButton target="VideoTestPageAspen">Video Test Page (aspen)</optionButton>
-        <optionButton target="VideoTestPageControlledBurn">Video Test Page (controlled_burn)</optionButton>
-        <optionButton target="VideoTestPageDucksTakeOff">Video Test Page (ducks_take_off)</optionButton>
-        <optionButton target="VideoTestPageHarbour">Video Test Page (harbour)</optionButton>
-        <optionButton target="VideoTestPagePedestrianArea">Video Test Page (pedestrian_area)</optionButton>
-        <optionButton target="VideoTestPagemov_bbbmp4  ">Video Test Page (VideoTestPagemov_bbbmp4)</optionButton>
-        <optionButton target="VideoTestPagemov_bbbogg">Video Test Page (VideoTestPagemov_bbbogg)</optionButton>
-        <optionButton target="VideoTestPageWebM">Video Test Page (VideoTestPageWebM)</optionButton>
-        <padding/>
-        <versionData/>
-    </presenter> 
-</experiment>
-                    </textarea>
+                    &lt;experiment appNameDisplay="Dobes Annotator" appNameInternal="DobesAnnotator" dataSubmitUrl="http://ems12.mpi.nl/dobes-frinex-admin-0.1.38-testing/" staticFilesUrl="static/"&gt;<br/>
+                    &nbsp;&nbsp;&nbsp;
+                    &lt;metadata&gt;<br/>
+                    &nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;
+                    &lt;field postName="workerId" registrationField="Reporter name *" controlledRegex=".'{'3,'}'" controlledMessage="Please enter at least three letters." /&gt;<br/>
+                    &nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;
+                    &lt;field postName="errordevice" registrationField="Device model" controlledRegex=".'{'2,'}'" controlledMessage="Please enter the device model" /&gt;<br/>
+                    &nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;
+                    &lt;field postName="errordescription" registrationField="Please describe the error" controlledRegex=".'{'2,'}'" controlledMessage="Please enter a short description of the issue" /&gt;<br/>
+                    &nbsp;&nbsp;&nbsp;
+                    &lt;/metadata&gt;<br/>
+                    &nbsp;&nbsp;&nbsp;
+                    &lt;presenter th:each="presenter : ${screens}" th:attr="type=${presenter.getPresenterType()}, menuLabel=${presenter.getMenuLabel()}, title=${presenter.getTitle()}, self=${presenter.getSelfPresenterTag()}, back=${presenter.getBackPresenterTag()}, next=${presenter.getNextPresenterTag()}"&gt;<br/>
+                    &nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;
+                    &lt;htmlText&gt;This is a simple video codec testing application.&lt;/htmlText&gt;<br/>
+                    &nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;
+                    &lt;padding/&gt;<br/>
+                    &nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;
+                    &lt;AudioRecorderPanel src=""/&gt;<br/>
+                    &nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;
+                    &lt;optionButton target="VideoTestPageAspen"&gt;Video Test Page (aspen)&lt;/optionButton&gt;<br/>
+                    &nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;
+                    &lt;optionButton target="VideoTestPageControlledBurn"&gt;Video Test Page (controlled_burn)&lt;/optionButton&gt;<br/>
+                    &nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;
+                    &lt;optionButton target="VideoTestPageDucksTakeOff"&gt;Video Test Page (ducks_take_off)&lt;/optionButton&gt;<br/>
+                    &nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;
+                    &lt;optionButton target="VideoTestPageHarbour"&gt;Video Test Page (harbour)&lt;/optionButton&gt;<br/>
+                    &nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;
+                    &lt;optionButton target="VideoTestPagePedestrianArea"&gt;Video Test Page (pedestrian_area)&lt;/optionButton&gt;<br/>
+                    &nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;
+                    &lt;optionButton target="VideoTestPagemov_bbbmp4  "&gt;Video Test Page (VideoTestPagemov_bbbmp4)&lt;/optionButton&gt;<br/>
+                    &nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;
+                    &lt;optionButton target="VideoTestPagemov_bbbogg"&gt;Video Test Page (VideoTestPagemov_bbbogg)&lt;/optionButton&gt;<br/>
+                    &nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;
+                    &lt;optionButton target="VideoTestPageWebM"&gt;Video Test Page (VideoTestPageWebM)&lt;/optionButton&gt;<br/>
+                    &nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;
+                    &lt;padding/&gt;<br/>
+                    &nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;
+                    &lt;versionData/&gt;<br/>
+                    &nbsp;&nbsp;&nbsp;
+                    &lt;/presenter&gt;<br/> 
+                    &lt;/experiment&gt;<br/>
                 </td>
             </tr>
         </table>
