@@ -17,12 +17,14 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.controller;
 
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import nl.mpi.tg.eg.experimentdesigner.dao.ExperimentRepository;
+import nl.mpi.tg.eg.experimentdesigner.dao.MetadataRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterFeatureRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterScreenRepository;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
+import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
@@ -44,12 +46,18 @@ public class DesignController {
     PresenterScreenRepository presenterScreenRepository;
     @Autowired
     PresenterFeatureRepository presenterFeatureRepository;
+    @Autowired
+    MetadataRepository metadataRepository;
+    @Autowired
+    ExperimentRepository experimentRepository;
 
     private void populateModel(Model model) {
         model.addAttribute("screens", presenterScreenRepository.findAll());
+        model.addAttribute("metadata", metadataRepository.findAll());
         model.addAttribute("screencount", presenterScreenRepository.count());
+        model.addAttribute("experimentcount", experimentRepository.count());
         model.addAttribute("featurecount", presenterFeatureRepository.count());
-//        model.addAttribute("features", presenterFeatureRepository.findAll());
+        model.addAttribute("metadatacount", metadataRepository.count());
         model.addAttribute("featureattributes", FeatureAttribute.values());
         model.addAttribute("featuretypes", FeatureType.values());
         model.addAttribute("presentertypes", PresenterType.values());
@@ -58,6 +66,25 @@ public class DesignController {
 
     @RequestMapping("/design")
     public String designView(Model model) {
+        populateModel(model);
+        return "design";
+    }
+
+    @RequestMapping(value = "/design", params = {"addMetadata"}, method = RequestMethod.POST)
+    public String addMetadata(final HttpServletRequest req, Model model, @ModelAttribute Metadata metadata) {
+//        final Long experimentId = Long.valueOf(req.getParameter("experimentId"));
+//        final PresenterScreen presenterScreen = presenterScreenRepository.findOne(rowId);
+        metadataRepository.save(metadata);
+//        presenterScreen.getPresenterFeatures().add(presenterFeature);
+//        presenterScreenRepository.save(presenterScreen);
+        populateModel(model);
+        return "design";
+    }
+
+    @RequestMapping(value = "/design", params = {"deleteMetadata"}, method = RequestMethod.POST)
+    public String deleteMetadata(final HttpServletRequest req, Model model, @ModelAttribute Metadata metadata) {
+        final Long metadataId = Long.valueOf(req.getParameter("deleteMetadata"));
+        metadataRepository.delete(metadataId);
         populateModel(model);
         return "design";
     }

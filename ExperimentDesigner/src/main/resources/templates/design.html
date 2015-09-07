@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 -->
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Experiment Designer</title>
         <meta charset="UTF-8"/>
@@ -97,13 +97,84 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 padding-right: 20px;
                 padding-top: 10px;
             }
+            footer {
+                background-attachment: scroll;
+                background-clip: border-box;
+                background-color: rgb(156, 185, 187);
+                background-image: none;
+                background-origin: padding-box;
+                background-size: auto;
+                border-bottom-color: rgb(42, 99, 102);
+                border-bottom-style: solid;
+                border-bottom-width: 1px;
+                border-left-color: rgb(42, 99, 102);
+                border-right-color: rgb(42, 99, 102);
+                border-top-color: rgb(42, 99, 102);
+                border-top-style: solid;
+                border-top-width: 1px;
+                color: rgb(22, 79, 81);
+                display: block;
+                font-size: 12px;
+                font-style: normal;
+                font-variant: normal;
+                font-weight: normal;
+                height: 18px;
+                line-height: 18px;
+                margin-bottom: 10px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 10px;
+                padding-bottom: 5px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 5px;
+                text-align: center;
+            }
         </style>
     </head>
     <body>
         <div id="header"><h1>Frinex Experiment Designer</h1></div>
-        <div th:text="'screencount ' + ${screencount}"></div>
-        <div th:text="'featurecount ' + ${featurecount}"></div>
         <table id="main"><tr><td>
+                    <table class="presenter">
+                        <tbody>
+                            <tr>
+                                <td><b>ID</b></td>
+                                <td><b>postName</b></td>
+                                <td><b>registrationField</b></td>
+                                <td><b>controlledRegex</b></td>
+                                <td><b>controlledMessage</b></td>
+                            </tr>
+                            <tr th:each="metadataRow : ${metadata}">
+                                <td th:text="${metadataRow.getId()}">metadataRow.getId()</td>
+                                <td th:text="${metadataRow.getPostName()}">metadataRow.getPostName()</td>
+                                <td th:text="${metadataRow.getRegistrationField()}">metadataRow.getRegistrationField()</td>
+                                <td th:text="${metadataRow.getControlledRegex()}">metadataRow.getControlledRegex()</td>
+                                <td th:text="${metadataRow.getControlledMessage()}">metadataRow.getControlledMessage()</td>
+                                <td><form action="#" th:action="@{/design}" method="post"><button type="submit" name="deleteMetadata" th:value="${metadataRow.getId()}">Delete</button></form></td>
+                                <!--<td><button type="submit" name="updateMetadata" th:value="${metadataRow.getId()}">Update</button></td>-->
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="addpresenterdiv">
+                        <form action="#" th:action="@{/design}" th:object="${metadata}" method="post">
+                            <table class="addpresenterform">
+                                <tr>
+                                    <td><b>postName</b></td>
+                                    <td><b>registrationField</b></td>
+                                    <td><b>controlledRegex</b></td>
+                                    <td><b>controlledMessage</b></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td> <input type="text" id="postName" name="postName"/></td>
+                                    <td><input type="text" id="registrationField" name="registrationField" /></td>
+                                    <td><input type="text" id="controlledRegex" name="controlledRegex" /></td>
+                                    <td><input type="text" id="controlledMessage" name="controlledMessage" /></td>
+                                    <td><button type="submit" name="addMetadata">addMetadata</button></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
                     <table class="presenter" th:each="presenter : ${screens}">
                         <tbody>
                             <tr>
@@ -307,5 +378,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </td>
             </tr>
         </table>
+        <footer>      
+            <span th:text="'experimentcount ' + ${experimentcount}"></span>|
+            <span th:text="'metadatacount ' + ${metadatacount}"></span>|
+            <span th:text="'screencount ' + ${screencount}"></span>|
+            <span th:text="'featurecount ' + ${featurecount}"></span></footer>
     </body>
 </html>

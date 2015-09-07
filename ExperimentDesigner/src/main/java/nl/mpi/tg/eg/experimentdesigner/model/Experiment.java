@@ -39,10 +39,13 @@ public class Experiment {
     private String appNameInternal;
     private String dataSubmitUrl;
     private String staticFilesUrl;
-    private String nextPresenterTag;
+//    private String nextPresenterTag;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PresenterScreen> PresenterScreen;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Metadata> metadata;
 
     public Experiment() {
     }
@@ -83,19 +86,26 @@ public class Experiment {
         this.staticFilesUrl = staticFilesUrl;
     }
 
-    public String getNextPresenterTag() {
-        return nextPresenterTag;
-    }
-
-    public void setNextPresenterTag(String nextPresenterTag) {
-        this.nextPresenterTag = nextPresenterTag;
-    }
-
+//    public String getNextPresenterTag() {
+//        return nextPresenterTag;
+//    }
+//
+//    public void setNextPresenterTag(String nextPresenterTag) {
+//        this.nextPresenterTag = nextPresenterTag;
+//    }
     public List<PresenterScreen> getPresenterScreen() {
         return PresenterScreen;
     }
 
     public void setPresenterScreen(List<PresenterScreen> PresenterScreen) {
         this.PresenterScreen = PresenterScreen;
+    }
+
+    public List<Metadata> getMetadata() {
+        return metadata;
+    }
+
+    public void setMetadata(List<Metadata> metadata) {
+        this.metadata = metadata;
     }
 }
