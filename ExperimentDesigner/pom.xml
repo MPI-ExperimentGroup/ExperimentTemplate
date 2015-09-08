@@ -4,13 +4,17 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-experiment-designer</artifactId>
     <name>Frinex Experiment Designer</name>
-    <version>0.1.17-testing</version>
+    <version>0.1.24-testing</version>
     <packaging>war</packaging>
     <parent>
         <groupId>nl.mpi.tg.eg</groupId>
         <artifactId>frinex-parent</artifactId>
         <version>0.1-testing-SNAPSHOT</version>
     </parent>
+    <organization>
+        <name>Max Planck Institute for Psycholinguistics</name>
+        <url>https://www.mpi.nl</url>
+    </organization>
     <properties>
         <finalName>${experiment.configuration.name}-${project.artifactId}-${project.version}</finalName>
     </properties>    
