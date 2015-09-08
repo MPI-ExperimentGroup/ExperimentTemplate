@@ -17,19 +17,26 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * @since Sep 4, 2015 2:42:21 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Entity
+@XmlRootElement
 public class Experiment {
 
     @Id
@@ -41,11 +48,11 @@ public class Experiment {
     private String staticFilesUrl;
 //    private String nextPresenterTag;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<PresenterScreen> PresenterScreen;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<PresenterScreen> PresenterScreen = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Metadata> metadata;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Metadata> metadata = new ArrayList<>();
 
     public Experiment() {
     }
@@ -54,6 +61,7 @@ public class Experiment {
         return id;
     }
 
+    @XmlAttribute
     public String getAppNameDisplay() {
         return appNameDisplay;
     }
@@ -62,6 +70,7 @@ public class Experiment {
         this.appNameDisplay = appNameDisplay;
     }
 
+    @XmlAttribute
     public String getAppNameInternal() {
         return appNameInternal;
     }
@@ -70,6 +79,7 @@ public class Experiment {
         this.appNameInternal = appNameInternal;
     }
 
+    @XmlAttribute
     public String getDataSubmitUrl() {
         return dataSubmitUrl;
     }
@@ -78,6 +88,7 @@ public class Experiment {
         this.dataSubmitUrl = dataSubmitUrl;
     }
 
+    @XmlAttribute
     public String getStaticFilesUrl() {
         return staticFilesUrl;
     }
@@ -93,6 +104,7 @@ public class Experiment {
 //    public void setNextPresenterTag(String nextPresenterTag) {
 //        this.nextPresenterTag = nextPresenterTag;
 //    }
+    @XmlElement
     public List<PresenterScreen> getPresenterScreen() {
         return PresenterScreen;
     }
@@ -101,9 +113,16 @@ public class Experiment {
         this.PresenterScreen = PresenterScreen;
     }
 
+    @XmlElementWrapper(name = "metadata")
+    @XmlElement(name = "field")
     public List<Metadata> getMetadata() {
         return metadata;
     }
+
+//    @XmlAttribute
+//    public int getMetadataCount() {
+//        return metadata.size();
+//    }
 
     public void setMetadata(List<Metadata> metadata) {
         this.metadata = metadata;

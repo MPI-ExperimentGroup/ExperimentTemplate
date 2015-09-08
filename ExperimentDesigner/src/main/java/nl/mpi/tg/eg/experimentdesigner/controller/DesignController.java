@@ -28,6 +28,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
+import nl.mpi.tg.eg.experimentdesigner.util.DefaultExperiments;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,10 +53,15 @@ public class DesignController {
     ExperimentRepository experimentRepository;
 
     private void populateModel(Model model) {
+        experimentRepository.deleteAll();
+//        if (experimentRepository.count() == 0) {
+            new DefaultExperiments().insertDefaultExperiment(presenterScreenRepository, presenterFeatureRepository, metadataRepository, experimentRepository);
+//        }
         model.addAttribute("screens", presenterScreenRepository.findAll());
         model.addAttribute("metadata", metadataRepository.findAll());
         model.addAttribute("screencount", presenterScreenRepository.count());
         model.addAttribute("experimentcount", experimentRepository.count());
+        model.addAttribute("experiment", experimentRepository.findAll().iterator().next());
         model.addAttribute("featurecount", presenterFeatureRepository.count());
         model.addAttribute("metadatacount", metadataRepository.count());
         model.addAttribute("featureattributes", FeatureAttribute.values());

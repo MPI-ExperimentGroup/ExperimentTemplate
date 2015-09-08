@@ -139,6 +139,28 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     <body>
         <div id="header"><h1>Frinex Experiment Designer</h1></div>
         <table id="main"><tr><td>
+                    <div class="addpresenterdiv">
+                        <form action="#" th:action="@{/design}" th:object="${experiment}" method="post">
+                            <table class="addpresenterform">
+                                <tr>
+                                    <td><b>appNameDisplay</b></td>
+                                    <td><b>appNameInternal</b></td>
+                                    <td><b>dataSubmitUrl</b></td>
+                                    <td><b>staticFilesUrl</b></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" th:field="*{appNameDisplay}" /></td>
+                                    <td><input type="text" th:field="*{appNameInternal}" /></td>
+                                    <td><input type="text" th:field="*{dataSubmitUrl}" /></td>
+                                    <td><input type="text" th:field="*{staticFilesUrl}" /></td>
+                                    <td><button type="submit" name="saveExperiment">Save Changes</button></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+
+
                     <table class="presenter">
                         <tbody>
                             <tr>
@@ -157,7 +179,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 <td th:text="${metadataRow.getControlledRegex()}">metadataRow.getControlledRegex()</td>
                                 <td th:text="${metadataRow.getControlledMessage()}">metadataRow.getControlledMessage()</td>
                                 <td th:text="${metadataRow.isPreventServerDuplicates()}">metadataRow.isPreventServerDuplicates()</td>
-                                <td th:text="${metadataRow.getduplicatesControlledMessage()}">metadataRow.getduplicatesControlledMessage()</td>
+                                <td th:text="${metadataRow.getDuplicatesControlledMessage()}">metadataRow.getDuplicatesControlledMessage()</td>
                                 <td><form action="#" th:action="@{/design}" method="post"><button type="submit" name="deleteMetadata" th:value="${metadataRow.getId()}">Delete</button></form></td>
                                 <!--<td><button type="submit" name="updateMetadata" th:value="${metadataRow.getId()}">Update</button></td>-->
                             </tr>

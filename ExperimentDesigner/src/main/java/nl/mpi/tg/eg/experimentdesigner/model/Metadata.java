@@ -21,6 +21,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlAttribute;
 
 /**
  * @since Sep 7, 2015 3:40:28 PM (creation date)
@@ -46,6 +47,16 @@ public class Metadata {
         return id;
     }
 
+    public Metadata(String postName, String registrationField, String controlledRegex, String controlledMessage, boolean preventServerDuplicates, String duplicatesControlledMessage) {
+        this.postName = postName;
+        this.registrationField = registrationField;
+        this.controlledRegex = controlledRegex;
+        this.controlledMessage = controlledMessage;
+        this.preventServerDuplicates = preventServerDuplicates;
+        this.duplicatesControlledMessage = duplicatesControlledMessage;
+    }
+
+    @XmlAttribute
     public String getPostName() {
         return postName;
     }
@@ -54,6 +65,7 @@ public class Metadata {
         this.postName = postName;
     }
 
+    @XmlAttribute
     public String getRegistrationField() {
         return registrationField;
     }
@@ -62,6 +74,7 @@ public class Metadata {
         this.registrationField = registrationField;
     }
 
+    @XmlAttribute
     public String getControlledRegex() {
         return controlledRegex;
     }
@@ -70,6 +83,7 @@ public class Metadata {
         this.controlledRegex = controlledRegex;
     }
 
+    @XmlAttribute
     public String getControlledMessage() {
         return controlledMessage;
     }
@@ -78,6 +92,7 @@ public class Metadata {
         this.controlledMessage = controlledMessage;
     }
 
+    @XmlAttribute
     public boolean isPreventServerDuplicates() {
         return preventServerDuplicates;
     }
@@ -86,6 +101,7 @@ public class Metadata {
         this.preventServerDuplicates = preventServerDuplicates;
     }
 
+    @XmlAttribute
     public String getDuplicatesControlledMessage() {
         return duplicatesControlledMessage;
     }
