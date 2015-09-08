@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Copyright (C) 2015 Pivotal Software, Inc.
+Copyright (C) 2015 Max Planck Institute for Psycholinguistics
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -15,6 +15,10 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+-->
+<!--
+ * @since Aug 18, 2015 2:19:34 PM (creation date)
+ * @author Peter Withers <peter.withers@mpi.nl>
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
@@ -139,10 +143,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <tbody>
                             <tr>
                                 <td><b>ID</b></td>
-                                <td><b>postName</b></td>
-                                <td><b>registrationField</b></td>
-                                <td><b>controlledRegex</b></td>
-                                <td><b>controlledMessage</b></td>
+                                <td><b>Post Name</b></td>
+                                <td><b>Registration Field</b></td>
+                                <td><b>Controlled Regex</b></td>
+                                <td><b>Controlled Message</b></td>
+                                <td><b>Prevent Server Duplicates</b></td>
+                                <td><b>Duplicates Controlled Message</b></td>
                             </tr>
                             <tr th:each="metadataRow : ${metadata}">
                                 <td th:text="${metadataRow.getId()}">metadataRow.getId()</td>
@@ -150,6 +156,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 <td th:text="${metadataRow.getRegistrationField()}">metadataRow.getRegistrationField()</td>
                                 <td th:text="${metadataRow.getControlledRegex()}">metadataRow.getControlledRegex()</td>
                                 <td th:text="${metadataRow.getControlledMessage()}">metadataRow.getControlledMessage()</td>
+                                <td th:text="${metadataRow.isPreventServerDuplicates()}">metadataRow.isPreventServerDuplicates()</td>
+                                <td th:text="${metadataRow.getduplicatesControlledMessage()}">metadataRow.getduplicatesControlledMessage()</td>
                                 <td><form action="#" th:action="@{/design}" method="post"><button type="submit" name="deleteMetadata" th:value="${metadataRow.getId()}">Delete</button></form></td>
                                 <!--<td><button type="submit" name="updateMetadata" th:value="${metadataRow.getId()}">Update</button></td>-->
                             </tr>
@@ -159,10 +167,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <form action="#" th:action="@{/design}" th:object="${metadata}" method="post">
                             <table class="addpresenterform">
                                 <tr>
-                                    <td><b>postName</b></td>
-                                    <td><b>registrationField</b></td>
-                                    <td><b>controlledRegex</b></td>
-                                    <td><b>controlledMessage</b></td>
+                                    <td><b>Post Name</b></td>
+                                    <td><b>Registration Field</b></td>
+                                    <td><b>Controlled Regex</b></td>
+                                    <td><b>Controlled Message</b></td>
+                                    <td><b>Prevent Server Duplicates</b></td>
+                                    <td><b>Duplicates Controlled Message</b></td>
                                     <td></td>
                                 </tr>
                                 <tr>
@@ -170,6 +180,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                     <td><input type="text" id="registrationField" name="registrationField" /></td>
                                     <td><input type="text" id="controlledRegex" name="controlledRegex" /></td>
                                     <td><input type="text" id="controlledMessage" name="controlledMessage" /></td>
+                                    <td><input type="checkbox" id="preventServerDuplicates" name="preventServerDuplicates" /></td>
+                                    <td><input type="text" id="duplicatesControlledMessage" name="duplicatesControlledMessage" /></td>
                                     <td><button type="submit" name="addMetadata">addMetadata</button></td>
                                 </tr>
                             </table>

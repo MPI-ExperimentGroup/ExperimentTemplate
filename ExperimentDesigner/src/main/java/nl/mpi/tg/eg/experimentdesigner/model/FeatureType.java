@@ -74,7 +74,7 @@ public enum FeatureType {
     endOfStimulus(true, false, null),
     stimulusImage(false, false, null),
     stimulusAudio(false, false, new FeatureAttribute[]{FeatureAttribute.mp3File,}),
-    VideoPanel(false, false, new FeatureAttribute[]{mp3File, width, poster, webmFile}),
+    VideoPanel(false, false, new FeatureAttribute[]{mp3File, oggFile, width, poster, webmFile}),
     userInfo(false, false, null),
     versionData(false, false, null),
     preventWindowClose(false, false, null);

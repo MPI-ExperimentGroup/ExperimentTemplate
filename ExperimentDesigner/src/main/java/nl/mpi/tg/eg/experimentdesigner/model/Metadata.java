@@ -36,6 +36,8 @@ public class Metadata {
     private String registrationField;
     private String controlledRegex;
     private String controlledMessage;
+    private boolean preventServerDuplicates;
+    private String duplicatesControlledMessage;
 
     public Metadata() {
     }
@@ -75,4 +77,21 @@ public class Metadata {
     public void setControlledMessage(String controlledMessage) {
         this.controlledMessage = controlledMessage;
     }
+
+    public boolean isPreventServerDuplicates() {
+        return preventServerDuplicates;
+    }
+
+    public void setPreventServerDuplicates(boolean preventServerDuplicates) {
+        this.preventServerDuplicates = preventServerDuplicates;
+    }
+
+    public String getDuplicatesControlledMessage() {
+        return duplicatesControlledMessage;
+    }
+
+    public void setDuplicatesControlledMessage(String duplicatesControlledMessage) {
+        this.duplicatesControlledMessage = duplicatesControlledMessage;
+    }
+
 }
