@@ -61,7 +61,7 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
             @Override
             public void eventFired(final ButtonBase button) {
                 try {
-                    ((MetadataView) simpleView).setButtonError(false, button);
+                    ((MetadataView) simpleView).setButtonError(false, button, null);
                     ((MetadataView) simpleView).clearErrors();
                     validateFields();
                     saveFields();
@@ -70,9 +70,13 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
 
                         @Override
                         public void scoreSubmissionFailed(DataSubmissionException exception) {
-                            ((MetadataView) simpleView).setButtonError(true, button);
+                            if (exception.getErrorType() == DataSubmissionException.ErrorType.dataRejected) {
+                                ((MetadataView) simpleView).setButtonError(true, button, exception.getMessage());
+                            } else {
+                                ((MetadataView) simpleView).setButtonError(true, button, null);
+                                errorEventListner.postLoadTimerFired();
+                            }
                             submissionService.submitScreenChange(userResults.getUserData().getUserId(), "submitMetadataFailed");
-                            errorEventListner.postLoadTimerFired();
                         }
 
                         @Override

@@ -201,7 +201,11 @@ public class DataSubmissionService extends AbstractSubmissionService {
                 } else {
                     logger.warning(builder.getUrl());
                     logger.warning(response.getStatusText());
-                    dataSubmissionListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.non202response, endpoint.name()));
+                    if (sumbmissionResult.length() > 0) {
+                        dataSubmissionListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.dataRejected, sumbmissionResult.get(0).getMessage()));
+                    } else {
+                        dataSubmissionListener.scoreSubmissionFailed(new DataSubmissionException(DataSubmissionException.ErrorType.non202response, endpoint.name()));
+                    }
                 }
             }
         };

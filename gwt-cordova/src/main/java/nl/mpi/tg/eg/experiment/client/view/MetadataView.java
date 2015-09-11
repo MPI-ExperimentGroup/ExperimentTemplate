@@ -118,10 +118,17 @@ public class MetadataView extends ComplexView {
         fieldBox.setFocus(true);
     }
 
-    public void setButtonError(boolean isError, ButtonBase button) {
+    public void setButtonError(boolean isError, ButtonBase button, String errorMessage) {
         if (isError) {
+            if (errorMessage != null) {
+                errorText.setText(errorMessage);
+                final int rowCount = flexTable.getRowCount();
+                flexTable.insertRow(rowCount);
+                flexTable.setWidget(rowCount, 0, errorText);
+            }
             button.addStyleName("metadataError");
         } else {
+            clearErrors();
             button.removeStyleName("metadataError");
         }
     }

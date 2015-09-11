@@ -29,7 +29,8 @@ public class DataSubmissionException extends Exception {
 
         non202response,
         buildererror,
-        connectionerror
+        connectionerror,
+        dataRejected
     }
 
     public DataSubmissionException(ErrorType errorType, Throwable cause) {
