@@ -116,7 +116,7 @@ public class ExperimentService {
         if (screenDataList.isEmpty()) {
             responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         } else {
-            responseEntity = new ResponseEntity<>(new DataSubmissionResult(screenDataList.get(0).getUserId(), true), HttpStatus.OK);
+            responseEntity = new ResponseEntity<>(new DataSubmissionResult(screenDataList.get(0).getUserId(), "", true), HttpStatus.OK);
         }
 //        } else {
 //            responseEntity = new ResponseEntity<>(new DataSubmissionResult(null, true, invalidScreenData), HttpStatus.MULTI_STATUS);
@@ -135,7 +135,7 @@ public class ExperimentService {
                 timeStamp.setSubmitDate(new java.util.Date());
                 timeStampRepository.save(timeStamp);
             }
-            responseEntity = new ResponseEntity<>(new DataSubmissionResult(timeStampList.get(0).getUserId(), true), HttpStatus.OK);
+            responseEntity = new ResponseEntity<>(new DataSubmissionResult(timeStampList.get(0).getUserId(), "", true), HttpStatus.OK);
         }
         return responseEntity;
     }
@@ -152,20 +152,25 @@ public class ExperimentService {
             responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         } else {
             for (Participant participant : participantList) {
-                participant.setSubmitDate(new java.util.Date());
-                final String remoteAddr = request.getRemoteAddr();
-                final int lastIndexOf = remoteAddr.lastIndexOf(".");
-                if (lastIndexOf > 0) {
-                    participant.setRemoteAddr(remoteAddr.substring(0, lastIndexOf) + ".0");
+                if (participantRepository.countByWorkerId(participant.getWorkerId()) > 0) {
+                    responseEntity = new ResponseEntity<>(new DataSubmissionResult(participant.getUserId(), "Unfortunately, you have already taken this HIT, and therefore cannot continue.", false), HttpStatus.NOT_ACCEPTABLE);
+                    return responseEntity;
+                } else {
+                    participant.setSubmitDate(new java.util.Date());
+                    final String remoteAddr = request.getRemoteAddr();
+                    final int lastIndexOf = remoteAddr.lastIndexOf(".");
+                    if (lastIndexOf > 0) {
+                        participant.setRemoteAddr(remoteAddr.substring(0, lastIndexOf) + ".0");
 //                } else {
-                    // todo: IPv6 is not handled at this stage but it should be striped to 80 bits when added
+                        // todo: IPv6 is not handled at this stage but it should be striped to 80 bits when added
 //                    participant.setRemoteAddr(remoteAddr);
+                    }
+                    participant.setAcceptLang(acceptLang);
+                    participant.setUserAgent(userAgent);
+                    participantRepository.save(participant);
                 }
-                participant.setAcceptLang(acceptLang);
-                participant.setUserAgent(userAgent);
-                participantRepository.save(participant);
             }
-            responseEntity = new ResponseEntity<>(new DataSubmissionResult(participantList.get(0).getUserId(), true), HttpStatus.OK);
+            responseEntity = new ResponseEntity<>(new DataSubmissionResult(participantList.get(0).getUserId(), "", true), HttpStatus.OK);
         }
         return responseEntity;
     }
@@ -180,7 +185,7 @@ public class ExperimentService {
                 experimentData.setSubmitDate(new java.util.Date());
                 tagRepository.save(experimentData);
             }
-            responseEntity = new ResponseEntity<>(new DataSubmissionResult(experimentDataList.get(0).getUserId(), true), HttpStatus.OK);
+            responseEntity = new ResponseEntity<>(new DataSubmissionResult(experimentDataList.get(0).getUserId(), "", true), HttpStatus.OK);
         }
         return responseEntity;
     }
@@ -195,7 +200,7 @@ public class ExperimentService {
                 experimentData.setSubmitDate(new java.util.Date());
                 tagPairRepository.save(experimentData);
             }
-            responseEntity = new ResponseEntity<>(new DataSubmissionResult(experimentDataList.get(0).getUserId(), true), HttpStatus.OK);
+            responseEntity = new ResponseEntity<>(new DataSubmissionResult(experimentDataList.get(0).getUserId(), "", true), HttpStatus.OK);
         }
         return responseEntity;
     }

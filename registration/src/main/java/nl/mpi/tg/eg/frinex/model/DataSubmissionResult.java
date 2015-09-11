@@ -26,10 +26,12 @@ import java.util.List;
 public class DataSubmissionResult {
 
     public final String userId;
+    public final String message;
     public final boolean success;
 
-    public DataSubmissionResult(String userId, boolean success) {
+    public DataSubmissionResult(String userId, String message, boolean success) {
         this.userId = userId;
+        this.message = message;
         this.success = success;
     }
 
