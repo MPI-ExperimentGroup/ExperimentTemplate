@@ -54,6 +54,10 @@ public class DefaultExperiments {
         experiment.getMetadata().add(metadata2);
         metadataRepository.save(experiment.getMetadata());
         experiment.getPresenterScreen().add(addVideosMenu(presenterFeatureRepository));
+        experiment.getPresenterScreen().add(addAutoMenu(presenterFeatureRepository));
+        experiment.getPresenterScreen().add(addVideoAspen(presenterFeatureRepository));
+        experiment.getPresenterScreen().add(addVideoWorksPage(presenterFeatureRepository));
+        experiment.getPresenterScreen().add(addVideoFailedPage(presenterFeatureRepository));
         presenterScreenRepository.save(experiment.getPresenterScreen());
         experimentRepository.save(experiment);
     }
@@ -73,6 +77,53 @@ public class DefaultExperiments {
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.padding, null));
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.versionData, null));
 
+        presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
+        return presenterScreen;
+    }
+
+    private PresenterScreen addAutoMenu(PresenterFeatureRepository presenterFeatureRepository) {
+        final PresenterScreen presenterScreen = new PresenterScreen("Auto Menu", "Menu", "VideosPage", "AutoMenu", null, PresenterType.menu);
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMenuItems, null));
+
+        presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
+        return presenterScreen;
+    }
+
+    private PresenterScreen addVideoFailedPage(PresenterFeatureRepository presenterFeatureRepository) {
+        final PresenterScreen presenterScreen = new PresenterScreen("Video Failed", "Video Failed Page", "VideosPage", "VideoFailedPage", null, PresenterType.text);
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "A message indicating that the video fails on your device has been sent."));
+        final PresenterFeature optionButton1 = new PresenterFeature(FeatureType.optionButton, "Videos");
+        optionButton1.addFeatureAttributes(FeatureAttribute.target, "VideosPage");
+        presenterScreen.getPresenterFeatureList().add(optionButton1);
+        presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
+        return presenterScreen;
+    }
+
+    private PresenterScreen addVideoWorksPage(PresenterFeatureRepository presenterFeatureRepository) {
+        final PresenterScreen presenterScreen = new PresenterScreen("Video Works", "Video Works Page", "VideosPage", "VideoWorksPage", null, PresenterType.text);
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "A message indicating that the video works on your device has been sent."));
+        final PresenterFeature optionButton1 = new PresenterFeature(FeatureType.optionButton, "Videos");
+        optionButton1.addFeatureAttributes(FeatureAttribute.target, "VideosPage");
+        presenterScreen.getPresenterFeatureList().add(optionButton1);
+        presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
+        return presenterScreen;
+    }
+
+    private PresenterScreen addVideoAspen(PresenterFeatureRepository presenterFeatureRepository) {
+        final PresenterScreen presenterScreen = new PresenterScreen("Video Test", "Video Test Page (aspen)", "VideosPage", "VideoTestPageAspen", null, PresenterType.text);
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4"));
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.padding, null));
+        final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.VideoPanel, null);
+        presenterFeature.addFeatureAttributes(FeatureType.VideoPanel.getFeatureAttributes()[3], "70%");
+        presenterFeature.addFeatureAttributes(FeatureType.VideoPanel.getFeatureAttributes()[0], "http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4");
+        presenterScreen.getPresenterFeatureList().add(presenterFeature);
+
+        final PresenterFeature optionButton1 = new PresenterFeature(FeatureType.optionButton, "Video Works");
+        optionButton1.addFeatureAttributes(FeatureAttribute.target, "VideoWorksPage");
+        presenterScreen.getPresenterFeatureList().add(optionButton1);
+        final PresenterFeature optionButton2 = new PresenterFeature(FeatureType.optionButton, "Video Failed");
+        optionButton2.addFeatureAttributes(FeatureAttribute.target, "VideoFailedPage");
+        presenterScreen.getPresenterFeatureList().add(optionButton2);
         presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
         return presenterScreen;
     }
