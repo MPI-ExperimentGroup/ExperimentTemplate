@@ -17,17 +17,72 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import static nl.mpi.tg.eg.experimentdesigner.model.FeatureType.*;
+import static org.springframework.core.convert.TypeDescriptor.array;
+import org.thymeleaf.util.ArrayUtils;
+
 /**
  * @since Aug 18, 2015 4:16:06 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public enum PresenterType {
 
-    transmission,
-    metadata,
-    preload,
-    stimulus,
-    kindiagram,
-    menu,
-    debug
+    transmission(new FeatureType[]{}),
+    metadata(new FeatureType[]{}),
+    preload(new FeatureType[]{}),
+    stimulus(new FeatureType[]{}),
+    kindiagram(new FeatureType[]{}),
+    menu(new FeatureType[]{}),
+    debug(new FeatureType[]{}),
+    text(new FeatureType[]{loadKinTypeStringDiagram, localStorageData,
+        allMetadataFields,
+        eraseLocalStorageButton,
+        //            showCurrentMs();
+        enableStimulusButtons,
+        disableStimulusButtons,
+        showStimulusProgress,
+        hideStimulusButtons,
+        showStimulusButtons,
+        generateCompletionCode,
+        sendAllData,
+        eraseLocalStorageOnWindowClosing,
+        clearStimulus,
+        removeStimulus,
+        keepStimulus,
+        nextStimulus,
+        allMenuItems,
+        nextStimulusButton,
+        autoNextStimulus,
+        addKinTypeGui,
+        //            autoNextPresenter(appEventListner);
+        //            logTimeStamp();
+        //            audioButton();
+        preloadAllStimuli,
+        endOfStimulusButton,
+        responseCorrect,
+        responseIncorrect,
+        showCurrentMs,
+        conditionalHtml,
+        autoNextPresenter,
+        logTimeStamp,
+        audioButton,
+        showStimulusGrid,
+        pause});
+
+    private final FeatureType[] featureTypes;
+
+    private PresenterType(FeatureType[] excludedFeatureTypes) {
+        ArrayList<FeatureType> features = new ArrayList<>();
+        features.addAll(Arrays.asList(FeatureType.values()));
+        for (FeatureType excludedFeature : excludedFeatureTypes) {
+            features.remove(excludedFeature);
+        }
+        this.featureTypes = features.toArray(new FeatureType[features.size()]);
+    }
+
+    public FeatureType[] getFeatureTypes() {
+        return featureTypes;
+    }
 }
