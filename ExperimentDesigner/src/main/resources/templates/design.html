@@ -32,13 +32,15 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             }
             #header {
                 background: #526289;
+                margin-bottom: 0px;
             }
             #header h1 {
                 color: rgba(255, 255, 255, 0.56);
-                padding-bottom: 10px;
+                padding-bottom: 20px;
                 padding-left: 20px;
                 padding-right: 20px;
-                padding-top: 10px;
+                padding-top: 30px;
+                margin: 1px;
             }
             button {
                 color: #a9b1c6;
@@ -133,11 +135,67 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 padding-right: 0px;
                 padding-top: 5px;
                 text-align: center;
+            }  
+
+            #menu {
+                width: 100%;
+                border-bottom-color: rgb(0, 0, 0);
+                border-bottom-style: solid;
+                border-bottom-width: 1px;
+                color: rgba(0, 0, 0, 0.498039);
+                height: 26px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 1px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+            }
+            
+            #menu a {
+                background: #b3acc9;
+                color: #2f205c;
+                display: block;
+                text-decoration: none;
+            }
+
+            #menu a.sel{
+                background: #463774;
+                color: #b3acc9;
+            }
+
+            #menu a:hover {
+                background: #2f205c;
+                color: #b3acc9;
+            }
+
+            #menu td {           
+                width:20%;
+                margin: 1px;
+                /*height: 24px;*/
+                font-size: 12px;
+                line-height: 24px;
+                text-decoration: none;
+                text-transform: uppercase;
+                text-align: center;
+                /*padding-bottom: 6px;*/
+                /*padding-top: 6px;*/
             }
         </style>
     </head>
     <body>
         <div id="header"><h1>Frinex Experiment Designer</h1></div>
+        <table id="menu">
+            <tr>
+                <td class="sel"><a class="sel" href="#">Design View</a></td>
+                <td><a href="experiments">Experiment List</a></td>
+                <td><a href="configuration">Configuration XML</a></td>
+                <td><a href="edituser">User Profile</a></td>
+                <td><a href="logout">logout</a></td>
+            </tr>
+        </table>
         <table id="main"><tr><td>
                     <div class="addpresenterdiv">
                         <form action="#" th:action="@{/design}" th:object="${experiment}" method="post">
@@ -255,8 +313,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             <tr th:with="objectType=${'PresenterScreen'}">
                                 <td colspan="9">    
                                     <div th:fragment="features">    
-                                        <div class="featurestable" th:unless="${#lists.isEmpty(presenter.getPresenterFeatures())}">
-                                            <div class="featuresrow" th:each="features : ${presenter.getPresenterFeatures()}">
+                                        <div class="featurestable" th:unless="${#lists.isEmpty(presenter.getPresenterFeatureList())}">
+                                            <div class="featuresrow" th:each="features : ${presenter.getPresenterFeatureList()}">
                                                 <form action="#" th:action="@{/design}"  th:object="${PresenterFeature}" method="post">
                                                     <span class="featurescell" th:text="${features.getFeatureType()}">getFeatureType</span>                            
                                                     <!--<span th:text="${features.getFeatureText()}"></span>-->  
@@ -348,67 +406,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             </table>
                         </form>
                     </div>
-                </td>
-            </tr><tr>
-                <td>
-                    &lt;experiment appNameDisplay="Dobes Annotator" appNameInternal="DobesAnnotator" dataSubmitUrl="http://ems12.mpi.nl/dobes-frinex-admin-0.1.38-testing/" staticFilesUrl="static/"&gt;<br/>
-                    &nbsp;&nbsp;&nbsp;
-                    &lt;metadata&gt;<br/>
-                    &nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;
-                    &lt;field postName="workerId" registrationField="Reporter name *" controlledRegex=".'{'3,'}'" controlledMessage="Please enter at least three letters." /&gt;<br/>
-                    &nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;
-                    &lt;field postName="errordevice" registrationField="Device model" controlledRegex=".'{'2,'}'" controlledMessage="Please enter the device model" /&gt;<br/>
-                    &nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;
-                    &lt;field postName="errordescription" registrationField="Please describe the error" controlledRegex=".'{'2,'}'" controlledMessage="Please enter a short description of the issue" /&gt;<br/>
-                    &nbsp;&nbsp;&nbsp;
-                    &lt;/metadata&gt;<br/>
-                    &nbsp;&nbsp;&nbsp;
-                    &lt;presenter th:each="presenter : ${screens}" th:attr="type=${presenter.getPresenterType()}, menuLabel=${presenter.getMenuLabel()}, title=${presenter.getTitle()}, self=${presenter.getSelfPresenterTag()}, back=${presenter.getBackPresenterTag()}, next=${presenter.getNextPresenterTag()}"&gt;<br/>
-                    &nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;
-                    &lt;htmlText&gt;This is a simple video codec testing application.&lt;/htmlText&gt;<br/>
-                    &nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;
-                    &lt;padding/&gt;<br/>
-                    &nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;
-                    &lt;AudioRecorderPanel src=""/&gt;<br/>
-                    &nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;
-                    &lt;optionButton target="VideoTestPageAspen"&gt;Video Test Page (aspen)&lt;/optionButton&gt;<br/>
-                    &nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;
-                    &lt;optionButton target="VideoTestPageControlledBurn"&gt;Video Test Page (controlled_burn)&lt;/optionButton&gt;<br/>
-                    &nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;
-                    &lt;optionButton target="VideoTestPageDucksTakeOff"&gt;Video Test Page (ducks_take_off)&lt;/optionButton&gt;<br/>
-                    &nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;
-                    &lt;optionButton target="VideoTestPageHarbour"&gt;Video Test Page (harbour)&lt;/optionButton&gt;<br/>
-                    &nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;
-                    &lt;optionButton target="VideoTestPagePedestrianArea"&gt;Video Test Page (pedestrian_area)&lt;/optionButton&gt;<br/>
-                    &nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;
-                    &lt;optionButton target="VideoTestPagemov_bbbmp4  "&gt;Video Test Page (VideoTestPagemov_bbbmp4)&lt;/optionButton&gt;<br/>
-                    &nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;
-                    &lt;optionButton target="VideoTestPagemov_bbbogg"&gt;Video Test Page (VideoTestPagemov_bbbogg)&lt;/optionButton&gt;<br/>
-                    &nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;
-                    &lt;optionButton target="VideoTestPageWebM"&gt;Video Test Page (VideoTestPageWebM)&lt;/optionButton&gt;<br/>
-                    &nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;
-                    &lt;padding/&gt;<br/>
-                    &nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;
-                    &lt;versionData/&gt;<br/>
-                    &nbsp;&nbsp;&nbsp;
-                    &lt;/presenter&gt;<br/> 
-                    &lt;/experiment&gt;<br/>
                 </td>
             </tr>
         </table>
