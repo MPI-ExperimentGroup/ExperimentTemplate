@@ -55,6 +55,7 @@ public class DefaultExperiments {
         metadataRepository.save(experiment.getMetadata());
         experiment.getPresenterScreen().add(addVideosMenu(presenterFeatureRepository));
         experiment.getPresenterScreen().add(addAutoMenu(presenterFeatureRepository));
+        experiment.getPresenterScreen().add(addTargetScreen(presenterFeatureRepository));
         experiment.getPresenterScreen().add(addVideoAspen(presenterFeatureRepository));
         experiment.getPresenterScreen().add(addVideoWorksPage(presenterFeatureRepository));
         experiment.getPresenterScreen().add(addVideoFailedPage(presenterFeatureRepository));
@@ -64,19 +65,30 @@ public class DefaultExperiments {
     }
 
     private void addAllFeaturesAsPages(PresenterFeatureRepository presenterFeatureRepository, final Experiment experiment) {
+        int maxScreenAddCount = 2;
         for (PresenterType presenterType : PresenterType.values()) {
-            final PresenterScreen presenterScreen = new PresenterScreen(presenterType.name(), presenterType.name(), "AutoMenu", presenterType.name(), null, presenterType);
+            maxScreenAddCount--;
+            final PresenterScreen presenterScreen = new PresenterScreen(presenterType.name(), presenterType.name(), "AutoMenu", presenterType.name() + "Screen", null, presenterType);
             for (FeatureType featureType : presenterType.getFeatureTypes()) {
                 final PresenterFeature presenterFeature = new PresenterFeature(featureType, (featureType.canHaveText()) ? featureType.name() : null);
                 if (featureType.getFeatureAttributes() != null) {
-                    for (FeatureAttribute attribute : featureType.getFeatureAttributes()) {
-                        presenterFeature.addFeatureAttributes(attribute, attribute.name());
+                    for (FeatureAttribute attribute : featureType.getFeatureAttributes()) { 
+                        switch (attribute) {
+                            case width:
+                                presenterFeature.addFeatureAttributes(attribute, "60");
+                                break;
+                            default:
+                                presenterFeature.addFeatureAttributes(attribute, attribute.name());
+                        }
                     }
                 }
                 presenterScreen.getPresenterFeatureList().add(presenterFeature);
             }
             presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
             experiment.getPresenterScreen().add(presenterScreen);
+            if (maxScreenAddCount <= 0) {
+                break;
+            }
         }
     }
 
@@ -100,8 +112,16 @@ public class DefaultExperiments {
     }
 
     private PresenterScreen addAutoMenu(PresenterFeatureRepository presenterFeatureRepository) {
-        final PresenterScreen presenterScreen = new PresenterScreen("Auto Menu", "Menu", "VideosPage", "AutoMenu", null, PresenterType.menu);
+        final PresenterScreen presenterScreen = new PresenterScreen("Auto Menu", "Menu", null, "AutoMenu", null, PresenterType.menu);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMenuItems, null));
+
+        presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
+        return presenterScreen;
+    }
+
+    private PresenterScreen addTargetScreen(PresenterFeatureRepository presenterFeatureRepository) {
+        final PresenterScreen presenterScreen = new PresenterScreen("Target Screen", "Target", "AutoMenu", "target", null, PresenterType.text);
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "A simple page so that there is a screen with the target value of 'target' for testing purposes."));
 
         presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
         return presenterScreen;
