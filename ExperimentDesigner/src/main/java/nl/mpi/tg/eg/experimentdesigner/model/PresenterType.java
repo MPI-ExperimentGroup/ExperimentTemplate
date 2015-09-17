@@ -20,8 +20,6 @@ package nl.mpi.tg.eg.experimentdesigner.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import static nl.mpi.tg.eg.experimentdesigner.model.FeatureType.*;
-import static org.springframework.core.convert.TypeDescriptor.array;
-import org.thymeleaf.util.ArrayUtils;
 
 /**
  * @since Aug 18, 2015 4:16:06 PM (creation date)
@@ -29,8 +27,85 @@ import org.thymeleaf.util.ArrayUtils;
  */
 public enum PresenterType {
 
-    transmission(new FeatureType[]{}),
-    metadata(new FeatureType[]{}),
+    transmission(new FeatureType[]{
+        endOfStimulusButton,
+        localStorageData,
+        allMetadataFields,
+        eraseLocalStorageButton,
+        showCurrentMs,
+        enableStimulusButtons,
+        disableStimulusButtons,
+        showStimulusProgress,
+        hideStimulusButtons,
+        showStimulusButtons,
+        popupMessage,
+        stimulusAudio,
+        stimulusImage,
+        clearStimulus,
+        removeStimulus,
+        keepStimulus,
+        nextStimulus,
+        allMenuItems,
+        nextStimulusButton,
+        autoNextStimulus,
+        conditionalHtml,
+        addKinTypeGui,
+        autoNextPresenter,
+        logTimeStamp,
+        audioButton,
+        preloadAllStimuli,
+        showStimulusGrid,
+        pause,
+        kinTypeStringDiagram,
+        loadKinTypeStringDiagram,
+        responseCorrect,
+        responseIncorrect,
+        hasMoreStimulus,
+        endOfStimulus,
+        userInfo,
+        menuItem
+    }),
+    metadata(new FeatureType[]{
+        localStorageData,
+        eraseLocalStorageButton,
+        showCurrentMs,
+        enableStimulusButtons,
+        disableStimulusButtons,
+        showStimulusProgress,
+        hideStimulusButtons,
+        showStimulusButtons,
+        generateCompletionCode,
+        sendAllData,
+        eraseLocalStorageOnWindowClosing,
+        clearStimulus,
+        removeStimulus,
+        keepStimulus,
+        nextStimulus,
+        allMenuItems,
+        nextStimulusButton,
+        autoNextStimulus,
+        conditionalHtml,
+        addKinTypeGui,
+        autoNextPresenter,
+        logTimeStamp,
+        audioButton,
+        preloadAllStimuli,
+        showStimulusGrid,
+        pause,
+        onSuccess,
+        kinTypeStringDiagram,
+        loadKinTypeStringDiagram,
+        stimulusImage,
+        stimulusAudio,
+        endOfStimulusButton,
+        popupMessage,
+        responseCorrect,
+        responseIncorrect,
+        hasMoreStimulus,
+        endOfStimulus,
+        userInfo,
+        menuItem
+    }),
     preload(new FeatureType[]{}),
     stimulus(new FeatureType[]{}),
     kindiagram(new FeatureType[]{}),
@@ -39,7 +114,7 @@ public enum PresenterType {
     text(new FeatureType[]{loadKinTypeStringDiagram, localStorageData,
         allMetadataFields,
         eraseLocalStorageButton,
-        //            showCurrentMs();
+        //            showCurrentMs,
         enableStimulusButtons,
         disableStimulusButtons,
         showStimulusProgress,
@@ -56,9 +131,9 @@ public enum PresenterType {
         nextStimulusButton,
         autoNextStimulus,
         addKinTypeGui,
-        //            autoNextPresenter(appEventListner);
-        //            logTimeStamp();
-        //            audioButton();
+        //            autoNextPresenter,
+        //            logTimeStamp,
+        //            audioButton,
         preloadAllStimuli,
         endOfStimulusButton,
         responseCorrect,
