@@ -34,7 +34,7 @@ public enum FeatureType {
     menuItem(false, true, new FeatureAttribute[]{target}),
     popupMessage(false, true, null),
     optionButton(false, true, new FeatureAttribute[]{target}),
-    endOfStimulusButton(false, true, new FeatureAttribute[]{eventTag, target}),
+    //    endOfStimulusButton(false, true, new FeatureAttribute[]{eventTag, target}),
     padding(false, false, null),
     localStorageData(false, false, null),
     allMetadataFields(false, false, null),
@@ -54,26 +54,26 @@ public enum FeatureType {
     nextStimulus(false, false, null),
     centrePage(false, false, null),
     allMenuItems(false, false, null),
-    nextStimulusButton(false, false, null),
-    autoNextStimulus(false, false, null),
-    conditionalHtml(false, false, null),
-    addKinTypeGui(false, false, null),
-    autoNextPresenter(false, false, null),
-    logTimeStamp(false, false, null),
-    audioButton(false, false, null),
+    nextStimulusButton(false, true, new FeatureAttribute[]{eventTag, condition}),
+    autoNextStimulus(false, false, new FeatureAttribute[]{eventTag, condition}),
+    conditionalHtml(false, true, new FeatureAttribute[]{condition}),
+    addKinTypeGui(false, false, new FeatureAttribute[]{diagramName}),
+    autoNextPresenter(false, false, new FeatureAttribute[]{target}),
+    logTimeStamp(false, false, new FeatureAttribute[]{eventTag}),
+    audioButton(false, false, new FeatureAttribute[]{eventTag, mp3, ogg, poster}),
     preloadAllStimuli(false, false, null),
-    showStimulusGrid(false, false, null),
-    pause(false, false, null),
+    showStimulusGrid(false, false, new FeatureAttribute[]{columnCount, imageWidth, eventTag}, true),
+    pause(false, false, new FeatureAttribute[]{timeToNext}),
     onError(true, false, null),
     onSuccess(true, false, null),
-    kinTypeStringDiagram(false, false, null),
-    loadKinTypeStringDiagram(false, false, null),
-    responseCorrect(true, false, null),
-    responseIncorrect(true, false, null),
-    hasMoreStimulus(true, false, null),
-    endOfStimulus(true, false, null),
-    stimulusImage(false, false, null),
-    stimulusAudio(false, false, new FeatureAttribute[]{FeatureAttribute.mp3File,}),
+    kinTypeStringDiagram(false, false, new FeatureAttribute[]{timeToNext, kintypestring}),
+    loadKinTypeStringDiagram(false, false, new FeatureAttribute[]{timeToNext, diagramName}),
+    responseCorrect(true, false, new FeatureAttribute[]{timeToNext}),
+    responseIncorrect(true, false, new FeatureAttribute[]{timeToNext}),
+    hasMoreStimulus(true, false, new FeatureAttribute[]{timeToNext}),
+    endOfStimulus(true, false, new FeatureAttribute[]{timeToNext}),
+    stimulusImage(false, false, new FeatureAttribute[]{width, timeToNext}),
+    stimulusAudio(false, false, new FeatureAttribute[]{timeToNext, mp3,}),
     VideoPanel(false, false, new FeatureAttribute[]{mp4, ogg, webm, width, poster}),
     AudioRecorderPanel(false, false, new FeatureAttribute[]{wav}),
     userInfo(false, false, null),
@@ -82,11 +82,20 @@ public enum FeatureType {
     private final boolean canHaveFeatures;
     private final boolean canHaveText;
     private final FeatureAttribute[] featureAttributes;
+    private final boolean hasCorrectIncorrect;
 
     private FeatureType(boolean canHaveFeatures, boolean canHaveText, FeatureAttribute[] featureAttributes) {
         this.canHaveFeatures = canHaveFeatures;
         this.canHaveText = canHaveText;
         this.featureAttributes = featureAttributes;
+        this.hasCorrectIncorrect = false;
+    }
+
+    private FeatureType(boolean canHaveFeatures, boolean canHaveText, FeatureAttribute[] featureAttributes, boolean hasCorrectIncorrect) {
+        this.canHaveFeatures = canHaveFeatures;
+        this.canHaveText = canHaveText;
+        this.featureAttributes = featureAttributes;
+        this.hasCorrectIncorrect = hasCorrectIncorrect;
     }
 
     public boolean canHaveFeatures() {
@@ -99,5 +108,9 @@ public enum FeatureType {
 
     public FeatureAttribute[] getFeatureAttributes() {
         return featureAttributes;
+    }
+
+    public boolean requiresCorrectIncorrect() {
+        return hasCorrectIncorrect;
     }
 }
