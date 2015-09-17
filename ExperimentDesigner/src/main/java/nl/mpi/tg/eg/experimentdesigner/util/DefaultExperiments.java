@@ -65,31 +65,51 @@ public class DefaultExperiments {
     }
 
     private void addAllFeaturesAsPages(PresenterFeatureRepository presenterFeatureRepository, final Experiment experiment) {
-        int maxScreenAddCount = 2;
+//        int maxScreenAddCount = 5;
         for (PresenterType presenterType : PresenterType.values()) {
-            maxScreenAddCount--;
+//            maxScreenAddCount--;
             final PresenterScreen presenterScreen = new PresenterScreen(presenterType.name(), presenterType.name(), "AutoMenu", presenterType.name() + "Screen", null, presenterType);
             for (FeatureType featureType : presenterType.getFeatureTypes()) {
-                final PresenterFeature presenterFeature = new PresenterFeature(featureType, (featureType.canHaveText()) ? featureType.name() : null);
-                if (featureType.getFeatureAttributes() != null) {
-                    for (FeatureAttribute attribute : featureType.getFeatureAttributes()) { 
-                        switch (attribute) {
-                            case width:
-                                presenterFeature.addFeatureAttributes(attribute, "60");
-                                break;
-                            default:
-                                presenterFeature.addFeatureAttributes(attribute, attribute.name());
-                        }
-                    }
-                }
-                presenterScreen.getPresenterFeatureList().add(presenterFeature);
+                presenterScreen.getPresenterFeatureList().add(addFeature(featureType, presenterFeatureRepository));
             }
             presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
             experiment.getPresenterScreen().add(presenterScreen);
-            if (maxScreenAddCount <= 0) {
-                break;
+//            if (maxScreenAddCount <= 0) {
+//                break;
+//            }
+        }
+    }
+
+    private PresenterFeature addFeature(FeatureType featureType, PresenterFeatureRepository presenterFeatureRepository) {
+        final PresenterFeature presenterFeature = new PresenterFeature(featureType, (featureType.canHaveText()) ? featureType.name() : null);
+        if (featureType.getFeatureAttributes() != null) {
+            for (FeatureAttribute attribute : featureType.getFeatureAttributes()) {
+                switch (attribute) {
+                    case condition:
+                        presenterFeature.addFeatureAttributes(attribute, "true");
+                        break;
+                    case columnCount:
+                        presenterFeature.addFeatureAttributes(attribute, "3");
+                        break;
+                    case width:
+                    case timeToNext:
+                        presenterFeature.addFeatureAttributes(attribute, "60");
+                        break;
+                    default:
+                        presenterFeature.addFeatureAttributes(attribute, attribute.name());
+                }
             }
         }
+        if (featureType.requiresCorrectIncorrect()) {
+            presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.responseCorrect, presenterFeatureRepository));
+            presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.responseIncorrect, presenterFeatureRepository));
+            presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+        }
+        if (featureType.canHaveFeatures()) {
+            presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.text, presenterFeatureRepository));
+            presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+        }
+        return presenterFeature;
     }
 
     private PresenterScreen addVideosMenu(PresenterFeatureRepository presenterFeatureRepository) {
