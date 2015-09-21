@@ -33,6 +33,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -55,7 +56,7 @@ public class DesignController {
     private void populateModel(Model model) {
         experimentRepository.deleteAll();
 //        if (experimentRepository.count() == 0) {
-            new DefaultExperiments().insertDefaultExperiment(presenterScreenRepository, presenterFeatureRepository, metadataRepository, experimentRepository);
+        new DefaultExperiments().insertDefaultExperiment(presenterScreenRepository, presenterFeatureRepository, metadataRepository, experimentRepository);
 //        }
         model.addAttribute("screens", presenterScreenRepository.findAll());
         model.addAttribute("metadata", metadataRepository.findAll());
@@ -71,7 +72,17 @@ public class DesignController {
     }
 
     @RequestMapping("/design")
-    public String designView(Model model) {
+    public String designView(Model model, HttpServletRequest request) {
+        model.addAttribute("contextPath", request.getContextPath());
+        model.addAttribute("detailType", "configuration");
+        populateModel(model);
+        return "design";
+    }
+
+    @RequestMapping("/design/{appName}/{detailType}")
+    public String designView(Model model, HttpServletRequest request, @PathVariable String appName, @PathVariable String detailType) {
+        model.addAttribute("contextPath", request.getContextPath());
+        model.addAttribute("detailType", detailType);
         populateModel(model);
         return "design";
     }
@@ -81,7 +92,7 @@ public class DesignController {
 //        final Long experimentId = Long.valueOf(req.getParameter("experimentId"));
 //        final PresenterScreen presenterScreen = presenterScreenRepository.findOne(rowId);
         metadataRepository.save(metadata);
-//        presenterScreen.getPresenterFeatures().add(presenterFeature);
+//        presenterScreen.getPresenterFeatureList().add(presenterFeature);
 //        presenterScreenRepository.save(presenterScreen);
         populateModel(model);
         return "design";
@@ -100,7 +111,7 @@ public class DesignController {
         final Long rowId = Long.valueOf(req.getParameter("addFeature"));
         final PresenterScreen presenterScreen = presenterScreenRepository.findOne(rowId);
         presenterFeatureRepository.save(presenterFeature);
-        presenterScreen.getPresenterFeatures().add(presenterFeature);
+        presenterScreen.getPresenterFeatureList().add(presenterFeature);
         presenterScreenRepository.save(presenterScreen);
         populateModel(model);
         return "design";
@@ -111,7 +122,7 @@ public class DesignController {
         final Long rowId = Long.valueOf(req.getParameter("addSubFeature"));
         final PresenterFeature parentFeature = presenterFeatureRepository.findOne(rowId);
         presenterFeatureRepository.save(childFeature);
-        parentFeature.getPresenterFeatures().add(childFeature);
+        parentFeature.getPresenterFeatureList().add(childFeature);
         presenterFeatureRepository.save(parentFeature);
         populateModel(model);
         return "design";
@@ -123,7 +134,7 @@ public class DesignController {
         final Long presenterId = Long.valueOf(req.getParameter("parentId"));
         final PresenterFeature deletableFeature = presenterFeatureRepository.findOne(rowId);
         final PresenterScreen parentPresenter = presenterScreenRepository.findOne(presenterId);
-        parentPresenter.getPresenterFeatures().remove(deletableFeature);
+        parentPresenter.getPresenterFeatureList().remove(deletableFeature);
         presenterScreenRepository.save(parentPresenter);
         presenterFeatureRepository.delete(deletableFeature);
         populateModel(model);
@@ -136,7 +147,7 @@ public class DesignController {
         final Long presenterId = Long.valueOf(req.getParameter("parentId"));
         final PresenterFeature deletableFeature = presenterFeatureRepository.findOne(rowId);
         final PresenterFeature parentFeature = presenterFeatureRepository.findOne(presenterId);
-        parentFeature.getPresenterFeatures().remove(deletableFeature);
+        parentFeature.getPresenterFeatureList().remove(deletableFeature);
         presenterFeatureRepository.save(parentFeature);
         presenterFeatureRepository.delete(deletableFeature);
         populateModel(model);
