@@ -137,7 +137,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 text-align: center;
             }  
 
-            #menu {
+            .menu {
                 width: 100%;
                 border-bottom-color: rgb(0, 0, 0);
                 border-bottom-style: solid;
@@ -153,25 +153,25 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 padding-right: 0px;
                 padding-top: 0px;
             }
-            
-            #menu a {
+
+            .menu a {
                 background: #b3acc9;
                 color: #2f205c;
                 display: block;
                 text-decoration: none;
             }
 
-            #menu a.sel{
+            .menu a.sel{
                 background: #463774;
                 color: #b3acc9;
             }
 
-            #menu a:hover {
+            .menu a:hover {
                 background: #2f205c;
                 color: #b3acc9;
             }
 
-            #menu td {           
+            .menu td {           
                 width:20%;
                 margin: 1px;
                 /*height: 24px;*/
@@ -183,43 +183,90 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 /*padding-bottom: 6px;*/
                 /*padding-top: 6px;*/
             }
+            #pageTitle {
+                text-align: center;                
+                font-size: 24px;
+            }
+            td#experimentmenu {
+                vertical-align: top;
+                border-color: #1f305a;
+                padding: 10px 20px;
+                border-right: 1px dotted white;
+            }
+            table#experimentmenu {
+                margin-right: auto;
+                /*position: fixed;*/
+                /*vertical-align: top;*/
+                /*top: 0;*/
+            }
+            #experimentmenu a {
+                padding-bottom: 1px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 1px;
+                background: #9cb9bb;
+                color: #164f51;
+                display: block;
+                text-decoration: none;
+            }
+            #experimentmenu a.sel{
+                background: #2a6366;
+                color: #9cb9bb;
+            }
+            #experimentmenu a:hover {
+                background: #164f51;
+                color: #9cb9bb;
+            }
         </style>
     </head>
     <body>
         <div id="header"><h1>Frinex Experiment Designer</h1></div>
-        <table id="menu">
+        <table id="menu" class="menu">
             <tr>
                 <td class="sel"><a class="sel" href="#">Design View</a></td>
-                <td><a href="experiments">Experiment List</a></td>
-                <td><a href="configuration">Configuration XML</a></td>
-                <td><a href="edituser">User Profile</a></td>
-                <td><a href="logout">logout</a></td>
+                <td><a th:href="${contextPath} + '/experiments'">Experiment List</a></td>
+                <td><a th:href="${contextPath} + '/configuration'">Configuration XML</a></td>
+                <td><a th:href="${contextPath} + '/edituser'">User Profile</a></td>
+                <td><a th:href="${contextPath} + '/logout'">logout</a></td>
             </tr>
         </table>
-        <table id="main"><tr><td>
-                    <div class="addpresenterdiv">
+        <table id="main">
+            <tr><td id="pageTitle" colspan="2" th:text="${experiment.appNameDisplay}"></td></tr>
+            <tr><td id="experimentmenu">
+                    <table class="menu">
+                        <tr>
+                            <td><a th:attr="class=${detailType eq 'configuration' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/design/' + *{experiment.appNameInternal} + '/configuration'">Configuration</a></td></tr><tr>
+                            <td><a th:attr="class=${detailType eq 'metadata' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/design/' + *{experiment.appNameInternal} + '/metadata'">Metadata</a></td></tr><tr>
+                            <td><a th:attr="class=${detailType eq 'stimuli' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/design/' + *{experiment.appNameInternal} + '/stimuli'">Stimuli</a></td></tr><tr>
+                            <td><a th:attr="class=${detailType eq 'screens' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/design/' + *{experiment.appNameInternal}+ '/screens'">Screens</a></td>
+                        </tr>
+                    </table>
+                    <table th:if="${detailType} eq 'screens'" class="menu">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a th:each="presenterTags : ${screens}" th:text="${presenterTags.getSelfPresenterTag()}" th:href="${contextPath} + '/design/' + *{experiment.appNameInternal}+ '/screens/' + ${presenterTags.getSelfPresenterTag()}" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>                    
+                </td><td>
+                    <div th:if="${detailType} eq 'configuration'">
                         <form action="#" th:action="@{/design}" th:object="${experiment}" method="post">
                             <table class="addpresenterform">
-                                <tr>
-                                    <td><b>appNameDisplay</b></td>
-                                    <td><b>appNameInternal</b></td>
-                                    <td><b>dataSubmitUrl</b></td>
-                                    <td><b>staticFilesUrl</b></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="text" th:field="*{appNameDisplay}" /></td>
-                                    <td><input type="text" th:field="*{appNameInternal}" /></td>
-                                    <td><input type="text" th:field="*{dataSubmitUrl}" /></td>
-                                    <td><input type="text" th:field="*{staticFilesUrl}" /></td>
-                                    <td><button type="submit" name="saveExperiment">Save Changes</button></td>
-                                </tr>
+                                <tr><td><b>appNameDisplay</b></td><td><input type="text" th:field="*{appNameDisplay}" /></td></tr>
+                                <tr><td><b>appNameInternal</b></td><td><input type="text" th:field="*{appNameInternal}" /></td></tr>
+                                <tr><td><b>dataSubmitUrl</b></td><td><input type="text" th:field="*{dataSubmitUrl}" /></td></tr>
+                                <tr><td><b>staticFilesUrl</b></td><td><input type="text" th:field="*{staticFilesUrl}" /></td></tr>
+                                <tr><td><b>Primary colour</b></td><td></td></tr>
+                                <tr><td><b>Secondary colour (1)</b></td><td></td></tr>
+                                <tr><td><b>Secondary colour (2)</b></td><td></td></tr>
+                                <tr><td><b>Background colour</b></td><td></td></tr>
+                                <tr><td><button type="reset" >Reset</button></td><td><button type="submit" name="saveExperiment">Save Changes</button></td></tr>
                             </table>
                         </form>
                     </div>
-
-
-                    <table class="presenter">
+                    <table class="presenter" th:if="${detailType} eq 'metadata'">
                         <tbody>
                             <tr>
                                 <td><b>ID</b></td>
@@ -241,33 +288,60 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 <td><form action="#" th:action="@{/design}" method="post"><button type="submit" name="deleteMetadata" th:value="${metadataRow.getId()}">Delete</button></form></td>
                                 <!--<td><button type="submit" name="updateMetadata" th:value="${metadataRow.getId()}">Update</button></td>-->
                             </tr>
+                            <tr><td colspan="7">
+                                    <div class="addpresenterdiv">
+                                        <form action="#" th:action="@{/design}" th:object="${metadata}" method="post">
+                                            <table class="addpresenterform">
+                                                <tr>
+                                                    <td><b>Post Name</b></td>
+                                                    <td><b>Registration Field</b></td>
+                                                    <td><b>Controlled Regex</b></td>
+                                                    <td><b>Controlled Message</b></td>
+                                                    <td><b>Prevent Server Duplicates</b></td>
+                                                    <td><b>Duplicates Controlled Message</b></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td> <input type="text" id="postName" name="postName"/></td>
+                                                    <td><input type="text" id="registrationField" name="registrationField" /></td>
+                                                    <td><input type="text" id="controlledRegex" name="controlledRegex" /></td>
+                                                    <td><input type="text" id="controlledMessage" name="controlledMessage" /></td>
+                                                    <td><input type="checkbox" id="preventServerDuplicates" name="preventServerDuplicates" /></td>
+                                                    <td><input type="text" id="duplicatesControlledMessage" name="duplicatesControlledMessage" /></td>
+                                                    <td><button type="submit" name="addMetadata">addMetadata</button></td>
+                                                </tr>
+                                            </table>
+                                        </form>
+                                    </div>
+                                </td></tr>
                         </tbody>
                     </table>
-                    <div class="addpresenterdiv">
-                        <form action="#" th:action="@{/design}" th:object="${metadata}" method="post">
-                            <table class="addpresenterform">
-                                <tr>
-                                    <td><b>Post Name</b></td>
-                                    <td><b>Registration Field</b></td>
-                                    <td><b>Controlled Regex</b></td>
-                                    <td><b>Controlled Message</b></td>
-                                    <td><b>Prevent Server Duplicates</b></td>
-                                    <td><b>Duplicates Controlled Message</b></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td> <input type="text" id="postName" name="postName"/></td>
-                                    <td><input type="text" id="registrationField" name="registrationField" /></td>
-                                    <td><input type="text" id="controlledRegex" name="controlledRegex" /></td>
-                                    <td><input type="text" id="controlledMessage" name="controlledMessage" /></td>
-                                    <td><input type="checkbox" id="preventServerDuplicates" name="preventServerDuplicates" /></td>
-                                    <td><input type="text" id="duplicatesControlledMessage" name="duplicatesControlledMessage" /></td>
-                                    <td><button type="submit" name="addMetadata">addMetadata</button></td>
-                                </tr>
-                            </table>
-                        </form>
-                    </div>
-                    <table class="presenter" th:each="presenter : ${screens}">
+                    <table class="presenter" th:if="${detailType} eq 'stimuli'">   
+                        <tbody>
+                            <tr>
+                                <td><b>ID</b></td>
+                                <td><b>Post Name</b></td>
+                                <td><b>Registration Field</b></td>
+                                <td><b>Controlled Regex</b></td>
+                                <td><b>Controlled Message</b></td>
+                                <td><b>Prevent Server Duplicates</b></td>
+                                <td><b>Duplicates Controlled Message</b></td>
+                            </tr>
+                            <!--                            <tr th:each="metadataRow : ${metadata}">
+                                                            <td th:text="${metadataRow.getId()}">metadataRow.getId()</td>
+                                                            <td th:text="${metadataRow.getPostName()}">metadataRow.getPostName()</td>
+                                                            <td th:text="${metadataRow.getRegistrationField()}">metadataRow.getRegistrationField()</td>
+                                                            <td th:text="${metadataRow.getControlledRegex()}">metadataRow.getControlledRegex()</td>
+                                                            <td th:text="${metadataRow.getControlledMessage()}">metadataRow.getControlledMessage()</td>
+                                                            <td th:text="${metadataRow.isPreventServerDuplicates()}">metadataRow.isPreventServerDuplicates()</td>
+                                                            <td th:text="${metadataRow.getDuplicatesControlledMessage()}">metadataRow.getDuplicatesControlledMessage()</td>
+                                                            <td><form action="#" th:action="@{/design}" method="post"><button type="submit" name="deleteMetadata" th:value="${metadataRow.getId()}">Delete</button></form></td>
+                                                            <td><button type="submit" name="updateMetadata" th:value="${metadataRow.getId()}">Update</button></td>
+                                                        </tr>-->
+                        </tbody>
+                    </table>
+
+                    <table th:if="${detailType} eq 'screens'" class="presenter" th:each="presenter : ${screens}">
                         <tbody>
                             <tr>
                                 <td><b>ID</b></td>
@@ -354,58 +428,59 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="6"><br/></td>
+                                <td colspan="6"><br/>
+                                    <div class="addpresenterdiv">
+                                        <form action="#" th:action="@{/design}" th:object="${PresenterScreen}" method="post">
+                                            <table class="addpresenterform">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Screen Title</th>
+                                                        <th>Menu Label</th>
+                                                        <th>Back Action</th>
+                                                        <th>Self (Action)</th>
+                                                        <th>Next Action</th>
+                                                        <th>Screen Type</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>                       
+                                                        <td>
+                                                            <input type="text" name="title" id="title" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="menuLabel" id="menuLabel" />
+                                                        </td>
+                                                        <td>
+                                                            <select name="backPresenterTag" id="backPresenterTag">
+                                                                <option th:each="presenter : ${screens}" th:value="${presenter.getSelfPresenterTag()}" th:text="${presenter.getSelfPresenterTag()}" />
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="selfPresenterTag" id="selfPresenterTag" />
+                                                        </td>
+                                                        <td>
+                                                            <select name="nextPresenterTag" id="nextPresenterTag">
+                                                                <option th:each="presenter : ${screens}" th:value="${presenter.getSelfPresenterTag()}" th:text="${presenter.getSelfPresenterTag()}" />
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <select name="presenterType" id="presenterType">
+                                                                <option th:each="presentertype : ${presentertypes}" th:value="${presentertype}" th:text="${presentertype}" />
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <button type="submit" name="addScreen">Add Screen</button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </form>
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
                 </td></tr><tr><td>
-                    <div class="addpresenterdiv">
-                        <form action="#" th:action="@{/design}" th:object="${PresenterScreen}" method="post">
-                            <table class="addpresenterform">
-                                <thead>
-                                    <tr>
-                                        <th>Screen Title</th>
-                                        <th>Menu Label</th>
-                                        <th>Back Action</th>
-                                        <th>Self (Action)</th>
-                                        <th>Next Action</th>
-                                        <th>Screen Type</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>                       
-                                        <td>
-                                            <input type="text" name="title" id="title" />
-                                        </td>
-                                        <td>
-                                            <input type="text" name="menuLabel" id="menuLabel" />
-                                        </td>
-                                        <td>
-                                            <select name="backPresenterTag" id="backPresenterTag">
-                                                <option th:each="presenter : ${screens}" th:value="${presenter.getSelfPresenterTag()}" th:text="${presenter.getSelfPresenterTag()}" />
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <input type="text" name="selfPresenterTag" id="selfPresenterTag" />
-                                        </td>
-                                        <td>
-                                            <select name="nextPresenterTag" id="nextPresenterTag">
-                                                <option th:each="presenter : ${screens}" th:value="${presenter.getSelfPresenterTag()}" th:text="${presenter.getSelfPresenterTag()}" />
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select name="presenterType" id="presenterType">
-                                                <option th:each="presentertype : ${presentertypes}" th:value="${presentertype}" th:text="${presentertype}" />
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <button type="submit" name="addScreen">Add Screen</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </form>
-                    </div>
                 </td>
             </tr>
         </table>
