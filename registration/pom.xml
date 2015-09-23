@@ -54,7 +54,7 @@
                             <includes>
                                 <include>${experiment.configuration.name}.xml</include>
                             </includes>
-                            <stylesheet>${project.build.sourceDirectory}/../xsl/config2metadata.xsl</stylesheet>
+                            <stylesheet>${project.build.sourceDirectory}/../xsl/config2customfields.xsl</stylesheet>
                             <outputDir>${project.build.directory}/generated-sources/src/nl/mpi/tg/eg/frinex/model</outputDir>
                             <parameters>
                                 <parameter>

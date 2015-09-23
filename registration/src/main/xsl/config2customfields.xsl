@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-    Document   : config2metadata.xsl
+    Document   : config2customfelds.xsl
     Created on : September 23, 2015, 10:15 AM
     Author     : Peter Withers <peter.withers@mpi.nl>
     Description:
