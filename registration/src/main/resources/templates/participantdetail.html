@@ -32,29 +32,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <h3>Participant Data</h3>
         <table id="datatable">
             <thead>
-                <tr>
-                    <!--<th>id</th>-->
-                    <!--<th>userId</th>-->
-                    <!--<th>submitDate</th>-->
-                    <th>Worker Id</th>
-                    <th>Native Language</th>
-                    <th>Other Languages</th>
-                    <th>Remote Address</th>
-                    <th>Device Language</th>
-                    <th>User Agent</th>
-                </tr>
+                <tr ht:replace="participanttable :: participantheader"/>
             </thead>
             <tbody>
-                <tr id="clickablerow" th:each="prod : ${participantData}" th:onclick="'javascript:window.location=\'participantdetail?id=' + ${prod.userId} + '\';'">
-                    <!--<td th:text="${prod.id}">id</td>-->
-                    <!--<td th:text="${prod.userId}">userId</td>-->
-                    <!--<td th:text="${prod.submitDate}">submitDate</td>-->
-                    <td th:text="${prod.workerId}">workerId</td>
-                    <td th:text="${prod.nativeLanguage}">nativeLanguage</td>
-                    <td th:text="${prod.otherLanguages}">otherLanguages</td>
-                    <td th:text="${prod.remoteAddr}">remoteAddr</td>
-                    <td th:text="${prod.acceptLang}">acceptLang</td>
-                    <td th:text="${prod.userAgent}">userAgent</td>
+                <tr ht:include="participanttable :: participantrows" id="clickablerow" th:each="prod : ${participantData}" th:onclick="'javascript:window.location=\'participantdetail?id=' + ${prod.userId} + '\';'">
                 </tr>
             </tbody>            
         </table>

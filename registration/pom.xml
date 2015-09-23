@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-admin</artifactId>
-    <version>0.1.46-testing</version>
+    <version>0.1.47-testing</version>
     <name>Frinex Administration</name>
     <packaging>war</packaging>
     <parent>
@@ -60,6 +60,10 @@
                                 <parameter>
                                     <name>targetClientDirectory</name>
                                     <value>${project.build.directory}/generated-sources/src/nl/mpi/tg/eg/frinex</value>
+                                </parameter>
+                                <parameter>
+                                    <name>targetTemplateDirectory</name>
+                                    <value>${project.build.directory}/generated-sources/resources/templates</value>
                                 </parameter>
                             </parameters>
                         </transformationSet>

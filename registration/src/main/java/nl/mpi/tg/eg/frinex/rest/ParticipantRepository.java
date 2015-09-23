@@ -34,5 +34,5 @@ public interface ParticipantRepository extends PagingAndSortingRepository<Partic
 
     List<Participant> findByUserId(@Param("userId") String userId);
 
-    int countByWorkerId(@Param("workerId") String workerId);
+    int countByWorkerIdCustomField(@Param("workerId") String workerIdCustomField);
 }

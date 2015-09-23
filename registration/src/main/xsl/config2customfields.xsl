@@ -11,6 +11,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
     <xsl:output method="text" encoding="UTF-8" />
     <xsl:param name="targetClientDirectory" select="targetClientDirectory"/>
+    <xsl:param name="targetTemplateDirectory" select="targetTemplateDirectory"/>
     <xsl:template match="/">
         <xsl:result-document href="{$targetClientDirectory}/model/Participant.java" method="text">
             <xsl:text>package nl.mpi.tg.eg.frinex.model;
@@ -89,7 +90,7 @@
                 <xsl:text>
                     public String get</xsl:text>
                 <xsl:value-of select="@postName" />
-                <xsl:text>() {
+                <xsl:text>CustomField() {
                     return </xsl:text>
                 <xsl:value-of select="@postName" />
                 <xsl:text>CustomField;
@@ -124,7 +125,7 @@
             <xsl:for-each select="experiment/metadata/field">
                 <xsl:text>participant.get</xsl:text>
                 <xsl:value-of select="@postName" />
-                <xsl:text>()</xsl:text>
+                <xsl:text>CustomField()</xsl:text>
                 <xsl:if test="position() != last()">
                     <xsl:text>,</xsl:text>
                 </xsl:if>
@@ -132,6 +133,35 @@
             <xsl:text>);
                 }
                 }    </xsl:text>
+        </xsl:result-document>
+        <xsl:result-document href="{$targetTemplateDirectory}participanttable.html" method="text">
+            <xsl:text>&lt;!DOCTYPE html&gt;
+                &lt;html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"&gt;
+                    &lt;head&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;
+    &lt;body&gt;
+        &lt;table&gt;
+                    &lt;tr th:fragment="participantheader"&gt;
+            </xsl:text>
+            <xsl:for-each select="experiment/metadata/field">
+                <xsl:text>&lt;th&gt;</xsl:text>
+                <xsl:value-of select="@registrationField" />
+                <xsl:text>&lt;/th&gt;</xsl:text>
+            </xsl:for-each>
+            <xsl:text>    
+                &lt;/tr&gt;
+                    &lt;tr th:fragment="participantrows"&gt;
+            </xsl:text>
+            <xsl:for-each select="experiment/metadata/field">
+                <xsl:text>&lt;td  th:text="${prod.</xsl:text>
+                <xsl:value-of select="@postName" />
+                <xsl:text>CustomField}"&gt;&lt;/td&gt;</xsl:text>
+            </xsl:for-each>
+            <xsl:text>    
+                &lt;/tr&gt;
+                &lt;/table&gt;
+            &lt;/body&gt;
+        &lt;/html&gt;
+            </xsl:text>
         </xsl:result-document>
     </xsl:template>
 </xsl:stylesheet>
