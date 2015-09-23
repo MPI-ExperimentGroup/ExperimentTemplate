@@ -25,6 +25,7 @@ import java.util.zip.ZipOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import nl.mpi.tg.eg.frinex.model.Participant;
 import nl.mpi.tg.eg.frinex.model.ScreenData;
+import nl.mpi.tg.eg.frinex.util.ParticipantCsvExporter;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,9 +86,10 @@ public class CsvController {
                 stringBuilder,
                 CSVFormat.DEFAULT
         );
-        printer.printRecord("UserId", "WorkerId", "NativeLanguage", "OtherLanguages");
+        final ParticipantCsvExporter participantCsvExporter = new ParticipantCsvExporter();
+        participantCsvExporter.appendCsvHeader(printer);
         for (Participant participant : participantRepository.findAll()) {
-            printer.printRecord(participant.getUserId(), participant.getWorkerId(), participant.getNativeLanguage(), participant.getOtherLanguages());
+            participantCsvExporter.appendCsvRow(printer, participant);
         }
         printer.close();
         return stringBuilder.toString().getBytes();

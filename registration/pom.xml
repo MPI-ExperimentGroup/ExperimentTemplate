@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-admin</artifactId>
-    <version>0.1.43-testing</version>
+    <version>0.1.46-testing</version>
     <name>Frinex Administration</name>
     <packaging>war</packaging>
     <parent>
@@ -55,11 +55,11 @@
                                 <include>${experiment.configuration.name}.xml</include>
                             </includes>
                             <stylesheet>${project.build.sourceDirectory}/../xsl/config2customfields.xsl</stylesheet>
-                            <outputDir>${project.build.directory}/generated-sources/src/nl/mpi/tg/eg/frinex/model</outputDir>
+                            <outputDir>${project.build.directory}/generated-sources/src/nl/mpi/tg/eg/frinex</outputDir>
                             <parameters>
                                 <parameter>
                                     <name>targetClientDirectory</name>
-                                    <value>${project.build.directory}/generated-sources/src/nl/mpi/tg/eg/frinex/model</value>
+                                    <value>${project.build.directory}/generated-sources/src/nl/mpi/tg/eg/frinex</value>
                                 </parameter>
                             </parameters>
                         </transformationSet>
@@ -73,6 +73,23 @@
                         <version>8.7</version>
                     </dependency>
                 </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>target/generated-sources</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>   
     </build>

@@ -12,7 +12,7 @@
     <xsl:output method="text" encoding="UTF-8" />
     <xsl:param name="targetClientDirectory" select="targetClientDirectory"/>
     <xsl:template match="/">
-        <xsl:result-document href="{$targetClientDirectory}/CustomFields.java" method="text">
+        <xsl:result-document href="{$targetClientDirectory}/model/Participant.java" method="text">
             <xsl:text>package nl.mpi.tg.eg.frinex.model;
 
                 import java.io.Serializable;
@@ -24,7 +24,7 @@
                 import javax.persistence.Temporal;
 
                 @Entity                     
-                public class CustomFields implements Serializable {
+                public class Participant implements Serializable {
 
                 @Id
                 @GeneratedValue(strategy = GenerationType.AUTO)
@@ -96,7 +96,41 @@
                     }
                 </xsl:text>
             </xsl:for-each>
-            <xsl:text>
+            <xsl:text>              
+                }    </xsl:text>
+        </xsl:result-document>
+        <xsl:result-document href="{$targetClientDirectory}/util/ParticipantCsvExporter.java" method="text">
+            <xsl:text>package nl.mpi.tg.eg.frinex.util;
+                
+                import java.io.IOException;
+                import nl.mpi.tg.eg.frinex.model.Participant;
+                import org.apache.commons.csv.CSVPrinter;
+                
+                public class ParticipantCsvExporter {
+                public void appendCsvHeader(CSVPrinter printer) throws IOException {
+                printer.printRecord(</xsl:text>
+            <xsl:for-each select="experiment/metadata/field">
+                <xsl:text>"</xsl:text>
+                <xsl:value-of select="@postName" />
+                <xsl:text>"</xsl:text>
+                <xsl:if test="position() != last()">
+                    <xsl:text>,</xsl:text>
+                </xsl:if>
+            </xsl:for-each>
+            <xsl:text>);
+                }
+                public void appendCsvRow(CSVPrinter printer, Participant participant) throws IOException {
+                printer.printRecord(</xsl:text>
+            <xsl:for-each select="experiment/metadata/field">
+                <xsl:text>participant.get</xsl:text>
+                <xsl:value-of select="@postName" />
+                <xsl:text>()</xsl:text>
+                <xsl:if test="position() != last()">
+                    <xsl:text>,</xsl:text>
+                </xsl:if>
+            </xsl:for-each>
+            <xsl:text>);
+                }
                 }    </xsl:text>
         </xsl:result-document>
     </xsl:template>
