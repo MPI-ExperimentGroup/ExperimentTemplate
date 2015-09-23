@@ -134,13 +134,16 @@
                 }
                 }    </xsl:text>
         </xsl:result-document>
-        <xsl:result-document href="{$targetTemplateDirectory}participanttable.html" method="text">
+        <xsl:result-document href="{$targetTemplateDirectory}/participanttable.html" method="text">
             <xsl:text>&lt;!DOCTYPE html&gt;
                 &lt;html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"&gt;
                     &lt;head&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;
     &lt;body&gt;
         &lt;table&gt;
                     &lt;tr th:fragment="participantheader"&gt;
+                    &lt;th>id&lt;/th&gt;
+                    &lt;th&gt;userId&lt;/th&gt;
+                    &lt;th&gt;submitDate&lt;/th&gt;
             </xsl:text>
             <xsl:for-each select="experiment/metadata/field">
                 <xsl:text>&lt;th&gt;</xsl:text>
@@ -150,6 +153,9 @@
             <xsl:text>    
                 &lt;/tr&gt;
                     &lt;tr th:fragment="participantrows"&gt;
+                    &lt;td th:text="${prod.id}"&gt;id&lt;/td&gt;
+                    &lt;td th:text="${prod.userId}"&gt;userId&lt;/td&gt;
+                    &lt;td th:text="${prod.submitDate}"&gt;submitDate&lt;/td&gt;
             </xsl:text>
             <xsl:for-each select="experiment/metadata/field">
                 <xsl:text>&lt;td  th:text="${prod.</xsl:text>
@@ -158,6 +164,15 @@
             </xsl:for-each>
             <xsl:text>    
                 &lt;/tr&gt;
+                &lt;tr th:fragment="participantinputfields"&gt; 
+            </xsl:text>
+            <xsl:for-each select="experiment/metadata/field">
+                <xsl:text>&lt;td&gt;&lt;input id="</xsl:text>
+                <xsl:value-of select="@postName" />
+                <xsl:text>CustomField" /&gt;&lt;/td&gt;</xsl:text>
+            </xsl:for-each>
+            <xsl:text>    
+                &lt;td&gt;&lt;button type="submit" name="add"&gt;Add Participant&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;
                 &lt;/table&gt;
             &lt;/body&gt;
         &lt;/html&gt;

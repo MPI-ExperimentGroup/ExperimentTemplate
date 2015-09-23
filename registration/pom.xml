@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-admin</artifactId>
-    <version>0.1.47-testing</version>
+    <version>0.1.48-testing</version>
     <name>Frinex Administration</name>
     <packaging>war</packaging>
     <parent>
@@ -89,13 +89,28 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>target/generated-sources</source>
+                                <source>${project.build.directory}/generated-sources</source>
                             </sources>
+                        </configuration>
+                    </execution>                    
+                    <execution>
+                        <id>add-resource</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>add-resource</goal>
+                        </goals>
+                        <configuration>
+                            <resources>
+                                <resource>
+                                    <directory>${project.build.directory}/generated-sources/resources/templates</directory>
+                                    <targetPath>templates</targetPath>
+                                </resource>
+                            </resources>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-        </plugins>   
+        </plugins> 
     </build>
     <dependencies>
         <dependency>
