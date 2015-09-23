@@ -33,7 +33,48 @@
                     <include>**/application.properties</include>
                 </includes>
             </resource>
-        </resources>        
+        </resources>     
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>xml-maven-plugin</artifactId>
+                <version>1.0</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>transform</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <transformationSets>
+                        <transformationSet>
+                            <dir>${experiment.configuration.path}</dir>
+                            <includes>
+                                <include>${experiment.configuration.name}.xml</include>
+                            </includes>
+                            <stylesheet>${project.build.sourceDirectory}/../xsl/config2metadata.xsl</stylesheet>
+                            <outputDir>${project.build.directory}/generated-sources/nl/mpi/tg/eg/frinex/model</outputDir>
+                            <parameters>
+                                <parameter>
+                                    <name>targetClientDirectory</name>
+                                    <value>${project.build.directory}/generated-sources/gwt/nl/mpi/tg/eg/frinex/model</value>
+                                </parameter>
+                            </parameters>
+                        </transformationSet>
+                    </transformationSets>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <!--this dependancy is  required to get a version 2 parser so that string replace is available-->
+                        <groupId>net.sf.saxon</groupId>
+                        <artifactId>saxon</artifactId>
+                        <version>8.7</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>   
     </build>
     <dependencies>
         <dependency>
