@@ -20,7 +20,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  * @since Jul 23, 2015 3:20:04 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
 -->
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Participant Listing</title>
         <meta charset="UTF-8"/>
@@ -29,28 +29,20 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     </head>
     <body>
         <div th:replace="fragments/adminpagelayout :: header"></div>
-        <p th:text="'Participant Count, ' + ${count}" />
-        <table id="datatable">
-            <thead>
-                <tr>
-                    <th>id</th>
-                    <th>userId</th>
-                    <th>submitDate</th>
-                    <th>workerId</th>
-                    <th>nativeLanguage</th>
-                    <th>otherLanguages</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr id="clickablerow" th:each="prod : ${allParticipantData}" th:onclick="'javascript:window.location=\'participantdetail?id=' + ${prod.userId} + '\';'">
-                    <td th:text="${prod.id}">id</td>
-                    <td th:text="${prod.userId}">userId</td>
-                    <td th:text="${prod.submitDate}">submitDate</td>
-                    <td th:text="${prod.workerId}">workerId</td>
-                    <td th:text="${prod.nativeLanguage}">nativeLanguage</td>
-                    <td th:text="${prod.otherLanguages}">otherLanguages</td>
-                </tr>
-            </tbody>
-        </table>
+        <p th:text="'Participant Count, ' + ${count}" />        
+        <form th:action="@{/participantlisting}" method="post">
+            <table id="datatable">
+                <thead>
+                    <tr th:replace="participanttable :: participantheader"></tr>
+                </thead>
+                <tbody>
+                    <tr th:include="participanttable :: participantrows" id="clickablerow" th:each="prod : ${allParticipantData}" th:onclick="'javascript:window.location=\'participantdetail?id=' + ${prod.userId} + '\';'">
+                    </tr>
+                    <tr th:replace="participanttable :: participantinputfields">
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
     </body>
 </html>

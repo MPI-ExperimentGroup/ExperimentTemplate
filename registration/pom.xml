@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-admin</artifactId>
-    <version>0.1.41-testing</version>
+    <version>0.1.48-testing</version>
     <name>Frinex Administration</name>
     <packaging>war</packaging>
     <parent>
@@ -33,7 +33,84 @@
                     <include>**/application.properties</include>
                 </includes>
             </resource>
-        </resources>        
+        </resources>     
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>xml-maven-plugin</artifactId>
+                <version>1.0</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>transform</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <transformationSets>
+                        <transformationSet>
+                            <dir>${experiment.configuration.path}</dir>
+                            <includes>
+                                <include>${experiment.configuration.name}.xml</include>
+                            </includes>
+                            <stylesheet>${project.build.sourceDirectory}/../xsl/config2customfields.xsl</stylesheet>
+                            <outputDir>${project.build.directory}/generated-sources/src/nl/mpi/tg/eg/frinex</outputDir>
+                            <parameters>
+                                <parameter>
+                                    <name>targetClientDirectory</name>
+                                    <value>${project.build.directory}/generated-sources/src/nl/mpi/tg/eg/frinex</value>
+                                </parameter>
+                                <parameter>
+                                    <name>targetTemplateDirectory</name>
+                                    <value>${project.build.directory}/generated-sources/resources/templates</value>
+                                </parameter>
+                            </parameters>
+                        </transformationSet>
+                    </transformationSets>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <!--this dependancy is  required to get a version 2 parser so that string replace is available-->
+                        <groupId>net.sf.saxon</groupId>
+                        <artifactId>saxon</artifactId>
+                        <version>8.7</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.build.directory}/generated-sources</source>
+                            </sources>
+                        </configuration>
+                    </execution>                    
+                    <execution>
+                        <id>add-resource</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>add-resource</goal>
+                        </goals>
+                        <configuration>
+                            <resources>
+                                <resource>
+                                    <directory>${project.build.directory}/generated-sources/resources/templates</directory>
+                                    <targetPath>templates</targetPath>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins> 
     </build>
     <dependencies>
         <dependency>
