@@ -29,6 +29,7 @@ import nl.mpi.tg.eg.frinex.util.ParticipantCsvExporter;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -88,7 +89,7 @@ public class CsvController {
         );
         final ParticipantCsvExporter participantCsvExporter = new ParticipantCsvExporter();
         participantCsvExporter.appendCsvHeader(printer);
-        for (Participant participant : participantRepository.findAll()) {
+        for (Participant participant : participantRepository.findAll(new Sort(Sort.Direction.ASC, "submitDate"))) {
             participantCsvExporter.appendCsvRow(printer, participant);
         }
         printer.close();

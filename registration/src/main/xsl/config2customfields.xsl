@@ -141,14 +141,17 @@
     &lt;body&gt;
         &lt;table&gt;
                     &lt;tr th:fragment="participantheader"&gt;
-                    &lt;th>id&lt;/th&gt;
-                    &lt;th&gt;userId&lt;/th&gt;
-                    &lt;th&gt;submitDate&lt;/th&gt;
+                    &lt;th&gt;&lt;a th:attr="href='?sort=id'"&gt;ID&lt;/a&gt;&lt;/th&gt;
+                    &lt;th&gt;&lt;a th:attr="href='?sort=userId'"&gt;UUID&lt;/a&gt;&lt;/th&gt;
+                    &lt;th&gt;&lt;a th:attr="href='?sort=submitDate'"&gt;submitDate&lt;/a&gt;&lt;/th&gt;
             </xsl:text>
+            <!--&amp;${(sortOrder='a')? 'd' : 'a'}-->
             <xsl:for-each select="experiment/metadata/field">
-                <xsl:text>&lt;th&gt;</xsl:text>
+                <xsl:text>&lt;th&gt;&lt;a th:attr="href='?sort=</xsl:text>
+                <xsl:value-of select="@postName" />
+                <xsl:text>CustomField'"&gt;</xsl:text>
                 <xsl:value-of select="@registrationField" />
-                <xsl:text>&lt;/th&gt;</xsl:text>
+                <xsl:text>&lt;/a&gt;&lt;/th&gt;</xsl:text>
             </xsl:for-each>
             <xsl:text>    
                 &lt;/tr&gt;

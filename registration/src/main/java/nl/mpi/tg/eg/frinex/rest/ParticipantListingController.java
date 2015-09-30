@@ -18,9 +18,11 @@
 package nl.mpi.tg.eg.frinex.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @since Jul 23, 2015 3:18:50 PM (creation date)
@@ -33,9 +35,11 @@ public class ParticipantListingController {
     private ParticipantRepository participantRepository;
 
     @RequestMapping("participantlisting")
-    public String participantListing(Model model) {
+    public String participantListing(Model model,
+            @RequestParam(value = "sort", required = false, defaultValue = "submitDate") String sortColumn,
+            @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection) {
         model.addAttribute("count", this.participantRepository.count());
-        model.addAttribute("allParticipantData", this.participantRepository.findAll());
+        model.addAttribute("allParticipantData", this.participantRepository.findAll(new Sort(("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn)));
         return "participantlisting";
     }
 }
