@@ -77,7 +77,7 @@ public enum FeatureType {
     stimulusImage(true, false, new FeatureAttribute[]{width, timeToNext}),
     stimulusAudio(true, false, new FeatureAttribute[]{timeToNext, mp3,}),
     VideoPanel(false, false, new FeatureAttribute[]{mp4, ogg, webm, width, poster}),
-    AnnotationTimelinePanel(true, false, null), //new FeatureAttribute[]{mp4, ogg, webm, width, poster}
+    AnnotationTimelinePanel(true, false, new FeatureAttribute[]{mp4, ogg, webm, width, poster, stimulusTag}),
     AudioRecorderPanel(false, false, new FeatureAttribute[]{wav}),
     userInfo(false, false, null),
     versionData(false, false, null),
