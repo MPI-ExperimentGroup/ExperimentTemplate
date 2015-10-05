@@ -511,6 +511,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
             <xsl:value-of select="if(@ogg) then concat(', &quot;', @ogg, '&quot;') else ',&quot;&quot;'" />
             <xsl:value-of select="if(@webm) then concat(', &quot;', @webm, '&quot;') else ',&quot;&quot;'" />
         </xsl:if>
+        <xsl:value-of select="if(@stimulusTag) then concat(', &quot;', @stimulusTag, '&quot;') else ''" />
         <xsl:text>));
         </xsl:text>
     </xsl:template>
