@@ -17,6 +17,8 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.util;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.dao.ExperimentRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.MetadataRepository;
@@ -28,6 +30,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
+import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
 
 /**
  * @since Sep 8, 2015 3:19:56 PM (creation date)
@@ -53,6 +56,8 @@ public class DefaultExperiments {
         experiment.getMetadata().add(metadata1);
         experiment.getMetadata().add(metadata2);
         metadataRepository.save(experiment.getMetadata());
+        addStimuli(experiment);
+        experiment.getPresenterScreen().add(addAnnotationTimelinePanel(presenterFeatureRepository));
         experiment.getPresenterScreen().add(addVideosMenu(presenterFeatureRepository));
         experiment.getPresenterScreen().add(addAutoMenu(presenterFeatureRepository));
         experiment.getPresenterScreen().add(addTargetScreen(presenterFeatureRepository));
@@ -62,6 +67,32 @@ public class DefaultExperiments {
         addAllFeaturesAsPages(presenterFeatureRepository, experiment);
         presenterScreenRepository.save(experiment.getPresenterScreen());
         experimentRepository.save(experiment);
+    }
+
+    private void addStimuli(final Experiment experiment) {
+        final ArrayList<Stimulus> stimuliList = new ArrayList<>();
+        final HashSet<String> tagSet = new HashSet<>();
+        tagSet.add("number");
+        tagSet.add("interesting");
+        stimuliList.add(new Stimulus("one.mp3", "one.mp4", "one.jpg", "One", tagSet));
+        tagSet.add("multiple words");
+        stimuliList.add(new Stimulus("two.mp3", "two.mp4", "two.jpg", "Two", tagSet));
+        tagSet.clear();
+        tagSet.add("FILLER_AUDIO");
+        stimuliList.add(new Stimulus("three.mp3", "three.mp4", "three.jpg", "Three", tagSet));
+        stimuliList.add(new Stimulus("four.mp3", "four.mp4", "four.jpg", "Four", tagSet));
+        tagSet.clear();
+        tagSet.add("NOISE_AUDIO");
+        stimuliList.add(new Stimulus("five.mp3", "five.mp4", "five.jpg", "Five", tagSet));
+        stimuliList.add(new Stimulus("six.mp3", "six.mp4", "six.jpg", "Six", tagSet));
+        for (String tag : new String[]{"sim", "mid", "diff", "noise"}) {
+            for (String label : new String[]{"rabbit", "cat", "muffin", "you"}) {
+                tagSet.clear();
+                tagSet.add(tag);
+                stimuliList.add(new Stimulus(tag + "_" + label, tag + "_" + label, tag + "_" + label + ".jpg", tag + "_" + label, tagSet));
+            }
+        }
+        experiment.setStimuli(stimuliList);
     }
 
     private void addAllFeaturesAsPages(PresenterFeatureRepository presenterFeatureRepository, final Experiment experiment) {
@@ -89,6 +120,7 @@ public class DefaultExperiments {
                         presenterFeature.addFeatureAttributes(attribute, "true");
                         break;
                     case columnCount:
+                    case setCount:
                         presenterFeature.addFeatureAttributes(attribute, "3");
                         break;
                     case width:
@@ -175,6 +207,27 @@ public class DefaultExperiments {
         presenterFeature.addFeatureAttributes(FeatureType.VideoPanel.getFeatureAttributes()[3], "70%");
         presenterFeature.addFeatureAttributes(FeatureType.VideoPanel.getFeatureAttributes()[0], "http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4");
         presenterScreen.getPresenterFeatureList().add(presenterFeature);
+
+        final PresenterFeature optionButton1 = new PresenterFeature(FeatureType.optionButton, "Video Works");
+        optionButton1.addFeatureAttributes(FeatureAttribute.target, "VideoWorksPage");
+        presenterScreen.getPresenterFeatureList().add(optionButton1);
+        final PresenterFeature optionButton2 = new PresenterFeature(FeatureType.optionButton, "Video Failed");
+        optionButton2.addFeatureAttributes(FeatureAttribute.target, "VideoFailedPage");
+        presenterScreen.getPresenterFeatureList().add(optionButton2);
+        presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
+        return presenterScreen;
+    }
+
+    private PresenterScreen addAnnotationTimelinePanel(PresenterFeatureRepository presenterFeatureRepository) {
+        final PresenterScreen presenterScreen = new PresenterScreen("AnnotationTimelinePanel", "AnnotationTimelinePanel", "VideosPage", "AnnotationTimelinePanel", null, PresenterType.timeline);
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "AnnotationTimelinePanel"));
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.padding, null));
+        final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.VideoPanel, null);
+        final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.AnnotationTimelinePanel, null);
+        presenterFeature.addFeatureAttributes(FeatureType.VideoPanel.getFeatureAttributes()[3], "70%");
+        presenterFeature.addFeatureAttributes(FeatureType.VideoPanel.getFeatureAttributes()[0], "http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4");
+        presenterScreen.getPresenterFeatureList().add(presenterFeature);
+        presenterScreen.getPresenterFeatureList().add(presenterFeature1);
 
         final PresenterFeature optionButton1 = new PresenterFeature(FeatureType.optionButton, "Video Works");
         optionButton1.addFeatureAttributes(FeatureAttribute.target, "VideoWorksPage");
