@@ -92,6 +92,11 @@ public class DefaultExperiments {
                 stimuliList.add(new Stimulus(tag + "_" + label, tag + "_" + label, tag + "_" + label + ".jpg", tag + "_" + label, tagSet));
             }
         }
+        tagSet.clear();
+        tagSet.add("videotag");
+        for (int i = 0; i < 10; i++) {
+            stimuliList.add(new Stimulus(null, null, "videotag" + i + ".png", "videotag" + i, tagSet));
+        }
         experiment.setStimuli(stimuliList);
     }
 
@@ -222,11 +227,11 @@ public class DefaultExperiments {
         final PresenterScreen presenterScreen = new PresenterScreen("AnnotationTimelinePanel", "AnnotationTimelinePanel", "VideosPage", "AnnotationTimelinePanel", null, PresenterType.timeline);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "AnnotationTimelinePanel"));
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.padding, null));
-        final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.VideoPanel, null);
+//        final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.VideoPanel, null);
         final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.AnnotationTimelinePanel, null);
-        presenterFeature.addFeatureAttributes(FeatureType.VideoPanel.getFeatureAttributes()[3], "70%");
-        presenterFeature.addFeatureAttributes(FeatureType.VideoPanel.getFeatureAttributes()[0], "http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4");
-        presenterScreen.getPresenterFeatureList().add(presenterFeature);
+        presenterFeature1.addFeatureAttributes(FeatureType.AnnotationTimelinePanel.getFeatureAttributes()[3], "70%");
+        presenterFeature1.addFeatureAttributes(FeatureType.AnnotationTimelinePanel.getFeatureAttributes()[0], "http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4");
+//        presenterScreen.getPresenterFeatureList().add(presenterFeature);
         presenterScreen.getPresenterFeatureList().add(presenterFeature1);
 
         final PresenterFeature optionButton1 = new PresenterFeature(FeatureType.optionButton, "Video Works");
