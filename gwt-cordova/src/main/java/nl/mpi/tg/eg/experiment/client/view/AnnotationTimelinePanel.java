@@ -17,9 +17,8 @@
  */
 package nl.mpi.tg.eg.experiment.client.view;
 
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -30,42 +29,52 @@ import com.google.gwt.user.client.ui.VerticalPanel;
  */
 public class AnnotationTimelinePanel extends VerticalPanel {
 
-    public AnnotationTimelinePanel() { //String width, String poster, String mp4, String ogg, String webm
+    public AnnotationTimelinePanel(String width, String poster, String mp4, String ogg, String webm) {
         final HorizontalPanel horizontalPanel = new HorizontalPanel();
         this.setStylePrimaryName("annotationTimelinePanel");
-//        horizontalPanel.add(new VideoPanel(width, poster, mp4, ogg, webm));
+        final VideoPanel videoPanel = new VideoPanel(width, poster, mp4, ogg, webm);
+        horizontalPanel.add(videoPanel);
         final VerticalPanel verticalPanel = new VerticalPanel();
-        verticalPanel.add(new Button("one", new ClickHandler() {
-
-            @Override
-            public void onClick(ClickEvent event) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        }));
-        verticalPanel.add(new Button("two", new ClickHandler() {
-
-            @Override
-            public void onClick(ClickEvent event) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        }));
+//        verticalPanel.add(new Button("one", new ClickHandler() {
+//
+//            @Override
+//            public void onClick(ClickEvent event) {
+//                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//            }
+//        }));
+//        verticalPanel.add(new Button("two", new ClickHandler() {
+//
+//            @Override
+//            public void onClick(ClickEvent event) {
+//                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//            }
+//        }));
         horizontalPanel.add(verticalPanel);
         this.add(horizontalPanel);
-        configureTimeline();
-    }
+        final Label timelineCursor = new Label();
+        final AbsolutePanel absolutePanel = new AbsolutePanel();
 
-    private void configureTimeline() {
-        final HorizontalPanel horizontalPanel = new HorizontalPanel();
-        horizontalPanel.setStylePrimaryName("annotationTimelineTier");
-        final Label label = new Label("one");
-        label.setWidth("20%");
-        horizontalPanel.add(label);
+        absolutePanel.setStylePrimaryName("annotationTimelineTier");
+        timelineCursor.setStylePrimaryName("annotationTimelineCursor");
+        absolutePanel.add(timelineCursor);
         final Label label1 = new Label("two");
         label1.setWidth("10%");
-        horizontalPanel.add(label1);
+        absolutePanel.add(label1);
         final Label label2 = new Label("three");
         label2.setWidth("70%");
-        horizontalPanel.add(label2);
-        this.add(horizontalPanel);
+        absolutePanel.add(label2);
+        this.add(absolutePanel);
+        final Label labelticker = new Label("test output");
+        horizontalPanel.add(labelticker);
+        Timer timer = new Timer() {
+            private int couter = 0;
+
+            @Override
+            public void run() {
+                labelticker.setText("" + videoPanel.getCurrentTime());
+                absolutePanel.setWidgetPosition(timelineCursor, (int) ((absolutePanel.getOffsetWidth() - 1) * (videoPanel.getCurrentTime() / videoPanel.getDurationTime())), absolutePanel.getOffsetHeight() - timelineCursor.getOffsetHeight());
+            }
+        };
+        timer.scheduleRepeating(10);
     }
 }
