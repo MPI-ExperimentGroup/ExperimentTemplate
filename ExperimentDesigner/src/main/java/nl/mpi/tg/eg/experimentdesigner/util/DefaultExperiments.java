@@ -230,6 +230,7 @@ public class DefaultExperiments {
 //        final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.VideoPanel, null);
         final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.AnnotationTimelinePanel, null);
         presenterFeature1.addFeatureAttributes(FeatureType.AnnotationTimelinePanel.getFeatureAttributes()[3], "70%");
+        presenterFeature1.addFeatureAttributes(FeatureType.AnnotationTimelinePanel.getFeatureAttributes()[5], "videotag");
         presenterFeature1.addFeatureAttributes(FeatureType.AnnotationTimelinePanel.getFeatureAttributes()[0], "http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4");
 //        presenterScreen.getPresenterFeatureList().add(presenterFeature);
         presenterScreen.getPresenterFeatureList().add(presenterFeature1);
