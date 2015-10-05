@@ -80,7 +80,7 @@
             public void requestApplicationState(ApplicationState applicationState) {
             localStorage.saveAppState(applicationState.name());
         </xsl:text>
-        <xsl:if test="experiment/presenter/@type = 'preload' or experiment/presenter/@type = 'stimulus' or experiment/presenter/@type = 'kindiagram'">
+        <xsl:if test="experiment/presenter/@type = 'preload' or experiment/presenter/@type = 'stimulus' or experiment/presenter/@type = 'kindiagram' or experiment/presenter/@type = 'timeline'">
             <xsl:text>try {</xsl:text>
         </xsl:if>
         <xsl:text>
@@ -104,7 +104,7 @@
             <xsl:value-of select="
 if(@type = 'transmission' or @type = 'metadata') then ', submissionService, userResults' else
 if(@type = 'preload') then ', new AudioPlayer(this), submissionService, userResults' else
-if(@type = 'stimulus' or @type = 'kindiagram') then ', new AudioPlayer(this), submissionService, userResults, localStorage' else ''" />
+if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', new AudioPlayer(this), submissionService, userResults, localStorage' else ''" />
             <xsl:text>);
                 presenter.setState(this, </xsl:text>
             <xsl:choose>
@@ -145,7 +145,7 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', new AudioPlayer(this), su
             break;
             }
         </xsl:text>
-        <xsl:if test="experiment/presenter/@type = 'preload' or experiment/presenter/@type = 'stimulus' or experiment/presenter/@type = 'kindiagram'">
+        <xsl:if test="experiment/presenter/@type = 'preload' or experiment/presenter/@type = 'stimulus' or experiment/presenter/@type = 'kindiagram' or experiment/presenter/@type = 'timeline'">
             <xsl:text>
                 } catch (AudioException error) {
                 logger.warning(error.getMessage());
@@ -173,6 +173,7 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', new AudioPlayer(this), su
                 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
                 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
                 import nl.mpi.tg.eg.experiment.client.view.VideoPanel;
+                import nl.mpi.tg.eg.experiment.client.view.AnnotationTimelinePanel;
                 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
                 import nl.mpi.tg.eg.experiment.client.view.AudioRecorderPanel;
                 import nl.mpi.tg.eg.experiment.client.view.MenuView;     
@@ -188,7 +189,7 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', new AudioPlayer(this), su
                 public class </xsl:text>
             <xsl:value-of select="@self" />
             <xsl:text>Presenter extends </xsl:text>
-            <xsl:value-of select="if(@type = 'transmission') then 'AbstractDataSubmission' else if(@type = 'menu') then 'AbstractMenu' else if(@type = 'stimulus') then 'AbstractStimulus' else if(@type = 'preload') then 'AbstractPreloadStimulus' else if(@type = 'debug') then 'LocalStorage' else if(@type = 'metadata') then 'AbstractMetadata' else if(@type = 'kindiagram') then 'AbstractKinDiagram' else 'Abstract'" />
+            <xsl:value-of select="if(@type = 'timeline') then 'AbstractTimeline' else if(@type = 'transmission') then 'AbstractDataSubmission' else if(@type = 'menu') then 'AbstractMenu' else if(@type = 'stimulus') then 'AbstractStimulus' else if(@type = 'preload') then 'AbstractPreloadStimulus' else if(@type = 'debug') then 'LocalStorage' else if(@type = 'metadata') then 'AbstractMetadata' else if(@type = 'kindiagram') then 'AbstractKinDiagram' else 'Abstract'" />
             <xsl:text>Presenter implements Presenter {
             </xsl:text> 
             <xsl:if test="versionData">
@@ -203,7 +204,7 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', new AudioPlayer(this), su
             <xsl:value-of select="
 if(@type = 'transmission' or @type = 'metadata') then ', DataSubmissionService submissionService, UserResults userResults' else 
 if(@type = 'preload') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults' else 
-if(@type = 'stimulus' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage' else ''" />
+if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage' else ''" />
             <xsl:text>) {
             </xsl:text>  
             <xsl:choose>
@@ -227,7 +228,7 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, 
                         super(widgetTag, audioPlayer, submissionService, userResults);
                     </xsl:text>                    
                 </xsl:when>
-                <xsl:when test="@type = 'kindiagram' or @type = 'stimulus'">
+                <xsl:when test="@type = 'kindiagram' or @type = 'stimulus' or @type = 'timeline'">
                     <xsl:text>
                         super(widgetTag, audioPlayer, submissionService, userResults, localStorage);
                     </xsl:text>                    
@@ -388,7 +389,7 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, 
         <xsl:value-of select="if(@diagramName) then concat(', &quot;', @diagramName, '&quot;') else ''" />
         <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
         <xsl:value-of select="if(@condition) then concat(', ', @condition) else ''" />
-        <xsl:value-of select="if(text()) then concat(', messages.', generate-id(.), '()') else ''" />
+        <xsl:value-of select="if(@featureText) then concat(', messages.', generate-id(.), '()') else ''" />
         <xsl:value-of select="if(@target) then concat(', ApplicationState.', @target) else ''" />
         <xsl:text>);
         </xsl:text>
@@ -398,9 +399,9 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, 
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
         <xsl:value-of select="if(@eventTag) then concat('&quot;', @eventTag, '&quot;') else ''" />
-        <xsl:value-of select="if(@mp3File) then concat(', &quot;', @mp3File, '&quot;') else ''" />
-        <xsl:value-of select="if(@oggFile) then concat(', &quot;', @oggFile, '&quot;') else ''" />
-        <xsl:value-of select="if(@image) then concat(', &quot;', @image, '&quot;') else ''" />
+        <xsl:value-of select="if(@mp3) then concat(', &quot;', @mp3, '&quot;') else ''" />
+        <xsl:value-of select="if(@ogg) then concat(', &quot;', @ogg, '&quot;') else ''" />
+        <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />
         <xsl:text>);
         </xsl:text>
     </xsl:template>
@@ -497,14 +498,15 @@ if(@type = 'stimulus' or @type = 'kindiagram') then ', AudioPlayer audioPlayer, 
             + "Last Commit Date: " + version.lastCommitDate());
         </xsl:text>
     </xsl:template>
-    <xsl:template match="VideoPanel|AudioRecorderPanel">
+    <xsl:template match="VideoPanel|AudioRecorderPanel|AnnotationTimelinePanel">
         <xsl:text>    ((ComplexView) simpleView).addWidget(new </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(</xsl:text>
         <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;') else ''" />
+        <xsl:value-of select="if(@wav) then concat('&quot;', @wav, '&quot;') else ''" />
         <xsl:value-of select="if(@width) then concat('&quot;', @width, '&quot;') else ''" />
-        <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />
-        <xsl:if test="@poster">
+        <xsl:if test="@poster|@mp4|@ogg|@webm">
+            <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ',&quot;&quot;'" />
             <xsl:value-of select="if(@mp4) then concat(', &quot;', @mp4, '&quot;') else ',&quot;&quot;'" />
             <xsl:value-of select="if(@ogg) then concat(', &quot;', @ogg, '&quot;') else ',&quot;&quot;'" />
             <xsl:value-of select="if(@webm) then concat(', &quot;', @webm, '&quot;') else ',&quot;&quot;'" />
