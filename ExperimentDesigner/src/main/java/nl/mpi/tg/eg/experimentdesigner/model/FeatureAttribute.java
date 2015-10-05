@@ -49,5 +49,6 @@ public enum FeatureAttribute {
     diagramName,
     imageWidth,
     alternativeChoice,
-    timeToNext
+    timeToNext,
+    stimulusTag
 }
