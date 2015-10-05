@@ -11,10 +11,10 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
     <xsl:output method="text" encoding="UTF-8" />
     <xsl:template match="/">
-        <xsl:text>
-          package nl.mpi.tg.eg.experiment.client.model;
+        <xsl:text>package nl.mpi.tg.eg.experiment.client.model;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Stimulus {
 
@@ -30,21 +30,22 @@ public class Stimulus {
         <xsl:text>
     }
 
-
-    public static final void fillPictureList(List&lt;String&gt; pictureList) {
-    </xsl:text>
+    public static final void fillPictureList(List&lt;String&gt; pictureList) {</xsl:text>
         <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@image)">
-            <xsl:text>pictureList.add("</xsl:text>
+            <xsl:text>
+        pictureList.add("</xsl:text>
             <xsl:value-of select="." />
-            <xsl:text>");
-            </xsl:text>
+            <xsl:text>");</xsl:text>
         </xsl:for-each>
         <xsl:text>
     }
-
-    public static final void fillStimulusList(List&lt;Stimulus&gt; stimulusArray) {</xsl:text>
+</xsl:text>
     <xsl:for-each select="experiment/stimuli/stimulus"><xsl:text>
-        stimulusArray.add(new Stimulus(new Tags[]{</xsl:text>
+    private static final Stimulus </xsl:text>
+        <xsl:value-of select="generate-id(.)" />
+        <xsl:text> = new Stimulus("</xsl:text>
+        <xsl:value-of select="generate-id(.)" />
+        <xsl:text>", new Tags[]{</xsl:text>
         <xsl:for-each select="distinct-values(tag/text())">
             <xsl:text>Tags.</xsl:text>
             <xsl:value-of select="." />
@@ -60,22 +61,35 @@ public class Stimulus {
             <xsl:value-of select="@video" />
             <xsl:text>", "</xsl:text>
             <xsl:value-of select="@picture" />
-            <xsl:text>"));</xsl:text>
+            <xsl:text>");</xsl:text>
+                </xsl:for-each>
+        <xsl:text>
+            
+    public static final void fillStimulusList(List&lt;Stimulus&gt; stimulusArray) {</xsl:text>
+    <xsl:for-each select="experiment/stimuli/stimulus"><xsl:text>
+        stimulusArray.add(</xsl:text>
+        <xsl:value-of select="generate-id(.)" /><xsl:text>);</xsl:text>
                 </xsl:for-each>
         <xsl:text>
     }
+    final private String uniqueId;
     final private Tags tags[];
     final private String label;
     final private String audioFile;
     final private String videoFile;
     final private String picture;
 
-    public Stimulus(Tags tags[], String label, String audioFile, String videoFile, String picture) {
+    public Stimulus(String uniqueId, Tags tags[], String label, String audioFile, String videoFile, String picture) {
+        this.uniqueId = uniqueId;
         this.tags = tags;
         this.label = label;
         this.audioFile = audioFile;
         this.videoFile = videoFile;
         this.picture = picture;
+    }
+    
+    public String getUniqueId() {
+        return uniqueId;
     }
 
     public Tags[] getTags() {
@@ -100,6 +114,36 @@ public class Stimulus {
 
     public String getJpg() {
         return picture;
+    }
+            
+    public String getVideoFile() {
+        return videoFile;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 19 * hash + Objects.hashCode(this.uniqueId);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Stimulus other = (Stimulus) obj;
+        if (!Objects.equals(this.uniqueId, other.uniqueId)) {
+            return false;
+        }
+        return true;
     }
 }  
         </xsl:text>
