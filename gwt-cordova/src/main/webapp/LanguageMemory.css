@@ -468,6 +468,18 @@ table#screenExample td {
 }
 /* end example stimulus screen table */
 
+.annotationTimelinePanel {
+    width: 100%;
+}
+.annotationTimelineTier {
+    width: 100%;
+    background:lightgray;
+}
+.annotationTimelineCursor {
+    height: 100%;
+    width: 1px;
+    background-color:red;
+}
 /*
 Language in Interaction uses a fixed color sequence. 
 The main colors are blue and red, with shades derivative thereof. 
