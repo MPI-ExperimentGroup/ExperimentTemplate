@@ -1,12 +1,23 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (C) 2015 Max Planck Institute for Psycholinguistics, Nijmegen
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 package nl.mpi.tg.eg.experiment.client.view;
 
 import com.google.gwt.media.client.Video;
-import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import nl.mpi.tg.eg.experiment.client.model.AnnotationData;
@@ -32,17 +43,7 @@ public class VideoPanel extends VerticalPanel {
         } else {
             this.add(new Label("Video is not supported"));
         }
-        final Label label = new Label("test output");
-        this.add(label);
-        Timer timer = new Timer() {
-            private int couter = 0;
 
-            @Override
-            public void run() {
-                label.setText("timer: " + couter++ + ":" + video.getCurrentTime());
-            }
-        };
-        timer.scheduleRepeating(100);
         addSource(mp4, "video/mp4");
         addSource(ogg, "video/ogg");
         addSource(webm, "video/webm");
@@ -57,6 +58,14 @@ public class VideoPanel extends VerticalPanel {
             return video.getCurrentTime();
         } else {
             return 0;
+        }
+    }
+
+    public double getDurationTime() {
+        if (video != null) {
+            return video.getDuration();
+        } else {
+            return 1;
         }
     }
 
