@@ -178,6 +178,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', new
                 import nl.mpi.tg.eg.experiment.client.view.AudioRecorderPanel;
                 import nl.mpi.tg.eg.experiment.client.view.MenuView;     
                 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;  
+                import nl.mpi.tg.eg.experiment.client.model.Stimulus.Tag;  
                 import nl.mpi.tg.eg.experiment.client.model.UserId;    
                 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
                 import nl.mpi.tg.eg.experiment.client.model.UserResults;    
@@ -511,7 +512,10 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
             <xsl:value-of select="if(@ogg) then concat(', &quot;', @ogg, '&quot;') else ',&quot;&quot;'" />
             <xsl:value-of select="if(@webm) then concat(', &quot;', @webm, '&quot;') else ',&quot;&quot;'" />
         </xsl:if>
-        <xsl:value-of select="if(@stimulusTag) then concat(', &quot;', @stimulusTag, '&quot;') else ''" />
+        <xsl:value-of select="if(@stimulusTag) then concat(', Tag.', @stimulusTag, '') else ''" />
+        <xsl:value-of select="if(@maxStimuli) then concat(', ', @maxStimuli, '') else ''" />
+        <xsl:value-of select="if(@columnCount) then concat(', ', @columnCount, '') else ''" />
+        <xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" />
         <xsl:text>));
         </xsl:text>
     </xsl:template>
