@@ -25,6 +25,7 @@ import nl.mpi.tg.eg.experimentdesigner.dao.MetadataRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterFeatureRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterScreenRepository;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
+import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.stimulusTag;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
 import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
@@ -74,28 +75,28 @@ public class DefaultExperiments {
         final HashSet<String> tagSet = new HashSet<>();
         tagSet.add("number");
         tagSet.add("interesting");
-        stimuliList.add(new Stimulus("one.mp3", "one.mp4", "one.jpg", "One", tagSet));
+        stimuliList.add(new Stimulus("one.mp3", "one.mp4", "one.ogg", "one.jpg", "One", tagSet));
         tagSet.add("multiple words");
-        stimuliList.add(new Stimulus("two.mp3", "two.mp4", "two.jpg", "Two", tagSet));
+        stimuliList.add(new Stimulus("two.mp3", "two.mp4", "two.ogg", "two.jpg", "Two", tagSet));
         tagSet.clear();
         tagSet.add("FILLER_AUDIO");
-        stimuliList.add(new Stimulus("three.mp3", "three.mp4", "three.jpg", "Three", tagSet));
-        stimuliList.add(new Stimulus("four.mp3", "four.mp4", "four.jpg", "Four", tagSet));
+        stimuliList.add(new Stimulus("three.mp3", "three.mp4", "three.ogg", "three.jpg", "Three", tagSet));
+        stimuliList.add(new Stimulus("four.mp3", "four.mp4", "four.ogg", "four.jpg", "Four", tagSet));
         tagSet.clear();
         tagSet.add("NOISE_AUDIO");
-        stimuliList.add(new Stimulus("five.mp3", "five.mp4", "five.jpg", "Five", tagSet));
-        stimuliList.add(new Stimulus("six.mp3", "six.mp4", "six.jpg", "Six", tagSet));
+        stimuliList.add(new Stimulus("five.mp3", "five.mp4", "five.ogg", "five.jpg", "Five", tagSet));
+        stimuliList.add(new Stimulus("six.mp3", "six.mp4", "six.ogg", "six.jpg", "Six", tagSet));
         for (String tag : new String[]{"sim", "mid", "diff", "noise"}) {
             for (String label : new String[]{"rabbit", "cat", "muffin", "you"}) {
                 tagSet.clear();
                 tagSet.add(tag);
-                stimuliList.add(new Stimulus(tag + "_" + label, tag + "_" + label, tag + "_" + label + ".jpg", tag + "_" + label, tagSet));
+                stimuliList.add(new Stimulus(tag + "_" + label, tag + "_" + label, tag + "_" + label, tag + "_" + label + ".jpg", tag + "_" + label, tagSet));
             }
         }
         tagSet.clear();
         tagSet.add("videotag");
         for (int i = 0; i < 10; i++) {
-            stimuliList.add(new Stimulus(null, null, "videotag" + i + ".png", "videotag" + i, tagSet));
+            stimuliList.add(new Stimulus(null, null, null, "videotag" + i + ".png", "videotag" + i, tagSet));
         }
         experiment.setStimuli(stimuliList);
     }
@@ -126,11 +127,15 @@ public class DefaultExperiments {
                         break;
                     case columnCount:
                     case setCount:
+                    case maxStimuli:
                         presenterFeature.addFeatureAttributes(attribute, "3");
                         break;
                     case width:
                     case timeToNext:
                         presenterFeature.addFeatureAttributes(attribute, "60");
+                        break;
+                    case stimulusTag:
+                        presenterFeature.addFeatureAttributes(attribute, "videotag");
                         break;
                     default:
                         presenterFeature.addFeatureAttributes(attribute, attribute.name());
@@ -229,9 +234,12 @@ public class DefaultExperiments {
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.padding, null));
 //        final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.VideoPanel, null);
         final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.AnnotationTimelinePanel, null);
-        presenterFeature1.addFeatureAttributes(FeatureType.AnnotationTimelinePanel.getFeatureAttributes()[3], "70%");
-        presenterFeature1.addFeatureAttributes(FeatureType.AnnotationTimelinePanel.getFeatureAttributes()[5], "videotag");
-        presenterFeature1.addFeatureAttributes(FeatureType.AnnotationTimelinePanel.getFeatureAttributes()[0], "http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4");
+        presenterFeature1.addFeatureAttributes(FeatureAttribute.width, "70%");
+        presenterFeature1.addFeatureAttributes(FeatureAttribute.stimulusTag, "videotag");
+        presenterFeature1.addFeatureAttributes(FeatureAttribute.columnCount, "3");
+        presenterFeature1.addFeatureAttributes(FeatureAttribute.imageWidth, "60px");
+        presenterFeature1.addFeatureAttributes(FeatureAttribute.maxStimuli, "9");
+        presenterFeature1.addFeatureAttributes(FeatureAttribute.mp4, "http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4");
 //        presenterScreen.getPresenterFeatureList().add(presenterFeature);
         presenterScreen.getPresenterFeatureList().add(presenterFeature1);
 
