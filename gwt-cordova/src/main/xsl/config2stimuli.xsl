@@ -13,12 +13,13 @@
     <xsl:template match="/">
         <xsl:text>package nl.mpi.tg.eg.experiment.client.model;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
 public class Stimulus {
 
-    public enum Tags {
+    public enum Tag {
 
         </xsl:text>
         <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/tag/text())">
@@ -30,10 +31,10 @@ public class Stimulus {
         <xsl:text>
     }
 
-    public static final void fillPictureList(List&lt;String&gt; pictureList) {</xsl:text>
+    public static final void fillPictureList(List&lt;String&gt; imageList) {</xsl:text>
         <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@image)">
             <xsl:text>
-        pictureList.add("</xsl:text>
+        imageList.add("</xsl:text>
             <xsl:value-of select="." />
             <xsl:text>");</xsl:text>
         </xsl:for-each>
@@ -45,9 +46,9 @@ public class Stimulus {
         <xsl:value-of select="generate-id(.)" />
         <xsl:text> = new Stimulus("</xsl:text>
         <xsl:value-of select="generate-id(.)" />
-        <xsl:text>", new Tags[]{</xsl:text>
+        <xsl:text>", new Tag[]{</xsl:text>
         <xsl:for-each select="distinct-values(tag/text())">
-            <xsl:text>Tags.</xsl:text>
+            <xsl:text>Tag.</xsl:text>
             <xsl:value-of select="." />
             <xsl:if test="position() != last()">
                     <xsl:text>, </xsl:text>
@@ -56,11 +57,13 @@ public class Stimulus {
         <xsl:text>}, "</xsl:text>
             <xsl:value-of select="@label" />
             <xsl:text>", "</xsl:text>
-            <xsl:value-of select="@audio" />
+            <xsl:value-of select="@mp3" />
             <xsl:text>", "</xsl:text>
-            <xsl:value-of select="@video" />
+            <xsl:value-of select="@mp4" />
             <xsl:text>", "</xsl:text>
-            <xsl:value-of select="@picture" />
+            <xsl:value-of select="@ogg" />
+            <xsl:text>", "</xsl:text>
+            <xsl:value-of select="@image" />
             <xsl:text>");</xsl:text>
                 </xsl:for-each>
         <xsl:text>
@@ -73,26 +76,28 @@ public class Stimulus {
         <xsl:text>
     }
     final private String uniqueId;
-    final private Tags tags[];
+    final private List&lt;Tag&gt; tags;
     final private String label;
-    final private String audioFile;
-    final private String videoFile;
-    final private String picture;
+    final private String mp3;
+    final private String mp4;
+    final private String ogg;
+    final private String image;
 
-    public Stimulus(String uniqueId, Tags tags[], String label, String audioFile, String videoFile, String picture) {
+    public Stimulus(String uniqueId, Tag tags[], String label, String mp3, String mp4, String ogg, String image) {
         this.uniqueId = uniqueId;
-        this.tags = tags;
+        this.tags = Arrays.asList(tags);
         this.label = label;
-        this.audioFile = audioFile;
-        this.videoFile = videoFile;
-        this.picture = picture;
+        this.mp3 = mp3;
+        this.mp4 = mp4;
+        this.ogg = ogg;
+        this.image = image;
     }
     
     public String getUniqueId() {
         return uniqueId;
     }
 
-    public Tags[] getTags() {
+    public List&lt;Tag&gt; getTags() {
         return tags;
     }
 
@@ -100,28 +105,19 @@ public class Stimulus {
         return label;
     }
 
-    public String getOgg() {
-        return audioFile.concat(".ogg");
-    }
-
     public String getMp3() {
-        return audioFile.concat(".mp3");
+        return mp3;
     }
 
-    public String getAudioTag() {
-        return audioFile;
-    }
-
-    public String getJpg() {
-        return picture;
+    public String getImage() {
+        return image;
     }
             
-    public String getVideoFile() {
-        return videoFile;
+    public String getMp4() {
+        return mp4;
     }
-
-    public String getPicture() {
-        return picture;
+    public String getOgg() {
+        return ogg;
     }
 
     @Override
