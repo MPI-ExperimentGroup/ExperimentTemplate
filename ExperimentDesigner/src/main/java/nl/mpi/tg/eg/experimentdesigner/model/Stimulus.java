@@ -36,8 +36,10 @@ public class Stimulus {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private String audio;
-    private String video;
+    private String mp3;
+    private String mp4;
+    private String ogg;
+    private String webm;
     private String image;
     private String label;
 
@@ -46,9 +48,10 @@ public class Stimulus {
     public Stimulus() {
     }
 
-    public Stimulus(String audio, String video, String image, String label, HashSet<String> stimulusTags) {
-        this.audio = audio;
-        this.video = video;
+    public Stimulus(String mp3, String mp4, String ogg, String image, String label, HashSet<String> stimulusTags) {
+        this.mp3 = mp3;
+        this.mp4 = mp4;
+        this.ogg = ogg;
         this.image = image;
         this.label = label;
         this.stimulusTags = new HashSet<>();
@@ -62,41 +65,39 @@ public class Stimulus {
     }
 
     @XmlAttribute
-    public String getAudio() {
-        return audio;
+    public String getMp3() {
+        return mp3;
     }
 
-    public void setAudio(String audio) {
-        this.audio = audio;
+    public void setMp3(String mp3) {
+        this.mp3 = mp3;
     }
 
     @XmlAttribute
-    public String getVideo() {
-        return video;
-    }
-
-    public void setVideo(String video) {
-        this.video = video;
-    }
-
-    public String getWav() {
-        return audio + ".wav";
-    }
-
-    public String getMp3() {
-        return audio + ".mp3";
-    }
-
     public String getMp4() {
-        return video + ".mp4";
+        return mp4;
     }
 
+    public void setMp4(String mp4) {
+        this.mp4 = mp4;
+    }
+
+    public void setOgg(String ogg) {
+        this.ogg = ogg;
+    }
+
+    public void setWebm(String webm) {
+        this.webm = webm;
+    }
+
+    @XmlAttribute
     public String getOgg() {
-        return video + ".ogg";
+        return ogg;
     }
 
+    @XmlAttribute
     public String getWebm() {
-        return video + ".webm";
+        return webm;
     }
 
     @XmlAttribute
