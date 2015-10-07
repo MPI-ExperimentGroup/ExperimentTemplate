@@ -124,7 +124,7 @@ public class Stimulus {
     }
 
     final public void addStimulusTag(String stimulusTag) {
-        stimulusTag = stimulusTag.replaceAll("\\W", "_");
-        this.stimulusTags.add(stimulusTag);
+        stimulusTag = stimulusTag.replaceAll("[ \\t\\n\\x0B\\f\\r\\(\\)\\{\\};\\?\\/\\\\\\]\\[,'\"\\.=]+", "_");
+        this.stimulusTags.add("tag_" + stimulusTag);
     }
 }
