@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experimentdesigner.util;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.dao.ExperimentRepository;
@@ -98,6 +99,14 @@ public class DefaultExperiments {
         for (int i = 0; i < 10; i++) {
             stimuliList.add(new Stimulus(null, null, null, "videotag" + i + ".png", "videotag" + i, tagSet));
         }
+        for (String word : "termites scorpions centipedes".split(" ")) {
+            for (String speaker : "Rocket Festival Thai ประเพณีบุญบั้งไฟ Lao ບຸນບັ້ງໄຟ".split(" ")) {
+                for (int i = 0; i < 6; i++) {
+                    stimuliList.add(new Stimulus(word + "_" + speaker + "_" + i + ".mp3", word + "_" + speaker + "_" + i + ".mp4", word + "_" + speaker + "_" + i + ".ogg", word + "_" + speaker + "_" + i + ".jpg", word + "_" + speaker + "_" + i, new HashSet<>(Arrays.asList(new String[]{word, speaker}))));
+                }
+            }
+        }
+        stimuliList.add(new Stimulus("bad chars", "bad chars", "bad chars", "bad chars", "bad chars", new HashSet<>(Arrays.asList("bad chars bad_chars bad_chars  ( ) {\n    ( ) {\n         = .(\"[ \\\\t\\\\n\\\\x0B\\\\f\\\\r\\\\(\\\\)\\\\{\\\\};\\\\?\\\\/\\\\\\\\]\", \"_\");\n        this..add();\n    }         = .(\"[ \\\\t\\\\n\\\\x0B\\\\f\\\\r\\\\(\\\\)\\\\{\\\\};\\\\?\\\\/\\\\\\\\]\", \"_\");\n        this..add();\n    }".split(" ")))));
         experiment.setStimuli(stimuliList);
     }
 
@@ -135,7 +144,7 @@ public class DefaultExperiments {
                         presenterFeature.addFeatureAttributes(attribute, "60");
                         break;
                     case stimulusTag:
-                        presenterFeature.addFeatureAttributes(attribute, "videotag");
+                        presenterFeature.addFeatureAttributes(attribute, "tag_videotag");
                         break;
                     default:
                         presenterFeature.addFeatureAttributes(attribute, attribute.name());
@@ -235,7 +244,7 @@ public class DefaultExperiments {
 //        final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.VideoPanel, null);
         final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.AnnotationTimelinePanel, null);
         presenterFeature1.addFeatureAttributes(FeatureAttribute.width, "70%");
-        presenterFeature1.addFeatureAttributes(FeatureAttribute.stimulusTag, "videotag");
+        presenterFeature1.addFeatureAttributes(FeatureAttribute.stimulusTag, "tag_videotag");
         presenterFeature1.addFeatureAttributes(FeatureAttribute.columnCount, "3");
         presenterFeature1.addFeatureAttributes(FeatureAttribute.imageWidth, "60px");
         presenterFeature1.addFeatureAttributes(FeatureAttribute.maxStimuli, "9");
