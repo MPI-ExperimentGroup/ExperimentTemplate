@@ -18,12 +18,13 @@
 package nl.mpi.tg.eg.experiment.client.service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
-import nl.mpi.tg.eg.experiment.client.model.Stimulus.Similarity;
+import nl.mpi.tg.eg.experiment.client.model.Stimulus.Tag;
 
 /**
  * @since Jun 23, 2015 11:07:47 AM (creation date)
@@ -40,8 +41,8 @@ public class StimulusProvider {
 
     public StimulusProvider() {
         Stimulus.fillStimulusList(stimulusArray);
-        noisyList.addAll(Arrays.asList(Stimulus.NOISE_AUDIO));
-        Stimulus.fillPictureList(pictureList);
+//        noisyList.addAll(Arrays.asList(Stimulus.NOISE_AUDIO));
+//        Stimulus.fillPictureList(pictureList);
 
         //stimulusSubsetArray.addAll(stimulusArray);
         totalStimuli = stimulusSubsetArray.size();
@@ -55,70 +56,97 @@ public class StimulusProvider {
         return (foundValue == null) ? 0 : foundValue;
     }
 
-    public void getSubset(final int maxWordUse, final String seenList) {
+    private Tag getFirstTagMatch(final List<Tag> wordTags, Stimulus stimulus) {
+        Tag wordTag = null;
+        for (Tag currentTag : wordTags) {
+            if (stimulus.getTags().contains(currentTag)) {
+                wordTag = currentTag;
+                break;
+            }
+        }
+        return wordTag;
+    }
+
+    public void getSubset(final int maxWordUse, final String seenList, final List<Tag> speakerTags, final List<Tag> wordTags, final int maxSpeakerWordCount) {
         // we now also handle subsetting with setCount and seenList
-        final int maxSpeakerWordCount = 2;
-        HashMap<String, Integer> wordCounter = new HashMap<>();
+        HashMap<Tag, Integer> wordCounter = new HashMap<>();
         HashMap<String, Integer> similarityCounter = new HashMap<>();
         // preload counters
         for (Stimulus stimulus : new ArrayList<>(stimulusArray)) {
-            if (seenList.contains(stimulus.getAudioTag())) {
-                final String wordAndSpeaker = stimulus.getWord() + stimulus.getSpeaker().name();
-                Integer wordCount = getDefaultInt(wordCounter.get(stimulus.getWord()));
-                Integer speakerWordCount = getDefaultInt(similarityCounter.get(wordAndSpeaker));
-                speakerWordCount++;
-                wordCount++;
-                similarityCounter.put(wordAndSpeaker, speakerWordCount);
-                wordCounter.put(stimulus.getWord(), wordCount);
+            if (seenList.contains(stimulus.getUniqueId())) {
+                Tag wordTag = getFirstTagMatch(wordTags, stimulus);
+                Tag speakerTag = getFirstTagMatch(speakerTags, stimulus);
+                if (wordTag != null && speakerTag != null) {
+                    final String wordAndSpeaker = wordTag.name() + speakerTag.name();
+                    Integer wordCount = getDefaultInt(wordCounter.get(wordTag));
+                    Integer speakerWordCount = getDefaultInt(similarityCounter.get(wordAndSpeaker));
+                    speakerWordCount++;
+                    wordCount++;
+                    similarityCounter.put(wordAndSpeaker, speakerWordCount);
+                    wordCounter.put(wordTag, wordCount);
+                }
             }
         }
         stimulusSubsetArray.clear();
         List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
         while (!stimulusListCopy.isEmpty()) {
             Stimulus stimulus = stimulusListCopy.remove(new Random().nextInt(stimulusListCopy.size()));
-            if (!seenList.contains(stimulus.getAudioTag())) {
-                Integer wordCount = getDefaultInt(wordCounter.get(stimulus.getWord()));
-                final String wordAndSpeaker = stimulus.getWord() + stimulus.getSpeaker().name();
-                Integer speakerWordCount = getDefaultInt(similarityCounter.get(wordAndSpeaker));
-                if (wordCount < maxWordUse && speakerWordCount < maxSpeakerWordCount) {
-//                    System.out.println("adding based on: " + stimulus.getWord() + " " + wordCount + " " + wordAndSpeaker + " " + speakerWordCount);
-                    speakerWordCount++;
-                    wordCount++;
-                    similarityCounter.put(wordAndSpeaker, speakerWordCount);
-                    wordCounter.put(stimulus.getWord(), wordCount);
-                    stimulusSubsetArray.add(stimulus);
-//                } else {
-//                    System.out.println("rejecting based on: " + stimulus.getWord() + " " + wordCount + " " + wordAndSpeaker + " " + speakerWordCount);
+            if (!seenList.contains(stimulus.getUniqueId())) {
+                Tag wordTag = getFirstTagMatch(wordTags, stimulus);
+                Tag speakerTag = getFirstTagMatch(speakerTags, stimulus);
+                if (wordTag != null && speakerTag != null) {
+                    final String wordAndSpeaker = wordTag.name() + speakerTag.name();
+                    Integer wordCount = getDefaultInt(wordCounter.get(wordTag));
+                    Integer speakerWordCount = getDefaultInt(similarityCounter.get(wordAndSpeaker));
+                    if (wordCount < maxWordUse && speakerWordCount < maxSpeakerWordCount) {
+                        System.out.println("adding based on: " + wordTag + " " + wordCount + " " + wordAndSpeaker + " " + speakerWordCount);
+                        speakerWordCount++;
+                        wordCount++;
+                        similarityCounter.put(wordAndSpeaker, speakerWordCount);
+                        wordCounter.put(wordTag, wordCount);
+                        stimulusSubsetArray.add(stimulus);
+                    } else {
+                        System.out.println("rejecting based on: " + wordTag + " " + wordCount + " " + wordAndSpeaker + " " + speakerWordCount);
+                    }
                 }
             }
         }
         totalStimuli = stimulusSubsetArray.size();
     }
 
-    public void getSubset(final Similarity similarity, final int setCount, final String seenList) {
+    public void getSubset(final Tag similarity, final int maxWordUse, final List<Tag> wordTags, final String seenList) {
         // we now also handle subsetting with setCount and seenList
-        HashMap<String, Integer> wordCounter = new HashMap<>();
+        HashMap<Tag, Integer> wordCounter = new HashMap<>();
         // preload counters
         for (Stimulus stimulus : new ArrayList<>(stimulusArray)) {
-            if (seenList.contains(stimulus.getAudioTag())) {
-                Integer value = getDefaultInt(wordCounter.get(stimulus.getWord()));
-                value++;
-                wordCounter.put(stimulus.getWord(), value);
+            if (seenList.contains(stimulus.getUniqueId())) {
+                Set<Tag> commonTags = new HashSet<>(wordTags);
+                commonTags.retainAll(stimulus.getTags());
+                for (Tag wordTag : commonTags) {
+                    Integer value = getDefaultInt(wordCounter.get(wordTag));
+                    value++;
+                    wordCounter.put(wordTag, value);
+                }
             }
         }
         stimulusSubsetArray.clear();
         List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
         while (!stimulusListCopy.isEmpty()) {
             Stimulus stimulus = stimulusListCopy.remove(new Random().nextInt(stimulusListCopy.size()));
-            if (stimulus.getSpeakerSimilarity().equals(similarity) && !seenList.contains(stimulus.getAudioTag())) {
-                Integer value = getDefaultInt(wordCounter.get(stimulus.getWord()));
-                if (value < setCount) {
-//                    System.out.println("adding based on: " + stimulus.getWord() + " " + value);
-                    value++;
-                    wordCounter.put(stimulus.getWord(), value);
-                    stimulusSubsetArray.add(stimulus);
-//                } else {
-//                    System.out.println("rejecting based on: " + stimulus.getWord() + " " + value);
+            if (stimulus.getTags().contains(similarity) && !seenList.contains(stimulus.getUniqueId())) {
+                List<Tag> commonTags = new ArrayList<>(wordTags);
+                commonTags.retainAll(stimulus.getTags());
+                for (Tag wordTag : commonTags) {
+                    Integer value = getDefaultInt(wordCounter.get(wordTag));
+                    if (value < maxWordUse) {
+                        value++;
+                        wordCounter.put(wordTag, value);
+                        stimulusSubsetArray.add(stimulus);
+//                        System.out.println("adding based on: " + wordTag + " " + value);
+                        break;
+                    } else {
+//                        System.out.println("rejecting based on: " + wordTag + " " + value);
+                    }
                 }
             }
         }
