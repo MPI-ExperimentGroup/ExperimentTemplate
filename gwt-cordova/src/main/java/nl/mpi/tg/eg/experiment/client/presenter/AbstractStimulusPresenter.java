@@ -24,6 +24,7 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
@@ -63,6 +64,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         this.localStorage = localStorage;
     }
 
+    @Deprecated // todo: the configuration file needs to pass in interesting tags rather than the arrays used herein
     protected void loadSubsetStimulus(int setCount) {
         final String storedDataValue = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), STIMULUS_ALLOCATION);
         int stimulusAllocation;
@@ -86,24 +88,25 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
         switch (stimulusAllocation) {
             case 0:
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "SubsetStimulus", "Condition1", Stimulus.Similarity.sim.name(), duration.elapsedMillis());
-                stimulusProvider.getSubset(Stimulus.Similarity.sim, setCount, seenStimulusList);
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "SubsetStimulus", "Condition1", Stimulus.Tag.tag_sim.name(), duration.elapsedMillis());
+                stimulusProvider.getSubset(Stimulus.Tag.tag_centipedes, setCount, Arrays.asList(new Stimulus.Tag[]{Stimulus.Tag.tag_ประเพณีบุญบั้งไฟ, Stimulus.Tag.tag_Rocket, Stimulus.Tag.tag_Festival, Stimulus.Tag.tag_Lao, Stimulus.Tag.tag_Thai, Stimulus.Tag.tag_ບຸນບັ້ງໄຟ}), seenStimulusList);
                 break;
             case 1:
-                stimulusProvider.getSubset(Stimulus.Similarity.mid, setCount, seenStimulusList);
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "SubsetStimulus", "Condition1", Stimulus.Similarity.mid.name(), duration.elapsedMillis());
+                stimulusProvider.getSubset(Stimulus.Tag.tag_scorpions, setCount, Arrays.asList(new Stimulus.Tag[]{Stimulus.Tag.tag_ประเพณีบุญบั้งไฟ, Stimulus.Tag.tag_Rocket, Stimulus.Tag.tag_Festival, Stimulus.Tag.tag_Lao, Stimulus.Tag.tag_Thai, Stimulus.Tag.tag_ບຸນບັ້ງໄຟ}), seenStimulusList);
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "SubsetStimulus", "Condition1", Stimulus.Tag.tag_mid.name(), duration.elapsedMillis());
                 break;
             case 2:
-                stimulusProvider.getSubset(Stimulus.Similarity.diff, setCount, seenStimulusList);
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "SubsetStimulus", "Condition1", Stimulus.Similarity.diff.name(), duration.elapsedMillis());
+                stimulusProvider.getSubset(Stimulus.Tag.tag_termites, setCount, Arrays.asList(new Stimulus.Tag[]{Stimulus.Tag.tag_ประเพณีบุญบั้งไฟ, Stimulus.Tag.tag_Rocket, Stimulus.Tag.tag_Festival, Stimulus.Tag.tag_Lao, Stimulus.Tag.tag_Thai, Stimulus.Tag.tag_ບຸນບັ້ງໄຟ}), seenStimulusList);
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "SubsetStimulus", "Condition1", Stimulus.Tag.tag_diff.name(), duration.elapsedMillis());
                 break;
             default:
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "SubsetStimulus", "Condition2", "", duration.elapsedMillis());
-                stimulusProvider.getSubset(setCount, seenStimulusList);
+                stimulusProvider.getSubset(setCount, seenStimulusList, Arrays.asList(new Stimulus.Tag[]{Stimulus.Tag.tag_scorpions, Stimulus.Tag.tag_termites, Stimulus.Tag.tag_centipedes}), Arrays.asList(new Stimulus.Tag[]{Stimulus.Tag.tag_ประเพณีบุญบั้งไฟ, Stimulus.Tag.tag_Rocket, Stimulus.Tag.tag_Festival, Stimulus.Tag.tag_Lao, Stimulus.Tag.tag_Thai, Stimulus.Tag.tag_ບຸນບັ້ງໄຟ}), 32);
                 break;
         }
     }
 
+    @Deprecated // todo: the configuration file needs to pass in interesting tags to a generic load stimulus
     protected void loadNoiseStimulus() {
         stimulusProvider.getNoisyStimuli();
     }
@@ -150,7 +153,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void removeStimulus() {
-        localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST, stimulusProvider.getCurrentStimulus().getAudioTag());
+        localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST, stimulusProvider.getCurrentStimulus().getUniqueId());
     }
 
     protected void keepStimulus() {
@@ -158,7 +161,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void addStimulusImage(int width, int postLoadMs, TimedStimulusListener timedStimulusListener) {
-        String image = stimulusProvider.getCurrentStimulus().getJpg();
+        String image = stimulusProvider.getCurrentStimulus().getImage();
         submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusImage", image, duration.elapsedMillis());
         ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString(serviceLocations.staticFilesUrl() + image), width, postLoadMs, timedStimulusListener);
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
@@ -215,10 +218,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).startGrid();
         int imageCounter = 0;
         if (alternativeChoice != null) {
-            buttonList.add(((TimedStimulusView) simpleView).addStringItem(getEventListener(buttonList, eventTag, stimulusProvider.getCurrentStimulus().getAudioTag(), alternativeChoice, correctTimedListener, incorrectTimedListener), alternativeChoice, 0, 0, imageWidth));
+            buttonList.add(((TimedStimulusView) simpleView).addStringItem(getEventListener(buttonList, eventTag, stimulusProvider.getCurrentStimulus().getImage(), alternativeChoice, correctTimedListener, incorrectTimedListener), alternativeChoice, 0, 0, imageWidth));
         }
         for (final String nextJpg : stimulusProvider.getPictureList()) {
-            buttonList.add(((TimedStimulusView) simpleView).addImageItem(getEventListener(buttonList, eventTag, stimulusProvider.getCurrentStimulus().getAudioTag(), nextJpg, correctTimedListener, incorrectTimedListener), UriUtils.fromString(serviceLocations.staticFilesUrl() + nextJpg), imageCounter / columnCount, 1 + imageCounter++ % columnCount, imageWidth));
+            buttonList.add(((TimedStimulusView) simpleView).addImageItem(getEventListener(buttonList, eventTag, stimulusProvider.getCurrentStimulus().getImage(), nextJpg, correctTimedListener, incorrectTimedListener), UriUtils.fromString(serviceLocations.staticFilesUrl() + nextJpg), imageCounter / columnCount, 1 + imageCounter++ % columnCount, imageWidth));
         }
         disableStimulusButtons();
         ((TimedStimulusView) simpleView).endGrid();
@@ -241,7 +244,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 button.addStyleName("stimulusButtonHighlight");
                 // eventTag is set by the user and is different for each state (correct/incorrect).
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), eventTag, tagValue1, tagValue2, duration.elapsedMillis());
-                if (stimulusProvider.getCurrentStimulus().getJpg().equals(tagValue2)) {
+                if (stimulusProvider.getCurrentStimulus().getImage().equals(tagValue2)) {
                     correctTimedListener.postLoadTimerFired();
                 } else {
                     incorrectTimedListener.postLoadTimerFired();
