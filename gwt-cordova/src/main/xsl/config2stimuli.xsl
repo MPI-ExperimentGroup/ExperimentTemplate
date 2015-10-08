@@ -31,15 +31,6 @@ public class Stimulus {
         <xsl:text>
     }
 
-    public static final void fillPictureList(List&lt;String&gt; imageList) {</xsl:text>
-        <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@image)">
-            <xsl:text>
-        imageList.add("</xsl:text>
-            <xsl:value-of select="." />
-            <xsl:text>");</xsl:text>
-        </xsl:for-each>
-        <xsl:text>
-    }
 </xsl:text>
     <xsl:for-each select="experiment/stimuli/stimulus"><xsl:text>
     private static final Stimulus </xsl:text>
