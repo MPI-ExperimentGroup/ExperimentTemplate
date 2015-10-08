@@ -21,15 +21,11 @@ import com.google.gwt.event.dom.client.LoadEvent;
 import com.google.gwt.event.dom.client.LoadHandler;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.user.client.Timer;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ButtonBase;
-import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTMLPanel;
-import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.Image;
 import nl.mpi.tg.eg.experiment.client.listener.AudioEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 
@@ -40,57 +36,28 @@ import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 public class TimedStimulusView extends ComplexView {
 
     private final AudioPlayer audioPlayer;
-    private FlexTable flexTable = null;
+    private StimulusGrid stimulusGrid = null;
 
     public TimedStimulusView(AudioPlayer audioPlayer) {
         this.audioPlayer = audioPlayer;
     }
 
     public void startGrid() {
-        flexTable = new FlexTable();
-        flexTable.setStylePrimaryName("menuTable");
         outerPanel.setStylePrimaryName("menuOuter");
-        outerPanel.add(flexTable);
+        stimulusGrid = new StimulusGrid();
+        outerPanel.add(stimulusGrid);
     }
 
     public void endGrid() {
-        flexTable = null;
+        stimulusGrid = null;
     }
 
     public ButtonBase addStringItem(final PresenterEventListner menuItemListerner, final String labelString, final int rowIndex, final int columnIndex, final String widthString) {
-        final Button pushButton = new Button(labelString);
-        return addButton(menuItemListerner, pushButton, rowIndex, columnIndex, widthString);
+        return stimulusGrid.addStringItem(menuItemListerner, labelString, rowIndex, columnIndex, widthString);
     }
 
     public ButtonBase addImageItem(final PresenterEventListner menuItemListerner, final SafeUri imagePath, final int rowIndex, final int columnIndex, final String widthString) {
-        final Image image = new Image(imagePath);
-        image.setHeight(widthString);
-        final Button imageButton = new Button();
-        imageButton.getElement().appendChild(image.getElement());
-        imageButton.addStyleName("stimulusImageButton");
-        return addButton(menuItemListerner, imageButton, rowIndex, columnIndex, widthString);
-    }
-
-    private ButtonBase addButton(final PresenterEventListner menuItemListerner, final ButtonBase pushButton, final int rowIndex, final int columnIndex, final String widthString) {
-
-        pushButton.addStyleName("stimulusButton");
-        pushButton.setEnabled(true);
-        final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
-
-            @Override
-            protected void singleShotFired() {
-                if (pushButton.isEnabled()) {
-                    menuItemListerner.eventFired(pushButton);
-                }
-            }
-        };
-        pushButton.addClickHandler(singleShotEventListner);
-        pushButton.addTouchStartHandler(singleShotEventListner);
-        pushButton.addTouchMoveHandler(singleShotEventListner);
-        pushButton.addTouchEndHandler(singleShotEventListner);
-        flexTable.setWidget(rowIndex, columnIndex, pushButton);
-        flexTable.getCellFormatter().setHorizontalAlignment(rowIndex, columnIndex, HasHorizontalAlignment.ALIGN_CENTER);
-        return pushButton;
+        return stimulusGrid.addImageItem(menuItemListerner, imagePath, rowIndex, columnIndex, widthString);
     }
 
     public void preloadImage(SafeUri imagePath, final TimedStimulusListener timedStimulusListener) {
