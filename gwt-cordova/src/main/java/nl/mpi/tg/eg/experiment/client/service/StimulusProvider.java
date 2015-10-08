@@ -34,8 +34,8 @@ public class StimulusProvider {
 
     private final List<Stimulus> stimulusArray = new ArrayList<>();
     private final List<Stimulus> stimulusSubsetArray = new ArrayList<>();
-    private final List<String> noisyList = new ArrayList<>();
-    private final List<String> pictureList = new ArrayList<>();
+//    private final List<String> noisyList = new ArrayList<>();
+//    private final List<String> pictureList = new ArrayList<>();
     private int totalStimuli;
     private Stimulus currentStimulus = null;
 
@@ -65,6 +65,20 @@ public class StimulusProvider {
             }
         }
         return wordTag;
+    }
+
+    public void getSubset(final List<Tag> selectionTags) {
+        stimulusSubsetArray.clear();
+        List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
+        while (!stimulusListCopy.isEmpty()) {
+            Stimulus stimulus = stimulusListCopy.remove(new Random().nextInt(stimulusListCopy.size()));
+            Set<Tag> commonTags = new HashSet<>(selectionTags);
+            commonTags.retainAll(stimulus.getTags());
+            if (!commonTags.isEmpty()) {
+                stimulusSubsetArray.add(stimulus);
+            }
+        }
+        totalStimuli = stimulusSubsetArray.size();
     }
 
     public void getSubset(final int maxWordUse, final String seenList, final List<Tag> speakerTags, final List<Tag> wordTags, final int maxSpeakerWordCount) {
@@ -199,9 +213,14 @@ public class StimulusProvider {
         totalStimuli = stimulusSubsetArray.size();
     }
 
+    @Deprecated // todo: perhaps this would be better done in the respective presenters
     public List<String> getPictureList() {
-        final ArrayList<String> returnList = new ArrayList<>(pictureList);
-//        Collections.shuffle(returnList);
+        final ArrayList<String> returnList = new ArrayList<>();
+        for (Stimulus stimulus : stimulusSubsetArray) {
+            if (stimulus.getImage() != null && !stimulus.getImage().isEmpty()) {
+                returnList.add(stimulus.getImage());
+            }
+        }
         return returnList;
     }
 }
