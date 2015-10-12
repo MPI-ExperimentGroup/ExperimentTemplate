@@ -64,7 +64,7 @@ public enum FeatureType {
     logTimeStamp(false, false, new FeatureAttribute[]{eventTag}),
     audioButton(false, false, new FeatureAttribute[]{eventTag, mp3, ogg, poster}),
     preloadAllStimuli(true, false, null),
-    showStimulusGrid(true, false, new FeatureAttribute[]{columnCount, imageWidth, eventTag}, true),
+    showStimulusGrid(true, false, new FeatureAttribute[]{columnCount, imageWidth, eventTag}, true, true),
     pause(true, false, new FeatureAttribute[]{timeToNext}),
     onError(true, false, null),
     onSuccess(true, false, null),
@@ -77,13 +77,14 @@ public enum FeatureType {
     stimulusImage(true, false, new FeatureAttribute[]{width, timeToNext}),
     stimulusAudio(true, false, new FeatureAttribute[]{timeToNext, mp3,}),
     VideoPanel(false, false, new FeatureAttribute[]{mp4, ogg, webm, width, poster}),
-    AnnotationTimelinePanel(true, false, new FeatureAttribute[]{mp4, ogg, webm, width, poster, stimulusTag, columnCount, imageWidth, maxStimuli}),
+    AnnotationTimelinePanel(true, false, new FeatureAttribute[]{mp4, ogg, webm, width, poster, columnCount, imageWidth, maxStimuli}, true, false),
     AudioRecorderPanel(false, false, new FeatureAttribute[]{wav}),
     userInfo(false, false, null),
     versionData(false, false, null),
     preventWindowClose(false, false, null);
     private final boolean canHaveFeatures;
     private final boolean canHaveText;
+    private final boolean canHaveStimulus;
     private final FeatureAttribute[] featureAttributes;
     private final boolean hasCorrectIncorrect;
 
@@ -92,12 +93,14 @@ public enum FeatureType {
         this.canHaveText = canHaveText;
         this.featureAttributes = featureAttributes;
         this.hasCorrectIncorrect = false;
+        this.canHaveStimulus = false;
     }
 
-    private FeatureType(boolean canHaveFeatures, boolean canHaveText, FeatureAttribute[] featureAttributes, boolean hasCorrectIncorrect) {
+    private FeatureType(boolean canHaveFeatures, boolean canHaveText, FeatureAttribute[] featureAttributes, boolean canHaveStimulus, boolean hasCorrectIncorrect) {
         this.canHaveFeatures = canHaveFeatures;
         this.canHaveText = canHaveText;
         this.featureAttributes = featureAttributes;
+        this.canHaveStimulus = canHaveStimulus;
         this.hasCorrectIncorrect = hasCorrectIncorrect;
     }
 
@@ -107,6 +110,10 @@ public enum FeatureType {
 
     public boolean canHaveText() {
         return canHaveText;
+    }
+
+    public boolean canHaveStimulus() {
+        return canHaveStimulus;
     }
 
     public FeatureAttribute[] getFeatureAttributes() {
