@@ -50,6 +50,5 @@ public enum FeatureAttribute {
     imageWidth,
     alternativeChoice,
     timeToNext,
-    stimulusTag,
     maxStimuli
 }
