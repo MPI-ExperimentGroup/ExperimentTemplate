@@ -26,7 +26,6 @@ import nl.mpi.tg.eg.experimentdesigner.dao.MetadataRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterFeatureRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterScreenRepository;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
-import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.stimulusTag;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
 import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
@@ -50,6 +49,13 @@ public class DefaultExperiments {
         experiment.setAppNameInternal("DobesAnnotator");
         experiment.setDataSubmitUrl("http://ems12.mpi.nl/dobes-frinex-admin-0.1.38-testing/");
         experiment.setStaticFilesUrl("static/");
+        experiment.setPrimaryColour1("#AA8C7C");
+        experiment.setPrimaryColour2("#FFE4D5");
+        experiment.setPrimaryColour3("#EBCBB9");
+        experiment.setComplementColour1("#527067");
+        experiment.setComplementColour2("#C1E7DB");
+        experiment.setComplementColour3("#7A9B91");
+        experiment.setBackgroundColour("#101715");
 
         final Metadata metadata = new Metadata("workerId", "Reporter name *", ".'{'3,'}'", "Please enter at least three letters.", true, "This test can only be done once per worker.");
         final Metadata metadata1 = new Metadata("errordevice", "Device model", ".'{'2,'}'", "Please enter the device model", false, null);
@@ -143,13 +149,13 @@ public class DefaultExperiments {
                     case timeToNext:
                         presenterFeature.addFeatureAttributes(attribute, "60");
                         break;
-                    case stimulusTag:
-                        presenterFeature.addFeatureAttributes(attribute, "tag_videotag");
-                        break;
                     default:
                         presenterFeature.addFeatureAttributes(attribute, attribute.name());
                 }
             }
+        }
+        if (featureType.canHaveStimulus()) {
+            presenterFeature.addStimulusTag("tag_videotag");
         }
         if (featureType.requiresCorrectIncorrect()) {
             presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.responseCorrect, presenterFeatureRepository));
@@ -244,7 +250,8 @@ public class DefaultExperiments {
 //        final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.VideoPanel, null);
         final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.AnnotationTimelinePanel, null);
         presenterFeature1.addFeatureAttributes(FeatureAttribute.width, "70%");
-        presenterFeature1.addFeatureAttributes(FeatureAttribute.stimulusTag, "tag_videotag");
+        presenterFeature1.addStimulusTag("tag_videotag");
+        presenterFeature1.addStimulusTag("tag_centipedes");
         presenterFeature1.addFeatureAttributes(FeatureAttribute.columnCount, "3");
         presenterFeature1.addFeatureAttributes(FeatureAttribute.imageWidth, "60px");
         presenterFeature1.addFeatureAttributes(FeatureAttribute.maxStimuli, "9");
@@ -252,12 +259,12 @@ public class DefaultExperiments {
 //        presenterScreen.getPresenterFeatureList().add(presenterFeature);
         presenterScreen.getPresenterFeatureList().add(presenterFeature1);
 
-        final PresenterFeature optionButton1 = new PresenterFeature(FeatureType.optionButton, "Video Works");
-        optionButton1.addFeatureAttributes(FeatureAttribute.target, "VideoWorksPage");
-        presenterScreen.getPresenterFeatureList().add(optionButton1);
-        final PresenterFeature optionButton2 = new PresenterFeature(FeatureType.optionButton, "Video Failed");
-        optionButton2.addFeatureAttributes(FeatureAttribute.target, "VideoFailedPage");
-        presenterScreen.getPresenterFeatureList().add(optionButton2);
+//        final PresenterFeature optionButton1 = new PresenterFeature(FeatureType.optionButton, "Video Works");
+//        optionButton1.addFeatureAttributes(FeatureAttribute.target, "VideoWorksPage");
+//        presenterScreen.getPresenterFeatureList().add(optionButton1);
+//        final PresenterFeature optionButton2 = new PresenterFeature(FeatureType.optionButton, "Video Failed");
+//        optionButton2.addFeatureAttributes(FeatureAttribute.target, "VideoFailedPage");
+//        presenterScreen.getPresenterFeatureList().add(optionButton2);
         presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
         return presenterScreen;
     }
