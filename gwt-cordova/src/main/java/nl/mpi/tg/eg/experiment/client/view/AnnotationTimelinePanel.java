@@ -28,6 +28,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.model.AnnotationData;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.service.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
@@ -68,8 +69,22 @@ public class AnnotationTimelinePanel extends VerticalPanel {
 
                 @Override
                 public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                    final Label label1 = new Label("" + videoPanel.getCurrentTime());
+                    final double clickedTime = videoPanel.getCurrentTime();
+                    final AnnotationData annotationData = new AnnotationData(clickedTime, clickedTime + 5, "" + videoPanel.getCurrentTime());
+                    final Label label1 = new Label(annotationData.getAnnotationHtml());
                     label1.setStylePrimaryName("annotationTimelineTierSegment");
+                    final SingleShotEventListner tierSegmentListner = new SingleShotEventListner() {
+
+                        @Override
+                        protected void singleShotFired() {
+                            videoPanel.playSegment(annotationData);
+                            resetSingleShot();
+                        }
+                    };
+                    label1.addClickHandler(tierSegmentListner);
+                    label1.addTouchStartHandler(tierSegmentListner);
+                    label1.addTouchMoveHandler(tierSegmentListner);
+                    label1.addTouchEndHandler(tierSegmentListner);
                     absolutePanel.add(label1, getLeftPosition(), topPosition);
                     singleShotEventListner.resetSingleShot();
                 }
