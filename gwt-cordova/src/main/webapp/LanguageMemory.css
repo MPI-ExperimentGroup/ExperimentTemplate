@@ -480,6 +480,13 @@ table#screenExample td {
     width: 1px;
     background-color:red;
 }
+
+.annotationTimelineTierSegment {
+    border: rgb(111,111,111);
+    border-width: 1px;
+    border-style: solid;
+}
+
 /*
 Language in Interaction uses a fixed color sequence. 
 The main colors are blue and red, with shades derivative thereof. 

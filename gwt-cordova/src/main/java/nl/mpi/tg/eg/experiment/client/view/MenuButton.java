@@ -43,7 +43,7 @@ public class MenuButton extends HorizontalPanel {
 
                 @Override
                 protected void singleShotFired() {
-                    presenterListerner.eventFired(null);
+                    presenterListerner.eventFired(null, this);
                 }
             };
             headerArrow.addClickHandler(singleShotEventListner);

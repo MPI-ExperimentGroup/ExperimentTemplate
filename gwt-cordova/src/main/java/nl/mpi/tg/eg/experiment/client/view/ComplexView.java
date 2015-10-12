@@ -127,7 +127,7 @@ public class ComplexView extends SimpleView {
             @Override
             protected void singleShotFired() {
                 if (nextButton.isEnabled()) {
-                    presenterListerner.eventFired(nextButton);
+                    presenterListerner.eventFired(nextButton, this);
                 }
                 resetSingleShot();
             }
@@ -151,7 +151,7 @@ public class ComplexView extends SimpleView {
             @Override
             protected void singleShotFired() {
                 if (imageButton.isEnabled()) {
-                    presenterListerner.eventFired(imageButton);
+                    presenterListerner.eventFired(imageButton, this);
                 }
                 resetSingleShot();
             }
@@ -210,7 +210,7 @@ public class ComplexView extends SimpleView {
                 @Override
                 protected void singleShotFired() {
                     popupPanel.hide();
-                    saveEventListner.eventFired(null);
+                    saveEventListner.eventFired(null, null);
                 }
             };
             final Button okButton = new Button(messages.popupOkButtonLabel());

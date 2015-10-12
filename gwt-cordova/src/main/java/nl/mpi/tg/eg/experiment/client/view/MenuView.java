@@ -65,7 +65,7 @@ public class MenuView extends ComplexView {
             @Override
             protected void singleShotFired() {
                 if (menuButton.isEnabled()) {
-                    menuItemListerner.eventFired(menuButton);
+                    menuItemListerner.eventFired(menuButton, this);
                 }
             }
         };

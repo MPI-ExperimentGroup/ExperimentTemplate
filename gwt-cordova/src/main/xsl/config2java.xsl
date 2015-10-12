@@ -173,6 +173,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', new
                 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
                 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
                 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+                import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
                 import nl.mpi.tg.eg.experiment.client.view.VideoPanel;
                 import nl.mpi.tg.eg.experiment.client.view.AnnotationTimelinePanel;
                 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
@@ -303,7 +304,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:text>    ((MenuView) simpleView).addMenuItem(new PresenterEventListner() {
 
             @Override
-            public void eventFired(ButtonBase button) {
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
             appEventListner.requestApplicationState(ApplicationState.</xsl:text>
         <xsl:value-of select="@target" />
         <xsl:text>);
@@ -338,7 +339,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
             }
 
             @Override
-            public void eventFired(ButtonBase button) {
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
             appEventListner.requestApplicationState(ApplicationState.</xsl:text>
         <xsl:value-of select="@target" />
         <xsl:text>);
@@ -358,7 +359,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
             }
 
             @Override
-            public void eventFired(ButtonBase button) {
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
             appEventListner.requestApplicationState(ApplicationState.</xsl:text>
         <xsl:value-of select="@target" />
         <xsl:text>);

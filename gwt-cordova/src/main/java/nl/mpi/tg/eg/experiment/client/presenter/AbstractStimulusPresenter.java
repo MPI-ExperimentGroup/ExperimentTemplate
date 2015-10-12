@@ -29,6 +29,7 @@ import java.util.Random;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
@@ -237,7 +238,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }
 
             @Override
-            public void eventFired(ButtonBase button) {
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 for (ButtonBase currentButton : buttonList) {
                     currentButton.setEnabled(false);
                 }
@@ -327,7 +328,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 }
 
                 @Override
-                public void eventFired(ButtonBase button) {
+                public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                     autoNextStimulus(appEventListner, eventTag, true);
                 }
             };
@@ -357,7 +358,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }
 
             @Override
-            public void eventFired(ButtonBase button) {
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 submissionService.submitTagValue(userResults.getUserData().getUserId(), "PlayAudio", eventTag, duration.elapsedMillis());
                 ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromString(serviceLocations.staticFilesUrl() + oggPath), UriUtils.fromString(serviceLocations.staticFilesUrl() + mp3Path), 0, new TimedStimulusListener() {
 

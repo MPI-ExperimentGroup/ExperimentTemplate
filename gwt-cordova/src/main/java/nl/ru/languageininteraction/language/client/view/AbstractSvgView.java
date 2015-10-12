@@ -185,7 +185,7 @@ public abstract class AbstractSvgView extends AbstractView {
                 @Override
                 protected void singleShotFired() {
                     popupPanel.hide();
-                    saveEventListner.eventFired(null);
+                    saveEventListner.eventFired(null, this);
                 }
             };
             final Button okButton = new Button(messages.popupOkButtonLabel());

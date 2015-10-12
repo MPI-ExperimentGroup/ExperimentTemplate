@@ -31,6 +31,7 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.ArrayList;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
@@ -114,7 +115,7 @@ public abstract class AbstractKinDiagramPresenter extends AbstractPresenter impl
             }
 
             @Override
-            public void eventFired(ButtonBase button) {
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 saveKinTypeString(diagramName, ((KinTypeView) simpleView).getKinTypeString());
                 ((TimedStimulusView) simpleView).clearGui();
                 setContent(appEventListner);
@@ -129,7 +130,7 @@ public abstract class AbstractKinDiagramPresenter extends AbstractPresenter impl
             }
 
             @Override
-            public void eventFired(ButtonBase button) {
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 submissionService.submitTagValue(userResults.getUserData().getUserId(), "SaveDiagram", loadKinTypeString(diagramName), duration.elapsedMillis());
             }
         });
@@ -141,7 +142,7 @@ public abstract class AbstractKinDiagramPresenter extends AbstractPresenter impl
             }
 
             @Override
-            public void eventFired(ButtonBase button) {
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 clearKinTypeString(diagramName);
                 ((TimedStimulusView) simpleView).clearGui();
                 setContent(appEventListner);

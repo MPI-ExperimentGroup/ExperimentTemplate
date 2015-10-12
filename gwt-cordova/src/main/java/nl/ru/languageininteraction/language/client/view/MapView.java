@@ -32,6 +32,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import nl.ru.languageininteraction.language.client.AutotypRegions;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.ru.languageininteraction.language.client.util.SvgTemplate;
 
 /**
@@ -58,7 +59,7 @@ public class MapView extends SimpleView {
             }
 
             @Override
-            public void eventFired(ButtonBase button) {
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
 //                final Element svgElement = Document.get().getElementById("zoomableGroup");
                 zoomFactor *= 0.5;
 //                svgElement.setAttribute("transform", "scale(" + zoomFactor + ")");
@@ -78,7 +79,7 @@ public class MapView extends SimpleView {
             }
 
             @Override
-            public void eventFired(ButtonBase button) {
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
 //                final Element svgElement = Document.get().getElementById("zoomableGroup");
                 zoomFactor *= 1.5;
 //                svgElement.setAttribute("transform", "scale(" + zoomFactor + ")");

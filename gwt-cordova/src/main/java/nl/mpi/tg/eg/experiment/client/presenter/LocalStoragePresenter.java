@@ -24,6 +24,7 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 
 /**
@@ -52,7 +53,7 @@ public class LocalStoragePresenter extends AbstractPresenter {
             }
 
             @Override
-            public void eventFired(ButtonBase button) {
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 appEventListner.requestApplicationState(ApplicationState.metadata);
             }
         });
@@ -64,7 +65,7 @@ public class LocalStoragePresenter extends AbstractPresenter {
             }
 
             @Override
-            public void eventFired(ButtonBase button) {
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 appEventListner.requestApplicationState(ApplicationState.scores);
             }
         });
@@ -79,7 +80,7 @@ public class LocalStoragePresenter extends AbstractPresenter {
             }
 
             @Override
-            public void eventFired(ButtonBase button) {
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 final Storage localStorage = Storage.getLocalStorageIfSupported();
                 localStorage.clear();
                 Window.Location.replace(Window.Location.getPath());

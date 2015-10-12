@@ -45,7 +45,7 @@ public class StimulusGrid extends FlexTable {
             @Override
             protected void singleShotFired() {
                 if (pushButton.isEnabled()) {
-                    menuItemListerner.eventFired(pushButton);
+                    menuItemListerner.eventFired(pushButton, this);
                 }
             }
         };

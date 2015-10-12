@@ -151,7 +151,7 @@ public class GuessRoundView extends AbstractSvgView {
             SvgGroupStates svgGroup = SvgGroupStates.valueOf(svgGroupStateString);
             switch (svgGroup) {
                 case NextRoundButton:
-                    nextEventListner.eventFired(null);
+                    nextEventListner.eventFired(null, null);
                     consumed = true;
                     break;
                 case TargetButtonPlay:

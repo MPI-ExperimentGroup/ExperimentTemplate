@@ -147,25 +147,25 @@ public class PlayerDetailsView extends AbstractSvgView {
         switch (svgGroup) {
             case NameField:
                 consumed = true;
-                editNameListner.eventFired(null);
+                editNameListner.eventFired(null, null);
                 break;
             case AgeCat1:
                 consumed = true;
-                age1ButtonListner.eventFired(null);
+                age1ButtonListner.eventFired(null, null);
                 break;
             case AgeCat1Selected:
                 consumed = true;
                 break;
             case AgeCat2:
                 consumed = true;
-                age2ButtonListner.eventFired(null);
+                age2ButtonListner.eventFired(null, null);
                 break;
             case AgeCat2Selected:
                 consumed = true;
                 break;
             case AgeCat3:
                 consumed = true;
-                age3ButtonListner.eventFired(null);
+                age3ButtonListner.eventFired(null, null);
                 break;
             case AgeCat3Selected:
                 consumed = true;
@@ -176,11 +176,11 @@ public class PlayerDetailsView extends AbstractSvgView {
             case ShareBox:
             case ShareCheckBoxChecked:
             case ShareCheckBoxUnchecked:
-                shareCheckBoxListner.eventFired(null);
+                shareCheckBoxListner.eventFired(null, null);
                 consumed = true;
                 break;
             case ShareAndContinueButton:
-                nextEventListner.eventFired(null);
+                nextEventListner.eventFired(null, null);
                 consumed = true;
                 break;
         }

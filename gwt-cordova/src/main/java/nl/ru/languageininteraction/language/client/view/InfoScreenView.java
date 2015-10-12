@@ -47,7 +47,7 @@ public class InfoScreenView extends AbstractSvgView {
         switch (svgGroup) {
             case InfoButton:
                 consumed = true;
-                backEventListner.eventFired(null);
+                backEventListner.eventFired(null, null);
                 break;
             case MoreButton:
                 consumed = true;

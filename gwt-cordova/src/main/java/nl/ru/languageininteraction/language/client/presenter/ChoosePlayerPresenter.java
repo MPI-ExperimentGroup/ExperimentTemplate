@@ -27,6 +27,7 @@ import nl.ru.languageininteraction.language.client.Messages;
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.model.UserLabelData;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
@@ -63,7 +64,7 @@ public class ChoosePlayerPresenter extends AbstractSvgPresenter implements Prese
                     }
 
                     @Override
-                    public void eventFired(ButtonBase button) {
+                    public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                         appEventListner.requestApplicationState(ApplicationState.playerdetails);
                     }
                 });
@@ -76,7 +77,7 @@ public class ChoosePlayerPresenter extends AbstractSvgPresenter implements Prese
                     }
 
                     @Override
-                    public void eventFired(ButtonBase button) {
+                    public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                         appEventListner.requestApplicationState(ApplicationState.version);
                     }
                 });
@@ -89,7 +90,7 @@ public class ChoosePlayerPresenter extends AbstractSvgPresenter implements Prese
                     }
 
                     @Override
-                    public void eventFired(ButtonBase button) {
+                    public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                         appEventListner.requestApplicationState(ApplicationState.locale);
                     }
                 });
@@ -102,7 +103,7 @@ public class ChoosePlayerPresenter extends AbstractSvgPresenter implements Prese
                     }
 
                     @Override
-                    public void eventFired(ButtonBase button) {
+                    public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                         appEventListner.requestApplicationState(ApplicationState.tutorial);
                     }
                 });
@@ -114,7 +115,7 @@ public class ChoosePlayerPresenter extends AbstractSvgPresenter implements Prese
             }
 
             @Override
-            public void eventFired(ButtonBase button) {
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 appEventListner.requestApplicationState(ApplicationState.tutorialorguessround);
             }
         });
@@ -126,7 +127,7 @@ public class ChoosePlayerPresenter extends AbstractSvgPresenter implements Prese
             }
 
             @Override
-            public void eventFired(ButtonBase button) {
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 userResults.setUser(new UserData());
                 appEventListner.requestApplicationState(ApplicationState.playerdetails);
             }
@@ -139,7 +140,7 @@ public class ChoosePlayerPresenter extends AbstractSvgPresenter implements Prese
             }
 
             @Override
-            public void eventFired(ButtonBase button) {
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 ArrayList<PresenterEventListner> playerListeners = new ArrayList<>();
                 int selectedIndex = 0;
                 int currentIndex = 0;
@@ -156,7 +157,7 @@ public class ChoosePlayerPresenter extends AbstractSvgPresenter implements Prese
                         }
 
                         @Override
-                        public void eventFired(ButtonBase button) {
+                        public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                             userResults.setUser(localStorage.getStoredData(labelData.getUserId()));
                             ((ChoosePlayerView) abstractSvgView).setUserNameField(userResults.getUserData().getMetadataValue(metadataFieldProvider.playernameMetadataField));
                         }

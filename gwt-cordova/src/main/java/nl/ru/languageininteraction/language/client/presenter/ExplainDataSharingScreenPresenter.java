@@ -26,6 +26,7 @@ import nl.ru.languageininteraction.language.client.ExplainDataSharingScreenBuild
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
@@ -49,7 +50,7 @@ public class ExplainDataSharingScreenPresenter extends AbstractSvgPresenter impl
             }
 
             @Override
-            public void eventFired(ButtonBase button) {
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 // shareAgreed
                 final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
                 userResults.getUserData().setMetadataValue(metadataFieldProvider.shareMetadataField, metadataFieldProvider.shareMetadataField.getControlledVocabulary()[0]);
@@ -64,7 +65,7 @@ public class ExplainDataSharingScreenPresenter extends AbstractSvgPresenter impl
             }
 
             @Override
-            public void eventFired(ButtonBase button) {
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 new LocalStorage().storeData(userResults);
                 appEventListner.requestApplicationState(ApplicationState.guessround);
             }

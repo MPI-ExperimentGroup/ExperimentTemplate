@@ -25,7 +25,9 @@ import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import java.util.List;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.service.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
@@ -38,30 +40,38 @@ public class AnnotationTimelinePanel extends VerticalPanel {
 
     private final StimulusProvider stimulusProvider = new StimulusProvider();
     protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
+    private final VideoPanel videoPanel;
+    private final AbsolutePanel absolutePanel;
 
-    public AnnotationTimelinePanel(String width, String poster, String mp4, String ogg, String webm, Stimulus.Tag tag, int maxStimuli, int columnCount, String imageWidth) {
+    public AnnotationTimelinePanel(String width, String poster, String mp4, String ogg, String webm, List<Stimulus.Tag> tags, int maxStimuli, int columnCount, String imageWidth) {
         final HorizontalPanel horizontalPanel = new HorizontalPanel();
         this.setStylePrimaryName("annotationTimelinePanel");
-        final VideoPanel videoPanel = new VideoPanel(width, poster, mp4, ogg, webm);
+        videoPanel = new VideoPanel(width, poster, mp4, ogg, webm);
         horizontalPanel.add(videoPanel);
         final VerticalPanel verticalPanel = new VerticalPanel();
         final StimulusGrid stimulusGrid = new StimulusGrid();
-        stimulusProvider.getSubset(tag, maxStimuli, "");
+        stimulusProvider.getSubset(tags, maxStimuli);
         int stimulusCounter = 0;
+        absolutePanel = new AbsolutePanel();
+        final int tierHeight = 30;
+        absolutePanel.setHeight(tierHeight * stimulusProvider.getTotalStimuli() + "px");
         while (stimulusProvider.hasNextStimulus()) {
             stimulusProvider.getNextStimulus();
             Stimulus stimulus = stimulusProvider.getCurrentStimulus();
+            final int topPosition = tierHeight * stimulusCounter; // absolutePanel.getOffsetHeight() / stimulusProvider.getTotalStimuli() * stimulusCounter;
             stimulusGrid.addImageItem(new PresenterEventListner() {
 
                 @Override
                 public String getLabel() {
-                    return null;
-//                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                 }
 
                 @Override
-                public void eventFired(ButtonBase button) {
-//                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+                    final Label label1 = new Label("" + videoPanel.getCurrentTime());
+                    label1.setStylePrimaryName("annotationTimelineTierSegment");
+                    absolutePanel.add(label1, getLeftPosition(), topPosition);
+                    singleShotEventListner.resetSingleShot();
                 }
             }, UriUtils.fromString(serviceLocations.staticFilesUrl() + stimulus.getImage()), stimulusCounter / columnCount, 1 + stimulusCounter++ % columnCount, imageWidth);
         }
@@ -69,17 +79,10 @@ public class AnnotationTimelinePanel extends VerticalPanel {
         horizontalPanel.add(verticalPanel);
         this.add(horizontalPanel);
         final Label timelineCursor = new Label();
-        final AbsolutePanel absolutePanel = new AbsolutePanel();
 
         absolutePanel.setStylePrimaryName("annotationTimelineTier");
         timelineCursor.setStylePrimaryName("annotationTimelineCursor");
         absolutePanel.add(timelineCursor);
-        final Label label1 = new Label("two");
-        label1.setWidth("10%");
-        absolutePanel.add(label1);
-        final Label label2 = new Label("three");
-        label2.setWidth("70%");
-        absolutePanel.add(label2);
         this.add(absolutePanel);
         final Label labelticker = new Label("test output");
         horizontalPanel.add(labelticker);
@@ -89,9 +92,13 @@ public class AnnotationTimelinePanel extends VerticalPanel {
             @Override
             public void run() {
                 labelticker.setText("" + videoPanel.getCurrentTime());
-                absolutePanel.setWidgetPosition(timelineCursor, (int) ((absolutePanel.getOffsetWidth() - 1) * (videoPanel.getCurrentTime() / videoPanel.getDurationTime())), absolutePanel.getOffsetHeight() - timelineCursor.getOffsetHeight());
+                absolutePanel.setWidgetPosition(timelineCursor, getLeftPosition(), absolutePanel.getOffsetHeight() - timelineCursor.getOffsetHeight());
             }
         };
         timer.scheduleRepeating(10);
+    }
+
+    private int getLeftPosition() {
+        return (int) ((absolutePanel.getOffsetWidth() - 1) * (videoPanel.getCurrentTime() / videoPanel.getDurationTime()));
     }
 }

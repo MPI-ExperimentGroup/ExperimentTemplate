@@ -27,5 +27,5 @@ public interface PresenterEventListner {
 
     public String getLabel();
 
-    public void eventFired(ButtonBase button);
+    public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner);
 }

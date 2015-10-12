@@ -24,6 +24,7 @@ import java.util.List;
 import nl.ru.languageininteraction.language.client.ChoosePlayerScreenBuilder;
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 
 /**
@@ -91,36 +92,36 @@ public class ChoosePlayerView extends AbstractSvgView {
         switch (svgGroup) {
             case EditButton:
                 consumed = true;
-                editButtonListner.eventFired(null);
+                editButtonListner.eventFired(null, null);
                 break;
             case GoButton:
                 consumed = true;
-                goButtonListner.eventFired(null);
+                goButtonListner.eventFired(null, null);
                 break;
             case NameField:
                 consumed = true;
                 break;
             case NewPlayerButton:
                 consumed = true;
-                createButtonListner.eventFired(null);
+                createButtonListner.eventFired(null, null);
                 break;
             case SwitchPlayerButton:
                 consumed = true;
                 if (switchButtonListner != null) {
-                    switchButtonListner.eventFired(null);
+                    switchButtonListner.eventFired(null, null);
                 }
                 break;
             case SettingsButton:
                 consumed = true;
-                localeButtonListner.eventFired(null);
+                localeButtonListner.eventFired(null, null);
                 break;
             case TutorialButton:
                 consumed = true;
-                tutorialButtonListner.eventFired(null);
+                tutorialButtonListner.eventFired(null, null);
                 break;
             case InfoButton:
                 consumed = true;
-                infoButtonListner.eventFired(null);
+                infoButtonListner.eventFired(null, null);
                 break;
         }
         return consumed;
@@ -146,8 +147,8 @@ public class ChoosePlayerView extends AbstractSvgView {
             }
 
             @Override
-            public void eventFired(ButtonBase button) {
-                playerListeners.get(listBox.getSelectedIndex()).eventFired(null);
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+                playerListeners.get(listBox.getSelectedIndex()).eventFired(null, singleShotEventListner);
             }
         }, listBox);
     }

@@ -25,6 +25,7 @@ import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.view.MenuView;
 
 /**
@@ -54,7 +55,7 @@ public class LocalePresenter extends AbstractPresenter implements Presenter {
                 ((MenuView) simpleView).addMenuItem(new PresenterEventListner() {
 
                     @Override
-                    public void eventFired(ButtonBase button) {
+                    public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                         final String queryString = Window.Location.getQueryString();
                         final String localeGet = "locale=";
                         final String updatedPathValue;

@@ -22,6 +22,7 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.view.MenuView;
 import nl.mpi.tg.eg.experiment.client.view.SimpleView;
 
@@ -41,7 +42,7 @@ public abstract class AbstractMenuPresenter extends AbstractPresenter implements
                 ((MenuView) simpleView).addMenuItem(new PresenterEventListner() {
 
                     @Override
-                    public void eventFired(ButtonBase button) {
+                    public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                         appEventListner.requestApplicationState(currentAppState);
                     }
 

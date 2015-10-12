@@ -54,11 +54,11 @@ public class ExplainDataSharingScreenView extends AbstractSvgView {
         switch (svgGroup) {
             case ContinueWithoutSharingButton:
                 consumed = true;
-                noButtonListner.eventFired(null);
+                noButtonListner.eventFired(null, null);
                 break;
             case ShareAndContinueButton:
                 consumed = true;
-                yesButtonListner.eventFired(null);
+                yesButtonListner.eventFired(null, null);
                 break;
         }
         return consumed;

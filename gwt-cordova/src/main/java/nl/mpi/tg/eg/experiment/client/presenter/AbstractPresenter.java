@@ -24,6 +24,7 @@ import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.Messages;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.view.SimpleView;
 
 /**
@@ -31,30 +32,30 @@ import nl.mpi.tg.eg.experiment.client.view.SimpleView;
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
 public abstract class AbstractPresenter implements Presenter {
-    
+
     protected final Messages messages = GWT.create(Messages.class);
     protected final RootLayoutPanel widgetTag;
     final protected SimpleView simpleView;
     private PresenterEventListner backEventListner = null;
     private PresenterEventListner nextEventListner = null;
     private PresenterEventListner windowClosingEventListner = null;
-    
+
     public AbstractPresenter(RootLayoutPanel widgetTag, SimpleView simpleView) {
         this.widgetTag = widgetTag;
         this.simpleView = simpleView;
     }
-    
+
     @Override
     public void setState(final AppEventListner appEventListner, final ApplicationState prevState, final ApplicationState nextState) {
         widgetTag.clear();
         if (prevState != null) {
             backEventListner = new PresenterEventListner() {
-                
+
                 @Override
-                public void eventFired(ButtonBase button) {
+                public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                     appEventListner.requestApplicationState(prevState);
                 }
-                
+
                 @Override
                 public String getLabel() {
                     return prevState.label;
@@ -78,12 +79,12 @@ public abstract class AbstractPresenter implements Presenter {
         setTitle(backEventListner);
         if (nextState != null) {
             nextEventListner = new PresenterEventListner() {
-                
+
                 @Override
-                public void eventFired(ButtonBase button) {
+                public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                     appEventListner.requestApplicationState(nextState);
                 }
-                
+
                 @Override
                 public String getLabel() {
                     return nextState.label;
@@ -95,31 +96,31 @@ public abstract class AbstractPresenter implements Presenter {
         simpleView.resizeView();
         widgetTag.add(simpleView);
     }
-    
+
     @Override
     public void fireBackEvent() {
         if (backEventListner != null) {
-            backEventListner.eventFired(null);
+            backEventListner.eventFired(null, null);
         }
     }
-    
+
     @Override
     public void fireResizeEvent() {
         simpleView.resizeView();
     }
-    
+
     @Override
     public void fireWindowClosing() {
         if (windowClosingEventListner != null) {
-            windowClosingEventListner.eventFired(null);
+            windowClosingEventListner.eventFired(null, null);
         }
     }
-    
+
     public void setWindowClosingListener(PresenterEventListner windowClosingEventListner) {
         this.windowClosingEventListner = windowClosingEventListner;
     }
-    
+
     protected abstract void setTitle(PresenterEventListner titleBarListner);
-    
+
     protected abstract void setContent(final AppEventListner appEventListner);
 }

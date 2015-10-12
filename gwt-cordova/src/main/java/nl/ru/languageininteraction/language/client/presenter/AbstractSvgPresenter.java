@@ -25,6 +25,7 @@ import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.AudioEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.ru.languageininteraction.language.client.view.AbstractSvgView;
@@ -56,7 +57,7 @@ public abstract class AbstractSvgPresenter implements Presenter {
             backEventListner = new PresenterEventListner() {
 
                 @Override
-                public void eventFired(ButtonBase button) {
+                public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                     audioPlayer.stopAll();
                     appEventListner.requestApplicationState(prevState);
                 }
@@ -70,7 +71,7 @@ public abstract class AbstractSvgPresenter implements Presenter {
             backEventListner = new PresenterEventListner() {
 
                 @Override
-                public void eventFired(ButtonBase button) {
+                public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                     audioPlayer.stopAll();
                     appEventListner.requestApplicationState(ApplicationState.menu);
                 }
@@ -85,7 +86,7 @@ public abstract class AbstractSvgPresenter implements Presenter {
             nextEventListner = new PresenterEventListner() {
 
                 @Override
-                public void eventFired(ButtonBase button) {
+                public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                     audioPlayer.stopAll();
                     if (nextEventFired()) {
                         appEventListner.requestApplicationState(nextState);
@@ -118,7 +119,7 @@ public abstract class AbstractSvgPresenter implements Presenter {
     public void fireBackEvent() {
         if (backEventListner != null) {
             audioPlayer.stopAll();
-            backEventListner.eventFired(null);
+            backEventListner.eventFired(null, null);
         }
     }
 

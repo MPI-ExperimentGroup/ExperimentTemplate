@@ -80,7 +80,7 @@ public class TutorialView extends AbstractSvgView {
                 break;
             case Tutorial4:
                 consumed = true;
-                nextEventListner.eventFired(null);
+                nextEventListner.eventFired(null, null);
                 break;
         }
         return consumed;

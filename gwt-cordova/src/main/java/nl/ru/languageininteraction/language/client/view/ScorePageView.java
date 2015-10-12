@@ -82,19 +82,19 @@ public class ScorePageView extends AbstractSvgView {
             SvgGroupStates svgGroup = SvgGroupStates.valueOf(svgGroupStateString);
             switch (svgGroup) {
                 case ContinueWithoutSharing:
-                    justContinueListner.eventFired(null);
+                    justContinueListner.eventFired(null, null);
                     consumed = true;
                     break;
                 case ShareAndContinueButton:
-                    shareContinueListner.eventFired(null);
+                    shareContinueListner.eventFired(null, null);
                     consumed = true;
                     break;
                 case EditProfileButton:
-                    editUserListner.eventFired(null);
+                    editUserListner.eventFired(null, null);
                     consumed = true;
                     break;
                 case ShareOnSocialMedia:
-                    socialMediaListner.eventFired(null);
+                    socialMediaListner.eventFired(null, null);
                     consumed = true;
                     break;
             }

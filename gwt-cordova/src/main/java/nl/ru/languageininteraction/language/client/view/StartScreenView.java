@@ -56,20 +56,20 @@ public class StartScreenView extends AbstractSvgView {
         switch (svgGroup) {
             case InfoButton:
                 consumed = true;
-                infoButtonListner.eventFired(null);
+                infoButtonListner.eventFired(null, null);
                 break;
             case SettingsButton:
                 consumed = true;
-                languageButtonListner.eventFired(null);
+                languageButtonListner.eventFired(null, null);
                 break;
             case TutorialButton:
                 consumed = true;
-                tutorialButtonListner.eventFired(null);
+                tutorialButtonListner.eventFired(null, null);
                 break;
             case LQLogo:
             case GoButton:
                 consumed = true;
-                goButtonListner.eventFired(null);
+                goButtonListner.eventFired(null, null);
                 break;
         }
         return consumed;

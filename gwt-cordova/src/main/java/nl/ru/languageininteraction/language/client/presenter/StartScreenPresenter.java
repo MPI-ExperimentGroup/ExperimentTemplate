@@ -25,6 +25,7 @@ import nl.ru.languageininteraction.language.client.StartScreenBuilder;
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.ru.languageininteraction.language.client.view.StartScreenView;
@@ -46,7 +47,7 @@ public class StartScreenPresenter extends AbstractSvgPresenter implements Presen
             }
 
             @Override
-            public void eventFired(ButtonBase button) {
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 appEventListner.requestApplicationState(ApplicationState.version);
             }
         }, new PresenterEventListner() {
@@ -57,7 +58,7 @@ public class StartScreenPresenter extends AbstractSvgPresenter implements Presen
             }
 
             @Override
-            public void eventFired(ButtonBase button) {
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 appEventListner.requestApplicationState(ApplicationState.chooseplayer);
             }
         }, new PresenterEventListner() {
@@ -68,7 +69,7 @@ public class StartScreenPresenter extends AbstractSvgPresenter implements Presen
             }
 
             @Override
-            public void eventFired(ButtonBase button) {
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 appEventListner.requestApplicationState(ApplicationState.locale);
             }
         }, new PresenterEventListner() {
@@ -79,7 +80,7 @@ public class StartScreenPresenter extends AbstractSvgPresenter implements Presen
             }
 
             @Override
-            public void eventFired(ButtonBase button) {
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 appEventListner.requestApplicationState(ApplicationState.tutorial);
             }
         },

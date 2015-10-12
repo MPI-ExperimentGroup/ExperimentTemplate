@@ -31,6 +31,7 @@ import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
 import nl.mpi.tg.eg.experiment.client.exception.MetadataFieldException;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
@@ -59,7 +60,7 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
         saveEventListner = new PresenterEventListner() {
 
             @Override
-            public void eventFired(final ButtonBase button) {
+            public void eventFired(final ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 try {
                     ((MetadataView) simpleView).setButtonError(false, button, null);
                     ((MetadataView) simpleView).clearErrors();
@@ -107,8 +108,8 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
             }
 
             @Override
-            public void eventFired(ButtonBase button) {
-                saveEventListner.eventFired(button);
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+                saveEventListner.eventFired(button, singleShotEventListner);
             }
         });
     }
