@@ -17,8 +17,12 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -26,6 +30,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlAnyAttribute;
+import javax.xml.bind.annotation.XmlAnyElement;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.namespace.QName;
 
 /**
  * @since Aug 18, 2015 4:39:26 PM (creation date)
@@ -39,26 +50,61 @@ public class PresenterFeature {
     private long id;
     @Enumerated(EnumType.STRING)
     private FeatureType featureType;
+    @ElementCollection
+    private List<String> stimulusTags;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<PresenterFeature> presenterFeatures;
-//    private Map<FeatureAttribute, String> featureAttributes;
+    private List<PresenterFeature> presenterFeatures = new ArrayList<>();
+    private HashMap<FeatureAttribute, String> featureAttributes = new HashMap<>();
     private String featureText;
 
     public PresenterFeature() {
+    }
+
+    public PresenterFeature(FeatureType featureType, String featureText) {
+        this.featureType = featureType;
+//        this.presenterFeatures = new ArrayList<>();
+        this.featureText = featureText;
+//        this.featureAttributes = new HashMap<>();
+        if (featureType.canHaveStimulus()) {
+            stimulusTags = new ArrayList<>();
+        }
     }
 
     public long getId() {
         return id;
     }
 
-    public List<PresenterFeature> getPresenterFeatures() {
+//    @XmlElement(name = "feature")
+//    public List<PresenterFeature> getPresenterFeatures() {
+//        return presenterFeatures;
+//    }
+//    @XmlTransient
+    public List<PresenterFeature> getPresenterFeatureList() {
         return presenterFeatures;
+    }
+
+//    @XmlAnyElement
+//    public List<JAXBElement<PresenterFeature>> getPresenterFeatures() {
+//        List<JAXBElement<PresenterFeature>> elements = new ArrayList<>();
+//        presenterFeatures.stream().forEach((feature) -> {
+//            elements.add(new JAXBElement<>(new QName(feature.getFeatureType().name()), PresenterFeature.class, feature));
+//        });
+//        return elements;
+//    }
+    @XmlAnyElement
+    public List<JAXBElement<PresenterFeature>> getPresenterFeatures() {
+        List<JAXBElement<PresenterFeature>> elements = new ArrayList<>();
+        presenterFeatures.stream().forEach((feature) -> {
+            elements.add(new JAXBElement<>(new QName(feature.getFeatureType().name()), PresenterFeature.class, feature));
+        });
+        return elements;
     }
 
     public void setPresenterFeatures(List<PresenterFeature> presenterFeatures) {
         this.presenterFeatures = presenterFeatures;
     }
 
+    @XmlAttribute
     public FeatureType getFeatureType() {
         return featureType;
     }
@@ -67,11 +113,47 @@ public class PresenterFeature {
         this.featureType = featureType;
     }
 
+    @XmlAttribute
     public String getFeatureText() {
         return featureText;
     }
 
     public void setFeatureText(String featureText) {
         this.featureText = featureText;
+    }
+
+    @XmlElementWrapper(name = "stimuli")
+    @XmlElement(name = "tag")
+    public List<String> getStimulusTags() {
+        return stimulusTags;
+    }
+
+    public void setStimulusTags(List<String> stimulusTags) {
+        this.stimulusTags = stimulusTags;
+    }
+
+    public void addStimulusTag(String tag) {
+        stimulusTags.add(tag);
+    }
+
+    @XmlAnyAttribute
+    public Map<QName, String> getFeatureAttributes() {
+        Map<QName, String> attributeMap = new HashMap();
+        featureAttributes.keySet().stream().forEach((featureAttribute) -> {
+            attributeMap.put(new QName(featureAttribute.name()), featureAttributes.get(featureAttribute));
+        });
+        return attributeMap;
+    }
+
+    public String getFeatureAttributes(FeatureAttribute featureAttribute) {
+        return this.featureAttributes.get(featureAttribute);
+    }
+
+    public void addFeatureAttributes(FeatureAttribute featureAttribute, String attributeValue) {
+        this.featureAttributes.put(featureAttribute, attributeValue);
+    }
+
+    public void setFeatureAttributes(HashMap<FeatureAttribute, String> featureAttributes) {
+        this.featureAttributes = featureAttributes;
     }
 }
