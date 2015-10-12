@@ -168,6 +168,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', new
                 import com.google.gwt.safehtml.shared.UriUtils;
                 import com.google.gwt.user.client.ui.ButtonBase;
                 import com.google.gwt.user.client.ui.RootLayoutPanel;
+                import java.util.Arrays;
                 import nl.mpi.tg.eg.experiment.client.Version;
                 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
                 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
@@ -512,7 +513,18 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
             <xsl:value-of select="if(@ogg) then concat(', &quot;', @ogg, '&quot;') else ',&quot;&quot;'" />
             <xsl:value-of select="if(@webm) then concat(', &quot;', @webm, '&quot;') else ',&quot;&quot;'" />
         </xsl:if>
-        <xsl:value-of select="if(@stimulusTag) then concat(', Tag.', @stimulusTag, '') else ''" />
+        <xsl:if test="stimuli">
+            <xsl:text>, Arrays.asList(new Tag[]{</xsl:text>
+            <xsl:for-each select="distinct-values(stimuli/tag/text())">
+                <xsl:text>Tag.</xsl:text>
+                <xsl:value-of select="." />
+                <xsl:if test="position() != last()">
+                    <xsl:text>, </xsl:text>
+                </xsl:if>
+            </xsl:for-each>
+            <xsl:text>})</xsl:text>
+        </xsl:if>
+        <!--<xsl:value-of select="if(@stimulusTag) then concat(', Tag.', @stimulusTag, '') else ''" />-->
         <xsl:value-of select="if(@maxStimuli) then concat(', ', @maxStimuli, '') else ''" />
         <xsl:value-of select="if(@columnCount) then concat(', ', @columnCount, '') else ''" />
         <xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" />
