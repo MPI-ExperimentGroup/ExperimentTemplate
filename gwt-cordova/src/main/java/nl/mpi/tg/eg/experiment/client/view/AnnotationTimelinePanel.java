@@ -45,7 +45,7 @@ public class AnnotationTimelinePanel extends VerticalPanel {
     protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
     private final VideoPanel videoPanel;
     private final AbsolutePanel absolutePanel;
-    private final HashMap<Label, AnnotationData> stimulusAnnotations = new HashMap<>();
+    private final HashMap<AnnotationData, Label> annotationLebels = new HashMap<>();
     private final HashMap<Stimulus, ButtonBase> stimulusButtons = new HashMap<>();
 
     public AnnotationTimelinePanel(String width, String poster, String mp4, String ogg, String webm, List<Stimulus.Tag> tags, int maxStimuli, int columnCount, String imageWidth) {
@@ -74,24 +74,38 @@ public class AnnotationTimelinePanel extends VerticalPanel {
                 @Override
                 public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                     final double clickedTime = videoPanel.getCurrentTime();
-                    final AnnotationData annotationData = new AnnotationData(clickedTime, clickedTime + 5, "" + videoPanel.getCurrentTime(), stimulus);
-                    final Label label1 = new Label(annotationData.getAnnotationHtml());
-                    label1.setStylePrimaryName("annotationTimelineTierSegment");
-                    final SingleShotEventListner tierSegmentListner = new SingleShotEventListner() {
-
-                        @Override
-                        protected void singleShotFired() {
-                            videoPanel.playSegment(annotationData);
-                            resetSingleShot();
+                    AnnotationData foundAnnotationData = null;
+                    for (AnnotationData currentAnnotationData : annotationLebels.keySet()) {
+                        if (currentAnnotationData.getStimulus().equals(stimulus)) {
+                            if (currentAnnotationData.intersectsTime(clickedTime)) {
+                                foundAnnotationData = currentAnnotationData;
+                                break;
+                            }
                         }
-                    };
-                    label1.addClickHandler(tierSegmentListner);
-                    label1.addTouchStartHandler(tierSegmentListner);
-                    label1.addTouchMoveHandler(tierSegmentListner);
-                    label1.addTouchEndHandler(tierSegmentListner);
-                    label1.setWidth(getWidth(annotationData) + "px");
-                    absolutePanel.add(label1, getLeftPosition(annotationData), topPosition);
-                    stimulusAnnotations.put(label1, annotationData);
+                    }
+                    if (foundAnnotationData != null) {
+                        foundAnnotationData.setOutTime(clickedTime);
+                        annotationLebels.get(foundAnnotationData).setWidth(getWidth(foundAnnotationData) + "px");
+                    } else {
+                        final AnnotationData annotationData = new AnnotationData(clickedTime, videoPanel.getDurationTime(), "" + videoPanel.getCurrentTime(), stimulus);
+                        final Label label1 = new Label(annotationData.getAnnotationHtml());
+                        label1.setStylePrimaryName("annotationTimelineTierSegment");
+                        final SingleShotEventListner tierSegmentListner = new SingleShotEventListner() {
+
+                            @Override
+                            protected void singleShotFired() {
+                                videoPanel.playSegment(annotationData);
+                                resetSingleShot();
+                            }
+                        };
+                        label1.addClickHandler(tierSegmentListner);
+                        label1.addTouchStartHandler(tierSegmentListner);
+                        label1.addTouchMoveHandler(tierSegmentListner);
+                        label1.addTouchEndHandler(tierSegmentListner);
+                        label1.setWidth(getWidth(annotationData) + "px");
+                        absolutePanel.add(label1, getLeftPosition(annotationData), topPosition);
+                        annotationLebels.put(annotationData, label1);
+                    }
                     singleShotEventListner.resetSingleShot();
                 }
             }, UriUtils.fromString(serviceLocations.staticFilesUrl() + stimulus.getImage()), stimulusCounter / columnCount, 1 + stimulusCounter++ % columnCount, imageWidth));
@@ -117,7 +131,7 @@ public class AnnotationTimelinePanel extends VerticalPanel {
                 absolutePanel.setWidgetPosition(timelineCursor, getLeftPosition(), absolutePanel.getOffsetHeight() - timelineCursor.getOffsetHeight());
                 // to folling section is going to be a bit time critical, so might need some attention in the future
                 ArrayList<Stimulus> intersectedStimuli = new ArrayList<>();
-                for (AnnotationData annotationData : stimulusAnnotations.values()) {
+                for (AnnotationData annotationData : annotationLebels.keySet()) {
                     if (annotationData.intersectsTime(currentTime)) {
                         intersectedStimuli.add(annotationData.getStimulus());
                     }
