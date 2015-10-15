@@ -28,7 +28,6 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.web.bindery.autobean.shared.AutoBean;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.model.AnnotationData;
@@ -43,23 +42,20 @@ import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
  */
 public class AnnotationTimelinePanel extends VerticalPanel {
 
-    private final StimulusProvider stimulusProvider = new StimulusProvider();
     protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
     private final VideoPanel videoPanel;
     private final AbsolutePanel absolutePanel;
     private final HashMap<AnnotationData, Label> annotationLebels = new HashMap<>();
     private final HashMap<Stimulus, ButtonBase> stimulusButtons = new HashMap<>();
     private int currentOffsetWidth;
-    DataFactory dataFactory = GWT.create(DataFactory.class);
 
-    public AnnotationTimelinePanel(String width, String poster, String mp4, String ogg, String webm, List<Stimulus.Tag> tags, int maxStimuli, int columnCount, String imageWidth) {
+    public AnnotationTimelinePanel(final DataFactory dataFactory, final VideoPanel videoPanel, StimulusProvider stimulusProvider, int columnCount, String imageWidth) {
+        this.videoPanel = videoPanel;
         final HorizontalPanel horizontalPanel = new HorizontalPanel();
         this.setStylePrimaryName("annotationTimelinePanel");
-        videoPanel = new VideoPanel(width, poster, mp4, ogg, webm);
         horizontalPanel.add(videoPanel);
         final VerticalPanel verticalPanel = new VerticalPanel();
         final StimulusGrid stimulusGrid = new StimulusGrid();
-        stimulusProvider.getSubset(tags, maxStimuli);
         int stimulusCounter = 0;
         absolutePanel = new AbsolutePanel();
         final int tierHeight = 30;
