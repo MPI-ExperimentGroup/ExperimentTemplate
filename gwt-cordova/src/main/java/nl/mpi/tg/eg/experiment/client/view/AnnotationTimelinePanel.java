@@ -47,6 +47,7 @@ public class AnnotationTimelinePanel extends VerticalPanel {
     private final AbsolutePanel absolutePanel;
     private final HashMap<AnnotationData, Label> annotationLebels = new HashMap<>();
     private final HashMap<Stimulus, ButtonBase> stimulusButtons = new HashMap<>();
+    private int currentOffsetWidth;
 
     public AnnotationTimelinePanel(String width, String poster, String mp4, String ogg, String webm, List<Stimulus.Tag> tags, int maxStimuli, int columnCount, String imageWidth) {
         final HorizontalPanel horizontalPanel = new HorizontalPanel();
@@ -59,7 +60,9 @@ public class AnnotationTimelinePanel extends VerticalPanel {
         int stimulusCounter = 0;
         absolutePanel = new AbsolutePanel();
         final int tierHeight = 30;
+        absolutePanel.setWidth("90%");
         absolutePanel.setHeight(tierHeight * stimulusProvider.getTotalStimuli() + "px");
+        currentOffsetWidth = absolutePanel.getOffsetWidth();
         while (stimulusProvider.hasNextStimulus()) {
             stimulusProvider.getNextStimulus();
             final Stimulus stimulus = stimulusProvider.getCurrentStimulus();
@@ -119,15 +122,23 @@ public class AnnotationTimelinePanel extends VerticalPanel {
         timelineCursor.setStylePrimaryName("annotationTimelineCursor");
         absolutePanel.add(timelineCursor);
         this.add(absolutePanel);
-        final Label labelticker = new Label("test output");
-        horizontalPanel.add(labelticker);
+//        final Label labelticker = new Label("test output");
+//        horizontalPanel.add(labelticker);
         Timer timer = new Timer() {
-            private int couter = 0;
 
             @Override
             public void run() {
+                if (currentOffsetWidth != absolutePanel.getOffsetWidth()) {
+                    currentOffsetWidth = absolutePanel.getOffsetWidth();
+                    for (AnnotationData annotationData : annotationLebels.keySet()) {
+                        final Label label = annotationLebels.get(annotationData);
+                        label.setWidth(getWidth(annotationData) + "px");
+                        final int topPosition = absolutePanel.getWidgetTop(label);
+                        absolutePanel.setWidgetPosition(label, getLeftPosition(annotationData), topPosition);
+                    }
+                }
                 final double currentTime = videoPanel.getCurrentTime();
-                labelticker.setText("" + currentTime);
+//                labelticker.setText("" + currentTime);
                 absolutePanel.setWidgetPosition(timelineCursor, getLeftPosition(), absolutePanel.getOffsetHeight() - timelineCursor.getOffsetHeight());
                 // to folling section is going to be a bit time critical, so might need some attention in the future
                 ArrayList<Stimulus> intersectedStimuli = new ArrayList<>();
@@ -161,6 +172,6 @@ public class AnnotationTimelinePanel extends VerticalPanel {
     }
 
     private int getLeftPosition(final double currentTime) {
-        return (int) ((absolutePanel.getOffsetWidth() - 1) * (currentTime / videoPanel.getDurationTime()));
+        return (int) ((currentOffsetWidth - 1) * (currentTime / videoPanel.getDurationTime()));
     }
 }
