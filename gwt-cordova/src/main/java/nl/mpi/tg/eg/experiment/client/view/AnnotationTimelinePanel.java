@@ -25,6 +25,7 @@ import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.web.bindery.autobean.shared.AutoBean;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -32,6 +33,7 @@ import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.model.AnnotationData;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
+import nl.mpi.tg.eg.experiment.client.service.DataFactory;
 import nl.mpi.tg.eg.experiment.client.service.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
 
@@ -48,6 +50,7 @@ public class AnnotationTimelinePanel extends VerticalPanel {
     private final HashMap<AnnotationData, Label> annotationLebels = new HashMap<>();
     private final HashMap<Stimulus, ButtonBase> stimulusButtons = new HashMap<>();
     private int currentOffsetWidth;
+    DataFactory dataFactory = GWT.create(DataFactory.class);
 
     public AnnotationTimelinePanel(String width, String poster, String mp4, String ogg, String webm, List<Stimulus.Tag> tags, int maxStimuli, int columnCount, String imageWidth) {
         final HorizontalPanel horizontalPanel = new HorizontalPanel();
@@ -80,7 +83,7 @@ public class AnnotationTimelinePanel extends VerticalPanel {
                     AnnotationData foundAnnotationData = null;
                     for (AnnotationData currentAnnotationData : annotationLebels.keySet()) {
                         if (currentAnnotationData.getStimulus().equals(stimulus)) {
-                            if (currentAnnotationData.intersectsTime(clickedTime)) {
+                            if (intersectsTime(currentAnnotationData, clickedTime)) {
                                 foundAnnotationData = currentAnnotationData;
                                 break;
                             }
@@ -90,7 +93,12 @@ public class AnnotationTimelinePanel extends VerticalPanel {
                         foundAnnotationData.setOutTime(clickedTime);
                         annotationLebels.get(foundAnnotationData).setWidth(getWidth(foundAnnotationData) + "px");
                     } else {
-                        final AnnotationData annotationData = new AnnotationData(clickedTime, videoPanel.getDurationTime(), "" + videoPanel.getCurrentTime(), stimulus);
+                        final AutoBean<AnnotationData> annotationDataBean = dataFactory.annotation();
+                        final AnnotationData annotationData = annotationDataBean.as();
+                        annotationData.setInTime(clickedTime);
+                        annotationData.setOutTime(videoPanel.getDurationTime());
+                        annotationData.setAnnotationHtml("" + videoPanel.getCurrentTime());
+                        annotationData.setStimulus(stimulus);
                         final Label label1 = new Label(annotationData.getAnnotationHtml());
                         label1.setStylePrimaryName("annotationTimelineTierSegment");
                         final SingleShotEventListner tierSegmentListner = new SingleShotEventListner() {
@@ -143,7 +151,7 @@ public class AnnotationTimelinePanel extends VerticalPanel {
                 // to folling section is going to be a bit time critical, so might need some attention in the future
                 ArrayList<Stimulus> intersectedStimuli = new ArrayList<>();
                 for (AnnotationData annotationData : annotationLebels.keySet()) {
-                    if (annotationData.intersectsTime(currentTime)) {
+                    if (intersectsTime(annotationData, currentTime)) {
                         intersectedStimuli.add(annotationData.getStimulus());
                     }
                 }
@@ -173,5 +181,9 @@ public class AnnotationTimelinePanel extends VerticalPanel {
 
     private int getLeftPosition(final double currentTime) {
         return (int) ((currentOffsetWidth - 1) * (currentTime / videoPanel.getDurationTime()));
+    }
+
+    public boolean intersectsTime(final AnnotationData annotationData, final double currentTime) {
+        return (currentTime >= annotationData.getInTime() && currentTime <= annotationData.getOutTime());
     }
 }
