@@ -14,9 +14,10 @@
     <inherits name='com.google.gwt.user.theme.standard.Standard' />
     <!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
     <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
-
+    
     <!-- Other module inherits                                      -->
     <inherits name="com.google.gwt.i18n.I18N" />
+    <inherits name="com.google.web.bindery.autobean.AutoBean"/> 
     <extend-property name="locale" values="en,nl,de" />
     <set-property-fallback name="locale" value="en"/>
     
@@ -24,8 +25,9 @@
     <entry-point class='nl.mpi.tg.eg.experiment.client.ExperimentTemplate' />
 
     <!-- Specify the paths for translatable code                    -->
-     <source path='experiment' />
+    <source path='experiment' />
     <!--<source path='synaesthesia' />-->
     <!--<source path='language' />-->
-
+    <!--<define-linker name="dil" class="com.google.gwt.core.linker.DirectInstallLinker"/>-->
+    <!--<add-linker name="dil" />-->
 </module>
