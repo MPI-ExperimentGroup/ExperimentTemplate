@@ -21,52 +21,22 @@ package nl.mpi.tg.eg.experiment.client.model;
  * @since Jan 31, 2014 10:04 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class AnnotationData {
+public interface AnnotationData {
 
-    private double inTime = 0;
-    private double outTime = 0;
-    private String annotationHtml = "";
-    private Stimulus stimulus;
+    public double getInTime();
 
-    public AnnotationData() {
-    }
+    public void setInTime(double inTime);
 
-    public AnnotationData(double inTime, double outTime, String annotationHtml, Stimulus stimulus) {
-        this.inTime = inTime;
-        this.outTime = outTime;
-        this.annotationHtml = annotationHtml;
-        this.stimulus = stimulus;
-    }
+    public double getOutTime();
 
-    public double getInTime() {
-        return inTime;
-    }
+    public void setOutTime(double outTime);
 
-    public void setInTime(double inTime) {
-        this.inTime = inTime;
-    }
+    public String getAnnotationHtml();
 
-    public double getOutTime() {
-        return outTime;
-    }
+    public void setAnnotationHtml(String annotationHtml);
 
-    public void setOutTime(double outTime) {
-        this.outTime = outTime;
-    }
+    public Stimulus getStimulus();
+    
+    public void setStimulus(Stimulus stimulus);
 
-    public String getAnnotationHtml() {
-        return annotationHtml;
-    }
-
-    public void setAnnotationHtml(String annotationHtml) {
-        this.annotationHtml = annotationHtml;
-    }
-
-    public Stimulus getStimulus() {
-        return stimulus;
-    }
-
-    public boolean intersectsTime(final double currentTime) {
-        return (currentTime >= inTime && currentTime <= outTime);
-    }
 }
