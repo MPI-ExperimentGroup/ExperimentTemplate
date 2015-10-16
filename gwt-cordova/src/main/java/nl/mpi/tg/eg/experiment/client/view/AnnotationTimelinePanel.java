@@ -28,9 +28,11 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.web.bindery.autobean.shared.AutoBean;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.model.AnnotationData;
+import nl.mpi.tg.eg.experiment.client.model.AnnotationSet;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.service.DataFactory;
 import nl.mpi.tg.eg.experiment.client.service.ServiceLocations;
@@ -47,7 +49,9 @@ public class AnnotationTimelinePanel extends VerticalPanel {
     private final AbsolutePanel absolutePanel;
     private final HashMap<AnnotationData, Label> annotationLebels = new HashMap<>();
     private final HashMap<Stimulus, ButtonBase> stimulusButtons = new HashMap<>();
+    private final HashMap<Stimulus, Integer> tierTopPositions = new HashMap<>();
     private int currentOffsetWidth;
+    final int tierHeight;
 
     public AnnotationTimelinePanel(final DataFactory dataFactory, final VideoPanel videoPanel, StimulusProvider stimulusProvider, int columnCount, String imageWidth) {
         this.videoPanel = videoPanel;
@@ -58,14 +62,13 @@ public class AnnotationTimelinePanel extends VerticalPanel {
         final StimulusGrid stimulusGrid = new StimulusGrid();
         int stimulusCounter = 0;
         absolutePanel = new AbsolutePanel();
-        final int tierHeight = 30;
+        tierHeight = 30;
         absolutePanel.setWidth("90%");
         absolutePanel.setHeight(tierHeight * stimulusProvider.getTotalStimuli() + "px");
         currentOffsetWidth = absolutePanel.getOffsetWidth();
         while (stimulusProvider.hasNextStimulus()) {
             stimulusProvider.getNextStimulus();
             final Stimulus stimulus = stimulusProvider.getCurrentStimulus();
-            final int topPosition = tierHeight * stimulusCounter; // absolutePanel.getOffsetHeight() / stimulusProvider.getTotalStimuli() * stimulusCounter;
             stimulusButtons.put(stimulus, stimulusGrid.addImageItem(new PresenterEventListner() {
 
                 @Override
@@ -95,23 +98,7 @@ public class AnnotationTimelinePanel extends VerticalPanel {
                         annotationData.setOutTime(videoPanel.getDurationTime());
                         annotationData.setAnnotationHtml("" + videoPanel.getCurrentTime());
                         annotationData.setStimulus(stimulus);
-                        final Label label1 = new Label(annotationData.getAnnotationHtml());
-                        label1.setStylePrimaryName("annotationTimelineTierSegment");
-                        final SingleShotEventListner tierSegmentListner = new SingleShotEventListner() {
-
-                            @Override
-                            protected void singleShotFired() {
-                                videoPanel.playSegment(annotationData);
-                                resetSingleShot();
-                            }
-                        };
-                        label1.addClickHandler(tierSegmentListner);
-                        label1.addTouchStartHandler(tierSegmentListner);
-                        label1.addTouchMoveHandler(tierSegmentListner);
-                        label1.addTouchEndHandler(tierSegmentListner);
-                        label1.setWidth(getWidth(annotationData) + "px");
-                        absolutePanel.add(label1, getLeftPosition(annotationData), topPosition);
-                        annotationLebels.put(annotationData, label1);
+                        insertTierAnnotation(annotationData);
                     }
                     singleShotEventListner.resetSingleShot();
                 }
@@ -132,15 +119,7 @@ public class AnnotationTimelinePanel extends VerticalPanel {
 
             @Override
             public void run() {
-                if (currentOffsetWidth != absolutePanel.getOffsetWidth()) {
-                    currentOffsetWidth = absolutePanel.getOffsetWidth();
-                    for (AnnotationData annotationData : annotationLebels.keySet()) {
-                        final Label label = annotationLebels.get(annotationData);
-                        label.setWidth(getWidth(annotationData) + "px");
-                        final int topPosition = absolutePanel.getWidgetTop(label);
-                        absolutePanel.setWidgetPosition(label, getLeftPosition(annotationData), topPosition);
-                    }
-                }
+                ResizeTimeline();
                 final double currentTime = videoPanel.getCurrentTime();
 //                labelticker.setText("" + currentTime);
                 absolutePanel.setWidgetPosition(timelineCursor, getLeftPosition(), absolutePanel.getOffsetHeight() - timelineCursor.getOffsetHeight());
@@ -156,7 +135,10 @@ public class AnnotationTimelinePanel extends VerticalPanel {
                     button.removeStyleName("stimulusButtonHighlight");
                 }
                 for (Stimulus intersectedStimulus : intersectedStimuli) {
-                    stimulusButtons.get(intersectedStimulus).addStyleName("stimulusButtonHighlight");
+                    final ButtonBase stimulusButton = stimulusButtons.get(intersectedStimulus);
+                    if (stimulusButton != null) {
+                        stimulusButton.addStyleName("stimulusButtonHighlight");
+                    }
                 }
             }
         };
@@ -181,5 +163,55 @@ public class AnnotationTimelinePanel extends VerticalPanel {
 
     public boolean intersectsTime(final AnnotationData annotationData, final double currentTime) {
         return (currentTime >= annotationData.getInTime() && currentTime <= annotationData.getOutTime());
+    }
+
+    public Set<AnnotationData> getAnnotations() {
+        return annotationLebels.keySet();
+    }
+
+    public void setAnnotations(AnnotationSet annotationSet) {
+        for (AnnotationData annotationData : annotationSet.getAnnotations()) {
+            insertTierAnnotation(annotationData);
+        }
+    }
+
+    private void insertTierAnnotation(final AnnotationData annotationData) {
+        final Label label1 = new Label(annotationData.getAnnotationHtml());
+        label1.setStylePrimaryName("annotationTimelineTierSegment");
+        final SingleShotEventListner tierSegmentListner = new SingleShotEventListner() {
+
+            @Override
+            protected void singleShotFired() {
+                videoPanel.playSegment(annotationData);
+                resetSingleShot();
+            }
+        };
+        label1.addClickHandler(tierSegmentListner);
+        label1.addTouchStartHandler(tierSegmentListner);
+        label1.addTouchMoveHandler(tierSegmentListner);
+        label1.addTouchEndHandler(tierSegmentListner);
+        label1.setWidth(getWidth(annotationData) + "px");
+        final int topPosition;
+        if (tierTopPositions.containsKey(annotationData.getStimulus())) {
+            topPosition = tierTopPositions.get(annotationData.getStimulus());
+        } else {
+            int stimulusCounter = tierTopPositions.size();
+            topPosition = tierHeight * stimulusCounter; // absolutePanel.getOffsetHeight() / stimulusProvider.getTotalStimuli() * stimulusCounter;
+            tierTopPositions.put(annotationData.getStimulus(), topPosition);
+        }
+        absolutePanel.add(label1, getLeftPosition(annotationData), topPosition);
+        annotationLebels.put(annotationData, label1);
+    }
+
+    public void ResizeTimeline() {
+        if (currentOffsetWidth < 1 || currentOffsetWidth != absolutePanel.getOffsetWidth()) {
+            currentOffsetWidth = absolutePanel.getOffsetWidth();
+            for (AnnotationData annotationData : annotationLebels.keySet()) {
+                final Label label = annotationLebels.get(annotationData);
+                label.setWidth(getWidth(annotationData) + "px");
+                final int topPosition = absolutePanel.getWidgetTop(label);
+                absolutePanel.setWidgetPosition(label, getLeftPosition(annotationData), topPosition);
+            }
+        }
     }
 }

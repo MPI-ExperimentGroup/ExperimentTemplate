@@ -17,25 +17,15 @@
  */
 package nl.mpi.tg.eg.experiment.client.model;
 
+import java.util.Set;
+
 /**
- * @since Jan 31, 2014 10:04 AM (creation date)
+ * @since Oct 16, 2015 11:58:00 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public interface AnnotationData {
+public interface AnnotationSet {
 
-    public double getInTime();
+    public Set<AnnotationData> getAnnotations();
 
-    public void setInTime(double inTime);
-
-    public double getOutTime();
-
-    public void setOutTime(double outTime);
-
-    public String getAnnotationHtml();
-
-    public void setAnnotationHtml(String annotationHtml);
-
-    public Stimulus getStimulus();
-    
-    public void setStimulus(Stimulus stimulus);
+    public void setAnnotations(Set<AnnotationData> annotationData);
 }

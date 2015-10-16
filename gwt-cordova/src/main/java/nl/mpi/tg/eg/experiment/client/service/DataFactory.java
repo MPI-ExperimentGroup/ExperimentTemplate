@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experiment.client.service;
 import com.google.web.bindery.autobean.shared.AutoBean;
 import com.google.web.bindery.autobean.shared.AutoBeanFactory;
 import nl.mpi.tg.eg.experiment.client.model.AnnotationData;
+import nl.mpi.tg.eg.experiment.client.model.AnnotationSet;
 
 /**
  * @since Oct 15, 2015 12:58:50 PM (creation date)
@@ -28,4 +29,6 @@ import nl.mpi.tg.eg.experiment.client.model.AnnotationData;
 public interface DataFactory extends AutoBeanFactory {
 
     AutoBean<AnnotationData> annotation();
+
+    AutoBean<AnnotationSet> annotationSet();
 }
