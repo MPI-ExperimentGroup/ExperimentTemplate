@@ -20,12 +20,40 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     Author     : Peter Withers <peter.withers@mpi.nl>
 */
 @import '../../../../target/generated-sources/scss/customisations';
+
+.choosePlayerList,
+.gwt-Button.nextButton, .gwt-Button.menuButton,.gwt-PushButton.stimulusButton,.gwt-Button.stimulusHelpButton, .gwt-Button.stimulusQuitButton, .gwt-Button.optionButton, .gwt-Label.headerButton {
+    background: $primaryColour4;
+    color: $primaryColour1;
+    cursor: pointer;
+    border-width: 0px;
+    border-style: none;
+    border: none;
+    outline: none;
+}
+
+.gwt-Button.nextButton:active, .gwt-Button.menuButton:active,.gwt-PushButton.stimulusButton:active, .gwt-Button.optionButton:active, .gwt-Label.headerButton:active,
+.gwt-Button.stimulusHelpButton:active, .gwt-Button.stimulusQuitButton:active, .gwt-Button.stimulusHelpButton:hover, .gwt-Button.stimulusQuitButton:hover {
+    background: $primaryColour1;
+    color: $primaryColour4;    
+    cursor: pointer;
+    border-width: 0px;
+    border-style: none;
+    border: none;
+    outline: none;
+}
+
+.gwt-Label.headerButton {
+    background: $primaryColour2;
+    color: $primaryColour4;
+}
+
 .Android .gwt-Label.headerArrow {
     margin-right: 10px;
 }
 
 .Android .gwt-Label.headerArrow {
-    border-right: 10px solid #e8c571;
+    border-right: 10px solid $primaryColour2;
 }
 
 .gwt-Label.headerArrow {
@@ -52,7 +80,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     margin-left: 0px;
     display: block;
     display: inline-block;
-    color: black;
+    /*color: black;*/
     text-decoration: none;
     /*border-color: #eddbc2;*/
     border-radius: 15px;
@@ -143,41 +171,41 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     outline: none;
     display: block;
     display: inline-block;
-    color: black;
+    /*color: black;*/
     text-decoration: none;
     cursor: pointer;
-    border-color: #eddbc2;
+    /*border-color: rgb(0,158,200);*/
     outline: none;
     height: 40px;
     width: 100%;
 }
-.gwt-Button.stimulusHelpButton:active, .gwt-Button.stimulusQuitButton:active, .gwt-Button.stimulusHelpButton:hover, .gwt-Button.stimulusQuitButton:hover {
+/*.gwt-Button.stimulusHelpButton:active, .gwt-Button.stimulusQuitButton:active, .gwt-Button.stimulusHelpButton:hover, .gwt-Button.stimulusQuitButton:hover {
     background:lightgrey;
     border: none;
 }
 
 .gwt-Button.nextButton:active, .gwt-Button.menuButton:active,.gwt-PushButton.stimulusButton:active, .gwt-Button.optionButton:active, .gwt-Label.headerButton:active {
-    /*background:#eddbc2;*/
-    /*background:rgb(246,170,139);*/
+    background:#eddbc2;
+    background:rgb(246,170,139);
     background:lightgrey;
     border: none;
-}
+}*/
 
-.choosePlayerList,
+/*.choosePlayerList,
 .gwt-Button.nextButton, .gwt-Button.menuButton,.gwt-PushButton.stimulusButton,.gwt-Button.stimulusHelpButton, .gwt-Button.stimulusQuitButton, .gwt-Button.optionButton, .gwt-Label.headerButton {
     cursor: pointer;
     border-width: 0px;
     border-style: none;
     border: none;
     outline: none;
-    background: lightgrey;
-}
+    background: white;
+}*/
 .gwt-Button.nextButton {
     display: block;
     display: inline-block;
-    color: black;
+    /*color: black;*/
     text-decoration: none;
-    border-color: #eddbc2;
+    /*border-color: rgb(0,158,200);*/
     border-radius: 15px;
     outline: none;
     width: 80%;
@@ -191,9 +219,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     /*background: rgb(193,227,241);*/
     padding: 5px 10px;
     margin: 0 10px 10px 0;
-    color: black;
-    /*border-color: #eddbc2;*/
-    /*border-color: #e8c571;*/
+    /*color: black;*/
+    /*border-color: rgb(0,158,200);*/
+    /*border-color: rgb(142,207,230);*/
     text-decoration: none;
     /*border-color: transparent;*/
     border-radius: 15px;
@@ -268,7 +296,7 @@ canvas {
 .svgPopupPanel .gwt-Button,
 .stimulusHelpPanel .gwt-Button {
     background: darkgrey;
-    color: lightgrey;
+    color: $primaryColour3;
     padding: 10px 10px 10px 10px;
     margin-left: auto;
 }
@@ -285,11 +313,11 @@ canvas {
 
 .menuTable {
     padding: 10px 10px;
-    /*border-color: #e8c571;*/
+    border-color: $primaryColour2;
     border-radius: 15px;
     outline: none;
-    /*border-width: 1px;*/
-    /*border-style: solid;*/
+    border-width: 1px;
+    border-style: solid;
     width: 100%;
     margin-bottom: 10px;
 }
@@ -338,7 +366,7 @@ table#screenExample td, .stimulusHelpPanel .gwt-Button, .stimulusHelpText, .popu
 
 .gwt-HTML a, .gwt-HTML a:visited, .gwt-HTML a:hover,
 .gwt-Label, .gwt-HTML, .headerLabel, .resultsTableTitle, .gwt-CheckBox, .pageLink, .contentBody {
-    color:rgb(0,0,0);  
+    color:$primaryColour1; 
     line-height: 20pt;
 } 
 
@@ -408,7 +436,7 @@ table#screenExample td, .stimulusHelpPanel .gwt-Button,
 
 #widgetTag {
     height: 100%;
-  background-color: $backgroundColour;
+    background-color: $backgroundColour;
 }
 
 /* example stimulus screen table */
