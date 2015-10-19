@@ -36,6 +36,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @since Aug 18, 2015 1:40:11 PM (creation date)
@@ -80,9 +81,11 @@ public class DesignController {
     }
 
     @RequestMapping("/design/{appName}/{detailType}")
-    public String designView(Model model, HttpServletRequest request, @PathVariable String appName, @PathVariable String detailType) {
+    public String designView(Model model, HttpServletRequest request, @PathVariable String appName, @PathVariable String detailType,
+            @RequestParam(value = "screen", required = false, defaultValue = "") String screenTag) {
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", detailType);
+        model.addAttribute("screenTag", screenTag);
         populateModel(model);
         return "design";
     }
