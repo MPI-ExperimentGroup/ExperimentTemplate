@@ -9,7 +9,7 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-gui</artifactId>
     <packaging>war</packaging>
-    <version>0.1.526-testing</version>
+    <version>0.1.540-testing</version>
     <name>FRINEX GWT-Cordova Template</name>
     <organization>
         <name>Max Planck Institute for Psycholinguistics, Nijmegen</name>
@@ -330,7 +330,7 @@
                                 </includes>
                                 <excludes />
                             </source>
-                            <destination>${project.build.directory}/css</destination>
+                            <destination>${webappDirectory}/css</destination>
                         </resource>
                     </resources>
                     <sassOptions>
