@@ -17,7 +17,6 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.dao;
 
-import java.util.List;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import org.springframework.data.repository.CrudRepository;
 
@@ -26,5 +25,7 @@ import org.springframework.data.repository.CrudRepository;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public interface PresenterScreenRepository extends CrudRepository<PresenterScreen, Long> {
+
+    public PresenterScreen findBySelfPresenterTag(String selfPresenterTag);
 
 }
