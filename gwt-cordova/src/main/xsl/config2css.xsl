@@ -12,18 +12,26 @@
     <xsl:output method="text" encoding="UTF-8" />
     <xsl:template match="/">
         <xsl:text>
+$primaryColour0: </xsl:text>
+        <xsl:value-of select="experiment/@primaryColour0" /><xsl:text>;
 $primaryColour1: </xsl:text>
         <xsl:value-of select="experiment/@primaryColour1" /><xsl:text>;
 $primaryColour2: </xsl:text>
         <xsl:value-of select="experiment/@primaryColour2" /><xsl:text>;
 $primaryColour3: </xsl:text>
         <xsl:value-of select="experiment/@primaryColour3" /><xsl:text>;
+$primaryColour4: </xsl:text>
+        <xsl:value-of select="experiment/@primaryColour4" /><xsl:text>;
+$complementColour0: </xsl:text>
+        <xsl:value-of select="experiment/@complementColour0" /><xsl:text>;
 $complementColour1: </xsl:text>
         <xsl:value-of select="experiment/@complementColour1" /><xsl:text>;
 $complementColour2: </xsl:text>
         <xsl:value-of select="experiment/@complementColour2" /><xsl:text>;
 $complementColour3: </xsl:text>
         <xsl:value-of select="experiment/@complementColour3" /><xsl:text>;
+$complementColour4: </xsl:text>
+        <xsl:value-of select="experiment/@complementColour4" /><xsl:text>;
 $backgroundColour: </xsl:text>
         <xsl:value-of select="experiment/@backgroundColour" /><xsl:text>;
 </xsl:text>
