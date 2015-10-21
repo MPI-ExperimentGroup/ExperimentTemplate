@@ -502,8 +502,10 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         </xsl:text>
     </xsl:template>
     <xsl:template match="VideoPanel|AudioRecorderPanel|AnnotationTimelinePanel">
-        <xsl:text>    ((ComplexView) simpleView).addWidget(new </xsl:text>
+        <xsl:text>    set</xsl:text>
         <xsl:value-of select="local-name()" />
+<!--        <xsl:text>(new </xsl:text>
+        <xsl:value-of select="local-name()" />-->
         <xsl:text>(</xsl:text>
         <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;') else ''" />
         <xsl:value-of select="if(@wav) then concat('&quot;', @wav, '&quot;') else ''" />
@@ -529,7 +531,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:value-of select="if(@maxStimuli) then concat(', ', @maxStimuli, '') else ''" />
         <xsl:value-of select="if(@columnCount) then concat(', ', @columnCount, '') else ''" />
         <xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" />
-        <xsl:text>));
+        <xsl:text>);
         </xsl:text>
     </xsl:template>
 </xsl:stylesheet>
