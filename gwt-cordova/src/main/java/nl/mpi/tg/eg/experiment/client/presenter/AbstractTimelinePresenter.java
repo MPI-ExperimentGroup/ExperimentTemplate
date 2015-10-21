@@ -37,8 +37,8 @@ import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
 import nl.mpi.tg.eg.experiment.client.view.AnnotationTimelinePanel;
+import nl.mpi.tg.eg.experiment.client.view.AnnotationTimelineView;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
-import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
 import nl.mpi.tg.eg.experiment.client.view.VideoPanel;
 
 /**
@@ -53,19 +53,21 @@ public abstract class AbstractTimelinePresenter extends AbstractPresenter implem
     private VideoPanel videoPanel;
     private final LocalStorage localStorage;
     private final UserResults userResults;
-//    private String storageTag = "temp_tag";
+    private String storageTag = "temp_tag";
 
     public AbstractTimelinePresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage) {
-        super(widgetTag, new TimedStimulusView(audioPlayer));
+        super(widgetTag, new AnnotationTimelineView(audioPlayer));
         this.localStorage = localStorage;
         this.userResults = userResults;
     }
 
-    @Override 
-    public void setAnnotationTimelinePanel(final String storageTag, String width, String poster, String mp4, String ogg, String webm, List<Stimulus.Tag> tags, int maxStimuli, int columnCount, String imageWidth) {
+    @Override
+    public void setAnnotationTimelinePanel(String width, String poster, String mp4, String ogg, String webm, String storageTag, List<Stimulus.Tag> tags, int maxStimuli, int columnCount, String imageWidth) {
+        this.storageTag = storageTag;
         videoPanel = new VideoPanel(width, poster, mp4, ogg, webm);
         stimulusProvider.getSubset(tags, maxStimuli);
-        this.annotationTimelinePanel = new AnnotationTimelinePanel(dataFactory, videoPanel, stimulusProvider, columnCount, imageWidth);
+        final AnnotationSet savedAnnotations = loadAnnotations(storageTag);
+        this.annotationTimelinePanel = new AnnotationTimelinePanel(dataFactory, savedAnnotations, videoPanel, stimulusProvider, columnCount, imageWidth, maxStimuli);
         ((ComplexView) simpleView).addWidget(annotationTimelinePanel);
         ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
 
@@ -76,18 +78,21 @@ public abstract class AbstractTimelinePresenter extends AbstractPresenter implem
 
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
-                final Set<AnnotationData> annotations = annotationTimelinePanel.getAnnotations();
-                final AutoBean<AnnotationSet> annotationSetBean = dataFactory.annotationSet();
-                final AnnotationSet annotationSet = annotationSetBean.as();
-                annotationSet.setAnnotations(annotations);
-                AutoBean<AnnotationSet> bean = AutoBeanUtils.getAutoBean(annotationSet);
-                final String payload = AutoBeanCodex.encode(bean).getPayload();
-
-                localStorage.setStoredDataValue(userResults.getUserData().getUserId(), storageTag, payload);
+                saveAnnotations();
+                shotEventListner.resetSingleShot();
             }
         });
-        final AnnotationSet savedAnnotationsString = loadAnnotations(storageTag);
-        annotationTimelinePanel.setAnnotations(savedAnnotationsString);
+    }
+
+    private void saveAnnotations() {
+        final Set<AnnotationData> annotations = annotationTimelinePanel.getAnnotations();
+        final AutoBean<AnnotationSet> annotationSetBean = dataFactory.annotationSet();
+        final AnnotationSet annotationSet = annotationSetBean.as();
+        annotationSet.setAnnotations(annotations);
+        AutoBean<AnnotationSet> bean = AutoBeanUtils.getAutoBean(annotationSet);
+        final String payload = AutoBeanCodex.encode(bean).getPayload();
+
+        localStorage.setStoredDataValue(userResults.getUserData().getUserId(), storageTag, payload);
     }
 
     protected AnnotationSet loadAnnotations(String storageTag) {
@@ -99,11 +104,4 @@ public abstract class AbstractTimelinePresenter extends AbstractPresenter implem
             return dataFactory.annotationSet().as();
         }
     }
-
-    @Override
-    public void fireResizeEvent() {
-        super.fireResizeEvent();
-        annotationTimelinePanel.ResizeTimeline();
-    }
-
 }
