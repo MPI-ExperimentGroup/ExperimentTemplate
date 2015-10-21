@@ -28,36 +28,34 @@ var rmdir = require('rmdir');
 
 console.log('Starting to remove the old GTW output from the www directory');
 
-rmdir('www/ExperimentTemplate/', function (err, dirs, files) {
-    console.log(dirs);
-    console.log(files);
-    console.log(err);
-    console.log('www/ExperimentTemplate/ removed');
+var relevantEntries = ["ExperimentTemplate/", "images/", "static/", "img/", "js/", "css/"];
+relevantEntries.forEach(function (entry) {
+    console.log('removing www/' + entry);
+    rmdir('www/' + entry, function (err, dirs, files) {
+        console.log(dirs);
+        console.log(files);
+        console.log(err);
+    });
 });
 
-rmdir('www/images/', function (err, dirs, files) {
-    console.log(dirs);
-    console.log(files);
-    console.log(err);
-    console.log('www/ExperimentTemplate/ removed');
-});
 
 console.log('Starting to copy GTW output into the www directory');
 
 var ncp = require('ncp').ncp;
 
 ncp.limit = 16;
-
-ncp("../gwt-cordova/target/dobes-frinex-gui-0.1.501-testing/ExperimentTemplate/", "www/ExperimentTemplate/", function (err) {
-    if (err) {
-        return console.error(err);
-    }
-    console.log('GTW copy competed');
+targetBuild = "configuration-frinex-gui-0.1.543-testing";
+relevantEntries.forEach(function (entry) {
+    ncp("../gwt-cordova/target/" + targetBuild + "/" + entry + "/", "www/" + entry + "/", function (err) {
+        if (err) {
+            return console.error(err);
+        }
+        console.log('GTW copy competed: ' + entry);
+    });
 });
-
-ncp("../gwt-cordova/target/dobes-frinex-gui-0.1.501-testing/images/", "www/images/", function (err) {
+ncp("../gwt-cordova/target/" + targetBuild + "/ExperimentTemplate.html", "www/index.html", function (err) {
     if (err) {
         return console.error(err);
     }
-    console.log('images copy competed');
+    console.log('copy index.html complete');
 });
