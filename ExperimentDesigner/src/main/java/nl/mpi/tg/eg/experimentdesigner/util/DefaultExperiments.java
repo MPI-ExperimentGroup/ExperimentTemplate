@@ -49,13 +49,17 @@ public class DefaultExperiments {
         experiment.setAppNameInternal("DobesAnnotator");
         experiment.setDataSubmitUrl("http://ems12.mpi.nl/dobes-frinex-admin-0.1.38-testing/");
         experiment.setStaticFilesUrl("static/");
-        experiment.setPrimaryColour1("#AA8C7C");
-        experiment.setPrimaryColour2("#FFE4D5");
-        experiment.setPrimaryColour3("#EBCBB9");
-        experiment.setComplementColour1("#527067");
-        experiment.setComplementColour2("#C1E7DB");
-        experiment.setComplementColour3("#7A9B91");
-        experiment.setBackgroundColour("#101715");
+        experiment.setPrimaryColour0("#628D8D");
+        experiment.setPrimaryColour1("#385E5E");
+        experiment.setPrimaryColour2("#4A7777");
+        experiment.setPrimaryColour3("#96ADAD");
+        experiment.setPrimaryColour4("#D5D8D8");
+        experiment.setComplementColour0("#EAC3A3");
+        experiment.setComplementColour1("#9D7B5E");
+        experiment.setComplementColour2("#C69E7C");
+        experiment.setComplementColour3("#FFEDDE");
+        experiment.setComplementColour4("#FFFDFB");
+        experiment.setBackgroundColour("#FFFFFF");
 
         final Metadata metadata = new Metadata("workerId", "Reporter name *", ".'{'3,'}'", "Please enter at least three letters.", true, "This test can only be done once per worker.");
         final Metadata metadata1 = new Metadata("errordevice", "Device model", ".'{'2,'}'", "Please enter the device model", false, null);
@@ -245,15 +249,15 @@ public class DefaultExperiments {
 
     private PresenterScreen addAnnotationTimelinePanel(PresenterFeatureRepository presenterFeatureRepository) {
         final PresenterScreen presenterScreen = new PresenterScreen("AnnotationTimelinePanel", "AnnotationTimelinePanel", "VideosPage", "AnnotationTimelinePanel", null, PresenterType.timeline);
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "AnnotationTimelinePanel"));
+//        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "AnnotationTimelinePanel"));
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.padding, null));
 //        final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.VideoPanel, null);
         final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.AnnotationTimelinePanel, null);
-        presenterFeature1.addFeatureAttributes(FeatureAttribute.width, "70%");
+//        presenterFeature1.addFeatureAttributes(FeatureAttribute.width, "70%");
         presenterFeature1.addStimulusTag("tag_videotag");
         presenterFeature1.addStimulusTag("tag_centipedes");
         presenterFeature1.addFeatureAttributes(FeatureAttribute.columnCount, "3");
-        presenterFeature1.addFeatureAttributes(FeatureAttribute.imageWidth, "60px");
+        presenterFeature1.addFeatureAttributes(FeatureAttribute.eventTag, "annotationtimeline");
         presenterFeature1.addFeatureAttributes(FeatureAttribute.maxStimuli, "9");
         presenterFeature1.addFeatureAttributes(FeatureAttribute.mp4, "http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4");
 //        presenterScreen.getPresenterFeatureList().add(presenterFeature);
