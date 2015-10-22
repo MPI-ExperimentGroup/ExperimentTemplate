@@ -4,7 +4,7 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-experiment-designer</artifactId>
     <name>Frinex Experiment Designer</name>
-    <version>0.1.24-testing</version>
+    <version>0.1.62-testing</version>
     <packaging>war</packaging>
     <parent>
         <groupId>nl.mpi.tg.eg</groupId>
@@ -42,12 +42,27 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.googlecode.maven-download-plugin</groupId>
+                <artifactId>download-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>get-configuration-file</id>
+                        <phase>none</phase>                        
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

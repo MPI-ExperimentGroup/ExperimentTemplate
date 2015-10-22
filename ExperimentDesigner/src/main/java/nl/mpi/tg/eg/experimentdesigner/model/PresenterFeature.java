@@ -127,10 +127,18 @@ public class PresenterFeature {
     public List<String> getStimulusTags() {
         return stimulusTags;
     }
-
+    
     public void setStimulusTags(List<String> stimulusTags) {
         this.stimulusTags = stimulusTags;
     }
+//    @XmlAttribute
+//    public String getStimulusTags() {
+//        if (stimulusTags == null) {
+//            return null;
+//        } else {
+//            return String.join(",", stimulusTags);
+//        }
+//    }
 
     public void addStimulusTag(String tag) {
         stimulusTags.add(tag);

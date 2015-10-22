@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -26,6 +27,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlAnyElement;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.namespace.QName;
 
 /**
  * @since Aug 18, 2015 1:42:03 PM (creation date)
@@ -47,23 +53,29 @@ public class PresenterScreen {
     private PresenterType presenterType;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<PresenterFeature> presenterFeatures;
+    private List<PresenterFeature> presenterFeatures = new ArrayList<>();
 
     public PresenterScreen() {
+    }
+
+    public PresenterScreen(String title, String menuLabel, String backPresenterTag, String selfPresenterTag, String nextPresenterTag, PresenterType presenterType) {
+        this.title = title;
+        this.menuLabel = menuLabel;
+        this.backPresenterTag = backPresenterTag;
+        this.selfPresenterTag = selfPresenterTag;
+        this.nextPresenterTag = nextPresenterTag;
+        this.presenterType = presenterType;
     }
 
     public void setPresenterType(PresenterType presenterType) {
         this.presenterType = presenterType;
     }
 
-    public void setPresenterFeatures(List<PresenterFeature> presenterFeatures) {
-        this.presenterFeatures = presenterFeatures;
-    }
-
     public long getId() {
         return id;
     }
 
+    @XmlAttribute
     public String getTitle() {
         return title;
     }
@@ -72,6 +84,7 @@ public class PresenterScreen {
         this.title = title;
     }
 
+    @XmlAttribute
     public String getMenuLabel() {
         return menuLabel;
     }
@@ -80,6 +93,7 @@ public class PresenterScreen {
         this.menuLabel = menuLabel;
     }
 
+    @XmlAttribute(name = "back")
     public String getBackPresenterTag() {
         return backPresenterTag;
     }
@@ -88,6 +102,7 @@ public class PresenterScreen {
         this.backPresenterTag = backPresenterTag;
     }
 
+    @XmlAttribute(name = "self")
     public String getSelfPresenterTag() {
         return selfPresenterTag;
     }
@@ -96,6 +111,7 @@ public class PresenterScreen {
         this.selfPresenterTag = selfPresenterTag;
     }
 
+    @XmlAttribute(name = "next")
     public String getNextPresenterTag() {
         return nextPresenterTag;
     }
@@ -104,11 +120,38 @@ public class PresenterScreen {
         this.nextPresenterTag = nextPresenterTag;
     }
 
+    @XmlAttribute(name = "type")
     public PresenterType getPresenterType() {
         return presenterType;
     }
 
-    public List<PresenterFeature> getPresenterFeatures() {
+    public List<PresenterFeature> getPresenterFeatureList() {
         return presenterFeatures;
     }
+
+    @XmlElement(name = "feature")
+    public List<PresenterFeature> getPresenterFeature() {
+        return null;
+    }
+
+    @XmlAnyElement
+    public List<JAXBElement<PresenterFeature>> getPresenterFeatures() {
+        List<JAXBElement<PresenterFeature>> elements = new ArrayList<>();
+        presenterFeatures.stream().forEach((feature) -> {
+            elements.add(new JAXBElement<>(new QName(feature.getFeatureType().name()), PresenterFeature.class, feature));
+        });
+        return elements;
+    }
+
+//    @XmlElements({
+//        @XmlElement(name = "htmlText", type = PresenterFeature.class),
+//        @XmlElement(name = "padding", type = PresenterFeature.class),
+//        @XmlElement(name = "AudioRecorderPanel", type = PresenterFeature.class),
+//        @XmlElement(name = "optionButton", type = PresenterFeature.class),
+//        @XmlElement(name = "padding", type = PresenterFeature.class),
+//        @XmlElement(name = "versionData", type = PresenterFeature.class)
+//    })
+//    public void setPresenterFeatures(List<PresenterFeature> presenterFeatures) {
+//        this.presenterFeatures = presenterFeatures;
+//    }
 }
