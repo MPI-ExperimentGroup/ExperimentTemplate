@@ -9,7 +9,7 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-gui</artifactId>
     <packaging>war</packaging>
-    <version>0.1.540-testing</version>
+    <version>0.1.552-testing</version>
     <name>FRINEX GWT-Cordova Template</name>
     <organization>
         <name>Max Planck Institute for Psycholinguistics, Nijmegen</name>
@@ -47,7 +47,6 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -179,6 +178,20 @@
                                 </fileMapper>
                             </fileMappers>
                             <outputDir>${project.build.directory}/generated-sources/gwt/nl/mpi/tg/eg/experiment/client/model</outputDir>
+                        </transformationSet>
+                        <transformationSet>
+                            <dir>${experiment.configuration.path}</dir>
+                            <includes>
+                                <include>${experiment.configuration.name}.xml</include>
+                            </includes>
+                            <stylesheet>${project.build.sourceDirectory}/../xsl/config2stimuli-sh.xsl</stylesheet>
+                            <fileMappers>
+                                <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.RegExpFileMapper">
+                                    <pattern>${experiment.configuration.name}\.xml$</pattern>
+                                    <replacement>generateStimulus.sh</replacement>
+                                </fileMapper>
+                            </fileMappers>
+                            <outputDir>${project.build.directory}/generated-sources/bash</outputDir>
                         </transformationSet>
                         <transformationSet>
                             <dir>${experiment.configuration.path}</dir>
