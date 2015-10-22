@@ -36,15 +36,15 @@
             </xsl:for-each>
             <xsl:text>}, "</xsl:text>
             <xsl:value-of select="@label" />
-            <xsl:text>", "</xsl:text>
-            <xsl:value-of select="@mp3" />
-            <xsl:text>", "</xsl:text>
-            <xsl:value-of select="@mp4" />
-            <xsl:text>", "</xsl:text>
-            <xsl:value-of select="@ogg" />
-            <xsl:text>", "</xsl:text>
-            <xsl:value-of select="@image" />
-            <xsl:text>")</xsl:text>
+            <xsl:text>", </xsl:text>
+            <xsl:value-of select="if(@mp3) then 'true' else 'false'" />
+            <xsl:text>, </xsl:text>
+            <xsl:value-of select="if(@mp4) then 'true' else 'false'" />
+            <xsl:text>, </xsl:text>
+            <xsl:value-of select="if(@ogg) then 'true' else 'false'" />
+            <xsl:text>, </xsl:text>
+            <xsl:value-of select="if(@image) then 'true' else 'false'" />
+            <xsl:text>)</xsl:text>
             <xsl:if test="position() != last()">
                 <xsl:text>,</xsl:text>
             </xsl:if>
@@ -78,12 +78,12 @@
             final private String uniqueId;
             final private List&lt;Tag&gt; tags;
             final private String label;
-            final private String mp3;
-            final private String mp4;
-            final private String ogg;
-            final private String image;
+            final private boolean mp3;
+            final private boolean mp4;
+            final private boolean ogg;
+            final private boolean image;
 
-            Stimulus(String uniqueId, Tag tags[], String label, String mp3, String mp4, String ogg, String image) {
+            Stimulus(String uniqueId, Tag tags[], String label, boolean mp3, boolean mp4, boolean ogg, boolean image) {
             this.uniqueId = uniqueId;
             this.tags = Arrays.asList(tags);
             this.label = label;
@@ -106,18 +106,18 @@
             }
 
             public String getMp3() {
-            return mp3;
+            return uniqueId + ".mp3";
             }
 
             public String getImage() {
-            return image;
+            return uniqueId + ".jpg";
             }
             
             public String getMp4() {
-            return mp4;
+            return uniqueId + ".mp4";
             }
             public String getOgg() {
-            return ogg;
+            return uniqueId + ".ogg";
             }
             
             }  

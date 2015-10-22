@@ -510,6 +510,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;') else ''" />
         <xsl:value-of select="if(@wav) then concat('&quot;', @wav, '&quot;') else ''" />
         <xsl:value-of select="if(@width) then concat('&quot;', @width, '&quot;') else ''" />
+        <xsl:value-of select="if(@eventTag) then concat('&quot;', @eventTag, '&quot;') else ''" />
         <xsl:if test="@poster|@mp4|@ogg|@webm">
             <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ',&quot;&quot;'" />
             <xsl:value-of select="if(@mp4) then concat(', &quot;', @mp4, '&quot;') else ',&quot;&quot;'" />
