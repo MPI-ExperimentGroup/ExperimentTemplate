@@ -47,12 +47,26 @@ public class Experiment {
     private String dataSubmitUrl;
     private String staticFilesUrl;
 //    private String nextPresenterTag;
+    private String primaryColour0;
+    private String primaryColour1;
+    private String primaryColour2;
+    private String primaryColour3;
+    private String primaryColour4;
+    private String complementColour0;
+    private String complementColour1;
+    private String complementColour2;
+    private String complementColour3;
+    private String complementColour4;
+    private String backgroundColour;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<PresenterScreen> PresenterScreen = new ArrayList<>();
+    private List<PresenterScreen> presenterScreen = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Metadata> metadata = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Stimulus> stimuli = new ArrayList<>();
 
     public Experiment() {
     }
@@ -97,6 +111,105 @@ public class Experiment {
         this.staticFilesUrl = staticFilesUrl;
     }
 
+    public void setPrimaryColour1(String primaryColour1) {
+        this.primaryColour1 = primaryColour1;
+    }
+
+    @XmlAttribute
+    public String getPrimaryColour1() {
+        return primaryColour1;
+    }
+
+    public void setPrimaryColour2(String primaryColour2) {
+        this.primaryColour2 = primaryColour2;
+    }
+
+    @XmlAttribute
+    public String getPrimaryColour2() {
+        return primaryColour2;
+    }
+
+    public void setPrimaryColour3(String primaryColour3) {
+        this.primaryColour3 = primaryColour3;
+    }
+
+    @XmlAttribute
+    public String getPrimaryColour3() {
+        return primaryColour3;
+    }
+
+    @XmlAttribute
+    public String getComplementColour1() {
+        return complementColour1;
+    }
+
+    public void setComplementColour1(String complementColour1) {
+        this.complementColour1 = complementColour1;
+    }
+
+    @XmlAttribute
+    public String getComplementColour2() {
+        return complementColour2;
+    }
+
+    public void setComplementColour2(String complementColour2) {
+        this.complementColour2 = complementColour2;
+    }
+
+    @XmlAttribute
+    public String getComplementColour3() {
+        return complementColour3;
+    }
+
+    public void setComplementColour3(String complementColour3) {
+        this.complementColour3 = complementColour3;
+    }
+
+    @XmlAttribute
+    public String getPrimaryColour0() {
+        return primaryColour0;
+    }
+
+    public void setPrimaryColour0(String primaryColour0) {
+        this.primaryColour0 = primaryColour0;
+    }
+
+    @XmlAttribute
+    public String getPrimaryColour4() {
+        return primaryColour4;
+    }
+
+    public void setPrimaryColour4(String primaryColour4) {
+        this.primaryColour4 = primaryColour4;
+    }
+
+    @XmlAttribute
+    public String getComplementColour0() {
+        return complementColour0;
+    }
+
+    public void setComplementColour0(String complementColour0) {
+        this.complementColour0 = complementColour0;
+    }
+
+    @XmlAttribute
+    public String getComplementColour4() {
+        return complementColour4;
+    }
+
+    public void setComplementColour4(String complementColour4) {
+        this.complementColour4 = complementColour4;
+    }
+
+    @XmlAttribute
+    public String getBackgroundColour() {
+        return backgroundColour;
+    }
+
+    public void setBackgroundColour(String backgroundColour) {
+        this.backgroundColour = backgroundColour;
+    }
+
 //    public String getNextPresenterTag() {
 //        return nextPresenterTag;
 //    }
@@ -104,13 +217,13 @@ public class Experiment {
 //    public void setNextPresenterTag(String nextPresenterTag) {
 //        this.nextPresenterTag = nextPresenterTag;
 //    }
-    @XmlElement
+    @XmlElement(name = "presenter")
     public List<PresenterScreen> getPresenterScreen() {
-        return PresenterScreen;
+        return presenterScreen;
     }
 
     public void setPresenterScreen(List<PresenterScreen> PresenterScreen) {
-        this.PresenterScreen = PresenterScreen;
+        this.presenterScreen = PresenterScreen;
     }
 
     @XmlElementWrapper(name = "metadata")
@@ -123,8 +236,17 @@ public class Experiment {
 //    public int getMetadataCount() {
 //        return metadata.size();
 //    }
-
     public void setMetadata(List<Metadata> metadata) {
         this.metadata = metadata;
+    }
+
+    @XmlElementWrapper(name = "stimuli")
+    @XmlElement(name = "stimulus")
+    public List<Stimulus> getStimuli() {
+        return stimuli;
+    }
+
+    public void setStimuli(List<Stimulus> stimuli) {
+        this.stimuli = stimuli;
     }
 }
