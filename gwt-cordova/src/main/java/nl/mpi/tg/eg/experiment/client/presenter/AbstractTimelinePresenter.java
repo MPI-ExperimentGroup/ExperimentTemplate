@@ -49,8 +49,6 @@ public abstract class AbstractTimelinePresenter extends AbstractPresenter implem
 
     DataFactory dataFactory = GWT.create(DataFactory.class);
     private final StimulusProvider stimulusProvider = new StimulusProvider();
-    private AnnotationTimelinePanel annotationTimelinePanel;
-    private VideoPanel videoPanel;
     private final LocalStorage localStorage;
     private final UserResults userResults;
     private String storageTag = "temp_tag";
@@ -61,14 +59,15 @@ public abstract class AbstractTimelinePresenter extends AbstractPresenter implem
         this.userResults = userResults;
     }
 
-    @Override
-    public void setAnnotationTimelinePanel(String width, String poster, String mp4, String ogg, String webm, String storageTag, List<Stimulus.Tag> tags, int maxStimuli, int columnCount, String imageWidth) {
-        this.storageTag = storageTag;
-        videoPanel = new VideoPanel(width, poster, mp4, ogg, webm);
+    public void setAnnotationTimelinePanel(String poster, String mp4, String ogg, String webm, String eventTag, List<Stimulus.Tag> tags, int maxStimuli, int columnCount) {
+        this.storageTag = eventTag;
+        final VideoPanel videoPanel = new VideoPanel("50%", poster, mp4, ogg, webm);
+        ((AnnotationTimelineView) simpleView).setVideoPanel(videoPanel);
         stimulusProvider.getSubset(tags, maxStimuli);
         final AnnotationSet savedAnnotations = loadAnnotations(storageTag);
-        this.annotationTimelinePanel = new AnnotationTimelinePanel(dataFactory, savedAnnotations, videoPanel, stimulusProvider, columnCount, imageWidth, maxStimuli);
-        ((ComplexView) simpleView).addWidget(annotationTimelinePanel);
+        final AnnotationTimelinePanel annotationTimelinePanel = new AnnotationTimelinePanel();
+        ((AnnotationTimelineView) simpleView).setAnnotationTimelinePanel(annotationTimelinePanel);
+        ((AnnotationTimelineView) simpleView).setStimuli(dataFactory, savedAnnotations, stimulusProvider, columnCount, "10%", maxStimuli);
         ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
 
             @Override
@@ -82,10 +81,11 @@ public abstract class AbstractTimelinePresenter extends AbstractPresenter implem
                 shotEventListner.resetSingleShot();
             }
         });
+        annotationTimelinePanel.startUpdating(videoPanel);
     }
 
     private void saveAnnotations() {
-        final Set<AnnotationData> annotations = annotationTimelinePanel.getAnnotations();
+        final Set<AnnotationData> annotations = ((AnnotationTimelineView) simpleView).getAnnotations();
         final AutoBean<AnnotationSet> annotationSetBean = dataFactory.annotationSet();
         final AnnotationSet annotationSet = annotationSetBean.as();
         annotationSet.setAnnotations(annotations);
