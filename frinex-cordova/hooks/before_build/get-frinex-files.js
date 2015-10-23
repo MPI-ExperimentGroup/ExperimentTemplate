@@ -26,7 +26,7 @@
 
 var rmdir = require('rmdir');
 
-console.log('Starting to remove the old GTW output from the www directory abd copying the GTW output into the www directory');
+console.log('Starting to remove the old GTW output from the www directory and copying the GTW output into the www directory');
 
 var relevantEntries = ["ExperimentTemplate/", "images/", "static/", "css/"];
 
