@@ -50,7 +50,9 @@ public class VideoPanel extends VerticalPanel {
     }
 
     public final void addSource(String source, String type) {
-        video.addSource(source, type); // add multiple formats with the format type so that more devices will be supported
+        if (source != null && !source.isEmpty()) {
+            video.addSource(source, type); // add multiple formats with the format type so that more devices will be supported
+        }
     }
 
     public double getCurrentTime() {
