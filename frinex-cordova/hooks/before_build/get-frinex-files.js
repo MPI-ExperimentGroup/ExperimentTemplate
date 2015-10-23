@@ -22,37 +22,32 @@
  */
 
 // this hook requires ncp which can be installed globally with: npm install -g ncp. Or into the directory of this script with npm install -g ncp
-// also requires rmdir which can be installed with: npm install rmdir
+// also requires rmdir which can be installed with: npm install rmdir 
 
 var rmdir = require('rmdir');
 
-console.log('Starting to remove the old GTW output from the www directory');
+console.log('Starting to remove the old GTW output from the www directory abd copying the GTW output into the www directory');
 
-var relevantEntries = ["ExperimentTemplate/", "images/", "static/", "img/", "js/", "css/"];
-relevantEntries.forEach(function (entry) {
-    console.log('removing www/' + entry);
-    rmdir('www/' + entry, function (err, dirs, files) {
-        console.log(dirs);
-        console.log(files);
-        console.log(err);
-    });
-});
-
-
-console.log('Starting to copy GTW output into the www directory');
+var relevantEntries = ["ExperimentTemplate/", "images/", "static/", "css/"];
 
 var ncp = require('ncp').ncp;
 
 ncp.limit = 16;
-targetBuild = "configuration-frinex-gui-0.1.543-testing";
+targetBuild = "configuration-frinex-gui-0.1.552-testing";
 relevantEntries.forEach(function (entry) {
-    ncp("../gwt-cordova/target/" + targetBuild + "/" + entry + "/", "www/" + entry + "/", function (err) {
-        if (err) {
-            return console.error(err);
-        }
-        console.log('GTW copy competed: ' + entry);
+    console.log('removing www/' + entry);
+    rmdir('www/' + entry, function (err, dirs, files) {
+            ncp("../gwt-cordova/target/" + targetBuild + "/" + entry + "/", "www/" + entry + "/", function (err) {
+                if (err) {
+                    console.log('GTW copy failed: ' + entry);
+                    console.error(err);
+                    process.exit(1); // an incomplete build should not continue
+                }
+                console.log('GTW copy competed: ' + entry);
+            });
     });
 });
+
 ncp("../gwt-cordova/target/" + targetBuild + "/ExperimentTemplate.html", "www/index.html", function (err) {
     if (err) {
         return console.error(err);
