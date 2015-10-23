@@ -37,14 +37,14 @@ targetBuild = "configuration-frinex-gui-0.1.552-testing";
 relevantEntries.forEach(function (entry) {
     console.log('removing www/' + entry);
     rmdir('www/' + entry, function (err, dirs, files) {
-            ncp("../gwt-cordova/target/" + targetBuild + "/" + entry + "/", "www/" + entry + "/", function (err) {
-                if (err) {
-                    console.log('GTW copy failed: ' + entry);
-                    console.error(err);
-                    process.exit(1); // an incomplete build should not continue
-                }
-                console.log('GTW copy competed: ' + entry);
-            });
+        ncp("../gwt-cordova/target/" + targetBuild + "/" + entry + "/", "www/" + entry + "/", function (err) {
+            if (err) {
+                console.log('GTW copy failed: ' + entry);
+                console.error(err);
+                process.exit(1); // an incomplete build should not continue
+            }
+            console.log('GTW copy competed: ' + entry);
+        });
     });
 });
 
