@@ -68,9 +68,13 @@ public class StimulusProvider {
     }
 
     public void getSubset(final List<Tag> selectionTags) {
+        getSubset(selectionTags, stimulusArray.size());
+    }
+
+    public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount) {
         stimulusSubsetArray.clear();
         List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
-        while (!stimulusListCopy.isEmpty()) {
+        while (!stimulusListCopy.isEmpty() && maxStimulusCount > stimulusSubsetArray.size()) {
             Stimulus stimulus = stimulusListCopy.remove(new Random().nextInt(stimulusListCopy.size()));
             Set<Tag> commonTags = new HashSet<>(selectionTags);
             commonTags.retainAll(stimulus.getTags());
@@ -193,26 +197,25 @@ public class StimulusProvider {
         return stimulusSubsetArray.size();
     }
 
-    public void getNoisyStimuli() {
-        // The first 2 trials should always be the filler words, Then there would be 12 real trials, each repeating twice in a complete random order (so 26 trials in all).
-        stimulusSubsetArray.clear();
-        // add fillers
-        stimulusSubsetArray.add(new Stimulus(null, Stimulus.FILLER_AUDIO1, Stimulus.FILLER_AUDIO1, null, null));
-        stimulusSubsetArray.add(new Stimulus(null, Stimulus.FILLER_AUDIO2, Stimulus.FILLER_AUDIO2, null, null));
-
-        List<String> noisyListCopy1 = new ArrayList<>(noisyList);
-        while (!noisyListCopy1.isEmpty()) {
-            String noisyStimulus = noisyListCopy1.remove(new Random().nextInt(noisyListCopy1.size()));
-            stimulusSubsetArray.add(new Stimulus(null, noisyStimulus, noisyStimulus, null, null));
-        }
-        List<String> noisyListCopy2 = new ArrayList<>(noisyList);
-        while (!noisyListCopy2.isEmpty()) {
-            String noisyStimulus = noisyListCopy2.remove(new Random().nextInt(noisyListCopy2.size()));
-            stimulusSubsetArray.add(new Stimulus(null, noisyStimulus, noisyStimulus, null, null));
-        }
-        totalStimuli = stimulusSubsetArray.size();
-    }
-
+//    public void getNoisyStimuli() {
+//        // The first 2 trials should always be the filler words, Then there would be 12 real trials, each repeating twice in a complete random order (so 26 trials in all).
+//        stimulusSubsetArray.clear();
+//        // add fillers
+////        stimulusSubsetArray.add(new Stimulus(null, Stimulus.FILLER_AUDIO1, Stimulus.FILLER_AUDIO1, null, null));
+////        stimulusSubsetArray.add(new Stimulus(null, Stimulus.FILLER_AUDIO2, Stimulus.FILLER_AUDIO2, null, null));
+//
+////        List<String> noisyListCopy1 = new ArrayList<>(noisyList);
+////        while (!noisyListCopy1.isEmpty()) {
+////            String noisyStimulus = noisyListCopy1.remove(new Random().nextInt(noisyListCopy1.size()));
+////            stimulusSubsetArray.add(new Stimulus(null, noisyStimulus, noisyStimulus, null, null));
+////        }
+////        List<String> noisyListCopy2 = new ArrayList<>(noisyList);
+////        while (!noisyListCopy2.isEmpty()) {
+////            String noisyStimulus = noisyListCopy2.remove(new Random().nextInt(noisyListCopy2.size()));
+////            stimulusSubsetArray.add(new Stimulus(null, noisyStimulus, noisyStimulus, null, null));
+////        }
+//        totalStimuli = stimulusSubsetArray.size();
+//    }
     @Deprecated // todo: perhaps this would be better done in the respective presenters
     public List<String> getPictureList() {
         final ArrayList<String> returnList = new ArrayList<>();
