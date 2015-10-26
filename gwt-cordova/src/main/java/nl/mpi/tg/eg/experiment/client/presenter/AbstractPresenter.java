@@ -123,4 +123,8 @@ public abstract class AbstractPresenter implements Presenter {
     protected abstract void setTitle(PresenterEventListner titleBarListner);
 
     protected abstract void setContent(final AppEventListner appEventListner);
+
+    @Override
+    public void savePresenterState() {
+    }
 }

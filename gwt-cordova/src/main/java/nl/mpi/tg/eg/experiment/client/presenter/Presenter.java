@@ -32,5 +32,7 @@ public interface Presenter {
 
     void fireResizeEvent();
 
+    void savePresenterState();
+
     void fireWindowClosing();
 }
