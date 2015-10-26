@@ -104,4 +104,9 @@ public abstract class AbstractTimelinePresenter extends AbstractPresenter implem
             return dataFactory.annotationSet().as();
         }
     }
+
+    @Override
+    public void savePresenterState() {
+        saveAnnotations();
+    }
 }
