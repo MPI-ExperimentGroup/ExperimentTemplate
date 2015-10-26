@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.view;
 
+import com.google.gwt.dom.client.MediaElement;
 import com.google.gwt.media.client.Video;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -39,6 +40,7 @@ public class VideoPanel extends VerticalPanel {
         if (video != null) {
             video.setPoster(poster);
             video.setControls(true);
+            video.setPreload(MediaElement.PRELOAD_AUTO);
             this.add(video);
         } else {
             this.add(new Label("Video is not supported"));
