@@ -79,6 +79,9 @@
             @Override
             public void requestApplicationState(ApplicationState applicationState) {
             localStorage.saveAppState(applicationState.name());
+            if (presenter != null) {
+            presenter.savePresenterState();
+            }
         </xsl:text>
         <xsl:if test="experiment/presenter/@type = 'preload' or experiment/presenter/@type = 'stimulus' or experiment/presenter/@type = 'kindiagram' or experiment/presenter/@type = 'timeline'">
             <xsl:text>try {</xsl:text>
@@ -504,7 +507,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
     <xsl:template match="VideoPanel|AudioRecorderPanel|AnnotationTimelinePanel">
         <xsl:text>    set</xsl:text>
         <xsl:value-of select="local-name()" />
-<!--        <xsl:text>(new </xsl:text>
+        <!--        <xsl:text>(new </xsl:text>
         <xsl:value-of select="local-name()" />-->
         <xsl:text>(</xsl:text>
         <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;') else ''" />
