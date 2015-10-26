@@ -17,7 +17,10 @@
  */
 package nl.mpi.tg.eg.experiment.client.view;
 
+import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.TextBox;
 import java.util.Set;
 import nl.mpi.tg.eg.experiment.client.model.AnnotationData;
 import nl.mpi.tg.eg.experiment.client.model.AnnotationSet;
@@ -45,7 +48,23 @@ public class AnnotationTimelineView extends TimedStimulusView {
     public void setAnnotationTimelinePanel(AnnotationTimelinePanel annotationTimelinePanel) {
         this.annotationTimelinePanel = annotationTimelinePanel;
         flexTable.getFlexCellFormatter().setColSpan(1, 0, 2);
-        flexTable.setWidget(1, 0, annotationTimelinePanel);
+        flexTable.getFlexCellFormatter().setColSpan(2, 0, 2);
+        flexTable.setWidget(2, 0, annotationTimelinePanel);
+    }
+
+    public void setEditingAnnotation(final AnnotationData annotationData) {
+        final TextBox textBox = new TextBox();
+        textBox.setWidth("100%");
+        textBox.setText(annotationData.getAnnotationHtml());
+        textBox.addChangeHandler(new ChangeHandler() {
+
+            @Override
+            public void onChange(ChangeEvent event) {
+                annotationData.setAnnotationHtml(textBox.getText());
+                annotationTimelinePanel.updateAnnotation(annotationData);
+            }
+        });
+        flexTable.setWidget(1, 0, textBox);
     }
 
     public void setVideoPanel(VideoPanel videoPanel) {
@@ -58,7 +77,7 @@ public class AnnotationTimelineView extends TimedStimulusView {
     }
 
     public void setStimuli(final DataFactory dataFactory, final AnnotationSet savedAnnotations, StimulusProvider stimulusProvider, int columnCount, String imageWidth, int maxButtons) {
-        final Set<Stimulus> stimuliSet = annotationTimelinePanel.setAnnotations(savedAnnotations, videoPanel);
+        final Set<Stimulus> stimuliSet = annotationTimelinePanel.setAnnotations(savedAnnotations, videoPanel, this);
         while (stimuliSet.size() < maxButtons && stimulusProvider.hasNextStimulus()) {
             stimulusProvider.getNextStimulus();
             final Stimulus stimulus = stimulusProvider.getCurrentStimulus();
@@ -69,7 +88,7 @@ public class AnnotationTimelineView extends TimedStimulusView {
         int stimulusCounter = 0;
         annotationTimelinePanel.setTierCount(stimuliSet.size());
         for (Stimulus stimulus : stimuliSet) {
-            annotationTimelinePanel.addStimulusButton(stimulus, stimulusGrid, videoPanel, dataFactory, stimulusCounter, columnCount, imageWidth);
+            annotationTimelinePanel.addStimulusButton(stimulus, stimulusGrid, videoPanel, this, dataFactory, stimulusCounter, columnCount, imageWidth);
             stimulusCounter++;
         }
         flexTable.setWidget(0, 1, stimulusGrid);
@@ -77,8 +96,8 @@ public class AnnotationTimelineView extends TimedStimulusView {
 
     @Override
     protected void parentResized(int height, int width, String units) {
-        videoPanel.setWidth(width / 2 + "px");
-        annotationTimelinePanel.resizeTimeline(videoPanel.getCurrentTime(), videoPanel.getDurationTime());
+        videoPanel.setWidth((int) (width * 0.4) + units);
+        annotationTimelinePanel.setWidth((int) (width * 0.8) + units); //.resizeTimeline(videoPanel.getCurrentTime(), videoPanel.getDurationTime(), (int) (width * 0.8), units);
         super.parentResized(height, width, units);
     }
 }
