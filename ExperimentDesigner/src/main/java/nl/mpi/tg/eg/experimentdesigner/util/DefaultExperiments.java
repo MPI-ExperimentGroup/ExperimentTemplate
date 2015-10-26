@@ -185,6 +185,10 @@ public class DefaultExperiments {
         optionButton1.addFeatureAttributes(FeatureAttribute.target, "VideoTestPageAspen");
         presenterScreen.getPresenterFeatureList().add(optionButton1);
 
+        final PresenterFeature optionButton2 = new PresenterFeature(FeatureType.optionButton, "Annotation Timeline Screen");
+        optionButton2.addFeatureAttributes(FeatureAttribute.target, "AnnotationTimelinePanel");
+        presenterScreen.getPresenterFeatureList().add(optionButton2);
+
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.padding, null));
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.versionData, null));
 
@@ -248,15 +252,15 @@ public class DefaultExperiments {
     }
 
     private PresenterScreen addAnnotationTimelinePanel(PresenterFeatureRepository presenterFeatureRepository) {
-        final PresenterScreen presenterScreen = new PresenterScreen("AnnotationTimelinePanel", "AnnotationTimelinePanel", "VideosPage", "AnnotationTimelinePanel", null, PresenterType.timeline);
+        final PresenterScreen presenterScreen = new PresenterScreen("Annotation Timeline", "AnnotationTimelinePanel", "VideosPage", "AnnotationTimelinePanel", null, PresenterType.timeline);
 //        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "AnnotationTimelinePanel"));
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.padding, null));
+//        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.padding, null));
 //        final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.VideoPanel, null);
         final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.AnnotationTimelinePanel, null);
 //        presenterFeature1.addFeatureAttributes(FeatureAttribute.width, "70%");
         presenterFeature1.addStimulusTag("tag_videotag");
         presenterFeature1.addStimulusTag("tag_centipedes");
-        presenterFeature1.addFeatureAttributes(FeatureAttribute.columnCount, "3");
+        presenterFeature1.addFeatureAttributes(FeatureAttribute.columnCount, "2");
         presenterFeature1.addFeatureAttributes(FeatureAttribute.eventTag, "annotationtimeline");
         presenterFeature1.addFeatureAttributes(FeatureAttribute.maxStimuli, "9");
         presenterFeature1.addFeatureAttributes(FeatureAttribute.mp4, "http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4");
