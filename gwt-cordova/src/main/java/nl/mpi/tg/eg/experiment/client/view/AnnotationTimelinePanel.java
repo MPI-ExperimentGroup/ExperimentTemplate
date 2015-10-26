@@ -48,6 +48,7 @@ public class AnnotationTimelinePanel extends AbsolutePanel {
     private final HashMap<Stimulus, Integer> tierTopPositions = new HashMap<>();
     final Label timelineCursor = new Label();
     private int currentOffsetWidth = -1;
+    private double currentVideoLength = -1;
     final int tierHeight;
 
     public AnnotationTimelinePanel() {
@@ -62,8 +63,8 @@ public class AnnotationTimelinePanel extends AbsolutePanel {
 
             @Override
             public void run() {
-                resizeTimeline(videoPanel.getCurrentTime(), videoPanel.getDurationTime());
                 final double currentTime = videoPanel.getCurrentTime();
+                resizeTimeline(currentTime, videoPanel.getDurationTime());
 //                labelticker.setText("" + currentTime);
                 AnnotationTimelinePanel.this.setWidgetPosition(timelineCursor, getLeftPosition(videoPanel.getCurrentTime(), videoPanel.getDurationTime()), AnnotationTimelinePanel.this.getOffsetHeight() - timelineCursor.getOffsetHeight());
                 // to folling section is going to be a bit time critical, so might need some attention in the future
@@ -93,7 +94,7 @@ public class AnnotationTimelinePanel extends AbsolutePanel {
         this.setHeight(tierHeight * tierCount + "px");
     }
 
-    public void addStimulusButton(final Stimulus stimulus, final StimulusGrid stimulusGrid, final VideoPanel videoPanel, final DataFactory dataFactory, final int stimulusCounter, final int columnCount, final String imageWidth) {
+    public void addStimulusButton(final Stimulus stimulus, final StimulusGrid stimulusGrid, final VideoPanel videoPanel, final AnnotationTimelineView annotationTimelineView, final DataFactory dataFactory, final int stimulusCounter, final int columnCount, final String imageWidth) {
         stimulusButtons.put(stimulus, stimulusGrid.addImageItem(new PresenterEventListner() {
             @Override
             public String getLabel() {
@@ -122,7 +123,7 @@ public class AnnotationTimelinePanel extends AbsolutePanel {
                     annotationData.setOutTime(videoPanel.getDurationTime());
                     annotationData.setAnnotationHtml("" + videoPanel.getCurrentTime());
                     annotationData.setStimulus(stimulus);
-                    insertTierAnnotation(annotationData, videoPanel);
+                    insertTierAnnotation(annotationData, videoPanel, annotationTimelineView);
                 }
                 singleShotEventListner.resetSingleShot();
             }
@@ -149,19 +150,19 @@ public class AnnotationTimelinePanel extends AbsolutePanel {
         return annotationLebels.keySet();
     }
 
-    public Set<Stimulus> setAnnotations(AnnotationSet annotationSet, final VideoPanel videoPanel) {
+    public Set<Stimulus> setAnnotations(AnnotationSet annotationSet, final VideoPanel videoPanel, final AnnotationTimelineView annotationTimelineView) {
         Set<Stimulus> foundStimulus = new HashSet<>();
         final Set<AnnotationData> annotations = annotationSet.getAnnotations();
         if (annotations != null) {
             for (AnnotationData annotationData : annotations) {
-                insertTierAnnotation(annotationData, videoPanel);
+                insertTierAnnotation(annotationData, videoPanel, annotationTimelineView);
                 foundStimulus.add(annotationData.getStimulus());
             }
         }
         return foundStimulus;
     }
 
-    private void insertTierAnnotation(final AnnotationData annotationData, final VideoPanel videoPanel) {
+    private void insertTierAnnotation(final AnnotationData annotationData, final VideoPanel videoPanel, final AnnotationTimelineView annotationTimelineView) {
         final Label label1 = new Label(annotationData.getAnnotationHtml());
         label1.setStylePrimaryName("annotationTimelineTierSegment");
         final SingleShotEventListner tierSegmentListner = new SingleShotEventListner() {
@@ -169,6 +170,7 @@ public class AnnotationTimelinePanel extends AbsolutePanel {
             @Override
             protected void singleShotFired() {
                 videoPanel.playSegment(annotationData);
+                annotationTimelineView.setEditingAnnotation(annotationData);
                 resetSingleShot();
             }
         };
@@ -189,9 +191,21 @@ public class AnnotationTimelinePanel extends AbsolutePanel {
         annotationLebels.put(annotationData, label1);
     }
 
+    public void updateAnnotation(final AnnotationData annotationData) {
+        final Label label = annotationLebels.get(annotationData);
+        label.setWidth(getWidth(annotationData, currentVideoLength) + "px");
+        label.setText(annotationData.getAnnotationHtml());
+        final int topPosition = AnnotationTimelinePanel.this.getWidgetTop(label);
+        AnnotationTimelinePanel.this.setWidgetPosition(label, getLeftPosition(annotationData, currentVideoLength), topPosition);
+    }
+
     public void resizeTimeline(final double currentTime, final double durationTime) {
-        if (currentOffsetWidth < 1 || currentOffsetWidth != AnnotationTimelinePanel.this.getOffsetWidth()) {
-            currentOffsetWidth = AnnotationTimelinePanel.this.getOffsetWidth();
+        int width = this.getOffsetWidth();
+        if (currentOffsetWidth < 1 || currentOffsetWidth != width || currentVideoLength != durationTime) {
+//            AnnotationTimelinePanel.this.setWidth(width + units);
+            currentOffsetWidth = width;
+            currentVideoLength = durationTime;
+//            currentOffsetUnits = units;
             for (AnnotationData annotationData : annotationLebels.keySet()) {
                 final Label label = annotationLebels.get(annotationData);
                 label.setWidth(getWidth(annotationData, durationTime) + "px");
