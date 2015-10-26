@@ -18,15 +18,12 @@
 package nl.mpi.tg.eg.experiment.client.presenter;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.web.bindery.autobean.shared.AutoBean;
 import com.google.web.bindery.autobean.shared.AutoBeanCodex;
 import com.google.web.bindery.autobean.shared.AutoBeanUtils;
 import java.util.List;
 import java.util.Set;
-import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.model.AnnotationData;
 import nl.mpi.tg.eg.experiment.client.model.AnnotationSet;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
@@ -38,7 +35,6 @@ import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
 import nl.mpi.tg.eg.experiment.client.view.AnnotationTimelinePanel;
 import nl.mpi.tg.eg.experiment.client.view.AnnotationTimelineView;
-import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.VideoPanel;
 
 /**
@@ -68,19 +64,19 @@ public abstract class AbstractTimelinePresenter extends AbstractPresenter implem
         final AnnotationTimelinePanel annotationTimelinePanel = new AnnotationTimelinePanel();
         ((AnnotationTimelineView) simpleView).setAnnotationTimelinePanel(annotationTimelinePanel);
         ((AnnotationTimelineView) simpleView).setStimuli(dataFactory, savedAnnotations, stimulusProvider, columnCount, "10%", maxStimuli);
-        ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
-
-            @Override
-            public String getLabel() {
-                return "save annotations";
-            }
-
-            @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
-                saveAnnotations();
-                shotEventListner.resetSingleShot();
-            }
-        });
+//        ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
+//
+//            @Override
+//            public String getLabel() {
+//                return "save annotations";
+//            }
+//
+//            @Override
+//            public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+//                saveAnnotations();
+//                shotEventListner.resetSingleShot();
+//            }
+//        });
         annotationTimelinePanel.startUpdating(videoPanel);
     }
 
