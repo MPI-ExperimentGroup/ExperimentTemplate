@@ -17,11 +17,16 @@
  */
 package nl.mpi.tg.eg.experiment.client.view;
 
-import com.google.gwt.event.dom.client.ChangeEvent;
-import com.google.gwt.event.dom.client.ChangeHandler;
+import com.google.gwt.event.dom.client.KeyUpEvent;
+import com.google.gwt.event.dom.client.KeyUpHandler;
+import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import java.util.Set;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.model.AnnotationData;
 import nl.mpi.tg.eg.experiment.client.model.AnnotationSet;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
@@ -54,17 +59,63 @@ public class AnnotationTimelineView extends TimedStimulusView {
 
     public void setEditingAnnotation(final AnnotationData annotationData) {
         final TextBox textBox = new TextBox();
-        textBox.setWidth("100%");
+        // Set up the IN and OUT buttons and a delete annotation button
+        final VerticalPanel verticalPanel = new VerticalPanel();
+        verticalPanel.setStylePrimaryName("annotationUiGroup");
+        final HorizontalPanel editingPanel = new HorizontalPanel();
+        verticalPanel.setWidth(annotationTimelinePanel.getOffsetWidth() + "px");
+        textBox.setWidth(annotationTimelinePanel.getOffsetWidth() + "px");
         textBox.setText(annotationData.getAnnotationHtml());
-        textBox.addChangeHandler(new ChangeHandler() {
+        textBox.addKeyUpHandler(new KeyUpHandler() {
 
             @Override
-            public void onChange(ChangeEvent event) {
+            public void onKeyUp(KeyUpEvent event) {
                 annotationData.setAnnotationHtml(textBox.getText());
-                annotationTimelinePanel.updateAnnotation(annotationData);
+                annotationTimelinePanel.updateAnnotationText(annotationData);
             }
         });
-        flexTable.setWidget(1, 0, textBox);
+        verticalPanel.add(textBox);
+        editingPanel.add(getOptionButton(new PresenterEventListner() {
+
+            @Override
+            public String getLabel() {
+                return "in";
+            }
+
+            @Override
+            public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+                annotationData.setInTime(videoPanel.getCurrentTime());
+                annotationTimelinePanel.updateAnnotation(annotationData);
+            }
+        }));
+        editingPanel.add(getOptionButton(new PresenterEventListner() {
+
+            @Override
+            public String getLabel() {
+                return "Delete";
+            }
+
+            @Override
+            public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+                annotationTimelinePanel.deleteAnnotation(annotationData);
+                flexTable.remove(verticalPanel);
+            }
+        }));
+        editingPanel.add(getOptionButton(new PresenterEventListner() {
+
+            @Override
+            public String getLabel() {
+                return "Out";
+            }
+
+            @Override
+            public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+                annotationData.setOutTime(videoPanel.getCurrentTime());
+                annotationTimelinePanel.updateAnnotation(annotationData);
+            }
+        }));
+        verticalPanel.add(editingPanel);
+        flexTable.setWidget(1, 0, verticalPanel);
     }
 
     public void setVideoPanel(VideoPanel videoPanel) {

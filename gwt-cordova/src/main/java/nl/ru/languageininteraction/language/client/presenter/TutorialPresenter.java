@@ -48,4 +48,5 @@ public class TutorialPresenter extends AbstractSvgPresenter implements Presenter
     boolean nextEventFired() {
         return true;
     }
+    
 }

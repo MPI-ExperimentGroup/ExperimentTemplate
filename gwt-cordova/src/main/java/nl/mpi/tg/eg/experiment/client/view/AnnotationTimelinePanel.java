@@ -169,8 +169,10 @@ public class AnnotationTimelinePanel extends AbsolutePanel {
 
             @Override
             protected void singleShotFired() {
+                clearHighlights();
                 videoPanel.playSegment(annotationData);
                 annotationTimelineView.setEditingAnnotation(annotationData);
+                label1.setStyleDependentName("Highlight", true);
                 resetSingleShot();
             }
         };
@@ -189,6 +191,21 @@ public class AnnotationTimelinePanel extends AbsolutePanel {
         }
         AnnotationTimelinePanel.this.add(label1, getLeftPosition(annotationData, videoPanel.getDurationTime()), topPosition);
         annotationLebels.put(annotationData, label1);
+    }
+
+    public void deleteAnnotation(final AnnotationData annotationData) {
+        AnnotationTimelinePanel.this.remove(annotationLebels.remove(annotationData));
+    }
+
+    public void updateAnnotationText(final AnnotationData annotationData) {
+        final Label label = annotationLebels.get(annotationData);
+        label.setText(annotationData.getAnnotationHtml());
+    }
+
+    private void clearHighlights() {
+        for (Label label : annotationLebels.values()) {
+            label.setStyleDependentName("Highlight", false);
+        }
     }
 
     public void updateAnnotation(final AnnotationData annotationData) {

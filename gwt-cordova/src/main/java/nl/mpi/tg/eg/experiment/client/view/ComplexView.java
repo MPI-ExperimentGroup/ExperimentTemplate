@@ -118,10 +118,14 @@ public class ComplexView extends SimpleView {
     }
 
     public void addOptionButton(final PresenterEventListner presenterListerner) {
+        Button nextButton = getOptionButton(presenterListerner);
+        outerPanel.add(nextButton);
+    }
+
+    public Button getOptionButton(final PresenterEventListner presenterListerner) {
         final Button nextButton = new Button(presenterListerner.getLabel());
         nextButton.addStyleName("optionButton");
         nextButton.setEnabled(true);
-        outerPanel.add(nextButton);
         final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
 
             @Override
@@ -136,6 +140,7 @@ public class ComplexView extends SimpleView {
         nextButton.addTouchStartHandler(singleShotEventListner);
         nextButton.addTouchMoveHandler(singleShotEventListner);
         nextButton.addTouchEndHandler(singleShotEventListner);
+        return nextButton;
     }
 
     public void addImageButton(final PresenterEventListner presenterListerner, final SafeUri imagePath) {
