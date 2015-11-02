@@ -14,7 +14,7 @@
         <xsl:for-each select="experiment/stimuli/stimulus">
             <xsl:text>&#xa;</xsl:text>
             <xsl:text>convert -gravity center -background blue -fill white -font /Library/Fonts/Tahoma.ttf -pointsize 80 label:"</xsl:text>
-            <xsl:value-of select="@label" />
+            <xsl:value-of select="replace(@label, '_', '\\n')" />
             <xsl:text>" "</xsl:text>
             <xsl:value-of select="generate-id(.)" />
             <xsl:text>.jpg"</xsl:text>
