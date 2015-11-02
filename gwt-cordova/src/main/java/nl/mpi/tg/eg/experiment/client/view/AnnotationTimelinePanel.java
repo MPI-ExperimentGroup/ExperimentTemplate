@@ -149,6 +149,14 @@ public class AnnotationTimelinePanel extends FocusPanel {
     }
 
     public void addStimulusButton(final Stimulus stimulus, final StimulusGrid stimulusGrid, final VideoPanel videoPanel, final AnnotationTimelineView annotationTimelineView, final DataFactory dataFactory, final int stimulusCounter, final int columnCount, final String imageWidth) {
+        final int topPosition = getTierTopPosition(stimulus);
+        tierTopPositions.put(stimulus, topPosition);
+//        final Image image = new Image(UriUtils.fromString(serviceLocations.staticFilesUrl() + stimulus.getImage()));
+//        image.setHeight(tierHeight + "px");
+//        absolutePanel.add(image, 0, topPosition);
+//        final Label tierLabel = new Label(stimulus.getLabel());
+//        tierLabel.setHeight(tierHeight + "px");
+//        absolutePanel.add(tierLabel, 0, topPosition);
         stimulusButtons.put(stimulus, stimulusGrid.addImageItem(new PresenterEventListner() {
             @Override
             public String getLabel() {
@@ -235,16 +243,21 @@ public class AnnotationTimelinePanel extends FocusPanel {
         label1.addTouchMoveHandler(tierSegmentListner);
         label1.addTouchEndHandler(tierSegmentListner);
         label1.setWidth(getWidth(annotationData, videoPanel.getDurationTime()) + "px");
-        final int topPosition;
-        if (tierTopPositions.containsKey(annotationData.getStimulus())) {
-            topPosition = tierTopPositions.get(annotationData.getStimulus());
-        } else {
-            int stimulusCounter = tierTopPositions.size();
-            topPosition = tierHeight * stimulusCounter; // absolutePanel.getOffsetHeight() / stimulusProvider.getTotalStimuli() * stimulusCounter;
-            tierTopPositions.put(annotationData.getStimulus(), topPosition);
-        }
+        final int topPosition = getTierTopPosition(annotationData.getStimulus());
         absolutePanel.add(label1, getLeftPosition(annotationData, videoPanel.getDurationTime()), topPosition);
         annotationLebels.put(annotationData, label1);
+    }
+
+    private int getTierTopPosition(Stimulus stimulus) {
+        final int topPosition;
+        if (tierTopPositions.containsKey(stimulus)) {
+            topPosition = tierTopPositions.get(stimulus);
+        } else {
+            int stimulusCounter = tierTopPositions.size();
+            topPosition = tierHeight * stimulusCounter;
+            tierTopPositions.put(stimulus, topPosition);
+        }
+        return topPosition;
     }
 
     public void deleteAnnotation(final AnnotationData annotationData) {
