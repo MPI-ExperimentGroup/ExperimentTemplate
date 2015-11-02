@@ -64,7 +64,7 @@ public class AnnotationTimelineView extends TimedStimulusView {
         verticalPanel.setStylePrimaryName("annotationUiGroup");
         final HorizontalPanel editingPanel = new HorizontalPanel();
         verticalPanel.setWidth(annotationTimelinePanel.getOffsetWidth() + "px");
-        textBox.setWidth(annotationTimelinePanel.getOffsetWidth() + "px");
+        textBox.setWidth("100%");
         textBox.setText(annotationData.getAnnotationHtml());
         textBox.addKeyUpHandler(new KeyUpHandler() {
 
