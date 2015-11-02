@@ -18,10 +18,21 @@
 package nl.mpi.tg.eg.experiment.client.view;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.MouseDownEvent;
+import com.google.gwt.event.dom.client.MouseDownHandler;
+import com.google.gwt.event.dom.client.MouseMoveEvent;
+import com.google.gwt.event.dom.client.MouseMoveHandler;
+import com.google.gwt.event.dom.client.MouseOverEvent;
+import com.google.gwt.event.dom.client.MouseOverHandler;
+import com.google.gwt.event.dom.client.MouseUpEvent;
+import com.google.gwt.event.dom.client.MouseUpHandler;
 import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.ButtonBase;
+import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.web.bindery.autobean.shared.AutoBean;
 import java.util.ArrayList;
@@ -40,25 +51,68 @@ import nl.mpi.tg.eg.experiment.client.service.ServiceLocations;
  * @since Sep 21, 2015 11:56:46 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class AnnotationTimelinePanel extends AbsolutePanel {
+public class AnnotationTimelinePanel extends FocusPanel {
 
     protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
     private final HashMap<AnnotationData, Label> annotationLebels = new HashMap<>();
     private final HashMap<Stimulus, ButtonBase> stimulusButtons = new HashMap<>();
     private final HashMap<Stimulus, Integer> tierTopPositions = new HashMap<>();
+    AbsolutePanel absolutePanel = new AbsolutePanel();
     final Label timelineCursor = new Label();
     private int currentOffsetWidth = -1;
     private double currentVideoLength = -1;
     final int tierHeight;
+    private boolean isScrubbing = false;
 
     public AnnotationTimelinePanel() {
-        this.setStylePrimaryName("annotationTimelineTier");
+        absolutePanel.setStylePrimaryName("annotationTimelineTier");
         tierHeight = 30;
         timelineCursor.setStylePrimaryName("annotationTimelineCursor");
-        this.add(timelineCursor);
+        absolutePanel.add(timelineCursor);
+        this.add(absolutePanel);
     }
 
     public void startUpdating(final VideoPanel videoPanel) {
+        AnnotationTimelinePanel.this.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                isScrubbing = false;
+                final int relativeX = event.getRelativeX(absolutePanel.getElement());
+                videoPanel.setCurrentTime(currentVideoLength * ((float) relativeX / (float) currentOffsetWidth));
+            }
+        });
+        AnnotationTimelinePanel.this.addMouseDownHandler(new MouseDownHandler() {
+
+            @Override
+            public void onMouseDown(MouseDownEvent event) {
+                isScrubbing = true;
+            }
+        });
+        AnnotationTimelinePanel.this.addMouseUpHandler(new MouseUpHandler() {
+
+            @Override
+            public void onMouseUp(MouseUpEvent event) {
+                isScrubbing = false;
+            }
+        });
+        isScrubbing = false;
+        AnnotationTimelinePanel.this.addMouseOverHandler(new MouseOverHandler() {
+
+            @Override
+            public void onMouseOver(MouseOverEvent event) {
+                isScrubbing = false;
+            }
+        });
+        AnnotationTimelinePanel.this.addMouseMoveHandler(new MouseMoveHandler() {
+
+            @Override
+            public void onMouseMove(MouseMoveEvent event) {
+                if (isScrubbing) {
+                    final int relativeX = event.getRelativeX(absolutePanel.getElement());
+                    videoPanel.setCurrentTime(currentVideoLength * ((float) relativeX / (float) currentOffsetWidth));
+                }
+            }
+        });
         Timer timer = new Timer() {
 
             @Override
@@ -66,7 +120,7 @@ public class AnnotationTimelinePanel extends AbsolutePanel {
                 final double currentTime = videoPanel.getCurrentTime();
                 resizeTimeline(currentTime, videoPanel.getDurationTime());
 //                labelticker.setText("" + currentTime);
-                AnnotationTimelinePanel.this.setWidgetPosition(timelineCursor, getLeftPosition(videoPanel.getCurrentTime(), videoPanel.getDurationTime()), AnnotationTimelinePanel.this.getOffsetHeight() - timelineCursor.getOffsetHeight());
+                absolutePanel.setWidgetPosition(timelineCursor, getLeftPosition(videoPanel.getCurrentTime(), videoPanel.getDurationTime()), absolutePanel.getOffsetHeight() - timelineCursor.getOffsetHeight());
                 // to folling section is going to be a bit time critical, so might need some attention in the future
                 ArrayList<Stimulus> intersectedStimuli = new ArrayList<>();
                 for (AnnotationData annotationData : annotationLebels.keySet()) {
@@ -91,7 +145,7 @@ public class AnnotationTimelinePanel extends AbsolutePanel {
     }
 
     public void setTierCount(int tierCount) {
-        this.setHeight(tierHeight * tierCount + "px");
+        absolutePanel.setHeight(tierHeight * tierCount + "px");
     }
 
     public void addStimulusButton(final Stimulus stimulus, final StimulusGrid stimulusGrid, final VideoPanel videoPanel, final AnnotationTimelineView annotationTimelineView, final DataFactory dataFactory, final int stimulusCounter, final int columnCount, final String imageWidth) {
@@ -189,12 +243,12 @@ public class AnnotationTimelinePanel extends AbsolutePanel {
             topPosition = tierHeight * stimulusCounter; // absolutePanel.getOffsetHeight() / stimulusProvider.getTotalStimuli() * stimulusCounter;
             tierTopPositions.put(annotationData.getStimulus(), topPosition);
         }
-        AnnotationTimelinePanel.this.add(label1, getLeftPosition(annotationData, videoPanel.getDurationTime()), topPosition);
+        absolutePanel.add(label1, getLeftPosition(annotationData, videoPanel.getDurationTime()), topPosition);
         annotationLebels.put(annotationData, label1);
     }
 
     public void deleteAnnotation(final AnnotationData annotationData) {
-        AnnotationTimelinePanel.this.remove(annotationLebels.remove(annotationData));
+        absolutePanel.remove(annotationLebels.remove(annotationData));
     }
 
     public void updateAnnotationText(final AnnotationData annotationData) {
@@ -212,12 +266,12 @@ public class AnnotationTimelinePanel extends AbsolutePanel {
         final Label label = annotationLebels.get(annotationData);
         label.setWidth(getWidth(annotationData, currentVideoLength) + "px");
         label.setText(annotationData.getAnnotationHtml());
-        final int topPosition = AnnotationTimelinePanel.this.getWidgetTop(label);
-        AnnotationTimelinePanel.this.setWidgetPosition(label, getLeftPosition(annotationData, currentVideoLength), topPosition);
+        final int topPosition = absolutePanel.getWidgetTop(label);
+        absolutePanel.setWidgetPosition(label, getLeftPosition(annotationData, currentVideoLength), topPosition);
     }
 
     public void resizeTimeline(final double currentTime, final double durationTime) {
-        int width = this.getOffsetWidth();
+        int width = absolutePanel.getOffsetWidth();
         if (currentOffsetWidth < 1 || currentOffsetWidth != width || currentVideoLength != durationTime) {
 //            AnnotationTimelinePanel.this.setWidth(width + units);
             currentOffsetWidth = width;
@@ -226,8 +280,8 @@ public class AnnotationTimelinePanel extends AbsolutePanel {
             for (AnnotationData annotationData : annotationLebels.keySet()) {
                 final Label label = annotationLebels.get(annotationData);
                 label.setWidth(getWidth(annotationData, durationTime) + "px");
-                final int topPosition = AnnotationTimelinePanel.this.getWidgetTop(label);
-                AnnotationTimelinePanel.this.setWidgetPosition(label, getLeftPosition(annotationData, durationTime), topPosition);
+                final int topPosition = absolutePanel.getWidgetTop(label);
+                absolutePanel.setWidgetPosition(label, getLeftPosition(annotationData, durationTime), topPosition);
             }
         }
     }

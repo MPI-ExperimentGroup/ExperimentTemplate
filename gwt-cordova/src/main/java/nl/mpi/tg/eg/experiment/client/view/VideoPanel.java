@@ -57,6 +57,12 @@ public class VideoPanel extends VerticalPanel {
         }
     }
 
+    public void setCurrentTime(double time) {
+        if (video != null) {
+            video.setCurrentTime(time);
+        }
+    }
+
     public double getCurrentTime() {
         if (video != null) {
             return video.getCurrentTime();
