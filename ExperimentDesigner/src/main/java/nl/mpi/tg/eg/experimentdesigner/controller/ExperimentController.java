@@ -37,7 +37,8 @@ public class ExperimentController {
     @RequestMapping("/experiments")
     public String designView(Model model, HttpServletRequest request) {
         model.addAttribute("contextPath", request.getContextPath());
+        model.addAttribute("detailType", "experiments");
         model.addAttribute("allExperiments", experimentRepository.findAll());
-        return "experiments";
+        return "design";
     }
 }
