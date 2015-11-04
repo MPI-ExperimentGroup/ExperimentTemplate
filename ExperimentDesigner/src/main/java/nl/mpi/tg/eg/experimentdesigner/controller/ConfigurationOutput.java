@@ -26,6 +26,7 @@ import nl.mpi.tg.eg.experimentdesigner.util.DefaultExperiments;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -46,21 +47,15 @@ public class ConfigurationOutput {
     @Autowired
     ExperimentRepository experimentRepository;
 
-//    @RequestMapping("/configuration")
-//    public String designView(Model model) {
-//        model.addAttribute("experiment", experimentRepository.findOne(1L));
-//        model.addAttribute("screens", presenterScreenRepository.findAll());
-//        return "configuration";
-//    }
-    @RequestMapping(value = "/configuration", produces = {"application/xml"})//, "application/json"
+    @RequestMapping(value = "/configuration/{appName}", produces = {"application/xml", "application/json"})
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody
-    Experiment getConfiguration() {
-//        experimentRepository.deleteAll();
-//        if (experimentRepository.count() == 0) {
-//        new DefaultExperiments().insertDefaultExperiment(presenterScreenRepository, presenterFeatureRepository, metadataRepository, experimentRepository);
-        final Experiment experiment = experimentRepository.findAll().iterator().next();
-        experiment.getMetadata();
+    Experiment getConfiguration(@PathVariable String appName) {
+        if (experimentRepository.count() == 0) {
+            // todo: this is currently here to simplify the development process and should be removed in production
+            new DefaultExperiments().insertDefaultExperiment(presenterScreenRepository, presenterFeatureRepository, metadataRepository, experimentRepository);
+        }
+        final Experiment experiment = experimentRepository.findByAppNameInternal(appName);
         return experiment;
     }
 }

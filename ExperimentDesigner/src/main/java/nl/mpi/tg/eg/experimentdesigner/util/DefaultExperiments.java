@@ -44,6 +44,11 @@ public class DefaultExperiments {
             PresenterFeatureRepository presenterFeatureRepository,
             MetadataRepository metadataRepository,
             ExperimentRepository experimentRepository) {
+        experimentRepository.save(getDobesExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
+        experimentRepository.save(getAllOptionsExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
+    }
+
+    public Experiment getDobesExperiment(MetadataRepository metadataRepository, PresenterFeatureRepository presenterFeatureRepository, PresenterScreenRepository presenterScreenRepository) {
         final Experiment experiment = new Experiment();
         experiment.setAppNameDisplay("Dobes Annotator");
         experiment.setAppNameInternal("DobesAnnotator");
@@ -60,7 +65,42 @@ public class DefaultExperiments {
         experiment.setComplementColour3("#FFEDDE");
         experiment.setComplementColour4("#FFFDFB");
         experiment.setBackgroundColour("#FFFFFF");
+        final Metadata metadata = new Metadata("workerId", "Reporter name *", ".'{'3,'}'", "Please enter at least three letters.", true, "This test can only be done once per worker.");
+        final Metadata metadata1 = new Metadata("errordevice", "Device model", ".'{'2,'}'", "Please enter the device model", false, null);
+        final Metadata metadata2 = new Metadata("errordescription", "Please describe the error", ".'{'2,'}'", "Please enter a short description of the issue", false, null);
+        experiment.getMetadata().add(metadata);
+        experiment.getMetadata().add(metadata1);
+        experiment.getMetadata().add(metadata2);
+        metadataRepository.save(experiment.getMetadata());
+        addStimuli(experiment);
+        experiment.getPresenterScreen().add(addAnnotationTimelinePanel(presenterFeatureRepository));
+        experiment.getPresenterScreen().add(addVideosMenu(presenterFeatureRepository));
+        experiment.getPresenterScreen().add(addAutoMenu(presenterFeatureRepository));
+        experiment.getPresenterScreen().add(addTargetScreen(presenterFeatureRepository));
+        experiment.getPresenterScreen().add(addVideoAspen(presenterFeatureRepository));
+        experiment.getPresenterScreen().add(addVideoWorksPage(presenterFeatureRepository));
+        experiment.getPresenterScreen().add(addVideoFailedPage(presenterFeatureRepository));
+        presenterScreenRepository.save(experiment.getPresenterScreen());
+        return experiment;
+    }
 
+    public Experiment getAllOptionsExperiment(MetadataRepository metadataRepository, PresenterFeatureRepository presenterFeatureRepository, PresenterScreenRepository presenterScreenRepository) {
+        final Experiment experiment = new Experiment();
+        experiment.setAppNameDisplay("All Options");
+        experiment.setAppNameInternal("AllOptions");
+        experiment.setDataSubmitUrl("http://ems12.mpi.nl/alloptions-frinex-admin-0.1.38-testing/");
+        experiment.setStaticFilesUrl("static/");
+        experiment.setPrimaryColour0("#413B52");
+        experiment.setPrimaryColour1("#656469");
+        experiment.setPrimaryColour2("#514E5C");
+        experiment.setPrimaryColour3("#342954");
+        experiment.setPrimaryColour4("#271460");
+        experiment.setComplementColour0("#777151");
+        experiment.setComplementColour1("#999891");
+        experiment.setComplementColour2("#85816F");
+        experiment.setComplementColour3("#7B6F34");
+        experiment.setComplementColour4("#8B770E");
+        experiment.setBackgroundColour("#FFFFFF");
         final Metadata metadata = new Metadata("workerId", "Reporter name *", ".'{'3,'}'", "Please enter at least three letters.", true, "This test can only be done once per worker.");
         final Metadata metadata1 = new Metadata("errordevice", "Device model", ".'{'2,'}'", "Please enter the device model", false, null);
         final Metadata metadata2 = new Metadata("errordescription", "Please describe the error", ".'{'2,'}'", "Please enter a short description of the issue", false, null);
@@ -78,7 +118,7 @@ public class DefaultExperiments {
         experiment.getPresenterScreen().add(addVideoFailedPage(presenterFeatureRepository));
         addAllFeaturesAsPages(presenterFeatureRepository, experiment);
         presenterScreenRepository.save(experiment.getPresenterScreen());
-        experimentRepository.save(experiment);
+        return experiment;
     }
 
     private void addStimuli(final Experiment experiment) {

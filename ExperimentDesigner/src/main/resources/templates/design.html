@@ -232,7 +232,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <tr>
                 <td class="sel"><a class="sel" href="#">Design View</a></td>
                 <td><a th:href="${contextPath} + '/experiments'">Experiment List</a></td>
-                <td><a th:href="${contextPath} + '/configuration'">Configuration XML</a></td>
+                <td><a th:href="${contextPath} + '/configuration/' + ${experiment.appNameInternal}">Configuration XML</a></td>
                 <td><a th:href="${contextPath} + '/edituser'">User Profile</a></td>
                 <td><a th:href="${contextPath} + '/logout'">logout</a></td>
             </tr>
@@ -527,9 +527,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             </tr>
         </table>
         <footer>      
-            <span th:text="'experimentcount ' + ${experimentcount}"></span>|
-            <span th:text="'metadatacount ' + ${metadatacount}"></span>|
-            <span th:text="'screencount ' + ${screencount}"></span>|
+            <span th:text="'experimentcount ' + ${experimentcount}"></span> -
+            <span th:text="'metadatacount ' + ${metadatacount}"></span> -
+            <span th:text="'screencount ' + ${screencount}"></span> -
             <span th:text="'featurecount ' + ${featurecount}"></span></footer>
     </body>
 </html>
