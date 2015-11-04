@@ -57,8 +57,6 @@ public class DesignController {
 
     private void populateModel(Model model, String appName) {
         final Experiment experiment = experimentRepository.findByAppNameInternal(appName);
-        model.addAttribute("screens", experiment.getPresenterScreen());
-        model.addAttribute("metadata", experiment.getMetadata());
         model.addAttribute("screencount", presenterScreenRepository.count());
         model.addAttribute("experimentcount", experimentRepository.count());
         model.addAttribute("experiment", experiment);

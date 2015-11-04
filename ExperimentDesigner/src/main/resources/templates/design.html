@@ -232,7 +232,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <tr>
                 <td class="sel"><a class="sel" href="#">Design View</a></td>
                 <td><a th:href="${contextPath} + '/experiments'">Experiment List</a></td>
-                <td><a th:href="${contextPath} + '/configuration/' + ${experiment.appNameInternal}">Configuration XML</a></td>
                 <td><a th:href="${contextPath} + '/edituser'">User Profile</a></td>
                 <td><a th:href="${contextPath} + '/logout'">logout</a></td>
             </tr>
@@ -246,14 +245,15 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             <td><a th:attr="class=${detailType eq 'configuration' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/design/' + *{experiment.appNameInternal} + '/configuration'">Configuration</a></td></tr><tr>
                             <td><a th:attr="class=${detailType eq 'metadata' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/design/' + *{experiment.appNameInternal} + '/metadata'">Metadata</a></td></tr><tr>
                             <td><a th:attr="class=${detailType eq 'stimuli' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/design/' + *{experiment.appNameInternal} + '/stimuli'">Stimuli</a></td></tr><tr>
-                            <td><a th:attr="class=${detailType eq 'screens' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/design/' + *{experiment.appNameInternal}+ '/screens'">Screens</a></td>
+                            <td><a th:attr="class=${detailType eq 'screens' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/design/' + *{experiment.appNameInternal}+ '/screens'">Screens</a></td></tr><tr>
+                            <td><a th:href="${contextPath} + '/configuration/' + ${experiment.appNameInternal}">Configuration XML</a></td>
                         </tr>
                     </table>
                     <table th:if="${detailType} eq 'screens'" class="menu">
                         <tbody>
                             <tr>
                                 <td>
-                                    <a th:attr="class=${screenTag eq presenterTags.getSelfPresenterTag() ? 'sel' : 'unsel'}" th:each="presenterTags : ${screens}" th:text="${presenterTags.getSelfPresenterTag()}" th:href="${contextPath} + '/design/' + *{experiment.appNameInternal}+ '/screens?screen=' + ${presenterTags.getSelfPresenterTag()}" />
+                                    <a th:attr="class=${screenTag eq presenterTags.getSelfPresenterTag() ? 'sel' : 'unsel'}" th:each="presenterTags : ${experiment.getPresenterScreen()}" th:text="${presenterTags.getSelfPresenterTag()}" th:href="${contextPath} + '/design/' + *{experiment.appNameInternal}+ '/screens?screen=' + ${presenterTags.getSelfPresenterTag()}" />
                                 </td>
                             </tr>
                         </tbody>
@@ -322,7 +322,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 <td><b>Prevent Server Duplicates</b></td>
                                 <td><b>Duplicates Controlled Message</b></td>
                             </tr>
-                            <tr th:each="metadataRow : ${metadata}">
+                            <tr th:each="metadataRow : ${experiment.getMetadata()}">
                                 <td th:text="${metadataRow.getId()}">metadataRow.getId()</td>
                                 <td th:text="${metadataRow.getPostName()}">metadataRow.getPostName()</td>
                                 <td th:text="${metadataRow.getRegistrationField()}">metadataRow.getRegistrationField()</td>
@@ -335,7 +335,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             </tr>
                             <tr><td colspan="7">
                                     <div class="addpresenterdiv">
-                                        <form action="#" th:action="@{/design}" th:object="${metadata}" method="post">
+                                        <form action="#" th:action="@{/design}" th:object="${experiment.getMetadata()}" method="post">
                                             <table class="addpresenterform">
                                                 <tr>
                                                     <td><b>Post Name</b></td>
@@ -361,29 +361,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 </td></tr>
                         </tbody>
                     </table>
-                    <table class="presenter" th:if="${detailType} eq 'stimuli'">   
-                        <tbody>
-                            <tr>
-                                <td><b>ID</b></td>
-                                <td><b>Post Name</b></td>
-                                <td><b>Registration Field</b></td>
-                                <td><b>Controlled Regex</b></td>
-                                <td><b>Controlled Message</b></td>
-                                <td><b>Prevent Server Duplicates</b></td>
-                                <td><b>Duplicates Controlled Message</b></td>
-                            </tr>
-                            <!--                            <tr th:each="metadataRow : ${metadata}">
-                                                            <td th:text="${metadataRow.getId()}">metadataRow.getId()</td>
-                                                            <td th:text="${metadataRow.getPostName()}">metadataRow.getPostName()</td>
-                                                            <td th:text="${metadataRow.getRegistrationField()}">metadataRow.getRegistrationField()</td>
-                                                            <td th:text="${metadataRow.getControlledRegex()}">metadataRow.getControlledRegex()</td>
-                                                            <td th:text="${metadataRow.getControlledMessage()}">metadataRow.getControlledMessage()</td>
-                                                            <td th:text="${metadataRow.isPreventServerDuplicates()}">metadataRow.isPreventServerDuplicates()</td>
-                                                            <td th:text="${metadataRow.getDuplicatesControlledMessage()}">metadataRow.getDuplicatesControlledMessage()</td>
-                                                            <td><form action="#" th:action="@{/design}" method="post"><button type="submit" name="deleteMetadata" th:value="${metadataRow.getId()}">Delete</button></form></td>
-                                                            <td><button type="submit" name="updateMetadata" th:value="${metadataRow.getId()}">Update</button></td>
-                                                        </tr>-->
-                        </tbody>
+                    <table class="presenter" th:if="${detailType} eq 'stimuli'" th:include="stimuli :: stimulitable">   
                     </table>
                     <div  th:if="${detailType} eq 'screens' and ${screenTag} eq ''" class="addpresenterdiv">
                         <form action="#" th:action="@{/design}" th:object="${PresenterScreen}" method="post">
@@ -408,7 +386,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                         </td>
                                         <td>
                                             <select name="backPresenterTag" id="backPresenterTag">
-                                                <option th:each="presenter : ${screens}" th:value="${presenter.getSelfPresenterTag()}" th:text="${presenter.getSelfPresenterTag()}" />
+                                                <option th:each="presenter : ${experiment.getPresenterScreen()}" th:value="${presenter.getSelfPresenterTag()}" th:text="${presenter.getSelfPresenterTag()}" />
                                             </select>
                                         </td>
                                         <td>
@@ -416,7 +394,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                         </td>
                                         <td>
                                             <select name="nextPresenterTag" id="nextPresenterTag">
-                                                <option th:each="presenter : ${screens}" th:value="${presenter.getSelfPresenterTag()}" th:text="${presenter.getSelfPresenterTag()}" />
+                                                <option th:each="presenter : ${experiment.getPresenterScreen()}" th:value="${presenter.getSelfPresenterTag()}" th:text="${presenter.getSelfPresenterTag()}" />
                                             </select>
                                         </td>
                                         <td>
@@ -432,7 +410,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             </table>
                         </form>
                     </div>
-                    <div th:if="${detailType} eq 'screens'" th:each="presenter : ${screens}">
+                    <div th:if="${detailType} eq 'screens'" th:each="presenter : ${experiment.getPresenterScreen()}">
                         <table th:if="${screenTag} eq ${presenter.getSelfPresenterTag()}" class="presenter">
                             <tbody>
                                 <tr>
@@ -453,13 +431,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                     <td th:text="${presenter.getPresenterType()}">presenterType</td>
                                     <td>
                                         <select name="backPresenterTag" id="backPresenterTag">
-                                            <option th:each="presenterTags : ${screens}" th:value="${presenterTags.getSelfPresenterTag()}" th:text="${presenterTags.getSelfPresenterTag()}" th:selected="${presenterTags.getSelfPresenterTag() eq presenter.getBackPresenterTag()}" />
+                                            <option th:each="presenterTags : ${experiment.getPresenterScreen()}" th:value="${presenterTags.getSelfPresenterTag()}" th:text="${presenterTags.getSelfPresenterTag()}" th:selected="${presenterTags.getSelfPresenterTag() eq presenter.getBackPresenterTag()}" />
                                         </select>
                                     </td>
                                     <td th:text="${presenter.getSelfPresenterTag()}">SelfTag</td>
                                     <td>
                                         <select name="nextPresenterTag" id="nextPresenterTag">
-                                            <option th:each="presenterTags : ${screens}" th:value="${presenterTags.getSelfPresenterTag()}" th:text="${presenterTags.getSelfPresenterTag()}" th:selected="${presenterTags.getSelfPresenterTag() eq presenter.getNextPresenterTag()}" />
+                                            <option th:each="presenterTags : ${experiment.getPresenterScreen()}" th:value="${presenterTags.getSelfPresenterTag()}" th:text="${presenterTags.getSelfPresenterTag()}" th:selected="${presenterTags.getSelfPresenterTag() eq presenter.getNextPresenterTag()}" />
                                         </select>
                                     </td>
                                     <td>
