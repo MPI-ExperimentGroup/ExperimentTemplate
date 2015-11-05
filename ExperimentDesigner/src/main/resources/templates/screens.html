@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!--
+Copyright (C) 2015 Max Planck Institute for Psycholinguistics
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+-->
+<!--
+ * @since Nov 5, 2015 11:45:43 AM (creation date)
+ * @author Peter Withers <peter.withers@mpi.nl>
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <div th:fragment="addscreen">
+            <form action="#" th:action="@{/design}" th:object="${PresenterScreen}" method="post">
+                <table class="addpresenterform">
+                    <thead>
+                        <tr>
+                            <th>Screen Title</th>
+                            <th>Menu Label</th>
+                            <th>Back Action</th>
+                            <th>Self (Action)</th>
+                            <th>Next Action</th>
+                            <th>Screen Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>                       
+                            <td>
+                                <input type="text" name="title" id="title" />
+                            </td>
+                            <td>
+                                <input type="text" name="menuLabel" id="menuLabel" />
+                            </td>
+                            <td>
+                                <select name="backPresenterTag" id="backPresenterTag">
+                                    <option th:each="presenter : ${experiment.getPresenterScreen()}" th:value="${presenter.getSelfPresenterTag()}" th:text="${presenter.getSelfPresenterTag()}" />
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" name="selfPresenterTag" id="selfPresenterTag" />
+                            </td>
+                            <td>
+                                <select name="nextPresenterTag" id="nextPresenterTag">
+                                    <option th:each="presenter : ${experiment.getPresenterScreen()}" th:value="${presenter.getSelfPresenterTag()}" th:text="${presenter.getSelfPresenterTag()}" />
+                                </select>
+                            </td>
+                            <td>
+                                <select name="presenterType" id="presenterType">
+                                    <option th:each="presentertype : ${presentertypes}" th:value="${presentertype}" th:text="${presentertype}" />
+                                </select>
+                            </td>
+                            <td>
+                                <button type="submit" name="addScreen">Add Screen</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <div  th:fragment="editscreen">
+            <div th:each="presenter : ${experiment.getPresenterScreen()}">
+                <table th:if="${screenTag} eq ${presenter.getSelfPresenterTag()}" class="presenter">
+                    <tbody>
+                        <tr>
+                            <td><b>ID</b></td>
+                            <td><b>Title</b></td>
+                            <td><b>Menu Label</b></td>
+                            <td><b>Screen Type</b></td>
+                            <td><b>Back Action</b></td>
+                            <td><b>Self (Action)</b></td>
+                            <td><b>Next Action</b></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td th:text="${presenter.getId()}">1</td>
+                            <td th:text="${presenter.getTitle()}">Title</td>
+                            <td th:text="${presenter.getMenuLabel()}">menuLabel</td>
+                            <td th:text="${presenter.getPresenterType()}">presenterType</td>
+                            <td>
+                                <select name="backPresenterTag" id="backPresenterTag">
+                                    <option th:each="presenterTags : ${experiment.getPresenterScreen()}" th:value="${presenterTags.getSelfPresenterTag()}" th:text="${presenterTags.getSelfPresenterTag()}" th:selected="${presenterTags.getSelfPresenterTag() eq presenter.getBackPresenterTag()}" />
+                                </select>
+                            </td>
+                            <td th:text="${presenter.getSelfPresenterTag()}">SelfTag</td>
+                            <td>
+                                <select name="nextPresenterTag" id="nextPresenterTag">
+                                    <option th:each="presenterTags : ${experiment.getPresenterScreen()}" th:value="${presenterTags.getSelfPresenterTag()}" th:text="${presenterTags.getSelfPresenterTag()}" th:selected="${presenterTags.getSelfPresenterTag() eq presenter.getNextPresenterTag()}" />
+                                </select>
+                            </td>
+                            <td>
+                                <form action="#" th:action="@{/design}" method="post">
+                                    <button type="submit" name="updateRow" th:value="${presenter.getId()}">Update</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="#" th:action="@{/design}" method="post">
+                                    <button type="submit" name="removeScreen" th:value="${presenter.getId()}">Remove</button>
+                                </form>
+                            </td>
+                        </tr>            
+                        <tr>
+                            <td colspan="9"><b>Features</b></td>
+                        </tr>
+                        <tr th:with="objectType=${'PresenterScreen'}">
+                            <td colspan="9">    
+                                <div th:fragment="features">    
+                                    <div class="featurestable" th:unless="${#lists.isEmpty(presenter.getPresenterFeatureList())}">
+                                        <div class="featuresrow" th:each="features : ${presenter.getPresenterFeatureList()}">
+                                            <form action="#" th:action="@{/design}"  th:object="${PresenterFeature}" method="post">
+                                                <span class="featurescell" th:text="${features.getFeatureType()}">getFeatureType</span>                            
+                                                <!--<span th:text="${features.getFeatureText()}"></span>-->  
+                                                <span class="featurescell" th:if="${features.getFeatureType() ne null} and ${features.getFeatureType().canHaveText()}">
+                                                    <textarea name="featureText" id="featureText" th:text="${features.getFeatureText()}"></textarea>                                     
+                                                </span>
+                                                <span>
+                                                    <input type="hidden" th:value="${presenter.getId()}" name="parentId"/>
+                                                    <button th:if="${objectType} eq 'PresenterScreen'" type="submit" name="deleteFeature" th:value="${features.getId()}">Delete Feature</button>
+                                                    <button th:unless="${objectType} eq 'PresenterScreen'" type="submit" name="deleteSubFeature" th:value="${features.getId()}">Delete Feature</button>
+                                                    <button type="submit" name="saveFeature" th:value="${features.getId()}">Save Changes</button>
+                                                </span>
+                                                <div class="featurescell" th:unless="${features.getFeatureType() eq null} or ${#lists.isEmpty(features.getFeatureType().getFeatureAttributes())}">
+                                                    <table>
+                                                        <tr th:each="featureattribute : ${features.getFeatureType().getFeatureAttributes()}" >
+                                                            <td th:text="${featureattribute.name()}">featureattribute.name()</td>
+                                                            <td>
+                                                                <input th:value="${featureattribute.name()}" />                                                            
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>    
+                                            </form>
+                                            <div th:replace="design :: features(presenter=${features}, objectType='PresenterFeature')"></div>
+                                        </div>
+                                    </div>
+                                    <div class="addfeaturediv" th:if="(${objectType} eq 'PresenterScreen') or ${presenter.getFeatureType() ne null and presenter.getFeatureType().canHaveFeatures()}">
+                                        <form action="#" th:action="@{/design}"  th:object="${PresenterFeature}" method="post">
+                                            <select id="FeatureType" name="FeatureType">
+                                                <option th:each="featuretype : ${featuretypes}" th:value="${featuretype}" th:text="${featuretype}" />
+                                            </select>                                            
+                                            <button th:if="${objectType} eq 'PresenterScreen'" type="submit" name="addFeature" th:value="${presenter.getId()}">Add Feature</button>
+                                            <button th:unless="${objectType} eq 'PresenterScreen'" type="submit" name="addSubFeature" th:value="${presenter.getId()}">Add Feature</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

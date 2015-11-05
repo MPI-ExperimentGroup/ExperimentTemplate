@@ -67,5 +67,49 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </tbody>
             </table>
         </div>
+        <div th:fragment="editexperiment">
+            <form action="#" th:action="@{/design}" th:object="${experiment}" method="post">
+                <table class="addpresenterform">
+                    <tr><td><b>App Display Name</b></td><td><input type="text" th:field="*{appNameDisplay}" /></td></tr>
+                    <tr><td><b>App Internal Name</b></td><td><input type="text" th:field="*{appNameInternal}" /></td></tr>
+                    <tr><td><b>Data Submit Url</b></td><td><input type="text" th:field="*{dataSubmitUrl}" /></td></tr>
+                    <tr><td><b>Static Files Url</b></td><td><input type="text" th:field="*{staticFilesUrl}" /></td></tr>
+                    <tr><td><b>Primary Colour 0</b></td><td><input type="color" th:field="*{primaryColour0}" />
+                            <!--<div th:style="'height: 30px; width: 30px; background: ' + *{primaryColour1} + ';'"></div>-->
+                        </td></tr>
+                    <tr><td><b>Primary Colour 1</b></td><td><input type="color" th:field="*{primaryColour1}" />
+                            <!--<div th:style="'height: 30px; width: 30px; background: ' + *{primaryColour1} + ';'"></div>-->
+                        </td></tr>
+                    <tr><td><b>Primary Colour 2</b></td><td><input type="color" th:field="*{primaryColour2}" />
+                            <!--<div th:style="'height: 30px; width: 30px; background: ' + *{primaryColour1} + ';'"></div>-->
+                        </td></tr>
+                    <tr><td><b>Primary Colour 3</b></td><td><input type="color" th:field="*{primaryColour3}" />
+                            <!--<div th:style="'height: 30px; width: 30px; background: ' + *{primaryColour3} + ';'"></div>-->
+                        </td></tr>
+                    <tr><td><b>Primary Colour 4</b></td><td><input type="color" th:field="*{primaryColour4}" />
+                            <!--<div th:style="'height: 30px; width: 30px; background: ' + *{primaryColour3} + ';'"></div>-->
+                        </td></tr>
+                    <tr><td><b>Complement Colour 0</b></td><td><input type="color" th:field="*{complementColour0}" />
+                            <!--<div th:style="'height: 30px; width: 30px; background: ' + *{complementColour1} + ';'"></div>-->
+                        </td></tr>
+                    <tr><td><b>Complement Colour 1</b></td><td><input type="color" th:field="*{complementColour1}" />
+                            <!--<div th:style="'height: 30px; width: 30px; background: ' + *{complementColour1} + ';'"></div>-->
+                        </td></tr>
+                    <tr><td><b>Complement Colour 2</b></td><td><input type="color" th:field="*{complementColour2}" />
+                            <!--<div th:style="'height: 30px; width: 30px; background: ' + *{complementColour2} + ';'"></div>-->
+                        </td></tr>
+                    <tr><td><b>Complement Colour 3</b></td><td><input type="color" th:field="*{complementColour3}" />
+                            <!--<div th:style="'height: 30px; width: 30px; background: ' + *{complementColour3} + ';'"></div>-->
+                        </td></tr>
+                    <tr><td><b>Complement Colour 4</b></td><td><input type="color" th:field="*{complementColour4}" />
+                            <!--<div th:style="'height: 30px; width: 30px; background: ' + *{complementColour3} + ';'"></div>-->
+                        </td></tr>
+                    <tr><td><b>Background Colour</b></td><td><input type="color" th:field="*{backgroundColour}" />
+                            <!--<div th:style="'height: 30px; width: 30px; background: ' + *{backgroundColour} + ';'"></div>-->
+                        </td></tr>
+                    <tr><td><button type="reset" >Reset</button></td><td><button type="submit" name="saveExperiment">Save Changes</button></td></tr>
+                </table>
+            </form>
+        </div>
     </body>
 </html>
