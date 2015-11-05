@@ -46,7 +46,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="experiment : ${allExperiments}" th:onclick="'javascript:window.location=\'design/' + ${experiment.appNameInternal} + '\';'">                    
+                    <tr class="clickablerow" th:each="experiment : ${allExperiments}" th:onclick="'javascript:window.location=\'design/' + ${experiment.appNameInternal} + '\';'">                    
                         <td th:text="${experiment.id}"></td>
                         <td th:text="${experiment.appNameDisplay}"></td>
                         <td th:text="${experiment.appNameInternal}"></td>
