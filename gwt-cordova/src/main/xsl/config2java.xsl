@@ -520,7 +520,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
             <xsl:value-of select="if(@ogg) then concat(', &quot;', @ogg, '&quot;') else ',&quot;&quot;'" />
             <xsl:value-of select="if(@webm) then concat(', &quot;', @webm, '&quot;') else ',&quot;&quot;'" />
         </xsl:if>
-        <xsl:if test="stimuli">
+        <xsl:if test="stimuli/tag">
             <xsl:text>, Arrays.asList(new Tag[]{</xsl:text>
             <xsl:for-each select="distinct-values(stimuli/tag/text())">
                 <xsl:text>Tag.</xsl:text>

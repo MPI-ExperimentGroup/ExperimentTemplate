@@ -33,6 +33,7 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.FocusPanel;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.web.bindery.autobean.shared.AutoBean;
 import java.util.ArrayList;
@@ -57,12 +58,14 @@ public class AnnotationTimelinePanel extends FocusPanel {
     private final HashMap<AnnotationData, Label> annotationLebels = new HashMap<>();
     private final HashMap<Stimulus, ButtonBase> stimulusButtons = new HashMap<>();
     private final HashMap<Stimulus, Integer> tierTopPositions = new HashMap<>();
+    private final ArrayList<Stimulus> stimulusArray = new ArrayList<>();
     AbsolutePanel absolutePanel = new AbsolutePanel();
     final Label timelineCursor = new Label();
     private int currentOffsetWidth = -1;
     private double currentVideoLength = -1;
     final int tierHeight;
     private boolean isScrubbing = false;
+    private Image addAnnotationButton = null;
 
     public AnnotationTimelinePanel() {
         absolutePanel.setStylePrimaryName("annotationTimelineTier");
@@ -72,13 +75,31 @@ public class AnnotationTimelinePanel extends FocusPanel {
         this.add(absolutePanel);
     }
 
-    public void startUpdating(final VideoPanel videoPanel) {
+    public void startUpdating(final VideoPanel videoPanel, final AnnotationTimelineView annotationTimelineView, final DataFactory dataFactory) {
         AnnotationTimelinePanel.this.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
                 isScrubbing = false;
                 final int relativeX = event.getRelativeX(absolutePanel.getElement());
+                final int relativeY = event.getRelativeY(absolutePanel.getElement());
                 videoPanel.setCurrentTime(currentVideoLength * ((float) relativeX / (float) currentOffsetWidth));
+                int stimulusIndex = relativeY / tierHeight;
+                final int topPosition = tierHeight * stimulusIndex;
+                final Stimulus stimulus = stimulusArray.get(stimulusIndex);
+                if (addAnnotationButton != null) {
+                    absolutePanel.remove(addAnnotationButton);
+                }
+                addAnnotationButton = new Image(UriUtils.fromString(serviceLocations.staticFilesUrl() + stimulus.getImage()));
+                addAnnotationButton.setHeight(tierHeight + "px");
+//                absolutePanel.add(addAnnotationButton, 0, topPosition);
+                absolutePanel.add(addAnnotationButton, getLeftPosition(videoPanel.getCurrentTime(), videoPanel.getDurationTime()), topPosition);
+                addAnnotationButton.addClickHandler(new ClickHandler() {
+
+                    @Override
+                    public void onClick(ClickEvent event) {
+                        insertAnnotation(stimulus, videoPanel, annotationTimelineView, dataFactory);
+                    }
+                });
             }
         });
         AnnotationTimelinePanel.this.addMouseDownHandler(new MouseDownHandler() {
@@ -114,28 +135,32 @@ public class AnnotationTimelinePanel extends FocusPanel {
             }
         });
         Timer timer = new Timer() {
+            double lastTime = -1;
 
             @Override
             public void run() {
                 final double currentTime = videoPanel.getCurrentTime();
-                resizeTimeline(currentTime, videoPanel.getDurationTime());
+                if (lastTime != currentTime) {
+                    lastTime = currentTime;
+                    resizeTimeline(currentTime, videoPanel.getDurationTime());
 //                labelticker.setText("" + currentTime);
-                absolutePanel.setWidgetPosition(timelineCursor, getLeftPosition(videoPanel.getCurrentTime(), videoPanel.getDurationTime()), absolutePanel.getOffsetHeight() - timelineCursor.getOffsetHeight());
-                // to folling section is going to be a bit time critical, so might need some attention in the future
-                ArrayList<Stimulus> intersectedStimuli = new ArrayList<>();
-                for (AnnotationData annotationData : annotationLebels.keySet()) {
-                    if (intersectsTime(annotationData, currentTime)) {
-                        intersectedStimuli.add(annotationData.getStimulus());
+                    absolutePanel.setWidgetPosition(timelineCursor, getLeftPosition(videoPanel.getCurrentTime(), videoPanel.getDurationTime()), absolutePanel.getOffsetHeight() - timelineCursor.getOffsetHeight());
+                    // to folling section is going to be a bit time critical, so might need some attention in the future
+                    ArrayList<Stimulus> intersectedStimuli = new ArrayList<>();
+                    for (AnnotationData annotationData : annotationLebels.keySet()) {
+                        if (intersectsTime(annotationData, currentTime)) {
+                            intersectedStimuli.add(annotationData.getStimulus());
+                        }
                     }
-                }
-                // since we dont have an included and excluded list, we instead clear all highlights then set the known highlights after that
-                for (ButtonBase button : stimulusButtons.values()) {
-                    button.removeStyleName("stimulusButtonHighlight");
-                }
-                for (Stimulus intersectedStimulus : intersectedStimuli) {
-                    final ButtonBase stimulusButton = stimulusButtons.get(intersectedStimulus);
-                    if (stimulusButton != null) {
-                        stimulusButton.addStyleName("stimulusButtonHighlight");
+                    // since we dont have an included and excluded list, we instead clear all highlights then set the known highlights after that
+                    for (ButtonBase button : stimulusButtons.values()) {
+                        button.removeStyleName("stimulusButtonHighlight");
+                    }
+                    for (Stimulus intersectedStimulus : intersectedStimuli) {
+                        final ButtonBase stimulusButton = stimulusButtons.get(intersectedStimulus);
+                        if (stimulusButton != null) {
+                            stimulusButton.addStyleName("stimulusButtonHighlight");
+                        }
                     }
                 }
                 this.schedule(10);
@@ -165,31 +190,35 @@ public class AnnotationTimelinePanel extends FocusPanel {
 
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                final double clickedTime = videoPanel.getCurrentTime();
-                AnnotationData foundAnnotationData = null;
-                for (AnnotationData currentAnnotationData : annotationLebels.keySet()) {
-                    if (currentAnnotationData.getStimulus().equals(stimulus)) {
-                        if (intersectsTime(currentAnnotationData, clickedTime)) {
-                            foundAnnotationData = currentAnnotationData;
-                            break;
-                        }
-                    }
-                }
-                if (foundAnnotationData != null) {
-                    foundAnnotationData.setOutTime(clickedTime);
-                    annotationLebels.get(foundAnnotationData).setWidth(getWidth(foundAnnotationData, videoPanel.getDurationTime()) + "px");
-                } else {
-                    final AutoBean<AnnotationData> annotationDataBean = dataFactory.annotation();
-                    final AnnotationData annotationData = annotationDataBean.as();
-                    annotationData.setInTime(clickedTime);
-                    annotationData.setOutTime(videoPanel.getDurationTime());
-                    annotationData.setAnnotationHtml("" + videoPanel.getCurrentTime());
-                    annotationData.setStimulus(stimulus);
-                    insertTierAnnotation(annotationData, videoPanel, annotationTimelineView);
-                }
+                insertAnnotation(stimulus, videoPanel, annotationTimelineView, dataFactory);
                 singleShotEventListner.resetSingleShot();
             }
         }, UriUtils.fromString(serviceLocations.staticFilesUrl() + stimulus.getImage()), stimulusCounter / columnCount, 1 + stimulusCounter % columnCount, imageWidth));
+    }
+
+    public void insertAnnotation(final Stimulus stimulus, final VideoPanel videoPanel, final AnnotationTimelineView annotationTimelineView, final DataFactory dataFactory) {
+        final double clickedTime = videoPanel.getCurrentTime();
+        AnnotationData foundAnnotationData = null;
+        for (AnnotationData currentAnnotationData : annotationLebels.keySet()) {
+            if (currentAnnotationData.getStimulus().equals(stimulus)) {
+                if (intersectsTime(currentAnnotationData, clickedTime)) {
+                    foundAnnotationData = currentAnnotationData;
+                    break;
+                }
+            }
+        }
+        if (foundAnnotationData != null) {
+            foundAnnotationData.setOutTime(clickedTime);
+            annotationLebels.get(foundAnnotationData).setWidth(getWidth(foundAnnotationData, videoPanel.getDurationTime()) + "px");
+        } else {
+            final AutoBean<AnnotationData> annotationDataBean = dataFactory.annotation();
+            final AnnotationData annotationData = annotationDataBean.as();
+            annotationData.setInTime(clickedTime);
+            annotationData.setOutTime(videoPanel.getDurationTime());
+            annotationData.setAnnotationHtml("" + videoPanel.getCurrentTime());
+            annotationData.setStimulus(stimulus);
+            insertTierAnnotation(annotationData, videoPanel, annotationTimelineView);
+        }
     }
 
     private int getLeftPosition(final AnnotationData annotationData, final double durationTime) {
@@ -231,6 +260,10 @@ public class AnnotationTimelinePanel extends FocusPanel {
 
             @Override
             protected void singleShotFired() {
+                if (addAnnotationButton != null) {
+                    // todo: this would be better if the button was not added when a tier is clicked
+                    absolutePanel.remove(addAnnotationButton);
+                }
                 clearHighlights();
                 videoPanel.playSegment(annotationData);
                 annotationTimelineView.setEditingAnnotation(annotationData);
@@ -256,6 +289,7 @@ public class AnnotationTimelinePanel extends FocusPanel {
             int stimulusCounter = tierTopPositions.size();
             topPosition = tierHeight * stimulusCounter;
             tierTopPositions.put(stimulus, topPosition);
+            stimulusArray.add(stimulus);
         }
         return topPosition;
     }

@@ -63,7 +63,7 @@ public abstract class AbstractTimelinePresenter extends AbstractPresenter implem
         final AnnotationSet savedAnnotations = loadAnnotations(storageTag);
         final AnnotationTimelinePanel annotationTimelinePanel = new AnnotationTimelinePanel();
         ((AnnotationTimelineView) simpleView).setAnnotationTimelinePanel(annotationTimelinePanel);
-        ((AnnotationTimelineView) simpleView).setStimuli(dataFactory, savedAnnotations, stimulusProvider, columnCount, "10%", maxStimuli);
+        ((AnnotationTimelineView) simpleView).setStimuli(dataFactory, savedAnnotations, stimulusProvider, columnCount, "30px", maxStimuli);
 //        ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
 //
 //            @Override
@@ -77,7 +77,7 @@ public abstract class AbstractTimelinePresenter extends AbstractPresenter implem
 //                shotEventListner.resetSingleShot();
 //            }
 //        });
-        annotationTimelinePanel.startUpdating(videoPanel);
+        annotationTimelinePanel.startUpdating(videoPanel, ((AnnotationTimelineView) simpleView), dataFactory);
     }
 
     private void saveAnnotations() {
