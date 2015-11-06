@@ -23,49 +23,50 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <body>
         <div th:fragment="addscreen">
-            <form action="#" th:action="@{/design}" th:object="${PresenterScreen}" method="post">
+            <form action="#" th:action="@{/addScreen/} + ${experiment.appNameInternal}" th:object="${PresenterScreen}" method="post">
                 <table class="addpresenterform">
-                    <thead>
-                        <tr>
-                            <th>Screen Title</th>
-                            <th>Menu Label</th>
-                            <th>Back Action</th>
-                            <th>Self (Action)</th>
-                            <th>Next Action</th>
-                            <th>Screen Type</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>                       
-                            <td>
-                                <input type="text" name="title" id="title" />
-                            </td>
-                            <td>
-                                <input type="text" name="menuLabel" id="menuLabel" />
-                            </td>
-                            <td>
-                                <select name="backPresenterTag" id="backPresenterTag">
-                                    <option th:each="presenter : ${experiment.getPresenterScreen()}" th:value="${presenter.getSelfPresenterTag()}" th:text="${presenter.getSelfPresenterTag()}" />
-                                </select>
-                            </td>
-                            <td>
-                                <input type="text" name="selfPresenterTag" id="selfPresenterTag" />
-                            </td>
-                            <td>
-                                <select name="nextPresenterTag" id="nextPresenterTag">
-                                    <option th:each="presenter : ${experiment.getPresenterScreen()}" th:value="${presenter.getSelfPresenterTag()}" th:text="${presenter.getSelfPresenterTag()}" />
-                                </select>
-                            </td>
-                            <td>
-                                <select name="presenterType" id="presenterType">
-                                    <option th:each="presentertype : ${presentertypes}" th:value="${presentertype}" th:text="${presentertype}" />
-                                </select>
-                            </td>
-                            <td>
-                                <button type="submit" name="addScreen">Add Screen</button>
-                            </td>
-                        </tr>
-                    </tbody>
+                    <tr>    
+                        <td>Screen Title</td>                   
+                        <td>
+                            <input type="text" name="title" id="title" />
+                        </td>
+                    </tr><tr>
+                        <td>Menu Label</td>
+                        <td>
+                            <input type="text" name="menuLabel" id="menuLabel" />
+                        </td>
+                    </tr><tr>
+                        <td>Back Action</td>
+                        <td>
+                            <select name="backPresenterTag" id="backPresenterTag">
+                                <option th:each="presenter : ${experiment.getPresenterScreen()}" th:value="${presenter.getSelfPresenterTag()}" th:text="${presenter.getSelfPresenterTag()}" />
+                            </select>
+                        </td>
+                    </tr><tr>
+                        <td>Self (Action)</td>
+                        <td>
+                            <input type="text" name="selfPresenterTag" id="selfPresenterTag" />
+                        </td>
+                    </tr><tr>
+                        <td>Next Action</td>
+                        <td>
+                            <select name="nextPresenterTag" id="nextPresenterTag">
+                                <option th:each="presenter : ${experiment.getPresenterScreen()}" th:value="${presenter.getSelfPresenterTag()}" th:text="${presenter.getSelfPresenterTag()}" />
+                            </select>
+                        </td>
+                    </tr><tr>
+                        <td>Screen Type</td>
+                        <td>
+                            <select name="presenterType" id="presenterType">
+                                <option th:each="presentertype : ${presentertypes}" th:value="${presentertype}" th:text="${presentertype}" />
+                            </select>
+                        </td>
+                    </tr><tr>
+                        <td></td>
+                        <td>
+                            <button type="submit" name="addScreen">Add Screen</button>
+                        </td>
+                    </tr>
                 </table>
             </form>
         </div>
