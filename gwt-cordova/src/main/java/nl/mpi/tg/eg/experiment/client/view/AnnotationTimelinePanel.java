@@ -65,7 +65,7 @@ public class AnnotationTimelinePanel extends FocusPanel {
     private double currentVideoLength = -1;
     final int tierHeight;
     private boolean isScrubbing = false;
-    private Image addAnnotationButton = null;
+//    private Image addAnnotationButton = null;
 
     public AnnotationTimelinePanel() {
         absolutePanel.setStylePrimaryName("annotationTimelineTier");
@@ -86,20 +86,20 @@ public class AnnotationTimelinePanel extends FocusPanel {
                 int stimulusIndex = relativeY / tierHeight;
                 final int topPosition = tierHeight * stimulusIndex;
                 final Stimulus stimulus = stimulusArray.get(stimulusIndex);
-                if (addAnnotationButton != null) {
-                    absolutePanel.remove(addAnnotationButton);
-                }
-                addAnnotationButton = new Image(UriUtils.fromString(serviceLocations.staticFilesUrl() + stimulus.getImage()));
-                addAnnotationButton.setHeight(tierHeight + "px");
-//                absolutePanel.add(addAnnotationButton, 0, topPosition);
-                absolutePanel.add(addAnnotationButton, getLeftPosition(videoPanel.getCurrentTime(), videoPanel.getDurationTime()), topPosition);
-                addAnnotationButton.addClickHandler(new ClickHandler() {
-
-                    @Override
-                    public void onClick(ClickEvent event) {
-                        insertAnnotation(stimulus, videoPanel, annotationTimelineView, dataFactory);
-                    }
-                });
+//                if (addAnnotationButton != null) {
+//                    absolutePanel.remove(addAnnotationButton);
+//                }
+//                addAnnotationButton = new Image(UriUtils.fromString(serviceLocations.staticFilesUrl() + stimulus.getImage()));
+//                addAnnotationButton.setHeight(tierHeight + "px");
+////                absolutePanel.add(addAnnotationButton, 0, topPosition);
+//                absolutePanel.add(addAnnotationButton, getLeftPosition(videoPanel.getCurrentTime(), videoPanel.getDurationTime()), topPosition);
+//                addAnnotationButton.addClickHandler(new ClickHandler() {
+//
+//                    @Override
+//                    public void onClick(ClickEvent event) {
+//                        insertAnnotation(stimulus, videoPanel, annotationTimelineView, dataFactory);
+//                    }
+//                });
             }
         });
         AnnotationTimelinePanel.this.addMouseDownHandler(new MouseDownHandler() {
@@ -260,10 +260,10 @@ public class AnnotationTimelinePanel extends FocusPanel {
 
             @Override
             protected void singleShotFired() {
-                if (addAnnotationButton != null) {
-                    // todo: this would be better if the button was not added when a tier is clicked
-                    absolutePanel.remove(addAnnotationButton);
-                }
+//                if (addAnnotationButton != null) {
+//                    // todo: this would be better if the button was not added when a tier is clicked
+//                    absolutePanel.remove(addAnnotationButton);
+//                }
                 clearHighlights();
                 videoPanel.playSegment(annotationData);
                 annotationTimelineView.setEditingAnnotation(annotationData);
