@@ -67,6 +67,8 @@ public class PresenterFeature {
 //        this.featureAttributes = new HashMap<>();
         if (featureType.canHaveStimulus()) {
             stimulusTags = new ArrayList<>();
+        } else {
+            stimulusTags = null;
         }
     }
 
@@ -127,7 +129,7 @@ public class PresenterFeature {
     public List<String> getStimulusTags() {
         return stimulusTags;
     }
-    
+
     public void setStimulusTags(List<String> stimulusTags) {
         this.stimulusTags = stimulusTags;
     }
