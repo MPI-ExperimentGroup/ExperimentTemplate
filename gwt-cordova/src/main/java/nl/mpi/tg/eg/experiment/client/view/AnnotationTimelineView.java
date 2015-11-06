@@ -17,11 +17,14 @@
  */
 package nl.mpi.tg.eg.experiment.client.view;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
+import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import java.util.Set;
@@ -32,6 +35,7 @@ import nl.mpi.tg.eg.experiment.client.model.AnnotationSet;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.DataFactory;
+import nl.mpi.tg.eg.experiment.client.service.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
 
 /**
@@ -40,6 +44,7 @@ import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
  */
 public class AnnotationTimelineView extends TimedStimulusView {
 
+    protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
     private AnnotationTimelinePanel annotationTimelinePanel;
     private VideoPanel videoPanel;
     final FlexTable flexTable = new FlexTable();
@@ -114,6 +119,9 @@ public class AnnotationTimelineView extends TimedStimulusView {
                 annotationTimelinePanel.updateAnnotation(annotationData);
             }
         }));
+        final Image image = new Image(UriUtils.fromString(serviceLocations.staticFilesUrl() + annotationData.getStimulus().getImage()));
+        image.setHeight("65px");
+        editingPanel.add(image);
         verticalPanel.add(editingPanel);
         flexTable.setWidget(1, 0, verticalPanel);
     }
