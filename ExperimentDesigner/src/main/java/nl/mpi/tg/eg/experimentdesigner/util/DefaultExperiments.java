@@ -299,10 +299,10 @@ public class DefaultExperiments {
         final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.AnnotationTimelinePanel, null);
 //        presenterFeature1.addFeatureAttributes(FeatureAttribute.width, "70%");
         presenterFeature1.addStimulusTag("tag_videotag");
-        presenterFeature1.addStimulusTag("tag_centipedes");
+//        presenterFeature1.addStimulusTag("tag_centipedes");
         presenterFeature1.addFeatureAttributes(FeatureAttribute.columnCount, "2");
         presenterFeature1.addFeatureAttributes(FeatureAttribute.eventTag, "annotationtimeline");
-        presenterFeature1.addFeatureAttributes(FeatureAttribute.maxStimuli, "9");
+        presenterFeature1.addFeatureAttributes(FeatureAttribute.maxStimuli, "10");
         presenterFeature1.addFeatureAttributes(FeatureAttribute.mp4, "http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4");
 //        presenterScreen.getPresenterFeatureList().add(presenterFeature);
         presenterScreen.getPresenterFeatureList().add(presenterFeature1);
