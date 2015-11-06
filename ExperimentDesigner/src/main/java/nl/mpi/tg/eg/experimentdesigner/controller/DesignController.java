@@ -90,6 +90,18 @@ public class DesignController {
         return "design";
     }
 
+    @RequestMapping(value = "/addScreen/{appName}", params = {"addScreen"}, method = RequestMethod.POST)
+    public String addScreen(@ModelAttribute PresenterScreen prersenterScreen, Model model, HttpServletRequest request, @PathVariable String appName) {
+        final Experiment experiment = experimentRepository.findByAppNameInternal(appName);
+        experiment.getPresenterScreen().add(prersenterScreen);
+        presenterScreenRepository.save(prersenterScreen);
+        experimentRepository.save(experiment);
+        model.addAttribute("contextPath", request.getContextPath());
+        model.addAttribute("detailType", "screens");
+        populateModel(model, appName);
+        return "design";
+    }
+
     @RequestMapping("/design")
     public String designView(Model model, HttpServletRequest request) {
         return "redirect:experiments";
@@ -187,13 +199,6 @@ public class DesignController {
         final String featureText = req.getParameter("featureText");
         modifiedFeature.setFeatureText(featureText);
         presenterFeatureRepository.save(modifiedFeature);
-        populateModel(model, appName);
-        return "design";
-    }
-
-    @RequestMapping(value = "/design/{appName}", params = {"addScreen"}, method = RequestMethod.POST)
-    public String addScreen(@ModelAttribute PresenterScreen prersenterScreen, Model model, @PathVariable String appName) {
-        presenterScreenRepository.save(prersenterScreen);
         populateModel(model, appName);
         return "design";
     }
