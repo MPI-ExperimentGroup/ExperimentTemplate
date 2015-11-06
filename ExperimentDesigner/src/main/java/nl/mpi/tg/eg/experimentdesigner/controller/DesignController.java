@@ -78,6 +78,18 @@ public class DesignController {
         return "redirect:experiments";
     }
 
+    @RequestMapping(value = "/removeScreen/{appName}", method = RequestMethod.POST)
+    public String deleteScreen(Model model, HttpServletRequest request, @PathVariable String appName,
+            @RequestParam(value = "removeScreenId", required = true) final long screenId) {
+        final Experiment experiment = experimentRepository.findByAppNameInternal(appName);
+        experiment.getPresenterScreen().remove(presenterScreenRepository.findOne(screenId));
+        experimentRepository.save(experiment);
+        model.addAttribute("contextPath", request.getContextPath());
+        model.addAttribute("detailType", "screens");
+        populateModel(model, appName);
+        return "design";
+    }
+
     @RequestMapping("/design")
     public String designView(Model model, HttpServletRequest request) {
         return "redirect:experiments";

@@ -106,8 +106,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 </form>
                             </td>
                             <td>
-                                <form action="#" th:action="@{/design}" method="post">
-                                    <button type="submit" name="removeScreen" th:value="${presenter.getId()}">Remove</button>
+                                <form action="#" th:action="@{/removeScreen/} + ${experiment.appNameInternal}" method="post">
+                                    <button type="submit" name="removeScreenId" th:value="${presenter.getId()}">Remove</button>
                                 </form>
                             </td>
                         </tr>            
