@@ -229,6 +229,18 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 background: #164f51;
                 color: #9cb9bb;
             }
+            div.table 
+            {
+                display:table;
+            }
+            form.tr, div.tr
+            {
+                display:table-row;
+            }
+            span.td
+            {
+                display:table-cell;
+            }
         </style>
     </head>
     <body>
@@ -252,24 +264,24 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         </table>
         <table id="main">
             <tr>
-<!--                <td class="experimentmenu">
-                    <table th:if="${detailType} eq 'screens'" class="menu">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <a th:attr="class=${screenTag eq presenterTags.getSelfPresenterTag() ? 'sel' : 'unsel'}" th:each="presenterTags : ${experiment.getPresenterScreen()}" th:text="${presenterTags.getSelfPresenterTag()}" th:href="${contextPath} + '/design/' + *{experiment.appNameInternal}+ '/screens?screen=' + ${presenterTags.getSelfPresenterTag()}" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>    
-                    <table th:if="${detailType} eq 'screens'" class="menu">
-                        <tbody>
-                            <tr>
-                                <td><a  th:attr="class=${screenTag eq '' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/design/' + *{experiment.appNameInternal}+ '/screens'">Add Screen</a></td>
-                            </tr>
-                        </tbody>
-                    </table>             
-                </td>-->
+                <!--                <td class="experimentmenu">
+                                    <table th:if="${detailType} eq 'screens'" class="menu">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <a th:attr="class=${screenTag eq presenterTags.getSelfPresenterTag() ? 'sel' : 'unsel'}" th:each="presenterTags : ${experiment.getPresenterScreen()}" th:text="${presenterTags.getSelfPresenterTag()}" th:href="${contextPath} + '/design/' + *{experiment.appNameInternal}+ '/screens?screen=' + ${presenterTags.getSelfPresenterTag()}" />
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>    
+                                    <table th:if="${detailType} eq 'screens'" class="menu">
+                                        <tbody>
+                                            <tr>
+                                                <td><a  th:attr="class=${screenTag eq '' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/design/' + *{experiment.appNameInternal}+ '/screens'">Add Screen</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>             
+                                </td>-->
                 <td id="editarea">
                     <table th:if="${detailType} eq 'experiments'" th:include="experiments :: experimentlisting"></table>
                     <div th:if="${detailType} eq 'configuration'" th:include="experiments :: editexperiment"></div>
