@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experimentdesigner.model;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -46,6 +47,7 @@ public class PresenterScreen {
     private String title;
     private String menuLabel;
     private String backPresenterTag;
+    @Column(unique = true)
     private String selfPresenterTag;
     private String nextPresenterTag;
 

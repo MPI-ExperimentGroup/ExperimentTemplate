@@ -252,7 +252,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         </table>
         <table id="main">
             <tr>
-                <td class="experimentmenu">
+<!--                <td class="experimentmenu">
                     <table th:if="${detailType} eq 'screens'" class="menu">
                         <tbody>
                             <tr>
@@ -269,14 +269,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             </tr>
                         </tbody>
                     </table>             
-                </td>
+                </td>-->
                 <td id="editarea">
                     <table th:if="${detailType} eq 'experiments'" th:include="experiments :: experimentlisting"></table>
                     <div th:if="${detailType} eq 'configuration'" th:include="experiments :: editexperiment"></div>
                     <table class="presenter" th:if="${detailType} eq 'metadata'" th:include="metadata :: metadatatable"></table>
                     <table class="presenter" th:if="${detailType} eq 'stimuli'" th:include="stimuli :: stimulitable"></table>
-                    <div th:if="${detailType} eq 'screens' and ${screenTag} eq ''" th:include="screens :: addscreen"></div>
-                    <div th:if="${detailType} eq 'screens'" th:include="screens :: editscreen"></div>
+                    <div th:if="${detailType} eq 'screens' and ${presenterScreen == null}" th:include="screens :: screenlisting"></div>
+                    <div th:if="${detailType} eq 'screens' and ${presenterScreen != null}" th:include="screens :: editscreen"></div>
                 </td>
             </tr>
         </table>

@@ -94,9 +94,10 @@ public class DesignController {
     public String addScreen(@ModelAttribute PresenterScreen prersenterScreen, Model model, HttpServletRequest request, @PathVariable String appName) {
         final Experiment experiment = experimentRepository.findByAppNameInternal(appName);
         experiment.getPresenterScreen().add(prersenterScreen);
-        presenterScreenRepository.save(prersenterScreen);
+        final PresenterScreen savedScreen = presenterScreenRepository.save(prersenterScreen);
         experimentRepository.save(experiment);
         model.addAttribute("contextPath", request.getContextPath());
+        model.addAttribute("presenterScreen", savedScreen);
         model.addAttribute("detailType", "screens");
         populateModel(model, appName);
         return "design";
@@ -120,7 +121,9 @@ public class DesignController {
             @RequestParam(value = "screen", required = false, defaultValue = "") String screenTag) {
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", detailType);
-        model.addAttribute("screenTag", screenTag);
+        if (screenTag != null && !screenTag.isEmpty()) {
+            model.addAttribute("presenterScreen", presenterScreenRepository.findBySelfPresenterTag(screenTag));
+        }
         populateModel(model, appName);
         return "design";
     }
