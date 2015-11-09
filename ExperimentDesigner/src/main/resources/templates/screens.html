@@ -22,62 +22,69 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <body>
-        <div th:fragment="screenlisting" class="presenter">
-            <div class="table">
-                <div class="tr">
-                    <!--<span class="td">ID</span>-->
-                    <span class="td">Title</span>
-                    <span class="td">Menu Label</span>
-                    <span class="td">Screen Type</span>
-                    <span class="td">Back Action</span>
-                    <span class="td">Self (Action)</span>
-                    <span class="td">Next Action</span>
-                    <span class="td"></span>
-                    <span class="td"></span>
+        <div th:fragment="screenlisting">
+            <div class="presenter">
+                <div class="table">
+                    <div class="tr">
+                        <!--<span class="td">ID</span>-->
+                        <span class="td">Title</span>
+                        <span class="td">Menu Label</span>
+                        <span class="td">Screen Type</span>
+                        <span class="td">Back Action</span>
+                        <span class="td">Self (Action)</span>
+                        <span class="td">Next Action</span>
+                        <span class="td"></span>
+                        <span class="td"></span>
+                    </div>
+                    <form th:each="presenterScreen : ${experiment.getPresenterScreen()}" class="tr" method="post" th:action="@{/removeScreen/} + ${experiment.appNameInternal}">
+                        <input type="hidden" th:value="${presenterScreen.getId()}"/>
+                        <span class="td"><input type="text" th:value="${presenterScreen.getTitle()}" th:onchange="${'$(updateRowButton' + presenterScreen.getId() + ').show();'}" /></span>
+                        <span class="td"><input type="text" th:value="${presenterScreen.getMenuLabel()}" th:onchange="${'$(updateRowButton' + presenterScreen.getId() + ').show();'}" /></span>
+                        <span class="td"><input type="text" th:value="${presenterScreen.getPresenterType()}" th:onchange="${'$(updateRowButton' + presenterScreen.getId() + ').show();'}"/></span>
+                        <span class="td">
+                            <select name="backPresenterTag" id="backPresenterTag" th:onchange="${'$(updateRowButton' + presenterScreen.getId() + ').show();'}">
+                                <option th:each="presenterTags : ${experiment.getPresenterScreen()}" th:value="${presenterTags.getSelfPresenterTag()}" th:text="${presenterTags.getSelfPresenterTag()}" th:selected="${presenterTags.getSelfPresenterTag() eq presenterScreen.getBackPresenterTag()}" />
+                            </select>
+                        </span>
+                        <span class="td"><input type="text" th:value="${presenterScreen.getSelfPresenterTag()}" th:onchange="${'$(updateRowButton' + presenterScreen.getId() + ').show();'}"/></span>
+                        <span class="td"> 
+                            <select name="nextPresenterTag" id="nextPresenterTag" th:onchange="${'$(updateRowButton' + presenterScreen.getId() + ').show();'}">
+                                <option th:each="presenterTags : ${experiment.getPresenterScreen()}" th:value="${presenterTags.getSelfPresenterTag()}" th:text="${presenterTags.getSelfPresenterTag()}" th:selected="${presenterTags.getSelfPresenterTag() eq presenterScreen.getNextPresenterTag()}" />
+                            </select>
+                        </span>
+                        <span class="td"><button th:id="${'updateRowButton' + presenterScreen.getId()}"  type="submit" name="updateRow" th:value="${presenterScreen.getId()}">Save Changes</button></span>
+                        <span class="td"><a th:href="${contextPath} + '/design/' + *{experiment.appNameInternal}+ '/screens?screen=' + ${presenterScreen.getSelfPresenterTag()}" >
+                                <button type="button" name="editScreenId">Edit</button>
+                            </a></span>
+                        <span class="td"><button type="submit" name="removeScreenId" th:value="${presenterScreen.getId()}">Remove</button></span>
+                        <script th:inline="javascript">
+                            /*<![CDATA[*/
+                            $(/*[[${'#updateRowButton' + presenterScreen.getId()}]]*/).hide();
+                            /*]]>*/
+                        </script>
+                    </form>
+                    <form action="#" th:action="@{/addScreen/} + ${experiment.appNameInternal}" class="tr" th:object="${PresenterScreen}" method="post">
+                        <span class="td"><input type="text" name="title" id="title" /></span>
+                        <span class="td"><input type="text" name="menuLabel" id="menuLabel" /></span>
+                        <span class="td">
+                            <select name="presenterType" id="presenterType">
+                                <option th:each="presentertype : ${presentertypes}" th:value="${presentertype}" th:text="${presentertype}" />
+                            </select>
+                        </span>
+                        <span class="td">
+                            <select name="backPresenterTag" id="backPresenterTag">
+                                <option th:each="presenter : ${experiment.getPresenterScreen()}" th:value="${presenter.getSelfPresenterTag()}" th:text="${presenter.getSelfPresenterTag()}" />
+                            </select>
+                        </span>
+                        <span class="td"><input type="text" name="selfPresenterTag" id="selfPresenterTag" /></span>
+                        <span class="td">
+                            <select name="nextPresenterTag" id="nextPresenterTag">
+                                <option th:each="presenter : ${experiment.getPresenterScreen()}" th:value="${presenter.getSelfPresenterTag()}" th:text="${presenter.getSelfPresenterTag()}" />
+                            </select>
+                        </span>
+                        <span class="td"><button type="submit" name="addScreen">Add Screen</button></span>                    
+                    </form>
                 </div>
-                <form th:each="presenterScreen : ${experiment.getPresenterScreen()}" class="tr" method="post" th:action="@{/removeScreen/} + ${experiment.appNameInternal}">
-                    <input type="hidden" th:value="${presenterScreen.getId()}"/>
-                    <span class="td"><input type="text" th:value="${presenterScreen.getTitle()}"/></span>
-                    <span class="td"><input type="text" th:value="${presenterScreen.getMenuLabel()}"/></span>
-                    <span class="td"><input type="text" th:value="${presenterScreen.getPresenterType()}"/></span>
-                    <span class="td">
-                        <select name="backPresenterTag" id="backPresenterTag">
-                            <option th:each="presenterTags : ${experiment.getPresenterScreen()}" th:value="${presenterTags.getSelfPresenterTag()}" th:text="${presenterTags.getSelfPresenterTag()}" th:selected="${presenterTags.getSelfPresenterTag() eq presenterScreen.getBackPresenterTag()}" />
-                        </select>
-                    </span>
-                    <span class="td"><input type="text" th:value="${presenterScreen.getSelfPresenterTag()}"/></span>
-                    <span class="td"> 
-                        <select name="nextPresenterTag" id="nextPresenterTag">
-                            <option th:each="presenterTags : ${experiment.getPresenterScreen()}" th:value="${presenterTags.getSelfPresenterTag()}" th:text="${presenterTags.getSelfPresenterTag()}" th:selected="${presenterTags.getSelfPresenterTag() eq presenterScreen.getNextPresenterTag()}" />
-                        </select>
-                    </span>
-                    <span class="td"><button type="submit" name="updateRow" th:value="${presenterScreen.getId()}">Update</button></span>
-                    <span class="td"><a th:href="${contextPath} + '/design/' + *{experiment.appNameInternal}+ '/screens?screen=' + ${presenterScreen.getSelfPresenterTag()}" >
-                            <button type="button" name="editScreenId">Edit</button>
-                        </a></span>
-                    <span class="td"><button type="submit" name="removeScreenId" th:value="${presenterScreen.getId()}">Remove</button></span>
-                </form>
-                <form action="#" th:action="@{/addScreen/} + ${experiment.appNameInternal}" class="tr" th:object="${PresenterScreen}" method="post">
-                    <span class="td"><input type="text" name="title" id="title" /></span>
-                    <span class="td"><input type="text" name="menuLabel" id="menuLabel" /></span>
-                    <span class="td">
-                        <select name="presenterType" id="presenterType">
-                            <option th:each="presentertype : ${presentertypes}" th:value="${presentertype}" th:text="${presentertype}" />
-                        </select>
-                    </span>
-                    <span class="td">
-                        <select name="backPresenterTag" id="backPresenterTag">
-                            <option th:each="presenter : ${experiment.getPresenterScreen()}" th:value="${presenter.getSelfPresenterTag()}" th:text="${presenter.getSelfPresenterTag()}" />
-                        </select>
-                    </span>
-                    <span class="td"><input type="text" name="selfPresenterTag" id="selfPresenterTag" /></span>
-                    <span class="td">
-                        <select name="nextPresenterTag" id="nextPresenterTag">
-                            <option th:each="presenter : ${experiment.getPresenterScreen()}" th:value="${presenter.getSelfPresenterTag()}" th:text="${presenter.getSelfPresenterTag()}" />
-                        </select>
-                    </span>
-                    <span class="td"><button type="submit" name="addScreen">Add Screen</button></span>                    
-                </form>
             </div>
         </div>
         <div th:fragment="editscreen">
