@@ -23,6 +23,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -58,6 +59,8 @@ public class PresenterScreen {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PresenterFeature> presenterFeatures = new ArrayList<>();
+    @OneToMany(mappedBy = "backPresenter", cascade = CascadeType.ALL, orphanRemoval = false, fetch = FetchType.LAZY)
+    private List<PresenterScreen> presenterScreens = new ArrayList<>();
 
     public PresenterScreen() {
     }
@@ -77,6 +80,9 @@ public class PresenterScreen {
 
     public long getId() {
         return id;
+    }
+    public int getUsageCount() {
+        return presenterScreens.size();
     }
 
     public void setId(long id) {

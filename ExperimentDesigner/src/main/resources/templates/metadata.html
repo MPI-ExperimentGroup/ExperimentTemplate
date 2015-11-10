@@ -21,61 +21,76 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  * @author Peter Withers <peter.withers@mpi.nl>
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
     <body>
-        <table th:fragment="metadatatable">
-            <tbody>
-                <tr>
-                    <td><b>ID</b></td>
-                    <td><b>Post Name</b></td>
-                    <td><b>Registration Field</b></td>
-                    <td><b>Controlled Regex</b></td>
-                    <td><b>Controlled Message</b></td>
-                    <td><b>Prevent Server Duplicates</b></td>
-                    <td><b>Duplicates Controlled Message</b></td>
-                </tr>
-                <tr  class="clickablerow" th:each="metadataRow : ${experiment.getMetadata()}">
-                    <td th:text="${metadataRow.getId()}">metadataRow.getId()</td>
-                    <td th:text="${metadataRow.getPostName()}">metadataRow.getPostName()</td>
-                    <td th:text="${metadataRow.getRegistrationField()}">metadataRow.getRegistrationField()</td>
-                    <td th:text="${metadataRow.getControlledRegex()}">metadataRow.getControlledRegex()</td>
-                    <td th:text="${metadataRow.getControlledMessage()}">metadataRow.getControlledMessage()</td>
-                    <td th:text="${metadataRow.isPreventServerDuplicates()}">metadataRow.isPreventServerDuplicates()</td>
-                    <td th:text="${metadataRow.getDuplicatesControlledMessage()}">metadataRow.getDuplicatesControlledMessage()</td>
-                    <td><form action="#" th:action="@{/design}" method="post"><button type="submit" name="deleteMetadata" th:value="${metadataRow.getId()}">Delete</button></form></td>
-                    <!--<td><button type="submit" name="updateMetadata" th:value="${metadataRow.getId()}">Update</button></td>-->
-                </tr>
-                <tr><td colspan="7">
-                        <div class="addpresenterdiv">
-                            <form action="#" th:action="@{/design}" th:object="${experiment.getMetadata()}" method="post">
-                                <table class="addpresenterform">
-                                    <tr>
-                                        <td><b>Post Name</b></td>
-                                        <td><b>Registration Field</b></td>
-                                        <td><b>Controlled Regex</b></td>
-                                        <td><b>Controlled Message</b></td>
-                                        <td><b>Prevent Server Duplicates</b></td>
-                                        <td><b>Duplicates Controlled Message</b></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td> <input type="text" id="postName" name="postName"/></td>
-                                        <td><input type="text" id="registrationField" name="registrationField" /></td>
-                                        <td><input type="text" id="controlledRegex" name="controlledRegex" /></td>
-                                        <td><input type="text" id="controlledMessage" name="controlledMessage" /></td>
-                                        <td><input type="checkbox" id="preventServerDuplicates" name="preventServerDuplicates" /></td>
-                                        <td><input type="text" id="duplicatesControlledMessage" name="duplicatesControlledMessage" /></td>
-                                        <td><button type="submit" name="addMetadata">addMetadata</button></td>
-                                    </tr>
-                                </table>
-                            </form>
-                        </div>
-                    </td></tr>
-            </tbody>
-        </table>
+        <div th:fragment="metadatatable">
+            <div class="presenter">
+                <div class="table">
+                    <div class="tr">
+                        <span class="td">ID</span>
+                        <span class="td">Post Name</span>
+                        <span class="td">Registration Field</span>
+                        <span class="td">Controlled Regex</span>
+                        <span class="td">Controlled Message</span>
+                        <span class="td">Prevent Server Duplicates</span>
+                        <span class="td">Duplicates Controlled Message</span>
+                    </div>
+                    <form th:each="metadataRow : ${experiment.getMetadata()}" th:fragment="meatadataRow" class="tr" th:id="${'updateRowForm' + metadataRow.getId()}">
+                        <input type="hidden" name="id" th:value="${metadataRow.getId()}" />
+                        <span class="td"><input type="text" name="postName" th:value="${metadataRow.getPostName()}" th:onchange="${'$(updateRowButton' + metadataRow.getId() + ').show();'}" /></span>
+                        <span class="td"><input type="text" name="registrationField" th:value="${metadataRow.getRegistrationField()}" th:onchange="${'$(updateRowButton' + metadataRow.getId() + ').show();'}" /></span>
+                        <span class="td"><input type="text" name="controlledRegex" th:value="${metadataRow.getControlledRegex()}" th:onchange="${'$(updateRowButton' + metadataRow.getId() + ').show();'}" /></span>
+                        <span class="td"><input type="text" name="controlledMessage" th:value="${metadataRow.getControlledMessage()}" th:onchange="${'$(updateRowButton' + metadataRow.getId() + ').show();'}" /></span>
+                        <span class="td"><input type="text" name="preventServerDuplicates" th:value="${metadataRow.isPreventServerDuplicates()}" th:onchange="${'$(updateRowButton' + metadataRow.getId() + ').show();'}" /></span>
+                        <span class="td"><input type="text" name="duplicatesControlledMessage" th:value="${metadataRow.getDuplicatesControlledMessage()}" th:onchange="${'$(updateRowButton' + metadataRow.getId() + ').show();'}" /></span>
+                        <span class="td"><button th:id="${'updateRowButton' + metadataRow.getId()}"  style="display: none" type="button" name="updateRow" th:onclick="${'postChanges(' + metadataRow.getId() + ')'}">Save Changes</button></span>
+                        <span class="td"><button type="button" th:onclick="${'deleteRow(' + presenterScreen.getId() + ')'}">Remove</button></span>
+                    </form>
+                    <div id="metadataErrorDiv"></div>
+                    <form action="#" id="addMetadataForm" class="tr" method="post">
+                        <span class="td"><input type="text" name="postName" /></span>
+                        <span class="td"><input type="text" name="registrationField" /></span>
+                        <span class="td"><input type="text" name="controlledRegex" /></span>
+                        <span class="td"><input type="text" name="controlledMessage" /></span>
+                        <span class="td"><input type="text" name="preventServerDuplicates" /></span>
+                        <span class="td"><input type="text" name="duplicatesControlledMessage" /></span>
+                        <span class="td"><button type="button" name="addScreen" onclick="postScreen()">Add Screen</button></span>                    
+                    </form>
+                    <script th:inline="javascript">
+                                /*<![CDATA[*/
+//                                $("[id^=updateRowButton]").hide();
+                                        function postChanges(rowId) {
+                                        $.post(/*[[@{/updateScreen/} + ${experiment.appNameInternal}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
+                                        $('#metadataErrorDiv').text("");
+                                                $('#updateRowForm' + rowId).html(data);
+                                                $('#updateRowButton' + rowId).hide();
+                                        }).fail(function(data) {
+                                        var jsonResponse = JSON.parse(data.responseText);
+                                                $('#metadataErrorDiv').text(jsonResponse.message);
+                                        });
+                                        };
+                                        function deleteRow(rowId) {
+                                        $.post(/*[[@{/deleteScreen/} + ${experiment.appNameInternal}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
+                                        $('#metadataErrorDiv').text("");
+                                                $('#updateRowForm' + rowId).html(data);
+                                                $('#updateRowButton' + rowId).hide();
+                                        }).fail(function(data) {
+                                        var jsonResponse = JSON.parse(data.responseText);
+                                                $('#metadataErrorDiv').text(jsonResponse.message);
+                                        });
+                                        };
+                                        function postScreen() {
+                                        $.post(/*[[@{/addMetadata/} + ${experiment.appNameInternal}]]*/, $("#addMetadataForm").serialize()).done(function(data) {
+                                        $('#metadataErrorDiv').text("");
+                                                $('#metadataErrorDiv').before(data);
+                                        }).fail(function(data) {
+                                        var jsonResponse = JSON.parse(data.responseText);
+                                                $('#metadataErrorDiv').text(jsonResponse.message);
+                                        });
+                                        }
+                                /*]]>*/
+                    </script>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

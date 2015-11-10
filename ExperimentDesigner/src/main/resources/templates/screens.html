@@ -58,7 +58,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <span class="td"><a th:href="${contextPath} + '/design/' + ${experiment.appNameInternal}+ '/screens?screen=' + ${presenterScreen.getSelfPresenterTag()}" >
                                 <button type="button" name="editScreenId">Edit</button>
                             </a></span>
-                        <span class="td"><button type="submit" name="removeScreenId" th:value="${presenterScreen.getId()}">Remove</button></span>
+                        <span class="td"><button type="button" th:onclick="${'deleteRow(' + presenterScreen.getId() + ')'}">Remove</button></span>
                     </form>
                     <div id="screenErrorDiv"></div>
                     <form action="#" id="addScreenForm" class="tr" method="post">
@@ -88,16 +88,23 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 /*<![CDATA[*/
 //                                $("[id^=updateRowButton]").hide();
                                         function postChanges(rowId) {
-                                        $.ajax({
-                                        type: "POST",
-                                                url: /*[[@{/updateScreen/} + ${experiment.appNameInternal}]]*/,
-                                                data: $('#updateRowForm' + rowId).serialize(),
-                                                success: function (data) {
+                                        $.post(/*[[@{/updateScreen/} + ${experiment.appNameInternal}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
+                                        $('#screenErrorDiv').text("");
                                                 $('#updateRowForm' + rowId).html(data);
-                                                        $('#updateRowButton' + rowId).hide();
-                                                }
-                                        }
-                                        );
+                                                $('#updateRowButton' + rowId).hide();
+                                        }).fail(function(data) {
+                                        var jsonResponse = JSON.parse(data.responseText);
+                                                $('#screenErrorDiv').text(jsonResponse.message);
+                                        });
+                                        };
+                                        function deleteRow(rowId) {
+                                        $.post(/*[[@{/deleteScreen/} + ${experiment.appNameInternal}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
+                                        $('#screenErrorDiv').text("");
+                                                $('#updateRowForm' + rowId).remove();
+                                        }).fail(function(data) {
+                                        var jsonResponse = JSON.parse(data.responseText);
+                                                $('#screenErrorDiv').text(jsonResponse.message);
+                                        });
                                         };
                                         function postScreen() {
                                         $.post(/*[[@{/addScreen/} + ${experiment.appNameInternal}]]*/, $("#addScreenForm").serialize()).done(function(data) {

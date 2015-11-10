@@ -78,16 +78,20 @@ public class DesignController {
         return "redirect:experiments";
     }
 
-    @RequestMapping(value = "/removeScreen/{appName}", method = RequestMethod.POST)
-    public String deleteScreen(Model model, HttpServletRequest request, @PathVariable String appName,
-            @RequestParam(value = "removeScreenId", required = true) final long screenId) {
+    @RequestMapping(value = "/deleteScreen/{appName}", method = RequestMethod.POST)
+    public String deleteScreen(@ModelAttribute PresenterScreen prersenterScreen, Model model, HttpServletRequest request, @PathVariable String appName) {
         final Experiment experiment = experimentRepository.findByAppNameInternal(appName);
-        experiment.getPresenterScreen().remove(presenterScreenRepository.findOne(screenId));
+        final PresenterScreen presenterToDelete = presenterScreenRepository.findOne(prersenterScreen.getId());
+        if (presenterToDelete.getUsageCount() > 0) {
+            throw new IllegalArgumentException("Cannot delete because it is in use by " + presenterToDelete.getUsageCount() + " screens.");
+        }
+        experiment.getPresenterScreen().remove(presenterToDelete);
         experimentRepository.save(experiment);
         model.addAttribute("contextPath", request.getContextPath());
+        model.addAttribute("updatedPresenterScreen", null);
         model.addAttribute("detailType", "screens");
         populateModel(model, appName);
-        return "design";
+        return "screens :: screenRow";
     }
 
     @RequestMapping(value = "/addScreen/{appName}", method = RequestMethod.POST)
