@@ -36,7 +36,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <span class="td"></span>
                         <span class="td"></span>
                     </div>
-                    <form th:each="presenterScreen : ${experiment.getPresenterScreen()}" class="tr" method="post" th:action="@{/removeScreen/} + ${experiment.appNameInternal}">
+                    <form th:each="presenterScreen : ${experiment.getPresenterScreen()}" class="tr" th:id="${'updateRowForm' + presenterScreen.getId()}">
                         <input type="hidden" th:value="${presenterScreen.getId()}"/>
                         <span class="td"><input type="text" th:value="${presenterScreen.getTitle()}" th:onchange="${'$(updateRowButton' + presenterScreen.getId() + ').show();'}" /></span>
                         <span class="td"><input type="text" th:value="${presenterScreen.getMenuLabel()}" th:onchange="${'$(updateRowButton' + presenterScreen.getId() + ').show();'}" /></span>
@@ -60,7 +60,19 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <script th:inline="javascript">
                             /*<![CDATA[*/
                             $(/*[[${'#updateRowButton' + presenterScreen.getId()}]]*/).hide();
-                            /*]]>*/
+                            $(/*[[${'#updateRowForm' + presenterScreen.getId()}]]*/).submit(function (e) {
+                            $.ajax({
+                            type: "POST",
+                                    url: /*[[@{/removeScreen/} + ${experiment.appNameInternal}]]*/,
+                                    data: $(/*[[${'#updateRowForm' + presenterScreen.getId()}]]*/).serialize(),
+                                    success: function (data)
+                                    {
+                                    $(/*[[${'#updateRowForm' + presenterScreen.getId()}]]*/).text(data);
+                                    }
+                            });
+                                    e.preventDefault();
+                            });
+                                    /*]]>*/
                         </script>
                     </form>
                     <form action="#" th:action="@{/addScreen/} + ${experiment.appNameInternal}" class="tr" th:object="${PresenterScreen}" method="post">
