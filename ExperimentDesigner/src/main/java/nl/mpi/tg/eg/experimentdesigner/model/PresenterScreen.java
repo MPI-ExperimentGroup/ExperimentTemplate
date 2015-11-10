@@ -20,18 +20,19 @@ package nl.mpi.tg.eg.experimentdesigner.model;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.namespace.QName;
 
 /**
@@ -46,10 +47,11 @@ public class PresenterScreen {
     private long id;
     private String title;
     private String menuLabel;
-    private String backPresenterTag;
-    @Column(unique = true)
+    @ManyToOne
+    private PresenterScreen backPresenter;
     private String selfPresenterTag;
-    private String nextPresenterTag;
+    @ManyToOne
+    private PresenterScreen nextPresenter;
 
     @Enumerated(EnumType.STRING)
     private PresenterType presenterType;
@@ -60,12 +62,12 @@ public class PresenterScreen {
     public PresenterScreen() {
     }
 
-    public PresenterScreen(String title, String menuLabel, String backPresenterTag, String selfPresenterTag, String nextPresenterTag, PresenterType presenterType) {
+    public PresenterScreen(String title, String menuLabel, PresenterScreen backPresenter, String selfPresenterTag, PresenterScreen nextPresenter, PresenterType presenterType) {
         this.title = title;
         this.menuLabel = menuLabel;
-        this.backPresenterTag = backPresenterTag;
+        this.backPresenter = backPresenter;
         this.selfPresenterTag = selfPresenterTag;
-        this.nextPresenterTag = nextPresenterTag;
+        this.nextPresenter = nextPresenter;
         this.presenterType = presenterType;
     }
 
@@ -75,6 +77,10 @@ public class PresenterScreen {
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     @XmlAttribute
@@ -97,11 +103,21 @@ public class PresenterScreen {
 
     @XmlAttribute(name = "back")
     public String getBackPresenterTag() {
-        return backPresenterTag;
+        return (backPresenter == null) ? null : backPresenter.selfPresenterTag;
     }
 
-    public void setBackPresenterTag(String backPresenterTag) {
-        this.backPresenterTag = backPresenterTag;
+    @XmlTransient
+    public PresenterScreen getBackPresenter() {
+        return backPresenter;
+    }
+
+    @XmlTransient
+    public PresenterScreen getNextPresenter() {
+        return nextPresenter;
+    }
+
+    public void setBackPresenter(PresenterScreen backPresenter) {
+        this.backPresenter = backPresenter;
     }
 
     @XmlAttribute(name = "self")
@@ -115,11 +131,11 @@ public class PresenterScreen {
 
     @XmlAttribute(name = "next")
     public String getNextPresenterTag() {
-        return nextPresenterTag;
+        return (nextPresenter == null) ? null : nextPresenter.selfPresenterTag;
     }
 
-    public void setNextPresenterTag(String nextPresenterTag) {
-        this.nextPresenterTag = nextPresenterTag;
+    public void setNextPresenter(PresenterScreen nextPresenter) {
+        this.nextPresenter = nextPresenter;
     }
 
     @XmlAttribute(name = "type")

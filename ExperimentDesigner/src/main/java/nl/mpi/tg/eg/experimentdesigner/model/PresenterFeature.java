@@ -51,7 +51,7 @@ public class PresenterFeature {
     @Enumerated(EnumType.STRING)
     private FeatureType featureType;
     @ElementCollection
-    private List<String> stimulusTags;
+    private List<String> stimulusTags = new ArrayList<>();
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PresenterFeature> presenterFeatures = new ArrayList<>();
     private HashMap<FeatureAttribute, String> featureAttributes = new HashMap<>();
@@ -65,11 +65,6 @@ public class PresenterFeature {
 //        this.presenterFeatures = new ArrayList<>();
         this.featureText = featureText;
 //        this.featureAttributes = new HashMap<>();
-        if (featureType.canHaveStimulus()) {
-            stimulusTags = new ArrayList<>();
-        } else {
-            stimulusTags = null;
-        }
     }
 
     public long getId() {
@@ -127,7 +122,7 @@ public class PresenterFeature {
     @XmlElementWrapper(name = "stimuli")
     @XmlElement(name = "tag")
     public List<String> getStimulusTags() {
-        return stimulusTags;
+        return (featureType.canHaveStimulus()) ? stimulusTags : null;
     }
 
     public void setStimulusTags(List<String> stimulusTags) {

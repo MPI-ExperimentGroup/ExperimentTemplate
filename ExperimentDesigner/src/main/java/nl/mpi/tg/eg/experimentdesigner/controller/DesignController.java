@@ -103,6 +103,24 @@ public class DesignController {
         return "design";
     }
 
+    @RequestMapping(value = "/updateScreen/{appName}", method = RequestMethod.POST)
+    public String updateScreen(@ModelAttribute PresenterScreen prersenterScreen, Model model, HttpServletRequest request, @PathVariable String appName) {
+//        final Experiment experiment = experimentRepository.findByAppNameInternal(appName);
+//        experiment.getPresenterScreen().add(prersenterScreen);
+        final PresenterScreen updatedScreen = presenterScreenRepository.findOne(prersenterScreen.getId());
+        updatedScreen.setTitle(prersenterScreen.getTitle());
+        updatedScreen.setMenuLabel(prersenterScreen.getMenuLabel());
+        updatedScreen.setSelfPresenterTag(prersenterScreen.getSelfPresenterTag());
+        updatedScreen.setBackPresenter(prersenterScreen.getBackPresenter());
+        updatedScreen.setNextPresenter(prersenterScreen.getNextPresenter());
+        presenterScreenRepository.save(updatedScreen);
+        model.addAttribute("contextPath", request.getContextPath());
+        model.addAttribute("updatedPresenterScreen", updatedScreen);
+        model.addAttribute("detailType", "screens");
+        populateModel(model, appName);
+        return "screens :: screenRow";
+    }
+
     @RequestMapping("/design")
     public String designView(Model model, HttpServletRequest request) {
         return "redirect:experiments";

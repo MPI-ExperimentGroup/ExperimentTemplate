@@ -103,7 +103,7 @@ public enum FeatureType {
         this.canHaveStimulus = canHaveStimulus;
         this.hasCorrectIncorrect = hasCorrectIncorrect;
     }
-
+    
     public boolean canHaveFeatures() {
         return canHaveFeatures;
     }
