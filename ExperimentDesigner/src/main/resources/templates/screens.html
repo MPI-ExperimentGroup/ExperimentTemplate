@@ -47,37 +47,21 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 <option th:each="experimentScreens : ${experiment.getPresenterScreen()}" th:value="${experimentScreens.getId()}" th:text="${experimentScreens.getSelfPresenterTag()}" th:selected="${experimentScreens.equals(presenterScreen.getBackPresenter())}" />
                             </select>
                         </span>
-                        <span class="td"><input type="text" name="selfPresenterTag" th:value="${presenterScreen.getSelfPresenterTag()}" th:onchange="${'$(updateRowButton' + presenterScreen.getId() + ').show();'}"/></span>
+                        <span class="td"><input type="hidden" name="selfPresenterTag" th:value="${presenterScreen.getSelfPresenterTag()}"/><span th:text="${presenterScreen.getSelfPresenterTag()}"></span></span>
                         <span class="td"> 
                             <select name="nextPresenter" th:onchange="${'$(updateRowButton' + presenterScreen.getId() + ').show();'}">
                                 <option value="-1">&lt;none&gt;</option>
                                 <option th:each="experimentScreens : ${experiment.getPresenterScreen()}" th:value="${experimentScreens.getId()}" th:text="${experimentScreens.getSelfPresenterTag()}" th:selected="${experimentScreens.equals(presenterScreen.getNextPresenter())}" />
                             </select>
                         </span>
-                        <span class="td"><button th:id="${'updateRowButton' + presenterScreen.getId()}"  type="button" name="updateRow" th:onclick="${'postChanges(' + presenterScreen.getId() + ')'}">Save Changes</button></span>
+                        <span class="td"><button th:id="${'updateRowButton' + presenterScreen.getId()}"  style="display: none" type="button" name="updateRow" th:onclick="${'postChanges(' + presenterScreen.getId() + ')'}">Save Changes</button></span>
                         <span class="td"><a th:href="${contextPath} + '/design/' + ${experiment.appNameInternal}+ '/screens?screen=' + ${presenterScreen.getSelfPresenterTag()}" >
                                 <button type="button" name="editScreenId">Edit</button>
                             </a></span>
                         <span class="td"><button type="submit" name="removeScreenId" th:value="${presenterScreen.getId()}">Remove</button></span>
                     </form>
-                    <script th:inline="javascript">
-                        /*<![CDATA[*/
-                        $("[id^=updateRowButton]").hide();
-                                function postChanges(rowId) {
-                                $.ajax({
-                                type: "POST",
-                                        url: /*[[@{/updateScreen/} + ${experiment.appNameInternal}]]*/,
-                                        data: $('#updateRowForm' + rowId).serialize(),
-                                        success: function (data) {
-                                        $('#updateRowForm' + rowId).html(data);
-                                                $('#updateRowButton' + rowId).hide();
-                                        }
-                                }
-                                );
-                                }
-                        /*]]>*/
-                    </script>
-                    <form action="#" th:action="@{/addScreen/} + ${experiment.appNameInternal}" class="tr" th:object="${PresenterScreen}" method="post">
+                    <div id="screenErrorDiv"></div>
+                    <form action="#" id="addScreenForm" class="tr" method="post">
                         <span class="td"><input type="text" name="title" id="title" /></span>
                         <span class="td"><input type="text" name="menuLabel" id="menuLabel" /></span>
                         <span class="td">
@@ -86,18 +70,46 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             </select>
                         </span>
                         <span class="td">
-                            <select name="backPresenterTag" id="backPresenterTag">
-                                <option th:each="presenter : ${experiment.getPresenterScreen()}" th:value="${presenter.getSelfPresenterTag()}" th:text="${presenter.getSelfPresenterTag()}" />
+                            <select name="backPresenter">
+                                <option value="-1">&lt;none&gt;</option>
+                                <option th:each="presenter : ${experiment.getPresenterScreen()}" th:value="${presenter.getId()}" th:text="${presenter.getSelfPresenterTag()}" />
                             </select>
                         </span>
-                        <span class="td"><input type="text" name="selfPresenterTag" id="selfPresenterTag" /></span>
+                        <span class="td"><input type="text" name="selfPresenterTag" id="selfPresenterTag" pattern="[A-Za-z0-9]{3}[A-Za-z0-9]*" title="Internal screen name must be only letters or numbers and more than three characters long" /></span>
                         <span class="td">
-                            <select name="nextPresenterTag" id="nextPresenterTag">
-                                <option th:each="presenter : ${experiment.getPresenterScreen()}" th:value="${presenter.getSelfPresenterTag()}" th:text="${presenter.getSelfPresenterTag()}" />
+                            <select name="nextPresenter">
+                                <option value="-1">&lt;none&gt;</option>
+                                <option th:each="presenter : ${experiment.getPresenterScreen()}" th:value="${presenter.getId()}" th:text="${presenter.getSelfPresenterTag()}" />
                             </select>
                         </span>
-                        <span class="td"><button type="submit" name="addScreen">Add Screen</button></span>                    
+                        <span class="td"><button type="button" name="addScreen" onclick="postScreen()">Add Screen</button></span>                    
                     </form>
+                    <script th:inline="javascript">
+                                /*<![CDATA[*/
+//                                $("[id^=updateRowButton]").hide();
+                                        function postChanges(rowId) {
+                                        $.ajax({
+                                        type: "POST",
+                                                url: /*[[@{/updateScreen/} + ${experiment.appNameInternal}]]*/,
+                                                data: $('#updateRowForm' + rowId).serialize(),
+                                                success: function (data) {
+                                                $('#updateRowForm' + rowId).html(data);
+                                                        $('#updateRowButton' + rowId).hide();
+                                                }
+                                        }
+                                        );
+                                        };
+                                        function postScreen() {
+                                        $.post(/*[[@{/addScreen/} + ${experiment.appNameInternal}]]*/, $("#addScreenForm").serialize()).done(function(data) {
+                                        $('#screenErrorDiv').text("");
+                                                $('#screenErrorDiv').before(data);
+                                        }).fail(function(data) {
+                                        var jsonResponse = JSON.parse(data.responseText);
+                                                $('#screenErrorDiv').text(jsonResponse.message);
+                                        });
+                                        }
+                                /*]]>*/
+                    </script>
                 </div>
             </div>
         </div>

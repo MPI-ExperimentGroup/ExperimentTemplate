@@ -90,17 +90,26 @@ public class DesignController {
         return "design";
     }
 
-    @RequestMapping(value = "/addScreen/{appName}", params = {"addScreen"}, method = RequestMethod.POST)
+    @RequestMapping(value = "/addScreen/{appName}", method = RequestMethod.POST)
     public String addScreen(@ModelAttribute PresenterScreen prersenterScreen, Model model, HttpServletRequest request, @PathVariable String appName) {
+        if (prersenterScreen.getSelfPresenterTag() == null || prersenterScreen.getSelfPresenterTag().length() < 3) {
+            throw new IllegalArgumentException("Self (Action) must be longer than three characters.");
+        }
+        if (!prersenterScreen.getSelfPresenterTag().matches("^[a-zA-Z0-9]+$")) {
+            throw new IllegalArgumentException("Self (Action) must only be letters or numbers.");
+        }
+        if (presenterScreenRepository.findBySelfPresenterTag(prersenterScreen.getSelfPresenterTag()) != null) {
+            throw new IllegalArgumentException("Self (Action) must be unique.");
+        }
         final Experiment experiment = experimentRepository.findByAppNameInternal(appName);
         experiment.getPresenterScreen().add(prersenterScreen);
         final PresenterScreen savedScreen = presenterScreenRepository.save(prersenterScreen);
         experimentRepository.save(experiment);
         model.addAttribute("contextPath", request.getContextPath());
-        model.addAttribute("presenterScreen", savedScreen);
+        model.addAttribute("updatedPresenterScreen", savedScreen);
         model.addAttribute("detailType", "screens");
         populateModel(model, appName);
-        return "design";
+        return "screens :: screenRow";
     }
 
     @RequestMapping(value = "/updateScreen/{appName}", method = RequestMethod.POST)
@@ -110,7 +119,7 @@ public class DesignController {
         final PresenterScreen updatedScreen = presenterScreenRepository.findOne(prersenterScreen.getId());
         updatedScreen.setTitle(prersenterScreen.getTitle());
         updatedScreen.setMenuLabel(prersenterScreen.getMenuLabel());
-        updatedScreen.setSelfPresenterTag(prersenterScreen.getSelfPresenterTag());
+//        updatedScreen.setSelfPresenterTag(prersenterScreen.getSelfPresenterTag());
         updatedScreen.setBackPresenter(prersenterScreen.getBackPresenter());
         updatedScreen.setNextPresenter(prersenterScreen.getNextPresenter());
         presenterScreenRepository.save(updatedScreen);
