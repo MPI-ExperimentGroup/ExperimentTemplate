@@ -25,7 +25,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <div th:fragment="screenlisting">
             <div class="presenter">
                 <div class="table">
-                    <div class="tr">
+                    <div th:fragment="screenRowHeader" class="tr">
                         <!--<span class="td">ID</span>-->
                         <span class="td">Title</span>
                         <span class="td">Menu Label</span>
@@ -84,7 +84,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         </span>
                         <span class="td"><button type="button" name="addScreen" onclick="postScreen()">Add Screen</button></span>                    
                     </form>
-                    <script th:inline="javascript">
+                    <script th:fragment="screenRowScript" th:inline="javascript">
                                 /*<![CDATA[*/
 //                                $("[id^=updateRowButton]").hide();
                                         function postChanges(rowId) {
@@ -121,46 +121,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             </div>
         </div>
         <div th:fragment="editscreen">
-            <table class="presenter">
-                <tbody>
-                    <tr>
-                        <td><b>ID</b></td>
-                        <td><b>Title</b></td>
-                        <td><b>Menu Label</b></td>
-                        <td><b>Screen Type</b></td>
-                        <td><b>Back Action</b></td>
-                        <td><b>Self (Action)</b></td>
-                        <td><b>Next Action</b></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td th:text="${presenterScreen.getId()}">1</td>
-                        <td th:text="${presenterScreen.getTitle()}">Title</td>
-                        <td th:text="${presenterScreen.getMenuLabel()}">menuLabel</td>
-                        <td th:text="${presenterScreen.getPresenterType()}">presenterScreenType</td>
-                        <td>
-                            <select name="backPresenterTag" id="backPresenterTag">
-                                <option th:each="presenterTags : ${experiment.getPresenterScreen()}" th:value="${presenterTags.getSelfPresenterTag()}" th:text="${presenterTags.getSelfPresenterTag()}" th:selected="${presenterTags.getSelfPresenterTag() eq presenterScreen.getBackPresenterTag()}" />
-                            </select>
-                        </td>
-                        <td th:text="${presenterScreen.getSelfPresenterTag()}">SelfTag</td>
-                        <td>
-                            <select name="nextPresenterTag" id="nextPresenterTag">
-                                <option th:each="presenterTags : ${experiment.getPresenterScreen()}" th:value="${presenterTags.getSelfPresenterTag()}" th:text="${presenterTags.getSelfPresenterTag()}" th:selected="${presenterTags.getSelfPresenterTag() eq presenterScreen.getNextPresenterTag()}" />
-                            </select>
-                        </td>
-                        <td>
-                            <form action="#" th:action="@{/design}" method="post">
-                                <button type="submit" name="updateRow" th:value="${presenterScreen.getId()}">Update</button>
-                            </form>
-                        </td>
-                        <td>
-                            <form action="#" th:action="@{/removeScreen/} + ${experiment.appNameInternal}" method="post">
-                                <button type="submit" name="removeScreenId" th:value="${presenterScreen.getId()}">Remove</button>
-                            </form>
-                        </td>
-                    </tr>            
+            <div class="presenter">
+                <div class="table">
+                    <div th:include="screens :: screenRowHeader" class="tr"></div>
+                    <div th:include="screens :: screenRow" class="tr"></div>
+                    <div id="screenErrorDiv"></div>
+                    <script th:include="screens :: screenRowScript"></script>
+                </div>
+                <table>
                     <tr>
                         <td colspan="9"><b>Features</b></td>
                     </tr>
@@ -207,8 +175,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             </div>
                         </td>
                     </tr>
-                </tbody>
-            </table>
+                </table>
+            </div>
         </div>
     </body>
 </html>
