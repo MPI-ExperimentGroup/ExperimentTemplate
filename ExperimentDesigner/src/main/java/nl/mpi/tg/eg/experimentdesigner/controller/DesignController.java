@@ -147,14 +147,19 @@ public class DesignController {
         return "design";
     }
 
+    @RequestMapping("/experiment/{appName}/screen/{presenterScreen}")
+    public String editPresenterScreen(Model model, HttpServletRequest request, @PathVariable String appName, @PathVariable PresenterScreen presenterScreen) {
+        model.addAttribute("contextPath", request.getContextPath());
+        model.addAttribute("detailType", "screens");
+        model.addAttribute("presenterScreen", presenterScreen);
+        populateModel(model, appName);
+        return "design";
+    }
+
     @RequestMapping("/experiment/{appName}/{detailType}")
-    public String designView(Model model, HttpServletRequest request, @PathVariable String appName, @PathVariable String detailType,
-            @RequestParam(value = "screen", required = false, defaultValue = "") String screenTag) {
+    public String designView(Model model, HttpServletRequest request, @PathVariable String appName, @PathVariable String detailType) {
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", detailType);
-        if (screenTag != null && !screenTag.isEmpty()) {
-            model.addAttribute("presenterScreen", presenterScreenRepository.findBySelfPresenterTag(screenTag));
-        }
         populateModel(model, appName);
         return "design";
     }

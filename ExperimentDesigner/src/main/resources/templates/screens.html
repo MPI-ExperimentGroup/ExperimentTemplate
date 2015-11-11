@@ -55,7 +55,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             </select>
                         </span>
                         <span class="td"><button th:id="${'updateRowButton' + presenterScreen.getId()}"  style="display: none" type="button" name="updateRow" th:onclick="${'postChanges(' + presenterScreen.getId() + ')'}">Save Changes</button></span>
-                        <span class="td"><a th:href="${contextPath} + '/design/' + ${experiment.appNameInternal}+ '/screens?screen=' + ${presenterScreen.getSelfPresenterTag()}" >
+                        <span class="td"><a th:href="${contextPath} + '/experiment/' + ${experiment.appNameInternal} + '/screen/' + ${presenterScreen.getId()}" >
                                 <button type="button" name="editScreenId">Edit</button>
                             </a></span>
                         <span class="td"><button type="button" th:onclick="${'deleteRow(' + presenterScreen.getId() + ')'}">Remove</button></span>
