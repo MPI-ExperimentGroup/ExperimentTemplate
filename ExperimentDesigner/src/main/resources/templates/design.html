@@ -188,7 +188,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 /*padding-top: 6px;*/
             }
             #pageTitle {
-                text-align: center;                
+                text-align: left;                
                 font-size: 24px;
             }
             #editarea {
@@ -198,6 +198,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             .clickablerow:hover {                                
                 background: #9cb9bb;
                 color: #164f51;
+            }
+            #sideMenu {
+                vertical-align: top;
             }
             td.experimentmenu {
                 vertical-align: top;
@@ -253,46 +256,35 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 <td><a th:href="${contextPath} + '/logout'">logout</a></td>
             </tr>
         </table>
-        <table class="experimentmenu menu" th:if="${experiment} ne null">
-            <tr><td th:if="${experiment} ne null" id="pageTitle" th:text="${experiment.appNameDisplay}"></td></tr>            
-            <tr>
-                <td><a th:attr="class=${detailType eq 'configuration' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/design/' + *{experiment.appNameInternal} + '/configuration'">Configuration</a></td>
-                <td><a th:attr="class=${detailType eq 'metadata' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/design/' + *{experiment.appNameInternal} + '/metadata'">Metadata</a></td>
-                <td><a th:attr="class=${detailType eq 'stimuli' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/design/' + *{experiment.appNameInternal} + '/stimuli'">Stimuli</a></td>
-                <td><a th:attr="class=${detailType eq 'screens' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/design/' + *{experiment.appNameInternal}+ '/screens'">Screens</a></td>
-                <td><a th:href="${contextPath} + '/configuration/' + ${experiment.appNameInternal}">Configuration XML</a></td>
-            </tr>
-        </table>
-        <table id="main">
-            <tr>
-                <!--                <td class="experimentmenu">
-                                    <table th:if="${detailType} eq 'screens'" class="menu">
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <a th:attr="class=${screenTag eq presenterTags.getSelfPresenterTag() ? 'sel' : 'unsel'}" th:each="presenterTags : ${experiment.getPresenterScreen()}" th:text="${presenterTags.getSelfPresenterTag()}" th:href="${contextPath} + '/design/' + *{experiment.appNameInternal}+ '/screens?screen=' + ${presenterTags.getSelfPresenterTag()}" />
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>    
-                                    <table th:if="${detailType} eq 'screens'" class="menu">
-                                        <tbody>
-                                            <tr>
-                                                <td><a  th:attr="class=${screenTag eq '' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/design/' + *{experiment.appNameInternal}+ '/screens'">Add Screen</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>             
-                                </td>-->
-                <td id="editarea">
-                    <table th:if="${detailType} eq 'experiments'" th:include="experiments :: experimentlisting"></table>
-                    <div th:if="${detailType} eq 'configuration'" th:include="experiments :: editexperiment"></div>
-                    <table class="presenter" th:if="${detailType} eq 'metadata'" th:include="metadata :: metadatatable"></table>
-                    <table class="presenter" th:if="${detailType} eq 'stimuli'" th:include="stimuli :: stimulitable"></table>
-                    <div th:if="${detailType} eq 'screens' and ${presenterScreen == null}" th:include="screens :: screenlisting"></div>
-                    <div th:if="${detailType} eq 'screens' and ${presenterScreen != null}" th:include="screens :: editscreen"></div>
-                </td>
-            </tr>
-        </table>
+        <table>
+            <tr th:if="${experiment} ne null"><td></td><td><div id="pageTitle" th:text="${experiment.appNameDisplay}"></div></td></tr>
+            <tr><td id="sideMenu">
+                    <table class="experimentmenu menu" th:if="${experiment} ne null">            
+                        <tr>
+                            <td><a th:attr="class=${detailType eq 'configuration' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiment/' + *{experiment.appNameInternal} + '/configuration'">Configuration</a></td>
+                        </tr><tr>
+                            <td><a th:attr="class=${detailType eq 'metadata' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiment/' + *{experiment.appNameInternal} + '/metadata'">Metadata</a></td>
+                        </tr><tr>
+                            <td><a th:attr="class=${detailType eq 'stimuli' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiment/' + *{experiment.appNameInternal} + '/stimuli'">Stimuli</a></td>
+                        </tr><tr>
+                            <td><a th:attr="class=${detailType eq 'screens' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiment/' + *{experiment.appNameInternal}+ '/screens'">Screens</a></td>
+                        </tr><tr>
+                            <td><a th:href="${contextPath} + '/configuration/' + ${experiment.appNameInternal}">Configuration XML</a></td>
+                        </tr>
+                    </table>
+                </td><td><table id="main">
+                        <tr>
+                            <td id="editarea">
+                                <table th:if="${detailType} eq 'experiments'" th:include="experiments :: experimentlisting"></table>
+                                <div th:if="${detailType} eq 'configuration'" th:include="experiments :: editexperiment"></div>
+                                <table th:if="${detailType} eq 'metadata'" th:include="metadata :: metadatatable"></table>
+                                <table th:if="${detailType} eq 'stimuli'" th:include="stimuli :: stimulitable"></table>
+                                <div th:if="${detailType} eq 'screens' and ${presenterScreen == null}" th:include="screens :: screenlisting"></div>
+                                <div th:if="${detailType} eq 'screens' and ${presenterScreen != null}" th:include="screens :: editscreen"></div>
+                            </td>
+                        </tr>
+                    </table>
+                </td></tr></table>
         <footer>      
             <span th:text="'experimentcount ' + ${experimentcount}"></span> -
             <span th:text="'metadatacount ' + ${metadatacount}"></span> -

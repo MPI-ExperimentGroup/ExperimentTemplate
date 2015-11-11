@@ -26,7 +26,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <div class="presenter">
                 <div class="table">
                     <div class="tr">
-                        <span class="td">ID</span>
                         <span class="td">Post Name</span>
                         <span class="td">Registration Field</span>
                         <span class="td">Controlled Regex</span>
@@ -40,10 +39,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <span class="td"><input type="text" name="registrationField" th:value="${metadataRow.getRegistrationField()}" th:onchange="${'$(updateRowButton' + metadataRow.getId() + ').show();'}" /></span>
                         <span class="td"><input type="text" name="controlledRegex" th:value="${metadataRow.getControlledRegex()}" th:onchange="${'$(updateRowButton' + metadataRow.getId() + ').show();'}" /></span>
                         <span class="td"><input type="text" name="controlledMessage" th:value="${metadataRow.getControlledMessage()}" th:onchange="${'$(updateRowButton' + metadataRow.getId() + ').show();'}" /></span>
-                        <span class="td"><input type="text" name="preventServerDuplicates" th:value="${metadataRow.isPreventServerDuplicates()}" th:onchange="${'$(updateRowButton' + metadataRow.getId() + ').show();'}" /></span>
+                        <span class="td"><input type="checkbox" name="preventServerDuplicates" th:value="${metadataRow.isPreventServerDuplicates()}" th:onchange="${'$(updateRowButton' + metadataRow.getId() + ').show();'}" /></span>
                         <span class="td"><input type="text" name="duplicatesControlledMessage" th:value="${metadataRow.getDuplicatesControlledMessage()}" th:onchange="${'$(updateRowButton' + metadataRow.getId() + ').show();'}" /></span>
                         <span class="td"><button th:id="${'updateRowButton' + metadataRow.getId()}"  style="display: none" type="button" name="updateRow" th:onclick="${'postChanges(' + metadataRow.getId() + ')'}">Save Changes</button></span>
-                        <span class="td"><button type="button" th:onclick="${'deleteRow(' + presenterScreen.getId() + ')'}">Remove</button></span>
+                        <span class="td"><button type="button" th:onclick="${'deleteRow(' + metadataRow.getId() + ')'}">Remove</button></span>
                     </form>
                     <div id="metadataErrorDiv"></div>
                     <form action="#" id="addMetadataForm" class="tr" method="post">
@@ -53,13 +52,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <span class="td"><input type="text" name="controlledMessage" /></span>
                         <span class="td"><input type="text" name="preventServerDuplicates" /></span>
                         <span class="td"><input type="text" name="duplicatesControlledMessage" /></span>
-                        <span class="td"><button type="button" name="addScreen" onclick="postScreen()">Add Screen</button></span>                    
+                        <span class="td"><button type="button" name="addScreen" onclick="postScreen()">Add Metadata Field</button></span>                    
                     </form>
                     <script th:inline="javascript">
                                 /*<![CDATA[*/
 //                                $("[id^=updateRowButton]").hide();
                                         function postChanges(rowId) {
-                                        $.post(/*[[@{/updateScreen/} + ${experiment.appNameInternal}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
+                                        $.post(/*[[${contextPath + '/experiment/' + experiment.appNameInternal + '/metadata/update'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
                                         $('#metadataErrorDiv').text("");
                                                 $('#updateRowForm' + rowId).html(data);
                                                 $('#updateRowButton' + rowId).hide();
@@ -69,7 +68,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                         });
                                         };
                                         function deleteRow(rowId) {
-                                        $.post(/*[[@{/deleteScreen/} + ${experiment.appNameInternal}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
+                                        $.post(/*[[${contextPath + '/experiment/' + experiment.appNameInternal + '/metadata/delete'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
                                         $('#metadataErrorDiv').text("");
                                                 $('#updateRowForm' + rowId).html(data);
                                                 $('#updateRowButton' + rowId).hide();
@@ -79,7 +78,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                         });
                                         };
                                         function postScreen() {
-                                        $.post(/*[[@{/addMetadata/} + ${experiment.appNameInternal}]]*/, $("#addMetadataForm").serialize()).done(function(data) {
+                                        $.post(/*[[${contextPath + '/experiment/' + experiment.appNameInternal + '/metadata/add'}]]*/, $("#addMetadataForm").serialize()).done(function(data) {
                                         $('#metadataErrorDiv').text("");
                                                 $('#metadataErrorDiv').before(data);
                                         }).fail(function(data) {

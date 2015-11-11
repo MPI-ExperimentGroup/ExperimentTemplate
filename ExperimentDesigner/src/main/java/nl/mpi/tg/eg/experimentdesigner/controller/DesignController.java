@@ -78,7 +78,7 @@ public class DesignController {
         return "redirect:experiments";
     }
 
-    @RequestMapping(value = "/deleteScreen/{appName}", method = RequestMethod.POST)
+    @RequestMapping(value = "/experiment/{appName}/deleteScreen", method = RequestMethod.POST)
     public String deleteScreen(@ModelAttribute PresenterScreen prersenterScreen, Model model, HttpServletRequest request, @PathVariable String appName) {
         final Experiment experiment = experimentRepository.findByAppNameInternal(appName);
         final PresenterScreen presenterToDelete = presenterScreenRepository.findOne(prersenterScreen.getId());
@@ -94,7 +94,7 @@ public class DesignController {
         return "screens :: screenRow";
     }
 
-    @RequestMapping(value = "/addScreen/{appName}", method = RequestMethod.POST)
+    @RequestMapping(value = "/experiment/{appName}/addScreen", method = RequestMethod.POST)
     public String addScreen(@ModelAttribute PresenterScreen prersenterScreen, Model model, HttpServletRequest request, @PathVariable String appName) {
         if (prersenterScreen.getSelfPresenterTag() == null || prersenterScreen.getSelfPresenterTag().length() < 3) {
             throw new IllegalArgumentException("Self (Action) must be longer than three characters.");
@@ -116,7 +116,7 @@ public class DesignController {
         return "screens :: screenRow";
     }
 
-    @RequestMapping(value = "/updateScreen/{appName}", method = RequestMethod.POST)
+    @RequestMapping(value = "/experiment/{appName}/updateScreen", method = RequestMethod.POST)
     public String updateScreen(@ModelAttribute PresenterScreen prersenterScreen, Model model, HttpServletRequest request, @PathVariable String appName) {
 //        final Experiment experiment = experimentRepository.findByAppNameInternal(appName);
 //        experiment.getPresenterScreen().add(prersenterScreen);
@@ -139,7 +139,7 @@ public class DesignController {
         return "redirect:experiments";
     }
 
-    @RequestMapping("/design/{appName}")
+    @RequestMapping("/experiment/{appName}")
     public String designView(Model model, HttpServletRequest request, @PathVariable String appName) {
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", "configuration");
@@ -147,7 +147,7 @@ public class DesignController {
         return "design";
     }
 
-    @RequestMapping("/design/{appName}/{detailType}")
+    @RequestMapping("/experiment/{appName}/{detailType}")
     public String designView(Model model, HttpServletRequest request, @PathVariable String appName, @PathVariable String detailType,
             @RequestParam(value = "screen", required = false, defaultValue = "") String screenTag) {
         model.addAttribute("contextPath", request.getContextPath());
@@ -159,7 +159,7 @@ public class DesignController {
         return "design";
     }
 
-    @RequestMapping(value = "/design/{appName}", params = {"addMetadata"}, method = RequestMethod.POST)
+    @RequestMapping(value = "/experiment/{appName}/metadata/add", method = RequestMethod.POST)
     public String addMetadata(final HttpServletRequest req, Model model, @ModelAttribute Metadata metadata, @PathVariable String appName) {
 //        final Long experimentId = Long.valueOf(req.getParameter("experimentId"));
 //        final PresenterScreen presenterScreen = presenterScreenRepository.findOne(rowId);
@@ -169,8 +169,18 @@ public class DesignController {
         populateModel(model, appName);
         return "design";
     }
+    @RequestMapping(value = "/experiment/{appName}/metadata/update", method = RequestMethod.POST)
+    public String updateMetadata(final HttpServletRequest req, Model model, @ModelAttribute Metadata metadata, @PathVariable String appName) {
+//        final Long experimentId = Long.valueOf(req.getParameter("experimentId"));
+//        final PresenterScreen presenterScreen = presenterScreenRepository.findOne(rowId);
+        metadataRepository.save(metadata);
+//        presenterScreen.getPresenterFeatureList().add(presenterFeature);
+//        presenterScreenRepository.save(presenterScreen);
+        populateModel(model, appName);
+        return "design";
+    }
 
-    @RequestMapping(value = "/design/{appName}", params = {"deleteMetadata"}, method = RequestMethod.POST)
+    @RequestMapping(value = "/experiment/{appName}/metdata/delete", method = RequestMethod.POST)
     public String deleteMetadata(final HttpServletRequest req, Model model, @ModelAttribute Metadata metadata, @PathVariable String appName) {
         final Long metadataId = Long.valueOf(req.getParameter("deleteMetadata"));
         metadataRepository.delete(metadataId);
@@ -178,7 +188,7 @@ public class DesignController {
         return "design";
     }
 
-    @RequestMapping(value = "/design/{appName}", params = {"addFeature"}, method = RequestMethod.POST)
+    @RequestMapping(value = "/experiment/{appName}/feature/add", method = RequestMethod.POST)
     public String addFeature(final HttpServletRequest req, Model model, @ModelAttribute PresenterFeature presenterFeature, @PathVariable String appName) {
         final Long rowId = Long.valueOf(req.getParameter("addFeature"));
         final PresenterScreen presenterScreen = presenterScreenRepository.findOne(rowId);
@@ -189,7 +199,7 @@ public class DesignController {
         return "design";
     }
 
-    @RequestMapping(value = "/design/{appName}", params = {"addSubFeature"}, method = RequestMethod.POST)
+    @RequestMapping(value = "/experiment/{appName}", params = {"addSubFeature"}, method = RequestMethod.POST)
     public String addSubFeature(final HttpServletRequest req, Model model, @ModelAttribute PresenterFeature childFeature, @PathVariable String appName) {
         final Long rowId = Long.valueOf(req.getParameter("addSubFeature"));
         final PresenterFeature parentFeature = presenterFeatureRepository.findOne(rowId);
@@ -200,7 +210,7 @@ public class DesignController {
         return "design";
     }
 
-    @RequestMapping(value = "/design/{appName}", params = {"deleteFeature"}, method = RequestMethod.POST)
+    @RequestMapping(value = "/experiment/{appName}", params = {"deleteFeature"}, method = RequestMethod.POST)
     public String deleteFeature(final HttpServletRequest req, Model model, @PathVariable String appName) {
         final Long rowId = Long.valueOf(req.getParameter("deleteFeature"));
         final Long presenterId = Long.valueOf(req.getParameter("parentId"));
@@ -213,7 +223,7 @@ public class DesignController {
         return "design";
     }
 
-    @RequestMapping(value = "/design/{appName}", params = {"deleteSubFeature"}, method = RequestMethod.POST)
+    @RequestMapping(value = "/experiment/{appName}", params = {"deleteSubFeature"}, method = RequestMethod.POST)
     public String deleteSubFeature(final HttpServletRequest req, Model model, @PathVariable String appName) {
         final Long rowId = Long.valueOf(req.getParameter("deleteSubFeature"));
         final Long presenterId = Long.valueOf(req.getParameter("parentId"));
@@ -226,7 +236,7 @@ public class DesignController {
         return "design";
     }
 
-    @RequestMapping(value = "/design/{appName}", params = {"saveFeature"}, method = RequestMethod.POST)
+    @RequestMapping(value = "/experiment/{appName}", params = {"saveFeature"}, method = RequestMethod.POST)
     public String saveFeature(final HttpServletRequest req, Model model, @PathVariable String appName) {
         final Long rowId = Long.valueOf(req.getParameter("saveFeature"));
         final PresenterFeature modifiedFeature = presenterFeatureRepository.findOne(rowId);
@@ -237,7 +247,7 @@ public class DesignController {
         return "design";
     }
 
-    @RequestMapping(value = "/design/{appName}", params = {"removeScreen"})
+    @RequestMapping(value = "/experiment/{appName}", params = {"removeScreen"})
     public String removeScreen(final HttpServletRequest req, Model model, @PathVariable String appName) {
         final Long rowId = Long.valueOf(req.getParameter("removeScreen"));
         presenterScreenRepository.delete(rowId);
