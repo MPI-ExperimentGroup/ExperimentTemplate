@@ -33,13 +33,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <span class="td">Prevent Server Duplicates</span>
                         <span class="td">Duplicates Controlled Message</span>
                     </div>
-                    <form th:each="metadataRow : ${experiment.getMetadata()}" th:fragment="meatadataRow" class="tr" th:id="${'updateRowForm' + metadataRow.getId()}">
+                    <form th:each="metadataRow : ${(updatedMetadata != null)? updatedMetadata : experiment.getMetadata()}" th:fragment="metadataRow" class="tr" th:id="${'updateRowForm' + metadataRow.getId()}">
                         <input type="hidden" name="id" th:value="${metadataRow.getId()}" />
                         <span class="td"><input type="text" name="postName" th:value="${metadataRow.getPostName()}" th:onchange="${'$(updateRowButton' + metadataRow.getId() + ').show();'}" /></span>
                         <span class="td"><input type="text" name="registrationField" th:value="${metadataRow.getRegistrationField()}" th:onchange="${'$(updateRowButton' + metadataRow.getId() + ').show();'}" /></span>
                         <span class="td"><input type="text" name="controlledRegex" th:value="${metadataRow.getControlledRegex()}" th:onchange="${'$(updateRowButton' + metadataRow.getId() + ').show();'}" /></span>
                         <span class="td"><input type="text" name="controlledMessage" th:value="${metadataRow.getControlledMessage()}" th:onchange="${'$(updateRowButton' + metadataRow.getId() + ').show();'}" /></span>
-                        <span class="td"><input type="checkbox" name="preventServerDuplicates" th:value="${metadataRow.isPreventServerDuplicates()}" th:onchange="${'$(updateRowButton' + metadataRow.getId() + ').show();'}" /></span>
+                        <span class="td"><input type="checkbox" name="preventServerDuplicates" value="true" th:checked="${metadataRow.isPreventServerDuplicates()}" th:onchange="${'$(updateRowButton' + metadataRow.getId() + ').show();'}" /></span>
                         <span class="td"><input type="text" name="duplicatesControlledMessage" th:value="${metadataRow.getDuplicatesControlledMessage()}" th:onchange="${'$(updateRowButton' + metadataRow.getId() + ').show();'}" /></span>
                         <span class="td"><button th:id="${'updateRowButton' + metadataRow.getId()}"  style="display: none" type="button" name="updateRow" th:onclick="${'postChanges(' + metadataRow.getId() + ')'}">Save Changes</button></span>
                         <span class="td"><button type="button" th:onclick="${'deleteRow(' + metadataRow.getId() + ')'}">Remove</button></span>
@@ -50,7 +50,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <span class="td"><input type="text" name="registrationField" /></span>
                         <span class="td"><input type="text" name="controlledRegex" /></span>
                         <span class="td"><input type="text" name="controlledMessage" /></span>
-                        <span class="td"><input type="text" name="preventServerDuplicates" /></span>
+                        <span class="td"><input type="checkbox" value="true" name="preventServerDuplicates" /></span>
                         <span class="td"><input type="text" name="duplicatesControlledMessage" /></span>
                         <span class="td"><button type="button" name="addScreen" onclick="postScreen()">Add Metadata Field</button></span>                    
                     </form>
@@ -70,7 +70,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                         function deleteRow(rowId) {
                                         $.post(/*[[${contextPath + '/experiment/' + experiment.appNameInternal + '/metadata/delete'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
                                         $('#metadataErrorDiv').text("");
-                                                $('#updateRowForm' + rowId).html(data);
+                                                $('#updateRowForm' + rowId).remove();
                                                 $('#updateRowButton' + rowId).hide();
                                         }).fail(function(data) {
                                         var jsonResponse = JSON.parse(data.responseText);

@@ -36,7 +36,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <span class="td"></span>
                         <span class="td"></span>
                     </div>
-                    <form th:each="presenterScreen : ${(presenterScreen != null)? updatedPresenterScreen : experiment.getPresenterScreen()}" th:object="${presenterScreen}" th:fragment="screenRow" class="tr" th:id="${'updateRowForm' + presenterScreen.getId()}">
+                    <form th:each="presenterScreen : ${(updatedPresenterScreen != null)? updatedPresenterScreen : experiment.getPresenterScreen()}" th:fragment="screenRow" class="tr" th:id="${'updateRowForm' + presenterScreen.getId()}">
                         <input type="hidden" name="id" th:value="${presenterScreen.getId()}" />
                         <span class="td"><input type="text" name="title" th:value="${presenterScreen.getTitle()}" th:onchange="${'$(updateRowButton' + presenterScreen.getId() + ').show();'}" /></span>
                         <span class="td"><input type="text" name="menuLabel" th:value="${presenterScreen.getMenuLabel()}" th:onchange="${'$(updateRowButton' + presenterScreen.getId() + ').show();'}" /></span>
@@ -88,7 +88,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 /*<![CDATA[*/
 //                                $("[id^=updateRowButton]").hide();
                                         function postChanges(rowId) {
-                                        $.post(/*[[@{/updateScreen/} + ${experiment.appNameInternal}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
+                                        $.post(/*[[${contextPath + '/experiment/' + experiment.appNameInternal + '/screens/update'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
                                         $('#screenErrorDiv').text("");
                                                 $('#updateRowForm' + rowId).html(data);
                                                 $('#updateRowButton' + rowId).hide();
@@ -98,7 +98,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                         });
                                         };
                                         function deleteRow(rowId) {
-                                        $.post(/*[[@{/deleteScreen/} + ${experiment.appNameInternal}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
+                                        $.post(/*[[${contextPath + '/experiment/' + experiment.appNameInternal + '/screens/delete'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
                                         $('#screenErrorDiv').text("");
                                                 $('#updateRowForm' + rowId).remove();
                                         }).fail(function(data) {
@@ -107,7 +107,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                         });
                                         };
                                         function postScreen() {
-                                        $.post(/*[[@{/addScreen/} + ${experiment.appNameInternal}]]*/, $("#addScreenForm").serialize()).done(function(data) {
+                                        $.post(/*[[${contextPath + '/experiment/' + experiment.appNameInternal + '/screens/add'}]]*/, $("#addScreenForm").serialize()).done(function(data) {
                                         $('#screenErrorDiv').text("");
                                                 $('#screenErrorDiv').before(data);
                                         }).fail(function(data) {

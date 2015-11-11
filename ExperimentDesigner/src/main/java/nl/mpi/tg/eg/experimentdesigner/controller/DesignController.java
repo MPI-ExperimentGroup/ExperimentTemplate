@@ -78,7 +78,7 @@ public class DesignController {
         return "redirect:experiments";
     }
 
-    @RequestMapping(value = "/experiment/{appName}/deleteScreen", method = RequestMethod.POST)
+    @RequestMapping(value = "/experiment/{appName}/screens/delete", method = RequestMethod.POST)
     public String deleteScreen(@ModelAttribute PresenterScreen prersenterScreen, Model model, HttpServletRequest request, @PathVariable String appName) {
         final Experiment experiment = experimentRepository.findByAppNameInternal(appName);
         final PresenterScreen presenterToDelete = presenterScreenRepository.findOne(prersenterScreen.getId());
@@ -94,7 +94,7 @@ public class DesignController {
         return "screens :: screenRow";
     }
 
-    @RequestMapping(value = "/experiment/{appName}/addScreen", method = RequestMethod.POST)
+    @RequestMapping(value = "/experiment/{appName}/screens/add", method = RequestMethod.POST)
     public String addScreen(@ModelAttribute PresenterScreen prersenterScreen, Model model, HttpServletRequest request, @PathVariable String appName) {
         if (prersenterScreen.getSelfPresenterTag() == null || prersenterScreen.getSelfPresenterTag().length() < 3) {
             throw new IllegalArgumentException("Self (Action) must be longer than three characters.");
@@ -116,7 +116,7 @@ public class DesignController {
         return "screens :: screenRow";
     }
 
-    @RequestMapping(value = "/experiment/{appName}/updateScreen", method = RequestMethod.POST)
+    @RequestMapping(value = "/experiment/{appName}/screens/update", method = RequestMethod.POST)
     public String updateScreen(@ModelAttribute PresenterScreen prersenterScreen, Model model, HttpServletRequest request, @PathVariable String appName) {
 //        final Experiment experiment = experimentRepository.findByAppNameInternal(appName);
 //        experiment.getPresenterScreen().add(prersenterScreen);
@@ -161,31 +161,33 @@ public class DesignController {
 
     @RequestMapping(value = "/experiment/{appName}/metadata/add", method = RequestMethod.POST)
     public String addMetadata(final HttpServletRequest req, Model model, @ModelAttribute Metadata metadata, @PathVariable String appName) {
-//        final Long experimentId = Long.valueOf(req.getParameter("experimentId"));
-//        final PresenterScreen presenterScreen = presenterScreenRepository.findOne(rowId);
-        metadataRepository.save(metadata);
-//        presenterScreen.getPresenterFeatureList().add(presenterFeature);
-//        presenterScreenRepository.save(presenterScreen);
+        final Metadata savedMetadata = metadataRepository.save(metadata);
+        final Experiment experiment = experimentRepository.findByAppNameInternal(appName);
+        experiment.getMetadata().add(metadata);
+        experimentRepository.save(experiment);
+        model.addAttribute("updatedMetadata", savedMetadata);
         populateModel(model, appName);
-        return "design";
-    }
-    @RequestMapping(value = "/experiment/{appName}/metadata/update", method = RequestMethod.POST)
-    public String updateMetadata(final HttpServletRequest req, Model model, @ModelAttribute Metadata metadata, @PathVariable String appName) {
-//        final Long experimentId = Long.valueOf(req.getParameter("experimentId"));
-//        final PresenterScreen presenterScreen = presenterScreenRepository.findOne(rowId);
-        metadataRepository.save(metadata);
-//        presenterScreen.getPresenterFeatureList().add(presenterFeature);
-//        presenterScreenRepository.save(presenterScreen);
-        populateModel(model, appName);
-        return "design";
+        return "metadata :: metadataRow";
     }
 
-    @RequestMapping(value = "/experiment/{appName}/metdata/delete", method = RequestMethod.POST)
-    public String deleteMetadata(final HttpServletRequest req, Model model, @ModelAttribute Metadata metadata, @PathVariable String appName) {
-        final Long metadataId = Long.valueOf(req.getParameter("deleteMetadata"));
-        metadataRepository.delete(metadataId);
+    @RequestMapping(value = "/experiment/{appName}/metadata/update", method = RequestMethod.POST)
+    public String updateMetadata(final HttpServletRequest req, Model model, @ModelAttribute Metadata metadata, @PathVariable String appName) {
+        final Metadata savedMetadata = metadataRepository.save(metadata);
+        model.addAttribute("updatedMetadata", savedMetadata);
         populateModel(model, appName);
-        return "design";
+        return "metadata :: metadataRow";
+    }
+
+    @RequestMapping(value = "/experiment/{appName}/metadata/delete", method = RequestMethod.POST)
+    public String deleteMetadata(final HttpServletRequest req, Model model, @ModelAttribute Metadata metadata, @PathVariable String appName) {
+        final Metadata storedMetadata = metadataRepository.findOne(metadata.getId());
+        final Experiment experiment = experimentRepository.findByAppNameInternal(appName);
+        experiment.getMetadata().remove(storedMetadata);
+        experimentRepository.save(experiment);
+        metadataRepository.delete(storedMetadata);
+        model.addAttribute("updatedMetadata", null);
+        populateModel(model, appName);
+        return "metadata :: metadataRow";
     }
 
     @RequestMapping(value = "/experiment/{appName}/feature/add", method = RequestMethod.POST)

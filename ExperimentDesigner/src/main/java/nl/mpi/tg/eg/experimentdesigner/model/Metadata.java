@@ -47,6 +47,10 @@ public class Metadata {
         return id;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public Metadata(String postName, String registrationField, String controlledRegex, String controlledMessage, boolean preventServerDuplicates, String duplicatesControlledMessage) {
         this.postName = postName;
         this.registrationField = registrationField;
