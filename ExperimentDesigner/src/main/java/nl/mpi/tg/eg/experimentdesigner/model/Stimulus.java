@@ -64,6 +64,10 @@ public class Stimulus {
         return id;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     @XmlAttribute
     public String getMp3() {
         return mp3;
