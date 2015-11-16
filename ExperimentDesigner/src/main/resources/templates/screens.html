@@ -47,7 +47,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 <option th:each="experimentScreens : ${experiment.getPresenterScreen()}" th:value="${experimentScreens.getId()}" th:text="${experimentScreens.getSelfPresenterTag()}" th:selected="${experimentScreens.equals(presenterScreen.getBackPresenter())}" />
                             </select>
                         </span>
-                        <span class="td"><input type="hidden" name="selfPresenterTag" th:value="${presenterScreen.getSelfPresenterTag()}"/><span th:text="${presenterScreen.getSelfPresenterTag()}"></span></span>
+                        <span class="td" th:if="${detailType} eq 'screens'"><input type="hidden" name="selfPresenterTag" th:value="${presenterScreen.getSelfPresenterTag()}"/><span th:text="${presenterScreen.getSelfPresenterTag()}"></span></span>
+                        <span class="td" th:if="${detailType} eq 'screen'"><input type="text" name="selfPresenterTag" th:value="${presenterScreen.getSelfPresenterTag()}" th:onchange="${'$(updateRowButton' + presenterScreen.getId() + ').show();'}" /></span>
                         <span class="td"> 
                             <select name="nextPresenter" th:onchange="${'$(updateRowButton' + presenterScreen.getId() + ').show();'}">
                                 <option value="-1">&lt;none&gt;</option>
@@ -55,10 +56,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             </select>
                         </span>
                         <span class="td"><button th:id="${'updateRowButton' + presenterScreen.getId()}"  style="display: none" type="button" name="updateRow" th:onclick="${'postChanges(' + presenterScreen.getId() + ')'}">Save Changes</button></span>
-                        <span class="td"><a th:href="${contextPath} + '/experiment/' + ${experiment.appNameInternal} + '/screen/' + ${presenterScreen.getId()}" >
+                        <span class="td" th:if="${detailType} eq 'screens'"><a th:href="${contextPath} + '/experiment/' + ${experiment.appNameInternal} + '/screen/' + ${presenterScreen.getId()}" >
                                 <button type="button" name="editScreenId">Edit</button>
                             </a></span>
-                        <span class="td"><button type="button" th:onclick="${'deleteRow(' + presenterScreen.getId() + ')'}">Remove</button></span>
+                        <span class="td" th:if="${detailType} eq 'screen'"><button type="button" th:onclick="${'deleteRow(' + presenterScreen.getId() + ')'}">Delete Screen</button></span>
                     </form>
                     <div id="screenErrorDiv"></div>
                     <form action="#" id="addScreenForm" class="tr" method="post">
@@ -88,7 +89,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 /*<![CDATA[*/
 //                                $("[id^=updateRowButton]").hide();
                                         function postChanges(rowId) {
-                                        $.post(/*[[${contextPath + '/experiment/' + experiment.appNameInternal + '/screens/update'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
+                                        $.post(/*[[${contextPath + '/experiment/' + experiment.appNameInternal + '/screen/update'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
                                         $('#screenErrorDiv').text("");
                                                 $('#updateRowForm' + rowId).html(data);
                                                 $('#updateRowButton' + rowId).hide();
@@ -98,16 +99,17 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                         });
                                         };
                                         function deleteRow(rowId) {
-                                        $.post(/*[[${contextPath + '/experiment/' + experiment.appNameInternal + '/screens/delete'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
-                                        $('#screenErrorDiv').text("");
-                                                $('#updateRowForm' + rowId).remove();
+                                        $.post(/*[[${contextPath + '/experiment/' + experiment.appNameInternal + '/screen/delete'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
+//                                        $('#screenErrorDiv').text("");
+//                                                $('#updateRowForm' + rowId).remove();
+                                        window.location.href = /*[[${contextPath + '/experiment/' + experiment.appNameInternal + '/screens'}]]*/;
                                         }).fail(function(data) {
                                         var jsonResponse = JSON.parse(data.responseText);
                                                 $('#screenErrorDiv').text(jsonResponse.message);
                                         });
                                         };
                                         function postScreen() {
-                                        $.post(/*[[${contextPath + '/experiment/' + experiment.appNameInternal + '/screens/add'}]]*/, $("#addScreenForm").serialize()).done(function(data) {
+                                        $.post(/*[[${contextPath + '/experiment/' + experiment.appNameInternal + '/screen/add'}]]*/, $("#addScreenForm").serialize()).done(function(data) {
                                         $('#screenErrorDiv').text("");
                                                 $('#screenErrorDiv').before(data);
                                         }).fail(function(data) {
@@ -124,9 +126,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <div class="presenter">
                 <div class="table">
                     <div th:include="screens :: screenRowHeader" class="tr"></div>
-                    <div th:include="screens :: screenRow" class="tr"></div>
+                    <form th:include="screens :: screenRow" class="tr" th:id="${'updateRowForm' + presenterScreen.getId()}"></form>
                     <div id="screenErrorDiv"></div>
-                    <script th:include="screens :: screenRowScript"></script>
+                    <script th:include="screens :: screenRowScript" th:inline="javascript"></script>
                 </div>
                 <table>
                     <tr>
@@ -164,18 +166,34 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                     </div>
                                 </div>
                                 <div class="addfeaturediv" th:if="(${objectType} eq 'PresenterScreen') or ${presenterScreen.getFeatureType() ne null and presenterScreen.getFeatureType().canHaveFeatures()}">
-                                    <form action="#" th:action="@{/design}"  th:object="${PresenterFeature}" method="post">
+                                    <form th:id="${'addForm' + objectType + presenterScreen.getId()}" method="post">
+                                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                                        <div class="errorDiv"/>
                                         <select id="FeatureType" name="FeatureType">
                                             <option th:each="featuretype : ${featuretypes}" th:value="${featuretype}" th:text="${featuretype}" />
-                                        </select>                                            
-                                        <button th:if="${objectType} eq 'PresenterScreen'" type="submit" name="addFeature" th:value="${presenterScreen.getId()}">Add Feature</button>
-                                        <button th:unless="${objectType} eq 'PresenterScreen'" type="submit" name="addSubFeature" th:value="${presenterScreen.getId()}">Add Feature</button>
+                                        </select>
+                                        <input th:if="${objectType} eq 'PresenterScreen'" type="hidden" name="addFeature" th:value="${presenterScreen.getId()}" />
+                                        <input th:unless="${objectType} eq 'PresenterScreen'" type="hidden" name="addSubFeature" th:value="${presenterScreen.getId()}" />
+                                        <button type="button" th:onclick="${'insertFeature(addForm' + objectType + presenterScreen.getId() + ')'}">Add Feature</button>
                                     </form>
                                 </div>
                             </div>
                         </td>
                     </tr>
                 </table>
+                <script th:fragment="featureScript" th:inline="javascript">
+                            /*<![CDATA[*/
+                            function insertFeature(event) {
+                            $.post(/*[[${contextPath + '/experiment/' + experiment.appNameInternal + '/feature/add'}]]*/, $(event).serialize()).done(function(data) {
+                            $(event).find('[class=errorDiv]').text("");
+                                    $(event).before(data);
+                            }).fail(function(data) {
+                            var jsonResponse = JSON.parse(data.responseText);
+                                    $(event).find('[class=errorDiv]').text(jsonResponse.message);
+                            });
+                            }
+                            /*]]>*/
+                </script>
             </div>
         </div>
     </body>
