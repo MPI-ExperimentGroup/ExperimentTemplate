@@ -158,24 +158,28 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 white-space: nowrap;
             }
 
-            .menu a {
+            .menu a, 
+            .menu input {
                 background: #b3acc9;
                 color: #2f205c;
                 display: block;
                 text-decoration: none;
             }
 
-            .menu a.sel{
+            .menu a.sel,
+            .menu input.sel
+            {
                 background: #463774;
                 color: #b3acc9;
             }
 
-            .menu a:hover {
+            .menu a:hover,
+            .menu input:hover {
                 background: #2f205c;
                 color: #b3acc9;
             }
-
-            .menu td {           
+            .menu td,
+            .menu input {       
                 width:20%;
                 margin: 1px;
                 /*height: 24px;*/
@@ -186,6 +190,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 text-align: center;
                 /*padding-bottom: 6px;*/
                 /*padding-top: 6px;*/
+            }
+            .menu input { 
+                width:100%;
+                height: 24px; 
+                border: none;
             }
             #pageTitle {
                 text-align: left;                
@@ -253,7 +262,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <tr>
                 <td><a th:attr="class=${detailType eq 'experiments' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiments'">Experiment List</a></td>
                 <td><a th:href="${contextPath} + '/edituser'">User Profile</a></td>
-                <td><a th:href="${contextPath} + '/logout'">logout</a></td>
+                <td><form th:action="@{/logout}" method="post"><input type="submit" value="Sign Out"/></form></td>
             </tr>
         </table>
         <table>
@@ -279,8 +288,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 <div th:if="${detailType} eq 'configuration'" th:include="experiments :: editexperiment"></div>
                                 <div th:if="${detailType} eq 'metadata'" th:include="metadata :: metadatatable"></div>
                                 <div th:if="${detailType} eq 'stimuli'" th:include="stimuli :: stimulitable"></div>
-                                <div th:if="${detailType} eq 'screens' and ${presenterScreen == null}" th:include="screens :: screenlisting"></div>
-                                <div th:if="${detailType} eq 'screens' and ${presenterScreen != null}" th:include="screens :: editscreen"></div>
+                                <div th:if="${detailType} eq 'screens'" th:include="screens :: screenlisting"></div>
+                                <div th:if="${detailType} eq 'screen'" th:include="screens :: editscreen"></div>
                             </td>
                         </tr>
                     </table>
