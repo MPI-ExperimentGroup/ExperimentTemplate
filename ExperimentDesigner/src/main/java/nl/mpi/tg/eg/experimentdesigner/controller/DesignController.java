@@ -78,23 +78,24 @@ public class DesignController {
         return "redirect:experiments";
     }
 
-    @RequestMapping(value = "/experiment/{appName}/screens/delete", method = RequestMethod.POST)
+    @RequestMapping(value = "/experiment/{appName}/screen/delete", method = RequestMethod.POST)
     public String deleteScreen(@ModelAttribute PresenterScreen prersenterScreen, Model model, HttpServletRequest request, @PathVariable String appName) {
         final Experiment experiment = experimentRepository.findByAppNameInternal(appName);
         final PresenterScreen presenterToDelete = presenterScreenRepository.findOne(prersenterScreen.getId());
         if (presenterToDelete.getUsageCount() > 0) {
-            throw new IllegalArgumentException("Cannot delete because it is in use by " + presenterToDelete.getUsageCount() + " screens.");
+            throw new IllegalArgumentException("Cannot delete because this screen is in use by " + presenterToDelete.getUsageCount() + " screens.");
         }
         experiment.getPresenterScreen().remove(presenterToDelete);
         experimentRepository.save(experiment);
-        model.addAttribute("contextPath", request.getContextPath());
-        model.addAttribute("updatedPresenterScreen", null);
-        model.addAttribute("detailType", "screens");
-        populateModel(model, appName);
-        return "screens :: screenRow";
+//        model.addAttribute("contextPath", request.getContextPath());
+//        model.addAttribute("updatedPresenterScreen", null);
+//        model.addAttribute("detailType", "screens");
+//        populateModel(model, appName);
+//        return "screens :: screenRow";
+        return "redirect:design";
     }
 
-    @RequestMapping(value = "/experiment/{appName}/screens/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/experiment/{appName}/screen/add", method = RequestMethod.POST)
     public String addScreen(@ModelAttribute PresenterScreen prersenterScreen, Model model, HttpServletRequest request, @PathVariable String appName) {
         if (prersenterScreen.getSelfPresenterTag() == null || prersenterScreen.getSelfPresenterTag().length() < 3) {
             throw new IllegalArgumentException("Self (Action) must be longer than three characters.");
@@ -116,7 +117,7 @@ public class DesignController {
         return "screens :: screenRow";
     }
 
-    @RequestMapping(value = "/experiment/{appName}/screens/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/experiment/{appName}/screen/update", method = RequestMethod.POST)
     public String updateScreen(@ModelAttribute PresenterScreen prersenterScreen, Model model, HttpServletRequest request, @PathVariable String appName) {
 //        final Experiment experiment = experimentRepository.findByAppNameInternal(appName);
 //        experiment.getPresenterScreen().add(prersenterScreen);
@@ -138,6 +139,11 @@ public class DesignController {
     public String designView(Model model, HttpServletRequest request) {
         return "redirect:experiments";
     }
+    
+    @RequestMapping("/")
+    public String designView1(Model model, HttpServletRequest request) {
+        return "redirect:experiments";
+    }
 
     @RequestMapping("/experiment/{appName}")
     public String designView(Model model, HttpServletRequest request, @PathVariable String appName) {
@@ -150,7 +156,7 @@ public class DesignController {
     @RequestMapping("/experiment/{appName}/screen/{presenterScreen}")
     public String editPresenterScreen(Model model, HttpServletRequest request, @PathVariable String appName, @PathVariable PresenterScreen presenterScreen) {
         model.addAttribute("contextPath", request.getContextPath());
-        model.addAttribute("detailType", "screens");
+        model.addAttribute("detailType", "screen");
         model.addAttribute("presenterScreen", presenterScreen);
         populateModel(model, appName);
         return "design";
@@ -203,10 +209,10 @@ public class DesignController {
         presenterScreen.getPresenterFeatureList().add(presenterFeature);
         presenterScreenRepository.save(presenterScreen);
         populateModel(model, appName);
-        return "design";
+        return "screens :: features";
     }
 
-    @RequestMapping(value = "/experiment/{appName}", params = {"addSubFeature"}, method = RequestMethod.POST)
+    @RequestMapping(value = "/experiment/{appName}/feature/add", params = {"addSubFeature"}, method = RequestMethod.POST)
     public String addSubFeature(final HttpServletRequest req, Model model, @ModelAttribute PresenterFeature childFeature, @PathVariable String appName) {
         final Long rowId = Long.valueOf(req.getParameter("addSubFeature"));
         final PresenterFeature parentFeature = presenterFeatureRepository.findOne(rowId);
@@ -214,7 +220,7 @@ public class DesignController {
         parentFeature.getPresenterFeatureList().add(childFeature);
         presenterFeatureRepository.save(parentFeature);
         populateModel(model, appName);
-        return "design";
+        return "screens :: features";
     }
 
     @RequestMapping(value = "/experiment/{appName}", params = {"deleteFeature"}, method = RequestMethod.POST)
