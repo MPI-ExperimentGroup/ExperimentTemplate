@@ -145,14 +145,6 @@ public class DesignController {
         return "redirect:experiments";
     }
 
-    @RequestMapping("/experiment/{appName}")
-    public String designView(Model model, HttpServletRequest request, @PathVariable String appName) {
-        model.addAttribute("contextPath", request.getContextPath());
-        model.addAttribute("detailType", "configuration");
-        populateModel(model, appName);
-        return "design";
-    }
-
     @RequestMapping("/experiment/{appName}/screen/{presenterScreen}")
     public String editPresenterScreen(Model model, HttpServletRequest request, @PathVariable String appName, @PathVariable PresenterScreen presenterScreen) {
         model.addAttribute("contextPath", request.getContextPath());

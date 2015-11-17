@@ -19,10 +19,14 @@ package nl.mpi.tg.eg.experimentdesigner.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import nl.mpi.tg.eg.experimentdesigner.dao.ExperimentRepository;
+import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * @since Nov 4, 2015 1:59:50 PM (creation date)
@@ -39,6 +43,40 @@ public class ExperimentController {
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", "experiments");
         model.addAttribute("allExperiments", experimentRepository.findAll());
+        return "design";
+    }
+
+    @RequestMapping("/experiment/{appName}")
+    public String designView(Model model, HttpServletRequest request, @PathVariable String appName) {
+        final Experiment experiment = experimentRepository.findByAppNameInternal(appName);
+        model.addAttribute("contextPath", request.getContextPath());
+        model.addAttribute("detailType", "configuration");
+        model.addAttribute("experiment", experiment);
+        return "design";
+    }
+
+    @RequestMapping(value = "/experiment/{appName}/update", method = RequestMethod.POST)
+    public String updateScreen(@ModelAttribute Experiment updatedExperiment, Model model, HttpServletRequest request, @PathVariable String appName) {
+        final Experiment experiment = experimentRepository.findByAppNameInternal(appName);
+        experiment.setAppNameDisplay(updatedExperiment.getAppNameDisplay());
+        experiment.setAppNameInternal(updatedExperiment.getAppNameInternal());
+        experiment.setBackgroundColour(updatedExperiment.getBackgroundColour());
+        experiment.setComplementColour0(updatedExperiment.getComplementColour0());
+        experiment.setComplementColour1(updatedExperiment.getComplementColour1());
+        experiment.setComplementColour2(updatedExperiment.getComplementColour2());
+        experiment.setComplementColour3(updatedExperiment.getComplementColour3());
+        experiment.setComplementColour4(updatedExperiment.getComplementColour4());
+        experiment.setDataSubmitUrl(updatedExperiment.getDataSubmitUrl());
+        experiment.setPrimaryColour0(updatedExperiment.getPrimaryColour0());
+        experiment.setPrimaryColour1(updatedExperiment.getPrimaryColour1());
+        experiment.setPrimaryColour2(updatedExperiment.getPrimaryColour2());
+        experiment.setPrimaryColour3(updatedExperiment.getPrimaryColour3());
+        experiment.setPrimaryColour4(updatedExperiment.getPrimaryColour4());
+        experiment.setStaticFilesUrl(updatedExperiment.getStaticFilesUrl());
+        experimentRepository.save(experiment);
+        model.addAttribute("contextPath", request.getContextPath());
+        model.addAttribute("detailType", "configuration");
+        model.addAttribute("experiment", experiment);
         return "design";
     }
 }

@@ -68,7 +68,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             </table>
         </div>
         <div th:fragment="editexperiment">
-            <form action="#" th:action="@{/design}" th:object="${experiment}" method="post">
+            <form action="#" th:action="${contextPath + '/experiment/' + experiment.appNameInternal + '/update'}" th:object="${experiment}" method="post">
+                <input type="hidden" th:field="*{id}" />
                 <table class="addpresenterform">
                     <tr><td><b>App Display Name</b></td><td><input type="text" th:field="*{appNameDisplay}" /></td></tr>
                     <tr><td><b>App Internal Name</b></td><td><input type="text" th:field="*{appNameInternal}" /></td></tr>
