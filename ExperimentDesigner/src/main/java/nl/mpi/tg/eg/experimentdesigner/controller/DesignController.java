@@ -208,7 +208,7 @@ public class DesignController {
 
     @RequestMapping(value = "/experiment/{appName}/feature/add", params = {"featureId"}, method = RequestMethod.POST)
     public String addSubFeature(final HttpServletRequest req, Model model, @ModelAttribute PresenterFeature childFeature, @PathVariable String appName) {
-        final Long rowId = Long.valueOf(req.getParameter("addSubFeature"));
+        final Long rowId = Long.valueOf(req.getParameter("featureId"));
         final PresenterFeature parentFeature = presenterFeatureRepository.findOne(rowId);
         presenterFeatureRepository.save(childFeature);
         parentFeature.getPresenterFeatureList().add(childFeature);
