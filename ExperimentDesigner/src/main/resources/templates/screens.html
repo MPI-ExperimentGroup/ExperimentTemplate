@@ -138,31 +138,34 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <td colspan="9">    
                             <div th:fragment="features">    
                                 <div class="featurestable" th:unless="${#lists.isEmpty(presenterScreen.getPresenterFeatureList())}">
-                                    <div class="featuresrow" th:each="features : ${presenterScreen.getPresenterFeatureList()}">
-                                        <form action="#" th:action="@{/design}"  th:object="${PresenterFeature}" method="post">
-                                            <span class="featurescell" th:text="${features.getFeatureType()}">getFeatureType</span>                            
-                                            <!--<span th:text="${features.getFeatureText()}"></span>-->  
-                                            <span class="featurescell" th:if="${features.getFeatureType() ne null} and ${features.getFeatureType().canHaveText()}">
-                                                <textarea name="featureText" id="featureText" th:text="${features.getFeatureText()}"></textarea>                                     
-                                            </span>
-                                            <span>
-                                                <input type="hidden" th:value="${presenterScreen.getId()}" name="parentId"/>
-                                                <button th:if="${objectType} eq 'PresenterScreen'" type="submit" name="deleteFeature" th:value="${features.getId()}">Delete Feature</button>
-                                                <button th:unless="${objectType} eq 'PresenterScreen'" type="submit" name="deleteSubFeature" th:value="${features.getId()}">Delete Feature</button>
-                                                <button type="submit" name="saveFeature" th:value="${features.getId()}">Save Changes</button>
-                                            </span>
-                                            <div class="featurescell" th:unless="${features.getFeatureType() eq null} or ${#lists.isEmpty(features.getFeatureType().getFeatureAttributes())}">
-                                                <table>
-                                                    <tr th:each="featureattribute : ${features.getFeatureType().getFeatureAttributes()}" >
-                                                        <td th:text="${featureattribute.name()}">featureattribute.name()</td>
-                                                        <td>
-                                                            <input th:value="${featureattribute.name()}" />                                                            
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </div>    
-                                        </form>
-                                        <div th:replace="design :: features(presenterScreen=${features}, objectType='PresenterFeature')"></div>
+                                    <div th:each="features : ${presenterScreen.getPresenterFeatureList()}">
+                                        <div  th:fragment="featuresrow" class="featuresrow">
+                                            <form action="#" th:action="@{/design}"  th:object="${PresenterFeature}" method="post">
+                                                <span class="featurescell" th:text="${features.getFeatureType()}">getFeatureType</span>                            
+                                                <!--<span th:text="${features.getFeatureText()}"></span>-->  
+                                                <span class="featurescell" th:if="${features.getFeatureType() ne null} and ${features.getFeatureType().canHaveText()}">
+                                                    <textarea name="featureText" id="featureText" th:text="${features.getFeatureText()}"></textarea>                                     
+                                                </span>
+                                                <span>
+                                                    <input type="hidden" th:value="${presenterScreen.getId()}" name="parentId"/>
+                                                    <button th:if="${objectType} eq 'PresenterScreen'" type="submit" name="deleteFeature" th:value="${features.getId()}">Delete Feature</button>
+                                                    <button th:unless="${objectType} eq 'PresenterScreen'" type="submit" name="deleteSubFeature" th:value="${features.getId()}">Delete Feature</button>
+                                                    <button type="submit" name="saveFeature" th:value="${features.getId()}">Save Changes</button>
+                                                </span>
+                                                <div class="featurescell" th:unless="${features.getFeatureType() eq null} or ${#lists.isEmpty(features.getFeatureType().getFeatureAttributes())}">
+                                                    <table>
+                                                        <tr th:each="featureattribute : ${features.getFeatureType().getFeatureAttributes()}" >
+                                                            <td th:text="${featureattribute.name()}">featureattribute.name()</td>
+                                                            <td>
+                                                                <input th:value="${featureattribute.name()}" />                                                            
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>    
+                                            </form>
+                                            <div th:replace="design :: features(presenterScreen=${features}, objectType='PresenterFeature')"></div>
+                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="addfeaturediv" th:if="(${objectType} eq 'PresenterScreen') or ${presenterScreen.getFeatureType() ne null and presenterScreen.getFeatureType().canHaveFeatures()}">
@@ -172,8 +175,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                         <select id="FeatureType" name="FeatureType">
                                             <option th:each="featuretype : ${featuretypes}" th:value="${featuretype}" th:text="${featuretype}" />
                                         </select>
-                                        <input th:if="${objectType} eq 'PresenterScreen'" type="hidden" name="addFeature" th:value="${presenterScreen.getId()}" />
-                                        <input th:unless="${objectType} eq 'PresenterScreen'" type="hidden" name="addSubFeature" th:value="${presenterScreen.getId()}" />
+                                        <input th:if="${objectType} eq 'PresenterScreen'" type="hidden" name="screenId" th:value="${presenterScreen.getId()}" />
+                                        <input th:unless="${objectType} eq 'PresenterScreen'" type="hidden" name="featureId" th:value="${presenterScreen.getId()}" />
                                         <button type="button" th:onclick="${'insertFeature(addForm' + objectType + presenterScreen.getId() + ')'}">Add Feature</button>
                                     </form>
                                 </div>

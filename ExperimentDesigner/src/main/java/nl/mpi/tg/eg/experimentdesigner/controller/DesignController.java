@@ -203,16 +203,18 @@ public class DesignController {
 
     @RequestMapping(value = "/experiment/{appName}/feature/add", method = RequestMethod.POST)
     public String addFeature(final HttpServletRequest req, Model model, @ModelAttribute PresenterFeature presenterFeature, @PathVariable String appName) {
-        final Long rowId = Long.valueOf(req.getParameter("addFeature"));
+        final Long rowId = Long.valueOf(req.getParameter("screenId"));
         final PresenterScreen presenterScreen = presenterScreenRepository.findOne(rowId);
         presenterFeatureRepository.save(presenterFeature);
         presenterScreen.getPresenterFeatureList().add(presenterFeature);
         presenterScreenRepository.save(presenterScreen);
         populateModel(model, appName);
-        return "screens :: features";
+        model.addAttribute("features", presenterFeature);         
+        model.addAttribute("presenterScreen", presenterScreen);         
+        return "screens :: featuresrow";
     }
 
-    @RequestMapping(value = "/experiment/{appName}/feature/add", params = {"addSubFeature"}, method = RequestMethod.POST)
+    @RequestMapping(value = "/experiment/{appName}/feature/add", params = {"featureId"}, method = RequestMethod.POST)
     public String addSubFeature(final HttpServletRequest req, Model model, @ModelAttribute PresenterFeature childFeature, @PathVariable String appName) {
         final Long rowId = Long.valueOf(req.getParameter("addSubFeature"));
         final PresenterFeature parentFeature = presenterFeatureRepository.findOne(rowId);
@@ -220,7 +222,9 @@ public class DesignController {
         parentFeature.getPresenterFeatureList().add(childFeature);
         presenterFeatureRepository.save(parentFeature);
         populateModel(model, appName);
-        return "screens :: features";
+        model.addAttribute("features", childFeature); 
+        model.addAttribute("presenterScreen", parentFeature); 
+        return "screens :: featuresrow";
     }
 
     @RequestMapping(value = "/experiment/{appName}", params = {"deleteFeature"}, method = RequestMethod.POST)
