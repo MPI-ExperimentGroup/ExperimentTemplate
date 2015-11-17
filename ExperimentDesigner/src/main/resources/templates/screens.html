@@ -140,12 +140,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             <div class="featurestable" th:unless="${#lists.isEmpty(presenterScreen.getPresenterFeatureList())}">
                                 <div th:each="features : ${presenterScreen.getPresenterFeatureList()}">
                                     <div th:fragment="featuresrow" class="featuresrow">
-                                        <form action="#" th:action="@{/design}"  th:object="${PresenterFeature}" method="post">
+                                        <form th:id="${'featureForm' + features.getId()}">
                                             <div class="featureTypeHeader"><button th:if="${objectType} eq 'PresenterScreen'" class="deleteFeatureButton" type="submit" name="deleteFeature" th:value="${features.getId()}">Delete Feature</button>
                                                 <button th:unless="${objectType} eq 'PresenterScreen'" class="deleteFeatureButton" type="submit" name="deleteSubFeature" th:value="${features.getId()}">Delete Feature</button>
                                                 <span class="featureTypeLabel" th:text="${features.getFeatureType()}">getFeatureType</span>
-                                                <button type="submit" style="display: none" th:id="${'updateFeatureButton' + features.getId()}" class="saveFeatureButton" name="saveFeature" th:value="${features.getId()}">Save Changes</button>
+                                                <button type="submit" style="display: none" th:id="${'updateFeatureButton' + features.getId()}" class="saveFeatureButton" name="saveFeature" th:value="${features.getId()}" th:onclick="${'postFeatureChanges(featureForm' + features.getId() + ')'}">Save Changes</button>
                                             </div>
+                                            <div class="errorDiv"/>
                                             <!--<span th:text="${features.getFeatureText()}"></span>-->  
                                             <span class="td featurescell" th:if="${features.getFeatureType() ne null} and ${features.getFeatureType().canHaveText()}">
                                                 <textarea name="featureText" id="featureText" th:text="${features.getFeatureText()}" th:onchange="${'$(updateFeatureButton' + features.getId() + ').show();'}"></textarea>                                     
@@ -191,6 +192,15 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             /*<![CDATA[*/
                             function insertFeature(event) {
                             $.post(/*[[${contextPath + '/experiment/' + experiment.appNameInternal + '/feature/add'}]]*/, $(event).serialize()).done(function(data) {
+                            $(event).find('[class=errorDiv]').text("");
+                                    $(event).before(data);
+                            }).fail(function(data) {
+                            var jsonResponse = JSON.parse(data.responseText);
+                                    $(event).find('[class=errorDiv]').text(jsonResponse.message);
+                            });
+                            }
+                            function postFeatureChanges(event) {
+                            $.post(/*[[${contextPath + '/experiment/' + experiment.appNameInternal + '/feature/update'}]]*/, $(event).serialize()).done(function(data) {
                             $(event).find('[class=errorDiv]').text("");
                                     $(event).before(data);
                             }).fail(function(data) {
