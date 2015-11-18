@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.controller;
 
+import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import nl.mpi.tg.eg.experimentdesigner.dao.ExperimentRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.MetadataRepository;
@@ -248,8 +249,13 @@ public class DesignController {
         presenterFeature.setFeatureAttributes(changedFeature.getFeatureAttributesMap());
         presenterFeature.setFeatureText(changedFeature.getFeatureText());
         presenterFeature.setStimulusTags(changedFeature.getStimulusTags());
+        final HashMap<FeatureAttribute, String> featureAttributesMap = presenterFeature.getFeatureAttributesMap();
+        for (FeatureAttribute featureAttribute : presenterFeature.getFeatureType().getFeatureAttributes()) {
+            final String attributeValue = req.getParameter(featureAttribute.name());
+            featureAttributesMap.put(featureAttribute, attributeValue);
+        }
         presenterFeatureRepository.save(presenterFeature);
-        model.addAttribute("features", presenterFeature);
+//        model.addAttribute("features", presenterFeature);
         return "screens :: featuresrow";
     }
 
