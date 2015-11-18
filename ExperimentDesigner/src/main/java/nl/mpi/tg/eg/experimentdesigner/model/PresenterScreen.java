@@ -29,6 +29,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -58,6 +59,7 @@ public class PresenterScreen {
     private PresenterType presenterType;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OrderBy("displayOrder ASC")
     private List<PresenterFeature> presenterFeatures = new ArrayList<>();
     @OneToMany(mappedBy = "backPresenter", cascade = CascadeType.ALL, orphanRemoval = false, fetch = FetchType.LAZY)
     private List<PresenterScreen> presenterScreens = new ArrayList<>();
@@ -81,6 +83,7 @@ public class PresenterScreen {
     public long getId() {
         return id;
     }
+
     public int getUsageCount() {
         return presenterScreens.size();
     }

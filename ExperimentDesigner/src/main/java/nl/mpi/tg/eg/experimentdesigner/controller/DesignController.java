@@ -139,7 +139,7 @@ public class DesignController {
     public String designView(Model model, HttpServletRequest request) {
         return "redirect:experiments";
     }
-    
+
     @RequestMapping("/")
     public String designView1(Model model, HttpServletRequest request) {
         return "redirect:experiments";
@@ -201,8 +201,8 @@ public class DesignController {
         presenterScreen.getPresenterFeatureList().add(presenterFeature);
         presenterScreenRepository.save(presenterScreen);
         populateModel(model, appName);
-        model.addAttribute("features", presenterFeature);         
-        model.addAttribute("presenterScreen", presenterScreen);         
+        model.addAttribute("features", presenterFeature);
+        model.addAttribute("presenterScreen", presenterScreen);
         return "screens :: featuresrow";
     }
 
@@ -214,46 +214,43 @@ public class DesignController {
         parentFeature.getPresenterFeatureList().add(childFeature);
         presenterFeatureRepository.save(parentFeature);
         populateModel(model, appName);
-        model.addAttribute("features", childFeature); 
-        model.addAttribute("presenterScreen", parentFeature); 
+        model.addAttribute("features", childFeature);
+        model.addAttribute("presenterScreen", parentFeature);
         return "screens :: featuresrow";
     }
 
-    @RequestMapping(value = "/experiment/{appName}", params = {"deleteFeature"}, method = RequestMethod.POST)
-    public String deleteFeature(final HttpServletRequest req, Model model, @PathVariable String appName) {
-        final Long rowId = Long.valueOf(req.getParameter("deleteFeature"));
-        final Long presenterId = Long.valueOf(req.getParameter("parentId"));
-        final PresenterFeature deletableFeature = presenterFeatureRepository.findOne(rowId);
-        final PresenterScreen parentPresenter = presenterScreenRepository.findOne(presenterId);
-        parentPresenter.getPresenterFeatureList().remove(deletableFeature);
-        presenterScreenRepository.save(parentPresenter);
-        presenterFeatureRepository.delete(deletableFeature);
-        populateModel(model, appName);
-        return "design";
-    }
-
-    @RequestMapping(value = "/experiment/{appName}", params = {"deleteSubFeature"}, method = RequestMethod.POST)
-    public String deleteSubFeature(final HttpServletRequest req, Model model, @PathVariable String appName) {
-        final Long rowId = Long.valueOf(req.getParameter("deleteSubFeature"));
-        final Long presenterId = Long.valueOf(req.getParameter("parentId"));
-        final PresenterFeature deletableFeature = presenterFeatureRepository.findOne(rowId);
-        final PresenterFeature parentFeature = presenterFeatureRepository.findOne(presenterId);
+    @RequestMapping(value = "/experiment/{appName}/feature/delete", params = {"featureId"}, method = RequestMethod.POST)
+    public String deleteSubFeature(final HttpServletRequest req, Model model, @ModelAttribute PresenterFeature deletableFeature, @PathVariable String appName) {
+        final Long rowId = Long.valueOf(req.getParameter("featureId"));
+        final PresenterFeature parentFeature = presenterFeatureRepository.findOne(rowId);
         parentFeature.getPresenterFeatureList().remove(deletableFeature);
         presenterFeatureRepository.save(parentFeature);
-        presenterFeatureRepository.delete(deletableFeature);
-        populateModel(model, appName);
-        return "design";
+        presenterFeatureRepository.delete(deletableFeature.getId());
+        model.addAttribute("features", null);
+        return "screens :: featuresrow";
     }
 
-    @RequestMapping(value = "/experiment/{appName}", params = {"saveFeature"}, method = RequestMethod.POST)
-    public String saveFeature(final HttpServletRequest req, Model model, @PathVariable String appName) {
-        final Long rowId = Long.valueOf(req.getParameter("saveFeature"));
-        final PresenterFeature modifiedFeature = presenterFeatureRepository.findOne(rowId);
-        final String featureText = req.getParameter("featureText");
-        modifiedFeature.setFeatureText(featureText);
-        presenterFeatureRepository.save(modifiedFeature);
-        populateModel(model, appName);
-        return "design";
+    @RequestMapping(value = "/experiment/{appName}/feature/delete", params = {"screenId"}, method = RequestMethod.POST)
+    public String deleteFeature(final HttpServletRequest req, Model model, @ModelAttribute PresenterFeature deletableFeature, @PathVariable String appName) {
+        final Long rowId = Long.valueOf(req.getParameter("screenId"));
+        final PresenterScreen presenterScreen = presenterScreenRepository.findOne(rowId);
+        presenterScreen.getPresenterFeatureList().remove(presenterFeatureRepository.findOne(deletableFeature.getId()));
+        presenterScreenRepository.save(presenterScreen);
+//        presenterFeatureRepository.delete(deletableFeature.getId());
+        model.addAttribute("features", null);
+        return "screens :: featuresrow";
+    }
+
+    @RequestMapping(value = "/experiment/{appName}/feature/update", method = RequestMethod.POST)
+    public String saveFeature(final HttpServletRequest req, Model model, @ModelAttribute PresenterFeature changedFeature, @PathVariable String appName) {
+        final PresenterFeature presenterFeature = presenterFeatureRepository.findOne(changedFeature.getId());
+        presenterFeature.setDisplayOrder(changedFeature.getDisplayOrder());
+        presenterFeature.setFeatureAttributes(changedFeature.getFeatureAttributesMap());
+        presenterFeature.setFeatureText(changedFeature.getFeatureText());
+        presenterFeature.setStimulusTags(changedFeature.getStimulusTags());
+        presenterFeatureRepository.save(presenterFeature);
+        model.addAttribute("features", presenterFeature);
+        return "screens :: featuresrow";
     }
 
     @RequestMapping(value = "/experiment/{appName}", params = {"removeScreen"})

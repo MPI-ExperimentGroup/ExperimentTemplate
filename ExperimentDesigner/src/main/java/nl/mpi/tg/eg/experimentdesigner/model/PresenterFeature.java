@@ -30,12 +30,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAnyAttribute;
 import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.namespace.QName;
 
 /**
@@ -48,11 +50,13 @@ public class PresenterFeature {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    private long displayOrder;
     @Enumerated(EnumType.STRING)
     private FeatureType featureType;
     @ElementCollection
     private List<String> stimulusTags = new ArrayList<>();
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OrderBy("displayOrder ASC")
     private List<PresenterFeature> presenterFeatures = new ArrayList<>();
     private HashMap<FeatureAttribute, String> featureAttributes = new HashMap<>();
     private String featureText;
@@ -69,6 +73,19 @@ public class PresenterFeature {
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setDisplayOrder(long displayOrder) {
+        this.displayOrder = displayOrder;
+    }
+
+    @XmlTransient
+    public long getDisplayOrder() {
+        return displayOrder;
     }
 
 //    @XmlElement(name = "feature")
@@ -160,5 +177,10 @@ public class PresenterFeature {
 
     public void setFeatureAttributes(HashMap<FeatureAttribute, String> featureAttributes) {
         this.featureAttributes = featureAttributes;
+    }
+
+    @XmlTransient
+    public HashMap<FeatureAttribute, String> getFeatureAttributesMap() {
+        return featureAttributes;
     }
 }
