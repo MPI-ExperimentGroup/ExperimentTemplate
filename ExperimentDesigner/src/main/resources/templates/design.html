@@ -310,7 +310,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         </tr><tr>
                             <td><a th:attr="class=${detailType eq 'screens' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiment/' + *{experiment.id}+ '/screens'">Screens</a></td>
                         </tr><tr>
-                            <td><a th:href="${contextPath} + '/configuration/' + ${experiment.id}">Configuration XML</a></td>
+                            <td><a th:href="${contextPath} + '/configuration/' + ${experiment.appNameInternal}">Configuration XML</a></td>
                         </tr>
                     </table>
                 </td><td><table id="main">
