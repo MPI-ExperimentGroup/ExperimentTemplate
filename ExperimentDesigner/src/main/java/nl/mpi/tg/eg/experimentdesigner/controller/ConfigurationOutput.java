@@ -28,6 +28,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -47,7 +48,7 @@ public class ConfigurationOutput {
     @Autowired
     ExperimentRepository experimentRepository;
 
-    @RequestMapping(value = "/configuration/{appName}", produces = {"application/xml", "application/json"})
+    @RequestMapping(value = "/configuration/{appName}", method = RequestMethod.GET, produces = {"application/xml", "application/json"})
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody
     Experiment getConfiguration(@PathVariable String appName) {
