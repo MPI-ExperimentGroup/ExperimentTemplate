@@ -61,7 +61,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 /*<![CDATA[*/
 //                                $("[id^=updateRowButton]").hide();
                                         function postChanges(rowId) {
-                                        $.post(/*[[${contextPath + '/experiment/' + experiment.appNameInternal + '/metadata/update'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
+                                        $.post(/*[[${contextPath + '/experiment/' + experiment.id + '/metadata/update'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
                                         $('#metadataErrorDiv').text("");
                                                 $('#updateRowForm' + rowId).html(data);
                                                 $('#updateRowButton' + rowId).hide();
@@ -71,7 +71,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                         });
                                         };
                                         function deleteRow(rowId) {
-                                        $.post(/*[[${contextPath + '/experiment/' + experiment.appNameInternal + '/metadata/delete'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
+                                        $.post(/*[[${contextPath + '/experiment/' + experiment.id + '/metadata/delete'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
                                         $('#metadataErrorDiv').text("");
                                                 $('#updateRowForm' + rowId).remove();
                                                 $('#updateRowButton' + rowId).hide();
@@ -81,7 +81,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                         });
                                         };
                                         function postScreen() {
-                                        $.post(/*[[${contextPath + '/experiment/' + experiment.appNameInternal + '/metadata/add'}]]*/, $("#addMetadataForm").serialize()).done(function(data) {
+                                        $.post(/*[[${contextPath + '/experiment/' + experiment.id + '/metadata/add'}]]*/, $("#addMetadataForm").serialize()).done(function(data) {
                                         $('#metadataErrorDiv').text("");
                                                 $('#metadataErrorDiv').before(data);
                                         }).fail(function(data) {

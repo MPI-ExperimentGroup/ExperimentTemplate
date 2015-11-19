@@ -50,7 +50,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <span class="td"><input type="text" name="webm" th:value="${stimulus.webm}" th:onchange="${'$(updateRowButton' + stimulus.id + ').show();'}" /></span>
                         <span class="td">
                             <input type="text" name="image" th:value="${stimulus.image}" th:onchange="${'$(updateRowButton' + stimulus.id + ').show();'}" />
-                            <img class="stimulusImage" src="" alt="stimulus image" th:src="${contextPath + '/experiment/' + experiment.appNameInternal + '/stimulus/' + stimulus.id + '/image'}"/>                            
+                            <img class="stimulusImage" src="" alt="stimulus image" th:src="${contextPath + '/experiment/' + experiment.id + '/stimulus/' + stimulus.id + '/image'}"/>                            
                         </span>
                         <span class="td"><input type="text" name="label" th:value="${stimulus.label}" th:onchange="${'$(updateRowButton' + stimulus.id + ').show();'}" /></span>
                         <span class="td"><span th:each="stimulusTag : ${stimulus.stimulusTags}" th:text="${stimulusTag}"></span></span>
@@ -77,7 +77,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 /*<![CDATA[*/
 //                                $("[id^=updateRowButton]").hide();
                                         function postChanges(rowId) {
-                                        $.post(/*[[${contextPath + '/experiment/' + experiment.appNameInternal + '/stimulus/update'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
+                                        $.post(/*[[${contextPath + '/experiment/' + experiment.id + '/stimulus/update'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
                                         $('#metadataErrorDiv').text("");
                                                 $('#updateRowForm' + rowId).html(data);
                                                 $('#updateRowButton' + rowId).hide();
@@ -87,7 +87,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                         });
                                         };
                                         function deleteRow(rowId) {
-                                        $.post(/*[[${contextPath + '/experiment/' + experiment.appNameInternal + '/stimulus/delete'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
+                                        $.post(/*[[${contextPath + '/experiment/' + experiment.id + '/stimulus/delete'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
                                         $('#metadataErrorDiv').text("");
                                                 $('#updateRowForm' + rowId).remove();
                                                 $('#updateRowButton' + rowId).hide();
@@ -97,7 +97,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                         });
                                         };
                                         function postScreen() {
-                                        $.post(/*[[${contextPath + '/experiment/' + experiment.appNameInternal + '/stimulus/add'}]]*/, $("#addMetadataForm").serialize()).done(function(data) {
+                                        $.post(/*[[${contextPath + '/experiment/' + experiment.id + '/stimulus/add'}]]*/, $("#addMetadataForm").serialize()).done(function(data) {
                                         $('#metadataErrorDiv').text("");
                                                 $('#metadataErrorDiv').before(data);
                                         }).fail(function(data) {

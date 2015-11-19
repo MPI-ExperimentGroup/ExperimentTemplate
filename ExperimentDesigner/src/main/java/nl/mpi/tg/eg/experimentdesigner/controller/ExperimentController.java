@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experimentdesigner.controller;
 import javax.servlet.http.HttpServletRequest;
 import nl.mpi.tg.eg.experimentdesigner.dao.ExperimentRepository;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
+import nl.mpi.tg.eg.experimentdesigner.util.DefaultExperiments;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,18 +47,26 @@ public class ExperimentController {
         return "design";
     }
 
-    @RequestMapping("/experiment/{appName}")
-    public String designView(Model model, HttpServletRequest request, @PathVariable String appName) {
-        final Experiment experiment = experimentRepository.findByAppNameInternal(appName);
+    @RequestMapping("/experiment/{experiment}")
+    public String designView(Model model, HttpServletRequest request, @PathVariable Experiment experiment) {
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", "configuration");
         model.addAttribute("experiment", experiment);
         return "design";
     }
 
-    @RequestMapping(value = "/experiment/{appName}/update", method = RequestMethod.POST)
-    public String updateScreen(@ModelAttribute Experiment updatedExperiment, Model model, HttpServletRequest request, @PathVariable String appName) {
-        final Experiment experiment = experimentRepository.findByAppNameInternal(appName);
+    @RequestMapping("/experiments/add")
+    public String addExperiment(Model model, HttpServletRequest request) {
+        Experiment createdExperiment = DefaultExperiments.getDefault();
+        experimentRepository.save(createdExperiment);
+        model.addAttribute("contextPath", request.getContextPath());
+        model.addAttribute("detailType", "configuration");
+        model.addAttribute("experiment", createdExperiment);
+        return "design";
+    }
+
+    @RequestMapping(value = "/experiment/{experiment}/update", method = RequestMethod.POST)
+    public String updateScreen(@ModelAttribute Experiment updatedExperiment, Model model, HttpServletRequest request, @PathVariable Experiment experiment) {
         experiment.setAppNameDisplay(updatedExperiment.getAppNameDisplay());
         experiment.setAppNameInternal(updatedExperiment.getAppNameInternal());
         experiment.setBackgroundColour(updatedExperiment.getBackgroundColour());

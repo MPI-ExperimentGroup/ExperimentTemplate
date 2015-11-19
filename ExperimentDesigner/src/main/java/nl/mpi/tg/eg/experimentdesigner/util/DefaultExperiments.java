@@ -56,22 +56,10 @@ public class DefaultExperiments {
     }
 
     public Experiment getDobesExperiment(MetadataRepository metadataRepository, PresenterFeatureRepository presenterFeatureRepository, PresenterScreenRepository presenterScreenRepository) {
-        final Experiment experiment = new Experiment();
+        Experiment experiment = getDefault();
         experiment.setAppNameDisplay("Dobes Annotator");
         experiment.setAppNameInternal("DobesAnnotator");
         experiment.setDataSubmitUrl("http://ems12.mpi.nl/dobes-frinex-admin-0.1.38-testing/");
-        experiment.setStaticFilesUrl("static/");
-        experiment.setPrimaryColour0("#628D8D");
-        experiment.setPrimaryColour1("#385E5E");
-        experiment.setPrimaryColour2("#4A7777");
-        experiment.setPrimaryColour3("#96ADAD");
-        experiment.setPrimaryColour4("#D5D8D8");
-        experiment.setComplementColour0("#EAC3A3");
-        experiment.setComplementColour1("#9D7B5E");
-        experiment.setComplementColour2("#C69E7C");
-        experiment.setComplementColour3("#FFEDDE");
-        experiment.setComplementColour4("#FFFDFB");
-        experiment.setBackgroundColour("#FFFFFF");
         final Metadata metadata = new Metadata("workerId", "Reporter name *", ".'{'3,'}'", "Please enter at least three letters.", true, "This test can only be done once per worker.");
         final Metadata metadata1 = new Metadata("errordevice", "Device model", ".'{'2,'}'", "Please enter the device model", false, null);
         final Metadata metadata2 = new Metadata("errordescription", "Please describe the error", ".'{'2,'}'", "Please enter a short description of the issue", false, null);
@@ -89,6 +77,25 @@ public class DefaultExperiments {
         experiment.getPresenterScreen().add(addVideoWorksPage(presenterFeatureRepository, autoMenuPresenter));
         experiment.getPresenterScreen().add(addVideoFailedPage(presenterFeatureRepository, autoMenuPresenter));
         presenterScreenRepository.save(experiment.getPresenterScreen());
+        return experiment;
+    }
+
+    public final static Experiment getDefault() {
+        final Experiment experiment = new Experiment();
+        experiment.setAppNameDisplay("");
+        experiment.setAppNameInternal("");
+        experiment.setStaticFilesUrl("static/");
+        experiment.setPrimaryColour0("#628D8D");
+        experiment.setPrimaryColour1("#385E5E");
+        experiment.setPrimaryColour2("#4A7777");
+        experiment.setPrimaryColour3("#96ADAD");
+        experiment.setPrimaryColour4("#D5D8D8");
+        experiment.setComplementColour0("#EAC3A3");
+        experiment.setComplementColour1("#9D7B5E");
+        experiment.setComplementColour2("#C69E7C");
+        experiment.setComplementColour3("#FFEDDE");
+        experiment.setComplementColour4("#FFFDFB");
+        experiment.setBackgroundColour("#FFFFFF");
         return experiment;
     }
 
