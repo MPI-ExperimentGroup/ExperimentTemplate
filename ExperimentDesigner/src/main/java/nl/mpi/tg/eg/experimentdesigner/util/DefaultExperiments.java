@@ -17,9 +17,14 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.util;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.dao.ExperimentRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.MetadataRepository;
@@ -38,6 +43,8 @@ import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public class DefaultExperiments {
+
+    private static final Logger LOG = Logger.getLogger(DefaultExperiments.class.getName());
 
     public void insertDefaultExperiment(
             PresenterScreenRepository presenterScreenRepository,
@@ -72,7 +79,7 @@ public class DefaultExperiments {
         experiment.getMetadata().add(metadata1);
         experiment.getMetadata().add(metadata2);
         metadataRepository.save(experiment.getMetadata());
-        addStimuli(experiment);
+        addDobesStimuli(experiment);
         final PresenterScreen autoMenuPresenter = addAutoMenu(presenterFeatureRepository);
         experiment.getPresenterScreen().add(autoMenuPresenter);
         experiment.getPresenterScreen().add(addAnnotationTimelinePanel(presenterFeatureRepository, autoMenuPresenter));
@@ -124,6 +131,30 @@ public class DefaultExperiments {
         return experiment;
     }
 
+    private void addDobesStimuli(final Experiment experiment) {
+        final ArrayList<Stimulus> stimuliList = new ArrayList<>();
+        final HashSet<String> tagSet = new HashSet<>();
+
+        tagSet.add("videotag");
+        for (int i = 0; i < 10; i++) {
+            final Stimulus stimulus = new Stimulus(null, null, null, "videotag" + i + ".png", "videotag" + i, tagSet);
+            final URL resourceUrl = DefaultExperiments.class.getResource("/stimuli/videotag" + (i + 1) + ".png");
+            File file = new File(resourceUrl.getFile());
+            byte[] fileBytes = new byte[(int) file.length()];
+
+            try {
+                FileInputStream fileInputStream = new FileInputStream(file);
+                fileInputStream.read(fileBytes);
+                fileInputStream.close();
+                stimulus.setImageData(fileBytes);
+            } catch (Exception e) {
+                LOG.log(Level.INFO, "failed to load stimuli resource file", e);
+            }
+            stimuliList.add(stimulus);
+        }
+        experiment.setStimuli(stimuliList);
+    }
+
     private void addStimuli(final Experiment experiment) {
         final ArrayList<Stimulus> stimuliList = new ArrayList<>();
         final HashSet<String> tagSet = new HashSet<>();
@@ -148,10 +179,6 @@ public class DefaultExperiments {
             }
         }
         tagSet.clear();
-        tagSet.add("videotag");
-        for (int i = 0; i < 10; i++) {
-            stimuliList.add(new Stimulus(null, null, null, "videotag" + i + ".png", "videotag" + i, tagSet));
-        }
         for (String word : "termites scorpions centipedes".split(" ")) {
             for (String speaker : "Rocket Festival Thai ประเพณีบุญบั้งไฟ Lao ບຸນບັ້ງໄຟ".split(" ")) {
                 for (int i = 0; i < 6; i++) {

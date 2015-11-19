@@ -42,6 +42,9 @@ public class Stimulus {
     private String webm;
     private String image;
     private String label;
+    private byte[] imageData;
+    private byte[] audioData;
+    private byte[] videoData;
 
     HashSet<String> stimulusTags;
 
@@ -120,6 +123,30 @@ public class Stimulus {
 
     public void setLabel(String label) {
         this.label = label;
+    }
+
+    public byte[] getImageData() {
+        return imageData;
+    }
+
+    public void setImageData(byte[] imageData) {
+        this.imageData = imageData;
+    }
+
+    public byte[] getAudioData() {
+        return audioData;
+    }
+
+    public void setAudioData(byte[] audioData) {
+        this.audioData = audioData;
+    }
+
+    public byte[] getVideoData() {
+        return videoData;
+    }
+
+    public void setVideoData(byte[] videoData) {
+        this.videoData = videoData;
     }
 
     @XmlElement(name = "tag")

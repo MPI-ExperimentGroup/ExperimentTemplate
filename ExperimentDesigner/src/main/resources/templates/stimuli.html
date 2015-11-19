@@ -31,6 +31,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <div class="presenter">
                 <div class="table">
                     <div class="tr">
+                        <span class="td"></span>
                         <span class="td">mp3</span>
                         <span class="td">mp4</span>
                         <span class="td">ogg</span>
@@ -40,24 +41,32 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <span class="td">stimulusTags</span>
                     </div>
                     <form th:each="stimulus : ${(updatedStimulus != null)? updatedStimulus : experiment.getStimuli()}" th:fragment="stimulusRow" class="tr" th:id="${'updateRowForm' + stimulus.id}">
+                        <span class="td"><button type="button" th:onclick="${'deleteRow(' + stimulus.id + ')'}">Remove</button></span>
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                         <input type="hidden" name="id" th:value="${stimulus.id}" />
                         <span class="td"><input type="text" name="mp3" th:value="${stimulus.mp3}" th:onchange="${'$(updateRowButton' + stimulus.id + ').show();'}" /></span>
                         <span class="td"><input type="text" name="mp4" th:value="${stimulus.mp4}" th:onchange="${'$(updateRowButton' + stimulus.id + ').show();'}" /></span>
                         <span class="td"><input type="text" name="ogg" th:value="${stimulus.ogg}" th:onchange="${'$(updateRowButton' + stimulus.id + ').show();'}" /></span>
                         <span class="td"><input type="text" name="webm" th:value="${stimulus.webm}" th:onchange="${'$(updateRowButton' + stimulus.id + ').show();'}" /></span>
-                        <span class="td"><input type="text" name="image" th:value="${stimulus.image}" th:onchange="${'$(updateRowButton' + stimulus.id + ').show();'}" /></span>
+                        <span class="td">
+                            <input type="text" name="image" th:value="${stimulus.image}" th:onchange="${'$(updateRowButton' + stimulus.id + ').show();'}" />
+                            <img class="stimulusImage" src="" alt="stimulus image" th:src="${contextPath + '/experiment/' + experiment.appNameInternal + '/stimulus/' + stimulus.id + '/image'}"/>                            
+                        </span>
                         <span class="td"><input type="text" name="label" th:value="${stimulus.label}" th:onchange="${'$(updateRowButton' + stimulus.id + ').show();'}" /></span>
                         <span class="td"><span th:each="stimulusTag : ${stimulus.stimulusTags}" th:text="${stimulusTag}"></span></span>
                         <span class="td"><button th:id="${'updateRowButton' + stimulus.id}"  style="display: none" type="button" name="updateRow" th:onclick="${'postChanges(' + stimulus.id + ')'}">Save Changes</button></span>
-                        <span class="td"><button type="button" th:onclick="${'deleteRow(' + stimulus.id + ')'}">Remove</button></span>
                     </form>
                     <div id="metadataErrorDiv"></div>
                     <form action="#" id="addMetadataForm" class="tr" method="post">
-                        <span class="td"><input type="text" name="mp3" /></span>
-                        <span class="td"><input type="text" name="mp4" /></span>
-                        <span class="td"><input type="text" name="ogg" /></span>
-                        <span class="td"><input type="text" name="webm" /></span>
-                        <span class="td"><input type="text" name="image" /></span>
+                        <span class="td"><input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" /></span>
+                        <!--<span class="td"><input type="text" name="mp3" /></span>-->
+                        <!--<span class="td"><input type="text" name="mp4" /></span>-->
+                        <!--<span class="td"><input type="text" name="ogg" /></span>-->
+                        <!--<span class="td"><input type="text" name="webm" /></span>-->
+                        <!--<span class="td"><input type="text" name="image" /></span>-->
+                        <span class="td">Image<input type="file" name="image" accept="image/*" /></span>
+                        <span class="td">Audio<input type="file" name="audio" accept="audio/*" /></span>
+                        <span class="td">Video<input type="file" name="video" accept="video/*" /></span>
                         <span class="td"><input type="text" name="label" /></span>
                         <span class="td"><input type="text" name="stimulusTags" /></span>
                         <span class="td"><input type="text" name="stimulusTags" /></span>
