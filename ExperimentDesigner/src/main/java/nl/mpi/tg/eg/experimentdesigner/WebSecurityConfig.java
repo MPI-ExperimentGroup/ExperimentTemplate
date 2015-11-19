@@ -36,7 +36,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/experiment", "/experiments", "/design").permitAll()
+                // todo: consider adding localhost limit to the configuration/**
+                .antMatchers("/configuration/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -49,6 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        // todo: add a user table
         auth.inMemoryAuthentication().withUser("user").password("password").roles("USER");
     }
 }
