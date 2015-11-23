@@ -26,13 +26,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <div class="presenter">
                 <div class="table">
                     <div th:fragment="screenRowHeader" class="tr">
-                        <span class="td"></span>
                         <span class="td">Title</span>
                         <span class="td">Menu Label</span>
                         <span class="td">Screen Type</span>
                         <span class="td">Back Action</span>
                         <span class="td">Self (Action)</span>
                         <span class="td">Next Action</span>
+                        <span class="td"></span>
                         <span class="td"></span>
                     </div>
                     <form th:each="presenterScreen : ${(updatedPresenterScreen != null)? updatedPresenterScreen : experiment.getPresenterScreen()}" th:fragment="screenRow" class="tr" th:id="${'updateRowForm' + presenterScreen.getId()}">
