@@ -159,6 +159,21 @@ public class DefaultExperiments {
             }
             stimuliList.add(stimulus);
         }
+        for (String tag : new String[]{"sim", "mid", "diff", "noise"}) {
+            for (String label : new String[]{"rabbit", "cat", "muffin", "you"}) {
+                tagSet.clear();
+                tagSet.add(tag);
+                stimuliList.add(new Stimulus(tag + "_" + label, tag + "_" + label, tag + "_" + label, tag + "_" + label + ".jpg", tag + "_" + label, tagSet));
+            }
+        }
+        tagSet.clear();
+        for (String word : "termites scorpions centipedes".split(" ")) {
+            for (String speaker : "Rocket Festival Thai ประเพณีบุญบั้งไฟ Lao ບຸນບັ້ງໄຟ".split(" ")) {
+                for (int i = 0; i < 6; i++) {
+                    stimuliList.add(new Stimulus(word + "_" + speaker + "_" + i + ".mp3", word + "_" + speaker + "_" + i + ".mp4", word + "_" + speaker + "_" + i + ".ogg", word + "_" + speaker + "_" + i + ".jpg", word + "_" + speaker + "_" + i, new HashSet<>(Arrays.asList(new String[]{word, speaker}))));
+                }
+            }
+        }
         experiment.setStimuli(stimuliList);
     }
 
