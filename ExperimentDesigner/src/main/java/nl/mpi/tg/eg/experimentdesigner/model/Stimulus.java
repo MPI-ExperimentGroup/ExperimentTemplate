@@ -42,9 +42,9 @@ public class Stimulus {
     private String webm;
     private String image;
     private String label;
-    private byte[] imageData;
-    private byte[] audioData;
-    private byte[] videoData;
+    private byte[] imageData = null;
+    private byte[] audioData = null;
+    private byte[] videoData = null;
 
     HashSet<String> stimulusTags;
 
