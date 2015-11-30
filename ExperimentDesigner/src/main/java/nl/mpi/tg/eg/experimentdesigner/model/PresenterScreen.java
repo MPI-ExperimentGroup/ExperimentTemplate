@@ -80,6 +80,7 @@ public class PresenterScreen {
         this.presenterType = presenterType;
     }
 
+    @XmlTransient
     public long getId() {
         return id;
     }

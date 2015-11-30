@@ -33,8 +33,9 @@ public enum FeatureType {
     image(false, false, new FeatureAttribute[]{width, src}),
     menuItem(false, true, new FeatureAttribute[]{target}),
     popupMessage(false, true, new FeatureAttribute[]{condition}),
-    loadSubsetStimulus(false, false, new FeatureAttribute[]{setCount}),
-    loadNoiseStimulus(false, false, null),
+    loadSubsetStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli, condition0Tag, condition1Tag, condition2Tag}, true, false),
+    loadStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli}, true, false),
+    loadAllStimulus(false, false, new FeatureAttribute[]{eventTag}, true, false),
     optionButton(false, true, new FeatureAttribute[]{target}),
     //    endOfStimulusButton(false, true, new FeatureAttribute[]{eventTag, target}),
     padding(false, false, null),
@@ -103,7 +104,7 @@ public enum FeatureType {
         this.canHaveStimulus = canHaveStimulus;
         this.hasCorrectIncorrect = hasCorrectIncorrect;
     }
-    
+
     public boolean canHaveFeatures() {
         return canHaveFeatures;
     }

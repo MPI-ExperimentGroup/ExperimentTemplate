@@ -22,6 +22,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * @since Sep 7, 2015 3:40:28 PM (creation date)
@@ -43,6 +44,7 @@ public class Metadata {
     public Metadata() {
     }
 
+    @XmlTransient
     public long getId() {
         return id;
     }

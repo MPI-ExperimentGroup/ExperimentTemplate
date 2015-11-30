@@ -28,7 +28,7 @@ import static nl.mpi.tg.eg.experimentdesigner.model.FeatureType.*;
 public enum PresenterType {
 
     transmission(new FeatureType[]{
-        loadSubsetStimulus, loadNoiseStimulus,
+        loadSubsetStimulus, loadStimulus, loadAllStimulus,
         localStorageData,
         allMetadataFields,
         eraseLocalStorageButton,
@@ -67,7 +67,7 @@ public enum PresenterType {
         menuItem
     }),
     metadata(new FeatureType[]{
-        loadSubsetStimulus, loadNoiseStimulus,
+        loadSubsetStimulus, loadStimulus, loadAllStimulus,
         localStorageData,
         eraseLocalStorageButton,
         showCurrentMs,
@@ -109,7 +109,7 @@ public enum PresenterType {
         menuItem
     }),
     preload(new FeatureType[]{
-        loadSubsetStimulus, loadNoiseStimulus,
+        loadSubsetStimulus, loadStimulus, loadAllStimulus,
         localStorageData,
         allMetadataFields,
         eraseLocalStorageButton,
@@ -151,7 +151,7 @@ public enum PresenterType {
         loadKinTypeStringDiagram,
         preloadAllStimuli}),
     kindiagram(new FeatureType[]{responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus,
-        loadSubsetStimulus, loadNoiseStimulus,
+        loadSubsetStimulus, loadStimulus, loadAllStimulus,
         popupMessage,
         localStorageData,
         allMetadataFields,
@@ -188,7 +188,7 @@ public enum PresenterType {
         stimulusAudio
     }),
     menu(new FeatureType[]{responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus,
-        loadSubsetStimulus, loadNoiseStimulus,
+        loadSubsetStimulus, loadStimulus, loadAllStimulus,
         popupMessage,
         localStorageData,
         allMetadataFields,
@@ -225,7 +225,7 @@ public enum PresenterType {
         stimulusImage,
         stimulusAudio}),
     debug(new FeatureType[]{responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus,
-        loadSubsetStimulus, loadNoiseStimulus,
+        loadSubsetStimulus, loadStimulus, loadAllStimulus,
         popupMessage,
         allMetadataFields,
         showCurrentMs,
@@ -262,7 +262,7 @@ public enum PresenterType {
         userInfo,
         stimulusAudio}),
     text(new FeatureType[]{loadKinTypeStringDiagram, localStorageData,
-        loadSubsetStimulus, loadNoiseStimulus,
+        loadSubsetStimulus, loadStimulus, loadAllStimulus,
         allMetadataFields,
         eraseLocalStorageButton,
         enableStimulusButtons,
@@ -303,7 +303,7 @@ public enum PresenterType {
         userInfo,
         menuItem}),
     timeline(new FeatureType[]{loadKinTypeStringDiagram, localStorageData,
-        loadSubsetStimulus, loadNoiseStimulus,
+        loadSubsetStimulus, loadStimulus, loadAllStimulus,
         allMetadataFields,
         eraseLocalStorageButton,
         enableStimulusButtons,

@@ -71,6 +71,7 @@ public class PresenterFeature {
 //        this.featureAttributes = new HashMap<>();
     }
 
+    @XmlTransient
     public long getId() {
         return id;
     }

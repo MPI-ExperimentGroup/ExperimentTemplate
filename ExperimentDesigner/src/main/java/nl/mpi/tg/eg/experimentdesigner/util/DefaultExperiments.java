@@ -31,6 +31,9 @@ import nl.mpi.tg.eg.experimentdesigner.dao.MetadataRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterFeatureRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterScreenRepository;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
+import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.condition0Tag;
+import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.condition1Tag;
+import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.condition2Tag;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
 import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
@@ -127,11 +130,11 @@ public class DefaultExperiments {
 //        experiment.getPresenterScreen().add(addAnnotationTimelinePanel(presenterFeatureRepository));
 //        experiment.getPresenterScreen().add(addVideosMenu(presenterFeatureRepository));
 //        experiment.getPresenterScreen().add(addAutoMenu(presenterFeatureRepository));
-//        experiment.getPresenterScreen().add(addTargetScreen(presenterFeatureRepository));
 //        experiment.getPresenterScreen().add(addVideoAspen(presenterFeatureRepository));
 //        experiment.getPresenterScreen().add(addVideoWorksPage(presenterFeatureRepository));
 //        experiment.getPresenterScreen().add(addVideoFailedPage(presenterFeatureRepository));
         final PresenterScreen autoMenu = addAutoMenu(presenterFeatureRepository);
+        experiment.getPresenterScreen().add(addTargetScreen(presenterFeatureRepository, autoMenu));
         experiment.getPresenterScreen().add(autoMenu);
         addAllFeaturesAsPages(presenterFeatureRepository, experiment, autoMenu);
         presenterScreenRepository.save(experiment.getPresenterScreen());
@@ -237,7 +240,6 @@ public class DefaultExperiments {
                         presenterFeature.addFeatureAttributes(attribute, "true");
                         break;
                     case columnCount:
-                    case setCount:
                     case maxStimuli:
                         presenterFeature.addFeatureAttributes(attribute, "3");
                         break;
@@ -245,13 +247,24 @@ public class DefaultExperiments {
                     case timeToNext:
                         presenterFeature.addFeatureAttributes(attribute, "60");
                         break;
+                    case condition0Tag:
+                        presenterFeature.addFeatureAttributes(attribute, "tag_centipedes");
+                        break;
+                    case condition1Tag:
+                        presenterFeature.addFeatureAttributes(attribute, "tag_scorpions");
+                        break;
+                    case condition2Tag:
+                        presenterFeature.addFeatureAttributes(attribute, "tag_termites");
+                        break;
                     default:
                         presenterFeature.addFeatureAttributes(attribute, attribute.name());
                 }
             }
         }
         if (featureType.canHaveStimulus()) {
-            presenterFeature.addStimulusTag("tag_videotag");
+            for (String stimulusTag : new String[]{"tag_ประเพณีบุญบั้งไฟ", "tag_Rocket", "tag_Festival", "tag_Lao", "tag_Thai", "tag_ບຸນບັ້ງໄຟ"}) {
+                presenterFeature.addStimulusTag(stimulusTag);
+            }
         }
         if (featureType.requiresCorrectIncorrect()) {
             presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.responseCorrect, presenterFeatureRepository));

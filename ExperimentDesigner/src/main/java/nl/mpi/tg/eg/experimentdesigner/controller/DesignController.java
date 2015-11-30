@@ -71,7 +71,7 @@ public class DesignController {
     @RequestMapping("/deleteAll")
     public String deleteAll(Model model, HttpServletRequest request) {
         // todo: this is currently here to simplify the development process and should be removed in production
-        experimentRepository.deleteAll();
+//        experimentRepository.deleteAll();
 //        if (experimentRepository.count() == 0) {
         new DefaultExperiments().insertDefaultExperiment(presenterScreenRepository, presenterFeatureRepository, metadataRepository, experimentRepository);
 //        }

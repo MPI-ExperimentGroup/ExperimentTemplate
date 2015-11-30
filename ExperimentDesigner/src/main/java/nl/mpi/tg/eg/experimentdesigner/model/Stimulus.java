@@ -24,6 +24,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * @since Sep 16, 2015 11:15:06 AM (creation date)
@@ -63,6 +64,7 @@ public class Stimulus {
         }
     }
 
+    @XmlTransient
     public long getId() {
         return id;
     }

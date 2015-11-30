@@ -36,7 +36,6 @@ public enum FeatureAttribute {
     align,
     target,
     condition,
-    setCount,
     eventTag,
     mp3,
     mp4,
@@ -50,5 +49,8 @@ public enum FeatureAttribute {
     imageWidth,
     alternativeChoice,
     timeToNext,
-    maxStimuli
+    maxStimuli,
+    condition0Tag,
+    condition1Tag,
+    condition2Tag
 }

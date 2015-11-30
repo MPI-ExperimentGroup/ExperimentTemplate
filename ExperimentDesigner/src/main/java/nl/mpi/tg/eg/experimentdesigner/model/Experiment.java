@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * @since Sep 4, 2015 2:42:21 PM (creation date)
@@ -71,6 +72,7 @@ public class Experiment {
     public Experiment() {
     }
 
+    @XmlTransient
     public long getId() {
         return id;
     }
