@@ -19,6 +19,7 @@ import com.google.gwt.user.client.ui.Label;
  * @since Jan 24, 2014 3:42:50 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
+@Deprecated
 public class Controller implements ClickHandler, KeyUpHandler {
 
     final AnnotationPanel annotationPanel;
@@ -27,10 +28,10 @@ public class Controller implements ClickHandler, KeyUpHandler {
     final Label errorLabel;
     final Label textToServerLabel;
     final HTML serverResponseLabel;
-    private int idTagCounter = 0; // testing variable to be replaced 
+//    private int idTagCounter = 0; // testing variable to be replaced 
 //    static private int currentTimeCode = -1;
 
-    private AnnotationData annotationData = new AnnotationData();
+//    private AnnotationData annotationData = new AnnotationData();
 
     public Controller(AnnotationPanel annotationPanel, AnnotationEditor annotationEditor, VideoPanel videoPanel, Label errorLabel, Label textToServerLabel, HTML serverResponseLabel) {
         this.annotationPanel = annotationPanel;
@@ -125,20 +126,20 @@ public class Controller implements ClickHandler, KeyUpHandler {
 //     setCurrentTimeCode($('video').get(0).currentTime);
 //     }-*/;
     public void setInPoint(AnnotatorButtonsBar annotatorButtonsBar) {
-        annotationData.setInTime(videoPanel.getCurrentTime());
-        annotatorButtonsBar.setInTime(annotationData.getInTime());
+//        annotationData.setInTime(videoPanel.getCurrentTime());
+//        annotatorButtonsBar.setInTime(annotationData.getInTime());
     }
 
     public void setOutPoint(AnnotatorButtonsBar annotatorButtonsBar) {
-        annotationData.setOutTime(videoPanel.getCurrentTime());
-        annotatorButtonsBar.setOutTime(annotationData.getOutTime());
+//        annotationData.setOutTime(videoPanel.getCurrentTime());
+//        annotatorButtonsBar.setOutTime(annotationData.getOutTime());
     }
 
     public void addSegment() {
-        annotationData.setAnnotationHtml(annotationEditor.getHTML());
-        annotationPanel.insertAnnotationBlock(annotationData);
+//        annotationData.setAnnotationHtml(annotationEditor.getHTML());
+//        annotationPanel.insertAnnotationBlock(annotationData);
         annotationEditor.setHTML("");
-        annotationData = new AnnotationData(annotationData.getInTime(), annotationData.getOutTime(), "");
+//        annotationData = new AnnotationData(annotationData.getInTime(), annotationData.getOutTime(), "");
 //    annotationBlock.addHandler(handler, KeyDownEvent.getType());
     }
 
