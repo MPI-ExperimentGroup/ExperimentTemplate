@@ -22,6 +22,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
+import nl.mpi.tg.eg.experiment.client.model.Stimulus;
+
 /**
  * @since Oct 22, 2014 5:28:55 PM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>

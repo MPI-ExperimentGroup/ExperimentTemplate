@@ -252,8 +252,6 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
                     </xsl:text>
                 </xsl:otherwise>
             </xsl:choose>
-            <xsl:value-of select="if(loadNoiseStimulus) then 'loadNoiseStimulus();' else ''" />
-            <xsl:value-of select="if(loadSubsetStimulus) then concat('loadSubsetStimulus(', loadSubsetStimulus/@setCount, ');') else ''" />
             <xsl:text>    }
 
                 @Override
@@ -504,8 +502,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
             + "Last Commit Date: " + version.lastCommitDate());
         </xsl:text>
     </xsl:template>
-    <xsl:template match="VideoPanel|AudioRecorderPanel|AnnotationTimelinePanel">
-        <xsl:text>    set</xsl:text>
+    <xsl:template match="VideoPanel|AudioRecorderPanel|AnnotationTimelinePanel|loadStimulus|loadAllStimulus|loadSubsetStimulus">
+        <xsl:value-of select="if(starts-with(local-name(), 'load')) then '    ' else '    set'" />
         <xsl:value-of select="local-name()" />
         <!--        <xsl:text>(new </xsl:text>
         <xsl:value-of select="local-name()" />-->
@@ -520,7 +518,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
             <xsl:value-of select="if(@ogg) then concat(', &quot;', @ogg, '&quot;') else ',&quot;&quot;'" />
             <xsl:value-of select="if(@webm) then concat(', &quot;', @webm, '&quot;') else ',&quot;&quot;'" />
         </xsl:if>
-        <xsl:if test="stimuli/tag">
+        <xsl:if test="stimuli/tag">      
             <xsl:text>, Arrays.asList(new Tag[]{</xsl:text>
             <xsl:for-each select="distinct-values(stimuli/tag/text())">
                 <xsl:text>Tag.</xsl:text>
@@ -531,7 +529,9 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
             </xsl:for-each>
             <xsl:text>})</xsl:text>
         </xsl:if>
-        <!--<xsl:value-of select="if(@stimulusTag) then concat(', Tag.', @stimulusTag, '') else ''" />-->
+        <xsl:value-of select="if(@condition0Tag) then concat(', Tag.', @condition0Tag, '') else ''" />
+        <xsl:value-of select="if(@condition1Tag) then concat(', Tag.', @condition1Tag, '') else ''" />
+        <xsl:value-of select="if(@condition2Tag) then concat(', Tag.', @condition2Tag, '') else ''" />
         <xsl:value-of select="if(@maxStimuli) then concat(', ', @maxStimuli, '') else ''" />
         <xsl:value-of select="if(@columnCount) then concat(', ', @columnCount, '') else ''" />
         <xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" />

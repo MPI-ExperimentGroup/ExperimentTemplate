@@ -25,6 +25,7 @@ import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
@@ -65,8 +66,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         this.localStorage = localStorage;
     }
 
-    @Deprecated // todo: the configuration file needs to pass in interesting tags rather than the arrays used herein
-    protected void loadSubsetStimulus(int setCount) {
+    // todo: maxSpeakerWordCount needs to be utilised correctly
+    protected void loadSubsetStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final Stimulus.Tag condition0Tag, final Stimulus.Tag condition1Tag, final Stimulus.Tag condition2Tag, final int maxStimulusCount) {
         final String storedDataValue = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), STIMULUS_ALLOCATION);
         int stimulusAllocation;
         try {
@@ -86,30 +87,39 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //        (and the two recordings per speaker will be randomly sampled from the 6 existing recordings per speaker).
 //        The picture should always appear one second before the word is played. 
 //        It should stay on the screen for 3 seconds (including the pre-word 1 sec).
+//        final Stimulus.Tag[] selectionTags = new Stimulus.Tag[]{Stimulus.Tag.tag_ประเพณีบุญบั้งไฟ, Stimulus.Tag.tag_Rocket, Stimulus.Tag.tag_Festival, Stimulus.Tag.tag_Lao, Stimulus.Tag.tag_Thai, Stimulus.Tag.tag_ບຸນບັ້ງໄຟ};
+//        final Stimulus.Tag case0Tag = Stimulus.Tag.tag_centipedes;
+//        final Stimulus.Tag case1Tag = Stimulus.Tag.tag_scorpions;
+//        final Stimulus.Tag case2Tag = Stimulus.Tag.tag_termites;
 
         switch (stimulusAllocation) {
             case 0:
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "SubsetStimulus", "Condition1", Stimulus.Tag.tag_sim.name(), duration.elapsedMillis());
-                stimulusProvider.getSubset(Stimulus.Tag.tag_centipedes, setCount, Arrays.asList(new Stimulus.Tag[]{Stimulus.Tag.tag_ประเพณีบุญบั้งไฟ, Stimulus.Tag.tag_Rocket, Stimulus.Tag.tag_Festival, Stimulus.Tag.tag_Lao, Stimulus.Tag.tag_Thai, Stimulus.Tag.tag_ບຸນບັ້ງໄຟ}), seenStimulusList);
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), eventTag, "Condition0", Stimulus.Tag.tag_sim.name(), duration.elapsedMillis());
+                stimulusProvider.getSubset(condition0Tag, maxStimulusCount, selectionTags, seenStimulusList);
                 break;
             case 1:
-                stimulusProvider.getSubset(Stimulus.Tag.tag_scorpions, setCount, Arrays.asList(new Stimulus.Tag[]{Stimulus.Tag.tag_ประเพณีบุญบั้งไฟ, Stimulus.Tag.tag_Rocket, Stimulus.Tag.tag_Festival, Stimulus.Tag.tag_Lao, Stimulus.Tag.tag_Thai, Stimulus.Tag.tag_ບຸນບັ້ງໄຟ}), seenStimulusList);
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "SubsetStimulus", "Condition1", Stimulus.Tag.tag_mid.name(), duration.elapsedMillis());
+                stimulusProvider.getSubset(condition1Tag, maxStimulusCount, selectionTags, seenStimulusList);
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), eventTag, "Condition1", Stimulus.Tag.tag_mid.name(), duration.elapsedMillis());
                 break;
             case 2:
-                stimulusProvider.getSubset(Stimulus.Tag.tag_termites, setCount, Arrays.asList(new Stimulus.Tag[]{Stimulus.Tag.tag_ประเพณีบุญบั้งไฟ, Stimulus.Tag.tag_Rocket, Stimulus.Tag.tag_Festival, Stimulus.Tag.tag_Lao, Stimulus.Tag.tag_Thai, Stimulus.Tag.tag_ບຸນບັ້ງໄຟ}), seenStimulusList);
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "SubsetStimulus", "Condition1", Stimulus.Tag.tag_diff.name(), duration.elapsedMillis());
+                stimulusProvider.getSubset(condition2Tag, maxStimulusCount, selectionTags, seenStimulusList);
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), eventTag, "Condition2", Stimulus.Tag.tag_diff.name(), duration.elapsedMillis());
                 break;
             default:
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "SubsetStimulus", "Condition2", "", duration.elapsedMillis());
-                stimulusProvider.getSubset(setCount, seenStimulusList, Arrays.asList(new Stimulus.Tag[]{Stimulus.Tag.tag_scorpions, Stimulus.Tag.tag_termites, Stimulus.Tag.tag_centipedes}), Arrays.asList(new Stimulus.Tag[]{Stimulus.Tag.tag_ประเพณีบุญบั้งไฟ, Stimulus.Tag.tag_Rocket, Stimulus.Tag.tag_Festival, Stimulus.Tag.tag_Lao, Stimulus.Tag.tag_Thai, Stimulus.Tag.tag_ບຸນບັ້ງໄຟ}), 32);
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), eventTag, "Condition3", "", duration.elapsedMillis());
+                stimulusProvider.getSubset(maxStimulusCount, seenStimulusList, Arrays.asList(new Stimulus.Tag[]{condition1Tag, condition2Tag, condition0Tag}), selectionTags, 32);
                 break;
         }
     }
 
-    @Deprecated // todo: the configuration file needs to pass in interesting tags to a generic load stimulus
-    protected void loadNoiseStimulus() {
-        stimulusProvider.getNoisyStimuli();
+    protected void loadAllStimulus(String eventTag, final List<Stimulus.Tag> selectionTags) {
+        submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
+        stimulusProvider.getSubset(selectionTags);
+    }
+
+    protected void loadStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final int maxStimulusCount) {
+        submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
+        stimulusProvider.getSubset(selectionTags, maxStimulusCount);
     }
 
     protected void pause(final AppEventListner appEventListner, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
