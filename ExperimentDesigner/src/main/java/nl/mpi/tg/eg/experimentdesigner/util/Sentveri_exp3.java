@@ -17,14 +17,15 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.util;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterFeatureRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterScreenRepository;
-import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
-import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
+import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
 
 /**
  * @since Dec 2, 2015 1:21:07 PM (creation date)
@@ -40,22 +41,34 @@ public class Sentveri_exp3 {
         String name = "Sentveri_exp3";
         final PresenterScreen presenterScreen = new PresenterScreen(name, name, null, name + "Screen", null, PresenterType.stimulus);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
-        for (int index = 0; index < pictureIndex.length; index++) {
-            presenterFeatureList.add(new PresenterFeature(FeatureType.clearPage, null));
-            presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
-            final PresenterFeature imageFeature = new PresenterFeature(FeatureType.image, null);
-            imageFeature.addFeatureAttributes(FeatureAttribute.src, index + ".jpg");
-            imageFeature.addFeatureAttributes(FeatureAttribute.width, "70");
-            presenterFeatureList.add(imageFeature);
-            final PresenterFeature delayFeature = new PresenterFeature(FeatureType.pause, null);
-            delayFeature.addFeatureAttributes(FeatureAttribute.timeToNext, (slow3c[index]) ? "1000" : "50");
-            presenterFeatureList.add(delayFeature);
-            presenterFeatureRepository.save(presenterFeatureList);
-            final PresenterFeature nextFeature = new PresenterFeature(FeatureType.actionButton, "index " + index);
-            delayFeature.getPresenterFeatureList().add(nextFeature);
-            presenterFeatureRepository.save(delayFeature.getPresenterFeatureList());
-            presenterFeatureList = nextFeature.getPresenterFeatureList();
-        }
+//        for (int index = 0; index < pictureIndex.length; index++) {
+//            presenterFeatureList.add(new PresenterFeature(FeatureType.clearPage, null));
+//            presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
+//            final PresenterFeature imageFeature = new PresenterFeature(FeatureType.image, null);
+//            imageFeature.addFeatureAttributes(FeatureAttribute.src, index + ".jpg");
+//            imageFeature.addFeatureAttributes(FeatureAttribute.width, "70");
+//            presenterFeatureList.add(imageFeature);
+//            final PresenterFeature delayFeature = new PresenterFeature(FeatureType.pause, null);
+//            delayFeature.addFeatureAttributes(FeatureAttribute.timeToNext, (slow3c[index]) ? "1000" : "50");
+//            presenterFeatureList.add(delayFeature);
+//            presenterFeatureRepository.save(presenterFeatureList);
+//            final PresenterFeature nextFeature = new PresenterFeature(FeatureType.actionButton, "index " + index);
+//            delayFeature.getPresenterFeatureList().add(nextFeature);
+//            presenterFeatureRepository.save(delayFeature.getPresenterFeatureList());
+//            presenterFeatureList = nextFeature.getPresenterFeatureList();
+//        }
         return presenterScreen;
+    }
+
+    public ArrayList<Stimulus> createStimuli() {
+        final ArrayList<Stimulus> stimuliList = new ArrayList<>();
+        final HashSet<String> tagSet = new HashSet<>();
+
+        tagSet.add("videotag");
+        for (int index = 0; index < pictureIndex.length; index++) {
+            final Stimulus stimulus = new Stimulus(null, null, null, "index" + index + ".png", "index " + index, (slow3c[index]) ? 1000 : 1, tagSet);
+            stimuliList.add(stimulus);
+        }
+        return stimuliList;
     }
 }
