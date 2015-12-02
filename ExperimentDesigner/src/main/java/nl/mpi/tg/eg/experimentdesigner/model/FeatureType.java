@@ -56,6 +56,7 @@ public enum FeatureType {
     removeStimulus(false, false, null),
     clearStimulus(false, false, null),
     centrePage(false, false, null),
+    clearPage(false, false, null),
     allMenuItems(false, false, null),
     nextStimulusButton(false, true, new FeatureAttribute[]{eventTag, condition}),
     autoNextStimulus(false, false, new FeatureAttribute[]{eventTag, condition}),
