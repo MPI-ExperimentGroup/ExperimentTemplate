@@ -54,6 +54,7 @@ public class DefaultExperiments {
             PresenterFeatureRepository presenterFeatureRepository,
             MetadataRepository metadataRepository,
             ExperimentRepository experimentRepository) {
+        experimentRepository.save(getSentveri_exp3Experiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
         experimentRepository.save(getDobesExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
         experimentRepository.save(getAllOptionsExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
     }
@@ -79,6 +80,26 @@ public class DefaultExperiments {
         experiment.getPresenterScreen().add(addVideoAspen(presenterFeatureRepository, autoMenuPresenter));
         experiment.getPresenterScreen().add(addVideoWorksPage(presenterFeatureRepository, autoMenuPresenter));
         experiment.getPresenterScreen().add(addVideoFailedPage(presenterFeatureRepository, autoMenuPresenter));
+        presenterScreenRepository.save(experiment.getPresenterScreen());
+        return experiment;
+    }
+    
+    public Experiment getSentveri_exp3Experiment(MetadataRepository metadataRepository, PresenterFeatureRepository presenterFeatureRepository, PresenterScreenRepository presenterScreenRepository) {
+        Experiment experiment = getDefault();
+        experiment.setAppNameDisplay("Sentveri_exp3");
+        experiment.setAppNameInternal("Sentveri_exp3");
+        experiment.setDataSubmitUrl("http://ems12.mpi.nl/Sentveri_exp3-frinex-admin-0.1.38-testing/");
+        final Metadata metadata = new Metadata("workerId", "Reporter name *", ".'{'3,'}'", "Please enter at least three letters.", true, "This test can only be done once per worker.");
+        final Metadata metadata1 = new Metadata("errordevice", "Device model", ".'{'2,'}'", "Please enter the device model", false, null);
+        final Metadata metadata2 = new Metadata("errordescription", "Please describe the error", ".'{'2,'}'", "Please enter a short description of the issue", false, null);
+        experiment.getMetadata().add(metadata);
+        experiment.getMetadata().add(metadata1);
+        experiment.getMetadata().add(metadata2);
+        metadataRepository.save(experiment.getMetadata());        
+        addDobesStimuli(experiment);
+        final PresenterScreen autoMenuPresenter = addAutoMenu(presenterFeatureRepository);
+        experiment.getPresenterScreen().add(autoMenuPresenter);
+        experiment.getPresenterScreen().add(new Sentveri_exp3().create3c(presenterScreenRepository, presenterFeatureRepository));
         presenterScreenRepository.save(experiment.getPresenterScreen());
         return experiment;
     }
