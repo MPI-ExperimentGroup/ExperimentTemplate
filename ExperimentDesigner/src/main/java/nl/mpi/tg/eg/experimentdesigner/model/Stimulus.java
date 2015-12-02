@@ -36,6 +36,7 @@ public class Stimulus {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    private int pauseMs;
 
     private String mp3;
     private String mp4;
@@ -52,12 +53,13 @@ public class Stimulus {
     public Stimulus() {
     }
 
-    public Stimulus(String mp3, String mp4, String ogg, String image, String label, HashSet<String> stimulusTags) {
+    public Stimulus(String mp3, String mp4, String ogg, String image, String label, int pauseMs, HashSet<String> stimulusTags) {
         this.mp3 = mp3;
         this.mp4 = mp4;
         this.ogg = ogg;
         this.image = image;
         this.label = label;
+        this.pauseMs = pauseMs;
         this.stimulusTags = new HashSet<>();
         for (String tag : stimulusTags) {
             addStimulusTag(tag);
@@ -71,6 +73,15 @@ public class Stimulus {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    @XmlAttribute
+    public int getPauseMs() {
+        return pauseMs;
+    }
+
+    public void setPauseMs(int pauseMs) {
+        this.pauseMs = pauseMs;
     }
 
     @XmlAttribute
