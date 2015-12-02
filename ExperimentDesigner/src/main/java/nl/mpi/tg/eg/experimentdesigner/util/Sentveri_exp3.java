@@ -38,7 +38,7 @@ public class Sentveri_exp3 {
 
     public PresenterScreen create3c(PresenterScreenRepository presenterScreenRepository, PresenterFeatureRepository presenterFeatureRepository) {
         String name = "Sentveri_exp3";
-        final PresenterScreen presenterScreen = new PresenterScreen(name, name, null, name + "Screen", null, PresenterType.text);
+        final PresenterScreen presenterScreen = new PresenterScreen(name, name, null, name + "Screen", null, PresenterType.stimulus);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
         for (int index = 0; index < pictureIndex.length; index++) {
             presenterFeatureList.add(new PresenterFeature(FeatureType.clearPage, null));
@@ -51,7 +51,7 @@ public class Sentveri_exp3 {
             delayFeature.addFeatureAttributes(FeatureAttribute.timeToNext, (slow3c[index]) ? "1000" : "50");
             presenterFeatureList.add(delayFeature);
             presenterFeatureRepository.save(presenterFeatureList);
-            final PresenterFeature nextFeature = new PresenterFeature(FeatureType.optionButton, null);
+            final PresenterFeature nextFeature = new PresenterFeature(FeatureType.actionButton, "index " + index);
             delayFeature.getPresenterFeatureList().add(nextFeature);
             presenterFeatureRepository.save(delayFeature.getPresenterFeatureList());
             presenterFeatureList = nextFeature.getPresenterFeatureList();

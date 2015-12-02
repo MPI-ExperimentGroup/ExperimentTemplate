@@ -119,7 +119,7 @@ public class PresenterFeature {
         this.presenterFeatures = presenterFeatures;
     }
 
-    @XmlAttribute
+    @XmlTransient
     public FeatureType getFeatureType() {
         return featureType;
     }

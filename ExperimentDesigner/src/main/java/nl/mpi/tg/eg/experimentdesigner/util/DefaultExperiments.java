@@ -302,20 +302,20 @@ public class DefaultExperiments {
     private PresenterScreen addVideosMenu(PresenterFeatureRepository presenterFeatureRepository, PresenterScreen backPresenter) {
         final PresenterScreen presenterScreen = new PresenterScreen("Video List", "Videos", backPresenter, "VideosPage", null, PresenterType.text);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "This is a simple video codec testing application."));
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.padding, null));
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
         final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.AudioRecorderPanel, null);
         presenterFeature.addFeatureAttributes(FeatureType.AudioRecorderPanel.getFeatureAttributes()[0], "some path");
         presenterScreen.getPresenterFeatureList().add(presenterFeature);
 
-        final PresenterFeature optionButton1 = new PresenterFeature(FeatureType.optionButton, "Video Test Page (aspen)");
+        final PresenterFeature optionButton1 = new PresenterFeature(FeatureType.targetButton, "Video Test Page (aspen)");
         optionButton1.addFeatureAttributes(FeatureAttribute.target, "VideoTestPageAspen");
         presenterScreen.getPresenterFeatureList().add(optionButton1);
 
-        final PresenterFeature optionButton2 = new PresenterFeature(FeatureType.optionButton, "Annotation Timeline Screen");
+        final PresenterFeature optionButton2 = new PresenterFeature(FeatureType.targetButton, "Annotation Timeline Screen");
         optionButton2.addFeatureAttributes(FeatureAttribute.target, "AnnotationTimelinePanel");
         presenterScreen.getPresenterFeatureList().add(optionButton2);
 
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.padding, null));
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.versionData, null));
 
         presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
@@ -341,7 +341,7 @@ public class DefaultExperiments {
     private PresenterScreen addVideoFailedPage(PresenterFeatureRepository presenterFeatureRepository, PresenterScreen backPresenter) {
         final PresenterScreen presenterScreen = new PresenterScreen("Video Failed", "Video Failed Page", backPresenter, "VideoFailedPage", null, PresenterType.text);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "A message indicating that the video fails on your device has been sent."));
-        final PresenterFeature optionButton1 = new PresenterFeature(FeatureType.optionButton, "Videos");
+        final PresenterFeature optionButton1 = new PresenterFeature(FeatureType.targetButton, "Videos");
         optionButton1.addFeatureAttributes(FeatureAttribute.target, "VideosPage");
         presenterScreen.getPresenterFeatureList().add(optionButton1);
         presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
@@ -351,7 +351,7 @@ public class DefaultExperiments {
     private PresenterScreen addVideoWorksPage(PresenterFeatureRepository presenterFeatureRepository, PresenterScreen backPresenter) {
         final PresenterScreen presenterScreen = new PresenterScreen("Video Works", "Video Works Page", backPresenter, "VideoWorksPage", null, PresenterType.text);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "A message indicating that the video works on your device has been sent."));
-        final PresenterFeature optionButton1 = new PresenterFeature(FeatureType.optionButton, "Videos");
+        final PresenterFeature optionButton1 = new PresenterFeature(FeatureType.targetButton, "Videos");
         optionButton1.addFeatureAttributes(FeatureAttribute.target, "VideosPage");
         presenterScreen.getPresenterFeatureList().add(optionButton1);
         presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
@@ -361,16 +361,16 @@ public class DefaultExperiments {
     private PresenterScreen addVideoAspen(PresenterFeatureRepository presenterFeatureRepository, PresenterScreen backPresenter) {
         final PresenterScreen presenterScreen = new PresenterScreen("Video Test", "Video Test Page (aspen)", backPresenter, "VideoTestPageAspen", null, PresenterType.text);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4"));
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.padding, null));
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
         final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.VideoPanel, null);
         presenterFeature.addFeatureAttributes(FeatureType.VideoPanel.getFeatureAttributes()[3], "70%");
         presenterFeature.addFeatureAttributes(FeatureType.VideoPanel.getFeatureAttributes()[0], "http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4");
         presenterScreen.getPresenterFeatureList().add(presenterFeature);
 
-        final PresenterFeature optionButton1 = new PresenterFeature(FeatureType.optionButton, "Video Works");
+        final PresenterFeature optionButton1 = new PresenterFeature(FeatureType.targetButton, "Video Works");
         optionButton1.addFeatureAttributes(FeatureAttribute.target, "VideoWorksPage");
         presenterScreen.getPresenterFeatureList().add(optionButton1);
-        final PresenterFeature optionButton2 = new PresenterFeature(FeatureType.optionButton, "Video Failed");
+        final PresenterFeature optionButton2 = new PresenterFeature(FeatureType.targetButton, "Video Failed");
         optionButton2.addFeatureAttributes(FeatureAttribute.target, "VideoFailedPage");
         presenterScreen.getPresenterFeatureList().add(optionButton2);
         presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
