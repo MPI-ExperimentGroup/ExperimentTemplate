@@ -45,11 +45,12 @@ stopSharingDetailsExplanation=({0}) and unique id ({1})
 </xsl:text>      
         <xsl:apply-templates/>
     </xsl:template>
-    <xsl:template match="optionButton[@featureText != '']|text[@featureText != '']|popupMessage[@featureText != '']|menuItem[@featureText != '']|featureText[@featureText != '']|nextStimulusButton[@featureText != '']|htmlText[@featureText != '']|conditionalHtml[@featureText != '']|userInfo[@featureText != '']">
+    <xsl:template match="targetButton[@featureText != '']|actionButton[@featureText != '']|text[@featureText != '']|popupMessage[@featureText != '']|menuItem[@featureText != '']|featureText[@featureText != '']|nextStimulusButton[@featureText != '']|htmlText[@featureText != '']|conditionalHtml[@featureText != '']|userInfo[@featureText != '']">
         <xsl:value-of select="generate-id(.)" />
         <xsl:text>=</xsl:text>
         <xsl:value-of select="@featureText"/>
         <xsl:text>
 </xsl:text>
+        <xsl:apply-templates/>
     </xsl:template>
 </xsl:stylesheet>
