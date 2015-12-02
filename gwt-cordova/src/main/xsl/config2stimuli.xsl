@@ -37,6 +37,8 @@
             <xsl:text>}, "</xsl:text>
             <xsl:value-of select="@label" />
             <xsl:text>", </xsl:text>
+            <xsl:value-of select="@pauseMs" />
+            <xsl:text>, </xsl:text>
             <xsl:value-of select="if(@mp3) then 'true' else 'false'" />
             <xsl:text>, </xsl:text>
             <xsl:value-of select="if(@mp4) then 'true' else 'false'" />
@@ -78,15 +80,17 @@
             final private String uniqueId;
             final private List&lt;Tag&gt; tags;
             final private String label;
+            final private int pauseMs;
             final private boolean mp3;
             final private boolean mp4;
             final private boolean ogg;
             final private boolean image;
 
-            Stimulus(String uniqueId, Tag tags[], String label, boolean mp3, boolean mp4, boolean ogg, boolean image) {
+            Stimulus(String uniqueId, Tag tags[], String label, int pauseMs, boolean mp3, boolean mp4, boolean ogg, boolean image) {
             this.uniqueId = uniqueId;
             this.tags = Arrays.asList(tags);
             this.label = label;
+            this.pauseMs = pauseMs;
             this.mp3 = mp3;
             this.mp4 = mp4;
             this.ogg = ogg;
