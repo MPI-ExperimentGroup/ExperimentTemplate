@@ -49,7 +49,7 @@ public class ComplexView extends SimpleView {
         setContent(outerPanel);
     }
 
-    public void clearGui() {
+    public void clearPage() {
         outerPanel.clear();
     }
 

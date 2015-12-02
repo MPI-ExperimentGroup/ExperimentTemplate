@@ -314,7 +314,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void clearStimulus() {
-        ((TimedStimulusView) simpleView).clearGui();
+        ((TimedStimulusView) simpleView).clearPage();
         buttonList.clear();
     }
 
@@ -322,7 +322,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         if (condition) {
             logTimeStamp(eventTag);
             ((TimedStimulusView) simpleView).stopAudio();
-            ((TimedStimulusView) simpleView).clearGui();
+            ((TimedStimulusView) simpleView).clearPage();
             buttonList.clear();
             setContent(appEventListner);
         }

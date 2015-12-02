@@ -36,8 +36,8 @@ public class RegisterView extends ComplexView {
     private FlexTable flexTable = null;
 
     @Override
-    public void clearGui() {
-        super.clearGui();
+    public void clearPage() {
+        super.clearPage();
         flexTable = null;
     }
 

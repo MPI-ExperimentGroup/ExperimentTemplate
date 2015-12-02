@@ -117,7 +117,7 @@ public abstract class AbstractKinDiagramPresenter extends AbstractPresenter impl
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 saveKinTypeString(diagramName, ((KinTypeView) simpleView).getKinTypeString());
-                ((TimedStimulusView) simpleView).clearGui();
+                ((TimedStimulusView) simpleView).clearPage();
                 setContent(appEventListner);
                 submissionService.submitTimeStamp(userResults.getUserData().getUserId(), "AddToDiagram", duration.elapsedMillis());
             }
@@ -144,7 +144,7 @@ public abstract class AbstractKinDiagramPresenter extends AbstractPresenter impl
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 clearKinTypeString(diagramName);
-                ((TimedStimulusView) simpleView).clearGui();
+                ((TimedStimulusView) simpleView).clearPage();
                 setContent(appEventListner);
                 submissionService.submitTimeStamp(userResults.getUserData().getUserId(), "ClearDiagram", duration.elapsedMillis());
             }

@@ -370,17 +370,13 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="padding">
-        <xsl:text>    ((ComplexView) simpleView).addPadding();
-        </xsl:text>
-    </xsl:template>
-    <xsl:template match="localStorageData|allMetadataFields|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|disableStimulusButtons|showStimulusProgress|hideStimulusButtons|showStimulusButtons|generateCompletionCode|sendAllData|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|nextStimulus">
+    <xsl:template match="localStorageData|allMetadataFields|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|disableStimulusButtons|showStimulusProgress|hideStimulusButtons|showStimulusButtons|generateCompletionCode|sendAllData|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|nextStimulus|clearPage|addPadding">
         <xsl:text>    </xsl:text>    
         <xsl:value-of select ="local-name()"/>
         <xsl:text>();
         </xsl:text>
     </xsl:template>
-    <xsl:template match="centrePage">
+    <xsl:template match="centrePage|clearPage|addPadding">
         <xsl:text>    ((ComplexView) simpleView).</xsl:text>    
         <xsl:value-of select ="local-name()"/>
         <xsl:text>();
