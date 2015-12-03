@@ -39,7 +39,6 @@ import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
-import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
 
 /**
@@ -132,6 +131,14 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         timer.schedule(postLoadMs);
     }
 
+    protected void stimulusPause(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener) {
+        pause(appEventListner, stimulusProvider.getCurrentStimulus().getPauseMs(), timedStimulusListener);
+    }
+
+    public void stimulusLabel() {
+        ((TimedStimulusView) simpleView).addText(stimulusProvider.getCurrentStimulus().getLabel());
+    }
+
     protected void autoNextPresenter(final AppEventListner appEventListner, final ApplicationController.ApplicationState state) {
         Timer timer = new Timer() {
             public void run() {
@@ -143,6 +150,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void showStimulus(final AppEventListner appEventListner, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         if (stimulusProvider.hasNextStimulus()) {
+            stimulusProvider.getNextStimulus();
             hasMoreStimulusListener.postLoadTimerFired();
         } else {
             endOfStimulusListener.postLoadTimerFired();
@@ -157,10 +165,6 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     protected void responseIncorrect(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener) {
         timedStimulusListener.postLoadTimerFired();
         throw new UnsupportedOperationException("todo: responseIncorrect");
-    }
-
-    protected void nextStimulus() {
-        stimulusProvider.getNextStimulus();
     }
 
     protected void removeStimulus() {
@@ -297,10 +301,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //        ((TimedStimulusView) simpleView).addText("showStimulusProgress: " + duration.elapsedMillis() + "ms");
     }
 
-    public void popupMessage(final PresenterEventListner presenterListerner, String message, boolean condition) {
-        if (condition) {
-            ((TimedStimulusView) simpleView).showHtmlPopup(presenterListerner, message);
-        }
+    public void popupMessage(final PresenterEventListner presenterListerner, String message) {
+        ((TimedStimulusView) simpleView).showHtmlPopup(presenterListerner, message);
     }
 
     protected boolean stimulusIndexIn(int[] validIndexes) {
@@ -318,18 +320,16 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         buttonList.clear();
     }
 
-    protected void autoNextStimulus(final AppEventListner appEventListner, final String eventTag, boolean condition) {
-        if (condition) {
-            logTimeStamp(eventTag);
-            ((TimedStimulusView) simpleView).stopAudio();
-            ((TimedStimulusView) simpleView).clearPage();
-            buttonList.clear();
-            setContent(appEventListner);
-        }
+    protected void autoNextStimulus(final AppEventListner appEventListner, final String eventTag) {
+        logTimeStamp(eventTag);
+        ((TimedStimulusView) simpleView).stopAudio();
+        ((TimedStimulusView) simpleView).clearPage();
+        buttonList.clear();
+        setContent(appEventListner);
     }
 
-    protected void nextStimulusButton(final AppEventListner appEventListner, final String eventTag, boolean condition, final String buttonLabel) {
-        if (condition && stimulusProvider.hasNextStimulus()) {
+    protected void nextStimulusButton(final AppEventListner appEventListner, final String eventTag, final String buttonLabel) {
+        if (stimulusProvider.hasNextStimulus()) {
             PresenterEventListner eventListner = new PresenterEventListner() {
 
                 @Override
@@ -339,16 +339,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
                 @Override
                 public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                    autoNextStimulus(appEventListner, eventTag, true);
+                    autoNextStimulus(appEventListner, eventTag);
                 }
             };
             ((TimedStimulusView) simpleView).addOptionButton(eventListner);
-        }
-    }
-
-    protected void conditionalHtml(final AppEventListner appEventListner, boolean condition, final String label) {
-        if (condition) {
-            ((ComplexView) simpleView).addHtmlText(label);
         }
     }
 

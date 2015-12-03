@@ -324,9 +324,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(null, messages.</xsl:text>
         <xsl:value-of select="generate-id(.)" />
-        <xsl:text>(), </xsl:text>
-        <xsl:value-of select="if(@condition) then @condition else 'true'" />
-        <xsl:text>);
+        <xsl:text>());
         </xsl:text>
     </xsl:template>
     <xsl:template match="targetButton|actionButton">
@@ -379,7 +377,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="localStorageData|allMetadataFields|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|disableStimulusButtons|showStimulusProgress|hideStimulusButtons|showStimulusButtons|generateCompletionCode|sendAllData|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|nextStimulus|clearPage|addPadding">
+    <xsl:template match="localStorageData|allMetadataFields|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|disableStimulusButtons|showStimulusProgress|hideStimulusButtons|showStimulusButtons|generateCompletionCode|sendAllData|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|nextStimulus|clearPage|addPadding|stimulusLabel">
         <xsl:text>    </xsl:text>    
         <xsl:value-of select ="local-name()"/>
         <xsl:text>();
@@ -391,13 +389,12 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:text>();
         </xsl:text>
     </xsl:template>
-    <xsl:template match="allMenuItems|nextStimulusButton|autoNextStimulus|conditionalHtml|addKinTypeGui|autoNextPresenter">    
+    <xsl:template match="allMenuItems|nextStimulusButton|autoNextStimulus|addKinTypeGui|autoNextPresenter">    
         <xsl:text>    </xsl:text>
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(appEventListner</xsl:text>
         <xsl:value-of select="if(@diagramName) then concat(', &quot;', @diagramName, '&quot;') else ''" />
         <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
-        <xsl:value-of select="if(@condition) then concat(', ', @condition) else ''" />
         <xsl:value-of select="if(@featureText) then concat(', messages.', generate-id(.), '()') else ''" />
         <xsl:value-of select="if(@target) then concat(', ApplicationState.', @target) else ''" />
         <xsl:text>);
@@ -414,7 +411,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="preloadAllStimuli|pause|onError|onSuccess|kinTypeStringDiagram|loadKinTypeStringDiagram">
+    <xsl:template match="preloadAllStimuli|pause|onError|onSuccess|kinTypeStringDiagram|loadKinTypeStringDiagram|stimulusPause">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(appEventListner</xsl:text>
@@ -510,8 +507,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
     </xsl:template>
     <xsl:template match="stimuli" mode="stimuliTags">
         <xsl:text>, Arrays.asList(new Tag[]{</xsl:text>
-            <xsl:for-each select="distinct-values(stimuli/tag/text())">
-                <xsl:text>Tag.</xsl:text>
+            <xsl:for-each select="distinct-values(tag/text())">
+                <xsl:text>Tag.tag_</xsl:text>
                 <xsl:value-of select="." />
                 <xsl:if test="position() != last()">
                     <xsl:text>, </xsl:text>

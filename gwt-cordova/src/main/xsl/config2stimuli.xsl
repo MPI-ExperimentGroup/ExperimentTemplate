@@ -28,7 +28,7 @@
             <xsl:value-of select="generate-id(.)" />
             <xsl:text>", new Tag[]{</xsl:text>
             <xsl:for-each select="distinct-values(tag/text())">
-                <xsl:text>Tag.</xsl:text>
+                <xsl:text>Tag.tag_</xsl:text>
                 <xsl:value-of select="." />
                 <xsl:if test="position() != last()">
                     <xsl:text>, </xsl:text>
@@ -60,7 +60,7 @@
 
         </xsl:text>
         <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/tag/text())">
-            <xsl:value-of select="." />
+            <xsl:text>tag_</xsl:text><xsl:value-of select="." />
             <xsl:if test="position() != last()">
                 <xsl:text>, </xsl:text>
             </xsl:if>
@@ -108,7 +108,11 @@
             public String getLabel() {
             return label;
             }
-
+            
+            public int getPauseMs() {
+                return pauseMs;
+            }
+            
             public String getMp3() {
             return uniqueId + ".mp3";
             }
