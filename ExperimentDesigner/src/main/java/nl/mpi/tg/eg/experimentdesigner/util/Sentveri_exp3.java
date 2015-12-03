@@ -36,10 +36,12 @@ import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
 public class Sentveri_exp3 {
 
     int[] QorNOT = new int[]{1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0};
-    boolean[] slow3c = new boolean[]{false, false, false, false, true, true, true, true, false, false, true, false, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, false, true, false, true, false, false, false, false, false, false, false, false, false, false, true, true, false, false, false, false, false, true, true, false, true, true, true, false, true, false, false, false, false, true, false, false, false, true, true, false, false, true, false, false, false, false, false, false, false, true, false};
+    boolean[] slowA = new boolean[]{false, false, false, false, true, true, true, true, false, true, false, false, true, false, false, false, true, false, false, false, false, false, false, false, true, false, true, false, false, false, false, false, false, true, true, true, true, false, false, true, false, true, false, false, false, true, false, true, true, true, false, false, true, false, false, false, false, false, false, true, false, false, false, false, true, false, false, false, true, false, false, false, true, true, true, true, false, true, false, false};
+    boolean[] slowB = new boolean[]{false, false, false, false, true, true, true, true, true, false, false, true, false, false, true, false, false, false, true, false, true, false, true, false, false, false, false, false, true, true, false, true, false, false, false, false, false, true, true, false, true, false, true, false, false, false, true, false, false, false, false, false, false, false, false, false, true, false, true, false, true, true, false, true, false, true, false, false, false, true, false, true, false, false, false, false, true, false, false, true};
+    boolean[] slowC = new boolean[]{false, false, false, false, true, true, true, true, false, false, true, false, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, false, true, false, true, false, false, false, false, false, false, false, false, false, false, true, true, false, false, false, false, false, true, true, false, true, true, true, false, true, false, false, false, false, true, false, false, false, true, true, false, false, true, false, false, false, false, false, false, false, true, false};
     int[] pictureIndex = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72};
 
-    final String stimulusTag = "videotag";
+    final String[] stimulusTagList = new String[]{"list1", "list2", "list3", "list4"};
 
     public PresenterScreen create3c(PresenterScreenRepository presenterScreenRepository, PresenterFeatureRepository presenterFeatureRepository) {
         String name = "Sentveri_exp3";
@@ -87,11 +89,26 @@ public class Sentveri_exp3 {
     public ArrayList<Stimulus> createStimuli() {
         final ArrayList<Stimulus> stimuliList = new ArrayList<>();
         final HashSet<String> tagSet = new HashSet<>();
-
-        tagSet.add(stimulusTag);
-        for (int index = 0; index < pictureIndex.length; index++) {
-            final Stimulus stimulus = new Stimulus(null, null, null, "index" + index + ".png", "index " + index, (slow3c[index]) ? 1000 : 1, tagSet);
-            stimuliList.add(stimulus);
+        for (char setChar : new char[]{'a', 'b', 'c'}) {
+            for (String tagString : stimulusTagList) {
+                tagSet.clear();
+                final boolean[] currendSlow;
+                switch (setChar) {
+                    case 'a':
+                        currendSlow = slowA;
+                        break;
+                    case 'b':
+                        currendSlow = slowB;
+                        break;
+                    default:
+                        currendSlow = slowC;
+                }
+                tagSet.add(tagString + setChar);
+                for (int index = 0; index < pictureIndex.length; index++) {
+                    final Stimulus stimulus = new Stimulus(null, null, null, "index" + index + ".png", "index " + index, (currendSlow[index]) ? 1000 : 1, tagSet);
+                    stimuliList.add(stimulus);
+                }
+            }
         }
         return stimuliList;
     }
