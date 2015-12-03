@@ -66,7 +66,7 @@ public enum FeatureType {
     autoNextPresenter(false, false, new FeatureAttribute[]{target}),
     logTimeStamp(false, false, new FeatureAttribute[]{eventTag}),
     audioButton(false, false, new FeatureAttribute[]{eventTag, mp3, ogg, poster}),
-    preloadAllStimuli(true, false, null),
+    preloadAllStimuli(true, false, null, true, false),
     showStimulusGrid(true, false, new FeatureAttribute[]{columnCount, imageWidth, eventTag}, true, true),
     pause(true, false, new FeatureAttribute[]{timeToNext}),
     onError(true, false, null),
