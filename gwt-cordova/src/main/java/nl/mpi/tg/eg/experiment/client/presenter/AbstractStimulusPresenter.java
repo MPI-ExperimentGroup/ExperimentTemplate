@@ -94,16 +94,16 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
         switch (stimulusAllocation) {
             case 0:
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), eventTag, "Condition0", Stimulus.Tag.tag_sim.name(), duration.elapsedMillis());
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), eventTag, "Condition0", condition0Tag.name(), duration.elapsedMillis());
                 stimulusProvider.getSubset(condition0Tag, maxStimulusCount, selectionTags, seenStimulusList);
                 break;
             case 1:
                 stimulusProvider.getSubset(condition1Tag, maxStimulusCount, selectionTags, seenStimulusList);
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), eventTag, "Condition1", Stimulus.Tag.tag_mid.name(), duration.elapsedMillis());
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), eventTag, "Condition1", condition1Tag.name(), duration.elapsedMillis());
                 break;
             case 2:
                 stimulusProvider.getSubset(condition2Tag, maxStimulusCount, selectionTags, seenStimulusList);
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), eventTag, "Condition2", Stimulus.Tag.tag_diff.name(), duration.elapsedMillis());
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), eventTag, "Condition2", condition2Tag.name(), duration.elapsedMillis());
                 break;
             default:
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), eventTag, "Condition3", "", duration.elapsedMillis());
