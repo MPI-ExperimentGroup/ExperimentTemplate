@@ -67,11 +67,11 @@ public class StimulusProvider {
         return wordTag;
     }
 
-    public void getSubset(final List<Tag> selectionTags) {
-        getSubset(selectionTags, stimulusArray.size());
+    public void getSubset(final List<Tag> selectionTags, final boolean randomise, final boolean norepeat) {
+        getSubset(selectionTags, stimulusArray.size(), randomise, norepeat);
     }
 
-    public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount) {
+    public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final boolean norepeat) {
         stimulusSubsetArray.clear();
         List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
         while (!stimulusListCopy.isEmpty() && maxStimulusCount > stimulusSubsetArray.size()) {

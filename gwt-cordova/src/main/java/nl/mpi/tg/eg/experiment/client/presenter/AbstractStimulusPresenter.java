@@ -56,6 +56,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     final UserResults userResults;
     private final Duration duration;
     final ArrayList<ButtonBase> buttonList = new ArrayList<>();
+    private TimedStimulusListener hasMoreStimulusListener;
+    private TimedStimulusListener endOfStimulusListener;
 
     public AbstractStimulusPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage) {
         super(widgetTag, new TimedStimulusView(audioPlayer));
@@ -111,14 +113,20 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
-    protected void loadAllStimulus(String eventTag, final List<Stimulus.Tag> selectionTags) {
+    protected void loadAllStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final boolean randomise, final boolean norepeat, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
-        stimulusProvider.getSubset(selectionTags);
+        stimulusProvider.getSubset(selectionTags, randomise, norepeat);
+        this.hasMoreStimulusListener = hasMoreStimulusListener;
+        this.endOfStimulusListener = endOfStimulusListener;
+        showStimulus();
     }
 
-    protected void loadStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final int maxStimulusCount) {
+    protected void loadStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final boolean norepeat, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
-        stimulusProvider.getSubset(selectionTags, maxStimulusCount);
+        stimulusProvider.getSubset(selectionTags, maxStimulusCount, randomise, norepeat);
+        this.hasMoreStimulusListener = hasMoreStimulusListener;
+        this.endOfStimulusListener = endOfStimulusListener;
+        showStimulus();
     }
 
     protected void pause(final AppEventListner appEventListner, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
@@ -148,7 +156,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         timer.schedule(100);
     }
 
-    protected void showStimulus(final AppEventListner appEventListner, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+    protected void showStimulus() {
         if (stimulusProvider.hasNextStimulus()) {
             stimulusProvider.getNextStimulus();
             hasMoreStimulusListener.postLoadTimerFired();
@@ -320,15 +328,15 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         buttonList.clear();
     }
 
-    protected void autoNextStimulus(final AppEventListner appEventListner, final String eventTag) {
+    protected void autoNextStimulus(final String eventTag) {
         logTimeStamp(eventTag);
         ((TimedStimulusView) simpleView).stopAudio();
         ((TimedStimulusView) simpleView).clearPage();
         buttonList.clear();
-        setContent(appEventListner);
+        showStimulus();
     }
 
-    protected void nextStimulusButton(final AppEventListner appEventListner, final String eventTag, final String buttonLabel) {
+    protected void nextStimulusButton(final String eventTag, final String buttonLabel) {
         if (stimulusProvider.hasNextStimulus()) {
             PresenterEventListner eventListner = new PresenterEventListner() {
 
@@ -339,7 +347,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
                 @Override
                 public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                    autoNextStimulus(appEventListner, eventTag);
+                    autoNextStimulus(eventTag);
                 }
             };
             ((TimedStimulusView) simpleView).addOptionButton(eventListner);
