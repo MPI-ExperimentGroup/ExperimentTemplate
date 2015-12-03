@@ -257,9 +257,6 @@ public class DefaultExperiments {
         if (featureType.getFeatureAttributes() != null) {
             for (FeatureAttribute attribute : featureType.getFeatureAttributes()) {
                 switch (attribute) {
-                    case condition:
-                        presenterFeature.addFeatureAttributes(attribute, "true");
-                        break;
                     case columnCount:
                     case maxStimuli:
                         presenterFeature.addFeatureAttributes(attribute, "3");
@@ -269,13 +266,13 @@ public class DefaultExperiments {
                         presenterFeature.addFeatureAttributes(attribute, "60");
                         break;
                     case condition0Tag:
-                        presenterFeature.addFeatureAttributes(attribute, "tag_centipedes");
+                        presenterFeature.addFeatureAttributes(attribute, "centipedes");
                         break;
                     case condition1Tag:
-                        presenterFeature.addFeatureAttributes(attribute, "tag_scorpions");
+                        presenterFeature.addFeatureAttributes(attribute, "scorpions");
                         break;
                     case condition2Tag:
-                        presenterFeature.addFeatureAttributes(attribute, "tag_termites");
+                        presenterFeature.addFeatureAttributes(attribute, "termites");
                         break;
                     default:
                         presenterFeature.addFeatureAttributes(attribute, attribute.name());
@@ -283,13 +280,18 @@ public class DefaultExperiments {
             }
         }
         if (featureType.canHaveStimulus()) {
-            for (String stimulusTag : new String[]{"tag_ประเพณีบุญบั้งไฟ", "tag_Rocket", "tag_Festival", "tag_Lao", "tag_Thai", "tag_ບຸນບັ້ງໄຟ"}) {
+            for (String stimulusTag : new String[]{"ประเพณีบุญบั้งไฟ", "Rocket", "Festival", "Lao", "Thai", "ບຸນບັ້ງໄຟ"}) {
                 presenterFeature.addStimulusTag(stimulusTag);
             }
         }
         if (featureType.requiresCorrectIncorrect()) {
             presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.responseCorrect, presenterFeatureRepository));
             presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.responseIncorrect, presenterFeatureRepository));
+            presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+        }
+        if (featureType == FeatureType.showStimulus) {
+            presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.hasMoreStimulus, presenterFeatureRepository));
+            presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.endOfStimulus, presenterFeatureRepository));
             presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
         }
         if (featureType.canHaveFeatures()) {
@@ -384,8 +386,8 @@ public class DefaultExperiments {
 //        final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.VideoPanel, null);
         final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.AnnotationTimelinePanel, null);
 //        presenterFeature1.addFeatureAttributes(FeatureAttribute.width, "70%");
-        presenterFeature1.addStimulusTag("tag_videotag");
-//        presenterFeature1.addStimulusTag("tag_centipedes");
+        presenterFeature1.addStimulusTag("videotag");
+//        presenterFeature1.addStimulusTag("centipedes");
         presenterFeature1.addFeatureAttributes(FeatureAttribute.columnCount, "2");
         presenterFeature1.addFeatureAttributes(FeatureAttribute.eventTag, "annotationtimeline");
         presenterFeature1.addFeatureAttributes(FeatureAttribute.maxStimuli, "10");

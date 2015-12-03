@@ -35,7 +35,6 @@ public enum FeatureAttribute {
     width,
     align,
     target,
-    condition,
     eventTag,
     mp3,
     mp4,

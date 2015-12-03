@@ -38,6 +38,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <span class="td">webm</span>
                         <span class="td">image</span>
                         <span class="td">label</span>
+                        <span class="td">pauseMs</span>
                         <span class="td">stimulusTags</span>
                     </div>
                     <form th:each="stimulus : ${(updatedStimulus != null)? updatedStimulus : experiment.getStimuli()}" th:fragment="stimulusRow" class="tr" th:id="${'updateRowForm' + stimulus.id}">
@@ -60,6 +61,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             <img th:if="${stimulus.getImageData()} != null" class="stimulusImage" src="" alt="stimulus image" th:src="${contextPath + '/experiment/' + experiment.id + '/stimulus/' + stimulus.id + '/image'}"/>                            
                         </span>
                         <span class="td"><input type="text" name="label" th:value="${stimulus.label}" th:onchange="${'$(updateRowButton' + stimulus.id + ').show();'}" /></span>
+                        <span class="td"><input type="number" name="pauseMs" th:value="${stimulus.pauseMs}" th:onchange="${'$(updateRowButton' + stimulus.id + ').show();'}" /></span>
                         <span class="td"><span th:each="stimulusTag : ${stimulus.stimulusTags}" th:text="${stimulusTag}"></span></span>
                         <span class="td"><button th:id="${'updateRowButton' + stimulus.id}"  style="display: none" type="button" name="updateRow" th:onclick="${'postChanges(' + stimulus.id + ')'}">Save Changes</button></span>
                     </form>
@@ -71,7 +73,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <span class="td"><input type="text" name="ogg" /></span>
                         <span class="td"><input type="text" name="webm" /></span>
                         <span class="td"><input type="text" name="image" /></span>
-                        <span class="td"><input type="text" name="label" /></span>
+                        <span class="td"><input type="number" name="pauseMs" /></span>
                         <span class="td"><input type="text" name="stimulusTags" /></span>
                         <span class="td"><input type="text" name="stimulusTags" /></span>
                         <span class="td"><input type="text" name="stimulusTags" /></span>

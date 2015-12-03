@@ -156,7 +156,7 @@ public class PresenterFeature {
 //    }
 
     public void addStimulusTag(String tag) {
-        stimulusTags.add(tag);
+        stimulusTags.add(Stimulus.cleanTagString(tag));
     }
 
     @XmlAnyAttribute
