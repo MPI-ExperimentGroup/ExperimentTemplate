@@ -43,31 +43,33 @@ public class Sentveri_exp3 {
 
     final String[] stimulusTagList = new String[]{"list1", "list2", "list3", "list4"};
 
-    public PresenterScreen create3c(PresenterScreenRepository presenterScreenRepository, PresenterFeatureRepository presenterFeatureRepository) {
-        String name = "Sentveri_exp3";
-        final PresenterScreen presenterScreen = new PresenterScreen(name, name, null, name + "Screen", null, PresenterType.stimulus);
-        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
-        final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadAllStimulus, null);
-        loadStimuliFeature.addStimulusTag(stimulusTag);
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, stimulusTag);
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "false");
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.norepeat, "false");
-        presenterFeatureList.add(loadStimuliFeature);
+    public void create3c(PresenterScreenRepository presenterScreenRepository, PresenterFeatureRepository presenterFeatureRepository, final List<PresenterScreen> presenterScreenList) {
+        for (char setChar : new char[]{'a', 'b', 'c'}) {
+            for (String tagString : stimulusTagList) {
+                String screenName = tagString + setChar;
+                final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, null, screenName + "Screen", null, PresenterType.stimulus);
+                List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
+                final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadAllStimulus, null);
+                loadStimuliFeature.addStimulusTag(screenName);
+                loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, screenName);
+                loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "false");
+                loadStimuliFeature.addFeatureAttributes(FeatureAttribute.norepeat, "false");
+                presenterFeatureList.add(loadStimuliFeature);
 //        final PresenterFeature showStimulusFeature = new PresenterFeature(FeatureType.showStimulus, null);
-        final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
+                final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
 
 //        presenterFeatureList.add(new PresenterFeature(FeatureType.clearPage, null));
-        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
-        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
-        final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulusButton, "next stimulus");
-        nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus");
-        hasMoreStimulusFeature.getPresenterFeatureList().add(nextStimulusFeature);
+                hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
+                hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
+                final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulusButton, "next stimulus");
+                nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus");
+                hasMoreStimulusFeature.getPresenterFeatureList().add(nextStimulusFeature);
 //        presenterFeatureRepository.save(hasMoreStimulusFeature.getPresenterFeatureList());
-        loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
-        final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
-        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "end of stimuli"));
+                loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
+                final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
+                endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "end of stimuli"));
 //        presenterFeatureRepository.save(endOfStimulusFeature.getPresenterFeatureList());
-        loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
+                loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
 //        presenterFeatureList.add(showStimulusFeature);
 //        presenterFeatureList.add(new PresenterFeature(FeatureType.clearPage, null));
 //        presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
@@ -83,7 +85,9 @@ public class Sentveri_exp3 {
 //        delayFeature.getPresenterFeatureList().add(nextFeature);
 //        presenterFeatureRepository.save(delayFeature.getPresenterFeatureList());
 //        presenterFeatureList = nextFeature.getPresenterFeatureList();
-        return presenterScreen;
+                presenterScreenList.add(presenterScreen);
+            }
+        }
     }
 
     public ArrayList<Stimulus> createStimuli() {
