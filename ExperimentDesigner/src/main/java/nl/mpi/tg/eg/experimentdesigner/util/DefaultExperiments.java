@@ -99,7 +99,7 @@ public class DefaultExperiments {
         experiment.setStimuli(new Sentveri_exp3().createStimuli());
         final PresenterScreen autoMenuPresenter = addAutoMenu(presenterFeatureRepository);
         experiment.getPresenterScreen().add(autoMenuPresenter);
-        experiment.getPresenterScreen().add(new Sentveri_exp3().create3c(presenterScreenRepository, presenterFeatureRepository));
+        new Sentveri_exp3().create3c(presenterScreenRepository, presenterFeatureRepository, experiment.getPresenterScreen());
         presenterScreenRepository.save(experiment.getPresenterScreen());
         return experiment;
     }
