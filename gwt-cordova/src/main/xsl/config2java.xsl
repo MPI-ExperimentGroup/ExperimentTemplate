@@ -329,7 +329,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="optionButton">
+    <xsl:template match="targetButton|actionButton">
         <xsl:text>    ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
 
             @Override
@@ -341,9 +341,18 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
 
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-            appEventListner.requestApplicationState(ApplicationState.</xsl:text>
-        <xsl:value-of select="@target" />
-        <xsl:text>);
+        </xsl:text>
+        <xsl:choose>
+            <xsl:when test="targetButton">
+                <xsl:text>appEventListner.requestApplicationState(ApplicationState.</xsl:text>
+                <xsl:value-of select="@target" />
+                <xsl:text>);</xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:apply-templates/>
+            </xsl:otherwise>
+        </xsl:choose>
+        <xsl:text>
             }
             });
         </xsl:text>
