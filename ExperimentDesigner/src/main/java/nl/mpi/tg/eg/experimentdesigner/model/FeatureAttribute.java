@@ -36,6 +36,8 @@ public enum FeatureAttribute {
     align,
     target,
     eventTag,
+    randomise,
+    norepeat,
     mp3,
     mp4,
     ogg,
