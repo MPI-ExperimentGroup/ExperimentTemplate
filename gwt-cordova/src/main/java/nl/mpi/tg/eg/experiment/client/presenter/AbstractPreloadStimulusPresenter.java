@@ -20,11 +20,10 @@ package nl.mpi.tg.eg.experiment.client.presenter;
 import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
-import java.util.Arrays;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
-import nl.mpi.tg.eg.experiment.client.model.Stimulus.Tag;
+import nl.mpi.tg.eg.experiment.client.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
@@ -56,9 +55,9 @@ public abstract class AbstractPreloadStimulusPresenter extends AbstractStimulusP
         }
     }
 
-    protected void preloadAllStimuli(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener) {
+    protected void preloadAllStimuli(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final List<Stimulus.Tag> selectionTags) {
         final StimulusProvider stimulusProvider = new StimulusProvider();
-        stimulusProvider.getSubset(Arrays.asList(new Tag[]{Tag.tag_Rocket, Tag.tag_Festival})); // todo: get these tags from the configuration file
+        stimulusProvider.getSubset(selectionTags);
         final List<String> pictureList = stimulusProvider.getPictureList();
         final HorizontalPanel progressBar = ((TimedStimulusView) simpleView).addProgressBar(0, 0, pictureList.size());
         preloadAllStimuli(appEventListner, progressBar, timedStimulusListener, pictureList, pictureList.size());
