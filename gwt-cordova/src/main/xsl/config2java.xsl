@@ -432,6 +432,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:value-of select="if(@diagramName) then concat(', &quot;', @diagramName, '&quot;') else ''" />
         <xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" />
         <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
+        <xsl:apply-templates select="stimuli" mode="stimuliTags" />
         <xsl:text>);
         </xsl:text>
     </xsl:template>
@@ -507,6 +508,17 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
             + "Last Commit Date: " + version.lastCommitDate());
         </xsl:text>
     </xsl:template>
+    <xsl:template match="stimuli" mode="stimuliTags">
+        <xsl:text>, Arrays.asList(new Tag[]{</xsl:text>
+            <xsl:for-each select="distinct-values(stimuli/tag/text())">
+                <xsl:text>Tag.</xsl:text>
+                <xsl:value-of select="." />
+                <xsl:if test="position() != last()">
+                    <xsl:text>, </xsl:text>
+                </xsl:if>
+            </xsl:for-each>
+            <xsl:text>})</xsl:text>
+    </xsl:template>
     <xsl:template match="VideoPanel|AudioRecorderPanel|AnnotationTimelinePanel|loadStimulus|loadAllStimulus|loadSubsetStimulus">
         <xsl:value-of select="if(starts-with(local-name(), 'load')) then '    ' else '    set'" />
         <xsl:value-of select="local-name()" />
@@ -523,17 +535,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
             <xsl:value-of select="if(@ogg) then concat(', &quot;', @ogg, '&quot;') else ',&quot;&quot;'" />
             <xsl:value-of select="if(@webm) then concat(', &quot;', @webm, '&quot;') else ',&quot;&quot;'" />
         </xsl:if>
-        <xsl:if test="stimuli/tag">      
-            <xsl:text>, Arrays.asList(new Tag[]{</xsl:text>
-            <xsl:for-each select="distinct-values(stimuli/tag/text())">
-                <xsl:text>Tag.</xsl:text>
-                <xsl:value-of select="." />
-                <xsl:if test="position() != last()">
-                    <xsl:text>, </xsl:text>
-                </xsl:if>
-            </xsl:for-each>
-            <xsl:text>})</xsl:text>
-        </xsl:if>
+        <xsl:apply-templates select="stimuli" mode="stimuliTags" />
         <xsl:value-of select="if(@condition0Tag) then concat(', Tag.', @condition0Tag, '') else ''" />
         <xsl:value-of select="if(@condition1Tag) then concat(', Tag.', @condition1Tag, '') else ''" />
         <xsl:value-of select="if(@condition2Tag) then concat(', Tag.', @condition2Tag, '') else ''" />
