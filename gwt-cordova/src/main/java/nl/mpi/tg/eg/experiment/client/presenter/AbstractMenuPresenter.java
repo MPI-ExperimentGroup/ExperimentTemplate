@@ -36,9 +36,9 @@ public abstract class AbstractMenuPresenter extends AbstractPresenter implements
         super(widgetTag, simpleView);
     }
 
-    public void allMenuItems(final AppEventListner appEventListner) {
+    public void allMenuItems(final AppEventListner appEventListner, final ApplicationController.ApplicationState selfApplicationState) {
         for (final ApplicationController.ApplicationState currentAppState : ApplicationController.ApplicationState.values()) {
-            if (currentAppState.label != null) {
+            if (currentAppState.label != null && selfApplicationState != currentAppState) {
                 ((MenuView) simpleView).addMenuItem(new PresenterEventListner() {
 
                     @Override
