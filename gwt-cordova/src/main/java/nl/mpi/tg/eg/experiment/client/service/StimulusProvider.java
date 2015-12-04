@@ -80,7 +80,9 @@ public class StimulusProvider {
             Set<Tag> commonTags = new HashSet<>(selectionTags);
             commonTags.retainAll(stimulus.getTags());
             if (!commonTags.isEmpty()) {
-                stimulusSubsetArray.add(stimulus);
+                if (!seenList.contains(stimulus.getUniqueId())) {
+                    stimulusSubsetArray.add(stimulus);
+                }
             }
         }
         totalStimuli = stimulusSubsetArray.size();

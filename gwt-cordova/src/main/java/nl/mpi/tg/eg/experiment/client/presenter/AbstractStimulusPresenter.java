@@ -113,18 +113,18 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
-    protected void loadAllStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final boolean randomise, final boolean norepeat, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+    protected void loadAllStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final boolean randomise, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
-        final String seenStimulusList = (norepeat) ? localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST) : "";
+        final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST);
         stimulusProvider.getSubset(selectionTags, randomise, seenStimulusList);
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
         showStimulus();
     }
 
-    protected void loadStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final boolean norepeat, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+    protected void loadStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
-        final String seenStimulusList = (norepeat) ? localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST) : "";
+        final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST);
         stimulusProvider.getSubset(selectionTags, maxStimulusCount, randomise, seenStimulusList);
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
@@ -337,15 +337,18 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         buttonList.clear();
     }
 
-    protected void autoNextStimulus(final String eventTag) {
+    protected void autoNextStimulus(final String eventTag, final boolean norepeat) {
         logTimeStamp(eventTag);
+        if (norepeat) {
+            removeStimulus();
+        }
         ((TimedStimulusView) simpleView).stopAudio();
         ((TimedStimulusView) simpleView).clearPage();
         buttonList.clear();
         showStimulus();
     }
 
-    protected void nextStimulusButton(final String eventTag, final String buttonLabel) {
+    protected void nextStimulusButton(final String eventTag, final String buttonLabel, final boolean norepeat) {
         if (stimulusProvider.hasNextStimulus()) {
             PresenterEventListner eventListner = new PresenterEventListner() {
 
@@ -356,7 +359,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
                 @Override
                 public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                    autoNextStimulus(eventTag);
+                    autoNextStimulus(eventTag, norepeat);
                 }
             };
             ((TimedStimulusView) simpleView).addOptionButton(eventListner);

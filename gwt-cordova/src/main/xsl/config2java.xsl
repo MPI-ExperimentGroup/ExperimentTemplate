@@ -399,11 +399,12 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
         <xsl:value-of select="if(@featureText) then concat(', messages.', generate-id(.), '()') else ''" />
         <xsl:value-of select="if(@target) then concat(', ApplicationState.', @target) else ''" />
-        <xsl:value-of select="if(local-name() eq 'allMenuItems') then ', selfApplicationState' else ''" />
+        <xsl:value-of select="if(local-name() eq 'allMenuItems') then ', selfApplicationState' else ''" />        
+        <xsl:value-of select="if(@norepeat) then concat(', ', @norepeat eq 'true') else ''" />
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="logTimeStamp|audioButton|nextStimulusButton">    
+    <xsl:template match="logTimeStamp|audioButton|nextStimulusButton">            
         <xsl:text>    </xsl:text>    
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
@@ -411,7 +412,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:value-of select="if(@featureText) then concat(', messages.', generate-id(.), '()') else ''" />
         <xsl:value-of select="if(@mp3) then concat(', &quot;', @mp3, '&quot;') else ''" />
         <xsl:value-of select="if(@ogg) then concat(', &quot;', @ogg, '&quot;') else ''" />
-        <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />
+        <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />        
+        <xsl:value-of select="if(@norepeat) then concat(', ', @norepeat eq 'true') else ''" />
         <xsl:text>);
         </xsl:text>
     </xsl:template>
@@ -532,7 +534,6 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:value-of select="if(@columnCount) then concat(', ', @columnCount, '') else ''" />
         <xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" />
         <xsl:value-of select="if(@randomise) then concat(', ', @randomise eq 'true') else ''" />
-        <xsl:value-of select="if(@norepeat) then concat(', ', @norepeat eq 'true') else ''" />
         <xsl:apply-templates select="hasMoreStimulus" />
         <xsl:apply-templates select="endOfStimulus" />
         <xsl:text>);
