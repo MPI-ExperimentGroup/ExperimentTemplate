@@ -197,7 +197,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', new
             <xsl:text>Presenter extends </xsl:text>
             <xsl:value-of select="if(@type = 'timeline') then 'AbstractTimeline' else if(@type = 'transmission') then 'AbstractDataSubmission' else if(@type = 'menu') then 'AbstractMenu' else if(@type = 'stimulus') then 'AbstractStimulus' else if(@type = 'preload') then 'AbstractPreloadStimulus' else if(@type = 'debug') then 'LocalStorage' else if(@type = 'metadata') then 'AbstractMetadata' else if(@type = 'kindiagram') then 'AbstractKinDiagram' else 'Abstract'" />
             <xsl:text>Presenter implements Presenter {
-            </xsl:text> 
+                private final ApplicationState selfApplicationState = ApplicationState.</xsl:text><xsl:value-of select="@self" /><xsl:text>;</xsl:text> 
             <xsl:if test="versionData">
                 <xsl:text>
                     private final Version version = GWT.create(Version.class);
@@ -397,6 +397,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
         <xsl:value-of select="if(@featureText) then concat(', messages.', generate-id(.), '()') else ''" />
         <xsl:value-of select="if(@target) then concat(', ApplicationState.', @target) else ''" />
+        <xsl:value-of select="if(local-name() eq 'allMenuItems') then ', selfApplicationState' else ''" />
         <xsl:text>);
         </xsl:text>
     </xsl:template>
