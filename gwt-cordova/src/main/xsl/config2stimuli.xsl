@@ -36,6 +36,8 @@
             </xsl:for-each>
             <xsl:text>}, "</xsl:text>
             <xsl:value-of select="@label" />
+            <xsl:text>", "</xsl:text>
+            <xsl:value-of select="@code" />
             <xsl:text>", </xsl:text>
             <xsl:value-of select="@pauseMs" />
             <xsl:text>, </xsl:text>
@@ -80,16 +82,18 @@
             final private String uniqueId;
             final private List&lt;Tag&gt; tags;
             final private String label;
+            final private String code;
             final private int pauseMs;
             final private boolean mp3;
             final private boolean mp4;
             final private boolean ogg;
             final private boolean image;
 
-            Stimulus(String uniqueId, Tag tags[], String label, int pauseMs, boolean mp3, boolean mp4, boolean ogg, boolean image) {
+            Stimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, boolean mp3, boolean mp4, boolean ogg, boolean image) {
             this.uniqueId = uniqueId;
             this.tags = Arrays.asList(tags);
             this.label = label;
+            this.code = code;
             this.pauseMs = pauseMs;
             this.mp3 = mp3;
             this.mp4 = mp4;
@@ -107,6 +111,10 @@
 
             public String getLabel() {
             return label;
+            }
+            
+            public String getCode() {
+            return code;
             }
             
             public int getPauseMs() {

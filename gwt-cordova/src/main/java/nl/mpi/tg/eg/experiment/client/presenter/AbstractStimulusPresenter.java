@@ -183,10 +183,17 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         stimulusProvider.pushCurrentStimulusToEnd();
     }
 
-    protected void addStimulusImage(int width, int postLoadMs, TimedStimulusListener timedStimulusListener) {
+    protected void stimulusImage(int width, int postLoadMs, TimedStimulusListener timedStimulusListener) {
         String image = stimulusProvider.getCurrentStimulus().getImage();
         submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusImage", image, duration.elapsedMillis());
         ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString(serviceLocations.staticFilesUrl() + image), width, postLoadMs, timedStimulusListener);
+//        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
+    }
+
+    protected void stimulusCodeImage(int width, int postLoadMs, String codeFormat, TimedStimulusListener timedStimulusListener) {
+        String formattedCode = codeFormat.replace("<code>", stimulusProvider.getCurrentStimulus().getCode());
+        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusCodeImage", formattedCode, duration.elapsedMillis());
+        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString(serviceLocations.staticFilesUrl() + formattedCode), width, postLoadMs, timedStimulusListener);
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
     }
 
