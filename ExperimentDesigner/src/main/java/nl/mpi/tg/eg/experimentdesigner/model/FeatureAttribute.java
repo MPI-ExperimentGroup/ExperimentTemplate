@@ -31,6 +31,7 @@ public enum FeatureAttribute {
     next,
     fieldName,
     code,
+    codeFormat,
     src,
     link,
     width,

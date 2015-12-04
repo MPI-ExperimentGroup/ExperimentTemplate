@@ -55,14 +55,17 @@ public class Sentveri_exp3 {
 
 //        presenterFeatureList.add(new PresenterFeature(FeatureType.clearPage, null));
                 hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
-                final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
-                imageFeature.addFeatureAttributes(FeatureAttribute.width, "100");
-                imageFeature.addFeatureAttributes(FeatureAttribute.timeToNext, "0");
-                hasMoreStimulusFeature.getPresenterFeatureList().add(imageFeature);
+                for (String qOrA : new String[]{"image_list1_a", "list1_a_Q", "list1_a_sent"}) {
+                    final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusCodeImage, null);
+                    imageFeature.addFeatureAttributes(FeatureAttribute.width, "100");
+                    imageFeature.addFeatureAttributes(FeatureAttribute.codeFormat, screenName + "/" + qOrA + "/<code>.jpg");
+                    imageFeature.addFeatureAttributes(FeatureAttribute.timeToNext, "0");
+                    hasMoreStimulusFeature.getPresenterFeatureList().add(imageFeature);
+                    final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulusButton, "next stimulus");
+                    nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus");
+                    imageFeature.getPresenterFeatureList().add(nextStimulusFeature);
+                }
                 hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
-                final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulusButton, "next stimulus");
-                nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus");
-                imageFeature.getPresenterFeatureList().add(nextStimulusFeature);
 //        presenterFeatureRepository.save(hasMoreStimulusFeature.getPresenterFeatureList());
                 loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
                 final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);

@@ -80,6 +80,7 @@ public enum FeatureType {
     hasMoreStimulus(true, false, null),
     endOfStimulus(true, false, null),
     stimulusImage(true, false, new FeatureAttribute[]{width, timeToNext}),
+    stimulusCodeImage(true, false, new FeatureAttribute[]{width, timeToNext, codeFormat}),
     stimulusAudio(true, false, new FeatureAttribute[]{timeToNext, mp3,}),
     VideoPanel(false, false, new FeatureAttribute[]{mp4, ogg, webm, width, poster}),
     AnnotationTimelinePanel(true, false, new FeatureAttribute[]{mp4, ogg, webm, poster, eventTag, columnCount, maxStimuli}, true, false),
