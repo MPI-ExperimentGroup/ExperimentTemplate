@@ -48,7 +48,6 @@ public class Sentveri_exp3 {
                 loadStimuliFeature.addStimulusTag(screenName);
                 loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, screenName);
                 loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "false");
-                loadStimuliFeature.addFeatureAttributes(FeatureAttribute.norepeat, "false");
                 presenterFeatureList.add(loadStimuliFeature);
 //        final PresenterFeature showStimulusFeature = new PresenterFeature(FeatureType.showStimulus, null);
                 final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
@@ -62,6 +61,7 @@ public class Sentveri_exp3 {
                     imageFeature.addFeatureAttributes(FeatureAttribute.timeToNext, "0");
                     hasMoreStimulusFeature.getPresenterFeatureList().add(imageFeature);
                     final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulusButton, "next stimulus");
+                    nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
                     nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus");
                     imageFeature.getPresenterFeatureList().add(nextStimulusFeature);
                 }
