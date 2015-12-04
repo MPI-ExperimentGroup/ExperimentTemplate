@@ -197,7 +197,9 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', new
             <xsl:text>Presenter extends </xsl:text>
             <xsl:value-of select="if(@type = 'timeline') then 'AbstractTimeline' else if(@type = 'transmission') then 'AbstractDataSubmission' else if(@type = 'menu') then 'AbstractMenu' else if(@type = 'stimulus') then 'AbstractStimulus' else if(@type = 'preload') then 'AbstractPreloadStimulus' else if(@type = 'debug') then 'LocalStorage' else if(@type = 'metadata') then 'AbstractMetadata' else if(@type = 'kindiagram') then 'AbstractKinDiagram' else 'Abstract'" />
             <xsl:text>Presenter implements Presenter {
-                private final ApplicationState selfApplicationState = ApplicationState.</xsl:text><xsl:value-of select="@self" /><xsl:text>;</xsl:text> 
+                private final ApplicationState selfApplicationState = ApplicationState.</xsl:text>
+            <xsl:value-of select="@self" />
+            <xsl:text>;</xsl:text> 
             <xsl:if test="versionData">
                 <xsl:text>
                     private final Version version = GWT.create(Version.class);
@@ -462,25 +464,13 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="stimulusImage">
-        <xsl:text>    addStimulusImage(</xsl:text>
-        <xsl:value-of select="@width" />
-        <xsl:text>, </xsl:text>
-        <xsl:value-of select="@timeToNext" />
-        <xsl:text>, new TimedStimulusListener() {
-
-            @Override
-            public void postLoadTimerFired() {
-        </xsl:text>
-        <xsl:apply-templates/>
-        <xsl:text>
-            }
-            });
-        </xsl:text>
-    </xsl:template>
-    <xsl:template match="stimulusAudio">
-        <xsl:text>    playStimulusAudio(</xsl:text>
-        <xsl:value-of select="@timeToNext" />
+    <xsl:template match="stimulusImage|stimulusCodeImage|stimulusAudio">
+        <xsl:text>    </xsl:text>
+        <xsl:value-of select="local-name()" />
+        <xsl:text>(</xsl:text>
+        <xsl:value-of select="if(@width) then @width else ''" />
+        <xsl:value-of select="if(@timeToNext) then concat(', ', @timeToNext) else ''" />
+        <xsl:value-of select="if(@codeFormat) then concat(', &quot;', @codeFormat, '&quot;') else ''" />
         <xsl:text>, new TimedStimulusListener() {
 
             @Override
@@ -509,14 +499,14 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
     </xsl:template>
     <xsl:template match="stimuli" mode="stimuliTags">
         <xsl:text>, Arrays.asList(new Tag[]{</xsl:text>
-            <xsl:for-each select="distinct-values(tag/text())">
-                <xsl:text>Tag.tag_</xsl:text>
-                <xsl:value-of select="." />
-                <xsl:if test="position() != last()">
-                    <xsl:text>, </xsl:text>
-                </xsl:if>
-            </xsl:for-each>
-            <xsl:text>})</xsl:text>
+        <xsl:for-each select="distinct-values(tag/text())">
+            <xsl:text>Tag.tag_</xsl:text>
+            <xsl:value-of select="." />
+            <xsl:if test="position() != last()">
+                <xsl:text>, </xsl:text>
+            </xsl:if>
+        </xsl:for-each>
+        <xsl:text>})</xsl:text>
     </xsl:template>
     <xsl:template match="VideoPanel|AudioRecorderPanel|AnnotationTimelinePanel|loadStimulus|loadAllStimulus|loadSubsetStimulus">
         <xsl:value-of select="if(starts-with(local-name(), 'load')) then '    ' else '    set'" />
