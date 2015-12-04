@@ -38,6 +38,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <span class="td">webm</span>
                         <span class="td">image</span>
                         <span class="td">label</span>
+                        <span class="td">code</span>
                         <span class="td">pauseMs</span>
                         <span class="td">stimulusTags</span>
                     </div>
@@ -61,6 +62,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             <img th:if="${stimulus.getImageData()} != null" class="stimulusImage" src="" alt="stimulus image" th:src="${contextPath + '/experiment/' + experiment.id + '/stimulus/' + stimulus.id + '/image'}"/>                            
                         </span>
                         <span class="td"><input type="text" name="label" th:value="${stimulus.label}" th:onchange="${'$(updateRowButton' + stimulus.id + ').show();'}" /></span>
+                        <span class="td"><input type="text" name="code" th:value="${stimulus.code}" th:onchange="${'$(updateRowButton' + stimulus.id + ').show();'}" /></span>
                         <span class="td"><input type="number" name="pauseMs" th:value="${stimulus.pauseMs}" th:onchange="${'$(updateRowButton' + stimulus.id + ').show();'}" /></span>
                         <span class="td"><span th:each="stimulusTag : ${stimulus.stimulusTags}" th:text="${stimulusTag}"></span></span>
                         <span class="td"><button th:id="${'updateRowButton' + stimulus.id}"  style="display: none" type="button" name="updateRow" th:onclick="${'postChanges(' + stimulus.id + ')'}">Save Changes</button></span>
@@ -80,38 +82,38 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <span class="td"><button type="button" name="addScreen" onclick="postScreen()">Add Stimulus</button></span>                    
                     </form>
                     <script th:inline="javascript">
-                                /*<![CDATA[*/
+                        /*<![CDATA[*/
 //                                $("[id^=updateRowButton]").hide();
-                                        function postChanges(rowId) {
-                                        $.post(/*[[${contextPath + '/experiment/' + experiment.id + '/stimulus/update'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
-                                        $('#metadataErrorDiv').text("");
-                                                $('#updateRowForm' + rowId).html(data);
-                                                $('#updateRowButton' + rowId).hide();
-                                        }).fail(function(data) {
-                                        var jsonResponse = JSON.parse(data.responseText);
-                                                $('#metadataErrorDiv').text(jsonResponse.message);
-                                        });
-                                        };
-                                        function deleteRow(rowId) {
-                                        $.post(/*[[${contextPath + '/experiment/' + experiment.id + '/stimulus/delete'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
-                                        $('#metadataErrorDiv').text("");
-                                                $('#updateRowForm' + rowId).remove();
-                                                $('#updateRowButton' + rowId).hide();
-                                        }).fail(function(data) {
-                                        var jsonResponse = JSON.parse(data.responseText);
-                                                $('#metadataErrorDiv').text(jsonResponse.message);
-                                        });
-                                        };
-                                        function postScreen() {
-                                        $.post(/*[[${contextPath + '/experiment/' + experiment.id + '/stimulus/add'}]]*/, $("#addMetadataForm").serialize()).done(function(data) {
-                                        $('#metadataErrorDiv').text("");
-                                                $('#metadataErrorDiv').before(data);
-                                        }).fail(function(data) {
-                                        var jsonResponse = JSON.parse(data.responseText);
-                                                $('#metadataErrorDiv').text(jsonResponse.message);
-                                        });
-                                        }
-                                /*]]>*/
+                        function postChanges(rowId) {
+                        $.post(/*[[${contextPath + '/experiment/' + experiment.id + '/stimulus/update'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
+                        $('#metadataErrorDiv').text("");
+                        $('#updateRowForm' + rowId).html(data);
+                        $('#updateRowButton' + rowId).hide();
+                        }).fail(function(data) {
+                        var jsonResponse = JSON.parse(data.responseText);
+                        $('#metadataErrorDiv').text(jsonResponse.message);
+                        });
+                        };
+                        function deleteRow(rowId) {
+                        $.post(/*[[${contextPath + '/experiment/' + experiment.id + '/stimulus/delete'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
+                        $('#metadataErrorDiv').text("");
+                        $('#updateRowForm' + rowId).remove();
+                        $('#updateRowButton' + rowId).hide();
+                        }).fail(function(data) {
+                        var jsonResponse = JSON.parse(data.responseText);
+                        $('#metadataErrorDiv').text(jsonResponse.message);
+                        });
+                        };
+                        function postScreen() {
+                        $.post(/*[[${contextPath + '/experiment/' + experiment.id + '/stimulus/add'}]]*/, $("#addMetadataForm").serialize()).done(function(data) {
+                        $('#metadataErrorDiv').text("");
+                        $('#metadataErrorDiv').before(data);
+                        }).fail(function(data) {
+                        var jsonResponse = JSON.parse(data.responseText);
+                        $('#metadataErrorDiv').text(jsonResponse.message);
+                        });
+                        }
+                        /*]]>*/
                     </script>
                 </div>
             </div>

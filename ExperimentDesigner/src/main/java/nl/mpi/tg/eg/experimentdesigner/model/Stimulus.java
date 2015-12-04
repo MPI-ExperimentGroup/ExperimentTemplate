@@ -44,6 +44,7 @@ public class Stimulus {
     private String webm;
     private String image;
     private String label;
+    private String code;
     private byte[] imageData = null;
     private byte[] audioData = null;
     private byte[] videoData = null;
@@ -53,12 +54,13 @@ public class Stimulus {
     public Stimulus() {
     }
 
-    public Stimulus(String mp3, String mp4, String ogg, String image, String label, int pauseMs, HashSet<String> stimulusTags) {
+    public Stimulus(String mp3, String mp4, String ogg, String image, String label, String code, int pauseMs, HashSet<String> stimulusTags) {
         this.mp3 = mp3;
         this.mp4 = mp4;
         this.ogg = ogg;
         this.image = image;
         this.label = label;
+        this.code = code;
         this.pauseMs = pauseMs;
         this.stimulusTags = new HashSet<>();
         for (String tag : stimulusTags) {
@@ -127,6 +129,15 @@ public class Stimulus {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    @XmlAttribute
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     @XmlAttribute

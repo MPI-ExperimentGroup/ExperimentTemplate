@@ -41,7 +41,7 @@ public class Sentveri_exp3 {
     public void create3c(PresenterScreenRepository presenterScreenRepository, PresenterFeatureRepository presenterFeatureRepository, final List<PresenterScreen> presenterScreenList) {
         for (char setChar : new char[]{'a', 'b', 'c'}) {
             for (String tagString : stimulusTagList) {
-                String screenName = tagString + setChar;
+                String screenName = tagString + "_" + setChar;
                 final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, null, screenName + "Screen", null, PresenterType.stimulus);
                 List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
                 final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadAllStimulus, null);
@@ -106,11 +106,11 @@ public class Sentveri_exp3 {
                         currendSlow = Sentveri_exp3Data.slowC;
                 }
                 for (int index = 0; index < Sentveri_exp3Data.pictureIndex.length; index++) {
-                    for (String qOrA : new String[]{"image_list1_a", "list1_a_Q", "list1_a_sent"}) {
-                        final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{tagString + setChar, qOrA}));
-                        final Stimulus stimulus = new Stimulus(null, null, null, tagString + "_" + setChar + "/" + qOrA + "/" + index + ".jpg", "index " + index, (currendSlow[index]) ? 1000 : 1, tagSet);
-                        stimuliList.add(stimulus);
-                    }
+//                    for (String qOrA : new String[]{"image_list1_a", "list1_a_Q", "list1_a_sent"}) {
+                    final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{tagString + "_" + setChar}));
+                    final Stimulus stimulus = new Stimulus(null, null, null, null, tagString + "_" + setChar + "_" + Sentveri_exp3Data.pictureIndex[index] + "_" + ((Sentveri_exp3Data.QorNOT[index]) ? "q" : "a"), "" + Sentveri_exp3Data.pictureIndex[index], (currendSlow[index]) ? 1000 : 1, tagSet);
+                    stimuliList.add(stimulus);
+//                    }
                 }
             }
         }
