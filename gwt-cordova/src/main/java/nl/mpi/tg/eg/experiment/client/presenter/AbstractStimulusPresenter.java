@@ -178,7 +178,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void removeStimulus() {
-        localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST, stimulusProvider.getCurrentStimulus().getUniqueId());
+        localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST, "-" + stimulusProvider.getCurrentStimulus().getUniqueId());
     }
 
     protected void keepStimulus() {
