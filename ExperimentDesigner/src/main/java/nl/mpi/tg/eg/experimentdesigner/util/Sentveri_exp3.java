@@ -39,46 +39,52 @@ public class Sentveri_exp3 {
     final String[] stimulusTagList = new String[]{"list1", "list2", "list3", "list4"};
 
     public void create3c(PresenterScreenRepository presenterScreenRepository, PresenterFeatureRepository presenterFeatureRepository, final List<PresenterScreen> presenterScreenList) {
+        PresenterScreen practiceScreen = createStimulusScreen("practice");
+        presenterScreenList.add(practiceScreen);
         for (char setChar : new char[]{'a', 'b', 'c'}) {
             for (String tagString : stimulusTagList) {
                 String screenName = tagString + "_" + setChar;
-                final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, null, screenName + "Screen", null, PresenterType.stimulus);
-                List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
-                final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadAllStimulus, null);
-                loadStimuliFeature.addStimulusTag(screenName);
-                loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, screenName);
-                loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "false");
-                presenterFeatureList.add(loadStimuliFeature);
-                final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
-
-                hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
-                //There are 12 sets/lists in total and each participant only responds to one of them.
-                //There are 8 practice trials at the beginning of each set, which are fixed.
-                //each trial starts with:
-                //1. a "cross" for fixation in the center (1000ms or 1ms);
-                hasMoreStimulusFeature.getPresenterFeatureList().add(addSentenceFeature(screenName));
-                //6. a blank screen (1000ms) before starting the next trial (loop).
-                hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
-                loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
-                final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
-                endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "end of stimuli"));
-                loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
-                presenterScreenList.add(presenterScreen);
+                PresenterScreen stimuliSetScreen = createStimulusScreen(screenName);
+                presenterScreenList.add(stimuliSetScreen);
             }
         }
     }
 
-    private PresenterFeature addStimulusImage(final String imageWidth, String screenName, String qOrA, final String timeToNext) {
+    private PresenterScreen createStimulusScreen(String screenName) {
+        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, null, screenName + "Screen", null, PresenterType.stimulus);
+        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
+        final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadAllStimulus, null);
+        loadStimuliFeature.addStimulusTag(screenName);
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, screenName);
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "false");
+        presenterFeatureList.add(loadStimuliFeature);
+        final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
+        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
+        //There are 12 sets/lists in total and each participant only responds to one of them.
+        //There are 8 practice trials at the beginning of each set, which are fixed.
+        //each trial starts with:
+        //1. a "cross" for fixation in the center (1000ms or 1ms);
+        hasMoreStimulusFeature.getPresenterFeatureList().add(addSentenceFeature(screenName));
+        //6. a blank screen (1000ms) before starting the next trial (loop).
+        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
+        loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
+        final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
+        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "end of stimuli"));
+        loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
+        return presenterScreen;
+    }
+
+    private PresenterFeature addStimulusImage(final String imageWidth, String screenName, String imageSet, final String timeToNext) {
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusCodeImage, null);
         imageFeature.addFeatureAttributes(FeatureAttribute.width, imageWidth);
-        imageFeature.addFeatureAttributes(FeatureAttribute.codeFormat, screenName + "/" + qOrA + "/<code>.jpg");
+        imageFeature.addFeatureAttributes(FeatureAttribute.codeFormat, screenName + "/" + imageSet + "/<code>.jpg");
         imageFeature.addFeatureAttributes(FeatureAttribute.timeToNext, timeToNext);
         return imageFeature;
     }
 
     private PresenterFeature addSentenceFeature(final String screenName) {
         //2. the image of the "sentence" in the center (self-paced - wait till a "spacebar" response, lock out all the other button responses)
-        final PresenterFeature sentenceFeature = addStimulusImage("30", screenName, "list1_a_sent", "0");
+        final PresenterFeature sentenceFeature = addStimulusImage("100", screenName, screenName + "_sent", "0");
         final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.actionButton, "spacebar");
         nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
         nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus");
@@ -92,7 +98,7 @@ public class Sentveri_exp3 {
     private PresenterFeature addImageFeature(final String screenName) {
         //3. an arbitrary fast (0ms) or slow (500ms) delay with a blank screen between sentence and picture -defined by the variable "delay"
         //4. the image of the "picture" in the center (self-paced - wait till a "." for yes or a "z" for no response, lock out all the other button responses)
-        final PresenterFeature imageFeature = addStimulusImage("100", screenName, "image_list1_a", "0");
+        final PresenterFeature imageFeature = addStimulusImage("30", screenName, "image_" + screenName, "0");
         final PresenterFeature delayFeature = new PresenterFeature(FeatureType.stimulusPause, null);
         imageFeature.getPresenterFeatureList().add(delayFeature);
         final PresenterFeature responseZFeature = new PresenterFeature(FeatureType.actionButton, "z");
@@ -114,7 +120,7 @@ public class Sentveri_exp3 {
 
     private PresenterFeature addNextStimulusButtons(final String screenName) {
         //5. on half of the trials (36/72), the image of the "question" in the center (self-paced - wait till a "." for yes or a "z" for no response, lock out all the other button responses) - arbitrarily defined by the variable "QorNOT"
-        final PresenterFeature questionFeature = addStimulusImage("100", screenName, "list1_a_Q", "0");
+        final PresenterFeature questionFeature = addStimulusImage("100", screenName, screenName + "_Q", "0");
         final PresenterFeature responseZFeature = new PresenterFeature(FeatureType.nextStimulusButton, "z");
         responseZFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
         responseZFeature.addFeatureAttributes(FeatureAttribute.eventTag, "responseZ");
@@ -128,6 +134,12 @@ public class Sentveri_exp3 {
 
     public ArrayList<Stimulus> createStimuli() {
         final ArrayList<Stimulus> stimuliList = new ArrayList<>();
+
+        for (int index = 0; index < Sentveri_exp3Data.practPictureIndex.length; index++) {
+            final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{"practice"}));
+            final Stimulus stimulus = new Stimulus(null, null, null, null, "prac_" + Sentveri_exp3Data.practPictureIndex[index] + "_" + ((Sentveri_exp3Data.practQorNOT[index]) ? "q" : "a"), "" + Sentveri_exp3Data.practPictureIndex[index], (Sentveri_exp3Data.practslow[index]) ? 1000 : 1, tagSet);
+            stimuliList.add(stimulus);
+        }
 
         for (char setChar : new char[]{'a', 'b', 'c'}) {
             for (String tagString : stimulusTagList) {
