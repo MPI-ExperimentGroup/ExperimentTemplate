@@ -30,6 +30,7 @@ import nl.mpi.tg.eg.experiment.client.presenter.Presenter;
 import nl.mpi.tg.eg.experiment.client.presenter.ErrorPresenter;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
+import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
@@ -62,6 +63,19 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
         } else {
             userResults = new UserResults(localStorage.getStoredData(lastUserId));
         }
+        boolean hasNewMetadata = false;
+        for (MetadataField metadataField : metadataFieldProvider.metadataFieldArray) {
+            final String postName = metadataField.getPostName();
+            String value = Window.Location.getParameter(postName);
+            if (value != null) {
+                userResults.getUserData().setMetadataValue(metadataField, value);
+                hasNewMetadata = true;
+            }
+        }
+        if (hasNewMetadata) {
+            localStorage.storeData(userResults);
+        }
+//        detectWindowDefocus(widgetTag);
     }
 
     protected void preventWindowClose(final String messageString) {
@@ -85,177 +99,23 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
             }
         });
     }
-//    @Override
-//    public void requestApplicationState(ApplicationState applicationState) {
-//        try {
-//            trackView(applicationState.name());
-//            History.newItem(applicationState.name(), false);
-    // todo:
-    // on each state change check if there is an completed game data, if the share is true then upload or store if offline
-    // when any stored data is uploaded then delete the store 
-    // on new game play erase any in memory game data regardless of its shared or not shared state
-//            switch (applicationState) {
-//                case menu:
-//                    userResults.setPendingStimuliGroup(null);
-//                    this.presenter = new MenuPresenter(widgetTag);
-//                    presenter.setState(this, null, null);
-//                    break;
-//                case locale:
-//                    this.presenter = new LocalePresenter(widgetTag);
-//                    presenter.setState(this, ApplicationState.startscreen, null);
-//                    break;
-//                case version:
-//                    this.presenter = new VersionPresenter(widgetTag);
-//                    presenter.setState(this, ApplicationState.startscreen, null);
-//                    break;
-//                case stopSharing:
-//                    this.presenter = new StopSharingPresenter(widgetTag, userResults);
-//                    presenter.setState(this, ApplicationState.playerdetails, null);
-//                    break;
-//                case tutorial:
-//                    this.presenter = new TutorialPresenter(widgetTag, userResults, new AudioPlayer(this), this);
-//                    presenter.setState(this, ApplicationState.version, ApplicationState.startscreen);
-//                    break;
-//                case chooseplayer:
-//                    // only if there is an existing user, show the choose player screen
-//                    if (localStorage.getLastUserId() != null) {
-//                        this.presenter = new ChoosePlayerPresenter(widgetTag, localStorage, userResults, new AudioPlayer(this), this);
-//                        presenter.setState(this, ApplicationState.version, ApplicationState.playerdetails);
-//                        break;
-//                    }
-//                case tutorialorguessround:
-//                    // only if the user has not played before, show the tutorial
-//                    if (userResults.getUserData().getGamesPlayed() < 1) {
-//                        this.presenter = new TutorialPresenter(widgetTag, userResults, new AudioPlayer(this), this);
-//                        presenter.setState(this, ApplicationState.version, ApplicationState.explaindatasharing);
-//                        break;
-//                    }
-//                case explaindatasharing:
-//                    boolean shareAgreed = metadataFieldProvider.shareMetadataField.getControlledVocabulary()[0].equals(userResults.getUserData().getMetadataValue(metadataFieldProvider.shareMetadataField));
-//                    if (!shareAgreed) {
-//                        this.presenter = new ExplainDataSharingScreenPresenter(widgetTag, userResults, new AudioPlayer(this), this);
-//                        presenter.setState(this, ApplicationState.infoscreen, ApplicationState.guessround);
-//                        break;
-//                    }
-//                case guessround:
-//                    this.presenter = new GuessRoundPresenter(widgetTag, userResults, new AudioPlayer(this));
-//                    presenter.setState(this, ApplicationState.tutorial, ApplicationState.scores);
-//                    break;
-//                case playerdetails:
-//                    this.presenter = new PlayerDetailsPresenter(widgetTag, userResults, new AudioPlayer(this), this);
-//                    presenter.setState(this, ApplicationState.version, ApplicationState.chooseplayer);
-//                    break;
-//                case start:
-// todo:            // if no player data then go to game
-    // if one or more player data then go to select player
-//                    this.presenter = new LocalStoragePresenter(widgetTag);
-//                    presenter.setState(this, ApplicationState.infoscreen, ApplicationState.startscreen);
-//                    break;
-//                case startscreen:
-//                    this.presenter = new StartScreenPresenter(widgetTag, userResults, new AudioPlayer(this), this);
-//                    presenter.setState(this, ApplicationState.infoscreen, ApplicationState.chooseplayer); // if there are already users otherwise go the the game
-//                    break;
-//                case infoscreen:
-//                    this.presenter = new InfoScreenPresenter(widgetTag, userResults, new AudioPlayer(this));
-//                    presenter.setState(this, ApplicationState.version, ApplicationState.scores);
-//                    break;
-//                case scores:
-//                    this.presenter = new ScorePagePresenter(widgetTag, new AudioPlayer(this), userResults);
-//                    presenter.setState(this, ApplicationState.setuser, ApplicationState.startscreen);
-//                    break;
-//                case matchlanguage:
-//                    this.presenter = new MatchLanguagePresenter(widgetTag, new AudioPlayer(this));
-//                    presenter.setState(this, ApplicationState.version, ApplicationState.map);
-//                    break;
-//                case map:
-//                    this.presenter = new MapPresenter(widgetTag);
-//                    presenter.setState(this, ApplicationState.version, ApplicationState.moreinfo);
-//                    break;
-//                case moreinfo:
-//                    this.presenter = new InstructionsPresenter(widgetTag);
-//                    presenter.setState(this, ApplicationState.map, ApplicationState.autotyp_regions);
-//                    break;
-//                case autotyp_regions:
-//                    this.presenter = new AutotypRegionsMapScreen(widgetTag);
-//                    presenter.setState(this, ApplicationState.moreinfo, ApplicationState.alien);
-//                    break;
-//                case alien:
-//                    this.presenter = new AlienScreen(widgetTag);
-//                    presenter.setState(this, ApplicationState.version, ApplicationState.guessround);
-//                    break;
-//                case start:
-//                    this.presenter = new TestSvgDuplicateStringsPresenter(widgetTag);
-//                    presenter.setState(this, null, ApplicationState.startscreen);
-//                    break;
-//                case intro:
-//                    this.presenter = new IntroPresenter(widgetTag);
-//                    presenter.setState(this, null, ApplicationState.guessround);
-//                    break;
-//                case setuser:
-//                    this.presenter = new UserNamePresenter(widgetTag, userResults);
-//                    presenter.setState(this, null, ApplicationState.guessround);
-////                    ((MetadataPresenter) presenter).focusFirstTextBox();
-//                    break;
-//                case stimulus:
-//                    if (userResults.getPendingStimuliGroup() == null) {
-//                        this.presenter = new StimulusMenuPresenter(widgetTag, stimuliProvider, userResults);
-//                        presenter.setState(this, ApplicationState.start, ApplicationState.report);
-//                    } else {
-//                        trackEvent(applicationState.name(), "show", userResults.getPendingStimuliGroup().getGroupLabel());
-//                        this.presenter = new ColourPickerPresenter(widgetTag, userResults, 3);
-//                        presenter.setState(this, null, ApplicationState.stimulus);
-//                    }
-//                    break;
-//                case adddummyresults:
-//                    final StimuliGroup[] stimuli = stimuliProvider.getStimuli();
-//                    userResults.addDummyResults(stimuli[0]);
-//                    userResults.addDummyResults(stimuli[1]);
-//                    userResults.addDummyResults(stimuli[2]);
-//                case report:
-//                    this.presenter = new ReportPresenter(widgetTag, userResults);
-//                    presenter.setState(this, null, ApplicationState.feedback);
-//                    break;
-//                case feedback:
-//                    this.presenter = new FeedbackPresenter(widgetTag);
-//                    presenter.setState(this, ApplicationState.report, ApplicationState.metadata);
-//                    break;
-//                case metadata:
-//                    this.presenter = new MetadataPresenter(widgetTag, userResults);
-//                    presenter.setState(this, null, ApplicationState.registration);
-//                    ((MetadataPresenter) presenter).focusFirstTextBox();
-//                    break;
-//                case registration:
-//                    if (userResults.getStimuliGroups().isEmpty()) {
-//                        this.presenter = new RegisterDisabledPresenter(widgetTag);
-//                        presenter.setState(this, null, ApplicationState.stimulus);
-//                    } else {
-//                        this.presenter = new RegisterPresenter(widgetTag, userResults);
-//                        presenter.setState(this, null, ApplicationState.moreinfo);
-//                    }
-//                    break;
-//                case moreinfo:
-//                    this.presenter = new MoreInfoPresenter(widgetTag);
-//                    presenter.setState(this, ApplicationState.start, null);
-//                    break;
-//                case end:
-//                    exitApplication();
-//                    break;
-//                case highscoresubmitted:
-//                case highscoresfailedbuildererror:
-//                case highscoresfailedconnectionerror:
-//                case highscoresfailednon202:
-//                case registration:
-//                    break;
-//                default:
-//                    this.presenter = new ErrorPresenter(widgetTag, "No state for: " + applicationState);
-//                    presenter.setState(this, ApplicationState.start, applicationState);
-//                    break;
+
+//    private void detectWindowDefocus(RootLayoutPanel widgetTag) {
+//        // this will most likely not work on a non input tag, however we are interested in stats on cases where it does
+//        widgetTag.addHandler(new BlurHandler() {
+//
+//            @Override
+//            public void onBlur(BlurEvent event) {
+//                submissionService.submitScreenChange(userResults.getUserData().getUserId(), "widgetTag.onBlur");
 //            }
-//        } catch (AudioException error) {
-//            logger.warning(error.getMessage());
-//            this.presenter = new ErrorPresenter(widgetTag, error.getMessage());
-//            presenter.setState(this, ApplicationState.start, applicationState);
-//        }
+//        }, BlurEvent.getType());
+//        widgetTag.addHandler(new FocusHandler() {
+//
+//            @Override
+//            public void onFocus(FocusEvent event) {
+//                submissionService.submitScreenChange(userResults.getUserData().getUserId(), "widgetTag.onFocus");
+//            }
+//        }, FocusEvent.getType());
 //    }
 
     @Override
