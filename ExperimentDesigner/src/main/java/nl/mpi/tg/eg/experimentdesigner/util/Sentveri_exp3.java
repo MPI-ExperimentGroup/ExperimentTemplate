@@ -49,47 +49,81 @@ public class Sentveri_exp3 {
                 loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, screenName);
                 loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "false");
                 presenterFeatureList.add(loadStimuliFeature);
-//        final PresenterFeature showStimulusFeature = new PresenterFeature(FeatureType.showStimulus, null);
                 final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
 
-//        presenterFeatureList.add(new PresenterFeature(FeatureType.clearPage, null));
                 hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
-                for (String qOrA : new String[]{"image_list1_a", "list1_a_Q", "list1_a_sent"}) {
-                    final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusCodeImage, null);
-                    imageFeature.addFeatureAttributes(FeatureAttribute.width, "100");
-                    imageFeature.addFeatureAttributes(FeatureAttribute.codeFormat, screenName + "/" + qOrA + "/<code>.jpg");
-                    imageFeature.addFeatureAttributes(FeatureAttribute.timeToNext, "0");
-                    hasMoreStimulusFeature.getPresenterFeatureList().add(imageFeature);
-                    final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulusButton, "next stimulus");
-                    nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
-                    nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus");
-                    imageFeature.getPresenterFeatureList().add(nextStimulusFeature);
-                }
+                //There are 12 sets/lists in total and each participant only responds to one of them.
+                //There are 8 practice trials at the beginning of each set, which are fixed.
+                //each trial starts with:
+                //1. a "cross" for fixation in the center (1000ms or 1ms);
+                hasMoreStimulusFeature.getPresenterFeatureList().add(addSentenceFeature(screenName));
+                //6. a blank screen (1000ms) before starting the next trial (loop).
                 hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
-//        presenterFeatureRepository.save(hasMoreStimulusFeature.getPresenterFeatureList());
                 loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
                 final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
                 endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "end of stimuli"));
-//        presenterFeatureRepository.save(endOfStimulusFeature.getPresenterFeatureList());
                 loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
-//        presenterFeatureList.add(showStimulusFeature);
-//        presenterFeatureList.add(new PresenterFeature(FeatureType.clearPage, null));
-//        presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
-//        final PresenterFeature imageFeature = new PresenterFeature(FeatureType.image, null);
-//        imageFeature.addFeatureAttributes(FeatureAttribute.src, index + ".jpg");
-//        imageFeature.addFeatureAttributes(FeatureAttribute.width, "70");
-//        presenterFeatureList.add(imageFeature);
-//        final PresenterFeature delayFeature = new PresenterFeature(FeatureType.pause, null);
-//        delayFeature.addFeatureAttributes(FeatureAttribute.timeToNext, (slow3c[index]) ? "1000" : "50");
-//        presenterFeatureList.add(delayFeature);
-//        presenterFeatureRepository.save(presenterFeatureList);
-//        final PresenterFeature nextFeature = new PresenterFeature(FeatureType.actionButton, "index " + index);
-//        delayFeature.getPresenterFeatureList().add(nextFeature);
-//        presenterFeatureRepository.save(delayFeature.getPresenterFeatureList());
-//        presenterFeatureList = nextFeature.getPresenterFeatureList();
                 presenterScreenList.add(presenterScreen);
             }
         }
+    }
+
+    private PresenterFeature addStimulusImage(final String imageWidth, String screenName, String qOrA, final String timeToNext) {
+        final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusCodeImage, null);
+        imageFeature.addFeatureAttributes(FeatureAttribute.width, imageWidth);
+        imageFeature.addFeatureAttributes(FeatureAttribute.codeFormat, screenName + "/" + qOrA + "/<code>.jpg");
+        imageFeature.addFeatureAttributes(FeatureAttribute.timeToNext, timeToNext);
+        return imageFeature;
+    }
+
+    private PresenterFeature addSentenceFeature(final String screenName) {
+        //2. the image of the "sentence" in the center (self-paced - wait till a "spacebar" response, lock out all the other button responses)
+        final PresenterFeature sentenceFeature = addStimulusImage("30", screenName, "list1_a_sent", "0");
+        final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.actionButton, "spacebar");
+        nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+        nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus");
+        nextStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+        nextStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
+        nextStimulusFeature.getPresenterFeatureList().add(addImageFeature(screenName));
+        sentenceFeature.getPresenterFeatureList().add(nextStimulusFeature);
+        return sentenceFeature;
+    }
+
+    private PresenterFeature addImageFeature(final String screenName) {
+        //3. an arbitrary fast (0ms) or slow (500ms) delay with a blank screen between sentence and picture -defined by the variable "delay"
+        //4. the image of the "picture" in the center (self-paced - wait till a "." for yes or a "z" for no response, lock out all the other button responses)
+        final PresenterFeature imageFeature = addStimulusImage("100", screenName, "image_list1_a", "0");
+        final PresenterFeature delayFeature = new PresenterFeature(FeatureType.stimulusPause, null);
+        imageFeature.getPresenterFeatureList().add(delayFeature);
+        final PresenterFeature responseZFeature = new PresenterFeature(FeatureType.actionButton, "z");
+        responseZFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+        responseZFeature.addFeatureAttributes(FeatureAttribute.eventTag, "responseZ");
+        responseZFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+        responseZFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
+        delayFeature.getPresenterFeatureList().add(responseZFeature);
+        final PresenterFeature responseDotFeature = new PresenterFeature(FeatureType.actionButton, ".");
+        responseDotFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+        responseDotFeature.addFeatureAttributes(FeatureAttribute.eventTag, "responseDot");
+        responseDotFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+        responseDotFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
+        delayFeature.getPresenterFeatureList().add(responseDotFeature);
+        responseDotFeature.getPresenterFeatureList().add(addNextStimulusButtons(screenName));
+        responseZFeature.getPresenterFeatureList().add(addNextStimulusButtons(screenName));
+        return imageFeature;
+    }
+
+    private PresenterFeature addNextStimulusButtons(final String screenName) {
+        //5. on half of the trials (36/72), the image of the "question" in the center (self-paced - wait till a "." for yes or a "z" for no response, lock out all the other button responses) - arbitrarily defined by the variable "QorNOT"
+        final PresenterFeature questionFeature = addStimulusImage("100", screenName, "list1_a_Q", "0");
+        final PresenterFeature responseZFeature = new PresenterFeature(FeatureType.nextStimulusButton, "z");
+        responseZFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+        responseZFeature.addFeatureAttributes(FeatureAttribute.eventTag, "responseZ");
+        questionFeature.getPresenterFeatureList().add(responseZFeature);
+        final PresenterFeature responseDotFeature = new PresenterFeature(FeatureType.nextStimulusButton, ".");
+        responseDotFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+        responseDotFeature.addFeatureAttributes(FeatureAttribute.eventTag, "responseDot");
+        questionFeature.getPresenterFeatureList().add(responseDotFeature);
+        return questionFeature;
     }
 
     public ArrayList<Stimulus> createStimuli() {
@@ -109,11 +143,9 @@ public class Sentveri_exp3 {
                         currendSlow = Sentveri_exp3Data.slowC;
                 }
                 for (int index = 0; index < Sentveri_exp3Data.pictureIndex.length; index++) {
-//                    for (String qOrA : new String[]{"image_list1_a", "list1_a_Q", "list1_a_sent"}) {
                     final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{tagString + "_" + setChar}));
                     final Stimulus stimulus = new Stimulus(null, null, null, null, tagString + "_" + setChar + "_" + Sentveri_exp3Data.pictureIndex[index] + "_" + ((Sentveri_exp3Data.QorNOT[index]) ? "q" : "a"), "" + Sentveri_exp3Data.pictureIndex[index], (currendSlow[index]) ? 1000 : 1, tagSet);
                     stimuliList.add(stimulus);
-//                    }
                 }
             }
         }
