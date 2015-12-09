@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="fieldkit-recorder" version="0.1.0">
+    <name>FieldKitRecorder</name>
+    <description>FieldKit Recorder Cordova Plugin</description>
+    <license>GNU</license>
+    <keywords>FieldKit,Recorder</keywords>
+    <js-module src="www/fieldkitrecorder.js" name="fieldkit-recorder">
+        <clobbers target="FieldKitRecorder" />
+    </js-module>
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="FieldKitRecorder">
+                <param name="android-package" value="nl.mpi.tg.eg.frinex.FieldKitRecorder" />
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+        </config-file>
+        <source-file src="src/android/nl/mpi/tg/eg/frinex/AudioRecorderAPI.java" target-dir="src/nl/mpi/tg/eg/frinex"/>
+    </platform>
+</plugin>
