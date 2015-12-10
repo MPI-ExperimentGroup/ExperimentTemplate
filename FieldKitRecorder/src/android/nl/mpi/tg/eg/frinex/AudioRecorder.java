@@ -80,7 +80,7 @@ public class AudioRecorder {
                         recorder.read(buffer, 0, buffer.length);
                         randomAccessFile.write(buffer);
                         recordedLength += buffer.length;
-                    } catch (final Exception e) {
+                    } catch (final IOException e) {
                         cordova.getThreadPool().execute(new Runnable() {
                             @Override
                             public void run() {
@@ -95,7 +95,7 @@ public class AudioRecorder {
             });
             recorder.setPositionNotificationPeriod(bufferSize);
             recorder.startRecording();
-        } catch (final Exception e) {
+        } catch (final IOException e) {
             cordova.getThreadPool().execute(new Runnable() {
                 @Override
                 public void run() {
@@ -105,6 +105,36 @@ public class AudioRecorder {
             return false;
         }
         return true;
+    }
+
+    public void stopRecording(final CallbackContext callbackContext) {
+        try {
+            if (recorder != null) {
+                recorder.stop();
+                recorder.release();
+                recorder = null;
+                // rewrite the wav header
+                long totalAudioLen = randomAccessFile.length() - 36;
+                long totalDataLen = totalAudioLen + 36;
+                long longSampleRate = RECORDER_SAMPLERATE;
+                int channels = 2;
+                if (RECORDER_CHANNELS == AudioFormat.CHANNEL_IN_MONO) {
+                    channels = 1;
+                }
+                long byteRate = RECORDER_BPP * RECORDER_SAMPLERATE * channels / 8;
+                randomAccessFile.seek(0);
+                writeWaveFileHeader(randomAccessFile, totalAudioLen, totalDataLen, longSampleRate, channels, byteRate);
+                recorder.close();
+            }
+
+        } catch (IOException e) {
+            cordova.getThreadPool().execute(new Runnable() {
+                @Override
+                public void run() {
+                    callbackContext.error(e.getMessage());
+                }
+            });
+        }
     }
 
     private void writeWaveFileHeader(RandomAccessFile out, long totalAudioLen, long totalDataLen, long longSampleRate, int channels, long byteRate) throws IOException {
