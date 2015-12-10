@@ -20,6 +20,19 @@
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 
-window.plugins.fieldKitRecorder.tag = function (successCallback, errorCallback, tagString) {
+function FieldKitRecorder() {
+}
+
+FieldKitRecorder.prototype.tag = function (successCallback, errorCallback, tagString) {
     cordova.exec(successCallback, errorCallback, "FieldKitRecorder", "tag", [tagString]);
 };
+
+FieldKitRecorder.install = function () {
+    if (!window.plugins) {
+        window.plugins = {};
+    }
+    window.plugins.fieldKitRecorder = new FieldKitRecorder();
+    return window.plugins.fieldKitRecorder;
+};
+
+cordova.addConstructor(FieldKitRecorder.install);
