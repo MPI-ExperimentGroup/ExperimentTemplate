@@ -17,9 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex;
 
-import com.google.gwt.json.client.JSONException;
-import com.google.gwt.thirdparty.json.JSONArray;
-import nl.mpi.tg.eg.frinex.AudioRecorder;
+import java.io.IOException;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
 import org.json.JSONArray;
@@ -32,19 +30,28 @@ import org.json.JSONException;
 public class FieldKitRecorder extends CordovaPlugin {
 
     @Override
-    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("record")) {
-            new AudioRecorder().startRecording(callbackContext);
-            return true;
-        }
-        if (action.equals("stop")) {
-            new AudioRecorder().stopRecording(callbackContext);
-            return true;
-        }
-        if (action.equals("tag")) {
-            String tagValue = args.getString(0);
-            writeTag(tagValue, callbackContext);
-            return true;
+    public boolean execute(final String action, final JSONArray args, final CallbackContext callbackContext) throws JSONException {
+        try {
+            if (action.equals("record")) {
+                new AudioRecorder().startRecording(cordova, callbackContext);
+                return true;
+            }
+            if (action.equals("stop")) {
+                new AudioRecorder().stopRecording(callbackContext);
+                return true;
+            }
+            if (action.equals("tag")) {
+                String tagValue = args.getString(0);
+                writeTag(tagValue, callbackContext);
+                return true;
+            }
+        } catch (final IOException e) {
+            cordova.getThreadPool().execute(new Runnable() {
+                @Override
+                public void run() {
+                    callbackContext.error(e.getMessage());
+                }
+            });
         }
         return false;
     }

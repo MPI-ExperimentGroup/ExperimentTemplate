@@ -28,6 +28,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 import org.apache.cordova.CallbackContext;
+import org.apache.cordova.CordovaInterface;
 
 /**
  * @since Dec 10, 2015 3:24:50 PM (creation date)
@@ -51,7 +52,7 @@ public class AudioRecorder {
         bufferSize = AudioRecord.getMinBufferSize(RECORDER_SAMPLERATE, RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING);
     }
 
-    public boolean startRecording(final CallbackContext callbackContext) {
+    public void startRecording(final CordovaInterface cordova, final CallbackContext callbackContext) throws IOException {
         String externalStoragePath = Environment.getExternalStorageDirectory().getPath();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yy_MM_dd");
         Date date = new Date();
@@ -63,77 +64,55 @@ public class AudioRecorder {
         if (!outputFile.exists()) {
             outputFile.mkdirs();
         }
+        randomAccessFile = new RandomAccessFile(outputFile, "rw");
 
-        try {
-            randomAccessFile = new RandomAccessFile(outputFile, "rw");
+        // write a temporary wav header
+        writeWaveFileHeader(randomAccessFile, 0, 36, RECORDER_SAMPLERATE, 1, 1000);
 
-            // write a temporary wav header
-            writeWaveFileHeader(randomAccessFile, 0, 36, RECORDER_SAMPLERATE, 1, 1000);
+        // start the audio recording
+        recorder = new AudioRecord(MediaRecorder.AudioSource.MIC, RECORDER_SAMPLERATE, RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING, bufferSize);
 
-            // start the audio recording
-            recorder = new AudioRecord(MediaRecorder.AudioSource.MIC, RECORDER_SAMPLERATE, RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING, bufferSize);
-
-            recorder.setRecordPositionUpdateListener(new AudioRecord.OnRecordPositionUpdateListener() {
-                public void onPeriodicNotification(AudioRecord recorder) {
-                    try {
-                        byte buffer[] = new byte[bufferSize];
-                        recorder.read(buffer, 0, buffer.length);
-                        randomAccessFile.write(buffer);
-                        recordedLength += buffer.length;
-                    } catch (final IOException e) {
-                        cordova.getThreadPool().execute(new Runnable() {
-                            @Override
-                            public void run() {
-                                callbackContext.error(e.getMessage());
-                            }
-                        });
-                    }
+        recorder.setRecordPositionUpdateListener(new AudioRecord.OnRecordPositionUpdateListener() {
+            public void onPeriodicNotification(AudioRecord recorder) {
+                try {
+                    byte buffer[] = new byte[bufferSize];
+                    recorder.read(buffer, 0, buffer.length);
+                    randomAccessFile.write(buffer);
+                    recordedLength += buffer.length;
+                } catch (final IOException e) {
+                    cordova.getThreadPool().execute(new Runnable() {
+                        @Override
+                        public void run() {
+                            callbackContext.error(e.getMessage());
+                        }
+                    });
                 }
-
-                public void onMarkerReached(AudioRecord recorder) {
-                }
-            });
-            recorder.setPositionNotificationPeriod(bufferSize);
-            recorder.startRecording();
-        } catch (final IOException e) {
-            cordova.getThreadPool().execute(new Runnable() {
-                @Override
-                public void run() {
-                    callbackContext.error(e.getMessage());
-                }
-            });
-            return false;
-        }
-        return true;
-    }
-
-    public void stopRecording(final CallbackContext callbackContext) {
-        try {
-            if (recorder != null) {
-                recorder.stop();
-                recorder.release();
-                recorder = null;
-                // rewrite the wav header
-                long totalAudioLen = randomAccessFile.length() - 36;
-                long totalDataLen = totalAudioLen + 36;
-                long longSampleRate = RECORDER_SAMPLERATE;
-                int channels = 2;
-                if (RECORDER_CHANNELS == AudioFormat.CHANNEL_IN_MONO) {
-                    channels = 1;
-                }
-                long byteRate = RECORDER_BPP * RECORDER_SAMPLERATE * channels / 8;
-                randomAccessFile.seek(0);
-                writeWaveFileHeader(randomAccessFile, totalAudioLen, totalDataLen, longSampleRate, channels, byteRate);
-                recorder.close();
             }
 
-        } catch (IOException e) {
-            cordova.getThreadPool().execute(new Runnable() {
-                @Override
-                public void run() {
-                    callbackContext.error(e.getMessage());
-                }
-            });
+            public void onMarkerReached(AudioRecord recorder) {
+            }
+        });
+        recorder.setPositionNotificationPeriod(bufferSize);
+        recorder.startRecording();
+    }
+
+    public void stopRecording(final CallbackContext callbackContext) throws IOException {
+        if (recorder != null) {
+            recorder.stop();
+            recorder.release();
+            recorder = null;
+            // rewrite the wav header
+            long totalAudioLen = randomAccessFile.length() - 36;
+            long totalDataLen = totalAudioLen + 36;
+            long longSampleRate = RECORDER_SAMPLERATE;
+            int channels = 2;
+            if (RECORDER_CHANNELS == AudioFormat.CHANNEL_IN_MONO) {
+                channels = 1;
+            }
+            long byteRate = RECORDER_BPP * RECORDER_SAMPLERATE * channels / 8;
+            randomAccessFile.seek(0);
+            writeWaveFileHeader(randomAccessFile, totalAudioLen, totalDataLen, longSampleRate, channels, byteRate);
+            randomAccessFile.close();
         }
     }
 
