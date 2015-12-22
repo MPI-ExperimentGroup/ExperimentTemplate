@@ -140,7 +140,7 @@ public class PresenterFeature {
     @XmlElementWrapper(name = "stimuli")
     @XmlElement(name = "tag")
     public List<String> getStimulusTags() {
-        return (featureType.canHaveStimulus()) ? stimulusTags : null;
+        return (featureType.canHaveStimulusTags()) ? stimulusTags : null;
     }
 
     public void setStimulusTags(List<String> stimulusTags) {

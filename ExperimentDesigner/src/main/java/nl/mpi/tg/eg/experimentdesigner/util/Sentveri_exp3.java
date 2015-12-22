@@ -119,16 +119,28 @@ public class Sentveri_exp3 {
     }
 
     private PresenterFeature addNextStimulusButtons(final String screenName) {
+        final PresenterFeature checkTagFeature = new PresenterFeature(FeatureType.currentStimulusHasTag, null);
+        checkTagFeature.addFeatureAttributes(FeatureAttribute.timeToNext, "3");
+        checkTagFeature.addStimulusTag("question");
+        final PresenterFeature withoutTagFeature = new PresenterFeature(FeatureType.withoutTag, null);
+        final PresenterFeature autoNextFeature = new PresenterFeature(FeatureType.autoNextStimulus, null);
+        autoNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nonquestion");
+        autoNextFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+        withoutTagFeature.getPresenterFeatureList().add(autoNextFeature);
+        checkTagFeature.getPresenterFeatureList().add(withoutTagFeature);
+        final PresenterFeature hasTagFeature = new PresenterFeature(FeatureType.hasTag, null);
+        checkTagFeature.getPresenterFeatureList().add(hasTagFeature);
         //5. on half of the trials (36/72), the image of the "question" in the center (self-paced - wait till a "." for yes or a "z" for no response, lock out all the other button responses) - arbitrarily defined by the variable "QorNOT"
         final PresenterFeature questionFeature = addStimulusImage("100", screenName, screenName + "_Q", "0");
         final PresenterFeature responseZFeature = new PresenterFeature(FeatureType.nextStimulusButton, "z");
         responseZFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
         responseZFeature.addFeatureAttributes(FeatureAttribute.eventTag, "responseZ");
-        questionFeature.getPresenterFeatureList().add(responseZFeature);
+        hasTagFeature.getPresenterFeatureList().add(responseZFeature);
+        questionFeature.getPresenterFeatureList().add(checkTagFeature);
         final PresenterFeature responseDotFeature = new PresenterFeature(FeatureType.nextStimulusButton, ".");
         responseDotFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
         responseDotFeature.addFeatureAttributes(FeatureAttribute.eventTag, "responseDot");
-        questionFeature.getPresenterFeatureList().add(responseDotFeature);
+        hasTagFeature.getPresenterFeatureList().add(responseDotFeature);
         return questionFeature;
     }
 
@@ -137,7 +149,10 @@ public class Sentveri_exp3 {
 
         for (int index = 0; index < Sentveri_exp3Data.practPictureIndex.length; index++) {
             final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{"practice"}));
-            final Stimulus stimulus = new Stimulus(null, null, null, null, "prac_" + Sentveri_exp3Data.practPictureIndex[index] + "_" + ((Sentveri_exp3Data.practQorNOT[index]) ? "q" : "a"), "" + Sentveri_exp3Data.practPictureIndex[index], (Sentveri_exp3Data.practslow[index]) ? 1000 : 1, tagSet);
+            if (Sentveri_exp3Data.practQorNOT[index]) {
+                tagSet.add("question");
+            }
+            final Stimulus stimulus = new Stimulus(null, null, null, null, "prac_" + Sentveri_exp3Data.practPictureIndex[index] + ((Sentveri_exp3Data.practQorNOT[index]) ? "_q" : ""), "" + Sentveri_exp3Data.practPictureIndex[index], (Sentveri_exp3Data.practslow[index]) ? 1000 : 0, tagSet);
             stimuliList.add(stimulus);
         }
 
@@ -156,7 +171,10 @@ public class Sentveri_exp3 {
                 }
                 for (int index = 0; index < Sentveri_exp3Data.pictureIndex.length; index++) {
                     final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{tagString + "_" + setChar}));
-                    final Stimulus stimulus = new Stimulus(null, null, null, null, tagString + "_" + setChar + "_" + Sentveri_exp3Data.pictureIndex[index] + "_" + ((Sentveri_exp3Data.QorNOT[index]) ? "q" : "a"), "" + Sentveri_exp3Data.pictureIndex[index], (currendSlow[index]) ? 1000 : 1, tagSet);
+                    if (Sentveri_exp3Data.QorNOT[index]) {
+                        tagSet.add("question");
+                    }
+                    final Stimulus stimulus = new Stimulus(null, null, null, null, tagString + "_" + setChar + "_" + Sentveri_exp3Data.pictureIndex[index] + ((Sentveri_exp3Data.QorNOT[index]) ? "_q" : ""), "" + Sentveri_exp3Data.pictureIndex[index], (currendSlow[index]) ? 1000 : 0, tagSet);
                     stimuliList.add(stimulus);
                 }
             }

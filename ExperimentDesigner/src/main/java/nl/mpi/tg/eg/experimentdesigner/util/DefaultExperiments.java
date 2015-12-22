@@ -279,7 +279,7 @@ public class DefaultExperiments {
                 }
             }
         }
-        if (featureType.canHaveStimulus()) {
+        if (featureType.canHaveStimulusTags()) {
             for (String stimulusTag : new String[]{"ประเพณีบุญบั้งไฟ", "Rocket", "Festival", "Lao", "Thai", "ບຸນບັ້ງໄຟ"}) {
                 presenterFeature.addStimulusTag(stimulusTag);
             }
