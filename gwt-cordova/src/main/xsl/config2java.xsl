@@ -379,7 +379,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="localStorageData|allMetadataFields|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|disableStimulusButtons|showStimulusProgress|hideStimulusButtons|showStimulusButtons|generateCompletionCode|sendAllData|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|nextStimulus|clearPage|addPadding|stimulusLabel">
+    <xsl:template match="localStorageData|allMetadataFields|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|disableStimulusButtons|showStimulusProgress|hideStimulusButtons|showStimulusButtons|generateCompletionCode|sendAllData|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|nextStimulus|addPadding|stimulusLabel">
         <xsl:text>    </xsl:text>    
         <xsl:value-of select ="local-name()"/>
         <xsl:text>();
@@ -391,7 +391,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:text>();
         </xsl:text>
     </xsl:template>
-    <xsl:template match="allMenuItems|autoNextStimulus|addKinTypeGui|autoNextPresenter">    
+    <xsl:template match="allMenuItems|addKinTypeGui|autoNextPresenter">    
         <xsl:text>    </xsl:text>
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(appEventListner</xsl:text>
@@ -404,7 +404,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="logTimeStamp|audioButton|nextStimulusButton">            
+    <xsl:template match="logTimeStamp|audioButton|nextStimulusButton|autoNextStimulus">            
         <xsl:text>    </xsl:text>    
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
@@ -417,7 +417,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="preloadAllStimuli|pause|onError|onSuccess|kinTypeStringDiagram|loadKinTypeStringDiagram|stimulusPause">
+    <xsl:template match="preloadAllStimuli|pause|onError|onSuccess|kinTypeStringDiagram|loadKinTypeStringDiagram">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(appEventListner</xsl:text>
@@ -439,7 +439,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="responseCorrect|responseIncorrect|hasMoreStimulus|endOfStimulus">
+    <xsl:template match="responseCorrect|responseIncorrect|hasMoreStimulus|endOfStimulus|hasTag|withoutTag">
         <xsl:value-of select="if(@timeToNext) then concat(', ', @timeToNext) else ''" />
         <xsl:text>, new TimedStimulusListener() {
 
@@ -466,14 +466,14 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="stimulusImage|stimulusCodeImage|stimulusAudio">
+    <xsl:template match="stimulusImage|stimulusCodeImage|stimulusAudio|stimulusPause">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(</xsl:text>
-        <xsl:value-of select="if(@width) then @width else ''" />
-        <xsl:value-of select="if(@timeToNext) then concat(', ', @timeToNext) else ''" />
-        <xsl:value-of select="if(@codeFormat) then concat(', &quot;', @codeFormat, '&quot;') else ''" />
-        <xsl:text>, new TimedStimulusListener() {
+        <xsl:value-of select="if(@width) then concat(@width, ', ') else ''" />
+        <xsl:value-of select="if(@timeToNext) then concat(@timeToNext, ', ') else ''" />
+        <xsl:value-of select="if(@codeFormat) then concat('&quot;', @codeFormat, '&quot;, ') else ''" />
+        <xsl:text>new TimedStimulusListener() {
 
             @Override
             public void postLoadTimerFired() {
@@ -510,12 +510,13 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         </xsl:for-each>
         <xsl:text>})</xsl:text>
     </xsl:template>
-    <xsl:template match="VideoPanel|AudioRecorderPanel|AnnotationTimelinePanel|loadStimulus|loadAllStimulus|loadSubsetStimulus">
-        <xsl:value-of select="if(starts-with(local-name(), 'load')) then '    ' else '    set'" />
+    <xsl:template match="VideoPanel|AudioRecorderPanel|AnnotationTimelinePanel|loadStimulus|loadAllStimulus|loadSubsetStimulus|currentStimulusHasTag">
+        <xsl:value-of select="if(ends-with(local-name(), 'Panel')) then '    set' else '    '" />
         <xsl:value-of select="local-name()" />
         <!--        <xsl:text>(new </xsl:text>
         <xsl:value-of select="local-name()" />-->
         <xsl:text>(</xsl:text>
+        <xsl:value-of select="if(@timeToNext) then @timeToNext else ''" />
         <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;') else ''" />
         <xsl:value-of select="if(@wav) then concat('&quot;', @wav, '&quot;') else ''" />
         <xsl:value-of select="if(@width) then concat('&quot;', @width, '&quot;') else ''" />
@@ -536,6 +537,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:value-of select="if(@randomise) then concat(', ', @randomise eq 'true') else ''" />
         <xsl:apply-templates select="hasMoreStimulus" />
         <xsl:apply-templates select="endOfStimulus" />
+        <xsl:apply-templates select="hasTag" />
+        <xsl:apply-templates select="withoutTag" />
         <xsl:text>);
         </xsl:text>
     </xsl:template>

@@ -131,7 +131,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         showStimulus();
     }
 
-    protected void pause(final AppEventListner appEventListner, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+    protected void pause(int postLoadMs, final TimedStimulusListener timedStimulusListener) {
         Timer timer = new Timer() {
             public void run() {
 //                ((TimedStimulusView) simpleView).addText("pause: " + duration.elapsedMillis() + "ms");
@@ -141,8 +141,19 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         timer.schedule(postLoadMs);
     }
 
-    protected void stimulusPause(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener) {
-        pause(appEventListner, stimulusProvider.getCurrentStimulus().getPauseMs(), timedStimulusListener);
+    protected void stimulusPause(final TimedStimulusListener timedStimulusListener) {
+        pause(stimulusProvider.getCurrentStimulus().getPauseMs(), timedStimulusListener);
+    }
+
+    protected void currentStimulusHasTag(int postLoadMs, final List<Stimulus.Tag> tagList, final TimedStimulusListener hasTagListener, final TimedStimulusListener hasntTagListener) {
+//        List<Stimulus.Tag> editableList = new LinkedList<Stimulus.Tag>(tagList);
+//        editableList.retainAll();
+//        if (editableList.isEmpty()) {
+        if (stimulusProvider.getCurrentStimulus().getTags().containsAll(tagList)) {
+            pause(postLoadMs, hasTagListener);
+        } else {
+            pause(postLoadMs, hasntTagListener);
+        }
     }
 
     public void stimulusLabel() {
@@ -349,7 +360,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void nextStimulusButton(final String eventTag, final String buttonLabel, final boolean norepeat) {
-        if (stimulusProvider.hasNextStimulus()) {
+//        if (stimulusProvider.hasNextStimulus()) {
             PresenterEventListner eventListner = new PresenterEventListner() {
 
                 @Override
@@ -363,7 +374,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 }
             };
             ((TimedStimulusView) simpleView).addOptionButton(eventListner);
-        }
+//        }
     }
 
     protected void endOfStimulusButton(final PresenterEventListner appEventListner, final String eventTag) {

@@ -17,14 +17,12 @@
             import java.util.List;
             import java.util.Objects;
 
-            public enum Stimulus {
+            public class Stimulus {
 
-        </xsl:text>
-        <xsl:for-each select="experiment/stimuli/stimulus">
-            <xsl:text>
+                private static final Stimulus[] values = new Stimulus[]{
             </xsl:text>
-            <xsl:value-of select="generate-id(.)" />
-            <xsl:text>("</xsl:text>
+        <xsl:for-each select="experiment/stimuli/stimulus">
+            <xsl:text>new Stimulus("</xsl:text>
             <xsl:value-of select="generate-id(.)" />
             <xsl:text>", new Tag[]{</xsl:text>
             <xsl:for-each select="distinct-values(tag/text())">
@@ -50,10 +48,11 @@
             <xsl:value-of select="if(@image) then 'true' else 'false'" />
             <xsl:text>)</xsl:text>
             <xsl:if test="position() != last()">
-                <xsl:text>,</xsl:text>
+                <xsl:text>,
+                </xsl:text>
             </xsl:if>
             <xsl:if test="position() = last()">
-                <xsl:text>;</xsl:text>
+                <xsl:text>};</xsl:text>
             </xsl:if>
         </xsl:for-each>
         <xsl:text>
@@ -70,13 +69,8 @@
         <xsl:text>
             }
                    
-            public static final void fillStimulusList(List&lt;Stimulus&gt; stimulusArray) {</xsl:text>
-        <xsl:for-each select="experiment/stimuli/stimulus">
-            <xsl:text>
-                stimulusArray.add(</xsl:text>
-            <xsl:value-of select="generate-id(.)" />
-            <xsl:text>);</xsl:text>
-        </xsl:for-each>
+            public static final void fillStimulusList(List&lt;Stimulus&gt; stimulusArray) {
+                stimulusArray.addAll(Arrays.asList(values));</xsl:text>
         <xsl:text>
             }
             final private String uniqueId;
