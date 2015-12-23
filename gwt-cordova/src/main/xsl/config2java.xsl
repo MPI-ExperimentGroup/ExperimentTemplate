@@ -343,7 +343,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
         </xsl:text>
         <xsl:choose>
-            <xsl:when test="targetButton">
+            <xsl:when test="@target">
                 <xsl:text>appEventListner.requestApplicationState(ApplicationState.</xsl:text>
                 <xsl:value-of select="@target" />
                 <xsl:text>);</xsl:text>
