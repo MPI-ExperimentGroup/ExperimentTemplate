@@ -26,7 +26,7 @@ import javax.persistence.Temporal;
  */
 public class PublishEvents {
 
-    public enum ExperimentState {
+    public enum PublishState {
 
         editing,
         testing,
@@ -38,28 +38,34 @@ public class PublishEvents {
     @Temporal(javax.persistence.TemporalType.DATE)
     private final Date expiryDate;
 
-    private final ExperimentState experimentState;
+    private final PublishState publishState;
     private final boolean isWebApp;
     private final boolean isiOS;
     private final boolean isAndroid;
     private final Experiment experiment;
+    private final String buildName;
 
-    public PublishEvents(Experiment experiment, Date compileDate, Date expiryDate, ExperimentState experimentState, boolean isWebApp, boolean isiOS, boolean isAndroid) {
+    public PublishEvents(Experiment experiment, Date compileDate, Date expiryDate, PublishState publishState, boolean isWebApp, boolean isiOS, boolean isAndroid) {
         this.compileDate = compileDate;
         this.expiryDate = expiryDate;
-        this.experimentState = experimentState;
+        this.publishState = publishState;
         this.isWebApp = isWebApp;
         this.isiOS = isiOS;
         this.isAndroid = isAndroid;
         this.experiment = experiment;
+        this.buildName = experiment.getAppNameInternal();
+    }
+
+    public String getBuildName() {
+        return buildName;
     }
 
     public String getExperimentName() {
         return experiment.getAppNameInternal();
     }
 
-    public ExperimentState getExperimentState() {
-        return experimentState;
+    public PublishState getState() {
+        return publishState;
     }
 
     public Date getCompileDate() {
