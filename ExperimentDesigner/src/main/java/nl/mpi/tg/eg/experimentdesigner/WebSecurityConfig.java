@@ -37,7 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 // todo: consider adding localhost limit to the configuration/**
-                .antMatchers("/configuration/**").permitAll()
+                .antMatchers("/configuration/**", "/listing/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
