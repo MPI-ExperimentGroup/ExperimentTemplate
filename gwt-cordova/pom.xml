@@ -9,7 +9,7 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-gui</artifactId>
     <packaging>war</packaging>
-    <version>0.1.555-testing</version>
+    <version>0.1.595-testing</version>
     <name>FRINEX GWT-Cordova Template</name>
     <organization>
         <name>Max Planck Institute for Psycholinguistics, Nijmegen</name>
@@ -450,7 +450,14 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>            
+            </plugin>          
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <configuration>
+                    <path>/${experiment.configuration.name}</path>
+                </configuration>
+            </plugin>  
         </plugins>
     </build>
 </project>
