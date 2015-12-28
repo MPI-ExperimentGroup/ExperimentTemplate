@@ -24,17 +24,19 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <netbeans.hint.license>gpl20</netbeans.hint.license> 
         <plugin.license.copyrightYear>2015</plugin.license.copyrightYear>
-        <experiment.configuration.path>${project.build.sourceDirectory}/../xml</experiment.configuration.path>
+        
         <!--<experiment.configuration.path>${project.build.sourceDirectory}/../xml</experiment.configuration.path>-->
-        <!--<experiment.configuration.name>kinoath</experiment.configuration.name>-->
-        <experiment.configuration.name>dobes</experiment.configuration.name>
-        <!--<experiment.configuration.path>${project.build.sourceDirectory}/../../../../../ExperimentBuilder/src/main/xml</experiment.configuration.path>-->
-        <!--<experiment.configuration.name>experimentConfig_shiri</experiment.configuration.name>-->
+        <!--<experiment.configuration.path>${project.build.sourceDirectory}/../../../../../ExperimentBuilder/src/main/xml</experiment.configuration.path>-->      
+        <experiment.configuration.path>../target/frinex-rest-output</experiment.configuration.path>      
+          
+        <!--<experiment.configuration.name>DobesAnnotator</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>AllOptions</experiment.configuration.name>-->
+        <experiment.configuration.name>Sentveri_exp3</experiment.configuration.name>
         <!--<experiment.configuration.name>snspsem</experiment.configuration.name>-->
         <!--<experiment.configuration.name>dobes</experiment.configuration.name>-->
         <experiment.configuration.admin.password></experiment.configuration.admin.password>
         <experiment.configuration.db.password></experiment.configuration.db.password>
-        <finalName>${project.artifactId}-${experiment.configuration.name}-${project.version}</finalName>
+        <finalName>${experiment.configuration.name}-${project.artifactId}-${project.version}</finalName>
     </properties>
     <build>
         <plugins>
@@ -60,6 +62,38 @@
                     <shortVersionModule></shortVersionModule>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>com.googlecode.maven-download-plugin</groupId>
+                <artifactId>download-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <executions>
+                    <execution>
+                        <id>get-configuration-file</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>wget</goal>
+                        </goals>
+                        <configuration>
+                            <url>${ems13url}/ExperimentDesigner/configuration/${experiment.configuration.name}</url>
+                            <!--<unpack>true</unpack>-->
+                            <overwrite>true</overwrite>
+                            <skipCache>true</skipCache>
+                            <outputDirectory>${project.build.directory}/frinex-rest-output</outputDirectory>
+                            <outputFileName>${experiment.configuration.name}.xml</outputFileName>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>            
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <update>true</update>
+                    <server>ems13</server>
+                    <url>${ems13url}/manager/text</url>
+                </configuration>
+            </plugin>  
         </plugins>
     </build>
     <pluginRepositories>
