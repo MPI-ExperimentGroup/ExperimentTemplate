@@ -23,6 +23,7 @@ import nl.mpi.tg.eg.experimentdesigner.dao.ExperimentRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.MetadataRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterFeatureRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterScreenRepository;
+import nl.mpi.tg.eg.experimentdesigner.dao.PublishEventRepository;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
@@ -38,7 +39,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @since Aug 18, 2015 1:40:11 PM (creation date)
@@ -55,6 +55,8 @@ public class DesignController {
     MetadataRepository metadataRepository;
     @Autowired
     ExperimentRepository experimentRepository;
+    @Autowired
+    PublishEventRepository eventRepository;
 
     private void populateModel(Model model, final Experiment experiment) {
         model.addAttribute("screencount", presenterScreenRepository.count());
@@ -73,7 +75,7 @@ public class DesignController {
         // todo: this is currently here to simplify the development process and should be removed in production
 //        experimentRepository.deleteAll();
 //        if (experimentRepository.count() == 0) {
-        new DefaultExperiments().insertDefaultExperiment(presenterScreenRepository, presenterFeatureRepository, metadataRepository, experimentRepository);
+        new DefaultExperiments().insertDefaultExperiment(presenterScreenRepository, presenterFeatureRepository, metadataRepository, experimentRepository, eventRepository);
 //        }
         return "redirect:experiments";
     }
@@ -104,7 +106,7 @@ public class DesignController {
         }
         if (presenterScreenRepository.findBySelfPresenterTag(prersenterScreen.getSelfPresenterTag()) != null) {
             throw new IllegalArgumentException("Self (Action) must be unique.");
-        }       
+        }
         experiment.getPresenterScreen().add(prersenterScreen);
         final PresenterScreen savedScreen = presenterScreenRepository.save(prersenterScreen);
         experimentRepository.save(experiment);

@@ -18,10 +18,9 @@
 package nl.mpi.tg.eg.experimentdesigner.rest;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import nl.mpi.tg.eg.experimentdesigner.dao.ExperimentRepository;
-import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
+import nl.mpi.tg.eg.experimentdesigner.dao.PublishEventRepository;
 import nl.mpi.tg.eg.experimentdesigner.model.PublishEvents;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,6 +39,8 @@ public class PublishController {
 
     @Autowired
     ExperimentRepository experimentRepository;
+    @Autowired
+    PublishEventRepository eventRepository;
 
     @RequestMapping(value = "/listing", method = RequestMethod.GET)
     @ResponseBody
@@ -48,8 +49,11 @@ public class PublishController {
         List<PublishEvents> experimentList = new ArrayList<>();
 //        final Experiment experiment = new Experiment();
 //        experiment.setAppNameInternal("DobesAnnotator");
-        for (Experiment experiment : experimentRepository.findAll()) {
-            experimentList.add(new PublishEvents(experiment, new Date(), new Date(), PublishEvents.PublishState.editing, true, true, true));
+//        for (Experiment experiment : experimentRepository.findAll()) {
+//            experimentList.add(new PublishEvents(experiment, new Date(), new Date(), PublishEvents.PublishState.editing, true, true, true));
+//        }
+        for (PublishEvents publishEvent : eventRepository.findAll()) {
+            experimentList.add(publishEvent);
         }
 //        experimentList.add(new PublishEvents(experiment, new Date(), new Date(), PublishEvents.PublishState.published, true, true, true));
 //        experimentList.add(new PublishEvents(experiment, new Date(), new Date(), PublishEvents.PublishState.testing, true, true, true));

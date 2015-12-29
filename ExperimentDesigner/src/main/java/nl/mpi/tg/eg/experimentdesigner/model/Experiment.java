@@ -60,6 +60,9 @@ public class Experiment {
     private String complementColour4;
     private String backgroundColour;
 
+    @OneToMany(mappedBy = "experiment")
+    private List<PublishEvents> publishEvents = new ArrayList<>();
+
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<PresenterScreen> presenterScreen = new ArrayList<>();
 
@@ -111,6 +114,10 @@ public class Experiment {
 
     public void setStaticFilesUrl(String staticFilesUrl) {
         this.staticFilesUrl = staticFilesUrl;
+    }
+
+    public List<PublishEvents> getPublishEvents() {
+        return publishEvents;
     }
 
     public void setPrimaryColour1(String primaryColour1) {

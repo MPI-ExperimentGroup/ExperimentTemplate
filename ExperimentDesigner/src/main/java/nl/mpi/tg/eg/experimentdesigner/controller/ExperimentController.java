@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.experimentdesigner.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import nl.mpi.tg.eg.experimentdesigner.dao.ExperimentRepository;
+import nl.mpi.tg.eg.experimentdesigner.dao.PublishEventRepository;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.util.DefaultExperiments;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,8 @@ public class ExperimentController {
 
     @Autowired
     ExperimentRepository experimentRepository;
+    @Autowired
+    PublishEventRepository eventRepository;
 
     @RequestMapping("/experiments")
     public String designView(Model model, HttpServletRequest request) {

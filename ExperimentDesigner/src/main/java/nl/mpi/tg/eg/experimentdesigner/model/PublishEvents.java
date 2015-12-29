@@ -18,12 +18,18 @@
 package nl.mpi.tg.eg.experimentdesigner.model;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
 /**
  * @since Dec 1, 2015 1:32:47 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
+@Entity
 public class PublishEvents {
 
     public enum PublishState {
@@ -33,17 +39,25 @@ public class PublishEvents {
         published
     };
 
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private final Date compileDate;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private final Date expiryDate;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
-    private final PublishState publishState;
-    private final boolean isWebApp;
-    private final boolean isiOS;
-    private final boolean isAndroid;
-    private final Experiment experiment;
-    private final String buildName;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date compileDate;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date expiryDate;
+
+    private PublishState publishState;
+    private boolean isWebApp;
+    private boolean isiOS;
+    private boolean isAndroid;
+    @ManyToOne
+    private Experiment experiment;
+    private String buildName;
+
+    public PublishEvents() {
+    }
 
     public PublishEvents(Experiment experiment, Date compileDate, Date expiryDate, PublishState publishState, boolean isWebApp, boolean isiOS, boolean isAndroid) {
         this.compileDate = compileDate;

@@ -22,6 +22,7 @@ import java.io.FileInputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,6 +31,7 @@ import nl.mpi.tg.eg.experimentdesigner.dao.ExperimentRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.MetadataRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterFeatureRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterScreenRepository;
+import nl.mpi.tg.eg.experimentdesigner.dao.PublishEventRepository;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.condition0Tag;
 import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.condition1Tag;
@@ -39,6 +41,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
+import nl.mpi.tg.eg.experimentdesigner.model.PublishEvents;
 import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
 
 /**
@@ -53,10 +56,15 @@ public class DefaultExperiments {
             PresenterScreenRepository presenterScreenRepository,
             PresenterFeatureRepository presenterFeatureRepository,
             MetadataRepository metadataRepository,
-            ExperimentRepository experimentRepository) {
+            ExperimentRepository experimentRepository,
+            PublishEventRepository eventRepository) {
         experimentRepository.save(getSentveri_exp3Experiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
         experimentRepository.save(getDobesExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
         experimentRepository.save(getAllOptionsExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
+
+        for (Experiment experiment : experimentRepository.findAll()) {
+            eventRepository.save(new PublishEvents(experiment, new Date(), new Date(), PublishEvents.PublishState.published, true, true, true));
+        }
     }
 
     public Experiment getDobesExperiment(MetadataRepository metadataRepository, PresenterFeatureRepository presenterFeatureRepository, PresenterScreenRepository presenterScreenRepository) {

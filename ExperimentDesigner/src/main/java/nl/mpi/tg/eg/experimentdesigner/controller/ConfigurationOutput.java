@@ -22,6 +22,7 @@ import nl.mpi.tg.eg.experimentdesigner.dao.ExperimentRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.MetadataRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterFeatureRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterScreenRepository;
+import nl.mpi.tg.eg.experimentdesigner.dao.PublishEventRepository;
 import nl.mpi.tg.eg.experimentdesigner.util.DefaultExperiments;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,6 +43,8 @@ public class ConfigurationOutput {
     @Autowired
     PresenterScreenRepository presenterScreenRepository;
     @Autowired
+    PublishEventRepository eventRepository;
+    @Autowired
     PresenterFeatureRepository presenterFeatureRepository;
     @Autowired
     MetadataRepository metadataRepository;
@@ -54,7 +57,7 @@ public class ConfigurationOutput {
     Experiment getConfiguration(@PathVariable String appName) {
         if (experimentRepository.count() == 0) {
             // todo: this is currently here to simplify the development process and should be removed in production
-            new DefaultExperiments().insertDefaultExperiment(presenterScreenRepository, presenterFeatureRepository, metadataRepository, experimentRepository);
+            new DefaultExperiments().insertDefaultExperiment(presenterScreenRepository, presenterFeatureRepository, metadataRepository, experimentRepository, eventRepository);
         }
         final Experiment experiment = experimentRepository.findByAppNameInternal(appName);
         return experiment;
