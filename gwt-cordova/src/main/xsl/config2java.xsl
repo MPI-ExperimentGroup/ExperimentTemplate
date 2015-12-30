@@ -72,6 +72,7 @@
             public ApplicationController(RootLayoutPanel widgetTag) {
             super(widgetTag);
         </xsl:text>
+        <!--does this even work?-->
         <xsl:value-of select="if(experiment/preventWindowClose) then concat('preventWindowClose(&quot;', experiment/preventWindowClose, '&quot;);') else ''" />
         <xsl:text>        
             }
@@ -379,7 +380,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="localStorageData|allMetadataFields|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|disableStimulusButtons|showStimulusProgress|hideStimulusButtons|showStimulusButtons|generateCompletionCode|sendAllData|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|nextStimulus|addPadding|stimulusLabel">
+    <xsl:template match="localStorageData|allMetadataFields|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|disableStimulusButtons|showStimulus|showStimulusProgress|hideStimulusButtons|showStimulusButtons|generateCompletionCode|sendAllData|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|addPadding|stimulusLabel">
         <xsl:text>    </xsl:text>    
         <xsl:value-of select ="local-name()"/>
         <xsl:text>();
@@ -404,7 +405,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="logTimeStamp|audioButton|nextStimulusButton|autoNextStimulus">            
+    <xsl:template match="logTimeStamp|audioButton|nextStimulusButton|nextStimulus">            
         <xsl:text>    </xsl:text>    
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
@@ -417,7 +418,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="preloadAllStimuli|pause|onError|onSuccess|kinTypeStringDiagram|loadKinTypeStringDiagram">
+    <xsl:template match="preloadAllStimuli|onError|onSuccess|kinTypeStringDiagram|loadKinTypeStringDiagram">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(appEventListner</xsl:text>
@@ -451,7 +452,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
             }
             }</xsl:text>
     </xsl:template>
-    <xsl:template match="showStimulusGrid|showStimulus">
+    <xsl:template match="showStimulusGrid">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(appEventListner</xsl:text>
@@ -466,7 +467,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="stimulusImage|stimulusCodeImage|stimulusAudio|stimulusPause">
+    <xsl:template match="pause|stimulusImage|stimulusCodeImage|stimulusAudio|stimulusPause">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(</xsl:text>
@@ -528,9 +529,9 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
             <xsl:value-of select="if(@webm) then concat(', &quot;', @webm, '&quot;') else ',&quot;&quot;'" />
         </xsl:if>
         <xsl:apply-templates select="stimuli" mode="stimuliTags" />
-        <xsl:value-of select="if(@condition0Tag) then concat(', Tag.', @condition0Tag, '') else ''" />
-        <xsl:value-of select="if(@condition1Tag) then concat(', Tag.', @condition1Tag, '') else ''" />
-        <xsl:value-of select="if(@condition2Tag) then concat(', Tag.', @condition2Tag, '') else ''" />
+        <xsl:value-of select="if(@condition0Tag) then concat(', Tag.tag_', @condition0Tag, '') else ''" />
+        <xsl:value-of select="if(@condition1Tag) then concat(', Tag.tag_', @condition1Tag, '') else ''" />
+        <xsl:value-of select="if(@condition2Tag) then concat(', Tag.tag_', @condition2Tag, '') else ''" />
         <xsl:value-of select="if(@maxStimuli) then concat(', ', @maxStimuli, '') else ''" />
         <xsl:value-of select="if(@columnCount) then concat(', ', @columnCount, '') else ''" />
         <xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" />
