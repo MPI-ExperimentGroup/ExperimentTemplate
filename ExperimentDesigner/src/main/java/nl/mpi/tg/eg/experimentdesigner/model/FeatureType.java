@@ -33,10 +33,10 @@ public enum FeatureType {
     image(false, false, new FeatureAttribute[]{width, src}),
     menuItem(false, true, new FeatureAttribute[]{target}),
     popupMessage(false, true, null),
-    loadSubsetStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli, condition0Tag, condition1Tag, condition2Tag}, true, false),
-    loadStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli, randomise}, true, false),
-    loadAllStimulus(false, false, new FeatureAttribute[]{eventTag, randomise}, true, false),
-    currentStimulusHasTag(true, false, new FeatureAttribute[]{timeToNext}, true, true),
+    loadSubsetStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli, condition0Tag, condition1Tag, condition2Tag}, true, Contitionals.none),
+    loadStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli, randomise}, true, Contitionals.hasMoreStimulus),
+    loadAllStimulus(false, false, new FeatureAttribute[]{eventTag, randomise}, true, Contitionals.hasMoreStimulus),
+    currentStimulusHasTag(true, false, new FeatureAttribute[]{timeToNext}, true, Contitionals.hasStimulusTag),
     targetButton(false, true, new FeatureAttribute[]{target}),
     actionButton(true, true, null),
     //    endOfStimulusButton(false, true, new FeatureAttribute[]{eventTag, target}),
@@ -53,7 +53,7 @@ public enum FeatureType {
     generateCompletionCode(false, false, null),
     sendAllData(false, false, null),
     eraseLocalStorageOnWindowClosing(false, false, null),
-    nextStimulus(false, false, null),
+    //    nextStimulus(false, false, null),
     keepStimulus(false, false, null),
     removeStimulus(false, false, null),
     clearStimulus(false, false, null),
@@ -61,14 +61,14 @@ public enum FeatureType {
     clearPage(false, false, null),
     allMenuItems(false, false, null),
     nextStimulusButton(false, true, new FeatureAttribute[]{eventTag, norepeat}),
-    autoNextStimulus(false, false, new FeatureAttribute[]{eventTag, norepeat}),
+    nextStimulus(false, false, new FeatureAttribute[]{eventTag, norepeat}),
     addKinTypeGui(false, false, new FeatureAttribute[]{diagramName}),
     autoNextPresenter(false, false, new FeatureAttribute[]{target}),
     logTimeStamp(false, false, new FeatureAttribute[]{eventTag}),
     audioButton(false, false, new FeatureAttribute[]{eventTag, mp3, ogg, poster}),
-    preloadAllStimuli(true, false, null, true, false),
-    showStimulus(true, false, null, false, false),
-    showStimulusGrid(true, false, new FeatureAttribute[]{columnCount, imageWidth, eventTag}, true, true),
+    preloadAllStimuli(true, false, null, true, Contitionals.none),
+    showStimulus(true, false, null, false, Contitionals.none), // todo: should this be here?
+    showStimulusGrid(true, false, new FeatureAttribute[]{columnCount, imageWidth, eventTag}, true, Contitionals.hasCorrectIncorrect),
     pause(true, false, new FeatureAttribute[]{timeToNext}),
     stimulusPause(true, false, null),
     stimulusLabel(false, false, null),
@@ -86,7 +86,7 @@ public enum FeatureType {
     stimulusCodeImage(true, false, new FeatureAttribute[]{width, timeToNext, codeFormat}),
     stimulusAudio(true, false, new FeatureAttribute[]{timeToNext, mp3,}),
     VideoPanel(false, false, new FeatureAttribute[]{mp4, ogg, webm, width, poster}),
-    AnnotationTimelinePanel(true, false, new FeatureAttribute[]{mp4, ogg, webm, poster, eventTag, columnCount, maxStimuli}, true, false),
+    AnnotationTimelinePanel(true, false, new FeatureAttribute[]{mp4, ogg, webm, poster, eventTag, columnCount, maxStimuli}, true, Contitionals.none),
     AudioRecorderPanel(false, false, new FeatureAttribute[]{wav}),
     userInfo(false, false, null),
     versionData(false, false, null),
@@ -95,22 +95,29 @@ public enum FeatureType {
     private final boolean canHaveText;
     private final boolean canHaveStimulusTags; // todo: this could well be canHaveTagList so that it is more generic
     private final FeatureAttribute[] featureAttributes;
-    private final boolean hasCorrectIncorrect;
+    private final Contitionals contitionals;
+
+    public enum Contitionals {
+        hasCorrectIncorrect,
+        hasMoreStimulus,
+        hasStimulusTag,
+        none
+    }
 
     private FeatureType(boolean canHaveFeatures, boolean canHaveText, FeatureAttribute[] featureAttributes) {
         this.canHaveFeatures = canHaveFeatures;
         this.canHaveText = canHaveText;
         this.featureAttributes = featureAttributes;
-        this.hasCorrectIncorrect = false;
+        this.contitionals = Contitionals.none;
         this.canHaveStimulusTags = false;
     }
 
-    private FeatureType(boolean canHaveFeatures, boolean canHaveText, FeatureAttribute[] featureAttributes, boolean canHaveStimulus, boolean hasCorrectIncorrect) {
+    private FeatureType(boolean canHaveFeatures, boolean canHaveText, FeatureAttribute[] featureAttributes, boolean canHaveStimulus, Contitionals contitionals) {
         this.canHaveFeatures = canHaveFeatures;
         this.canHaveText = canHaveText;
         this.featureAttributes = featureAttributes;
         this.canHaveStimulusTags = canHaveStimulus;
-        this.hasCorrectIncorrect = hasCorrectIncorrect;
+        this.contitionals = contitionals;
     }
 
     public boolean canHaveFeatures() {
@@ -129,7 +136,7 @@ public enum FeatureType {
         return featureAttributes;
     }
 
-    public boolean requiresCorrectIncorrect() {
-        return hasCorrectIncorrect;
+    public Contitionals getContitionals() {
+        return contitionals;
     }
 }
