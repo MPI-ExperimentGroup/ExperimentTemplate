@@ -210,7 +210,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
     }
 
-    protected void playStimulusAudio(long postLoadMs, TimedStimulusListener timedStimulusListener) {
+    protected void stimulusAudio(long postLoadMs, TimedStimulusListener timedStimulusListener) {
         String ogg = stimulusProvider.getCurrentStimulus().getOgg();
         String mp3 = stimulusProvider.getCurrentStimulus().getMp3();
         submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", ogg, duration.elapsedMillis());
@@ -348,7 +348,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         buttonList.clear();
     }
 
-    protected void autoNextStimulus(final String eventTag, final boolean norepeat) {
+    protected void nextStimulus(final String eventTag, final boolean norepeat) {
         logTimeStamp(eventTag);
         if (norepeat) {
             removeStimulus();
@@ -361,19 +361,19 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void nextStimulusButton(final String eventTag, final String buttonLabel, final boolean norepeat) {
 //        if (stimulusProvider.hasNextStimulus()) {
-            PresenterEventListner eventListner = new PresenterEventListner() {
+        PresenterEventListner eventListner = new PresenterEventListner() {
 
-                @Override
-                public String getLabel() {
-                    return buttonLabel;
-                }
+            @Override
+            public String getLabel() {
+                return buttonLabel;
+            }
 
-                @Override
-                public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                    autoNextStimulus(eventTag, norepeat);
-                }
-            };
-            ((TimedStimulusView) simpleView).addOptionButton(eventListner);
+            @Override
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+                nextStimulus(eventTag, norepeat);
+            }
+        };
+        ((TimedStimulusView) simpleView).addOptionButton(eventListner);
 //        }
     }
 
