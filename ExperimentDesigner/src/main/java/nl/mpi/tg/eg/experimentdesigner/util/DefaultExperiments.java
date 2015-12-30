@@ -61,6 +61,7 @@ public class DefaultExperiments {
         experimentRepository.save(getSentveri_exp3Experiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
         experimentRepository.save(getDobesExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
         experimentRepository.save(getAllOptionsExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
+        experimentRepository.save(new JenaFieldKit().getJenaExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
 
         for (Experiment experiment : experimentRepository.findAll()) {
             eventRepository.save(new PublishEvents(experiment, new Date(), new Date(), PublishEvents.PublishState.published, true, true, true));
@@ -250,7 +251,14 @@ public class DefaultExperiments {
 //            maxScreenAddCount--;
             final PresenterScreen presenterScreen = new PresenterScreen(presenterType.name(), presenterType.name(), backPresenter, presenterType.name() + "Screen", null, presenterType);
             for (FeatureType featureType : presenterType.getFeatureTypes()) {
-                presenterScreen.getPresenterFeatureList().add(addFeature(featureType, presenterFeatureRepository));
+                if (featureType != FeatureType.hasTag
+                        && featureType != FeatureType.withoutTag
+                        && featureType != FeatureType.onError
+                        && featureType != FeatureType.onSuccess
+                        && featureType != FeatureType.hasMoreStimulus
+                        && featureType != FeatureType.endOfStimulus) {
+                    presenterScreen.getPresenterFeatureList().add(addFeature(featureType, presenterFeatureRepository));
+                }
             }
             presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
             experiment.getPresenterScreen().add(presenterScreen);
@@ -292,15 +300,24 @@ public class DefaultExperiments {
                 presenterFeature.addStimulusTag(stimulusTag);
             }
         }
-        if (featureType.requiresCorrectIncorrect()) {
-            presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.responseCorrect, presenterFeatureRepository));
-            presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.responseIncorrect, presenterFeatureRepository));
-            presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
-        }
-        if (featureType == FeatureType.showStimulus) {
-            presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.hasMoreStimulus, presenterFeatureRepository));
-            presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.endOfStimulus, presenterFeatureRepository));
-            presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+        switch (featureType.getContitionals()) {
+            case hasCorrectIncorrect:
+                presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.responseCorrect, presenterFeatureRepository));
+                presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.responseIncorrect, presenterFeatureRepository));
+                presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                break;
+            case hasStimulusTag:
+                presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.hasTag, presenterFeatureRepository));
+                presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.withoutTag, presenterFeatureRepository));
+                presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                break;
+            case hasMoreStimulus:
+                presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.hasMoreStimulus, presenterFeatureRepository));
+                presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.endOfStimulus, presenterFeatureRepository));
+                presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                break;
+            default:
+                break;
         }
         if (featureType.canHaveFeatures()) {
             presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.text, presenterFeatureRepository));
