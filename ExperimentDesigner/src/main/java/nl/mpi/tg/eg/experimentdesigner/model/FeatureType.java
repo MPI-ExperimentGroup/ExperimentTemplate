@@ -43,6 +43,8 @@ public enum FeatureType {
     addPadding(false, false, null),
     localStorageData(false, false, null),
     allMetadataFields(false, false, null),
+    createUserButton(false, true, null),
+    selectUserMenu(false, false, null),
     eraseLocalStorageButton(false, false, null),
     showCurrentMs(false, false, null),
     enableStimulusButtons(false, false, null),
