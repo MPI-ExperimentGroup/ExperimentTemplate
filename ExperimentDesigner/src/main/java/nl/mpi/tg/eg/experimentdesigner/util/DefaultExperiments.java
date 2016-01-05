@@ -316,6 +316,11 @@ public class DefaultExperiments {
                 presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.endOfStimulus, presenterFeatureRepository));
                 presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
                 break;
+            case hasErrorSuccess:
+                presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.onError, presenterFeatureRepository));
+                presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.onSuccess, presenterFeatureRepository));
+                presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                break;
             default:
                 break;
         }
