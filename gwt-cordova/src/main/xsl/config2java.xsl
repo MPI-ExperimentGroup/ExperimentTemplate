@@ -383,7 +383,9 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
     <xsl:template match="localStorageData|createUserButton|selectUserMenu|allMetadataFields|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|disableStimulusButtons|showStimulus|showStimulusProgress|hideStimulusButtons|showStimulusButtons|generateCompletionCode|sendAllData|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|addPadding|stimulusLabel">
         <xsl:text>    </xsl:text>    
         <xsl:value-of select ="local-name()"/>
-        <xsl:text>();
+        <xsl:text>(</xsl:text>            
+        <xsl:value-of select="if(@featureText) then concat('messages.', generate-id(.), '()') else ''" />
+        <xsl:text>);
         </xsl:text>
     </xsl:template>
     <xsl:template match="centrePage|clearPage|addPadding">
