@@ -44,6 +44,7 @@ public enum FeatureType {
     addPadding(false, false, null),
     localStorageData(false, false, null),
     allMetadataFields(false, false, null),
+    saveMetadataButton(true, true, null, false,Contitionals.hasErrorSuccess),
     createUserButton(false, true, null),
     selectUserMenu(false, false, null),
     eraseLocalStorageButton(false, false, null),
@@ -104,6 +105,7 @@ public enum FeatureType {
         hasCorrectIncorrect,
         hasMoreStimulus,
         hasStimulusTag,
+        hasErrorSuccess,
         none
     }
 
