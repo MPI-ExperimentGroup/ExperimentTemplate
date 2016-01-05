@@ -70,8 +70,10 @@ public class JenaFieldKit {
         experiment.getMetadata().add(metadata);
         metadataRepository.save(experiment.getMetadata());
         final PresenterScreen autoMenuPresenter = addAutoMenu(presenterFeatureRepository);
-        final PresenterScreen selectUserPresenter = addUserSelectMenu(presenterFeatureRepository, autoMenuPresenter, null);
+        final PresenterScreen selectUserPresenter = addUserSelectMenu(presenterFeatureRepository, autoMenuPresenter, autoMenuPresenter);
+        final PresenterScreen editUserPresenter = addEditUserScreen(presenterFeatureRepository, autoMenuPresenter, autoMenuPresenter);
         experiment.getPresenterScreen().add(selectUserPresenter);
+        experiment.getPresenterScreen().add(editUserPresenter);
         experiment.getPresenterScreen().add(autoMenuPresenter);
         experiment.getPresenterScreen().add(createMetadataScreen(autoMenuPresenter));
         experiment.getPresenterScreen().add(createStimulusScreen(autoMenuPresenter));
@@ -97,6 +99,23 @@ public class JenaFieldKit {
         final PresenterScreen presenterScreen = new PresenterScreen("Select User", "Select User", backPresenter, "SelectUser", nextPresenter, PresenterType.metadata);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.createUserButton, "New User"));
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.selectUserMenu, null));
+        presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
+        return presenterScreen;
+    }
+
+    private PresenterScreen addEditUserScreen(PresenterFeatureRepository presenterFeatureRepository, final PresenterScreen backPresenter, final PresenterScreen nextPresenter) {
+        final PresenterScreen presenterScreen = new PresenterScreen("Edit User", "Edit User", backPresenter, "EditUser", nextPresenter, PresenterType.metadata);
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMetadataFields, null));
+        final PresenterFeature saveMetadataButton = new PresenterFeature(FeatureType.saveMetadataButton, null);
+        final PresenterFeature onErrorFeature = new PresenterFeature(FeatureType.onError, null);
+        onErrorFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "on Error Feature"));
+        saveMetadataButton.getPresenterFeatureList().add(onErrorFeature);
+        final PresenterFeature onSuccessFeature = new PresenterFeature(FeatureType.onSuccess, null);
+        final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.targetButton, "Menu");
+        menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, "AutoMenu");
+        onSuccessFeature.getPresenterFeatureList().add(menuButtonFeature);
+        saveMetadataButton.getPresenterFeatureList().add(onSuccessFeature);
+        presenterScreen.getPresenterFeatureList().add(saveMetadataButton);
         presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
         return presenterScreen;
     }
