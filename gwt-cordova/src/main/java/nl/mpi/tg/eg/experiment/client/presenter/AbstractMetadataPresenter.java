@@ -34,6 +34,8 @@ import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
+import nl.mpi.tg.eg.experiment.client.model.UserData;
+import nl.mpi.tg.eg.experiment.client.model.UserLabelData;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 
 /**
@@ -47,9 +49,11 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
     protected PresenterEventListner saveEventListner = null;
     private final DataSubmissionService submissionService;
     private TimedStimulusListener errorEventListner;
+    final LocalStorage localStorage;
 
     public AbstractMetadataPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults) {
         super(widgetTag, new MetadataView());
+        this.localStorage = new LocalStorage();
         this.userResults = userResults;
         this.submissionService = submissionService;
     }
@@ -126,13 +130,47 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
             String fieldString = ((MetadataView) simpleView).getFieldValue(fieldName);
             userResults.getUserData().setMetadataValue(fieldName, fieldString);
         }
-        new LocalStorage().storeData(userResults);
+        localStorage.storeData(userResults);
     }
 
     @Override
     protected void setTitle(PresenterEventListner titleBarListner) {
         throw new UnsupportedOperationException();
 //        simpleView.addTitle(messages.metadataScreenTitle(), titleBarListner);
+    }
+
+    protected void selectUserMenu() {
+        for (final UserLabelData labelData : localStorage.getUserIdList()) {
+            if (!labelData.getUserId().equals(userResults.getUserData().getUserId())) {
+                ((MetadataView) simpleView).addOptionButton(new PresenterEventListner() {
+
+                    @Override
+                    public String getLabel() {
+                        return labelData.getUserName();
+                    }
+
+                    @Override
+                    public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+                        userResults.setUser(localStorage.getStoredData(labelData.getUserId()));
+                    }
+                });
+            }
+        }
+    }
+
+    protected void createUserButton(final String label) {
+        ((MetadataView) simpleView).addOptionButton(new PresenterEventListner() {
+
+            @Override
+            public String getLabel() {
+                return label;
+            }
+
+            @Override
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+                userResults.setUser(new UserData());
+            }
+        });
     }
 
     protected void allMetadataFields() {
