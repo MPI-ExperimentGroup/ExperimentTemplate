@@ -70,6 +70,8 @@ public class JenaFieldKit {
         experiment.getMetadata().add(metadata);
         metadataRepository.save(experiment.getMetadata());
         final PresenterScreen autoMenuPresenter = addAutoMenu(presenterFeatureRepository);
+        final PresenterScreen selectUserPresenter = addUserSelectMenu(presenterFeatureRepository, autoMenuPresenter, null);
+        experiment.getPresenterScreen().add(selectUserPresenter);
         experiment.getPresenterScreen().add(autoMenuPresenter);
         experiment.getPresenterScreen().add(createMetadataScreen(autoMenuPresenter));
         experiment.getPresenterScreen().add(createStimulusScreen(autoMenuPresenter));
@@ -87,6 +89,14 @@ public class JenaFieldKit {
     private PresenterScreen addAutoMenu(PresenterFeatureRepository presenterFeatureRepository) {
         final PresenterScreen presenterScreen = new PresenterScreen("Auto Menu", "Menu", null, "AutoMenu", null, PresenterType.menu);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMenuItems, null));
+        presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
+        return presenterScreen;
+    }
+
+    private PresenterScreen addUserSelectMenu(PresenterFeatureRepository presenterFeatureRepository, final PresenterScreen backPresenter, final PresenterScreen nextPresenter) {
+        final PresenterScreen presenterScreen = new PresenterScreen("Select User", "Select User", backPresenter, "SelectUser", nextPresenter, PresenterType.metadata);
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.createUserButton, "New User"));
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.selectUserMenu, null));
         presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
         return presenterScreen;
     }
