@@ -62,7 +62,7 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
         super.setState(appEventListner, prevState, null);
     }
 
-    protected void saveMetadataButton(final String buttonLabel, final TimedStimulusListener errorEventListner, final TimedStimulusListener successEventListner) {
+    protected void saveMetadataButton(final String buttonLabel, final boolean sendData, final TimedStimulusListener errorEventListner, final TimedStimulusListener successEventListner) {
         PresenterEventListner saveEventListner = new PresenterEventListner() {
 
             @Override
@@ -72,26 +72,29 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
                     ((MetadataView) simpleView).clearErrors();
                     validateFields();
                     saveFields();
-                    // this assumes that the user will not get to this page unless they have already agreed to submit data
-                    submissionService.submitMetadata(userResults, new DataSubmissionListener() {
+                    if (sendData) {
+                        // this assumes that the user will not get to this page unless they have already agreed to submit data
+                        submissionService.submitMetadata(userResults, new DataSubmissionListener() {
 
-                        @Override
-                        public void scoreSubmissionFailed(DataSubmissionException exception) {
-                            if (exception.getErrorType() == DataSubmissionException.ErrorType.dataRejected) {
-                                ((MetadataView) simpleView).setButtonError(true, button, exception.getMessage());
-                            } else {
-                                ((MetadataView) simpleView).setButtonError(true, button, null);
-                                errorEventListner.postLoadTimerFired();
+                            @Override
+                            public void scoreSubmissionFailed(DataSubmissionException exception) {
+                                if (exception.getErrorType() == DataSubmissionException.ErrorType.dataRejected) {
+                                    ((MetadataView) simpleView).setButtonError(true, button, exception.getMessage());
+                                } else {
+                                    ((MetadataView) simpleView).setButtonError(true, button, null);
+                                    errorEventListner.postLoadTimerFired();
+                                }
+                                submissionService.submitScreenChange(userResults.getUserData().getUserId(), "submitMetadataFailed");
                             }
-                            submissionService.submitScreenChange(userResults.getUserData().getUserId(), "submitMetadataFailed");
-                        }
 
-                        @Override
-                        public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
-                            successEventListner.postLoadTimerFired();
-                        }
-                    });
-
+                            @Override
+                            public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
+                                successEventListner.postLoadTimerFired();
+                            }
+                        });
+                    } else {
+                        successEventListner.postLoadTimerFired();
+                    }
                 } catch (MetadataFieldException exception) {
                     ((MetadataView) simpleView).showFieldError(exception.getMetadataField());
                 }

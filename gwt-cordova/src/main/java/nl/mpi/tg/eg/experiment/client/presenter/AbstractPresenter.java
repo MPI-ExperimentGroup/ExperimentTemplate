@@ -18,8 +18,10 @@
 package nl.mpi.tg.eg.experiment.client.presenter;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.Messages;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
@@ -123,6 +125,15 @@ public abstract class AbstractPresenter implements Presenter {
     protected abstract void setTitle(PresenterEventListner titleBarListner);
 
     protected abstract void setContent(final AppEventListner appEventListner);
+
+    protected void autoNextPresenter(final AppEventListner appEventListner, final ApplicationController.ApplicationState state) {
+        Timer timer = new Timer() {
+            public void run() {
+                appEventListner.requestApplicationState(state);
+            }
+        };
+        timer.schedule(100);
+    }
 
     @Override
     public void savePresenterState() {

@@ -160,15 +160,6 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addText(stimulusProvider.getCurrentStimulus().getLabel());
     }
 
-    protected void autoNextPresenter(final AppEventListner appEventListner, final ApplicationController.ApplicationState state) {
-        Timer timer = new Timer() {
-            public void run() {
-                appEventListner.requestApplicationState(state);
-            }
-        };
-        timer.schedule(100);
-    }
-
     protected void showStimulus() {
         if (stimulusProvider.hasNextStimulus()) {
             stimulusProvider.getNextStimulus();
