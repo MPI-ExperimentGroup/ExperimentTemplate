@@ -32,6 +32,7 @@ public class UserResults {
 
     public void setUser(UserData userId) {
         this.userData = userId;
+        gameData = new GameData();
     }
 
     public UserData getUserData() {
