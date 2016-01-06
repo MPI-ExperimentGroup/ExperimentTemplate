@@ -111,11 +111,12 @@ public class JenaFieldKit {
         final PresenterScreen presenterScreen = new PresenterScreen("Edit User", "Edit User", backPresenter, "EditUser", nextPresenter, PresenterType.metadata);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMetadataFields, null));
         final PresenterFeature saveMetadataButton = new PresenterFeature(FeatureType.saveMetadataButton, "Save Metadata");
+        saveMetadataButton.addFeatureAttributes(FeatureAttribute.sendData, "false");
         final PresenterFeature onErrorFeature = new PresenterFeature(FeatureType.onError, null);
         onErrorFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "on Error Feature"));
         saveMetadataButton.getPresenterFeatureList().add(onErrorFeature);
         final PresenterFeature onSuccessFeature = new PresenterFeature(FeatureType.onSuccess, null);
-        final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.targetButton, "Menu");
+        final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.autoNextPresenter, null);
         menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, "AutoMenu");
         onSuccessFeature.getPresenterFeatureList().add(menuButtonFeature);
         saveMetadataButton.getPresenterFeatureList().add(onSuccessFeature);
@@ -144,10 +145,10 @@ public class JenaFieldKit {
         loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
 
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
-        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "end of stimuli"));
-        final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.targetButton, "StimulusScreen");
-        nextButtonFeature.addFeatureAttributes(FeatureAttribute.target, "StimulusScreen");
-        endOfStimulusFeature.getPresenterFeatureList().add(nextButtonFeature);
+//        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "end of stimuli"));
+        final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
+        autoNextPresenter.addFeatureAttributes(FeatureAttribute.target, "StimulusScreen");
+        endOfStimulusFeature.getPresenterFeatureList().add(autoNextPresenter);
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
         return presenterScreen;
     }
@@ -174,11 +175,11 @@ public class JenaFieldKit {
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
 
         final PresenterFeature lanwisImage = addImageFeature(hasMoreStimulusFeature, "90", "speak the name in the language (lanwis)", "done");
-        final PresenterFeature bislamaImage = addImageFeature(lanwisImage, "20", "kids speak the name in Bislama [smaller image]", "done");
+        final PresenterFeature bislamaImage = addImageFeature(lanwisImage, "70", "It''s your turn! What did they say? Translate it into Bislama if you can.", "done");
         final PresenterFeature lanwisExperience = addImageFeature(bislamaImage, "90", "ask for personal experience with... in language (lanwis)", "done");
-        final PresenterFeature bislamaExperience = addImageFeature(lanwisExperience, "20", "kids repeat personal experience with... in Bislama [smaller image]", "done");
+        final PresenterFeature bislamaExperience = addImageFeature(lanwisExperience, "70", "It''s your turn! What experience did they have? Translate it into Bislama if you can.", "done");
         final PresenterFeature lanwisStory = addImageFeature(bislamaExperience, "90", "custom story relating to ... (lanwis)", "done");
-        final PresenterFeature bislamaStory = addImageFeature(lanwisStory, "20", "kids repeat ... in Bislama [smaller image]", "done");
+        final PresenterFeature bislamaStory = addImageFeature(lanwisStory, "70", "It''s your turn! What story did they tell? Translate it into Bislama if you can.", "done");
         final PresenterFeature autoNextFeature = new PresenterFeature(FeatureType.nextStimulus, null);
         autoNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextImage");
         autoNextFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
