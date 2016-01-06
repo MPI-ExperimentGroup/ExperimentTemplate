@@ -380,11 +380,13 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="localStorageData|createUserButton|selectUserMenu|allMetadataFields|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|disableStimulusButtons|showStimulus|showStimulusProgress|hideStimulusButtons|showStimulusButtons|generateCompletionCode|sendAllData|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|addPadding|stimulusLabel">
+    <xsl:template match="saveMetadataButton|localStorageData|allMetadataFields|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|disableStimulusButtons|showStimulus|showStimulusProgress|hideStimulusButtons|showStimulusButtons|generateCompletionCode|sendAllData|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|addPadding|stimulusLabel">
         <xsl:text>    </xsl:text>    
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>            
-        <xsl:value-of select="if(@featureText) then concat('messages.', generate-id(.), '()') else ''" />
+        <xsl:value-of select="if(@featureText) then concat('messages.', generate-id(.), '()') else ''" />        
+        <xsl:apply-templates select="onError" />
+        <xsl:apply-templates select="onSuccess" />
         <xsl:text>);
         </xsl:text>
     </xsl:template>
@@ -394,7 +396,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:text>();
         </xsl:text>
     </xsl:template>
-    <xsl:template match="allMenuItems|addKinTypeGui|autoNextPresenter">    
+    <xsl:template match="createUserButton|selectUserMenu|allMenuItems|addKinTypeGui|autoNextPresenter">    
         <xsl:text>    </xsl:text>
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(appEventListner</xsl:text>
@@ -420,7 +422,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="preloadAllStimuli|onError|onSuccess|kinTypeStringDiagram|loadKinTypeStringDiagram">
+    <xsl:template match="preloadAllStimuli|kinTypeStringDiagram|loadKinTypeStringDiagram">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(appEventListner</xsl:text>
@@ -442,7 +444,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="responseCorrect|responseIncorrect|hasMoreStimulus|endOfStimulus|hasTag|withoutTag">
+    <xsl:template match="onError|onSuccess|responseCorrect|responseIncorrect|hasMoreStimulus|endOfStimulus|hasTag|withoutTag">
         <xsl:value-of select="if(@timeToNext) then concat(', ', @timeToNext) else ''" />
         <xsl:text>, new TimedStimulusListener() {
 
