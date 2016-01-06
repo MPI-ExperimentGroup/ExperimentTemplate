@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experiment.client.presenter;
 
 import com.google.gwt.core.client.JsArray;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
@@ -46,9 +47,7 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
 
     final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
     protected final UserResults userResults;
-    protected PresenterEventListner saveEventListner = null;
     private final DataSubmissionService submissionService;
-    private TimedStimulusListener errorEventListner;
     final LocalStorage localStorage;
 
     public AbstractMetadataPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults) {
@@ -61,10 +60,13 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
     @Override
     public void setState(final AppEventListner appEventListner, ApplicationState prevState, final ApplicationState nextState) {
         super.setState(appEventListner, prevState, null);
-        saveEventListner = new PresenterEventListner() {
+    }
+
+    protected void saveMetadataButton(final String buttonLabel, final TimedStimulusListener errorEventListner, final TimedStimulusListener successEventListner) {
+        PresenterEventListner saveEventListner = new PresenterEventListner() {
 
             @Override
-            public void eventFired(final ButtonBase button, SingleShotEventListner singleShotEventListner) {
+            public void eventFired(final ButtonBase button, final SingleShotEventListner singleShotEventListner) {
                 try {
                     ((MetadataView) simpleView).setButtonError(false, button, null);
                     ((MetadataView) simpleView).clearErrors();
@@ -86,7 +88,7 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
 
                         @Override
                         public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
-                            appEventListner.requestApplicationState(nextState);
+                            successEventListner.postLoadTimerFired();
                         }
                     });
 
@@ -97,25 +99,11 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
 
             @Override
             public String getLabel() {
-                return nextState.label;
+                return buttonLabel;
             }
         };
-        addNextButton();
-    }
 
-    protected void addNextButton() {
-        ((MetadataView) simpleView).addOptionButton(new PresenterEventListner() {
-
-            @Override
-            public String getLabel() {
-                return saveEventListner.getLabel();
-            }
-
-            @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                saveEventListner.eventFired(button, singleShotEventListner);
-            }
-        });
+        ((MetadataView) simpleView).addOptionButton(saveEventListner);
     }
 
     protected void validateFields() throws MetadataFieldException {
@@ -139,26 +127,29 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
 //        simpleView.addTitle(messages.metadataScreenTitle(), titleBarListner);
     }
 
-    protected void selectUserMenu() {
+    protected void selectUserMenu(final AppEventListner appEventListner, final ApplicationState targetApplicationState) {
         for (final UserLabelData labelData : localStorage.getUserIdList()) {
-            if (!labelData.getUserId().equals(userResults.getUserData().getUserId())) {
-                ((MetadataView) simpleView).addOptionButton(new PresenterEventListner() {
+            final Button optionButton = ((MetadataView) simpleView).addOptionButton(new PresenterEventListner() {
 
-                    @Override
-                    public String getLabel() {
-                        return labelData.getUserName();
-                    }
+                @Override
+                public String getLabel() {
+                    return labelData.getUserName();
+                }
 
-                    @Override
-                    public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                        userResults.setUser(localStorage.getStoredData(labelData.getUserId()));
-                    }
-                });
+                @Override
+                public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+                    userResults.setUser(localStorage.getStoredData(labelData.getUserId()));
+                    localStorage.storeData(userResults);
+                    appEventListner.requestApplicationState(targetApplicationState);
+                }
+            });
+            if (labelData.getUserId().equals(userResults.getUserData().getUserId())) {
+                optionButton.addStyleName("optionButtonHighlight");
             }
         }
     }
 
-    protected void createUserButton(final String label) {
+    protected void createUserButton(final AppEventListner appEventListner, final String label, final ApplicationState targetApplicationState) {
         ((MetadataView) simpleView).addOptionButton(new PresenterEventListner() {
 
             @Override
@@ -169,6 +160,8 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 userResults.setUser(new UserData());
+                localStorage.storeData(userResults);
+                appEventListner.requestApplicationState(targetApplicationState);
             }
         });
     }
@@ -181,9 +174,5 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
 
     public void focusFirstTextBox() {
         ((MetadataView) simpleView).focusFirstTextBox();
-    }
-
-    public void onError(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener) {
-        errorEventListner = timedStimulusListener;
     }
 }
