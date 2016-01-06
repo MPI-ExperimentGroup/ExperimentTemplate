@@ -384,7 +384,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:text>    </xsl:text>    
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>            
-        <xsl:value-of select="if(@featureText) then concat('messages.', generate-id(.), '()') else ''" />        
+        <xsl:value-of select="if(@featureText) then concat('messages.', generate-id(.), '()') else ''" />    
+        <xsl:value-of select="if(@sendData) then concat(', ', @sendData eq 'true') else ''" />    
         <xsl:apply-templates select="onError" />
         <xsl:apply-templates select="onSuccess" />
         <xsl:text>);
