@@ -117,9 +117,10 @@ public class ComplexView extends SimpleView {
         anchor.addStyleName("pageLink");
     }
 
-    public void addOptionButton(final PresenterEventListner presenterListerner) {
+    public Button addOptionButton(final PresenterEventListner presenterListerner) {
         Button nextButton = getOptionButton(presenterListerner);
         outerPanel.add(nextButton);
+        return nextButton;
     }
 
     public Button getOptionButton(final PresenterEventListner presenterListerner) {
