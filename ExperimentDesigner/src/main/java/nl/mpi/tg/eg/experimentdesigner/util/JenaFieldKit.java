@@ -97,8 +97,12 @@ public class JenaFieldKit {
 
     private PresenterScreen addUserSelectMenu(PresenterFeatureRepository presenterFeatureRepository, final PresenterScreen backPresenter, final PresenterScreen nextPresenter) {
         final PresenterScreen presenterScreen = new PresenterScreen("Select User", "Select User", backPresenter, "SelectUser", nextPresenter, PresenterType.metadata);
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.createUserButton, "New User"));
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.selectUserMenu, null));
+        final PresenterFeature createUserFeature = new PresenterFeature(FeatureType.createUserButton, "New User");
+        createUserFeature.addFeatureAttributes(FeatureAttribute.target, "EditUser");
+        presenterScreen.getPresenterFeatureList().add(createUserFeature);
+        final PresenterFeature selectUserFeature = new PresenterFeature(FeatureType.selectUserMenu, null);
+        selectUserFeature.addFeatureAttributes(FeatureAttribute.target, "EditUser");
+        presenterScreen.getPresenterFeatureList().add(selectUserFeature);
         presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
         return presenterScreen;
     }
@@ -106,7 +110,7 @@ public class JenaFieldKit {
     private PresenterScreen addEditUserScreen(PresenterFeatureRepository presenterFeatureRepository, final PresenterScreen backPresenter, final PresenterScreen nextPresenter) {
         final PresenterScreen presenterScreen = new PresenterScreen("Edit User", "Edit User", backPresenter, "EditUser", nextPresenter, PresenterType.metadata);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMetadataFields, null));
-        final PresenterFeature saveMetadataButton = new PresenterFeature(FeatureType.saveMetadataButton, null);
+        final PresenterFeature saveMetadataButton = new PresenterFeature(FeatureType.saveMetadataButton, "Save Metadata");
         final PresenterFeature onErrorFeature = new PresenterFeature(FeatureType.onError, null);
         onErrorFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "on Error Feature"));
         saveMetadataButton.getPresenterFeatureList().add(onErrorFeature);
