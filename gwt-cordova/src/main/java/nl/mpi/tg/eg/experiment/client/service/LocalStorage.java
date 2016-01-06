@@ -51,7 +51,7 @@ public class LocalStorage {
     public LocalStorage() {
         APP_STATE = messages.appNameInternal() + ".AppState.";
         USER_RESULTS = messages.appNameInternal() + ".UserResults.";
-        LAST_USER_ID = messages.appNameInternal() + ".LastUserId.";
+        LAST_USER_ID = messages.appNameInternal() + ".LastUserId";
         GAME_DATA = messages.appNameInternal() + ".GameData.";
         SCREEN_DATA = messages.appNameInternal() + ".ScreenData.";
         STOWED_DATA = messages.appNameInternal() + ".SentData.";
@@ -261,8 +261,8 @@ public class LocalStorage {
 
             for (int itemIndex = 0; itemIndex < dataStore.getLength(); itemIndex++) {
                 final String key = dataStore.key(itemIndex);
-                if (key.endsWith(postName)) {
-                    final String userIdString = key.split("\\.")[1];
+                if (key.startsWith(USER_RESULTS) && key.endsWith(postName)) {
+                    final String userIdString = key.split("\\.")[2];
                     final String cleanStoredData = getCleanStoredData(key);
 //                    if (!cleanStoredData.isEmpty()) {
                     userIdList.add(new UserLabelData(new UserId(userIdString), cleanStoredData));
