@@ -28,7 +28,7 @@ import static nl.mpi.tg.eg.experimentdesigner.model.FeatureType.*;
 public enum PresenterType {
 
     transmission(new FeatureType[]{
-        loadSubsetStimulus, loadStimulus, loadSdCardStimulus,loadAllStimulus,
+        loadSubsetStimulus, loadStimulus, loadSdCardStimulus, loadAllStimulus,
         localStorageData,
         allMetadataFields, saveMetadataButton, createUserButton, selectUserMenu,
         eraseLocalStorageButton,
@@ -71,7 +71,7 @@ public enum PresenterType {
         menuItem
     }),
     metadata(new FeatureType[]{
-        loadSubsetStimulus, loadStimulus, loadSdCardStimulus,loadAllStimulus,
+        loadSubsetStimulus, loadStimulus, loadSdCardStimulus, loadAllStimulus,
         localStorageData,
         eraseLocalStorageButton,
         showCurrentMs,
@@ -117,7 +117,7 @@ public enum PresenterType {
         menuItem
     }),
     preload(new FeatureType[]{
-        loadSubsetStimulus, loadStimulus, loadSdCardStimulus,loadAllStimulus,
+        loadSubsetStimulus, loadStimulus, loadSdCardStimulus, loadAllStimulus,
         localStorageData,
         allMetadataFields, saveMetadataButton, createUserButton, selectUserMenu,
         eraseLocalStorageButton,
@@ -164,7 +164,7 @@ public enum PresenterType {
         loadKinTypeStringDiagram,
         preloadAllStimuli}),
     kindiagram(new FeatureType[]{responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus,
-        loadSubsetStimulus, loadStimulus, loadSdCardStimulus,loadAllStimulus,
+        loadSubsetStimulus, loadStimulus, loadSdCardStimulus, loadAllStimulus,
         popupMessage,
         localStorageData,
         allMetadataFields, saveMetadataButton, createUserButton, selectUserMenu,
@@ -205,7 +205,7 @@ public enum PresenterType {
         stimulusAudio
     }),
     menu(new FeatureType[]{responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus,
-        loadSubsetStimulus, loadStimulus, loadSdCardStimulus,loadAllStimulus,
+        loadSubsetStimulus, loadStimulus, loadSdCardStimulus, loadAllStimulus,
         popupMessage,
         localStorageData,
         allMetadataFields, saveMetadataButton, createUserButton, selectUserMenu,
@@ -246,7 +246,7 @@ public enum PresenterType {
         stimulusImage,
         stimulusAudio}),
     debug(new FeatureType[]{responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus,
-        loadSubsetStimulus, loadStimulus, loadSdCardStimulus,loadAllStimulus,
+        loadSubsetStimulus, loadStimulus, loadSdCardStimulus, loadAllStimulus,
         popupMessage,
         allMetadataFields, saveMetadataButton, createUserButton, selectUserMenu,
         showCurrentMs,
@@ -287,8 +287,8 @@ public enum PresenterType {
         userInfo,
         stimulusAudio}),
     text(new FeatureType[]{loadKinTypeStringDiagram, localStorageData,
-        loadSubsetStimulus, loadStimulus, loadSdCardStimulus,loadAllStimulus,
-        allMetadataFields, createUserButton, selectUserMenu,
+        loadSubsetStimulus, loadStimulus, loadSdCardStimulus, loadAllStimulus,
+        allMetadataFields, saveMetadataButton, createUserButton, selectUserMenu,
         eraseLocalStorageButton,
         enableStimulusButtons,
         disableStimulusButtons,
@@ -332,7 +332,7 @@ public enum PresenterType {
         userInfo,
         menuItem}),
     timeline(new FeatureType[]{loadKinTypeStringDiagram, localStorageData,
-        loadSubsetStimulus, loadStimulus, loadAllStimulus,
+        loadSubsetStimulus, loadStimulus, loadSdCardStimulus, loadAllStimulus,
         allMetadataFields, saveMetadataButton, createUserButton, selectUserMenu,
         eraseLocalStorageButton,
         enableStimulusButtons,
