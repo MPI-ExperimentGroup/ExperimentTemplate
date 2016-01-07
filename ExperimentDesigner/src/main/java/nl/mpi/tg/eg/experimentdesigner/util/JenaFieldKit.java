@@ -129,9 +129,8 @@ public class JenaFieldKit {
         final String screenName = "Metadata";
         final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, autoMenuPresenter, "MetadataScreen", null, PresenterType.stimulus);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
-        final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadSdCardStimulus, null);
+        final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadAllStimulus, null);
         loadStimuliFeature.addStimulusTag("metadata");
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, "15");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, screenName);
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "false");
         presenterFeatureList.add(loadStimuliFeature);
