@@ -513,7 +513,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         </xsl:for-each>
         <xsl:text>})</xsl:text>
     </xsl:template>
-    <xsl:template match="VideoPanel|AudioRecorderPanel|AnnotationTimelinePanel|loadStimulus|loadAllStimulus|loadSubsetStimulus|currentStimulusHasTag">
+    <xsl:template match="VideoPanel|AudioRecorderPanel|AnnotationTimelinePanel|loadStimulus|loadSdCardStimulus|loadAllStimulus|loadSubsetStimulus|currentStimulusHasTag">
         <xsl:value-of select="if(ends-with(local-name(), 'Panel')) then '    set' else '    '" />
         <xsl:value-of select="local-name()" />
         <!--        <xsl:text>(new </xsl:text>
