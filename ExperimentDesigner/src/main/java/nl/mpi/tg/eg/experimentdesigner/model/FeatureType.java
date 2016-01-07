@@ -35,6 +35,7 @@ public enum FeatureType {
     popupMessage(false, true, null),
     loadSubsetStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli, condition0Tag, condition1Tag, condition2Tag}, true, Contitionals.none),
     loadStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli, randomise}, true, Contitionals.hasMoreStimulus),
+    loadSdCardStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli, randomise}, true, Contitionals.hasMoreStimulus),
     loadAllStimulus(false, false, new FeatureAttribute[]{eventTag, randomise}, true, Contitionals.hasMoreStimulus),
     currentStimulusHasTag(true, false, new FeatureAttribute[]{timeToNext}, true, Contitionals.hasStimulusTag),
     targetButton(false, true, new FeatureAttribute[]{target}),
