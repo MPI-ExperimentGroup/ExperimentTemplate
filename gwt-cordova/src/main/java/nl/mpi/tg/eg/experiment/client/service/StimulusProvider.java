@@ -71,9 +71,19 @@ public class StimulusProvider {
         getSubset(selectionTags, stimulusArray.size(), randomise, seenList);
     }
 
+    public void getSdCardSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final String seenList) {
+        List<Stimulus> stimulusListCopy = new ArrayList<>();
+       new SdCardStimuli(stimulusListCopy).fillStimulusList();
+        getSubset(selectionTags, maxStimulusCount, randomise, seenList, stimulusListCopy);
+    }
+
     public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final String seenList) {
-        stimulusSubsetArray.clear();
         List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
+        getSubset(selectionTags, maxStimulusCount, randomise, seenList, stimulusListCopy);
+    }
+
+    public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final String seenList, List<Stimulus> stimulusListCopy) {
+        stimulusSubsetArray.clear();
         while (!stimulusListCopy.isEmpty() && maxStimulusCount > stimulusSubsetArray.size()) {
             final int nextIndex = (randomise) ? new Random().nextInt(stimulusListCopy.size()) : 0;
             Stimulus stimulus = stimulusListCopy.remove(nextIndex);
