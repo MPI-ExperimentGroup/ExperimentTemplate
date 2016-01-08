@@ -19,8 +19,8 @@
 
             public class Stimulus {
 
-                private static final Stimulus[] values = new Stimulus[]{
-            </xsl:text>
+            private static final Stimulus[] values = new Stimulus[]{
+        </xsl:text>
         <xsl:for-each select="experiment/stimuli/stimulus">
             <xsl:text>new Stimulus("</xsl:text>
             <xsl:value-of select="generate-id(.)" />
@@ -61,7 +61,8 @@
 
         </xsl:text>
         <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/tag/text())">
-            <xsl:text>tag_</xsl:text><xsl:value-of select="." />
+            <xsl:text>tag_</xsl:text>
+            <xsl:value-of select="." />
             <xsl:if test="position() != last()">
                 <xsl:text>, </xsl:text>
             </xsl:if>
@@ -70,7 +71,7 @@
             }
                    
             public static final void fillStimulusList(List&lt;Stimulus&gt; stimulusArray) {
-                stimulusArray.addAll(Arrays.asList(values));</xsl:text>
+            stimulusArray.addAll(Arrays.asList(values));</xsl:text>
         <xsl:text>
             }
             final private String uniqueId;
@@ -83,7 +84,7 @@
             final private boolean ogg;
             final private boolean image;
 
-            Stimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, boolean mp3, boolean mp4, boolean ogg, boolean image) {
+            public Stimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, boolean mp3, boolean mp4, boolean ogg, boolean image) {
             this.uniqueId = uniqueId;
             this.tags = Arrays.asList(tags);
             this.label = label;
@@ -112,7 +113,7 @@
             }
             
             public int getPauseMs() {
-                return pauseMs;
+            return pauseMs;
             }
             
             public String getMp3() {
