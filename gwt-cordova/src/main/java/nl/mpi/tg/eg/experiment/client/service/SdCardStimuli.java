@@ -57,17 +57,19 @@ public class SdCardStimuli {
             var dirReader = entry.createReader();
             dirReader.readEntries(
                 function (entries) {
-                    var fileStr = "";
-                    var i;
-                    for (currentEntry in entries) {
-                        if (currentEntry.isDirectory === true) {
-                            addFileEntry(currentEntry);
+                    var currentIndex;
+                    for (currentIndex = 0; currentIndex < entries.length; currentIndex++) {
+                        console.log("currentEntry: " + entries[currentIndex].fullPath);
+                        if (entries[currentIndex].isDirectory === true) {
+                            readFileEntry(entries[currentIndex]);
                         } else {
-                            sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::insertStimulus(Ljava/lang/String;)(currentEntry.fullPath);
+                            sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::insertStimulus(Ljava/lang/String;)(entries[currentIndex].fullPath);
                         }
                     }
                 },
                 function (error) {
+                    console.log("readEntries error: " + error.code);
+                    console.log("readEntries error: " + error.message);
                     sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::errorAction(Ljava/lang/String;Ljava/lang/String;)(error.code, error.message);
                 }
             );
@@ -75,15 +77,20 @@ public class SdCardStimuli {
 
         var mpi_stimuli = "MPI_STIMULI";
         var potentialDirectories = [
-            cordova.file.dataDirectory + mpi_stimuli,
-            cordova.file.externalRootDirectory + mpi_stimuli,
-            cordova.file.externalDataDirectory + mpi_stimuli
+            $wnd.cordova.file.dataDirectory + mpi_stimuli,
+            $wnd.cordova.file.externalRootDirectory + mpi_stimuli,
+            $wnd.cordova.file.externalDataDirectory + mpi_stimuli
         ];
-        for (currentDirectory in potentialDirectories) {
-            if (currentDirectory === null || currentDirectory.length === 0) {
+        var directoryIndex
+        for (directoryIndex = 0; directoryIndex < potentialDirectories.length; directoryIndex++) {
+            if (potentialDirectories[directoryIndex] === null || potentialDirectories[directoryIndex].length === 0) {
                 continue;
             }
-            window.resolveLocalFileSystemURL(currentDirectory, readFileEntry, function (error) {
+            console.log(potentialDirectories[directoryIndex]);
+            console.log(typeof $wnd.resolveLocalFileSystemURL);
+            $wnd.resolveLocalFileSystemURL(potentialDirectories[directoryIndex], readFileEntry, function (error) {
+                console.log("resolveLocalFileSystemURL error: " + error.code);
+                console.log("resolveLocalFileSystemURL error: " + error.message);
                 sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::errorAction(Ljava/lang/String;Ljava/lang/String;)(error.code, error.message);
             });
         }
