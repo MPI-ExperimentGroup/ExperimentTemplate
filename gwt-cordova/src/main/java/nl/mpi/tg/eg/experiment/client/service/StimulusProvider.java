@@ -23,8 +23,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
-import nl.mpi.tg.eg.experiment.client.model.Stimulus.Tag;
+import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus.Tag;
 
 /**
  * @since Jun 23, 2015 11:07:47 AM (creation date)
@@ -40,7 +41,7 @@ public class StimulusProvider {
     private Stimulus currentStimulus = null;
 
     public StimulusProvider() {
-        Stimulus.fillStimulusList(stimulusArray);
+        GeneratedStimulus.fillStimulusList(stimulusArray);
 //        noisyList.addAll(Arrays.asList(Stimulus.NOISE_AUDIO));
 //        Stimulus.fillPictureList(pictureList);
 
@@ -73,7 +74,7 @@ public class StimulusProvider {
 
     public void getSdCardSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final String seenList) {
         List<Stimulus> stimulusListCopy = new ArrayList<>();
-       new SdCardStimuli(stimulusListCopy).fillStimulusList();
+        new SdCardStimuli(stimulusListCopy, selectionTags).fillStimulusList();
         getSubset(selectionTags, maxStimulusCount, randomise, seenList, stimulusListCopy);
     }
 
