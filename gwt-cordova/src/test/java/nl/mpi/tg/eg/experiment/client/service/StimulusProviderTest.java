@@ -18,11 +18,12 @@
 package nl.mpi.tg.eg.experiment.client.service;
 
 import java.util.Arrays;
+import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
+import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus.Tag;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
-import nl.mpi.tg.eg.experiment.client.model.Stimulus.Tag;
+import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import org.junit.Test;
 
 /**
  *
@@ -104,7 +105,7 @@ public class StimulusProviderTest {
     public void testGetSubset_StimulusSimilarity() {
         System.out.println("getSubset");
         StimulusProvider instance = new StimulusProvider();
-        instance.getSubset(Stimulus.Tag.tag_centipedes, 6, Arrays.asList(new Tag[]{Tag.tag_ประเพณีบุญบั้งไฟ, Tag.tag_Rocket, Tag.tag_Festival, Tag.tag_Lao, Tag.tag_Thai, Tag.tag_ບຸນບັ້ງໄຟ}), "");
+        instance.getSubset(GeneratedStimulus.Tag.tag_centipedes, 6, Arrays.asList(new Tag[]{Tag.tag_ประเพณีบุญบั้งไฟ, Tag.tag_Rocket, Tag.tag_Festival, Tag.tag_Lao, Tag.tag_Thai, Tag.tag_ບຸນບັ້ງໄຟ}), "");
         final String seenString = "";
         final int expectedStimuliCount = 36;
         final int expectedSpeakerCount = 36;
@@ -119,7 +120,7 @@ public class StimulusProviderTest {
     public void testGetSubset3_StimulusSimilarity() {
         System.out.println("getSubset 3");
         StimulusProvider instance = new StimulusProvider();
-        instance.getSubset(Stimulus.Tag.tag_centipedes, 3, Arrays.asList(new Tag[]{Tag.tag_ประเพณีบุญบั้งไฟ, Tag.tag_Rocket, Tag.tag_Festival, Tag.tag_Lao, Tag.tag_Thai, Tag.tag_ບຸນບັ້ງໄຟ}), "");
+        instance.getSubset(GeneratedStimulus.Tag.tag_centipedes, 3, Arrays.asList(new Tag[]{Tag.tag_ประเพณีบุญบั้งไฟ, Tag.tag_Rocket, Tag.tag_Festival, Tag.tag_Lao, Tag.tag_Thai, Tag.tag_ບຸນບັ້ງໄຟ}), "");
         final String seenString = "";
         final int expectedStimuliCount = 18;
         final int expectedSpeakerCount = 18;
@@ -135,7 +136,7 @@ public class StimulusProviderTest {
         System.out.println("getSubset 3 seen");
         StimulusProvider instance = new StimulusProvider();
         String seenString = getSeenList(instance);
-        instance.getSubset(Stimulus.Tag.tag_centipedes, 3, Arrays.asList(new Tag[]{Tag.tag_ประเพณีบุญบั้งไฟ, Tag.tag_Rocket, Tag.tag_Festival, Tag.tag_Lao, Tag.tag_Thai, Tag.tag_ບຸນບັ້ງໄຟ}), seenString);
+        instance.getSubset(GeneratedStimulus.Tag.tag_centipedes, 3, Arrays.asList(new Tag[]{Tag.tag_ประเพณีบุญบั้งไฟ, Tag.tag_Rocket, Tag.tag_Festival, Tag.tag_Lao, Tag.tag_Thai, Tag.tag_ບຸນບັ້ງໄຟ}), seenString);
         final int expectedStimuliCount = 13;
         final int expectedSpeakerCount = 13;
         final int expectedKijfCount = 1;
