@@ -23,7 +23,7 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
-import nl.mpi.tg.eg.experiment.client.model.Stimulus;
+import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
@@ -43,7 +43,7 @@ public abstract class AbstractPreloadStimulusPresenter extends AbstractStimulusP
     private void preloadAllStimuli(final AppEventListner appEventListner, final HorizontalPanel progressBar, final TimedStimulusListener timedStimulusListener, final List<String> pictureList, final int totalImages) {
         ((TimedStimulusView) simpleView).updateProgressBar(progressBar, 0, totalImages - pictureList.size(), totalImages);
         if (!pictureList.isEmpty()) {
-            ((TimedStimulusView) simpleView).preloadImage(UriUtils.fromString(serviceLocations.staticFilesUrl() + pictureList.remove(0)), new TimedStimulusListener() {
+            ((TimedStimulusView) simpleView).preloadImage(UriUtils.fromString(pictureList.remove(0)), new TimedStimulusListener() {
 
                 @Override
                 public void postLoadTimerFired() {
@@ -55,7 +55,7 @@ public abstract class AbstractPreloadStimulusPresenter extends AbstractStimulusP
         }
     }
 
-    protected void preloadAllStimuli(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final List<Stimulus.Tag> selectionTags) {
+    protected void preloadAllStimuli(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final List<GeneratedStimulus.Tag> selectionTags) {
         final StimulusProvider stimulusProvider = new StimulusProvider();
         stimulusProvider.getSubset(selectionTags, false, "");
         final List<String> pictureList = stimulusProvider.getPictureList();

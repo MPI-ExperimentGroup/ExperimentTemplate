@@ -27,12 +27,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
-import nl.mpi.tg.eg.experiment.client.model.Stimulus;
+import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
@@ -68,7 +67,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     // todo: maxSpeakerWordCount needs to be utilised correctly
-    protected void loadSubsetStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final Stimulus.Tag condition0Tag, final Stimulus.Tag condition1Tag, final Stimulus.Tag condition2Tag, final int maxStimulusCount) {
+    protected void loadSubsetStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final GeneratedStimulus.Tag condition0Tag, final GeneratedStimulus.Tag condition1Tag, final GeneratedStimulus.Tag condition2Tag, final int maxStimulusCount) {
         final String storedDataValue = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), STIMULUS_ALLOCATION);
         int stimulusAllocation;
         try {
@@ -108,12 +107,12 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 break;
             default:
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), eventTag, "Condition3", "", duration.elapsedMillis());
-                stimulusProvider.getSubset(maxStimulusCount, seenStimulusList, Arrays.asList(new Stimulus.Tag[]{condition1Tag, condition2Tag, condition0Tag}), selectionTags, 32);
+                stimulusProvider.getSubset(maxStimulusCount, seenStimulusList, Arrays.asList(new GeneratedStimulus.Tag[]{condition1Tag, condition2Tag, condition0Tag}), selectionTags, 32);
                 break;
         }
     }
 
-    protected void loadAllStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final boolean randomise, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+    protected void loadAllStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final boolean randomise, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
         final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST);
         stimulusProvider.getSubset(selectionTags, randomise, seenStimulusList);
@@ -122,13 +121,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         showStimulus();
     }
 
-    protected void loadSdCardStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+    protected void loadSdCardStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
         final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST);
         stimulusProvider.getSdCardSubset(selectionTags, maxStimulusCount, randomise, seenStimulusList);
     }
-    
-    protected void loadStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+
+    protected void loadStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
         final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST);
         stimulusProvider.getSubset(selectionTags, maxStimulusCount, randomise, seenStimulusList);
@@ -151,7 +150,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         pause(stimulusProvider.getCurrentStimulus().getPauseMs(), timedStimulusListener);
     }
 
-    protected void currentStimulusHasTag(int postLoadMs, final List<Stimulus.Tag> tagList, final TimedStimulusListener hasTagListener, final TimedStimulusListener hasntTagListener) {
+    protected void currentStimulusHasTag(int postLoadMs, final List<GeneratedStimulus.Tag> tagList, final TimedStimulusListener hasTagListener, final TimedStimulusListener hasntTagListener) {
 //        List<Stimulus.Tag> editableList = new LinkedList<Stimulus.Tag>(tagList);
 //        editableList.retainAll();
 //        if (editableList.isEmpty()) {
@@ -196,7 +195,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     protected void stimulusImage(int width, int postLoadMs, TimedStimulusListener timedStimulusListener) {
         String image = stimulusProvider.getCurrentStimulus().getImage();
         submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusImage", image, duration.elapsedMillis());
-        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString(serviceLocations.staticFilesUrl() + image), width, postLoadMs, timedStimulusListener);
+        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString(image), width, postLoadMs, timedStimulusListener);
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
     }
 
@@ -211,7 +210,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         String ogg = stimulusProvider.getCurrentStimulus().getOgg();
         String mp3 = stimulusProvider.getCurrentStimulus().getMp3();
         submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", ogg, duration.elapsedMillis());
-        ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromString(serviceLocations.staticFilesUrl() + ogg), UriUtils.fromString(serviceLocations.staticFilesUrl() + mp3), postLoadMs, timedStimulusListener);
+        ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromString(ogg), UriUtils.fromString(mp3), postLoadMs, timedStimulusListener);
 //        ((TimedStimulusView) simpleView).addText("playStimulusAudio: " + duration.elapsedMillis() + "ms");
     }
 
@@ -261,7 +260,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             buttonList.add(((TimedStimulusView) simpleView).addStringItem(getEventListener(buttonList, eventTag, stimulusProvider.getCurrentStimulus().getImage(), alternativeChoice, correctTimedListener, incorrectTimedListener), alternativeChoice, 0, 0, imageWidth));
         }
         for (final String nextJpg : stimulusProvider.getPictureList()) {
-            buttonList.add(((TimedStimulusView) simpleView).addImageItem(getEventListener(buttonList, eventTag, stimulusProvider.getCurrentStimulus().getImage(), nextJpg, correctTimedListener, incorrectTimedListener), UriUtils.fromString(serviceLocations.staticFilesUrl() + nextJpg), imageCounter / columnCount, 1 + imageCounter++ % columnCount, imageWidth));
+            buttonList.add(((TimedStimulusView) simpleView).addImageItem(getEventListener(buttonList, eventTag, stimulusProvider.getCurrentStimulus().getImage(), nextJpg, correctTimedListener, incorrectTimedListener), UriUtils.fromString(nextJpg), imageCounter / columnCount, 1 + imageCounter++ % columnCount, imageWidth));
         }
         disableStimulusButtons();
         ((TimedStimulusView) simpleView).endGrid();
@@ -392,13 +391,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 submissionService.submitTagValue(userResults.getUserData().getUserId(), "PlayAudio", eventTag, duration.elapsedMillis());
-                ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromString(serviceLocations.staticFilesUrl() + oggPath), UriUtils.fromString(serviceLocations.staticFilesUrl() + mp3Path), 0, new TimedStimulusListener() {
+                ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromString(oggPath), UriUtils.fromString(mp3Path), 0, new TimedStimulusListener() {
 
                     @Override
                     public void postLoadTimerFired() {
                     }
                 });
             }
-        }, UriUtils.fromString(serviceLocations.staticFilesUrl() + imagePath));
+        }, UriUtils.fromString(imagePath));
     }
 }
