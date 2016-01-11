@@ -43,6 +43,7 @@ import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
+import nl.mpi.tg.eg.experiment.client.model.Stimulus;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.ScrollPanel;
@@ -51,7 +52,6 @@ import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.ru.languageininteraction.synaesthesia.client.exception.CanvasError;
 import nl.ru.languageininteraction.language.client.model.ColourData;
-import nl.ru.languageininteraction.language.client.model.Stimulus;
 
 /**
  * @since Oct 8, 2014 5:09:10 PM (creation date)
@@ -381,8 +381,8 @@ public class ColourPickerCanvasView extends AbstractView {
     public void setStimulus(Stimulus stimulus, String progress) {
         progressLabel.setText(progress);
         stimulusPanel.clear();
-        final Label label = new Label(stimulus.getValue());
-        final int length = stimulus.getValue().length();
+        final Label label = new Label(stimulus.getLabel());
+        final int length = stimulus.getLabel().length();
         final int stimulusSpecificHeight = (length > 3) ? stimulusTextHeight : (int) (stimulusTextHeight * 3.0 / length);
         stimulusPanel.setHeight(stimulusTextHeight * 3 + "px");
         label.getElement().getStyle().setFontSize(stimulusSpecificHeight, Unit.PX);

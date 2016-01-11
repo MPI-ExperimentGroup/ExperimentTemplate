@@ -119,7 +119,7 @@ public class AnnotationTimelineView extends TimedStimulusView {
                 annotationTimelinePanel.updateAnnotation(annotationData);
             }
         }));
-        final Image image = new Image(UriUtils.fromString(serviceLocations.staticFilesUrl() + annotationData.getStimulus().getImage()));
+        final Image image = new Image(UriUtils.fromString(annotationData.getStimulus().getImage()));
         image.setHeight("65px");
         editingPanel.add(image);
         verticalPanel.add(editingPanel);

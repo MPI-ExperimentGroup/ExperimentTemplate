@@ -193,7 +193,7 @@ public class AnnotationTimelinePanel extends FocusPanel {
                 insertAnnotation(stimulus, videoPanel, annotationTimelineView, dataFactory);
                 singleShotEventListner.resetSingleShot();
             }
-        }, UriUtils.fromString(serviceLocations.staticFilesUrl() + stimulus.getImage()), stimulusCounter / columnCount, 1 + stimulusCounter % columnCount, imageWidth));
+        }, UriUtils.fromString(stimulus.getImage()), stimulusCounter / columnCount, 1 + stimulusCounter % columnCount, imageWidth));
     }
 
     public void insertAnnotation(final Stimulus stimulus, final VideoPanel videoPanel, final AnnotationTimelineView annotationTimelineView, final DataFactory dataFactory) {
