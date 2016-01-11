@@ -17,12 +17,12 @@
             import java.util.List;
             import java.util.Objects;
 
-            public class Stimulus {
+            public class GeneratedStimulus implements Stimulus {
 
-            private static final Stimulus[] values = new Stimulus[]{
+            private static final GeneratedStimulus[] values = new GeneratedStimulus[]{
         </xsl:text>
         <xsl:for-each select="experiment/stimuli/stimulus">
-            <xsl:text>new Stimulus("</xsl:text>
+            <xsl:text>new GeneratedStimulus("</xsl:text>
             <xsl:value-of select="generate-id(.)" />
             <xsl:text>", new Tag[]{</xsl:text>
             <xsl:for-each select="distinct-values(tag/text())">
@@ -84,7 +84,7 @@
             final private boolean ogg;
             final private boolean image;
 
-            public Stimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, boolean mp3, boolean mp4, boolean ogg, boolean image) {
+            public GeneratedStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, boolean mp3, boolean mp4, boolean ogg, boolean image) {
             this.uniqueId = uniqueId;
             this.tags = Arrays.asList(tags);
             this.label = label;
@@ -117,20 +117,44 @@
             }
             
             public String getMp3() {
-            return uniqueId + ".mp3";
+            return "</xsl:text>
+        <xsl:value-of select="experiment/@staticFilesUrl" />
+        <xsl:text>" + uniqueId + ".mp3";
             }
 
             public String getImage() {
-            return uniqueId + ".jpg";
+            return "</xsl:text>
+        <xsl:value-of select="experiment/@staticFilesUrl" />
+        <xsl:text>" + uniqueId + ".jpg";
             }
-            
+
             public String getMp4() {
-            return uniqueId + ".mp4";
-            }
-            public String getOgg() {
-            return uniqueId + ".ogg";
+            return "</xsl:text>
+        <xsl:value-of select="experiment/@staticFilesUrl" />
+        <xsl:text>" + uniqueId + ".mp4";
             }
             
+            public String getOgg() {
+            return "</xsl:text>
+        <xsl:value-of select="experiment/@staticFilesUrl" />
+        <xsl:text>" + uniqueId + ".ogg";
+            }
+            
+            public boolean isMp3() {
+            return mp3;
+            }
+
+            public boolean isMp4() {
+            return mp4;
+            }
+
+            public boolean isOgg() {
+            return ogg;
+            }
+
+            public boolean isImage() {
+            return image;
+            }
             }  
         </xsl:text>
     </xsl:template>
