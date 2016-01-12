@@ -69,22 +69,22 @@ public class SdCardStimulus implements Stimulus {
 
     @Override
     public String getMp3() {
-        return stimulusPath;
+        return mp3 ? stimulusPath : null;
     }
 
     @Override
     public String getImage() {
-        return stimulusPath;
+        return image ? stimulusPath : null;
     }
 
     @Override
     public String getMp4() {
-        return stimulusPath;
+        return mp4 ? stimulusPath : null;
     }
 
     @Override
     public String getOgg() {
-        return stimulusPath;
+        return ogg ? stimulusPath : null;
     }
 
     @Override
