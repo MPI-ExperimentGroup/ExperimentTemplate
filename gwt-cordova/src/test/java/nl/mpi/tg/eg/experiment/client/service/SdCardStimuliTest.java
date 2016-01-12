@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experiment.client.service;
 import java.util.ArrayList;
 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 /**
@@ -34,59 +35,63 @@ public class SdCardStimuliTest {
     @Test
     public void testInsertStimulus() {
         System.out.println("insertStimulus");
-        String[] testData = new String[]{"/MPI_STIMULI/bodies/",
-            "/MPI_STIMULI/bowped/",
-            "/MPI_STIMULI/cutbreak/",
-            "/MPI_STIMULI/grammar/",
-            "/MPI_STIMULI/reciprocal/",
-            "/MPI_STIMULI/bodies/01.png",
-            "/MPI_STIMULI/bodies/02.png",
-            "/MPI_STIMULI/bodies/03.png",
-            "/MPI_STIMULI/bodies/04.png",
-            "/MPI_STIMULI/bodies/05.png",
-            "/MPI_STIMULI/bodies/06.png",
-            "/MPI_STIMULI/bodies/07.png",
-            "/MPI_STIMULI/bodies/08.png",
-            "/MPI_STIMULI/bodies/09.png",
-            "/MPI_STIMULI/bodies/10.png",
-            "/MPI_STIMULI/bodies/11.png",
-            "/MPI_STIMULI/bodies/12.png",
-            "/MPI_STIMULI/bodies/13.png",
-            "/MPI_STIMULI/bodies/14.png",
-            "/MPI_STIMULI/bodies/15.png",
-            "/MPI_STIMULI/grammar/01-boykicksballtogirl.mp4",
-            "/MPI_STIMULI/grammar/02-boykicksballtogirls.mp4",
-            "/MPI_STIMULI/grammar/03-girlkicksballtoboy.mp4",
-            "/MPI_STIMULI/grammar/04-boykicksballstogirl.mp4",
-            "/MPI_STIMULI/grammar/05-ballrolls.mp4",
-            "/MPI_STIMULI/grammar/06-ballrollstodog.mp4",
-            "/MPI_STIMULI/grammar/07-dogrunsaway.mp4",
-            "/MPI_STIMULI/grammar/08-girlchasesball.mp4",
-            "/MPI_STIMULI/grammar/09-girlfalls.mp4",
-            "/MPI_STIMULI/grammar/10-ballrollstotree.mp4",
-            "/MPI_STIMULI/grammar/11-treefallsondog.mp4",
-            "/MPI_STIMULI/grammar/12-girlboylifttree.mp4",
-            "/MPI_STIMULI/grammar/13-girlpushesboy.mp4",
-            "/MPI_STIMULI/grammar/14-boysitsontree.mp4"};
+        String[] testData = new String[]{//"file:///storage/emulated/0/MPI_STIMULI/bodies/",
+            //            "file:///storage/emulated/0/MPI_STIMULI/bowped/",
+            //            "file:///storage/emulated/0/MPI_STIMULI/cutbreak/",
+            //            "file:///storage/emulated/0/MPI_STIMULI/grammar/",
+            //            "file:///storage/emulated/0/MPI_STIMULI/reciprocal/",
+            "file:///storage/emulated/0/MPI_STIMULI/bodies/01.png",
+            "file:///storage/emulated/0/MPI_STIMULI/bodies/01.jpg",
+            "file:///storage/emulated/0/MPI_STIMULI/bodies/02.png",
+            "file:///storage/emulated/0/MPI_STIMULI/bodies/03.png",
+            "file:///storage/emulated/0/MPI_STIMULI/bodies/04.png",
+            "file:///storage/emulated/0/MPI_STIMULI/bodies/05.png",
+            "file:///storage/emulated/0/MPI_STIMULI/bodies/06.png",
+            "file:///storage/emulated/0/MPI_STIMULI/bodies/07.png",
+            "file:///storage/emulated/0/MPI_STIMULI/bodies/08.png",
+            "file:///storage/emulated/0/MPI_STIMULI/bodies/09.png",
+            "file:///storage/emulated/0/MPI_STIMULI/bodies/10.png",
+            "file:///storage/emulated/0/MPI_STIMULI/bodies/11.png",
+            "file:///storage/emulated/0/MPI_STIMULI/bodies/12.png",
+            "file:///storage/emulated/0/MPI_STIMULI/bodies/13.png",
+            "file:///storage/emulated/0/MPI_STIMULI/bodies/14.png",
+            "file:///storage/emulated/0/MPI_STIMULI/bodies/15.png",
+            "file:///storage/emulated/0/MPI_STIMULI/grammar/01-boykicksballtogirl.mp4",
+            "file:///storage/emulated/0/MPI_STIMULI/grammar/02-boykicksballtogirls.mp4",
+            "file:///storage/emulated/0/MPI_STIMULI/grammar/03-girlkicksballtoboy.mp4",
+            "file:///storage/emulated/0/MPI_STIMULI/grammar/04-boykicksballstogirl.mp4",
+            "file:///storage/emulated/0/MPI_STIMULI/grammar/05-ballrolls.mp4",
+            "file:///storage/emulated/0/MPI_STIMULI/grammar/06-ballrollstodog.mp4",
+            "file:///storage/emulated/0/MPI_STIMULI/grammar/07-dogrunsaway.mp4",
+            "file:///storage/emulated/0/MPI_STIMULI/grammar/08-girlchasesball.mp4",
+            "file:///storage/emulated/0/MPI_STIMULI/grammar/09-girlfalls.mp4",
+            "file:///storage/emulated/0/MPI_STIMULI/grammar/10-ballrollstotree.mp4",
+            "file:///storage/emulated/0/MPI_STIMULI/grammar/11-treefallsondog.mp4",
+            "file:///storage/emulated/0/MPI_STIMULI/grammar/12-girlboylifttree.mp4",
+            "file:///storage/emulated/0/MPI_STIMULI/grammar/13-girlpushesboy.mp4",
+            "file:///storage/emulated/0/MPI_STIMULI/grammar/14-boysitsontree.mp4"};
         final ArrayList<Stimulus> stimuliList = new ArrayList<>();
 
         SdCardStimuli instance = new SdCardStimuli(stimuliList, new ArrayList<GeneratedStimulus.Tag>());
         for (String stimulusPath : testData) {
-            instance.insertStimulus(stimulusPath);
+            instance.insertStimulus(stimulusPath, stimulusPath.substring(stimulusPath.lastIndexOf("/") + 1));
         }
         for (Stimulus stimulus : stimuliList) {
-            System.out.println(stimulus.getImage());
-            System.out.println(stimulus.getLabel());
-            System.out.println(stimulus.getMp3());
-            System.out.println(stimulus.getMp4());
-            System.out.println(stimulus.getOgg());
+            System.out.println("image " + stimulus.getImage());
+            System.out.println("label " + stimulus.getLabel());
+            System.out.println("mp3 " + stimulus.getMp3());
+            System.out.println("mp4 " + stimulus.getMp4());
+            System.out.println("ogg " + stimulus.getOgg());
 //            System.out.println(stimulus.getTags());
-            System.out.println(stimulus.getUniqueId());
-            System.out.println(stimulus.isImage());
-            System.out.println(stimulus.isMp3());
-            System.out.println(stimulus.isMp4());
-            System.out.println(stimulus.isOgg());
+            System.out.println("id " + stimulus.getUniqueId());
+            System.out.println("is image " + stimulus.isImage());
+            System.out.println("is mp3 " + stimulus.isMp3());
+            System.out.println("is mp4 " + stimulus.isMp4());
+            System.out.println("is ogg " + stimulus.isOgg());
+            assertEquals(stimulus.isOgg(), stimulus.isOgg() ? stimulus.getOgg().endsWith(".ogg") : false);
+            assertEquals(stimulus.isMp3(), stimulus.isMp3() ? stimulus.getMp3().endsWith(".mp3") : false);
+            assertEquals(stimulus.isMp4(), stimulus.isMp4() ? stimulus.getMp4().endsWith(".mp4") : false);
+            assertEquals(stimulus.isImage(), stimulus.isImage() ? stimulus.getImage().endsWith(".png") || stimulus.getImage().endsWith(".jpg") : false);
         }
-        // todo: verify that the generated stimulus are correct
     }
 }
