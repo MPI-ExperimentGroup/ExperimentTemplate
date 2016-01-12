@@ -125,6 +125,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
         final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST);
         stimulusProvider.getSdCardSubset(selectionTags, maxStimulusCount, randomise, seenStimulusList);
+        this.hasMoreStimulusListener = hasMoreStimulusListener;
+        this.endOfStimulusListener = endOfStimulusListener;
+        showStimulus();
     }
 
     protected void loadStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
