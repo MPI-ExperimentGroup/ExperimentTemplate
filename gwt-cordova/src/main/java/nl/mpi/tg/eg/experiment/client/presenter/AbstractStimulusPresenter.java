@@ -210,7 +210,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         if (currentStimulus.isImage()) {
             String image = currentStimulus.getImage();
             submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusImage", image, duration.elapsedMillis());
-            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString(image), width, postLoadMs, timedStimulusListener);
+            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(image), width, postLoadMs, timedStimulusListener);
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
         } else {
             final String incorrect_stimulus_format = "incorrect stimulus format";
