@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
+import com.google.gwt.user.client.Timer;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.SdCardStimulus;
@@ -59,7 +60,7 @@ public class SdCardStimuli {
     public void insertStimulus(String stimulusPath, String fileName) {
         System.out.println("stimulusPath: " + stimulusPath);
         System.out.println("fileName: " + fileName);
-        final String stimulusId = stimulusPath.substring(MPI_STIMULI.length() + 2, stimulusPath.length() - 4);
+        final String stimulusId = stimulusPath;
         final String suffix = stimulusPath.toLowerCase().substring(stimulusPath.length() - 4, stimulusPath.length());
         System.out.println("suffix: " + suffix);
         final String stimuliLabel = stimulusPath;
@@ -90,11 +91,17 @@ public class SdCardStimuli {
             "d1e263.jpg", "d1e378.mp4", "d1e521.mp3", "d1e679.aiff", "d1e831.jpg", "inge_grijp3.mp3", "sharon_flees4.mp3",
             "d1e263.mp3", "d1e378.ogg", "d1e521.mp4", "d1e679.jpg", "d1e831.mp3", "inge_grijp3.ogg", "sharon_flees4.ogg",
             "d1e263.mp4", "d1e383.aiff", "d1e521.ogg", "d1e679.mp3", "d1e831.mp4", "inge_grijp4.mp3", "sharon_flees5.mp3",
-            "d1e263.ogg", "d1e383.jpg", "d1e526.aiff", "d1e679.mp4", "d1e831.ogg", "inge_grijp4.ogg"};
+          "d1e263.ogg", "d1e383.jpg", "d1e526.aiff", "d1e679.mp4", "d1e831.ogg", "inge_grijp4.ogg"};
         for (String item : testStiuli) {
             insertStimulus("static/" + item, item);
         }
         insertStimulus("file:///storage/emulated/0/MPI_STIMULI/bowped/10.jpg", "10.jpg");
+        Timer timer = new Timer() {
+            public void run() {
+                loadingCompleteAction();
+            }
+        };
+        timer.schedule(100);
     }
 
     protected native void scanSdCard(String stimuliDirectory, String cleanedTag) /*-{
