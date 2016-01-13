@@ -18,7 +18,7 @@
 package nl.mpi.tg.eg.experiment.client.service;
 
 import java.util.List;
-import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
+import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.SdCardStimulus;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
 
@@ -30,23 +30,25 @@ public class SdCardStimuli {
 
     static final String MPI_STIMULI = "MPI_STIMULI";
     private final List<Stimulus> stimulusArray;
-    private final List<GeneratedStimulus.Tag> tagArray;
+    private final TimedStimulusListener simulusLoadedListener;
+    private final TimedStimulusListener simulusErrorListener;
 
-    public SdCardStimuli(List<Stimulus> stimulusArray, List<GeneratedStimulus.Tag> tagArray) {
+    public SdCardStimuli(List<Stimulus> stimulusArray, TimedStimulusListener simulusLoadedListener, TimedStimulusListener simulusErrorListener) {
         this.stimulusArray = stimulusArray;
-        this.tagArray = tagArray;
+        this.simulusLoadedListener = simulusLoadedListener;
+        this.simulusErrorListener = simulusErrorListener;
     }
 
     public final void fillStimulusList() {
 //        nonScan();
-        for (GeneratedStimulus.Tag currentTag : tagArray) {
-            scanSdCard(MPI_STIMULI, currentTag.name().replaceFirst("^tag_", ""));
-        }
-//        // todo: remove these entries
+//        for (GeneratedStimulus.Tag currentTag : tagArray) {
+//            scanSdCard(MPI_STIMULI, currentTag.name().replaceFirst("^tag_", ""));
+//        }
+        // todo: remove these entries
 //        scanSdCard(MPI_STIMULI, "bodies");
 //        scanSdCard(MPI_STIMULI, "grammar");
 //        scanSdCard(MPI_STIMULI, "reciprocal");
-//        scanSdCard(MPI_STIMULI, "bowped");
+        scanSdCard(MPI_STIMULI, "bowped");
 //        scanSdCard(MPI_STIMULI, "cutbreak");
     }
 
@@ -58,7 +60,7 @@ public class SdCardStimuli {
         System.out.println("stimulusPath: " + stimulusPath);
         System.out.println("fileName: " + fileName);
         final String stimulusId = stimulusPath.substring(MPI_STIMULI.length() + 2, stimulusPath.length() - 4);
-        final String suffix = fileName.toLowerCase().substring(fileName.length() - 4, fileName.length());
+        final String suffix = stimulusPath.toLowerCase().substring(stimulusPath.length() - 4, stimulusPath.length());
         System.out.println("suffix: " + suffix);
         final String stimuliLabel = stimulusPath;
         final String stimuliCode = stimulusPath;
@@ -75,21 +77,27 @@ public class SdCardStimuli {
 
     public void errorAction(String errorCode, String errorMessage) {
         System.out.println("errorAction: " + errorCode + " " + errorMessage);
+        simulusErrorListener.postLoadTimerFired();
+    }
+
+    public void loadingCompleteAction() {
+        simulusLoadedListener.postLoadTimerFired();
     }
 
     private void nonScan() {
-        String[] testStiuli = new String[]{"d1e259.ogg", "d1e378.jpg", "d1e521.aiff", "d1e674.mp4", "d1e83.jpg", "inge_grijp2.mp3", "sharon_flees3.mp3\n"
-            + "d1e263.aiff", "d1e378.mp3", "d1e521.jpg", "d1e674.ogg", "d1e831.aiff", "inge_grijp2.ogg", "sharon_flees3.ogg\n"
-            + "d1e263.jpg", "d1e378.mp4", "d1e521.mp3", "d1e679.aiff", "d1e831.jpg", "inge_grijp3.mp3", "sharon_flees4.mp3\n"
-            + "d1e263.mp3", "d1e378.ogg", "d1e521.mp4", "d1e679.jpg", "d1e831.mp3", "inge_grijp3.ogg", "sharon_flees4.ogg\n"
-            + "d1e263.mp4", "d1e383.aiff", "d1e521.ogg", "d1e679.mp3", "d1e831.mp4", "inge_grijp4.mp3", "sharon_flees5.mp3\n"
-            + "d1e263.ogg", "d1e383.jpg", "d1e526.aiff", "d1e679.mp4", "d1e831.ogg", "inge_grijp4.ogg"};
+        String[] testStiuli = new String[]{"d1e259.ogg", "d1e378.jpg", "d1e521.aiff", "d1e674.mp4", "d1e83.jpg", "inge_grijp2.mp3", "sharon_flees3.mp3",
+            "d1e263.aiff", "d1e378.mp3", "d1e521.jpg", "d1e674.ogg", "d1e831.aiff", "inge_grijp2.ogg", "sharon_flees3.ogg",
+            "d1e263.jpg", "d1e378.mp4", "d1e521.mp3", "d1e679.aiff", "d1e831.jpg", "inge_grijp3.mp3", "sharon_flees4.mp3",
+            "d1e263.mp3", "d1e378.ogg", "d1e521.mp4", "d1e679.jpg", "d1e831.mp3", "inge_grijp3.ogg", "sharon_flees4.ogg",
+            "d1e263.mp4", "d1e383.aiff", "d1e521.ogg", "d1e679.mp3", "d1e831.mp4", "inge_grijp4.mp3", "sharon_flees5.mp3",
+            "d1e263.ogg", "d1e383.jpg", "d1e526.aiff", "d1e679.mp4", "d1e831.ogg", "inge_grijp4.ogg"};
         for (String item : testStiuli) {
             insertStimulus("static/" + item, item);
         }
+        insertStimulus("file:///storage/emulated/0/MPI_STIMULI/bowped/10.jpg", "10.jpg");
     }
 
-    protected native boolean scanSdCard(String stimuliDirectory, String cleanedTag) /*-{
+    protected native void scanSdCard(String stimuliDirectory, String cleanedTag) /*-{
         var sdCardStimuli = this;
         
         var potentialDirectories = [
@@ -108,15 +116,25 @@ public class SdCardStimuli {
             var dirReader = entry.createReader();
             dirReader.readEntries(
                 function (entries) {
-                    var currentIndex;
-                    for (currentIndex = 0; currentIndex < entries.length; currentIndex++) {
-                        console.log("currentEntry: " + entries[currentIndex].toURL());
-                        if (entries[currentIndex].isDirectory === true) {
-                            sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::insertDirectory(Ljava/lang/String;Ljava/lang/String;)(entries[currentIndex].toURL(), entries[currentIndex].name);
-                            readFileEntry(entries[currentIndex]);
-                        } else {
-                            sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::insertStimulus(Ljava/lang/String;Ljava/lang/String;)(entries[currentIndex].toURL(), entries[currentIndex].name);
+                    console.log("entries.length: " + entries.length);
+                    if(entries === undefined || entries.length == 0) {
+//                        console.log("readEntries returned nothing");
+//                        sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::loadingCompleteAction()();
+                    } else {
+                        var currentIndex;
+                        for (currentIndex = 0; currentIndex < entries.length; currentIndex++) {
+                            console.log("currentEntry: " + entries[currentIndex].toURL());
+                            console.log("currentEntry: " + entries[currentIndex].name);
+                            if (entries[currentIndex].isDirectory === true) {
+    //                            console.log("isDirectory");                
+    //                            sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::insertDirectory(Ljava/lang/String;Ljava/lang/String;)(entries[currentIndex].toURL(), entries[currentIndex].name);
+    //                            readFileEntry(entries[currentIndex]);
+                            } else {
+                                sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::insertStimulus(Ljava/lang/String;Ljava/lang/String;)(entries[currentIndex].toURL(), entries[currentIndex].name);
+                            }
                         }
+                        console.log("readEntries complete");
+                        sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::loadingCompleteAction()();
                     }
                 },
                 function (error) {
