@@ -72,7 +72,7 @@ public class SdCardStimuliTest {
             "file:///storage/emulated/0/MPI_STIMULI/grammar/14-boysitsontree.mp4"};
         final ArrayList<Stimulus> stimuliList = new ArrayList<>();
 
-        SdCardStimuli instance = new SdCardStimuli(stimuliList, new ArrayList<GeneratedStimulus.Tag>());
+        SdCardStimuli instance = new SdCardStimuli(stimuliList, null, null);
         for (String stimulusPath : testData) {
             instance.insertStimulus(stimulusPath, stimulusPath.substring(stimulusPath.lastIndexOf("/") + 1));
         }
