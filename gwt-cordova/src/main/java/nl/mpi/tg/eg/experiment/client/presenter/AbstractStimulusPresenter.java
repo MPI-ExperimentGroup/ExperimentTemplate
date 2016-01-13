@@ -32,6 +32,7 @@ import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
+import nl.mpi.tg.eg.experiment.client.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
@@ -124,10 +125,19 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     protected void loadSdCardStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
         final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST);
-        stimulusProvider.getSdCardSubset(selectionTags, maxStimulusCount, randomise, seenStimulusList);
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
-        showStimulus();
+        stimulusProvider.getSdCardSubset(new TimedStimulusListener() {
+            @Override
+            public void postLoadTimerFired() {
+                showStimulus();
+            }
+        }, new TimedStimulusListener() {
+            @Override
+            public void postLoadTimerFired() {
+                ((TimedStimulusView) simpleView).addText("Stimulus loading error");
+            }
+        }, maxStimulusCount, randomise, seenStimulusList);
     }
 
     protected void loadStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
@@ -196,10 +206,16 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void stimulusImage(int width, int postLoadMs, TimedStimulusListener timedStimulusListener) {
-        String image = stimulusProvider.getCurrentStimulus().getImage();
-        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusImage", image, duration.elapsedMillis());
-        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString(image), width, postLoadMs, timedStimulusListener);
+        final Stimulus currentStimulus = stimulusProvider.getCurrentStimulus();
+        if (currentStimulus.isImage()) {
+            String image = currentStimulus.getImage();
+            submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusImage", image, duration.elapsedMillis());
+            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString(image), width, postLoadMs, timedStimulusListener);
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
+        } else {
+            final String incorrect_stimulus_format = "incorrect stimulus format";
+            nextStimulusButton(incorrect_stimulus_format, incorrect_stimulus_format + " " + currentStimulus.getLabel(), true);
+        }
     }
 
     protected void stimulusCodeImage(int width, int postLoadMs, String codeFormat, TimedStimulusListener timedStimulusListener) {
