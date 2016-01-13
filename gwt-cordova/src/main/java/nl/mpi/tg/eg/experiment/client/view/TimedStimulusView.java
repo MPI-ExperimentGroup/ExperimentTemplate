@@ -75,7 +75,8 @@ public class TimedStimulusView extends ComplexView {
 
     public void addTimedImage(SafeUri imagePath, int percentWidth, final int postLoadMs, final TimedStimulusListener timedStimulusListener) {
         final Image image = new Image(imagePath);
-        image.setWidth(percentWidth + "%");
+        image.getElement().getStyle().setProperty("maxWidth", percentWidth + "%");
+        image.getElement().getStyle().setProperty("maxHeight", percentWidth + "%");
         image.addLoadHandler(new LoadHandler() {
 
             @Override
