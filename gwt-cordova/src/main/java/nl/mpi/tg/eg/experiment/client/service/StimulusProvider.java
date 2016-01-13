@@ -23,6 +23,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus.Tag;
@@ -72,9 +73,9 @@ public class StimulusProvider {
         getSubset(selectionTags, stimulusArray.size(), randomise, seenList);
     }
 
-    public void getSdCardSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final String seenList) {
+    public void getSdCardSubset(TimedStimulusListener simulusLoadedListener, TimedStimulusListener simulusErrorListener, final int maxStimulusCount, final boolean randomise, final String seenList) {
         List<Stimulus> stimulusListCopy = new ArrayList<>();
-        new SdCardStimuli(stimulusListCopy, selectionTags).fillStimulusList();
+        new SdCardStimuli(stimulusListCopy, simulusLoadedListener, simulusErrorListener).fillStimulusList();
         stimulusSubsetArray.clear();
         while (!stimulusListCopy.isEmpty() && maxStimulusCount > stimulusSubsetArray.size()) {
             final int nextIndex = (randomise) ? new Random().nextInt(stimulusListCopy.size()) : 0;
