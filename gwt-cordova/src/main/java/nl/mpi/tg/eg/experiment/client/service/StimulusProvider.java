@@ -73,18 +73,23 @@ public class StimulusProvider {
         getSubset(selectionTags, stimulusArray.size(), randomise, seenList);
     }
 
-    public void getSdCardSubset(TimedStimulusListener simulusLoadedListener, TimedStimulusListener simulusErrorListener, final int maxStimulusCount, final boolean randomise, final String seenList) {
-        List<Stimulus> stimulusListCopy = new ArrayList<>();
-        new SdCardStimuli(stimulusListCopy, simulusLoadedListener, simulusErrorListener).fillStimulusList();
-        stimulusSubsetArray.clear();
-        while (!stimulusListCopy.isEmpty() && maxStimulusCount > stimulusSubsetArray.size()) {
-            final int nextIndex = (randomise) ? new Random().nextInt(stimulusListCopy.size()) : 0;
-            Stimulus stimulus = stimulusListCopy.remove(nextIndex);
-            if (!seenList.contains(stimulus.getUniqueId())) {
-                stimulusSubsetArray.add(stimulus);
+    public void getSdCardSubset(final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final int maxStimulusCount, final boolean randomise, final String seenList) {
+        final List<Stimulus> stimulusListCopy = new ArrayList<>();
+        new SdCardStimuli(stimulusListCopy, new TimedStimulusListener() {
+            @Override
+            public void postLoadTimerFired() {
+                stimulusSubsetArray.clear();
+                while (!stimulusListCopy.isEmpty() && maxStimulusCount > stimulusSubsetArray.size()) {
+                    final int nextIndex = (randomise) ? new Random().nextInt(stimulusListCopy.size()) : 0;
+                    Stimulus stimulus = stimulusListCopy.remove(nextIndex);
+                    if (!seenList.contains(stimulus.getUniqueId())) {
+                        stimulusSubsetArray.add(stimulus);
+                    }
+                }
+                totalStimuli = stimulusSubsetArray.size();
+                simulusLoadedListener.postLoadTimerFired();
             }
-        }
-        totalStimuli = stimulusSubsetArray.size();
+        }, simulusErrorListener).fillStimulusList();
     }
 
     public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final String seenList) {
