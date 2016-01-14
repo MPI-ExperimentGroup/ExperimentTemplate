@@ -79,7 +79,8 @@ public class Sentveri_exp3 {
 
     private PresenterFeature addStimulusImage(final String imageWidth, String screenName, String imageSet, final String timeToNext) {
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusCodeImage, null);
-        imageFeature.addFeatureAttributes(FeatureAttribute.width, imageWidth);
+        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, imageWidth);
+        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, imageWidth);
         imageFeature.addFeatureAttributes(FeatureAttribute.codeFormat, screenName + "/" + imageSet + "/<code>.jpg");
         imageFeature.addFeatureAttributes(FeatureAttribute.timeToNext, timeToNext);
         return imageFeature;
@@ -126,7 +127,7 @@ public class Sentveri_exp3 {
         checkTagFeature.addFeatureAttributes(FeatureAttribute.timeToNext, "3");
         checkTagFeature.addStimulusTag("question");
         final PresenterFeature withoutTagFeature = new PresenterFeature(FeatureType.withoutTag, null);
-        final PresenterFeature autoNextFeature = new PresenterFeature(FeatureType.autoNextStimulus, null);
+        final PresenterFeature autoNextFeature = new PresenterFeature(FeatureType.nextStimulus, null);
         autoNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nonquestion");
         autoNextFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
         withoutTagFeature.getPresenterFeatureList().add(autoNextFeature);
