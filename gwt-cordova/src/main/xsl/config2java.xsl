@@ -181,7 +181,6 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', new
                 import nl.mpi.tg.eg.experiment.client.view.VideoPanel;
                 import nl.mpi.tg.eg.experiment.client.view.AnnotationTimelinePanel;
                 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
-                import nl.mpi.tg.eg.experiment.client.view.AudioRecorderPanel;
                 import nl.mpi.tg.eg.experiment.client.view.MenuView;     
                 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;  
                 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus.Tag;  
@@ -294,7 +293,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:value-of select="@link" />
         <xsl:text>"), </xsl:text>
         <xsl:value-of select="@maxHeight" />
-        <xsl:text>, "</xsl:text>
+        <xsl:text>, </xsl:text>
         <xsl:value-of select="@maxWidth" />
         <xsl:text>, "</xsl:text>
         <xsl:value-of select="@align" />
@@ -526,8 +525,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:value-of select="local-name()" />-->
         <xsl:text>(</xsl:text>
         <xsl:value-of select="if(@timeToNext) then @timeToNext else ''" />
-        <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;') else ''" />
-        <xsl:value-of select="if(@wav) then concat('&quot;', @wav, '&quot;') else ''" />
+        <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;') else ''" />        
+        <xsl:value-of select="if(@wavFormat) then concat(', ', @wavFormat eq 'true') else ''" />
         <xsl:value-of select="if(@maxHeight) then concat('&quot;', @maxHeight, '&quot;') else ''" />
         <xsl:value-of select="if(@maxWidth) then concat('&quot;', @maxWidth, '&quot;') else ''" />
         <xsl:value-of select="if(@eventTag) then concat('&quot;', @eventTag, '&quot;') else ''" />
