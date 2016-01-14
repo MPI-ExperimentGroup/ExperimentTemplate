@@ -75,8 +75,11 @@ public class JenaFieldKit {
         experiment.getPresenterScreen().add(selectUserPresenter);
         experiment.getPresenterScreen().add(editUserPresenter);
         experiment.getPresenterScreen().add(autoMenuPresenter);
+        experiment.getPresenterScreen().add(addDebugScreen(autoMenuPresenter));
         experiment.getPresenterScreen().add(createMetadataScreen(autoMenuPresenter));
-        experiment.getPresenterScreen().add(createStimulusScreen(autoMenuPresenter));
+        experiment.getPresenterScreen().add(createStimulusScreen(autoMenuPresenter, new String[]{"bowped"}));
+        experiment.getPresenterScreen().add(createStimulusScreen(autoMenuPresenter, new String[]{"bowped", "bodies"}));
+        experiment.getPresenterScreen().add(createStimulusScreen(autoMenuPresenter, new String[]{"vanuatu"}));
 //        experiment.getPresenterScreen().add(addAnnotationTimelinePanel(presenterFeatureRepository, autoMenuPresenter));
 //        experiment.getPresenterScreen().add(addVideosMenu(presenterFeatureRepository, autoMenuPresenter));
 //        experiment.getPresenterScreen().add(addTargetScreen(presenterFeatureRepository, autoMenuPresenter));
@@ -92,6 +95,14 @@ public class JenaFieldKit {
         final PresenterScreen presenterScreen = new PresenterScreen("Auto Menu", "Menu", null, "AutoMenu", null, PresenterType.menu);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMenuItems, null));
         presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
+        return presenterScreen;
+    }
+
+    private PresenterScreen addDebugScreen(PresenterScreen autoMenuPresenter) {
+        final PresenterScreen presenterScreen = new PresenterScreen("Debug Screen", "Debug Screen", autoMenuPresenter, "DebugScreen", null, PresenterType.debug);
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.versionData, null));
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.eraseLocalStorageButton, null));
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.localStorageData, null));
         return presenterScreen;
     }
 
@@ -146,13 +157,13 @@ public class JenaFieldKit {
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
 //        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "end of stimuli"));
         final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
-        autoNextPresenter.addFeatureAttributes(FeatureAttribute.target, "StimulusScreen");
+        autoNextPresenter.addFeatureAttributes(FeatureAttribute.target, "bowpedScreen");
         endOfStimulusFeature.getPresenterFeatureList().add(autoNextPresenter);
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
         return presenterScreen;
     }
 
-    private PresenterScreen createStimulusScreen(PresenterScreen autoMenuPresenter) {
+    private PresenterScreen createStimulusScreen(PresenterScreen autoMenuPresenter, final String stimulusTagArray[]) {
         //
 //The stimuli consist of images on the SD card, each stimuli has various stages (each step below creates a time marker to the audio recording in the CSV):
 //see image, [large image]
@@ -162,23 +173,30 @@ public class JenaFieldKit {
 //kids repeat personal experience with... in Bislama [smaller image]
 //custom story relating to ... (lanwis)
 //kids repeat ... in Bislama [smaller image]
-        final String screenName = "Stimulus";
+        String screenName = "";
+        for (final String stimulusTag : stimulusTagArray) {
+            screenName += stimulusTag;
+        }
         final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, autoMenuPresenter, screenName + "Screen", null, PresenterType.stimulus);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
+        final String maxStimuli = "15";
+        presenterFeatureList.add(new PresenterFeature(FeatureType.text, "This screen will show " + maxStimuli + " stimuli in random order from the directories shown in the page title"));
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadSdCardStimulus, null);
-        loadStimuliFeature.addStimulusTag("image");
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, "15");
+        for (final String stimulusTag : stimulusTagArray) {
+            loadStimuliFeature.addStimulusTag(stimulusTag);
+        }
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, maxStimuli);
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, screenName);
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "true");
         presenterFeatureList.add(loadStimuliFeature);
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
 
-        final PresenterFeature lanwisImage = addImageFeature(hasMoreStimulusFeature, "90", "speak the name in the language (lanwis)", "done");
-        final PresenterFeature bislamaImage = addImageFeature(lanwisImage, "70", "It''s your turn! What did they say? Translate it into Bislama if you can.", "done");
-        final PresenterFeature lanwisExperience = addImageFeature(bislamaImage, "90", "ask for personal experience with... in language (lanwis)", "done");
-        final PresenterFeature bislamaExperience = addImageFeature(lanwisExperience, "70", "It''s your turn! What experience did they have? Translate it into Bislama if you can.", "done");
-        final PresenterFeature lanwisStory = addImageFeature(bislamaExperience, "90", "custom story relating to ... (lanwis)", "done");
-        final PresenterFeature bislamaStory = addImageFeature(lanwisStory, "70", "It''s your turn! What story did they tell? Translate it into Bislama if you can.", "done");
+        final PresenterFeature lanwisImage = addImageFeature(hasMoreStimulusFeature, "50", "90", "speak the name in the language (lanwis)", "done");
+        final PresenterFeature bislamaImage = addImageFeature(lanwisImage, "40", "70", "It''s your turn! What did they say? Translate it into Bislama if you can.", "done");
+        final PresenterFeature lanwisExperience = addImageFeature(bislamaImage, "50", "90", "ask for personal experience with... in language (lanwis)", "done");
+        final PresenterFeature bislamaExperience = addImageFeature(lanwisExperience, "40", "70", "It''s your turn! What experience did they have? Translate it into Bislama if you can.", "done");
+        final PresenterFeature lanwisStory = addImageFeature(bislamaExperience, "50", "90", "custom story relating to ... (lanwis)", "done");
+        final PresenterFeature bislamaStory = addImageFeature(lanwisStory, "40", "70", "It''s your turn! What story did they tell? Translate it into Bislama if you can.", "done");
         final PresenterFeature autoNextFeature = new PresenterFeature(FeatureType.nextStimulus, null);
         autoNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextImage");
         autoNextFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
@@ -193,11 +211,12 @@ public class JenaFieldKit {
         return presenterScreen;
     }
 
-    private PresenterFeature addImageFeature(PresenterFeature parentFeature, String imageSize, String label, String button) {
+    private PresenterFeature addImageFeature(PresenterFeature parentFeature, String maxHeight, String maxWidth, String label, String button) {
         parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
         parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
-        imageFeature.addFeatureAttributes(FeatureAttribute.width, imageSize);
+        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, maxHeight);
+        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, maxWidth);
         imageFeature.addFeatureAttributes(FeatureAttribute.timeToNext, "0");
         parentFeature.getPresenterFeatureList().add(imageFeature);
         parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, label));
@@ -221,6 +240,9 @@ public class JenaFieldKit {
             stimuliList.add(stimulus);
         }
         stimuliList.add(new Stimulus(null, null, null, "stimulus", "stimulus", "stimulus", 0, new HashSet<>(Arrays.asList(new String[]{"stimulus"}))));
+        stimuliList.add(new Stimulus(null, null, null, "bowped", "bowped", "bowped", 0, new HashSet<>(Arrays.asList(new String[]{"bowped"}))));
+        stimuliList.add(new Stimulus(null, null, null, "bodies", "bodies", "bodies", 0, new HashSet<>(Arrays.asList(new String[]{"bodies"}))));
+        stimuliList.add(new Stimulus(null, null, null, "vanuatu", "vanuatu", "vanuatu", 0, new HashSet<>(Arrays.asList(new String[]{"vanuatu"}))));
         return stimuliList;
     }
 }
