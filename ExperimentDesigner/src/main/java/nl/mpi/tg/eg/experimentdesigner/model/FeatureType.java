@@ -30,7 +30,7 @@ public enum FeatureType {
 
     htmlText(false, true, null),
     text(false, true, null),
-    image(false, false, new FeatureAttribute[]{maxHeight, maxWidth, src}),
+    image(false, false, new FeatureAttribute[]{maxHeight, maxWidth, src, link}),
     menuItem(false, true, new FeatureAttribute[]{target}),
     popupMessage(false, true, null),
     loadSubsetStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli, condition0Tag, condition1Tag, condition2Tag}, true, Contitionals.none),
@@ -91,7 +91,7 @@ public enum FeatureType {
     stimulusAudio(true, false, new FeatureAttribute[]{timeToNext, mp3,}),
     VideoPanel(false, false, new FeatureAttribute[]{mp4, ogg, webm, maxHeight, maxWidth, poster}),
     AnnotationTimelinePanel(true, false, new FeatureAttribute[]{mp4, ogg, webm, poster, eventTag, columnCount, maxStimuli}, true, Contitionals.none),
-    startAudioRecorder(false, false, new FeatureAttribute[]{wav, eventTag}),
+    startAudioRecorder(false, false, new FeatureAttribute[]{wavFormat, eventTag}),
     stopAudioRecorder(false, false, null),
     tagAudioRecorder(false, false, new FeatureAttribute[]{eventTag}),
     userInfo(false, false, null),
