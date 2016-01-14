@@ -40,7 +40,8 @@ public class SdCardStimuli {
         this.simulusErrorListener = simulusErrorListener;
     }
 
-    public final void fillStimulusList() {
+    public final void fillStimulusList(final String directoryTag) {
+        scanSdCard(MPI_STIMULI, directoryTag);
 //        nonScan();
 //        for (GeneratedStimulus.Tag currentTag : tagArray) {
 //            scanSdCard(MPI_STIMULI, currentTag.name().replaceFirst("^tag_", ""));
@@ -49,7 +50,6 @@ public class SdCardStimuli {
 //        scanSdCard(MPI_STIMULI, "bodies");
 //        scanSdCard(MPI_STIMULI, "grammar");
 //        scanSdCard(MPI_STIMULI, "reciprocal");
-        scanSdCard(MPI_STIMULI, "bowped");
 //        scanSdCard(MPI_STIMULI, "cutbreak");
     }
 
@@ -91,7 +91,7 @@ public class SdCardStimuli {
             "d1e263.jpg", "d1e378.mp4", "d1e521.mp3", "d1e679.aiff", "d1e831.jpg", "inge_grijp3.mp3", "sharon_flees4.mp3",
             "d1e263.mp3", "d1e378.ogg", "d1e521.mp4", "d1e679.jpg", "d1e831.mp3", "inge_grijp3.ogg", "sharon_flees4.ogg",
             "d1e263.mp4", "d1e383.aiff", "d1e521.ogg", "d1e679.mp3", "d1e831.mp4", "inge_grijp4.mp3", "sharon_flees5.mp3",
-          "d1e263.ogg", "d1e383.jpg", "d1e526.aiff", "d1e679.mp4", "d1e831.ogg", "inge_grijp4.ogg"};
+            "d1e263.ogg", "d1e383.jpg", "d1e526.aiff", "d1e679.mp4", "d1e831.ogg", "inge_grijp4.ogg"};
         for (String item : testStiuli) {
             insertStimulus("static/" + item, item);
         }
@@ -153,7 +153,7 @@ public class SdCardStimuli {
         }, function (error) {
                 console.log("resolveLocalFileSystemURL error: " + error.code);
                 console.log("resolveLocalFileSystemURL error: " + error.message);
-                sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::errorAction(Ljava/lang/String;Ljava/lang/String;)(error.code, error.message);
+//                sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::errorAction(Ljava/lang/String;Ljava/lang/String;)(error.code, error.message);
             });
         }
      }-*/;
