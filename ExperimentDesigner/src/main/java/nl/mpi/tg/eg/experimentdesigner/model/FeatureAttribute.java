@@ -46,7 +46,7 @@ public enum FeatureAttribute {
     mp4,
     ogg,
     webm,
-    wav,
+    wavFormat,
     poster,
     columnCount,
     kintypestring,
