@@ -72,7 +72,7 @@
             public ApplicationController(RootLayoutPanel widgetTag) {
             super(widgetTag);
         </xsl:text>
-        <!--does this even work?-->
+        <!--todo: does this even work?-->
         <xsl:value-of select="if(experiment/preventWindowClose) then concat('preventWindowClose(&quot;', experiment/preventWindowClose, '&quot;);') else ''" />
         <xsl:text>        
             }
@@ -293,7 +293,9 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:text>"), UriUtils.fromString("</xsl:text>
         <xsl:value-of select="@link" />
         <xsl:text>"), </xsl:text>
-        <xsl:value-of select="@width" />
+        <xsl:value-of select="@maxHeight" />
+        <xsl:text>, "</xsl:text>
+        <xsl:value-of select="@maxWidth" />
         <xsl:text>, "</xsl:text>
         <xsl:value-of select="@align" />
         <xsl:text>");
@@ -476,7 +478,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(</xsl:text>
-        <xsl:value-of select="if(@width) then concat(@width, ', ') else ''" />
+        <xsl:value-of select="if(@maxHeight) then concat(@maxHeight, ', ') else ''" />
+        <xsl:value-of select="if(@maxWidth) then concat(@maxWidth, ', ') else ''" />
         <xsl:value-of select="if(@timeToNext) then concat(@timeToNext, ', ') else ''" />
         <xsl:value-of select="if(@codeFormat) then concat('&quot;', @codeFormat, '&quot;, ') else ''" />
         <xsl:text>new TimedStimulusListener() {
@@ -525,7 +528,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:value-of select="if(@timeToNext) then @timeToNext else ''" />
         <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;') else ''" />
         <xsl:value-of select="if(@wav) then concat('&quot;', @wav, '&quot;') else ''" />
-        <xsl:value-of select="if(@width) then concat('&quot;', @width, '&quot;') else ''" />
+        <xsl:value-of select="if(@maxHeight) then concat('&quot;', @maxHeight, '&quot;') else ''" />
+        <xsl:value-of select="if(@maxWidth) then concat('&quot;', @maxWidth, '&quot;') else ''" />
         <xsl:value-of select="if(@eventTag) then concat('&quot;', @eventTag, '&quot;') else ''" />
         <xsl:if test="@poster|@mp4|@ogg|@webm">
             <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ',&quot;&quot;'" />
