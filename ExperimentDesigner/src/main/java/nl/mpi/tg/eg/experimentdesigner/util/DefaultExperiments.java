@@ -277,7 +277,8 @@ public class DefaultExperiments {
                     case maxStimuli:
                         presenterFeature.addFeatureAttributes(attribute, "3");
                         break;
-                    case width:
+                    case maxHeight:
+                    case maxWidth:
                     case timeToNext:
                         presenterFeature.addFeatureAttributes(attribute, "60");
                         break;
@@ -335,9 +336,9 @@ public class DefaultExperiments {
         final PresenterScreen presenterScreen = new PresenterScreen("Video List", "Videos", backPresenter, "VideosPage", null, PresenterType.text);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "This is a simple video codec testing application."));
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-        final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.AudioRecorderPanel, null);
-        presenterFeature.addFeatureAttributes(FeatureType.AudioRecorderPanel.getFeatureAttributes()[0], "some path");
-        presenterScreen.getPresenterFeatureList().add(presenterFeature);
+//        final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.AudioRecorderPanel, null);
+//        presenterFeature.addFeatureAttributes(FeatureType.AudioRecorderPanel.getFeatureAttributes()[0], "some path");
+//        presenterScreen.getPresenterFeatureList().add(presenterFeature);
 
         final PresenterFeature optionButton1 = new PresenterFeature(FeatureType.targetButton, "Video Test Page (aspen)");
         optionButton1.addFeatureAttributes(FeatureAttribute.target, "VideoTestPageAspen");
