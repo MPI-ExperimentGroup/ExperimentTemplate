@@ -36,6 +36,12 @@ import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.condition0Tag;
 import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.condition1Tag;
 import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.condition2Tag;
+import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.maxHeight;
+import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.maxWidth;
+import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.mp4;
+import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.ogg;
+import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.poster;
+import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.webm;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
 import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
@@ -72,7 +78,7 @@ public class DefaultExperiments {
         Experiment experiment = getDefault();
         experiment.setAppNameDisplay("Dobes Annotator");
         experiment.setAppNameInternal("DobesAnnotator");
-        experiment.setDataSubmitUrl("http://ems12.mpi.nl/dobes-frinex-admin-0.1.38-testing/");
+        experiment.setDataSubmitUrl("http://ems13.mpi.nl/dobesannotator-admin/");
         final Metadata metadata = new Metadata("workerId", "Reporter name *", ".'{'3,'}'", "Please enter at least three letters.", true, "This test can only be done once per worker.");
         final Metadata metadata1 = new Metadata("errordevice", "Device model", ".'{'2,'}'", "Please enter the device model", false, null);
         final Metadata metadata2 = new Metadata("errordescription", "Please describe the error", ".'{'2,'}'", "Please enter a short description of the issue", false, null);
@@ -97,7 +103,7 @@ public class DefaultExperiments {
         Experiment experiment = getDefault();
         experiment.setAppNameDisplay("Sentveri_exp3");
         experiment.setAppNameInternal("Sentveri_exp3");
-        experiment.setDataSubmitUrl("http://ems12.mpi.nl/Sentveri_exp3-frinex-admin-0.1.38-testing/");
+        experiment.setDataSubmitUrl("http://ems13.mpi.nl/Sentveri_exp3-admin/");
         final Metadata metadata = new Metadata("workerId", "Reporter name *", ".'{'3,'}'", "Please enter at least three letters.", true, "This test can only be done once per worker.");
         final Metadata metadata1 = new Metadata("errordevice", "Device model", ".'{'2,'}'", "Please enter the device model", false, null);
         final Metadata metadata2 = new Metadata("errordescription", "Please describe the error", ".'{'2,'}'", "Please enter a short description of the issue", false, null);
@@ -136,7 +142,7 @@ public class DefaultExperiments {
         final Experiment experiment = new Experiment();
         experiment.setAppNameDisplay("All Options");
         experiment.setAppNameInternal("AllOptions");
-        experiment.setDataSubmitUrl("http://ems12.mpi.nl/alloptions-frinex-admin-0.1.38-testing/");
+        experiment.setDataSubmitUrl("http://ems13.mpi.nl/alloptions-admin/");
         experiment.setStaticFilesUrl("static/");
         experiment.setPrimaryColour0("#413B52");
         experiment.setPrimaryColour1("#656469");
@@ -392,12 +398,16 @@ public class DefaultExperiments {
     }
 
     private PresenterScreen addVideoAspen(PresenterFeatureRepository presenterFeatureRepository, PresenterScreen backPresenter) {
-        final PresenterScreen presenterScreen = new PresenterScreen("Video Test", "Video Test Page (aspen)", backPresenter, "VideoTestPageAspen", null, PresenterType.text);
+        final PresenterScreen presenterScreen = new PresenterScreen("Video Test", "Video Test Page (aspen)", backPresenter, "VideoTestPageAspen", null, PresenterType.timeline);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4"));
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
         final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.VideoPanel, null);
-        presenterFeature.addFeatureAttributes(FeatureType.VideoPanel.getFeatureAttributes()[3], "70%");
-        presenterFeature.addFeatureAttributes(FeatureType.VideoPanel.getFeatureAttributes()[0], "http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4");
+        presenterFeature.addFeatureAttributes(mp4, "http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4");
+        presenterFeature.addFeatureAttributes(maxHeight, "70");
+        presenterFeature.addFeatureAttributes(maxWidth, "70");
+        presenterFeature.addFeatureAttributes(poster, "");
+        presenterFeature.addFeatureAttributes(ogg, "");
+        presenterFeature.addFeatureAttributes(webm, "");
         presenterScreen.getPresenterFeatureList().add(presenterFeature);
 
         final PresenterFeature optionButton1 = new PresenterFeature(FeatureType.targetButton, "Video Works");
