@@ -209,7 +209,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         stimulusProvider.pushCurrentStimulusToEnd();
     }
 
-    protected void stimulusImage(int maxHeight, int maxWidth, int postLoadMs, TimedStimulusListener timedStimulusListener) {
+    protected void stimulusImage(int maxHeight, int maxWidth, int postLoadMs, TimedStimulusListener timedStimulusListener, final int hotKey) {
         final Stimulus currentStimulus = stimulusProvider.getCurrentStimulus();
         if (currentStimulus.isImage()) {
             String image = currentStimulus.getImage();
@@ -218,7 +218,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
         } else {
             final String incorrect_stimulus_format = "incorrect stimulus format";
-            nextStimulusButton(incorrect_stimulus_format, incorrect_stimulus_format + " " + currentStimulus.getLabel(), true);
+            nextStimulusButton(incorrect_stimulus_format, incorrect_stimulus_format + " " + currentStimulus.getLabel(), true, hotKey);
         }
     }
 
@@ -378,7 +378,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         showStimulus();
     }
 
-    protected void nextStimulusButton(final String eventTag, final String buttonLabel, final boolean norepeat) {
+    protected void nextStimulusButton(final String eventTag, final String buttonLabel, final boolean norepeat, final int hotKey) {
 //        if (stimulusProvider.hasNextStimulus()) {
         PresenterEventListner eventListner = new PresenterEventListner() {
 
@@ -392,14 +392,14 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 nextStimulus(eventTag, norepeat);
             }
         };
-        ((TimedStimulusView) simpleView).addOptionButton(eventListner);
+        ((TimedStimulusView) simpleView).addOptionButton(eventListner, hotKey);
 //        }
     }
 
-    protected void endOfStimulusButton(final PresenterEventListner appEventListner, final String eventTag) {
+    protected void endOfStimulusButton(final PresenterEventListner appEventListner, final String eventTag, final int hotKey) {
         logTimeStamp(eventTag);
         if (!stimulusProvider.hasNextStimulus()) {
-            ((TimedStimulusView) simpleView).addOptionButton(appEventListner);
+            ((TimedStimulusView) simpleView).addOptionButton(appEventListner, hotKey);
         }
     }
 
