@@ -42,6 +42,7 @@ public enum FeatureAttribute {
     sendData,
     randomise,
     norepeat,
+    hotKey,
     mp3,
     mp4,
     ogg,
