@@ -95,7 +95,7 @@ public class Experiment {
     }
 
     public void setAppNameInternal(String appNameInternal) {
-        this.appNameInternal = appNameInternal;
+        this.appNameInternal = appNameInternal.toLowerCase();
     }
 
     @XmlAttribute
@@ -104,7 +104,7 @@ public class Experiment {
     }
 
     public void setDataSubmitUrl(String dataSubmitUrl) {
-        this.dataSubmitUrl = dataSubmitUrl;
+        this.dataSubmitUrl = dataSubmitUrl.toLowerCase();
     }
 
     @XmlAttribute
