@@ -92,7 +92,7 @@ public class AnnotationTimelineView extends TimedStimulusView {
                 annotationData.setInTime(videoPanel.getCurrentTime());
                 annotationTimelinePanel.updateAnnotation(annotationData);
             }
-        }));
+        },-1));
         editingPanel.add(getOptionButton(new PresenterEventListner() {
 
             @Override
@@ -105,7 +105,7 @@ public class AnnotationTimelineView extends TimedStimulusView {
                 annotationTimelinePanel.deleteAnnotation(annotationData);
                 flexTable.remove(verticalPanel);
             }
-        }));
+        },-1));
         editingPanel.add(getOptionButton(new PresenterEventListner() {
 
             @Override
@@ -118,7 +118,7 @@ public class AnnotationTimelineView extends TimedStimulusView {
                 annotationData.setOutTime(videoPanel.getCurrentTime());
                 annotationTimelinePanel.updateAnnotation(annotationData);
             }
-        }));
+        },-1));
         final Image image = new Image(UriUtils.fromString(annotationData.getStimulus().getImage()));
         image.setHeight("65px");
         editingPanel.add(image);
