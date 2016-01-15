@@ -65,7 +65,7 @@ public class JenaFieldKit {
         Experiment experiment = getDefault();
         experiment.setAppNameDisplay("Jena Recorder");
         experiment.setAppNameInternal("JenaRecorder");
-        experiment.setDataSubmitUrl("http://ems13.mpi.nl/jena-frinex-admin/");
+        experiment.setDataSubmitUrl("http://ems13.mpi.nl/jenarecorder-admin/");
         final Metadata metadata = new Metadata("workerId", "Reporter name *", ".'{'3,'}'", "Please enter at least three letters.", true, "This test can only be done once per worker.");
         experiment.getMetadata().add(metadata);
         metadataRepository.save(experiment.getMetadata());
@@ -180,7 +180,10 @@ public class JenaFieldKit {
         final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, autoMenuPresenter, screenName + "Screen", null, PresenterType.stimulus);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
         final String maxStimuli = "15";
-        presenterFeatureList.add(new PresenterFeature(FeatureType.text, "This screen will show " + maxStimuli + " stimuli in random order from the directories shown in the page title"));
+        presenterFeatureList.add(new PresenterFeature(FeatureType.text, "This screen will show " + maxStimuli + " stimuli in random order from the directories:"));
+        for (final String stimulusTag : stimulusTagArray) {
+            presenterFeatureList.add(new PresenterFeature(FeatureType.text, "MPI_STIMULI/" + stimulusTag));
+        }
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadSdCardStimulus, null);
         for (final String stimulusTag : stimulusTagArray) {
             loadStimuliFeature.addStimulusTag(stimulusTag);
