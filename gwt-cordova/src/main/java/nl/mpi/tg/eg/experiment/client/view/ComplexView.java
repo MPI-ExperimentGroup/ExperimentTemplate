@@ -18,6 +18,9 @@
 package nl.mpi.tg.eg.experiment.client.view;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.KeyDownEvent;
+import com.google.gwt.event.dom.client.KeyDownHandler;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.user.client.Window;
@@ -29,8 +32,10 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.PopupPanel;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import java.util.ArrayList;
 import nl.mpi.tg.eg.experiment.client.Messages;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
@@ -43,6 +48,7 @@ public class ComplexView extends SimpleView {
 
     protected final Messages messages = GWT.create(Messages.class);
     final protected VerticalPanel outerPanel;
+    final ArrayList<HandlerRegistration> domHandlerArray = new ArrayList<>();
 
     public ComplexView() {
         outerPanel = new VerticalPanel();
@@ -77,9 +83,10 @@ public class ComplexView extends SimpleView {
         outerPanel.add(isWidget);
     }
 
-    public void addImage(SafeUri imagePath, final SafeUri linkUrl, int percentWidth, String align) {
+    public void addImage(SafeUri imagePath, final SafeUri linkUrl, int maxHeight, int maxWidth, String align) {
         final Image image = new Image(imagePath);
-        image.setWidth(percentWidth + "%");
+        image.getElement().getStyle().setProperty("maxWidth", maxWidth + "%");
+        image.getElement().getStyle().setProperty("maxHeight", maxHeight + "%");
         final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
 
             @Override
@@ -117,13 +124,13 @@ public class ComplexView extends SimpleView {
         anchor.addStyleName("pageLink");
     }
 
-    public Button addOptionButton(final PresenterEventListner presenterListerner) {
-        Button nextButton = getOptionButton(presenterListerner);
+    public Button addOptionButton(final PresenterEventListner presenterListerner, final int hotKey) {
+        Button nextButton = getOptionButton(presenterListerner, hotKey);
         outerPanel.add(nextButton);
         return nextButton;
     }
 
-    public Button getOptionButton(final PresenterEventListner presenterListerner) {
+    public Button getOptionButton(final PresenterEventListner presenterListerner, final int hotKey) {
         final Button nextButton = new Button(presenterListerner.getLabel());
         nextButton.addStyleName("optionButton");
         nextButton.setEnabled(true);
@@ -141,7 +148,26 @@ public class ComplexView extends SimpleView {
         nextButton.addTouchStartHandler(singleShotEventListner);
         nextButton.addTouchMoveHandler(singleShotEventListner);
         nextButton.addTouchEndHandler(singleShotEventListner);
+        if (hotKey > 0) {
+            RootPanel root = RootPanel.get();
+            domHandlerArray.add(root.addDomHandler(new KeyDownHandler() {
+                @Override
+                public void onKeyDown(KeyDownEvent event) {
+                    if (event.getNativeKeyCode() == hotKey) {
+                        event.stopPropagation();
+                        clearDomHandlers();
+                        singleShotEventListner.eventFired();
+                    }
+                }
+            }, KeyDownEvent.getType()));
+        }
         return nextButton;
+    }
+
+    private void clearDomHandlers() {
+        for (HandlerRegistration domHandler : domHandlerArray) {
+            domHandler.removeHandler();
+        }
     }
 
     public void addImageButton(final PresenterEventListner presenterListerner, final SafeUri imagePath) {
