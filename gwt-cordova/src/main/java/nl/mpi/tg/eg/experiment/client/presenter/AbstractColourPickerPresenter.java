@@ -39,7 +39,7 @@ import nl.ru.languageininteraction.language.client.model.StimulusResponseGroup;
  * @since Oct 10, 2014 9:52:25 AM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public class ColourPickerPresenter implements Presenter {
+public class AbstractColourPickerPresenter implements Presenter {
 
     private final Messages messages = GWT.create(Messages.class);
     private final RootLayoutPanel widgetTag;
@@ -55,7 +55,7 @@ public class ColourPickerPresenter implements Presenter {
     private int shownSetCount;
     private int shownCount = 0;
 
-    public ColourPickerPresenter(RootLayoutPanel widgetTag, UserResults userResults, int repeatCount, final List<GeneratedStimulus.Tag> selectionTags) throws CanvasError {
+    public AbstractColourPickerPresenter(RootLayoutPanel widgetTag, UserResults userResults, int repeatCount, final List<GeneratedStimulus.Tag> selectionTags) throws CanvasError {
         this.widgetTag = widgetTag;
 //        this.stimuliGroup = userResults.getPendingStimuliGroup();
 //        userResults.setPendingStimuliGroup(null);
