@@ -26,5 +26,4 @@ public class StimulusError extends Exception {
     public StimulusError(String message) {
         super(message);
     }
-
 }
