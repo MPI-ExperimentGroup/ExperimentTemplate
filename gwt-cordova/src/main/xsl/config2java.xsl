@@ -18,6 +18,7 @@
             import com.google.gwt.user.client.History;
             import com.google.gwt.user.client.ui.RootLayoutPanel;
             import nl.mpi.tg.eg.experiment.client.exception.AudioException;
+            import nl.mpi.tg.eg.experiment.client.exception.CanvasError;
             import nl.mpi.tg.eg.experiment.client.presenter.*;
             import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 
@@ -84,7 +85,7 @@
             presenter.savePresenterState();
             }
         </xsl:text>
-        <xsl:if test="experiment/presenter/@type = 'preload' or experiment/presenter/@type = 'stimulus' or experiment/presenter/@type = 'kindiagram' or experiment/presenter/@type = 'timeline'">
+        <xsl:if test="experiment/presenter/@type = 'colourPicker' or experiment/presenter/@type = 'preload' or experiment/presenter/@type = 'stimulus' or experiment/presenter/@type = 'kindiagram' or experiment/presenter/@type = 'timeline'">
             <xsl:text>try {</xsl:text>
         </xsl:if>
         <xsl:text>
@@ -108,7 +109,7 @@
             <xsl:value-of select="
 if(@type = 'transmission' or @type = 'metadata') then ', submissionService, userResults' else
 if(@type = 'preload') then ', new AudioPlayer(this), submissionService, userResults' else
-if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', new AudioPlayer(this), submissionService, userResults, localStorage' else ''" />
+if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', new AudioPlayer(this), submissionService, userResults, localStorage' else ''" />
             <xsl:text>);
                 presenter.setState(this, </xsl:text>
             <xsl:choose>
@@ -157,6 +158,14 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', new
                 presenter.setState(this, ApplicationState.start, applicationState);
                 }</xsl:text>
         </xsl:if>
+        <xsl:if test="experiment/presenter/@type = 'colourPicker'">
+            <xsl:text>
+                } catch (AudioException|CanvasError error) {
+                logger.warning(error.getMessage());
+                this.presenter = new ErrorPresenter(widgetTag, error.getMessage());
+                presenter.setState(this, ApplicationState.start, applicationState);
+                }</xsl:text>
+        </xsl:if>
         <xsl:text>
             }
             }</xsl:text>
@@ -175,6 +184,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', new
                 import java.util.Arrays;
                 import nl.mpi.tg.eg.experiment.client.Version;
                 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
+                import nl.mpi.tg.eg.experiment.client.exception.CanvasError;
                 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
                 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
                 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
@@ -195,7 +205,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', new
                 public class </xsl:text>
             <xsl:value-of select="@self" />
             <xsl:text>Presenter extends </xsl:text>
-            <xsl:value-of select="if(@type = 'timeline') then 'AbstractTimeline' else if(@type = 'transmission') then 'AbstractDataSubmission' else if(@type = 'menu') then 'AbstractMenu' else if(@type = 'stimulus') then 'AbstractStimulus' else if(@type = 'preload') then 'AbstractPreloadStimulus' else if(@type = 'debug') then 'LocalStorage' else if(@type = 'metadata') then 'AbstractMetadata' else if(@type = 'kindiagram') then 'AbstractKinDiagram' else 'Abstract'" />
+            <xsl:value-of select="if(@type = 'colourPicker') then 'AbstractColourPicker' else if(@type = 'timeline') then 'AbstractTimeline' else if(@type = 'transmission') then 'AbstractDataSubmission' else if(@type = 'menu') then 'AbstractMenu' else if(@type = 'stimulus') then 'AbstractStimulus' else if(@type = 'preload') then 'AbstractPreloadStimulus' else if(@type = 'debug') then 'LocalStorage' else if(@type = 'metadata') then 'AbstractMetadata' else if(@type = 'kindiagram') then 'AbstractKinDiagram' else 'Abstract'" />
             <xsl:text>Presenter implements Presenter {
                 private final ApplicationState selfApplicationState = ApplicationState.</xsl:text>
             <xsl:value-of select="@self" />
@@ -212,9 +222,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', new
             <xsl:value-of select="
 if(@type = 'transmission' or @type = 'metadata') then ', DataSubmissionService submissionService, UserResults userResults' else 
 if(@type = 'preload') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults' else 
-if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage' else ''" />
-            <xsl:text>) {
-            </xsl:text>  
+if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage' else ''" />
+            <xsl:value-of select="if(@type = 'colourPicker') then ') throws CanvasError {' else ') {'"/>
             <xsl:choose>
                 <xsl:when test="@type = 'menu'">
                     <xsl:text>
@@ -236,7 +245,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
                         super(widgetTag, audioPlayer, submissionService, userResults);
                     </xsl:text>                    
                 </xsl:when>
-                <xsl:when test="@type = 'kindiagram' or @type = 'stimulus' or @type = 'timeline'">
+                <xsl:when test="@type = 'kindiagram' or @type = 'stimulus' or @type = 'timeline' or @type = 'colourPicker'">
                     <xsl:text>
                         super(widgetTag, audioPlayer, submissionService, userResults, localStorage);
                     </xsl:text>                    
@@ -381,7 +390,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="saveMetadataButton|localStorageData|allMetadataFields|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|disableStimulusButtons|showStimulus|showStimulusProgress|hideStimulusButtons|showStimulusButtons|generateCompletionCode|sendAllData|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|addPadding|stimulusLabel">
+    <xsl:template match="saveMetadataButton|localStorageData|allMetadataFields|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|disableStimulusButtons|showStimulus|showStimulusProgress|hideStimulusButtons|showStimulusButtons|generateCompletionCode|sendAllData|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|stimulusLabel">
         <xsl:text>    </xsl:text>    
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>            
@@ -421,6 +430,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:value-of select="if(@ogg) then concat(', &quot;', @ogg, '&quot;') else ''" />
         <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />        
         <xsl:value-of select="if(@norepeat) then concat(', ', @norepeat eq 'true') else ''" />
+        <xsl:value-of select="if(@hotKey) then concat(', ', @hotKey) else ''" />
         <xsl:text>);
         </xsl:text>
     </xsl:template>
@@ -526,9 +536,9 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline') then ', Aud
         <xsl:text>(</xsl:text>
         <xsl:value-of select="if(@timeToNext) then @timeToNext else ''" />
         <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;') else ''" />        
-        <xsl:value-of select="if(@wavFormat) then concat(', ', @wavFormat eq 'true') else ''" />
-        <xsl:value-of select="if(@maxHeight) then concat('&quot;', @maxHeight, '&quot;') else ''" />
-        <xsl:value-of select="if(@maxWidth) then concat('&quot;', @maxWidth, '&quot;') else ''" />
+        <xsl:value-of select="if(@wavFormat) then concat(@wavFormat eq 'true', ', ') else ''" />
+        <xsl:value-of select="if(@maxHeight) then @maxHeight else ''" />
+        <xsl:value-of select="if(@maxWidth) then concat(', ', @maxWidth) else ''" />
         <xsl:value-of select="if(@eventTag) then concat('&quot;', @eventTag, '&quot;') else ''" />
         <xsl:if test="@poster|@mp4|@ogg|@webm">
             <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ',&quot;&quot;'" />
