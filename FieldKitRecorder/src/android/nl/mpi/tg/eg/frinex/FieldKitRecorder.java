@@ -29,18 +29,23 @@ import org.json.JSONException;
  */
 public class FieldKitRecorder extends CordovaPlugin {
 
+    AudioRecorder audioRecorder = new AudioRecorder();
+
     @Override
     public boolean execute(final String action, final JSONArray args, final CallbackContext callbackContext) throws JSONException {
         try {
             if (action.equals("record")) {
-                new AudioRecorder().startRecording(cordova, callbackContext);
+                System.out.println("action: record");
+                audioRecorder.startRecording(cordova, callbackContext);
                 return true;
             }
             if (action.equals("stop")) {
-                new AudioRecorder().stopRecording(callbackContext);
+                System.out.println("action: stop");
+                audioRecorder.stopRecording(callbackContext);
                 return true;
             }
             if (action.equals("tag")) {
+                System.out.println("action: tag");
                 String tagValue = args.getString(0);
                 writeTag(tagValue, callbackContext);
                 return true;
