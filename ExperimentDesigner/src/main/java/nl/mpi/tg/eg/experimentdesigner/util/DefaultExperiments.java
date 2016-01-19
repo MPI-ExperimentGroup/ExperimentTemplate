@@ -65,6 +65,7 @@ public class DefaultExperiments {
             ExperimentRepository experimentRepository,
             PublishEventRepository eventRepository) {
         experimentRepository.save(getSentveri_exp3Experiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
+        experimentRepository.save(getSynQuiz2Experiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
         experimentRepository.save(getDobesExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
         experimentRepository.save(getAllOptionsExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
         experimentRepository.save(new JenaFieldKit().getJenaExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
@@ -100,10 +101,28 @@ public class DefaultExperiments {
     }
 
     public Experiment getSentveri_exp3Experiment(MetadataRepository metadataRepository, PresenterFeatureRepository presenterFeatureRepository, PresenterScreenRepository presenterScreenRepository) {
-        Experiment experiment = getDefault();
-        experiment.setAppNameDisplay("Sentveri_exp3");
-        experiment.setAppNameInternal("Sentveri_exp3");
-        experiment.setDataSubmitUrl("http://ems13.mpi.nl/Sentveri_exp3-admin/");
+        Experiment experiment = getDefault("Sentveri_exp3", metadataRepository, presenterFeatureRepository);
+        experiment.setStimuli(new Sentveri_exp3().createStimuli());
+        new Sentveri_exp3().create3c(presenterScreenRepository, presenterFeatureRepository, experiment.getPresenterScreen());
+        presenterScreenRepository.save(experiment.getPresenterScreen());
+        return experiment;
+    }
+
+    public Experiment getSynQuiz2Experiment(MetadataRepository metadataRepository, PresenterFeatureRepository presenterFeatureRepository, PresenterScreenRepository presenterScreenRepository) {
+        Experiment experiment = getDefault("SynQuiz2", metadataRepository, presenterFeatureRepository);
+        experiment.setStimuli(new SynQuiz2().createStimuli());
+        new SynQuiz2().create(presenterScreenRepository, presenterFeatureRepository, experiment.getPresenterScreen());
+        presenterScreenRepository.save(experiment.getPresenterScreen());
+        return experiment;
+    }
+
+    public final Experiment getDefault(final String appName, MetadataRepository metadataRepository, PresenterFeatureRepository presenterFeatureRepository) {
+        final Experiment experiment = getDefault();
+        experiment.setAppNameDisplay(appName);
+        experiment.setAppNameInternal(appName);
+        experiment.setDataSubmitUrl("http://ems13.mpi.nl/" + appName + "-admin/");
+        final PresenterScreen autoMenuPresenter = addAutoMenu(presenterFeatureRepository);
+        experiment.getPresenterScreen().add(autoMenuPresenter);
         final Metadata metadata = new Metadata("workerId", "Reporter name *", ".'{'3,'}'", "Please enter at least three letters.", true, "This test can only be done once per worker.");
         final Metadata metadata1 = new Metadata("errordevice", "Device model", ".'{'2,'}'", "Please enter the device model", false, null);
         final Metadata metadata2 = new Metadata("errordescription", "Please describe the error", ".'{'2,'}'", "Please enter a short description of the issue", false, null);
@@ -111,11 +130,6 @@ public class DefaultExperiments {
         experiment.getMetadata().add(metadata1);
         experiment.getMetadata().add(metadata2);
         metadataRepository.save(experiment.getMetadata());
-        experiment.setStimuli(new Sentveri_exp3().createStimuli());
-        final PresenterScreen autoMenuPresenter = addAutoMenu(presenterFeatureRepository);
-        experiment.getPresenterScreen().add(autoMenuPresenter);
-        new Sentveri_exp3().create3c(presenterScreenRepository, presenterFeatureRepository, experiment.getPresenterScreen());
-        presenterScreenRepository.save(experiment.getPresenterScreen());
         return experiment;
     }
 
