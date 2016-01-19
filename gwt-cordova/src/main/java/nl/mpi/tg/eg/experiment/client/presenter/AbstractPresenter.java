@@ -78,7 +78,8 @@ public abstract class AbstractPresenter implements Presenter {
 //                }
 //            };
         }
-        setTitle(backEventListner);
+        simpleView.addTitle(getTitle(), backEventListner);
+
         if (nextState != null) {
             nextEventListner = new PresenterEventListner() {
 
@@ -122,7 +123,7 @@ public abstract class AbstractPresenter implements Presenter {
         this.windowClosingEventListner = windowClosingEventListner;
     }
 
-    protected abstract void setTitle(PresenterEventListner titleBarListner);
+    protected abstract String getTitle();
 
     protected abstract void setContent(final AppEventListner appEventListner);
 
@@ -133,6 +134,18 @@ public abstract class AbstractPresenter implements Presenter {
             }
         };
         timer.schedule(100);
+    }
+
+    protected void startAudioRecorder(final boolean wavFormat, String eventTag) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    protected void stopAudioRecorder(String eventTag) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    protected void tagAudioRecorder(String eventTag) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
