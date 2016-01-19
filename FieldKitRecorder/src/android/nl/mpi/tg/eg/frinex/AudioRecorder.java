@@ -59,10 +59,11 @@ public class AudioRecorder {
         String dirName = "MPI_Recorder_" + dateFormat.format(date) + "/";
         dateFormat = new SimpleDateFormat("yyMMddHHmmss");
         String timeString = dateFormat.format(date);
-        File outputFile = new File(externalStoragePath, AUDIO_RECORDER_FOLDER + "/" + dirName + timeString + UUID.randomUUID().toString() + AUDIO_RECORDER_FILE_EXT_WAV);
+        File outputDirectory = new File(externalStoragePath, AUDIO_RECORDER_FOLDER + "/" + dirName);
+        File outputFile = new File(outputDirectory, timeString + UUID.randomUUID().toString() + AUDIO_RECORDER_FILE_EXT_WAV);
 
-        if (!outputFile.exists()) {
-            outputFile.mkdirs();
+        if (!outputDirectory.exists()) {
+            outputDirectory.mkdirs();
         }
         randomAccessFile = new RandomAccessFile(outputFile, "rw");
 
@@ -92,7 +93,7 @@ public class AudioRecorder {
             public void onMarkerReached(AudioRecord recorder) {
             }
         });
-        recorder.setPositionNotificationPeriod(bufferSize);
+        recorder.setPositionNotificationPeriod(bufferSize / RECORDER_CHANNELS / 2 /* 2 bytes per sample*/);
         recorder.startRecording();
     }
 
