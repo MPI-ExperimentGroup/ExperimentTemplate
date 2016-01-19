@@ -266,10 +266,10 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             <xsl:text>    }
 
                 @Override
-                protected void setTitle(PresenterEventListner titleBarListner) {
-                simpleView.addTitle(messages.title</xsl:text>
+                protected String getTitle() {
+                return messages.title</xsl:text>
             <xsl:value-of select="@self" />
-            <xsl:text>Presenter(), titleBarListner);
+            <xsl:text>Presenter();
                 }
 
                 @Override
