@@ -38,8 +38,8 @@ public class LocalStoragePresenter extends AbstractPresenter {
     }
 
     @Override
-    protected void setTitle(PresenterEventListner titleBarListner) {
-        simpleView.addTitle("Storage Viewer", null);
+    protected String getTitle() {
+        return "Storage Viewer";
     }
 
     @Override
@@ -56,7 +56,7 @@ public class LocalStoragePresenter extends AbstractPresenter {
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 appEventListner.requestApplicationState(ApplicationState.metadata);
             }
-        });
+        }, -1);
         ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
 
             @Override
@@ -68,7 +68,7 @@ public class LocalStoragePresenter extends AbstractPresenter {
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 appEventListner.requestApplicationState(ApplicationState.scores);
             }
-        });
+        }, -1);
     }
 
     protected void eraseLocalStorageButton() {
@@ -85,7 +85,7 @@ public class LocalStoragePresenter extends AbstractPresenter {
                 localStorage.clear();
                 Window.Location.replace(Window.Location.getPath());
             }
-        });
+        }, -1);
     }
 
     protected void localStorageData() {
