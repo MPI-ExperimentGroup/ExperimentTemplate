@@ -36,8 +36,8 @@ public class ErrorPresenter extends AbstractPresenter implements Presenter {
     }
 
     @Override
-    protected void setTitle(PresenterEventListner titleBarListner) {
-        simpleView.addTitle(messages.errorScreenTitle(), titleBarListner);
+    public String getTitle() {
+        return messages.errorScreenTitle();
     }
 
     @Override
