@@ -106,7 +106,7 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
             }
         };
 
-        ((MetadataView) simpleView).addOptionButton(saveEventListner);
+        ((MetadataView) simpleView).addOptionButton(saveEventListner, -1);
     }
 
     protected void validateFields() throws MetadataFieldException {
@@ -124,12 +124,6 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
         localStorage.storeData(userResults);
     }
 
-    @Override
-    protected void setTitle(PresenterEventListner titleBarListner) {
-        throw new UnsupportedOperationException();
-//        simpleView.addTitle(messages.metadataScreenTitle(), titleBarListner);
-    }
-
     protected void selectUserMenu(final AppEventListner appEventListner, final ApplicationState targetApplicationState) {
         for (final UserLabelData labelData : localStorage.getUserIdList()) {
             final Button optionButton = ((MetadataView) simpleView).addOptionButton(new PresenterEventListner() {
@@ -145,7 +139,7 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
                     localStorage.storeData(userResults);
                     appEventListner.requestApplicationState(targetApplicationState);
                 }
-            });
+            }, -1);
             if (labelData.getUserId().equals(userResults.getUserData().getUserId())) {
                 optionButton.addStyleName("optionButtonHighlight");
             }
@@ -166,7 +160,7 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
                 localStorage.storeData(userResults);
                 appEventListner.requestApplicationState(targetApplicationState);
             }
-        });
+        }, -1);
     }
 
     protected void allMetadataFields() {
