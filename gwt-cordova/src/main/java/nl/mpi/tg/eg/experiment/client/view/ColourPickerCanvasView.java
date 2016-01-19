@@ -50,8 +50,8 @@ import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
-import nl.ru.languageininteraction.synaesthesia.client.exception.CanvasError;
-import nl.ru.languageininteraction.language.client.model.ColourData;
+import nl.mpi.tg.eg.experiment.client.exception.CanvasError;
+import nl.mpi.tg.eg.experiment.client.model.colour.ColourData;
 
 /**
  * @since Oct 8, 2014 5:09:10 PM (creation date)
@@ -210,8 +210,8 @@ public class ColourPickerCanvasView extends AbstractView {
         final Context2d hueContext2d = hueCanvas.getContext2d();
 
         CanvasGradient hueGradient = hueContext2d.createLinearGradient(0, 0, 0, canvasHeight);
-        for (int stop = 0; stop <= 10; stop++) {
-            hueGradient.addColorStop(stop * 0.1f, "hsl(" + 36 * stop + ",100%,50%);");
+        for (double stop = 0; stop <= 10; stop += 0.005) {
+            hueGradient.addColorStop(stop * 0.1f, "hsl(" + 36 * stop + ",100%,50%)");
         }
         hueContext2d.setFillStyle(hueGradient);
         hueContext2d.fillRect(0, 0, barWidth, canvasHeight);
@@ -255,7 +255,7 @@ public class ColourPickerCanvasView extends AbstractView {
         final Context2d mainContext2dB = mainCanvas.getContext2d();
         CanvasGradient linearGrey = mainContext2dB.createLinearGradient(0, 0, 0, canvasHeight);
         linearGrey.addColorStop(1f, "black");
-        linearGrey.addColorStop(0f, "rgba(0,0,0,0);");
+        linearGrey.addColorStop(0f, "rgba(0,0,0,0)");
         mainContext2dB.setFillStyle(linearGrey);
         mainContext2dB.fillRect(0, 0, canvasWidth, canvasHeight);
         hueChangeInProgress = false;
