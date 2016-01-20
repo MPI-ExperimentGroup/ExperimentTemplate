@@ -33,30 +33,46 @@ public class FieldKitRecorder extends CordovaPlugin {
 
     @Override
     public boolean execute(final String action, final JSONArray args, final CallbackContext callbackContext) throws JSONException {
-        try {
-            if (action.equals("record")) {
-                System.out.println("action: record");
-                audioRecorder.startRecording(cordova, callbackContext);
-                return true;
-            }
-            if (action.equals("stop")) {
-                System.out.println("action: stop");
-                audioRecorder.stopRecording(callbackContext);
-                return true;
-            }
-            if (action.equals("tag")) {
-                System.out.println("action: tag");
-                String tagValue = args.getString(0);
-                writeTag(tagValue, callbackContext);
-                return true;
-            }
-        } catch (final IOException e) {
+        if (action.equals("record")) {
+            System.out.println("action: record");
             cordova.getThreadPool().execute(new Runnable() {
                 @Override
                 public void run() {
-                    callbackContext.error(e.getMessage());
+                    try {
+                        audioRecorder.startRecording(cordova, callbackContext);
+                    } catch (final IOException e) {
+                        System.out.println("IOException: " + e.getMessage());
+                        callbackContext.error(e.getMessage());
+                    }
                 }
             });
+            return true;
+        }
+        if (action.equals("stop")) {
+            System.out.println("action: stop");
+            cordova.getThreadPool().execute(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        audioRecorder.stopRecording(callbackContext);
+                    } catch (final IOException e) {
+                        System.out.println("IOException: " + e.getMessage());
+                        callbackContext.error(e.getMessage());
+                    }
+                }
+            });
+            return true;
+        }
+        if (action.equals("tag")) {
+            System.out.println("action: tag");
+            final String tagValue = args.getString(0);
+            cordova.getThreadPool().execute(new Runnable() {
+                @Override
+                public void run() {
+                    writeTag(tagValue, callbackContext);
+                }
+            });
+            return true;
         }
         return false;
     }
