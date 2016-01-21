@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex;
 
+import java.io.File;
 import java.io.IOException;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
@@ -27,7 +28,7 @@ import org.apache.cordova.CordovaInterface;
  */
 public interface AudioRecorder {
 
-    public void startRecording(final CordovaInterface cordova, final CallbackContext callbackContext) throws IOException;
+    public String startRecording(final CordovaInterface cordova, final CallbackContext callbackContext, final File outputDirectory) throws IOException;
 
     public void stopRecording(final CallbackContext callbackContext) throws IOException;
 
