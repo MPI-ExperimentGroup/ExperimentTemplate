@@ -28,4 +28,6 @@ public interface PresenterEventListner {
     public String getLabel();
 
     public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner);
+    
+    public int getHotKey();
 }
