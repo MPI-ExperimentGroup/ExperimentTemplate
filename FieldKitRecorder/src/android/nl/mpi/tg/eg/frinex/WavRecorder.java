@@ -34,7 +34,7 @@ import org.apache.cordova.CordovaInterface;
  * @since Dec 10, 2015 3:24:50 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class WavRecorder {
+public class WavRecorder implements AudioRecorder {
 
     private static final int RECORDER_BPP = 16;
     private static final String AUDIO_RECORDER_FILE_EXT_WAV = ".wav";
@@ -53,6 +53,10 @@ public class WavRecorder {
     public WavRecorder() {
 
 //        bufferSize = 100 * AudioRecord.getMinBufferSize(RECORDER_SAMPLERATE, RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING);
+    }
+
+    public int getTime() {
+        return -1;
     }
 
     public void startRecording(final CordovaInterface cordova, final CallbackContext callbackContext) throws IOException {

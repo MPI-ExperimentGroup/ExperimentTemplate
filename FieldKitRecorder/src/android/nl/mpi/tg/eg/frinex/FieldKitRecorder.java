@@ -29,7 +29,7 @@ import org.json.JSONException;
  */
 public class FieldKitRecorder extends CordovaPlugin {
 
-    AudioRecorder audioRecorder = new AudioRecorder();
+    AudioRecorder audioRecorder = new WavRecorder();
 
     @Override
     public boolean execute(final String action, final JSONArray args, final CallbackContext callbackContext) throws JSONException {
