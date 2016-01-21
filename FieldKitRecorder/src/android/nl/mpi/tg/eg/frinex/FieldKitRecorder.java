@@ -17,7 +17,11 @@
  */
 package nl.mpi.tg.eg.frinex;
 
+import android.os.Environment;
+import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
 import org.json.JSONArray;
@@ -29,7 +33,11 @@ import org.json.JSONException;
  */
 public class FieldKitRecorder extends CordovaPlugin {
 
-    AudioRecorder audioRecorder = new WavRecorder();
+    private AudioRecorder audioRecorder = new WavRecorder();
+    String externalStoragePath = Environment.getExternalStorageDirectory().getPath();
+    private static final String AUDIO_RECORDER_FOLDER = "AudioData";
+//  private   String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath();
+    private CsvWriter csvWriter = null;
 
     @Override
     public boolean execute(final String action, final JSONArray args, final CallbackContext callbackContext) throws JSONException {
@@ -39,7 +47,12 @@ public class FieldKitRecorder extends CordovaPlugin {
                 @Override
                 public void run() {
                     try {
-                        audioRecorder.startRecording(cordova, callbackContext);
+                        Date date = new Date();
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yy_MM_dd");
+                        String dirName = "MPI_Recorder_" + dateFormat.format(date) + "/";
+                        final File outputDirectory = new File(externalStoragePath, AUDIO_RECORDER_FOLDER + "/" + dirName);
+                        final String baseName = audioRecorder.startRecording(cordova, callbackContext, outputDirectory);
+                        csvWriter = new CsvWriter(outputDirectory, baseName);
                     } catch (final IOException e) {
                         System.out.println("IOException: " + e.getMessage());
                         callbackContext.error(e.getMessage());
@@ -55,6 +68,8 @@ public class FieldKitRecorder extends CordovaPlugin {
                 public void run() {
                     try {
                         audioRecorder.stopRecording(callbackContext);
+                        csvWriter.writeCsvFile();
+                        csvWriter = null;
                     } catch (final IOException e) {
                         System.out.println("IOException: " + e.getMessage());
                         callbackContext.error(e.getMessage());
@@ -63,13 +78,43 @@ public class FieldKitRecorder extends CordovaPlugin {
             });
             return true;
         }
-        if (action.equals("tag")) {
-            System.out.println("action: tag");
-            final String tagValue = args.getString(0);
+        if (action.equals("startTag")) {
+            System.out.println("action: startTag");
+            final String tier = args.getString(0);
             cordova.getThreadPool().execute(new Runnable() {
                 @Override
                 public void run() {
-                    writeTag(tagValue, callbackContext);
+                    if (csvWriter != null) {
+                        csvWriter.startTag(Integer.parseInt(tier), audioRecorder.getTime());
+                    } else {
+                        callbackContext.error("not recording");
+                    }
+                }
+            });
+            return true;
+        }
+        if (action.equals("endTag")) {
+            System.out.println("action: endTag");
+            final String tier = args.getString(0);
+            final String tagString = args.getString(1);
+            cordova.getThreadPool().execute(new Runnable() {
+                @Override
+                public void run() {
+                    if (csvWriter != null) {
+                        csvWriter.endTag(Integer.parseInt(tier), audioRecorder.getTime(), tagString);
+                    } else {
+                        callbackContext.error("not recording");
+                    }
+                }
+            });
+            return true;
+        }
+        if (action.equals("getTime")) {
+            System.out.println("action: getTime");
+            cordova.getThreadPool().execute(new Runnable() {
+                @Override
+                public void run() {
+                    callbackContext.success(audioRecorder.getTime());
                 }
             });
             return true;
