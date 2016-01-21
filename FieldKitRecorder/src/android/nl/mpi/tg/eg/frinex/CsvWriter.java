@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Pivotal Software, Inc.
+ * Copyright (C) 2015 Max Planck Institute for Psycholinguistics, Nijmegen
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -16,10 +16,38 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 package nl.mpi.tg.eg.frinex;
+
+import android.os.Environment;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+
 /**
  * @since Dec 10, 2015 4:34:49 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public class CsvWriter {
 
+    private final String baseDir;
+    private final String fileName;
+    private FileWriter csvFileWriter = null;
+
+    public CsvWriter(String baseDir, String fileName) {
+        this.baseDir = baseDir;
+        this.fileName = fileName;
+    }
+
+    public void startCsvFile() throws IOException {
+        String filePath = baseDir + File.separator + fileName;
+        FileWriter csvFileWriter = new FileWriter(new File(filePath), true);
+
+    }
+
+    public void writeTag(String startTime, String endTime, String tagString) throws IOException {
+
+        csvFileWriter.write(data);
+
+        csvFileWriter.close();
+    }
 }
