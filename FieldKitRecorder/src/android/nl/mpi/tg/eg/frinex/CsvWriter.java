@@ -22,6 +22,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * @since Dec 10, 2015 4:34:49 PM (creation date)
@@ -29,25 +32,64 @@ import java.text.SimpleDateFormat;
  */
 public class CsvWriter {
 
-    private final String baseDir;
-    private final String fileName;
-    private FileWriter csvFileWriter = null;
+    private final File outputDirectory;
+    private final String baseName;
+    private final ArrayList<CSVRow> rows = new ArrayList<CSVRow>();
+    private final HashMap<Integer, Long> startTimes = new HashMap<Integer, Long>();
+    private static final String CSV_SUFFIX = ".csv";
 
-    public CsvWriter(String baseDir, String fileName) {
-        this.baseDir = baseDir;
-        this.fileName = fileName;
+    public CsvWriter(final File outputDirectory, String baseName) {
+        this.outputDirectory = outputDirectory;
+        this.baseName = baseName;
     }
 
-    public void startCsvFile() throws IOException {
-        String filePath = baseDir + File.separator + fileName;
-        FileWriter csvFileWriter = new FileWriter(new File(filePath), true);
-
-    }
-
-    public void writeTag(String startTime, String endTime, String tagString) throws IOException {
-
-        csvFileWriter.write(data);
-
+    public void writeCsvFile() throws IOException {
+//        System.out.println("filePath: " + filePath);
+        final FileWriter csvFileWriter = new FileWriter(new File(outputDirectory, baseName + CSV_SUFFIX), true);
+        csvFileWriter.write("BeginTime,EndTime,BeginTime2,EndTime2,Tier,Tag\n");
+        Collections.sort(rows);
+        for (CSVRow row : rows) {
+            csvFileWriter.write(makeTimeString(row.getBeginTime()) + ","
+                    + makeTimeString(row.getEndTime())
+                    + "," + makeTimeString2(row.getBeginTime())
+                    + "," + makeTimeString2(row.getEndTime())
+                    + "," + row.getTier() + ","
+                    + row.getTagString() + "\n");
+        }
         csvFileWriter.close();
+    }
+
+    public void startTag(int tier, long startTime) {
+        System.out.println("tier: " + tier);
+        System.out.println("startTime: " + startTime);
+        startTimes.put(tier, startTime);
+    }
+
+    public void endTag(int tier, long endTime, String tagString) {
+        rows.add(new CSVRow(startTimes.get(tier), endTime, tier, tagString));
+    }
+
+    private String makeTimeString(long milli) {//System.out.println("MILLI: " + milli);
+        final String hours = padZeros(milli / (60 * 60 * 1000), 2);//System.out.println("hh: " + hours);
+        milli = milli % (60 * 60 * 1000);
+        final String minutes = padZeros(milli / (60 * 1000), 2);
+        milli = milli % (60 * 1000);
+        final String seconds = padZeros(milli / 1000, 2);
+        final String millis = padZeros(milli % 1000, 3);//System.out.println("mmm: " + millis);
+        return hours + ":" + minutes + ":" + seconds + "." + millis;
+    }
+
+    private String makeTimeString2(long milli) {
+        final String seconds = "" + milli / 1000;
+        final String millis = padZeros(milli % 1000, 3);
+        return seconds + "." + millis;
+    }
+
+    private String padZeros(long number, int nZeros) {
+        String result = "" + number;
+        while (result.length() < nZeros) {
+            result = "0" + result;
+        }
+        return result;
     }
 }
