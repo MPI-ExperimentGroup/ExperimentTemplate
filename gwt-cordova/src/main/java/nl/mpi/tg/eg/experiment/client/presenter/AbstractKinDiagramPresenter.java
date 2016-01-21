@@ -115,13 +115,18 @@ public abstract class AbstractKinDiagramPresenter extends AbstractPresenter impl
             }
 
             @Override
+            public int getHotKey() {
+                return -1;
+            }
+
+            @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 saveKinTypeString(diagramName, ((KinTypeView) simpleView).getKinTypeString());
                 ((TimedStimulusView) simpleView).clearPage();
                 setContent(appEventListner);
                 submissionService.submitTimeStamp(userResults.getUserData().getUserId(), "AddToDiagram", duration.elapsedMillis());
             }
-        }, -1);
+        });
         ((KinTypeView) simpleView).addOptionButton(new PresenterEventListner() {
 
             @Override
@@ -130,15 +135,25 @@ public abstract class AbstractKinDiagramPresenter extends AbstractPresenter impl
             }
 
             @Override
+            public int getHotKey() {
+                return -1;
+            }
+
+            @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 submissionService.submitTagValue(userResults.getUserData().getUserId(), "SaveDiagram", loadKinTypeString(diagramName), duration.elapsedMillis());
             }
-        }, -1);
+        });
         ((KinTypeView) simpleView).addOptionButton(new PresenterEventListner() {
 
             @Override
             public String getLabel() {
                 return "Clear Diagram";
+            }
+
+            @Override
+            public int getHotKey() {
+                return -1;
             }
 
             @Override
@@ -148,7 +163,7 @@ public abstract class AbstractKinDiagramPresenter extends AbstractPresenter impl
                 setContent(appEventListner);
                 submissionService.submitTimeStamp(userResults.getUserData().getUserId(), "ClearDiagram", duration.elapsedMillis());
             }
-        }, -1);
+        });
     }
 
     public void clearKinTypeString(String diagramName) {
