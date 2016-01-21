@@ -299,6 +299,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }
 
             @Override
+            public int getHotKey() {
+                return -1;
+            }
+
+            @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 for (ButtonBase currentButton : buttonList) {
                     currentButton.setEnabled(false);
@@ -388,18 +393,23 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }
 
             @Override
+            public int getHotKey() {
+                return hotKey;
+            }
+
+            @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 nextStimulus(eventTag, norepeat);
             }
         };
-        ((TimedStimulusView) simpleView).addOptionButton(eventListner, hotKey);
+        ((TimedStimulusView) simpleView).addOptionButton(eventListner);
 //        }
     }
 
-    protected void endOfStimulusButton(final PresenterEventListner appEventListner, final String eventTag, final int hotKey) {
+    protected void endOfStimulusButton(final PresenterEventListner appEventListner, final String eventTag) {
         logTimeStamp(eventTag);
         if (!stimulusProvider.hasNextStimulus()) {
-            ((TimedStimulusView) simpleView).addOptionButton(appEventListner, hotKey);
+            ((TimedStimulusView) simpleView).addOptionButton(appEventListner);
         }
     }
 
@@ -409,6 +419,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             @Override
             public String getLabel() {
                 return imagePath;
+            }
+
+            @Override
+            public int getHotKey() {
+                return -1;
             }
 
             @Override
