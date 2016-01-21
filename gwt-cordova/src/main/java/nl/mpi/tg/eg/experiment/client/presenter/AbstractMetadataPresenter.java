@@ -101,12 +101,17 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
             }
 
             @Override
+            public int getHotKey() {
+                return -1;
+            }
+
+            @Override
             public String getLabel() {
                 return buttonLabel;
             }
         };
 
-        ((MetadataView) simpleView).addOptionButton(saveEventListner, -1);
+        ((MetadataView) simpleView).addOptionButton(saveEventListner);
     }
 
     protected void validateFields() throws MetadataFieldException {
@@ -134,12 +139,17 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
                 }
 
                 @Override
+                public int getHotKey() {
+                    return -1;
+                }
+
+                @Override
                 public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                     userResults.setUser(localStorage.getStoredData(labelData.getUserId()));
                     localStorage.storeData(userResults);
                     appEventListner.requestApplicationState(targetApplicationState);
                 }
-            }, -1);
+            });
             if (labelData.getUserId().equals(userResults.getUserData().getUserId())) {
                 optionButton.addStyleName("optionButtonHighlight");
             }
@@ -155,12 +165,17 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
             }
 
             @Override
+            public int getHotKey() {
+                return -1;
+            }
+
+            @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 userResults.setUser(new UserData());
                 localStorage.storeData(userResults);
                 appEventListner.requestApplicationState(targetApplicationState);
             }
-        }, -1);
+        });
     }
 
     protected void allMetadataFields() {
