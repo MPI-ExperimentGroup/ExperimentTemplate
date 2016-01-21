@@ -53,10 +53,15 @@ public class LocalStoragePresenter extends AbstractPresenter {
             }
 
             @Override
+            public int getHotKey() {
+                return -1;
+            }
+
+            @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 appEventListner.requestApplicationState(ApplicationState.metadata);
             }
-        }, -1);
+        });
         ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
 
             @Override
@@ -65,10 +70,15 @@ public class LocalStoragePresenter extends AbstractPresenter {
             }
 
             @Override
+            public int getHotKey() {
+                return -1;
+            }
+
+            @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 appEventListner.requestApplicationState(ApplicationState.scores);
             }
-        }, -1);
+        });
     }
 
     protected void eraseLocalStorageButton() {
@@ -80,12 +90,17 @@ public class LocalStoragePresenter extends AbstractPresenter {
             }
 
             @Override
+            public int getHotKey() {
+                return -1;
+            }
+
+            @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 final Storage localStorage = Storage.getLocalStorageIfSupported();
                 localStorage.clear();
                 Window.Location.replace(Window.Location.getPath());
             }
-        }, -1);
+        });
     }
 
     protected void localStorageData() {
