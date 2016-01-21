@@ -94,6 +94,11 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
             }
 
             @Override
+            public int getHotKey() {
+                return -1;
+            }
+
+            @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 submissionService.terminateAndDeleteStoredData(userResults.getUserData().getUserId());
             }
