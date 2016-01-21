@@ -42,10 +42,11 @@ public class WavRecorder implements AudioRecorder {
     private static final int RECORDER_SAMPLERATE = 44100;
     private static final int RECORDER_CHANNELS = AudioFormat.CHANNEL_IN_MONO;
     private static final int RECORDER_AUDIO_ENCODING = AudioFormat.ENCODING_PCM_16BIT;
-    private RandomAccessFile randomAccessFile = null;
 //    private final int bufferSize;
     public AudioRecord recorder = null;
     private int recordedLength = 0;
+    private Thread recordingThread = null;
+    private boolean isRecording = false;
     private static final int TIMER_INTERVAL = 120;
     private static final int FRAME_PERIOD = RECORDER_SAMPLERATE * TIMER_INTERVAL / 1000;
     private static final int BUFFER_SIZE = FRAME_PERIOD * 2 * 16 * 1 / 8;
@@ -56,7 +57,7 @@ public class WavRecorder implements AudioRecorder {
     }
 
     public int getTime() {
-        return -1;
+        return recordedLength; // todo: convert this into time
     }
 
     public void startRecording(final CordovaInterface cordova, final CallbackContext callbackContext) throws IOException {
@@ -66,47 +67,61 @@ public class WavRecorder implements AudioRecorder {
         String dirName = "MPI_Recorder_" + dateFormat.format(date) + "/";
         dateFormat = new SimpleDateFormat("yyMMddHHmmss");
         String timeString = dateFormat.format(date);
-        File outputDirectory = new File(externalStoragePath, AUDIO_RECORDER_FOLDER + "/" + dirName);
-        File outputFile = new File(outputDirectory, timeString + UUID.randomUUID().toString() + AUDIO_RECORDER_FILE_EXT_WAV);
+        final File outputDirectory = new File(externalStoragePath, AUDIO_RECORDER_FOLDER + "/" + dirName);
+        final File outputFile = new File(outputDirectory, timeString + UUID.randomUUID().toString() + AUDIO_RECORDER_FILE_EXT_WAV);
 
         if (!outputDirectory.exists()) {
             outputDirectory.mkdirs();
         }
-        randomAccessFile = new RandomAccessFile(outputFile, "rw");
-
-        // write a temporary wav header
-        writeWaveFileHeader(randomAccessFile, 0, 36, RECORDER_SAMPLERATE, 1, 1000);
 
         // start the audio recording
         recorder = new AudioRecord(MediaRecorder.AudioSource.MIC, RECORDER_SAMPLERATE, RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING, BUFFER_SIZE);
 
-        recorder.setRecordPositionUpdateListener(new AudioRecord.OnRecordPositionUpdateListener() {
-
+        recordingThread = new Thread(new Runnable() {
             @Override
-            public void onMarkerReached(AudioRecord recorder) {
-                System.out.println("onMarkerReached");
-            }
-
-            @Override
-            public void onPeriodicNotification(AudioRecord recorder) {
+            public void run() {
                 System.out.println("onPeriodicNotification");
                 try {
+                    final RandomAccessFile randomAccessFile = new RandomAccessFile(outputFile, "rw");
+
+                    // write a temporary wav header
+                    writeWaveFileHeader(randomAccessFile, 0, 36, RECORDER_SAMPLERATE, 1, 1000);
+                    isRecording = true;
                     byte buffer[] = new byte[BUFFER_SIZE];
-                    System.out.println("recorder.read");
-                    final int bytesRead = recorder.read(buffer, 0, buffer.length);
-                    System.out.println("bytesRead: " + bytesRead);
-                    if (bytesRead > 0) {
-                        randomAccessFile.write(buffer, 0, bytesRead);
-                        recordedLength += bytesRead;
+                    while (recorder != null && isRecording) {
+                        System.out.println("recorder.read");
+                        final int bytesRead = recorder.read(buffer, 0, buffer.length);
+                        System.out.println("bytesRead: " + bytesRead);
+                        if (bytesRead > 0) {
+                            randomAccessFile.write(buffer, 0, bytesRead);
+                            recordedLength += bytesRead;
+                        }
+                        System.out.println("recordedLength: " + recordedLength);
+                        System.out.println("bytesRead: " + bytesRead);
+                        System.out.println("bufferSize: " + BUFFER_SIZE);
                     }
-                    System.out.println("bytesRead: " + bytesRead);
-                    System.out.println("bufferSize: " + BUFFER_SIZE);
+                    // rewrite the wav header
+                    long totalAudioLen = randomAccessFile.length() - 36;
+                    long totalDataLen = totalAudioLen + 36;
+                    long longSampleRate = RECORDER_SAMPLERATE;
+                    int channels = 2;
+                    if (RECORDER_CHANNELS == AudioFormat.CHANNEL_IN_MONO) {
+                        channels = 1;
+                    }
+                    long byteRate = RECORDER_BPP * RECORDER_SAMPLERATE * channels / 8;
+
+                    randomAccessFile.seek(
+                            0);
+                    writeWaveFileHeader(randomAccessFile, totalAudioLen, totalDataLen, longSampleRate, channels, byteRate);
+
+                    randomAccessFile.close();
                 } catch (final IOException e) {
                     System.out.println("IOException: " + e.getMessage());
                 }
+                isRecording = false;
             }
-        });
-        recorder.setPositionNotificationPeriod(FRAME_PERIOD);
+        }, "recordingThread");
+        recordingThread.start();
         recorder.startRecording();
         System.out.println("outputFile: " + outputFile.getPath());
     }
@@ -116,18 +131,6 @@ public class WavRecorder implements AudioRecorder {
             recorder.stop();
             recorder.release();
             recorder = null;
-            // rewrite the wav header
-            long totalAudioLen = randomAccessFile.length() - 36;
-            long totalDataLen = totalAudioLen + 36;
-            long longSampleRate = RECORDER_SAMPLERATE;
-            int channels = 2;
-            if (RECORDER_CHANNELS == AudioFormat.CHANNEL_IN_MONO) {
-                channels = 1;
-            }
-            long byteRate = RECORDER_BPP * RECORDER_SAMPLERATE * channels / 8;
-            randomAccessFile.seek(0);
-            writeWaveFileHeader(randomAccessFile, totalAudioLen, totalDataLen, longSampleRate, channels, byteRate);
-            randomAccessFile.close();
         }
     }
 
