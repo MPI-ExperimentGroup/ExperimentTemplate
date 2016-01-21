@@ -38,7 +38,6 @@ public class WavRecorder implements AudioRecorder {
 
     private static final int RECORDER_BPP = 16;
     private static final String AUDIO_RECORDER_FILE_EXT_WAV = ".wav";
-    private static final String AUDIO_RECORDER_FOLDER = "AudioData";
     private static final int RECORDER_SAMPLERATE = 44100;
     private static final int RECORDER_CHANNELS = AudioFormat.CHANNEL_IN_MONO;
     private static final int RECORDER_AUDIO_ENCODING = AudioFormat.ENCODING_PCM_16BIT;
@@ -60,15 +59,15 @@ public class WavRecorder implements AudioRecorder {
         return recordedLength; // todo: convert this into time
     }
 
-    public void startRecording(final CordovaInterface cordova, final CallbackContext callbackContext) throws IOException {
-        String externalStoragePath = Environment.getExternalStorageDirectory().getPath();
+    public String startRecording(final CordovaInterface cordova, final CallbackContext callbackContext, final File outputDirectory) throws IOException {
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("yy_MM_dd");
         Date date = new Date();
-        String dirName = "MPI_Recorder_" + dateFormat.format(date) + "/";
         dateFormat = new SimpleDateFormat("yyMMddHHmmss");
         String timeString = dateFormat.format(date);
-        final File outputDirectory = new File(externalStoragePath, AUDIO_RECORDER_FOLDER + "/" + dirName);
-        final File outputFile = new File(outputDirectory, timeString + UUID.randomUUID().toString() + AUDIO_RECORDER_FILE_EXT_WAV);
+        final String baseName = timeString + UUID.randomUUID().toString();
+
+        final File outputFile = new File(outputDirectory, baseName + AUDIO_RECORDER_FILE_EXT_WAV);
 
         if (!outputDirectory.exists()) {
             outputDirectory.mkdirs();
@@ -124,6 +123,7 @@ public class WavRecorder implements AudioRecorder {
         recordingThread.start();
         recorder.startRecording();
         System.out.println("outputFile: " + outputFile.getPath());
+        return baseName;
     }
 
     public void stopRecording(final CallbackContext callbackContext) throws IOException {
