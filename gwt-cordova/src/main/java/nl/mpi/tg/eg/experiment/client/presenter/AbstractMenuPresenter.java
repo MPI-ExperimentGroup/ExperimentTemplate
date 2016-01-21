@@ -47,6 +47,11 @@ public abstract class AbstractMenuPresenter extends AbstractPresenter implements
                     }
 
                     @Override
+                    public int getHotKey() {
+                        return -1;
+                    }
+
+                    @Override
                     public String getLabel() {
                         return currentAppState.label;
                     }
