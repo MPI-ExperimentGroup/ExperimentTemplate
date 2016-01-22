@@ -107,7 +107,7 @@
             <xsl:value-of select="@self" />
             <xsl:text>Presenter(widgetTag</xsl:text>
             <xsl:value-of select="
-if(@type = 'transmission' or @type = 'metadata') then ', submissionService, userResults' else
+if(@type = 'transmission' or @type = 'metadata'  or @type = 'colourReport') then ', submissionService, userResults' else
 if(@type = 'preload') then ', new AudioPlayer(this), submissionService, userResults' else
 if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', new AudioPlayer(this), submissionService, userResults, localStorage' else ''" />
             <xsl:text>);
@@ -205,7 +205,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 public class </xsl:text>
             <xsl:value-of select="@self" />
             <xsl:text>Presenter extends </xsl:text>
-            <xsl:value-of select="if(@type = 'colourPicker') then 'AbstractColourPicker' else if(@type = 'timeline') then 'AbstractTimeline' else if(@type = 'transmission') then 'AbstractDataSubmission' else if(@type = 'menu') then 'AbstractMenu' else if(@type = 'stimulus') then 'AbstractStimulus' else if(@type = 'preload') then 'AbstractPreloadStimulus' else if(@type = 'debug') then 'LocalStorage' else if(@type = 'metadata') then 'AbstractMetadata' else if(@type = 'kindiagram') then 'AbstractKinDiagram' else 'Abstract'" />
+            <xsl:value-of select="if(@type = 'colourPicker') then 'AbstractColourPicker' else if(@type = 'colourReport') then 'AbstractColourReport' else if(@type = 'timeline') then 'AbstractTimeline' else if(@type = 'transmission') then 'AbstractDataSubmission' else if(@type = 'menu') then 'AbstractMenu' else if(@type = 'stimulus') then 'AbstractStimulus' else if(@type = 'preload') then 'AbstractPreloadStimulus' else if(@type = 'debug') then 'LocalStorage' else if(@type = 'metadata') then 'AbstractMetadata' else if(@type = 'kindiagram') then 'AbstractKinDiagram' else 'Abstract'" />
             <xsl:text>Presenter implements Presenter {
                 private final ApplicationState selfApplicationState = ApplicationState.</xsl:text>
             <xsl:value-of select="@self" />
@@ -330,6 +330,13 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="generate-id(.)" />
         <xsl:text>();
             }
+            
+            @Override
+            public int getHotKey() {
+            return </xsl:text>
+        <xsl:value-of select="if(@hotKey) then concat(', ', @hotKey) else '-1'" />
+        <xsl:text>;
+            }
             }, true);
         </xsl:text>
     </xsl:template>
@@ -348,8 +355,15 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             return messages.</xsl:text>
         <xsl:value-of select="generate-id(.)" />
         <xsl:text>();
+            } 
+            
+            @Override
+            public int getHotKey() {
+            return </xsl:text>
+        <xsl:value-of select="if(@hotKey) then concat(', ', @hotKey) else '-1'" />
+        <xsl:text>;
             }
-
+            
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
         </xsl:text>
@@ -378,7 +392,12 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="generate-id(.)" />
         <xsl:text>();
             }
-
+            @Override
+            public int getHotKey() {
+            return </xsl:text>
+        <xsl:value-of select="if(@hotKey) then concat(', ', @hotKey) else '-1'" />
+        <xsl:text>;
+            }
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
             appEventListner.requestApplicationState(ApplicationState.</xsl:text>
@@ -528,7 +547,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         </xsl:for-each>
         <xsl:text>})</xsl:text>
     </xsl:template>
-    <xsl:template match="VideoPanel|startAudioRecorder|stopAudioRecorder|tagAudioRecorder|AnnotationTimelinePanel|loadStimulus|loadSdCardStimulus|loadAllStimulus|loadSubsetStimulus|currentStimulusHasTag">
+    <xsl:template match="VideoPanel|startAudioRecorder|stopAudioRecorder|startAudioRecorderTag|endAudioRecorderTag|AnnotationTimelinePanel|loadStimulus|loadSdCardStimulus|loadAllStimulus|loadSubsetStimulus|currentStimulusHasTag">
         <xsl:value-of select="if(ends-with(local-name(), 'Panel')) then '    set' else '    '" />
         <xsl:value-of select="local-name()" />
         <!--        <xsl:text>(new </xsl:text>
@@ -537,6 +556,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@timeToNext) then @timeToNext else ''" />
         <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;') else ''" />        
         <xsl:value-of select="if(@wavFormat) then concat(@wavFormat eq 'true', ', ') else ''" />
+        <xsl:value-of select="if(@filePerStimulus) then concat(@filePerStimulus eq 'true', '') else ''" />
+        <xsl:value-of select="if(@eventTier) then concat(@eventTier, if (@eventTag) then ', ' else '') else ''" />
         <xsl:value-of select="if(@maxHeight) then @maxHeight else ''" />
         <xsl:value-of select="if(@maxWidth) then concat(', ', @maxWidth) else ''" />
         <xsl:value-of select="if(@eventTag) then concat('&quot;', @eventTag, '&quot;') else ''" />
