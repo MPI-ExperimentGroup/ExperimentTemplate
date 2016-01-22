@@ -62,7 +62,7 @@ public class SimpleView extends AbstractView {
         add(borderedContentPanel);
     }
 
-    public void setContent(Panel panel) {
+    public final void setContent(Panel panel) {
         panel.setStylePrimaryName("contentBody");
         scrollPanel.setWidget(panel);
     }
