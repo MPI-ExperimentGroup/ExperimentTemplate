@@ -91,9 +91,10 @@ public enum FeatureType {
     stimulusAudio(true, false, new FeatureAttribute[]{timeToNext, mp3,}),
     VideoPanel(false, false, new FeatureAttribute[]{mp4, ogg, webm, maxHeight, maxWidth, poster}),
     AnnotationTimelinePanel(true, false, new FeatureAttribute[]{mp4, ogg, webm, poster, eventTag, columnCount, maxStimuli}, true, Contitionals.none),
-    startAudioRecorder(false, false, new FeatureAttribute[]{wavFormat, eventTag}),
-    stopAudioRecorder(false, false, new FeatureAttribute[]{eventTag}),
-    tagAudioRecorder(false, false, new FeatureAttribute[]{eventTag}),
+    startAudioRecorder(false, false, new FeatureAttribute[]{wavFormat, filePerStimulus}),
+    stopAudioRecorder(false, false, new FeatureAttribute[]{}),
+    startAudioRecorderTag(false, false, new FeatureAttribute[]{eventTier}),
+    endAudioRecorderTag(false, false, new FeatureAttribute[]{eventTier, eventTag}),
     userInfo(false, false, null),
     versionData(false, false, null),
     preventWindowClose(false, false, null);
