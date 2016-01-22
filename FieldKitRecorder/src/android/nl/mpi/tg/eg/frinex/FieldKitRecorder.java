@@ -43,14 +43,21 @@ public class FieldKitRecorder extends CordovaPlugin {
     public boolean execute(final String action, final JSONArray args, final CallbackContext callbackContext) throws JSONException {
         if (action.equals("record")) {
             System.out.println("action: record");
+            final String userId = args.getString(0);
+            final String stimulusSet = args.getString(1);
+            final String stimulusId = args.getString(2);
             cordova.getThreadPool().execute(new Runnable() {
                 @Override
                 public void run() {
                     try {
                         Date date = new Date();
                         SimpleDateFormat dateFormat = new SimpleDateFormat("yy_MM_dd");
-                        String dirName = "MPI_Recorder_" + dateFormat.format(date) + "/";
-                        final File outputDirectory = new File(externalStoragePath, AUDIO_RECORDER_FOLDER + "/" + dirName);
+                        String dirName = "MPI_Recorder_" + dateFormat.format(date);
+                        final File outputDirectory = new File(externalStoragePath, AUDIO_RECORDER_FOLDER
+                                + File.separator + dirName
+                                + File.separator + userId
+                                + File.separator + stimulusSet
+                                + ((stimulusId != null && !stimulusId.isEmpty()) ? File.separator + stimulusId + File.separator : ""));
                         final String baseName = audioRecorder.startRecording(cordova, callbackContext, outputDirectory);
                         csvWriter = new CsvWriter(outputDirectory, baseName);
                     } catch (final IOException e) {
@@ -67,9 +74,11 @@ public class FieldKitRecorder extends CordovaPlugin {
                 @Override
                 public void run() {
                     try {
+                        if (csvWriter != null) {
+                            csvWriter.writeCsvFile();
+                            csvWriter = null;
+                        }
                         audioRecorder.stopRecording(callbackContext);
-                        csvWriter.writeCsvFile();
-                        csvWriter = null;
                     } catch (final IOException e) {
                         System.out.println("IOException: " + e.getMessage());
                         callbackContext.error(e.getMessage());
