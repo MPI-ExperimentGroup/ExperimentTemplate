@@ -66,7 +66,11 @@ public class CsvWriter {
     }
 
     public void endTag(int tier, long endTime, String tagString) {
-        rows.add(new CSVRow(startTimes.get(tier), endTime, tier, tagString));
+        System.out.println("tier: " + tier);
+        System.out.println("endTime: " + endTime);
+        System.out.println("tagString: " + tagString);
+        final Long startTime = startTimes.get(tier);
+        rows.add(new CSVRow((startTime != null) ? startTime : endTime, endTime, tier, tagString));
     }
 
     private String makeTimeString(long milli) {//System.out.println("MILLI: " + milli);
