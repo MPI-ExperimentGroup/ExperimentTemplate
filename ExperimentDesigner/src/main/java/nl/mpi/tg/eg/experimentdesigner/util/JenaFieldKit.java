@@ -146,18 +146,34 @@ public class JenaFieldKit {
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "false");
         presenterFeatureList.add(loadStimuliFeature);
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
+
+        final PresenterFeature startRecorderFeature = new PresenterFeature(FeatureType.startAudioRecorder, null);
+        startRecorderFeature.addFeatureAttributes(FeatureAttribute.wavFormat, "true");
+        startRecorderFeature.addFeatureAttributes(FeatureAttribute.filePerStimulus, "false");
+        hasMoreStimulusFeature.getPresenterFeatureList().add(startRecorderFeature);
+
+        final PresenterFeature startTagFeature = new PresenterFeature(FeatureType.startAudioRecorderTag, null);
+        startTagFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
+        hasMoreStimulusFeature.getPresenterFeatureList().add(startTagFeature);
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
-        final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulusButton, "spacebar");
+        final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.actionButton, "spacebar");
+        final PresenterFeature endAudioRecorderTagFeature = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
+        endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
+        endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTag, "a stimulus shown");
+        actionButtonFeature.getPresenterFeatureList().add(endAudioRecorderTagFeature);
+        final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
         nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
         nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusMetadata");
-        hasMoreStimulusFeature.getPresenterFeatureList().add(nextStimulusFeature);
+        actionButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
+        hasMoreStimulusFeature.getPresenterFeatureList().add(actionButtonFeature);
         loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
 
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
 //        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "end of stimuli"));
         final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
         autoNextPresenter.addFeatureAttributes(FeatureAttribute.target, "bowpedScreen");
+        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stopAudioRecorder, null));
         endOfStimulusFeature.getPresenterFeatureList().add(autoNextPresenter);
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
         return presenterScreen;
@@ -193,6 +209,11 @@ public class JenaFieldKit {
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "true");
         presenterFeatureList.add(loadStimuliFeature);
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
+
+        final PresenterFeature startRecorderFeature = new PresenterFeature(FeatureType.startAudioRecorder, null);
+        startRecorderFeature.addFeatureAttributes(FeatureAttribute.wavFormat, "true");
+        startRecorderFeature.addFeatureAttributes(FeatureAttribute.filePerStimulus, "true");
+        hasMoreStimulusFeature.getPresenterFeatureList().add(startRecorderFeature);
 
         final PresenterFeature lanwisImage = addImageFeature(hasMoreStimulusFeature, "50", "90", "speak the name in the language (lanwis)", "done");
         final PresenterFeature bislamaImage = addImageFeature(lanwisImage, "40", "70", "It''s your turn! What did they say? Translate it into Bislama if you can.", "done");
