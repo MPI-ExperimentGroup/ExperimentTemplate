@@ -27,6 +27,7 @@ import nl.mpi.tg.eg.experiment.client.Messages;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.SimpleView;
 
 /**
@@ -59,6 +60,11 @@ public abstract class AbstractPresenter implements Presenter {
                 }
 
                 @Override
+                public int getHotKey() {
+                    return -1;
+                }
+
+                @Override
                 public String getLabel() {
                     return prevState.label;
                 }
@@ -86,6 +92,11 @@ public abstract class AbstractPresenter implements Presenter {
                 @Override
                 public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                     appEventListner.requestApplicationState(nextState);
+                }
+
+                @Override
+                public int getHotKey() {
+                    return -1;
                 }
 
                 @Override
@@ -136,19 +147,59 @@ public abstract class AbstractPresenter implements Presenter {
         timer.schedule(100);
     }
 
-    protected void startAudioRecorder(final boolean wavFormat, String eventTag) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    protected abstract void audioOk(String message);
 
-    protected void stopAudioRecorder(String eventTag) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    protected abstract void audioError(String message);
 
-    protected void tagAudioRecorder(String eventTag) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    protected native void startAudioRecorder(final boolean wavFormat, String userIdString, String stimulusSetString, String stimulusIdString) /*-{
+        var abstractPresenter = this;
+        $wnd.plugins.fieldKitRecorder.record(function (tagvalue) {
+            console.log("startTagOk: " + tagvalue);
+            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/String;)(tagvalue);
+        }, function (tagvalue) {
+            console.log("startTagError: " + tagvalue);
+            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
+        },  userIdString, stimulusSetString,  stimulusIdString);
+     }-*/;
+
+    protected native void stopAudioRecorder() /*-{
+        var abstractPresenter = this;
+        $wnd.plugins.fieldKitRecorder.stop(function (tagvalue) {
+            console.log("audioOk: " + tagvalue);
+            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/String;)(tagvalue);
+        }, function (tagvalue) {
+            console.log("audioError: " + tagvalue);
+            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
+        });
+     }-*/;
+
+    protected native void startAudioRecorderTag(int tier) /*-{
+        var abstractPresenter = this;
+        $wnd.plugins.fieldKitRecorder.startTag(function (tagvalue) {
+            console.log("startTagOk: " + tagvalue);
+            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/String;)(tagvalue);
+        }, function (tagvalue) {
+            console.log("startTagError: " + tagvalue);
+            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
+        }, tier);
+     }-*/;
+
+    protected native void endAudioRecorderTag(int tier, String eventTag) /*-{
+        var abstractPresenter = this;
+        $wnd.plugins.fieldKitRecorder.endTag(function (tagvalue) {
+            console.log("endTagOk: " + tagvalue);
+            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/String;)(tagvalue);
+        }, function (tagvalue) {
+            console.log("endTagError: " + tagvalue);
+            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
+        }, tier, eventTag);
+     }-*/;
 
     @Override
     public void savePresenterState() {
+        if (simpleView instanceof ComplexView) {
+            ((ComplexView) simpleView).clearDomHandlers();
+        }
     }
+
 }
