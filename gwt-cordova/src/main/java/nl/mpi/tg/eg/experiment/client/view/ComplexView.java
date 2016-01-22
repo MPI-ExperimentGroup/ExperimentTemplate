@@ -57,6 +57,7 @@ public class ComplexView extends SimpleView {
 
     public void clearPage() {
         outerPanel.clear();
+        clearDomHandlers();
     }
 
     public void addText(String textString) {
@@ -124,13 +125,13 @@ public class ComplexView extends SimpleView {
         anchor.addStyleName("pageLink");
     }
 
-    public Button addOptionButton(final PresenterEventListner presenterListerner, final int hotKey) {
-        Button nextButton = getOptionButton(presenterListerner, hotKey);
+    public Button addOptionButton(final PresenterEventListner presenterListerner) {
+        Button nextButton = getOptionButton(presenterListerner);
         outerPanel.add(nextButton);
         return nextButton;
     }
 
-    public Button getOptionButton(final PresenterEventListner presenterListerner, final int hotKey) {
+    public Button getOptionButton(final PresenterEventListner presenterListerner) {
         final Button nextButton = new Button(presenterListerner.getLabel());
         nextButton.addStyleName("optionButton");
         nextButton.setEnabled(true);
@@ -148,12 +149,12 @@ public class ComplexView extends SimpleView {
         nextButton.addTouchStartHandler(singleShotEventListner);
         nextButton.addTouchMoveHandler(singleShotEventListner);
         nextButton.addTouchEndHandler(singleShotEventListner);
-        if (hotKey > 0) {
+        if (presenterListerner.getHotKey() > 0) {
             RootPanel root = RootPanel.get();
             domHandlerArray.add(root.addDomHandler(new KeyDownHandler() {
                 @Override
                 public void onKeyDown(KeyDownEvent event) {
-                    if (event.getNativeKeyCode() == hotKey) {
+                    if (event.getNativeKeyCode() == presenterListerner.getHotKey()) {
                         event.stopPropagation();
                         clearDomHandlers();
                         singleShotEventListner.eventFired();
@@ -164,7 +165,8 @@ public class ComplexView extends SimpleView {
         return nextButton;
     }
 
-    private void clearDomHandlers() {
+    public void clearDomHandlers() {
+        // todo: make sure this is cleared before the screen exits
         for (HandlerRegistration domHandler : domHandlerArray) {
             domHandler.removeHandler();
         }
