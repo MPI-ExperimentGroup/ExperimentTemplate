@@ -209,7 +209,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         stimulusProvider.pushCurrentStimulusToEnd();
     }
 
-    protected void stimulusImage(int maxHeight, int maxWidth, int postLoadMs, TimedStimulusListener timedStimulusListener, final int hotKey) {
+    protected void stimulusImage(int maxHeight, int maxWidth, int postLoadMs, TimedStimulusListener timedStimulusListener) {
         final Stimulus currentStimulus = stimulusProvider.getCurrentStimulus();
         if (currentStimulus.isImage()) {
             String image = currentStimulus.getImage();
@@ -218,7 +218,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
         } else {
             final String incorrect_stimulus_format = "incorrect stimulus format";
-            nextStimulusButton(incorrect_stimulus_format, incorrect_stimulus_format + " " + currentStimulus.getLabel(), true, hotKey);
+            nextStimulusButton(incorrect_stimulus_format, incorrect_stimulus_format + " " + currentStimulus.getLabel(), true, -1);
         }
     }
 
@@ -243,6 +243,18 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void logTimeStamp(String eventTag) {
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
+    }
+
+    protected void endAudioRecorderTag(int tier) {
+        super.endAudioRecorderTag(tier, stimulusProvider.getCurrentStimulus().getUniqueId());
+    }
+
+    protected void startAudioRecorderTag(int tier) {
+        super.startAudioRecorderTag(tier);
+    }
+
+    protected void startAudioRecorder(boolean wavFormat, boolean filePerStimulus) {
+        super.startAudioRecorder(true, userResults.getUserData().getUserId().toString(), stimulusProvider.getCurrentTags(), (filePerStimulus) ? stimulusProvider.getCurrentStimulus().getUniqueId() : "");
     }
 
     protected void showStimulusGrid(final AppEventListner appEventListner, final int postLoadCorrectMs, final TimedStimulusListener correctListener, final int postLoadIncorrectMs, final TimedStimulusListener incorrectListener, final int columnCount, final String imageWidth, final String eventTag) {
@@ -438,4 +450,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }
         }, UriUtils.fromString(imagePath));
     }
+
+    @Override
+    public void savePresenterState() {
+        super.savePresenterState();
+        stopAudioRecorder();
+    }
+
 }
