@@ -20,7 +20,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     Created on : Sep 1, 2015, 10:46 AM
     Author     : Peter Withers <peter.withers@mpi.nl>
 -->
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" id="nl.mpi.tg.eg.frinex_cordova" version="0.0.1">
+<widget xmlns="http://www.w3.org/ns/widgets" 
+        xmlns:cdv="http://cordova.apache.org/ns/1.0" 
+        id="nl.mpi.tg.eg.frinex_cordova" 
+        version="0.0.2">
     <name>frinex_cordova</name>
     <description>
         A mobile application wrapper for FRINEX experiment framework.
@@ -44,4 +47,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <allow-intent href="itms:*"/>
         <allow-intent href="itms-apps:*"/>
     </platform>
+    <preference name="BackupWebStorage" value="none"/>
+    <allow-navigation href="http://ems12.mpi.nl/*"/>
+    <allow-navigation href="http://corpus1.mpi.nl/*"/>
+    <access origin="http://ems12.mpi.nl"/>
+    <access origin="http://corpus1.mpi.nl"/>
 </widget>
