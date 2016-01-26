@@ -177,7 +177,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:result-document href="{$targetClientDirectory}/presenter/{@self}Presenter.java" method="text">
             <xsl:text>package nl.mpi.tg.eg.experiment.client.presenter;
     
-                import com.google.gwt.core.client.GWT;        
+                import com.google.gwt.core.client.GWT;     
+                import com.google.gwt.event.dom.client.KeyCodes;       
                 import com.google.gwt.safehtml.shared.UriUtils;
                 import com.google.gwt.user.client.ui.ButtonBase;
                 import com.google.gwt.user.client.ui.RootLayoutPanel;
@@ -334,7 +335,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             @Override
             public int getHotKey() {
             return </xsl:text>
-        <xsl:value-of select="if(@hotKey) then concat(', ', @hotKey) else '-1'" />
+        <xsl:value-of select="if(@hotKey) then concat('KeyCodes.KEY_', @hotKey) else '-1'" />
         <xsl:text>;
             }
             }, true);
@@ -360,7 +361,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             @Override
             public int getHotKey() {
             return </xsl:text>
-        <xsl:value-of select="if(@hotKey) then concat(', ', @hotKey) else '-1'" />
+        <xsl:value-of select="if(@hotKey) then concat('KeyCodes.KEY_', @hotKey) else '-1'" />
         <xsl:text>;
             }
             
@@ -374,6 +375,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 <xsl:text>);</xsl:text>
             </xsl:when>
             <xsl:otherwise>
+                <xsl:value-of select="if(@eventTag) then concat('logTimeStamp(&quot;', @eventTag, '&quot;);') else ''" />
                 <xsl:apply-templates/>
             </xsl:otherwise>
         </xsl:choose>
@@ -395,7 +397,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             @Override
             public int getHotKey() {
             return </xsl:text>
-        <xsl:value-of select="if(@hotKey) then concat(', ', @hotKey) else '-1'" />
+        <xsl:value-of select="if(@hotKey) then concat('KeyCodes.KEY_', @hotKey) else '-1'" />
         <xsl:text>;
             }
             @Override
@@ -449,7 +451,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@ogg) then concat(', &quot;', @ogg, '&quot;') else ''" />
         <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />        
         <xsl:value-of select="if(@norepeat) then concat(', ', @norepeat eq 'true') else ''" />
-        <xsl:value-of select="if(@hotKey) then concat(', ', @hotKey) else ''" />
+        <xsl:value-of select="if(@hotKey) then concat(', KeyCodes.KEY_', @hotKey) else ''" />
         <xsl:text>);
         </xsl:text>
     </xsl:template>
