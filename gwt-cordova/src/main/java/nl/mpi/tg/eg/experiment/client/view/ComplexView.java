@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experiment.client.view;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyDownEvent;
 import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -154,7 +155,9 @@ public class ComplexView extends SimpleView {
             domHandlerArray.add(root.addDomHandler(new KeyDownHandler() {
                 @Override
                 public void onKeyDown(KeyDownEvent event) {
-                    if (event.getNativeKeyCode() == presenterListerner.getHotKey()) {
+                    final int nativeKeyCode = event.getNativeKeyCode();
+                    // we map 190 which is the period key to the numeric period key
+                    if (((nativeKeyCode == 190) ? KeyCodes.KEY_NUM_PERIOD : nativeKeyCode) == presenterListerner.getHotKey()) {
                         event.stopPropagation();
                         clearDomHandlers();
                         singleShotEventListner.eventFired();
