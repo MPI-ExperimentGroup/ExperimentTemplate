@@ -74,8 +74,12 @@ public class PublishEvents {
         return buildName;
     }
 
-    public String getExperimentName() {
+    public String getExperimentInternalName() {
         return experiment.getAppNameInternal();
+    }
+
+    public String getExperimentDisplayName() {
+        return experiment.getAppNameDisplay();
     }
 
     public PublishState getState() {
