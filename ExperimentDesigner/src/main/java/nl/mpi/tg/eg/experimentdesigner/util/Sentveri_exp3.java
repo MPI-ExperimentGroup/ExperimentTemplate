@@ -90,15 +90,15 @@ public class Sentveri_exp3 {
         //2. the image of the "sentence" in the center (self-paced - wait till a "spacebar" response, lock out all the other button responses)
         final PresenterFeature sentenceFeature = addStimulusImage("100", screenName, screenName + "_sent", "0");
         final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.actionButton, "spacebar");
-        nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
-        nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus");
+        nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "spacebar");
+        nextStimulusFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
         nextStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         nextStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
         nextStimulusFeature.getPresenterFeatureList().add(addImageFeature(screenName));
         sentenceFeature.getPresenterFeatureList().add(nextStimulusFeature);
         return sentenceFeature;
     }
-    
+
     private PresenterFeature addImageFeature(final String screenName) {
         //3. an arbitrary fast (0ms) or slow (500ms) delay with a blank screen between sentence and picture -defined by the variable "delay"
         //4. the image of the "picture" in the center (self-paced - wait till a "." for yes or a "z" for no response, lock out all the other button responses)
@@ -108,12 +108,14 @@ public class Sentveri_exp3 {
         final PresenterFeature responseZFeature = new PresenterFeature(FeatureType.actionButton, "z");
 //        responseZFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
         responseZFeature.addFeatureAttributes(FeatureAttribute.eventTag, "responseZ");
+        responseZFeature.addFeatureAttributes(FeatureAttribute.hotKey, "Z");
         responseZFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         responseZFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
         imageFeature.getPresenterFeatureList().add(responseZFeature);
         final PresenterFeature responseDotFeature = new PresenterFeature(FeatureType.actionButton, ".");
 //        responseDotFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
         responseDotFeature.addFeatureAttributes(FeatureAttribute.eventTag, "responseDot");
+        responseDotFeature.addFeatureAttributes(FeatureAttribute.hotKey, "NUM_PERIOD");
         responseDotFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         responseDotFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
         imageFeature.getPresenterFeatureList().add(responseDotFeature);
@@ -141,13 +143,13 @@ public class Sentveri_exp3 {
         final PresenterFeature responseZFeature = new PresenterFeature(FeatureType.nextStimulusButton, "z");
         responseZFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
         responseZFeature.addFeatureAttributes(FeatureAttribute.eventTag, "responseZ");
-        responseZFeature.addFeatureAttributes(FeatureAttribute.hotKey, "KeyCodes.KEY_Z");
+        responseZFeature.addFeatureAttributes(FeatureAttribute.hotKey, "Z");
         hasTagFeature.getPresenterFeatureList().add(responseZFeature);
         questionFeature.getPresenterFeatureList().add(checkTagFeature);
         final PresenterFeature responseDotFeature = new PresenterFeature(FeatureType.nextStimulusButton, ".");
         responseDotFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
         responseDotFeature.addFeatureAttributes(FeatureAttribute.eventTag, "responseDot");
-        responseDotFeature.addFeatureAttributes(FeatureAttribute.hotKey, "KeyCodes.KEY_NUM_PERIOD");
+        responseDotFeature.addFeatureAttributes(FeatureAttribute.hotKey, "NUM_PERIOD");
         hasTagFeature.getPresenterFeatureList().add(responseDotFeature);
         return questionFeature;
     }
