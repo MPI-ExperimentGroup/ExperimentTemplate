@@ -39,7 +39,7 @@ public enum FeatureType {
     loadAllStimulus(false, false, new FeatureAttribute[]{eventTag, randomise}, true, Contitionals.hasMoreStimulus),
     currentStimulusHasTag(true, false, new FeatureAttribute[]{timeToNext}, true, Contitionals.hasStimulusTag),
     targetButton(false, true, new FeatureAttribute[]{target}),
-    actionButton(true, true, null),
+    actionButton(true, true, new FeatureAttribute[]{eventTag, hotKey}),
     //    endOfStimulusButton(false, true, new FeatureAttribute[]{eventTag, target}),
     addPadding(false, false, null),
     localStorageData(false, false, null),
