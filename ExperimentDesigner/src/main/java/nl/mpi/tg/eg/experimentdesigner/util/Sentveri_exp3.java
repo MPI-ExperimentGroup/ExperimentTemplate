@@ -51,7 +51,7 @@ public class Sentveri_exp3 {
     }
 
     private PresenterScreen createStimulusScreen(String screenName) {
-        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, null, screenName + "Screen", null, PresenterType.stimulus);
+        final PresenterScreen presenterScreen = new PresenterScreen(null, screenName, null, screenName + "Screen", null, PresenterType.stimulus);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadAllStimulus, null);
         loadStimuliFeature.addStimulusTag(screenName);
@@ -89,7 +89,7 @@ public class Sentveri_exp3 {
     private PresenterFeature addSentenceFeature(final String screenName) {
         //2. the image of the "sentence" in the center (self-paced - wait till a "spacebar" response, lock out all the other button responses)
         final PresenterFeature sentenceFeature = addStimulusImage("100", screenName, screenName + "_sent", "0");
-        final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.actionButton, "spacebar");
+        final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.actionFooterButton, "spacebar");
         nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "spacebar");
         nextStimulusFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
         nextStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
@@ -105,14 +105,14 @@ public class Sentveri_exp3 {
         final PresenterFeature delayFeature = new PresenterFeature(FeatureType.stimulusPause, null);
         final PresenterFeature imageFeature = addStimulusImage("30", screenName, "image_" + screenName, "0");
         delayFeature.getPresenterFeatureList().add(imageFeature);
-        final PresenterFeature responseZFeature = new PresenterFeature(FeatureType.actionButton, "z");
+        final PresenterFeature responseZFeature = new PresenterFeature(FeatureType.actionFooterButton, "z");
 //        responseZFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
         responseZFeature.addFeatureAttributes(FeatureAttribute.eventTag, "responseZ");
         responseZFeature.addFeatureAttributes(FeatureAttribute.hotKey, "Z");
         responseZFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         responseZFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
         imageFeature.getPresenterFeatureList().add(responseZFeature);
-        final PresenterFeature responseDotFeature = new PresenterFeature(FeatureType.actionButton, ".");
+        final PresenterFeature responseDotFeature = new PresenterFeature(FeatureType.actionFooterButton, ".");
 //        responseDotFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
         responseDotFeature.addFeatureAttributes(FeatureAttribute.eventTag, "responseDot");
         responseDotFeature.addFeatureAttributes(FeatureAttribute.hotKey, "NUM_PERIOD");
@@ -140,16 +140,22 @@ public class Sentveri_exp3 {
         //5. on half of the trials (36/72), the image of the "question" in the center (self-paced - wait till a "." for yes or a "z" for no response, lock out all the other button responses) - arbitrarily defined by the variable "QorNOT"
         // todo: this should have a red border, but should it be a tag or on the image and if a tag should it take style?
         final PresenterFeature questionFeature = addStimulusImage("100", screenName, screenName + "_Q", "0");
-        final PresenterFeature responseZFeature = new PresenterFeature(FeatureType.nextStimulusButton, "z");
-        responseZFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+        final PresenterFeature responseZFeature = new PresenterFeature(FeatureType.actionFooterButton, "z");
         responseZFeature.addFeatureAttributes(FeatureAttribute.eventTag, "responseZ");
         responseZFeature.addFeatureAttributes(FeatureAttribute.hotKey, "Z");
+        final PresenterFeature nextStimulusFeature1 = new PresenterFeature(FeatureType.nextStimulus, null);
+        nextStimulusFeature1.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+        nextStimulusFeature1.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus");
+        responseZFeature.getPresenterFeatureList().add(nextStimulusFeature1);
         hasTagFeature.getPresenterFeatureList().add(responseZFeature);
         questionFeature.getPresenterFeatureList().add(checkTagFeature);
-        final PresenterFeature responseDotFeature = new PresenterFeature(FeatureType.nextStimulusButton, ".");
-        responseDotFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+        final PresenterFeature responseDotFeature = new PresenterFeature(FeatureType.actionFooterButton, ".");
         responseDotFeature.addFeatureAttributes(FeatureAttribute.eventTag, "responseDot");
         responseDotFeature.addFeatureAttributes(FeatureAttribute.hotKey, "NUM_PERIOD");
+        final PresenterFeature nextStimulusFeature2 = new PresenterFeature(FeatureType.nextStimulus, null);
+        nextStimulusFeature2.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+        nextStimulusFeature2.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus");
+        responseDotFeature.getPresenterFeatureList().add(nextStimulusFeature2);
         hasTagFeature.getPresenterFeatureList().add(responseDotFeature);
         return questionFeature;
     }
