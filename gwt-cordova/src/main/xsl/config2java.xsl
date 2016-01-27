@@ -348,8 +348,10 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>());
         </xsl:text>
     </xsl:template>
-    <xsl:template match="targetButton|actionButton">
-        <xsl:text>    ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
+    <xsl:template match="targetButton|actionButton|targetFooterButton|actionFooterButton">
+        <xsl:text>    ((ComplexView) simpleView).add</xsl:text>
+        <xsl:value-of select="if(local-name() eq 'targetFooterButton' or local-name() eq 'actionFooterButton') then 'Footer' else 'Option'" />
+        <xsl:text>Button(new PresenterEventListner() {
 
             @Override
             public String getLabel() {
@@ -381,7 +383,9 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         </xsl:choose>
         <xsl:text>
             }
-            });
+            }</xsl:text>
+        <!--<xsl:value-of select="if(@padding) then concat(', ', @padding) else ''" />-->
+        <xsl:text>);
         </xsl:text>
     </xsl:template>
     <xsl:template match="endOfStimulusButton">
