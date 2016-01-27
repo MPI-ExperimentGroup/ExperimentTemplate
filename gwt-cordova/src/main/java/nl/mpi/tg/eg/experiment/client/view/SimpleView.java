@@ -23,6 +23,7 @@ import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.ScrollPanel;
@@ -80,6 +81,12 @@ public class SimpleView extends AbstractView {
         headerPanel.setWidget(0, 1, headerLabel);
         headerPanel.setStylePrimaryName("headerPanel");
         headerPanel.getColumnFormatter().setWidth(1, "100%");
+    }
+
+    public void addToFooter(IsWidget button) {
+        footerPanel.setVisible(true);
+        footerPanel.add(button);
+        resizeView();
     }
 
     public Button setButton(ButtonType buttonType, final PresenterEventListner presenterListerner) {
