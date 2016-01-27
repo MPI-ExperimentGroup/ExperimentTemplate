@@ -58,6 +58,7 @@ public class ComplexView extends SimpleView {
 
     public void clearPage() {
         outerPanel.clear();
+        removeFooterButtons();
         clearDomHandlers();
     }
 
@@ -129,6 +130,13 @@ public class ComplexView extends SimpleView {
     public Button addOptionButton(final PresenterEventListner presenterListerner) {
         Button nextButton = getOptionButton(presenterListerner);
         outerPanel.add(nextButton);
+        return nextButton;
+    }
+
+    public Button addFooterButton(final PresenterEventListner presenterListerner) {
+        Button nextButton = getOptionButton(presenterListerner);
+        nextButton.addStyleName("footerButton");
+        addToFooter(nextButton);
         return nextButton;
     }
 
