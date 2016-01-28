@@ -77,10 +77,11 @@ public class Sentveri_exp3 {
         return presenterScreen;
     }
 
-    private PresenterFeature addStimulusImage(final String imageWidth, String screenName, String imageSet, final String timeToNext) {
+    private PresenterFeature addStimulusImage(String screenName, String imageSet, final String timeToNext) {
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusCodeImage, null);
-        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, imageWidth);
-        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, imageWidth);
+        imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPageWidth, "100");
+        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "0");
+        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "0");
         imageFeature.addFeatureAttributes(FeatureAttribute.codeFormat, screenName + "/" + imageSet + "/<code>.jpg");
         imageFeature.addFeatureAttributes(FeatureAttribute.timeToNext, timeToNext);
         return imageFeature;
@@ -88,7 +89,7 @@ public class Sentveri_exp3 {
 
     private PresenterFeature addSentenceFeature(final String screenName) {
         //2. the image of the "sentence" in the center (self-paced - wait till a "spacebar" response, lock out all the other button responses)
-        final PresenterFeature sentenceFeature = addStimulusImage("100", screenName, screenName + "_sent", "0");
+        final PresenterFeature sentenceFeature = addStimulusImage(screenName, screenName + "_sent", "0");
         final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.actionFooterButton, "spacebar");
         nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "spacebar");
         nextStimulusFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
@@ -103,7 +104,7 @@ public class Sentveri_exp3 {
         //3. an arbitrary fast (0ms) or slow (500ms) delay with a blank screen between sentence and picture -defined by the variable "delay"
         //4. the image of the "picture" in the center (self-paced - wait till a "." for yes or a "z" for no response, lock out all the other button responses)
         final PresenterFeature delayFeature = new PresenterFeature(FeatureType.stimulusPause, null);
-        final PresenterFeature imageFeature = addStimulusImage("30", screenName, "image_" + screenName, "0");
+        final PresenterFeature imageFeature = addStimulusImage(screenName, "image_" + screenName, "0");
         delayFeature.getPresenterFeatureList().add(imageFeature);
         final PresenterFeature responseZFeature = new PresenterFeature(FeatureType.actionFooterButton, "z");
 //        responseZFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
@@ -139,7 +140,7 @@ public class Sentveri_exp3 {
         checkTagFeature.getPresenterFeatureList().add(hasTagFeature);
         //5. on half of the trials (36/72), the image of the "question" in the center (self-paced - wait till a "." for yes or a "z" for no response, lock out all the other button responses) - arbitrarily defined by the variable "QorNOT"
         // todo: this should have a red border, but should it be a tag or on the image and if a tag should it take style?
-        final PresenterFeature questionFeature = addStimulusImage("100", screenName, screenName + "_Q", "0");
+        final PresenterFeature questionFeature = addStimulusImage(screenName, screenName + "_Q", "0");
         final PresenterFeature responseZFeature = new PresenterFeature(FeatureType.actionFooterButton, "z");
         responseZFeature.addFeatureAttributes(FeatureAttribute.eventTag, "responseZ");
         responseZFeature.addFeatureAttributes(FeatureAttribute.hotKey, "Z");

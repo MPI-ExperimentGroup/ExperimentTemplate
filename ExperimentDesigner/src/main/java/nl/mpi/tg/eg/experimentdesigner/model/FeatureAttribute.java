@@ -34,6 +34,7 @@ public enum FeatureAttribute {
     codeFormat,
     src,
     link,
+    percentOfPageWidth,
     maxHeight,
     maxWidth,
     align,
