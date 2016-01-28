@@ -86,10 +86,24 @@ public class ComplexView extends SimpleView {
         outerPanel.add(isWidget);
     }
 
-    public void addImage(SafeUri imagePath, final SafeUri linkUrl, int maxHeight, int maxWidth, String align) {
+    protected void addImageAttributes(final Image image, int percentOfPageWidth, int maxHeight, int maxWidth) {
+        image.getElement().getStyle().setProperty("imageOrientation", "from-image");
+        if (percentOfPageWidth > 0) {
+            image.getElement().getStyle().setProperty("width", percentOfPageWidth + "%");
+            image.getElement().getStyle().setProperty("height", "auto");
+        }
+        if (maxWidth > 0) {
+            image.getElement().getStyle().setProperty("maxWidth", maxWidth + "%");
+        }
+        if (maxHeight > 0) {
+            image.getElement().getStyle().setProperty("maxHeight", maxHeight + "%");
+        }
+
+    }
+
+    public void addImage(SafeUri imagePath, final SafeUri linkUrl, int percentOfPageWidth, int maxHeight, int maxWidth, String align) {
         final Image image = new Image(imagePath);
-        image.getElement().getStyle().setProperty("maxWidth", maxWidth + "%");
-        image.getElement().getStyle().setProperty("maxHeight", maxHeight + "%");
+        addImageAttributes(image, percentOfPageWidth, maxHeight, maxWidth);
         final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
 
             @Override
