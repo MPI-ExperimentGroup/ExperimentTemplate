@@ -528,3 +528,19 @@ table#screenExample td {
     border-style: solid;
     padding: 10px 10px;
 } 
+.recordingLabel, .notRecordingLabel {
+    right: 0;
+    top: 0;
+    position: fixed;
+    border-radius: 15px;
+    height: 40px;
+    min-width: 40px;
+}
+.recordingLabel {
+    background: red;
+    color: white;
+}
+.notRecordingLabel {
+    background: $primaryColour1;
+    color: $primaryColour4;
+}
