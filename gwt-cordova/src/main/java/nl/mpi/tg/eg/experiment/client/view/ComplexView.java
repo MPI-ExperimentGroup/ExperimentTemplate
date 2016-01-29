@@ -32,6 +32,7 @@ import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.IsWidget;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
@@ -46,6 +47,8 @@ import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
 public class ComplexView extends SimpleView {
+
+    private Label recordingLabel = null;
 
     private class ImageEntry {
 
@@ -93,6 +96,19 @@ public class ComplexView extends SimpleView {
 
     public void addPadding() {
         outerPanel.add(new HTML("&nbsp;"));
+    }
+
+    public void setRecorderState(String message, boolean isRecording) {
+        if (recordingLabel == null) {
+            recordingLabel = new Label();
+        }
+        recordingLabel.setStyleName((isRecording) ? "recordingLabel" : "notRecordingLabel");
+        if (isRecording || message != null) {
+            recordingLabel.setText((message != null && !message.isEmpty()) ? message : "");
+            outerPanel.add(recordingLabel);
+        } else {
+            outerPanel.remove(recordingLabel);
+        }
     }
 
     public void addWidget(IsWidget isWidget) {
