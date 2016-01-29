@@ -209,18 +209,18 @@ public class JenaFieldKit {
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "true");
         presenterFeatureList.add(loadStimuliFeature);
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
-
+        // todo: add more reverter tags as required
         final PresenterFeature startRecorderFeature = new PresenterFeature(FeatureType.startAudioRecorder, null);
         startRecorderFeature.addFeatureAttributes(FeatureAttribute.wavFormat, "true");
         startRecorderFeature.addFeatureAttributes(FeatureAttribute.filePerStimulus, "true");
         hasMoreStimulusFeature.getPresenterFeatureList().add(startRecorderFeature);
 
-        final PresenterFeature lanwisImage = addImageFeature(hasMoreStimulusFeature, "50", "90", "speak the name in the language (lanwis)", "done");
-        final PresenterFeature bislamaImage = addImageFeature(lanwisImage, "40", "70", "It''s your turn! What did they say? Translate it into Bislama if you can.", "done");
-        final PresenterFeature lanwisExperience = addImageFeature(bislamaImage, "50", "90", "ask for personal experience with... in language (lanwis)", "done");
-        final PresenterFeature bislamaExperience = addImageFeature(lanwisExperience, "40", "70", "It''s your turn! What experience did they have? Translate it into Bislama if you can.", "done");
-        final PresenterFeature lanwisStory = addImageFeature(bislamaExperience, "50", "90", "custom story relating to ... (lanwis)", "done");
-        final PresenterFeature bislamaStory = addImageFeature(lanwisStory, "40", "70", "It''s your turn! What story did they tell? Translate it into Bislama if you can.", "done");
+        final PresenterFeature lanwisImage = addImageFeature(hasMoreStimulusFeature, "90", "speak the name in the language (lanwis)", "done");
+        final PresenterFeature bislamaImage = addImageFeature(lanwisImage, "70", "It''s your turn! What did they say? Translate it into Bislama if you can.", "done");
+        final PresenterFeature lanwisExperience = addImageFeature(bislamaImage, "90", "ask for personal experience with... in language (lanwis)", "done");
+        final PresenterFeature bislamaExperience = addImageFeature(lanwisExperience, "70", "It''s your turn! What experience did they have? Translate it into Bislama if you can.", "done");
+        final PresenterFeature lanwisStory = addImageFeature(bislamaExperience, "90", "custom story relating to ... (lanwis)", "done");
+        final PresenterFeature bislamaStory = addImageFeature(lanwisStory, "70", "It''s your turn! What story did they tell? Translate it into Bislama if you can.", "done");
         final PresenterFeature autoNextFeature = new PresenterFeature(FeatureType.nextStimulus, null);
         autoNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextImage");
         autoNextFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
@@ -235,12 +235,13 @@ public class JenaFieldKit {
         return presenterScreen;
     }
 
-    private PresenterFeature addImageFeature(PresenterFeature parentFeature, String maxHeight, String maxWidth, String label, String button) {
+    private PresenterFeature addImageFeature(PresenterFeature parentFeature, String percentOfPage, String label, String button) {
         parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
         parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
-        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, maxHeight);
-        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, maxWidth);
+        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, percentOfPage);
+        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, percentOfPage);
+        imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, percentOfPage);
         imageFeature.addFeatureAttributes(FeatureAttribute.timeToNext, "0");
         parentFeature.getPresenterFeatureList().add(imageFeature);
         parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, label));
