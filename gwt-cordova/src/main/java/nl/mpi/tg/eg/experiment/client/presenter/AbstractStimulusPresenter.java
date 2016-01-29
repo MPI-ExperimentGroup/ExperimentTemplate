@@ -209,7 +209,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         stimulusProvider.pushCurrentStimulusToEnd();
     }
 
-    protected void stimulusImage(int maxHeight, int percentOfPage, int maxWidth, int postLoadMs, TimedStimulusListener timedStimulusListener) {
+    protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, TimedStimulusListener timedStimulusListener) {
         final Stimulus currentStimulus = stimulusProvider.getCurrentStimulus();
         if (currentStimulus.isImage()) {
             String image = currentStimulus.getImage();
