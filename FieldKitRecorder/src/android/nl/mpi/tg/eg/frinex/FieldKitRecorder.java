@@ -130,12 +130,4 @@ public class FieldKitRecorder extends CordovaPlugin {
         }
         return false;
     }
-
-    private void writeTag(String tagValue, CallbackContext callbackContext) {
-        if (tagValue != null && tagValue.length() > 0) {
-            callbackContext.success(tagValue);
-        } else {
-            callbackContext.error("Tag not supplied");
-        }
-    }
 }
