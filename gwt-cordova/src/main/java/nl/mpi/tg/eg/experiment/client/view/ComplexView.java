@@ -47,9 +47,21 @@ import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
  */
 public class ComplexView extends SimpleView {
 
+    private class ImageEntry {
+
+        final Image image;
+        final int percentOfPage;
+
+        public ImageEntry(Image image, int percentOfPage) {
+            this.image = image;
+            this.percentOfPage = percentOfPage;
+        }
+
+    }
     protected final Messages messages = GWT.create(Messages.class);
     final protected VerticalPanel outerPanel;
     final ArrayList<HandlerRegistration> domHandlerArray = new ArrayList<>();
+    private final ArrayList<ImageEntry> scaledImagesList = new ArrayList<>();
 
     public ComplexView() {
         outerPanel = new VerticalPanel();
@@ -60,6 +72,7 @@ public class ComplexView extends SimpleView {
         outerPanel.clear();
         removeFooterButtons();
         clearDomHandlers();
+        scaledImagesList.clear();
     }
 
     public void addText(String textString) {
@@ -86,24 +99,26 @@ public class ComplexView extends SimpleView {
         outerPanel.add(isWidget);
     }
 
-    protected void addImageAttributes(final Image image, int percentOfPageWidth, int maxHeight, int maxWidth) {
+    protected void addImageAttributes(final Image image, int percentOfPage, int maxHeight, int maxWidth) {
         image.getElement().getStyle().setProperty("imageOrientation", "from-image");
-        if (percentOfPageWidth > 0) {
-            image.getElement().getStyle().setProperty("width", percentOfPageWidth + "%");
-            image.getElement().getStyle().setProperty("height", "auto");
+        if (percentOfPage > 0) {
+            scaledImagesList.add(new ImageEntry(image, percentOfPage));
+//            image.getElement().getStyle().setProperty("width", percentOfPage + "%");
+//            image.getElement().getStyle().setProperty("height", "auto");
+            resizeImage(image, Window.getClientHeight(), Window.getClientWidth(), percentOfPage);
+        } else {
+            if (maxWidth > 0) {
+                image.getElement().getStyle().setProperty("maxWidth", maxWidth + "%");
+            }
+            if (maxHeight > 0) {
+                image.getElement().getStyle().setProperty("maxHeight", maxHeight + "%");
+            }
         }
-        if (maxWidth > 0) {
-            image.getElement().getStyle().setProperty("maxWidth", maxWidth + "%");
-        }
-        if (maxHeight > 0) {
-            image.getElement().getStyle().setProperty("maxHeight", maxHeight + "%");
-        }
-
     }
 
-    public void addImage(SafeUri imagePath, final SafeUri linkUrl, int percentOfPageWidth, int maxHeight, int maxWidth, String align) {
+    public void addImage(SafeUri imagePath, final SafeUri linkUrl, int percentOfPage, int maxHeight, int maxWidth, String align) {
         final Image image = new Image(imagePath);
-        addImageAttributes(image, percentOfPageWidth, maxHeight, maxWidth);
+        addImageAttributes(image, percentOfPage, maxHeight, maxWidth);
         final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
 
             @Override
@@ -298,5 +313,20 @@ public class ComplexView extends SimpleView {
         textBox.setStylePrimaryName("metadataOK");
         textBox.setText(value);
         outerPanel.add(textBox);
+    }
+
+    @Override
+    protected void parentResized(int height, int width, String units) {
+        super.parentResized(height, width, units);
+        for (ImageEntry imageEntry : scaledImagesList) {
+            resizeImage(imageEntry.image, height, width, imageEntry.percentOfPage);
+        }
+    }
+
+    private void resizeImage(Image image, int height, int width, int percentOfPage) {
+        image.getElement().getStyle().clearHeight();
+        image.getElement().getStyle().clearWidth();
+        image.getElement().getStyle().setProperty("maxHeight", (height - HEADER_SIZE - HEADER_SIZE - 50 - 50 /* the  "- 50 - 50" comes from contentBody in the CSS */) * (percentOfPage / 100.0) + "px");
+        image.getElement().getStyle().setProperty("maxWidth", (width * (percentOfPage / 100.0)) + "px");
     }
 }

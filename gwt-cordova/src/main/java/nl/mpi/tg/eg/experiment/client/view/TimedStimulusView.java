@@ -73,9 +73,9 @@ public class TimedStimulusView extends ComplexView {
         outerPanel.add(image);
     }
 
-    public void addTimedImage(SafeUri imagePath, int percentOfPageWidth, int maxHeight, int maxWidth, final int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+    public void addTimedImage(SafeUri imagePath, int percentOfPage, int maxHeight, int maxWidth, final int postLoadMs, final TimedStimulusListener timedStimulusListener) {
         final Image image = new Image(imagePath);
-        addImageAttributes(image, percentOfPageWidth, maxHeight, maxWidth);        
+        addImageAttributes(image, percentOfPage, maxHeight, maxWidth);        
         image.addLoadHandler(new LoadHandler() {
 
             @Override
