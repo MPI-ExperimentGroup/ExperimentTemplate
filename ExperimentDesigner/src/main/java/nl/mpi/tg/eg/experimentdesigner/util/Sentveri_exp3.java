@@ -79,9 +79,9 @@ public class Sentveri_exp3 {
 
     private PresenterFeature addStimulusImage(String screenName, String imageSet, final String timeToNext) {
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusCodeImage, null);
-        imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPageWidth, "100");
-        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "0");
-        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "0");
+        imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "100");
+        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "100");
+        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "100");
         imageFeature.addFeatureAttributes(FeatureAttribute.codeFormat, screenName + "/" + imageSet + "/<code>.jpg");
         imageFeature.addFeatureAttributes(FeatureAttribute.timeToNext, timeToNext);
         return imageFeature;
