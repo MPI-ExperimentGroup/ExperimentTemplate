@@ -85,6 +85,7 @@ public class WavRecorder implements AudioRecorder {
                         // write a temporary wav header
                         writeWaveFileHeader(randomAccessFile, 0, 36, RECORDER_SAMPLERATE, 1, 1000);
                         isRecording = true;
+                        callbackContext.success();
                         byte buffer[] = new byte[BUFFER_SIZE];
                         while (recorder != null && isRecording) {
                             System.out.println("recorder.read");
@@ -115,6 +116,7 @@ public class WavRecorder implements AudioRecorder {
                         randomAccessFile.close();
                     } catch (final IOException e) {
                         System.out.println("IOException: " + e.getMessage());
+                        callbackContext.error(e.getMessage());
                     }
                     isRecording = false;
                 }
@@ -133,6 +135,7 @@ public class WavRecorder implements AudioRecorder {
             recorder.release();
             recorder = null;
         }
+        callbackContext.success();
     }
 
     private void writeWaveFileHeader(RandomAccessFile out, long totalAudioLen, long totalDataLen, long longSampleRate, int channels, long byteRate) throws IOException {
