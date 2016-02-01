@@ -32,5 +32,7 @@ public interface AudioRecorder {
 
     public void stopRecording(final CallbackContext callbackContext) throws IOException;
 
-    public int getTime();
+    public long getTime();
+
+    public boolean isRecording();
 }
