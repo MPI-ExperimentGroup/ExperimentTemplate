@@ -532,9 +532,12 @@ table#screenExample td {
     right: 0;
     top: 0;
     position: fixed;
-    border-radius: 15px;
-    height: 40px;
-    min-width: 40px;
+    border-radius: 20px;
+    height: 30px;
+    min-width: 30px;
+    margin: 5px;
+    padding: 5px;
+    font-size: 15pt;
 }
 .recordingLabel {
     background: red;
