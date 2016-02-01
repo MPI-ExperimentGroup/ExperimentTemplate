@@ -124,7 +124,7 @@ public class FieldKitRecorder extends CordovaPlugin {
                 @Override
                 public void run() {
                     if (audioRecorder != null) {
-                        callbackContext.success(CsvWriter.makeTimeString(audioRecorder.getTime()));
+                        callbackContext.success(CsvWriter.makeShortTimeString(audioRecorder.getTime()));
                     } else {
                         callbackContext.error("not recording");
                     }

@@ -83,6 +83,15 @@ public class CsvWriter {
         return hours + ":" + minutes + ":" + seconds + "." + millis;
     }
 
+    public static String makeShortTimeString(long milli) {//System.out.println("MILLI: " + milli);
+        final String hours = padZeros(milli / (60 * 60 * 1000), 2);//System.out.println("hh: " + hours);
+        milli = milli % (60 * 60 * 1000);
+        final String minutes = padZeros(milli / (60 * 1000), 2);
+        milli = milli % (60 * 1000);
+        final String seconds = padZeros(milli / 1000, 2);
+        return hours + ":" + minutes + ":" + seconds;
+    }
+
     private static String makeTimeString2(long milli) {
         final String seconds = "" + milli / 1000;
         final String millis = padZeros(milli % 1000, 3);
