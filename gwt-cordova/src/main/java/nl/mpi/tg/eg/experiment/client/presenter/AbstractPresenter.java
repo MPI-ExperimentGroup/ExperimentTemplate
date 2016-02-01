@@ -42,10 +42,17 @@ public abstract class AbstractPresenter implements Presenter {
     private PresenterEventListner backEventListner = null;
     private PresenterEventListner nextEventListner = null;
     private PresenterEventListner windowClosingEventListner = null;
+    private final Timer audioTickerTimer;
 
     public AbstractPresenter(RootLayoutPanel widgetTag, SimpleView simpleView) {
         this.widgetTag = widgetTag;
         this.simpleView = simpleView;
+        audioTickerTimer = new Timer() {
+            public void run() {
+//                isAudioRecording();
+                getAudioRecorderTime();
+            }
+        };
     }
 
     @Override
@@ -147,9 +154,16 @@ public abstract class AbstractPresenter implements Presenter {
         timer.schedule(100);
     }
 
+    protected void bumpAudioTicker() {
+        audioTickerTimer.schedule(100);
+    }
+
     protected void audioOk(Boolean isRecording, String message) {
         if (simpleView instanceof ComplexView) {
             ((ComplexView) simpleView).setRecorderState(message, isRecording);
+            if (isRecording) {
+                bumpAudioTicker();
+            }
         }
     }
 
@@ -169,6 +183,36 @@ public abstract class AbstractPresenter implements Presenter {
                 console.log("startAudioRecorderError: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
             },  userIdString, stimulusSetString,  stimulusIdString);
+        } else {
+            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
+        }
+     }-*/;
+
+    protected native void isAudioRecording() /*-{
+        var abstractPresenter = this;
+        if($wnd.plugins){
+            $wnd.plugins.fieldKitRecorder.isRecording(function () {
+                console.log("isAudioRecording");
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, null);
+            }, function (tagvalue) {
+                console.log("isAudioRecording: " + tagvalue);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, null);
+            });
+        } else {
+            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
+        }
+     }-*/;
+
+    protected native void getAudioRecorderTime() /*-{
+        var abstractPresenter = this;
+        if($wnd.plugins){
+            $wnd.plugins.fieldKitRecorder.getTime(function (currentTime) {
+                console.log("isAudioRecording: " + " : " + currentTime);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, currentTime);
+            }, function (tagvalue) {
+                console.log("isAudioRecording: " + tagvalue);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, null);
+            });
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
         }
