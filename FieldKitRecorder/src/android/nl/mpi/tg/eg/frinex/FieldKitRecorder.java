@@ -123,7 +123,25 @@ public class FieldKitRecorder extends CordovaPlugin {
             cordova.getThreadPool().execute(new Runnable() {
                 @Override
                 public void run() {
-                    callbackContext.success(audioRecorder.getTime());
+                    if (audioRecorder != null) {
+                        callbackContext.success(CsvWriter.makeTimeString(audioRecorder.getTime()));
+                    } else {
+                        callbackContext.error("not recording");
+                    }
+                }
+            });
+            return true;
+        }
+        if (action.equals("isRecording")) {
+            System.out.println("action: isRecording");
+            cordova.getThreadPool().execute(new Runnable() {
+                @Override
+                public void run() {
+                    if (audioRecorder != null) {
+                        callbackContext.success();
+                    } else {
+                        callbackContext.error("not recording");
+                    }
                 }
             });
             return true;
