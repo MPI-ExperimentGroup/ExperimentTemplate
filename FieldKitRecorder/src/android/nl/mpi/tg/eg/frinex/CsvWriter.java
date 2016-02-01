@@ -73,7 +73,7 @@ public class CsvWriter {
         rows.add(new CSVRow((startTime != null) ? startTime : endTime, endTime, tier, tagString));
     }
 
-    private String makeTimeString(long milli) {//System.out.println("MILLI: " + milli);
+    public static String makeTimeString(long milli) {//System.out.println("MILLI: " + milli);
         final String hours = padZeros(milli / (60 * 60 * 1000), 2);//System.out.println("hh: " + hours);
         milli = milli % (60 * 60 * 1000);
         final String minutes = padZeros(milli / (60 * 1000), 2);
@@ -83,13 +83,13 @@ public class CsvWriter {
         return hours + ":" + minutes + ":" + seconds + "." + millis;
     }
 
-    private String makeTimeString2(long milli) {
+    private static String makeTimeString2(long milli) {
         final String seconds = "" + milli / 1000;
         final String millis = padZeros(milli % 1000, 3);
         return seconds + "." + millis;
     }
 
-    private String padZeros(long number, int nZeros) {
+    private static String padZeros(long number, int nZeros) {
         String result = "" + number;
         while (result.length() < nZeros) {
             result = "0" + result;
