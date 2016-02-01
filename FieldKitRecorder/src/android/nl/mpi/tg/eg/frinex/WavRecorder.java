@@ -43,7 +43,7 @@ public class WavRecorder implements AudioRecorder {
     private static final int RECORDER_AUDIO_ENCODING = AudioFormat.ENCODING_PCM_16BIT;
 //    private final int bufferSize;
     public AudioRecord recorder = null;
-    private int recordedLength = 0;
+    private long recordedLength = 0;
     private Thread recordingThread = null;
     private boolean isRecording = false;
     private static final int TIMER_INTERVAL = 120;
@@ -55,8 +55,12 @@ public class WavRecorder implements AudioRecorder {
 //        bufferSize = 100 * AudioRecord.getMinBufferSize(RECORDER_SAMPLERATE, RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING);
     }
 
-    public int getTime() {
+    public long getTime() {
         return recordedLength / RECORDER_SAMPLERATE; // todo: convert this into time
+    }
+
+    public boolean isRecording() {
+        return isRecording;
     }
 
     public String startRecording(final CordovaInterface cordova, final CallbackContext callbackContext, final File outputDirectory) throws IOException {
