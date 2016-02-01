@@ -56,7 +56,7 @@ public class WavRecorder implements AudioRecorder {
     }
 
     public long getTime() {
-        return recordedLength / RECORDER_SAMPLERATE; // todo: convert this into time
+        return recordedLength / ((RECORDER_BPP / 8 /* recordedLength is in bytes */) * RECORDER_SAMPLERATE / 1000);
     }
 
     public boolean isRecording() {
@@ -99,10 +99,13 @@ public class WavRecorder implements AudioRecorder {
                                 randomAccessFile.write(buffer, 0, bytesRead);
                                 recordedLength += bytesRead;
                             }
+                            isRecording = recorder.getRecordingState() == AudioRecord.RECORDSTATE_RECORDING;
                             System.out.println("recordedLength: " + recordedLength);
                             System.out.println("bytesRead: " + bytesRead);
                             System.out.println("bufferSize: " + BUFFER_SIZE);
                         }
+                        recorder.release();
+                        recorder = null;
                         // rewrite the wav header
                         long totalAudioLen = randomAccessFile.length() - 36;
                         long totalDataLen = totalAudioLen + 36;
@@ -136,8 +139,6 @@ public class WavRecorder implements AudioRecorder {
         System.out.println("stopRecording");
         if (recorder != null) {
             recorder.stop();
-            recorder.release();
-            recorder = null;
         }
         callbackContext.success();
     }
