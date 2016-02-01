@@ -23,6 +23,12 @@
 function FieldKitRecorder() {
 }
 
+FieldKitRecorder.prototype.isRecording = function (successCallback, errorCallback) {
+    cordova.exec(successCallback, errorCallback, "FieldKitRecorder", "isRecording", []);
+};
+FieldKitRecorder.prototype.getTime = function (successCallback, errorCallback) {
+    cordova.exec(successCallback, errorCallback, "FieldKitRecorder", "getTime", []);
+};
 FieldKitRecorder.prototype.startTag = function (successCallback, errorCallback, tierInt) {
     cordova.exec(successCallback, errorCallback, "FieldKitRecorder", "startTag", [tierInt]);
 };
