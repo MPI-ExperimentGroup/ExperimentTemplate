@@ -77,6 +77,7 @@ public class WavRecorder implements AudioRecorder {
         }
         // todo: allow for new file names to be passed and for the recording to contine but into the new file after cleanly closing the previous file
         if (recorder == null) {
+            recordedLength = 0;
             // start the audio recording
             recorder = new AudioRecord(MediaRecorder.AudioSource.MIC, RECORDER_SAMPLERATE, RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING, BUFFER_SIZE);
             recordingThread = new Thread(new Runnable() {
@@ -85,7 +86,6 @@ public class WavRecorder implements AudioRecorder {
                     System.out.println("onPeriodicNotification");
                     try {
                         final RandomAccessFile randomAccessFile = new RandomAccessFile(outputFile, "rw");
-
                         // write a temporary wav header
                         writeWaveFileHeader(randomAccessFile, 0, 36, RECORDER_SAMPLERATE, 1, 1000);
                         isRecording = true;
