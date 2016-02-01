@@ -23,17 +23,41 @@
 
 // this hook requires ncp which can be installed globally with: npm install -g ncp. Or into the directory of this script with npm install -g ncp
 // also requires rmdir which can be installed with: npm install rmdir 
-
+var fs = require('fs');
 var rmdir = require('rmdir');
 
 console.log('Starting to remove the old GTW output from the www directory and copying the GTW output into the www directory');
 
-var relevantEntries = ["ExperimentTemplate/", "images/", "static/", "css/"];
+
+rmdir('~/Documents/ExperimentTemplate/frinex-cordova/plugins/', function (err) {
+    return console.error(err);
+});
+rmdir('~/Documents/ExperimentTemplate/frinex-cordova/platforms/', function (err) {
+    return console.error(err);
+});
+
+var relevantEntries = ["ExperimentTemplate/",
+//    "images/",
+//    "static/practice",
+//    "static/list1_a",
+//    "static/list1_b",
+//    "static/list1_c",
+//    "static/list2_a",
+//    "static/list2_b",
+//    "static/list2_c",
+//    "static/list3_a",
+//    "static/list3_b",
+//    "static/list3_c",
+//    "static/list4_a",
+//    "static/list4_b",
+//    "static/list4_c",
+    "css/"];
 
 var ncp = require('ncp').ncp;
 
 ncp.limit = 16;
-targetBuild = "configuration-frinex-gui-0.1.552-testing";
+targetBuild = "JenaRecorder-frinex-gui-0.1.691-testing";
+//targetBuild = "sentveri_exp3-frinex-gui-0.1.683-testing";
 relevantEntries.forEach(function (entry) {
     console.log('removing www/' + entry);
     rmdir('www/' + entry, function (err, dirs, files) {
@@ -48,9 +72,31 @@ relevantEntries.forEach(function (entry) {
     });
 });
 
+//["platforms/",
+//    "plugins",
+//    "www/static/"].forEach(function (entry) {
+//    console.log('removing ' + entry);
+//    rmdir('www/' + entry, function (err, dirs, files) {
+//        ncp("../gwt-cordova/target/" + targetBuild + "/" + entry + "/", "www/" + entry + "/", function (err) {
+//            if (err) {
+//                console.log('GTW copy failed: ' + entry);
+//                console.error(err);
+//                process.exit(1); // an incomplete build should not continue
+//            }
+//            console.log('GTW copy competed: ' + entry);
+//        });
+//    });
+////fs.mkdirSync('www/static');
+
 ncp("../gwt-cordova/target/" + targetBuild + "/ExperimentTemplate.html", "www/index.html", function (err) {
     if (err) {
         return console.error(err);
     }
     console.log('copy index.html complete');
+});
+ncp("../gwt-cordova/target/" + targetBuild + "/WEB-INF/classes/config.xml", "config.xml", function (err) {
+    if (err) {
+        return console.error(err);
+    }
+    console.log('copy config.xml complete');
 });
