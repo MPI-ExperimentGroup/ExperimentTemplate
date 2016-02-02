@@ -64,11 +64,11 @@ public class WavRecorder implements AudioRecorder {
     }
 
     public String startRecording(final CordovaInterface cordova, final CallbackContext callbackContext, final File outputDirectory) throws IOException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yy_MM_dd");
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("yy_MM_dd");
         Date date = new Date();
-        dateFormat = new SimpleDateFormat("yyMMddHHmmss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HHmmss");
         String timeString = dateFormat.format(date);
-        final String baseName = timeString + UUID.randomUUID().toString();
+        final String baseName = timeString; // + UUID.randomUUID().toString();
 
         final File outputFile = new File(outputDirectory, baseName + AUDIO_RECORDER_FILE_EXT_WAV);
 
@@ -86,6 +86,7 @@ public class WavRecorder implements AudioRecorder {
                     System.out.println("onPeriodicNotification");
                     try {
                         final RandomAccessFile randomAccessFile = new RandomAccessFile(outputFile, "rw");
+                        randomAccessFile.seek(randomAccessFile.length());
                         // write a temporary wav header
                         writeWaveFileHeader(randomAccessFile, 0, 36, RECORDER_SAMPLERATE, 1, 1000);
                         isRecording = true;
@@ -97,7 +98,7 @@ public class WavRecorder implements AudioRecorder {
                             System.out.println("bytesRead: " + bytesRead);
                             if (bytesRead > 0) {
                                 randomAccessFile.write(buffer, 0, bytesRead);
-                                recordedLength += bytesRead;
+                                recordedLength = randomAccessFile.length() - 36;
                             }
                             isRecording = recorder.getRecordingState() == AudioRecord.RECORDSTATE_RECORDING;
                             System.out.println("recordedLength: " + recordedLength);
