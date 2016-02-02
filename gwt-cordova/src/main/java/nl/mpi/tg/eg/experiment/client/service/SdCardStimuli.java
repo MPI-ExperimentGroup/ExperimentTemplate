@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Timer;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
@@ -42,6 +43,7 @@ public class SdCardStimuli {
 
     public final void fillStimulusList(final String directoryTag) {
         scanSdCard(MPI_STIMULI, directoryTag);
+//        testInsertStimulus();
 //        nonScan();
 //        for (GeneratedStimulus.Tag currentTag : tagArray) {
 //            scanSdCard(MPI_STIMULI, currentTag.name().replaceFirst("^tag_", ""));
@@ -54,16 +56,17 @@ public class SdCardStimuli {
     }
 
     public void insertDirectory(String directoryPath, String directoryName) {
-        System.out.println("directoryPath: " + directoryPath);
+        // GWT.log("directoryPath: " + directoryPath);
     }
 
     public void insertStimulus(String stimulusPath, String fileName) {
-        System.out.println("stimulusPath: " + stimulusPath);
-        System.out.println("fileName: " + fileName);
-        final String stimulusId = stimulusPath;
+        // GWT.log("stimulusPath: " + stimulusPath);
+        // GWT.log("fileName: " + fileName);
+//        final String stimulusId = stimulusPath.substring(stimulusPath.indexOf(MPI_STIMULI) + MPI_STIMULI.length() + 1);
+        final String stimulusId = stimulusPath.replaceAll("^.*" + MPI_STIMULI + "/", "").replaceAll("\\....$", "");
         final String suffix = stimulusPath.toLowerCase().substring(stimulusPath.length() - 4, stimulusPath.length());
-        System.out.println("suffix: " + suffix);
-        final String stimuliLabel = stimulusPath;
+        // GWT.log("suffix: " + suffix);
+        final String stimuliLabel = stimulusId;
         final String stimuliCode = stimulusPath;
         final int pause = 0;
         final boolean isMp3 = ".mp3".equals(suffix);
@@ -77,7 +80,7 @@ public class SdCardStimuli {
     }
 
     public void errorAction(String errorCode, String errorMessage) {
-        System.out.println("errorAction: " + errorCode + " " + errorMessage);
+        // GWT.log("errorAction: " + errorCode + " " + errorMessage);
         simulusErrorListener.postLoadTimerFired();
     }
 
@@ -102,6 +105,35 @@ public class SdCardStimuli {
             }
         };
         timer.schedule(100);
+    }
+
+    public void testInsertStimulus() {
+        // GWT.log("insertStimulus");
+        String[] testData = new String[]{
+            "file:///storage/emulated/0/MPI_STIMULI/bodies/09.png",
+            "file:///storage/emulated/0/MPI_STIMULI/bodies/10.png",
+            "file:///storage/emulated/0/MPI_STIMULI/bodies/11.png",
+            "file:///storage/emulated/0/MPI_STIMULI/bodies/12.png",
+            "file:///storage/emulated/0/MPI_STIMULI/bodies/13.png",
+            "file:///storage/emulated/0/MPI_STIMULI/bodies/14.png",
+            "file:///storage/emulated/0/MPI_STIMULI/bodies/15.png"};
+        for (String stimulusPath : testData) {
+            insertStimulus(stimulusPath, stimulusPath.substring(stimulusPath.lastIndexOf("/") + 1));
+        }
+        for (Stimulus stimulus : stimulusArray) {
+            GWT.log("image " + stimulus.getImage());
+            GWT.log("label " + stimulus.getLabel());
+            GWT.log("mp3 " + stimulus.getMp3());
+            GWT.log("mp4 " + stimulus.getMp4());
+            GWT.log("ogg " + stimulus.getOgg());
+//             GWT.log(stimulus.getTags());
+            GWT.log("id " + stimulus.getUniqueId());
+            GWT.log("is image " + stimulus.isImage());
+            GWT.log("is mp3 " + stimulus.isMp3());
+            GWT.log("is mp4 " + stimulus.isMp4());
+            GWT.log("is ogg " + stimulus.isOgg());
+        }
+        loadingCompleteAction();
     }
 
     protected native void scanSdCard(String stimuliDirectory, String cleanedTag) /*-{
