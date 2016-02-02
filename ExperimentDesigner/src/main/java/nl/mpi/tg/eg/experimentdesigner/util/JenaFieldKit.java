@@ -215,12 +215,12 @@ public class JenaFieldKit {
         startRecorderFeature.addFeatureAttributes(FeatureAttribute.filePerStimulus, "true");
         hasMoreStimulusFeature.getPresenterFeatureList().add(startRecorderFeature);
 
-        final PresenterFeature lanwisImage = addImageFeature(hasMoreStimulusFeature, "90", "speak the name in the language (lanwis)", "done");
-        final PresenterFeature bislamaImage = addImageFeature(lanwisImage, "70", "It''s your turn! What did they say? Translate it into Bislama if you can.", "done");
-        final PresenterFeature lanwisExperience = addImageFeature(bislamaImage, "90", "ask for personal experience with... in language (lanwis)", "done");
-        final PresenterFeature bislamaExperience = addImageFeature(lanwisExperience, "70", "It''s your turn! What experience did they have? Translate it into Bislama if you can.", "done");
-        final PresenterFeature lanwisStory = addImageFeature(bislamaExperience, "90", "custom story relating to ... (lanwis)", "done");
-        final PresenterFeature bislamaStory = addImageFeature(lanwisStory, "70", "It''s your turn! What story did they tell? Translate it into Bislama if you can.", "done");
+        final PresenterFeature lanwisImage = addImageFeature(hasMoreStimulusFeature, "80", "speak the name in the language (lanwis)", "done");
+        final PresenterFeature bislamaImage = addImageFeature(lanwisImage, "60", "It''s your turn! What did they say? Translate it into Bislama if you can.", "done");
+        final PresenterFeature lanwisExperience = addImageFeature(bislamaImage, "80", "ask for personal experience with... in language (lanwis)", "done");
+        final PresenterFeature bislamaExperience = addImageFeature(lanwisExperience, "60", "It''s your turn! What experience did they have? Translate it into Bislama if you can.", "done");
+        final PresenterFeature lanwisStory = addImageFeature(bislamaExperience, "80", "custom story relating to ... (lanwis)", "done");
+        final PresenterFeature bislamaStory = addImageFeature(lanwisStory, "60", "It''s your turn! What story did they tell? Translate it into Bislama if you can.", "done");
         final PresenterFeature autoNextFeature = new PresenterFeature(FeatureType.nextStimulus, null);
         autoNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextImage");
         autoNextFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
