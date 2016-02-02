@@ -35,7 +35,7 @@ public class FieldKitRecorder extends CordovaPlugin {
 
     private AudioRecorder audioRecorder = new WavRecorder();
     String externalStoragePath = Environment.getExternalStorageDirectory().getPath();
-    private static final String AUDIO_RECORDER_FOLDER = "AudioData";
+    private static final String AUDIO_RECORDER_FOLDER = "MPI_Recorder";
 //  private   String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath();
     private CsvWriter csvWriter = null;
 
@@ -50,11 +50,11 @@ public class FieldKitRecorder extends CordovaPlugin {
                 @Override
                 public void run() {
                     try {
-                        Date date = new Date();
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("yy_MM_dd");
-                        String dirName = "MPI_Recorder_" + dateFormat.format(date);
+//                        Date date = new Date();
+                        //SimpleDateFormat dateFormat = new SimpleDateFormat("yy_MM_dd");
+//                        String dirName = "MPI_Recorder_" + dateFormat.format(date);
                         final File outputDirectory = new File(externalStoragePath, AUDIO_RECORDER_FOLDER
-                                + File.separator + dirName
+//                                + File.separator + dirName
                                 + File.separator + userId
                                 + File.separator + stimulusSet
                                 + ((stimulusId != null && !stimulusId.isEmpty()) ? File.separator + stimulusId + File.separator : ""));
@@ -106,6 +106,7 @@ public class FieldKitRecorder extends CordovaPlugin {
             System.out.println("action: endTag");
             final String tier = args.getString(0);
             final String tagString = args.getString(1);
+            final String stimulusString = args.getString(2);
             cordova.getThreadPool().execute(new Runnable() {
                 @Override
                 public void run() {
