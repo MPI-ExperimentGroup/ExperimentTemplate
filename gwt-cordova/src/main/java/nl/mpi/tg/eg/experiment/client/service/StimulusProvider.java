@@ -40,7 +40,6 @@ public class StimulusProvider {
 //    private final List<String> pictureList = new ArrayList<>();
     private int totalStimuli;
     private Stimulus currentStimulus = null;
-    private String currentTags = "";
 
     public StimulusProvider() {
         GeneratedStimulus.fillStimulusList(stimulusArray);
@@ -101,7 +100,6 @@ public class StimulusProvider {
             }, simulusErrorListener);
             sdCardStimuli.fillStimulusList(directoryTag);
         }
-        setCurrentTags(directoryTagArray);
     }
 
     public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final String seenList) {
@@ -123,7 +121,6 @@ public class StimulusProvider {
             }
         }
         totalStimuli = stimulusSubsetArray.size();
-        setCurrentTags(selectionTags);
     }
 
     public void getSubset(final int maxWordUse, final String seenList, final List<Tag> speakerTags, final List<Tag> wordTags, final int maxSpeakerWordCount) {
@@ -230,27 +227,7 @@ public class StimulusProvider {
     public boolean hasNextStimulus() {
         return !stimulusSubsetArray.isEmpty();
     }
-
-    private void setCurrentTags(final List<Tag> tagArray) {
-        String tempTags = "";
-        for (Tag currentTag : tagArray) {
-            tempTags += currentTag.name();
-        }
-        currentTags = tempTags;
-    }
-
-    private void setCurrentTags(final ArrayList<String> directoryTagArray) {
-        String tempTags = "";
-        for (String currentTag : directoryTagArray) {
-            tempTags += currentTag;
-        }
-        currentTags = tempTags;
-    }
-
-    public String getCurrentTags() {
-        return currentTags;
-    }
-
+    
     public int getTotalStimuli() {
         return totalStimuli;
     }
