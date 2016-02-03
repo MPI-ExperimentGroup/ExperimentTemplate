@@ -565,7 +565,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@timeToNext) then @timeToNext else ''" />
         <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;') else ''" />        
         <xsl:value-of select="if(@wavFormat) then concat(@wavFormat eq 'true', ', ') else ''" />
-        <xsl:value-of select="if(@filePerStimulus) then concat(@filePerStimulus eq 'true', '') else ''" />
+        <xsl:value-of select="if(@filePerStimulus) then concat(@filePerStimulus eq 'true', ', ') else ''" />
         <xsl:value-of select="if(@eventTier) then concat(@eventTier, if (@eventTag) then ', ' else '') else ''" />
         <xsl:value-of select="if(@percentOfPage) then @percentOfPage else ''" />
         <xsl:value-of select="if(@maxHeight) then concat(', ', @maxHeight) else ''" />
