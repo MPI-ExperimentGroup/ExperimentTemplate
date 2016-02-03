@@ -150,6 +150,7 @@ public class JenaFieldKit {
         final PresenterFeature startRecorderFeature = new PresenterFeature(FeatureType.startAudioRecorder, null);
         startRecorderFeature.addFeatureAttributes(FeatureAttribute.wavFormat, "true");
         startRecorderFeature.addFeatureAttributes(FeatureAttribute.filePerStimulus, "false");
+        startRecorderFeature.addFeatureAttributes(FeatureAttribute.eventTag, screenName);
         hasMoreStimulusFeature.getPresenterFeatureList().add(startRecorderFeature);
 
         final PresenterFeature startTagFeature = new PresenterFeature(FeatureType.startAudioRecorderTag, null);
@@ -212,6 +213,7 @@ public class JenaFieldKit {
         // todo: add more reverter tags as required
         final PresenterFeature startRecorderFeature = new PresenterFeature(FeatureType.startAudioRecorder, null);
         startRecorderFeature.addFeatureAttributes(FeatureAttribute.wavFormat, "true");
+        startRecorderFeature.addFeatureAttributes(FeatureAttribute.eventTag, screenName);
         startRecorderFeature.addFeatureAttributes(FeatureAttribute.filePerStimulus, "true");
         hasMoreStimulusFeature.getPresenterFeatureList().add(startRecorderFeature);
 
