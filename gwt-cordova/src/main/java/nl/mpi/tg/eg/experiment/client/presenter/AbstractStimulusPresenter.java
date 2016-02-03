@@ -185,11 +185,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     protected void showStimulus() {
         if (stimulusProvider.hasNextStimulus()) {
             stimulusProvider.getNextStimulus();
+//            super.startAudioRecorderTag(STIMULUS_TIER);
             hasMoreStimulusListener.postLoadTimerFired();
         } else {
             endOfStimulusListener.postLoadTimerFired();
         }
     }
+//    private static final int STIMULUS_TIER = 2;
 
     protected void responseCorrect(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener) {
         timedStimulusListener.postLoadTimerFired();
@@ -245,16 +247,16 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
     }
 
-    protected void endAudioRecorderTag(int tier) {
-        super.endAudioRecorderTag(tier, stimulusProvider.getCurrentStimulus().getUniqueId());
+    protected void endAudioRecorderTag(int tier, String tagString) {
+        super.endAudioRecorderTag(tier, stimulusProvider.getCurrentStimulus().getUniqueId(), tagString);
     }
 
     protected void startAudioRecorderTag(int tier) {
-        super.startAudioRecorderTag(tier);
+        super.startAudioRecorderTag(tier); //((tier < 1) ? 1 : tier) + 2); //  tier 1 and 2 are reserved for stimulus set loading and stimulus display events
     }
 
-    protected void startAudioRecorder(boolean wavFormat, boolean filePerStimulus) {
-        super.startAudioRecorder(true, userResults.getUserData().getUserId().toString(), stimulusProvider.getCurrentTags(), (filePerStimulus) ? stimulusProvider.getCurrentStimulus().getUniqueId() : "");
+    protected void startAudioRecorder(boolean wavFormat, boolean filePerStimulus, String directoryName) {
+        super.startAudioRecorder(true, userResults.getUserData().getUserId().toString(), directoryName, (filePerStimulus) ? stimulusProvider.getCurrentStimulus().getUniqueId() : "");
     }
 
     protected void showStimulusGrid(final AppEventListner appEventListner, final int postLoadCorrectMs, final TimedStimulusListener correctListener, final int postLoadIncorrectMs, final TimedStimulusListener incorrectListener, final int columnCount, final String imageWidth, final String eventTag) {

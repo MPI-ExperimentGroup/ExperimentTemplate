@@ -173,8 +173,9 @@ public abstract class AbstractPresenter implements Presenter {
         }
     }
 
-    protected native void startAudioRecorder(final boolean wavFormat, String userIdString, String stimulusSetString, String stimulusIdString) /*-{
+    protected native void startAudioRecorder(final boolean wavFormat, String userIdString, String directoryName, String stimulusIdString) /*-{
         var abstractPresenter = this;
+        console.log("startAudioRecorderError: " + wavFormat + " : " + userIdString + " : " + directoryName + " : " + stimulusIdString);
         if($wnd.plugins){
             $wnd.plugins.fieldKitRecorder.record(function (tagvalue) {
                 console.log("startAudioRecorderOk: " + tagvalue);
@@ -182,7 +183,7 @@ public abstract class AbstractPresenter implements Presenter {
             }, function (tagvalue) {
                 console.log("startAudioRecorderError: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
-            },  userIdString, stimulusSetString,  stimulusIdString);
+            },  userIdString, directoryName,  stimulusIdString);
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
         }
@@ -192,7 +193,7 @@ public abstract class AbstractPresenter implements Presenter {
         var abstractPresenter = this;
         if($wnd.plugins){
             $wnd.plugins.fieldKitRecorder.isRecording(function () {
-                console.log("isAudioRecording");
+//                console.log("isAudioRecording");
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, null);
             }, function (tagvalue) {
                 console.log("isAudioRecording: " + tagvalue);
@@ -207,7 +208,7 @@ public abstract class AbstractPresenter implements Presenter {
         var abstractPresenter = this;
         if($wnd.plugins){
             $wnd.plugins.fieldKitRecorder.getTime(function (currentTime) {
-                console.log("isAudioRecording: " + " : " + currentTime);
+//                console.log("isAudioRecording: " + " : " + currentTime);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, currentTime);
             }, function (tagvalue) {
                 console.log("isAudioRecording: " + tagvalue);
@@ -220,6 +221,7 @@ public abstract class AbstractPresenter implements Presenter {
 
     protected native void stopAudioRecorder() /*-{
         var abstractPresenter = this;
+        console.log("stopAudioRecorder");
         if($wnd.plugins){
             $wnd.plugins.fieldKitRecorder.stop(function (tagvalue) {
                 console.log("stopAudioRecorderOk: " + tagvalue);
@@ -235,6 +237,7 @@ public abstract class AbstractPresenter implements Presenter {
 
     protected native void startAudioRecorderTag(int tier) /*-{
         var abstractPresenter = this;
+        console.log("startAudioRecorderTag: " + tier);
         if($wnd.plugins){
             $wnd.plugins.fieldKitRecorder.startTag(function (tagvalue) {
                 console.log("startAudioRecorderTagOk: " + tagvalue);
@@ -248,8 +251,9 @@ public abstract class AbstractPresenter implements Presenter {
         }
      }-*/;
 
-    protected native void endAudioRecorderTag(int tier, String eventTag) /*-{
+    protected native void endAudioRecorderTag(int tier, String stimulusString, String eventTag) /*-{
         var abstractPresenter = this;
+        console.log("endAudioRecorderTag: " + tier + " : " + stimulusString + " : " + eventTag);
         if($wnd.plugins){
             $wnd.plugins.fieldKitRecorder.endTag(function (tagvalue) {
                 console.log("endAudioRecorderTagOk: " + tagvalue);
@@ -257,7 +261,7 @@ public abstract class AbstractPresenter implements Presenter {
             }, function (tagvalue) {
                 console.log("endAudioRecorderTagError: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
-            }, tier, eventTag);
+            }, tier, stimulusString, eventTag);
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
         }
