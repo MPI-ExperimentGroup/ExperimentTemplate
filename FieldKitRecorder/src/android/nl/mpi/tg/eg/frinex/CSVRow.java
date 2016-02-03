@@ -27,12 +27,14 @@ public class CSVRow implements Comparable {
     private final long endTime;
     private final int tier;
     private final String tagString;
+    private final String stimulusString;
 
-    public CSVRow(long beginTime, long endTime, int tier, String tagString) {
+    public CSVRow(long beginTime, long endTime, int tier, String stimulusString, String tagString) {
         this.beginTime = beginTime;
         this.endTime = endTime;
         this.tier = tier;
         this.tagString = tagString;
+        this.stimulusString = stimulusString;
     }
 
     public long getBeginTime() {
@@ -49,6 +51,10 @@ public class CSVRow implements Comparable {
 
     public String getTagString() {
         return tagString;
+    }
+
+    public String getStimulusString() {
+        return stimulusString;
     }
 
     @Override

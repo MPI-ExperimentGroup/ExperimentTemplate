@@ -46,7 +46,7 @@ public class CsvWriter {
     public void writeCsvFile() throws IOException {
 //        System.out.println("filePath: " + filePath);
         final FileWriter csvFileWriter = new FileWriter(new File(outputDirectory, baseName + CSV_SUFFIX), true);
-        csvFileWriter.write("BeginTime,EndTime,BeginTime2,EndTime2,Tier,Tag\n");
+        csvFileWriter.write("BeginTime,EndTime,BeginTime2,EndTime2,Tier,Stimulus,Tag\n");
         Collections.sort(rows);
         for (CSVRow row : rows) {
             csvFileWriter.write(makeTimeString(row.getBeginTime()) + ","
@@ -54,6 +54,7 @@ public class CsvWriter {
                     + "," + makeTimeString2(row.getBeginTime())
                     + "," + makeTimeString2(row.getEndTime())
                     + "," + row.getTier() + ","
+                    + row.getStimulusString() + ","
                     + row.getTagString() + "\n");
         }
         csvFileWriter.close();
@@ -65,12 +66,13 @@ public class CsvWriter {
         startTimes.put(tier, startTime);
     }
 
-    public void endTag(int tier, long endTime, String tagString) {
+    public void endTag(int tier, long endTime, String stimulusString, String tagString) {
         System.out.println("tier: " + tier);
         System.out.println("endTime: " + endTime);
+        System.out.println("stimulusString: " + stimulusString);
         System.out.println("tagString: " + tagString);
         final Long startTime = startTimes.get(tier);
-        rows.add(new CSVRow((startTime != null) ? startTime : endTime, endTime, tier, tagString));
+        rows.add(new CSVRow((startTime != null) ? startTime : endTime, endTime, tier, stimulusString, tagString));
     }
 
     public static String makeTimeString(long milli) {//System.out.println("MILLI: " + milli);

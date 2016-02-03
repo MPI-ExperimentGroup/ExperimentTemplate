@@ -83,7 +83,7 @@ public class WavRecorder implements AudioRecorder {
             recordingThread = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    System.out.println("onPeriodicNotification");
+                    System.out.println("recording started");
                     try {
                         final RandomAccessFile randomAccessFile = new RandomAccessFile(outputFile, "rw");
                         randomAccessFile.seek(randomAccessFile.length());
@@ -93,18 +93,19 @@ public class WavRecorder implements AudioRecorder {
                         callbackContext.success();
                         byte buffer[] = new byte[BUFFER_SIZE];
                         while (recorder != null && isRecording) {
-                            System.out.println("recorder.read");
+//                            System.out.println("recorder.read");
                             final int bytesRead = recorder.read(buffer, 0, buffer.length);
-                            System.out.println("bytesRead: " + bytesRead);
+//                            System.out.println("bytesRead: " + bytesRead);
                             if (bytesRead > 0) {
                                 randomAccessFile.write(buffer, 0, bytesRead);
                                 recordedLength = randomAccessFile.length() - 36;
                             }
                             isRecording = recorder.getRecordingState() == AudioRecord.RECORDSTATE_RECORDING;
-                            System.out.println("recordedLength: " + recordedLength);
-                            System.out.println("bytesRead: " + bytesRead);
-                            System.out.println("bufferSize: " + BUFFER_SIZE);
+//                            System.out.println("recordedLength: " + recordedLength);
+//                            System.out.println("bytesRead: " + bytesRead);
+//                            System.out.println("bufferSize: " + BUFFER_SIZE);
                         }
+                        System.out.println("recording ended");
                         recorder.release();
                         recorder = null;
                         // rewrite the wav header

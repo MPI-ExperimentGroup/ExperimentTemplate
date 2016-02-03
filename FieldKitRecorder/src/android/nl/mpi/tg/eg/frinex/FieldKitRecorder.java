@@ -54,7 +54,7 @@ public class FieldKitRecorder extends CordovaPlugin {
                         //SimpleDateFormat dateFormat = new SimpleDateFormat("yy_MM_dd");
 //                        String dirName = "MPI_Recorder_" + dateFormat.format(date);
                         final File outputDirectory = new File(externalStoragePath, AUDIO_RECORDER_FOLDER
-//                                + File.separator + dirName
+                                //                                + File.separator + dirName
                                 + File.separator + userId
                                 + File.separator + stimulusSet
                                 + ((stimulusId != null && !stimulusId.isEmpty()) ? File.separator + stimulusId + File.separator : ""));
@@ -105,13 +105,16 @@ public class FieldKitRecorder extends CordovaPlugin {
         if (action.equals("endTag")) {
             System.out.println("action: endTag");
             final String tier = args.getString(0);
-            final String tagString = args.getString(1);
-            final String stimulusString = args.getString(2);
+            final String stimulusString = args.getString(1);
+            final String tagString = args.getString(2);
+            System.out.println("endTag: " + tier);
+            System.out.println("endTag: " + stimulusString);
+            System.out.println("endTag: " + tagString);
             cordova.getThreadPool().execute(new Runnable() {
                 @Override
                 public void run() {
                     if (csvWriter != null) {
-                        csvWriter.endTag(Integer.parseInt(tier), audioRecorder.getTime(), tagString);
+                        csvWriter.endTag(Integer.parseInt(tier), audioRecorder.getTime(), stimulusString, tagString);
                     } else {
                         callbackContext.error("not recording");
                     }
@@ -120,7 +123,7 @@ public class FieldKitRecorder extends CordovaPlugin {
             return true;
         }
         if (action.equals("getTime")) {
-            System.out.println("action: getTime");
+//            System.out.println("action: getTime");
             cordova.getThreadPool().execute(new Runnable() {
                 @Override
                 public void run() {
@@ -134,7 +137,7 @@ public class FieldKitRecorder extends CordovaPlugin {
             return true;
         }
         if (action.equals("isRecording")) {
-            System.out.println("action: isRecording");
+//            System.out.println("action: isRecording");
             cordova.getThreadPool().execute(new Runnable() {
                 @Override
                 public void run() {
