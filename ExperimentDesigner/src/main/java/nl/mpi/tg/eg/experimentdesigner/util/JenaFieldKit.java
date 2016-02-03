@@ -238,6 +238,9 @@ public class JenaFieldKit {
     }
 
     private PresenterFeature addImageFeature(PresenterFeature parentFeature, String percentOfPage, String label, String button) {
+        final PresenterFeature startTagFeature = new PresenterFeature(FeatureType.startAudioRecorderTag, null);
+        startTagFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
+        parentFeature.getPresenterFeatureList().add(startTagFeature);
         parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
         parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
@@ -248,6 +251,10 @@ public class JenaFieldKit {
         parentFeature.getPresenterFeatureList().add(imageFeature);
         parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, label));
         final PresenterFeature actionFeature = new PresenterFeature(FeatureType.actionButton, button);
+        final PresenterFeature endAudioRecorderTagFeature = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
+        endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
+        endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTag, label);
+        actionFeature.getPresenterFeatureList().add(endAudioRecorderTagFeature);
         actionFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         actionFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
         parentFeature.getPresenterFeatureList().add(actionFeature);
