@@ -107,35 +107,6 @@ public class SdCardStimuli {
         timer.schedule(100);
     }
 
-    public void testInsertStimulus() {
-        // GWT.log("insertStimulus");
-        String[] testData = new String[]{
-            "file:///storage/emulated/0/MPI_STIMULI/bodies/09.png",
-            "file:///storage/emulated/0/MPI_STIMULI/bodies/10.png",
-            "file:///storage/emulated/0/MPI_STIMULI/bodies/11.png",
-            "file:///storage/emulated/0/MPI_STIMULI/bodies/12.png",
-            "file:///storage/emulated/0/MPI_STIMULI/bodies/13.png",
-            "file:///storage/emulated/0/MPI_STIMULI/bodies/14.png",
-            "file:///storage/emulated/0/MPI_STIMULI/bodies/15.png"};
-        for (String stimulusPath : testData) {
-            insertStimulus(stimulusPath, stimulusPath.substring(stimulusPath.lastIndexOf("/") + 1));
-        }
-        for (Stimulus stimulus : stimulusArray) {
-            GWT.log("image " + stimulus.getImage());
-            GWT.log("label " + stimulus.getLabel());
-            GWT.log("mp3 " + stimulus.getMp3());
-            GWT.log("mp4 " + stimulus.getMp4());
-            GWT.log("ogg " + stimulus.getOgg());
-//             GWT.log(stimulus.getTags());
-            GWT.log("id " + stimulus.getUniqueId());
-            GWT.log("is image " + stimulus.isImage());
-            GWT.log("is mp3 " + stimulus.isMp3());
-            GWT.log("is mp4 " + stimulus.isMp4());
-            GWT.log("is ogg " + stimulus.isOgg());
-        }
-        loadingCompleteAction();
-    }
-
     protected native void scanSdCard(String stimuliDirectory, String cleanedTag) /*-{
         var sdCardStimuli = this;
         
