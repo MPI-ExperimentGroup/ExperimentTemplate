@@ -38,6 +38,7 @@ public class FieldKitRecorder extends CordovaPlugin {
     private static final String AUDIO_RECORDER_FOLDER = "MPI_Recorder";
 //  private   String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath();
     private CsvWriter csvWriter = null;
+    private String currentRecoringDirectory = null;
 
     @Override
     public boolean execute(final String action, final JSONArray args, final CallbackContext callbackContext) throws JSONException {
@@ -46,6 +47,10 @@ public class FieldKitRecorder extends CordovaPlugin {
             final String userId = args.getString(0);
             final String stimulusSet = args.getString(1);
             final String stimulusId = args.getString(2);
+
+            System.out.println("record: " + userId);
+            System.out.println("record: " + stimulusSet);
+            System.out.println("record: " + stimulusId);
             cordova.getThreadPool().execute(new Runnable() {
                 @Override
                 public void run() {
@@ -58,8 +63,18 @@ public class FieldKitRecorder extends CordovaPlugin {
                                 + File.separator + userId
                                 + File.separator + stimulusSet
                                 + ((stimulusId != null && !stimulusId.isEmpty()) ? File.separator + stimulusId + File.separator : ""));
-                        final String baseName = audioRecorder.startRecording(cordova, callbackContext, outputDirectory);
-                        csvWriter = new CsvWriter(outputDirectory, baseName);
+                        if (currentRecoringDirectory == null || !currentRecoringDirectory.equals(outputDirectory.getAbsolutePath())) {
+                            if (currentRecoringDirectory != null) {
+                                if (csvWriter != null) {
+                                    csvWriter.writeCsvFile();
+                                    csvWriter = null;
+                                }
+                                //audioRecorder.stopRecording(callbackContext); // todo: this might not finish in time and therefore might not start a new recording
+                            }
+                            currentRecoringDirectory = outputDirectory.getAbsolutePath();
+                            final String baseName = audioRecorder.startRecording(cordova, callbackContext, outputDirectory);
+                            csvWriter = new CsvWriter(outputDirectory, baseName);
+                        }
                     } catch (final IOException e) {
                         System.out.println("IOException: " + e.getMessage());
                         callbackContext.error(e.getMessage());
