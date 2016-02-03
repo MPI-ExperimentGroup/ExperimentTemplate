@@ -53,9 +53,9 @@ public class CsvWriter {
                     + makeTimeString(row.getEndTime())
                     + "," + makeTimeString2(row.getBeginTime())
                     + "," + makeTimeString2(row.getEndTime())
-                    + "," + row.getTier() + ","
-                    + row.getStimulusString() + ","
-                    + row.getTagString() + "\n");
+                    + "," + row.getTier() + ",'"
+                    + row.getStimulusString().replace("'", "''") + "','"
+                    + row.getTagString().replace("'", "''") + "'\n");
         }
         csvFileWriter.close();
     }
