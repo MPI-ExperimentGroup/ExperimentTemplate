@@ -27,128 +27,171 @@ import java.io.RandomAccessFile;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
-import org.apache.cordova.CallbackContext;
-import org.apache.cordova.CordovaInterface;
 
 /**
  * @since Dec 10, 2015 3:24:50 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class WavRecorder implements AudioRecorder {
+public class WavRecorder implements AudioRecorder, Runnable {
 
+    enum RecorderState {
+        idle,
+        recording,
+        terminating
+    }
+    private final Object lockObject = new Object();
     private static final int RECORDER_BPP = 16;
     private static final String AUDIO_RECORDER_FILE_EXT_WAV = ".wav";
     private static final int RECORDER_SAMPLERATE = 44100;
     private static final int RECORDER_CHANNELS = AudioFormat.CHANNEL_IN_MONO;
     private static final int RECORDER_AUDIO_ENCODING = AudioFormat.ENCODING_PCM_16BIT;
-//    private final int bufferSize;
-    public AudioRecord recorder = null;
-    private long recordedLength = 0;
-    private Thread recordingThread = null;
-    private boolean isRecording = false;
+
+    private volatile long recordedLength = 0;
+    private final Thread recordingThread;
+    private volatile boolean isRecording = false;
+//    private boolean isTerminating = false;
+    private volatile RecorderState recorderState = RecorderState.idle;
     private static final int TIMER_INTERVAL = 120;
     private static final int FRAME_PERIOD = RECORDER_SAMPLERATE * TIMER_INTERVAL / 1000;
     private static final int BUFFER_SIZE = FRAME_PERIOD * 2 * 16 * 1 / 8;
-    private File outputFile = null;
+    private volatile File outputFile = null;
+//    private volatile CallbackContext recentCallbackContext = null;
 
     public WavRecorder() {
-
 //        bufferSize = 100 * AudioRecord.getMinBufferSize(RECORDER_SAMPLERATE, RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING);
+        recordingThread = new Thread(this, "recordingThread");
+        recordingThread.start();
+    }
+
+    @Override
+    public void run() {
+        final AudioRecord recorder = new AudioRecord(MediaRecorder.AudioSource.MIC, RECORDER_SAMPLERATE, RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING, BUFFER_SIZE);
+        recordedLength = 0;
+        while (recorderState != RecorderState.terminating) {
+            System.out.println("recording loop");
+            try {
+                synchronized (lockObject) {
+                    try {
+                        if (recorderState == RecorderState.idle) {
+                            System.out.println("recording thread going to sleep");
+                            lockObject.wait(1000);
+                        }
+                    } catch (InterruptedException e) {
+                        System.out.println("recording thread woken");
+                    }
+                }
+                while (recorderState == RecorderState.recording) {
+                    if (recorder.getRecordingState() != AudioRecord.RECORDSTATE_RECORDING) {
+                        // start the audio recording
+                        recorder.startRecording();
+                    }
+                    final RandomAccessFile randomAccessFile;
+                    synchronized (lockObject) {
+                        System.out.println("outputFile: " + outputFile.getAbsolutePath());
+                        randomAccessFile = new RandomAccessFile(outputFile, "rw");
+                        outputFile = null;
+                    }
+                    randomAccessFile.seek(randomAccessFile.length());
+                    // write a temporary wav header
+                    writeWaveFileHeader(randomAccessFile, 0, 36, RECORDER_SAMPLERATE, 1, 1000);
+                    // callbackContext.success(); // we cant call this final callback more than once
+                    byte buffer[] = new byte[BUFFER_SIZE];
+                    // if a new file is specified in outputFile then close the current file and start a new file but with the recorder running the entire time
+                    long recordedLengthInner = 0;
+                    while (recorderState == RecorderState.recording && outputFile == null) {
+                        final int bytesRead = recorder.read(buffer, 0, buffer.length);
+                        if (bytesRead > 0) {
+                            randomAccessFile.write(buffer, 0, bytesRead);
+                            recordedLengthInner = randomAccessFile.length() - 36;
+                        }
+                        synchronized (lockObject) {
+                            isRecording = recorder.getRecordingState() == AudioRecord.RECORDSTATE_RECORDING;
+                            recordedLength = recordedLengthInner;
+                        }
+//                            System.out.println("recordedLength: " + recordedLength);
+//                            System.out.println("bytesRead: " + bytesRead);
+//                            System.out.println("bufferSize: " + BUFFER_SIZE);
+                    }
+                    System.out.println("recording ended");
+                    // rewrite the wav header
+                    long totalAudioLen = randomAccessFile.length() - 36;
+                    long totalDataLen = totalAudioLen + 36;
+                    long longSampleRate = RECORDER_SAMPLERATE;
+                    int channels = 2;
+                    if (RECORDER_CHANNELS == AudioFormat.CHANNEL_IN_MONO) {
+                        channels = 1;
+                    }
+                    long byteRate = RECORDER_BPP * RECORDER_SAMPLERATE * channels / 8;
+
+                    randomAccessFile.seek(0);
+                    writeWaveFileHeader(randomAccessFile, totalAudioLen, totalDataLen, longSampleRate, channels, byteRate);
+                    randomAccessFile.close();
+                }
+                recorder.stop();
+                synchronized (lockObject) {
+                    isRecording = false;
+                }
+            } catch (final IOException e) {
+                System.out.println("IOException: " + e.getMessage());
+                synchronized (lockObject) {
+                    isRecording = false;
+                }
+//                if (recentCallbackContext != null) {
+//                    recentCallbackContext.error(e.getMessage());
+//                    recentCallbackContext = null;
+//                }
+            }
+        }
+        recorder.stop();
+        recorder.release();
     }
 
     public long getTime() {
-        return recordedLength / ((RECORDER_BPP / 8 /* recordedLength is in bytes */) * RECORDER_SAMPLERATE / 1000);
+        synchronized (lockObject) {
+            return recordedLength / ((RECORDER_BPP / 8 /* recordedLength is in bytes */) * RECORDER_SAMPLERATE / 1000);
+        }
     }
 
     public boolean isRecording() {
-        return isRecording;
+        synchronized (lockObject) {
+            return isRecording;
+        }
     }
 
-    public String startRecording(final CordovaInterface cordova, final CallbackContext callbackContext, final File outputDirectory) throws IOException {
+    public String startRecording(final File outputDirectory) throws IOException {
 //        SimpleDateFormat dateFormat = new SimpleDateFormat("yy_MM_dd");
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HHmmss");
         String timeString = dateFormat.format(date);
         final String baseName = timeString; // + UUID.randomUUID().toString();
 
-        // setting outputFile allows for new file names to be passed and for the recording to contine but into the new file after cleanly closing the previous file
-        outputFile = new File(outputDirectory, baseName + AUDIO_RECORDER_FILE_EXT_WAV);
-
-        if (!outputDirectory.exists()) {
-            outputDirectory.mkdirs();
-        }
-        if (recorder == null) {
-            recordedLength = 0;
-            // start the audio recording
-            recorder = new AudioRecord(MediaRecorder.AudioSource.MIC, RECORDER_SAMPLERATE, RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING, BUFFER_SIZE);
-            recordingThread = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    System.out.println("recording started");
-                    try {
-                        while (outputFile != null) {
-                            System.out.println("outputFile: " + outputFile.getAbsolutePath());
-                            final RandomAccessFile randomAccessFile = new RandomAccessFile(outputFile, "rw");
-                            outputFile = null;
-                            randomAccessFile.seek(randomAccessFile.length());
-                            // write a temporary wav header
-                            writeWaveFileHeader(randomAccessFile, 0, 36, RECORDER_SAMPLERATE, 1, 1000);
-                            isRecording = true;
-                            callbackContext.success();
-                            byte buffer[] = new byte[BUFFER_SIZE];
-                            // if a new file is specified in outputFile then close the current file and start a new file but with the recorder running the entire time
-                            while (outputFile == null || recorder != null && isRecording) {
-//                            System.out.println("recorder.read");
-                                final int bytesRead = recorder.read(buffer, 0, buffer.length);
-//                            System.out.println("bytesRead: " + bytesRead);
-                                if (bytesRead > 0) {
-                                    randomAccessFile.write(buffer, 0, bytesRead);
-                                    recordedLength = randomAccessFile.length() - 36;
-                                }
-                                isRecording = recorder.getRecordingState() == AudioRecord.RECORDSTATE_RECORDING;
-//                            System.out.println("recordedLength: " + recordedLength);
-//                            System.out.println("bytesRead: " + bytesRead);
-//                            System.out.println("bufferSize: " + BUFFER_SIZE);
-                            }
-                            System.out.println("recording ended");
-                            recorder.release();
-                            recorder = null;
-                            // rewrite the wav header
-                            long totalAudioLen = randomAccessFile.length() - 36;
-                            long totalDataLen = totalAudioLen + 36;
-                            long longSampleRate = RECORDER_SAMPLERATE;
-                            int channels = 2;
-                            if (RECORDER_CHANNELS == AudioFormat.CHANNEL_IN_MONO) {
-                                channels = 1;
-                            }
-                            long byteRate = RECORDER_BPP * RECORDER_SAMPLERATE * channels / 8;
-
-                            randomAccessFile.seek(
-                                    0);
-                            writeWaveFileHeader(randomAccessFile, totalAudioLen, totalDataLen, longSampleRate, channels, byteRate);
-
-                            randomAccessFile.close();
-                        }
-                    } catch (final IOException e) {
-                        System.out.println("IOException: " + e.getMessage());
-                        callbackContext.error(e.getMessage());
-                    }
-                    isRecording = false;
-                }
-            }, "recordingThread");
-            recordingThread.start();
-            recorder.startRecording();
-        }
-        System.out.println("outputFile: " + outputFile.getPath());
+        synchronized (lockObject) {
+            // setting outputFile allows for new file names to be passed and for the recording to contine but into the new file after cleanly closing the previous file
+            outputFile = new File(outputDirectory, baseName + AUDIO_RECORDER_FILE_EXT_WAV);
+            recordedLength = outputFile.length();
+            if (!outputDirectory.exists()) {
+                outputDirectory.mkdirs();
+            }
+            System.out.println("outputFile: " + outputFile.getPath());
+            recorderState = RecorderState.recording;
+            lockObject.notify();
+        }        
         return baseName;
     }
 
-    public void stopRecording(final CallbackContext callbackContext) throws IOException {
+    public void stopRecording() throws IOException {
         System.out.println("stopRecording");
-        if (recorder != null) {
-            recorder.stop();
+        synchronized (lockObject) {
+            recorderState = RecorderState.idle;
+            lockObject.notify();
         }
-        callbackContext.success();
+    }
+
+    public void terminateRecorder() {
+        synchronized (lockObject) {
+            recorderState = RecorderState.terminating;
+            lockObject.notify();
+        }
     }
 
     private void writeWaveFileHeader(RandomAccessFile out, long totalAudioLen, long totalDataLen, long longSampleRate, int channels, long byteRate) throws IOException {

@@ -72,8 +72,9 @@ public class FieldKitRecorder extends CordovaPlugin {
                                 //audioRecorder.stopRecording(callbackContext); // todo: this might not finish in time and therefore might not start a new recording
                             }
                             currentRecoringDirectory = outputDirectory.getAbsolutePath();
-                            final String baseName = audioRecorder.startRecording(cordova, callbackContext, outputDirectory);
+                            final String baseName = audioRecorder.startRecording(outputDirectory);
                             csvWriter = new CsvWriter(outputDirectory, baseName);
+                            callbackContext.success();
                         }
                     } catch (final IOException e) {
                         System.out.println("IOException: " + e.getMessage());
@@ -93,7 +94,8 @@ public class FieldKitRecorder extends CordovaPlugin {
                             csvWriter.writeCsvFile();
                             csvWriter = null;
                         }
-                        audioRecorder.stopRecording(callbackContext);
+                        audioRecorder.stopRecording();
+                        callbackContext.success();
                     } catch (final IOException e) {
                         System.out.println("IOException: " + e.getMessage());
                         callbackContext.error(e.getMessage());
@@ -166,5 +168,18 @@ public class FieldKitRecorder extends CordovaPlugin {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void onDestroy() {
+        if (csvWriter != null) {
+            try {
+                csvWriter.writeCsvFile();
+                csvWriter = null;
+            } catch (final IOException e) {
+                System.out.println("IOException closing csvWriter: " + e.getMessage());
+            }
+        }
+        audioRecorder.terminateRecorder();
     }
 }

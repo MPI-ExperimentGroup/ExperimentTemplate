@@ -41,10 +41,11 @@ public class CsvWriter {
     public CsvWriter(final File outputDirectory, String baseName) {
         this.outputDirectory = outputDirectory;
         this.baseName = baseName;
+        System.out.println("CsvWriter: " + outputDirectory.getAbsolutePath() + " : " + baseName);
     }
 
     public void writeCsvFile() throws IOException {
-//        System.out.println("filePath: " + filePath);
+        System.out.println("writeCsvFile: " + baseName + CSV_SUFFIX);
         final FileWriter csvFileWriter = new FileWriter(new File(outputDirectory, baseName + CSV_SUFFIX), true);
         csvFileWriter.write("BeginTime,EndTime,BeginTime2,EndTime2,Tier,Stimulus,Tag\n");
         Collections.sort(rows);
