@@ -37,6 +37,7 @@ public class WavRecorder implements AudioRecorder, Runnable {
     enum RecorderState {
         idle,
         recording,
+        paused,
         terminating
     }
     private final Object lockObject = new Object();
@@ -74,13 +75,13 @@ public class WavRecorder implements AudioRecorder, Runnable {
                     try {
                         if (recorderState == RecorderState.idle) {
                             System.out.println("recording thread going to sleep");
-                            lockObject.wait(1000);
+                            lockObject.wait(10000);
                         }
                     } catch (InterruptedException e) {
                         System.out.println("recording thread woken");
                     }
                 }
-                while (recorderState == RecorderState.recording) {
+                while (recorderState == RecorderState.recording || recorderState == RecorderState.paused) {
                     if (recorder.getRecordingState() != AudioRecord.RECORDSTATE_RECORDING) {
                         // start the audio recording
                         recorder.startRecording();
@@ -93,12 +94,12 @@ public class WavRecorder implements AudioRecorder, Runnable {
                     }
                     randomAccessFile.seek(randomAccessFile.length());
                     // write a temporary wav header
-                    writeWaveFileHeader(randomAccessFile, 0, 36, RECORDER_SAMPLERATE, 1, 1000);
+                    writeWaveFileHeader(randomAccessFile);
                     // callbackContext.success(); // we cant call this final callback more than once
                     byte buffer[] = new byte[BUFFER_SIZE];
                     // if a new file is specified in outputFile then close the current file and start a new file but with the recorder running the entire time
                     long recordedLengthInner = 0;
-                    while (recorderState == RecorderState.recording && outputFile == null) {
+                    while ((recorderState == RecorderState.recording || recorderState == RecorderState.paused) && outputFile == null) {
                         final int bytesRead = recorder.read(buffer, 0, buffer.length);
                         if (bytesRead > 0) {
                             randomAccessFile.write(buffer, 0, bytesRead);
@@ -111,20 +112,24 @@ public class WavRecorder implements AudioRecorder, Runnable {
 //                            System.out.println("recordedLength: " + recordedLength);
 //                            System.out.println("bytesRead: " + bytesRead);
 //                            System.out.println("bufferSize: " + BUFFER_SIZE);
+                        if (recorderState == RecorderState.paused) {
+                            // when the app looses focus we enter pause and make sure that the wave headers are valid in case the app is terminated
+                            writeWaveFileHeader(randomAccessFile);
+                            while (recorderState == RecorderState.paused) {
+                                synchronized (lockObject) {
+                                    try {
+                                        System.out.println("recording thread going to sleep");
+                                        lockObject.wait(10000);
+                                    } catch (InterruptedException e) {
+                                        System.out.println("recording thread woken");
+                                    }
+                                }
+                            }
+                        }
                     }
                     System.out.println("recording ended");
-                    // rewrite the wav header
-                    long totalAudioLen = randomAccessFile.length() - 36;
-                    long totalDataLen = totalAudioLen + 36;
-                    long longSampleRate = RECORDER_SAMPLERATE;
-                    int channels = 2;
-                    if (RECORDER_CHANNELS == AudioFormat.CHANNEL_IN_MONO) {
-                        channels = 1;
-                    }
-                    long byteRate = RECORDER_BPP * RECORDER_SAMPLERATE * channels / 8;
 
-                    randomAccessFile.seek(0);
-                    writeWaveFileHeader(randomAccessFile, totalAudioLen, totalDataLen, longSampleRate, channels, byteRate);
+                    writeWaveFileHeader(randomAccessFile);
                     randomAccessFile.close();
                 }
                 recorder.stop();
@@ -175,7 +180,7 @@ public class WavRecorder implements AudioRecorder, Runnable {
             System.out.println("outputFile: " + outputFile.getPath());
             recorderState = RecorderState.recording;
             lockObject.notify();
-        }        
+        }
         return baseName;
     }
 
@@ -187,6 +192,26 @@ public class WavRecorder implements AudioRecorder, Runnable {
         }
     }
 
+    public void pauseRecorder() {
+        synchronized (lockObject) {
+            if (recorderState == RecorderState.recording) {
+                // the paused state can only be reached from the recording state
+                recorderState = RecorderState.paused;
+                lockObject.notify();
+            }
+        }
+    }
+
+    public void resumeRecorder() {
+        synchronized (lockObject) {
+            if (recorderState == RecorderState.paused) {
+                // the paused state always returns to the recording state
+                recorderState = RecorderState.recording;
+                lockObject.notify();
+            }
+        }
+    }
+
     public void terminateRecorder() {
         synchronized (lockObject) {
             recorderState = RecorderState.terminating;
@@ -194,7 +219,18 @@ public class WavRecorder implements AudioRecorder, Runnable {
         }
     }
 
-    private void writeWaveFileHeader(RandomAccessFile out, long totalAudioLen, long totalDataLen, long longSampleRate, int channels, long byteRate) throws IOException {
+    private void writeWaveFileHeader(RandomAccessFile randomAccessFile) throws IOException {
+        // rewrite the wav header
+        long totalAudioLen = randomAccessFile.length() - 36;
+        long totalDataLen = totalAudioLen + 36;
+        long longSampleRate = RECORDER_SAMPLERATE;
+        int channels = 2;
+        if (RECORDER_CHANNELS == AudioFormat.CHANNEL_IN_MONO) {
+            channels = 1;
+        }
+        long byteRate = RECORDER_BPP * RECORDER_SAMPLERATE * channels / 8;
+
+        randomAccessFile.seek(0);
 
         byte[] header = new byte[44];
 
@@ -243,6 +279,8 @@ public class WavRecorder implements AudioRecorder, Runnable {
         header[42] = (byte) ((totalAudioLen >> 16) & 0xff);
         header[43] = (byte) ((totalAudioLen >> 24) & 0xff);
 
-        out.write(header, 0, 44);
+        randomAccessFile.write(header, 0, 44);
+
+        randomAccessFile.seek(randomAccessFile.length());
     }
 }

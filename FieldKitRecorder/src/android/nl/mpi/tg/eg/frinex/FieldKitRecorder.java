@@ -182,4 +182,19 @@ public class FieldKitRecorder extends CordovaPlugin {
         }
         audioRecorder.terminateRecorder();
     }
+
+    public void onPause(boolean multitasking) {
+        if (csvWriter != null) {
+            try {
+                csvWriter.writeCsvFile();
+            } catch (final IOException e) {
+                System.out.println("IOException from csvWriter: " + e.getMessage());
+            }
+        }
+        audioRecorder.pauseRecorder();
+    }
+
+    public void onResume(boolean multitasking) {
+        audioRecorder.resumeRecorder();
+    }
 }

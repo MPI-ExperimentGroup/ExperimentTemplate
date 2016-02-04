@@ -46,7 +46,7 @@ public class CsvWriter {
 
     public void writeCsvFile() throws IOException {
         System.out.println("writeCsvFile: " + baseName + CSV_SUFFIX);
-        final FileWriter csvFileWriter = new FileWriter(new File(outputDirectory, baseName + CSV_SUFFIX), true);
+        final FileWriter csvFileWriter = new FileWriter(new File(outputDirectory, baseName + CSV_SUFFIX), false);
         csvFileWriter.write("BeginTime,EndTime,BeginTime2,EndTime2,Tier,Stimulus,Tag\n");
         Collections.sort(rows);
         for (CSVRow row : rows) {

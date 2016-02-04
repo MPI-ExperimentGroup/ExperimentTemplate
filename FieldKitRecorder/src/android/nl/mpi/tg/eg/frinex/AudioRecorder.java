@@ -34,5 +34,9 @@ public interface AudioRecorder {
 
     public boolean isRecording();
 
+    public void pauseRecorder();
+
+    public void resumeRecorder();
+
     public void terminateRecorder();
 }
