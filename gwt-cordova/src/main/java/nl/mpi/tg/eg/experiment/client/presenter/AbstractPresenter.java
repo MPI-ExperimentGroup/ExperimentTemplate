@@ -175,7 +175,7 @@ public abstract class AbstractPresenter implements Presenter {
 
     protected native void startAudioRecorder(final boolean wavFormat, String userIdString, String directoryName, String stimulusIdString) /*-{
         var abstractPresenter = this;
-        console.log("startAudioRecorderError: " + wavFormat + " : " + userIdString + " : " + directoryName + " : " + stimulusIdString);
+        console.log("startAudioRecorder: " + wavFormat + " : " + userIdString + " : " + directoryName + " : " + stimulusIdString);
         if($wnd.plugins){
             $wnd.plugins.fieldKitRecorder.record(function (tagvalue) {
                 console.log("startAudioRecorderOk: " + tagvalue);
