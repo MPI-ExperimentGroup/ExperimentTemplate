@@ -42,7 +42,7 @@ public class SdCardStimuli {
     }
 
     public final void fillStimulusList(final String directoryTag) {
-        scanSdCard(MPI_STIMULI, directoryTag);
+            scanSdCard(MPI_STIMULI, directoryTag);
 //        testInsertStimulus();
 //        nonScan();
 //        for (GeneratedStimulus.Tag currentTag : tagArray) {
