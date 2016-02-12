@@ -73,7 +73,7 @@ public class SynQuiz2 {
         targetButtonFeature.addFeatureAttributes(target, "registrationScreen");
         presenterFeatureList.add(targetButtonFeature);
         presenterFeatureList.add(new PresenterFeature(FeatureType.text, "For more information about synaesthesia, please see our 'About synaesthesia' page. If you are not sure if you have synaesthesia, and want to find out, try our SynQuiz app or take a quick test at synesthete.org."));
-        presenterFeatureList.add(new PresenterFeature(FeatureType.text, "This project is organised and funded by the Language & Genetics Department at the Max Planck Institute for Psycholinguistics in Nijmegen in the Netherlands, directed by Prof. Dr. Simon E. Fisher. The synaesthesia studies are coordinated by Dr. Amanda Tilot and Dr. Sarah Graham. If you have any questions about our research, please contact us at "+formatLink("synaesthesia@mpi.nl")+"."));
+        presenterFeatureList.add(new PresenterFeature(FeatureType.text, "This project is organised and funded by the Language & Genetics Department at the Max Planck Institute for Psycholinguistics in Nijmegen in the Netherlands, directed by Prof. Dr. Simon E. Fisher. The synaesthesia studies are coordinated by Dr. Amanda Tilot and Dr. Sarah Graham. If you have any questions about our research, please contact us at " + formatLink("synaesthesia@mpi.nl") + "."));
         return presenterScreen;
     }
 
@@ -91,6 +91,14 @@ public class SynQuiz2 {
         final PresenterFeature targetButtonFeature = new PresenterFeature(FeatureType.targetButton, "Participant Information Sheet");
         targetButtonFeature.addFeatureAttributes(target, "informationScreen");
         presenterFeatureList.add(targetButtonFeature);
+        insertMetadataInput("First Name", ".'{'3,'}'");
+        insertMetadataInput("Last Name", ".'{'3,'}'");
+        insertMetadataInput("Email address", "^[^@]+@[^@]+$");
+        insertMetadataInput("\"I would like to be contacted about participating in other synaesthesia research studies\" (optional)", "true|false");
+        insertMetadataInput("\"By checking this box I confirm that I have read and understood the Volunteer's Information Sheet and I agree to take part in this study\"", "true|false");
+        final PresenterFeature submitButtonFeature = new PresenterFeature(FeatureType.targetButton, "Submit");
+        submitButtonFeature.addFeatureAttributes(target, "demographicsScreen");
+        presenterFeatureList.add(submitButtonFeature);
         return presenterScreen;
     }
 
@@ -144,5 +152,9 @@ public class SynQuiz2 {
         insertStimulusGroup(stimuliList, "Letters", "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z");
         insertStimulusGroup(stimuliList, "Months", "January,February,March,April,May,June,July,August,September,October,November,December");
         return stimuliList;
+    }
+
+    private void insertMetadataInput(String label, String regex) {
+
     }
 }
