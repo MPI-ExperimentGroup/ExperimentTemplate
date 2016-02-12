@@ -82,7 +82,7 @@ public class SynQuiz2 {
     }
 
     private PresenterScreen createRegistrationScreen(String screenName) {
-        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, null, screenName + "Screen", null, PresenterType.text);
+        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, null, screenName + "Screen", null, PresenterType.metadata);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
         presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
         presenterFeatureList.add(new PresenterFeature(FeatureType.text, "Please read the Participant Information Sheet carefully!"));
