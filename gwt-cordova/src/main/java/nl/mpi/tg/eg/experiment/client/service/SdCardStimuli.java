@@ -42,7 +42,7 @@ public class SdCardStimuli {
     }
 
     public final void fillStimulusList(final String directoryTag) {
-            scanSdCard(MPI_STIMULI, directoryTag);
+        scanSdCard(MPI_STIMULI, directoryTag);
 //        testInsertStimulus();
 //        nonScan();
 //        for (GeneratedStimulus.Tag currentTag : tagArray) {
@@ -66,7 +66,7 @@ public class SdCardStimuli {
         final String stimulusId = stimulusPath.replaceAll("^.*" + MPI_STIMULI + "/", "").replaceAll("\\....$", "");
         final String suffix = stimulusPath.toLowerCase().substring(stimulusPath.length() - 4, stimulusPath.length());
         // GWT.log("suffix: " + suffix);
-        final String stimuliLabel = stimulusId;
+        final String stimuliLabel = null;
         final String stimuliCode = stimulusPath;
         final int pause = 0;
         final boolean isMp3 = ".mp3".equals(suffix);
