@@ -178,6 +178,14 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
         });
     }
 
+    protected void existingUserCheck(TimedStimulusListener multipleUsers, TimedStimulusListener singleUser) {
+        if (localStorage.getUserIdList().size() > 1 || !userResults.getUserData().getMetadataFields().isEmpty()) {
+            multipleUsers.postLoadTimerFired();
+        } else {
+            singleUser.postLoadTimerFired();
+        }
+    }
+
     protected void allMetadataFields() {
         for (MetadataField metadataField : metadataFieldProvider.metadataFieldArray) {
             ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel());
