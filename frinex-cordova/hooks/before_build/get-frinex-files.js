@@ -29,12 +29,18 @@ var rmdir = require('rmdir');
 console.log('Starting to remove the old GTW output from the www directory and copying the GTW output into the www directory');
 
 
-rmdir('~/Documents/ExperimentTemplate/frinex-cordova/plugins/', function (err) {
-    return console.error(err);
-});
-rmdir('~/Documents/ExperimentTemplate/frinex-cordova/platforms/', function (err) {
-    return console.error(err);
-});
+//rmdir('/Users/petwit/Documents/ExperimentTemplate/frinex-cordova/plugins', function (err) {
+//    if (err) {
+//        console.error(err);
+//        process.exit(1); // an incomplete build should not continue
+//    }
+//});
+//rmdir('/Users/petwit/Documents/ExperimentTemplate/frinex-cordova/platforms', function (err) {
+//    if (err) {
+//        console.error(err);
+//        process.exit(1); // an incomplete build should not continue
+//    }
+//});
 
 var relevantEntries = ["ExperimentTemplate/",
 //    "images/",
@@ -56,12 +62,12 @@ var relevantEntries = ["ExperimentTemplate/",
 var ncp = require('ncp').ncp;
 
 ncp.limit = 16;
-targetBuild = "JenaRecorder-frinex-gui-0.1.691-testing";
+targetBuild = "vanuatufieldkit-frinex-gui-0.1.700-testing";
 //targetBuild = "sentveri_exp3-frinex-gui-0.1.683-testing";
 relevantEntries.forEach(function (entry) {
     console.log('removing www/' + entry);
     rmdir('www/' + entry, function (err, dirs, files) {
-        ncp("../gwt-cordova/target/" + targetBuild + "/" + entry + "/", "www/" + entry + "/", function (err) {
+        ncp("../gwt-cordova/target/" + targetBuild + "/" + entry + "/", "platforms/android/assets/www/" + entry + "/", function (err) {
             if (err) {
                 console.log('GTW copy failed: ' + entry);
                 console.error(err);
@@ -88,7 +94,7 @@ relevantEntries.forEach(function (entry) {
 //    });
 ////fs.mkdirSync('www/static');
 
-ncp("../gwt-cordova/target/" + targetBuild + "/ExperimentTemplate.html", "www/index.html", function (err) {
+ncp("../gwt-cordova/target/" + targetBuild + "/ExperimentTemplate.html", "platforms/android/assets/www/index.html", function (err) {
     if (err) {
         return console.error(err);
     }
