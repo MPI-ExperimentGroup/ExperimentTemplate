@@ -17,8 +17,10 @@
  */
 package nl.mpi.tg.eg.frinex;
 
+import android.content.Context;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
+import android.media.MediaScannerConnection;
 import android.os.Environment;
 import android.media.MediaRecorder;
 import java.io.File;
@@ -163,16 +165,17 @@ public class WavRecorder implements AudioRecorder, Runnable {
         }
     }
 
-    public String startRecording(final File outputDirectory) throws IOException {
+    public String startRecording(final File outputDirectory, Context context) throws IOException {
 //        SimpleDateFormat dateFormat = new SimpleDateFormat("yy_MM_dd");
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HHmmss");
         String timeString = dateFormat.format(date);
         final String baseName = timeString; // + UUID.randomUUID().toString();
-
+        final String absolutePath;
         synchronized (lockObject) {
             // setting outputFile allows for new file names to be passed and for the recording to contine but into the new file after cleanly closing the previous file
             outputFile = new File(outputDirectory, baseName + AUDIO_RECORDER_FILE_EXT_WAV);
+            absolutePath = outputFile.getAbsolutePath();
             recordedLength = outputFile.length();
             if (!outputDirectory.exists()) {
                 outputDirectory.mkdirs();
@@ -181,6 +184,7 @@ public class WavRecorder implements AudioRecorder, Runnable {
             recorderState = RecorderState.recording;
             lockObject.notify();
         }
+        MediaScannerConnection.scanFile(context, new String[]{absolutePath}, null, null);
         return baseName;
     }
 
