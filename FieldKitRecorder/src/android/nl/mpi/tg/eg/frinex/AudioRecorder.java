@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex;
 
+import android.content.Context;
 import java.io.File;
 import java.io.IOException;
 
@@ -26,7 +27,7 @@ import java.io.IOException;
  */
 public interface AudioRecorder {
 
-    public String startRecording(final File outputDirectory) throws IOException;
+    public String startRecording(final File outputDirectory, Context context) throws IOException;
 
     public void stopRecording() throws IOException;
 
