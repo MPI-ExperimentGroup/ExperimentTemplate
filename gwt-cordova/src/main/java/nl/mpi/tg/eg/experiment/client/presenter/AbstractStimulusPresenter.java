@@ -248,7 +248,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void endAudioRecorderTag(int tier, String tagString) {
-        super.endAudioRecorderTag(tier, stimulusProvider.getCurrentStimulus().getUniqueId(), tagString);
+        super.endAudioRecorderTag(tier, stimulusProvider.getCurrentStimulus().getUniqueId(), stimulusProvider.getCurrentStimulus().getCode(), tagString);
     }
 
     protected void startAudioRecorderTag(int tier) {
