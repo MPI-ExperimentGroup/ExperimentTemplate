@@ -88,6 +88,9 @@ public enum FeatureType {
     endOfStimulus(true, false, null),
     hasTag(true, false, null),
     withoutTag(true, false, null),
+    existingUserCheck(true, false, null, false, Contitionals.hasUserCount),
+    multipleUsers(true, false, null),
+    singleUser(true, false, null),
     stimulusImage(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, timeToNext}),
     stimulusCodeImage(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, timeToNext, codeFormat}),
     stimulusAudio(true, false, new FeatureAttribute[]{timeToNext, mp3,}),
@@ -111,6 +114,7 @@ public enum FeatureType {
         hasMoreStimulus,
         hasStimulusTag,
         hasErrorSuccess,
+        hasUserCount,
         none
     }
 
