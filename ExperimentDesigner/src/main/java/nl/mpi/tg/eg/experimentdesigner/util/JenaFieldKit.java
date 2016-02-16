@@ -40,46 +40,32 @@ import static nl.mpi.tg.eg.experimentdesigner.util.DefaultExperiments.getDefault
  */
 public class JenaFieldKit {
 
-//    Metadata is collected in the spoken form (audio recording) with screen prompts for each item:
-    String[] metadataStrings = new String[]{"name of speaker",
-        "language",
-        "where are you now",
-        "where were you born",
-        "when were you born"};
-    String[] imageStrings = new String[]{"Bambu.jpg",
-        "Foto shoreline.jpg",
-        "Papaya.jpg",
-        "Canoe.jpg",
-        "Nakamal.jpg",
-        "Pig.jpg",
-        "Children's foto of themselves - Caroline Bay.jpg",
-        "Ocean.jpg",
-        "Thatch roof.jpg",
-        "Cocoa.jpg",
-        "Pantanas plant 2.jpg",
-        "Flying fox.jpg",
-        "Pantanas plant.jpg"
-    };
-
     public Experiment getJenaExperiment(MetadataRepository metadataRepository, PresenterFeatureRepository presenterFeatureRepository, PresenterScreenRepository presenterScreenRepository) {
         Experiment experiment = getDefault();
-        experiment.setAppNameDisplay("Jena Recorder");
-        experiment.setAppNameInternal("JenaRecorder");
-        experiment.setDataSubmitUrl("http://ems13.mpi.nl/jenarecorder-admin/");
-        final Metadata metadata = new Metadata("workerId", "Reporter name *", ".'{'3,'}'", "Please enter at least three letters.", true, "This test can only be done once per worker.");
+        experiment.setAppNameDisplay("Vanuatu FieldKit");
+        experiment.setAppNameInternal("vanuatufieldkit");
+        experiment.setDataSubmitUrl("http://ems13.mpi.nl/vanuatufieldkit-admin/");
+        final Metadata metadata = new Metadata("workerId", "Speaker name *", ".'{'3,'}'", "Please enter at least three letters.", false, null);
+
         experiment.getMetadata().add(metadata);
         metadataRepository.save(experiment.getMetadata());
         final PresenterScreen autoMenuPresenter = addAutoMenu(presenterFeatureRepository);
-        final PresenterScreen selectUserPresenter = addUserSelectMenu(presenterFeatureRepository, autoMenuPresenter, autoMenuPresenter);
-        final PresenterScreen editUserPresenter = addEditUserScreen(presenterFeatureRepository, autoMenuPresenter, autoMenuPresenter);
+        final PresenterScreen welcomePresenter = addWelcomeScreen(presenterFeatureRepository, autoMenuPresenter, null);
+        final PresenterScreen welcomeMenuPresenter = addWelcomeMenu(presenterFeatureRepository, welcomePresenter, null);
+        final PresenterScreen instructionsPresenter = addInstructionsScreen(presenterFeatureRepository, welcomePresenter, null);
+        final PresenterScreen stimulusScreen = createStimulusScreen(autoMenuPresenter, welcomePresenter, new String[]{"Pictures"});
+        final PresenterScreen metadataScreen = createMetadataScreen(autoMenuPresenter, stimulusScreen);
+        final PresenterScreen selectUserPresenter = addUserSelectMenu(presenterFeatureRepository, welcomeMenuPresenter, metadataScreen);
+        final PresenterScreen editUserPresenter = addEditUserScreen(presenterFeatureRepository, welcomeMenuPresenter, metadataScreen);
+        experiment.getPresenterScreen().add(welcomePresenter);
+        experiment.getPresenterScreen().add(welcomeMenuPresenter);
+        experiment.getPresenterScreen().add(instructionsPresenter);
         experiment.getPresenterScreen().add(selectUserPresenter);
         experiment.getPresenterScreen().add(editUserPresenter);
         experiment.getPresenterScreen().add(autoMenuPresenter);
         experiment.getPresenterScreen().add(addDebugScreen(autoMenuPresenter));
-        experiment.getPresenterScreen().add(createMetadataScreen(autoMenuPresenter));
-        experiment.getPresenterScreen().add(createStimulusScreen(autoMenuPresenter, new String[]{"bowped"}));
-        experiment.getPresenterScreen().add(createStimulusScreen(autoMenuPresenter, new String[]{"bowped", "bodies"}));
-        experiment.getPresenterScreen().add(createStimulusScreen(autoMenuPresenter, new String[]{"vanuatu"}));
+        experiment.getPresenterScreen().add(metadataScreen);
+        experiment.getPresenterScreen().add(stimulusScreen);
 //        experiment.getPresenterScreen().add(addAnnotationTimelinePanel(presenterFeatureRepository, autoMenuPresenter));
 //        experiment.getPresenterScreen().add(addVideosMenu(presenterFeatureRepository, autoMenuPresenter));
 //        experiment.getPresenterScreen().add(addTargetScreen(presenterFeatureRepository, autoMenuPresenter));
@@ -106,13 +92,54 @@ public class JenaFieldKit {
         return presenterScreen;
     }
 
+    private PresenterScreen addWelcomeScreen(PresenterFeatureRepository presenterFeatureRepository, final PresenterScreen backPresenter, final PresenterScreen nextPresenter) {
+        final PresenterScreen presenterScreen = new PresenterScreen("Welcome", "Welcome", backPresenter, "Welcome", nextPresenter, PresenterType.menu);
+        final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.menuItem, "Instructions");
+        presenterFeature.addFeatureAttributes(FeatureAttribute.target, "Instructions");
+        presenterScreen.getPresenterFeatureList().add(presenterFeature);
+        final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.menuItem, "Go directly to program");
+        presenterFeature1.addFeatureAttributes(FeatureAttribute.target, "Start");
+        presenterScreen.getPresenterFeatureList().add(presenterFeature1);
+        presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
+        return presenterScreen;
+    }
+
+    private PresenterScreen addInstructionsScreen(PresenterFeatureRepository presenterFeatureRepository, final PresenterScreen backPresenter, final PresenterScreen nextPresenter) {
+        final PresenterScreen presenterScreen = new PresenterScreen("Instructions", "Instructions", backPresenter, "Instructions", nextPresenter, PresenterType.text);
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "Instructions"));
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "Instructions are to be provided here"));
+        final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.targetButton, "Start");
+        presenterFeature1.addFeatureAttributes(FeatureAttribute.target, "Start");
+        presenterScreen.getPresenterFeatureList().add(presenterFeature1);
+        presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
+        return presenterScreen;
+    }
+
+    private PresenterScreen addWelcomeMenu(PresenterFeatureRepository presenterFeatureRepository, final PresenterScreen backPresenter, final PresenterScreen nextPresenter) {
+        final PresenterScreen presenterScreen = new PresenterScreen("Start", "Start", backPresenter, "Start", nextPresenter, PresenterType.metadata);
+        final PresenterFeature userCheckFeature = new PresenterFeature(FeatureType.existingUserCheck, null);
+        final PresenterFeature multipleUsersFeature = new PresenterFeature(FeatureType.multipleUsers, null);
+        userCheckFeature.getPresenterFeatureList().add(multipleUsersFeature);
+        final PresenterFeature singleUserFeature = new PresenterFeature(FeatureType.singleUser, null);
+        final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
+        autoNextPresenter.addFeatureAttributes(FeatureAttribute.target, "EditUser");
+        singleUserFeature.getPresenterFeatureList().add(autoNextPresenter);
+        userCheckFeature.getPresenterFeatureList().add(singleUserFeature);
+        final PresenterFeature createUserFeature = new PresenterFeature(FeatureType.createUserButton, "New interview.");
+        createUserFeature.addFeatureAttributes(FeatureAttribute.target, "EditUser");
+        multipleUsersFeature.getPresenterFeatureList().add(createUserFeature);
+        final PresenterFeature selectUserFeature = new PresenterFeature(FeatureType.targetButton, "Old interview");
+        selectUserFeature.addFeatureAttributes(FeatureAttribute.target, "SelectUser");
+        multipleUsersFeature.getPresenterFeatureList().add(selectUserFeature);
+        presenterScreen.getPresenterFeatureList().add(userCheckFeature);
+        presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
+        return presenterScreen;
+    }
+
     private PresenterScreen addUserSelectMenu(PresenterFeatureRepository presenterFeatureRepository, final PresenterScreen backPresenter, final PresenterScreen nextPresenter) {
         final PresenterScreen presenterScreen = new PresenterScreen("Select User", "Select User", backPresenter, "SelectUser", nextPresenter, PresenterType.metadata);
-        final PresenterFeature createUserFeature = new PresenterFeature(FeatureType.createUserButton, "New User");
-        createUserFeature.addFeatureAttributes(FeatureAttribute.target, "EditUser");
-        presenterScreen.getPresenterFeatureList().add(createUserFeature);
         final PresenterFeature selectUserFeature = new PresenterFeature(FeatureType.selectUserMenu, null);
-        selectUserFeature.addFeatureAttributes(FeatureAttribute.target, "EditUser");
+        selectUserFeature.addFeatureAttributes(FeatureAttribute.target, nextPresenter.getSelfPresenterTag());
         presenterScreen.getPresenterFeatureList().add(selectUserFeature);
         presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
         return presenterScreen;
@@ -128,7 +155,7 @@ public class JenaFieldKit {
         saveMetadataButton.getPresenterFeatureList().add(onErrorFeature);
         final PresenterFeature onSuccessFeature = new PresenterFeature(FeatureType.onSuccess, null);
         final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.autoNextPresenter, null);
-        menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, "AutoMenu");
+        menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, nextPresenter.getSelfPresenterTag());
         onSuccessFeature.getPresenterFeatureList().add(menuButtonFeature);
         saveMetadataButton.getPresenterFeatureList().add(onSuccessFeature);
         presenterScreen.getPresenterFeatureList().add(saveMetadataButton);
@@ -136,9 +163,9 @@ public class JenaFieldKit {
         return presenterScreen;
     }
 
-    public PresenterScreen createMetadataScreen(PresenterScreen autoMenuPresenter) {
+    public PresenterScreen createMetadataScreen(final PresenterScreen backPresenter, final PresenterScreen nextPresenter) {
         final String screenName = "Metadata";
-        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, autoMenuPresenter, "MetadataScreen", null, PresenterType.stimulus);
+        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, "MetadataScreen", null, PresenterType.stimulus);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadAllStimulus, null);
         loadStimuliFeature.addStimulusTag("metadata");
@@ -161,7 +188,7 @@ public class JenaFieldKit {
         final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.actionButton, "spacebar");
         final PresenterFeature endAudioRecorderTagFeature = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
         endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
-        endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTag, "a stimulus shown");
+        endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTag, "");
         actionButtonFeature.getPresenterFeatureList().add(endAudioRecorderTagFeature);
         final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
         nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
@@ -173,28 +200,19 @@ public class JenaFieldKit {
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
 //        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "end of stimuli"));
         final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
-        autoNextPresenter.addFeatureAttributes(FeatureAttribute.target, "bowpedScreen");
+        autoNextPresenter.addFeatureAttributes(FeatureAttribute.target, nextPresenter.getSelfPresenterTag());
         endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stopAudioRecorder, null));
         endOfStimulusFeature.getPresenterFeatureList().add(autoNextPresenter);
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
         return presenterScreen;
     }
 
-    private PresenterScreen createStimulusScreen(PresenterScreen autoMenuPresenter, final String stimulusTagArray[]) {
-        //
-//The stimuli consist of images on the SD card, each stimuli has various stages (each step below creates a time marker to the audio recording in the CSV):
-//see image, [large image]
-//speak the name in the language (lanwis)
-//kids speak the name in Bislama [smaller image]
-//ask for personal experience with... in language (lanwis)
-//kids repeat personal experience with... in Bislama [smaller image]
-//custom story relating to ... (lanwis)
-//kids repeat ... in Bislama [smaller image]
+    private PresenterScreen createStimulusScreen(final PresenterScreen backPresenter, final PresenterScreen nextPresenter, final String stimulusTagArray[]) {
         String screenName = "";
         for (final String stimulusTag : stimulusTagArray) {
             screenName += stimulusTag;
         }
-        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, autoMenuPresenter, screenName + "Screen", null, PresenterType.stimulus);
+        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, screenName + "Screen", null, PresenterType.stimulus);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
         final String maxStimuli = "15";
         presenterFeatureList.add(new PresenterFeature(FeatureType.text, "This screen will show " + maxStimuli + " stimuli in random order from the directories:"));
@@ -231,7 +249,7 @@ public class JenaFieldKit {
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
         endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "end of stimuli"));
         final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.targetButton, "Menu");
-        menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, "AutoMenu");
+        menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, nextPresenter.getSelfPresenterTag());
         endOfStimulusFeature.getPresenterFeatureList().add(menuButtonFeature);
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
         return presenterScreen;
@@ -262,6 +280,28 @@ public class JenaFieldKit {
     }
 
     private ArrayList<Stimulus> createStimuli() {
+
+        //    Metadata is collected in the spoken form (audio recording) with screen prompts for each item:
+        String[] metadataStrings = new String[]{"name of speaker",
+            "language",
+            "where are you now",
+            "where were you born",
+            "when were you born"};
+        String[] imageStrings = new String[]{"Bambu.jpg",
+            "Foto shoreline.jpg",
+            "Papaya.jpg",
+            "Canoe.jpg",
+            "Nakamal.jpg",
+            "Pig.jpg",
+            "Children's foto of themselves - Caroline Bay.jpg",
+            "Ocean.jpg",
+            "Thatch roof.jpg",
+            "Cocoa.jpg",
+            "Pantanas plant 2.jpg",
+            "Flying fox.jpg",
+            "Pantanas plant.jpg"
+        };
+
         final ArrayList<Stimulus> stimuliList = new ArrayList<>();
         final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{"metadata"}));
         for (String metadataString : metadataStrings) {
@@ -274,9 +314,9 @@ public class JenaFieldKit {
             stimuliList.add(stimulus);
         }
         stimuliList.add(new Stimulus(null, null, null, "stimulus", "stimulus", "stimulus", 0, new HashSet<>(Arrays.asList(new String[]{"stimulus"}))));
-        stimuliList.add(new Stimulus(null, null, null, "bowped", "bowped", "bowped", 0, new HashSet<>(Arrays.asList(new String[]{"bowped"}))));
-        stimuliList.add(new Stimulus(null, null, null, "bodies", "bodies", "bodies", 0, new HashSet<>(Arrays.asList(new String[]{"bodies"}))));
-        stimuliList.add(new Stimulus(null, null, null, "vanuatu", "vanuatu", "vanuatu", 0, new HashSet<>(Arrays.asList(new String[]{"vanuatu"}))));
+        stimuliList.add(new Stimulus(null, null, null, "Pictures", "Pictures", "Pictures", 0, new HashSet<>(Arrays.asList(new String[]{"Pictures"}))));
+//        stimuliList.add(new Stimulus(null, null, null, "bodies", "bodies", "bodies", 0, new HashSet<>(Arrays.asList(new String[]{"bodies"}))));
+//        stimuliList.add(new Stimulus(null, null, null, "vanuatu", "vanuatu", "vanuatu", 0, new HashSet<>(Arrays.asList(new String[]{"vanuatu"}))));
         return stimuliList;
     }
 }
