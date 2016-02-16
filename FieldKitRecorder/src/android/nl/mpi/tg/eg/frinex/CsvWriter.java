@@ -17,7 +17,9 @@
  */
 package nl.mpi.tg.eg.frinex;
 
+import android.content.Context;
 import android.os.Environment;
+import android.media.MediaScannerConnection;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -44,10 +46,11 @@ public class CsvWriter {
         System.out.println("CsvWriter: " + outputDirectory.getAbsolutePath() + " : " + baseName);
     }
 
-    public void writeCsvFile() throws IOException {
+    public void writeCsvFile(Context context) throws IOException {
         System.out.println("writeCsvFile: " + baseName + CSV_SUFFIX);
-        final FileWriter csvFileWriter = new FileWriter(new File(outputDirectory, baseName + CSV_SUFFIX), false);
-        csvFileWriter.write("BeginTime,EndTime,BeginTime2,EndTime2,Tier,Stimulus,Tag\n");
+        final File csvFile = new File(outputDirectory, baseName + CSV_SUFFIX);
+        final FileWriter csvFileWriter = new FileWriter(csvFile, false);
+        csvFileWriter.write("BeginTime,EndTime,BeginTime2,EndTime2,Tier,StimulusID,StimulusCode,Tag\n");
         Collections.sort(rows);
         for (CSVRow row : rows) {
             csvFileWriter.write(makeTimeString(row.getBeginTime()) + ","
@@ -55,10 +58,12 @@ public class CsvWriter {
                     + "," + makeTimeString2(row.getBeginTime())
                     + "," + makeTimeString2(row.getEndTime())
                     + "," + row.getTier() + ",'"
-                    + row.getStimulusString().replace("'", "''") + "','"
+                    + row.getStimulusId().replace("'", "''") + "','"
+                    + row.getStimulusCode().replace("'", "''") + "','"
                     + row.getTagString().replace("'", "''") + "'\n");
         }
         csvFileWriter.close();
+        MediaScannerConnection.scanFile(context, new String[]{csvFile.getAbsolutePath()}, null, null);
     }
 
     public void startTag(int tier, long startTime) {
@@ -67,13 +72,14 @@ public class CsvWriter {
         startTimes.put(tier, startTime);
     }
 
-    public void endTag(int tier, long endTime, String stimulusString, String tagString) {
+    public void endTag(int tier, long endTime, String stimulusId, String stimulusCode, String tagString) {
         System.out.println("tier: " + tier);
         System.out.println("endTime: " + endTime);
-        System.out.println("stimulusString: " + stimulusString);
+        System.out.println("stimulusId: " + stimulusId);
+        System.out.println("stimulusCode: " + stimulusCode);
         System.out.println("tagString: " + tagString);
         final Long startTime = startTimes.get(tier);
-        rows.add(new CSVRow((startTime != null) ? startTime : endTime, endTime, tier, stimulusString, tagString));
+        rows.add(new CSVRow((startTime != null) ? startTime : endTime, endTime, tier, stimulusId, stimulusCode, tagString));
     }
 
     public static String makeTimeString(long milli) {//System.out.println("MILLI: " + milli);
