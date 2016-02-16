@@ -483,9 +483,10 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="onError|onSuccess|responseCorrect|responseIncorrect|hasMoreStimulus|endOfStimulus|hasTag|withoutTag">
+    <xsl:template match="onError|onSuccess|responseCorrect|responseIncorrect|hasMoreStimulus|endOfStimulus|hasTag|withoutTag|multipleUsers|singleUser">
         <xsl:value-of select="if(@timeToNext) then concat(', ', @timeToNext) else ''" />
-        <xsl:text>, new TimedStimulusListener() {
+        <xsl:value-of select="if(local-name() eq 'multipleUsers') then '' else ', '" />
+        <xsl:text>new TimedStimulusListener() {
 
             @Override
             public void postLoadTimerFired() {
@@ -556,7 +557,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         </xsl:for-each>
         <xsl:text>})</xsl:text>
     </xsl:template>
-    <xsl:template match="VideoPanel|startAudioRecorder|stopAudioRecorder|startAudioRecorderTag|endAudioRecorderTag|AnnotationTimelinePanel|loadStimulus|loadSdCardStimulus|loadAllStimulus|loadSubsetStimulus|currentStimulusHasTag">
+    <xsl:template match="VideoPanel|startAudioRecorder|stopAudioRecorder|startAudioRecorderTag|endAudioRecorderTag|AnnotationTimelinePanel|loadStimulus|loadSdCardStimulus|loadAllStimulus|loadSubsetStimulus|currentStimulusHasTag|existingUserCheck">
         <xsl:value-of select="if(ends-with(local-name(), 'Panel')) then '    set' else '    '" />
         <xsl:value-of select="local-name()" />
         <!--        <xsl:text>(new </xsl:text>
@@ -589,6 +590,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:apply-templates select="endOfStimulus" />
         <xsl:apply-templates select="hasTag" />
         <xsl:apply-templates select="withoutTag" />
+        <xsl:apply-templates select="multipleUsers" />
+        <xsl:apply-templates select="singleUser" />
         <xsl:text>);
         </xsl:text>
     </xsl:template>
