@@ -251,9 +251,9 @@ public abstract class AbstractPresenter implements Presenter {
         }
      }-*/;
 
-    protected native void endAudioRecorderTag(int tier, String stimulusString, String eventTag) /*-{
+    protected native void endAudioRecorderTag(int tier, String stimulusId, String stimulusCode, String eventTag) /*-{
         var abstractPresenter = this;
-        console.log("endAudioRecorderTag: " + tier + " : " + stimulusString + " : " + eventTag);
+        console.log("endAudioRecorderTag: " + tier + " : " + stimulusId + " : " + stimulusCode + " : " + eventTag);
         if($wnd.plugins){
             $wnd.plugins.fieldKitRecorder.endTag(function (tagvalue) {
                 console.log("endAudioRecorderTagOk: " + tagvalue);
@@ -261,7 +261,7 @@ public abstract class AbstractPresenter implements Presenter {
             }, function (tagvalue) {
                 console.log("endAudioRecorderTagError: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
-            }, tier, stimulusString, eventTag);
+            }, tier, stimulusId, stimulusCode, eventTag);
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
         }
