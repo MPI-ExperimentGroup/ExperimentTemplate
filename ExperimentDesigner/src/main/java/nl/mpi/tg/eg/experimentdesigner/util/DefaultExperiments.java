@@ -342,6 +342,12 @@ public class DefaultExperiments {
                 presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.onSuccess, presenterFeatureRepository));
                 presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
                 break;
+            case hasUserCount:
+                presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.multipleUsers, presenterFeatureRepository));
+                presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.singleUser, presenterFeatureRepository));
+                presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                break;
+
             default:
                 break;
         }
