@@ -179,7 +179,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     public void stimulusLabel() {
-        ((TimedStimulusView) simpleView).addText(stimulusProvider.getCurrentStimulus().getLabel());
+        final String label = stimulusProvider.getCurrentStimulus().getLabel();
+        if (label != null) {
+            ((TimedStimulusView) simpleView).addText(label);
+        }
     }
 
     protected void showStimulus() {
