@@ -53,10 +53,13 @@ public class JenaFieldKit {
         final PresenterScreen welcomePresenter = addWelcomeScreen(presenterFeatureRepository, autoMenuPresenter, null);
         final PresenterScreen welcomeMenuPresenter = addWelcomeMenu(presenterFeatureRepository, welcomePresenter, null);
         final PresenterScreen instructionsPresenter = addInstructionsScreen(presenterFeatureRepository, welcomePresenter, null);
-        final PresenterScreen stimulusScreen = createStimulusScreen(autoMenuPresenter, welcomePresenter, new String[]{"Pictures"});
-        final PresenterScreen metadataScreen = createMetadataScreen(autoMenuPresenter, stimulusScreen);
-        final PresenterScreen selectUserPresenter = addUserSelectMenu(presenterFeatureRepository, welcomeMenuPresenter, metadataScreen);
-        final PresenterScreen editUserPresenter = addEditUserScreen(presenterFeatureRepository, welcomeMenuPresenter, metadataScreen);
+        final PresenterScreen stimulusScreen = createStimulusScreen(welcomePresenter, welcomePresenter, new String[]{"Pictures"});
+        final PresenterScreen vanuatuScreen = createStimulusScreen(welcomePresenter, stimulusScreen, new String[]{"vanuatu"});
+        final PresenterScreen bowpedStimulusScreen = createStimulusScreen(welcomePresenter, vanuatuScreen, new String[]{"bowped"});
+        final PresenterScreen bodiesStimulusScreen = createStimulusScreen(welcomePresenter,bowpedStimulusScreen, new String[]{"bodies"});
+        final PresenterScreen metadataScreen = createMetadataScreen(autoMenuPresenter, bodiesStimulusScreen);
+        final PresenterScreen selectUserPresenter = addUserSelectMenu(presenterFeatureRepository, welcomePresenter, metadataScreen);
+        final PresenterScreen editUserPresenter = addEditUserScreen(presenterFeatureRepository, welcomePresenter, metadataScreen);
         experiment.getPresenterScreen().add(welcomePresenter);
         experiment.getPresenterScreen().add(welcomeMenuPresenter);
         experiment.getPresenterScreen().add(instructionsPresenter);
@@ -66,6 +69,9 @@ public class JenaFieldKit {
         experiment.getPresenterScreen().add(addDebugScreen(autoMenuPresenter));
         experiment.getPresenterScreen().add(metadataScreen);
         experiment.getPresenterScreen().add(stimulusScreen);
+        experiment.getPresenterScreen().add(vanuatuScreen);
+        experiment.getPresenterScreen().add(bowpedStimulusScreen);
+        experiment.getPresenterScreen().add(bodiesStimulusScreen);
 //        experiment.getPresenterScreen().add(addAnnotationTimelinePanel(presenterFeatureRepository, autoMenuPresenter));
 //        experiment.getPresenterScreen().add(addVideosMenu(presenterFeatureRepository, autoMenuPresenter));
 //        experiment.getPresenterScreen().add(addTargetScreen(presenterFeatureRepository, autoMenuPresenter));
@@ -248,7 +254,7 @@ public class JenaFieldKit {
         loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
         endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "end of stimuli"));
-        final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.targetButton, "Menu");
+        final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.targetButton, nextPresenter.getSelfPresenterTag());
         menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, nextPresenter.getSelfPresenterTag());
         endOfStimulusFeature.getPresenterFeatureList().add(menuButtonFeature);
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
@@ -315,8 +321,9 @@ public class JenaFieldKit {
         }
         stimuliList.add(new Stimulus(null, null, null, "stimulus", "stimulus", "stimulus", 0, new HashSet<>(Arrays.asList(new String[]{"stimulus"}))));
         stimuliList.add(new Stimulus(null, null, null, "Pictures", "Pictures", "Pictures", 0, new HashSet<>(Arrays.asList(new String[]{"Pictures"}))));
-//        stimuliList.add(new Stimulus(null, null, null, "bodies", "bodies", "bodies", 0, new HashSet<>(Arrays.asList(new String[]{"bodies"}))));
-//        stimuliList.add(new Stimulus(null, null, null, "vanuatu", "vanuatu", "vanuatu", 0, new HashSet<>(Arrays.asList(new String[]{"vanuatu"}))));
+        stimuliList.add(new Stimulus(null, null, null, "bowped", "bowped", "bowped", 0, new HashSet<>(Arrays.asList(new String[]{"bowped"}))));
+        stimuliList.add(new Stimulus(null, null, null, "bodies", "bodies", "bodies", 0, new HashSet<>(Arrays.asList(new String[]{"bodies"}))));
+        stimuliList.add(new Stimulus(null, null, null, "vanuatu", "vanuatu", "vanuatu", 0, new HashSet<>(Arrays.asList(new String[]{"vanuatu"}))));
         return stimuliList;
     }
 }
