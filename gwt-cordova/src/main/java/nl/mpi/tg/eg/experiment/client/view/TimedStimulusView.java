@@ -17,8 +17,12 @@
  */
 package nl.mpi.tg.eg.experiment.client.view;
 
+import com.google.gwt.dom.client.MediaElement;
+import com.google.gwt.event.dom.client.EndedEvent;
+import com.google.gwt.event.dom.client.EndedHandler;
 import com.google.gwt.event.dom.client.LoadEvent;
 import com.google.gwt.event.dom.client.LoadHandler;
+import com.google.gwt.media.client.Video;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.ButtonBase;
@@ -75,7 +79,7 @@ public class TimedStimulusView extends ComplexView {
 
     public void addTimedImage(SafeUri imagePath, int percentOfPage, int maxHeight, int maxWidth, final int postLoadMs, final TimedStimulusListener timedStimulusListener) {
         final Image image = new Image(imagePath);
-        addImageAttributes(image, percentOfPage, maxHeight, maxWidth);        
+        addSizeAttributes(image.getElement(), percentOfPage, maxHeight, maxWidth);
         image.addLoadHandler(new LoadHandler() {
 
             @Override
@@ -108,6 +112,35 @@ public class TimedStimulusView extends ComplexView {
             }
         });
         audioPlayer.playSample(oggPath, mp3Path);
+    }
+
+    public void addTimedVideo(SafeUri oggPath, SafeUri mp4Path, int percentOfPage, int maxHeight, int maxWidth, final int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+        final Video video = Video.createIfSupported();
+        if (video != null) {
+//            video.setPoster(poster);
+            video.setControls(true);
+            video.setPreload(MediaElement.PRELOAD_AUTO);
+            addSizeAttributes(video.getElement(), percentOfPage, maxHeight, maxWidth);
+            outerPanel.add(video);
+            if (oggPath != null) {
+                video.addSource(oggPath.asString(), "video/ogg");
+            }
+            if (mp4Path != null) {
+                video.addSource(mp4Path.asString(), "video/mp4");
+            }
+            video.addEndedHandler(new EndedHandler() {
+                private boolean triggered = false;
+
+                @Override
+                public void onEnded(EndedEvent event) {
+                    // prevent multiple triggering
+                    if (!triggered) {
+                        triggered = true;
+                        timedStimulusListener.postLoadTimerFired();
+                    }
+                }
+            });
+        }
     }
 
     public void addAudioPlayerGui() {
