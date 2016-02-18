@@ -31,17 +31,22 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <link type="text/css" rel="stylesheet" href="css/experiment.css">
         <title>ExperimentTemplate</title>
         <script type="text/javascript">
-            //isDeviceReady = true;
+            isDeviceReady = false;
         </script>
         <script type="text/javascript" language="javascript" src="ExperimentTemplate/ExperimentTemplate.nocache.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript">
-//            function onLoad() {
+            function onLoad() {
+                document.addEventListener("deviceready", onDeviceReady, false);
+                document.addEventListener("resume", onDeviceReady, false);
+                function onDeviceReady() {
+                    StatusBar.hide();
+                }
 //                //console.log("starting analytics");
 //                //analytics.startTrackerWithId('UA-');
 //                //analytics.trackView("start");
 //                document.getElementById("widgetTag").className = device.platform; // todo: set the platform style
-//            }
+            }
         </script>
     </head>
     <body onload="onLoad()">        
