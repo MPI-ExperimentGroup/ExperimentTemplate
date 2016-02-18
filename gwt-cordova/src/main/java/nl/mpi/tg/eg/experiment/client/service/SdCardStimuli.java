@@ -109,55 +109,58 @@ public class SdCardStimuli {
 
     protected native void scanSdCard(String stimuliDirectory, String cleanedTag) /*-{
         var sdCardStimuli = this;
-        
-        var potentialDirectories = [
-            $wnd.cordova.file.dataDirectory,
-            $wnd.cordova.file.externalRootDirectory,
-            $wnd.cordova.file.externalDataDirectory
-        ];
-        var directoryIndex;
-        for (directoryIndex = 0; directoryIndex < potentialDirectories.length; directoryIndex++) {
-            if (potentialDirectories[directoryIndex] === null || potentialDirectories[directoryIndex].length === 0) {
-                continue;
-            }
-            console.log(potentialDirectories[directoryIndex] + stimuliDirectory + "/" + cleanedTag);
-            console.log(typeof $wnd.resolveLocalFileSystemURL);
-            $wnd.resolveLocalFileSystemURL(potentialDirectories[directoryIndex] + stimuliDirectory + "/" + cleanedTag, function (entry) {
-            var dirReader = entry.createReader();
-            dirReader.readEntries(
-                function (entries) {
-                    console.log("entries.length: " + entries.length);
-                    if(entries === undefined || entries.length == 0) {
-//                        console.log("readEntries returned nothing");
-//                        sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::loadingCompleteAction()();
-                    } else {
-                        var currentIndex;
-                        for (currentIndex = 0; currentIndex < entries.length; currentIndex++) {
-                            console.log("currentEntry: " + entries[currentIndex].toURL());
-                            console.log("currentEntry: " + entries[currentIndex].name);
-                            if (entries[currentIndex].isDirectory === true) {
-    //                            console.log("isDirectory");                
-    //                            sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::insertDirectory(Ljava/lang/String;Ljava/lang/String;)(entries[currentIndex].toURL(), entries[currentIndex].name);
-    //                            readFileEntry(entries[currentIndex]);
-                            } else {
-                                sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::insertStimulus(Ljava/lang/String;Ljava/lang/String;)(entries[currentIndex].toURL(), entries[currentIndex].name);
-                            }
-                        }
-                        console.log("readEntries complete");
-                        sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::loadingCompleteAction()();
-                    }
-                },
-                function (error) {
-                    console.log("readEntries error: " + error.code);
-                    console.log("readEntries error: " + error.message);
-                    sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::errorAction(Ljava/lang/String;Ljava/lang/String;)(error.code, error.message);
+        if($wnd.cordova === undefined) {
+            sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::errorAction(Ljava/lang/String;Ljava/lang/String;)(-1, "cordova not defined");
+        } else {
+            var potentialDirectories = [
+                $wnd.cordova.file.dataDirectory,
+                $wnd.cordova.file.externalRootDirectory,
+                $wnd.cordova.file.externalDataDirectory
+            ];
+            var directoryIndex;
+            for (directoryIndex = 0; directoryIndex < potentialDirectories.length; directoryIndex++) {
+                if (potentialDirectories[directoryIndex] === null || potentialDirectories[directoryIndex].length === 0) {
+                    continue;
                 }
-            );
-        }, function (error) {
-                console.log("resolveLocalFileSystemURL error: " + error.code);
-                console.log("resolveLocalFileSystemURL error: " + error.message);
-//                sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::errorAction(Ljava/lang/String;Ljava/lang/String;)(error.code, error.message);
-            });
+                console.log(potentialDirectories[directoryIndex] + stimuliDirectory + "/" + cleanedTag);
+                console.log(typeof $wnd.resolveLocalFileSystemURL);
+                $wnd.resolveLocalFileSystemURL(potentialDirectories[directoryIndex] + stimuliDirectory + "/" + cleanedTag, function (entry) {
+                var dirReader = entry.createReader();
+                dirReader.readEntries(
+                    function (entries) {
+                        console.log("entries.length: " + entries.length);
+                        if(entries === undefined || entries.length == 0) {
+    //                        console.log("readEntries returned nothing");
+    //                        sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::loadingCompleteAction()();
+                        } else {
+                            var currentIndex;
+                            for (currentIndex = 0; currentIndex < entries.length; currentIndex++) {
+                                console.log("currentEntry: " + entries[currentIndex].toURL());
+                                console.log("currentEntry: " + entries[currentIndex].name);
+                                if (entries[currentIndex].isDirectory === true) {
+        //                            console.log("isDirectory");                
+        //                            sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::insertDirectory(Ljava/lang/String;Ljava/lang/String;)(entries[currentIndex].toURL(), entries[currentIndex].name);
+        //                            readFileEntry(entries[currentIndex]);
+                                } else {
+                                    sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::insertStimulus(Ljava/lang/String;Ljava/lang/String;)(entries[currentIndex].toURL(), entries[currentIndex].name);
+                                }
+                            }
+                            console.log("readEntries complete");
+                            sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::loadingCompleteAction()();
+                        }
+                    },
+                    function (error) {
+                        console.log("readEntries error: " + error.code);
+                        console.log("readEntries error: " + error.message);
+                        sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::errorAction(Ljava/lang/String;Ljava/lang/String;)(error.code, error.message);
+                    }
+                );
+            }, function (error) {
+                    console.log("resolveLocalFileSystemURL error: " + error.code);
+                    console.log("resolveLocalFileSystemURL error: " + error.message);
+    //                sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::errorAction(Ljava/lang/String;Ljava/lang/String;)(error.code, error.message);
+                });
+            }
         }
      }-*/;
 }
