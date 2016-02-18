@@ -24,6 +24,7 @@ import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.safehtml.shared.SafeUri;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
@@ -52,11 +53,11 @@ public class ComplexView extends SimpleView {
 
     private class ImageEntry {
 
-        final Image image;
+        final Element imageElement;
         final int percentOfPage;
 
-        public ImageEntry(Image image, int percentOfPage) {
-            this.image = image;
+        public ImageEntry(final Element imageElement, int percentOfPage) {
+            this.imageElement = imageElement;
             this.percentOfPage = percentOfPage;
         }
 
@@ -115,26 +116,26 @@ public class ComplexView extends SimpleView {
         outerPanel.add(isWidget);
     }
 
-    protected void addImageAttributes(final Image image, int percentOfPage, int maxHeight, int maxWidth) {
-        image.getElement().getStyle().setProperty("imageOrientation", "from-image");
+    protected void addSizeAttributes(final Element imageElement, int percentOfPage, int maxHeight, int maxWidth) {
+        imageElement.getStyle().setProperty("imageOrientation", "from-image");
         if (percentOfPage > 0) {
-            scaledImagesList.add(new ImageEntry(image, percentOfPage));
+            scaledImagesList.add(new ImageEntry(imageElement, percentOfPage));
 //            image.getElement().getStyle().setProperty("width", percentOfPage + "%");
 //            image.getElement().getStyle().setProperty("height", "auto");
-            resizeImage(image, Window.getClientHeight(), Window.getClientWidth(), percentOfPage);
+            resizeImage(imageElement, Window.getClientHeight(), Window.getClientWidth(), percentOfPage);
         } else {
             if (maxWidth > 0) {
-                image.getElement().getStyle().setProperty("maxWidth", maxWidth + "%");
+                imageElement.getStyle().setProperty("maxWidth", maxWidth + "%");
             }
             if (maxHeight > 0) {
-                image.getElement().getStyle().setProperty("maxHeight", maxHeight + "%");
+                imageElement.getStyle().setProperty("maxHeight", maxHeight + "%");
             }
         }
     }
 
     public void addImage(SafeUri imagePath, final SafeUri linkUrl, int percentOfPage, int maxHeight, int maxWidth, String align) {
         final Image image = new Image(imagePath);
-        addImageAttributes(image, percentOfPage, maxHeight, maxWidth);
+        addSizeAttributes(image.getElement(), percentOfPage, maxHeight, maxWidth);
         final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
 
             @Override
@@ -335,14 +336,14 @@ public class ComplexView extends SimpleView {
     protected void parentResized(int height, int width, String units) {
         super.parentResized(height, width, units);
         for (ImageEntry imageEntry : scaledImagesList) {
-            resizeImage(imageEntry.image, height, width, imageEntry.percentOfPage);
+            resizeImage(imageEntry.imageElement, height, width, imageEntry.percentOfPage);
         }
     }
 
-    private void resizeImage(Image image, int height, int width, int percentOfPage) {
-        image.getElement().getStyle().clearHeight();
-        image.getElement().getStyle().clearWidth();
-        image.getElement().getStyle().setProperty("maxHeight", (height - HEADER_SIZE - HEADER_SIZE - 50 - 50 /* the  "- 50 - 50" comes from contentBody in the CSS */) * (percentOfPage / 100.0) + "px");
-        image.getElement().getStyle().setProperty("maxWidth", (width * (percentOfPage / 100.0)) + "px");
+    private void resizeImage(final Element imageElement, int height, int width, int percentOfPage) {
+        imageElement.getStyle().clearHeight();
+        imageElement.getStyle().clearWidth();
+        imageElement.getStyle().setProperty("maxHeight", (height - HEADER_SIZE - HEADER_SIZE - 50 - 50 /* the  "- 50 - 50" comes from contentBody in the CSS */) * (percentOfPage / 100.0) + "px");
+        imageElement.getStyle().setProperty("maxWidth", (width * (percentOfPage / 100.0)) + "px");
     }
 }
