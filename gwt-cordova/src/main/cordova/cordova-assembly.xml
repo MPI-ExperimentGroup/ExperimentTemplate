@@ -14,15 +14,15 @@
         </file>
     </files>
     <fileSets>
-        <fileSet>
+<!--        <fileSet>
             <directory>${project.build.directory}/${project.build.finalName}</directory>
             <includes>
                 <include>/images/**</include>
             </includes>  
             <outputDirectory>/</outputDirectory>
             <filtered>false</filtered>
-        </fileSet>
-        <fileSet>
+        </fileSet>-->
+<!--        <fileSet>
             <directory>${project.build.directory}/${project.build.finalName}</directory>
             <includes>
                 <include>/images/icon.png</include>
@@ -33,8 +33,8 @@
             </includes>  
             <outputDirectory>/www</outputDirectory>
             <filtered>false</filtered>
-        </fileSet>
-        <fileSet>
+        </fileSet>-->
+<!--        <fileSet>
             <directory>${project.build.directory}/${project.build.finalName}</directory>
             <includes>
                 <include>/media/**</include>
@@ -44,7 +44,7 @@
             </excludes> 
             <outputDirectory>/www</outputDirectory>
             <filtered>false</filtered>
-        </fileSet>
+        </fileSet>-->
         <fileSet>
             <directory>${basedir}/src/main/cordova</directory>
             <includes>
@@ -52,6 +52,19 @@
             </includes>  
             <outputDirectory>/</outputDirectory>
             <filtered>true</filtered>
+        </fileSet>
+        <fileSet>
+            <directory>${project.build.directory}/${project.build.finalName}</directory>
+            <includes>
+                <!--<include>/images/icon.png</include>-->
+                <!--<include>/images/LIL-logo-diap.png</include>-->
+                <!--<include>/images/MPI-logo.png</include>-->
+                <!--<include>*.*</include>-->
+                <include>/ExperimentTemplate/**</include>
+                <include>/css/**</include>
+            </includes>  
+            <outputDirectory>www</outputDirectory>
+            <filtered>false</filtered>
         </fileSet>
     </fileSets>
 </assembly>
