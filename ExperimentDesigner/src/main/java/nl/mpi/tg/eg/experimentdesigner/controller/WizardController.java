@@ -1,0 +1,201 @@
+/*
+ * Copyright (C) 2016 Max Planck Institute for Psycholinguistics
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ */
+package nl.mpi.tg.eg.experimentdesigner.controller;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.logging.Logger;
+import javax.servlet.http.HttpServletRequest;
+import nl.mpi.tg.eg.experimentdesigner.dao.MetadataRepository;
+import nl.mpi.tg.eg.experimentdesigner.dao.PresenterFeatureRepository;
+import nl.mpi.tg.eg.experimentdesigner.dao.PresenterScreenRepository;
+import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
+import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
+import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
+import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
+import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
+import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
+import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
+import static nl.mpi.tg.eg.experimentdesigner.util.DefaultExperiments.getDefault;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+/**
+ * @since Feb 22, 2016 4:23:36 PM (creation date)
+ * @author Peter Withers <peter.withers@mpi.nl>
+ */
+@Controller
+public class WizardController {
+
+    private static final Logger LOG = Logger.getLogger(StimulusController.class.getName());
+
+    @RequestMapping(value = "/wizard/create", method = RequestMethod.POST)
+    public String create(final HttpServletRequest req, Model model, @PathVariable String appName) {
+        return "wizard";
+    }
+
+    public Experiment getExperiment(MetadataRepository metadataRepository, PresenterFeatureRepository presenterFeatureRepository, PresenterScreenRepository presenterScreenRepository, String appNameInternal, String appName) {
+        Experiment experiment = getDefault();
+        experiment.setAppNameDisplay(appName);
+        experiment.setAppNameInternal(appName);
+        experiment.setDataSubmitUrl("http://ems13.mpi.nl/" + appNameInternal + "-admin/");
+        return experiment;
+    }
+
+    public void addMetadata(Experiment experiment) {
+        final Metadata metadata = new Metadata("workerId", "Speaker name *", ".'{'3,'}'", "Please enter at least three letters.", false, null);
+        experiment.getMetadata().add(metadata);
+    }
+
+    public PresenterScreen addAutoMenu(final Experiment experiment) {
+        final PresenterScreen presenterScreen = new PresenterScreen("Auto Menu", "Menu", null, "AutoMenu", null, PresenterType.menu);
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMenuItems, null));
+        experiment.getPresenterScreen().add(presenterScreen);
+        return presenterScreen;
+    }
+
+    public PresenterScreen addDebugScreen(final Experiment experiment, PresenterScreen autoMenuPresenter) {
+        final PresenterScreen presenterScreen = new PresenterScreen("Debug Screen", "Debug Screen", autoMenuPresenter, "DebugScreen", null, PresenterType.debug);
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.versionData, null));
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.eraseLocalStorageButton, null));
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.localStorageData, null));
+        experiment.getPresenterScreen().add(presenterScreen);
+        return presenterScreen;
+    }
+
+    public PresenterScreen addWelcomeScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter) {
+        final PresenterScreen presenterScreen = new PresenterScreen("Welcome", "Welcome", backPresenter, "Welcome", nextPresenter, PresenterType.menu);
+        final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.menuItem, "Instructions");
+        presenterFeature.addFeatureAttributes(FeatureAttribute.target, "Instructions");
+        presenterScreen.getPresenterFeatureList().add(presenterFeature);
+        final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.menuItem, "Go directly to program");
+        presenterFeature1.addFeatureAttributes(FeatureAttribute.target, "Start");
+        presenterScreen.getPresenterFeatureList().add(presenterFeature1);
+        experiment.getPresenterScreen().add(presenterScreen);
+        return presenterScreen;
+    }
+
+    public PresenterScreen addUserSelectMenu(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter) {
+        final PresenterScreen presenterScreen = new PresenterScreen("Select User", "Select User", backPresenter, "SelectUser", nextPresenter, PresenterType.metadata);
+        final PresenterFeature selectUserFeature = new PresenterFeature(FeatureType.selectUserMenu, null);
+        selectUserFeature.addFeatureAttributes(FeatureAttribute.target, nextPresenter.getSelfPresenterTag());
+        presenterScreen.getPresenterFeatureList().add(selectUserFeature);
+        experiment.getPresenterScreen().add(presenterScreen);
+        return presenterScreen;
+    }
+
+    public PresenterScreen addEditUserScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter) {
+        final PresenterScreen presenterScreen = new PresenterScreen("Edit User", "Edit User", backPresenter, "EditUser", nextPresenter, PresenterType.metadata);
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMetadataFields, null));
+        final PresenterFeature saveMetadataButton = new PresenterFeature(FeatureType.saveMetadataButton, "Save Metadata");
+        saveMetadataButton.addFeatureAttributes(FeatureAttribute.sendData, "false");
+        final PresenterFeature onErrorFeature = new PresenterFeature(FeatureType.onError, null);
+        onErrorFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "on Error Feature"));
+        saveMetadataButton.getPresenterFeatureList().add(onErrorFeature);
+        final PresenterFeature onSuccessFeature = new PresenterFeature(FeatureType.onSuccess, null);
+        final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.autoNextPresenter, null);
+        menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, nextPresenter.getSelfPresenterTag());
+        onSuccessFeature.getPresenterFeatureList().add(menuButtonFeature);
+        saveMetadataButton.getPresenterFeatureList().add(onSuccessFeature);
+        presenterScreen.getPresenterFeatureList().add(saveMetadataButton);
+        experiment.getPresenterScreen().add(presenterScreen);
+        return presenterScreen;
+    }
+
+    public PresenterScreen createMetadataScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, final String[] metadataStrings) {
+        //    Metadata is collected in the spoken form (audio recording) with screen prompts for each item in metadataStrings:
+        final List<Stimulus> stimuliList = experiment.getStimuli();
+        final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{"metadata"}));
+        for (String metadataString : metadataStrings) {
+            final Stimulus stimulus = new Stimulus(null, null, null, metadataString.replace(" ", "_"), metadataString, metadataString.replace(" ", "_"), 0, tagSet);
+            stimuliList.add(stimulus);
+        }
+//        experiment.setStimuli(stimuliList);
+        final String screenName = "Metadata";
+        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, "MetadataScreen", null, PresenterType.stimulus);
+        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
+        final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadAllStimulus, null);
+        loadStimuliFeature.addStimulusTag("metadata");
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, screenName);
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "false");
+        presenterFeatureList.add(loadStimuliFeature);
+        final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
+
+        final PresenterFeature startRecorderFeature = new PresenterFeature(FeatureType.startAudioRecorder, null);
+        startRecorderFeature.addFeatureAttributes(FeatureAttribute.wavFormat, "true");
+        startRecorderFeature.addFeatureAttributes(FeatureAttribute.filePerStimulus, "false");
+        startRecorderFeature.addFeatureAttributes(FeatureAttribute.eventTag, screenName);
+        hasMoreStimulusFeature.getPresenterFeatureList().add(startRecorderFeature);
+
+        final PresenterFeature startTagFeature = new PresenterFeature(FeatureType.startAudioRecorderTag, null);
+        startTagFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
+        hasMoreStimulusFeature.getPresenterFeatureList().add(startTagFeature);
+        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
+        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
+        final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.actionButton, "spacebar");
+        final PresenterFeature endAudioRecorderTagFeature = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
+        endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
+        endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTag, "");
+        actionButtonFeature.getPresenterFeatureList().add(endAudioRecorderTagFeature);
+        final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
+        nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+        nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusMetadata");
+        actionButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
+        hasMoreStimulusFeature.getPresenterFeatureList().add(actionButtonFeature);
+        loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
+
+        final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
+//        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "end of stimuli"));
+        final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
+        autoNextPresenter.addFeatureAttributes(FeatureAttribute.target, nextPresenter.getSelfPresenterTag());
+        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stopAudioRecorder, null));
+        endOfStimulusFeature.getPresenterFeatureList().add(autoNextPresenter);
+        loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
+        experiment.getPresenterScreen().add(presenterScreen);
+        return presenterScreen;
+    }
+
+    public PresenterFeature addImageFeature(PresenterFeature parentFeature, String percentOfPage, String label, String button) {
+        final PresenterFeature startTagFeature = new PresenterFeature(FeatureType.startAudioRecorderTag, null);
+        startTagFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
+        parentFeature.getPresenterFeatureList().add(startTagFeature);
+        parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
+        parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
+        final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
+        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, percentOfPage);
+        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, percentOfPage);
+        imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, percentOfPage);
+        imageFeature.addFeatureAttributes(FeatureAttribute.timeToNext, "0");
+        parentFeature.getPresenterFeatureList().add(imageFeature);
+        parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, label));
+        final PresenterFeature actionFeature = new PresenterFeature(FeatureType.actionButton, button);
+        final PresenterFeature endAudioRecorderTagFeature = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
+        endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
+        endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTag, label);
+        actionFeature.getPresenterFeatureList().add(endAudioRecorderTagFeature);
+        actionFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+        actionFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
+        parentFeature.getPresenterFeatureList().add(actionFeature);
+        return actionFeature;
+    }
+}
