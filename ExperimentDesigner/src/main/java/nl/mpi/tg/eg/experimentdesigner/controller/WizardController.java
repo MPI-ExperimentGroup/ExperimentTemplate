@@ -32,13 +32,14 @@ import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
+import nl.mpi.tg.eg.experimentdesigner.model.StimuliSubAction;
 import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
-import static nl.mpi.tg.eg.experimentdesigner.util.DefaultExperiments.getDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import static nl.mpi.tg.eg.experimentdesigner.util.DefaultExperiments.getDefault;
 
 /**
  * @since Feb 22, 2016 4:23:36 PM (creation date)
@@ -57,7 +58,7 @@ public class WizardController {
     public Experiment getExperiment(MetadataRepository metadataRepository, PresenterFeatureRepository presenterFeatureRepository, PresenterScreenRepository presenterScreenRepository, String appNameInternal, String appName) {
         Experiment experiment = getDefault();
         experiment.setAppNameDisplay(appName);
-        experiment.setAppNameInternal(appName);
+        experiment.setAppNameInternal(appNameInternal);
         experiment.setDataSubmitUrl("http://ems13.mpi.nl/" + appNameInternal + "-admin/");
         return experiment;
     }
@@ -175,23 +176,23 @@ public class WizardController {
         return presenterScreen;
     }
 
-    public PresenterFeature addImageFeature(PresenterFeature parentFeature, String percentOfPage, String label, String button) {
+    public PresenterFeature addImageFeature(PresenterFeature parentFeature, StimuliSubAction imageFeatureValues) {
         final PresenterFeature startTagFeature = new PresenterFeature(FeatureType.startAudioRecorderTag, null);
         startTagFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
         parentFeature.getPresenterFeatureList().add(startTagFeature);
         parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
         parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
-        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, percentOfPage);
-        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, percentOfPage);
-        imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, percentOfPage);
+        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, imageFeatureValues.getPercentOfPage());
+        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, imageFeatureValues.getPercentOfPage());
+        imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, imageFeatureValues.getPercentOfPage());
         imageFeature.addFeatureAttributes(FeatureAttribute.timeToNext, "0");
         parentFeature.getPresenterFeatureList().add(imageFeature);
-        parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, label));
-        final PresenterFeature actionFeature = new PresenterFeature(FeatureType.actionButton, button);
+        parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, imageFeatureValues.getLabel()));
+        final PresenterFeature actionFeature = new PresenterFeature(FeatureType.actionButton, imageFeatureValues.getButton());
         final PresenterFeature endAudioRecorderTagFeature = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
         endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
-        endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTag, label);
+        endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTag, imageFeatureValues.getLabel());
         actionFeature.getPresenterFeatureList().add(endAudioRecorderTagFeature);
         actionFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         actionFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
@@ -231,7 +232,7 @@ public class WizardController {
         return presenterScreen;
     }
 
-    public PresenterScreen createStimulusScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, final String stimulusTagArray[]) {
+    public PresenterScreen createStimulusScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, final String stimulusTagArray[], final StimuliSubAction[] featureValuesArray) {
         String screenName = "";
         final List<Stimulus> stimuliList = experiment.getStimuli();
         for (final String stimulusTag : stimulusTagArray) {
@@ -261,16 +262,15 @@ public class WizardController {
         startRecorderFeature.addFeatureAttributes(FeatureAttribute.filePerStimulus, "true");
         hasMoreStimulusFeature.getPresenterFeatureList().add(startRecorderFeature);
 
-        final PresenterFeature lanwisImage = addImageFeature(hasMoreStimulusFeature, "80", "speak the name in the language (lanwis)", "done");
-        final PresenterFeature bislamaImage = addImageFeature(lanwisImage, "60", "It''s your turn! What did they say? Translate it into Bislama if you can.", "done");
-        final PresenterFeature lanwisExperience = addImageFeature(bislamaImage, "80", "ask for personal experience with... in language (lanwis)", "done");
-        final PresenterFeature bislamaExperience = addImageFeature(lanwisExperience, "60", "It''s your turn! What experience did they have? Translate it into Bislama if you can.", "done");
-        final PresenterFeature lanwisStory = addImageFeature(bislamaExperience, "80", "custom story relating to ... (lanwis)", "done");
-        final PresenterFeature bislamaStory = addImageFeature(lanwisStory, "60", "It''s your turn! What story did they tell? Translate it into Bislama if you can.", "done");
+        PresenterFeature previousPresenterFeature = hasMoreStimulusFeature;
+        for (StimuliSubAction imageFeatureValues : featureValuesArray) {
+            final PresenterFeature lanwisImage = addImageFeature(hasMoreStimulusFeature, imageFeatureValues);
+            previousPresenterFeature = lanwisImage;
+        }
         final PresenterFeature autoNextFeature = new PresenterFeature(FeatureType.nextStimulus, null);
         autoNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextImage");
         autoNextFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
-        bislamaStory.getPresenterFeatureList().add(autoNextFeature);
+        previousPresenterFeature.getPresenterFeatureList().add(autoNextFeature);
         loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
         endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "end of stimuli"));
