@@ -69,6 +69,7 @@ public class DefaultExperiments {
         experimentRepository.save(getDobesExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
         experimentRepository.save(getAllOptionsExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
         experimentRepository.save(new JenaFieldKit().getJenaExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
+        experimentRepository.save(new ShawiFieldKit().getShawiExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
 
         for (Experiment experiment : experimentRepository.findAll()) {
             eventRepository.save(new PublishEvents(experiment, new Date(), new Date(), PublishEvents.PublishState.published, true, true, true));

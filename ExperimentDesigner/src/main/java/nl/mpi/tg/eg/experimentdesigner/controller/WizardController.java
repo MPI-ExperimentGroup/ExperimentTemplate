@@ -188,12 +188,19 @@ public class WizardController {
         imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, imageFeatureValues.getPercentOfPage());
         imageFeature.addFeatureAttributes(FeatureAttribute.timeToNext, "0");
         parentFeature.getPresenterFeatureList().add(imageFeature);
-        parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, imageFeatureValues.getLabel()));
-        final PresenterFeature actionFeature = new PresenterFeature(FeatureType.actionButton, imageFeatureValues.getButton());
-        final PresenterFeature endAudioRecorderTagFeature = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
-        endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
-        endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTag, imageFeatureValues.getLabel());
-        actionFeature.getPresenterFeatureList().add(endAudioRecorderTagFeature);
+        final PresenterFeature actionFeature;
+        if (imageFeatureValues.getButtons().length == 1) {
+            parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, imageFeatureValues.getLabel()));
+            actionFeature = new PresenterFeature(FeatureType.actionButton, imageFeatureValues.getButtons()[0]);
+            final PresenterFeature endAudioRecorderTagFeature = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
+            endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
+            endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTag, imageFeatureValues.getLabel());
+            actionFeature.getPresenterFeatureList().add(endAudioRecorderTagFeature);
+        } else {
+            actionFeature = new PresenterFeature(FeatureType.ratingFooterButton, null);
+            actionFeature.addFeatureAttributes(FeatureAttribute.ratingLabels, String.join(",", imageFeatureValues.getButtons()));
+            actionFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
+        }
         actionFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         actionFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
         parentFeature.getPresenterFeatureList().add(actionFeature);
@@ -264,7 +271,7 @@ public class WizardController {
 
         PresenterFeature previousPresenterFeature = hasMoreStimulusFeature;
         for (StimuliSubAction imageFeatureValues : featureValuesArray) {
-            final PresenterFeature lanwisImage = addImageFeature(hasMoreStimulusFeature, imageFeatureValues);
+            final PresenterFeature lanwisImage = addImageFeature(previousPresenterFeature, imageFeatureValues);
             previousPresenterFeature = lanwisImage;
         }
         final PresenterFeature autoNextFeature = new PresenterFeature(FeatureType.nextStimulus, null);
