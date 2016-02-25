@@ -40,6 +40,7 @@ import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
+import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
 
 /**
@@ -255,6 +256,28 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", ogg, duration.elapsedMillis());
         ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromString(ogg), UriUtils.fromString(mp3), postLoadMs, timedStimulusListener);
 //        ((TimedStimulusView) simpleView).addText("playStimulusAudio: " + duration.elapsedMillis() + "ms");
+    }
+
+    public void ratingFooterButton(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final String ratingLabels, final int eventTier) {
+        for (final String ratingItem : ratingLabels.split(",")) {
+            ((ComplexView) simpleView).addFooterButton(new PresenterEventListner() {
+                @Override
+                public String getLabel() {
+                    return ratingItem;
+                }
+
+                @Override
+                public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+                    endAudioRecorderTag(eventTier, ratingItem);
+                    timedStimulusListener.postLoadTimerFired();
+                }
+
+                @Override
+                public int getHotKey() {
+                    return -1;
+                }
+            });
+        }
     }
 
     protected void showCurrentMs() {
