@@ -31,6 +31,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
+import javax.validation.constraints.Size;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAnyAttribute;
 import javax.xml.bind.annotation.XmlAnyElement;
@@ -59,6 +60,7 @@ public class PresenterFeature {
     @OrderBy("displayOrder ASC")
     private List<PresenterFeature> presenterFeatures = new ArrayList<>();
     private HashMap<FeatureAttribute, String> featureAttributes = new HashMap<>();
+    @Size(max = 500)
     private String featureText;
 
     public PresenterFeature() {

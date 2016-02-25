@@ -42,6 +42,7 @@ public enum FeatureAttribute {
     eventTier,
     filePerStimulus,
     eventTag,
+    ratingLabels,
     sendData,
     randomise,
     norepeat,

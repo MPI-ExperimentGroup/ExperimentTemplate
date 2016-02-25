@@ -25,12 +25,18 @@ public class StimuliSubAction {
 
     final String percentOfPage;
     final String label;
-    final String button;
+    final String[] buttonArray;
 
     public StimuliSubAction(String percentOfPage, String label, String button) {
         this.percentOfPage = percentOfPage;
         this.label = label;
-        this.button = button;
+        this.buttonArray = new String[]{button};
+    }
+
+    public StimuliSubAction(String percentOfPage, String[] buttonArray) {
+        this.percentOfPage = percentOfPage;
+        this.label = null;
+        this.buttonArray = buttonArray;
     }
 
     public String getPercentOfPage() {
@@ -41,8 +47,7 @@ public class StimuliSubAction {
         return label;
     }
 
-    public String getButton() {
-        return button;
+    public String[] getButtons() {
+        return buttonArray;
     }
-    
 }
