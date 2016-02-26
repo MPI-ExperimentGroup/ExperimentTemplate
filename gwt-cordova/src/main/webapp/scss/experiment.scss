@@ -68,7 +68,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     left:5px;
     border-top: 15px solid transparent;
     border-bottom: 17px solid transparent; 
-    border-right:17px solid white;
+    border-right:17px solid $primaryColour2;
     margin-right: 0px;
     cursor: pointer;
     /*z-index: 1;*/
@@ -247,7 +247,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 }
 
 .headerPanel {
-    border-bottom-color: white;
+    border-bottom-color: $primaryColour2;
     border-bottom-width: 1px;
     border-bottom-style: solid;
     width: 100%;

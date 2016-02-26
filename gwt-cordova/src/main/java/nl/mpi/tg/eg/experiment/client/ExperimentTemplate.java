@@ -18,11 +18,13 @@ public class ExperimentTemplate implements EntryPoint {
         if ($wnd.isDeviceReady) {
             self.@nl.mpi.tg.eg.experiment.client.ExperimentTemplate::onDeviceReady()();
 //            document.getElementById("widgetTag").className = device.platform; // todo: set the platform style
+              $wnd.StatusBar.hide(); // hide the status bar
         } else {
             var listener = $entry(function () {
                 $doc.removeEventListener("deviceready", listener, false);
                 self.@nl.mpi.tg.eg.experiment.client.ExperimentTemplate::onDeviceReady()();
-//            document.getElementById("widgetTag").className = device.platform; // todo: set the platform style
+//              document.getElementById("widgetTag").className = device.platform; // todo: set the platform style
+                $wnd.StatusBar.hide(); // hide the status bar
             });
             $doc.addEventListener("deviceready", listener, false);
          }

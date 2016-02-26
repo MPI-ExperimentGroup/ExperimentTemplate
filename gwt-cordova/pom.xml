@@ -9,7 +9,7 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-gui</artifactId>
     <packaging>war</packaging>
-    <version>0.1.595-testing</version>
+    <version>0.1.717-testing</version>
     <name>FRINEX GWT-Cordova Template</name>
     <organization>
         <name>Max Planck Institute for Psycholinguistics, Nijmegen</name>
@@ -95,6 +95,47 @@
         </resources>
         <plugins>
             <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.7</version>
+                <executions>
+                    <execution>
+                        <id>copy-app-specific-resources</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${webappDirectory}/static</outputDirectory>
+                            <resources>          
+                                <resource>
+                                    <directory>src/main/static/${experiment.configuration.name}</directory>
+                                    <!--<filtering>true</filtering>-->
+                                </resource>
+                            </resources>              
+                        </configuration>            
+                    </execution>                   
+                    <execution>
+                        <id>copy-setup-cordova-script</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/</outputDirectory>
+                            <resources>          
+                                <resource>
+                                    <directory>${basedir}/src/main/cordova</directory>
+                                    <includes>
+                                        <include>setup-cordova.sh</include>
+                                    </includes>  
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>              
+                        </configuration>            
+                    </execution>                                      
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>xml-maven-plugin</artifactId>
                 <version>1.0</version>
@@ -108,7 +149,7 @@
                 </executions>
                 <configuration>
                     <transformationSets>
-<!--                        <transformationSet>
+                        <!--                        <transformationSet>
                             <dir>${project.build.sourceDirectory}/../svg/mapdata</dir>
                             <stylesheet>${project.build.sourceDirectory}/../xsl/map2properties.xsl</stylesheet>
                             <fileMappers>
@@ -118,7 +159,7 @@
                             </fileMappers>
                             <outputDir>${project.build.directory}/generated-sources/gwt/nl/ru/languageininteraction/language/client</outputDir>
                         </transformationSet>-->
-<!--                        <transformationSet>
+                        <!--                        <transformationSet>
                             <dir>${project.build.sourceDirectory}/../svg/graphics</dir>
                             <includes>
                                 <include>*.svg</include>
@@ -131,7 +172,7 @@
                             </fileMappers>
                             <outputDir>${project.build.directory}/generated-sources/gwt/nl/ru/languageininteraction/language/client</outputDir>
                         </transformationSet>-->
-<!--                        <transformationSet>
+                        <!--                        <transformationSet>
                             <dir>${project.build.sourceDirectory}/../svg/graphics</dir>
                             <includes>
                                 <include>*.svg</include>
@@ -235,7 +276,7 @@
                             </fileMappers>
                             <outputDir>${project.build.directory}/generated-sources/scss</outputDir>
                         </transformationSet>
-<!--                        <transformationSet>
+                        <!--                        <transformationSet>
                             <dir>${project.build.sourceDirectory}/../csv</dir>
                             <includes>
                                 <include>*.xml</include>
@@ -249,7 +290,7 @@
                             </fileMappers>
                             <outputDir>${project.build.directory}/generated-sources/gwt/nl/mpi/tg/eg/experiment/client</outputDir>
                         </transformationSet>-->
-<!--                        <transformationSet>
+                        <!--                        <transformationSet>
                             <dir>${project.build.sourceDirectory}/../csv</dir>
                             <includes>
                                 <include>*.xml</include>
@@ -269,7 +310,7 @@
                             </fileMappers>
                             <outputDir>${project.build.directory}/generated-sources/gwt/nl/mpi/tg/eg/experiment/client</outputDir>
                         </transformationSet>-->
-<!--                        <transformationSet>
+                        <!--                        <transformationSet>
                             <dir>${project.build.sourceDirectory}/../csv</dir>
                             <includes>
                                 <include>*.xml</include>
@@ -289,7 +330,7 @@
                             </fileMappers>
                             <outputDir>${project.build.directory}/generated-sources/gwt/nl/ru/languageininteraction/language/client</outputDir>
                         </transformationSet>-->
-<!--                        <transformationSet>
+                        <!--                        <transformationSet>
                             <dir>${project.build.sourceDirectory}/../csv</dir>
                             <includes>
                                 <include>*.xml</include>
@@ -440,7 +481,7 @@
                         <!--<descriptor>${project.build.sourceDirectory}/../chromeapp/chromeapp-assembly.xml</descriptor>-->
                     </descriptors>
                     <runOnlyAtExecutionRoot>true</runOnlyAtExecutionRoot>
-                </configuration>
+                </configuration>              
                 <executions>
                     <execution>
                         <id>standalone</id>

@@ -14,7 +14,7 @@
         </file>
     </files>
     <fileSets>
-<!--        <fileSet>
+        <!--        <fileSet>
             <directory>${project.build.directory}/${project.build.finalName}</directory>
             <includes>
                 <include>/images/**</include>
@@ -22,7 +22,7 @@
             <outputDirectory>/</outputDirectory>
             <filtered>false</filtered>
         </fileSet>-->
-<!--        <fileSet>
+        <!--        <fileSet>
             <directory>${project.build.directory}/${project.build.finalName}</directory>
             <includes>
                 <include>/images/icon.png</include>
@@ -34,7 +34,7 @@
             <outputDirectory>/www</outputDirectory>
             <filtered>false</filtered>
         </fileSet>-->
-<!--        <fileSet>
+        <!--        <fileSet>
             <directory>${project.build.directory}/${project.build.finalName}</directory>
             <includes>
                 <include>/media/**</include>
@@ -52,7 +52,7 @@
             </includes>  
             <outputDirectory>/</outputDirectory>
             <filtered>true</filtered>
-        </fileSet>
+        </fileSet>        
         <fileSet>
             <directory>${project.build.directory}/${project.build.finalName}</directory>
             <includes>
@@ -62,6 +62,7 @@
                 <!--<include>*.*</include>-->
                 <include>/ExperimentTemplate/**</include>
                 <include>/css/**</include>
+                <include>/scss/**</include>
             </includes>  
             <outputDirectory>www</outputDirectory>
             <filtered>false</filtered>

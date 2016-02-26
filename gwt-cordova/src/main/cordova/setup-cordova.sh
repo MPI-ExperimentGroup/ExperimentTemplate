@@ -1,6 +1,6 @@
 #mvn install
 cd target
-appname=vanuatufieldkit-frinex-gui-0.1.711-testing
+appname=${experiment.configuration.name}-${project.artifactId}-${project.version}
 rm -rf $appname-cordova
 unzip $appname-cordova.zip -d $appname-cordova
 cd $appname-cordova
@@ -116,7 +116,7 @@ cp platforms/android/build/outputs/apk/android-release.apk ~/Desktop/FrinexAPKs/
 cp -r platforms/android ~/Desktop/FrinexAPKs/$appname-android
 
 #echo "installing on Android"
-adb install target/$appname-cordova/platforms/android/build/outputs/apk/android-release.apk
+adb install platforms/android/build/outputs/apk/android-release.apk
 
 #echo "launching xcode"
 #open platforms/ios/LingQuest.xcodeproj&
