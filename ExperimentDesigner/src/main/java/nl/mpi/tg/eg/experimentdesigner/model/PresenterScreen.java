@@ -47,6 +47,7 @@ public class PresenterScreen {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    private long displayOrder;
     private String title;
     private String menuLabel;
     @ManyToOne
@@ -61,19 +62,21 @@ public class PresenterScreen {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderBy("displayOrder ASC")
     private List<PresenterFeature> presenterFeatures = new ArrayList<>();
-    @OneToMany(mappedBy = "backPresenter", cascade = CascadeType.ALL, orphanRemoval = false, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OrderBy("displayOrder ASC")
     private List<PresenterScreen> presenterScreens = new ArrayList<>();
 
     public PresenterScreen() {
     }
 
-    public PresenterScreen(String title, String menuLabel, PresenterScreen backPresenter, String selfPresenterTag, PresenterScreen nextPresenter, PresenterType presenterType) {
+    public PresenterScreen(String title, String menuLabel, PresenterScreen backPresenter, String selfPresenterTag, PresenterScreen nextPresenter, PresenterType presenterType, long displayOrder) {
         this.title = title;
         this.menuLabel = menuLabel;
         this.backPresenter = backPresenter;
         this.selfPresenterTag = selfPresenterTag;
         this.nextPresenter = nextPresenter;
         this.presenterType = presenterType;
+        this.displayOrder = displayOrder;
     }
 
     public void setPresenterType(PresenterType presenterType) {
@@ -91,6 +94,15 @@ public class PresenterScreen {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    @XmlAttribute
+    public long getDisplayOrder() {
+        return displayOrder;
+    }
+
+    public void setDisplayOrder(long displayOrder) {
+        this.displayOrder = displayOrder;
     }
 
     @XmlAttribute
