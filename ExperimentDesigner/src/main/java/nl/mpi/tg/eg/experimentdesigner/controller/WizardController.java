@@ -68,15 +68,15 @@ public class WizardController {
         experiment.getMetadata().add(metadata);
     }
 
-    public PresenterScreen addAutoMenu(final Experiment experiment) {
-        final PresenterScreen presenterScreen = new PresenterScreen("Auto Menu", "Menu", null, "AutoMenu", null, PresenterType.menu);
+    public PresenterScreen addAutoMenu(final Experiment experiment, long displayOrder) {
+        final PresenterScreen presenterScreen = new PresenterScreen("Auto Menu", "Menu", null, "AutoMenu", null, PresenterType.menu, displayOrder);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMenuItems, null));
         experiment.getPresenterScreen().add(presenterScreen);
         return presenterScreen;
     }
 
-    public PresenterScreen addDebugScreen(final Experiment experiment, PresenterScreen autoMenuPresenter) {
-        final PresenterScreen presenterScreen = new PresenterScreen("Debug Screen", "Debug Screen", autoMenuPresenter, "DebugScreen", null, PresenterType.debug);
+    public PresenterScreen addDebugScreen(final Experiment experiment, PresenterScreen autoMenuPresenter, long displayOrder) {
+        final PresenterScreen presenterScreen = new PresenterScreen("Debug Screen", "Debug Screen", autoMenuPresenter, "DebugScreen", null, PresenterType.debug, displayOrder);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.versionData, null));
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.eraseLocalStorageButton, null));
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.localStorageData, null));
@@ -84,8 +84,8 @@ public class WizardController {
         return presenterScreen;
     }
 
-    public PresenterScreen addWelcomeScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter) {
-        final PresenterScreen presenterScreen = new PresenterScreen("Welcome", "Welcome", backPresenter, "Welcome", nextPresenter, PresenterType.menu);
+    public PresenterScreen addWelcomeScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder) {
+        final PresenterScreen presenterScreen = new PresenterScreen("Welcome", "Welcome", backPresenter, "Welcome", nextPresenter, PresenterType.menu, displayOrder);
         final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.menuItem, "Instructions");
         presenterFeature.addFeatureAttributes(FeatureAttribute.target, "Instructions");
         presenterScreen.getPresenterFeatureList().add(presenterFeature);
@@ -96,8 +96,8 @@ public class WizardController {
         return presenterScreen;
     }
 
-    public PresenterScreen addUserSelectMenu(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter) {
-        final PresenterScreen presenterScreen = new PresenterScreen("Select User", "Select User", backPresenter, "SelectUser", nextPresenter, PresenterType.metadata);
+    public PresenterScreen addUserSelectMenu(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder) {
+        final PresenterScreen presenterScreen = new PresenterScreen("Select User", "Select User", backPresenter, "SelectUser", nextPresenter, PresenterType.metadata, displayOrder);
         final PresenterFeature selectUserFeature = new PresenterFeature(FeatureType.selectUserMenu, null);
         selectUserFeature.addFeatureAttributes(FeatureAttribute.target, nextPresenter.getSelfPresenterTag());
         presenterScreen.getPresenterFeatureList().add(selectUserFeature);
@@ -105,8 +105,8 @@ public class WizardController {
         return presenterScreen;
     }
 
-    public PresenterScreen addEditUserScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter) {
-        final PresenterScreen presenterScreen = new PresenterScreen("Edit User", "Edit User", backPresenter, "EditUser", nextPresenter, PresenterType.metadata);
+    public PresenterScreen addEditUserScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder) {
+        final PresenterScreen presenterScreen = new PresenterScreen("Edit User", "Edit User", backPresenter, "EditUser", nextPresenter, PresenterType.metadata, displayOrder);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMetadataFields, null));
         final PresenterFeature saveMetadataButton = new PresenterFeature(FeatureType.saveMetadataButton, "Save Metadata");
         saveMetadataButton.addFeatureAttributes(FeatureAttribute.sendData, "false");
@@ -123,7 +123,7 @@ public class WizardController {
         return presenterScreen;
     }
 
-    public PresenterScreen createMetadataScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, final String[] metadataStrings) {
+    public PresenterScreen createMetadataScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, final String[] metadataStrings, long displayOrder) {
         //    Metadata is collected in the spoken form (audio recording) with screen prompts for each item in metadataStrings:
         final List<Stimulus> stimuliList = experiment.getStimuli();
         final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{"metadata"}));
@@ -133,7 +133,7 @@ public class WizardController {
         }
 //        experiment.setStimuli(stimuliList);
         final String screenName = "Metadata";
-        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, "MetadataScreen", null, PresenterType.stimulus);
+        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, "MetadataScreen", null, PresenterType.stimulus, displayOrder);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadAllStimulus, null);
         loadStimuliFeature.addStimulusTag("metadata");
@@ -207,8 +207,8 @@ public class WizardController {
         return actionFeature;
     }
 
-    public PresenterScreen addWelcomeMenu(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter) {
-        final PresenterScreen presenterScreen = new PresenterScreen("Start", "Start", backPresenter, "Start", nextPresenter, PresenterType.metadata);
+    public PresenterScreen addWelcomeMenu(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder) {
+        final PresenterScreen presenterScreen = new PresenterScreen("Start", "Start", backPresenter, "Start", nextPresenter, PresenterType.metadata, displayOrder);
         final PresenterFeature userCheckFeature = new PresenterFeature(FeatureType.existingUserCheck, null);
         final PresenterFeature multipleUsersFeature = new PresenterFeature(FeatureType.multipleUsers, null);
         userCheckFeature.getPresenterFeatureList().add(multipleUsersFeature);
@@ -228,8 +228,8 @@ public class WizardController {
         return presenterScreen;
     }
 
-    public PresenterScreen addInstructionsScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter) {
-        final PresenterScreen presenterScreen = new PresenterScreen("Instructions", "Instructions", backPresenter, "Instructions", nextPresenter, PresenterType.text);
+    public PresenterScreen addInstructionsScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder) {
+        final PresenterScreen presenterScreen = new PresenterScreen("Instructions", "Instructions", backPresenter, "Instructions", nextPresenter, PresenterType.text, displayOrder);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "Instructions"));
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "Instructions are to be provided here"));
         final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.targetButton, "Start");
@@ -239,14 +239,14 @@ public class WizardController {
         return presenterScreen;
     }
 
-    public PresenterScreen createStimulusScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, final String stimulusTagArray[], final StimuliSubAction[] featureValuesArray) {
+    public PresenterScreen createStimulusScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, final String stimulusTagArray[], final StimuliSubAction[] featureValuesArray, boolean filePerStimulus, long displayOrder) {
         String screenName = "";
         final List<Stimulus> stimuliList = experiment.getStimuli();
         for (final String stimulusTag : stimulusTagArray) {
             stimuliList.add(new Stimulus(null, null, null, stimulusTag, stimulusTag, stimulusTag, 0, new HashSet<>(Arrays.asList(new String[]{stimulusTag}))));
             screenName += stimulusTag;
         }
-        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, screenName + "Screen", null, PresenterType.stimulus);
+        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, screenName + "Screen", null, PresenterType.stimulus, displayOrder);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
         final String maxStimuli = "15";
         presenterFeatureList.add(new PresenterFeature(FeatureType.text, "This screen will show " + maxStimuli + " stimuli in random order from the directories:"));
@@ -266,7 +266,7 @@ public class WizardController {
         final PresenterFeature startRecorderFeature = new PresenterFeature(FeatureType.startAudioRecorder, null);
         startRecorderFeature.addFeatureAttributes(FeatureAttribute.wavFormat, "true");
         startRecorderFeature.addFeatureAttributes(FeatureAttribute.eventTag, screenName);
-        startRecorderFeature.addFeatureAttributes(FeatureAttribute.filePerStimulus, "true");
+        startRecorderFeature.addFeatureAttributes(FeatureAttribute.filePerStimulus, (filePerStimulus) ? "true" : "false");
         hasMoreStimulusFeature.getPresenterFeatureList().add(startRecorderFeature);
 
         PresenterFeature previousPresenterFeature = hasMoreStimulusFeature;
