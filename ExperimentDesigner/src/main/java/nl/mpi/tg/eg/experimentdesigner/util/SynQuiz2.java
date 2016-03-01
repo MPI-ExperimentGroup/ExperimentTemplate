@@ -45,17 +45,17 @@ public class SynQuiz2 {
     private final String imageSize = "80";
 
     public void create(PresenterScreenRepository presenterScreenRepository, PresenterFeatureRepository presenterFeatureRepository, final List<PresenterScreen> presenterScreenList) {
-        presenterScreenList.add(createIntroductionScreen("Introduction"));
-        presenterScreenList.add(createRegistrationScreen("Registration"));
-        presenterScreenList.add(createDemographicsScreen("Demographics"));
-        presenterScreenList.add(createStimulusScreen("Weekdays"));
-        presenterScreenList.add(createStimulusScreen("Numbers"));
-        presenterScreenList.add(createStimulusScreen("Letters"));
-        presenterScreenList.add(createStimulusScreen("Months"));
+        presenterScreenList.add(createIntroductionScreen("Introduction", 1));
+        presenterScreenList.add(createRegistrationScreen("Registration", 2));
+        presenterScreenList.add(createDemographicsScreen("Demographics", 3));
+        presenterScreenList.add(createStimulusScreen("Weekdays", 4));
+        presenterScreenList.add(createStimulusScreen("Numbers", 5));
+        presenterScreenList.add(createStimulusScreen("Letters", 6));
+        presenterScreenList.add(createStimulusScreen("Months", 7));
     }
 
-    private PresenterScreen createIntroductionScreen(String screenName) {
-        final PresenterScreen presenterScreen = new PresenterScreen("Decoding the Genetics of Synaesthesia", screenName, null, screenName + "Screen", null, PresenterType.text);
+    private PresenterScreen createIntroductionScreen(String screenName, long displayOrder) {
+        final PresenterScreen presenterScreen = new PresenterScreen("Decoding the Genetics of Synaesthesia", screenName, null, screenName + "Screen", null, PresenterType.text, displayOrder);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
 //        presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
         presenterFeatureList.add(new PresenterFeature(FeatureType.text, "We are studying the genetic basis of synaesthesia, a neurological phenomenon described as a \"mixing of the senses\". To find out how our genes shape how we see the world, "
@@ -79,10 +79,10 @@ public class SynQuiz2 {
         presenterFeatureList.add(targetButtonFeature);
         presenterFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
         presenterFeatureList.add(new PresenterFeature(FeatureType.text, "For more information about synaesthesia, please see our 'About synaesthesia' page. "
-                +"If you are not sure if you have synaesthesia, and want to find out, try our SynQuiz app or take a quick test at synesthete.org."));
+                + "If you are not sure if you have synaesthesia, and want to find out, try our SynQuiz app or take a quick test at synesthete.org."));
         presenterFeatureList.add(new PresenterFeature(FeatureType.text, "This project is organised and funded by the Language & Genetics Department at the Max Planck Institute for Psycholinguistics in Nijmegen in the Netherlands, directed by Prof. Dr. Simon E. Fisher. "
-                +"The synaesthesia studies are coordinated by Dr. Amanda Tilot and Dr. Sarah Graham. "
-                +"If you have any questions about our research, please contact us at " + formatLink("synaesthesia@mpi.nl") + "."));
+                + "The synaesthesia studies are coordinated by Dr. Amanda Tilot and Dr. Sarah Graham. "
+                + "If you have any questions about our research, please contact us at " + formatLink("synaesthesia@mpi.nl") + "."));
         return presenterScreen;
     }
 
@@ -94,8 +94,8 @@ public class SynQuiz2 {
         return "<a href=\"#\" onclick=\"window.open(''" + linkUrl + "'',''_system''); return false;\">" + linkText + "</a>";
     }
 
-    private PresenterScreen createRegistrationScreen(String screenName) {
-        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, null, screenName + "Screen", null, PresenterType.metadata);
+    private PresenterScreen createRegistrationScreen(String screenName, long displayOrder) {
+        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, null, screenName + "Screen", null, PresenterType.metadata, displayOrder);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
         presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
         presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, "Please read the " + formatLink("Participant Information Sheet", "static/synaesthesia_info_sheet_ENGLISH_webversion.pdf") + " carefully!"));
@@ -115,8 +115,8 @@ public class SynQuiz2 {
         return presenterScreen;
     }
 
-    private PresenterScreen createDemographicsScreen(String screenName) {
-        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, null, screenName + "Screen", null, PresenterType.text);
+    private PresenterScreen createDemographicsScreen(String screenName, long displayOrder) {
+        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, null, screenName + "Screen", null, PresenterType.text, displayOrder);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
 //        presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
 //        presenterFeatureList.add(new PresenterFeature(FeatureType.text, "Please read the Participant Information Sheet carefully!"));
@@ -128,8 +128,8 @@ public class SynQuiz2 {
         return presenterScreen;
     }
 
-    private PresenterScreen createStimulusScreen(String screenName) {
-        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, null, screenName + "Screen", null, PresenterType.colourPicker);
+    private PresenterScreen createStimulusScreen(String screenName, long displayOrder) {
+        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, null, screenName + "Screen", null, PresenterType.colourPicker, displayOrder);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadAllStimulus, null);
         loadStimuliFeature.addStimulusTag(screenName);
