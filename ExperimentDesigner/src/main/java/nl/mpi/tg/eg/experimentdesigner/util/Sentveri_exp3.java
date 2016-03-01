@@ -39,19 +39,21 @@ public class Sentveri_exp3 {
     final String[] stimulusTagList = new String[]{"list1", "list2", "list3", "list4"};
 
     public void create3c(PresenterScreenRepository presenterScreenRepository, PresenterFeatureRepository presenterFeatureRepository, final List<PresenterScreen> presenterScreenList) {
-        PresenterScreen practiceScreen = createStimulusScreen("practice");
+        long displayOrder = 1;
+        PresenterScreen practiceScreen = createStimulusScreen("practice", displayOrder);
         presenterScreenList.add(practiceScreen);
         for (char setChar : new char[]{'a', 'b', 'c'}) {
             for (String tagString : stimulusTagList) {
                 String screenName = tagString + "_" + setChar;
-                PresenterScreen stimuliSetScreen = createStimulusScreen(screenName);
+                displayOrder++;
+                PresenterScreen stimuliSetScreen = createStimulusScreen(screenName, displayOrder);
                 presenterScreenList.add(stimuliSetScreen);
             }
         }
     }
 
-    private PresenterScreen createStimulusScreen(String screenName) {
-        final PresenterScreen presenterScreen = new PresenterScreen(null, screenName, null, screenName + "Screen", null, PresenterType.stimulus);
+    private PresenterScreen createStimulusScreen(String screenName, long displayOrder) {
+        final PresenterScreen presenterScreen = new PresenterScreen(null, screenName, null, screenName + "Screen", null, PresenterType.stimulus, displayOrder);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadAllStimulus, null);
         loadStimuliFeature.addStimulusTag(screenName);
