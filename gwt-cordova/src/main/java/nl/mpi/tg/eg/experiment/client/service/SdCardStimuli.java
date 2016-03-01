@@ -89,16 +89,23 @@ public class SdCardStimuli {
     }
 
     private void nonScan() {
-        String[] testStiuli = new String[]{"d1e259.ogg", "d1e378.jpg", "d1e521.aiff", "d1e674.mp4", "d1e83.jpg", "inge_grijp2.mp3", "sharon_flees3.mp3",
-            "d1e263.aiff", "d1e378.mp3", "d1e521.jpg", "d1e674.ogg", "d1e831.aiff", "inge_grijp2.ogg", "sharon_flees3.ogg",
-            "d1e263.jpg", "d1e378.mp4", "d1e521.mp3", "d1e679.aiff", "d1e831.jpg", "inge_grijp3.mp3", "sharon_flees4.mp3",
-            "d1e263.mp3", "d1e378.ogg", "d1e521.mp4", "d1e679.jpg", "d1e831.mp3", "inge_grijp3.ogg", "sharon_flees4.ogg",
-            "d1e263.mp4", "d1e383.aiff", "d1e521.ogg", "d1e679.mp3", "d1e831.mp4", "inge_grijp4.mp3", "sharon_flees5.mp3",
-            "d1e263.ogg", "d1e383.jpg", "d1e526.aiff", "d1e679.mp4", "d1e831.ogg", "inge_grijp4.ogg"};
+        String[] testStiuli = new String[]{
+//            "d1e235.aiff",
+            "d1e235.jpg",
+            "d1e235.mp3",
+            "d1e235.mp4",
+            "d1e235.ogg",
+//            "d1e259.ogg", "d1e378.jpg", "d1e521.aiff", "d1e674.mp4", "d1e83.jpg", "inge_grijp2.mp3", "sharon_flees3.mp3",
+//            "d1e263.aiff", "d1e378.mp3", "d1e521.jpg", "d1e674.ogg", "d1e831.aiff", "inge_grijp2.ogg", "sharon_flees3.ogg",
+//            "d1e263.jpg", "d1e378.mp4", "d1e521.mp3", "d1e679.aiff", "d1e831.jpg", "inge_grijp3.mp3", "sharon_flees4.mp3",
+//            "d1e263.mp3", "d1e378.ogg", "d1e521.mp4", "d1e679.jpg", "d1e831.mp3", "inge_grijp3.ogg", "sharon_flees4.ogg",
+//            "d1e263.mp4", "d1e383.aiff", "d1e521.ogg", "d1e679.mp3", "d1e831.mp4", "inge_grijp4.mp3", "sharon_flees5.mp3",
+//            "d1e263.ogg", "d1e383.jpg", "d1e526.aiff", "d1e679.mp4", "d1e831.ogg", "inge_grijp4.ogg"
+        };
         for (String item : testStiuli) {
             insertStimulus("static/" + item, item);
         }
-        insertStimulus("file:///storage/emulated/0/MPI_STIMULI/bowped/10.jpg", "10.jpg");
+//        insertStimulus("file:///storage/emulated/0/MPI_STIMULI/bowped/10.jpg", "10.jpg");
         Timer timer = new Timer() {
             public void run() {
                 loadingCompleteAction();
