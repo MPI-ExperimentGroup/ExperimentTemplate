@@ -71,10 +71,10 @@ public class AudioPlayer {
         this.audioEventListner = audioEventListner;
     }
 
-    public void playSampleAudio(RoundSample roundSample) {
-        final String[] soundFiles = roundSample.getLanguageSample().getSoundFiles();
-        playSample(soundFiles[roundSample.getSampleIndex()]);
-    }
+//    public void playSampleAudio(RoundSample roundSample) {
+//        final String[] soundFiles = roundSample.getLanguageSample().getSoundFiles();
+//        playSample(soundFiles[roundSample.getSampleIndex()]);
+//    }
 
     private void playSample(String sample) {
         if (audioPlayer == null) {
@@ -99,8 +99,12 @@ public class AudioPlayer {
                 return;
             }
         }
-        audioPlayer.addSource(ogg.asString(), AudioElement.TYPE_OGG);
-        audioPlayer.addSource(mp3.asString(), AudioElement.TYPE_MP3);
+        if (ogg != null) {
+            audioPlayer.addSource(ogg.asString(), AudioElement.TYPE_OGG);
+        }
+        if (mp3 != null) {
+            audioPlayer.addSource(mp3.asString(), AudioElement.TYPE_MP3);
+        }
         //audioPlayer.setCurrentTime(0); // on android the if the ready state is not correct then this will fail and audio will not play
         audioPlayer.play();
     }
