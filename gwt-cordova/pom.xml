@@ -109,10 +109,9 @@
                             <resources>          
                                 <resource>
                                     <directory>src/main/static/${experiment.configuration.name}</directory>
-                                    <!--<filtering>true</filtering>-->
                                 </resource>
                             </resources>              
-                        </configuration>            
+                        </configuration>                                                    
                     </execution>                   
                     <execution>
                         <id>copy-setup-cordova-script</id>
@@ -132,6 +131,24 @@
                                 </resource>
                             </resources>              
                         </configuration>            
+                    </execution>                                      
+                    <execution>
+                        <id>copy-configuration-xml</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${webappDirectory}/</outputDirectory>
+                            <resources>          
+                                <resource>
+                                    <directory>${experiment.configuration.path}</directory>
+                                    <includes>
+                                        <include>${experiment.configuration.name}.xml</include>        
+                                    </includes>
+                                </resource>
+                            </resources>              
+                        </configuration>                  
                     </execution>                                      
                 </executions>
             </plugin>
