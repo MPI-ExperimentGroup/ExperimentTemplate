@@ -35,11 +35,13 @@ public abstract class SingleShotEventListner extends HandlesAllTouchEvents imple
 
     private boolean singleShotConsumed = false;
 //    private final Button button;
-
+    boolean sawTouchStart = false;
 //    public SingleShotEventListner(Button button) {
 //        this.button = button;
 //    }
+
     final public void eventFired() {
+        sawTouchStart = false;
 //        button.setText("eventFired");
 //        hasTargetTouch = false;
 //        touchTarget = null;
@@ -62,6 +64,7 @@ public abstract class SingleShotEventListner extends HandlesAllTouchEvents imple
 
     @Override
     final public void onClick(ClickEvent event) {
+        sawTouchStart = false;
 //        button.setText("onClick");
         event.preventDefault();
         eventFired();
@@ -75,6 +78,7 @@ public abstract class SingleShotEventListner extends HandlesAllTouchEvents imple
 
     @Override
     public void onTouchStart(TouchStartEvent event) {
+        sawTouchStart = true;
 //        final JsArray<Touch> targetTouches = event.getTargetTouches();
 //        button.setText("onTouchStart:" + targetTouches.length());
 //        event.preventDefault();
@@ -86,6 +90,7 @@ public abstract class SingleShotEventListner extends HandlesAllTouchEvents imple
 
     @Override
     public void onTouchMove(TouchMoveEvent event) {
+        sawTouchStart = false;
 //        final JsArray<Touch> targetTouches = event.getTargetTouches();
 //        button.setText("onTouchMove:" + event.getTouches().length() + ":" + event.getTargetTouches().length());
 ////        event.preventDefault();
@@ -101,6 +106,7 @@ public abstract class SingleShotEventListner extends HandlesAllTouchEvents imple
 
     @Override
     public void onTouchCancel(TouchCancelEvent event) {
+        sawTouchStart = false;
 //        button.setText("onTouchCanceled");
 //        event.preventDefault();
 //        if (event.getTargetTouches().length() == 0) {
@@ -111,11 +117,12 @@ public abstract class SingleShotEventListner extends HandlesAllTouchEvents imple
 
     @Override
     public void onTouchEnd(TouchEndEvent event) {
+        if (sawTouchStart) {
 //        button.setText("onTouchEnd:" + event.getTouches().length() + ":" + event.getTargetTouches().length());
-        event.preventDefault();
+            event.preventDefault();
 //        if (hasTargetTouch && event.getTargetTouches().length() == 0) {
-        eventFired();
-//        }
+            eventFired();
+        }
     }
 
     protected abstract void singleShotFired();
