@@ -4,6 +4,7 @@ appname=${experiment.configuration.name}-${project.artifactId}-${project.version
 rm -rf $appname-cordova
 unzip $appname-cordova.zip -d $appname-cordova
 cd $appname-cordova
+bash ../generate-icons.sh
 #cordova platform add ios
 cordova platform add android
 #cordova plugin add https://github.com/danwilson/google-analytics-plugin.git

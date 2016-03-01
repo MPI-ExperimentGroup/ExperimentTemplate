@@ -9,7 +9,7 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-gui</artifactId>
     <packaging>war</packaging>
-    <version>0.1.717-testing</version>
+    <version>0.1.720-testing</version>
     <name>FRINEX GWT-Cordova Template</name>
     <organization>
         <name>Max Planck Institute for Psycholinguistics, Nijmegen</name>
@@ -292,6 +292,20 @@
                                 </fileMapper>
                             </fileMappers>
                             <outputDir>${project.build.directory}/generated-sources/scss</outputDir>
+                        </transformationSet>
+                        <transformationSet>
+                            <dir>${experiment.configuration.path}</dir>
+                            <includes>
+                                <include>${experiment.configuration.name}.xml</include>
+                            </includes>
+                            <stylesheet>${project.build.sourceDirectory}/../xsl/config2icons.xsl</stylesheet>
+                            <fileMappers>
+                                <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.RegExpFileMapper">
+                                    <pattern>${experiment.configuration.name}\.xml$</pattern>
+                                    <replacement>generate-icons.sh</replacement>
+                                </fileMapper>
+                            </fileMappers>
+                            <outputDir>${basedir}/target/</outputDir>
                         </transformationSet>
                         <!--                        <transformationSet>
                             <dir>${project.build.sourceDirectory}/../csv</dir>
