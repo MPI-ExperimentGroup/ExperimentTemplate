@@ -63,6 +63,7 @@
                 <include>/ExperimentTemplate/**</include>
                 <include>/css/**</include>
                 <include>/scss/**</include>
+                <include>/${experiment.configuration.name}.xml</include>
             </includes>  
             <outputDirectory>www</outputDirectory>
             <filtered>false</filtered>
