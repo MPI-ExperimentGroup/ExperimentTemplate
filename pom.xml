@@ -27,12 +27,28 @@
         
         <!--<experiment.configuration.path>${project.build.sourceDirectory}/../xml</experiment.configuration.path>-->
         <!--<experiment.configuration.path>${project.build.sourceDirectory}/../../../../../ExperimentBuilder/src/main/xml</experiment.configuration.path>-->      
-        <experiment.configuration.path>../target/frinex-rest-output</experiment.configuration.path>      
+        <experiment.configuration.path>../frinex-rest-output</experiment.configuration.path>      
+        <experiment.webservice>http://localhost:8080/ExperimentDesigner</experiment.webservice>      
+                <!--<experiment.destinationName>localhost</experiment.destinationName>-->      
+        <experiment.destinationUrl>http://localhost:8080</experiment.destinationUrl>      
           
-        <!--<experiment.configuration.name>DobesAnnotator</experiment.configuration.name>-->
-        <!--<experiment.configuration.name>AllOptions</experiment.configuration.name>-->
-        <experiment.configuration.name>Sentveri_exp3</experiment.configuration.name>
+        <!--<experiment.configuration.name>dobesannotator</experiment.configuration.name>-->
+        <experiment.configuration.name>alloptions</experiment.configuration.name>
+<!--        <experiment.configuration.name>shawifieldkit</experiment.configuration.name>
+        <experiment.configuration.displayName>Shawi FieldKit</experiment.configuration.displayName>-->
+        <!--        <experiment.configuration.name>vanuatufieldkit</experiment.configuration.name>
+        <experiment.configuration.displayName>Vanuatu FieldKit</experiment.configuration.displayName>-->
+        <!--<experiment.configuration.name>sentveri_exp3</experiment.configuration.name>-->
+        <!--<experiment.configuration.displayName>sentveri_exp3</experiment.configuration.displayName>-->
+        <!--<experiment.configuration.displayName>SynQuiz2</experiment.configuration.displayName>-->
+        <!--<experiment.configuration.name>synquiz2</experiment.configuration.name>-->
         <!--<experiment.configuration.name>snspsem</experiment.configuration.name>-->
+        <experiment.configuration.admin.password></experiment.configuration.admin.password>
+        <experiment.configuration.db.password></experiment.configuration.db.password>
+        
+        <!--<experiment.configuration.name>kinoath</experiment.configuration.name>-->
+        <!--<experiment.configuration.admin.password></experiment.configuration.admin.password>-->
+        <!--<experiment.configuration.db.password></experiment.configuration.db.password>-->
         <!--<experiment.configuration.name>dobes</experiment.configuration.name>-->
         <experiment.configuration.admin.password></experiment.configuration.admin.password>
         <experiment.configuration.db.password></experiment.configuration.db.password>
@@ -62,28 +78,6 @@
                     <shortVersionModule></shortVersionModule>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>com.googlecode.maven-download-plugin</groupId>
-                <artifactId>download-maven-plugin</artifactId>
-                <version>1.2.1</version>
-                <executions>
-                    <execution>
-                        <id>get-configuration-file</id>
-                        <phase>pre-integration-test</phase>
-                        <goals>
-                            <goal>wget</goal>
-                        </goals>
-                        <configuration>
-                            <url>${ems13url}/ExperimentDesigner/configuration/${experiment.configuration.name}</url>
-                            <!--<unpack>true</unpack>-->
-                            <overwrite>true</overwrite>
-                            <skipCache>true</skipCache>
-                            <outputDirectory>${project.build.directory}/frinex-rest-output</outputDirectory>
-                            <outputFileName>${experiment.configuration.name}.xml</outputFileName>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>            
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
