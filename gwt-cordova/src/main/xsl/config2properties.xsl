@@ -45,7 +45,7 @@ stopSharingDetailsExplanation=({0}) and unique id ({1})
 </xsl:text>      
         <xsl:apply-templates/>
     </xsl:template>
-    <xsl:template match="saveMetadataButton[@featureText != '']|createUserButton[@featureText != '']|targetButton[@featureText != '']|actionButton[@featureText != '']|targetFooterButton[@featureText != '']|actionFooterButton[@featureText != '']|text[@featureText != '']|popupMessage[@featureText != '']|menuItem[@featureText != '']|featureText[@featureText != '']|nextStimulusButton[@featureText != '']|htmlText[@featureText != '']|userInfo[@featureText != '']">
+    <xsl:template match="saveMetadataButton[@featureText != '']|createUserButton[@featureText != '']|targetButton[@featureText != '']|actionButton[@featureText != '']|targetFooterButton[@featureText != '']|actionFooterButton[@featureText != '']|plainText[@featureText != '']|popupMessage[@featureText != '']|menuItem[@featureText != '']|featureText[@featureText != '']|nextStimulusButton[@featureText != '']|htmlText[@featureText != '']|userInfo[@featureText != '']">
         <xsl:value-of select="generate-id(.)" />
         <xsl:text>=</xsl:text>
         <xsl:value-of select="@featureText"/>
