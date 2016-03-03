@@ -58,10 +58,10 @@ public class SynQuiz2 {
         final PresenterScreen presenterScreen = new PresenterScreen("Decoding the Genetics of Synaesthesia", screenName, null, screenName + "Screen", null, PresenterType.text, displayOrder);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
 //        presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
-        presenterFeatureList.add(new PresenterFeature(FeatureType.text, "We are studying the genetic basis of synaesthesia, a neurological phenomenon described as a \"mixing of the senses\". To find out how our genes shape how we see the world, "
+        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "We are studying the genetic basis of synaesthesia, a neurological phenomenon described as a \"mixing of the senses\". To find out how our genes shape how we see the world, "
                 + "we are looking for people who connect letters, numbers, days of the week, or months with specific colours. This is called \"grapheme-colour\" synaesthesia. "));
         presenterFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
-        presenterFeatureList.add(new PresenterFeature(FeatureType.text, "How our study works:"));
+        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "How our study works:"));
         presenterFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
         final PresenterFeature studyDiagramFeature = new PresenterFeature(FeatureType.image, null);
         studyDiagramFeature.addFeatureAttributes(percentOfPage, imageSize);
@@ -71,16 +71,16 @@ public class SynQuiz2 {
         studyDiagramFeature.addFeatureAttributes(link, "");
         presenterFeatureList.add(studyDiagramFeature);
         presenterFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
-        presenterFeatureList.add(new PresenterFeature(FeatureType.text, "The synaesthesia tests take about 20 minutes to complete, and you can choose the ones that apply to you. "
+        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "The synaesthesia tests take about 20 minutes to complete, and you can choose the ones that apply to you. "
                 + "Depending on your scores, we may send you an email inviting you to participate in the genetics part of the study. There is no cost to participate, and you can do everything from home."));
         presenterFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
         final PresenterFeature targetButtonFeature = new PresenterFeature(FeatureType.targetButton, "Participate!");
         targetButtonFeature.addFeatureAttributes(target, "RegistrationScreen");
         presenterFeatureList.add(targetButtonFeature);
         presenterFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
-        presenterFeatureList.add(new PresenterFeature(FeatureType.text, "For more information about synaesthesia, please see our 'About synaesthesia' page. "
+        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "For more information about synaesthesia, please see our 'About synaesthesia' page. "
                 + "If you are not sure if you have synaesthesia, and want to find out, try our SynQuiz app or take a quick test at synesthete.org."));
-        presenterFeatureList.add(new PresenterFeature(FeatureType.text, "This project is organised and funded by the Language & Genetics Department at the Max Planck Institute for Psycholinguistics in Nijmegen in the Netherlands, directed by Prof. Dr. Simon E. Fisher. "
+        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "This project is organised and funded by the Language & Genetics Department at the Max Planck Institute for Psycholinguistics in Nijmegen in the Netherlands, directed by Prof. Dr. Simon E. Fisher. "
                 + "The synaesthesia studies are coordinated by Dr. Amanda Tilot and Dr. Sarah Graham. "
                 + "If you have any questions about our research, please contact us at " + formatLink("synaesthesia@mpi.nl") + "."));
         return presenterScreen;
