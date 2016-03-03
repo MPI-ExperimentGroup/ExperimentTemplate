@@ -111,7 +111,7 @@ public class WizardController {
         final PresenterFeature saveMetadataButton = new PresenterFeature(FeatureType.saveMetadataButton, "Save Metadata");
         saveMetadataButton.addFeatureAttributes(FeatureAttribute.sendData, "false");
         final PresenterFeature onErrorFeature = new PresenterFeature(FeatureType.onError, null);
-        onErrorFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "on Error Feature"));
+        onErrorFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "on Error Feature"));
         saveMetadataButton.getPresenterFeatureList().add(onErrorFeature);
         final PresenterFeature onSuccessFeature = new PresenterFeature(FeatureType.onSuccess, null);
         final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.autoNextPresenter, null);
@@ -190,7 +190,7 @@ public class WizardController {
         parentFeature.getPresenterFeatureList().add(imageFeature);
         final PresenterFeature actionFeature;
         if (imageFeatureValues.getButtons().length == 1) {
-            parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, imageFeatureValues.getLabel()));
+            parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, imageFeatureValues.getLabel()));
             actionFeature = new PresenterFeature(FeatureType.actionButton, imageFeatureValues.getButtons()[0]);
             final PresenterFeature endAudioRecorderTagFeature = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
             endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
@@ -230,8 +230,8 @@ public class WizardController {
 
     public PresenterScreen addInstructionsScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder) {
         final PresenterScreen presenterScreen = new PresenterScreen("Instructions", "Instructions", backPresenter, "Instructions", nextPresenter, PresenterType.text, displayOrder);
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "Instructions"));
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "Instructions are to be provided here"));
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "Instructions"));
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "Instructions are to be provided here"));
         final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.targetButton, "Start");
         presenterFeature1.addFeatureAttributes(FeatureAttribute.target, "Start");
         presenterScreen.getPresenterFeatureList().add(presenterFeature1);
@@ -249,9 +249,9 @@ public class WizardController {
         final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, screenName + "Screen", null, PresenterType.stimulus, displayOrder);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
         final String maxStimuli = "15";
-        presenterFeatureList.add(new PresenterFeature(FeatureType.text, "This screen will show " + maxStimuli + " stimuli in random order from the directories:"));
+        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "This screen will show " + maxStimuli + " stimuli in random order from the directories:"));
         for (final String stimulusTag : stimulusTagArray) {
-            presenterFeatureList.add(new PresenterFeature(FeatureType.text, "MPI_STIMULI/" + stimulusTag));
+            presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "MPI_STIMULI/" + stimulusTag));
         }
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadSdCardStimulus, null);
         for (final String stimulusTag : stimulusTagArray) {
@@ -280,7 +280,7 @@ public class WizardController {
         previousPresenterFeature.getPresenterFeatureList().add(autoNextFeature);
         loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
-        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "end of stimuli"));
+        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "end of stimuli"));
         final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.targetButton, nextPresenter.getSelfPresenterTag());
         menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, nextPresenter.getSelfPresenterTag());
         endOfStimulusFeature.getPresenterFeatureList().add(menuButtonFeature);
