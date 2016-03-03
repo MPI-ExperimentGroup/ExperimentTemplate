@@ -150,17 +150,11 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             break;
             }
         </xsl:text>
-        <xsl:if test="experiment/presenter/@type = 'preload' or experiment/presenter/@type = 'stimulus' or experiment/presenter/@type = 'kindiagram' or experiment/presenter/@type = 'timeline'">
+        <xsl:if test="experiment/presenter/@type = 'colourPicker' or experiment/presenter/@type = 'preload' or experiment/presenter/@type = 'stimulus' or experiment/presenter/@type = 'kindiagram' or experiment/presenter/@type = 'timeline'">
             <xsl:text>
-                } catch (AudioException error) {
-                logger.warning(error.getMessage());
-                this.presenter = new ErrorPresenter(widgetTag, error.getMessage());
-                presenter.setState(this, ApplicationState.start, applicationState);
-                }</xsl:text>
-        </xsl:if>
-        <xsl:if test="experiment/presenter/@type = 'colourPicker'">
-            <xsl:text>
-                } catch (AudioException|CanvasError error) {
+                } catch (AudioException</xsl:text>
+            <xsl:value-of select="if(experiment/presenter/@type = 'colourPicker') then '|CanvasError' else ''" />
+            <xsl:text> error) {
                 logger.warning(error.getMessage());
                 this.presenter = new ErrorPresenter(widgetTag, error.getMessage());
                 presenter.setState(this, ApplicationState.start, applicationState);
@@ -288,7 +282,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>());
         </xsl:text>
     </xsl:template>
-    <xsl:template match="text">
+    <xsl:template match="plainText">
         <xsl:text>    ((ComplexView) simpleView).addText(messages.</xsl:text>
         <xsl:value-of select="generate-id(.)" />
         <xsl:text>());
@@ -360,7 +354,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             return messages.</xsl:text>
         <xsl:value-of select="generate-id(.)" />
         <xsl:text>();
-            } 
+            }
             
             @Override
             public int getHotKey() {
@@ -379,6 +373,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 <xsl:text>);</xsl:text>
             </xsl:when>
             <xsl:otherwise>
+                <!--// todo: should this @eventTag exist in this button type given that tags can only happen in a stimulus presenter?-->
                 <xsl:value-of select="if(@eventTag) then concat('logTimeStamp(&quot;', @eventTag, '&quot;);') else ''" />
                 <xsl:apply-templates/>
             </xsl:otherwise>
