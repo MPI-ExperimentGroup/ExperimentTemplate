@@ -29,7 +29,7 @@ import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.*;
 public enum FeatureType {
 
     htmlText(false, true, null),
-    text(false, true, null),
+    plainText(false, true, null),
     image(false, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, src, link}),
     menuItem(false, true, new FeatureAttribute[]{target}),
     popupMessage(false, true, null),
@@ -39,7 +39,7 @@ public enum FeatureType {
     loadAllStimulus(false, false, new FeatureAttribute[]{eventTag, randomise}, true, Contitionals.hasMoreStimulus),
     currentStimulusHasTag(true, false, new FeatureAttribute[]{timeToNext}, true, Contitionals.hasStimulusTag),
     targetButton(false, true, new FeatureAttribute[]{target}),
-    actionButton(true, true, new FeatureAttribute[]{eventTag, hotKey}),
+    actionButton(true, true, new FeatureAttribute[]{hotKey}),
     ratingFooterButton(false, true, new FeatureAttribute[]{eventTier, ratingLabels}),
     targetFooterButton(false, true, new FeatureAttribute[]{target}),
     actionFooterButton(true, true, new FeatureAttribute[]{eventTag, hotKey}),
