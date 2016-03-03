@@ -71,7 +71,7 @@ public class Sentveri_exp3 {
 //        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
         loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
-        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "end of stimuli"));
+        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "end of stimuli"));
         final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.targetButton, "Menu");
         menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, "AutoMenu");
         endOfStimulusFeature.getPresenterFeatureList().add(menuButtonFeature);
