@@ -312,6 +312,15 @@ public class DefaultExperiments {
                     case condition2Tag:
                         presenterFeature.addFeatureAttributes(attribute, "termites");
                         break;
+                    case hotKey:
+                        presenterFeature.addFeatureAttributes(attribute, "A");
+                        break;
+                    case percentOfPage:
+                        presenterFeature.addFeatureAttributes(attribute, "56");
+                        break;
+                    case eventTier:
+                        presenterFeature.addFeatureAttributes(attribute, "8");
+                        break;
                     default:
                         presenterFeature.addFeatureAttributes(attribute, attribute.name());
                 }
@@ -353,7 +362,7 @@ public class DefaultExperiments {
                 break;
         }
         if (featureType.canHaveFeatures()) {
-            presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.text, presenterFeatureRepository));
+            presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.plainText, presenterFeatureRepository));
             presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
         }
         return presenterFeature;
@@ -392,7 +401,7 @@ public class DefaultExperiments {
 
     private PresenterScreen addTargetScreen(PresenterFeatureRepository presenterFeatureRepository, PresenterScreen backPresenter, long displayOrder) {
         final PresenterScreen presenterScreen = new PresenterScreen("Target Screen", "Target", backPresenter, "target", null, PresenterType.text, displayOrder);
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "A simple page so that there is a screen with the target value of 'target' for testing purposes."));
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "A simple page so that there is a screen with the target value of 'target' for testing purposes."));
 
         presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
         return presenterScreen;
