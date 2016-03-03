@@ -1,5 +1,9 @@
+#!/bin/bash
+pwd
+cd "$(dirname "$0")"
+pwd
 #mvn install
-cd target
+#cd target
 appname=${experiment.configuration.name}-${project.artifactId}-${project.version}
 rm -rf $appname-cordova
 unzip $appname-cordova.zip -d $appname-cordova
