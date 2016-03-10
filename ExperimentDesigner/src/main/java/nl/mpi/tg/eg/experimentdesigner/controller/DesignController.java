@@ -70,16 +70,6 @@ public class DesignController {
 
     }
 
-    @RequestMapping("/deleteAll")
-    public String deleteAll(Model model, HttpServletRequest request) {
-        // todo: this is currently here to simplify the development process and should be removed in production
-//        experimentRepository.deleteAll();
-//        if (experimentRepository.count() == 0) {
-        new DefaultExperiments().insertDefaultExperiment(presenterScreenRepository, presenterFeatureRepository, metadataRepository, experimentRepository, eventRepository);
-//        }
-        return "redirect:experiments";
-    }
-
     @RequestMapping(value = "/experiment/{experiment}/screen/delete", method = RequestMethod.POST)
     public String deleteScreen(@ModelAttribute PresenterScreen prersenterScreen, Model model, HttpServletRequest request, @PathVariable Experiment experiment) {
         final PresenterScreen presenterToDelete = presenterScreenRepository.findOne(prersenterScreen.getId());
