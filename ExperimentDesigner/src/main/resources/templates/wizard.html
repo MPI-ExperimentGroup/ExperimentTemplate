@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+Copyright (C) 2016 Max Planck Institute for Psycholinguistics
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+-->
+<!--
+ * @since Mar 4, 2016 11:23:23 AM (creation date)
+ * @author Peter Withers <peter.withers@mpi.nl>
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Frinex Experiment Wizard</title>
+    </head>
+    <body>
+        <div th:fragment="wizard">
+            <form action="#" th:action="${contextPath + '/experiments/wizard/create'}" method="post">
+            <table class="presenter">
+                <tr><td>Experiment Name</td><td><input type="text" th:field="${wizardData.appName}" /></td></tr>
+                <tr><td>User select screen</td><td><input type="checkbox" th:field="${wizardData.userSelectScreen}" /></td></tr>
+                <tr><td>User agreement screen</td><td><input type="checkbox" th:field="${wizardData.agreementScreen}" /></td></tr>
+                <tr><td>Agreement screen text</td><td><input type="text" th:field="${wizardData.agreementScreenText}" /></td></tr>
+                <tr><td>Disagreement screen text</td><td><input type="text" th:field="${wizardData.disagreementScreenText}" /></td></tr>
+                <tr><td>User metadata screen</td><td><input type="checkbox" th:field="${wizardData.metadataScreen}" /></td></tr>
+                <tr><td>User name field</td><td><input type="checkbox" th:field="${wizardData.nameField}" /></td></tr>
+                <tr><td>User age field</td><td><input type="checkbox" th:field="${wizardData.ageField}" /></td></tr>
+                <tr><td>Menu screen</td><td><input type="checkbox" th:field="${wizardData.menuScreen}" /></td></tr>        
+                <tr><td><button type="reset" >Reset</button></td><td><button type="submit" name="saveExperiment">Save Changes</button></td></tr>
+            </table>                
+            </form>
+        </div>
+    </body>
+</html>
