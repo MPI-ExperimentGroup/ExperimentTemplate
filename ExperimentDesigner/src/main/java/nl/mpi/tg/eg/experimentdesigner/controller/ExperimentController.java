@@ -19,8 +19,12 @@ package nl.mpi.tg.eg.experimentdesigner.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import nl.mpi.tg.eg.experimentdesigner.dao.ExperimentRepository;
+import nl.mpi.tg.eg.experimentdesigner.dao.MetadataRepository;
+import nl.mpi.tg.eg.experimentdesigner.dao.PresenterFeatureRepository;
+import nl.mpi.tg.eg.experimentdesigner.dao.PresenterScreenRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PublishEventRepository;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
+import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.util.DefaultExperiments;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,6 +45,12 @@ public class ExperimentController {
     ExperimentRepository experimentRepository;
     @Autowired
     PublishEventRepository eventRepository;
+    @Autowired
+    PresenterScreenRepository presenterScreenRepository;
+    @Autowired
+    PresenterFeatureRepository presenterFeatureRepository;
+    @Autowired
+    MetadataRepository metadataRepository;
 
     @RequestMapping("/experiments")
     public String designView(Model model, HttpServletRequest request) {
@@ -66,6 +76,26 @@ public class ExperimentController {
         model.addAttribute("detailType", "configuration");
         model.addAttribute("experiment", createdExperiment);
         return "design";
+    }
+
+    @RequestMapping("/experiments/wizard")
+    public String showWizard(Model model, @ModelAttribute WizardData wizardData, HttpServletRequest request) {
+//        Experiment createdExperiment = DefaultExperiments.getDefault();
+//        experimentRepository.save(createdExperiment);
+        model.addAttribute("contextPath", request.getContextPath());
+        model.addAttribute("detailType", "wizard");
+        model.addAttribute("wizardData", wizardData);
+        return "design";
+    }
+
+    @RequestMapping("/experiments/createDefaults")
+    public String createDefaults(Model model, HttpServletRequest request) {
+        // todo: this is currently here to simplify the development process and should be removed in production
+//        experimentRepository.deleteAll();
+//        if (experimentRepository.count() == 0) {
+        new DefaultExperiments().insertDefaultExperiment(presenterScreenRepository, presenterFeatureRepository, metadataRepository, experimentRepository, eventRepository);
+//        }
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/experiment/{experiment}/update", method = RequestMethod.POST)
