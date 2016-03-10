@@ -22,9 +22,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
+import nl.mpi.tg.eg.experimentdesigner.dao.ExperimentRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.MetadataRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterFeatureRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterScreenRepository;
+import nl.mpi.tg.eg.experimentdesigner.dao.PublishEventRepository;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
@@ -34,12 +36,13 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
 import nl.mpi.tg.eg.experimentdesigner.model.StimuliSubAction;
 import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
+import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import static nl.mpi.tg.eg.experimentdesigner.util.DefaultExperiments.getDefault;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 /**
  * @since Feb 22, 2016 4:23:36 PM (creation date)
@@ -49,13 +52,25 @@ import static nl.mpi.tg.eg.experimentdesigner.util.DefaultExperiments.getDefault
 public class WizardController {
 
     private static final Logger LOG = Logger.getLogger(StimulusController.class.getName());
+    @Autowired
+    PresenterScreenRepository presenterScreenRepository;
+    @Autowired
+    PublishEventRepository eventRepository;
+    @Autowired
+    PresenterFeatureRepository presenterFeatureRepository;
+    @Autowired
+    MetadataRepository metadataRepository;
+    @Autowired
+    ExperimentRepository experimentRepository;
 
-    @RequestMapping(value = "/wizard/create", method = RequestMethod.POST)
-    public String create(final HttpServletRequest req, Model model, @PathVariable String appName) {
-        return "wizard";
+    @RequestMapping(value = "/experiments/wizard/create", method = RequestMethod.POST)
+    public String create(final HttpServletRequest req, @ModelAttribute WizardData wizardData) {
+        final Experiment experiment = getExperiment(wizardData.getAppName().replaceAll("[^A-Za-z0-9]", "_"), wizardData.getAppName());
+        experimentRepository.save(experiment);
+        return "redirect:/experiment/" + experiment.getId();
     }
 
-    public Experiment getExperiment(MetadataRepository metadataRepository, PresenterFeatureRepository presenterFeatureRepository, PresenterScreenRepository presenterScreenRepository, String appNameInternal, String appName) {
+    public Experiment getExperiment(String appNameInternal, String appName) {
         Experiment experiment = getDefault();
         experiment.setAppNameDisplay(appName);
         experiment.setAppNameInternal(appNameInternal);
@@ -153,7 +168,7 @@ public class WizardController {
         hasMoreStimulusFeature.getPresenterFeatureList().add(startTagFeature);
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
-        final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.actionButton, "spacebar");
+        final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.actionButton, "next");
         final PresenterFeature endAudioRecorderTagFeature = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
         endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
         endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTag, "");
