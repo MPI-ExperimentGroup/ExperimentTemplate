@@ -22,7 +22,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 <html>
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src self 'unsafe-inline'; script-src self 'unsafe-inline' 'unsafe-eval'; connect-src http://ems13.mpi.nl; media-src http://corpus1.mpi.nl;">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' ${experiment.destinationServerUrl} 'unsafe-inline'; script-src 'self' ${experiment.destinationServerUrl} 'unsafe-inline' 'unsafe-eval'; connect-src 'self' ${experiment.destinationServerUrl}; media-src 'self' ${experiment.destinationServerUrl};">
         <!--
                 <meta name="format-detection" content="telephone=no">
                 <meta name="msapplication-tap-highlight" content="no">
@@ -30,9 +30,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <!--<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, target-densityDpi=device-dpi" />-->
         <link type="text/css" rel="stylesheet" href="css/experiment.css">
         <title>ExperimentTemplate</title>
-        <script type="text/javascript">
-            isDeviceReady = false;
-        </script>
         <script type="text/javascript" language="javascript" src="ExperimentTemplate/ExperimentTemplate.nocache.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript">

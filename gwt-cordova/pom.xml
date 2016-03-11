@@ -9,7 +9,7 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-gui</artifactId>
     <packaging>war</packaging>
-    <version>0.1.720-testing</version>
+    <version>0.1.727-testing</version>
     <name>FRINEX GWT-Cordova Template</name>
     <organization>
         <name>Max Planck Institute for Psycholinguistics, Nijmegen</name>
@@ -146,6 +146,13 @@
                                     <includes>
                                         <include>${experiment.configuration.name}.xml</include>        
                                     </includes>
+                                </resource>
+                                <resource>
+                                    <directory>${basedir}/src/main/html</directory>
+                                    <includes>
+                                        <include>ExperimentTemplate.html</include>        
+                                    </includes>
+                                    <filtering>true</filtering>
                                 </resource>
                             </resources>              
                         </configuration>                  

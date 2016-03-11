@@ -11,6 +11,7 @@
             <outputDirectory>/www</outputDirectory>
             <destName>index.html</destName>
             <!--<fileMode>0644</fileMode>-->
+            <!--<filtered>true</filtered>-->
         </file>
     </files>
     <fileSets>
@@ -68,5 +69,10 @@
             <outputDirectory>www</outputDirectory>
             <filtered>false</filtered>
         </fileSet>
+        <fileSet>
+            <directory>${basedir}/src/main/static/${experiment.configuration.name}</directory>
+            <outputDirectory>www/static</outputDirectory>
+            <filtered>false</filtered>
+        </fileSet>    
     </fileSets>
 </assembly>

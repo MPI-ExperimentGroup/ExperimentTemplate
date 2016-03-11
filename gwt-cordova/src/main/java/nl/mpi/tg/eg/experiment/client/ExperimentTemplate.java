@@ -15,11 +15,7 @@ public class ExperimentTemplate implements EntryPoint {
     @Override
     public final native void onModuleLoad() /*-{
         var self = this;
-        if ($wnd.isDeviceReady) {
-            self.@nl.mpi.tg.eg.experiment.client.ExperimentTemplate::onDeviceReady()();
-//            document.getElementById("widgetTag").className = device.platform; // todo: set the platform style
-              $wnd.StatusBar.hide(); // hide the status bar
-        } else {
+        if ($doc.URL.indexOf( 'http://' ) === -1 && $doc.URL.indexOf( 'https://' ) === -1) {
             var listener = $entry(function () {
                 $doc.removeEventListener("deviceready", listener, false);
                 self.@nl.mpi.tg.eg.experiment.client.ExperimentTemplate::onDeviceReady()();
@@ -27,6 +23,10 @@ public class ExperimentTemplate implements EntryPoint {
                 $wnd.StatusBar.hide(); // hide the status bar
             });
             $doc.addEventListener("deviceready", listener, false);
+        } else {            
+            self.@nl.mpi.tg.eg.experiment.client.ExperimentTemplate::onDeviceReady()();
+//            document.getElementById("widgetTag").className = device.platform; // todo: set the platform style
+              $wnd.StatusBar.hide(); // hide the status bar
          }
      }-*/;
 
