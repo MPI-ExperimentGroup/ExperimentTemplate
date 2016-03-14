@@ -75,7 +75,7 @@ public class WavRecorder implements AudioRecorder, Runnable {
             try {
                 synchronized (lockObject) {
                     try {
-                        if (recorderState == RecorderState.idle) {
+                        if (recorder.getState() != AudioRecord.STATE_INITIALIZED || recorderState == RecorderState.idle) {
                             System.out.println("recording thread going to sleep");
                             lockObject.wait(10000);
                         }
@@ -83,58 +83,58 @@ public class WavRecorder implements AudioRecorder, Runnable {
                         System.out.println("recording thread woken");
                     }
                 }
-                while (recorderState == RecorderState.recording || recorderState == RecorderState.paused) {
-                    if (recorder.getRecordingState() != AudioRecord.RECORDSTATE_RECORDING) {
-                        // start the audio recording
-                        recorder.startRecording();
-                    }
-                    final RandomAccessFile randomAccessFile;
-                    synchronized (lockObject) {
-                        System.out.println("outputFile: " + outputFile.getAbsolutePath());
-                        randomAccessFile = new RandomAccessFile(outputFile, "rw");
-                        outputFile = null;
-                    }
-                    randomAccessFile.seek(randomAccessFile.length());
-                    // write a temporary wav header
-                    writeWaveFileHeader(randomAccessFile);
-                    // callbackContext.success(); // we cant call this final callback more than once
-                    byte buffer[] = new byte[BUFFER_SIZE];
-                    // if a new file is specified in outputFile then close the current file and start a new file but with the recorder running the entire time
-                    long recordedLengthInner = 0;
-                    while ((recorderState == RecorderState.recording || recorderState == RecorderState.paused) && outputFile == null) {
-                        final int bytesRead = recorder.read(buffer, 0, buffer.length);
-                        if (bytesRead > 0) {
-                            randomAccessFile.write(buffer, 0, bytesRead);
-                            recordedLengthInner = randomAccessFile.length() - 36;
+                if (recorder.getState() == AudioRecord.STATE_INITIALIZED) {
+                    while (recorderState == RecorderState.recording || recorderState == RecorderState.paused) {
+                        if (recorder.getRecordingState() != AudioRecord.RECORDSTATE_RECORDING) {
+                            // start the audio recording
+                            recorder.startRecording();
                         }
+                        final RandomAccessFile randomAccessFile;
                         synchronized (lockObject) {
-                            isRecording = recorder.getRecordingState() == AudioRecord.RECORDSTATE_RECORDING;
-                            recordedLength = recordedLengthInner;
+                            System.out.println("outputFile: " + outputFile.getAbsolutePath());
+                            randomAccessFile = new RandomAccessFile(outputFile, "rw");
+                            outputFile = null;
                         }
+                        randomAccessFile.seek(randomAccessFile.length());
+                        // write a temporary wav header
+                        writeWaveFileHeader(randomAccessFile);
+                        // callbackContext.success(); // we cant call this final callback more than once
+                        byte buffer[] = new byte[BUFFER_SIZE];
+                        // if a new file is specified in outputFile then close the current file and start a new file but with the recorder running the entire time
+                        long recordedLengthInner = 0;
+                        while ((recorderState == RecorderState.recording || recorderState == RecorderState.paused) && outputFile == null) {
+                            final int bytesRead = recorder.read(buffer, 0, buffer.length);
+                            if (bytesRead > 0) {
+                                randomAccessFile.write(buffer, 0, bytesRead);
+                                recordedLengthInner = randomAccessFile.length() - 36;
+                            }
+                            synchronized (lockObject) {
+                                isRecording = recorder.getRecordingState() == AudioRecord.RECORDSTATE_RECORDING;
+                                recordedLength = recordedLengthInner;
+                            }
 //                            System.out.println("recordedLength: " + recordedLength);
 //                            System.out.println("bytesRead: " + bytesRead);
 //                            System.out.println("bufferSize: " + BUFFER_SIZE);
-                        if (recorderState == RecorderState.paused) {
-                            // when the app looses focus we enter pause and make sure that the wave headers are valid in case the app is terminated
-                            writeWaveFileHeader(randomAccessFile);
-                            while (recorderState == RecorderState.paused) {
-                                synchronized (lockObject) {
-                                    try {
-                                        System.out.println("recording thread going to sleep");
-                                        lockObject.wait(10000);
-                                    } catch (InterruptedException e) {
-                                        System.out.println("recording thread woken");
+                            if (recorderState == RecorderState.paused) {
+                                // when the app looses focus we enter pause and make sure that the wave headers are valid in case the app is terminated
+                                writeWaveFileHeader(randomAccessFile);
+                                while (recorderState == RecorderState.paused) {
+                                    synchronized (lockObject) {
+                                        try {
+                                            System.out.println("recording thread going to sleep");
+                                            lockObject.wait(10000);
+                                        } catch (InterruptedException e) {
+                                            System.out.println("recording thread woken");
+                                        }
                                     }
                                 }
                             }
                         }
-                    }
-                    System.out.println("recording ended");
+                        System.out.println("recording ended");
 
-                    writeWaveFileHeader(randomAccessFile);
-                    randomAccessFile.close();
-                }
-                if (recorder.getState() == AudioRecord.STATE_INITIALIZED) {
+                        writeWaveFileHeader(randomAccessFile);
+                        randomAccessFile.close();
+                    }
                     recorder.stop();
                 }
                 synchronized (lockObject) {
