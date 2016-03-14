@@ -18,9 +18,6 @@
 package nl.mpi.tg.eg.experimentdesigner.util;
 
 import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
-import nl.mpi.tg.eg.experimentdesigner.dao.MetadataRepository;
-import nl.mpi.tg.eg.experimentdesigner.dao.PresenterFeatureRepository;
-import nl.mpi.tg.eg.experimentdesigner.dao.PresenterScreenRepository;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.StimuliSubAction;
@@ -33,14 +30,18 @@ public class JenaFieldKit {
 
     private final WizardController wizardController = new WizardController();
 
-    public Experiment getJenaExperiment(MetadataRepository metadataRepository, PresenterFeatureRepository presenterFeatureRepository, PresenterScreenRepository presenterScreenRepository) {
-        Experiment experiment = wizardController.getExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository, "vanuatufieldkit", "Vanuatu FieldKit");
+    public Experiment getJenaExperiment() {
+        Experiment experiment = wizardController.getExperiment("vanuatufieldkit", "Vanuatu FieldKit");
         wizardController.addMetadata(experiment);
 
         final PresenterScreen autoMenuPresenter = wizardController.addAutoMenu(experiment, 12);
         final PresenterScreen welcomePresenter = wizardController.addWelcomeScreen(experiment, autoMenuPresenter, null, 1);
-        final PresenterScreen welcomeMenuPresenter = wizardController.addWelcomeMenu(experiment, welcomePresenter, null, 2);
-        final PresenterScreen instructionsPresenter = wizardController.addInstructionsScreen(experiment, welcomePresenter, null, 3);
+        final PresenterScreen welcomeMenuPresenter = wizardController.addWelcomeMenu(experiment, welcomePresenter, null, 2, "Is this a new recording?", "Have you already started a recording and do you want to go back to it?");
+        final PresenterScreen instructionsPresenter = wizardController.addInstructionsScreen(experiment, welcomePresenter, null, 3, "With this app you can make recordings of your language. "
+                + "People from your country and from all over the world will be able to hear your recordings now and in the future. "
+                + "Show the pictures in this app to your grandparents and other older people. "
+                + "You will ask them to talk about these pictures in their custom language. "
+                + "You can translate what they say, too.");
 
         StimuliSubAction[] featureValuesArray = new StimuliSubAction[]{new StimuliSubAction("80", "speak the name in the language (lanwis)", "done"),
             new StimuliSubAction("60", "It''s your turn! What did they say? Translate it into Bislama if you can.", "done"),

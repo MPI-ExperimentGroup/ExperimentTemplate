@@ -222,7 +222,7 @@ public class WizardController {
         return actionFeature;
     }
 
-    public PresenterScreen addWelcomeMenu(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder) {
+    public PresenterScreen addWelcomeMenu(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder, final String startNewText, final String resumeoldText) {
         final PresenterScreen presenterScreen = new PresenterScreen("Start", "Start", backPresenter, "Start", nextPresenter, PresenterType.metadata, displayOrder);
         final PresenterFeature userCheckFeature = new PresenterFeature(FeatureType.existingUserCheck, null);
         final PresenterFeature multipleUsersFeature = new PresenterFeature(FeatureType.multipleUsers, null);
@@ -232,10 +232,13 @@ public class WizardController {
         autoNextPresenter.addFeatureAttributes(FeatureAttribute.target, "EditUser");
         singleUserFeature.getPresenterFeatureList().add(autoNextPresenter);
         userCheckFeature.getPresenterFeatureList().add(singleUserFeature);
-        final PresenterFeature createUserFeature = new PresenterFeature(FeatureType.createUserButton, "New interview.");
+        multipleUsersFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, startNewText));
+        final PresenterFeature createUserFeature = new PresenterFeature(FeatureType.createUserButton, "New Interview.");
         createUserFeature.addFeatureAttributes(FeatureAttribute.target, "EditUser");
         multipleUsersFeature.getPresenterFeatureList().add(createUserFeature);
-        final PresenterFeature selectUserFeature = new PresenterFeature(FeatureType.targetButton, "Old interview");
+        multipleUsersFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+        multipleUsersFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, resumeoldText));
+        final PresenterFeature selectUserFeature = new PresenterFeature(FeatureType.targetButton, "Resume Interview");
         selectUserFeature.addFeatureAttributes(FeatureAttribute.target, "SelectUser");
         multipleUsersFeature.getPresenterFeatureList().add(selectUserFeature);
         presenterScreen.getPresenterFeatureList().add(userCheckFeature);
@@ -243,10 +246,9 @@ public class WizardController {
         return presenterScreen;
     }
 
-    public PresenterScreen addInstructionsScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder) {
+    public PresenterScreen addInstructionsScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder, String instructionsText) {
         final PresenterScreen presenterScreen = new PresenterScreen("Instructions", "Instructions", backPresenter, "Instructions", nextPresenter, PresenterType.text, displayOrder);
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "Instructions"));
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "Instructions are to be provided here"));
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, instructionsText));
         final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.targetButton, "Start");
         presenterFeature1.addFeatureAttributes(FeatureAttribute.target, "Start");
         presenterScreen.getPresenterFeatureList().add(presenterFeature1);
