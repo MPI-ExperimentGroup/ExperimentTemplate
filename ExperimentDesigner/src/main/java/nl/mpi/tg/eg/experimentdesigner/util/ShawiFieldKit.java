@@ -37,16 +37,17 @@ public class ShawiFieldKit {
 
     private final WizardController wizardController = new WizardController();
 
-    public Experiment getShawiExperiment(MetadataRepository metadataRepository, PresenterFeatureRepository presenterFeatureRepository, PresenterScreenRepository presenterScreenRepository) {
-        Experiment experiment = wizardController.getExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository, "shawifieldkit", "Shawi FieldKit");
+    public Experiment getShawiExperiment() {
+        Experiment experiment = wizardController.getExperiment("shawifieldkit", "Shawi FieldKit");
         experiment.setBackgroundColour("#ffeda0");
         experiment.setPrimaryColour4("#feb24c");
         experiment.setPrimaryColour2("#f03b20");
         wizardController.addMetadata(experiment);
         final PresenterScreen autoMenuPresenter = wizardController.addAutoMenu(experiment, 18);
         final PresenterScreen welcomePresenter = wizardController.addWelcomeScreen(experiment, autoMenuPresenter, null, 1);
-        final PresenterScreen welcomeMenuPresenter = wizardController.addWelcomeMenu(experiment, welcomePresenter, null, 2);
-        final PresenterScreen instructionsPresenter = wizardController.addInstructionsScreen(experiment, welcomePresenter, null, 3);
+        final PresenterScreen welcomeMenuPresenter = wizardController.addWelcomeMenu(experiment, welcomePresenter, null, 2, "Is this a new recording?", "Have you already started a recording and do you want to go back to it?");
+        final PresenterScreen instructionsPresenter = wizardController.addInstructionsScreen(experiment, welcomePresenter, null, 3, "With this app you can make recordings of your language. "
+                + "Describe pictures in this app by speaking and the app records what you say.");
 
         StimuliSubAction[] picturesValuesArray = new StimuliSubAction[]{new StimuliSubAction("80", "the informant talks/says whatever s/he wants", "next")};
         StimuliSubAction[] grammaticalityValuesArray = new StimuliSubAction[]{new StimuliSubAction("80", new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"})};
