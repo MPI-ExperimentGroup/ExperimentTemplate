@@ -65,9 +65,14 @@ public class WizardController {
 
     @RequestMapping(value = "/experiments/wizard/create", method = RequestMethod.POST)
     public String create(final HttpServletRequest req, @ModelAttribute WizardData wizardData) {
-        final Experiment experiment = getExperiment(wizardData.getAppName().replaceAll("[^A-Za-z0-9]", "_"), wizardData.getAppName());
+        final Experiment experiment = getExperiment(wizardData);
         experimentRepository.save(experiment);
         return "redirect:/experiment/" + experiment.getId();
+    }
+
+    public Experiment getExperiment(WizardData wizardData) {
+        final Experiment experiment = getExperiment(wizardData.getAppName().replaceAll("[^A-Za-z0-9]", "_"), wizardData.getAppName());
+        return experiment;
     }
 
     public Experiment getExperiment(String appNameInternal, String appName) {
@@ -266,10 +271,10 @@ public class WizardController {
         final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, screenName + "Screen", null, PresenterType.stimulus, displayOrder);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
         final String maxStimuli = "15";
-        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "This screen will show " + maxStimuli + " stimuli in random order from the directories:"));
-        for (final String stimulusTag : stimulusTagArray) {
-            presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "MPI_STIMULI/" + stimulusTag));
-        }
+//        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "This screen will show " + maxStimuli + " stimuli in random order from the directories:"));
+//        for (final String stimulusTag : stimulusTagArray) {
+//            presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "MPI_STIMULI/" + stimulusTag));
+//        }
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadSdCardStimulus, null);
         for (final String stimulusTag : stimulusTagArray) {
             loadStimuliFeature.addStimulusTag(stimulusTag);
