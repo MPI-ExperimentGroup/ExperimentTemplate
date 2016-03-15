@@ -40,6 +40,7 @@ import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.maxHeight;
 import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.maxWidth;
 import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.mp4;
 import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.ogg;
+import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.percentOfPage;
 import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.poster;
 import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.webm;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
@@ -68,8 +69,9 @@ public class DefaultExperiments {
         experimentRepository.save(getSynQuiz2Experiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
         experimentRepository.save(getDobesExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
         experimentRepository.save(getAllOptionsExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
-        experimentRepository.save(new JenaFieldKit().getJenaExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
-        experimentRepository.save(new ShawiFieldKit().getShawiExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
+        experimentRepository.save(new JenaFieldKit().getJenaExperiment());
+        experimentRepository.save(new ShawiFieldKit().getShawiExperiment());
+        experimentRepository.save(new Sara01().getExperiment());
 
         for (Experiment experiment : experimentRepository.findAll()) {
             eventRepository.save(new PublishEvents(experiment, new Date(), new Date(), PublishEvents.PublishState.published, true, true, true));
@@ -433,6 +435,7 @@ public class DefaultExperiments {
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
         final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.VideoPanel, null);
         presenterFeature.addFeatureAttributes(mp4, "http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4");
+        presenterFeature.addFeatureAttributes(percentOfPage, "50");
         presenterFeature.addFeatureAttributes(maxHeight, "70");
         presenterFeature.addFeatureAttributes(maxWidth, "70");
         presenterFeature.addFeatureAttributes(poster, "");
