@@ -300,6 +300,15 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <table>
             <tr th:if="${experiment} ne null"><td></td><td><div id="pageTitle" th:text="${experiment.appNameDisplay}"></div></td></tr>
             <tr><td id="sideMenu">
+                    <table class="experimentmenu menu" th:if="${experiment} eq null">            
+                        <tr>
+                            <td><a th:attr="class=${detailType eq 'wizard' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiments/wizard'">Add Via Wizard</a></td>
+                        </tr><tr>
+                            <td><a th:attr="class=${detailType eq 'add' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiments/add'">Add Blank Experiment</a></td>
+                        </tr><tr>
+                            <td><a th:attr="class=${detailType eq 'add' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiments/createDefaults'">Add Default Experiments</a></td>
+                        </tr>
+                    </table>
                     <table class="experimentmenu menu" th:if="${experiment} ne null">            
                         <tr>
                             <td><a th:attr="class=${detailType eq 'configuration' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiment/' + *{experiment.id} + '/configuration'">Configuration</a></td>
@@ -316,6 +325,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </td><td><table id="main">
                         <tr>
                             <td id="editarea">
+                                <table th:if="${detailType} eq 'wizard'" th:include="wizard :: wizard"></table>
                                 <table th:if="${detailType} eq 'experiments'" th:include="experiments :: experimentlisting"></table>
                                 <div th:if="${detailType} eq 'configuration'" th:include="experiments :: editexperiment"></div>
                                 <div th:if="${detailType} eq 'metadata'" th:include="metadata :: metadatatable"></div>
