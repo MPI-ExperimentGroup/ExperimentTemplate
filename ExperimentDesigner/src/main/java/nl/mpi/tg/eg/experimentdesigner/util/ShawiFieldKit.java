@@ -52,15 +52,15 @@ public class ShawiFieldKit {
         StimuliSubAction[] picturesValuesArray = new StimuliSubAction[]{new StimuliSubAction("80", "the informant talks/says whatever s/he wants", "next")};
         StimuliSubAction[] grammaticalityValuesArray = new StimuliSubAction[]{new StimuliSubAction("80", new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"})};
 // this should not be random but use alphanum sorting 
-        final PresenterScreen cutbreakScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, welcomePresenter, new String[]{"cutbreak"}, grammaticalityValuesArray, false, 15);
-        final PresenterScreen grammarScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, welcomePresenter, new String[]{"grammar"}, grammaticalityValuesArray, false, 14);
-        final PresenterScreen vanuatuScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, welcomePresenter, new String[]{"vanuatu"}, grammaticalityValuesArray, false, 13);
-        final PresenterScreen bodiesScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, welcomePresenter, new String[]{"bodies"}, grammaticalityValuesArray, false, 12);
-        final PresenterScreen bowpedScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, welcomePresenter, new String[]{"bowped"}, grammaticalityValuesArray, false, 11);
-        final PresenterScreen grammaticalityScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, welcomePresenter, new String[]{"Grammaticality"}, grammaticalityValuesArray, false, 7);
-        final PresenterScreen picturesScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, grammaticalityScreen, new String[]{"Pictures"}, picturesValuesArray, false, 8);
-        final PresenterScreen animalsScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, grammaticalityScreen, new String[]{"Animals"}, picturesValuesArray, false, 9);
-        final PresenterScreen frogsScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, grammaticalityScreen, new String[]{"Frogs"}, picturesValuesArray, false, 10);
+        final PresenterScreen cutbreakScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, welcomePresenter, new String[]{"cutbreak"}, grammaticalityValuesArray, true, 1000, false, 15);
+        final PresenterScreen grammarScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, welcomePresenter, new String[]{"grammar"}, grammaticalityValuesArray, true, 1000, false, 14);
+        final PresenterScreen vanuatuScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, welcomePresenter, new String[]{"vanuatu"}, grammaticalityValuesArray, true, 1000, false, 13);
+        final PresenterScreen bodiesScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, welcomePresenter, new String[]{"bodies"}, grammaticalityValuesArray, true, 1000, false, 12);
+        final PresenterScreen bowpedScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, welcomePresenter, new String[]{"bowped"}, grammaticalityValuesArray, true, 1000, false, 11);
+        final PresenterScreen grammaticalityScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, welcomePresenter, new String[]{"Grammaticality"}, grammaticalityValuesArray, true, 1000, false, 7);
+        final PresenterScreen picturesScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, grammaticalityScreen, new String[]{"Pictures"}, picturesValuesArray, true, 1000, false, 8);
+        final PresenterScreen animalsScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, grammaticalityScreen, new String[]{"Animals"}, picturesValuesArray, true, 1000, false, 9);
+        final PresenterScreen frogsScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, grammaticalityScreen, new String[]{"Frogs"}, picturesValuesArray, false, 1000, false, 10);
         final PresenterScreen metadataScreen = wizardController.createMetadataScreen(experiment, autoMenuPresenter, picturesScreen, new String[]{"Nombre", "Sexo", "Edad", "Estado civil", "Origen", "Lugar de residencia", "Nombre de la comunidad a la que pertenece", "Actividad laboral", "Nivel de estudios", "Número de hijos", "Religión", "Idiomas"}, 4);
         final PresenterScreen selectUserPresenter = wizardController.addUserSelectMenu(experiment, welcomePresenter, metadataScreen, 5);
         final PresenterScreen editUserPresenter = wizardController.addEditUserScreen(experiment, welcomePresenter, metadataScreen, 6);
