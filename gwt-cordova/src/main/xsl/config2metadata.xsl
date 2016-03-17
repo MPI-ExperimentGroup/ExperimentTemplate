@@ -3,7 +3,7 @@
 <!--
     Document   : config2metadata.xsl
     Created on : June 22, 2015, 11:30 AM
-    Author     : petwit
+    Author     : Peter Withers <peter.withers@mpi.nl>
     Description:
         Purpose of transformation follows.
 -->
@@ -21,7 +21,7 @@ staticFilesUrl=</xsl:text><xsl:value-of select="experiment/@staticFilesUrl" />
             <xsl:for-each select="experiment/metadata/field">
                    <xsl:text>postName_</xsl:text><xsl:value-of select="@postName" /><xsl:text>=</xsl:text><xsl:value-of select="@postName" /><xsl:text>
 </xsl:text>
-                   <xsl:text>registrationField_</xsl:text><xsl:value-of select="@postName" /><xsl:text>=</xsl:text><xsl:value-of select="@registrationField" /><xsl:text>
+                   <xsl:text>registrationField_</xsl:text><xsl:value-of select="@postName" /><xsl:text>=</xsl:text><xsl:value-of select="replace(@registrationField,'''','''''')" /><xsl:text>
 </xsl:text>
                 <!--<xsl:if test="@fieldValues">-->
                    <xsl:text>fieldValues_</xsl:text><xsl:value-of select="@postName" /><xsl:text>=</xsl:text><xsl:value-of select="@fieldValues" /><xsl:text>
@@ -34,6 +34,10 @@ staticFilesUrl=</xsl:text><xsl:value-of select="experiment/@staticFilesUrl" />
                 <!--<xsl:if test="@controlledRegex">-->
                    <xsl:text>controlledRegex_</xsl:text><xsl:value-of select="@postName" /><xsl:text>=</xsl:text><xsl:value-of select="@controlledRegex" /><xsl:text>
 </xsl:text>
+<!--                   <xsl:text>preventServerDuplicates_</xsl:text><xsl:value-of select="@postName" /><xsl:text>=</xsl:text><xsl:value-of select="@preventServerDuplicates" /><xsl:text>
+</xsl:text>
+                   <xsl:text>duplicatesControlledMessage_</xsl:text><xsl:value-of select="@postName" /><xsl:text>=</xsl:text><xsl:value-of select="@duplicatesControlledMessage" /><xsl:text>
+</xsl:text>-->
                 <!--</xsl:if>-->
             </xsl:for-each>
             </xsl:result-document>
