@@ -171,7 +171,7 @@ public class WizardController {
     public PresenterScreen addUserSelectMenu(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder) {
         final PresenterScreen presenterScreen = new PresenterScreen("Select User", "Select User", backPresenter, "SelectUser", nextPresenter, PresenterType.metadata, displayOrder);
         final PresenterFeature selectUserFeature = new PresenterFeature(FeatureType.selectUserMenu, null);
-        selectUserFeature.addFeatureAttributes(FeatureAttribute.target, nextPresenter.getSelfPresenterTag());
+            selectUserFeature.addFeatureAttributes(FeatureAttribute.target, nextPresenter.getSelfPresenterTag());
         presenterScreen.getPresenterFeatureList().add(selectUserFeature);
         experiment.getPresenterScreen().add(presenterScreen);
         return presenterScreen;
@@ -308,6 +308,7 @@ public class WizardController {
         final PresenterFeature startTagFeature = new PresenterFeature(FeatureType.startAudioRecorderTag, null);
         startTagFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
         parentFeature.getPresenterFeatureList().add(startTagFeature);
+        parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
         parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
         parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
@@ -318,7 +319,7 @@ public class WizardController {
         parentFeature.getPresenterFeatureList().add(imageFeature);
         final PresenterFeature actionFeature;
         if (imageFeatureValues.getButtons().length == 1) {
-            parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, imageFeatureValues.getLabel()));
+            imageFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, imageFeatureValues.getLabel()));
             actionFeature = new PresenterFeature(FeatureType.actionButton, imageFeatureValues.getButtons()[0]);
             final PresenterFeature endAudioRecorderTagFeature = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
             endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
@@ -330,8 +331,7 @@ public class WizardController {
             actionFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
         }
         actionFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
-        actionFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
-        parentFeature.getPresenterFeatureList().add(actionFeature);
+        imageFeature.getPresenterFeatureList().add(actionFeature);
         return actionFeature;
     }
 
