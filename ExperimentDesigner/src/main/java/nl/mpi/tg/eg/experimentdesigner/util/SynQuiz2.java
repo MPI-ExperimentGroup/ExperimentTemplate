@@ -21,8 +21,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-import nl.mpi.tg.eg.experimentdesigner.dao.PresenterFeatureRepository;
-import nl.mpi.tg.eg.experimentdesigner.dao.PresenterScreenRepository;
+import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
+import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.link;
 import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.maxHeight;
@@ -35,6 +35,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
 import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
+import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 
 /**
  * @since Jan 18, 2016 11:20:47 AM (creation date)
@@ -42,12 +43,32 @@ import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
  */
 public class SynQuiz2 {
 
+    private final WizardController wizardController = new WizardController();
     private final String imageSize = "80";
 
-    public void create(PresenterScreenRepository presenterScreenRepository, PresenterFeatureRepository presenterFeatureRepository, final List<PresenterScreen> presenterScreenList) {
-        presenterScreenList.add(createIntroductionScreen("Introduction", 1));
-        presenterScreenList.add(createRegistrationScreen("Registration", 2));
-        presenterScreenList.add(createDemographicsScreen("Demographics", 3));
+    public Experiment getExperiment() {
+        Experiment experiment = wizardController.getExperiment("SynQuiz2", "SynQuiz2");
+        experiment.setStimuli(new SynQuiz2().createStimuli());
+        new SynQuiz2().create(experiment, experiment.getPresenterScreen());
+        return experiment;
+    }
+
+    public void create(Experiment experiment, final List<PresenterScreen> presenterScreenList) {
+        final PresenterScreen introductionScreen = createIntroductionScreen("Introduction", 1);
+        presenterScreenList.add(introductionScreen);
+//        final PresenterScreen registrationScreen = createRegistrationScreen("Registration", 2);
+//        presenterScreenList.add(registrationScreen);
+        WizardData wizardData = new WizardData();
+        wizardData.setMetadataScreenText("Please read the " + formatLink("Participant Information Sheet", "static/synaesthesia_info_sheet_ENGLISH_webversion.pdf") + " carefully!");
+        wizardData.setFirstNameField(true);
+        wizardData.setLastNameField(true);
+        wizardData.setEmailAddressField(true);
+        wizardData.setOptionCheckBox1("I would like to be contacted about participating in other synaesthesia research studies (optional)");
+        wizardData.setMandatoryCheckBox("By checking this box I confirm that I have read and understood the Volunteer's Information Sheet and I agree to take part in this study");
+
+        final PresenterScreen demographicsScreen = createDemographicsScreen("Demographics", 3);
+        presenterScreenList.add(demographicsScreen);
+        wizardController.addEditUserScreen(experiment, introductionScreen, demographicsScreen, 2, wizardData);
         presenterScreenList.add(createStimulusScreen("Weekdays", 4));
         presenterScreenList.add(createStimulusScreen("Numbers", 5));
         presenterScreenList.add(createStimulusScreen("Letters", 6));
@@ -75,7 +96,7 @@ public class SynQuiz2 {
                 + "Depending on your scores, we may send you an email inviting you to participate in the genetics part of the study. There is no cost to participate, and you can do everything from home."));
         presenterFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
         final PresenterFeature targetButtonFeature = new PresenterFeature(FeatureType.targetButton, "Participate!");
-        targetButtonFeature.addFeatureAttributes(target, "RegistrationScreen");
+        targetButtonFeature.addFeatureAttributes(target, "EditUser");
         presenterFeatureList.add(targetButtonFeature);
         presenterFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
         presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "For more information about synaesthesia, please see our 'About synaesthesia' page. "
@@ -98,17 +119,18 @@ public class SynQuiz2 {
         final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, null, screenName + "Screen", null, PresenterType.metadata, displayOrder);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
         presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
-        presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, "Please read the " + formatLink("Participant Information Sheet", "static/synaesthesia_info_sheet_ENGLISH_webversion.pdf") + " carefully!"));
+//        presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, ));
 //        presenterFeatureList.add(new PresenterFeature(FeatureType.text, ""));
 //        presenterFeatureList.add(new PresenterFeature(FeatureType.text, ""));
 //        final PresenterFeature targetButtonFeature = new PresenterFeature(FeatureType.targetButton, "Participant Information Sheet");
 //        targetButtonFeature.addFeatureAttributes(target, "InformationScreen");
 //        presenterFeatureList.add(targetButtonFeature);
-        insertMetadataInput("First Name", ".'{'3,'}'");
-        insertMetadataInput("Last Name", ".'{'3,'}'");
-        insertMetadataInput("Email address", "^[^@]+@[^@]+$");
-        insertMetadataInput("\"I would like to be contacted about participating in other synaesthesia research studies\" (optional)", "true|false");
-        insertMetadataInput("\"By checking this box I confirm that I have read and understood the Volunteer's Information Sheet and I agree to take part in this study\"", "true|false");
+//        insertMetadataInput("First Name", ".'{'3,'}'");
+//        insertMetadataInput("Last Name", ".'{'3,'}'");
+//        insertMetadataInput("Email address", "^[^@]+@[^@]+$");
+//        insertMetadataInput("\"I would like to be contacted about participating in other synaesthesia research studies\" (optional)", "true|false");
+//        insertMetadataInput("\"By checking this box I confirm that I have read and understood the Volunteer's Information Sheet and I agree to take part in this study\"", "true|false");
+        presenterFeatureList.add(new PresenterFeature(FeatureType.allMetadataFields, null));
         final PresenterFeature submitButtonFeature = new PresenterFeature(FeatureType.targetButton, "Submit");
         submitButtonFeature.addFeatureAttributes(target, "DemographicsScreen");
         presenterFeatureList.add(submitButtonFeature);
@@ -122,9 +144,9 @@ public class SynQuiz2 {
 //        presenterFeatureList.add(new PresenterFeature(FeatureType.text, "Please read the Participant Information Sheet carefully!"));
 //        presenterFeatureList.add(new PresenterFeature(FeatureType.text, ""));
 //        presenterFeatureList.add(new PresenterFeature(FeatureType.text, ""));
-//        final PresenterFeature targetButtonFeature = new PresenterFeature(FeatureType.targetButton, null);
-//        targetButtonFeature.addFeatureAttributes(target, "informationScreen");
-//        presenterFeatureList.add(targetButtonFeature);
+        final PresenterFeature targetButtonFeature = new PresenterFeature(FeatureType.targetButton, null);
+        targetButtonFeature.addFeatureAttributes(target, "Weekdays");
+        presenterFeatureList.add(targetButtonFeature);
         return presenterScreen;
     }
 
@@ -165,9 +187,5 @@ public class SynQuiz2 {
         insertStimulusGroup(stimuliList, "Letters", "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z");
         insertStimulusGroup(stimuliList, "Months", "January,February,March,April,May,June,July,August,September,October,November,December");
         return stimuliList;
-    }
-
-    private void insertMetadataInput(String label, String regex) {
-
     }
 }
