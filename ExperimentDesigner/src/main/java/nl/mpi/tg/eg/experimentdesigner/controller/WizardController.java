@@ -171,7 +171,9 @@ public class WizardController {
     public PresenterScreen addUserSelectMenu(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder) {
         final PresenterScreen presenterScreen = new PresenterScreen("Select User", "Select User", backPresenter, "SelectUser", nextPresenter, PresenterType.metadata, displayOrder);
         final PresenterFeature selectUserFeature = new PresenterFeature(FeatureType.selectUserMenu, null);
+        if (nextPresenter != null) {
             selectUserFeature.addFeatureAttributes(FeatureAttribute.target, nextPresenter.getSelfPresenterTag());
+        }
         presenterScreen.getPresenterFeatureList().add(selectUserFeature);
         experiment.getPresenterScreen().add(presenterScreen);
         return presenterScreen;
@@ -184,12 +186,41 @@ public class WizardController {
     public PresenterScreen addEditUserScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder, WizardData wizardData) {
         final PresenterScreen presenterScreen = new PresenterScreen("Edit User", "Edit User", backPresenter, "EditUser", nextPresenter, PresenterType.metadata, displayOrder);
         if (wizardData != null) {
-            if (wizardData.isNameField()) {
-                final Metadata metadata = new Metadata("workerId", "Speaker name *", ".'{'3,'}'", "Please enter at least three letters.", false, null);
+            if (!wizardData.getMetadataScreenText().isEmpty()) {
+                presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, wizardData.getMetadataScreenText()));
+            }
+            final Metadata workerId = new Metadata("workerId", "Worker ID", ".'{'3,'}'", "Please enter at least three letters.", false, null);
+            experiment.getMetadata().add(workerId);
+            if (wizardData.isSpeakerNameField()) {
+                final Metadata metadata = new Metadata("speakerName", "Speaker name *", ".'{'3,'}'", "Please enter at least three letters.", false, null);
                 experiment.getMetadata().add(metadata);
             }
             if (wizardData.isAgeField()) {
                 final Metadata metadata = new Metadata("age", "Speaker age", "0-9+", "Please enter a valid age.", false, null);
+                experiment.getMetadata().add(metadata);
+            }
+            if (wizardData.isFirstNameField()) {
+                final Metadata metadata = new Metadata("firstName", "First name", ".'{'3,'}'", "Please enter a valid age.", false, null);
+                experiment.getMetadata().add(metadata);
+            }
+            if (wizardData.isLastNameField()) {
+                final Metadata metadata = new Metadata("lastName", "Last name", ".'{'3,'}'", "Please enter at least three letters.", false, null);
+                experiment.getMetadata().add(metadata);
+            }
+            if (wizardData.isEmailAddressField()) {
+                final Metadata metadata = new Metadata("emailAddress", "Email address", "^[^@]+@[^@]+$", "Please enter a valid email address.", false, null);
+                experiment.getMetadata().add(metadata);
+            }
+            if (!wizardData.getOptionCheckBox1().isEmpty()) {
+                final Metadata metadata = new Metadata("optionCheckBox1", wizardData.getOptionCheckBox1(), "true|false", "Please enter true or false.", false, null);
+                experiment.getMetadata().add(metadata);
+            }
+            if (!wizardData.getOptionCheckBox2().isEmpty()) {
+                final Metadata metadata = new Metadata("optionCheckBox2", wizardData.getOptionCheckBox2(), "true|false", "Please enter true or false.", false, null);
+                experiment.getMetadata().add(metadata);
+            }
+            if (!wizardData.getMandatoryCheckBox().isEmpty()) {
+                final Metadata metadata = new Metadata("mandatoryCheckBox", wizardData.getMandatoryCheckBox(), "true", "Please agree to continue.", false, null);
                 experiment.getMetadata().add(metadata);
             }
             // todo: change this to individual fields to be shown
@@ -204,7 +235,9 @@ public class WizardController {
         saveMetadataButton.getPresenterFeatureList().add(onErrorFeature);
         final PresenterFeature onSuccessFeature = new PresenterFeature(FeatureType.onSuccess, null);
         final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.autoNextPresenter, null);
+        if (nextPresenter != null) {
             menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, nextPresenter.getSelfPresenterTag());
+        }
         onSuccessFeature.getPresenterFeatureList().add(menuButtonFeature);
         saveMetadataButton.getPresenterFeatureList().add(onSuccessFeature);
         presenterScreen.getPresenterFeatureList().add(saveMetadataButton);
