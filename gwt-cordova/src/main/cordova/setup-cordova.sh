@@ -121,7 +121,7 @@ cp platforms/android/build/outputs/apk/android-release.apk ~/Desktop/FrinexAPKs/
 cp -r platforms/android ~/Desktop/FrinexAPKs/$appname-android
 
 #echo "installing on Android"
-adb install platforms/android/build/outputs/apk/android-release.apk
+adb install -r platforms/android/build/outputs/apk/android-release.apk
 
 #echo "launching xcode"
 #open platforms/ios/LingQuest.xcodeproj&
