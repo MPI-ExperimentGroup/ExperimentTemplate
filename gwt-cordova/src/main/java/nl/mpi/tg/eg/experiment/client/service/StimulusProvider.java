@@ -18,6 +18,8 @@
 package nl.mpi.tg.eg.experiment.client.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -87,6 +89,14 @@ public class StimulusProvider {
                 if (!seenList.contains(stimulus.getUniqueId())) {
                     stimulusSubsetArray.add(stimulus);
                 }
+            }
+            if (!randomise) {
+                Collections.sort(stimulusSubsetArray, new Comparator<Stimulus>() {
+                    @Override
+                    public int compare(Stimulus o1, Stimulus o2) {
+                        return (o1.getCode().compareTo(o2.getCode()));
+                    }
+                });
             }
             totalStimuli = stimulusSubsetArray.size();
             simulusLoadedListener.postLoadTimerFired();
@@ -227,7 +237,7 @@ public class StimulusProvider {
     public boolean hasNextStimulus() {
         return !stimulusSubsetArray.isEmpty();
     }
-    
+
     public int getTotalStimuli() {
         return totalStimuli;
     }
