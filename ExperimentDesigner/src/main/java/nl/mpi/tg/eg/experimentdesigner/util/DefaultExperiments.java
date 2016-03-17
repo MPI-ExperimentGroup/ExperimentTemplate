@@ -66,12 +66,13 @@ public class DefaultExperiments {
             ExperimentRepository experimentRepository,
             PublishEventRepository eventRepository) {
         experimentRepository.save(getSentveri_exp3Experiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
-        experimentRepository.save(getSynQuiz2Experiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
         experimentRepository.save(getDobesExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
         experimentRepository.save(getAllOptionsExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
         experimentRepository.save(new JenaFieldKit().getJenaExperiment());
         experimentRepository.save(new ShawiFieldKit().getShawiExperiment());
         experimentRepository.save(new Sara01().getExperiment());
+        experimentRepository.save(new FactOrFiction().getExperiment());
+        experimentRepository.save(new SynQuiz2().getExperiment());
 
         for (Experiment experiment : experimentRepository.findAll()) {
             eventRepository.save(new PublishEvents(experiment, new Date(), new Date(), PublishEvents.PublishState.published, true, true, true));
@@ -107,14 +108,6 @@ public class DefaultExperiments {
         Experiment experiment = getDefault("Sentveri_exp3", metadataRepository, presenterFeatureRepository);
         experiment.setStimuli(new Sentveri_exp3().createStimuli());
         new Sentveri_exp3().create3c(presenterScreenRepository, presenterFeatureRepository, experiment.getPresenterScreen());
-        presenterScreenRepository.save(experiment.getPresenterScreen());
-        return experiment;
-    }
-
-    public Experiment getSynQuiz2Experiment(MetadataRepository metadataRepository, PresenterFeatureRepository presenterFeatureRepository, PresenterScreenRepository presenterScreenRepository) {
-        Experiment experiment = getDefault("SynQuiz2", metadataRepository, presenterFeatureRepository);
-        experiment.setStimuli(new SynQuiz2().createStimuli());
-        new SynQuiz2().create(presenterScreenRepository, presenterFeatureRepository, experiment.getPresenterScreen());
         presenterScreenRepository.save(experiment.getPresenterScreen());
         return experiment;
     }
