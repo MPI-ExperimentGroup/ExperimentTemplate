@@ -30,7 +30,15 @@ public class WizardData {
     private String agreementScreenText = "";
     private String disagreementScreenText = "";
     private boolean metadataScreen = false;
-    private boolean nameField = false;
+    private String metadataScreenText = "";
+    private boolean speakerNameField = false;
+
+    private boolean firstNameField = false;
+    private boolean lastNameField = false;
+    private boolean emailAddressField = false;
+    private String optionCheckBox1 = "";
+    private String optionCheckBox2 = "";
+    private String mandatoryCheckBox = "";
     private boolean ageField = false;
     private boolean audioTestScreen = false;
     private String testAudioPath = "";
@@ -94,12 +102,68 @@ public class WizardData {
         this.metadataScreen = metadataScreen;
     }
 
-    public boolean isNameField() {
-        return nameField;
+    public String getMetadataScreenText() {
+        return metadataScreenText;
     }
 
-    public void setNameField(boolean nameField) {
-        this.nameField = nameField;
+    public void setMetadataScreenText(String metadataScreenText) {
+        this.metadataScreenText = metadataScreenText;
+    }
+
+    public boolean isSpeakerNameField() {
+        return speakerNameField;
+    }
+
+    public void setSpeakerNameField(boolean speakerNameField) {
+        this.speakerNameField = speakerNameField;
+    }
+
+    public boolean isFirstNameField() {
+        return firstNameField;
+    }
+
+    public void setFirstNameField(boolean firstNameField) {
+        this.firstNameField = firstNameField;
+    }
+
+    public boolean isLastNameField() {
+        return lastNameField;
+    }
+
+    public void setLastNameField(boolean lastNameField) {
+        this.lastNameField = lastNameField;
+    }
+
+    public boolean isEmailAddressField() {
+        return emailAddressField;
+    }
+
+    public void setEmailAddressField(boolean emailAddressField) {
+        this.emailAddressField = emailAddressField;
+    }
+
+    public String getOptionCheckBox1() {
+        return optionCheckBox1;
+    }
+
+    public void setOptionCheckBox1(String optionCheckBox1) {
+        this.optionCheckBox1 = optionCheckBox1;
+    }
+
+    public String getOptionCheckBox2() {
+        return optionCheckBox2;
+    }
+
+    public void setOptionCheckBox2(String optionCheckBox2) {
+        this.optionCheckBox2 = optionCheckBox2;
+    }
+
+    public String getMandatoryCheckBox() {
+        return mandatoryCheckBox;
+    }
+
+    public void setMandatoryCheckBox(String mandatoryCheckBox) {
+        this.mandatoryCheckBox = mandatoryCheckBox;
     }
 
     public boolean isAgeField() {
