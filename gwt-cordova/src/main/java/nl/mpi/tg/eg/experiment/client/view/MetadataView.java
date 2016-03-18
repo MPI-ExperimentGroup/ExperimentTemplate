@@ -20,7 +20,9 @@ package nl.mpi.tg.eg.experiment.client.view;
 import com.google.gwt.event.dom.client.FocusEvent;
 import com.google.gwt.event.dom.client.FocusHandler;
 import com.google.gwt.user.client.ui.ButtonBase;
+import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.FocusWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -36,9 +38,9 @@ import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 public class MetadataView extends ComplexView {
 
     private FlexTable flexTable = null;
-    final private HashMap<MetadataField, TextBox> fieldBoxes;
+    final private HashMap<MetadataField, FocusWidget> fieldBoxes;
     final private ArrayList<MetadataField> orderedFields;
-    private TextBox firstTextBox = null;
+    private FocusWidget firstTextBox = null;
     private final Label errorText;
     private final VerticalPanel keyboardPadding;
 
@@ -58,19 +60,26 @@ public class MetadataView extends ComplexView {
             outerPanel.add(flexTable);
         }
         final int rowCount = flexTable.getRowCount();
-        final Label label = new Label(labelString);
-        flexTable.setWidget(rowCount, 0, label);
-        final TextBox textBox = new TextBox();
-        textBox.setStylePrimaryName("metadataOK");
-        textBox.setText((existingValue == null) ? "" : existingValue);
-        textBox.addFocusHandler(new FocusHandler() {
+        final FocusWidget focusWidget;
+        if (metadataField.isCheckBox()) {
+            flexTable.setWidget(rowCount, 0, new Label());
+            focusWidget = new CheckBox(labelString);
+            ((CheckBox) focusWidget).setValue((existingValue == null) ? false : Boolean.parseBoolean(existingValue));
+        } else {
+            final Label label = new Label(labelString);
+            flexTable.setWidget(rowCount, 0, label);
+            focusWidget = new TextBox();
+            ((TextBox) focusWidget).setText((existingValue == null) ? "" : existingValue);
+            ((TextBox) focusWidget).addFocusHandler(new FocusHandler() {
 
-            @Override
-            public void onFocus(FocusEvent event) {
-                addKeyboardPadding();
+                @Override
+                public void onFocus(FocusEvent event) {
+                    addKeyboardPadding();
 //                scrollToPosition(label.getAbsoluteTop());
-            }
-        });
+                }
+            });
+        }
+        focusWidget.setStylePrimaryName("metadataOK");
 //        textBox.addBlurHandler(new BlurHandler() {
 //
 //            @Override
@@ -78,11 +87,11 @@ public class MetadataView extends ComplexView {
 //                removeKeyboardPadding();
 //            }
 //        });
-        flexTable.setWidget(rowCount + 1, 0, textBox);
-        fieldBoxes.put(metadataField, textBox);
+        flexTable.setWidget(rowCount + 1, 0, focusWidget);
+        fieldBoxes.put(metadataField, focusWidget);
         orderedFields.add(metadataField);
         if (firstTextBox == null) {
-            firstTextBox = textBox;
+            firstTextBox = focusWidget;
         }
     }
 
@@ -97,25 +106,37 @@ public class MetadataView extends ComplexView {
     }
 
     public void setFieldValue(MetadataField metadataField, String fieldValue) {
-        fieldBoxes.get(metadataField).setValue(fieldValue);
+        final FocusWidget focusWidget = fieldBoxes.get(metadataField);
+        if (focusWidget instanceof CheckBox) {
+            ((CheckBox) focusWidget).setValue(Boolean.valueOf(fieldValue));
+        } else if (focusWidget instanceof TextBox) {
+            ((TextBox) focusWidget).setValue(fieldValue);
+        }
     }
 
     public String getFieldValue(MetadataField metadataField) {
-        return fieldBoxes.get(metadataField).getValue();
+        final FocusWidget focusWidget = fieldBoxes.get(metadataField);
+        if (focusWidget instanceof CheckBox) {
+            return Boolean.toString(((CheckBox) focusWidget).getValue());
+        } else if (focusWidget instanceof TextBox) {
+            return ((TextBox) focusWidget).getValue();
+        } else {
+            throw new UnsupportedOperationException("Unexpected type for: " + focusWidget.getClass());
+        }
     }
 
     public void showFieldError(MetadataField metadataField) {
-        final TextBox fieldBox = fieldBoxes.get(metadataField);
-        fieldBox.setStylePrimaryName("metadataError");
+        final FocusWidget focusWidget = fieldBoxes.get(metadataField);
+        focusWidget.setStylePrimaryName("metadataError");
         errorText.setText(metadataField.getControlledMessage());
         for (int rowCounter = 0; rowCounter < flexTable.getRowCount(); rowCounter++) {
-            if (fieldBox.equals(flexTable.getWidget(rowCounter, 0))) {
+            if (focusWidget.equals(flexTable.getWidget(rowCounter, 0))) {
                 flexTable.insertRow(rowCounter);
                 flexTable.setWidget(rowCounter, 0, errorText);
                 break;
             }
         }
-        fieldBox.setFocus(true);
+        focusWidget.setFocus(true);
     }
 
     public void setButtonError(boolean isError, ButtonBase button, String errorMessage) {
@@ -134,8 +155,8 @@ public class MetadataView extends ComplexView {
     }
 
     public void clearErrors() {
-        for (TextBox textBox : fieldBoxes.values()) {
-            textBox.setStylePrimaryName("metadataOK");
+        for (FocusWidget focusWidget : fieldBoxes.values()) {
+            focusWidget.setStylePrimaryName("metadataOK");
         }
         for (int rowCounter = 0; rowCounter < flexTable.getRowCount(); rowCounter++) {
             if (flexTable.getWidget(rowCounter, 0) == errorText) {
