@@ -23,7 +23,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <body>
         <div th:fragment="experimentlisting">
-            <a href="deleteAll">Delete all experiments and recreate the defaults</a>
+            <!--<a href="deleteAll">Delete all experiments and recreate the defaults</a>-->
             <table id="experimenttable" class="presenter">
                 <thead>
                     <tr>
@@ -66,7 +66,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     </tr>
                 </tbody>
             </table>
-            <a th:href="${contextPath + '/experiments/add'}">Create new experiment</a>
+            <!--<a th:href="${contextPath + '/experiments/add'}">Create new experiment</a>-->
         </div>
         <div th:fragment="editexperiment">
             <form action="#" th:action="${contextPath + '/experiment/' + experiment.id + '/update'}" th:object="${experiment}" method="post">
