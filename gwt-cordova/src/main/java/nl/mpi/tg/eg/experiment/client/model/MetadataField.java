@@ -40,6 +40,10 @@ public class MetadataField {
         this.controlledVocabulary = (controlledVocabulary != null && !controlledVocabulary.isEmpty()) ? controlledVocabulary.split(",") : null;
     }
 
+    public boolean isCheckBox() {
+        return controlledRegex.equals("true") || controlledRegex.equals("true|false");
+    }
+
     public String getPostName() {
         return postName;
     }
