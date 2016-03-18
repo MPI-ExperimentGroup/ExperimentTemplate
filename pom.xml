@@ -29,18 +29,18 @@
         <!--<experiment.configuration.path>${project.build.sourceDirectory}/../../../../../ExperimentBuilder/src/main/xml</experiment.configuration.path>-->      
         <experiment.configuration.path>../frinex-rest-output</experiment.configuration.path>      
         <experiment.webservice>http://localhost:8080/ExperimentDesigner</experiment.webservice>      
-                <!--<experiment.destinationName>localhost</experiment.destinationName>-->      
+        <!--<experiment.destinationName>localhost</experiment.destinationName>-->      
         <experiment.destinationUrl>http://localhost:8080</experiment.destinationUrl>      
           
         <!--<experiment.configuration.name>dobesannotator</experiment.configuration.name>-->
         <experiment.configuration.name>alloptions</experiment.configuration.name>
 <!--        <experiment.configuration.name>shawifieldkit</experiment.configuration.name>
         <experiment.configuration.displayName>Shawi FieldKit</experiment.configuration.displayName>-->
-        <!--        <experiment.configuration.name>vanuatufieldkit</experiment.configuration.name>
+<!--        <experiment.configuration.name>vanuatufieldkit</experiment.configuration.name>
         <experiment.configuration.displayName>Vanuatu FieldKit</experiment.configuration.displayName>-->
         <!--<experiment.configuration.name>sentveri_exp3</experiment.configuration.name>-->
         <!--<experiment.configuration.displayName>sentveri_exp3</experiment.configuration.displayName>-->
-        <!--<experiment.configuration.displayName>SynQuiz2</experiment.configuration.displayName>-->
+                <!--<experiment.configuration.displayName>SynQuiz2</experiment.configuration.displayName>-->
         <!--<experiment.configuration.name>synquiz2</experiment.configuration.name>-->
         <!--<experiment.configuration.name>snspsem</experiment.configuration.name>-->
         <experiment.configuration.admin.password></experiment.configuration.admin.password>
@@ -84,8 +84,8 @@
                 <version>2.2</version>
                 <configuration>
                     <update>true</update>
-                    <server>ems13</server>
-                    <url>${ems13url}/manager/text</url>
+                    <server>${experiment.destinationServer}</server>
+                    <url>${experiment.destinationServerUrl}/manager/text</url>
                 </configuration>
             </plugin>  
         </plugins>
