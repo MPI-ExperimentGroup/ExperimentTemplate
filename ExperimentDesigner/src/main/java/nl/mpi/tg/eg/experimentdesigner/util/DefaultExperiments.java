@@ -316,6 +316,9 @@ public class DefaultExperiments {
                     case eventTier:
                         presenterFeature.addFeatureAttributes(attribute, "8");
                         break;
+                    case fieldName:
+                        presenterFeature.addFeatureAttributes(attribute, "workerId");
+                        break;
                     default:
                         presenterFeature.addFeatureAttributes(attribute, attribute.name());
                 }
