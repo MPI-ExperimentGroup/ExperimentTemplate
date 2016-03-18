@@ -47,6 +47,7 @@ public enum FeatureType {
     addPadding(false, false, null),
     localStorageData(false, false, null),
     allMetadataFields(false, false, null),
+    metadataField(false, false, new FeatureAttribute[]{fieldName}),
     saveMetadataButton(true, true, new FeatureAttribute[]{sendData}, false, Contitionals.hasErrorSuccess),
     createUserButton(false, true, new FeatureAttribute[]{target}),
     selectUserMenu(false, false, new FeatureAttribute[]{target}),
