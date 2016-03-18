@@ -45,6 +45,7 @@ public class Sara01 {
         //T_001_N_B
         //I have added the 1/2 second pause in my list below:
         //User follows link with group id and invite id
+        wizardData.setUserSelectScreen(true);
         //Information screen 
         wizardData.setAgreementScreenText("agreementScreenText");
         //Agreement
@@ -52,9 +53,10 @@ public class Sara01 {
         wizardData.setAgreementText("agreementText");
         wizardData.setDisagreementScreenText("disagreementScreenText");
         //metadata
-        wizardData.setMenuScreen(true);
+        wizardData.setMetadataScreen(true);
         wizardData.setAgeField(true);
-        wizardData.setNameField(true);
+        wizardData.setFirstNameField(true);
+        wizardData.setLastNameField(true);
         //audio test page
         wizardData.setAudioTestScreen(true);
         wizardData.setTestAudioPath("testAudioPath");
