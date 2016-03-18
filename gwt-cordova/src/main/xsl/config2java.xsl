@@ -215,7 +215,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             <xsl:value-of select="@self" />
             <xsl:text>Presenter(RootLayoutPanel widgetTag</xsl:text>
             <xsl:value-of select="
-if(@type = 'transmission' or @type = 'metadata') then ', DataSubmissionService submissionService, UserResults userResults' else 
+if(@type = 'transmission' or @type = 'metadata' or @type = 'colourReport') then ', DataSubmissionService submissionService, UserResults userResults' else 
 if(@type = 'preload') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults' else 
 if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage' else ''" />
             <xsl:value-of select="if(@type = 'colourPicker') then ') throws CanvasError {' else ') {'"/>
@@ -245,7 +245,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                         super(widgetTag, audioPlayer, submissionService, userResults, localStorage);
                     </xsl:text>                    
                 </xsl:when>
-                <xsl:when test="@type = 'metadata' or @type = 'transmission'">
+                <xsl:when test="@type = 'metadata' or @type = 'transmission' or @type = 'colourReport'">
                     <xsl:text>
                         super(widgetTag, submissionService, userResults);
                     </xsl:text>
@@ -411,11 +411,12 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="saveMetadataButton|localStorageData|allMetadataFields|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|disableStimulusButtons|showStimulus|showStimulusProgress|hideStimulusButtons|showStimulusButtons|generateCompletionCode|sendAllData|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|stimulusLabel">
+    <xsl:template match="saveMetadataButton|localStorageData|allMetadataFields|metadataField|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|disableStimulusButtons|showStimulus|showStimulusProgress|hideStimulusButtons|showStimulusButtons|generateCompletionCode|sendAllData|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|stimulusLabel">
         <xsl:text>    </xsl:text>    
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>            
         <xsl:value-of select="if(@featureText) then concat('messages.', generate-id(.), '()') else ''" />    
+        <xsl:value-of select="if(@fieldName) then concat('metadataFieldProvider.', @fieldName, 'MetadataField') else ''" />
         <xsl:value-of select="if(@sendData) then concat(', ', @sendData eq 'true') else ''" />    
         <xsl:apply-templates select="onError" />
         <xsl:apply-templates select="onSuccess" />
