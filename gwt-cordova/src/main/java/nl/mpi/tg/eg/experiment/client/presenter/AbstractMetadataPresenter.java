@@ -192,6 +192,10 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
         }
     }
 
+    protected void metadataField(MetadataField metadataField) {
+        ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel());
+    }
+
     public void focusFirstTextBox() {
         ((MetadataView) simpleView).focusFirstTextBox();
     }
