@@ -189,42 +189,31 @@ public class WizardController {
             if (!wizardData.getMetadataScreenText().isEmpty()) {
                 presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, wizardData.getMetadataScreenText()));
             }
-            final Metadata workerId = new Metadata("workerId", "Worker ID", ".'{'3,'}'", "Please enter at least three letters.", false, null);
-            experiment.getMetadata().add(workerId);
+            insertMetadataField(experiment, new Metadata("workerId", "Worker ID", ".'{'3,'}'", "Please enter at least three letters.", false, null), presenterScreen);
             if (wizardData.isSpeakerNameField()) {
-                final Metadata metadata = new Metadata("speakerName", "Speaker name *", ".'{'3,'}'", "Please enter at least three letters.", false, null);
-                experiment.getMetadata().add(metadata);
+                insertMetadataField(experiment, new Metadata("speakerName", "Speaker name *", ".'{'3,'}'", "Please enter at least three letters.", false, null), presenterScreen);
             }
             if (wizardData.isAgeField()) {
-                final Metadata metadata = new Metadata("age", "Speaker age", "0-9+", "Please enter a valid age.", false, null);
-                experiment.getMetadata().add(metadata);
+                insertMetadataField(experiment, new Metadata("age", "Speaker age", "0-9+", "Please enter a valid age.", false, null), presenterScreen);
             }
             if (wizardData.isFirstNameField()) {
-                final Metadata metadata = new Metadata("firstName", "First name", ".'{'3,'}'", "Please enter a valid age.", false, null);
-                experiment.getMetadata().add(metadata);
+                insertMetadataField(experiment, new Metadata("firstName", "First name", ".'{'3,'}'", "Please enter at least three letters.", false, null), presenterScreen);
             }
             if (wizardData.isLastNameField()) {
-                final Metadata metadata = new Metadata("lastName", "Last name", ".'{'3,'}'", "Please enter at least three letters.", false, null);
-                experiment.getMetadata().add(metadata);
+                insertMetadataField(experiment, new Metadata("lastName", "Last name", ".'{'3,'}'", "Please enter at least three letters.", false, null), presenterScreen);
             }
             if (wizardData.isEmailAddressField()) {
-                final Metadata metadata = new Metadata("emailAddress", "Email address", "^[^@]+@[^@]+$", "Please enter a valid email address.", false, null);
-                experiment.getMetadata().add(metadata);
+                insertMetadataField(experiment, new Metadata("emailAddress", "Email address", "^[^@]+@[^@]+$", "Please enter a valid email address.", false, null), presenterScreen);
             }
             if (!wizardData.getOptionCheckBox1().isEmpty()) {
-                final Metadata metadata = new Metadata("optionCheckBox1", wizardData.getOptionCheckBox1(), "true|false", "Please enter true or false.", false, null);
-                experiment.getMetadata().add(metadata);
+                insertMetadataField(experiment, new Metadata("optionCheckBox1", wizardData.getOptionCheckBox1(), "true|false", "Please enter true or false.", false, null), presenterScreen);
             }
             if (!wizardData.getOptionCheckBox2().isEmpty()) {
-                final Metadata metadata = new Metadata("optionCheckBox2", wizardData.getOptionCheckBox2(), "true|false", "Please enter true or false.", false, null);
-                experiment.getMetadata().add(metadata);
+                insertMetadataField(experiment, new Metadata("optionCheckBox2", wizardData.getOptionCheckBox2(), "true|false", "Please enter true or false.", false, null), presenterScreen);
             }
             if (!wizardData.getMandatoryCheckBox().isEmpty()) {
-                final Metadata metadata = new Metadata("mandatoryCheckBox", wizardData.getMandatoryCheckBox(), "true", "Please agree to continue.", false, null);
-                experiment.getMetadata().add(metadata);
+                insertMetadataField(experiment, new Metadata("mandatoryCheckBox", wizardData.getMandatoryCheckBox(), "true", "Please agree to continue.", false, null), presenterScreen);
             }
-            // todo: change this to individual fields to be shown
-            presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMetadataFields, null));
         } else {
             presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMetadataFields, null));
         }
@@ -243,6 +232,17 @@ public class WizardController {
         presenterScreen.getPresenterFeatureList().add(saveMetadataButton);
         experiment.getPresenterScreen().add(presenterScreen);
         return presenterScreen;
+    }
+
+    public void insertMetadataField(final Experiment experiment, final String label, final PresenterScreen presenterScreen) {
+        insertMetadataField(experiment, new Metadata(label.replaceAll("[^A-Za-z0-9]", "_"), label, "true|false", "Please enter true or false.", false, null), presenterScreen);
+    }
+
+    public void insertMetadataField(final Experiment experiment, final Metadata metadata, final PresenterScreen presenterScreen) {
+        experiment.getMetadata().add(metadata);
+        final PresenterFeature metadataField = new PresenterFeature(FeatureType.metadataField, null);
+        metadataField.addFeatureAttributes(FeatureAttribute.fieldName, metadata.getPostName());
+        presenterScreen.getPresenterFeatureList().add(metadataField);
     }
 
     public PresenterScreen addRandomTextScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder, String screenName, String[] screenTextArray) {
