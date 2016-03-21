@@ -44,6 +44,14 @@ public class MetadataField {
         return controlledRegex.equals("true") || controlledRegex.equals("true|false");
     }
 
+    public boolean isListBox() {
+        return controlledRegex.contains("|");
+    }
+
+    public String[] getListValues() {
+        return controlledRegex.split("\\|");
+    }
+
     public String getPostName() {
         return postName;
     }

@@ -24,6 +24,7 @@ import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.FocusWidget;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import java.util.ArrayList;
@@ -65,6 +66,19 @@ public class MetadataView extends ComplexView {
             flexTable.setWidget(rowCount, 0, new Label());
             focusWidget = new CheckBox(labelString);
             ((CheckBox) focusWidget).setValue((existingValue == null) ? false : Boolean.parseBoolean(existingValue));
+        } else if (metadataField.isListBox()) {
+            flexTable.setWidget(rowCount, 0, new Label(labelString));
+            focusWidget = new ListBox();
+            int selectedIndex = 0;
+            int itemCounter = 0;
+            for (String listItem : metadataField.getListValues()) {
+                ((ListBox) focusWidget).addItem(listItem);
+                if (existingValue != null && existingValue.equals(listItem)) {
+                    selectedIndex = itemCounter;
+                }
+                itemCounter++;
+            }
+            ((ListBox) focusWidget).setSelectedIndex(selectedIndex);
         } else {
             final Label label = new Label(labelString);
             flexTable.setWidget(rowCount, 0, label);
@@ -109,6 +123,12 @@ public class MetadataView extends ComplexView {
         final FocusWidget focusWidget = fieldBoxes.get(metadataField);
         if (focusWidget instanceof CheckBox) {
             ((CheckBox) focusWidget).setValue(Boolean.valueOf(fieldValue));
+        } else if (focusWidget instanceof ListBox) {
+            for (int itemIndex = 0; itemIndex < ((ListBox) focusWidget).getItemCount(); itemIndex++) {
+                if (((ListBox) focusWidget).getValue(itemIndex).equals(fieldValue)) {
+                    ((ListBox) focusWidget).setSelectedIndex(itemIndex);
+                }
+            }
         } else if (focusWidget instanceof TextBox) {
             ((TextBox) focusWidget).setValue(fieldValue);
         }
@@ -118,6 +138,8 @@ public class MetadataView extends ComplexView {
         final FocusWidget focusWidget = fieldBoxes.get(metadataField);
         if (focusWidget instanceof CheckBox) {
             return Boolean.toString(((CheckBox) focusWidget).getValue());
+        } else if (focusWidget instanceof ListBox) {
+            return ((ListBox) focusWidget).getSelectedValue();
         } else if (focusWidget instanceof TextBox) {
             return ((TextBox) focusWidget).getValue();
         } else {
