@@ -260,7 +260,7 @@ public class WizardController {
             stimuliList.add(stimulus);
         }
 
-        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, screenName, nextPresenter, PresenterType.stimulus, displayOrder);
+        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, screenName, null, PresenterType.stimulus, displayOrder);
 
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
 
@@ -273,10 +273,14 @@ public class WizardController {
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
 
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
+        final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionFooterButton, "spacebar");
+        nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, "spacebar");
+        nextButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
         final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
         nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
         nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + screenName);
-        hasMoreStimulusFeature.getPresenterFeatureList().add(nextStimulusFeature);
+        nextButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
+        hasMoreStimulusFeature.getPresenterFeatureList().add(nextButtonFeature);
         loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
 
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
