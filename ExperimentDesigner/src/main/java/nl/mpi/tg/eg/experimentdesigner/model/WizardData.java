@@ -35,7 +35,9 @@ public class WizardData {
 
     private boolean firstNameField = false;
     private boolean lastNameField = false;
+    private boolean genderField = false;
     private boolean emailAddressField = false;
+    private String customTextField = "";
     private String optionCheckBox1 = "";
     private String optionCheckBox2 = "";
     private String mandatoryCheckBox = "";
@@ -172,6 +174,22 @@ public class WizardData {
 
     public void setAgeField(boolean ageField) {
         this.ageField = ageField;
+    }
+
+    public boolean isGenderField() {
+        return genderField;
+    }
+
+    public void setGenderField(boolean genderField) {
+        this.genderField = genderField;
+    }
+
+    public String getCustomTextField() {
+        return customTextField;
+    }
+
+    public void setCustomTextField(String customTextField) {
+        this.customTextField = customTextField;
     }
 
     public boolean isStimuliScreen() {

@@ -84,7 +84,7 @@ public class WizardController {
             nextScreen = addEditUserScreen(experiment, previousScreen, null, 3, wizardData);
         }
         if (wizardData.isAgreementScreen()) {
-            previousScreen = addAgreementScreen(experiment, previousScreen, nextScreen, 2, wizardData.getAgreementScreenText());
+            previousScreen = addAgreementScreen(experiment, previousScreen, nextScreen.getSelfPresenterTag(), 2, wizardData.getAgreementScreenText());
         }
         previousScreen = nextScreen;
         if (wizardData.isAudioTestScreen()) {
@@ -145,11 +145,11 @@ public class WizardController {
         return presenterScreen;
     }
 
-    public PresenterScreen addAgreementScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder, String screenText) {
-        final PresenterScreen presenterScreen = new PresenterScreen("Agreement", "Agreement", backPresenter, "Agreement", nextPresenter, PresenterType.text, displayOrder);
+    public PresenterScreen addAgreementScreen(final Experiment experiment, final PresenterScreen backPresenter, final String nextPresenter, long displayOrder, String screenText) {
+        final PresenterScreen presenterScreen = new PresenterScreen("Agreement", "Agreement", backPresenter, "Agreement", null, PresenterType.text, displayOrder);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, screenText));
         final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.targetButton, "Agree");
-        presenterFeature.addFeatureAttributes(FeatureAttribute.target, nextPresenter.getSelfPresenterTag());
+        presenterFeature.addFeatureAttributes(FeatureAttribute.target, nextPresenter);
         presenterScreen.getPresenterFeatureList().add(presenterFeature);
         experiment.getPresenterScreen().add(presenterScreen);
         return presenterScreen;
@@ -194,7 +194,7 @@ public class WizardController {
                 insertMetadataField(experiment, new Metadata("speakerName", "Speaker name *", ".'{'3,'}'", "Please enter at least three letters.", false, null), presenterScreen);
             }
             if (wizardData.isAgeField()) {
-                insertMetadataField(experiment, new Metadata("age", "Speaker age", "0-9+", "Please enter a valid age.", false, null), presenterScreen);
+                insertMetadataField(experiment, new Metadata("age", "Speaker age", "[0-9]+", "Please enter a valid age.", false, null), presenterScreen);
             }
             if (wizardData.isFirstNameField()) {
                 insertMetadataField(experiment, new Metadata("firstName", "First name", ".'{'3,'}'", "Please enter at least three letters.", false, null), presenterScreen);
@@ -202,8 +202,14 @@ public class WizardController {
             if (wizardData.isLastNameField()) {
                 insertMetadataField(experiment, new Metadata("lastName", "Last name", ".'{'3,'}'", "Please enter at least three letters.", false, null), presenterScreen);
             }
+            if (wizardData.isGenderField()) {
+                insertMetadataField(experiment, new Metadata("gender", "Gender", "|male|female|other", null, false, null), presenterScreen);
+            }
             if (wizardData.isEmailAddressField()) {
                 insertMetadataField(experiment, new Metadata("emailAddress", "Email address", "^[^@]+@[^@]+$", "Please enter a valid email address.", false, null), presenterScreen);
+            }
+            if (wizardData.getCustomTextField() != null) {
+                insertMetadataField(experiment, new Metadata("customTextField1", wizardData.getCustomTextField(), ".'{'3,'}'", "Please enter at least three letters.", false, null), presenterScreen);
             }
             if (!wizardData.getOptionCheckBox1().isEmpty()) {
                 insertMetadataField(experiment, new Metadata("optionCheckBox1", wizardData.getOptionCheckBox1(), "true|false", "Please enter true or false.", false, null), presenterScreen);
