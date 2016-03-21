@@ -69,11 +69,15 @@ public class SynQuiz2 {
 
         final PresenterScreen demographicsScreen = createDemographicsScreen(experiment, "Demographics", 3);
         presenterScreenList.add(demographicsScreen);
-        wizardController.addEditUserScreen(experiment, introductionScreen, demographicsScreen, 2, wizardData);
-        presenterScreenList.add(createStimulusScreen("Weekdays", 4));
-        presenterScreenList.add(createStimulusScreen("Numbers", 5));
-        presenterScreenList.add(createStimulusScreen("Letters", 6));
-        presenterScreenList.add(createStimulusScreen("Months", 7));
+        final PresenterScreen editUserScreen = wizardController.addEditUserScreen(experiment, introductionScreen, demographicsScreen, 2, wizardData);
+        demographicsScreen.setBackPresenter(editUserScreen);
+        final PresenterScreen weekdaysScreen = createStimulusScreen("Weekdays", demographicsScreen, 4);
+        presenterScreenList.add(weekdaysScreen);
+        final PresenterScreen numbersScreen = createStimulusScreen("Numbers", weekdaysScreen, 5);
+        presenterScreenList.add(numbersScreen);
+        final PresenterScreen lettersScreen = createStimulusScreen("Letters", numbersScreen, 6);
+        presenterScreenList.add(lettersScreen);
+        presenterScreenList.add(createStimulusScreen("Months", lettersScreen, 7));
     }
 
     private PresenterScreen createIntroductionScreen(String screenName, long displayOrder) {
@@ -275,8 +279,8 @@ public class SynQuiz2 {
         return presenterScreen;
     }
 
-    private PresenterScreen createStimulusScreen(String screenName, long displayOrder) {
-        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, null, screenName + "Screen", null, PresenterType.colourPicker, displayOrder);
+    private PresenterScreen createStimulusScreen(String screenName, final PresenterScreen backPresenter, long displayOrder) {
+        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, screenName + "Screen", null, PresenterType.colourPicker, displayOrder);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadAllStimulus, null);
         loadStimuliFeature.addStimulusTag(screenName);
