@@ -60,6 +60,7 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
     @Override
     public void setState(final AppEventListner appEventListner, ApplicationState prevState, final ApplicationState nextState) {
         super.setState(appEventListner, prevState, null);
+        this.nextState = nextState;
     }
 
     protected void saveMetadataButton(final String buttonLabel, final boolean sendData, final TimedStimulusListener errorEventListner, final TimedStimulusListener successEventListner) {
@@ -129,7 +130,7 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
         localStorage.storeData(userResults);
     }
 
-    protected void selectUserMenu(final AppEventListner appEventListner, final ApplicationState targetApplicationState) {
+    protected void selectUserMenu(final AppEventListner appEventListner) {
         for (final UserLabelData labelData : localStorage.getUserIdList()) {
             final Button optionButton = ((MetadataView) simpleView).addOptionButton(new PresenterEventListner() {
 
@@ -147,7 +148,7 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
                 public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                     userResults.setUser(localStorage.getStoredData(labelData.getUserId()));
                     localStorage.storeData(userResults);
-                    appEventListner.requestApplicationState(targetApplicationState);
+                    appEventListner.requestApplicationState(nextState);
                 }
             });
             if (labelData.getUserId().equals(userResults.getUserData().getUserId())) {

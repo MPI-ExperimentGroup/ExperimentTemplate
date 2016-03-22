@@ -43,6 +43,7 @@ public abstract class AbstractPresenter implements Presenter {
     private PresenterEventListner nextEventListner = null;
     private PresenterEventListner windowClosingEventListner = null;
     private final Timer audioTickerTimer;
+    protected ApplicationState nextState;
 
     public AbstractPresenter(RootLayoutPanel widgetTag, SimpleView simpleView) {
         this.widgetTag = widgetTag;
@@ -57,6 +58,7 @@ public abstract class AbstractPresenter implements Presenter {
 
     @Override
     public void setState(final AppEventListner appEventListner, final ApplicationState prevState, final ApplicationState nextState) {
+        this.nextState = nextState;
         widgetTag.clear();
         if (prevState != null) {
             backEventListner = new PresenterEventListner() {
@@ -145,10 +147,10 @@ public abstract class AbstractPresenter implements Presenter {
 
     protected abstract void setContent(final AppEventListner appEventListner);
 
-    protected void autoNextPresenter(final AppEventListner appEventListner, final ApplicationController.ApplicationState state) {
+    protected void autoNextPresenter(final AppEventListner appEventListner) {
         Timer timer = new Timer() {
             public void run() {
-                appEventListner.requestApplicationState(state);
+                appEventListner.requestApplicationState(nextState);
             }
         };
         timer.schedule(100);
