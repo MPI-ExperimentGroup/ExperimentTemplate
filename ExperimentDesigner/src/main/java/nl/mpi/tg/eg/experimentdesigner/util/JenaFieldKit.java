@@ -42,7 +42,6 @@ public class JenaFieldKit {
                 + "Show the pictures in this app to your grandparents and other older people. "
                 + "You will ask them to talk about these pictures in their custom language. "
                 + "You can translate what they say, too.");
-
         StimuliSubAction[] featureValuesArray = new StimuliSubAction[]{new StimuliSubAction("80", "speak the name in the language (lanwis)", "done"),
             new StimuliSubAction("60", "It''s your turn! What did they say? Translate it into Bislama if you can.", "done"),
             new StimuliSubAction("80", "ask for personal experience with... in language (lanwis)", "done"),
@@ -59,6 +58,7 @@ public class JenaFieldKit {
         final PresenterScreen selectUserPresenter = wizardController.addUserSelectMenu(experiment, welcomePresenter, metadataScreen, 5);
         final PresenterScreen editUserPresenter = wizardController.addEditUserScreen(experiment, welcomePresenter, metadataScreen, 4);
         final PresenterScreen debugScreenPresenter = wizardController.addDebugScreen(experiment, autoMenuPresenter, 11);
+        welcomeMenuPresenter.setNextPresenter(metadataScreen);
         return experiment;
     }
 }
