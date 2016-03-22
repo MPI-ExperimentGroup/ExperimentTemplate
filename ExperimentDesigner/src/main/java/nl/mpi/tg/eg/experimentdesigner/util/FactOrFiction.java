@@ -33,10 +33,11 @@ public class FactOrFiction {
     String[] attentionStimuli = new String[]{
     };
     String[] transportationStimuli = new String[]{
-        };
+    };
 
     String multipleChoiceText = "1= niet zo graag, 7 = heel graag (same as survey 1 and 3)";
-    String[] readingBehavior = new String[]{};
+    String[] readingBehavior = new String[]{
+    };
 
     public Experiment getExperiment() {
         final Experiment experiment = wizardController.getExperiment("FactOrFiction", "Fact or Fiction");
@@ -45,7 +46,7 @@ public class FactOrFiction {
         wizardData.setGenderField(true);
         wizardData.setCustomTextField("level of proficiency in Dutch");
         final PresenterScreen agreementScreen = wizardController.addAgreementScreen(experiment, null, "EditUser", 1, "Information about study & agreeing to participate");
-        final PresenterScreen randomTextScreen = wizardController.addRandomTextScreen(experiment, null, agreementScreen, 2, "GroupAorB", new String[]{"IntroductionA:Will get some text", "IntroductionB:Will also get some text"});
+        final PresenterScreen randomTextScreen = wizardController.addRandomTextScreen(experiment, null, agreementScreen.getSelfPresenterTag(), 2, "GroupAorB", new String[]{"IntroductionA:Will get some text", "IntroductionB:Will also get some text"});
         final PresenterScreen editUserScreen = wizardController.addEditUserScreen(experiment, agreementScreen, randomTextScreen, 2, wizardData);
         randomTextScreen.setBackPresenter(editUserScreen);
         return experiment;
