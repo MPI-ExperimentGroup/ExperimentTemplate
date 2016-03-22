@@ -49,6 +49,7 @@ public class WizardData {
     private String practiceStimuliPath = "";
     private boolean stimuliScreen = false;
     private String stimuliPath = "";
+    private String[] stimuliSet = null;
     private boolean completionScreen = false;
     private String completionText = "";
     private boolean menuScreen = false;
@@ -206,6 +207,14 @@ public class WizardData {
 
     public void setStimuliPath(String stimuliPath) {
         this.stimuliPath = stimuliPath;
+    }
+
+    public String[] getStimuliSet() {
+        return stimuliSet;
+    }
+
+    public void setStimuliSet(String[] stimuliSet) {
+        this.stimuliSet = stimuliSet;
     }
 
     public boolean isMenuScreen() {

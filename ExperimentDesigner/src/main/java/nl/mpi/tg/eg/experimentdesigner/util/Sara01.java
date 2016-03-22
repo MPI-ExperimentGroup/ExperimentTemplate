@@ -31,7 +31,7 @@ public class Sara01 {
 
     public Experiment getExperiment() {
         WizardData wizardData = new WizardData();
-        wizardData.setAppName("appName");
+        wizardData.setAppName("Sara01");
         //Here is the updated experiment flow and the suggested directory structure:
         //Directory/introimage
         //Directory/testwav
@@ -57,6 +57,7 @@ public class Sara01 {
         wizardData.setAgeField(true);
         wizardData.setFirstNameField(true);
         wizardData.setLastNameField(true);
+        wizardData.setGenderField(true);
         //audio test page
         wizardData.setAudioTestScreen(true);
         wizardData.setTestAudioPath("testAudioPath");
@@ -74,10 +75,13 @@ public class Sara01 {
         //                …
         wizardData.setStimuliScreen(true);
         wizardData.setStimuliPath("stimuliPath");
+        wizardData.setStimuliSet(new String[]{"a:some text", "b:some more text"});
+
         //data upload verification 
         wizardData.setCompletionScreen(true);
         //completion code and thank you screen
         wizardData.setCompletionText("completionText");
+        wizardData.setMenuScreen(true);
         return wizardController.getExperiment(wizardData);
     }
 }
