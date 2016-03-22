@@ -48,7 +48,6 @@ public class ShawiFieldKit {
         final PresenterScreen welcomeMenuPresenter = wizardController.addWelcomeMenu(experiment, welcomePresenter, null, 2, "Is this a new recording?", "Have you already started a recording and do you want to go back to it?");
         final PresenterScreen instructionsPresenter = wizardController.addInstructionsScreen(experiment, welcomePresenter, null, 3, "With this app you can make recordings of your language. "
                 + "Describe pictures in this app by speaking and the app records what you say.");
-
         StimuliSubAction[] picturesValuesArray = new StimuliSubAction[]{new StimuliSubAction("80", "the informant talks/says whatever s/he wants", "next")};
         StimuliSubAction[] grammaticalityValuesArray = new StimuliSubAction[]{new StimuliSubAction("80", new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"})};
 // this should not be random but use alphanum sorting 
@@ -66,6 +65,7 @@ public class ShawiFieldKit {
         final PresenterScreen editUserPresenter = wizardController.addEditUserScreen(experiment, welcomePresenter, metadataScreen, 6);
         final PresenterScreen debugScreenPresenter = wizardController.addDebugScreen(experiment, autoMenuPresenter, 17);
         final PresenterScreen kinshipPresenter = addKinshipScreen(experiment, autoMenuPresenter, null, 16);
+        welcomeMenuPresenter.setNextPresenter(metadataScreen);
         return experiment;
     }
 
