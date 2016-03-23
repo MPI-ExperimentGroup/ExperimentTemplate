@@ -284,7 +284,7 @@ public class WizardController {
                 stimulus = new Stimulus(null, null, null, screenText, null, screenText.replace(".png", ""), 0, tagSet);
             } else {
                 final String[] splitScreenText = screenText.split(":", 2);
-                stimulus = new Stimulus(null, null, null, null, splitScreenText[1], splitScreenText[0].replace(" ", "_"), 0, tagSet);
+                stimulus = new Stimulus(null, null, null, null, splitScreenText[1].replace("\n", "<br/>"), splitScreenText[0].replace(" ", "_"), 0, tagSet);
             }
             stimuliList.add(stimulus);
         }
