@@ -61,7 +61,7 @@ public class FactOrFiction {
         }, 1, null);
         final PresenterScreen survey1Screen = wizardController.addRandomTextScreen(experiment, storyScreen, 5, "Survey1", readingBehavior, 1000, "1,2,3,4,5,6,7");
         final PresenterScreen survey2Screen = wizardController.addRandomTextScreen(experiment, survey1Screen, 6, "Survey2", new String[]{"Survey2:2 questions regarding story content (multiple choice response from 4 options)"}, 1000, "1,2,3,4");
-        final PresenterScreen pictureTaskScreen = wizardController.addRandomTextScreen(experiment, survey1Screen, 7, "PictureTask", new String[]{"IntroductionA:Will get some text", "IntroductionB:Will also get some text"}, 1000, "yes,no");
+        final PresenterScreen pictureTaskScreen = wizardController.addRandomTextScreen(experiment, survey1Screen, 7, "PictureTask", images, 1000, "yes,no");
         final PresenterScreen readingBehaviorScreen = wizardController.addRandomTextScreen(experiment, survey1Screen, 8, "ReadingBehavior", readingBehavior, 1000, "1,2,3,4,5,6,7");
         final PresenterScreen completionScreen = wizardController.addCompletionScreen(experiment, readingBehaviorScreen, null, 9, "Finished");
         editUserScreen.setNextPresenter(groupAorBScreen);

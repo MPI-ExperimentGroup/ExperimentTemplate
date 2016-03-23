@@ -279,8 +279,13 @@ public class WizardController {
         final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{screenName}));
         final List<Stimulus> stimuliList = experiment.getStimuli();
         for (String screenText : screenTextArray) {
-            final String[] splitScreenText = screenText.split(":", 2);
-            final Stimulus stimulus = new Stimulus(null, null, null, null, splitScreenText[1], splitScreenText[0].replace(" ", "_"), 0, tagSet);
+            final Stimulus stimulus;
+            if (screenText.endsWith(".png")) {
+                stimulus = new Stimulus(null, null, null, screenText, null, screenText.replace(".png", ""), 0, tagSet);
+            } else {
+                final String[] splitScreenText = screenText.split(":", 2);
+                stimulus = new Stimulus(null, null, null, null, splitScreenText[1], splitScreenText[0].replace(" ", "_"), 0, tagSet);
+            }
             stimuliList.add(stimulus);
         }
 
@@ -295,8 +300,13 @@ public class WizardController {
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(maxStimuli));
         presenterFeatureList.add(loadStimuliFeature);
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
+        final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
 
-        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
+        hasMoreStimulusFeature.getPresenterFeatureList().add(imageFeature);
+        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "50");
+        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "50");
+        imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "50");
+        imageFeature.addFeatureAttributes(FeatureAttribute.timeToNext, "0");
         if (responseOptions != null) {
             final PresenterFeature ratingFooterButtonFeature = new PresenterFeature(FeatureType.ratingFooterButton, null);
             ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabels, responseOptions);
@@ -305,7 +315,7 @@ public class WizardController {
             nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
             nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + screenName);
             ratingFooterButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
-            hasMoreStimulusFeature.getPresenterFeatureList().add(ratingFooterButtonFeature);
+            imageFeature.getPresenterFeatureList().add(ratingFooterButtonFeature);
         } else {
             final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionFooterButton, "spacebar");
             nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, "spacebar");
@@ -314,7 +324,7 @@ public class WizardController {
             nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
             nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + screenName);
             nextButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
-            hasMoreStimulusFeature.getPresenterFeatureList().add(nextButtonFeature);
+            imageFeature.getPresenterFeatureList().add(nextButtonFeature);
         }
         loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
 
