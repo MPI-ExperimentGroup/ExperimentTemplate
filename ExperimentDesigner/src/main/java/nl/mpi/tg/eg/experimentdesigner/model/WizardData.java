@@ -50,6 +50,7 @@ public class WizardData {
     private boolean stimuliScreen = false;
     private String stimuliPath = "";
     private String[] stimuliSet = null;
+    private int stimuliCount = 1;
     private boolean completionScreen = false;
     private String completionText = "";
     private boolean menuScreen = false;
@@ -215,6 +216,14 @@ public class WizardData {
 
     public void setStimuliSet(String[] stimuliSet) {
         this.stimuliSet = stimuliSet;
+    }
+
+    public int getStimuliCount() {
+        return stimuliCount;
+    }
+
+    public void setStimuliCount(int stimuliCount) {
+        this.stimuliCount = stimuliCount;
     }
 
     public boolean isMenuScreen() {

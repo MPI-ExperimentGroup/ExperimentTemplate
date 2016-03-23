@@ -108,7 +108,7 @@ public class WizardController {
         }
         if (wizardData.getStimuliSet() != null) {
 //            addMetadata(experiment, wizardData);
-            stimulusScreen = addRandomTextScreen(experiment, audioTestScreen, 5, "StimulusScreen", wizardData.getStimuliSet());
+            stimulusScreen = addRandomTextScreen(experiment, audioTestScreen, 5, "StimulusScreen", wizardData.getStimuliSet(), wizardData.getStimuliCount(), null);
             if (audioTestScreen != null) {
                 audioTestScreen.setNextPresenter(stimulusScreen);
             }
@@ -275,7 +275,7 @@ public class WizardController {
         presenterScreen.getPresenterFeatureList().add(metadataField);
     }
 
-    public PresenterScreen addRandomTextScreen(final Experiment experiment, final PresenterScreen backPresenter, long displayOrder, String screenName, String[] screenTextArray) {
+    public PresenterScreen addRandomTextScreen(final Experiment experiment, final PresenterScreen backPresenter, long displayOrder, String screenName, String[] screenTextArray, int maxStimuli, String responseOptions) {
         final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{screenName}));
         final List<Stimulus> stimuliList = experiment.getStimuli();
         for (String screenText : screenTextArray) {
@@ -292,19 +292,30 @@ public class WizardController {
         loadStimuliFeature.addStimulusTag(screenName);
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, screenName);
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "true");
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, "1");
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(maxStimuli));
         presenterFeatureList.add(loadStimuliFeature);
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
 
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
-        final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionFooterButton, "spacebar");
-        nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, "spacebar");
-        nextButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
-        final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
-        nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
-        nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + screenName);
-        nextButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
-        hasMoreStimulusFeature.getPresenterFeatureList().add(nextButtonFeature);
+        if (responseOptions != null) {
+            final PresenterFeature ratingFooterButtonFeature = new PresenterFeature(FeatureType.ratingFooterButton, null);
+            ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabels, responseOptions);
+            ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
+            final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
+            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + screenName);
+            ratingFooterButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
+            hasMoreStimulusFeature.getPresenterFeatureList().add(ratingFooterButtonFeature);
+        } else {
+            final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionFooterButton, "spacebar");
+            nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, "spacebar");
+            nextButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
+            final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
+            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + screenName);
+            nextButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
+            hasMoreStimulusFeature.getPresenterFeatureList().add(nextButtonFeature);
+        }
         loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
 
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);

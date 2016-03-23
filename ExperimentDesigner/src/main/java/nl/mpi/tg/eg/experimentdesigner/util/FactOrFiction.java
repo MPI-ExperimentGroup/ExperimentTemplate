@@ -29,7 +29,8 @@ import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 public class FactOrFiction {
 
     private final WizardController wizardController = new WizardController();
-
+    String[] images = new String[]{
+    };
     String[] attentionStimuli = new String[]{
     };
     String[] transportationStimuli = new String[]{
@@ -47,7 +48,7 @@ public class FactOrFiction {
         wizardData.setCustomTextField("level of proficiency in Dutch");
         final PresenterScreen agreementScreen = wizardController.addAgreementScreen(experiment, null, "EditUser", 1, "Information about study & agreeing to participate");
         final PresenterScreen editUserScreen = wizardController.addEditUserScreen(experiment, agreementScreen, null, 2, wizardData);
-        final PresenterScreen groupAorBScreen = wizardController.addRandomTextScreen(experiment, editUserScreen, 3, "GroupAorB", new String[]{"IntroductionA:Will get some text", "IntroductionB:Will also get some text"});
+        final PresenterScreen groupAorBScreen = wizardController.addRandomTextScreen(experiment, editUserScreen, 3, "GroupAorB", new String[]{"IntroductionA:Will get some text", "IntroductionB:Will also get some text"}, 1, null);
         final PresenterScreen storyScreen = wizardController.addRandomTextScreen(experiment, groupAorBScreen, 4, "StoryPresentation", new String[]{
             "Story_1_1:Story_1_1 will get some text",
             "Story_1_2:Story_1_2 will get some text",
@@ -57,11 +58,11 @@ public class FactOrFiction {
             "Story_2_2:Story_2_2 will get some text",
             "Story_2_3:Story_2_3 will get some text",
             "Story_2_4:Story_2_4 will get some text"
-        });
-        final PresenterScreen survey1Screen = wizardController.addRandomTextScreen(experiment, storyScreen, 5, "Survey1", new String[]{"IntroductionA:Will get some text", "IntroductionB:Will also get some text"});
-        final PresenterScreen survey2Screen = wizardController.addRandomTextScreen(experiment, survey1Screen, 6, "Survey2", new String[]{"IntroductionA:Will get some text", "IntroductionB:Will also get some text"});
-        final PresenterScreen pictureTaskScreen = wizardController.addRandomTextScreen(experiment, survey1Screen, 7, "PictureTask", new String[]{"IntroductionA:Will get some text", "IntroductionB:Will also get some text"});
-        final PresenterScreen readingBehaviorScreen = wizardController.addRandomTextScreen(experiment, survey1Screen, 8, "ReadingBehavior", new String[]{"IntroductionA:Will get some text", "IntroductionB:Will also get some text"});
+        }, 1, null);
+        final PresenterScreen survey1Screen = wizardController.addRandomTextScreen(experiment, storyScreen, 5, "Survey1", readingBehavior, 1000, "1,2,3,4,5,6,7");
+        final PresenterScreen survey2Screen = wizardController.addRandomTextScreen(experiment, survey1Screen, 6, "Survey2", new String[]{"Survey2:2 questions regarding story content (multiple choice response from 4 options)"}, 1000, "1,2,3,4");
+        final PresenterScreen pictureTaskScreen = wizardController.addRandomTextScreen(experiment, survey1Screen, 7, "PictureTask", new String[]{"IntroductionA:Will get some text", "IntroductionB:Will also get some text"}, 1000, "yes,no");
+        final PresenterScreen readingBehaviorScreen = wizardController.addRandomTextScreen(experiment, survey1Screen, 8, "ReadingBehavior", readingBehavior, 1000, "1,2,3,4,5,6,7");
         final PresenterScreen completionScreen = wizardController.addCompletionScreen(experiment, readingBehaviorScreen, null, 9, "Finished");
         editUserScreen.setNextPresenter(groupAorBScreen);
         groupAorBScreen.setNextPresenter(storyScreen);
