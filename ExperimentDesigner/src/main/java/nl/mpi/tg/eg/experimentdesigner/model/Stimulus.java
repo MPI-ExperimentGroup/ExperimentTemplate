@@ -22,6 +22,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -43,6 +44,7 @@ public class Stimulus {
     private String ogg;
     private String webm;
     private String image;
+    @Size(max = 5500)
     private String label;
     private String code;
     private byte[] imageData = null;
