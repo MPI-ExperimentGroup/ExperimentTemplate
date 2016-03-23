@@ -23,7 +23,10 @@
         </xsl:text>
         <xsl:for-each select="experiment/stimuli/stimulus">
             <xsl:text>new GeneratedStimulus("</xsl:text>
-            <xsl:value-of select="generate-id(.)" />
+            <!--<xsl:value-of select="generate-id(.)" />
+            generate-id(.) caused issues with the node ID changing and pointing to the wrong file. It might be better at some point to use an explicit identifier value but for now we are using the 'code'.
+            -->
+            <xsl:value-of select="@code" />
             <xsl:text>", new Tag[]{</xsl:text>
             <xsl:for-each select="distinct-values(tag/text())">
                 <xsl:text>Tag.tag_</xsl:text>
