@@ -79,6 +79,7 @@ public class WizardController {
         PresenterScreen agreementScreen = null;
         PresenterScreen audioTestScreen = null;
         PresenterScreen stimulusScreen = null;
+        PresenterScreen completionScreen = null;
         PresenterScreen autoMenu = null;
 //    private String agreementScreenText = "";
 //    private String disagreementScreenText = "";
@@ -107,9 +108,15 @@ public class WizardController {
         }
         if (wizardData.getStimuliSet() != null) {
 //            addMetadata(experiment, wizardData);
-            stimulusScreen = addRandomTextScreen(experiment, audioTestScreen, null, 5, "StimulusScreen", wizardData.getStimuliSet());
+            stimulusScreen = addRandomTextScreen(experiment, audioTestScreen, 5, "StimulusScreen", wizardData.getStimuliSet());
             if (audioTestScreen != null) {
                 audioTestScreen.setNextPresenter(stimulusScreen);
+            }
+        }
+        if (wizardData.isCompletionScreen()) {
+            completionScreen = addCompletionScreen(experiment, stimulusScreen, null, 6, wizardData.getCompletionText());
+            if (stimulusScreen != null) {
+                completionScreen.setNextPresenter(stimulusScreen);
             }
         }
 //    private boolean practiceScreen = false;
@@ -268,7 +275,7 @@ public class WizardController {
         presenterScreen.getPresenterFeatureList().add(metadataField);
     }
 
-    public PresenterScreen addRandomTextScreen(final Experiment experiment, final PresenterScreen backPresenter, final String nextPresenter, long displayOrder, String screenName, String[] screenTextArray) {
+    public PresenterScreen addRandomTextScreen(final Experiment experiment, final PresenterScreen backPresenter, long displayOrder, String screenName, String[] screenTextArray) {
         final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{screenName}));
         final List<Stimulus> stimuliList = experiment.getStimuli();
         for (String screenText : screenTextArray) {
@@ -420,6 +427,29 @@ public class WizardController {
         final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.targetButton, "Start");
         presenterFeature1.addFeatureAttributes(FeatureAttribute.target, "Start");
         presenterScreen.getPresenterFeatureList().add(presenterFeature1);
+        experiment.getPresenterScreen().add(presenterScreen);
+        return presenterScreen;
+    }
+
+    public PresenterScreen addCompletionScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder, String completedText) {
+        final PresenterScreen presenterScreen = new PresenterScreen("Completion", "Completion", backPresenter, "Completion", nextPresenter, PresenterType.transmission, displayOrder);
+        final PresenterFeature sendAllDataFeature = new PresenterFeature(FeatureType.sendAllData, null);
+        presenterScreen.getPresenterFeatureList().add(sendAllDataFeature);
+
+        final PresenterFeature onSuccessFeature = new PresenterFeature(FeatureType.onSuccess, null);
+        sendAllDataFeature.getPresenterFeatureList().add(onSuccessFeature);
+        onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, completedText));
+        onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+        onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.generateCompletionCode, null));
+        onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.eraseLocalStorageOnWindowClosing, null));
+
+        final PresenterFeature onErrorFeature = new PresenterFeature(FeatureType.onError, null);
+        sendAllDataFeature.getPresenterFeatureList().add(onErrorFeature);
+        onErrorFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "Could not contact the server, please check your internet connection and try again."));
+        final PresenterFeature retryFeature = new PresenterFeature(FeatureType.targetButton, "Retry");
+        onErrorFeature.getPresenterFeatureList().add(retryFeature);
+        retryFeature.addFeatureAttributes(FeatureAttribute.target, "Completion");
+
         experiment.getPresenterScreen().add(presenterScreen);
         return presenterScreen;
     }

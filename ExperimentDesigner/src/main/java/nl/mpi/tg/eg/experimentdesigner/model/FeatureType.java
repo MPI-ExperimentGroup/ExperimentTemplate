@@ -59,7 +59,7 @@ public enum FeatureType {
     hideStimulusButtons(false, false, null),
     showStimulusButtons(false, false, null),
     generateCompletionCode(false, false, null),
-    sendAllData(false, false, null),
+    sendAllData(false, false, null, false, Contitionals.hasErrorSuccess),
     eraseLocalStorageOnWindowClosing(false, false, null),
     //    nextStimulus(false, false, null),
     keepStimulus(false, false, null),
