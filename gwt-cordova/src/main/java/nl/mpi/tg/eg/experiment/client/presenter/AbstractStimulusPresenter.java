@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
@@ -67,6 +68,12 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         this.submissionService = submissionService;
         this.userResults = userResults;
         this.localStorage = localStorage;
+    }
+
+    @Override
+    public void setState(AppEventListner appEventListner, ApplicationController.ApplicationState prevState, ApplicationController.ApplicationState nextState) {
+        super.setState(appEventListner, prevState, null);
+        this.nextState = nextState;
     }
 
     // todo: maxSpeakerWordCount needs to be utilised correctly
@@ -237,6 +244,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             final SafeUri oggTrustedString = (ogg == null) ? null : UriUtils.fromTrustedString(ogg);
             final SafeUri mp4TrustedString = (mp4 == null) ? null : UriUtils.fromTrustedString(mp4);
             ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, postLoadMs, timedStimulusListener);
+        } else if (currentStimulus.getLabel() != null) {
+            ((TimedStimulusView) simpleView).addText(currentStimulus.getLabel());
+            timedStimulusListener.postLoadTimerFired();
         } else {
             final String incorrect_stimulus_format = "incorrect stimulus format";
             nextStimulusButton(incorrect_stimulus_format, incorrect_stimulus_format + " " + currentStimulus.getLabel(), true, -1);
