@@ -44,8 +44,6 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
     private final DataSubmissionService submissionService;
     final UserResults userResults;
     private final Duration duration;
-    private TimedStimulusListener successEventListner;
-    private TimedStimulusListener errorEventListner;
 
     public AbstractDataSubmissionPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults) {
         super(widgetTag, new ComplexView());
@@ -62,27 +60,19 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
         ((ComplexView) simpleView).addTextField(completionCode);
     }
 
-    public void sendAllData() {
+    public void sendAllData(Object nullObject, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
         submissionService.submitAllData(userResults, new DataSubmissionListener() {
 
             @Override
             public void scoreSubmissionFailed(DataSubmissionException exception) {
-                errorEventListner.postLoadTimerFired();
+                onError.postLoadTimerFired();
             }
 
             @Override
             public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
-                successEventListner.postLoadTimerFired();
+                onSuccess.postLoadTimerFired();
             }
         });
-    }
-
-    public void onSuccess(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener) {
-        successEventListner = timedStimulusListener;
-    }
-
-    public void onError(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener) {
-        errorEventListner = timedStimulusListener;
     }
 
     protected void eraseLocalStorageOnWindowClosing() {

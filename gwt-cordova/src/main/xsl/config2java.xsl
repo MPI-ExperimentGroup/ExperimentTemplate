@@ -418,6 +418,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@featureText) then concat('messages.', generate-id(.), '()') else ''" />    
         <xsl:value-of select="if(@fieldName) then concat('metadataFieldProvider.', @fieldName, 'MetadataField') else ''" />
         <xsl:value-of select="if(@sendData) then concat(', ', @sendData eq 'true') else ''" />    
+        <xsl:value-of select="if(local-name() eq 'sendAllData') then 'null' else ''" />   
         <xsl:apply-templates select="onError" />
         <xsl:apply-templates select="onSuccess" />
         <xsl:text>);
