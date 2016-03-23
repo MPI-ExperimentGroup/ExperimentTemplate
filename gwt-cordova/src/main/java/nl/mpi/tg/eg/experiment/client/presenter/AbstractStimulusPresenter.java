@@ -190,7 +190,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     public void stimulusLabel() {
         final String label = stimulusProvider.getCurrentStimulus().getLabel();
         if (label != null) {
-            ((TimedStimulusView) simpleView).addText(label);
+            ((TimedStimulusView) simpleView).addHtmlText(label);
         }
     }
 
@@ -245,7 +245,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             final SafeUri mp4TrustedString = (mp4 == null) ? null : UriUtils.fromTrustedString(mp4);
             ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, postLoadMs, timedStimulusListener);
         } else if (currentStimulus.getLabel() != null) {
-            ((TimedStimulusView) simpleView).addText(currentStimulus.getLabel());
+            ((TimedStimulusView) simpleView).addHtmlText(currentStimulus.getLabel());
             timedStimulusListener.postLoadTimerFired();
         } else {
             final String incorrect_stimulus_format = "incorrect stimulus format";
