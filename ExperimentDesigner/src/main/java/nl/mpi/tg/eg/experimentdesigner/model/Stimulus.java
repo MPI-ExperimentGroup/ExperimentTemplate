@@ -44,6 +44,7 @@ public class Stimulus {
     private String ogg;
     private String webm;
     private String image;
+    private String baseFilePath;
     @Size(max = 5500)
     private String label;
     private String code;
@@ -56,7 +57,8 @@ public class Stimulus {
     public Stimulus() {
     }
 
-    public Stimulus(String mp3, String mp4, String ogg, String image, String label, String code, int pauseMs, HashSet<String> stimulusTags) {
+    public Stimulus(String baseFilePath, String mp3, String mp4, String ogg, String image, String label, String code, int pauseMs, HashSet<String> stimulusTags) {
+        this.baseFilePath = baseFilePath;
         this.mp3 = mp3;
         this.mp4 = mp4;
         this.ogg = ogg;
@@ -100,6 +102,15 @@ public class Stimulus {
     @XmlAttribute
     public String getMp4() {
         return mp4;
+    }
+
+    @XmlAttribute
+    public String getBaseFilePath() {
+        return baseFilePath;
+    }
+
+    public void setBaseFilePath(String baseFileName) {
+        this.baseFilePath = baseFileName;
     }
 
     public void setMp4(String mp4) {

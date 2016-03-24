@@ -197,6 +197,9 @@ public class WizardController {
         presenterFeature.addFeatureAttributes(FeatureAttribute.poster, testAudioPath + ".jpg");
         presenterScreen.getPresenterFeatureList().add(presenterFeature);
         experiment.getPresenterScreen().add(presenterScreen);
+        final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.actionButton, "Audio Works");
+        presenterScreen.getPresenterFeatureList().add(actionButtonFeature);
+        actionButtonFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
         return presenterScreen;
     }
 
@@ -292,12 +295,13 @@ public class WizardController {
                 Matcher matcher = stimulusCodePattern.matcher(screenText);
                 final String codeString = (matcher.find()) ? matcher.group(1) : null;
                 System.out.println("codeString: " + codeString);
-                stimulus = new Stimulus(null, null, null, screenText, null, codeString, 0, tagSet);
+                final String baseFileName = screenText.replaceAll(BASE_FILE_REGEX, "");
+                stimulus = new Stimulus(baseFileName, null, null, null, screenText, null, codeString, 0, tagSet);
             } else if (screenText.endsWith(".png")) {
-                stimulus = new Stimulus(null, null, null, screenText, null, screenText.replace(".png", ""), 0, tagSet);
+                stimulus = new Stimulus(screenText.replace(".png", ""), null, null, null, screenText, null, screenText.replace(".png", ""), 0, tagSet);
             } else {
                 final String[] splitScreenText = screenText.split(":", 2);
-                stimulus = new Stimulus(null, null, null, null, splitScreenText[1].replace("\n", "<br/>"), splitScreenText[0].replace(" ", "_"), 0, tagSet);
+                stimulus = new Stimulus(null, null, null, null, null, splitScreenText[1].replace("\n", "<br/>"), splitScreenText[0].replace(" ", "_"), 0, tagSet);
             }
             stimuliList.add(stimulus);
         }
@@ -319,7 +323,18 @@ public class WizardController {
         imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "50");
         imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "50");
         imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "50");
-        imageFeature.addFeatureAttributes(FeatureAttribute.timeToNext, "0");
+        imageFeature.addFeatureAttributes(FeatureAttribute.timeToNext, Integer.toString(codeStimulusDelay));
+        final PresenterFeature presenterFeature;
+        if (codeFormat != null) {
+            final PresenterFeature stimulusCodeImage = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
+            stimulusCodeImage.addFeatureAttributes(FeatureAttribute.codeFormat, codeFormat);
+            stimulusCodeImage.addFeatureAttributes(FeatureAttribute.timeToNext, "0");
+            imageFeature.getPresenterFeatureList().add(stimulusCodeImage);
+            presenterFeature = stimulusCodeImage;
+        } else {
+            presenterFeature = imageFeature;
+        }
+
         if (responseOptions != null) {
             final PresenterFeature ratingFooterButtonFeature = new PresenterFeature(FeatureType.ratingFooterButton, null);
             ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabels, responseOptions);
@@ -328,7 +343,7 @@ public class WizardController {
             nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
             nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + screenName);
             ratingFooterButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
-            imageFeature.getPresenterFeatureList().add(ratingFooterButtonFeature);
+            presenterFeature.getPresenterFeatureList().add(ratingFooterButtonFeature);
         } else {
             final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionFooterButton, "spacebar");
             nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, "spacebar");
@@ -337,7 +352,7 @@ public class WizardController {
             nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
             nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + screenName);
             nextButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
-            imageFeature.getPresenterFeatureList().add(nextButtonFeature);
+            presenterFeature.getPresenterFeatureList().add(nextButtonFeature);
         }
         loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
 
@@ -348,13 +363,14 @@ public class WizardController {
         experiment.getPresenterScreen().add(presenterScreen);
         return presenterScreen;
     }
+    private static final String BASE_FILE_REGEX = "\\.[a-zA-Z]+$";
 
     public PresenterScreen createMetadataScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, final String[] metadataStrings, long displayOrder) {
         //    Metadata is collected in the spoken form (audio recording) with screen prompts for each item in metadataStrings:
         final List<Stimulus> stimuliList = experiment.getStimuli();
         final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{"metadata"}));
         for (String metadataString : metadataStrings) {
-            final Stimulus stimulus = new Stimulus(null, null, null, metadataString.replace(" ", "_"), metadataString, metadataString.replace(" ", "_"), 0, tagSet);
+            final Stimulus stimulus = new Stimulus(null,null, null, null, null, metadataString, metadataString.replace(" ", "_"), 0, tagSet);
             stimuliList.add(stimulus);
         }
 //        experiment.setStimuli(stimuliList);
@@ -492,7 +508,7 @@ public class WizardController {
         String screenName = "";
         final List<Stimulus> stimuliList = experiment.getStimuli();
         for (final String stimulusTag : stimulusTagArray) {
-            stimuliList.add(new Stimulus(null, null, null, stimulusTag, stimulusTag, stimulusTag, 0, new HashSet<>(Arrays.asList(new String[]{stimulusTag}))));
+            stimuliList.add(new Stimulus(stimulusTag, null, null, null, stimulusTag, stimulusTag, stimulusTag, 0, new HashSet<>(Arrays.asList(new String[]{stimulusTag}))));
             screenName += stimulusTag;
         }
         final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, screenName + "Screen", null, PresenterType.stimulus, displayOrder);
