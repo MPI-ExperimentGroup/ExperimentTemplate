@@ -260,6 +260,17 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
     }
 
+    protected void stimulusCodeAudio(int postLoadMs, String codeFormat, TimedStimulusListener timedStimulusListener) {
+        String formattedCode = codeFormat.replace("<code>", stimulusProvider.getCurrentStimulus().getCode());
+        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusCodeAudio", formattedCode, duration.elapsedMillis());
+        String mp3 = formattedCode + ".mp3";
+        String ogg = formattedCode + ".ogg";
+        final SafeUri oggTrustedString = (ogg == null) ? null : UriUtils.fromTrustedString(ogg);
+        final SafeUri mp3TrustedString = (mp3 == null) ? null : UriUtils.fromTrustedString(mp3);
+        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", formattedCode, duration.elapsedMillis());
+        ((TimedStimulusView) simpleView).addTimedAudio(oggTrustedString, mp3TrustedString, postLoadMs, timedStimulusListener);
+    }
+
     protected void stimulusAudio(long postLoadMs, TimedStimulusListener timedStimulusListener) {
         String ogg = stimulusProvider.getCurrentStimulus().getOgg();
         String mp3 = stimulusProvider.getCurrentStimulus().getMp3();
