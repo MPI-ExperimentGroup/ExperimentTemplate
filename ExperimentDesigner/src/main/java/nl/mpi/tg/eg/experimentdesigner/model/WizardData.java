@@ -50,6 +50,9 @@ public class WizardData {
     private boolean stimuliScreen = false;
     private String stimuliPath = "";
     private String[] stimuliSet = null;
+    private String stimulusCodeMatch = null;
+    private int stimulusCodeDelay = 0;
+    private String stimulusCodeFormat = null;
     private int stimuliCount = 1;
     private boolean completionScreen = false;
     private String completionText = "";
@@ -224,6 +227,30 @@ public class WizardData {
 
     public void setStimuliCount(int stimuliCount) {
         this.stimuliCount = stimuliCount;
+    }
+
+    public String getStimulusCodeMatch() {
+        return stimulusCodeMatch;
+    }
+
+    public void setStimulusCodeMatch(String stimulusCodeMatch) {
+        this.stimulusCodeMatch = stimulusCodeMatch;
+    }
+
+    public int getStimulusCodeDelay() {
+        return stimulusCodeDelay;
+    }
+
+    public void setStimulusCodeDelay(int stimulusCodeDelay) {
+        this.stimulusCodeDelay = stimulusCodeDelay;
+    }
+
+    public String getStimulusCodeFormat() {
+        return stimulusCodeFormat;
+    }
+
+    public void setStimulusCodeFormat(String stimulusCodeFormat) {
+        this.stimulusCodeFormat = stimulusCodeFormat;
     }
 
     public boolean isMenuScreen() {

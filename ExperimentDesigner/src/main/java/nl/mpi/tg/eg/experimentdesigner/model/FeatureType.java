@@ -95,6 +95,7 @@ public enum FeatureType {
     singleUser(true, false, null),
     stimulusImage(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, timeToNext}),
     stimulusCodeImage(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, timeToNext, codeFormat}),
+    stimulusCodeAudio(true, false, new FeatureAttribute[]{timeToNext, codeFormat}),
     stimulusAudio(true, false, new FeatureAttribute[]{timeToNext, mp3,}),
     VideoPanel(false, false, new FeatureAttribute[]{mp4, ogg, webm, percentOfPage, maxHeight, maxWidth, poster}),
     AnnotationTimelinePanel(true, false, new FeatureAttribute[]{mp4, ogg, webm, poster, eventTag, columnCount, maxStimuli}, true, Contitionals.none),

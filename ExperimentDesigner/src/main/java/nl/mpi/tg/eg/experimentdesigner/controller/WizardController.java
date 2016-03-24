@@ -21,6 +21,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 import nl.mpi.tg.eg.experimentdesigner.dao.ExperimentRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.MetadataRepository;
@@ -108,7 +110,7 @@ public class WizardController {
         }
         if (wizardData.getStimuliSet() != null) {
 //            addMetadata(experiment, wizardData);
-            stimulusScreen = addRandomTextScreen(experiment, audioTestScreen, 5, "StimulusScreen", wizardData.getStimuliSet(), wizardData.getStimuliCount(), null);
+            stimulusScreen = addRandomTextScreen(experiment, audioTestScreen, 5, "StimulusScreen", wizardData.getStimuliSet(), wizardData.getStimuliCount(), wizardData.getStimulusCodeMatch(), wizardData.getStimulusCodeDelay(), wizardData.getStimulusCodeFormat(), null);
             if (audioTestScreen != null) {
                 audioTestScreen.setNextPresenter(stimulusScreen);
             }
@@ -276,11 +278,22 @@ public class WizardController {
     }
 
     public PresenterScreen addRandomTextScreen(final Experiment experiment, final PresenterScreen backPresenter, long displayOrder, String screenName, String[] screenTextArray, int maxStimuli, String responseOptions) {
+        return addRandomTextScreen(experiment, backPresenter, displayOrder, screenName, screenTextArray, maxStimuli, null, 0, null, responseOptions);
+    }
+
+    public PresenterScreen addRandomTextScreen(final Experiment experiment, final PresenterScreen backPresenter, long displayOrder, String screenName, String[] screenTextArray, int maxStimuli, String stimulusCodeMatch, int codeStimulusDelay, String codeFormat, String responseOptions) {
         final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{screenName}));
         final List<Stimulus> stimuliList = experiment.getStimuli();
+        final Pattern stimulusCodePattern = (stimulusCodeMatch != null) ? Pattern.compile(stimulusCodeMatch) : null;
         for (String screenText : screenTextArray) {
             final Stimulus stimulus;
-            if (screenText.endsWith(".png")) {
+            if (stimulusCodePattern != null) {
+                System.out.println("stimulusCodeMatch:" + stimulusCodeMatch);
+                Matcher matcher = stimulusCodePattern.matcher(screenText);
+                final String codeString = (matcher.find()) ? matcher.group(1) : null;
+                System.out.println("codeString: " + codeString);
+                stimulus = new Stimulus(null, null, null, screenText, null, codeString, 0, tagSet);
+            } else if (screenText.endsWith(".png")) {
                 stimulus = new Stimulus(null, null, null, screenText, null, screenText.replace(".png", ""), 0, tagSet);
             } else {
                 final String[] splitScreenText = screenText.split(":", 2);
