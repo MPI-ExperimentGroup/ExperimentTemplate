@@ -127,7 +127,7 @@ public class SimpleView extends AbstractView {
         footerPanel.setWidth(width + "px");
         scrollPanel.setWidth(width + "px");
         if (footerPanel.getWidgetCount() > 0) {
-            scrollPanel.setHeight(height - HEADER_SIZE - HEADER_SIZE + "px");
+            scrollPanel.setHeight(height - HEADER_SIZE - footerPanel.getOffsetHeight() + "px");
         } else {
             scrollPanel.setHeight(height - HEADER_SIZE + "px");
         }
