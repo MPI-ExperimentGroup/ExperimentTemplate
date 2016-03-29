@@ -79,13 +79,13 @@ public class Sentveri_exp3 {
         return presenterScreen;
     }
 
-    private PresenterFeature addStimulusImage(String screenName, String imageSet, final String timeToNext) {
+    private PresenterFeature addStimulusImage(String screenName, String imageSet, final String msToNext) {
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusCodeImage, null);
         imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "100");
         imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "100");
         imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "100");
         imageFeature.addFeatureAttributes(FeatureAttribute.codeFormat, screenName + "/" + imageSet + "/<code>.jpg");
-        imageFeature.addFeatureAttributes(FeatureAttribute.timeToNext, timeToNext);
+        imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, msToNext);
         return imageFeature;
     }
 
@@ -130,7 +130,7 @@ public class Sentveri_exp3 {
     private PresenterFeature addNextStimulusButtons(final String screenName) {
         // todo: vertical centre all screens
         final PresenterFeature checkTagFeature = new PresenterFeature(FeatureType.currentStimulusHasTag, null);
-        checkTagFeature.addFeatureAttributes(FeatureAttribute.timeToNext, "3");
+        checkTagFeature.addFeatureAttributes(FeatureAttribute.msToNext, "3000");
         checkTagFeature.addStimulusTag("question");
         final PresenterFeature withoutTagFeature = new PresenterFeature(FeatureType.withoutTag, null);
         final PresenterFeature autoNextFeature = new PresenterFeature(FeatureType.nextStimulus, null);
