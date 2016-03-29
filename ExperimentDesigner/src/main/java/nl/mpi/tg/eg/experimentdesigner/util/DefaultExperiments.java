@@ -295,7 +295,7 @@ public class DefaultExperiments {
                         break;
                     case maxHeight:
                     case maxWidth:
-                    case timeToNext:
+                    case msToNext:
                         presenterFeature.addFeatureAttributes(attribute, "60");
                         break;
                     case condition0Tag:
