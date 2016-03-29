@@ -50,6 +50,7 @@ public class WizardData {
     private boolean stimuliScreen = false;
     private String stimuliPath = "";
     private String[] stimuliSet = null;
+    private String[] stimuliRandomTags = null;
     private String stimulusCodeMatch = null;
     private int stimulusCodeDelay = 0;
     private String stimulusCodeFormat = null;
@@ -219,6 +220,14 @@ public class WizardData {
 
     public void setStimuliSet(String[] stimuliSet) {
         this.stimuliSet = stimuliSet;
+    }
+
+    public String[] getStimuliRandomTags() {
+        return stimuliRandomTags;
+    }
+
+    public void setStimuliRandomTags(String[] stimuliRandomTags) {
+        this.stimuliRandomTags = stimuliRandomTags;
     }
 
     public int getStimuliCount() {

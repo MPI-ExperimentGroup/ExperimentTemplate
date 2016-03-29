@@ -56,11 +56,13 @@ public class PresenterFeature {
     private FeatureType featureType;
     @ElementCollection
     private List<String> stimulusTags = new ArrayList<>();
+    @ElementCollection
+    private List<String> randomTags = new ArrayList<>();
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderBy("displayOrder ASC")
     private List<PresenterFeature> presenterFeatures = new ArrayList<>();
     private HashMap<FeatureAttribute, String> featureAttributes = new HashMap<>();
-    @Size(max = 500)
+    @Size(max = 3000)
     private String featureText;
 
     public PresenterFeature() {
@@ -157,8 +159,22 @@ public class PresenterFeature {
 //        }
 //    }
 
+    @XmlElementWrapper(name = "randomGrouping")
+    @XmlElement(name = "tag")
+    public List<String> getRandomTags() {
+        return randomTags;
+    }
+
+    public void setRandomTags(List<String> randomTags) {
+        this.randomTags = randomTags;
+    }
+
     public void addStimulusTag(String tag) {
         stimulusTags.add(Stimulus.cleanTagString(tag));
+    }
+
+    public void addRandomTag(String tag) {
+        randomTags.add(Stimulus.cleanTagString(tag));
     }
 
     @XmlAnyAttribute
