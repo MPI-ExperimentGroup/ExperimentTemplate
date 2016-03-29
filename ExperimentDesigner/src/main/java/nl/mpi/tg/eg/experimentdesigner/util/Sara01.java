@@ -651,7 +651,7 @@ public class Sara01 {
         "practice/groupB/T_007_P_B.JPG",
         "practice/groupB/T_008_N_B.JPG",
         "practice/groupB/T_009_P_B.JPG",
-        "practice/groupB/T_010_N_B.JPG",
+        "practice/groupB/T_010_N_B.JPG", 
     //        "practice/wav/T_001.mp3",
     //        "practice/wav/T_001.ogg",
     //        "practice/wav/T_001.wav",
@@ -706,13 +706,13 @@ public class Sara01 {
         //T_001_N_B
         //I have added the 1/2 second pause in my list below:
         //User follows link with group id and invite id
-        wizardData.setUserSelectScreen(true);
+        wizardData.setUserSelectScreen(false);
         //Information screen 
         wizardData.setAgreementScreenText("agreementScreenText");
         //Agreement
         wizardData.setAgreementScreen(true);
-        wizardData.setAgreementText("agreementText");
-        wizardData.setDisagreementScreenText("disagreementScreenText");
+//        wizardData.setAgreementText("agreementText");
+//        wizardData.setDisagreementScreenText("disagreementScreenText");
         //metadata
         wizardData.setMetadataScreen(true);
         wizardData.setAgeField(true);
@@ -736,10 +736,15 @@ public class Sara01 {
         //                …
         wizardData.setStimuliScreen(true);
         wizardData.setStimuliPath("stimuliPath");
+        wizardData.setStimuliRandomTags(new String[]{"groupA", "groupB"});
         wizardData.setStimuliSet(stimuliPracticeArray);
         wizardData.setStimulusCodeMatch("/([ET]_[0-9]+)_");
-        wizardData.setStimulusCodeDelay(1);
+        wizardData.setStimuliCount(1000);
+        wizardData.setStimulusCodeMsDelay(500);
         wizardData.setStimulusCodeFormat("static/practice/wav/<code>");
+        wizardData.setStimulusResponseOptions("1,2,3,4,5,6,7");
+        wizardData.setStimulusResponseLabelLeft("zeer waarschijnlijk negatief");
+        wizardData.setStimulusResponseLabelRight("zeer waarschijnlijk positief");
 
         //data upload verification 
         wizardData.setCompletionScreen(true);
