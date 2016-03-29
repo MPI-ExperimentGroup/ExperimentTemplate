@@ -47,14 +47,18 @@ public class WizardData {
 
     private boolean practiceScreen = false;
     private String practiceStimuliPath = "";
+
     private boolean stimuliScreen = false;
     private String stimuliPath = "";
     private String[] stimuliSet = null;
     private String[] stimuliRandomTags = null;
     private String stimulusCodeMatch = null;
-    private int stimulusCodeDelay = 0;
+    private int stimulusCodeMsDelay = 0;
     private String stimulusCodeFormat = null;
     private int stimuliCount = 1;
+    private String stimulusResponseLabelLeft = null;
+    private String stimulusResponseLabelRight = null;
+    private String stimulusResponseOptions = null;
     private boolean completionScreen = false;
     private String completionText = "";
     private boolean menuScreen = false;
@@ -238,6 +242,30 @@ public class WizardData {
         this.stimuliCount = stimuliCount;
     }
 
+    public String getStimulusResponseOptions() {
+        return stimulusResponseOptions;
+    }
+
+    public void setStimulusResponseOptions(String stimulusResponseOptions) {
+        this.stimulusResponseOptions = stimulusResponseOptions;
+    }
+
+    public String getStimulusResponseLabelLeft() {
+        return stimulusResponseLabelLeft;
+    }
+
+    public void setStimulusResponseLabelLeft(String stimulusResponseLabelLeft) {
+        this.stimulusResponseLabelLeft = stimulusResponseLabelLeft;
+    }
+
+    public String getStimulusResponseLabelRight() {
+        return stimulusResponseLabelRight;
+    }
+
+    public void setStimulusResponseLabelRight(String stimulusResponseLabelRight) {
+        this.stimulusResponseLabelRight = stimulusResponseLabelRight;
+    }
+
     public String getStimulusCodeMatch() {
         return stimulusCodeMatch;
     }
@@ -246,12 +274,12 @@ public class WizardData {
         this.stimulusCodeMatch = stimulusCodeMatch;
     }
 
-    public int getStimulusCodeDelay() {
-        return stimulusCodeDelay;
+    public int getStimulusCodeMsDelay() {
+        return stimulusCodeMsDelay;
     }
 
-    public void setStimulusCodeDelay(int stimulusCodeDelay) {
-        this.stimulusCodeDelay = stimulusCodeDelay;
+    public void setStimulusCodeMsDelay(int stimulusCodeMsDelay) {
+        this.stimulusCodeMsDelay = stimulusCodeMsDelay;
     }
 
     public String getStimulusCodeFormat() {
