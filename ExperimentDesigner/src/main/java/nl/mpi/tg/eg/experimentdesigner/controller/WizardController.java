@@ -110,7 +110,7 @@ public class WizardController {
         }
         if (wizardData.getStimuliSet() != null) {
 //            addMetadata(experiment, wizardData);
-            stimulusScreen = addRandomTextScreen(experiment, audioTestScreen, 5, "StimulusScreen", wizardData.getStimuliSet(), wizardData.getStimuliRandomTags(), wizardData.getStimuliCount(), wizardData.getStimulusCodeMatch(), wizardData.getStimulusCodeDelay(), wizardData.getStimulusCodeFormat(), null);
+            stimulusScreen = addRandomTextScreen(experiment, null, 5, "StimulusScreen", wizardData.getStimuliSet(), wizardData.getStimuliRandomTags(), wizardData.getStimuliCount(), wizardData.getStimulusCodeMatch(), wizardData.getStimulusCodeMsDelay(), wizardData.getStimulusCodeFormat(), wizardData.getStimulusResponseOptions(), wizardData.getStimulusResponseLabelLeft(), wizardData.getStimulusResponseLabelRight());
             if (audioTestScreen != null) {
                 audioTestScreen.setNextPresenter(stimulusScreen);
             }
@@ -240,7 +240,7 @@ public class WizardController {
             if (wizardData.isEmailAddressField()) {
                 insertMetadataField(experiment, new Metadata("emailAddress", "Email address", "^[^@]+@[^@]+$", "Please enter a valid email address.", false, null), presenterScreen);
             }
-            if (wizardData.getCustomTextField().isEmpty()) {
+            if (!wizardData.getCustomTextField().isEmpty()) {
                 insertMetadataField(experiment, new Metadata("customTextField1", wizardData.getCustomTextField(), ".'{'3,'}'", "Please enter at least three letters.", false, null), presenterScreen);
             }
             if (!wizardData.getOptionCheckBox1().isEmpty()) {
@@ -280,11 +280,11 @@ public class WizardController {
         presenterScreen.getPresenterFeatureList().add(metadataField);
     }
 
-    public PresenterScreen addRandomTextScreen(final Experiment experiment, final PresenterScreen backPresenter, long displayOrder, String screenName, String[] screenTextArray, int maxStimuli, String responseOptions) {
-        return addRandomTextScreen(experiment, backPresenter, displayOrder, screenName, screenTextArray, null, maxStimuli, null, 0, null, responseOptions);
+    public PresenterScreen addRandomTextScreen(final Experiment experiment, final PresenterScreen backPresenter, long displayOrder, String screenName, String[] screenTextArray, int maxStimuli, String responseOptions, String responseOptionsLabelLeft, String responseOptionsLabelRight) {
+        return addRandomTextScreen(experiment, backPresenter, displayOrder, screenName, screenTextArray, null, maxStimuli, null, 0, null, responseOptions, responseOptionsLabelLeft, responseOptionsLabelRight);
     }
 
-    public PresenterScreen addRandomTextScreen(final Experiment experiment, final PresenterScreen backPresenter, long displayOrder, String screenName, String[] screenTextArray, String[] randomStimuliTags, int maxStimuli, String stimulusCodeMatch, int codeStimulusDelay, String codeFormat, String responseOptions) {
+    public PresenterScreen addRandomTextScreen(final Experiment experiment, final PresenterScreen backPresenter, long displayOrder, String screenName, String[] screenTextArray, String[] randomStimuliTags, int maxStimuli, String stimulusCodeMatch, int codeStimulusDelay, String codeFormat, String responseOptions, String responseOptionsLabelLeft, String responseOptionsLabelRight) {
         final List<Stimulus> stimuliList = experiment.getStimuli();
         final Pattern stimulusCodePattern = (stimulusCodeMatch != null) ? Pattern.compile(stimulusCodeMatch) : null;
         for (String screenText : screenTextArray) {
@@ -330,14 +330,28 @@ public class WizardController {
         imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
         imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
         imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "80");
-        imageFeature.addFeatureAttributes(FeatureAttribute.timeToNext, Integer.toString(0));
+        imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(0));
         final PresenterFeature presenterFeature;
         if (codeFormat != null) {
-            final PresenterFeature stimulusCodeImage = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
-            stimulusCodeImage.addFeatureAttributes(FeatureAttribute.codeFormat, codeFormat);
-            stimulusCodeImage.addFeatureAttributes(FeatureAttribute.timeToNext, "0");
-            imageFeature.getPresenterFeatureList().add(stimulusCodeImage);
-            presenterFeature = stimulusCodeImage;
+            final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionFooterButton, "spacebar");
+            nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, "spacebar");
+            nextButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
+            nextButtonFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+            final PresenterFeature pauseFeature = new PresenterFeature(FeatureType.pause, null);
+            pauseFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(codeStimulusDelay));
+            nextButtonFeature.getPresenterFeatureList().add(pauseFeature);
+            final PresenterFeature stimulusCodeAudio = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
+            stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.codeFormat, codeFormat);
+            stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+            pauseFeature.getPresenterFeatureList().add(stimulusCodeAudio);
+            imageFeature.getPresenterFeatureList().add(nextButtonFeature);
+            stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+            stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "Het antwoord is:"));
+//            stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+//            stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+//            stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+//            stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "<style=\"text-align: left;\">zeer waarschijnlijk negatief</style><style=\"text-align: right;\">zeer waarschijnlijk positief</style>"));
+            presenterFeature = stimulusCodeAudio;
         } else {
             presenterFeature = imageFeature;
         }
@@ -345,6 +359,8 @@ public class WizardController {
         if (responseOptions != null) {
             final PresenterFeature ratingFooterButtonFeature = new PresenterFeature(FeatureType.ratingFooterButton, null);
             ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabels, responseOptions);
+            ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelLeft, responseOptionsLabelLeft);
+            ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelRight, responseOptionsLabelRight);
             ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
             final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
             nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
@@ -435,7 +451,7 @@ public class WizardController {
         imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, imageFeatureValues.getPercentOfPage());
         imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, imageFeatureValues.getPercentOfPage());
         imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, imageFeatureValues.getPercentOfPage());
-        imageFeature.addFeatureAttributes(FeatureAttribute.timeToNext, "0");
+        imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         parentFeature.getPresenterFeatureList().add(imageFeature);
         final PresenterFeature actionFeature;
         if (imageFeatureValues.getButtons().length == 1) {
