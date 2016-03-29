@@ -457,11 +457,11 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="preloadAllStimuli|kinTypeStringDiagram|loadKinTypeStringDiagram|ratingFooterButton">
+    <xsl:template match="preloadAllStimuli|kinTypeStringDiagram|loadKinTypeStringDiagram|ratingFooterButton|ratingButton">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(appEventListner</xsl:text>
-        <xsl:value-of select="if(@timeToNext) then concat(', ', @timeToNext) else ''" />
+        <xsl:value-of select="if(@msToNext) then concat(', ', @msToNext) else ''" />
         <xsl:text>, new TimedStimulusListener() {
 
             @Override
@@ -475,6 +475,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@diagramName) then concat(', &quot;', @diagramName, '&quot;') else ''" />
         <xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" />
         <xsl:value-of select="if(@ratingLabels) then concat(', &quot;', @ratingLabels, '&quot;') else ''" />
+        <xsl:value-of select="if(@ratingLabelLeft) then concat(', &quot;', @ratingLabelLeft, '&quot;') else ''" />
+        <xsl:value-of select="if(@ratingLabelRight) then concat(', &quot;', @ratingLabelRight, '&quot;') else ''" />
         <xsl:value-of select="if(@eventTier) then concat(', ', @eventTier) else ''" />
         <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
         <xsl:apply-templates select="stimuli" mode="stimuliTags" />
@@ -483,7 +485,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         </xsl:text>
     </xsl:template>
     <xsl:template match="onError|onSuccess|responseCorrect|responseIncorrect|hasMoreStimulus|endOfStimulus|hasTag|withoutTag|multipleUsers|singleUser">
-        <xsl:value-of select="if(@timeToNext) then concat(', ', @timeToNext) else ''" />
+        <xsl:value-of select="if(@msToNext) then concat(', ', @msToNext) else ''" />
         <xsl:value-of select="if(local-name() eq 'multipleUsers') then '' else ', '" />
         <xsl:text>new TimedStimulusListener() {
 
@@ -517,7 +519,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@percentOfPage) then concat(@percentOfPage, ', ') else ''" />
         <xsl:value-of select="if(@maxHeight) then concat(@maxHeight, ', ') else ''" />
         <xsl:value-of select="if(@maxWidth) then concat(@maxWidth, ', ') else ''" />
-        <xsl:value-of select="if(@timeToNext) then concat(@timeToNext, ', ') else ''" />
+        <xsl:value-of select="if(@msToNext) then concat(@msToNext, ', ') else ''" />
         <xsl:value-of select="if(@codeFormat) then concat('&quot;', @codeFormat, '&quot;, ') else ''" />
         <xsl:text>new TimedStimulusListener() {
 
@@ -562,7 +564,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <!--        <xsl:text>(new </xsl:text>
         <xsl:value-of select="local-name()" />-->
         <xsl:text>(</xsl:text>
-        <xsl:value-of select="if(@timeToNext) then @timeToNext else ''" />
+        <xsl:value-of select="if(@msToNext) then @msToNext else ''" />
         <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;') else ''" />        
         <xsl:value-of select="if(@wavFormat) then concat(@wavFormat eq 'true', ', ') else ''" />
         <xsl:value-of select="if(@filePerStimulus) then concat(@filePerStimulus eq 'true', ', ') else ''" />
