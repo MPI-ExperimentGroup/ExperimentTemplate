@@ -478,6 +478,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@eventTier) then concat(', ', @eventTier) else ''" />
         <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
         <xsl:apply-templates select="stimuli" mode="stimuliTags" />
+        <xsl:apply-templates select="randomGrouping" mode="stimuliTags" />
         <xsl:text>);
         </xsl:text>
     </xsl:template>
@@ -544,7 +545,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             + "Last Commit Date: " + version.lastCommitDate());
         </xsl:text>
     </xsl:template>
-    <xsl:template match="stimuli" mode="stimuliTags">
+    <xsl:template match="stimuli|randomGrouping" mode="stimuliTags">
         <xsl:text>, Arrays.asList(new Tag[]{</xsl:text>
         <xsl:for-each select="distinct-values(tag/text())">
             <xsl:text>Tag.tag_</xsl:text>
@@ -577,6 +578,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             <xsl:value-of select="if(@webm) then concat(', &quot;', @webm, '&quot;') else ',&quot;&quot;'" />
         </xsl:if>
         <xsl:apply-templates select="stimuli" mode="stimuliTags" />
+        <xsl:apply-templates select="randomGrouping" mode="stimuliTags" />
         <xsl:value-of select="if(@condition0Tag) then concat(', Tag.tag_', @condition0Tag, '') else ''" />
         <xsl:value-of select="if(@condition1Tag) then concat(', Tag.tag_', @condition1Tag, '') else ''" />
         <xsl:value-of select="if(@condition2Tag) then concat(', Tag.tag_', @condition2Tag, '') else ''" />

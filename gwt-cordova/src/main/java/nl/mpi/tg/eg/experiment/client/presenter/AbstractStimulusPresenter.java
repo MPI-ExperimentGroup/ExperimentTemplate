@@ -153,10 +153,21 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }, maxStimulusCount, randomise, seenStimulusList);
     }
 
-    protected void loadStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+    protected void loadStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final List<GeneratedStimulus.Tag> randomTags, final int maxStimulusCount, final boolean randomise, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
         final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST);
-        stimulusProvider.getSubset(selectionTags, maxStimulusCount, randomise, seenStimulusList);
+        final List<GeneratedStimulus.Tag> allocatedTags = new ArrayList<>(selectionTags);
+        if (!randomTags.isEmpty()) {
+            final String storedStimulusAllocation = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), STIMULUS_ALLOCATION);
+            try {
+                allocatedTags.add(GeneratedStimulus.Tag.valueOf(storedStimulusAllocation));
+            } catch (IllegalArgumentException exception) {
+                GeneratedStimulus.Tag stimulusAllocation = randomTags.get(new Random().nextInt(randomTags.size()));
+                localStorage.setStoredDataValue(userResults.getUserData().getUserId(), STIMULUS_ALLOCATION, stimulusAllocation.name());
+                allocatedTags.add(stimulusAllocation);
+            }
+        }
+        stimulusProvider.getSubset(allocatedTags, maxStimulusCount, randomise, seenStimulusList);
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
         showStimulus();

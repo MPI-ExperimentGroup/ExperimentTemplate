@@ -122,9 +122,7 @@ public class StimulusProvider {
         while (!stimulusListCopy.isEmpty() && maxStimulusCount > stimulusSubsetArray.size()) {
             final int nextIndex = (randomise) ? new Random().nextInt(stimulusListCopy.size()) : 0;
             Stimulus stimulus = stimulusListCopy.remove(nextIndex);
-            Set<Tag> commonTags = new HashSet<>(selectionTags);
-            commonTags.retainAll(stimulus.getTags());
-            if (!commonTags.isEmpty()) {
+            if (stimulus.getTags().containsAll(selectionTags)) {
                 if (!seenList.contains(stimulus.getUniqueId())) {
                     stimulusSubsetArray.add(stimulus);
                 }
