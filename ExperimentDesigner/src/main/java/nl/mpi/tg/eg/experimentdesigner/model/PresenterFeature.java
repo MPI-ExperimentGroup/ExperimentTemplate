@@ -162,7 +162,7 @@ public class PresenterFeature {
     @XmlElementWrapper(name = "randomGrouping")
     @XmlElement(name = "tag")
     public List<String> getRandomTags() {
-        return randomTags;
+        return (featureType.canHaveStimulusTags()) ? randomTags : null;
     }
 
     public void setRandomTags(List<String> randomTags) {
