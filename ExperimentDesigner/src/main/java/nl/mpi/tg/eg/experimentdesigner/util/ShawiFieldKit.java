@@ -18,9 +18,6 @@
 package nl.mpi.tg.eg.experimentdesigner.util;
 
 import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
-import nl.mpi.tg.eg.experimentdesigner.dao.MetadataRepository;
-import nl.mpi.tg.eg.experimentdesigner.dao.PresenterFeatureRepository;
-import nl.mpi.tg.eg.experimentdesigner.dao.PresenterScreenRepository;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
@@ -76,7 +73,7 @@ public class ShawiFieldKit {
         presenterScreen.getPresenterFeatureList().add(presenterFeature1);
         final PresenterFeature presenterFeature2 = new PresenterFeature(FeatureType.loadKinTypeStringDiagram, null);
         presenterFeature2.addFeatureAttributes(FeatureAttribute.diagramName, "kinDiagram");
-        presenterFeature2.addFeatureAttributes(FeatureAttribute.timeToNext, "0");
+        presenterFeature2.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         presenterScreen.getPresenterFeatureList().add(presenterFeature2);
         experiment.getPresenterScreen().add(presenterScreen);
         return presenterScreen;
