@@ -39,31 +39,26 @@ public class FactOrFiction {
     String multipleChoiceText = "1= niet zo graag, 7 = heel graag (same as survey 1 and 3)";
     String[] readingBehavior = new String[]{
     };
+    final String[] storeTexts = new String[]{
+        "Story_2_4:Story_2_4 will get some text"
+    };
 
     public Experiment getExperiment() {
-        final Experiment experiment = wizardController.getExperiment("FactOrFiction", "Fact or Fiction");
+        final Experiment experiment = wizardController.getExperiment("leeservaring", "leeservaring");
         final WizardData wizardData = new WizardData();
         wizardData.setAgeField(true);
         wizardData.setGenderField(true);
         wizardData.setCustomTextField("level of proficiency in Dutch");
         final PresenterScreen agreementScreen = wizardController.addAgreementScreen(experiment, null, "EditUser", 1, "Information about study & agreeing to participate");
-        final PresenterScreen editUserScreen = wizardController.addEditUserScreen(experiment, agreementScreen, null, 2, wizardData);
-        final PresenterScreen groupAorBScreen = wizardController.addRandomTextScreen(experiment, editUserScreen, 3, "GroupAorB", new String[]{"IntroductionA:Will get some text", "IntroductionB:Will also get some text"}, 1, null);
-        final PresenterScreen storyScreen = wizardController.addRandomTextScreen(experiment, groupAorBScreen, 4, "StoryPresentation", new String[]{
-            "Story_1_1:Story_1_1 will get some text",
-            "Story_1_2:Story_1_2 will get some text",
-            "Story_1_3:Story_1_3 will get some text",
-            "Story_1_4:Story_1_4 will get some text",
-            "Story_2_1:Story_2_1 will get some text",
-            "Story_2_2:Story_2_2 will get some text",
-            "Story_2_3:Story_2_3 will get some text",
-            "Story_2_4:Story_2_4 will get some text"
-        }, 1, null);
-        final PresenterScreen survey1Screen = wizardController.addRandomTextScreen(experiment, storyScreen, 5, "Survey1", readingBehavior, 1000, "1,2,3,4,5,6,7");
-        final PresenterScreen survey2Screen = wizardController.addRandomTextScreen(experiment, survey1Screen, 6, "Survey2", new String[]{"Survey2:2 questions regarding story content (multiple choice response from 4 options)"}, 1000, "1,2,3,4");
-        final PresenterScreen pictureTaskScreen = wizardController.addRandomTextScreen(experiment, survey1Screen, 7, "PictureTask", images, 1000, "yes,no");
-        final PresenterScreen readingBehaviorScreen = wizardController.addRandomTextScreen(experiment, survey1Screen, 8, "ReadingBehavior", readingBehavior, 1000, "1,2,3,4,5,6,7");
-        final PresenterScreen completionScreen = wizardController.addCompletionScreen(experiment, readingBehaviorScreen, null, 9, "Finished");
+        final PresenterScreen editUserScreen = wizardController.addEditUserScreen(experiment, null, null, 2, wizardData);
+        final PresenterScreen groupAorBScreen = wizardController.addRandomTextScreen(experiment, null, 3, "GroupAorB", new String[]{"IntroductionA:Will get some text", "IntroductionB:Will also get some text"}, 1, null, null, null);
+
+        final PresenterScreen storyScreen = wizardController.addRandomTextScreen(experiment, null, 4, "StoryPresentation", storeTexts, 1, null, null, null);
+        final PresenterScreen survey1Screen = wizardController.addRandomTextScreen(experiment, null, 5, "Survey1", readingBehavior, 1000, "1,2,3,4,5,6,7", null, null);
+        final PresenterScreen survey2Screen = wizardController.addRandomTextScreen(experiment, null, 6, "Survey2", new String[]{"Survey2:2 questions regarding story content (multiple choice response from 4 options)"}, 1000, "1,2,3,4", null, null);
+        final PresenterScreen pictureTaskScreen = wizardController.addRandomTextScreen(experiment, null, 7, "PictureTask", images, 1000, "yes,no", null, null);
+        final PresenterScreen readingBehaviorScreen = wizardController.addRandomTextScreen(experiment, null, 8, "ReadingBehavior", readingBehavior, 1000, "1,2,3,4,5,6,7", null, null);
+        final PresenterScreen completionScreen = wizardController.addCompletionScreen(experiment, null, null, 9, "Finished");
         editUserScreen.setNextPresenter(groupAorBScreen);
         groupAorBScreen.setNextPresenter(storyScreen);
         storyScreen.setNextPresenter(survey1Screen);
