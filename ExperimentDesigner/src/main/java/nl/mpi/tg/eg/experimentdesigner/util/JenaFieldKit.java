@@ -57,8 +57,9 @@ public class JenaFieldKit {
         final PresenterScreen metadataScreen = wizardController.createMetadataScreen(experiment, autoMenuPresenter, bodiesStimulusScreen, new String[]{"name of speaker", "language", "where are you now", "where were you born", "when were you born"}, 6);
         final PresenterScreen selectUserPresenter = wizardController.addUserSelectMenu(experiment, welcomePresenter, metadataScreen, 5);
         final PresenterScreen editUserPresenter = wizardController.addEditUserScreen(experiment, welcomePresenter, metadataScreen, 4);
-        final PresenterScreen debugScreenPresenter = wizardController.addDebugScreen(experiment, autoMenuPresenter, 11);
-        welcomeMenuPresenter.setNextPresenter(metadataScreen);
+//        final PresenterScreen debugScreenPresenter = wizardController.addDebugScreen(experiment, autoMenuPresenter, 11);
+        welcomeMenuPresenter.setNextPresenter(instructionsPresenter);
+        instructionsPresenter.setNextPresenter(metadataScreen);
         return experiment;
     }
 }
