@@ -290,9 +290,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //        ((TimedStimulusView) simpleView).addText("playStimulusAudio: " + duration.elapsedMillis() + "ms");
     }
 
-    public void ratingFooterButton(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final String ratingLabels, final int eventTier) {
+    public void ratingFooterButton(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final int eventTier) {
+        ArrayList<PresenterEventListner> eventListners = new ArrayList<>();
         for (final String ratingItem : ratingLabels.split(",")) {
-            ((ComplexView) simpleView).addFooterButton(new PresenterEventListner() {
+            eventListners.add(new PresenterEventListner() {
                 @Override
                 public String getLabel() {
                     return ratingItem;
@@ -310,6 +311,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 }
             });
         }
+        ((ComplexView) simpleView).addRatingFooter(eventListners, ratingLabelLeft, ratingLabelRight);
     }
 
     protected void showCurrentMs() {
