@@ -39,6 +39,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import java.util.ArrayList;
+import java.util.List;
 import nl.mpi.tg.eg.experiment.client.Messages;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
@@ -179,11 +180,36 @@ public class ComplexView extends SimpleView {
         return nextButton;
     }
 
-    public Button addFooterButton(final PresenterEventListner presenterListerner) {
-        Button nextButton = getOptionButton(presenterListerner);
+    public Button addFooterButton(final PresenterEventListner presenterListener) {
+        Button nextButton = getOptionButton(presenterListener);
         nextButton.addStyleName("footerButton");
         addToFooter(nextButton);
         return nextButton;
+    }
+
+    public void addRatingFooter(final List<PresenterEventListner> presenterListeners, final String ratingLabelLeft, final String ratingLabelRight) {
+        final VerticalPanel verticalPanel = new VerticalPanel();
+        final HorizontalPanel labelsPanel = new HorizontalPanel();
+        if (ratingLabelLeft != null) {
+            labelsPanel.add(new Label(ratingLabelLeft));
+        }
+        if (ratingLabelRight != null) {
+            final Label label = new Label(ratingLabelRight);
+            labelsPanel.add(label);
+            label.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
+        }
+        final HorizontalPanel buttonsPanel = new HorizontalPanel();
+        for (PresenterEventListner listener : presenterListeners) {
+            Button nextButton = getOptionButton(listener);
+            nextButton.addStyleName("footerButton");
+            buttonsPanel.add(nextButton);
+        }
+        verticalPanel.setWidth("100%");
+        labelsPanel.setWidth("100%");
+        buttonsPanel.setWidth("100%");
+        verticalPanel.add(labelsPanel);
+        verticalPanel.add(buttonsPanel);
+        addToFooter(verticalPanel);
     }
 
     public Button getOptionButton(final PresenterEventListner presenterListerner) {
