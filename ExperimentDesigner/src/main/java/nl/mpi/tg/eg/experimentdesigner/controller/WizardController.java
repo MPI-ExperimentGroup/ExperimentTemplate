@@ -80,6 +80,7 @@ public class WizardController {
         PresenterScreen userSelectMenu = null;
         PresenterScreen agreementScreen = null;
         PresenterScreen audioTestScreen = null;
+        PresenterScreen practiceStimulusScreen = null;
         PresenterScreen stimulusScreen = null;
         PresenterScreen completionScreen = null;
         PresenterScreen autoMenu = null;
@@ -108,11 +109,18 @@ public class WizardController {
                 editUserScreen.setNextPresenter(audioTestScreen);
             }
         }
+        if (wizardData.getPracticeStimuliSet() != null) {
+//            addMetadata(experiment, wizardData);
+            practiceStimulusScreen = addRandomTextScreen(experiment, null, 5, "PracticeStimulusScreen", wizardData.getPracticeStimuliSet(), wizardData.getPracticeStimuliRandomTags(), wizardData.getPracticeStimuliCount(), wizardData.getPracticeStimulusCodeMatch(), wizardData.getPracticeStimulusCodeMsDelay(), wizardData.getPracticeStimulusCodeFormat(), wizardData.getPracticeStimulusResponseOptions(), wizardData.getPracticeStimulusResponseLabelLeft(), wizardData.getPracticeStimulusResponseLabelRight());
+            if (audioTestScreen != null) {
+                audioTestScreen.setNextPresenter(practiceStimulusScreen);
+            }
+        }
         if (wizardData.getStimuliSet() != null) {
 //            addMetadata(experiment, wizardData);
             stimulusScreen = addRandomTextScreen(experiment, null, 5, "StimulusScreen", wizardData.getStimuliSet(), wizardData.getStimuliRandomTags(), wizardData.getStimuliCount(), wizardData.getStimulusCodeMatch(), wizardData.getStimulusCodeMsDelay(), wizardData.getStimulusCodeFormat(), wizardData.getStimulusResponseOptions(), wizardData.getStimulusResponseLabelLeft(), wizardData.getStimulusResponseLabelRight());
-            if (audioTestScreen != null) {
-                audioTestScreen.setNextPresenter(stimulusScreen);
+            if (practiceStimulusScreen != null) {
+                practiceStimulusScreen.setNextPresenter(stimulusScreen);
             }
         }
         if (wizardData.isCompletionScreen()) {
