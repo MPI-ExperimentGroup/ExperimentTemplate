@@ -45,8 +45,17 @@ public class WizardData {
     private boolean audioTestScreen = false;
     private String testAudioPath = "";
 
-    private boolean practiceScreen = false;
+    private boolean practiceStimuliScreen = false;
     private String practiceStimuliPath = "";
+    private String[] practiceStimuliSet = null;
+    private String[] practiceStimuliRandomTags = null;
+    private String practiceStimulusCodeMatch = null;
+    private int practiceStimulusCodeMsDelay = 0;
+    private String practiceStimulusCodeFormat = null;
+    private int practiceStimuliCount = 1;
+    private String practiceStimulusResponseLabelLeft = null;
+    private String practiceStimulusResponseLabelRight = null;
+    private String practiceStimulusResponseOptions = null;
 
     private boolean stimuliScreen = false;
     private String stimuliPath = "";
@@ -202,6 +211,94 @@ public class WizardData {
         this.customTextField = customTextField;
     }
 
+    public boolean isPracticeStimuliScreen() {
+        return practiceStimuliScreen;
+    }
+
+    public void setPracticeStimuliScreen(boolean practiceStimuliScreen) {
+        this.practiceStimuliScreen = practiceStimuliScreen;
+    }
+
+    public String getPracticeStimuliPath() {
+        return practiceStimuliPath;
+    }
+
+    public void setPracticeStimuliPath(String practiceStimuliPath) {
+        this.practiceStimuliPath = practiceStimuliPath;
+    }
+
+    public String[] getPracticeStimuliSet() {
+        return practiceStimuliSet;
+    }
+
+    public void setPracticeStimuliSet(String[] practiceStimuliSet) {
+        this.practiceStimuliSet = practiceStimuliSet;
+    }
+
+    public String[] getPracticeStimuliRandomTags() {
+        return practiceStimuliRandomTags;
+    }
+
+    public void setPracticeStimuliRandomTags(String[] practiceStimuliRandomTags) {
+        this.practiceStimuliRandomTags = practiceStimuliRandomTags;
+    }
+
+    public String getPracticeStimulusCodeMatch() {
+        return practiceStimulusCodeMatch;
+    }
+
+    public void setPracticeStimulusCodeMatch(String practiceStimulusCodeMatch) {
+        this.practiceStimulusCodeMatch = practiceStimulusCodeMatch;
+    }
+
+    public int getPracticeStimulusCodeMsDelay() {
+        return practiceStimulusCodeMsDelay;
+    }
+
+    public void setPracticeStimulusCodeMsDelay(int practiceStimulusCodeMsDelay) {
+        this.practiceStimulusCodeMsDelay = practiceStimulusCodeMsDelay;
+    }
+
+    public String getPracticeStimulusCodeFormat() {
+        return practiceStimulusCodeFormat;
+    }
+
+    public void setPracticeStimulusCodeFormat(String practiceStimulusCodeFormat) {
+        this.practiceStimulusCodeFormat = practiceStimulusCodeFormat;
+    }
+
+    public int getPracticeStimuliCount() {
+        return practiceStimuliCount;
+    }
+
+    public void setPracticeStimuliCount(int practiceStimuliCount) {
+        this.practiceStimuliCount = practiceStimuliCount;
+    }
+
+    public String getPracticeStimulusResponseLabelLeft() {
+        return practiceStimulusResponseLabelLeft;
+    }
+
+    public void setPracticeStimulusResponseLabelLeft(String practiceStimulusResponseLabelLeft) {
+        this.practiceStimulusResponseLabelLeft = practiceStimulusResponseLabelLeft;
+    }
+
+    public String getPracticeStimulusResponseLabelRight() {
+        return practiceStimulusResponseLabelRight;
+    }
+
+    public void setPracticeStimulusResponseLabelRight(String practiceStimulusResponseLabelRight) {
+        this.practiceStimulusResponseLabelRight = practiceStimulusResponseLabelRight;
+    }
+
+    public String getPracticeStimulusResponseOptions() {
+        return practiceStimulusResponseOptions;
+    }
+
+    public void setPracticeStimulusResponseOptions(String practiceStimulusResponseOptions) {
+        this.practiceStimulusResponseOptions = practiceStimulusResponseOptions;
+    }
+
     public boolean isStimuliScreen() {
         return stimuliScreen;
     }
@@ -320,22 +417,6 @@ public class WizardData {
 
     public void setTestAudioPath(String testAudioPath) {
         this.testAudioPath = testAudioPath;
-    }
-
-    public boolean isPracticeScreen() {
-        return practiceScreen;
-    }
-
-    public void setPracticeScreen(boolean practiceScreen) {
-        this.practiceScreen = practiceScreen;
-    }
-
-    public String getPracticeStimuliPath() {
-        return practiceStimuliPath;
-    }
-
-    public void setPracticeStimuliPath(String practiceStimuliPath) {
-        this.practiceStimuliPath = practiceStimuliPath;
     }
 
     public boolean isCompletionScreen() {
