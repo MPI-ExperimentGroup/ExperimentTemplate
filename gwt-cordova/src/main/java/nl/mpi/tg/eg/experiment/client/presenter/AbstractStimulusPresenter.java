@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.experiment.client.presenter;
 
 import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.Timer;
@@ -292,7 +293,39 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     public void ratingFooterButton(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final int eventTier) {
         ArrayList<PresenterEventListner> eventListners = new ArrayList<>();
-        for (final String ratingItem : ratingLabels.split(",")) {
+        final String[] splitRatingLabels = ratingLabels.split(",");
+        for (final String ratingItem : splitRatingLabels) {
+            int derivedHotKey = -1;
+            if (ratingItem.equals("0")) {
+                derivedHotKey = KeyCodes.KEY_ZERO;
+            } else if (ratingItem.equals("1")) {
+                derivedHotKey = KeyCodes.KEY_ONE;
+            } else if (ratingItem.equals("2")) {
+                derivedHotKey = KeyCodes.KEY_TWO;
+            } else if (ratingItem.equals("3")) {
+                derivedHotKey = KeyCodes.KEY_THREE;
+            } else if (ratingItem.equals("4")) {
+                derivedHotKey = KeyCodes.KEY_FOUR;
+            } else if (ratingItem.equals("5")) {
+                derivedHotKey = KeyCodes.KEY_FIVE;
+            } else if (ratingItem.equals("6")) {
+                derivedHotKey = KeyCodes.KEY_SIX;
+            } else if (ratingItem.equals("7")) {
+                derivedHotKey = KeyCodes.KEY_SEVEN;
+            } else if (ratingItem.equals("8")) {
+                derivedHotKey = KeyCodes.KEY_EIGHT;
+            } else if (ratingItem.equals("9")) {
+                derivedHotKey = KeyCodes.KEY_NINE;
+            } else if (splitRatingLabels.length == 2) {
+                // if there are only two options then use z and . as the hot keys
+                if (splitRatingLabels[0].equals(ratingItem)) {
+                    derivedHotKey = KeyCodes.KEY_Z;
+                } else {
+                    derivedHotKey = KeyCodes.KEY_NUM_PERIOD;
+                }
+            }
+
+            final int hotKey = derivedHotKey;
             eventListners.add(new PresenterEventListner() {
                 @Override
                 public String getLabel() {
@@ -302,12 +335,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 @Override
                 public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
                     endAudioRecorderTag(eventTier, ratingItem);
+                    logTimeStamp(ratingItem);
                     timedStimulusListener.postLoadTimerFired();
                 }
 
                 @Override
                 public int getHotKey() {
-                    return -1;
+                    return hotKey;
                 }
             });
         }
@@ -319,7 +353,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void logTimeStamp(String eventTag) {
-        submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
+        submissionService.submitTagValue(userResults.getUserData().getUserId(), stimulusProvider.getCurrentStimulus().getUniqueId(), eventTag, duration.elapsedMillis());
     }
 
     protected void endAudioRecorderTag(int tier, String tagString) {
