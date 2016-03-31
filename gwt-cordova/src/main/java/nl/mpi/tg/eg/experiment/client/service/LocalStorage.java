@@ -68,11 +68,18 @@ public class LocalStorage {
         return dataStore;
     }
 
-    public void clearStoredData(UserId userId) {
+    public void clearApplicationData(UserId userId) {
         loadStorage();
         // todo: it would be good to do this on an application basis
-        clear();
-
+//        clear();
+        if (dataStore != null) {
+            for (int itemIndex = 0; itemIndex < dataStore.getLength(); itemIndex++) {
+                final String key = dataStore.key(itemIndex);
+                if (key.startsWith(messages.appNameInternal())) { // && key.contains(userId.toString())) {
+                    dataStore.removeItem(key);
+                }
+            }
+        }
 //        dataStore.setItem(APP_STATE, "");
 //        dataStore.setItem(USER_RESULTS + userId.toString(), "");
 //        dataStore.setItem(LAST_USER_ID + userId.toString(), "");
