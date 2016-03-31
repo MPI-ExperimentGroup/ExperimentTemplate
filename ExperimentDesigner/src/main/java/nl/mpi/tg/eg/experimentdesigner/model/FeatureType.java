@@ -53,6 +53,7 @@ public enum FeatureType {
     createUserButton(false, true, new FeatureAttribute[]{target}),
     selectUserMenu(false, false, null),
     eraseLocalStorageButton(false, false, null),
+    eraseUsersDataButton(false, true, null),
     showCurrentMs(false, false, null),
     enableStimulusButtons(false, false, null),
     disableStimulusButtons(false, false, null),
