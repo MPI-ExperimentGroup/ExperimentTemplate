@@ -43,6 +43,7 @@ public class WizardData {
     private String mandatoryCheckBox = "";
     private boolean ageField = false;
     private boolean audioTestScreen = false;
+    private String audioTestScreenText = "";
     private String testAudioPath = "";
 
     private boolean practiceStimuliScreen = false;
@@ -409,6 +410,14 @@ public class WizardData {
 
     public void setAudioTestScreen(boolean audioTestScreen) {
         this.audioTestScreen = audioTestScreen;
+    }
+
+    public String getAudioTestScreenText() {
+        return audioTestScreenText;
+    }
+
+    public void setAudioTestScreenText(String audioTestScreenText) {
+        this.audioTestScreenText = audioTestScreenText;
     }
 
     public String getTestAudioPath() {
