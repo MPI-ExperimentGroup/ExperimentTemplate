@@ -79,13 +79,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     // todo: maxSpeakerWordCount needs to be utilised correctly
     protected void loadSubsetStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final GeneratedStimulus.Tag condition0Tag, final GeneratedStimulus.Tag condition1Tag, final GeneratedStimulus.Tag condition2Tag, final int maxStimulusCount) {
-        final String storedDataValue = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), STIMULUS_ALLOCATION);
+        final String storedDataValue = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), STIMULUS_ALLOCATION + "_" + eventTag);
         int stimulusAllocation;
         try {
             stimulusAllocation = Integer.parseInt(storedDataValue);
         } catch (NumberFormatException exception) {
             stimulusAllocation = new Random().nextInt(5);
-            localStorage.setStoredDataValue(userResults.getUserData().getUserId(), STIMULUS_ALLOCATION, Integer.toString(stimulusAllocation));
+            localStorage.setStoredDataValue(userResults.getUserData().getUserId(), STIMULUS_ALLOCATION + "_" + eventTag, Integer.toString(stimulusAllocation));
         }
         final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST);
 //        Participants will be exposed to 36 audio+picture combinations, 
@@ -159,12 +159,12 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST);
         final List<GeneratedStimulus.Tag> allocatedTags = new ArrayList<>(selectionTags);
         if (!randomTags.isEmpty()) {
-            final String storedStimulusAllocation = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), STIMULUS_ALLOCATION);
+            final String storedStimulusAllocation = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), STIMULUS_ALLOCATION + "_" + eventTag);
             try {
                 allocatedTags.add(GeneratedStimulus.Tag.valueOf(storedStimulusAllocation));
             } catch (IllegalArgumentException exception) {
                 GeneratedStimulus.Tag stimulusAllocation = randomTags.get(new Random().nextInt(randomTags.size()));
-                localStorage.setStoredDataValue(userResults.getUserData().getUserId(), STIMULUS_ALLOCATION, stimulusAllocation.name());
+                localStorage.setStoredDataValue(userResults.getUserData().getUserId(), STIMULUS_ALLOCATION + "_" + eventTag, stimulusAllocation.name());
                 allocatedTags.add(stimulusAllocation);
             }
         }
