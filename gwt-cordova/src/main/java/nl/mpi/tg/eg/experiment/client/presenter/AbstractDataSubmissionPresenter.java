@@ -20,6 +20,8 @@ package nl.mpi.tg.eg.experiment.client.presenter;
 import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JsArray;
+import com.google.gwt.storage.client.Storage;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
@@ -60,6 +62,7 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
         ((ComplexView) simpleView).addTextField(completionCode);
     }
 
+    // todo: update xslt so the nullObject can be removed
     public void sendAllData(Object nullObject, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
         submissionService.submitAllData(userResults, new DataSubmissionListener() {
 
@@ -75,6 +78,27 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
         });
     }
 
+    protected void eraseUsersDataButton(final String buttonLabel) {
+        ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
+
+            @Override
+            public String getLabel() {
+                return buttonLabel;
+            }
+
+            @Override
+            public int getHotKey() {
+                return -1;
+            }
+
+            @Override
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+                submissionService.terminateAndDeleteStoredData(userResults.getUserData().getUserId());
+                Window.Location.replace(Window.Location.getPath());
+            }
+        });
+    }
+    
     protected void eraseLocalStorageOnWindowClosing() {
         setWindowClosingListener(new PresenterEventListner() {
 
