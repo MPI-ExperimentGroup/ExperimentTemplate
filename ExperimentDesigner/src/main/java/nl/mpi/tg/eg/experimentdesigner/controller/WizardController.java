@@ -84,6 +84,7 @@ public class WizardController {
         PresenterScreen stimulusScreen = null;
         PresenterScreen completionScreen = null;
         PresenterScreen autoMenu = null;
+//        PresenterScreen debugScreen = addDebugScreen(experiment, null, 10);
 //    private String agreementScreenText = "";
 //    private String disagreementScreenText = "";
         if (wizardData.isUserSelectScreen()) {
@@ -104,7 +105,7 @@ public class WizardController {
         }
         if (wizardData.isAudioTestScreen()) {
 //            addMetadata(experiment, wizardData);
-            audioTestScreen = addAudioTestScreen(experiment, null, null, 4, wizardData.getTestAudioPath());
+            audioTestScreen = addAudioTestScreen(experiment, null, null, 4, wizardData.getTestAudioPath(), wizardData.getAudioTestScreenText());
             if (editUserScreen != null) {
                 editUserScreen.setNextPresenter(audioTestScreen);
             }
@@ -124,7 +125,7 @@ public class WizardController {
             }
         }
         if (wizardData.isCompletionScreen()) {
-            completionScreen = addCompletionScreen(experiment, null, null, 6, wizardData.getCompletionText());
+            completionScreen = addCompletionScreen(experiment, null, null, 6, wizardData.getCompletionText(), "Restart");
             if (stimulusScreen != null) {
                 stimulusScreen.setNextPresenter(completionScreen);
             }
@@ -195,9 +196,9 @@ public class WizardController {
         return presenterScreen;
     }
 
-    public PresenterScreen addAudioTestScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder, String testAudioPath) {
+    public PresenterScreen addAudioTestScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder, String testAudioPath, final String audioTestScreenText) {
         final PresenterScreen presenterScreen = new PresenterScreen("AudioTest", "AudioTest", backPresenter, "AudioTest", nextPresenter, PresenterType.stimulus, displayOrder);
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "AudioTestScreenText"));
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, audioTestScreenText));
         final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.audioButton, null);
         presenterFeature.addFeatureAttributes(FeatureAttribute.eventTag, "AudioTest");
         presenterFeature.addFeatureAttributes(FeatureAttribute.mp3, testAudioPath + ".mp3");
@@ -311,6 +312,7 @@ public class WizardController {
                 stimulus = new Stimulus(screenText.replace(".png", ""), null, null, null, screenText, null, screenText.replace(".png", ""), 0, tagSet);
             } else {
                 final String[] splitScreenText = screenText.split(":", 2);
+                tagSet.addAll(Arrays.asList(splitScreenText[0].split("/")));
                 stimulus = new Stimulus(null, null, null, null, null, splitScreenText[1].replace("\n", "<br/>"), splitScreenText[0].replace(" ", "_"), 0, tagSet);
             }
             stimuliList.add(stimulus);
@@ -512,7 +514,17 @@ public class WizardController {
         return presenterScreen;
     }
 
-    public PresenterScreen addCompletionScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder, String completedText) {
+    public PresenterScreen addTextScreen(final Experiment experiment, final PresenterScreen backPresenter, final String screenName, final PresenterScreen nextPresenter, long displayOrder, String instructionsText) {
+        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, screenName, nextPresenter, PresenterType.text, displayOrder);
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, instructionsText));
+//        final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.actionButton, "Continue");
+//        presenterScreen.getPresenterFeatureList().add(actionButtonFeature);
+//        actionButtonFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
+        experiment.getPresenterScreen().add(presenterScreen);
+        return presenterScreen;
+    }
+
+    public PresenterScreen addCompletionScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder, String completedText, String eraseUsersDataButtonlabel) {
         final PresenterScreen presenterScreen = new PresenterScreen("Completion", "Completion", backPresenter, "Completion", nextPresenter, PresenterType.transmission, displayOrder);
         final PresenterFeature sendAllDataFeature = new PresenterFeature(FeatureType.sendAllData, null);
         presenterScreen.getPresenterFeatureList().add(sendAllDataFeature);
@@ -522,7 +534,7 @@ public class WizardController {
         onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, completedText));
         onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
         onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.generateCompletionCode, null));
-        onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.eraseLocalStorageOnWindowClosing, null));
+        onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.eraseUsersDataButton, eraseUsersDataButtonlabel));
 
         final PresenterFeature onErrorFeature = new PresenterFeature(FeatureType.onError, null);
         sendAllDataFeature.getPresenterFeatureList().add(onErrorFeature);
