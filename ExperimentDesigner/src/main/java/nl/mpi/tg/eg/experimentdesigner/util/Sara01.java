@@ -692,7 +692,7 @@ public class Sara01 {
 
     public Experiment getExperiment() {
         WizardData wizardData = new WizardData();
-        wizardData.setAppName("Sara01");
+        wizardData.setAppName("AntwoordRaden");
         //Here is the updated experiment flow and the suggested directory structure:
         //Directory/introimage
         //Directory/testwav
@@ -708,7 +708,20 @@ public class Sara01 {
         //User follows link with group id and invite id
         wizardData.setUserSelectScreen(false);
         //Information screen 
-        wizardData.setAgreementScreenText("agreementScreenText");
+        wizardData.setAgreementScreenText(
+                "Toestemmingsverklaring voor deelname aan het onderzoek:<br/>"
+                + "Antwoord raden<br/>"
+                + "Voordat je begint met dit experiment, dien je eerst te bevestigen dat je toestemt met deelname aan dit experiment. We zullen je antwoorden opslaan voor latere analyse. We gebruiken de resultaten alleen voor onderzoeksdoeleinden, en zullen ze beschrijven in gespecialiseerde tijschriften of wellicht in kranten of op onze website. Echter, we zullen de resultaten NOOIT rapporteren op zo'n manier dat je zou kunnen worden geïdentificeerd.<br/>"
+                + "<br/>"
+                + "<img src=\"static/introimage/introimage.jpg\"/><br/>"
+                + "Door akkoord te gaan, verklaar je dat je voldoende bent geïnformeerd over het onderzoek en dat je goed over deelname aan het onderzoek hebt na kunnen denken. Je bent tijdens dit experiment op elk moment vrij om je terug te trekken zonder uitleg te geven. Ook kun je je gegevens laten verwijderen tot het moment van publicatie, zonder uit te leggen waarom je dat doet.<br/>"
+                + "<br/>"
+                + "Er zijn geen risico's bekend met het meedoen aan dit experiment.<br/>"
+                + "<br/>"
+                + "Als je ermee instemt om door te gaan met dit experiment, klik dan op 'Ik ga akkoord'.<br/>"
+                + "Als je besluit niet deel te nemen aan het experiment, klik dan op 'Ik ga niet akkoord'.<br/>"
+                + "Verlaat het experiment door naar een andere website te gaan.<br/>"
+        );
         //Agreement
         wizardData.setAgreementScreen(true);
 //        wizardData.setAgreementText("agreementText");
@@ -721,6 +734,11 @@ public class Sara01 {
         wizardData.setGenderField(true);
         //audio test page
         wizardData.setAudioTestScreen(true);
+        wizardData.setAudioTestScreenText("Voordat we met het echte experiment beginnen, willen we je vragen even te testen of je geluidsinstellingen goed zijn voor het experiment. Druk op de onderstaande knop om een kort voorbeeldfragment te horen. De echte fragmenten variëren in sterkte, maar het voorbeeld is ongeveer net zo zacht als het zachtste fragment. Het is belangrijk dat je dit goed kunt verstaan. Als het te zacht klinkt (of te hard), probeer dan de het geluidsniveau op je computer aan te passen. Je kunt net zo vaak op de knop drukken tot het goed te verstaan is.<br/>"
+                + " <br/>"
+                + "Daarnaast willen we je ook vragen te testen of dit fragment (vooral) in je rechteroor te horen is. Zo niet, kun je dan je koptelefoon (of luidsprekers) omdraaien?<br/>"
+                + " <br/>"
+                + "Als de geluidssterkte goed is en je het geluid rechts hoort, kun je op enter drukken om te beginnen met het experiment. Denk eraan om de context steeds goed op je in te laten werken voordat je verder gaat naar het geluidsfragment.");
         wizardData.setTestAudioPath("static/testwav/test_wav");
         //practice (5 items):
         //                image
@@ -730,18 +748,27 @@ public class Sara01 {
         //                audio
         //                end of audio 1-7 rating buttons
         //                next stimuli
-        wizardData.setPracticeScreen(true);
-        wizardData.setPracticeStimuliPath("practiceStimuliPath");
+        wizardData.setPracticeStimuliScreen(true);
+        wizardData.setPracticeStimuliPath("stimuliPath");
+        wizardData.setPracticeStimuliRandomTags(new String[]{"groupA", "groupB"});
+        wizardData.setPracticeStimuliSet(stimuliPracticeArray);
+        wizardData.setPracticeStimulusCodeMatch("/([ET]_[0-9]+)_");
+        wizardData.setPracticeStimuliCount(1000);
+        wizardData.setPracticeStimulusCodeMsDelay(500);
+        wizardData.setPracticeStimulusCodeFormat("static/practice/wav/<code>");
+        wizardData.setPracticeStimulusResponseOptions("1,2,3,4,5,6,7");
+        wizardData.setPracticeStimulusResponseLabelLeft("zeer waarschijnlijk negatief");
+        wizardData.setPracticeStimulusResponseLabelRight("zeer waarschijnlijk positief");
         //experiment round (120 items):
         //                …
         wizardData.setStimuliScreen(true);
         wizardData.setStimuliPath("stimuliPath");
         wizardData.setStimuliRandomTags(new String[]{"groupA", "groupB"});
-        wizardData.setStimuliSet(stimuliPracticeArray);
+        wizardData.setStimuliSet(stimuliExperimentArray);
         wizardData.setStimulusCodeMatch("/([ET]_[0-9]+)_");
         wizardData.setStimuliCount(1000);
         wizardData.setStimulusCodeMsDelay(500);
-        wizardData.setStimulusCodeFormat("static/practice/wav/<code>");
+        wizardData.setStimulusCodeFormat("static/experiment/wav/<code>");
         wizardData.setStimulusResponseOptions("1,2,3,4,5,6,7");
         wizardData.setStimulusResponseLabelLeft("zeer waarschijnlijk negatief");
         wizardData.setStimulusResponseLabelRight("zeer waarschijnlijk positief");
@@ -749,7 +776,13 @@ public class Sara01 {
         //data upload verification 
         wizardData.setCompletionScreen(true);
         //completion code and thank you screen
-        wizardData.setCompletionText("completionText");
+        wizardData.setCompletionText(
+                "Dit is het einde van het experiment.<br/>"
+                + "<br/>"
+                + "Ter bevestiging van je deelname willen we je vragen om de volgende code te sturen naar dorine.vanbelzen@mpi.nl. Pas na ontvangst van deze code, kun je worden uitbetaald.<br/>"
+                + "<br/>"
+                + "Bedankt voor je deelname!"
+        );
         wizardData.setMenuScreen(true);
         return wizardController.getExperiment(wizardData);
     }
