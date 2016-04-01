@@ -35,17 +35,17 @@ System Overview
 [UML diagram](https://github.com/MPI-ExperimentGroup/ExperimentTemplate/blob/master/src/main/uml/Frinex.svg)
 
 1. Experiment designer interface
-* Configure: screens, metadata, stimulus…
+   * Configure: screens, metadata, stimulus…
 
 2. Experiment application templates
-* Templates can be created in different technologies
-* This is the code that becomes the experiment app
+   * Templates can be created in different technologies
+   * This is the code that becomes the experiment app
 
 3. Compilation process
 
 4. Compiled experiment
-* Self contained application, mobile / web
+   * Self contained application, mobile / web
 
 5. Experiment results administrator
-* Viewing and downloading experiment results
-* Managing participants
+   * Viewing and downloading experiment results
+   * Managing participants
