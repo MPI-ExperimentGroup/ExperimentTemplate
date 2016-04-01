@@ -108,13 +108,11 @@ public class ExperimentController {
         experiment.setComplementColour2(updatedExperiment.getComplementColour2());
         experiment.setComplementColour3(updatedExperiment.getComplementColour3());
         experiment.setComplementColour4(updatedExperiment.getComplementColour4());
-        experiment.setDataSubmitUrl(updatedExperiment.getDataSubmitUrl());
         experiment.setPrimaryColour0(updatedExperiment.getPrimaryColour0());
         experiment.setPrimaryColour1(updatedExperiment.getPrimaryColour1());
         experiment.setPrimaryColour2(updatedExperiment.getPrimaryColour2());
         experiment.setPrimaryColour3(updatedExperiment.getPrimaryColour3());
         experiment.setPrimaryColour4(updatedExperiment.getPrimaryColour4());
-        experiment.setStaticFilesUrl(updatedExperiment.getStaticFilesUrl());
         experimentRepository.save(experiment);
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", "configuration");
