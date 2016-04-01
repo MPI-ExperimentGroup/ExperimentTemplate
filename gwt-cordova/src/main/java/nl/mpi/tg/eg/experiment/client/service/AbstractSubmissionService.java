@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experiment.client.service;
 import com.google.gwt.core.client.GWT;
 import java.util.logging.Logger;
 import nl.mpi.tg.eg.experiment.client.Messages;
+import nl.mpi.tg.eg.experiment.client.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.Version;
 
 /**
