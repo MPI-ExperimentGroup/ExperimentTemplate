@@ -783,7 +783,7 @@ public class Sara01 {
                 + "<br/>"
                 + "Bedankt voor je deelname!"
         );
-        wizardData.setMenuScreen(true);
+//        wizardData.setMenuScreen(true);
         return wizardController.getExperiment(wizardData);
     }
 }
