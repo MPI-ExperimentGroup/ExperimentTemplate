@@ -74,7 +74,7 @@ public class DefaultExperiments {
         experimentRepository.save(new FactOrFiction().getExperiment());
         experimentRepository.save(new SynQuiz2().getExperiment());
 
-       for (Experiment experiment : experimentRepository.findAll()) {
+        for (Experiment experiment : experimentRepository.findAll()) {
             eventRepository.save(new PublishEvents(experiment, new Date(), new Date(), PublishEvents.PublishState.published, true, true, true));
         }
     }
@@ -83,7 +83,6 @@ public class DefaultExperiments {
         Experiment experiment = getDefault();
         experiment.setAppNameDisplay("Dobes Annotator");
         experiment.setAppNameInternal("DobesAnnotator");
-        experiment.setDataSubmitUrl("http://ems13.mpi.nl/dobesannotator-admin/");
         final Metadata metadata = new Metadata("workerId", "Reporter name *", ".'{'3,'}'", "Please enter at least three letters.", true, "This test can only be done once per worker.");
         final Metadata metadata1 = new Metadata("errordevice", "Device model", ".'{'2,'}'", "Please enter the device model", false, null);
         final Metadata metadata2 = new Metadata("errordescription", "Please describe the error", ".'{'2,'}'", "Please enter a short description of the issue", false, null);
@@ -116,7 +115,6 @@ public class DefaultExperiments {
         final Experiment experiment = getDefault();
         experiment.setAppNameDisplay(appName);
         experiment.setAppNameInternal(appName);
-        experiment.setDataSubmitUrl("http://ems13.mpi.nl/" + appName + "-admin/");
         final PresenterScreen autoMenuPresenter = addAutoMenu(presenterFeatureRepository, 10);
         experiment.getPresenterScreen().add(autoMenuPresenter);
         final Metadata metadata = new Metadata("workerId", "Reporter name *", ".'{'3,'}'", "Please enter at least three letters.", true, "This test can only be done once per worker.");
@@ -133,7 +131,6 @@ public class DefaultExperiments {
         final Experiment experiment = new Experiment();
         experiment.setAppNameDisplay("");
         experiment.setAppNameInternal("");
-        experiment.setStaticFilesUrl("static/");
         experiment.setPrimaryColour0("#628D8D");
         experiment.setPrimaryColour1("#385E5E");
         experiment.setPrimaryColour2("#4A7777");
@@ -152,8 +149,6 @@ public class DefaultExperiments {
         final Experiment experiment = new Experiment();
         experiment.setAppNameDisplay("All Options");
         experiment.setAppNameInternal("AllOptions");
-        experiment.setDataSubmitUrl("http://ems13.mpi.nl/alloptions-admin/");
-        experiment.setStaticFilesUrl("static/");
         experiment.setPrimaryColour0("#413B52");
         experiment.setPrimaryColour1("#656469");
         experiment.setPrimaryColour2("#514E5C");
