@@ -50,8 +50,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <td th:text="${experiment.id}"></td>
                         <td th:text="${experiment.appNameDisplay}"></td>
                         <td th:text="${experiment.appNameInternal}"></td>
-                        <td th:text="${experiment.dataSubmitUrl}"></td>
-                        <td th:text="${experiment.staticFilesUrl}"></td>
+                        <td th:text="${experiment.resourceNetworkPath}"></td>
                         <!--                    <td th:text="${experiment.primaryColour0}"></td>
                                             <td th:text="${experiment.primaryColour1}"></td>
                                             <td th:text="${experiment.primaryColour2}"></td>
@@ -74,8 +73,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 <table class="addpresenterform">
                     <tr><td><b>App Display Name</b></td><td><input type="text" th:field="*{appNameDisplay}" /></td></tr>
                     <tr><td><b>App Internal Name</b></td><td><input type="text" th:field="*{appNameInternal}" /></td></tr>
-                    <tr><td><b>Data Submit Url</b></td><td><input type="text" th:field="*{dataSubmitUrl}" /></td></tr>
-                    <tr><td><b>Static Files Url</b></td><td><input type="text" th:field="*{staticFilesUrl}" /></td></tr>
+                    <tr><td><b>MPI-scratch resource path</b></td><td><input type="text" th:field="*{resourceNetworkPath}" /></td></tr>
                     <tr><td><b>Primary Colour 0</b></td><td><input type="color" th:field="*{primaryColour0}" />
                             <!--<div th:style="'height: 30px; width: 30px; background: ' + *{primaryColour1} + ';'"></div>-->
                         </td></tr>
