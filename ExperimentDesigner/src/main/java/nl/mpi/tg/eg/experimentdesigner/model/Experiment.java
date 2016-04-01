@@ -49,8 +49,7 @@ public class Experiment implements Serializable {
     private String appNameDisplay;
     @Column(unique = true)
     private String appNameInternal;
-    private String dataSubmitUrl;
-    private String staticFilesUrl;
+    private String resourceNetworkPath; // path to MPI_Scratch that contains any resource files needed for the experiment
 //    private String nextPresenterTag;
     private String primaryColour0;
     private String primaryColour1;
@@ -104,21 +103,12 @@ public class Experiment implements Serializable {
     }
 
     @XmlAttribute
-    public String getDataSubmitUrl() {
-        return dataSubmitUrl;
+    public String getResourceNetworkPath() {
+        return resourceNetworkPath;
     }
 
-    public void setDataSubmitUrl(String dataSubmitUrl) {
-        this.dataSubmitUrl = dataSubmitUrl.toLowerCase();
-    }
-
-    @XmlAttribute
-    public String getStaticFilesUrl() {
-        return staticFilesUrl;
-    }
-
-    public void setStaticFilesUrl(String staticFilesUrl) {
-        this.staticFilesUrl = staticFilesUrl;
+    public void setResourceNetworkPath(String resourceNetworkPath) {
+        this.resourceNetworkPath = resourceNetworkPath;
     }
 
     public List<PublishEvents> getPublishEvents() {
