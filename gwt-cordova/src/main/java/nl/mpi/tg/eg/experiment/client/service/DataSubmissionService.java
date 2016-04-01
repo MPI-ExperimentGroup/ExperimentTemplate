@@ -178,7 +178,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
     }
 
     private void submitData(final ServiceEndpoint endpoint, final UserId userId, final String jsonData, final DataSubmissionListener dataSubmissionListener) {
-        final RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, messages.dataSubmitUrl() + endpoint.name());
+        final RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, serviceLocations.dataSubmitUrl() + endpoint.name());
         builder.setHeader("Content-type", "application/json");
         RequestCallback requestCallback = new RequestCallback() {
             @Override
