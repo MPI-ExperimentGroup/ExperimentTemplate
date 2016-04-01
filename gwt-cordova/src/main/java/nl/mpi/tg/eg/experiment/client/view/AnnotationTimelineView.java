@@ -28,6 +28,7 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import java.util.Set;
+import nl.mpi.tg.eg.experiment.client.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.model.AnnotationData;
@@ -35,7 +36,6 @@ import nl.mpi.tg.eg.experiment.client.model.AnnotationSet;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.DataFactory;
-import nl.mpi.tg.eg.experiment.client.service.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
 
 /**
