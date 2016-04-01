@@ -54,7 +54,7 @@ Other templates can be developed as needed:
 Submodules can exist within a template when the  technologies are compatible:
 * Elements of the DOBES annotator prototype have been included in the system and could be used to collect and display time aligned annotations
 * Elements of [KinOath](https://github.com/KinshipSoftware/KinOathKinshipArchiver) such as kintype diagrams could be included to allow for the collection and annotation of kinship data
-* The WAV recorder and CSV writer from FieldKit 6 has already been included as a submodule
+* The WAV recorder and CSV writer from FieldKit has already been included as a submodule
 
 (The DOBES annotator prototype was developed by the TLA but not published)
 
