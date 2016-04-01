@@ -11,8 +11,10 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
     <xsl:output method="text" encoding="UTF-8" />
     <xsl:template match="/">
-        <xsl:value-of select="experiment/@dataSubmitUrl" />
-        <xsl:text>
+        <xsl:text>stimulusscreenselectbutton=Submit
+            stimulusscreenQuitButton=Quit
+            stimulusscreenrejectbutton=No colour
+            stimulusscreenprogresstext={0} of {1}           
             appNameInternal=</xsl:text>
         <xsl:value-of select="experiment/@appNameInternal" />
         <xsl:text>
