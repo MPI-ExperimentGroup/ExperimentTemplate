@@ -149,7 +149,6 @@ public class WizardController {
         Experiment experiment = getDefault();
         experiment.setAppNameDisplay(appName);
         experiment.setAppNameInternal(appNameInternal);
-        experiment.setDataSubmitUrl("http://ems13.mpi.nl/" + appNameInternal + "-admin/");
         return experiment;
     }
 
@@ -442,9 +441,13 @@ public class WizardController {
 
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
 //        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "end of stimuli"));
-        final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
+//        final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
         endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stopAudioRecorder, null));
-        endOfStimulusFeature.getPresenterFeatureList().add(autoNextPresenter);
+//        endOfStimulusFeature.getPresenterFeatureList().add(autoNextPresenter);
+        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "end of stimuli"));
+        final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.targetButton, nextPresenter.getSelfPresenterTag());
+        menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, nextPresenter.getSelfPresenterTag());
+        endOfStimulusFeature.getPresenterFeatureList().add(menuButtonFeature);
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
         experiment.getPresenterScreen().add(presenterScreen);
         return presenterScreen;
@@ -505,10 +508,10 @@ public class WizardController {
     }
 
     public PresenterScreen addInstructionsScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder, String instructionsText) {
-        final PresenterScreen presenterScreen = new PresenterScreen("Instructions", "Instructions", backPresenter, "Instructions", nextPresenter, PresenterType.text, displayOrder);
+        final PresenterScreen presenterScreen = new PresenterScreen("Instructions", "Instructions", backPresenter, "Instructions", null, PresenterType.text, displayOrder);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, instructionsText));
         final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.targetButton, "Go directly to program");
-        presenterFeature1.addFeatureAttributes(FeatureAttribute.target, "Start");
+        presenterFeature1.addFeatureAttributes(FeatureAttribute.target, nextPresenter.getSelfPresenterTag());
         presenterScreen.getPresenterFeatureList().add(presenterFeature1);
         experiment.getPresenterScreen().add(presenterScreen);
         return presenterScreen;
