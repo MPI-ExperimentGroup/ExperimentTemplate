@@ -1,18 +1,32 @@
-LanguageMemoryApp
+Frinex: Framework for Interactive Experiments
 =================
 
-Language Memory is a game where players learn about rare and exotic languages in the holdings of The Language Archive / Max-Planck-Institute for Psycholinguistics by listening to clips from the languages and matching clips of the same language. Combining a general interest in cultural diversity with a simple game interface has proven extremely popular with casual social gamers, as the popularity of ‘the Great Language Game’ has shown. This app improves these concepts by including a greater number of more diverse languages and collecting crucial data on players’ performance and linguistic backgrounds. The app offers links to more information on each language from a range of databases.
+Scientific experiment software under development
+Peter Withers, peter.withers@mpi.nl
+Experiment Group, MPI Nijmegen. 
 
-This project was started by merging the SynQuiz project as follows:
+# Frinex Goals
+Provide software for interactive scientific experiments
+Separate the experiment design from the software implementation.
+Allow reuse across experiments, eg stimulus or activities or metadata.
+Prevent the need for continuous redevelopment of the same or similar experiment software.
+Make the individual experiment applications available to the researchers so that re runs and post publication experiment validation are possible.
+Provide experiments on mobile devices and via the web.
+Modularise development so that components can be added / changed / replaced.
 
-Added all the files from SynQuiz as a basis for this project. Hopefully all the history will be kept and any updates can be pulled as required.
-This was done with:
-git remote add synquizremote https://github.com/languageininteraction/GraphemeColourSynaesthesiaApp.git
-git fetch synquizremote
-git checkout -b synquiz synquizremote/master
-git checkout master                
-git merge synquiz
+# Templates
+The current template is based on [SynQuiz](https://github.com/languageininteraction/GraphemeColourSynaesthesiaApp) and [LingQuest](https://github.com/languageininteraction/LanguageMemoryApp), which are iOS and Android applications developed in the Language In Interaction 3 project. These apps are already in the various app stores.
 
-Then resolve any conflicts and push.
+This template produces: 
+Web experiments
+iOS experiments
+Android experiments
+Can produce other platforms, facebook, desktop, wince …
 
-This process will leave all the synquiz tags and branches in the local copy. So it might be preferable to delete the checkout after this process and clone a fresh copy. This way human errors are less likely when pushing subsequent work. Subsequent merges can then be done by following the exact procedure again.
+Other templates can be developed as needed:
+Native iOS
+Native Android
+Unity3D?
+Minecraft?
+Chrome apps?
+
