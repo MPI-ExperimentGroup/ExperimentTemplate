@@ -30,7 +30,8 @@ Other templates can be developed as needed:
 * Minecraft?
 * Chrome apps?
 
-System Overview ( [UML diagram](https://github.com/MPI-ExperimentGroup/ExperimentTemplate/blob/master/src/main/uml/Frinex.svg) )
+# System Overview
+( [UML diagram](https://github.com/MPI-ExperimentGroup/ExperimentTemplate/blob/master/src/main/uml/Frinex.svg) )
 
 1. Experiment designer interface
    * Configure: screens, metadata, stimulus…
@@ -47,3 +48,25 @@ System Overview ( [UML diagram](https://github.com/MPI-ExperimentGroup/Experimen
 5. Experiment results administrator
    * Viewing and downloading experiment results
    * Managing participants
+
+# Submodules    
+
+Submodules can exist within a template when the  technologies are compatible:
+* Elements of the DOBES annotator prototype have been included in the system and could be used to collect and display time aligned annotations
+* Elements of [KinOath](https://github.com/KinshipSoftware/KinOathKinshipArchiver) such as kintype diagrams could be included to allow for the collection and annotation of kinship data
+* The WAV recorder and CSV writer from FieldKit 6 has already been included as a submodule
+
+(The DOBES annotator prototype was developed by the TLA but not published)
+
+(FieldKit was developed by the TG but not published)
+
+# Getting the results
+
+Web based results
+* Download zip file of CSV output
+* Direct query with JSON output, eg via R (planned)
+
+Offline SD card (mobile apps only)
+* CSV time aligned output
+* Audio/video recordings
+* Post processing in ELAN
