@@ -24,6 +24,7 @@ import com.google.gwt.storage.client.Storage;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import nl.mpi.tg.eg.experiment.client.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
@@ -32,7 +33,6 @@ import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
-import nl.mpi.tg.eg.experiment.client.service.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 
