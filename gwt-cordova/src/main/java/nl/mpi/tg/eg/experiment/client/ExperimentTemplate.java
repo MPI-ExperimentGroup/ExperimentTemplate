@@ -20,7 +20,8 @@ public class ExperimentTemplate implements EntryPoint {
                 $doc.removeEventListener("deviceready", listener, false);
                 self.@nl.mpi.tg.eg.experiment.client.ExperimentTemplate::onDeviceReady()();
 //              document.getElementById("widgetTag").className = device.platform; // todo: set the platform style
-                $wnd.StatusBar.hide(); // hide the status bar
+                //$wnd.StatusBar.hide(); // hide the status bar
+                $wnd.AndroidFullScreen.immersiveMode();
             });
             $doc.addEventListener("deviceready", listener, false);
         } else {            
