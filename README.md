@@ -30,7 +30,9 @@ Other templates can be developed as needed:
 * Minecraft?
 * Chrome apps?
 
-[System Overview](https://github.com/MPI-ExperimentGroup/ExperimentTemplate/blob/master/src/main/uml/Frinex.svg)
+System Overview
+
+[UML diagram](https://github.com/MPI-ExperimentGroup/ExperimentTemplate/blob/master/src/main/uml/Frinex.svg)
 
 1. Experiment designer interface
 * Configure: screens, metadata, stimulus…
