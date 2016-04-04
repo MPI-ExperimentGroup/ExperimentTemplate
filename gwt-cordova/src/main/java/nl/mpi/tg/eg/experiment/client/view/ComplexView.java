@@ -355,8 +355,9 @@ public class ComplexView extends SimpleView {
         });
     }
 
-    public void addTextField(String value) {
+    public void addTextField(String value, boolean readOnly) {
         final TextBox textBox = new TextBox();
+        textBox.setReadOnly(readOnly);
         textBox.setStylePrimaryName("metadataOK");
         textBox.setText(value);
         outerPanel.add(textBox);
