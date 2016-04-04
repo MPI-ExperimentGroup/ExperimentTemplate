@@ -95,6 +95,17 @@
                 <xsl:value-of select="@postName" />
                 <xsl:text>CustomField;
                     }
+                    public void set</xsl:text>
+                <xsl:value-of select="@postName" />
+                <xsl:text>CustomField(String </xsl:text>
+                <xsl:value-of select="@postName" />
+                <xsl:text>CustomField) {
+                    this.</xsl:text>
+                <xsl:value-of select="@postName" />
+                <xsl:text>CustomField = </xsl:text>
+                <xsl:value-of select="@postName" />
+                <xsl:text>CustomField;
+                    }
                 </xsl:text>
             </xsl:for-each>
             <xsl:text>              
@@ -156,12 +167,13 @@
             <xsl:text>    
                 &lt;/tr&gt;
                     &lt;tr th:fragment="participantrows"&gt;
-                    &lt;td th:text="${prod.id}"&gt;id&lt;/td&gt;
-                    &lt;td th:text="${prod.userId}"&gt;userId&lt;/td&gt;
-                    &lt;td th:text="${prod.submitDate}"&gt;submitDate&lt;/td&gt;
+                    &lt;td th:text="${participant.id}"&gt;id&lt;/td&gt;
+                    &lt;td th:text="${participant.userId}"&gt;userId&lt;/td&gt;
+                    &lt;td th:text="${participant.submitDate}"&gt;submitDate&lt;/td&gt;
             </xsl:text>
             <xsl:for-each select="experiment/metadata/field">
-                <xsl:text>&lt;td  th:text="${prod.</xsl:text>
+                <xsl:text>
+                    &lt;td  th:text="${participant.</xsl:text>
                 <xsl:value-of select="@postName" />
                 <xsl:text>CustomField}"&gt;&lt;/td&gt;</xsl:text>
             </xsl:for-each>
