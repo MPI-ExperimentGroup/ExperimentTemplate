@@ -52,6 +52,7 @@ public class WizardData {
     private String[] practiceStimuliRandomTags = null;
     private String practiceStimulusCodeMatch = null;
     private int practiceStimulusCodeMsDelay = 0;
+    private int practiceStimulusMsDelay = 0;
     private String practiceStimulusCodeFormat = null;
     private int practiceStimuliCount = 1;
     private String practiceStimulusResponseLabelLeft = null;
@@ -64,12 +65,14 @@ public class WizardData {
     private String[] stimuliRandomTags = null;
     private String stimulusCodeMatch = null;
     private int stimulusCodeMsDelay = 0;
+    private int stimulusMsDelay = 0;
     private String stimulusCodeFormat = null;
     private int stimuliCount = 1;
     private String stimulusResponseLabelLeft = null;
     private String stimulusResponseLabelRight = null;
     private String stimulusResponseOptions = null;
     private boolean completionScreen = false;
+    private boolean allowUserRestart = true;
     private String completionText = "";
     private boolean menuScreen = false;
 
@@ -260,6 +263,14 @@ public class WizardData {
         this.practiceStimulusCodeMsDelay = practiceStimulusCodeMsDelay;
     }
 
+    public int getPracticeStimulusMsDelay() {
+        return practiceStimulusMsDelay;
+    }
+
+    public void setPracticeStimulusMsDelay(int practiceStimulusMsDelay) {
+        this.practiceStimulusMsDelay = practiceStimulusMsDelay;
+    }
+
     public String getPracticeStimulusCodeFormat() {
         return practiceStimulusCodeFormat;
     }
@@ -380,6 +391,14 @@ public class WizardData {
         this.stimulusCodeMsDelay = stimulusCodeMsDelay;
     }
 
+    public int getStimulusMsDelay() {
+        return stimulusMsDelay;
+    }
+
+    public void setStimulusMsDelay(int stimulusMsDelay) {
+        this.stimulusMsDelay = stimulusMsDelay;
+    }
+
     public String getStimulusCodeFormat() {
         return stimulusCodeFormat;
     }
@@ -434,6 +453,14 @@ public class WizardData {
 
     public void setCompletionScreen(boolean completionScreen) {
         this.completionScreen = completionScreen;
+    }
+
+    public boolean isAllowUserRestart() {
+        return allowUserRestart;
+    }
+
+    public void setAllowUserRestart(boolean allowRestart) {
+        this.allowUserRestart = allowRestart;
     }
 
     public String getCompletionText() {
