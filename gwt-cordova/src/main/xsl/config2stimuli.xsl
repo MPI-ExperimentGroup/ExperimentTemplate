@@ -12,13 +12,15 @@
     <xsl:output method="text" encoding="UTF-8" />
     <xsl:template match="/">
         <xsl:text>package nl.mpi.tg.eg.experiment.client.model;
-
+            
+            import com.google.gwt.core.client.GWT;
             import java.util.Arrays;
             import java.util.List;
             import java.util.Objects;
+            import nl.mpi.tg.eg.experiment.client.ServiceLocations;
 
             public class GeneratedStimulus implements Stimulus {
-
+            protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
             private static final GeneratedStimulus[] values = new GeneratedStimulus[]{
         </xsl:text>
         <xsl:for-each select="experiment/stimuli/stimulus">
@@ -120,26 +122,22 @@
             }
             
             public String getMp3() {
-            return "</xsl:text>
-        <xsl:value-of select="experiment/@staticFilesUrl" />
+            return serviceLocations.staticFilesUrl() + "</xsl:text>
         <xsl:text>" + uniqueId + ".mp3";
             }
 
             public String getImage() {
-            return "</xsl:text>
-        <xsl:value-of select="experiment/@staticFilesUrl" />
+            return serviceLocations.staticFilesUrl() + "</xsl:text>
         <xsl:text>" + uniqueId + ".jpg";
             }
 
             public String getMp4() {
-            return "</xsl:text>
-        <xsl:value-of select="experiment/@staticFilesUrl" />
+            return serviceLocations.staticFilesUrl() + "</xsl:text>
         <xsl:text>" + uniqueId + ".mp4";
             }
             
             public String getOgg() {
-            return "</xsl:text>
-        <xsl:value-of select="experiment/@staticFilesUrl" />
+            return serviceLocations.staticFilesUrl() + "</xsl:text>
         <xsl:text>" + uniqueId + ".ogg";
             }
             
