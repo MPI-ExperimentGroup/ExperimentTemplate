@@ -59,7 +59,7 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
         // todo: consider changing this to something other than just a tag value
         submissionService.submitTagValue(userResults.getUserData().getUserId(), "CompletionCode", completionCode, duration.elapsedMillis());
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "DataSubmissionComplete", "CompletionCode", completionCode, duration.elapsedMillis());
-        ((ComplexView) simpleView).addTextField(completionCode);
+        ((ComplexView) simpleView).addTextField(completionCode, true);
     }
 
     // todo: update xslt so the nullObject can be removed
