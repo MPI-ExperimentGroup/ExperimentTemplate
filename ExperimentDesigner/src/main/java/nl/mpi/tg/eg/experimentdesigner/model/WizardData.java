@@ -24,6 +24,7 @@ package nl.mpi.tg.eg.experimentdesigner.model;
 public class WizardData {
 
     private String appName = "";
+    private boolean obfuscateScreenNames = false;
     private boolean userSelectScreen = false;
     private boolean agreementScreen = false;
     private String agreementText = "";
@@ -85,6 +86,14 @@ public class WizardData {
 
     public void setAppName(String appName) {
         this.appName = appName;
+    }
+
+    public boolean isObfuscateScreenNames() {
+        return obfuscateScreenNames;
+    }
+
+    public void setObfuscateScreenNames(boolean obfuscateScreenNames) {
+        this.obfuscateScreenNames = obfuscateScreenNames;
     }
 
     public boolean isUserSelectScreen() {
