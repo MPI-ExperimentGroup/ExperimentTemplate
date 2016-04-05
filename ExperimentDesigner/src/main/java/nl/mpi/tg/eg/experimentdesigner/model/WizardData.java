@@ -27,6 +27,7 @@ public class WizardData {
     private boolean obfuscateScreenNames = false;
     private boolean userSelectScreen = false;
     private boolean agreementScreen = false;
+    private String informationScreenText = "";
     private String agreementText = "";
     private String agreementScreenText = "";
     private String disagreementScreenText = "";
@@ -94,6 +95,14 @@ public class WizardData {
 
     public void setObfuscateScreenNames(boolean obfuscateScreenNames) {
         this.obfuscateScreenNames = obfuscateScreenNames;
+    }
+
+    public String getInformationScreenText() {
+        return informationScreenText;
+    }
+
+    public void setInformationScreenText(String informationScreenText) {
+        this.informationScreenText = informationScreenText;
     }
 
     public boolean isUserSelectScreen() {
