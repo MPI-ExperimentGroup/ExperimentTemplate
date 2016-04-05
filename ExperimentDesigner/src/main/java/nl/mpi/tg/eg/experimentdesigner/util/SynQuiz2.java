@@ -69,7 +69,7 @@ public class SynQuiz2 {
 
         final PresenterScreen demographicsScreen = createDemographicsScreen(experiment, "Demographics", 3);
         presenterScreenList.add(demographicsScreen);
-        final PresenterScreen editUserScreen = wizardController.addEditUserScreen(experiment, introductionScreen, demographicsScreen, 2, wizardData, null);
+        final PresenterScreen editUserScreen = wizardController.addEditUserScreen(experiment, introductionScreen, demographicsScreen, 2, wizardData, null, false);
         demographicsScreen.setBackPresenter(editUserScreen);
         final PresenterScreen weekdaysScreen = createStimulusScreen("Weekdays", demographicsScreen, 4);
         presenterScreenList.add(weekdaysScreen);
