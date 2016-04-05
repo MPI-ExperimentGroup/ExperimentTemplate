@@ -98,7 +98,7 @@ public class WizardController {
         }
         if (wizardData.isMetadataScreen()) {
 //            addMetadata(experiment, wizardData);
-            editUserScreen = addEditUserScreen(experiment, null, null, 3, wizardData);
+            editUserScreen = addEditUserScreen(experiment, null, null, 3, wizardData, null);
             if (agreementScreen != null) {
                 agreementScreen.setNextPresenter(editUserScreen);
             }
@@ -112,20 +112,20 @@ public class WizardController {
         }
         if (wizardData.getPracticeStimuliSet() != null) {
 //            addMetadata(experiment, wizardData);
-            practiceStimulusScreen = addRandomTextScreen(experiment, null, 5, "PracticeStimulusScreen", wizardData.getPracticeStimuliSet(), wizardData.getPracticeStimuliRandomTags(), wizardData.getPracticeStimuliCount(), wizardData.getPracticeStimulusCodeMatch(), wizardData.getPracticeStimulusMsDelay(), wizardData.getPracticeStimulusCodeMsDelay(), wizardData.getPracticeStimulusCodeFormat(), wizardData.getPracticeStimulusResponseOptions(), wizardData.getPracticeStimulusResponseLabelLeft(), wizardData.getPracticeStimulusResponseLabelRight());
+            practiceStimulusScreen = addRandomTextScreen(experiment, null, 5, "PracticeStimulusScreen", true, wizardData.getPracticeStimuliSet(), wizardData.getPracticeStimuliRandomTags(), wizardData.getPracticeStimuliCount(), wizardData.getPracticeStimulusCodeMatch(), wizardData.getPracticeStimulusMsDelay(), wizardData.getPracticeStimulusCodeMsDelay(), wizardData.getPracticeStimulusCodeFormat(), wizardData.getPracticeStimulusResponseOptions(), wizardData.getPracticeStimulusResponseLabelLeft(), wizardData.getPracticeStimulusResponseLabelRight());
             if (audioTestScreen != null) {
                 audioTestScreen.setNextPresenter(practiceStimulusScreen);
             }
         }
         if (wizardData.getStimuliSet() != null) {
 //            addMetadata(experiment, wizardData);
-            stimulusScreen = addRandomTextScreen(experiment, null, 5, "StimulusScreen", wizardData.getStimuliSet(), wizardData.getStimuliRandomTags(), wizardData.getStimuliCount(), wizardData.getStimulusCodeMatch(), wizardData.getStimulusMsDelay(), wizardData.getStimulusCodeMsDelay(), wizardData.getStimulusCodeFormat(), wizardData.getStimulusResponseOptions(), wizardData.getStimulusResponseLabelLeft(), wizardData.getStimulusResponseLabelRight());
+            stimulusScreen = addRandomTextScreen(experiment, null, 5, "StimulusScreen", true, wizardData.getStimuliSet(), wizardData.getStimuliRandomTags(), wizardData.getStimuliCount(), wizardData.getStimulusCodeMatch(), wizardData.getStimulusMsDelay(), wizardData.getStimulusCodeMsDelay(), wizardData.getStimulusCodeFormat(), wizardData.getStimulusResponseOptions(), wizardData.getStimulusResponseLabelLeft(), wizardData.getStimulusResponseLabelRight());
             if (practiceStimulusScreen != null) {
                 practiceStimulusScreen.setNextPresenter(stimulusScreen);
             }
         }
         if (wizardData.isCompletionScreen()) {
-            completionScreen = addCompletionScreen(experiment, null, null, 6, wizardData.getCompletionText(), wizardData.isAllowUserRestart(), "Restart");
+            completionScreen = addCompletionScreen(experiment, null, null, 6, wizardData.getCompletionText(), wizardData.isAllowUserRestart(), "Clear data and restart experiment");
             if (stimulusScreen != null) {
                 stimulusScreen.setNextPresenter(completionScreen);
             }
@@ -220,16 +220,22 @@ public class WizardController {
     }
 
     public PresenterScreen addEditUserScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder) {
-        return addEditUserScreen(experiment, backPresenter, nextPresenter, displayOrder, null);
+        return addEditUserScreen(experiment, backPresenter, nextPresenter, displayOrder, null, null);
     }
 
-    public PresenterScreen addEditUserScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder, WizardData wizardData) {
+    public PresenterScreen addEditUserScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder, WizardData wizardData, String[] customFields) {
         final PresenterScreen presenterScreen = new PresenterScreen("Edit User", "Edit User", backPresenter, "EditUser", nextPresenter, PresenterType.metadata, displayOrder);
         if (wizardData != null) {
             if (!wizardData.getMetadataScreenText().isEmpty()) {
                 presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, wizardData.getMetadataScreenText()));
             }
             insertMetadataField(experiment, new Metadata("workerId", "Worker ID", ".'{'3,'}'", "Please enter at least three letters.", false, null), presenterScreen);
+            if (customFields != null) {
+                for (String fieldString : customFields) {
+                    final String[] splitFieldString = fieldString.split(":");
+                    insertMetadataField(experiment, new Metadata(splitFieldString[0], splitFieldString[1], splitFieldString[2], splitFieldString[3], false, null), presenterScreen);
+                }
+            }
             if (wizardData.isSpeakerNameField()) {
                 insertMetadataField(experiment, new Metadata("speakerName", "Speaker name *", ".'{'3,'}'", "Please enter at least three letters.", false, null), presenterScreen);
             }
@@ -289,10 +295,10 @@ public class WizardController {
     }
 
     public PresenterScreen addRandomTextScreen(final Experiment experiment, final PresenterScreen backPresenter, long displayOrder, String screenName, String[] screenTextArray, int maxStimuli, String responseOptions, String responseOptionsLabelLeft, String responseOptionsLabelRight) {
-        return addRandomTextScreen(experiment, backPresenter, displayOrder, screenName, screenTextArray, null, maxStimuli, null, 0, 0, null, responseOptions, responseOptionsLabelLeft, responseOptionsLabelRight);
+        return addRandomTextScreen(experiment, backPresenter, displayOrder, screenName, true, screenTextArray, null, maxStimuli, null, 0, 0, null, responseOptions, responseOptionsLabelLeft, responseOptionsLabelRight);
     }
 
-    public PresenterScreen addRandomTextScreen(final Experiment experiment, final PresenterScreen backPresenter, long displayOrder, String screenName, String[] screenTextArray, String[] randomStimuliTags, int maxStimuli, String stimulusCodeMatch, int stimulusDelay, int codeStimulusDelay, String codeFormat, String responseOptions, String responseOptionsLabelLeft, String responseOptionsLabelRight) {
+    public PresenterScreen addRandomTextScreen(final Experiment experiment, final PresenterScreen backPresenter, long displayOrder, String screenName, boolean centreScreen, String[] screenTextArray, String[] randomStimuliTags, int maxStimuli, String stimulusCodeMatch, int stimulusDelay, int codeStimulusDelay, String codeFormat, String responseOptions, String responseOptionsLabelLeft, String responseOptionsLabelRight) {
         final List<Stimulus> stimuliList = experiment.getStimuli();
         final Pattern stimulusCodePattern = (stimulusCodeMatch != null) ? Pattern.compile(stimulusCodeMatch) : null;
         for (String screenText : screenTextArray) {
@@ -320,7 +326,9 @@ public class WizardController {
         final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, screenName, null, PresenterType.stimulus, displayOrder);
 
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
-        presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
+        if (centreScreen) {
+            presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
+        }
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadStimulus, null);
         loadStimuliFeature.addStimulusTag(screenName);
         if (randomStimuliTags != null) {
@@ -519,7 +527,7 @@ public class WizardController {
 
     public PresenterScreen addTextScreen(final Experiment experiment, final PresenterScreen backPresenter, final String screenName, final PresenterScreen nextPresenter, long displayOrder, String instructionsText) {
         final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, screenName, nextPresenter, PresenterType.text, displayOrder);
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, instructionsText));
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, instructionsText));
 //        final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.actionButton, "Continue");
 //        presenterScreen.getPresenterFeatureList().add(actionButtonFeature);
 //        actionButtonFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
