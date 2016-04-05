@@ -754,6 +754,7 @@ public class Sara01 {
         wizardData.setPracticeStimuliSet(stimuliPracticeArray);
         wizardData.setPracticeStimulusCodeMatch("/([ET]_[0-9]+)_");
         wizardData.setPracticeStimuliCount(1000);
+        wizardData.setPracticeStimulusMsDelay(1000);
         wizardData.setPracticeStimulusCodeMsDelay(500);
         wizardData.setPracticeStimulusCodeFormat("static/practice/wav/<code>");
         wizardData.setPracticeStimulusResponseOptions("1,2,3,4,5,6,7");
@@ -767,6 +768,7 @@ public class Sara01 {
         wizardData.setStimuliSet(stimuliExperimentArray);
         wizardData.setStimulusCodeMatch("/([ET]_[0-9]+)_");
         wizardData.setStimuliCount(1000);
+        wizardData.setStimulusMsDelay(1000);
         wizardData.setStimulusCodeMsDelay(500);
         wizardData.setStimulusCodeFormat("static/experiment/wav/<code>");
         wizardData.setStimulusResponseOptions("1,2,3,4,5,6,7");
@@ -775,6 +777,7 @@ public class Sara01 {
 
         //data upload verification 
         wizardData.setCompletionScreen(true);
+        wizardData.setAllowUserRestart(true);
         //completion code and thank you screen
         wizardData.setCompletionText(
                 "Dit is het einde van het experiment.<br/>"
