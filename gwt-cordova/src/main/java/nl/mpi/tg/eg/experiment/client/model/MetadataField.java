@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.model;
 
+import java.util.Arrays;
 import java.util.Objects;
 import nl.mpi.tg.eg.experiment.client.exception.MetadataFieldException;
 
@@ -72,7 +73,16 @@ public class MetadataField {
         if (controlledRegex == null) {
             return;
         }
-        if (value == null || !value.matches(controlledRegex)) {
+        if (value == null) {
+            throw new MetadataFieldException(this);
+        }
+        final String[] listValues = getListValues();
+        if (listValues.length > 1) {
+            // if this field is used as a selection list then do not perform a regex but still check that one of the required values is selected
+            if (!Arrays.asList(listValues).contains(value)) {
+                throw new MetadataFieldException(this);
+            }
+        } else if (!value.matches(controlledRegex)) {
             throw new MetadataFieldException(this);
         }
     }

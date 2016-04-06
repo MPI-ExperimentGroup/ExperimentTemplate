@@ -71,8 +71,13 @@ public class MetadataView extends ComplexView {
             focusWidget = new ListBox();
             int selectedIndex = 0;
             int itemCounter = 0;
+            ((ListBox) focusWidget).addItem(""); // make sure there is an empty item at the top of the list
             for (String listItem : metadataField.getListValues()) {
-                ((ListBox) focusWidget).addItem(listItem);
+                if (!listItem.isEmpty()) { // allow only one empty item in this list
+                    ((ListBox) focusWidget).addItem(listItem);
+                } else { // include the empty item in the list item count
+                    itemCounter++;
+                }
                 if (existingValue != null && existingValue.equals(listItem)) {
                     selectedIndex = itemCounter;
                 }
