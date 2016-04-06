@@ -72,31 +72,32 @@ public class FactOrFiction {
     public Experiment getExperiment() {
         final Experiment experiment = wizardController.getExperiment("leeservaring", "leeservaring");
         final WizardData wizardData = new WizardData();
+        wizardData.setObfuscateScreenNames(true);
 //        wizardData.setAgeField(true);
 //        wizardData.setGenderField(true);
 //        wizardData.setCustomTextField("level of proficiency in Dutch");
-        final PresenterScreen agreementScreen = wizardController.addAgreementScreen(experiment, null, "EditUser", 1, agreementScreenText);
+        final PresenterScreen agreementScreen = wizardController.addAgreementScreen(experiment, null, "EditUser", 1, agreementScreenText, wizardData.isObfuscateScreenNames());
         final String[] medataFields = new String[]{
             "leeftijd:Leeftijd:[0-9]+:voer een getal.",
             "geslacht:Geslacht:|man|vrouw|anders:.",
-            "opleidingsniveau:Opleidingsniveau:|primair onderwijs (basisschool)|voortgezet onderwijs|middelbaar beroepsonderwijs (MBO)|hoger onderwijs (HBO, universiteit)|anders:.",
+            "opleidingsniveau:Opleidingsniveau:primair onderwijs (basisschool)|voortgezet onderwijs|middelbaar beroepsonderwijs (MBO)|hoger onderwijs (HBO, universiteit)|anders:.",
             "nederlandsMoedertaal:Is Nederlands uw moedertaal:true|false:.",
             "hoeveelJaarNederlands:Als Nederlands niet uw moedertaal is, hoeveel jaar leert u al Nederlands?:[0-9]*:voer een getal."
         };
-        final PresenterScreen editUserScreen = wizardController.addEditUserScreen(experiment, null, null, 2, wizardData, medataFields);
+        final PresenterScreen editUserScreen = wizardController.addEditUserScreen(experiment, null, null, 2, wizardData, medataFields, wizardData.isObfuscateScreenNames());
         final PresenterScreen groupAorBScreen = wizardController.addRandomTextScreen(experiment, null, 3, "Introduciton", false, stimuliGroupAorB,
-                new String[]{"IntroductionAFact", "IntroductionBFiction"}, 1, null, 0, 0, null, null, null, null);
-        final PresenterScreen storyScreen = wizardController.addRandomTextScreen(experiment, null, 4, "StoryPresentation", false, storyTexts, new String[]{"Emotioneel_hij", "Emotioneel_ik", "Koffiemolen_hij", "Koffiemolen_ik", "Matroesjka_hij", "Matroesjka_ik", "Meesterwerk_hij", "Meesterwerk_ik"}, 1, null, 0, 0, null, null, null, null);
-        final PresenterScreen survey1Screen = wizardController.addRandomTextScreen(experiment, null, 5, "Survey1", servey1Stimuli, 1000, "1,2,3,4,5,6,7", "helemaal niet van toepassing", "helemaal van toepassing");
-        final PresenterScreen survey1InstructionsScreen = wizardController.addTextScreen(experiment, null, "Survey1Instructions", null, 16, "<b>U krijgt nu enkele stellingen te zien over uw ervaringen tijdens het lezen. Geef aan in hoeverre de stellingen van toepassing zijn op uw ervaring tijdens het lezen.</b>");
-        final PresenterScreen survey2InstructionsScreen = wizardController.addTextScreen(experiment, null, "Survey2Instructions", null, 16, "<b>U krijgt nu enkele woorden te zien. Uw taak is om aan te geven in hoeverre de woorden van toepassing zijn op uw leeservaring.</b>");
-        final PresenterScreen survey2Screen = wizardController.addRandomTextScreen(experiment, null, 6, "Survey2", new String[]{"Interessant:interessant", "goedgeschreven:goed geschreven", "vanhogeliterairekwaliteit:van hoge literaire kwaliteit", "makkelijktebegrijpen:makkelijk te begrijpen", "toegankelijk:toegankelijk", "spannend:spannend", "mooi:mooi", "boeiend:boeiend", "emotioneel:emotioneel", "saai:saai"}, 1000, "1,2,3,4,5,6,7", "helemaal niet van toepassing", "helemaal van toepassing");
-        final PresenterScreen pictureInstructionsScreen = wizardController.addTextScreen(experiment, null, "PictureInstructions", null, 16, "U zult zo enkele afbeeldingen zien die situaties tonen. Uw taak is te kiezen of de afgebeelde acties overeenkomen met acties in het verhaal dat u net las, of niet. Als het beeld een actie toont die in het verhaal voorkwam, toetst u “Z”, als de actie niet in het verhaal voorkwam toetst u “.”. Probeer zo snel mogelijk te reageren.");
-        final PresenterScreen pictureTaskScreen = wizardController.addRandomTextScreen(experiment, null, 17, "PictureTask", images, 1000, "yes [z],no [.]", "", "");
-        final PresenterScreen readingBehaviorInstructionsScreen = wizardController.addTextScreen(experiment, null, "ReadingBehaviorInstructions", null, 18, "Het experiment is bijna klaar. We hebben nog 6 korte vragen aan u.");
-        final PresenterScreen readingBehaviorScreen = wizardController.addRandomTextScreen(experiment, null, 19, "ReadingBehavior", readingBehavior, 1000, "1,2,3,4,5,6,7", "", "");
+                new String[]{"IntroductionAFact", "IntroductionBFiction"}, 1, null, 0, 0, null, null, null, null, wizardData.isObfuscateScreenNames());
+        final PresenterScreen storyScreen = wizardController.addRandomTextScreen(experiment, null, 4, "StoryPresentation", false, storyTexts, new String[]{"Emotioneel_hij", "Emotioneel_ik", "Koffiemolen_hij", "Koffiemolen_ik", "Matroesjka_hij", "Matroesjka_ik", "Meesterwerk_hij", "Meesterwerk_ik"}, 1, null, 0, 0, null, null, null, null, wizardData.isObfuscateScreenNames());
+        final PresenterScreen survey1Screen = wizardController.addRandomTextScreen(experiment, null, 5, "Survey1", servey1Stimuli, 1000, "1,2,3,4,5,6,7", "helemaal niet van toepassing", "helemaal van toepassing", wizardData.isObfuscateScreenNames());
+        final PresenterScreen survey1InstructionsScreen = wizardController.addTextScreen(experiment, null, "Survey1Instructions", null, 16, "<b>U krijgt nu enkele stellingen te zien over uw ervaringen tijdens het lezen. Geef aan in hoeverre de stellingen van toepassing zijn op uw ervaring tijdens het lezen.</b>", wizardData.isObfuscateScreenNames());
+        final PresenterScreen survey2InstructionsScreen = wizardController.addTextScreen(experiment, null, "Survey2Instructions", null, 16, "<b>U krijgt nu enkele woorden te zien. Uw taak is om aan te geven in hoeverre de woorden van toepassing zijn op uw leeservaring.</b>", wizardData.isObfuscateScreenNames());
+        final PresenterScreen survey2Screen = wizardController.addRandomTextScreen(experiment, null, 6, "Survey2", new String[]{"Interessant:interessant", "goedgeschreven:goed geschreven", "vanhogeliterairekwaliteit:van hoge literaire kwaliteit", "makkelijktebegrijpen:makkelijk te begrijpen", "toegankelijk:toegankelijk", "spannend:spannend", "mooi:mooi", "boeiend:boeiend", "emotioneel:emotioneel", "saai:saai"}, 1000, "1,2,3,4,5,6,7", "helemaal niet van toepassing", "helemaal van toepassing", wizardData.isObfuscateScreenNames());
+        final PresenterScreen pictureInstructionsScreen = wizardController.addTextScreen(experiment, null, "PictureInstructions", null, 16, "U zult zo enkele afbeeldingen zien die situaties tonen. Uw taak is te kiezen of de afgebeelde acties overeenkomen met acties in het verhaal dat u net las, of niet. Als het beeld een actie toont die in het verhaal voorkwam, toetst u “Z”, als de actie niet in het verhaal voorkwam toetst u “.”. Probeer zo snel mogelijk te reageren.", wizardData.isObfuscateScreenNames());
+        final PresenterScreen pictureTaskScreen = wizardController.addRandomTextScreen(experiment, null, 17, "PictureTask", images, 1000, "yes [ z ],no [ . ]", "", "", wizardData.isObfuscateScreenNames());
+        final PresenterScreen readingBehaviorInstructionsScreen = wizardController.addTextScreen(experiment, null, "ReadingBehaviorInstructions", null, 18, "Het experiment is bijna klaar. We hebben nog 6 korte vragen aan u.", wizardData.isObfuscateScreenNames());
+        final PresenterScreen readingBehaviorScreen = wizardController.addRandomTextScreen(experiment, null, 19, "ReadingBehavior", readingBehavior, 1000, "1,2,3,4,5,6,7", "", "", wizardData.isObfuscateScreenNames());
 
-        final PresenterScreen completionScreen = wizardController.addCompletionScreen(experiment, null, null, 20, completionScreenText, true, "Clear data and restart experiment");
+        final PresenterScreen completionScreen = wizardController.addCompletionScreen(experiment, null, null, 20, completionScreenText, true, "Clear data and restart experiment", wizardData.isObfuscateScreenNames());
         agreementScreen.setNextPresenter(editUserScreen);
         editUserScreen.setNextPresenter(groupAorBScreen);
         groupAorBScreen.setNextPresenter(storyScreen);

@@ -236,7 +236,8 @@ public class WizardController {
             if (!wizardData.getMetadataScreenText().isEmpty()) {
                 presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, wizardData.getMetadataScreenText()));
             }
-            insertMetadataField(experiment, new Metadata("workerId", "Worker ID", ".'{'3,'}'", "Please enter at least three letters.", false, null), presenterScreen);
+            addMetadata(experiment);
+//            insertMetadataField(experiment, new Metadata("workerId", "Worker ID", ".'{'3,'}'", "Please enter at least three letters.", false, null), presenterScreen);
             if (customFields != null) {
                 for (String fieldString : customFields) {
                     insertMetadataByString(fieldString, experiment, presenterScreen);
