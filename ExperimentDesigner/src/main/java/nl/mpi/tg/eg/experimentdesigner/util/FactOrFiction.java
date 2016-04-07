@@ -26,7 +26,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
  * @since Mar 16, 2016 2:35:56 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  *
- * Prose text in storyTexts are copywright Martin Rombouts used by permission 
+ * Prose text in storyTexts are copywright Martin Rombouts used by permission
  */
 public class FactOrFiction {
 
@@ -84,10 +84,10 @@ public class FactOrFiction {
     String multipleChoiceText = "1= niet zo graag, 7 = heel graag (same as survey 1 and 3)";
     String[] readingBehavior = new String[]{
         "RB1:Leest u graag fictie? <br/>(1=niet zo graag, 7=heel graag)",
-        "RB2:Komt u wel eens in aanraking met  andere soorten fictie (b.v. films of series, stripboeken etc.)<br/>(1=niet zo graag, 7=heel graag)",
+        "RB2:Komt u wel eens in aanraking met  andere soorten fictie (b.v. films of series, stripboeken etc.)<br/>(1=niet zo vaak, 7=heel vaak)",
         "RB3:Hoe vaak komt u in aanraking met fictie?<br/>(1=nooit, 7=dagelijks)",
         "RB4:Leest u graag waargebeurde verhalen?<br/>(1=niet zo graag, 7=heel graag)",
-        "RB5:Leest u vaak non-fictie (bijvoorbeeld nieuwsartikelen of (auto-)biografieen), of komt u vaak op andere manieren in aanraking met non-fictie, bijvoorbeeld op tv of op de radio (bijvoorbeeld nieuws- of wetenschapsprogramma’s)?<br/>(1=niet zo graag, 7=heel graag)",
+        "RB5:Leest u vaak non-fictie (bijvoorbeeld nieuwsartikelen of (auto-)biografieen), of komt u vaak op andere manieren in aanraking met non-fictie, bijvoorbeeld op tv of op de radio (bijvoorbeeld nieuws- of wetenschapsprogramma’s)?<br/>(1=niet zo vaak, 7=heel vaak)",
         "RB6:Hoe vaak komt u in aanraking met non-fictie?<br/>(1=nooit, 7=dagelijks)"
     };
     final String[] storyTexts = new String[]{
@@ -330,8 +330,8 @@ public class FactOrFiction {
         final PresenterScreen pictureTaskScreen = wizardController.addRandomTextScreen(experiment, null, 17, "PictureTask", images, 1000, "yes [ z ],no [ . ]", "", "", wizardData.isObfuscateScreenNames());
         final PresenterScreen readingBehaviorInstructionsScreen = wizardController.addTextScreen(experiment, null, "ReadingBehaviorInstructions", null, 18, "<b>Het experiment is bijna klaar. We hebben nog 6 korte vragen aan u.</b>", "volgende [ spatiebalk ]", wizardData.isObfuscateScreenNames());
         final PresenterScreen readingBehaviorScreen = wizardController.addRandomTextScreen(experiment, null, 19, "ReadingBehavior", readingBehavior, 1000, "1,2,3,4,5,6,7", "", "", wizardData.isObfuscateScreenNames());
-        final PresenterScreen restartScreen = wizardController.addCompletionScreen(experiment, null, null, 21, "This experiment has been completed. If another person would like to participate you can restart by clicking the button below.", true, "Clear data and restart experiment", "Completion", wizardData.isObfuscateScreenNames());
-        final PresenterScreen registeredScreen = wizardController.addCompletionScreen(experiment, null, null, 22, "Thank you for registering for updates. If another person would like to participate you can restart by clicking the button below.", true, "Clear data and restart experiment", "Registered", wizardData.isObfuscateScreenNames());
+        final PresenterScreen restartScreen = wizardController.addCompletionScreen(experiment, null, null, 21, "Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop.", true, "Opnieuw beginnen", "Completion", wizardData.isObfuscateScreenNames());
+        final PresenterScreen registeredScreen = wizardController.addCompletionScreen(experiment, null, null, 22, "Leuk dat u geïnteresseerd bent. Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop.", true, "Opnieuw beginnen", "Registered", wizardData.isObfuscateScreenNames());
         final PresenterScreen completionScreen = wizardController.addEditUserScreen(experiment, null, "Bedankt", null, 20, null, completionScreenText, new String[]{"emaill::^[^@]+@[^@]+$:Geef een geldig e-mailadres."}, "Registreren", "Nog een keer meedoen?", restartScreen, "Ja graag!", wizardData.isObfuscateScreenNames());
 //        completionScreen.setBackPresenter(restartScreen);
         completionScreen.setNextPresenter(registeredScreen);
