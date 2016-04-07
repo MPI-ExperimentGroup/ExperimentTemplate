@@ -127,7 +127,16 @@ public class SimpleView extends AbstractView {
         footerPanel.setWidth(width + "px");
         scrollPanel.setWidth(width + "px");
         if (footerPanel.getWidgetCount() > 0) {
-            final int footerHeight = footerPanel.getOffsetHeight();
+            final int footerHeight;
+            if (footerPanel.getOffsetHeight() < HEADER_SIZE) {
+                if (footerPanel.getWidget(0) instanceof VerticalPanel) {
+                    footerHeight = HEADER_SIZE * ((VerticalPanel) footerPanel.getWidget(0)).getWidgetCount();
+                } else {
+                    footerHeight = HEADER_SIZE; // footerPanel.getOffsetHeight();
+                }
+            } else {
+                footerHeight = footerPanel.getOffsetHeight();
+            }
             scrollPanel.setHeight(height - HEADER_SIZE - ((footerHeight < HEADER_SIZE) ? HEADER_SIZE : footerHeight) + "px");
         } else {
             scrollPanel.setHeight(height - HEADER_SIZE + "px");
