@@ -62,7 +62,7 @@ public class PresenterFeature {
     @OrderBy("displayOrder ASC")
     private List<PresenterFeature> presenterFeatures = new ArrayList<>();
     private HashMap<FeatureAttribute, String> featureAttributes = new HashMap<>();
-    @Size(max = 3000)
+    @Size(max = 3500)
     private String featureText;
 
     public PresenterFeature() {
