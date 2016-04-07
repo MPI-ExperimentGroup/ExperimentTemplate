@@ -309,7 +309,7 @@ public class FactOrFiction {
 //        wizardData.setAgeField(true);
 //        wizardData.setGenderField(true);
 //        wizardData.setCustomTextField("level of proficiency in Dutch");
-        final PresenterScreen agreementScreen = wizardController.addAgreementScreen(experiment, null, "Participant", 1, agreementScreenText, wizardData.isObfuscateScreenNames());
+        final PresenterScreen agreementScreen = wizardController.addAgreementScreen(experiment, null, "Participant", 1, agreementScreenText, "Akkoord", wizardData.isObfuscateScreenNames());
         final String[] medataFields = new String[]{
             "leeftijd:Leeftijd:[0-9]+:Voer een getal.",
             "geslacht:Geslacht:|man|vrouw|anders:.",
