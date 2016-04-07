@@ -372,8 +372,8 @@ public class WizardController {
 
         hasMoreStimulusFeature.getPresenterFeatureList().add(imageFeature);
         imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
-        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
-        imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "80");
+        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "100");
+        imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
         imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(stimulusDelay));
         final PresenterFeature presenterFeature;
         if (codeFormat != null) {
