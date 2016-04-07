@@ -50,7 +50,7 @@
         <xsl:for-each select="experiment/stimuli/stimulus[@image]">           
             <xsl:text>convert "</xsl:text>
             <xsl:value-of select="@image" />
-            <xsl:text>" </xsl:text>
+            <xsl:text>" -gravity center -background white -extent 2000x2000 </xsl:text>
             <!--<xsl:value-of select="generate-id(.)" />-->
             <xsl:value-of select="@code" />
             <xsl:text>.jpg</xsl:text>
