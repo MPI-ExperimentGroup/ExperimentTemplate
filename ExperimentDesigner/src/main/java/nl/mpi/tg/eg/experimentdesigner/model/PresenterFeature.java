@@ -52,6 +52,7 @@ public class PresenterFeature {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private long displayOrder;
+    static long globalfeatureCounter = 0;
     @Enumerated(EnumType.STRING)
     private FeatureType featureType;
     @ElementCollection
@@ -73,6 +74,8 @@ public class PresenterFeature {
 //        this.presenterFeatures = new ArrayList<>();
         this.featureText = featureText;
 //        this.featureAttributes = new HashMap<>();
+        displayOrder = globalfeatureCounter;
+        globalfeatureCounter++;
     }
 
     @XmlTransient
