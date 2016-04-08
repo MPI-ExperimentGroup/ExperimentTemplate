@@ -69,7 +69,7 @@ public class SynQuiz2 {
 
         final PresenterScreen demographicsScreen = createDemographicsScreen(experiment, "Demographics", 3);
         presenterScreenList.add(demographicsScreen);
-        final PresenterScreen editUserScreen = wizardController.addEditUserScreen(experiment, introductionScreen, "Edit User", demographicsScreen, 2, wizardData, null, null, "Continue", null, null, null, false);
+        final PresenterScreen editUserScreen = wizardController.addEditUserScreen(experiment, introductionScreen, "Edit User", demographicsScreen, 2, wizardData, null, null, "Continue", null, null, null, "Could not contact the server, please check your internet connection and try again.", false);
         demographicsScreen.setBackPresenter(editUserScreen);
         final PresenterScreen weekdaysScreen = createStimulusScreen("Weekdays", demographicsScreen, 4);
         presenterScreenList.add(weekdaysScreen);
