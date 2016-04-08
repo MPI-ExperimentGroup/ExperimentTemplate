@@ -73,7 +73,7 @@ public class LocalStorage {
         // todo: it would be good to do this on an application basis
 //        clear();
         if (dataStore != null) {
-            for (int itemIndex = 0; itemIndex < dataStore.getLength(); itemIndex++) {
+            for (int itemIndex = dataStore.getLength() - 1; itemIndex > -1; itemIndex--) {
                 final String key = dataStore.key(itemIndex);
                 if (key.startsWith(messages.appNameInternal())) { // && key.contains(userId.toString())) {
                     dataStore.removeItem(key);
