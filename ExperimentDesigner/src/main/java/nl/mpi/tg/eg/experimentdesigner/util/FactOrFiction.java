@@ -315,7 +315,7 @@ public class FactOrFiction {
             "geslacht:Geslacht:|man|vrouw|anders:.",
             "opleidingsniveau:Opleidingsniveau:primair onderwijs (basisschool)|voortgezet onderwijs|middelbaar beroepsonderwijs (MBO)|hoger onderwijs (HBO, universiteit)|anders:.",
             "nederlandsMoedertaal:Nederlands is mijn moedertaal:true|false:.",
-            "hoeveelJaarNederlands:Als Nederlands niet uw moedertaal is, hoeveel jaar leert u al Nederlands?:[0-9]*:Voer een getal."
+            "hoeveelJaarNederlands:Als Nederlands niet uw moedertaal is, hoeveel jaar leert u al Nederlands?:[0-9]*:Voer een getal in."
         };
         final String could_not_contact_the_server_please_check = "De server is niet bereikbaar. Controleer de internetverbinding en probeer opnieuw.";
         final PresenterScreen editUserScreen = wizardController.addEditUserScreen(experiment, null, "Participant", null, 2, wizardData, null, medataFields, "Volgende", null, null, null, could_not_contact_the_server_please_check, wizardData.isObfuscateScreenNames());
@@ -328,7 +328,7 @@ public class FactOrFiction {
         final PresenterScreen survey2InstructionsScreen = wizardController.addTextScreen(experiment, null, "Survey2Instructions", null, 16, "<b>U krijgt nu enkele woorden te zien. Uw taak is om aan te geven in hoeverre de woorden van toepassing zijn op uw ervaring tijdens het lezen van het verhaal.</b>", "volgende [ spatiebalk ]", wizardData.isObfuscateScreenNames());
         final PresenterScreen survey2Screen = wizardController.addRandomTextScreen(experiment, null, 6, "Survey2", new String[]{"Interessant:interessant", "goedgeschreven:goed geschreven", "vanhogeliterairekwaliteit:van hoge literaire kwaliteit", "makkelijktebegrijpen:makkelijk te begrijpen", "toegankelijk:toegankelijk", "spannend:spannend", "mooi:mooi", "boeiend:boeiend", "emotioneel:emotioneel", "saai:saai"}, 1000, true, "1,2,3,4,5,6,7", "helemaal niet van toepassing", "helemaal van toepassing", wizardData.isObfuscateScreenNames());
         final PresenterScreen pictureInstructionsScreen = wizardController.addTextScreen(experiment, null, "PictureInstructions", null, 16, "<b>U zult zo enkele afbeeldingen zien die situaties tonen. Uw taak is te kiezen of de afgebeelde acties overeenkomen met acties in het verhaal dat u net las, of niet. Als het beeld een actie toont die in het verhaal voorkwam, toetst u “Z”, als de actie niet in het verhaal voorkwam toetst u “.”. Probeer zo snel mogelijk te reageren.", "volgende [ spatiebalk ]</b>", wizardData.isObfuscateScreenNames());
-        final PresenterScreen pictureTaskScreen = wizardController.addRandomTextScreen(experiment, null, 17, "PictureTask", images, 1000, true, "yes [ z ],no [ . ]", "", "", wizardData.isObfuscateScreenNames());
+        final PresenterScreen pictureTaskScreen = wizardController.addRandomTextScreen(experiment, null, 17, "PictureTask", images, 1000, true, "ja [ z ],nee [ . ]", "", "", wizardData.isObfuscateScreenNames());
         final PresenterScreen readingBehaviorInstructionsScreen = wizardController.addTextScreen(experiment, null, "ReadingBehaviorInstructions", null, 18, "<b>Het experiment is bijna klaar. We hebben nog 6 korte vragen aan u.</b>", "volgende [ spatiebalk ]", wizardData.isObfuscateScreenNames());
         final PresenterScreen readingBehaviorScreen = wizardController.addRandomTextScreen(experiment, null, 19, "ReadingBehavior", readingBehavior, 1000, false, "1,2,3,4,5,6,7", "", "", wizardData.isObfuscateScreenNames());
         final String retry = "Probeer opnieuw";
