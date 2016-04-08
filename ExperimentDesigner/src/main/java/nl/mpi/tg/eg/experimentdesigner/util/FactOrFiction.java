@@ -337,7 +337,7 @@ public class FactOrFiction {
         final PresenterScreen restartScreen = wizardController.addCompletionScreen(experiment, null, null, 22, wil_nog_iemand_op_dit_apparaat_deelnemen_, true, "Opnieuw beginnen", "Completion", could_not_contact_the_server_please_check, retry, wizardData.isObfuscateScreenNames());
         final PresenterScreen registeredScreen = wizardController.addCompletionScreen(experiment, null, null, 23, "Leuk dat u geïnteresseerd bent. " + wil_nog_iemand_op_dit_apparaat_deelnemen_, true, "Opnieuw beginnen", "Registered", could_not_contact_the_server_please_check, retry, wizardData.isObfuscateScreenNames());
         final String nog_een_keer_meedoen = wil_nog_iemand_op_dit_apparaat_deelnemen_; //"Nog een keer meedoen?";
-        final PresenterScreen completionScreen = wizardController.addEditUserScreen(experiment, null, "Bedankt", null, 21, null, completionScreenText, new String[]{"emaill::^[^@]+@[^@]+$:Geef een geldig e-mailadres."}, "Registreren", nog_een_keer_meedoen, restartScreen, "Ja graag!", could_not_contact_the_server_please_check, wizardData.isObfuscateScreenNames());
+        final PresenterScreen completionScreen = wizardController.addEditUserScreen(experiment, null, "Bedankt", null, 21, null, completionScreenText, new String[]{"emaill::^[^@]+@[^@]+$:Geef een geldig e-mailadres."}, "Registreren", nog_een_keer_meedoen, restartScreen, "Opnieuw beginnen", could_not_contact_the_server_please_check, wizardData.isObfuscateScreenNames());
 //        completionScreen.setBackPresenter(restartScreen);
         completionScreen.setNextPresenter(registeredScreen);
         agreementScreen.setNextPresenter(editUserScreen);
