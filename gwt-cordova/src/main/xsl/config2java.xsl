@@ -487,6 +487,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
     <xsl:template match="onError|onSuccess|responseCorrect|responseIncorrect|hasMoreStimulus|endOfStimulus|hasTag|withoutTag|multipleUsers|singleUser">
         <xsl:value-of select="if(@msToNext) then concat(', ', @msToNext) else ''" />
         <xsl:value-of select="if(local-name() eq 'multipleUsers') then '' else ', '" />
+        <xsl:value-of select="if(@featureText) then concat('messages.', generate-id(.), '(), ') else ''" />
         <xsl:text>new TimedStimulusListener() {
 
             @Override

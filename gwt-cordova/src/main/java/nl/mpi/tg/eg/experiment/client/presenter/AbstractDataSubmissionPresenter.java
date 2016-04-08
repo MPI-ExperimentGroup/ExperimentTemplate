@@ -24,6 +24,7 @@ import com.google.gwt.storage.client.Storage;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
@@ -52,6 +53,12 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
         duration = new Duration();
         this.submissionService = submissionService;
         this.userResults = userResults;
+    }
+
+    @Override
+    public void setState(final AppEventListner appEventListner, ApplicationController.ApplicationState prevState, final ApplicationController.ApplicationState nextState) {
+        super.setState(appEventListner, prevState, null);
+        this.nextState = nextState;
     }
 
     public void generateCompletionCode() {
@@ -98,7 +105,7 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
             }
         });
     }
-    
+
     protected void eraseLocalStorageOnWindowClosing() {
         setWindowClosingListener(new PresenterEventListner() {
 

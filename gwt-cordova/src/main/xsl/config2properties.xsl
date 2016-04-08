@@ -50,7 +50,7 @@
         </xsl:text>      
         <xsl:apply-templates/>
     </xsl:template>
-    <xsl:template match="eraseUsersDataButton[@featureText != '']|saveMetadataButton[@featureText != '']|createUserButton[@featureText != '']|targetButton[@featureText != '']|actionButton[@featureText != '']|targetFooterButton[@featureText != '']|actionFooterButton[@featureText != '']|plainText[@featureText != '']|popupMessage[@featureText != '']|menuItem[@featureText != '']|featureText[@featureText != '']|nextStimulusButton[@featureText != '']|htmlText[@featureText != '']|userInfo[@featureText != '']">
+    <xsl:template match="onError[@featureText != '']|eraseUsersDataButton[@featureText != '']|saveMetadataButton[@featureText != '']|createUserButton[@featureText != '']|targetButton[@featureText != '']|actionButton[@featureText != '']|targetFooterButton[@featureText != '']|actionFooterButton[@featureText != '']|plainText[@featureText != '']|popupMessage[@featureText != '']|menuItem[@featureText != '']|featureText[@featureText != '']|nextStimulusButton[@featureText != '']|htmlText[@featureText != '']|userInfo[@featureText != '']">
         <xsl:value-of select="generate-id(.)" />
         <xsl:text>=</xsl:text>
         <xsl:value-of select="replace(@featureText,'''','''''')"/>

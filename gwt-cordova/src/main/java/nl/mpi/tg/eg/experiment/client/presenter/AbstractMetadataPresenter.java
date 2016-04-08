@@ -63,7 +63,7 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
         this.nextState = nextState;
     }
 
-    protected void saveMetadataButton(final String buttonLabel, final boolean sendData, final TimedStimulusListener errorEventListner, final TimedStimulusListener successEventListner) {
+    protected void saveMetadataButton(final String buttonLabel, final boolean sendData, final String networkErrorMessage, final TimedStimulusListener errorEventListner, final TimedStimulusListener successEventListner) {
         PresenterEventListner saveEventListner = new PresenterEventListner() {
 
             @Override
@@ -82,7 +82,7 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
                                 if (exception.getErrorType() == DataSubmissionException.ErrorType.dataRejected) {
                                     ((MetadataView) simpleView).setButtonError(true, button, exception.getMessage());
                                 } else {
-                                    ((MetadataView) simpleView).setButtonError(true, button, null);
+                                    ((MetadataView) simpleView).setButtonError(true, button, networkErrorMessage);
                                     errorEventListner.postLoadTimerFired();
                                 }
                                 submissionService.submitScreenChange(userResults.getUserData().getUserId(), "submitMetadataFailed");
