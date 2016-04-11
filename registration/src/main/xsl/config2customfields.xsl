@@ -89,14 +89,14 @@
             <xsl:for-each select="experiment/metadata/field">
                 <xsl:text>
                     public String get</xsl:text>
-                <xsl:value-of select="@postName" />
+                <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" />
                 <xsl:text>CustomField() {
                     return </xsl:text>
                 <xsl:value-of select="@postName" />
                 <xsl:text>CustomField;
                     }
                     public void set</xsl:text>
-                <xsl:value-of select="@postName" />
+                <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" />
                 <xsl:text>CustomField(String </xsl:text>
                 <xsl:value-of select="@postName" />
                 <xsl:text>CustomField) {
@@ -123,7 +123,7 @@
                 printer.printRecord(</xsl:text>
             <xsl:for-each select="experiment/metadata/field">
                 <xsl:text>"</xsl:text>
-                <xsl:value-of select="@postName" />
+                <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" />
                 <xsl:text>"</xsl:text>
                 <xsl:if test="position() != last()">
                     <xsl:text>,</xsl:text>
@@ -135,7 +135,7 @@
                 printer.printRecord(</xsl:text>
             <xsl:for-each select="experiment/metadata/field">
                 <xsl:text>participant.get</xsl:text>
-                <xsl:value-of select="@postName" />
+                <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" />
                 <xsl:text>CustomField()</xsl:text>
                 <xsl:if test="position() != last()">
                     <xsl:text>,</xsl:text>
