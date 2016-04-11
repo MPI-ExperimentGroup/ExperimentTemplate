@@ -42,7 +42,7 @@
                 <xsl:text>
                     private String </xsl:text>
                 <xsl:value-of select="@postName" />
-                <xsl:text>CustomField;</xsl:text>
+                <xsl:text>;</xsl:text>
             </xsl:for-each>
             <xsl:text>
     
@@ -90,21 +90,21 @@
                 <xsl:text>
                     public String get</xsl:text>
                 <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" />
-                <xsl:text>CustomField() {
+                <xsl:text>() {
                     return </xsl:text>
                 <xsl:value-of select="@postName" />
-                <xsl:text>CustomField;
+                <xsl:text>;
                     }
                     public void set</xsl:text>
                 <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" />
-                <xsl:text>CustomField(String </xsl:text>
+                <xsl:text>(String </xsl:text>
                 <xsl:value-of select="@postName" />
-                <xsl:text>CustomField) {
+                <xsl:text>) {
                     this.</xsl:text>
                 <xsl:value-of select="@postName" />
-                <xsl:text>CustomField = </xsl:text>
+                <xsl:text> = </xsl:text>
                 <xsl:value-of select="@postName" />
-                <xsl:text>CustomField;
+                <xsl:text>;
                     }
                 </xsl:text>
             </xsl:for-each>
@@ -136,7 +136,7 @@
             <xsl:for-each select="experiment/metadata/field">
                 <xsl:text>participant.get</xsl:text>
                 <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" />
-                <xsl:text>CustomField()</xsl:text>
+                <xsl:text>()</xsl:text>
                 <xsl:if test="position() != last()">
                     <xsl:text>,</xsl:text>
                 </xsl:if>
@@ -155,12 +155,15 @@
                     &lt;th&gt;&lt;a th:attr="href='?sort=id'"&gt;ID&lt;/a&gt;&lt;/th&gt;
                     &lt;th&gt;&lt;a th:attr="href='?sort=userId'"&gt;UUID&lt;/a&gt;&lt;/th&gt;
                     &lt;th&gt;&lt;a th:attr="href='?sort=submitDate'"&gt;submitDate&lt;/a&gt;&lt;/th&gt;
+                    &lt;th&gt;&lt;a th:attr="href='?sort=userAgent'"&gt;userAgent&lt;/a&gt;&lt;/th&gt;
+                    &lt;th&gt;&lt;a th:attr="href='?sort=acceptLang'"&gt;acceptLang&lt;/a&gt;&lt;/th&gt;
+                    <!--&lt;th&gt;&lt;a th:attr="href='?sort=remoteAddr'"&gt;remoteAddr&lt;/a&gt;&lt;/th&gt;-->
             </xsl:text>
             <!--&amp;${(sortOrder='a')? 'd' : 'a'}-->
             <xsl:for-each select="experiment/metadata/field">
                 <xsl:text>&lt;th&gt;&lt;a th:attr="href='?sort=</xsl:text>
                 <xsl:value-of select="@postName" />
-                <xsl:text>CustomField'"&gt;</xsl:text>
+                <xsl:text>'"&gt;</xsl:text>
                 <xsl:value-of select="@registrationField" />
                 <xsl:text>&lt;/a&gt;&lt;/th&gt;</xsl:text>
             </xsl:for-each>
@@ -170,12 +173,15 @@
                     &lt;td th:text="${participant.id}"&gt;id&lt;/td&gt;
                     &lt;td th:text="${participant.userId}"&gt;userId&lt;/td&gt;
                     &lt;td th:text="${participant.submitDate}"&gt;submitDate&lt;/td&gt;
+                    &lt;td th:text="${participant.userAgent}"&gt;submitDate&lt;/td&gt;
+                    &lt;td th:text="${participant.acceptLang}"&gt;acceptLang&lt;/td&gt;
+                    <!--&lt;td th:text="${participant.remoteAddr}"&gt;remoteAddr&lt;/td&gt;-->
             </xsl:text>
             <xsl:for-each select="experiment/metadata/field">
                 <xsl:text>
                     &lt;td  th:text="${participant.</xsl:text>
                 <xsl:value-of select="@postName" />
-                <xsl:text>CustomField}"&gt;&lt;/td&gt;</xsl:text>
+                <xsl:text>}"&gt;&lt;/td&gt;</xsl:text>
             </xsl:for-each>
             <xsl:text>    
                 &lt;/tr&gt;
@@ -184,7 +190,7 @@
             <xsl:for-each select="experiment/metadata/field">
                 <xsl:text>&lt;td&gt;&lt;input id="</xsl:text>
                 <xsl:value-of select="@postName" />
-                <xsl:text>CustomField" /&gt;&lt;/td&gt;</xsl:text>
+                <xsl:text>" /&gt;&lt;/td&gt;</xsl:text>
             </xsl:for-each>
             <xsl:text>    
                 &lt;td&gt;&lt;button type="submit" name="add"&gt;Add Participant&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;
