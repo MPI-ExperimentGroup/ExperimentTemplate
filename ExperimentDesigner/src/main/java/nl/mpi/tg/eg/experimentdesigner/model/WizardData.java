@@ -44,6 +44,7 @@ public class WizardData {
     private String optionCheckBox2 = "";
     private String mandatoryCheckBox = "";
     private boolean ageField = false;
+    private String[] customFields = null;
     private boolean audioTestScreen = false;
     private String audioTestScreenText = "";
     private String audioWorksButtonText = "";
@@ -76,7 +77,9 @@ public class WizardData {
     private String stimulusResponseOptions = null;
     private boolean completionScreen = false;
     private boolean allowUserRestart = true;
-    private String completionText = "";
+    private String userRestartButtonText = null;
+    private String completionText1 = "";
+    private String completionText2 = "";
     private boolean menuScreen = false;
 
     public WizardData() {
@@ -232,6 +235,14 @@ public class WizardData {
 
     public void setCustomTextField(String customTextField) {
         this.customTextField = customTextField;
+    }
+
+    public String[] getCustomFields() {
+        return customFields;
+    }
+
+    public void setCustomFields(String[] customFields) {
+        this.customFields = customFields;
     }
 
     public boolean isPracticeStimuliScreen() {
@@ -490,12 +501,28 @@ public class WizardData {
         this.allowUserRestart = allowRestart;
     }
 
-    public String getCompletionText() {
-        return completionText;
+    public String getCompletionText1() {
+        return completionText1;
     }
 
-    public void setCompletionText(String completionText) {
-        this.completionText = completionText;
+    public void setCompletionText1(String completionText1) {
+        this.completionText1 = completionText1;
+    }
+
+    public String getCompletionText2() {
+        return completionText2;
+    }
+
+    public void setCompletionText2(String completionText2) {
+        this.completionText2 = completionText2;
+    }
+
+    public String getUserRestartButtonText() {
+        return userRestartButtonText;
+    }
+
+    public void setUserRestartButtonText(String userRestartButtonText) {
+        this.userRestartButtonText = userRestartButtonText;
     }
 
 }
