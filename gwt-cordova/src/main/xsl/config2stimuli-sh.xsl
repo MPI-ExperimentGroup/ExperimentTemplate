@@ -51,7 +51,7 @@
             <xsl:text>convert "</xsl:text>
             <xsl:value-of select="@image" />
             <!--<xsl:text>" -gravity center -background white -extent 800x800\&lt; </xsl:text>-->
-            <xsl:text>" -gravity center -background white -resize 800x800 -extent 800x </xsl:text>
+            <xsl:text>" -gravity center -background white -resize 500x500 -extent 500x </xsl:text>
             <!--<xsl:value-of select="generate-id(.)" />-->
             <xsl:value-of select="@code" />
             <xsl:text>.jpg</xsl:text>
