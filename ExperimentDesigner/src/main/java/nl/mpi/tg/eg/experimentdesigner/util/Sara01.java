@@ -742,13 +742,17 @@ public class Sara01 {
 //        wizardData.setDisagreementScreenText("disagreementScreenText");
         //metadata
         wizardData.setMetadataScreen(true);
-        wizardData.setAgeField(true);
-        // todo: add the worker id field
-        // todo: change all these to dutch...
-        // todo fix the label order in : StimulusScreenP
-        wizardData.setFirstNameField(true);
-        wizardData.setLastNameField(true);
-        wizardData.setGenderField(true);
+//        wizardData.setAgeField(true);
+        wizardData.setCustomFields(new String[]{
+            "workerId:Arbeider id:.*:.",
+            "firstName:Voornaam:.'{'3,'}':Voer minimaal drie letters.",
+            "lastName:Achternaam:.'{'3,'}':Voer minimaal drie letters.",
+            "age:Leeftijd:[0-9]+:Voer een getal.",
+            "gender:Geslacht:|man|vrouw|anders:."
+        });
+//        wizardData.setFirstNameField(true);
+//        wizardData.setLastNameField(true);
+//        wizardData.setGenderField(true);
         //audio test page
         wizardData.setAudioTestScreen(true);
         wizardData.setAudioWorksButtonText("Het geluid is OK");
@@ -797,16 +801,15 @@ public class Sara01 {
         wizardData.setCompletionScreen(true);
         wizardData.setAllowUserRestart(true);
         //completion code and thank you screen
-        wizardData.setCompletionText(
+        wizardData.setCompletionText1(
                 "Dit is het einde van het experiment.<br/>"
                 + "<br/>"
                 + "Ter bevestiging van je deelname willen we je vragen om de volgende code te sturen naar dorine.vanbelzen@mpi.nl. Pas na ontvangst van deze code, kun je worden uitbetaald.<br/>"
                 + "<br/>"
                 + "Bedankt voor je deelname!"
         );
-
-        // todo: add this text below the number and above the button: 
-//        "Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop." // "Opnieuw beginnen"
+        wizardData.setCompletionText2("Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop.");
+        wizardData.setUserRestartButtonText("Opnieuw beginnen");
 // todo: log the time the rating buttons appear
 //        wizardData.setMenuScreen(true);
         return wizardController.getExperiment(wizardData);
