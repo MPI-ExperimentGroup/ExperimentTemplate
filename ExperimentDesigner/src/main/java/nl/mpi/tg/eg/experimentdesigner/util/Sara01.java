@@ -711,12 +711,12 @@ public class Sara01 {
                 + "<br/>"
                 + "Welkom. In dit experiment vragen we je om naar geluidsfragmenten te luisteren en te proberen te voorspellen hoe de volgende spreker zal reageren. Alle geluidsfragmenten komen uit een echt telefoongesprek tussen twee bekenden.<br/>"
                 + "<br/>"
-                + "Het gaat als volgt. Je krijgt eerst de context van het gesprek te zien. Dat gebeurt met plaatjes van twee mensen die aan het bellen zijn en tekstballonnen met wat ze tegen elkaar zeggen. Hiernaast staat een voorbeeld. Soms zijn er ook denkballonnen, dat betekent dat die persoon het alleen denkt en niet hardop zegt. Onderaan staat altijd een plaatje van een luidspreker bij de persoon die daarna gaat praten. Die volgende uitspraak krijg je dan als geluidsfragment te horen, zodra je op ENTER hebt gedrukt.<br/>"
+                + "Het gaat als volgt. Je krijgt eerst de context van het gesprek te zien. Dat gebeurt met plaatjes van twee mensen die aan het bellen zijn en tekstballonnen met wat ze tegen elkaar zeggen. Hiernaast staat een voorbeeld. Soms zijn er ook denkballonnen, dat betekent dat die persoon het alleen denkt en niet hardop zegt. Onderaan staat altijd een plaatje van een luidspreker bij de persoon die daarna gaat praten. Die volgende uitspraak krijg je dan als geluidsfragment te horen, zodra je op de spatiebalk hebt gedrukt.<br/>"
                 + "<br/>"
                 + "Deze laatste uitspraak bestaat altijd uit een vraag of voorstel aan de andere persoon. Bijvoorbeeld: 'Heb je zin om vanavond langs te komen?'. Het is jouw taak om te gokken hoe positief of negatief het antwoord van de ander op die vraag was. Met andere woorden, gaat de antwoorder (graag) op dit voorstel in of niet? Dit geef je aan op een schaal van 1 tot 7, waar 1 heel duidelijk negatief betekent en 7 heel duidelijk positief. Baseer je antwoord zowel op de context die je gezien hebt als op de vraag zelf.<br/>"
                 + "<br/>"
-                + "Dus: je krijgt eerst de context van het gesprek uitgeschreven op het scherm te zien. Probeer je een goed beeld te vormen van de situatie, daar mag je best even de tijd voor nemen. Als je alles goed gelezen en begrepen hebt, druk je op ENTER. Op dat moment VERDWIJNT HET BEELD en hoor je de volgende uitspraak door de koptelefoon. Zodra de uitspraak afgelopen is, kan je klikken op een cijfer van 1 tot 7. 1 betekent een duidelijk negatief antwoord, 7 een duidelijk positief antwoord.<br/>"
-                + "Zorg ervoor dat je deze instructies goed begrepen hebt. Druk dan op ENTER."
+                + "Dus: je krijgt eerst de context van het gesprek uitgeschreven op het scherm te zien. Probeer je een goed beeld te vormen van de situatie, daar mag je best even de tijd voor nemen. Als je alles goed gelezen en begrepen hebt, druk je op de spatiebalk. Op dat moment VERDWIJNT HET BEELD en hoor je de volgende uitspraak door de koptelefoon. Zodra de uitspraak afgelopen is, kan je klikken op een cijfer van 1 tot 7. 1 betekent een duidelijk negatief antwoord, 7 een duidelijk positief antwoord.<br/>"
+                + "Zorg ervoor dat je deze instructies goed begrepen hebt. Druk dan op de spatiebalk."
                 + "<br/>"
                 + "<img src=\"static/introimage/introimage.jpg\"/><br/>"
         );
@@ -731,7 +731,7 @@ public class Sara01 {
                 + "<br/>"
                 + "Er zijn geen risico's bekend met het meedoen aan dit experiment.<br/>"
                 + "<br/>"
-                + "Als je ermee instemt om door te gaan met dit experiment, klik dan op 'Agree' om verder te gaan.<br/>"
+                + "Als je ermee instemt om door te gaan met dit experiment, klik dan op 'Akkoord' om verder te gaan.<br/>"
                 + "Als je besluit niet deel te nemen aan het experiment, kun je de pagina sluiten of naar een andere website gaan.<br/>"
                 + "<br/>"
                 + ""
@@ -743,6 +743,9 @@ public class Sara01 {
         //metadata
         wizardData.setMetadataScreen(true);
         wizardData.setAgeField(true);
+        // todo: add the worker id field
+        // todo: change all these to dutch...
+        // todo fix the label order in : StimulusScreenP
         wizardData.setFirstNameField(true);
         wizardData.setLastNameField(true);
         wizardData.setGenderField(true);
@@ -750,9 +753,9 @@ public class Sara01 {
         wizardData.setAudioTestScreen(true);
         wizardData.setAudioTestScreenText("Voordat we met het echte experiment beginnen, willen we je vragen even te testen of je geluidsinstellingen goed zijn voor het experiment. Druk op de onderstaande knop om een kort voorbeeldfragment te horen. De echte fragmenten variëren in sterkte, maar het voorbeeld is ongeveer net zo zacht als het zachtste fragment. Het is belangrijk dat je dit goed kunt verstaan. Als het te zacht klinkt (of te hard), probeer dan de het geluidsniveau op je computer aan te passen. Je kunt net zo vaak op de knop drukken tot het goed te verstaan is.<br/>"
                 + " <br/>"
-                + "Daarnaast willen we je ook vragen te testen of dit fragment (vooral) in je rechteroor te horen is. Zo niet, kun je dan je koptelefoon (of luidsprekers) omdraaien?<br/>"
+                + "Daarnaast willen we je ook vragen te testen of dit fragment (vooral) in je linkeroor te horen is. Zo niet, kun je dan je koptelefoon (of luidsprekers) omdraaien?<br/>"
                 + " <br/>"
-                + "Als de geluidssterkte goed is en je het geluid rechts hoort, kun je op enter drukken om te beginnen met het experiment. Denk eraan om de context steeds goed op je in te laten werken voordat je verder gaat naar het geluidsfragment.");
+                + "Als de geluidssterkte goed is en je het geluid links hoort, kun je op de knop \"Het geluid is OK\" drukken om te beginnen met het experiment. Denk eraan om de context steeds goed op je in te laten werken voordat je verder gaat naar het geluidsfragment.");
         wizardData.setTestAudioPath("static/testwav/test_wav");
         //practice (5 items):
         //                image
@@ -800,6 +803,10 @@ public class Sara01 {
                 + "<br/>"
                 + "Bedankt voor je deelname!"
         );
+        
+        // todo: add this text below the number and above the button: 
+//        "Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop." // "Opnieuw beginnen"
+// todo: log the time the rating buttons appear
 //        wizardData.setMenuScreen(true);
         return wizardController.getExperiment(wizardData);
     }
