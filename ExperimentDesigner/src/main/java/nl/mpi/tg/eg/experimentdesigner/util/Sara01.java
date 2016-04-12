@@ -751,6 +751,7 @@ public class Sara01 {
         wizardData.setGenderField(true);
         //audio test page
         wizardData.setAudioTestScreen(true);
+        wizardData.setAudioWorksButtonText("Het geluid is OK");
         wizardData.setAudioTestScreenText("Voordat we met het echte experiment beginnen, willen we je vragen even te testen of je geluidsinstellingen goed zijn voor het experiment. Druk op de onderstaande knop om een kort voorbeeldfragment te horen. De echte fragmenten variëren in sterkte, maar het voorbeeld is ongeveer net zo zacht als het zachtste fragment. Het is belangrijk dat je dit goed kunt verstaan. Als het te zacht klinkt (of te hard), probeer dan de het geluidsniveau op je computer aan te passen. Je kunt net zo vaak op de knop drukken tot het goed te verstaan is.<br/>"
                 + " <br/>"
                 + "Daarnaast willen we je ook vragen te testen of dit fragment (vooral) in je linkeroor te horen is. Zo niet, kun je dan je koptelefoon (of luidsprekers) omdraaien?<br/>"
@@ -803,7 +804,7 @@ public class Sara01 {
                 + "<br/>"
                 + "Bedankt voor je deelname!"
         );
-        
+
         // todo: add this text below the number and above the button: 
 //        "Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop." // "Opnieuw beginnen"
 // todo: log the time the rating buttons appear

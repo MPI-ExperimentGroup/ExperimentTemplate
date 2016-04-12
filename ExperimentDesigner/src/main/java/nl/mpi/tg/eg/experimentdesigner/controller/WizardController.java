@@ -112,7 +112,7 @@ public class WizardController {
         }
         if (wizardData.isAudioTestScreen()) {
 //            addMetadata(experiment, wizardData);
-            audioTestScreen = addAudioTestScreen(experiment, null, null, 5, wizardData.getTestAudioPath(), wizardData.getAudioTestScreenText(), wizardData.isObfuscateScreenNames());
+            audioTestScreen = addAudioTestScreen(experiment, null, null, 5, wizardData.getTestAudioPath(), wizardData.getAudioTestScreenText(), wizardData.getAudioWorksButtonText(), wizardData.isObfuscateScreenNames());
             if (editUserScreen != null) {
                 editUserScreen.setNextPresenter(audioTestScreen);
             }
@@ -202,7 +202,7 @@ public class WizardController {
         return presenterScreen;
     }
 
-    public PresenterScreen addAudioTestScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder, String testAudioPath, final String audioTestScreenText, boolean obfuscateScreenNames) {
+    public PresenterScreen addAudioTestScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder, String testAudioPath, final String audioTestScreenText, final String audioWorksButton, boolean obfuscateScreenNames) {
         final PresenterScreen presenterScreen = new PresenterScreen((obfuscateScreenNames) ? experiment.getAppNameDisplay() + " " + displayOrder : "AudioTest", "AudioTest", backPresenter, "AudioTest", nextPresenter, PresenterType.stimulus, displayOrder);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, audioTestScreenText));
         final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.audioButton, null);
@@ -212,7 +212,7 @@ public class WizardController {
         presenterFeature.addFeatureAttributes(FeatureAttribute.poster, testAudioPath + ".jpg");
         presenterScreen.getPresenterFeatureList().add(presenterFeature);
         experiment.getPresenterScreen().add(presenterScreen);
-        final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.actionButton, "Audio Works");
+        final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.actionButton, audioWorksButton);
         presenterScreen.getPresenterFeatureList().add(actionButtonFeature);
         actionButtonFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
         return presenterScreen;

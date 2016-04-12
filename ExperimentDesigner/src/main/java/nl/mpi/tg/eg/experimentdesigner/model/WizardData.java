@@ -46,6 +46,7 @@ public class WizardData {
     private boolean ageField = false;
     private boolean audioTestScreen = false;
     private String audioTestScreenText = "";
+    private String audioWorksButtonText = "";
     private String testAudioPath = "";
 
     private boolean practiceStimuliScreen = false;
@@ -455,6 +456,14 @@ public class WizardData {
 
     public void setAudioTestScreenText(String audioTestScreenText) {
         this.audioTestScreenText = audioTestScreenText;
+    }
+
+    public String getAudioWorksButtonText() {
+        return audioWorksButtonText;
+    }
+
+    public void setAudioWorksButtonText(String audioWorksButtonText) {
+        this.audioWorksButtonText = audioWorksButtonText;
     }
 
     public String getTestAudioPath() {
