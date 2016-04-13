@@ -77,7 +77,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
             stringBuilder.append("\"").append(key.getPostName()).append("\": \"").append(value).append("\",\n");
         }
         stringBuilder.append("\"userId\": \"").append(userResults.getUserData().getUserId()).append("\"\n}");
-        localStorage.addStoredScreenData(userResults.getUserData().getUserId(), ServiceEndpoint.metadata.name(), stringBuilder.toString());
+        //localStorage.addStoredScreenData(userResults.getUserData().getUserId(), ServiceEndpoint.metadata.name(), stringBuilder.toString());
         submitData(ServiceEndpoint.metadata, userResults.getUserData().getUserId(), "[" + stringBuilder.toString() + "]", dataSubmissionListener);
     }
 
@@ -152,7 +152,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
 
                     @Override
                     public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
-                        localStorage.deleteStoredScreenData(userId, endpoint.name());
+                        localStorage.deleteStoredScreenData(userId, endpoint.name(), storedScreenData);
                         resultCounts.successCounter++;
                         resultCounts.checkOutcome();
                     }
@@ -173,6 +173,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
 
             @Override
             public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
+                localStorage.deleteStoredScreenData(userId, endpoint.name(), storedScreenData);
             }
         });
     }
@@ -195,8 +196,6 @@ public class DataSubmissionService extends AbstractSubmissionService {
                 if (200 == response.getStatusCode() && sumbmissionResult.length() > 0 && sumbmissionResult.get(0).getSuccess() && userId.toString().equals(sumbmissionResult.get(0).getUserId())) {
                     final String text = response.getText();
                     logger.info(text);
-                    localStorage.stowSentData(userId, jsonData);
-                    localStorage.deleteStoredScreenData(userId, endpoint.name());
                     dataSubmissionListener.scoreSubmissionComplete(sumbmissionResult);
                 } else {
                     logger.warning(builder.getUrl());

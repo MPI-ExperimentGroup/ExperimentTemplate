@@ -120,7 +120,7 @@ public class LocalStorage {
 //        loadStorage();
 //        dataStore.setItem(FAILED_DATA, getCleanStoredData(FAILED_DATA) + serialisedGameData);
 //    }
-    public void stowSentData(UserId userId, String sendData) {
+    private void stowSentData(UserId userId, String sendData) {
         loadStorage();
         final String sentStoredData = getCleanStoredData(STOWED_DATA + userId.toString());
         if (sentStoredData.isEmpty()) {
@@ -135,9 +135,13 @@ public class LocalStorage {
         return getCleanStoredData(SCREEN_DATA + endpoint + "." + userId.toString());
     }
 
-    public void deleteStoredScreenData(UserId userId, String endpoint) {
+    public void deleteStoredScreenData(UserId userId, String endpoint, String segmentToDelete) {
         loadStorage();
-        dataStore.removeItem(SCREEN_DATA + endpoint + "." + userId.toString());
+        final String sentStoredData = getCleanStoredData(SCREEN_DATA + endpoint + "." + userId.toString());
+        // replacing this segment will sometimes fail due to non matching strings, but the result of failure is only a second transmission of the data which is a preferred option over complexity
+        final String remainingStoredData = sentStoredData.replace(segmentToDelete, "").replaceFirst("^,", "");
+        dataStore.setItem(SCREEN_DATA + endpoint + "." + userId.toString(), remainingStoredData);
+        stowSentData(userId, segmentToDelete);
     }
 
     public String getStoredDataValue(UserId userId, String label) {
