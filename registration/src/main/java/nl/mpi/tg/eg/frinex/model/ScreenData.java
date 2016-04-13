@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.frinex.model;
 
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -72,4 +73,42 @@ public class ScreenData {
     public String getUserId() {
         return userId;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 37 * hash + Objects.hashCode(this.viewDate);
+        hash = 37 * hash + Objects.hashCode(this.experimentName);
+        hash = 37 * hash + Objects.hashCode(this.screenName);
+        hash = 37 * hash + Objects.hashCode(this.userId);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ScreenData other = (ScreenData) obj;
+        if (!Objects.equals(this.experimentName, other.experimentName)) {
+            return false;
+        }
+        if (!Objects.equals(this.screenName, other.screenName)) {
+            return false;
+        }
+        if (!Objects.equals(this.userId, other.userId)) {
+            return false;
+        }
+        if (!Objects.equals(this.viewDate, other.viewDate)) {
+            return false;
+        }
+        return true;
+    }
+    
 }
