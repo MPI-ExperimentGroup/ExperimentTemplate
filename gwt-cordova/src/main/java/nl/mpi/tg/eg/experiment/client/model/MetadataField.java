@@ -46,6 +46,9 @@ public class MetadataField {
     }
 
     public boolean isListBox() {
+        if (controlledRegex == null) {
+            return false;
+        }
         return controlledRegex.contains("|");
     }
 
