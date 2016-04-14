@@ -22,7 +22,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 <html>
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' ${experiment.destinationServerUrl} 'unsafe-inline'; script-src 'self' ${experiment.destinationServerUrl} 'unsafe-inline' 'unsafe-eval'; connect-src 'self' ${experiment.destinationServerUrl}; media-src 'self' ${experiment.destinationServerUrl};">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' ${experiment.scriptSrcUrl} 'unsafe-inline'; script-src ${experiment.scriptSrcUrl} 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self' ${experiment.destinationServerUrl}; media-src 'self' ${experiment.staticFilesUrl};">
         <!--
                 <meta name="format-detection" content="telephone=no">
                 <meta name="msapplication-tap-highlight" content="no">
@@ -32,21 +32,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <title>ExperimentTemplate</title>
         <script type="text/javascript" language="javascript" src="ExperimentTemplate/ExperimentTemplate.nocache.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript">
-            function onLoad() {
-//                document.addEventListener("deviceready", onDeviceReady, false);
-//                document.addEventListener("resume", onDeviceReady, false);
-//                function onDeviceReady() {
-//                    StatusBar.hide();
-//                }
-//                //console.log("starting analytics");
-//                //analytics.startTrackerWithId('UA-');
-//                //analytics.trackView("start");
-//                document.getElementById("widgetTag").className = device.platform; // todo: set the platform style
-            }
-        </script>
     </head>
-    <body onload="onLoad()">        
+    <body>        
         <iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1' style="position:absolute;width:0;height:0;border:0"></iframe>
         <noscript>
         <div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
@@ -54,6 +41,15 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             in order for this application to display correctly.
         </div>
         </noscript>
-        <h1 id="prerunMessage">Please build FRINEX GWT-Cordova Template to replace this page with the target application. Also make sure the scripts in the hooks directories are set as executable.</h1> 
+        <h1 id="prerunMessage">
+            Please enable javascript for this application to display correctly.<br/>
+            <br/>
+            Frinex Experiment: ${experiment.configuration.name}<br/>           
+            ${experiment.destinationServer}<br/>
+            ${experiment.destinationServerUrl}<br/>
+            ${experiment.scriptSrcUrl}<br/>
+            ${experiment.staticFilesUrl}<br/>
+            Version: ${project.version}<br/>
+        </h1> 
     </body>
 </html>
