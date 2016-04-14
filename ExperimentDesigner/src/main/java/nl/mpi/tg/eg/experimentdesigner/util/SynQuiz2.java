@@ -70,6 +70,7 @@ public class SynQuiz2 {
         final PresenterScreen demographicsScreen = createDemographicsScreen(experiment, "Demographics", 3);
         presenterScreenList.add(demographicsScreen);
         final PresenterScreen editUserScreen = wizardController.addEditUserScreen(experiment, introductionScreen, "Edit User", demographicsScreen, 2, wizardData, null, null, "Continue", null, null, null, "Could not contact the server, please check your internet connection and try again.", false);
+        wizardController.addMetadata(experiment);
         demographicsScreen.setBackPresenter(editUserScreen);
         final PresenterScreen weekdaysScreen = createStimulusScreen("Weekdays", demographicsScreen, 4);
         presenterScreenList.add(weekdaysScreen);
@@ -101,14 +102,14 @@ public class SynQuiz2 {
                 + "Depending on your scores, we may send you an email inviting you to participate in the genetics part of the study. There is no cost to participate, and you can do everything from home."));
         presenterFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
         final PresenterFeature targetButtonFeature = new PresenterFeature(FeatureType.targetButton, "Participate!");
-        targetButtonFeature.addFeatureAttributes(target, "EditUser");
+        targetButtonFeature.addFeatureAttributes(target, "Edit_User");
         presenterFeatureList.add(targetButtonFeature);
         presenterFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
-        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "For more information about synaesthesia, please see our 'About synaesthesia' page. "
+        presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, "For more information about synaesthesia, please see our 'About synaesthesia' page. "
                 + "If you are not sure if you have synaesthesia, and want to find out, try our SynQuiz app or take a quick test at synesthete.org."));
-        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "This project is organised and funded by the Language & Genetics Department at the Max Planck Institute for Psycholinguistics in Nijmegen in the Netherlands, directed by Prof. Dr. Simon E. Fisher. "
+        presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, "This project is organised and funded by the Language & Genetics Department at the Max Planck Institute for Psycholinguistics in Nijmegen in the Netherlands, directed by Prof. Dr. Simon E. Fisher. "
                 + "The synaesthesia studies are coordinated by Dr. Amanda Tilot and Dr. Sarah Graham. "
-                + "If you have any questions about our research, please contact us at " + formatLink("synaesthesia@mpi.nl") + "."));
+                + "If you have any questions about our research, please contact us at " + formatLink("mailto:synaesthesia@mpi.nl") + "."));
         return presenterScreen;
     }
 
@@ -117,7 +118,7 @@ public class SynQuiz2 {
     }
 
     private String formatLink(String linkText, String linkUrl) {
-        return "<a href=\"#\" onclick=\"window.open(''" + linkUrl + "'',''_system''); return false;\">" + linkText + "</a>";
+        return "<a href=\"#\" onclick=\"window.open('" + linkUrl + "','_system'); return false;\">" + linkText + "</a>";
     }
 
     private PresenterScreen createRegistrationScreen(String screenName, long displayOrder) {
