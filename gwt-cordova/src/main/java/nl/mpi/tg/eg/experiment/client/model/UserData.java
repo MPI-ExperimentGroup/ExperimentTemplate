@@ -30,7 +30,7 @@ public class UserData {
 
     private final HashMap<MetadataField, String> metadataValues = new HashMap<>();
     private final UserId userId;
-    private int bestScore = 0;
+    private double bestScore = 0;
     private int gamesPlayed = 0;
 
     public UserData() {
@@ -77,15 +77,15 @@ public class UserData {
         this.gamesPlayed++;
     }
 
-    public int getBestScore() {
+    public double getBestScore() {
         return bestScore;
     }
 
-    public void setBestScore(int bestScore) {
+    public void setBestScore(double bestScore) {
         this.bestScore = bestScore;
     }
 
-    public void updateBestScore(int bestScore) {
+    public void updateBestScore(double bestScore) {
         setBestScore((getBestScore() < bestScore) ? bestScore : getBestScore());
     }
 
