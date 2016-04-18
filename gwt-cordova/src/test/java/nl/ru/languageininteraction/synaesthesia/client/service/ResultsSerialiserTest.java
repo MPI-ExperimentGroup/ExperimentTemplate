@@ -19,13 +19,16 @@ package nl.ru.languageininteraction.synaesthesia.client.service;
 
 import java.util.ArrayList;
 import java.util.Date;
-import nl.ru.languageininteraction.synaesthesia.client.exception.StimulusError;
-import nl.ru.languageininteraction.synaesthesia.client.model.ColourData;
-import nl.ru.languageininteraction.synaesthesia.client.model.StimuliGroup;
-import nl.ru.languageininteraction.synaesthesia.client.model.Stimulus;
-import nl.ru.languageininteraction.synaesthesia.client.model.StimulusResponse;
-import nl.ru.languageininteraction.synaesthesia.client.model.StimulusResponseGroup;
-import nl.ru.languageininteraction.synaesthesia.client.model.UserResults;
+import java.util.List;
+import nl.mpi.tg.eg.experiment.client.exception.StimulusError;
+import nl.mpi.tg.eg.experiment.client.model.MetadataField;
+import nl.mpi.tg.eg.experiment.client.model.Stimulus;
+import nl.mpi.tg.eg.experiment.client.model.UserData;
+import nl.mpi.tg.eg.experiment.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.model.colour.ColourData;
+import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponse;
+import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponseGroup;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -35,40 +38,111 @@ import static org.junit.Assert.*;
  */
 public class ResultsSerialiserTest {
 
+    private Stimulus getStimulus(final String label) {
+        return new Stimulus() {
+            @Override
+            public String getCode() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public String getLabel() {
+                return label;
+            }
+
+            @Override
+            public int getPauseMs() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public String getUniqueId() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public boolean isImage() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public boolean isMp3() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public boolean isMp4() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public boolean isOgg() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public String getMp3() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public String getImage() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public String getMp4() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public String getOgg() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public List<?> getTags() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+        };
+
+    }
+
     /**
      * Test of serialise method, of class ResultsSerialiser.
      */
     @Test
     public void testSerialise() throws StimulusError {
         System.out.println("serialise");
-        UserResults userResults = new UserResults(new StimuliGroup(null, null, null));
+        UserResults userResults = new UserResults(new UserData());
         final String postName_email = "postName_email";
-        userResults.setMetadataValue(postName_email, "postName@email");
+        final MetadataField metadataFieldEmail = new MetadataField(postName_email, postName_email, postName_email, postName_email, postName_email);
+        userResults.getUserData().setMetadataValue(metadataFieldEmail, "postName@email");
         final ArrayList<Stimulus> arrayList1 = new ArrayList<>();
-        arrayList1.add(new Stimulus("a1"));
-        arrayList1.add(new Stimulus("b1"));
-        arrayList1.add(new Stimulus("c1"));
-        arrayList1.add(new Stimulus("d1"));
-        arrayList1.add(new Stimulus("e1"));
-        arrayList1.add(new Stimulus("f1"));
-        final StimuliGroup stimuli1 = new StimuliGroup("test-group-1", "test-group-1", arrayList1);
+        arrayList1.add(getStimulus("a1"));
+        arrayList1.add(getStimulus("b1"));
+        arrayList1.add(getStimulus("c1"));
+        arrayList1.add(getStimulus("d1"));
+        arrayList1.add(getStimulus("e1"));
+        arrayList1.add(getStimulus("f1"));
+//        final StimulusResponseGroup stimuli1 = new StimulusResponseGroup("test-group-1", "test-group-1");
         final ArrayList<Stimulus> arrayList2 = new ArrayList<>();
-        arrayList2.add(new Stimulus("a2"));
-        arrayList2.add(new Stimulus("b2"));
-        arrayList2.add(new Stimulus("c2"));
-        arrayList2.add(new Stimulus("d2"));
-        arrayList2.add(new Stimulus("e2"));
-        arrayList2.add(new Stimulus("f2"));
-        final StimuliGroup stimuli2 = new StimuliGroup("test-group-2", "test-group-2", arrayList2);
-        final StimulusResponseGroup stimulusResponseGroup1 = new StimulusResponseGroup();
-        userResults.addStimulusResponseGroup(stimuli1, stimulusResponseGroup1);
+        arrayList2.add(getStimulus("a2"));
+        arrayList2.add(getStimulus("b2"));
+        arrayList2.add(getStimulus("c2"));
+        arrayList2.add(getStimulus("d2"));
+        arrayList2.add(getStimulus("e2"));
+        arrayList2.add(getStimulus("f2"));
+        final StimulusResponseGroup stimulusResponseGroup1 = new StimulusResponseGroup("test-group-1", "test-group-1");
+        userResults.addStimulusResponseGroup(stimulusResponseGroup1);
         for (Stimulus stimulus : arrayList1) {
             stimulusResponseGroup1.addResponse(stimulus, new StimulusResponse(new ColourData(255, 255, 255), new Date(123445), 23));
             stimulusResponseGroup1.addResponse(stimulus, new StimulusResponse(new ColourData(0, 0, 0), new Date(12321), 21));
             stimulusResponseGroup1.addResponse(stimulus, new StimulusResponse(new ColourData(128, 127, 126), new Date(123445), 20));
         }
-        final StimulusResponseGroup stimulusResponseGroup2 = new StimulusResponseGroup();
-        userResults.addStimulusResponseGroup(stimuli2, stimulusResponseGroup2);
+        final StimulusResponseGroup stimulusResponseGroup2 = new StimulusResponseGroup("test-group-2", "test-group-2");
+        userResults.addStimulusResponseGroup(stimulusResponseGroup2);
         for (Stimulus stimulus : arrayList2) {
             stimulusResponseGroup2.addResponse(stimulus, new StimulusResponse(new ColourData(255, 255, 0), new Date(9999999), 141));
             stimulusResponseGroup2.addResponse(stimulus, new StimulusResponse(new ColourData(255, 0, 255), new Date(33333), 121));
@@ -116,7 +190,7 @@ public class ResultsSerialiserTest {
                 + "postName@email	test-group-2	f2	Thu Jan 01 03:46:39 CET 1970	141.0	#ffff00	255	255	0\n"
                 + "postName@email	test-group-2	f2	Thu Jan 01 01:00:33 CET 1970	121.0	#ff00ff	255	0	255\n"
                 + "postName@email	test-group-2	f2	Thu Jan 01 01:01:51 CET 1970	12.0	#00ffff	0	255	255\n";
-        String result = instance.serialise(userResults, postName_email);
+        String result = instance.serialise(userResults, metadataFieldEmail);
         assertEquals(expResult, result);
     }
 
