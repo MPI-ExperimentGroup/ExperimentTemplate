@@ -17,6 +17,11 @@
  */
 package nl.mpi.tg.eg.experiment.client.model;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponseGroup;
+
 /**
  * @since Oct 14, 2014 1:11:22 PM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
@@ -25,6 +30,7 @@ public class UserResults {
 
     private UserData userData = null;
     private GameData gameData = new GameData();
+    private final List<StimulusResponseGroup> results = new ArrayList<>();
 
     public UserResults(UserData userId) {
         this.userData = userId;
@@ -46,5 +52,13 @@ public class UserResults {
 
     public GameData getGameData() {
         return gameData;
+    }
+
+    public void addStimulusResponseGroup(StimulusResponseGroup stimulusResponseGroup) {
+        results.add(stimulusResponseGroup);
+    }
+
+    public List<StimulusResponseGroup> getStimulusResponseGroups() {
+        return Collections.unmodifiableList(results);
     }
 }
