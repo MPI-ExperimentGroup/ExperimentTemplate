@@ -24,6 +24,7 @@ package nl.mpi.tg.eg.experimentdesigner.model;
 public class WizardData {
 
     private String appName = "";
+    private boolean showMenuBar = true;
     private boolean obfuscateScreenNames = false;
     private boolean userSelectScreen = false;
     private boolean agreementScreen = false;
@@ -91,6 +92,14 @@ public class WizardData {
 
     public void setAppName(String appName) {
         this.appName = appName;
+    }
+
+    public boolean isShowMenuBar() {
+        return showMenuBar;
+    }
+
+    public void setShowMenuBar(boolean showMenuBar) {
+        this.showMenuBar = showMenuBar;
     }
 
     public boolean isObfuscateScreenNames() {
