@@ -693,6 +693,7 @@ public class Sara01 {
     public Experiment getExperiment() {
         WizardData wizardData = new WizardData();
         wizardData.setAppName("AntwoordRaden");
+        wizardData.setShowMenuBar(false);
         wizardData.setObfuscateScreenNames(false);
         //Here is the updated experiment flow and the suggested directory structure:
         //Directory/introimage
@@ -711,11 +712,11 @@ public class Sara01 {
                 + "<br/>"
                 + "Welkom. In dit experiment vragen we je om naar geluidsfragmenten te luisteren en te proberen te voorspellen hoe de volgende spreker zal reageren. Alle geluidsfragmenten komen uit een echt telefoongesprek tussen twee bekenden.<br/>"
                 + "<br/>"
-                + "Het gaat als volgt. Je krijgt eerst de context van het gesprek te zien. Dat gebeurt met plaatjes van twee mensen die aan het bellen zijn en tekstballonnen met wat ze tegen elkaar zeggen. Hiernaast staat een voorbeeld. Soms zijn er ook denkballonnen, dat betekent dat die persoon het alleen denkt en niet hardop zegt. Onderaan staat altijd een plaatje van een luidspreker bij de persoon die daarna gaat praten. Die volgende uitspraak krijg je dan als geluidsfragment te horen, zodra je op de spatiebalk hebt gedrukt.<br/>"
+                + "Het gaat als volgt. Je krijgt eerst de context van het gesprek te zien. Dat gebeurt met plaatjes van twee mensen die aan het bellen zijn en tekstballonnen met wat ze tegen elkaar zeggen. Hieronder staat een voorbeeld. Soms zijn er ook denkballonnen, dat betekent dat die persoon het alleen denkt en niet hardop zegt. Onderaan staat altijd een plaatje van een luidspreker bij de persoon die daarna gaat praten. Die volgende uitspraak krijg je dan als geluidsfragment te horen, zodra je op de spatiebalk hebt gedrukt.<br/>"
                 + "<br/>"
-                + "Deze laatste uitspraak bestaat altijd uit een vraag of voorstel aan de andere persoon. Bijvoorbeeld: 'Heb je zin om vanavond langs te komen?'. Het is jouw taak om te gokken hoe positief of negatief het antwoord van de ander op die vraag was. Met andere woorden, gaat de antwoorder (graag) op dit voorstel in of niet? Dit geef je aan op een schaal van 1 tot 7, waar 1 heel duidelijk negatief betekent en 7 heel duidelijk positief. Baseer je antwoord zowel op de context die je gezien hebt als op de vraag zelf.<br/>"
+                + "Deze laatste uitspraak bestaat altijd uit een vraag of voorstel aan de andere persoon. Bijvoorbeeld: 'Heb je zin om vanavond langs te komen?'. Het is jouw taak om te gokken hoe positief of negatief het antwoord van de ander op die vraag was. Met andere woorden, gaat de antwoorder (graag) op dit voorstel in of niet? Dit geef je aan op een schaal van 1 tot 7, waar 1 zeer waarschijnlijk negatief betekent en 7 zeer waarschijnlijk positief. Baseer je antwoord zowel op de context die je gezien hebt als op de vraag zelf.<br/>"
                 + "<br/>"
-                + "Dus: je krijgt eerst de context van het gesprek uitgeschreven op het scherm te zien. Probeer je een goed beeld te vormen van de situatie, daar mag je best even de tijd voor nemen. Als je alles goed gelezen en begrepen hebt, druk je op de spatiebalk. Op dat moment VERDWIJNT HET BEELD en hoor je de volgende uitspraak door de koptelefoon. Zodra de uitspraak afgelopen is, kan je klikken op een cijfer van 1 tot 7. 1 betekent een duidelijk negatief antwoord, 7 een duidelijk positief antwoord.<br/>"
+                + "Dus: je krijgt eerst de context van het gesprek uitgeschreven op het scherm te zien. Probeer je een goed beeld te vormen van de situatie, daar mag je best even de tijd voor nemen. Als je alles goed gelezen en begrepen hebt, druk je op de spatiebalk. Op dat moment VERDWIJNT HET BEELD en hoor je de volgende uitspraak door de koptelefoon. Zodra de uitspraak afgelopen is, kan je klikken op een cijfer van 1 tot 7. 1 betekent een zeer waarschijnlijk negatief antwoord, 7 een zeer waarschijnlijk positief antwoord.<br/>"
                 + "Zorg ervoor dat je deze instructies goed begrepen hebt. Druk dan op de spatiebalk."
                 + "<br/>"
                 + "<img src=\"static/introimage/introimage.jpg\"/><br/>"
@@ -810,8 +811,6 @@ public class Sara01 {
         );
         wizardData.setCompletionText2("Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop.");
         wizardData.setUserRestartButtonText("Opnieuw beginnen");
-// todo: log the time the rating buttons appear
-//        wizardData.setMenuScreen(true);
         return wizardController.getExperiment(wizardData);
     }
 }
