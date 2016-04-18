@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.ru.languageininteraction.synaesthesia.client.view;
+package nl.mpi.tg.eg.experiment.client.view;
 
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
@@ -24,10 +24,10 @@ import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import nl.ru.languageininteraction.language.client.model.ColourData;
+import nl.mpi.tg.eg.experiment.client.model.colour.ColourData;
+import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponseGroup;
 import nl.ru.languageininteraction.synaesthesia.client.model.GroupScoreData;
 import nl.ru.languageininteraction.synaesthesia.client.model.ScoreData;
-import nl.ru.languageininteraction.language.client.model.StimuliGroup;
 
 /**
  * @since Oct 14, 2014 10:57:45 AM (creation date)
@@ -35,7 +35,7 @@ import nl.ru.languageininteraction.language.client.model.StimuliGroup;
  */
 public class ReportView extends ComplexView {
 
-    public void showResults(StimuliGroup stimuliGroup, GroupScoreData calculatedScores) {
+    public void showResults(StimulusResponseGroup stimuliGroup, GroupScoreData calculatedScores) {
         int columnCount = calculatedScores.getScoreDataList().get(0).getColourData().size();
         int row = 0;
         final FlexTable grid = new FlexTable();
@@ -47,7 +47,7 @@ public class ReportView extends ComplexView {
         row++;
         for (ScoreData scoreData : calculatedScores.getScoreDataList()) {
             for (int column = 0; column < columnCount; column++) {
-                final Label label = new Label(scoreData.getStimulus().getValue());
+                final Label label = new Label(scoreData.getStimulus().getLabel());
                 final ColourData colour = scoreData.getColourData().get(column);
                 if (colour == null) {
                     label.getElement().setAttribute("style", "color: grey;background: none;");
