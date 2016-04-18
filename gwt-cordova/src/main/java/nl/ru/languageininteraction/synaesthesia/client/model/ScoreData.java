@@ -17,9 +17,9 @@
  */
 package nl.ru.languageininteraction.synaesthesia.client.model;
 
-import nl.ru.languageininteraction.language.client.model.ColourData;
-import nl.ru.languageininteraction.language.client.model.Stimulus;
+import nl.mpi.tg.eg.experiment.client.model.colour.ColourData;
 import java.util.ArrayList;
+import nl.mpi.tg.eg.experiment.client.model.Stimulus;
 
 /**
  * @since Nov 10, 2014 2:09:47 PM (creation date)
