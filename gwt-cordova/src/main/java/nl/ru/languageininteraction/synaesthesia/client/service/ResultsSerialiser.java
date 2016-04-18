@@ -17,13 +17,15 @@
  */
 package nl.ru.languageininteraction.synaesthesia.client.service;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
-import nl.ru.languageininteraction.synaesthesia.client.model.ColourData;
-import nl.ru.languageininteraction.synaesthesia.client.model.StimuliGroup;
-import nl.ru.languageininteraction.synaesthesia.client.model.Stimulus;
-import nl.ru.languageininteraction.synaesthesia.client.model.StimulusResponse;
-import nl.ru.languageininteraction.synaesthesia.client.model.StimulusResponseGroup;
-import nl.ru.languageininteraction.synaesthesia.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.model.MetadataField;
+import nl.mpi.tg.eg.experiment.client.model.Stimulus;
+import nl.mpi.tg.eg.experiment.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.model.colour.ColourData;
+import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponse;
+import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponseGroup;
 
 /**
  * @since Oct 31, 2014 3:48:38 PM (creation date)
@@ -32,17 +34,23 @@ import nl.ru.languageininteraction.synaesthesia.client.model.UserResults;
 public abstract class ResultsSerialiser {
 
 //    private final MetadataFields mateadataFields = GWT.create(MetadataFields.class);
-    public String serialise(UserResults userResults, String postName_email) {
+    public String serialise(UserResults userResults, MetadataField postName_email) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (StimuliGroup stimuliGroup : userResults.getStimuliGroups()) {
-            StimulusResponseGroup responseGroup = userResults.getStimulusResponseGroup(stimuliGroup);
-            for (Stimulus stimulus : stimuliGroup.getStimuli()) {
+        for (StimulusResponseGroup responseGroup : userResults.getStimulusResponseGroups()) {
+            final ArrayList<Stimulus> stimuliList = new ArrayList(responseGroup.getStimuli());
+            stimuliList.sort(new Comparator<Stimulus>() {
+                @Override
+                public int compare(Stimulus o1, Stimulus o2) {
+                    return o1.getLabel().compareTo(o2.getLabel());
+                }
+            });
+            for (Stimulus stimulus : stimuliList) {
                 for (StimulusResponse response : responseGroup.getResults(stimulus)) {
-                    stringBuilder.append(userResults.getMetadataValue(postName_email));
+                    stringBuilder.append(userResults.getUserData().getMetadataValue(postName_email));
                     stringBuilder.append("\t");
-                    stringBuilder.append(stimuliGroup.getPostName());
+                    stringBuilder.append(responseGroup.getPostName());
                     stringBuilder.append("\t");
-                    stringBuilder.append(stimulus.getValue());
+                    stringBuilder.append(stimulus.getLabel());
                     stringBuilder.append("\t");
                     stringBuilder.append(formatDate(response.getTime()));
                     stringBuilder.append("\t");
