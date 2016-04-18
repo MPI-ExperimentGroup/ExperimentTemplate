@@ -21,15 +21,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Logger;
-import nl.ru.languageininteraction.synaesthesia.client.model.ColourData;
+import nl.mpi.tg.eg.experiment.client.model.Stimulus;
+import nl.mpi.tg.eg.experiment.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.model.colour.ColourData;
+import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponse;
+import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponseGroup;
 import nl.ru.languageininteraction.synaesthesia.client.model.GroupScoreData;
 import nl.ru.languageininteraction.synaesthesia.client.model.NormalisedColour;
 import nl.ru.languageininteraction.synaesthesia.client.model.ScoreData;
-import nl.ru.languageininteraction.synaesthesia.client.model.StimuliGroup;
-import nl.ru.languageininteraction.synaesthesia.client.model.UserResults;
-import nl.ru.languageininteraction.synaesthesia.client.model.Stimulus;
-import nl.ru.languageininteraction.synaesthesia.client.model.StimulusResponse;
-import nl.ru.languageininteraction.synaesthesia.client.model.StimulusResponseGroup;
 
 /**
  * @since Oct 21, 2014 4:49:43 PM (creation date)
@@ -45,19 +44,14 @@ public class ScoreCalculator {
         this.userResults = userResults;
     }
 
-    public Set<StimuliGroup> getStimuliGroups() {
-        return userResults.getStimuliGroups();
-    }
-
-    public GroupScoreData calculateScores(StimuliGroup group) {
+    public GroupScoreData calculateScores(final StimulusResponseGroup stimulusResponseGroup) {
 //        System.out.println(group.getGroupLabel() + "<table>");
         float score = 0;
         double accuracy = 0;
         double totalValidReactionTime = 0;
         int validResponseCount = 0;
         ArrayList<ScoreData> scoreList = new ArrayList<>();
-        final StimulusResponseGroup stimulusResponseGroup = userResults.getStimulusResponseGroup(group);
-        final List<Stimulus> allStimulus = group.getStimuli();
+        final Set<Stimulus> allStimulus = stimulusResponseGroup.getStimuli();
         int columnCount = stimulusResponseGroup.getMaxResponses();
         final ArrayList<Double> validTimesList = new ArrayList<>();
         for (Stimulus stimulus : allStimulus) {
