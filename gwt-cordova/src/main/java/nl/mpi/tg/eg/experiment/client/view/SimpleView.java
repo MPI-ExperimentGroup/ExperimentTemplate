@@ -28,6 +28,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 
@@ -45,16 +46,24 @@ public class SimpleView extends AbstractView {
     private final Grid headerPanel;
     private final VerticalPanel borderedContentPanel;
     private final ScrollPanel scrollPanel;
+    protected final int HEADER_SIZE;
 
     public SimpleView() {
-        headerPanel = new Grid(1, 3);
-        headerPanel.setWidth("100%");
-        headerPanel.setStylePrimaryName("headerPanel");
+
         footerPanel = new HorizontalPanel();
         borderedContentPanel = new VerticalPanel();
         borderedContentPanel.setStylePrimaryName("contentPanel");
         footerPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
-        addNorth(headerPanel, HEADER_SIZE);
+        if (ApplicationController.SHOW_HEADER) {
+            HEADER_SIZE = 50;
+            headerPanel = new Grid(1, 3);
+            headerPanel.setWidth("100%");
+            headerPanel.setStylePrimaryName("headerPanel");
+            addNorth(headerPanel, HEADER_SIZE);
+        } else {
+            HEADER_SIZE = 0;
+            headerPanel = null;
+        }
 //        addSouth(footerPanel, 50);
         scrollPanel = new ScrollPanel();
         borderedContentPanel.add(scrollPanel);
@@ -75,12 +84,14 @@ public class SimpleView extends AbstractView {
     }
 
     public void addTitle(String label, final PresenterEventListner presenterListerner) {
-        final Label headerLabel = new Label(label);
-        headerLabel.setStylePrimaryName("headerLabel");
-        headerPanel.setWidget(0, 0, new MenuButton(presenterListerner));
-        headerPanel.setWidget(0, 1, headerLabel);
-        headerPanel.setStylePrimaryName("headerPanel");
-        headerPanel.getColumnFormatter().setWidth(1, "100%");
+        if (headerPanel != null) {
+            final Label headerLabel = new Label(label);
+            headerLabel.setStylePrimaryName("headerLabel");
+            headerPanel.setWidget(0, 0, new MenuButton(presenterListerner));
+            headerPanel.setWidget(0, 1, headerLabel);
+            headerPanel.setStylePrimaryName("headerPanel");
+            headerPanel.getColumnFormatter().setWidth(1, "100%");
+        }
     }
 
     public void addToFooter(IsWidget button) {
@@ -143,5 +154,4 @@ public class SimpleView extends AbstractView {
         }
         setStyleByWidth(width);
     }
-    protected static final int HEADER_SIZE = 50;
 }
