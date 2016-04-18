@@ -47,6 +47,7 @@ public class Experiment implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String appNameDisplay;
+    private boolean showMenuBar = true;
     @Column(unique = true)
     private String appNameInternal;
     private String resourceNetworkPath; // path to MPI_Scratch that contains any resource files needed for the experiment
@@ -100,6 +101,15 @@ public class Experiment implements Serializable {
 
     public void setAppNameInternal(String appNameInternal) {
         this.appNameInternal = appNameInternal.toLowerCase();
+    }
+
+    @XmlAttribute
+    public boolean isShowMenuBar() {
+        return showMenuBar;
+    }
+
+    public void setShowMenuBar(boolean showMenuBar) {
+        this.showMenuBar = showMenuBar;
     }
 
     @XmlAttribute
