@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
 
@@ -31,6 +32,21 @@ import nl.mpi.tg.eg.experiment.client.model.Stimulus;
 public class StimulusResponseGroup {
 
     private final HashMap<Stimulus, ArrayList<StimulusResponse>> stimulusResponses = new HashMap<>();
+    private final String groupLabel;
+    private final String postName;
+
+    public StimulusResponseGroup(String groupLabel, String postName) {
+        this.groupLabel = groupLabel;
+        this.postName = postName;
+    }
+
+    public String getGroupLabel() {
+        return groupLabel;
+    }
+
+    public String getPostName() {
+        return postName;
+    }
 
     public void addResponse(Stimulus stimulus, StimulusResponse response) {
         final ArrayList<StimulusResponse> knownResponses = stimulusResponses.get(stimulus);
@@ -41,6 +57,10 @@ public class StimulusResponseGroup {
         } else {
             knownResponses.add(response);
         }
+    }
+
+    public Set<Stimulus> getStimuli() {
+        return Collections.<Stimulus>unmodifiableSet(stimulusResponses.keySet());
     }
 
     public List<StimulusResponse> getResults(Stimulus stimulus) {
