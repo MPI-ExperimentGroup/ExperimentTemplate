@@ -24,6 +24,10 @@
 
             public class ApplicationController extends AppController {
 
+            public static final boolean SHOW_HEADER = </xsl:text>
+        <xsl:value-of select="experiment/@showMenuBar" />
+        <xsl:text>;
+
             public enum ApplicationState {
         
             start(null),
