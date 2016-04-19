@@ -349,7 +349,7 @@ canvas {
 table#screenExample td, .stimulusHelpPanel .gwt-Button, .stimulusHelpText, .popupTextBox,
 .gwt-Label, .gwt-HTML, .gwt-CheckBox, .pageLink, .contentBody, .metadataError, .metadataOK, .metadataErrorMessage,
 .gwt-Button.nextButton, .gwt-Button.menuButton,.gwt-PushButton.stimulusButton, .gwt-Button.stimulusButton,.gwt-Button.stimulusHelpButton, .gwt-Button.stimulusQuitButton, .gwt-Button.stimulusButton, .gwt-Button.optionButton, .gwt-Label.headerButton {  
-    font-size: 17pt;
+    font-size: $textFontSize;
     /*    
     font-family: Georgia, Times, "Times New Roman", serif;
     font-size: 16pt;
