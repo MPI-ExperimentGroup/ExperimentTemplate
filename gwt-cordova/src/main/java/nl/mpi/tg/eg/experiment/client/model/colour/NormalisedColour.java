@@ -15,9 +15,8 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.ru.languageininteraction.synaesthesia.client.model;
+package nl.mpi.tg.eg.experiment.client.model.colour;
 
-import nl.ru.languageininteraction.language.client.model.ColourData;
 
 /**
  * @since Nov 17, 2014 5:52:52 PM (creation date)

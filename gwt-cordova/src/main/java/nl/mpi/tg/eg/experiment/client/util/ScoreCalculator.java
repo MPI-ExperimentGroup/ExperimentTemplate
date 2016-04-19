@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.ru.languageininteraction.synaesthesia.client.util;
+package nl.mpi.tg.eg.experiment.client.util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,9 +26,9 @@ import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.model.colour.ColourData;
 import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponse;
 import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponseGroup;
-import nl.ru.languageininteraction.synaesthesia.client.model.GroupScoreData;
-import nl.ru.languageininteraction.synaesthesia.client.model.NormalisedColour;
-import nl.ru.languageininteraction.synaesthesia.client.model.ScoreData;
+import nl.mpi.tg.eg.experiment.client.model.colour.GroupScoreData;
+import nl.mpi.tg.eg.experiment.client.model.colour.NormalisedColour;
+import nl.mpi.tg.eg.experiment.client.model.colour.ScoreData;
 
 /**
  * @since Oct 21, 2014 4:49:43 PM (creation date)
