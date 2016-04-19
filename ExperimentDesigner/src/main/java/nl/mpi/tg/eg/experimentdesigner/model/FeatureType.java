@@ -95,6 +95,8 @@ public enum FeatureType {
     existingUserCheck(true, false, null, false, Contitionals.hasUserCount),
     multipleUsers(true, false, null),
     singleUser(true, false, null),
+    aboveThreshold(true, false, null),
+    belowThreshold(true, false, null),
     stimulusImage(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext}),
     stimulusCodeImage(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, codeFormat}),
     stimulusCodeAudio(true, false, new FeatureAttribute[]{msToNext, codeFormat}),
@@ -107,7 +109,8 @@ public enum FeatureType {
     endAudioRecorderTag(false, false, new FeatureAttribute[]{eventTier, eventTag}),
     userInfo(false, false, null),
     versionData(false, false, null),
-    preventWindowClose(false, false, null);
+    preventWindowClose(false, false, null),
+    showColourReport(true, false, new FeatureAttribute[]{scoreThreshold}, false, Contitionals.hasThreshold);
     private final boolean canHaveFeatures;
     private final boolean canHaveText;
     private final boolean canHaveStimulusTags; // todo: this could well be canHaveTagList so that it is more generic
@@ -120,6 +123,7 @@ public enum FeatureType {
         hasStimulusTag,
         hasErrorSuccess,
         hasUserCount,
+        hasThreshold,
         none
     }
 
