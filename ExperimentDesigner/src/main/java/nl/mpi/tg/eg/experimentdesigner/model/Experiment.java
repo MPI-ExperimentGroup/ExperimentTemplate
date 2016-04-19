@@ -63,6 +63,7 @@ public class Experiment implements Serializable {
     private String complementColour3;
     private String complementColour4;
     private String backgroundColour;
+    private int textFontSize = 17;
 
     @OneToMany(mappedBy = "experiment")
     private List<PublishEvents> publishEvents = new ArrayList<>();
@@ -110,6 +111,15 @@ public class Experiment implements Serializable {
 
     public void setShowMenuBar(boolean showMenuBar) {
         this.showMenuBar = showMenuBar;
+    }
+
+    @XmlAttribute
+    public int getTextFontSize() {
+        return textFontSize;
+    }
+
+    public void setTextFontSize(int textFontSize) {
+        this.textFontSize = textFontSize;
     }
 
     @XmlAttribute
