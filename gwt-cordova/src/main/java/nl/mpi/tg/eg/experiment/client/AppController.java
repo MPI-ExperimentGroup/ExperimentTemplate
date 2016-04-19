@@ -117,7 +117,6 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
 //            }
 //        }, FocusEvent.getType());
 //    }
-
     @Override
     public void audioExceptionFired(AudioException audioException) {
         logger.warning(audioException.getMessage());
@@ -132,6 +131,9 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
         submissionService.submitTagValue(userResults.getUserData().getUserId(), "projectVersion", version.projectVersion(), 0);
         submissionService.submitTagValue(userResults.getUserData().getUserId(), "lastCommitDate", version.lastCommitDate().replace("\"", ""), 0);
         submissionService.submitTagValue(userResults.getUserData().getUserId(), "compileDate", version.compileDate(), 0);
+        submissionService.submitTagValue(userResults.getUserData().getUserId(), "navigator.platform", Window.Navigator.getPlatform(), 0);
+        submissionService.submitTagValue(userResults.getUserData().getUserId(), "navigator.userAgent", Window.Navigator.getUserAgent(), 0);
+        submissionService.submitTagValue(userResults.getUserData().getUserId(), "navigator.cookieEnabled", Boolean.toString(Window.Navigator.isCookieEnabled()), 0);
         if (hasCordova()) {
             // cordova specific information
             submissionService.submitTagValue(userResults.getUserData().getUserId(), "cordovaVersion", getCordovaVersion(), 0);
