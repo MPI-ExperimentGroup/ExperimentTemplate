@@ -21,13 +21,14 @@ import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.i18n.shared.DateTimeFormat;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.Date;
+import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponseGroup;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.view.ReportView;
-import nl.ru.languageininteraction.synaesthesia.client.model.GroupScoreData;
-import nl.ru.languageininteraction.synaesthesia.client.util.ScoreCalculator;
+import nl.mpi.tg.eg.experiment.client.model.colour.GroupScoreData;
+import nl.mpi.tg.eg.experiment.client.util.ScoreCalculator;
 
 /**
  * @since Mar 7, 2016 4:10:23 PM (creation date)
@@ -43,7 +44,8 @@ public abstract class AbstractColourReportPresenter extends AbstractPresenter im
         this.localStorage = new LocalStorage();
         this.userResults = userResults;
     }
-    public void showReport(){
+
+    public void showColourReport(float scoreThreshold, TimedStimulusListener aboveThreshold, TimedStimulusListener belowThreshold) { // todo: use scoreThreshold
         StringBuilder stringBuilder = new StringBuilder();
         final DateTimeFormat format = DateTimeFormat.getFormat(messages.reportDateFormat());
         final NumberFormat numberFormat2 = NumberFormat.getFormat("0.00");
@@ -70,16 +72,18 @@ public abstract class AbstractColourReportPresenter extends AbstractPresenter im
             stringBuilder.append("\t");
             stringBuilder.append(calculatedScores.getReactionTimeDeviation());
             stringBuilder.append("\n");
-            
+
         }
 //        userResults.getUserData().setScoreLog(stringBuilder.toString());
 //        ((ReportView) simpleView).addText(messages.reportScreenPostSCTtext());
 
-        if (userResults.getUserData().getBestScore() <= Float.parseFloat(messages.positiveresultsThreshold())) {
+        if (userResults.getUserData().getBestScore() <= scoreThreshold) {
+            belowThreshold.postLoadTimerFired();
 //            ((ReportView) simpleView).addHighlightedText(messages.positiveresultscreentext1());
 //            ((ReportView) simpleView).addHighlightedText(messages.positiveresultscreentext2());
 //            ((ReportView) simpleView).addHighlightedText(messages.positiveresultscreentext3());
         } else {
+            aboveThreshold.postLoadTimerFired();
 //            ((ReportView) simpleView).addHighlightedText(messages.negativeresultscreentext1());
 //            ((ReportView) simpleView).addHighlightedText(messages.negativeresultscreentext2());
 //            ((ReportView) simpleView).addHighlightedText(messages.negativeresultscreentext3());
