@@ -34,6 +34,8 @@ $complementColour4: </xsl:text>
         <xsl:value-of select="experiment/@complementColour4" /><xsl:text>;
 $backgroundColour: </xsl:text>
         <xsl:value-of select="experiment/@backgroundColour" /><xsl:text>;
+$textFontSize: </xsl:text>
+        <xsl:value-of select="experiment/@textFontSize" />pt<xsl:text>;
 </xsl:text>
     </xsl:template>
 </xsl:stylesheet>
