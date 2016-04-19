@@ -82,6 +82,7 @@ public class WizardData {
     private String completionText1 = "";
     private String completionText2 = "";
     private boolean menuScreen = false;
+    private int textFontSize = 17;
 
     public WizardData() {
     }
@@ -100,6 +101,14 @@ public class WizardData {
 
     public void setShowMenuBar(boolean showMenuBar) {
         this.showMenuBar = showMenuBar;
+    }
+
+    public int getTextFontSize() {
+        return textFontSize;
+    }
+
+    public void setTextFontSize(int textFontSize) {
+        this.textFontSize = textFontSize;
     }
 
     public boolean isObfuscateScreenNames() {
