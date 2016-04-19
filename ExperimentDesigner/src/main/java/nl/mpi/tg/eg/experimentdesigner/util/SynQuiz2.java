@@ -68,13 +68,21 @@ public class SynQuiz2 {
         wizardData.setOptionCheckBox1("I would like to be contacted about participating in other synaesthesia research studies (optional)");
         wizardData.setMandatoryCheckBox("By checking this box I confirm that I have read and understood the Volunteer's Information Sheet and I agree to take part in this study");
 
-        final PresenterScreen demographicsScreen = createDemographicsScreen(experiment, "Demographics", 4);
-        presenterScreenList.add(demographicsScreen);
-        final PresenterScreen editUserScreen = wizardController.addEditUserScreen(experiment, addUserSelectMenu, "Edit User", demographicsScreen, 3, wizardData, null, null, "Continue", null, null, null, "Could not contact the server, please check your internet connection and try again.", false);
+//        final PresenterScreen demographicsScreen1 = createDemographicsScreen1(experiment, "Demographics1", 4);
+//        presenterScreenList.add(demographicsScreen1);
+        final PresenterScreen editUserScreen = wizardController.addEditUserScreen(experiment, addUserSelectMenu, "Edit User", null, 3, wizardData, null, null, "Continue", null, null, null, "Could not contact the server, please check your internet connection and try again.", false);
+        final PresenterScreen demographicsScreen1 = wizardController.addEditUserScreen(experiment, editUserScreen, "Demographics1", null, 4, null, null, demographicsFields1, "Continue", null, null, null, "Could not contact the server, please check your internet connection and try again.", false);
         wizardController.addMetadata(experiment);
-        demographicsScreen.setBackPresenter(editUserScreen);
+        editUserScreen.setNextPresenter(demographicsScreen1);
+
+//        final PresenterScreen demographicsScreen2 = createDemographicsScreen2(experiment, "Demographics2", 4);
+//        presenterScreenList.add(demographicsScreen2);
+//        demographicsScreen1.setNextPresenter(demographicsScreen2);
+//        demographicsScreen2.setBackPresenter(demographicsScreen1);
+
         final PresenterScreen menuScreen = createMenuScreen("Menu", addUserSelectMenu, 5);
         presenterScreenList.add(menuScreen);
+        demographicsScreen1.setNextPresenter(menuScreen);
         final PresenterScreen reportScreen = createReportScreen("Report", menuScreen, menuScreen, 10);
         presenterScreenList.add(reportScreen);
         final PresenterScreen weekdaysScreen = createStimulusScreen("Weekdays", menuScreen, reportScreen, 6);
@@ -147,7 +155,9 @@ public class SynQuiz2 {
         presenterFeatureList.add(submitButtonFeature);
         return presenterScreen;
     }
-
+// todo: show complete on test that have been done like in SynQuiz1
+// todo: add finish button on the test menu screen which submits all data and leads to a restart(erase) all
+    
     private PresenterScreen createMenuScreen(String screenName, final PresenterScreen backScreen, long displayOrder) {
         final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backScreen, screenName + "Screen", null, PresenterType.menu, displayOrder);
         final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.menuItem, "WeekdaysScreen");
@@ -165,22 +175,32 @@ public class SynQuiz2 {
         return presenterScreen;
     }
 
-    private PresenterScreen createDemographicsScreen(Experiment experiment, String screenName, long displayOrder) {
+    final String[] demographicsFields1 = new String[]{
+            "DateOfBirth:Date of Birth:0-30-9/0-10-9/1-20-90-90-9:Please enter in the standard format DD/MM/YYYY.",
+        "Age:Age:0-9+:Please enter in number format.",
+        "male:Male:true|false:Please enter true or false.",
+        "female:Female:true|false:Please enter true or false.",
+        "AbsolutePitch:Absolute pitch:true|false:Please enter true or false.",
+        "TraumaticBlowToTheHead:Traumatic blow to the head:true|false:Please enter true or false.",
+        "Migraines:Migraines:true|false:Please enter true or false.",
+        "Headaches:Headaches:true|false:Please enter true or false.",
+        "Seizures:Seizures:true|false:Please enter true or false.",
+        "Dyslexia:Dyslexia:true|false:Please enter true or false.",
+        "BrainSurgery:Brain surgery:true|false:Please enter true or false.",
+        "AnyOtherConditions:Are there any other conditions that you would like us to know about?:.:."
+    };
+//    private PresenterScreen createDemographicsScreen1(Experiment experiment, String screenName, long displayOrder) {
+//        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, null, screenName + "Screen", null, PresenterType.metadata, displayOrder);
+//        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
+//        
+//        final PresenterFeature targetButtonFeature = new PresenterFeature(FeatureType.saveMetadataButton, "Take the tests!");
+//        presenterFeatureList.add(targetButtonFeature);
+//        return presenterScreen;
+//    }
+
+    private PresenterScreen createDemographicsScreen2(Experiment experiment, String screenName, long displayOrder) {
         final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, null, screenName + "Screen", null, PresenterType.metadata, displayOrder);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
-        wizardController.insertMetadataField(experiment, new Metadata("DateOfBirth", "Date of Birth", "0-30-9/0-10-9/1-20-90-90-9", "Please enter in the standard format DD/MM/YYYY.", false, null), presenterScreen);
-        wizardController.insertMetadataField(experiment, new Metadata("Age", "Age", "0-9+", "Please enter in number format.", false, null), presenterScreen);
-        wizardController.insertMetadataField(experiment, new Metadata("male", "Male", "true|false", "Please enter true or false.", false, null), presenterScreen);
-        wizardController.insertMetadataField(experiment, new Metadata("female", "Female", "true|false", "Please enter true or false.", false, null), presenterScreen);
-        wizardController.insertMetadataField(experiment, new Metadata("AbsolutePitch", "Absolute pitch", "true|false", "Please enter true or false.", false, null), presenterScreen);
-        wizardController.insertMetadataField(experiment, new Metadata("TraumaticBlowToTheHead", "Traumatic blow to the head", "true|false", "Please enter true or false.", false, null), presenterScreen);
-        wizardController.insertMetadataField(experiment, new Metadata("Migraines", "Migraines", "true|false", "Please enter true or false.", false, null), presenterScreen);
-        wizardController.insertMetadataField(experiment, new Metadata("Headaches", "Headaches", "true|false", "Please enter true or false.", false, null), presenterScreen);
-        wizardController.insertMetadataField(experiment, new Metadata("Seizures", "Seizures", "true|false", "Please enter true or false.", false, null), presenterScreen);
-        wizardController.insertMetadataField(experiment, new Metadata("Dyslexia", "Dyslexia", "true|false", "Please enter true or false.", false, null), presenterScreen);
-        wizardController.insertMetadataField(experiment, new Metadata("BrainSurgery", "Brain surgery", "true|false", "Please enter true or false.", false, null), presenterScreen);
-        wizardController.insertMetadataField(experiment, new Metadata("AnyOtherConditions", "Are there any other conditions that you would like us to know about?", "", "", false, null), presenterScreen);
-
 //        presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
         presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "Tell Us About Your Synaesthesia"));
         presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "Our study at the Max Planck Institute focuses on synaesthesia where numbers, letters, weekdays, or months cause people to have a colour experience. To someone with synaesthesia, the letter A might \"mean\" red to them, or the number \"5\" might make them experience the colour green. Please let us know if you experience any other types of synaesthesia by checking the boxes below. We may contact you in the future about studies related to these other types."));
@@ -296,8 +316,7 @@ public class SynQuiz2 {
         wizardController.insertMetadataField(experiment, new Metadata("AnyOtherTypes", "If you experience any other types, please explain below.", "", "", false, null), presenterScreen);
 
 //        presenterFeatureList.add(new PresenterFeature(FeatureType.text, ""));
-        final PresenterFeature targetButtonFeature = new PresenterFeature(FeatureType.targetButton, "Take the tests!");
-        targetButtonFeature.addFeatureAttributes(target, "MenuScreen");
+        final PresenterFeature targetButtonFeature = new PresenterFeature(FeatureType.saveMetadataButton, "Take the tests!");
         presenterFeatureList.add(targetButtonFeature);
         return presenterScreen;
     }
