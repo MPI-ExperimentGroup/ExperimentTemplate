@@ -48,7 +48,7 @@ public class SynQuiz2 {
     private final String imageSize = "80";
 
     public Experiment getExperiment() {
-        Experiment experiment = wizardController.getExperiment("SynQuiz2", "SynQuiz2");
+        Experiment experiment = wizardController.getExperiment("SynQuiz2", "SynQuiz2", true);
         experiment.setStimuli(new SynQuiz2().createStimuli());
         new SynQuiz2().create(experiment, experiment.getPresenterScreen());
         return experiment;
@@ -57,6 +57,7 @@ public class SynQuiz2 {
     public void create(Experiment experiment, final List<PresenterScreen> presenterScreenList) {
         final PresenterScreen introductionScreen = createIntroductionScreen("Introduction", 1);
         presenterScreenList.add(introductionScreen);
+        final PresenterScreen addUserSelectMenu = wizardController.addUserSelectMenu(experiment, introductionScreen, null, 2, false);
 //        final PresenterScreen registrationScreen = createRegistrationScreen("Registration", 2);
 //        presenterScreenList.add(registrationScreen);
         WizardData wizardData = new WizardData();
@@ -67,18 +68,22 @@ public class SynQuiz2 {
         wizardData.setOptionCheckBox1("I would like to be contacted about participating in other synaesthesia research studies (optional)");
         wizardData.setMandatoryCheckBox("By checking this box I confirm that I have read and understood the Volunteer's Information Sheet and I agree to take part in this study");
 
-        final PresenterScreen demographicsScreen = createDemographicsScreen(experiment, "Demographics", 3);
+        final PresenterScreen demographicsScreen = createDemographicsScreen(experiment, "Demographics", 4);
         presenterScreenList.add(demographicsScreen);
-        final PresenterScreen editUserScreen = wizardController.addEditUserScreen(experiment, introductionScreen, "Edit User", demographicsScreen, 2, wizardData, null, null, "Continue", null, null, null, "Could not contact the server, please check your internet connection and try again.", false);
+        final PresenterScreen editUserScreen = wizardController.addEditUserScreen(experiment, addUserSelectMenu, "Edit User", demographicsScreen, 3, wizardData, null, null, "Continue", null, null, null, "Could not contact the server, please check your internet connection and try again.", false);
         wizardController.addMetadata(experiment);
         demographicsScreen.setBackPresenter(editUserScreen);
-        final PresenterScreen weekdaysScreen = createStimulusScreen("Weekdays", demographicsScreen, 4);
+        final PresenterScreen menuScreen = createMenuScreen("Menu", addUserSelectMenu, 5);
+        presenterScreenList.add(menuScreen);
+        final PresenterScreen reportScreen = createReportScreen("Report", menuScreen, menuScreen, 10);
+        presenterScreenList.add(reportScreen);
+        final PresenterScreen weekdaysScreen = createStimulusScreen("Weekdays", menuScreen, reportScreen, 6);
         presenterScreenList.add(weekdaysScreen);
-        final PresenterScreen numbersScreen = createStimulusScreen("Numbers", weekdaysScreen, 5);
+        final PresenterScreen numbersScreen = createStimulusScreen("Numbers", menuScreen, reportScreen, 7);
         presenterScreenList.add(numbersScreen);
-        final PresenterScreen lettersScreen = createStimulusScreen("Letters", numbersScreen, 6);
+        final PresenterScreen lettersScreen = createStimulusScreen("Letters", menuScreen, reportScreen, 8);
         presenterScreenList.add(lettersScreen);
-        presenterScreenList.add(createStimulusScreen("Months", lettersScreen, 7));
+        presenterScreenList.add(createStimulusScreen("Months", menuScreen, reportScreen, 9));
     }
 
     private PresenterScreen createIntroductionScreen(String screenName, long displayOrder) {
@@ -140,6 +145,23 @@ public class SynQuiz2 {
         final PresenterFeature submitButtonFeature = new PresenterFeature(FeatureType.targetButton, "Submit");
         submitButtonFeature.addFeatureAttributes(target, "DemographicsScreen");
         presenterFeatureList.add(submitButtonFeature);
+        return presenterScreen;
+    }
+
+    private PresenterScreen createMenuScreen(String screenName, final PresenterScreen backScreen, long displayOrder) {
+        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backScreen, screenName + "Screen", null, PresenterType.menu, displayOrder);
+        final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.menuItem, "WeekdaysScreen");
+        presenterFeature1.addFeatureAttributes(FeatureAttribute.target, "WeekdaysScreen");
+        presenterScreen.getPresenterFeatureList().add(presenterFeature1);
+        final PresenterFeature presenterFeature2 = new PresenterFeature(FeatureType.menuItem, "NumbersScreen");
+        presenterFeature2.addFeatureAttributes(FeatureAttribute.target, "NumbersScreen");
+        presenterScreen.getPresenterFeatureList().add(presenterFeature2);
+        final PresenterFeature presenterFeature3 = new PresenterFeature(FeatureType.menuItem, "LettersScreen");
+        presenterFeature3.addFeatureAttributes(FeatureAttribute.target, "LettersScreen");
+        presenterScreen.getPresenterFeatureList().add(presenterFeature3);
+        final PresenterFeature presenterFeature4 = new PresenterFeature(FeatureType.menuItem, "MonthsScreen");
+        presenterFeature4.addFeatureAttributes(FeatureAttribute.target, "MonthsScreen");
+        presenterScreen.getPresenterFeatureList().add(presenterFeature4);
         return presenterScreen;
     }
 
@@ -275,13 +297,13 @@ public class SynQuiz2 {
 
 //        presenterFeatureList.add(new PresenterFeature(FeatureType.text, ""));
         final PresenterFeature targetButtonFeature = new PresenterFeature(FeatureType.targetButton, "Take the tests!");
-        targetButtonFeature.addFeatureAttributes(target, "WeekdaysScreen");
+        targetButtonFeature.addFeatureAttributes(target, "MenuScreen");
         presenterFeatureList.add(targetButtonFeature);
         return presenterScreen;
     }
 
-    private PresenterScreen createStimulusScreen(String screenName, final PresenterScreen backPresenter, long displayOrder) {
-        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, screenName + "Screen", null, PresenterType.colourPicker, displayOrder);
+    private PresenterScreen createStimulusScreen(String screenName, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder) {
+        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, screenName + "Screen", nextPresenter, PresenterType.colourPicker, displayOrder);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadAllStimulus, null);
         loadStimuliFeature.addStimulusTag(screenName);
@@ -297,7 +319,32 @@ public class SynQuiz2 {
 //        final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.targetButton, "Menu");
 //        menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, "AutoMenu");
 //        endOfStimulusFeature.getPresenterFeatureList().add(menuButtonFeature);
+//        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
+        return presenterScreen;
+    }
+
+    private PresenterScreen createReportScreen(String screenName, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder) {
+        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, screenName + "Screen", nextPresenter, PresenterType.colourReport, displayOrder);
+//        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
+        final PresenterFeature showColourReport = new PresenterFeature(FeatureType.showColourReport, null);
+//        showColourReport.addStimulusTag(screenName);
+        showColourReport.addFeatureAttributes(FeatureAttribute.scoreThreshold, "1");
+//        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "true");
+//        presenterFeatureList.add(loadStimuliFeature);
+        final PresenterFeature aboveThreshold = new PresenterFeature(FeatureType.aboveThreshold, null);
+        aboveThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "above threshold"));
+//        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
+//        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
+        showColourReport.getPresenterFeatureList().add(aboveThreshold);
+        final PresenterFeature belowThreshold = new PresenterFeature(FeatureType.belowThreshold, null);
+        belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "below threshold"));
+//        final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.targetButton, "Menu");
+//        menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, "AutoMenu");
+//        endOfStimulusFeature.getPresenterFeatureList().add(menuButtonFeature);
+//        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
+        showColourReport.getPresenterFeatureList().add(belowThreshold);
+        presenterScreen.getPresenterFeatureList().add(showColourReport);
         return presenterScreen;
     }
 
