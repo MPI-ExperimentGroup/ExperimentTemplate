@@ -35,16 +35,16 @@ public class ShawiFieldKit {
     private final WizardController wizardController = new WizardController();
 
     public Experiment getShawiExperiment() {
-        Experiment experiment = wizardController.getExperiment("shawifieldkit", "Shawi FieldKit");
+        Experiment experiment = wizardController.getExperiment("shawifieldkit", "Shawi FieldKit", true);
         boolean obfuscateScreenNames = false;
         experiment.setBackgroundColour("#ffeda0");
         experiment.setPrimaryColour4("#feb24c");
         experiment.setPrimaryColour2("#f03b20");
         wizardController.addMetadata(experiment);
         final PresenterScreen autoMenuPresenter = wizardController.addAutoMenu(experiment, 18, obfuscateScreenNames);
-        final PresenterScreen welcomePresenter = wizardController.addWelcomeScreen(experiment, autoMenuPresenter, null, 1, obfuscateScreenNames);
-        final PresenterScreen welcomeMenuPresenter = wizardController.addWelcomeMenu(experiment, welcomePresenter, null, 2, "Is this a new recording?", "Have you already started a recording and do you want to go back to it?", obfuscateScreenNames);
-        final PresenterScreen instructionsPresenter = wizardController.addInstructionsScreen(experiment, welcomePresenter, welcomeMenuPresenter, 3, "With this app you can make recordings of your language. "
+        final PresenterScreen welcomePresenter = wizardController.addWelcomeScreen(experiment, autoMenuPresenter, "Welcome", null, 1, "Instructions", "Go directly to program", obfuscateScreenNames);
+        final PresenterScreen welcomeMenuPresenter = wizardController.addWelcomeMenu(experiment, welcomePresenter, "Start", null, 2, "New Interview.", "Resume Interview", "Is this a new recording?", "Have you already started a recording and do you want to go back to it?", obfuscateScreenNames);
+        final PresenterScreen instructionsPresenter = wizardController.addInstructionsScreen(experiment, welcomePresenter, "Instructions", welcomeMenuPresenter, 3, "With this app you can make recordings of your language. "
                 + "Describe pictures in this app by speaking and the app records what you say.", obfuscateScreenNames);
         StimuliSubAction[] picturesValuesArray = new StimuliSubAction[]{new StimuliSubAction("80", "the informant talks/says whatever s/he wants", "next")};
         StimuliSubAction[] grammaticalityValuesArray = new StimuliSubAction[]{new StimuliSubAction("80", new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"})};
@@ -58,9 +58,9 @@ public class ShawiFieldKit {
         final PresenterScreen picturesScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, grammaticalityScreen, new String[]{"Pictures"}, picturesValuesArray, true, 1000, false, 8, obfuscateScreenNames);
         final PresenterScreen animalsScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, grammaticalityScreen, new String[]{"Animals"}, picturesValuesArray, true, 1000, false, 9, obfuscateScreenNames);
         final PresenterScreen frogsScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, grammaticalityScreen, new String[]{"Frogs"}, picturesValuesArray, false, 1000, false, 10, obfuscateScreenNames);
-        final PresenterScreen metadataScreen = wizardController.createMetadataScreen(experiment, autoMenuPresenter, picturesScreen, new String[]{"Nombre", "Sexo", "Edad", "Estado civil", "Origen", "Lugar de residencia", "Nombre de la comunidad a la que pertenece", "Actividad laboral", "Nivel de estudios", "Número de hijos", "Religión", "Idiomas"}, 4, obfuscateScreenNames);
+        final PresenterScreen metadataScreen = wizardController.createMetadataScreen(experiment, autoMenuPresenter, picturesScreen, new String[]{"Nombre", "Sexo", "Edad", "Estado civil", "Origen", "Lugar de residencia", "Nombre de la comunidad a la que pertenece", "Actividad laboral", "Nivel de estudios", "Número de hijos", "Religión", "Idiomas"}, "next", "end of stimuli", 4, obfuscateScreenNames);
         final PresenterScreen selectUserPresenter = wizardController.addUserSelectMenu(experiment, welcomePresenter, metadataScreen, 5, obfuscateScreenNames);
-        final PresenterScreen editUserPresenter = wizardController.addEditUserScreen(experiment, welcomePresenter, metadataScreen, 6, "Could not contact the server, please check your internet connection and try again.", obfuscateScreenNames);
+        final PresenterScreen editUserPresenter = wizardController.addEditUserScreen(experiment, welcomePresenter, "Edit User", metadataScreen, 6, "Could not contact the server, please check your internet connection and try again.", obfuscateScreenNames);
         final PresenterScreen debugScreenPresenter = wizardController.addDebugScreen(experiment, autoMenuPresenter, 17, obfuscateScreenNames);
         final PresenterScreen kinshipPresenter = addKinshipScreen(experiment, autoMenuPresenter, null, 16);
         welcomeMenuPresenter.setNextPresenter(metadataScreen);
