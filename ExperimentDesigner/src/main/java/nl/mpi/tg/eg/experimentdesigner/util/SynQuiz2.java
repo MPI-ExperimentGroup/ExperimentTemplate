@@ -57,7 +57,7 @@ public class SynQuiz2 {
     public void create(Experiment experiment, final List<PresenterScreen> presenterScreenList) {
         final PresenterScreen introductionScreen = createIntroductionScreen("Introduction", 1);
         presenterScreenList.add(introductionScreen);
-        final PresenterScreen addUserSelectMenu = wizardController.addUserSelectMenu(experiment, introductionScreen, null, 2, false);
+        final PresenterScreen completionScreen = wizardController.addCompletionScreen(experiment, null, introductionScreen, 12, "If another person wants to do this test they can exit this session and start from the begining.", true, null, "Finish this expriment and start from the begining", "Completion", "Could not contact the server, please check your internet connection and try again.", "Retry", false);
 //        final PresenterScreen registrationScreen = createRegistrationScreen("Registration", 2);
 //        presenterScreenList.add(registrationScreen);
         WizardData wizardData = new WizardData();
@@ -68,21 +68,30 @@ public class SynQuiz2 {
         wizardData.setOptionCheckBox1("I would like to be contacted about participating in other synaesthesia research studies (optional)");
         wizardData.setMandatoryCheckBox("By checking this box I confirm that I have read and understood the Volunteer's Information Sheet and I agree to take part in this study");
 
+        final PresenterScreen menuScreen = createMenuScreen("Menu", null, completionScreen, 5);
+        presenterScreenList.add(menuScreen);
+        completionScreen.setBackPresenter(menuScreen);
 //        final PresenterScreen demographicsScreen1 = createDemographicsScreen1(experiment, "Demographics1", 4);
 //        presenterScreenList.add(demographicsScreen1);
-        final PresenterScreen editUserScreen = wizardController.addEditUserScreen(experiment, addUserSelectMenu, "Edit User", null, 3, wizardData, null, null, "Continue", null, null, null, "Could not contact the server, please check your internet connection and try again.", false);
-        final PresenterScreen demographicsScreen1 = wizardController.addEditUserScreen(experiment, editUserScreen, "Demographics1", null, 4, null, null, demographicsFields1, "Continue", null, null, null, "Could not contact the server, please check your internet connection and try again.", false);
+        final PresenterScreen editUserScreen = wizardController.addEditUserScreen(experiment, introductionScreen, "Participant", null, 3, wizardData, null, null, "Continue", null, null, null, "Could not contact the server, please check your internet connection and try again.", false);
+        final PresenterScreen demographicsScreen1 = wizardController.addEditUserScreen(experiment, editUserScreen, "Details", null, 4, null, null, demographicsFields1, "Continue", null, null, null, "Could not contact the server, please check your internet connection and try again.", false);
         wizardController.addMetadata(experiment);
         editUserScreen.setNextPresenter(demographicsScreen1);
+
+        PresenterScreen previousDemographicsScreen = demographicsScreen1;
+        for (DemographicScreenType demographicScreenType : DemographicScreenType.values()) {
+            final PresenterScreen demographicsScreen = createDemographicsScreen(experiment, previousDemographicsScreen, demographicScreenType, 4);
+            presenterScreenList.add(demographicsScreen);
+            previousDemographicsScreen.setNextPresenter(demographicsScreen);
+            previousDemographicsScreen = demographicsScreen;
+        }
 
 //        final PresenterScreen demographicsScreen2 = createDemographicsScreen2(experiment, "Demographics2", 4);
 //        presenterScreenList.add(demographicsScreen2);
 //        demographicsScreen1.setNextPresenter(demographicsScreen2);
 //        demographicsScreen2.setBackPresenter(demographicsScreen1);
-
-        final PresenterScreen menuScreen = createMenuScreen("Menu", addUserSelectMenu, 5);
-        presenterScreenList.add(menuScreen);
-        demographicsScreen1.setNextPresenter(menuScreen);
+        previousDemographicsScreen.setNextPresenter(menuScreen);
+        menuScreen.setBackPresenter(previousDemographicsScreen);
         final PresenterScreen reportScreen = createReportScreen("Report", menuScreen, menuScreen, 10);
         presenterScreenList.add(reportScreen);
         final PresenterScreen weekdaysScreen = createStimulusScreen("Weekdays", menuScreen, reportScreen, 6);
@@ -95,7 +104,7 @@ public class SynQuiz2 {
     }
 
     private PresenterScreen createIntroductionScreen(String screenName, long displayOrder) {
-        final PresenterScreen presenterScreen = new PresenterScreen("Decoding the Genetics of Synaesthesia", screenName, null, screenName + "Screen", null, PresenterType.text, displayOrder);
+        final PresenterScreen presenterScreen = new PresenterScreen("Decoding the Genetics of Synaesthesia", screenName, null, screenName, null, PresenterType.text, displayOrder);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
 //        presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
         presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "We are studying the genetic basis of synaesthesia, a neurological phenomenon described as a \"mixing of the senses\". To find out how our genes shape how we see the world, "
@@ -115,7 +124,7 @@ public class SynQuiz2 {
                 + "Depending on your scores, we may send you an email inviting you to participate in the genetics part of the study. There is no cost to participate, and you can do everything from home."));
         presenterFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
         final PresenterFeature targetButtonFeature = new PresenterFeature(FeatureType.targetButton, "Participate!");
-        targetButtonFeature.addFeatureAttributes(target, "Edit_User");
+        targetButtonFeature.addFeatureAttributes(target, "Participant");
         presenterFeatureList.add(targetButtonFeature);
         presenterFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
         presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, "For more information about synaesthesia, please see our 'About synaesthesia' page. "
@@ -134,52 +143,51 @@ public class SynQuiz2 {
         return "<a href=\"#\" onclick=\"window.open('" + linkUrl + "','_system'); return false;\">" + linkText + "</a>";
     }
 
-    private PresenterScreen createRegistrationScreen(String screenName, long displayOrder) {
-        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, null, screenName + "Screen", null, PresenterType.metadata, displayOrder);
-        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
-        presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
-//        presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, ));
-//        presenterFeatureList.add(new PresenterFeature(FeatureType.text, ""));
-//        presenterFeatureList.add(new PresenterFeature(FeatureType.text, ""));
-//        final PresenterFeature targetButtonFeature = new PresenterFeature(FeatureType.targetButton, "Participant Information Sheet");
-//        targetButtonFeature.addFeatureAttributes(target, "InformationScreen");
-//        presenterFeatureList.add(targetButtonFeature);
-//        insertMetadataInput("First Name", ".'{'3,'}'");
-//        insertMetadataInput("Last Name", ".'{'3,'}'");
-//        insertMetadataInput("Email address", "^[^@]+@[^@]+$");
-//        insertMetadataInput("\"I would like to be contacted about participating in other synaesthesia research studies\" (optional)", "true|false");
-//        insertMetadataInput("\"By checking this box I confirm that I have read and understood the Volunteer's Information Sheet and I agree to take part in this study\"", "true|false");
-        presenterFeatureList.add(new PresenterFeature(FeatureType.allMetadataFields, null));
-        final PresenterFeature submitButtonFeature = new PresenterFeature(FeatureType.targetButton, "Submit");
-        submitButtonFeature.addFeatureAttributes(target, "DemographicsScreen");
-        presenterFeatureList.add(submitButtonFeature);
-        return presenterScreen;
-    }
+//    private PresenterScreen createRegistrationScreen(String screenName, long displayOrder) {
+//        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, null, screenName + "Screen", null, PresenterType.metadata, displayOrder);
+//        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
+//        presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
+////        presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, ));
+////        presenterFeatureList.add(new PresenterFeature(FeatureType.text, ""));
+////        presenterFeatureList.add(new PresenterFeature(FeatureType.text, ""));
+////        final PresenterFeature targetButtonFeature = new PresenterFeature(FeatureType.targetButton, "Participant Information Sheet");
+////        targetButtonFeature.addFeatureAttributes(target, "InformationScreen");
+////        presenterFeatureList.add(targetButtonFeature);
+////        insertMetadataInput("First Name", ".'{'3,'}'");
+////        insertMetadataInput("Last Name", ".'{'3,'}'");
+////        insertMetadataInput("Email address", "^[^@]+@[^@]+$");
+////        insertMetadataInput("\"I would like to be contacted about participating in other synaesthesia research studies\" (optional)", "true|false");
+////        insertMetadataInput("\"By checking this box I confirm that I have read and understood the Volunteer's Information Sheet and I agree to take part in this study\"", "true|false");
+//        presenterFeatureList.add(new PresenterFeature(FeatureType.allMetadataFields, null));
+//        final PresenterFeature submitButtonFeature = new PresenterFeature(FeatureType.targetButton, "Submit");
+//        submitButtonFeature.addFeatureAttributes(target, "DemographicsScreen");
+//        presenterFeatureList.add(submitButtonFeature);
+//        return presenterScreen;
+//    }
 // todo: show complete on test that have been done like in SynQuiz1
 // todo: add finish button on the test menu screen which submits all data and leads to a restart(erase) all
-    
-    private PresenterScreen createMenuScreen(String screenName, final PresenterScreen backScreen, long displayOrder) {
-        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backScreen, screenName + "Screen", null, PresenterType.menu, displayOrder);
-        final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.menuItem, "WeekdaysScreen");
-        presenterFeature1.addFeatureAttributes(FeatureAttribute.target, "WeekdaysScreen");
+    private PresenterScreen createMenuScreen(String screenName, final PresenterScreen backScreen, final PresenterScreen completionScreen, long displayOrder) {
+        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backScreen, screenName, completionScreen, PresenterType.menu, displayOrder);
+        final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.menuItem, "Weekdays");
+        presenterFeature1.addFeatureAttributes(FeatureAttribute.target, "Weekdays");
         presenterScreen.getPresenterFeatureList().add(presenterFeature1);
-        final PresenterFeature presenterFeature2 = new PresenterFeature(FeatureType.menuItem, "NumbersScreen");
-        presenterFeature2.addFeatureAttributes(FeatureAttribute.target, "NumbersScreen");
+        final PresenterFeature presenterFeature2 = new PresenterFeature(FeatureType.menuItem, "Numbers");
+        presenterFeature2.addFeatureAttributes(FeatureAttribute.target, "Numbers");
         presenterScreen.getPresenterFeatureList().add(presenterFeature2);
-        final PresenterFeature presenterFeature3 = new PresenterFeature(FeatureType.menuItem, "LettersScreen");
-        presenterFeature3.addFeatureAttributes(FeatureAttribute.target, "LettersScreen");
+        final PresenterFeature presenterFeature3 = new PresenterFeature(FeatureType.menuItem, "Letters");
+        presenterFeature3.addFeatureAttributes(FeatureAttribute.target, "Letters");
         presenterScreen.getPresenterFeatureList().add(presenterFeature3);
-        final PresenterFeature presenterFeature4 = new PresenterFeature(FeatureType.menuItem, "MonthsScreen");
-        presenterFeature4.addFeatureAttributes(FeatureAttribute.target, "MonthsScreen");
+        final PresenterFeature presenterFeature4 = new PresenterFeature(FeatureType.menuItem, "Months");
+        presenterFeature4.addFeatureAttributes(FeatureAttribute.target, "Months");
         presenterScreen.getPresenterFeatureList().add(presenterFeature4);
+//        completionScreen
         return presenterScreen;
     }
 
     final String[] demographicsFields1 = new String[]{
-            "DateOfBirth:Date of Birth:0-30-9/0-10-9/1-20-90-90-9:Please enter in the standard format DD/MM/YYYY.",
-        "Age:Age:0-9+:Please enter in number format.",
-        "male:Male:true|false:Please enter true or false.",
-        "female:Female:true|false:Please enter true or false.",
+        "DateOfBirth:Date of Birth:[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]:Please enter in the standard format DD/MM/YYYY.",
+        "Age:Age:[0-9]+:Please enter in number format.",
+        "Gender:Gender:|male|female|other:.",
         "AbsolutePitch:Absolute pitch:true|false:Please enter true or false.",
         "TraumaticBlowToTheHead:Traumatic blow to the head:true|false:Please enter true or false.",
         "Migraines:Migraines:true|false:Please enter true or false.",
@@ -187,7 +195,7 @@ public class SynQuiz2 {
         "Seizures:Seizures:true|false:Please enter true or false.",
         "Dyslexia:Dyslexia:true|false:Please enter true or false.",
         "BrainSurgery:Brain surgery:true|false:Please enter true or false.",
-        "AnyOtherConditions:Are there any other conditions that you would like us to know about?:.:."
+        "AnyOtherConditions:Are there any other conditions that you would like us to know about?:.*:."
     };
 //    private PresenterScreen createDemographicsScreen1(Experiment experiment, String screenName, long displayOrder) {
 //        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, null, screenName + "Screen", null, PresenterType.metadata, displayOrder);
@@ -198,131 +206,156 @@ public class SynQuiz2 {
 //        return presenterScreen;
 //    }
 
-    private PresenterScreen createDemographicsScreen2(Experiment experiment, String screenName, long displayOrder) {
-        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, null, screenName + "Screen", null, PresenterType.metadata, displayOrder);
+    enum DemographicScreenType {
+        Study, Colour, Smell, Sound, Spatial, Taste, Touch, Other
+    }
+
+    private PresenterScreen createDemographicsScreen(Experiment experiment, final PresenterScreen backPresenter, DemographicScreenType screenName, long displayOrder) {
+        final PresenterScreen presenterScreen = new PresenterScreen("Tell us about your synaesthesia: " + screenName.name() + "(" + (screenName.ordinal() + 1) + "/" + DemographicScreenType.values().length + ")", screenName.name(), backPresenter, screenName.name(), null, PresenterType.metadata, displayOrder);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
 //        presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
-        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "Tell Us About Your Synaesthesia"));
-        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "Our study at the Max Planck Institute focuses on synaesthesia where numbers, letters, weekdays, or months cause people to have a colour experience. To someone with synaesthesia, the letter A might \"mean\" red to them, or the number \"5\" might make them experience the colour green. Please let us know if you experience any other types of synaesthesia by checking the boxes below. We may contact you in the future about studies related to these other types."));
-        wizardController.insertMetadataField(experiment, "Numbers->Color", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Letters->Color", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Weekdays->Color", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Months->Color", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Sequences->Color", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Musical Pitch->Color", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Musical Chord->Color", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Musical Instruments->Color", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Taste->Color", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Smell->Color", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Pain->Color", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Personalities->Color", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Touch->Color", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Temperature->Color", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Vision->Color", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Sound->Color", presenterScreen);
-        wizardController.insertMetadataField(experiment, "American Sign -> Color", presenterScreen);
-        wizardController.insertMetadataField(experiment, "British Sign -> Color", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Numbers->Smell", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Letters->Smell", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Weekdays->Smell", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Months->Smell", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Sequences->Smell", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Musical Pitch->Smell", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Musical Chord->Smell", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Musical Instruments->Smell", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Taste->Smell", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Smell->Smell", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Pain->Smell", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Personalities->Smell", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Touch->Smell", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Temperature->Smell", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Vision->Smell", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Sound->Smell", presenterScreen);
-        wizardController.insertMetadataField(experiment, "American Sign->Smell", presenterScreen);
-        wizardController.insertMetadataField(experiment, "British Sign->Smell", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Numbers->Sound", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Letters->Sound", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Weekdays->Sound", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Months->Sound", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Sequences->Sound", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Musical Pitch->Sound", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Musical Chord->Sound", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Musical Instruments->Sound", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Taste->Sound", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Smell->Sound", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Pain->Sound", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Personalities->Sound", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Touch->Sound", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Temperature->Sound", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Vision->Sound", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Sound->Sound", presenterScreen);
-        wizardController.insertMetadataField(experiment, "American Sign->Sound", presenterScreen);
-        wizardController.insertMetadataField(experiment, "British Sign->Sound", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Numbers->Spatial", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Letters->Spatial", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Weekdays->Spatial", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Months->Spatial", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Sequences->Spatial", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Musical Pitch->Spatial", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Musical Chord->Spatial", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Musical Instruments>Spatial", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Taste->Spatial", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Smell->Spatial", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Pain->Spatial", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Personalities->Spatial", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Touch->Spatial", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Temperature->Spatial", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Vision->Spatial", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Sound->Spatial", presenterScreen);
-        wizardController.insertMetadataField(experiment, "American Sign->Spatial", presenterScreen);
-        wizardController.insertMetadataField(experiment, "British Sign->Spatial", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Numbers->Taste", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Letters->Taste", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Weekdays->Taste", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Months->Taste", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Sequences->Taste", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Musical Pitch->Taste", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Musical Chord->Taste", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Musical Instruments>Taste", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Taste->Taste", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Smell->Taste", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Pain->Taste", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Personalities->Taste", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Touch->Taste", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Temperature->Taste", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Vision->Taste", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Sound->Taste", presenterScreen);
-        wizardController.insertMetadataField(experiment, "American Sign->Taste", presenterScreen);
-        wizardController.insertMetadataField(experiment, "British Sign->Taste", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Numbers->Touch", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Letters->Touch", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Weekdays->Touch", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Months->Touch", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Sequences->Touch", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Musical Pitch->Touch", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Musical Chord->Touch", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Musical Instruments->Touch", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Taste->Touch", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Smell->Touch", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Pain->Touch", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Personalities->Touch", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Touch->Touch", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Temperature->Touch", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Vision->Touch", presenterScreen);
-        wizardController.insertMetadataField(experiment, "Sound->Touch", presenterScreen);
-        wizardController.insertMetadataField(experiment, "American Sign->Touch", presenterScreen);
-        wizardController.insertMetadataField(experiment, "British Sign->Touch", presenterScreen);
-
-        wizardController.insertMetadataField(experiment, new Metadata("AnyOtherTypes", "If you experience any other types, please explain below.", "", "", false, null), presenterScreen);
-
-//        presenterFeatureList.add(new PresenterFeature(FeatureType.text, ""));
-        final PresenterFeature targetButtonFeature = new PresenterFeature(FeatureType.saveMetadataButton, "Take the tests!");
-        presenterFeatureList.add(targetButtonFeature);
+//        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "Tell Us About Your Synaesthesia"));
+        switch (screenName) {
+            case Study:
+                presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "Our study at the Max Planck Institute focuses on synaesthesia where numbers, letters, weekdays, or months cause people to have a colour experience. To someone with synaesthesia, the letter A might \"mean\" red to them, or the number \"5\" might make them experience the colour green. Please let us know if you experience any other types of synaesthesia by checking the boxes in the following screens. We may contact you in the future about studies related to these other types."));
+                break;
+            case Colour:
+                wizardController.insertMetadataField(experiment, "Numbers->Colour", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Letters->Colour", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Weekdays->Colour", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Months->Colour", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Sequences->Colour", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Musical Pitch->Colour", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Musical Chord->Colour", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Musical Instruments->Colour", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Taste->Colour", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Smell->Colour", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Pain->Colour", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Personalities->Colour", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Touch->Colour", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Temperature->Colour", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Vision->Colour", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Sound->Colour", presenterScreen);
+                wizardController.insertMetadataField(experiment, "American Sign -> Colour", presenterScreen);
+                wizardController.insertMetadataField(experiment, "British Sign -> Colour", presenterScreen);
+                break;
+            case Smell:
+                wizardController.insertMetadataField(experiment, "Numbers->Smell", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Letters->Smell", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Weekdays->Smell", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Months->Smell", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Sequences->Smell", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Musical Pitch->Smell", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Musical Chord->Smell", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Musical Instruments->Smell", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Taste->Smell", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Smell->Smell", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Pain->Smell", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Personalities->Smell", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Touch->Smell", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Temperature->Smell", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Vision->Smell", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Sound->Smell", presenterScreen);
+                wizardController.insertMetadataField(experiment, "American Sign->Smell", presenterScreen);
+                wizardController.insertMetadataField(experiment, "British Sign->Smell", presenterScreen);
+                break;
+            case Sound:
+                wizardController.insertMetadataField(experiment, "Numbers->Sound", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Letters->Sound", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Weekdays->Sound", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Months->Sound", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Sequences->Sound", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Musical Pitch->Sound", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Musical Chord->Sound", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Musical Instruments->Sound", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Taste->Sound", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Smell->Sound", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Pain->Sound", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Personalities->Sound", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Touch->Sound", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Temperature->Sound", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Vision->Sound", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Sound->Sound", presenterScreen);
+                wizardController.insertMetadataField(experiment, "American Sign->Sound", presenterScreen);
+                wizardController.insertMetadataField(experiment, "British Sign->Sound", presenterScreen);
+                break;
+            case Spatial:
+                wizardController.insertMetadataField(experiment, "Numbers->Spatial", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Letters->Spatial", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Weekdays->Spatial", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Months->Spatial", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Sequences->Spatial", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Musical Pitch->Spatial", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Musical Chord->Spatial", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Musical Instruments>Spatial", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Taste->Spatial", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Smell->Spatial", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Pain->Spatial", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Personalities->Spatial", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Touch->Spatial", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Temperature->Spatial", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Vision->Spatial", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Sound->Spatial", presenterScreen);
+                wizardController.insertMetadataField(experiment, "American Sign->Spatial", presenterScreen);
+                wizardController.insertMetadataField(experiment, "British Sign->Spatial", presenterScreen);
+                break;
+            case Taste:
+                wizardController.insertMetadataField(experiment, "Numbers->Taste", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Letters->Taste", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Weekdays->Taste", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Months->Taste", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Sequences->Taste", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Musical Pitch->Taste", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Musical Chord->Taste", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Musical Instruments>Taste", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Taste->Taste", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Smell->Taste", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Pain->Taste", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Personalities->Taste", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Touch->Taste", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Temperature->Taste", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Vision->Taste", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Sound->Taste", presenterScreen);
+                wizardController.insertMetadataField(experiment, "American Sign->Taste", presenterScreen);
+                wizardController.insertMetadataField(experiment, "British Sign->Taste", presenterScreen);
+                break;
+            case Touch:
+                wizardController.insertMetadataField(experiment, "Numbers->Touch", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Letters->Touch", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Weekdays->Touch", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Months->Touch", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Sequences->Touch", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Musical Pitch->Touch", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Musical Chord->Touch", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Musical Instruments->Touch", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Taste->Touch", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Smell->Touch", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Pain->Touch", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Personalities->Touch", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Touch->Touch", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Temperature->Touch", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Vision->Touch", presenterScreen);
+                wizardController.insertMetadataField(experiment, "Sound->Touch", presenterScreen);
+                wizardController.insertMetadataField(experiment, "American Sign->Touch", presenterScreen);
+                wizardController.insertMetadataField(experiment, "British Sign->Touch", presenterScreen);
+                break;
+            case Other:
+                wizardController.insertMetadataField(experiment, new Metadata("AnyOtherTypes", "If you experience any other types, please explain below.", "", "", false, null), presenterScreen);
+        }
+        final PresenterFeature saveMetadataButton = new PresenterFeature(FeatureType.saveMetadataButton, "Continue");
+        saveMetadataButton.addFeatureAttributes(FeatureAttribute.sendData, "true");
+        final PresenterFeature onErrorFeature = new PresenterFeature(FeatureType.onError, "Could not contact the server, please check your internet connection and try again.");
+        saveMetadataButton.getPresenterFeatureList().add(onErrorFeature);
+        final PresenterFeature onSuccessFeature = new PresenterFeature(FeatureType.onSuccess, null);
+        final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
+        onSuccessFeature.getPresenterFeatureList().add(autoNextPresenter);
+        saveMetadataButton.getPresenterFeatureList().add(onSuccessFeature);
+        presenterScreen.getPresenterFeatureList().add(saveMetadataButton);
         return presenterScreen;
     }
 
     private PresenterScreen createStimulusScreen(String screenName, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder) {
-        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, screenName + "Screen", nextPresenter, PresenterType.colourPicker, displayOrder);
+        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, screenName, nextPresenter, PresenterType.colourPicker, displayOrder);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadAllStimulus, null);
         loadStimuliFeature.addStimulusTag(screenName);
@@ -344,7 +377,7 @@ public class SynQuiz2 {
     }
 
     private PresenterScreen createReportScreen(String screenName, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder) {
-        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, screenName + "Screen", nextPresenter, PresenterType.colourReport, displayOrder);
+        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, screenName, nextPresenter, PresenterType.colourReport, displayOrder);
 //        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
         final PresenterFeature showColourReport = new PresenterFeature(FeatureType.showColourReport, null);
 //        showColourReport.addStimulusTag(screenName);
