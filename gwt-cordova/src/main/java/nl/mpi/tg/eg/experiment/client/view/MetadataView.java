@@ -183,11 +183,13 @@ public class MetadataView extends ComplexView {
         for (FocusWidget focusWidget : fieldBoxes.values()) {
             focusWidget.setStylePrimaryName("metadataOK");
         }
-        for (int rowCounter = 0; rowCounter < flexTable.getRowCount(); rowCounter++) {
-            if (flexTable.getWidget(rowCounter, 0) == errorText) {
-                // remove the error message and the tabel row that was added for the error message
-                flexTable.removeRow(rowCounter);
-                break;
+        if (flexTable != null) {
+            for (int rowCounter = 0; rowCounter < flexTable.getRowCount(); rowCounter++) {
+                if (flexTable.getWidget(rowCounter, 0) == errorText) {
+                    // remove the error message and the tabel row that was added for the error message
+                    flexTable.removeRow(rowCounter);
+                    break;
+                }
             }
         }
     }
