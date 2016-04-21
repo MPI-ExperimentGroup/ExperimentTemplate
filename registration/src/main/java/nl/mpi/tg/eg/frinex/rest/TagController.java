@@ -35,7 +35,7 @@ public class TagController {
     @RequestMapping("tagviewer")
     public String tagPairViewer(Model model) {
         model.addAttribute("count", this.tagRepository.count());
-        model.addAttribute("allTagData", this.tagRepository.findAll());
+        model.addAttribute("allTagData", this.tagRepository.findDistinctUserIdTagDateExperimentNameEventTagTagValueEventMsByOrderByTagDateAsc());
         return "tagviewer";
     }
 }
