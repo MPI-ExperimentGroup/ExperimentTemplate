@@ -25,6 +25,9 @@ import java.util.zip.ZipOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import nl.mpi.tg.eg.frinex.model.Participant;
 import nl.mpi.tg.eg.frinex.model.ScreenData;
+import nl.mpi.tg.eg.frinex.model.TagData;
+import nl.mpi.tg.eg.frinex.model.TagPairData;
+import nl.mpi.tg.eg.frinex.model.TimeStamp;
 import nl.mpi.tg.eg.frinex.util.ParticipantCsvExporter;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
@@ -78,6 +81,9 @@ public class CsvController {
             zipOutputStream.setLevel(ZipOutputStream.STORED);
             addToZipArchive(zipOutputStream, "participants.csv", getParticipantsCsv());
             addToZipArchive(zipOutputStream, "screenviews.csv", getScreenDataCsv());
+            addToZipArchive(zipOutputStream, "tagdata.csv", getTagDataCsv());
+            addToZipArchive(zipOutputStream, "tagpairdata.csv", getTagPairDataCsv());
+            addToZipArchive(zipOutputStream, "timestampdata.csv", getTimeStampDataCsv());
         }
     }
 
@@ -105,6 +111,48 @@ public class CsvController {
         printer.printRecord("UserId", "ViewDate", "ScreenName");
         for (ScreenData screenData : screenDataRepository.findAll()) {
             printer.printRecord(screenData.getUserId(), screenData.getViewDate(), screenData.getScreenName());
+        }
+        printer.close();
+        return stringBuilder.toString().getBytes();
+    }
+
+    private byte[] getTimeStampDataCsv() throws IOException {
+        final StringBuilder stringBuilder = new StringBuilder();
+        CSVPrinter printer = new CSVPrinter(
+                stringBuilder,
+                CSVFormat.DEFAULT
+        );
+        printer.printRecord("UserId", "EventTag", "EventMs", "TagDate");
+        for (TimeStamp timeStamp : timeStampRepository.findAll()) {
+            printer.printRecord(timeStamp.getUserId(), timeStamp.getEventTag(), timeStamp.getEventMs(), timeStamp.getTagDate());
+        }
+        printer.close();
+        return stringBuilder.toString().getBytes();
+    }
+
+    private byte[] getTagDataCsv() throws IOException {
+        final StringBuilder stringBuilder = new StringBuilder();
+        CSVPrinter printer = new CSVPrinter(
+                stringBuilder,
+                CSVFormat.DEFAULT
+        );
+        printer.printRecord("UserId", "EventTag", "TagValue", "EventMs", "TagDate");
+        for (TagData tagData : tagRepository.findAll()) {
+            printer.printRecord(tagData.getUserId(), tagData.getEventTag(), tagData.getTagValue(), tagData.getEventMs(), tagData.getTagDate());
+        }
+        printer.close();
+        return stringBuilder.toString().getBytes();
+    }
+
+    private byte[] getTagPairDataCsv() throws IOException {
+        final StringBuilder stringBuilder = new StringBuilder();
+        CSVPrinter printer = new CSVPrinter(
+                stringBuilder,
+                CSVFormat.DEFAULT
+        );
+        printer.printRecord("UserId", "EventTag", "TagValue1", "TagValue2", "EventMs", "TagDate");
+        for (TagPairData tagPairData : tagPairRepository.findAll()) {
+            printer.printRecord(tagPairData.getUserId(), tagPairData.getEventTag(), tagPairData.getTagValue1(), tagPairData.getTagValue2(), tagPairData.getEventMs(), tagPairData.getTagDate());
         }
         printer.close();
         return stringBuilder.toString().getBytes();
