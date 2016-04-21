@@ -44,7 +44,7 @@ public enum FeatureAttribute {
     eventTag,
     ratingLabels,
     ratingLabelLeft,
-    ratingLabelRight,    
+    ratingLabelRight,
     sendData,
     randomise,
     norepeat,
@@ -64,5 +64,6 @@ public enum FeatureAttribute {
     maxStimuli,
     condition0Tag,
     condition1Tag,
-    condition2Tag
+    condition2Tag,
+    scoreThreshold
 }
