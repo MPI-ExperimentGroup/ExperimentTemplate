@@ -145,7 +145,7 @@ public class FactOrFiction {
         + "‘Je doet maar.’<br/>"
         + "Onder luid gepiep- en knars draaide Katinkel de molen. Daarna keek ze in het laatje: fijn gemalen pindabrokjes vermengd met groene puntjes schimmel. En daarna brak ze weer een pinda vrij, en haalde ook die door de molen; daarna deed ze dat nog een keer. En daarna deed ze dat nog een keer, en daarna deed ze er twee. Daarna zelfs drie en vier. En toen zei haar nicht dat ze ook wilde.<br/>"
         + "Vijf tegelijk gooide ze in de molen, en zelfs zonder er het rijstjasje vanaf te pellen. Het paste maar net. Het molentje piep- en knarste verschrikkelijk, nog veel luider dan daarvoor. Blijkbaar zelfs zo luid dat het geluid door het plafond heen tot in de kamer van Naut reikte, die de trap af de keuken in kwam rennen om te kijken wat er in godsnaam aan de hand was. En daar zag hij zijn huisgenote die in een kreunende antieke koffiemolen handjes Japanse rijstzoutjes probeerde te vermalen.<br/>"
-        + "‘O jij vuile Senseodrinker,’ zei Naut. ‘Barbaar! Jij hebt geen hart, jij. Ik wist het wel.’ Hij pakte de koffiemolen vast en trok hem met zoveel kracht uit haar handen dat het koffie-opvanglaatje uit zijn gleuf losraakte en door de keuken vloog, de met schimmel vermengde zoutjeskruimels over onze keukenvloer uitzaaiend. ‘Nooit, nooit geef ik je meer echte koffie.’ Hij rende de trap op naar boven, naar zijn kamer; trok met een harde klap de deur dicht.<br/>"
+        + "‘O jij vuile Senseodrinker,’ zei Naut. ‘Barbaar! Jij hebt geen hart, jij. Ik wist het wel.’ Hij pakte de koffiemolen vast en trok hem met zoveel kracht uit haar handen dat het koffie-opvanglaatje uit zijn gleuf losraakte en door de keuken vloog, de met schimmel vermengde zoutjeskruimels over de keukenvloer uitzaaiend. ‘Nooit, nooit geef ik je meer echte koffie.’ Hij rende de trap op naar boven, naar zijn kamer; trok met een harde klap de deur dicht.<br/>"
         + "<br/>"
         + "Ze heeft het geprobeerd aan hem uit te leggen – via sms, Facebook, zelfs voicemail. Ze vertelde van de schimmel, van de smalle gleuf en het gesprek met de marktkoopman. Ze heeft zelfs alle pindakruimels van de keukenvloer gestofzuigd, maar hij weigert nog steeds met haar te praten. Op het mededelingenbord schreef hij dat hij de koffiemolen tegen haar in bescherming heeft genomen.<br/>"
         + "<br/>"
@@ -303,7 +303,8 @@ public class FactOrFiction {
     };
 
     public Experiment getExperiment() {
-        final Experiment experiment = wizardController.getExperiment("leeservaring", "Leeservaring");
+        final Experiment experiment = wizardController.getExperiment("leeservaring", "Leeservaring", true);
+        experiment.setTextFontSize(22);
         final WizardData wizardData = new WizardData();
         wizardData.setObfuscateScreenNames(true);
 //        wizardData.setAgeField(true);
@@ -318,7 +319,7 @@ public class FactOrFiction {
             "hoeveelJaarNederlands:Als Nederlands niet uw moedertaal is, hoeveel jaar leert u al Nederlands?:[0-9]*:Voer een getal in."
         };
         final String could_not_contact_the_server_please_check = "De server is niet bereikbaar. Controleer de internetverbinding en probeer opnieuw.";
-        final PresenterScreen editUserScreen = wizardController.addEditUserScreen(experiment, null, "Participant", null, 2, wizardData, null, medataFields, "Volgende", null, null, null, could_not_contact_the_server_please_check, wizardData.isObfuscateScreenNames());
+        final PresenterScreen editUserScreen = wizardController.addEditUserScreen(experiment, null, "Participant", "Participant", null, 2, wizardData, null, medataFields, "Volgende", null, null, null, true, could_not_contact_the_server_please_check, wizardData.isObfuscateScreenNames());
         final PresenterScreen groupAorBScreen = wizardController.addRandomTextScreen(experiment, null, 3, "Introduciton", false, stimuliGroupAorB,
                 new String[]{"IntroductionAFact", "IntroductionBFiction"}, 1, true, null, 0, 0, null, null, null, null, "volgende [ spatiebalk ]", wizardData.isObfuscateScreenNames());
 //        final PresenterScreen storyScreen = wizardController.addRandomTextScreen(experiment, null, 4, "StoryPresentation", false, storyTexts, new String[]{"Emotioneel_hij", "Emotioneel_ik", "Koffiemolen_hij", "Koffiemolen_ik", "Matroesjka_hij", "Matroesjka_ik", "Meesterwerk_hij", "Meesterwerk_ik"}, 1, null, 0, 0, null, null, null, null, wizardData.isObfuscateScreenNames());
@@ -337,7 +338,7 @@ public class FactOrFiction {
         final PresenterScreen restartScreen = wizardController.addCompletionScreen(experiment, null, null, 22, wil_nog_iemand_op_dit_apparaat_deelnemen_, true, null, "Opnieuw beginnen", "Completion", could_not_contact_the_server_please_check, retry, wizardData.isObfuscateScreenNames());
         final PresenterScreen registeredScreen = wizardController.addCompletionScreen(experiment, null, null, 23, "Leuk dat u geïnteresseerd bent. " + wil_nog_iemand_op_dit_apparaat_deelnemen_, true, null, "Opnieuw beginnen", "Registered", could_not_contact_the_server_please_check, retry, wizardData.isObfuscateScreenNames());
         final String nog_een_keer_meedoen = wil_nog_iemand_op_dit_apparaat_deelnemen_; //"Nog een keer meedoen?";
-        final PresenterScreen completionScreen = wizardController.addEditUserScreen(experiment, null, "Bedankt", null, 21, null, completionScreenText, new String[]{"emaill::^[^@]+@[^@]+$:Geef een geldig e-mailadres."}, "Registreren", nog_een_keer_meedoen, restartScreen, "Opnieuw beginnen", could_not_contact_the_server_please_check, wizardData.isObfuscateScreenNames());
+        final PresenterScreen completionScreen = wizardController.addEditUserScreen(experiment, null, "Bedankt", "Bedankt", null, 21, null, completionScreenText, new String[]{"emaill::^[^@]+@[^@]+$:Geef een geldig e-mailadres."}, "Registreren", nog_een_keer_meedoen, restartScreen, "Opnieuw beginnen", true, could_not_contact_the_server_please_check, wizardData.isObfuscateScreenNames());
 //        completionScreen.setBackPresenter(restartScreen);
         completionScreen.setNextPresenter(registeredScreen);
         agreementScreen.setNextPresenter(editUserScreen);
