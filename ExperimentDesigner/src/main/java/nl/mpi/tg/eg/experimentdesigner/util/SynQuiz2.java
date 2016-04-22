@@ -73,8 +73,8 @@ public class SynQuiz2 {
         completionScreen.setBackPresenter(menuScreen);
 //        final PresenterScreen demographicsScreen1 = createDemographicsScreen1(experiment, "Demographics1", 4);
 //        presenterScreenList.add(demographicsScreen1);
-        final PresenterScreen editUserScreen = wizardController.addEditUserScreen(experiment, introductionScreen, "Participant", null, 3, wizardData, null, null, "Continue", null, null, null, "Could not contact the server, please check your internet connection and try again.", false);
-        final PresenterScreen demographicsScreen1 = wizardController.addEditUserScreen(experiment, editUserScreen, "Details", null, 4, null, null, demographicsFields1, "Continue", null, null, null, "Could not contact the server, please check your internet connection and try again.", false);
+        final PresenterScreen editUserScreen = wizardController.addEditUserScreen(experiment, introductionScreen, "Participant", "Participant", null, 3, wizardData, null, null, "Continue", null, null, null, true, "Could not contact the server, please check your internet connection and try again.", false);
+        final PresenterScreen demographicsScreen1 = wizardController.addEditUserScreen(experiment, editUserScreen, "Details", "Details", null, 4, null, null, demographicsFields1, "Continue", null, null, null, true, "Could not contact the server, please check your internet connection and try again.", false);
         wizardController.addMetadata(experiment);
         editUserScreen.setNextPresenter(demographicsScreen1);
 
