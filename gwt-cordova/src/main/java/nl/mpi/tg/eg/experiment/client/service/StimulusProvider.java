@@ -75,37 +75,41 @@ public class StimulusProvider {
         getSubset(selectionTags, stimulusArray.size(), randomise, seenList);
     }
 
-    public void getSdCardSubset(final ArrayList<String> directoryTagArray, final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final int maxStimulusCount, final boolean randomise, final String seenList) {
+    public void getSdCardSubset(final ArrayList<String> directoryTagArray, final List<String[]> directoryList, final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final int maxStimulusCount, final boolean randomise, final String seenList) {
         final List<Stimulus> stimulusListCopy = new ArrayList<>();
-        appendSdCardSubset(directoryTagArray, stimulusListCopy, simulusLoadedListener, simulusErrorListener, maxStimulusCount, randomise, seenList);
+        appendSdCardSubset(directoryTagArray, stimulusListCopy, directoryList, simulusLoadedListener, simulusErrorListener, maxStimulusCount, randomise, seenList);
     }
 
-    private void appendSdCardSubset(final ArrayList<String> directoryTagArray, final List<Stimulus> stimulusListCopy, final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final int maxStimulusCount, final boolean randomise, final String seenList) {
+    private void appendSdCardSubset(final ArrayList<String> directoryTagArray, final List<Stimulus> stimulusListCopy, final List<String[]> directoryList, final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final int maxStimulusCount, final boolean randomise, final String seenList) {
         if (directoryTagArray.isEmpty()) {
             stimulusSubsetArray.clear();
-            while (!stimulusListCopy.isEmpty() && maxStimulusCount > stimulusSubsetArray.size()) {
-                final int nextIndex = (randomise) ? new Random().nextInt(stimulusListCopy.size()) : 0;
-                Stimulus stimulus = stimulusListCopy.remove(nextIndex);
-                if (!seenList.contains(stimulus.getUniqueId())) {
-                    stimulusSubsetArray.add(stimulus);
-                }
-            }
-            if (!randomise) {
-                Collections.sort(stimulusSubsetArray, new Comparator<Stimulus>() {
-                    @Override
-                    public int compare(Stimulus o1, Stimulus o2) {
-                        return (o1.getCode().compareTo(o2.getCode()));
+            if (!directoryList.isEmpty()) {
+                simulusLoadedListener.postLoadTimerFired();
+            } else {
+                while (!stimulusListCopy.isEmpty() && maxStimulusCount > stimulusSubsetArray.size()) {
+                    final int nextIndex = (randomise) ? new Random().nextInt(stimulusListCopy.size()) : 0;
+                    Stimulus stimulus = stimulusListCopy.remove(nextIndex);
+                    if (!seenList.contains(stimulus.getUniqueId())) {
+                        stimulusSubsetArray.add(stimulus);
                     }
-                });
+                }
+                if (!randomise) {
+                    Collections.sort(stimulusSubsetArray, new Comparator<Stimulus>() {
+                        @Override
+                        public int compare(Stimulus o1, Stimulus o2) {
+                            return (o1.getCode().compareTo(o2.getCode()));
+                        }
+                    });
+                }
+                totalStimuli = stimulusSubsetArray.size();
+                simulusLoadedListener.postLoadTimerFired();
             }
-            totalStimuli = stimulusSubsetArray.size();
-            simulusLoadedListener.postLoadTimerFired();
         } else {
             final String directoryTag = directoryTagArray.remove(0);
-            final SdCardStimuli sdCardStimuli = new SdCardStimuli(stimulusListCopy, new TimedStimulusListener() {
+            final SdCardStimuli sdCardStimuli = new SdCardStimuli(stimulusListCopy, directoryList, new TimedStimulusListener() {
                 @Override
                 public void postLoadTimerFired() {
-                    appendSdCardSubset(directoryTagArray, stimulusListCopy, simulusLoadedListener, simulusErrorListener, maxStimulusCount, randomise, seenList);
+                    appendSdCardSubset(directoryTagArray, stimulusListCopy, directoryList, simulusLoadedListener, simulusErrorListener, maxStimulusCount, randomise, seenList);
                 }
             }, simulusErrorListener);
             sdCardStimuli.fillStimulusList(directoryTag);
