@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.experiment.client.service;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Timer;
+import java.util.ArrayList;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.SdCardStimulus;
@@ -32,13 +33,15 @@ public class SdCardStimuli {
 
     static final String MPI_STIMULI = "MPI_STIMULI";
     private final List<Stimulus> stimulusArray;
+    private final List<String[]> directoryList;
     private final TimedStimulusListener simulusLoadedListener;
     private final TimedStimulusListener simulusErrorListener;
 
-    public SdCardStimuli(List<Stimulus> stimulusArray, TimedStimulusListener simulusLoadedListener, TimedStimulusListener simulusErrorListener) {
+    public SdCardStimuli(List<Stimulus> stimulusArray, final List<String[]> directoryList, TimedStimulusListener simulusLoadedListener, TimedStimulusListener simulusErrorListener) {
         this.stimulusArray = stimulusArray;
         this.simulusLoadedListener = simulusLoadedListener;
         this.simulusErrorListener = simulusErrorListener;
+        this.directoryList = directoryList;
     }
 
     public final void fillStimulusList(final String directoryTag) {
@@ -56,7 +59,7 @@ public class SdCardStimuli {
     }
 
     public void insertDirectory(String directoryPath, String directoryName) {
-        // GWT.log("directoryPath: " + directoryPath);
+        directoryList.add(new String[]{directoryPath, directoryName});
     }
 
     public void insertStimulus(String stimulusPath, String fileName) {
@@ -89,18 +92,19 @@ public class SdCardStimuli {
     }
 
     private void nonScan() {
+        insertDirectory("./path/path", "a directory name");
+        insertDirectory("./path2/path2", "a directory 2 name");
         String[] testStiuli = new String[]{
-//            "d1e235.aiff",
+            //            "d1e235.aiff",
             "d1e235.jpg",
             "d1e235.mp3",
             "d1e235.mp4",
-            "d1e235.ogg",
-//            "d1e259.ogg", "d1e378.jpg", "d1e521.aiff", "d1e674.mp4", "d1e83.jpg", "inge_grijp2.mp3", "sharon_flees3.mp3",
-//            "d1e263.aiff", "d1e378.mp3", "d1e521.jpg", "d1e674.ogg", "d1e831.aiff", "inge_grijp2.ogg", "sharon_flees3.ogg",
-//            "d1e263.jpg", "d1e378.mp4", "d1e521.mp3", "d1e679.aiff", "d1e831.jpg", "inge_grijp3.mp3", "sharon_flees4.mp3",
-//            "d1e263.mp3", "d1e378.ogg", "d1e521.mp4", "d1e679.jpg", "d1e831.mp3", "inge_grijp3.ogg", "sharon_flees4.ogg",
-//            "d1e263.mp4", "d1e383.aiff", "d1e521.ogg", "d1e679.mp3", "d1e831.mp4", "inge_grijp4.mp3", "sharon_flees5.mp3",
-//            "d1e263.ogg", "d1e383.jpg", "d1e526.aiff", "d1e679.mp4", "d1e831.ogg", "inge_grijp4.ogg"
+            "d1e235.ogg", //            "d1e259.ogg", "d1e378.jpg", "d1e521.aiff", "d1e674.mp4", "d1e83.jpg", "inge_grijp2.mp3", "sharon_flees3.mp3",
+        //            "d1e263.aiff", "d1e378.mp3", "d1e521.jpg", "d1e674.ogg", "d1e831.aiff", "inge_grijp2.ogg", "sharon_flees3.ogg",
+        //            "d1e263.jpg", "d1e378.mp4", "d1e521.mp3", "d1e679.aiff", "d1e831.jpg", "inge_grijp3.mp3", "sharon_flees4.mp3",
+        //            "d1e263.mp3", "d1e378.ogg", "d1e521.mp4", "d1e679.jpg", "d1e831.mp3", "inge_grijp3.ogg", "sharon_flees4.ogg",
+        //            "d1e263.mp4", "d1e383.aiff", "d1e521.ogg", "d1e679.mp3", "d1e831.mp4", "inge_grijp4.mp3", "sharon_flees5.mp3",
+        //            "d1e263.ogg", "d1e383.jpg", "d1e526.aiff", "d1e679.mp4", "d1e831.ogg", "inge_grijp4.ogg"
         };
         for (String item : testStiuli) {
             insertStimulus("static/" + item, item);
@@ -145,10 +149,11 @@ public class SdCardStimuli {
                                 console.log("currentEntry: " + entries[currentIndex].toURL());
                                 console.log("currentEntry: " + entries[currentIndex].name);
                                 if (entries[currentIndex].isDirectory === true) {
-        //                            console.log("isDirectory");                
-        //                            sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::insertDirectory(Ljava/lang/String;Ljava/lang/String;)(entries[currentIndex].toURL(), entries[currentIndex].name);
+                                    console.log("isDirectory");                
+                                    sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::insertDirectory(Ljava/lang/String;Ljava/lang/String;)(entries[currentIndex].toURL(), entries[currentIndex].name);
         //                            readFileEntry(entries[currentIndex]);
                                 } else {
+                                    console.log("isStimulus"); 
                                     sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::insertStimulus(Ljava/lang/String;Ljava/lang/String;)(entries[currentIndex].toURL(), entries[currentIndex].name);
                                 }
                             }
