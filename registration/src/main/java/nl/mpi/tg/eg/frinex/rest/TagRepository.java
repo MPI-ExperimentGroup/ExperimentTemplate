@@ -17,8 +17,14 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Stream;
 import nl.mpi.tg.eg.frinex.model.TagData;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -29,6 +35,9 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
  */
 @RepositoryRestResource(collectionResourceRel = "tagevents", path = "tagevents")
 public interface TagRepository extends PagingAndSortingRepository<TagData, Long> {
+
+    @Override
+    public Page<TagData> findAll(Pageable pageable);
 
     TagData findById(@Param("id") long id);
 
