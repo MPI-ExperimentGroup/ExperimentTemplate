@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.frinex.model;
 
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,7 +30,7 @@ import javax.persistence.Temporal;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Entity
-public class TagData {
+public class TagData implements Comparable<TagData> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -44,6 +45,17 @@ public class TagData {
     private String userId;
     private int eventMs;
 
+//    public TagData() {
+//    }
+//
+//    public TagData(Date tagDate, String experimentName, String eventTag, String tagValue, String userId, int eventMs) {
+//        this.tagDate = tagDate;
+//        this.experimentName = experimentName;
+//        this.eventTag = eventTag;
+//        this.tagValue = tagValue;
+//        this.userId = userId;
+//        this.eventMs = eventMs;
+//    }
     public long getId() {
         return id;
     }
@@ -78,5 +90,43 @@ public class TagData {
 
     public void setSubmitDate(Date submitDate) {
         this.submitDate = submitDate;
+    }
+
+    @Override
+    public int compareTo(TagData o) {
+        return tagDate.compareTo(o.getTagDate());
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final TagData other = (TagData) obj;
+        if (this.eventMs != other.eventMs) {
+            return false;
+        }
+        if (!Objects.equals(this.experimentName, other.experimentName)) {
+            return false;
+        }
+        if (!Objects.equals(this.eventTag, other.eventTag)) {
+            return false;
+        }
+        if (!Objects.equals(this.tagValue, other.tagValue)) {
+            return false;
+        }
+        if (!Objects.equals(this.userId, other.userId)) {
+            return false;
+        }
+        if (!Objects.equals(this.tagDate, other.tagDate)) {
+            return false;
+        }
+        return true;
     }
 }
