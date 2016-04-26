@@ -20,7 +20,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  * @since Jul 23, 2015 3:28:53 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
 -->
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
         <title>Experiment Data Page</title>
         <meta charset="UTF-8"/>
@@ -30,13 +31,37 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     <body>
         <div th:replace="fragments/adminpagelayout :: header"></div>
         <p th:text="'Activity Count, ' + ${count}" />
+        <div>
+            <ul>
+                <li style="display: inline;" th:class="${tagPageData.first}? 'disabled' : ''">
+                    <span th:if='${tagPageData.first}'>First</span>
+                    <a th:if='${not tagPageData.first}' th:href='@{${pageurl}(page=0)}'>First</a><!--'@{${pageurl}(page=0,size=${tagPageData.size})}-->
+                </li>
+                <li style="display: inline;" th:class="${tagPageData.first}? '' : 'disabled'">
+                    <span th:if='${tagPageData.first}'>&lt;&lt;</span>
+                    <a th:if='${not tagPageData.first}' th:href='@{${pageurl}(page=${tagPageData.number-1})}' title='Go to previous page'>&lt;&lt;</a>
+                </li>
+                <li style="display: inline;" th:each="item : ${#numbers.sequence(tagPageData.number - 10, tagPageData.number + 10)}" th:class="${item}? 'active' : ''">
+                    <span th:if='${item eq tagPageData.number}' th:text='${item}'>1</span>
+                    <a th:if='${item ne tagPageData.number and item ge 0 and item le tagPageData.totalPages}' th:href='@{${pageurl}(page=${item})}'><span th:text='${item}'>1</span></a>
+                </li>
+                <li style="display: inline;" th:class="${not tagPageData.last}? '' : 'disabled'">
+                    <span th:if='${tagPageData.last}'>&gt;&gt;</span>
+                    <a th:if='${not tagPageData.last}' th:href='@{${pageurl}(page=${tagPageData.number+1})}' title='Go to next page'>&gt;&gt;</a>
+                </li>
+                <li style="display: inline;" th:class="${tagPageData.last}? 'disabled' : ''">
+                    <span th:if='${tagPageData.last}'>Last</span>
+                    <a th:if="${not tagPageData.last}" th:href="@{${pageurl}(page=${tagPageData.totalPages})}">Last</a>
+                </li>
+            </ul>
+        </div>
         <table id="datatable">
             <thead>
                 <tr>
-                    <th>id</th>
+                    <!--<th>id</th>-->
                     <th>userId</th>
                     <th>tagDate</th>
-                    <th>submitDate</th>
+                    <!--<th>submitDate</th>-->
                     <th>experimentName</th>
                     <th>eventTag</th>
                     <th>tagValue</th>
@@ -45,10 +70,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             </thead>
             <tbody>
                 <tr th:each="prod : ${allTagData}">
-                    <td th:text="${prod.id}">id</td>
+                    <!--<td th:text="${prod.id}">id</td>-->
                     <td th:text="${prod.userId}">userId</td>
                     <td th:text="${prod.tagDate}">tagDate</td>
-                    <td th:text="${prod.submitDate}">submitDate</td>
+                    <!--<td th:text="${prod.submitDate}">submitDate</td>-->
                     <td th:text="${prod.experimentName}">experimentName</td>
                     <td th:text="${prod.eventTag}">eventTag</td>
                     <td th:text="${prod.tagValue}">tagValue</td>
