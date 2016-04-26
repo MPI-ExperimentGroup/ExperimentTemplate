@@ -17,10 +17,21 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.util.List;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
+import nl.mpi.tg.eg.frinex.model.TagData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @since Jul 23, 2015 3:27:13 PM (creation date)
@@ -33,9 +44,14 @@ public class TagController {
     private TagRepository tagRepository;
 
     @RequestMapping("tagviewer")
-    public String tagPairViewer(Model model) {
-        model.addAttribute("count", this.tagRepository.count());
-        model.addAttribute("allTagData", this.tagRepository.findDistinctUserIdTagDateExperimentNameEventTagTagValueEventMsByOrderByTagDateAsc());
+    public String tagPairViewer(Model model, @RequestParam(value = "page", defaultValue = "0", required = false) Integer page, @RequestParam(value = "size", defaultValue = "2000", required = false) Integer size) {//, Pageable pageable
+        final long count = this.tagRepository.count();
+        model.addAttribute("count", count);
+        final Page<TagData> tagPageData = this.tagRepository.findAll(new PageRequest(page, size, Direction.ASC, "tagDate"));
+        final List<TagData> content = tagPageData.getContent();
+        model.addAttribute("allTagData", new TreeSet(content));
+        model.addAttribute("tagPageData", tagPageData);
+        model.addAttribute("pageurl", "tagviewer");
         return "tagviewer";
     }
 }
