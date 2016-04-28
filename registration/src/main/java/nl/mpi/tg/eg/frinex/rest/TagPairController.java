@@ -35,7 +35,7 @@ public class TagPairController {
     @RequestMapping("tagpairviewer")
     public String tagPairViewer(Model model) {
         model.addAttribute("count", this.tagPairRepository.count());
-        model.addAttribute("allTagPairData", this.tagPairRepository.findAll());
+        model.addAttribute("allTagPairData", this.tagPairRepository.findAllDistinctRecords());
         return "tagpairviewer";
     }
 }

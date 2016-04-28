@@ -45,6 +45,18 @@ public class TagPairData {
     private String userId;
     private int eventMs;
 
+    public TagPairData() {
+    }
+
+    public TagPairData(String userId, String eventTag, String tagValue1, String tagValue2, int eventMs, Date tagDate) {
+        this.tagDate = tagDate;
+        this.eventTag = eventTag;
+        this.tagValue1 = tagValue1;
+        this.tagValue2 = tagValue2;
+        this.userId = userId;
+        this.eventMs = eventMs;
+    }
+
     public long getId() {
         return id;
     }

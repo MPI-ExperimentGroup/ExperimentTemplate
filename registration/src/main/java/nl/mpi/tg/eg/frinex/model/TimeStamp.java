@@ -46,6 +46,13 @@ public class TimeStamp {
     public TimeStamp() {
     }
 
+    public TimeStamp(String userId, String eventTag, int eventMs, Date tagDate) {
+        this.tagDate = tagDate;
+        this.eventTag = eventTag;
+        this.userId = userId;
+        this.eventMs = eventMs;
+    }
+
     public long getId() {
         return id;
     }

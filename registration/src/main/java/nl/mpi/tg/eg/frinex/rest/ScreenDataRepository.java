@@ -18,8 +18,8 @@
 package nl.mpi.tg.eg.frinex.rest;
 
 import java.util.List;
-import java.util.Set;
 import nl.mpi.tg.eg.frinex.model.ScreenData;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -33,8 +33,8 @@ public interface ScreenDataRepository extends PagingAndSortingRepository<ScreenD
 
     ScreenData findById(@Param("id") long id);
 
-    @Override
-    Set<ScreenData> findAll();
+    @Query("select distinct new ScreenData(userId, screenName, viewDate) from ScreenData order by viewDate asc")
+    List<ScreenData> findAllDistinctRecords();
 
     List<ScreenData> findByUserIdOrderByViewDateAsc(@Param("userId") String userId);
 

@@ -46,6 +46,12 @@ public class ScreenData {
     public ScreenData() {
     }
 
+    public ScreenData(String userId, String screenName, Date viewDate) {
+        this.viewDate = viewDate;
+        this.screenName = screenName;
+        this.userId = userId;
+    }
+
     public long getId() {
         return id;
     }
@@ -110,5 +116,5 @@ public class ScreenData {
         }
         return true;
     }
-    
+
 }

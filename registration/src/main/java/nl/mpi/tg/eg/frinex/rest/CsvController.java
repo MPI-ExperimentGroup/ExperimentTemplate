@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.frinex.rest;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -32,7 +33,6 @@ import nl.mpi.tg.eg.frinex.util.ParticipantCsvExporter;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -95,8 +95,13 @@ public class CsvController {
         );
         final ParticipantCsvExporter participantCsvExporter = new ParticipantCsvExporter();
         participantCsvExporter.appendCsvHeader(printer);
-        for (Participant participant : participantRepository.findAll(new Sort(Sort.Direction.ASC, "submitDate"))) {
-            participantCsvExporter.appendCsvRow(printer, participant);
+        ArrayList<String> insertedUserIds = new ArrayList<>();
+        for (Participant participant : participantRepository.findByOrderBySubmitDateDesc()) {
+            if (!insertedUserIds.contains(participant.getUserId())) {
+                // here we are relying on the last user data submission being the most complete because that data is only added to in the experiment GUI
+                participantCsvExporter.appendCsvRow(printer, participant);
+                insertedUserIds.add(participant.getUserId());
+            }
         }
         printer.close();
         return stringBuilder.toString().getBytes();
@@ -108,8 +113,8 @@ public class CsvController {
                 stringBuilder,
                 CSVFormat.DEFAULT
         );
-        printer.printRecord("UserId", "ViewDate", "ScreenName");
-        for (ScreenData screenData : screenDataRepository.findAll()) {
+        printer.printRecord("UserId", "ScreenName", "ViewDate");
+        for (ScreenData screenData : screenDataRepository.findAllDistinctRecords()) {
             printer.printRecord(screenData.getUserId(), screenData.getViewDate(), screenData.getScreenName());
         }
         printer.close();
@@ -123,7 +128,7 @@ public class CsvController {
                 CSVFormat.DEFAULT
         );
         printer.printRecord("UserId", "EventTag", "EventMs", "TagDate");
-        for (TimeStamp timeStamp : timeStampRepository.findAll()) {
+        for (TimeStamp timeStamp : timeStampRepository.findAllDistinctRecords()) {
             printer.printRecord(timeStamp.getUserId(), timeStamp.getEventTag(), timeStamp.getEventMs(), timeStamp.getTagDate());
         }
         printer.close();
@@ -137,7 +142,7 @@ public class CsvController {
                 CSVFormat.DEFAULT
         );
         printer.printRecord("UserId", "EventTag", "TagValue", "EventMs", "TagDate");
-        for (TagData tagData : tagRepository.findAll()) {
+        for (TagData tagData : tagRepository.findAllDistinctRecords()) {
             printer.printRecord(tagData.getUserId(), tagData.getEventTag(), tagData.getTagValue(), tagData.getEventMs(), tagData.getTagDate());
         }
         printer.close();
@@ -151,7 +156,7 @@ public class CsvController {
                 CSVFormat.DEFAULT
         );
         printer.printRecord("UserId", "EventTag", "TagValue1", "TagValue2", "EventMs", "TagDate");
-        for (TagPairData tagPairData : tagPairRepository.findAll()) {
+        for (TagPairData tagPairData : tagPairRepository.findAllDistinctRecords()) {
             printer.printRecord(tagPairData.getUserId(), tagPairData.getEventTag(), tagPairData.getTagValue1(), tagPairData.getTagValue2(), tagPairData.getEventMs(), tagPairData.getTagDate());
         }
         printer.close();

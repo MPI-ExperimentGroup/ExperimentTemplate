@@ -35,7 +35,7 @@ public class TimeStampController {
     @RequestMapping("timestampviewer")
     public String tagPairViewer(Model model) {
         model.addAttribute("count", this.timeStampRepository.count());
-        model.addAttribute("allTimeStampData", this.timeStampRepository.findAll());
+        model.addAttribute("allTimeStampData", this.timeStampRepository.findAllDistinctRecords());
         return "timestampviewer";
     }
 }

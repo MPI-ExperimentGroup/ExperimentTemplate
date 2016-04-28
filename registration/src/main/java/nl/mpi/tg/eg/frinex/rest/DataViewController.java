@@ -38,8 +38,9 @@ public class DataViewController {
 
     @RequestMapping("dataviewer")
     public String dataViewer(Model model) {
-        model.addAttribute("count", this.screenDataRepository.count());
-        model.addAttribute("allScreenData", this.screenDataRepository.findAll());
+        final List<ScreenData> distinctRecords = this.screenDataRepository.findAllDistinctRecords();
+        model.addAttribute("count", distinctRecords.size());
+        model.addAttribute("allScreenData", distinctRecords);
         return "dataviewer";
     }
 

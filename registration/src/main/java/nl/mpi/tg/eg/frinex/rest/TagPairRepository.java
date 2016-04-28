@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.frinex.rest;
 
 import java.util.List;
 import nl.mpi.tg.eg.frinex.model.TagPairData;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -31,6 +32,9 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 public interface TagPairRepository extends PagingAndSortingRepository<TagPairData, Long> {
 
     TagPairData findById(@Param("id") long id);
+
+    @Query("select distinct new TagPairData(userId, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData order by tagDate asc")
+    List<TagPairData> findAllDistinctRecords();
 
     List<TagPairData> findByUserIdOrderByTagDateAsc(@Param("userId") String userId);
 
