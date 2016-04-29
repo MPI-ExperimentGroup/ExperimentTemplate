@@ -157,15 +157,16 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         stimulusProvider.getSdCardSubset(directoryTagArray, directoryList, new TimedStimulusListener() {
             @Override
             public void postLoadTimerFired() {
+                ((TimedStimulusView) simpleView).clearPage();
                 if (directoryList.isEmpty()) {
                     showStimulus();
                 } else {
-                    ((TimedStimulusView) simpleView).clearPage();
                     for (final String[] directory : directoryList) {
+                        final boolean directoryCompleted = Boolean.parseBoolean(localStorage.getStoredDataValue(userResults.getUserData().getUserId(), directory[0]));
                         ((TimedStimulusView) simpleView).addOptionButton(new PresenterEventListner() {
                             @Override
                             public String getLabel() {
-                                return directory[1];
+                                return directory[1] + ((directoryCompleted) ? " (finis)" : "");
                             }
 
                             @Override
@@ -174,6 +175,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                                 loadSdCardStimulus(directory[1], selectionTags, directory[0], randomTags, maxStimulusCount, randomise, hasMoreStimulusListener, new TimedStimulusListener() {
                                     @Override
                                     public void postLoadTimerFired() {
+                                        localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), directory[0], Boolean.toString(true));
                                         // go back to the initial directory 
                                         loadSdCardStimulus(eventTag, selectionTags, subDirectory, randomTags, maxStimulusCount, randomise, hasMoreStimulusListener, endOfStimulusListener);
                                     }
@@ -336,14 +338,14 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     public void ratingButton(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final int eventTier) {
-        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, timedStimulusListener, ratingLabels, eventTier), ratingLabelLeft, ratingLabelRight, false);
+        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, timedStimulusListener, stimulusProvider.getCurrentStimulus().getUniqueId(), ratingLabels, eventTier), ratingLabelLeft, ratingLabelRight, false);
     }
 
     public void ratingFooterButton(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final int eventTier) {
-        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, timedStimulusListener, ratingLabels, eventTier), ratingLabelLeft, ratingLabelRight, true);
+        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, timedStimulusListener, stimulusProvider.getCurrentStimulus().getUniqueId(), ratingLabels, eventTier), ratingLabelLeft, ratingLabelRight, true);
     }
 
-    public List<PresenterEventListner> getRatingEventListners(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final String ratingLabels, final int eventTier) {
+    public List<PresenterEventListner> getRatingEventListners(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final String stimulusString, final String ratingLabels, final int eventTier) {
         ArrayList<PresenterEventListner> eventListners = new ArrayList<>();
         final String[] splitRatingLabels = ratingLabels.split(",");
         for (final String ratingItem : splitRatingLabels) {
@@ -387,7 +389,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 @Override
                 public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
                     endAudioRecorderTag(eventTier, ratingItem);
-                    submissionService.submitTagValue(userResults.getUserData().getUserId(), "RatingButton", ratingItem, duration.elapsedMillis());
+                    submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "RatingButton", stimulusString, ratingItem, duration.elapsedMillis());
                     timedStimulusListener.postLoadTimerFired();
                 }
 
@@ -405,7 +407,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void logTimeStamp(String eventTag) {
-        submissionService.submitTagValue(userResults.getUserData().getUserId(), "CustomTag", eventTag, duration.elapsedMillis());
+        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "CustomTag", stimulusProvider.getCurrentStimulus().getUniqueId(), eventTag, duration.elapsedMillis());
     }
 
     protected void endAudioRecorderTag(int tier, String tagString) {
