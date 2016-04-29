@@ -32,10 +32,10 @@ public class JenaFieldKit {
 
     public Experiment getJenaExperiment() {
         Experiment experiment = wizardController.getExperiment("vanuatufieldkit", "Vanuatu FieldKit", true);
-        wizardController.addMetadata(experiment);
+//        wizardController.addMetadata(experiment);
 
-        final PresenterScreen autoMenuPresenter = wizardController.addAutoMenu(experiment, 12, false);
-        final PresenterScreen welcomePresenter = wizardController.addWelcomeScreen(experiment, autoMenuPresenter, "Welkam", null, 1, "Instruksen (Blong programa)", "Stat - Go long program nao", false);
+        final PresenterScreen autoMenuPresenter = null;//wizardController.addAutoMenu(experiment, 12, false);//(Blong programa)
+        final PresenterScreen welcomePresenter = wizardController.addWelcomeScreen(experiment, autoMenuPresenter, "Welkam", null, 1, "Instruksen", "Stat - Go long program nao", false);
         final PresenterScreen welcomeMenuPresenter = wizardController.addWelcomeMenu(experiment, welcomePresenter, "Start", null, 2, "Niu rikording", "Gobak long wan olfala rikoding", "Makem wan niufala rikoding", "Gobak long wan rikoding we yu stat hem finis", false);
         final PresenterScreen instructionsPresenter = wizardController.addInstructionsScreen(experiment, welcomePresenter, "Instruksen", welcomeMenuPresenter, 3, "Wetem aplikasen ia yu save makem rikoding blong lanwis blong yu,"
                 + " bambai ol pipol blong Vanuatu mo ol pipol blong evri ples long world save harem lanwis blong yu. I gat fulap foto blong difren ples long Malakula wea i stap insaed long aplikasen ia. "
@@ -58,9 +58,12 @@ public class JenaFieldKit {
             "Bai i talem nem blong ples wea i stap nao.",
             "Bai i talem nem blong ples wea i bon long hem.",
             "Bai i talem wanem yea i bon."
-        }, "Neks", "Finis olgeta", 6, false);
-        final PresenterScreen selectUserPresenter = wizardController.addUserSelectMenu(experiment, welcomePresenter, metadataScreen, 5, false);
-        final PresenterScreen editUserPresenter = wizardController.addEditUserScreen(experiment, welcomePresenter, "Infomesen blong man/woman we i toktok", "Edit User", metadataScreen, 4, null, null, new String[]{"speakerName:Nem blong man/woman we i toktok:.'{'3,'}':Please enter at least three letters."}, "Savem infomesen", null, null, null, false, "Could not contact the server, please check your internet connection and try again.", false);
+        }, "Neks", "Finis olgeta", 7, false);
+        final PresenterScreen consentPresenter = wizardController.addTextScreen(experiment, welcomePresenter, "Konsen", metadataScreen, 6, "(Blong man/woman we i makem rikoding)<br><br>"
+                + "Mi undastan se wetem aplikasen ia mi makem wan rikoding; mo mi undastan se rikoding ia bai i stap long intanet bambai ol man mo ol woman long evri kantri i save harem rikoding ia wea mi stap makem nao.<br><br>",
+                "Prestem ples hea sapos yu agri.", false);
+        final PresenterScreen selectUserPresenter = wizardController.addUserSelectMenu(experiment, welcomePresenter, consentPresenter, 5, false);
+        final PresenterScreen editUserPresenter = wizardController.addEditUserScreen(experiment, welcomePresenter, "Infomesen blong man/woman we i toktok", "Edit User", consentPresenter, 4, null, null, new String[]{"workerId:Nem blong man/woman we i toktok:.'{'3,'}':Please enter at least three letters."}, "Savem infomesen", null, null, null, false, "Could not contact the server, please check your internet connection and try again.", false);
         final PresenterScreen debugScreenPresenter = wizardController.addDebugScreen(experiment, autoMenuPresenter, 11, false);
         welcomeMenuPresenter.setNextPresenter(editUserPresenter);
 //        instructionsPresenter.setNextPresenter(metadataScreen);
