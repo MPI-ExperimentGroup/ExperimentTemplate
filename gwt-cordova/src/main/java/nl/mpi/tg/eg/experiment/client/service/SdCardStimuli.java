@@ -45,7 +45,8 @@ public class SdCardStimuli {
     }
 
     public final void fillStimulusList(final String directoryTag) {
-        scanSdCard(MPI_STIMULI, directoryTag);
+        final String directoryTag1 = (directoryTag.contains(MPI_STIMULI)) ? directoryTag.split(MPI_STIMULI, 2)[1] : directoryTag;
+        scanSdCard(MPI_STIMULI, directoryTag1);
 //        testInsertStimulus();
 //        nonScan();
 //        for (GeneratedStimulus.Tag currentTag : tagArray) {
