@@ -350,6 +350,11 @@ public class DefaultExperiments {
                 presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.singleUser, presenterFeatureRepository));
                 presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
                 break;
+            case hasThreshold:
+                presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.aboveThreshold, presenterFeatureRepository));
+                presenterFeature.getPresenterFeatureList().add(addFeature(FeatureType.belowThreshold, presenterFeatureRepository));
+                presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                break;
 
             default:
                 break;
