@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experimentdesigner.model;
 
 import java.util.HashSet;
+import java.util.TreeSet;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -52,7 +53,7 @@ public class Stimulus {
     private byte[] audioData = null;
     private byte[] videoData = null;
 
-    HashSet<String> stimulusTags;
+    TreeSet<String> stimulusTags;
 
     public Stimulus() {
     }
@@ -66,7 +67,7 @@ public class Stimulus {
         this.label = label;
         this.code = code;
         this.pauseMs = pauseMs;
-        this.stimulusTags = new HashSet<>();
+        this.stimulusTags = new TreeSet<>();
         for (String tag : stimulusTags) {
             addStimulusTag(tag);
         }
@@ -187,7 +188,7 @@ public class Stimulus {
     }
 
     @XmlElement(name = "tag")
-    public HashSet<String> getStimulusTags() {
+    public TreeSet<String> getStimulusTags() {
         return stimulusTags;
     }
 
