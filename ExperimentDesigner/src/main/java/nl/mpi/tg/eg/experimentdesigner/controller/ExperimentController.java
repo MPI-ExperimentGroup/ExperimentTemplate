@@ -87,6 +87,15 @@ public class ExperimentController {
         model.addAttribute("wizardData", wizardData);
         return "design";
     }
+    @RequestMapping("/experiments/translations")
+    public String showTranslations(Model model, HttpServletRequest request) {
+//        Experiment createdExperiment = DefaultExperiments.getDefault();
+//        experimentRepository.save(createdExperiment);
+        model.addAttribute("contextPath", request.getContextPath());
+        model.addAttribute("detailType", "translations");
+        model.addAttribute("featureTexts", presenterFeatureRepository.getFeatureTexts());
+        return "design";
+    }
 
     @RequestMapping("/experiments/createDefaults")
     public String createDefaults(Model model, HttpServletRequest request) {
