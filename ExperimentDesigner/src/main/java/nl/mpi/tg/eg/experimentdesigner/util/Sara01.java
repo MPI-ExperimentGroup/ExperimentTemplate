@@ -20,6 +20,8 @@ package nl.mpi.tg.eg.experimentdesigner.util;
 import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAudioTestScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 
 /**
  * @since Mar 15, 2016 4:50:41 PM (creation date)
@@ -651,8 +653,7 @@ public class Sara01 {
         "practice/groupB/T_007_P_B.JPG",
         "practice/groupB/T_008_N_B.JPG",
         "practice/groupB/T_009_P_B.JPG",
-        "practice/groupB/T_010_N_B.JPG", 
-    //        "practice/wav/T_001.mp3",
+        "practice/groupB/T_010_N_B.JPG", //        "practice/wav/T_001.mp3",
     //        "practice/wav/T_001.ogg",
     //        "practice/wav/T_001.wav",
     //        "practice/wav/T_002.mp3",
@@ -743,27 +744,34 @@ public class Sara01 {
 //        wizardData.setAgreementText("agreementText");
 //        wizardData.setDisagreementScreenText("disagreementScreenText");
         //metadata
-        wizardData.setMetadataScreen(true);
+        final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
+        wizardEditUserScreen.setScreenTitle("Edit User");
+        wizardEditUserScreen.setScreenTag("Edit User");
+        wizardEditUserScreen.setSaveButtonLabel("Save Details");
+        wizardEditUserScreen.setSendData(true);
+        wizardEditUserScreen.setMetadataScreen(true);
 //        wizardData.setAgeField(true);
-        wizardData.setCustomFields(new String[]{
+        wizardEditUserScreen.setCustomFields(new String[]{
             "workerId:Arbeider id:.*:.",
             "firstName:Voornaam:.'{'3,'}':Voer minimaal drie letters.",
             "lastName:Achternaam:.'{'3,'}':Voer minimaal drie letters.",
             "age:Leeftijd:[0-9]+:Voer een getal.",
             "gender:Geslacht:|man|vrouw|anders:."
         });
+        wizardData.addScreen(wizardEditUserScreen);
 //        wizardData.setFirstNameField(true);
 //        wizardData.setLastNameField(true);
 //        wizardData.setGenderField(true);
         //audio test page
-        wizardData.setAudioTestScreen(true);
-        wizardData.setAudioWorksButtonText("Het geluid is OK");
-        wizardData.setAudioTestScreenText("Voordat we met het echte experiment beginnen, willen we je vragen even te testen of je geluidsinstellingen goed zijn voor het experiment. Druk op de onderstaande knop om een kort voorbeeldfragment te horen. De echte fragmenten variëren in sterkte, maar het voorbeeld is ongeveer net zo zacht als het zachtste fragment. Het is belangrijk dat je dit goed kunt verstaan. Als het te zacht klinkt (of te hard), probeer dan de het geluidsniveau op je computer aan te passen. Je kunt net zo vaak op de knop drukken tot het goed te verstaan is.<br/>"
+        final WizardAudioTestScreen wizardAudioTestScreen = new WizardAudioTestScreen();
+        wizardAudioTestScreen.setNextButton("Het geluid is OK");
+        wizardAudioTestScreen.setScreenText("Voordat we met het echte experiment beginnen, willen we je vragen even te testen of je geluidsinstellingen goed zijn voor het experiment. Druk op de onderstaande knop om een kort voorbeeldfragment te horen. De echte fragmenten variëren in sterkte, maar het voorbeeld is ongeveer net zo zacht als het zachtste fragment. Het is belangrijk dat je dit goed kunt verstaan. Als het te zacht klinkt (of te hard), probeer dan de het geluidsniveau op je computer aan te passen. Je kunt net zo vaak op de knop drukken tot het goed te verstaan is.<br/>"
                 + " <br/>"
                 + "Daarnaast willen we je ook vragen te testen of dit fragment (vooral) in je linkeroor te horen is. Zo niet, kun je dan je koptelefoon (of luidsprekers) omdraaien?<br/>"
                 + " <br/>"
                 + "Als de geluidssterkte goed is en je het geluid links hoort, kun je op de knop \"Het geluid is OK\" drukken om te beginnen met het experiment. Denk eraan om de context steeds goed op je in te laten werken voordat je verder gaat naar het geluidsfragment.");
-        wizardData.setTestAudioPath("static/testwav/test_wav");
+        wizardAudioTestScreen.setAudioPath("static/testwav/test_wav");
+        wizardData.addScreen(wizardAudioTestScreen);
         //practice (5 items):
         //                image
         //                next button
