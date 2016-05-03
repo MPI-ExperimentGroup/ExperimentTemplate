@@ -17,6 +17,10 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model;
 
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreen;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @since Mar 4, 2016 3:10:35 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
@@ -32,24 +36,7 @@ public class WizardData {
     private String agreementText = "";
     private String agreementScreenText = "";
     private String disagreementScreenText = "";
-    private boolean metadataScreen = false;
-    private String metadataScreenText = "";
-    private boolean speakerNameField = false;
-
-    private boolean firstNameField = false;
-    private boolean lastNameField = false;
-    private boolean genderField = false;
-    private boolean emailAddressField = false;
-    private String customTextField = "";
-    private String optionCheckBox1 = "";
-    private String optionCheckBox2 = "";
-    private String mandatoryCheckBox = "";
-    private boolean ageField = false;
-    private String[] customFields = null;
-    private boolean audioTestScreen = false;
-    private String audioTestScreenText = "";
-    private String audioWorksButtonText = "";
-    private String testAudioPath = "";
+    
 
     private boolean practiceStimuliScreen = false;
     private String practiceStimuliPath = "";
@@ -83,6 +70,8 @@ public class WizardData {
     private String completionText2 = "";
     private boolean menuScreen = false;
     private int textFontSize = 17;
+
+    private final List<WizardScreen> wizardScreens = new ArrayList<>();
 
     public WizardData() {
     }
@@ -157,110 +146,6 @@ public class WizardData {
 
     public void setDisagreementScreenText(String disagreementScreenText) {
         this.disagreementScreenText = disagreementScreenText;
-    }
-
-    public boolean isMetadataScreen() {
-        return metadataScreen;
-    }
-
-    public void setMetadataScreen(boolean metadataScreen) {
-        this.metadataScreen = metadataScreen;
-    }
-
-    public String getMetadataScreenText() {
-        return metadataScreenText;
-    }
-
-    public void setMetadataScreenText(String metadataScreenText) {
-        this.metadataScreenText = metadataScreenText;
-    }
-
-    public boolean isSpeakerNameField() {
-        return speakerNameField;
-    }
-
-    public void setSpeakerNameField(boolean speakerNameField) {
-        this.speakerNameField = speakerNameField;
-    }
-
-    public boolean isFirstNameField() {
-        return firstNameField;
-    }
-
-    public void setFirstNameField(boolean firstNameField) {
-        this.firstNameField = firstNameField;
-    }
-
-    public boolean isLastNameField() {
-        return lastNameField;
-    }
-
-    public void setLastNameField(boolean lastNameField) {
-        this.lastNameField = lastNameField;
-    }
-
-    public boolean isEmailAddressField() {
-        return emailAddressField;
-    }
-
-    public void setEmailAddressField(boolean emailAddressField) {
-        this.emailAddressField = emailAddressField;
-    }
-
-    public String getOptionCheckBox1() {
-        return optionCheckBox1;
-    }
-
-    public void setOptionCheckBox1(String optionCheckBox1) {
-        this.optionCheckBox1 = optionCheckBox1;
-    }
-
-    public String getOptionCheckBox2() {
-        return optionCheckBox2;
-    }
-
-    public void setOptionCheckBox2(String optionCheckBox2) {
-        this.optionCheckBox2 = optionCheckBox2;
-    }
-
-    public String getMandatoryCheckBox() {
-        return mandatoryCheckBox;
-    }
-
-    public void setMandatoryCheckBox(String mandatoryCheckBox) {
-        this.mandatoryCheckBox = mandatoryCheckBox;
-    }
-
-    public boolean isAgeField() {
-        return ageField;
-    }
-
-    public void setAgeField(boolean ageField) {
-        this.ageField = ageField;
-    }
-
-    public boolean isGenderField() {
-        return genderField;
-    }
-
-    public void setGenderField(boolean genderField) {
-        this.genderField = genderField;
-    }
-
-    public String getCustomTextField() {
-        return customTextField;
-    }
-
-    public void setCustomTextField(String customTextField) {
-        this.customTextField = customTextField;
-    }
-
-    public String[] getCustomFields() {
-        return customFields;
-    }
-
-    public void setCustomFields(String[] customFields) {
-        this.customFields = customFields;
     }
 
     public boolean isPracticeStimuliScreen() {
@@ -471,36 +356,12 @@ public class WizardData {
         this.agreementText = agreementText;
     }
 
-    public boolean isAudioTestScreen() {
-        return audioTestScreen;
+    public void addScreen(final WizardScreen wizardScreen) {
+        wizardScreens.add(wizardScreen);
     }
 
-    public void setAudioTestScreen(boolean audioTestScreen) {
-        this.audioTestScreen = audioTestScreen;
-    }
-
-    public String getAudioTestScreenText() {
-        return audioTestScreenText;
-    }
-
-    public void setAudioTestScreenText(String audioTestScreenText) {
-        this.audioTestScreenText = audioTestScreenText;
-    }
-
-    public String getAudioWorksButtonText() {
-        return audioWorksButtonText;
-    }
-
-    public void setAudioWorksButtonText(String audioWorksButtonText) {
-        this.audioWorksButtonText = audioWorksButtonText;
-    }
-
-    public String getTestAudioPath() {
-        return testAudioPath;
-    }
-
-    public void setTestAudioPath(String testAudioPath) {
-        this.testAudioPath = testAudioPath;
+    public List<WizardScreen> getWizardScreens() {
+        return wizardScreens;
     }
 
     public boolean isCompletionScreen() {
