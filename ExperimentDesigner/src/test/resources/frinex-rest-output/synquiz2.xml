@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<experiment appNameDisplay="SynQuiz2" appNameInternal="synquiz2" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="true" textFontSize="17">
+    <metadata>
+        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="firstName" preventServerDuplicates="false" registrationField="First name"/>
+        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="lastName" preventServerDuplicates="false" registrationField="Last name"/>
+        <field controlledMessage="Please enter a valid email address." controlledRegex="^[^@]+@[^@]+$" postName="emailAddress" preventServerDuplicates="false" registrationField="Email address"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="optionCheckBox1" preventServerDuplicates="false" registrationField="I would like to be contacted about participating in other synaesthesia research studies (optional)"/>
+        <field controlledMessage="Please agree to continue." controlledRegex="true" postName="mandatoryCheckBox" preventServerDuplicates="false" registrationField="By checking this box I confirm that I have read and understood the Volunteer's Information Sheet and I agree to take part in this study"/>
+        <field controlledMessage="Please enter in the standard format DD/MM/YYYY." controlledRegex="[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]" postName="DateOfBirth" preventServerDuplicates="false" registrationField="Date of Birth"/>
+        <field controlledMessage="Please enter in number format." controlledRegex="[0-9]+" postName="Age" preventServerDuplicates="false" registrationField="Age"/>
+        <field controlledMessage="." controlledRegex="|male|female|other" postName="Gender" preventServerDuplicates="false" registrationField="Gender"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="AbsolutePitch" preventServerDuplicates="false" registrationField="Absolute pitch"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="TraumaticBlowToTheHead" preventServerDuplicates="false" registrationField="Traumatic blow to the head"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Migraines" preventServerDuplicates="false" registrationField="Migraines"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Headaches" preventServerDuplicates="false" registrationField="Headaches"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Seizures" preventServerDuplicates="false" registrationField="Seizures"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Dyslexia" preventServerDuplicates="false" registrationField="Dyslexia"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="BrainSurgery" preventServerDuplicates="false" registrationField="Brain surgery"/>
+        <field controlledMessage="." controlledRegex=".*" postName="AnyOtherConditions" preventServerDuplicates="false" registrationField="Are there any other conditions that you would like us to know about?"/>
+        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Speaker name *"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Numbers__Colour" preventServerDuplicates="false" registrationField="Numbers-&gt;Colour"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Letters__Colour" preventServerDuplicates="false" registrationField="Letters-&gt;Colour"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Weekdays__Colour" preventServerDuplicates="false" registrationField="Weekdays-&gt;Colour"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Months__Colour" preventServerDuplicates="false" registrationField="Months-&gt;Colour"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Sequences__Colour" preventServerDuplicates="false" registrationField="Sequences-&gt;Colour"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Musical_Pitch__Colour" preventServerDuplicates="false" registrationField="Musical Pitch-&gt;Colour"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Musical_Chord__Colour" preventServerDuplicates="false" registrationField="Musical Chord-&gt;Colour"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Musical_Instruments__Colour" preventServerDuplicates="false" registrationField="Musical Instruments-&gt;Colour"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Taste__Colour" preventServerDuplicates="false" registrationField="Taste-&gt;Colour"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Smell__Colour" preventServerDuplicates="false" registrationField="Smell-&gt;Colour"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Pain__Colour" preventServerDuplicates="false" registrationField="Pain-&gt;Colour"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Personalities__Colour" preventServerDuplicates="false" registrationField="Personalities-&gt;Colour"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Touch__Colour" preventServerDuplicates="false" registrationField="Touch-&gt;Colour"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Temperature__Colour" preventServerDuplicates="false" registrationField="Temperature-&gt;Colour"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Vision__Colour" preventServerDuplicates="false" registrationField="Vision-&gt;Colour"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Sound__Colour" preventServerDuplicates="false" registrationField="Sound-&gt;Colour"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="American_Sign____Colour" preventServerDuplicates="false" registrationField="American Sign -&gt; Colour"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="British_Sign____Colour" preventServerDuplicates="false" registrationField="British Sign -&gt; Colour"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Numbers__Smell" preventServerDuplicates="false" registrationField="Numbers-&gt;Smell"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Letters__Smell" preventServerDuplicates="false" registrationField="Letters-&gt;Smell"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Weekdays__Smell" preventServerDuplicates="false" registrationField="Weekdays-&gt;Smell"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Months__Smell" preventServerDuplicates="false" registrationField="Months-&gt;Smell"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Sequences__Smell" preventServerDuplicates="false" registrationField="Sequences-&gt;Smell"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Musical_Pitch__Smell" preventServerDuplicates="false" registrationField="Musical Pitch-&gt;Smell"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Musical_Chord__Smell" preventServerDuplicates="false" registrationField="Musical Chord-&gt;Smell"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Musical_Instruments__Smell" preventServerDuplicates="false" registrationField="Musical Instruments-&gt;Smell"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Taste__Smell" preventServerDuplicates="false" registrationField="Taste-&gt;Smell"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Smell__Smell" preventServerDuplicates="false" registrationField="Smell-&gt;Smell"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Pain__Smell" preventServerDuplicates="false" registrationField="Pain-&gt;Smell"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Personalities__Smell" preventServerDuplicates="false" registrationField="Personalities-&gt;Smell"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Touch__Smell" preventServerDuplicates="false" registrationField="Touch-&gt;Smell"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Temperature__Smell" preventServerDuplicates="false" registrationField="Temperature-&gt;Smell"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Vision__Smell" preventServerDuplicates="false" registrationField="Vision-&gt;Smell"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Sound__Smell" preventServerDuplicates="false" registrationField="Sound-&gt;Smell"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="American_Sign__Smell" preventServerDuplicates="false" registrationField="American Sign-&gt;Smell"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="British_Sign__Smell" preventServerDuplicates="false" registrationField="British Sign-&gt;Smell"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Numbers__Sound" preventServerDuplicates="false" registrationField="Numbers-&gt;Sound"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Letters__Sound" preventServerDuplicates="false" registrationField="Letters-&gt;Sound"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Weekdays__Sound" preventServerDuplicates="false" registrationField="Weekdays-&gt;Sound"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Months__Sound" preventServerDuplicates="false" registrationField="Months-&gt;Sound"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Sequences__Sound" preventServerDuplicates="false" registrationField="Sequences-&gt;Sound"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Musical_Pitch__Sound" preventServerDuplicates="false" registrationField="Musical Pitch-&gt;Sound"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Musical_Chord__Sound" preventServerDuplicates="false" registrationField="Musical Chord-&gt;Sound"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Musical_Instruments__Sound" preventServerDuplicates="false" registrationField="Musical Instruments-&gt;Sound"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Taste__Sound" preventServerDuplicates="false" registrationField="Taste-&gt;Sound"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Smell__Sound" preventServerDuplicates="false" registrationField="Smell-&gt;Sound"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Pain__Sound" preventServerDuplicates="false" registrationField="Pain-&gt;Sound"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Personalities__Sound" preventServerDuplicates="false" registrationField="Personalities-&gt;Sound"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Touch__Sound" preventServerDuplicates="false" registrationField="Touch-&gt;Sound"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Temperature__Sound" preventServerDuplicates="false" registrationField="Temperature-&gt;Sound"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Vision__Sound" preventServerDuplicates="false" registrationField="Vision-&gt;Sound"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Sound__Sound" preventServerDuplicates="false" registrationField="Sound-&gt;Sound"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="American_Sign__Sound" preventServerDuplicates="false" registrationField="American Sign-&gt;Sound"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="British_Sign__Sound" preventServerDuplicates="false" registrationField="British Sign-&gt;Sound"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Numbers__Spatial" preventServerDuplicates="false" registrationField="Numbers-&gt;Spatial"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Letters__Spatial" preventServerDuplicates="false" registrationField="Letters-&gt;Spatial"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Weekdays__Spatial" preventServerDuplicates="false" registrationField="Weekdays-&gt;Spatial"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Months__Spatial" preventServerDuplicates="false" registrationField="Months-&gt;Spatial"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Sequences__Spatial" preventServerDuplicates="false" registrationField="Sequences-&gt;Spatial"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Musical_Pitch__Spatial" preventServerDuplicates="false" registrationField="Musical Pitch-&gt;Spatial"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Musical_Chord__Spatial" preventServerDuplicates="false" registrationField="Musical Chord-&gt;Spatial"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Musical_Instruments_Spatial" preventServerDuplicates="false" registrationField="Musical Instruments&gt;Spatial"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Taste__Spatial" preventServerDuplicates="false" registrationField="Taste-&gt;Spatial"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Smell__Spatial" preventServerDuplicates="false" registrationField="Smell-&gt;Spatial"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Pain__Spatial" preventServerDuplicates="false" registrationField="Pain-&gt;Spatial"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Personalities__Spatial" preventServerDuplicates="false" registrationField="Personalities-&gt;Spatial"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Touch__Spatial" preventServerDuplicates="false" registrationField="Touch-&gt;Spatial"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Temperature__Spatial" preventServerDuplicates="false" registrationField="Temperature-&gt;Spatial"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Vision__Spatial" preventServerDuplicates="false" registrationField="Vision-&gt;Spatial"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Sound__Spatial" preventServerDuplicates="false" registrationField="Sound-&gt;Spatial"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="American_Sign__Spatial" preventServerDuplicates="false" registrationField="American Sign-&gt;Spatial"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="British_Sign__Spatial" preventServerDuplicates="false" registrationField="British Sign-&gt;Spatial"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Numbers__Taste" preventServerDuplicates="false" registrationField="Numbers-&gt;Taste"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Letters__Taste" preventServerDuplicates="false" registrationField="Letters-&gt;Taste"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Weekdays__Taste" preventServerDuplicates="false" registrationField="Weekdays-&gt;Taste"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Months__Taste" preventServerDuplicates="false" registrationField="Months-&gt;Taste"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Sequences__Taste" preventServerDuplicates="false" registrationField="Sequences-&gt;Taste"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Musical_Pitch__Taste" preventServerDuplicates="false" registrationField="Musical Pitch-&gt;Taste"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Musical_Chord__Taste" preventServerDuplicates="false" registrationField="Musical Chord-&gt;Taste"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Musical_Instruments_Taste" preventServerDuplicates="false" registrationField="Musical Instruments&gt;Taste"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Taste__Taste" preventServerDuplicates="false" registrationField="Taste-&gt;Taste"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Smell__Taste" preventServerDuplicates="false" registrationField="Smell-&gt;Taste"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Pain__Taste" preventServerDuplicates="false" registrationField="Pain-&gt;Taste"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Personalities__Taste" preventServerDuplicates="false" registrationField="Personalities-&gt;Taste"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Touch__Taste" preventServerDuplicates="false" registrationField="Touch-&gt;Taste"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Temperature__Taste" preventServerDuplicates="false" registrationField="Temperature-&gt;Taste"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Vision__Taste" preventServerDuplicates="false" registrationField="Vision-&gt;Taste"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Sound__Taste" preventServerDuplicates="false" registrationField="Sound-&gt;Taste"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="American_Sign__Taste" preventServerDuplicates="false" registrationField="American Sign-&gt;Taste"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="British_Sign__Taste" preventServerDuplicates="false" registrationField="British Sign-&gt;Taste"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Numbers__Touch" preventServerDuplicates="false" registrationField="Numbers-&gt;Touch"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Letters__Touch" preventServerDuplicates="false" registrationField="Letters-&gt;Touch"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Weekdays__Touch" preventServerDuplicates="false" registrationField="Weekdays-&gt;Touch"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Months__Touch" preventServerDuplicates="false" registrationField="Months-&gt;Touch"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Sequences__Touch" preventServerDuplicates="false" registrationField="Sequences-&gt;Touch"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Musical_Pitch__Touch" preventServerDuplicates="false" registrationField="Musical Pitch-&gt;Touch"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Musical_Chord__Touch" preventServerDuplicates="false" registrationField="Musical Chord-&gt;Touch"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Musical_Instruments__Touch" preventServerDuplicates="false" registrationField="Musical Instruments-&gt;Touch"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Taste__Touch" preventServerDuplicates="false" registrationField="Taste-&gt;Touch"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Smell__Touch" preventServerDuplicates="false" registrationField="Smell-&gt;Touch"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Pain__Touch" preventServerDuplicates="false" registrationField="Pain-&gt;Touch"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Personalities__Touch" preventServerDuplicates="false" registrationField="Personalities-&gt;Touch"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Touch__Touch" preventServerDuplicates="false" registrationField="Touch-&gt;Touch"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Temperature__Touch" preventServerDuplicates="false" registrationField="Temperature-&gt;Touch"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Vision__Touch" preventServerDuplicates="false" registrationField="Vision-&gt;Touch"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Sound__Touch" preventServerDuplicates="false" registrationField="Sound-&gt;Touch"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="American_Sign__Touch" preventServerDuplicates="false" registrationField="American Sign-&gt;Touch"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="British_Sign__Touch" preventServerDuplicates="false" registrationField="British Sign-&gt;Touch"/>
+        <field controlledMessage="" controlledRegex="" postName="AnyOtherTypes" preventServerDuplicates="false" registrationField="If you experience any other types, please explain below."/>
+    </metadata>
+    <presenter displayOrder="1" menuLabel="Introduction" type="text" self="Introduction" title="Decoding the Genetics of Synaesthesia">
+        <plainText featureText="We are studying the genetic basis of synaesthesia, a neurological phenomenon described as a &quot;mixing of the senses&quot;. To find out how our genes shape how we see the world, we are looking for people who connect letters, numbers, days of the week, or months with specific colours. This is called &quot;grapheme-colour&quot; synaesthesia. "/>
+        <addPadding/>
+        <plainText featureText="How our study works:"/>
+        <addPadding/>
+        <image src="static/study_diagram.svg" maxHeight="80" percentOfPage="80" link="" maxWidth="80"/>
+        <addPadding/>
+        <plainText featureText="The synaesthesia tests take about 20 minutes to complete, and you can choose the ones that apply to you. Depending on your scores, we may send you an email inviting you to participate in the genetics part of the study. There is no cost to participate, and you can do everything from home."/>
+        <addPadding/>
+        <targetButton featureText="Participate!" target="Participant"/>
+        <addPadding/>
+        <htmlText featureText="For more information about synaesthesia, please see our 'About synaesthesia' page. If you are not sure if you have synaesthesia, and want to find out, try our SynQuiz app or take a quick test at synesthete.org."/>
+        <htmlText featureText="This project is organised and funded by the Language &amp; Genetics Department at the Max Planck Institute for Psycholinguistics in Nijmegen in the Netherlands, directed by Prof. Dr. Simon E. Fisher. The synaesthesia studies are coordinated by Dr. Amanda Tilot and Dr. Sarah Graham. If you have any questions about our research, please contact us at &lt;a href=&quot;#&quot; onclick=&quot;window.open('mailto:synaesthesia@mpi.nl','_system'); return false;&quot;&gt;mailto:synaesthesia@mpi.nl&lt;/a&gt;."/>
+    </presenter>
+    <presenter back="Introduction" displayOrder="3" menuLabel="Participant" next="Details" type="metadata" self="Participant" title="Participant">
+        <htmlText featureText="Please read the &lt;a href=&quot;#&quot; onclick=&quot;window.open('static/synaesthesia_info_sheet_ENGLISH_webversion.pdf','_system'); return false;&quot;&gt;Participant Information Sheet&lt;/a&gt; carefully!"/>
+        <metadataField fieldName="firstName"/>
+        <metadataField fieldName="lastName"/>
+        <metadataField fieldName="emailAddress"/>
+        <metadataField fieldName="optionCheckBox1"/>
+        <metadataField fieldName="mandatoryCheckBox"/>
+        <saveMetadataButton featureText="Continue" sendData="true">
+            <onError featureText="Could not contact the server, please check your internet connection and try again."/>
+            <onSuccess>
+                <autoNextPresenter/>
+            </onSuccess>
+        </saveMetadataButton>
+    </presenter>
+    <presenter back="Details" displayOrder="4" menuLabel="Study" next="Colour" type="metadata" self="Study" title="Tell us about your synaesthesia: Study(1/8)">
+        <plainText featureText="Our study at the Max Planck Institute focuses on synaesthesia where numbers, letters, weekdays, or months cause people to have a colour experience. To someone with synaesthesia, the letter A might &quot;mean&quot; red to them, or the number &quot;5&quot; might make them experience the colour green. Please let us know if you experience any other types of synaesthesia by checking the boxes in the following screens. We may contact you in the future about studies related to these other types."/>
+        <saveMetadataButton featureText="Continue" sendData="true">
+            <onError featureText="Could not contact the server, please check your internet connection and try again."/>
+            <onSuccess>
+                <autoNextPresenter/>
+            </onSuccess>
+        </saveMetadataButton>
+    </presenter>
+    <presenter back="Touch" displayOrder="4" menuLabel="Other" next="Menu" type="metadata" self="Other" title="Tell us about your synaesthesia: Other(8/8)">
+        <metadataField fieldName="AnyOtherTypes"/>
+        <saveMetadataButton featureText="Continue" sendData="true">
+            <onError featureText="Could not contact the server, please check your internet connection and try again."/>
+            <onSuccess>
+                <autoNextPresenter/>
+            </onSuccess>
+        </saveMetadataButton>
+    </presenter>
+    <presenter back="Study" displayOrder="4" menuLabel="Colour" next="Smell" type="metadata" self="Colour" title="Tell us about your synaesthesia: Colour(2/8)">
+        <metadataField fieldName="Numbers__Colour"/>
+        <metadataField fieldName="Letters__Colour"/>
+        <metadataField fieldName="Weekdays__Colour"/>
+        <metadataField fieldName="Months__Colour"/>
+        <metadataField fieldName="Sequences__Colour"/>
+        <metadataField fieldName="Musical_Pitch__Colour"/>
+        <metadataField fieldName="Musical_Chord__Colour"/>
+        <metadataField fieldName="Musical_Instruments__Colour"/>
+        <metadataField fieldName="Taste__Colour"/>
+        <metadataField fieldName="Smell__Colour"/>
+        <metadataField fieldName="Pain__Colour"/>
+        <metadataField fieldName="Personalities__Colour"/>
+        <metadataField fieldName="Touch__Colour"/>
+        <metadataField fieldName="Temperature__Colour"/>
+        <metadataField fieldName="Vision__Colour"/>
+        <metadataField fieldName="Sound__Colour"/>
+        <metadataField fieldName="American_Sign____Colour"/>
+        <metadataField fieldName="British_Sign____Colour"/>
+        <saveMetadataButton featureText="Continue" sendData="true">
+            <onError featureText="Could not contact the server, please check your internet connection and try again."/>
+            <onSuccess>
+                <autoNextPresenter/>
+            </onSuccess>
+        </saveMetadataButton>
+    </presenter>
+    <presenter back="Colour" displayOrder="4" menuLabel="Smell" next="Sound" type="metadata" self="Smell" title="Tell us about your synaesthesia: Smell(3/8)">
+        <metadataField fieldName="Numbers__Smell"/>
+        <metadataField fieldName="Letters__Smell"/>
+        <metadataField fieldName="Weekdays__Smell"/>
+        <metadataField fieldName="Months__Smell"/>
+        <metadataField fieldName="Sequences__Smell"/>
+        <metadataField fieldName="Musical_Pitch__Smell"/>
+        <metadataField fieldName="Musical_Chord__Smell"/>
+        <metadataField fieldName="Musical_Instruments__Smell"/>
+        <metadataField fieldName="Taste__Smell"/>
+        <metadataField fieldName="Smell__Smell"/>
+        <metadataField fieldName="Pain__Smell"/>
+        <metadataField fieldName="Personalities__Smell"/>
+        <metadataField fieldName="Touch__Smell"/>
+        <metadataField fieldName="Temperature__Smell"/>
+        <metadataField fieldName="Vision__Smell"/>
+        <metadataField fieldName="Sound__Smell"/>
+        <metadataField fieldName="American_Sign__Smell"/>
+        <metadataField fieldName="British_Sign__Smell"/>
+        <saveMetadataButton featureText="Continue" sendData="true">
+            <onError featureText="Could not contact the server, please check your internet connection and try again."/>
+            <onSuccess>
+                <autoNextPresenter/>
+            </onSuccess>
+        </saveMetadataButton>
+    </presenter>
+    <presenter back="Smell" displayOrder="4" menuLabel="Sound" next="Spatial" type="metadata" self="Sound" title="Tell us about your synaesthesia: Sound(4/8)">
+        <metadataField fieldName="Numbers__Sound"/>
+        <metadataField fieldName="Letters__Sound"/>
+        <metadataField fieldName="Weekdays__Sound"/>
+        <metadataField fieldName="Months__Sound"/>
+        <metadataField fieldName="Sequences__Sound"/>
+        <metadataField fieldName="Musical_Pitch__Sound"/>
+        <metadataField fieldName="Musical_Chord__Sound"/>
+        <metadataField fieldName="Musical_Instruments__Sound"/>
+        <metadataField fieldName="Taste__Sound"/>
+        <metadataField fieldName="Smell__Sound"/>
+        <metadataField fieldName="Pain__Sound"/>
+        <metadataField fieldName="Personalities__Sound"/>
+        <metadataField fieldName="Touch__Sound"/>
+        <metadataField fieldName="Temperature__Sound"/>
+        <metadataField fieldName="Vision__Sound"/>
+        <metadataField fieldName="Sound__Sound"/>
+        <metadataField fieldName="American_Sign__Sound"/>
+        <metadataField fieldName="British_Sign__Sound"/>
+        <saveMetadataButton featureText="Continue" sendData="true">
+            <onError featureText="Could not contact the server, please check your internet connection and try again."/>
+            <onSuccess>
+                <autoNextPresenter/>
+            </onSuccess>
+        </saveMetadataButton>
+    </presenter>
+    <presenter back="Sound" displayOrder="4" menuLabel="Spatial" next="Taste" type="metadata" self="Spatial" title="Tell us about your synaesthesia: Spatial(5/8)">
+        <metadataField fieldName="Numbers__Spatial"/>
+        <metadataField fieldName="Letters__Spatial"/>
+        <metadataField fieldName="Weekdays__Spatial"/>
+        <metadataField fieldName="Months__Spatial"/>
+        <metadataField fieldName="Sequences__Spatial"/>
+        <metadataField fieldName="Musical_Pitch__Spatial"/>
+        <metadataField fieldName="Musical_Chord__Spatial"/>
+        <metadataField fieldName="Musical_Instruments_Spatial"/>
+        <metadataField fieldName="Taste__Spatial"/>
+        <metadataField fieldName="Smell__Spatial"/>
+        <metadataField fieldName="Pain__Spatial"/>
+        <metadataField fieldName="Personalities__Spatial"/>
+        <metadataField fieldName="Touch__Spatial"/>
+        <metadataField fieldName="Temperature__Spatial"/>
+        <metadataField fieldName="Vision__Spatial"/>
+        <metadataField fieldName="Sound__Spatial"/>
+        <metadataField fieldName="American_Sign__Spatial"/>
+        <metadataField fieldName="British_Sign__Spatial"/>
+        <saveMetadataButton featureText="Continue" sendData="true">
+            <onError featureText="Could not contact the server, please check your internet connection and try again."/>
+            <onSuccess>
+                <autoNextPresenter/>
+            </onSuccess>
+        </saveMetadataButton>
+    </presenter>
+    <presenter back="Spatial" displayOrder="4" menuLabel="Taste" next="Touch" type="metadata" self="Taste" title="Tell us about your synaesthesia: Taste(6/8)">
+        <metadataField fieldName="Numbers__Taste"/>
+        <metadataField fieldName="Letters__Taste"/>
+        <metadataField fieldName="Weekdays__Taste"/>
+        <metadataField fieldName="Months__Taste"/>
+        <metadataField fieldName="Sequences__Taste"/>
+        <metadataField fieldName="Musical_Pitch__Taste"/>
+        <metadataField fieldName="Musical_Chord__Taste"/>
+        <metadataField fieldName="Musical_Instruments_Taste"/>
+        <metadataField fieldName="Taste__Taste"/>
+        <metadataField fieldName="Smell__Taste"/>
+        <metadataField fieldName="Pain__Taste"/>
+        <metadataField fieldName="Personalities__Taste"/>
+        <metadataField fieldName="Touch__Taste"/>
+        <metadataField fieldName="Temperature__Taste"/>
+        <metadataField fieldName="Vision__Taste"/>
+        <metadataField fieldName="Sound__Taste"/>
+        <metadataField fieldName="American_Sign__Taste"/>
+        <metadataField fieldName="British_Sign__Taste"/>
+        <saveMetadataButton featureText="Continue" sendData="true">
+            <onError featureText="Could not contact the server, please check your internet connection and try again."/>
+            <onSuccess>
+                <autoNextPresenter/>
+            </onSuccess>
+        </saveMetadataButton>
+    </presenter>
+    <presenter back="Taste" displayOrder="4" menuLabel="Touch" next="Other" type="metadata" self="Touch" title="Tell us about your synaesthesia: Touch(7/8)">
+        <metadataField fieldName="Numbers__Touch"/>
+        <metadataField fieldName="Letters__Touch"/>
+        <metadataField fieldName="Weekdays__Touch"/>
+        <metadataField fieldName="Months__Touch"/>
+        <metadataField fieldName="Sequences__Touch"/>
+        <metadataField fieldName="Musical_Pitch__Touch"/>
+        <metadataField fieldName="Musical_Chord__Touch"/>
+        <metadataField fieldName="Musical_Instruments__Touch"/>
+        <metadataField fieldName="Taste__Touch"/>
+        <metadataField fieldName="Smell__Touch"/>
+        <metadataField fieldName="Pain__Touch"/>
+        <metadataField fieldName="Personalities__Touch"/>
+        <metadataField fieldName="Touch__Touch"/>
+        <metadataField fieldName="Temperature__Touch"/>
+        <metadataField fieldName="Vision__Touch"/>
+        <metadataField fieldName="Sound__Touch"/>
+        <metadataField fieldName="American_Sign__Touch"/>
+        <metadataField fieldName="British_Sign__Touch"/>
+        <saveMetadataButton featureText="Continue" sendData="true">
+            <onError featureText="Could not contact the server, please check your internet connection and try again."/>
+            <onSuccess>
+                <autoNextPresenter/>
+            </onSuccess>
+        </saveMetadataButton>
+    </presenter>
+    <presenter back="Participant" displayOrder="6" menuLabel="Details" next="Study" type="metadata" self="Details" title="Details">
+        <metadataField fieldName="DateOfBirth"/>
+        <metadataField fieldName="Age"/>
+        <metadataField fieldName="Gender"/>
+        <metadataField fieldName="AbsolutePitch"/>
+        <metadataField fieldName="TraumaticBlowToTheHead"/>
+        <metadataField fieldName="Migraines"/>
+        <metadataField fieldName="Headaches"/>
+        <metadataField fieldName="Seizures"/>
+        <metadataField fieldName="Dyslexia"/>
+        <metadataField fieldName="BrainSurgery"/>
+        <metadataField fieldName="AnyOtherConditions"/>
+        <saveMetadataButton featureText="Continue" sendData="true">
+            <onError featureText="Could not contact the server, please check your internet connection and try again."/>
+            <onSuccess>
+                <autoNextPresenter/>
+            </onSuccess>
+        </saveMetadataButton>
+    </presenter>
+    <presenter back="Other" displayOrder="15" menuLabel="Menu" next="Completion" type="menu" self="Menu" title="Menu">
+        <menuItem featureText="Weekdays" target="Weekdays"/>
+        <menuItem featureText="Numbers" target="Numbers"/>
+        <menuItem featureText="Letters" target="Letters"/>
+        <menuItem featureText="Months" target="Months"/>
+    </presenter>
+    <presenter back="Menu" displayOrder="16" menuLabel="Weekdays" next="Report" type="colourPicker" self="Weekdays" title="Weekdays">
+        <loadAllStimulus eventTag="Weekdays" randomise="true">
+            <hasMoreStimulus/>
+            <endOfStimulus/>
+            <randomGrouping/>
+            <stimuli>
+                <tag>Weekdays</tag>
+            </stimuli>
+        </loadAllStimulus>
+    </presenter>
+    <presenter back="Menu" displayOrder="17" menuLabel="Numbers" next="Report" type="colourPicker" self="Numbers" title="Numbers">
+        <loadAllStimulus eventTag="Numbers" randomise="true">
+            <hasMoreStimulus/>
+            <endOfStimulus/>
+            <randomGrouping/>
+            <stimuli>
+                <tag>Numbers</tag>
+            </stimuli>
+        </loadAllStimulus>
+    </presenter>
+    <presenter back="Menu" displayOrder="18" menuLabel="Letters" next="Report" type="colourPicker" self="Letters" title="Letters">
+        <loadAllStimulus eventTag="Letters" randomise="true">
+            <hasMoreStimulus/>
+            <endOfStimulus/>
+            <randomGrouping/>
+            <stimuli>
+                <tag>Letters</tag>
+            </stimuli>
+        </loadAllStimulus>
+    </presenter>
+    <presenter back="Menu" displayOrder="19" menuLabel="Months" next="Report" type="colourPicker" self="Months" title="Months">
+        <loadAllStimulus eventTag="Months" randomise="true">
+            <hasMoreStimulus/>
+            <endOfStimulus/>
+            <randomGrouping/>
+            <stimuli>
+                <tag>Months</tag>
+            </stimuli>
+        </loadAllStimulus>
+    </presenter>
+    <presenter back="Menu" displayOrder="20" menuLabel="Report" next="Menu" type="colourReport" self="Report" title="Report">
+        <showColourReport scoreThreshold="1">
+            <aboveThreshold>
+                <plainText featureText="above threshold"/>
+            </aboveThreshold>
+            <belowThreshold>
+                <plainText featureText="below threshold"/>
+            </belowThreshold>
+        </showColourReport>
+    </presenter>
+    <presenter back="Menu" displayOrder="21" menuLabel="Completion" next="Introduction" type="transmission" self="Completion" title="Completion">
+        <sendAllData>
+            <onSuccess>
+                <htmlText featureText="If another person wants to do this test they can exit this session and start from the begining."/>
+                <addPadding/>
+                <generateCompletionCode/>
+                <addPadding/>
+                <eraseUsersDataButton featureText="Finish this expriment and start from the begining"/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="Could not contact the server, please check your internet connection and try again."/>
+                <targetButton featureText="Retry" target="Completion"/>
+            </onError>
+        </sendAllData>
+    </presenter>
+    <stimuli>
+        <stimulus code="Monday" label="Monday" pauseMs="0">
+            <tag>Weekdays</tag>
+        </stimulus>
+        <stimulus code="Tuesday" label="Tuesday" pauseMs="0">
+            <tag>Weekdays</tag>
+        </stimulus>
+        <stimulus code="Wednesday" label="Wednesday" pauseMs="0">
+            <tag>Weekdays</tag>
+        </stimulus>
+        <stimulus code="Thursday" label="Thursday" pauseMs="0">
+            <tag>Weekdays</tag>
+        </stimulus>
+        <stimulus code="Friday" label="Friday" pauseMs="0">
+            <tag>Weekdays</tag>
+        </stimulus>
+        <stimulus code="Saturday" label="Saturday" pauseMs="0">
+            <tag>Weekdays</tag>
+        </stimulus>
+        <stimulus code="Sunday" label="Sunday" pauseMs="0">
+            <tag>Weekdays</tag>
+        </stimulus>
+        <stimulus code="0" label="0" pauseMs="0">
+            <tag>Numbers</tag>
+        </stimulus>
+        <stimulus code="1" label="1" pauseMs="0">
+            <tag>Numbers</tag>
+        </stimulus>
+        <stimulus code="2" label="2" pauseMs="0">
+            <tag>Numbers</tag>
+        </stimulus>
+        <stimulus code="3" label="3" pauseMs="0">
+            <tag>Numbers</tag>
+        </stimulus>
+        <stimulus code="4" label="4" pauseMs="0">
+            <tag>Numbers</tag>
+        </stimulus>
+        <stimulus code="5" label="5" pauseMs="0">
+            <tag>Numbers</tag>
+        </stimulus>
+        <stimulus code="6" label="6" pauseMs="0">
+            <tag>Numbers</tag>
+        </stimulus>
+        <stimulus code="7" label="7" pauseMs="0">
+            <tag>Numbers</tag>
+        </stimulus>
+        <stimulus code="8" label="8" pauseMs="0">
+            <tag>Numbers</tag>
+        </stimulus>
+        <stimulus code="9" label="9" pauseMs="0">
+            <tag>Numbers</tag>
+        </stimulus>
+        <stimulus code="A" label="A" pauseMs="0">
+            <tag>Letters</tag>
+        </stimulus>
+        <stimulus code="B" label="B" pauseMs="0">
+            <tag>Letters</tag>
+        </stimulus>
+        <stimulus code="C" label="C" pauseMs="0">
+            <tag>Letters</tag>
+        </stimulus>
+        <stimulus code="D" label="D" pauseMs="0">
+            <tag>Letters</tag>
+        </stimulus>
+        <stimulus code="E" label="E" pauseMs="0">
+            <tag>Letters</tag>
+        </stimulus>
+        <stimulus code="F" label="F" pauseMs="0">
+            <tag>Letters</tag>
+        </stimulus>
+        <stimulus code="G" label="G" pauseMs="0">
+            <tag>Letters</tag>
+        </stimulus>
+        <stimulus code="H" label="H" pauseMs="0">
+            <tag>Letters</tag>
+        </stimulus>
+        <stimulus code="I" label="I" pauseMs="0">
+            <tag>Letters</tag>
+        </stimulus>
+        <stimulus code="J" label="J" pauseMs="0">
+            <tag>Letters</tag>
+        </stimulus>
+        <stimulus code="K" label="K" pauseMs="0">
+            <tag>Letters</tag>
+        </stimulus>
+        <stimulus code="L" label="L" pauseMs="0">
+            <tag>Letters</tag>
+        </stimulus>
+        <stimulus code="M" label="M" pauseMs="0">
+            <tag>Letters</tag>
+        </stimulus>
+        <stimulus code="N" label="N" pauseMs="0">
+            <tag>Letters</tag>
+        </stimulus>
+        <stimulus code="O" label="O" pauseMs="0">
+            <tag>Letters</tag>
+        </stimulus>
+        <stimulus code="P" label="P" pauseMs="0">
+            <tag>Letters</tag>
+        </stimulus>
+        <stimulus code="Q" label="Q" pauseMs="0">
+            <tag>Letters</tag>
+        </stimulus>
+        <stimulus code="R" label="R" pauseMs="0">
+            <tag>Letters</tag>
+        </stimulus>
+        <stimulus code="S" label="S" pauseMs="0">
+            <tag>Letters</tag>
+        </stimulus>
+        <stimulus code="T" label="T" pauseMs="0">
+            <tag>Letters</tag>
+        </stimulus>
+        <stimulus code="U" label="U" pauseMs="0">
+            <tag>Letters</tag>
+        </stimulus>
+        <stimulus code="V" label="V" pauseMs="0">
+            <tag>Letters</tag>
+        </stimulus>
+        <stimulus code="W" label="W" pauseMs="0">
+            <tag>Letters</tag>
+        </stimulus>
+        <stimulus code="X" label="X" pauseMs="0">
+            <tag>Letters</tag>
+        </stimulus>
+        <stimulus code="Y" label="Y" pauseMs="0">
+            <tag>Letters</tag>
+        </stimulus>
+        <stimulus code="Z" label="Z" pauseMs="0">
+            <tag>Letters</tag>
+        </stimulus>
+        <stimulus code="January" label="January" pauseMs="0">
+            <tag>Months</tag>
+        </stimulus>
+        <stimulus code="February" label="February" pauseMs="0">
+            <tag>Months</tag>
+        </stimulus>
+        <stimulus code="March" label="March" pauseMs="0">
+            <tag>Months</tag>
+        </stimulus>
+        <stimulus code="April" label="April" pauseMs="0">
+            <tag>Months</tag>
+        </stimulus>
+        <stimulus code="May" label="May" pauseMs="0">
+            <tag>Months</tag>
+        </stimulus>
+        <stimulus code="June" label="June" pauseMs="0">
+            <tag>Months</tag>
+        </stimulus>
+        <stimulus code="July" label="July" pauseMs="0">
+            <tag>Months</tag>
+        </stimulus>
+        <stimulus code="August" label="August" pauseMs="0">
+            <tag>Months</tag>
+        </stimulus>
+        <stimulus code="September" label="September" pauseMs="0">
+            <tag>Months</tag>
+        </stimulus>
+        <stimulus code="October" label="October" pauseMs="0">
+            <tag>Months</tag>
+        </stimulus>
+        <stimulus code="November" label="November" pauseMs="0">
+            <tag>Months</tag>
+        </stimulus>
+        <stimulus code="December" label="December" pauseMs="0">
+            <tag>Months</tag>
+        </stimulus>
+    </stimuli>
+</experiment>
