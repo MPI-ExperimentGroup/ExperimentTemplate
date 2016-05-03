@@ -43,7 +43,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </li>
                 <li style="display: inline;" th:each="item : ${#numbers.sequence(tagPageData.number - 10, tagPageData.number + 10)}" th:class="${item}? 'active' : ''">
                     <span th:if='${item eq tagPageData.number}' th:text='${item}'>1</span>
-                    <a th:if='${item ne tagPageData.number and item ge 0 and item le tagPageData.totalPages}' th:href='@{${pageurl}(page=${item})}'><span th:text='${item}'>1</span></a>
+                    <a th:if='${item ne tagPageData.number and item ge 0 and item lt tagPageData.totalPages}' th:href='@{${pageurl}(page=${item})}'><span th:text='${item}'>1</span></a>
                 </li>
                 <li style="display: inline;" th:class="${not tagPageData.last}? '' : 'disabled'">
                     <span th:if='${tagPageData.last}'>&gt;&gt;</span>
