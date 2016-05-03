@@ -17,7 +17,9 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.dao;
 
+import java.util.List;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -25,5 +27,8 @@ import org.springframework.data.repository.CrudRepository;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public interface PresenterFeatureRepository extends CrudRepository<PresenterFeature, Long> {
+
+    @Query("select distinct featureText from PresenterFeature")
+    public List<String> getFeatureTexts();
 
 }
