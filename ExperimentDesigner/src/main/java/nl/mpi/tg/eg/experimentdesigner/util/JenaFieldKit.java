@@ -21,6 +21,8 @@ import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.StimuliSubAction;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.AbstractWizardScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardStimulusScreen;
 
 /**
  * @since Dec 22, 2015 11:07:54 AM (creation date)
@@ -48,7 +50,50 @@ public class JenaFieldKit {
             new StimuliSubAction("60", "Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis.", "Finis")
         };
 
-        final PresenterScreen stimulusScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, "Lukluk ol foto", welcomePresenter, new String[]{"Pictures"}, featureValuesArray, true, 1000, true, "Finis olgeta", 8, false);
+        final WizardStimulusScreen wizardStimulusScreen = new WizardStimulusScreen();
+        wizardStimulusScreen.setScreenTitle("Lukluk ol foto");
+        wizardStimulusScreen.setScreenLabel("Lukluk ol foto");
+        wizardStimulusScreen.setStimulusTagArray(new String[]{"Pictures"});
+        wizardStimulusScreen.setFeatureValuesArray(featureValuesArray);
+        wizardStimulusScreen.setMaxStimuli(1000);
+        wizardStimulusScreen.setRandomiseStimuli(true);
+        wizardStimulusScreen.setFilePerStimulus(true);
+        wizardStimulusScreen.setEnd_of_stimuli(null);
+        wizardStimulusScreen.setBackWizardScreen(new AbstractWizardScreen() {
+            @Override
+            public PresenterScreen getPresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public PresenterScreen getPresenterScreen() {
+                return welcomePresenter;
+            }
+
+            @Override
+            public String getScreenTag() {
+                return welcomePresenter.getSelfPresenterTag();
+            }
+
+        });
+        wizardStimulusScreen.setNextWizardScreen(new AbstractWizardScreen() {
+            @Override
+            public PresenterScreen getPresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public PresenterScreen getPresenterScreen() {
+                return welcomePresenter;
+            }
+
+            @Override
+            public String getScreenTag() {
+                return welcomePresenter.getSelfPresenterTag();
+            }
+
+        });
+        final PresenterScreen stimulusScreen = wizardStimulusScreen.getPresenterScreen(experiment, true, 8);
 //        final PresenterScreen vanuatuScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, stimulusScreen, new String[]{"vanuatu"}, featureValuesArray, true, 1000, true, 7, false);
 //        final PresenterScreen bowpedStimulusScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, vanuatuScreen, new String[]{"bowped"}, featureValuesArray, true, 1000, true, 9, false);
 //        final PresenterScreen bodiesStimulusScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, bowpedStimulusScreen, new String[]{"bodies"}, featureValuesArray, true, 1000, true, 10, false);

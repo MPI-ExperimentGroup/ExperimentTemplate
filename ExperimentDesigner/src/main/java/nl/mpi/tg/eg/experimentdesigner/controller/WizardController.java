@@ -424,36 +424,7 @@ public class WizardController {
         return presenterScreen;
     }
 
-    public PresenterFeature addImageFeature(PresenterFeature parentFeature, StimuliSubAction imageFeatureValues) {
-        final PresenterFeature startTagFeature = new PresenterFeature(FeatureType.startAudioRecorderTag, null);
-        startTagFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
-        parentFeature.getPresenterFeatureList().add(startTagFeature);
-        parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
-        parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
-        parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
-        final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
-        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, imageFeatureValues.getPercentOfPage());
-        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, imageFeatureValues.getPercentOfPage());
-        imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, imageFeatureValues.getPercentOfPage());
-        imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
-        parentFeature.getPresenterFeatureList().add(imageFeature);
-        final PresenterFeature actionFeature;
-        if (imageFeatureValues.getButtons().length == 1) {
-            imageFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, imageFeatureValues.getLabel()));
-            actionFeature = new PresenterFeature(FeatureType.actionButton, imageFeatureValues.getButtons()[0]);
-            final PresenterFeature endAudioRecorderTagFeature = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
-            endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
-            endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTag, imageFeatureValues.getLabel());
-            actionFeature.getPresenterFeatureList().add(endAudioRecorderTagFeature);
-        } else {
-            actionFeature = new PresenterFeature(FeatureType.ratingFooterButton, null);
-            actionFeature.addFeatureAttributes(FeatureAttribute.ratingLabels, String.join(",", imageFeatureValues.getButtons()));
-            actionFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
-        }
-        actionFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
-        imageFeature.getPresenterFeatureList().add(actionFeature);
-        return actionFeature;
-    }
+    
 
     public PresenterScreen addWelcomeMenu(final Experiment experiment, final PresenterScreen backPresenter, final String screenTitle, final PresenterScreen nextPresenter, long displayOrder, final String new_Interview, final String resume_Interview, final String startNewText, final String resumeoldText, boolean obfuscateScreenNames) {
         final PresenterScreen presenterScreen = new PresenterScreen((obfuscateScreenNames) ? experiment.getAppNameDisplay() + " " + displayOrder : screenTitle, "Start", backPresenter, "Start", nextPresenter, PresenterType.metadata, displayOrder);
@@ -549,55 +520,6 @@ public class WizardController {
         onErrorFeature.getPresenterFeatureList().add(retryFeature);
         retryFeature.addFeatureAttributes(FeatureAttribute.target, screenTitle);
 
-        experiment.getPresenterScreen().add(presenterScreen);
-        return presenterScreen;
-    }
-
-    public PresenterScreen createStimulusScreen(final Experiment experiment, final PresenterScreen backPresenter, final String screenLabel, final PresenterScreen nextPresenter, final String stimulusTagArray[], final StimuliSubAction[] featureValuesArray, final boolean randomiseStimuli, final int maxStimuli, boolean filePerStimulus, final String end_of_stimuli, long displayOrder, boolean obfuscateScreenNames) {
-        String screenName = "";
-        final List<Stimulus> stimuliList = experiment.getStimuli();
-        for (final String stimulusTag : stimulusTagArray) {
-            stimuliList.add(new Stimulus(stimulusTag, null, null, null, stimulusTag, stimulusTag, stimulusTag, 0, new HashSet<>(Arrays.asList(new String[]{stimulusTag}))));
-            screenName += stimulusTag;
-        }
-        final PresenterScreen presenterScreen = new PresenterScreen((obfuscateScreenNames) ? experiment.getAppNameDisplay() + " " + displayOrder : screenLabel, screenLabel, backPresenter, screenName + "Screen", null, PresenterType.stimulus, displayOrder);
-        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
-//        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "This screen will show " + maxStimuli + " stimuli in random order from the directories:"));
-//        for (final String stimulusTag : stimulusTagArray) {
-//            presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "MPI_STIMULI/" + stimulusTag));
-//        }
-        final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadSdCardStimulus, null);
-        for (final String stimulusTag : stimulusTagArray) {
-            loadStimuliFeature.addStimulusTag(stimulusTag);
-        }
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(maxStimuli));
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, screenLabel);
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(randomiseStimuli));
-        presenterFeatureList.add(loadStimuliFeature);
-        final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
-        // todo: add more reverter tags as required
-        final PresenterFeature startRecorderFeature = new PresenterFeature(FeatureType.startAudioRecorder, null);
-        startRecorderFeature.addFeatureAttributes(FeatureAttribute.wavFormat, "true");
-        startRecorderFeature.addFeatureAttributes(FeatureAttribute.eventTag, screenLabel);
-        startRecorderFeature.addFeatureAttributes(FeatureAttribute.filePerStimulus, (filePerStimulus) ? "true" : "false");
-        hasMoreStimulusFeature.getPresenterFeatureList().add(startRecorderFeature);
-
-        PresenterFeature previousPresenterFeature = hasMoreStimulusFeature;
-        for (StimuliSubAction imageFeatureValues : featureValuesArray) {
-            final PresenterFeature lanwisImage = addImageFeature(previousPresenterFeature, imageFeatureValues);
-            previousPresenterFeature = lanwisImage;
-        }
-        final PresenterFeature autoNextFeature = new PresenterFeature(FeatureType.nextStimulus, null);
-        autoNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextImage");
-        autoNextFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
-        previousPresenterFeature.getPresenterFeatureList().add(autoNextFeature);
-        loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
-        final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
-        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, end_of_stimuli));
-        final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.targetButton, nextPresenter.getSelfPresenterTag());
-        menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, nextPresenter.getSelfPresenterTag());
-        endOfStimulusFeature.getPresenterFeatureList().add(menuButtonFeature);
-        loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
         experiment.getPresenterScreen().add(presenterScreen);
         return presenterScreen;
     }
