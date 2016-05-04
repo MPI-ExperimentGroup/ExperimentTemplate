@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<experiment appNameDisplay="Vanuatu FieldKit" appNameInternal="vanuatufieldkit" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="true" textFontSize="17">
+    <metadata>
+        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Nem blong man/woman we i toktok"/>
+    </metadata>
+    <presenter displayOrder="1" menuLabel="Welkam" type="menu" self="Welcome" title="Welkam">
+        <menuItem featureText="Instruksen" target="Instructions"/>
+        <menuItem featureText="Stat - Go long program nao" target="Start"/>
+    </presenter>
+    <presenter back="Welcome" displayOrder="2" menuLabel="Start" next="Edit_User" type="metadata" self="Start" title="Start">
+        <existingUserCheck>
+            <multipleUsers>
+                <plainText featureText="Makem wan niufala rikoding"/>
+                <createUserButton featureText="Niu rikording" target="Edit_User"/>
+                <addPadding/>
+                <plainText featureText="Gobak long wan rikoding we yu stat hem finis"/>
+                <targetButton featureText="Gobak long wan olfala rikoding" target="SelectUser"/>
+            </multipleUsers>
+            <singleUser>
+                <autoNextPresenter/>
+            </singleUser>
+        </existingUserCheck>
+    </presenter>
+    <presenter back="Welcome" displayOrder="3" menuLabel="Instructions" type="text" self="Instructions" title="Instruksen">
+        <plainText featureText="Wetem aplikasen ia yu save makem rikoding blong lanwis blong yu, bambai ol pipol blong Vanuatu mo ol pipol blong evri ples long world save harem lanwis blong yu. I gat fulap foto blong difren ples long Malakula wea i stap insaed long aplikasen ia. Bai yu showem ol foto ia long wan olfala woman o wan olfala man blong vilej blong yu mo askem long hem se i tokabaot ol foto ia long lanwis blong hem. Yu save transletem wanem i talem, tu."/>
+        <targetButton featureText="Go long program nao" target="Start"/>
+    </presenter>
+    <presenter back="Welcome" displayOrder="4" menuLabel="Infomesen blong man/woman we i toktok" next="Konsen" type="metadata" self="Edit_User" title="Infomesen blong man/woman we i toktok">
+        <metadataField fieldName="workerId"/>
+        <saveMetadataButton featureText="Savem infomesen" sendData="false">
+            <onError featureText="Could not contact the server, please check your internet connection and try again."/>
+            <onSuccess>
+                <autoNextPresenter/>
+            </onSuccess>
+        </saveMetadataButton>
+    </presenter>
+    <presenter back="Welcome" displayOrder="5" menuLabel="Select User" next="Konsen" type="metadata" self="SelectUser" title="Select User">
+        <selectUserMenu/>
+    </presenter>
+    <presenter back="Welcome" displayOrder="6" menuLabel="Konsen" next="MetadataScreen" type="metadata" self="Konsen" title="Konsen">
+        <htmlText featureText="(Blong man/woman we i makem rikoding)&lt;br&gt;&lt;br&gt;Mi undastan se wetem aplikasen ia mi makem wan rikoding; mo mi undastan se rikoding ia bai i stap long intanet bambai ol man mo ol woman long evri kantri i save harem rikoding ia wea mi stap makem nao.&lt;br&gt;&lt;br&gt;"/>
+        <actionButton featureText="Prestem ples hea sapos yu agri." hotKey="SPACE">
+            <autoNextPresenter/>
+        </actionButton>
+    </presenter>
+    <presenter back="Welcome" displayOrder="7" menuLabel="Metadata" next="PicturesScreen" type="stimulus" self="MetadataScreen" title="Metadata">
+        <loadAllStimulus eventTag="Metadata" randomise="false">
+            <hasMoreStimulus>
+                <startAudioRecorder eventTag="Metadata" wavFormat="true" filePerStimulus="false"/>
+                <startAudioRecorderTag eventTier="1"/>
+                <showStimulusProgress/>
+                <stimulusLabel/>
+                <actionButton featureText="Neks">
+                    <endAudioRecorderTag eventTag="" eventTier="1"/>
+                    <nextStimulus eventTag="nextStimulusMetadata" norepeat="true"/>
+                </actionButton>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <stopAudioRecorder/>
+                <autoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>metadata</tag>
+            </stimuli>
+        </loadAllStimulus>
+    </presenter>
+    <presenter back="Welcome" displayOrder="8" menuLabel="Lukluk ol foto" type="stimulus" self="PicturesScreen" title="Lukluk ol foto">
+        <loadSdCardStimulus eventTag="Lukluk ol foto" randomise="true" maxStimuli="1000">
+            <hasMoreStimulus>
+                <startAudioRecorder eventTag="Lukluk ol foto" wavFormat="true" filePerStimulus="true"/>
+                <startAudioRecorderTag eventTier="1"/>
+                <centrePage/>
+                <stimulusLabel/>
+                <showStimulusProgress/>
+                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                    <plainText featureText="Askem long man o woman wea i toktok se i talem nem blong wanem i stap lo foto long lanwis blong hem."/>
+                    <actionButton featureText="Finis">
+                        <endAudioRecorderTag eventTag="Askem long man o woman wea i toktok se i talem nem blong wanem i stap lo foto long lanwis blong hem." eventTier="1"/>
+                        <clearPage/>
+                        <startAudioRecorderTag eventTier="1"/>
+                        <centrePage/>
+                        <stimulusLabel/>
+                        <showStimulusProgress/>
+                        <stimulusImage msToNext="0" maxHeight="60" percentOfPage="60" maxWidth="60">
+                            <plainText featureText="Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis."/>
+                            <actionButton featureText="Finis">
+<endAudioRecorderTag eventTag="Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis." eventTier="1"/>
+<clearPage/>
+<startAudioRecorderTag eventTier="1"/>
+<centrePage/>
+<stimulusLabel/>
+<showStimulusProgress/>
+<stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+    <plainText featureText="Askem long man o woman we i toktok se i gat sam stori blong laef blong hem long saed blong ting ia we i stap long foto ia."/>
+    <actionButton featureText="Finis">
+        <endAudioRecorderTag eventTag="Askem long man o woman we i toktok se i gat sam stori blong laef blong hem long saed blong ting ia we i stap long foto ia." eventTier="1"/>
+        <clearPage/>
+        <startAudioRecorderTag eventTier="1"/>
+        <centrePage/>
+        <stimulusLabel/>
+        <showStimulusProgress/>
+        <stimulusImage msToNext="0" maxHeight="60" percentOfPage="60" maxWidth="60">
+            <plainText featureText="Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis."/>
+            <actionButton featureText="Finis">
+                <endAudioRecorderTag eventTag="Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis." eventTier="1"/>
+                <clearPage/>
+                <startAudioRecorderTag eventTier="1"/>
+                <centrePage/>
+                <stimulusLabel/>
+                <showStimulusProgress/>
+                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                    <plainText featureText="Askem long man o woman we i toktok se i save wan kastom stori abaot ting ia we i stap long foto ia."/>
+                    <actionButton featureText="Finis">
+                        <endAudioRecorderTag eventTag="Askem long man o woman we i toktok se i save wan kastom stori abaot ting ia we i stap long foto ia." eventTier="1"/>
+                        <clearPage/>
+                        <startAudioRecorderTag eventTier="1"/>
+                        <centrePage/>
+                        <stimulusLabel/>
+                        <showStimulusProgress/>
+                        <stimulusImage msToNext="0" maxHeight="60" percentOfPage="60" maxWidth="60">
+                            <plainText featureText="Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis."/>
+                            <actionButton featureText="Finis">
+<endAudioRecorderTag eventTag="Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis." eventTier="1"/>
+<clearPage/>
+<nextStimulus eventTag="nextImage" norepeat="true"/>
+                            </actionButton>
+                        </stimulusImage>
+                    </actionButton>
+                </stimulusImage>
+            </actionButton>
+        </stimulusImage>
+    </actionButton>
+</stimulusImage>
+                            </actionButton>
+                        </stimulusImage>
+                    </actionButton>
+                </stimulusImage>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <plainText featureText="Finis olgeta"/>
+                <targetButton featureText="Welcome" target="Welcome"/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>Pictures</tag>
+            </stimuli>
+        </loadSdCardStimulus>
+    </presenter>
+    <presenter displayOrder="11" menuLabel="Debug Screen" type="debug" self="DebugScreen" title="Debug Screen">
+        <versionData/>
+        <eraseLocalStorageButton/>
+        <localStorageData/>
+    </presenter>
+    <stimuli>
+        <stimulus baseFilePath="Pictures" code="Pictures" image="Pictures" label="Pictures" pauseMs="0">
+            <tag>Pictures</tag>
+        </stimulus>
+        <stimulus code="I_stap_rikod_nao._Man_o_woman_we_i_toktok_bai_i_talem_nem_blong_hem." label="I stap rikod nao. Man o woman we i toktok bai i talem nem blong hem." pauseMs="0">
+            <tag>metadata</tag>
+        </stimulus>
+        <stimulus code="Bai_i_talem_nem_blong_lanwis_wea_it_toktok_long_hem." label="Bai i talem nem blong lanwis wea it toktok long hem." pauseMs="0">
+            <tag>metadata</tag>
+        </stimulus>
+        <stimulus code="Bai_i_talem_nem_blong_ples_wea_i_stap_nao." label="Bai i talem nem blong ples wea i stap nao." pauseMs="0">
+            <tag>metadata</tag>
+        </stimulus>
+        <stimulus code="Bai_i_talem_nem_blong_ples_wea_i_bon_long_hem." label="Bai i talem nem blong ples wea i bon long hem." pauseMs="0">
+            <tag>metadata</tag>
+        </stimulus>
+        <stimulus code="Bai_i_talem_wanem_yea_i_bon." label="Bai i talem wanem yea i bon." pauseMs="0">
+            <tag>metadata</tag>
+        </stimulus>
+    </stimuli>
+</experiment>
