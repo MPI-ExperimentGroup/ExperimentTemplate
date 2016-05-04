@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<experiment appNameDisplay="Shawi FieldKit" appNameInternal="shawifieldkit" backgroundColour="#ffeda0" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#f03b20" primaryColour3="#96ADAD" primaryColour4="#feb24c" showMenuBar="true" textFontSize="17">
+    <metadata>
+        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Speaker name *"/>
+    </metadata>
+    <presenter back="AutoMenu" displayOrder="1" menuLabel="Welcome" type="menu" self="Welcome" title="Welcome">
+        <menuItem featureText="Instructions" target="Instructions"/>
+        <menuItem featureText="Go directly to program" target="Start"/>
+    </presenter>
+    <presenter back="Welcome" displayOrder="2" menuLabel="Start" next="MetadataScreen" type="metadata" self="Start" title="Start">
+        <existingUserCheck>
+            <multipleUsers>
+                <plainText featureText="Is this a new recording?"/>
+                <createUserButton featureText="New Interview." target="Edit_User"/>
+                <addPadding/>
+                <plainText featureText="Have you already started a recording and do you want to go back to it?"/>
+                <targetButton featureText="Resume Interview" target="SelectUser"/>
+            </multipleUsers>
+            <singleUser>
+                <autoNextPresenter/>
+            </singleUser>
+        </existingUserCheck>
+    </presenter>
+    <presenter back="Welcome" displayOrder="3" menuLabel="Instructions" type="text" self="Instructions" title="Instructions">
+        <plainText featureText="With this app you can make recordings of your language. Describe pictures in this app by speaking and the app records what you say."/>
+        <targetButton featureText="Go directly to program" target="Start"/>
+    </presenter>
+    <presenter back="AutoMenu" displayOrder="4" menuLabel="Metadata" next="PicturesScreen" type="stimulus" self="MetadataScreen" title="Metadata">
+        <loadAllStimulus eventTag="Metadata" randomise="false">
+            <hasMoreStimulus>
+                <startAudioRecorder eventTag="Metadata" wavFormat="true" filePerStimulus="false"/>
+                <startAudioRecorderTag eventTier="1"/>
+                <showStimulusProgress/>
+                <stimulusLabel/>
+                <actionButton featureText="next">
+                    <endAudioRecorderTag eventTier="1" eventTag=""/>
+                    <nextStimulus eventTag="nextStimulusMetadata" norepeat="true"/>
+                </actionButton>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <stopAudioRecorder/>
+                <autoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>metadata</tag>
+            </stimuli>
+        </loadAllStimulus>
+    </presenter>
+    <presenter back="Welcome" displayOrder="5" menuLabel="Select User" next="MetadataScreen" type="metadata" self="SelectUser" title="Select User">
+        <selectUserMenu/>
+    </presenter>
+    <presenter back="Welcome" displayOrder="6" menuLabel="Edit User" next="MetadataScreen" type="metadata" self="Edit_User" title="Edit User">
+        <metadataField fieldName="workerId"/>
+        <saveMetadataButton featureText="Save and continue" sendData="false">
+            <onError featureText="Could not contact the server, please check your internet connection and try again."/>
+            <onSuccess>
+                <autoNextPresenter/>
+            </onSuccess>
+        </saveMetadataButton>
+    </presenter>
+    <presenter back="Welcome" displayOrder="7" menuLabel="Grammaticality" type="stimulus" self="GrammaticalityScreen" title="Grammaticality">
+        <loadSdCardStimulus eventTag="Grammaticality" randomise="true" maxStimuli="1000">
+            <hasMoreStimulus>
+                <startAudioRecorder eventTag="Grammaticality" wavFormat="true" filePerStimulus="false"/>
+                <startAudioRecorderTag eventTier="1"/>
+                <centrePage/>
+                <stimulusLabel/>
+                <showStimulusProgress/>
+                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                    <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
+                        <clearPage/>
+                        <nextStimulus eventTag="nextImage" norepeat="true"/>
+                    </ratingFooterButton>
+                </stimulusImage>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <plainText featureText="end_of_stimuli"/>
+                <targetButton featureText="Welcome" target="Welcome"/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>Grammaticality</tag>
+            </stimuli>
+        </loadSdCardStimulus>
+    </presenter>
+    <presenter back="Welcome" displayOrder="8" menuLabel="Pictures" type="stimulus" self="PicturesScreen" title="Pictures">
+        <loadSdCardStimulus eventTag="Pictures" randomise="true" maxStimuli="1000">
+            <hasMoreStimulus>
+                <startAudioRecorder eventTag="Pictures" wavFormat="true" filePerStimulus="false"/>
+                <startAudioRecorderTag eventTier="1"/>
+                <centrePage/>
+                <stimulusLabel/>
+                <showStimulusProgress/>
+                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                    <plainText featureText="the informant talks/says whatever s/he wants"/>
+                    <actionButton featureText="next">
+                        <endAudioRecorderTag eventTier="1" eventTag="the informant talks/says whatever s/he wants"/>
+                        <clearPage/>
+                        <nextStimulus eventTag="nextImage" norepeat="true"/>
+                    </actionButton>
+                </stimulusImage>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <plainText featureText="end_of_stimuli"/>
+                <targetButton featureText="GrammaticalityScreen" target="GrammaticalityScreen"/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>Pictures</tag>
+            </stimuli>
+        </loadSdCardStimulus>
+    </presenter>
+    <presenter back="Welcome" displayOrder="9" menuLabel="Animals" type="stimulus" self="AnimalsScreen" title="Animals">
+        <loadSdCardStimulus eventTag="Animals" randomise="true" maxStimuli="1000">
+            <hasMoreStimulus>
+                <startAudioRecorder eventTag="Animals" wavFormat="true" filePerStimulus="false"/>
+                <startAudioRecorderTag eventTier="1"/>
+                <centrePage/>
+                <stimulusLabel/>
+                <showStimulusProgress/>
+                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                    <plainText featureText="the informant talks/says whatever s/he wants"/>
+                    <actionButton featureText="next">
+                        <endAudioRecorderTag eventTier="1" eventTag="the informant talks/says whatever s/he wants"/>
+                        <clearPage/>
+                        <nextStimulus eventTag="nextImage" norepeat="true"/>
+                    </actionButton>
+                </stimulusImage>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <plainText featureText="end_of_stimuli"/>
+                <targetButton featureText="GrammaticalityScreen" target="GrammaticalityScreen"/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>Animals</tag>
+            </stimuli>
+        </loadSdCardStimulus>
+    </presenter>
+    <presenter back="Welcome" displayOrder="10" menuLabel="Frogs" type="stimulus" self="FrogsScreen" title="Frogs">
+        <loadSdCardStimulus eventTag="Frogs" randomise="false" maxStimuli="1000">
+            <hasMoreStimulus>
+                <startAudioRecorder eventTag="Frogs" wavFormat="true" filePerStimulus="false"/>
+                <startAudioRecorderTag eventTier="1"/>
+                <centrePage/>
+                <stimulusLabel/>
+                <showStimulusProgress/>
+                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                    <plainText featureText="the informant talks/says whatever s/he wants"/>
+                    <actionButton featureText="next">
+                        <endAudioRecorderTag eventTier="1" eventTag="the informant talks/says whatever s/he wants"/>
+                        <clearPage/>
+                        <nextStimulus eventTag="nextImage" norepeat="true"/>
+                    </actionButton>
+                </stimulusImage>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <plainText featureText="end_of_stimuli"/>
+                <targetButton featureText="GrammaticalityScreen" target="GrammaticalityScreen"/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>Frogs</tag>
+            </stimuli>
+        </loadSdCardStimulus>
+    </presenter>
+    <presenter back="Welcome" displayOrder="11" menuLabel="bowped" type="stimulus" self="bowpedScreen" title="bowped">
+        <loadSdCardStimulus eventTag="bowped" randomise="true" maxStimuli="1000">
+            <hasMoreStimulus>
+                <startAudioRecorder eventTag="bowped" wavFormat="true" filePerStimulus="false"/>
+                <startAudioRecorderTag eventTier="1"/>
+                <centrePage/>
+                <stimulusLabel/>
+                <showStimulusProgress/>
+                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                    <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
+                        <clearPage/>
+                        <nextStimulus eventTag="nextImage" norepeat="true"/>
+                    </ratingFooterButton>
+                </stimulusImage>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <plainText featureText="end_of_stimuli"/>
+                <targetButton featureText="Welcome" target="Welcome"/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>bowped</tag>
+            </stimuli>
+        </loadSdCardStimulus>
+    </presenter>
+    <presenter back="Welcome" displayOrder="12" menuLabel="bodies" type="stimulus" self="bodiesScreen" title="bodies">
+        <loadSdCardStimulus eventTag="bodies" randomise="true" maxStimuli="1000">
+            <hasMoreStimulus>
+                <startAudioRecorder eventTag="bodies" wavFormat="true" filePerStimulus="false"/>
+                <startAudioRecorderTag eventTier="1"/>
+                <centrePage/>
+                <stimulusLabel/>
+                <showStimulusProgress/>
+                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                    <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
+                        <clearPage/>
+                        <nextStimulus eventTag="nextImage" norepeat="true"/>
+                    </ratingFooterButton>
+                </stimulusImage>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <plainText featureText="end_of_stimuli"/>
+                <targetButton featureText="Welcome" target="Welcome"/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>bodies</tag>
+            </stimuli>
+        </loadSdCardStimulus>
+    </presenter>
+    <presenter back="Welcome" displayOrder="13" menuLabel="vanuatu" type="stimulus" self="vanuatuScreen" title="vanuatu">
+        <loadSdCardStimulus eventTag="vanuatu" randomise="true" maxStimuli="1000">
+            <hasMoreStimulus>
+                <startAudioRecorder eventTag="vanuatu" wavFormat="true" filePerStimulus="false"/>
+                <startAudioRecorderTag eventTier="1"/>
+                <centrePage/>
+                <stimulusLabel/>
+                <showStimulusProgress/>
+                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                    <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
+                        <clearPage/>
+                        <nextStimulus eventTag="nextImage" norepeat="true"/>
+                    </ratingFooterButton>
+                </stimulusImage>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <plainText featureText="end_of_stimuli"/>
+                <targetButton featureText="Welcome" target="Welcome"/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>vanuatu</tag>
+            </stimuli>
+        </loadSdCardStimulus>
+    </presenter>
+    <presenter back="Welcome" displayOrder="14" menuLabel="grammar" type="stimulus" self="grammarScreen" title="grammar">
+        <loadSdCardStimulus eventTag="grammar" randomise="true" maxStimuli="1000">
+            <hasMoreStimulus>
+                <startAudioRecorder eventTag="grammar" wavFormat="true" filePerStimulus="false"/>
+                <startAudioRecorderTag eventTier="1"/>
+                <centrePage/>
+                <stimulusLabel/>
+                <showStimulusProgress/>
+                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                    <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
+                        <clearPage/>
+                        <nextStimulus eventTag="nextImage" norepeat="true"/>
+                    </ratingFooterButton>
+                </stimulusImage>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <plainText featureText="end_of_stimuli"/>
+                <targetButton featureText="Welcome" target="Welcome"/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>grammar</tag>
+            </stimuli>
+        </loadSdCardStimulus>
+    </presenter>
+    <presenter back="Welcome" displayOrder="15" menuLabel="cutbreak" type="stimulus" self="cutbreakScreen" title="cutbreak">
+        <loadSdCardStimulus eventTag="cutbreak" randomise="true" maxStimuli="1000">
+            <hasMoreStimulus>
+                <startAudioRecorder eventTag="cutbreak" wavFormat="true" filePerStimulus="false"/>
+                <startAudioRecorderTag eventTier="1"/>
+                <centrePage/>
+                <stimulusLabel/>
+                <showStimulusProgress/>
+                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                    <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
+                        <clearPage/>
+                        <nextStimulus eventTag="nextImage" norepeat="true"/>
+                    </ratingFooterButton>
+                </stimulusImage>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <plainText featureText="end_of_stimuli"/>
+                <targetButton featureText="Welcome" target="Welcome"/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>cutbreak</tag>
+            </stimuli>
+        </loadSdCardStimulus>
+    </presenter>
+    <presenter back="AutoMenu" displayOrder="16" menuLabel="Kinship" type="kindiagram" self="Kinship" title="Kinship">
+        <addKinTypeGui diagramName="kinDiagram"/>
+        <loadKinTypeStringDiagram msToNext="0" diagramName="kinDiagram"/>
+    </presenter>
+    <presenter back="AutoMenu" displayOrder="17" menuLabel="Debug Screen" type="debug" self="DebugScreen" title="Debug Screen">
+        <versionData/>
+        <eraseLocalStorageButton/>
+        <localStorageData/>
+    </presenter>
+    <presenter displayOrder="18" menuLabel="Menu" type="menu" self="AutoMenu" title="Auto Menu">
+        <allMenuItems/>
+    </presenter>
+    <stimuli>
+        <stimulus baseFilePath="cutbreak" code="cutbreak" image="cutbreak" label="cutbreak" pauseMs="0">
+            <tag>cutbreak</tag>
+        </stimulus>
+        <stimulus baseFilePath="grammar" code="grammar" image="grammar" label="grammar" pauseMs="0">
+            <tag>grammar</tag>
+        </stimulus>
+        <stimulus baseFilePath="vanuatu" code="vanuatu" image="vanuatu" label="vanuatu" pauseMs="0">
+            <tag>vanuatu</tag>
+        </stimulus>
+        <stimulus baseFilePath="bodies" code="bodies" image="bodies" label="bodies" pauseMs="0">
+            <tag>bodies</tag>
+        </stimulus>
+        <stimulus baseFilePath="bowped" code="bowped" image="bowped" label="bowped" pauseMs="0">
+            <tag>bowped</tag>
+        </stimulus>
+        <stimulus baseFilePath="Grammaticality" code="Grammaticality" image="Grammaticality" label="Grammaticality" pauseMs="0">
+            <tag>Grammaticality</tag>
+        </stimulus>
+        <stimulus baseFilePath="Pictures" code="Pictures" image="Pictures" label="Pictures" pauseMs="0">
+            <tag>Pictures</tag>
+        </stimulus>
+        <stimulus baseFilePath="Animals" code="Animals" image="Animals" label="Animals" pauseMs="0">
+            <tag>Animals</tag>
+        </stimulus>
+        <stimulus baseFilePath="Frogs" code="Frogs" image="Frogs" label="Frogs" pauseMs="0">
+            <tag>Frogs</tag>
+        </stimulus>
+        <stimulus code="Nombre" label="Nombre" pauseMs="0">
+            <tag>metadata</tag>
+        </stimulus>
+        <stimulus code="Sexo" label="Sexo" pauseMs="0">
+            <tag>metadata</tag>
+        </stimulus>
+        <stimulus code="Edad" label="Edad" pauseMs="0">
+            <tag>metadata</tag>
+        </stimulus>
+        <stimulus code="Estado_civil" label="Estado civil" pauseMs="0">
+            <tag>metadata</tag>
+        </stimulus>
+        <stimulus code="Origen" label="Origen" pauseMs="0">
+            <tag>metadata</tag>
+        </stimulus>
+        <stimulus code="Lugar_de_residencia" label="Lugar de residencia" pauseMs="0">
+            <tag>metadata</tag>
+        </stimulus>
+        <stimulus code="Nombre_de_la_comunidad_a_la_que_pertenece" label="Nombre de la comunidad a la que pertenece" pauseMs="0">
+            <tag>metadata</tag>
+        </stimulus>
+        <stimulus code="Actividad_laboral" label="Actividad laboral" pauseMs="0">
+            <tag>metadata</tag>
+        </stimulus>
+        <stimulus code="Nivel_de_estudios" label="Nivel de estudios" pauseMs="0">
+            <tag>metadata</tag>
+        </stimulus>
+        <stimulus code="Número_de_hijos" label="Número de hijos" pauseMs="0">
+            <tag>metadata</tag>
+        </stimulus>
+        <stimulus code="Religión" label="Religión" pauseMs="0">
+            <tag>metadata</tag>
+        </stimulus>
+        <stimulus code="Idiomas" label="Idiomas" pauseMs="0">
+            <tag>metadata</tag>
+        </stimulus>
+    </stimuli>
+</experiment>

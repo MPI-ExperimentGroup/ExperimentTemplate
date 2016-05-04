@@ -15,7 +15,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-
 package nl.mpi.tg.eg.experimentdesigner.util;
 
 import java.io.File;
@@ -36,24 +35,28 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * @since May 4, 2016 10:08:05 AM (creation date)
+ * @since May 4, 2016 10:08:55 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class FactOrFictionTest {
+public class Sentveri_exp3Test {
 
     /**
-     * Test of getExperiment method, of class FactOrFiction.
+     * Test of create3c method, of class Sentveri_exp3.
+     *
      * @throws java.io.IOException
      * @throws javax.xml.bind.JAXBException
      * @throws java.net.URISyntaxException
      */
     @Test
-    public void testGetExperiment() throws IOException,JAXBException,URISyntaxException{
-        System.out.println("getExperiment");
-        FactOrFiction instance = new FactOrFiction();
-        URI testXmlUri = this.getClass().getResource("/frinex-rest-output/leeservaring.xml").toURI();
+    public void testCreate3c() throws IOException, JAXBException, URISyntaxException {
+        System.out.println("create3c");
+        Sentveri_exp3 instance = new Sentveri_exp3();
+        
+        URI testXmlUri = this.getClass().getResource("/frinex-rest-output/sentveri_exp3.xml").toURI();
         String expResult = new String(Files.readAllBytes(Paths.get(testXmlUri)), StandardCharsets.UTF_8);
-        Experiment result = instance.getExperiment();
+        Experiment result = new DefaultExperiments().getDefault("Sentveri_exp3");
+        result.setStimuli(new Sentveri_exp3().createStimuli());
+        new Sentveri_exp3().create3c(result.getPresenterScreen());
         result.getPresenterScreen().sort(new Comparator<PresenterScreen>() {
             // because the experiment has not been stored and retrieved from the DB we need to sort this manually
             @Override
@@ -66,9 +69,8 @@ public class FactOrFictionTest {
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
         StringWriter stringWriter = new StringWriter();
 //        jaxbMarshaller.marshal(result, System.out);
-        jaxbMarshaller.marshal(result, new File(new File(testXmlUri).getParentFile(), "leeservaring-testoutput.xml"));
+        jaxbMarshaller.marshal(result, new File(new File(testXmlUri).getParentFile(), "sentveri_exp3-testoutput.xml"));
         jaxbMarshaller.marshal(result, stringWriter);
         assertEquals(expResult, stringWriter.toString());
     }
-
 }

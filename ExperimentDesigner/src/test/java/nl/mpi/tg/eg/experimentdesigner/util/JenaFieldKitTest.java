@@ -74,5 +74,4 @@ public class JenaFieldKitTest {
         jaxbMarshaller.marshal(result, stringWriter);
         assertEquals(expResult, stringWriter.toString());
     }
-
 }

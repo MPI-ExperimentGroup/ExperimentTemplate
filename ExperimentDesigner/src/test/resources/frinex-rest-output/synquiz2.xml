@@ -17,7 +17,7 @@
         <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Dyslexia" preventServerDuplicates="false" registrationField="Dyslexia"/>
         <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="BrainSurgery" preventServerDuplicates="false" registrationField="Brain surgery"/>
         <field controlledMessage="." controlledRegex=".*" postName="AnyOtherConditions" preventServerDuplicates="false" registrationField="Are there any other conditions that you would like us to know about?"/>
-        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Speaker name *"/>
+        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Worker ID"/>
         <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Numbers__Colour" preventServerDuplicates="false" registrationField="Numbers-&gt;Colour"/>
         <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Letters__Colour" preventServerDuplicates="false" registrationField="Letters-&gt;Colour"/>
         <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Weekdays__Colour" preventServerDuplicates="false" registrationField="Weekdays-&gt;Colour"/>
@@ -156,7 +156,26 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Details" displayOrder="4" menuLabel="Study" next="Colour" type="metadata" self="Study" title="Tell us about your synaesthesia: Study(1/8)">
+    <presenter back="Participant" displayOrder="5" menuLabel="Details" next="Study" type="metadata" self="Details" title="Details">
+        <metadataField fieldName="DateOfBirth"/>
+        <metadataField fieldName="Age"/>
+        <metadataField fieldName="Gender"/>
+        <metadataField fieldName="AbsolutePitch"/>
+        <metadataField fieldName="TraumaticBlowToTheHead"/>
+        <metadataField fieldName="Migraines"/>
+        <metadataField fieldName="Headaches"/>
+        <metadataField fieldName="Seizures"/>
+        <metadataField fieldName="Dyslexia"/>
+        <metadataField fieldName="BrainSurgery"/>
+        <metadataField fieldName="AnyOtherConditions"/>
+        <saveMetadataButton featureText="Continue" sendData="true">
+            <onError featureText="Could not contact the server, please check your internet connection and try again."/>
+            <onSuccess>
+                <autoNextPresenter/>
+            </onSuccess>
+        </saveMetadataButton>
+    </presenter>
+    <presenter back="Details" displayOrder="6" menuLabel="Study" next="Colour" type="metadata" self="Study" title="Tell us about your synaesthesia: Study(1/8)">
         <plainText featureText="Our study at the Max Planck Institute focuses on synaesthesia where numbers, letters, weekdays, or months cause people to have a colour experience. To someone with synaesthesia, the letter A might &quot;mean&quot; red to them, or the number &quot;5&quot; might make them experience the colour green. Please let us know if you experience any other types of synaesthesia by checking the boxes in the following screens. We may contact you in the future about studies related to these other types."/>
         <saveMetadataButton featureText="Continue" sendData="true">
             <onError featureText="Could not contact the server, please check your internet connection and try again."/>
@@ -165,16 +184,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Touch" displayOrder="4" menuLabel="Other" next="Menu" type="metadata" self="Other" title="Tell us about your synaesthesia: Other(8/8)">
-        <metadataField fieldName="AnyOtherTypes"/>
-        <saveMetadataButton featureText="Continue" sendData="true">
-            <onError featureText="Could not contact the server, please check your internet connection and try again."/>
-            <onSuccess>
-                <autoNextPresenter/>
-            </onSuccess>
-        </saveMetadataButton>
-    </presenter>
-    <presenter back="Study" displayOrder="4" menuLabel="Colour" next="Smell" type="metadata" self="Colour" title="Tell us about your synaesthesia: Colour(2/8)">
+    <presenter back="Study" displayOrder="7" menuLabel="Colour" next="Smell" type="metadata" self="Colour" title="Tell us about your synaesthesia: Colour(2/8)">
         <metadataField fieldName="Numbers__Colour"/>
         <metadataField fieldName="Letters__Colour"/>
         <metadataField fieldName="Weekdays__Colour"/>
@@ -200,7 +210,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Colour" displayOrder="4" menuLabel="Smell" next="Sound" type="metadata" self="Smell" title="Tell us about your synaesthesia: Smell(3/8)">
+    <presenter back="Colour" displayOrder="8" menuLabel="Smell" next="Sound" type="metadata" self="Smell" title="Tell us about your synaesthesia: Smell(3/8)">
         <metadataField fieldName="Numbers__Smell"/>
         <metadataField fieldName="Letters__Smell"/>
         <metadataField fieldName="Weekdays__Smell"/>
@@ -226,7 +236,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Smell" displayOrder="4" menuLabel="Sound" next="Spatial" type="metadata" self="Sound" title="Tell us about your synaesthesia: Sound(4/8)">
+    <presenter back="Smell" displayOrder="9" menuLabel="Sound" next="Spatial" type="metadata" self="Sound" title="Tell us about your synaesthesia: Sound(4/8)">
         <metadataField fieldName="Numbers__Sound"/>
         <metadataField fieldName="Letters__Sound"/>
         <metadataField fieldName="Weekdays__Sound"/>
@@ -252,7 +262,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Sound" displayOrder="4" menuLabel="Spatial" next="Taste" type="metadata" self="Spatial" title="Tell us about your synaesthesia: Spatial(5/8)">
+    <presenter back="Sound" displayOrder="10" menuLabel="Spatial" next="Taste" type="metadata" self="Spatial" title="Tell us about your synaesthesia: Spatial(5/8)">
         <metadataField fieldName="Numbers__Spatial"/>
         <metadataField fieldName="Letters__Spatial"/>
         <metadataField fieldName="Weekdays__Spatial"/>
@@ -278,7 +288,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Spatial" displayOrder="4" menuLabel="Taste" next="Touch" type="metadata" self="Taste" title="Tell us about your synaesthesia: Taste(6/8)">
+    <presenter back="Spatial" displayOrder="11" menuLabel="Taste" next="Touch" type="metadata" self="Taste" title="Tell us about your synaesthesia: Taste(6/8)">
         <metadataField fieldName="Numbers__Taste"/>
         <metadataField fieldName="Letters__Taste"/>
         <metadataField fieldName="Weekdays__Taste"/>
@@ -304,7 +314,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Taste" displayOrder="4" menuLabel="Touch" next="Other" type="metadata" self="Touch" title="Tell us about your synaesthesia: Touch(7/8)">
+    <presenter back="Taste" displayOrder="12" menuLabel="Touch" next="Other" type="metadata" self="Touch" title="Tell us about your synaesthesia: Touch(7/8)">
         <metadataField fieldName="Numbers__Touch"/>
         <metadataField fieldName="Letters__Touch"/>
         <metadataField fieldName="Weekdays__Touch"/>
@@ -330,18 +340,8 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Participant" displayOrder="6" menuLabel="Details" next="Study" type="metadata" self="Details" title="Details">
-        <metadataField fieldName="DateOfBirth"/>
-        <metadataField fieldName="Age"/>
-        <metadataField fieldName="Gender"/>
-        <metadataField fieldName="AbsolutePitch"/>
-        <metadataField fieldName="TraumaticBlowToTheHead"/>
-        <metadataField fieldName="Migraines"/>
-        <metadataField fieldName="Headaches"/>
-        <metadataField fieldName="Seizures"/>
-        <metadataField fieldName="Dyslexia"/>
-        <metadataField fieldName="BrainSurgery"/>
-        <metadataField fieldName="AnyOtherConditions"/>
+    <presenter back="Touch" displayOrder="13" menuLabel="Other" next="Menu" type="metadata" self="Other" title="Tell us about your synaesthesia: Other(8/8)">
+        <metadataField fieldName="AnyOtherTypes"/>
         <saveMetadataButton featureText="Continue" sendData="true">
             <onError featureText="Could not contact the server, please check your internet connection and try again."/>
             <onSuccess>

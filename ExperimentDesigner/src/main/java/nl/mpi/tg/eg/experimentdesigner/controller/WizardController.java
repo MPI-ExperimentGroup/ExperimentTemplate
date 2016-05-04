@@ -39,6 +39,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
 import nl.mpi.tg.eg.experimentdesigner.model.StimuliSubAction;
 import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.AbstractWizardScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreen;
 import org.springframework.stereotype.Controller;
@@ -165,7 +166,7 @@ public class WizardController {
     }
 
     public void addMetadata(Experiment experiment) {
-        final Metadata metadata = new Metadata("workerId", "Speaker name *", ".'{'3,'}'", "Please enter at least three letters.", false, null);
+        final Metadata metadata = new Metadata("workerId", "Worker ID", ".'{'3,'}'", "Please enter at least three letters.", false, null);
         experiment.getMetadata().add(metadata);
     }
 
@@ -215,17 +216,37 @@ public class WizardController {
         return presenterScreen;
     }
 
-    public PresenterScreen addEditUserScreen(final Experiment experiment, final PresenterScreen backPresenter, final String screenTitle, final PresenterScreen nextPresenter, long displayOrder, final boolean sendData, final String on_Error_Text, boolean obfuscateScreenNames) {
-        return addEditUserScreen(experiment, backPresenter, screenTitle, "Edit User", nextPresenter, displayOrder, null, null, null, "Save Details", null, null, null, sendData, on_Error_Text, obfuscateScreenNames);
-    }
-
     public PresenterScreen addEditUserScreen(final Experiment experiment, final PresenterScreen backPresenter, final String screenTitle, final String screenTag, final PresenterScreen nextPresenter, long displayOrder, WizardData wizardData, String dispalyText, String[] customFields, final String saveButtonLabel, final String postText, final PresenterScreen alternateNextScreen, final String alternateButtonLabel, final boolean sendData, final String on_Error_Text, boolean obfuscateScreenNames) {
         final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
+        wizardEditUserScreen.setBackWizardScreen(new AbstractWizardScreen() {
+            @Override
+            public PresenterScreen getPresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public PresenterScreen getPresenterScreen() {
+                return backPresenter;
+            }
+
+        });
+        wizardEditUserScreen.setNextWizardScreen(new AbstractWizardScreen() {
+            @Override
+            public PresenterScreen getPresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public PresenterScreen getPresenterScreen() {
+                return nextPresenter;
+            }
+
+        });
         wizardEditUserScreen.setScreenTitle(screenTitle);
         wizardEditUserScreen.setScreenTag(screenTag);
         wizardEditUserScreen.setScreenText(dispalyText);
         wizardEditUserScreen.setCustomFields(customFields);
-        wizardEditUserScreen.setNextButton(saveButtonLabel);
+        wizardEditUserScreen.setSaveButtonLabel(saveButtonLabel);
         wizardEditUserScreen.setPostText(postText);
         wizardEditUserScreen.setAlternateButtonLabel(alternateButtonLabel);
         wizardEditUserScreen.setSendData(sendData);

@@ -230,11 +230,6 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
         if (screenText != null) {
             presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, screenText));
         }
-//        if (customFields != null) {
-//            for (String fieldString : customFields) {
-//                insertMetadataByString(fieldString, experiment, presenterScreen);
-//            }
-//        }
         if (getCustomFields() != null) {
             for (String fieldString : getCustomFields()) {
                 insertMetadataByString(fieldString, experiment, presenterScreen);
@@ -275,6 +270,12 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
         if (!getMandatoryCheckBox().isEmpty()) {
             insertMetadataField(experiment, new Metadata("mandatoryCheckBox", getMandatoryCheckBox(), "true", "Please agree to continue.", false, null), presenterScreen);
         }
+        
+//        if (customFields != null) {
+//            for (String fieldString : customFields) {
+//                insertMetadataByString(fieldString, experiment, presenterScreen);
+//            }
+//        }
 //        if (wizardData == null && customFields == null) {
 //            presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMetadataFields, null));
 //        }

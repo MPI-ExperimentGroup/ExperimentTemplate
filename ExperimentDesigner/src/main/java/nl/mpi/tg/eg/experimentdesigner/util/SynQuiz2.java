@@ -36,7 +36,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
 import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
-import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.AbstractWizardScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 
 /**
@@ -63,6 +63,18 @@ public class SynQuiz2 {
 //        presenterScreenList.add(registrationScreen);
         final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
         wizardEditUserScreen.setMetadataScreenText("Please read the " + formatLink("Participant Information Sheet", "static/synaesthesia_info_sheet_ENGLISH_webversion.pdf") + " carefully!");
+        wizardEditUserScreen.setBackWizardScreen(new AbstractWizardScreen() {
+            @Override
+            public PresenterScreen getPresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public PresenterScreen getPresenterScreen() {
+                return introductionScreen;
+            }
+
+        });
         wizardEditUserScreen.setFirstNameField(true);
         wizardEditUserScreen.setLastNameField(true);
         wizardEditUserScreen.setEmailAddressField(true);
@@ -75,7 +87,7 @@ public class SynQuiz2 {
 //        wizardEditUserScreen.setCustomFields(customFields);
 //        wizardEditUserScreen.setNextButton("Continue");
         wizardEditUserScreen.setSendData(true);
-        wizardEditUserScreen.setSaveButtonLabel("Continue"); 
+        wizardEditUserScreen.setSaveButtonLabel("Continue");
 //        wizardEditUserScreen.setPostText(postText);
 //        wizardEditUserScreen.setAlternateButtonLabel(alternateButtonLabel);
         wizardEditUserScreen.setSendData(true);
@@ -94,7 +106,7 @@ public class SynQuiz2 {
 
         PresenterScreen previousDemographicsScreen = demographicsScreen1;
         for (DemographicScreenType demographicScreenType : DemographicScreenType.values()) {
-            final PresenterScreen demographicsScreen = createDemographicsScreen(experiment, previousDemographicsScreen, demographicScreenType, 4);
+            final PresenterScreen demographicsScreen = createDemographicsScreen(experiment, previousDemographicsScreen, demographicScreenType, 6);
             presenterScreenList.add(demographicsScreen);
             previousDemographicsScreen.setNextPresenter(demographicsScreen);
             previousDemographicsScreen = demographicsScreen;
@@ -234,7 +246,7 @@ public class SynQuiz2 {
                 screenName.name(),
                 null,
                 PresenterType.metadata,
-                displayOrder);
+                displayOrder + screenName.ordinal());
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
 //        presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
 //        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "Tell Us About Your Synaesthesia"));

@@ -38,7 +38,7 @@ public class Sentveri_exp3 {
 
     final String[] stimulusTagList = new String[]{"list1", "list2", "list3", "list4"};
 
-    public void create3c(PresenterScreenRepository presenterScreenRepository, PresenterFeatureRepository presenterFeatureRepository, final List<PresenterScreen> presenterScreenList) {
+    public void create3c(final List<PresenterScreen> presenterScreenList) {
         long displayOrder = 1;
         PresenterScreen practiceScreen = createStimulusScreen("practice", displayOrder);
         presenterScreenList.add(practiceScreen);

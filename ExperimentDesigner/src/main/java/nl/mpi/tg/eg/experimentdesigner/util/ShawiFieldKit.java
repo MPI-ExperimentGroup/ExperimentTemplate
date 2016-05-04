@@ -40,7 +40,7 @@ public class ShawiFieldKit {
         experiment.setBackgroundColour("#ffeda0");
         experiment.setPrimaryColour4("#feb24c");
         experiment.setPrimaryColour2("#f03b20");
-        wizardController.addMetadata(experiment);
+//        wizardController.addMetadata(experiment);
         final PresenterScreen autoMenuPresenter = wizardController.addAutoMenu(experiment, 18, obfuscateScreenNames);
         final PresenterScreen welcomePresenter = wizardController.addWelcomeScreen(experiment, autoMenuPresenter, "Welcome", null, 1, "Instructions", "Go directly to program", obfuscateScreenNames);
         final PresenterScreen welcomeMenuPresenter = wizardController.addWelcomeMenu(experiment, welcomePresenter, "Start", null, 2, "New Interview.", "Resume Interview", "Is this a new recording?", "Have you already started a recording and do you want to go back to it?", obfuscateScreenNames);
@@ -60,7 +60,7 @@ public class ShawiFieldKit {
         final PresenterScreen frogsScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, "Frogs", grammaticalityScreen, new String[]{"Frogs"}, picturesValuesArray, false, 1000, false, "end_of_stimuli", 10, obfuscateScreenNames);
         final PresenterScreen metadataScreen = wizardController.createMetadataScreen(experiment, autoMenuPresenter, picturesScreen, new String[]{"Nombre", "Sexo", "Edad", "Estado civil", "Origen", "Lugar de residencia", "Nombre de la comunidad a la que pertenece", "Actividad laboral", "Nivel de estudios", "Número de hijos", "Religión", "Idiomas"}, "next", "end of stimuli", 4, obfuscateScreenNames);
         final PresenterScreen selectUserPresenter = wizardController.addUserSelectMenu(experiment, welcomePresenter, metadataScreen, 5, obfuscateScreenNames);
-        final PresenterScreen editUserPresenter = wizardController.addEditUserScreen(experiment, welcomePresenter, "Edit User", metadataScreen, 6, false, "Could not contact the server, please check your internet connection and try again.", obfuscateScreenNames);
+        final PresenterScreen editUserPresenter = wizardController.addEditUserScreen(experiment, welcomePresenter, "Edit User", "Edit User", metadataScreen, 6, null, null, new String[]{"workerId:Speaker name *:.'{'3,'}':Please enter at least three letters."}, "Save and continue", null, null, null, false, "Could not contact the server, please check your internet connection and try again.", false);
         final PresenterScreen debugScreenPresenter = wizardController.addDebugScreen(experiment, autoMenuPresenter, 17, obfuscateScreenNames);
         final PresenterScreen kinshipPresenter = addKinshipScreen(experiment, autoMenuPresenter, null, 16);
         welcomeMenuPresenter.setNextPresenter(metadataScreen);

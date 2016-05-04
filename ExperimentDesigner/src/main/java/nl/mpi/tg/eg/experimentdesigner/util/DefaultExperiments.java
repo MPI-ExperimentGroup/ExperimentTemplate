@@ -65,7 +65,7 @@ public class DefaultExperiments {
             MetadataRepository metadataRepository,
             ExperimentRepository experimentRepository,
             PublishEventRepository eventRepository) {
-        experimentRepository.save(getSentveri_exp3Experiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
+        experimentRepository.save(getSentveri_exp3Experiment());
         experimentRepository.save(getDobesExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
         experimentRepository.save(getAllOptionsExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
         experimentRepository.save(new JenaFieldKit().getJenaExperiment());
@@ -91,7 +91,8 @@ public class DefaultExperiments {
         experiment.getMetadata().add(metadata2);
         metadataRepository.save(experiment.getMetadata());
         addDobesStimuli(experiment);
-        final PresenterScreen autoMenuPresenter = addAutoMenu(presenterFeatureRepository, 1);
+        final PresenterScreen autoMenuPresenter = addAutoMenu(1);
+        presenterFeatureRepository.save(autoMenuPresenter.getPresenterFeatureList());
         experiment.getPresenterScreen().add(autoMenuPresenter);
         experiment.getPresenterScreen().add(addAnnotationTimelinePanel(presenterFeatureRepository, autoMenuPresenter, 2));
         experiment.getPresenterScreen().add(addVideosMenu(presenterFeatureRepository, autoMenuPresenter, 3));
@@ -103,19 +104,18 @@ public class DefaultExperiments {
         return experiment;
     }
 
-    public Experiment getSentveri_exp3Experiment(MetadataRepository metadataRepository, PresenterFeatureRepository presenterFeatureRepository, PresenterScreenRepository presenterScreenRepository) {
-        Experiment experiment = getDefault("Sentveri_exp3", metadataRepository, presenterFeatureRepository);
+    public Experiment getSentveri_exp3Experiment() {
+        Experiment experiment = getDefault("Sentveri_exp3");
         experiment.setStimuli(new Sentveri_exp3().createStimuli());
-        new Sentveri_exp3().create3c(presenterScreenRepository, presenterFeatureRepository, experiment.getPresenterScreen());
-        presenterScreenRepository.save(experiment.getPresenterScreen());
+        new Sentveri_exp3().create3c(experiment.getPresenterScreen());
         return experiment;
     }
 
-    public final Experiment getDefault(final String appName, MetadataRepository metadataRepository, PresenterFeatureRepository presenterFeatureRepository) {
+    public final Experiment getDefault(final String appName) {
         final Experiment experiment = getDefault();
         experiment.setAppNameDisplay(appName);
         experiment.setAppNameInternal(appName);
-        final PresenterScreen autoMenuPresenter = addAutoMenu(presenterFeatureRepository, 10);
+        final PresenterScreen autoMenuPresenter = addAutoMenu(10);
         experiment.getPresenterScreen().add(autoMenuPresenter);
         final Metadata metadata = new Metadata("workerId", "Reporter name *", ".'{'3,'}'", "Please enter at least three letters.", true, "This test can only be done once per worker.");
         final Metadata metadata1 = new Metadata("errordevice", "Device model", ".'{'2,'}'", "Please enter the device model", false, null);
@@ -123,7 +123,6 @@ public class DefaultExperiments {
         experiment.getMetadata().add(metadata);
         experiment.getMetadata().add(metadata1);
         experiment.getMetadata().add(metadata2);
-        metadataRepository.save(experiment.getMetadata());
         return experiment;
     }
 
@@ -174,7 +173,8 @@ public class DefaultExperiments {
 //        experiment.getPresenterScreen().add(addVideoAspen(presenterFeatureRepository));
 //        experiment.getPresenterScreen().add(addVideoWorksPage(presenterFeatureRepository));
 //        experiment.getPresenterScreen().add(addVideoFailedPage(presenterFeatureRepository));
-        final PresenterScreen autoMenu = addAutoMenu(presenterFeatureRepository, 0);
+        final PresenterScreen autoMenu = addAutoMenu(0);
+        presenterFeatureRepository.save(autoMenu.getPresenterFeatureList());
         experiment.getPresenterScreen().add(addTargetScreen(presenterFeatureRepository, autoMenu, 0));
         experiment.getPresenterScreen().add(autoMenu);
         addAllFeaturesAsPages(presenterFeatureRepository, experiment, autoMenu, 0);
@@ -389,11 +389,9 @@ public class DefaultExperiments {
         return presenterScreen;
     }
 
-    private PresenterScreen addAutoMenu(PresenterFeatureRepository presenterFeatureRepository, long displayOrder) {
+    private PresenterScreen addAutoMenu(long displayOrder) {
         final PresenterScreen presenterScreen = new PresenterScreen("Auto Menu", "Menu", null, "AutoMenu", null, PresenterType.menu, displayOrder);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMenuItems, null));
-
-        presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
         return presenterScreen;
     }
 

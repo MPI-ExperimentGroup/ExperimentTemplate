@@ -33,7 +33,6 @@ import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.springframework.util.comparator.ComparableComparator;
 
 /**
  * @since May 3, 2016 2:27:33 PM (creation date)

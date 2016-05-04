@@ -183,7 +183,9 @@ public class PresenterFeature {
     @XmlAnyAttribute
     public Map<QName, String> getFeatureAttributes() {
         Map<QName, String> attributeMap = new HashMap();
-        featureAttributes.keySet().stream().forEach((featureAttribute) -> {
+        final ArrayList<FeatureAttribute> keyList = new ArrayList<>(featureAttributes.keySet());
+        keyList.sort(Enum::compareTo);
+        keyList.stream().forEach((featureAttribute) -> {
             attributeMap.put(new QName(featureAttribute.name()), featureAttributes.get(featureAttribute));
         });
         return attributeMap;
