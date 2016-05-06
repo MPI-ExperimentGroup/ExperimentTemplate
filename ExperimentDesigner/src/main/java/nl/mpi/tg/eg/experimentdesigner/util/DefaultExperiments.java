@@ -66,7 +66,7 @@ public class DefaultExperiments {
             ExperimentRepository experimentRepository,
             PublishEventRepository eventRepository) {
         experimentRepository.save(getSentveri_exp3Experiment());
-        experimentRepository.save(getDobesExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
+        experimentRepository.save(getDobesExperiment());
         experimentRepository.save(getAllOptionsExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
         experimentRepository.save(new JenaFieldKit().getJenaExperiment());
         experimentRepository.save(new ShawiFieldKit().getShawiExperiment());
@@ -79,7 +79,7 @@ public class DefaultExperiments {
         }
     }
 
-    public Experiment getDobesExperiment(MetadataRepository metadataRepository, PresenterFeatureRepository presenterFeatureRepository, PresenterScreenRepository presenterScreenRepository) {
+    public Experiment getDobesExperiment() {
         Experiment experiment = getDefault();
         experiment.setAppNameDisplay("Dobes Annotator");
         experiment.setAppNameInternal("DobesAnnotator");
@@ -89,18 +89,16 @@ public class DefaultExperiments {
         experiment.getMetadata().add(metadata);
         experiment.getMetadata().add(metadata1);
         experiment.getMetadata().add(metadata2);
-        metadataRepository.save(experiment.getMetadata());
         addDobesStimuli(experiment);
         final PresenterScreen autoMenuPresenter = addAutoMenu(1);
-        presenterFeatureRepository.save(autoMenuPresenter.getPresenterFeatureList());
         experiment.getPresenterScreen().add(autoMenuPresenter);
-        experiment.getPresenterScreen().add(addAnnotationTimelinePanel(presenterFeatureRepository, autoMenuPresenter, 2));
-        experiment.getPresenterScreen().add(addVideosMenu(presenterFeatureRepository, autoMenuPresenter, 3));
-        experiment.getPresenterScreen().add(addTargetScreen(presenterFeatureRepository, autoMenuPresenter, 4));
-        experiment.getPresenterScreen().add(addVideoAspen(presenterFeatureRepository, autoMenuPresenter, 5));
-        experiment.getPresenterScreen().add(addVideoWorksPage(presenterFeatureRepository, autoMenuPresenter, 6));
-        experiment.getPresenterScreen().add(addVideoFailedPage(presenterFeatureRepository, autoMenuPresenter, 7));
-        presenterScreenRepository.save(experiment.getPresenterScreen());
+        experiment.getPresenterScreen().add(addAnnotationTimelinePanel(autoMenuPresenter, 2));
+        experiment.getPresenterScreen().add(addVideosMenu(autoMenuPresenter, 3));
+        experiment.getPresenterScreen().add(addTargetScreen(autoMenuPresenter, 4));
+        experiment.getPresenterScreen().add(addVideoAspen(autoMenuPresenter, 5));
+        experiment.getPresenterScreen().add(addVideoWorksPage(autoMenuPresenter, 6));
+        experiment.getPresenterScreen().add(addVideoFailedPage(autoMenuPresenter, 7));
+//        presenterScreenRepository.save(experiment.getPresenterScreen());
         return experiment;
     }
 
@@ -175,7 +173,7 @@ public class DefaultExperiments {
 //        experiment.getPresenterScreen().add(addVideoFailedPage(presenterFeatureRepository));
         final PresenterScreen autoMenu = addAutoMenu(0);
         presenterFeatureRepository.save(autoMenu.getPresenterFeatureList());
-        experiment.getPresenterScreen().add(addTargetScreen(presenterFeatureRepository, autoMenu, 0));
+        experiment.getPresenterScreen().add(addTargetScreen(autoMenu, 0));
         experiment.getPresenterScreen().add(autoMenu);
         addAllFeaturesAsPages(presenterFeatureRepository, experiment, autoMenu, 0);
         presenterScreenRepository.save(experiment.getPresenterScreen());
@@ -366,7 +364,7 @@ public class DefaultExperiments {
         return presenterFeature;
     }
 
-    private PresenterScreen addVideosMenu(PresenterFeatureRepository presenterFeatureRepository, PresenterScreen backPresenter, long displayOrder) {
+    private PresenterScreen addVideosMenu(PresenterScreen backPresenter, long displayOrder) {
         final PresenterScreen presenterScreen = new PresenterScreen("Video List", "Videos", backPresenter, "VideosPage", null, PresenterType.text, displayOrder);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "This is a simple video codec testing application."));
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
@@ -385,7 +383,7 @@ public class DefaultExperiments {
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.versionData, null));
 
-        presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
+//        presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
         return presenterScreen;
     }
 
@@ -395,35 +393,35 @@ public class DefaultExperiments {
         return presenterScreen;
     }
 
-    private PresenterScreen addTargetScreen(PresenterFeatureRepository presenterFeatureRepository, PresenterScreen backPresenter, long displayOrder) {
+    private PresenterScreen addTargetScreen(PresenterScreen backPresenter, long displayOrder) {
         final PresenterScreen presenterScreen = new PresenterScreen("Target Screen", "Target", backPresenter, "target", null, PresenterType.text, displayOrder);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "A simple page so that there is a screen with the target value of 'target' for testing purposes."));
 
-        presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
+//        presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
         return presenterScreen;
     }
 
-    private PresenterScreen addVideoFailedPage(PresenterFeatureRepository presenterFeatureRepository, PresenterScreen backPresenter, long displayOrder) {
+    private PresenterScreen addVideoFailedPage(PresenterScreen backPresenter, long displayOrder) {
         final PresenterScreen presenterScreen = new PresenterScreen("Video Failed", "Video Failed Page", backPresenter, "VideoFailedPage", null, PresenterType.text, displayOrder);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "A message indicating that the video fails on your device has been sent."));
         final PresenterFeature optionButton1 = new PresenterFeature(FeatureType.targetButton, "Videos");
         optionButton1.addFeatureAttributes(FeatureAttribute.target, "VideosPage");
         presenterScreen.getPresenterFeatureList().add(optionButton1);
-        presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
+//        presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
         return presenterScreen;
     }
 
-    private PresenterScreen addVideoWorksPage(PresenterFeatureRepository presenterFeatureRepository, PresenterScreen backPresenter, long displayOrder) {
+    private PresenterScreen addVideoWorksPage(PresenterScreen backPresenter, long displayOrder) {
         final PresenterScreen presenterScreen = new PresenterScreen("Video Works", "Video Works Page", backPresenter, "VideoWorksPage", null, PresenterType.text, displayOrder);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "A message indicating that the video works on your device has been sent."));
         final PresenterFeature optionButton1 = new PresenterFeature(FeatureType.targetButton, "Videos");
         optionButton1.addFeatureAttributes(FeatureAttribute.target, "VideosPage");
         presenterScreen.getPresenterFeatureList().add(optionButton1);
-        presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
+//        presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
         return presenterScreen;
     }
 
-    private PresenterScreen addVideoAspen(PresenterFeatureRepository presenterFeatureRepository, PresenterScreen backPresenter, long displayOrder) {
+    private PresenterScreen addVideoAspen(PresenterScreen backPresenter, long displayOrder) {
         final PresenterScreen presenterScreen = new PresenterScreen("Video Test", "Video Test Page (aspen)", backPresenter, "VideoTestPageAspen", null, PresenterType.timeline, displayOrder);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4"));
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
@@ -443,11 +441,11 @@ public class DefaultExperiments {
         final PresenterFeature optionButton2 = new PresenterFeature(FeatureType.targetButton, "Video Failed");
         optionButton2.addFeatureAttributes(FeatureAttribute.target, "VideoFailedPage");
         presenterScreen.getPresenterFeatureList().add(optionButton2);
-        presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
+//        presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
         return presenterScreen;
     }
 
-    private PresenterScreen addAnnotationTimelinePanel(PresenterFeatureRepository presenterFeatureRepository, PresenterScreen backPresenter, long displayOrder) {
+    private PresenterScreen addAnnotationTimelinePanel(PresenterScreen backPresenter, long displayOrder) {
         final PresenterScreen presenterScreen = new PresenterScreen("Annotation Timeline", "AnnotationTimelinePanel", backPresenter, "AnnotationTimelinePanel", null, PresenterType.timeline, displayOrder);
 //        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "AnnotationTimelinePanel"));
 //        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.padding, null));
@@ -469,7 +467,7 @@ public class DefaultExperiments {
 //        final PresenterFeature optionButton2 = new PresenterFeature(FeatureType.optionButton, "Video Failed");
 //        optionButton2.addFeatureAttributes(FeatureAttribute.target, "VideoFailedPage");
 //        presenterScreen.getPresenterFeatureList().add(optionButton2);
-        presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
+//        presenterFeatureRepository.save(presenterScreen.getPresenterFeatureList());
         return presenterScreen;
     }
 }
