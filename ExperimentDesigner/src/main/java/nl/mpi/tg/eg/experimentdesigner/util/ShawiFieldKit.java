@@ -26,7 +26,10 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
 import nl.mpi.tg.eg.experimentdesigner.model.StimuliSubAction;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.AbstractWizardScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAudioRecorderMetadataScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardSelectUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardStimulusScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardWelcomeScreen;
 
 /**
  * @since Feb 22, 2016 4:39:04 PM (creation date)
@@ -44,7 +47,15 @@ public class ShawiFieldKit {
         experiment.setPrimaryColour2("#f03b20");
 //        wizardController.addMetadata(experiment);
         final PresenterScreen autoMenuPresenter = wizardController.addAutoMenu(experiment, 18, obfuscateScreenNames);
-        final PresenterScreen welcomePresenter = wizardController.addWelcomeScreen(experiment, autoMenuPresenter, "Welcome", null, 1, "Instructions", "Go directly to program", obfuscateScreenNames);
+        final WizardWelcomeScreen wizardWelcomeScreen = new WizardWelcomeScreen("Welcome", "Instructions", "Go directly to program");
+        wizardWelcomeScreen.setBackWizardScreen(new AbstractWizardScreen() {
+            @Override
+            public PresenterScreen getPresenterScreen() {
+                return autoMenuPresenter;
+            }
+        });
+
+        final PresenterScreen welcomePresenter = wizardWelcomeScreen.populatePresenterScreen(experiment, obfuscateScreenNames, 1);
         final PresenterScreen welcomeMenuPresenter = wizardController.addWelcomeMenu(experiment, welcomePresenter, "Start", null, 2, "New Interview.", "Resume Interview", "Is this a new recording?", "Have you already started a recording and do you want to go back to it?", obfuscateScreenNames);
         final PresenterScreen instructionsPresenter = wizardController.addInstructionsScreen(experiment, welcomePresenter, "Instructions", welcomeMenuPresenter, 3, "With this app you can make recordings of your language. "
                 + "Describe pictures in this app by speaking and the app records what you say.", "Go directly to program", obfuscateScreenNames);
@@ -61,8 +72,34 @@ public class ShawiFieldKit {
         final PresenterScreen picturesScreen = createStimulusScreen(experiment, welcomePresenter, "Pictures", grammaticalityScreen, new String[]{"Pictures"}, picturesValuesArray, true, 1000, false, "end_of_stimuli", 8, obfuscateScreenNames);
         final PresenterScreen animalsScreen = createStimulusScreen(experiment, welcomePresenter, "Animals", grammaticalityScreen, new String[]{"Animals"}, picturesValuesArray, true, 1000, false, "end_of_stimuli", 9, obfuscateScreenNames);
         final PresenterScreen frogsScreen = createStimulusScreen(experiment, welcomePresenter, "Frogs", grammaticalityScreen, new String[]{"Frogs"}, picturesValuesArray, false, 1000, false, "end_of_stimuli", 10, obfuscateScreenNames);
-        final PresenterScreen metadataScreen = wizardController.createMetadataScreen(experiment, autoMenuPresenter, picturesScreen, new String[]{"Nombre", "Sexo", "Edad", "Estado civil", "Origen", "Lugar de residencia", "Nombre de la comunidad a la que pertenece", "Actividad laboral", "Nivel de estudios", "Número de hijos", "Religión", "Idiomas"}, "next", "end of stimuli", 4, obfuscateScreenNames);
-        final PresenterScreen selectUserPresenter = wizardController.addUserSelectMenu(experiment, welcomePresenter, metadataScreen, 5, obfuscateScreenNames);
+        final WizardAudioRecorderMetadataScreen wizardAudioRecorderMetadataScreen = new WizardAudioRecorderMetadataScreen(new String[]{"Nombre", "Sexo", "Edad", "Estado civil", "Origen", "Lugar de residencia", "Nombre de la comunidad a la que pertenece", "Actividad laboral", "Nivel de estudios", "Número de hijos", "Religión", "Idiomas"}, "next", "end of stimuli");
+        wizardAudioRecorderMetadataScreen.setBackWizardScreen(new AbstractWizardScreen() {
+            @Override
+            public PresenterScreen getPresenterScreen() {
+                return autoMenuPresenter;
+            }
+        });
+        wizardAudioRecorderMetadataScreen.setNextWizardScreen(new AbstractWizardScreen() {
+            @Override
+            public PresenterScreen getPresenterScreen() {
+                return picturesScreen;
+            }
+        });
+        final PresenterScreen metadataScreen = wizardAudioRecorderMetadataScreen.populatePresenterScreen(experiment, obfuscateScreenNames, 4);
+        final WizardSelectUserScreen wizardSelectUserScreen = new WizardSelectUserScreen();
+        wizardSelectUserScreen.setBackWizardScreen(new AbstractWizardScreen() {
+            @Override
+            public PresenterScreen getPresenterScreen() {
+                return welcomePresenter;
+            }
+        });
+        wizardSelectUserScreen.setNextWizardScreen(new AbstractWizardScreen() {
+            @Override
+            public PresenterScreen getPresenterScreen() {
+                return metadataScreen;
+            }
+        });
+        final PresenterScreen selectUserPresenter = wizardSelectUserScreen.populatePresenterScreen(experiment, false, 5);
         final PresenterScreen editUserPresenter = wizardController.addEditUserScreen(experiment, welcomePresenter, "Edit User", "Edit User", metadataScreen, 6, null, null, new String[]{"workerId:Speaker name *:.'{'3,'}':Please enter at least three letters."}, "Save and continue", null, null, null, false, "Could not contact the server, please check your internet connection and try again.", false);
         final PresenterScreen debugScreenPresenter = wizardController.addDebugScreen(experiment, autoMenuPresenter, 17, obfuscateScreenNames);
         final PresenterScreen kinshipPresenter = addKinshipScreen(experiment, autoMenuPresenter, null, 16);
@@ -82,11 +119,6 @@ public class ShawiFieldKit {
         wizardStimulusScreen.setEnd_of_stimuli(end_of_stimuli);
         wizardStimulusScreen.setBackWizardScreen(new AbstractWizardScreen() {
             @Override
-            public PresenterScreen getPresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
             public PresenterScreen getPresenterScreen() {
                 return backPresenter;
             }
@@ -99,11 +131,6 @@ public class ShawiFieldKit {
         });
         wizardStimulusScreen.setNextWizardScreen(new AbstractWizardScreen() {
             @Override
-            public PresenterScreen getPresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
             public PresenterScreen getPresenterScreen() {
                 return nextPresenter;
             }
@@ -114,7 +141,7 @@ public class ShawiFieldKit {
             }
 
         });
-        return wizardStimulusScreen.getPresenterScreen(experiment, obfuscateScreenNames, displayOrder);
+        return wizardStimulusScreen.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
     }
 
     public PresenterScreen addKinshipScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder) {

@@ -20,8 +20,10 @@ package nl.mpi.tg.eg.experimentdesigner.util;
 import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAudioTestScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
 
 /**
  * @since Mar 15, 2016 4:50:41 PM (creation date)
@@ -710,7 +712,7 @@ public class Sara01 {
         //T_001_N_B
         //I have added the 1/2 second pause in my list below:
         //User follows link with group id and invite id
-        wizardData.setInformationScreenText("Beste deelnemer,<br/>"
+        WizardTextScreen wizardTextScreen = new WizardTextScreen("InformationScreen", "Beste deelnemer,<br/>"
                 + "<br/>"
                 + "Welkom. In dit experiment vragen we je om naar geluidsfragmenten te luisteren en te proberen te voorspellen hoe de volgende spreker zal reageren. Alle geluidsfragmenten komen uit een echt telefoongesprek tussen twee bekenden.<br/>"
                 + "<br/>"
@@ -721,11 +723,14 @@ public class Sara01 {
                 + "Dus: je krijgt eerst de context van het gesprek uitgeschreven op het scherm te zien. Probeer je een goed beeld te vormen van de situatie, daar mag je best even de tijd voor nemen. Als je alles goed gelezen en begrepen hebt, druk je op de spatiebalk. Op dat moment VERDWIJNT HET BEELD en hoor je de volgende uitspraak door de koptelefoon. Zodra de uitspraak afgelopen is, kan je klikken op een cijfer van 1 tot 7. 1 betekent een zeer waarschijnlijk negatief antwoord, 7 een zeer waarschijnlijk positief antwoord.<br/>"
                 + "Zorg ervoor dat je deze instructies goed begrepen hebt. Druk dan op de spatiebalk."
                 + "<br/>"
-                + "<img src=\"static/introimage/introimage.jpg\"/><br/>"
+                + "<img src=\"static/introimage/introimage.jpg\"/><br/>",
+                "volgende [ spatiebalk ]"
         );
-        wizardData.setUserSelectScreen(false);
+        wizardData.addScreen(wizardTextScreen);
         //Information screen 
-        wizardData.setAgreementScreenText(
+
+        //Agreement
+        WizardAgreementScreen agreementScreen = new WizardAgreementScreen(
                 "Toestemmingsverklaring voor deelname aan het onderzoek:<br/>"
                 + "Antwoord raden<br/>"
                 + "Voordat je begint met dit experiment, dien je eerst te bevestigen dat je toestemt met deelname aan dit experiment. We zullen je antwoorden opslaan voor latere analyse. We gebruiken de resultaten alleen voor onderzoeksdoeleinden, en zullen ze beschrijven in gespecialiseerde tijschriften of wellicht in kranten of op onze website. Echter, we zullen de resultaten NOOIT rapporteren op zo'n manier dat je zou kunnen worden geïdentificeerd.<br/>"
@@ -737,14 +742,13 @@ public class Sara01 {
                 + "Als je ermee instemt om door te gaan met dit experiment, klik dan op 'Akkoord' om verder te gaan.<br/>"
                 + "Als je besluit niet deel te nemen aan het experiment, kun je de pagina sluiten of naar een andere website gaan.<br/>"
                 + "<br/>"
-                + ""
-        );
-        //Agreement
-        wizardData.setAgreementScreen(true);
+                + "", "Akkoord");
+        wizardData.addScreen(agreementScreen);
 //        wizardData.setAgreementText("agreementText");
 //        wizardData.setDisagreementScreenText("disagreementScreenText");
         //metadata
         final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
+        agreementScreen.setNextWizardScreen(wizardEditUserScreen);
         wizardEditUserScreen.setScreenTitle("Edit User");
         wizardEditUserScreen.setScreenTag("Edit User");
         wizardEditUserScreen.setSaveButtonLabel("Save Details");

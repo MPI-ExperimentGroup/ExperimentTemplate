@@ -65,11 +65,6 @@ public class SynQuiz2 {
         wizardEditUserScreen.setMetadataScreenText("Please read the " + formatLink("Participant Information Sheet", "static/synaesthesia_info_sheet_ENGLISH_webversion.pdf") + " carefully!");
         wizardEditUserScreen.setBackWizardScreen(new AbstractWizardScreen() {
             @Override
-            public PresenterScreen getPresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
             public PresenterScreen getPresenterScreen() {
                 return introductionScreen;
             }
@@ -98,7 +93,7 @@ public class SynQuiz2 {
         completionScreen.setBackPresenter(menuScreen);
 //        final PresenterScreen demographicsScreen1 = createDemographicsScreen1(experiment, "Demographics1", 4);
 //        presenterScreenList.add(demographicsScreen1);
-        final PresenterScreen editUserScreen = wizardEditUserScreen.getPresenterScreen(experiment, false, 3);
+        final PresenterScreen editUserScreen = wizardEditUserScreen.populatePresenterScreen(experiment, false, 3);
 //wizardController.addEditUserScreen(experiment, introductionScreen, "Participant", "Participant", null, 3, wizardData, null, null, "Continue", null, null, null, true, "Could not contact the server, please check your internet connection and try again.", false);
         final PresenterScreen demographicsScreen1 = wizardController.addEditUserScreen(experiment, editUserScreen, "Details", "Details", null, 5, null, null, demographicsFields1, "Continue", null, null, null, true, "Could not contact the server, please check your internet connection and try again.", false);
         wizardController.addMetadata(experiment);

@@ -21,6 +21,9 @@ import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.AbstractWizardScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
 
 /**
  * @since Mar 16, 2016 2:35:56 PM (creation date)
@@ -311,7 +314,32 @@ public class FactOrFiction {
 //        wizardData.setAgeField(true);
 //        wizardData.setGenderField(true);
 //        wizardData.setCustomTextField("level of proficiency in Dutch");
-        final PresenterScreen agreementScreen = wizardController.addAgreementScreen(experiment, null, "Participant", 1, agreementScreenText, "Akkoord", wizardData.isObfuscateScreenNames());
+        WizardAgreementScreen wizardAgreementScreen = new WizardAgreementScreen(agreementScreenText, "Akkoord");
+        final PresenterScreen agreementScreen = wizardAgreementScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 1);
+//agreementScreen.setBackWizardScreen(new AbstractWizardScreen() {
+//            @Override
+//            public PresenterScreen getPresenterScreen() {
+//                return welcomePresenter;
+//            }
+//
+//            @Override
+//            public String getScreenTag() {
+//                return welcomePresenter.getSelfPresenterTag();
+//            }
+//
+//        });
+//        agreementScreen.setNextWizardScreen(new AbstractWizardScreen() {
+//            @Override
+//            public PresenterScreen getPresenterScreen() {
+//                return welcomePresenter;
+//            }
+//
+//            @Override
+//            public String getScreenTag() {
+//                return welcomePresenter.getSelfPresenterTag();
+//            }
+//
+//        });
         final String[] medataFields = new String[]{
             "leeftijd:Leeftijd:[0-9]+:Voer een getal.",
             "geslacht:Geslacht:|man|vrouw|anders:.",
@@ -326,12 +354,16 @@ public class FactOrFiction {
 //        final PresenterScreen storyScreen = wizardController.addRandomTextScreen(experiment, null, 4, "StoryPresentation", false, storyTexts, new String[]{"Emotioneel_hij", "Emotioneel_ik", "Koffiemolen_hij", "Koffiemolen_ik", "Matroesjka_hij", "Matroesjka_ik", "Meesterwerk_hij", "Meesterwerk_ik"}, 1, null, 0, 0, null, null, null, null, wizardData.isObfuscateScreenNames());
         final PresenterScreen storyScreen = wizardController.addRandomTextScreen(experiment, null, 4, "StoryPresentation", false, storyTexts, new String[]{"Emotioneel_hij", "Emotioneel_ik", "Koffiemolen_hij", "Koffiemolen_ik", "Matroesjka_hij", "Matroesjka_ik", "Meesterwerk_hij", "Meesterwerk_ik"}, 1, true, null, 0, 0, null, null, null, null, "volgende [ spatiebalk ]", wizardData.isObfuscateScreenNames());
         final PresenterScreen survey1Screen = wizardController.addRandomTextScreen(experiment, null, 5, "Survey1", servey1Stimuli, 1000, true, "1,2,3,4,5,6,7", "helemaal niet van toepassing", "helemaal van toepassing", wizardData.isObfuscateScreenNames());
-        final PresenterScreen survey1InstructionsScreen = wizardController.addTextScreen(experiment, null, "Survey1Instructions", null, 14, "<b>U krijgt nu enkele stellingen te zien over uw ervaringen tijdens het lezen van het voorgaande verhaal. Geef aan in hoeverre de stellingen van toepassing zijn op uw ervaring tijdens het lezen van dit verhaal.</b>", "volgende [ spatiebalk ]", wizardData.isObfuscateScreenNames());
-        final PresenterScreen survey2InstructionsScreen = wizardController.addTextScreen(experiment, null, "Survey2Instructions", null, 15, "<b>U krijgt nu enkele woorden te zien. Uw taak is om aan te geven in hoeverre de woorden van toepassing zijn op uw ervaring tijdens het lezen van het verhaal.</b>", "volgende [ spatiebalk ]", wizardData.isObfuscateScreenNames());
+        WizardTextScreen wizardSurvey1InstructionsTextScreen = new WizardTextScreen("Survey1Instructions", "<b>U krijgt nu enkele stellingen te zien over uw ervaringen tijdens het lezen van het voorgaande verhaal. Geef aan in hoeverre de stellingen van toepassing zijn op uw ervaring tijdens het lezen van dit verhaal.</b>", "volgende [ spatiebalk ]");
+        final PresenterScreen survey1InstructionsScreen = wizardSurvey1InstructionsTextScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 14);
+        WizardTextScreen wizardSurvey2InstructionsTextScreen = new WizardTextScreen("Survey2Instructions", "<b>U krijgt nu enkele woorden te zien. Uw taak is om aan te geven in hoeverre de woorden van toepassing zijn op uw ervaring tijdens het lezen van het verhaal.</b>", "volgende [ spatiebalk ]");
+        final PresenterScreen survey2InstructionsScreen = wizardSurvey2InstructionsTextScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 15);
         final PresenterScreen survey2Screen = wizardController.addRandomTextScreen(experiment, null, 6, "Survey2", new String[]{"Interessant:interessant", "goedgeschreven:goed geschreven", "vanhogeliterairekwaliteit:van hoge literaire kwaliteit", "makkelijktebegrijpen:makkelijk te begrijpen", "toegankelijk:toegankelijk", "spannend:spannend", "mooi:mooi", "boeiend:boeiend", "emotioneel:emotioneel", "saai:saai"}, 1000, true, "1,2,3,4,5,6,7", "helemaal niet van toepassing", "helemaal van toepassing", wizardData.isObfuscateScreenNames());
-        final PresenterScreen pictureInstructionsScreen = wizardController.addTextScreen(experiment, null, "PictureInstructions", null, 16, "<b>U zult zo enkele afbeeldingen zien die situaties tonen. Uw taak is te kiezen of de afgebeelde acties overeenkomen met acties in het verhaal dat u net las, of niet. Als het beeld een actie toont die in het verhaal voorkwam, toetst u “Z”, als de actie niet in het verhaal voorkwam toetst u “.”. Probeer zo snel mogelijk te reageren.", "volgende [ spatiebalk ]</b>", wizardData.isObfuscateScreenNames());
+        WizardTextScreen wizardPictureInstructionsScreen = new WizardTextScreen("PictureInstructions", "<b>U zult zo enkele afbeeldingen zien die situaties tonen. Uw taak is te kiezen of de afgebeelde acties overeenkomen met acties in het verhaal dat u net las, of niet. Als het beeld een actie toont die in het verhaal voorkwam, toetst u “Z”, als de actie niet in het verhaal voorkwam toetst u “.”. Probeer zo snel mogelijk te reageren.", "volgende [ spatiebalk ]</b>");
+        final PresenterScreen pictureInstructionsScreen = wizardPictureInstructionsScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 16);
         final PresenterScreen pictureTaskScreen = wizardController.addRandomTextScreen(experiment, null, 17, "PictureTask", images, 1000, true, "ja [ z ],nee [ . ]", "", "", wizardData.isObfuscateScreenNames());
-        final PresenterScreen readingBehaviorInstructionsScreen = wizardController.addTextScreen(experiment, null, "ReadingBehaviorInstructions", null, 18, "<b>Het experiment is bijna klaar. We hebben nog 6 korte vragen aan u.</b>", "volgende [ spatiebalk ]", wizardData.isObfuscateScreenNames());
+        WizardTextScreen wizardReadingBehaviorInstructionsTextScreen = new WizardTextScreen("ReadingBehaviorInstructions", "<b>Het experiment is bijna klaar. We hebben nog 6 korte vragen aan u.</b>", "volgende [ spatiebalk ]");
+        final PresenterScreen readingBehaviorInstructionsScreen = wizardReadingBehaviorInstructionsTextScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 18);
         final PresenterScreen readingBehaviorScreen = wizardController.addRandomTextScreen(experiment, null, 19, "ReadingBehavior", readingBehavior, 1000, false, "1,2,3,4,5,6,7", "", "", wizardData.isObfuscateScreenNames());
         final String retry = "Probeer opnieuw";
         final PresenterScreen submitDataScreen = wizardController.addSubmitDataScreen(experiment, null, null, 20, "SubmitData", could_not_contact_the_server_please_check, retry, wizardData.isObfuscateScreenNames());
