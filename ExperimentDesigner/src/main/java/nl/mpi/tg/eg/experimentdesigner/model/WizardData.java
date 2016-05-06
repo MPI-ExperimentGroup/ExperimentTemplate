@@ -30,14 +30,6 @@ public class WizardData {
     private String appName = "";
     private boolean showMenuBar = true;
     private boolean obfuscateScreenNames = false;
-    private boolean userSelectScreen = false;
-    private boolean agreementScreen = false;
-    private String informationScreenText = "";
-    private String agreementText = "";
-    private String agreementScreenText = "";
-    private String disagreementScreenText = "";
-    
-
     private boolean practiceStimuliScreen = false;
     private String practiceStimuliPath = "";
     private String[] practiceStimuliSet = null;
@@ -106,46 +98,6 @@ public class WizardData {
 
     public void setObfuscateScreenNames(boolean obfuscateScreenNames) {
         this.obfuscateScreenNames = obfuscateScreenNames;
-    }
-
-    public String getInformationScreenText() {
-        return informationScreenText;
-    }
-
-    public void setInformationScreenText(String informationScreenText) {
-        this.informationScreenText = informationScreenText;
-    }
-
-    public boolean isUserSelectScreen() {
-        return userSelectScreen;
-    }
-
-    public void setUserSelectScreen(boolean userSelectScreen) {
-        this.userSelectScreen = userSelectScreen;
-    }
-
-    public boolean isAgreementScreen() {
-        return agreementScreen;
-    }
-
-    public void setAgreementScreen(boolean agreementScreen) {
-        this.agreementScreen = agreementScreen;
-    }
-
-    public String getAgreementScreenText() {
-        return agreementScreenText;
-    }
-
-    public void setAgreementScreenText(String agreementScreenText) {
-        this.agreementScreenText = agreementScreenText;
-    }
-
-    public String getDisagreementScreenText() {
-        return disagreementScreenText;
-    }
-
-    public void setDisagreementScreenText(String disagreementScreenText) {
-        this.disagreementScreenText = disagreementScreenText;
     }
 
     public boolean isPracticeStimuliScreen() {
@@ -346,14 +298,6 @@ public class WizardData {
 
     public void setMenuScreen(boolean menuScreen) {
         this.menuScreen = menuScreen;
-    }
-
-    public String getAgreementText() {
-        return agreementText;
-    }
-
-    public void setAgreementText(String agreementText) {
-        this.agreementText = agreementText;
     }
 
     public void addScreen(final WizardScreen wizardScreen) {
