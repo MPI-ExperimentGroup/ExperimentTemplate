@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.TreeSet;
 import javax.persistence.Entity;
@@ -33,7 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Entity
-public class Stimulus {
+public class Stimulus implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -163,6 +164,7 @@ public class Stimulus {
         this.label = label;
     }
 
+    @XmlTransient
     public byte[] getImageData() {
         return imageData;
     }
@@ -171,6 +173,7 @@ public class Stimulus {
         this.imageData = imageData;
     }
 
+    @XmlTransient
     public byte[] getAudioData() {
         return audioData;
     }
@@ -179,6 +182,7 @@ public class Stimulus {
         this.audioData = audioData;
     }
 
+    @XmlTransient
     public byte[] getVideoData() {
         return videoData;
     }
