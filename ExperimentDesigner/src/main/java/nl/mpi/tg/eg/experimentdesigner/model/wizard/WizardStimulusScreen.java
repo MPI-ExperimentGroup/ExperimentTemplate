@@ -100,7 +100,7 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
     }
 
     @Override
-    public PresenterScreen getPresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+    public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         String screenName = "";
         final List<Stimulus> stimuliList = experiment.getStimuli();
         for (final String stimulusTag : stimulusTagArray) {
