@@ -41,7 +41,6 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
     }
 
 //    String[] fieldNames = new String[]{"audioTestScreenText", "audioWorksButtonText", "testAudioPath"};
-
 //    @Override
 //    public String[] getFieldNames() {
 //        return fieldNames;
@@ -56,21 +55,12 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
 //    public String getFieldValue(String fieldName) {
 //        return namedFields.get(fieldName);
 //    }
-
     @Override
-    public PresenterScreen getPresenterScreen(final Experiment experiment, final boolean obfuscateScreenNames, final long displayOrder) {
-        presenterScreen.setTitle((obfuscateScreenNames) ? experiment.getAppNameDisplay() + " " + displayOrder : "AudioTest");
-        presenterScreen.setMenuLabel("AudioTest");
-        if (backWizardScreen != null) {
-            presenterScreen.setBackPresenter(backWizardScreen.getPresenterScreen());
-        }
-        presenterScreen.setSelfPresenterTag("AudioTest");
-        if (nextWizardScreen != null) {
-            presenterScreen.setNextPresenter(nextWizardScreen.getPresenterScreen());
-        }
+    public PresenterScreen populatePresenterScreen(final Experiment experiment, final boolean obfuscateScreenNames, final long displayOrder) {
+        setScreenTitle("AudioTest");
+        super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
+//        populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
         presenterScreen.setPresenterType(PresenterType.stimulus);
-        presenterScreen.setDisplayOrder(displayOrder);
-
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, screenText));
         final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.audioButton, null);
         presenterFeature.addFeatureAttributes(FeatureAttribute.eventTag, "AudioTest");

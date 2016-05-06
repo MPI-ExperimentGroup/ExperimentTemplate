@@ -17,7 +17,11 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
+import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
+import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
+import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
 
 /**
  * @since May 3, 2016 1:34:51 PM (creation date)
@@ -26,12 +30,13 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 public abstract class AbstractWizardScreen implements WizardScreen {
 
     final PresenterScreen presenterScreen = new PresenterScreen();
-    WizardScreen backWizardScreen;
-    WizardScreen nextWizardScreen;
-    String screenText;
-    String nextButton;
-    String screenTitle;
-    String screenTag;
+    WizardScreen backWizardScreen = null;
+    WizardScreen nextWizardScreen = null;
+    String screenText = null;
+    String nextButton = null;
+    String screenTitle = null;
+    String menuLabel = null;
+    String screenTag = null;
 
     public String getScreenTitle() {
         return screenTitle;
@@ -39,6 +44,14 @@ public abstract class AbstractWizardScreen implements WizardScreen {
 
     public void setScreenTitle(String screenTitle) {
         this.screenTitle = screenTitle;
+    }
+
+    public String getMenuLabel() {
+        return menuLabel;
+    }
+
+    public void setMenuLabel(String menuLabel) {
+        this.menuLabel = menuLabel;
     }
 
     public String getScreenTag() {
@@ -91,6 +104,22 @@ public abstract class AbstractWizardScreen implements WizardScreen {
 
     @Override
     public PresenterScreen getPresenterScreen() {
+        return presenterScreen;
+    }
+
+    @Override
+    public PresenterScreen populatePresenterScreen(final Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+        presenterScreen.setTitle((obfuscateScreenNames) ? experiment.getAppNameDisplay() + " " + displayOrder : screenTitle);
+        presenterScreen.setMenuLabel((menuLabel != null) ? menuLabel : screenTitle);
+        final String currentTagString = (getScreenTag() != null) ? getScreenTag() : screenTitle;
+        presenterScreen.setSelfPresenterTag(currentTagString.replaceAll("[^A-Za-z0-9]", "_"));
+        if (backWizardScreen != null) {
+            presenterScreen.setBackPresenter(backWizardScreen.getPresenterScreen());
+        }
+        if (nextWizardScreen != null) {
+            presenterScreen.setNextPresenter(nextWizardScreen.getPresenterScreen());
+        }
+        presenterScreen.setDisplayOrder(displayOrder);
         return presenterScreen;
     }
 }

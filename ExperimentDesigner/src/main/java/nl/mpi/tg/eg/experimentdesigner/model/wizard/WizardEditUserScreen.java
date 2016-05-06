@@ -214,19 +214,9 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
 //
 //    public PresenterScreen addEditUserScreen() {
     @Override
-    public PresenterScreen getPresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        presenterScreen.setTitle((obfuscateScreenNames) ? experiment.getAppNameDisplay() + " " + displayOrder : screenTitle);
-        presenterScreen.setMenuLabel(screenTitle);
-        presenterScreen.setSelfPresenterTag(getScreenTag().replaceAll("[^A-Za-z0-9]", "_"));
+    public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+        super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
         presenterScreen.setPresenterType(PresenterType.metadata);
-        if (backWizardScreen != null) {
-            presenterScreen.setBackPresenter(backWizardScreen.getPresenterScreen());
-        }
-        if (nextWizardScreen != null) {
-            presenterScreen.setNextPresenter(nextWizardScreen.getPresenterScreen());
-        }
-        presenterScreen.setDisplayOrder(displayOrder);
-
         if (screenText != null) {
             presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, screenText));
         }
