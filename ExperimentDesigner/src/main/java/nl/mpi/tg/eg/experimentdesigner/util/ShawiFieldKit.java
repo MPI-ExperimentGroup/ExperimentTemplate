@@ -25,6 +25,8 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
 import nl.mpi.tg.eg.experimentdesigner.model.StimuliSubAction;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.AbstractWizardScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardStimulusScreen;
 
 /**
  * @since Feb 22, 2016 4:39:04 PM (creation date)
@@ -49,15 +51,16 @@ public class ShawiFieldKit {
         StimuliSubAction[] picturesValuesArray = new StimuliSubAction[]{new StimuliSubAction("80", "the informant talks/says whatever s/he wants", "next")};
         StimuliSubAction[] grammaticalityValuesArray = new StimuliSubAction[]{new StimuliSubAction("80", new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"})};
 // this should not be random but use alphanum sorting 
-        final PresenterScreen cutbreakScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, "cutbreak", welcomePresenter, new String[]{"cutbreak"}, grammaticalityValuesArray, true, 1000, false, "end_of_stimuli", 15, obfuscateScreenNames);
-        final PresenterScreen grammarScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, "grammar", welcomePresenter, new String[]{"grammar"}, grammaticalityValuesArray, true, 1000, false, "end_of_stimuli", 14, obfuscateScreenNames);
-        final PresenterScreen vanuatuScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, "vanuatu", welcomePresenter, new String[]{"vanuatu"}, grammaticalityValuesArray, true, 1000, false, "end_of_stimuli", 13, obfuscateScreenNames);
-        final PresenterScreen bodiesScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, "bodies", welcomePresenter, new String[]{"bodies"}, grammaticalityValuesArray, true, 1000, false, "end_of_stimuli", 12, obfuscateScreenNames);
-        final PresenterScreen bowpedScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, "bowped", welcomePresenter, new String[]{"bowped"}, grammaticalityValuesArray, true, 1000, false, "end_of_stimuli", 11, obfuscateScreenNames);
-        final PresenterScreen grammaticalityScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, "Grammaticality", welcomePresenter, new String[]{"Grammaticality"}, grammaticalityValuesArray, true, 1000, false, "end_of_stimuli", 7, obfuscateScreenNames);
-        final PresenterScreen picturesScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, "Pictures", grammaticalityScreen, new String[]{"Pictures"}, picturesValuesArray, true, 1000, false, "end_of_stimuli", 8, obfuscateScreenNames);
-        final PresenterScreen animalsScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, "Animals", grammaticalityScreen, new String[]{"Animals"}, picturesValuesArray, true, 1000, false, "end_of_stimuli", 9, obfuscateScreenNames);
-        final PresenterScreen frogsScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, "Frogs", grammaticalityScreen, new String[]{"Frogs"}, picturesValuesArray, false, 1000, false, "end_of_stimuli", 10, obfuscateScreenNames);
+
+        final PresenterScreen cutbreakScreen = createStimulusScreen(experiment, welcomePresenter, "cutbreak", welcomePresenter, new String[]{"cutbreak"}, grammaticalityValuesArray, true, 1000, false, "end_of_stimuli", 15, obfuscateScreenNames);
+        final PresenterScreen grammarScreen = createStimulusScreen(experiment, welcomePresenter, "grammar", welcomePresenter, new String[]{"grammar"}, grammaticalityValuesArray, true, 1000, false, "end_of_stimuli", 14, obfuscateScreenNames);
+        final PresenterScreen vanuatuScreen = createStimulusScreen(experiment, welcomePresenter, "vanuatu", welcomePresenter, new String[]{"vanuatu"}, grammaticalityValuesArray, true, 1000, false, "end_of_stimuli", 13, obfuscateScreenNames);
+        final PresenterScreen bodiesScreen = createStimulusScreen(experiment, welcomePresenter, "bodies", welcomePresenter, new String[]{"bodies"}, grammaticalityValuesArray, true, 1000, false, "end_of_stimuli", 12, obfuscateScreenNames);
+        final PresenterScreen bowpedScreen = createStimulusScreen(experiment, welcomePresenter, "bowped", welcomePresenter, new String[]{"bowped"}, grammaticalityValuesArray, true, 1000, false, "end_of_stimuli", 11, obfuscateScreenNames);
+        final PresenterScreen grammaticalityScreen = createStimulusScreen(experiment, welcomePresenter, "Grammaticality", welcomePresenter, new String[]{"Grammaticality"}, grammaticalityValuesArray, true, 1000, false, "end_of_stimuli", 7, obfuscateScreenNames);
+        final PresenterScreen picturesScreen = createStimulusScreen(experiment, welcomePresenter, "Pictures", grammaticalityScreen, new String[]{"Pictures"}, picturesValuesArray, true, 1000, false, "end_of_stimuli", 8, obfuscateScreenNames);
+        final PresenterScreen animalsScreen = createStimulusScreen(experiment, welcomePresenter, "Animals", grammaticalityScreen, new String[]{"Animals"}, picturesValuesArray, true, 1000, false, "end_of_stimuli", 9, obfuscateScreenNames);
+        final PresenterScreen frogsScreen = createStimulusScreen(experiment, welcomePresenter, "Frogs", grammaticalityScreen, new String[]{"Frogs"}, picturesValuesArray, false, 1000, false, "end_of_stimuli", 10, obfuscateScreenNames);
         final PresenterScreen metadataScreen = wizardController.createMetadataScreen(experiment, autoMenuPresenter, picturesScreen, new String[]{"Nombre", "Sexo", "Edad", "Estado civil", "Origen", "Lugar de residencia", "Nombre de la comunidad a la que pertenece", "Actividad laboral", "Nivel de estudios", "Número de hijos", "Religión", "Idiomas"}, "next", "end of stimuli", 4, obfuscateScreenNames);
         final PresenterScreen selectUserPresenter = wizardController.addUserSelectMenu(experiment, welcomePresenter, metadataScreen, 5, obfuscateScreenNames);
         final PresenterScreen editUserPresenter = wizardController.addEditUserScreen(experiment, welcomePresenter, "Edit User", "Edit User", metadataScreen, 6, null, null, new String[]{"workerId:Speaker name *:.'{'3,'}':Please enter at least three letters."}, "Save and continue", null, null, null, false, "Could not contact the server, please check your internet connection and try again.", false);
@@ -65,6 +68,53 @@ public class ShawiFieldKit {
         final PresenterScreen kinshipPresenter = addKinshipScreen(experiment, autoMenuPresenter, null, 16);
         welcomeMenuPresenter.setNextPresenter(metadataScreen);
         return experiment;
+    }
+
+    public PresenterScreen createStimulusScreen(final Experiment experiment, final PresenterScreen backPresenter, final String screenLabel, final PresenterScreen nextPresenter, final String stimulusTagArray[], final StimuliSubAction[] featureValuesArray, final boolean randomiseStimuli, final int maxStimuli, boolean filePerStimulus, final String end_of_stimuli, long displayOrder, boolean obfuscateScreenNames) {
+        final WizardStimulusScreen wizardStimulusScreen = new WizardStimulusScreen();
+        wizardStimulusScreen.setScreenTitle(screenLabel);
+        wizardStimulusScreen.setScreenLabel(screenLabel);
+        wizardStimulusScreen.setStimulusTagArray(stimulusTagArray);
+        wizardStimulusScreen.setFeatureValuesArray(featureValuesArray);
+        wizardStimulusScreen.setMaxStimuli(maxStimuli);
+        wizardStimulusScreen.setRandomiseStimuli(randomiseStimuli);
+        wizardStimulusScreen.setFilePerStimulus(filePerStimulus);
+        wizardStimulusScreen.setEnd_of_stimuli(end_of_stimuli);
+        wizardStimulusScreen.setBackWizardScreen(new AbstractWizardScreen() {
+            @Override
+            public PresenterScreen getPresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public PresenterScreen getPresenterScreen() {
+                return backPresenter;
+            }
+
+            @Override
+            public String getScreenTag() {
+                return backPresenter.getSelfPresenterTag();
+            }
+
+        });
+        wizardStimulusScreen.setNextWizardScreen(new AbstractWizardScreen() {
+            @Override
+            public PresenterScreen getPresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public PresenterScreen getPresenterScreen() {
+                return nextPresenter;
+            }
+
+            @Override
+            public String getScreenTag() {
+                return nextPresenter.getSelfPresenterTag();
+            }
+
+        });
+        return wizardStimulusScreen.getPresenterScreen(experiment, obfuscateScreenNames, displayOrder);
     }
 
     public PresenterScreen addKinshipScreen(final Experiment experiment, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder) {

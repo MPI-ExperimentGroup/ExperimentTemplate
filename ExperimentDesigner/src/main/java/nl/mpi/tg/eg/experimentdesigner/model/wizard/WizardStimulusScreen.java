@@ -115,16 +115,16 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
         if (backWizardScreen != null) {
             presenterScreen.setBackPresenter(backWizardScreen.getPresenterScreen());
         }
-        if (nextWizardScreen != null) {
-            presenterScreen.setNextPresenter(nextWizardScreen.getPresenterScreen());
-        }
+//        if (nextWizardScreen != null) {
+//            presenterScreen.setNextPresenter(nextWizardScreen.getPresenterScreen());
+//        }
         presenterScreen.setDisplayOrder(displayOrder);
 
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
-        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "This screen will show " + maxStimuli + " stimuli in random order from the directories:"));
-        for (final String stimulusTag : stimulusTagArray) {
-            presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "MPI_STIMULI/" + stimulusTag));
-        }
+//        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "This screen will show " + maxStimuli + " stimuli in random order from the directories:"));
+//        for (final String stimulusTag : stimulusTagArray) {
+//            presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "MPI_STIMULI/" + stimulusTag));
+//        }
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadSdCardStimulus, null);
         for (final String stimulusTag : stimulusTagArray) {
             loadStimuliFeature.addStimulusTag(stimulusTag);

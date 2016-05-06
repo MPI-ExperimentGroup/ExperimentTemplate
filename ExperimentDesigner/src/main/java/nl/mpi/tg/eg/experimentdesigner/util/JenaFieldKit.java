@@ -53,12 +53,12 @@ public class JenaFieldKit {
         final WizardStimulusScreen wizardStimulusScreen = new WizardStimulusScreen();
         wizardStimulusScreen.setScreenTitle("Lukluk ol foto");
         wizardStimulusScreen.setScreenLabel("Lukluk ol foto");
+        wizardStimulusScreen.setEnd_of_stimuli("Finis olgeta");
         wizardStimulusScreen.setStimulusTagArray(new String[]{"Pictures"});
         wizardStimulusScreen.setFeatureValuesArray(featureValuesArray);
         wizardStimulusScreen.setMaxStimuli(1000);
         wizardStimulusScreen.setRandomiseStimuli(true);
         wizardStimulusScreen.setFilePerStimulus(true);
-        wizardStimulusScreen.setEnd_of_stimuli(null);
         wizardStimulusScreen.setBackWizardScreen(new AbstractWizardScreen() {
             @Override
             public PresenterScreen getPresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
@@ -93,7 +93,7 @@ public class JenaFieldKit {
             }
 
         });
-        final PresenterScreen stimulusScreen = wizardStimulusScreen.getPresenterScreen(experiment, true, 8);
+        final PresenterScreen stimulusScreen = wizardStimulusScreen.getPresenterScreen(experiment, false, 8);
 //        final PresenterScreen vanuatuScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, stimulusScreen, new String[]{"vanuatu"}, featureValuesArray, true, 1000, true, 7, false);
 //        final PresenterScreen bowpedStimulusScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, vanuatuScreen, new String[]{"bowped"}, featureValuesArray, true, 1000, true, 9, false);
 //        final PresenterScreen bodiesStimulusScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, bowpedStimulusScreen, new String[]{"bodies"}, featureValuesArray, true, 1000, true, 10, false);
