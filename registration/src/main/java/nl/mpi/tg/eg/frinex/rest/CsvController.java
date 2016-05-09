@@ -29,6 +29,7 @@ import nl.mpi.tg.eg.frinex.model.ScreenData;
 import nl.mpi.tg.eg.frinex.model.TagData;
 import nl.mpi.tg.eg.frinex.model.TagPairData;
 import nl.mpi.tg.eg.frinex.model.TimeStamp;
+import nl.mpi.tg.eg.frinex.util.CsvExportException;
 import nl.mpi.tg.eg.frinex.util.ParticipantCsvExporter;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
@@ -67,6 +68,30 @@ public class CsvController {
             response.getOutputStream().write(outputStream.toByteArray());
             response.getOutputStream().flush();
         }
+    }
+
+    @RequestMapping(value = "/aggregate", method = RequestMethod.GET)
+    @ResponseBody
+    public void getAggregate(HttpServletResponse response) throws IOException, CsvExportException {
+        response.setContentType("application/text");
+        response.addHeader("Content-Disposition", "attachment; filename=\"aggregate.csv\"");
+        response.addHeader("Content-Transfer-Encoding", "text");
+        CSVPrinter printer = new CSVPrinter(
+                response.getWriter(),
+                CSVFormat.DEFAULT
+        );
+        final ParticipantCsvExporter participantCsvExporter = new ParticipantCsvExporter();
+        participantCsvExporter.appendAggregateCsvHeader(printer);
+        ArrayList<String> insertedUserIds = new ArrayList<>();
+        for (Participant participant : participantRepository.findByOrderBySubmitDateDesc()) {
+            if (!insertedUserIds.contains(participant.getUserId())) {
+                // here we are relying on the last user data submission being the most complete because that data is only added to in the experiment GUI
+                participantCsvExporter.appendAggregateCsvRow(printer, participant, tagRepository.findByUserIdOrderByTagDateAsc(participant.getUserId()));
+                insertedUserIds.add(participant.getUserId());
+            }
+        }
+        printer.close();
+        response.getOutputStream().flush();
     }
 
     private void addToZipArchive(final ZipOutputStream zipStream, String fileName, byte[] content) throws IOException {
@@ -115,7 +140,7 @@ public class CsvController {
         );
         printer.printRecord("UserId", "ScreenName", "ViewDate");
         for (ScreenData screenData : screenDataRepository.findAllDistinctRecords()) {
-            printer.printRecord(screenData.getUserId(), screenData.getViewDate(), screenData.getScreenName());
+            printer.printRecord(screenData.getUserId(), screenData.getScreenName(), screenData.getViewDate());
         }
         printer.close();
         return stringBuilder.toString().getBytes();
