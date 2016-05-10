@@ -26,8 +26,8 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import nl.mpi.tg.eg.experiment.client.model.colour.ColourData;
 import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponseGroup;
-import nl.ru.languageininteraction.synaesthesia.client.model.GroupScoreData;
-import nl.ru.languageininteraction.synaesthesia.client.model.ScoreData;
+import nl.mpi.tg.eg.experiment.client.model.colour.GroupScoreData;
+import nl.mpi.tg.eg.experiment.client.model.colour.ScoreData;
 
 /**
  * @since Oct 14, 2014 10:57:45 AM (creation date)
