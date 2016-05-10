@@ -183,7 +183,7 @@ public class LocalStorage {
                 userData.setMetadataValue(metadataField, getCleanStoredData(USER_RESULTS + userData.getUserId().toString() + "." + metadataField.getPostName()));
             }
         }
-        userData.updateBestScore(getCleanStoredInt(USER_RESULTS + userData.getUserId().toString() + "." + MAX_SCORE));
+        userData.updateBestScore(getCleanStoredDouble(USER_RESULTS + userData.getUserId().toString() + "." + MAX_SCORE));
         userData.setGamesPlayed(getCleanStoredInt(USER_RESULTS + userData.getUserId().toString() + "." + GAMES_PLAYED));
         return userData;
     }
@@ -192,6 +192,15 @@ public class LocalStorage {
         final String cleanStoredData = getCleanStoredData(keyString);
         try {
             return Integer.parseInt(cleanStoredData);
+        } catch (NumberFormatException exception) {
+            return 0;
+        }
+    }
+
+    private double getCleanStoredDouble(String keyString) {
+        final String cleanStoredData = getCleanStoredData(keyString);
+        try {
+            return Double.parseDouble(cleanStoredData);
         } catch (NumberFormatException exception) {
             return 0;
         }
@@ -216,7 +225,7 @@ public class LocalStorage {
                 dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + metadataField.getPostName(), userResults.getUserData().getMetadataValue(metadataField));
             }
         }
-        dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + MAX_SCORE, Integer.toString(userResults.getUserData().getBestScore()));
+        dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + MAX_SCORE, Double.toString(userResults.getUserData().getBestScore()));
         dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + GAMES_PLAYED, Integer.toString(userResults.getUserData().getGamesPlayed()));
         dataStore.setItem(LAST_USER_ID, userResults.getUserData().getUserId().toString());
     }
