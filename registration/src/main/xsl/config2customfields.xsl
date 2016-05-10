@@ -115,6 +115,7 @@
             <xsl:text>package nl.mpi.tg.eg.frinex.util;
                 
                 import java.io.IOException;
+                import java.text.SimpleDateFormat;
                 import java.util.List;
                 import nl.mpi.tg.eg.frinex.model.Participant;
                 import nl.mpi.tg.eg.frinex.model.TagData;
@@ -156,7 +157,9 @@
             <xsl:for-each select="experiment/stimuli/stimulus">
                 <xsl:text>"</xsl:text>                
                 <xsl:value-of select="@code" />                
-                <xsl:text>",</xsl:text>
+                <xsl:text>","</xsl:text>             
+                <xsl:value-of select="@code" /> 
+                <xsl:text>_datetime",</xsl:text>
                 <xsl:text>"</xsl:text>                
                 <xsl:value-of select="@code" />                
                 <xsl:text>_ms"</xsl:text>
@@ -167,9 +170,13 @@
             <xsl:text>);
                 }
                 public void appendAggregateCsvRow(CSVPrinter printer, Participant participant, List&lt;TagData&gt; participantTagData) throws IOException, CsvExportException {
+                SimpleDateFormat format = new SimpleDateFormat ("yyyy/MM/dd hh:mm:ss");
             </xsl:text>
             <xsl:for-each select="experiment/stimuli/stimulus">
                 <xsl:text>String </xsl:text>                
+                <xsl:value-of select="@code" />                
+                <xsl:text> = "";</xsl:text>
+                <xsl:text>String datetime_</xsl:text>                
                 <xsl:value-of select="@code" />                
                 <xsl:text> = "";</xsl:text>
                 <xsl:text>String ms_</xsl:text>                
@@ -179,11 +186,20 @@
             <xsl:text>
                 while (!participantTagData.isEmpty()) {
                 TagData tagData = participantTagData.remove(0);
-                if ("NextStimulus".equals(tagData.getEventTag())) {
-                if(!participantTagData.isEmpty()) {
+                if (!participantTagData.isEmpty() &amp;&amp; "NextStimulus".equals(tagData.getEventTag())) {
                 int startMs = tagData.getEventMs();
-                TagData tagData2 = participantTagData.remove(0);
-                if ("RatingButton".equals(tagData2.getEventTag())) {
+                TagData tagDataRating = null;
+                TagData tagDataCustom = null;
+                while (!participantTagData.isEmpty() &amp;&amp; !"NextStimulus".equals(participantTagData.get(0).getEventTag())) {
+                TagData tagDataDiscard = participantTagData.remove(0);
+                if ("RatingButton".equals(tagDataDiscard.getEventTag())) {
+                tagDataRating = tagDataDiscard;
+                }else if ("CustomTag".equals(tagDataDiscard.getEventTag())) {
+                tagDataCustom = tagDataDiscard;
+                }
+                }
+                TagData tagData2 = (tagDataRating!=null)?tagDataRating:tagDataCustom;
+                if(tagData2!=null) {
                 switch(tagData.getTagValue()){
             </xsl:text>
             <xsl:for-each select="experiment/stimuli/stimulus">
@@ -192,7 +208,10 @@
                 <xsl:text>":
                 </xsl:text>
                 <xsl:value-of select="@code" />
-                <xsl:text> += tagData.getTagValue() + " ";
+                <xsl:text> += tagData2.getTagValue() + " ";
+                    datetime_</xsl:text>
+                <xsl:value-of select="@code" />
+                <xsl:text> += format.format(tagData2.getTagDate()) + " ";
                     ms_</xsl:text>
                 <xsl:value-of select="@code" />
                 <xsl:text> += (tagData2.getEventMs()-startMs) + " ";
@@ -202,10 +221,6 @@
             <xsl:text>
                 default:
                 throw new CsvExportException("no case for: " + tagData.getEventTag() + " " + tagData.getTagValue() + " " + tagData.getUserId());
-                }               
-                
-                } else {
-                <!--throw new CsvExportException("error reading tag data for: " + tagData.getEventTag() + " " + tagData.getTagValue() + " " + tagData.getUserId());-->
                 }
                 }
                 }
@@ -217,6 +232,8 @@
                 <xsl:text>(),</xsl:text>
             </xsl:for-each>
             <xsl:for-each select="experiment/stimuli/stimulus">
+                <xsl:value-of select="@code" />                
+                <xsl:text>, datetime_</xsl:text>                
                 <xsl:value-of select="@code" />                
                 <xsl:text>, ms_</xsl:text>                
                 <xsl:value-of select="@code" />                
