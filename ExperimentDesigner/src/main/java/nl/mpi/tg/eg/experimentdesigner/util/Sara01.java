@@ -726,7 +726,6 @@ public class Sara01 {
                 + "<img src=\"static/introimage/introimage.jpg\"/><br/>",
                 "volgende [ spatiebalk ]"
         );
-        wizardData.addScreen(wizardTextScreen);
         //Information screen 
 
         //Agreement
@@ -743,12 +742,11 @@ public class Sara01 {
                 + "Als je besluit niet deel te nemen aan het experiment, kun je de pagina sluiten of naar een andere website gaan.<br/>"
                 + "<br/>"
                 + "", "Akkoord");
-        wizardData.addScreen(agreementScreen);
 //        wizardData.setAgreementText("agreementText");
 //        wizardData.setDisagreementScreenText("disagreementScreenText");
         //metadata
         final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
-        agreementScreen.setNextWizardScreen(wizardEditUserScreen);
+        agreementScreen.setNextWizardScreen(wizardTextScreen); // todo:
         wizardEditUserScreen.setScreenTitle("Edit User");
         wizardEditUserScreen.setScreenTag("Edit User");
         wizardEditUserScreen.setSaveButtonLabel("Save Details");
@@ -762,6 +760,8 @@ public class Sara01 {
             "age:Leeftijd:[0-9]+:Voer een getal.",
             "gender:Geslacht:|man|vrouw|anders:."
         });
+        wizardData.addScreen(agreementScreen);
+        wizardData.addScreen(wizardTextScreen);
         wizardData.addScreen(wizardEditUserScreen);
 //        wizardData.setFirstNameField(true);
 //        wizardData.setLastNameField(true);
