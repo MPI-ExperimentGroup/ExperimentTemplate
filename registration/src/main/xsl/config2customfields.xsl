@@ -184,23 +184,37 @@
                 <xsl:text> = "";</xsl:text>
             </xsl:for-each>
             <xsl:text>
-                while (!participantTagData.isEmpty()) {
-                TagData tagData = participantTagData.remove(0);
-                if (!participantTagData.isEmpty() &amp;&amp; "NextStimulus".equals(tagData.getEventTag())) {
-                int startMs = tagData.getEventMs();
-                TagData tagDataRating = null;
-                TagData tagDataCustom = null;
-                while (!participantTagData.isEmpty() &amp;&amp; !"NextStimulus".equals(participantTagData.get(0).getEventTag())) {
-                TagData tagDataDiscard = participantTagData.remove(0);
-                if ("RatingButton".equals(tagDataDiscard.getEventTag())) {
-                tagDataRating = tagDataDiscard;
-                }else if ("CustomTag".equals(tagDataDiscard.getEventTag())) {
-                tagDataCustom = tagDataDiscard;
-                }
-                }
-                TagData tagData2 = (tagDataRating!=null)?tagDataRating:tagDataCustom;
-                if(tagData2!=null) {
-                switch(tagData.getTagValue()){
+                TagData startData=null;
+                for (TagData currentData : participantTagData) {
+                if ("NextStimulus".equals(currentData.getEventTag())) {
+                <!--                if(startData!=null){
+                ms_</xsl:text>
+            <xsl:value-of select="@code" />
+            <xsl:text> += "no end event ";
+                throw new CsvExportException("no end tag for for: " + startData.getEventTag() + " " + startData.getTagValue() + " " + startData.getUserId() + " " + startData.getTagDate());
+                }-->
+                startData=currentData;
+                switch(startData.getTagValue()){
+            </xsl:text>
+            <xsl:for-each select="experiment/stimuli/stimulus">
+                <xsl:text>case "</xsl:text>                
+                <xsl:value-of select="@code" />                
+                <xsl:text>":
+                    datetime_</xsl:text>
+                <xsl:value-of select="@code" />
+                <xsl:text> += format.format(startData.getTagDate()) + " ";
+                    break;
+                </xsl:text>
+            </xsl:for-each>    
+            <xsl:text>
+                default:
+                throw new CsvExportException("no case for: " + startData.getEventTag() + " " + startData.getTagValue() + " " + startData.getUserId());
+                }}
+                if ("RatingButton".equals(currentData.getEventTag()) || "volgende [ spatiebalk ]".equals(currentData.getTagValue())) {
+                TagData endData=currentData;
+                String msString = (startData==null)?"no start event ":Integer.toString(endData.getEventMs()-startData.getEventMs());   
+                if(startData!=null) //throw new CsvExportException("no start for: " + endData.getEventTag() + " " + endData.getTagValue() + " " + endData.getUserId() + " " + endData.getTagDate());
+                switch(startData.getTagValue()){
             </xsl:text>
             <xsl:for-each select="experiment/stimuli/stimulus">
                 <xsl:text>case "</xsl:text>                
@@ -208,22 +222,19 @@
                 <xsl:text>":
                 </xsl:text>
                 <xsl:value-of select="@code" />
-                <xsl:text> += tagData2.getTagValue() + " ";
-                    datetime_</xsl:text>
-                <xsl:value-of select="@code" />
-                <xsl:text> += format.format(tagData2.getTagDate()) + " ";
+                <xsl:text> += endData.getTagValue() + " ";
                     ms_</xsl:text>
                 <xsl:value-of select="@code" />
-                <xsl:text> += (tagData2.getEventMs()-startMs) + " ";
+                <xsl:text> += msString + " ";
                     break;
                 </xsl:text>
             </xsl:for-each>    
             <xsl:text>
                 default:
-                throw new CsvExportException("no case for: " + tagData.getEventTag() + " " + tagData.getTagValue() + " " + tagData.getUserId());
+                throw new CsvExportException("no case for: " + endData.getEventTag() + " " + endData.getTagValue() + " " + endData.getUserId());
                 }
-                }
-                }
+                startData=null;
+                }                
                 }
                 printer.printRecord(participant.getUserId(),</xsl:text>
             <xsl:for-each select="experiment/metadata/field">
