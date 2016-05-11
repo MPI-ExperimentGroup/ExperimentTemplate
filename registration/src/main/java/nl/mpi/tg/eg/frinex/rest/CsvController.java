@@ -83,13 +83,13 @@ public class CsvController {
         final ParticipantCsvExporter participantCsvExporter = new ParticipantCsvExporter();
         participantCsvExporter.appendAggregateCsvHeader(printer);
         ArrayList<String> insertedUserIds = new ArrayList<>();
-        for (Participant participant : participantRepository.findByOrderBySubmitDateDesc()) {
-            if (!insertedUserIds.contains(participant.getUserId())) {
-                // here we are relying on the last user data submission being the most complete because that data is only added to in the experiment GUI
-                participantCsvExporter.appendAggregateCsvRow(printer, participant, tagRepository.findByUserIdOrderByTagDateAsc(participant.getUserId()));
-                insertedUserIds.add(participant.getUserId());
+            for (Participant participant : participantRepository.findByOrderBySubmitDateDesc()) {
+                if (!insertedUserIds.contains(participant.getUserId())) {
+                    // here we are relying on the last user data submission being the most complete because that data is only added to in the experiment GUI
+                    participantCsvExporter.appendAggregateCsvRow(printer, participant, tagRepository.findDistinctUserIdEventTagTagValueEventMsTageDateByUserIdOrderByTagDateAsc(participant.getUserId()));
+                    insertedUserIds.add(participant.getUserId());
+                }
             }
-        }
         printer.close();
         response.getOutputStream().flush();
     }

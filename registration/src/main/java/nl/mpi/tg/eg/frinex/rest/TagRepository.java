@@ -33,7 +33,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(collectionResourceRel = "tagevents", path = "tagevents")
 public interface TagRepository extends PagingAndSortingRepository<TagData, Long> {
 
-    @Override
+    @Override 
     public Page<TagData> findAll(Pageable pageable);
 
     @Query("select distinct new TagData(userId, eventTag, tagValue, eventMs, tagDate) from TagData order by tagDate asc")
@@ -41,7 +41,8 @@ public interface TagRepository extends PagingAndSortingRepository<TagData, Long>
 
     TagData findById(@Param("id") long id);
 
-    List<TagData> findByUserIdOrderByTagDateAsc(@Param("userId") String userId);
+    @Query("select distinct new TagData(userId, eventTag, tagValue, eventMs, tagDate) from TagData where userId = :userId order by tagDate asc, eventTag desc")
+    List<TagData> findDistinctUserIdEventTagTagValueEventMsTageDateByUserIdOrderByTagDateAsc(@Param("userId") String userId);
 
     List<TagData> findByUserIdAndEventTagOrderByTagDateAsc(@Param("userId") String userId, @Param("eventTag") String eventTag);
 
