@@ -31,9 +31,9 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
 public class WizardTextScreen extends AbstractWizardScreen {
 
     public WizardTextScreen(final String screenName, String screenText, final String nextButtonLabel) {
+        super(screenName, screenName, screenName);
         this.nextButton = nextButtonLabel;
         this.screenText = screenText;
-        this.screenTitle = screenName;
 
     }
 
@@ -50,3 +50,6 @@ public class WizardTextScreen extends AbstractWizardScreen {
         return presenterScreen;
     }
 }
+//actionButtonFeature.addFeatureAttributes(FeatureAttribute.target, nextWizardScreen.getScreenTag());
+//        actionButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
+//        presenterScreen.getPresenterFeatureList().add(actionButtonFeature);
