@@ -51,7 +51,24 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
     private WizardScreen alternateNextScreen;
     private String alternateButtonLabel;
     private boolean sendData;
-    private String on_Error_Text="Could not contact the server, please check your internet connection and try again.";
+    private String on_Error_Text = "Could not contact the server, please check your internet connection and try again.";
+
+    public WizardEditUserScreen() {
+
+    }
+
+    public WizardEditUserScreen(final String screenTitle, final String screenTag, WizardData wizardData, String dispalyText, String[] customFields, final String saveButtonLabel, final String postText, final AbstractWizardScreen alternateNextScreen, final String alternateButtonLabel, final boolean sendData, final String on_Error_Text) {
+        this.screenTitle = screenTitle;
+        this.screenTag = screenTag;
+        this.screenText = dispalyText;
+        this.customFields = customFields;
+        this.saveButtonLabel = saveButtonLabel;
+        this.postText = postText;
+        this.alternateButtonLabel = alternateButtonLabel;
+        this.sendData = sendData;
+        this.on_Error_Text = on_Error_Text;
+        this.alternateNextScreen = alternateNextScreen;
+    }
 
     public String getSaveButtonLabel() {
         return saveButtonLabel;
@@ -260,7 +277,7 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
         if (!getMandatoryCheckBox().isEmpty()) {
             insertMetadataField(experiment, new Metadata("mandatoryCheckBox", getMandatoryCheckBox(), "true", "Please agree to continue.", false, null), presenterScreen);
         }
-        
+
 //        if (customFields != null) {
 //            for (String fieldString : customFields) {
 //                insertMetadataByString(fieldString, experiment, presenterScreen);
