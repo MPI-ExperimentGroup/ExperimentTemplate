@@ -30,7 +30,8 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
  */
 public class WizardAgreementScreen extends AbstractWizardScreen {
 
-    public WizardAgreementScreen(String screenText, final String agreementButtonLabel) {
+    public WizardAgreementScreen(String screenTitle, String screenText, final String agreementButtonLabel) {
+        super(screenTitle, screenTitle, screenTitle);
         this.nextButton = agreementButtonLabel;
         this.screenText = screenText;
 
@@ -38,8 +39,6 @@ public class WizardAgreementScreen extends AbstractWizardScreen {
 
     @Override
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        setScreenTitle("Agreement");
-        setScreenTag("Agreement");
         presenterScreen.setPresenterType(PresenterType.metadata);
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, screenText));
