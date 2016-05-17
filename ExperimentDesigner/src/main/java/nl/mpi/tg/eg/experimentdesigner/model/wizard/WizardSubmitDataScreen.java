@@ -34,6 +34,7 @@ public class WizardSubmitDataScreen extends AbstractWizardScreen {
     private String retryButtonLabel;
 
     public WizardSubmitDataScreen() {
+        super("SubmitData", "SubmitData", "SubmitData");
     }
 
     public WizardSubmitDataScreen(final String screenTitle, final String could_not_contact_the_server_please_check, final String retryButtonLabel) {
