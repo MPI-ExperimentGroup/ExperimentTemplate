@@ -88,28 +88,6 @@ public class WizardController {
         PresenterScreen stimulusScreen = null;
         PresenterScreen completionScreen = null;
         PresenterScreen autoMenu = null;
-//        PresenterScreen debugScreen = addDebugScreen(experiment, null, 10);
-//    private String agreementScreenText = "";
-//    private String disagreementScreenText = "";
-//        if (wizardData.isAgreementScreen()) {
-//            agreementScreen = addAgreementScreen(experiment, null, "InformationScreen", 2, wizardData.getAgreementScreenText(), "Akkoord", wizardData.isObfuscateScreenNames());
-//            if (userSelectMenu != null) {
-//                userSelectMenu.setNextPresenter(agreementScreen);
-//            }
-//        }
-//        if (wizardData.getInformationScreenText() != null) {
-//            informationScreen = addTextScreen(experiment, null, "InformationScreen", null, 3, wizardData.getInformationScreenText(), "volgende [ spatiebalk ]", wizardData.isObfuscateScreenNames());
-//            if (agreementScreen != null) {
-//                agreementScreen.setNextPresenter(informationScreen);
-//            }
-//        }
-//        if (wizardData.isMetadataScreen()) {
-////            addMetadata(experiment, wizardData);
-//            editUserScreen = addEditUserScreen(experiment, null, "Edit User", "Edit User", null, 4, wizardData, null, null, "Save Details", null, null, null, true, "Could not contact the server, please check your internet connection and try again.", wizardData.isObfuscateScreenNames());
-//            if (informationScreen != null) {
-//                informationScreen.setNextPresenter(editUserScreen);
-//            }
-//        }
         int currentDisplaySequence = 4;
         PresenterScreen previousScreen = informationScreen;
         for (WizardScreen wizardScreen : wizardData.getWizardScreens()) {
@@ -119,18 +97,6 @@ public class WizardController {
                 previousScreen = currentScreen;
             }
         }
-//    private boolean practiceScreen = false;
-//    private String practiceStimuliPath = "";
-//    private boolean stimuliScreen = false;
-        if (wizardData.isMenuScreen()) {
-            autoMenu = addAutoMenu(experiment, 10, wizardData.isObfuscateScreenNames());
-            if (completionScreen != null) {
-                completionScreen.setNextPresenter(autoMenu);
-            }
-        }
-//    private String stimuliPath = "";
-//    private boolean completionScreen = false;
-//    private String completionText = "";
         return experiment;
     }
 
@@ -145,21 +111,5 @@ public class WizardController {
     public void addMetadata(Experiment experiment) {
         final Metadata metadata = new Metadata("workerId", "Worker ID", ".'{'3,'}'", "Please enter at least three letters.", false, null);
         experiment.getMetadata().add(metadata);
-    }
-
-    public PresenterScreen addAutoMenu(final Experiment experiment, long displayOrder, boolean obfuscateScreenNames) {
-        final PresenterScreen presenterScreen = new PresenterScreen((obfuscateScreenNames) ? experiment.getAppNameDisplay() + " " + displayOrder : "Auto Menu", "Menu", null, "AutoMenu", null, PresenterType.menu, displayOrder);
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMenuItems, null));
-        experiment.getPresenterScreen().add(presenterScreen);
-        return presenterScreen;
-    }
-
-    public PresenterScreen addDebugScreen(final Experiment experiment, PresenterScreen autoMenuPresenter, long displayOrder, boolean obfuscateScreenNames) {
-        final PresenterScreen presenterScreen = new PresenterScreen((obfuscateScreenNames) ? experiment.getAppNameDisplay() + " " + displayOrder : "Debug Screen", "Debug Screen", autoMenuPresenter, "DebugScreen", null, PresenterType.debug, displayOrder);
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.versionData, null));
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.eraseLocalStorageButton, null));
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.localStorageData, null));
-        experiment.getPresenterScreen().add(presenterScreen);
-        return presenterScreen;
     }
 }
