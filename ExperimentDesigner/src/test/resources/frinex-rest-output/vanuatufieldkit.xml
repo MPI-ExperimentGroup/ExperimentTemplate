@@ -3,11 +3,11 @@
     <metadata>
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Nem blong man/woman we i toktok"/>
     </metadata>
-    <presenter displayOrder="1" menuLabel="Welkam" type="menu" self="Welcome" title="Welkam">
+    <presenter displayOrder="1" menuLabel="Welkam" type="menu" self="Welkam" title="Welkam">
         <menuItem featureText="Instruksen" target="Instructions"/>
         <menuItem featureText="Stat - Go long program nao" target="Start"/>
     </presenter>
-    <presenter back="Welcome" displayOrder="2" menuLabel="Start" next="Edit_User" type="metadata" self="Start" title="Start">
+    <presenter back="Welkam" displayOrder="2" menuLabel="Start" next="Edit_User" type="metadata" self="Start" title="Start">
         <existingUserCheck>
             <multipleUsers>
                 <plainText featureText="Makem wan niufala rikoding"/>
@@ -21,11 +21,11 @@
             </singleUser>
         </existingUserCheck>
     </presenter>
-    <presenter back="Welcome" displayOrder="3" menuLabel="Instructions" type="text" self="Instructions" title="Instruksen">
-        <plainText featureText="Wetem aplikasen ia yu save makem rikoding blong lanwis blong yu, bambai ol pipol blong Vanuatu mo ol pipol blong evri ples long world save harem lanwis blong yu. I gat fulap foto blong difren ples long Malakula wea i stap insaed long aplikasen ia. Bai yu showem ol foto ia long wan olfala woman o wan olfala man blong vilej blong yu mo askem long hem se i tokabaot ol foto ia long lanwis blong hem. Yu save transletem wanem i talem, tu."/>
-        <targetButton featureText="Go long program nao" target="Start"/>
+    <presenter back="Welkam" displayOrder="3" menuLabel="Instruksen" type="text" self="Instruksen" title="Instruksen">
+        <htmlText featureText="Wetem aplikasen ia yu save makem rikoding blong lanwis blong yu, bambai ol pipol blong Vanuatu mo ol pipol blong evri ples long world save harem lanwis blong yu. I gat fulap foto blong difren ples long Malakula wea i stap insaed long aplikasen ia. Bai yu showem ol foto ia long wan olfala woman o wan olfala man blong vilej blong yu mo askem long hem se i tokabaot ol foto ia long lanwis blong hem. Yu save transletem wanem i talem, tu."/>
+        <targetButton featureText="Go long program nao" hotKey="SPACE" target="Start"/>
     </presenter>
-    <presenter back="Welcome" displayOrder="4" menuLabel="Infomesen blong man/woman we i toktok" next="Konsen" type="metadata" self="Edit_User" title="Infomesen blong man/woman we i toktok">
+    <presenter back="Welkam" displayOrder="4" menuLabel="Infomesen blong man/woman we i toktok" next="Konsen" type="metadata" self="Edit_User" title="Infomesen blong man/woman we i toktok">
         <metadataField fieldName="workerId"/>
         <saveMetadataButton featureText="Savem infomesen" sendData="false">
             <onError featureText="Could not contact the server, please check your internet connection and try again."/>
@@ -34,16 +34,14 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Welcome" displayOrder="5" menuLabel="Select User" next="Konsen" type="metadata" self="SelectUser" title="Select User">
+    <presenter back="Welkam" displayOrder="5" menuLabel="Select User" next="Konsen" type="metadata" self="SelectUser" title="Select User">
         <selectUserMenu/>
     </presenter>
-    <presenter back="Welcome" displayOrder="6" menuLabel="Konsen" next="MetadataScreen" type="metadata" self="Konsen" title="Konsen">
+    <presenter back="Welkam" displayOrder="6" menuLabel="Konsen" next="MetadataScreen" type="metadata" self="Konsen" title="Konsen">
         <htmlText featureText="(Blong man/woman we i makem rikoding)&lt;br&gt;&lt;br&gt;Mi undastan se wetem aplikasen ia mi makem wan rikoding; mo mi undastan se rikoding ia bai i stap long intanet bambai ol man mo ol woman long evri kantri i save harem rikoding ia wea mi stap makem nao.&lt;br&gt;&lt;br&gt;"/>
-        <actionButton featureText="Prestem ples hea sapos yu agri." hotKey="SPACE">
-            <autoNextPresenter/>
-        </actionButton>
+        <targetButton featureText="Prestem ples hea sapos yu agri." target="MetadataScreen"/>
     </presenter>
-    <presenter back="Welcome" displayOrder="7" menuLabel="Metadata" next="PicturesScreen" type="stimulus" self="MetadataScreen" title="Metadata">
+    <presenter back="Welkam" displayOrder="7" menuLabel="Metadata" next="PicturesScreen" type="stimulus" self="MetadataScreen" title="Metadata">
         <loadAllStimulus eventTag="Metadata" randomise="false">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="Metadata" wavFormat="true" filePerStimulus="false"/>
@@ -65,7 +63,7 @@
             </stimuli>
         </loadAllStimulus>
     </presenter>
-    <presenter back="Welcome" displayOrder="8" menuLabel="Lukluk ol foto" type="stimulus" self="PicturesScreen" title="Lukluk ol foto">
+    <presenter back="Welkam" displayOrder="8" menuLabel="Lukluk ol foto" type="stimulus" self="PicturesScreen" title="Lukluk ol foto">
         <loadSdCardStimulus eventTag="Lukluk ol foto" randomise="true" maxStimuli="1000">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="Lukluk ol foto" wavFormat="true" filePerStimulus="true"/>
@@ -139,7 +137,7 @@
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="Finis olgeta"/>
-                <targetButton featureText="Welcome" target="Welcome"/>
+                <targetButton featureText="Welkam" target="Welkam"/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -153,9 +151,6 @@
         <localStorageData/>
     </presenter>
     <stimuli>
-        <stimulus baseFilePath="Pictures" code="Pictures" image="Pictures" label="Pictures" pauseMs="0">
-            <tag>Pictures</tag>
-        </stimulus>
         <stimulus code="I_stap_rikod_nao._Man_o_woman_we_i_toktok_bai_i_talem_nem_blong_hem." label="I stap rikod nao. Man o woman we i toktok bai i talem nem blong hem." pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
@@ -170,6 +165,9 @@
         </stimulus>
         <stimulus code="Bai_i_talem_wanem_yea_i_bon." label="Bai i talem wanem yea i bon." pauseMs="0">
             <tag>metadata</tag>
+        </stimulus>
+        <stimulus baseFilePath="Pictures" code="Pictures" image="Pictures" label="Pictures" pauseMs="0">
+            <tag>Pictures</tag>
         </stimulus>
     </stimuli>
 </experiment>
