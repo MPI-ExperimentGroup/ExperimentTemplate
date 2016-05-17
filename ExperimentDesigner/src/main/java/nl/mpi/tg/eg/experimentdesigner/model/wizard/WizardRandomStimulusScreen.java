@@ -51,40 +51,44 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
     private String buttonLabelEventTag;
 
     public WizardRandomStimulusScreen() {
+        super("RandomStimulus", "RandomStimulus", "RandomStimulus");
     }
 
     public WizardRandomStimulusScreen(String screenName, boolean centreScreen, String[] screenTextArray, String[] randomStimuliTags, int maxStimuli, final boolean randomiseStimuli, String stimulusCodeMatch, int stimulusDelay, int codeStimulusDelay, String codeFormat, String responseOptions, String responseOptionsLabelLeft, String responseOptionsLabelRight, final String spacebar) {
+        super(screenName, screenName, screenName);
         this.screenTitle = screenName;
         this.centreScreen = centreScreen;
         this.stimuliPath = "";
-        this.stimuliSet = null;
-        this.stimuliRandomTags = null;
-        this.stimulusCodeMatch = null;
+        this.stimuliSet = screenTextArray;
+        this.stimuliRandomTags = randomStimuliTags;
+        this.stimulusCodeMatch = stimulusCodeMatch;
         this.stimulusCodeMsDelay = 0;
         this.stimulusMsDelay = 0;
-        this.stimulusCodeFormat = null;
-        this.stimuliCount = 1;
-        this.stimulusResponseLabelLeft = null;
-        this.stimulusResponseLabelRight = null;
-        this.stimulusResponseOptions = null;
-        this.randomiseStimuli = false;
+        this.stimulusCodeFormat = codeFormat;
+        this.stimuliCount = maxStimuli;
+        this.stimulusResponseLabelLeft = responseOptionsLabelLeft;
+        this.stimulusResponseLabelRight = responseOptionsLabelRight;
+        this.stimulusResponseOptions = responseOptions;
+        this.randomiseStimuli = randomiseStimuli;
+        if (spacebar==null)throw new UnsupportedOperationException("button text cannot be null");
         this.buttonLabelEventTag = spacebar;
     }
 
     public WizardRandomStimulusScreen(String screenName, String[] screenTextArray, int maxStimuli, final boolean randomiseStimuli, String responseOptions, String responseOptionsLabelLeft, String responseOptionsLabelRight) {
+        super(screenName, screenName, screenName);
         this.screenTitle = screenName;
         this.stimuliPath = "";
-        this.stimuliSet = null;
+        this.stimuliSet = screenTextArray;
         this.stimuliRandomTags = null;
         this.stimulusCodeMatch = null;
         this.stimulusCodeMsDelay = 0;
         this.stimulusMsDelay = 0;
         this.stimulusCodeFormat = null;
-        this.stimuliCount = 1;
-        this.stimulusResponseLabelLeft = null;
-        this.stimulusResponseLabelRight = null;
-        this.stimulusResponseOptions = null;
-        this.randomiseStimuli = false;
+        this.stimuliCount = maxStimuli;
+        this.stimulusResponseLabelLeft = responseOptionsLabelLeft;
+        this.stimulusResponseLabelRight = responseOptionsLabelRight;
+        this.stimulusResponseOptions = responseOptions;
+        this.randomiseStimuli = randomiseStimuli;
     }
 
     public String getStimuliPath() {
@@ -183,11 +187,11 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         this.randomiseStimuli = randomiseStimuli;
     }
 
-    public String getButtonLabelEventTag() {
+    public String getButtonLabel() {
         return buttonLabelEventTag;
     }
 
-    public void setButtonLabelEventTag(String buttonLabelEventTag) {
+    public void setButtonLabel(String buttonLabelEventTag) {
         this.buttonLabelEventTag = buttonLabelEventTag;
     }
     private static final String BASE_FILE_REGEX = "\\.[a-zA-Z]+$";
@@ -196,30 +200,33 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         final List<Stimulus> stimuliList = experiment.getStimuli();
         final Pattern stimulusCodePattern = (stimulusCodeMatch != null) ? Pattern.compile(stimulusCodeMatch) : null;
-        for (String screenText : stimuliSet) {
-            final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{screenTitle}));
-            final Stimulus stimulus;
-            if (stimulusCodePattern != null) {
-                System.out.println("stimulusCodeMatch:" + stimulusCodeMatch);
-                Matcher matcher = stimulusCodePattern.matcher(screenText);
-                final String codeString = (matcher.find()) ? matcher.group(1) : null;
-                System.out.println("codeString: " + codeString);
-                final String baseFileName = screenText.replaceAll(BASE_FILE_REGEX, "");
-                tagSet.addAll(Arrays.asList(baseFileName.split("/")));
-                stimulus = new Stimulus(baseFileName, null, null, null, screenText, null, codeString, 0, tagSet);
-            } else if (screenText.endsWith(".png")) {
-                tagSet.addAll(Arrays.asList(screenText.split("/")));
-                stimulus = new Stimulus(screenText.replace(".png", ""), null, null, null, screenText, null, screenText.replace(".png", ""), 0, tagSet);
-            } else {
-                final String[] splitScreenText = screenText.split(":", 2);
-                tagSet.addAll(Arrays.asList(splitScreenText[0].split("/")));
-                stimulus = new Stimulus(null, null, null, null, null, splitScreenText[1].replace("\n", "<br/>"), splitScreenText[0].replace(" ", "_"), 0, tagSet);
+        if (stimuliSet != null) {
+            for (String screenText : stimuliSet) {
+                final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{screenTitle}));
+                final Stimulus stimulus;
+                if (stimulusCodePattern != null) {
+                    System.out.println("stimulusCodeMatch:" + stimulusCodeMatch);
+                    Matcher matcher = stimulusCodePattern.matcher(screenText);
+                    final String codeString = (matcher.find()) ? matcher.group(1) : null;
+                    System.out.println("codeString: " + codeString);
+                    final String baseFileName = screenText.replaceAll(BASE_FILE_REGEX, "");
+                    tagSet.addAll(Arrays.asList(baseFileName.split("/")));
+                    stimulus = new Stimulus(baseFileName, null, null, null, screenText, null, codeString, 0, tagSet);
+                } else if (screenText.endsWith(".png")) {
+                    tagSet.addAll(Arrays.asList(screenText.split("/")));
+                    stimulus = new Stimulus(screenText.replace(".png", ""), null, null, null, screenText, null, screenText.replace(".png", ""), 0, tagSet);
+                } else {
+                    final String[] splitScreenText = screenText.split(":", 2);
+                    tagSet.addAll(Arrays.asList(splitScreenText[0].split("/")));
+                    stimulus = new Stimulus(null, null, null, null, null, splitScreenText[1].replace("\n", "<br/>"), splitScreenText[0].replace(" ", "_"), 0, tagSet);
+                }
+                stimuliList.add(stimulus);
             }
-            stimuliList.add(stimulus);
         }
 
 //        final PresenterScreen presenterScreen = new PresenterScreen((obfuscateScreenNames) ? experiment.getAppNameDisplay() + " " + displayOrder : screenTitle, screenTitle, backPresenter, screenName, null, PresenterType.stimulus, displayOrder);
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
+        presenterScreen.setPresenterType(PresenterType.stimulus);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
         if (centreScreen) {
             presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
