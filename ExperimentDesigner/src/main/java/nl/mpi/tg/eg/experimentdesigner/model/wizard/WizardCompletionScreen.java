@@ -38,6 +38,7 @@ public class WizardCompletionScreen extends AbstractWizardScreen {
     private String retryButtonLabel;
 
     public WizardCompletionScreen() {
+        super("Completion", "Completion", "Completion");
     }
 
     public WizardCompletionScreen(String completedText1, final boolean allowUserRestart, String completedText2, String eraseUsersDataButtonlabel, final String screenTitle, final String could_not_contact_the_server_please_check, final String retryButtonLabel) {
