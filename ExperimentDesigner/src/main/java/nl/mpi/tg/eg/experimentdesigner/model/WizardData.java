@@ -30,19 +30,7 @@ public class WizardData {
     private String appName = "";
     private boolean showMenuBar = true;
     private boolean obfuscateScreenNames = false;
-    private boolean practiceStimuliScreen = false;
-    private String practiceStimuliPath = "";
-    private String[] practiceStimuliSet = null;
-    private String[] practiceStimuliRandomTags = null;
-    private String practiceStimulusCodeMatch = null;
-    private int practiceStimulusCodeMsDelay = 0;
-    private int practiceStimulusMsDelay = 0;
-    private String practiceStimulusCodeFormat = null;
-    private int practiceStimuliCount = 1;
-    private String practiceStimulusResponseLabelLeft = null;
-    private String practiceStimulusResponseLabelRight = null;
-    private String practiceStimulusResponseOptions = null;
-
+    
     private boolean stimuliScreen = false;
     private String stimuliPath = "";
     private String[] stimuliSet = null;
@@ -60,7 +48,6 @@ public class WizardData {
     private String userRestartButtonText = null;
     private String completionText1 = "";
     private String completionText2 = "";
-    private boolean menuScreen = false;
     private int textFontSize = 17;
 
     private final List<WizardScreen> wizardScreens = new ArrayList<>();
@@ -98,102 +85,6 @@ public class WizardData {
 
     public void setObfuscateScreenNames(boolean obfuscateScreenNames) {
         this.obfuscateScreenNames = obfuscateScreenNames;
-    }
-
-    public boolean isPracticeStimuliScreen() {
-        return practiceStimuliScreen;
-    }
-
-    public void setPracticeStimuliScreen(boolean practiceStimuliScreen) {
-        this.practiceStimuliScreen = practiceStimuliScreen;
-    }
-
-    public String getPracticeStimuliPath() {
-        return practiceStimuliPath;
-    }
-
-    public void setPracticeStimuliPath(String practiceStimuliPath) {
-        this.practiceStimuliPath = practiceStimuliPath;
-    }
-
-    public String[] getPracticeStimuliSet() {
-        return practiceStimuliSet;
-    }
-
-    public void setPracticeStimuliSet(String[] practiceStimuliSet) {
-        this.practiceStimuliSet = practiceStimuliSet;
-    }
-
-    public String[] getPracticeStimuliRandomTags() {
-        return practiceStimuliRandomTags;
-    }
-
-    public void setPracticeStimuliRandomTags(String[] practiceStimuliRandomTags) {
-        this.practiceStimuliRandomTags = practiceStimuliRandomTags;
-    }
-
-    public String getPracticeStimulusCodeMatch() {
-        return practiceStimulusCodeMatch;
-    }
-
-    public void setPracticeStimulusCodeMatch(String practiceStimulusCodeMatch) {
-        this.practiceStimulusCodeMatch = practiceStimulusCodeMatch;
-    }
-
-    public int getPracticeStimulusCodeMsDelay() {
-        return practiceStimulusCodeMsDelay;
-    }
-
-    public void setPracticeStimulusCodeMsDelay(int practiceStimulusCodeMsDelay) {
-        this.practiceStimulusCodeMsDelay = practiceStimulusCodeMsDelay;
-    }
-
-    public int getPracticeStimulusMsDelay() {
-        return practiceStimulusMsDelay;
-    }
-
-    public void setPracticeStimulusMsDelay(int practiceStimulusMsDelay) {
-        this.practiceStimulusMsDelay = practiceStimulusMsDelay;
-    }
-
-    public String getPracticeStimulusCodeFormat() {
-        return practiceStimulusCodeFormat;
-    }
-
-    public void setPracticeStimulusCodeFormat(String practiceStimulusCodeFormat) {
-        this.practiceStimulusCodeFormat = practiceStimulusCodeFormat;
-    }
-
-    public int getPracticeStimuliCount() {
-        return practiceStimuliCount;
-    }
-
-    public void setPracticeStimuliCount(int practiceStimuliCount) {
-        this.practiceStimuliCount = practiceStimuliCount;
-    }
-
-    public String getPracticeStimulusResponseLabelLeft() {
-        return practiceStimulusResponseLabelLeft;
-    }
-
-    public void setPracticeStimulusResponseLabelLeft(String practiceStimulusResponseLabelLeft) {
-        this.practiceStimulusResponseLabelLeft = practiceStimulusResponseLabelLeft;
-    }
-
-    public String getPracticeStimulusResponseLabelRight() {
-        return practiceStimulusResponseLabelRight;
-    }
-
-    public void setPracticeStimulusResponseLabelRight(String practiceStimulusResponseLabelRight) {
-        this.practiceStimulusResponseLabelRight = practiceStimulusResponseLabelRight;
-    }
-
-    public String getPracticeStimulusResponseOptions() {
-        return practiceStimulusResponseOptions;
-    }
-
-    public void setPracticeStimulusResponseOptions(String practiceStimulusResponseOptions) {
-        this.practiceStimulusResponseOptions = practiceStimulusResponseOptions;
     }
 
     public boolean isStimuliScreen() {
@@ -290,14 +181,6 @@ public class WizardData {
 
     public void setStimulusCodeFormat(String stimulusCodeFormat) {
         this.stimulusCodeFormat = stimulusCodeFormat;
-    }
-
-    public boolean isMenuScreen() {
-        return menuScreen;
-    }
-
-    public void setMenuScreen(boolean menuScreen) {
-        this.menuScreen = menuScreen;
     }
 
     public void addScreen(final WizardScreen wizardScreen) {
