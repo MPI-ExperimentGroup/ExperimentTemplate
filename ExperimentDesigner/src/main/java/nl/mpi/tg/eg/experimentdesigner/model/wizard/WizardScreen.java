@@ -75,6 +75,8 @@ public interface WizardScreen {
 
     public String getScreenText();
 
+    public String getMenuLabel();
+
     public void setScreenText(String screenText);
 
     public String getScreenTag();
