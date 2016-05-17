@@ -39,6 +39,7 @@ public class WizardAudioRecorderMetadataScreen extends AbstractWizardScreen {
     String end_of_stimuli;
 
     public WizardAudioRecorderMetadataScreen(String[] metadataStrings, String next_button, String end_of_stimuli) {
+        super("Metadata", "Metadata", "MetadataScreen");
         this.metadataStrings = metadataStrings;
         this.next_button = next_button;
         this.end_of_stimuli = end_of_stimuli;
@@ -46,8 +47,6 @@ public class WizardAudioRecorderMetadataScreen extends AbstractWizardScreen {
 
     @Override
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        setScreenTitle("Metadata");
-        setScreenTag("MetadataScreen");
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
         presenterScreen.setPresenterType(PresenterType.stimulus);
         //    Metadata is collected in the spoken form (audio recording) with screen prompts for each item in metadataStrings:
