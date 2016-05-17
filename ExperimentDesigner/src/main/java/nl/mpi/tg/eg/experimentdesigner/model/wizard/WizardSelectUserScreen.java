@@ -29,10 +29,12 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
  */
 public class WizardSelectUserScreen extends AbstractWizardScreen {
 
+    public WizardSelectUserScreen() {
+        super("Select User", "Select User", "SelectUser");
+    }
+
     @Override
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        setScreenTitle("Select User");
-        setScreenTag("SelectUser");
         presenterScreen.setPresenterType(PresenterType.metadata);
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
         final PresenterFeature selectUserFeature = new PresenterFeature(FeatureType.selectUserMenu, null);
