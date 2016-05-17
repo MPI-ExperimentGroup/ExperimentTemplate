@@ -34,10 +34,11 @@ public class WizardWelcomeScreen extends AbstractWizardScreen {
     String go_directly_to_program;
 
     public WizardWelcomeScreen() {
+        super("Welcome", "Welcome", "Welcome");
     }
 
     public WizardWelcomeScreen(final String screenTitle, final String instructions_button, final String go_directly_to_program) {
-        this.screenTitle = screenTitle;
+        super(screenTitle, screenTitle, screenTitle);
         this.instructions_button = instructions_button;
         this.go_directly_to_program = go_directly_to_program;
     }
@@ -60,9 +61,8 @@ public class WizardWelcomeScreen extends AbstractWizardScreen {
 
     @Override
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        setScreenTag("Welcome");
-        presenterScreen.setPresenterType(PresenterType.menu);
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
+        presenterScreen.setPresenterType(PresenterType.menu);
         final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.menuItem, instructions_button);
         presenterFeature.addFeatureAttributes(FeatureAttribute.target, "Instructions");
         presenterScreen.getPresenterFeatureList().add(presenterFeature);
