@@ -32,6 +32,10 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
 
     String audioPath;
 
+    public WizardAudioTestScreen() {
+        super("AudioTest", "AudioTest", "AudioTest");
+    }
+
     public String getAudioPath() {
         return audioPath;
     }
@@ -57,7 +61,6 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
 //    }
     @Override
     public PresenterScreen populatePresenterScreen(final Experiment experiment, final boolean obfuscateScreenNames, final long displayOrder) {
-        setScreenTitle("AudioTest");
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
 //        populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
         presenterScreen.setPresenterType(PresenterType.stimulus);
