@@ -43,6 +43,12 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
     boolean filePerStimulus;
     String end_of_stimuli;
 
+    private WizardScreen endOfStimulisWizardScreen = null;
+
+    public WizardStimulusScreen() {
+        super("Stimulus", "Stimulus", "Stimulus");
+    }
+
     public String getScreenLabel() {
         return screenLabel;
     }
@@ -99,6 +105,14 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
         this.end_of_stimuli = end_of_stimuli;
     }
 
+    public WizardScreen getEndOfStimulisWizardScreen() {
+        return endOfStimulisWizardScreen;
+    }
+
+    public void setEndOfStimulisWizardScreen(WizardScreen endOfStimulisWizardScreen) {
+        this.endOfStimulisWizardScreen = endOfStimulisWizardScreen;
+    }
+
     @Override
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         String screenName = "";
@@ -107,18 +121,10 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
             stimuliList.add(new Stimulus(stimulusTag, null, null, null, stimulusTag, stimulusTag, stimulusTag, 0, new HashSet<>(Arrays.asList(new String[]{stimulusTag}))));
             screenName += stimulusTag;
         }
-        presenterScreen.setTitle((obfuscateScreenNames) ? experiment.getAppNameDisplay() + " " + displayOrder : screenLabel);
         presenterScreen.setMenuLabel(screenTitle);
         setScreenTag(screenName + "Screen");
-        presenterScreen.setSelfPresenterTag(getScreenTag().replaceAll("[^A-Za-z0-9]", "_"));
+        super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
         presenterScreen.setPresenterType(PresenterType.stimulus);
-        if (backWizardScreen != null) {
-            presenterScreen.setBackPresenter(backWizardScreen.getPresenterScreen());
-        }
-//        if (nextWizardScreen != null) {
-//            presenterScreen.setNextPresenter(nextWizardScreen.getPresenterScreen());
-//        }
-        presenterScreen.setDisplayOrder(displayOrder);
 
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
 //        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "This screen will show " + maxStimuli + " stimuli in random order from the directories:"));
@@ -153,8 +159,8 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
         loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
         endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, end_of_stimuli));
-        final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.targetButton, nextWizardScreen.getScreenTag());
-        menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, nextWizardScreen.getScreenTag());
+        final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.targetButton, endOfStimulisWizardScreen.getScreenTag());
+        menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, endOfStimulisWizardScreen.getScreenTag());
         endOfStimulusFeature.getPresenterFeatureList().add(menuButtonFeature);
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
         experiment.getPresenterScreen().add(presenterScreen);
