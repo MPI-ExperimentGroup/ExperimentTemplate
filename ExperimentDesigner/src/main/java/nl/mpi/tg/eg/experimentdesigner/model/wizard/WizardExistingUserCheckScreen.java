@@ -36,6 +36,7 @@ public class WizardExistingUserCheckScreen extends AbstractWizardScreen {
     private String resumeoldText;
 
     public WizardExistingUserCheckScreen() {
+        super("ExistingUserCheck", "ExistingUserCheck", "ExistingUserCheck");
     }
 
     public WizardExistingUserCheckScreen(final String screenTitle, final String new_Interview, final String resume_Interview, final String startNewText, final String resumeoldText) {
