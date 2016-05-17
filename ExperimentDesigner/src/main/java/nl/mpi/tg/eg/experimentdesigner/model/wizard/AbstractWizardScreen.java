@@ -18,10 +18,7 @@
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
-import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
-import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
 
 /**
  * @since May 3, 2016 1:34:51 PM (creation date)
@@ -37,6 +34,16 @@ public abstract class AbstractWizardScreen implements WizardScreen {
     String screenTitle = null;
     String menuLabel = null;
     String screenTag = null;
+    boolean centreScreen = true;
+
+    public AbstractWizardScreen() {
+    }
+
+    public AbstractWizardScreen(String screenTitle, String menuLabel, String screenTag) {
+        this.screenTitle = screenTitle;
+        this.menuLabel = menuLabel;
+        this.screenTag = screenTag.replaceAll("[^A-Za-z0-9]", "_");
+    }
 
     public String getScreenTitle() {
         return screenTitle;
