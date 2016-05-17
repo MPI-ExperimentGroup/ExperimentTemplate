@@ -21,9 +21,11 @@ import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.StimuliSubAction;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.AbstractWizardScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAudioRecorderMetadataScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardExistingUserCheckScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardSelectUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardStimulusScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
@@ -42,13 +44,12 @@ public class JenaFieldKit {
 //        wizardController.addMetadata(experiment);
 
         final PresenterScreen autoMenuPresenter = null;//wizardController.addAutoMenu(experiment, 12, false);//(Blong programa)
-        final WizardWelcomeScreen wizardWelcomeScreen = new WizardWelcomeScreen("Welkam", "Instruksen", "Stat - Go long program nao");
-        final PresenterScreen welcomePresenter = wizardWelcomeScreen.populatePresenterScreen(experiment, false, 1);
+        final WizardWelcomeScreen welcomePresenter = new WizardWelcomeScreen("Welkam", "Instruksen", "Stat - Go long program nao");
 //wizardController.addWelcomeScreen(experiment, autoMenuPresenter, "Welkam", null, 1, "Instruksen", "Stat - Go long program nao", false);
-        final PresenterScreen welcomeMenuPresenter = wizardController.addWelcomeMenu(experiment, welcomePresenter, "Start", null, 2, "Niu rikording", "Gobak long wan olfala rikoding", "Makem wan niufala rikoding", "Gobak long wan rikoding we yu stat hem finis", false);
-        final PresenterScreen instructionsPresenter = wizardController.addInstructionsScreen(experiment, welcomePresenter, "Instruksen", welcomeMenuPresenter, 3, "Wetem aplikasen ia yu save makem rikoding blong lanwis blong yu,"
+        final WizardExistingUserCheckScreen welcomeMenuPresenter = new WizardExistingUserCheckScreen("Start", "Niu rikording", "Gobak long wan olfala rikoding", "Makem wan niufala rikoding", "Gobak long wan rikoding we yu stat hem finis");
+        final WizardTextScreen instructionsPresenter = new WizardTextScreen("Instruksen", "Wetem aplikasen ia yu save makem rikoding blong lanwis blong yu,"
                 + " bambai ol pipol blong Vanuatu mo ol pipol blong evri ples long world save harem lanwis blong yu. I gat fulap foto blong difren ples long Malakula wea i stap insaed long aplikasen ia. "
-                + "Bai yu showem ol foto ia long wan olfala woman o wan olfala man blong vilej blong yu mo askem long hem se i tokabaot ol foto ia long lanwis blong hem. Yu save transletem wanem i talem, tu.", "Go long program nao", false);
+                + "Bai yu showem ol foto ia long wan olfala woman o wan olfala man blong vilej blong yu mo askem long hem se i tokabaot ol foto ia long lanwis blong hem. Yu save transletem wanem i talem, tu.", "Go long program nao");
         StimuliSubAction[] featureValuesArray = new StimuliSubAction[]{new StimuliSubAction("80", "Askem long man o woman wea i toktok se i talem nem blong wanem i stap lo foto long lanwis blong hem.", "Finis"),
             new StimuliSubAction("60", "Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis.", "Finis"),
             new StimuliSubAction("80", "Askem long man o woman we i toktok se i gat sam stori blong laef blong hem long saed blong ting ia we i stap long foto ia.", "Finis"),
@@ -59,6 +60,7 @@ public class JenaFieldKit {
 
         final WizardStimulusScreen wizardStimulusScreen = new WizardStimulusScreen();
         wizardStimulusScreen.setScreenTitle("Lukluk ol foto");
+        wizardStimulusScreen.setMenuLabel("Lukluk ol foto");
         wizardStimulusScreen.setScreenLabel("Lukluk ol foto");
         wizardStimulusScreen.setEnd_of_stimuli("Finis olgeta");
         wizardStimulusScreen.setStimulusTagArray(new String[]{"Pictures"});
@@ -66,77 +68,49 @@ public class JenaFieldKit {
         wizardStimulusScreen.setMaxStimuli(1000);
         wizardStimulusScreen.setRandomiseStimuli(true);
         wizardStimulusScreen.setFilePerStimulus(true);
-        wizardStimulusScreen.setBackWizardScreen(new AbstractWizardScreen() {
-            @Override
-            public PresenterScreen getPresenterScreen() {
-                return welcomePresenter;
-            }
-
-            @Override
-            public String getScreenTag() {
-                return welcomePresenter.getSelfPresenterTag();
-            }
-
-        });
-        wizardStimulusScreen.setNextWizardScreen(new AbstractWizardScreen() {
-            @Override
-            public PresenterScreen getPresenterScreen() {
-                return welcomePresenter;
-            }
-
-            @Override
-            public String getScreenTag() {
-                return welcomePresenter.getSelfPresenterTag();
-            }
-
-        });
-        final PresenterScreen stimulusScreen = wizardStimulusScreen.populatePresenterScreen(experiment, false, 8);
+        wizardStimulusScreen.setBackWizardScreen(welcomePresenter);
+        wizardStimulusScreen.setEndOfStimulisWizardScreen(welcomePresenter);
 //        final PresenterScreen vanuatuScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, stimulusScreen, new String[]{"vanuatu"}, featureValuesArray, true, 1000, true, 7, false);
 //        final PresenterScreen bowpedStimulusScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, vanuatuScreen, new String[]{"bowped"}, featureValuesArray, true, 1000, true, 9, false);
 //        final PresenterScreen bodiesStimulusScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, bowpedStimulusScreen, new String[]{"bodies"}, featureValuesArray, true, 1000, true, 10, false);
-        final WizardAudioRecorderMetadataScreen wizardAudioRecorderMetadataScreen = new WizardAudioRecorderMetadataScreen(new String[]{
+        final WizardAudioRecorderMetadataScreen metadataScreen = new WizardAudioRecorderMetadataScreen(new String[]{
             "I stap rikod nao. Man o woman we i toktok bai i talem nem blong hem.",
             "Bai i talem nem blong lanwis wea it toktok long hem.",
             "Bai i talem nem blong ples wea i stap nao.",
             "Bai i talem nem blong ples wea i bon long hem.",
             "Bai i talem wanem yea i bon."
         }, "Neks", "Finis olgeta");
-        wizardAudioRecorderMetadataScreen.setBackWizardScreen(new AbstractWizardScreen() {
-            @Override
-            public PresenterScreen getPresenterScreen() {
-                return welcomePresenter;
-            }
-        });
-        wizardAudioRecorderMetadataScreen.setNextWizardScreen(new AbstractWizardScreen() {
-            @Override
-            public PresenterScreen getPresenterScreen() {
-                return stimulusScreen;
-            }
-        });
-        final PresenterScreen metadataScreen = wizardAudioRecorderMetadataScreen.populatePresenterScreen(experiment, false, 7);
-        WizardTextScreen wizardTextScreen = new WizardTextScreen("Konsen", "(Blong man/woman we i makem rikoding)<br><br>"
+        metadataScreen.setBackWizardScreen(welcomePresenter);
+        metadataScreen.setNextWizardScreen(wizardStimulusScreen);
+        WizardAgreementScreen wizardTextScreen = new WizardAgreementScreen("Konsen", "(Blong man/woman we i makem rikoding)<br><br>"
                 + "Mi undastan se wetem aplikasen ia mi makem wan rikoding; mo mi undastan se rikoding ia bai i stap long intanet bambai ol man mo ol woman long evri kantri i save harem rikoding ia wea mi stap makem nao.<br><br>",
                 "Prestem ples hea sapos yu agri.");
 
-        final PresenterScreen consentPresenter = wizardTextScreen.populatePresenterScreen(experiment, false, 6);
+//        final PresenterScreen consentPresenter = wizardTextScreen.populatePresenterScreen(experiment, false, 6);
         final WizardSelectUserScreen wizardSelectUserScreen = new WizardSelectUserScreen();
-        wizardSelectUserScreen.setBackWizardScreen(new AbstractWizardScreen() {
-            @Override
-            public PresenterScreen getPresenterScreen() {
-                return welcomePresenter;
-            }
-        });
-        wizardSelectUserScreen.setNextWizardScreen(new AbstractWizardScreen() {
-            @Override
-            public PresenterScreen getPresenterScreen() {
-                return consentPresenter;
-            }
-        });
-        final PresenterScreen selectUserPresenter = wizardSelectUserScreen.populatePresenterScreen(experiment, false, 5);
-        final PresenterScreen editUserPresenter = wizardController.addEditUserScreen(experiment, welcomePresenter, "Infomesen blong man/woman we i toktok", "Edit User", consentPresenter, 4, null, null, new String[]{"workerId:Nem blong man/woman we i toktok:.'{'3,'}':Please enter at least three letters."}, "Savem infomesen", null, null, null, false, "Could not contact the server, please check your internet connection and try again.", false);
-        final PresenterScreen debugScreenPresenter = wizardController.addDebugScreen(experiment, autoMenuPresenter, 11, false);
-        welcomeMenuPresenter.setNextPresenter(editUserPresenter);
-//        instructionsPresenter.setNextPresenter(metadataScreen);
+        wizardSelectUserScreen.setBackWizardScreen(welcomePresenter);
+        wizardSelectUserScreen.setNextWizardScreen(wizardTextScreen);
+//        final PresenterScreen selectUserPresenter = wizardSelectUserScreen.populatePresenterScreen(experiment, false, 5);
+        final WizardEditUserScreen editUserPresenter = new WizardEditUserScreen("Infomesen blong man/woman we i toktok", "Edit User", null, null, new String[]{"workerId:Nem blong man/woman we i toktok:.'{'3,'}':Please enter at least three letters."}, "Savem infomesen", null, null, null, false, "Could not contact the server, please check your internet connection and try again.");
+        final WizardAboutScreen debugScreenPresenter = new WizardAboutScreen();
+        editUserPresenter.setBackWizardScreen(welcomePresenter);
+        wizardTextScreen.setBackWizardScreen(welcomePresenter);
+        wizardTextScreen.setNextWizardScreen(metadataScreen);
+        editUserPresenter.setNextWizardScreen(wizardTextScreen);
+        welcomeMenuPresenter.setNextWizardScreen(editUserPresenter);
+        welcomeMenuPresenter.setBackWizardScreen(welcomePresenter);
+        instructionsPresenter.setBackWizardScreen(welcomePresenter);
+//        instructionsPresenter.setNextWizardScreen(metadataScreen);
+        instructionsPresenter.setNextWizardScreen(welcomeMenuPresenter);
+        welcomePresenter.populatePresenterScreen(experiment, false, 1);
+        welcomeMenuPresenter.populatePresenterScreen(experiment, false, 2);
+        instructionsPresenter.populatePresenterScreen(experiment, false, 3);
+        editUserPresenter.populatePresenterScreen(experiment, false, 4);
+        wizardSelectUserScreen.populatePresenterScreen(experiment, false, 5);
+        wizardTextScreen.populatePresenterScreen(experiment, false, 6);
+        metadataScreen.populatePresenterScreen(experiment, false, 7);
+        wizardStimulusScreen.populatePresenterScreen(experiment, false, 8);
+        debugScreenPresenter.populatePresenterScreen(experiment, false, 11);
         return experiment;
     }
 }
