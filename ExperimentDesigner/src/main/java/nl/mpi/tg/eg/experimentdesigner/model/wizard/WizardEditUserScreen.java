@@ -54,12 +54,11 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
     private String on_Error_Text = "Could not contact the server, please check your internet connection and try again.";
 
     public WizardEditUserScreen() {
-
+        super("EditUser", "EditUser", "EditUser");
     }
 
     public WizardEditUserScreen(final String screenTitle, final String screenTag, WizardData wizardData, String dispalyText, String[] customFields, final String saveButtonLabel, final String postText, final AbstractWizardScreen alternateNextScreen, final String alternateButtonLabel, final boolean sendData, final String on_Error_Text) {
-        this.screenTitle = screenTitle;
-        this.screenTag = screenTag;
+        super(screenTitle, screenTitle, screenTag);
         this.screenText = dispalyText;
         this.customFields = customFields;
         this.saveButtonLabel = saveButtonLabel;
