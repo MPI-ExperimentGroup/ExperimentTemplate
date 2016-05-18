@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<experiment appNameDisplay="Dobes Annotator" appNameInternal="dobesannotator" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="true" textFontSize="17">
+    <metadata>
+        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" duplicatesControlledMessage="This test can only be done once per worker." postName="workerId" preventServerDuplicates="true" registrationField="Reporter name *"/>
+        <field controlledMessage="Please enter the device model" controlledRegex=".'{'2,'}'" postName="errordevice" preventServerDuplicates="false" registrationField="Device model"/>
+        <field controlledMessage="Please enter a short description of the issue" controlledRegex=".'{'2,'}'" postName="errordescription" preventServerDuplicates="false" registrationField="Please describe the error"/>
+    </metadata>
+    <presenter displayOrder="1" menuLabel="Menu" type="menu" self="AutoMenu" title="Auto Menu">
+        <allMenuItems/>
+    </presenter>
+    <presenter back="AutoMenu" displayOrder="2" menuLabel="AnnotationTimelinePanel" type="timeline" self="AnnotationTimelinePanel" title="Annotation Timeline">
+        <AnnotationTimelinePanel mp4="http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4" eventTag="annotationtimeline" columnCount="2" maxStimuli="10">
+            <randomGrouping/>
+            <stimuli>
+                <tag>videotag</tag>
+            </stimuli>
+        </AnnotationTimelinePanel>
+    </presenter>
+    <presenter back="AutoMenu" displayOrder="3" menuLabel="Videos" type="text" self="VideosPage" title="Video List">
+        <htmlText featureText="This is a simple video codec testing application."/>
+        <addPadding/>
+        <targetButton featureText="Video Test Page (aspen)" target="VideoTestPageAspen"/>
+        <targetButton featureText="Annotation Timeline Screen" target="AnnotationTimelinePanel"/>
+        <addPadding/>
+        <versionData/>
+    </presenter>
+    <presenter back="AutoMenu" displayOrder="4" menuLabel="Target" type="text" self="target" title="Target Screen">
+        <plainText featureText="A simple page so that there is a screen with the target value of 'target' for testing purposes."/>
+    </presenter>
+    <presenter back="AutoMenu" displayOrder="5" menuLabel="Video Test Page (aspen)" type="timeline" self="VideoTestPageAspen" title="Video Test">
+        <htmlText featureText="http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4"/>
+        <addPadding/>
+        <VideoPanel mp4="http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4" maxHeight="70" percentOfPage="50" poster="" ogg="" webm="" maxWidth="70"/>
+        <targetButton featureText="Video Works" target="VideoWorksPage"/>
+        <targetButton featureText="Video Failed" target="VideoFailedPage"/>
+    </presenter>
+    <presenter back="AutoMenu" displayOrder="6" menuLabel="Video Works Page" type="text" self="VideoWorksPage" title="Video Works">
+        <htmlText featureText="A message indicating that the video works on your device has been sent."/>
+        <targetButton featureText="Videos" target="VideosPage"/>
+    </presenter>
+    <presenter back="AutoMenu" displayOrder="7" menuLabel="Video Failed Page" type="text" self="VideoFailedPage" title="Video Failed">
+        <htmlText featureText="A message indicating that the video fails on your device has been sent."/>
+        <targetButton featureText="Videos" target="VideosPage"/>
+    </presenter>
+    <stimuli>
+        <stimulus baseFilePath="videotag0" code="videotag0" image="videotag0.png" label="videotag0" pauseMs="0">
+            <tag>videotag</tag>
+        </stimulus>
+        <stimulus baseFilePath="videotag1" code="videotag1" image="videotag1.png" label="videotag1" pauseMs="0">
+            <tag>videotag</tag>
+        </stimulus>
+        <stimulus baseFilePath="videotag2" code="videotag2" image="videotag2.png" label="videotag2" pauseMs="0">
+            <tag>videotag</tag>
+        </stimulus>
+        <stimulus baseFilePath="videotag3" code="videotag3" image="videotag3.png" label="videotag3" pauseMs="0">
+            <tag>videotag</tag>
+        </stimulus>
+        <stimulus baseFilePath="videotag4" code="videotag4" image="videotag4.png" label="videotag4" pauseMs="0">
+            <tag>videotag</tag>
+        </stimulus>
+        <stimulus baseFilePath="videotag5" code="videotag5" image="videotag5.png" label="videotag5" pauseMs="0">
+            <tag>videotag</tag>
+        </stimulus>
+        <stimulus baseFilePath="videotag6" code="videotag6" image="videotag6.png" label="videotag6" pauseMs="0">
+            <tag>videotag</tag>
+        </stimulus>
+        <stimulus baseFilePath="videotag7" code="videotag7" image="videotag7.png" label="videotag7" pauseMs="0">
+            <tag>videotag</tag>
+        </stimulus>
+        <stimulus baseFilePath="videotag8" code="videotag8" image="videotag8.png" label="videotag8" pauseMs="0">
+            <tag>videotag</tag>
+        </stimulus>
+        <stimulus baseFilePath="videotag9" code="videotag9" image="videotag9.png" label="videotag9" pauseMs="0">
+            <tag>videotag</tag>
+        </stimulus>
+        <stimulus baseFilePath="sim_rabbit" code="sim_rabbit" image="sim_rabbit.jpg" label="sim_rabbit" mp3="sim_rabbit" mp4="sim_rabbit" ogg="sim_rabbit" pauseMs="0">
+            <tag>sim</tag>
+        </stimulus>
+        <stimulus baseFilePath="sim_cat" code="sim_cat" image="sim_cat.jpg" label="sim_cat" mp3="sim_cat" mp4="sim_cat" ogg="sim_cat" pauseMs="0">
+            <tag>sim</tag>
+        </stimulus>
+        <stimulus baseFilePath="sim_muffin" code="sim_muffin" image="sim_muffin.jpg" label="sim_muffin" mp3="sim_muffin" mp4="sim_muffin" ogg="sim_muffin" pauseMs="0">
+            <tag>sim</tag>
+        </stimulus>
+        <stimulus baseFilePath="sim_you" code="sim_you" image="sim_you.jpg" label="sim_you" mp3="sim_you" mp4="sim_you" ogg="sim_you" pauseMs="0">
+            <tag>sim</tag>
+        </stimulus>
+        <stimulus baseFilePath="mid_rabbit" code="mid_rabbit" image="mid_rabbit.jpg" label="mid_rabbit" mp3="mid_rabbit" mp4="mid_rabbit" ogg="mid_rabbit" pauseMs="0">
+            <tag>mid</tag>
+        </stimulus>
+        <stimulus baseFilePath="mid_cat" code="mid_cat" image="mid_cat.jpg" label="mid_cat" mp3="mid_cat" mp4="mid_cat" ogg="mid_cat" pauseMs="0">
+            <tag>mid</tag>
+        </stimulus>
+        <stimulus baseFilePath="mid_muffin" code="mid_muffin" image="mid_muffin.jpg" label="mid_muffin" mp3="mid_muffin" mp4="mid_muffin" ogg="mid_muffin" pauseMs="0">
+            <tag>mid</tag>
+        </stimulus>
+        <stimulus baseFilePath="mid_you" code="mid_you" image="mid_you.jpg" label="mid_you" mp3="mid_you" mp4="mid_you" ogg="mid_you" pauseMs="0">
+            <tag>mid</tag>
+        </stimulus>
+        <stimulus baseFilePath="diff_rabbit" code="diff_rabbit" image="diff_rabbit.jpg" label="diff_rabbit" mp3="diff_rabbit" mp4="diff_rabbit" ogg="diff_rabbit" pauseMs="0">
+            <tag>diff</tag>
+        </stimulus>
+        <stimulus baseFilePath="diff_cat" code="diff_cat" image="diff_cat.jpg" label="diff_cat" mp3="diff_cat" mp4="diff_cat" ogg="diff_cat" pauseMs="0">
+            <tag>diff</tag>
+        </stimulus>
+        <stimulus baseFilePath="diff_muffin" code="diff_muffin" image="diff_muffin.jpg" label="diff_muffin" mp3="diff_muffin" mp4="diff_muffin" ogg="diff_muffin" pauseMs="0">
+            <tag>diff</tag>
+        </stimulus>
+        <stimulus baseFilePath="diff_you" code="diff_you" image="diff_you.jpg" label="diff_you" mp3="diff_you" mp4="diff_you" ogg="diff_you" pauseMs="0">
+            <tag>diff</tag>
+        </stimulus>
+        <stimulus baseFilePath="noise_rabbit" code="noise_rabbit" image="noise_rabbit.jpg" label="noise_rabbit" mp3="noise_rabbit" mp4="noise_rabbit" ogg="noise_rabbit" pauseMs="0">
+            <tag>noise</tag>
+        </stimulus>
+        <stimulus baseFilePath="noise_cat" code="noise_cat" image="noise_cat.jpg" label="noise_cat" mp3="noise_cat" mp4="noise_cat" ogg="noise_cat" pauseMs="0">
+            <tag>noise</tag>
+        </stimulus>
+        <stimulus baseFilePath="noise_muffin" code="noise_muffin" image="noise_muffin.jpg" label="noise_muffin" mp3="noise_muffin" mp4="noise_muffin" ogg="noise_muffin" pauseMs="0">
+            <tag>noise</tag>
+        </stimulus>
+        <stimulus baseFilePath="noise_you" code="noise_you" image="noise_you.jpg" label="noise_you" mp3="noise_you" mp4="noise_you" ogg="noise_you" pauseMs="0">
+            <tag>noise</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_Rocket_0" code="termites_Rocket_0" image="termites_Rocket_0.jpg" label="termites_Rocket_0" mp3="termites_Rocket_0.mp3" mp4="termites_Rocket_0.mp4" ogg="termites_Rocket_0.ogg" pauseMs="0">
+            <tag>Rocket</tag>
+            <tag>termites</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_Rocket_1" code="termites_Rocket_1" image="termites_Rocket_1.jpg" label="termites_Rocket_1" mp3="termites_Rocket_1.mp3" mp4="termites_Rocket_1.mp4" ogg="termites_Rocket_1.ogg" pauseMs="0">
+            <tag>Rocket</tag>
+            <tag>termites</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_Rocket_2" code="termites_Rocket_2" image="termites_Rocket_2.jpg" label="termites_Rocket_2" mp3="termites_Rocket_2.mp3" mp4="termites_Rocket_2.mp4" ogg="termites_Rocket_2.ogg" pauseMs="0">
+            <tag>Rocket</tag>
+            <tag>termites</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_Rocket_3" code="termites_Rocket_3" image="termites_Rocket_3.jpg" label="termites_Rocket_3" mp3="termites_Rocket_3.mp3" mp4="termites_Rocket_3.mp4" ogg="termites_Rocket_3.ogg" pauseMs="0">
+            <tag>Rocket</tag>
+            <tag>termites</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_Rocket_4" code="termites_Rocket_4" image="termites_Rocket_4.jpg" label="termites_Rocket_4" mp3="termites_Rocket_4.mp3" mp4="termites_Rocket_4.mp4" ogg="termites_Rocket_4.ogg" pauseMs="0">
+            <tag>Rocket</tag>
+            <tag>termites</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_Rocket_5" code="termites_Rocket_5" image="termites_Rocket_5.jpg" label="termites_Rocket_5" mp3="termites_Rocket_5.mp3" mp4="termites_Rocket_5.mp4" ogg="termites_Rocket_5.ogg" pauseMs="0">
+            <tag>Rocket</tag>
+            <tag>termites</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_Festival_0" code="termites_Festival_0" image="termites_Festival_0.jpg" label="termites_Festival_0" mp3="termites_Festival_0.mp3" mp4="termites_Festival_0.mp4" ogg="termites_Festival_0.ogg" pauseMs="0">
+            <tag>Festival</tag>
+            <tag>termites</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_Festival_1" code="termites_Festival_1" image="termites_Festival_1.jpg" label="termites_Festival_1" mp3="termites_Festival_1.mp3" mp4="termites_Festival_1.mp4" ogg="termites_Festival_1.ogg" pauseMs="0">
+            <tag>Festival</tag>
+            <tag>termites</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_Festival_2" code="termites_Festival_2" image="termites_Festival_2.jpg" label="termites_Festival_2" mp3="termites_Festival_2.mp3" mp4="termites_Festival_2.mp4" ogg="termites_Festival_2.ogg" pauseMs="0">
+            <tag>Festival</tag>
+            <tag>termites</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_Festival_3" code="termites_Festival_3" image="termites_Festival_3.jpg" label="termites_Festival_3" mp3="termites_Festival_3.mp3" mp4="termites_Festival_3.mp4" ogg="termites_Festival_3.ogg" pauseMs="0">
+            <tag>Festival</tag>
+            <tag>termites</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_Festival_4" code="termites_Festival_4" image="termites_Festival_4.jpg" label="termites_Festival_4" mp3="termites_Festival_4.mp3" mp4="termites_Festival_4.mp4" ogg="termites_Festival_4.ogg" pauseMs="0">
+            <tag>Festival</tag>
+            <tag>termites</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_Festival_5" code="termites_Festival_5" image="termites_Festival_5.jpg" label="termites_Festival_5" mp3="termites_Festival_5.mp3" mp4="termites_Festival_5.mp4" ogg="termites_Festival_5.ogg" pauseMs="0">
+            <tag>Festival</tag>
+            <tag>termites</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_Thai_0" code="termites_Thai_0" image="termites_Thai_0.jpg" label="termites_Thai_0" mp3="termites_Thai_0.mp3" mp4="termites_Thai_0.mp4" ogg="termites_Thai_0.ogg" pauseMs="0">
+            <tag>Thai</tag>
+            <tag>termites</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_Thai_1" code="termites_Thai_1" image="termites_Thai_1.jpg" label="termites_Thai_1" mp3="termites_Thai_1.mp3" mp4="termites_Thai_1.mp4" ogg="termites_Thai_1.ogg" pauseMs="0">
+            <tag>Thai</tag>
+            <tag>termites</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_Thai_2" code="termites_Thai_2" image="termites_Thai_2.jpg" label="termites_Thai_2" mp3="termites_Thai_2.mp3" mp4="termites_Thai_2.mp4" ogg="termites_Thai_2.ogg" pauseMs="0">
+            <tag>Thai</tag>
+            <tag>termites</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_Thai_3" code="termites_Thai_3" image="termites_Thai_3.jpg" label="termites_Thai_3" mp3="termites_Thai_3.mp3" mp4="termites_Thai_3.mp4" ogg="termites_Thai_3.ogg" pauseMs="0">
+            <tag>Thai</tag>
+            <tag>termites</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_Thai_4" code="termites_Thai_4" image="termites_Thai_4.jpg" label="termites_Thai_4" mp3="termites_Thai_4.mp3" mp4="termites_Thai_4.mp4" ogg="termites_Thai_4.ogg" pauseMs="0">
+            <tag>Thai</tag>
+            <tag>termites</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_Thai_5" code="termites_Thai_5" image="termites_Thai_5.jpg" label="termites_Thai_5" mp3="termites_Thai_5.mp3" mp4="termites_Thai_5.mp4" ogg="termites_Thai_5.ogg" pauseMs="0">
+            <tag>Thai</tag>
+            <tag>termites</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_ประเพณีบุญบั้งไฟ_0" code="termites_ประเพณีบุญบั้งไฟ_0" image="termites_ประเพณีบุญบั้งไฟ_0.jpg" label="termites_ประเพณีบุญบั้งไฟ_0" mp3="termites_ประเพณีบุญบั้งไฟ_0.mp3" mp4="termites_ประเพณีบุญบั้งไฟ_0.mp4" ogg="termites_ประเพณีบุญบั้งไฟ_0.ogg" pauseMs="0">
+            <tag>termites</tag>
+            <tag>ประเพณีบุญบั้งไฟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_ประเพณีบุญบั้งไฟ_1" code="termites_ประเพณีบุญบั้งไฟ_1" image="termites_ประเพณีบุญบั้งไฟ_1.jpg" label="termites_ประเพณีบุญบั้งไฟ_1" mp3="termites_ประเพณีบุญบั้งไฟ_1.mp3" mp4="termites_ประเพณีบุญบั้งไฟ_1.mp4" ogg="termites_ประเพณีบุญบั้งไฟ_1.ogg" pauseMs="0">
+            <tag>termites</tag>
+            <tag>ประเพณีบุญบั้งไฟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_ประเพณีบุญบั้งไฟ_2" code="termites_ประเพณีบุญบั้งไฟ_2" image="termites_ประเพณีบุญบั้งไฟ_2.jpg" label="termites_ประเพณีบุญบั้งไฟ_2" mp3="termites_ประเพณีบุญบั้งไฟ_2.mp3" mp4="termites_ประเพณีบุญบั้งไฟ_2.mp4" ogg="termites_ประเพณีบุญบั้งไฟ_2.ogg" pauseMs="0">
+            <tag>termites</tag>
+            <tag>ประเพณีบุญบั้งไฟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_ประเพณีบุญบั้งไฟ_3" code="termites_ประเพณีบุญบั้งไฟ_3" image="termites_ประเพณีบุญบั้งไฟ_3.jpg" label="termites_ประเพณีบุญบั้งไฟ_3" mp3="termites_ประเพณีบุญบั้งไฟ_3.mp3" mp4="termites_ประเพณีบุญบั้งไฟ_3.mp4" ogg="termites_ประเพณีบุญบั้งไฟ_3.ogg" pauseMs="0">
+            <tag>termites</tag>
+            <tag>ประเพณีบุญบั้งไฟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_ประเพณีบุญบั้งไฟ_4" code="termites_ประเพณีบุญบั้งไฟ_4" image="termites_ประเพณีบุญบั้งไฟ_4.jpg" label="termites_ประเพณีบุญบั้งไฟ_4" mp3="termites_ประเพณีบุญบั้งไฟ_4.mp3" mp4="termites_ประเพณีบุญบั้งไฟ_4.mp4" ogg="termites_ประเพณีบุญบั้งไฟ_4.ogg" pauseMs="0">
+            <tag>termites</tag>
+            <tag>ประเพณีบุญบั้งไฟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_ประเพณีบุญบั้งไฟ_5" code="termites_ประเพณีบุญบั้งไฟ_5" image="termites_ประเพณีบุญบั้งไฟ_5.jpg" label="termites_ประเพณีบุญบั้งไฟ_5" mp3="termites_ประเพณีบุญบั้งไฟ_5.mp3" mp4="termites_ประเพณีบุญบั้งไฟ_5.mp4" ogg="termites_ประเพณีบุญบั้งไฟ_5.ogg" pauseMs="0">
+            <tag>termites</tag>
+            <tag>ประเพณีบุญบั้งไฟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_Lao_0" code="termites_Lao_0" image="termites_Lao_0.jpg" label="termites_Lao_0" mp3="termites_Lao_0.mp3" mp4="termites_Lao_0.mp4" ogg="termites_Lao_0.ogg" pauseMs="0">
+            <tag>Lao</tag>
+            <tag>termites</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_Lao_1" code="termites_Lao_1" image="termites_Lao_1.jpg" label="termites_Lao_1" mp3="termites_Lao_1.mp3" mp4="termites_Lao_1.mp4" ogg="termites_Lao_1.ogg" pauseMs="0">
+            <tag>Lao</tag>
+            <tag>termites</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_Lao_2" code="termites_Lao_2" image="termites_Lao_2.jpg" label="termites_Lao_2" mp3="termites_Lao_2.mp3" mp4="termites_Lao_2.mp4" ogg="termites_Lao_2.ogg" pauseMs="0">
+            <tag>Lao</tag>
+            <tag>termites</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_Lao_3" code="termites_Lao_3" image="termites_Lao_3.jpg" label="termites_Lao_3" mp3="termites_Lao_3.mp3" mp4="termites_Lao_3.mp4" ogg="termites_Lao_3.ogg" pauseMs="0">
+            <tag>Lao</tag>
+            <tag>termites</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_Lao_4" code="termites_Lao_4" image="termites_Lao_4.jpg" label="termites_Lao_4" mp3="termites_Lao_4.mp3" mp4="termites_Lao_4.mp4" ogg="termites_Lao_4.ogg" pauseMs="0">
+            <tag>Lao</tag>
+            <tag>termites</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_Lao_5" code="termites_Lao_5" image="termites_Lao_5.jpg" label="termites_Lao_5" mp3="termites_Lao_5.mp3" mp4="termites_Lao_5.mp4" ogg="termites_Lao_5.ogg" pauseMs="0">
+            <tag>Lao</tag>
+            <tag>termites</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_ບຸນບັ້ງໄຟ_0" code="termites_ບຸນບັ້ງໄຟ_0" image="termites_ບຸນບັ້ງໄຟ_0.jpg" label="termites_ບຸນບັ້ງໄຟ_0" mp3="termites_ບຸນບັ້ງໄຟ_0.mp3" mp4="termites_ບຸນບັ້ງໄຟ_0.mp4" ogg="termites_ບຸນບັ້ງໄຟ_0.ogg" pauseMs="0">
+            <tag>termites</tag>
+            <tag>ບຸນບັ້ງໄຟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_ບຸນບັ້ງໄຟ_1" code="termites_ບຸນບັ້ງໄຟ_1" image="termites_ບຸນບັ້ງໄຟ_1.jpg" label="termites_ບຸນບັ້ງໄຟ_1" mp3="termites_ບຸນບັ້ງໄຟ_1.mp3" mp4="termites_ບຸນບັ້ງໄຟ_1.mp4" ogg="termites_ບຸນບັ້ງໄຟ_1.ogg" pauseMs="0">
+            <tag>termites</tag>
+            <tag>ບຸນບັ້ງໄຟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_ບຸນບັ້ງໄຟ_2" code="termites_ບຸນບັ້ງໄຟ_2" image="termites_ບຸນບັ້ງໄຟ_2.jpg" label="termites_ບຸນບັ້ງໄຟ_2" mp3="termites_ບຸນບັ້ງໄຟ_2.mp3" mp4="termites_ບຸນບັ້ງໄຟ_2.mp4" ogg="termites_ບຸນບັ້ງໄຟ_2.ogg" pauseMs="0">
+            <tag>termites</tag>
+            <tag>ບຸນບັ້ງໄຟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_ບຸນບັ້ງໄຟ_3" code="termites_ບຸນບັ້ງໄຟ_3" image="termites_ບຸນບັ້ງໄຟ_3.jpg" label="termites_ບຸນບັ້ງໄຟ_3" mp3="termites_ບຸນບັ້ງໄຟ_3.mp3" mp4="termites_ບຸນບັ້ງໄຟ_3.mp4" ogg="termites_ບຸນບັ້ງໄຟ_3.ogg" pauseMs="0">
+            <tag>termites</tag>
+            <tag>ບຸນບັ້ງໄຟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_ບຸນບັ້ງໄຟ_4" code="termites_ບຸນບັ້ງໄຟ_4" image="termites_ບຸນບັ້ງໄຟ_4.jpg" label="termites_ບຸນບັ້ງໄຟ_4" mp3="termites_ບຸນບັ້ງໄຟ_4.mp3" mp4="termites_ບຸນບັ້ງໄຟ_4.mp4" ogg="termites_ບຸນບັ້ງໄຟ_4.ogg" pauseMs="0">
+            <tag>termites</tag>
+            <tag>ບຸນບັ້ງໄຟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="termites_ບຸນບັ້ງໄຟ_5" code="termites_ບຸນບັ້ງໄຟ_5" image="termites_ບຸນບັ້ງໄຟ_5.jpg" label="termites_ບຸນບັ້ງໄຟ_5" mp3="termites_ບຸນບັ້ງໄຟ_5.mp3" mp4="termites_ບຸນບັ້ງໄຟ_5.mp4" ogg="termites_ບຸນບັ້ງໄຟ_5.ogg" pauseMs="0">
+            <tag>termites</tag>
+            <tag>ບຸນບັ້ງໄຟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_Rocket_0" code="scorpions_Rocket_0" image="scorpions_Rocket_0.jpg" label="scorpions_Rocket_0" mp3="scorpions_Rocket_0.mp3" mp4="scorpions_Rocket_0.mp4" ogg="scorpions_Rocket_0.ogg" pauseMs="0">
+            <tag>Rocket</tag>
+            <tag>scorpions</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_Rocket_1" code="scorpions_Rocket_1" image="scorpions_Rocket_1.jpg" label="scorpions_Rocket_1" mp3="scorpions_Rocket_1.mp3" mp4="scorpions_Rocket_1.mp4" ogg="scorpions_Rocket_1.ogg" pauseMs="0">
+            <tag>Rocket</tag>
+            <tag>scorpions</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_Rocket_2" code="scorpions_Rocket_2" image="scorpions_Rocket_2.jpg" label="scorpions_Rocket_2" mp3="scorpions_Rocket_2.mp3" mp4="scorpions_Rocket_2.mp4" ogg="scorpions_Rocket_2.ogg" pauseMs="0">
+            <tag>Rocket</tag>
+            <tag>scorpions</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_Rocket_3" code="scorpions_Rocket_3" image="scorpions_Rocket_3.jpg" label="scorpions_Rocket_3" mp3="scorpions_Rocket_3.mp3" mp4="scorpions_Rocket_3.mp4" ogg="scorpions_Rocket_3.ogg" pauseMs="0">
+            <tag>Rocket</tag>
+            <tag>scorpions</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_Rocket_4" code="scorpions_Rocket_4" image="scorpions_Rocket_4.jpg" label="scorpions_Rocket_4" mp3="scorpions_Rocket_4.mp3" mp4="scorpions_Rocket_4.mp4" ogg="scorpions_Rocket_4.ogg" pauseMs="0">
+            <tag>Rocket</tag>
+            <tag>scorpions</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_Rocket_5" code="scorpions_Rocket_5" image="scorpions_Rocket_5.jpg" label="scorpions_Rocket_5" mp3="scorpions_Rocket_5.mp3" mp4="scorpions_Rocket_5.mp4" ogg="scorpions_Rocket_5.ogg" pauseMs="0">
+            <tag>Rocket</tag>
+            <tag>scorpions</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_Festival_0" code="scorpions_Festival_0" image="scorpions_Festival_0.jpg" label="scorpions_Festival_0" mp3="scorpions_Festival_0.mp3" mp4="scorpions_Festival_0.mp4" ogg="scorpions_Festival_0.ogg" pauseMs="0">
+            <tag>Festival</tag>
+            <tag>scorpions</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_Festival_1" code="scorpions_Festival_1" image="scorpions_Festival_1.jpg" label="scorpions_Festival_1" mp3="scorpions_Festival_1.mp3" mp4="scorpions_Festival_1.mp4" ogg="scorpions_Festival_1.ogg" pauseMs="0">
+            <tag>Festival</tag>
+            <tag>scorpions</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_Festival_2" code="scorpions_Festival_2" image="scorpions_Festival_2.jpg" label="scorpions_Festival_2" mp3="scorpions_Festival_2.mp3" mp4="scorpions_Festival_2.mp4" ogg="scorpions_Festival_2.ogg" pauseMs="0">
+            <tag>Festival</tag>
+            <tag>scorpions</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_Festival_3" code="scorpions_Festival_3" image="scorpions_Festival_3.jpg" label="scorpions_Festival_3" mp3="scorpions_Festival_3.mp3" mp4="scorpions_Festival_3.mp4" ogg="scorpions_Festival_3.ogg" pauseMs="0">
+            <tag>Festival</tag>
+            <tag>scorpions</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_Festival_4" code="scorpions_Festival_4" image="scorpions_Festival_4.jpg" label="scorpions_Festival_4" mp3="scorpions_Festival_4.mp3" mp4="scorpions_Festival_4.mp4" ogg="scorpions_Festival_4.ogg" pauseMs="0">
+            <tag>Festival</tag>
+            <tag>scorpions</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_Festival_5" code="scorpions_Festival_5" image="scorpions_Festival_5.jpg" label="scorpions_Festival_5" mp3="scorpions_Festival_5.mp3" mp4="scorpions_Festival_5.mp4" ogg="scorpions_Festival_5.ogg" pauseMs="0">
+            <tag>Festival</tag>
+            <tag>scorpions</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_Thai_0" code="scorpions_Thai_0" image="scorpions_Thai_0.jpg" label="scorpions_Thai_0" mp3="scorpions_Thai_0.mp3" mp4="scorpions_Thai_0.mp4" ogg="scorpions_Thai_0.ogg" pauseMs="0">
+            <tag>Thai</tag>
+            <tag>scorpions</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_Thai_1" code="scorpions_Thai_1" image="scorpions_Thai_1.jpg" label="scorpions_Thai_1" mp3="scorpions_Thai_1.mp3" mp4="scorpions_Thai_1.mp4" ogg="scorpions_Thai_1.ogg" pauseMs="0">
+            <tag>Thai</tag>
+            <tag>scorpions</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_Thai_2" code="scorpions_Thai_2" image="scorpions_Thai_2.jpg" label="scorpions_Thai_2" mp3="scorpions_Thai_2.mp3" mp4="scorpions_Thai_2.mp4" ogg="scorpions_Thai_2.ogg" pauseMs="0">
+            <tag>Thai</tag>
+            <tag>scorpions</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_Thai_3" code="scorpions_Thai_3" image="scorpions_Thai_3.jpg" label="scorpions_Thai_3" mp3="scorpions_Thai_3.mp3" mp4="scorpions_Thai_3.mp4" ogg="scorpions_Thai_3.ogg" pauseMs="0">
+            <tag>Thai</tag>
+            <tag>scorpions</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_Thai_4" code="scorpions_Thai_4" image="scorpions_Thai_4.jpg" label="scorpions_Thai_4" mp3="scorpions_Thai_4.mp3" mp4="scorpions_Thai_4.mp4" ogg="scorpions_Thai_4.ogg" pauseMs="0">
+            <tag>Thai</tag>
+            <tag>scorpions</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_Thai_5" code="scorpions_Thai_5" image="scorpions_Thai_5.jpg" label="scorpions_Thai_5" mp3="scorpions_Thai_5.mp3" mp4="scorpions_Thai_5.mp4" ogg="scorpions_Thai_5.ogg" pauseMs="0">
+            <tag>Thai</tag>
+            <tag>scorpions</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_ประเพณีบุญบั้งไฟ_0" code="scorpions_ประเพณีบุญบั้งไฟ_0" image="scorpions_ประเพณีบุญบั้งไฟ_0.jpg" label="scorpions_ประเพณีบุญบั้งไฟ_0" mp3="scorpions_ประเพณีบุญบั้งไฟ_0.mp3" mp4="scorpions_ประเพณีบุญบั้งไฟ_0.mp4" ogg="scorpions_ประเพณีบุญบั้งไฟ_0.ogg" pauseMs="0">
+            <tag>scorpions</tag>
+            <tag>ประเพณีบุญบั้งไฟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_ประเพณีบุญบั้งไฟ_1" code="scorpions_ประเพณีบุญบั้งไฟ_1" image="scorpions_ประเพณีบุญบั้งไฟ_1.jpg" label="scorpions_ประเพณีบุญบั้งไฟ_1" mp3="scorpions_ประเพณีบุญบั้งไฟ_1.mp3" mp4="scorpions_ประเพณีบุญบั้งไฟ_1.mp4" ogg="scorpions_ประเพณีบุญบั้งไฟ_1.ogg" pauseMs="0">
+            <tag>scorpions</tag>
+            <tag>ประเพณีบุญบั้งไฟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_ประเพณีบุญบั้งไฟ_2" code="scorpions_ประเพณีบุญบั้งไฟ_2" image="scorpions_ประเพณีบุญบั้งไฟ_2.jpg" label="scorpions_ประเพณีบุญบั้งไฟ_2" mp3="scorpions_ประเพณีบุญบั้งไฟ_2.mp3" mp4="scorpions_ประเพณีบุญบั้งไฟ_2.mp4" ogg="scorpions_ประเพณีบุญบั้งไฟ_2.ogg" pauseMs="0">
+            <tag>scorpions</tag>
+            <tag>ประเพณีบุญบั้งไฟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_ประเพณีบุญบั้งไฟ_3" code="scorpions_ประเพณีบุญบั้งไฟ_3" image="scorpions_ประเพณีบุญบั้งไฟ_3.jpg" label="scorpions_ประเพณีบุญบั้งไฟ_3" mp3="scorpions_ประเพณีบุญบั้งไฟ_3.mp3" mp4="scorpions_ประเพณีบุญบั้งไฟ_3.mp4" ogg="scorpions_ประเพณีบุญบั้งไฟ_3.ogg" pauseMs="0">
+            <tag>scorpions</tag>
+            <tag>ประเพณีบุญบั้งไฟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_ประเพณีบุญบั้งไฟ_4" code="scorpions_ประเพณีบุญบั้งไฟ_4" image="scorpions_ประเพณีบุญบั้งไฟ_4.jpg" label="scorpions_ประเพณีบุญบั้งไฟ_4" mp3="scorpions_ประเพณีบุญบั้งไฟ_4.mp3" mp4="scorpions_ประเพณีบุญบั้งไฟ_4.mp4" ogg="scorpions_ประเพณีบุญบั้งไฟ_4.ogg" pauseMs="0">
+            <tag>scorpions</tag>
+            <tag>ประเพณีบุญบั้งไฟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_ประเพณีบุญบั้งไฟ_5" code="scorpions_ประเพณีบุญบั้งไฟ_5" image="scorpions_ประเพณีบุญบั้งไฟ_5.jpg" label="scorpions_ประเพณีบุญบั้งไฟ_5" mp3="scorpions_ประเพณีบุญบั้งไฟ_5.mp3" mp4="scorpions_ประเพณีบุญบั้งไฟ_5.mp4" ogg="scorpions_ประเพณีบุญบั้งไฟ_5.ogg" pauseMs="0">
+            <tag>scorpions</tag>
+            <tag>ประเพณีบุญบั้งไฟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_Lao_0" code="scorpions_Lao_0" image="scorpions_Lao_0.jpg" label="scorpions_Lao_0" mp3="scorpions_Lao_0.mp3" mp4="scorpions_Lao_0.mp4" ogg="scorpions_Lao_0.ogg" pauseMs="0">
+            <tag>Lao</tag>
+            <tag>scorpions</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_Lao_1" code="scorpions_Lao_1" image="scorpions_Lao_1.jpg" label="scorpions_Lao_1" mp3="scorpions_Lao_1.mp3" mp4="scorpions_Lao_1.mp4" ogg="scorpions_Lao_1.ogg" pauseMs="0">
+            <tag>Lao</tag>
+            <tag>scorpions</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_Lao_2" code="scorpions_Lao_2" image="scorpions_Lao_2.jpg" label="scorpions_Lao_2" mp3="scorpions_Lao_2.mp3" mp4="scorpions_Lao_2.mp4" ogg="scorpions_Lao_2.ogg" pauseMs="0">
+            <tag>Lao</tag>
+            <tag>scorpions</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_Lao_3" code="scorpions_Lao_3" image="scorpions_Lao_3.jpg" label="scorpions_Lao_3" mp3="scorpions_Lao_3.mp3" mp4="scorpions_Lao_3.mp4" ogg="scorpions_Lao_3.ogg" pauseMs="0">
+            <tag>Lao</tag>
+            <tag>scorpions</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_Lao_4" code="scorpions_Lao_4" image="scorpions_Lao_4.jpg" label="scorpions_Lao_4" mp3="scorpions_Lao_4.mp3" mp4="scorpions_Lao_4.mp4" ogg="scorpions_Lao_4.ogg" pauseMs="0">
+            <tag>Lao</tag>
+            <tag>scorpions</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_Lao_5" code="scorpions_Lao_5" image="scorpions_Lao_5.jpg" label="scorpions_Lao_5" mp3="scorpions_Lao_5.mp3" mp4="scorpions_Lao_5.mp4" ogg="scorpions_Lao_5.ogg" pauseMs="0">
+            <tag>Lao</tag>
+            <tag>scorpions</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_ບຸນບັ້ງໄຟ_0" code="scorpions_ບຸນບັ້ງໄຟ_0" image="scorpions_ບຸນບັ້ງໄຟ_0.jpg" label="scorpions_ບຸນບັ້ງໄຟ_0" mp3="scorpions_ບຸນບັ້ງໄຟ_0.mp3" mp4="scorpions_ບຸນບັ້ງໄຟ_0.mp4" ogg="scorpions_ບຸນບັ້ງໄຟ_0.ogg" pauseMs="0">
+            <tag>scorpions</tag>
+            <tag>ບຸນບັ້ງໄຟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_ບຸນບັ້ງໄຟ_1" code="scorpions_ບຸນບັ້ງໄຟ_1" image="scorpions_ບຸນບັ້ງໄຟ_1.jpg" label="scorpions_ບຸນບັ້ງໄຟ_1" mp3="scorpions_ບຸນບັ້ງໄຟ_1.mp3" mp4="scorpions_ບຸນບັ້ງໄຟ_1.mp4" ogg="scorpions_ບຸນບັ້ງໄຟ_1.ogg" pauseMs="0">
+            <tag>scorpions</tag>
+            <tag>ບຸນບັ້ງໄຟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_ບຸນບັ້ງໄຟ_2" code="scorpions_ບຸນບັ້ງໄຟ_2" image="scorpions_ບຸນບັ້ງໄຟ_2.jpg" label="scorpions_ບຸນບັ້ງໄຟ_2" mp3="scorpions_ບຸນບັ້ງໄຟ_2.mp3" mp4="scorpions_ບຸນບັ້ງໄຟ_2.mp4" ogg="scorpions_ບຸນບັ້ງໄຟ_2.ogg" pauseMs="0">
+            <tag>scorpions</tag>
+            <tag>ບຸນບັ້ງໄຟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_ບຸນບັ້ງໄຟ_3" code="scorpions_ບຸນບັ້ງໄຟ_3" image="scorpions_ບຸນບັ້ງໄຟ_3.jpg" label="scorpions_ບຸນບັ້ງໄຟ_3" mp3="scorpions_ບຸນບັ້ງໄຟ_3.mp3" mp4="scorpions_ບຸນບັ້ງໄຟ_3.mp4" ogg="scorpions_ບຸນບັ້ງໄຟ_3.ogg" pauseMs="0">
+            <tag>scorpions</tag>
+            <tag>ບຸນບັ້ງໄຟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_ບຸນບັ້ງໄຟ_4" code="scorpions_ບຸນບັ້ງໄຟ_4" image="scorpions_ບຸນບັ້ງໄຟ_4.jpg" label="scorpions_ບຸນບັ້ງໄຟ_4" mp3="scorpions_ບຸນບັ້ງໄຟ_4.mp3" mp4="scorpions_ບຸນບັ້ງໄຟ_4.mp4" ogg="scorpions_ບຸນບັ້ງໄຟ_4.ogg" pauseMs="0">
+            <tag>scorpions</tag>
+            <tag>ບຸນບັ້ງໄຟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="scorpions_ບຸນບັ້ງໄຟ_5" code="scorpions_ບຸນບັ້ງໄຟ_5" image="scorpions_ບຸນບັ້ງໄຟ_5.jpg" label="scorpions_ບຸນບັ້ງໄຟ_5" mp3="scorpions_ບຸນບັ້ງໄຟ_5.mp3" mp4="scorpions_ບຸນບັ້ງໄຟ_5.mp4" ogg="scorpions_ບຸນບັ້ງໄຟ_5.ogg" pauseMs="0">
+            <tag>scorpions</tag>
+            <tag>ບຸນບັ້ງໄຟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_Rocket_0" code="centipedes_Rocket_0" image="centipedes_Rocket_0.jpg" label="centipedes_Rocket_0" mp3="centipedes_Rocket_0.mp3" mp4="centipedes_Rocket_0.mp4" ogg="centipedes_Rocket_0.ogg" pauseMs="0">
+            <tag>Rocket</tag>
+            <tag>centipedes</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_Rocket_1" code="centipedes_Rocket_1" image="centipedes_Rocket_1.jpg" label="centipedes_Rocket_1" mp3="centipedes_Rocket_1.mp3" mp4="centipedes_Rocket_1.mp4" ogg="centipedes_Rocket_1.ogg" pauseMs="0">
+            <tag>Rocket</tag>
+            <tag>centipedes</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_Rocket_2" code="centipedes_Rocket_2" image="centipedes_Rocket_2.jpg" label="centipedes_Rocket_2" mp3="centipedes_Rocket_2.mp3" mp4="centipedes_Rocket_2.mp4" ogg="centipedes_Rocket_2.ogg" pauseMs="0">
+            <tag>Rocket</tag>
+            <tag>centipedes</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_Rocket_3" code="centipedes_Rocket_3" image="centipedes_Rocket_3.jpg" label="centipedes_Rocket_3" mp3="centipedes_Rocket_3.mp3" mp4="centipedes_Rocket_3.mp4" ogg="centipedes_Rocket_3.ogg" pauseMs="0">
+            <tag>Rocket</tag>
+            <tag>centipedes</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_Rocket_4" code="centipedes_Rocket_4" image="centipedes_Rocket_4.jpg" label="centipedes_Rocket_4" mp3="centipedes_Rocket_4.mp3" mp4="centipedes_Rocket_4.mp4" ogg="centipedes_Rocket_4.ogg" pauseMs="0">
+            <tag>Rocket</tag>
+            <tag>centipedes</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_Rocket_5" code="centipedes_Rocket_5" image="centipedes_Rocket_5.jpg" label="centipedes_Rocket_5" mp3="centipedes_Rocket_5.mp3" mp4="centipedes_Rocket_5.mp4" ogg="centipedes_Rocket_5.ogg" pauseMs="0">
+            <tag>Rocket</tag>
+            <tag>centipedes</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_Festival_0" code="centipedes_Festival_0" image="centipedes_Festival_0.jpg" label="centipedes_Festival_0" mp3="centipedes_Festival_0.mp3" mp4="centipedes_Festival_0.mp4" ogg="centipedes_Festival_0.ogg" pauseMs="0">
+            <tag>Festival</tag>
+            <tag>centipedes</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_Festival_1" code="centipedes_Festival_1" image="centipedes_Festival_1.jpg" label="centipedes_Festival_1" mp3="centipedes_Festival_1.mp3" mp4="centipedes_Festival_1.mp4" ogg="centipedes_Festival_1.ogg" pauseMs="0">
+            <tag>Festival</tag>
+            <tag>centipedes</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_Festival_2" code="centipedes_Festival_2" image="centipedes_Festival_2.jpg" label="centipedes_Festival_2" mp3="centipedes_Festival_2.mp3" mp4="centipedes_Festival_2.mp4" ogg="centipedes_Festival_2.ogg" pauseMs="0">
+            <tag>Festival</tag>
+            <tag>centipedes</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_Festival_3" code="centipedes_Festival_3" image="centipedes_Festival_3.jpg" label="centipedes_Festival_3" mp3="centipedes_Festival_3.mp3" mp4="centipedes_Festival_3.mp4" ogg="centipedes_Festival_3.ogg" pauseMs="0">
+            <tag>Festival</tag>
+            <tag>centipedes</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_Festival_4" code="centipedes_Festival_4" image="centipedes_Festival_4.jpg" label="centipedes_Festival_4" mp3="centipedes_Festival_4.mp3" mp4="centipedes_Festival_4.mp4" ogg="centipedes_Festival_4.ogg" pauseMs="0">
+            <tag>Festival</tag>
+            <tag>centipedes</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_Festival_5" code="centipedes_Festival_5" image="centipedes_Festival_5.jpg" label="centipedes_Festival_5" mp3="centipedes_Festival_5.mp3" mp4="centipedes_Festival_5.mp4" ogg="centipedes_Festival_5.ogg" pauseMs="0">
+            <tag>Festival</tag>
+            <tag>centipedes</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_Thai_0" code="centipedes_Thai_0" image="centipedes_Thai_0.jpg" label="centipedes_Thai_0" mp3="centipedes_Thai_0.mp3" mp4="centipedes_Thai_0.mp4" ogg="centipedes_Thai_0.ogg" pauseMs="0">
+            <tag>Thai</tag>
+            <tag>centipedes</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_Thai_1" code="centipedes_Thai_1" image="centipedes_Thai_1.jpg" label="centipedes_Thai_1" mp3="centipedes_Thai_1.mp3" mp4="centipedes_Thai_1.mp4" ogg="centipedes_Thai_1.ogg" pauseMs="0">
+            <tag>Thai</tag>
+            <tag>centipedes</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_Thai_2" code="centipedes_Thai_2" image="centipedes_Thai_2.jpg" label="centipedes_Thai_2" mp3="centipedes_Thai_2.mp3" mp4="centipedes_Thai_2.mp4" ogg="centipedes_Thai_2.ogg" pauseMs="0">
+            <tag>Thai</tag>
+            <tag>centipedes</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_Thai_3" code="centipedes_Thai_3" image="centipedes_Thai_3.jpg" label="centipedes_Thai_3" mp3="centipedes_Thai_3.mp3" mp4="centipedes_Thai_3.mp4" ogg="centipedes_Thai_3.ogg" pauseMs="0">
+            <tag>Thai</tag>
+            <tag>centipedes</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_Thai_4" code="centipedes_Thai_4" image="centipedes_Thai_4.jpg" label="centipedes_Thai_4" mp3="centipedes_Thai_4.mp3" mp4="centipedes_Thai_4.mp4" ogg="centipedes_Thai_4.ogg" pauseMs="0">
+            <tag>Thai</tag>
+            <tag>centipedes</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_Thai_5" code="centipedes_Thai_5" image="centipedes_Thai_5.jpg" label="centipedes_Thai_5" mp3="centipedes_Thai_5.mp3" mp4="centipedes_Thai_5.mp4" ogg="centipedes_Thai_5.ogg" pauseMs="0">
+            <tag>Thai</tag>
+            <tag>centipedes</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_ประเพณีบุญบั้งไฟ_0" code="centipedes_ประเพณีบุญบั้งไฟ_0" image="centipedes_ประเพณีบุญบั้งไฟ_0.jpg" label="centipedes_ประเพณีบุญบั้งไฟ_0" mp3="centipedes_ประเพณีบุญบั้งไฟ_0.mp3" mp4="centipedes_ประเพณีบุญบั้งไฟ_0.mp4" ogg="centipedes_ประเพณีบุญบั้งไฟ_0.ogg" pauseMs="0">
+            <tag>centipedes</tag>
+            <tag>ประเพณีบุญบั้งไฟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_ประเพณีบุญบั้งไฟ_1" code="centipedes_ประเพณีบุญบั้งไฟ_1" image="centipedes_ประเพณีบุญบั้งไฟ_1.jpg" label="centipedes_ประเพณีบุญบั้งไฟ_1" mp3="centipedes_ประเพณีบุญบั้งไฟ_1.mp3" mp4="centipedes_ประเพณีบุญบั้งไฟ_1.mp4" ogg="centipedes_ประเพณีบุญบั้งไฟ_1.ogg" pauseMs="0">
+            <tag>centipedes</tag>
+            <tag>ประเพณีบุญบั้งไฟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_ประเพณีบุญบั้งไฟ_2" code="centipedes_ประเพณีบุญบั้งไฟ_2" image="centipedes_ประเพณีบุญบั้งไฟ_2.jpg" label="centipedes_ประเพณีบุญบั้งไฟ_2" mp3="centipedes_ประเพณีบุญบั้งไฟ_2.mp3" mp4="centipedes_ประเพณีบุญบั้งไฟ_2.mp4" ogg="centipedes_ประเพณีบุญบั้งไฟ_2.ogg" pauseMs="0">
+            <tag>centipedes</tag>
+            <tag>ประเพณีบุญบั้งไฟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_ประเพณีบุญบั้งไฟ_3" code="centipedes_ประเพณีบุญบั้งไฟ_3" image="centipedes_ประเพณีบุญบั้งไฟ_3.jpg" label="centipedes_ประเพณีบุญบั้งไฟ_3" mp3="centipedes_ประเพณีบุญบั้งไฟ_3.mp3" mp4="centipedes_ประเพณีบุญบั้งไฟ_3.mp4" ogg="centipedes_ประเพณีบุญบั้งไฟ_3.ogg" pauseMs="0">
+            <tag>centipedes</tag>
+            <tag>ประเพณีบุญบั้งไฟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_ประเพณีบุญบั้งไฟ_4" code="centipedes_ประเพณีบุญบั้งไฟ_4" image="centipedes_ประเพณีบุญบั้งไฟ_4.jpg" label="centipedes_ประเพณีบุญบั้งไฟ_4" mp3="centipedes_ประเพณีบุญบั้งไฟ_4.mp3" mp4="centipedes_ประเพณีบุญบั้งไฟ_4.mp4" ogg="centipedes_ประเพณีบุญบั้งไฟ_4.ogg" pauseMs="0">
+            <tag>centipedes</tag>
+            <tag>ประเพณีบุญบั้งไฟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_ประเพณีบุญบั้งไฟ_5" code="centipedes_ประเพณีบุญบั้งไฟ_5" image="centipedes_ประเพณีบุญบั้งไฟ_5.jpg" label="centipedes_ประเพณีบุญบั้งไฟ_5" mp3="centipedes_ประเพณีบุญบั้งไฟ_5.mp3" mp4="centipedes_ประเพณีบุญบั้งไฟ_5.mp4" ogg="centipedes_ประเพณีบุญบั้งไฟ_5.ogg" pauseMs="0">
+            <tag>centipedes</tag>
+            <tag>ประเพณีบุญบั้งไฟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_Lao_0" code="centipedes_Lao_0" image="centipedes_Lao_0.jpg" label="centipedes_Lao_0" mp3="centipedes_Lao_0.mp3" mp4="centipedes_Lao_0.mp4" ogg="centipedes_Lao_0.ogg" pauseMs="0">
+            <tag>Lao</tag>
+            <tag>centipedes</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_Lao_1" code="centipedes_Lao_1" image="centipedes_Lao_1.jpg" label="centipedes_Lao_1" mp3="centipedes_Lao_1.mp3" mp4="centipedes_Lao_1.mp4" ogg="centipedes_Lao_1.ogg" pauseMs="0">
+            <tag>Lao</tag>
+            <tag>centipedes</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_Lao_2" code="centipedes_Lao_2" image="centipedes_Lao_2.jpg" label="centipedes_Lao_2" mp3="centipedes_Lao_2.mp3" mp4="centipedes_Lao_2.mp4" ogg="centipedes_Lao_2.ogg" pauseMs="0">
+            <tag>Lao</tag>
+            <tag>centipedes</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_Lao_3" code="centipedes_Lao_3" image="centipedes_Lao_3.jpg" label="centipedes_Lao_3" mp3="centipedes_Lao_3.mp3" mp4="centipedes_Lao_3.mp4" ogg="centipedes_Lao_3.ogg" pauseMs="0">
+            <tag>Lao</tag>
+            <tag>centipedes</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_Lao_4" code="centipedes_Lao_4" image="centipedes_Lao_4.jpg" label="centipedes_Lao_4" mp3="centipedes_Lao_4.mp3" mp4="centipedes_Lao_4.mp4" ogg="centipedes_Lao_4.ogg" pauseMs="0">
+            <tag>Lao</tag>
+            <tag>centipedes</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_Lao_5" code="centipedes_Lao_5" image="centipedes_Lao_5.jpg" label="centipedes_Lao_5" mp3="centipedes_Lao_5.mp3" mp4="centipedes_Lao_5.mp4" ogg="centipedes_Lao_5.ogg" pauseMs="0">
+            <tag>Lao</tag>
+            <tag>centipedes</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_ບຸນບັ້ງໄຟ_0" code="centipedes_ບຸນບັ້ງໄຟ_0" image="centipedes_ບຸນບັ້ງໄຟ_0.jpg" label="centipedes_ບຸນບັ້ງໄຟ_0" mp3="centipedes_ບຸນບັ້ງໄຟ_0.mp3" mp4="centipedes_ບຸນບັ້ງໄຟ_0.mp4" ogg="centipedes_ບຸນບັ້ງໄຟ_0.ogg" pauseMs="0">
+            <tag>centipedes</tag>
+            <tag>ບຸນບັ້ງໄຟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_ບຸນບັ້ງໄຟ_1" code="centipedes_ບຸນບັ້ງໄຟ_1" image="centipedes_ບຸນບັ້ງໄຟ_1.jpg" label="centipedes_ບຸນບັ້ງໄຟ_1" mp3="centipedes_ບຸນບັ້ງໄຟ_1.mp3" mp4="centipedes_ບຸນບັ້ງໄຟ_1.mp4" ogg="centipedes_ບຸນບັ້ງໄຟ_1.ogg" pauseMs="0">
+            <tag>centipedes</tag>
+            <tag>ບຸນບັ້ງໄຟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_ບຸນບັ້ງໄຟ_2" code="centipedes_ບຸນບັ້ງໄຟ_2" image="centipedes_ບຸນບັ້ງໄຟ_2.jpg" label="centipedes_ບຸນບັ້ງໄຟ_2" mp3="centipedes_ບຸນບັ້ງໄຟ_2.mp3" mp4="centipedes_ບຸນບັ້ງໄຟ_2.mp4" ogg="centipedes_ບຸນບັ້ງໄຟ_2.ogg" pauseMs="0">
+            <tag>centipedes</tag>
+            <tag>ບຸນບັ້ງໄຟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_ບຸນບັ້ງໄຟ_3" code="centipedes_ບຸນບັ້ງໄຟ_3" image="centipedes_ບຸນບັ້ງໄຟ_3.jpg" label="centipedes_ບຸນບັ້ງໄຟ_3" mp3="centipedes_ບຸນບັ້ງໄຟ_3.mp3" mp4="centipedes_ບຸນບັ້ງໄຟ_3.mp4" ogg="centipedes_ບຸນບັ້ງໄຟ_3.ogg" pauseMs="0">
+            <tag>centipedes</tag>
+            <tag>ບຸນບັ້ງໄຟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_ບຸນບັ້ງໄຟ_4" code="centipedes_ບຸນບັ້ງໄຟ_4" image="centipedes_ບຸນບັ້ງໄຟ_4.jpg" label="centipedes_ບຸນບັ້ງໄຟ_4" mp3="centipedes_ບຸນບັ້ງໄຟ_4.mp3" mp4="centipedes_ບຸນບັ້ງໄຟ_4.mp4" ogg="centipedes_ບຸນບັ້ງໄຟ_4.ogg" pauseMs="0">
+            <tag>centipedes</tag>
+            <tag>ບຸນບັ້ງໄຟ</tag>
+        </stimulus>
+        <stimulus baseFilePath="centipedes_ບຸນບັ້ງໄຟ_5" code="centipedes_ບຸນບັ້ງໄຟ_5" image="centipedes_ບຸນບັ້ງໄຟ_5.jpg" label="centipedes_ບຸນບັ້ງໄຟ_5" mp3="centipedes_ບຸນບັ້ງໄຟ_5.mp3" mp4="centipedes_ບຸນບັ້ງໄຟ_5.mp4" ogg="centipedes_ບຸນບັ້ງໄຟ_5.ogg" pauseMs="0">
+            <tag>centipedes</tag>
+            <tag>ບຸນບັ້ງໄຟ</tag>
+        </stimulus>
+    </stimuli>
+</experiment>
