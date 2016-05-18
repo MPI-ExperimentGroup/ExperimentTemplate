@@ -37,7 +37,9 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
 import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.AbstractWizardScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreen;
 
 /**
  * @since Jan 18, 2016 11:20:47 AM (creation date)
@@ -58,7 +60,7 @@ public class SynQuiz2 {
     public void create(Experiment experiment, final List<PresenterScreen> presenterScreenList) {
         final PresenterScreen introductionScreen = createIntroductionScreen("Introduction", 1);
         presenterScreenList.add(introductionScreen);
-        final PresenterScreen completionScreen = wizardController.addCompletionScreen(experiment, null, introductionScreen, 21, "If another person wants to do this test they can exit this session and start from the begining.", true, null, "Finish this expriment and start from the begining", "Completion", "Could not contact the server, please check your internet connection and try again.", "Retry", false);
+        final WizardCompletionScreen completionScreen = new WizardCompletionScreen("If another person wants to do this test they can exit this session and start from the begining.", true, null, "Finish this expriment and start from the begining", "Completion", "Could not contact the server, please check your internet connection and try again.", "Retry");
 //        final PresenterScreen registrationScreen = createRegistrationScreen("Registration", 2);
 //        presenterScreenList.add(registrationScreen);
         final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
@@ -78,6 +80,7 @@ public class SynQuiz2 {
 
         wizardEditUserScreen.setScreenTitle("Participant");
         wizardEditUserScreen.setScreenTag("Participant");
+        wizardEditUserScreen.setMenuLabel("Participant");
 //        wizardEditUserScreen.setScreenText(dispalyText);
 //        wizardEditUserScreen.setCustomFields(customFields);
 //        wizardEditUserScreen.setNextButton("Continue");
@@ -88,18 +91,24 @@ public class SynQuiz2 {
         wizardEditUserScreen.setSendData(true);
         wizardEditUserScreen.setOn_Error_Text("Could not contact the server, please check your internet connection and try again.");
 
-        final PresenterScreen menuScreen = createMenuScreen("Menu", null, completionScreen, 15);
-        presenterScreenList.add(menuScreen);
-        completionScreen.setBackPresenter(menuScreen);
+        final WizardScreen menuScreen = createMenuScreen("Menu", null, completionScreen.getPresenterScreen(), 15);
+        presenterScreenList.add(menuScreen.getPresenterScreen());
+        completionScreen.setBackWizardScreen(menuScreen);
+        completionScreen.setNextWizardScreen(new AbstractWizardScreen() {
+            @Override
+            public PresenterScreen getPresenterScreen() {
+                return introductionScreen;
+            }
+        });
 //        final PresenterScreen demographicsScreen1 = createDemographicsScreen1(experiment, "Demographics1", 4);
 //        presenterScreenList.add(demographicsScreen1);
-        final PresenterScreen editUserScreen = wizardEditUserScreen.populatePresenterScreen(experiment, false, 3);
 //wizardController.addEditUserScreen(experiment, introductionScreen, "Participant", "Participant", null, 3, wizardData, null, null, "Continue", null, null, null, true, "Could not contact the server, please check your internet connection and try again.", false);
-        final PresenterScreen demographicsScreen1 = wizardController.addEditUserScreen(experiment, editUserScreen, "Details", "Details", null, 5, null, null, demographicsFields1, "Continue", null, null, null, true, "Could not contact the server, please check your internet connection and try again.", false);
+        final WizardEditUserScreen demographicsScreen1 = new WizardEditUserScreen("Details", "Details", null, null, demographicsFields1, "Continue", null, null, null, true, "Could not contact the server, please check your internet connection and try again.");
         wizardController.addMetadata(experiment);
-        editUserScreen.setNextPresenter(demographicsScreen1);
+        wizardEditUserScreen.setNextWizardScreen(demographicsScreen1);
+        demographicsScreen1.setBackWizardScreen(wizardEditUserScreen);
 
-        PresenterScreen previousDemographicsScreen = demographicsScreen1;
+        PresenterScreen previousDemographicsScreen = demographicsScreen1.getPresenterScreen();
         for (DemographicScreenType demographicScreenType : DemographicScreenType.values()) {
             final PresenterScreen demographicsScreen = createDemographicsScreen(experiment, previousDemographicsScreen, demographicScreenType, 6);
             presenterScreenList.add(demographicsScreen);
@@ -111,17 +120,21 @@ public class SynQuiz2 {
 //        presenterScreenList.add(demographicsScreen2);
 //        demographicsScreen1.setNextPresenter(demographicsScreen2);
 //        demographicsScreen2.setBackPresenter(demographicsScreen1);
-        previousDemographicsScreen.setNextPresenter(menuScreen);
-        menuScreen.setBackPresenter(previousDemographicsScreen);
-        final PresenterScreen reportScreen = createReportScreen("Report", menuScreen, menuScreen, 20);
+        previousDemographicsScreen.setNextPresenter(menuScreen.getPresenterScreen());
+        final PresenterScreen menuBackPresenter = previousDemographicsScreen;
+        menuScreen.getPresenterScreen().setBackPresenter(menuBackPresenter);
+        final PresenterScreen reportScreen = createReportScreen("Report", menuScreen.getPresenterScreen(), menuScreen.getPresenterScreen(), 20);
         presenterScreenList.add(reportScreen);
-        final PresenterScreen weekdaysScreen = createStimulusScreen("Weekdays", menuScreen, reportScreen, 16);
+        final PresenterScreen weekdaysScreen = createStimulusScreen("Weekdays", menuScreen.getPresenterScreen(), reportScreen, 16);
         presenterScreenList.add(weekdaysScreen);
-        final PresenterScreen numbersScreen = createStimulusScreen("Numbers", menuScreen, reportScreen, 17);
+        final PresenterScreen numbersScreen = createStimulusScreen("Numbers", menuScreen.getPresenterScreen(), reportScreen, 17);
         presenterScreenList.add(numbersScreen);
-        final PresenterScreen lettersScreen = createStimulusScreen("Letters", menuScreen, reportScreen, 18);
+        final PresenterScreen lettersScreen = createStimulusScreen("Letters", menuScreen.getPresenterScreen(), reportScreen, 18);
         presenterScreenList.add(lettersScreen);
-        presenterScreenList.add(createStimulusScreen("Months", menuScreen, reportScreen, 19));
+        presenterScreenList.add(createStimulusScreen("Months", menuScreen.getPresenterScreen(), reportScreen, 19));
+        completionScreen.populatePresenterScreen(experiment, false, 21);
+        wizardEditUserScreen.populatePresenterScreen(experiment, false, 3);
+        demographicsScreen1.populatePresenterScreen(experiment, false, 5);
     }
 
     private PresenterScreen createIntroductionScreen(String screenName, long displayOrder) {
@@ -187,7 +200,7 @@ public class SynQuiz2 {
 //    }
 // todo: show complete on test that have been done like in SynQuiz1
 // todo: add finish button on the test menu screen which submits all data and leads to a restart(erase) all
-    private PresenterScreen createMenuScreen(String screenName, final PresenterScreen backScreen, final PresenterScreen completionScreen, long displayOrder) {
+    private WizardScreen createMenuScreen(String screenName, final PresenterScreen backScreen, final PresenterScreen completionScreen, long displayOrder) {
         final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backScreen, screenName, completionScreen, PresenterType.menu, displayOrder);
         final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.menuItem, "Weekdays");
         presenterFeature1.addFeatureAttributes(FeatureAttribute.target, "Weekdays");
@@ -202,7 +215,12 @@ public class SynQuiz2 {
         presenterFeature4.addFeatureAttributes(FeatureAttribute.target, "Months");
         presenterScreen.getPresenterFeatureList().add(presenterFeature4);
 //        completionScreen
-        return presenterScreen;
+        return new AbstractWizardScreen() {
+            @Override
+            public PresenterScreen getPresenterScreen() {
+                return presenterScreen;
+            }
+        };
     }
 
     final String[] demographicsFields1 = new String[]{
