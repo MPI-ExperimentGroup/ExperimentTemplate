@@ -22,7 +22,9 @@ import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAudioTestScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardRandomStimulusScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
 
 /**
@@ -729,7 +731,7 @@ public class Sara01 {
         //Information screen 
 
         //Agreement
-        WizardAgreementScreen agreementScreen = new WizardAgreementScreen(
+        WizardAgreementScreen agreementScreen = new WizardAgreementScreen("Agreement",
                 "Toestemmingsverklaring voor deelname aan het onderzoek:<br/>"
                 + "Antwoord raden<br/>"
                 + "Voordat je begint met dit experiment, dien je eerst te bevestigen dat je toestemt met deelname aan dit experiment. We zullen je antwoorden opslaan voor latere analyse. We gebruiken de resultaten alleen voor onderzoeksdoeleinden, en zullen ze beschrijven in gespecialiseerde tijschriften of wellicht in kranten of op onze website. Echter, we zullen de resultaten NOOIT rapporteren op zo'n manier dat je zou kunnen worden geïdentificeerd.<br/>"
@@ -746,9 +748,9 @@ public class Sara01 {
 //        wizardData.setDisagreementScreenText("disagreementScreenText");
         //metadata
         final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
-        agreementScreen.setNextWizardScreen(wizardTextScreen); // todo:
         wizardEditUserScreen.setScreenTitle("Edit User");
-        wizardEditUserScreen.setScreenTag("Edit User");
+        wizardEditUserScreen.setMenuLabel("Edit User");
+        wizardEditUserScreen.setScreenTag("Edit_User");
         wizardEditUserScreen.setSaveButtonLabel("Save Details");
         wizardEditUserScreen.setSendData(true);
         wizardEditUserScreen.setMetadataScreen(true);
@@ -760,9 +762,6 @@ public class Sara01 {
             "age:Leeftijd:[0-9]+:Voer een getal.",
             "gender:Geslacht:|man|vrouw|anders:."
         });
-        wizardData.addScreen(agreementScreen);
-        wizardData.addScreen(wizardTextScreen);
-        wizardData.addScreen(wizardEditUserScreen);
 //        wizardData.setFirstNameField(true);
 //        wizardData.setLastNameField(true);
 //        wizardData.setGenderField(true);
@@ -775,6 +774,13 @@ public class Sara01 {
                 + " <br/>"
                 + "Als de geluidssterkte goed is en je het geluid links hoort, kun je op de knop \"Het geluid is OK\" drukken om te beginnen met het experiment. Denk eraan om de context steeds goed op je in te laten werken voordat je verder gaat naar het geluidsfragment.");
         wizardAudioTestScreen.setAudioPath("static/testwav/test_wav");
+
+        wizardEditUserScreen.setNextWizardScreen(wizardAudioTestScreen);
+        wizardTextScreen.setNextWizardScreen(wizardEditUserScreen);
+        agreementScreen.setNextWizardScreen(wizardTextScreen);
+        wizardData.addScreen(agreementScreen);
+        wizardData.addScreen(wizardTextScreen);
+        wizardData.addScreen(wizardEditUserScreen);
         wizardData.addScreen(wizardAudioTestScreen);
         //practice (5 items):
         //                image
@@ -784,46 +790,64 @@ public class Sara01 {
         //                audio
         //                end of audio 1-7 rating buttons
         //                next stimuli
-        wizardData.setPracticeStimuliScreen(true);
-        wizardData.setPracticeStimuliPath("stimuliPath");
-        wizardData.setPracticeStimuliRandomTags(new String[]{"groupA", "groupB"});
-        wizardData.setPracticeStimuliSet(stimuliPracticeArray);
-        wizardData.setPracticeStimulusCodeMatch("/([ET]_[0-9]+)_");
-        wizardData.setPracticeStimuliCount(1000);
-        wizardData.setPracticeStimulusMsDelay(1000);
-        wizardData.setPracticeStimulusCodeMsDelay(500);
-        wizardData.setPracticeStimulusCodeFormat("static/practice/wav/<code>");
-        wizardData.setPracticeStimulusResponseOptions("1,2,3,4,5,6,7");
-        wizardData.setPracticeStimulusResponseLabelLeft("zeer waarschijnlijk negatief");
-        wizardData.setPracticeStimulusResponseLabelRight("zeer waarschijnlijk positief");
+        WizardRandomStimulusScreen randomStimulusScreenP = new WizardRandomStimulusScreen();
+        randomStimulusScreenP.setScreenTitle("StimulusScreenP");
+        randomStimulusScreenP.setMenuLabel("StimulusScreenP");
+        randomStimulusScreenP.setScreenTag("StimulusScreenP");
+        randomStimulusScreenP.setStimuliPath("stimuliPath");
+        randomStimulusScreenP.setButtonLabel("volgende [ spatiebalk ]");
+        randomStimulusScreenP.setStimuliRandomTags(new String[]{"groupA", "groupB"});
+        randomStimulusScreenP.setStimuliSet(stimuliPracticeArray);
+        randomStimulusScreenP.setStimulusCodeMatch("/([ET]_[0-9]+)_");
+        randomStimulusScreenP.setStimuliCount(1000);
+        randomStimulusScreenP.setRandomiseStimuli(true);
+        randomStimulusScreenP.setStimulusMsDelay(1000);
+        randomStimulusScreenP.setStimulusCodeMsDelay(500);
+        randomStimulusScreenP.setStimulusCodeFormat("static/practice/wav/<code>");
+        randomStimulusScreenP.setStimulusResponseOptions("1,2,3,4,5,6,7");
+        randomStimulusScreenP.setStimulusResponseLabelLeft("zeer waarschijnlijk negatief");
+        randomStimulusScreenP.setStimulusResponseLabelRight("zeer waarschijnlijk positief");
+        wizardData.addScreen(randomStimulusScreenP);
         //experiment round (120 items):
-        //                …
-        wizardData.setStimuliScreen(true);
-        wizardData.setStimuliPath("stimuliPath");
-        wizardData.setStimuliRandomTags(new String[]{"groupA", "groupB"});
-        wizardData.setStimuliSet(stimuliExperimentArray);
-        wizardData.setStimulusCodeMatch("/([ET]_[0-9]+)_");
-        wizardData.setStimuliCount(1000);
-        wizardData.setStimulusMsDelay(1000);
-        wizardData.setStimulusCodeMsDelay(500);
-        wizardData.setStimulusCodeFormat("static/experiment/wav/<code>");
-        wizardData.setStimulusResponseOptions("1,2,3,4,5,6,7");
-        wizardData.setStimulusResponseLabelLeft("zeer waarschijnlijk negatief");
-        wizardData.setStimulusResponseLabelRight("zeer waarschijnlijk positief");
+        //     
 
-        //data upload verification 
-        wizardData.setCompletionScreen(true);
-        wizardData.setAllowUserRestart(true);
-        //completion code and thank you screen
-        wizardData.setCompletionText1(
-                "Dit is het einde van het experiment.<br/>"
+        WizardRandomStimulusScreen randomStimulusScreenE = new WizardRandomStimulusScreen();
+        randomStimulusScreenE.setScreenTitle("StimulusScreenE");
+        randomStimulusScreenE.setMenuLabel("StimulusScreenE");
+        randomStimulusScreenE.setScreenTag("StimulusScreenE");
+        randomStimulusScreenE.setStimuliPath("stimuliPath");
+        randomStimulusScreenE.setButtonLabel("volgende [ spatiebalk ]");
+        randomStimulusScreenE.setStimuliRandomTags(new String[]{"groupA", "groupB"});
+        randomStimulusScreenE.setStimuliSet(stimuliExperimentArray);
+        randomStimulusScreenE.setStimulusCodeMatch("/([ET]_[0-9]+)_");
+        randomStimulusScreenE.setStimuliCount(1000);
+        randomStimulusScreenE.setRandomiseStimuli(true);
+        randomStimulusScreenE.setStimulusMsDelay(1000);
+        randomStimulusScreenE.setStimulusCodeMsDelay(500);
+        randomStimulusScreenE.setStimulusCodeFormat("static/experiment/wav/<code>");
+        randomStimulusScreenE.setStimulusResponseOptions("1,2,3,4,5,6,7");
+        randomStimulusScreenE.setStimulusResponseLabelLeft("zeer waarschijnlijk negatief");
+        randomStimulusScreenE.setStimulusResponseLabelRight("zeer waarschijnlijk positief");
+        wizardData.addScreen(randomStimulusScreenE);
+
+        WizardCompletionScreen completionScreen = new WizardCompletionScreen("Dit is het einde van het experiment.<br/>"
                 + "<br/>"
                 + "Ter bevestiging van je deelname willen we je vragen om de volgende code te sturen naar dorine.vanbelzen@mpi.nl. Pas na ontvangst van deze code, kun je worden uitbetaald.<br/>"
                 + "<br/>"
-                + "Bedankt voor je deelname!"
-        );
-        wizardData.setCompletionText2("Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop.");
-        wizardData.setUserRestartButtonText("Opnieuw beginnen");
+                + "Bedankt voor je deelname!", true,
+                "Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop.",
+                "Opnieuw beginnen",
+                "Finished",
+                "Could not contact the server, please check your internet connection and try again.", "Retry");
+        wizardData.addScreen(completionScreen);
+
+        agreementScreen.setNextWizardScreen(wizardTextScreen);
+        wizardTextScreen.setNextWizardScreen(wizardEditUserScreen);
+        wizardEditUserScreen.setNextWizardScreen(wizardAudioTestScreen);
+        wizardAudioTestScreen.setNextWizardScreen(randomStimulusScreenP);
+        randomStimulusScreenP.setNextWizardScreen(randomStimulusScreenE);
+        randomStimulusScreenE.setNextWizardScreen(completionScreen);
+//                        completionScreen
         return wizardController.getExperiment(wizardData);
     }
 }

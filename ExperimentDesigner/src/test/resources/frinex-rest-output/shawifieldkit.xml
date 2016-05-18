@@ -22,8 +22,8 @@
         </existingUserCheck>
     </presenter>
     <presenter back="Welcome" displayOrder="3" menuLabel="Instructions" type="text" self="Instructions" title="Instructions">
-        <plainText featureText="With this app you can make recordings of your language. Describe pictures in this app by speaking and the app records what you say."/>
-        <targetButton featureText="Go directly to program" target="Start"/>
+        <htmlText featureText="With this app you can make recordings of your language. Describe pictures in this app by speaking and the app records what you say."/>
+        <targetButton featureText="Go directly to program" hotKey="SPACE" target="Start"/>
     </presenter>
     <presenter back="AutoMenu" displayOrder="4" menuLabel="Metadata" next="PicturesScreen" type="stimulus" self="MetadataScreen" title="Metadata">
         <loadAllStimulus eventTag="Metadata" randomise="false">

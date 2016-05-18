@@ -7,17 +7,15 @@
         <field controlledMessage="Voer een getal." controlledRegex="[0-9]+" postName="age" preventServerDuplicates="false" registrationField="Leeftijd"/>
         <field controlledMessage="." controlledRegex="|man|vrouw|anders" postName="gender" preventServerDuplicates="false" registrationField="Geslacht"/>
     </metadata>
-    <presenter displayOrder="2" menuLabel="Agreement" next="InformationScreen" type="metadata" self="Agreement" title="Agreement">
+    <presenter displayOrder="1" menuLabel="Agreement" next="InformationScreen" type="metadata" self="Agreement" title="Agreement">
         <htmlText featureText="Toestemmingsverklaring voor deelname aan het onderzoek:&lt;br/&gt;Antwoord raden&lt;br/&gt;Voordat je begint met dit experiment, dien je eerst te bevestigen dat je toestemt met deelname aan dit experiment. We zullen je antwoorden opslaan voor latere analyse. We gebruiken de resultaten alleen voor onderzoeksdoeleinden, en zullen ze beschrijven in gespecialiseerde tijschriften of wellicht in kranten of op onze website. Echter, we zullen de resultaten NOOIT rapporteren op zo'n manier dat je zou kunnen worden geïdentificeerd.&lt;br/&gt;&lt;br/&gt;Door akkoord te gaan, verklaar je dat je voldoende bent geïnformeerd over het onderzoek en dat je goed over deelname aan het onderzoek hebt na kunnen denken. Je bent tijdens dit experiment op elk moment vrij om je terug te trekken zonder uitleg te geven. Ook kun je je gegevens laten verwijderen tot het moment van publicatie, zonder uit te leggen waarom je dat doet.&lt;br/&gt;&lt;br/&gt;Er zijn geen risico's bekend met het meedoen aan dit experiment.&lt;br/&gt;&lt;br/&gt;Als je ermee instemt om door te gaan met dit experiment, klik dan op 'Akkoord' om verder te gaan.&lt;br/&gt;Als je besluit niet deel te nemen aan het experiment, kun je de pagina sluiten of naar een andere website gaan.&lt;br/&gt;&lt;br/&gt;"/>
         <targetButton featureText="Akkoord" target="InformationScreen"/>
     </presenter>
-    <presenter displayOrder="3" menuLabel="InformationScreen" next="Edit_User" type="metadata" self="InformationScreen" title="InformationScreen">
+    <presenter displayOrder="2" menuLabel="InformationScreen" type="text" self="InformationScreen" title="InformationScreen">
         <htmlText featureText="Beste deelnemer,&lt;br/&gt;&lt;br/&gt;Welkom. In dit experiment vragen we je om naar geluidsfragmenten te luisteren en te proberen te voorspellen hoe de volgende spreker zal reageren. Alle geluidsfragmenten komen uit een echt telefoongesprek tussen twee bekenden.&lt;br/&gt;&lt;br/&gt;Het gaat als volgt. Je krijgt eerst de context van het gesprek te zien. Dat gebeurt met plaatjes van twee mensen die aan het bellen zijn en tekstballonnen met wat ze tegen elkaar zeggen. Hieronder staat een voorbeeld. Soms zijn er ook denkballonnen, dat betekent dat die persoon het alleen denkt en niet hardop zegt. Onderaan staat altijd een plaatje van een luidspreker bij de persoon die daarna gaat praten. Die volgende uitspraak krijg je dan als geluidsfragment te horen, zodra je op de spatiebalk hebt gedrukt.&lt;br/&gt;&lt;br/&gt;Deze laatste uitspraak bestaat altijd uit een vraag of voorstel aan de andere persoon. Bijvoorbeeld: 'Heb je zin om vanavond langs te komen?'. Het is jouw taak om te gokken hoe positief of negatief het antwoord van de ander op die vraag was. Met andere woorden, gaat de antwoorder (graag) op dit voorstel in of niet? Dit geef je aan op een schaal van 1 tot 7, waar 1 zeer waarschijnlijk negatief betekent en 7 zeer waarschijnlijk positief. Baseer je antwoord zowel op de context die je gezien hebt als op de vraag zelf.&lt;br/&gt;&lt;br/&gt;Dus: je krijgt eerst de context van het gesprek uitgeschreven op het scherm te zien. Probeer je een goed beeld te vormen van de situatie, daar mag je best even de tijd voor nemen. Als je alles goed gelezen en begrepen hebt, druk je op de spatiebalk. Op dat moment VERDWIJNT HET BEELD en hoor je de volgende uitspraak door de koptelefoon. Zodra de uitspraak afgelopen is, kan je klikken op een cijfer van 1 tot 7. 1 betekent een zeer waarschijnlijk negatief antwoord, 7 een zeer waarschijnlijk positief antwoord.&lt;br/&gt;Zorg ervoor dat je deze instructies goed begrepen hebt. Druk dan op de spatiebalk.&lt;br/&gt;&lt;img src=&quot;static/introimage/introimage.jpg&quot;/&gt;&lt;br/&gt;"/>
-        <actionButton featureText="volgende [ spatiebalk ]" hotKey="SPACE">
-            <autoNextPresenter/>
-        </actionButton>
+        <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="Edit_User"/>
     </presenter>
-    <presenter displayOrder="4" menuLabel="Edit User" next="AudioTest" type="metadata" self="Edit_User" title="Edit User">
+    <presenter displayOrder="3" menuLabel="Edit User" next="AudioTest" type="metadata" self="Edit_User" title="Edit User">
         <metadataField fieldName="workerId"/>
         <metadataField fieldName="firstName"/>
         <metadataField fieldName="lastName"/>
@@ -30,14 +28,14 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter displayOrder="5" menuLabel="AudioTest" next="StimulusScreenP" type="stimulus" self="AudioTest" title="AudioTest">
+    <presenter displayOrder="4" menuLabel="AudioTest" next="StimulusScreenP" type="stimulus" self="AudioTest" title="AudioTest">
         <htmlText featureText="Voordat we met het echte experiment beginnen, willen we je vragen even te testen of je geluidsinstellingen goed zijn voor het experiment. Druk op de onderstaande knop om een kort voorbeeldfragment te horen. De echte fragmenten variëren in sterkte, maar het voorbeeld is ongeveer net zo zacht als het zachtste fragment. Het is belangrijk dat je dit goed kunt verstaan. Als het te zacht klinkt (of te hard), probeer dan de het geluidsniveau op je computer aan te passen. Je kunt net zo vaak op de knop drukken tot het goed te verstaan is.&lt;br/&gt; &lt;br/&gt;Daarnaast willen we je ook vragen te testen of dit fragment (vooral) in je linkeroor te horen is. Zo niet, kun je dan je koptelefoon (of luidsprekers) omdraaien?&lt;br/&gt; &lt;br/&gt;Als de geluidssterkte goed is en je het geluid links hoort, kun je op de knop &quot;Het geluid is OK&quot; drukken om te beginnen met het experiment. Denk eraan om de context steeds goed op je in te laten werken voordat je verder gaat naar het geluidsfragment."/>
         <audioButton mp3="static/testwav/test_wav.mp3" eventTag="AudioTest" poster="static/testwav/test_wav.jpg" ogg="static/testwav/test_wav.ogg"/>
         <actionButton featureText="Het geluid is OK">
             <autoNextPresenter/>
         </actionButton>
     </presenter>
-    <presenter displayOrder="6" menuLabel="StimulusScreenP" next="StimulusScreenE" type="stimulus" self="StimulusScreenP" title="StimulusScreenP">
+    <presenter displayOrder="5" menuLabel="StimulusScreenP" next="StimulusScreenE" type="stimulus" self="StimulusScreenP" title="StimulusScreenP">
         <centrePage/>
         <loadStimulus eventTag="StimulusScreenP" randomise="true" maxStimuli="1000">
             <hasMoreStimulus>
@@ -70,7 +68,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="7" menuLabel="StimulusScreenE" next="Finished" type="stimulus" self="StimulusScreenE" title="StimulusScreenE">
+    <presenter displayOrder="6" menuLabel="StimulusScreenE" next="Finished" type="stimulus" self="StimulusScreenE" title="StimulusScreenE">
         <centrePage/>
         <loadStimulus eventTag="StimulusScreenE" randomise="true" maxStimuli="1000">
             <hasMoreStimulus>
@@ -103,7 +101,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="8" menuLabel="Finished" type="transmission" self="Finished" title="Finished">
+    <presenter displayOrder="7" menuLabel="Finished" type="transmission" self="Finished" title="Finished">
         <sendAllData>
             <onSuccess>
                 <htmlText featureText="Dit is het einde van het experiment.&lt;br/&gt;&lt;br/&gt;Ter bevestiging van je deelname willen we je vragen om de volgende code te sturen naar dorine.vanbelzen@mpi.nl. Pas na ontvangst van deze code, kun je worden uitbetaald.&lt;br/&gt;&lt;br/&gt;Bedankt voor je deelname!"/>

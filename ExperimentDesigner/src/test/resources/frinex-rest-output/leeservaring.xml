@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment appNameDisplay="Leeservaring" appNameInternal="leeservaring" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="false" textFontSize="22">
     <metadata>
+        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Worker ID"/>
         <field controlledMessage="Voer een getal." controlledRegex="[0-9]+" postName="leeftijd" preventServerDuplicates="false" registrationField="Leeftijd"/>
         <field controlledMessage="." controlledRegex="|man|vrouw|anders" postName="geslacht" preventServerDuplicates="false" registrationField="Geslacht"/>
         <field controlledMessage="." controlledRegex="primair onderwijs (basisschool)|voortgezet onderwijs|middelbaar beroepsonderwijs (MBO)|hoger onderwijs (HBO, universiteit)|anders" postName="opleidingsniveau" preventServerDuplicates="false" registrationField="Opleidingsniveau"/>
@@ -8,7 +9,7 @@
         <field controlledMessage="Voer een getal in." controlledRegex="[0-9]*" postName="hoeveelJaarNederlands" preventServerDuplicates="false" registrationField="Als Nederlands niet uw moedertaal is, hoeveel jaar leert u al Nederlands?"/>
         <field controlledMessage="Geef een geldig e-mailadres." controlledRegex="^[^@]+@[^@]+$" postName="emaill" preventServerDuplicates="false" registrationField=""/>
     </metadata>
-    <presenter displayOrder="1" menuLabel="Agreement" next="Participant" type="metadata" self="Agreement" title="Leeservaring 1">
+    <presenter displayOrder="1" menuLabel="Toestemming" next="Participant" type="metadata" self="Toestemming" title="Leeservaring 1">
         <htmlText featureText="Welkom! &lt;br/&gt;In deze studie onderzoeken we hoe mensen verhalen beleven. Door deel te nemen aan dit onderzoek helpt u ons inzicht te krijgen in verschillen en overeenkomsten tussen lezers.&lt;br/&gt;U zult eerst een kort verhaal lezen, en daarna enkele vragen beantwoorden over uw leeservaring. Daarna doet u een korte reactietest. In totaal duurt het experiment ongeveer 10 minuten. &lt;br/&gt;Door verder te gaan verklaart u deel te nemen aan het experiment en gaat u akkoord met het gebruik van de verzamelde geanonimiseerde data voor onderzoeksdoeleinden. U kunt op ieder moment stoppen met het experiment door het scherm te sluiten.&lt;br/&gt;Dit experiment is goedgekeurd door de ethische toetsingscommissie van de faculteit sociale wetenschappen van de Radboud Universiteit (referentienummer ECG2013-1308-120)."/>
         <targetButton featureText="Akkoord" target="Participant"/>
     </presenter>
@@ -115,23 +116,17 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="14" menuLabel="Survey1Instructions" next="Survey1" type="metadata" self="Survey1Instructions" title="Leeservaring 14">
-        <htmlText featureText="&lt;b&gt;U krijgt nu enkele stellingen te zien over uw ervaringen tijdens het lezen van het voorgaande verhaal. Geef aan in hoeverre de stellingen van toepassing zijn op uw ervaring tijdens het lezen van dit verhaal.&lt;/b&gt;"/>
-        <actionButton featureText="volgende [ spatiebalk ]" hotKey="SPACE">
-            <autoNextPresenter/>
-        </actionButton>
-    </presenter>
-    <presenter displayOrder="15" menuLabel="Survey2Instructions" next="Survey2" type="metadata" self="Survey2Instructions" title="Leeservaring 15">
-        <htmlText featureText="&lt;b&gt;U krijgt nu enkele woorden te zien. Uw taak is om aan te geven in hoeverre de woorden van toepassing zijn op uw ervaring tijdens het lezen van het verhaal.&lt;/b&gt;"/>
-        <actionButton featureText="volgende [ spatiebalk ]" hotKey="SPACE">
-            <autoNextPresenter/>
-        </actionButton>
-    </presenter>
-    <presenter displayOrder="16" menuLabel="PictureInstructions" next="PictureTask" type="metadata" self="PictureInstructions" title="Leeservaring 16">
+    <presenter displayOrder="14" menuLabel="PictureInstructions" type="text" self="PictureInstructions" title="Leeservaring 14">
         <htmlText featureText="&lt;b&gt;U zult zo enkele afbeeldingen zien die situaties tonen. Uw taak is te kiezen of de afgebeelde acties overeenkomen met acties in het verhaal dat u net las, of niet. Als het beeld een actie toont die in het verhaal voorkwam, toetst u “Z”, als de actie niet in het verhaal voorkwam toetst u “.”. Probeer zo snel mogelijk te reageren."/>
-        <actionButton featureText="volgende [ spatiebalk ]&lt;/b&gt;" hotKey="SPACE">
-            <autoNextPresenter/>
-        </actionButton>
+        <targetButton featureText="volgende [ spatiebalk ]&lt;/b&gt;" hotKey="SPACE" target="PictureTask"/>
+    </presenter>
+    <presenter displayOrder="15" menuLabel="Survey1Instructions" type="text" self="Survey1Instructions" title="Leeservaring 15">
+        <htmlText featureText="&lt;b&gt;U krijgt nu enkele stellingen te zien over uw ervaringen tijdens het lezen van het voorgaande verhaal. Geef aan in hoeverre de stellingen van toepassing zijn op uw ervaring tijdens het lezen van dit verhaal.&lt;/b&gt;"/>
+        <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="Survey1"/>
+    </presenter>
+    <presenter displayOrder="16" menuLabel="Survey2Instructions" type="text" self="Survey2Instructions" title="Leeservaring 16">
+        <htmlText featureText="&lt;b&gt;U krijgt nu enkele woorden te zien. Uw taak is om aan te geven in hoeverre de woorden van toepassing zijn op uw ervaring tijdens het lezen van het verhaal.&lt;/b&gt;"/>
+        <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="Survey2"/>
     </presenter>
     <presenter displayOrder="17" menuLabel="PictureTask" next="ReadingBehaviorInstructions" type="stimulus" self="PictureTask" title="Leeservaring 17">
         <centrePage/>
@@ -153,11 +148,9 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="18" menuLabel="ReadingBehaviorInstructions" next="ReadingBehavior" type="metadata" self="ReadingBehaviorInstructions" title="Leeservaring 18">
+    <presenter displayOrder="18" menuLabel="ReadingBehaviorInstructions" type="text" self="ReadingBehaviorInstructions" title="Leeservaring 18">
         <htmlText featureText="&lt;b&gt;Het experiment is bijna klaar. We hebben nog 6 korte vragen aan u.&lt;/b&gt;"/>
-        <actionButton featureText="volgende [ spatiebalk ]" hotKey="SPACE">
-            <autoNextPresenter/>
-        </actionButton>
+        <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="ReadingBehavior"/>
     </presenter>
     <presenter displayOrder="19" menuLabel="ReadingBehavior" next="SubmitData" type="stimulus" self="ReadingBehavior" title="Leeservaring 19">
         <centrePage/>
@@ -201,6 +194,7 @@
         </saveMetadataButton>
         <addPadding/>
         <htmlText featureText="Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop."/>
+        <targetButton featureText="Opnieuw beginnen" target="Completion"/>
     </presenter>
     <presenter displayOrder="22" menuLabel="Completion" type="transmission" self="Completion" title="Leeservaring 22">
         <sendAllData>
