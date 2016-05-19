@@ -392,7 +392,8 @@ public class SynQuiz2 {
         }
         final PresenterFeature saveMetadataButton = new PresenterFeature(FeatureType.saveMetadataButton, "Continue");
         saveMetadataButton.addFeatureAttributes(FeatureAttribute.sendData, "true");
-        final PresenterFeature onErrorFeature = new PresenterFeature(FeatureType.onError, "Could not contact the server, please check your internet connection and try again.");
+        saveMetadataButton.addFeatureAttributes(FeatureAttribute.networkErrorMessage, "Could not contact the server, please check your internet connection and try again.");
+        final PresenterFeature onErrorFeature = new PresenterFeature(FeatureType.onError, null);
         saveMetadataButton.getPresenterFeatureList().add(onErrorFeature);
         final PresenterFeature onSuccessFeature = new PresenterFeature(FeatureType.onSuccess, null);
         final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
