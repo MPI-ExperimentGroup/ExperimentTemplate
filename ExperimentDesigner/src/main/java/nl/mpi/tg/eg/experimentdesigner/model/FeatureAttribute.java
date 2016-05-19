@@ -46,6 +46,7 @@ public enum FeatureAttribute {
     ratingLabelLeft,
     ratingLabelRight,
     sendData,
+    networkErrorMessage,
     randomise,
     norepeat,
     hotKey,
