@@ -14,7 +14,7 @@
         <xsl:text>stimulusscreenselectbutton=Submit
             stimulusscreenQuitButton=Quit
             stimulusscreenrejectbutton=No colour
-            stimulusscreenprogresstext={0} of {1}           
+            stimulusscreenprogresstext={0} of {1}    
             appNameInternal=</xsl:text>
         <xsl:value-of select="experiment/@appNameInternal" />
         <xsl:text>
@@ -50,12 +50,22 @@
         </xsl:text>      
         <xsl:apply-templates/>
     </xsl:template>
-    <xsl:template match="onError[@featureText != '']|eraseUsersDataButton[@featureText != '']|saveMetadataButton[@featureText != '']|createUserButton[@featureText != '']|targetButton[@featureText != '']|actionButton[@featureText != '']|targetFooterButton[@featureText != '']|actionFooterButton[@featureText != '']|plainText[@featureText != '']|popupMessage[@featureText != '']|menuItem[@featureText != '']|featureText[@featureText != '']|nextStimulusButton[@featureText != '']|htmlText[@featureText != '']|userInfo[@featureText != '']">
-        <xsl:value-of select="generate-id(.)" />
-        <xsl:text>=</xsl:text>
-        <xsl:value-of select="replace(@featureText,'''','''''')"/>
-        <xsl:text>
-        </xsl:text>
+    <xsl:template match="eraseUsersDataButton[@featureText != '']|saveMetadataButton[@featureText != '']|saveMetadataButton[@networkErrorMessage != '']|createUserButton[@featureText != '']|targetButton[@featureText != '']|actionButton[@featureText != '']|targetFooterButton[@featureText != '']|actionFooterButton[@featureText != '']|plainText[@featureText != '']|popupMessage[@featureText != '']|menuItem[@featureText != '']|featureText[@featureText != '']|nextStimulusButton[@featureText != '']|htmlText[@featureText != '']|userInfo[@featureText != '']">
+        <xsl:if test="@featureText != ''">       
+            <xsl:value-of select="generate-id(.)" />
+            <xsl:text>=</xsl:text>
+            <xsl:value-of select="replace(@featureText,'''','''''')"/>
+            <xsl:text>
+            </xsl:text>
+        </xsl:if>
+        <xsl:if test="@networkErrorMessage != ''">   
+            <xsl:text>errorMessage</xsl:text>
+            <xsl:value-of select="generate-id(.)" />
+            <xsl:text>=</xsl:text>
+            <xsl:value-of select="replace(@networkErrorMessage,'''','''''')"/>
+            <xsl:text>
+            </xsl:text>
+        </xsl:if>
         <xsl:apply-templates/>
     </xsl:template>
 </xsl:stylesheet>
