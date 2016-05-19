@@ -49,7 +49,7 @@ public enum FeatureType {
     localStorageData(false, false, null),
     allMetadataFields(false, false, null),
     metadataField(false, false, new FeatureAttribute[]{fieldName}),
-    saveMetadataButton(true, true, new FeatureAttribute[]{sendData}, false, Contitionals.hasErrorSuccess),
+    saveMetadataButton(true, true, new FeatureAttribute[]{sendData, networkErrorMessage}, false, Contitionals.hasErrorSuccess),
     createUserButton(false, true, new FeatureAttribute[]{target}),
     selectUserMenu(false, false, null),
     eraseLocalStorageButton(false, false, null),
