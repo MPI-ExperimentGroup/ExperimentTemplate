@@ -154,14 +154,14 @@
                 <xsl:text>"</xsl:text>
                 <xsl:text>,</xsl:text>               
             </xsl:for-each>
-            <xsl:for-each select="experiment/stimuli/stimulus">
+            <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@code)">
                 <xsl:text>"</xsl:text>                
-                <xsl:value-of select="@code" />                
+                <xsl:value-of select="." />                
                 <xsl:text>","</xsl:text>             
-                <xsl:value-of select="@code" /> 
+                <xsl:value-of select="." /> 
                 <xsl:text>_datetime",</xsl:text>
                 <xsl:text>"</xsl:text>                
-                <xsl:value-of select="@code" />                
+                <xsl:value-of select="." />                
                 <xsl:text>_ms"</xsl:text>
                 <xsl:if test="position() != last()">
                     <xsl:text>,</xsl:text>
@@ -172,16 +172,16 @@
                 public void appendAggregateCsvRow(CSVPrinter printer, Participant participant, List&lt;TagData&gt; participantTagData) throws IOException, CsvExportException {
                 SimpleDateFormat format = new SimpleDateFormat ("yyyy/MM/dd hh:mm:ss");
             </xsl:text>
-            <xsl:for-each select="experiment/stimuli/stimulus">
-                <xsl:text>String </xsl:text>                
-                <xsl:value-of select="@code" />                
-                <xsl:text> = "";</xsl:text>
+            <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@code)">
+                <xsl:text>String stimulus_</xsl:text>                
+                <xsl:value-of select="." />                
+                <xsl:text> = "";&#xa;</xsl:text>
                 <xsl:text>String datetime_</xsl:text>                
-                <xsl:value-of select="@code" />                
-                <xsl:text> = "";</xsl:text>
+                <xsl:value-of select="." />                
+                <xsl:text> = "";&#xa;</xsl:text>
                 <xsl:text>String ms_</xsl:text>                
-                <xsl:value-of select="@code" />                
-                <xsl:text> = "";</xsl:text>
+                <xsl:value-of select="." />                
+                <xsl:text> = "";&#xa;</xsl:text>
             </xsl:for-each>
             <xsl:text>
                 TagData startData=null;
@@ -196,12 +196,12 @@
                 startData=currentData;
                 switch(startData.getTagValue()){
             </xsl:text>
-            <xsl:for-each select="experiment/stimuli/stimulus">
+            <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@code)">
                 <xsl:text>case "</xsl:text>                
-                <xsl:value-of select="@code" />                
+                <xsl:value-of select="." />                
                 <xsl:text>":
                     datetime_</xsl:text>
-                <xsl:value-of select="@code" />
+                <xsl:value-of select="." />
                 <xsl:text> += format.format(startData.getTagDate()) + " ";
                     break;
                 </xsl:text>
@@ -216,15 +216,15 @@
                 if(startData!=null) //throw new CsvExportException("no start for: " + endData.getEventTag() + " " + endData.getTagValue() + " " + endData.getUserId() + " " + endData.getTagDate());
                 switch(startData.getTagValue()){
             </xsl:text>
-            <xsl:for-each select="experiment/stimuli/stimulus">
+            <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@code)">
                 <xsl:text>case "</xsl:text>                
-                <xsl:value-of select="@code" />                
+                <xsl:value-of select="." />                
                 <xsl:text>":
-                </xsl:text>
-                <xsl:value-of select="@code" />
+                    stimulus_</xsl:text>
+                <xsl:value-of select="." />
                 <xsl:text> += endData.getTagValue() + " ";
                     ms_</xsl:text>
-                <xsl:value-of select="@code" />
+                <xsl:value-of select="." />
                 <xsl:text> += msString + " ";
                     break;
                 </xsl:text>
@@ -240,16 +240,17 @@
             <xsl:for-each select="experiment/metadata/field">
                 <xsl:text>participant.get</xsl:text>
                 <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" />
-                <xsl:text>(),</xsl:text>
+                <xsl:text>(),&#xa;</xsl:text>
             </xsl:for-each>
-            <xsl:for-each select="experiment/stimuli/stimulus">
-                <xsl:value-of select="@code" />                
+            <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@code)">
+                <xsl:text>stimulus_</xsl:text>  
+                <xsl:value-of select="." />                
                 <xsl:text>, datetime_</xsl:text>                
-                <xsl:value-of select="@code" />                
+                <xsl:value-of select="." />                
                 <xsl:text>, ms_</xsl:text>                
-                <xsl:value-of select="@code" />                
+                <xsl:value-of select="." />                
                 <xsl:if test="position() != last()">
-                    <xsl:text>,</xsl:text>
+                    <xsl:text>,&#xa;</xsl:text>
                 </xsl:if>
             </xsl:for-each>
             <xsl:text>);
