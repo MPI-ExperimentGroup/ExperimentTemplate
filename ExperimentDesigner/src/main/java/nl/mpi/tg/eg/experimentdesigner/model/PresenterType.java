@@ -28,6 +28,9 @@ import static nl.mpi.tg.eg.experimentdesigner.model.FeatureType.*;
 public enum PresenterType {
 
     transmission(new FeatureType[]{
+        showColourReport,
+        aboveThreshold,
+        belowThreshold,
         loadSubsetStimulus, loadStimulus, loadSdCardStimulus, loadAllStimulus,
         localStorageData,
         allMetadataFields, metadataField, saveMetadataButton, createUserButton, selectUserMenu,
@@ -75,6 +78,9 @@ public enum PresenterType {
         menuItem
     }),
     metadata(new FeatureType[]{
+        showColourReport,
+        aboveThreshold,
+        belowThreshold,
         loadSubsetStimulus, loadStimulus, loadSdCardStimulus, loadAllStimulus,
         localStorageData,
         eraseLocalStorageButton, eraseUsersDataButton,
@@ -124,6 +130,9 @@ public enum PresenterType {
         endAudioRecorderTag, startAudioRecorder, targetFooterButton, actionFooterButton
     }),
     preload(new FeatureType[]{
+        showColourReport,
+        aboveThreshold,
+        belowThreshold,
         loadSubsetStimulus, loadStimulus, loadSdCardStimulus, loadAllStimulus,
         localStorageData,
         allMetadataFields, metadataField, saveMetadataButton, createUserButton, selectUserMenu,
@@ -155,7 +164,11 @@ public enum PresenterType {
         popupMessage,
         pause,
         responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus}),
-    stimulus(new FeatureType[]{responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus,
+    stimulus(new FeatureType[]{
+        showColourReport,
+        aboveThreshold,
+        belowThreshold,
+        responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus,
         localStorageData,
         userInfo,
         allMetadataFields, metadataField, saveMetadataButton, createUserButton, selectUserMenu,
@@ -175,6 +188,9 @@ public enum PresenterType {
         loadKinTypeStringDiagram,
         preloadAllStimuli}),
     colourPicker(new FeatureType[]{
+        showColourReport,
+        aboveThreshold,
+        belowThreshold,
         image, htmlText, plainText,
         actionFooterButton, actionButton, targetButton, targetFooterButton, addPadding, centrePage, clearPage,
         startAudioRecorder, stopAudioRecorder, startAudioRecorderTag, endAudioRecorderTag,
@@ -228,6 +244,8 @@ public enum PresenterType {
         userInfo,
         menuItem}),
     colourReport(new FeatureType[]{
+        aboveThreshold,
+        belowThreshold,
         loadKinTypeStringDiagram, localStorageData,
         loadSubsetStimulus, loadStimulus, loadSdCardStimulus, loadAllStimulus,
         allMetadataFields, metadataField, saveMetadataButton, createUserButton, selectUserMenu,
@@ -277,7 +295,11 @@ public enum PresenterType {
         stimulusAudio,
         userInfo,
         menuItem}),
-    kindiagram(new FeatureType[]{responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus,
+    kindiagram(new FeatureType[]{
+        showColourReport,
+        aboveThreshold,
+        belowThreshold,
+        responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus,
         loadSubsetStimulus, loadStimulus, loadSdCardStimulus, loadAllStimulus,
         popupMessage,
         localStorageData,
@@ -322,7 +344,11 @@ public enum PresenterType {
         stimulusImage,
         stimulusAudio
     }),
-    menu(new FeatureType[]{responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus,
+    menu(new FeatureType[]{
+        showColourReport,
+        aboveThreshold,
+        belowThreshold,
+        responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus,
         loadSubsetStimulus, loadStimulus, loadSdCardStimulus, loadAllStimulus,
         popupMessage,
         localStorageData,
@@ -367,7 +393,11 @@ public enum PresenterType {
         userInfo,
         stimulusImage,
         stimulusAudio}),
-    debug(new FeatureType[]{responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus,
+    debug(new FeatureType[]{
+        showColourReport,
+        aboveThreshold,
+        belowThreshold,
+        responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus,
         loadSubsetStimulus, loadStimulus, loadSdCardStimulus, loadAllStimulus,
         popupMessage,
         allMetadataFields, metadataField, saveMetadataButton, createUserButton, selectUserMenu,
@@ -412,7 +442,11 @@ public enum PresenterType {
         stimulusImage,
         userInfo,
         stimulusAudio}),
-    text(new FeatureType[]{loadKinTypeStringDiagram, localStorageData,
+    text(new FeatureType[]{
+        showColourReport,
+        aboveThreshold,
+        belowThreshold,
+        loadKinTypeStringDiagram, localStorageData,
         loadSubsetStimulus, loadStimulus, loadSdCardStimulus, loadAllStimulus,
         allMetadataFields, metadataField, saveMetadataButton, createUserButton, selectUserMenu,
         existingUserCheck,
@@ -461,7 +495,11 @@ public enum PresenterType {
         endAudioRecorderTag, startAudioRecorder, targetFooterButton, actionFooterButton,
         userInfo,
         menuItem}),
-    timeline(new FeatureType[]{loadKinTypeStringDiagram, localStorageData,
+    timeline(new FeatureType[]{
+        showColourReport,
+        aboveThreshold,
+        belowThreshold,
+        loadKinTypeStringDiagram, localStorageData,
         loadSubsetStimulus, loadStimulus, loadSdCardStimulus, loadAllStimulus,
         allMetadataFields, metadataField, saveMetadataButton, createUserButton, selectUserMenu,
         existingUserCheck,
