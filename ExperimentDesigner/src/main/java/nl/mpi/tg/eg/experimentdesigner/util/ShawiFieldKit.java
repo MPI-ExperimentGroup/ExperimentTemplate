@@ -48,7 +48,7 @@ public class ShawiFieldKit {
         experiment.setPrimaryColour2("#f03b20");
 //        wizardController.addMetadata(experiment);
         final WizardMenuScreen autoMenuPresenter = new WizardMenuScreen("Auto Menu", "Menu", "AutoMenu");
-        final WizardWelcomeScreen welcomePresenter = new WizardWelcomeScreen("Welcome", "Instructions", "Go directly to program");
+        final WizardWelcomeScreen welcomePresenter = new WizardWelcomeScreen("Welcome", "Instructions", "Go directly to program", null, null);
         final WizardExistingUserCheckScreen welcomeMenuPresenter = new WizardExistingUserCheckScreen("Start", "New Interview.", "Resume Interview", "Is this a new recording?", "Have you already started a recording and do you want to go back to it?");
         final WizardTextScreen instructionsPresenter = new WizardTextScreen("Instructions", "With this app you can make recordings of your language. "
                 + "Describe pictures in this app by speaking and the app records what you say.", "Go directly to program");
@@ -70,6 +70,8 @@ public class ShawiFieldKit {
         final WizardEditUserScreen editUserPresenter = new WizardEditUserScreen("Edit User", "Edit User", null, null, new String[]{"workerId:Speaker name *:.'{'3,'}':Please enter at least three letters."}, "Save and continue", null, null, null, false, "Could not contact the server, please check your internet connection and try again.");
         final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen();
         final WizardKinshipScreen kinshipPresenter = addKinshipScreen(experiment, autoMenuPresenter, null, 16, obfuscateScreenNames);
+        welcomePresenter.setInstructionsScreen(instructionsPresenter);
+        welcomePresenter.setProgramWizardScreen(welcomeMenuPresenter);
         instructionsPresenter.setBackWizardScreen(welcomePresenter);
         instructionsPresenter.setNextWizardScreen(welcomeMenuPresenter);
         metadataScreen.setBackWizardScreen(autoMenuPresenter);
