@@ -284,6 +284,7 @@ public class DefaultExperiments {
                 switch (attribute) {
                     case columnCount:
                     case maxStimuli:
+                    case scoreThreshold:
                         presenterFeature.addFeatureAttributes(attribute, "3");
                         break;
                     case maxHeight:
