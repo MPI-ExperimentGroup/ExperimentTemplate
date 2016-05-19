@@ -32,15 +32,19 @@ public class WizardWelcomeScreen extends AbstractWizardScreen {
 
     String instructions_button;
     String go_directly_to_program;
+    private WizardScreen instructionsScreen = null;
+    private WizardScreen programWizardScreen = null;
 
     public WizardWelcomeScreen() {
         super("Welcome", "Welcome", "Welcome");
     }
 
-    public WizardWelcomeScreen(final String screenTitle, final String instructions_button, final String go_directly_to_program) {
+    public WizardWelcomeScreen(final String screenTitle, final String instructions_button, final String go_directly_to_program, WizardScreen instructionsScreen, WizardScreen programWizardScreen) {
         super(screenTitle, screenTitle, screenTitle);
         this.instructions_button = instructions_button;
         this.go_directly_to_program = go_directly_to_program;
+        this.programWizardScreen = programWizardScreen;
+        this.instructionsScreen = instructionsScreen;
     }
 
     public String getInstructions_button() {
@@ -59,15 +63,31 @@ public class WizardWelcomeScreen extends AbstractWizardScreen {
         this.go_directly_to_program = go_directly_to_program;
     }
 
+    public WizardScreen getInstructionsScreen() {
+        return instructionsScreen;
+    }
+
+    public void setInstructionsScreen(WizardScreen instructionsScreen) {
+        this.instructionsScreen = instructionsScreen;
+    }
+
+    public WizardScreen getProgramWizardScreen() {
+        return programWizardScreen;
+    }
+
+    public void setProgramWizardScreen(WizardScreen programWizardScreen) {
+        this.programWizardScreen = programWizardScreen;
+    }
+
     @Override
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
         presenterScreen.setPresenterType(PresenterType.menu);
         final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.menuItem, instructions_button);
-        presenterFeature.addFeatureAttributes(FeatureAttribute.target, "Instructions");
+        presenterFeature.addFeatureAttributes(FeatureAttribute.target, instructionsScreen.getScreenTag());
         presenterScreen.getPresenterFeatureList().add(presenterFeature);
         final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.menuItem, go_directly_to_program);
-        presenterFeature1.addFeatureAttributes(FeatureAttribute.target, "Start");
+        presenterFeature1.addFeatureAttributes(FeatureAttribute.target, programWizardScreen.getScreenTag());
         presenterScreen.getPresenterFeatureList().add(presenterFeature1);
         experiment.getPresenterScreen().add(presenterScreen);
         return presenterScreen;
