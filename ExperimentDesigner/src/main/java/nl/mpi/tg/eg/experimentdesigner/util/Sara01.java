@@ -695,7 +695,7 @@ public class Sara01 {
     };
     String introImage = "introimage/introimage.jpg";
 
-    public Experiment getExperiment() {
+    public WizardData getWizardData() {
         WizardData wizardData = new WizardData();
         wizardData.setAppName("AntwoordRaden");
         wizardData.setShowMenuBar(false);
@@ -848,6 +848,10 @@ public class Sara01 {
         randomStimulusScreenP.setNextWizardScreen(randomStimulusScreenE);
         randomStimulusScreenE.setNextWizardScreen(completionScreen);
 //                        completionScreen
-        return wizardController.getExperiment(wizardData);
+        return wizardData;
+    }
+
+    public Experiment getExperiment() {
+        return wizardController.getExperiment(getWizardData());
     }
 }
