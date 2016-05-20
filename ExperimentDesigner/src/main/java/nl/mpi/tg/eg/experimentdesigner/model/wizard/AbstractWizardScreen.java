@@ -99,6 +99,14 @@ public abstract class AbstractWizardScreen implements WizardScreen {
         this.screenText = screenText;
     }
 
+    public boolean isCentreScreen() {
+        return centreScreen;
+    }
+
+    public void setCentreScreen(boolean centreScreen) {
+        this.centreScreen = centreScreen;
+    }
+
     @Override
     public String getNextButton() {
         return nextButton;
