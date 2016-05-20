@@ -26,6 +26,7 @@ import nl.mpi.tg.eg.experimentdesigner.dao.PublishEventRepository;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.util.DefaultExperiments;
+import nl.mpi.tg.eg.experimentdesigner.util.Sara01;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -82,11 +83,15 @@ public class ExperimentController {
     public String showWizard(Model model, @ModelAttribute WizardData wizardData, HttpServletRequest request) {
 //        Experiment createdExperiment = DefaultExperiments.getDefault();
 //        experimentRepository.save(createdExperiment);
+//        if (wizardData == null) {
+            wizardData = new Sara01().getWizardData();
+//        }
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", "wizard");
         model.addAttribute("wizardData", wizardData);
         return "design";
     }
+
     @RequestMapping("/experiments/translations")
     public String showTranslations(Model model, HttpServletRequest request) {
 //        Experiment createdExperiment = DefaultExperiments.getDefault();
