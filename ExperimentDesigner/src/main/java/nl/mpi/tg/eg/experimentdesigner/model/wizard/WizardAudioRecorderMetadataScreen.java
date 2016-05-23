@@ -45,6 +45,30 @@ public class WizardAudioRecorderMetadataScreen extends AbstractWizardScreen {
         this.end_of_stimuli = end_of_stimuli;
     }
 
+    public String[] getMetadataStrings() {
+        return metadataStrings;
+    }
+
+    public void setMetadataStrings(String[] metadataStrings) {
+        this.metadataStrings = metadataStrings;
+    }
+
+    public String getNext_button() {
+        return next_button;
+    }
+
+    public void setNext_button(String next_button) {
+        this.next_button = next_button;
+    }
+
+    public String getEnd_of_stimuli() {
+        return end_of_stimuli;
+    }
+
+    public void setEnd_of_stimuli(String end_of_stimuli) {
+        this.end_of_stimuli = end_of_stimuli;
+    }
+
     @Override
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
