@@ -68,7 +68,7 @@ public class DefaultExperiments {
         experimentRepository.save(getSentveri_exp3Experiment());
         experimentRepository.save(getDobesExperiment());
         experimentRepository.save(getAllOptionsExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
-        experimentRepository.save(new JenaFieldKit().getJenaExperiment());
+        experimentRepository.save(new JenaFieldKit().getExperiment());
         experimentRepository.save(new ShawiFieldKit().getShawiExperiment());
         experimentRepository.save(new Sara01().getExperiment());
         experimentRepository.save(new FactOrFiction().getExperiment());
