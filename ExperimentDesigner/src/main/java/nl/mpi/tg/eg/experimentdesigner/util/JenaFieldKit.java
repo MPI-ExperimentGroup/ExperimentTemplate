@@ -21,6 +21,7 @@ import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.StimuliSubAction;
+import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAudioRecorderMetadataScreen;
@@ -39,8 +40,11 @@ public class JenaFieldKit {
 
     private final WizardController wizardController = new WizardController();
 
-    public Experiment getJenaExperiment() {
-        Experiment experiment = wizardController.getExperiment("vanuatufieldkit", "Vanuatu FieldKit", true);
+    public WizardData getWizardData() {
+        WizardData wizardData = new WizardData();
+        wizardData.setAppName("Vanuatu FieldKit");
+        wizardData.setShowMenuBar(true);
+        wizardData.setObfuscateScreenNames(false);
 //        wizardController.addMetadata(experiment);
 
         final PresenterScreen autoMenuPresenter = null;//wizardController.addAutoMenu(experiment, 12, false);//(Blong programa)
@@ -104,15 +108,29 @@ public class JenaFieldKit {
         instructionsPresenter.setBackWizardScreen(welcomePresenter);
 //        instructionsPresenter.setNextWizardScreen(metadataScreen);
         instructionsPresenter.setNextWizardScreen(welcomeMenuPresenter);
-        welcomePresenter.populatePresenterScreen(experiment, false, 1);
-        welcomeMenuPresenter.populatePresenterScreen(experiment, false, 2);
-        instructionsPresenter.populatePresenterScreen(experiment, false, 3);
-        editUserPresenter.populatePresenterScreen(experiment, false, 4);
-        wizardSelectUserScreen.populatePresenterScreen(experiment, false, 5);
-        wizardTextScreen.populatePresenterScreen(experiment, false, 6);
-        metadataScreen.populatePresenterScreen(experiment, false, 7);
-        wizardStimulusScreen.populatePresenterScreen(experiment, false, 8);
-        debugScreenPresenter.populatePresenterScreen(experiment, false, 11);
-        return experiment;
+//        wizardData.addScreen(instructionsPresenter);
+//        welcomePresenter.populatePresenterScreen(experiment, false, 1);
+        wizardData.addScreen(welcomePresenter);
+//        welcomeMenuPresenter.populatePresenterScreen(experiment, false, 2);
+        wizardData.addScreen(welcomeMenuPresenter);
+//        instructionsPresenter.populatePresenterScreen(experiment, false, 3);
+        wizardData.addScreen(instructionsPresenter);
+//        editUserPresenter.populatePresenterScreen(experiment, false, 4);
+        wizardData.addScreen(editUserPresenter);
+//        wizardSelectUserScreen.populatePresenterScreen(experiment, false, 5);
+        wizardData.addScreen(wizardSelectUserScreen);
+//        wizardTextScreen.populatePresenterScreen(experiment, false, 6);
+        wizardData.addScreen(wizardTextScreen);
+//        metadataScreen.populatePresenterScreen(experiment, false, 7);
+        wizardData.addScreen(metadataScreen);
+//        wizardStimulusScreen.populatePresenterScreen(experiment, false, 8);
+        wizardData.addScreen(wizardStimulusScreen);
+//        debugScreenPresenter.populatePresenterScreen(experiment, false, 11);
+        wizardData.addScreen(debugScreenPresenter);
+        return wizardData;
+    }
+
+    public Experiment getExperiment() {
+        return wizardController.getExperiment(getWizardData());
     }
 }
