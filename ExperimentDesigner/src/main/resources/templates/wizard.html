@@ -54,68 +54,167 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <!--<tr><td>Menu screen</td><td><input type="checkbox" th:field="${wizardData.menuScreen}" /></td></tr>-->        
                     <tr><td><button type="reset" >Reset</button></td><td><button type="submit" name="saveExperiment">Create Experiment</button></td></tr>
                 </table>  
-                <ul id="wizardScreenList">
-                    <li th:each="wizardScreen : ${wizardData.getWizardScreens()}" th:fragment="wizardScreenForm"
-                        th:id="${'updateWizardForm' + wizardScreen.getScreenTag()}"
-                        draggable="true"
-                        ondragstart="drag(event)"
-                        ondrop="drop(event)" 
-                        ondragover="allowDrop(event)"
-                         class="presenter">
-                        <form class="table">
-                            <input name="screenTitle" th:value="${wizardScreen.getScreenTitle()}" /><br/>
-                            <div>
-                                <b>AbstractWizardScreen</b><br/>
-                                <span>backWizardScreen</span><span><input name="backWizardScreen" th:value="${(wizardScreen.getBackWizardScreen()!=null)?wizardScreen.getBackWizardScreen().getScreenTitle():''}" /></span><br/>
-                                <span>nextWizardScreen</span><span><input name="nextWizardScreen" th:value="${(wizardScreen.nextWizardScreen!=null)?wizardScreen.nextWizardScreen.getScreenTitle():''}" /></span><br/>
-                                <span>screenText</span><span><div th:utext="${wizardScreen.getScreenText()}" /><textarea name="screenText" th:text="${wizardScreen.getScreenText()}" /></span><br/>
-                                <span>nextButton</span><span><input name="nextButton" th:value="${wizardScreen.nextButton}" /></span><br/>
-                                <span>screenTitle</span><span><input name="screenTitle" th:value="${wizardScreen.screenTitle}" /></span><br/>
-                                <span>menuLabel</span><span><input name="menuLabel" th:value="${wizardScreen.menuLabel}" /></span><br/>
-                                <span>screenTag</span><span><input name="screenTag" th:value="${wizardScreen.screenTag}" /></span><br/>
-                                <!--<span>centreScreen</span><span><input type="checkbox" th:field="${wizardScreen.centreScreen}" /></span><br/>-->
-                            </div>
-                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen'}">WizardAboutScreen</div>
-                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen'}">WizardAgreementScreen</div>
-                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAudioRecorderMetadataScreen'}">WizardAudioRecorderMetadataScreen</div>
-                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAudioTestScreen'}">WizardAudioTestScreen</div>
-                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen'}">WizardCompletionScreen</div>
-                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen'}">WizardEditUserScreen</div>
-                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardExistingUserCheckScreen'}">WizardExistingUserCheckScreen</div>
-                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardKinshipScreen'}">WizardKinshipScreen</div>
-                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMenuScreen'}">WizardMenuScreen</div>
-                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardRandomStimulusScreen'}">WizardRandomStimulusScreen</div>
-                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreen'}">WizardScreen</div>
-                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardSelectUserScreen'}">WizardSelectUserScreen</div>
-                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardStimulusScreen'}">WizardStimulusScreen</div>
-                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardSubmitDataScreen'}">WizardSubmitDataScreen</div>
-                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen'}">
-                                <b>WizardTextScreen</b>
-                                <!--                                <span>Screen text</span><span><input type="text" th:field="${wizardScreen.getScreenText()}" /></span>
-                                                                <span>Next button label</span><span><input type="text" th:field="${wizardScreen.nextButton}" /></span>-->
-                            </div>
-                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardWelcomeScreen'}">WizardWelcomeScreen</div>
-                        </form>
-                    </li>
-                </ul>
-                <script>
-                    function allowDrop(ev) {
-                        ev.preventDefault();
-                    }
-
-                    function drag(ev) {
-                        ev.dataTransfer.setData("text", ev.target.id);
-                    }
-
-                    function drop(ev) {
-                        ev.preventDefault();
-                        var data = ev.dataTransfer.getData("text");
-                        var list = document.getElementById("wizardScreenList");
-                        list.insertBefore(document.getElementById(data), ev.target);
-                    }
-                </script>
-
             </form>
+            <!--            <ul id="wizardScreenList" class="presenter">
+                            <li th:each="wizardScreen : ${wizardData.getWizardScreens()}" th:fragment="wizardScreenForm"
+                                th:id="${'updateWizardForm' + wizardScreen.getScreenTag()}"
+                                draggable="true"
+                                ondragstart="drag(event)"
+                                ondrop="drop(event)" 
+                                ondragover="allowDrop(event)"
+                                class="wizardScreenPanel featurestable">
+                                <div class="errorDiv"/>
+                                <form class="eaturesrow">
+                                    <div class="featureTypeHeader">
+                                        <span>screenTitle</span><input name="screenTitle" th:value="${wizardScreen.getScreenTitle()}" /><br/>
+                                    </div>
+                                    
+                                </form>
+                            </li>
+                        </ul>-->
+            <div class="table">
+                <div th:each="wizardScreen : ${wizardData.getWizardScreens()}" th:fragment="wizardScreenForm">
+                    <div class="tr" th:fragment="wizardScreenForms">    
+                        <div class="featurestable">
+                            <div>
+                                <div th:fragment="featuresrow" class="featuresrow">
+                                    <form th:id="${'wizardScreenForm' + wizardScreen.screenTag}">
+                                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                                        <div class="featureTypeHeader"
+                                             th:id="${'wizardScreenHeader' + wizardScreen.getScreenTag()}"
+                                             draggable="true"
+                                             ondragstart="drag(event)"
+                                             ondrop="drop(event)" 
+                                             ondragover="allowDrop(event)">
+                                            <button class="deleteFeatureButton" type="button" th:onclick="${'deleteFeature(featureForm' + wizardScreen.screenTag + ')'}">Delete Feature</button>
+                                            <span class="featureTypeLabel" th:text="${wizardScreen.class.name}">wizardScreen.class.name</span>
+                                            <span class="featureTypeLabel"><input name="screenTitle" th:value="${wizardScreen.getScreenTitle()}" /></span>
+                                            <button type="button" style="display: none" th:id="${'updateFeatureButton' + wizardScreen.screenTag}" class="saveFeatureButton" th:onclick="${'postFeatureChanges(featureForm' + wizardScreen.screenTag + ')'}">Save Changes</button>
+                                        </div>
+                                        <div class="errorDiv"/>                                        
+                                        &nbsp;<span class="wizardScreenDetailsCheckBox"><input type="checkbox" th:id="${'wizardScreenDetailsCheckBox' + wizardScreen.screenTag}" th:onclick="'hideShowDetails(\''+${wizardScreen.screenTag}+'\')'">Hide details</input></span>
+                                        <div th:id="${'wizardScreenDetails' + wizardScreen.screenTag}">
+                                            <table>
+                                                <tr>
+                                                    <td>Screen Title</td>
+                                                    <td>Menu Label</td>
+                                                    <td>Screen Tag</td>
+                                                    <td>Next Button Label</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input name="screenTitle" th:value="${wizardScreen.screenTitle}" /></td>
+                                                    <td><input name="menuLabel" th:value="${wizardScreen.menuLabel}" /></td>
+                                                    <td><input name="screenTag" th:value="${wizardScreen.screenTag}" /></td>
+                                                    <td><input name="nextButton" th:value="${wizardScreen.nextButton}" /></td>
+                                                </tr>
+                                            </table>
+                                            <br/>
+                                            <div class="">
+                                                <b>AbstractWizardScreen</b><br/>
+                                                <span>Back Screen</span><span><input name="backWizardScreen" th:value="${(wizardScreen.getBackWizardScreen()!=null)?wizardScreen.getBackWizardScreen().getScreenTitle():''}" /></span><br/>
+                                                <span>Next Screen</span><span><input name="nextWizardScreen" th:value="${(wizardScreen.nextWizardScreen!=null)?wizardScreen.nextWizardScreen.getScreenTitle():''}" /></span><br/>
+                                                <span>Centre Screen</span><span><input type="checkbox" th:value="${wizardScreen.centreScreen}" /></span><br/>
+                                                <br/>                                                
+                                                <span>Screen Text</span><br/><span><span th:utext="${wizardScreen.getScreenText()}" /><textarea name="screenText" th:text="${wizardScreen.getScreenText()}" /></span><br/>
+                                            </div>
+                                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen'}">WizardAboutScreen</div>
+                                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen'}">WizardAgreementScreen</div>
+                                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAudioRecorderMetadataScreen'}">
+                                                <b>WizardAudioRecorderMetadataScreen</b><br/>
+                                                <span>next_button</span><span><input name="next_button" th:value="${wizardScreen.next_button}" /></span><br/>
+                                                <span>end_of_stimuli</span><span><input name="end_of_stimuli" th:value="${wizardScreen.end_of_stimuli}" /></span><br/>
+                                                <div th:each="metadataString : ${wizardScreen.metadataStrings}">
+                                                    <span>metadataStrings</span><span><textarea name="metadataStrings" th:text="${metadataString}" /></span><br/>
+                                                </div>
+                                            </div>
+                                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAudioTestScreen'}">
+                                                <b>WizardAudioTestScreen</b><br/>
+                                                <span>audioPath</span><span><input name="audioPath" th:value="${wizardScreen.audioPath}" /></span><br/>
+                                            </div>
+                                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen'}">
+                                                WizardCompletionScreen
+                                            
+                                            </div>
+                                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen'}">WizardEditUserScreen</div>
+                                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardExistingUserCheckScreen'}">WizardExistingUserCheckScreen</div>
+                                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardKinshipScreen'}">WizardKinshipScreen</div>
+                                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMenuScreen'}">WizardMenuScreen</div>
+                                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardRandomStimulusScreen'}">WizardRandomStimulusScreen</div>
+                                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreen'}">WizardScreen</div>
+                                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardSelectUserScreen'}">WizardSelectUserScreen</div>
+                                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardStimulusScreen'}">WizardStimulusScreen</div>
+                                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardSubmitDataScreen'}">WizardSubmitDataScreen</div>
+                                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen'}">
+                                                <b>WizardTextScreen</b>
+                                            </div>
+                                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardWelcomeScreen'}">WizardWelcomeScreen</div>
+                                        </div>
+                                        <!--<span th:text="${features.getFeatureText()}"></span>-->  
+                                        <!--                                            <span class="td featurescell" th:if="${features.getFeatureType() ne null} and ${features.getFeatureType().canHaveText()}">
+                                                                                        <textarea name="featureText" id="featureText" th:text="${features.getFeatureText()}" th:onchange="${'$(updateFeatureButton' + features.getId() + ').show();'}"></textarea>                                     
+                                                                                    </span>
+                                                                                    <span class="td">
+                                                                                        <div class="featurescell" th:unless="${features.getFeatureType() eq null} or ${#lists.isEmpty(features.getFeatureType().getFeatureAttributes())}">
+                                                                                            <table>
+                                                                                                <tr th:each="featureattribute : ${features.getFeatureType().getFeatureAttributes()}" >
+                                                                                                    <td th:text="${featureattribute.name()}">featureattribute.name()</td>
+                                                                                                    <td>
+                                                                                                        <input th:name="${featureattribute.name()}" th:value="${features.getFeatureAttributes(featureattribute.name())}" th:onchange="${'$(updateFeatureButton' + features.getId() + ').show();'}" />                                                            
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </table>
+                                                                                        </div>   
+                                                                                    </span>
+                                                                                    <span class="td">
+                                                                                        <input type="number" th:value="${features.getDisplayOrder()}" name="displayOrder" th:onchange="${'$(updateFeatureButton' + features.getId() + ').show();'}"/>
+                                                                                        <input type="hidden" th:value="${features.getId()}" name="id"/>
+                                                                                        <input type="hidden" th:value="${features.getFeatureType()}" name="featureType"/>
+                                                                                        <input type="hidden" th:name="${(objectType eq 'PresenterScreen')? 'screenId' : 'featureId'}" th:value="${presenterScreen.getId()}"/>
+                                                                                    </span>-->
+                                    </form>
+                                    <!--<div th:replace="screens :: features(presenterScreen=${features}, objectType='PresenterFeature')"></div>-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--                            <div class="addfeaturediv" th:if="(${objectType} eq 'PresenterScreen') or ${presenterScreen.getFeatureType() ne null and presenterScreen.getFeatureType().canHaveFeatures()}">
+                                                        <form th:id="${'addForm' + objectType + presenterScreen.getId()}" method="post">
+                                                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                                                            <div class="errorDiv"/>
+                                                            <select id="FeatureType" name="FeatureType">
+                                                                <option th:each="featuretype : ${featuretypes}" th:value="${featuretype}" th:text="${featuretype}" />
+                                                            </select>
+                                                            <input th:if="${objectType} eq 'PresenterScreen'" type="hidden" name="screenId" th:value="${presenterScreen.getId()}" />
+                                                            <input th:unless="${objectType} eq 'PresenterScreen'" type="hidden" name="featureId" th:value="${presenterScreen.getId()}" />
+                                                            <button type="button" th:onclick="${'insertFeature(addForm' + objectType + presenterScreen.getId() + ')'}">Add Feature</button>
+                                                        </form>
+                                                    </div>-->
+                    </div>
+                    <div class="tr"></div>
+                </div>
+            </div>
+            <script>
+                function hideShowDetails(wizardScreenTag)
+                {
+                    if ($('#wizardScreenDetailsCheckBox' + wizardScreenTag).is(":checked"))
+                        $('#wizardScreenDetails' + wizardScreenTag).hide();
+                    else
+                        $('#wizardScreenDetails' + wizardScreenTag).show();
+                }
+                function allowDrop(ev) {
+                    ev.preventDefault();
+                }
+
+                function drag(ev) {
+                    ev.dataTransfer.setData("text", ev.target.id);
+                }
+
+                function drop(ev) {
+                    ev.preventDefault();
+                    var data = ev.dataTransfer.getData("text");
+                    var list = document.getElementById("wizardScreenList");
+                    list.insertBefore(document.getElementById(data), ev.target);
+                }
+            </script>
         </div>
     </body>
 </html>
