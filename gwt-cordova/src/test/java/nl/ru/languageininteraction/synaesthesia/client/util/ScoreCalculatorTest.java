@@ -20,14 +20,16 @@ package nl.ru.languageininteraction.synaesthesia.client.util;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
-import nl.ru.languageininteraction.synaesthesia.client.model.ColourData;
-import nl.ru.languageininteraction.synaesthesia.client.model.GroupScoreData;
-import nl.ru.languageininteraction.synaesthesia.client.model.StimuliGroup;
-import nl.ru.languageininteraction.synaesthesia.client.model.Stimulus;
-import nl.ru.languageininteraction.synaesthesia.client.model.StimulusResponse;
-import nl.ru.languageininteraction.synaesthesia.client.model.StimulusResponseGroup;
-import nl.ru.languageininteraction.synaesthesia.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.model.Stimulus;
+import nl.mpi.tg.eg.experiment.client.model.UserData;
+import nl.mpi.tg.eg.experiment.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.model.colour.ColourData;
+import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponse;
+import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponseGroup;
+import nl.ru.languageininteraction.language.client.model.StimuliGroup;
+import nl.mpi.tg.eg.experiment.client.model.colour.GroupScoreData;
 import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
@@ -38,31 +40,102 @@ import org.junit.Test;
  */
 public class ScoreCalculatorTest {
 
-    private UserResults getUserResults(String userId) {
-        final UserResults userResults = new UserResults(new StimuliGroup(null, null, null));
+    private Stimulus getStimulus(final String label) {
+        return new Stimulus() {
+            @Override
+            public String getCode() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public String getLabel() {
+                return label;
+            }
+
+            @Override
+            public int getPauseMs() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public String getUniqueId() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public boolean isImage() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public boolean isMp3() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public boolean isMp4() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public boolean isOgg() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public String getMp3() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public String getImage() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public String getMp4() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public String getOgg() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public List<?> getTags() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+        };
+
+    }
+
+    private UserResults getUserResults(String userId, final StimulusResponseGroup lettersNumbersGroup) {
+        final UserResults userResults = new UserResults(new UserData());
         final String resourcePath = "/nl/ru/languageininteraction/testdata/" + userId;
         System.out.println("resourcePath:" + resourcePath);
         final InputStream testDataStream = ScoreCalculatorTest.class.getClass().getResourceAsStream(resourcePath);
         Scanner scanner = new Scanner(testDataStream);
         scanner.useDelimiter("\t");
 
-        userResults.setMetadataValue("user", userId);
+//        userResults.setMetadataValue("user", userId);
         ArrayList<Stimulus> stimulusList = null;
-        StimulusResponseGroup stimulusResponseGroup = null;
+        StimulusResponseGroup stimulusResponseGroup = new StimulusResponseGroup("other", "other");
         while (scanner.hasNext()) {
             String user = scanner.next();
             if (!"1772837".equals(user)) {
                 System.out.print("\n new group: " + user);
-                stimulusResponseGroup = new StimulusResponseGroup();
+                stimulusResponseGroup = lettersNumbersGroup;
                 stimulusList = new ArrayList<>();
-                userResults.addStimulusResponseGroup(new StimuliGroup(user, null, stimulusList), stimulusResponseGroup);
+                userResults.addStimulusResponseGroup(stimulusResponseGroup);
                 user = scanner.next().trim();
             }
             assertEquals("1772837", user);
             System.out.print("\n user" + user);
             String grapheme = scanner.next();
             System.out.print(" grapheme" + grapheme);
-            final Stimulus stimulus = new Stimulus(grapheme);
+            final Stimulus stimulus = getStimulus(grapheme);
             if (!stimulusList.contains(stimulus)) {
                 stimulusList.add(stimulus);
             }
@@ -90,46 +163,46 @@ public class ScoreCalculatorTest {
     @Test
     public void testGetScore_Stimulus() {
         System.out.println("getScore");
-        final UserResults userResults = getUserResults("syn1772837");
+        final StimulusResponseGroup lettersNumbersGroup = new StimulusResponseGroup("LettersNumbers", "LettersNumbers");
+        final UserResults userResults = getUserResults("syn1772837", lettersNumbersGroup);
         final ScoreCalculator scoreCalculator = new ScoreCalculator(userResults);
-        final StimuliGroup[] stimuliGroupArray = scoreCalculator.getStimuliGroups().toArray(new StimuliGroup[0]);
-        final StimuliGroup lettersNumbersGroup = stimuliGroupArray[1];
+//        final StimuliGroup[] stimuliGroupArray = scoreCalculator.getStimuliGroups().toArray(new StimuliGroup[0]);
         assertEquals("LettersNumbers", lettersNumbersGroup.getGroupLabel());
         final GroupScoreData lettersNumbersScores = scoreCalculator.calculateScores(lettersNumbersGroup);
         int index = 0;
-        assertEquals("0", lettersNumbersScores.getScoreDataList().get(index).getStimulus().getValue());
+        assertEquals("0", lettersNumbersScores.getScoreDataList().get(index).getStimulus().getLabel());
         float score0 = lettersNumbersScores.getScoreDataList().get(index).getDistance();
 //        assertEquals(0.03, calculatedScores.get(index).getDistance(), 0.01);
         assertEquals(207, lettersNumbersScores.getScoreDataList().get(index).getAverageLuminance(), 0.01);
         index += 3;
-        assertEquals("3", lettersNumbersScores.getScoreDataList().get(index).getStimulus().getValue());
+        assertEquals("3", lettersNumbersScores.getScoreDataList().get(index).getStimulus().getLabel());
         assertEquals(null, lettersNumbersScores.getScoreDataList().get(index).getDistance());
         assertEquals(189, lettersNumbersScores.getScoreDataList().get(index).getAverageLuminance(), 0.01);
         index += 3;
-        assertEquals("6", lettersNumbersScores.getScoreDataList().get(index).getStimulus().getValue());
+        assertEquals("6", lettersNumbersScores.getScoreDataList().get(index).getStimulus().getLabel());
         assertEquals(null, lettersNumbersScores.getScoreDataList().get(index).getDistance());
         assertEquals(0, lettersNumbersScores.getScoreDataList().get(index).getAverageLuminance(), 0.01);
         index += 4;
-        assertEquals("A", lettersNumbersScores.getScoreDataList().get(index).getStimulus().getValue());
+        assertEquals("A", lettersNumbersScores.getScoreDataList().get(index).getStimulus().getLabel());
         float scoreA = lettersNumbersScores.getScoreDataList().get(index).getDistance();
 //        assertEquals(0.18, calculatedScores.get(index).getDistance(), 0.01);
         assertEquals(112, lettersNumbersScores.getScoreDataList().get(index).getAverageLuminance(), 0.01);
         index += 2;
-        assertEquals("C", lettersNumbersScores.getScoreDataList().get(index).getStimulus().getValue());
+        assertEquals("C", lettersNumbersScores.getScoreDataList().get(index).getStimulus().getLabel());
         float scoreC = lettersNumbersScores.getScoreDataList().get(index).getDistance();
         index += 2;
-        assertEquals("E", lettersNumbersScores.getScoreDataList().get(index).getStimulus().getValue());
+        assertEquals("E", lettersNumbersScores.getScoreDataList().get(index).getStimulus().getLabel());
         float scoreE = lettersNumbersScores.getScoreDataList().get(index).getDistance();
 //        assertEquals(0.29, calculatedScores.get(index).getDistance(), 0.01);
         assertEquals(129, lettersNumbersScores.getScoreDataList().get(index).getAverageLuminance(), 0.01);
         index += 3;
-        assertEquals("H", lettersNumbersScores.getScoreDataList().get(index).getStimulus().getValue());
+        assertEquals("H", lettersNumbersScores.getScoreDataList().get(index).getStimulus().getLabel());
         float scoreH = lettersNumbersScores.getScoreDataList().get(index).getDistance();
         index += 5;
-        assertEquals("M", lettersNumbersScores.getScoreDataList().get(index).getStimulus().getValue());
+        assertEquals("M", lettersNumbersScores.getScoreDataList().get(index).getStimulus().getLabel());
         float scoreM = lettersNumbersScores.getScoreDataList().get(index).getDistance();
         index += 6;
-        assertEquals("S", lettersNumbersScores.getScoreDataList().get(index).getStimulus().getValue());
+        assertEquals("S", lettersNumbersScores.getScoreDataList().get(index).getStimulus().getLabel());
         float scoreS = lettersNumbersScores.getScoreDataList().get(index).getDistance();
         assertEquals(1.12, lettersNumbersScores.getScore(), 0.003);
 
@@ -141,12 +214,12 @@ public class ScoreCalculatorTest {
         Assert.assertTrue(scoreH < scoreA);
         Assert.assertTrue(scoreA < scoreE);
 
-        final StimuliGroup chordsGroup = stimuliGroupArray[0];
+        final StimulusResponseGroup chordsGroup = new StimulusResponseGroup("Chords", "Chords");
         assertEquals("Chords", chordsGroup.getGroupLabel());
         final GroupScoreData chordsGroupScores = scoreCalculator.calculateScores(chordsGroup);
         assertEquals(1.8568627138932545, chordsGroupScores.getScore(), 0.001);
 
-        final StimuliGroup instrumentsGroup = stimuliGroupArray[2];
+        final StimulusResponseGroup instrumentsGroup = new StimulusResponseGroup("Instruments", "Instruments");
         assertEquals("Instruments", instrumentsGroup.getGroupLabel());
         final GroupScoreData instrumentsGroupScores = scoreCalculator.calculateScores(instrumentsGroup);
         assertEquals(0.7225490137934685, instrumentsGroupScores.getScore(), 0.001);
@@ -179,25 +252,24 @@ public class ScoreCalculatorTest {
 //        fail("The test case is a prototype.");
 //    }
     private GroupScoreData getGroupScoreData() {
-        final UserResults userResults = new UserResults(new StimuliGroup(null, null, null));
+        final UserResults userResults = new UserResults(new UserData());
         ScoreCalculator scoreCalculator = new ScoreCalculator(userResults);
-        final ArrayList<Stimulus> stimulusList = new ArrayList<Stimulus>();
-        stimulusList.add(new Stimulus("A"));
-        stimulusList.add(new Stimulus("B"));
-        stimulusList.add(new Stimulus("C"));
-        stimulusList.add(new Stimulus("D"));
-        stimulusList.add(new Stimulus("E"));
-        stimulusList.add(new Stimulus("F"));
-        final StimulusResponseGroup stimulusResponseGroup = new StimulusResponseGroup();
+        final ArrayList<Stimulus> stimulusList = new ArrayList<>();
+        stimulusList.add(getStimulus("A"));
+        stimulusList.add(getStimulus("B"));
+        stimulusList.add(getStimulus("C"));
+        stimulusList.add(getStimulus("D"));
+        stimulusList.add(getStimulus("E"));
+        stimulusList.add(getStimulus("F"));
+        final StimulusResponseGroup stimulusResponseGroup = new StimulusResponseGroup("TestStimulusGroup", "TestStimulusGroup");
         stimulusResponseGroup.addResponse(stimulusList.get(0), new StimulusResponse(new ColourData(0, 0, 0), null, 1500));
         stimulusResponseGroup.addResponse(stimulusList.get(1), new StimulusResponse(new ColourData(0, 0, 0), null, 1234));
         stimulusResponseGroup.addResponse(stimulusList.get(2), new StimulusResponse(new ColourData(0, 0, 0), null, 1000));
         stimulusResponseGroup.addResponse(stimulusList.get(3), new StimulusResponse(new ColourData(0, 0, 0), null, 96));
         stimulusResponseGroup.addResponse(stimulusList.get(4), new StimulusResponse(new ColourData(0, 0, 0), null, 1000));
         stimulusResponseGroup.addResponse(stimulusList.get(5), new StimulusResponse(new ColourData(0, 0, 0), null, 500));
-        final StimuliGroup stimuliGroup = new StimuliGroup("TestStimulusGroup", null, stimulusList);
-        userResults.addStimulusResponseGroup(stimuliGroup, stimulusResponseGroup);
-        return scoreCalculator.calculateScores(stimuliGroup);
+        userResults.addStimulusResponseGroup(stimulusResponseGroup);
+        return scoreCalculator.calculateScores(stimulusResponseGroup);
     }
 
     /**
