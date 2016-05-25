@@ -21,6 +21,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
@@ -28,7 +29,6 @@ import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.model.colour.ColourData;
 import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponse;
 import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponseGroup;
-import nl.ru.languageininteraction.language.client.model.StimuliGroup;
 import nl.mpi.tg.eg.experiment.client.model.colour.GroupScoreData;
 import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
@@ -107,11 +107,40 @@ public class ScoreCalculatorTest {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 
+            @Override
+            public int compareTo(Stimulus o) {
+                return this.getLabel().compareTo(o.getLabel());
+            }
+
+            @Override
+            public int hashCode() {
+                int hash = 7;
+                hash = 79 * hash + Objects.hashCode(this.getLabel());
+                return hash;
+            }
+
+            @Override
+            public boolean equals(Object obj) {
+                if (this == obj) {
+                    return true;
+                }
+                if (obj == null) {
+                    return false;
+                }
+                if (getClass() != obj.getClass()) {
+                    return false;
+                }
+                final Stimulus other = (Stimulus) obj;
+                if (!Objects.equals(this.getLabel(), other.getLabel())) {
+                    return false;
+                }
+                return true;
+            }
         };
 
     }
 
-    private UserResults getUserResults(String userId, final StimulusResponseGroup lettersNumbersGroup) {
+    private UserResults getUserResults(String userId) {
         final UserResults userResults = new UserResults(new UserData());
         final String resourcePath = "/nl/ru/languageininteraction/testdata/" + userId;
         System.out.println("resourcePath:" + resourcePath);
@@ -126,7 +155,11 @@ public class ScoreCalculatorTest {
             String user = scanner.next();
             if (!"1772837".equals(user)) {
                 System.out.print("\n new group: " + user);
-                stimulusResponseGroup = lettersNumbersGroup;
+//                if (lettersNumbersGroup.getGroupLabel().equals(user)) {
+//                    stimulusResponseGroup = lettersNumbersGroup;
+//                } else {
+                stimulusResponseGroup = new StimulusResponseGroup(user, user);
+//                }
                 stimulusList = new ArrayList<>();
                 userResults.addStimulusResponseGroup(stimulusResponseGroup);
                 user = scanner.next().trim();
@@ -163,8 +196,8 @@ public class ScoreCalculatorTest {
     @Test
     public void testGetScore_Stimulus() {
         System.out.println("getScore");
-        final StimulusResponseGroup lettersNumbersGroup = new StimulusResponseGroup("LettersNumbers", "LettersNumbers");
-        final UserResults userResults = getUserResults("syn1772837", lettersNumbersGroup);
+        final UserResults userResults = getUserResults("syn1772837");
+        final StimulusResponseGroup lettersNumbersGroup = userResults.getStimulusResponseGroups().get(0);
         final ScoreCalculator scoreCalculator = new ScoreCalculator(userResults);
 //        final StimuliGroup[] stimuliGroupArray = scoreCalculator.getStimuliGroups().toArray(new StimuliGroup[0]);
         assertEquals("LettersNumbers", lettersNumbersGroup.getGroupLabel());
@@ -214,12 +247,12 @@ public class ScoreCalculatorTest {
         Assert.assertTrue(scoreH < scoreA);
         Assert.assertTrue(scoreA < scoreE);
 
-        final StimulusResponseGroup chordsGroup = new StimulusResponseGroup("Chords", "Chords");
+        final StimulusResponseGroup chordsGroup = userResults.getStimulusResponseGroups().get(1);
         assertEquals("Chords", chordsGroup.getGroupLabel());
         final GroupScoreData chordsGroupScores = scoreCalculator.calculateScores(chordsGroup);
         assertEquals(1.8568627138932545, chordsGroupScores.getScore(), 0.001);
 
-        final StimulusResponseGroup instrumentsGroup = new StimulusResponseGroup("Instruments", "Instruments");
+        final StimulusResponseGroup instrumentsGroup = userResults.getStimulusResponseGroups().get(2);
         assertEquals("Instruments", instrumentsGroup.getGroupLabel());
         final GroupScoreData instrumentsGroupScores = scoreCalculator.calculateScores(instrumentsGroup);
         assertEquals(0.7225490137934685, instrumentsGroupScores.getScore(), 0.001);

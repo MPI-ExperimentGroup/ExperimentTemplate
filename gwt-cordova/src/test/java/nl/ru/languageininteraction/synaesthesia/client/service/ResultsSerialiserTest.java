@@ -20,6 +20,7 @@ package nl.ru.languageininteraction.synaesthesia.client.service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import nl.mpi.tg.eg.experiment.client.exception.StimulusError;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
@@ -105,8 +106,36 @@ public class ResultsSerialiserTest {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 
-        };
+            @Override
+            public int compareTo(Stimulus o) {
+                return this.getLabel().compareTo(o.getLabel());
+            }
 
+            @Override
+            public int hashCode() {
+                int hash = 7;
+                hash = 79 * hash + Objects.hashCode(this.getLabel());
+                return hash;
+            }
+
+            @Override
+            public boolean equals(Object obj) {
+                if (this == obj) {
+                    return true;
+                }
+                if (obj == null) {
+                    return false;
+                }
+                if (getClass() != obj.getClass()) {
+                    return false;
+                }
+                final Stimulus other = (Stimulus) obj;
+                if (!Objects.equals(this.getLabel(), other.getLabel())) {
+                    return false;
+                }
+                return true;
+            }
+        };
     }
 
     /**

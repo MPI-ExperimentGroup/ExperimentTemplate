@@ -17,9 +17,8 @@
  */
 package nl.ru.languageininteraction.synaesthesia.client.service;
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Date;
+import java.util.SortedSet;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
@@ -37,13 +36,7 @@ public abstract class ResultsSerialiser {
     public String serialise(UserResults userResults, MetadataField postName_email) {
         StringBuilder stringBuilder = new StringBuilder();
         for (StimulusResponseGroup responseGroup : userResults.getStimulusResponseGroups()) {
-            final ArrayList<Stimulus> stimuliList = new ArrayList(responseGroup.getStimuli());
-            stimuliList.sort(new Comparator<Stimulus>() {
-                @Override
-                public int compare(Stimulus o1, Stimulus o2) {
-                    return o1.getLabel().compareTo(o2.getLabel());
-                }
-            });
+            final SortedSet<Stimulus> stimuliList = responseGroup.getStimuli();
             for (Stimulus stimulus : stimuliList) {
                 for (StimulusResponse response : responseGroup.getResults(stimulus)) {
                     stringBuilder.append(userResults.getUserData().getMetadataValue(postName_email));

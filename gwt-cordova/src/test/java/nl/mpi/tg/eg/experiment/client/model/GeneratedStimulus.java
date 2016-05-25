@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experiment.client.model;
 
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.List;
 
 /**
@@ -255,4 +256,32 @@ public class GeneratedStimulus implements Stimulus {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public int compareTo(Stimulus o) {
+        return this.uniqueId.compareTo(o.getUniqueId());
+    }
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.uniqueId);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Stimulus other = (Stimulus) obj;
+        if (!Objects.equals(this.uniqueId, other.getUniqueId())) {
+            return false;
+        }
+        return true;
+    }
 }

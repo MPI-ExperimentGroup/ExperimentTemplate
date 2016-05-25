@@ -19,7 +19,7 @@ package nl.mpi.tg.eg.experiment.client.util;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+import java.util.SortedSet;
 import java.util.logging.Logger;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
@@ -45,17 +45,17 @@ public class ScoreCalculator {
     }
 
     public GroupScoreData calculateScores(final StimulusResponseGroup stimulusResponseGroup) {
-//        System.out.println(group.getGroupLabel() + "<table>");
+//        System.out.println(stimulusResponseGroup.getGroupLabel() + "<table>");
         float score = 0;
         double accuracy = 0;
         double totalValidReactionTime = 0;
         int validResponseCount = 0;
         ArrayList<ScoreData> scoreList = new ArrayList<>();
-        final Set<Stimulus> allStimulus = stimulusResponseGroup.getStimuli();
+        final SortedSet<Stimulus> allStimulus = stimulusResponseGroup.getStimuli();
         int columnCount = stimulusResponseGroup.getMaxResponses();
         final ArrayList<Double> validTimesList = new ArrayList<>();
         for (Stimulus stimulus : allStimulus) {
-//            System.out.print("<tr><td>" + stimulus.getValue() + "</td>");
+//            System.out.print("<tr><td>" + stimulus.getLabel()+ "</td>");
             int totalReactionTime = 0;
             final ArrayList<ColourData> colourList = new ArrayList<>();
             List<StimulusResponse> responseList = stimulusResponseGroup.getResults(stimulus);

@@ -23,7 +23,7 @@ import java.util.List;
  * @since Jan 11, 2016 4:04:44 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public interface Stimulus {
+public interface Stimulus extends Comparable<Stimulus> {
 
     String getCode();
 
