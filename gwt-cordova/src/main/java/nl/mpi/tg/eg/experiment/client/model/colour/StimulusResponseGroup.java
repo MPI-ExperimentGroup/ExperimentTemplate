@@ -21,7 +21,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
 
@@ -59,8 +60,9 @@ public class StimulusResponseGroup {
         }
     }
 
-    public Set<Stimulus> getStimuli() {
-        return Collections.<Stimulus>unmodifiableSet(stimulusResponses.keySet());
+    public SortedSet<Stimulus> getStimuli() {
+        final TreeSet treeSet = new TreeSet(stimulusResponses.keySet());
+        return Collections.<Stimulus>unmodifiableSortedSet(treeSet);
     }
 
     public List<StimulusResponse> getResults(Stimulus stimulus) {
