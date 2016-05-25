@@ -53,7 +53,7 @@ public class ReportView extends ComplexView {
                     label.getElement().setAttribute("style", "color: grey;background: none;");
                 } else {
                     String foreground = (colour.getRed() + colour.getGreen() + colour.getBlue() > 128 * 3) ? "#A9A9A9" : "#D3D3D3";
-                    label.getElement().setAttribute("style", "background:" + foreground + ";color:rgb(" + colour.getRed() + "," + colour.getGreen() + "," + colour.getBlue() + ")");
+                    label.getElement().setAttribute("style", "background:" + foreground + ";color:rgb(" + colour.getRed() + "," + colour.getGreen() + "," + colour.getBlue() + "); padding:5px;");
                 }
                 grid.setWidget(row, column, label);
             }
