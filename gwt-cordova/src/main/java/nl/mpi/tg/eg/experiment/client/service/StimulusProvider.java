@@ -71,8 +71,8 @@ public class StimulusProvider {
         return wordTag;
     }
 
-    public void getSubset(final List<Tag> selectionTags, final boolean randomise, final String seenList) {
-        getSubset(selectionTags, stimulusArray.size(), randomise, seenList);
+    public void getSubset(final List<Tag> selectionTags, final boolean randomise, final int repeatCount, final String seenList) {
+        getSubset(selectionTags, stimulusArray.size(), randomise, repeatCount, seenList);
     }
 
     public void getSdCardSubset(final ArrayList<String> directoryTagArray, final List<String[]> directoryList, final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final int maxStimulusCount, final boolean randomise, final String seenList) {
@@ -116,21 +116,25 @@ public class StimulusProvider {
         }
     }
 
-    public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final String seenList) {
+    public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final String seenList) {
         List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
-        getSubset(selectionTags, maxStimulusCount, randomise, seenList, stimulusListCopy);
+        getSubset(selectionTags, maxStimulusCount, randomise, repeatCount, seenList, stimulusListCopy);
     }
 
-    public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final String seenList, List<Stimulus> stimulusListCopy) {
-        stimulusSubsetArray.clear();
-        while (!stimulusListCopy.isEmpty() && maxStimulusCount > stimulusSubsetArray.size()) {
+    public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final String seenList, List<Stimulus> stimulusListCopy) {
+        final List<Stimulus> stimulusSubsetArrayTemp = new ArrayList<>();
+        while (!stimulusListCopy.isEmpty() && maxStimulusCount > stimulusSubsetArrayTemp.size()) {
             final int nextIndex = (randomise) ? new Random().nextInt(stimulusListCopy.size()) : 0;
             Stimulus stimulus = stimulusListCopy.remove(nextIndex);
             if (stimulus.getTags().containsAll(selectionTags)) {
                 if (!seenList.contains(stimulus.getUniqueId())) {
-                    stimulusSubsetArray.add(stimulus);
+                    stimulusSubsetArrayTemp.add(stimulus);
                 }
             }
+        }
+        stimulusSubsetArray.clear();
+        for (int repeatIndex = 0; repeatIndex < repeatCount; repeatIndex++) {
+            stimulusSubsetArray.addAll(stimulusSubsetArrayTemp);
         }
         totalStimuli = stimulusSubsetArray.size();
     }

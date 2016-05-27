@@ -124,11 +124,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
-    protected void loadAllStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final List<GeneratedStimulus.Tag> randomTags, final boolean randomise, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+    protected void loadAllStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final List<GeneratedStimulus.Tag> randomTags, final boolean randomise, int repeatCount, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         // todo: implement randomTags
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
         final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST);
-        stimulusProvider.getSubset(selectionTags, randomise, seenStimulusList);
+        stimulusProvider.getSubset(selectionTags, randomise, repeatCount, seenStimulusList);
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
         showStimulus();
@@ -175,7 +175,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                                 loadSdCardStimulus(directory[1], selectionTags, directory[0], randomTags, maxStimulusCount, randomise, hasMoreStimulusListener, new TimedStimulusListener() {
                                     @Override
                                     public void postLoadTimerFired() {
-                                        localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), directory[0], Boolean.toString(true));
+                                        localStorage.setStoredDataValue(userResults.getUserData().getUserId(), directory[0], Boolean.toString(true));
                                         // go back to the initial directory 
                                         loadSdCardStimulus(eventTag, selectionTags, subDirectory, randomTags, maxStimulusCount, randomise, hasMoreStimulusListener, endOfStimulusListener);
                                     }
@@ -198,7 +198,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }, maxStimulusCount, randomise, seenStimulusList);
     }
 
-    protected void loadStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final List<GeneratedStimulus.Tag> randomTags, final int maxStimulusCount, final boolean randomise, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+    protected void loadStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final List<GeneratedStimulus.Tag> randomTags, final int maxStimulusCount, final boolean randomise, int repeatCount, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
         final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST);
         final List<GeneratedStimulus.Tag> allocatedTags = new ArrayList<>(selectionTags);
@@ -212,7 +212,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 allocatedTags.add(stimulusAllocation);
             }
         }
-        stimulusProvider.getSubset(allocatedTags, maxStimulusCount, randomise, seenStimulusList);
+        stimulusProvider.getSubset(allocatedTags, maxStimulusCount, randomise, repeatCount, seenStimulusList);
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
         showStimulus();
