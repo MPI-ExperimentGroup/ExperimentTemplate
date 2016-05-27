@@ -410,6 +410,7 @@ public class SynQuiz2 {
         loadStimuliFeature.addStimulusTag(screenName);
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, screenName);
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "true");
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "3");
         presenterFeatureList.add(loadStimuliFeature);
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
 //        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));

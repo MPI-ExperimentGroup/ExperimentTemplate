@@ -4,7 +4,7 @@
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Nem blong man/woman we i toktok"/>
     </metadata>
     <presenter displayOrder="1" menuLabel="Welkam" type="menu" self="Welkam" title="Welkam">
-        <menuItem featureText="Instruksen" target="Instructions"/>
+        <menuItem featureText="Instruksen" target="Instruksen"/>
         <menuItem featureText="Stat - Go long program nao" target="Start"/>
     </presenter>
     <presenter back="Welkam" displayOrder="2" menuLabel="Start" next="Edit_User" type="metadata" self="Start" title="Start">
@@ -27,8 +27,8 @@
     </presenter>
     <presenter back="Welkam" displayOrder="4" menuLabel="Infomesen blong man/woman we i toktok" next="Konsen" type="metadata" self="Edit_User" title="Infomesen blong man/woman we i toktok">
         <metadataField fieldName="workerId"/>
-        <saveMetadataButton featureText="Savem infomesen" sendData="false">
-            <onError featureText="Could not contact the server, please check your internet connection and try again."/>
+        <saveMetadataButton featureText="Savem infomesen" sendData="false" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+            <onError/>
             <onSuccess>
                 <autoNextPresenter/>
             </onSuccess>
@@ -42,7 +42,7 @@
         <targetButton featureText="Prestem ples hea sapos yu agri." target="MetadataScreen"/>
     </presenter>
     <presenter back="Welkam" displayOrder="7" menuLabel="Metadata" next="PicturesScreen" type="stimulus" self="MetadataScreen" title="Metadata">
-        <loadAllStimulus eventTag="Metadata" randomise="false">
+        <loadAllStimulus eventTag="Metadata" randomise="false" repeatCount="1">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="Metadata" wavFormat="true" filePerStimulus="false"/>
                 <startAudioRecorderTag eventTier="1"/>
@@ -64,7 +64,7 @@
         </loadAllStimulus>
     </presenter>
     <presenter back="Welkam" displayOrder="8" menuLabel="Lukluk ol foto" type="stimulus" self="PicturesScreen" title="Lukluk ol foto">
-        <loadSdCardStimulus eventTag="Lukluk ol foto" randomise="true" maxStimuli="1000">
+        <loadSdCardStimulus eventTag="Lukluk ol foto" randomise="true" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="Lukluk ol foto" wavFormat="true" filePerStimulus="true"/>
                 <startAudioRecorderTag eventTier="1"/>
@@ -145,25 +145,25 @@
             </stimuli>
         </loadSdCardStimulus>
     </presenter>
-    <presenter displayOrder="11" menuLabel="Debug Screen" type="debug" self="DebugScreen" title="Debug Screen">
+    <presenter displayOrder="9" menuLabel="Debug Screen" type="debug" self="DebugScreen" title="Debug Screen">
         <versionData/>
         <eraseLocalStorageButton/>
         <localStorageData/>
     </presenter>
     <stimuli>
-        <stimulus code="I_stap_rikod_nao._Man_o_woman_we_i_toktok_bai_i_talem_nem_blong_hem." label="I stap rikod nao. Man o woman we i toktok bai i talem nem blong hem." pauseMs="0">
+        <stimulus code="I_stap_rikod_nao__Man_o_woman_we_i_toktok_bai_i_talem_nem_blong_hem_" label="I stap rikod nao. Man o woman we i toktok bai i talem nem blong hem." pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus code="Bai_i_talem_nem_blong_lanwis_wea_it_toktok_long_hem." label="Bai i talem nem blong lanwis wea it toktok long hem." pauseMs="0">
+        <stimulus code="Bai_i_talem_nem_blong_lanwis_wea_it_toktok_long_hem_" label="Bai i talem nem blong lanwis wea it toktok long hem." pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus code="Bai_i_talem_nem_blong_ples_wea_i_stap_nao." label="Bai i talem nem blong ples wea i stap nao." pauseMs="0">
+        <stimulus code="Bai_i_talem_nem_blong_ples_wea_i_stap_nao_" label="Bai i talem nem blong ples wea i stap nao." pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus code="Bai_i_talem_nem_blong_ples_wea_i_bon_long_hem." label="Bai i talem nem blong ples wea i bon long hem." pauseMs="0">
+        <stimulus code="Bai_i_talem_nem_blong_ples_wea_i_bon_long_hem_" label="Bai i talem nem blong ples wea i bon long hem." pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus code="Bai_i_talem_wanem_yea_i_bon." label="Bai i talem wanem yea i bon." pauseMs="0">
+        <stimulus code="Bai_i_talem_wanem_yea_i_bon_" label="Bai i talem wanem yea i bon." pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
         <stimulus baseFilePath="Pictures" code="Pictures" image="Pictures" label="Pictures" pauseMs="0">

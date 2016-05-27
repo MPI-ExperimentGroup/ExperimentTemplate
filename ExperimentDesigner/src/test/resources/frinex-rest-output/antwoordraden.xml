@@ -21,8 +21,8 @@
         <metadataField fieldName="lastName"/>
         <metadataField fieldName="age"/>
         <metadataField fieldName="gender"/>
-        <saveMetadataButton featureText="Save Details" sendData="true">
-            <onError featureText="Could not contact the server, please check your internet connection and try again."/>
+        <saveMetadataButton featureText="Save Details" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+            <onError/>
             <onSuccess>
                 <autoNextPresenter/>
             </onSuccess>
@@ -37,7 +37,7 @@
     </presenter>
     <presenter displayOrder="5" menuLabel="StimulusScreenP" next="StimulusScreenE" type="stimulus" self="StimulusScreenP" title="StimulusScreenP">
         <centrePage/>
-        <loadStimulus eventTag="StimulusScreenP" randomise="true" maxStimuli="1000">
+        <loadStimulus eventTag="StimulusScreenP" randomise="true" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusImage msToNext="1000" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <actionButton featureText="volgende [ spatiebalk ]" eventTag="volgende [ spatiebalk ]" hotKey="SPACE">
@@ -70,7 +70,7 @@
     </presenter>
     <presenter displayOrder="6" menuLabel="StimulusScreenE" next="Finished" type="stimulus" self="StimulusScreenE" title="StimulusScreenE">
         <centrePage/>
-        <loadStimulus eventTag="StimulusScreenE" randomise="true" maxStimuli="1000">
+        <loadStimulus eventTag="StimulusScreenE" randomise="true" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusImage msToNext="1000" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <actionButton featureText="volgende [ spatiebalk ]" eventTag="volgende [ spatiebalk ]" hotKey="SPACE">

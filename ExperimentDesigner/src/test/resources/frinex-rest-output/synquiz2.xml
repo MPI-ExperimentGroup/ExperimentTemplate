@@ -149,8 +149,8 @@
         <metadataField fieldName="emailAddress"/>
         <metadataField fieldName="optionCheckBox1"/>
         <metadataField fieldName="mandatoryCheckBox"/>
-        <saveMetadataButton featureText="Continue" sendData="true">
-            <onError featureText="Could not contact the server, please check your internet connection and try again."/>
+        <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+            <onError/>
             <onSuccess>
                 <autoNextPresenter/>
             </onSuccess>
@@ -168,8 +168,8 @@
         <metadataField fieldName="Dyslexia"/>
         <metadataField fieldName="BrainSurgery"/>
         <metadataField fieldName="AnyOtherConditions"/>
-        <saveMetadataButton featureText="Continue" sendData="true">
-            <onError featureText="Could not contact the server, please check your internet connection and try again."/>
+        <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+            <onError/>
             <onSuccess>
                 <autoNextPresenter/>
             </onSuccess>
@@ -177,8 +177,8 @@
     </presenter>
     <presenter back="Details" displayOrder="6" menuLabel="Study" next="Colour" type="metadata" self="Study" title="Tell us about your synaesthesia: Study(1/8)">
         <plainText featureText="Our study at the Max Planck Institute focuses on synaesthesia where numbers, letters, weekdays, or months cause people to have a colour experience. To someone with synaesthesia, the letter A might &quot;mean&quot; red to them, or the number &quot;5&quot; might make them experience the colour green. Please let us know if you experience any other types of synaesthesia by checking the boxes in the following screens. We may contact you in the future about studies related to these other types."/>
-        <saveMetadataButton featureText="Continue" sendData="true">
-            <onError featureText="Could not contact the server, please check your internet connection and try again."/>
+        <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+            <onError/>
             <onSuccess>
                 <autoNextPresenter/>
             </onSuccess>
@@ -203,8 +203,8 @@
         <metadataField fieldName="Sound__Colour"/>
         <metadataField fieldName="American_Sign____Colour"/>
         <metadataField fieldName="British_Sign____Colour"/>
-        <saveMetadataButton featureText="Continue" sendData="true">
-            <onError featureText="Could not contact the server, please check your internet connection and try again."/>
+        <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+            <onError/>
             <onSuccess>
                 <autoNextPresenter/>
             </onSuccess>
@@ -229,8 +229,8 @@
         <metadataField fieldName="Sound__Smell"/>
         <metadataField fieldName="American_Sign__Smell"/>
         <metadataField fieldName="British_Sign__Smell"/>
-        <saveMetadataButton featureText="Continue" sendData="true">
-            <onError featureText="Could not contact the server, please check your internet connection and try again."/>
+        <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+            <onError/>
             <onSuccess>
                 <autoNextPresenter/>
             </onSuccess>
@@ -255,8 +255,8 @@
         <metadataField fieldName="Sound__Sound"/>
         <metadataField fieldName="American_Sign__Sound"/>
         <metadataField fieldName="British_Sign__Sound"/>
-        <saveMetadataButton featureText="Continue" sendData="true">
-            <onError featureText="Could not contact the server, please check your internet connection and try again."/>
+        <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+            <onError/>
             <onSuccess>
                 <autoNextPresenter/>
             </onSuccess>
@@ -281,8 +281,8 @@
         <metadataField fieldName="Sound__Spatial"/>
         <metadataField fieldName="American_Sign__Spatial"/>
         <metadataField fieldName="British_Sign__Spatial"/>
-        <saveMetadataButton featureText="Continue" sendData="true">
-            <onError featureText="Could not contact the server, please check your internet connection and try again."/>
+        <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+            <onError/>
             <onSuccess>
                 <autoNextPresenter/>
             </onSuccess>
@@ -307,8 +307,8 @@
         <metadataField fieldName="Sound__Taste"/>
         <metadataField fieldName="American_Sign__Taste"/>
         <metadataField fieldName="British_Sign__Taste"/>
-        <saveMetadataButton featureText="Continue" sendData="true">
-            <onError featureText="Could not contact the server, please check your internet connection and try again."/>
+        <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+            <onError/>
             <onSuccess>
                 <autoNextPresenter/>
             </onSuccess>
@@ -333,8 +333,8 @@
         <metadataField fieldName="Sound__Touch"/>
         <metadataField fieldName="American_Sign__Touch"/>
         <metadataField fieldName="British_Sign__Touch"/>
-        <saveMetadataButton featureText="Continue" sendData="true">
-            <onError featureText="Could not contact the server, please check your internet connection and try again."/>
+        <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+            <onError/>
             <onSuccess>
                 <autoNextPresenter/>
             </onSuccess>
@@ -342,8 +342,8 @@
     </presenter>
     <presenter back="Touch" displayOrder="13" menuLabel="Other" next="Menu" type="metadata" self="Other" title="Tell us about your synaesthesia: Other(8/8)">
         <metadataField fieldName="AnyOtherTypes"/>
-        <saveMetadataButton featureText="Continue" sendData="true">
-            <onError featureText="Could not contact the server, please check your internet connection and try again."/>
+        <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+            <onError/>
             <onSuccess>
                 <autoNextPresenter/>
             </onSuccess>
@@ -356,7 +356,7 @@
         <menuItem featureText="Months" target="Months"/>
     </presenter>
     <presenter back="Menu" displayOrder="16" menuLabel="Weekdays" next="Report" type="colourPicker" self="Weekdays" title="Weekdays">
-        <loadAllStimulus eventTag="Weekdays" randomise="true">
+        <loadAllStimulus eventTag="Weekdays" randomise="true" repeatCount="3">
             <hasMoreStimulus/>
             <endOfStimulus/>
             <randomGrouping/>
@@ -366,7 +366,7 @@
         </loadAllStimulus>
     </presenter>
     <presenter back="Menu" displayOrder="17" menuLabel="Numbers" next="Report" type="colourPicker" self="Numbers" title="Numbers">
-        <loadAllStimulus eventTag="Numbers" randomise="true">
+        <loadAllStimulus eventTag="Numbers" randomise="true" repeatCount="3">
             <hasMoreStimulus/>
             <endOfStimulus/>
             <randomGrouping/>
@@ -376,7 +376,7 @@
         </loadAllStimulus>
     </presenter>
     <presenter back="Menu" displayOrder="18" menuLabel="Letters" next="Report" type="colourPicker" self="Letters" title="Letters">
-        <loadAllStimulus eventTag="Letters" randomise="true">
+        <loadAllStimulus eventTag="Letters" randomise="true" repeatCount="3">
             <hasMoreStimulus/>
             <endOfStimulus/>
             <randomGrouping/>
@@ -386,7 +386,7 @@
         </loadAllStimulus>
     </presenter>
     <presenter back="Menu" displayOrder="19" menuLabel="Months" next="Report" type="colourPicker" self="Months" title="Months">
-        <loadAllStimulus eventTag="Months" randomise="true">
+        <loadAllStimulus eventTag="Months" randomise="true" repeatCount="3">
             <hasMoreStimulus/>
             <endOfStimulus/>
             <randomGrouping/>
