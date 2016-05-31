@@ -26,7 +26,12 @@ import nl.mpi.tg.eg.experimentdesigner.dao.PublishEventRepository;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.util.DefaultExperiments;
+import nl.mpi.tg.eg.experimentdesigner.util.FactOrFiction;
+import nl.mpi.tg.eg.experimentdesigner.util.JenaFieldKit;
 import nl.mpi.tg.eg.experimentdesigner.util.Sara01;
+import nl.mpi.tg.eg.experimentdesigner.util.Sentveri_exp3;
+import nl.mpi.tg.eg.experimentdesigner.util.ShawiFieldKit;
+import nl.mpi.tg.eg.experimentdesigner.util.SynQuiz2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -81,14 +86,52 @@ public class ExperimentController {
 
     @RequestMapping("/experiments/wizard")
     public String showWizard(Model model, @ModelAttribute WizardData wizardData, HttpServletRequest request) {
+        return showWizard(model, wizardData, request, null);
+    }
+
+    @RequestMapping("/experiments/wizard/{templateName}")
+    public String showWizard(Model model, @ModelAttribute WizardData wizardData, HttpServletRequest request, @PathVariable String templateName) {
 //        Experiment createdExperiment = DefaultExperiments.getDefault();
 //        experimentRepository.save(createdExperiment);
-//        if (wizardData == null) {
-            wizardData = new Sara01().getWizardData();
-//        }
+        if (templateName != null) {
+            switch (templateName) {
+                case "Sentveri_exp3":
+//                wizardData = new Sentveri_exp3().getWizardData();
+                    break;
+                case "Dobes Annotator":
+//                wizardData = new Dobes().getWizardData();
+                    break;
+                case "All Options":
+                    break;
+                case "Vanuatu FieldKit":
+                    wizardData = new JenaFieldKit().getWizardData();
+                    break;
+                case "Shawi FieldKit":
+                    wizardData = new ShawiFieldKit().getWizardData();
+                    break;
+                case "AntwoordRaden":
+                    wizardData = new Sara01().getWizardData();
+                    break;
+                case "Leeservaring":
+//            wizardData = new FactOrFiction().getExperiment()
+                    break;
+                case "SynQuiz2":
+//                wizardData = new SynQuiz2().getWizardData();
+                    break;
+            }
+        }
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", "wizard");
         model.addAttribute("wizardData", wizardData);
+        model.addAttribute("templateList", new String[]{
+            "Sentveri_exp3",
+            "Dobes Annotator",
+            "All Options",
+            "Vanuatu FieldKit",
+            "Shawi FieldKit",
+            "AntwoordRaden",
+            "Leeservaring",
+            "SynQuiz2"});
         return "design";
     }
 
