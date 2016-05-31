@@ -51,6 +51,54 @@ public class WizardCompletionScreen extends AbstractWizardScreen {
         this.retryButtonLabel = retryButtonLabel;
     }
 
+    public String getCompletedText1() {
+        return completedText1;
+    }
+
+    public void setCompletedText1(String completedText1) {
+        this.completedText1 = completedText1;
+    }
+
+    public boolean isAllowUserRestart() {
+        return allowUserRestart;
+    }
+
+    public void setAllowUserRestart(boolean allowUserRestart) {
+        this.allowUserRestart = allowUserRestart;
+    }
+
+    public String getCompletedText2() {
+        return completedText2;
+    }
+
+    public void setCompletedText2(String completedText2) {
+        this.completedText2 = completedText2;
+    }
+
+    public String getEraseUsersDataButtonlabel() {
+        return eraseUsersDataButtonlabel;
+    }
+
+    public void setEraseUsersDataButtonlabel(String eraseUsersDataButtonlabel) {
+        this.eraseUsersDataButtonlabel = eraseUsersDataButtonlabel;
+    }
+
+    public String getCould_not_contact_the_server_please_check() {
+        return could_not_contact_the_server_please_check;
+    }
+
+    public void setCould_not_contact_the_server_please_check(String could_not_contact_the_server_please_check) {
+        this.could_not_contact_the_server_please_check = could_not_contact_the_server_please_check;
+    }
+
+    public String getRetryButtonLabel() {
+        return retryButtonLabel;
+    }
+
+    public void setRetryButtonLabel(String retryButtonLabel) {
+        this.retryButtonLabel = retryButtonLabel;
+    }
+
     @Override
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
