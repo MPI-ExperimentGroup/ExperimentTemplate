@@ -91,7 +91,7 @@ public class CsvController {
                 }
             }
         printer.close();
-        response.getOutputStream().flush();
+//        response.getOutputStream().flush();
     }
 
     private void addToZipArchive(final ZipOutputStream zipStream, String fileName, byte[] content) throws IOException {
