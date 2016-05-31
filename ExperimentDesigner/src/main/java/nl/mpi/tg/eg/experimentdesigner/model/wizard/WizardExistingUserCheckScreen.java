@@ -47,6 +47,38 @@ public class WizardExistingUserCheckScreen extends AbstractWizardScreen {
         this.resumeoldText = resumeoldText;
     }
 
+    public String getNew_Interview() {
+        return new_Interview;
+    }
+
+    public void setNew_Interview(String new_Interview) {
+        this.new_Interview = new_Interview;
+    }
+
+    public String getResume_Interview() {
+        return resume_Interview;
+    }
+
+    public void setResume_Interview(String resume_Interview) {
+        this.resume_Interview = resume_Interview;
+    }
+
+    public String getStartNewText() {
+        return startNewText;
+    }
+
+    public void setStartNewText(String startNewText) {
+        this.startNewText = startNewText;
+    }
+
+    public String getResumeoldText() {
+        return resumeoldText;
+    }
+
+    public void setResumeoldText(String resumeoldText) {
+        this.resumeoldText = resumeoldText;
+    }
+
     @Override
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
