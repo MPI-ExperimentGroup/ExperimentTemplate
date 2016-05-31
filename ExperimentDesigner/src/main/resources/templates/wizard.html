@@ -74,7 +74,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         </ul>-->
             <div class="table">
                 <div th:each="wizardScreen : ${wizardData.getWizardScreens()}" th:fragment="wizardScreenForm">
-                    <div class="tr" th:fragment="wizardScreenForms">    
+                    <div th:fragment="wizardScreenForms">    
                         <div class="featurestable">
                             <div>
                                 <div th:fragment="featuresrow" class="featuresrow">
@@ -115,56 +115,62 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                                 <span>Next Screen</span><span><input name="nextWizardScreen" th:value="${(wizardScreen.nextWizardScreen!=null)?wizardScreen.nextWizardScreen.getScreenTitle():''}" /></span><br/>
                                                 <span>Centre Screen</span><span><input type="checkbox" th:value="${wizardScreen.centreScreen}" /></span><br/>
                                                 <br/>                                                
-                                                <span>Screen Text</span><br/><span><span th:utext="${wizardScreen.getScreenText()}" /><textarea name="screenText" th:text="${wizardScreen.getScreenText()}" /></span><br/>
+                                                <span>Screen Text</span><br/><span><span th:utext="${wizardScreen.getScreenText()}" /><textarea class="wizardTextbox" name="screenText" th:text="${wizardScreen.getScreenText()}" /></span><br/>
                                             </div>
                                             <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen'}">WizardAboutScreen</div>
                                             <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen'}">WizardAgreementScreen</div>
                                             <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAudioRecorderMetadataScreen'}">
                                                 <b>WizardAudioRecorderMetadataScreen</b><br/>
-                                                <span>next_button</span><span><input name="next_button" th:value="${wizardScreen.next_button}" /></span><br/>
-                                                <span>end_of_stimuli</span><span><input name="end_of_stimuli" th:value="${wizardScreen.end_of_stimuli}" /></span><br/>
+                                                <span>next_button</span><span><input class="wizardTextbox" name="next_button" th:value="${wizardScreen.next_button}" /></span><br/>
+                                                <span>end_of_stimuli</span><span><input class="wizardTextbox" name="end_of_stimuli" th:value="${wizardScreen.end_of_stimuli}" /></span><br/>
                                                 <div th:each="metadataString : ${wizardScreen.metadataStrings}">
-                                                    <span>metadataStrings</span><span><textarea name="metadataStrings" th:text="${metadataString}" /></span><br/>
+                                                    <span>metadataStrings</span><span><textarea class="wizardTextbox" name="metadataStrings" th:text="${metadataString}" /></span><br/>
                                                 </div>
                                             </div>
                                             <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAudioTestScreen'}">
                                                 <b>WizardAudioTestScreen</b><br/>
-                                                <span>audioPath</span><span><input name="audioPath" th:value="${wizardScreen.audioPath}" /></span><br/>
+                                                <span>audioPath</span><span><input class="wizardTextbox" name="audioPath" th:value="${wizardScreen.audioPath}" /></span><br/>
                                             </div>
                                             <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen'}">
                                                 <b>WizardCompletionScreen</b>
-                                                <span>completedText1</span><br/><span><span th:utext="${wizardScreen.completedText1}" /><textarea name="completedText1" th:text="${wizardScreen.completedText1}" /></span><br/>
+                                                <span>completedText1</span><br/><span><span th:utext="${wizardScreen.completedText1}" /><textarea class="wizardTextbox" name="completedText1" th:text="${wizardScreen.completedText1}" /></span><br/>
                                                 <span>allowUserRestart</span><span><input type="checkbox" th:value="${wizardScreen.allowUserRestart}" /></span><br/>
-                                                <span>completedText2</span><br/><span><span th:utext="${wizardScreen.completedText2}" /><textarea name="completedText2" th:text="${wizardScreen.completedText2}" /></span><br/>
-                                                <span>eraseUsersDataButtonlabel</span><span><input name="eraseUsersDataButtonlabel" th:value="${wizardScreen.eraseUsersDataButtonlabel}" /></span><br/>
-                                                <span>could_not_contact_the_server_please_check</span><br/><span><span th:utext="${wizardScreen.could_not_contact_the_server_please_check}" /><textarea name="could_not_contact_the_server_please_check" th:text="${wizardScreen.could_not_contact_the_server_please_check}" /></span><br/>
-                                                <span>retryButtonLabel</span><span><input name="retryButtonLabel" th:value="${wizardScreen.retryButtonLabel}" /></span><br/>
+                                                <span>completedText2</span><br/><span><span th:utext="${wizardScreen.completedText2}" /><textarea class="wizardTextbox" name="completedText2" th:text="${wizardScreen.completedText2}" /></span><br/>
+                                                <span>eraseUsersDataButtonlabel</span><span><input class="wizardTextbox" name="eraseUsersDataButtonlabel" th:value="${wizardScreen.eraseUsersDataButtonlabel}" /></span><br/>
+                                                <span>could_not_contact_the_server_please_check</span><br/><span><span th:utext="${wizardScreen.could_not_contact_the_server_please_check}" /><textarea class="wizardTextbox" name="could_not_contact_the_server_please_check" th:text="${wizardScreen.could_not_contact_the_server_please_check}" /></span><br/>
+                                                <span>retryButtonLabel</span><span><input class="wizardTextbox" name="retryButtonLabel" th:value="${wizardScreen.retryButtonLabel}" /></span><br/>
                                             </div>
                                             <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen'}">
                                                 <b>WizardEditUserScreen</b>
                                                 <span>metadataScreen</span><span><input type="checkbox" th:value="${wizardScreen.metadataScreen}" /></span><br/>
-                                                <span>metadataScreenText</span><br/><span><span th:utext="${wizardScreen.metadataScreenText}" /><textarea name="metadataScreenText" th:text="${wizardScreen.metadataScreenText}" /></span><br/>
+                                                <span>metadataScreenText</span><br/><span><span th:utext="${wizardScreen.metadataScreenText}" /><textarea class="wizardTextbox" name="metadataScreenText" th:text="${wizardScreen.metadataScreenText}" /></span><br/>
                                                 <span>speakerNameField</span><span><input type="checkbox" th:value="${wizardScreen.speakerNameField}" /></span><br/>
                                                 <span>firstNameField</span><span><input type="checkbox" th:value="${wizardScreen.firstNameField}" /></span><br/>
                                                 <span>lastNameField</span><span><input type="checkbox" th:value="${wizardScreen.lastNameField}" /></span><br/>
                                                 <span>genderField</span><span><input type="checkbox" th:value="${wizardScreen.genderField}" /></span><br/>
                                                 <span>emailAddressField</span><span><input type="checkbox" th:value="${wizardScreen.emailAddressField}" /></span><br/>
-                                                <span>customTextField</span><span><input name="customTextField" th:value="${wizardScreen.customTextField}" /></span><br/>
-                                                <span>optionCheckBox1</span><span><input name="optionCheckBox1" th:value="${wizardScreen.optionCheckBox1}" /></span><br/>
-                                                <span>optionCheckBox2</span><span><input name="optionCheckBox2" th:value="${wizardScreen.optionCheckBox2}" /></span><br/>
-                                                <span>mandatoryCheckBox</span><span><input name="mandatoryCheckBox" th:value="${wizardScreen.mandatoryCheckBox}" /></span><br/>
+                                                <span>customTextField</span><span><input class="wizardTextbox" name="customTextField" th:value="${wizardScreen.customTextField}" /></span><br/>
+                                                <span>optionCheckBox1</span><span><input class="wizardTextbox" name="optionCheckBox1" th:value="${wizardScreen.optionCheckBox1}" /></span><br/>
+                                                <span>optionCheckBox2</span><span><input class="wizardTextbox" name="optionCheckBox2" th:value="${wizardScreen.optionCheckBox2}" /></span><br/>
+                                                <span>mandatoryCheckBox</span><span><input class="wizardTextbox" name="mandatoryCheckBox" th:value="${wizardScreen.mandatoryCheckBox}" /></span><br/>
                                                 <span>ageField</span><span><input type="checkbox" th:value="${wizardScreen.ageField}" /></span><br/>
                                                 <span th:each="customFieldString : ${wizardScreen.customFields}">
-                                                    <span>customFieldString</span><span><input name="customFields" th:value="${customFieldString}" /></span><br/>
+                                                    <span>customFieldString</span><span><input class="wizardTextbox" name="customFields" th:value="${customFieldString}" /></span><br/>
                                                 </span>
-                                                <span>saveButtonLabel</span><span><input name="saveButtonLabel" th:value="${wizardScreen.saveButtonLabel}" /></span><br/>
-                                                <span>postText</span><br/><span><span th:utext="${wizardScreen.postText}" /><textarea name="postText" th:text="${wizardScreen.postText}" /></span><br/>
+                                                <span>saveButtonLabel</span><span><input class="wizardTextbox" name="saveButtonLabel" th:value="${wizardScreen.saveButtonLabel}" /></span><br/>
+                                                <span>postText</span><br/><span><span th:utext="${wizardScreen.postText}" /><textarea class="wizardTextbox" name="postText" th:text="${wizardScreen.postText}" /></span><br/>
                                                 private WizardScreen alternateNextScreen;
-                                                <span>alternateButtonLabel</span><span><input name="alternateButtonLabel" th:value="${wizardScreen.alternateButtonLabel}" /></span><br/>
+                                                <span>alternateButtonLabel</span><span><input class="wizardTextbox" name="alternateButtonLabel" th:value="${wizardScreen.alternateButtonLabel}" /></span><br/>
                                                 <span>sendData</span><span><input type="checkbox" th:value="${wizardScreen.sendData}" /></span><br/>
-                                                <span>on_Error_Text</span><br/><span><span th:utext="${wizardScreen.on_Error_Text}" /><textarea name="on_Error_Text" th:text="${wizardScreen.on_Error_Text}" /></span><br/>
+                                                <span>on_Error_Text</span><br/><span><span th:utext="${wizardScreen.on_Error_Text}" /><textarea class="wizardTextbox" name="on_Error_Text" th:text="${wizardScreen.on_Error_Text}" /></span><br/>
                                             </div>
-                                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardExistingUserCheckScreen'}">WizardExistingUserCheckScreen</div>
+                                            <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardExistingUserCheckScreen'}">
+                                                <b>WizardExistingUserCheckScreen</b>
+                                                <span>new_Interview</span><span><input class="wizardTextbox" name="new_Interview" th:value="${wizardScreen.new_Interview}" /></span><br/>
+                                                <span>resume_Interview</span><span><input class="wizardTextbox" name="resume_Interview" th:value="${wizardScreen.resume_Interview}" /></span><br/>
+                                                <span>startNewText</span><span><input class="wizardTextbox" name="startNewText" th:value="${wizardScreen.startNewText}" /></span><br/>
+                                                <span>resumeoldText</span><span><input class="wizardTextbox" name="resumeoldText" th:value="${wizardScreen.resumeoldText}" /></span><br/>
+                                            </div>
                                             <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardKinshipScreen'}">WizardKinshipScreen</div>
                                             <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMenuScreen'}">WizardMenuScreen</div>
                                             <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardRandomStimulusScreen'}">WizardRandomStimulusScreen</div>
