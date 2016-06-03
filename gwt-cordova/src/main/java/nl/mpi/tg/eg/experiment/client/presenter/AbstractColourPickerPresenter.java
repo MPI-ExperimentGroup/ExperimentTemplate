@@ -100,7 +100,10 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
             startMs = System.currentTimeMillis();
             shownCount++;
             int repeatCount = 1;
-            colourPickerCanvasView.setStimulus(stimulusProvider.getCurrentStimulus(), messages.stimulusscreenprogresstext(Integer.toString(shownCount), Integer.toString(stimulusProvider.getTotalStimuli() * repeatCount)));
+            colourPickerCanvasView.setStimulus(stimulusProvider.getCurrentStimulus(),
+                    //                    messages.stimulusscreenprogresstext(Integer.toString(shownCount), Integer.toString(stimulusProvider.getTotalStimuli() * repeatCount))
+                    Integer.toString((int) (((double) (shownCount - 1) / (stimulusProvider.getTotalStimuli() * repeatCount)) * 100)) + "%"
+            );
         }
     }
 
@@ -149,7 +152,6 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
                 return messages.stimulusscreenrejectbutton();
             }
         });
-//        colourPickerCanvasView.setInstructions(messages.instructionscreentext(), messages.helpButtonChar(),messages.instructionscreenbutton());
         colourPickerCanvasView.setQuitButton(new PresenterEventListner() {
 
             @Override
@@ -173,6 +175,10 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
         widgetTag.add(colourPickerCanvasView);
 
         setContent(appEventListner);
+    }
+
+    public void helpDialogue(String helpText, String closeButtonLabel) {
+        colourPickerCanvasView.setInstructions(helpText, messages.helpButtonChar(), closeButtonLabel);
     }
 
     protected void loadAllStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final List<GeneratedStimulus.Tag> randomTags, final boolean randomise, int repeatCount, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
