@@ -300,7 +300,8 @@ canvas {
 .svgPopupPanel .gwt-Button,
 .stimulusHelpPanel .gwt-Button {
     background: darkgrey;
-    color: $primaryColour3;
+    /*color: $primaryColour3;*/
+    color: white; // white is required by the colour picker help box, but the svg html popup panel might have other needs and this should be checked
     padding: 10px 10px 10px 10px;
     margin-left: auto;
 }
