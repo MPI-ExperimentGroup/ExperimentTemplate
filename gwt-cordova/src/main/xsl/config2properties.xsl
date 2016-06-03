@@ -50,7 +50,7 @@
         </xsl:text>      
         <xsl:apply-templates/>
     </xsl:template>
-    <xsl:template match="eraseUsersDataButton[@featureText != '']|saveMetadataButton[@featureText != '']|saveMetadataButton[@networkErrorMessage != '']|createUserButton[@featureText != '']|targetButton[@featureText != '']|actionButton[@featureText != '']|targetFooterButton[@featureText != '']|actionFooterButton[@featureText != '']|plainText[@featureText != '']|popupMessage[@featureText != '']|menuItem[@featureText != '']|featureText[@featureText != '']|nextStimulusButton[@featureText != '']|htmlText[@featureText != '']|userInfo[@featureText != '']">
+    <xsl:template match="helpDialogue[@featureText != '']|eraseUsersDataButton[@featureText != '']|saveMetadataButton[@featureText != '']|saveMetadataButton[@networkErrorMessage != '']|createUserButton[@featureText != '']|targetButton[@featureText != '']|actionButton[@featureText != '']|targetFooterButton[@featureText != '']|actionFooterButton[@featureText != '']|plainText[@featureText != '']|popupMessage[@featureText != '']|menuItem[@featureText != '']|featureText[@featureText != '']|nextStimulusButton[@featureText != '']|htmlText[@featureText != '']|userInfo[@featureText != '']">
         <xsl:if test="@featureText != ''">       
             <xsl:value-of select="generate-id(.)" />
             <xsl:text>=</xsl:text>
@@ -63,6 +63,14 @@
             <xsl:value-of select="generate-id(.)" />
             <xsl:text>=</xsl:text>
             <xsl:value-of select="replace(@networkErrorMessage,'''','''''')"/>
+            <xsl:text>
+            </xsl:text>
+        </xsl:if>
+        <xsl:if test="@closeButtonLabel != ''">   
+            <xsl:text>closeButtonLabel</xsl:text>
+            <xsl:value-of select="generate-id(.)" />
+            <xsl:text>=</xsl:text>
+            <xsl:value-of select="replace(@closeButtonLabel,'''','''''')"/>
             <xsl:text>
             </xsl:text>
         </xsl:if>
