@@ -356,6 +356,7 @@
         <menuItem featureText="Months" target="Months"/>
     </presenter>
     <presenter back="Menu" displayOrder="16" menuLabel="Weekdays" next="Report" type="colourPicker" self="Weekdays" title="Weekdays">
+        <helpDialogue featureText="&lt;b&gt;Instructions&lt;/b&gt;\n&lt;p&gt;Select the colour that you associate with the presented character or word \n&lt;ol&gt;\n&lt;li&gt;Select the hue by tapping on the colour bar on the right &lt;/li&gt;&lt;li&gt;Select the shade by tapping on the square on the left &lt;/li&gt;\n&lt;li&gt;When the colour of the preview rectangle matches your association, tap &quot;Submit&quot;&lt;/li&gt;\n&lt;li&gt;If you have no colour association tap &quot;No colour&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, go to test!"/>
         <loadAllStimulus eventTag="Weekdays" randomise="true" repeatCount="3">
             <hasMoreStimulus/>
             <endOfStimulus/>
@@ -366,6 +367,7 @@
         </loadAllStimulus>
     </presenter>
     <presenter back="Menu" displayOrder="17" menuLabel="Numbers" next="Report" type="colourPicker" self="Numbers" title="Numbers">
+        <helpDialogue featureText="&lt;b&gt;Instructions&lt;/b&gt;\n&lt;p&gt;Select the colour that you associate with the presented character or word \n&lt;ol&gt;\n&lt;li&gt;Select the hue by tapping on the colour bar on the right &lt;/li&gt;&lt;li&gt;Select the shade by tapping on the square on the left &lt;/li&gt;\n&lt;li&gt;When the colour of the preview rectangle matches your association, tap &quot;Submit&quot;&lt;/li&gt;\n&lt;li&gt;If you have no colour association tap &quot;No colour&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, go to test!"/>
         <loadAllStimulus eventTag="Numbers" randomise="true" repeatCount="3">
             <hasMoreStimulus/>
             <endOfStimulus/>
@@ -376,6 +378,7 @@
         </loadAllStimulus>
     </presenter>
     <presenter back="Menu" displayOrder="18" menuLabel="Letters" next="Report" type="colourPicker" self="Letters" title="Letters">
+        <helpDialogue featureText="&lt;b&gt;Instructions&lt;/b&gt;\n&lt;p&gt;Select the colour that you associate with the presented character or word \n&lt;ol&gt;\n&lt;li&gt;Select the hue by tapping on the colour bar on the right &lt;/li&gt;&lt;li&gt;Select the shade by tapping on the square on the left &lt;/li&gt;\n&lt;li&gt;When the colour of the preview rectangle matches your association, tap &quot;Submit&quot;&lt;/li&gt;\n&lt;li&gt;If you have no colour association tap &quot;No colour&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, go to test!"/>
         <loadAllStimulus eventTag="Letters" randomise="true" repeatCount="3">
             <hasMoreStimulus/>
             <endOfStimulus/>
@@ -386,6 +389,7 @@
         </loadAllStimulus>
     </presenter>
     <presenter back="Menu" displayOrder="19" menuLabel="Months" next="Report" type="colourPicker" self="Months" title="Months">
+        <helpDialogue featureText="&lt;b&gt;Instructions&lt;/b&gt;\n&lt;p&gt;Select the colour that you associate with the presented character or word \n&lt;ol&gt;\n&lt;li&gt;Select the hue by tapping on the colour bar on the right &lt;/li&gt;&lt;li&gt;Select the shade by tapping on the square on the left &lt;/li&gt;\n&lt;li&gt;When the colour of the preview rectangle matches your association, tap &quot;Submit&quot;&lt;/li&gt;\n&lt;li&gt;If you have no colour association tap &quot;No colour&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, go to test!"/>
         <loadAllStimulus eventTag="Months" randomise="true" repeatCount="3">
             <hasMoreStimulus/>
             <endOfStimulus/>
@@ -408,7 +412,7 @@
     <presenter back="Menu" displayOrder="21" menuLabel="Completion" next="Introduction" type="transmission" self="Completion" title="Completion">
         <sendAllData>
             <onSuccess>
-                <htmlText featureText="If another person wants to do this test they can exit this session and start from the begining."/>
+                <htmlText featureText="Thank you for participating! You may hear from us in the next few weeks to ask if you would like to participate in the genetics part of the study. Your data has been saved, and you can now close your browser. &lt;br&gt;&lt;br&gt;If you have any questions about the study, you can email them to us at &lt;a href=&quot;mailto:synaesthesia@mpi.nl&quot;&gt;synaesthesia@mpi.nl&lt;/a&gt;. It will be a year or more before there are results, but when we publish our study it will be posted on our &lt;a href=&quot;http://www.mpi.nl/departments/language-and-genetics/projects/decoding-the-genetics-of-synaesthesia/publications&quot;&gt;website&lt;/a&gt;.&lt;br&gt;"/>
                 <addPadding/>
                 <generateCompletionCode/>
                 <addPadding/>
