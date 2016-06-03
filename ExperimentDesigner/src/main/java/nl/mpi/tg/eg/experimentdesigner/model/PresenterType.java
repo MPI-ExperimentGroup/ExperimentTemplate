@@ -28,7 +28,7 @@ import static nl.mpi.tg.eg.experimentdesigner.model.FeatureType.*;
 public enum PresenterType {
 
     transmission(new FeatureType[]{
-        showColourReport,
+        showColourReport,helpDialogue,
         aboveThreshold,
         belowThreshold,
         loadSubsetStimulus, loadStimulus, loadSdCardStimulus, loadAllStimulus,
@@ -78,7 +78,7 @@ public enum PresenterType {
         menuItem
     }),
     metadata(new FeatureType[]{
-        showColourReport,
+        showColourReport,helpDialogue,
         aboveThreshold,
         belowThreshold,
         loadSubsetStimulus, loadStimulus, loadSdCardStimulus, loadAllStimulus,
@@ -130,7 +130,7 @@ public enum PresenterType {
         endAudioRecorderTag, startAudioRecorder, targetFooterButton, actionFooterButton
     }),
     preload(new FeatureType[]{
-        showColourReport,
+        showColourReport,helpDialogue,
         aboveThreshold,
         belowThreshold,
         loadSubsetStimulus, loadStimulus, loadSdCardStimulus, loadAllStimulus,
@@ -165,7 +165,7 @@ public enum PresenterType {
         pause,
         responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus}),
     stimulus(new FeatureType[]{
-        showColourReport,
+        showColourReport,helpDialogue,
         aboveThreshold,
         belowThreshold,
         responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus,
@@ -296,7 +296,7 @@ public enum PresenterType {
         userInfo,
         menuItem}),
     kindiagram(new FeatureType[]{
-        showColourReport,
+        showColourReport,helpDialogue,
         aboveThreshold,
         belowThreshold,
         responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus,
@@ -345,7 +345,7 @@ public enum PresenterType {
         stimulusAudio
     }),
     menu(new FeatureType[]{
-        showColourReport,
+        showColourReport,helpDialogue,
         aboveThreshold,
         belowThreshold,
         responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus,
@@ -394,7 +394,7 @@ public enum PresenterType {
         stimulusImage,
         stimulusAudio}),
     debug(new FeatureType[]{
-        showColourReport,
+        showColourReport,helpDialogue,
         aboveThreshold,
         belowThreshold,
         responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus,
@@ -443,7 +443,7 @@ public enum PresenterType {
         userInfo,
         stimulusAudio}),
     text(new FeatureType[]{
-        showColourReport,
+        showColourReport,helpDialogue,
         aboveThreshold,
         belowThreshold,
         loadKinTypeStringDiagram, localStorageData,
@@ -496,7 +496,7 @@ public enum PresenterType {
         userInfo,
         menuItem}),
     timeline(new FeatureType[]{
-        showColourReport,
+        showColourReport,helpDialogue,
         aboveThreshold,
         belowThreshold,
         loadKinTypeStringDiagram, localStorageData,

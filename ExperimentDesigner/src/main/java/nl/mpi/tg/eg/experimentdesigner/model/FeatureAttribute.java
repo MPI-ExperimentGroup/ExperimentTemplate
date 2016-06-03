@@ -27,6 +27,7 @@ package nl.mpi.tg.eg.experimentdesigner.model;
 public enum FeatureAttribute {
 
     menuLabel,
+    closeButtonLabel,
     back,
     next,
     fieldName,

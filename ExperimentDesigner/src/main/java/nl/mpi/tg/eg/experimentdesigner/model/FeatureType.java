@@ -107,6 +107,7 @@ public enum FeatureType {
     stopAudioRecorder(false, false, new FeatureAttribute[]{}),
     startAudioRecorderTag(false, false, new FeatureAttribute[]{eventTier}),
     endAudioRecorderTag(false, false, new FeatureAttribute[]{eventTier, eventTag}),
+    helpDialogue(false, false, new FeatureAttribute[]{closeButtonLabel}),
     userInfo(false, false, null),
     versionData(false, false, null),
     preventWindowClose(false, false, null),
