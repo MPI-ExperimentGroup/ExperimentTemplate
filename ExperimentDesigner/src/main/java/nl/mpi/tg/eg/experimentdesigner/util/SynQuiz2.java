@@ -60,7 +60,15 @@ public class SynQuiz2 {
     public void create(Experiment experiment, final List<PresenterScreen> presenterScreenList) {
         final PresenterScreen introductionScreen = createIntroductionScreen("Introduction", 1);
         presenterScreenList.add(introductionScreen);
-        final WizardCompletionScreen completionScreen = new WizardCompletionScreen("If another person wants to do this test they can exit this session and start from the begining.", true, null, "Finish this expriment and start from the begining", "Completion", "Could not contact the server, please check your internet connection and try again.", "Retry");
+        final WizardCompletionScreen completionScreen = new WizardCompletionScreen(
+                "Thank you for participating! You may hear from us in the next few weeks to ask if you would like to participate in the genetics part of the study. Your data has been saved, and you can now close your browser. <br><br>"
+                + "If you have any questions about the study, you can email them to us at <a href=\"mailto:synaesthesia@mpi.nl\">synaesthesia@mpi.nl</a>."
+                + " It will be a year or more before there are results, but when we publish our study it will be posted on our "
+                + "<a href=\"http://www.mpi.nl/departments/language-and-genetics/projects/decoding-the-genetics-of-synaesthesia/publications\">website</a>.<br>",
+                true, null,
+                "Finish this expriment and start from the begining",
+                "Completion",
+                "Could not contact the server, please check your internet connection and try again.", "Retry");
 //        final PresenterScreen registrationScreen = createRegistrationScreen("Registration", 2);
 //        presenterScreenList.add(registrationScreen);
         final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
@@ -405,6 +413,9 @@ public class SynQuiz2 {
 
     private PresenterScreen createStimulusScreen(String screenName, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder) {
         final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, screenName, nextPresenter, PresenterType.colourPicker, displayOrder);
+        final PresenterFeature helpDialogue = new PresenterFeature(FeatureType.helpDialogue, "<b>Instructions</b>\\n<p>Select the colour that you associate with the presented character or word \\n<ol>\\n<li>Select the hue by tapping on the colour bar on the right </li><li>Select the shade by tapping on the square on the left </li>\\n<li>When the colour of the preview rectangle matches your association, tap \"Submit\"</li>\\n<li>If you have no colour association tap \"No colour\"</li>\\n</ol>\\n</p>");
+        helpDialogue.addFeatureAttributes(FeatureAttribute.closeButtonLabel, "OK, go to test!");
+        presenterScreen.getPresenterFeatureList().add(helpDialogue);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadAllStimulus, null);
         loadStimuliFeature.addStimulusTag(screenName);
