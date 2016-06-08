@@ -563,6 +563,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             </xsl:if>
         </xsl:for-each>
         <xsl:text>})</xsl:text>
+        <xsl:value-of select="if(@storageField) then concat(', metadataFieldProvider.', @storageField, 'MetadataField') else ''" />
     </xsl:template>
     <xsl:template match="showColourReport|VideoPanel|startAudioRecorder|stopAudioRecorder|startAudioRecorderTag|endAudioRecorderTag|AnnotationTimelinePanel|loadStimulus|loadSdCardStimulus|loadAllStimulus|loadSubsetStimulus|currentStimulusHasTag|existingUserCheck">
         <xsl:value-of select="if(ends-with(local-name(), 'Panel')) then '    set' else '    '" />

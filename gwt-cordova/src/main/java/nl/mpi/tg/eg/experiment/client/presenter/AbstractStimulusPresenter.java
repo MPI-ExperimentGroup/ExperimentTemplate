@@ -36,11 +36,13 @@ import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
+import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
+import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
 import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
@@ -51,7 +53,7 @@ import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
  */
 public abstract class AbstractStimulusPresenter extends AbstractPresenter implements Presenter {
 
-    private static final String STIMULUS_ALLOCATION = "stimulusAllocation";
+    final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
     private static final String SEEN_STIMULUS_LIST = "seenStimulusList";
     private final StimulusProvider stimulusProvider = new StimulusProvider();
     protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
@@ -78,15 +80,16 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     // todo: maxSpeakerWordCount needs to be utilised correctly
-    protected void loadSubsetStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final List<GeneratedStimulus.Tag> randomTags, final GeneratedStimulus.Tag condition0Tag, final GeneratedStimulus.Tag condition1Tag, final GeneratedStimulus.Tag condition2Tag, final int maxStimulusCount) {
+    protected void loadSubsetStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final List<GeneratedStimulus.Tag> randomTags, final MetadataField stimulusAllocationField, final GeneratedStimulus.Tag condition0Tag, final GeneratedStimulus.Tag condition1Tag, final GeneratedStimulus.Tag condition2Tag, final int maxStimulusCount) {
         // todo: implement randomTags
-        final String storedDataValue = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), STIMULUS_ALLOCATION + "_" + eventTag);
+        final String storedDataValue = userResults.getUserData().getMetadataValue(stimulusAllocationField);
         int stimulusAllocation;
         try {
             stimulusAllocation = Integer.parseInt(storedDataValue);
         } catch (NumberFormatException exception) {
             stimulusAllocation = new Random().nextInt(5);
-            localStorage.setStoredDataValue(userResults.getUserData().getUserId(), STIMULUS_ALLOCATION + "_" + eventTag, Integer.toString(stimulusAllocation));
+            userResults.getUserData().setMetadataValue(stimulusAllocationField, Integer.toString(stimulusAllocation));
+            localStorage.storeData(userResults);
         }
         final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST);
 //        Participants will be exposed to 36 audio+picture combinations, 
@@ -198,17 +201,18 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }, maxStimulusCount, randomise, repeatCount, seenStimulusList);
     }
 
-    protected void loadStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final List<GeneratedStimulus.Tag> randomTags, final int maxStimulusCount, final boolean randomise, int repeatCount, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+    protected void loadStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final List<GeneratedStimulus.Tag> randomTags, final MetadataField stimulusAllocationField, final int maxStimulusCount, final boolean randomise, int repeatCount, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
         final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST);
         final List<GeneratedStimulus.Tag> allocatedTags = new ArrayList<>(selectionTags);
         if (!randomTags.isEmpty()) {
-            final String storedStimulusAllocation = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), STIMULUS_ALLOCATION + "_" + eventTag);
+            final String storedStimulusAllocation = userResults.getUserData().getMetadataValue(stimulusAllocationField);
             try {
                 allocatedTags.add(GeneratedStimulus.Tag.valueOf(storedStimulusAllocation));
             } catch (IllegalArgumentException exception) {
                 GeneratedStimulus.Tag stimulusAllocation = randomTags.get(new Random().nextInt(randomTags.size()));
-                localStorage.setStoredDataValue(userResults.getUserData().getUserId(), STIMULUS_ALLOCATION + "_" + eventTag, stimulusAllocation.name());
+                userResults.getUserData().setMetadataValue(stimulusAllocationField, stimulusAllocation.name());
+                localStorage.storeData(userResults);
                 allocatedTags.add(stimulusAllocation);
             }
         }
