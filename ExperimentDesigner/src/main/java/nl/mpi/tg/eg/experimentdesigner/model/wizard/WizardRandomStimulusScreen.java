@@ -25,9 +25,11 @@ import java.util.regex.Pattern;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
+import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
+import nl.mpi.tg.eg.experimentdesigner.model.RandomGrouping;
 import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
 
 /**
@@ -203,24 +205,24 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         final List<Stimulus> stimuliList = experiment.getStimuli();
         final Pattern stimulusCodePattern = (stimulusCodeMatch != null) ? Pattern.compile(stimulusCodeMatch) : null;
         if (stimuliSet != null) {
-            for (String screenText : stimuliSet) {
+            for (String stimulusLine : stimuliSet) {
                 final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{screenTitle}));
                 final Stimulus stimulus;
                 if (stimulusCodePattern != null) {
                     System.out.println("stimulusCodeMatch:" + stimulusCodeMatch);
-                    Matcher matcher = stimulusCodePattern.matcher(screenText);
+                    Matcher matcher = stimulusCodePattern.matcher(stimulusLine);
                     final String codeString = (matcher.find()) ? matcher.group(1) : null;
                     System.out.println("codeString: " + codeString);
-                    final String baseFileName = screenText.replaceAll(BASE_FILE_REGEX, "");
+                    final String baseFileName = stimulusLine.replaceAll(BASE_FILE_REGEX, "");
                     tagSet.addAll(Arrays.asList(baseFileName.split("/")));
-                    stimulus = new Stimulus(baseFileName, null, null, null, screenText, null, codeString, 0, tagSet);
-                } else if (screenText.endsWith(".png")) {
-                    tagSet.addAll(Arrays.asList(screenText.split("/")));
-                    stimulus = new Stimulus(screenText.replace(".png", ""), null, null, null, screenText, null, screenText.replace(".png", ""), 0, tagSet);
+                    stimulus = new Stimulus(baseFileName, null, null, null, stimulusLine, null, codeString, 0, tagSet);
+                } else if (stimulusLine.endsWith(".png")) {
+                    tagSet.addAll(Arrays.asList(stimulusLine.split("/")));
+                    stimulus = new Stimulus(stimulusLine.replace(".png", ""), null, null, null, stimulusLine, null, stimulusLine.replace(".png", ""), 0, tagSet);
                 } else {
-                    final String[] splitScreenText = screenText.split(":", 2);
+                    final String[] splitScreenText = stimulusLine.split(":", 2);
                     tagSet.addAll(Arrays.asList(splitScreenText[0].split("/")));
-                    stimulus = new Stimulus(null, null, null, null, null, splitScreenText[1].replace("\n", "<br/>"), splitScreenText[0].replace(" ", "_"), 0, tagSet);
+                    stimulus = new Stimulus(null, null, null, null, null, splitScreenText[1].replace("\n", "<br/>"), splitScreenText[0].replace(" ", "_").replace("/", "_"), 0, tagSet);
                 }
                 stimuliList.add(stimulus);
             }
@@ -235,10 +237,15 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         }
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadStimulus, null);
         loadStimuliFeature.addStimulusTag(screenTitle);
+        final RandomGrouping randomGrouping = new RandomGrouping();
         if (stimuliRandomTags != null) {
             for (String randomTag : stimuliRandomTags) {
-                loadStimuliFeature.addRandomTag(randomTag);
+                randomGrouping.addRandomTag(randomTag);
             }
+            final String metadataFieldname = "groupAllocation_" + getScreenTag();
+            randomGrouping.setStorageField(metadataFieldname);
+            loadStimuliFeature.setRandomGrouping(randomGrouping);
+            experiment.getMetadata().add(new Metadata(metadataFieldname, metadataFieldname, ".*", ".", false, null));
         }
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, screenTitle);
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(randomiseStimuli));

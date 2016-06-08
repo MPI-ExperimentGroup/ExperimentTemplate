@@ -387,7 +387,7 @@ public class FactOrFiction {
         readingBehaviorInstructionsScreen.setNextWizardScreen(readingBehaviorScreen);
         readingBehaviorScreen.setNextWizardScreen(submitDataScreen);
         submitDataScreen.setNextWizardScreen(completionScreen);
-        
+
         wizardAgreementScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 1);
         editUserScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 2);
         groupAorBScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 3);

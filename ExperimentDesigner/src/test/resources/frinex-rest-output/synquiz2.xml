@@ -360,7 +360,6 @@
         <loadAllStimulus eventTag="Weekdays" randomise="true" repeatCount="3">
             <hasMoreStimulus/>
             <endOfStimulus/>
-            <randomGrouping/>
             <stimuli>
                 <tag>Weekdays</tag>
             </stimuli>
@@ -371,7 +370,6 @@
         <loadAllStimulus eventTag="Numbers" randomise="true" repeatCount="3">
             <hasMoreStimulus/>
             <endOfStimulus/>
-            <randomGrouping/>
             <stimuli>
                 <tag>Numbers</tag>
             </stimuli>
@@ -382,7 +380,6 @@
         <loadAllStimulus eventTag="Letters" randomise="true" repeatCount="3">
             <hasMoreStimulus/>
             <endOfStimulus/>
-            <randomGrouping/>
             <stimuli>
                 <tag>Letters</tag>
             </stimuli>
@@ -393,7 +390,6 @@
         <loadAllStimulus eventTag="Months" randomise="true" repeatCount="3">
             <hasMoreStimulus/>
             <endOfStimulus/>
-            <randomGrouping/>
             <stimuli>
                 <tag>Months</tag>
             </stimuli>

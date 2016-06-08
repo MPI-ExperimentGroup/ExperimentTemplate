@@ -31,7 +31,6 @@
                                                     <nextStimulus eventTag="nextStimulus" norepeat="true"/>
                                                 </actionFooterButton>
                                             </hasTag>
-                                            <randomGrouping/>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -54,7 +53,6 @@
                                                     <nextStimulus eventTag="nextStimulus" norepeat="true"/>
                                                 </actionFooterButton>
                                             </hasTag>
-                                            <randomGrouping/>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -70,7 +68,6 @@
                 <plainText featureText="end of stimuli"/>
                 <targetButton featureText="Menu" target="AutoMenu"/>
             </endOfStimulus>
-            <randomGrouping/>
             <stimuli>
                 <tag>practice</tag>
             </stimuli>
@@ -102,7 +99,6 @@
                                                     <nextStimulus eventTag="nextStimulus" norepeat="true"/>
                                                 </actionFooterButton>
                                             </hasTag>
-                                            <randomGrouping/>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -125,7 +121,6 @@
                                                     <nextStimulus eventTag="nextStimulus" norepeat="true"/>
                                                 </actionFooterButton>
                                             </hasTag>
-                                            <randomGrouping/>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -141,7 +136,6 @@
                 <plainText featureText="end of stimuli"/>
                 <targetButton featureText="Menu" target="AutoMenu"/>
             </endOfStimulus>
-            <randomGrouping/>
             <stimuli>
                 <tag>list1_a</tag>
             </stimuli>
@@ -173,7 +167,6 @@
                                                     <nextStimulus eventTag="nextStimulus" norepeat="true"/>
                                                 </actionFooterButton>
                                             </hasTag>
-                                            <randomGrouping/>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -196,7 +189,6 @@
                                                     <nextStimulus eventTag="nextStimulus" norepeat="true"/>
                                                 </actionFooterButton>
                                             </hasTag>
-                                            <randomGrouping/>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -212,7 +204,6 @@
                 <plainText featureText="end of stimuli"/>
                 <targetButton featureText="Menu" target="AutoMenu"/>
             </endOfStimulus>
-            <randomGrouping/>
             <stimuli>
                 <tag>list2_a</tag>
             </stimuli>
@@ -244,7 +235,6 @@
                                                     <nextStimulus eventTag="nextStimulus" norepeat="true"/>
                                                 </actionFooterButton>
                                             </hasTag>
-                                            <randomGrouping/>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -267,7 +257,6 @@
                                                     <nextStimulus eventTag="nextStimulus" norepeat="true"/>
                                                 </actionFooterButton>
                                             </hasTag>
-                                            <randomGrouping/>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -283,7 +272,6 @@
                 <plainText featureText="end of stimuli"/>
                 <targetButton featureText="Menu" target="AutoMenu"/>
             </endOfStimulus>
-            <randomGrouping/>
             <stimuli>
                 <tag>list3_a</tag>
             </stimuli>
@@ -315,7 +303,6 @@
                                                     <nextStimulus eventTag="nextStimulus" norepeat="true"/>
                                                 </actionFooterButton>
                                             </hasTag>
-                                            <randomGrouping/>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -338,7 +325,6 @@
                                                     <nextStimulus eventTag="nextStimulus" norepeat="true"/>
                                                 </actionFooterButton>
                                             </hasTag>
-                                            <randomGrouping/>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -354,7 +340,6 @@
                 <plainText featureText="end of stimuli"/>
                 <targetButton featureText="Menu" target="AutoMenu"/>
             </endOfStimulus>
-            <randomGrouping/>
             <stimuli>
                 <tag>list4_a</tag>
             </stimuli>
@@ -386,7 +371,6 @@
                                                     <nextStimulus eventTag="nextStimulus" norepeat="true"/>
                                                 </actionFooterButton>
                                             </hasTag>
-                                            <randomGrouping/>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -409,7 +393,6 @@
                                                     <nextStimulus eventTag="nextStimulus" norepeat="true"/>
                                                 </actionFooterButton>
                                             </hasTag>
-                                            <randomGrouping/>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -425,7 +408,6 @@
                 <plainText featureText="end of stimuli"/>
                 <targetButton featureText="Menu" target="AutoMenu"/>
             </endOfStimulus>
-            <randomGrouping/>
             <stimuli>
                 <tag>list1_b</tag>
             </stimuli>
@@ -457,7 +439,6 @@
                                                     <nextStimulus eventTag="nextStimulus" norepeat="true"/>
                                                 </actionFooterButton>
                                             </hasTag>
-                                            <randomGrouping/>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -480,7 +461,6 @@
                                                     <nextStimulus eventTag="nextStimulus" norepeat="true"/>
                                                 </actionFooterButton>
                                             </hasTag>
-                                            <randomGrouping/>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -496,7 +476,6 @@
                 <plainText featureText="end of stimuli"/>
                 <targetButton featureText="Menu" target="AutoMenu"/>
             </endOfStimulus>
-            <randomGrouping/>
             <stimuli>
                 <tag>list2_b</tag>
             </stimuli>
@@ -528,7 +507,6 @@
                                                     <nextStimulus eventTag="nextStimulus" norepeat="true"/>
                                                 </actionFooterButton>
                                             </hasTag>
-                                            <randomGrouping/>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -551,7 +529,6 @@
                                                     <nextStimulus eventTag="nextStimulus" norepeat="true"/>
                                                 </actionFooterButton>
                                             </hasTag>
-                                            <randomGrouping/>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -567,7 +544,6 @@
                 <plainText featureText="end of stimuli"/>
                 <targetButton featureText="Menu" target="AutoMenu"/>
             </endOfStimulus>
-            <randomGrouping/>
             <stimuli>
                 <tag>list3_b</tag>
             </stimuli>
@@ -599,7 +575,6 @@
                                                     <nextStimulus eventTag="nextStimulus" norepeat="true"/>
                                                 </actionFooterButton>
                                             </hasTag>
-                                            <randomGrouping/>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -622,7 +597,6 @@
                                                     <nextStimulus eventTag="nextStimulus" norepeat="true"/>
                                                 </actionFooterButton>
                                             </hasTag>
-                                            <randomGrouping/>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -638,7 +612,6 @@
                 <plainText featureText="end of stimuli"/>
                 <targetButton featureText="Menu" target="AutoMenu"/>
             </endOfStimulus>
-            <randomGrouping/>
             <stimuli>
                 <tag>list4_b</tag>
             </stimuli>
@@ -673,7 +646,6 @@
                                                     <nextStimulus eventTag="nextStimulus" norepeat="true"/>
                                                 </actionFooterButton>
                                             </hasTag>
-                                            <randomGrouping/>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -696,7 +668,6 @@
                                                     <nextStimulus eventTag="nextStimulus" norepeat="true"/>
                                                 </actionFooterButton>
                                             </hasTag>
-                                            <randomGrouping/>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -712,7 +683,6 @@
                 <plainText featureText="end of stimuli"/>
                 <targetButton featureText="Menu" target="AutoMenu"/>
             </endOfStimulus>
-            <randomGrouping/>
             <stimuli>
                 <tag>list1_c</tag>
             </stimuli>
@@ -744,7 +714,6 @@
                                                     <nextStimulus eventTag="nextStimulus" norepeat="true"/>
                                                 </actionFooterButton>
                                             </hasTag>
-                                            <randomGrouping/>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -767,7 +736,6 @@
                                                     <nextStimulus eventTag="nextStimulus" norepeat="true"/>
                                                 </actionFooterButton>
                                             </hasTag>
-                                            <randomGrouping/>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -783,7 +751,6 @@
                 <plainText featureText="end of stimuli"/>
                 <targetButton featureText="Menu" target="AutoMenu"/>
             </endOfStimulus>
-            <randomGrouping/>
             <stimuli>
                 <tag>list2_c</tag>
             </stimuli>
@@ -815,7 +782,6 @@
                                                     <nextStimulus eventTag="nextStimulus" norepeat="true"/>
                                                 </actionFooterButton>
                                             </hasTag>
-                                            <randomGrouping/>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -838,7 +804,6 @@
                                                     <nextStimulus eventTag="nextStimulus" norepeat="true"/>
                                                 </actionFooterButton>
                                             </hasTag>
-                                            <randomGrouping/>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -854,7 +819,6 @@
                 <plainText featureText="end of stimuli"/>
                 <targetButton featureText="Menu" target="AutoMenu"/>
             </endOfStimulus>
-            <randomGrouping/>
             <stimuli>
                 <tag>list3_c</tag>
             </stimuli>
@@ -886,7 +850,6 @@
                                                     <nextStimulus eventTag="nextStimulus" norepeat="true"/>
                                                 </actionFooterButton>
                                             </hasTag>
-                                            <randomGrouping/>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -909,7 +872,6 @@
                                                     <nextStimulus eventTag="nextStimulus" norepeat="true"/>
                                                 </actionFooterButton>
                                             </hasTag>
-                                            <randomGrouping/>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -925,7 +887,6 @@
                 <plainText featureText="end of stimuli"/>
                 <targetButton featureText="Menu" target="AutoMenu"/>
             </endOfStimulus>
-            <randomGrouping/>
             <stimuli>
                 <tag>list4_c</tag>
             </stimuli>

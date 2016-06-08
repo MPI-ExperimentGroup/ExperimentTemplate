@@ -26,10 +26,12 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
 import javax.validation.constraints.Size;
 import javax.xml.bind.JAXBElement;
@@ -57,8 +59,8 @@ public class PresenterFeature {
     private FeatureType featureType;
     @ElementCollection
     private List<String> stimulusTags = new ArrayList<>();
-    @ElementCollection
-    private List<String> randomTags = new ArrayList<>();
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private RandomGrouping randomGrouping = null;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderBy("displayOrder ASC")
     private List<PresenterFeature> presenterFeatures = new ArrayList<>();
@@ -162,22 +164,21 @@ public class PresenterFeature {
 //        }
 //    }
 
-    @XmlElementWrapper(name = "randomGrouping")
-    @XmlElement(name = "tag")
-    public List<String> getRandomTags() {
-        return (featureType.canHaveStimulusTags()) ? randomTags : null;
+    @XmlElement(name = "randomGrouping")
+    public RandomGrouping getRandomGrouping() {
+        return (featureType.canHaveStimulusTags()) ? randomGrouping : null;
     }
 
-    public void setRandomTags(List<String> randomTags) {
-        this.randomTags = randomTags;
+    public void setRandomGrouping(RandomGrouping randomGrouping) {
+        if (featureType.canHaveStimulusTags()) {
+            this.randomGrouping = randomGrouping;
+        } else {
+            throw new UnsupportedOperationException("randomGrouping and StimulusTags are not supported in this type");
+        }
     }
 
     public void addStimulusTag(String tag) {
         stimulusTags.add(Stimulus.cleanTagString(tag));
-    }
-
-    public void addRandomTag(String tag) {
-        randomTags.add(Stimulus.cleanTagString(tag));
     }
 
     @XmlAnyAttribute

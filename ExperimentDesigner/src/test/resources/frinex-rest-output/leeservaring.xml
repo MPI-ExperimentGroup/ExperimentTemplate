@@ -7,6 +7,8 @@
         <field controlledMessage="." controlledRegex="primair onderwijs (basisschool)|voortgezet onderwijs|middelbaar beroepsonderwijs (MBO)|hoger onderwijs (HBO, universiteit)|anders" postName="opleidingsniveau" preventServerDuplicates="false" registrationField="Opleidingsniveau"/>
         <field controlledMessage="." controlledRegex="true|false" postName="nederlandsMoedertaal" preventServerDuplicates="false" registrationField="Nederlands is mijn moedertaal"/>
         <field controlledMessage="Voer een getal in." controlledRegex="[0-9]*" postName="hoeveelJaarNederlands" preventServerDuplicates="false" registrationField="Als Nederlands niet uw moedertaal is, hoeveel jaar leert u al Nederlands?"/>
+        <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_Introduciton" preventServerDuplicates="false" registrationField="groupAllocation_Introduciton"/>
+        <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_StoryPresentation" preventServerDuplicates="false" registrationField="groupAllocation_StoryPresentation"/>
         <field controlledMessage="Geef een geldig e-mailadres." controlledRegex="^[^@]+@[^@]+$" postName="emaill" preventServerDuplicates="false" registrationField=""/>
     </metadata>
     <presenter displayOrder="1" menuLabel="Toestemming" next="Participant" type="metadata" self="Toestemming" title="Leeservaring 1">
@@ -39,7 +41,7 @@
             <endOfStimulus>
                 <autoNextPresenter/>
             </endOfStimulus>
-            <randomGrouping>
+            <randomGrouping storageField="groupAllocation_Introduciton">
                 <tag>IntroductionAFact</tag>
                 <tag>IntroductionBFiction</tag>
             </randomGrouping>
@@ -61,7 +63,7 @@
             <endOfStimulus>
                 <autoNextPresenter/>
             </endOfStimulus>
-            <randomGrouping>
+            <randomGrouping storageField="groupAllocation_StoryPresentation">
                 <tag>Emotioneel_hij</tag>
                 <tag>Emotioneel_ik</tag>
                 <tag>Koffiemolen_hij</tag>
@@ -90,7 +92,6 @@
             <endOfStimulus>
                 <autoNextPresenter/>
             </endOfStimulus>
-            <randomGrouping/>
             <stimuli>
                 <tag>Survey1</tag>
             </stimuli>
@@ -110,7 +111,6 @@
             <endOfStimulus>
                 <autoNextPresenter/>
             </endOfStimulus>
-            <randomGrouping/>
             <stimuli>
                 <tag>Survey2</tag>
             </stimuli>
@@ -142,7 +142,6 @@
             <endOfStimulus>
                 <autoNextPresenter/>
             </endOfStimulus>
-            <randomGrouping/>
             <stimuli>
                 <tag>PictureTask</tag>
             </stimuli>
@@ -166,7 +165,6 @@
             <endOfStimulus>
                 <autoNextPresenter/>
             </endOfStimulus>
-            <randomGrouping/>
             <stimuli>
                 <tag>ReadingBehavior</tag>
             </stimuli>
