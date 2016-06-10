@@ -215,14 +215,14 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
                     System.out.println("codeString: " + codeString);
                     final String baseFileName = stimulusLine.replaceAll(BASE_FILE_REGEX, "");
                     tagSet.addAll(Arrays.asList(baseFileName.split("/")));
-                    stimulus = new Stimulus(baseFileName, null, null, null, stimulusLine, null, codeString, 0, tagSet);
+                    stimulus = new Stimulus(baseFileName, null, null, stimulusLine, null, codeString, 0, tagSet, null);
                 } else if (stimulusLine.endsWith(".png")) {
                     tagSet.addAll(Arrays.asList(stimulusLine.split("/")));
-                    stimulus = new Stimulus(stimulusLine.replace(".png", ""), null, null, null, stimulusLine, null, stimulusLine.replace(".png", ""), 0, tagSet);
+                    stimulus = new Stimulus(stimulusLine.replace(".png", ""), null, null, stimulusLine, null, null, 0, tagSet, null);
                 } else {
                     final String[] splitScreenText = stimulusLine.split(":", 2);
                     tagSet.addAll(Arrays.asList(splitScreenText[0].split("/")));
-                    stimulus = new Stimulus(null, null, null, null, null, splitScreenText[1].replace("\n", "<br/>"), splitScreenText[0].replace(" ", "_").replace("/", "_"), 0, tagSet);
+                    stimulus = new Stimulus(null, null, null, null, splitScreenText[1].replace("\n", "<br/>"), splitScreenText[0].replace(" ", "_").replace("/", "_"), 0, tagSet, null);
                 }
                 stimuliList.add(stimulus);
             }

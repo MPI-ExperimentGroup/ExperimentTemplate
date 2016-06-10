@@ -385,67 +385,67 @@
             <tag>Survey2</tag>
             <tag>saai</tag>
         </stimulus>
-        <stimulus baseFilePath="Emotioneel1_1stperson" code="Emotioneel1_1stperson" image="Emotioneel1_1stperson.png" pauseMs="0">
+        <stimulus identifier="Emotioneel1_1stperson" imagePath="Emotioneel1_1stperson.png" pauseMs="0">
             <tag>Emotioneel1_1stperson_png</tag>
             <tag>PictureTask</tag>
         </stimulus>
-        <stimulus baseFilePath="Emotioneel2_3rdperson" code="Emotioneel2_3rdperson" image="Emotioneel2_3rdperson.png" pauseMs="0">
+        <stimulus identifier="Emotioneel2_3rdperson" imagePath="Emotioneel2_3rdperson.png" pauseMs="0">
             <tag>Emotioneel2_3rdperson_png</tag>
             <tag>PictureTask</tag>
         </stimulus>
-        <stimulus baseFilePath="Koffiemolen2_3rdperson" code="Koffiemolen2_3rdperson" image="Koffiemolen2_3rdperson.png" pauseMs="0">
+        <stimulus identifier="Koffiemolen2_3rdperson" imagePath="Koffiemolen2_3rdperson.png" pauseMs="0">
             <tag>Koffiemolen2_3rdperson_png</tag>
             <tag>PictureTask</tag>
         </stimulus>
-        <stimulus baseFilePath="Matroesjka1_3rdperson" code="Matroesjka1_3rdperson" image="Matroesjka1_3rdperson.png" pauseMs="0">
+        <stimulus identifier="Matroesjka1_3rdperson" imagePath="Matroesjka1_3rdperson.png" pauseMs="0">
             <tag>Matroesjka1_3rdperson_png</tag>
             <tag>PictureTask</tag>
         </stimulus>
-        <stimulus baseFilePath="Meesterwerk1_1stperson" code="Meesterwerk1_1stperson" image="Meesterwerk1_1stperson.png" pauseMs="0">
+        <stimulus identifier="Meesterwerk1_1stperson" imagePath="Meesterwerk1_1stperson.png" pauseMs="0">
             <tag>Meesterwerk1_1stperson_png</tag>
             <tag>PictureTask</tag>
         </stimulus>
-        <stimulus baseFilePath="Meesterwerk2_3rdperson" code="Meesterwerk2_3rdperson" image="Meesterwerk2_3rdperson.png" pauseMs="0">
+        <stimulus identifier="Meesterwerk2_3rdperson" imagePath="Meesterwerk2_3rdperson.png" pauseMs="0">
             <tag>Meesterwerk2_3rdperson_png</tag>
             <tag>PictureTask</tag>
         </stimulus>
-        <stimulus baseFilePath="Emotioneel1_3rdperson" code="Emotioneel1_3rdperson" image="Emotioneel1_3rdperson.png" pauseMs="0">
+        <stimulus identifier="Emotioneel1_3rdperson" imagePath="Emotioneel1_3rdperson.png" pauseMs="0">
             <tag>Emotioneel1_3rdperson_png</tag>
             <tag>PictureTask</tag>
         </stimulus>
-        <stimulus baseFilePath="Koffiemoeln_3rdperson" code="Koffiemoeln_3rdperson" image="Koffiemoeln_3rdperson.png" pauseMs="0">
+        <stimulus identifier="Koffiemoeln_3rdperson" imagePath="Koffiemoeln_3rdperson.png" pauseMs="0">
             <tag>Koffiemoeln_3rdperson_png</tag>
             <tag>PictureTask</tag>
         </stimulus>
-        <stimulus baseFilePath="Koffiemolen_1stperson_V2" code="Koffiemolen_1stperson_V2" image="Koffiemolen_1stperson_V2.png" pauseMs="0">
+        <stimulus identifier="Koffiemolen_1stperson_V2" imagePath="Koffiemolen_1stperson_V2.png" pauseMs="0">
             <tag>Koffiemolen_1stperson_V2_png</tag>
             <tag>PictureTask</tag>
         </stimulus>
-        <stimulus baseFilePath="Matroesjka2_1stperson" code="Matroesjka2_1stperson" image="Matroesjka2_1stperson.png" pauseMs="0">
+        <stimulus identifier="Matroesjka2_1stperson" imagePath="Matroesjka2_1stperson.png" pauseMs="0">
             <tag>Matroesjka2_1stperson_png</tag>
             <tag>PictureTask</tag>
         </stimulus>
-        <stimulus baseFilePath="Meesterwerk1_3rdperson" code="Meesterwerk1_3rdperson" image="Meesterwerk1_3rdperson.png" pauseMs="0">
+        <stimulus identifier="Meesterwerk1_3rdperson" imagePath="Meesterwerk1_3rdperson.png" pauseMs="0">
             <tag>Meesterwerk1_3rdperson_png</tag>
             <tag>PictureTask</tag>
         </stimulus>
-        <stimulus baseFilePath="Emotioneel2_1stperson" code="Emotioneel2_1stperson" image="Emotioneel2_1stperson.png" pauseMs="0">
+        <stimulus identifier="Emotioneel2_1stperson" imagePath="Emotioneel2_1stperson.png" pauseMs="0">
             <tag>Emotioneel2_1stperson_png</tag>
             <tag>PictureTask</tag>
         </stimulus>
-        <stimulus baseFilePath="Koffiemolen1_1stperson" code="Koffiemolen1_1stperson" image="Koffiemolen1_1stperson.png" pauseMs="0">
+        <stimulus identifier="Koffiemolen1_1stperson" imagePath="Koffiemolen1_1stperson.png" pauseMs="0">
             <tag>Koffiemolen1_1stperson_png</tag>
             <tag>PictureTask</tag>
         </stimulus>
-        <stimulus baseFilePath="Matroesjka1_1stperson" code="Matroesjka1_1stperson" image="Matroesjka1_1stperson.png" pauseMs="0">
+        <stimulus identifier="Matroesjka1_1stperson" imagePath="Matroesjka1_1stperson.png" pauseMs="0">
             <tag>Matroesjka1_1stperson_png</tag>
             <tag>PictureTask</tag>
         </stimulus>
-        <stimulus baseFilePath="Matroesjka2_3rdperson" code="Matroesjka2_3rdperson" image="Matroesjka2_3rdperson.png" pauseMs="0">
+        <stimulus identifier="Matroesjka2_3rdperson" imagePath="Matroesjka2_3rdperson.png" pauseMs="0">
             <tag>Matroesjka2_3rdperson_png</tag>
             <tag>PictureTask</tag>
         </stimulus>
-        <stimulus baseFilePath="Meesterwerk2_1stperson" code="Meesterwerk2_1stperson" image="Meesterwerk2_1stperson.png" pauseMs="0">
+        <stimulus identifier="Meesterwerk2_1stperson" imagePath="Meesterwerk2_1stperson.png" pauseMs="0">
             <tag>Meesterwerk2_1stperson_png</tag>
             <tag>PictureTask</tag>
         </stimulus>

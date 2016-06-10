@@ -421,169 +421,169 @@
         </sendAllData>
     </presenter>
     <stimuli>
-        <stimulus code="Monday" label="Monday" pauseMs="0">
+        <stimulus identifier="Monday" label="Monday" pauseMs="0">
             <tag>Weekdays</tag>
         </stimulus>
-        <stimulus code="Tuesday" label="Tuesday" pauseMs="0">
+        <stimulus identifier="Tuesday" label="Tuesday" pauseMs="0">
             <tag>Weekdays</tag>
         </stimulus>
-        <stimulus code="Wednesday" label="Wednesday" pauseMs="0">
+        <stimulus identifier="Wednesday" label="Wednesday" pauseMs="0">
             <tag>Weekdays</tag>
         </stimulus>
-        <stimulus code="Thursday" label="Thursday" pauseMs="0">
+        <stimulus identifier="Thursday" label="Thursday" pauseMs="0">
             <tag>Weekdays</tag>
         </stimulus>
-        <stimulus code="Friday" label="Friday" pauseMs="0">
+        <stimulus identifier="Friday" label="Friday" pauseMs="0">
             <tag>Weekdays</tag>
         </stimulus>
-        <stimulus code="Saturday" label="Saturday" pauseMs="0">
+        <stimulus identifier="Saturday" label="Saturday" pauseMs="0">
             <tag>Weekdays</tag>
         </stimulus>
-        <stimulus code="Sunday" label="Sunday" pauseMs="0">
+        <stimulus identifier="Sunday" label="Sunday" pauseMs="0">
             <tag>Weekdays</tag>
         </stimulus>
-        <stimulus code="0" label="0" pauseMs="0">
+        <stimulus identifier="0" label="0" pauseMs="0">
             <tag>Numbers</tag>
         </stimulus>
-        <stimulus code="1" label="1" pauseMs="0">
+        <stimulus identifier="1" label="1" pauseMs="0">
             <tag>Numbers</tag>
         </stimulus>
-        <stimulus code="2" label="2" pauseMs="0">
+        <stimulus identifier="2" label="2" pauseMs="0">
             <tag>Numbers</tag>
         </stimulus>
-        <stimulus code="3" label="3" pauseMs="0">
+        <stimulus identifier="3" label="3" pauseMs="0">
             <tag>Numbers</tag>
         </stimulus>
-        <stimulus code="4" label="4" pauseMs="0">
+        <stimulus identifier="4" label="4" pauseMs="0">
             <tag>Numbers</tag>
         </stimulus>
-        <stimulus code="5" label="5" pauseMs="0">
+        <stimulus identifier="5" label="5" pauseMs="0">
             <tag>Numbers</tag>
         </stimulus>
-        <stimulus code="6" label="6" pauseMs="0">
+        <stimulus identifier="6" label="6" pauseMs="0">
             <tag>Numbers</tag>
         </stimulus>
-        <stimulus code="7" label="7" pauseMs="0">
+        <stimulus identifier="7" label="7" pauseMs="0">
             <tag>Numbers</tag>
         </stimulus>
-        <stimulus code="8" label="8" pauseMs="0">
+        <stimulus identifier="8" label="8" pauseMs="0">
             <tag>Numbers</tag>
         </stimulus>
-        <stimulus code="9" label="9" pauseMs="0">
+        <stimulus identifier="9" label="9" pauseMs="0">
             <tag>Numbers</tag>
         </stimulus>
-        <stimulus code="A" label="A" pauseMs="0">
+        <stimulus identifier="A" label="A" pauseMs="0">
             <tag>Letters</tag>
         </stimulus>
-        <stimulus code="B" label="B" pauseMs="0">
+        <stimulus identifier="B" label="B" pauseMs="0">
             <tag>Letters</tag>
         </stimulus>
-        <stimulus code="C" label="C" pauseMs="0">
+        <stimulus identifier="C" label="C" pauseMs="0">
             <tag>Letters</tag>
         </stimulus>
-        <stimulus code="D" label="D" pauseMs="0">
+        <stimulus identifier="D" label="D" pauseMs="0">
             <tag>Letters</tag>
         </stimulus>
-        <stimulus code="E" label="E" pauseMs="0">
+        <stimulus identifier="E" label="E" pauseMs="0">
             <tag>Letters</tag>
         </stimulus>
-        <stimulus code="F" label="F" pauseMs="0">
+        <stimulus identifier="F" label="F" pauseMs="0">
             <tag>Letters</tag>
         </stimulus>
-        <stimulus code="G" label="G" pauseMs="0">
+        <stimulus identifier="G" label="G" pauseMs="0">
             <tag>Letters</tag>
         </stimulus>
-        <stimulus code="H" label="H" pauseMs="0">
+        <stimulus identifier="H" label="H" pauseMs="0">
             <tag>Letters</tag>
         </stimulus>
-        <stimulus code="I" label="I" pauseMs="0">
+        <stimulus identifier="I" label="I" pauseMs="0">
             <tag>Letters</tag>
         </stimulus>
-        <stimulus code="J" label="J" pauseMs="0">
+        <stimulus identifier="J" label="J" pauseMs="0">
             <tag>Letters</tag>
         </stimulus>
-        <stimulus code="K" label="K" pauseMs="0">
+        <stimulus identifier="K" label="K" pauseMs="0">
             <tag>Letters</tag>
         </stimulus>
-        <stimulus code="L" label="L" pauseMs="0">
+        <stimulus identifier="L" label="L" pauseMs="0">
             <tag>Letters</tag>
         </stimulus>
-        <stimulus code="M" label="M" pauseMs="0">
+        <stimulus identifier="M" label="M" pauseMs="0">
             <tag>Letters</tag>
         </stimulus>
-        <stimulus code="N" label="N" pauseMs="0">
+        <stimulus identifier="N" label="N" pauseMs="0">
             <tag>Letters</tag>
         </stimulus>
-        <stimulus code="O" label="O" pauseMs="0">
+        <stimulus identifier="O" label="O" pauseMs="0">
             <tag>Letters</tag>
         </stimulus>
-        <stimulus code="P" label="P" pauseMs="0">
+        <stimulus identifier="P" label="P" pauseMs="0">
             <tag>Letters</tag>
         </stimulus>
-        <stimulus code="Q" label="Q" pauseMs="0">
+        <stimulus identifier="Q" label="Q" pauseMs="0">
             <tag>Letters</tag>
         </stimulus>
-        <stimulus code="R" label="R" pauseMs="0">
+        <stimulus identifier="R" label="R" pauseMs="0">
             <tag>Letters</tag>
         </stimulus>
-        <stimulus code="S" label="S" pauseMs="0">
+        <stimulus identifier="S" label="S" pauseMs="0">
             <tag>Letters</tag>
         </stimulus>
-        <stimulus code="T" label="T" pauseMs="0">
+        <stimulus identifier="T" label="T" pauseMs="0">
             <tag>Letters</tag>
         </stimulus>
-        <stimulus code="U" label="U" pauseMs="0">
+        <stimulus identifier="U" label="U" pauseMs="0">
             <tag>Letters</tag>
         </stimulus>
-        <stimulus code="V" label="V" pauseMs="0">
+        <stimulus identifier="V" label="V" pauseMs="0">
             <tag>Letters</tag>
         </stimulus>
-        <stimulus code="W" label="W" pauseMs="0">
+        <stimulus identifier="W" label="W" pauseMs="0">
             <tag>Letters</tag>
         </stimulus>
-        <stimulus code="X" label="X" pauseMs="0">
+        <stimulus identifier="X" label="X" pauseMs="0">
             <tag>Letters</tag>
         </stimulus>
-        <stimulus code="Y" label="Y" pauseMs="0">
+        <stimulus identifier="Y" label="Y" pauseMs="0">
             <tag>Letters</tag>
         </stimulus>
-        <stimulus code="Z" label="Z" pauseMs="0">
+        <stimulus identifier="Z" label="Z" pauseMs="0">
             <tag>Letters</tag>
         </stimulus>
-        <stimulus code="January" label="January" pauseMs="0">
+        <stimulus identifier="January" label="January" pauseMs="0">
             <tag>Months</tag>
         </stimulus>
-        <stimulus code="February" label="February" pauseMs="0">
+        <stimulus identifier="February" label="February" pauseMs="0">
             <tag>Months</tag>
         </stimulus>
-        <stimulus code="March" label="March" pauseMs="0">
+        <stimulus identifier="March" label="March" pauseMs="0">
             <tag>Months</tag>
         </stimulus>
-        <stimulus code="April" label="April" pauseMs="0">
+        <stimulus identifier="April" label="April" pauseMs="0">
             <tag>Months</tag>
         </stimulus>
-        <stimulus code="May" label="May" pauseMs="0">
+        <stimulus identifier="May" label="May" pauseMs="0">
             <tag>Months</tag>
         </stimulus>
-        <stimulus code="June" label="June" pauseMs="0">
+        <stimulus identifier="June" label="June" pauseMs="0">
             <tag>Months</tag>
         </stimulus>
-        <stimulus code="July" label="July" pauseMs="0">
+        <stimulus identifier="July" label="July" pauseMs="0">
             <tag>Months</tag>
         </stimulus>
-        <stimulus code="August" label="August" pauseMs="0">
+        <stimulus identifier="August" label="August" pauseMs="0">
             <tag>Months</tag>
         </stimulus>
-        <stimulus code="September" label="September" pauseMs="0">
+        <stimulus identifier="September" label="September" pauseMs="0">
             <tag>Months</tag>
         </stimulus>
-        <stimulus code="October" label="October" pauseMs="0">
+        <stimulus identifier="October" label="October" pauseMs="0">
             <tag>Months</tag>
         </stimulus>
-        <stimulus code="November" label="November" pauseMs="0">
+        <stimulus identifier="November" label="November" pauseMs="0">
             <tag>Months</tag>
         </stimulus>
-        <stimulus code="December" label="December" pauseMs="0">
+        <stimulus identifier="December" label="December" pauseMs="0">
             <tag>Months</tag>
         </stimulus>
     </stimuli>

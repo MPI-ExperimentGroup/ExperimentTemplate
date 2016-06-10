@@ -41,30 +41,28 @@ public class Stimulus implements Serializable {
     private long id;
     private int pauseMs;
 
-    private String mp3;
-    private String mp4;
-    private String ogg;
-    private String webm;
-    private String image;
-    private String baseFilePath;
+    private String audioPath;
+    private String videoPath;
+    private String imagePath;
+    private String identifier;
     @Size(max = 5500)
     private String label;
     private String code;
     private byte[] imageData = null;
     private byte[] audioData = null;
     private byte[] videoData = null;
+    private String[] responseOptions = null;
 
     TreeSet<String> stimulusTags;
 
     public Stimulus() {
     }
 
-    public Stimulus(String baseFilePath, String mp3, String mp4, String ogg, String image, String label, String code, int pauseMs, HashSet<String> stimulusTags) {
-        this.baseFilePath = baseFilePath;
-        this.mp3 = mp3;
-        this.mp4 = mp4;
-        this.ogg = ogg;
-        this.image = image;
+    public Stimulus(String identifier, String audioPath, String videoPath, String imagePath, String label, String code, int pauseMs, HashSet<String> stimulusTags, String[] responseOptions) {
+        this.identifier = identifier;
+        this.audioPath = audioPath;
+        this.videoPath = videoPath;
+        this.imagePath = imagePath;
         this.label = label;
         this.code = code;
         this.pauseMs = pauseMs;
@@ -72,6 +70,7 @@ public class Stimulus implements Serializable {
         for (String tag : stimulusTags) {
             addStimulusTag(tag);
         }
+        this.responseOptions = responseOptions;
     }
 
     @XmlTransient
@@ -93,57 +92,39 @@ public class Stimulus implements Serializable {
     }
 
     @XmlAttribute
-    public String getMp3() {
-        return mp3;
+    public String getIdentifier() {
+        return identifier;
     }
 
-    public void setMp3(String mp3) {
-        this.mp3 = mp3;
-    }
-
-    @XmlAttribute
-    public String getMp4() {
-        return mp4;
+    public void setIdentifier(String identifier) {
+        this.identifier = identifier;
     }
 
     @XmlAttribute
-    public String getBaseFilePath() {
-        return baseFilePath;
+    public String getAudioPath() {
+        return audioPath;
     }
 
-    public void setBaseFilePath(String baseFileName) {
-        this.baseFilePath = baseFileName;
-    }
-
-    public void setMp4(String mp4) {
-        this.mp4 = mp4;
-    }
-
-    public void setOgg(String ogg) {
-        this.ogg = ogg;
-    }
-
-    public void setWebm(String webm) {
-        this.webm = webm;
+    public void setAudioPath(String audioPath) {
+        this.audioPath = audioPath;
     }
 
     @XmlAttribute
-    public String getOgg() {
-        return ogg;
+    public String getVideoPath() {
+        return videoPath;
+    }
+
+    public void setVideoPath(String videoPath) {
+        this.videoPath = videoPath;
     }
 
     @XmlAttribute
-    public String getWebm() {
-        return webm;
+    public String getImagePath() {
+        return imagePath;
     }
 
-    @XmlAttribute
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
     @XmlAttribute
@@ -189,6 +170,14 @@ public class Stimulus implements Serializable {
 
     public void setVideoData(byte[] videoData) {
         this.videoData = videoData;
+    }
+
+    public String[] getResponseOptions() {
+        return responseOptions;
+    }
+
+    public void setResponseOptions(String[] responseOptions) {
+        this.responseOptions = responseOptions;
     }
 
     @XmlElement(name = "tag")

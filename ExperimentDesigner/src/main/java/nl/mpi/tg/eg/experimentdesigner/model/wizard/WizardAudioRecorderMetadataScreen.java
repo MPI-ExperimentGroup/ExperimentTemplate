@@ -77,7 +77,7 @@ public class WizardAudioRecorderMetadataScreen extends AbstractWizardScreen {
         final List<Stimulus> stimuliList = experiment.getStimuli();
         final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{"metadata"}));
         for (String metadataString : metadataStrings) {
-            final Stimulus stimulus = new Stimulus(null, null, null, null, null, metadataString, metadataString.replaceAll("[^A-Za-z0-9]", "_"), 0, tagSet);
+            final Stimulus stimulus = new Stimulus(metadataString.replaceAll("[^A-Za-z0-9]", "_"), null, null, null, metadataString, null, 0, tagSet,null);
             stimuliList.add(stimulus);
         }
 //        experiment.setStimuli(stimuliList);

@@ -149,22 +149,22 @@
         <localStorageData/>
     </presenter>
     <stimuli>
-        <stimulus code="I_stap_rikod_nao__Man_o_woman_we_i_toktok_bai_i_talem_nem_blong_hem_" label="I stap rikod nao. Man o woman we i toktok bai i talem nem blong hem." pauseMs="0">
+        <stimulus identifier="I_stap_rikod_nao__Man_o_woman_we_i_toktok_bai_i_talem_nem_blong_hem_" label="I stap rikod nao. Man o woman we i toktok bai i talem nem blong hem." pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus code="Bai_i_talem_nem_blong_lanwis_wea_it_toktok_long_hem_" label="Bai i talem nem blong lanwis wea it toktok long hem." pauseMs="0">
+        <stimulus identifier="Bai_i_talem_nem_blong_lanwis_wea_it_toktok_long_hem_" label="Bai i talem nem blong lanwis wea it toktok long hem." pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus code="Bai_i_talem_nem_blong_ples_wea_i_stap_nao_" label="Bai i talem nem blong ples wea i stap nao." pauseMs="0">
+        <stimulus identifier="Bai_i_talem_nem_blong_ples_wea_i_stap_nao_" label="Bai i talem nem blong ples wea i stap nao." pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus code="Bai_i_talem_nem_blong_ples_wea_i_bon_long_hem_" label="Bai i talem nem blong ples wea i bon long hem." pauseMs="0">
+        <stimulus identifier="Bai_i_talem_nem_blong_ples_wea_i_bon_long_hem_" label="Bai i talem nem blong ples wea i bon long hem." pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus code="Bai_i_talem_wanem_yea_i_bon_" label="Bai i talem wanem yea i bon." pauseMs="0">
+        <stimulus identifier="Bai_i_talem_wanem_yea_i_bon_" label="Bai i talem wanem yea i bon." pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus baseFilePath="Pictures" code="Pictures" image="Pictures" label="Pictures" pauseMs="0">
+        <stimulus identifier="Pictures" imagePath="Pictures" label="Pictures" pauseMs="0">
             <tag>Pictures</tag>
         </stimulus>
     </stimuli>

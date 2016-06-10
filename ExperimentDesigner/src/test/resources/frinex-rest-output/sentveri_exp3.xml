@@ -893,31 +893,31 @@
         </loadAllStimulus>
     </presenter>
     <stimuli>
-        <stimulus code="1" label="prac_1_q" pauseMs="0">
+        <stimulus code="1" identifier="prac_1_q" label="prac_1_q" pauseMs="0">
             <tag>practice</tag>
             <tag>question</tag>
         </stimulus>
-        <stimulus code="2" label="prac_2" pauseMs="0">
+        <stimulus code="2" identifier="prac_2" label="prac_2" pauseMs="0">
             <tag>practice</tag>
         </stimulus>
-        <stimulus code="3" label="prac_3_q" pauseMs="0">
-            <tag>practice</tag>
-            <tag>question</tag>
-        </stimulus>
-        <stimulus code="4" label="prac_4" pauseMs="0">
-            <tag>practice</tag>
-        </stimulus>
-        <stimulus code="5" label="prac_5_q" pauseMs="1000">
+        <stimulus code="3" identifier="prac_3_q" label="prac_3_q" pauseMs="0">
             <tag>practice</tag>
             <tag>question</tag>
         </stimulus>
-        <stimulus code="6" label="prac_6" pauseMs="1000">
+        <stimulus code="4" identifier="prac_4" label="prac_4" pauseMs="0">
             <tag>practice</tag>
         </stimulus>
-        <stimulus code="7" label="prac_7" pauseMs="1000">
+        <stimulus code="5" identifier="prac_5_q" label="prac_5_q" pauseMs="1000">
+            <tag>practice</tag>
+            <tag>question</tag>
+        </stimulus>
+        <stimulus code="6" identifier="prac_6" label="prac_6" pauseMs="1000">
             <tag>practice</tag>
         </stimulus>
-        <stimulus code="8" label="prac_8_q" pauseMs="1000">
+        <stimulus code="7" identifier="prac_7" label="prac_7" pauseMs="1000">
+            <tag>practice</tag>
+        </stimulus>
+        <stimulus code="8" identifier="prac_8_q" label="prac_8_q" pauseMs="1000">
             <tag>practice</tag>
             <tag>question</tag>
         </stimulus>

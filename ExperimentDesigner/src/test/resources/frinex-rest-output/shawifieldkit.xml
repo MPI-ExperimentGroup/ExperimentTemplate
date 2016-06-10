@@ -293,67 +293,67 @@
         <allMenuItems/>
     </presenter>
     <stimuli>
-        <stimulus baseFilePath="cutbreak" code="cutbreak" image="cutbreak" label="cutbreak" pauseMs="0">
+        <stimulus identifier="cutbreak" imagePath="cutbreak" label="cutbreak" pauseMs="0">
             <tag>cutbreak</tag>
         </stimulus>
-        <stimulus baseFilePath="grammar" code="grammar" image="grammar" label="grammar" pauseMs="0">
+        <stimulus identifier="grammar" imagePath="grammar" label="grammar" pauseMs="0">
             <tag>grammar</tag>
         </stimulus>
-        <stimulus baseFilePath="vanuatu" code="vanuatu" image="vanuatu" label="vanuatu" pauseMs="0">
+        <stimulus identifier="vanuatu" imagePath="vanuatu" label="vanuatu" pauseMs="0">
             <tag>vanuatu</tag>
         </stimulus>
-        <stimulus baseFilePath="bodies" code="bodies" image="bodies" label="bodies" pauseMs="0">
+        <stimulus identifier="bodies" imagePath="bodies" label="bodies" pauseMs="0">
             <tag>bodies</tag>
         </stimulus>
-        <stimulus baseFilePath="bowped" code="bowped" image="bowped" label="bowped" pauseMs="0">
+        <stimulus identifier="bowped" imagePath="bowped" label="bowped" pauseMs="0">
             <tag>bowped</tag>
         </stimulus>
-        <stimulus baseFilePath="Grammaticality" code="Grammaticality" image="Grammaticality" label="Grammaticality" pauseMs="0">
+        <stimulus identifier="Grammaticality" imagePath="Grammaticality" label="Grammaticality" pauseMs="0">
             <tag>Grammaticality</tag>
         </stimulus>
-        <stimulus baseFilePath="Pictures" code="Pictures" image="Pictures" label="Pictures" pauseMs="0">
+        <stimulus identifier="Pictures" imagePath="Pictures" label="Pictures" pauseMs="0">
             <tag>Pictures</tag>
         </stimulus>
-        <stimulus baseFilePath="Animals" code="Animals" image="Animals" label="Animals" pauseMs="0">
+        <stimulus identifier="Animals" imagePath="Animals" label="Animals" pauseMs="0">
             <tag>Animals</tag>
         </stimulus>
-        <stimulus baseFilePath="Frogs" code="Frogs" image="Frogs" label="Frogs" pauseMs="0">
+        <stimulus identifier="Frogs" imagePath="Frogs" label="Frogs" pauseMs="0">
             <tag>Frogs</tag>
         </stimulus>
-        <stimulus code="Nombre" label="Nombre" pauseMs="0">
+        <stimulus identifier="Nombre" label="Nombre" pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus code="Sexo" label="Sexo" pauseMs="0">
+        <stimulus identifier="Sexo" label="Sexo" pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus code="Edad" label="Edad" pauseMs="0">
+        <stimulus identifier="Edad" label="Edad" pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus code="Estado_civil" label="Estado civil" pauseMs="0">
+        <stimulus identifier="Estado_civil" label="Estado civil" pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus code="Origen" label="Origen" pauseMs="0">
+        <stimulus identifier="Origen" label="Origen" pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus code="Lugar_de_residencia" label="Lugar de residencia" pauseMs="0">
+        <stimulus identifier="Lugar_de_residencia" label="Lugar de residencia" pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus code="Nombre_de_la_comunidad_a_la_que_pertenece" label="Nombre de la comunidad a la que pertenece" pauseMs="0">
+        <stimulus identifier="Nombre_de_la_comunidad_a_la_que_pertenece" label="Nombre de la comunidad a la que pertenece" pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus code="Actividad_laboral" label="Actividad laboral" pauseMs="0">
+        <stimulus identifier="Actividad_laboral" label="Actividad laboral" pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus code="Nivel_de_estudios" label="Nivel de estudios" pauseMs="0">
+        <stimulus identifier="Nivel_de_estudios" label="Nivel de estudios" pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus code="N_mero_de_hijos" label="Número de hijos" pauseMs="0">
+        <stimulus identifier="N_mero_de_hijos" label="Número de hijos" pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus code="Religi_n" label="Religión" pauseMs="0">
+        <stimulus identifier="Religi_n" label="Religión" pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus code="Idiomas" label="Idiomas" pauseMs="0">
+        <stimulus identifier="Idiomas" label="Idiomas" pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
     </stimuli>

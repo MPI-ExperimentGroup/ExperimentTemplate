@@ -118,7 +118,7 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
         String screenName = "";
         final List<Stimulus> stimuliList = experiment.getStimuli();
         for (final String stimulusTag : stimulusTagArray) {
-            stimuliList.add(new Stimulus(stimulusTag, null, null, null, stimulusTag, stimulusTag, stimulusTag, 0, new HashSet<>(Arrays.asList(new String[]{stimulusTag}))));
+            stimuliList.add(new Stimulus(stimulusTag, null, null, stimulusTag, stimulusTag, null, 0, new HashSet<>(Arrays.asList(new String[]{stimulusTag})), null));
             screenName += stimulusTag;
         }
         presenterScreen.setMenuLabel(screenTitle);

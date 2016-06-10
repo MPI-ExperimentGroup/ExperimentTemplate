@@ -172,7 +172,8 @@ public class Sentveri_exp3 {
             if (Sentveri_exp3Data.practQorNOT[index]) {
                 tagSet.add("question");
             }
-            final Stimulus stimulus = new Stimulus(null, null, null, null, null, "prac_" + Sentveri_exp3Data.practPictureIndex[index] + ((Sentveri_exp3Data.practQorNOT[index]) ? "_q" : ""), "" + Sentveri_exp3Data.practPictureIndex[index], (Sentveri_exp3Data.practslow[index]) ? 1000 : 0, tagSet);
+            final String labelString = "prac_" + Sentveri_exp3Data.practPictureIndex[index] + ((Sentveri_exp3Data.practQorNOT[index]) ? "_q" : "");
+            final Stimulus stimulus = new Stimulus(labelString, null, null, null, labelString, "" + Sentveri_exp3Data.practPictureIndex[index], (Sentveri_exp3Data.practslow[index]) ? 1000 : 0, tagSet, null);
             stimuliList.add(stimulus);
         }
 
@@ -194,7 +195,7 @@ public class Sentveri_exp3 {
                     if (Sentveri_exp3Data.QorNOT[index]) {
                         tagSet.add("question");
                     }
-                    final Stimulus stimulus = new Stimulus(null, null, null, null, null, tagString + "_" + setChar + "_" + Sentveri_exp3Data.pictureIndex[index] + ((Sentveri_exp3Data.QorNOT[index]) ? "_q" : ""), "" + Sentveri_exp3Data.pictureIndex[index], (currendSlow[index]) ? 1000 : 0, tagSet);
+                    final Stimulus stimulus = new Stimulus(null, null, null, null, tagString + "_" + setChar + "_" + Sentveri_exp3Data.pictureIndex[index] + ((Sentveri_exp3Data.QorNOT[index]) ? "_q" : ""), "" + Sentveri_exp3Data.pictureIndex[index], (currendSlow[index]) ? 1000 : 0, tagSet, null);
                     stimuliList.add(stimulus);
                 }
             }

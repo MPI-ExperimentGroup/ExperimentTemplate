@@ -20,8 +20,6 @@ package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
@@ -40,10 +38,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
 
     private String[] stimuliSet = null;
     private String[] stimuliRandomTags = null;
-    private String stimulusCodeMatch = null;
-    private int stimulusCodeMsDelay = 0;
     private int stimulusMsDelay = 0;
-    private String stimulusCodeFormat = null;
     private int stimuliCount = 1;
     private String stimulusResponseLabelLeft = null;
     private String stimulusResponseLabelRight = null;
@@ -55,16 +50,13 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         super("VideoAudioOption", "VideoAudioOption", "VideoAudioOption");
     }
 
-    public WizardVideoAudioOptionStimulusScreen(String screenName, boolean centreScreen, String[] screenTextArray, String[] randomStimuliTags, int maxStimuli, final boolean randomiseStimuli, String stimulusCodeMatch, int stimulusDelay, int codeStimulusDelay, String codeFormat, String responseOptions, String responseOptionsLabelLeft, String responseOptionsLabelRight, final String spacebar) {
+    public WizardVideoAudioOptionStimulusScreen(String screenName, boolean centreScreen, String[] screenTextArray, String[] randomStimuliTags, int maxStimuli, final boolean randomiseStimuli, int stimulusDelay, String responseOptions, String responseOptionsLabelLeft, String responseOptionsLabelRight, final String spacebar) {
         super(screenName, screenName, screenName);
         this.screenTitle = screenName;
         this.centreScreen = centreScreen;
         this.stimuliSet = screenTextArray;
         this.stimuliRandomTags = randomStimuliTags;
-        this.stimulusCodeMatch = stimulusCodeMatch;
-        this.stimulusCodeMsDelay = 0;
         this.stimulusMsDelay = 0;
-        this.stimulusCodeFormat = codeFormat;
         this.stimuliCount = maxStimuli;
         this.stimulusResponseLabelLeft = responseOptionsLabelLeft;
         this.stimulusResponseLabelRight = responseOptionsLabelRight;
@@ -74,22 +66,6 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
             throw new UnsupportedOperationException("button text cannot be null");
         }
         this.buttonLabelEventTag = spacebar;
-    }
-
-    public WizardVideoAudioOptionStimulusScreen(String screenName, String[] screenTextArray, int maxStimuli, final boolean randomiseStimuli, String responseOptions, String responseOptionsLabelLeft, String responseOptionsLabelRight) {
-        super(screenName, screenName, screenName);
-        this.screenTitle = screenName;
-        this.stimuliSet = screenTextArray;
-        this.stimuliRandomTags = null;
-        this.stimulusCodeMatch = null;
-        this.stimulusCodeMsDelay = 0;
-        this.stimulusMsDelay = 0;
-        this.stimulusCodeFormat = null;
-        this.stimuliCount = maxStimuli;
-        this.stimulusResponseLabelLeft = responseOptionsLabelLeft;
-        this.stimulusResponseLabelRight = responseOptionsLabelRight;
-        this.stimulusResponseOptions = responseOptions;
-        this.randomiseStimuli = randomiseStimuli;
     }
 
     public String[] getStimuliSet() {
@@ -108,36 +84,12 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         this.stimuliRandomTags = stimuliRandomTags;
     }
 
-    public String getStimulusCodeMatch() {
-        return stimulusCodeMatch;
-    }
-
-    public void setStimulusCodeMatch(String stimulusCodeMatch) {
-        this.stimulusCodeMatch = stimulusCodeMatch;
-    }
-
-    public int getStimulusCodeMsDelay() {
-        return stimulusCodeMsDelay;
-    }
-
-    public void setStimulusCodeMsDelay(int stimulusCodeMsDelay) {
-        this.stimulusCodeMsDelay = stimulusCodeMsDelay;
-    }
-
     public int getStimulusMsDelay() {
         return stimulusMsDelay;
     }
 
     public void setStimulusMsDelay(int stimulusMsDelay) {
         this.stimulusMsDelay = stimulusMsDelay;
-    }
-
-    public String getStimulusCodeFormat() {
-        return stimulusCodeFormat;
-    }
-
-    public void setStimulusCodeFormat(String stimulusCodeFormat) {
-        this.stimulusCodeFormat = stimulusCodeFormat;
     }
 
     public int getStimuliCount() {
@@ -192,27 +144,17 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
     @Override
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         final List<Stimulus> stimuliList = experiment.getStimuli();
-        final Pattern stimulusCodePattern = (stimulusCodeMatch != null) ? Pattern.compile(stimulusCodeMatch) : null;
         if (stimuliSet != null) {
             for (String stimulusLine : stimuliSet) {
                 final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{screenTitle}));
                 final Stimulus stimulus;
-                if (stimulusCodePattern != null) {
-                    System.out.println("stimulusCodeMatch:" + stimulusCodeMatch);
-                    Matcher matcher = stimulusCodePattern.matcher(stimulusLine);
-                    final String codeString = (matcher.find()) ? matcher.group(1) : null;
-                    System.out.println("codeString: " + codeString);
-                    final String baseFileName = stimulusLine.replaceAll(BASE_FILE_REGEX, "");
-                    tagSet.addAll(Arrays.asList(baseFileName.split("/")));
-                    stimulus = new Stimulus(baseFileName, null, null, null, stimulusLine, null, codeString, 0, tagSet);
-                } else if (stimulusLine.endsWith(".png")) {
-                    tagSet.addAll(Arrays.asList(stimulusLine.split("/")));
-                    stimulus = new Stimulus(stimulusLine.replace(".png", ""), null, null, null, stimulusLine, null, stimulusLine.replace(".png", ""), 0, tagSet);
-                } else {
-                    final String[] splitScreenText = stimulusLine.split(":", 2);
-                    tagSet.addAll(Arrays.asList(splitScreenText[0].split("/")));
-                    stimulus = new Stimulus(null, null, null, null, null, splitScreenText[1].replace("\n", "<br/>"), splitScreenText[0].replace(" ", "_").replace("/", "_"), 0, tagSet);
-                }
+
+                final String[] splitScreenText = stimulusLine.split(":", 2);
+                tagSet.addAll(Arrays.asList(splitScreenText[0].split("/")));
+                final String audioPath = splitScreenText[2];
+                final String videoPath = splitScreenText[1];
+                final String[] responseOptions = splitScreenText[0].split("/");
+                stimulus = new Stimulus(stimulusLine, audioPath, videoPath, null, splitScreenText[1].replace("\n", "<br/>"), splitScreenText[0].replace(" ", "_").replace("/", "_"), 0, tagSet, responseOptions);
                 stimuliList.add(stimulus);
             }
         }
@@ -250,32 +192,32 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
         imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(stimulusMsDelay));
         final PresenterFeature presenterFeature;
-        if (stimulusCodeFormat != null) {
-            final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionButton, buttonLabelEventTag);
-            nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, buttonLabelEventTag);
-            nextButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
-            nextButtonFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
-            final PresenterFeature pauseFeature = new PresenterFeature(FeatureType.pause, null);
-            pauseFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(stimulusCodeMsDelay));
-            nextButtonFeature.getPresenterFeatureList().add(pauseFeature);
-            final PresenterFeature stimulusCodeAudio = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
-            stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.codeFormat, stimulusCodeFormat);
-            stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.msToNext, "0");
-            pauseFeature.getPresenterFeatureList().add(stimulusCodeAudio);
-            imageFeature.getPresenterFeatureList().add(nextButtonFeature);
-            stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
-            stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "Het antwoord is:"));
-            final PresenterFeature logTImeStamp = new PresenterFeature(FeatureType.logTimeStamp, null);
-            logTImeStamp.addFeatureAttributes(FeatureAttribute.eventTag, "hetAntwoordIs");
-            stimulusCodeAudio.getPresenterFeatureList().add(logTImeStamp);
-//            stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-//            stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-//            stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-//            stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "<style=\"text-align: left;\">zeer waarschijnlijk negatief</style><style=\"text-align: right;\">zeer waarschijnlijk positief</style>"));
-            presenterFeature = stimulusCodeAudio;
-        } else {
-            presenterFeature = imageFeature;
-        }
+//        if (stimulusCodeFormat != null) {
+//            final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionButton, buttonLabelEventTag);
+//            nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, buttonLabelEventTag);
+//            nextButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
+//            nextButtonFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+//            final PresenterFeature pauseFeature = new PresenterFeature(FeatureType.pause, null);
+//            pauseFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(stimulusCodeMsDelay));
+//            nextButtonFeature.getPresenterFeatureList().add(pauseFeature);
+//            final PresenterFeature stimulusCodeAudio = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
+//            stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.codeFormat, stimulusCodeFormat);
+//            stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+//            pauseFeature.getPresenterFeatureList().add(stimulusCodeAudio);
+//            imageFeature.getPresenterFeatureList().add(nextButtonFeature);
+//            stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+//            stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "Het antwoord is:"));
+//            final PresenterFeature logTImeStamp = new PresenterFeature(FeatureType.logTimeStamp, null);
+//            logTImeStamp.addFeatureAttributes(FeatureAttribute.eventTag, "hetAntwoordIs");
+//            stimulusCodeAudio.getPresenterFeatureList().add(logTImeStamp);
+////            stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+////            stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+////            stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+////            stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "<style=\"text-align: left;\">zeer waarschijnlijk negatief</style><style=\"text-align: right;\">zeer waarschijnlijk positief</style>"));
+//            presenterFeature = stimulusCodeAudio;
+//        } else {
+        presenterFeature = imageFeature;
+//        }
         presenterFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
         if (stimulusResponseOptions != null) {
             final PresenterFeature ratingFooterButtonFeature = new PresenterFeature(FeatureType.ratingButton, null);

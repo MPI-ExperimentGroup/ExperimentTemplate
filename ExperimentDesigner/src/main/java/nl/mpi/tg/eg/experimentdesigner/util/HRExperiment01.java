@@ -23,8 +23,8 @@ import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardRandomStimulusScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardVideoAudioOptionStimulusScreen;
 
 /**
  * @since Jun 6, 2016 11:41:41 AM (creation date)
@@ -33,20 +33,24 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
 public class HRExperiment01 {
 
     private final WizardController wizardController = new WizardController();
-    final String agreementScreenText = "";
-    final String informationScreenText = "";
+    final String agreementScreenText = "Agreement Screen Text";
+    final String informationScreenText = "Information Screen Text";
     final String completionScreenText1 = "Dit is het einde van het experiment.<br/>"
             + "<br/>"
             + "<br/>"
             + "Bedankt voor je deelname!";
     private final String[] stimuliString = {
-        "no_181/set_1/condition_1/list_1/list_2:stimulus text 1",
-        "no_185/set_5/condition_1/list_1/list_2:stimulus text 2",
-        "no_67/set_7/condition_1/list_1/list_2:stimulus text 3"};
+        "tag1/tag2:AV_happy.mpg:prevoicing9_e_440Hz_coda_k.wav:bik/bek",
+        "AV_sad.mpg:prevoicing9_e_440Hz_coda_t.wav:bid/bed"
+//        "AV_happy.mpg",
+//        "AV_happy.mpg",
+//        "prevoicing9_e_440Hz_coda_k.wav",
+//        "prevoicing9_e_440Hz_coda_t.wav"
+    };
 
     public WizardData getWizardData() {
         WizardData wizardData = new WizardData();
-        wizardData.setAppName("NblExperiment01");
+        wizardData.setAppName("Online Emotions");
         wizardData.setShowMenuBar(false);
         wizardData.setTextFontSize(22);
         wizardData.setObfuscateScreenNames(false);
@@ -79,8 +83,8 @@ public class HRExperiment01 {
         wizardData.addScreen(wizardTextScreen);
         wizardData.addScreen(wizardEditUserScreen);
 
-        final WizardRandomStimulusScreen list1234Screen = new WizardRandomStimulusScreen("List", false, stimuliString,
-                new String[]{"list_1", "list_2", "list_3", "list_4"}, 1000, true, null, 0, 0, null, null, null, null, "volgende [ spatiebalk ]");
+        final WizardVideoAudioOptionStimulusScreen list1234Screen = new WizardVideoAudioOptionStimulusScreen("VideoAudioOption", false, stimuliString,
+                new String[]{"list_1", "list_2", "list_3", "list_4"}, 1000, true, 0, null, null, null, "volgende [ spatiebalk ]");
         list1234Screen.setStimulusResponseOptions("1,2,3,4,5");
         list1234Screen.setStimulusResponseLabelLeft("zeer waarschijnlijk negatief");
         list1234Screen.setStimulusResponseLabelRight("zeer waarschijnlijk positief");
