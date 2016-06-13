@@ -353,7 +353,7 @@ public class FactOrFiction {
         };
         final String could_not_contact_the_server_please_check = "De server is niet bereikbaar. Controleer de internetverbinding en probeer opnieuw.";
         final WizardEditUserScreen editUserScreen = new WizardEditUserScreen("Participant", "Participant", wizardData, null, medataFields, "Volgende", null, null, null, true, could_not_contact_the_server_please_check);
-        final WizardRandomStimulusScreen groupAorBScreen = new WizardRandomStimulusScreen("Introduciton", false, stimuliGroupAorB,
+        final WizardRandomStimulusScreen groupAorBScreen = new WizardRandomStimulusScreen("Introduction", false, stimuliGroupAorB,
                 new String[]{"IntroductionAFact", "IntroductionBFiction"}, 1, true, null, 0, 0, null, null, null, null, "volgende [ spatiebalk ]");
 //        final PresenterScreen storyScreen = new WizardRandomStimulusScreen(experiment, null, 4, "StoryPresentation", false, storyTexts, new String[]{"Emotioneel_hij", "Emotioneel_ik", "Koffiemolen_hij", "Koffiemolen_ik", "Matroesjka_hij", "Matroesjka_ik", "Meesterwerk_hij", "Meesterwerk_ik"}, 1, null, 0, 0, null, null, null, null, wizardData.isObfuscateScreenNames());
         final WizardRandomStimulusScreen storyScreen = new WizardRandomStimulusScreen("StoryPresentation", false, storyTexts, new String[]{"Emotioneel_hij", "Emotioneel_ik", "Koffiemolen_hij", "Koffiemolen_ik", "Matroesjka_hij", "Matroesjka_ik", "Meesterwerk_hij", "Meesterwerk_ik"}, 1, true, null, 0, 0, null, null, null, null, "volgende [ spatiebalk ]");
