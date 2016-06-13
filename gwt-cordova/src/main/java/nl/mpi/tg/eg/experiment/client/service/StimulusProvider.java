@@ -97,7 +97,7 @@ public class StimulusProvider {
                     Collections.sort(stimulusSubsetArrayTemp, new Comparator<Stimulus>() {
                         @Override
                         public int compare(Stimulus o1, Stimulus o2) {
-                            return (o1.getCode().compareTo(o2.getCode()));
+                            return (o1.getUniqueId().compareTo(o2.getUniqueId()));
                         }
                     });
                 }

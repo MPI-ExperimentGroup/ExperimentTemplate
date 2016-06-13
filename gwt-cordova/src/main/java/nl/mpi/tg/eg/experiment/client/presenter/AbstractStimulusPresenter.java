@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.experiment.client.presenter;
 
 import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.safehtml.shared.UriUtils;
@@ -31,10 +32,13 @@ import java.util.List;
 import java.util.Random;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.ServiceLocations;
+import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
+import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
@@ -214,6 +218,16 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 userResults.getUserData().setMetadataValue(stimulusAllocationField, stimulusAllocation.name());
                 localStorage.storeData(userResults);
                 allocatedTags.add(stimulusAllocation);
+                // submit the user metadata so that the selected stimuli group is stored
+                submissionService.submitMetadata(userResults, new DataSubmissionListener() {
+                    @Override
+                    public void scoreSubmissionFailed(DataSubmissionException exception) {
+                    }
+
+                    @Override
+                    public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
+                    }
+                });
             }
         }
         stimulusProvider.getSubset(allocatedTags, maxStimulusCount, randomise, repeatCount, seenStimulusList);
@@ -285,12 +299,20 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         stimulusProvider.pushCurrentStimulusToEnd();
     }
 
-    protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, TimedStimulusListener timedStimulusListener) {
+    protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
         final Stimulus currentStimulus = stimulusProvider.getCurrentStimulus();
         if (currentStimulus.isImage()) {
             String image = currentStimulus.getImage();
             submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusImage", image, duration.elapsedMillis());
-            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(image), percentOfPage, maxHeight, maxWidth, postLoadMs, timedStimulusListener);
+            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(image), percentOfPage, maxHeight, maxWidth, postLoadMs,
+                    new TimedStimulusListener() {
+                @Override
+                public void postLoadTimerFired() {
+                    // send image shown tag
+                    submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusShown", stimulusProvider.getCurrentStimulus().getUniqueId(), "Image", duration.elapsedMillis());
+                    timedStimulusListener.postLoadTimerFired();
+                }
+            });
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
         } else if (currentStimulus.isMp3()) {
             String mp3 = currentStimulus.getMp3();
@@ -298,16 +320,35 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             final SafeUri oggTrustedString = (ogg == null) ? null : UriUtils.fromTrustedString(ogg);
             final SafeUri mp3TrustedString = (mp3 == null) ? null : UriUtils.fromTrustedString(mp3);
             submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", (ogg == null) ? mp3 : ogg, duration.elapsedMillis());
-            ((TimedStimulusView) simpleView).addTimedAudio(oggTrustedString, mp3TrustedString, postLoadMs, timedStimulusListener);
+            ((TimedStimulusView) simpleView).addTimedAudio(oggTrustedString, mp3TrustedString, postLoadMs,
+                    new TimedStimulusListener() {
+                @Override
+                public void postLoadTimerFired() {
+                    // send audio shown tag
+                    submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusShown", stimulusProvider.getCurrentStimulus().getUniqueId(), "Audio", duration.elapsedMillis());
+                    timedStimulusListener.postLoadTimerFired();
+                }
+            });
         } else if (currentStimulus.isMp4() || currentStimulus.isOgg()) {
             String ogg = currentStimulus.getOgg();
             String mp4 = currentStimulus.getMp4();
             submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusVideo", (ogg == null) ? mp4 : ogg, duration.elapsedMillis());
             final SafeUri oggTrustedString = (ogg == null) ? null : UriUtils.fromTrustedString(ogg);
             final SafeUri mp4TrustedString = (mp4 == null) ? null : UriUtils.fromTrustedString(mp4);
-            ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, postLoadMs, timedStimulusListener);
+            ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, postLoadMs,
+                    new TimedStimulusListener() {
+                @Override
+                public void postLoadTimerFired() {
+                    // send video shown tag
+                    submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusShown", stimulusProvider.getCurrentStimulus().getUniqueId(), "Video", duration.elapsedMillis());
+                    timedStimulusListener.postLoadTimerFired();
+                }
+            }
+            );
         } else if (currentStimulus.getLabel() != null) {
             ((TimedStimulusView) simpleView).addHtmlText(currentStimulus.getLabel());
+            // send label shown tag
+            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusShown", stimulusProvider.getCurrentStimulus().getUniqueId(), "Label", duration.elapsedMillis());
             timedStimulusListener.postLoadTimerFired();
         } else {
             final String incorrect_stimulus_format = "incorrect stimulus format";
@@ -415,7 +456,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void endAudioRecorderTag(int tier, String tagString) {
-        super.endAudioRecorderTag(tier, stimulusProvider.getCurrentStimulus().getUniqueId(), stimulusProvider.getCurrentStimulus().getCode(), tagString);
+        super.endAudioRecorderTag(tier, stimulusProvider.getCurrentStimulus().getUniqueId(), stimulusProvider.getCurrentStimulus().getUniqueId(), tagString);
     }
 
     protected void startAudioRecorderTag(int tier) {
@@ -554,7 +595,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void nextStimulus(final String eventTag, final boolean norepeat) {
-        logTimeStamp(eventTag);
+        //logTimeStamp(eventTag);
         if (norepeat) {
             removeStimulus();
         }
@@ -588,7 +629,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void endOfStimulusButton(final PresenterEventListner appEventListner, final String eventTag) {
-        logTimeStamp(eventTag);
+        //logTimeStamp(eventTag);
         if (!stimulusProvider.hasNextStimulus()) {
             ((TimedStimulusView) simpleView).addOptionButton(appEventListner);
         }
