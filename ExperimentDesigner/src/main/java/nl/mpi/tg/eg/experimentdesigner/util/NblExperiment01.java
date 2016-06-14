@@ -46,29 +46,31 @@ public class NblExperiment01 {
 
     public WizardData getWizardData() {
         WizardData wizardData = new WizardData();
-        wizardData.setAppName("NblExperiment01");
-        wizardData.setShowMenuBar(false);
+        wizardData.setAppName("Zinnen Beoordelen");
+        wizardData.setShowMenuBar(true);
         wizardData.setTextFontSize(22);
         wizardData.setObfuscateScreenNames(false);
-        WizardTextScreen wizardTextScreen = new WizardTextScreen("InformationScreen", informationScreenText,
+        WizardTextScreen wizardTextScreen = new WizardTextScreen("Informatie", informationScreenText,
                 "volgende [ spatiebalk ]"
         );
+        wizardTextScreen.setMenuLabel("Terug");
         //Information screen 
         //Agreement
-        WizardAgreementScreen agreementScreen = new WizardAgreementScreen("Agreement", agreementScreenText, "Akkoord");
+        WizardAgreementScreen agreementScreen = new WizardAgreementScreen("Toestemming", agreementScreenText, "Akkoord");
+        agreementScreen.setMenuLabel("Terug");
 //        wizardData.setAgreementText("agreementText");
 //        wizardData.setDisagreementScreenText("disagreementScreenText");
         //metadata
         final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
-        wizardEditUserScreen.setScreenTitle("Edit User");
-        wizardEditUserScreen.setMenuLabel("Edit User");
-        wizardEditUserScreen.setScreenTag("Edit_User");
-        wizardEditUserScreen.setSaveButtonLabel("Save Details");
+        wizardEditUserScreen.setScreenTitle("Gegevens");
+        wizardEditUserScreen.setMenuLabel("Terug");
+        wizardEditUserScreen.setScreenTag("Gegevens");
+        wizardEditUserScreen.setSaveButtonLabel("Volgende");
         wizardEditUserScreen.setSendData(true);
         wizardEditUserScreen.setMetadataScreen(true);
 //        wizardData.setAgeField(true);
         wizardEditUserScreen.setCustomFields(new String[]{
-            "workerId:Arbeider id:.*:.",
+            "workerId:Proefpersoon id:.*:.",
             "firstName:Voornaam:.'{'3,'}':Voer minimaal drie letters.",
             "lastName:Achternaam:.'{'3,'}':Voer minimaal drie letters.",
             "age:Leeftijd:[0-9]+:Voer een getal.",
@@ -79,11 +81,11 @@ public class NblExperiment01 {
         wizardData.addScreen(wizardTextScreen);
         wizardData.addScreen(wizardEditUserScreen);
 
-        final WizardRandomStimulusScreen list1234Screen = new WizardRandomStimulusScreen("List", false, stimuliString,
+        final WizardRandomStimulusScreen list1234Screen = new WizardRandomStimulusScreen("Stimulus", false, stimuliString,
                 new String[]{"list_1", "list_2", "list_3", "list_4"}, 1000, true, null, 0, 0, null, null, null, null, "volgende [ spatiebalk ]");
         list1234Screen.setStimulusResponseOptions("1,2,3,4,5");
-        list1234Screen.setStimulusResponseLabelLeft("zeer waarschijnlijk negatief");
-        list1234Screen.setStimulusResponseLabelRight("zeer waarschijnlijk positief");
+        list1234Screen.setStimulusResponseLabelLeft("helemaal niet plausibel");
+        list1234Screen.setStimulusResponseLabelRight("heel erg plausibel");
         wizardData.addScreen(list1234Screen);
 
         WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, true,
@@ -97,6 +99,12 @@ public class NblExperiment01 {
         agreementScreen.setNextWizardScreen(wizardTextScreen);
         wizardEditUserScreen.setNextWizardScreen(list1234Screen);
         list1234Screen.setNextWizardScreen(completionScreen);
+
+        wizardEditUserScreen.setBackWizardScreen(wizardTextScreen);
+        wizardTextScreen.setBackWizardScreen(agreementScreen);
+        list1234Screen.setBackWizardScreen(wizardEditUserScreen);
+        //completionScreen.setBackWizardScreen(list1234Screen);
+
         return wizardData;
     }
 
