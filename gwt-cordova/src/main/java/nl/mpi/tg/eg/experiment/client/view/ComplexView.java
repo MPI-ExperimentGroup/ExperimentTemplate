@@ -69,6 +69,13 @@ public class ComplexView extends SimpleView {
     private final ArrayList<ImageEntry> scaledImagesList = new ArrayList<>();
 
     public ComplexView() {
+        super(true);
+        outerPanel = new VerticalPanel();
+        setContent(outerPanel);
+    }
+
+    public ComplexView(final boolean showHeader) {
+        super(showHeader);
         outerPanel = new VerticalPanel();
         setContent(outerPanel);
     }

@@ -31,7 +31,7 @@ public class ErrorPresenter extends AbstractPresenter implements Presenter {
     private final String errorMessage;
 
     public ErrorPresenter(RootLayoutPanel widgetTag, String errorMessage) {
-        super(widgetTag, new SimpleView());
+        super(widgetTag, new SimpleView(true));
         this.errorMessage = errorMessage;
     }
 

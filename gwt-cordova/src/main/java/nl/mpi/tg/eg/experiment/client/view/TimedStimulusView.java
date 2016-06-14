@@ -43,6 +43,7 @@ public class TimedStimulusView extends ComplexView {
     private StimulusGrid stimulusGrid = null;
 
     public TimedStimulusView(AudioPlayer audioPlayer) {
+        super(false);
         this.audioPlayer = audioPlayer;
     }
 

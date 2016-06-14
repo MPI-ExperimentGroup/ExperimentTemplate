@@ -48,13 +48,13 @@ public class SimpleView extends AbstractView {
     private final ScrollPanel scrollPanel;
     protected final int HEADER_SIZE;
 
-    public SimpleView() {
+    public SimpleView(final boolean showHeader) {
 
         footerPanel = new HorizontalPanel();
         borderedContentPanel = new VerticalPanel();
         borderedContentPanel.setStylePrimaryName("contentPanel");
         footerPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
-        if (ApplicationController.SHOW_HEADER) {
+        if (ApplicationController.SHOW_HEADER && showHeader) {
             HEADER_SIZE = 50;
             headerPanel = new Grid(1, 3);
             headerPanel.setWidth("100%");

@@ -10,6 +10,7 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
     <xsl:output method="text" encoding="UTF-8" />
+    <xsl:param name="targetClientDirectory" select="targetClientDirectory"/>
     <xsl:template match="/">
         <xsl:text>package nl.mpi.tg.eg.experiment.client.model;
             
@@ -18,48 +19,85 @@
             import java.util.List;
             import java.util.Objects;
             import nl.mpi.tg.eg.experiment.client.ServiceLocations;
+            import nl.mpi.tg.eg.experiment.client.util.GeneratedStimulusProvider;
 
             public class GeneratedStimulus implements Stimulus {
             protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
-            private static final GeneratedStimulus[] values = new GeneratedStimulus[]{
-        </xsl:text>
-        <xsl:for-each select="experiment/stimuli/stimulus">
-            <xsl:text>new GeneratedStimulus("</xsl:text>
-            <!--<xsl:value-of select="generate-id(.)" />
-            generate-id(.) caused issues with the node ID changing and pointing to the wrong file. It might be better at some point to use an explicit identifier value but for now we are using the 'code'.
-            -->
-            <xsl:value-of select="if(@baseFilePath) then @baseFilePath else @code" />
-            <xsl:text>", new Tag[]{</xsl:text>
-            <xsl:for-each select="distinct-values(tag/text())">
-                <xsl:text>Tag.tag_</xsl:text>
-                <xsl:value-of select="." />
-                <xsl:if test="position() != last()">
+        </xsl:text>    
+            
+        <xsl:result-document href="{$targetClientDirectory}/model/GeneratedStimulusStrings.java" method="text">
+            package nl.mpi.tg.eg.experiment.client.model;
+            public class GeneratedStimulusStrings {
+            <xsl:for-each select="experiment/stimuli/stimulus">
+                <xsl:text>
+                    public static final String label_</xsl:text>
+                <xsl:value-of select="generate-id(.)" />
+                <xsl:text> = "</xsl:text>
+                <xsl:value-of select="@label" />
+                <xsl:text>";
+                    public static final String code_</xsl:text>
+                <xsl:value-of select="generate-id(.)" />
+                <xsl:text> = "</xsl:text>
+                <xsl:value-of select="@code" />
+                <xsl:text>";
+                </xsl:text>
+            </xsl:for-each>
+            <xsl:text>}</xsl:text>
+        </xsl:result-document>
+        <xsl:result-document href="{$targetClientDirectory}/util/GeneratedStimulusProvider.java" method="text">
+            <xsl:text>
+                package nl.mpi.tg.eg.experiment.client.util;
+                import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
+                import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus.Tag;
+                import static nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus.Tag.*;
+                import static nl.mpi.tg.eg.experiment.client.model.GeneratedStimulusStrings.*;
+                public class GeneratedStimulusProvider {
+                public static final GeneratedStimulus[] values = new GeneratedStimulus[]{
+            </xsl:text>
+            <xsl:for-each select="experiment/stimuli/stimulus">
+                <xsl:text>new GeneratedStimulus(</xsl:text>
+                <!--<xsl:value-of select="generate-id(.)" />
+                generate-id(.) caused issues with the node ID changing and pointing to the wrong file. It might be better at some point to use an explicit identifier value but for now we are using the 'code'.
+                -->
+                <xsl:value-of select="if(@identifier) then concat('&quot;', @identifier, '&quot;, ') else concat('&quot;', generate-id(.), '&quot;, ')" />
+                <xsl:text>new Tag[]{</xsl:text>
+                <xsl:for-each select="distinct-values(tag/text())">
+                    <xsl:text>tag_</xsl:text>
+                    <xsl:value-of select="." />
+                    <xsl:if test="position() != last()">
+                        <xsl:text>, </xsl:text>
+                    </xsl:if>
+                </xsl:for-each>
+                <xsl:text>}, label_</xsl:text>
+                <xsl:value-of select="generate-id(.)" />
+                <!--<xsl:value-of select="@label" />-->
+                <xsl:text>, code_</xsl:text>
+                <xsl:value-of select="generate-id(.)" />
+                <xsl:text>, </xsl:text>
+                <xsl:value-of select="@pauseMs" />
+                <xsl:if test="@mp3 or @mp4 or @ogg or @image">
                     <xsl:text>, </xsl:text>
+                    <xsl:value-of select="if(@mp3) then 'true' else 'false'" />
+                    <xsl:text>, </xsl:text>
+                    <xsl:value-of select="if(@mp4) then 'true' else 'false'" />
+                    <xsl:text>, </xsl:text>
+                    <xsl:value-of select="if(@ogg) then 'true' else 'false'" />
+                    <xsl:text>, </xsl:text>
+                    <xsl:value-of select="if(@image) then 'true' else 'false'" />
+                </xsl:if>
+                <xsl:text>)</xsl:text>
+                <xsl:if test="position() != last()">
+                    <xsl:text>,
+                    </xsl:text>
+                </xsl:if>
+                <xsl:if test="position() = last()">
+                    <xsl:text>};</xsl:text>
                 </xsl:if>
             </xsl:for-each>
-            <xsl:text>}, "</xsl:text>
-            <xsl:value-of select="@label" />
-            <xsl:text>", "</xsl:text>
-            <xsl:value-of select="@code" />
-            <xsl:text>", </xsl:text>
-            <xsl:value-of select="@pauseMs" />
-            <xsl:text>, </xsl:text>
-            <xsl:value-of select="if(@mp3) then 'true' else 'false'" />
-            <xsl:text>, </xsl:text>
-            <xsl:value-of select="if(@mp4) then 'true' else 'false'" />
-            <xsl:text>, </xsl:text>
-            <xsl:value-of select="if(@ogg) then 'true' else 'false'" />
-            <xsl:text>, </xsl:text>
-            <xsl:value-of select="if(@image) then 'true' else 'false'" />
-            <xsl:text>)</xsl:text>
-            <xsl:if test="position() != last()">
-                <xsl:text>,
-                </xsl:text>
-            </xsl:if>
-            <xsl:if test="position() = last()">
-                <xsl:text>};</xsl:text>
-            </xsl:if>
-        </xsl:for-each>
+            <xsl:text>
+                }
+            </xsl:text>
+        </xsl:result-document>
         <xsl:text>
      
             public enum Tag {
@@ -76,7 +114,7 @@
             }
                    
             public static final void fillStimulusList(List&lt;Stimulus&gt; stimulusArray) {
-            stimulusArray.addAll(Arrays.asList(values));</xsl:text>
+            stimulusArray.addAll(Arrays.asList(GeneratedStimulusProvider.values));</xsl:text>
         <xsl:text>
             }
             final private String uniqueId;
@@ -99,6 +137,18 @@
             this.mp4 = mp4;
             this.ogg = ogg;
             this.image = image;
+            }
+            
+            public GeneratedStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs) {
+            this.uniqueId = (uniqueId != null) ? uniqueId : code;
+            this.tags = Arrays.asList(tags);
+            this.label = label;
+            this.code = code;
+            this.pauseMs = pauseMs;
+            this.mp3 = false;
+            this.mp4 = false;
+            this.ogg = false;
+            this.image = false;
             }
     
             public String getUniqueId() {
