@@ -149,12 +149,12 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
                 final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{screenTitle}));
                 final Stimulus stimulus;
 
-                final String[] splitScreenText = stimulusLine.split(":", 2);
+                final String[] splitScreenText = stimulusLine.split(":", 5);
                 tagSet.addAll(Arrays.asList(splitScreenText[0].split("/")));
                 final String audioPath = splitScreenText[2];
                 final String videoPath = splitScreenText[1];
-                final String[] responseOptions = splitScreenText[0].split("/");
-                stimulus = new Stimulus(stimulusLine, audioPath, videoPath, null, splitScreenText[1].replace("\n", "<br/>"), splitScreenText[0].replace(" ", "_").replace("/", "_"), 0, tagSet, responseOptions);
+                final String responseOptions = splitScreenText[3];
+                stimulus = new Stimulus(stimulusLine, audioPath, videoPath, null, null, splitScreenText[0].replace(" ", "_").replace("/", "_"), 0, tagSet, responseOptions);
                 stimuliList.add(stimulus);
             }
         }

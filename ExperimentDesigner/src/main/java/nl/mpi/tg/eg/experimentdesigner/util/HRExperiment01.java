@@ -40,8 +40,8 @@ public class HRExperiment01 {
             + "<br/>"
             + "Bedankt voor je deelname!";
     private final String[] stimuliString = {
-        "tag1/tag2:AV_happy.mpg:prevoicing9_e_440Hz_coda_k.wav:bik/bek",
-        "AV_sad.mpg:prevoicing9_e_440Hz_coda_t.wav:bid/bed"
+        "list_1/list_2:AV_happy.mpg:prevoicing9_e_440Hz_coda_k.wav:bik,bek",
+        "list_2/list_3:AV_sad.mpg:prevoicing9_e_440Hz_coda_t.wav:bid,bed"
 //        "AV_happy.mpg",
 //        "AV_happy.mpg",
 //        "prevoicing9_e_440Hz_coda_k.wav",
@@ -84,7 +84,7 @@ public class HRExperiment01 {
         wizardData.addScreen(wizardEditUserScreen);
 
         final WizardVideoAudioOptionStimulusScreen list1234Screen = new WizardVideoAudioOptionStimulusScreen("VideoAudioOption", false, stimuliString,
-                new String[]{"list_1", "list_2", "list_3", "list_4"}, 1000, true, 0, null, null, null, "volgende [ spatiebalk ]");
+                new String[]{"list_1", "list_2", "list_3"}, 1000, true, 0, null, null, null, "volgende [ spatiebalk ]");
         list1234Screen.setStimulusResponseOptions("1,2,3,4,5");
         list1234Screen.setStimulusResponseLabelLeft("zeer waarschijnlijk negatief");
         list1234Screen.setStimulusResponseLabelRight("zeer waarschijnlijk positief");

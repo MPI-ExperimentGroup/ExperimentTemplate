@@ -27,7 +27,9 @@ import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.util.DefaultExperiments;
 import nl.mpi.tg.eg.experimentdesigner.util.FactOrFiction;
+import nl.mpi.tg.eg.experimentdesigner.util.HRExperiment01;
 import nl.mpi.tg.eg.experimentdesigner.util.JenaFieldKit;
+import nl.mpi.tg.eg.experimentdesigner.util.NblExperiment01;
 import nl.mpi.tg.eg.experimentdesigner.util.Sara01;
 import nl.mpi.tg.eg.experimentdesigner.util.Sentveri_exp3;
 import nl.mpi.tg.eg.experimentdesigner.util.ShawiFieldKit;
@@ -118,6 +120,12 @@ public class ExperimentController {
                 case "SynQuiz2":
 //                wizardData = new SynQuiz2().getWizardData();
                     break;
+                case "Zinnen Beoordelen":
+                    wizardData = new NblExperiment01().getWizardData();
+                    break;
+                case "VideoImageExample":
+                    wizardData = new HRExperiment01().getWizardData();
+                    break;
             }
         }
         model.addAttribute("contextPath", request.getContextPath());
@@ -131,7 +139,9 @@ public class ExperimentController {
             "Shawi FieldKit",
             "AntwoordRaden",
             "Leeservaring",
-            "SynQuiz2"});
+            "SynQuiz2",
+            "VideoImageExample",
+            "Zinnen Beoordelen"});
         return "design";
     }
 
