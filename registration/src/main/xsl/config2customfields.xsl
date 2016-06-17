@@ -139,7 +139,7 @@
                     }</xsl:text>
             </xsl:if>
             <xsl:if test="count(experiment/stimuli/stimulus) le 200">
-                <xsl:value-of select="count(experiment/stimuli/stimulus)"/>
+                <!--<xsl:value-of select="count(experiment/stimuli/stimulus)"/>-->
                 <xsl:text>package nl.mpi.tg.eg.frinex.util;
                 
                     import java.io.IOException;
