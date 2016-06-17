@@ -69,6 +69,7 @@ public class SdCardStimuli {
 //        final String stimulusId = stimulusPath.substring(stimulusPath.indexOf(MPI_STIMULI) + MPI_STIMULI.length() + 1);
         final String stimulusId = stimulusPath.replaceAll("^.*" + MPI_STIMULI + "/", "").replaceAll("\\....$", "");
         final String suffix = stimulusPath.toLowerCase().substring(stimulusPath.length() - 4, stimulusPath.length());
+        final String filePart = stimulusPath.substring(stimulusPath.length() - 4);
         // GWT.log("suffix: " + suffix);
         final String stimuliLabel = null;
         final String stimuliCode = stimulusPath;
@@ -80,7 +81,7 @@ public class SdCardStimuli {
         // todo: insert a relevant tag and address enum limitiation
         stimulusArray.add(new SdCardStimulus(stimulusId, stimulusPath,
                 //                /* tagArray */ new Stimulus.Tag[0]/* we dont set this with the tag array because each stimulus would only have one out of many applicable from the array */,
-                stimuliLabel, stimuliCode, pause, isMp3, isMp4, isOgg, isImage));
+                stimuliLabel, stimuliCode, pause, isMp3, (isMp4 || isOgg) ? filePart : null, isImage));
     }
 
     public void errorAction(String errorCode, String errorMessage) {

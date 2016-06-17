@@ -205,6 +205,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }, maxStimulusCount, randomise, repeatCount, seenStimulusList);
     }
 
+    protected void loadStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, int repeatCount, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+        loadStimulus(eventTag, selectionTags, Arrays.asList(new GeneratedStimulus.Tag[]{}), null, maxStimulusCount, randomise, repeatCount, hasMoreStimulusListener, endOfStimulusListener);
+    }
+
     protected void loadStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final List<GeneratedStimulus.Tag> randomTags, final MetadataField stimulusAllocationField, final int maxStimulusCount, final boolean randomise, int repeatCount, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
         final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST);
@@ -301,7 +305,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
         final Stimulus currentStimulus = stimulusProvider.getCurrentStimulus();
-        if (currentStimulus.isImage()) {
+        if (currentStimulus.hasImage()) {
             String image = currentStimulus.getImage();
             submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusImage", image, duration.elapsedMillis());
             ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(image), percentOfPage, maxHeight, maxWidth, postLoadMs,
@@ -314,7 +318,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 }
             });
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
-        } else if (currentStimulus.isMp3()) {
+        } else if (currentStimulus.hasAudio()) {
             String mp3 = currentStimulus.getMp3();
             String ogg = currentStimulus.getOgg();
             final SafeUri oggTrustedString = (ogg == null) ? null : UriUtils.fromTrustedString(ogg);
@@ -329,7 +333,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     timedStimulusListener.postLoadTimerFired();
                 }
             });
-        } else if (currentStimulus.isMp4() || currentStimulus.isOgg()) {
+        } else if (currentStimulus.hasVideo()) {
             String ogg = currentStimulus.getOgg();
             String mp4 = currentStimulus.getMp4();
             submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusVideo", (ogg == null) ? mp4 : ogg, duration.elapsedMillis());

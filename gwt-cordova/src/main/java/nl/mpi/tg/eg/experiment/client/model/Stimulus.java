@@ -33,13 +33,13 @@ public interface Stimulus extends Comparable<Stimulus> {
 
     String getUniqueId();
 
-    boolean isImage();
+    boolean hasImage();
 
-    boolean isMp3();
+    boolean hasAudio();
 
-    boolean isMp4();
+    boolean hasVideo();
 
-    boolean isOgg();
+    boolean hasRatingLabels();
 
     String getMp3();
 
@@ -48,6 +48,8 @@ public interface Stimulus extends Comparable<Stimulus> {
     String getMp4();
 
     String getOgg();
+
+    String getRatingLabels();
 
     List<?> getTags();
 }

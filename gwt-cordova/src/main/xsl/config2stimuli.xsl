@@ -75,16 +75,15 @@
                 <xsl:value-of select="generate-id(.)" />
                 <xsl:text>, </xsl:text>
                 <xsl:value-of select="@pauseMs" />
-                <xsl:if test="@mp3 or @mp4 or @ogg or @image">
+                <xsl:if test="@audioPath or @videoPath or @ogg or @imagePath">
                     <xsl:text>, </xsl:text>
-                    <xsl:value-of select="if(@mp3) then 'true' else 'false'" />
+                    <xsl:value-of select="if(@audioPath) then concat('&quot;', @audioPath, '&quot;') else 'null'" />
                     <xsl:text>, </xsl:text>
-                    <xsl:value-of select="if(@mp4) then 'true' else 'false'" />
+                    <xsl:value-of select="if(@videoPath) then concat('&quot;', @videoPath, '&quot;') else 'null'" />
                     <xsl:text>, </xsl:text>
-                    <xsl:value-of select="if(@ogg) then 'true' else 'false'" />
-                    <xsl:text>, </xsl:text>
-                    <xsl:value-of select="if(@image) then 'true' else 'false'" />
+                    <xsl:value-of select="if(@imagePath) then concat('&quot;', @imagePath, '&quot;') else 'null'" />
                 </xsl:if>
+                <xsl:value-of select="if(@ratingLabels) then concat(',&quot;', @ratingLabels, '&quot;') else ',null'" />
                 <xsl:text>)</xsl:text>
                 <xsl:if test="position() != last()">
                     <xsl:text>,
@@ -122,33 +121,33 @@
             final private String label;
             final private String code;
             final private int pauseMs;
-            final private boolean mp3;
-            final private boolean mp4;
-            final private boolean ogg;
-            final private boolean image;
+            final private String audioPath;
+            final private String videoPath;
+            final private String imagePath;
+            final private String ratingLabels;
 
-            public GeneratedStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, boolean mp3, boolean mp4, boolean ogg, boolean image) {
+            public GeneratedStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels) {
             this.uniqueId = uniqueId;
             this.tags = Arrays.asList(tags);
             this.label = label;
             this.code = code;
             this.pauseMs = pauseMs;
-            this.mp3 = mp3;
-            this.mp4 = mp4;
-            this.ogg = ogg;
-            this.image = image;
+            this.audioPath = audioPath;
+            this.videoPath = videoPath;
+            this.imagePath = imagePath;
+            this.ratingLabels = ratingLabels;
             }
             
-            public GeneratedStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs) {
+            public GeneratedStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String ratingLabels) {
             this.uniqueId = (uniqueId != null) ? uniqueId : code;
             this.tags = Arrays.asList(tags);
             this.label = label;
             this.code = code;
             this.pauseMs = pauseMs;
-            this.mp3 = false;
-            this.mp4 = false;
-            this.ogg = false;
-            this.image = false;
+            this.audioPath = null;
+            this.videoPath = null;
+            this.imagePath = null;
+            this.ratingLabels = ratingLabels;
             }
     
             public String getUniqueId() {
@@ -167,44 +166,48 @@
             return code;
             }
             
+            public String getRatingLabels() {
+            return ratingLabels;
+            }
+            
             public int getPauseMs() {
             return pauseMs;
             }
             
             public String getMp3() {
             return serviceLocations.staticFilesUrl() + "</xsl:text>
-        <xsl:text>" + uniqueId + ".mp3";
+        <xsl:text>" + audioPath + ".mp3";
             }
 
             public String getImage() {
             return serviceLocations.staticFilesUrl() + "</xsl:text>
-        <xsl:text>" + uniqueId + ".jpg";
+        <xsl:text>" + imagePath + ".jpg";
             }
 
             public String getMp4() {
             return serviceLocations.staticFilesUrl() + "</xsl:text>
-        <xsl:text>" + uniqueId + ".mp4";
+        <xsl:text>" + videoPath + ".mp4";
             }
             
             public String getOgg() {
             return serviceLocations.staticFilesUrl() + "</xsl:text>
-        <xsl:text>" + uniqueId + ".ogg";
+        <xsl:text>" + videoPath + ".ogg";
             }
             
-            public boolean isMp3() {
-            return mp3;
+            public boolean hasAudio() {
+            return audioPath != null;
             }
 
-            public boolean isMp4() {
-            return mp4;
+            public boolean hasVideo() {
+            return videoPath != null;
             }
 
-            public boolean isOgg() {
-            return ogg;
+            public boolean hasImage() {
+            return imagePath != null;
             }
-
-            public boolean isImage() {
-            return image;
+            
+            public boolean hasRatingLabels() {
+            return ratingLabels != null;
             }
             
             @Override

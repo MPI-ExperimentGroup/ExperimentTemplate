@@ -32,19 +32,17 @@ public class SdCardStimulus implements Stimulus {
     final private String code;
     final private int pauseMs;
     final private boolean mp3;
-    final private boolean mp4;
-    final private boolean ogg;
+    final private String vidoPath;
     final private boolean image;
 
-    public SdCardStimulus(String uniqueId, String stimulusPath, String label, String code, int pauseMs, boolean mp3, boolean mp4, boolean ogg, boolean image) {
+    public SdCardStimulus(String uniqueId, String stimulusPath, String label, String code, int pauseMs, boolean mp3, String vidoPath, boolean image) {
         this.uniqueId = uniqueId;
         this.stimulusPath = stimulusPath;
         this.label = label;
         this.code = code;
         this.pauseMs = pauseMs;
         this.mp3 = mp3;
-        this.mp4 = mp4;
-        this.ogg = ogg;
+        this.vidoPath = vidoPath;
         this.image = image;
     }
 
@@ -80,32 +78,37 @@ public class SdCardStimulus implements Stimulus {
 
     @Override
     public String getMp4() {
-        return mp4 ? stimulusPath : null;
+        return vidoPath + ".mp4";
     }
 
     @Override
     public String getOgg() {
-        return ogg ? stimulusPath : null;
+        return vidoPath + ".ogg";
     }
 
     @Override
-    public boolean isMp3() {
+    public boolean hasImage() {
+        return image;
+    }
+
+    @Override
+    public boolean hasAudio() {
         return mp3;
     }
 
     @Override
-    public boolean isMp4() {
-        return mp4;
+    public boolean hasVideo() {
+        return vidoPath != null;
     }
 
     @Override
-    public boolean isOgg() {
-        return ogg;
+    public boolean hasRatingLabels() {
+        return false;
     }
 
     @Override
-    public boolean isImage() {
-        return image;
+    public String getRatingLabels() {
+        return null;
     }
 
     @Override

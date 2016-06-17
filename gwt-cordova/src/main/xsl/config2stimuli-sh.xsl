@@ -57,5 +57,27 @@
             <xsl:text>.jpg</xsl:text>
             <xsl:text>&#xa;</xsl:text>
         </xsl:for-each>
+        <xsl:for-each select="experiment/stimuli/stimulus[@audioPath]">           
+            <xsl:text>ffmpeg -i "</xsl:text>
+            <xsl:value-of select="@audioPath" />
+            <xsl:text>" "</xsl:text>
+            <xsl:value-of select="substring-before(@audioPath,'.wav')" /> 
+            <xsl:text>.mp3"</xsl:text>
+            <xsl:text>&#xa;</xsl:text>
+        </xsl:for-each>
+        <xsl:for-each select="experiment/stimuli/stimulus[@videoPath]">           
+            <xsl:text>ffmpeg -i "</xsl:text>
+            <xsl:value-of select="@videoPath" />
+            <xsl:text>" "</xsl:text>
+            <xsl:value-of select="substring-before(@videoPath,'.mpg')" /> 
+            <xsl:text>.mp4"</xsl:text>
+            <xsl:text>&#xa;</xsl:text>
+            <xsl:text>ffmpeg -i "</xsl:text>
+            <xsl:value-of select="@videoPath" />
+            <xsl:text>" "</xsl:text>
+            <xsl:value-of select="substring-before(@videoPath,'.mpg')" /> 
+            <xsl:text>.ogg"</xsl:text>
+            <xsl:text>&#xa;</xsl:text>
+        </xsl:for-each>
     </xsl:template>
 </xsl:stylesheet>

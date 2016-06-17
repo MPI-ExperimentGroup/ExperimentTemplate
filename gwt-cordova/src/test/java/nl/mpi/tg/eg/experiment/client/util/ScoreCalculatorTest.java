@@ -63,22 +63,27 @@ public class ScoreCalculatorTest {
             }
 
             @Override
-            public boolean isImage() {
+            public boolean hasImage() {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 
             @Override
-            public boolean isMp3() {
+            public boolean hasAudio() {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 
             @Override
-            public boolean isMp4() {
+            public boolean hasVideo() {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 
             @Override
-            public boolean isOgg() {
+            public boolean hasRatingLabels() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public String getRatingLabels() {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 

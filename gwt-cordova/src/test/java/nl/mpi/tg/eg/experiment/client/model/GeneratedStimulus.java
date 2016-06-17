@@ -217,22 +217,22 @@ public class GeneratedStimulus implements Stimulus {
     }
 
     @Override
-    public boolean isMp3() {
+    public boolean hasAudio() {
         return mp3;
     }
 
     @Override
-    public boolean isMp4() {
-        return mp4;
+    public boolean hasVideo() {
+        return mp4 || ogg;
     }
 
     @Override
-    public boolean isOgg() {
-        return ogg;
+    public boolean hasRatingLabels() {
+        return false;
     }
 
     @Override
-    public boolean isImage() {
+    public boolean hasImage() {
         return image;
     }
 
@@ -257,9 +257,15 @@ public class GeneratedStimulus implements Stimulus {
     }
 
     @Override
+    public String getRatingLabels() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
     public int compareTo(Stimulus o) {
         return this.uniqueId.compareTo(o.getUniqueId());
     }
+
     @Override
     public int hashCode() {
         int hash = 7;
