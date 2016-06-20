@@ -198,7 +198,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
     public void setButtonLabel(String buttonLabelEventTag) {
         this.buttonLabelEventTag = buttonLabelEventTag;
     }
-    private static final String BASE_FILE_REGEX = "\\.[a-zA-Z]+$";
+    private static final String BASE_FILE_REGEX = "\\.[a-zA-Z34]+$";
 
     @Override
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {

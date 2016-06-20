@@ -32,12 +32,20 @@
     <presenter displayOrder="4" menuLabel="VideoAudioOption" next="Finished" type="stimulus" self="VideoAudioOption" title="VideoAudioOption">
         <loadStimulus eventTag="VideoAudioOption" randomise="true" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
-                    <addPadding/>
-                    <ratingButton eventTier="1" ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5" ratingLabelLeft="zeer waarschijnlijk negatief">
-                        <nextStimulus eventTag="NextStimulusVideoAudioOption" norepeat="true"/>
-                    </ratingButton>
-                </stimulusImage>
+                <clearPage/>
+                <centrePage/>
+                <stimulusCodeVideo msToNext="1" maxHeight="80" codeFormat="&lt;code&gt;" percentOfPage="0" maxWidth="80">
+                    <clearPage/>
+                    <centrePage/>
+                    <pause msToNext="1">
+                        <stimulusAudio msToNext="1">
+                            <addPadding/>
+                            <ratingButton eventTier="1" ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5" ratingLabelLeft="zeer waarschijnlijk negatief">
+                                <nextStimulus eventTag="NextStimulusVideoAudioOption" norepeat="true"/>
+                            </ratingButton>
+                        </stimulusAudio>
+                    </pause>
+                </stimulusCodeVideo>
             </hasMoreStimulus>
             <endOfStimulus>
                 <autoNextPresenter/>
@@ -70,12 +78,12 @@
         </sendAllData>
     </presenter>
     <stimuli>
-        <stimulus audioPath="prevoicing9_e_440Hz_coda_k.wav" code="list_1_list_2" identifier="list_1/list_2:AV_happy.mpg:prevoicing9_e_440Hz_coda_k.wav:bik,bek" pauseMs="0" ratingLabels="bik,bek" videoPath="AV_happy.mpg">
+        <stimulus audioPath="prevoicing9_e_440Hz_coda_k" code="AV_happy" identifier="list_1/list_2:AV_happy.mpg:prevoicing9_e_440Hz_coda_k.wav:bik,bek" pauseMs="0" ratingLabels="bik,bek">
             <tag>VideoAudioOption</tag>
             <tag>list_1</tag>
             <tag>list_2</tag>
         </stimulus>
-        <stimulus audioPath="prevoicing9_e_440Hz_coda_t.wav" code="list_2_list_3" identifier="list_2/list_3:AV_sad.mpg:prevoicing9_e_440Hz_coda_t.wav:bid,bed" pauseMs="0" ratingLabels="bid,bed" videoPath="AV_sad.mpg">
+        <stimulus audioPath="prevoicing9_e_440Hz_coda_t" code="AV_sad" identifier="list_2/list_3:AV_sad.mpg:prevoicing9_e_440Hz_coda_t.wav:bid,bed" pauseMs="0" ratingLabels="bid,bed">
             <tag>VideoAudioOption</tag>
             <tag>list_2</tag>
             <tag>list_3</tag>

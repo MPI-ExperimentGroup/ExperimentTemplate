@@ -99,6 +99,7 @@ public enum FeatureType {
     belowThreshold(true, false, null),
     stimulusImage(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext}),
     stimulusCodeImage(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, codeFormat}),
+    stimulusCodeVideo(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, codeFormat}),
     stimulusCodeAudio(true, false, new FeatureAttribute[]{msToNext, codeFormat}),
     stimulusAudio(true, false, new FeatureAttribute[]{msToNext, mp3,}),
     VideoPanel(false, false, new FeatureAttribute[]{mp4, ogg, webm, percentOfPage, maxHeight, maxWidth, poster}),
