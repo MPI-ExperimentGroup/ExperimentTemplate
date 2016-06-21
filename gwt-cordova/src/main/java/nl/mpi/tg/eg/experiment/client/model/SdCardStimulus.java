@@ -27,23 +27,23 @@ import java.util.Objects;
 public class SdCardStimulus implements Stimulus {
 
     final private String uniqueId;
-    final private String stimulusPath;
+    final private String stimulusBasePath;
     final private String label;
     final private String code;
     final private int pauseMs;
-    final private boolean mp3;
-    final private String vidoPath;
-    final private boolean image;
+    final private boolean isAudio;
+    final private boolean isVideo;
+    final private boolean isImage;
 
-    public SdCardStimulus(String uniqueId, String stimulusPath, String label, String code, int pauseMs, boolean mp3, String vidoPath, boolean image) {
+    public SdCardStimulus(String uniqueId, String stimulusBasePath, String label, String code, int pauseMs, boolean isAudio, boolean isVideo, boolean image) {
         this.uniqueId = uniqueId;
-        this.stimulusPath = stimulusPath;
+        this.stimulusBasePath = stimulusBasePath;
         this.label = label;
         this.code = code;
         this.pauseMs = pauseMs;
-        this.mp3 = mp3;
-        this.vidoPath = vidoPath;
-        this.image = image;
+        this.isAudio = isAudio;
+        this.isVideo = isVideo;
+        this.isImage = image;
     }
 
     @Override
@@ -67,38 +67,33 @@ public class SdCardStimulus implements Stimulus {
     }
 
     @Override
-    public String getMp3() {
-        return mp3 ? stimulusPath : null;
+    public String getAudio() {
+        return isAudio ? stimulusBasePath : null;
     }
 
     @Override
     public String getImage() {
-        return image ? stimulusPath : null;
+        return isImage ? stimulusBasePath : null;
     }
 
     @Override
-    public String getMp4() {
-        return vidoPath + ".mp4";
-    }
-
-    @Override
-    public String getOgg() {
-        return vidoPath + ".ogg";
+    public String getVideo() {
+        return isVideo ? stimulusBasePath : null;
     }
 
     @Override
     public boolean hasImage() {
-        return image;
+        return isImage;
     }
 
     @Override
     public boolean hasAudio() {
-        return mp3;
+        return isAudio;
     }
 
     @Override
     public boolean hasVideo() {
-        return vidoPath != null;
+        return isVideo;
     }
 
     @Override

@@ -237,7 +237,7 @@ public class GeneratedStimulus implements Stimulus {
     }
 
     @Override
-    public String getMp3() {
+    public String getAudio() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -247,12 +247,7 @@ public class GeneratedStimulus implements Stimulus {
     }
 
     @Override
-    public String getMp4() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String getOgg() {
+    public String getVideo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

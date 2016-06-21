@@ -174,24 +174,16 @@
             return pauseMs;
             }
             
-            public String getMp3() {
-            return serviceLocations.staticFilesUrl() + "</xsl:text>
-        <xsl:text>" + audioPath + ".mp3";
+            public String getAudio() {
+            return serviceLocations.staticFilesUrl() + audioPath;
             }
 
             public String getImage() {
-            return serviceLocations.staticFilesUrl() + "</xsl:text>
-        <xsl:text>" + imagePath + ".jpg";
+            return serviceLocations.staticFilesUrl() + imagePath;
             }
 
-            public String getMp4() {
-            return serviceLocations.staticFilesUrl() + "</xsl:text>
-        <xsl:text>" + videoPath + ".mp4";
-            }
-            
-            public String getOgg() {
-            return serviceLocations.staticFilesUrl() + "</xsl:text>
-        <xsl:text>" + videoPath + ".ogg";
+            public String getVideo() {
+            return serviceLocations.staticFilesUrl() + videoPath;
             }
             
             public boolean hasAudio() {

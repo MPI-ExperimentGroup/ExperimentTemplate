@@ -41,13 +41,11 @@ public interface Stimulus extends Comparable<Stimulus> {
 
     boolean hasRatingLabels();
 
-    String getMp3();
+    String getAudio();
 
     String getImage();
 
-    String getMp4();
-
-    String getOgg();
+    String getVideo();
 
     String getRatingLabels();
 

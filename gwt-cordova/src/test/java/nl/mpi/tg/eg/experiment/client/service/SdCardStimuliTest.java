@@ -56,6 +56,9 @@ public class SdCardStimuliTest {
             "file:///storage/emulated/0/MPI_STIMULI/bodies/13.png",
             "file:///storage/emulated/0/MPI_STIMULI/bodies/14.png",
             "file:///storage/emulated/0/MPI_STIMULI/bodies/15.png",
+            "file:///storage/emulated/0/MPI_STIMULI/bodies/15.mp3",
+            "file:///storage/emulated/0/MPI_STIMULI/bodies/15.mp4",
+            "file:///storage/emulated/0/MPI_STIMULI/bodies/15.txt",
             "file:///storage/emulated/0/MPI_STIMULI/grammar/01-boykicksballtogirl.mp4",
             "file:///storage/emulated/0/MPI_STIMULI/grammar/02-boykicksballtogirls.mp4",
             "file:///storage/emulated/0/MPI_STIMULI/grammar/03-girlkicksballtoboy.mp4",
@@ -72,26 +75,39 @@ public class SdCardStimuliTest {
             "file:///storage/emulated/0/MPI_STIMULI/grammar/14-boysitsontree.mp4"};
         final ArrayList<Stimulus> stimuliList = new ArrayList<>();
 
-        SdCardStimuli instance = new SdCardStimuli(stimuliList, null, null);
+        SdCardStimuli instance = new SdCardStimuli(stimuliList, new ArrayList<String[]>(), null, null);
         for (String stimulusPath : testData) {
             instance.insertStimulus(stimulusPath, stimulusPath.substring(stimulusPath.lastIndexOf("/") + 1));
         }
         for (Stimulus stimulus : stimuliList) {
             System.out.println("image " + stimulus.getImage());
             System.out.println("label " + stimulus.getLabel());
-            System.out.println("mp3 " + stimulus.getMp3());
-            System.out.println("mp4 " + stimulus.getMp4());
-            System.out.println("ogg " + stimulus.getOgg());
+            System.out.println("mp3 " + stimulus.getAudio());
+            System.out.println("mp4 " + stimulus.getVideo());
+//            System.out.println("ogg " + stimulus.getOgg());
 //            System.out.println(stimulus.getTags());
             System.out.println("id " + stimulus.getUniqueId());
-            System.out.println("is image " + stimulus.isImage());
-            System.out.println("is mp3 " + stimulus.isMp3());
-            System.out.println("is mp4 " + stimulus.isMp4());
-            System.out.println("is ogg " + stimulus.isOgg());
-            assertEquals(stimulus.isOgg(), stimulus.isOgg() ? stimulus.getOgg().endsWith(".ogg") : false);
-            assertEquals(stimulus.isMp3(), stimulus.isMp3() ? stimulus.getMp3().endsWith(".mp3") : false);
-            assertEquals(stimulus.isMp4(), stimulus.isMp4() ? stimulus.getMp4().endsWith(".mp4") : false);
-            assertEquals(stimulus.isImage(), stimulus.isImage() ? stimulus.getImage().endsWith(".png") || stimulus.getImage().endsWith(".jpg") : false);
+            System.out.println("is image " + stimulus.hasImage());
+            System.out.println("is mp3 " + stimulus.hasAudio());
+            System.out.println("is mp4 " + stimulus.hasVideo());
+            System.out.println("is ogg " + stimulus.hasVideo());
+//            assertEquals(stimulus.hasVideo(), stimulus.hasVideo() ? stimulus.getOgg().endsWith(".ogg") : false);
+            assertEquals(stimulus.hasAudio(), stimulus.getAudio() != null);
+            assertEquals(stimulus.hasVideo(), stimulus.getVideo() != null);
+            assertEquals(stimulus.hasImage(), stimulus.getImage() != null);
+//            assertEquals(false, stimulus.getAudio().endsWith(".mp3"));
+//            assertEquals(false, stimulus.getAudio().endsWith(".mp4"));
+//            assertEquals(false, stimulus.getAudio().endsWith(".ogg"));
+//            assertEquals(false, stimulus.getAudio().endsWith(".jpg"));
+//            assertEquals(false, stimulus.getAudio().endsWith(".png"));
+            System.out.println("test "+stimulus.getAudio());
+            assertEquals(true, (stimulus.hasAudio()) ? stimulus.getAudio().startsWith("file:") : true);
+            assertEquals(false, (stimulus.hasAudio()) ? stimulus.getAudio().contains(".") : false);
+            assertEquals(true, (stimulus.hasImage()) ? stimulus.getImage().startsWith("file:") : true);
+            assertEquals(false, (stimulus.hasImage()) ? stimulus.getImage().contains(".") : false);
+            assertEquals(true, (stimulus.hasVideo()) ? stimulus.getVideo().startsWith("file:") : true);
+            assertEquals(false, (stimulus.hasVideo()) ? stimulus.getVideo().contains(".") : false);
         }
+//        assertEquals(30, stimuliList.size());
     }
 }

@@ -63,6 +63,8 @@ public class SdCardStimuli {
         directoryList.add(new String[]{directoryPath, directoryName});
     }
 
+    private static final String BASE_FILE_REGEX = "\\.[a-zA-Z34]+$";
+
     public void insertStimulus(String stimulusPath, String fileName) {
         // GWT.log("stimulusPath: " + stimulusPath);
         // GWT.log("fileName: " + fileName);
@@ -79,9 +81,9 @@ public class SdCardStimuli {
         final boolean isOgg = ".ogg".equals(suffix);
         final boolean isImage = ".jpg".equals(suffix) || ".png".equals(suffix);
         // todo: insert a relevant tag and address enum limitiation
-        stimulusArray.add(new SdCardStimulus(stimulusId, stimulusPath,
+        stimulusArray.add(new SdCardStimulus(stimulusId, stimulusPath.replaceFirst(BASE_FILE_REGEX, ""),
                 //                /* tagArray */ new Stimulus.Tag[0]/* we dont set this with the tag array because each stimulus would only have one out of many applicable from the array */,
-                stimuliLabel, stimuliCode, pause, isMp3, (isMp4 || isOgg) ? filePart : null, isImage));
+                stimuliLabel, stimuliCode, pause, isMp3, (isMp4 || isOgg), isImage));
     }
 
     public void errorAction(String errorCode, String errorMessage) {

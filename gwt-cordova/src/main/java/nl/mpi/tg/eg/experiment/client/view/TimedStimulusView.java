@@ -102,14 +102,19 @@ public class TimedStimulusView extends ComplexView {
         outerPanel.add(htmlPanel);
     }
 
-    public void addTimedAudio(SafeUri oggPath, SafeUri mp3Path, long postLoadMs, final TimedStimulusListener timedStimulusListener) {
+    public void addTimedAudio(SafeUri oggPath, SafeUri mp3Path, final int postLoadMs, final TimedStimulusListener timedStimulusListener) {
         audioPlayer.stopAll();
         audioPlayer.setOnEndedListener(new AudioEventListner() {
 
             @Override
             public void audioEnded() {
                 audioPlayer.setOnEndedListener(null); // prevent multiple triggering
-                timedStimulusListener.postLoadTimerFired();
+                Timer timer = new Timer() {
+                    public void run() {
+                        timedStimulusListener.postLoadTimerFired();
+                    }
+                };
+                timer.schedule(postLoadMs);
             }
         });
         audioPlayer.playSample(oggPath, mp3Path);
@@ -137,10 +142,16 @@ public class TimedStimulusView extends ComplexView {
                     // prevent multiple triggering
                     if (!triggered) {
                         triggered = true;
-                        timedStimulusListener.postLoadTimerFired();
+                        Timer timer = new Timer() {
+                            public void run() {
+                                timedStimulusListener.postLoadTimerFired();
+                            }
+                        };
+                        timer.schedule(postLoadMs);
                     }
                 }
             });
+            video.setAutoplay(true);
         }
     }
 
