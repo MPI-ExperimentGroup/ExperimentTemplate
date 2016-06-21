@@ -276,7 +276,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     protected void showStimulus() {
         if (stimulusProvider.hasNextStimulus()) {
             stimulusProvider.getNextStimulus();
-            submissionService.submitTagValue(userResults.getUserData().getUserId(), "NextStimulus", stimulusProvider.getCurrentStimulus().getUniqueId(), duration.elapsedMillis());
+//            submissionService.submitTagValue(userResults.getUserData().getUserId(), "NextStimulus", stimulusProvider.getCurrentStimulus().getUniqueId(), duration.elapsedMillis());
 //            super.startAudioRecorderTag(STIMULUS_TIER);
             hasMoreStimulusListener.postLoadTimerFired();
         } else {
@@ -306,53 +306,49 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
         final Stimulus currentStimulus = stimulusProvider.getCurrentStimulus();
         if (currentStimulus.hasImage()) {
-            String image = currentStimulus.getImage();
-            submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusImage", image, duration.elapsedMillis());
-            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(image), percentOfPage, maxHeight, maxWidth, postLoadMs,
-                    new TimedStimulusListener() {
+            final String image = currentStimulus.getImage();
+            final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
                 @Override
                 public void postLoadTimerFired() {
                     // send image shown tag
-                    submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusShown", stimulusProvider.getCurrentStimulus().getUniqueId(), "Image", duration.elapsedMillis());
-                    timedStimulusListener.postLoadTimerFired();
+                    submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusImageShown", currentStimulus.getUniqueId(), image, duration.elapsedMillis());
                 }
-            });
+            };
+//            submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusImage", image, duration.elapsedMillis());
+            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(image), percentOfPage, maxHeight, maxWidth, postLoadMs, shownStimulusListener, timedStimulusListener);
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
         } else if (currentStimulus.hasAudio()) {
             String mp3 = currentStimulus.getAudio() + ".mp3";
             String ogg = currentStimulus.getAudio() + ".ogg";
             final SafeUri oggTrustedString = (ogg == null) ? null : UriUtils.fromTrustedString(ogg);
             final SafeUri mp3TrustedString = (mp3 == null) ? null : UriUtils.fromTrustedString(mp3);
-            submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", (ogg == null) ? mp3 : ogg, duration.elapsedMillis());
-            ((TimedStimulusView) simpleView).addTimedAudio(oggTrustedString, mp3TrustedString, postLoadMs,
-                    new TimedStimulusListener() {
+            final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
                 @Override
                 public void postLoadTimerFired() {
                     // send audio shown tag
-                    submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusShown", stimulusProvider.getCurrentStimulus().getUniqueId(), "Audio", duration.elapsedMillis());
-                    timedStimulusListener.postLoadTimerFired();
+                    submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusAudioShown", currentStimulus.getUniqueId(), currentStimulus.getAudio(), duration.elapsedMillis());
                 }
-            });
+            };
+//            submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", currentStimulus.getAudio(), duration.elapsedMillis());
+            ((TimedStimulusView) simpleView).addTimedAudio(oggTrustedString, mp3TrustedString, postLoadMs, shownStimulusListener, timedStimulusListener);
         } else if (currentStimulus.hasVideo()) {
             String ogg = currentStimulus.getVideo() + ".ogg";
             String mp4 = currentStimulus.getVideo() + ".mp4";
-            submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusVideo", (ogg == null) ? mp4 : ogg, duration.elapsedMillis());
+//            submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusVideo", currentStimulus.getVideo(), duration.elapsedMillis());
             final SafeUri oggTrustedString = (ogg == null) ? null : UriUtils.fromTrustedString(ogg);
             final SafeUri mp4TrustedString = (mp4 == null) ? null : UriUtils.fromTrustedString(mp4);
-            ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, postLoadMs,
-                    new TimedStimulusListener() {
+            final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
                 @Override
                 public void postLoadTimerFired() {
                     // send video shown tag
-                    submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusShown", stimulusProvider.getCurrentStimulus().getUniqueId(), "Video", duration.elapsedMillis());
-                    timedStimulusListener.postLoadTimerFired();
+                    submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusVideoShown", currentStimulus.getUniqueId(), currentStimulus.getVideo(), duration.elapsedMillis());
                 }
-            }
-            );
+            };
+            ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, postLoadMs, shownStimulusListener, timedStimulusListener);
         } else if (currentStimulus.getLabel() != null) {
             ((TimedStimulusView) simpleView).addHtmlText(currentStimulus.getLabel());
             // send label shown tag
-            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusShown", stimulusProvider.getCurrentStimulus().getUniqueId(), "Label", duration.elapsedMillis());
+            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusLabelShown", currentStimulus.getUniqueId(), currentStimulus.getLabel(), duration.elapsedMillis());
             timedStimulusListener.postLoadTimerFired();
         } else {
             final String incorrect_stimulus_format = "incorrect stimulus format";
@@ -361,40 +357,73 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void stimulusCodeImage(int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, String codeFormat, TimedStimulusListener timedStimulusListener) {
-        String formattedCode = codeFormat.replace("<code>", stimulusProvider.getCurrentStimulus().getCode());
-        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusCodeImage", formattedCode, duration.elapsedMillis());
-        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString(serviceLocations.staticFilesUrl() + formattedCode), percentOfPage, maxHeight, maxWidth, postLoadMs, timedStimulusListener);
+        final String formattedCode = codeFormat.replace("<code>", stimulusProvider.getCurrentStimulus().getCode());
+        final String uniqueId = stimulusProvider.getCurrentStimulus().getUniqueId();
+//        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusCodeImage", formattedCode, duration.elapsedMillis());
+        final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
+            @Override
+            public void postLoadTimerFired() {
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusCodeImageShown", uniqueId, formattedCode, duration.elapsedMillis());
+            }
+        };
+        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString(serviceLocations.staticFilesUrl() + formattedCode), percentOfPage, maxHeight, maxWidth, postLoadMs, shownStimulusListener, timedStimulusListener);
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
     }
 
     protected void stimulusCodeAudio(int postLoadMs, String codeFormat, TimedStimulusListener timedStimulusListener) {
-        String formattedCode = codeFormat.replace("<code>", stimulusProvider.getCurrentStimulus().getCode());
+        final String formattedCode = codeFormat.replace("<code>", stimulusProvider.getCurrentStimulus().getCode());
+        final String uniqueId = stimulusProvider.getCurrentStimulus().getUniqueId();
         String mp3 = formattedCode + ".mp3";
         String ogg = formattedCode + ".ogg";
         final SafeUri oggTrustedString = (ogg == null) ? null : UriUtils.fromTrustedString(serviceLocations.staticFilesUrl() + ogg);
         final SafeUri mp3TrustedString = (mp3 == null) ? null : UriUtils.fromTrustedString(serviceLocations.staticFilesUrl() + mp3);
-        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusCodeAudio", formattedCode, duration.elapsedMillis());
+//        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusCodeAudio", formattedCode, duration.elapsedMillis());
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", formattedCode, duration.elapsedMillis());
-        ((TimedStimulusView) simpleView).addTimedAudio(oggTrustedString, mp3TrustedString, postLoadMs, timedStimulusListener);
+        final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
+            @Override
+            public void postLoadTimerFired() {
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusCodeAudioShown", uniqueId, formattedCode, duration.elapsedMillis());
+            }
+        };
+        ((TimedStimulusView) simpleView).addTimedAudio(oggTrustedString, mp3TrustedString, postLoadMs, shownStimulusListener, timedStimulusListener);
     }
 
     protected void stimulusCodeVideo(int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, String codeFormat, TimedStimulusListener timedStimulusListener) {
-        String formattedCode = codeFormat.replace("<code>", stimulusProvider.getCurrentStimulus().getCode());
+        final String formattedCode = codeFormat.replace("<code>", stimulusProvider.getCurrentStimulus().getCode());
+        final String uniqueId = stimulusProvider.getCurrentStimulus().getUniqueId();
         String mp4 = formattedCode + ".mp4";
         String ogg = formattedCode + ".ogg";
         final SafeUri oggTrustedString = (ogg == null) ? null : UriUtils.fromTrustedString(serviceLocations.staticFilesUrl() + ogg);
         final SafeUri mp4TrustedString = (mp4 == null) ? null : UriUtils.fromTrustedString(serviceLocations.staticFilesUrl() + mp4);
-        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusCodeVideo", formattedCode, duration.elapsedMillis());
+//        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusCodeVideo", formattedCode, duration.elapsedMillis());
+        final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
+            @Override
+            public void postLoadTimerFired() {
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusCodeVideoShown", uniqueId, formattedCode, duration.elapsedMillis());
+            }
+        };
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", formattedCode, duration.elapsedMillis());
-        ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, postLoadMs, timedStimulusListener);
+        ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, postLoadMs, shownStimulusListener, timedStimulusListener);
     }
 
     protected void stimulusAudio(int postLoadMs, TimedStimulusListener timedStimulusListener) {
-        String ogg = stimulusProvider.getCurrentStimulus().getAudio() + ".ogg";
-        String mp3 = stimulusProvider.getCurrentStimulus().getAudio() + ".mp3";
-        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", ogg, duration.elapsedMillis());
-        ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromString(ogg), UriUtils.fromString(mp3), postLoadMs, timedStimulusListener);
+        final String audio = stimulusProvider.getCurrentStimulus().getAudio();
+        final String uniqueId = stimulusProvider.getCurrentStimulus().getUniqueId();
+        String ogg = audio + ".ogg";
+        String mp3 = audio + ".mp3";
+//        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", ogg, duration.elapsedMillis());
+        final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
+            @Override
+            public void postLoadTimerFired() {
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusAudioShown", uniqueId, audio, duration.elapsedMillis());
+            }
+        };
+        ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromString(ogg), UriUtils.fromString(mp3), postLoadMs, shownStimulusListener, timedStimulusListener);
 //        ((TimedStimulusView) simpleView).addText("playStimulusAudio: " + duration.elapsedMillis() + "ms");
+    }
+
+    public void stimulusRatingButton(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final String ratingLabelLeft, final String ratingLabelRight, final int eventTier) {
+        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, timedStimulusListener, stimulusProvider.getCurrentStimulus().getUniqueId(), stimulusProvider.getCurrentStimulus().getRatingLabels(), eventTier), ratingLabelLeft, ratingLabelRight, false);
     }
 
     public void ratingButton(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final int eventTier) {
@@ -665,8 +694,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                submissionService.submitTagValue(userResults.getUserData().getUserId(), "PlayAudio", eventTag, duration.elapsedMillis());
-                ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromString(oggPath), UriUtils.fromString(mp3Path), 0, new TimedStimulusListener() {
+                final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
+                    @Override
+                    public void postLoadTimerFired() {
+                        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "PlayAudio", eventTag, mp3Path, duration.elapsedMillis());
+                    }
+                };
+                ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromString(oggPath), UriUtils.fromString(mp3Path), 0, shownStimulusListener, new TimedStimulusListener() {
 
                     @Override
                     public void postLoadTimerFired() {

@@ -463,7 +463,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="preloadAllStimuli|kinTypeStringDiagram|loadKinTypeStringDiagram|ratingFooterButton|ratingButton">
+    <xsl:template match="preloadAllStimuli|kinTypeStringDiagram|loadKinTypeStringDiagram|ratingFooterButton|ratingButton|stimulusRatingButton">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(appEventListner</xsl:text>
@@ -481,8 +481,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@diagramName) then concat(', &quot;', @diagramName, '&quot;') else ''" />
         <xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" />
         <xsl:value-of select="if(@ratingLabels) then concat(', &quot;', @ratingLabels, '&quot;') else ''" />
-        <xsl:value-of select="if(local-name() eq 'ratingFooterButton' or local-name() eq 'ratingButton') then concat(', &quot;', @ratingLabelLeft, '&quot;') else ''" />
-        <xsl:value-of select="if(local-name() eq 'ratingFooterButton' or local-name() eq 'ratingButton') then concat(', &quot;', @ratingLabelRight, '&quot;') else ''" />
+        <xsl:value-of select="if(local-name() eq 'ratingFooterButton' or local-name() eq 'ratingButton' or local-name() eq 'stimulusRatingButton') then concat(', &quot;', @ratingLabelLeft, '&quot;') else ''" />
+        <xsl:value-of select="if(local-name() eq 'ratingFooterButton' or local-name() eq 'ratingButton' or local-name() eq 'stimulusRatingButton') then concat(', &quot;', @ratingLabelRight, '&quot;') else ''" />
         <xsl:value-of select="if(@eventTier) then concat(', ', @eventTier) else ''" />
         <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
         <xsl:apply-templates select="stimuli" mode="stimuliTags" />

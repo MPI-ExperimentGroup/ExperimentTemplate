@@ -59,11 +59,21 @@ public class AudioPlayer {
      audioElement.addEventListener("ended", function(){
      audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::onEndedAction()();
      }, false);
+     audioElement.addEventListener("canplaythrough", function(){
+     audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::onLoadedAction()();
+     }, false);
      }-*/;
 
     public void onEndedAction() {
         if (audioEventListner != null) {
             audioEventListner.audioEnded();
+        }
+    }
+
+    public void onLoadedAction() {
+        if (audioEventListner != null) {
+            audioEventListner.audioLoaded();
+            audioPlayer.play();
         }
     }
 
@@ -75,7 +85,6 @@ public class AudioPlayer {
 //        final String[] soundFiles = roundSample.getLanguageSample().getSoundFiles();
 //        playSample(soundFiles[roundSample.getSampleIndex()]);
 //    }
-
     private void playSample(String sample) {
         if (audioPlayer == null) {
             try {
@@ -106,7 +115,7 @@ public class AudioPlayer {
             audioPlayer.addSource(mp3.asString(), AudioElement.TYPE_MP3);
         }
         //audioPlayer.setCurrentTime(0); // on android the if the ready state is not correct then this will fail and audio will not play
-        audioPlayer.play();
+        audioPlayer.load();
     }
 
     public void stopAll() {

@@ -23,5 +23,7 @@ package nl.mpi.tg.eg.experiment.client.listener;
  */
 public interface AudioEventListner {
 
+    public void audioLoaded();
+
     public void audioEnded();
 }
