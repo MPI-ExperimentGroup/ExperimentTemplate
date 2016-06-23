@@ -34,15 +34,15 @@
             <hasMoreStimulus>
                 <clearPage/>
                 <centrePage/>
-                <stimulusCodeVideo msToNext="1" maxHeight="80" codeFormat="&lt;code&gt;" percentOfPage="0" maxWidth="80">
+                <stimulusCodeVideo msToNext="1000" maxHeight="80" codeFormat="&lt;code&gt;" percentOfPage="0" maxWidth="80">
                     <clearPage/>
                     <centrePage/>
-                    <pause msToNext="1">
-                        <stimulusAudio msToNext="1">
+                    <pause msToNext="1000">
+                        <stimulusAudio msToNext="1000">
                             <addPadding/>
-                            <ratingButton eventTier="1" ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5" ratingLabelLeft="zeer waarschijnlijk negatief">
+                            <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
                                 <nextStimulus eventTag="NextStimulusVideoAudioOption" norepeat="true"/>
-                            </ratingButton>
+                            </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>
                 </stimulusCodeVideo>
@@ -51,9 +51,7 @@
                 <autoNextPresenter/>
             </endOfStimulus>
             <randomGrouping storageField="groupAllocation_VideoAudioOption">
-                <tag>list_1</tag>
                 <tag>list_2</tag>
-                <tag>list_3</tag>
             </randomGrouping>
             <stimuli>
                 <tag>VideoAudioOption</tag>

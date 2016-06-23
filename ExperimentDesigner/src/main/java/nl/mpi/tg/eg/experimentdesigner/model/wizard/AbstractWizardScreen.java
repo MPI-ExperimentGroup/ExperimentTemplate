@@ -17,6 +17,14 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Transient;
+import javax.validation.constraints.Size;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 
@@ -24,11 +32,20 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
  * @since May 3, 2016 1:34:51 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
+@Entity
 public abstract class AbstractWizardScreen implements WizardScreen {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @Transient
     final PresenterScreen presenterScreen = new PresenterScreen();
+    @OneToOne(targetEntity = AbstractWizardScreen.class, cascade = CascadeType.ALL)
     WizardScreen backWizardScreen = null;
+    @OneToOne(targetEntity = AbstractWizardScreen.class, cascade = CascadeType.ALL)
     WizardScreen nextWizardScreen = null;
+    @Size(max = 3500)
     String screenText = null;
     String nextButton = null;
     String screenTitle = null;

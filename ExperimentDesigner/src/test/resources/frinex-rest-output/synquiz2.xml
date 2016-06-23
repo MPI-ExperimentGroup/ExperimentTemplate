@@ -185,6 +185,7 @@
         </saveMetadataButton>
     </presenter>
     <presenter back="Study" displayOrder="7" menuLabel="Colour" next="Smell" type="metadata" self="Colour" title="Tell us about your synaesthesia: Colour(2/8)">
+        <htmlText featureText="Do any of the items below cause you to have a color experience?&lt;br/&gt;&lt;br/&gt;Examples: Does the letter M &quot;mean&quot; orange to you? Or does hearing a piano being played make you perceive red?&lt;br/&gt;&lt;br/&gt;"/>
         <metadataField fieldName="Numbers__Colour"/>
         <metadataField fieldName="Letters__Colour"/>
         <metadataField fieldName="Weekdays__Colour"/>
@@ -211,6 +212,7 @@
         </saveMetadataButton>
     </presenter>
     <presenter back="Colour" displayOrder="8" menuLabel="Smell" next="Sound" type="metadata" self="Smell" title="Tell us about your synaesthesia: Smell(3/8)">
+        <htmlText featureText="Do any of the items below cause you to experience smells?&lt;br/&gt;&lt;br/&gt;Example: Does Tuesday smell like bananas?&lt;br/&gt;&lt;br/&gt;"/>
         <metadataField fieldName="Numbers__Smell"/>
         <metadataField fieldName="Letters__Smell"/>
         <metadataField fieldName="Weekdays__Smell"/>
@@ -237,6 +239,7 @@
         </saveMetadataButton>
     </presenter>
     <presenter back="Smell" displayOrder="9" menuLabel="Sound" next="Spatial" type="metadata" self="Sound" title="Tell us about your synaesthesia: Sound(4/8)">
+        <htmlText featureText="Do any of the items below cause you to experience sound?&lt;br/&gt;&lt;br/&gt;Example: Do you hear a particular sound when you experience cold temperatures?&lt;br/&gt;&lt;br/&gt;"/>
         <metadataField fieldName="Numbers__Sound"/>
         <metadataField fieldName="Letters__Sound"/>
         <metadataField fieldName="Weekdays__Sound"/>
@@ -263,6 +266,7 @@
         </saveMetadataButton>
     </presenter>
     <presenter back="Sound" displayOrder="10" menuLabel="Spatial" next="Taste" type="metadata" self="Spatial" title="Tell us about your synaesthesia: Spatial(5/8)">
+        <htmlText featureText="Do you experience any of the items below in a particular spatial location?&lt;br/&gt;&lt;br/&gt;Example: Do you &quot;see&quot; sequences like the days of the month or numbers in physical space?&lt;br/&gt;&lt;br/&gt;"/>
         <metadataField fieldName="Numbers__Spatial"/>
         <metadataField fieldName="Letters__Spatial"/>
         <metadataField fieldName="Weekdays__Spatial"/>
@@ -289,6 +293,7 @@
         </saveMetadataButton>
     </presenter>
     <presenter back="Spatial" displayOrder="11" menuLabel="Taste" next="Touch" type="metadata" self="Taste" title="Tell us about your synaesthesia: Taste(6/8)">
+        <htmlText featureText="Do any of the items below cause you to experience tastes?&lt;br/&gt;&lt;br/&gt;Examples: &quot;Philip tastes of bitter oranges, while April tastes of apricots.&quot; &quot;The word 'safety' tastes of lightly buttered toast&quot;&lt;br/&gt;&lt;br/&gt;"/>
         <metadataField fieldName="Numbers__Taste"/>
         <metadataField fieldName="Letters__Taste"/>
         <metadataField fieldName="Weekdays__Taste"/>
@@ -315,6 +320,7 @@
         </saveMetadataButton>
     </presenter>
     <presenter back="Taste" displayOrder="12" menuLabel="Touch" next="Other" type="metadata" self="Touch" title="Tell us about your synaesthesia: Touch(7/8)">
+        <htmlText featureText="Do any of the items below cause you to experience a sense of touch?&lt;br/&gt;&lt;br/&gt;Example: You feel a touch on your arm when you see someone else being touched on their arm.&lt;br/&gt;&lt;br/&gt;"/>
         <metadataField fieldName="Numbers__Touch"/>
         <metadataField fieldName="Letters__Touch"/>
         <metadataField fieldName="Weekdays__Touch"/>
@@ -360,6 +366,7 @@
         <loadAllStimulus eventTag="Weekdays" randomise="true" repeatCount="3">
             <hasMoreStimulus/>
             <endOfStimulus/>
+            <randomGrouping/>
             <stimuli>
                 <tag>Weekdays</tag>
             </stimuli>
@@ -370,6 +377,7 @@
         <loadAllStimulus eventTag="Numbers" randomise="true" repeatCount="3">
             <hasMoreStimulus/>
             <endOfStimulus/>
+            <randomGrouping/>
             <stimuli>
                 <tag>Numbers</tag>
             </stimuli>
@@ -380,6 +388,7 @@
         <loadAllStimulus eventTag="Letters" randomise="true" repeatCount="3">
             <hasMoreStimulus/>
             <endOfStimulus/>
+            <randomGrouping/>
             <stimuli>
                 <tag>Letters</tag>
             </stimuli>
@@ -390,6 +399,7 @@
         <loadAllStimulus eventTag="Months" randomise="true" repeatCount="3">
             <hasMoreStimulus/>
             <endOfStimulus/>
+            <randomGrouping/>
             <stimuli>
                 <tag>Months</tag>
             </stimuli>

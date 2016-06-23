@@ -41,6 +41,7 @@
                 <stopAudioRecorder/>
                 <autoNextPresenter/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>metadata</tag>
             </stimuli>
@@ -77,6 +78,7 @@
                 <plainText featureText="end_of_stimuli"/>
                 <targetButton featureText="Welcome" target="Welcome"/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>Grammaticality</tag>
             </stimuli>
@@ -103,6 +105,7 @@
                 <plainText featureText="end_of_stimuli"/>
                 <targetButton featureText="GrammaticalityScreen" target="GrammaticalityScreen"/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>Pictures</tag>
             </stimuli>
@@ -129,6 +132,7 @@
                 <plainText featureText="end_of_stimuli"/>
                 <targetButton featureText="GrammaticalityScreen" target="GrammaticalityScreen"/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>Animals</tag>
             </stimuli>
@@ -155,6 +159,7 @@
                 <plainText featureText="end_of_stimuli"/>
                 <targetButton featureText="GrammaticalityScreen" target="GrammaticalityScreen"/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>Frogs</tag>
             </stimuli>
@@ -179,6 +184,7 @@
                 <plainText featureText="end_of_stimuli"/>
                 <targetButton featureText="Welcome" target="Welcome"/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>bowped</tag>
             </stimuli>
@@ -203,6 +209,7 @@
                 <plainText featureText="end_of_stimuli"/>
                 <targetButton featureText="Welcome" target="Welcome"/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>bodies</tag>
             </stimuli>
@@ -227,6 +234,7 @@
                 <plainText featureText="end_of_stimuli"/>
                 <targetButton featureText="Welcome" target="Welcome"/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>vanuatu</tag>
             </stimuli>
@@ -251,6 +259,7 @@
                 <plainText featureText="end_of_stimuli"/>
                 <targetButton featureText="Welcome" target="Welcome"/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>grammar</tag>
             </stimuli>
@@ -275,6 +284,7 @@
                 <plainText featureText="end_of_stimuli"/>
                 <targetButton featureText="Welcome" target="Welcome"/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>cutbreak</tag>
             </stimuli>

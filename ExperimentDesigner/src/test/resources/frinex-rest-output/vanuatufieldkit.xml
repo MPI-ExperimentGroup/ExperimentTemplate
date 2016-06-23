@@ -57,6 +57,7 @@
                 <stopAudioRecorder/>
                 <autoNextPresenter/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>metadata</tag>
             </stimuli>
@@ -138,6 +139,7 @@
                 <plainText featureText="Finis olgeta"/>
                 <targetButton featureText="Welkam" target="Welkam"/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>Pictures</tag>
             </stimuli>

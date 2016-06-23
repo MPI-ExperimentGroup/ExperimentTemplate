@@ -60,7 +60,7 @@ public class PresenterFeature {
     @ElementCollection
     private List<String> stimulusTags = new ArrayList<>();
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private RandomGrouping randomGrouping = null;
+    private RandomGrouping randomGrouping = new RandomGrouping();
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderBy("displayOrder ASC")
     private List<PresenterFeature> presenterFeatures = new ArrayList<>();

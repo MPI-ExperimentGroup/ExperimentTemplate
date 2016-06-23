@@ -20,19 +20,31 @@ package nl.mpi.tg.eg.experimentdesigner.model;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreen;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.AbstractWizardScreen;
 
 /**
  * @since Mar 4, 2016 3:10:35 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
+@Entity
 public class WizardData {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
     private String appName = "";
     private boolean showMenuBar = true;
     private boolean obfuscateScreenNames = false;
 
     private int textFontSize = 17;
 
+    @OneToMany(targetEntity = AbstractWizardScreen.class, cascade = CascadeType.ALL)
     private final List<WizardScreen> wizardScreens = new ArrayList<>();
 
     public WizardData() {

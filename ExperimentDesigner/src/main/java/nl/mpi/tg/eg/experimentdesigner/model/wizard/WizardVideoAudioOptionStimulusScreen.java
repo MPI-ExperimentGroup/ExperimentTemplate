@@ -42,7 +42,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
     private int stimuliCount = 1;
     private String stimulusResponseLabelLeft = null;
     private String stimulusResponseLabelRight = null;
-    private String stimulusResponseOptions = null;
+//    private String stimulusResponseOptions = null;
     private boolean randomiseStimuli = false;
     private String buttonLabelEventTag;
 
@@ -50,17 +50,17 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         super("VideoAudioOption", "VideoAudioOption", "VideoAudioOption");
     }
 
-    public WizardVideoAudioOptionStimulusScreen(String screenName, boolean centreScreen, String[] screenTextArray, String[] randomStimuliTags, int maxStimuli, final boolean randomiseStimuli, int stimulusDelay, String responseOptions, String responseOptionsLabelLeft, String responseOptionsLabelRight, final String spacebar) {
+    public WizardVideoAudioOptionStimulusScreen(String screenName, boolean centreScreen, String[] screenTextArray, String[] randomStimuliTags, int maxStimuli, final boolean randomiseStimuli, int stimulusMsDelay, String responseOptionsLabelLeft, String responseOptionsLabelRight, final String spacebar) {
         super(screenName, screenName, screenName);
         this.screenTitle = screenName;
         this.centreScreen = centreScreen;
         this.stimuliSet = screenTextArray;
         this.stimuliRandomTags = randomStimuliTags;
-        this.stimulusMsDelay = stimulusDelay;
+        this.stimulusMsDelay = stimulusMsDelay;
         this.stimuliCount = maxStimuli;
         this.stimulusResponseLabelLeft = responseOptionsLabelLeft;
         this.stimulusResponseLabelRight = responseOptionsLabelRight;
-        this.stimulusResponseOptions = responseOptions;
+//        this.stimulusResponseOptions = responseOptions;
         this.randomiseStimuli = randomiseStimuli;
         if (spacebar == null) {
             throw new UnsupportedOperationException("button text cannot be null");
@@ -116,14 +116,13 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         this.stimulusResponseLabelRight = stimulusResponseLabelRight;
     }
 
-    public String getStimulusResponseOptions() {
-        return stimulusResponseOptions;
-    }
-
-    public void setStimulusResponseOptions(String stimulusResponseOptions) {
-        this.stimulusResponseOptions = stimulusResponseOptions;
-    }
-
+//    public String getStimulusResponseOptions() {
+//        return stimulusResponseOptions;
+//    }
+//
+//    public void setStimulusResponseOptions(String stimulusResponseOptions) {
+//        this.stimulusResponseOptions = stimulusResponseOptions;
+//    }
     public boolean isRandomiseStimuli() {
         return randomiseStimuli;
     }
@@ -237,27 +236,27 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         presenterFeature = imageFeature;
 //        }
         presenterFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-        if (stimulusResponseOptions != null) {
-            final PresenterFeature ratingFooterButtonFeature = new PresenterFeature(FeatureType.ratingButton, null);
-            ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabels, stimulusResponseOptions);
-            ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelLeft, stimulusResponseLabelLeft);
-            ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelRight, stimulusResponseLabelRight);
-            ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
-            final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
-            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
-            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "NextStimulus" + screenTitle);
-            ratingFooterButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
-            presenterFeature.getPresenterFeatureList().add(ratingFooterButtonFeature);
-        } else {
-            final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionButton, buttonLabelEventTag);
-            nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, buttonLabelEventTag);
-            nextButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
-            final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
-            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
-            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + screenTitle);
-            nextButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
-            presenterFeature.getPresenterFeatureList().add(nextButtonFeature);
-        }
+//        if (stimulusResponseOptions != null) {
+        final PresenterFeature ratingFooterButtonFeature = new PresenterFeature(FeatureType.stimulusRatingButton, null);
+//            ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabels, stimulusResponseOptions);
+        ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelLeft, stimulusResponseLabelLeft);
+        ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelRight, stimulusResponseLabelRight);
+        ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
+        final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
+        nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+        nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "NextStimulus" + screenTitle);
+        ratingFooterButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
+        presenterFeature.getPresenterFeatureList().add(ratingFooterButtonFeature);
+//        } else {
+//            final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionButton, buttonLabelEventTag);
+//            nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, buttonLabelEventTag);
+//            nextButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
+//            final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
+//            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+//            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + screenTitle);
+//            nextButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
+//            presenterFeature.getPresenterFeatureList().add(nextButtonFeature);
+//        }
         loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
 
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);

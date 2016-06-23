@@ -55,10 +55,10 @@ public class ConfigurationOutput {
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody
     Experiment getConfiguration(@PathVariable String appName) {
-        if (experimentRepository.count() == 0) {
+//        if (experimentRepository.count() == 0) {
             // todo: this is currently here to simplify the development process and should be removed in production
-            new DefaultExperiments().insertDefaultExperiment(presenterScreenRepository, presenterFeatureRepository, metadataRepository, experimentRepository, eventRepository);
-        }
+//            new DefaultExperiments().insertDefaultExperiment(presenterScreenRepository, presenterFeatureRepository, metadataRepository, experimentRepository, eventRepository);
+//        }
         final Experiment experiment = experimentRepository.findByAppNameInternal(appName);
         return experiment;
     }

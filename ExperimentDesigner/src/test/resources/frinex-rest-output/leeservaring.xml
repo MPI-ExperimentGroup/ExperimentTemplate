@@ -92,6 +92,7 @@
             <endOfStimulus>
                 <autoNextPresenter/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>Survey1</tag>
             </stimuli>
@@ -111,6 +112,7 @@
             <endOfStimulus>
                 <autoNextPresenter/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>Survey2</tag>
             </stimuli>
@@ -142,6 +144,7 @@
             <endOfStimulus>
                 <autoNextPresenter/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>PictureTask</tag>
             </stimuli>
@@ -165,6 +168,7 @@
             <endOfStimulus>
                 <autoNextPresenter/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>ReadingBehavior</tag>
             </stimuli>

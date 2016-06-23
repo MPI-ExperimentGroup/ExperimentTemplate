@@ -10,6 +10,7 @@
     </presenter>
     <presenter back="AutoMenu" displayOrder="2" menuLabel="AnnotationTimelinePanel" type="timeline" self="AnnotationTimelinePanel" title="Annotation Timeline">
         <AnnotationTimelinePanel mp4="http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4" eventTag="annotationtimeline" columnCount="2" maxStimuli="10">
+            <randomGrouping/>
             <stimuli>
                 <tag>videotag</tag>
             </stimuli>

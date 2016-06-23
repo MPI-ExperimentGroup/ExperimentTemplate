@@ -276,6 +276,9 @@ public class SynQuiz2 {
                 presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "Our study at the Max Planck Institute focuses on synaesthesia where numbers, letters, weekdays, or months cause people to have a colour experience. To someone with synaesthesia, the letter A might \"mean\" red to them, or the number \"5\" might make them experience the colour green. Please let us know if you experience any other types of synaesthesia by checking the boxes in the following screens. We may contact you in the future about studies related to these other types."));
                 break;
             case Colour:
+                presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, //"Colour<br/>" +
+                        "Do any of the items below cause you to have a color experience?<br/><br/>"
+                        + "Examples: Does the letter M \"mean\" orange to you? Or does hearing a piano being played make you perceive red?<br/><br/>"));
                 wizardEditUserScreen.insertMetadataField(experiment, "Numbers->Colour", presenterScreen);
                 wizardEditUserScreen.insertMetadataField(experiment, "Letters->Colour", presenterScreen);
                 wizardEditUserScreen.insertMetadataField(experiment, "Weekdays->Colour", presenterScreen);
@@ -296,6 +299,9 @@ public class SynQuiz2 {
                 wizardEditUserScreen.insertMetadataField(experiment, "British Sign -> Colour", presenterScreen);
                 break;
             case Smell:
+                presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, //"Smell<br/>"
+                        "Do any of the items below cause you to experience smells?<br/><br/>"
+                        + "Example: Does Tuesday smell like bananas?<br/><br/>"));
                 wizardEditUserScreen.insertMetadataField(experiment, "Numbers->Smell", presenterScreen);
                 wizardEditUserScreen.insertMetadataField(experiment, "Letters->Smell", presenterScreen);
                 wizardEditUserScreen.insertMetadataField(experiment, "Weekdays->Smell", presenterScreen);
@@ -316,6 +322,9 @@ public class SynQuiz2 {
                 wizardEditUserScreen.insertMetadataField(experiment, "British Sign->Smell", presenterScreen);
                 break;
             case Sound:
+                presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, //"Sound<br/>"
+                        "Do any of the items below cause you to experience sound?<br/><br/>"
+                        + "Example: Do you hear a particular sound when you experience cold temperatures?<br/><br/>"));
                 wizardEditUserScreen.insertMetadataField(experiment, "Numbers->Sound", presenterScreen);
                 wizardEditUserScreen.insertMetadataField(experiment, "Letters->Sound", presenterScreen);
                 wizardEditUserScreen.insertMetadataField(experiment, "Weekdays->Sound", presenterScreen);
@@ -336,6 +345,9 @@ public class SynQuiz2 {
                 wizardEditUserScreen.insertMetadataField(experiment, "British Sign->Sound", presenterScreen);
                 break;
             case Spatial:
+                presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, //"Spatial<br/>"
+                        "Do you experience any of the items below in a particular spatial location?<br/><br/>"
+                        + "Example: Do you \"see\" sequences like the days of the month or numbers in physical space?<br/><br/>"));
                 wizardEditUserScreen.insertMetadataField(experiment, "Numbers->Spatial", presenterScreen);
                 wizardEditUserScreen.insertMetadataField(experiment, "Letters->Spatial", presenterScreen);
                 wizardEditUserScreen.insertMetadataField(experiment, "Weekdays->Spatial", presenterScreen);
@@ -356,6 +368,9 @@ public class SynQuiz2 {
                 wizardEditUserScreen.insertMetadataField(experiment, "British Sign->Spatial", presenterScreen);
                 break;
             case Taste:
+                presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, //"Taste<br/>"
+                        "Do any of the items below cause you to experience tastes?<br/><br/>"
+                        + "Examples: \"Philip tastes of bitter oranges, while April tastes of apricots.\" \"The word 'safety' tastes of lightly buttered toast\"<br/><br/>"));
                 wizardEditUserScreen.insertMetadataField(experiment, "Numbers->Taste", presenterScreen);
                 wizardEditUserScreen.insertMetadataField(experiment, "Letters->Taste", presenterScreen);
                 wizardEditUserScreen.insertMetadataField(experiment, "Weekdays->Taste", presenterScreen);
@@ -376,6 +391,9 @@ public class SynQuiz2 {
                 wizardEditUserScreen.insertMetadataField(experiment, "British Sign->Taste", presenterScreen);
                 break;
             case Touch:
+                presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, //"Touch<br/>"
+                        "Do any of the items below cause you to experience a sense of touch?<br/><br/>"
+                        + "Example: You feel a touch on your arm when you see someone else being touched on their arm.<br/><br/>"));
                 wizardEditUserScreen.insertMetadataField(experiment, "Numbers->Touch", presenterScreen);
                 wizardEditUserScreen.insertMetadataField(experiment, "Letters->Touch", presenterScreen);
                 wizardEditUserScreen.insertMetadataField(experiment, "Weekdays->Touch", presenterScreen);
