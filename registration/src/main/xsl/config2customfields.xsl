@@ -175,15 +175,14 @@
                 <xsl:text>);
                     }
                     public void appendAggregateCsvHeader(CSVPrinter printer) throws IOException {
-                    printer.printRecord("UserId",</xsl:text>
+                    printer.printRecord("UserId"</xsl:text>
                 <xsl:for-each select="experiment/metadata/field">
-                    <xsl:text>"</xsl:text>
+                    <xsl:text>,"</xsl:text>
                     <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" />
-                    <xsl:text>"</xsl:text>
-                    <xsl:text>,</xsl:text>               
+                    <xsl:text>"</xsl:text>           
                 </xsl:for-each>
                 <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@code)">
-                    <xsl:text>"</xsl:text>                
+                    <xsl:text>,"</xsl:text>                
                     <xsl:value-of select="." />                
                     <xsl:text>","</xsl:text>             
                     <xsl:value-of select="." /> 
@@ -191,9 +190,9 @@
                     <xsl:text>"</xsl:text>                
                     <xsl:value-of select="." />                
                     <xsl:text>_ms"</xsl:text>
-                    <xsl:if test="position() != last()">
+<!--                    <xsl:if test="position() != last()">
                         <xsl:text>,</xsl:text>
-                    </xsl:if>
+                    </xsl:if>-->
                 </xsl:for-each>
                 <xsl:text>);
                     }
@@ -264,22 +263,22 @@
                     startData=null;
                     }                
                     }
-                    printer.printRecord(participant.getUserId(),</xsl:text>
+                    printer.printRecord(participant.getUserId()</xsl:text>
                 <xsl:for-each select="experiment/metadata/field">
-                    <xsl:text>participant.get</xsl:text>
+                    <xsl:text>,&#xa;participant.get</xsl:text>
                     <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" />
-                    <xsl:text>(),&#xa;</xsl:text>
+                    <xsl:text>()</xsl:text>
                 </xsl:for-each>
                 <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@code)">
-                    <xsl:text>stimulus_</xsl:text>  
+                    <xsl:text>,&#xa;stimulus_</xsl:text>  
                     <xsl:value-of select="." />                
                     <xsl:text>, datetime_</xsl:text>                
                     <xsl:value-of select="." />                
                     <xsl:text>, ms_</xsl:text>                
                     <xsl:value-of select="." />                
-                    <xsl:if test="position() != last()">
+<!--                    <xsl:if test="position() != last()">
                         <xsl:text>,&#xa;</xsl:text>
-                    </xsl:if>
+                    </xsl:if>-->
                 </xsl:for-each>
                 <xsl:text>);
                     }
