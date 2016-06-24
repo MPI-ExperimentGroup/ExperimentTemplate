@@ -57,14 +57,24 @@ public class SynQuiz2 {
         return experiment;
     }
 
+//    done         The "tell us about your synaesthesia" text should be at the top of that page as an introduction
+//done·         Individual synaesthesia experiences (Touch/Sound/Colour/Taste/etc.) should be on their own pages
+//done         Resurrecting color picker instructions from SynQuiz
+//done         On the color picker, the progress indicator should be a % complete, rather than 7/12, 3/24, etc.
+//done but more elegance needed·         The menu page should have a "Finish" button that submits the data and clears it out for the next user
+//done·         Clicking Finish from the menu page should take people to the 'What's Next' screen (text for that is in document I sent)
+//done    make sure the data is sent to the old web service
+    //todo make sure the new metadata is understood by the old webservice
     public void create(Experiment experiment, final List<PresenterScreen> presenterScreenList) {
         final PresenterScreen introductionScreen = createIntroductionScreen("Introduction", 1);
         presenterScreenList.add(introductionScreen);
         final WizardCompletionScreen completionScreen = new WizardCompletionScreen(
                 "Thank you for participating! You may hear from us in the next few weeks to ask if you would like to participate in the genetics part of the study. Your data has been saved, and you can now close your browser. <br><br>"
-                + "If you have any questions about the study, you can email them to us at <a href=\"mailto:synaesthesia@mpi.nl\">synaesthesia@mpi.nl</a>."
-                + " It will be a year or more before there are results, but when we publish our study it will be posted on our "
-                + "<a href=\"http://www.mpi.nl/departments/language-and-genetics/projects/decoding-the-genetics-of-synaesthesia/publications\">website</a>.<br>",
+                + "If you have any questions about the study, you can email them to us at "
+                + formatLink("mailto:synaesthesia@mpi.nl")
+                + ". It will be a year or more before there are results, but when we publish our study it will be posted on our "
+                + formatLink("website", "http://www.mpi.nl/departments/language-and-genetics/projects/decoding-the-genetics-of-synaesthesia/publications")
+                + ".<br/><br/>",
                 true, null,
                 "Finish this expriment and start from the begining",
                 "Completion",
