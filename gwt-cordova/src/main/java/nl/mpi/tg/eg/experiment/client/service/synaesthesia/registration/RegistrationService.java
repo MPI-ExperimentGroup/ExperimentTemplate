@@ -37,7 +37,6 @@ import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
 //import nl.ru.languageininteraction.synaesthesia.client.MetadataFields;
 //import nl.ru.languageininteraction.synaesthesia.client.ServiceLocations;
 //import nl.ru.languageininteraction.synaesthesia.client.Version;
-import nl.ru.languageininteraction.synaesthesia.client.service.ResultsSerialiser;
 
 /**
  * @since Oct 29, 2014 11:18:31 AM (creation date)
