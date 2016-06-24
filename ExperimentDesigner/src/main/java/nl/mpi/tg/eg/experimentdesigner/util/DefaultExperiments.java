@@ -73,7 +73,9 @@ public class DefaultExperiments {
         experimentRepository.save(new Sara01().getExperiment());
         experimentRepository.save(new FactOrFiction().getExperiment());
         experimentRepository.save(new SynQuiz2().getExperiment());
+        experimentRepository.save(new RdExperiment02().getExperiment());
         experimentRepository.save(new NblExperiment01().getExperiment());
+        experimentRepository.save(new HRExperiment01().getExperiment());
 
         for (Experiment experiment : experimentRepository.findAll()) {
             eventRepository.save(new PublishEvents(experiment, new Date(), new Date(), PublishEvents.PublishState.published, true, true, true));
