@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.ru.languageininteraction.synaesthesia.client.registration;
+package nl.mpi.tg.eg.experiment.client.service.synaesthesia.registration;
 
 /**
  * @since Oct 29, 2014 11:23:33 AM (creation date)
