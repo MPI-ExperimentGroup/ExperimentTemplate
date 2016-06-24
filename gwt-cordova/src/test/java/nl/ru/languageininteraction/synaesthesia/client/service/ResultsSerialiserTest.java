@@ -17,6 +17,7 @@
  */
 package nl.ru.languageininteraction.synaesthesia.client.service;
 
+import nl.mpi.tg.eg.experiment.client.service.synaesthesia.registration.ResultsSerialiser;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

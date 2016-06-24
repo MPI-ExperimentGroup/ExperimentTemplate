@@ -19,8 +19,12 @@ package nl.mpi.tg.eg.experiment.client.presenter;
 
 import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.i18n.shared.DateTimeFormat;
+import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.Date;
+import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponseGroup;
@@ -28,6 +32,9 @@ import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.view.ReportView;
 import nl.mpi.tg.eg.experiment.client.model.colour.GroupScoreData;
+import nl.mpi.tg.eg.experiment.client.service.synaesthesia.registration.RegistrationException;
+import nl.mpi.tg.eg.experiment.client.service.synaesthesia.registration.RegistrationListener;
+import nl.mpi.tg.eg.experiment.client.service.synaesthesia.registration.RegistrationService;
 import nl.mpi.tg.eg.experiment.client.util.ScoreCalculator;
 
 /**
@@ -36,6 +43,7 @@ import nl.mpi.tg.eg.experiment.client.util.ScoreCalculator;
  */
 public abstract class AbstractColourReportPresenter extends AbstractPresenter implements Presenter {
 
+    private final DataSubmissionService submissionService;
     protected final UserResults userResults;
     final LocalStorage localStorage;
 
@@ -43,9 +51,10 @@ public abstract class AbstractColourReportPresenter extends AbstractPresenter im
         super(widgetTag, new ReportView());
         this.localStorage = new LocalStorage();
         this.userResults = userResults;
+        this.submissionService = submissionService;
     }
 
-    public void showColourReport(float scoreThreshold, TimedStimulusListener aboveThreshold, TimedStimulusListener belowThreshold) { // todo: use scoreThreshold
+    public void showColourReport(final float scoreThreshold, final TimedStimulusListener aboveThreshold, final TimedStimulusListener belowThreshold) { // todo: use scoreThreshold
         StringBuilder stringBuilder = new StringBuilder();
         final DateTimeFormat format = DateTimeFormat.getFormat(messages.reportDateFormat());
         final NumberFormat numberFormat2 = NumberFormat.getFormat("0.00");
@@ -72,11 +81,12 @@ public abstract class AbstractColourReportPresenter extends AbstractPresenter im
             stringBuilder.append("\t");
             stringBuilder.append(calculatedScores.getReactionTimeDeviation());
             stringBuilder.append("\n");
-
+            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "Score", stimuliGroup.getPostName(), Double.toString(calculatedScores.getScore()), 0);
+            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "MeanReactionTime", stimuliGroup.getPostName(), Double.toString(calculatedScores.getMeanReactionTime()), 0);
+            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "ReactionTimeDeviation", stimuliGroup.getPostName(), Double.toString(calculatedScores.getReactionTimeDeviation()), 0);
         }
-//        userResults.getUserData().setScoreLog(stringBuilder.toString());
+        //        userResults.getUserData().setScoreLog(stringBuilder.toString());
 //        ((ReportView) simpleView).addText(messages.reportScreenPostSCTtext());
-
         if (userResults.getUserData().getBestScore() <= scoreThreshold) {
             belowThreshold.postLoadTimerFired();
 //            ((ReportView) simpleView).addHighlightedText(messages.positiveresultscreentext1());
@@ -89,5 +99,40 @@ public abstract class AbstractColourReportPresenter extends AbstractPresenter im
 //            ((ReportView) simpleView).addHighlightedText(messages.negativeresultscreentext3());
         }
         ((ReportView) simpleView).addPadding();
+        new RegistrationService().submitRegistration(userResults, new RegistrationListener() {
+            @Override
+            public void registrationFailed(RegistrationException exception) {
+                ((ReportView) simpleView).addText("Could not connect to the server.");
+                ((ReportView) simpleView).addOptionButton(new PresenterEventListner() {
+                    @Override
+                    public String getLabel() {
+                        return "Retry";
+                    }
+
+                    @Override
+                    public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+                        Timer timer = new Timer() {
+                            @Override
+                            public void run() {
+                                ((ReportView) simpleView).clearPage();
+                                showColourReport(scoreThreshold, aboveThreshold, belowThreshold);
+                            }
+                        };
+                        timer.schedule(1000);
+                    }
+
+                    @Override
+                    public int getHotKey() {
+                        return -1;
+                    }
+                });
+            }
+
+            @Override
+            public void registrationComplete() {
+
+//        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusLabelShown", stimuliGroup.getPostName(), stringBuilder.toString(), duration.elapsedMillis());
+            }
+        }, messages.reportDateFormat());
     }
 }

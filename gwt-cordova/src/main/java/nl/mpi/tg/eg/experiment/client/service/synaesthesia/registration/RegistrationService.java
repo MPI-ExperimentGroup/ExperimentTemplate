@@ -59,7 +59,7 @@ public class RegistrationService {
             if (stringBuilder.length() > 0) {
                 stringBuilder.append("&");
             }
-            stringBuilder.append(key).append("=").append(value);
+            stringBuilder.append(key.getPostName()).append("=").append(value);
         }
         if (stringBuilder.length() > 0) {
             stringBuilder.append("&");
