@@ -28,10 +28,15 @@ import com.google.gwt.i18n.shared.DateTimeFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import nl.ru.languageininteraction.synaesthesia.client.MetadataFields;
-import nl.ru.languageininteraction.synaesthesia.client.ServiceLocations;
-import nl.ru.languageininteraction.synaesthesia.client.Version;
-import nl.ru.languageininteraction.synaesthesia.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.MetadataFields;
+import nl.mpi.tg.eg.experiment.client.ServiceLocations;
+import nl.mpi.tg.eg.experiment.client.Version;
+import nl.mpi.tg.eg.experiment.client.model.MetadataField;
+import nl.mpi.tg.eg.experiment.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
+//import nl.ru.languageininteraction.synaesthesia.client.MetadataFields;
+//import nl.ru.languageininteraction.synaesthesia.client.ServiceLocations;
+//import nl.ru.languageininteraction.synaesthesia.client.Version;
 import nl.ru.languageininteraction.synaesthesia.client.service.ResultsSerialiser;
 
 /**
@@ -50,8 +55,8 @@ public class RegistrationService {
         final RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, registratinoUrl);
         builder.setHeader("Content-type", "application/x-www-form-urlencoded");
         StringBuilder stringBuilder = new StringBuilder();
-        for (String key : userResults.getMetadataKeys()) {
-            String value = URL.encodeQueryString(userResults.getMetadataValue(key));
+        for (MetadataField key : userResults.getUserData().getMetadataFields()) {
+            String value = URL.encodeQueryString(userResults.getUserData().getMetadataValue(key));
             if (stringBuilder.length() > 0) {
                 stringBuilder.append("&");
             }
@@ -70,7 +75,7 @@ public class RegistrationService {
             protected String formatDate(Date date) {
                 return format.format(date);
             }
-        }.serialise(userResults, mateadataFields.postName_email()));
+        }.serialise(userResults, new MetadataFieldProvider().emailAddressMetadataField));
         stringBuilder.append("quiz_results=").append(restultsData);
         try {
             builder.sendRequest(stringBuilder.toString(), geRequestBuilder(builder, registrationListener, registratinoUrl));
