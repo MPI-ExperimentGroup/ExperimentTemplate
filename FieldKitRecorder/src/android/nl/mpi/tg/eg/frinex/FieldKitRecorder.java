@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex;
 
+import android.Manifest;
 import android.os.Environment;
 import java.io.File;
 import java.io.IOException;
@@ -45,6 +46,16 @@ public class FieldKitRecorder extends CordovaPlugin {
     @Override
     public boolean execute(final String action, final JSONArray args, final CallbackContext callbackContext) throws JSONException {
         if (action.equals("record")) {
+            String[] permissions = {
+                Manifest.permission.RECORD_AUDIO,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            };
+            if (!cordova.hasPermission(Manifest.permission.RECORD_AUDIO)
+                    || !cordova.hasPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                    || !cordova.hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                cordova.requestPermissions(this, 0, permissions);
+            }
             System.out.println("action: record");
             final String userId = args.getString(0);
             final String stimulusSet = args.getString(1);
