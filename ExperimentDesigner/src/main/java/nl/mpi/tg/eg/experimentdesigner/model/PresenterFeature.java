@@ -166,11 +166,11 @@ public class PresenterFeature {
 
     @XmlElement(name = "randomGrouping")
     public RandomGrouping getRandomGrouping() {
-        return (featureType.canHaveStimulusTags()) ? randomGrouping : null;
+        return (featureType.isCanHaveRandomGrouping()) ? randomGrouping : null;
     }
 
     public void setRandomGrouping(RandomGrouping randomGrouping) {
-        if (featureType.canHaveStimulusTags()) {
+        if (featureType.isCanHaveRandomGrouping()) {
             this.randomGrouping = randomGrouping;
         } else {
             throw new UnsupportedOperationException("randomGrouping and StimulusTags are not supported in this type");
