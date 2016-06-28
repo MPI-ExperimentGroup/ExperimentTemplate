@@ -61,7 +61,7 @@ public abstract class AbstractTimelinePresenter extends AbstractPresenter implem
         ((AnnotationTimelineView) simpleView).setVideoPanel(videoPanel);
     }
 
-    public void setAnnotationTimelinePanel(String eventTag, String poster, String mp4, String ogg, String webm, List<GeneratedStimulus.Tag> tags, final List<GeneratedStimulus.Tag> randomTags, int maxStimuli, int columnCount) {
+    public void setAnnotationTimelinePanel(String eventTag, String poster, String mp4, String ogg, String webm, List<GeneratedStimulus.Tag> tags, int maxStimuli, int columnCount) {
         this.storageTag = eventTag;
         final VideoPanel videoPanel = new VideoPanel("50%", poster, mp4, ogg, webm);
         ((AnnotationTimelineView) simpleView).setVideoPanel(videoPanel);
