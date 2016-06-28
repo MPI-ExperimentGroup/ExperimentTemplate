@@ -168,8 +168,8 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         }
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadStimulus, null);
         loadStimuliFeature.addStimulusTag(screenTitle);
-        final RandomGrouping randomGrouping = new RandomGrouping();
         if (stimuliRandomTags != null) {
+            final RandomGrouping randomGrouping = new RandomGrouping();
             for (String randomTag : stimuliRandomTags) {
                 randomGrouping.addRandomTag(randomTag);
             }
