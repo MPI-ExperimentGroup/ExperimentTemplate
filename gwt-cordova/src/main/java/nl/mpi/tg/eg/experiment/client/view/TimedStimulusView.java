@@ -30,9 +30,12 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.TextBox;
 import nl.mpi.tg.eg.experiment.client.listener.AudioEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
+import nl.mpi.tg.eg.experiment.client.model.StimulusFreeText;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 
 /**
@@ -45,7 +48,7 @@ public class TimedStimulusView extends ComplexView {
     private StimulusGrid stimulusGrid = null;
 
     public TimedStimulusView(AudioPlayer audioPlayer) {
-        super(false);
+        super();
         this.audioPlayer = audioPlayer;
     }
 
@@ -103,6 +106,36 @@ public class TimedStimulusView extends ComplexView {
         final HTMLPanel htmlPanel = new HTMLPanel(svgContent);
         htmlPanel.setWidth(percentWidth + "%");
         outerPanel.add(htmlPanel);
+    }
+
+    public StimulusFreeText addStimulusFreeText(final String validationRegex, final String validationChallenge) {
+        final Label errorLabel = new Label(validationChallenge);
+        errorLabel.setStylePrimaryName("metadataErrorMessage");
+        errorLabel.setVisible(false);
+        outerPanel.add(errorLabel);
+        final TextBox textBox = new TextBox();
+        outerPanel.add(textBox);
+        textBox.setFocus(true);
+        return new StimulusFreeText() {
+            @Override
+            public String getValue() {
+                return textBox.getValue();
+            }
+
+            @Override
+            public boolean isValid() {
+                if (getValue().matches(validationRegex)) {
+                    textBox.setStylePrimaryName("metadataOK");
+                    errorLabel.setVisible(false);
+                    return true;
+                } else {
+                    textBox.setStylePrimaryName("metadataError");
+                    errorLabel.setVisible(true);
+                    textBox.setFocus(true);
+                    return false;
+                }
+            }
+        };
     }
 
     public void addTimedAudio(SafeUri oggPath, SafeUri mp3Path, final int postLoadMs, final TimedStimulusListener shownStimulusListener, final TimedStimulusListener timedStimulusListener) {
