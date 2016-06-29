@@ -33,6 +33,7 @@ public enum FeatureAttribute {
     fieldName,
     code,
     codeFormat,
+    validationRegex,
     src,
     link,
     percentOfPage,
