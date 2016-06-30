@@ -69,13 +69,7 @@ public class ComplexView extends SimpleView {
     private final ArrayList<ImageEntry> scaledImagesList = new ArrayList<>();
 
     public ComplexView() {
-        super(true);
-        outerPanel = new VerticalPanel();
-        setContent(outerPanel);
-    }
-
-    public ComplexView(final boolean showHeader) {
-        super(showHeader);
+        super();
         outerPanel = new VerticalPanel();
         setContent(outerPanel);
     }
@@ -125,7 +119,7 @@ public class ComplexView extends SimpleView {
     }
 
     protected void addSizeAttributes(final Element imageElement, int percentOfPage, int maxHeight, int maxWidth) {
-        imageElement.getStyle().setProperty("imageOrientation", "from-image");
+        imageElement.getStyle().setProperty("imageOrientation", "from-image"); // the image-orientation style is not supported by most browsers yet
         if (percentOfPage > 0) {
             scaledImagesList.add(new ImageEntry(imageElement, percentOfPage));
 //            image.getElement().getStyle().setProperty("width", percentOfPage + "%");

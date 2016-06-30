@@ -41,12 +41,15 @@ import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
+import nl.mpi.tg.eg.experiment.client.model.SdCardStimulus;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
+import nl.mpi.tg.eg.experiment.client.model.StimulusFreeText;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
+import nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture;
 import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
@@ -68,6 +71,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     final ArrayList<ButtonBase> buttonList = new ArrayList<>();
     private TimedStimulusListener hasMoreStimulusListener;
     private TimedStimulusListener endOfStimulusListener;
+    private ArrayList<StimulusFreeText> stimulusFreeTextList = new ArrayList<StimulusFreeText>();
 
     public AbstractStimulusPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage) {
         super(widgetTag, new TimedStimulusView(audioPlayer));
@@ -299,6 +303,25 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void keepStimulus() {
         stimulusProvider.pushCurrentStimulusToEnd();
+    }
+
+    protected void stimulusFreeText(String validationRegex, String validationChallenge) {
+        StimulusFreeText stimulusFreeText = ((TimedStimulusView) simpleView).addStimulusFreeText(validationRegex, validationChallenge);
+        stimulusFreeTextList.add(stimulusFreeText);
+    }
+
+    protected void stimulusImageCapture(int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+        final SdCardStimulus currentStimulus = (SdCardStimulus) stimulusProvider.getCurrentStimulus();
+        final SdCardImageCapture sdCardImageCapture = new SdCardImageCapture(currentStimulus);
+        if (sdCardImageCapture.hasBeenCaptured()) {
+            final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
+                @Override
+                public void postLoadTimerFired() {
+                    timedStimulusListener.postLoadTimerFired();
+                }
+            };
+            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(sdCardImageCapture.getCapturedPath()), percentOfPage, maxHeight, maxWidth, postLoadMs, shownStimulusListener, timedStimulusListener);
+        }
     }
 
     protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
@@ -637,12 +660,20 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void nextStimulus(final String eventTag, final boolean norepeat) {
-        //logTimeStamp(eventTag);
+        for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
+            if (!stimulusFreeText.isValid()) {
+                return;
+            }
+        }
+        for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
+            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusFreeText", stimulusProvider.getCurrentStimulus().getUniqueId(), stimulusFreeText.getValue(), duration.elapsedMillis());
+        }
         if (norepeat) {
             removeStimulus();
         }
         ((TimedStimulusView) simpleView).stopAudio();
         ((TimedStimulusView) simpleView).clearPage();
+        stimulusFreeTextList.clear();
         buttonList.clear();
         showStimulus();
     }

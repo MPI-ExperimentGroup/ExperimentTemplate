@@ -26,6 +26,7 @@ import java.util.Date;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
+import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponseGroup;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
@@ -54,7 +55,7 @@ public abstract class AbstractColourReportPresenter extends AbstractPresenter im
         this.submissionService = submissionService;
     }
 
-    public void showColourReport(final float scoreThreshold, final TimedStimulusListener aboveThreshold, final TimedStimulusListener belowThreshold) { // todo: use scoreThreshold
+    public void showColourReport(final float scoreThreshold, final TimedStimulusListener aboveThreshold, final TimedStimulusListener belowThreshold, final MetadataField emailAddressMetadataField) { // todo: use scoreThreshold
         StringBuilder stringBuilder = new StringBuilder();
         final DateTimeFormat format = DateTimeFormat.getFormat(messages.reportDateFormat());
         final NumberFormat numberFormat2 = NumberFormat.getFormat("0.00");
@@ -115,7 +116,7 @@ public abstract class AbstractColourReportPresenter extends AbstractPresenter im
                             @Override
                             public void run() {
                                 ((ReportView) simpleView).clearPage();
-                                showColourReport(scoreThreshold, aboveThreshold, belowThreshold);
+                                showColourReport(scoreThreshold, aboveThreshold, belowThreshold, emailAddressMetadataField);
                             }
                         };
                         timer.schedule(1000);
@@ -133,6 +134,6 @@ public abstract class AbstractColourReportPresenter extends AbstractPresenter im
 
 //        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusLabelShown", stimuliGroup.getPostName(), stringBuilder.toString(), duration.elapsedMillis());
             }
-        }, messages.reportDateFormat());
+        }, messages.reportDateFormat(), emailAddressMetadataField);
     }
 }

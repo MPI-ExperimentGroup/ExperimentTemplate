@@ -341,9 +341,11 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             }, true);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="popupMessage">           
-        <xsl:value-of select ="local-name()"/>
-        <xsl:text>(null, messages.</xsl:text>
+    <xsl:template match="popupMessage|stimulusFreeText">           
+        <xsl:value-of select ="local-name()"/>    
+        <xsl:text>(</xsl:text>
+        <xsl:value-of select="if(@validationRegex) then concat('&quot;', @validationRegex, '&quot;') else 'null'" />
+        <xsl:text>, messages.</xsl:text>
         <xsl:value-of select="generate-id(.)" />
         <xsl:text>());
         </xsl:text>
@@ -518,7 +520,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="pause|stimulusImage|stimulusCodeImage|stimulusCodeAudio|stimulusCodeVideo|stimulusAudio|stimulusPause">
+    <xsl:template match="pause|stimulusImage|stimulusImageCapture|stimulusCodeImage|stimulusCodeAudio|stimulusCodeVideo|stimulusAudio|stimulusPause">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(</xsl:text>
@@ -572,7 +574,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="local-name()" />
         <!--        <xsl:text>(new </xsl:text>
         <xsl:value-of select="local-name()" />-->
-        <xsl:text>(</xsl:text>
+        <xsl:text>(</xsl:text>        
         <xsl:value-of select="if(@msToNext) then @msToNext else ''" />
         <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;') else ''" />        
         <xsl:value-of select="if(@wavFormat) then concat(@wavFormat eq 'true', ', ') else ''" />
