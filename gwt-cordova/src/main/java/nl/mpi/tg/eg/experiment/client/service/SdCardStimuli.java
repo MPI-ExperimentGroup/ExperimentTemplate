@@ -81,7 +81,7 @@ public class SdCardStimuli {
         final boolean isOgg = ".ogg".equals(suffix);
         final boolean isImage = ".jpg".equals(suffix) || ".png".equals(suffix);
         // todo: insert a relevant tag and address enum limitiation
-        stimulusArray.add(new SdCardStimulus(stimulusId, stimulusPath.replaceFirst(BASE_FILE_REGEX, ""),
+        stimulusArray.add(new SdCardStimulus(stimulusId, stimulusPath,
                 //                /* tagArray */ new Stimulus.Tag[0]/* we dont set this with the tag array because each stimulus would only have one out of many applicable from the array */,
                 stimuliLabel, stimuliCode, pause, isMp3, (isMp4 || isOgg), isImage));
     }
