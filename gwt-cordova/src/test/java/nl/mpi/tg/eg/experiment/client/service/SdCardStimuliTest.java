@@ -104,7 +104,7 @@ public class SdCardStimuliTest {
             assertEquals(true, (stimulus.hasAudio()) ? stimulus.getAudio().startsWith("file:") : true);
             assertEquals(false, (stimulus.hasAudio()) ? stimulus.getAudio().contains(".") : false);
             assertEquals(true, (stimulus.hasImage()) ? stimulus.getImage().startsWith("file:") : true);
-            assertEquals(false, (stimulus.hasImage()) ? stimulus.getImage().contains(".") : false);
+            assertEquals(true, (stimulus.hasImage()) ? stimulus.getImage().contains(".") : true);
             assertEquals(true, (stimulus.hasVideo()) ? stimulus.getVideo().startsWith("file:") : true);
             assertEquals(false, (stimulus.hasVideo()) ? stimulus.getVideo().contains(".") : false);
         }
