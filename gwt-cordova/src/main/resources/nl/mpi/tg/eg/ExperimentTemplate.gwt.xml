@@ -18,6 +18,10 @@
     <!-- Other module inherits                                      -->
     <inherits name="com.google.gwt.i18n.I18N" />
     <inherits name="com.google.web.bindery.autobean.AutoBean"/> 
+    <inherits name="nl.mpi.kinnate.KinOathCore"/> 
+    <inherits name="nl.mpi.kinnate.KinOathDiagram"/> 
+    <inherits name="nl.mpi.kinoath.KinOathGraphSorter"/> 
+    <inherits name="nl.mpi.kinnate.KinOathKinTypeStringParser"/> 
     <extend-property name="locale" values="en,nl,de" />
     <set-property-fallback name="locale" value="en"/>
     
