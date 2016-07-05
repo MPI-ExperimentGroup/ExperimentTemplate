@@ -161,7 +161,8 @@ public class KinElementGwt implements KinElement {
         node.onclick=function(event){
             var isLeftMouseButton = event.which == 1;
             var shiftDown = event.shiftKey;
-            mouseListenerSvg.@nl.mpi.tg.eg.experiment.client.presenter.kin.MouseListenerGwt::mouseReleased(Ljava/lang/Boolean;Ljava/lang/Boolean;)(isLeftMouseButton, shiftDown);
+            var kinPoint = @nl.mpi.kinnate.kindata.KinPoint::new(II)(event.clientX, event.clientY);
+            mouseListenerSvg.@nl.mpi.tg.eg.experiment.client.presenter.kin.MouseListenerGwt::mouseReleased(Lnl/mpi/kinnate/kindata/KinPoint;Ljava/lang/Boolean;Ljava/lang/Boolean;)(kinPoint, isLeftMouseButton, shiftDown);
 //            mouseListenerSvg.@nl.mpi.tg.eg.experiment.client.presenter.kin.MouseListenerGwt::mouseReleased()();
         };
     }-*/;

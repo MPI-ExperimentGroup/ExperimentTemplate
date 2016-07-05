@@ -18,10 +18,13 @@
 package nl.mpi.tg.eg.experiment.client.presenter.kin;
 
 import java.util.ArrayList;
+import nl.mpi.kinnate.kindata.DataTypes;
 import nl.mpi.kinnate.kindata.KinPoint;
 import nl.mpi.kinnate.svg.KinElement;
 import nl.mpi.kinnate.svg.KinElementException;
 import nl.mpi.kinnate.svg.MouseListenerSvg;
+import nl.mpi.kinnate.svg.OldFormatException;
+import nl.mpi.kinnate.svg.RelationDragHandle;
 import nl.mpi.kinnate.svg.SvgUpdateHandler;
 import nl.mpi.kinnate.uniqueidentifiers.IdentifierException;
 import nl.mpi.kinnate.uniqueidentifiers.UniqueIdentifier;
@@ -51,13 +54,19 @@ public class MouseListenerGwt implements MouseListenerSvg {
     }
 
     @Override
-    public void mouseReleased(Boolean isLeftMouseButton, Boolean shiftDown) {
+    public void mouseReleased(KinPoint kinPoint, Boolean isLeftMouseButton, Boolean shiftDown) {
         try {
             final ArrayList identifierList = new ArrayList<>();
             final String attribute = targetNode.getAttribute("id");
-            identifierList.add(new UniqueIdentifier(attribute));
+            final UniqueIdentifier uniqueIdentifier = new UniqueIdentifier(attribute);
+            identifierList.add(uniqueIdentifier);
             svgUpdateHandler.updateSvgSelectionHighlightsI(identifierList, this);
-        } catch (KinElementException | IdentifierException elementException) {
+            if (!uniqueIdentifier.isTransientIdentifier()) {
+                svgUpdateHandler.setRelationDragHandle(new RelationDragHandle(null, DataTypes.RelationType.ancestor, 310, 00, 120, 60, 1));
+                svgUpdateHandler.updateMouseDrag(identifierList, 310, 10);
+                svgUpdateHandler.showAddEntityBox(310, 0);
+            }
+        } catch (KinElementException | IdentifierException | OldFormatException elementException) {
             throw new UnsupportedOperationException("Not supported yet: " + elementException.getMessage());
         }
     }

@@ -43,33 +43,22 @@ public class SimpleView extends AbstractView {
         menu, back, next
     }
     private final HorizontalPanel footerPanel;
-    private final Grid headerPanel;
+    private Grid headerPanel = null;
     private final VerticalPanel borderedContentPanel;
     private final ScrollPanel scrollPanel;
-    protected final int HEADER_SIZE;
+    protected int HEADER_SIZE;
 
-    public SimpleView(final boolean showHeader) {
+    public SimpleView() {
 
         footerPanel = new HorizontalPanel();
         borderedContentPanel = new VerticalPanel();
         borderedContentPanel.setStylePrimaryName("contentPanel");
         footerPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
-        if (ApplicationController.SHOW_HEADER && showHeader) {
-            HEADER_SIZE = 50;
-            headerPanel = new Grid(1, 3);
-            headerPanel.setWidth("100%");
-            headerPanel.setStylePrimaryName("headerPanel");
-            addNorth(headerPanel, HEADER_SIZE);
-        } else {
-            HEADER_SIZE = 0;
-            headerPanel = null;
-        }
 //        addSouth(footerPanel, 50);
         scrollPanel = new ScrollPanel();
         borderedContentPanel.add(scrollPanel);
         borderedContentPanel.add(footerPanel);
         footerPanel.setVisible(false);
-        add(borderedContentPanel);
     }
 
     public final void setContent(Panel panel) {
@@ -84,14 +73,23 @@ public class SimpleView extends AbstractView {
     }
 
     public void addTitle(String label, final PresenterEventListner presenterListerner) {
-        if (headerPanel != null) {
+        if (ApplicationController.SHOW_HEADER || presenterListerner != null) {
+            HEADER_SIZE = 50;
+            headerPanel = new Grid(1, 3);
+            headerPanel.setWidth("100%");
+            headerPanel.setStylePrimaryName("headerPanel");
+            addNorth(headerPanel, HEADER_SIZE);
             final Label headerLabel = new Label(label);
             headerLabel.setStylePrimaryName("headerLabel");
             headerPanel.setWidget(0, 0, new MenuButton(presenterListerner));
             headerPanel.setWidget(0, 1, headerLabel);
             headerPanel.setStylePrimaryName("headerPanel");
             headerPanel.getColumnFormatter().setWidth(1, "100%");
+        } else {
+            HEADER_SIZE = 0;
+            headerPanel = null;
         }
+        add(borderedContentPanel);
     }
 
     public void addToFooter(IsWidget button) {

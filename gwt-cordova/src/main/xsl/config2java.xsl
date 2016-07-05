@@ -199,6 +199,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 import nl.mpi.tg.eg.experiment.client.view.MetadataView; 
                 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService; 
                 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
+                import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
                         
                 // generated with config2java.xsl
                 public class </xsl:text>
@@ -465,7 +466,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="preloadAllStimuli|kinTypeStringDiagram|loadKinTypeStringDiagram|ratingFooterButton|ratingButton|stimulusRatingButton">
+    <xsl:template match="preloadAllStimuli|kinTypeStringDiagram|loadKinTypeStringDiagram|editableKinEntitesDiagram|ratingFooterButton|ratingButton|stimulusRatingButton">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(appEventListner</xsl:text>
@@ -609,6 +610,10 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:apply-templates select="singleUser" />
         <xsl:apply-templates select="aboveThreshold" />
         <xsl:apply-templates select="belowThreshold" />
+        <xsl:if test="local-name() eq 'showColourReport'">
+            <!--the colour report needs to know the email address metadata field, but this field does not exist in all experiments so it must be passed in here-->
+            <xsl:text>, new MetadataFieldProvider().emailAddressMetadataField</xsl:text>
+        </xsl:if>
         <xsl:text>);
         </xsl:text>
     </xsl:template>

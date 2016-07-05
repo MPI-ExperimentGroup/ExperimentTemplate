@@ -15,6 +15,11 @@
             stimulusscreenQuitButton=Quit
             stimulusscreenrejectbutton=No colour
             stimulusscreenprogresstext={0} of {1}    
+            reportDateFormat=yyyy-MM-dd HH:mm:ss vvvv
+            reportScreenScore=Score: {0}
+            userfeedbackscreentext=In this test a score below 1.5 is considered synaesthetic.
+            positiveresultsThreshold=1.5
+            helpButtonChar=?
             appNameInternal=</xsl:text>
         <xsl:value-of select="experiment/@appNameInternal" />
         <xsl:text>
@@ -50,7 +55,7 @@
         </xsl:text>      
         <xsl:apply-templates/>
     </xsl:template>
-    <xsl:template match="helpDialogue[@featureText != '']|eraseUsersDataButton[@featureText != '']|saveMetadataButton[@featureText != '']|saveMetadataButton[@networkErrorMessage != '']|createUserButton[@featureText != '']|targetButton[@featureText != '']|actionButton[@featureText != '']|targetFooterButton[@featureText != '']|actionFooterButton[@featureText != '']|plainText[@featureText != '']|popupMessage[@featureText != '']|menuItem[@featureText != '']|featureText[@featureText != '']|nextStimulusButton[@featureText != '']|htmlText[@featureText != '']|userInfo[@featureText != '']">
+    <xsl:template match="stimulusFreeText[@featureText != '']|helpDialogue[@featureText != '']|eraseUsersDataButton[@featureText != '']|saveMetadataButton[@featureText != '']|saveMetadataButton[@networkErrorMessage != '']|createUserButton[@featureText != '']|targetButton[@featureText != '']|actionButton[@featureText != '']|targetFooterButton[@featureText != '']|actionFooterButton[@featureText != '']|plainText[@featureText != '']|popupMessage[@featureText != '']|menuItem[@featureText != '']|featureText[@featureText != '']|nextStimulusButton[@featureText != '']|htmlText[@featureText != '']|userInfo[@featureText != '']">
         <xsl:if test="@featureText != ''">       
             <xsl:value-of select="generate-id(.)" />
             <xsl:text>=</xsl:text>

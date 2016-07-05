@@ -24,6 +24,9 @@ import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.io.IOException;
 import java.util.ArrayList;
+import nl.mpi.kinnate.kindata.DataTypes;
+import nl.mpi.kinnate.kindata.EntityData;
+import nl.mpi.kinnate.kindata.EntityDate;
 import nl.mpi.kinnate.kindata.GraphSorter;
 import nl.mpi.kinnate.kindata.KinRectangle;
 import nl.mpi.kinnate.kindata.UnsortablePointsException;
@@ -37,6 +40,7 @@ import nl.mpi.kinnate.svg.OldFormatException;
 import nl.mpi.kinnate.svg.SvgDiagram;
 import nl.mpi.kinnate.svg.SvgUpdateHandler;
 import nl.mpi.kinnate.ui.KinTypeStringProvider;
+import nl.mpi.kinnate.uniqueidentifiers.UniqueIdentifier;
 import nl.mpi.kinoath.graph.DefaultSorter;
 import nl.mpi.tg.eg.experiment.client.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
@@ -88,37 +92,45 @@ public abstract class AbstractKinDiagramPresenter extends AbstractPresenter impl
 //        RequestBuilder requestBuilder = new RequestBuilder(RequestBuilder.GET, UriUtils.fromString("http://ems12.mpi.nl:80/kinoath-rest/kinoath/getkin/svg?kts=" + kinTypeString).asString());
         try {
             svgDiagram.generateDefaultSvg(kinDocument, graphSorter);
-            KinTypeStringConverter kinTypeStringConverter = new KinTypeStringConverter(RHOMBUS, KinType.getReferenceKinTypes());
-            final String[] kinTypeStringArray = kinTypeString.split("\\|");
+            if (kinTypeString != null) {
+                KinTypeStringConverter kinTypeStringConverter = new KinTypeStringConverter(RHOMBUS, KinType.getReferenceKinTypes());
+                final String[] kinTypeStringArray = kinTypeString.split("\\|");
 //            kinTypeAllStrings.addAll(Arrays.asList(this.kinTypeString.split("\\|")));
-            final DefaultSorter graphData = new DefaultSorter();
-            final ArrayList<KinTypeStringProvider> arrayList = new ArrayList<>();
-            arrayList.add(new KinTypeStringProvider() {
+                final DefaultSorter graphData = new DefaultSorter();
+                final ArrayList<KinTypeStringProvider> arrayList = new ArrayList<>();
+                arrayList.add(new KinTypeStringProvider() {
 
-                @Override
-                public String[] getCurrentStrings() {
-                    return kinTypeStringArray;
-                }
+                    @Override
+                    public String[] getCurrentStrings() {
+                        return kinTypeStringArray;
+                    }
 
-                @Override
-                public int getTotalLength() {
-                    return kinTypeStringArray.length;
-                }
+                    @Override
+                    public int getTotalLength() {
+                        return kinTypeStringArray.length;
+                    }
 
-                @Override
-                public void highlightKinTypeStrings(ParserHighlight[] parserHighlight, String[] kinTypeStrings) {
-                }
-            });
-            kinTypeStringConverter.readKinTypes(arrayList, graphData);
-            svgDiagram.graphData.setEntitys(graphData.getDataNodes());
-//            svgDiagram.graphData.setEntitys(new EntityData[]{
-//                //                new EntityData(new UniqueIdentifier("a", UniqueIdentifier.IdentifierType.lid)),
-//                //                     new EntityData(new UniqueIdentifier("a", UniqueIdentifier.IdentifierType.lid)),
-//                new EntityData(new UniqueIdentifier(UniqueIdentifier.IdentifierType.lid, kinDocument.getUUID())),
-//                new EntityData(1, new String[]{"one"}, EntityData.SymbolType.circle, true, new EntityDate("1234"), new EntityDate("a date")),
-//                new EntityData(2, new String[]{"two"}, EntityData.SymbolType.triangle, true, new EntityDate("1234"), new EntityDate("a date")),
-//                new EntityData(3, new String[]{"three"}, EntityData.SymbolType.square, true, new EntityDate("1234"), new EntityDate("a date"))
-//            });
+                    @Override
+                    public void highlightKinTypeStrings(ParserHighlight[] parserHighlight, String[] kinTypeStrings) {
+                    }
+                });
+                kinTypeStringConverter.readKinTypes(arrayList, graphData);
+                svgDiagram.graphData.setEntitys(graphData.getDataNodes());
+            } else {
+                final EntityData entityData1 = new EntityData(new UniqueIdentifier(UniqueIdentifier.IdentifierType.tid, kinDocument.getUUID()), new String[]{"one"}, EntityData.SymbolType.square, true, null, null);
+                final EntityData entityData2 = new EntityData(new UniqueIdentifier(UniqueIdentifier.IdentifierType.lid, kinDocument.getUUID()), new String[]{"two"}, EntityData.SymbolType.triangle, true, null, null);
+                final EntityData entityData3 = new EntityData(new UniqueIdentifier(UniqueIdentifier.IdentifierType.lid, kinDocument.getUUID()));
+                final EntityData entityData4 = new EntityData(new UniqueIdentifier(UniqueIdentifier.IdentifierType.lid, kinDocument.getUUID()), new String[]{"one"}, EntityData.SymbolType.circle, true, new EntityDate("1212/12/12"), new EntityDate("2121/21/12"));
+                final EntityData entityData5 = new EntityData(new UniqueIdentifier(UniqueIdentifier.IdentifierType.tid, kinDocument.getUUID()), new String[]{"two"}, EntityData.SymbolType.triangle, true, null, new EntityDate("1250/10/10"));
+                final EntityData entityData6 = new EntityData(new UniqueIdentifier(UniqueIdentifier.IdentifierType.lid, kinDocument.getUUID()), new String[]{"three"}, EntityData.SymbolType.square, true, new EntityDate("1300/12/12"), new EntityDate("1390/05/20"));
+                entityData1.addRelatedNode(entityData6, DataTypes.RelationType.ancestor, "orange", null, null, null);
+                entityData2.addRelatedNode(entityData6, DataTypes.RelationType.ancestor, "black", null, null, null);
+                entityData3.addRelatedNode(entityData2, DataTypes.RelationType.ancestor, "black", null, null, null);
+                entityData5.addRelatedNode(entityData4, DataTypes.RelationType.ancestor, "black", null, null, null);
+                entityData6.addRelatedNode(entityData4, DataTypes.RelationType.ancestor, "black", null, null, null);
+                svgDiagram.graphData.setEntitys(new EntityData[]{
+                    entityData1, entityData2, entityData3, entityData4, entityData5, entityData6});
+            }
             svgUpdateHandler.drawEntities(new KinRectangle(800, 600));
             ((TimedStimulusView) simpleView).addWidget(kinDocument.getHtmlDoc());
             Timer timer = new Timer() {
@@ -137,6 +149,10 @@ public abstract class AbstractKinDiagramPresenter extends AbstractPresenter impl
 
     public void loadKinTypeStringDiagram(final AppEventListner appEventListner, final int postLoadMs, final TimedStimulusListener timedStimulusListener, String diagramName) {
         kinTypeStringDiagram(appEventListner, postLoadMs, timedStimulusListener, loadKinTypeString(diagramName));
+    }
+
+    public void editableKinEntitesDiagram(final AppEventListner appEventListner, final int postLoadMs, final TimedStimulusListener timedStimulusListener, String diagramName) {
+        kinTypeStringDiagram(appEventListner, postLoadMs, timedStimulusListener, null);
     }
 
     public void addKinTypeGui(final AppEventListner appEventListner, final String diagramName) {
