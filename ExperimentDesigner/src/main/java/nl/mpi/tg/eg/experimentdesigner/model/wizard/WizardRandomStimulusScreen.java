@@ -49,6 +49,9 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
     private String stimulusResponseLabelLeft = null;
     private String stimulusResponseLabelRight = null;
     private String stimulusResponseOptions = null;
+    private String freeTextValidationRegex = null;
+    private String freeTextValidationMessage = null;
+    private boolean stimulusFreeText = false;
     private boolean randomiseStimuli = false;
     private String buttonLabelEventTag;
 
@@ -183,6 +186,16 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         this.stimulusResponseOptions = stimulusResponseOptions;
     }
 
+    public boolean isStimulusFreeText() {
+        return stimulusFreeText;
+    }
+
+    public void setStimulusFreeText(boolean stimulusFreeText, String freeTextValidationRegex, String freeTextValidationMessage) {
+        this.stimulusFreeText = stimulusFreeText;
+        this.freeTextValidationRegex = freeTextValidationRegex;
+        this.freeTextValidationMessage = freeTextValidationMessage;
+    }
+
     public boolean isRandomiseStimuli() {
         return randomiseStimuli;
     }
@@ -288,6 +301,11 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
             presenterFeature = imageFeature;
         }
         presenterFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+        if (stimulusFreeText) {
+            final PresenterFeature stimulusFreeTextFeature = new PresenterFeature(FeatureType.stimulusFreeText, freeTextValidationMessage);
+            stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.validationRegex, freeTextValidationRegex);
+            presenterFeature.getPresenterFeatureList().add(stimulusFreeTextFeature);
+        }
         if (stimulusResponseOptions != null) {
             final PresenterFeature ratingFooterButtonFeature = new PresenterFeature(FeatureType.ratingButton, null);
             ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabels, stimulusResponseOptions);

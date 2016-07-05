@@ -77,6 +77,7 @@ public class DefaultExperiments {
         experimentRepository.save(new RdExperiment02().getExperiment());
         experimentRepository.save(new NblExperiment01().getExperiment());
         experimentRepository.save(new HRExperiment01().getExperiment());
+        experimentRepository.save(new KinOathExample().getExperiment());
 
         for (Experiment experiment : experimentRepository.findAll()) {
             eventRepository.save(new PublishEvents(experiment, new Date(), new Date(), PublishEvents.PublishState.published, true, true, true));
@@ -94,14 +95,14 @@ public class DefaultExperiments {
         experiment.getMetadata().add(metadata1);
         experiment.getMetadata().add(metadata2);
         addDobesStimuli(experiment);
-        final PresenterScreen autoMenuPresenter = addAutoMenu(1);
-        experiment.getPresenterScreen().add(autoMenuPresenter);
+        final PresenterScreen autoMenuPresenter = null;//addAutoMenu(1);
+//        experiment.getPresenterScreen().add(autoMenuPresenter);
         experiment.getPresenterScreen().add(addAnnotationTimelinePanel(autoMenuPresenter, 2));
-        experiment.getPresenterScreen().add(addVideosMenu(autoMenuPresenter, 3));
-        experiment.getPresenterScreen().add(addTargetScreen(autoMenuPresenter, 4));
-        experiment.getPresenterScreen().add(addVideoAspen(autoMenuPresenter, 5));
-        experiment.getPresenterScreen().add(addVideoWorksPage(autoMenuPresenter, 6));
-        experiment.getPresenterScreen().add(addVideoFailedPage(autoMenuPresenter, 7));
+//        experiment.getPresenterScreen().add(addVideosMenu(autoMenuPresenter, 3));
+//        experiment.getPresenterScreen().add(addTargetScreen(autoMenuPresenter, 4));
+//        experiment.getPresenterScreen().add(addVideoAspen(autoMenuPresenter, 5));
+//        experiment.getPresenterScreen().add(addVideoWorksPage(autoMenuPresenter, 6));
+//        experiment.getPresenterScreen().add(addVideoFailedPage(autoMenuPresenter, 7));
 //        presenterScreenRepository.save(experiment.getPresenterScreen());
         return experiment;
     }

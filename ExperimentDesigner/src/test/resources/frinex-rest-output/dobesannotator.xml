@@ -5,42 +5,12 @@
         <field controlledMessage="Please enter the device model" controlledRegex=".'{'2,'}'" postName="errordevice" preventServerDuplicates="false" registrationField="Device model"/>
         <field controlledMessage="Please enter a short description of the issue" controlledRegex=".'{'2,'}'" postName="errordescription" preventServerDuplicates="false" registrationField="Please describe the error"/>
     </metadata>
-    <presenter displayOrder="1" menuLabel="Menu" type="menu" self="AutoMenu" title="Auto Menu">
-        <allMenuItems/>
-    </presenter>
-    <presenter back="AutoMenu" displayOrder="2" menuLabel="AnnotationTimelinePanel" type="timeline" self="AnnotationTimelinePanel" title="Annotation Timeline">
+    <presenter displayOrder="2" menuLabel="AnnotationTimelinePanel" type="timeline" self="AnnotationTimelinePanel" title="Annotation Timeline">
         <AnnotationTimelinePanel mp4="http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4" eventTag="annotationtimeline" columnCount="2" maxStimuli="10">
-            <randomGrouping/>
             <stimuli>
                 <tag>videotag</tag>
             </stimuli>
         </AnnotationTimelinePanel>
-    </presenter>
-    <presenter back="AutoMenu" displayOrder="3" menuLabel="Videos" type="text" self="VideosPage" title="Video List">
-        <htmlText featureText="This is a simple video codec testing application."/>
-        <addPadding/>
-        <targetButton featureText="Video Test Page (aspen)" target="VideoTestPageAspen"/>
-        <targetButton featureText="Annotation Timeline Screen" target="AnnotationTimelinePanel"/>
-        <addPadding/>
-        <versionData/>
-    </presenter>
-    <presenter back="AutoMenu" displayOrder="4" menuLabel="Target" type="text" self="target" title="Target Screen">
-        <plainText featureText="A simple page so that there is a screen with the target value of 'target' for testing purposes."/>
-    </presenter>
-    <presenter back="AutoMenu" displayOrder="5" menuLabel="Video Test Page (aspen)" type="timeline" self="VideoTestPageAspen" title="Video Test">
-        <htmlText featureText="http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4"/>
-        <addPadding/>
-        <VideoPanel mp4="http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4" maxHeight="70" percentOfPage="50" poster="" ogg="" webm="" maxWidth="70"/>
-        <targetButton featureText="Video Works" target="VideoWorksPage"/>
-        <targetButton featureText="Video Failed" target="VideoFailedPage"/>
-    </presenter>
-    <presenter back="AutoMenu" displayOrder="6" menuLabel="Video Works Page" type="text" self="VideoWorksPage" title="Video Works">
-        <htmlText featureText="A message indicating that the video works on your device has been sent."/>
-        <targetButton featureText="Videos" target="VideosPage"/>
-    </presenter>
-    <presenter back="AutoMenu" displayOrder="7" menuLabel="Video Failed Page" type="text" self="VideoFailedPage" title="Video Failed">
-        <htmlText featureText="A message indicating that the video fails on your device has been sent."/>
-        <targetButton featureText="Videos" target="VideosPage"/>
     </presenter>
     <stimuli>
         <stimulus identifier="videotag0" imagePath="videotag0.png" label="videotag0" pauseMs="0">

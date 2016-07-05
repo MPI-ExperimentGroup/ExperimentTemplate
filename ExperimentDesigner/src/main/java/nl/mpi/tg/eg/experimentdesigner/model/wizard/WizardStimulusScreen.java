@@ -41,6 +41,7 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
     boolean randomiseStimuli;
     int maxStimuli;
     boolean filePerStimulus;
+    boolean stimulusImageCapture = false;
     String end_of_stimuli;
 
     private WizardScreen endOfStimulisWizardScreen = null;
@@ -79,6 +80,10 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
 
     public void setRandomiseStimuli(boolean randomiseStimuli) {
         this.randomiseStimuli = randomiseStimuli;
+    }
+
+    public void setStimulusImageCapture(boolean stimulusImageCapture) {
+        this.stimulusImageCapture = stimulusImageCapture;
     }
 
     public int getMaxStimuli() {
@@ -142,12 +147,20 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
         presenterFeatureList.add(loadStimuliFeature);
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
         // todo: add more reverter tags as required
-        final PresenterFeature startRecorderFeature = new PresenterFeature(FeatureType.startAudioRecorder, null);
-        startRecorderFeature.addFeatureAttributes(FeatureAttribute.wavFormat, "true");
-        startRecorderFeature.addFeatureAttributes(FeatureAttribute.eventTag, screenLabel);
-        startRecorderFeature.addFeatureAttributes(FeatureAttribute.filePerStimulus, (filePerStimulus) ? "true" : "false");
-        hasMoreStimulusFeature.getPresenterFeatureList().add(startRecorderFeature);
-
+        if (stimulusImageCapture) {
+            final PresenterFeature startRecorderFeature = new PresenterFeature(FeatureType.stimulusImageCapture, null);
+            startRecorderFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
+            startRecorderFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
+            startRecorderFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "80");
+            startRecorderFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+            hasMoreStimulusFeature.getPresenterFeatureList().add(startRecorderFeature);
+        } else {
+            final PresenterFeature startRecorderFeature = new PresenterFeature(FeatureType.startAudioRecorder, null);
+            startRecorderFeature.addFeatureAttributes(FeatureAttribute.wavFormat, "true");
+            startRecorderFeature.addFeatureAttributes(FeatureAttribute.eventTag, screenLabel);
+            startRecorderFeature.addFeatureAttributes(FeatureAttribute.filePerStimulus, (filePerStimulus) ? "true" : "false");
+            hasMoreStimulusFeature.getPresenterFeatureList().add(startRecorderFeature);
+        }
         PresenterFeature previousPresenterFeature = hasMoreStimulusFeature;
         for (StimuliSubAction imageFeatureValues : featureValuesArray) {
             final PresenterFeature lanwisImage = addImageFeature(previousPresenterFeature, imageFeatureValues);

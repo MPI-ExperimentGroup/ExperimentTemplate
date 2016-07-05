@@ -88,6 +88,7 @@ public enum FeatureType {
     onSuccess(true, false, null),
     kinTypeStringDiagram(true, false, new FeatureAttribute[]{msToNext, kintypestring}),
     loadKinTypeStringDiagram(true, false, new FeatureAttribute[]{msToNext, diagramName}),
+    editableKinEntitesDiagram(true, false, new FeatureAttribute[]{msToNext, diagramName}),
     responseCorrect(true, false, new FeatureAttribute[]{msToNext}),
     responseIncorrect(true, false, new FeatureAttribute[]{msToNext}),
     hasMoreStimulus(true, false, null),
