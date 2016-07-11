@@ -145,9 +145,11 @@ public class SynQuiz2 {
         presenterScreenList.add(reportScreen);
         final PresenterScreen weekdaysScreen = createStimulusScreen("Weekdays", menuScreen.getPresenterScreen(), reportScreen, 16);
         presenterScreenList.add(weekdaysScreen);
-        final PresenterScreen numbersScreen = createStimulusScreen("Numbers", menuScreen.getPresenterScreen(), reportScreen, 17);
-        presenterScreenList.add(numbersScreen);
-        final PresenterScreen lettersScreen = createStimulusScreen("Letters", menuScreen.getPresenterScreen(), reportScreen, 18);
+//        final PresenterScreen numbersScreen = createStimulusScreen("Numbers", menuScreen.getPresenterScreen(), reportScreen, 17);
+//        presenterScreenList.add(numbersScreen);
+//        final PresenterScreen lettersScreen = createStimulusScreen("Letters", menuScreen.getPresenterScreen(), reportScreen, 18);
+//        presenterScreenList.add(lettersScreen);
+        final PresenterScreen lettersScreen = createStimulusScreen("LettersNumbers", menuScreen.getPresenterScreen(), reportScreen, 18);
         presenterScreenList.add(lettersScreen);
         presenterScreenList.add(createStimulusScreen("Months", menuScreen.getPresenterScreen(), reportScreen, 19));
         completionScreen.populatePresenterScreen(experiment, false, 21);
@@ -223,12 +225,15 @@ public class SynQuiz2 {
         final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.menuItem, "Weekdays");
         presenterFeature1.addFeatureAttributes(FeatureAttribute.target, "Weekdays");
         presenterScreen.getPresenterFeatureList().add(presenterFeature1);
-        final PresenterFeature presenterFeature2 = new PresenterFeature(FeatureType.menuItem, "Numbers");
-        presenterFeature2.addFeatureAttributes(FeatureAttribute.target, "Numbers");
+        final PresenterFeature presenterFeature2 = new PresenterFeature(FeatureType.menuItem, "Letters and Numbers");
+        presenterFeature2.addFeatureAttributes(FeatureAttribute.target, "LettersNumbers");
         presenterScreen.getPresenterFeatureList().add(presenterFeature2);
-        final PresenterFeature presenterFeature3 = new PresenterFeature(FeatureType.menuItem, "Letters");
-        presenterFeature3.addFeatureAttributes(FeatureAttribute.target, "Letters");
-        presenterScreen.getPresenterFeatureList().add(presenterFeature3);
+//        final PresenterFeature presenterFeature2 = new PresenterFeature(FeatureType.menuItem, "Numbers");
+//        presenterFeature2.addFeatureAttributes(FeatureAttribute.target, "Numbers");
+//        presenterScreen.getPresenterFeatureList().add(presenterFeature2);
+//        final PresenterFeature presenterFeature3 = new PresenterFeature(FeatureType.menuItem, "Letters");
+//        presenterFeature3.addFeatureAttributes(FeatureAttribute.target, "Letters");
+//        presenterScreen.getPresenterFeatureList().add(presenterFeature3);
         final PresenterFeature presenterFeature4 = new PresenterFeature(FeatureType.menuItem, "Months");
         presenterFeature4.addFeatureAttributes(FeatureAttribute.target, "Months");
         presenterScreen.getPresenterFeatureList().add(presenterFeature4);
@@ -243,7 +248,7 @@ public class SynQuiz2 {
 
     final String[] demographicsFields1 = new String[]{
         "DateOfBirth:Date of Birth:[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]:Please enter in the standard format DD/MM/YYYY.",
-//        "Age:Age:[0-9]+:Please enter in number format.",
+        //        "Age:Age:[0-9]+:Please enter in number format.",
         "Gender:Gender:|male|female|other:.",
         "AbsolutePitch:Absolute pitch:true|false:Please enter true or false.",
         "TraumaticBlowToTheHead:Traumatic blow to the head:true|false:Please enter true or false.",
@@ -503,7 +508,7 @@ public class SynQuiz2 {
         insertStimulusGroup(stimuliList, "Weekdays", "Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday");
 //        insertStimulusGroup(stimuliList, "Numbers", "0,1,2,3,4,5,6,7,8,9");
 //        insertStimulusGroup(stimuliList, "Letters", "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z");
-        insertStimulusGroup(stimuliList, "Letters and Numbers", "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,0,1,2,3,4,5,6,7,8,9");
+        insertStimulusGroup(stimuliList, "LettersNumbers", "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,0,1,2,3,4,5,6,7,8,9");
         insertStimulusGroup(stimuliList, "Months", "January,February,March,April,May,June,July,August,September,October,November,December");
         return stimuliList;
     }
