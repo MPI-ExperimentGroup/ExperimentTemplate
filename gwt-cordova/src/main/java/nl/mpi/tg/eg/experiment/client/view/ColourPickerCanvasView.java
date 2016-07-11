@@ -386,6 +386,7 @@ public class ColourPickerCanvasView extends AbstractView {
         final int stimulusSpecificHeight = (length > 3) ? stimulusTextHeight : (int) (stimulusTextHeight * 3.0 / length);
         stimulusPanel.setHeight(stimulusTextHeight * 3 + "px");
         label.getElement().getStyle().setFontSize(stimulusSpecificHeight, Unit.PX);
+        label.getElement().getStyle().setColor("white");
         stimulusPanel.add(label);
     }
 
