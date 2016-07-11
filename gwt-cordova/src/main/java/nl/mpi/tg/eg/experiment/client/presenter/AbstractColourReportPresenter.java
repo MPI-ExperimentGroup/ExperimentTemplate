@@ -88,7 +88,7 @@ public abstract class AbstractColourReportPresenter extends AbstractPresenter im
             submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "ReactionTimeDeviation", stimuliGroup.getPostName(), Double.toString(calculatedScores.getReactionTimeDeviation()), 0);
         }
         final String scoreLog = stringBuilder.toString();
-        submissionService.submitTagValue(userResults.getUserData().getUserId(), "ScoreLog", scoreLog, 0);
+//        submissionService.submitTagValue(userResults.getUserData().getUserId(), "ScoreLog", scoreLog.replaceAll("\t", ","), 0);
 //        ((ReportView) simpleView).addText(messages.reportScreenPostSCTtext());
         if (userResults.getUserData().getBestScore() <= scoreThreshold) {
             belowThreshold.postLoadTimerFired();
