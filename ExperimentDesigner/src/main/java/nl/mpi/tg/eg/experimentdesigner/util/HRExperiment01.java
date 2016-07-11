@@ -90,7 +90,7 @@ public class HRExperiment01 {
 //        list1234Screen.setStimulusResponseLabelRight("zeer waarschijnlijk positief");
         wizardData.addScreen(list1234Screen);
 
-        WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, true,
+        WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, true, true,
                 "Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop.",
                 "Opnieuw beginnen",
                 "Finished",

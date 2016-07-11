@@ -834,7 +834,7 @@ public class Sara01 {
                 + "<br/>"
                 + "Ter bevestiging van je deelname willen we je vragen om de volgende code te sturen naar dorine.vanbelzen@mpi.nl. Pas na ontvangst van deze code, kun je worden uitbetaald.<br/>"
                 + "<br/>"
-                + "Bedankt voor je deelname!", true,
+                + "Bedankt voor je deelname!", true, true,
                 "Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop.",
                 "Opnieuw beginnen",
                 "Finished",

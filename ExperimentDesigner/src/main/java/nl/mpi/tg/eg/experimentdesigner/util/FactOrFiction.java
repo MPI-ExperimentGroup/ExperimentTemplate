@@ -368,8 +368,8 @@ public class FactOrFiction {
         final String retry = "Probeer opnieuw";
         final WizardSubmitDataScreen submitDataScreen = new WizardSubmitDataScreen("SubmitData", could_not_contact_the_server_please_check, retry);
         final String wil_nog_iemand_op_dit_apparaat_deelnemen_ = "Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop.";
-        final WizardCompletionScreen restartScreen = new WizardCompletionScreen(wil_nog_iemand_op_dit_apparaat_deelnemen_, true, null, "Opnieuw beginnen", "Completion", could_not_contact_the_server_please_check, retry);
-        final WizardCompletionScreen registeredScreen = new WizardCompletionScreen("Leuk dat u geïnteresseerd bent. " + wil_nog_iemand_op_dit_apparaat_deelnemen_, true, null, "Opnieuw beginnen", "Registered", could_not_contact_the_server_please_check, retry);
+        final WizardCompletionScreen restartScreen = new WizardCompletionScreen(wil_nog_iemand_op_dit_apparaat_deelnemen_, true, true, null, "Opnieuw beginnen", "Completion", could_not_contact_the_server_please_check, retry);
+        final WizardCompletionScreen registeredScreen = new WizardCompletionScreen("Leuk dat u geïnteresseerd bent. " + wil_nog_iemand_op_dit_apparaat_deelnemen_, true, true, null, "Opnieuw beginnen", "Registered", could_not_contact_the_server_please_check, retry);
         final String nog_een_keer_meedoen = wil_nog_iemand_op_dit_apparaat_deelnemen_; //"Nog een keer meedoen?";
         final WizardEditUserScreen completionScreen = new WizardEditUserScreen("Bedankt", "Bedankt", null, completionScreenText, new String[]{"emaill::^[^@]+@[^@]+$:Geef een geldig e-mailadres."}, "Registreren", nog_een_keer_meedoen, restartScreen, "Opnieuw beginnen", true, could_not_contact_the_server_please_check);
 //        completionScreen.setBackPresenter(restartScreen);

@@ -139,7 +139,7 @@
         <targetButton featureText="Participate!" target="Participant"/>
         <addPadding/>
         <htmlText featureText="For more information about synaesthesia, please see our 'About synaesthesia' page. If you are not sure if you have synaesthesia, and want to find out, try our SynQuiz app or take a quick test at synesthete.org."/>
-        <htmlText featureText="This project is organised and funded by the Language &amp; Genetics Department at the Max Planck Institute for Psycholinguistics in Nijmegen in the Netherlands, directed by Prof. Dr. Simon E. Fisher. The synaesthesia studies are coordinated by Dr. Amanda Tilot and Dr. Sarah Graham. If you have any questions about our research, please contact us at &lt;a href=&quot;#&quot; onclick=&quot;window.open('mailto:synaesthesia@mpi.nl','_system'); return false;&quot;&gt;mailto:synaesthesia@mpi.nl&lt;/a&gt;."/>
+        <htmlText featureText="This project is organised and funded by the Language &amp; Genetics Department at the Max Planck Institute for Psycholinguistics in Nijmegen in the Netherlands, directed by Prof. Dr. Simon E. Fisher. The synaesthesia studies are coordinated by Dr. Amanda Tilot and Dr. Sarah Graham. If you have any questions about our research, please contact us at &lt;a href=&quot;#&quot; onclick=&quot;window.open('mailto:synaesthesia@mpi.nl','_system'); return false;&quot;&gt;synaesthesia@mpi.nl&lt;/a&gt;."/>
     </presenter>
     <presenter back="Introduction" displayOrder="3" menuLabel="Participant" next="Details" type="metadata" self="Participant" title="Participant">
         <htmlText featureText="Please read the &lt;a href=&quot;#&quot; onclick=&quot;window.open('static/synaesthesia_info_sheet_ENGLISH_webversion.pdf','_system'); return false;&quot;&gt;Participant Information Sheet&lt;/a&gt; carefully!"/>
@@ -355,8 +355,7 @@
     </presenter>
     <presenter back="Other" displayOrder="15" menuLabel="Menu" next="Completion" type="menu" self="Menu" title="Menu">
         <menuItem featureText="Weekdays" target="Weekdays"/>
-        <menuItem featureText="Numbers" target="Numbers"/>
-        <menuItem featureText="Letters" target="Letters"/>
+        <menuItem featureText="Letters and Numbers" target="LettersNumbers"/>
         <menuItem featureText="Months" target="Months"/>
     </presenter>
     <presenter back="Menu" displayOrder="16" menuLabel="Weekdays" next="Report" type="colourPicker" self="Weekdays" title="Weekdays">
@@ -369,23 +368,13 @@
             </stimuli>
         </loadAllStimulus>
     </presenter>
-    <presenter back="Menu" displayOrder="17" menuLabel="Numbers" next="Report" type="colourPicker" self="Numbers" title="Numbers">
+    <presenter back="Menu" displayOrder="18" menuLabel="LettersNumbers" next="Report" type="colourPicker" self="LettersNumbers" title="LettersNumbers">
         <helpDialogue featureText="&lt;b&gt;Instructions&lt;/b&gt;\n&lt;p&gt;Select the colour that you associate with the presented character or word \n&lt;ol&gt;\n&lt;li&gt;Select the hue by tapping on the colour bar on the right &lt;/li&gt;&lt;li&gt;Select the shade by tapping on the square on the left &lt;/li&gt;\n&lt;li&gt;When the colour of the preview rectangle matches your association, tap &quot;Submit&quot;&lt;/li&gt;\n&lt;li&gt;If you have no colour association tap &quot;No colour&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, go to test!"/>
-        <loadAllStimulus eventTag="Numbers" randomise="true" repeatCount="3">
+        <loadAllStimulus eventTag="LettersNumbers" randomise="true" repeatCount="3">
             <hasMoreStimulus/>
             <endOfStimulus/>
             <stimuli>
-                <tag>Numbers</tag>
-            </stimuli>
-        </loadAllStimulus>
-    </presenter>
-    <presenter back="Menu" displayOrder="18" menuLabel="Letters" next="Report" type="colourPicker" self="Letters" title="Letters">
-        <helpDialogue featureText="&lt;b&gt;Instructions&lt;/b&gt;\n&lt;p&gt;Select the colour that you associate with the presented character or word \n&lt;ol&gt;\n&lt;li&gt;Select the hue by tapping on the colour bar on the right &lt;/li&gt;&lt;li&gt;Select the shade by tapping on the square on the left &lt;/li&gt;\n&lt;li&gt;When the colour of the preview rectangle matches your association, tap &quot;Submit&quot;&lt;/li&gt;\n&lt;li&gt;If you have no colour association tap &quot;No colour&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, go to test!"/>
-        <loadAllStimulus eventTag="Letters" randomise="true" repeatCount="3">
-            <hasMoreStimulus/>
-            <endOfStimulus/>
-            <stimuli>
-                <tag>Letters</tag>
+                <tag>LettersNumbers</tag>
             </stimuli>
         </loadAllStimulus>
     </presenter>
@@ -412,9 +401,8 @@
     <presenter back="Menu" displayOrder="21" menuLabel="Completion" next="Introduction" type="transmission" self="Completion" title="Completion">
         <sendAllData>
             <onSuccess>
-                <htmlText featureText="Thank you for participating! You may hear from us in the next few weeks to ask if you would like to participate in the genetics part of the study. Your data has been saved, and you can now close your browser. &lt;br&gt;&lt;br&gt;If you have any questions about the study, you can email them to us at &lt;a href=&quot;#&quot; onclick=&quot;window.open('mailto:synaesthesia@mpi.nl','_system'); return false;&quot;&gt;mailto:synaesthesia@mpi.nl&lt;/a&gt;. It will be a year or more before there are results, but when we publish our study it will be posted on our &lt;a href=&quot;#&quot; onclick=&quot;window.open('http://www.mpi.nl/departments/language-and-genetics/projects/decoding-the-genetics-of-synaesthesia/publications','_system'); return false;&quot;&gt;website&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;"/>
+                <htmlText featureText="Thank you for participating! You may hear from us in the next few weeks to ask if you would like to participate in the genetics part of the study. Your data has been saved, and you can now close your browser. &lt;br&gt;&lt;br&gt;If you have any questions about the study, you can email them to us at &lt;a href=&quot;#&quot; onclick=&quot;window.open('mailto:synaesthesia@mpi.nl','_system'); return false;&quot;&gt;synaesthesia@mpi.nl&lt;/a&gt;. It will be a year or more before there are results, but when we publish our study it will be posted on our &lt;a href=&quot;#&quot; onclick=&quot;window.open('http://www.mpi.nl/departments/language-and-genetics/projects/decoding-the-genetics-of-synaesthesia/publications','_system'); return false;&quot;&gt;website&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;"/>
                 <addPadding/>
-                <generateCompletionCode/>
                 <addPadding/>
                 <eraseUsersDataButton featureText="Finish this expriment and start from the begining"/>
             </onSuccess>
@@ -447,112 +435,112 @@
             <tag>Weekdays</tag>
         </stimulus>
         <stimulus identifier="A" label="A" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="B" label="B" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="C" label="C" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="D" label="D" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="E" label="E" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="F" label="F" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="G" label="G" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="H" label="H" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="I" label="I" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="J" label="J" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="K" label="K" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="L" label="L" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="M" label="M" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="N" label="N" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="O" label="O" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="P" label="P" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="Q" label="Q" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="R" label="R" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="S" label="S" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="T" label="T" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="U" label="U" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="V" label="V" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="W" label="W" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="X" label="X" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="Y" label="Y" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="Z" label="Z" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="0" label="0" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="1" label="1" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="2" label="2" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="3" label="3" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="4" label="4" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="5" label="5" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="6" label="6" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="7" label="7" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="8" label="8" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="9" label="9" pauseMs="0">
-            <tag>Letters_and_Numbers</tag>
+            <tag>LettersNumbers</tag>
         </stimulus>
         <stimulus identifier="January" label="January" pauseMs="0">
             <tag>Months</tag>

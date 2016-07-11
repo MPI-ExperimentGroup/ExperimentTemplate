@@ -71,11 +71,11 @@ public class SynQuiz2 {
         final WizardCompletionScreen completionScreen = new WizardCompletionScreen(
                 "Thank you for participating! You may hear from us in the next few weeks to ask if you would like to participate in the genetics part of the study. Your data has been saved, and you can now close your browser. <br><br>"
                 + "If you have any questions about the study, you can email them to us at "
-                + formatLink("mailto:synaesthesia@mpi.nl")
+                + formatLink("synaesthesia@mpi.nl", "mailto:synaesthesia@mpi.nl")
                 + ". It will be a year or more before there are results, but when we publish our study it will be posted on our "
                 + formatLink("website", "http://www.mpi.nl/departments/language-and-genetics/projects/decoding-the-genetics-of-synaesthesia/publications")
                 + ".<br/><br/>",
-                true, null,
+                true, false, null,
                 "Finish this expriment and start from the begining",
                 "Completion",
                 "Could not contact the server, please check your internet connection and try again.", "Retry");
@@ -185,7 +185,7 @@ public class SynQuiz2 {
                 + "If you are not sure if you have synaesthesia, and want to find out, try our SynQuiz app or take a quick test at synesthete.org."));
         presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, "This project is organised and funded by the Language & Genetics Department at the Max Planck Institute for Psycholinguistics in Nijmegen in the Netherlands, directed by Prof. Dr. Simon E. Fisher. "
                 + "The synaesthesia studies are coordinated by Dr. Amanda Tilot and Dr. Sarah Graham. "
-                + "If you have any questions about our research, please contact us at " + formatLink("mailto:synaesthesia@mpi.nl") + "."));
+                + "If you have any questions about our research, please contact us at " + formatLink("synaesthesia@mpi.nl", "mailto:synaesthesia@mpi.nl") + "."));
         return presenterScreen;
     }
 
