@@ -61,6 +61,7 @@ public abstract class AbstractColourReportPresenter extends AbstractPresenter im
         final NumberFormat numberFormat2 = NumberFormat.getFormat("0.00");
 //        final NumberFormat numberFormat3 = NumberFormat.getFormat("0.000");
         final ScoreCalculator scoreCalculator = new ScoreCalculator(userResults);
+
         for (final StimulusResponseGroup stimuliGroup : userResults.getStimulusResponseGroups()) {
             final GroupScoreData calculatedScores = scoreCalculator.calculateScores(stimuliGroup);
             ((ReportView) simpleView).showResults(stimuliGroup, calculatedScores);
@@ -86,7 +87,8 @@ public abstract class AbstractColourReportPresenter extends AbstractPresenter im
             submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "MeanReactionTime", stimuliGroup.getPostName(), Double.toString(calculatedScores.getMeanReactionTime()), 0);
             submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "ReactionTimeDeviation", stimuliGroup.getPostName(), Double.toString(calculatedScores.getReactionTimeDeviation()), 0);
         }
-        //        userResults.getUserData().setScoreLog(stringBuilder.toString());
+        final String scoreLog = stringBuilder.toString();
+        submissionService.submitTagValue(userResults.getUserData().getUserId(), "ScoreLog", scoreLog, 0);
 //        ((ReportView) simpleView).addText(messages.reportScreenPostSCTtext());
         if (userResults.getUserData().getBestScore() <= scoreThreshold) {
             belowThreshold.postLoadTimerFired();
@@ -134,6 +136,6 @@ public abstract class AbstractColourReportPresenter extends AbstractPresenter im
 
 //        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusLabelShown", stimuliGroup.getPostName(), stringBuilder.toString(), duration.elapsedMillis());
             }
-        }, messages.reportDateFormat(), emailAddressMetadataField);
+        }, messages.reportDateFormat(), emailAddressMetadataField, scoreLog);
     }
 }

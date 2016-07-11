@@ -49,7 +49,7 @@ public class RegistrationService {
     private final MetadataFields mateadataFields = GWT.create(MetadataFields.class);
     private final Version version = GWT.create(Version.class);
 
-    public void submitRegistration(UserResults userResults, RegistrationListener registrationListener, final String reportDateFormat) {
+    public void submitRegistration(UserResults userResults, RegistrationListener registrationListener, final String reportDateFormat, final MetadataField emailAddressMetadataField, final String scoreLog) {
         final String registratinoUrl = serviceLocations.registrationUrl();
         final RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, registratinoUrl);
         builder.setHeader("Content-type", "application/x-www-form-urlencoded");
@@ -65,8 +65,8 @@ public class RegistrationService {
             stringBuilder.append("&");
         }
         stringBuilder.append("applicationversion").append("=").append(version.projectVersion()).append("&");
-        String scoreLog = URL.encodeQueryString(userResults.getScoreLog());
-        stringBuilder.append("scorelog").append("=").append(scoreLog).append("&");
+        String scoreLogEncoded = URL.encodeQueryString(scoreLog/*userResults.getScoreLog()*/);
+        stringBuilder.append("scorelog").append("=").append(scoreLogEncoded).append("&");
         String restultsData = URL.encodeQueryString(new ResultsSerialiser() {
             final DateTimeFormat format = DateTimeFormat.getFormat(reportDateFormat);
 
@@ -74,7 +74,7 @@ public class RegistrationService {
             protected String formatDate(Date date) {
                 return format.format(date);
             }
-        }.serialise(userResults, new MetadataFieldProvider().emailAddressMetadataField));
+        }.serialise(userResults, emailAddressMetadataField));
         stringBuilder.append("quiz_results=").append(restultsData);
         try {
             builder.sendRequest(stringBuilder.toString(), geRequestBuilder(builder, registrationListener, registratinoUrl));
