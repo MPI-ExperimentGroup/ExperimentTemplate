@@ -190,7 +190,7 @@
                     <xsl:text>"</xsl:text>                
                     <xsl:value-of select="." />                
                     <xsl:text>_ms"</xsl:text>
-<!--                    <xsl:if test="position() != last()">
+                    <!--                    <xsl:if test="position() != last()">
                         <xsl:text>,</xsl:text>
                     </xsl:if>-->
                 </xsl:for-each>
@@ -276,7 +276,7 @@
                     <xsl:value-of select="." />                
                     <xsl:text>, ms_</xsl:text>                
                     <xsl:value-of select="." />                
-<!--                    <xsl:if test="position() != last()">
+                    <!--                    <xsl:if test="position() != last()">
                         <xsl:text>,&#xa;</xsl:text>
                     </xsl:if>-->
                 </xsl:for-each>
@@ -301,11 +301,12 @@
             </xsl:text>
             <!--&amp;${(sortOrder='a')? 'd' : 'a'}-->
             <xsl:for-each select="experiment/metadata/field">
-                <xsl:text>&lt;th&gt;&lt;a th:attr="href='?sort=</xsl:text>
+                <xsl:text>&lt;th&gt;&lt;a href='?sort=</xsl:text>
                 <xsl:value-of select="@postName" />
-                <xsl:text>'"&gt;</xsl:text>
+                <xsl:text>'&gt;</xsl:text>
                 <xsl:value-of select="@registrationField" />
-                <xsl:text>&lt;/a&gt;&lt;/th&gt;</xsl:text>
+                <xsl:text>&lt;/a&gt;&lt;/th&gt;
+                </xsl:text>
             </xsl:for-each>
             <xsl:text>    
                 &lt;/tr&gt;
@@ -320,7 +321,7 @@
             <xsl:for-each select="experiment/metadata/field">
                 <xsl:text>
                     &lt;td  th:text="${participant.</xsl:text>
-                <xsl:value-of select="@postName" />
+                <xsl:value-of select="replace(@postName,'__','\\_\\_')" />
                 <xsl:text>}"&gt;&lt;/td&gt;</xsl:text>
             </xsl:for-each>
             <xsl:text>    
