@@ -64,7 +64,7 @@ public class SynQuiz2 {
 //done but more elegance needed·         The menu page should have a "Finish" button that submits the data and clears it out for the next user
 //done·         Clicking Finish from the menu page should take people to the 'What's Next' screen (text for that is in document I sent)
 //done    make sure the data is sent to the old web service
-    //todo make sure the new metadata is understood by the old webservice
+    //done make sure the new metadata is understood by the old webservice
     public void create(Experiment experiment, final List<PresenterScreen> presenterScreenList) {
         final PresenterScreen introductionScreen = createIntroductionScreen("Introduction", 1);
         presenterScreenList.add(introductionScreen);
@@ -243,7 +243,7 @@ public class SynQuiz2 {
 
     final String[] demographicsFields1 = new String[]{
         "DateOfBirth:Date of Birth:[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]:Please enter in the standard format DD/MM/YYYY.",
-        "Age:Age:[0-9]+:Please enter in number format.",
+//        "Age:Age:[0-9]+:Please enter in number format.",
         "Gender:Gender:|male|female|other:.",
         "AbsolutePitch:Absolute pitch:true|false:Please enter true or false.",
         "TraumaticBlowToTheHead:Traumatic blow to the head:true|false:Please enter true or false.",
@@ -501,8 +501,9 @@ public class SynQuiz2 {
     public ArrayList<Stimulus> createStimuli() {
         final ArrayList<Stimulus> stimuliList = new ArrayList<>();
         insertStimulusGroup(stimuliList, "Weekdays", "Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday");
-        insertStimulusGroup(stimuliList, "Numbers", "0,1,2,3,4,5,6,7,8,9");
-        insertStimulusGroup(stimuliList, "Letters", "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z");
+//        insertStimulusGroup(stimuliList, "Numbers", "0,1,2,3,4,5,6,7,8,9");
+//        insertStimulusGroup(stimuliList, "Letters", "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z");
+        insertStimulusGroup(stimuliList, "Letters and Numbers", "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,0,1,2,3,4,5,6,7,8,9");
         insertStimulusGroup(stimuliList, "Months", "January,February,March,April,May,June,July,August,September,October,November,December");
         return stimuliList;
     }

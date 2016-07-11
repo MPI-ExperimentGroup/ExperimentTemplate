@@ -117,7 +117,6 @@
         <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="optionCheckBox1" preventServerDuplicates="false" registrationField="I would like to be contacted about participating in other synaesthesia research studies (optional)"/>
         <field controlledMessage="Please agree to continue." controlledRegex="true" postName="mandatoryCheckBox" preventServerDuplicates="false" registrationField="By checking this box I confirm that I have read and understood the Volunteer's Information Sheet and I agree to take part in this study"/>
         <field controlledMessage="Please enter in the standard format DD/MM/YYYY." controlledRegex="[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]" postName="DateOfBirth" preventServerDuplicates="false" registrationField="Date of Birth"/>
-        <field controlledMessage="Please enter in number format." controlledRegex="[0-9]+" postName="Age" preventServerDuplicates="false" registrationField="Age"/>
         <field controlledMessage="." controlledRegex="|male|female|other" postName="Gender" preventServerDuplicates="false" registrationField="Gender"/>
         <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="AbsolutePitch" preventServerDuplicates="false" registrationField="Absolute pitch"/>
         <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="TraumaticBlowToTheHead" preventServerDuplicates="false" registrationField="Traumatic blow to the head"/>
@@ -158,7 +157,6 @@
     </presenter>
     <presenter back="Participant" displayOrder="5" menuLabel="Details" next="Study" type="metadata" self="Details" title="Details">
         <metadataField fieldName="DateOfBirth"/>
-        <metadataField fieldName="Age"/>
         <metadataField fieldName="Gender"/>
         <metadataField fieldName="AbsolutePitch"/>
         <metadataField fieldName="TraumaticBlowToTheHead"/>
@@ -448,113 +446,113 @@
         <stimulus identifier="Sunday" label="Sunday" pauseMs="0">
             <tag>Weekdays</tag>
         </stimulus>
-        <stimulus identifier="0" label="0" pauseMs="0">
-            <tag>Numbers</tag>
-        </stimulus>
-        <stimulus identifier="1" label="1" pauseMs="0">
-            <tag>Numbers</tag>
-        </stimulus>
-        <stimulus identifier="2" label="2" pauseMs="0">
-            <tag>Numbers</tag>
-        </stimulus>
-        <stimulus identifier="3" label="3" pauseMs="0">
-            <tag>Numbers</tag>
-        </stimulus>
-        <stimulus identifier="4" label="4" pauseMs="0">
-            <tag>Numbers</tag>
-        </stimulus>
-        <stimulus identifier="5" label="5" pauseMs="0">
-            <tag>Numbers</tag>
-        </stimulus>
-        <stimulus identifier="6" label="6" pauseMs="0">
-            <tag>Numbers</tag>
-        </stimulus>
-        <stimulus identifier="7" label="7" pauseMs="0">
-            <tag>Numbers</tag>
-        </stimulus>
-        <stimulus identifier="8" label="8" pauseMs="0">
-            <tag>Numbers</tag>
-        </stimulus>
-        <stimulus identifier="9" label="9" pauseMs="0">
-            <tag>Numbers</tag>
-        </stimulus>
         <stimulus identifier="A" label="A" pauseMs="0">
-            <tag>Letters</tag>
+            <tag>Letters_and_Numbers</tag>
         </stimulus>
         <stimulus identifier="B" label="B" pauseMs="0">
-            <tag>Letters</tag>
+            <tag>Letters_and_Numbers</tag>
         </stimulus>
         <stimulus identifier="C" label="C" pauseMs="0">
-            <tag>Letters</tag>
+            <tag>Letters_and_Numbers</tag>
         </stimulus>
         <stimulus identifier="D" label="D" pauseMs="0">
-            <tag>Letters</tag>
+            <tag>Letters_and_Numbers</tag>
         </stimulus>
         <stimulus identifier="E" label="E" pauseMs="0">
-            <tag>Letters</tag>
+            <tag>Letters_and_Numbers</tag>
         </stimulus>
         <stimulus identifier="F" label="F" pauseMs="0">
-            <tag>Letters</tag>
+            <tag>Letters_and_Numbers</tag>
         </stimulus>
         <stimulus identifier="G" label="G" pauseMs="0">
-            <tag>Letters</tag>
+            <tag>Letters_and_Numbers</tag>
         </stimulus>
         <stimulus identifier="H" label="H" pauseMs="0">
-            <tag>Letters</tag>
+            <tag>Letters_and_Numbers</tag>
         </stimulus>
         <stimulus identifier="I" label="I" pauseMs="0">
-            <tag>Letters</tag>
+            <tag>Letters_and_Numbers</tag>
         </stimulus>
         <stimulus identifier="J" label="J" pauseMs="0">
-            <tag>Letters</tag>
+            <tag>Letters_and_Numbers</tag>
         </stimulus>
         <stimulus identifier="K" label="K" pauseMs="0">
-            <tag>Letters</tag>
+            <tag>Letters_and_Numbers</tag>
         </stimulus>
         <stimulus identifier="L" label="L" pauseMs="0">
-            <tag>Letters</tag>
+            <tag>Letters_and_Numbers</tag>
         </stimulus>
         <stimulus identifier="M" label="M" pauseMs="0">
-            <tag>Letters</tag>
+            <tag>Letters_and_Numbers</tag>
         </stimulus>
         <stimulus identifier="N" label="N" pauseMs="0">
-            <tag>Letters</tag>
+            <tag>Letters_and_Numbers</tag>
         </stimulus>
         <stimulus identifier="O" label="O" pauseMs="0">
-            <tag>Letters</tag>
+            <tag>Letters_and_Numbers</tag>
         </stimulus>
         <stimulus identifier="P" label="P" pauseMs="0">
-            <tag>Letters</tag>
+            <tag>Letters_and_Numbers</tag>
         </stimulus>
         <stimulus identifier="Q" label="Q" pauseMs="0">
-            <tag>Letters</tag>
+            <tag>Letters_and_Numbers</tag>
         </stimulus>
         <stimulus identifier="R" label="R" pauseMs="0">
-            <tag>Letters</tag>
+            <tag>Letters_and_Numbers</tag>
         </stimulus>
         <stimulus identifier="S" label="S" pauseMs="0">
-            <tag>Letters</tag>
+            <tag>Letters_and_Numbers</tag>
         </stimulus>
         <stimulus identifier="T" label="T" pauseMs="0">
-            <tag>Letters</tag>
+            <tag>Letters_and_Numbers</tag>
         </stimulus>
         <stimulus identifier="U" label="U" pauseMs="0">
-            <tag>Letters</tag>
+            <tag>Letters_and_Numbers</tag>
         </stimulus>
         <stimulus identifier="V" label="V" pauseMs="0">
-            <tag>Letters</tag>
+            <tag>Letters_and_Numbers</tag>
         </stimulus>
         <stimulus identifier="W" label="W" pauseMs="0">
-            <tag>Letters</tag>
+            <tag>Letters_and_Numbers</tag>
         </stimulus>
         <stimulus identifier="X" label="X" pauseMs="0">
-            <tag>Letters</tag>
+            <tag>Letters_and_Numbers</tag>
         </stimulus>
         <stimulus identifier="Y" label="Y" pauseMs="0">
-            <tag>Letters</tag>
+            <tag>Letters_and_Numbers</tag>
         </stimulus>
         <stimulus identifier="Z" label="Z" pauseMs="0">
-            <tag>Letters</tag>
+            <tag>Letters_and_Numbers</tag>
+        </stimulus>
+        <stimulus identifier="0" label="0" pauseMs="0">
+            <tag>Letters_and_Numbers</tag>
+        </stimulus>
+        <stimulus identifier="1" label="1" pauseMs="0">
+            <tag>Letters_and_Numbers</tag>
+        </stimulus>
+        <stimulus identifier="2" label="2" pauseMs="0">
+            <tag>Letters_and_Numbers</tag>
+        </stimulus>
+        <stimulus identifier="3" label="3" pauseMs="0">
+            <tag>Letters_and_Numbers</tag>
+        </stimulus>
+        <stimulus identifier="4" label="4" pauseMs="0">
+            <tag>Letters_and_Numbers</tag>
+        </stimulus>
+        <stimulus identifier="5" label="5" pauseMs="0">
+            <tag>Letters_and_Numbers</tag>
+        </stimulus>
+        <stimulus identifier="6" label="6" pauseMs="0">
+            <tag>Letters_and_Numbers</tag>
+        </stimulus>
+        <stimulus identifier="7" label="7" pauseMs="0">
+            <tag>Letters_and_Numbers</tag>
+        </stimulus>
+        <stimulus identifier="8" label="8" pauseMs="0">
+            <tag>Letters_and_Numbers</tag>
+        </stimulus>
+        <stimulus identifier="9" label="9" pauseMs="0">
+            <tag>Letters_and_Numbers</tag>
         </stimulus>
         <stimulus identifier="January" label="January" pauseMs="0">
             <tag>Months</tag>
