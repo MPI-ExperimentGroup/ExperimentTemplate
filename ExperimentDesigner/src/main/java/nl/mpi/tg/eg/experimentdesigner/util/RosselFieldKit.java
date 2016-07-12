@@ -42,7 +42,7 @@ public class RosselFieldKit {
         wizardData.setShowMenuBar(true);
         wizardData.setObfuscateScreenNames(false);
 
-        final WizardWelcomeScreen welcomePresenter = new WizardWelcomeScreen("Welcome", "Instructions", "Begin", null, null);
+        final WizardWelcomeScreen welcomePresenter = new WizardWelcomeScreen("Rossel Island FieldKit", "Instructions", "Begin", null, null);
         final WizardExistingUserCheckScreen welcomeMenuPresenter = new WizardExistingUserCheckScreen("Start", "New interview", "Resume interview", "Begin a new interview with a new participant", "Resume an interview with an existing participant");
         final WizardTextScreen instructionsPresenter = new WizardTextScreen("Instructions", "Show the pictures and interact with the screen.", "Begin");
         String[] images = new String[]{
@@ -62,7 +62,7 @@ public class RosselFieldKit {
         pictureTaskScreen.setBackWizardScreen(welcomePresenter);
         editUserPresenter.setNextWizardScreen(pictureTaskScreen);
         welcomeMenuPresenter.setNextWizardScreen(editUserPresenter);
-        welcomeMenuPresenter.setBackWizardScreen(welcomePresenter);
+        welcomeMenuPresenter.setBackWizardScreen(instructionsPresenter);
         instructionsPresenter.setBackWizardScreen(welcomePresenter);
         instructionsPresenter.setNextWizardScreen(welcomeMenuPresenter);
         wizardData.addScreen(welcomePresenter);

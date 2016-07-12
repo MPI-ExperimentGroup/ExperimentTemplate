@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<experiment appNameDisplay="RosselFieldKit" appNameInternal="rosselfieldkit" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="true" textFontSize="17">
+    <metadata>
+        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Nem blong man/woman we i toktok"/>
+    </metadata>
+    <presenter displayOrder="1" menuLabel="Rossel Island FieldKit" type="menu" self="Rossel_Island_FieldKit" title="Rossel Island FieldKit">
+        <menuItem featureText="Instructions" target="Instructions"/>
+        <menuItem featureText="Begin" target="Start"/>
+    </presenter>
+    <presenter back="Instructions" displayOrder="2" menuLabel="Start" next="Edit_User" type="metadata" self="Start" title="Start">
+        <existingUserCheck>
+            <multipleUsers>
+                <plainText featureText="Begin a new interview with a new participant"/>
+                <createUserButton featureText="New interview" target="Edit_User"/>
+                <addPadding/>
+                <plainText featureText="Resume an interview with an existing participant"/>
+                <targetButton featureText="Resume interview" target="SelectUser"/>
+            </multipleUsers>
+            <singleUser>
+                <autoNextPresenter/>
+            </singleUser>
+        </existingUserCheck>
+    </presenter>
+    <presenter back="Rossel_Island_FieldKit" displayOrder="3" menuLabel="Instructions" type="text" self="Instructions" title="Instructions">
+        <htmlText featureText="Show the pictures and interact with the screen."/>
+        <targetButton featureText="Begin" hotKey="SPACE" target="Start"/>
+    </presenter>
+    <presenter back="Rossel_Island_FieldKit" displayOrder="4" menuLabel="Infomesen blong man/woman we i toktok" next="PictureTask" type="metadata" self="Edit_User" title="Infomesen blong man/woman we i toktok">
+        <metadataField fieldName="workerId"/>
+        <saveMetadataButton featureText="Savem infomesen" sendData="false" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+            <onError/>
+            <onSuccess>
+                <autoNextPresenter/>
+            </onSuccess>
+        </saveMetadataButton>
+    </presenter>
+    <presenter back="Rossel_Island_FieldKit" displayOrder="5" menuLabel="Select User" type="metadata" self="SelectUser" title="Select User">
+        <selectUserMenu/>
+    </presenter>
+    <presenter back="Rossel_Island_FieldKit" displayOrder="6" menuLabel="PictureTask" type="stimulus" self="PictureTask" title="PictureTask">
+        <centrePage/>
+        <loadStimulus eventTag="PictureTask" randomise="true" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
+                    <addPadding/>
+                    <ratingButton eventTier="1" ratingLabelRight="" ratingLabels="ja [ z ],nee [ . ]" ratingLabelLeft="">
+                        <nextStimulus eventTag="NextStimulusPictureTask" norepeat="true"/>
+                    </ratingButton>
+                </stimulusImage>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <autoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>PictureTask</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter displayOrder="7" menuLabel="Debug Screen" type="debug" self="DebugScreen" title="Debug Screen">
+        <versionData/>
+        <eraseLocalStorageButton/>
+        <localStorageData/>
+    </presenter>
+    <stimuli>
+        <stimulus identifier="pig" imagePath="pig.png" pauseMs="0">
+            <tag>PictureTask</tag>
+            <tag>pig_png</tag>
+        </stimulus>
+        <stimulus identifier="bat" imagePath="bat.png" pauseMs="0">
+            <tag>PictureTask</tag>
+            <tag>bat_png</tag>
+        </stimulus>
+        <stimulus identifier="fish" imagePath="fish.png" pauseMs="0">
+            <tag>PictureTask</tag>
+            <tag>fish_png</tag>
+        </stimulus>
+        <stimulus identifier="rat" imagePath="rat.png" pauseMs="0">
+            <tag>PictureTask</tag>
+            <tag>rat_png</tag>
+        </stimulus>
+    </stimuli>
+</experiment>
