@@ -521,13 +521,15 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="pause|stimulusImage|stimulusImageCapture|stimulusCodeImage|stimulusCodeAudio|stimulusCodeVideo|stimulusAudio|stimulusPause">
+    <xsl:template match="backgroundImage|pause|stimulusImage|stimulusImageCapture|stimulusCodeImage|stimulusCodeAudio|stimulusCodeVideo|stimulusAudio|stimulusPause">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(</xsl:text>
         <xsl:value-of select="if(@percentOfPage) then concat(@percentOfPage, ', ') else ''" />
         <xsl:value-of select="if(@maxHeight) then concat(@maxHeight, ', ') else ''" />
         <xsl:value-of select="if(@maxWidth) then concat(@maxWidth, ', ') else ''" />
+        <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;, ') else ''" />
+        <xsl:value-of select="if(@animate) then concat(@animate, ', ') else ''" />
         <xsl:value-of select="if(@msToNext) then concat(@msToNext, ', ') else ''" />
         <xsl:value-of select="if(@codeFormat) then concat('&quot;', @codeFormat, '&quot;, ') else ''" />
         <xsl:text>new TimedStimulusListener() {

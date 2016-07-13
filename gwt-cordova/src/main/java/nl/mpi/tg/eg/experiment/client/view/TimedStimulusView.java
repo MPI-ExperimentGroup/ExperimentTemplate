@@ -83,6 +83,28 @@ public class TimedStimulusView extends ComplexView {
         outerPanel.add(image);
     }
 
+    public void addBackgroundImage(final SafeUri imagePath, final int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+//        final Image image = new Image(imagePath);
+        outerPanel.getElement().getStyle().setBackgroundColor("green");
+        outerPanel.getElement().getStyle().setBackgroundImage("url(" + imagePath.asString() + ")");
+        outerPanel.getElement().getStyle().setProperty("backgroundRepeat", "no-repeat");
+        outerPanel.getElement().getStyle().setProperty("backgroundSize", "100% 100%");
+//        image.addLoadHandler(new LoadHandler() {
+//
+//            @Override
+//            public void onLoad(LoadEvent event) {
+//                Timer timer = new Timer() {
+//                    @Override
+//                    public void run() {
+        timedStimulusListener.postLoadTimerFired();
+//                    }
+//                };
+//                timer.schedule(postLoadMs);
+//            }
+//        });
+//        outerPanel.add(image);
+    }
+
     public void addTimedImage(SafeUri imagePath, int percentOfPage, int maxHeight, int maxWidth, final int postLoadMs, final TimedStimulusListener shownStimulusListener, final TimedStimulusListener timedStimulusListener) {
         final Image image = new Image(imagePath);
         addSizeAttributes(image.getElement(), percentOfPage, maxHeight, maxWidth);
@@ -92,6 +114,7 @@ public class TimedStimulusView extends ComplexView {
             public void onLoad(LoadEvent event) {
                 shownStimulusListener.postLoadTimerFired();
                 Timer timer = new Timer() {
+                    @Override
                     public void run() {
                         timedStimulusListener.postLoadTimerFired();
                     }

@@ -324,6 +324,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
+    protected void backgroundImage(final String imageSrc, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+        ((TimedStimulusView) simpleView).addBackgroundImage(UriUtils.fromTrustedString(serviceLocations.staticFilesUrl() + imageSrc), postLoadMs, timedStimulusListener);
+    }
+
     protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
         final Stimulus currentStimulus = stimulusProvider.getCurrentStimulus();
         if (currentStimulus.hasImage()) {
