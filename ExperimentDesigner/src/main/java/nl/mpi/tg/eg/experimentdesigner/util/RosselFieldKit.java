@@ -21,9 +21,9 @@ import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAnimatedStimuliScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardExistingUserCheckScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardRandomStimulusScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardSelectUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardWelcomeScreen;
@@ -42,7 +42,7 @@ public class RosselFieldKit {
         wizardData.setShowMenuBar(true);
         wizardData.setObfuscateScreenNames(false);
 
-        final WizardWelcomeScreen welcomePresenter = new WizardWelcomeScreen("Rossel Island FieldKit", "Instructions", "Begin", null, null);
+        final WizardWelcomeScreen welcomePresenter = new WizardWelcomeScreen("Rossel Island FieldKit", "Welcome", "Instructions", "Begin", null, null);
         final WizardExistingUserCheckScreen welcomeMenuPresenter = new WizardExistingUserCheckScreen("Start", "New interview", "Resume interview", "Begin a new interview with a new participant", "Resume an interview with an existing participant");
         final WizardTextScreen instructionsPresenter = new WizardTextScreen("Instructions", "Show the pictures and interact with the screen.", "Begin");
         String[] images = new String[]{
@@ -51,15 +51,17 @@ public class RosselFieldKit {
             "fish.png",
             "rat.png"
         };
-        final WizardRandomStimulusScreen pictureTaskScreen = new WizardRandomStimulusScreen("PictureTask", images, 1000, true, "ja [ z ],nee [ . ]", "", "");
+        final WizardAnimatedStimuliScreen pictureTaskScreen = new WizardAnimatedStimuliScreen("PictureTask", images, 1000, true, "Next");
         welcomePresenter.setInstructionsScreen(instructionsPresenter);
         welcomePresenter.setProgramWizardScreen(welcomeMenuPresenter);
         final WizardSelectUserScreen wizardSelectUserScreen = new WizardSelectUserScreen();
         wizardSelectUserScreen.setBackWizardScreen(welcomePresenter);
+        wizardSelectUserScreen.setNextWizardScreen(pictureTaskScreen);
         final WizardEditUserScreen editUserPresenter = new WizardEditUserScreen("Infomesen blong man/woman we i toktok", "Edit User", null, null, new String[]{"workerId:Nem blong man/woman we i toktok:.'{'3,'}':Please enter at least three letters."}, "Savem infomesen", null, null, null, false, "Could not contact the server, please check your internet connection and try again.");
         final WizardAboutScreen debugScreenPresenter = new WizardAboutScreen();
         editUserPresenter.setBackWizardScreen(welcomePresenter);
         pictureTaskScreen.setBackWizardScreen(welcomePresenter);
+        pictureTaskScreen.setNextWizardScreen(debugScreenPresenter);
         editUserPresenter.setNextWizardScreen(pictureTaskScreen);
         welcomeMenuPresenter.setNextWizardScreen(editUserPresenter);
         welcomeMenuPresenter.setBackWizardScreen(instructionsPresenter);

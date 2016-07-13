@@ -48,7 +48,7 @@ public class JenaFieldKit {
 //        wizardController.addMetadata(experiment);
 
         final PresenterScreen autoMenuPresenter = null;//wizardController.addAutoMenu(experiment, 12, false);//(Blong programa)
-        final WizardWelcomeScreen welcomePresenter = new WizardWelcomeScreen("Welkam", "Instruksen", "Stat - Go long program nao", null, null);
+        final WizardWelcomeScreen welcomePresenter = new WizardWelcomeScreen("Welkam", "Welkam", "Instruksen", "Stat - Go long program nao", null, null);
 //wizardController.addWelcomeScreen(experiment, autoMenuPresenter, "Welkam", null, 1, "Instruksen", "Stat - Go long program nao", false);
         final WizardExistingUserCheckScreen welcomeMenuPresenter = new WizardExistingUserCheckScreen("Start", "Niu rikording", "Gobak long wan olfala rikoding", "Makem wan niufala rikoding", "Gobak long wan rikoding we yu stat hem finis");
         final WizardTextScreen instructionsPresenter = new WizardTextScreen("Instruksen", "Wetem aplikasen ia yu save makem rikoding blong lanwis blong yu,"

@@ -20,8 +20,12 @@ package nl.mpi.tg.eg.experimentdesigner.rest;
 import java.util.ArrayList;
 import java.util.List;
 import nl.mpi.tg.eg.experimentdesigner.dao.ExperimentRepository;
+import nl.mpi.tg.eg.experimentdesigner.dao.MetadataRepository;
+import nl.mpi.tg.eg.experimentdesigner.dao.PresenterFeatureRepository;
+import nl.mpi.tg.eg.experimentdesigner.dao.PresenterScreenRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PublishEventRepository;
 import nl.mpi.tg.eg.experimentdesigner.model.PublishEvents;
+import nl.mpi.tg.eg.experimentdesigner.util.DefaultExperiments;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,11 +45,23 @@ public class PublishController {
     ExperimentRepository experimentRepository;
     @Autowired
     PublishEventRepository eventRepository;
+    @Autowired
+    PresenterScreenRepository presenterScreenRepository;
+    @Autowired
+    PresenterFeatureRepository presenterFeatureRepository;
+    @Autowired
+    MetadataRepository metadataRepository;
 
     @RequestMapping(value = "/listing", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<PublishEvents>> registerTimeStamp() {
         final ResponseEntity responseEntity;
+
+        if (experimentRepository.count() == 0) {
+            // this insert is intended to only occur on first run with an empty DB to make development builds faster.
+            new DefaultExperiments().insertDefaultExperiment(presenterScreenRepository, presenterFeatureRepository, metadataRepository, experimentRepository, eventRepository);
+        }
+
         List<PublishEvents> experimentList = new ArrayList<>();
 //        final Experiment experiment = new Experiment();
 //        experiment.setAppNameInternal("DobesAnnotator");
