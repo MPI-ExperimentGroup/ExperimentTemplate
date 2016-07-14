@@ -97,31 +97,29 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(stimuliCount));
         presenterFeatureList.add(loadStimuliFeature);
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
-        final PresenterFeature backgroundImageFeature = new PresenterFeature(FeatureType.backgroundImage, null);
-        backgroundImageFeature.addFeatureAttributes(FeatureAttribute.src, backgroundImage);
-        backgroundImageFeature.addFeatureAttributes(FeatureAttribute.msToNext, "1");
-        hasMoreStimulusFeature.getPresenterFeatureList().add(backgroundImageFeature);
-        final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
-        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
-        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
-        imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
-        imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(stimulusMsDelay));
-        imageFeature.addFeatureAttributes(FeatureAttribute.animate, "bounce");
-        backgroundImageFeature.getPresenterFeatureList().add(imageFeature);
-        final PresenterFeature presenterFeature;
+        // show stimulus a
+        final PresenterFeature imageFeature1 = addStimulusImage(hasMoreStimulusFeature, 80, false, false);
+        PresenterFeature nextButtonFeature1 = getNextButtonFeature();
+        imageFeature1.getPresenterFeatureList().add(nextButtonFeature1);
+        // show small stimulus on background
+        final PresenterFeature imageFeature2 = addStimulusImage(nextButtonFeature1, 30, true, true);
+        PresenterFeature nextButtonFeature2 = getNextButtonFeature();
+        imageFeature2.getPresenterFeatureList().add(nextButtonFeature2);
+//        nextButtonFeature1.getPresenterFeatureList().add(imageFeature2);
+        // show stimulus b
+        final PresenterFeature imageFeature3 = addStimulusImage(nextButtonFeature2, 80, false, false);
+        PresenterFeature nextButtonFeature3 = getNextButtonFeature();
+        imageFeature3.getPresenterFeatureList().add(nextButtonFeature3);
+//        nextButtonFeature2.getPresenterFeatureList().add(imageFeature3);
+        // show small stimulus a & b on background
+        final PresenterFeature imageFeature4 = addStimulusImage(nextButtonFeature3, 30, true, true);
 
-        presenterFeature = imageFeature;
-        presenterFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-
-        final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionButton, buttonLabelEventTag);
-        nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, buttonLabelEventTag);
-        nextButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
+        PresenterFeature nextButtonFeature4 = getNextButtonFeature();
+        imageFeature4.getPresenterFeatureList().add(nextButtonFeature4);
         final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
         nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
         nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + screenTitle);
-        nextButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
-        presenterFeature.getPresenterFeatureList().add(nextButtonFeature);
-
+        nextButtonFeature4.getPresenterFeatureList().add(nextStimulusFeature);
         loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
 
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
@@ -130,5 +128,33 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
         experiment.getPresenterScreen().add(presenterScreen);
         return presenterScreen;
+    }
+
+    private PresenterFeature getNextButtonFeature() {
+        final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionButton, buttonLabelEventTag);
+        nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, buttonLabelEventTag);
+        nextButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
+        return nextButtonFeature;
+    }
+
+    private PresenterFeature addStimulusImage(final PresenterFeature hasMoreStimulusFeature, final int stimulusSize, final boolean animate, final boolean background) {
+        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+        final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
+        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, Integer.toString(stimulusSize));
+        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, Integer.toString(stimulusSize));
+        imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
+        imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(stimulusMsDelay));
+        imageFeature.addFeatureAttributes(FeatureAttribute.animate, (animate) ? "bounce" : "none");
+        if (background) {
+            final PresenterFeature backgroundImageFeature = new PresenterFeature(FeatureType.backgroundImage, null);
+            backgroundImageFeature.addFeatureAttributes(FeatureAttribute.src, backgroundImage);
+            backgroundImageFeature.addFeatureAttributes(FeatureAttribute.msToNext, "1");
+            hasMoreStimulusFeature.getPresenterFeatureList().add(backgroundImageFeature);
+            backgroundImageFeature.getPresenterFeatureList().add(imageFeature);
+        } else {
+            hasMoreStimulusFeature.getPresenterFeatureList().add(imageFeature);
+        }
+        imageFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+        return imageFeature;
     }
 }

@@ -37,6 +37,7 @@
     <presenter back="Welcome" displayOrder="5" menuLabel="Menu" type="menu" self="Menu" title="Menu">
         <menuItem featureText="PictureTask" target="PictureTask"/>
         <menuItem featureText="MPI Stimuli" target="MPI_STIMULIScreen"/>
+        <menuItem featureText="Debug Screen" target="DebugScreen"/>
     </presenter>
     <presenter back="Welcome" displayOrder="6" menuLabel="Select User" next="Menu" type="metadata" self="SelectUser" title="Select User">
         <selectUserMenu/>
@@ -71,14 +72,35 @@
         <centrePage/>
         <loadStimulus eventTag="PictureTask" randomise="true" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <backgroundImage msToNext="1" src="background.png">
-                    <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="bounce" maxWidth="80">
-                        <addPadding/>
-                        <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
-                            <nextStimulus eventTag="nextStimulusPictureTask" norepeat="true"/>
-                        </actionButton>
-                    </stimulusImage>
-                </backgroundImage>
+                <clearPage/>
+                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="none" maxWidth="80">
+                    <addPadding/>
+                    <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
+                        <clearPage/>
+                        <backgroundImage msToNext="1" src="background.png">
+                            <stimulusImage msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" maxWidth="30">
+                                <addPadding/>
+                                <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
+                                    <clearPage/>
+                                    <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="none" maxWidth="80">
+                                        <addPadding/>
+                                        <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
+                                            <clearPage/>
+                                            <backgroundImage msToNext="1" src="background.png">
+                                                <stimulusImage msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" maxWidth="30">
+                                                    <addPadding/>
+                                                    <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
+                                                        <nextStimulus eventTag="nextStimulusPictureTask" norepeat="true"/>
+                                                    </actionButton>
+                                                </stimulusImage>
+                                            </backgroundImage>
+                                        </actionButton>
+                                    </stimulusImage>
+                                </actionButton>
+                            </stimulusImage>
+                        </backgroundImage>
+                    </actionButton>
+                </stimulusImage>
             </hasMoreStimulus>
             <endOfStimulus>
                 <autoNextPresenter/>
@@ -98,21 +120,21 @@
         <stimulus identifier="MPI_STIMULI" imagePath="MPI_STIMULI" label="MPI_STIMULI" pauseMs="0">
             <tag>MPI_STIMULI</tag>
         </stimulus>
-        <stimulus identifier="pig" imagePath="pig.png" pauseMs="0">
+        <stimulus identifier="1_pig" imagePath="1_pig.png" pauseMs="0">
+            <tag>1_pig_png</tag>
             <tag>PictureTask</tag>
-            <tag>pig_png</tag>
         </stimulus>
-        <stimulus identifier="bat" imagePath="bat.png" pauseMs="0">
+        <stimulus identifier="2_bat" imagePath="2_bat.png" pauseMs="0">
+            <tag>2_bat_png</tag>
             <tag>PictureTask</tag>
-            <tag>bat_png</tag>
         </stimulus>
-        <stimulus identifier="fish" imagePath="fish.png" pauseMs="0">
+        <stimulus identifier="2_fish" imagePath="2_fish.png" pauseMs="0">
+            <tag>2_fish_png</tag>
             <tag>PictureTask</tag>
-            <tag>fish_png</tag>
         </stimulus>
-        <stimulus identifier="rat" imagePath="rat.png" pauseMs="0">
+        <stimulus identifier="1_rat" imagePath="1_rat.png" pauseMs="0">
+            <tag>1_rat_png</tag>
             <tag>PictureTask</tag>
-            <tag>rat_png</tag>
         </stimulus>
     </stimuli>
 </experiment>
