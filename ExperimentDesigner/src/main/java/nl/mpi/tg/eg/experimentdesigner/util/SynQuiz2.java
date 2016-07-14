@@ -479,12 +479,12 @@ public class SynQuiz2 {
 //        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "true");
 //        presenterFeatureList.add(loadStimuliFeature);
         final PresenterFeature aboveThreshold = new PresenterFeature(FeatureType.aboveThreshold, null);
-        aboveThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "above threshold"));
+//        aboveThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "above threshold"));
 //        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
 //        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
         showColourReport.getPresenterFeatureList().add(aboveThreshold);
         final PresenterFeature belowThreshold = new PresenterFeature(FeatureType.belowThreshold, null);
-        belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "below threshold"));
+//        belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "below threshold"));
 //        final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.targetButton, "Menu");
 //        menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, "AutoMenu");
 //        endOfStimulusFeature.getPresenterFeatureList().add(menuButtonFeature);
