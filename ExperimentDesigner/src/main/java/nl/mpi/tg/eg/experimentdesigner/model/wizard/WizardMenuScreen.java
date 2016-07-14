@@ -17,7 +17,9 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
+import java.util.ArrayList;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
+import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
@@ -29,6 +31,8 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
  */
 public class WizardMenuScreen extends AbstractWizardScreen {
 
+    final private ArrayList<AbstractWizardScreen> targetScreens = new ArrayList<>();
+
     public WizardMenuScreen() {
         super("Menu", "Menu", "Menu");
     }
@@ -37,11 +41,23 @@ public class WizardMenuScreen extends AbstractWizardScreen {
         super(screenTitle, menuLabel, screenTag);
     }
 
+    public void addTargetScreen(final AbstractWizardScreen targetScreen) {
+        targetScreens.add(targetScreen);
+    }
+
     @Override
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder); 
+        super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
         presenterScreen.setPresenterType(PresenterType.menu);
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMenuItems, null));
+        if (targetScreens.isEmpty()) {
+            presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMenuItems, null));
+        } else {
+            for (AbstractWizardScreen targetScreen : targetScreens) {
+                final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.menuItem, targetScreen.getMenuLabel());
+                presenterFeature1.addFeatureAttributes(FeatureAttribute.target, targetScreen.getScreenTag());
+                presenterScreen.getPresenterFeatureList().add(presenterFeature1);
+            }
+        }
         experiment.getPresenterScreen().add(presenterScreen);
         return presenterScreen;
     }

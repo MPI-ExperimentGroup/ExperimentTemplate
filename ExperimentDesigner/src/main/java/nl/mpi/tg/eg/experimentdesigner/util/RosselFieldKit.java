@@ -19,12 +19,15 @@ package nl.mpi.tg.eg.experimentdesigner.util;
 
 import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
+import nl.mpi.tg.eg.experimentdesigner.model.StimuliSubAction;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAnimatedStimuliScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardExistingUserCheckScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMenuScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardSelectUserScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardStimulusScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardWelcomeScreen;
 
@@ -45,33 +48,57 @@ public class RosselFieldKit {
         final WizardWelcomeScreen welcomePresenter = new WizardWelcomeScreen("Rossel Island FieldKit", "Welcome", "Instructions", "Begin", null, null);
         final WizardExistingUserCheckScreen welcomeMenuPresenter = new WizardExistingUserCheckScreen("Start", "New interview", "Resume interview", "Begin a new interview with a new participant", "Resume an interview with an existing participant");
         final WizardTextScreen instructionsPresenter = new WizardTextScreen("Instructions", "Show the pictures and interact with the screen.", "Begin");
+
+        final WizardMenuScreen menuScreen = new WizardMenuScreen("Menu", "Menu", "Menu");
+        menuScreen.setBackWizardScreen(welcomePresenter);
         String[] images = new String[]{
-            "pig.png",
-            "bat.png",
-            "fish.png",
-            "rat.png"
+            "1_pig.png",
+            "2_bat.png",
+            "2_fish.png",
+            "1_rat.png"
         };
-        final WizardAnimatedStimuliScreen pictureTaskScreen = new WizardAnimatedStimuliScreen("PictureTask", images, 1000, true, "Next");
+        final WizardAnimatedStimuliScreen pictureTaskScreen = new WizardAnimatedStimuliScreen("PictureTask", images, 1000, true, "Next", "background.png");
         welcomePresenter.setInstructionsScreen(instructionsPresenter);
         welcomePresenter.setProgramWizardScreen(welcomeMenuPresenter);
         final WizardSelectUserScreen wizardSelectUserScreen = new WizardSelectUserScreen();
         wizardSelectUserScreen.setBackWizardScreen(welcomePresenter);
-        wizardSelectUserScreen.setNextWizardScreen(pictureTaskScreen);
+        wizardSelectUserScreen.setNextWizardScreen(menuScreen);
         final WizardEditUserScreen editUserPresenter = new WizardEditUserScreen("Infomesen blong man/woman we i toktok", "Edit User", null, null, new String[]{"workerId:Nem blong man/woman we i toktok:.'{'3,'}':Please enter at least three letters."}, "Savem infomesen", null, null, null, false, "Could not contact the server, please check your internet connection and try again.");
         final WizardAboutScreen debugScreenPresenter = new WizardAboutScreen();
+
+        final WizardStimulusScreen wizardStimulusScreen = new WizardStimulusScreen();
+        wizardStimulusScreen.setScreenTitle("MPI Stimuli");
+        wizardStimulusScreen.setMenuLabel("MPI Stimuli");
+        wizardStimulusScreen.setScreenLabel("MPI Stimuli");
+        wizardStimulusScreen.setScreenTag("MPI_STIMULIScreen");
+//        experiment, welcomePresenter, "cutbreak", welcomePresenter, new String[]{"cutbreak"}, grammaticalityValuesArray, true, 1000, false, "end_of_stimuli", 15, obfuscateScreenNames
+        wizardStimulusScreen.setStimulusTagArray(new String[]{"MPI_STIMULI"});
+        wizardStimulusScreen.setFeatureValuesArray(new StimuliSubAction[]{new StimuliSubAction("80", "the informant talks/says whatever s/he wants", "next")});
+        wizardStimulusScreen.setMaxStimuli(1000);
+        wizardStimulusScreen.setRandomiseStimuli(true);
+        wizardStimulusScreen.setFilePerStimulus(false);
+        wizardStimulusScreen.setEnd_of_stimuli("Complete");
+
         editUserPresenter.setBackWizardScreen(welcomePresenter);
-        pictureTaskScreen.setBackWizardScreen(welcomePresenter);
-        pictureTaskScreen.setNextWizardScreen(debugScreenPresenter);
-        editUserPresenter.setNextWizardScreen(pictureTaskScreen);
+        pictureTaskScreen.setBackWizardScreen(menuScreen);
+        pictureTaskScreen.setNextWizardScreen(menuScreen);
+        editUserPresenter.setNextWizardScreen(menuScreen);
         welcomeMenuPresenter.setNextWizardScreen(editUserPresenter);
         welcomeMenuPresenter.setBackWizardScreen(instructionsPresenter);
         instructionsPresenter.setBackWizardScreen(welcomePresenter);
         instructionsPresenter.setNextWizardScreen(welcomeMenuPresenter);
+        wizardStimulusScreen.setBackWizardScreen(menuScreen);
+        wizardStimulusScreen.setEndOfStimulisWizardScreen(menuScreen);
+        menuScreen.addTargetScreen(pictureTaskScreen);
+        menuScreen.addTargetScreen(wizardStimulusScreen);
+        menuScreen.addTargetScreen(debugScreenPresenter);
         wizardData.addScreen(welcomePresenter);
         wizardData.addScreen(welcomeMenuPresenter);
         wizardData.addScreen(instructionsPresenter);
         wizardData.addScreen(editUserPresenter);
+        wizardData.addScreen(menuScreen);
         wizardData.addScreen(wizardSelectUserScreen);
+        wizardData.addScreen(wizardStimulusScreen);
         wizardData.addScreen(pictureTaskScreen);
         wizardData.addScreen(debugScreenPresenter);
         return wizardData;

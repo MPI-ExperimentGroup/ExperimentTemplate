@@ -368,7 +368,7 @@
             </stimuli>
         </loadAllStimulus>
     </presenter>
-    <presenter back="Menu" displayOrder="18" menuLabel="LettersNumbers" next="Report" type="colourPicker" self="LettersNumbers" title="LettersNumbers">
+    <presenter back="Menu" displayOrder="18" menuLabel="Letters and Numbers" next="Report" type="colourPicker" self="LettersNumbers" title="LettersNumbers">
         <helpDialogue featureText="&lt;b&gt;Instructions&lt;/b&gt;\n&lt;p&gt;Select the colour that you associate with the presented character or word \n&lt;ol&gt;\n&lt;li&gt;Select the hue by tapping on the colour bar on the right &lt;/li&gt;&lt;li&gt;Select the shade by tapping on the square on the left &lt;/li&gt;\n&lt;li&gt;When the colour of the preview rectangle matches your association, tap &quot;Submit&quot;&lt;/li&gt;\n&lt;li&gt;If you have no colour association tap &quot;No colour&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, go to test!"/>
         <loadAllStimulus eventTag="LettersNumbers" randomise="true" repeatCount="3">
             <hasMoreStimulus/>
@@ -390,12 +390,8 @@
     </presenter>
     <presenter back="Menu" displayOrder="20" menuLabel="Report" next="Menu" type="colourReport" self="Report" title="Report">
         <showColourReport scoreThreshold="1">
-            <aboveThreshold>
-                <plainText featureText="above threshold"/>
-            </aboveThreshold>
-            <belowThreshold>
-                <plainText featureText="below threshold"/>
-            </belowThreshold>
+            <aboveThreshold/>
+            <belowThreshold/>
         </showColourReport>
     </presenter>
     <presenter back="Menu" displayOrder="21" menuLabel="Completion" next="Introduction" type="transmission" self="Completion" title="Completion">

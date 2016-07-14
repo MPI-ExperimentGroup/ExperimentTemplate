@@ -3,7 +3,7 @@
     <metadata>
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Nem blong man/woman we i toktok"/>
     </metadata>
-    <presenter displayOrder="1" menuLabel="Start" type="menu" self="Start" title="Rossel Island FieldKit">
+    <presenter displayOrder="1" menuLabel="Welcome" type="menu" self="Welcome" title="Rossel Island FieldKit">
         <menuItem featureText="Instructions" target="Instructions"/>
         <menuItem featureText="Begin" target="Start"/>
     </presenter>
@@ -21,11 +21,11 @@
             </singleUser>
         </existingUserCheck>
     </presenter>
-    <presenter back="Start" displayOrder="3" menuLabel="Instructions" type="text" self="Instructions" title="Instructions">
+    <presenter back="Welcome" displayOrder="3" menuLabel="Instructions" type="text" self="Instructions" title="Instructions">
         <htmlText featureText="Show the pictures and interact with the screen."/>
         <targetButton featureText="Begin" hotKey="SPACE" target="Start"/>
     </presenter>
-    <presenter back="Start" displayOrder="4" menuLabel="Infomesen blong man/woman we i toktok" next="PictureTask" type="metadata" self="Edit_User" title="Infomesen blong man/woman we i toktok">
+    <presenter back="Welcome" displayOrder="4" menuLabel="Infomesen blong man/woman we i toktok" next="Menu" type="metadata" self="Edit_User" title="Infomesen blong man/woman we i toktok">
         <metadataField fieldName="workerId"/>
         <saveMetadataButton featureText="Savem infomesen" sendData="false" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
             <onError/>
@@ -34,19 +34,51 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Start" displayOrder="5" menuLabel="Select User" type="metadata" self="SelectUser" title="Select User">
+    <presenter back="Welcome" displayOrder="5" menuLabel="Menu" type="menu" self="Menu" title="Menu">
+        <menuItem featureText="PictureTask" target="PictureTask"/>
+        <menuItem featureText="MPI Stimuli" target="MPI_STIMULIScreen"/>
+    </presenter>
+    <presenter back="Welcome" displayOrder="6" menuLabel="Select User" next="Menu" type="metadata" self="SelectUser" title="Select User">
         <selectUserMenu/>
     </presenter>
-    <presenter back="Start" displayOrder="6" menuLabel="PictureTask" type="stimulus" self="PictureTask" title="PictureTask">
+    <presenter back="Menu" displayOrder="7" menuLabel="MPI Stimuli" type="stimulus" self="MPI_STIMULIScreen" title="MPI Stimuli">
+        <loadSdCardStimulus eventTag="MPI Stimuli" randomise="true" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <startAudioRecorder eventTag="MPI Stimuli" wavFormat="true" filePerStimulus="false"/>
+                <startAudioRecorderTag eventTier="1"/>
+                <centrePage/>
+                <stimulusLabel/>
+                <showStimulusProgress/>
+                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                    <plainText featureText="the informant talks/says whatever s/he wants"/>
+                    <actionButton featureText="next">
+                        <endAudioRecorderTag eventTier="1" eventTag="the informant talks/says whatever s/he wants"/>
+                        <clearPage/>
+                        <nextStimulus eventTag="nextImage" norepeat="true"/>
+                    </actionButton>
+                </stimulusImage>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <plainText featureText="Complete"/>
+                <targetButton featureText="Menu" target="Menu"/>
+            </endOfStimulus>
+            <stimuli>
+                <tag>MPI_STIMULI</tag>
+            </stimuli>
+        </loadSdCardStimulus>
+    </presenter>
+    <presenter back="Menu" displayOrder="8" menuLabel="PictureTask" next="Menu" type="stimulus" self="PictureTask" title="PictureTask">
         <centrePage/>
         <loadStimulus eventTag="PictureTask" randomise="true" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
-                    <addPadding/>
-                    <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
-                        <nextStimulus eventTag="nextStimulusPictureTask" norepeat="true"/>
-                    </actionButton>
-                </stimulusImage>
+                <backgroundImage msToNext="1" src="background.png">
+                    <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="bounce" maxWidth="80">
+                        <addPadding/>
+                        <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
+                            <nextStimulus eventTag="nextStimulusPictureTask" norepeat="true"/>
+                        </actionButton>
+                    </stimulusImage>
+                </backgroundImage>
             </hasMoreStimulus>
             <endOfStimulus>
                 <autoNextPresenter/>
@@ -57,12 +89,15 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="7" menuLabel="Debug Screen" type="debug" self="DebugScreen" title="Debug Screen">
+    <presenter displayOrder="9" menuLabel="Debug Screen" type="debug" self="DebugScreen" title="Debug Screen">
         <versionData/>
         <eraseLocalStorageButton/>
         <localStorageData/>
     </presenter>
     <stimuli>
+        <stimulus identifier="MPI_STIMULI" imagePath="MPI_STIMULI" label="MPI_STIMULI" pauseMs="0">
+            <tag>MPI_STIMULI</tag>
+        </stimulus>
         <stimulus identifier="pig" imagePath="pig.png" pauseMs="0">
             <tag>PictureTask</tag>
             <tag>pig_png</tag>

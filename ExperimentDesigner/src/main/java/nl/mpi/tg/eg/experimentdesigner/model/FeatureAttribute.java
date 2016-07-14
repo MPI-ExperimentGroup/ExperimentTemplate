@@ -65,6 +65,7 @@ public enum FeatureAttribute {
     imageWidth,
     alternativeChoice,
     msToNext,
+    animate,
     maxStimuli,
     condition0Tag,
     condition1Tag,

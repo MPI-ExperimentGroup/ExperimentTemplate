@@ -39,7 +39,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.AbstractWizardScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMenuScreen;
 
 /**
  * @since Jan 18, 2016 11:20:47 AM (creation date)
@@ -109,8 +109,8 @@ public class SynQuiz2 {
         wizardEditUserScreen.setSendData(true);
         wizardEditUserScreen.setOn_Error_Text("Could not contact the server, please check your internet connection and try again.");
 
-        final WizardScreen menuScreen = createMenuScreen("Menu", null, completionScreen.getPresenterScreen(), 15);
-        presenterScreenList.add(menuScreen.getPresenterScreen());
+        final WizardMenuScreen menuScreen = new WizardMenuScreen("Menu", "Menu", "Menu");
+        menuScreen.setNextWizardScreen(completionScreen);
         completionScreen.setBackWizardScreen(menuScreen);
         completionScreen.setNextWizardScreen(new AbstractWizardScreen() {
             @Override
@@ -143,15 +143,65 @@ public class SynQuiz2 {
         menuScreen.getPresenterScreen().setBackPresenter(menuBackPresenter);
         final PresenterScreen reportScreen = createReportScreen("Report", menuScreen.getPresenterScreen(), menuScreen.getPresenterScreen(), 20);
         presenterScreenList.add(reportScreen);
-        final PresenterScreen weekdaysScreen = createStimulusScreen("Weekdays", menuScreen.getPresenterScreen(), reportScreen, 16);
+        final PresenterScreen weekdaysScreen = createStimulusScreen("Weekdays", "Weekdays", menuScreen.getPresenterScreen(), reportScreen, 16);
         presenterScreenList.add(weekdaysScreen);
 //        final PresenterScreen numbersScreen = createStimulusScreen("Numbers", menuScreen.getPresenterScreen(), reportScreen, 17);
 //        presenterScreenList.add(numbersScreen);
 //        final PresenterScreen lettersScreen = createStimulusScreen("Letters", menuScreen.getPresenterScreen(), reportScreen, 18);
 //        presenterScreenList.add(lettersScreen);
-        final PresenterScreen lettersScreen = createStimulusScreen("LettersNumbers", menuScreen.getPresenterScreen(), reportScreen, 18);
+        final PresenterScreen lettersScreen = createStimulusScreen("LettersNumbers", "Letters and Numbers", menuScreen.getPresenterScreen(), reportScreen, 18);
         presenterScreenList.add(lettersScreen);
-        presenterScreenList.add(createStimulusScreen("Months", menuScreen.getPresenterScreen(), reportScreen, 19));
+        final PresenterScreen monthsScreen = createStimulusScreen("Months", "Months", menuScreen.getPresenterScreen(), reportScreen, 19);
+        presenterScreenList.add(monthsScreen);
+        menuScreen.addTargetScreen(new AbstractWizardScreen() {
+            @Override
+            public PresenterScreen getPresenterScreen() {
+                return weekdaysScreen;
+            }
+
+            @Override
+            public String getMenuLabel() {
+                return weekdaysScreen.getMenuLabel();
+            }
+
+            @Override
+            public String getScreenTag() {
+                return weekdaysScreen.getSelfPresenterTag();
+            }
+        });
+        menuScreen.addTargetScreen(new AbstractWizardScreen() {
+            @Override
+            public PresenterScreen getPresenterScreen() {
+                return lettersScreen;
+            }
+
+            @Override
+            public String getMenuLabel() {
+                return lettersScreen.getMenuLabel();
+            }
+
+            @Override
+            public String getScreenTag() {
+                return lettersScreen.getSelfPresenterTag();
+            }
+        });
+        menuScreen.addTargetScreen(new AbstractWizardScreen() {
+            @Override
+            public PresenterScreen getPresenterScreen() {
+                return monthsScreen;
+            }
+
+            @Override
+            public String getMenuLabel() {
+                return monthsScreen.getMenuLabel();
+            }
+
+            @Override
+            public String getScreenTag() {
+                return monthsScreen.getSelfPresenterTag();
+            }
+        });
+        menuScreen.populatePresenterScreen(experiment, false, 15);
         completionScreen.populatePresenterScreen(experiment, false, 21);
         wizardEditUserScreen.populatePresenterScreen(experiment, false, 3);
         demographicsScreen1.populatePresenterScreen(experiment, false, 5);
@@ -220,32 +270,6 @@ public class SynQuiz2 {
 //    }
 // todo: show complete on test that have been done like in SynQuiz1
 // todo: add finish button on the test menu screen which submits all data and leads to a restart(erase) all
-    private WizardScreen createMenuScreen(String screenName, final PresenterScreen backScreen, final PresenterScreen completionScreen, long displayOrder) {
-        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backScreen, screenName, completionScreen, PresenterType.menu, displayOrder);
-        final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.menuItem, "Weekdays");
-        presenterFeature1.addFeatureAttributes(FeatureAttribute.target, "Weekdays");
-        presenterScreen.getPresenterFeatureList().add(presenterFeature1);
-        final PresenterFeature presenterFeature2 = new PresenterFeature(FeatureType.menuItem, "Letters and Numbers");
-        presenterFeature2.addFeatureAttributes(FeatureAttribute.target, "LettersNumbers");
-        presenterScreen.getPresenterFeatureList().add(presenterFeature2);
-//        final PresenterFeature presenterFeature2 = new PresenterFeature(FeatureType.menuItem, "Numbers");
-//        presenterFeature2.addFeatureAttributes(FeatureAttribute.target, "Numbers");
-//        presenterScreen.getPresenterFeatureList().add(presenterFeature2);
-//        final PresenterFeature presenterFeature3 = new PresenterFeature(FeatureType.menuItem, "Letters");
-//        presenterFeature3.addFeatureAttributes(FeatureAttribute.target, "Letters");
-//        presenterScreen.getPresenterFeatureList().add(presenterFeature3);
-        final PresenterFeature presenterFeature4 = new PresenterFeature(FeatureType.menuItem, "Months");
-        presenterFeature4.addFeatureAttributes(FeatureAttribute.target, "Months");
-        presenterScreen.getPresenterFeatureList().add(presenterFeature4);
-//        completionScreen
-        return new AbstractWizardScreen() {
-            @Override
-            public PresenterScreen getPresenterScreen() {
-                return presenterScreen;
-            }
-        };
-    }
-
     final String[] demographicsFields1 = new String[]{
         "DateOfBirth:Date of Birth:[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]:Please enter in the standard format DD/MM/YYYY.",
         //        "Age:Age:[0-9]+:Please enter in number format.",
@@ -444,8 +468,8 @@ public class SynQuiz2 {
         return presenterScreen;
     }
 
-    private PresenterScreen createStimulusScreen(String screenName, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder) {
-        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, screenName, nextPresenter, PresenterType.colourPicker, displayOrder);
+    private PresenterScreen createStimulusScreen(String screenName, String menuLabel, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder) {
+        final PresenterScreen presenterScreen = new PresenterScreen(screenName, menuLabel, backPresenter, screenName, nextPresenter, PresenterType.colourPicker, displayOrder);
         final PresenterFeature helpDialogue = new PresenterFeature(FeatureType.helpDialogue, "<b>Instructions</b>\\n<p>Select the colour that you associate with the presented character or word \\n<ol>\\n<li>Select the hue by tapping on the colour bar on the right </li><li>Select the shade by tapping on the square on the left </li>\\n<li>When the colour of the preview rectangle matches your association, tap \"Submit\"</li>\\n<li>If you have no colour association tap \"No colour\"</li>\\n</ol>\\n</p>");
         helpDialogue.addFeatureAttributes(FeatureAttribute.closeButtonLabel, "OK, go to test!");
         presenterScreen.getPresenterFeatureList().add(helpDialogue);

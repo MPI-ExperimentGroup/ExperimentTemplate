@@ -42,12 +42,13 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
     private boolean randomiseStimuli = false;
     private int stimuliCount = 1;
     private String buttonLabelEventTag;
+    private String backgroundImage;
 
     public WizardAnimatedStimuliScreen() {
         super("AnimatedStimuli", "AnimatedStimuli", "AnimatedStimuli");
     }
 
-    public WizardAnimatedStimuliScreen(String screenName, String[] screenTextArray, int maxStimuli, final boolean randomiseStimuli, final String buttonLabelEventTag) {
+    public WizardAnimatedStimuliScreen(String screenName, String[] screenTextArray, int maxStimuli, final boolean randomiseStimuli, final String buttonLabelEventTag, final String backgroundImage) {
         super(screenName, screenName, screenName);
         this.screenTitle = screenName;
         this.stimuliSet = screenTextArray;
@@ -56,6 +57,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
         this.stimuliCount = maxStimuli;
         this.randomiseStimuli = randomiseStimuli;
         this.buttonLabelEventTag = buttonLabelEventTag;
+        this.backgroundImage = backgroundImage;
     }
     private static final String BASE_FILE_REGEX = "\\.[a-zA-Z34]+$";
 
@@ -95,13 +97,17 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(stimuliCount));
         presenterFeatureList.add(loadStimuliFeature);
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
+        final PresenterFeature backgroundImageFeature = new PresenterFeature(FeatureType.backgroundImage, null);
+        backgroundImageFeature.addFeatureAttributes(FeatureAttribute.src, backgroundImage);
+        backgroundImageFeature.addFeatureAttributes(FeatureAttribute.msToNext, "1");
+        hasMoreStimulusFeature.getPresenterFeatureList().add(backgroundImageFeature);
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
-
-        hasMoreStimulusFeature.getPresenterFeatureList().add(imageFeature);
         imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
         imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
         imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
         imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(stimulusMsDelay));
+        imageFeature.addFeatureAttributes(FeatureAttribute.animate, "bounce");
+        backgroundImageFeature.getPresenterFeatureList().add(imageFeature);
         final PresenterFeature presenterFeature;
 
         presenterFeature = imageFeature;
