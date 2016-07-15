@@ -76,17 +76,13 @@ public class WellspringsSamoanFieldKit {
 //        final PresenterScreen bowpedStimulusScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, vanuatuScreen, new String[]{"bowped"}, featureValuesArray, true, 1000, true, 9, false);
 //        final PresenterScreen bodiesStimulusScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, bowpedStimulusScreen, new String[]{"bodies"}, featureValuesArray, true, 1000, true, 10, false);
         final WizardAudioRecorderMetadataScreen metadataScreen = new WizardAudioRecorderMetadataScreen(new String[]{
-            "I stap rikod nao. Man o woman we i toktok bai i talem nem blong hem.",
-            "Bai i talem nem blong lanwis wea it toktok long hem.",
-            "Bai i talem nem blong ples wea i stap nao.",
-            "Bai i talem nem blong ples wea i bon long hem.",
-            "Bai i talem wanem yea i bon."
+            "the full name of the interviewer, date and place of the interview",
+            "the name of the person interviewed â€“ their real name, and/or preferred name, and title",
+            "age and gender of interviewee"
         }, "Neks", "Finis olgeta");
         metadataScreen.setBackWizardScreen(welcomePresenter);
         metadataScreen.setNextWizardScreen(wizardStimulusScreen);
-        WizardAgreementScreen wizardTextScreen = new WizardAgreementScreen("Konsen", "(Blong man/woman we i makem rikoding)<br><br>"
-                + "Mi undastan se wetem aplikasen ia mi makem wan rikoding; mo mi undastan se rikoding ia bai i stap long intanet bambai ol man mo ol woman long evri kantri i save harem rikoding ia wea mi stap makem nao.<br><br>",
-                "Prestem ples hea sapos yu agri.");
+        WizardAgreementScreen wizardTextScreen = new WizardAgreementScreen("Consent", "This is an interview for Hedvig's research project and that it will be recorded and stored at ANU, and possible for anyone in our research to listen to. Do you agree?", "Agree");
 
         final WizardSelectUserScreen wizardSelectUserScreen = new WizardSelectUserScreen();
         wizardSelectUserScreen.setBackWizardScreen(welcomePresenter);
