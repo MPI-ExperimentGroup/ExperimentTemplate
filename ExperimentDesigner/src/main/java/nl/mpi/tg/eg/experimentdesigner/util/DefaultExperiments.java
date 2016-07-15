@@ -79,6 +79,7 @@ public class DefaultExperiments {
         experimentRepository.save(new HRExperiment01().getExperiment());
         experimentRepository.save(new KinOathExample().getExperiment());
         experimentRepository.save(new RosselFieldKit().getExperiment());
+        experimentRepository.save(new WellspringsSamoanFieldKit().getExperiment());
 
         for (Experiment experiment : experimentRepository.findAll()) {
             eventRepository.save(new PublishEvents(experiment, new Date(), new Date(), PublishEvents.PublishState.published, true, true, true));
