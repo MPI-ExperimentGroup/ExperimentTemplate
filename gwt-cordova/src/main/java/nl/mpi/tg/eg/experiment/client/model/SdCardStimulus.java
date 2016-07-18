@@ -28,22 +28,34 @@ public class SdCardStimulus implements Stimulus {
 
     final private String uniqueId;
     final private String stimulusBasePath;
+    private String stimulusImagePath;
     final private String label;
     final private String code;
     final private int pauseMs;
-    final private boolean isAudio;
-    final private boolean isVideo;
-    final private boolean isImage;
+    private boolean isAudio;
+    private boolean isVideo;
 
-    public SdCardStimulus(String uniqueId, String stimulusBasePath, String label, String code, int pauseMs, boolean isAudio, boolean isVideo, boolean image) {
+    public SdCardStimulus(String uniqueId, String stimulusBasePath, String label, String code, int pauseMs, boolean isAudio, boolean isVideo, String stimulusImagePath) {
         this.uniqueId = uniqueId;
         this.stimulusBasePath = stimulusBasePath;
+        this.stimulusImagePath = stimulusImagePath;
         this.label = label;
         this.code = code;
         this.pauseMs = pauseMs;
         this.isAudio = isAudio;
         this.isVideo = isVideo;
-        this.isImage = image;
+    }
+
+    public void addImage(String stimulusImagePath) {
+        this.stimulusImagePath = stimulusImagePath;
+    }
+
+    public void addAudio() {
+        this.isAudio = true;
+    }
+
+    public void addVideo() {
+        this.isVideo = true;
     }
 
     @Override
@@ -73,7 +85,7 @@ public class SdCardStimulus implements Stimulus {
 
     @Override
     public String getImage() {
-        return isImage ? stimulusBasePath : null;
+        return stimulusImagePath;
     }
 
     @Override
@@ -83,7 +95,7 @@ public class SdCardStimulus implements Stimulus {
 
     @Override
     public boolean hasImage() {
-        return isImage;
+        return stimulusImagePath != null;
     }
 
     @Override

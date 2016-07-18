@@ -79,6 +79,7 @@ public class SdCardStimuliTest {
         for (String stimulusPath : testData) {
             instance.insertStimulus(stimulusPath, stimulusPath.substring(stimulusPath.lastIndexOf("/") + 1));
         }
+        assertEquals(29, stimuliList.size());
         for (Stimulus stimulus : stimuliList) {
             System.out.println("image " + stimulus.getImage());
             System.out.println("label " + stimulus.getLabel());
