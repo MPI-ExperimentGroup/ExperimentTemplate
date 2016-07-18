@@ -73,6 +73,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     private TimedStimulusListener endOfStimulusListener;
     private ArrayList<StimulusFreeText> stimulusFreeTextList = new ArrayList<StimulusFreeText>();
 
+    protected enum AnimateTypes {
+        bounce, none
+    }
+
     public AbstractStimulusPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage) {
         super(widgetTag, new TimedStimulusView(audioPlayer));
         duration = new Duration();
@@ -320,7 +324,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     timedStimulusListener.postLoadTimerFired();
                 }
             };
-            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(sdCardImageCapture.getCapturedPath()), percentOfPage, maxHeight, maxWidth, postLoadMs, shownStimulusListener, timedStimulusListener);
+            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(sdCardImageCapture.getCapturedPath()), percentOfPage, maxHeight, maxWidth, null, postLoadMs, shownStimulusListener, timedStimulusListener);
         }
     }
 
@@ -328,7 +332,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addBackgroundImage(UriUtils.fromTrustedString(serviceLocations.staticFilesUrl() + imageSrc), postLoadMs, timedStimulusListener);
     }
 
-    protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+//    protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+//        stimulusImage(percentOfPage, maxHeight, maxWidth, AnimateTypes.bounce, postLoadMs, timedStimulusListener);
+//    }
+
+    protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
         final Stimulus currentStimulus = stimulusProvider.getCurrentStimulus();
         if (currentStimulus.hasImage()) {
             final String image = currentStimulus.getImage();
@@ -340,7 +348,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 }
             };
 //            submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusImage", image, duration.elapsedMillis());
-            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(image), percentOfPage, maxHeight, maxWidth, postLoadMs, shownStimulusListener, timedStimulusListener);
+            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(image), percentOfPage, maxHeight, maxWidth, (animateType.equals(AnimateTypes.bounce)) ? "bounceAnimation" : null, postLoadMs, shownStimulusListener, timedStimulusListener);
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
         } else if (currentStimulus.hasAudio()) {
             String mp3 = currentStimulus.getAudio() + ".mp3";
@@ -391,7 +399,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusCodeImageShown", uniqueId, formattedCode, duration.elapsedMillis());
             }
         };
-        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString(serviceLocations.staticFilesUrl() + formattedCode), percentOfPage, maxHeight, maxWidth, postLoadMs, shownStimulusListener, timedStimulusListener);
+        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString(serviceLocations.staticFilesUrl() + formattedCode), percentOfPage, maxHeight, maxWidth, null, postLoadMs, shownStimulusListener, timedStimulusListener);
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
     }
 

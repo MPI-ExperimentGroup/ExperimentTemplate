@@ -85,10 +85,13 @@ public class TimedStimulusView extends ComplexView {
 
     public void addBackgroundImage(final SafeUri imagePath, final int postLoadMs, final TimedStimulusListener timedStimulusListener) {
 //        final Image image = new Image(imagePath);
-        outerPanel.getElement().getStyle().setBackgroundColor("green");
-        outerPanel.getElement().getStyle().setBackgroundImage("url(" + imagePath.asString() + ")");
-        outerPanel.getElement().getStyle().setProperty("backgroundRepeat", "no-repeat");
-        outerPanel.getElement().getStyle().setProperty("backgroundSize", "100% 100%");
+//            this.getElement().getStyle().setBackgroundColor("green");
+        this.getElement().getStyle().setBackgroundImage("url(" + imagePath.asString() + ")");
+        this.getElement().getStyle().setProperty("backgroundRepeat", "no-repeat");
+//            this.getElement().getStyle().setProperty("backgroundSize", "100% 100%");
+        this.getElement().getStyle().setProperty("backgroundSize", "cover");
+        this.getElement().getStyle().setProperty("backgroundRepeat", "no-repeat");
+        this.getElement().getStyle().setProperty("backgroundPosition", "50% 50%");
 //        image.addLoadHandler(new LoadHandler() {
 //
 //            @Override
@@ -105,8 +108,17 @@ public class TimedStimulusView extends ComplexView {
 //        outerPanel.add(image);
     }
 
-    public void addTimedImage(SafeUri imagePath, int percentOfPage, int maxHeight, int maxWidth, final int postLoadMs, final TimedStimulusListener shownStimulusListener, final TimedStimulusListener timedStimulusListener) {
+    @Override
+    public void clearPage() {
+        this.getElement().getStyle().setBackgroundImage(null);
+        super.clearPage();
+    }
+
+    public void addTimedImage(SafeUri imagePath, int percentOfPage, int maxHeight, int maxWidth, final String animateStyle, final int postLoadMs, final TimedStimulusListener shownStimulusListener, final TimedStimulusListener timedStimulusListener) {
         final Image image = new Image(imagePath);
+        if (animateStyle != null) {
+            image.addStyleName(animateStyle);
+        }
         addSizeAttributes(image.getElement(), percentOfPage, maxHeight, maxWidth);
         image.addLoadHandler(new LoadHandler() {
 

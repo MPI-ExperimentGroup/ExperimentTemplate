@@ -529,7 +529,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@maxHeight) then concat(@maxHeight, ', ') else ''" />
         <xsl:value-of select="if(@maxWidth) then concat(@maxWidth, ', ') else ''" />
         <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;, ') else ''" />
-        <xsl:value-of select="if(@animate) then concat(@animate, ', ') else ''" />
+        <xsl:value-of select="if(@animate) then concat('AnimateTypes.', @animate, ', ') else ''" />
         <xsl:value-of select="if(@msToNext) then concat(@msToNext, ', ') else ''" />
         <xsl:value-of select="if(@codeFormat) then concat('&quot;', @codeFormat, '&quot;, ') else ''" />
         <xsl:text>new TimedStimulusListener() {

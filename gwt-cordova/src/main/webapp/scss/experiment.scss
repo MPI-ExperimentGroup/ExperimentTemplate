@@ -548,3 +548,16 @@ table#screenExample td {
     background: $primaryColour1;
     color: $primaryColour4;
 }
+
+.bounceAnimation {
+    /*position: relative;*/
+    position: fixed;
+    top: 35%;
+    -webkit-animation: bouncekeyframes 2s 1;
+    -webkit-animation-timing-function: cubic-bezier(0.835, 1.555, 0.695, 0.675);
+}
+
+@-webkit-keyframes bouncekeyframes {
+    from {top: -50%;}
+    to {top: 35%;}
+}
