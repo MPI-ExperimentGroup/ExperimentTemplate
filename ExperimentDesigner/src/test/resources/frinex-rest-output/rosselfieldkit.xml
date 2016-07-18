@@ -72,37 +72,55 @@
         <centrePage/>
         <loadStimulus eventTag="PictureTask" randomise="true" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
+                <startAudioRecorder eventTag="PictureTask" wavFormat="true" filePerStimulus="false"/>
                 <clearPage/>
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="none" maxWidth="80">
                     <addPadding/>
                     <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
+                        <endAudioRecorderTag eventTier="1" eventTag=""/>
                         <clearPage/>
                         <backgroundImage msToNext="1" src="background.png">
                             <stimulusImage msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" maxWidth="30">
                                 <addPadding/>
+                                <stimulusAudio msToNext="0"/>
+                                <actionButton featureText="Play Sound">
+                                    <stimulusAudio msToNext="0"/>
+                                </actionButton>
                                 <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
+                                    <endAudioRecorderTag eventTier="2" eventTag=""/>
                                     <clearPage/>
                                     <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="none" maxWidth="80">
                                         <addPadding/>
                                         <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
+                                            <endAudioRecorderTag eventTier="3" eventTag=""/>
                                             <clearPage/>
                                             <backgroundImage msToNext="1" src="background.png">
                                                 <stimulusImage msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" maxWidth="30">
                                                     <addPadding/>
+                                                    <stimulusAudio msToNext="0"/>
+                                                    <actionButton featureText="Play Sound">
+                                                        <stimulusAudio msToNext="0"/>
+                                                    </actionButton>
                                                     <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
+                                                        <endAudioRecorderTag eventTier="4" eventTag=""/>
                                                         <nextStimulus eventTag="nextStimulusPictureTask" norepeat="true"/>
                                                     </actionButton>
+                                                    <startAudioRecorderTag eventTier="4"/>
                                                 </stimulusImage>
                                             </backgroundImage>
                                         </actionButton>
+                                        <startAudioRecorderTag eventTier="3"/>
                                     </stimulusImage>
                                 </actionButton>
+                                <startAudioRecorderTag eventTier="2"/>
                             </stimulusImage>
                         </backgroundImage>
                     </actionButton>
+                    <startAudioRecorderTag eventTier="1"/>
                 </stimulusImage>
             </hasMoreStimulus>
             <endOfStimulus>
+                <stopAudioRecorder/>
                 <autoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
@@ -120,19 +138,23 @@
         <stimulus identifier="MPI_STIMULI" imagePath="MPI_STIMULI" label="MPI_STIMULI" pauseMs="0">
             <tag>MPI_STIMULI</tag>
         </stimulus>
-        <stimulus identifier="1_pig" imagePath="1_pig.png" pauseMs="0">
+        <stimulus audioPath="1_pig" identifier="1_pig" imagePath="1_pig.png" pauseMs="0">
+            <tag>1_pig_mp3</tag>
             <tag>1_pig_png</tag>
             <tag>PictureTask</tag>
         </stimulus>
-        <stimulus identifier="2_bat" imagePath="2_bat.png" pauseMs="0">
+        <stimulus audioPath="2_bat" identifier="2_bat" imagePath="2_bat.png" pauseMs="0">
+            <tag>2_bat_mp3</tag>
             <tag>2_bat_png</tag>
             <tag>PictureTask</tag>
         </stimulus>
-        <stimulus identifier="2_fish" imagePath="2_fish.png" pauseMs="0">
+        <stimulus audioPath="2_fish" identifier="2_fish" imagePath="2_fish.png" pauseMs="0">
+            <tag>2_fish_mp3</tag>
             <tag>2_fish_png</tag>
             <tag>PictureTask</tag>
         </stimulus>
-        <stimulus identifier="1_rat" imagePath="1_rat.png" pauseMs="0">
+        <stimulus audioPath="1_rat" identifier="1_rat" imagePath="1_rat.png" pauseMs="0">
+            <tag>1_rat_mp3</tag>
             <tag>1_rat_png</tag>
             <tag>PictureTask</tag>
         </stimulus>

@@ -52,10 +52,15 @@ public class RosselFieldKit {
         final WizardMenuScreen menuScreen = new WizardMenuScreen("Menu", "Menu", "Menu");
         menuScreen.setBackWizardScreen(welcomePresenter);
         String[] images = new String[]{
-            "1_pig.png",
-            "2_bat.png",
-            "2_fish.png",
-            "1_rat.png"
+            "1_pig.png:1_pig.mp3",
+            "2_bat.png:2_bat.mp3",
+            "2_fish.png:2_fish.mp3",
+            "1_rat.png:1_rat.mp3",
+            
+//            "ffmpeg -i 1_pig.wav 1_pig.mp3",
+//            "ffmpeg -i 2_bat.wav 2_bat.mp3",
+//            "ffmpeg -i 2_fish.wav 2_fish.mp3",
+//            "ffmpeg -i 1_rat.wav 1_rat.mp3"
         };
         final WizardAnimatedStimuliScreen pictureTaskScreen = new WizardAnimatedStimuliScreen("PictureTask", images, 1000, true, "Next", "background.png");
         welcomePresenter.setInstructionsScreen(instructionsPresenter);
