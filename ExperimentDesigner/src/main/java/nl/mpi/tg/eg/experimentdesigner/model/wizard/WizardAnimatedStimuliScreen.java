@@ -43,12 +43,13 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
     private int stimuliCount = 1;
     private String buttonLabelEventTag;
     private String backgroundImage;
+    private boolean sdCardStimuli;
 
     public WizardAnimatedStimuliScreen() {
         super("AnimatedStimuli", "AnimatedStimuli", "AnimatedStimuli");
     }
 
-    public WizardAnimatedStimuliScreen(String screenName, String[] screenTextArray, int maxStimuli, final boolean randomiseStimuli, final String buttonLabelEventTag, final String backgroundImage) {
+    public WizardAnimatedStimuliScreen(String screenName, String[] screenTextArray, boolean sdCardStimuli, int maxStimuli, final boolean randomiseStimuli, final String buttonLabelEventTag, final String backgroundImage) {
         super(screenName, screenName, screenName);
         this.screenTitle = screenName;
         this.stimuliSet = screenTextArray;
@@ -58,6 +59,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
         this.randomiseStimuli = randomiseStimuli;
         this.buttonLabelEventTag = buttonLabelEventTag;
         this.backgroundImage = backgroundImage;
+        this.sdCardStimuli = sdCardStimuli;
     }
     private static final String BASE_FILE_REGEX = "\\.[a-zA-Z34]+$";
 
@@ -69,10 +71,10 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
                 final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{screenTitle}));
                 final Stimulus stimulus;
                 tagSet.addAll(Arrays.asList(stimulusLine.replaceAll(":", "/").split("/")));
-                final String[] splitLine = stimulusLine.split(":");
-                final String audioPath = splitLine[1];
-                final String imagePath = splitLine[0];
-                stimulus = new Stimulus(imagePath.replace(".png", ""), audioPath.replace(".mp3", ""), null, imagePath, null, null, 0, tagSet, null);
+//                final String[] splitLine = stimulusLine.split(":");
+//                final String audioPath = splitLine[1];
+//                final String imagePath = splitLine[0];
+                stimulus = new Stimulus(stimulusLine.replace(".png", ""), stimulusLine.replace(".png", ""), null, stimulusLine, null, null, 0, tagSet, null);
                 stimuliList.add(stimulus);
             }
         }
@@ -82,7 +84,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
         if (centreScreen) {
             presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
         }
-        final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadStimulus, null);
+        final PresenterFeature loadStimuliFeature = new PresenterFeature((!sdCardStimuli) ? FeatureType.loadStimulus : FeatureType.loadSdCardStimulus, null);
         loadStimuliFeature.addStimulusTag(screenTitle);
         final RandomGrouping randomGrouping = new RandomGrouping();
         if (stimuliRandomTags != null) {

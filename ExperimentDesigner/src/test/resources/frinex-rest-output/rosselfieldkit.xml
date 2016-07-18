@@ -36,6 +36,7 @@
     </presenter>
     <presenter back="Welcome" displayOrder="5" menuLabel="Menu" type="menu" self="Menu" title="Menu">
         <menuItem featureText="PictureTask" target="PictureTask"/>
+        <menuItem featureText="SDCardPictureTask" target="SDCardPictureTask"/>
         <menuItem featureText="MPI Stimuli" target="MPI_STIMULIScreen"/>
         <menuItem featureText="Debug Screen" target="DebugScreen"/>
     </presenter>
@@ -129,7 +130,67 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="9" menuLabel="Debug Screen" type="debug" self="DebugScreen" title="Debug Screen">
+    <presenter back="Menu" displayOrder="9" menuLabel="SDCardPictureTask" next="Menu" type="stimulus" self="SDCardPictureTask" title="SDCardPictureTask">
+        <centrePage/>
+        <loadSdCardStimulus eventTag="SDCardPictureTask" randomise="true" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <startAudioRecorder eventTag="SDCardPictureTask" wavFormat="true" filePerStimulus="false"/>
+                <clearPage/>
+                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="none" maxWidth="80">
+                    <addPadding/>
+                    <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
+                        <endAudioRecorderTag eventTier="1" eventTag=""/>
+                        <clearPage/>
+                        <backgroundImage msToNext="1" src="file:///storage/emulated/0/MPI_STIMULI/background.png">
+                            <stimulusImage msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" maxWidth="30">
+                                <addPadding/>
+                                <stimulusAudio msToNext="0"/>
+                                <actionButton featureText="Play Sound">
+                                    <stimulusAudio msToNext="0"/>
+                                </actionButton>
+                                <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
+                                    <endAudioRecorderTag eventTier="2" eventTag=""/>
+                                    <clearPage/>
+                                    <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="none" maxWidth="80">
+                                        <addPadding/>
+                                        <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
+                                            <endAudioRecorderTag eventTier="3" eventTag=""/>
+                                            <clearPage/>
+                                            <backgroundImage msToNext="1" src="file:///storage/emulated/0/MPI_STIMULI/background.png">
+                                                <stimulusImage msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" maxWidth="30">
+                                                    <addPadding/>
+                                                    <stimulusAudio msToNext="0"/>
+                                                    <actionButton featureText="Play Sound">
+                                                        <stimulusAudio msToNext="0"/>
+                                                    </actionButton>
+                                                    <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
+                                                        <endAudioRecorderTag eventTier="4" eventTag=""/>
+                                                        <nextStimulus eventTag="nextStimulusSDCardPictureTask" norepeat="true"/>
+                                                    </actionButton>
+                                                    <startAudioRecorderTag eventTier="4"/>
+                                                </stimulusImage>
+                                            </backgroundImage>
+                                        </actionButton>
+                                        <startAudioRecorderTag eventTier="3"/>
+                                    </stimulusImage>
+                                </actionButton>
+                                <startAudioRecorderTag eventTier="2"/>
+                            </stimulusImage>
+                        </backgroundImage>
+                    </actionButton>
+                    <startAudioRecorderTag eventTier="1"/>
+                </stimulusImage>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <stopAudioRecorder/>
+                <autoNextPresenter/>
+            </endOfStimulus>
+            <stimuli>
+                <tag>SDCardPictureTask</tag>
+            </stimuli>
+        </loadSdCardStimulus>
+    </presenter>
+    <presenter displayOrder="10" menuLabel="Debug Screen" type="debug" self="DebugScreen" title="Debug Screen">
         <versionData/>
         <eraseLocalStorageButton/>
         <localStorageData/>
@@ -139,24 +200,24 @@
             <tag>MPI_STIMULI</tag>
         </stimulus>
         <stimulus audioPath="1_pig" identifier="1_pig" imagePath="1_pig.png" pauseMs="0">
-            <tag>1_pig_mp3</tag>
             <tag>1_pig_png</tag>
             <tag>PictureTask</tag>
         </stimulus>
         <stimulus audioPath="2_bat" identifier="2_bat" imagePath="2_bat.png" pauseMs="0">
-            <tag>2_bat_mp3</tag>
             <tag>2_bat_png</tag>
             <tag>PictureTask</tag>
         </stimulus>
         <stimulus audioPath="2_fish" identifier="2_fish" imagePath="2_fish.png" pauseMs="0">
-            <tag>2_fish_mp3</tag>
             <tag>2_fish_png</tag>
             <tag>PictureTask</tag>
         </stimulus>
         <stimulus audioPath="1_rat" identifier="1_rat" imagePath="1_rat.png" pauseMs="0">
-            <tag>1_rat_mp3</tag>
             <tag>1_rat_png</tag>
             <tag>PictureTask</tag>
+        </stimulus>
+        <stimulus audioPath="AnimatedPictures" identifier="AnimatedPictures" imagePath="AnimatedPictures" pauseMs="0">
+            <tag>AnimatedPictures</tag>
+            <tag>SDCardPictureTask</tag>
         </stimulus>
     </stimuli>
 </experiment>
