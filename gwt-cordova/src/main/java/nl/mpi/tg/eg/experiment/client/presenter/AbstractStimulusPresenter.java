@@ -753,6 +753,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     @Override
     public void savePresenterState() {
+        ((TimedStimulusView) simpleView).stopAudio();
         super.savePresenterState();
         stopAudioRecorder();
     }

@@ -110,6 +110,7 @@ public class TimedStimulusView extends ComplexView {
 
     @Override
     public void clearPage() {
+        stopAudio();
         this.getElement().getStyle().setBackgroundImage(null);
         super.clearPage();
     }
