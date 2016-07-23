@@ -245,16 +245,19 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
         matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.columnCount, "10");
         matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(stimulusMsDelay));
         matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.matchingRegex, MATCHING_REGEX);
+        final PresenterFeature returnFeature;
         if (background) {
             final PresenterFeature backgroundImageFeature = new PresenterFeature(FeatureType.backgroundImage, null);
             backgroundImageFeature.addFeatureAttributes(FeatureAttribute.src, backgroundImage);
             backgroundImageFeature.addFeatureAttributes(FeatureAttribute.msToNext, "1");
             hasMoreStimulusFeature.getPresenterFeatureList().add(backgroundImageFeature);
             backgroundImageFeature.getPresenterFeatureList().add(matchingStimulusGrid);
+            returnFeature = backgroundImageFeature;
         } else {
             hasMoreStimulusFeature.getPresenterFeatureList().add(matchingStimulusGrid);
+            returnFeature = hasMoreStimulusFeature;
         }
-        matchingStimulusGrid.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+        returnFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
         if (playSound) {
             final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.actionButton, "Play Sound");
             final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.stimulusAudio, null);
@@ -262,11 +265,11 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             presenterFeature.getPresenterFeatureList().add(presenterFeature1);
             final PresenterFeature presenterFeature2 = new PresenterFeature(FeatureType.stimulusAudio, null);
             presenterFeature2.addFeatureAttributes(FeatureAttribute.msToNext, "0");
-            matchingStimulusGrid.getPresenterFeatureList().add(presenterFeature2);
-            matchingStimulusGrid.getPresenterFeatureList().add(presenterFeature);
+            returnFeature.getPresenterFeatureList().add(presenterFeature2);
+            returnFeature.getPresenterFeatureList().add(presenterFeature);
         }
         matchingStimulusGrid.getPresenterFeatureList().add(new PresenterFeature(FeatureType.responseCorrect, null));
         matchingStimulusGrid.getPresenterFeatureList().add(new PresenterFeature(FeatureType.responseIncorrect, null));
-        return matchingStimulusGrid;
+        return returnFeature;
     }
 }

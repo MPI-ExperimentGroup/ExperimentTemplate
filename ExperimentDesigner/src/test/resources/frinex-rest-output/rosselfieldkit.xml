@@ -75,7 +75,7 @@
         <loadStimulus eventTag="PictureTask" randomise="true" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="PictureTask" wavFormat="true" filePerStimulus="false"/>
-                <withMatchingStimulus eventTag="" matchingRegex="([^_]*_)*">
+                <withMatchingStimulus eventTag="" randomise="true" matchingRegex="([^_]*_)*" maxStimuli="1000" repeatCount="1">
                     <hasMoreStimulus>
                         <clearPage/>
                         <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="none" maxWidth="80">
@@ -104,20 +104,20 @@
                     <endOfStimulus>
                         <clearPage/>
                         <backgroundImage msToNext="1" src="background.png">
-                            <matchingStimulusGrid msToNext="0" maxHeight="30" matchingRegex="([^_]*_)*" columnCount="10" maxWidth="30">
-                                <addPadding/>
-                                <stimulusAudio msToNext="0"/>
-                                <actionButton featureText="Play Sound">
-                                    <stimulusAudio msToNext="0"/>
-                                </actionButton>
+                            <matchingStimulusGrid msToNext="0" randomise="true" matchingRegex="([^_]*_)*" columnCount="10" maxStimuli="1000" animate="bounce" maxWidth="30">
                                 <responseCorrect/>
                                 <responseIncorrect/>
-                                <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
-                                    <endAudioRecorderTag eventTier="4" eventTag=""/>
-                                    <nextStimulus eventTag="nextStimulusPictureTask" norepeat="true"/>
-                                </actionButton>
-                                <startAudioRecorderTag eventTier="4"/>
                             </matchingStimulusGrid>
+                            <addPadding/>
+                            <stimulusAudio msToNext="0"/>
+                            <actionButton featureText="Play Sound">
+                                <stimulusAudio msToNext="0"/>
+                            </actionButton>
+                            <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
+                                <endAudioRecorderTag eventTier="4" eventTag=""/>
+                                <nextStimulus eventTag="nextStimulusPictureTask" norepeat="true"/>
+                            </actionButton>
+                            <startAudioRecorderTag eventTier="4"/>
                         </backgroundImage>
                     </endOfStimulus>
                 </withMatchingStimulus>
@@ -137,7 +137,7 @@
         <loadSdCardStimulus eventTag="SDCardPictureTask" randomise="true" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="SDCardPictureTask" wavFormat="true" filePerStimulus="false"/>
-                <withMatchingStimulus eventTag="" matchingRegex="([^_]*_)*">
+                <withMatchingStimulus eventTag="" randomise="true" matchingRegex="([^_]*_)*" maxStimuli="1000" repeatCount="1">
                     <hasMoreStimulus>
                         <clearPage/>
                         <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="none" maxWidth="80">
@@ -166,20 +166,20 @@
                     <endOfStimulus>
                         <clearPage/>
                         <backgroundImage msToNext="1" src="file:///storage/emulated/0/MPI_STIMULI/background.png">
-                            <matchingStimulusGrid msToNext="0" maxHeight="30" matchingRegex="([^_]*_)*" columnCount="10" maxWidth="30">
-                                <addPadding/>
-                                <stimulusAudio msToNext="0"/>
-                                <actionButton featureText="Play Sound">
-                                    <stimulusAudio msToNext="0"/>
-                                </actionButton>
+                            <matchingStimulusGrid msToNext="0" randomise="true" matchingRegex="([^_]*_)*" columnCount="10" maxStimuli="1000" animate="bounce" maxWidth="30">
                                 <responseCorrect/>
                                 <responseIncorrect/>
-                                <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
-                                    <endAudioRecorderTag eventTier="4" eventTag=""/>
-                                    <nextStimulus eventTag="nextStimulusSDCardPictureTask" norepeat="true"/>
-                                </actionButton>
-                                <startAudioRecorderTag eventTier="4"/>
                             </matchingStimulusGrid>
+                            <addPadding/>
+                            <stimulusAudio msToNext="0"/>
+                            <actionButton featureText="Play Sound">
+                                <stimulusAudio msToNext="0"/>
+                            </actionButton>
+                            <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
+                                <endAudioRecorderTag eventTier="4" eventTag=""/>
+                                <nextStimulus eventTag="nextStimulusSDCardPictureTask" norepeat="true"/>
+                            </actionButton>
+                            <startAudioRecorderTag eventTier="4"/>
                         </backgroundImage>
                     </endOfStimulus>
                 </withMatchingStimulus>
