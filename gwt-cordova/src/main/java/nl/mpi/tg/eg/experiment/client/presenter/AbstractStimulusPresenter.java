@@ -48,6 +48,7 @@ import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
+import nl.mpi.tg.eg.experiment.client.service.MatchingStimuliGroup;
 import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
 import nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture;
 import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
@@ -72,6 +73,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     private TimedStimulusListener hasMoreStimulusListener;
     private TimedStimulusListener endOfStimulusListener;
     private ArrayList<StimulusFreeText> stimulusFreeTextList = new ArrayList<StimulusFreeText>();
+    MatchingStimuliGroup matchingStimuliGroup = null;
 
     protected enum AnimateTypes {
         bounce, none
@@ -246,6 +248,12 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         showStimulus();
     }
 
+    protected void withMatchingStimulus(String eventTag, final String matchingRegex, final int maxStimulusCount, final boolean randomise, int repeatCount, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+        matchingStimuliGroup = new MatchingStimuliGroup(stimulusProvider.getCurrentStimulus(), stimulusProvider.getMatchingStimuli(matchingRegex, maxStimulusCount), randomise, repeatCount, hasMoreStimulusListener, endOfStimulusListener);
+        matchingStimuliGroup.getNextStimulus(stimulusProvider);
+        matchingStimuliGroup.showNextStimulus();
+    }
+
     protected void pause(int postLoadMs, final TimedStimulusListener timedStimulusListener) {
         Timer timer = new Timer() {
             public void run() {
@@ -305,6 +313,15 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST, "-" + stimulusProvider.getCurrentStimulus().getUniqueId());
     }
 
+    protected void nextMatchingStimulus() {
+        matchingStimuliGroup.getNextStimulus(stimulusProvider);
+        matchingStimuliGroup.showNextStimulus();
+    }
+
+    protected void removeMatchingStimulus(final String matchingRegex) {
+        throw new UnsupportedOperationException("todo: removeMatchingStimulus");
+    }
+
     protected void keepStimulus() {
         stimulusProvider.pushCurrentStimulusToEnd();
     }
@@ -324,7 +341,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     timedStimulusListener.postLoadTimerFired();
                 }
             };
-            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(sdCardImageCapture.getCapturedPath()), percentOfPage, maxHeight, maxWidth, null, postLoadMs, shownStimulusListener, timedStimulusListener);
+            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(sdCardImageCapture.getCapturedPath()), percentOfPage, maxHeight, maxWidth, null, null, postLoadMs, shownStimulusListener, timedStimulusListener);
         }
     }
 
@@ -332,11 +349,17 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addBackgroundImage(UriUtils.fromTrustedString((imageSrc.startsWith("file")) ? imageSrc : serviceLocations.staticFilesUrl() + imageSrc), postLoadMs, timedStimulusListener);
     }
 
-//    protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
-//        stimulusImage(percentOfPage, maxHeight, maxWidth, AnimateTypes.none, postLoadMs, timedStimulusListener);
-//    }
+    @Deprecated
+    protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+        stimulusImage(percentOfPage, maxHeight, maxWidth, AnimateTypes.none, null, postLoadMs, timedStimulusListener);
+    }
 
+    @Deprecated
     protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+        stimulusImage(percentOfPage, maxHeight, maxWidth, animateType, (int) (50 - (maxHeight / 2.0)), postLoadMs, timedStimulusListener);
+    }
+
+    protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final Integer fixedPositionY, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
         final Stimulus currentStimulus = stimulusProvider.getCurrentStimulus();
         if (currentStimulus.hasImage()) {
             final String image = currentStimulus.getImage();
@@ -348,7 +371,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 }
             };
 //            submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusImage", image, duration.elapsedMillis());
-            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(image), percentOfPage, maxHeight, maxWidth, (animateType.equals(AnimateTypes.bounce)) ? "bounceAnimation" : null, postLoadMs, shownStimulusListener, timedStimulusListener);
+            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(image), percentOfPage, maxHeight, maxWidth, (animateType.equals(AnimateTypes.bounce)) ? "bounceAnimation" : null, fixedPositionY, postLoadMs, shownStimulusListener, timedStimulusListener);
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
         } else if (currentStimulus.hasAudio()) {
             String mp3 = currentStimulus.getAudio() + ".mp3";
@@ -399,7 +422,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusCodeImageShown", uniqueId, formattedCode, duration.elapsedMillis());
             }
         };
-        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString(serviceLocations.staticFilesUrl() + formattedCode), percentOfPage, maxHeight, maxWidth, null, postLoadMs, shownStimulusListener, timedStimulusListener);
+        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString(serviceLocations.staticFilesUrl() + formattedCode), percentOfPage, maxHeight, maxWidth, null, null, postLoadMs, shownStimulusListener, timedStimulusListener);
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
     }
 
@@ -587,6 +610,18 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         disableStimulusButtons();
         ((TimedStimulusView) simpleView).endGrid();
         //((TimedStimulusView) simpleView).addAudioPlayerGui();
+    }
+
+    protected void matchingStimulusGrid(final AppEventListner appEventListner, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener, final String matchingRegex, final int maxStimulusCount, final boolean randomise, final int columnCount, int maxWidth, final AnimateTypes animateType, int postLoadMs) {
+        matchingStimuliGroup = new MatchingStimuliGroup(stimulusProvider.getCurrentStimulus(), stimulusProvider.getMatchingStimuli(matchingRegex, maxStimulusCount), randomise, 1, hasMoreStimulusListener, endOfStimulusListener);
+//        ((TimedStimulusView) simpleView).startHorizontalPanel();
+        int ySpacing = (int) (100.0 / (matchingStimuliGroup.getStimulusCount() + 1));
+        int yPos = 0;
+        while (matchingStimuliGroup.getNextStimulus(stimulusProvider)) {
+            yPos += ySpacing;
+            stimulusImage(0, maxWidth, maxWidth, animateType, yPos - (maxWidth / 2), postLoadMs, correctListener);
+        }
+//        ((TimedStimulusView) simpleView).endHorizontalPanel();
     }
 
     private PresenterEventListner getEventListener(final ArrayList<ButtonBase> buttonList, final String eventTag, final String tagValue1, final String tagValue2, final TimedStimulusListener correctTimedListener, final TimedStimulusListener incorrectTimedListener) {
