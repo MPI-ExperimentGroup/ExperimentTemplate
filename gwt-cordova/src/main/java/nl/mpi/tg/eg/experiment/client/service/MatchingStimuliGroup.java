@@ -50,6 +50,10 @@ public class MatchingStimuliGroup {
         return stimulusArray.size();
     }
 
+    public boolean isCorrect(Stimulus testableStimulus) {
+        return correctStimulus.equals(testableStimulus);
+    }
+
     public boolean getNextStimulus(final StimulusProvider stimulusProvider) {
         stimulusIndex++;
         stimulusProvider.setCurrentStimulus((stimulusArray.size() <= stimulusIndex) ? correctStimulus : stimulusArray.get(stimulusIndex));

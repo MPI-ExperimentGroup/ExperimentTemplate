@@ -341,7 +341,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     timedStimulusListener.postLoadTimerFired();
                 }
             };
-            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(sdCardImageCapture.getCapturedPath()), percentOfPage, maxHeight, maxWidth, null, null, postLoadMs, shownStimulusListener, timedStimulusListener);
+            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(sdCardImageCapture.getCapturedPath()), percentOfPage, maxHeight, maxWidth, null, null, postLoadMs, shownStimulusListener, timedStimulusListener, null);
         }
     }
 
@@ -360,6 +360,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final Integer fixedPositionY, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+        stimulusImage(percentOfPage, maxHeight, maxWidth, animateType, fixedPositionY, postLoadMs, timedStimulusListener, null);
+    }
+
+    protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final Integer fixedPositionY, int postLoadMs, final TimedStimulusListener timedStimulusListener, final TimedStimulusListener clickedStimulusListener) {
         final Stimulus currentStimulus = stimulusProvider.getCurrentStimulus();
         if (currentStimulus.hasImage()) {
             final String image = currentStimulus.getImage();
@@ -371,7 +375,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 }
             };
 //            submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusImage", image, duration.elapsedMillis());
-            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(image), percentOfPage, maxHeight, maxWidth, (animateType.equals(AnimateTypes.bounce)) ? "bounceAnimation" : null, fixedPositionY, postLoadMs, shownStimulusListener, timedStimulusListener);
+            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(image), percentOfPage, maxHeight, maxWidth, (animateType.equals(AnimateTypes.bounce)) ? "bounceAnimation" : null, fixedPositionY, postLoadMs, shownStimulusListener, timedStimulusListener, clickedStimulusListener);
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
         } else if (currentStimulus.hasAudio()) {
             String mp3 = currentStimulus.getAudio() + ".mp3";
@@ -422,7 +426,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusCodeImageShown", uniqueId, formattedCode, duration.elapsedMillis());
             }
         };
-        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString(serviceLocations.staticFilesUrl() + formattedCode), percentOfPage, maxHeight, maxWidth, null, null, postLoadMs, shownStimulusListener, timedStimulusListener);
+        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString(serviceLocations.staticFilesUrl() + formattedCode), percentOfPage, maxHeight, maxWidth, null, null, postLoadMs, shownStimulusListener, timedStimulusListener, null);
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
     }
 
@@ -619,7 +623,21 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         int yPos = 0;
         while (matchingStimuliGroup.getNextStimulus(stimulusProvider)) {
             yPos += ySpacing;
-            stimulusImage(0, maxWidth, maxWidth, animateType, yPos - (maxWidth / 2), postLoadMs, correctListener);
+            if (matchingStimuliGroup.isCorrect(stimulusProvider.getCurrentStimulus())) {
+                stimulusImage(0, maxWidth, maxWidth, animateType, yPos - (maxWidth / 2), postLoadMs, new TimedStimulusListener() {
+                    @Override
+                    public void postLoadTimerFired() {
+
+                    }
+                }, correctListener);
+            } else {
+                stimulusImage(0, maxWidth, maxWidth, animateType, yPos - (maxWidth / 2), postLoadMs, new TimedStimulusListener() {
+                    @Override
+                    public void postLoadTimerFired() {
+
+                    }
+                }, incorrectListener);
+            }
         }
 //        ((TimedStimulusView) simpleView).endHorizontalPanel();
     }
