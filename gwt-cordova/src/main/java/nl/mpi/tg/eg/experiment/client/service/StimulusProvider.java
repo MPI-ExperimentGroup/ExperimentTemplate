@@ -17,6 +17,8 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
+import com.google.gwt.regexp.shared.MatchResult;
+import com.google.gwt.regexp.shared.RegExp;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -236,6 +238,10 @@ public class StimulusProvider {
         return currentStimulus;
     }
 
+    public void setCurrentStimulus(Stimulus currentStimulus) {
+        this.currentStimulus = currentStimulus;
+    }
+
     public void getNextStimulus() {
         currentStimulus = stimulusSubsetArray.remove(0);
     }
@@ -250,6 +256,22 @@ public class StimulusProvider {
 
     public int getTotalStimuli() {
         return totalStimuli;
+    }
+
+    public List<Stimulus> getMatchingStimuli(final String matchingRegex, final int maxStimulusCount) {
+        final List<Stimulus> matchingStimuli = new ArrayList<>();
+        RegExp pattern = RegExp.compile(matchingRegex);
+        MatchResult matcher = pattern.exec(currentStimulus.getUniqueId());
+        if (matcher != null) {
+            String group = matcher.getGroup(0);
+            for (Stimulus stimulus : stimulusSubsetArray) {
+                final String uniqueId = stimulus.getUniqueId();
+                if (uniqueId.contains(group)) {
+                    matchingStimuli.add(stimulus);
+                }
+            }
+        }
+        return matchingStimuli;
     }
 
     public int getRemainingStimuli() {
