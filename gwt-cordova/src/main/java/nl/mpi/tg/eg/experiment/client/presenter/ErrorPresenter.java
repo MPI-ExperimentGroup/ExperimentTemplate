@@ -40,6 +40,11 @@ public class ErrorPresenter extends AbstractPresenter implements Presenter {
     }
 
     @Override
+    protected String getSelfTag() {
+       return "ErrorScreen";
+    }
+
+    @Override
     protected void setContent(final AppEventListner appEventListner) {
         simpleView.setDisplayText(messages.errorScreenText(errorMessage));
     }

@@ -271,6 +271,13 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             <xsl:value-of select="@self" />
             <xsl:text>Presenter();
                 }
+                
+                @Override
+                protected String getSelfTag() {
+                return ApplicationState.</xsl:text>
+            <xsl:value-of select="@self" />
+            <xsl:text>.name();
+                }
 
                 @Override
                 protected void setContent(final AppEventListner appEventListner) {

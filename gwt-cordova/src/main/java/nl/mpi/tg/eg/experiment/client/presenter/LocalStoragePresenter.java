@@ -31,7 +31,7 @@ import nl.mpi.tg.eg.experiment.client.view.ComplexView;
  * @since Mar 10, 2015 2:43:42 PM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public class LocalStoragePresenter extends AbstractPresenter {
+public abstract class LocalStoragePresenter extends AbstractPresenter {
 
     public LocalStoragePresenter(RootLayoutPanel widgetTag) {
         super(widgetTag, new ComplexView());

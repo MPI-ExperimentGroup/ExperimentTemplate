@@ -105,7 +105,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             userResults.getUserData().setMetadataValue(stimulusAllocationField, Integer.toString(stimulusAllocation));
             localStorage.storeData(userResults);
         }
-        final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST);
+        final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST + getSelfTag());
 //        Participants will be exposed to 36 audio+picture combinations, 
 //        which are in fact 6 word-picture combination, 
 //        but each word repeats 6 times with a different audio files each time (see xls file).
@@ -143,7 +143,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void loadAllStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final boolean randomise, int repeatCount, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
-        final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST);
+        final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST + getSelfTag());
         stimulusProvider.getSubset(selectionTags, randomise, repeatCount, seenStimulusList);
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
@@ -156,7 +156,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void loadSdCardStimulus(final String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final String subDirectory, final int maxStimulusCount, final boolean randomise, final int repeatCount, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
-        final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST);
+        final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST + getSelfTag());
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
         ArrayList<String> directoryTagArray = new ArrayList<>();
@@ -219,7 +219,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void loadStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final List<GeneratedStimulus.Tag> randomTags, final MetadataField stimulusAllocationField, final int maxStimulusCount, final boolean randomise, int repeatCount, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
-        final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST);
+        final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST + getSelfTag());
         final List<GeneratedStimulus.Tag> allocatedTags = new ArrayList<>(selectionTags);
         if (!randomTags.isEmpty()) {
             final String storedStimulusAllocation = userResults.getUserData().getMetadataValue(stimulusAllocationField);
@@ -310,7 +310,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void removeStimulus() {
-        localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST, "-" + stimulusProvider.getCurrentStimulus().getUniqueId());
+        localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST + getSelfTag(), "-" + stimulusProvider.getCurrentStimulus().getUniqueId());
     }
 
     protected void nextMatchingStimulus() {
@@ -618,7 +618,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void matchingStimulusGrid(final AppEventListner appEventListner, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener, final String matchingRegex, final int maxStimulusCount, final boolean randomise, final int columnCount, int maxWidth, final AnimateTypes animateType, int postLoadMs) {
         matchingStimuliGroup = new MatchingStimuliGroup(stimulusProvider.getCurrentStimulus(), stimulusProvider.getMatchingStimuli(matchingRegex, maxStimulusCount), randomise, 1, hasMoreStimulusListener, endOfStimulusListener);
-//        ((TimedStimulusView) simpleView).startHorizontalPanel();
+        ((TimedStimulusView) simpleView).startHorizontalPanel();
         int ySpacing = (int) (100.0 / (matchingStimuliGroup.getStimulusCount() + 1));
         int yPos = 0;
         while (matchingStimuliGroup.getNextStimulus(stimulusProvider)) {
@@ -639,7 +639,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 }, incorrectListener);
             }
         }
-//        ((TimedStimulusView) simpleView).endHorizontalPanel();
+        ((TimedStimulusView) simpleView).endHorizontalPanel();
     }
 
     private PresenterEventListner getEventListener(final ArrayList<ButtonBase> buttonList, final String eventTag, final String tagValue1, final String tagValue2, final TimedStimulusListener correctTimedListener, final TimedStimulusListener incorrectTimedListener) {

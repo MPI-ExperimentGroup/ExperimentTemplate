@@ -145,6 +145,8 @@ public abstract class AbstractPresenter implements Presenter {
 
     protected abstract String getTitle();
 
+    protected abstract String getSelfTag();
+
     protected abstract void setContent(final AppEventListner appEventListner);
 
     protected void autoNextPresenter(final AppEventListner appEventListner) {
