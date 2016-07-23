@@ -39,6 +39,7 @@
         <menuItem featureText="SDCardPictureTask" target="SDCardPictureTask"/>
         <menuItem featureText="MPI Stimuli" target="MPI_STIMULIScreen"/>
         <menuItem featureText="Debug Screen" target="DebugScreen"/>
+        <menuItem featureText="Instructions" target="Instructions"/>
     </presenter>
     <presenter back="Welcome" displayOrder="6" menuLabel="Select User" next="Menu" type="metadata" self="SelectUser" title="Select User">
         <selectUserMenu/>

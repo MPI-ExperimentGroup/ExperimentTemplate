@@ -35,6 +35,7 @@ public enum FeatureType {
     popupMessage(false, true, null),
     loadSubsetStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli, condition0Tag, condition1Tag, condition2Tag}, true, true, Contitionals.none),
     loadStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli, randomise, repeatCount}, true, true, Contitionals.hasMoreStimulus),
+    withMatchingStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli, randomise, repeatCount, matchingRegex}, false, false, Contitionals.hasMoreStimulus),
     loadSdCardStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli, randomise, repeatCount}, true, false, Contitionals.hasMoreStimulus),
     loadAllStimulus(false, false, new FeatureAttribute[]{eventTag, randomise, repeatCount}, true, false, Contitionals.hasMoreStimulus),
     currentStimulusHasTag(true, false, new FeatureAttribute[]{msToNext}, true, false, Contitionals.hasStimulusTag),
@@ -68,6 +69,7 @@ public enum FeatureType {
     //    nextStimulus(false, false, null),
     keepStimulus(false, false, null),
     removeStimulus(false, false, null),
+    removeMatchingStimulus(false, false, new FeatureAttribute[]{matchingRegex}),
     clearStimulus(false, false, null),
     centrePage(false, false, null),
     clearPage(false, false, null),
@@ -82,6 +84,7 @@ public enum FeatureType {
     preloadAllStimuli(true, false, null, true, false, Contitionals.none),
     showStimulus(true, false, null, false, false, Contitionals.none), // todo: should this be here?
     showStimulusGrid(true, false, new FeatureAttribute[]{columnCount, imageWidth, eventTag}, true, false, Contitionals.hasCorrectIncorrect),
+    matchingStimulusGrid(false, false, new FeatureAttribute[]{columnCount, imageWidth, eventTag, matchingRegex}, false, false, Contitionals.hasCorrectIncorrect),
     pause(true, false, new FeatureAttribute[]{msToNext}),
     stimulusPause(true, false, null),
     stimulusLabel(false, false, null),

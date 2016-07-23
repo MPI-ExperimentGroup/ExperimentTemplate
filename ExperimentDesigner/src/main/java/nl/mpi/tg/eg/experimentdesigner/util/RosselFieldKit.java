@@ -99,6 +99,7 @@ public class RosselFieldKit {
         menuScreen.addTargetScreen(pictureTaskScreenSD);
         menuScreen.addTargetScreen(wizardStimulusScreen);
         menuScreen.addTargetScreen(debugScreenPresenter);
+        menuScreen.addTargetScreen(instructionsPresenter);
         wizardData.addScreen(welcomePresenter);
         wizardData.addScreen(welcomeMenuPresenter);
         wizardData.addScreen(instructionsPresenter);

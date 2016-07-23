@@ -34,6 +34,7 @@ public enum FeatureAttribute {
     code,
     codeFormat,
     validationRegex,
+    matchingRegex,
     src,
     link,
     percentOfPage,
