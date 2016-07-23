@@ -131,7 +131,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
 
         final PresenterFeature endAudioRecorderTagFeature1 = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
         endAudioRecorderTagFeature1.addFeatureAttributes(FeatureAttribute.eventTier, "1");
-        endAudioRecorderTagFeature1.addFeatureAttributes(FeatureAttribute.eventTag, "");
+        endAudioRecorderTagFeature1.addFeatureAttributes(FeatureAttribute.eventTag, "no background");
         nextButtonFeature1.getPresenterFeatureList().add(endAudioRecorderTagFeature1);
 
         final PresenterFeature startTagFeature1 = new PresenterFeature(FeatureType.startAudioRecorderTag, null);
@@ -146,7 +146,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
 
         final PresenterFeature endAudioRecorderTagFeature2 = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
         endAudioRecorderTagFeature2.addFeatureAttributes(FeatureAttribute.eventTier, "2");
-        endAudioRecorderTagFeature2.addFeatureAttributes(FeatureAttribute.eventTag, "");
+        endAudioRecorderTagFeature2.addFeatureAttributes(FeatureAttribute.eventTag, "bounce and background");
         nextButtonFeature2.getPresenterFeatureList().add(endAudioRecorderTagFeature2);
         nextButtonFeature2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.nextMatchingStimulus, null));
 
@@ -174,7 +174,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
 
         final PresenterFeature endAudioRecorderTagFeature4 = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
         endAudioRecorderTagFeature4.addFeatureAttributes(FeatureAttribute.eventTier, "4");
-        endAudioRecorderTagFeature4.addFeatureAttributes(FeatureAttribute.eventTag, "");
+        endAudioRecorderTagFeature4.addFeatureAttributes(FeatureAttribute.eventTag, "exit group");
         nextButtonFeature4.getPresenterFeatureList().add(endAudioRecorderTagFeature4);
 
         final PresenterFeature startTagFeature4 = new PresenterFeature(FeatureType.startAudioRecorderTag, null);
@@ -268,8 +268,31 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             returnFeature.getPresenterFeatureList().add(presenterFeature2);
             returnFeature.getPresenterFeatureList().add(presenterFeature);
         }
-        matchingStimulusGrid.getPresenterFeatureList().add(new PresenterFeature(FeatureType.responseCorrect, null));
-        matchingStimulusGrid.getPresenterFeatureList().add(new PresenterFeature(FeatureType.responseIncorrect, null));
+        final PresenterFeature responseCorrect = new PresenterFeature(FeatureType.responseCorrect, null);
+        matchingStimulusGrid.getPresenterFeatureList().add(responseCorrect);
+        final PresenterFeature responseIncorrect = new PresenterFeature(FeatureType.responseIncorrect, null);
+        matchingStimulusGrid.getPresenterFeatureList().add(responseIncorrect);
+
+        final PresenterFeature endAudioRecorderTagFeatureCorrect = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
+        endAudioRecorderTagFeatureCorrect.addFeatureAttributes(FeatureAttribute.eventTier, "4");
+        endAudioRecorderTagFeatureCorrect.addFeatureAttributes(FeatureAttribute.eventTag, "correct group");
+        responseCorrect.getPresenterFeatureList().add(endAudioRecorderTagFeatureCorrect);
+
+        final PresenterFeature endAudioRecorderTagFeatureIncorrect = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
+        endAudioRecorderTagFeatureIncorrect.addFeatureAttributes(FeatureAttribute.eventTier, "4");
+        endAudioRecorderTagFeatureIncorrect.addFeatureAttributes(FeatureAttribute.eventTag, "incorrect group");
+        responseIncorrect.getPresenterFeatureList().add(endAudioRecorderTagFeatureIncorrect);
+
+        final PresenterFeature nextStimulusCorrectFeature = new PresenterFeature(FeatureType.nextStimulus, null);
+        nextStimulusCorrectFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+        nextStimulusCorrectFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextCorrect" + screenTitle);
+        responseCorrect.getPresenterFeatureList().add(nextStimulusCorrectFeature);
+
+        final PresenterFeature nextStimulusIncorrectFeature = new PresenterFeature(FeatureType.nextStimulus, null);
+        nextStimulusIncorrectFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+        nextStimulusIncorrectFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextIncorrect" + screenTitle);
+        responseIncorrect.getPresenterFeatureList().add(nextStimulusIncorrectFeature);
+
         return returnFeature;
     }
 }

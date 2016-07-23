@@ -81,7 +81,7 @@
                         <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="none" maxWidth="80">
                             <addPadding/>
                             <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
-                                <endAudioRecorderTag eventTier="1" eventTag=""/>
+                                <endAudioRecorderTag eventTier="1" eventTag="no background"/>
                                 <clearPage/>
                                 <backgroundImage msToNext="1" src="background.png">
                                     <stimulusImage msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" maxWidth="30">
@@ -91,7 +91,7 @@
                                             <stimulusAudio msToNext="0"/>
                                         </actionButton>
                                         <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
-                                            <endAudioRecorderTag eventTier="2" eventTag=""/>
+                                            <endAudioRecorderTag eventTier="2" eventTag="bounce and background"/>
                                             <nextMatchingStimulus/>
                                         </actionButton>
                                         <startAudioRecorderTag eventTier="2"/>
@@ -105,8 +105,14 @@
                         <clearPage/>
                         <backgroundImage msToNext="1" src="background.png">
                             <matchingStimulusGrid msToNext="0" randomise="true" matchingRegex="([^_]*_)*" columnCount="10" maxStimuli="1000" animate="bounce" maxWidth="30">
-                                <responseCorrect/>
-                                <responseIncorrect/>
+                                <responseCorrect>
+                                    <endAudioRecorderTag eventTier="4" eventTag="correct group"/>
+                                    <nextStimulus eventTag="nextCorrectPictureTask" norepeat="true"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <endAudioRecorderTag eventTier="4" eventTag="incorrect group"/>
+                                    <nextStimulus eventTag="nextIncorrectPictureTask" norepeat="true"/>
+                                </responseIncorrect>
                             </matchingStimulusGrid>
                             <addPadding/>
                             <stimulusAudio msToNext="0"/>
@@ -114,7 +120,7 @@
                                 <stimulusAudio msToNext="0"/>
                             </actionButton>
                             <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
-                                <endAudioRecorderTag eventTier="4" eventTag=""/>
+                                <endAudioRecorderTag eventTier="4" eventTag="exit group"/>
                                 <nextStimulus eventTag="nextStimulusPictureTask" norepeat="true"/>
                             </actionButton>
                             <startAudioRecorderTag eventTier="4"/>
@@ -143,7 +149,7 @@
                         <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="none" maxWidth="80">
                             <addPadding/>
                             <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
-                                <endAudioRecorderTag eventTier="1" eventTag=""/>
+                                <endAudioRecorderTag eventTier="1" eventTag="no background"/>
                                 <clearPage/>
                                 <backgroundImage msToNext="1" src="file:///storage/emulated/0/MPI_STIMULI/background.png">
                                     <stimulusImage msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" maxWidth="30">
@@ -153,7 +159,7 @@
                                             <stimulusAudio msToNext="0"/>
                                         </actionButton>
                                         <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
-                                            <endAudioRecorderTag eventTier="2" eventTag=""/>
+                                            <endAudioRecorderTag eventTier="2" eventTag="bounce and background"/>
                                             <nextMatchingStimulus/>
                                         </actionButton>
                                         <startAudioRecorderTag eventTier="2"/>
@@ -167,8 +173,14 @@
                         <clearPage/>
                         <backgroundImage msToNext="1" src="file:///storage/emulated/0/MPI_STIMULI/background.png">
                             <matchingStimulusGrid msToNext="0" randomise="true" matchingRegex="([^_]*_)*" columnCount="10" maxStimuli="1000" animate="bounce" maxWidth="30">
-                                <responseCorrect/>
-                                <responseIncorrect/>
+                                <responseCorrect>
+                                    <endAudioRecorderTag eventTier="4" eventTag="correct group"/>
+                                    <nextStimulus eventTag="nextCorrectSDCardPictureTask" norepeat="true"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <endAudioRecorderTag eventTier="4" eventTag="incorrect group"/>
+                                    <nextStimulus eventTag="nextIncorrectSDCardPictureTask" norepeat="true"/>
+                                </responseIncorrect>
                             </matchingStimulusGrid>
                             <addPadding/>
                             <stimulusAudio msToNext="0"/>
@@ -176,7 +188,7 @@
                                 <stimulusAudio msToNext="0"/>
                             </actionButton>
                             <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
-                                <endAudioRecorderTag eventTier="4" eventTag=""/>
+                                <endAudioRecorderTag eventTier="4" eventTag="exit group"/>
                                 <nextStimulus eventTag="nextStimulusSDCardPictureTask" norepeat="true"/>
                             </actionButton>
                             <startAudioRecorderTag eventTier="4"/>
