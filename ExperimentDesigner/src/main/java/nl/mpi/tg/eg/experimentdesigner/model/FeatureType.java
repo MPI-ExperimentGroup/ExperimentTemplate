@@ -77,6 +77,7 @@ public enum FeatureType {
     allMenuItems(false, false, null),
     nextStimulusButton(false, true, new FeatureAttribute[]{eventTag, norepeat, hotKey}),
     nextStimulus(false, false, new FeatureAttribute[]{eventTag, norepeat}),
+    nextMatchingStimulus(false, false, null),
     addKinTypeGui(false, false, new FeatureAttribute[]{diagramName}),
     autoNextPresenter(false, false, null),
     logTimeStamp(false, false, new FeatureAttribute[]{eventTag}),

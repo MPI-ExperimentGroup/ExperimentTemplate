@@ -110,8 +110,22 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
         startRecorderFeature.addFeatureAttributes(FeatureAttribute.eventTag, this.screenTitle);
         hasMoreStimulusFeature.getPresenterFeatureList().add(startRecorderFeature);
 
-        // show stimulus a
-        final PresenterFeature imageFeature1 = addStimulusImage(hasMoreStimulusFeature, 80, false, false, false);
+        final PresenterFeature withMatchingStimulus = new PresenterFeature(FeatureType.withMatchingStimulus, null);
+        withMatchingStimulus.addFeatureAttributes(FeatureAttribute.matchingRegex, MATCHING_REGEX);
+        withMatchingStimulus.addFeatureAttributes(FeatureAttribute.maxStimuli, "1000");
+        withMatchingStimulus.addFeatureAttributes(FeatureAttribute.repeatCount, "1");
+        withMatchingStimulus.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(randomiseStimuli));
+        withMatchingStimulus.addFeatureAttributes(FeatureAttribute.eventTag, "");
+
+        final PresenterFeature hasMoreMatchingStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
+        final PresenterFeature endOfMatchingStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
+
+        withMatchingStimulus.getPresenterFeatureList().add(hasMoreMatchingStimulusFeature);
+        withMatchingStimulus.getPresenterFeatureList().add(endOfMatchingStimulusFeature);
+        hasMoreStimulusFeature.getPresenterFeatureList().add(withMatchingStimulus);
+
+// show stimulus a
+        final PresenterFeature imageFeature1 = addStimulusImage(hasMoreMatchingStimulusFeature, 80, false, false, false);
         PresenterFeature nextButtonFeature1 = getNextButtonFeature();
         imageFeature1.getPresenterFeatureList().add(nextButtonFeature1);
 
@@ -134,28 +148,26 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
         endAudioRecorderTagFeature2.addFeatureAttributes(FeatureAttribute.eventTier, "2");
         endAudioRecorderTagFeature2.addFeatureAttributes(FeatureAttribute.eventTag, "");
         nextButtonFeature2.getPresenterFeatureList().add(endAudioRecorderTagFeature2);
+        nextButtonFeature2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.nextMatchingStimulus, null));
 
         final PresenterFeature startTagFeature2 = new PresenterFeature(FeatureType.startAudioRecorderTag, null);
         startTagFeature2.addFeatureAttributes(FeatureAttribute.eventTier, "2");
         imageFeature2.getPresenterFeatureList().add(startTagFeature2);
 
         // show stimulus b
-        final PresenterFeature imageFeature3 = addStimulusImage(nextButtonFeature2, 80, false, false, false);
-        PresenterFeature nextButtonFeature3 = getNextButtonFeature();
-        imageFeature3.getPresenterFeatureList().add(nextButtonFeature3);
+//        final PresenterFeature imageFeature3 = addStimulusImage(nextButtonFeature2, 80, false, false, false);
+//        PresenterFeature nextButtonFeature3 = getNextButtonFeature();
+//        imageFeature3.getPresenterFeatureList().add(nextButtonFeature3);
 //        nextButtonFeature2.getPresenterFeatureList().add(imageFeature3);
-
-        final PresenterFeature endAudioRecorderTagFeature3 = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
-        endAudioRecorderTagFeature3.addFeatureAttributes(FeatureAttribute.eventTier, "3");
-        endAudioRecorderTagFeature3.addFeatureAttributes(FeatureAttribute.eventTag, "");
-        nextButtonFeature3.getPresenterFeatureList().add(endAudioRecorderTagFeature3);
-
-        final PresenterFeature startTagFeature3 = new PresenterFeature(FeatureType.startAudioRecorderTag, null);
-        startTagFeature3.addFeatureAttributes(FeatureAttribute.eventTier, "3");
-        imageFeature3.getPresenterFeatureList().add(startTagFeature3);
-
+//        final PresenterFeature endAudioRecorderTagFeature3 = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
+//        endAudioRecorderTagFeature3.addFeatureAttributes(FeatureAttribute.eventTier, "3");
+//        endAudioRecorderTagFeature3.addFeatureAttributes(FeatureAttribute.eventTag, "");
+//        nextButtonFeature3.getPresenterFeatureList().add(endAudioRecorderTagFeature3);
+//        final PresenterFeature startTagFeature3 = new PresenterFeature(FeatureType.startAudioRecorderTag, null);
+//        startTagFeature3.addFeatureAttributes(FeatureAttribute.eventTier, "3");
+//        imageFeature3.getPresenterFeatureList().add(startTagFeature3);
         // show small stimulus a & b on background
-        final PresenterFeature imageFeature4 = addStimulusImage(nextButtonFeature3, 30, true, true, true);
+        final PresenterFeature imageFeature4 = addStimulusGrid(endOfMatchingStimulusFeature, 30, true, true, true);
 
         PresenterFeature nextButtonFeature4 = getNextButtonFeature();
         imageFeature4.getPresenterFeatureList().add(nextButtonFeature4);
@@ -183,6 +195,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
         experiment.getPresenterScreen().add(presenterScreen);
         return presenterScreen;
     }
+    private static final String MATCHING_REGEX = "([^_]*_)*";
 
     private PresenterFeature getNextButtonFeature() {
         final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionButton, buttonLabelEventTag);
@@ -220,5 +233,40 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             imageFeature.getPresenterFeatureList().add(presenterFeature);
         }
         return imageFeature;
+    }
+
+    private PresenterFeature addStimulusGrid(final PresenterFeature hasMoreStimulusFeature, final int stimulusSize, final boolean animate, final boolean background, final boolean playSound) {
+        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+        final PresenterFeature matchingStimulusGrid = new PresenterFeature(FeatureType.matchingStimulusGrid, null);
+        matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(1000));
+        matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(randomiseStimuli));
+        matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.maxWidth, Integer.toString(stimulusSize));
+        matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.animate, (animate) ? "bounce" : "none");
+        matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.columnCount, "10");
+        matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(stimulusMsDelay));
+        matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.matchingRegex, MATCHING_REGEX);
+        if (background) {
+            final PresenterFeature backgroundImageFeature = new PresenterFeature(FeatureType.backgroundImage, null);
+            backgroundImageFeature.addFeatureAttributes(FeatureAttribute.src, backgroundImage);
+            backgroundImageFeature.addFeatureAttributes(FeatureAttribute.msToNext, "1");
+            hasMoreStimulusFeature.getPresenterFeatureList().add(backgroundImageFeature);
+            backgroundImageFeature.getPresenterFeatureList().add(matchingStimulusGrid);
+        } else {
+            hasMoreStimulusFeature.getPresenterFeatureList().add(matchingStimulusGrid);
+        }
+        matchingStimulusGrid.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+        if (playSound) {
+            final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.actionButton, "Play Sound");
+            final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.stimulusAudio, null);
+            presenterFeature1.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+            presenterFeature.getPresenterFeatureList().add(presenterFeature1);
+            final PresenterFeature presenterFeature2 = new PresenterFeature(FeatureType.stimulusAudio, null);
+            presenterFeature2.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+            matchingStimulusGrid.getPresenterFeatureList().add(presenterFeature2);
+            matchingStimulusGrid.getPresenterFeatureList().add(presenterFeature);
+        }
+        matchingStimulusGrid.getPresenterFeatureList().add(new PresenterFeature(FeatureType.responseCorrect, null));
+        matchingStimulusGrid.getPresenterFeatureList().add(new PresenterFeature(FeatureType.responseIncorrect, null));
+        return matchingStimulusGrid;
     }
 }
