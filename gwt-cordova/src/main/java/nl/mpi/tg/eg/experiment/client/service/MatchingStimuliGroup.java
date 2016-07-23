@@ -42,7 +42,7 @@ public class MatchingStimuliGroup {
         this.repeatCount = repeatCount;
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
-        stimuliArray.add(correctStimulus);
+//        stimuliArray.add(correctStimulus);
         stimulusIndex = -1;
     }
 

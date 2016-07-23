@@ -79,6 +79,7 @@ public class StimulusProvider {
 
     public void getSdCardSubset(final ArrayList<String> directoryTagArray, final List<String[]> directoryList, final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final int maxStimulusCount, final boolean randomise, final int repeatCount, final String seenList) {
         final List<Stimulus> stimulusListCopy = new ArrayList<>();
+        stimulusArray.clear();
         appendSdCardSubset(directoryTagArray, stimulusListCopy, directoryList, simulusLoadedListener, simulusErrorListener, maxStimulusCount, randomise, repeatCount, seenList);
     }
 
@@ -91,6 +92,7 @@ public class StimulusProvider {
                 while (!stimulusListCopy.isEmpty() && maxStimulusCount > stimulusSubsetArrayTemp.size()) {
                     final int nextIndex = (randomise) ? new Random().nextInt(stimulusListCopy.size()) : 0;
                     Stimulus stimulus = stimulusListCopy.remove(nextIndex);
+                    stimulusArray.add(stimulus);
                     if (!seenList.contains(stimulus.getUniqueId())) {
                         stimulusSubsetArrayTemp.add(stimulus);
                     }
@@ -264,7 +266,7 @@ public class StimulusProvider {
         MatchResult matcher = pattern.exec(currentStimulus.getUniqueId());
         if (matcher != null) {
             String group = matcher.getGroup(0);
-            for (Stimulus stimulus : stimulusSubsetArray) {
+            for (Stimulus stimulus : stimulusArray) {
                 final String uniqueId = stimulus.getUniqueId();
                 if (uniqueId.contains(group)) {
                     matchingStimuli.add(stimulus);
