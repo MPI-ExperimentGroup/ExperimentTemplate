@@ -22,7 +22,7 @@
         </existingUserCheck>
     </presenter>
     <presenter back="Welcome" displayOrder="3" menuLabel="Instructions" type="text" self="Instructions" title="Instructions">
-        <htmlText featureText="Show the pictures and interact with the screen."/>
+        <htmlText featureText="Show the pictures and interact with the screen.&lt;br/&gt;There are three background images used on different screens to be placed as follows:&lt;br/&gt;/MPI_STIMULI/background.png&lt;br/&gt;/MPI_STIMULI/background1.png&lt;br/&gt;/MPI_STIMULI/background2.png&lt;br/&gt;&lt;br/&gt;The stimuli for task 1 and task 2 are to be placed in the following directories&lt;br/&gt;/MPI_STIMULI/Task_1&lt;br/&gt;/MPI_STIMULI/Task_2&lt;br/&gt;&lt;br/&gt;"/>
         <targetButton featureText="Begin" hotKey="SPACE" target="Start"/>
     </presenter>
     <presenter back="Welcome" displayOrder="4" menuLabel="Infomesen blong man/woman we i toktok" next="Menu" type="metadata" self="Edit_User" title="Infomesen blong man/woman we i toktok">
@@ -35,7 +35,8 @@
         </saveMetadataButton>
     </presenter>
     <presenter back="Welcome" displayOrder="5" menuLabel="Menu" type="menu" self="Menu" title="Menu">
-        <menuItem featureText="PictureTask" target="PictureTask"/>
+        <menuItem featureText="Task 1" target="Task_1"/>
+        <menuItem featureText="Task 2" target="Task_2"/>
         <menuItem featureText="SDCardPictureTask" target="SDCardPictureTask"/>
         <menuItem featureText="MPI Stimuli" target="MPI_STIMULIScreen"/>
         <menuItem featureText="Debug Screen" target="DebugScreen"/>
@@ -70,11 +71,11 @@
             </stimuli>
         </loadSdCardStimulus>
     </presenter>
-    <presenter back="Menu" displayOrder="8" menuLabel="PictureTask" next="Menu" type="stimulus" self="PictureTask" title="PictureTask">
+    <presenter back="Menu" displayOrder="8" menuLabel="Task 1" next="Menu" type="stimulus" self="Task_1" title="Task 1">
         <centrePage/>
-        <loadStimulus eventTag="PictureTask" randomise="true" maxStimuli="1000" repeatCount="1">
+        <loadStimulus eventTag="Task 1" randomise="true" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <startAudioRecorder eventTag="PictureTask" wavFormat="true" filePerStimulus="false"/>
+                <startAudioRecorder eventTag="Task 1" wavFormat="true" filePerStimulus="false"/>
                 <withMatchingStimulus eventTag="" randomise="true" matchingRegex="([^_]*_)*" maxStimuli="1000" repeatCount="1">
                     <hasMoreStimulus>
                         <clearPage/>
@@ -83,7 +84,7 @@
                             <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
                                 <endAudioRecorderTag eventTier="1" eventTag="no background"/>
                                 <clearPage/>
-                                <backgroundImage msToNext="1" src="background.png">
+                                <backgroundImage msToNext="1" src="background1.png">
                                     <stimulusImage msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" maxWidth="30">
                                         <addPadding/>
                                         <stimulusAudio msToNext="0"/>
@@ -103,15 +104,15 @@
                     </hasMoreStimulus>
                     <endOfStimulus>
                         <clearPage/>
-                        <backgroundImage msToNext="1" src="background.png">
+                        <backgroundImage msToNext="1" src="background1.png">
                             <matchingStimulusGrid msToNext="0" randomise="true" matchingRegex="([^_]*_)*" columnCount="10" maxStimuli="1000" animate="bounce" maxWidth="30">
                                 <responseCorrect>
                                     <endAudioRecorderTag eventTier="4" eventTag="correct group"/>
-                                    <nextStimulus eventTag="nextCorrectPictureTask" norepeat="true"/>
+                                    <nextStimulus eventTag="nextCorrectTask 1" norepeat="true"/>
                                 </responseCorrect>
                                 <responseIncorrect>
                                     <endAudioRecorderTag eventTier="4" eventTag="incorrect group"/>
-                                    <nextStimulus eventTag="nextIncorrectPictureTask" norepeat="true"/>
+                                    <nextStimulus eventTag="nextIncorrectTask 1" norepeat="true"/>
                                 </responseIncorrect>
                             </matchingStimulusGrid>
                             <addPadding/>
@@ -121,7 +122,7 @@
                             </actionButton>
                             <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
                                 <endAudioRecorderTag eventTier="4" eventTag="exit group"/>
-                                <nextStimulus eventTag="nextStimulusPictureTask" norepeat="true"/>
+                                <nextStimulus eventTag="nextStimulusTask 1" norepeat="true"/>
                             </actionButton>
                             <startAudioRecorderTag eventTier="4"/>
                         </backgroundImage>
@@ -134,11 +135,45 @@
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
-                <tag>PictureTask</tag>
+                <tag>Task_1</tag>
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter back="Menu" displayOrder="9" menuLabel="SDCardPictureTask" next="Menu" type="stimulus" self="SDCardPictureTask" title="SDCardPictureTask">
+    <presenter back="Menu" displayOrder="9" menuLabel="Task 2" next="Menu" type="stimulus" self="Task_2" title="Task 2">
+        <centrePage/>
+        <loadStimulus eventTag="Task 2" randomise="true" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <startAudioRecorder eventTag="Task 2" wavFormat="true" filePerStimulus="false"/>
+                <clearPage/>
+                <matchingStimulusGrid msToNext="0" randomise="true" matchingRegex="([^_]*_)*" columnCount="10" maxStimuli="1000" animate="none" maxWidth="100">
+                    <responseCorrect>
+                        <endAudioRecorderTag eventTier="4" eventTag="correct group"/>
+                        <nextStimulus eventTag="nextCorrectTask 2" norepeat="true"/>
+                    </responseCorrect>
+                    <responseIncorrect>
+                        <endAudioRecorderTag eventTier="4" eventTag="incorrect group"/>
+                        <nextStimulus eventTag="nextIncorrectTask 2" norepeat="true"/>
+                    </responseIncorrect>
+                </matchingStimulusGrid>
+                <addPadding/>
+                <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_question"/>
+                <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
+                    <endAudioRecorderTag eventTier="4" eventTag="exit group"/>
+                    <nextStimulus eventTag="nextStimulusTask 2" norepeat="true"/>
+                </actionButton>
+                <startAudioRecorderTag eventTier="4"/>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <stopAudioRecorder/>
+                <autoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>Task_2</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter back="Menu" displayOrder="10" menuLabel="SDCardPictureTask" next="Menu" type="stimulus" self="SDCardPictureTask" title="SDCardPictureTask">
         <centrePage/>
         <loadSdCardStimulus eventTag="SDCardPictureTask" randomise="true" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
@@ -205,7 +240,7 @@
             </stimuli>
         </loadSdCardStimulus>
     </presenter>
-    <presenter displayOrder="10" menuLabel="Debug Screen" type="debug" self="DebugScreen" title="Debug Screen">
+    <presenter displayOrder="11" menuLabel="Debug Screen" type="debug" self="DebugScreen" title="Debug Screen">
         <versionData/>
         <eraseLocalStorageButton/>
         <localStorageData/>
@@ -214,23 +249,39 @@
         <stimulus identifier="MPI_STIMULI" imagePath="MPI_STIMULI" label="MPI_STIMULI" pauseMs="0">
             <tag>MPI_STIMULI</tag>
         </stimulus>
-        <stimulus audioPath="1_pig" identifier="1_pig" imagePath="1_pig.png" pauseMs="0">
+        <stimulus audioPath="1_pig" code="1_pig" identifier="1_pig" imagePath="1_pig.png" pauseMs="0">
             <tag>1_pig_png</tag>
-            <tag>PictureTask</tag>
+            <tag>Task_1</tag>
         </stimulus>
-        <stimulus audioPath="2_bat" identifier="2_bat" imagePath="2_bat.png" pauseMs="0">
+        <stimulus audioPath="2_bat" code="2_bat" identifier="2_bat" imagePath="2_bat.png" pauseMs="0">
             <tag>2_bat_png</tag>
-            <tag>PictureTask</tag>
+            <tag>Task_1</tag>
         </stimulus>
-        <stimulus audioPath="2_fish" identifier="2_fish" imagePath="2_fish.png" pauseMs="0">
+        <stimulus audioPath="2_fish" code="2_fish" identifier="2_fish" imagePath="2_fish.png" pauseMs="0">
             <tag>2_fish_png</tag>
-            <tag>PictureTask</tag>
+            <tag>Task_1</tag>
         </stimulus>
-        <stimulus audioPath="1_rat" identifier="1_rat" imagePath="1_rat.png" pauseMs="0">
+        <stimulus audioPath="1_rat" code="1_rat" identifier="1_rat" imagePath="1_rat.png" pauseMs="0">
             <tag>1_rat_png</tag>
-            <tag>PictureTask</tag>
+            <tag>Task_1</tag>
         </stimulus>
-        <stimulus audioPath="AnimatedPictures" identifier="AnimatedPictures" imagePath="AnimatedPictures" pauseMs="0">
+        <stimulus audioPath="1_pig" code="1_pig" identifier="1_pig" imagePath="1_pig.png" pauseMs="0">
+            <tag>1_pig_png</tag>
+            <tag>Task_2</tag>
+        </stimulus>
+        <stimulus audioPath="2_bat" code="2_bat" identifier="2_bat" imagePath="2_bat.png" pauseMs="0">
+            <tag>2_bat_png</tag>
+            <tag>Task_2</tag>
+        </stimulus>
+        <stimulus audioPath="2_fish" code="2_fish" identifier="2_fish" imagePath="2_fish.png" pauseMs="0">
+            <tag>2_fish_png</tag>
+            <tag>Task_2</tag>
+        </stimulus>
+        <stimulus audioPath="1_rat" code="1_rat" identifier="1_rat" imagePath="1_rat.png" pauseMs="0">
+            <tag>1_rat_png</tag>
+            <tag>Task_2</tag>
+        </stimulus>
+        <stimulus audioPath="AnimatedPictures" code="AnimatedPictures" identifier="AnimatedPictures" imagePath="AnimatedPictures" pauseMs="0">
             <tag>AnimatedPictures</tag>
             <tag>SDCardPictureTask</tag>
         </stimulus>

@@ -47,7 +47,16 @@ public class RosselFieldKit {
 
         final WizardWelcomeScreen welcomePresenter = new WizardWelcomeScreen("Rossel Island FieldKit", "Welcome", "Instructions", "Begin", null, null);
         final WizardExistingUserCheckScreen welcomeMenuPresenter = new WizardExistingUserCheckScreen("Start", "New interview", "Resume interview", "Begin a new interview with a new participant", "Resume an interview with an existing participant");
-        final WizardTextScreen instructionsPresenter = new WizardTextScreen("Instructions", "Show the pictures and interact with the screen.", "Begin");
+        final WizardTextScreen instructionsPresenter = new WizardTextScreen("Instructions", "Show the pictures and interact with the screen.<br/>"
+                + "There are three background images used on different screens to be placed as follows:<br/>"
+                + "/MPI_STIMULI/background.png<br/>"
+                + "/MPI_STIMULI/background1.png<br/>"
+                + "/MPI_STIMULI/background2.png<br/>"
+                + "<br/>"
+                + "The stimuli for task 1 and task 2 are to be placed in the following directories<br/>"
+                + "/MPI_STIMULI/Task_1<br/>"
+                + "/MPI_STIMULI/Task_2<br/>"
+                + "<br/>", "Begin");
 
         final WizardMenuScreen menuScreen = new WizardMenuScreen("Menu", "Menu", "Menu");
         menuScreen.setBackWizardScreen(welcomePresenter);
@@ -60,8 +69,10 @@ public class RosselFieldKit {
         //            "ffmpeg -i 2_fish.wav 2_fish.mp3",
         //            "ffmpeg -i 1_rat.wav 1_rat.mp3"
         };
-        final WizardAnimatedStimuliScreen pictureTaskScreen = new WizardAnimatedStimuliScreen("PictureTask", images, false, 1000, true, "Next", "background.png");
-        final WizardAnimatedStimuliScreen pictureTaskScreenSD = new WizardAnimatedStimuliScreen("SDCardPictureTask", new String[]{"AnimatedPictures"}, true, 1000, true, "Next", "file:///storage/emulated/0/MPI_STIMULI/background.png");
+        final WizardAnimatedStimuliScreen task1Screen = new WizardAnimatedStimuliScreen("Task 1", images, false, 1000, true, "Next", "background1.png", false);
+        final WizardAnimatedStimuliScreen task2Screen = new WizardAnimatedStimuliScreen("Task 2", images, false, 1000, true, "Next", "background2.png", true);
+//        final WizardAnimatedStimuliScreen pictureTaskScreen = new WizardAnimatedStimuliScreen("PictureTask", images, false, 1000, true, "Next", "background.png", false);
+        final WizardAnimatedStimuliScreen pictureTaskScreenSD = new WizardAnimatedStimuliScreen("SDCardPictureTask", new String[]{"AnimatedPictures"}, true, 1000, true, "Next", "file:///storage/emulated/0/MPI_STIMULI/background.png", false);
         welcomePresenter.setInstructionsScreen(instructionsPresenter);
         welcomePresenter.setProgramWizardScreen(welcomeMenuPresenter);
         final WizardSelectUserScreen wizardSelectUserScreen = new WizardSelectUserScreen();
@@ -84,8 +95,11 @@ public class RosselFieldKit {
         wizardStimulusScreen.setEnd_of_stimuli("Complete");
 
         editUserPresenter.setBackWizardScreen(welcomePresenter);
-        pictureTaskScreen.setBackWizardScreen(menuScreen);
-        pictureTaskScreen.setNextWizardScreen(menuScreen);
+        task1Screen.setBackWizardScreen(menuScreen);
+        task2Screen.setBackWizardScreen(menuScreen);
+        task1Screen.setNextWizardScreen(menuScreen);
+        task2Screen.setNextWizardScreen(menuScreen);
+        debugScreenPresenter.setNextWizardScreen(menuScreen);
         pictureTaskScreenSD.setBackWizardScreen(menuScreen);
         pictureTaskScreenSD.setNextWizardScreen(menuScreen);
         editUserPresenter.setNextWizardScreen(menuScreen);
@@ -95,7 +109,8 @@ public class RosselFieldKit {
         instructionsPresenter.setNextWizardScreen(welcomeMenuPresenter);
         wizardStimulusScreen.setBackWizardScreen(menuScreen);
         wizardStimulusScreen.setEndOfStimulisWizardScreen(menuScreen);
-        menuScreen.addTargetScreen(pictureTaskScreen);
+        menuScreen.addTargetScreen(task1Screen);
+        menuScreen.addTargetScreen(task2Screen);
         menuScreen.addTargetScreen(pictureTaskScreenSD);
         menuScreen.addTargetScreen(wizardStimulusScreen);
         menuScreen.addTargetScreen(debugScreenPresenter);
@@ -107,7 +122,8 @@ public class RosselFieldKit {
         wizardData.addScreen(menuScreen);
         wizardData.addScreen(wizardSelectUserScreen);
         wizardData.addScreen(wizardStimulusScreen);
-        wizardData.addScreen(pictureTaskScreen);
+        wizardData.addScreen(task1Screen);
+        wizardData.addScreen(task2Screen);
         wizardData.addScreen(pictureTaskScreenSD);
         wizardData.addScreen(debugScreenPresenter);
         return wizardData;
