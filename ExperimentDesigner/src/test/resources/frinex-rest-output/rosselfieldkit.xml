@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment appNameDisplay="RosselFieldKit" appNameInternal="rosselfieldkit" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="true" textFontSize="17">
     <metadata>
-        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Nem blong man/woman we i toktok"/>
+        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Participant ID"/>
     </metadata>
     <presenter displayOrder="1" menuLabel="Welcome" type="menu" self="Welcome" title="Rossel Island FieldKit">
         <menuItem featureText="Instructions" target="Instructions"/>
@@ -25,9 +25,9 @@
         <htmlText featureText="Show the pictures and interact with the screen.&lt;br/&gt;There are three background images used on different screens to be placed as follows:&lt;br/&gt;/MPI_STIMULI/background.png&lt;br/&gt;/MPI_STIMULI/background1.png&lt;br/&gt;/MPI_STIMULI/background2.png&lt;br/&gt;&lt;br/&gt;The stimuli for task 1 and task 2 are to be placed in the following directories&lt;br/&gt;/MPI_STIMULI/Task_1&lt;br/&gt;/MPI_STIMULI/Task_2&lt;br/&gt;&lt;br/&gt;"/>
         <targetButton featureText="Begin" hotKey="SPACE" target="Start"/>
     </presenter>
-    <presenter back="Welcome" displayOrder="4" menuLabel="Infomesen blong man/woman we i toktok" next="Menu" type="metadata" self="Edit_User" title="Infomesen blong man/woman we i toktok">
+    <presenter back="Welcome" displayOrder="4" menuLabel="Information about the participant" next="Menu" type="metadata" self="Edit_User" title="Information about the participant">
         <metadataField fieldName="workerId"/>
-        <saveMetadataButton featureText="Savem infomesen" sendData="false" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+        <saveMetadataButton featureText="Save and continue" sendData="false" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
             <onError/>
             <onSuccess>
                 <autoNextPresenter/>
@@ -42,7 +42,7 @@
         <menuItem featureText="Debug Screen" target="DebugScreen"/>
         <menuItem featureText="Instructions" target="Instructions"/>
     </presenter>
-    <presenter back="Welcome" displayOrder="6" menuLabel="Select User" next="Menu" type="metadata" self="SelectUser" title="Select User">
+    <presenter back="Welcome" displayOrder="6" menuLabel="Select Participant" next="Menu" type="metadata" self="Select_Participant" title="Select Participant">
         <selectUserMenu/>
     </presenter>
     <presenter back="Menu" displayOrder="7" menuLabel="MPI Stimuli" type="stimulus" self="MPI_STIMULIScreen" title="MPI Stimuli">
@@ -54,9 +54,9 @@
                 <stimulusLabel/>
                 <showStimulusProgress/>
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
-                    <plainText featureText="the informant talks/says whatever s/he wants"/>
+                    <plainText featureText="the informant talks about the image"/>
                     <actionButton featureText="next">
-                        <endAudioRecorderTag eventTier="1" eventTag="the informant talks/says whatever s/he wants"/>
+                        <endAudioRecorderTag eventTier="1" eventTag="the informant talks about the image"/>
                         <clearPage/>
                         <nextStimulus eventTag="nextImage" norepeat="true"/>
                     </actionButton>
@@ -148,19 +148,39 @@
                 <matchingStimulusGrid msToNext="0" randomise="true" matchingRegex="([^_]*_)*" columnCount="10" maxStimuli="1000" animate="none" maxWidth="100">
                     <responseCorrect>
                         <endAudioRecorderTag eventTier="4" eventTag="correct group"/>
-                        <nextStimulus eventTag="nextCorrectTask 2" norepeat="true"/>
+                        <clearPage/>
+                        <backgroundImage msToNext="1" src="background2.png">
+                            <stimulusImage msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" maxWidth="30"/>
+                            <addPadding/>
+                            <stimulusAudio msToNext="0"/>
+                            <actionButton featureText="Play Sound">
+                                <stimulusAudio msToNext="0"/>
+                            </actionButton>
+                            <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
+                                <endAudioRecorderTag eventTier="1" eventTag="task 2 animated"/>
+                                <nextStimulus eventTag="nextStimulusTask 2" norepeat="true"/>
+                            </actionButton>
+                        </backgroundImage>
                     </responseCorrect>
                     <responseIncorrect>
                         <endAudioRecorderTag eventTier="4" eventTag="incorrect group"/>
-                        <nextStimulus eventTag="nextIncorrectTask 2" norepeat="true"/>
+                        <clearPage/>
+                        <backgroundImage msToNext="1" src="background2.png">
+                            <stimulusImage msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" maxWidth="30"/>
+                            <addPadding/>
+                            <stimulusAudio msToNext="0"/>
+                            <actionButton featureText="Play Sound">
+                                <stimulusAudio msToNext="0"/>
+                            </actionButton>
+                            <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
+                                <endAudioRecorderTag eventTier="1" eventTag="task 2 animated"/>
+                                <nextStimulus eventTag="nextStimulusTask 2" norepeat="true"/>
+                            </actionButton>
+                        </backgroundImage>
                     </responseIncorrect>
                 </matchingStimulusGrid>
                 <addPadding/>
                 <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_question"/>
-                <actionButton featureText="Next" eventTag="Next" hotKey="SPACE">
-                    <endAudioRecorderTag eventTier="4" eventTag="exit group"/>
-                    <nextStimulus eventTag="nextStimulusTask 2" norepeat="true"/>
-                </actionButton>
                 <startAudioRecorderTag eventTier="4"/>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -240,7 +260,7 @@
             </stimuli>
         </loadSdCardStimulus>
     </presenter>
-    <presenter displayOrder="11" menuLabel="Debug Screen" type="debug" self="DebugScreen" title="Debug Screen">
+    <presenter back="Menu" displayOrder="11" menuLabel="Debug Screen" type="debug" self="DebugScreen" title="Debug Screen">
         <versionData/>
         <eraseLocalStorageButton/>
         <localStorageData/>

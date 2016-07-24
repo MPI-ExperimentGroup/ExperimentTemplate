@@ -33,6 +33,10 @@ public class WizardSelectUserScreen extends AbstractWizardScreen {
         super("Select User", "Select User", "SelectUser");
     }
 
+    public WizardSelectUserScreen(String titleString) {
+        super(titleString, titleString, "SelectUser");
+    }
+
     @Override
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         presenterScreen.setPresenterType(PresenterType.metadata);

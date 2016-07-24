@@ -75,10 +75,10 @@ public class RosselFieldKit {
         final WizardAnimatedStimuliScreen pictureTaskScreenSD = new WizardAnimatedStimuliScreen("SDCardPictureTask", new String[]{"AnimatedPictures"}, true, 1000, true, "Next", "file:///storage/emulated/0/MPI_STIMULI/background.png", false);
         welcomePresenter.setInstructionsScreen(instructionsPresenter);
         welcomePresenter.setProgramWizardScreen(welcomeMenuPresenter);
-        final WizardSelectUserScreen wizardSelectUserScreen = new WizardSelectUserScreen();
+        final WizardSelectUserScreen wizardSelectUserScreen = new WizardSelectUserScreen("Select Participant");
         wizardSelectUserScreen.setBackWizardScreen(welcomePresenter);
         wizardSelectUserScreen.setNextWizardScreen(menuScreen);
-        final WizardEditUserScreen editUserPresenter = new WizardEditUserScreen("Infomesen blong man/woman we i toktok", "Edit User", null, null, new String[]{"workerId:Nem blong man/woman we i toktok:.'{'3,'}':Please enter at least three letters."}, "Savem infomesen", null, null, null, false, "Could not contact the server, please check your internet connection and try again.");
+        final WizardEditUserScreen editUserPresenter = new WizardEditUserScreen("Information about the participant", "Edit User", null, null, new String[]{"workerId:Participant ID:.'{'3,'}':Please enter at least three letters."}, "Save and continue", null, null, null, false, "Could not contact the server, please check your internet connection and try again.");
         final WizardAboutScreen debugScreenPresenter = new WizardAboutScreen();
 
         final WizardStimulusScreen wizardStimulusScreen = new WizardStimulusScreen();
@@ -88,7 +88,7 @@ public class RosselFieldKit {
         wizardStimulusScreen.setScreenTag("MPI_STIMULIScreen");
 //        experiment, welcomePresenter, "cutbreak", welcomePresenter, new String[]{"cutbreak"}, grammaticalityValuesArray, true, 1000, false, "end_of_stimuli", 15, obfuscateScreenNames
         wizardStimulusScreen.setStimulusTagArray(new String[]{"MPI_STIMULI"});
-        wizardStimulusScreen.setFeatureValuesArray(new StimuliSubAction[]{new StimuliSubAction("80", "the informant talks/says whatever s/he wants", "next")});
+        wizardStimulusScreen.setFeatureValuesArray(new StimuliSubAction[]{new StimuliSubAction("80", "the informant talks about the image", "next")});
         wizardStimulusScreen.setMaxStimuli(1000);
         wizardStimulusScreen.setRandomiseStimuli(true);
         wizardStimulusScreen.setFilePerStimulus(false);
@@ -99,7 +99,7 @@ public class RosselFieldKit {
         task2Screen.setBackWizardScreen(menuScreen);
         task1Screen.setNextWizardScreen(menuScreen);
         task2Screen.setNextWizardScreen(menuScreen);
-        debugScreenPresenter.setNextWizardScreen(menuScreen);
+        debugScreenPresenter.setBackWizardScreen(menuScreen);
         pictureTaskScreenSD.setBackWizardScreen(menuScreen);
         pictureTaskScreenSD.setNextWizardScreen(menuScreen);
         editUserPresenter.setNextWizardScreen(menuScreen);
