@@ -176,7 +176,14 @@ public class ComplexView extends SimpleView {
     }
 
     public Button addOptionButton(final PresenterEventListner presenterListerner) {
+        return addOptionButton(presenterListerner, null);
+    }
+
+    public Button addOptionButton(final PresenterEventListner presenterListerner, String styleName) {
         Button nextButton = getOptionButton(presenterListerner);
+        if (styleName != null) {
+            nextButton.addStyleName(styleName);
+        }
         outerPanel.add(nextButton);
         return nextButton;
     }
