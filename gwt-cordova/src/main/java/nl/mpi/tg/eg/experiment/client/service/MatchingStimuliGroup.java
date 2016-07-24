@@ -17,7 +17,9 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
 
@@ -37,13 +39,20 @@ public class MatchingStimuliGroup {
 
     public MatchingStimuliGroup(final Stimulus correctStimulus, final List<Stimulus> stimuliArray, boolean randomise, int repeatCount, TimedStimulusListener hasMoreStimulusListener, TimedStimulusListener endOfStimulusListener) {
         this.correctStimulus = correctStimulus;
-        this.stimulusArray = stimuliArray;
         this.randomise = randomise;
         this.repeatCount = repeatCount;
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
-//        stimuliArray.add(correctStimulus);
         stimulusIndex = -1;
+        if (!randomise) {
+            this.stimulusArray = stimuliArray;
+        } else {
+            this.stimulusArray = new ArrayList<>();
+            while (!stimuliArray.isEmpty()) {
+                final int nextIndex = (randomise) ? new Random().nextInt(stimuliArray.size()) : 0;
+                stimulusArray.add(stimuliArray.remove(nextIndex));
+            }
+        }
     }
 
     public int getStimulusCount() {
