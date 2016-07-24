@@ -557,6 +557,21 @@ table#screenExample td {
     -webkit-animation-timing-function: cubic-bezier(0.835, 1.555, 0.695, 0.675);
 }
 
+.gwt-Button.optionButton.hiddenTopRight, .gwt-Button.optionButton.hiddenBottomRight{
+    position: fixed;
+    margin: 0;
+    width: 20%;
+    height: 20%;
+}
+.gwt-Button.optionButton.hiddenTopRight{
+    top: 0px;
+    right: 0px;
+}
+.gwt-Button.optionButton.hiddenBottomRight{
+    bottom: 0px;
+    right: 0px;
+}
+
 @-webkit-keyframes bouncekeyframes {
     from {top: -50%;}
     to {top: 35%;}
