@@ -39,6 +39,7 @@ import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus.Tag;
 public class StimulusProvider {
 
     private final List<Stimulus> stimulusArray = new ArrayList<>();
+    private final List<Stimulus> stimulusSelectionArray = new ArrayList<>();
     private final List<Stimulus> stimulusSubsetArray = new ArrayList<>();
 //    private final List<String> noisyList = new ArrayList<>();
 //    private final List<String> pictureList = new ArrayList<>();
@@ -79,7 +80,7 @@ public class StimulusProvider {
 
     public void getSdCardSubset(final ArrayList<String> directoryTagArray, final List<String[]> directoryList, final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final int maxStimulusCount, final boolean randomise, final int repeatCount, final String seenList) {
         final List<Stimulus> stimulusListCopy = new ArrayList<>();
-        stimulusArray.clear();
+        stimulusSelectionArray.clear();
         appendSdCardSubset(directoryTagArray, stimulusListCopy, directoryList, simulusLoadedListener, simulusErrorListener, maxStimulusCount, randomise, repeatCount, seenList);
     }
 
@@ -92,7 +93,7 @@ public class StimulusProvider {
                 while (!stimulusListCopy.isEmpty() && maxStimulusCount > stimulusSubsetArrayTemp.size()) {
                     final int nextIndex = (randomise) ? new Random().nextInt(stimulusListCopy.size()) : 0;
                     Stimulus stimulus = stimulusListCopy.remove(nextIndex);
-                    stimulusArray.add(stimulus);
+                    stimulusSelectionArray.add(stimulus);
                     if (!seenList.contains(stimulus.getUniqueId())) {
                         stimulusSubsetArrayTemp.add(stimulus);
                     }
@@ -131,10 +132,12 @@ public class StimulusProvider {
 
     public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final String seenList, List<Stimulus> stimulusListCopy) {
         final List<Stimulus> stimulusSubsetArrayTemp = new ArrayList<>();
+        stimulusSelectionArray.clear();
         while (!stimulusListCopy.isEmpty() && maxStimulusCount > stimulusSubsetArrayTemp.size()) {
             final int nextIndex = (randomise) ? new Random().nextInt(stimulusListCopy.size()) : 0;
             Stimulus stimulus = stimulusListCopy.remove(nextIndex);
             if (stimulus.getTags().containsAll(selectionTags)) {
+                stimulusSelectionArray.add(stimulus);
                 if (!seenList.contains(stimulus.getUniqueId())) {
                     stimulusSubsetArrayTemp.add(stimulus);
                 }
@@ -266,7 +269,8 @@ public class StimulusProvider {
         MatchResult matcher = pattern.exec(currentStimulus.getUniqueId());
         if (matcher != null) {
             String group = matcher.getGroup(0);
-            for (Stimulus stimulus : stimulusArray) {
+            // the stimulusSelectionArray should only contain stimuli relevant to this screen
+            for (Stimulus stimulus : stimulusSelectionArray) {
                 final String uniqueId = stimulus.getUniqueId();
                 if (uniqueId.contains(group)) {
                     matchingStimuli.add(stimulus);
