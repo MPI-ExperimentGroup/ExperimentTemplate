@@ -113,6 +113,7 @@
             <xsl:value-of select="
 if(@type = 'transmission' or @type = 'metadata'  or @type = 'colourReport') then ', submissionService, userResults' else
 if(@type = 'preload') then ', new AudioPlayer(this), submissionService, userResults' else
+if(@type = 'menu') then ', userResults, localStorage' else
 if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', new AudioPlayer(this), submissionService, userResults, localStorage' else ''" />
             <xsl:text>);
                 presenter.setState(this, </xsl:text>
@@ -222,12 +223,13 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             <xsl:value-of select="
 if(@type = 'transmission' or @type = 'metadata' or @type = 'colourReport') then ', DataSubmissionService submissionService, UserResults userResults' else 
 if(@type = 'preload') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults' else 
+if(@type = 'menu') then ', UserResults userResults, LocalStorage localStorage' else
 if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage' else ''" />
             <xsl:value-of select="if(@type = 'colourPicker') then ') throws CanvasError {' else ') {'"/>
             <xsl:choose>
                 <xsl:when test="@type = 'menu'">
                     <xsl:text>
-                        super(widgetTag, new MenuView());
+                        super(widgetTag, new MenuView(), userResults, localStorage);
                     </xsl:text>
                 </xsl:when>
                 <xsl:when test="@type = 'text'">
@@ -335,9 +337,12 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
 
             @Override
             public String getLabel() {
+            final boolean screenCompleted = Boolean.parseBoolean(localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "completed-screen-"+ApplicationState.</xsl:text>
+        <xsl:value-of select="@target" />
+        <xsl:text>.name()));
             return messages.</xsl:text>
         <xsl:value-of select="generate-id(.)" />
-        <xsl:text>();
+        <xsl:text>() + ((screenCompleted) ? " (complete)" : "");
             }
             
             @Override

@@ -74,6 +74,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     private TimedStimulusListener endOfStimulusListener;
     private ArrayList<StimulusFreeText> stimulusFreeTextList = new ArrayList<StimulusFreeText>();
     MatchingStimuliGroup matchingStimuliGroup = null;
+    private boolean hasSubdirectories = false;
 
     protected enum AnimateTypes {
         bounce, none
@@ -176,12 +177,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 if (directoryList.isEmpty()) {
                     showStimulus();
                 } else {
+                    hasSubdirectories = true;
                     for (final String[] directory : directoryList) {
-                        final boolean directoryCompleted = Boolean.parseBoolean(localStorage.getStoredDataValue(userResults.getUserData().getUserId(), directory[0]));
+                        final boolean directoryCompleted = Boolean.parseBoolean(localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "completed-directory-" + directory[0]));
                         ((TimedStimulusView) simpleView).addOptionButton(new PresenterEventListner() {
                             @Override
                             public String getLabel() {
-                                return directory[1] + ((directoryCompleted) ? " (finis)" : "");
+                                return directory[1] + ((directoryCompleted) ? " (complete)" : "");
                             }
 
                             @Override
@@ -190,7 +192,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                                 loadSdCardStimulus(directory[1], selectionTags, directory[0], maxStimulusCount, randomise, repeatCount, hasMoreStimulusListener, new TimedStimulusListener() {
                                     @Override
                                     public void postLoadTimerFired() {
-                                        localStorage.setStoredDataValue(userResults.getUserData().getUserId(), directory[0], Boolean.toString(true));
+                                        localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "completed-directory-" + directory[0], Boolean.toString(true));
                                         // go back to the initial directory 
                                         loadSdCardStimulus(eventTag, selectionTags, subDirectory, maxStimulusCount, randomise, repeatCount, hasMoreStimulusListener, endOfStimulusListener);
                                     }
@@ -294,6 +296,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //            super.startAudioRecorderTag(STIMULUS_TIER);
             hasMoreStimulusListener.postLoadTimerFired();
         } else {
+            if (!hasSubdirectories) {
+                localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "completed-screen-" + getSelfTag(), Boolean.toString(true));
+            }
             endOfStimulusListener.postLoadTimerFired();
         }
     }

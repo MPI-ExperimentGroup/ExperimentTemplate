@@ -23,6 +23,8 @@ import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.view.MenuView;
 import nl.mpi.tg.eg.experiment.client.view.SimpleView;
 
@@ -32,8 +34,13 @@ import nl.mpi.tg.eg.experiment.client.view.SimpleView;
  */
 public abstract class AbstractMenuPresenter extends AbstractPresenter implements Presenter {
 
-    public AbstractMenuPresenter(RootLayoutPanel widgetTag, SimpleView simpleView) {
+    protected final LocalStorage localStorage;
+    protected final UserResults userResults;
+
+    public AbstractMenuPresenter(RootLayoutPanel widgetTag, SimpleView simpleView, UserResults userResults, LocalStorage localStorage) {
         super(widgetTag, simpleView);
+        this.userResults = userResults;
+        this.localStorage = localStorage;
     }
 
     public void allMenuItems(final AppEventListner appEventListner, final ApplicationController.ApplicationState selfApplicationState) {
@@ -53,7 +60,8 @@ public abstract class AbstractMenuPresenter extends AbstractPresenter implements
 
                     @Override
                     public String getLabel() {
-                        return currentAppState.label;
+                        final boolean screenCompleted = Boolean.parseBoolean(localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "completed-screen-" + currentAppState.name()));
+                        return currentAppState.label + ((screenCompleted) ? " (complete)" : "");
                     }
                 }, true);
             }
