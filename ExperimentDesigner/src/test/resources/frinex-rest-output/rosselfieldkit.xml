@@ -42,7 +42,7 @@
         <menuItem featureText="Debug Screen" target="DebugScreen"/>
         <menuItem featureText="Instructions" target="Instructions"/>
     </presenter>
-    <presenter back="Welcome" displayOrder="6" menuLabel="Select Participant" next="Menu" type="metadata" self="Select_Participant" title="Select Participant">
+    <presenter back="Welcome" displayOrder="6" menuLabel="Select Participant" next="Menu" type="metadata" self="SelectUser" title="Select Participant">
         <selectUserMenu/>
     </presenter>
     <presenter back="Menu" displayOrder="7" menuLabel="MPI Stimuli" type="stimulus" self="MPI_STIMULIScreen" title="MPI Stimuli">
