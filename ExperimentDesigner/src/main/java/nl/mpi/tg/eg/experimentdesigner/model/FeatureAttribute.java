@@ -42,6 +42,7 @@ public enum FeatureAttribute {
     maxWidth,
     align,
     target,
+    styleName,
     eventTier,
     filePerStimulus,
     eventTag,

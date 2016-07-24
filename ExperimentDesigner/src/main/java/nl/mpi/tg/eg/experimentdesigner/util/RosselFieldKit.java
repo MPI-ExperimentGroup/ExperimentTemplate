@@ -47,16 +47,26 @@ public class RosselFieldKit {
 
         final WizardWelcomeScreen welcomePresenter = new WizardWelcomeScreen("Rossel Island FieldKit", "Welcome", "Instructions", "Begin", null, null);
         final WizardExistingUserCheckScreen welcomeMenuPresenter = new WizardExistingUserCheckScreen("Start", "New interview", "Resume interview", "Begin a new interview with a new participant", "Resume an interview with an existing participant");
-        final WizardTextScreen instructionsPresenter = new WizardTextScreen("Instructions", "Show the pictures and interact with the screen.<br/>"
-                + "There are three background images used on different screens to be placed as follows:<br/>"
-                + "/MPI_STIMULI/background.png<br/>"
+        final WizardTextScreen instructionsPresenter = new WizardTextScreen("Instructions", "Task 1 and Task 2 each have different background images to be located as follows:<br/>"
                 + "/MPI_STIMULI/background1.png<br/>"
                 + "/MPI_STIMULI/background2.png<br/>"
                 + "<br/>"
-                + "The stimuli for task 1 and task 2 are to be placed in the following directories<br/>"
+                + "The stimuli for task 1 and task 2 are to be placed in the following directories:<br/>"
                 + "/MPI_STIMULI/Task_1<br/>"
                 + "/MPI_STIMULI/Task_2<br/>"
-                + "<br/>", "Begin");
+                + "<br/>"
+                + "Each image for task 1 and task 2 should have an mp3 file with the same name.<br/>"
+                + "Each image group for task 1 and task 2 should be prefixed by a string common to that group followed by an underscore:<br/>"
+                + "\"1_pig.png\" \"1_pig.mp3\"<br/>"
+                + "\"2_bat.png\" \"2_bat.mp3\"<br/>"
+                + "\"2_fish.png\" \"2_fish.mp3\"<br/>"
+                + "\"1_rat.png\" \"1_rat.mp3\"<br/>"
+                + "<br/>"
+                + "Task 2 has an additional audio file per stimilus. This file has the postfix _question as follows:<br/>"
+                + "\"1_pig.png\" \"1_pig.mp3\" \"1_pig_question.mp3\"<br/>"
+                + "<br/>"
+                + "The MPI Stimuli task<br/>",
+                "Begin");
 
         final WizardMenuScreen menuScreen = new WizardMenuScreen("Menu", "Menu", "Menu");
         menuScreen.setBackWizardScreen(welcomePresenter);
@@ -69,10 +79,11 @@ public class RosselFieldKit {
         //            "ffmpeg -i 2_fish.wav 2_fish.mp3",
         //            "ffmpeg -i 1_rat.wav 1_rat.mp3"
         };
-        final WizardAnimatedStimuliScreen task1Screen = new WizardAnimatedStimuliScreen("Task 1", images, false, 1000, true, "Next", "background1.png", false);
-        final WizardAnimatedStimuliScreen task2Screen = new WizardAnimatedStimuliScreen("Task 2", images, false, 1000, true, "Next", "background2.png", true);
+        final WizardAnimatedStimuliScreen task1Screen = new WizardAnimatedStimuliScreen("Task 1 Demo", images, false, 1000, true, "Next", "background1.png", false);
+        final WizardAnimatedStimuliScreen task2Screen = new WizardAnimatedStimuliScreen("Task 2 Demo", images, false, 1000, true, "Next", "background2.png", true);
 //        final WizardAnimatedStimuliScreen pictureTaskScreen = new WizardAnimatedStimuliScreen("PictureTask", images, false, 1000, true, "Next", "background.png", false);
-        final WizardAnimatedStimuliScreen pictureTaskScreenSD = new WizardAnimatedStimuliScreen("SDCardPictureTask", new String[]{"AnimatedPictures"}, true, 1000, true, "Next", "file:///storage/emulated/0/MPI_STIMULI/background.png", false);
+        final WizardAnimatedStimuliScreen task1ScreenSD = new WizardAnimatedStimuliScreen("Task 1", new String[]{"Task1"}, true, 1000, true, "Next", "file:///storage/emulated/0/MPI_STIMULI/background1.png", false);
+        final WizardAnimatedStimuliScreen task2ScreenSD = new WizardAnimatedStimuliScreen("Task 2", new String[]{"Task2"}, true, 1000, true, "Next", "file:///storage/emulated/0/MPI_STIMULI/background2.png", true);
         welcomePresenter.setInstructionsScreen(instructionsPresenter);
         welcomePresenter.setProgramWizardScreen(welcomeMenuPresenter);
         final WizardSelectUserScreen wizardSelectUserScreen = new WizardSelectUserScreen("Select Participant");
@@ -82,12 +93,12 @@ public class RosselFieldKit {
         final WizardAboutScreen debugScreenPresenter = new WizardAboutScreen();
 
         final WizardStimulusScreen wizardStimulusScreen = new WizardStimulusScreen();
-        wizardStimulusScreen.setScreenTitle("MPI Stimuli");
-        wizardStimulusScreen.setMenuLabel("MPI Stimuli");
-        wizardStimulusScreen.setScreenLabel("MPI Stimuli");
-        wizardStimulusScreen.setScreenTag("MPI_STIMULIScreen");
+        wizardStimulusScreen.setScreenTitle("FieldKit Stimuli");
+        wizardStimulusScreen.setMenuLabel("FieldKit Stimuli");
+        wizardStimulusScreen.setScreenLabel("FieldKit Stimuli");
+        wizardStimulusScreen.setScreenTag("FieldKitScreen");
 //        experiment, welcomePresenter, "cutbreak", welcomePresenter, new String[]{"cutbreak"}, grammaticalityValuesArray, true, 1000, false, "end_of_stimuli", 15, obfuscateScreenNames
-        wizardStimulusScreen.setStimulusTagArray(new String[]{"MPI_STIMULI"});
+        wizardStimulusScreen.setStimulusTagArray(new String[]{"FieldKit"});
         wizardStimulusScreen.setFeatureValuesArray(new StimuliSubAction[]{new StimuliSubAction("80", "the informant talks about the image", "next")});
         wizardStimulusScreen.setMaxStimuli(1000);
         wizardStimulusScreen.setRandomiseStimuli(true);
@@ -100,8 +111,10 @@ public class RosselFieldKit {
         task1Screen.setNextWizardScreen(menuScreen);
         task2Screen.setNextWizardScreen(menuScreen);
         debugScreenPresenter.setBackWizardScreen(menuScreen);
-        pictureTaskScreenSD.setBackWizardScreen(menuScreen);
-        pictureTaskScreenSD.setNextWizardScreen(menuScreen);
+        task1ScreenSD.setBackWizardScreen(menuScreen);
+        task1ScreenSD.setNextWizardScreen(menuScreen);
+        task2ScreenSD.setBackWizardScreen(menuScreen);
+        task2ScreenSD.setNextWizardScreen(menuScreen);
         editUserPresenter.setNextWizardScreen(menuScreen);
         welcomeMenuPresenter.setNextWizardScreen(editUserPresenter);
         welcomeMenuPresenter.setBackWizardScreen(instructionsPresenter);
@@ -109,9 +122,10 @@ public class RosselFieldKit {
         instructionsPresenter.setNextWizardScreen(welcomeMenuPresenter);
         wizardStimulusScreen.setBackWizardScreen(menuScreen);
         wizardStimulusScreen.setEndOfStimulisWizardScreen(menuScreen);
+        menuScreen.addTargetScreen(task1ScreenSD);
+        menuScreen.addTargetScreen(task2ScreenSD);
         menuScreen.addTargetScreen(task1Screen);
         menuScreen.addTargetScreen(task2Screen);
-        menuScreen.addTargetScreen(pictureTaskScreenSD);
         menuScreen.addTargetScreen(wizardStimulusScreen);
         menuScreen.addTargetScreen(debugScreenPresenter);
         menuScreen.addTargetScreen(instructionsPresenter);
@@ -124,7 +138,8 @@ public class RosselFieldKit {
         wizardData.addScreen(wizardStimulusScreen);
         wizardData.addScreen(task1Screen);
         wizardData.addScreen(task2Screen);
-        wizardData.addScreen(pictureTaskScreenSD);
+        wizardData.addScreen(task1ScreenSD);
+        wizardData.addScreen(task2ScreenSD);
         wizardData.addScreen(debugScreenPresenter);
         return wizardData;
     }
