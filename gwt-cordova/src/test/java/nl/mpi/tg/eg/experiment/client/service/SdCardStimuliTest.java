@@ -80,11 +80,12 @@ public class SdCardStimuliTest {
             "file:///storage/emulated/0/MPI_STIMULI/SDCardPictureTask/2_bat.png",
             "file:///storage/emulated/0/MPI_STIMULI/SDCardPictureTask/2_fish.mp3",
             "file:///storage/emulated/0/MPI_STIMULI/SDCardPictureTask/2_fish.png",
+            "file:///storage/emulated/0/MPI_STIMULI/SDCardPictureTask/2_fish_question.png",
             "file:///storage/emulated/0/MPI_STIMULI/SDCardPictureTask/2_fish%20copy.mp3"
         };
         final ArrayList<Stimulus> stimuliList = new ArrayList<>();
 
-        SdCardStimuli instance = new SdCardStimuli(stimuliList, new ArrayList<String[]>(), null, null);
+        SdCardStimuli instance = new SdCardStimuli(stimuliList, new ArrayList<String[]>(), ".*_question\\....$", null, null);
         for (String stimulusPath : testData) {
             instance.insertStimulus(stimulusPath, stimulusPath.substring(stimulusPath.lastIndexOf("/") + 1));
         }

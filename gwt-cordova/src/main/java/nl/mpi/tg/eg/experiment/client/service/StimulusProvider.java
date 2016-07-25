@@ -115,7 +115,7 @@ public class StimulusProvider {
             }
         } else {
             final String directoryTag = directoryTagArray.remove(0);
-            final SdCardStimuli sdCardStimuli = new SdCardStimuli(stimulusListCopy, directoryList, new TimedStimulusListener() {
+            final SdCardStimuli sdCardStimuli = new SdCardStimuli(stimulusListCopy, directoryList, ".*_question\\....$", new TimedStimulusListener() {
                 @Override
                 public void postLoadTimerFired() {
                     appendSdCardSubset(directoryTagArray, stimulusListCopy, directoryList, simulusLoadedListener, simulusErrorListener, maxStimulusCount, randomise, repeatCount, seenList);

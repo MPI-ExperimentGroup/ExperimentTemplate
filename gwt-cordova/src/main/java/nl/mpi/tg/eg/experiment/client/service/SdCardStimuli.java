@@ -38,12 +38,14 @@ public class SdCardStimuli {
     private final List<String[]> directoryList;
     private final TimedStimulusListener simulusLoadedListener;
     private final TimedStimulusListener simulusErrorListener;
+    private final String excludeRegex;
 
-    public SdCardStimuli(List<Stimulus> stimulusArray, final List<String[]> directoryList, TimedStimulusListener simulusLoadedListener, TimedStimulusListener simulusErrorListener) {
+    public SdCardStimuli(List<Stimulus> stimulusArray, final List<String[]> directoryList, final String excludeRegex, TimedStimulusListener simulusLoadedListener, TimedStimulusListener simulusErrorListener) {
         this.stimulusArray = stimulusArray;
         this.simulusLoadedListener = simulusLoadedListener;
         this.simulusErrorListener = simulusErrorListener;
         this.directoryList = directoryList;
+        this.excludeRegex = excludeRegex;
     }
 
     public final void fillStimulusList(final String directoryTag) {
@@ -68,44 +70,46 @@ public class SdCardStimuli {
     private static final String BASE_FILE_REGEX = "\\.[a-zA-Z34]+$";
 
     public void insertStimulus(String stimulusPath, String fileName) {
-        // GWT.log("stimulusPath: " + stimulusPath);
-        // GWT.log("fileName: " + fileName);
+        if (excludeRegex == null || !fileName.matches(excludeRegex)) {
+            // GWT.log("stimulusPath: " + stimulusPath);
+            // GWT.log("fileName: " + fileName);
 //        final String stimulusId = stimulusPath.substring(stimulusPath.indexOf(MPI_STIMULI) + MPI_STIMULI.length() + 1);
 //        final String stimulusId = stimulusPath.replaceAll("^.*" + MPI_STIMULI + "/", "").replaceAll("\\....$", "");
-        final String stimulusId = stimulusPath.substring(stimulusPath.lastIndexOf("/") + 1).replaceAll("\\....$", "");
-        final String suffix = stimulusPath.toLowerCase().substring(stimulusPath.length() - 4, stimulusPath.length());
-        final String filePart = stimulusPath.substring(0, stimulusPath.length() - 4);
-        // GWT.log("suffix: " + suffix);
-        final String stimuliLabel = null;
-        final String stimuliCode = filePart;
-        final int pause = 0;
+            final String stimulusId = stimulusPath.substring(stimulusPath.lastIndexOf("/") + 1).replaceAll("\\....$", "");
+            final String suffix = stimulusPath.toLowerCase().substring(stimulusPath.length() - 4, stimulusPath.length());
+            final String filePart = stimulusPath.substring(0, stimulusPath.length() - 4);
+            // GWT.log("suffix: " + suffix);
+            final String stimuliLabel = null;
+            final String stimuliCode = filePart;
+            final int pause = 0;
 //        final boolean isLabel = ".txt".equals(suffix);
-        final boolean isMp3 = ".mp3".equals(suffix);
-        final boolean isMp4 = ".mp4".equals(suffix);
-        final boolean isOgg = ".ogg".equals(suffix);
-        final boolean isImage = ".jpg".equals(suffix) || ".png".equals(suffix);
-        // todo: insert a relevant tag and address enum limitiation
-        final SdCardStimulus existingSdCardStimulus = stimulusHashMap.get(stimulusId);
-        if (existingSdCardStimulus != null) {
-            if (isMp3) {
-                existingSdCardStimulus.addAudio();
+            final boolean isMp3 = ".mp3".equals(suffix);
+            final boolean isMp4 = ".mp4".equals(suffix);
+            final boolean isOgg = ".ogg".equals(suffix);
+            final boolean isImage = ".jpg".equals(suffix) || ".png".equals(suffix);
+            // todo: insert a relevant tag and address enum limitiation
+            final SdCardStimulus existingSdCardStimulus = stimulusHashMap.get(stimulusId);
+            if (existingSdCardStimulus != null) {
+                if (isMp3) {
+                    existingSdCardStimulus.addAudio();
+                }
+                if (isMp4) {
+                    existingSdCardStimulus.addVideo();
+                }
+                if (isOgg) {
+                    existingSdCardStimulus.addVideo();
+                }
+                if (isImage) {
+                    existingSdCardStimulus.addImage(stimulusPath);
+                }
+            } else {
+                final SdCardStimulus sdCardStimulus = new SdCardStimulus(stimulusId,
+                        stimulusPath.replaceFirst(BASE_FILE_REGEX, ""),
+                        //                /* tagArray */ new Stimulus.Tag[0]/* we dont set this with the tag array because each stimulus would only have one out of many applicable from the array */,
+                        stimuliLabel, stimuliCode, pause, isMp3, (isMp4 || isOgg), (isImage) ? stimulusPath : null);
+                stimulusHashMap.put(stimulusId, sdCardStimulus);
+                stimulusArray.add(sdCardStimulus);
             }
-            if (isMp4) {
-                existingSdCardStimulus.addVideo();
-            }
-            if (isOgg) {
-                existingSdCardStimulus.addVideo();
-            }
-            if (isImage) {
-                existingSdCardStimulus.addImage(stimulusPath);
-            }
-        } else {
-            final SdCardStimulus sdCardStimulus = new SdCardStimulus(stimulusId,
-                    stimulusPath.replaceFirst(BASE_FILE_REGEX, ""),
-                    //                /* tagArray */ new Stimulus.Tag[0]/* we dont set this with the tag array because each stimulus would only have one out of many applicable from the array */,
-                    stimuliLabel, stimuliCode, pause, isMp3, (isMp4 || isOgg), (isImage) ? stimulusPath : null);
-            stimulusHashMap.put(stimulusId, sdCardStimulus);
-            stimulusArray.add(sdCardStimulus);
         }
     }
 
