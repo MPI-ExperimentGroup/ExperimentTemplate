@@ -71,7 +71,8 @@ public class SdCardStimuli {
         // GWT.log("stimulusPath: " + stimulusPath);
         // GWT.log("fileName: " + fileName);
 //        final String stimulusId = stimulusPath.substring(stimulusPath.indexOf(MPI_STIMULI) + MPI_STIMULI.length() + 1);
-        final String stimulusId = stimulusPath.replaceAll("^.*" + MPI_STIMULI + "/", "").replaceAll("\\....$", "");
+//        final String stimulusId = stimulusPath.replaceAll("^.*" + MPI_STIMULI + "/", "").replaceAll("\\....$", "");
+        final String stimulusId = stimulusPath.substring(stimulusPath.lastIndexOf("/") + 1).replaceAll("\\....$", "");
         final String suffix = stimulusPath.toLowerCase().substring(stimulusPath.length() - 4, stimulusPath.length());
         final String filePart = stimulusPath.substring(0, stimulusPath.length() - 4);
         // GWT.log("suffix: " + suffix);
