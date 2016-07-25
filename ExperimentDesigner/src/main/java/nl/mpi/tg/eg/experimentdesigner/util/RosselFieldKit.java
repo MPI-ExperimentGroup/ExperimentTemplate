@@ -65,7 +65,19 @@ public class RosselFieldKit {
                 + "Task 2 has an additional audio file per stimilus. This file has the postfix _question as follows:<br/>"
                 + "\"1_pig.png\" \"1_pig.mp3\" \"1_pig_question.mp3\"<br/>"
                 + "<br/>"
-                + "The MPI Stimuli task<br/>",
+                + "The MPI Stimuli task<br/>"
+                + ""
+                + ""
+                + ""
+                + "Recorded audio will be stored on the sdcard in the MPI_Recorder directory."
+                + "/data/media/0/MPI_Recorder/155feab481d-87fb-9eb9-46c9-3e40/SDCardPictureTask/2016-07-18-175348.wav'."
+                + ""
+                + "Import recordings into ELAN"
+                + ""
+                + ""
+                + "Hidden buttons"
+                + ""
+                + "",
                 "Begin");
 
         final WizardMenuScreen menuScreen = new WizardMenuScreen("Menu", "Menu", "Menu");
@@ -90,7 +102,7 @@ public class RosselFieldKit {
         wizardSelectUserScreen.setBackWizardScreen(welcomePresenter);
         wizardSelectUserScreen.setNextWizardScreen(menuScreen);
         final WizardEditUserScreen editUserPresenter = new WizardEditUserScreen("Information about the participant", "Edit User", null, null, new String[]{"workerId:Participant ID:.'{'3,'}':Please enter at least three letters."}, "Save and continue", null, null, null, false, "Could not contact the server, please check your internet connection and try again.");
-        final WizardAboutScreen debugScreenPresenter = new WizardAboutScreen();
+//        final WizardAboutScreen debugScreenPresenter = new WizardAboutScreen();
 
         final WizardStimulusScreen wizardStimulusScreen = new WizardStimulusScreen();
         wizardStimulusScreen.setScreenTitle("FieldKit Stimuli");
@@ -110,7 +122,7 @@ public class RosselFieldKit {
         task2Screen.setBackWizardScreen(menuScreen);
         task1Screen.setNextWizardScreen(menuScreen);
         task2Screen.setNextWizardScreen(menuScreen);
-        debugScreenPresenter.setBackWizardScreen(menuScreen);
+//        debugScreenPresenter.setBackWizardScreen(menuScreen);
         task1ScreenSD.setBackWizardScreen(menuScreen);
         task1ScreenSD.setNextWizardScreen(menuScreen);
         task2ScreenSD.setBackWizardScreen(menuScreen);
@@ -127,7 +139,7 @@ public class RosselFieldKit {
         menuScreen.addTargetScreen(task1Screen);
         menuScreen.addTargetScreen(task2Screen);
         menuScreen.addTargetScreen(wizardStimulusScreen);
-        menuScreen.addTargetScreen(debugScreenPresenter);
+//        menuScreen.addTargetScreen(debugScreenPresenter);
         menuScreen.addTargetScreen(instructionsPresenter);
         wizardData.addScreen(welcomePresenter);
         wizardData.addScreen(welcomeMenuPresenter);
@@ -140,7 +152,7 @@ public class RosselFieldKit {
         wizardData.addScreen(task2Screen);
         wizardData.addScreen(task1ScreenSD);
         wizardData.addScreen(task2ScreenSD);
-        wizardData.addScreen(debugScreenPresenter);
+//        wizardData.addScreen(debugScreenPresenter);
         return wizardData;
     }
 

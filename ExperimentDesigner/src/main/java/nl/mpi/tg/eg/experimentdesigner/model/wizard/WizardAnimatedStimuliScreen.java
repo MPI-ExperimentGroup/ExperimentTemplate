@@ -150,6 +150,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             endAudioRecorderTagFeature2.addFeatureAttributes(FeatureAttribute.eventTier, "2");
             endAudioRecorderTagFeature2.addFeatureAttributes(FeatureAttribute.eventTag, "bounce and background");
             nextButtonFeature2.getPresenterFeatureList().add(endAudioRecorderTagFeature2);
+            nextButtonFeature2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.removeStimulus, null));
             nextButtonFeature2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.nextMatchingStimulus, null));
 
             final PresenterFeature startTagFeature2 = new PresenterFeature(FeatureType.startAudioRecorderTag, null);
@@ -157,20 +158,17 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             imageFeature2.getPresenterFeatureList().add(startTagFeature2);
 
             // show small stimulus a & b on background
-            final PresenterFeature imageFeature4 = addStimulusGrid(endOfMatchingStimulusFeature, 30, true, true, true);
-
+//            final PresenterFeature imageFeature4 = addStimulusGrid(endOfMatchingStimulusFeature, 30, true, true, true);
             PresenterFeature nextButtonFeature4 = getNextButtonFeature();
-            imageFeature4.getPresenterFeatureList().add(nextButtonFeature4);
+            endOfMatchingStimulusFeature.getPresenterFeatureList().add(nextButtonFeature4);
 
-            final PresenterFeature endAudioRecorderTagFeature4 = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
-            endAudioRecorderTagFeature4.addFeatureAttributes(FeatureAttribute.eventTier, "4");
-            endAudioRecorderTagFeature4.addFeatureAttributes(FeatureAttribute.eventTag, "exit group");
-            nextButtonFeature4.getPresenterFeatureList().add(endAudioRecorderTagFeature4);
-
-            final PresenterFeature startTagFeature4 = new PresenterFeature(FeatureType.startAudioRecorderTag, null);
-            startTagFeature4.addFeatureAttributes(FeatureAttribute.eventTier, "4");
-            imageFeature4.getPresenterFeatureList().add(startTagFeature4);
-
+//            final PresenterFeature endAudioRecorderTagFeature4 = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
+//            endAudioRecorderTagFeature4.addFeatureAttributes(FeatureAttribute.eventTier, "4");
+//            endAudioRecorderTagFeature4.addFeatureAttributes(FeatureAttribute.eventTag, "exit group");
+//            nextButtonFeature4.getPresenterFeatureList().add(endAudioRecorderTagFeature4);
+//            final PresenterFeature startTagFeature4 = new PresenterFeature(FeatureType.startAudioRecorderTag, null);
+//            startTagFeature4.addFeatureAttributes(FeatureAttribute.eventTier, "4");
+//            imageFeature4.getPresenterFeatureList().add(startTagFeature4);
             final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
             nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
             nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + screenTitle);
