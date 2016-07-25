@@ -315,6 +315,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void removeStimulus() {
+        stimulusProvider.removeStimulus(stimulusProvider.getCurrentStimulus());
         localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST + getSelfTag(), "-" + stimulusProvider.getCurrentStimulus().getUniqueId());
     }
 

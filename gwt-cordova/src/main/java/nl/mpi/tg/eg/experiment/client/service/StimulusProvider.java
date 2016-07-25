@@ -247,6 +247,10 @@ public class StimulusProvider {
         this.currentStimulus = currentStimulus;
     }
 
+    public void removeStimulus(Stimulus removeStimulus) {
+        stimulusSubsetArray.remove(removeStimulus);
+    }
+
     public void getNextStimulus() {
         currentStimulus = stimulusSubsetArray.remove(0);
     }
