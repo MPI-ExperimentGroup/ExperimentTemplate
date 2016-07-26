@@ -441,8 +441,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         final String uniqueId = stimulusProvider.getCurrentStimulus().getUniqueId();
         String mp3 = formattedCode + ".mp3";
         String ogg = formattedCode + ".ogg";
-        final SafeUri oggTrustedString = (ogg == null) ? null : UriUtils.fromTrustedString(serviceLocations.staticFilesUrl() + ogg);
-        final SafeUri mp3TrustedString = (mp3 == null) ? null : UriUtils.fromTrustedString(serviceLocations.staticFilesUrl() + mp3);
+        final SafeUri oggTrustedString = (ogg == null) ? null : UriUtils.fromTrustedString((ogg.startsWith("file") ? "" : serviceLocations.staticFilesUrl()) + ogg);
+        final SafeUri mp3TrustedString = (mp3 == null) ? null : UriUtils.fromTrustedString((mp3.startsWith("file") ? "" : serviceLocations.staticFilesUrl()) + mp3);
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusCodeAudio", formattedCode, duration.elapsedMillis());
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", formattedCode, duration.elapsedMillis());
         final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
@@ -484,7 +484,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusAudioShown", uniqueId, audio, duration.elapsedMillis());
             }
         };
-        ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromString(ogg), UriUtils.fromString(mp3), postLoadMs, shownStimulusListener, timedStimulusListener);
+        ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromTrustedString(ogg), UriUtils.fromTrustedString(mp3), postLoadMs, shownStimulusListener, timedStimulusListener);
 //        ((TimedStimulusView) simpleView).addText("playStimulusAudio: " + duration.elapsedMillis() + "ms");
     }
 
@@ -574,7 +574,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void startAudioRecorder(boolean wavFormat, boolean filePerStimulus, String directoryName) {
-        super.startAudioRecorder(true, userResults.getUserData().getUserId().toString(), directoryName, (filePerStimulus) ? stimulusProvider.getCurrentStimulus().getUniqueId() : "");
+//        final String subdirectoryName = userResults.getUserData().getUserId().toString();
+        final String subdirectoryName = userResults.getUserData().getMetadataValue(new MetadataFieldProvider().workerIdMetadataField);
+        super.startAudioRecorder(true, subdirectoryName, directoryName, (filePerStimulus) ? stimulusProvider.getCurrentStimulus().getUniqueId() : "");
     }
 
     protected void showStimulusGrid(final AppEventListner appEventListner, final int postLoadCorrectMs, final TimedStimulusListener correctListener, final int postLoadIncorrectMs, final TimedStimulusListener incorrectListener, final int columnCount, final String imageWidth, final String eventTag) {
