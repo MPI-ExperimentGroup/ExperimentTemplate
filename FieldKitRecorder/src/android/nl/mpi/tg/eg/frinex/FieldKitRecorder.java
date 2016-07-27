@@ -43,56 +43,71 @@ public class FieldKitRecorder extends CordovaPlugin {
     final static int PAUSE_TIER = 0;
     private String startPauseSystemTime = null;
 
+    private String actionTemp;
+    private JSONArray argsTemp;
+    private CallbackContext callbackContextTemp;
+
     @Override
     public boolean execute(final String action, final JSONArray args, final CallbackContext callbackContext) throws JSONException {
         if (action.equals("record")) {
             String[] permissions = {
                 Manifest.permission.RECORD_AUDIO,
+                //                Manifest.permission.MODIFY_AUDIO_SETTINGS,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
+                //                Manifest.permission.ACCESS_NETWORK_STATE,
+                //                Manifest.permission.MEDIA_CONTENT_CONTROL,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
             };
             if (!cordova.hasPermission(Manifest.permission.RECORD_AUDIO)
-                    || !cordova.hasPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                    //                    || !cordova.hasPermission(Manifest.permission.MODIFY_AUDIO_SETTINGS)
+                    //                    || !cordova.hasPermission(Manifest.permission.MEDIA_CONTENT_CONTROL) // MODIFY_AUDIO_SETTINGS MEDIA_CONTENT_CONTROL?
+                    || !cordova.hasPermission(Manifest.permission.READ_EXTERNAL_STORAGE) // MODIFY_AUDIO_SETTINGS MEDIA_CONTENT_CONTROL?
                     || !cordova.hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                actionTemp = action;
+                argsTemp = args;
+                callbackContextTemp = callbackContext;
                 cordova.requestPermissions(this, 0, permissions);
-            }
-            System.out.println("action: record");
-            final String userId = args.getString(0);
-            final String stimulusSet = args.getString(1);
-            final String stimulusId = args.getString(2);
+//                callbackContext.error("Requesting permissions");
+                return true;
+            } else {
+                System.out.println("action: record");
+                final String userId = args.getString(0);
+                final String stimulusSet = args.getString(1);
+                final String stimulusId = args.getString(2);
 
-            System.out.println("record: " + userId);
-            System.out.println("record: " + stimulusSet);
-            System.out.println("record: " + stimulusId);
-            cordova.getThreadPool().execute(new Runnable() {
-                @Override
-                public void run() {
-                    try {
+                System.out.println("record: " + userId);
+                System.out.println("record: " + stimulusSet);
+                System.out.println("record: " + stimulusId);
+                cordova.getThreadPool().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
 //                        Date date = new Date();
-                        //SimpleDateFormat dateFormat = new SimpleDateFormat("yy_MM_dd");
+                            //SimpleDateFormat dateFormat = new SimpleDateFormat("yy_MM_dd");
 //                        String dirName = "MPI_Recorder_" + dateFormat.format(date);
-                        final File outputDirectory = new File(externalStoragePath, AUDIO_RECORDER_FOLDER
-                                //                                + File.separator + dirName
-                                + File.separator + userId
-                                + File.separator + stimulusSet
-                                + ((stimulusId != null && !stimulusId.isEmpty()) ? File.separator + stimulusId + File.separator : ""));
-                        if (!audioRecorder.isRecording() || currentRecoringDirectory == null || !currentRecoringDirectory.equals(outputDirectory.getAbsolutePath())) {
-                            if (csvWriter != null) {
-                                csvWriter.writeCsvFile(FieldKitRecorder.this.cordova.getActivity().getApplicationContext());
-                                csvWriter = null;
+                            final File outputDirectory = new File(externalStoragePath, AUDIO_RECORDER_FOLDER
+                                    //                                + File.separator + dirName
+                                    + File.separator + userId
+                                    + File.separator + stimulusSet
+                                    + ((stimulusId != null && !stimulusId.isEmpty()) ? File.separator + stimulusId + File.separator : ""));
+                            if (!audioRecorder.isRecording() || currentRecoringDirectory == null || !currentRecoringDirectory.equals(outputDirectory.getAbsolutePath())) {
+                                if (csvWriter != null) {
+                                    csvWriter.writeCsvFile(FieldKitRecorder.this.cordova.getActivity().getApplicationContext());
+                                    csvWriter = null;
+                                }
+                                currentRecoringDirectory = outputDirectory.getAbsolutePath();
+                                final String baseName = audioRecorder.startRecording(outputDirectory, FieldKitRecorder.this.cordova.getActivity().getApplicationContext());
+                                csvWriter = new CsvWriter(outputDirectory, baseName);
+                                callbackContext.success();
                             }
-                            currentRecoringDirectory = outputDirectory.getAbsolutePath();
-                            final String baseName = audioRecorder.startRecording(outputDirectory, FieldKitRecorder.this.cordova.getActivity().getApplicationContext());
-                            csvWriter = new CsvWriter(outputDirectory, baseName);
-                            callbackContext.success();
+                        } catch (final IOException e) {
+                            System.out.println("IOException: " + e.getMessage());
+                            callbackContext.error(e.getMessage());
                         }
-                    } catch (final IOException e) {
-                        System.out.println("IOException: " + e.getMessage());
-                        callbackContext.error(e.getMessage());
                     }
-                }
-            });
-            return true;
+                });
+                return true;
+            }
         }
         if (action.equals("stop")) {
             System.out.println("action: stop");
@@ -223,4 +238,17 @@ public class FieldKitRecorder extends CordovaPlugin {
         }
         startPauseSystemTime = null;
     }
+
+    public void onRequestPermissionResult(int requestCode, String[] permissions, int[] grantResults) throws JSONException {
+        execute(actionTemp, argsTemp, callbackContextTemp);
+    }
+
+//    @Override
+//    public void onWindowFocusChanged(boolean hasFocus) {
+//        super.onWindowFocusChanged(hasFocus);
+//        View decorView = getWindow().getDecorView();
+//        if (hasFocus) {
+//            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+//        }
+//    }
 }
