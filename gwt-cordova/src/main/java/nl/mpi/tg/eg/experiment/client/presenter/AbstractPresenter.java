@@ -195,6 +195,21 @@ public abstract class AbstractPresenter implements Presenter {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
         }
      }-*/;
+    protected native void requestRecorderPermissions() /*-{
+        var abstractPresenter = this;
+        console.log("requestRecorderPermissions");
+        if($wnd.plugins){
+            $wnd.plugins.fieldKitRecorder.requestpermissions(function (tagvalue) {
+                console.log("requestRecorderPermissionsOk: " + tagvalue);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, tagvalue);
+            }, function (tagvalue) {
+                console.log("requestRecorderPermissionsError: " + tagvalue);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
+            });
+        } else {
+            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
+        }
+     }-*/;
 
     protected native void isAudioRecording() /*-{
         var abstractPresenter = this;
