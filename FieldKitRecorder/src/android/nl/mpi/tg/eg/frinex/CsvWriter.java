@@ -48,6 +48,9 @@ public class CsvWriter {
 
     public void writeCsvFile(Context context) throws IOException {
         System.out.println("writeCsvFile: " + baseName + CSV_SUFFIX);
+        if (!outputDirectory.exists()) {
+            outputDirectory.mkdirs();
+        }
         final File csvFile = new File(outputDirectory, baseName + CSV_SUFFIX);
         final FileWriter csvFileWriter = new FileWriter(csvFile, false);
         csvFileWriter.write("BeginTime,EndTime,BeginTime2,EndTime2,Tier,StimulusID,StimulusCode,Tag\n");
