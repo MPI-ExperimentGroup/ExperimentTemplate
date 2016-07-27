@@ -42,34 +42,41 @@ public class FieldKitRecorder extends CordovaPlugin {
     private String currentRecoringDirectory = null;
     final static int PAUSE_TIER = 0;
     private String startPauseSystemTime = null;
-
-    private String actionTemp;
-    private JSONArray argsTemp;
     private CallbackContext callbackContextTemp;
 
     @Override
     public boolean execute(final String action, final JSONArray args, final CallbackContext callbackContext) throws JSONException {
-        if (action.equals("record")) {
-            String[] permissions = {
-                Manifest.permission.RECORD_AUDIO,
-                //                Manifest.permission.MODIFY_AUDIO_SETTINGS,
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-                //                Manifest.permission.ACCESS_NETWORK_STATE,
-                //                Manifest.permission.MEDIA_CONTENT_CONTROL,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-            };
+        if (action.equals("requestPermissions")) {
+            System.out.println("action: requestPermissions");
             if (!cordova.hasPermission(Manifest.permission.RECORD_AUDIO)
                     //                    || !cordova.hasPermission(Manifest.permission.MODIFY_AUDIO_SETTINGS)
                     //                    || !cordova.hasPermission(Manifest.permission.MEDIA_CONTENT_CONTROL) // MODIFY_AUDIO_SETTINGS MEDIA_CONTENT_CONTROL?
                     || !cordova.hasPermission(Manifest.permission.READ_EXTERNAL_STORAGE) // MODIFY_AUDIO_SETTINGS MEDIA_CONTENT_CONTROL?
                     || !cordova.hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                actionTemp = action;
-                argsTemp = args;
+                String[] permissions = {
+                    Manifest.permission.RECORD_AUDIO,
+                    //                Manifest.permission.MODIFY_AUDIO_SETTINGS,
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    //                Manifest.permission.ACCESS_NETWORK_STATE,
+                    //                Manifest.permission.MEDIA_CONTENT_CONTROL,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+                };
                 callbackContextTemp = callbackContext;
                 cordova.requestPermissions(this, 0, permissions);
-//                callbackContext.error("Requesting permissions");
                 return true;
             } else {
+                callbackContext.success();
+                return true;
+            }
+        }
+        if (!cordova.hasPermission(Manifest.permission.RECORD_AUDIO)
+                || !cordova.hasPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                || !cordova.hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            // only if permissions are available should we continue at this point
+            callbackContext.error("Permissions not available");
+            return true;
+        } else {
+            if (action.equals("record")) {
                 System.out.println("action: record");
                 final String userId = args.getString(0);
                 final String stimulusSet = args.getString(1);
@@ -108,91 +115,91 @@ public class FieldKitRecorder extends CordovaPlugin {
                 });
                 return true;
             }
-        }
-        if (action.equals("stop")) {
-            System.out.println("action: stop");
-            cordova.getThreadPool().execute(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        if (csvWriter != null) {
-                            csvWriter.writeCsvFile(FieldKitRecorder.this.cordova.getActivity().getApplicationContext());
-                            csvWriter = null;
+            if (action.equals("stop")) {
+                System.out.println("action: stop");
+                cordova.getThreadPool().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            if (csvWriter != null) {
+                                csvWriter.writeCsvFile(FieldKitRecorder.this.cordova.getActivity().getApplicationContext());
+                                csvWriter = null;
+                            }
+                            audioRecorder.stopRecording();
+                            callbackContext.success();
+                        } catch (final IOException e) {
+                            System.out.println("IOException: " + e.getMessage());
+                            callbackContext.error(e.getMessage());
                         }
-                        audioRecorder.stopRecording();
-                        callbackContext.success();
-                    } catch (final IOException e) {
-                        System.out.println("IOException: " + e.getMessage());
-                        callbackContext.error(e.getMessage());
                     }
-                }
-            });
-            return true;
-        }
-        if (action.equals("startTag")) {
-            System.out.println("action: startTag");
-            final String tier = args.getString(0);
-            cordova.getThreadPool().execute(new Runnable() {
-                @Override
-                public void run() {
-                    if (csvWriter != null) {
-                        csvWriter.startTag(Integer.parseInt(tier), audioRecorder.getTime());
-                    } else {
-                        callbackContext.error("not recording");
+                });
+                return true;
+            }
+            if (action.equals("startTag")) {
+                System.out.println("action: startTag");
+                final String tier = args.getString(0);
+                cordova.getThreadPool().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (csvWriter != null) {
+                            csvWriter.startTag(Integer.parseInt(tier), audioRecorder.getTime());
+                        } else {
+                            callbackContext.error("not recording");
+                        }
                     }
-                }
-            });
-            return true;
-        }
-        if (action.equals("endTag")) {
-            System.out.println("action: endTag");
-            final String tier = args.getString(0);
-            final String stimulusId = args.getString(1);
-            final String stimulusCode = args.getString(2);
-            final String tagString = args.getString(3);
-            System.out.println("endTag: " + tier);
-            System.out.println("endTag: " + stimulusId);
-            System.out.println("endTag: " + stimulusCode);
-            System.out.println("endTag: " + tagString);
-            cordova.getThreadPool().execute(new Runnable() {
-                @Override
-                public void run() {
-                    if (csvWriter != null) {
-                        csvWriter.endTag(Integer.parseInt(tier), audioRecorder.getTime(), stimulusId, stimulusCode, tagString);
-                    } else {
-                        callbackContext.error("not recording");
+                });
+                return true;
+            }
+            if (action.equals("endTag")) {
+                System.out.println("action: endTag");
+                final String tier = args.getString(0);
+                final String stimulusId = args.getString(1);
+                final String stimulusCode = args.getString(2);
+                final String tagString = args.getString(3);
+                System.out.println("endTag: " + tier);
+                System.out.println("endTag: " + stimulusId);
+                System.out.println("endTag: " + stimulusCode);
+                System.out.println("endTag: " + tagString);
+                cordova.getThreadPool().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (csvWriter != null) {
+                            csvWriter.endTag(Integer.parseInt(tier), audioRecorder.getTime(), stimulusId, stimulusCode, tagString);
+                        } else {
+                            callbackContext.error("not recording");
+                        }
                     }
-                }
-            });
-            return true;
-        }
-        if (action.equals("getTime")) {
+                });
+                return true;
+            }
+            if (action.equals("getTime")) {
 //            System.out.println("action: getTime");
-            cordova.getThreadPool().execute(new Runnable() {
-                @Override
-                public void run() {
-                    if (audioRecorder != null && audioRecorder.isRecording()) {
-                        callbackContext.success(CsvWriter.makeShortTimeString(audioRecorder.getTime()));
-                    } else {
-                        callbackContext.error("not recording");
+                cordova.getThreadPool().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (audioRecorder != null && audioRecorder.isRecording()) {
+                            callbackContext.success(CsvWriter.makeShortTimeString(audioRecorder.getTime()));
+                        } else {
+                            callbackContext.error("not recording");
+                        }
                     }
-                }
-            });
-            return true;
-        }
-        if (action.equals("isRecording")) {
+                });
+                return true;
+            }
+            if (action.equals("isRecording")) {
 //            System.out.println("action: isRecording");
-            cordova.getThreadPool().execute(new Runnable() {
-                @Override
-                public void run() {
-                    if (audioRecorder != null && audioRecorder.isRecording()) {
-                        callbackContext.success();
-                    } else {
-                        callbackContext.error("not recording");
+                cordova.getThreadPool().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (audioRecorder != null && audioRecorder.isRecording()) {
+                            callbackContext.success();
+                        } else {
+                            callbackContext.error("not recording");
+                        }
                     }
-                }
-            });
-            return true;
+                });
+                return true;
+            }
         }
         return false;
     }
@@ -220,6 +227,7 @@ public class FieldKitRecorder extends CordovaPlugin {
     public void onPause(boolean multitasking) {
         if (csvWriter != null) {
             try {
+                // the recording is paused when focus is lost so we dont explicitly pause here
                 csvWriter.startTag(PAUSE_TIER, audioRecorder.getTime());
                 startPauseSystemTime = getFormattedSystemTime();
                 csvWriter.writeCsvFile(this.cordova.getActivity().getApplicationContext());
@@ -240,7 +248,15 @@ public class FieldKitRecorder extends CordovaPlugin {
     }
 
     public void onRequestPermissionResult(int requestCode, String[] permissions, int[] grantResults) throws JSONException {
-        execute(actionTemp, argsTemp, callbackContextTemp);
+        if (!cordova.hasPermission(Manifest.permission.RECORD_AUDIO)
+                || !cordova.hasPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                || !cordova.hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            callbackContextTemp.error("permissions not granted");
+        } else {
+            audioRecorder.terminateRecorder();
+            audioRecorder = new WavRecorder();
+            callbackContextTemp.success();
+        }
     }
 
 //    @Override

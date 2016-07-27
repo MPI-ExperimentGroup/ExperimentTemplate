@@ -135,7 +135,9 @@ public class WavRecorder implements AudioRecorder, Runnable {
                         writeWaveFileHeader(randomAccessFile);
                         randomAccessFile.close();
                     }
-                    recorder.stop();
+                    if (recorder.getState() == AudioRecord.STATE_INITIALIZED) {
+                        recorder.stop();
+                    }
                 }
                 synchronized (lockObject) {
                     isRecording = false;
@@ -151,7 +153,9 @@ public class WavRecorder implements AudioRecorder, Runnable {
 //                }
             }
         }
-        recorder.stop();
+        if (recorder.getState() == AudioRecord.STATE_INITIALIZED) {
+            recorder.stop();
+        }
         recorder.release();
     }
 
