@@ -133,7 +133,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
 
             final PresenterFeature endAudioRecorderTagFeature1 = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
             endAudioRecorderTagFeature1.addFeatureAttributes(FeatureAttribute.eventTier, "1");
-            endAudioRecorderTagFeature1.addFeatureAttributes(FeatureAttribute.eventTag, "no background");
+            endAudioRecorderTagFeature1.addFeatureAttributes(FeatureAttribute.eventTag, "image");
             nextButtonFeature1.getPresenterFeatureList().add(endAudioRecorderTagFeature1);
 
             final PresenterFeature startTagFeature1 = new PresenterFeature(FeatureType.startAudioRecorderTag, null);
@@ -148,7 +148,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
 
             final PresenterFeature endAudioRecorderTagFeature2 = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
             endAudioRecorderTagFeature2.addFeatureAttributes(FeatureAttribute.eventTier, "2");
-            endAudioRecorderTagFeature2.addFeatureAttributes(FeatureAttribute.eventTag, "bounce and background");
+            endAudioRecorderTagFeature2.addFeatureAttributes(FeatureAttribute.eventTag, "image bounce audio");
             nextButtonFeature2.getPresenterFeatureList().add(endAudioRecorderTagFeature2);
             nextButtonFeature2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.removeStimulus, null));
             nextButtonFeature2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.nextMatchingStimulus, null));
@@ -159,8 +159,8 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
 
             // show small stimulus a & b on background
 //            final PresenterFeature imageFeature4 = addStimulusGrid(endOfMatchingStimulusFeature, 30, true, true, true);
-            PresenterFeature nextButtonFeature4 = getNextButtonFeature();
-            endOfMatchingStimulusFeature.getPresenterFeatureList().add(nextButtonFeature4);
+//            PresenterFeature nextButt ̰onFeature4 = getNextButtonFeature();
+//            endOfMatchingStimulusFeature.getPresenterFeatureList().add(nextButtonFeature4);
 
 //            final PresenterFeature endAudioRecorderTagFeature4 = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
 //            endAudioRecorderTagFeature4.addFeatureAttributes(FeatureAttribute.eventTier, "4");
@@ -172,7 +172,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
             nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
             nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + screenTitle);
-            nextButtonFeature4.getPresenterFeatureList().add(nextStimulusFeature);
+            endOfMatchingStimulusFeature.getPresenterFeatureList().add(nextStimulusFeature);
             loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
         } else {
             // show group without background or animation and play code audio
@@ -294,12 +294,12 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
 
         final PresenterFeature endAudioRecorderTagFeatureCorrect = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
         endAudioRecorderTagFeatureCorrect.addFeatureAttributes(FeatureAttribute.eventTier, "4");
-        endAudioRecorderTagFeatureCorrect.addFeatureAttributes(FeatureAttribute.eventTag, "correct group");
+        endAudioRecorderTagFeatureCorrect.addFeatureAttributes(FeatureAttribute.eventTag, "correct image clicked");
         responseCorrect.getPresenterFeatureList().add(endAudioRecorderTagFeatureCorrect);
 
         final PresenterFeature endAudioRecorderTagFeatureIncorrect = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
         endAudioRecorderTagFeatureIncorrect.addFeatureAttributes(FeatureAttribute.eventTier, "4");
-        endAudioRecorderTagFeatureIncorrect.addFeatureAttributes(FeatureAttribute.eventTag, "incorrect group");
+        endAudioRecorderTagFeatureIncorrect.addFeatureAttributes(FeatureAttribute.eventTag, "incorrect image clicked");
         responseIncorrect.getPresenterFeatureList().add(endAudioRecorderTagFeatureIncorrect);
         if (!isSecondTask) {
             final PresenterFeature nextStimulusCorrectFeature = new PresenterFeature(FeatureType.nextStimulus, null);
