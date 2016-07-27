@@ -180,6 +180,13 @@ public abstract class AbstractPresenter implements Presenter {
         }
     }
 
+//    protected void startAudioRecorderFailed(String message) {
+//        backEventListner.eventFired(null, null);
+//        ((ComplexView) simpleView).clearPage();
+//        ((ComplexView) simpleView).addText("Could not start the audio recorder");
+//        ((ComplexView) simpleView).addText(message);
+//    }
+
     protected native void startAudioRecorder(final boolean wavFormat, String userIdString, String directoryName, String stimulusIdString) /*-{
         var abstractPresenter = this;
         console.log("startAudioRecorder: " + wavFormat + " : " + userIdString + " : " + directoryName + " : " + stimulusIdString);
@@ -195,13 +202,14 @@ public abstract class AbstractPresenter implements Presenter {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
         }
      }-*/;
+
     protected native void requestRecorderPermissions() /*-{
         var abstractPresenter = this;
         console.log("requestRecorderPermissions");
         if($wnd.plugins){
-            $wnd.plugins.fieldKitRecorder.requestpermissions(function (tagvalue) {
-                console.log("requestRecorderPermissionsOk: " + tagvalue);
-                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, tagvalue);
+            $wnd.plugins.fieldKitRecorder.requestPermissions(function () {
+                console.log("requestRecorderPermissionsOk");
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, null);
             }, function (tagvalue) {
                 console.log("requestRecorderPermissionsError: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
@@ -218,7 +226,7 @@ public abstract class AbstractPresenter implements Presenter {
 //                console.log("isAudioRecording");
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, null);
             }, function (tagvalue) {
-                console.log("isAudioRecording: " + tagvalue);
+//                console.log("isAudioRecording: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, null);
             });
         } else {
@@ -233,7 +241,7 @@ public abstract class AbstractPresenter implements Presenter {
 //                console.log("isAudioRecording: " + " : " + currentTime);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, currentTime);
             }, function (tagvalue) {
-                console.log("isAudioRecording: " + tagvalue);
+//                console.log("isAudioRecording: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, null);
             });
         } else {

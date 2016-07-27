@@ -284,6 +284,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 @Override
                 protected void setContent(final AppEventListner appEventListner) {
             </xsl:text>
+            <xsl:value-of select="if(descendant::startAudioRecorder) then 'requestRecorderPermissions();' else ''" />
             <xsl:apply-templates/> <!--select="htmlText|padding|image|menuItem|text|versionData|optionButton|userInfo|localStorageData|stimulusImage|stimulusAudio"-->
             <xsl:text>    }
                 }</xsl:text>
