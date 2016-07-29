@@ -37,18 +37,17 @@
     <presenter back="Welcome" displayOrder="5" menuLabel="Menu" type="menu" self="Menu" title="Menu">
         <menuItem featureText="Task 1" target="Task_1"/>
         <menuItem featureText="Task 2" target="Task_2"/>
-        <menuItem featureText="Task 1 Demo" target="Task_1_Demo"/>
-        <menuItem featureText="Task 2 Demo" target="Task_2_Demo"/>
-        <menuItem featureText="FieldKit Stimuli" target="FieldKitScreen"/>
+        <menuItem featureText="FieldKit Sequential" target="FieldKitSequential"/>
+        <menuItem featureText="FieldKit Random" target="FieldKitRandom"/>
         <menuItem featureText="Instructions" target="Instructions"/>
     </presenter>
     <presenter back="Welcome" displayOrder="6" menuLabel="Select Participant" next="Menu" type="metadata" self="SelectUser" title="Select Participant">
         <selectUserMenu/>
     </presenter>
-    <presenter back="Menu" displayOrder="7" menuLabel="FieldKit Stimuli" type="stimulus" self="FieldKitScreen" title="FieldKit Stimuli">
-        <loadSdCardStimulus eventTag="FieldKit Stimuli" randomise="true" maxStimuli="1000" repeatCount="1">
+    <presenter back="Menu" displayOrder="7" menuLabel="FieldKit Sequential" type="stimulus" self="FieldKitScreen" title="FieldKit Sequential">
+        <loadSdCardStimulus eventTag="FieldKit Sequential" randomise="false" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <startAudioRecorder eventTag="FieldKit Stimuli" wavFormat="true" filePerStimulus="false"/>
+                <startAudioRecorder eventTag="FieldKit Sequential" wavFormat="true" filePerStimulus="false"/>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
                 <stimulusLabel/>
@@ -71,108 +70,33 @@
             </stimuli>
         </loadSdCardStimulus>
     </presenter>
-    <presenter back="Menu" displayOrder="8" menuLabel="Task 1 Demo" next="Menu" type="stimulus" self="Task_1_Demo" title="Task 1 Demo">
-        <centrePage/>
-        <loadStimulus eventTag="Task 1 Demo" randomise="true" maxStimuli="1000" repeatCount="1">
+    <presenter back="Menu" displayOrder="8" menuLabel="FieldKit Random" type="stimulus" self="FieldKitScreen" title="FieldKit Random">
+        <loadSdCardStimulus eventTag="FieldKit Random" randomise="true" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <startAudioRecorder eventTag="Task 1 Demo" wavFormat="true" filePerStimulus="false"/>
-                <withMatchingStimulus eventTag="" randomise="true" matchingRegex="([^_]*_)*" maxStimuli="1000" repeatCount="1">
-                    <hasMoreStimulus>
+                <startAudioRecorder eventTag="FieldKit Random" wavFormat="true" filePerStimulus="false"/>
+                <startAudioRecorderTag eventTier="1"/>
+                <centrePage/>
+                <stimulusLabel/>
+                <showStimulusProgress/>
+                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                    <plainText featureText="the informant talks about the image"/>
+                    <actionButton featureText="next">
+                        <endAudioRecorderTag eventTier="1" eventTag="the informant talks about the image"/>
                         <clearPage/>
-                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="none" maxWidth="80">
-                            <addPadding/>
-                            <actionButton featureText="Next" eventTag="Next" hotKey="SPACE" styleName="hiddenBottomRight">
-                                <endAudioRecorderTag eventTier="1" eventTag="image"/>
-                                <clearPage/>
-                                <backgroundImage msToNext="1" src="background1.png">
-                                    <stimulusImage msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" maxWidth="30">
-                                        <addPadding/>
-                                        <stimulusAudio msToNext="0"/>
-                                        <actionButton featureText="Play Sound" styleName="hiddenTopRight">
-                                            <stimulusAudio msToNext="0"/>
-                                        </actionButton>
-                                        <actionButton featureText="Next" eventTag="Next" hotKey="SPACE" styleName="hiddenBottomRight">
-                                            <endAudioRecorderTag eventTier="2" eventTag="image bounce audio"/>
-                                            <removeStimulus/>
-                                            <nextMatchingStimulus/>
-                                        </actionButton>
-                                        <startAudioRecorderTag eventTier="2"/>
-                                    </stimulusImage>
-                                </backgroundImage>
-                            </actionButton>
-                            <startAudioRecorderTag eventTier="1"/>
-                        </stimulusImage>
-                    </hasMoreStimulus>
-                    <endOfStimulus>
-                        <nextStimulus eventTag="nextStimulusTask 1 Demo" norepeat="true"/>
-                    </endOfStimulus>
-                </withMatchingStimulus>
+                        <nextStimulus eventTag="nextImage" norepeat="true"/>
+                    </actionButton>
+                </stimulusImage>
             </hasMoreStimulus>
             <endOfStimulus>
-                <stopAudioRecorder/>
-                <autoNextPresenter/>
+                <plainText featureText="Complete"/>
+                <targetButton featureText="Menu" target="Menu"/>
             </endOfStimulus>
-            <randomGrouping/>
             <stimuli>
-                <tag>Task_1_Demo</tag>
+                <tag>FieldKit</tag>
             </stimuli>
-        </loadStimulus>
+        </loadSdCardStimulus>
     </presenter>
-    <presenter back="Menu" displayOrder="9" menuLabel="Task 2 Demo" next="Menu" type="stimulus" self="Task_2_Demo" title="Task 2 Demo">
-        <centrePage/>
-        <loadStimulus eventTag="Task 2 Demo" randomise="true" maxStimuli="1000" repeatCount="1">
-            <hasMoreStimulus>
-                <startAudioRecorder eventTag="Task 2 Demo" wavFormat="true" filePerStimulus="false"/>
-                <clearPage/>
-                <matchingStimulusGrid msToNext="0" randomise="true" matchingRegex="([^_]*_)*" columnCount="10" maxStimuli="1000" animate="none" maxWidth="100">
-                    <responseCorrect>
-                        <endAudioRecorderTag eventTier="4" eventTag="correct image clicked"/>
-                        <clearPage/>
-                        <backgroundImage msToNext="1" src="background2.png">
-                            <stimulusImage msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" maxWidth="30"/>
-                            <addPadding/>
-                            <stimulusAudio msToNext="0"/>
-                            <actionButton featureText="Play Sound" styleName="hiddenTopRight">
-                                <stimulusAudio msToNext="0"/>
-                            </actionButton>
-                            <actionButton featureText="Next" eventTag="Next" hotKey="SPACE" styleName="hiddenBottomRight">
-                                <endAudioRecorderTag eventTier="1" eventTag="task 2 animated"/>
-                                <nextStimulus eventTag="nextStimulusTask 2 Demo" norepeat="true"/>
-                            </actionButton>
-                        </backgroundImage>
-                    </responseCorrect>
-                    <responseIncorrect>
-                        <endAudioRecorderTag eventTier="4" eventTag="incorrect image clicked"/>
-                        <clearPage/>
-                        <backgroundImage msToNext="1" src="background2.png">
-                            <stimulusImage msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" maxWidth="30"/>
-                            <addPadding/>
-                            <stimulusAudio msToNext="0"/>
-                            <actionButton featureText="Play Sound" styleName="hiddenTopRight">
-                                <stimulusAudio msToNext="0"/>
-                            </actionButton>
-                            <actionButton featureText="Next" eventTag="Next" hotKey="SPACE" styleName="hiddenBottomRight">
-                                <endAudioRecorderTag eventTier="1" eventTag="task 2 animated"/>
-                                <nextStimulus eventTag="nextStimulusTask 2 Demo" norepeat="true"/>
-                            </actionButton>
-                        </backgroundImage>
-                    </responseIncorrect>
-                </matchingStimulusGrid>
-                <addPadding/>
-                <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_question"/>
-                <startAudioRecorderTag eventTier="4"/>
-            </hasMoreStimulus>
-            <endOfStimulus>
-                <stopAudioRecorder/>
-                <autoNextPresenter/>
-            </endOfStimulus>
-            <randomGrouping/>
-            <stimuli>
-                <tag>Task_2_Demo</tag>
-            </stimuli>
-        </loadStimulus>
-    </presenter>
-    <presenter back="Menu" displayOrder="10" menuLabel="Task 1" next="Menu" type="stimulus" self="Task_1" title="Task 1">
+    <presenter back="Menu" displayOrder="9" menuLabel="Task 1" next="Menu" type="stimulus" self="Task_1" title="Task 1">
         <centrePage/>
         <loadSdCardStimulus eventTag="Task 1" randomise="true" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
@@ -218,7 +142,7 @@
             </stimuli>
         </loadSdCardStimulus>
     </presenter>
-    <presenter back="Menu" displayOrder="11" menuLabel="Task 2" next="Menu" type="stimulus" self="Task_2" title="Task 2">
+    <presenter back="Menu" displayOrder="10" menuLabel="Task 2" next="Menu" type="stimulus" self="Task_2" title="Task 2">
         <centrePage/>
         <loadSdCardStimulus eventTag="Task 2" randomise="true" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
@@ -275,37 +199,8 @@
         <stimulus identifier="FieldKit" imagePath="FieldKit" label="FieldKit" pauseMs="0">
             <tag>FieldKit</tag>
         </stimulus>
-        <stimulus audioPath="1_pig" code="1_pig" identifier="1_pig" imagePath="1_pig.png" pauseMs="0">
-            <tag>1_pig_png</tag>
-            <tag>Task_1_Demo</tag>
-        </stimulus>
-        <stimulus audioPath="2_bat" code="2_bat" identifier="2_bat" imagePath="2_bat.png" pauseMs="0">
-            <tag>2_bat_png</tag>
-            <tag>Task_1_Demo</tag>
-        </stimulus>
-        <stimulus audioPath="2_fish" code="2_fish" identifier="2_fish" imagePath="2_fish.png" pauseMs="0">
-            <tag>2_fish_png</tag>
-            <tag>Task_1_Demo</tag>
-        </stimulus>
-        <stimulus audioPath="1_rat" code="1_rat" identifier="1_rat" imagePath="1_rat.png" pauseMs="0">
-            <tag>1_rat_png</tag>
-            <tag>Task_1_Demo</tag>
-        </stimulus>
-        <stimulus audioPath="1_pig" code="1_pig" identifier="1_pig" imagePath="1_pig.png" pauseMs="0">
-            <tag>1_pig_png</tag>
-            <tag>Task_2_Demo</tag>
-        </stimulus>
-        <stimulus audioPath="2_bat" code="2_bat" identifier="2_bat" imagePath="2_bat.png" pauseMs="0">
-            <tag>2_bat_png</tag>
-            <tag>Task_2_Demo</tag>
-        </stimulus>
-        <stimulus audioPath="2_fish" code="2_fish" identifier="2_fish" imagePath="2_fish.png" pauseMs="0">
-            <tag>2_fish_png</tag>
-            <tag>Task_2_Demo</tag>
-        </stimulus>
-        <stimulus audioPath="1_rat" code="1_rat" identifier="1_rat" imagePath="1_rat.png" pauseMs="0">
-            <tag>1_rat_png</tag>
-            <tag>Task_2_Demo</tag>
+        <stimulus identifier="FieldKit" imagePath="FieldKit" label="FieldKit" pauseMs="0">
+            <tag>FieldKit</tag>
         </stimulus>
         <stimulus audioPath="Task1" code="Task1" identifier="Task1" imagePath="Task1" pauseMs="0">
             <tag>Task1</tag>
