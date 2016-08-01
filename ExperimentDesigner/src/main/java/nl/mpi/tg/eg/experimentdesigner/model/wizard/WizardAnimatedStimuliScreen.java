@@ -161,7 +161,6 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
 //            final PresenterFeature imageFeature4 = addStimulusGrid(endOfMatchingStimulusFeature, 30, true, true, true);
 //            PresenterFeature nextButt ̰onFeature4 = getNextButtonFeature();
 //            endOfMatchingStimulusFeature.getPresenterFeatureList().add(nextButtonFeature4);
-
 //            final PresenterFeature endAudioRecorderTagFeature4 = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
 //            endAudioRecorderTagFeature4.addFeatureAttributes(FeatureAttribute.eventTier, "4");
 //            endAudioRecorderTagFeature4.addFeatureAttributes(FeatureAttribute.eventTag, "exit group");
@@ -181,6 +180,10 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             final PresenterFeature stimulusCodeAudio = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
             stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>_question");
             stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+            final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.actionButton, "Play Sound");
+            presenterFeature.addFeatureAttributes(FeatureAttribute.styleName, "hiddenTopRight");
+            presenterFeature.getPresenterFeatureList().add(stimulusCodeAudio);
+            gridFeature.getPresenterFeatureList().add(presenterFeature);
             gridFeature.getPresenterFeatureList().add(stimulusCodeAudio);
             if (!isSecondTask) {
                 PresenterFeature nextButtonFeature4 = getNextButtonFeature();
@@ -199,6 +202,20 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             final PresenterFeature startTagFeature4 = new PresenterFeature(FeatureType.startAudioRecorderTag, null);
             startTagFeature4.addFeatureAttributes(FeatureAttribute.eventTier, "4");
             gridFeature.getPresenterFeatureList().add(startTagFeature4);
+
+            final PresenterFeature skipFeature = new PresenterFeature(FeatureType.actionButton, "Skip");
+            skipFeature.addFeatureAttributes(FeatureAttribute.styleName, "hiddenBottomRight");
+            skipFeature.addFeatureAttributes(FeatureAttribute.eventTag, "Skip");
+            skipFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
+            final PresenterFeature endAudioRecorderTagFeature4 = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
+            endAudioRecorderTagFeature4.addFeatureAttributes(FeatureAttribute.eventTier, "1");
+            endAudioRecorderTagFeature4.addFeatureAttributes(FeatureAttribute.eventTag, "task 2 skipped");
+            skipFeature.getPresenterFeatureList().add(endAudioRecorderTagFeature4);
+            final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
+            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + screenTitle);
+            skipFeature.getPresenterFeatureList().add(nextStimulusFeature);
+            gridFeature.getPresenterFeatureList().add(skipFeature);
 
             // show correct image and sound with background
             loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
