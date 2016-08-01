@@ -44,7 +44,7 @@
     <presenter back="Welcome" displayOrder="6" menuLabel="Select Participant" next="Menu" type="metadata" self="SelectUser" title="Select Participant">
         <selectUserMenu/>
     </presenter>
-    <presenter back="Menu" displayOrder="7" menuLabel="FieldKit Sequential" type="stimulus" self="FieldKitScreen" title="FieldKit Sequential">
+    <presenter back="Menu" displayOrder="7" menuLabel="FieldKit Sequential" type="stimulus" self="FieldKitSequential" title="FieldKit Sequential">
         <loadSdCardStimulus eventTag="FieldKit Sequential" randomise="false" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="FieldKit Sequential" wavFormat="true" filePerStimulus="false"/>
@@ -70,7 +70,7 @@
             </stimuli>
         </loadSdCardStimulus>
     </presenter>
-    <presenter back="Menu" displayOrder="8" menuLabel="FieldKit Random" type="stimulus" self="FieldKitScreen" title="FieldKit Random">
+    <presenter back="Menu" displayOrder="8" menuLabel="FieldKit Random" type="stimulus" self="FieldKitRandom" title="FieldKit Random">
         <loadSdCardStimulus eventTag="FieldKit Random" randomise="true" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="FieldKit Random" wavFormat="true" filePerStimulus="false"/>
@@ -183,8 +183,15 @@
                     </responseIncorrect>
                 </matchingStimulusGrid>
                 <addPadding/>
+                <actionButton featureText="Play Sound" styleName="hiddenTopRight">
+                    <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_question"/>
+                </actionButton>
                 <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_question"/>
                 <startAudioRecorderTag eventTier="4"/>
+                <actionButton featureText="Skip" eventTag="Skip" hotKey="SPACE" styleName="hiddenBottomRight">
+                    <endAudioRecorderTag eventTier="1" eventTag="task 2 skipped"/>
+                    <nextStimulus eventTag="nextStimulusTask 2" norepeat="true"/>
+                </actionButton>
             </hasMoreStimulus>
             <endOfStimulus>
                 <stopAudioRecorder/>
