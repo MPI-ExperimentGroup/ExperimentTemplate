@@ -110,7 +110,27 @@ public class SynQuiz2 {
         wizardEditUserScreen.setOn_Error_Text("Could not contact the server, please check your internet connection and try again.");
 
         final WizardMenuScreen menuScreen = new WizardMenuScreen("Menu", "Menu", "Menu");
-        menuScreen.setNextWizardScreen(completionScreen);
+
+        final PresenterScreen sumbitScreen = createSumbitScreen("register", menuScreen.getPresenterScreen(), menuScreen.getPresenterScreen(), 20);
+        presenterScreenList.add(sumbitScreen);
+
+        menuScreen.setNextWizardScreen(new AbstractWizardScreen() {
+            @Override
+            public PresenterScreen getPresenterScreen() {
+                return sumbitScreen;
+            }
+
+            @Override
+            public String getMenuLabel() {
+                return sumbitScreen.getMenuLabel();
+            }
+
+            @Override
+            public String getScreenTag() {
+                return sumbitScreen.getSelfPresenterTag();
+            }
+        });
+        sumbitScreen.setNextPresenter(completionScreen.getPresenterScreen());
         completionScreen.setBackWizardScreen(menuScreen);
         completionScreen.setNextWizardScreen(new AbstractWizardScreen() {
             @Override
@@ -509,6 +529,26 @@ public class SynQuiz2 {
         showColourReport.getPresenterFeatureList().add(aboveThreshold);
         final PresenterFeature belowThreshold = new PresenterFeature(FeatureType.belowThreshold, null);
 //        belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "below threshold"));
+//        final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.targetButton, "Menu");
+//        menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, "AutoMenu");
+//        endOfStimulusFeature.getPresenterFeatureList().add(menuButtonFeature);
+//        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
+        showColourReport.getPresenterFeatureList().add(belowThreshold);
+        presenterScreen.getPresenterFeatureList().add(showColourReport);
+        return presenterScreen;
+    }
+
+    private PresenterScreen createSumbitScreen(String screenName, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder) {
+        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, screenName, nextPresenter, PresenterType.colourReport, displayOrder);
+//        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
+        final PresenterFeature showColourReport = new PresenterFeature(FeatureType.submitTestResults, null);
+        final PresenterFeature aboveThreshold = new PresenterFeature(FeatureType.onError, null);
+        aboveThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "error submitting data"));
+//        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
+//        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
+        showColourReport.getPresenterFeatureList().add(aboveThreshold);
+        final PresenterFeature belowThreshold = new PresenterFeature(FeatureType.onSuccess, null);
+        belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "data sumbitted"));
 //        final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.targetButton, "Menu");
 //        menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, "AutoMenu");
 //        endOfStimulusFeature.getPresenterFeatureList().add(menuButtonFeature);
