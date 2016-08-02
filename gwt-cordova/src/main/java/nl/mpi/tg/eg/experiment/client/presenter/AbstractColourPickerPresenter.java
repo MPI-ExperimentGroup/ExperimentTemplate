@@ -109,6 +109,8 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
 
     protected abstract String getTitle();
 
+    protected abstract String getSelfTag();
+
     abstract void setContent(final AppEventListner appEventListner);
 
     @Override

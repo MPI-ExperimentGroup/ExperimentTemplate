@@ -55,23 +55,13 @@ public abstract class AbstractColourReportPresenter extends AbstractPresenter im
         this.submissionService = submissionService;
     }
 
-    public void showColourReport(final float scoreThreshold, final TimedStimulusListener aboveThreshold, final TimedStimulusListener belowThreshold, final MetadataField emailAddressMetadataField) { // todo: use scoreThreshold
+    public void submitTestResults(final MetadataField emailAddressMetadataField, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
         StringBuilder stringBuilder = new StringBuilder();
         final DateTimeFormat format = DateTimeFormat.getFormat(messages.reportDateFormat());
-        final NumberFormat numberFormat2 = NumberFormat.getFormat("0.00");
-//        final NumberFormat numberFormat3 = NumberFormat.getFormat("0.000");
         final ScoreCalculator scoreCalculator = new ScoreCalculator(userResults);
 
         for (final StimulusResponseGroup stimuliGroup : userResults.getStimulusResponseGroups()) {
             final GroupScoreData calculatedScores = scoreCalculator.calculateScores(stimuliGroup);
-            ((ReportView) simpleView).showResults(stimuliGroup, calculatedScores);
-            ((ReportView) simpleView).addText(messages.reportScreenScore(numberFormat2.format(calculatedScores.getScore())));
-            ((ReportView) simpleView).addText(messages.userfeedbackscreentext());
-            userResults.getUserData().updateBestScore(calculatedScores.getScore());
-//            ((ReportView) simpleView).addText(messages.reportScreenSCT());
-//            ((ReportView) simpleView).addText(messages.reportScreenSCTaccuracy(numberFormat2.format(calculatedScores.getAccuracy())));
-//            ((ReportView) simpleView).addText(messages.reportScreenSCTmeanreactionTime(numberFormat3.format(calculatedScores.getMeanReactionTime() / 1000), numberFormat3.format(calculatedScores.getReactionTimeDeviation() / 1000)));
-//            stringBuilder.append(userResults.getUserData().getMetadataValue(MetadataFieldProvider.));
             stringBuilder.append("\t");
             stringBuilder.append(stimuliGroup.getPostName());
             stringBuilder.append("\t");
@@ -83,28 +73,14 @@ public abstract class AbstractColourReportPresenter extends AbstractPresenter im
             stringBuilder.append("\t");
             stringBuilder.append(calculatedScores.getReactionTimeDeviation());
             stringBuilder.append("\n");
-            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "Score", stimuliGroup.getPostName(), Double.toString(calculatedScores.getScore()), 0);
-            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "MeanReactionTime", stimuliGroup.getPostName(), Double.toString(calculatedScores.getMeanReactionTime()), 0);
-            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "ReactionTimeDeviation", stimuliGroup.getPostName(), Double.toString(calculatedScores.getReactionTimeDeviation()), 0);
         }
+
         final String scoreLog = stringBuilder.toString();
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "ScoreLog", scoreLog.replaceAll("\t", ","), 0);
-//        ((ReportView) simpleView).addText(messages.reportScreenPostSCTtext());
-        if (userResults.getUserData().getBestScore() <= scoreThreshold) {
-            belowThreshold.postLoadTimerFired();
-//            ((ReportView) simpleView).addHighlightedText(messages.positiveresultscreentext1());
-//            ((ReportView) simpleView).addHighlightedText(messages.positiveresultscreentext2());
-//            ((ReportView) simpleView).addHighlightedText(messages.positiveresultscreentext3());
-        } else {
-            aboveThreshold.postLoadTimerFired();
-//            ((ReportView) simpleView).addHighlightedText(messages.negativeresultscreentext1());
-//            ((ReportView) simpleView).addHighlightedText(messages.negativeresultscreentext2());
-//            ((ReportView) simpleView).addHighlightedText(messages.negativeresultscreentext3());
-        }
-        ((ReportView) simpleView).addPadding();
         new RegistrationService().submitRegistration(userResults, new RegistrationListener() {
             @Override
             public void registrationFailed(RegistrationException exception) {
+                onError.postLoadTimerFired();
                 ((ReportView) simpleView).addText("Could not connect to the server.");
                 ((ReportView) simpleView).addOptionButton(new PresenterEventListner() {
                     @Override
@@ -118,7 +94,7 @@ public abstract class AbstractColourReportPresenter extends AbstractPresenter im
                             @Override
                             public void run() {
                                 ((ReportView) simpleView).clearPage();
-                                showColourReport(scoreThreshold, aboveThreshold, belowThreshold, emailAddressMetadataField);
+                                submitTestResults(emailAddressMetadataField, onError, onSuccess);
                             }
                         };
                         timer.schedule(1000);
@@ -133,9 +109,42 @@ public abstract class AbstractColourReportPresenter extends AbstractPresenter im
 
             @Override
             public void registrationComplete() {
-
-//        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusLabelShown", stimuliGroup.getPostName(), stringBuilder.toString(), duration.elapsedMillis());
+                onSuccess.postLoadTimerFired();
             }
         }, messages.reportDateFormat(), emailAddressMetadataField, scoreLog);
+    }
+
+    public void showColourReport(final float scoreThreshold, final MetadataField emailAddressMetadataField, final TimedStimulusListener aboveThreshold, final TimedStimulusListener belowThreshold) { // todo: use scoreThreshold
+        final NumberFormat numberFormat2 = NumberFormat.getFormat("0.00");
+//        final NumberFormat numberFormat3 = NumberFormat.getFormat("0.000");
+        final ScoreCalculator scoreCalculator = new ScoreCalculator(userResults);
+
+        for (final StimulusResponseGroup stimuliGroup : userResults.getStimulusResponseGroups()) {
+            final GroupScoreData calculatedScores = scoreCalculator.calculateScores(stimuliGroup);
+            ((ReportView) simpleView).showResults(stimuliGroup, calculatedScores);
+            ((ReportView) simpleView).addText(messages.reportScreenScore(numberFormat2.format(calculatedScores.getScore())));
+            ((ReportView) simpleView).addText(messages.userfeedbackscreentext());
+            userResults.getUserData().updateBestScore(calculatedScores.getScore());
+//            ((ReportView) simpleView).addText(messages.reportScreenSCT());
+//            ((ReportView) simpleView).addText(messages.reportScreenSCTaccuracy(numberFormat2.format(calculatedScores.getAccuracy())));
+//            ((ReportView) simpleView).addText(messages.reportScreenSCTmeanreactionTime(numberFormat3.format(calculatedScores.getMeanReactionTime() / 1000), numberFormat3.format(calculatedScores.getReactionTimeDeviation() / 1000)));
+//            stringBuilder.append(userResults.getUserData().getMetadataValue(MetadataFieldProvider.));
+            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "Score", stimuliGroup.getPostName(), Double.toString(calculatedScores.getScore()), 0);
+            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "MeanReactionTime", stimuliGroup.getPostName(), Double.toString(calculatedScores.getMeanReactionTime()), 0);
+            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "ReactionTimeDeviation", stimuliGroup.getPostName(), Double.toString(calculatedScores.getReactionTimeDeviation()), 0);
+        }
+//        ((ReportView) simpleView).addText(messages.reportScreenPostSCTtext());
+        if (userResults.getUserData().getBestScore() <= scoreThreshold) {
+            belowThreshold.postLoadTimerFired();
+//            ((ReportView) simpleView).addHighlightedText(messages.positiveresultscreentext1());
+//            ((ReportView) simpleView).addHighlightedText(messages.positiveresultscreentext2());
+//            ((ReportView) simpleView).addHighlightedText(messages.positiveresultscreentext3());
+        } else {
+            aboveThreshold.postLoadTimerFired();
+//            ((ReportView) simpleView).addHighlightedText(messages.negativeresultscreentext1());
+//            ((ReportView) simpleView).addHighlightedText(messages.negativeresultscreentext2());
+//            ((ReportView) simpleView).addHighlightedText(messages.negativeresultscreentext3());
+        }
+        ((ReportView) simpleView).addPadding();
     }
 }

@@ -802,14 +802,14 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "PlayAudio", eventTag, mp3Path, duration.elapsedMillis());
                     }
                 };
-                ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromString(oggPath), UriUtils.fromString(mp3Path), 0, shownStimulusListener, new TimedStimulusListener() {
+                ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromString(serviceLocations.staticFilesUrl() + oggPath), UriUtils.fromString(serviceLocations.staticFilesUrl() + mp3Path), 0, shownStimulusListener, new TimedStimulusListener() {
 
                     @Override
                     public void postLoadTimerFired() {
                     }
                 });
             }
-        }, UriUtils.fromString(imagePath));
+        }, UriUtils.fromString(serviceLocations.staticFilesUrl() + imagePath));
     }
 
     @Override
