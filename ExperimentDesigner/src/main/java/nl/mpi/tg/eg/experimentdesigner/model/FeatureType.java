@@ -121,7 +121,8 @@ public enum FeatureType {
     userInfo(false, false, null),
     versionData(false, false, null),
     preventWindowClose(false, false, null),
-    showColourReport(true, false, new FeatureAttribute[]{scoreThreshold}, false, false, Contitionals.hasThreshold);
+    showColourReport(true, false, new FeatureAttribute[]{scoreThreshold}, false, false, Contitionals.hasThreshold),
+    submitTestResults(true, false, null, false, false, Contitionals.hasErrorSuccess);
     private final boolean canHaveFeatures;
     private final boolean canHaveText;
     private final boolean canHaveStimulusTags; // todo: this could well be canHaveTagList so that it is more generic

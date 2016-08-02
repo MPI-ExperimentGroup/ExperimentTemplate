@@ -28,7 +28,7 @@ import static nl.mpi.tg.eg.experimentdesigner.model.FeatureType.*;
 public enum PresenterType {
 
     transmission(new FeatureType[]{
-        showColourReport, helpDialogue,
+        showColourReport, submitTestResults, helpDialogue,
         aboveThreshold,
         belowThreshold,
         loadSubsetStimulus, loadStimulus, loadSdCardStimulus, loadAllStimulus,
@@ -48,7 +48,7 @@ public enum PresenterType {
         stimulusAudio,
         stimulusImage,
         stimulusRatingButton, clearStimulus, ratingButton,
-        removeStimulus, removeMatchingStimulus, withMatchingStimulus,nextMatchingStimulus,
+        removeStimulus, removeMatchingStimulus, withMatchingStimulus, nextMatchingStimulus,
         keepStimulus,
         nextStimulus,
         allMenuItems,
@@ -78,7 +78,7 @@ public enum PresenterType {
         menuItem
     }),
     metadata(new FeatureType[]{
-        showColourReport, helpDialogue,
+        showColourReport, submitTestResults, helpDialogue,
         aboveThreshold,
         belowThreshold,
         loadSubsetStimulus, loadStimulus, loadSdCardStimulus, loadAllStimulus,
@@ -95,7 +95,7 @@ public enum PresenterType {
         sendAllData,
         eraseLocalStorageOnWindowClosing,
         stimulusRatingButton, clearStimulus, ratingButton,
-        removeStimulus, removeMatchingStimulus, withMatchingStimulus,nextMatchingStimulus,
+        removeStimulus, removeMatchingStimulus, withMatchingStimulus, nextMatchingStimulus,
         keepStimulus,
         nextStimulus,
         allMenuItems,
@@ -130,7 +130,7 @@ public enum PresenterType {
         endAudioRecorderTag, startAudioRecorder, targetFooterButton, actionFooterButton
     }),
     preload(new FeatureType[]{
-        showColourReport, helpDialogue,
+        showColourReport, submitTestResults, helpDialogue,
         aboveThreshold,
         belowThreshold,
         loadSubsetStimulus, loadStimulus, loadSdCardStimulus, loadAllStimulus,
@@ -165,7 +165,7 @@ public enum PresenterType {
         pause,
         responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus}),
     stimulus(new FeatureType[]{
-        showColourReport, helpDialogue,
+        showColourReport, submitTestResults, helpDialogue,
         aboveThreshold,
         belowThreshold,
         responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus,
@@ -210,7 +210,7 @@ public enum PresenterType {
         sendAllData,
         eraseLocalStorageOnWindowClosing,
         stimulusRatingButton, clearStimulus, ratingButton,
-        removeStimulus, removeMatchingStimulus, withMatchingStimulus,nextMatchingStimulus,
+        removeStimulus, removeMatchingStimulus, withMatchingStimulus, nextMatchingStimulus,
         keepStimulus,
         nextStimulus,
         allMenuItems,
@@ -263,7 +263,7 @@ public enum PresenterType {
         sendAllData,
         eraseLocalStorageOnWindowClosing,
         stimulusRatingButton, clearStimulus, ratingButton,
-        removeStimulus, removeMatchingStimulus, withMatchingStimulus,nextMatchingStimulus,
+        removeStimulus, removeMatchingStimulus, withMatchingStimulus, nextMatchingStimulus,
         keepStimulus,
         nextStimulus,
         allMenuItems,
@@ -297,7 +297,7 @@ public enum PresenterType {
         userInfo,
         menuItem}),
     kindiagram(new FeatureType[]{
-        showColourReport, helpDialogue,
+        showColourReport, submitTestResults, helpDialogue,
         aboveThreshold,
         belowThreshold,
         responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus,
@@ -319,7 +319,7 @@ public enum PresenterType {
         sendAllData,
         eraseLocalStorageOnWindowClosing,
         stimulusRatingButton, clearStimulus, ratingButton,
-        removeStimulus, removeMatchingStimulus, withMatchingStimulus,nextMatchingStimulus,
+        removeStimulus, removeMatchingStimulus, withMatchingStimulus, nextMatchingStimulus,
         keepStimulus,
         nextStimulus,
         allMenuItems,
@@ -346,7 +346,7 @@ public enum PresenterType {
         stimulusAudio
     }),
     menu(new FeatureType[]{
-        showColourReport, helpDialogue,
+        showColourReport, submitTestResults, helpDialogue,
         aboveThreshold,
         belowThreshold,
         responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus,
@@ -368,7 +368,7 @@ public enum PresenterType {
         sendAllData,
         eraseLocalStorageOnWindowClosing,
         stimulusRatingButton, clearStimulus, ratingButton,
-        removeStimulus, removeMatchingStimulus, withMatchingStimulus,nextMatchingStimulus,
+        removeStimulus, removeMatchingStimulus, withMatchingStimulus, nextMatchingStimulus,
         keepStimulus,
         nextStimulus,
         nextStimulusButton,
@@ -395,7 +395,7 @@ public enum PresenterType {
         stimulusImage,
         stimulusAudio}),
     debug(new FeatureType[]{
-        showColourReport, helpDialogue,
+        showColourReport, submitTestResults, helpDialogue,
         aboveThreshold,
         belowThreshold,
         responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus,
@@ -415,7 +415,7 @@ public enum PresenterType {
         sendAllData, eraseUsersDataButton,
         eraseLocalStorageOnWindowClosing,
         stimulusRatingButton, clearStimulus, ratingButton,
-        removeStimulus, removeMatchingStimulus, withMatchingStimulus,nextMatchingStimulus,
+        removeStimulus, removeMatchingStimulus, withMatchingStimulus, nextMatchingStimulus,
         keepStimulus,
         nextStimulus,
         allMenuItems,
@@ -444,7 +444,7 @@ public enum PresenterType {
         userInfo,
         stimulusAudio}),
     text(new FeatureType[]{
-        showColourReport, helpDialogue,
+        showColourReport, submitTestResults, helpDialogue,
         aboveThreshold,
         belowThreshold,
         loadKinTypeStringDiagram, localStorageData,
@@ -462,7 +462,7 @@ public enum PresenterType {
         sendAllData,
         eraseLocalStorageOnWindowClosing,
         stimulusRatingButton, clearStimulus, ratingButton,
-        removeStimulus, removeMatchingStimulus, withMatchingStimulus,nextMatchingStimulus,
+        removeStimulus, removeMatchingStimulus, withMatchingStimulus, nextMatchingStimulus,
         keepStimulus,
         nextStimulus,
         allMenuItems,
@@ -497,7 +497,7 @@ public enum PresenterType {
         userInfo,
         menuItem}),
     timeline(new FeatureType[]{
-        showColourReport, helpDialogue,
+        showColourReport, submitTestResults, helpDialogue,
         aboveThreshold,
         belowThreshold,
         loadKinTypeStringDiagram, localStorageData,
@@ -516,7 +516,7 @@ public enum PresenterType {
         sendAllData,
         eraseLocalStorageOnWindowClosing,
         stimulusRatingButton, clearStimulus, ratingButton,
-        removeStimulus, removeMatchingStimulus, withMatchingStimulus,nextMatchingStimulus,
+        removeStimulus, removeMatchingStimulus, withMatchingStimulus, nextMatchingStimulus,
         keepStimulus,
         nextStimulus,
         allMenuItems,
