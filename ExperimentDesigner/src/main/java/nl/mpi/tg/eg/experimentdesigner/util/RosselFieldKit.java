@@ -171,18 +171,18 @@ public class RosselFieldKit {
         final WizardEditUserScreen editUserPresenter = new WizardEditUserScreen("Information about the participant", "Edit User", null, null, new String[]{"workerId:Participant ID:.'{'3,'}':Please enter at least three letters."}, "Save and continue", null, null, null, false, "Could not contact the server, please check your internet connection and try again.");
 //        final WizardAboutScreen debugScreenPresenter = new WizardAboutScreen();
 
-        final WizardStimulusScreen wizardStimulusScreen = new WizardStimulusScreen();
-        wizardStimulusScreen.setScreenTitle("FieldKit Sequential");
-        wizardStimulusScreen.setMenuLabel("FieldKit Sequential");
-        wizardStimulusScreen.setScreenLabel("FieldKit Sequential");
-        wizardStimulusScreen.setScreenTag("FieldKitSequential");
+        final WizardStimulusScreen wizardStimulusScreenSequential = new WizardStimulusScreen();
+        wizardStimulusScreenSequential.setScreenTitle("FieldKit Sequential");
+        wizardStimulusScreenSequential.setMenuLabel("FieldKit Sequential");
+        wizardStimulusScreenSequential.setScreenLabel("FieldKit Sequential");
+        wizardStimulusScreenSequential.setScreenTag("FieldKitSequential");
 //        experiment, welcomePresenter, "cutbreak", welcomePresenter, new String[]{"cutbreak"}, grammaticalityValuesArray, true, 1000, false, "end_of_stimuli", 15, obfuscateScreenNames
-        wizardStimulusScreen.setStimulusTagArray(new String[]{"FieldKit"});
-        wizardStimulusScreen.setFeatureValuesArray(new StimuliSubAction[]{new StimuliSubAction("80", "the informant talks about the image", "next")});
-        wizardStimulusScreen.setMaxStimuli(1000);
-        wizardStimulusScreen.setRandomiseStimuli(false);
-        wizardStimulusScreen.setFilePerStimulus(false);
-        wizardStimulusScreen.setEnd_of_stimuli("Complete");
+        wizardStimulusScreenSequential.setStimulusTagArray(new String[]{"FieldKit"});
+        wizardStimulusScreenSequential.setFeatureValuesArray(new StimuliSubAction[]{new StimuliSubAction("80", "the informant talks about the image", "next")});
+        wizardStimulusScreenSequential.setMaxStimuli(1000);
+        wizardStimulusScreenSequential.setRandomiseStimuli(false);
+        wizardStimulusScreenSequential.setFilePerStimulus(false);
+        wizardStimulusScreenSequential.setEnd_of_stimuli("Complete");
 
         final WizardStimulusScreen wizardStimulusScreenRandom = new WizardStimulusScreen();
         wizardStimulusScreenRandom.setScreenTitle("FieldKit Random");
@@ -212,15 +212,15 @@ public class RosselFieldKit {
         welcomeMenuPresenter.setBackWizardScreen(instructionsPresenter);
         instructionsPresenter.setBackWizardScreen(welcomePresenter);
         instructionsPresenter.setNextWizardScreen(welcomeMenuPresenter);
-        wizardStimulusScreen.setBackWizardScreen(menuScreen);
-        wizardStimulusScreen.setEndOfStimulisWizardScreen(menuScreen);
+        wizardStimulusScreenSequential.setBackWizardScreen(menuScreen);
+        wizardStimulusScreenSequential.setEndOfStimulisWizardScreen(menuScreen);
         wizardStimulusScreenRandom.setBackWizardScreen(menuScreen);
         wizardStimulusScreenRandom.setEndOfStimulisWizardScreen(menuScreen);
         menuScreen.addTargetScreen(task1ScreenSD);
         menuScreen.addTargetScreen(task2ScreenSD);
 //        menuScreen.addTargetScreen(task1Screen);
 //        menuScreen.addTargetScreen(task2Screen);
-        menuScreen.addTargetScreen(wizardStimulusScreen);
+        menuScreen.addTargetScreen(wizardStimulusScreenSequential);
         menuScreen.addTargetScreen(wizardStimulusScreenRandom);
 //        menuScreen.addTargetScreen(debugScreenPresenter);
         menuScreen.addTargetScreen(instructionsPresenter);
@@ -230,7 +230,7 @@ public class RosselFieldKit {
         wizardData.addScreen(editUserPresenter);
         wizardData.addScreen(menuScreen);
         wizardData.addScreen(wizardSelectUserScreen);
-        wizardData.addScreen(wizardStimulusScreen);
+        wizardData.addScreen(wizardStimulusScreenSequential);
         wizardData.addScreen(wizardStimulusScreenRandom);
 //        wizardData.addScreen(task1Screen);
 //        wizardData.addScreen(task2Screen);
