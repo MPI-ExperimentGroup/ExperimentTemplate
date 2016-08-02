@@ -353,7 +353,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Other" displayOrder="15" menuLabel="Menu" next="Completion" type="menu" self="Menu" title="Menu">
+    <presenter back="Other" displayOrder="15" menuLabel="Menu" next="Register" type="menu" self="Menu" title="Menu">
         <menuItem featureText="Weekdays" target="Weekdays"/>
         <menuItem featureText="Letters and Numbers" target="LettersNumbers"/>
         <menuItem featureText="Months" target="Months"/>
@@ -387,6 +387,16 @@
                 <tag>Months</tag>
             </stimuli>
         </loadAllStimulus>
+    </presenter>
+    <presenter back="Menu" displayOrder="20" menuLabel="register" next="Completion" type="colourReport" self="register" title="register">
+        <submitTestResults>
+            <onError>
+                <plainText featureText="Error submitting data"/>
+            </onError>
+            <onSuccess>
+                <autoNextPresenter/>
+            </onSuccess>
+        </submitTestResults>
     </presenter>
     <presenter back="Menu" displayOrder="20" menuLabel="Report" next="Menu" type="colourReport" self="Report" title="Report">
         <showColourReport scoreThreshold="1">
