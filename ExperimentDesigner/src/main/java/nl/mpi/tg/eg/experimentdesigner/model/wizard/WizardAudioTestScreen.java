@@ -36,6 +36,13 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
         super("AudioTest", "AudioTest", "AudioTest");
     }
 
+    public WizardAudioTestScreen(String screenName, String pageText, String buttonLabel, String audioPath) {
+        super(screenName, screenName, screenName);
+        screenText = pageText;
+        nextButton = buttonLabel;
+        this.audioPath = audioPath;
+    }
+
     public String getAudioPath() {
         return audioPath;
     }

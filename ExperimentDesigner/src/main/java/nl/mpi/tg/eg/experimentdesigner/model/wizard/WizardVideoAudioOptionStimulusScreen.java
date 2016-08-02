@@ -44,17 +44,19 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
     private String stimulusResponseLabelRight = null;
 //    private String stimulusResponseOptions = null;
     private boolean randomiseStimuli = false;
+    private boolean useCodeVideo = true;
     private String buttonLabelEventTag;
 
     public WizardVideoAudioOptionStimulusScreen() {
         super("VideoAudioOption", "VideoAudioOption", "VideoAudioOption");
     }
 
-    public WizardVideoAudioOptionStimulusScreen(String screenName, boolean centreScreen, String[] screenTextArray, String[] randomStimuliTags, int maxStimuli, final boolean randomiseStimuli, int stimulusMsDelay, String responseOptionsLabelLeft, String responseOptionsLabelRight, final String spacebar) {
+    public WizardVideoAudioOptionStimulusScreen(String screenName, boolean centreScreen, String[] screenTextArray, boolean useCodeVideo, String[] randomStimuliTags, int maxStimuli, final boolean randomiseStimuli, int stimulusMsDelay, String responseOptionsLabelLeft, String responseOptionsLabelRight, final String spacebar) {
         super(screenName, screenName, screenName);
         this.screenTitle = screenName;
         this.centreScreen = centreScreen;
         this.stimuliSet = screenTextArray;
+        this.useCodeVideo = useCodeVideo;
         this.stimuliRandomTags = randomStimuliTags;
         this.stimulusMsDelay = stimulusMsDelay;
         this.stimuliCount = maxStimuli;
@@ -151,9 +153,18 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
 
                 final String[] splitScreenText = stimulusLine.split(":", 5);
                 tagSet.addAll(Arrays.asList(splitScreenText[0].split("/")));
-                final String audioPath = splitScreenText[2].replaceAll(BASE_FILE_REGEX, "");
-                final String codeVideoPath = splitScreenText[1].replaceAll(BASE_FILE_REGEX, "");
-                final String responseOptions = splitScreenText[3];
+                final String audioPath;
+                final String codeVideoPath;
+                final String responseOptions;
+                if (useCodeVideo) {
+                    audioPath = splitScreenText[2].replaceAll(BASE_FILE_REGEX, "");
+                    codeVideoPath = splitScreenText[1].replaceAll(BASE_FILE_REGEX, "");
+                    responseOptions = splitScreenText[3];
+                } else {
+                    audioPath = splitScreenText[1].replaceAll(BASE_FILE_REGEX, "");
+                    codeVideoPath = null;
+                    responseOptions = splitScreenText[2];
+                }
                 stimulus = new Stimulus(stimulusLine, audioPath, null, null, null, codeVideoPath, 0, tagSet, responseOptions);
                 stimuliList.add(stimulus);
             }
@@ -188,26 +199,30 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
 
-        final PresenterFeature codeVideoFeature = new PresenterFeature(FeatureType.stimulusCodeVideo, null);
-        codeVideoFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
-        codeVideoFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
-        codeVideoFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
-        codeVideoFeature.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>");
-        codeVideoFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(stimulusMsDelay));
-        hasMoreStimulusFeature.getPresenterFeatureList().add(codeVideoFeature);
-
-        codeVideoFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
-        codeVideoFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
-        final PresenterFeature pauseFeature = new PresenterFeature(FeatureType.pause, null);
-        pauseFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(stimulusMsDelay));
-        codeVideoFeature.getPresenterFeatureList().add(pauseFeature);
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusAudio, null);
-
-        pauseFeature.getPresenterFeatureList().add(imageFeature);
 //        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
 //        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
 //        imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
         imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(stimulusMsDelay));
+
+        if (useCodeVideo) {
+            final PresenterFeature codeVideoFeature = new PresenterFeature(FeatureType.stimulusCodeVideo, null);
+            codeVideoFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
+            codeVideoFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
+            codeVideoFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
+            codeVideoFeature.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>");
+            codeVideoFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(stimulusMsDelay));
+            hasMoreStimulusFeature.getPresenterFeatureList().add(codeVideoFeature);
+            codeVideoFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+            codeVideoFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
+            final PresenterFeature pauseFeature = new PresenterFeature(FeatureType.pause, null);
+            pauseFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(stimulusMsDelay));
+            codeVideoFeature.getPresenterFeatureList().add(pauseFeature);
+
+            pauseFeature.getPresenterFeatureList().add(imageFeature);
+        } else {
+            hasMoreStimulusFeature.getPresenterFeatureList().add(imageFeature);
+        }
         final PresenterFeature presenterFeature;
 //        if (stimulusCodeFormat != null) {
 //            final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionButton, buttonLabelEventTag);

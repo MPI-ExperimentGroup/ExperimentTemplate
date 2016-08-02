@@ -54,6 +54,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
     private boolean stimulusFreeText = false;
     private boolean randomiseStimuli = false;
     private String buttonLabelEventTag;
+    private boolean allowHotkeyNextButton = true;
 
     public WizardRandomStimulusScreen() {
         super("RandomStimulus", "RandomStimulus", "RandomStimulus");
@@ -211,6 +212,15 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
     public void setButtonLabel(String buttonLabelEventTag) {
         this.buttonLabelEventTag = buttonLabelEventTag;
     }
+
+    public boolean isAllowHotkeyNextButton() {
+        return allowHotkeyNextButton;
+    }
+
+    public void setAllowHotkeyNextButton(boolean allowHotkeyNextStimulus) {
+        this.allowHotkeyNextButton = allowHotkeyNextStimulus;
+    }
+
     private static final String BASE_FILE_REGEX = "\\.[a-zA-Z34]+$";
 
     @Override
@@ -274,10 +284,13 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
         imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(stimulusMsDelay));
         final PresenterFeature presenterFeature;
+        final String hotKeyString = "SPACE";
         if (stimulusCodeFormat != null) {
             final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionButton, buttonLabelEventTag);
             nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, buttonLabelEventTag);
-            nextButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
+            if (allowHotkeyNextButton) {
+                nextButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, hotKeyString);
+            }
             nextButtonFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
             final PresenterFeature pauseFeature = new PresenterFeature(FeatureType.pause, null);
             pauseFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(stimulusCodeMsDelay));
@@ -320,7 +333,9 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         } else {
             final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionButton, buttonLabelEventTag);
             nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, buttonLabelEventTag);
-            nextButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
+            if (allowHotkeyNextButton) {
+                nextButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, hotKeyString);
+            }
             final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
             nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
             nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + screenTitle);

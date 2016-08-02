@@ -127,7 +127,7 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
             screenName += stimulusTag;
         }
         presenterScreen.setMenuLabel(screenTitle);
-        setScreenTag(screenName + "Screen");
+//        setScreenTag(screenName + "Screen");
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
         presenterScreen.setPresenterType(PresenterType.stimulus);
 
