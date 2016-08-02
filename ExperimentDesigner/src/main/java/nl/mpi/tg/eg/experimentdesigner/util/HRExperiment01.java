@@ -83,7 +83,7 @@ public class HRExperiment01 {
         wizardData.addScreen(wizardTextScreen);
         wizardData.addScreen(wizardEditUserScreen);
 
-        final WizardVideoAudioOptionStimulusScreen list1234Screen = new WizardVideoAudioOptionStimulusScreen("VideoAudioOption", false, stimuliString,
+        final WizardVideoAudioOptionStimulusScreen list1234Screen = new WizardVideoAudioOptionStimulusScreen("VideoAudioOption", false, stimuliString, true,
                 new String[]{"list_2"}, 1000, true, 1000, "", "", "volgende [ spatiebalk ]");
 //        list1234Screen.setStimulusResponseOptions("1,2,3,4,5");
 //        list1234Screen.setStimulusResponseLabelLeft("zeer waarschijnlijk negatief");
