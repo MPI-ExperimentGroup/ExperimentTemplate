@@ -17,14 +17,6 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Transient;
-import javax.validation.constraints.Size;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 
@@ -32,106 +24,96 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
  * @since May 3, 2016 1:34:51 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-@Entity
 public abstract class AbstractWizardScreen implements WizardScreen {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-
-    @Transient
     final PresenterScreen presenterScreen = new PresenterScreen();
-    @OneToOne(targetEntity = AbstractWizardScreen.class, cascade = CascadeType.ALL)
-    WizardScreen backWizardScreen = null;
-    @OneToOne(targetEntity = AbstractWizardScreen.class, cascade = CascadeType.ALL)
-    WizardScreen nextWizardScreen = null;
-    @Size(max = 3500)
-    String screenText = null;
-    String nextButton = null;
-    String screenTitle = null;
-    String menuLabel = null;
-    String screenTag = null;
-    boolean centreScreen = true;
+    protected final WizardScreenData wizardScreenData;
 
     public AbstractWizardScreen() {
+        this.wizardScreenData = new WizardScreenData();
+    }
+
+    public AbstractWizardScreen(WizardScreenData wizardScreenData) {
+        this.wizardScreenData = wizardScreenData;
     }
 
     public AbstractWizardScreen(String screenTitle, String menuLabel, String screenTag) {
-        this.screenTitle = screenTitle;
-        this.menuLabel = menuLabel;
-        this.screenTag = screenTag.replaceAll("[^A-Za-z0-9]", "_");
+        this.wizardScreenData = new WizardScreenData();
+        this.wizardScreenData.setScreenTitle(screenTitle);
+        this.wizardScreenData.setMenuLabel(menuLabel);
+        this.wizardScreenData.setScreenTag(screenTag.replaceAll("[^A-Za-z0-9]", "_"));
     }
 
     public String getScreenTitle() {
-        return screenTitle;
+        return this.wizardScreenData.getScreenTitle();
     }
 
-    public void setScreenTitle(String screenTitle) {
-        this.screenTitle = screenTitle;
+    public final void setScreenTitle(String screenTitle) {
+        this.wizardScreenData.setScreenTitle(screenTitle);
     }
 
     public String getMenuLabel() {
-        return menuLabel;
+        return this.wizardScreenData.getMenuLabel();
     }
 
-    public void setMenuLabel(String menuLabel) {
-        this.menuLabel = menuLabel;
+    public final void setMenuLabel(String menuLabel) {
+        this.wizardScreenData.setMenuLabel(menuLabel);
     }
 
     public String getScreenTag() {
-        return screenTag;
+        return this.wizardScreenData.getScreenTag();
     }
 
-    public void setScreenTag(String screenTag) {
-        this.screenTag = screenTag;
+    public final void setScreenTag(String screenTag) {
+        this.wizardScreenData.setScreenTag(screenTag);
     }
 
     @Override
     public WizardScreen getBackWizardScreen() {
-        return backWizardScreen;
+        return this.wizardScreenData.getBackWizardScreen();
     }
 
     @Override
     public void setBackWizardScreen(WizardScreen backWizardScreen) {
-        this.backWizardScreen = backWizardScreen;
+        this.wizardScreenData.setBackWizardScreen(backWizardScreen);
     }
 
     @Override
     public WizardScreen getNextWizardScreen() {
-        return nextWizardScreen;
+        return this.wizardScreenData.getNextWizardScreen();
     }
 
     @Override
     public void setNextWizardScreen(WizardScreen nextWizardScreen) {
-        this.nextWizardScreen = nextWizardScreen;
+        this.wizardScreenData.setNextWizardScreen(nextWizardScreen);
     }
 
     @Override
     public String getScreenText() {
-        return screenText;
+        return this.wizardScreenData.getScreenText();
     }
 
     @Override
-    public void setScreenText(String screenText) {
-        this.screenText = screenText;
+    public final void setScreenText(String screenText) {
+        this.wizardScreenData.setScreenText(screenText);
     }
 
     public boolean isCentreScreen() {
-        return centreScreen;
+        return this.wizardScreenData.isCentreScreen();
     }
 
-    public void setCentreScreen(boolean centreScreen) {
-        this.centreScreen = centreScreen;
+    public final void setCentreScreen(boolean centreScreen) {
+        this.wizardScreenData.setCentreScreen(centreScreen);
     }
 
     @Override
     public String getNextButton() {
-        return nextButton;
+        return this.wizardScreenData.getNextButton();
     }
 
     @Override
-    public void setNextButton(String nextButton) {
-        this.nextButton = nextButton;
+    public final void setNextButton(String nextButton) {
+        this.wizardScreenData.setNextButton(nextButton);
     }
 
     @Override
@@ -141,15 +123,15 @@ public abstract class AbstractWizardScreen implements WizardScreen {
 
     @Override
     public PresenterScreen populatePresenterScreen(final Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        presenterScreen.setTitle((obfuscateScreenNames) ? experiment.getAppNameDisplay() + " " + displayOrder : screenTitle);
-        presenterScreen.setMenuLabel((menuLabel != null) ? menuLabel : screenTitle);
-        final String currentTagString = (getScreenTag() != null) ? getScreenTag() : screenTitle;
+        presenterScreen.setTitle((obfuscateScreenNames) ? experiment.getAppNameDisplay() + " " + displayOrder : getScreenTitle());
+        presenterScreen.setMenuLabel((getMenuLabel() != null) ? getMenuLabel() : getScreenTitle());
+        final String currentTagString = (getScreenTag() != null) ? getScreenTag() : getScreenTitle();
         presenterScreen.setSelfPresenterTag(currentTagString.replaceAll("[^A-Za-z0-9]", "_"));
-        if (backWizardScreen != null) {
-            presenterScreen.setBackPresenter(backWizardScreen.getPresenterScreen());
+        if (getBackWizardScreen() != null) {
+            presenterScreen.setBackPresenter(getBackWizardScreen().getPresenterScreen());
         }
-        if (nextWizardScreen != null) {
-            presenterScreen.setNextPresenter(nextWizardScreen.getPresenterScreen());
+        if (getNextWizardScreen() != null) {
+            presenterScreen.setNextPresenter(getNextWizardScreen().getPresenterScreen());
         }
         presenterScreen.setDisplayOrder(displayOrder);
         return presenterScreen;

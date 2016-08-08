@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experimentdesigner.util;
 import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.StimuliSubAction;
+import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAudioRecorderMetadataScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
@@ -40,7 +41,13 @@ public class ShawiFieldKit {
 
     private final WizardController wizardController = new WizardController();
 
+    public WizardData getWizardData() {
+        final WizardData wizardData = new WizardData();
+        return wizardData;
+    }
+
     public Experiment getShawiExperiment() {
+//       return wizardController.getExperiment(getWizardData());
         Experiment experiment = wizardController.getExperiment("shawifieldkit", "Shawi FieldKit", true);
         boolean obfuscateScreenNames = false;
         experiment.setBackgroundColour("#ffeda0");
@@ -48,7 +55,7 @@ public class ShawiFieldKit {
         experiment.setPrimaryColour2("#f03b20");
 //        wizardController.addMetadata(experiment);
         final WizardMenuScreen autoMenuPresenter = new WizardMenuScreen("Auto Menu", "Menu", "AutoMenu");
-        final WizardWelcomeScreen welcomePresenter = new WizardWelcomeScreen("Welcome", "Instructions", "Go directly to program", null, null);
+        final WizardWelcomeScreen welcomePresenter = new WizardWelcomeScreen("Welcome", "Welcome", "Instructions", "Go directly to program", null, null);
         final WizardExistingUserCheckScreen welcomeMenuPresenter = new WizardExistingUserCheckScreen("Start", "New Interview.", "Resume Interview", "Is this a new recording?", "Have you already started a recording and do you want to go back to it?");
         final WizardTextScreen instructionsPresenter = new WizardTextScreen("Instructions", "With this app you can make recordings of your language. "
                 + "Describe pictures in this app by speaking and the app records what you say.", "Go directly to program");

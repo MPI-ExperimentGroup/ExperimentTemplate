@@ -62,8 +62,8 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
 
     public WizardRandomStimulusScreen(String screenName, boolean centreScreen, String[] screenTextArray, String[] randomStimuliTags, int maxStimuli, final boolean randomiseStimuli, String stimulusCodeMatch, int stimulusDelay, int codeStimulusDelay, String codeFormat, String responseOptions, String responseOptionsLabelLeft, String responseOptionsLabelRight, final String spacebar) {
         super(screenName, screenName, screenName);
-        this.screenTitle = screenName;
-        this.centreScreen = centreScreen;
+        this.setScreenTitle(screenName);
+        this.setCentreScreen(centreScreen);
         this.stimuliPath = "";
         this.stimuliSet = screenTextArray;
         this.stimuliRandomTags = randomStimuliTags;
@@ -84,7 +84,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
 
     public WizardRandomStimulusScreen(String screenName, String[] screenTextArray, int maxStimuli, final boolean randomiseStimuli, String responseOptions, String responseOptionsLabelLeft, String responseOptionsLabelRight) {
         super(screenName, screenName, screenName);
-        this.screenTitle = screenName;
+        this.setScreenTitle(screenName);
         this.stimuliPath = "";
         this.stimuliSet = screenTextArray;
         this.stimuliRandomTags = null;
@@ -229,7 +229,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         final Pattern stimulusCodePattern = (stimulusCodeMatch != null) ? Pattern.compile(stimulusCodeMatch) : null;
         if (stimuliSet != null) {
             for (String stimulusLine : stimuliSet) {
-                final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{screenTitle}));
+                final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{getScreenTitle()}));
                 final Stimulus stimulus;
                 if (stimulusCodePattern != null) {
                     System.out.println("stimulusCodeMatch:" + stimulusCodeMatch);
@@ -251,15 +251,15 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
             }
         }
 
-//        final PresenterScreen presenterScreen = new PresenterScreen((obfuscateScreenNames) ? experiment.getAppNameDisplay() + " " + displayOrder : screenTitle, screenTitle, backPresenter, screenName, null, PresenterType.stimulus, displayOrder);
+//        final PresenterScreen presenterScreen = new PresenterScreen((obfuscateScreenNames) ? experiment.getAppNameDisplay() + " " + displayOrder : getScreenTitle(), getScreenTitle(), backPresenter, screenName, null, PresenterType.stimulus, displayOrder);
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
         presenterScreen.setPresenterType(PresenterType.stimulus);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
-        if (centreScreen) {
+        if (isCentreScreen()) {
             presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
         }
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadStimulus, null);
-        loadStimuliFeature.addStimulusTag(screenTitle);
+        loadStimuliFeature.addStimulusTag(getScreenTitle());
         final RandomGrouping randomGrouping = new RandomGrouping();
         if (stimuliRandomTags != null) {
             for (String randomTag : stimuliRandomTags) {
@@ -270,7 +270,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
             loadStimuliFeature.setRandomGrouping(randomGrouping);
             experiment.getMetadata().add(new Metadata(metadataFieldname, metadataFieldname, ".*", ".", false, null));
         }
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, screenTitle);
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, getScreenTitle());
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(randomiseStimuli));
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "1");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(stimuliCount));
@@ -327,7 +327,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
             ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
             final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
             nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
-            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "NextStimulus" + screenTitle);
+            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "NextStimulus" + getScreenTitle());
             ratingFooterButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
             presenterFeature.getPresenterFeatureList().add(ratingFooterButtonFeature);
         } else {
@@ -338,7 +338,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
             }
             final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
             nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
-            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + screenTitle);
+            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + getScreenTitle());
             nextButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
             presenterFeature.getPresenterFeatureList().add(nextButtonFeature);
         }

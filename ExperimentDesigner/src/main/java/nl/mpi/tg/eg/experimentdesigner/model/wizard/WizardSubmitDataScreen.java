@@ -60,7 +60,7 @@ public class WizardSubmitDataScreen extends AbstractWizardScreen {
         onErrorFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, could_not_contact_the_server_please_check));
         final PresenterFeature retryFeature = new PresenterFeature(FeatureType.targetButton, retryButtonLabel);
         onErrorFeature.getPresenterFeatureList().add(retryFeature);
-        retryFeature.addFeatureAttributes(FeatureAttribute.target, screenTitle);
+        retryFeature.addFeatureAttributes(FeatureAttribute.target, getScreenTitle());
 
         experiment.getPresenterScreen().add(presenterScreen);
         return presenterScreen;

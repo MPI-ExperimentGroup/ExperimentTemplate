@@ -59,7 +59,7 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
 
     public WizardEditUserScreen(final String screenTitle, final String screenTag, WizardData wizardData, String dispalyText, String[] customFields, final String saveButtonLabel, final String postText, final AbstractWizardScreen alternateNextScreen, final String alternateButtonLabel, final boolean sendData, final String on_Error_Text) {
         super(screenTitle, screenTitle, screenTag);
-        this.screenText = dispalyText;
+        this.setScreenText (dispalyText);
         this.customFields = customFields;
         this.saveButtonLabel = saveButtonLabel;
         this.postText = postText;
@@ -233,8 +233,8 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
         presenterScreen.setPresenterType(PresenterType.metadata);
-        if (screenText != null) {
-            presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, screenText));
+        if (getScreenText() != null) {
+            presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, getScreenText()));
         }
         if (getCustomFields() != null) {
             for (String fieldString : getCustomFields()) {

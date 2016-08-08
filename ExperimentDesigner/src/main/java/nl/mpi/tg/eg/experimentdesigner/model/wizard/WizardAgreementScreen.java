@@ -32,8 +32,8 @@ public class WizardAgreementScreen extends AbstractWizardScreen {
 
     public WizardAgreementScreen(String screenTitle, String screenText, final String agreementButtonLabel) {
         super(screenTitle, screenTitle, screenTitle);
-        this.nextButton = agreementButtonLabel;
-        this.screenText = screenText;
+        this.setNextButton(agreementButtonLabel);
+        this.setScreenText(screenText);
 
     }
 
@@ -41,9 +41,9 @@ public class WizardAgreementScreen extends AbstractWizardScreen {
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         presenterScreen.setPresenterType(PresenterType.metadata);
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, screenText));
-        final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.targetButton, nextButton);
-        presenterFeature.addFeatureAttributes(FeatureAttribute.target, nextWizardScreen.getScreenTag());
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, getScreenText()));
+        final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.targetButton, getNextButton());
+        presenterFeature.addFeatureAttributes(FeatureAttribute.target, getNextWizardScreen().getScreenTag());
         presenterScreen.getPresenterFeatureList().add(presenterFeature);
         experiment.getPresenterScreen().add(presenterScreen);
         return presenterScreen;

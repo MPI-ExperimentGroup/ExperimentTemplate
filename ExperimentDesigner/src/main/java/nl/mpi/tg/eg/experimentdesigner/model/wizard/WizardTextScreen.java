@@ -34,8 +34,8 @@ public class WizardTextScreen extends AbstractWizardScreen {
 
     public WizardTextScreen(final String screenName, String screenText, final String nextButtonLabel) {
         super(screenName, screenName, screenName);
-        this.nextButton = nextButtonLabel;
-        this.screenText = screenText;
+        this.setNextButton(nextButtonLabel);
+        this.setScreenText(screenText);
 
     }
 
@@ -53,8 +53,9 @@ public class WizardTextScreen extends AbstractWizardScreen {
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         presenterScreen.setPresenterType(PresenterType.text);
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, screenText));
-        final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.targetButton, nextButton);
+        presenterScreen.setNextPresenter(null);
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, getScreenText()));
+        final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.targetButton, getNextButton());
         actionButtonFeature.addFeatureAttributes(FeatureAttribute.target, buttonNextWizardScreen.getScreenTag());
         actionButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
         presenterScreen.getPresenterFeatureList().add(actionButtonFeature);

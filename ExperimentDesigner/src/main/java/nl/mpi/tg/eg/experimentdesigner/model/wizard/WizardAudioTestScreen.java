@@ -38,8 +38,8 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
 
     public WizardAudioTestScreen(String screenName, String pageText, String buttonLabel, String audioPath) {
         super(screenName, screenName, screenName);
-        screenText = pageText;
-        nextButton = buttonLabel;
+        this.setScreenText(pageText);
+        this.setNextButton(buttonLabel);
         this.audioPath = audioPath;
     }
 
@@ -71,7 +71,7 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
 //        populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
         presenterScreen.setPresenterType(PresenterType.stimulus);
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, screenText));
+        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, getScreenText()));
         final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.audioButton, null);
         presenterFeature.addFeatureAttributes(FeatureAttribute.eventTag, "AudioTest");
         presenterFeature.addFeatureAttributes(FeatureAttribute.mp3, audioPath + ".mp3");
@@ -79,7 +79,7 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
         presenterFeature.addFeatureAttributes(FeatureAttribute.poster, audioPath + ".jpg");
         presenterScreen.getPresenterFeatureList().add(presenterFeature);
         experiment.getPresenterScreen().add(presenterScreen);
-        final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.actionButton, nextButton);
+        final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.actionButton, getNextButton());
         presenterScreen.getPresenterFeatureList().add(actionButtonFeature);
         actionButtonFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
         return presenterScreen;
