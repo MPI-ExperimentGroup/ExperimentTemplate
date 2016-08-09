@@ -30,83 +30,19 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
  */
 public class WizardCompletionScreen extends AbstractWizardScreen {
 
-    private String completedText1;
-    private boolean allowUserRestart;
-    private boolean generateCompletionCode;
-    private String completedText2;
-    private String eraseUsersDataButtonlabel;
-    private String could_not_contact_the_server_please_check;
-    private String retryButtonLabel;
-
     public WizardCompletionScreen() {
         super("Completion", "Completion", "Completion");
     }
 
     public WizardCompletionScreen(String completedText1, final boolean allowUserRestart, boolean generateCompletionCode, String completedText2, String eraseUsersDataButtonlabel, final String screenTitle, final String could_not_contact_the_server_please_check, final String retryButtonLabel) {
         super(screenTitle, screenTitle, screenTitle);
-        this.completedText1 = completedText1;
-        this.allowUserRestart = allowUserRestart;
-        this.generateCompletionCode = generateCompletionCode;
-        this.completedText2 = completedText2;
-        this.eraseUsersDataButtonlabel = eraseUsersDataButtonlabel;
-        this.could_not_contact_the_server_please_check = could_not_contact_the_server_please_check;
-        this.retryButtonLabel = retryButtonLabel;
-    }
-
-    public String getCompletedText1() {
-        return completedText1;
-    }
-
-    public void setCompletedText1(String completedText1) {
-        this.completedText1 = completedText1;
-    }
-
-    public boolean isAllowUserRestart() {
-        return allowUserRestart;
-    }
-
-    public void setAllowUserRestart(boolean allowUserRestart) {
-        this.allowUserRestart = allowUserRestart;
-    }
-
-    public boolean isGenerateCompletionCode() {
-        return generateCompletionCode;
-    }
-
-    public void setGenerateCompletionCode(boolean generateCompletionCode) {
-        this.generateCompletionCode = generateCompletionCode;
-    }
-
-    public String getCompletedText2() {
-        return completedText2;
-    }
-
-    public void setCompletedText2(String completedText2) {
-        this.completedText2 = completedText2;
-    }
-
-    public String getEraseUsersDataButtonlabel() {
-        return eraseUsersDataButtonlabel;
-    }
-
-    public void setEraseUsersDataButtonlabel(String eraseUsersDataButtonlabel) {
-        this.eraseUsersDataButtonlabel = eraseUsersDataButtonlabel;
-    }
-
-    public String getCould_not_contact_the_server_please_check() {
-        return could_not_contact_the_server_please_check;
-    }
-
-    public void setCould_not_contact_the_server_please_check(String could_not_contact_the_server_please_check) {
-        this.could_not_contact_the_server_please_check = could_not_contact_the_server_please_check;
-    }
-
-    public String getRetryButtonLabel() {
-        return retryButtonLabel;
-    }
-
-    public void setRetryButtonLabel(String retryButtonLabel) {
-        this.retryButtonLabel = retryButtonLabel;
+        wizardScreenData.setScreenText1(completedText1);
+        wizardScreenData.setScreenText2(completedText2);
+        wizardScreenData.setAllowUserRestart(allowUserRestart);
+        wizardScreenData.setGenerateCompletionCode(generateCompletionCode);
+        wizardScreenData.setEraseUsersDataButtonlabel(eraseUsersDataButtonlabel);
+        wizardScreenData.setCould_not_contact_the_server_please_check(could_not_contact_the_server_please_check);
+        wizardScreenData.setRetryButtonLabel(retryButtonLabel);
     }
 
     @Override
@@ -118,26 +54,26 @@ public class WizardCompletionScreen extends AbstractWizardScreen {
 
         final PresenterFeature onSuccessFeature = new PresenterFeature(FeatureType.onSuccess, null);
         sendAllDataFeature.getPresenterFeatureList().add(onSuccessFeature);
-        onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, completedText1));
+        onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, wizardScreenData.getScreenText1()));
         onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-        if (generateCompletionCode) {
+        if (wizardScreenData.getGenerateCompletionCode()) {
             onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.generateCompletionCode, null));
         }
 
-        if (completedText2 != null) {
+        if (wizardScreenData.getScreenText2() != null) {
             onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-            onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, completedText2));
+            onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, wizardScreenData.getScreenText2()));
         }
-        if (allowUserRestart) {
+        if (wizardScreenData.getAllowUserRestart()) {
             onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-            onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.eraseUsersDataButton, eraseUsersDataButtonlabel));
+            onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.eraseUsersDataButton, wizardScreenData.getEraseUsersDataButtonlabel()));
         }
         final PresenterFeature onErrorFeature = new PresenterFeature(FeatureType.onError, null);
         sendAllDataFeature.getPresenterFeatureList().add(onErrorFeature);
 //        final String could_not_contact_the_server_please_check = "Could not contact the server, please check your internet connection and try again.";
-        onErrorFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, could_not_contact_the_server_please_check));
+        onErrorFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, wizardScreenData.getCould_not_contact_the_server_please_check()));
 //        final String retryButtonLabel = "Retry";
-        final PresenterFeature retryFeature = new PresenterFeature(FeatureType.targetButton, retryButtonLabel);
+        final PresenterFeature retryFeature = new PresenterFeature(FeatureType.targetButton, wizardScreenData.getRetryButtonLabel());
         onErrorFeature.getPresenterFeatureList().add(retryFeature);
         retryFeature.addFeatureAttributes(FeatureAttribute.target, getScreenTitle());
 

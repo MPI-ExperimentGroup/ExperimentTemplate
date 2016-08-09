@@ -17,13 +17,17 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Size;
+import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
 
 /**
  * @since Aug 8, 2016 11:15:50 AM (creation date)
@@ -38,25 +42,35 @@ public class WizardScreenData {
     private long id;
 
     @OneToOne(targetEntity = AbstractWizardScreen.class, cascade = CascadeType.ALL)
-    WizardScreen backWizardScreen = null;
+    private WizardScreen backWizardScreen = null;
     @OneToOne(targetEntity = AbstractWizardScreen.class, cascade = CascadeType.ALL)
-    WizardScreen nextWizardScreen = null;
+    private WizardScreen nextWizardScreen = null;
     @Size(max = 3500)
-    String screenText = null;
-    String nextButton = null;
-    String screenTitle = null;
-    String menuLabel = null;
-    String screenTag = null;
-    Boolean centreScreen = true;
+    private String screenText1 = null;
+    private String screenText2 = null;
+    private String nextButton = null;
+    private String screenTitle = null;
+    private String menuLabel = null;
+    private String screenTag = null;
+    private Boolean centreScreen = true;
 
     private String[] stimuliSet = null;
     private String[] stimuliRandomTags = null;
     private Integer stimulusMsDelay = null;
-    private Boolean randomiseStimuli = false;
+    private Boolean randomiseStimuli = null;
     private Integer stimuliCount = null;
 //    private String buttonLabelEventTag = null;
     private String backgroundImage = null;
     private Boolean sdCardStimuli = null;
+    private String eraseUsersDataButtonlabel = null;
+    private String could_not_contact_the_server_please_check = null;
+    private String retryButtonLabel = null;
+
+    private Boolean generateCompletionCode = null;
+    private Boolean allowUserRestart = null;
+
+    @OneToMany
+    private List<Metadata> metadataFields = null;
 
     public long getId() {
         return id;
@@ -82,12 +96,20 @@ public class WizardScreenData {
         this.nextWizardScreen = nextWizardScreen;
     }
 
-    public String getScreenText() {
-        return screenText;
+    public String getScreenText1() {
+        return screenText1;
     }
 
-    public void setScreenText(String screenText) {
-        this.screenText = screenText;
+    public void setScreenText1(String screenText) {
+        this.screenText1 = screenText;
+    }
+
+    public String getScreenText2() {
+        return screenText2;
+    }
+
+    public void setScreenText2(String screenText) {
+        this.screenText2 = screenText;
     }
 
     public String getNextButton() {
@@ -177,7 +199,6 @@ public class WizardScreenData {
 //    public void setButtonLabelEventTag(String buttonLabelEventTag) {
 //        this.buttonLabelEventTag = buttonLabelEventTag;
 //    }
-
     public String getBackgroundImage() {
         return backgroundImage;
     }
@@ -194,4 +215,50 @@ public class WizardScreenData {
         this.sdCardStimuli = sdCardStimuli;
     }
 
+    public String getEraseUsersDataButtonlabel() {
+        return eraseUsersDataButtonlabel;
+    }
+
+    public void setEraseUsersDataButtonlabel(String eraseUsersDataButtonlabel) {
+        this.eraseUsersDataButtonlabel = eraseUsersDataButtonlabel;
+    }
+
+    public String getCould_not_contact_the_server_please_check() {
+        return could_not_contact_the_server_please_check;
+    }
+
+    public void setCould_not_contact_the_server_please_check(String could_not_contact_the_server_please_check) {
+        this.could_not_contact_the_server_please_check = could_not_contact_the_server_please_check;
+    }
+
+    public String getRetryButtonLabel() {
+        return retryButtonLabel;
+    }
+
+    public void setRetryButtonLabel(String retryButtonLabel) {
+        this.retryButtonLabel = retryButtonLabel;
+    }
+
+    public Boolean getGenerateCompletionCode() {
+        return generateCompletionCode;
+    }
+
+    public void setGenerateCompletionCode(Boolean generateCompletionCode) {
+        this.generateCompletionCode = generateCompletionCode;
+    }
+
+    public Boolean getAllowUserRestart() {
+        return allowUserRestart;
+    }
+
+    public void setAllowUserRestart(Boolean allowUserRestart) {
+        this.allowUserRestart = allowUserRestart;
+    }
+
+    public List<Metadata> getMetadataFields() {
+        if (metadataFields == null) {
+            metadataFields = new ArrayList<>();
+        }
+        return metadataFields;
+    }
 }

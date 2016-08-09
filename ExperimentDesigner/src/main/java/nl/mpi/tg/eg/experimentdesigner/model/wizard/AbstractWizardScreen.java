@@ -90,12 +90,12 @@ public abstract class AbstractWizardScreen implements WizardScreen {
 
     @Override
     public String getScreenText() {
-        return this.wizardScreenData.getScreenText();
+        return this.wizardScreenData.getScreenText1();
     }
 
     @Override
     public final void setScreenText(String screenText) {
-        this.wizardScreenData.setScreenText(screenText);
+        this.wizardScreenData.setScreenText1(screenText);
     }
 
     public boolean isCentreScreen() {

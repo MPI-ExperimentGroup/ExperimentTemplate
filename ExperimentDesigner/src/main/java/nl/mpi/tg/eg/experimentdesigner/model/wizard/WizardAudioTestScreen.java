@@ -30,8 +30,6 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
  */
 public class WizardAudioTestScreen extends AbstractWizardScreen {
 
-    String audioPath;
-
     public WizardAudioTestScreen() {
         super("AudioTest", "AudioTest", "AudioTest");
     }
@@ -40,15 +38,15 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
         super(screenName, screenName, screenName);
         this.setScreenText(pageText);
         this.setNextButton(buttonLabel);
-        this.audioPath = audioPath;
+        this.wizardScreenData.setStimuliSet(new String[]{audioPath});
     }
 
     public String getAudioPath() {
-        return audioPath;
+        return this.wizardScreenData.getStimuliSet()[0];
     }
 
     public void setAudioPath(String audioPath) {
-        this.audioPath = audioPath;
+        this.wizardScreenData.setStimuliSet(new String[]{audioPath});
     }
 
 //    String[] fieldNames = new String[]{"audioTestScreenText", "audioWorksButtonText", "testAudioPath"};
@@ -74,9 +72,9 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, getScreenText()));
         final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.audioButton, null);
         presenterFeature.addFeatureAttributes(FeatureAttribute.eventTag, "AudioTest");
-        presenterFeature.addFeatureAttributes(FeatureAttribute.mp3, audioPath + ".mp3");
-        presenterFeature.addFeatureAttributes(FeatureAttribute.ogg, audioPath + ".ogg");
-        presenterFeature.addFeatureAttributes(FeatureAttribute.poster, audioPath + ".jpg");
+        presenterFeature.addFeatureAttributes(FeatureAttribute.mp3, getAudioPath() + ".mp3");
+        presenterFeature.addFeatureAttributes(FeatureAttribute.ogg, getAudioPath() + ".ogg");
+        presenterFeature.addFeatureAttributes(FeatureAttribute.poster, getAudioPath() + ".jpg");
         presenterScreen.getPresenterFeatureList().add(presenterFeature);
         experiment.getPresenterScreen().add(presenterScreen);
         final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.actionButton, getNextButton());

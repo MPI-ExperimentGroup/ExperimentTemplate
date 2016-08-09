@@ -32,21 +32,6 @@ import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
  */
 public class WizardEditUserScreen extends AbstractWizardScreen {
 
-    private boolean metadataScreen = false;
-    private String metadataScreenText = "";
-    private boolean speakerNameField = false;
-
-    private boolean firstNameField = false;
-    private boolean lastNameField = false;
-    private boolean genderField = false;
-    private boolean emailAddressField = false;
-    private String customTextField = "";
-    private String optionCheckBox1 = "";
-    private String optionCheckBox2 = "";
-    private String mandatoryCheckBox = "";
-    private boolean ageField = false;
-    private String[] customFields = null;
-    private String saveButtonLabel;
     private String postText;
     private WizardScreen alternateNextScreen;
     private String alternateButtonLabel;
@@ -57,24 +42,15 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
         super("EditUser", "EditUser", "EditUser");
     }
 
-    public WizardEditUserScreen(final String screenTitle, final String screenTag, WizardData wizardData, String dispalyText, String[] customFields, final String saveButtonLabel, final String postText, final AbstractWizardScreen alternateNextScreen, final String alternateButtonLabel, final boolean sendData, final String on_Error_Text) {
+    public WizardEditUserScreen(final String screenTitle, final String screenTag, WizardData wizardData, String dispalyText, final String saveButtonLabel, final String postText, final AbstractWizardScreen alternateNextScreen, final String alternateButtonLabel, final boolean sendData, final String on_Error_Text) {
         super(screenTitle, screenTitle, screenTag);
-        this.setScreenText (dispalyText);
-        this.customFields = customFields;
-        this.saveButtonLabel = saveButtonLabel;
+        this.setScreenText(dispalyText);
+        this.wizardScreenData.setNextButton(saveButtonLabel);
         this.postText = postText;
         this.alternateButtonLabel = alternateButtonLabel;
         this.sendData = sendData;
         this.on_Error_Text = on_Error_Text;
         this.alternateNextScreen = alternateNextScreen;
-    }
-
-    public String getSaveButtonLabel() {
-        return saveButtonLabel;
-    }
-
-    public void setSaveButtonLabel(String saveButtonLabel) {
-        this.saveButtonLabel = saveButtonLabel;
     }
 
     public String getPostText() {
@@ -117,108 +93,49 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
         this.on_Error_Text = on_Error_Text;
     }
 
-    public boolean isMetadataScreen() {
-        return metadataScreen;
+    public void setFirstNameField() {
+        wizardScreenData.getMetadataFields().add(new Metadata("firstName", "First name", ".'{'3,'}'", "Please enter at least three letters.", false, null));
     }
 
-    public void setMetadataScreen(boolean metadataScreen) {
-        this.metadataScreen = metadataScreen;
+    public void setLastNameField() {
+        wizardScreenData.getMetadataFields().add(new Metadata("lastName", "Last name", ".'{'3,'}'", "Please enter at least three letters.", false, null));
+
     }
 
-    public String getMetadataScreenText() {
-        return metadataScreenText;
-    }
-
-    public void setMetadataScreenText(String metadataScreenText) {
-        this.metadataScreenText = metadataScreenText;
-    }
-
-    public boolean isSpeakerNameField() {
-        return speakerNameField;
-    }
-
-    public void setSpeakerNameField(boolean speakerNameField) {
-        this.speakerNameField = speakerNameField;
-    }
-
-    public boolean isFirstNameField() {
-        return firstNameField;
-    }
-
-    public void setFirstNameField(boolean firstNameField) {
-        this.firstNameField = firstNameField;
-    }
-
-    public boolean isLastNameField() {
-        return lastNameField;
-    }
-
-    public void setLastNameField(boolean lastNameField) {
-        this.lastNameField = lastNameField;
-    }
-
-    public boolean isEmailAddressField() {
-        return emailAddressField;
-    }
-
-    public void setEmailAddressField(boolean emailAddressField) {
-        this.emailAddressField = emailAddressField;
-    }
-
-    public String getOptionCheckBox1() {
-        return optionCheckBox1;
+    public void setEmailAddressField() {
+        wizardScreenData.getMetadataFields().add(new Metadata("emailAddress", "Email address", "^[^@]+@[^@]+$", "Please enter a valid email address.", false, null));
     }
 
     public void setOptionCheckBox1(String optionCheckBox1) {
-        this.optionCheckBox1 = optionCheckBox1;
-    }
-
-    public String getOptionCheckBox2() {
-        return optionCheckBox2;
+        wizardScreenData.getMetadataFields().add(new Metadata("optionCheckBox1", optionCheckBox1, "true|false", "Please enter true or false.", false, null));
     }
 
     public void setOptionCheckBox2(String optionCheckBox2) {
-        this.optionCheckBox2 = optionCheckBox2;
-    }
-
-    public String getMandatoryCheckBox() {
-        return mandatoryCheckBox;
+        wizardScreenData.getMetadataFields().add(new Metadata("optionCheckBox2", optionCheckBox2, "true|false", "Please enter true or false.", false, null));
     }
 
     public void setMandatoryCheckBox(String mandatoryCheckBox) {
-        this.mandatoryCheckBox = mandatoryCheckBox;
+        wizardScreenData.getMetadataFields().add(new Metadata("mandatoryCheckBox", mandatoryCheckBox, "true", "Please agree to continue.", false, null));
     }
 
-    public boolean isAgeField() {
-        return ageField;
+    public void setAgeField() {
+        wizardScreenData.getMetadataFields().add(new Metadata("age", "Age", "[0-9]+", "Please enter a valid age.", false, null));
     }
 
-    public void setAgeField(boolean ageField) {
-        this.ageField = ageField;
-    }
-
-    public boolean isGenderField() {
-        return genderField;
-    }
-
-    public void setGenderField(boolean genderField) {
-        this.genderField = genderField;
-    }
-
-    public String getCustomTextField() {
-        return customTextField;
+    public void setGenderField() {
+        wizardScreenData.getMetadataFields().add(new Metadata("gender", "Gender", "|male|female|other", null, false, null));
     }
 
     public void setCustomTextField(String customTextField) {
-        this.customTextField = customTextField;
-    }
-
-    public String[] getCustomFields() {
-        return customFields;
+        wizardScreenData.getMetadataFields().add(new Metadata("customTextField1", customTextField, ".'{'3,'}'", "Please enter at least three letters.", false, null));
     }
 
     public void setCustomFields(String[] customFields) {
-        this.customFields = customFields;
+        if (customFields != null) {
+            for (String fieldString : customFields) {
+                insertMetadataByString(fieldString);
+            }
+        }
     }
 
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -236,56 +153,16 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
         if (getScreenText() != null) {
             presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, getScreenText()));
         }
-        if (getCustomFields() != null) {
-            for (String fieldString : getCustomFields()) {
-                insertMetadataByString(fieldString, experiment, presenterScreen);
-            }
+        for (Metadata metadata : wizardScreenData.getMetadataFields()) {
+            experiment.getMetadata().add(metadata);
+            final PresenterFeature metadataField = new PresenterFeature(FeatureType.metadataField, null);
+            metadataField.addFeatureAttributes(FeatureAttribute.fieldName, metadata.getPostName());
+            presenterScreen.getPresenterFeatureList().add(metadataField);
         }
-        if (!getMetadataScreenText().isEmpty()) {
-            presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, getMetadataScreenText()));
-        }
-//            addMetadata(experiment);
-//            insertMetadataField(experiment, new Metadata("workerId", "Worker ID", ".'{'3,'}'", "Please enter at least three letters.", false, null), presenterScreen);
-        if (isSpeakerNameField()) {
-            insertMetadataField(experiment, new Metadata("speakerName", "Speaker name *", ".'{'3,'}'", "Please enter at least three letters.", false, null), presenterScreen);
-        }
-        if (isFirstNameField()) {
-            insertMetadataField(experiment, new Metadata("firstName", "First name", ".'{'3,'}'", "Please enter at least three letters.", false, null), presenterScreen);
-        }
-        if (isLastNameField()) {
-            insertMetadataField(experiment, new Metadata("lastName", "Last name", ".'{'3,'}'", "Please enter at least three letters.", false, null), presenterScreen);
-        }
-        if (isAgeField()) {
-            insertMetadataField(experiment, new Metadata("age", "Age", "[0-9]+", "Please enter a valid age.", false, null), presenterScreen);
-        }
-        if (isGenderField()) {
-            insertMetadataField(experiment, new Metadata("gender", "Gender", "|male|female|other", null, false, null), presenterScreen);
-        }
-        if (isEmailAddressField()) {
-            insertMetadataField(experiment, new Metadata("emailAddress", "Email address", "^[^@]+@[^@]+$", "Please enter a valid email address.", false, null), presenterScreen);
-        }
-        if (!getCustomTextField().isEmpty()) {
-            insertMetadataField(experiment, new Metadata("customTextField1", getCustomTextField(), ".'{'3,'}'", "Please enter at least three letters.", false, null), presenterScreen);
-        }
-        if (!getOptionCheckBox1().isEmpty()) {
-            insertMetadataField(experiment, new Metadata("optionCheckBox1", getOptionCheckBox1(), "true|false", "Please enter true or false.", false, null), presenterScreen);
-        }
-        if (!getOptionCheckBox2().isEmpty()) {
-            insertMetadataField(experiment, new Metadata("optionCheckBox2", getOptionCheckBox2(), "true|false", "Please enter true or false.", false, null), presenterScreen);
-        }
-        if (!getMandatoryCheckBox().isEmpty()) {
-            insertMetadataField(experiment, new Metadata("mandatoryCheckBox", getMandatoryCheckBox(), "true", "Please agree to continue.", false, null), presenterScreen);
-        }
-
-//        if (customFields != null) {
-//            for (String fieldString : customFields) {
-//                insertMetadataByString(fieldString, experiment, presenterScreen);
-//            }
-//        }
-//        if (wizardData == null && customFields == null) {
+//        if (wizardScreenData.getMetadataFields().isEmpty()) {
 //            presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMetadataFields, null));
 //        }
-        final PresenterFeature saveMetadataButton = new PresenterFeature(FeatureType.saveMetadataButton, saveButtonLabel);
+        final PresenterFeature saveMetadataButton = new PresenterFeature(FeatureType.saveMetadataButton, wizardScreenData.getNextButton());
         saveMetadataButton.addFeatureAttributes(FeatureAttribute.sendData, Boolean.toString(sendData));
         saveMetadataButton.addFeatureAttributes(FeatureAttribute.networkErrorMessage, on_Error_Text);
         final PresenterFeature onErrorFeature = new PresenterFeature(FeatureType.onError, null);
@@ -310,19 +187,16 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
         return presenterScreen;
     }
 
-    private void insertMetadataByString(String fieldString, final Experiment experiment, final PresenterScreen presenterScreen) {
+    final public void insertMetadataByString(String fieldString) {
         final String[] splitFieldString = fieldString.split(":");
-        insertMetadataField(experiment, new Metadata(splitFieldString[0], splitFieldString[1], splitFieldString[2], splitFieldString[3], false, null), presenterScreen);
+        wizardScreenData.getMetadataFields().add(new Metadata(splitFieldString[0], splitFieldString[1], splitFieldString[2], splitFieldString[3], false, null));
     }
 
-    public void insertMetadataField(final Experiment experiment, final String label, final PresenterScreen presenterScreen) {
-        insertMetadataField(experiment, new Metadata(label.replaceAll("[^A-Za-z0-9]", "_"), label, "true|false", "Please enter true or false.", false, null), presenterScreen);
+    public void insertMetadataField(final String label) {
+        wizardScreenData.getMetadataFields().add(new Metadata(label.replaceAll("[^A-Za-z0-9]", "_"), label, "true|false", "Please enter true or false.", false, null));
     }
 
-    public void insertMetadataField(final Experiment experiment, final Metadata metadata, final PresenterScreen presenterScreen) {
-        experiment.getMetadata().add(metadata);
-        final PresenterFeature metadataField = new PresenterFeature(FeatureType.metadataField, null);
-        metadataField.addFeatureAttributes(FeatureAttribute.fieldName, metadata.getPostName());
-        presenterScreen.getPresenterFeatureList().add(metadataField);
+    public void insertMetadataField(final Metadata metadata) {
+        wizardScreenData.getMetadataFields().add(metadata);
     }
 }
