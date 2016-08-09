@@ -25,7 +25,9 @@ import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.FocusWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
+import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.TextBoxBase;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -85,9 +87,13 @@ public class MetadataView extends ComplexView {
         } else {
             final Label label = new Label(labelString);
             flexTable.setWidget(rowCount, 0, label);
-            focusWidget = new TextBox();
-            ((TextBox) focusWidget).setText((existingValue == null) ? "" : existingValue);
-            ((TextBox) focusWidget).addFocusHandler(new FocusHandler() {
+            if (metadataField.isMultiLine()) {
+                focusWidget = new TextArea();
+            } else {
+                focusWidget = new TextBox();
+            }
+            ((TextBoxBase) focusWidget).setText((existingValue == null) ? "" : existingValue);
+            ((TextBoxBase) focusWidget).addFocusHandler(new FocusHandler() {
 
                 @Override
                 public void onFocus(FocusEvent event) {
@@ -132,8 +138,8 @@ public class MetadataView extends ComplexView {
                     ((ListBox) focusWidget).setSelectedIndex(itemIndex);
                 }
             }
-        } else if (focusWidget instanceof TextBox) {
-            ((TextBox) focusWidget).setValue(fieldValue);
+        } else if (focusWidget instanceof TextBoxBase) {
+            ((TextBoxBase) focusWidget).setValue(fieldValue);
         }
     }
 
@@ -143,8 +149,8 @@ public class MetadataView extends ComplexView {
             return Boolean.toString(((CheckBox) focusWidget).getValue());
         } else if (focusWidget instanceof ListBox) {
             return ((ListBox) focusWidget).getSelectedValue();
-        } else if (focusWidget instanceof TextBox) {
-            return ((TextBox) focusWidget).getValue();
+        } else if (focusWidget instanceof TextBoxBase) {
+            return ((TextBoxBase) focusWidget).getValue();
         } else {
             throw new UnsupportedOperationException("Unexpected type for: " + focusWidget.getClass());
         }
