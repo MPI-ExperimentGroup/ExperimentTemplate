@@ -36,10 +36,12 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
 import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
+import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.AbstractWizardScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMenuScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreen;
 
 /**
  * @since Jan 18, 2016 11:20:47 AM (creation date)
@@ -51,12 +53,24 @@ public class SynQuiz2 {
     private final String imageSize = "80";
 
     public Experiment getExperiment() {
-        Experiment experiment = wizardController.getExperiment("SynQuiz2", "SynQuiz2", true);
+        final Experiment experiment = wizardController.getExperiment(getWizardData());
+        wizardController.addMetadata(experiment);
         experiment.setStimuli(new SynQuiz2().createStimuli());
-        new SynQuiz2().create(experiment, experiment.getPresenterScreen());
         return experiment;
     }
 
+    public WizardData getWizardData() {
+        WizardData wizardData = new WizardData();
+        wizardData.setAppName("SynQuiz2");
+        wizardData.setShowMenuBar(true);
+        wizardData.setObfuscateScreenNames(false);
+//    public Experiment getExperiment() {
+//        Experiment experiment = wizardController.getExperiment("SynQuiz2", "SynQuiz2", true);
+//        experiment.setStimuli(new SynQuiz2().createStimuli());
+//        new SynQuiz2().create(experiment, experiment.getPresenterScreen());
+//        return experiment;
+
+//    }
 //    done         The "tell us about your synaesthesia" text should be at the top of that page as an introduction
 //done·         Individual synaesthesia experiences (Touch/Sound/Colour/Taste/etc.) should be on their own pages
 //done         Resurrecting color picker instructions from SynQuiz
@@ -64,10 +78,10 @@ public class SynQuiz2 {
 //done but more elegance needed·         The menu page should have a "Finish" button that submits the data and clears it out for the next user
 //done·         Clicking Finish from the menu page should take people to the 'What's Next' screen (text for that is in document I sent)
 //done    make sure the data is sent to the old web service
-    //done make sure the new metadata is understood by the old webservice
-    public void create(Experiment experiment, final List<PresenterScreen> presenterScreenList) {
-        final PresenterScreen introductionScreen = createIntroductionScreen("Introduction", 1);
-        presenterScreenList.add(introductionScreen);
+        //done make sure the new metadata is understood by the old webservice
+//    public void create(Experiment experiment, final List<PresenterScreen> presenterScreenList) {
+        final AbstractWizardScreen introductionScreen = createIntroductionScreen("Introduction", 1);
+//        presenterScreenList.add(introductionScreen);
         final WizardCompletionScreen completionScreen = new WizardCompletionScreen(
                 "Thank you for participating! You may hear from us in the next few weeks to ask if you would like to participate in the genetics part of the study. Your data has been saved, and you can now close your browser. <br><br>"
                 + "If you have any questions about the study, you can email them to us at "
@@ -82,17 +96,11 @@ public class SynQuiz2 {
 //        final PresenterScreen registrationScreen = createRegistrationScreen("Registration", 2);
 //        presenterScreenList.add(registrationScreen);
         final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
-        wizardEditUserScreen.setMetadataScreenText("Please read the " + formatLink("Participant Information Sheet", "static/synaesthesia_info_sheet_ENGLISH_webversion.pdf") + " carefully!");
-        wizardEditUserScreen.setBackWizardScreen(new AbstractWizardScreen() {
-            @Override
-            public PresenterScreen getPresenterScreen() {
-                return introductionScreen;
-            }
-
-        });
-        wizardEditUserScreen.setFirstNameField(true);
-        wizardEditUserScreen.setLastNameField(true);
-        wizardEditUserScreen.setEmailAddressField(true);
+        wizardEditUserScreen.setScreenText("Please read the " + formatLink("Participant Information Sheet", "static/synaesthesia_info_sheet_ENGLISH_webversion.pdf") + " carefully!");
+        wizardEditUserScreen.setBackWizardScreen(introductionScreen);
+        wizardEditUserScreen.setFirstNameField();
+        wizardEditUserScreen.setLastNameField();
+        wizardEditUserScreen.setEmailAddressField();
         wizardEditUserScreen.setOptionCheckBox1("I would like to be contacted about participating in other synaesthesia research studies (optional)");
         wizardEditUserScreen.setMandatoryCheckBox("By checking this box I confirm that I have read and understood the Volunteer's Information Sheet and I agree to take part in this study");
 
@@ -103,7 +111,7 @@ public class SynQuiz2 {
 //        wizardEditUserScreen.setCustomFields(customFields);
 //        wizardEditUserScreen.setNextButton("Continue");
         wizardEditUserScreen.setSendData(true);
-        wizardEditUserScreen.setSaveButtonLabel("Continue");
+        wizardEditUserScreen.setNextButton("Continue");
 //        wizardEditUserScreen.setPostText(postText);
 //        wizardEditUserScreen.setAlternateButtonLabel(alternateButtonLabel);
         wizardEditUserScreen.setSendData(true);
@@ -111,46 +119,25 @@ public class SynQuiz2 {
 
         final WizardMenuScreen menuScreen = new WizardMenuScreen("Menu", "Menu", "Menu");
 
-        final PresenterScreen sumbitScreen = createSumbitScreen("register", menuScreen.getPresenterScreen(), menuScreen.getPresenterScreen(), 20);
-        presenterScreenList.add(sumbitScreen);
-
-        menuScreen.setNextWizardScreen(new AbstractWizardScreen() {
-            @Override
-            public PresenterScreen getPresenterScreen() {
-                return sumbitScreen;
-            }
-
-            @Override
-            public String getMenuLabel() {
-                return sumbitScreen.getMenuLabel();
-            }
-
-            @Override
-            public String getScreenTag() {
-                return sumbitScreen.getSelfPresenterTag();
-            }
-        });
-        sumbitScreen.setNextPresenter(completionScreen.getPresenterScreen());
+        final AbstractWizardScreen sumbitScreen = createSumbitScreen("register", menuScreen, completionScreen, 20);;
+        sumbitScreen.setNextWizardScreen(completionScreen);
         completionScreen.setBackWizardScreen(menuScreen);
-        completionScreen.setNextWizardScreen(new AbstractWizardScreen() {
-            @Override
-            public PresenterScreen getPresenterScreen() {
-                return introductionScreen;
-            }
-        });
+        completionScreen.setNextWizardScreen(introductionScreen);
 //        final PresenterScreen demographicsScreen1 = createDemographicsScreen1(experiment, "Demographics1", 4);
 //        presenterScreenList.add(demographicsScreen1);
 //wizardController.addEditUserScreen(experiment, introductionScreen, "Participant", "Participant", null, 3, wizardData, null, null, "Continue", null, null, null, true, "Could not contact the server, please check your internet connection and try again.", false);
-        final WizardEditUserScreen demographicsScreen1 = new WizardEditUserScreen("Details", "Details", null, null, demographicsFields1, "Continue", null, null, null, true, "Could not contact the server, please check your internet connection and try again.");
-        wizardController.addMetadata(experiment);
-        wizardEditUserScreen.setNextWizardScreen(demographicsScreen1);
-        demographicsScreen1.setBackWizardScreen(wizardEditUserScreen);
+//        final WizardEditUserScreen demographicsScreen1 = new WizardEditUserScreen("Details", "Details", null, null, demographicsFields1, "Continue", null, null, null, true, "Could not contact the server, please check your internet connection and try again.");
 
-        PresenterScreen previousDemographicsScreen = demographicsScreen1.getPresenterScreen();
+//        wizardEditUserScreen.setNextWizardScreen(demographicsScreen1);
+//        demographicsScreen1.setBackWizardScreen(wizardEditUserScreen);
+        wizardData.addScreen(introductionScreen);
+        wizardData.addScreen(sumbitScreen);
+        wizardData.addScreen(wizardEditUserScreen);
+        WizardEditUserScreen previousDemographicsScreen = wizardEditUserScreen;//demographicsScreen1.getPresenterScreen();
         for (DemographicScreenType demographicScreenType : DemographicScreenType.values()) {
-            final PresenterScreen demographicsScreen = createDemographicsScreen(experiment, previousDemographicsScreen, demographicScreenType, 6);
-            presenterScreenList.add(demographicsScreen);
-            previousDemographicsScreen.setNextPresenter(demographicsScreen);
+            final WizardEditUserScreen demographicsScreen = createDemographicsScreen(previousDemographicsScreen, demographicScreenType, 6);
+            wizardData.addScreen(demographicsScreen);
+            previousDemographicsScreen.setNextWizardScreen(demographicsScreen);
             previousDemographicsScreen = demographicsScreen;
         }
 
@@ -158,76 +145,38 @@ public class SynQuiz2 {
 //        presenterScreenList.add(demographicsScreen2);
 //        demographicsScreen1.setNextPresenter(demographicsScreen2);
 //        demographicsScreen2.setBackPresenter(demographicsScreen1);
-        previousDemographicsScreen.setNextPresenter(menuScreen.getPresenterScreen());
-        final PresenterScreen menuBackPresenter = previousDemographicsScreen;
-        menuScreen.getPresenterScreen().setBackPresenter(menuBackPresenter);
-        final PresenterScreen reportScreen = createReportScreen("Report", menuScreen.getPresenterScreen(), menuScreen.getPresenterScreen(), 20);
-        presenterScreenList.add(reportScreen);
-        final PresenterScreen weekdaysScreen = createStimulusScreen("Weekdays", "Weekdays", menuScreen.getPresenterScreen(), reportScreen, 16);
-        presenterScreenList.add(weekdaysScreen);
+        previousDemographicsScreen.setNextWizardScreen(menuScreen);
+        final WizardEditUserScreen menuBackPresenter = previousDemographicsScreen;
+        menuScreen.getPresenterScreen().setBackPresenter(menuBackPresenter.getPresenterScreen());
+        final AbstractWizardScreen reportScreen = createReportScreen("Report", menuScreen.getPresenterScreen(), menuScreen.getPresenterScreen(), 20);
+        wizardData.addScreen(reportScreen);
+        final AbstractWizardScreen weekdaysScreen = createStimulusScreen("Weekdays", "Weekdays", menuScreen, reportScreen, 16);
+        wizardData.addScreen(weekdaysScreen);
 //        final PresenterScreen numbersScreen = createStimulusScreen("Numbers", menuScreen.getPresenterScreen(), reportScreen, 17);
 //        presenterScreenList.add(numbersScreen);
 //        final PresenterScreen lettersScreen = createStimulusScreen("Letters", menuScreen.getPresenterScreen(), reportScreen, 18);
 //        presenterScreenList.add(lettersScreen);
-        final PresenterScreen lettersScreen = createStimulusScreen("LettersNumbers", "Letters and Numbers", menuScreen.getPresenterScreen(), reportScreen, 18);
-        presenterScreenList.add(lettersScreen);
-        final PresenterScreen monthsScreen = createStimulusScreen("Months", "Months", menuScreen.getPresenterScreen(), reportScreen, 19);
-        presenterScreenList.add(monthsScreen);
-        menuScreen.addTargetScreen(new AbstractWizardScreen() {
-            @Override
-            public PresenterScreen getPresenterScreen() {
-                return weekdaysScreen;
-            }
+        final AbstractWizardScreen lettersScreen = createStimulusScreen("LettersNumbers", "Letters and Numbers", menuScreen, reportScreen, 18);
+        wizardData.addScreen(lettersScreen);
+        final AbstractWizardScreen monthsScreen = createStimulusScreen("Months", "Months", menuScreen, reportScreen, 19);
+        wizardData.addScreen(monthsScreen);
+        menuScreen.addTargetScreen(weekdaysScreen);
+        menuScreen.addTargetScreen(lettersScreen);
+        menuScreen.addTargetScreen(monthsScreen);
+        menuScreen.addTargetScreen(completionScreen);
+//        
+        wizardData.addScreen(menuScreen);
+        menuScreen.addTargetScreen(weekdaysScreen);
+//        menuScreen.populatePresenterScreen(experiment, false, 15);
+//        completionScreen.populatePresenterScreen(experiment, false, 21);
+//        wizardEditUserScreen.populatePresenterScreen(experiment, false, 3);
+//        demographicsScreen1.populatePresenterScreen(experiment, false, 5);
+        wizardData.addScreen(completionScreen);
 
-            @Override
-            public String getMenuLabel() {
-                return weekdaysScreen.getMenuLabel();
-            }
-
-            @Override
-            public String getScreenTag() {
-                return weekdaysScreen.getSelfPresenterTag();
-            }
-        });
-        menuScreen.addTargetScreen(new AbstractWizardScreen() {
-            @Override
-            public PresenterScreen getPresenterScreen() {
-                return lettersScreen;
-            }
-
-            @Override
-            public String getMenuLabel() {
-                return lettersScreen.getMenuLabel();
-            }
-
-            @Override
-            public String getScreenTag() {
-                return lettersScreen.getSelfPresenterTag();
-            }
-        });
-        menuScreen.addTargetScreen(new AbstractWizardScreen() {
-            @Override
-            public PresenterScreen getPresenterScreen() {
-                return monthsScreen;
-            }
-
-            @Override
-            public String getMenuLabel() {
-                return monthsScreen.getMenuLabel();
-            }
-
-            @Override
-            public String getScreenTag() {
-                return monthsScreen.getSelfPresenterTag();
-            }
-        });
-        menuScreen.populatePresenterScreen(experiment, false, 15);
-        completionScreen.populatePresenterScreen(experiment, false, 21);
-        wizardEditUserScreen.populatePresenterScreen(experiment, false, 3);
-        demographicsScreen1.populatePresenterScreen(experiment, false, 5);
+        return wizardData;
     }
 
-    private PresenterScreen createIntroductionScreen(String screenName, long displayOrder) {
+    private AbstractWizardScreen createIntroductionScreen(String screenName, long displayOrder) {
         final PresenterScreen presenterScreen = new PresenterScreen("Decoding the Genetics of Synaesthesia", screenName, null, screenName, null, PresenterType.text, displayOrder);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
 //        presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
@@ -256,7 +205,33 @@ public class SynQuiz2 {
         presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, "This project is organised and funded by the Language & Genetics Department at the Max Planck Institute for Psycholinguistics in Nijmegen in the Netherlands, directed by Prof. Dr. Simon E. Fisher. "
                 + "The synaesthesia studies are coordinated by Dr. Amanda Tilot and Dr. Sarah Graham. "
                 + "If you have any questions about our research, please contact us at " + formatLink("synaesthesia@mpi.nl", "mailto:synaesthesia@mpi.nl") + "."));
-        return presenterScreen;
+        return new AbstractWizardScreen() {
+            @Override
+            public PresenterScreen getPresenterScreen() {
+                return presenterScreen;
+            }
+
+            @Override
+            public String getMenuLabel() {
+                return presenterScreen.getMenuLabel();
+            }
+
+            @Override
+            public String getScreenTag() {
+                return presenterScreen.getSelfPresenterTag();
+            }
+
+            @Override
+            public String getScreenTitle() {
+                return presenterScreen.getTitle();
+            }
+
+            @Override
+            public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+                experiment.getPresenterScreen().add(presenterScreen);
+                return presenterScreen;
+            }
+        };
     }
 
     private String formatLink(String linkUrl) {
@@ -290,19 +265,6 @@ public class SynQuiz2 {
 //    }
 // todo: show complete on test that have been done like in SynQuiz1
 // todo: add finish button on the test menu screen which submits all data and leads to a restart(erase) all
-    final String[] demographicsFields1 = new String[]{
-        "DateOfBirth:Date of Birth:[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]:Please enter in the standard format DD/MM/YYYY.",
-        //        "Age:Age:[0-9]+:Please enter in number format.",
-        "Gender:Gender:|male|female|other:.",
-        "AbsolutePitch:Absolute pitch:true|false:Please enter true or false.",
-        "TraumaticBlowToTheHead:Traumatic blow to the head:true|false:Please enter true or false.",
-        "Migraines:Migraines:true|false:Please enter true or false.",
-        "Headaches:Headaches:true|false:Please enter true or false.",
-        "Seizures:Seizures:true|false:Please enter true or false.",
-        "Dyslexia:Dyslexia:true|false:Please enter true or false.",
-        "BrainSurgery:Brain surgery:true|false:Please enter true or false.",
-        "AnyOtherConditions:Are there any other conditions that you would like us to know about?:.*:."
-    };
 //    private PresenterScreen createDemographicsScreen1(Experiment experiment, String screenName, long displayOrder) {
 //        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, null, screenName + "Screen", null, PresenterType.metadata, displayOrder);
 //        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
@@ -311,185 +273,206 @@ public class SynQuiz2 {
 //        presenterFeatureList.add(targetButtonFeature);
 //        return presenterScreen;
 //    }
-
     enum DemographicScreenType {
-        Study, Colour, Smell, Sound, Spatial, Taste, Touch, Other
+        Details, Study, Colour, Smell, Sound, Spatial, Taste, Touch, Other
     }
 
-    private PresenterScreen createDemographicsScreen(Experiment experiment, final PresenterScreen backPresenter, DemographicScreenType screenName, long displayOrder) {
+    private WizardEditUserScreen createDemographicsScreen(final WizardEditUserScreen backPresenter, DemographicScreenType screenName, long displayOrder) {
         final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
+        wizardEditUserScreen.setScreenTitle("Tell us about your synaesthesia: " + screenName.name() + "(" + (screenName.ordinal()) + "/" + (DemographicScreenType.values().length - 1) + ")");
+        wizardEditUserScreen.setBackWizardScreen(backPresenter);
+        wizardEditUserScreen.setScreenTag(screenName.name());
+        wizardEditUserScreen.setMenuLabel(screenName.name());
+        wizardEditUserScreen.setSendData(true);
+        wizardEditUserScreen.setNextButton("Continue");
 //        wizardEditUserScreen.setScreenTitle();
-        final PresenterScreen presenterScreen = new PresenterScreen(
-                "Tell us about your synaesthesia: " + screenName.name() + "(" + (screenName.ordinal() + 1) + "/" + DemographicScreenType.values().length + ")",
-                screenName.name(),
-                backPresenter,
-                screenName.name(),
-                null,
-                PresenterType.metadata,
-                displayOrder + screenName.ordinal());
-        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
+//        final WizardEditUserScreen presenterScreen = new WizardEditUserScreen();
+//                "Tell us about your synaesthesia: " + screenName.name() + "(" + (screenName.ordinal() + 1) + "/" + DemographicScreenType.values().length + ")",
+//                screenName.name(),
+//                backPresenter,
+//                screenName.name(),
+//                null,
+//                PresenterType.metadata,
+//                displayOrder + screenName.ordinal());
+//        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
 //        presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
 //        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "Tell Us About Your Synaesthesia"));
         switch (screenName) {
+            case Details:
+                wizardEditUserScreen.setScreenTitle(screenName.name());
+                wizardEditUserScreen.insertMetadataByString("DateOfBirth:Date of Birth:[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]:Please enter in the standard format DD/MM/YYYY.");
+                //        "Age:Age:[0-9]+:Please enter in number format.",
+                wizardEditUserScreen.insertMetadataByString("Gender:Gender:|male|female|other:.");
+                wizardEditUserScreen.insertMetadataByString("AbsolutePitch:Absolute pitch:true|false:Please enter true or false.");
+                wizardEditUserScreen.insertMetadataByString("TraumaticBlowToTheHead:Traumatic blow to the head:true|false:Please enter true or false.");
+                wizardEditUserScreen.insertMetadataByString("Migraines:Migraines:true|false:Please enter true or false.");
+                wizardEditUserScreen.insertMetadataByString("Headaches:Headaches:true|false:Please enter true or false.");
+                wizardEditUserScreen.insertMetadataByString("Seizures:Seizures:true|false:Please enter true or false.");
+                wizardEditUserScreen.insertMetadataByString("Dyslexia:Dyslexia:true|false:Please enter true or false.");
+                wizardEditUserScreen.insertMetadataByString("BrainSurgery:Brain surgery:true|false:Please enter true or false.");
+                wizardEditUserScreen.insertMetadataByString("AnyOtherConditions:Are there any other conditions that you would like us to know about?:.*:.");
+                break;
             case Study:
-                presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "Our study at the Max Planck Institute focuses on synaesthesia where numbers, letters, weekdays, or months cause people to have a colour experience. To someone with synaesthesia, the letter A might \"mean\" red to them, or the number \"5\" might make them experience the colour green. Please let us know if you experience any other types of synaesthesia by checking the boxes in the following screens. We may contact you in the future about studies related to these other types."));
+                wizardEditUserScreen.setScreenText("Our study at the Max Planck Institute focuses on synaesthesia where numbers, letters, weekdays, or months cause people to have a colour experience. To someone with synaesthesia, the letter A might \"mean\" red to them, or the number \"5\" might make them experience the colour green. Please let us know if you experience any other types of synaesthesia by checking the boxes in the following screens. We may contact you in the future about studies related to these other types.");
                 break;
             case Colour:
-                presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, //"Colour<br/>" +
+                wizardEditUserScreen.setScreenText(//"Colour<br/>" +
                         "Do any of the items below cause you to have a color experience?<br/><br/>"
-                        + "Examples: Does the letter M \"mean\" orange to you? Or does hearing a piano being played make you perceive red?<br/><br/>"));
-                wizardEditUserScreen.insertMetadataField(experiment, "Numbers->Colour", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Letters->Colour", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Weekdays->Colour", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Months->Colour", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Sequences->Colour", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Musical Pitch->Colour", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Musical Chord->Colour", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Musical Instruments->Colour", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Taste->Colour", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Smell->Colour", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Pain->Colour", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Personalities->Colour", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Touch->Colour", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Temperature->Colour", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Vision->Colour", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Sound->Colour", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "American Sign -> Colour", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "British Sign -> Colour", presenterScreen);
+                        + "Examples: Does the letter M \"mean\" orange to you? Or does hearing a piano being played make you perceive red?<br/><br/>");
+                wizardEditUserScreen.insertMetadataField("Numbers->Colour");
+                wizardEditUserScreen.insertMetadataField("Letters->Colour");
+                wizardEditUserScreen.insertMetadataField("Weekdays->Colour");
+                wizardEditUserScreen.insertMetadataField("Months->Colour");
+                wizardEditUserScreen.insertMetadataField("Sequences->Colour");
+                wizardEditUserScreen.insertMetadataField("Musical Pitch->Colour");
+                wizardEditUserScreen.insertMetadataField("Musical Chord->Colour");
+                wizardEditUserScreen.insertMetadataField("Musical Instruments->Colour");
+                wizardEditUserScreen.insertMetadataField("Taste->Colour");
+                wizardEditUserScreen.insertMetadataField("Smell->Colour");
+                wizardEditUserScreen.insertMetadataField("Pain->Colour");
+                wizardEditUserScreen.insertMetadataField("Personalities->Colour");
+                wizardEditUserScreen.insertMetadataField("Touch->Colour");
+                wizardEditUserScreen.insertMetadataField("Temperature->Colour");
+                wizardEditUserScreen.insertMetadataField("Vision->Colour");
+                wizardEditUserScreen.insertMetadataField("Sound->Colour");
+                wizardEditUserScreen.insertMetadataField("American Sign -> Colour");
+                wizardEditUserScreen.insertMetadataField("British Sign -> Colour");
                 break;
             case Smell:
-                presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, //"Smell<br/>"
+                wizardEditUserScreen.setScreenText(//"Smell<br/>"
                         "Do any of the items below cause you to experience smells?<br/><br/>"
-                        + "Example: Does Tuesday smell like bananas?<br/><br/>"));
-                wizardEditUserScreen.insertMetadataField(experiment, "Numbers->Smell", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Letters->Smell", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Weekdays->Smell", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Months->Smell", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Sequences->Smell", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Musical Pitch->Smell", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Musical Chord->Smell", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Musical Instruments->Smell", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Taste->Smell", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Smell->Smell", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Pain->Smell", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Personalities->Smell", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Touch->Smell", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Temperature->Smell", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Vision->Smell", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Sound->Smell", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "American Sign->Smell", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "British Sign->Smell", presenterScreen);
+                        + "Example: Does Tuesday smell like bananas?<br/><br/>");
+                wizardEditUserScreen.insertMetadataField("Numbers->Smell");
+                wizardEditUserScreen.insertMetadataField("Letters->Smell");
+                wizardEditUserScreen.insertMetadataField("Weekdays->Smell");
+                wizardEditUserScreen.insertMetadataField("Months->Smell");
+                wizardEditUserScreen.insertMetadataField("Sequences->Smell");
+                wizardEditUserScreen.insertMetadataField("Musical Pitch->Smell");
+                wizardEditUserScreen.insertMetadataField("Musical Chord->Smell");
+                wizardEditUserScreen.insertMetadataField("Musical Instruments->Smell");
+                wizardEditUserScreen.insertMetadataField("Taste->Smell");
+                wizardEditUserScreen.insertMetadataField("Smell->Smell");
+                wizardEditUserScreen.insertMetadataField("Pain->Smell");
+                wizardEditUserScreen.insertMetadataField("Personalities->Smell");
+                wizardEditUserScreen.insertMetadataField("Touch->Smell");
+                wizardEditUserScreen.insertMetadataField("Temperature->Smell");
+                wizardEditUserScreen.insertMetadataField("Vision->Smell");
+                wizardEditUserScreen.insertMetadataField("Sound->Smell");
+                wizardEditUserScreen.insertMetadataField("American Sign->Smell");
+                wizardEditUserScreen.insertMetadataField("British Sign->Smell");
                 break;
             case Sound:
-                presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, //"Sound<br/>"
+                wizardEditUserScreen.setScreenText(//"Sound<br/>"
                         "Do any of the items below cause you to experience sound?<br/><br/>"
-                        + "Example: Do you hear a particular sound when you experience cold temperatures?<br/><br/>"));
-                wizardEditUserScreen.insertMetadataField(experiment, "Numbers->Sound", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Letters->Sound", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Weekdays->Sound", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Months->Sound", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Sequences->Sound", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Musical Pitch->Sound", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Musical Chord->Sound", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Musical Instruments->Sound", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Taste->Sound", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Smell->Sound", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Pain->Sound", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Personalities->Sound", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Touch->Sound", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Temperature->Sound", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Vision->Sound", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Sound->Sound", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "American Sign->Sound", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "British Sign->Sound", presenterScreen);
+                        + "Example: Do you hear a particular sound when you experience cold temperatures?<br/><br/>");
+                wizardEditUserScreen.insertMetadataField("Numbers->Sound");
+                wizardEditUserScreen.insertMetadataField("Letters->Sound");
+                wizardEditUserScreen.insertMetadataField("Weekdays->Sound");
+                wizardEditUserScreen.insertMetadataField("Months->Sound");
+                wizardEditUserScreen.insertMetadataField("Sequences->Sound");
+                wizardEditUserScreen.insertMetadataField("Musical Pitch->Sound");
+                wizardEditUserScreen.insertMetadataField("Musical Chord->Sound");
+                wizardEditUserScreen.insertMetadataField("Musical Instruments->Sound");
+                wizardEditUserScreen.insertMetadataField("Taste->Sound");
+                wizardEditUserScreen.insertMetadataField("Smell->Sound");
+                wizardEditUserScreen.insertMetadataField("Pain->Sound");
+                wizardEditUserScreen.insertMetadataField("Personalities->Sound");
+                wizardEditUserScreen.insertMetadataField("Touch->Sound");
+                wizardEditUserScreen.insertMetadataField("Temperature->Sound");
+                wizardEditUserScreen.insertMetadataField("Vision->Sound");
+                wizardEditUserScreen.insertMetadataField("Sound->Sound");
+                wizardEditUserScreen.insertMetadataField("American Sign->Sound");
+                wizardEditUserScreen.insertMetadataField("British Sign->Sound");
                 break;
             case Spatial:
-                presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, //"Spatial<br/>"
+                wizardEditUserScreen.setScreenText( //"Spatial<br/>"
                         "Do you experience any of the items below in a particular spatial location?<br/><br/>"
-                        + "Example: Do you \"see\" sequences like the days of the month or numbers in physical space?<br/><br/>"));
-                wizardEditUserScreen.insertMetadataField(experiment, "Numbers->Spatial", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Letters->Spatial", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Weekdays->Spatial", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Months->Spatial", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Sequences->Spatial", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Musical Pitch->Spatial", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Musical Chord->Spatial", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Musical Instruments>Spatial", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Taste->Spatial", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Smell->Spatial", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Pain->Spatial", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Personalities->Spatial", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Touch->Spatial", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Temperature->Spatial", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Vision->Spatial", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Sound->Spatial", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "American Sign->Spatial", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "British Sign->Spatial", presenterScreen);
+                        + "Example: Do you \"see\" sequences like the days of the month or numbers in physical space?<br/><br/>");
+                wizardEditUserScreen.insertMetadataField("Numbers->Spatial");
+                wizardEditUserScreen.insertMetadataField("Letters->Spatial");
+                wizardEditUserScreen.insertMetadataField("Weekdays->Spatial");
+                wizardEditUserScreen.insertMetadataField("Months->Spatial");
+                wizardEditUserScreen.insertMetadataField("Sequences->Spatial");
+                wizardEditUserScreen.insertMetadataField("Musical Pitch->Spatial");
+                wizardEditUserScreen.insertMetadataField("Musical Chord->Spatial");
+                wizardEditUserScreen.insertMetadataField("Musical Instruments>Spatial");
+                wizardEditUserScreen.insertMetadataField("Taste->Spatial");
+                wizardEditUserScreen.insertMetadataField("Smell->Spatial");
+                wizardEditUserScreen.insertMetadataField("Pain->Spatial");
+                wizardEditUserScreen.insertMetadataField("Personalities->Spatial");
+                wizardEditUserScreen.insertMetadataField("Touch->Spatial");
+                wizardEditUserScreen.insertMetadataField("Temperature->Spatial");
+                wizardEditUserScreen.insertMetadataField("Vision->Spatial");
+                wizardEditUserScreen.insertMetadataField("Sound->Spatial");
+                wizardEditUserScreen.insertMetadataField("American Sign->Spatial");
+                wizardEditUserScreen.insertMetadataField("British Sign->Spatial");
                 break;
             case Taste:
-                presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, //"Taste<br/>"
+                wizardEditUserScreen.setScreenText( //"Taste<br/>"
                         "Do any of the items below cause you to experience tastes?<br/><br/>"
-                        + "Examples: \"Philip tastes of bitter oranges, while April tastes of apricots.\" \"The word 'safety' tastes of lightly buttered toast\"<br/><br/>"));
-                wizardEditUserScreen.insertMetadataField(experiment, "Numbers->Taste", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Letters->Taste", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Weekdays->Taste", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Months->Taste", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Sequences->Taste", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Musical Pitch->Taste", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Musical Chord->Taste", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Musical Instruments>Taste", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Taste->Taste", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Smell->Taste", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Pain->Taste", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Personalities->Taste", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Touch->Taste", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Temperature->Taste", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Vision->Taste", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Sound->Taste", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "American Sign->Taste", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "British Sign->Taste", presenterScreen);
+                        + "Examples: \"Philip tastes of bitter oranges, while April tastes of apricots.\" \"The word 'safety' tastes of lightly buttered toast\"<br/><br/>");
+                wizardEditUserScreen.insertMetadataField("Numbers->Taste");
+                wizardEditUserScreen.insertMetadataField("Letters->Taste");
+                wizardEditUserScreen.insertMetadataField("Weekdays->Taste");
+                wizardEditUserScreen.insertMetadataField("Months->Taste");
+                wizardEditUserScreen.insertMetadataField("Sequences->Taste");
+                wizardEditUserScreen.insertMetadataField("Musical Pitch->Taste");
+                wizardEditUserScreen.insertMetadataField("Musical Chord->Taste");
+                wizardEditUserScreen.insertMetadataField("Musical Instruments>Taste");
+                wizardEditUserScreen.insertMetadataField("Taste->Taste");
+                wizardEditUserScreen.insertMetadataField("Smell->Taste");
+                wizardEditUserScreen.insertMetadataField("Pain->Taste");
+                wizardEditUserScreen.insertMetadataField("Personalities->Taste");
+                wizardEditUserScreen.insertMetadataField("Touch->Taste");
+                wizardEditUserScreen.insertMetadataField("Temperature->Taste");
+                wizardEditUserScreen.insertMetadataField("Vision->Taste");
+                wizardEditUserScreen.insertMetadataField("Sound->Taste");
+                wizardEditUserScreen.insertMetadataField("American Sign->Taste");
+                wizardEditUserScreen.insertMetadataField("British Sign->Taste");
                 break;
             case Touch:
-                presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, //"Touch<br/>"
+                wizardEditUserScreen.setScreenText( //"Touch<br/>"
                         "Do any of the items below cause you to experience a sense of touch?<br/><br/>"
-                        + "Example: You feel a touch on your arm when you see someone else being touched on their arm.<br/><br/>"));
-                wizardEditUserScreen.insertMetadataField(experiment, "Numbers->Touch", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Letters->Touch", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Weekdays->Touch", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Months->Touch", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Sequences->Touch", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Musical Pitch->Touch", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Musical Chord->Touch", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Musical Instruments->Touch", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Taste->Touch", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Smell->Touch", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Pain->Touch", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Personalities->Touch", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Touch->Touch", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Temperature->Touch", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Vision->Touch", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "Sound->Touch", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "American Sign->Touch", presenterScreen);
-                wizardEditUserScreen.insertMetadataField(experiment, "British Sign->Touch", presenterScreen);
+                        + "Example: You feel a touch on your arm when you see someone else being touched on their arm.<br/><br/>");
+                wizardEditUserScreen.insertMetadataField("Numbers->Touch");
+                wizardEditUserScreen.insertMetadataField("Letters->Touch");
+                wizardEditUserScreen.insertMetadataField("Weekdays->Touch");
+                wizardEditUserScreen.insertMetadataField("Months->Touch");
+                wizardEditUserScreen.insertMetadataField("Sequences->Touch");
+                wizardEditUserScreen.insertMetadataField("Musical Pitch->Touch");
+                wizardEditUserScreen.insertMetadataField("Musical Chord->Touch");
+                wizardEditUserScreen.insertMetadataField("Musical Instruments->Touch");
+                wizardEditUserScreen.insertMetadataField("Taste->Touch");
+                wizardEditUserScreen.insertMetadataField("Smell->Touch");
+                wizardEditUserScreen.insertMetadataField("Pain->Touch");
+                wizardEditUserScreen.insertMetadataField("Personalities->Touch");
+                wizardEditUserScreen.insertMetadataField("Touch->Touch");
+                wizardEditUserScreen.insertMetadataField("Temperature->Touch");
+                wizardEditUserScreen.insertMetadataField("Vision->Touch");
+                wizardEditUserScreen.insertMetadataField("Sound->Touch");
+                wizardEditUserScreen.insertMetadataField("American Sign->Touch");
+                wizardEditUserScreen.insertMetadataField("British Sign->Touch");
                 break;
             case Other:
-                wizardEditUserScreen.insertMetadataField(experiment, new Metadata("AnyOtherTypes", "If you experience any other types, please explain below.", "", "", false, null), presenterScreen);
+                wizardEditUserScreen.insertMetadataField(new Metadata("AnyOtherTypes", "If you experience any other types, please explain below.", "", "", false, null));
         }
-        final PresenterFeature saveMetadataButton = new PresenterFeature(FeatureType.saveMetadataButton, "Continue");
-        saveMetadataButton.addFeatureAttributes(FeatureAttribute.sendData, "true");
-        saveMetadataButton.addFeatureAttributes(FeatureAttribute.networkErrorMessage, "Could not contact the server, please check your internet connection and try again.");
-        final PresenterFeature onErrorFeature = new PresenterFeature(FeatureType.onError, null);
-        saveMetadataButton.getPresenterFeatureList().add(onErrorFeature);
-        final PresenterFeature onSuccessFeature = new PresenterFeature(FeatureType.onSuccess, null);
-        final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
-        onSuccessFeature.getPresenterFeatureList().add(autoNextPresenter);
-        saveMetadataButton.getPresenterFeatureList().add(onSuccessFeature);
-        presenterScreen.getPresenterFeatureList().add(saveMetadataButton);
-        return presenterScreen;
+
+//        final PresenterFeature saveMetadataButton = new PresenterFeature(FeatureType.saveMetadataButton, "Continue");
+//        saveMetadataButton.addFeatureAttributes(FeatureAttribute.sendData, "true");
+//        saveMetadataButton.addFeatureAttributes(FeatureAttribute.networkErrorMessage, "Could not contact the server, please check your internet connection and try again.");
+//        final PresenterFeature onErrorFeature = new PresenterFeature(FeatureType.onError, null);
+//        saveMetadataButton.getPresenterFeatureList().add(onErrorFeature);
+//        final PresenterFeature onSuccessFeature = new PresenterFeature(FeatureType.onSuccess, null);
+//        final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
+//        onSuccessFeature.getPresenterFeatureList().add(autoNextPresenter);
+//        saveMetadataButton.getPresenterFeatureList().add(onSuccessFeature);
+//        presenterScreen.getPresenterFeatureList().add(saveMetadataButton);
+//        wizardEditUserScreen.populatePresenterScreen(experiment, false, displayOrder + screenName.ordinal());
+        return wizardEditUserScreen;
     }
 
-    private PresenterScreen createStimulusScreen(String screenName, String menuLabel, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder) {
-        final PresenterScreen presenterScreen = new PresenterScreen(screenName, menuLabel, backPresenter, screenName, nextPresenter, PresenterType.colourPicker, displayOrder);
+    private AbstractWizardScreen createStimulusScreen(String screenName, String menuLabel, final AbstractWizardScreen backPresenter, final AbstractWizardScreen nextPresenter, long displayOrder) {
+        final PresenterScreen presenterScreen = new PresenterScreen(screenName, menuLabel, backPresenter.getPresenterScreen(), screenName, nextPresenter.getPresenterScreen(), PresenterType.colourPicker, displayOrder);
         final PresenterFeature helpDialogue = new PresenterFeature(FeatureType.helpDialogue, "<b>Instructions</b>\\n<p>Select the colour that you associate with the presented character or word \\n<ol>\\n<li>Select the hue by tapping on the colour bar on the right </li><li>Select the shade by tapping on the square on the left </li>\\n<li>When the colour of the preview rectangle matches your association, tap \"Submit\"</li>\\n<li>If you have no colour association tap \"No colour\"</li>\\n</ol>\\n</p>");
         helpDialogue.addFeatureAttributes(FeatureAttribute.closeButtonLabel, "OK, go to test!");
         presenterScreen.getPresenterFeatureList().add(helpDialogue);
@@ -511,10 +494,31 @@ public class SynQuiz2 {
 //        endOfStimulusFeature.getPresenterFeatureList().add(menuButtonFeature);
 //        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
-        return presenterScreen;
+        return new AbstractWizardScreen() {
+            @Override
+            public PresenterScreen getPresenterScreen() {
+                return presenterScreen;
+            }
+
+            @Override
+            public String getMenuLabel() {
+                return presenterScreen.getMenuLabel();
+            }
+
+            @Override
+            public String getScreenTag() {
+                return presenterScreen.getSelfPresenterTag();
+            }
+
+            @Override
+            public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+                experiment.getPresenterScreen().add(presenterScreen);
+                return presenterScreen;
+            }
+        };
     }
 
-    private PresenterScreen createReportScreen(String screenName, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder) {
+    private AbstractWizardScreen createReportScreen(String screenName, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder) {
         final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, screenName, nextPresenter, PresenterType.colourReport, displayOrder);
 //        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
         final PresenterFeature showColourReport = new PresenterFeature(FeatureType.showColourReport, null);
@@ -535,11 +539,32 @@ public class SynQuiz2 {
 //        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
         showColourReport.getPresenterFeatureList().add(belowThreshold);
         presenterScreen.getPresenterFeatureList().add(showColourReport);
-        return presenterScreen;
+        return new AbstractWizardScreen() {
+            @Override
+            public PresenterScreen getPresenterScreen() {
+                return presenterScreen;
+            }
+
+            @Override
+            public String getMenuLabel() {
+                return presenterScreen.getMenuLabel();
+            }
+
+            @Override
+            public String getScreenTag() {
+                return presenterScreen.getSelfPresenterTag();
+            }
+
+            @Override
+            public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+                experiment.getPresenterScreen().add(presenterScreen);
+                return presenterScreen;
+            }
+        };
     }
 
-    private PresenterScreen createSumbitScreen(String screenName, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder) {
-        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, screenName, nextPresenter, PresenterType.colourReport, displayOrder);
+    private AbstractWizardScreen createSumbitScreen(String screenName, final WizardScreen backPresenter, final WizardScreen nextPresenter, long displayOrder) {
+        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter.getPresenterScreen(), screenName, nextPresenter.getPresenterScreen(), PresenterType.colourReport, displayOrder);
 //        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
         final PresenterFeature showColourReport = new PresenterFeature(FeatureType.submitTestResults, null);
         final PresenterFeature aboveThreshold = new PresenterFeature(FeatureType.onError, null);
@@ -555,7 +580,38 @@ public class SynQuiz2 {
         belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
         showColourReport.getPresenterFeatureList().add(belowThreshold);
         presenterScreen.getPresenterFeatureList().add(showColourReport);
-        return presenterScreen;
+        return new AbstractWizardScreen() {
+            @Override
+            public WizardScreen getBackWizardScreen() {
+                return backPresenter;
+            }
+
+            @Override
+            public WizardScreen getNextWizardScreen() {
+                return nextPresenter;
+            }
+
+            @Override
+            public PresenterScreen getPresenterScreen() {
+                return presenterScreen;
+            }
+
+            @Override
+            public String getMenuLabel() {
+                return presenterScreen.getMenuLabel();
+            }
+
+            @Override
+            public String getScreenTag() {
+                return presenterScreen.getSelfPresenterTag();
+            }
+
+            @Override
+            public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+                experiment.getPresenterScreen().add(presenterScreen);
+                return presenterScreen;
+            }
+        };
     }
 
     private void insertStimulusGroup(final ArrayList<Stimulus> stimuliList, String groupName, String groupItems) {
