@@ -28,9 +28,9 @@ public class MetadataFieldTest {
 
     private static final String LIST = "|male|female|other";
     private static final String STRING = ".{3,}";
-    private static final String EMAIL = "^[^@^\\n]+@[^@^\\n]+$";
+    private static final String EMAIL = "^[^@]+@[^@]+$";
     private static final String CHECKBOX = "true|false";
-    private static final String MULTILINE = "[.\\n]{3,}";
+    private static final String MULTILINE = "[\\n.]{3,}";
 
     public MetadataFieldTest() {
     }
@@ -54,11 +54,11 @@ public class MetadataFieldTest {
     @Test
     public void testIsMultiLine() {
         System.out.println("isMultiLine");
-        assertEquals(true, new MetadataField("", "", CHECKBOX, CHECKBOX, "").isMultiLine());
+        assertEquals(false, new MetadataField("", "", CHECKBOX, CHECKBOX, "").isMultiLine());
         assertEquals(false, new MetadataField("", "", EMAIL, EMAIL, "").isMultiLine());
-        assertEquals(true, new MetadataField("", "", STRING, STRING, "").isMultiLine());
-        assertEquals(true, new MetadataField("", "", LIST, LIST, "").isMultiLine());
-        assertEquals(false, new MetadataField("", "", MULTILINE, MULTILINE, "").isMultiLine());
+        assertEquals(false, new MetadataField("", "", STRING, STRING, "").isMultiLine());
+        assertEquals(false, new MetadataField("", "", LIST, LIST, "").isMultiLine());
+        assertEquals(true, new MetadataField("", "", MULTILINE, MULTILINE, "").isMultiLine());
     }
 
     /**
