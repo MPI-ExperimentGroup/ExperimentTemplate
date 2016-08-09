@@ -135,7 +135,7 @@ public class SynQuiz2 {
         wizardData.addScreen(wizardEditUserScreen);
         WizardEditUserScreen previousDemographicsScreen = wizardEditUserScreen;//demographicsScreen1.getPresenterScreen();
         for (DemographicScreenType demographicScreenType : DemographicScreenType.values()) {
-            final WizardEditUserScreen demographicsScreen = createDemographicsScreen(previousDemographicsScreen, demographicScreenType, 6);
+            final WizardEditUserScreen demographicsScreen = createDemographicsScreen(previousDemographicsScreen, demographicScreenType);
             wizardData.addScreen(demographicsScreen);
             previousDemographicsScreen.setNextWizardScreen(demographicsScreen);
             previousDemographicsScreen = demographicsScreen;
@@ -148,8 +148,10 @@ public class SynQuiz2 {
         previousDemographicsScreen.setNextWizardScreen(menuScreen);
         final WizardEditUserScreen menuBackPresenter = previousDemographicsScreen;
         menuScreen.getPresenterScreen().setBackPresenter(menuBackPresenter.getPresenterScreen());
+        menuScreen.getPresenterScreen().setNextPresenter(sumbitScreen.getPresenterScreen());
         final AbstractWizardScreen reportScreen = createReportScreen("Report", menuScreen.getPresenterScreen(), menuScreen.getPresenterScreen(), 20);
         wizardData.addScreen(reportScreen);
+        wizardData.addScreen(menuScreen);
         final AbstractWizardScreen weekdaysScreen = createStimulusScreen("Weekdays", "Weekdays", menuScreen, reportScreen, 16);
         wizardData.addScreen(weekdaysScreen);
 //        final PresenterScreen numbersScreen = createStimulusScreen("Numbers", menuScreen.getPresenterScreen(), reportScreen, 17);
@@ -163,10 +165,9 @@ public class SynQuiz2 {
         menuScreen.addTargetScreen(weekdaysScreen);
         menuScreen.addTargetScreen(lettersScreen);
         menuScreen.addTargetScreen(monthsScreen);
-        menuScreen.addTargetScreen(completionScreen);
+//        menuScreen.addTargetScreen(completionScreen);
 //        
-        wizardData.addScreen(menuScreen);
-        menuScreen.addTargetScreen(weekdaysScreen);
+//        menuScreen.addTargetScreen(weekdaysScreen);
 //        menuScreen.populatePresenterScreen(experiment, false, 15);
 //        completionScreen.populatePresenterScreen(experiment, false, 21);
 //        wizardEditUserScreen.populatePresenterScreen(experiment, false, 3);
@@ -277,7 +278,7 @@ public class SynQuiz2 {
         Details, Study, Colour, Smell, Sound, Spatial, Taste, Touch, Other
     }
 
-    private WizardEditUserScreen createDemographicsScreen(final WizardEditUserScreen backPresenter, DemographicScreenType screenName, long displayOrder) {
+    private WizardEditUserScreen createDemographicsScreen(final WizardEditUserScreen backPresenter, DemographicScreenType screenName) {
         final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
         wizardEditUserScreen.setScreenTitle("Tell us about your synaesthesia: " + screenName.name() + "(" + (screenName.ordinal()) + "/" + (DemographicScreenType.values().length - 1) + ")");
         wizardEditUserScreen.setBackWizardScreen(backPresenter);
