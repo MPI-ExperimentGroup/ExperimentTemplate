@@ -30,7 +30,7 @@ public class MetadataFieldTest {
     private static final String STRING = ".{3,}";
     private static final String EMAIL = "^[^@]+@[^@]+$";
     private static final String CHECKBOX = "true|false";
-    private static final String MULTILINE = "[\\n.]{3,}";
+    private static final String MULTILINE = "[\\n?]{3,}";
 
     public MetadataFieldTest() {
     }
