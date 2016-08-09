@@ -310,10 +310,8 @@ public class HRPretest {
         wizardEditUserScreen.setScreenTitle("Edit User");
         wizardEditUserScreen.setMenuLabel("Edit User");
         wizardEditUserScreen.setScreenTag("Edit_User");
-        wizardEditUserScreen.setSaveButtonLabel("Volgende");
+        wizardEditUserScreen.setNextButton("Volgende");
         wizardEditUserScreen.setSendData(true);
-        wizardEditUserScreen.setMetadataScreen(true);
-//        wizardData.setAgeField(true);
         wizardEditUserScreen.setCustomFields(new String[]{
             "workerId:Arbeider id:.*:.",
             "firstName:Voornaam:.'{'3,'}':Voer minimaal drie letters.",

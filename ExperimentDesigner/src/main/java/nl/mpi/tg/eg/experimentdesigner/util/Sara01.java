@@ -751,9 +751,9 @@ public class Sara01 {
         wizardEditUserScreen.setScreenTitle("Edit User");
         wizardEditUserScreen.setMenuLabel("Edit User");
         wizardEditUserScreen.setScreenTag("Edit_User");
-        wizardEditUserScreen.setSaveButtonLabel("Save Details");
+        wizardEditUserScreen.setNextButton("Save Details");
         wizardEditUserScreen.setSendData(true);
-        wizardEditUserScreen.setMetadataScreen(true);
+//        wizardEditUserScreen.setMetadataScreen(true);
 //        wizardData.setAgeField(true);
         wizardEditUserScreen.setCustomFields(new String[]{
             "workerId:Arbeider id:.*:.",

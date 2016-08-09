@@ -19,7 +19,6 @@ package nl.mpi.tg.eg.experimentdesigner.util;
 
 import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
-import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.StimuliSubAction;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
@@ -47,7 +46,7 @@ public class JenaFieldKit {
         wizardData.setObfuscateScreenNames(false);
 //        wizardController.addMetadata(experiment);
 
-        final PresenterScreen autoMenuPresenter = null;//wizardController.addAutoMenu(experiment, 12, false);//(Blong programa)
+//        final PresenterScreen autoMenuPresenter = null;//wizardController.addAutoMenu(experiment, 12, false);//(Blong programa)
         final WizardWelcomeScreen welcomePresenter = new WizardWelcomeScreen("Welkam", "Welkam", "Instruksen", "Stat - Go long program nao", null, null);
 //wizardController.addWelcomeScreen(experiment, autoMenuPresenter, "Welkam", null, 1, "Instruksen", "Stat - Go long program nao", false);
         final WizardExistingUserCheckScreen welcomeMenuPresenter = new WizardExistingUserCheckScreen("Start", "Niu rikording", "Gobak long wan olfala rikoding", "Makem wan niufala rikoding", "Gobak long wan rikoding we yu stat hem finis");
@@ -71,6 +70,7 @@ public class JenaFieldKit {
         wizardStimulusScreen.setFeatureValuesArray(featureValuesArray);
         wizardStimulusScreen.setMaxStimuli(1000);
         wizardStimulusScreen.setRandomiseStimuli(true);
+//        wizardStimulusScreen.setStimulusImageCapture(true);
         wizardStimulusScreen.setFilePerStimulus(true);
         wizardStimulusScreen.setBackWizardScreen(welcomePresenter);
         wizardStimulusScreen.setEndOfStimulisWizardScreen(welcomePresenter);
@@ -85,7 +85,9 @@ public class JenaFieldKit {
             "Bai i talem nem blong ples wea i stap nao.",
             "Bai i talem nem blong ples wea i bon long hem.",
             "Bai i talem wanem yea i bon."
-        }, "Neks", "Finis olgeta");
+        }, "Neks"
+        //                , "Finis olgeta"
+        );
         metadataScreen.setBackWizardScreen(welcomePresenter);
         metadataScreen.setNextWizardScreen(wizardStimulusScreen);
         WizardAgreementScreen wizardTextScreen = new WizardAgreementScreen("Konsen", "(Blong man/woman we i makem rikoding)<br><br>"
@@ -97,7 +99,8 @@ public class JenaFieldKit {
         wizardSelectUserScreen.setBackWizardScreen(welcomePresenter);
         wizardSelectUserScreen.setNextWizardScreen(wizardTextScreen);
 //        final PresenterScreen selectUserPresenter = wizardSelectUserScreen.populatePresenterScreen(experiment, false, 5);
-        final WizardEditUserScreen editUserPresenter = new WizardEditUserScreen("Infomesen blong man/woman we i toktok", "Edit User", null, null, new String[]{"workerId:Nem blong man/woman we i toktok:.'{'3,'}':Please enter at least three letters."}, "Savem infomesen", null, null, null, false, "Could not contact the server, please check your internet connection and try again.");
+        final WizardEditUserScreen editUserPresenter = new WizardEditUserScreen("Infomesen blong man/woman we i toktok", "Edit User", null, null, "Savem infomesen", null, null, null, false, "Could not contact the server, please check your internet connection and try again.");
+        editUserPresenter.setCustomFields(new String[]{"workerId:Nem blong man/woman we i toktok:.'{'3,'}':Please enter at least three letters."});
         final WizardAboutScreen debugScreenPresenter = new WizardAboutScreen();
         editUserPresenter.setBackWizardScreen(welcomePresenter);
         wizardTextScreen.setBackWizardScreen(welcomePresenter);

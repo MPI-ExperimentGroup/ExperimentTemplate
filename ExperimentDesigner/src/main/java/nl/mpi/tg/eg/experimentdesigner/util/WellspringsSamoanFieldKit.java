@@ -79,7 +79,9 @@ public class WellspringsSamoanFieldKit {
             "the full name of the interviewer, date and place of the interview",
             "the name of the person interviewed â€“ their real name, and/or preferred name, and title",
             "age and gender of interviewee"
-        }, "Neks", "Finis olgeta");
+        }, "Neks"
+        //                , "Finis olgeta"
+        );
         metadataScreen.setBackWizardScreen(welcomePresenter);
         metadataScreen.setNextWizardScreen(wizardStimulusScreen);
         WizardAgreementScreen wizardTextScreen = new WizardAgreementScreen("Consent", "This is an interview for Hedvig's research project and that it will be recorded and stored at ANU, and possible for anyone in our research to listen to. Do you agree?", "Agree");
@@ -87,7 +89,8 @@ public class WellspringsSamoanFieldKit {
         final WizardSelectUserScreen wizardSelectUserScreen = new WizardSelectUserScreen();
         wizardSelectUserScreen.setBackWizardScreen(welcomePresenter);
         wizardSelectUserScreen.setNextWizardScreen(wizardTextScreen);
-        final WizardEditUserScreen editUserPresenter = new WizardEditUserScreen("Infomesen blong man/woman we i toktok", "Edit User", null, null, new String[]{"workerId:Nem blong man/woman we i toktok:.'{'3,'}':Please enter at least three letters."}, "Savem infomesen", null, null, null, false, "Could not contact the server, please check your internet connection and try again.");
+        final WizardEditUserScreen editUserPresenter = new WizardEditUserScreen("Infomesen blong man/woman we i toktok", "Edit User", null, null, "Savem infomesen", null, null, null, false, "Could not contact the server, please check your internet connection and try again.");
+        editUserPresenter.setCustomFields(new String[]{"workerId:Nem blong man/woman we i toktok:.'{'3,'}':Please enter at least three letters."});
         final WizardAboutScreen debugScreenPresenter = new WizardAboutScreen();
         editUserPresenter.setBackWizardScreen(welcomePresenter);
         wizardTextScreen.setBackWizardScreen(welcomePresenter);

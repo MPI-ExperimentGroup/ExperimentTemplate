@@ -72,9 +72,12 @@ public class ShawiFieldKit {
         final WizardStimulusScreen picturesScreen = createStimulusScreen(experiment, welcomePresenter, "Pictures", grammaticalityScreen, new String[]{"Pictures"}, picturesValuesArray, true, 1000, false, "end_of_stimuli", 8, obfuscateScreenNames);
         final WizardStimulusScreen animalsScreen = createStimulusScreen(experiment, welcomePresenter, "Animals", grammaticalityScreen, new String[]{"Animals"}, picturesValuesArray, true, 1000, false, "end_of_stimuli", 9, obfuscateScreenNames);
         final WizardStimulusScreen frogsScreen = createStimulusScreen(experiment, welcomePresenter, "Frogs", grammaticalityScreen, new String[]{"Frogs"}, picturesValuesArray, false, 1000, false, "end_of_stimuli", 10, obfuscateScreenNames);
-        final WizardAudioRecorderMetadataScreen metadataScreen = new WizardAudioRecorderMetadataScreen(new String[]{"Nombre", "Sexo", "Edad", "Estado civil", "Origen", "Lugar de residencia", "Nombre de la comunidad a la que pertenece", "Actividad laboral", "Nivel de estudios", "Número de hijos", "Religión", "Idiomas"}, "next", "end of stimuli");
+        final WizardAudioRecorderMetadataScreen metadataScreen = new WizardAudioRecorderMetadataScreen(new String[]{"Nombre", "Sexo", "Edad", "Estado civil", "Origen", "Lugar de residencia", "Nombre de la comunidad a la que pertenece", "Actividad laboral", "Nivel de estudios", "Número de hijos", "Religión", "Idiomas"}, "next"
+        //                , "end of stimuli"
+        );
         final WizardSelectUserScreen wizardSelectUserScreen = new WizardSelectUserScreen();
-        final WizardEditUserScreen editUserPresenter = new WizardEditUserScreen("Edit User", "Edit User", null, null, new String[]{"workerId:Speaker name *:.'{'3,'}':Please enter at least three letters."}, "Save and continue", null, null, null, false, "Could not contact the server, please check your internet connection and try again.");
+        final WizardEditUserScreen editUserPresenter = new WizardEditUserScreen("Edit User", "Edit User", null, null, "Save and continue", null, null, null, false, "Could not contact the server, please check your internet connection and try again.");
+        editUserPresenter.setCustomFields(new String[]{"workerId:Speaker name *:.'{'3,'}':Please enter at least three letters."});
         final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen();
         final WizardKinshipScreen kinshipPresenter = addKinshipScreen(experiment, autoMenuPresenter, null, 16, obfuscateScreenNames);
         welcomePresenter.setInstructionsScreen(instructionsPresenter);
