@@ -78,7 +78,7 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
         presenterScreen.getPresenterFeatureList().add(presenterFeature);
         experiment.getPresenterScreen().add(presenterScreen);
         final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.actionButton, getNextButton());
-        presenterScreen.getPresenterFeatureList().add(actionButtonFeature);
+        presenterFeature.getPresenterFeatureList().add(actionButtonFeature);
         actionButtonFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
         return presenterScreen;
     }
