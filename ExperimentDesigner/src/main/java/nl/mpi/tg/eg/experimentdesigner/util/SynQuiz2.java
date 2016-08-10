@@ -49,6 +49,11 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreen;
  */
 public class SynQuiz2 {
 
+    // done: the text box should be a text area for "If you experience any other types, please explain below."
+    // done: the text menu screen should have the button text: "Submit my results"
+    // done: the text menu screen should have some new text that will be provided
+    // todo: does the report send the test results to the frinex admin?
+    // done: the submit page need not have the completion button and need not have any delay
     private final WizardController wizardController = new WizardController();
     private final String imageSize = "80";
 
@@ -119,7 +124,7 @@ public class SynQuiz2 {
 
         final WizardMenuScreen menuScreen = new WizardMenuScreen("Menu", "Menu", "Menu");
 
-        final AbstractWizardScreen sumbitScreen = createSumbitScreen("register", menuScreen, completionScreen, 20);;
+        final AbstractWizardScreen sumbitScreen = createSumbitScreen("Register", menuScreen, completionScreen, 20);;
         sumbitScreen.setNextWizardScreen(completionScreen);
         completionScreen.setBackWizardScreen(menuScreen);
         completionScreen.setNextWizardScreen(introductionScreen);
@@ -165,7 +170,8 @@ public class SynQuiz2 {
         menuScreen.addTargetScreen(weekdaysScreen);
         menuScreen.addTargetScreen(lettersScreen);
         menuScreen.addTargetScreen(monthsScreen);
-//        menuScreen.addTargetScreen(completionScreen);
+        menuScreen.getWizardScreenData().setScreenText2("The tests above will ask about the colours that you associate with Weekdays, Letters and Numbers, or Months. If you do not have colour associations with one of the options, you can skip that test. After each test you can view your results.<br/><br/>"
+                + "When you are finished taking the tests that apply to you, please click <b>Submit my results</b> below to finish the experiment.");
 //        
 //        menuScreen.addTargetScreen(weekdaysScreen);
 //        menuScreen.populatePresenterScreen(experiment, false, 15);
@@ -311,7 +317,7 @@ public class SynQuiz2 {
                 wizardEditUserScreen.insertMetadataByString("Seizures:Seizures:true|false:Please enter true or false.");
                 wizardEditUserScreen.insertMetadataByString("Dyslexia:Dyslexia:true|false:Please enter true or false.");
                 wizardEditUserScreen.insertMetadataByString("BrainSurgery:Brain surgery:true|false:Please enter true or false.");
-                wizardEditUserScreen.insertMetadataByString("AnyOtherConditions:Are there any other conditions that you would like us to know about?:.*:.");
+                wizardEditUserScreen.insertMetadataByString("AnyOtherConditions:Are there any other conditions that you would like us to know about?:['\\\\'S'\\\\'s]*:.");
                 break;
             case Study:
                 wizardEditUserScreen.setScreenText("Our study at the Max Planck Institute focuses on synaesthesia where numbers, letters, weekdays, or months cause people to have a colour experience. To someone with synaesthesia, the letter A might \"mean\" red to them, or the number \"5\" might make them experience the colour green. Please let us know if you experience any other types of synaesthesia by checking the boxes in the following screens. We may contact you in the future about studies related to these other types.");
@@ -455,7 +461,7 @@ public class SynQuiz2 {
                 wizardEditUserScreen.insertMetadataField("British Sign->Touch");
                 break;
             case Other:
-                wizardEditUserScreen.insertMetadataField(new Metadata("AnyOtherTypes", "If you experience any other types, please explain below.", "", "", false, null));
+                wizardEditUserScreen.insertMetadataField(new Metadata("AnyOtherTypes", "If you experience any other types, please explain below.", "['\\\\'S'\\\\'s]'{'0,'}'", "", false, null));
         }
 
 //        final PresenterFeature saveMetadataButton = new PresenterFeature(FeatureType.saveMetadataButton, "Continue");
@@ -565,11 +571,11 @@ public class SynQuiz2 {
     }
 
     private AbstractWizardScreen createSumbitScreen(String screenName, final WizardScreen backPresenter, final WizardScreen nextPresenter, long displayOrder) {
-        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter.getPresenterScreen(), screenName, nextPresenter.getPresenterScreen(), PresenterType.colourReport, displayOrder);
+        final PresenterScreen presenterScreen = new PresenterScreen(screenName, "Submit my results", backPresenter.getPresenterScreen(), screenName, nextPresenter.getPresenterScreen(), PresenterType.colourReport, displayOrder);
 //        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
         final PresenterFeature showColourReport = new PresenterFeature(FeatureType.submitTestResults, null);
         final PresenterFeature aboveThreshold = new PresenterFeature(FeatureType.onError, null);
-        aboveThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "error submitting data"));
+        aboveThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "Error submitting data."));
 //        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
 //        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
         showColourReport.getPresenterFeatureList().add(aboveThreshold);
