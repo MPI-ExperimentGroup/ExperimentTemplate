@@ -781,7 +781,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
-    protected void audioButton(final String eventTag, final String mp3Path, final String oggPath, final String imagePath) {
+    protected void audioButton(final String eventTag, final String mp3Path, final String oggPath, final String imagePath, final TimedStimulusListener audioFinishedListner) {
         ((TimedStimulusView) simpleView).addImageButton(new PresenterEventListner() {
 
             @Override
@@ -803,9 +803,14 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     }
                 };
                 ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromString(serviceLocations.staticFilesUrl() + oggPath), UriUtils.fromString(serviceLocations.staticFilesUrl() + mp3Path), 0, shownStimulusListener, new TimedStimulusListener() {
+                    private boolean hasPlayed = false;
 
                     @Override
                     public void postLoadTimerFired() {
+                        if (!hasPlayed) {
+                            audioFinishedListner.postLoadTimerFired();
+                        }
+                        hasPlayed = true;
                     }
                 });
             }
