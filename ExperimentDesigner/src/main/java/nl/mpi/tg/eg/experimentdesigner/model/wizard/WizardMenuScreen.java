@@ -49,6 +49,9 @@ public class WizardMenuScreen extends AbstractWizardScreen {
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
         presenterScreen.setPresenterType(PresenterType.menu);
+        if (wizardScreenData.getScreenText1() != null) {
+            presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, wizardScreenData.getScreenText1()));
+        }
         if (targetScreens.isEmpty()) {
             presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMenuItems, null));
         } else {
@@ -57,6 +60,9 @@ public class WizardMenuScreen extends AbstractWizardScreen {
                 presenterFeature1.addFeatureAttributes(FeatureAttribute.target, targetScreen.getScreenTag());
                 presenterScreen.getPresenterFeatureList().add(presenterFeature1);
             }
+        }
+        if (wizardScreenData.getScreenText2() != null) {
+            presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, wizardScreenData.getScreenText2()));
         }
         experiment.getPresenterScreen().add(presenterScreen);
         return presenterScreen;
