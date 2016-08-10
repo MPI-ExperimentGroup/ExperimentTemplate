@@ -23,6 +23,8 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.Date;
+import nl.mpi.tg.eg.experiment.client.ApplicationController;
+import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
@@ -53,6 +55,12 @@ public abstract class AbstractColourReportPresenter extends AbstractPresenter im
         this.localStorage = new LocalStorage();
         this.userResults = userResults;
         this.submissionService = submissionService;
+    }
+
+    @Override
+    public void setState(final AppEventListner appEventListner, ApplicationController.ApplicationState prevState, final ApplicationController.ApplicationState nextState) {
+        super.setState(appEventListner, prevState, null);
+        this.nextState = nextState;
     }
 
     public void submitTestResults(final MetadataField emailAddressMetadataField, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
