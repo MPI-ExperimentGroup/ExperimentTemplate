@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.model;
 
+import nl.mpi.tg.eg.experiment.client.exception.MetadataFieldException;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -30,7 +31,7 @@ public class MetadataFieldTest {
     private static final String STRING = ".{3,}";
     private static final String EMAIL = "^[^@]+@[^@]+$";
     private static final String CHECKBOX = "true|false";
-    private static final String MULTILINE = "[\\n?]{3,}";
+    private static final String MULTILINE = "[\\S\\s]{3,}";
 
     public MetadataFieldTest() {
     }
@@ -95,6 +96,12 @@ public class MetadataFieldTest {
         new MetadataField("", "", CHECKBOX, CHECKBOX, "").validateValue("true");
         new MetadataField("", "", EMAIL, EMAIL, "").validateValue("test@test");
         new MetadataField("", "", STRING, STRING, "").validateValue("test");
+        try {
+            new MetadataField("", "", STRING, STRING, "").validateValue("test\ntest");
+            fail("Failed to prevent linebreaks in field");
+        } catch (MetadataFieldException exception) {
+
+        }
         new MetadataField("", "", LIST, LIST, "").validateValue("male");
         new MetadataField("", "", MULTILINE, MULTILINE, "").validateValue("male\nasldj");
     }

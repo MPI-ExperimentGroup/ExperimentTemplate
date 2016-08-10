@@ -46,7 +46,7 @@ public class MetadataField {
     }
 
     public boolean isMultiLine() {
-        return controlledRegex.contains("\\n");
+        return controlledRegex.contains("\\s");
     }
 
     public boolean isListBox() {
