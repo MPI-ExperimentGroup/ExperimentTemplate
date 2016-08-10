@@ -578,3 +578,7 @@ table#screenExample td {
     from {top: -50%;}
     to {top: 35%;}
 }
+
+textarea.metadataError, textarea.metadataOK {
+    width: 100%;
+}
