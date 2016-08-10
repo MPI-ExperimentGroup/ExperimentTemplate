@@ -81,7 +81,7 @@ public enum FeatureType {
     addKinTypeGui(false, false, new FeatureAttribute[]{diagramName}),
     autoNextPresenter(false, false, null),
     logTimeStamp(false, false, new FeatureAttribute[]{eventTag}),
-    audioButton(false, false, new FeatureAttribute[]{eventTag, mp3, ogg, poster}),
+    audioButton(true, false, new FeatureAttribute[]{eventTag, mp3, ogg, poster}),
     preloadAllStimuli(true, false, null, true, false, Contitionals.none),
     showStimulus(true, false, null, false, false, Contitionals.none), // todo: should this be here?
     showStimulusGrid(true, false, new FeatureAttribute[]{columnCount, imageWidth, eventTag}, true, false, Contitionals.hasCorrectIncorrect),
