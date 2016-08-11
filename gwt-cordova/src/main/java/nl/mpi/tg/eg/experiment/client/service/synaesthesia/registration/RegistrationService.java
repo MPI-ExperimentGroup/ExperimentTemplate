@@ -33,10 +33,6 @@ import nl.mpi.tg.eg.experiment.client.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.Version;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
-import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
-//import nl.ru.languageininteraction.synaesthesia.client.MetadataFields;
-//import nl.ru.languageininteraction.synaesthesia.client.ServiceLocations;
-//import nl.ru.languageininteraction.synaesthesia.client.Version;
 
 /**
  * @since Oct 29, 2014 11:18:31 AM (creation date)
@@ -73,6 +69,16 @@ public class RegistrationService {
             @Override
             protected String formatDate(Date date) {
                 return format.format(date);
+            }
+
+            @Override
+            protected String getSeparator() {
+                return "\t";
+            }
+
+            @Override
+            protected String getRowSeparator() {
+                return "\n";
             }
         }.serialise(userResults, emailAddressMetadataField));
         stringBuilder.append("quiz_results=").append(restultsData);

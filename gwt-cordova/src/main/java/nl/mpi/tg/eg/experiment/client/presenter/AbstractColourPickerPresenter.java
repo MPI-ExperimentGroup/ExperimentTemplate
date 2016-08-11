@@ -84,12 +84,35 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
         duration = new Duration();
     }
 
+//    private void submitFrinexResults() {
+//        submissionService.submitTagValue(userResults.getUserData().getUserId(), "ScoreLog", new ResultsSerialiser() {
+//            final DateTimeFormat format = DateTimeFormat.getFormat(messages.reportDateFormat());
+//
+//            @Override
+//            protected String formatDate(Date date) {
+//                return format.format(date);
+//            }
+//
+//            @Override
+//            protected String getSeparator() {
+//                return ",";
+//            }
+//
+//            @Override
+//            protected String getRowSeparator() {
+//                return "\\n";
+//            }
+//
+//        }.serialise(stimulusResponseGroup, userResults.getUserData().getUserId().toString()), 0);
+//    }
+
     private void triggerEvent() {
         if (!stimulusProvider.hasNextStimulus()) {
             shownSetCount++;
 //            if (repeatCount > shownSetCount) {
 //                stimulusProvider.getSubset(selectionTags, false, "");
 //            }
+//            submitFrinexResults();
             appEventListner.requestApplicationState(nextState);
         }
         if (!stimulusProvider.hasNextStimulus()) {
@@ -122,7 +145,9 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
 
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
-                stimulusResponseGroup.addResponse(stimulusProvider.getCurrentStimulus(), new StimulusResponse(colourPickerCanvasView.getColour(), new Date(), System.currentTimeMillis() - startMs));
+                final long durationMs = System.currentTimeMillis() - startMs;
+                stimulusResponseGroup.addResponse(stimulusProvider.getCurrentStimulus(), new StimulusResponse(colourPickerCanvasView.getColour(), new Date(), durationMs));
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), stimulusResponseGroup.getPostName(), stimulusProvider.getCurrentStimulus().getUniqueId(), colourPickerCanvasView.getColour().getHexValue(), (int) (durationMs));
                 triggerEvent();
             }
 
@@ -140,7 +165,9 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
 
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
-                stimulusResponseGroup.addResponse(stimulusProvider.getCurrentStimulus(), new StimulusResponse(null, new Date(), System.currentTimeMillis() - startMs));
+                final long durationMs = System.currentTimeMillis() - startMs;
+                stimulusResponseGroup.addResponse(stimulusProvider.getCurrentStimulus(), new StimulusResponse(null, new Date(), durationMs));
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), stimulusResponseGroup.getPostName(), stimulusProvider.getCurrentStimulus().getUniqueId(), "", (int) (durationMs));
                 triggerEvent();
             }
 

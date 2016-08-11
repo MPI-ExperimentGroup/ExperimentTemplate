@@ -36,37 +36,54 @@ public abstract class ResultsSerialiser {
     public String serialise(UserResults userResults, MetadataField postName_email) {
         StringBuilder stringBuilder = new StringBuilder();
         for (StimulusResponseGroup responseGroup : userResults.getStimulusResponseGroups()) {
-            final SortedSet<Stimulus> stimuliList = responseGroup.getStimuli();
-            for (Stimulus stimulus : stimuliList) {
-                for (StimulusResponse response : responseGroup.getResults(stimulus)) {
-                    stringBuilder.append(userResults.getUserData().getMetadataValue(postName_email));
-                    stringBuilder.append("\t");
-                    stringBuilder.append(responseGroup.getPostName());
-                    stringBuilder.append("\t");
-                    stringBuilder.append(stimulus.getLabel());
-                    stringBuilder.append("\t");
-                    stringBuilder.append(formatDate(response.getTime()));
-                    stringBuilder.append("\t");
-                    stringBuilder.append(response.getDurationMs());
-                    stringBuilder.append("\t");
-                    final ColourData colour = response.getColour();
-                    if (colour != null) {
-                        stringBuilder.append(colour.getHexValue());
-                        stringBuilder.append("\t");
-                        stringBuilder.append(colour.getRed());
-                        stringBuilder.append("\t");
-                        stringBuilder.append(colour.getGreen());
-                        stringBuilder.append("\t");
-                        stringBuilder.append(colour.getBlue());
-                    } else {
-                        stringBuilder.append("\t\t\t");
-                    }
-                    stringBuilder.append("\n");
-                }
-            }
+            serialise(stringBuilder, responseGroup, userResults.getUserData().getMetadataValue(postName_email));
         }
         return stringBuilder.toString();
     }
 
+    public String serialise(StimulusResponseGroup responseGroup, String uuid) {
+        StringBuilder stringBuilder = new StringBuilder();
+        serialise(stringBuilder, responseGroup, uuid);
+        return stringBuilder.toString();
+    }
+
+    public void serialise(StringBuilder stringBuilder, StimulusResponseGroup responseGroup, String postName_email) {
+        final SortedSet<Stimulus> stimuliList = responseGroup.getStimuli();
+        for (Stimulus stimulus : stimuliList) {
+            for (StimulusResponse response : responseGroup.getResults(stimulus)) {
+                stringBuilder.append(postName_email);
+                stringBuilder.append(getSeparator());
+                stringBuilder.append(responseGroup.getPostName());
+                stringBuilder.append(getSeparator());
+                stringBuilder.append(stimulus.getLabel());
+                stringBuilder.append(getSeparator());
+                stringBuilder.append(formatDate(response.getTime()));
+                stringBuilder.append(getSeparator());
+                stringBuilder.append(response.getDurationMs());
+                stringBuilder.append(getSeparator());
+                final ColourData colour = response.getColour();
+                if (colour != null) {
+                    stringBuilder.append(colour.getHexValue());
+                    stringBuilder.append(getSeparator());
+                    stringBuilder.append(colour.getRed());
+                    stringBuilder.append(getSeparator());
+                    stringBuilder.append(colour.getGreen());
+                    stringBuilder.append(getSeparator());
+                    stringBuilder.append(colour.getBlue());
+                } else {
+                    stringBuilder.append(getSeparator());
+                    stringBuilder.append(getSeparator());
+                    stringBuilder.append(getSeparator());
+                }
+                stringBuilder.append(getRowSeparator());
+            }
+        }
+
+    }
+
     protected abstract String formatDate(Date date);
+
+    protected abstract String getSeparator();
+    
+    protected abstract String getRowSeparator();
 }

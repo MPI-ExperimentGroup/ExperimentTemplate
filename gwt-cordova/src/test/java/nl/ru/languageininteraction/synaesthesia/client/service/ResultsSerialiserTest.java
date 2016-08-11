@@ -183,6 +183,16 @@ public class ResultsSerialiserTest {
             protected String formatDate(Date date) {
                 return date.toString();
             }
+
+            @Override
+            protected String getSeparator() {
+                return "\t";
+            }
+
+            @Override
+            protected String getRowSeparator() {
+                return "\n";
+            }
         };
         String expResult = "postName@email	test-group-1	a1	Thu Jan 01 01:02:03 CET 1970	23.0	#ffffff	255	255	255\n"
                 + "postName@email	test-group-1	a1	Thu Jan 01 01:00:12 CET 1970	21.0	#000000	0	0	0\n"
