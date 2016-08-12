@@ -32,18 +32,15 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardVideoAudioOptionStimul
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public class HRPretest {
-    // todo: add a worker id entry befor the agree screen
-    // todo: shift the audio test to InformationScreen1  
-    // todo: make the next button appear only after the audio has played
-    // todo: remove the Edit_User screen 
-    // todo: add the stimuli counter 1/10 at the top of the screen 
-    // todo: run the stimuli twice and a fresh randomisation for each run
+    // done: add a worker id entry befor the agree screen
+    // done: shift the audio test to InformationScreen1  
+    // done: make the next button appear only after the audio has played
+    // done: remove the Edit_User screen 
+    // done: add the stimuli counter 1/10 at the top of the screen 
+    // done: run the stimuli twice and a fresh randomisation for each run
     // todo: participant.csv is missing the UUID
     // todo: add a csv that has a row for each stimuli and the metadata of the user on each row
-    
-    
-    
-    
+
     private final WizardController wizardController = new WizardController();
     final String agreementScreenText = "Alvast bedankt voor uw interesse in dit online-experiment! Gedetailleerde instructies over de taak worden op de volgende pagina gegeven. <br/>"
             + "<br/>"
@@ -296,10 +293,10 @@ public class HRPretest {
         wizardData.setShowMenuBar(false);
         wizardData.setTextFontSize(22);
         wizardData.setObfuscateScreenNames(false);
-        WizardTextScreen wizardTextScreen1 = new WizardTextScreen("InformationScreen1", informationScreenText1,
+        WizardTextScreen wizardTextScreen2 = new WizardTextScreen("InformationScreen1", informationScreenText2,
                 "volgende [ spatiebalk ]"
         );
-        WizardAudioTestScreen wizardTextScreen2 = new WizardAudioTestScreen("AudioTest", informationScreenText2, "volgende [ spatiebalk ]", "welkom");
+        WizardAudioTestScreen wizardTextScreen1 = new WizardAudioTestScreen("AudioTest", informationScreenText1, "volgende [ spatiebalk ]", "welkom");
         //Information screen 
         //Agreement
         WizardAgreementScreen agreementScreen = new WizardAgreementScreen("Agreement", agreementScreenText, "Ik ga akkoord");
@@ -313,20 +310,20 @@ public class HRPretest {
         wizardEditUserScreen.setNextButton("Volgende");
         wizardEditUserScreen.setSendData(true);
         wizardEditUserScreen.setCustomFields(new String[]{
-            "workerId:Arbeider id:.*:.",
-            "firstName:Voornaam:.'{'3,'}':Voer minimaal drie letters.",
-            "lastName:Achternaam:.'{'3,'}':Voer minimaal drie letters.",
-            "age:Leeftijd:[0-9]+:Voer een getal.",
-            "gender:Geslacht:|man|vrouw|anders:."
+            "workerId:Arbeider id:.'{'3,'}':Voer minimaal drie letters."
+//            "firstName:Voornaam:.'{'3,'}':Voer minimaal drie letters.",
+//            "lastName:Achternaam:.'{'3,'}':Voer minimaal drie letters.",
+//            "age:Leeftijd:[0-9]+:Voer een getal.",
+//            "gender:Geslacht:|man|vrouw|anders:."
         });
 
+        wizardData.addScreen(wizardEditUserScreen);
         wizardData.addScreen(agreementScreen);
         wizardData.addScreen(wizardTextScreen1);
         wizardData.addScreen(wizardTextScreen2);
-        wizardData.addScreen(wizardEditUserScreen);
 
-        final WizardVideoAudioOptionStimulusScreen list1234Screen = new WizardVideoAudioOptionStimulusScreen("Stimuli", false, stimuliString,false,
-                null, 1000, true, 100, "", "", "volgende [ spatiebalk ]");
+        final WizardVideoAudioOptionStimulusScreen list1234Screen = new WizardVideoAudioOptionStimulusScreen("Stimuli", false, stimuliString, false,
+                null, 1000, 2, 20, true, 100, "", "", "volgende [ spatiebalk ]");
 //        list1234Screen.setStimulusResponseOptions("1,2,3,4,5");
 //        list1234Screen.setStimulusResponseLabelLeft("zeer waarschijnlijk negatief");
 //        list1234Screen.setStimulusResponseLabelRight("zeer waarschijnlijk positief");
@@ -339,10 +336,10 @@ public class HRPretest {
                 "Could not contact the server, please check your internet connection and try again.", "Retry");
         wizardData.addScreen(completionScreen);
 
-        wizardTextScreen1.setNextWizardScreen(wizardTextScreen2);
-        wizardTextScreen2.setNextWizardScreen(wizardEditUserScreen);
+        wizardEditUserScreen.setNextWizardScreen(agreementScreen);
         agreementScreen.setNextWizardScreen(wizardTextScreen1);
-        wizardEditUserScreen.setNextWizardScreen(list1234Screen);
+        wizardTextScreen1.setNextWizardScreen(wizardTextScreen2);
+        wizardTextScreen2.setNextWizardScreen(list1234Screen);
         list1234Screen.setNextWizardScreen(completionScreen);
         return wizardData;
     }

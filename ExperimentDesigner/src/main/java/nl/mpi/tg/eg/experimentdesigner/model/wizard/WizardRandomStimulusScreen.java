@@ -273,6 +273,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, getScreenTitle());
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(randomiseStimuli));
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "1");
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, "0");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(stimuliCount));
         presenterFeatureList.add(loadStimuliFeature);
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);

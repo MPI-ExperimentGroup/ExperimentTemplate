@@ -93,6 +93,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, getScreenTitle());
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(this.wizardScreenData.isRandomiseStimuli()));
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "1");
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, "0");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(this.wizardScreenData.getStimuliCount()));
         presenterFeatureList.add(loadStimuliFeature);
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
@@ -108,6 +109,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             withMatchingStimulus.addFeatureAttributes(FeatureAttribute.matchingRegex, MATCHING_REGEX);
             withMatchingStimulus.addFeatureAttributes(FeatureAttribute.maxStimuli, "1000");
             withMatchingStimulus.addFeatureAttributes(FeatureAttribute.repeatCount, "1");
+            withMatchingStimulus.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, "0");
             withMatchingStimulus.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(this.wizardScreenData.isRandomiseStimuli()));
             withMatchingStimulus.addFeatureAttributes(FeatureAttribute.eventTag, "");
 

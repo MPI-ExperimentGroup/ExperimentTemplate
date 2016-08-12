@@ -299,6 +299,7 @@ public class DefaultExperiments {
                     case columnCount:
                     case maxStimuli:
                     case repeatCount:
+                    case repeatRandomWindow:
                     case scoreThreshold:
                         presenterFeature.addFeatureAttributes(attribute, "3");
                         break;

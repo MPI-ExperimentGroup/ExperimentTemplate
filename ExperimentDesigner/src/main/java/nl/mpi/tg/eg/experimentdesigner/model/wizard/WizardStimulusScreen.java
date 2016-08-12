@@ -144,6 +144,7 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, screenLabel);
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(randomiseStimuli));
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "1");
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, "0");
         presenterFeatureList.add(loadStimuliFeature);
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
         // todo: add more reverter tags as required

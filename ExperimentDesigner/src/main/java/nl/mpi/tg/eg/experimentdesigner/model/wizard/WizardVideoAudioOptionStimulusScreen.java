@@ -40,18 +40,21 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
     private String[] stimuliRandomTags = null;
     private int stimulusMsDelay = 0;
     private int stimuliCount = 1;
+    private int repeatCount = 1;
+    private int repeatRandomWindow = 0;
     private String stimulusResponseLabelLeft = null;
     private String stimulusResponseLabelRight = null;
 //    private String stimulusResponseOptions = null;
     private boolean randomiseStimuli = false;
     private boolean useCodeVideo = true;
+    private boolean showProgress = true;
     private String buttonLabelEventTag;
 
     public WizardVideoAudioOptionStimulusScreen() {
         super("VideoAudioOption", "VideoAudioOption", "VideoAudioOption");
     }
 
-    public WizardVideoAudioOptionStimulusScreen(String screenName, boolean centreScreen, String[] screenTextArray, boolean useCodeVideo, String[] randomStimuliTags, int maxStimuli, final boolean randomiseStimuli, int stimulusMsDelay, String responseOptionsLabelLeft, String responseOptionsLabelRight, final String spacebar) {
+    public WizardVideoAudioOptionStimulusScreen(String screenName, boolean centreScreen, String[] screenTextArray, boolean useCodeVideo, String[] randomStimuliTags, int maxStimuli, int repeatCount, int repeatRandomWindow, final boolean randomiseStimuli, int stimulusMsDelay, String responseOptionsLabelLeft, String responseOptionsLabelRight, final String spacebar) {
         super(screenName, screenName, screenName);
         this.setScreenTitle(screenName);
         this.setCentreScreen(centreScreen);
@@ -60,6 +63,8 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         this.stimuliRandomTags = randomStimuliTags;
         this.stimulusMsDelay = stimulusMsDelay;
         this.stimuliCount = maxStimuli;
+        this.repeatCount = repeatCount;
+        this.repeatRandomWindow = repeatRandomWindow;
         this.stimulusResponseLabelLeft = responseOptionsLabelLeft;
         this.stimulusResponseLabelRight = responseOptionsLabelRight;
 //        this.stimulusResponseOptions = responseOptions;
@@ -191,7 +196,8 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         }
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, getScreenTitle());
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(randomiseStimuli));
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "1");
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, Integer.toString(repeatCount));
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, Integer.toString(repeatRandomWindow));
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(stimuliCount));
         presenterFeatureList.add(loadStimuliFeature);
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
@@ -199,6 +205,9 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
 
+        if (showProgress) {
+            hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
+        }
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusAudio, null);
 //        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
 //        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");

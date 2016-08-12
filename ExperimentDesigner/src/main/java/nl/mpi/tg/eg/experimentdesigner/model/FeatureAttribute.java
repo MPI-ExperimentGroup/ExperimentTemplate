@@ -53,6 +53,7 @@ public enum FeatureAttribute {
     networkErrorMessage,
     randomise,
     repeatCount,
+    repeatRandomWindow,
     norepeat,
     hotKey,
     mp3,

@@ -60,6 +60,7 @@ public class Sentveri_exp3 {
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, screenName);
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "false");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "1");
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, "0");
         presenterFeatureList.add(loadStimuliFeature);
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
