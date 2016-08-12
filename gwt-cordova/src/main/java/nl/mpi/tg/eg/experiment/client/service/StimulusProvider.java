@@ -74,8 +74,8 @@ public class StimulusProvider {
         return wordTag;
     }
 
-    public void getSubset(final List<Tag> selectionTags, final boolean randomise, final int repeatCount, final String seenList) {
-        getSubset(selectionTags, stimulusArray.size(), randomise, repeatCount, seenList);
+    public void getSubset(final List<Tag> selectionTags, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String seenList) {
+        getSubset(selectionTags, stimulusArray.size(), randomise, repeatCount, repeatRandomWindow, seenList);
     }
 
     public void getSdCardSubset(final ArrayList<String> directoryTagArray, final List<String[]> directoryList, final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final int maxStimulusCount, final boolean randomise, final int repeatCount, final String seenList) {
@@ -125,12 +125,12 @@ public class StimulusProvider {
         }
     }
 
-    public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final String seenList) {
+    public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String seenList) {
         List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
-        getSubset(selectionTags, maxStimulusCount, randomise, repeatCount, seenList, stimulusListCopy);
+        getSubset(selectionTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, seenList, stimulusListCopy);
     }
 
-    public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final String seenList, List<Stimulus> stimulusListCopy) {
+    public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String seenList, List<Stimulus> stimulusListCopy) {
         final List<Stimulus> stimulusSubsetArrayTemp = new ArrayList<>();
         stimulusSelectionArray.clear();
         while (!stimulusListCopy.isEmpty() && maxStimulusCount > stimulusSubsetArrayTemp.size()) {
@@ -146,6 +146,12 @@ public class StimulusProvider {
         stimulusSubsetArray.clear();
         for (int repeatIndex = 0; repeatIndex < repeatCount; repeatIndex++) {
             stimulusSubsetArray.addAll(stimulusSubsetArrayTemp);
+        }
+        if (repeatCount > 1 && stimulusSubsetArray.size() > repeatRandomWindow) {
+            for (int shuffleIndex = repeatRandomWindow; shuffleIndex < stimulusSubsetArray.size(); shuffleIndex++) {
+                // shuffle all stimuli in a moving window of 'repeatRandomWindow' so that the repeats are still sparated
+                stimulusSubsetArray.set(shuffleIndex - new Random().nextInt(repeatRandomWindow), stimulusSubsetArray.get(shuffleIndex));
+            }
         }
         totalStimuli = stimulusSubsetArray.size();
     }

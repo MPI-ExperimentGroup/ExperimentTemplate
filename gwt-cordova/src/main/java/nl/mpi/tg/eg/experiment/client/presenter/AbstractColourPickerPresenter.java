@@ -105,7 +105,6 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
 //
 //        }.serialise(stimulusResponseGroup, userResults.getUserData().getUserId().toString()), 0);
 //    }
-
     private void triggerEvent() {
         if (!stimulusProvider.hasNextStimulus()) {
             shownSetCount++;
@@ -210,9 +209,9 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
         colourPickerCanvasView.setInstructions(helpText, messages.helpButtonChar(), closeButtonLabel);
     }
 
-    protected void loadAllStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final boolean randomise, int repeatCount, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+    protected void loadAllStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final boolean randomise, int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
-        stimulusProvider.getSubset(selectionTags, randomise, repeatCount, "");
+        stimulusProvider.getSubset(selectionTags, randomise, repeatCount, repeatRandomWindow, "");
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
         stimulusResponseGroup = new StimulusResponseGroup(eventTag, eventTag.replaceAll("[^A-Za-z0-9]", "_"));

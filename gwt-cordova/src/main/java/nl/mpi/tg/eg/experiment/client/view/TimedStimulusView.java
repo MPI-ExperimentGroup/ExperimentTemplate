@@ -33,7 +33,7 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.TextArea;
 import nl.mpi.tg.eg.experiment.client.listener.AudioEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
@@ -177,7 +177,7 @@ public class TimedStimulusView extends ComplexView {
         errorLabel.setStylePrimaryName("metadataErrorMessage");
         errorLabel.setVisible(false);
         outerPanel.add(errorLabel);
-        final TextBox textBox = new TextBox();
+        final TextArea textBox = new TextArea();
         outerPanel.add(textBox);
         textBox.setFocus(true);
         return new StimulusFreeText() {
