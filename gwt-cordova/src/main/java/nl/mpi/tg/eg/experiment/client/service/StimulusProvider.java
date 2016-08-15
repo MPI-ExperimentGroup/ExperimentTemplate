@@ -128,11 +128,29 @@ public class StimulusProvider {
 
     public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String storedStimulusList, final int currentStimuliIndex) {
         List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
-        getSubset(selectionTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, storedStimulusList, currentStimuliIndex, stimulusListCopy);
+        this.currentStimuliIndex = currentStimuliIndex;
+        if (!storedStimulusList.isEmpty()) {
+            loadStoredStimulusList(storedStimulusList);
+        } else {
+            getSubset(selectionTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, storedStimulusList, stimulusListCopy);
+        }
     }
 
-    public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String storedStimulusList, final int currentStimuliIndex, List<Stimulus> stimulusListCopy) {
-        this.currentStimuliIndex = currentStimuliIndex;
+    private void loadStoredStimulusList(String storedStimulusList) {
+        while (!storedStimulusList.isEmpty()) {
+            // stimuli ids can contain - so we cant split the string on -
+            //storedStimulusList = storedStimulusList.replaceFirst("^-", storedStimulusList);
+            for (Stimulus stimulus : stimulusArray) {
+                if (storedStimulusList.startsWith(stimulus.getUniqueId())) {
+                    stimulusSubsetArray.add(stimulus);
+                    storedStimulusList = storedStimulusList.substring(stimulus.getUniqueId().length());
+                }
+            }
+            storedStimulusList = storedStimulusList.substring(1); // make sure the following - (or any stray chars) are removed  
+        }
+    }
+
+    public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String storedStimulusList, List<Stimulus> stimulusListCopy) {
         final List<Stimulus> stimulusSubsetArrayTemp = new ArrayList<>();
         stimulusSelectionArray.clear();
         while (!stimulusListCopy.isEmpty() && maxStimulusCount > stimulusSubsetArrayTemp.size()) {
@@ -258,6 +276,17 @@ public class StimulusProvider {
         return currentStimuliIndex;
     }
 
+    public String getLoadedStimulusString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Stimulus stimulus : this.stimulusSubsetArray) {
+            if (stringBuilder.length() > 0) {
+                stringBuilder.append("-");
+            }
+            stringBuilder.append(stimulus.getUniqueId());
+        }
+        return stringBuilder.toString();
+    }
+
     /*public void setCurrentStimulus(Stimulus currentStimulus) {
         this.stimulusSubsetArray.get(currentStimuliIndex);
     }*/
@@ -277,7 +306,7 @@ public class StimulusProvider {
     }
 
     public boolean hasNextStimulus() {
-        return currentStimuliIndex < stimulusSubsetArray.size() - 1;
+        return currentStimuliIndex + 1 < stimulusSubsetArray.size();
     }
 
     public int getTotalStimuli() {
@@ -301,9 +330,9 @@ public class StimulusProvider {
         return matchingStimuli;
     }
 
-    public int getRemainingStimuli() {
-        return stimulusSubsetArray.size();
-    }
+    /*public int getRemainingStimuli() {
+        return stimulusSubsetArray.size() - currentStimuliIndex;
+    }*/
 
 //    public void getNoisyStimuli() {
 //        // The first 2 trials should always be the filler words, Then there would be 12 real trials, each repeating twice in a complete random order (so 26 trials in all).

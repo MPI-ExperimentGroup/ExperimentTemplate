@@ -309,6 +309,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void showStimulus() {
+        final int currentStimulusIndex = stimulusProvider.getCurrentStimulusIndex();
+        localStorage.setStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag(), Integer.toString(currentStimulusIndex));
+        localStorage.setStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag(), stimulusProvider.getLoadedStimulusString());
         if (stimulusProvider.hasNextStimulus()) {
             stimulusProvider.nextStimulus();
 //            submissionService.submitTagValue(userResults.getUserData().getUserId(), "NextStimulus", stimulusProvider.getCurrentStimulus().getUniqueId(), duration.elapsedMillis());
@@ -334,8 +337,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void removeStimulus() {
-        stimulusProvider.removeStimulus(stimulusProvider.getCurrentStimulus());
-        localStorage.setStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()));
+        stimulusProvider.nextStimulus();
+        //localStorage.setStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()));
     }
 
     protected void nextMatchingStimulus() {
@@ -728,7 +731,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     public void showStimulusProgress() {
-        ((TimedStimulusView) simpleView).addHtmlText((stimulusProvider.getTotalStimuli() - stimulusProvider.getRemainingStimuli()) + " / " + stimulusProvider.getTotalStimuli());
+        ((TimedStimulusView) simpleView).addHtmlText((stimulusProvider.getCurrentStimulusIndex() + 1) + " / " + stimulusProvider.getTotalStimuli());
 //        ((TimedStimulusView) simpleView).addText("showStimulusProgress: " + duration.elapsedMillis() + "ms");
     }
 
@@ -760,8 +763,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
             submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusFreeText", stimulusProvider.getCurrentStimulus().getUniqueId(), stimulusFreeText.getValue(), duration.elapsedMillis());
         }
-        if (norepeat) {
-            removeStimulus();
+        if (!norepeat) {
+            stimulusProvider.pushCurrentStimulusToEnd();
         }
         ((TimedStimulusView) simpleView).stopAudio();
         ((TimedStimulusView) simpleView).clearPage();
