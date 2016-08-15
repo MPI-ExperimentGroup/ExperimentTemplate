@@ -43,8 +43,9 @@ public class StimulusProvider {
     private final List<Stimulus> stimulusSubsetArray = new ArrayList<>();
 //    private final List<String> noisyList = new ArrayList<>();
 //    private final List<String> pictureList = new ArrayList<>();
-    private int totalStimuli;
-    private Stimulus currentStimulus = null;
+//    private int totalStimuli;
+    private int currentStimuliIndex = -1;
+//    private Stimulus currentStimulus = null;
 
     public StimulusProvider() {
         GeneratedStimulus.fillStimulusList(stimulusArray);
@@ -52,7 +53,7 @@ public class StimulusProvider {
 //        Stimulus.fillPictureList(pictureList);
 
         //stimulusSubsetArray.addAll(stimulusArray);
-        totalStimuli = stimulusSubsetArray.size();
+//        totalStimuli = stimulusSubsetArray.size();
     }
 
     public void getAll() {
@@ -74,8 +75,8 @@ public class StimulusProvider {
         return wordTag;
     }
 
-    public void getSubset(final List<Tag> selectionTags, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String seenList) {
-        getSubset(selectionTags, stimulusArray.size(), randomise, repeatCount, repeatRandomWindow, seenList);
+    public void getSubset(final List<Tag> selectionTags, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String storedStimulusList, final int currentStimuliIndex) {
+        getSubset(selectionTags, stimulusArray.size(), randomise, repeatCount, repeatRandomWindow, storedStimulusList, currentStimuliIndex);
     }
 
     public void getSdCardSubset(final ArrayList<String> directoryTagArray, final List<String[]> directoryList, final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final int maxStimulusCount, final boolean randomise, final int repeatCount, final String seenList) {
@@ -110,7 +111,7 @@ public class StimulusProvider {
                 for (int repeatIndex = 0; repeatIndex < repeatCount; repeatIndex++) {
                     stimulusSubsetArray.addAll(stimulusSubsetArrayTemp);
                 }
-                totalStimuli = stimulusSubsetArray.size();
+//                totalStimuli = stimulusSubsetArray.size();
                 simulusLoadedListener.postLoadTimerFired();
             }
         } else {
@@ -125,12 +126,13 @@ public class StimulusProvider {
         }
     }
 
-    public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String seenList) {
+    public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String storedStimulusList, final int currentStimuliIndex) {
         List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
-        getSubset(selectionTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, seenList, stimulusListCopy);
+        getSubset(selectionTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, storedStimulusList, currentStimuliIndex, stimulusListCopy);
     }
 
-    public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String seenList, List<Stimulus> stimulusListCopy) {
+    public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String storedStimulusList, final int currentStimuliIndex, List<Stimulus> stimulusListCopy) {
+        this.currentStimuliIndex = currentStimuliIndex;
         final List<Stimulus> stimulusSubsetArrayTemp = new ArrayList<>();
         stimulusSelectionArray.clear();
         while (!stimulusListCopy.isEmpty() && maxStimulusCount > stimulusSubsetArrayTemp.size()) {
@@ -138,7 +140,7 @@ public class StimulusProvider {
             Stimulus stimulus = stimulusListCopy.remove(nextIndex);
             if (stimulus.getTags().containsAll(selectionTags)) {
                 stimulusSelectionArray.add(stimulus);
-                if (!seenList.contains(stimulus.getUniqueId())) {
+                if (!storedStimulusList.contains(stimulus.getUniqueId())) {
                     stimulusSubsetArrayTemp.add(stimulus);
                 }
             }
@@ -148,21 +150,23 @@ public class StimulusProvider {
             stimulusSubsetArray.addAll(stimulusSubsetArrayTemp);
         }
         if (repeatCount > 1 && stimulusSubsetArray.size() > repeatRandomWindow) {
+            // todo: perhaps also do this when the repeatRandomWindow is bigger than the stimulusSubsetArray but just reduce the repeatRandomWindow accordingly
             for (int shuffleIndex = repeatRandomWindow; shuffleIndex < stimulusSubsetArray.size(); shuffleIndex++) {
                 // shuffle all stimuli in a moving window of 'repeatRandomWindow' so that the repeats are still sparated
                 stimulusSubsetArray.set(shuffleIndex - new Random().nextInt(repeatRandomWindow), stimulusSubsetArray.get(shuffleIndex));
             }
         }
-        totalStimuli = stimulusSubsetArray.size();
+//        totalStimuli = stimulusSubsetArray.size();
     }
 
-    public void getSubset(final int maxWordUse, final String seenList, final List<Tag> speakerTags, final List<Tag> wordTags, final int maxSpeakerWordCount) {
+    public void getSubset(final int maxWordUse, final String storedStimulusList, final int currentStimuliIndex, final List<Tag> speakerTags, final List<Tag> wordTags, final int maxSpeakerWordCount) {
+        this.currentStimuliIndex = currentStimuliIndex;
         // we now also handle subsetting with setCount and seenList
         HashMap<Tag, Integer> wordCounter = new HashMap<>();
         HashMap<String, Integer> similarityCounter = new HashMap<>();
         // preload counters
         for (Stimulus stimulus : new ArrayList<>(stimulusArray)) {
-            if (seenList.contains(stimulus.getUniqueId())) {
+            if (storedStimulusList.contains(stimulus.getUniqueId())) {
                 Tag wordTag = getFirstTagMatch(wordTags, stimulus);
                 Tag speakerTag = getFirstTagMatch(speakerTags, stimulus);
                 if (wordTag != null && speakerTag != null) {
@@ -180,7 +184,7 @@ public class StimulusProvider {
         List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
         while (!stimulusListCopy.isEmpty()) {
             Stimulus stimulus = stimulusListCopy.remove(new Random().nextInt(stimulusListCopy.size()));
-            if (!seenList.contains(stimulus.getUniqueId())) {
+            if (!storedStimulusList.contains(stimulus.getUniqueId())) {
                 Tag wordTag = getFirstTagMatch(wordTags, stimulus);
                 Tag speakerTag = getFirstTagMatch(speakerTags, stimulus);
                 if (wordTag != null && speakerTag != null) {
@@ -200,16 +204,17 @@ public class StimulusProvider {
                 }
             }
         }
-        totalStimuli = stimulusSubsetArray.size();
+//        totalStimuli = stimulusSubsetArray.size();
 //        setCurrentTags(selectionTags); // todo: this tag list is inadequate and needs to take tow arrays in this case
     }
 
-    public void getSubset(final Tag similarity, final int maxWordUse, final List<Tag> wordTags, final String seenList) {
+    public void getSubset(final Tag similarity, final int maxWordUse, final List<Tag> wordTags, final String storedStimulusList, final int currentStimuliIndex) {
+        this.currentStimuliIndex = currentStimuliIndex;
         // we now also handle subsetting with setCount and seenList
         HashMap<Tag, Integer> wordCounter = new HashMap<>();
         // preload counters
         for (Stimulus stimulus : new ArrayList<>(stimulusArray)) {
-            if (seenList.contains(stimulus.getUniqueId())) {
+            if (storedStimulusList.contains(stimulus.getUniqueId())) {
                 Set<Tag> commonTags = new HashSet<>(wordTags);
                 commonTags.retainAll(stimulus.getTags());
                 for (Tag wordTag : commonTags) {
@@ -223,7 +228,7 @@ public class StimulusProvider {
         List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
         while (!stimulusListCopy.isEmpty()) {
             Stimulus stimulus = stimulusListCopy.remove(new Random().nextInt(stimulusListCopy.size()));
-            if (stimulus.getTags().contains(similarity) && !seenList.contains(stimulus.getUniqueId())) {
+            if (stimulus.getTags().contains(similarity) && !storedStimulusList.contains(stimulus.getUniqueId())) {
                 List<Tag> commonTags = new ArrayList<>(wordTags);
                 commonTags.retainAll(stimulus.getTags());
                 for (Tag wordTag : commonTags) {
@@ -240,43 +245,49 @@ public class StimulusProvider {
                 }
             }
         }
-        totalStimuli = stimulusSubsetArray.size();
+//        totalStimuli = stimulusSubsetArray.size();
     }
 
     // todo: audio and image evetns do not indicate phase learning or test
     // todo: next button could have its own timer to make reporting easier
     public Stimulus getCurrentStimulus() {
-        return currentStimulus;
+        return this.stimulusSubsetArray.get(currentStimuliIndex);
     }
 
-    public void setCurrentStimulus(Stimulus currentStimulus) {
-        this.currentStimulus = currentStimulus;
+    public int getCurrentStimulusIndex() {
+        return currentStimuliIndex;
     }
+
+    /*public void setCurrentStimulus(Stimulus currentStimulus) {
+        this.stimulusSubsetArray.get(currentStimuliIndex);
+    }*/
 
     public void removeStimulus(Stimulus removeStimulus) {
         stimulusSubsetArray.remove(removeStimulus);
+        stimulusSubsetArray.add(currentStimuliIndex - 1, removeStimulus);
+        currentStimuliIndex++;
     }
 
-    public void getNextStimulus() {
-        currentStimulus = stimulusSubsetArray.remove(0);
+    public void nextStimulus() {
+        currentStimuliIndex++;
     }
 
     public void pushCurrentStimulusToEnd() {
-        stimulusSubsetArray.add(currentStimulus);
+        stimulusSubsetArray.add(getCurrentStimulus());
     }
 
     public boolean hasNextStimulus() {
-        return !stimulusSubsetArray.isEmpty();
+        return currentStimuliIndex < stimulusSubsetArray.size() - 1;
     }
 
     public int getTotalStimuli() {
-        return totalStimuli;
+        return stimulusSubsetArray.size();
     }
 
     public List<Stimulus> getMatchingStimuli(final String matchingRegex, final int maxStimulusCount) {
         final List<Stimulus> matchingStimuli = new ArrayList<>();
         RegExp pattern = RegExp.compile(matchingRegex);
-        MatchResult matcher = pattern.exec(currentStimulus.getUniqueId());
+        MatchResult matcher = pattern.exec(getCurrentStimulus().getUniqueId());
         if (matcher != null) {
             String group = matcher.getGroup(0);
             // the stimulusSelectionArray should only contain stimuli relevant to this screen

@@ -62,7 +62,8 @@ import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
 public abstract class AbstractStimulusPresenter extends AbstractPresenter implements Presenter {
 
     final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
-    private static final String SEEN_STIMULUS_LIST = "seenStimulusList";
+    private static final String LOADED_STIMULUS_LIST = "loadedStimulusList";
+    private static final String SEEN_STIMULUS_INDEX = "seenStimulusIndex";
     private final StimulusProvider stimulusProvider = new StimulusProvider();
     protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
     private final LocalStorage localStorage;
@@ -106,7 +107,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             userResults.getUserData().setMetadataValue(stimulusAllocationField, Integer.toString(stimulusAllocation));
             localStorage.storeData(userResults);
         }
-        final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST + getSelfTag());
+        final String storedStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag());
+        int seenStimulusIndex;
+        try {
+            seenStimulusIndex = Integer.parseInt(localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag()));
+        } catch (NumberFormatException exception) {
+            seenStimulusIndex = -1;
+        }
 //        Participants will be exposed to 36 audio+picture combinations, 
 //        which are in fact 6 word-picture combination, 
 //        but each word repeats 6 times with a different audio files each time (see xls file).
@@ -125,27 +132,33 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         switch (stimulusAllocation) {
             case 0:
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), eventTag, "Condition0", condition0Tag.name(), duration.elapsedMillis());
-                stimulusProvider.getSubset(condition0Tag, maxStimulusCount, selectionTags, seenStimulusList);
+                stimulusProvider.getSubset(condition0Tag, maxStimulusCount, selectionTags, storedStimulusList, seenStimulusIndex);
                 break;
             case 1:
-                stimulusProvider.getSubset(condition1Tag, maxStimulusCount, selectionTags, seenStimulusList);
+                stimulusProvider.getSubset(condition1Tag, maxStimulusCount, selectionTags, storedStimulusList, seenStimulusIndex);
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), eventTag, "Condition1", condition1Tag.name(), duration.elapsedMillis());
                 break;
             case 2:
-                stimulusProvider.getSubset(condition2Tag, maxStimulusCount, selectionTags, seenStimulusList);
+                stimulusProvider.getSubset(condition2Tag, maxStimulusCount, selectionTags, storedStimulusList, seenStimulusIndex);
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), eventTag, "Condition2", condition2Tag.name(), duration.elapsedMillis());
                 break;
             default:
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), eventTag, "Condition3", "", duration.elapsedMillis());
-                stimulusProvider.getSubset(maxStimulusCount, seenStimulusList, Arrays.asList(new GeneratedStimulus.Tag[]{condition1Tag, condition2Tag, condition0Tag}), selectionTags, 32);
+                stimulusProvider.getSubset(maxStimulusCount, storedStimulusList, seenStimulusIndex, Arrays.asList(new GeneratedStimulus.Tag[]{condition1Tag, condition2Tag, condition0Tag}), selectionTags, 32);
                 break;
         }
     }
 
     protected void loadAllStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final boolean randomise, int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
-        final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST + getSelfTag());
-        stimulusProvider.getSubset(selectionTags, randomise, repeatCount, repeatRandomWindow, seenStimulusList);
+        final String storedStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag());
+        int seenStimulusIndex;
+        try {
+            seenStimulusIndex = Integer.parseInt(localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag()));
+        } catch (NumberFormatException exception) {
+            seenStimulusIndex = -1;
+        }
+        stimulusProvider.getSubset(selectionTags, randomise, repeatCount, repeatRandomWindow, storedStimulusList, seenStimulusIndex);
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
         showStimulus();
@@ -157,7 +170,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void loadSdCardStimulus(final String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final String subDirectory, final int maxStimulusCount, final boolean randomise, final int repeatCount, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
-        final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST + getSelfTag());
+        final String storedStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag());
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
         ArrayList<String> directoryTagArray = new ArrayList<>();
@@ -212,7 +225,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             public void postLoadTimerFired() {
                 ((TimedStimulusView) simpleView).addText("Stimulus loading error");
             }
-        }, maxStimulusCount, randomise, repeatCount, seenStimulusList);
+        }, maxStimulusCount, randomise, repeatCount, storedStimulusList);
     }
 
     protected void loadStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
@@ -221,7 +234,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void loadStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final List<GeneratedStimulus.Tag> randomTags, final MetadataField stimulusAllocationField, final int maxStimulusCount, final boolean randomise, int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
-        final String seenStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST + getSelfTag());
+        final String storedStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag());
+        int seenStimulusIndex;
+        try {
+            seenStimulusIndex = Integer.parseInt(localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag()));
+        } catch (NumberFormatException exception) {
+            seenStimulusIndex = -1;
+        }
         final List<GeneratedStimulus.Tag> allocatedTags = new ArrayList<>(selectionTags);
         if (!randomTags.isEmpty()) {
             final String storedStimulusAllocation = userResults.getUserData().getMetadataValue(stimulusAllocationField);
@@ -244,7 +263,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 });
             }
         }
-        stimulusProvider.getSubset(allocatedTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, seenStimulusList);
+        stimulusProvider.getSubset(allocatedTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, storedStimulusList, seenStimulusIndex);
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
         showStimulus();
@@ -291,7 +310,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void showStimulus() {
         if (stimulusProvider.hasNextStimulus()) {
-            stimulusProvider.getNextStimulus();
+            stimulusProvider.nextStimulus();
 //            submissionService.submitTagValue(userResults.getUserData().getUserId(), "NextStimulus", stimulusProvider.getCurrentStimulus().getUniqueId(), duration.elapsedMillis());
 //            super.startAudioRecorderTag(STIMULUS_TIER);
             hasMoreStimulusListener.postLoadTimerFired();
@@ -316,7 +335,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void removeStimulus() {
         stimulusProvider.removeStimulus(stimulusProvider.getCurrentStimulus());
-        localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST + getSelfTag(), "-" + stimulusProvider.getCurrentStimulus().getUniqueId());
+        localStorage.setStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()));
     }
 
     protected void nextMatchingStimulus() {
@@ -783,6 +802,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void audioButton(final String eventTag, final String mp3Path, final String oggPath, final String imagePath, final TimedStimulusListener audioFinishedListner) {
         ((TimedStimulusView) simpleView).addImageButton(new PresenterEventListner() {
+            private boolean hasPlayed = false;
 
             @Override
             public String getLabel() {
@@ -803,7 +823,6 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     }
                 };
                 ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromString(serviceLocations.staticFilesUrl() + oggPath), UriUtils.fromString(serviceLocations.staticFilesUrl() + mp3Path), 0, shownStimulusListener, new TimedStimulusListener() {
-                    private boolean hasPlayed = false;
 
                     @Override
                     public void postLoadTimerFired() {
