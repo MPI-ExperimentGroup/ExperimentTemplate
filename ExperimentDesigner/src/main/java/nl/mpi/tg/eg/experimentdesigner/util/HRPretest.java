@@ -333,12 +333,14 @@ public class HRPretest {
         wizardData.addScreen(list1234Screen);
 
         WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, false, true,
-                "Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop.",
+                null, //Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop.",
                 "Opnieuw beginnen",
                 "Finished",
                 "Could not contact the server, please check your internet connection and try again.", "Retry");
         wizardData.addScreen(completionScreen);
-        wizardData.addScreen(new WizardAboutScreen("Over", false));
+        final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("Over", false);
+        wizardAboutScreen.setBackWizardScreen(wizardEditUserScreen);
+        wizardData.addScreen(wizardAboutScreen);
 
         wizardEditUserScreen.setNextWizardScreen(agreementScreen);
         agreementScreen.setNextWizardScreen(wizardTextScreen1);
