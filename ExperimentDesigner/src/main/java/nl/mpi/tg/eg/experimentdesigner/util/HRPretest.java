@@ -40,6 +40,7 @@ public class HRPretest {
     // done: run the stimuli twice and a fresh randomisation for each run
     // todo: participant.csv is missing the UUID
     // todo: add a csv that has a row for each stimuli and the metadata of the user on each row
+    // done: remove the restart button
 
     private final WizardController wizardController = new WizardController();
     final String agreementScreenText = "Alvast bedankt voor uw interesse in dit online-experiment! Gedetailleerde instructies over de taak worden op de volgende pagina gegeven. <br/>"
@@ -72,7 +73,7 @@ public class HRPretest {
             + "links staat “bas” en rechts staat “baas”.<br/>"
             + "Jouw taak is dan om links op “bas” te klikken.<br/>"
             + "<br/>"
-            + "Er zijn ongeveer 400 woorden in dit experiment. Een normale sessie duurt daarom ongeveer 20 minuten. Bovenaan elk scherm staat aangegeven hoe ver je in het experiment bent.<br/>"
+            + "Er zijn ongeveer 800 woorden in dit experiment. Een normale sessie duurt daarom ongeveer 30 minuten. Bovenaan elk scherm staat aangegeven hoe ver je in het experiment bent.<br/>"
             + "<br/>"
             + "Let op: je kunt het experiment NIET pauzeren, onderbreken, of later weer hervatten. Doe dit experiment daarom ALLEEN als je ook echt de tijd hebt ervoor. Voer het experiment volledig en serieus uit.<br/>"
             + "<br/>"
@@ -308,9 +309,10 @@ public class HRPretest {
         wizardEditUserScreen.setMenuLabel("Edit User");
         wizardEditUserScreen.setScreenTag("Edit_User");
         wizardEditUserScreen.setNextButton("Volgende");
+        wizardEditUserScreen.setScreenText("Vul hier je login code in:");
         wizardEditUserScreen.setSendData(true);
         wizardEditUserScreen.setCustomFields(new String[]{
-            "workerId:Arbeider id:.'{'3,'}':Voer minimaal drie letters."
+            "workerId:login code:.'{'3,'}':Voer minimaal drie letters."
 //            "firstName:Voornaam:.'{'3,'}':Voer minimaal drie letters.",
 //            "lastName:Achternaam:.'{'3,'}':Voer minimaal drie letters.",
 //            "age:Leeftijd:[0-9]+:Voer een getal.",
@@ -323,13 +325,13 @@ public class HRPretest {
         wizardData.addScreen(wizardTextScreen2);
 
         final WizardVideoAudioOptionStimulusScreen list1234Screen = new WizardVideoAudioOptionStimulusScreen("Stimuli", false, stimuliString, false,
-                null, 1000, 2, 20, true, 100, "", "", "volgende [ spatiebalk ]");
+                null, 1000, 4, 20, true, 100, "", "", "volgende [ spatiebalk ]");
 //        list1234Screen.setStimulusResponseOptions("1,2,3,4,5");
 //        list1234Screen.setStimulusResponseLabelLeft("zeer waarschijnlijk negatief");
 //        list1234Screen.setStimulusResponseLabelRight("zeer waarschijnlijk positief");
         wizardData.addScreen(list1234Screen);
 
-        WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, true, true,
+        WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, false, true,
                 "Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop.",
                 "Opnieuw beginnen",
                 "Finished",
