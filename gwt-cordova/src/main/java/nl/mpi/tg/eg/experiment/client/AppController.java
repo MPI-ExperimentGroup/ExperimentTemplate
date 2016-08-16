@@ -75,6 +75,11 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
         if (hasNewMetadata) {
             localStorage.storeData(userResults);
         }
+        String debugValue = Window.Location.getParameter("debug");
+        if (debugValue != null && debugValue.equals("true")) {
+            localStorage.saveAppState(ApplicationState.Over.name());
+        }
+
 //        detectWindowDefocus(widgetTag);
     }
 
