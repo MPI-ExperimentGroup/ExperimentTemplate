@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment appNameDisplay="HRPretest" appNameInternal="hrpretest" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="false" textFontSize="17">
     <metadata>
-        <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Arbeider id"/>
+        <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="login code"/>
     </metadata>
     <presenter displayOrder="1" menuLabel="Edit User" next="Agreement" type="metadata" self="Edit_User" title="Edit User">
+        <htmlText featureText="Vul hier je login code in:"/>
         <metadataField fieldName="workerId"/>
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
             <onError/>
@@ -25,11 +26,11 @@
         </audioButton>
     </presenter>
     <presenter displayOrder="4" menuLabel="InformationScreen1" type="text" self="InformationScreen1" title="InformationScreen1">
-        <htmlText featureText="Dit online experiment is een luisterexperiment. Je krijgt telkens een woord te horen dat ofwel een &lt;b&gt;a-klinker&lt;/b&gt; bevat (bijv. dan) ofwel een &lt;b&gt;aa-klinker&lt;/b&gt; bevat (bijv. Daan). Jouw taak is om aan te geven welk woord je hoort.&lt;br/&gt;&lt;br/&gt;Bijvoorbeeld:&lt;br/&gt;Je hoort het woord [bas] en daarna verschijnen er twee namen op het scherm:&lt;br/&gt;links staat “bas” en rechts staat “baas”.&lt;br/&gt;Jouw taak is dan om links op “bas” te klikken.&lt;br/&gt;&lt;br/&gt;Er zijn ongeveer 400 woorden in dit experiment. Een normale sessie duurt daarom ongeveer 20 minuten. Bovenaan elk scherm staat aangegeven hoe ver je in het experiment bent.&lt;br/&gt;&lt;br/&gt;Let op: je kunt het experiment NIET pauzeren, onderbreken, of later weer hervatten. Doe dit experiment daarom ALLEEN als je ook echt de tijd hebt ervoor. Voer het experiment volledig en serieus uit.&lt;br/&gt;&lt;br/&gt;Als het experiment helder is en je klaar bent om te beginnen, druk dan op VOLGENDE.&lt;br/&gt;Het experiment start dan METEEN!"/>
+        <htmlText featureText="Dit online experiment is een luisterexperiment. Je krijgt telkens een woord te horen dat ofwel een &lt;b&gt;a-klinker&lt;/b&gt; bevat (bijv. dan) ofwel een &lt;b&gt;aa-klinker&lt;/b&gt; bevat (bijv. Daan). Jouw taak is om aan te geven welk woord je hoort.&lt;br/&gt;&lt;br/&gt;Bijvoorbeeld:&lt;br/&gt;Je hoort het woord [bas] en daarna verschijnen er twee namen op het scherm:&lt;br/&gt;links staat “bas” en rechts staat “baas”.&lt;br/&gt;Jouw taak is dan om links op “bas” te klikken.&lt;br/&gt;&lt;br/&gt;Er zijn ongeveer 800 woorden in dit experiment. Een normale sessie duurt daarom ongeveer 30 minuten. Bovenaan elk scherm staat aangegeven hoe ver je in het experiment bent.&lt;br/&gt;&lt;br/&gt;Let op: je kunt het experiment NIET pauzeren, onderbreken, of later weer hervatten. Doe dit experiment daarom ALLEEN als je ook echt de tijd hebt ervoor. Voer het experiment volledig en serieus uit.&lt;br/&gt;&lt;br/&gt;Als het experiment helder is en je klaar bent om te beginnen, druk dan op VOLGENDE.&lt;br/&gt;Het experiment start dan METEEN!"/>
         <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="Stimuli"/>
     </presenter>
     <presenter displayOrder="5" menuLabel="Stimuli" next="Finished" type="stimulus" self="Stimuli" title="Stimuli">
-        <loadStimulus eventTag="Stimuli" randomise="true" repeatRandomWindow="20" maxStimuli="1000" repeatCount="2">
+        <loadStimulus eventTag="Stimuli" randomise="true" repeatRandomWindow="20" maxStimuli="1000" repeatCount="4">
             <hasMoreStimulus>
                 <clearPage/>
                 <centrePage/>
@@ -58,14 +59,16 @@
                 <generateCompletionCode/>
                 <addPadding/>
                 <htmlText featureText="Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop."/>
-                <addPadding/>
-                <eraseUsersDataButton featureText="Opnieuw beginnen"/>
             </onSuccess>
             <onError>
                 <plainText featureText="Could not contact the server, please check your internet connection and try again."/>
                 <targetButton featureText="Retry" target="Finished"/>
             </onError>
         </sendAllData>
+    </presenter>
+    <presenter displayOrder="7" menuLabel="Over" type="debug" self="Over" title="Over">
+        <versionData/>
+        <eraseLocalStorageButton/>
     </presenter>
     <stimuli>
         <stimulus audioPath="tgt_5_1100Hz_100ms" identifier="999:tgt_5_1100Hz_100ms.wav:bas,baas" pauseMs="0" ratingLabels="bas,baas">

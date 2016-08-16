@@ -29,8 +29,16 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
  */
 public class WizardAboutScreen extends AbstractWizardScreen {
 
-    public WizardAboutScreen() {
+    private final boolean showDebug;
+
+    public WizardAboutScreen(boolean showDebug) {
         super("Debug Screen", "Debug Screen", "DebugScreen");
+        this.showDebug = showDebug;
+    }
+
+    public WizardAboutScreen(String screenTitle, boolean showDebug) {
+        super(screenTitle, screenTitle, screenTitle);
+        this.showDebug = showDebug;
     }
 
     @Override
@@ -39,7 +47,9 @@ public class WizardAboutScreen extends AbstractWizardScreen {
         presenterScreen.setPresenterType(PresenterType.debug);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.versionData, null));
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.eraseLocalStorageButton, null));
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.localStorageData, null));
+        if (showDebug) {
+            presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.localStorageData, null));
+        }
         experiment.getPresenterScreen().add(presenterScreen);
         return presenterScreen;
     }

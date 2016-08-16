@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experimentdesigner.util;
 import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAudioTestScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
@@ -337,6 +338,7 @@ public class HRPretest {
                 "Finished",
                 "Could not contact the server, please check your internet connection and try again.", "Retry");
         wizardData.addScreen(completionScreen);
+        wizardData.addScreen(new WizardAboutScreen("Over", false));
 
         wizardEditUserScreen.setNextWizardScreen(agreementScreen);
         agreementScreen.setNextWizardScreen(wizardTextScreen1);

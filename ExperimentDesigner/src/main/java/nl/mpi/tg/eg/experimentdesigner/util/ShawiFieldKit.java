@@ -78,7 +78,7 @@ public class ShawiFieldKit {
         final WizardSelectUserScreen wizardSelectUserScreen = new WizardSelectUserScreen();
         final WizardEditUserScreen editUserPresenter = new WizardEditUserScreen("Edit User", "Edit User", null, null, "Save and continue", null, null, null, false, "Could not contact the server, please check your internet connection and try again.");
         editUserPresenter.setCustomFields(new String[]{"workerId:Speaker name *:.'{'3,'}':Please enter at least three letters."});
-        final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen();
+        final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen(true);
         final WizardKinshipScreen kinshipPresenter = addKinshipScreen(experiment, autoMenuPresenter, null, 16, obfuscateScreenNames);
         welcomePresenter.setInstructionsScreen(instructionsPresenter);
         welcomePresenter.setProgramWizardScreen(welcomeMenuPresenter);
