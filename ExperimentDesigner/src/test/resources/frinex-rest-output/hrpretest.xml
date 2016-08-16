@@ -66,7 +66,7 @@
             </onError>
         </sendAllData>
     </presenter>
-    <presenter displayOrder="7" menuLabel="Over" type="debug" self="Over" title="Over">
+    <presenter back="Edit_User" displayOrder="7" menuLabel="Over" type="debug" self="Over" title="Over">
         <versionData/>
         <eraseLocalStorageButton/>
     </presenter>
