@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,17 +35,16 @@ import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Entity
-
 public class WizardScreenData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @OneToOne(targetEntity = AbstractWizardScreen.class, cascade = CascadeType.ALL)
-    private WizardScreen backWizardScreen = null;
-    @OneToOne(targetEntity = AbstractWizardScreen.class, cascade = CascadeType.ALL)
-    private WizardScreen nextWizardScreen = null;
+    @OneToOne(targetEntity = WizardScreenData.class, cascade = CascadeType.ALL)
+    private WizardScreenData backWizardScreenData = null;
+    @OneToOne(targetEntity = WizardScreenData.class, cascade = CascadeType.ALL)
+    private WizardScreenData nextWizardScreenData = null;
     @Size(max = 3500)
     private String screenText1 = null;
     private String screenText2 = null;
@@ -69,7 +69,7 @@ public class WizardScreenData {
     private Boolean generateCompletionCode = null;
     private Boolean allowUserRestart = null;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Metadata> metadataFields = null;
 
     public long getId() {
@@ -80,20 +80,20 @@ public class WizardScreenData {
         this.id = id;
     }
 
-    public WizardScreen getBackWizardScreen() {
-        return backWizardScreen;
+    public WizardScreenData getBackWizardScreenData() {
+        return backWizardScreenData;
     }
 
-    public void setBackWizardScreen(WizardScreen backWizardScreen) {
-        this.backWizardScreen = backWizardScreen;
+    public void setBackWizardScreenData(WizardScreenData backWizardScreenData) {
+        this.backWizardScreenData = backWizardScreenData;
     }
 
-    public WizardScreen getNextWizardScreen() {
-        return nextWizardScreen;
+    public WizardScreenData getNextWizardScreenData() {
+        return nextWizardScreenData;
     }
 
-    public void setNextWizardScreen(WizardScreen nextWizardScreen) {
-        this.nextWizardScreen = nextWizardScreen;
+    public void setNextWizardScreenData(WizardScreenData nextWizardScreenData) {
+        this.nextWizardScreenData = nextWizardScreenData;
     }
 
     public String getScreenText1() {
