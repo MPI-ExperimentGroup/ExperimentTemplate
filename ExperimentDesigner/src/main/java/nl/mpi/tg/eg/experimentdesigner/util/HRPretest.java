@@ -44,6 +44,11 @@ public class HRPretest {
     // done: remove the restart button
 
     private final WizardController wizardController = new WizardController();
+
+    protected String getExperimentName() {
+        return "HRPretest";
+    }
+
     final String agreementScreenText = "Alvast bedankt voor uw interesse in dit online-experiment! Gedetailleerde instructies over de taak worden op de volgende pagina gegeven. <br/>"
             + "<br/>"
             + "Voordat u begint, dient u eerst te bevestigen dat u toestemt met deelname aan dit experiment. Let erop dat we uw antwoorden opslaan voor latere analyse. We gebruiken de resultaten alleen voor onderzoeksdoeleinden, en zullen ze beschrijven in gespecialiseerde tijdschriften of wellicht in kranten of op onze website. Echter, we zullen de resultaten NOOIT rapporteren op zo'n manier dat u zou kunnen worden geïdentificeerd. <br/>"
@@ -67,19 +72,22 @@ public class HRPretest {
             + "<br/>"
             + "<br/>"
             + "[Druk pas op VOLGENDE als de geluidsinstellingen goed zijn...]";
-    final String informationScreenText2 = "Dit online experiment is een luisterexperiment. Je krijgt telkens een woord te horen dat ofwel een <b>a-klinker</b> bevat (bijv. dan) ofwel een <b>aa-klinker</b> bevat (bijv. Daan). Jouw taak is om aan te geven welk woord je hoort.<br/>"
-            + "<br/>"
-            + "Bijvoorbeeld:<br/>"
-            + "Je hoort het woord [bas] en daarna verschijnen er twee namen op het scherm:<br/>"
-            + "links staat “bas” en rechts staat “baas”.<br/>"
-            + "Jouw taak is dan om links op “bas” te klikken.<br/>"
-            + "<br/>"
-            + "Er zijn ongeveer 800 woorden in dit experiment. Een normale sessie duurt daarom ongeveer 30 minuten. Bovenaan elk scherm staat aangegeven hoe ver je in het experiment bent.<br/>"
-            + "<br/>"
-            + "Let op: je kunt het experiment NIET pauzeren, onderbreken, of later weer hervatten. Doe dit experiment daarom ALLEEN als je ook echt de tijd hebt ervoor. Voer het experiment volledig en serieus uit.<br/>"
-            + "<br/>"
-            + "Als het experiment helder is en je klaar bent om te beginnen, druk dan op VOLGENDE.<br/>"
-            + "Het experiment start dan METEEN!";
+
+    protected String informationScreenText2() {
+        return "Dit online experiment is een luisterexperiment. Je krijgt telkens een woord te horen dat ofwel een <b>a-klinker</b> bevat (bijv. dan) ofwel een <b>aa-klinker</b> bevat (bijv. Daan). Jouw taak is om aan te geven welk woord je hoort.<br/>"
+                + "<br/>"
+                + "Bijvoorbeeld:<br/>"
+                + "Je hoort het woord [bas] en daarna verschijnen er twee namen op het scherm:<br/>"
+                + "links staat “bas” en rechts staat “baas”.<br/>"
+                + "Jouw taak is dan om links op “bas” te klikken.<br/>"
+                + "<br/>"
+                + "Er zijn ongeveer 800 woorden in dit experiment. Een normale sessie duurt daarom ongeveer 30 minuten. Bovenaan elk scherm staat aangegeven hoe ver je in het experiment bent.<br/>"
+                + "<br/>"
+                + "Let op: je kunt het experiment NIET pauzeren, onderbreken, of later weer hervatten. Doe dit experiment daarom ALLEEN als je ook echt de tijd hebt ervoor. Voer het experiment volledig en serieus uit.<br/>"
+                + "<br/>"
+                + "Als het experiment helder is en je klaar bent om te beginnen, druk dan op VOLGENDE.<br/>"
+                + "Het experiment start dan METEEN!";
+    }
     final String completionScreenText1 = "Dit is het einde van het experiment.<br/>"
             + "<br/>"
             + "<br/>"
@@ -298,11 +306,11 @@ public class HRPretest {
 
     public WizardData getWizardData() {
         WizardData wizardData = new WizardData();
-        wizardData.setAppName("HRPretest");
+        wizardData.setAppName(getExperimentName());
         wizardData.setShowMenuBar(false);
         wizardData.setTextFontSize(22);
         wizardData.setObfuscateScreenNames(false);
-        WizardTextScreen wizardTextScreen2 = new WizardTextScreen("InformationScreen1", informationScreenText2,
+        WizardTextScreen wizardTextScreen2 = new WizardTextScreen("InformationScreen1", informationScreenText2(),
                 "volgende [ spatiebalk ]"
         );
         WizardAudioTestScreen wizardTextScreen1 = new WizardAudioTestScreen("AudioTest", informationScreenText1, "volgende [ spatiebalk ]", "welkom");

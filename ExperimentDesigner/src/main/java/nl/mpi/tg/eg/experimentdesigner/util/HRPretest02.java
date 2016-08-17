@@ -24,6 +24,28 @@ package nl.mpi.tg.eg.experimentdesigner.util;
 public class HRPretest02 extends HRPretest {
 
     @Override
+    protected String getExperimentName() {
+        return "HRPretest02";
+    }
+
+    @Override
+    protected String informationScreenText2() {
+        return "Dit online experiment is een luisterexperiment. Je krijgt telkens een woord te horen dat ofwel een <b>i-klinker</b> bevat (bijv. dier) ofwel een <b>uu-klinker</b> bevat (bijv. duur). Jouw taak is om aan te geven welk woord je hoort.<br/>"
+                + "<br/>"
+                + "Bijvoorbeeld:<br/>"
+                + "Je hoort het woord [dier] en daarna verschijnen er twee namen op het scherm:<br/>"
+                + "links staat “dier” en rechts staat “duur”.<br/>"
+                + "Jouw taak is dan om links op “dier” te klikken.<br/>"
+                + "<br/>"
+                + "Er zijn ongeveer 750 woorden in dit experiment. Een normale sessie duurt daarom ongeveer 30 minuten. Bovenaan elk scherm staat aangegeven hoe ver je in het experiment bent.<br/>"
+                + "<br/>"
+                + "Let op: je kunt het experiment NIET pauzeren, onderbreken, of later weer hervatten. Doe dit experiment daarom ALLEEN als je ook echt de tijd hebt ervoor. Voer het experiment volledig en serieus uit.<br/>"
+                + "<br/>"
+                + "Als het experiment helder is en je klaar bent om te beginnen, druk dan op VOLGENDE.<br/>"
+                + "Het experiment start dan METEEN!";
+    }
+
+    @Override
     protected int repeatCount() {
         return 3;
     }
