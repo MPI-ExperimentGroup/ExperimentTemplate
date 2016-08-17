@@ -23,11 +23,14 @@ import nl.mpi.tg.eg.experimentdesigner.dao.MetadataRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterFeatureRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterScreenRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PublishEventRepository;
+import nl.mpi.tg.eg.experimentdesigner.dao.WizardRepository;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.util.DefaultExperiments;
 import nl.mpi.tg.eg.experimentdesigner.util.FactOrFiction;
 import nl.mpi.tg.eg.experimentdesigner.util.HRExperiment01;
+import nl.mpi.tg.eg.experimentdesigner.util.HRPretest;
+import nl.mpi.tg.eg.experimentdesigner.util.HRPretest02;
 import nl.mpi.tg.eg.experimentdesigner.util.JenaFieldKit;
 import nl.mpi.tg.eg.experimentdesigner.util.NblExperiment01;
 import nl.mpi.tg.eg.experimentdesigner.util.Sara01;
@@ -59,6 +62,8 @@ public class ExperimentController {
     PresenterFeatureRepository presenterFeatureRepository;
     @Autowired
     MetadataRepository metadataRepository;
+    @Autowired
+    WizardRepository wizardRepository;
 
     @RequestMapping("/experiments")
     public String designView(Model model, HttpServletRequest request) {
@@ -98,10 +103,10 @@ public class ExperimentController {
         if (templateName != null) {
             switch (templateName) {
                 case "Sentveri_exp3":
-//                wizardData = new Sentveri_exp3().getWizardData();
+//                    wizardData = new Sentveri_exp3().getWizardData();
                     break;
                 case "Dobes Annotator":
-//                wizardData = new Dobes().getWizardData();
+//                    wizardData = new Dobes().getWizardData();
                     break;
                 case "All Options":
                     break;
@@ -115,10 +120,10 @@ public class ExperimentController {
                     wizardData = new Sara01().getWizardData();
                     break;
                 case "Leeservaring":
-//            wizardData = new FactOrFiction().getExperiment()
+//                    wizardData = new FactOrFiction().getWizardData();
                     break;
                 case "SynQuiz2":
-//                wizardData = new SynQuiz2().getWizardData();
+                    wizardData = new SynQuiz2().getWizardData();
                     break;
                 case "Zinnen Beoordelen":
                     wizardData = new NblExperiment01().getWizardData();
@@ -126,8 +131,15 @@ public class ExperimentController {
                 case "VideoImageExample":
                     wizardData = new HRExperiment01().getWizardData();
                     break;
+                case "HRPretest":
+                    wizardData = new HRPretest().getWizardData();
+                    break;
+                case "HRPretest02":
+                    wizardData = new HRPretest02().getWizardData();
+                    break;
             }
         }
+        wizardRepository.save(wizardData);
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", "wizard");
         model.addAttribute("wizardData", wizardData);
@@ -141,6 +153,8 @@ public class ExperimentController {
             "Leeservaring",
             "SynQuiz2",
             "VideoImageExample",
+            "HRPretest02",
+            "HRPretest",
             "Zinnen Beoordelen"});
         return "design";
     }
