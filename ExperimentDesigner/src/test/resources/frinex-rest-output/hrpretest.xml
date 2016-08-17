@@ -57,8 +57,6 @@
                 <htmlText featureText="Dit is het einde van het experiment.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Bedankt voor je deelname!"/>
                 <addPadding/>
                 <generateCompletionCode/>
-                <addPadding/>
-                <htmlText featureText="Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop."/>
             </onSuccess>
             <onError>
                 <plainText featureText="Could not contact the server, please check your internet connection and try again."/>
