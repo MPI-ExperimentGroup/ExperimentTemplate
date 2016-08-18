@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experiment.client.service;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus.Tag;
 import nl.mpi.tg.eg.experiment.client.model.Stimulus;
@@ -155,5 +156,78 @@ public class StimulusProviderTest {
             }
         }
         return seenString;
+    }
+
+    /**
+     * Test of getSubset for HR stimuli, of class StimulusProvider.
+     */
+    @Test
+    public void testGetSubset_HRStimuli01() {
+        // unit test for HR stimuli to check that each stimuli is shown 3 times and all stimuli are represented
+        System.out.println("getSubset HR stimuli");
+        StimulusProvider instance = new StimulusProvider();
+        instance.getSubset(Arrays.asList(new Tag[]{Tag.tag_HRPretest01}), 1000, true, 3, 20, "", -1);
+        final int expectedStimuliCount = 196 * 3;
+        assertEquals(expectedStimuliCount, instance.getTotalStimuli());
+    }
+
+    /**
+     * Test of uniqueStimuli in getSubset for HR stimuli, of class
+     * StimulusProvider.
+     */
+    @Test
+    public void testGetSubset_UniqueStimuli() {
+        // unit test for HR stimuli to check that each stimuli is shown 3 times and all stimuli are represented
+        System.out.println("getSubset uniqueStimuli");
+        StimulusProvider instance = new StimulusProvider();
+        instance.getSubset(Arrays.asList(new Tag[]{Tag.tag_HRPretest01}), 1000, true, 2, 20, "", -1);
+        final int expectedStimuliCount = 196;
+        HashSet<Stimulus> stimulusSet = new HashSet();
+        while (instance.hasNextStimulus()) {
+            instance.nextStimulus();
+            stimulusSet.add(instance.getCurrentStimulus());
+        }
+        assertEquals(expectedStimuliCount, stimulusSet.size());
+    }
+
+    /**
+     * Test of getSubset for HR stimuli, of class StimulusProvider.
+     */
+    @Test
+    public void testGetSubset_HRStimuli02() {
+        // unit test for HR stimuli to check that each stimuli is shown 3 times and all stimuli are represented
+        System.out.println("getSubset HR stimuli");
+        StimulusProvider instance = new StimulusProvider();
+        instance.getSubset(Arrays.asList(new Tag[]{Tag.tag_HRPretest02}), 1000, true, 3, 20, "", -1);
+        final int expectedStimuliCount = 256 * 3;
+        assertEquals(expectedStimuliCount, instance.getTotalStimuli());
+    }
+
+    /**
+     * Test of getSubset for reload events.
+     */
+    @Test
+    public void testGetSubset_Reload() {
+        System.out.println("getSubset Reload");
+        StimulusProvider instance1 = new StimulusProvider();
+        instance1.getSubset(Arrays.asList(new Tag[]{Tag.tag_HRPretest02}), 1000, true, 3, 20, "", -1);
+        int seenStimuliCounter = 0;
+        for (int counter = 0; counter < 25; counter++) {
+            instance1.nextStimulus();
+            seenStimuliCounter++;
+        }
+        final int currentStimulusIndex = instance1.getCurrentStimulusIndex();
+        final String loadedStimulusString = instance1.getLoadedStimulusString();
+        System.out.println("loadedStimulusString: " + loadedStimulusString);
+        System.out.println("currentStimulusIndex: " + currentStimulusIndex);
+        StimulusProvider instance2 = new StimulusProvider();
+        instance2.getSubset(Arrays.asList(new Tag[]{Tag.tag_HRPretest02}), 1000, true, 3, 20, loadedStimulusString, currentStimulusIndex);
+        while (instance2.hasNextStimulus()) {
+            instance2.nextStimulus();
+            seenStimuliCounter++;
+        }
+        final int expectedStimuliCount = 256 * 3;
+        assertEquals(expectedStimuliCount, seenStimuliCounter);
+        assertEquals(expectedStimuliCount, instance2.getTotalStimuli());
     }
 }

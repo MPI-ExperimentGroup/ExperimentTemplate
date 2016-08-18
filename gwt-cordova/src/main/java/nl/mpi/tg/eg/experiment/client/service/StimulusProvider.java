@@ -130,6 +130,7 @@ public class StimulusProvider {
         List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
         this.currentStimuliIndex = currentStimuliIndex;
         if (!storedStimulusList.isEmpty()) {
+            // todo: also load the list for other getSubset related methods
             loadStoredStimulusList(storedStimulusList);
         } else {
             getSubset(selectionTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, storedStimulusList, stimulusListCopy);
@@ -146,7 +147,9 @@ public class StimulusProvider {
                     storedStimulusList = storedStimulusList.substring(stimulus.getUniqueId().length());
                 }
             }
-            storedStimulusList = storedStimulusList.substring(1); // make sure the following - (or any stray chars) are removed  
+            if (!storedStimulusList.isEmpty()) {
+                storedStimulusList = storedStimulusList.substring(1); // make sure the following - (or any stray chars) are removed  
+            }
         }
     }
 
@@ -171,10 +174,13 @@ public class StimulusProvider {
             // todo: perhaps also do this when the repeatRandomWindow is bigger than the stimulusSubsetArray but just reduce the repeatRandomWindow accordingly
             for (int shuffleIndex = repeatRandomWindow; shuffleIndex < stimulusSubsetArray.size(); shuffleIndex++) {
                 // shuffle all stimuli in a moving window of 'repeatRandomWindow' so that the repeats are still sparated
-                stimulusSubsetArray.set(shuffleIndex - new Random().nextInt(repeatRandomWindow), stimulusSubsetArray.get(shuffleIndex));
+                final int randomInt = new Random().nextInt(repeatRandomWindow);
+                final int destinationIndex = shuffleIndex - randomInt;
+                stimulusSubsetArray.add(destinationIndex, stimulusSubsetArray.remove(shuffleIndex));
+//                System.out.println("length: " + stimulusSubsetArray.size());
+//                System.out.println("unique count:" + new HashSet<Stimulus>(stimulusSubsetArray).size());
             }
         }
-//        totalStimuli = stimulusSubsetArray.size();
     }
 
     public void getSubset(final int maxWordUse, final String storedStimulusList, final int currentStimuliIndex, final List<Tag> speakerTags, final List<Tag> wordTags, final int maxSpeakerWordCount) {
