@@ -19,8 +19,6 @@ package nl.mpi.tg.eg.frinex.rest;
 
 import java.util.List;
 import nl.mpi.tg.eg.frinex.model.TagData;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
@@ -33,18 +31,14 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(collectionResourceRel = "tagevents", path = "tagevents")
 public interface TagRepository extends PagingAndSortingRepository<TagData, Long> {
 
-    @Override 
-    public Page<TagData> findAll(Pageable pageable);
-
     @Query("select distinct new TagData(userId, eventTag, tagValue, eventMs, tagDate) from TagData order by tagDate asc")
     List<TagData> findAllDistinctRecords();
-
-    TagData findById(@Param("id") long id);
 
     @Query("select distinct new TagData(userId, eventTag, tagValue, eventMs, tagDate) from TagData where userId = :userId order by tagDate asc, eventTag desc")
     List<TagData> findDistinctUserIdEventTagTagValueEventMsTageDateByUserIdOrderByTagDateAsc(@Param("userId") String userId);
 
+    @Query("select distinct new TagData(userId, eventTag, tagValue, eventMs, tagDate) from TagData where userId = :userId and eventTag = :eventTag order by tagDate asc") 
     List<TagData> findByUserIdAndEventTagOrderByTagDateAsc(@Param("userId") String userId, @Param("eventTag") String eventTag);
 
-    int countByUserIdAndTagValue(@Param("userId") String userId, @Param("tagValue") String tagValue);
+    int countDistinctTagDateByUserIdAndTagValue(@Param("userId") String userId, @Param("tagValue") String tagValue);
 }

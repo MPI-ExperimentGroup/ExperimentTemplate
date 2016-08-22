@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.frinex.rest;
 
 import java.util.List;
 import nl.mpi.tg.eg.frinex.model.Participant;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -30,11 +31,14 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(collectionResourceRel = "participants", path = "participants")
 public interface ParticipantRepository extends PagingAndSortingRepository<Participant, Long> {
 
-    Participant findById(@Param("id") long id);
-
+//    Participant findById(@Param("id") long id);
     List<Participant> findByUserId(@Param("userId") String userId);
 
+//    @Query("select distinct new Participant() from Participant order by submitDate desc")
     List<Participant> findByOrderBySubmitDateDesc();
 
-    int countByWorkerId(@Param("workerId") String workerId);
+    @Query("select distinct userId from Participant")
+    List<String> findDistinctUserIdByOrderBySubmitDateDesc();
+
+//    int countByWorkerId(@Param("workerId") String workerId);
 }

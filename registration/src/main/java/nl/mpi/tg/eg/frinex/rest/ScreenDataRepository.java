@@ -31,12 +31,12 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(collectionResourceRel = "screenviews", path = "screenviews")
 public interface ScreenDataRepository extends PagingAndSortingRepository<ScreenData, Long> {
 
-    ScreenData findById(@Param("id") long id);
-
     @Query("select distinct new ScreenData(userId, screenName, viewDate) from ScreenData order by viewDate asc")
     List<ScreenData> findAllDistinctRecords();
 
+    @Query("select distinct new ScreenData(userId, screenName, viewDate) from ScreenData where userId = :userId order by viewDate asc")
     List<ScreenData> findByUserIdOrderByViewDateAsc(@Param("userId") String userId);
 
-    int countByUserIdAndScreenName(@Param("userId") String userId, @Param("screenName") String screenName);
+//    @Query("select count distinct new ScreenData(userId, screenName, viewDate) from ScreenData where userId = :userId and screenName = :screenName")
+    int countDistinctViewDateByUserIdAndScreenName(@Param("userId") String userId, @Param("screenName") String screenName);
 }

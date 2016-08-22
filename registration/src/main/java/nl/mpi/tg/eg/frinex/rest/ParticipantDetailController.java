@@ -45,13 +45,13 @@ public class ParticipantDetailController {
     public String participantDetail(@RequestParam(value = "id", required = true) String id, Model model) {
         model.addAttribute("participantData", this.participantRepository.findByUserId(id));
         model.addAttribute("participantScreenData", this.screenDataRepository.findByUserIdOrderByViewDateAsc(id));
-        model.addAttribute("countOfBrowserWindowClosed", this.screenDataRepository.countByUserIdAndScreenName(id, BROWSER_WINDOW_CLOSED));
+        model.addAttribute("countOfBrowserWindowClosed", this.screenDataRepository.countDistinctViewDateByUserIdAndScreenName(id, BROWSER_WINDOW_CLOSED));
         model.addAttribute("participantTagPairData", this.tagPairRepository.findByUserIdOrderByTagDateAsc(id));
         model.addAttribute("participantSubsetStimulus", this.tagPairRepository.findByUserIdAndEventTagOrderByTagDateAsc(id, SUBSET_STIMULUS));
         model.addAttribute("participantCompletionCode", this.tagRepository.findByUserIdAndEventTagOrderByTagDateAsc(id, COMPLETION_CODE));
-        model.addAttribute("participantAudioTestCount", this.tagRepository.countByUserIdAndTagValue(id, CARLY_BLUE_CHAIROGG));
+        model.addAttribute("participantAudioTestCount", this.tagRepository.countDistinctTagDateByUserIdAndTagValue(id, CARLY_BLUE_CHAIROGG));
         model.addAttribute("participantNextButtonMsData", this.timeStampRepository.findByUserIdAndEventTagOrderByTagDateAsc(id, STIMULUS1_NEXT));
-        model.addAttribute("participantTagData", this.tagRepository.findByUserIdOrderByTagDateAsc(id));
+        model.addAttribute("participantTagData", this.tagRepository.findDistinctUserIdEventTagTagValueEventMsTageDateByUserIdOrderByTagDateAsc(id));
         model.addAttribute("participantTimeStampData", this.timeStampRepository.findByUserIdOrderByTagDateAsc(id));
         return "participantdetail";
     }

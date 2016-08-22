@@ -31,12 +31,12 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(collectionResourceRel = "timestamps", path = "timestamps")
 public interface TimeStampRepository extends PagingAndSortingRepository<TimeStamp, Long> {
 
-    TimeStamp findById(@Param("id") long id);
-
     @Query("select distinct new TimeStamp(userId, eventTag, eventMs, tagDate) from TimeStamp order by tagDate asc")
     List<TimeStamp> findAllDistinctRecords();
 
+    @Query("select distinct new TimeStamp(userId, eventTag, eventMs, tagDate) from TimeStamp where userId = :userId order by tagDate asc")
     List<TimeStamp> findByUserIdOrderByTagDateAsc(@Param("userId") String userId);
 
+    @Query("select distinct new TimeStamp(userId, eventTag, eventMs, tagDate) from TimeStamp where userId = :userId and eventTag = :eventTag order by tagDate asc")
     List<TimeStamp> findByUserIdAndEventTagOrderByTagDateAsc(@Param("userId") String userId, @Param("eventTag") String eventTag);
 }
