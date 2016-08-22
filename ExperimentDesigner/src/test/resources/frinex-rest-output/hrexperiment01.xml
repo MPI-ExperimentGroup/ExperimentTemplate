@@ -30,10 +30,11 @@
         </saveMetadataButton>
     </presenter>
     <presenter displayOrder="4" menuLabel="VideoAudioOption" next="Finished" type="stimulus" self="VideoAudioOption" title="VideoAudioOption">
-        <loadStimulus eventTag="VideoAudioOption" randomise="true" maxStimuli="1000" repeatCount="1">
+        <loadStimulus eventTag="VideoAudioOption" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
                 <centrePage/>
+                <showStimulusProgress/>
                 <stimulusCodeVideo msToNext="1000" maxHeight="80" codeFormat="&lt;code&gt;" percentOfPage="0" maxWidth="80">
                     <clearPage/>
                     <centrePage/>

@@ -40,7 +40,7 @@
     </presenter>
     <presenter displayOrder="5" menuLabel="StimulusScreenP" next="StimulusScreenE" type="stimulus" self="StimulusScreenP" title="StimulusScreenP">
         <centrePage/>
-        <loadStimulus eventTag="StimulusScreenP" randomise="true" maxStimuli="1000" repeatCount="1">
+        <loadStimulus eventTag="StimulusScreenP" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusImage msToNext="1000" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <actionButton featureText="volgende [ spatiebalk ]" eventTag="volgende [ spatiebalk ]" hotKey="SPACE">
@@ -73,7 +73,7 @@
     </presenter>
     <presenter displayOrder="6" menuLabel="StimulusScreenE" next="Finished" type="stimulus" self="StimulusScreenE" title="StimulusScreenE">
         <centrePage/>
-        <loadStimulus eventTag="StimulusScreenE" randomise="true" maxStimuli="1000" repeatCount="1">
+        <loadStimulus eventTag="StimulusScreenE" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusImage msToNext="1000" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <actionButton featureText="volgende [ spatiebalk ]" eventTag="volgende [ spatiebalk ]" hotKey="SPACE">

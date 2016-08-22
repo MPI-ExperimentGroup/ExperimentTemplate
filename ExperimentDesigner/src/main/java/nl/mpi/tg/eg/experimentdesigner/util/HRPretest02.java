@@ -37,7 +37,7 @@ public class HRPretest02 extends HRPretest {
                 + "links staat “dier” en rechts staat “duur”.<br/>"
                 + "Jouw taak is dan om links op “dier” te klikken.<br/>"
                 + "<br/>"
-                + "Er zijn ongeveer 750 woorden in dit experiment. Een normale sessie duurt daarom ongeveer 30 minuten. Bovenaan elk scherm staat aangegeven hoe ver je in het experiment bent.<br/>"
+                + "Er zijn ongeveer 500 woorden in dit experiment. Een normale sessie duurt daarom ongeveer 20 minuten. Bovenaan elk scherm staat aangegeven hoe ver je in het experiment bent.<br/>"
                 + "<br/>"
                 + "Let op: je kunt het experiment NIET pauzeren, onderbreken, of later weer hervatten. Doe dit experiment daarom ALLEEN als je ook echt de tijd hebt ervoor. Voer het experiment volledig en serieus uit.<br/>"
                 + "<br/>"
@@ -47,7 +47,7 @@ public class HRPretest02 extends HRPretest {
 
     @Override
     protected int repeatCount() {
-        return 3;
+        return 2;
     }
 
     @Override

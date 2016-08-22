@@ -29,7 +29,7 @@
         </saveMetadataButton>
     </presenter>
     <presenter displayOrder="3" menuLabel="Introduction" next="StoryPresentation" type="stimulus" self="Introduction" title="Leeservaring 3">
-        <loadStimulus eventTag="Introduction" randomise="true" maxStimuli="1" repeatCount="1">
+        <loadStimulus eventTag="Introduction" randomise="true" repeatRandomWindow="0" maxStimuli="1" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
@@ -51,7 +51,7 @@
         </loadStimulus>
     </presenter>
     <presenter displayOrder="4" menuLabel="StoryPresentation" next="Survey1Instructions" type="stimulus" self="StoryPresentation" title="Leeservaring 4">
-        <loadStimulus eventTag="StoryPresentation" randomise="true" maxStimuli="1" repeatCount="1">
+        <loadStimulus eventTag="StoryPresentation" randomise="true" repeatRandomWindow="0" maxStimuli="1" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
@@ -80,7 +80,7 @@
     </presenter>
     <presenter displayOrder="5" menuLabel="Survey1" next="Survey2Instructions" type="stimulus" self="Survey1" title="Leeservaring 5">
         <centrePage/>
-        <loadStimulus eventTag="Survey1" randomise="true" maxStimuli="1000" repeatCount="1">
+        <loadStimulus eventTag="Survey1" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
@@ -100,7 +100,7 @@
     </presenter>
     <presenter displayOrder="6" menuLabel="Survey2" next="PictureInstructions" type="stimulus" self="Survey2" title="Leeservaring 6">
         <centrePage/>
-        <loadStimulus eventTag="Survey2" randomise="true" maxStimuli="1000" repeatCount="1">
+        <loadStimulus eventTag="Survey2" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
@@ -132,7 +132,7 @@
     </presenter>
     <presenter displayOrder="17" menuLabel="PictureTask" next="ReadingBehaviorInstructions" type="stimulus" self="PictureTask" title="Leeservaring 17">
         <centrePage/>
-        <loadStimulus eventTag="PictureTask" randomise="true" maxStimuli="1000" repeatCount="1">
+        <loadStimulus eventTag="PictureTask" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
@@ -156,7 +156,7 @@
     </presenter>
     <presenter displayOrder="19" menuLabel="ReadingBehavior" next="SubmitData" type="stimulus" self="ReadingBehavior" title="Leeservaring 19">
         <centrePage/>
-        <loadStimulus eventTag="ReadingBehavior" randomise="false" maxStimuli="1000" repeatCount="1">
+        <loadStimulus eventTag="ReadingBehavior" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>

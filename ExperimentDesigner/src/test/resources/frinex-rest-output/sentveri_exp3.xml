@@ -6,7 +6,7 @@
         <field controlledMessage="Please enter a short description of the issue" controlledRegex=".'{'2,'}'" postName="errordescription" preventServerDuplicates="false" registrationField="Please describe the error"/>
     </metadata>
     <presenter displayOrder="1" menuLabel="practice" type="stimulus" self="practiceScreen">
-        <loadAllStimulus eventTag="practice" randomise="false" repeatCount="1">
+        <loadAllStimulus eventTag="practice" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
                 <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="practice/practice_sent/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
@@ -74,7 +74,7 @@
         </loadAllStimulus>
     </presenter>
     <presenter displayOrder="2" menuLabel="list1_a" type="stimulus" self="list1_aScreen">
-        <loadAllStimulus eventTag="list1_a" randomise="false" repeatCount="1">
+        <loadAllStimulus eventTag="list1_a" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
                 <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list1_a/list1_a_sent/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
@@ -142,7 +142,7 @@
         </loadAllStimulus>
     </presenter>
     <presenter displayOrder="3" menuLabel="list2_a" type="stimulus" self="list2_aScreen">
-        <loadAllStimulus eventTag="list2_a" randomise="false" repeatCount="1">
+        <loadAllStimulus eventTag="list2_a" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
                 <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list2_a/list2_a_sent/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
@@ -210,7 +210,7 @@
         </loadAllStimulus>
     </presenter>
     <presenter displayOrder="4" menuLabel="list3_a" type="stimulus" self="list3_aScreen">
-        <loadAllStimulus eventTag="list3_a" randomise="false" repeatCount="1">
+        <loadAllStimulus eventTag="list3_a" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
                 <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list3_a/list3_a_sent/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
@@ -278,7 +278,7 @@
         </loadAllStimulus>
     </presenter>
     <presenter displayOrder="5" menuLabel="list4_a" type="stimulus" self="list4_aScreen">
-        <loadAllStimulus eventTag="list4_a" randomise="false" repeatCount="1">
+        <loadAllStimulus eventTag="list4_a" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
                 <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list4_a/list4_a_sent/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
@@ -346,7 +346,7 @@
         </loadAllStimulus>
     </presenter>
     <presenter displayOrder="6" menuLabel="list1_b" type="stimulus" self="list1_bScreen">
-        <loadAllStimulus eventTag="list1_b" randomise="false" repeatCount="1">
+        <loadAllStimulus eventTag="list1_b" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
                 <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list1_b/list1_b_sent/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
@@ -414,7 +414,7 @@
         </loadAllStimulus>
     </presenter>
     <presenter displayOrder="7" menuLabel="list2_b" type="stimulus" self="list2_bScreen">
-        <loadAllStimulus eventTag="list2_b" randomise="false" repeatCount="1">
+        <loadAllStimulus eventTag="list2_b" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
                 <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list2_b/list2_b_sent/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
@@ -482,7 +482,7 @@
         </loadAllStimulus>
     </presenter>
     <presenter displayOrder="8" menuLabel="list3_b" type="stimulus" self="list3_bScreen">
-        <loadAllStimulus eventTag="list3_b" randomise="false" repeatCount="1">
+        <loadAllStimulus eventTag="list3_b" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
                 <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list3_b/list3_b_sent/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
@@ -550,7 +550,7 @@
         </loadAllStimulus>
     </presenter>
     <presenter displayOrder="9" menuLabel="list4_b" type="stimulus" self="list4_bScreen">
-        <loadAllStimulus eventTag="list4_b" randomise="false" repeatCount="1">
+        <loadAllStimulus eventTag="list4_b" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
                 <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list4_b/list4_b_sent/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
@@ -621,7 +621,7 @@
         <allMenuItems/>
     </presenter>
     <presenter displayOrder="10" menuLabel="list1_c" type="stimulus" self="list1_cScreen">
-        <loadAllStimulus eventTag="list1_c" randomise="false" repeatCount="1">
+        <loadAllStimulus eventTag="list1_c" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
                 <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list1_c/list1_c_sent/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
@@ -689,7 +689,7 @@
         </loadAllStimulus>
     </presenter>
     <presenter displayOrder="11" menuLabel="list2_c" type="stimulus" self="list2_cScreen">
-        <loadAllStimulus eventTag="list2_c" randomise="false" repeatCount="1">
+        <loadAllStimulus eventTag="list2_c" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
                 <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list2_c/list2_c_sent/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
@@ -757,7 +757,7 @@
         </loadAllStimulus>
     </presenter>
     <presenter displayOrder="12" menuLabel="list3_c" type="stimulus" self="list3_cScreen">
-        <loadAllStimulus eventTag="list3_c" randomise="false" repeatCount="1">
+        <loadAllStimulus eventTag="list3_c" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
                 <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list3_c/list3_c_sent/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
@@ -825,7 +825,7 @@
         </loadAllStimulus>
     </presenter>
     <presenter displayOrder="13" menuLabel="list4_c" type="stimulus" self="list4_cScreen">
-        <loadAllStimulus eventTag="list4_c" randomise="false" repeatCount="1">
+        <loadAllStimulus eventTag="list4_c" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
                 <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list4_c/list4_c_sent/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
