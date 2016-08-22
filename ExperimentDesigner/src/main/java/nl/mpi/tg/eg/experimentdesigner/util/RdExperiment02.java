@@ -33,8 +33,6 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
  */
 public class RdExperiment02 {
 
-    // todo: send url for setting group for participant
-    // todo: text area font should be the same as the experiemnt font
     private final WizardController wizardController = new WizardController();
     final String agreementScreenText = "Toestemmingsverklaring voor deelname aan het onderzoek:<br/>"
             + "<br/>"
