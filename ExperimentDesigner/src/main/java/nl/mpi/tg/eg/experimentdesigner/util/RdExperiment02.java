@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experimentdesigner.util;
 import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
@@ -47,7 +48,7 @@ public class RdExperiment02 {
             + "Alvast ontzettend bedankt voor uw deelname aan het onderzoek. U gaat meedoen aan een onderzoek naar het afmaken van zinnen. Voordat u gaat beginnen is het belangrijk dat u kennis neemt van de procedure die in het onderzoek wordt gevolgd. Leest u daarom onderstaande instructies zorgvuldig door. <br/>"
             + "<br/>"
             + "<b>Doel van het onderzoek</b><br/>"
-            + "U gaat meedoen aan een onderzoek waarin de invloed van verwachtingen over het einde van een zin op het invullen van een zelfstandig naamwoord (bijv.: '<span style=\"color:green\">hoofd</span>', '<span style=\"color:green\">paard</span>', '<span style=\"color:green\">voeten</span>', '<span style=\"color:green\">muizen</span>'... ; maar niet: '<span style=\"color:red\">lopen</span>', '<span style=\"color:red\">schieten</span>', '<span style=\"color:red\">mooi</span>', '<span style=\"color:red\">leuk</span>', '<span style=\"color:red\">hij</span>'... ) wordt onderzocht. <br/>"
+            + "U gaat meedoen aan een onderzoek waarin de invloed van verwachtingen over het einde van een zin op het invullen van een zelfstandig naamwoord (<u>bijv</u>.: '<span style=\"color:green\">hoofd</span>', '<span style=\"color:green\">paard</span>', '<span style=\"color:green\">voeten</span>', '<span style=\"color:green\">muizen</span>'... ; <u>maar niet</u>: '<span style=\"color:red\">lopen</span>', '<span style=\"color:red\">schieten</span>', '<span style=\"color:red\">mooi</span>', '<span style=\"color:red\">leuk</span>', '<span style=\"color:red\">hij</span>'... ) wordt onderzocht. <br/>"
             + "<br/>"
             + "<b>Instructies</b><br/>"
             + "In dit onderzoek krijgt u een aantal zinnen te lezen die één voor één op het beeldscherm verschijnen. Deze zinnen zijn niet compleet en missen het laatste woord. Het is uw taak om dit laatste woord in te vullen en zo de zin af te maken. Het is belangrijk om maar één woord in te vullen. U hoeft niet te lang over het woord na te denken; maak de voor u meest intuïtieve keuze. Een voorbeeld zou kunnen zijn:<br/>"
@@ -55,7 +56,7 @@ public class RdExperiment02 {
             + "Om mijn voeten warm te houden loop ik op mijn<br/>"
             + "<br/>"
             + "Mogelijke vervolg-woorden: <span style=\"color:green\">schoenen / handen / vloer / ...</span><br/>"
-            + "Niet mogelijke vervolg-woorden: <span style=\"color:red\">wandelen / goed / gepraat / hij / ...</span><br/>"
+            + "<u>Niet</u> mogelijke vervolg-woorden: <span style=\"color:red\">wandelen / goed / gepraat / hij / ...</span><br/>"
             + "<br/>"
             + "In totaal zal het onderzoek ongeveer 45 minuten duren. Zorg ervoor dat u tijdens het experiment in een rustige omgeving zit, zonder afleiding van bijvoorbeeld uw mobiele telefoon, TV of van andere mensen. Zorg er verder voor dat u het onderzoek in één keer afmaakt. <br/>"
             + "<br/>"
@@ -780,7 +781,7 @@ public class RdExperiment02 {
                 "Einde van het experiment",
                 "Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.", "Probeer opnieuw");
         wizardData.addScreen(completionScreen);
-
+        completionScreen.setScreenTag("completion");
         wizardTextScreen.setNextWizardScreen(wizardEditUserScreen);
         agreementScreen.setNextWizardScreen(wizardTextScreen);
         wizardEditUserScreen.setNextWizardScreen(list1234Screen);
@@ -790,6 +791,9 @@ public class RdExperiment02 {
         wizardTextScreen.setBackWizardScreen(agreementScreen);
 //        list1234Screen.setBackWizardScreen(wizardEditUserScreen);
         //completionScreen.setBackWizardScreen(list1234Screen);
+        final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("Over", false);
+        wizardAboutScreen.setBackWizardScreen(wizardEditUserScreen);
+        wizardData.addScreen(wizardAboutScreen);
 
         return wizardData;
     }
