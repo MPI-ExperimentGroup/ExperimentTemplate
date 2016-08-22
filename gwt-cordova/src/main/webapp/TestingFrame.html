@@ -66,13 +66,15 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             function findAndClick() {
                 document.getElementById("robot_messages").innerHTML = "robot activated at " + new Date().toLocaleTimeString();
 
-
-                var textinput = document.getElementById('testingFrame').contentWindow.document.getElementsByTagName('input');
-                for (var inputIndex = 0; inputIndex < textinput.length; inputIndex++) {
-                    if (textinput[inputIndex].className === "metadataError") {
-                        textinput[inputIndex].value = "0";
-                    } else {
-                        textinput[inputIndex].value = "robot run " + new Date().toLocaleTimeString();
+                var tagArray = ['input', 'textarea'];
+                for (tagInxex in tagArray) {
+                    var textinput = document.getElementById('testingFrame').contentWindow.document.getElementsByTagName(tagArray[tagInxex]);
+                    for (var inputIndex = 0; inputIndex < textinput.length; inputIndex++) {
+                        if (textinput[inputIndex].className === "metadataError") {
+                            textinput[inputIndex].value = "0";
+                        } else {
+                            textinput[inputIndex].value = "robot run " + new Date().toLocaleTimeString();
+                        }
                     }
                 }
 
