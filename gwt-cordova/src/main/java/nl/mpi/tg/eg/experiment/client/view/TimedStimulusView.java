@@ -178,6 +178,7 @@ public class TimedStimulusView extends ComplexView {
         errorLabel.setVisible(false);
         outerPanel.add(errorLabel);
         final TextArea textBox = new TextArea();
+        textBox.setStylePrimaryName("metadataOK");
         outerPanel.add(textBox);
         textBox.setFocus(true);
         return new StimulusFreeText() {
