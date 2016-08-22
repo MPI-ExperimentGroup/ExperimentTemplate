@@ -1,0 +1,3272 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<experiment appNameDisplay="Zinnen afmaken" appNameInternal="zinnen_afmaken" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="true" textFontSize="17">
+    <metadata>
+        <field controlledMessage="." controlledRegex=".*" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
+        <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="firstName" preventServerDuplicates="false" registrationField="Voornaam"/>
+        <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="lastName" preventServerDuplicates="false" registrationField="Achternaam"/>
+        <field controlledMessage="Voer een getal." controlledRegex="[0-9]+" postName="age" preventServerDuplicates="false" registrationField="Leeftijd"/>
+        <field controlledMessage="." controlledRegex="|man|vrouw|anders" postName="gender" preventServerDuplicates="false" registrationField="Geslacht"/>
+        <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_Zinnen_afmaken" preventServerDuplicates="false" registrationField="groupAllocation_Zinnen_afmaken"/>
+    </metadata>
+    <presenter displayOrder="1" menuLabel="Terug" next="Informatie" type="metadata" self="Toestemming" title="Toestemming">
+        <htmlText featureText="Toestemmingsverklaring voor deelname aan het onderzoek:&lt;br/&gt;&lt;br/&gt;Ik stem geheel vrijwillig in met deelname aan dit onderzoek. Ik behoud daarbij het recht deze instemming weer in te trekken zonder dat ik daarvoor een reden hoef op te geven en besef dat ik op elk moment mag stoppen met het experiment. Als mijn onderzoeksresultaten gebruikt zullen worden in wetenschappelijke publicaties, dan wel op een andere manier openbaar worden gemaakt, zal dit volledig geanonimiseerd gebeuren. Mijn persoonsgegevens zullen niet door derden worden ingezien zonder mijn uitdrukkelijke toestemming. &lt;br/&gt;&lt;br/&gt;Als U ermee instemt om door te gaan met dir experiment, klik dan op 'Akkoord' om verder te gaan.&lt;br/&gt;&lt;br/&gt;Als U besluit niet deel te nemen aan het experiment, kunt U de pagina sluiten of naar een andere website gaan."/>
+        <targetButton featureText="Akkoord" target="Informatie"/>
+    </presenter>
+    <presenter back="Toestemming" displayOrder="2" menuLabel="Terug" type="text" self="Informatie" title="Informatie">
+        <htmlText featureText="Geachte deelnemer aan het onderzoek 'Zinnen afmaken',&lt;br/&gt;&lt;br/&gt;Alvast ontzettend bedankt voor uw deelname aan het onderzoek. U gaat meedoen aan een onderzoek naar het afmaken van zinnen. Voordat u gaat beginnen is het belangrijk dat u kennis neemt van de procedure die in het onderzoek wordt gevolgd. Leest u daarom onderstaande instructies zorgvuldig door. &lt;br/&gt;&lt;br/&gt;&lt;b&gt;Doel van het onderzoek&lt;/b&gt;&lt;br/&gt;U gaat meedoen aan een onderzoek waarin de invloed van verwachtingen over het einde van een zin op het invullen van een zelfstandig naamwoord (&lt;u&gt;bijv&lt;/u&gt;.: '&lt;span style=&quot;color:green&quot;&gt;hoofd&lt;/span&gt;', '&lt;span style=&quot;color:green&quot;&gt;paard&lt;/span&gt;', '&lt;span style=&quot;color:green&quot;&gt;voeten&lt;/span&gt;', '&lt;span style=&quot;color:green&quot;&gt;muizen&lt;/span&gt;'... ; &lt;u&gt;maar niet&lt;/u&gt;: '&lt;span style=&quot;color:red&quot;&gt;lopen&lt;/span&gt;', '&lt;span style=&quot;color:red&quot;&gt;schieten&lt;/span&gt;', '&lt;span style=&quot;color:red&quot;&gt;mooi&lt;/span&gt;', '&lt;span style=&quot;color:red&quot;&gt;leuk&lt;/span&gt;', '&lt;span style=&quot;color:red&quot;&gt;hij&lt;/span&gt;'... ) wordt onderzocht. &lt;br/&gt;&lt;br/&gt;&lt;b&gt;Instructies&lt;/b&gt;&lt;br/&gt;In dit onderzoek krijgt u een aantal zinnen te lezen die één voor één op het beeldscherm verschijnen. Deze zinnen zijn niet compleet en missen het laatste woord. Het is uw taak om dit laatste woord in te vullen en zo de zin af te maken. Het is belangrijk om maar één woord in te vullen. U hoeft niet te lang over het woord na te denken; maak de voor u meest intuïtieve keuze. Een voorbeeld zou kunnen zijn:&lt;br/&gt;&lt;br/&gt;Om mijn voeten warm te houden loop ik op mijn&lt;br/&gt;&lt;br/&gt;Mogelijke vervolg-woorden: &lt;span style=&quot;color:green&quot;&gt;schoenen / handen / vloer / ...&lt;/span&gt;&lt;br/&gt;&lt;u&gt;Niet&lt;/u&gt; mogelijke vervolg-woorden: &lt;span style=&quot;color:red&quot;&gt;wandelen / goed / gepraat / hij / ...&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;In totaal zal het onderzoek ongeveer 45 minuten duren. Zorg ervoor dat u tijdens het experiment in een rustige omgeving zit, zonder afleiding van bijvoorbeeld uw mobiele telefoon, TV of van andere mensen. Zorg er verder voor dat u het onderzoek in één keer afmaakt. &lt;br/&gt;&lt;br/&gt;&lt;b&gt;Zo begint u:&lt;/b&gt;&lt;br/&gt;Door te klikken op 'Volgende' gaat u naar de volgende pagina. Voer hier alsublieft uw gegevens in zoals uw voornaam, achternaam, leeftijd en geslacht. Vul voor het proefpersoon ID nummer het nummer in dat u per email van de onderzoeker heeft ontvangen. &lt;br/&gt;&lt;br/&gt;U begint het onderzoek door weer te klikken op 'Volgende'. Iedere zin die u moet afmaken wordt aan de bovenkant van het scherm weergegeven. Onder iedere zin zal een tekstbox verschijnen waar u het woord kunt invullen dat volgens u het best past op de lege plek in de zin. Door te klikken op 'Volgende' gaat u naar de volgende zin. Let op: het is niet mogelijk om naar eerdere zinnen terug te gaan!&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Proefpersonen die niet mee kunnen doen aan het onderzoek&lt;/b&gt;&lt;br/&gt;Het is niet mogelijk om deel te nemen aan dit onderzoek als Nederlands niet uw moedertaal is of wanneer u jonger bent dan 18 jaar of ouder dan 45 jaar. &lt;br/&gt;&lt;br/&gt;&lt;b&gt;Vergoeding&lt;/b&gt;&lt;br/&gt;Voor deelname aan dit experiment ontvant u &lt;b&gt;€ 8,-&lt;/b&gt;. Dit bedrag zal worden overgemaakt op uw bankrekening. &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Alvast heel erg bedankt voor uw deelname en succes!&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;René Terporten&lt;br/&gt;PhD candidaat&lt;br/&gt;Max Planck Instituut voor Psycholinguïstiek"/>
+        <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="Gegevens"/>
+    </presenter>
+    <presenter back="Informatie" displayOrder="3" menuLabel="Terug" next="Zinnen_afmaken" type="metadata" self="Gegevens" title="Gegevens">
+        <metadataField fieldName="workerId"/>
+        <metadataField fieldName="firstName"/>
+        <metadataField fieldName="lastName"/>
+        <metadataField fieldName="age"/>
+        <metadataField fieldName="gender"/>
+        <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+            <onError/>
+            <onSuccess>
+                <autoNextPresenter/>
+            </onSuccess>
+        </saveMetadataButton>
+    </presenter>
+    <presenter displayOrder="4" menuLabel="Zinnen afmaken" next="completion" type="stimulus" self="Zinnen_afmaken" title="Zinnen afmaken">
+        <loadStimulus eventTag="Zinnen afmaken" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
+                    <addPadding/>
+                    <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." validationRegex=".{2,}"/>
+                    <actionButton featureText="volgende" eventTag="volgende">
+                        <nextStimulus eventTag="nextStimulusZinnen afmaken" norepeat="true"/>
+                    </actionButton>
+                </stimulusImage>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <autoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping storageField="groupAllocation_Zinnen_afmaken">
+                <tag>list_a</tag>
+                <tag>list_b</tag>
+                <tag>list_c</tag>
+            </randomGrouping>
+            <stimuli>
+                <tag>Zinnen_afmaken</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter displayOrder="5" menuLabel="Einde van het experiment" type="transmission" self="completion" title="Einde van het experiment">
+        <sendAllData>
+            <onSuccess>
+                <htmlText featureText="Beste participant,&lt;br/&gt;In dit onderzoek waren we geïnteresseerd in de door u ingevulde woorden. Wellicht heeft u al opgemerkt dat sommige van de zinnen heel specifiek waren (en u dus meteen wist wat het laatste woord zou kunnen zijn), terwijl andere zinnen wat vager waren. Het idee was om van iedere zin een vage en een specifieke versie te maken. Dus mocht u op gegeven moment een vage zin hebben gezien, dan zou een andere proefpersoon daarvan de specifieke versie krijgen. Wij zijn met name geïnteresseerd in hoe de ingevulde woorden over de versies heen verschillen. Met behulp van deze resultaten zouden wij dan op een latere termijn een ander onderzoek kunnen doen.&lt;br/&gt;Hartstikke bedankt voor het meedoen!&lt;br/&gt;&lt;br/&gt;Met vriendelijke groeten,&lt;br/&gt;René Terporten&lt;br/&gt;PhD candidaat&lt;br/&gt;Max Planck Instituut voor Psycholinguïstiek"/>
+                <addPadding/>
+                <generateCompletionCode/>
+                <addPadding/>
+                <htmlText featureText="Stuur deze nummer alstublieft per email terug naar de onderzoeker."/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw."/>
+                <targetButton featureText="Probeer opnieuw" target="completion"/>
+            </onError>
+        </sendAllData>
+    </presenter>
+    <presenter back="Gegevens" displayOrder="6" menuLabel="Over" type="debug" self="Over" title="Over">
+        <versionData/>
+        <eraseLocalStorageButton/>
+    </presenter>
+    <stimuli>
+        <stimulus identifier="cond_h/list_a" label="Tijdens het aanzoek gaf hij zijn vriendin een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Om wat vers brood te kopen ging hij naar een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Om de Eiffeltoren te bekijken ging ze naar" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="In de wieg zag ze de slapende" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="De aap had honger en at daarom een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="De dokters zorgen goed voor alle" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="De koningin droeg op haar hoofd een gouden" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Mijn konijn kauwde lekker op een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Het schaap levert ieder jaar heel veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Een makelaar adviseerde ons bij de aankoop van een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="De egel beschermt zichzelf met zijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="De gitarist vervangt een van zijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="De Egyptenaren bouwden een hele grote" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="De koning van alle dieren is de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Een zebra heeft een heleboel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="De giraf is bekend vanwege zijn lange" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="De wielrenner is erg gehecht aan zijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Hij hakte het hout met een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Deze koffie wordt gemaakt van de allerbeste" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Die winter was er heel veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Hij kon niet goed zien en pakte daarom zijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="De actieve tennisser slaat met zijn nieuwe" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Deze medicijnen koop je bij een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Hij kon het slot niet openen zonder een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="De clown speelde gister in het nieuwe" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Mijn plastic kabouters hebben allemaal een rode" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Hij werd generaal bij het Nederlandse" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="De ICT'ers zitten meestal voor een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="De diskette komt terecht in de ingang van een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Ze won de rechtszaak dankzij haar dure" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Om over de rivier te komen gebruiken zij de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Onze Maxima is sinds een paar jaar onze" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Om het water te geven aan de plantjes gebruik je een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Hij denkt na over de opwarming van onze mooie" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Zijn huid was verbrand door de intense" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Ze ging naar het museum vanwege het beroemde" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Mike bouwt een zandkasteel tijdens zijn bezoek aan het" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Laura hoorde het gesis van een gevaarlijke" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Mijn ogen tranen bij het snijden van een oude" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Hij kijkt naar het slijmspoor van een langzame" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Alle kinderen moeten natuurlijk naar" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Het bedrijf brouwt jaarlijks duizenden liters" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Moeder zette de vleeswaren terug in de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Hij sloeg op zijn duim met een zware" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Vanwege mijn verstopte wc bel ik een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Mijn sprankelende kroonluchter hangt aan het witte" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Die arts draagt een witte" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="De diamant zit op de glanzende" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Lilli draagt haar bikini voor haar uitje naar het" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Tijdens de narcose viel de man in" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Ik eet die cornflakes vaak bij het" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Met behulp van propellers blijft het voorwerp in de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="De oude bast valt al van de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Van te veel knoflook krijg ik een slechte" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Wellicht vindt men op de Mars nog steeds wat" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="De cabaretier maakte de hele avond" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Dit vergif is een gevaarlijke" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="De herbergier zorgt goed voor alle" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Sinds gister is het glad vanwege de lage" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="In mijn verborgen dagboek staan al mijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Sinds de aanslagen hebben veel mensen" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Dichtbij mijn haard voel ik de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Deze oude kast is gemaakt van echt" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Tijdens de ballonvaart had ik een goed" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="In dat cafÈ geniet ik 's ochtends van de beste" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Dankzij de lift ben ik nu op een hogere" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="In de Noordzee bevat het water veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Op de bijeenkomst drinken de gasten een fles" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Tijdens carnaval dragen vele mensen een grappig" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="Marie heeft tattoos over haar hele" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_a" label="In het theater opent het rode" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="In het dure hotel eet ik meerdere" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Het jongetje plande de voorbereidingen voor een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="De misdienaars zijn op weg naar een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Die zwaan daar heeft mooie witte" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Morgen komt de crimineel eindelijk terecht in een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Naast de commode zag zij een scherpe" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Hij stopt de stekker weer in een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Gerard koopt nieuw materiaal voor zijn snelle" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Ze verwijdert de splinter met een kleine" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Het verkeer stond te wachten voor een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="De oude professor geeft een interessant" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="De grote duinen zie je vaak aan" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Bij de snelle achtbaan hoor je meestal" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Ik werd vannacht bekeken door een irritante" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Ze hebben veel koeien op deze grote" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Maria verhit het voedsel in een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Op de stoep lopen best veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Op mijn pas staat helaas geen" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Aan het einde van de veiling hoor je het slaan van een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="In het park zijn veel soorten" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Vanwege de omstandigheden is er niemand meer in het" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Ina houdt niet van beleg op haar eigen" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Na de verhuizing had ik last van mijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Ik houd van heerlijkheden door de zoete" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Mijn baas zit aan zijn grote" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="In de catacomben was heel weinig" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Marvin consumeert iedere dag een pakje" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Met zijn apparaat maakte hij veel mooie" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Om hem te kunnen contacteren pakte het meisje haar" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Mijn vader koopt iedere ochtend een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="De fantastische kunstenaar haalde een konijn uit zijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="In de klas heerst altijd absolute" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="De lieve oppasser gaat elke dag wandelen met de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="De romanticus opent voor haar een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Die plek doet best veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Alle beroemde kunstenaars staan op de rode" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Anna raakte een wezen aan tijdens haar dagje aan" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Bij de bijeenkomst ontstaat plotseling zwarte" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="In het blad staat alleen maar slecht" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Deze verkoper is gekleed in een mooi" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Dankzij mijn gehaalde legitimatie bestuur ik zelf een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="We zagen slangen tijdens de leuke" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="De eenden zitten in hun" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="In het gebed staan verhalen over" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Deze drank wordt verkocht in mooie" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Aan de verkoopster verloor ik al mijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="De rijst zat te lang in het" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Deze zeldzame ingrediÎnten zorgen voor een bijzondere" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Bij de discussie luistert iedereen naar een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Haar aanhoudende verkoudheid veroorzaakt pijn in haar" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Hij gaf haar een cadeau voor haar mooie" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="De jonggehuwde werd afgebeeld met haar" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="De beroemde auteur promootte haar nieuwe" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="De grote garage staat helemaal vol met" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="De dappere strijder vecht tegen de verschrikkelijke" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="In de dom valt iedereen op de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Die held schiet op de gevaarlijke" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Jon zag een reptiel met een groene" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Hier op die belt hangt een erg vieze" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Die vlammenwerper is een verschikkelijk" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="De meeste nomaden leven in een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="De grote vesting wordt beschermd door sterke" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Het kristal verandert het licht in een andere" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Kijk eens naar de paparazzi met hun dure" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Piet zoekt een pan in zijn nieuwe" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="In haar kelder zitten helaas veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Aan dat loket geven ze Piet een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Ik stop niet met die spellen op grond van mijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Tijdens het kleuren gebruik ik mijn favoriete" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Voor de renovatie plaats ik alles in de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_a" label="Morgen geeft de weduwe een toespraak in een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="De dromerige man zat in een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="De werknemer bestudeert heel aandachtig de vele" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Om de objecten te kunnen zien gebruikte hij een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Op de vlakte leven heel veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Het beestje zat in het midden van zijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Vroeger was die Hein een jongen met een lange" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="De schoondochter testte eerst het" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Het dier is zeer belangrijk voor mensen in een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="De bladzijde bevat heel veel uitvoerige" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="De expert voltooide met goed gevolg een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Het schepsel heeft een hele grote" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="In de zaal eet ik altijd een grote bak" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="De gebruikers dragen natuurlijk allemaal een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Piet kijkt naar het silhouet van de grote" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Die man in dat hemd is duidelijk een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Het geschrift had de vorm van een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Gister bij de buurman kocht ik best veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="David kiest voor de middelen in plaats van een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Voor een goed advies ga ik naar een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="De kinderen oefenen de bewegingen in het oude" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Hij verklapte het dilemma van de fantastische" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Dit product wordt gemaakt van de beste" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Morgen gaat de kerel werken in het nieuwe" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Hij is bezig met opruimen in de nieuwe" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Julia zit op de constructie in de oude" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Peter ligt op de stof van zijn nieuwe" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Sam deed de planten in de witte" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Ze deed het portret in een witte" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="In die stad spraken we in een heel mooi" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="De oude filosoof ziet zijn ouderwetse" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Het beestje speelt uitgelaten met zijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Het dier neemt een bad in de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Met deze toestand blijf ik liever in de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Deze nieuwe techniek lijkt heel erg op een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Na al dat werken neem ik altijd een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Ik doe het materieel terug in mijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Op die club hebben ze veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Hij maakte een plaatje van het bekende" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Die spullen uit het gewelf komen terecht in een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Het bedrijf trekt ieder jaar veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="In deze wijk heb je een goed" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Omdat zij bedroeft is gebruikt zij veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Hans staat niet te dicht bij het fenomeen vanwege de enorme" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Het grote object valt uit een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Op het veld liggen veel dode" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Door de regeling verliest hij zijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Tijdens de situatie waren alle mensen in de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Zonder haar artikel heeft Lisa geen goede" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Ik houd niet van die panden vanwege de verschrikkelijke" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Bij die kraam heb je last van de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Vanwege zijn toestand heeft hij geen goede" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Het oude teken is gemaakt van" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="In de buurt lopen mensen vaak met een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Na de afsluiting spring ik in het" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="De oude jongen zit op een prachtig" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Piet houdt niet van zout op zijn bestelde" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Haar nieuwe aankoop zorgde voor mooie rode" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Hij moet naar die heelmeester vanwege een ontstoken" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Dit kleine toestel heeft erg vele" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Bij die locatie haalde zij vers" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Er liggen klompen op de stoep, want het is" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Joop heeft veranderingen op zijn hand vanwege zijn lekke" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="De vermoeide actievelingen liggen allemaal in hun" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Sara heeft een wezen en die maakt iedere dag een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Bij de gelegenheid dragen dames vaak een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="De man rook vanmorgen een lekker" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="De kast zit vol met resten van" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Vanwege zijn slechte concentratie moet hij vaak naar de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Jim ontvangt een compliment voor zijn dienst bij de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="De meeste kevers leven in de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_a" label="Op de attractie lopen veel beroemde" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_a</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="In het dure restaurant eet ik meerdere" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="De jarige plande de voorbereidingen voor een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="De christenen zijn op weg naar een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Die vogel daar heeft mooie witte" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Morgen komt de dief eindelijk terecht in een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Naast de naaidoos zag zij een scherpe" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Hij stopt de oplader weer in een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Gerard koopt nieuwe velgen voor zijn snelle" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Ze verwijdert de stekels met een kleine" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="De auto stond te wachten voor een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="De oude docent geeft een interessant" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="De grote golven zie je vaak aan" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Bij de snelle attractie hoor je meestal" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Ik werd vannacht gestoken door een irritante" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Ze hebben veel vee op deze grote" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Maria bereidt het voedsel in een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Op de straat lopen best veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Op mijn creditkaart staat helaas geen" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Aan het einde van de rechtszaak hoor je het slaan van een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Op de boerderij zijn veel soorten" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Vanwege de evacuatie is er niemand meer in het" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Ina houdt niet van halvarine op haar eigen" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Na het slepen had ik last van mijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Ik houd van snoepjes door de zoete" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Mijn collega zit aan zijn grote" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="In de steeg was heel weinig" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Marvin rookt iedere dag een pakje" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Met zijn mobiel maakte hij veel mooie" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Om hem te kunnen bellen pakte het meisje haar" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Mijn vader bekijkt iedere ochtend een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="De fantastische tovenaar haalde een konijn uit zijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="In de bibliotheek heerst altijd absolute" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Het lieve baasje gaat elke dag wandelen met de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="De gentleman opent voor haar een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Die prik doet best veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Alle beroemde acteurs staan op de rode" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Anna raakte een kwal aan tijdens haar dagje aan" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Bij de barbecue ontstaat plotseling zwarte" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="In de krant staat alleen maar slecht" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Deze advocaat is gekleed in een mooi" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Dankzij mijn gehaalde rijbewijs bestuur ik zelf een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="We zagen leeuwen tijdens de leuke" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="De kuikens zitten in hun" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="In de parabel staan verhalen over" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Deze olie wordt verkocht in mooie" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Aan het casino verloor ik al mijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="De mie zat te lang in het" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Deze zeldzame zouten zorgen voor een bijzondere" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Bij de rede luistert iedereen naar een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Haar aanhoudende heesheid veroorzaakt pijn in haar" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Hij gaf haar een oorkonde voor haar mooie" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="De echtgenote werd afgebeeld met haar" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="De beroemde schrijfster promootte haar nieuwe" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Het grote kruispunt staat helemaal vol met" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="De dappere soldaat vecht tegen de verschrikkelijke" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="In de strijd valt iedereen op de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Die agent schiet op de gevaarlijke" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Jon zag een krokodil met een groene" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Hier op die mesthoop hangt een erg vieze" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Dit zwaard is een verschikkelijk" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="De meeste indianen leven in een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="De grote gevangenis wordt beschermd door sterke" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Het scherm verandert het licht in een andere" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Kijk eens naar de fotografen met hun dure" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Piet zoekt een vork in zijn nieuwe" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="In haar schuur zitten helaas veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Aan deze balie geven ze Piet een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Ik stop niet met die gebeden op grond van mijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Tijdens het schetsen gebruik ik mijn favoriete" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Voor het tuinwerk plaats ik alles in de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_b" label="Morgen geeft de priester een toespraak in een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="De aangereden man zat in een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="De astronaut bestudeert heel aandachtig de vele" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Om de zandkorrels te kunnen zien gebruikte hij een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Op Antartica leven heel veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="De zijdeworm zat in het midden van zijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Vroeger was die marionet een jongen met een lange" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="De eskimo testte eerst het" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Het water is zeer belangrijk voor mensen in een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Het navigatiesysteem bevat veel uitvoerige" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="De internist voltooide met goed gevolg een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="De tapir heeft een hele grote" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="In de circus eet ik altijd een grote bak" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="De fietsers dragen natuurlijk allemaal een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Piet kijkt naar de lava van de grote" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Die man in dit pantser is duidelijk een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="De chocolaatjes habben de vorm van een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Gister bij de veehandelaar kocht ik best veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="David kiest voor de loep in plaats van een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Voor een goede lens ga ik naar een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="De kinderen oefenen het roeien in het oude" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Hij verklapte de magie van de fantastische" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Deze sap wordt gemaakt van de beste" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Morgen gaat de kok werken in het nieuwe" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Hij is bezig met poetsen in de nieuwe" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Julia zit op de glijbaan in de oude" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Peter ligt op het kussen van zijn nieuwe" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Sam deed het water in de witte" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Ze deed het testament in een witte" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="In die stad ontspanden we in een heel mooi" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="De oude filosoof stopt zijn ouderwetse" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Het beestje wiebelt uitgelaten met zijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="De koe neemt een bad in de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Met deze huid blijf ik liever in de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Dit nieuwe standbeeld lijkt heel erg op een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Na al dat zwemmen neem ik altijd een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Ik doe het rijbewijs terug in mijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Op die circus hebben ze veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Hij maakte een tekening van het bekende" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Die spullen uit de schatkamer komen terecht in een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="De stad trekt ieder jaar veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Op dit gebouw heb je een goed" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Omdat zij allergisch is gebruikt zij veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Hans staat niet te dicht bij de smid vanwege de enorme" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="De grote eekhoorn valt uit een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="In de sloot liggen veel dode" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Door de bijl verliest hij zijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Tijdens de paasdagen waren all mensen in de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Zonder haar valeriaan heeft Lisa geen goede" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Ik houd niet van die achtbaan vanwege de verschikkelijke" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Bij die stallingen heb je last van de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Vanwegen zijn zorgen heeft hij geen goede" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="De oude kaart is gemaakt van" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="In de storm lopen mensen vaak met een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Na het sporten spring ik in het" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="De oude indiaan zit op een prachtig" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Piet houdt niet van groentes op zijn bestelde" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Haar nieuw gebruiksvoorwerp zorgde voor mooie rode" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Hij moet naar die persoon vanwege een ontstoken" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Deze kleine plant heeft erg vele" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Bij die wel haalde zij vers" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Er ligt warboel op de stoep, want het is" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Joop heeft vlekken op zijn hand vanwege zijn lekke" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="De vermoeide groepen liggen allemaal in hun" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Sara heeft een dier en die maakt iedere dag een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Bij de activiteit dragen dames vaak een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="De man bereide vanmorgen een lekker" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="De pot zit vol met resten van" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Vanwege zijn slechte controle moet hij vaak naar de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Jim ontvangt een prijs voor zijn dienst bij de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="De meeste haaien leven in de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_b" label="Op het podium lopen veel beroemde" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Tijdens de maaltijd gaf hij zijn vriendin een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Om wat verse deegwaren te kopen ging hij naar een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Om de stad te bekijken ging ze naar" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="In de kamer zag ze de slapende" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="De bruut had honger en at daarom een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="De personeelsleden zorgen goed voor alle" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="De vrouw droeg op haar hoofd een gouden" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Mijn huisdier kauwde lekker op een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Het dier levert ieder jaar heel veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Een kameraad adviseerde ons bij de aankoop van een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Het gewas beschermt zichzelf met zijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="De achterneef vervangt een van zijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Het volk bouwde een hele grote" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="De mooiste van alle dieren is de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Een dier heeft een heleboel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Dit schepsel is bekend vanwege zijn lange" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="De ambtenaar is erg gehecht aan zijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Hij bewerkte het hout met een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Deze drank wordt gemaakt van de allerbeste" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Dat seizoen was er heel veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Hij kon niet goed meedoen en pakte daarom zijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="De actieve knul slaat met zijn nieuwe" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Deze spullen koop je bij een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Hij kon het voorwerp niet openen zonder een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="De artiest speelde gister in het nieuwe" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Mijn plastic figuren hebben allemaal een rode" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Hij werd lid van het Nederlandse" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="De ambtenaren zitten meestal voor een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Het voorwerp komt terecht in de ingang van een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Ze won de discussie dankzij haar dure" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Om over de versperring te komen gebruiken zij de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Ons nichtje is sinds een paar jaar onze" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Om de oppepper te geven aan de plantjes gebruik je een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Hij denkt na over de eigenschappen van onze mooie" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Zijn huid was veranderd door de intense" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Ze ging naar het gebouw vanwege het beroemde" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Mike bouwt een bouwsel tijdens zijn bezoek aan het" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Laura hoorde het geluid van een gevaarlijke" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Mijn ogen tranen bij het waarnemen van een oude" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Hij kijkt naar de restanten van een langzame" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Alle aanwezigen moeten natuurlijk naar" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Het bedrijf vervoert jaarlijks duizenden liters" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Moeder zette de spullen terug in de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Hij sloeg op zijn ledemaat met een zware" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Vanwege mijn scheve wc bel ik een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Mijn sprankelende eyecatcher hangt aan het witte" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Die madam draagt een witte" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Het puntje zit op de glanzende" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Lilli draagt haar kleding voor haar uitje naar het" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Tijdens het voorval viel de man in" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Ik eet die voorraad vaak bij het" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Met behulp van apparaten blijft het voorwerp in de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="De oude laag valt al van de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Van te veel voedsel krijg ik een slechte" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Wellicht vindt men op de locatie nog steeds wat" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Het zusje maakte de hele avond" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Deze substantie is een gevaarlijke" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Deze meneer zorgt goed voor alle" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Sinds gister is het anders vanwege de lage" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="In mijn verborgen papiertje staan al mijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Sinds de aankondigingen hebben veel mensen" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Dichtbij mijn plaats voel ik de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Dit oude materiaal is gemaakt van echt" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Tijdens de activiteit had ik een goed" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="In die ruimte geniet ik 's ochtends van de beste" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Dankzij de techniek ben ik nu op een hogere" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Op die plek bevat het water veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Op de bruiloft drinken de gasten een fles" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Tijdens evenementen dragen vele mensen een grappig" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="Marie heeft afbeeldingen over haar hele" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_b" label="In het complex opent het rode" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_b</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="De invalide man zat in een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="De astronoom bestudeert heel aandachtig de vele" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Om de cellen te kunnen zien gebruikte hij een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Op de Zuidpool leven heel veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="De spin zat in het midden van zijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Vroeger was die Pinoccio een jongen met een lange" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="De schaatser testte eerst het" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="De kameel is zeer belangrijk voor mensen in een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="De atlas bevat heel veel uitvoerige" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="De chirurg voltooide met goed gevolg een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="De olifant heeft een hele grote" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="In de bioscoop eet ik altijd een grote bak" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="De mijnwerkers dragen natuurlijk allemaal een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Piet kijkt naar de uitbarsting van de grote" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Die man in dat harnas is duidelijk een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="De liefdesbrief had de vorm van een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Gister bij de slager kocht ik best veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="David kiest voor de lenzen in plaats van een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Voor een goede bril ga ik naar een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="De kinderen oefenen de borstcrawl in het oude" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Hij verklapte de trucs van de fantastische" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Deze wijn wordt gemaakt van de beste" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Morgen gaat de ober werken in het nieuwe" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Hij is bezig met koken in de nieuwe" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Julia zit op de wipwap in de oude" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Peter ligt op het matras van zijn nieuwe" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Sam deed de bloemen in de witte" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Ze deed de brief in een witte" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="In die stad verbleven we in een heel mooi" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="De oude filosoof rookt zijn ouderwetse" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Het beestje kwispelt uitgelaten met zijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Het varken neemt een bad in de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Met deze hitte blijf ik liever in de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Deze nieuwe robot lijkt heel erg op een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Na al dat zweten neem ik altijd een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Ik doe het wisselgeld terug in mijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Op die manege hebben ze veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Hij maakte een vervalsing van het bekende" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Die spullen uit de ruÔne komen terecht in een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="De Efteling trekt ieder jaar veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Op deze toren heb je een goed" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Omdat zij verkouden is gebruikt zij veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Hans staat niet te dicht bij de lava vanwege de enorme" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="De grote noot valt uit een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Op het slagveld liggen veel dode" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Door de beul verliest hij zijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Tijdens de uitvaart waren alle mensen in de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Zonder haar knuffel heeft Lisa geen goede" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Ik houd niet van die bruggen vanwege de verschrikkelijke" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Bij die vismarkt heb je last van de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Vanwege zijn nachtmerries heeft hij geen goede" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="De oude zegel is gemaakt van" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="In de regen lopen mensen vaak met een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Na het kanoÎn spring ik in het" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="De oude schildknaap zit op een prachtig" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Piet houdt niet van ansjovis op zijn bestelde" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Haar nieuwe lippenstift zorgde voor mooie rode" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Hij moet naar die tandarts vanwege een ontstoken" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Deze kleine cactus heeft erg vele" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Bij die bron haalde zij vers" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Er liggen bladeren op de stoep, want het is" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Joop heeft vuil op zijn hand vanwege zijn lekke" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="De vermoeide reizigers liggen allemaal in hun" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Sara heeft een vogel en die maakt iedere dag een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Bij het dansen dragen dames vaak een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="De man creÎerde vanmorgen een lekker" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="De bak zit vol met resten van" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Vanwege zijn slechte situatie moet hij vaak naar de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Jim ontvangt een object voor zijn dienst bij de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="De meeste vissen leven in de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_h/list_c" label="Op het spektakel lopen veel beroemde" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_h</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Tijdens de verrassing gaf hij zijn vriendin een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Om wat verse croissants te kopen ging hij naar een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Om de Seine te bekijken ging ze naar" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="In de kinderkamer zag ze de slapende" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="De olifant had honger en at daarom een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="De verplegers zorgen goed voor alle" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="De aristocraat droeg op haar hoofd een gouden" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Mijn knaagdier kauwde lekker op een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Het lam levert ieder jaar heel veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Een bouwer adviseerde ons bij de aankoop van een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="De roos beschermt zichzelf met zijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="De muzikant vervangt een van zijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="De slaven bouwden een hele grote" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="De edelste van alle dieren is de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Een tijger heeft een heleboel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="De lama is bekend vanwege zijn lange" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="De postbode is erg gehecht aan zijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Hij verkleint het hout met een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Deze cappuccino wordt gemaakt van de allerbeste" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Die kerst was er heel veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Hij kon niet goed focussen en pakte daarom zijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="De actieve buitensporter slaat met zijn nieuwe" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Deze pillen koop je bij een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Hij kon de deur niet openen zonder een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="De acrobaat speelde gister in het nieuwe" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Mijn plastic mannetjes hebben allemaal een rode" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Hij werd leider bij het Nederlandse" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="De nerds zitten meestal voor een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="De USB komt terecht in de ingang van een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Ze won het conflict dankzij haar dure" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Om over het water te komen gebruiken zij de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Onze prinses is sinds een paar jaar onze" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Om de vloeistof te geven aan de plantjes gebruik je een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Hij denkt na over het klimaat van onze mooie" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Zijn huid was rood door de intense" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Ze ging naar het atelier vanwege het beroemde" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Mike bouwt een sculptuur tijdens zijn bezoek aan het" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Laura hoorde het ratelen van een gevaarlijke" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Mijn ogen tranen bij het klaarmaken van een oude" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Hij kijkt naar het huisje van een langzame" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Alle studenten moeten natuurlijk naar" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Het bedrijf produceert jaarlijks duizenden liters" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Moeder zette het voedsel terug in de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Hij sloeg op zijn arm met een zware" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Vanwege mijn kapotte wc bel ik een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Mijn sprankelende lamp hangt aan het witte" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Die wetenschapper draagt een witte" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Het juweel zit op de glanzende" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Lilli draagt haar zonnebril voor haar uitje naar het" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Tijdens de behandeling viel de man in" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Ik eet dat brood vaak bij het" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Met behulp van wind blijft het voorwerp in de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Het oude hout valt al van de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Van te veel uien krijg ik een slechte" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Wellicht vindt men op de planeet nog steeds wat" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="De acteur maakte de hele avond" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Deze chemie is een gevaarlijke" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="De barman zorgt goed voor alle" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Sinds gister is het fris vanwege de lage" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="In mijn verborgen boek staan al mijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Sinds de voorvallen hebben veel mensen" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Dichtbij mijn keuken voel ik de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Dit oude meubel is gemaakt van echt" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Tijdens de rondvaart had ik een goed" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="In die bar geniet ik 's ochtends van de beste" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Dankzij de trap ben ik nu op een hogere" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="In de zee bevat het water veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Op de viering drinken de gasten een fles" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Tijdens gala's dragen vele mensen een grappig" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="Marie heeft verrekkingen over haar hele" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_m/list_c" label="In de bioscoop opent het rode" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_m</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="In het dure vertrek eet ik meerdere" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="De eventmanager plande de voorbereidingen voor een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="De massa is op weg naar een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Dat dier daar heeft mooie witte" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Morgen komt de partner eindelijk terecht in een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Naast de draden zag zij een scherpe" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Hij stopt het apparaat weer in een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Gerard koopt nieuwe hoezen voor zijn snelle" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Ze verwijdert de irritatie met een kleine" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Het jongetje stond te wachten voor een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="De oude denker geeft een interessant" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="De grote heuvels zie je vaak aan" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Bij het snelle gevaarte hoor je meestal" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Ik werd vannacht wakker door een irritante" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Ze hebben veel lekkers op deze grote" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Maria bakt het voedsel in een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Op dit veld lopen best veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Op mijn kaart staat helaas geen" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Aan het einde van de gelegenheid hoor je het slaan van een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Op het hof zijn veel soorten" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Vanwege de vakantie is er niemand meer in het" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Ina houdt niet van vet op haar eigen" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Na de inspanning had ik last van mijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Ik houd van lekkers door de zoete" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Mijn kennis zit aan zijn grote" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="In de constructie was heel weinig" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Marvin bekijkt iedere dag een pakje" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Met zijn techniek maakte hij veel mooie" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Om hem te kunnen signaleren pakte het meisje haar" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Mijn vader grijpt iedere ochtend een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="De fantastische boer haalde een konijn uit zijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="In het milieu heerst altijd absolute" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="De lieve vader gaat elke dag wandelen met de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="De geleerde opent voor haar een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Die omstandigheid doet best veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Alle beroemde nakomelingen staan op de rode" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Anna raakte een schepsel aan tijdens haar dagie aan" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Bij de opname ontstaat plotseling zwarte" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="In de samenvatting staat alleen maar slecht" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Deze excentriekeling is gekleed in een mooi" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Dankzij mijn gehaalde papiertje bestuur ik zelf een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="We zagen dieren tijdens de leuke" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="De beesten zitten in hun" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="In de tekst staan verhalen over" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Dit product wordt verkocht in mooie" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Aan de tegenstander verloor ik al mijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Het object zat te lang in het" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Deze zeldzame gewassen zorgen voor een bijzondere" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Bij de belevenis luistert iedereen naar een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Haar aanhoudende gedoe veroorzaakt pijn in haar" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Hij gaf haar een pakket voor haar mooie" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="De meid werd afgebeeld met haar" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="De beroemde vrouw promootte haar nieuwe" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="De grote loods staat helemaal vol met" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="De dappere ridder vecht tegen de verschrikkelijke" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="In het bouwwerk valt iedereen op de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Die dame schiet op de gevaarlijke" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Jon zag een organisme met een groene" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Hier op die heuvel hangt een erg vieze" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Dit item is een verschikkelijk" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="De meeste groepen leven in een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="De grote architectuur wordt beschermd door sterke" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="De spiegel verandert het licht in een andere" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Kijk eens naar de deelnemers met hun dure" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Piet zoekt een voorwerp in zijn nieuwe" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="In haar buurt zitten helaas veel" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Aan dat portaal geven ze Piet een" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Ik stop niet met dit gedrag op grond van mijn" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Tijdens de actie gebruik ik mijn favoriete" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Voor de opzet plaats ik alles in de" pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+        <stimulus identifier="cond_l/list_c" label="Morgen geeft de enthousiasteling een toespraak in een " pauseMs="0">
+            <tag>Zinnen_afmaken</tag>
+            <tag>cond_l</tag>
+            <tag>list_c</tag>
+        </stimulus>
+    </stimuli>
+</experiment>
