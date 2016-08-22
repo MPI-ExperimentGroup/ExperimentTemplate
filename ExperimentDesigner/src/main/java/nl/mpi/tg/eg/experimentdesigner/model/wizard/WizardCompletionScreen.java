@@ -75,7 +75,7 @@ public class WizardCompletionScreen extends AbstractWizardScreen {
 //        final String retryButtonLabel = "Retry";
         final PresenterFeature retryFeature = new PresenterFeature(FeatureType.targetButton, wizardScreenData.getRetryButtonLabel());
         onErrorFeature.getPresenterFeatureList().add(retryFeature);
-        retryFeature.addFeatureAttributes(FeatureAttribute.target, getScreenTitle());
+        retryFeature.addFeatureAttributes(FeatureAttribute.target, getScreenTag());
 
         experiment.getPresenterScreen().add(presenterScreen);
         return presenterScreen;
