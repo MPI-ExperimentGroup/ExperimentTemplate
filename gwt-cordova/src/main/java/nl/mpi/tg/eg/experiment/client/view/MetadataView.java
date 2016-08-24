@@ -64,43 +64,59 @@ public class MetadataView extends ComplexView {
         }
         final int rowCount = flexTable.getRowCount();
         final FocusWidget focusWidget;
-        if (metadataField.isCheckBox()) {
-            flexTable.setWidget(rowCount, 0, new Label());
-            focusWidget = new CheckBox(labelString);
-            ((CheckBox) focusWidget).setValue((existingValue == null) ? false : Boolean.parseBoolean(existingValue));
-        } else if (metadataField.isListBox()) {
-            flexTable.setWidget(rowCount, 0, new Label(labelString));
-            focusWidget = new ListBox();
-            int selectedIndex = 0;
-            int itemCounter = 0;
-            ((ListBox) focusWidget).addItem(""); // make sure there is an empty item at the top of the list
-            for (String listItem : metadataField.getListValues()) {
-                if (!listItem.isEmpty()) { // allow only one empty item in this list
-                    ((ListBox) focusWidget).addItem(listItem);
-                    itemCounter++;
-                }
-                if (existingValue != null && existingValue.equals(listItem)) {
-                    selectedIndex = itemCounter;
-                }
-            }
-            ((ListBox) focusWidget).setSelectedIndex(selectedIndex);
-        } else {
+        if (metadataField.isDate()) {
             final Label label = new Label(labelString);
             flexTable.setWidget(rowCount, 0, label);
-            if (metadataField.isMultiLine()) {
-                focusWidget = new TextArea();
-            } else {
-                focusWidget = new TextBox();
+//            final DateTimeFormat dateFormat = DateTimeFormat.getFormat("dd/MM/yyyy");
+//            final DateBox dateBox = new DateBox();
+//            dateBox.getDatePicker().setYearAndMonthDropdownVisible(true);
+//            dateBox.setFormat(new DateBox.DefaultFormat(dateFormat)); 
+            final DateOfBirthField dateOfBirthField = new DateOfBirthField();
+            focusWidget = dateOfBirthField.getTextBox();
+            if (existingValue != null) {
+                dateOfBirthField.setDate(existingValue);
             }
-            ((TextBoxBase) focusWidget).setText((existingValue == null) ? "" : existingValue);
-            ((TextBoxBase) focusWidget).addFocusHandler(new FocusHandler() {
-
-                @Override
-                public void onFocus(FocusEvent event) {
-                    addKeyboardPadding();
-//                scrollToPosition(label.getAbsoluteTop());
+            flexTable.setWidget(rowCount + 1, 0, dateOfBirthField);
+        } else {
+            if (metadataField.isCheckBox()) {
+                flexTable.setWidget(rowCount, 0, new Label());
+                focusWidget = new CheckBox(labelString);
+                ((CheckBox) focusWidget).setValue((existingValue == null) ? false : Boolean.parseBoolean(existingValue));
+            } else if (metadataField.isListBox()) {
+                flexTable.setWidget(rowCount, 0, new Label(labelString));
+                focusWidget = new ListBox();
+                int selectedIndex = 0;
+                int itemCounter = 0;
+                ((ListBox) focusWidget).addItem(""); // make sure there is an empty item at the top of the list
+                for (String listItem : metadataField.getListValues()) {
+                    if (!listItem.isEmpty()) { // allow only one empty item in this list
+                        ((ListBox) focusWidget).addItem(listItem);
+                        itemCounter++;
+                    }
+                    if (existingValue != null && existingValue.equals(listItem)) {
+                        selectedIndex = itemCounter;
+                    }
                 }
-            });
+                ((ListBox) focusWidget).setSelectedIndex(selectedIndex);
+            } else {
+                final Label label = new Label(labelString);
+                flexTable.setWidget(rowCount, 0, label);
+                if (metadataField.isMultiLine()) {
+                    focusWidget = new TextArea();
+                } else {
+                    focusWidget = new TextBox();
+                }
+                ((TextBoxBase) focusWidget).setText((existingValue == null) ? "" : existingValue);
+                ((TextBoxBase) focusWidget).addFocusHandler(new FocusHandler() {
+
+                    @Override
+                    public void onFocus(FocusEvent event) {
+                        addKeyboardPadding();
+//                scrollToPosition(label.getAbsoluteTop());
+                    }
+                });
+            }
+            flexTable.setWidget(rowCount + 1, 0, focusWidget);
         }
         focusWidget.setStylePrimaryName("metadataOK");
 //        textBox.addBlurHandler(new BlurHandler() {
@@ -110,7 +126,6 @@ public class MetadataView extends ComplexView {
 //                removeKeyboardPadding();
 //            }
 //        });
-        flexTable.setWidget(rowCount + 1, 0, focusWidget);
         fieldBoxes.put(metadataField, focusWidget);
         orderedFields.add(metadataField);
         if (firstTextBox == null) {
