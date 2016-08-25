@@ -361,7 +361,7 @@
     </presenter>
     <presenter back="Menu" displayOrder="16" menuLabel="Weekdays" next="Report" type="colourPicker" self="Weekdays" title="Weekdays">
         <helpDialogue featureText="&lt;b&gt;Instructions&lt;/b&gt;\n&lt;p&gt;Select the colour that you associate with the presented character or word \n&lt;ol&gt;\n&lt;li&gt;Select the hue by tapping on the colour bar on the right &lt;/li&gt;&lt;li&gt;Select the shade by tapping on the square on the left &lt;/li&gt;\n&lt;li&gt;When the colour of the preview rectangle matches your association, tap &quot;Submit&quot;&lt;/li&gt;\n&lt;li&gt;If you have no colour association tap &quot;No colour&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, go to test!"/>
-        <loadAllStimulus eventTag="Weekdays" randomise="true" repeatCount="3">
+        <loadAllStimulus eventTag="Weekdays" randomise="true" repeatRandomWindow="0" repeatCount="3">
             <hasMoreStimulus/>
             <endOfStimulus/>
             <stimuli>
@@ -371,7 +371,7 @@
     </presenter>
     <presenter back="Menu" displayOrder="18" menuLabel="Letters and Numbers" next="Report" type="colourPicker" self="LettersNumbers" title="LettersNumbers">
         <helpDialogue featureText="&lt;b&gt;Instructions&lt;/b&gt;\n&lt;p&gt;Select the colour that you associate with the presented character or word \n&lt;ol&gt;\n&lt;li&gt;Select the hue by tapping on the colour bar on the right &lt;/li&gt;&lt;li&gt;Select the shade by tapping on the square on the left &lt;/li&gt;\n&lt;li&gt;When the colour of the preview rectangle matches your association, tap &quot;Submit&quot;&lt;/li&gt;\n&lt;li&gt;If you have no colour association tap &quot;No colour&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, go to test!"/>
-        <loadAllStimulus eventTag="LettersNumbers" randomise="true" repeatCount="3">
+        <loadAllStimulus eventTag="LettersNumbers" randomise="true" repeatRandomWindow="0" repeatCount="3">
             <hasMoreStimulus/>
             <endOfStimulus/>
             <stimuli>
@@ -395,7 +395,7 @@
     </presenter>
     <presenter back="Menu" displayOrder="19" menuLabel="Months" next="Report" type="colourPicker" self="Months" title="Months">
         <helpDialogue featureText="&lt;b&gt;Instructions&lt;/b&gt;\n&lt;p&gt;Select the colour that you associate with the presented character or word \n&lt;ol&gt;\n&lt;li&gt;Select the hue by tapping on the colour bar on the right &lt;/li&gt;&lt;li&gt;Select the shade by tapping on the square on the left &lt;/li&gt;\n&lt;li&gt;When the colour of the preview rectangle matches your association, tap &quot;Submit&quot;&lt;/li&gt;\n&lt;li&gt;If you have no colour association tap &quot;No colour&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, go to test!"/>
-        <loadAllStimulus eventTag="Months" randomise="true" repeatCount="3">
+        <loadAllStimulus eventTag="Months" randomise="true" repeatRandomWindow="0" repeatCount="3">
             <hasMoreStimulus/>
             <endOfStimulus/>
             <stimuli>
@@ -418,6 +418,10 @@
             <aboveThreshold/>
             <belowThreshold/>
         </showColourReport>
+        <submitTestResults>
+            <onSuccess/>
+            <onError/>
+        </submitTestResults>
     </presenter>
     <stimuli>
         <stimulus identifier="Monday" label="Monday" pauseMs="0">

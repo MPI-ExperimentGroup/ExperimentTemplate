@@ -525,6 +525,10 @@ public class SynQuiz2 {
 //        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
         showColourReport.getPresenterFeatureList().add(belowThreshold);
         presenterScreen.getPresenterFeatureList().add(showColourReport);
+        final PresenterFeature submitTestResults = new PresenterFeature(FeatureType.submitTestResults, null);
+        submitTestResults.getPresenterFeatureList().add(new PresenterFeature(FeatureType.onSuccess, null));
+        submitTestResults.getPresenterFeatureList().add(new PresenterFeature(FeatureType.onError, null));
+        presenterScreen.getPresenterFeatureList().add(submitTestResults);
         return new AbstractWizardScreen() {
             @Override
             public PresenterScreen getPresenterScreen() {
