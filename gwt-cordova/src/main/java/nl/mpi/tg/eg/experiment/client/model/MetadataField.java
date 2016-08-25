@@ -49,6 +49,10 @@ public class MetadataField {
         return controlledRegex.contains("\\s");
     }
 
+    public boolean isDate() {
+        return controlledRegex.equals("[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]");
+    }
+
     public boolean isListBox() {
         if (controlledRegex == null) {
             return false;
