@@ -170,7 +170,7 @@ public class StimulusProvider {
         for (int repeatIndex = 0; repeatIndex < repeatCount; repeatIndex++) {
             stimulusSubsetArray.addAll(stimulusSubsetArrayTemp);
         }
-        if (repeatCount > 1 && stimulusSubsetArray.size() > repeatRandomWindow) {
+        if (repeatCount > 1 && repeatRandomWindow > 0 && stimulusSubsetArray.size() > repeatRandomWindow) {
             // todo: perhaps also do this when the repeatRandomWindow is bigger than the stimulusSubsetArray but just reduce the repeatRandomWindow accordingly
             for (int shuffleIndex = repeatRandomWindow; shuffleIndex < stimulusSubsetArray.size(); shuffleIndex++) {
                 // shuffle all stimuli in a moving window of 'repeatRandomWindow' so that the repeats are still sparated
