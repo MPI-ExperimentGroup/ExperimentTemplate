@@ -21,7 +21,6 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
-import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.Messages;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
@@ -162,6 +161,20 @@ public abstract class AbstractPresenter implements Presenter {
         audioTickerTimer.schedule(100);
     }
 
+    protected void captureStimulusImage(String userIdString, String directoryName, String stimulusIdString) {
+        // todo: add capture / replace button
+        captureImageUI(userIdString, directoryName, stimulusIdString);
+        throw new UnsupportedOperationException();
+    }
+
+    protected void imageCaptured(String stimulusIdString, String fullPath) {
+        throw new UnsupportedOperationException(); // todo: image display
+    }
+
+    protected void imageCapturedFailed(String stimulusIdString, String message) {
+        throw new UnsupportedOperationException(); // todo: add error display
+    }
+
     protected void audioOk(Boolean isRecording, String message) {
         if (simpleView instanceof ComplexView) {
             ((ComplexView) simpleView).setRecorderState(message, isRecording);
@@ -186,7 +199,6 @@ public abstract class AbstractPresenter implements Presenter {
 //        ((ComplexView) simpleView).addText("Could not start the audio recorder");
 //        ((ComplexView) simpleView).addText(message);
 //    }
-
     protected native void startAudioRecorder(final boolean wavFormat, String userIdString, String directoryName, String stimulusIdString) /*-{
         var abstractPresenter = this;
         console.log("startAudioRecorder: " + wavFormat + " : " + userIdString + " : " + directoryName + " : " + stimulusIdString);
@@ -294,6 +306,22 @@ public abstract class AbstractPresenter implements Presenter {
             }, tier, stimulusId, stimulusCode, eventTag);
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
+        }
+     }-*/;
+
+    private native void captureImageUI(String userIdString, String directoryName, String stimulusIdString) /*-{
+        var abstractPresenter = this;
+        console.log("captureImageUI: " + userIdString + " : " + directoryName + " : " + stimulusIdString);
+        if($wnd.plugins){
+            $wnd.navigator.device.capture.captureImage(function (mediaFiles) {
+                console.log("captureImageOk: " + mediaFiles[0].fullPath);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::imageCaptured(Ljava/lang/String;Ljava/lang/String;)(stimulusIdString, mediaFiles[0].fullPath);
+            }, function (error) {
+                console.log("captureImageError: " + error.code);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::imageCapturedFailed(Ljava/lang/String;Ljava/lang/String;)(stimulusIdString, "Error code:" + error.code);
+            }, {limit:1});
+        } else {
+            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::imageCapturedFailed(Ljava/lang/String;Ljava/lang/String;)(stimulusIdString, null);
         }
      }-*/;
 
