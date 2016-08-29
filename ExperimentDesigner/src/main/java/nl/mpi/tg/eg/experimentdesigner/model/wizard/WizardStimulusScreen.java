@@ -50,6 +50,10 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
         super("Stimulus", "Stimulus", "Stimulus");
     }
 
+    public WizardStimulusScreen(String screenName) {
+        super(screenName, screenName, screenName);
+    }
+
     public String getScreenLabel() {
         return screenLabel;
     }
