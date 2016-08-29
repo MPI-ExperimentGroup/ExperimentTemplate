@@ -111,6 +111,7 @@ public enum FeatureType {
     stimulusCodeVideo(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, codeFormat}),
     stimulusCodeAudio(true, false, new FeatureAttribute[]{msToNext, codeFormat}),
     stimulusAudio(true, false, new FeatureAttribute[]{msToNext, mp3,}),
+    captureStimulusImage(), // todo: implement the wizard required for the captureStimulusImage
     VideoPanel(false, false, new FeatureAttribute[]{mp4, ogg, webm, percentOfPage, maxHeight, maxWidth, poster}),
     AnnotationTimelinePanel(true, false, new FeatureAttribute[]{mp4, ogg, webm, poster, eventTag, columnCount, maxStimuli}, true, false, Contitionals.none),
     startAudioRecorder(false, false, new FeatureAttribute[]{wavFormat, filePerStimulus, eventTag}),
