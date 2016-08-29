@@ -61,7 +61,7 @@ public class JenaFieldKit {
             new StimuliSubAction("60", "Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis.", "Finis")
         };
 
-        final WizardStimulusScreen captureStimulusScreen = new WizardStimulusScreen();
+        final WizardStimulusScreen captureStimulusScreen = new WizardStimulusScreen("Capture");
         captureStimulusScreen.setScreenTitle("Mekem ol foto");
         captureStimulusScreen.setMenuLabel("Mekem ol foto");
         captureStimulusScreen.setScreenLabel("Mekem ol foto");
