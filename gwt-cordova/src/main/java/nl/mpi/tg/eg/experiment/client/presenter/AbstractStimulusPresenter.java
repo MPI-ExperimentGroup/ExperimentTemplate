@@ -672,7 +672,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).endHorizontalPanel();
     }
 
-    protected void captureStimulusImage(String directoryName) {
+    protected void stimulusImageCapture(String directoryName) {
         final String workerId = userResults.getUserData().getMetadataValue(new MetadataFieldProvider().workerIdMetadataField);
         super.captureStimulusImage(workerId, directoryName, stimulusProvider.getCurrentStimulus().getUniqueId());
     }
