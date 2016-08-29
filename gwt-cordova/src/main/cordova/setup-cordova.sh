@@ -30,6 +30,7 @@ cordova plugin add ../../../FieldKitRecorder/
 cordova plugin add cordova-plugin-file
 #cordova plugin add cordova-plugin-statusbar
 cordova plugin add cordova-plugin-fullscreen 
+cordova plugin add cordova-plugin-media-capture
 
 #splashResourcesDir="./platforms/ios/LingQuest/Resources/splash/"
 #echo $splashResourcesDir
