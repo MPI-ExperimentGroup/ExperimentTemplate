@@ -61,6 +61,20 @@ public class JenaFieldKit {
             new StimuliSubAction("60", "Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis.", "Finis")
         };
 
+        final WizardStimulusScreen captureStimulusScreen = new WizardStimulusScreen();
+        captureStimulusScreen.setScreenTitle("Mekem ol foto");
+        captureStimulusScreen.setMenuLabel("Mekem ol foto");
+        captureStimulusScreen.setScreenLabel("Mekem ol foto");
+        captureStimulusScreen.setEnd_of_stimuli("Finis olgeta");
+        captureStimulusScreen.setStimulusTagArray(new String[]{"Pictures"});
+        captureStimulusScreen.setFeatureValuesArray(featureValuesArray);
+        captureStimulusScreen.setMaxStimuli(1000);
+        captureStimulusScreen.setRandomiseStimuli(true);
+        captureStimulusScreen.setStimulusImageCapture(true);
+        captureStimulusScreen.setFilePerStimulus(true);
+        captureStimulusScreen.setBackWizardScreen(welcomePresenter);
+        captureStimulusScreen.setEndOfStimulisWizardScreen(welcomePresenter);
+
         final WizardStimulusScreen wizardStimulusScreen = new WizardStimulusScreen();
         wizardStimulusScreen.setScreenTitle("Lukluk ol foto");
         wizardStimulusScreen.setMenuLabel("Lukluk ol foto");
@@ -74,6 +88,7 @@ public class JenaFieldKit {
         wizardStimulusScreen.setFilePerStimulus(true);
         wizardStimulusScreen.setBackWizardScreen(welcomePresenter);
         wizardStimulusScreen.setEndOfStimulisWizardScreen(welcomePresenter);
+
         welcomePresenter.setInstructionsScreen(instructionsPresenter);
         welcomePresenter.setProgramWizardScreen(welcomeMenuPresenter);
 //        final PresenterScreen vanuatuScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, stimulusScreen, new String[]{"vanuatu"}, featureValuesArray, true, 1000, true, 7, false);
@@ -89,7 +104,8 @@ public class JenaFieldKit {
         //                , "Finis olgeta"
         );
         metadataScreen.setBackWizardScreen(welcomePresenter);
-        metadataScreen.setNextWizardScreen(wizardStimulusScreen);
+        metadataScreen.setNextWizardScreen(captureStimulusScreen);
+        captureStimulusScreen.setNextWizardScreen(wizardStimulusScreen);
         WizardAgreementScreen wizardTextScreen = new WizardAgreementScreen("Konsen", "(Blong man/woman we i makem rikoding)<br><br>"
                 + "Mi undastan se wetem aplikasen ia mi makem wan rikoding; mo mi undastan se rikoding ia bai i stap long intanet bambai ol man mo ol woman long evri kantri i save harem rikoding ia wea mi stap makem nao.<br><br>",
                 "Prestem ples hea sapos yu agri.");
@@ -128,6 +144,7 @@ public class JenaFieldKit {
         wizardData.addScreen(metadataScreen);
 //        wizardStimulusScreen.populatePresenterScreen(experiment, false, 8);
         wizardData.addScreen(wizardStimulusScreen);
+        wizardData.addScreen(captureStimulusScreen);
 //        debugScreenPresenter.populatePresenterScreen(experiment, false, 11);
         wizardData.addScreen(debugScreenPresenter);
         return wizardData;
