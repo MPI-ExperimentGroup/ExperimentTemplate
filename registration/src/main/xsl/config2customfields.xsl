@@ -112,68 +112,30 @@
                 }    </xsl:text>
         </xsl:result-document>
         <xsl:result-document href="{$targetClientDirectory}/util/ParticipantCsvExporter.java" method="text">
+            <xsl:text>package nl.mpi.tg.eg.frinex.util;
+                
+                import java.io.IOException;
+                import java.text.SimpleDateFormat;
+                import java.util.List;
+                import nl.mpi.tg.eg.frinex.model.Participant;
+                import nl.mpi.tg.eg.frinex.model.TagData;
+                import org.apache.commons.csv.CSVPrinter;
+                
+                public class ParticipantCsvExporter {
+            </xsl:text>
             <xsl:if test="count(experiment/stimuli/stimulus) gt 200">
-                <xsl:text>package nl.mpi.tg.eg.frinex.util;
-                    import java.io.IOException;
-                    import java.util.List;
-                    import nl.mpi.tg.eg.frinex.model.Participant;
-                    import nl.mpi.tg.eg.frinex.model.TagData;
-                    import org.apache.commons.csv.CSVPrinter;
-                    public class ParticipantCsvExporter {
-                    <!-- public ParticipantCsvExporter() throws CsvExportException{
-                    throw new CsvExportException("Too many stimuli items (</xsl:text>
-                <xsl:value-of select="count(experiment/stimuli/stimulus)"/>
-                <xsl:text>)for this CSV export type to be produced. Please refer to the other CSV files provided.");
-                    }-->
+                <xsl:text>
                     public void appendAggregateCsvHeader(CSVPrinter printer) throws IOException {
                     printer.printRecord("Too many stimuli items (</xsl:text>
                 <xsl:value-of select="count(experiment/stimuli/stimulus)"/>
                 <xsl:text>)for this CSV export type to be produced. Please refer to the other CSV files provided.");
                     }
                     public void appendAggregateCsvRow(CSVPrinter printer, Participant participant, List&lt;TagData&gt; participantTagData) {
-                    }
-                    public void appendCsvHeader(CSVPrinter printer) {
-                    }
-                    public void appendCsvRow(CSVPrinter printer, Participant participant) {
-                    }
                     }</xsl:text>
             </xsl:if>
             <xsl:if test="count(experiment/stimuli/stimulus) le 200">
                 <!--<xsl:value-of select="count(experiment/stimuli/stimulus)"/>-->
-                <xsl:text>package nl.mpi.tg.eg.frinex.util;
-                
-                    import java.io.IOException;
-                    import java.text.SimpleDateFormat;
-                    import java.util.List;
-                    import nl.mpi.tg.eg.frinex.model.Participant;
-                    import nl.mpi.tg.eg.frinex.model.TagData;
-                    import org.apache.commons.csv.CSVPrinter;
-                
-                    public class ParticipantCsvExporter {
-                    public void appendCsvHeader(CSVPrinter printer) throws IOException {
-                    printer.printRecord(</xsl:text>
-                <xsl:for-each select="experiment/metadata/field">
-                    <xsl:text>"</xsl:text>
-                    <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" />
-                    <xsl:text>"</xsl:text>
-                    <xsl:if test="position() != last()">
-                        <xsl:text>,</xsl:text>
-                    </xsl:if>
-                </xsl:for-each>
-                <xsl:text>);
-                    }
-                    public void appendCsvRow(CSVPrinter printer, Participant participant) throws IOException {
-                    printer.printRecord(</xsl:text>
-                <xsl:for-each select="experiment/metadata/field">
-                    <xsl:text>participant.get</xsl:text>
-                    <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" />
-                    <xsl:text>()</xsl:text>
-                    <xsl:if test="position() != last()">
-                        <xsl:text>,</xsl:text>
-                    </xsl:if>
-                </xsl:for-each>
-                <xsl:text>);
-                    }
+                <xsl:text>
                     public void appendAggregateCsvHeader(CSVPrinter printer) throws IOException {
                     printer.printRecord("UserId"</xsl:text>
                 <xsl:for-each select="experiment/metadata/field">
@@ -282,8 +244,34 @@
                 </xsl:for-each>
                 <xsl:text>);
                     }
-                    }    </xsl:text>
+                </xsl:text>
             </xsl:if>
+            <xsl:text>
+                public void appendCsvHeader(CSVPrinter printer) throws IOException {
+                printer.printRecord(</xsl:text>
+            <xsl:for-each select="experiment/metadata/field">
+                <xsl:text>"</xsl:text>
+                <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" />
+                <xsl:text>"</xsl:text>
+                <xsl:if test="position() != last()">
+                    <xsl:text>,</xsl:text>
+                </xsl:if>
+            </xsl:for-each>
+            <xsl:text>);
+                }
+                public void appendCsvRow(CSVPrinter printer, Participant participant) throws IOException {
+                printer.printRecord(</xsl:text>
+            <xsl:for-each select="experiment/metadata/field">
+                <xsl:text>participant.get</xsl:text>
+                <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" />
+                <xsl:text>()</xsl:text>
+                <xsl:if test="position() != last()">
+                    <xsl:text>,</xsl:text>
+                </xsl:if>
+            </xsl:for-each>
+            <xsl:text>);
+                }
+                }</xsl:text>
         </xsl:result-document>
         <xsl:result-document href="{$targetTemplateDirectory}/participanttable.html" method="text">
             <xsl:text>&lt;!DOCTYPE html&gt;
