@@ -111,6 +111,7 @@ public class ShawiFieldKit {
         wizardStimulusScreen.setScreenTitle(screenLabel);
         wizardStimulusScreen.setMenuLabel(screenLabel);
         wizardStimulusScreen.setScreenLabel(screenLabel);
+        wizardStimulusScreen.setScreenTag(screenLabel);
         wizardStimulusScreen.setStimulusTagArray(stimulusTagArray);
         wizardStimulusScreen.setFeatureValuesArray(featureValuesArray);
         wizardStimulusScreen.setMaxStimuli(maxStimuli);
