@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.experimentdesigner.model;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.TreeSet;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -193,4 +194,30 @@ public class Stimulus implements Serializable {
     public static String cleanTagString(String stimulusTag) {
         return stimulusTag.replaceAll("[ \\t\\n\\x0B\\f\\r\\(\\)\\{\\};\\?\\/\\\\\\]\\[,'\"\\.=]+", "_");
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 37 * hash + Objects.hashCode(this.identifier);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Stimulus other = (Stimulus) obj;
+        if (!Objects.equals(this.identifier, other.identifier)) {
+            return false;
+        }
+        return true;
+    }
+    
 }
