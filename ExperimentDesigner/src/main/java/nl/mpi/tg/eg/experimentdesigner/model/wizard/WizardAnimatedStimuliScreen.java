@@ -171,14 +171,17 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             // show group without background or animation and play code audio
             final PresenterFeature gridFeature = addStimulusGrid(hasMoreStimulusFeature, 100, false, false, false);
 
-            final PresenterFeature stimulusCodeAudio = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
-            stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>_question");
-            stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+            final PresenterFeature stimulusCodeAudio1 = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
+            stimulusCodeAudio1.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>_question");
+            stimulusCodeAudio1.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+            final PresenterFeature stimulusCodeAudio2 = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
+            stimulusCodeAudio2.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>_question");
+            stimulusCodeAudio2.addFeatureAttributes(FeatureAttribute.msToNext, "0");
             final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.actionButton, "Play Sound");
             presenterFeature.addFeatureAttributes(FeatureAttribute.styleName, "hiddenTopRight");
-            presenterFeature.getPresenterFeatureList().add(stimulusCodeAudio);
+            presenterFeature.getPresenterFeatureList().add(stimulusCodeAudio1);
             gridFeature.getPresenterFeatureList().add(presenterFeature);
-            gridFeature.getPresenterFeatureList().add(stimulusCodeAudio);
+            gridFeature.getPresenterFeatureList().add(stimulusCodeAudio2);
             if (!isSecondTask) {
                 PresenterFeature nextButtonFeature4 = getNextButtonFeature();
                 gridFeature.getPresenterFeatureList().add(nextButtonFeature4);
