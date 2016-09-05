@@ -124,11 +124,13 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
 
     @Override
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        String screenName = "";
         final List<Stimulus> stimuliList = experiment.getStimuli();
         for (final String stimulusTag : stimulusTagArray) {
-            stimuliList.add(new Stimulus(stimulusTag, null, null, stimulusTag, stimulusTag, null, 0, new HashSet<>(Arrays.asList(new String[]{stimulusTag})), null));
-            screenName += stimulusTag;
+            final Stimulus stimulus = new Stimulus(stimulusTag, null, null, stimulusTag, stimulusTag, null, 0, new HashSet<>(Arrays.asList(new String[]{stimulusTag})), null);
+            if (!stimuliList.contains(stimulus)) {
+                // keep the stimulus list unique while still ordered
+                stimuliList.add(stimulus);
+            }
         }
         presenterScreen.setMenuLabel(getScreenTitle());
 //        setScreenTag(screenName + "Screen");
