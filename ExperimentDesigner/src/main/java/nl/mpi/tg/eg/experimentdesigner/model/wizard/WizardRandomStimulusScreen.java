@@ -245,7 +245,8 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
                 } else {
                     final String[] splitScreenText = stimulusLine.split(":", 2);
                     tagSet.addAll(Arrays.asList(splitScreenText[0].split("/")));
-                    stimulus = new Stimulus(stimulusLine, null, null, null, splitScreenText[1].replace("\n", "<br/>"), null/*splitScreenText[0].replace(" ", "_").replace("/", "_")*/, 0, tagSet, null);
+                    final String substring = (stimulusLine.length() < 255) ? stimulusLine : stimulusLine.substring(0, 254);
+                    stimulus = new Stimulus(substring, null, null, null, splitScreenText[1].replace("\n", "<br/>"), null/*splitScreenText[0].replace(" ", "_").replace("/", "_")*/, 0, tagSet, null);
                 }
                 stimuliList.add(stimulus);
             }
