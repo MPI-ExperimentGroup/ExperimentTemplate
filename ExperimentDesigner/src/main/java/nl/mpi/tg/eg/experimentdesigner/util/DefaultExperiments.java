@@ -78,6 +78,7 @@ public class DefaultExperiments {
         experimentRepository.save(new NblExperiment01().getExperiment());
         experimentRepository.save(new HRExperiment01().getExperiment());
         experimentRepository.save(new HRPretest().getExperiment());
+        experimentRepository.save(new HRPretest02().getExperiment());
         experimentRepository.save(new KinOathExample().getExperiment());
         experimentRepository.save(new RosselFieldKit().getExperiment());
         experimentRepository.save(new WellspringsSamoanFieldKit().getExperiment());
