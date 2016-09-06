@@ -79,13 +79,13 @@ public class StimulusProvider {
         getSubset(selectionTags, stimulusArray.size(), randomise, repeatCount, repeatRandomWindow, storedStimulusList, currentStimuliIndex);
     }
 
-    public void getSdCardSubset(final ArrayList<String> directoryTagArray, final List<String[]> directoryList, final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final int maxStimulusCount, final boolean randomise, final int repeatCount, final String seenList) {
+    public void getSdCardSubset(final ArrayList<String> directoryTagArray, final List<String[]> directoryList, final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String seenList) {
         final List<Stimulus> stimulusListCopy = new ArrayList<>();
         stimulusSelectionArray.clear();
-        appendSdCardSubset(directoryTagArray, stimulusListCopy, directoryList, simulusLoadedListener, simulusErrorListener, maxStimulusCount, randomise, repeatCount, seenList);
+        appendSdCardSubset(directoryTagArray, stimulusListCopy, directoryList, simulusLoadedListener, simulusErrorListener, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, seenList);
     }
 
-    private void appendSdCardSubset(final ArrayList<String> directoryTagArray, final List<Stimulus> stimulusListCopy, final List<String[]> directoryList, final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final int maxStimulusCount, final boolean randomise, final int repeatCount, final String seenList) {
+    private void appendSdCardSubset(final ArrayList<String> directoryTagArray, final List<Stimulus> stimulusListCopy, final List<String[]> directoryList, final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String seenList) {
         if (directoryTagArray.isEmpty()) {
             final List<Stimulus> stimulusSubsetArrayTemp = new ArrayList<>();
             if (!directoryList.isEmpty()) {
@@ -107,10 +107,7 @@ public class StimulusProvider {
                         }
                     });
                 }
-                stimulusSubsetArray.clear();
-                for (int repeatIndex = 0; repeatIndex < repeatCount; repeatIndex++) {
-                    stimulusSubsetArray.addAll(stimulusSubsetArrayTemp);
-                }
+                applyRepeatRandomWindow(stimulusSubsetArrayTemp, repeatCount, repeatRandomWindow);
 //                totalStimuli = stimulusSubsetArray.size();
                 simulusLoadedListener.postLoadTimerFired();
             }
@@ -119,7 +116,7 @@ public class StimulusProvider {
             final SdCardStimuli sdCardStimuli = new SdCardStimuli(stimulusListCopy, directoryList, ".*_question\\....$", new TimedStimulusListener() {
                 @Override
                 public void postLoadTimerFired() {
-                    appendSdCardSubset(directoryTagArray, stimulusListCopy, directoryList, simulusLoadedListener, simulusErrorListener, maxStimulusCount, randomise, repeatCount, seenList);
+                    appendSdCardSubset(directoryTagArray, stimulusListCopy, directoryList, simulusLoadedListener, simulusErrorListener, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, seenList);
                 }
             }, simulusErrorListener);
             sdCardStimuli.fillStimulusList(directoryTag);
@@ -166,6 +163,10 @@ public class StimulusProvider {
                 }
             }
         }
+        applyRepeatRandomWindow(stimulusSubsetArrayTemp, repeatCount, repeatRandomWindow);
+    }
+
+    private void applyRepeatRandomWindow(final List<Stimulus> stimulusSubsetArrayTemp, final int repeatCount, final int repeatRandomWindow) {
         stimulusSubsetArray.clear();
         for (int repeatIndex = 0; repeatIndex < repeatCount; repeatIndex++) {
             stimulusSubsetArray.addAll(stimulusSubsetArrayTemp);
@@ -339,7 +340,6 @@ public class StimulusProvider {
     /*public int getRemainingStimuli() {
         return stimulusSubsetArray.size() - currentStimuliIndex;
     }*/
-
 //    public void getNoisyStimuli() {
 //        // The first 2 trials should always be the filler words, Then there would be 12 real trials, each repeating twice in a complete random order (so 26 trials in all).
 //        stimulusSubsetArray.clear();
