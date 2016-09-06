@@ -42,7 +42,7 @@ public enum FeatureType {
     targetButton(false, true, new FeatureAttribute[]{target, styleName}),
     actionButton(true, true, new FeatureAttribute[]{hotKey, styleName}),
     ratingButton(false, false, new FeatureAttribute[]{eventTier, ratingLabels, ratingLabelLeft, ratingLabelRight}),
-    stimulusFreeText(true, false, new FeatureAttribute[]{validationRegex}),
+    stimulusFreeText(true, true, new FeatureAttribute[]{validationRegex}),
     stimulusRatingButton(false, false, new FeatureAttribute[]{eventTier, ratingLabelLeft, ratingLabelRight}),
     ratingFooterButton(false, true, new FeatureAttribute[]{eventTier, ratingLabels, ratingLabelLeft, ratingLabelRight}),
     targetFooterButton(false, true, new FeatureAttribute[]{target}),
@@ -85,7 +85,7 @@ public enum FeatureType {
     preloadAllStimuli(true, false, null, true, false, Contitionals.none),
     showStimulus(true, false, null, false, false, Contitionals.none), // todo: should this be here?
     showStimulusGrid(true, false, new FeatureAttribute[]{columnCount, imageWidth, eventTag}, true, false, Contitionals.hasCorrectIncorrect),
-    matchingStimulusGrid(false, false, new FeatureAttribute[]{columnCount, imageWidth, eventTag, matchingRegex}, false, false, Contitionals.hasCorrectIncorrect),
+    matchingStimulusGrid(false, false, new FeatureAttribute[]{columnCount, maxWidth, animate, matchingRegex, maxStimuli, randomise}, false, false, Contitionals.hasCorrectIncorrect),
     pause(true, false, new FeatureAttribute[]{msToNext}),
     stimulusPause(true, false, null),
     stimulusLabel(false, false, null),
