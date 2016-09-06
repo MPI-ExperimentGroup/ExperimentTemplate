@@ -169,9 +169,11 @@ public class DefaultExperiments {
         final Metadata metadata = new Metadata("workerId", "Reporter name *", ".'{'3,'}'", "Please enter at least three letters.", true, "This test can only be done once per worker.");
         final Metadata metadata1 = new Metadata("errordevice", "Device model", ".'{'2,'}'", "Please enter the device model", false, null);
         final Metadata metadata2 = new Metadata("errordescription", "Please describe the error", ".'{'2,'}'", "Please enter a short description of the issue", false, null);
+        final Metadata metadata3 = new Metadata("emailAddress", "Please enter an email address", ".'{'2,'}'", "Please enter a short description of the issue", false, null);
         experiment.getMetadata().add(metadata);
         experiment.getMetadata().add(metadata1);
         experiment.getMetadata().add(metadata2);
+        experiment.getMetadata().add(metadata3);
         metadataRepository.save(experiment.getMetadata());
         addStimuli(experiment);
 //        experiment.getPresenterScreen().add(addAnnotationTimelinePanel(presenterFeatureRepository));
@@ -329,6 +331,9 @@ public class DefaultExperiments {
                         break;
                     case fieldName:
                         presenterFeature.addFeatureAttributes(attribute, "workerId");
+                        break;
+                    case animate:
+                        presenterFeature.addFeatureAttributes(attribute, "bounce");
                         break;
                     default:
                         presenterFeature.addFeatureAttributes(attribute, attribute.name());
