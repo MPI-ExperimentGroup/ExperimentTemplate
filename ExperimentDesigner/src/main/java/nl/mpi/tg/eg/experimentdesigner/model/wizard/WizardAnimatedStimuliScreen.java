@@ -275,7 +275,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
         matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.maxWidth, Integer.toString(stimulusSize));
         matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.animate, (animate) ? "bounce" : "none");
         matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.columnCount, "10");
-        matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(this.wizardScreenData.getStimulusMsDelay()));
+//        matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(this.wizardScreenData.getStimulusMsDelay()));
         matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.matchingRegex, MATCHING_REGEX);
         final PresenterFeature returnFeature;
         if (background) {
@@ -302,8 +302,10 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             returnFeature.getPresenterFeatureList().add(presenterFeature);
         }
         final PresenterFeature responseCorrect = new PresenterFeature(FeatureType.responseCorrect, null);
+        responseCorrect.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         matchingStimulusGrid.getPresenterFeatureList().add(responseCorrect);
         final PresenterFeature responseIncorrect = new PresenterFeature(FeatureType.responseIncorrect, null);
+        responseIncorrect.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         matchingStimulusGrid.getPresenterFeatureList().add(responseIncorrect);
 
         final PresenterFeature endAudioRecorderTagFeatureCorrect = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
