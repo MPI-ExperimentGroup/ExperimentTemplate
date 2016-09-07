@@ -60,7 +60,7 @@ public class Stimulus implements Serializable {
     }
 
     public Stimulus(String identifier, String audioPath, String videoPath, String imagePath, String label, String code, int pauseMs, HashSet<String> stimulusTags, String ratingLabels) {
-        this.identifier = identifier;
+        this.identifier = (identifier == null) ? null : cleanTagString(identifier);
         this.audioPath = audioPath;
         this.videoPath = videoPath;
         this.imagePath = imagePath;
@@ -98,7 +98,7 @@ public class Stimulus implements Serializable {
     }
 
     public void setIdentifier(String identifier) {
-        this.identifier = identifier;
+        this.identifier = (identifier == null) ? null : cleanTagString(identifier);
     }
 
     @XmlAttribute
@@ -191,7 +191,7 @@ public class Stimulus implements Serializable {
         this.stimulusTags.add(cleanTagString(stimulusTag));
     }
 
-    public static String cleanTagString(String stimulusTag) {
+    public static final String cleanTagString(String stimulusTag) {
         return stimulusTag.replaceAll("[ \\t\\n\\x0B\\f\\r\\(\\)\\{\\};\\?\\/\\\\\\]\\[,'\"\\.=]+", "_");
     }
 
@@ -219,5 +219,5 @@ public class Stimulus implements Serializable {
         }
         return true;
     }
-    
+
 }
