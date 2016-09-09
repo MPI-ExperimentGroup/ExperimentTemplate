@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.experiment.client.service;
 
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.SdCardStimulus;
+import nl.mpi.tg.eg.experiment.client.model.UserId;
 
 /**
  * @since Jun 29, 2016 2:49:37 PM (creation date)
@@ -26,21 +27,55 @@ import nl.mpi.tg.eg.experiment.client.model.SdCardStimulus;
  */
 public class SdCardImageCapture {
 
+    final private TimedStimulusListener timedStimulusListener;
     final private SdCardStimulus sdCardStimulus;
+    final private UserId userId;
 
-    public SdCardImageCapture(SdCardStimulus sdCardStimulus) {
+    public SdCardImageCapture(final TimedStimulusListener timedStimulusListener, SdCardStimulus sdCardStimulus, final UserId userId) {
+        this.timedStimulusListener = timedStimulusListener;
         this.sdCardStimulus = sdCardStimulus;
+        this.userId = userId;
     }
 
     public boolean hasBeenCaptured() {
         return false;
     }
 
-    public void captureImage(final TimedStimulusListener timedStimulusListener) {
+    public void captureImage() {
 
+        captureImageUI(userId.toString(), sdCardStimulus.getUniqueId());
     }
 
     public String getCapturedPath() {
         return sdCardStimulus.getImage(); // todo change this
     }
+
+//    protected void captureStimulusImage() {
+//        // todo: add capture / replace button
+//        captureImageUI(userId.toString(), sdCardStimulus.getUniqueId());
+////        throw new UnsupportedOperationException();
+//    }
+    protected void imageCaptured(String stimulusIdString, String fullPath) {
+        timedStimulusListener.postLoadTimerFired();
+    }
+
+    protected void imageCapturedFailed(String stimulusIdString, String message) {
+        throw new UnsupportedOperationException(); // todo: add error display
+    }
+
+    private native void captureImageUI(String userIdString, String stimulusIdString) /*-{
+        var sdCardImageCapture = this;
+        console.log("captureImageUI: " + userIdString + " : " + stimulusIdString);
+        if($wnd.plugins){
+            $wnd.navigator.device.capture.captureImage(function (mediaFiles) {
+                console.log("captureImageOk: " + mediaFiles[0].fullPath);
+                sdCardImageCapture.@nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture::imageCaptured(Ljava/lang/String;Ljava/lang/String;)(stimulusIdString, mediaFiles[0].fullPath);
+            }, function (error) {
+                console.log("captureImageError: " + error.code);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture::imageCapturedFailed(Ljava/lang/String;Ljava/lang/String;)(stimulusIdString, "Error code:" + error.code);
+            }, {limit:1});
+        } else {
+            sdCardImageCapture.@nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture::imageCapturedFailed(Ljava/lang/String;Ljava/lang/String;)(stimulusIdString, null);
+        }
+     }-*/;
 }
