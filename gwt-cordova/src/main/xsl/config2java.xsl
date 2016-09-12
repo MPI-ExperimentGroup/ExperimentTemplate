@@ -557,6 +557,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(</xsl:text>
+        <xsl:value-of select="if(local-name() eq 'stimulusImageCapture') then concat('messages.', generate-id(.), '(), ') else ''" />
         <xsl:value-of select="if(@percentOfPage) then concat(@percentOfPage, ', ') else ''" />
         <xsl:value-of select="if(@maxHeight) then concat(@maxHeight, ', ') else ''" />
         <xsl:value-of select="if(@maxWidth) then concat(@maxWidth, ', ') else ''" />
