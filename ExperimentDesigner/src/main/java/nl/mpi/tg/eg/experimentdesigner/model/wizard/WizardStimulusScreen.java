@@ -155,7 +155,7 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
         // todo: add more reverter tags as required
         if (stimulusImageCapture) {
-            final PresenterFeature startRecorderFeature = new PresenterFeature(FeatureType.stimulusImageCapture, null);
+            final PresenterFeature startRecorderFeature = new PresenterFeature(FeatureType.stimulusImageCapture, "Take Photo");
             startRecorderFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
             startRecorderFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
             startRecorderFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "80");
