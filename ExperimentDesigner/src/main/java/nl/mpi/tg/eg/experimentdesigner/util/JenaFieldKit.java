@@ -151,6 +151,8 @@ public class JenaFieldKit {
     }
 
     public Experiment getExperiment() {
-        return wizardController.getExperiment(getWizardData());
+        final Experiment experiment = wizardController.getExperiment(getWizardData());
+        experiment.setAppNameInternal("VanuatuFieldKit");
+        return experiment;
     }
 }
