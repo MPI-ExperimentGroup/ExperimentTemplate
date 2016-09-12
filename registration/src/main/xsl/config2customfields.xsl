@@ -123,7 +123,7 @@
                 
                 public class ParticipantCsvExporter {
             </xsl:text>
-            <xsl:if test="count(experiment/stimuli/stimulus) gt 200">
+<!--            <xsl:if test="count(experiment/stimuli/stimulus) gt 200">
                 <xsl:text>
                     public void appendAggregateCsvHeader(CSVPrinter printer) throws IOException {
                     printer.printRecord("Too many stimuli items (</xsl:text>
@@ -132,8 +132,8 @@
                     }
                     public void appendAggregateCsvRow(CSVPrinter printer, Participant participant, List&lt;TagData&gt; participantTagData) {
                     }</xsl:text>
-            </xsl:if>
-            <xsl:if test="count(experiment/stimuli/stimulus) le 200">
+            </xsl:if>-->
+            <!--<xsl:if test="count(experiment/stimuli/stimulus) le 200">-->
                 <!--<xsl:value-of select="count(experiment/stimuli/stimulus)"/>-->
                 <xsl:text>
                     public void appendAggregateCsvHeader(CSVPrinter printer) throws IOException {
@@ -143,10 +143,10 @@
                     <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" />
                     <xsl:text>"</xsl:text>           
                 </xsl:for-each>
-                <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@code)">
+                <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@id)">
                     <xsl:text>,"</xsl:text>                
                     <xsl:value-of select="." />                
-                    <xsl:text>","</xsl:text>             
+                    <xsl:text>","</xsl:text>  
                     <xsl:value-of select="." /> 
                     <xsl:text>_datetime",</xsl:text>
                     <xsl:text>"</xsl:text>                
@@ -161,7 +161,7 @@
                     public void appendAggregateCsvRow(CSVPrinter printer, Participant participant, List&lt;TagData&gt; participantTagData) throws IOException, CsvExportException {
                     SimpleDateFormat format = new SimpleDateFormat ("yyyy/MM/dd hh:mm:ss");
                 </xsl:text>
-                <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@code)">
+                <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@id)">
                     <xsl:text>String stimulus_</xsl:text>                
                     <xsl:value-of select="." />                
                     <xsl:text> = "";&#xa;</xsl:text>
@@ -185,7 +185,7 @@
                     startData=currentData;
                     switch(startData.getTagValue()){
                 </xsl:text>
-                <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@code)">
+                <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@id)">
                     <xsl:text>case "</xsl:text>                
                     <xsl:value-of select="." />                
                     <xsl:text>":
@@ -205,7 +205,7 @@
                     if(startData!=null) //throw new CsvExportException("no start for: " + endData.getEventTag() + " " + endData.getTagValue() + " " + endData.getUserId() + " " + endData.getTagDate());
                     switch(startData.getTagValue()){
                 </xsl:text>
-                <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@code)">
+                <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@id)">
                     <xsl:text>case "</xsl:text>                
                     <xsl:value-of select="." />                
                     <xsl:text>":
@@ -231,7 +231,7 @@
                     <xsl:value-of select="concat(upper-case(substring(@postName,1,1)), substring(@postName, 2))" />
                     <xsl:text>()</xsl:text>
                 </xsl:for-each>
-                <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@code)">
+                <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/@id)">
                     <xsl:text>,&#xa;stimulus_</xsl:text>  
                     <xsl:value-of select="." />                
                     <xsl:text>, datetime_</xsl:text>                
@@ -245,7 +245,7 @@
                 <xsl:text>);
                     }
                 </xsl:text>
-            </xsl:if>
+            <!--</xsl:if>-->
             <xsl:text>
                 public void appendCsvHeader(CSVPrinter printer) throws IOException {
                 printer.printRecord("UserId",</xsl:text>
