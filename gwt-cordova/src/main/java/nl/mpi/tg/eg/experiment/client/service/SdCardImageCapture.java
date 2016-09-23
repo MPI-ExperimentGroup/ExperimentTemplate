@@ -17,9 +17,11 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
+import com.google.gwt.user.client.Timer;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.SdCardStimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
+import nl.mpi.tg.eg.experiment.client.model.UserResults;
 
 /**
  * @since Jun 29, 2016 2:49:37 PM (creation date)
@@ -30,24 +32,32 @@ public class SdCardImageCapture {
     final private TimedStimulusListener timedStimulusListener;
     final private SdCardStimulus sdCardStimulus;
     final private UserId userId;
+    private final LocalStorage localStorage;
+    protected static final String CAPTURED_IMAGES = "capturedImages";
 
-    public SdCardImageCapture(final TimedStimulusListener timedStimulusListener, SdCardStimulus sdCardStimulus, final UserId userId) {
+    public SdCardImageCapture(TimedStimulusListener timedStimulusListener, SdCardStimulus sdCardStimulus, UserId userId, LocalStorage localStorage) {
         this.timedStimulusListener = timedStimulusListener;
         this.sdCardStimulus = sdCardStimulus;
         this.userId = userId;
+        this.localStorage = localStorage;
     }
 
     public boolean hasBeenCaptured() {
-        return false;
+        final String storedDataValue = localStorage.getStoredDataValue(userId, CAPTURED_IMAGES + sdCardStimulus.getUniqueId());
+        return storedDataValue != null && storedDataValue.length() > 0;
     }
 
     public void captureImage() {
-
         captureImageUI(userId.toString(), sdCardStimulus.getUniqueId());
     }
 
     public String getCapturedPath() {
-        return sdCardStimulus.getImage(); // todo change this
+        final String storedDataValue = localStorage.getStoredDataValue(userId, CAPTURED_IMAGES + sdCardStimulus.getUniqueId());
+        if (storedDataValue != null && storedDataValue.length() > 0) {
+            return storedDataValue;
+        } else {
+            return sdCardStimulus.getImage(); // todo change this
+        }
     }
 
 //    protected void captureStimulusImage() {
@@ -55,27 +65,49 @@ public class SdCardImageCapture {
 //        captureImageUI(userId.toString(), sdCardStimulus.getUniqueId());
 ////        throw new UnsupportedOperationException();
 //    }
-    protected void imageCaptured(String stimulusIdString, String fullPath) {
-        timedStimulusListener.postLoadTimerFired();
+    //    protected void stimulusImageCapture(int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+//        final String workerId = userResults.getUserData().getMetadataValue(new MetadataFieldProvider().workerIdMetadataField);
+////        String directoryPath= ((SdCardStimulus)stimulusProvider.getCurrentStimulus()).
+//        super.captureStimulusImage(workerId, directoryName, stimulusProvider.getCurrentStimulus().getUniqueId());
+//    }
+    protected void imageCaptured(final String stimulusIdString, final String fullPath) {
+        Timer timer = new Timer() {
+            @Override
+            public void run() {
+                localStorage.setStoredDataValue(userId, CAPTURED_IMAGES + sdCardStimulus.getUniqueId(), fullPath);
+                timedStimulusListener.postLoadTimerFired();
+            }
+        };
+        timer.schedule(1000);
     }
 
     protected void imageCapturedFailed(String stimulusIdString, String message) {
-        throw new UnsupportedOperationException(); // todo: add error display
+//        throw new UnsupportedOperationException(); // todo: add error display
     }
 
     private native void captureImageUI(String userIdString, String stimulusIdString) /*-{
         var sdCardImageCapture = this;
         console.log("captureImageUI: " + userIdString + " : " + stimulusIdString);
-        if($wnd.plugins){
-            $wnd.navigator.device.capture.captureImage(function (mediaFiles) {
-                console.log("captureImageOk: " + mediaFiles[0].fullPath);
-                sdCardImageCapture.@nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture::imageCaptured(Ljava/lang/String;Ljava/lang/String;)(stimulusIdString, mediaFiles[0].fullPath);
+        if($wnd.navigator.camera){
+            $wnd.navigator.camera.getPicture(function (imageURI) {
+                console.log("captureImageOk: " + imageURI);
+                sdCardImageCapture.@nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture::imageCaptured(Ljava/lang/String;Ljava/lang/String;)(stimulusIdString, imageURI);
+                $wnd.navigator.camera.cleanup(function () {
+                    console.log("Camera cleanup success.")
+                }, function (message) {
+                    console.log('Failed cleanup because: ' + message);
+                });
             }, function (error) {
-                console.log("captureImageError: " + error.code);
-                abstractPresenter.@nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture::imageCapturedFailed(Ljava/lang/String;Ljava/lang/String;)(stimulusIdString, "Error code:" + error.code);
-            }, {limit:1});
+                console.log("captureImageError: " + error);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture::imageCapturedFailed(Ljava/lang/String;Ljava/lang/String;)(stimulusIdString, "Error:" + error);
+                $wnd.navigator.camera.cleanup(function () {
+                    console.log("Camera cleanup success.")
+                }, function (message) {
+                    console.log('Failed cleanup because: ' + message);
+                });
+            }, { destinationType: $wnd.Camera.DestinationType.FILE_URI });
         } else {
-            sdCardImageCapture.@nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture::imageCapturedFailed(Ljava/lang/String;Ljava/lang/String;)(stimulusIdString, null);
+          //  sdCardImageCapture.@nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture::imageCapturedFailed(Ljava/lang/String;Ljava/lang/String;)(stimulusIdString, null);
         }
      }-*/;
 }
