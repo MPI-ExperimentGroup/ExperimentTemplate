@@ -52,7 +52,7 @@ public class SdCardStimuli {
         final String directoryTag1 = (directoryTag.contains(MPI_STIMULI)) ? directoryTag.split(MPI_STIMULI, 2)[1] : directoryTag;
         scanSdCard(MPI_STIMULI, directoryTag1);
 //        testInsertStimulus();
-//        nonScan();
+        nonScan(directoryTag);
 //        for (GeneratedStimulus.Tag currentTag : tagArray) {
 //            scanSdCard(MPI_STIMULI, currentTag.name().replaceFirst("^tag_", ""));
 //        }
@@ -122,31 +122,44 @@ public class SdCardStimuli {
         simulusLoadedListener.postLoadTimerFired();
     }
 
-    private void nonScan() {
+    private void nonScan(final String directoryTag) {
+        if (directoryTag == null || !directoryTag.equals("/storage/emulated/")) {
+            insertDirectory("/storage/emulated/", "/storage/emulated/");
+            insertDirectory("/storage/emulated/jena/", "/static/jena/");
+        } else {
+//            String[] testFiles = new String[]{
+//                "Canoe.jpg",
+//                "Cocoa.jpg",
+//                "Flying%20fox.jpg"
+//            };
+//            for (String item : testFiles) {
+//                insertStimulus("file:///Users/petwit/Documents/ExperimentTemplate/gwt-cordova/src/main/static/jena/Pictures/", item);
+//            }
 //        insertDirectory("./path/path", "a directory name");
 //        insertDirectory("./path2/path2", "a directory 2 name");
-        String[][] testStiuli = new String[][]{
-            new String[]{"file:///storage/emulated/0/MPI_STIMULI/Task_2/1_pig_question.mp3", "1_pig_question.mp3"
-            }, new String[]{"file:///storage/emulated/0/MPI_STIMULI/Task_2/1_pig.mp3", "1_pig.mp3"
-            }, new String[]{"file:///storage/emulated/0/MPI_STIMULI/Task_2/1_pig.png", "1_pig.png"
-            }, new String[]{"file:///storage/emulated/0/MPI_STIMULI/Task_2/1_rat_question.mp3", "1_rat_question.mp3"
-            }, new String[]{"file:///storage/emulated/0/MPI_STIMULI/Task_2/1_rat.mp3", "1_rat.mp3"
-            }, new String[]{"file:///storage/emulated/0/MPI_STIMULI/Task_2/1_rat.png", "1_rat.png"
-            }, new String[]{"file:///storage/emulated/0/MPI_STIMULI/Task_2/2_bat_question.mp3", "2_bat_question.mp3"
-            }, new String[]{"file:///storage/emulated/0/MPI_STIMULI/Task_2/2_bat.mp3", "2_bat.mp3"
-            }, new String[]{"file:///storage/emulated/0/MPI_STIMULI/Task_2/2_bat.png", "2_bat.png"
-            }, new String[]{"file:///storage/emulated/0/MPI_STIMULI/Task_2/2_fish_question.mp3", "2_fish_question.mp3"
-            }, new String[]{"file:///storage/emulated/0/MPI_STIMULI/Task_2/2_fish.mp3", "2_fish.mp3"
-            }, new String[]{"file:///storage/emulated/0/MPI_STIMULI/Task_2/2_fish.png", "2_fish.png"}
+            String[][] testStiuli = new String[][]{
+                new String[]{"file:///storage/emulated/0/MPI_STIMULI/Task_2/1_pig_question.mp3", "1_pig_question.mp3"
+                }, new String[]{"file:///storage/emulated/0/MPI_STIMULI/Task_2/1_pig.mp3", "1_pig.mp3"
+                }, new String[]{"file:///storage/emulated/0/MPI_STIMULI/Task_2/1_pig.png", "1_pig.png"
+                }, new String[]{"file:///storage/emulated/0/MPI_STIMULI/Task_2/1_rat_question.mp3", "1_rat_question.mp3"
+                }, new String[]{"file:///storage/emulated/0/MPI_STIMULI/Task_2/1_rat.mp3", "1_rat.mp3"
+                }, new String[]{"file:///storage/emulated/0/MPI_STIMULI/Task_2/1_rat.png", "1_rat.png"
+                }, new String[]{"file:///storage/emulated/0/MPI_STIMULI/Task_2/2_bat_question.mp3", "2_bat_question.mp3"
+                }, new String[]{"file:///storage/emulated/0/MPI_STIMULI/Task_2/2_bat.mp3", "2_bat.mp3"
+                }, new String[]{"file:///storage/emulated/0/MPI_STIMULI/Task_2/2_bat.png", "2_bat.png"
+                }, new String[]{"file:///storage/emulated/0/MPI_STIMULI/Task_2/2_fish_question.mp3", "2_fish_question.mp3"
+                }, new String[]{"file:///storage/emulated/0/MPI_STIMULI/Task_2/2_fish.mp3", "2_fish.mp3"
+                }, new String[]{"file:///storage/emulated/0/MPI_STIMULI/Task_2/2_fish.png", "2_fish.png"}
 
-        //            "d1e263.aiff", "d1e378.mp3", "d1e521.jpg", "d1e674.ogg", "d1e831.aiff", "inge_grijp2.ogg", "sharon_flees3.ogg",
-        //            "d1e263.jpg", "d1e378.mp4", "d1e521.mp3", "d1e679.aiff", "d1e831.jpg", "inge_grijp3.mp3", "sharon_flees4.mp3",
-        //            "d1e263.mp3", "d1e378.ogg", "d1e521.mp4", "d1e679.jpg", "d1e831.mp3", "inge_grijp3.ogg", "sharon_flees4.ogg",
-        //            "d1e263.mp4", "d1e383.aiff", "d1e521.ogg", "d1e679.mp3", "d1e831.mp4", "inge_grijp4.mp3", "sharon_flees5.mp3",
-        //            "d1e263.ogg", "d1e383.jpg", "d1e526.aiff", "d1e679.mp4", "d1e831.ogg", "inge_grijp4.ogg"
-        };
-        for (String[] item : testStiuli) {
-            insertStimulus(item[0].replace("file:///storage/emulated/0/", "/static/"), item[1]);
+            //            "d1e263.aiff", "d1e378.mp3", "d1e521.jpg", "d1e674.ogg", "d1e831.aiff", "inge_grijp2.ogg", "sharon_flees3.ogg",
+            //            "d1e263.jpg", "d1e378.mp4", "d1e521.mp3", "d1e679.aiff", "d1e831.jpg", "inge_grijp3.mp3", "sharon_flees4.mp3",
+            //            "d1e263.mp3", "d1e378.ogg", "d1e521.mp4", "d1e679.jpg", "d1e831.mp3", "inge_grijp3.ogg", "sharon_flees4.ogg",
+            //            "d1e263.mp4", "d1e383.aiff", "d1e521.ogg", "d1e679.mp3", "d1e831.mp4", "inge_grijp4.mp3", "sharon_flees5.mp3",
+            //            "d1e263.ogg", "d1e383.jpg", "d1e526.aiff", "d1e679.mp4", "d1e831.ogg", "inge_grijp4.ogg"
+            };
+            for (String[] item : testStiuli) {
+                insertStimulus(item[0].replace("file:///storage/emulated/0/", "/static/"), item[1]);
+            }
         }
 //        insertStimulus("file:///storage/emulated/0/MPI_STIMULI/bowped/10.jpg", "10.jpg");
         Timer timer = new Timer() {
