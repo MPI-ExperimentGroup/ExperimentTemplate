@@ -61,17 +61,30 @@ public interface WizardScreen {
 //    String[] getFieldNames();
 //    public void setFieldValue(String fieldName, String fieldValue);
 //    public String getFieldValue(String fieldName);
+    @Deprecated
     PresenterScreen getPresenterScreen();
 
     public PresenterScreen populatePresenterScreen(final Experiment experiment, final boolean obfuscateScreenNames, final long displayOrder);
 
-    public WizardScreen getBackWizardScreen();
-
+//    public WizardScreen getBackWizardScreen();
+//    public void setBackWizardScreen(WizardScreen backWizardScreen);
+//    public WizardScreen getNextWizardScreen();
+//    public void setNextWizardScreen(WizardScreen nextWizardScreen);
+    @Deprecated
     public void setBackWizardScreen(WizardScreen backWizardScreen);
 
-    public WizardScreen getNextWizardScreen();
-
+    @Deprecated
     public void setNextWizardScreen(WizardScreen nextWizardScreen);
+
+    public WizardScreenData getWizardScreenData();
+
+    public WizardScreenData getBackWizardScreenData();
+
+    public WizardScreenData getNextWizardScreenData();
+
+    public void setBackWizardScreenData(WizardScreenData wizardScreenData);
+
+    public void setNextWizardScreenData(WizardScreenData wizardScreenData);
 
     public String getScreenText();
 
