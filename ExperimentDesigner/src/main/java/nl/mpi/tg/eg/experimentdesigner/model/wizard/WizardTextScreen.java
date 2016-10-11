@@ -30,8 +30,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
  */
 public class WizardTextScreen extends AbstractWizardScreen {
 
-    private WizardScreen buttonNextWizardScreen = null;
-
+//    private WizardScreen buttonNextWizardScreen = null;
     public WizardTextScreen(final String screenName, String screenText, final String nextButtonLabel) {
         super(screenName, screenName, screenName);
         this.setNextButton(nextButtonLabel);
@@ -39,28 +38,27 @@ public class WizardTextScreen extends AbstractWizardScreen {
 
     }
 
-    @Override
-    public void setNextWizardScreen(WizardScreen nextWizardScreen) {
-        buttonNextWizardScreen = nextWizardScreen;
-    }
-
-    @Override
-    public WizardScreen getNextWizardScreen() {
-        return buttonNextWizardScreen;
-    }
-
+//    @Override
+//    public void setNextWizardScreen(WizardScreen nextWizardScreen) {
+//        buttonNextWizardScreen = nextWizardScreen;
+//    }
+//
+//    @Override
+//    public WizardScreen getNextWizardScreen() {
+//        return buttonNextWizardScreen;
+//    }
     @Override
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        presenterScreen.setPresenterType(PresenterType.text);
+        getPresenterScreen().setPresenterType(PresenterType.text);
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        presenterScreen.setNextPresenter(null);
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, getScreenText()));
+        getPresenterScreen().setNextPresenter(null);
+        getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, getScreenText()));
         final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.targetButton, getNextButton());
-        actionButtonFeature.addFeatureAttributes(FeatureAttribute.target, buttonNextWizardScreen.getScreenTag());
+        actionButtonFeature.addFeatureAttributes(FeatureAttribute.target, getNextWizardScreenData().getScreenTag());
         actionButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
-        presenterScreen.getPresenterFeatureList().add(actionButtonFeature);
-        experiment.getPresenterScreen().add(presenterScreen);
-        return presenterScreen;
+        getPresenterScreen().getPresenterFeatureList().add(actionButtonFeature);
+        experiment.getPresenterScreen().add(getPresenterScreen());
+        return getPresenterScreen();
     }
 }
 //actionButtonFeature.addFeatureAttributes(FeatureAttribute.target, nextWizardScreen.getScreenTag());
