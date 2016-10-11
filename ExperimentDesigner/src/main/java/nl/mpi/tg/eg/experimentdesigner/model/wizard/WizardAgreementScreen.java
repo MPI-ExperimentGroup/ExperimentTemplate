@@ -39,13 +39,13 @@ public class WizardAgreementScreen extends AbstractWizardScreen {
 
     @Override
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        presenterScreen.setPresenterType(PresenterType.metadata);
+        getPresenterScreen().setPresenterType(PresenterType.metadata);
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, getScreenText()));
+        getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, getScreenText()));
         final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.targetButton, getNextButton());
-        presenterFeature.addFeatureAttributes(FeatureAttribute.target, getNextWizardScreen().getScreenTag());
-        presenterScreen.getPresenterFeatureList().add(presenterFeature);
-        experiment.getPresenterScreen().add(presenterScreen);
-        return presenterScreen;
+        presenterFeature.addFeatureAttributes(FeatureAttribute.target, getNextWizardScreenData().getScreenTag());
+        getPresenterScreen().getPresenterFeatureList().add(presenterFeature);
+        experiment.getPresenterScreen().add(getPresenterScreen());
+        return getPresenterScreen();
     }
 }
