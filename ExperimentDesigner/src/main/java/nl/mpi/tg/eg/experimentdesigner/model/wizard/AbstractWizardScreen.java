@@ -26,7 +26,6 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
  */
 public abstract class AbstractWizardScreen implements WizardScreen {
 
-    final PresenterScreen presenterScreen = new PresenterScreen();
     protected final WizardScreenData wizardScreenData;
 
     public AbstractWizardScreen() {
@@ -52,6 +51,7 @@ public abstract class AbstractWizardScreen implements WizardScreen {
         this.wizardScreenData.setScreenTitle(screenTitle);
     }
 
+    @Override
     public String getMenuLabel() {
         return this.wizardScreenData.getMenuLabel();
     }
@@ -60,32 +60,49 @@ public abstract class AbstractWizardScreen implements WizardScreen {
         this.wizardScreenData.setMenuLabel(menuLabel);
     }
 
+    @Override
     public String getScreenTag() {
         return this.wizardScreenData.getScreenTag();
     }
 
+    @Override
     public final void setScreenTag(String screenTag) {
         this.wizardScreenData.setScreenTag(screenTag);
     }
 
     @Override
-    public WizardScreen getBackWizardScreen() {
-        return this.wizardScreenData.getBackWizardScreen();
+    public WizardScreenData getWizardScreenData() {
+        return wizardScreenData;
+    }
+
+    @Override
+    public WizardScreenData getBackWizardScreenData() {
+        return this.wizardScreenData.getBackWizardScreenData();
+    }
+
+    @Override
+    public void setBackWizardScreenData(WizardScreenData backWizardScreenData) {
+        this.wizardScreenData.setBackWizardScreenData(backWizardScreenData);
+    }
+
+    @Override
+    public WizardScreenData getNextWizardScreenData() {
+        return this.wizardScreenData.getNextWizardScreenData();
+    }
+
+    @Override
+    public void setNextWizardScreenData(WizardScreenData nextWizardScreenData) {
+        this.wizardScreenData.setNextWizardScreenData(nextWizardScreenData);
     }
 
     @Override
     public void setBackWizardScreen(WizardScreen backWizardScreen) {
-        this.wizardScreenData.setBackWizardScreen(backWizardScreen);
-    }
-
-    @Override
-    public WizardScreen getNextWizardScreen() {
-        return this.wizardScreenData.getNextWizardScreen();
+        this.wizardScreenData.setBackWizardScreenData(backWizardScreen.getWizardScreenData());
     }
 
     @Override
     public void setNextWizardScreen(WizardScreen nextWizardScreen) {
-        this.wizardScreenData.setNextWizardScreen(nextWizardScreen);
+        this.wizardScreenData.setNextWizardScreenData(nextWizardScreen.getWizardScreenData());
     }
 
     @Override
@@ -118,22 +135,22 @@ public abstract class AbstractWizardScreen implements WizardScreen {
 
     @Override
     public PresenterScreen getPresenterScreen() {
-        return presenterScreen;
+        return this.wizardScreenData.getPresenterScreen();
     }
 
     @Override
     public PresenterScreen populatePresenterScreen(final Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        presenterScreen.setTitle((obfuscateScreenNames) ? experiment.getAppNameDisplay() + " " + displayOrder : getScreenTitle());
-        presenterScreen.setMenuLabel((getMenuLabel() != null) ? getMenuLabel() : getScreenTitle());
+        this.wizardScreenData.getPresenterScreen().setTitle((obfuscateScreenNames) ? experiment.getAppNameDisplay() + " " + displayOrder : getScreenTitle());
+        this.wizardScreenData.getPresenterScreen().setMenuLabel((getMenuLabel() != null) ? getMenuLabel() : getScreenTitle());
         final String currentTagString = (getScreenTag() != null) ? getScreenTag() : getScreenTitle();
-        presenterScreen.setSelfPresenterTag(currentTagString.replaceAll("[^A-Za-z0-9]", "_"));
-        if (getBackWizardScreen() != null) {
-            presenterScreen.setBackPresenter(getBackWizardScreen().getPresenterScreen());
+        this.wizardScreenData.getPresenterScreen().setSelfPresenterTag(currentTagString.replaceAll("[^A-Za-z0-9]", "_"));
+        if (getBackWizardScreenData() != null) {
+            this.wizardScreenData.getPresenterScreen().setBackPresenter(getBackWizardScreenData().getPresenterScreen());
         }
-        if (getNextWizardScreen() != null) {
-            presenterScreen.setNextPresenter(getNextWizardScreen().getPresenterScreen());
+        if (getNextWizardScreenData() != null) {
+            this.wizardScreenData.getPresenterScreen().setNextPresenter(getNextWizardScreenData().getPresenterScreen());
         }
-        presenterScreen.setDisplayOrder(displayOrder);
-        return presenterScreen;
+        this.wizardScreenData.getPresenterScreen().setDisplayOrder(displayOrder);
+        return this.wizardScreenData.getPresenterScreen();
     }
 }
