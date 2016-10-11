@@ -68,18 +68,18 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
     public PresenterScreen populatePresenterScreen(final Experiment experiment, final boolean obfuscateScreenNames, final long displayOrder) {
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
 //        populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        presenterScreen.setPresenterType(PresenterType.stimulus);
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, getScreenText()));
+        getPresenterScreen().setPresenterType(PresenterType.stimulus);
+        getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, getScreenText()));
         final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.audioButton, null);
         presenterFeature.addFeatureAttributes(FeatureAttribute.eventTag, "AudioTest");
         presenterFeature.addFeatureAttributes(FeatureAttribute.mp3, getAudioPath() + ".mp3");
         presenterFeature.addFeatureAttributes(FeatureAttribute.ogg, getAudioPath() + ".ogg");
         presenterFeature.addFeatureAttributes(FeatureAttribute.poster, getAudioPath() + ".jpg");
-        presenterScreen.getPresenterFeatureList().add(presenterFeature);
-        experiment.getPresenterScreen().add(presenterScreen);
+        getPresenterScreen().getPresenterFeatureList().add(presenterFeature);
+        experiment.getPresenterScreen().add(getPresenterScreen());
         final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.actionButton, getNextButton());
         presenterFeature.getPresenterFeatureList().add(actionButtonFeature);
         actionButtonFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
-        return presenterScreen;
+        return getPresenterScreen();
     }
 }
