@@ -149,15 +149,15 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
     @Override
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        presenterScreen.setPresenterType(PresenterType.metadata);
+        getPresenterScreen().setPresenterType(PresenterType.metadata);
         if (getScreenText() != null) {
-            presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, getScreenText()));
+            getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, getScreenText()));
         }
         for (Metadata metadata : wizardScreenData.getMetadataFields()) {
             experiment.getMetadata().add(metadata);
             final PresenterFeature metadataField = new PresenterFeature(FeatureType.metadataField, null);
             metadataField.addFeatureAttributes(FeatureAttribute.fieldName, metadata.getPostName());
-            presenterScreen.getPresenterFeatureList().add(metadataField);
+            getPresenterScreen().getPresenterFeatureList().add(metadataField);
         }
 //        if (wizardScreenData.getMetadataFields().isEmpty()) {
 //            presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMetadataFields, null));
@@ -171,20 +171,20 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
         final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.autoNextPresenter, null);
         onSuccessFeature.getPresenterFeatureList().add(menuButtonFeature);
         saveMetadataButton.getPresenterFeatureList().add(onSuccessFeature);
-        presenterScreen.getPresenterFeatureList().add(saveMetadataButton);
+        getPresenterScreen().getPresenterFeatureList().add(saveMetadataButton);
         if (postText != null || alternateNextScreen != null) {
-            presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+            getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
             if (postText != null) {
-                presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, postText));
+                getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, postText));
             }
             if (alternateNextScreen != null) {
                 final PresenterFeature alternateNextFeature = new PresenterFeature(FeatureType.targetButton, alternateButtonLabel);
                 alternateNextFeature.addFeatureAttributes(FeatureAttribute.target, alternateNextScreen.getScreenTag());
-                presenterScreen.getPresenterFeatureList().add(alternateNextFeature);
+                getPresenterScreen().getPresenterFeatureList().add(alternateNextFeature);
             }
         }
-        experiment.getPresenterScreen().add(presenterScreen);
-        return presenterScreen;
+        experiment.getPresenterScreen().add(getPresenterScreen());
+        return getPresenterScreen();
     }
 
     final public void insertMetadataByString(String fieldString) {
