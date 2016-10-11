@@ -73,8 +73,8 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             }
         }
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        presenterScreen.setPresenterType(PresenterType.stimulus);
-        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
+        getPresenterScreen().setPresenterType(PresenterType.stimulus);
+        List<PresenterFeature> presenterFeatureList = getPresenterScreen().getPresenterFeatureList();
         if (isCentreScreen()) {
             presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
         }
@@ -222,8 +222,8 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
         final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
         endOfStimulusFeature.getPresenterFeatureList().add(autoNextPresenter);
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
-        experiment.getPresenterScreen().add(presenterScreen);
-        return presenterScreen;
+        experiment.getPresenterScreen().add(getPresenterScreen());
+        return getPresenterScreen();
     }
     private static final String MATCHING_REGEX = "([^_]*_)*";
 
