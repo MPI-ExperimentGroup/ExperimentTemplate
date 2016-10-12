@@ -4,7 +4,7 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-experiment-designer</artifactId>
     <name>Frinex Experiment Designer</name>
-    <version>0.1.93-testing</version>
+    <version>0.1.581-testing</version>
     <packaging>war</packaging>
     <parent>
         <groupId>nl.mpi.tg.eg</groupId>
@@ -67,7 +67,14 @@
                         <phase>none</phase>                        
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>    
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <configuration>
+                    <path>/${destination.name}</path>
+                </configuration>
+            </plugin>  
         </plugins>
     </build>
 </project>
