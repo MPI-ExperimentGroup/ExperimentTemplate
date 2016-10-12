@@ -44,16 +44,16 @@ public class WizardKinshipScreen extends AbstractWizardScreen {
     @Override
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        presenterScreen.setPresenterType(PresenterType.kindiagram);
+        getPresenterScreen().setPresenterType(PresenterType.kindiagram);
         final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.addKinTypeGui, null);
         presenterFeature1.addFeatureAttributes(FeatureAttribute.diagramName, diagramName);
-        presenterScreen.getPresenterFeatureList().add(presenterFeature1);
+        getPresenterScreen().getPresenterFeatureList().add(presenterFeature1);
         final PresenterFeature presenterFeature2 = new PresenterFeature(FeatureType.loadKinTypeStringDiagram, null);
         presenterFeature2.addFeatureAttributes(FeatureAttribute.diagramName, diagramName);
         presenterFeature2.addFeatureAttributes(FeatureAttribute.msToNext, "0");
-        presenterScreen.getPresenterFeatureList().add(presenterFeature2);
-        experiment.getPresenterScreen().add(presenterScreen);
-        return presenterScreen;
+        getPresenterScreen().getPresenterFeatureList().add(presenterFeature2);
+        experiment.getPresenterScreen().add(getPresenterScreen());
+        return getPresenterScreen();
 
     }
 

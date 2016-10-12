@@ -48,9 +48,9 @@ public class WizardCompletionScreen extends AbstractWizardScreen {
     @Override
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        presenterScreen.setPresenterType(PresenterType.transmission);
+        getPresenterScreen().setPresenterType(PresenterType.transmission);
         final PresenterFeature sendAllDataFeature = new PresenterFeature(FeatureType.sendAllData, null);
-        presenterScreen.getPresenterFeatureList().add(sendAllDataFeature);
+        getPresenterScreen().getPresenterFeatureList().add(sendAllDataFeature);
 
         final PresenterFeature onSuccessFeature = new PresenterFeature(FeatureType.onSuccess, null);
         sendAllDataFeature.getPresenterFeatureList().add(onSuccessFeature);
@@ -77,7 +77,7 @@ public class WizardCompletionScreen extends AbstractWizardScreen {
         onErrorFeature.getPresenterFeatureList().add(retryFeature);
         retryFeature.addFeatureAttributes(FeatureAttribute.target, getScreenTag());
 
-        experiment.getPresenterScreen().add(presenterScreen);
-        return presenterScreen;
+        experiment.getPresenterScreen().add(getPresenterScreen());
+        return getPresenterScreen();
     }
 }

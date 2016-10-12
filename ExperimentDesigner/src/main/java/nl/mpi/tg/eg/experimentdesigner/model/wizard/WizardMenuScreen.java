@@ -48,23 +48,23 @@ public class WizardMenuScreen extends AbstractWizardScreen {
     @Override
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        presenterScreen.setPresenterType(PresenterType.menu);
+        getPresenterScreen().setPresenterType(PresenterType.menu);
         if (wizardScreenData.getScreenText1() != null) {
-            presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, wizardScreenData.getScreenText1()));
+            getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, wizardScreenData.getScreenText1()));
         }
         if (targetScreens.isEmpty()) {
-            presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMenuItems, null));
+            getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMenuItems, null));
         } else {
             for (AbstractWizardScreen targetScreen : targetScreens) {
                 final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.menuItem, targetScreen.getMenuLabel());
                 presenterFeature1.addFeatureAttributes(FeatureAttribute.target, targetScreen.getScreenTag());
-                presenterScreen.getPresenterFeatureList().add(presenterFeature1);
+                getPresenterScreen().getPresenterFeatureList().add(presenterFeature1);
             }
         }
         if (wizardScreenData.getScreenText2() != null) {
-            presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, wizardScreenData.getScreenText2()));
+            getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, wizardScreenData.getScreenText2()));
         }
-        experiment.getPresenterScreen().add(presenterScreen);
-        return presenterScreen;
+        experiment.getPresenterScreen().add(getPresenterScreen());
+        return getPresenterScreen();
     }
 }
