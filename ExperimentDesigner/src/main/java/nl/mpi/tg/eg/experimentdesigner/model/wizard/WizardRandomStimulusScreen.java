@@ -245,7 +245,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
                 } else {
                     final String[] splitScreenText = stimulusLine.split(":", 2);
                     tagSet.addAll(Arrays.asList(splitScreenText[0].split("/")));
-                    final String substring = (stimulusLine.length() < 255) ? stimulusLine : stimulusLine.substring(0, 254);
+                    final String substring = (stimulusLine.length() < 55) ? stimulusLine : stimulusLine.substring(0, 54);
                     stimulus = new Stimulus(substring, null, null, null, splitScreenText[1].replace("\n", "<br/>"), null/*splitScreenText[0].replace(" ", "_").replace("/", "_")*/, 0, tagSet, null);
                 }
                 stimuliList.add(stimulus);
@@ -254,8 +254,8 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
 
 //        final PresenterScreen presenterScreen = new PresenterScreen((obfuscateScreenNames) ? experiment.getAppNameDisplay() + " " + displayOrder : getScreenTitle(), getScreenTitle(), backPresenter, screenName, null, PresenterType.stimulus, displayOrder);
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        presenterScreen.setPresenterType(PresenterType.stimulus);
-        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
+        getPresenterScreen().setPresenterType(PresenterType.stimulus);
+        List<PresenterFeature> presenterFeatureList = getPresenterScreen().getPresenterFeatureList();
         if (isCentreScreen()) {
             presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
         }
@@ -350,7 +350,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
         endOfStimulusFeature.getPresenterFeatureList().add(autoNextPresenter);
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
-        experiment.getPresenterScreen().add(presenterScreen);
-        return presenterScreen;
+        experiment.getPresenterScreen().add(getPresenterScreen());
+        return getPresenterScreen();
     }
 }
