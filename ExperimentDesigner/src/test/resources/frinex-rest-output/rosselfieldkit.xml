@@ -148,8 +148,8 @@
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="Task 2" wavFormat="true" filePerStimulus="false"/>
                 <clearPage/>
-                <matchingStimulusGrid msToNext="0" randomise="true" matchingRegex="([^_]*_)*" columnCount="10" maxStimuli="1000" animate="none" maxWidth="100">
-                    <responseCorrect>
+                <matchingStimulusGrid randomise="true" matchingRegex="([^_]*_)*" columnCount="10" maxStimuli="1000" animate="none" maxWidth="100">
+                    <responseCorrect msToNext="0">
                         <endAudioRecorderTag eventTier="4" eventTag="correct image clicked"/>
                         <clearPage/>
                         <backgroundImage msToNext="1" src="file:///storage/emulated/0/MPI_STIMULI/background2.png">
@@ -165,7 +165,7 @@
                             </actionButton>
                         </backgroundImage>
                     </responseCorrect>
-                    <responseIncorrect>
+                    <responseIncorrect msToNext="0">
                         <endAudioRecorderTag eventTier="4" eventTag="incorrect image clicked"/>
                         <clearPage/>
                         <backgroundImage msToNext="1" src="file:///storage/emulated/0/MPI_STIMULI/background2.png">
@@ -203,9 +203,6 @@
         </loadSdCardStimulus>
     </presenter>
     <stimuli>
-        <stimulus identifier="FieldKit" imagePath="FieldKit" label="FieldKit" pauseMs="0">
-            <tag>FieldKit</tag>
-        </stimulus>
         <stimulus identifier="FieldKit" imagePath="FieldKit" label="FieldKit" pauseMs="0">
             <tag>FieldKit</tag>
         </stimulus>
