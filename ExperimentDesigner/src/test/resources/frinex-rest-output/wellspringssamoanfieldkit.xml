@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<experiment appNameDisplay="WellspringsSamoan" appNameInternal="wellspringssamoan" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="true" textFontSize="17">
+    <metadata>
+        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Nem blong man/woman we i toktok"/>
+    </metadata>
+    <presenter displayOrder="1" menuLabel="Welcome" type="menu" self="Welcome" title="Welcome">
+        <menuItem featureText="Instructions" target="Instructions"/>
+        <menuItem featureText="Stat - Go long program nao" target="Start"/>
+    </presenter>
+    <presenter back="Welcome" displayOrder="2" menuLabel="Start" next="Edit_User" type="metadata" self="Start" title="Start">
+        <existingUserCheck>
+            <multipleUsers>
+                <plainText featureText="Makem wan niufala rikoding"/>
+                <createUserButton featureText="Niu rikording" target="Edit_User"/>
+                <addPadding/>
+                <plainText featureText="Gobak long wan rikoding we yu stat hem finis"/>
+                <targetButton featureText="Gobak long wan olfala rikoding" target="SelectUser"/>
+            </multipleUsers>
+            <singleUser>
+                <autoNextPresenter/>
+            </singleUser>
+        </existingUserCheck>
+    </presenter>
+    <presenter back="Welcome" displayOrder="3" menuLabel="Instructions" type="text" self="Instructions" title="Instructions">
+        <htmlText featureText="Wetem aplikasen ia yu save makem rikoding blong lanwis blong yu, bambai ol pipol blong Vanuatu mo ol pipol blong evri ples long world save harem lanwis blong yu. I gat fulap foto blong difren ples long Malakula wea i stap insaed long aplikasen ia. Bai yu showem ol foto ia long wan olfala woman o wan olfala man blong vilej blong yu mo askem long hem se i tokabaot ol foto ia long lanwis blong hem. Yu save transletem wanem i talem, tu."/>
+        <targetButton featureText="Go long program nao" hotKey="SPACE" target="Start"/>
+    </presenter>
+    <presenter back="Welcome" displayOrder="4" menuLabel="Infomesen blong man/woman we i toktok" next="Consent" type="metadata" self="Edit_User" title="Infomesen blong man/woman we i toktok">
+        <metadataField fieldName="workerId"/>
+        <saveMetadataButton featureText="Savem infomesen" sendData="false" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+            <onError/>
+            <onSuccess>
+                <autoNextPresenter/>
+            </onSuccess>
+        </saveMetadataButton>
+    </presenter>
+    <presenter back="Welcome" displayOrder="5" menuLabel="Select User" next="Consent" type="metadata" self="SelectUser" title="Select User">
+        <selectUserMenu/>
+    </presenter>
+    <presenter back="Welcome" displayOrder="6" menuLabel="Consent" next="MetadataScreen" type="metadata" self="Consent" title="Consent">
+        <htmlText featureText="This is an interview for Hedvig's research project and that it will be recorded and stored at ANU, and possible for anyone in our research to listen to. Do you agree?"/>
+        <targetButton featureText="Agree" target="MetadataScreen"/>
+    </presenter>
+    <presenter back="Welcome" displayOrder="7" menuLabel="Metadata" next="Stimulus" type="stimulus" self="MetadataScreen" title="Metadata">
+        <loadAllStimulus eventTag="Metadata" randomise="false" repeatRandomWindow="0" repeatCount="1">
+            <hasMoreStimulus>
+                <startAudioRecorder eventTag="Metadata" wavFormat="true" filePerStimulus="false"/>
+                <startAudioRecorderTag eventTier="1"/>
+                <showStimulusProgress/>
+                <stimulusLabel/>
+                <actionButton featureText="Neks">
+                    <endAudioRecorderTag eventTier="1" eventTag=""/>
+                    <nextStimulus eventTag="nextStimulusMetadata" norepeat="true"/>
+                </actionButton>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <stopAudioRecorder/>
+                <autoNextPresenter/>
+            </endOfStimulus>
+            <stimuli>
+                <tag>metadata</tag>
+            </stimuli>
+        </loadAllStimulus>
+    </presenter>
+    <presenter back="Welcome" displayOrder="8" menuLabel="Lukluk ol foto" type="stimulus" self="Stimulus" title="Lukluk ol foto">
+        <loadSdCardStimulus eventTag="Lukluk ol foto" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <startAudioRecorder eventTag="Lukluk ol foto" wavFormat="true" filePerStimulus="true"/>
+                <startAudioRecorderTag eventTier="1"/>
+                <centrePage/>
+                <stimulusLabel/>
+                <showStimulusProgress/>
+                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                    <plainText featureText="Askem long man o woman wea i toktok se i talem nem blong wanem i stap lo foto long lanwis blong hem."/>
+                    <actionButton featureText="Finis">
+                        <endAudioRecorderTag eventTier="1" eventTag="Askem long man o woman wea i toktok se i talem nem blong wanem i stap lo foto long lanwis blong hem."/>
+                        <clearPage/>
+                        <nextStimulus eventTag="nextImage" norepeat="true"/>
+                    </actionButton>
+                </stimulusImage>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <plainText featureText="Finis olgeta"/>
+                <targetButton featureText="Welcome" target="Welcome"/>
+            </endOfStimulus>
+            <stimuli>
+                <tag>Pictures</tag>
+            </stimuli>
+        </loadSdCardStimulus>
+    </presenter>
+    <presenter displayOrder="9" menuLabel="Debug Screen" type="debug" self="DebugScreen" title="Debug Screen">
+        <versionData/>
+        <eraseLocalStorageButton/>
+        <localStorageData/>
+    </presenter>
+    <stimuli>
+        <stimulus identifier="the_full_name_of_the_interviewer_date_and_place_of_the_interview" label="the full name of the interviewer, date and place of the interview" pauseMs="0">
+            <tag>metadata</tag>
+        </stimulus>
+        <stimulus identifier="the_name_of_the_person_interviewed_â€“_their_real_name_and_or_preferred_name_and_title" label="the name of the person interviewed â€“ their real name, and/or preferred name, and title" pauseMs="0">
+            <tag>metadata</tag>
+        </stimulus>
+        <stimulus identifier="age_and_gender_of_interviewee" label="age and gender of interviewee" pauseMs="0">
+            <tag>metadata</tag>
+        </stimulus>
+        <stimulus identifier="Pictures" imagePath="Pictures" label="Pictures" pauseMs="0">
+            <tag>Pictures</tag>
+        </stimulus>
+    </stimuli>
+</experiment>
