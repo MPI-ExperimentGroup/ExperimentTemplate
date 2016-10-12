@@ -44,13 +44,13 @@ public class WizardAboutScreen extends AbstractWizardScreen {
     @Override
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        presenterScreen.setPresenterType(PresenterType.debug);
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.versionData, null));
-        presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.eraseLocalStorageButton, null));
+        getPresenterScreen().setPresenterType(PresenterType.debug);
+        getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.versionData, null));
+        getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.eraseLocalStorageButton, null));
         if (showDebug) {
-            presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.localStorageData, null));
+            getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.localStorageData, null));
         }
-        experiment.getPresenterScreen().add(presenterScreen);
-        return presenterScreen;
+        experiment.getPresenterScreen().add(getPresenterScreen());
+        return getPresenterScreen();
     }
 }
