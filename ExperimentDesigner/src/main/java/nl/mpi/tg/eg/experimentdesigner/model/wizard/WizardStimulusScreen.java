@@ -132,12 +132,12 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
                 stimuliList.add(stimulus);
             }
         }
-        presenterScreen.setMenuLabel(getScreenTitle());
+        getPresenterScreen().setMenuLabel(getScreenTitle());
 //        setScreenTag(screenName + "Screen");
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        presenterScreen.setPresenterType(PresenterType.stimulus);
+        getPresenterScreen().setPresenterType(PresenterType.stimulus);
 
-        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
+        List<PresenterFeature> presenterFeatureList = getPresenterScreen().getPresenterFeatureList();
 //        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "This screen will show " + maxStimuli + " stimuli in random order from the directories:"));
 //        for (final String stimulusTag : stimulusTagArray) {
 //            presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "MPI_STIMULI/" + stimulusTag));
@@ -155,7 +155,7 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
         // todo: add more reverter tags as required
         if (stimulusImageCapture) {
-            final PresenterFeature startRecorderFeature = new PresenterFeature(FeatureType.stimulusImageCapture, "Take Photo");
+            final PresenterFeature startRecorderFeature = new PresenterFeature(FeatureType.stimulusImageCapture, "Take Photo"); // todo: add a paramter for this string
             startRecorderFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
             startRecorderFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
             startRecorderFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "80");
@@ -169,14 +169,22 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
             hasMoreStimulusFeature.getPresenterFeatureList().add(startRecorderFeature);
         }
         PresenterFeature previousPresenterFeature = hasMoreStimulusFeature;
-        for (StimuliSubAction imageFeatureValues : featureValuesArray) {
-            final PresenterFeature lanwisImage = addImageFeature(previousPresenterFeature, imageFeatureValues);
-            previousPresenterFeature = lanwisImage;
+        if (!stimulusImageCapture) {
+            for (StimuliSubAction imageFeatureValues : featureValuesArray) {
+                final PresenterFeature lanwisImage = addImageFeature(previousPresenterFeature, imageFeatureValues);
+                previousPresenterFeature = lanwisImage;
+            }
+            final PresenterFeature autoNextFeature = new PresenterFeature(FeatureType.nextStimulus, null);
+            autoNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextImage");
+            autoNextFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+            previousPresenterFeature.getPresenterFeatureList().add(autoNextFeature);
+        } else {
+            final PresenterFeature autoNextFeature = new PresenterFeature(FeatureType.nextStimulusButton, "Next");
+            autoNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextImage");
+            autoNextFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+            autoNextFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
+            previousPresenterFeature.getPresenterFeatureList().add(autoNextFeature);
         }
-        final PresenterFeature autoNextFeature = new PresenterFeature(FeatureType.nextStimulus, null);
-        autoNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextImage");
-        autoNextFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
-        previousPresenterFeature.getPresenterFeatureList().add(autoNextFeature);
         loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
         endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, end_of_stimuli));
@@ -184,8 +192,8 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
         menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, endOfStimulisWizardScreen.getScreenTag());
         endOfStimulusFeature.getPresenterFeatureList().add(menuButtonFeature);
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
-        experiment.getPresenterScreen().add(presenterScreen);
-        return presenterScreen;
+        experiment.getPresenterScreen().add(getPresenterScreen());
+        return getPresenterScreen();
     }
 
     public PresenterFeature addImageFeature(PresenterFeature parentFeature, StimuliSubAction imageFeatureValues) {
