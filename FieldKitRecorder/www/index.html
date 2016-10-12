@@ -55,7 +55,16 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     }, function (tagvalue) {
                         // fail 
                         alert(tagvalue);
-                    });
+                    }, 'user_id', 'stimulus_set', '');
+                }
+                fieldKitRecorder.recordNew = function () {
+                    window.plugins.fieldKitRecorder.record(function (tagvalue) {
+                        // success 
+                        alert(tagvalue);
+                    }, function (tagvalue) {
+                        // fail 
+                        alert(tagvalue);
+                    }, 'user_id', 'stimulus_set', 'stimulus_id');
                 }
                 fieldKitRecorder.stop = function () {
                     window.plugins.fieldKitRecorder.stop(function (tagvalue) {
@@ -76,6 +85,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <tr>
                 <td>fieldKitRecorder<br><br>
                     <button onclick="fieldKitRecorder.record();">Record</button><br><br>
+                    <button onclick="fieldKitRecorder.recordNew();">Record New File</button><br><br>
                     <button onclick="fieldKitRecorder.stop();">Stop</button><br><br>
                     <button onclick="fieldKitRecorder.startTag();">Start Tag</button><br><br>
                     <button onclick="fieldKitRecorder.endTag();">End Tag</button><br><br>
