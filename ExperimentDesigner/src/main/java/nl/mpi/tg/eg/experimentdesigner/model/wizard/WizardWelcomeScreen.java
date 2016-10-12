@@ -82,14 +82,14 @@ public class WizardWelcomeScreen extends AbstractWizardScreen {
     @Override
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        presenterScreen.setPresenterType(PresenterType.menu);
+        getPresenterScreen().setPresenterType(PresenterType.menu);
         final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.menuItem, instructions_button);
         presenterFeature.addFeatureAttributes(FeatureAttribute.target, instructionsScreen.getScreenTag());
-        presenterScreen.getPresenterFeatureList().add(presenterFeature);
+        getPresenterScreen().getPresenterFeatureList().add(presenterFeature);
         final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.menuItem, go_directly_to_program);
         presenterFeature1.addFeatureAttributes(FeatureAttribute.target, programWizardScreen.getScreenTag());
-        presenterScreen.getPresenterFeatureList().add(presenterFeature1);
-        experiment.getPresenterScreen().add(presenterScreen);
-        return presenterScreen;
+        getPresenterScreen().getPresenterFeatureList().add(presenterFeature1);
+        experiment.getPresenterScreen().add(getPresenterScreen());
+        return getPresenterScreen();
     }
 }

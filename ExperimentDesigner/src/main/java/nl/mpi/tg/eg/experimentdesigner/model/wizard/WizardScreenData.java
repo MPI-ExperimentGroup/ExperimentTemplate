@@ -27,8 +27,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
+import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 
 /**
  * @since Aug 8, 2016 11:15:50 AM (creation date)
@@ -36,6 +38,9 @@ import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
  */
 @Entity
 public class WizardScreenData {
+
+    @Transient
+    final PresenterScreen presenterScreen = new PresenterScreen();
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -78,6 +83,11 @@ public class WizardScreenData {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    @Transient
+    public PresenterScreen getPresenterScreen() {
+        return presenterScreen;
     }
 
     public WizardScreenData getBackWizardScreenData() {
