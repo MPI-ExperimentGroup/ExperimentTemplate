@@ -43,16 +43,16 @@ public class WizardAudioRecorderMetadataScreen extends AbstractWizardScreen {
     @Override
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        presenterScreen.setPresenterType(PresenterType.stimulus);
+        getPresenterScreen().setPresenterType(PresenterType.stimulus);
         //    Metadata is collected in the spoken form (audio recording) with screen prompts for each item in metadataStrings:
         final List<Stimulus> stimuliList = experiment.getStimuli();
         final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{"metadata"}));
         for (String metadataString : this.wizardScreenData.getStimuliSet()) {
-            final Stimulus stimulus = new Stimulus(metadataString.replaceAll("[^A-Za-z0-9]", "_"), null, null, null, metadataString, null, 0, tagSet, null);
+            final Stimulus stimulus = new Stimulus(metadataString, null, null, null, metadataString, null, 0, tagSet, null);
             stimuliList.add(stimulus);
         }
 //        experiment.setStimuli(stimuliList);
-        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
+        List<PresenterFeature> presenterFeatureList = getPresenterScreen().getPresenterFeatureList();
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadAllStimulus, null);
         loadStimuliFeature.addStimulusTag("metadata");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, "Metadata");
@@ -95,7 +95,7 @@ public class WizardAudioRecorderMetadataScreen extends AbstractWizardScreen {
 //        menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, nextPresenter.getSelfPresenterTag());
 //        endOfStimulusFeature.getPresenterFeatureList().add(menuButtonFeature);
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
-        experiment.getPresenterScreen().add(presenterScreen);
-        return presenterScreen;
+        experiment.getPresenterScreen().add(getPresenterScreen());
+        return getPresenterScreen();
     }
 }
