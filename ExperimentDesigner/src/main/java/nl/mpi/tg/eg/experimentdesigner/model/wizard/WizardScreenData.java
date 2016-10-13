@@ -64,6 +64,8 @@ public class WizardScreenData {
     private Integer stimulusMsDelay = null;
     private Boolean randomiseStimuli = null;
     private Integer stimuliCount = null;
+    private Integer repeatCount = null;
+    private Integer repeatRandomWindow = null;
 //    private String buttonLabelEventTag = null;
     private String backgroundImage = null;
     private Boolean sdCardStimuli = null;
@@ -263,6 +265,22 @@ public class WizardScreenData {
 
     public void setAllowUserRestart(Boolean allowUserRestart) {
         this.allowUserRestart = allowUserRestart;
+    }
+
+    public Integer getRepeatCount() {
+        return repeatCount;
+    }
+
+    public void setRepeatCount(Integer repeatCount) {
+        this.repeatCount = repeatCount;
+    }
+
+    public Integer getRepeatRandomWindow() {
+        return repeatRandomWindow;
+    }
+
+    public void setRepeatRandomWindow(Integer repeatRandomWindow) {
+        this.repeatRandomWindow = repeatRandomWindow;
     }
 
     public List<Metadata> getMetadataFields() {
