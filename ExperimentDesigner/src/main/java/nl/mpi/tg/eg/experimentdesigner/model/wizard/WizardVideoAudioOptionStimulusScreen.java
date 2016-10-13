@@ -36,12 +36,6 @@ import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
  */
 public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
 
-    private String stimulusResponseLabelLeft = null;
-    private String stimulusResponseLabelRight = null;
-//    private String stimulusResponseOptions = null;
-    private boolean randomiseStimuli = false;
-    private boolean useCodeVideo = true;
-    private boolean showProgress = true;
     private String buttonLabelEventTag;
 
     public WizardVideoAudioOptionStimulusScreen() {
@@ -53,51 +47,21 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         this.setScreenTitle(screenName);
         this.setCentreScreen(centreScreen);
         this.wizardScreenData.setStimuliSet(screenTextArray);
-        this.useCodeVideo = useCodeVideo;
+        this.wizardScreenData.setUseCodeVideo(useCodeVideo);
         this.wizardScreenData.setStimuliRandomTags(randomStimuliTags);
         this.wizardScreenData.setStimulusMsDelay(stimulusMsDelay);
         this.wizardScreenData.setStimuliCount(maxStimuli);
         this.wizardScreenData.setRepeatCount(repeatCount);
         this.wizardScreenData.setRepeatRandomWindow(repeatRandomWindow);
-        this.stimulusResponseLabelLeft = responseOptionsLabelLeft;
-        this.stimulusResponseLabelRight = responseOptionsLabelRight;
+        this.wizardScreenData.setStimulusResponseLabelLeft(responseOptionsLabelLeft);
+        this.wizardScreenData.setStimulusResponseLabelRight(responseOptionsLabelRight);
 //        this.stimulusResponseOptions = responseOptions;
-        this.randomiseStimuli = randomiseStimuli;
+        this.wizardScreenData.setRandomiseStimuli(randomiseStimuli);
+        this.wizardScreenData.setShowProgress(true);
         if (spacebar == null) {
             throw new UnsupportedOperationException("button text cannot be null");
         }
         this.buttonLabelEventTag = spacebar;
-    }
-
-    public String getStimulusResponseLabelLeft() {
-        return stimulusResponseLabelLeft;
-    }
-
-    public void setStimulusResponseLabelLeft(String stimulusResponseLabelLeft) {
-        this.stimulusResponseLabelLeft = stimulusResponseLabelLeft;
-    }
-
-    public String getStimulusResponseLabelRight() {
-        return stimulusResponseLabelRight;
-    }
-
-    public void setStimulusResponseLabelRight(String stimulusResponseLabelRight) {
-        this.stimulusResponseLabelRight = stimulusResponseLabelRight;
-    }
-
-//    public String getStimulusResponseOptions() {
-//        return stimulusResponseOptions;
-//    }
-//
-//    public void setStimulusResponseOptions(String stimulusResponseOptions) {
-//        this.stimulusResponseOptions = stimulusResponseOptions;
-//    }
-    public boolean isRandomiseStimuli() {
-        return randomiseStimuli;
-    }
-
-    public void setRandomiseStimuli(boolean randomiseStimuli) {
-        this.randomiseStimuli = randomiseStimuli;
     }
 
     public String getButtonLabel() {
@@ -123,7 +87,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
                 final String audioPath;
                 final String codeVideoPath;
                 final String responseOptions;
-                if (useCodeVideo) {
+                if (wizardScreenData.getUseCodeVideo()) {
                     audioPath = splitScreenText[2].replaceAll(BASE_FILE_REGEX, "");
                     codeVideoPath = splitScreenText[1].replaceAll(BASE_FILE_REGEX, "");
                     responseOptions = splitScreenText[3];
@@ -157,7 +121,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
             experiment.getMetadata().add(new Metadata(metadataFieldname, metadataFieldname, ".*", ".", false, null));
         }
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, getScreenTitle());
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(randomiseStimuli));
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(this.wizardScreenData.isRandomiseStimuli()));
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, Integer.toString(this.wizardScreenData.getRepeatCount()));
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, Integer.toString(this.wizardScreenData.getRepeatRandomWindow()));
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(this.wizardScreenData.getStimuliCount()));
@@ -167,7 +131,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
 
-        if (showProgress) {
+        if (wizardScreenData.getShowProgress()) {
             hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
         }
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusAudio, null);
@@ -176,7 +140,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
 //        imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
         imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(this.wizardScreenData.getStimulusMsDelay()));
 
-        if (useCodeVideo) {
+        if (wizardScreenData.getUseCodeVideo()) {
             final PresenterFeature codeVideoFeature = new PresenterFeature(FeatureType.stimulusCodeVideo, null);
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
@@ -225,8 +189,8 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
 //        if (stimulusResponseOptions != null) {
         final PresenterFeature ratingFooterButtonFeature = new PresenterFeature(FeatureType.stimulusRatingButton, null);
 //            ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabels, stimulusResponseOptions);
-        ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelLeft, stimulusResponseLabelLeft);
-        ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelRight, stimulusResponseLabelRight);
+        ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelLeft, wizardScreenData.getStimulusResponseLabelLeft());
+        ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelRight, wizardScreenData.getStimulusResponseLabelRight());
         ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
         final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
         nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
