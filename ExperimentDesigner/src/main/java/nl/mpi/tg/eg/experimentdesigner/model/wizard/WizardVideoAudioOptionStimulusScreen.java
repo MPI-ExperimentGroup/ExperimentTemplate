@@ -36,12 +36,6 @@ import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
  */
 public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
 
-    private String[] stimuliSet = null;
-    private String[] stimuliRandomTags = null;
-    private int stimulusMsDelay = 0;
-    private int stimuliCount = 1;
-    private int repeatCount = 1;
-    private int repeatRandomWindow = 0;
     private String stimulusResponseLabelLeft = null;
     private String stimulusResponseLabelRight = null;
 //    private String stimulusResponseOptions = null;
@@ -58,13 +52,13 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         super(screenName, screenName, screenName);
         this.setScreenTitle(screenName);
         this.setCentreScreen(centreScreen);
-        this.stimuliSet = screenTextArray;
+        this.wizardScreenData.setStimuliSet(screenTextArray);
         this.useCodeVideo = useCodeVideo;
-        this.stimuliRandomTags = randomStimuliTags;
-        this.stimulusMsDelay = stimulusMsDelay;
-        this.stimuliCount = maxStimuli;
-        this.repeatCount = repeatCount;
-        this.repeatRandomWindow = repeatRandomWindow;
+        this.wizardScreenData.setStimuliRandomTags(randomStimuliTags);
+        this.wizardScreenData.setStimulusMsDelay(stimulusMsDelay);
+        this.wizardScreenData.setStimuliCount(maxStimuli);
+        this.wizardScreenData.setRepeatCount(repeatCount);
+        this.wizardScreenData.setRepeatRandomWindow(repeatRandomWindow);
         this.stimulusResponseLabelLeft = responseOptionsLabelLeft;
         this.stimulusResponseLabelRight = responseOptionsLabelRight;
 //        this.stimulusResponseOptions = responseOptions;
@@ -73,38 +67,6 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
             throw new UnsupportedOperationException("button text cannot be null");
         }
         this.buttonLabelEventTag = spacebar;
-    }
-
-    public String[] getStimuliSet() {
-        return stimuliSet;
-    }
-
-    public void setStimuliSet(String[] stimuliSet) {
-        this.stimuliSet = stimuliSet;
-    }
-
-    public String[] getStimuliRandomTags() {
-        return stimuliRandomTags;
-    }
-
-    public void setStimuliRandomTags(String[] stimuliRandomTags) {
-        this.stimuliRandomTags = stimuliRandomTags;
-    }
-
-    public int getStimulusMsDelay() {
-        return stimulusMsDelay;
-    }
-
-    public void setStimulusMsDelay(int stimulusMsDelay) {
-        this.stimulusMsDelay = stimulusMsDelay;
-    }
-
-    public int getStimuliCount() {
-        return stimuliCount;
-    }
-
-    public void setStimuliCount(int stimuliCount) {
-        this.stimuliCount = stimuliCount;
     }
 
     public String getStimulusResponseLabelLeft() {
@@ -150,8 +112,8 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
     @Override
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         final List<Stimulus> stimuliList = experiment.getStimuli();
-        if (stimuliSet != null) {
-            for (String stimulusLine : stimuliSet) {
+        if (wizardScreenData.getStimuliSet() != null) {
+            for (String stimulusLine : wizardScreenData.getStimuliSet()) {
                 // "list_1/list_2:AV_happy.mpg:prevoicing9_e_440Hz_coda_k.wav:bik,bek",
                 final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{getScreenTitle()}));
                 final Stimulus stimulus;
@@ -184,9 +146,9 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         }
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadStimulus, null);
         loadStimuliFeature.addStimulusTag(getScreenTitle());
-        if (stimuliRandomTags != null) {
+        if (this.wizardScreenData.getStimuliRandomTags() != null) {
             final RandomGrouping randomGrouping = new RandomGrouping();
-            for (String randomTag : stimuliRandomTags) {
+            for (String randomTag : this.wizardScreenData.getStimuliRandomTags()) {
                 randomGrouping.addRandomTag(randomTag);
             }
             final String metadataFieldname = "groupAllocation_" + getScreenTag();
@@ -196,9 +158,9 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         }
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, getScreenTitle());
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(randomiseStimuli));
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, Integer.toString(repeatCount));
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, Integer.toString(repeatRandomWindow));
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(stimuliCount));
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, Integer.toString(this.wizardScreenData.getRepeatCount()));
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, Integer.toString(this.wizardScreenData.getRepeatRandomWindow()));
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(this.wizardScreenData.getStimuliCount()));
         presenterFeatureList.add(loadStimuliFeature);
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
 
@@ -212,7 +174,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
 //        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
 //        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
 //        imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
-        imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(stimulusMsDelay));
+        imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(this.wizardScreenData.getStimulusMsDelay()));
 
         if (useCodeVideo) {
             final PresenterFeature codeVideoFeature = new PresenterFeature(FeatureType.stimulusCodeVideo, null);
@@ -220,12 +182,12 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>");
-            codeVideoFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(stimulusMsDelay));
+            codeVideoFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(this.wizardScreenData.getStimulusMsDelay()));
             hasMoreStimulusFeature.getPresenterFeatureList().add(codeVideoFeature);
             codeVideoFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
             codeVideoFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
             final PresenterFeature pauseFeature = new PresenterFeature(FeatureType.pause, null);
-            pauseFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(stimulusMsDelay));
+            pauseFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(this.wizardScreenData.getStimulusMsDelay()));
             codeVideoFeature.getPresenterFeatureList().add(pauseFeature);
 
             pauseFeature.getPresenterFeatureList().add(imageFeature);
