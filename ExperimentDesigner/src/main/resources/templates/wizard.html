@@ -89,38 +89,54 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                             <button class="deleteFeatureButton" type="button" th:onclick="${'deleteFeature(featureForm' + wizardScreen.screenTag + ')'}">Delete Screen</button>
                                             <!--<span class="featureTypeLabel" th:text="${wizardScreen.class.name}">wizardScreen.class.name</span>-->
                                             <span class="featureTypeLabel"><input name="screenTitle" th:value="${wizardScreen.getScreenTitle()}" /></span>
-                                            <select name="backWizardScreenId" th:onchange="${'$(updateFeatureButton' + wizardScreen.wizardScreenData.id + ').show();'}">
+                                            <select name="backWizardScreenId" th:onchange="${'$(updateFeatureButton' + wizardScreen.id + ').show();'}">
                                                 <option value="-1">&lt;none&gt;</option>
-                                                <option th:each="wizardScreenItem : ${wizardData.getWizardScreens()}" th:value="${wizardScreenItem.wizardScreenData.id}" th:text="${wizardScreenItem.wizardScreenData.screenTitle}" th:selected="${wizardScreenItem.wizardScreenData.equals(wizardScreen.wizardScreenData.backWizardScreenData)}" />
+                                                <option th:each="wizardScreenItem : ${wizardData.getWizardScreens()}" th:value="${wizardScreenItem.id}" th:text="${wizardScreenItem.screenTitle}" th:selected="${wizardScreenItem.equals(wizardScreen.backWizardScreenData)}" />
                                             </select>
-                                            <select name="nextWizardScreenId" th:onchange="${'$(updateFeatureButton' + wizardScreen.wizardScreenData.id + ').show();'}">
+                                            <select name="nextWizardScreenId" th:onchange="${'$(updateFeatureButton' + wizardScreen.id + ').show();'}">
                                                 <option value="-1">&lt;none&gt;</option>
-                                                <option th:each="wizardScreenItem : ${wizardData.getWizardScreens()}" th:value="${wizardScreenItem.wizardScreenData.id}" th:text="${wizardScreenItem.wizardScreenData.screenTitle}" th:selected="${wizardScreenItem.wizardScreenData.equals(wizardScreen.wizardScreenData.nextWizardScreenData)}" />
+                                                <option th:each="wizardScreenItem : ${wizardData.getWizardScreens()}" th:value="${wizardScreenItem.id}" th:text="${wizardScreenItem.screenTitle}" th:selected="${wizardScreenItem.equals(wizardScreen.nextWizardScreenData)}" />
                                             </select>
-                                            <button type="button" style="display: none" th:id="${'updateFeatureButton' + wizardScreen.wizardScreenData.id}" class="saveFeatureButton" th:onclick="${'postFeatureChanges(featureForm' + wizardScreen.wizardScreenData.id + ')'}">Save Changes</button>
+                                            <button type="button" style="display: none" th:id="${'updateFeatureButton' + wizardScreen.id}" class="saveFeatureButton" th:onclick="${'postFeatureChanges(featureForm' + wizardScreen.id + ')'}">Save Changes</button>
                                         </div>
                                         <div class="errorDiv"/>                                        
                                         &nbsp;<span class="wizardScreenDetailsCheckBox"><input type="checkbox" th:id="${'wizardScreenDetailsCheckBox' + wizardScreen.screenTag}" th:onclick="'hideShowDetails(\''+${wizardScreen.screenTag}+'\')'">Hide details</input></span>
                                         <div class="featurescell" th:id="${'wizardScreenDetails' + wizardScreen.screenTag}">
-                                            <table>
-                                                <tr>
-                                                    <td>Screen Title</td>
-                                                    <td>Menu Label</td>
-                                                    <td>Screen Tag</td>
-                                                    <td>Next Button Label</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><input name="screenTitle" th:value="${wizardScreen.screenTitle}" /></td>
-                                                    <td><input name="menuLabel" th:value="${wizardScreen.menuLabel}" /></td>
-                                                    <td><input name="screenTag" th:value="${wizardScreen.screenTag}" /></td>
-                                                    <td><input name="nextButton" th:value="${wizardScreen.nextButton}" /></td>
-                                                </tr>
-                                            </table>
+                                            <div class="featuresrow featurescell">
+                                                <table>
+                                                    <tr>
+                                                        <td>Screen Title</td>
+                                                        <td>Menu Label</td>
+                                                        <td>Screen Tag</td>
+                                                        <td>Next Button Label</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input name="screenTitle" th:value="${wizardScreen.screenTitle}" /></td>
+                                                        <td><input name="menuLabel" th:value="${wizardScreen.menuLabel}" /></td>
+                                                        <td><input name="screenTag" th:value="${wizardScreen.screenTag}" /></td>
+                                                        <td><input name="nextButton" th:value="${wizardScreen.nextButton}" /></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                             <br/>
                                             <div class="">
-                                                <span>Centre Screen</span><span><input type="checkbox" th:value="${wizardScreen.centreScreen}" /></span><br/>
-                                                <br/>                                                
-                                                <br/><span><span th:utext="${wizardScreen.getScreenText()}" /><textarea class="wizardTextbox" name="screenText" th:text="${wizardScreen.getScreenText()}" /></span><br/>
+                                                <span th:replace="wizard :: wizardCheckBox(wizardFragmentLabel='Centre Screen', wizardFragmentValue=${wizardScreen.centreScreen}, wizardFragmentName='centreScreen')"></span>
+                                                <span th:replace="wizard :: wizardTextArea(wizardFragmentLabel='Screen Text', wizardFragmentValue=${wizardScreen.screenText1}, wizardFragmentName='screenText1')"></span>
+                                                <span th:replace="wizard :: wizardTextArea(wizardFragmentLabel='Screen Text', wizardFragmentValue=${wizardScreen.screenText2}, wizardFragmentName='screenText2')"></span>
+                                                <span th:replace="wizard :: wizardTextArray(wizardFragmentLabel='stimuliSet', wizardFragmentValue=${wizardScreen.stimuliSet}, wizardFragmentName='stimuliSet')"></span>
+                                                <span th:replace="wizard :: wizardTextArray(wizardFragmentLabel='stimuliRandomTags', wizardFragmentValue=${wizardScreen.stimuliRandomTags}, wizardFragmentName='stimuliRandomTags')"></span>
+                                                <span th:replace="wizard :: wizardNumberBox(wizardFragmentLabel='stimulusMsDelay', wizardFragmentValue=${wizardScreen.stimulusMsDelay}, wizardFragmentName='stimulusMsDelay')"></span>
+                                                <span th:replace="wizard :: wizardCheckBox(wizardFragmentLabel='randomiseStimuli', wizardFragmentValue=${wizardScreen.randomiseStimuli}, wizardFragmentName='randomiseStimuli')"></span>
+                                                <span th:replace="wizard :: wizardNumberBox(wizardFragmentLabel='stimuliCount', wizardFragmentValue=${wizardScreen.stimuliCount}, wizardFragmentName='stimuliCount')"></span>
+                                                <span th:replace="wizard :: wizardNumberBox(wizardFragmentLabel='repeatCount', wizardFragmentValue=${wizardScreen.repeatCount}, wizardFragmentName='repeatCount')"></span>
+                                                <span th:replace="wizard :: wizardNumberBox(wizardFragmentLabel='repeatRandomWindow', wizardFragmentValue=${wizardScreen.repeatRandomWindow}, wizardFragmentName='repeatRandomWindow')"></span>
+                                                <span th:replace="wizard :: wizardTextBox(wizardFragmentLabel='backgroundImage', wizardFragmentValue=${wizardScreen.backgroundImage}, wizardFragmentName='backgroundImage')"></span>
+                                                <span th:replace="wizard :: wizardCheckBox(wizardFragmentLabel='sdCardStimuli', wizardFragmentValue=${wizardScreen.sdCardStimuli}, wizardFragmentName='sdCardStimuli')"></span>
+                                                <span th:replace="wizard :: wizardTextBox(wizardFragmentLabel='eraseUsersDataButtonlabel', wizardFragmentValue=${wizardScreen.eraseUsersDataButtonlabel}, wizardFragmentName='eraseUsersDataButtonlabel')"></span>
+                                                <span th:replace="wizard :: wizardTextArea(wizardFragmentLabel='could_not_contact_the_server_please_check', wizardFragmentValue=${wizardScreen.could_not_contact_the_server_please_check}, wizardFragmentName='could_not_contact_the_server_please_check')"></span>
+                                                <span th:replace="wizard :: wizardTextBox(wizardFragmentLabel='retryButtonLabel', wizardFragmentValue=${wizardScreen.retryButtonLabel}, wizardFragmentName='retryButtonLabel')"></span>
+                                                <span th:replace="wizard :: wizardCheckBox(wizardFragmentLabel='generateCompletionCode', wizardFragmentValue=${wizardScreen.generateCompletionCode}, wizardFragmentName='generateCompletionCode')"></span>    
+                                                <span th:replace="wizard :: wizardCheckBox(wizardFragmentLabel='allowUserRestart', wizardFragmentValue=${wizardScreen.allowUserRestart}, wizardFragmentName='allowUserRestart')"></span>
                                             </div>
                                             <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen'}">WizardAboutScreen</div>
                                             <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen'}">WizardAgreementScreen</div>
@@ -147,27 +163,27 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                             </div>
                                             <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen'}">
                                                 <b>WizardEditUserScreen</b>
-                                                <!--<span>metadataScreen</span><span><input type="checkbox" th:value="${wizardScreen.wizardScreenData.metadataScreen}" /></span><br/>-->
-                                                <!--<span>metadataScreenText</span><br/><span><span th:utext="${wizardScreen.wizardScreenData.metadataScreenText}" /><textarea class="wizardTextbox" name="metadataScreenText" th:text="${wizardScreen.wizardScreenData.metadataScreenText}" /></span><br/>-->
-                                                <!--<span>speakerNameField</span><span><input type="checkbox" th:value="${wizardScreen.wizardScreenData.speakerNameField}" /></span><br/>-->
-                                                <!--<span>firstNameField</span><span><input type="checkbox" th:value="${wizardScreen.wizardScreenData.firstNameField}" /></span><br/>-->
-                                                <!--<span>lastNameField</span><span><input type="checkbox" th:value="${wizardScreen.wizardScreenData.lastNameField}" /></span><br/>-->
-                                                <!--                                                <span>genderField</span><span><input type="checkbox" th:value="${wizardScreen.wizardScreenData.genderField}" /></span><br/>
-                                                                                                <span>emailAddressField</span><span><input type="checkbox" th:value="${wizardScreen.wizardScreenData.emailAddressField}" /></span><br/>
-                                                                                                <span>customTextField</span><span><input class="wizardTextbox" name="customTextField" th:value="${wizardScreen.wizardScreenData.customTextField}" /></span><br/>
-                                                                                                <span>optionCheckBox1</span><span><input class="wizardTextbox" name="optionCheckBox1" th:value="${wizardScreen.wizardScreenData.optionCheckBox1}" /></span><br/>
-                                                                                                <span>optionCheckBox2</span><span><input class="wizardTextbox" name="optionCheckBox2" th:value="${wizardScreen.wizardScreenData.optionCheckBox2}" /></span><br/>
-                                                                                                <span>mandatoryCheckBox</span><span><input class="wizardTextbox" name="mandatoryCheckBox" th:value="${wizardScreen.wizardScreenData.mandatoryCheckBox}" /></span><br/>
-                                                                                                <span>ageField</span><span><input type="checkbox" th:value="${wizardScreen.wizardScreenData.ageField}" /></span><br/>-->
-                                                <!--                                                <span th:each="customFieldString : ${wizardScreen.wizardScreenData.customFields}">
+                                                <!--<span>metadataScreen</span><span><input type="checkbox" th:value="${wizardScreen.metadataScreen}" /></span><br/>-->
+                                                <!--<span>metadataScreenText</span><br/><span><span th:utext="${wizardScreen.metadataScreenText}" /><textarea class="wizardTextbox" name="metadataScreenText" th:text="${wizardScreen.metadataScreenText}" /></span><br/>-->
+                                                <!--<span>speakerNameField</span><span><input type="checkbox" th:value="${wizardScreen.speakerNameField}" /></span><br/>-->
+                                                <!--<span>firstNameField</span><span><input type="checkbox" th:value="${wizardScreen.firstNameField}" /></span><br/>-->
+                                                <!--<span>lastNameField</span><span><input type="checkbox" th:value="${wizardScreen.lastNameField}" /></span><br/>-->
+                                                <!--                                                <span>genderField</span><span><input type="checkbox" th:value="${wizardScreen.genderField}" /></span><br/>
+                                                                                                <span>emailAddressField</span><span><input type="checkbox" th:value="${wizardScreen.emailAddressField}" /></span><br/>
+                                                                                                <span>customTextField</span><span><input class="wizardTextbox" name="customTextField" th:value="${wizardScreen.customTextField}" /></span><br/>
+                                                                                                <span>optionCheckBox1</span><span><input class="wizardTextbox" name="optionCheckBox1" th:value="${wizardScreen.optionCheckBox1}" /></span><br/>
+                                                                                                <span>optionCheckBox2</span><span><input class="wizardTextbox" name="optionCheckBox2" th:value="${wizardScreen.optionCheckBox2}" /></span><br/>
+                                                                                                <span>mandatoryCheckBox</span><span><input class="wizardTextbox" name="mandatoryCheckBox" th:value="${wizardScreen.mandatoryCheckBox}" /></span><br/>
+                                                                                                <span>ageField</span><span><input type="checkbox" th:value="${wizardScreen.ageField}" /></span><br/>-->
+                                                <!--                                                <span th:each="customFieldString : ${wizardScreen.customFields}">
                                                                                                     <span>customFieldString</span><span><input class="wizardTextbox" name="customFields" th:value="${customFieldString}" /></span><br/>
                                                                                                 </span>-->
-                                                <!--<span>saveButtonLabel</span><span><input class="wizardTextbox" name="saveButtonLabel" th:value="${wizardScreen.wizardScreenData.saveButtonLabel}" /></span><br/>-->
-                                                <!--<span>postText</span><br/><span><span th:utext="${wizardScreen.wizardScreenData.postText}" /><textarea class="wizardTextbox" name="postText" th:text="${wizardScreen.wizardScreenData.postText}" /></span><br/>-->
+                                                <!--<span>saveButtonLabel</span><span><input class="wizardTextbox" name="saveButtonLabel" th:value="${wizardScreen.saveButtonLabel}" /></span><br/>-->
+                                                <!--<span>postText</span><br/><span><span th:utext="${wizardScreen.postText}" /><textarea class="wizardTextbox" name="postText" th:text="${wizardScreen.postText}" /></span><br/>-->
                                                 private WizardScreen alternateNextScreen;
-                                                <!--<span>alternateButtonLabel</span><span><input class="wizardTextbox" name="alternateButtonLabel" th:value="${wizardScreen.wizardScreenData.alternateButtonLabel}" /></span><br/>-->
-                                                <!--<span>sendData</span><span><input type="checkbox" th:value="${wizardScreen.wizardScreenData.sendData}" /></span><br/>-->
-                                                <!--<span>on_Error_Text</span><br/><span><span th:utext="${wizardScreen.wizardScreenData.on_Error_Text}" /><textarea class="wizardTextbox" name="on_Error_Text" th:text="${wizardScreen.wizardScreenData.on_Error_Text}" /></span><br/>-->
+                                                <!--<span>alternateButtonLabel</span><span><input class="wizardTextbox" name="alternateButtonLabel" th:value="${wizardScreen.alternateButtonLabel}" /></span><br/>-->
+                                                <!--<span>sendData</span><span><input type="checkbox" th:value="${wizardScreen.sendData}" /></span><br/>-->
+                                                <!--<span>on_Error_Text</span><br/><span><span th:utext="${wizardScreen.on_Error_Text}" /><textarea class="wizardTextbox" name="on_Error_Text" th:text="${wizardScreen.on_Error_Text}" /></span><br/>-->
                                             </div>
                                             <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardExistingUserCheckScreen'}">
                                                 <b>WizardExistingUserCheckScreen</b>
@@ -254,6 +270,53 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     list.insertBefore(document.getElementById(data), ev.target);
                 }
             </script>
+        </div>
+        <div style="border: black;border-style: solid;padding: 10px;">
+            <span th:fragment="wizardCheckBox(wizardFragmentLabel, wizardFragmentValue, wizardFragmentName)">
+                <div class="featuresrow featurescell" th:if="${wizardFragmentValue != null}">
+                    <span th:text="${wizardFragmentLabel}">wizardCheckBox</span>
+                    <input type="checkbox" th:value="${wizardFragmentValue}" th:name="${wizardFragmentName}" />
+                    <br/>
+                </div>
+            </span>
+            <span th:fragment="wizardNumberBox(wizardFragmentLabel, wizardFragmentValue, wizardFragmentName)">
+                <div class="featuresrow featurescell" th:if="${wizardFragmentValue != null}">
+                    <span th:text="${wizardFragmentLabel}">wizardNumberBox</span>
+                    <input type="number" th:value="${wizardFragmentValue}" th:name="${wizardFragmentName}" />
+                    <br/>
+                </div>
+            </span>
+            <span th:fragment="wizardTextBox(wizardFragmentLabel, wizardFragmentValue, wizardFragmentName)">
+                <div class="featuresrow featurescell" th:if="${wizardFragmentValue != null}">
+                    <span th:text="${wizardFragmentLabel}">wizardTextBox</span>
+                    <input th:value="${wizardFragmentValue}" th:name="${wizardFragmentName}" />
+                    <br/>
+                </div>
+            </span>
+            <span th:fragment="wizardTextArea(wizardFragmentLabel, wizardFragmentValue, wizardFragmentName)">
+                <div class="featuresrow" th:if="${wizardFragmentValue != null}">
+                    <div class="featureTypeHeader">
+                        <span th:text="${wizardFragmentLabel}">wizardTextArea</span>
+                    </div>
+                    <div class="featurescell">
+                        <span th:utext="${wizardFragmentValue}" />
+                        <textarea class="wizardTextbox" th:name="${wizardFragmentName}" th:text="${wizardFragmentValue}">                        
+                        </textarea>
+                    </div>
+                    <br/>
+                </div>
+            </span>
+            <span th:fragment="wizardTextArray(wizardFragmentLabel, wizardFragmentValue, wizardFragmentName)">
+                <div class="featuresrow" th:if="${wizardFragmentValue != null}">
+                    <div class="featureTypeHeader">
+                        <span th:text="${wizardFragmentLabel}">wizardTextArea</span>
+                    </div>
+                    <div class="featurescell" th:each="wizardFragmentItem : ${wizardFragmentValue}">
+                        <input th:value="${wizardFragmentItem}" th:name="${wizardFragmentName}" />
+                    </div>
+                    <br/>
+                </div>
+            </span>
         </div>
     </body>
 </html>
