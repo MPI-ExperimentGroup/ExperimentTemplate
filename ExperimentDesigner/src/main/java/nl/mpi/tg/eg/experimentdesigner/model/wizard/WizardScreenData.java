@@ -78,6 +78,10 @@ public class WizardScreenData {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Metadata> metadataFields = null;
+    private Boolean useCodeVideo = null;
+    private String stimulusResponseLabelRight = null;
+    private String stimulusResponseLabelLeft = null;
+    private Boolean showProgress = null;
 
     public long getId() {
         return id;
@@ -289,4 +293,37 @@ public class WizardScreenData {
         }
         return metadataFields;
     }
+
+    public Boolean getUseCodeVideo() {
+        return useCodeVideo;
+    }
+
+    public void setUseCodeVideo(Boolean useCodeVideo) {
+        this.useCodeVideo = useCodeVideo;
+    }
+
+    public String getStimulusResponseLabelRight() {
+        return stimulusResponseLabelRight;
+    }
+
+    public void setStimulusResponseLabelRight(String stimulusResponseLabelRight) {
+        this.stimulusResponseLabelRight = stimulusResponseLabelRight;
+    }
+
+    public String getStimulusResponseLabelLeft() {
+        return stimulusResponseLabelLeft;
+    }
+
+    public void setStimulusResponseLabelLeft(String stimulusResponseLabelLeft) {
+        this.stimulusResponseLabelLeft = stimulusResponseLabelLeft;
+    }
+
+    public Boolean getShowProgress() {
+        return showProgress;
+    }
+
+    public void setShowProgress(Boolean showProgress) {
+        this.showProgress = showProgress;
+    }
+
 }
