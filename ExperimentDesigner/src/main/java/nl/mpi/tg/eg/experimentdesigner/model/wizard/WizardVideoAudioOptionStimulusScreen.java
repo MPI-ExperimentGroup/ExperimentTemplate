@@ -36,13 +36,11 @@ import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
  */
 public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
 
-    private String buttonLabelEventTag;
-
     public WizardVideoAudioOptionStimulusScreen() {
         super("VideoAudioOption", "VideoAudioOption", "VideoAudioOption");
     }
 
-    public WizardVideoAudioOptionStimulusScreen(String screenName, boolean centreScreen, String[] screenTextArray, boolean useCodeVideo, String[] randomStimuliTags, int maxStimuli, int repeatCount, int repeatRandomWindow, final boolean randomiseStimuli, int stimulusMsDelay, String responseOptionsLabelLeft, String responseOptionsLabelRight, final String spacebar) {
+    public WizardVideoAudioOptionStimulusScreen(String screenName, boolean centreScreen, String[] screenTextArray, boolean useCodeVideo, String[] randomStimuliTags, int maxStimuli, int repeatCount, int repeatRandomWindow, final boolean randomiseStimuli, int stimulusMsDelay, String responseOptionsLabelLeft, String responseOptionsLabelRight) {
         super(screenName, screenName, screenName);
         this.setScreenTitle(screenName);
         this.setCentreScreen(centreScreen);
@@ -58,19 +56,8 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
 //        this.stimulusResponseOptions = responseOptions;
         this.wizardScreenData.setRandomiseStimuli(randomiseStimuli);
         this.wizardScreenData.setShowProgress(true);
-        if (spacebar == null) {
-            throw new UnsupportedOperationException("button text cannot be null");
-        }
-        this.buttonLabelEventTag = spacebar;
     }
 
-    public String getButtonLabel() {
-        return buttonLabelEventTag;
-    }
-
-    public void setButtonLabel(String buttonLabelEventTag) {
-        this.buttonLabelEventTag = buttonLabelEventTag;
-    }
     private static final String BASE_FILE_REGEX = "\\.[a-zA-Z34]+$";
 
     @Override
