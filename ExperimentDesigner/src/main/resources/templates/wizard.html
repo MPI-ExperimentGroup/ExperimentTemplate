@@ -300,11 +300,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <span th:fragment="wizardTextArea(wizardFragmentLabel, wizardFragmentValue, wizardFragmentName)">
                 <div class="featuresrow" th:if="${wizardFragmentValue != null}">
                     <div class="featureTypeHeader">
-                        <span th:text="${wizardFragmentLabel}">wizardTextArea</span>
+                        <span class="featurescell" th:text="${wizardFragmentLabel}">wizardTextArea</span>
                     </div>
                     <div class="featurescell">
                         <span th:utext="${wizardFragmentValue}" />
-                        <textarea class="wizardTextbox" th:name="${wizardFragmentName}" th:text="${wizardFragmentValue}">                        
+                        <button type="button" class="wizardScreenEditCheckBox" name="editScreenId" th:onclick="${'$(' + wizardFragmentName + ').show();'}">Edit</button>
+                        <textarea style="display: none" class="wizardTextbox" th:id="${wizardFragmentName}" th:name="${wizardFragmentName}" th:text="${wizardFragmentValue}">                        
                         </textarea>
                     </div>
                     <br/>
@@ -313,10 +314,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <span th:fragment="wizardTextArray(wizardFragmentLabel, wizardFragmentValue, wizardFragmentName)">
                 <div class="featuresrow" th:if="${wizardFragmentValue != null}">
                     <div class="featureTypeHeader">
-                        <span th:text="${wizardFragmentLabel}">wizardTextArea</span>
+                        <span class="featurescell" th:text="${wizardFragmentLabel}">wizardTextArea</span>
                     </div>
-                    <div class="featurescell" th:each="wizardFragmentItem : ${wizardFragmentValue}">
-                        <input th:value="${wizardFragmentItem}" th:name="${wizardFragmentName}" />
+                    <div class="featurescell">
+                        <span th:each="wizardFragmentItem : ${wizardFragmentValue}">
+                            <input class="wizardTextbox" th:value="${wizardFragmentItem}" th:name="${wizardFragmentName}" />
+                            <br/>
+                        </span>
                     </div>
                     <br/>
                 </div>
