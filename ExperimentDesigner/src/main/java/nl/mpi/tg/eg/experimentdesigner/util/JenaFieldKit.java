@@ -72,7 +72,6 @@ public class JenaFieldKit {
         captureStimulusScreen.setRandomiseStimuli(true);
         captureStimulusScreen.setStimulusImageCapture(true);
         captureStimulusScreen.setFilePerStimulus(true);
-        captureStimulusScreen.setBackWizardScreen(welcomePresenter);
         captureStimulusScreen.setEndOfStimulisWizardScreen(welcomePresenter);
 
         final WizardStimulusScreen wizardStimulusScreen = new WizardStimulusScreen();
@@ -110,6 +109,7 @@ public class JenaFieldKit {
                 + "Mi undastan se wetem aplikasen ia mi makem wan rikoding; mo mi undastan se rikoding ia bai i stap long intanet bambai ol man mo ol woman long evri kantri i save harem rikoding ia wea mi stap makem nao.<br><br>",
                 "Prestem ples hea sapos yu agri.");
 
+        captureStimulusScreen.setBackWizardScreen(wizardTextScreen);
 //        final PresenterScreen consentPresenter = wizardTextScreen.populatePresenterScreen(experiment, false, 6);
         final WizardSelectUserScreen wizardSelectUserScreen = new WizardSelectUserScreen();
         wizardSelectUserScreen.setBackWizardScreen(welcomePresenter);

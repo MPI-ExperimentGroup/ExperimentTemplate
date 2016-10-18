@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -45,7 +46,22 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
     public WizardAnimatedStimuliScreen(String screenName, String[] screenTextArray, boolean sdCardStimuli, int maxStimuli, final boolean randomiseStimuli, final String buttonLabelEventTag, final String backgroundImage, boolean isSecondTask) {
         super(screenName, screenName, screenName);
         this.setScreenTitle(screenName);
-        this.wizardScreenData.setStimuliSet(screenTextArray);
+
+        final List<Stimulus> stimuliList = new ArrayList<>();
+        if (screenTextArray != null) {
+            for (String stimulusLine : screenTextArray) {
+                final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{screenName}));
+                final Stimulus stimulus;
+                tagSet.addAll(Arrays.asList(stimulusLine.replaceAll(":", "/").split("/")));
+//                final String[] splitLine = stimulusLine.split(":");
+//                final String audioPath = splitLine[1];
+//                final String imagePath = splitLine[0];
+                stimulus = new Stimulus(stimulusLine.replace(".png", ""), stimulusLine.replace(".png", ""), null, stimulusLine, null, stimulusLine.replace(".png", ""), 0, tagSet, null);
+                stimuliList.add(stimulus);
+            }
+        }
+
+        this.wizardScreenData.setStimuli(stimuliList);
         this.wizardScreenData.setStimuliRandomTags(null);
         this.wizardScreenData.setStimulusMsDelay(0);
         this.wizardScreenData.setStimuliCount(maxStimuli);
@@ -59,19 +75,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
 
     @Override
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        final List<Stimulus> stimuliList = experiment.getStimuli();
-        if (this.wizardScreenData.getStimuliSet() != null) {
-            for (String stimulusLine : this.wizardScreenData.getStimuliSet()) {
-                final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{getScreenTitle()}));
-                final Stimulus stimulus;
-                tagSet.addAll(Arrays.asList(stimulusLine.replaceAll(":", "/").split("/")));
-//                final String[] splitLine = stimulusLine.split(":");
-//                final String audioPath = splitLine[1];
-//                final String imagePath = splitLine[0];
-                stimulus = new Stimulus(stimulusLine.replace(".png", ""), stimulusLine.replace(".png", ""), null, stimulusLine, null, stimulusLine.replace(".png", ""), 0, tagSet, null);
-                stimuliList.add(stimulus);
-            }
-        }
+        experiment.getStimuli().addAll(this.wizardScreenData.getStimuli());
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
         getPresenterScreen().setPresenterType(PresenterType.stimulus);
         List<PresenterFeature> presenterFeatureList = getPresenterScreen().getPresenterFeatureList();

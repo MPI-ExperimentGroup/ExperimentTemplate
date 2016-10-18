@@ -38,15 +38,15 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
         super(screenName, screenName, screenName);
         this.setScreenText(pageText);
         this.setNextButton(buttonLabel);
-        this.wizardScreenData.setStimuliSet(new String[]{audioPath});
+        this.wizardScreenData.setScreenMediaPath(audioPath);
     }
 
     public String getAudioPath() {
-        return this.wizardScreenData.getStimuliSet()[0];
+        return this.wizardScreenData.getScreenMediaPath();
     }
 
     public void setAudioPath(String audioPath) {
-        this.wizardScreenData.setStimuliSet(new String[]{audioPath});
+        this.wizardScreenData.setScreenMediaPath(audioPath);
     }
 
 //    String[] fieldNames = new String[]{"audioTestScreenText", "audioWorksButtonText", "testAudioPath"};

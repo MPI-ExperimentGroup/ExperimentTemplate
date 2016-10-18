@@ -26,7 +26,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.AbstractWizardScreen;
+import javax.persistence.Transient;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreenData;
 
 /**
  * @since Mar 4, 2016 3:10:35 PM (creation date)
@@ -44,7 +45,10 @@ public class WizardData {
 
     private int textFontSize = 17;
 
-    @OneToMany(targetEntity = AbstractWizardScreen.class, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = WizardScreenData.class, cascade = CascadeType.ALL)
+    private final List<WizardScreenData> wizardScreenData = new ArrayList<>();
+    @Transient
+    @Deprecated
     private final List<WizardScreen> wizardScreens = new ArrayList<>();
 
     public WizardData() {
@@ -84,9 +88,15 @@ public class WizardData {
 
     public void addScreen(final WizardScreen wizardScreen) {
         wizardScreens.add(wizardScreen);
+        wizardScreenData.add(wizardScreen.getWizardScreenData());
     }
 
-    public List<WizardScreen> getWizardScreens() {
+    public List<WizardScreenData> getWizardScreens() {
+        return wizardScreenData;
+    }
+
+    @Deprecated
+    public List<WizardScreen> getWizardScreensTemp() {
         return wizardScreens;
     }
 }

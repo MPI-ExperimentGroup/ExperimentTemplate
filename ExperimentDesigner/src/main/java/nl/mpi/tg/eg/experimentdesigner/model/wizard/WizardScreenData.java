@@ -31,6 +31,7 @@ import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
 
 /**
  * @since Aug 8, 2016 11:15:50 AM (creation date)
@@ -59,8 +60,11 @@ public class WizardScreenData {
     private String screenTag = null;
     private Boolean centreScreen = true;
 
-    private String[] stimuliSet = null;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Stimulus> stimuli = null;
+
     private String[] stimuliRandomTags = null;
+    private String screenMediaPath = null;
     private Integer stimulusMsDelay = null;
     private Boolean randomiseStimuli = null;
     private Integer stimuliCount = null;
@@ -168,12 +172,20 @@ public class WizardScreenData {
         this.centreScreen = centreScreen;
     }
 
-    public String[] getStimuliSet() {
-        return stimuliSet;
+    public List<Stimulus> getStimuli() {
+        return stimuli;
     }
 
-    public void setStimuliSet(String[] stimuliSet) {
-        this.stimuliSet = stimuliSet;
+    public void setStimuli(List<Stimulus> stimuli) {
+        this.stimuli = stimuli;
+    }
+
+    public String getScreenMediaPath() {
+        return screenMediaPath;
+    }
+
+    public void setScreenMediaPath(String screenMediaPath) {
+        this.screenMediaPath = screenMediaPath;
     }
 
     public String[] getStimuliRandomTags() {

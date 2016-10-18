@@ -42,6 +42,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMenuScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreenData;
 
 /**
  * @since Jan 18, 2016 11:20:47 AM (creation date)
@@ -49,6 +50,14 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreen;
  */
 public class SynQuiz2 {
 
+    // todo: discuss the details of adding social media sharing and related informed consent check box
+    // checkbox = share this experiment or share my results in a pretty grapheme cloud
+    // <a href="https://www.facebook.com/sharer/sharer.php?u=www.mpi.nl">Share on Facebook</a>
+//    <a href="https://twitter.com/home?status=www.mpi.nl">Share on Twitter</a>
+//    <a href="https://plus.google.com/share?url=www.mpi.nl">Share on Google+</a>
+    // <a href="https://www.linkedin.com/shareArticle?mini=true&url=www.mpi.nl&title=www.mpi.nl&summary=www.mpi.nl&source=www.mpi.nl">Share on LinkedIn</a>
+    // <a href="https://pinterest.com/pin/create/button/?url=www.mpi.nl&media=www.mpi.nl&description=www.mpi.nl">Pin on Pinterest</a>
+    // todo: graphime cloud with the highest scoring graphemes being larger and shown in the average colour for that grapheme: https://github.com/jasondavies/d3-cloud
     private final WizardController wizardController = new WizardController();
     private final String imageSize = "80";
 
@@ -131,7 +140,7 @@ public class SynQuiz2 {
         previousDemographicsScreen.setNextWizardScreen(menuScreen);
         final WizardEditUserScreen menuBackPresenter = previousDemographicsScreen;
         menuScreen.getPresenterScreen().setBackPresenter(menuBackPresenter.getPresenterScreen());
-        menuScreen.getPresenterScreen().setNextPresenter(sumbitScreen.getPresenterScreen());
+        menuScreen.getPresenterScreen().setNextPresenter(sumbitScreen.getWizardScreenData().getPresenterScreen());
         final AbstractWizardScreen reportScreen = createReportScreen("Report", menuScreen.getPresenterScreen(), menuScreen.getPresenterScreen(), 20);
         wizardData.addScreen(reportScreen);
         wizardData.addScreen(menuScreen);
@@ -191,10 +200,10 @@ public class SynQuiz2 {
                 + "The synaesthesia studies are coordinated by Dr. Amanda Tilot and Dr. Sarah Graham. "
                 + "If you have any questions about our research, please contact us at " + formatLink("synaesthesia@mpi.nl", "mailto:synaesthesia@mpi.nl") + "."));
         return new AbstractWizardScreen() {
-            @Override
-            public PresenterScreen getPresenterScreen() {
-                return presenterScreen;
-            }
+//            @Override
+//            public PresenterScreen getPresenterScreen() {
+//                return presenterScreen;
+//            }
 
             @Override
             public String getMenuLabel() {
@@ -202,9 +211,22 @@ public class SynQuiz2 {
             }
 
             @Override
-            public String getScreenTag() {
-                return presenterScreen.getSelfPresenterTag();
+            public WizardScreenData getWizardScreenData() {
+                return new WizardScreenData() {
+                    @Override
+                    public PresenterScreen getPresenterScreen() {
+                        return presenterScreen;
+                    }
+//                    @Override
+//                    public String getScreenTag() {
+//                        return screenName;
+//                    }
+                };
             }
+//            @Override
+//            public String getScreenTag() {
+//                return presenterScreen.getSelfPresenterTag();
+//            }
 
             @Override
             public String getScreenTitle() {
@@ -467,7 +489,7 @@ public class SynQuiz2 {
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, screenName);
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "true");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "3");
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, "0");
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, "0"); // todo: does Amanda want a random window to be used
         presenterFeatureList.add(loadStimuliFeature);
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
 //        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
@@ -572,20 +594,34 @@ public class SynQuiz2 {
         presenterScreen.getPresenterFeatureList().add(showColourReport);
         return new AbstractWizardScreen() {
             @Override
-            public WizardScreen getBackWizardScreen() {
-                return backPresenter;
+            public WizardScreenData getWizardScreenData() {
+                return new WizardScreenData() {
+                    @Override
+                    public PresenterScreen getPresenterScreen() {
+                        return presenterScreen;
+                    }
+
+                    @Override
+                    public String getScreenTag() {
+                        return screenName;
+                    }
+
+                };
             }
 
-            @Override
-            public WizardScreen getNextWizardScreen() {
-                return nextPresenter;
-            }
-
-            @Override
-            public PresenterScreen getPresenterScreen() {
-                return presenterScreen;
-            }
-
+//            @Override
+//            public WizardScreenData getBackWizardScreenData() {
+//                return backPresenter;
+//            }
+//
+//            @Override
+//            public WizardScreenData getNextWizardScreenData() {
+//                return nextPresenterData;
+//            }
+//            @Override
+//            public PresenterScreen getPresenterScreen() {
+//                return presenterScreen;
+//            }
             @Override
             public String getMenuLabel() {
                 return presenterScreen.getMenuLabel();

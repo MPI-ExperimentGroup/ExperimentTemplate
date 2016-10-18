@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -44,7 +45,34 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         super(screenName, screenName, screenName);
         this.setScreenTitle(screenName);
         this.setCentreScreen(centreScreen);
-        this.wizardScreenData.setStimuliSet(screenTextArray);
+
+        final List<Stimulus> stimuliList = new ArrayList<>();
+        if (screenTextArray != null) {
+            for (String stimulusLine : screenTextArray) {
+                // "list_1/list_2:AV_happy.mpg:prevoicing9_e_440Hz_coda_k.wav:bik,bek",
+                final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{screenName}));
+                final Stimulus stimulus;
+
+                final String[] splitScreenText = stimulusLine.split(":", 5);
+                tagSet.addAll(Arrays.asList(splitScreenText[0].split("/")));
+                final String audioPath;
+                final String codeVideoPath;
+                final String responseOptions;
+                if (useCodeVideo) {
+                    audioPath = splitScreenText[2].replaceAll(BASE_FILE_REGEX, "");
+                    codeVideoPath = splitScreenText[1].replaceAll(BASE_FILE_REGEX, "");
+                    responseOptions = splitScreenText[3];
+                } else {
+                    audioPath = splitScreenText[1].replaceAll(BASE_FILE_REGEX, "");
+                    codeVideoPath = null;
+                    responseOptions = splitScreenText[2];
+                }
+                stimulus = new Stimulus(stimulusLine, audioPath, null, null, null, codeVideoPath, 0, tagSet, responseOptions);
+                stimuliList.add(stimulus);
+            }
+            wizardScreenData.setStimuli(stimuliList);
+        }
+
         this.wizardScreenData.setUseCodeVideo(useCodeVideo);
         this.wizardScreenData.setStimuliRandomTags(randomStimuliTags);
         this.wizardScreenData.setStimulusMsDelay(stimulusMsDelay);
@@ -62,32 +90,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
 
     @Override
     public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        final List<Stimulus> stimuliList = experiment.getStimuli();
-        if (wizardScreenData.getStimuliSet() != null) {
-            for (String stimulusLine : wizardScreenData.getStimuliSet()) {
-                // "list_1/list_2:AV_happy.mpg:prevoicing9_e_440Hz_coda_k.wav:bik,bek",
-                final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{getScreenTitle()}));
-                final Stimulus stimulus;
-
-                final String[] splitScreenText = stimulusLine.split(":", 5);
-                tagSet.addAll(Arrays.asList(splitScreenText[0].split("/")));
-                final String audioPath;
-                final String codeVideoPath;
-                final String responseOptions;
-                if (wizardScreenData.getUseCodeVideo()) {
-                    audioPath = splitScreenText[2].replaceAll(BASE_FILE_REGEX, "");
-                    codeVideoPath = splitScreenText[1].replaceAll(BASE_FILE_REGEX, "");
-                    responseOptions = splitScreenText[3];
-                } else {
-                    audioPath = splitScreenText[1].replaceAll(BASE_FILE_REGEX, "");
-                    codeVideoPath = null;
-                    responseOptions = splitScreenText[2];
-                }
-                stimulus = new Stimulus(stimulusLine, audioPath, null, null, null, codeVideoPath, 0, tagSet, responseOptions);
-                stimuliList.add(stimulus);
-            }
-        }
-
+        experiment.setStimuli(this.wizardScreenData.getStimuli());
 //        final PresenterScreen presenterScreen = new PresenterScreen((obfuscateScreenNames) ? experiment.getAppNameDisplay() + " " + displayOrder : getScreenTitle(), getScreenTitle(), backPresenter, screenName, null, PresenterType.stimulus, displayOrder);
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
         getPresenterScreen().setPresenterType(PresenterType.stimulus);

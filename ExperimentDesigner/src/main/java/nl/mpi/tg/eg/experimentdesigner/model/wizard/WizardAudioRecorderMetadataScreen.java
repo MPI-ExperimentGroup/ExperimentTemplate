@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -36,7 +37,14 @@ public class WizardAudioRecorderMetadataScreen extends AbstractWizardScreen {
 
     public WizardAudioRecorderMetadataScreen(String[] metadataStrings, String next_button) {
         super("Metadata", "Metadata", "MetadataScreen");
-        this.wizardScreenData.setStimuliSet(metadataStrings);
+
+        final List<Stimulus> stimuliList = new ArrayList<>();
+        final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{"metadata"}));
+        for (String metadataString : metadataStrings) {
+            final Stimulus stimulus = new Stimulus(metadataString, null, null, null, metadataString, null, 0, tagSet, null);
+            stimuliList.add(stimulus);
+        }
+        this.wizardScreenData.setStimuli(stimuliList);
         this.wizardScreenData.setNextButton(next_button);
     }
 
@@ -45,12 +53,7 @@ public class WizardAudioRecorderMetadataScreen extends AbstractWizardScreen {
         super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
         getPresenterScreen().setPresenterType(PresenterType.stimulus);
         //    Metadata is collected in the spoken form (audio recording) with screen prompts for each item in metadataStrings:
-        final List<Stimulus> stimuliList = experiment.getStimuli();
-        final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{"metadata"}));
-        for (String metadataString : this.wizardScreenData.getStimuliSet()) {
-            final Stimulus stimulus = new Stimulus(metadataString, null, null, null, metadataString, null, 0, tagSet, null);
-            stimuliList.add(stimulus);
-        }
+        experiment.getStimuli().addAll(this.wizardScreenData.getStimuli());
 //        experiment.setStimuli(stimuliList);
         List<PresenterFeature> presenterFeatureList = getPresenterScreen().getPresenterFeatureList();
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadAllStimulus, null);
