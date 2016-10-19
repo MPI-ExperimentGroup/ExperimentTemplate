@@ -100,7 +100,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                             <button type="button" style="display: none" th:id="${'updateFeatureButton' + wizardScreen.id}" class="saveFeatureButton" th:onclick="${'postFeatureChanges(featureForm' + wizardScreen.id + ')'}">Save Changes</button>
                                         </div>
                                         <div class="errorDiv"/>                                        
-                                        &nbsp;<span class="wizardScreenDetailsCheckBox"><input type="checkbox" th:id="${'wizardScreenDetailsCheckBox' + wizardScreen.screenTag}" th:onclick="'hideShowDetails(\''+${wizardScreen.screenTag}+'\')'">Hide details</input></span>
+                                        &nbsp;<span class="wizardScreenDetailsCheckBox"><input type="checkbox" checked="true" th:id="${'wizardScreenDetailsCheckBox' + wizardScreen.screenTag}" th:onclick="'hideShowDetails(\''+${wizardScreen.screenTag}+'\')'">Show details</input></span>
                                         <div class="featurescell" th:id="${'wizardScreenDetails' + wizardScreen.screenTag}">
                                             <div class="featuresrow featurescell">
                                                 <table>
@@ -255,9 +255,19 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 function hideShowDetails(wizardScreenTag)
                 {
                     if ($('#wizardScreenDetailsCheckBox' + wizardScreenTag).is(":checked"))
-                        $('#wizardScreenDetails' + wizardScreenTag).hide();
-                    else
                         $('#wizardScreenDetails' + wizardScreenTag).show();
+                    else
+                        $('#wizardScreenDetails' + wizardScreenTag).hide();
+                }
+                function hideShowStimuliDetails(wizardScreenId)
+                {
+                    if ($('#editStimuliDetailsCheckBox' + wizardScreenId).is(":checked")) {
+                        $('#editStimuliPanel' + wizardScreenId).show();
+                        $('#displayStimuliPanel' + wizardScreenId).hide();
+                    } else {
+                        $('#editStimuliPanel' + wizardScreenId).hide();
+                        $('#displayStimuliPanel' + wizardScreenId).show();
+                    }
                 }
                 function allowDrop(ev) {
                     ev.preventDefault();
@@ -272,6 +282,32 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     var data = ev.dataTransfer.getData("text");
                     var list = document.getElementById("wizardScreenList");
                     list.insertBefore(document.getElementById(data), ev.target);
+                }
+                function stimulusDragEnter(event, wizardScreenId)
+                {
+                    event.stopPropagation();
+                    event.preventDefault();
+                    $('#stimulusUploadBox' + wizardScreenId).addClass("stimulusUploadBoxActive");
+                }
+                function stimulusDragOver(event, wizardScreenId)
+                {
+                    event.stopPropagation();
+                    event.preventDefault();
+                }
+                function stimulusDragLeave(event, wizardScreenId)
+                {
+                    event.stopPropagation();
+                    event.preventDefault();
+                    $('#stimulusUploadBox' + wizardScreenId).removeClass("stimulusUploadBoxActive");
+                }
+                function stimulusDrop(event, wizardScreenId)
+                {
+                    event.stopPropagation();
+                    event.preventDefault();
+                    $('#stimulusUploadBox' + wizardScreenId).removeClass("stimulusUploadBoxActive");
+                    console.log(event);
+                    console.log(event.dataTransfer);
+                    console.log(event.files);
                 }
             </script>
         </div>
@@ -330,14 +366,32 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <div class="featureTypeHeader">
                         <span class="featurescell" th:text="${wizardFragmentLabel}">wizardTextArea</span>
                     </div>
-                    <div class="featurescell">
+                    &nbsp;<span class="wizardScreenDetailsCheckBox"><input type="checkbox" th:id="${'editStimuliDetailsCheckBox' + wizardScreen.id}" th:onclick="'hideShowStimuliDetails(\''+${wizardScreen.id}+'\')'">Show details</input></span>
+                    <div class="stimulusUploadBox" th:id="${'stimulusUploadBox' + wizardScreen.id}" 
+                         th:ondragover="${'stimulusDragOver(event, ' + wizardScreen.id + ');'}"
+                         th:ondragenter="${'stimulusDragEnter(event, ' + wizardScreen.id + ');'}"
+                         th:ondragleave="${'stimulusDragLeave(event, ' + wizardScreen.id + ');'}"
+                         th:ondrop="${'stimulusDrop(event, ' + wizardScreen.id + ');'}"
+                         >
+                        <b>Drag and drop stimulus files here.</b><br/>
+                        Stimuli are identified by their file name, so an existing stimulus can be updated providing that the uploaded file name matches the stimulus identifier.<br/>
+                        The file name also sets the "label", "code", "pause ms" and "stimulus tags" providing it is in the following format:<br/>
+                        label_code_pauseMs_stimulusTags.suffix<br/>
+                        For example: "house__1000_building_big_home.jpg" would create or update one stimulus with identifier "house__1000_building_big_home.jpg", the label "house", without a code, a 1 second delay and three tags "building", "big", "home".<br/>
+                    </div>
+                    <div class="featurescell" th:id="${'displayStimuliPanel' + wizardScreen.id}">
+                        <!--<button type="button" class="wizardScreenEditCheckBox" th:onclick="${'$(editStimuliPanel' + wizardScreenId + ').show(); $(displayStimuliPanel' + wizardScreenId + ').hide();'}">Edit Stimuli</button>-->
+                        <span th:each="stimulus : ${wizardFragmentValue}" th:text="${stimulus.identifier + '&nbsp;'}"></span>
+                    </div>
+                    <div class="featurescell" th:id="${'editStimuliPanel' + wizardScreen.id}" style="display: none">
+                        <!--<button type="button" class="deleteFeatureButton" th:onclick="${'$(editStimuliPanel' + wizardScreenId + ').hide(); $(displayStimuliPanel' + wizardScreenId + ').show();'}">Close</button>-->
                         <!--<span th:each="wizardFragmentItem : ${wizardFragmentValue}">-->
                         <!--<input class="wizardTextbox" th:value="${wizardFragmentItem}" th:name="${wizardFragmentName}" th:onchange="${'$(updateFeatureButton' + wizardScreenId + ').show();'}"/>-->
                         <!--<br/>-->
                         <!--</span>-->
+                        <div th:include="stimuli :: stimulitable(stimuliList=${wizardFragmentValue}, parentId=${wizardScreenId}, parentType='wizard')"></div>
                     </div>
                     <br/>
-                    <div th:include="stimuli :: stimulitable(stimuliList=${wizardFragmentValue}, parentId=${wizardScreenId}, parentType='wizard')"></div>
                 </div>
             </span>
         </div>
