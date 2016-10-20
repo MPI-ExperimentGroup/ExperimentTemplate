@@ -61,7 +61,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <span class="td">
                         <!--<input type="text" name="imageData" th:value="${stimulus.imageData}" th:onchange="${'$(updateRowButton' + stimulus.id + ').show();'}" />-->                            
                         <input th:if="${stimulus.getImageData()} == null" type="file" name="image" accept="image/*" />
-                        <img th:if="${stimulus.getImageData()} != null" class="stimulusImage" src="" alt="stimulus image" th:src="${contextPath + '/' + parentType + '/' + parentId + '/stimulus/' + stimulus.id + '/image'}"/>                            
+                        <img th:if="${stimulus.getImageData()} != null" class="stimulusImage" src="" alt="stimulus image" th:src="${contextPath + '/stimuli/' + stimulus.id + '/image'}"/>                            
                     </span>
                     <span class="td"><input type="text" name="label" th:value="${stimulus.label}" th:onchange="${'$(updateRowButton' + stimulus.id + ').show();'}" /></span>
                     <span class="td"><input type="text" name="code" th:value="${stimulus.code}" th:onchange="${'$(updateRowButton' + stimulus.id + ').show();'}" /></span>

@@ -350,8 +350,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         xhRequest.onreadystatechange = function (oEvent) {
                             if (xhRequest.readyState === 4) {
                                 if (xhRequest.status === 200) {
-                                    progressDivBar.css("width", "100%");
-                                    progressDivLabel.html("100% " + fileToUpload.name);
+//                                    progressDivBar.css("width", "100%");
+//                                    progressDivLabel.html("100% " + fileToUpload.name);
+                                    $(xhRequest.responseText).insertAfter(progressDivOuter);
+                                    progressDivOuter.hide();
                                 } else {
                                     progressDivLabel.html("Error: " + xhRequest.statusText + " " + fileToUpload.name);
                                 }
