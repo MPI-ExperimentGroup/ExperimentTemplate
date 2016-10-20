@@ -120,6 +120,40 @@ public class StimulusController {
         }
     }
 
+    @RequestMapping(value = "/wizard/{parentId}/stimulus/{stimulusIdentifier}/{fileType}/{subType}/upload", method = RequestMethod.POST)
+    public ResponseEntity<Object> uploadFile(final HttpServletRequest req, Model model,
+            //            @PathVariable Stimulus stimulus, 
+            @PathVariable int parentId,
+            @PathVariable String stimulusIdentifier,
+            @PathVariable UploadType fileType,
+            @PathVariable String subType,
+            @RequestParam("stimulusFile") MultipartFile uploadFile) {
+        if (!uploadFile.isEmpty()) {
+            Stimulus stimulus = new Stimulus();
+            try {
+                byte[] uploadBytes = uploadFile.getBytes();
+                switch (fileType) {
+                    case audio:
+                        stimulus.setAudioData(uploadBytes);
+                        break;
+                    case image:
+                        stimulus.setImageData(uploadBytes);
+                        break;
+                    case video:
+                        stimulus.setVideoData(uploadBytes);
+                        break;
+                }
+                stimuliRepository.save(stimulus);
+            } catch (IOException exception) {
+                LOG.log(Level.INFO, "upload of stimulus failed", exception);
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @RequestMapping(value = "/experiment/{appName}/stimulus/{stimulus}/{fileType}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<InputStreamResource> getImage(@PathVariable Stimulus stimulus, @PathVariable String appName) {

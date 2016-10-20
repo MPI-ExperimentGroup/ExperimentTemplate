@@ -327,29 +327,33 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
                 function uploadFile(fileToUpload, wizardScreenId) {
                     if (typeof FileReader !== "undefined") {
-                        var fileReader = new FileReader();
                         var xhRequest = new XMLHttpRequest();
                         var contextPath = /*[[${contextPath}]]*/ 'contextPath';
                         xhRequest.open("post", contextPath + "/wizard/" + wizardScreenId + "/stimulus/" + fileToUpload.name + "/" + fileToUpload.type + "/upload", true);
 
-                        var progressDiv = $("<div class='progressDiv'>" + fileToUpload.name + "</div>");
-                        progressDiv.insertAfter('#stimulusUploadBox' + wizardScreenId);
+                        var progressDivBar = $("<div class='progressDivBar'>&nbsp;</div>");
+                        var progressDivLabel = $("<div class='progressDivLabel'>" + fileToUpload.name + "</div>");
+                        var progressDivOuter = $("<div class='progressDivOuter'></div>");
+                        progressDivBar.css("width", "0%");
+                        progressDivOuter.append(progressDivBar);
+                        progressDivOuter.append(progressDivLabel);
+                        progressDivOuter.insertAfter('#stimulusUploadBox' + wizardScreenId);
                         xhRequest.upload.addEventListener("progress", function (event) {
                             console.log(event);
                             if (event.lengthComputable) {
-                                progressDiv.css("width", (event.loaded / event.total) * 100 + "%");
-                                progressDiv.html(" " + ((event.loaded / event.total) * 100).toFixed() + "%");
+                                progressDivBar.css("width", (event.loaded / event.total) * 100 + "%");
+                                progressDivLabel.html(" " + ((event.loaded / event.total) * 100).toFixed() + "% " + fileToUpload.name);
                             } else {
-                                progressDiv.html("unknown");
+                                progressDivLabel.html("unknown % " + fileToUpload.name);
                             }
                         }, false);
                         xhRequest.onreadystatechange = function (oEvent) {
                             if (xhRequest.readyState === 4) {
                                 if (xhRequest.status === 200) {
-                                    progressDiv.css("width", "100%");
-                                    progressDiv.html("100%");
+                                    progressDivBar.css("width", "100%");
+                                    progressDivLabel.html("100% " + fileToUpload.name);
                                 } else {
-                                    progressDiv.html("Error" + xhRequest.statusText);
+                                    progressDivLabel.html("Error: " + xhRequest.statusText + " " + fileToUpload.name);
                                 }
                             }
                         };
@@ -359,10 +363,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         xhRequest.setRequestHeader("X-File-Size", fileToUpload.size);
                         xhRequest.setRequestHeader("X-File-Type", fileToUpload.type);
 
-                        fileReader.onload = function (evt) {
-                            xhRequest.send(evt.target.result);
-                        };
-                        fileReader.readAsDataURL(fileToUpload);
+                        var formData = new FormData();
+                        formData.append('stimulusFile', fileToUpload);
+                        xhRequest.send(formData);
                     } else {
                         $("<div class='errorDiv'>Browser not supported</div>").insertAfter('#stimulusUploadBox' + wizardScreenId);
                     }
