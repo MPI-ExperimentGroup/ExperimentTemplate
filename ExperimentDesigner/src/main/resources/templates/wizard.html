@@ -251,7 +251,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <div class="tr"></div>
                 </div>
             </div>
-            <script>
+            <script th:inline="javascript">
+                /*<![CDATA[*/
                 function hideShowDetails(wizardScreenTag)
                 {
                     if ($('#wizardScreenDetailsCheckBox' + wizardScreenTag).is(":checked"))
@@ -305,10 +306,68 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     event.stopPropagation();
                     event.preventDefault();
                     $('#stimulusUploadBox' + wizardScreenId).removeClass("stimulusUploadBoxActive");
-                    console.log(event);
-                    console.log(event.dataTransfer);
-                    console.log(event.files);
+//                    console.log(event);
+//                    console.log(event.dataTransfer);
+//                    console.log(event.dataTransfer.files);
+                    checkFiles(event.dataTransfer.files, wizardScreenId);
                 }
+                function checkFiles(droppedFiles, wizardScreenId) {
+                    for (var fileIndex = 0; fileIndex < droppedFiles.length; fileIndex++) {
+                        console.log(droppedFiles[fileIndex].type);
+                        console.log(droppedFiles[fileIndex].size);
+                        console.log(droppedFiles[fileIndex].name);
+                        if (droppedFiles[fileIndex].type === "image/jpeg"
+                                || droppedFiles[fileIndex].type === "image/png") {
+                            uploadFile(droppedFiles[fileIndex], wizardScreenId);
+                        } else {
+                            $("<div class='errorDiv'>" + droppedFiles[fileIndex].type + " not supported</div>").insertAfter('#stimulusUploadBox' + wizardScreenId);
+                        }
+                    }
+                }
+
+                function uploadFile(fileToUpload, wizardScreenId) {
+                    if (typeof FileReader !== "undefined") {
+                        var fileReader = new FileReader();
+                        var xhRequest = new XMLHttpRequest();
+                        var contextPath = /*[[${contextPath}]]*/ 'contextPath';
+                        xhRequest.open("post", contextPath + "/wizard/" + wizardScreenId + "/stimulus/" + fileToUpload.name + "/" + fileToUpload.type + "/upload", true);
+
+                        var progressDiv = $("<div class='progressDiv'>" + fileToUpload.name + "</div>");
+                        progressDiv.insertAfter('#stimulusUploadBox' + wizardScreenId);
+                        xhRequest.upload.addEventListener("progress", function (event) {
+                            console.log(event);
+                            if (event.lengthComputable) {
+                                progressDiv.css("width", (event.loaded / event.total) * 100 + "%");
+                                progressDiv.html(" " + ((event.loaded / event.total) * 100).toFixed() + "%");
+                            } else {
+                                progressDiv.html("unknown");
+                            }
+                        }, false);
+                        xhRequest.onreadystatechange = function (oEvent) {
+                            if (xhRequest.readyState === 4) {
+                                if (xhRequest.status === 200) {
+                                    progressDiv.css("width", "100%");
+                                    progressDiv.html("100%");
+                                } else {
+                                    progressDiv.html("Error" + xhRequest.statusText);
+                                }
+                            }
+                        };
+                        var csrfParameterName = /*[[${_csrf.token}]]*/ 'csrfParameterName';
+                        xhRequest.setRequestHeader("X-CSRF-TOKEN", csrfParameterName);
+                        xhRequest.setRequestHeader("X-File-Name", fileToUpload.name);
+                        xhRequest.setRequestHeader("X-File-Size", fileToUpload.size);
+                        xhRequest.setRequestHeader("X-File-Type", fileToUpload.type);
+
+                        fileReader.onload = function (evt) {
+                            xhRequest.send(evt.target.result);
+                        };
+                        fileReader.readAsDataURL(fileToUpload);
+                    } else {
+                        $("<div class='errorDiv'>Browser not supported</div>").insertAfter('#stimulusUploadBox' + wizardScreenId);
+                    }
+                }
+                /*]]>*/
             </script>
         </div>
         <div style="border: black;border-style: solid;padding: 10px;">
