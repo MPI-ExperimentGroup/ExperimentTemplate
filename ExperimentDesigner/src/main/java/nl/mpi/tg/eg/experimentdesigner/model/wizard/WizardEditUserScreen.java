@@ -24,7 +24,6 @@ import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
-import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 
 /**
  * @since May 3, 2016 2:11:15 PM (creation date)
@@ -42,7 +41,7 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
         super("EditUser", "EditUser", "EditUser");
     }
 
-    public WizardEditUserScreen(final String screenTitle, final String screenTag, WizardData wizardData, String dispalyText, final String saveButtonLabel, final String postText, final AbstractWizardScreen alternateNextScreen, final String alternateButtonLabel, final boolean sendData, final String on_Error_Text) {
+    public WizardEditUserScreen(final String screenTitle, final String screenTag, String dispalyText, final String saveButtonLabel, final String postText, final AbstractWizardScreen alternateNextScreen, final String alternateButtonLabel, final boolean sendData, final String on_Error_Text) {
         super(screenTitle, screenTitle, screenTag);
         this.setScreenText(dispalyText);
         this.wizardScreenData.setNextButton(saveButtonLabel);

@@ -51,7 +51,7 @@ public class WizardScreenData {
     private WizardScreenData backWizardScreenData = null;
     @OneToOne(targetEntity = WizardScreenData.class, cascade = CascadeType.ALL)
     private WizardScreenData nextWizardScreenData = null;
-    @Size(max = 3500)
+    @Size(max = 6000)
     private String screenText1 = null;
     private String screenText2 = null;
     private String nextButton = null;
