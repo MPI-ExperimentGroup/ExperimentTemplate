@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment appNameDisplay="Leeservaring" appNameInternal="leeservaring" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="false" textFontSize="22">
     <metadata>
-        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Worker ID"/>
         <field controlledMessage="Voer een getal." controlledRegex="[0-9]+" postName="leeftijd" preventServerDuplicates="false" registrationField="Leeftijd"/>
         <field controlledMessage="." controlledRegex="|man|vrouw|anders" postName="geslacht" preventServerDuplicates="false" registrationField="Geslacht"/>
         <field controlledMessage="." controlledRegex="primair onderwijs (basisschool)|voortgezet onderwijs|middelbaar beroepsonderwijs (MBO)|hoger onderwijs (HBO, universiteit)|anders" postName="opleidingsniveau" preventServerDuplicates="false" registrationField="Opleidingsniveau"/>
@@ -10,6 +9,7 @@
         <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_Introduction" preventServerDuplicates="false" registrationField="groupAllocation_Introduction"/>
         <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_StoryPresentation" preventServerDuplicates="false" registrationField="groupAllocation_StoryPresentation"/>
         <field controlledMessage="Geef een geldig e-mailadres." controlledRegex="^[^@]+@[^@]+$" postName="emaill" preventServerDuplicates="false" registrationField=""/>
+        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Worker ID"/>
     </metadata>
     <presenter displayOrder="1" menuLabel="Toestemming" next="Participant" type="metadata" self="Toestemming" title="Leeservaring 1">
         <htmlText featureText="Welkom! &lt;br/&gt;In deze studie onderzoeken we hoe mensen verhalen beleven. Door deel te nemen aan dit onderzoek helpt u ons inzicht te krijgen in verschillen en overeenkomsten tussen lezers.&lt;br/&gt;U zult eerst een kort verhaal lezen, en daarna enkele vragen beantwoorden over uw leeservaring. Daarna doet u een korte reactietest. In totaal duurt het experiment ongeveer 10 minuten. &lt;br/&gt;Door verder te gaan verklaart u deel te nemen aan het experiment en gaat u akkoord met het gebruik van de verzamelde geanonimiseerde data voor onderzoeksdoeleinden. U kunt op ieder moment stoppen met het experiment door het scherm te sluiten.&lt;br/&gt;Dit experiment is goedgekeurd door de ethische toetsingscommissie van de faculteit sociale wetenschappen van de Radboud Universiteit (referentienummer ECG2013-1308-120)."/>
@@ -118,19 +118,19 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="14" menuLabel="PictureInstructions" type="text" self="PictureInstructions" title="Leeservaring 14">
+    <presenter displayOrder="7" menuLabel="PictureInstructions" type="text" self="PictureInstructions" title="Leeservaring 7">
         <htmlText featureText="&lt;b&gt;U zult zo enkele afbeeldingen zien die situaties tonen. Uw taak is te kiezen of de afgebeelde acties overeenkomen met acties in het verhaal dat u net las, of niet. Als het beeld een actie toont die in het verhaal voorkwam, toetst u “Z”, als de actie niet in het verhaal voorkwam toetst u “.”. Probeer zo snel mogelijk te reageren."/>
         <targetButton featureText="volgende [ spatiebalk ]&lt;/b&gt;" hotKey="SPACE" target="PictureTask"/>
     </presenter>
-    <presenter displayOrder="15" menuLabel="Survey1Instructions" type="text" self="Survey1Instructions" title="Leeservaring 15">
+    <presenter displayOrder="8" menuLabel="Survey1Instructions" type="text" self="Survey1Instructions" title="Leeservaring 8">
         <htmlText featureText="&lt;b&gt;U krijgt nu enkele stellingen te zien over uw ervaringen tijdens het lezen van het voorgaande verhaal. Geef aan in hoeverre de stellingen van toepassing zijn op uw ervaring tijdens het lezen van dit verhaal.&lt;/b&gt;"/>
         <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="Survey1"/>
     </presenter>
-    <presenter displayOrder="16" menuLabel="Survey2Instructions" type="text" self="Survey2Instructions" title="Leeservaring 16">
+    <presenter displayOrder="9" menuLabel="Survey2Instructions" type="text" self="Survey2Instructions" title="Leeservaring 9">
         <htmlText featureText="&lt;b&gt;U krijgt nu enkele woorden te zien. Uw taak is om aan te geven in hoeverre de woorden van toepassing zijn op uw ervaring tijdens het lezen van het verhaal.&lt;/b&gt;"/>
         <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="Survey2"/>
     </presenter>
-    <presenter displayOrder="17" menuLabel="PictureTask" next="ReadingBehaviorInstructions" type="stimulus" self="PictureTask" title="Leeservaring 17">
+    <presenter displayOrder="10" menuLabel="PictureTask" next="ReadingBehaviorInstructions" type="stimulus" self="PictureTask" title="Leeservaring 10">
         <centrePage/>
         <loadStimulus eventTag="PictureTask" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
@@ -150,11 +150,11 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="18" menuLabel="ReadingBehaviorInstructions" type="text" self="ReadingBehaviorInstructions" title="Leeservaring 18">
+    <presenter displayOrder="11" menuLabel="ReadingBehaviorInstructions" type="text" self="ReadingBehaviorInstructions" title="Leeservaring 11">
         <htmlText featureText="&lt;b&gt;Het experiment is bijna klaar. We hebben nog 6 korte vragen aan u.&lt;/b&gt;"/>
         <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="ReadingBehavior"/>
     </presenter>
-    <presenter displayOrder="19" menuLabel="ReadingBehavior" next="SubmitData" type="stimulus" self="ReadingBehavior" title="Leeservaring 19">
+    <presenter displayOrder="12" menuLabel="ReadingBehavior" next="SubmitData" type="stimulus" self="ReadingBehavior" title="Leeservaring 12">
         <centrePage/>
         <loadStimulus eventTag="ReadingBehavior" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
@@ -174,7 +174,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="20" menuLabel="SubmitData" next="Bedankt" type="transmission" self="SubmitData" title="Leeservaring 20">
+    <presenter displayOrder="13" menuLabel="SubmitData" next="Bedankt" type="transmission" self="SubmitData" title="Leeservaring 13">
         <sendAllData>
             <onSuccess>
                 <autoNextPresenter/>
@@ -185,7 +185,7 @@
             </onError>
         </sendAllData>
     </presenter>
-    <presenter displayOrder="21" menuLabel="Bedankt" next="Registered" type="metadata" self="Bedankt" title="Leeservaring 21">
+    <presenter displayOrder="14" menuLabel="Bedankt" next="Registered" type="metadata" self="Bedankt" title="Leeservaring 14">
         <htmlText featureText="Hartelijk bedankt voor uw deelname aan ons experiment.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;b&gt;De schrijver&lt;/b&gt;&lt;br/&gt;Martin Rombouts (Rotterdam, 1992) studeerde Humanistiek aan de Universiteit voor Humanistiek in Utrecht en is derdejaars Creative Writing aan ArtEZ Hogeschool voor de kunsten in Arnhem. Hij schreef voor &lt;a href=&quot;http://www.abcyourself.nl/author/martin/&quot;&gt;ABCyourself&lt;/a&gt; en de blog van de Wintertuin. Hij  trad op op het Wintertuinfestival, Festival Hongerige Wolf en de Kunstbende Masterclass. Martin heeft een grote liefde voor stadsvogels, mensen en conceptuele kunst, en schrijft alles wat er maar te schrijven valt: van voordrachten tot gedichten, van verhalen tot een radioprogramma; zijn Love Radio is tot half april nog te zien als het randprogramma van de dansvoorstelling &lt;a href=&quot;http://www.jensvandaele.com/nl/voorstellingen/over-onze-vader&quot;&gt;Over Onze Vader&lt;/a&gt;, van Jens van Daele.&lt;br/&gt;Volg Martin op twitter &lt;a href=&quot;https://twitter.com/martinrombouts&quot;&gt;@MartinRombouts&lt;/a&gt; of &lt;a href=&quot;https://www.facebook.com/martin.rombouts28&quot;&gt;Facebook&lt;/a&gt;. Of stuur hem een e-mail: martin[at]martinrombouts.nl.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;De onderzoeker&lt;/b&gt;&lt;br/&gt;Franziska Hartung is promovenda in het Neurobiology of Language department van Peter Hagoort op het Donders Instituut voor Hersenen, Cognitie en Gedrag en op het Max Planck Instituut voor Psycholinguïstiek. Samen met Dr. Roel Willems doet ze onderzoek naar hoe ons hersenen verhalen beleven. Meer informatie over ons onderzoek kunt u vinden op de website van &lt;a href=&quot;http://www.mpi.nl/people/hartung-franziska&quot;&gt;Franziska Hartung&lt;/a&gt; en van &lt;a href=&quot;http://www.rmwillems.nl/index.html&quot;&gt;Roel Willems&lt;/a&gt;. Voor vragen over dit experiment kunt u een email sturen naar franziska.hartung@mpi.nl&lt;br/&gt; &lt;br/&gt;Als u ons onderzoek interessant vindt kunt u hier meer informatie vinden over eerdere studies naar lezen, gedaan door onze afdeling: &lt;br/&gt;&lt;a href=&quot;https://taalenhersenen.wordpress.com/2014/06/06/hoe-komt-het-dat-we-ons-echt-de-held-uit-het-verhaal-voelen/&quot;&gt;Hoe komt het dat we ons écht de held uit het verhaal voelen?&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://goo.gl/KLlo30&quot;&gt;Hersenonderzoek naar fictie: hoe begrijpen we een verhaal?&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://goo.gl/Zv41vK&quot;&gt;Hoe onze hersenen ervoor zorgen dat we meeleven met fictieve personages&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://goo.gl/f34iUW&quot;&gt;Literatuur dwingt ons soms langzamer te lezen&lt;/a&gt;&lt;br/&gt;&lt;a href=&quot;https://goo.gl/op1oNs&quot;&gt;Word je een beter mens van boeken lezen?&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Als u graag meer wilt weten over het onderzoek uit het Neurobiology of Language department van Peter Hagoort kunt u kijken op &lt;a href=&quot;http://hettaligebrein.nl/&quot;&gt;hettaligebrein&lt;/a&gt; of &lt;a href=&quot;http://www.mpi.nl/departments/neurobiology-of-language&quot;&gt;neurobiology-of-language&lt;/a&gt;. &lt;br/&gt;&lt;br/&gt;&lt;b&gt;Software ontwikkelaar&lt;/b&gt;&lt;br/&gt;Dit experiment is gemaakt met Frinex. Frinex is software in ontwikkeling voor interactieve experimenten ontwikkeld door Peter Withers. Het project is gefinancierd door het Max-Planck Instituut voor Psycholinguïstiek. Voor vragen kunt u contact opnemen met peter.withers@mpi.nl.&lt;br/&gt;&lt;br/&gt;Wilt u de resultaten van deze studie ontvangen? Vul dan hier uw email adres in:"/>
         <metadataField fieldName="emaill"/>
         <saveMetadataButton featureText="Registreren" sendData="true" networkErrorMessage="De server is niet bereikbaar. Controleer de internetverbinding en probeer opnieuw.">
@@ -198,7 +198,7 @@
         <htmlText featureText="Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop."/>
         <targetButton featureText="Opnieuw beginnen" target="Completion"/>
     </presenter>
-    <presenter displayOrder="22" menuLabel="Completion" type="transmission" self="Completion" title="Leeservaring 22">
+    <presenter displayOrder="15" menuLabel="Completion" type="transmission" self="Completion" title="Leeservaring 15">
         <sendAllData>
             <onSuccess>
                 <htmlText featureText="Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop."/>
@@ -213,7 +213,7 @@
             </onError>
         </sendAllData>
     </presenter>
-    <presenter displayOrder="23" menuLabel="Registered" type="transmission" self="Registered" title="Leeservaring 23">
+    <presenter displayOrder="16" menuLabel="Registered" type="transmission" self="Registered" title="Leeservaring 16">
         <sendAllData>
             <onSuccess>
                 <htmlText featureText="Leuk dat u geïnteresseerd bent. Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop."/>
