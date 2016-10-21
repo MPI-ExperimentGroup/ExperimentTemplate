@@ -729,7 +729,7 @@ public class RdExperiment02 {
         WizardData wizardData = new WizardData();
         wizardData.setAppName("Zinnen afmaken");
         wizardData.setShowMenuBar(true);
-        wizardData.setTextFontSize(22);
+        wizardData.setTextFontSize(17);
         wizardData.setObfuscateScreenNames(false);
         WizardTextScreen wizardTextScreen = new WizardTextScreen("Informatie", informationScreenText,
                 "volgende [ spatiebalk ]"

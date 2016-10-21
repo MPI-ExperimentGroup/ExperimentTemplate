@@ -307,13 +307,14 @@ public class FactOrFiction {
         "IntroductionBFiction:U gaat zo een tekst lezen van Martin Rombouts. Hij is een jonge Nederlandse schrijver. Hij schrijft korte fictieve verhalen die voortkomen uit zijn creatieve gedachtenwereld. "
     };
 
-    public Experiment getExperiment() {
-        final Experiment experiment = wizardController.getExperiment("leeservaring", "Leeservaring", true);
-        experiment.setTextFontSize(22);
-        experiment.setShowMenuBar(false);
-        final WizardData wizardData = new WizardData();
+    public WizardData getWizardData() {
+
+        WizardData wizardData = new WizardData();
+        wizardData.setAppName("Leeservaring");
+        wizardData.setShowMenuBar(false);
         wizardData.setObfuscateScreenNames(true);
-        wizardController.addMetadata(experiment);
+        wizardData.setTextFontSize(22);
+
 //        wizardData.setAgeField(true);
 //        wizardData.setGenderField(true);
 //        wizardData.setCustomTextField("level of proficiency in Dutch");
@@ -352,7 +353,7 @@ public class FactOrFiction {
             "hoeveelJaarNederlands:Als Nederlands niet uw moedertaal is, hoeveel jaar leert u al Nederlands?:[0-9]*:Voer een getal in."
         };
         final String could_not_contact_the_server_please_check = "De server is niet bereikbaar. Controleer de internetverbinding en probeer opnieuw.";
-        final WizardEditUserScreen editUserScreen = new WizardEditUserScreen("Participant", "Participant", wizardData, null, "Volgende", null, null, null, true, could_not_contact_the_server_please_check);
+        final WizardEditUserScreen editUserScreen = new WizardEditUserScreen("Participant", "Participant", null, "Volgende", null, null, null, true, could_not_contact_the_server_please_check);
         editUserScreen.setCustomFields(medataFields);
         final WizardRandomStimulusScreen groupAorBScreen = new WizardRandomStimulusScreen("Introduction", false, stimuliGroupAorB,
                 new String[]{"IntroductionAFact", "IntroductionBFiction"}, 1, true, null, 0, 0, null, null, null, null, "volgende [ spatiebalk ]");
@@ -372,7 +373,7 @@ public class FactOrFiction {
         final WizardCompletionScreen restartScreen = new WizardCompletionScreen(wil_nog_iemand_op_dit_apparaat_deelnemen_, true, true, null, "Opnieuw beginnen", "Completion", could_not_contact_the_server_please_check, retry);
         final WizardCompletionScreen registeredScreen = new WizardCompletionScreen("Leuk dat u geïnteresseerd bent. " + wil_nog_iemand_op_dit_apparaat_deelnemen_, true, true, null, "Opnieuw beginnen", "Registered", could_not_contact_the_server_please_check, retry);
         final String nog_een_keer_meedoen = wil_nog_iemand_op_dit_apparaat_deelnemen_; //"Nog een keer meedoen?";
-        final WizardEditUserScreen completionScreen = new WizardEditUserScreen("Bedankt", "Bedankt", null, completionScreenText, "Registreren", nog_een_keer_meedoen, restartScreen, "Opnieuw beginnen", true, could_not_contact_the_server_please_check);
+        final WizardEditUserScreen completionScreen = new WizardEditUserScreen("Bedankt", "Bedankt", completionScreenText, "Registreren", nog_een_keer_meedoen, restartScreen, "Opnieuw beginnen", true, could_not_contact_the_server_please_check);
         completionScreen.setCustomFields(new String[]{"emaill::^[^@]+@[^@]+$:Geef een geldig e-mailadres."});
 //        completionScreen.setBackPresenter(restartScreen);
         completionScreen.setNextWizardScreen(registeredScreen);
@@ -390,22 +391,43 @@ public class FactOrFiction {
         readingBehaviorScreen.setNextWizardScreen(submitDataScreen);
         submitDataScreen.setNextWizardScreen(completionScreen);
 
-        wizardAgreementScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 1);
-        editUserScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 2);
-        groupAorBScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 3);
-        storyScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 4);
-        survey1InstructionsScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 15);
-        survey1Screen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 5);
-        survey2InstructionsScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 16);
-        survey2Screen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 6);
-        pictureInstructionsScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 14);
-        pictureTaskScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 17);
-        readingBehaviorInstructionsScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 18);
-        readingBehaviorScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 19);
-        submitDataScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 20);
-        completionScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 21);
-        restartScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 22);
-        registeredScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 23);
+        wizardData.addScreen(editUserScreen);
+        wizardData.addScreen(groupAorBScreen);
+        wizardData.addScreen(storyScreen);
+        wizardData.addScreen(survey1Screen);
+        wizardData.addScreen(survey2Screen);
+        wizardData.addScreen(pictureInstructionsScreen);
+        wizardData.addScreen(survey1InstructionsScreen);
+        wizardData.addScreen(survey2InstructionsScreen);
+        wizardData.addScreen(pictureTaskScreen);
+        wizardData.addScreen(readingBehaviorInstructionsScreen);
+        wizardData.addScreen(readingBehaviorScreen);
+        wizardData.addScreen(submitDataScreen);
+        wizardData.addScreen(completionScreen);
+        wizardData.addScreen(restartScreen);
+        wizardData.addScreen(registeredScreen);
+//        wizardAgreementScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 1);
+//        editUserScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 2);
+//        groupAorBScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 3);
+//        storyScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 4);
+//        survey1InstructionsScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 15);
+//        survey1Screen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 5);
+//        survey2InstructionsScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 16);
+//        survey2Screen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 6);
+//        pictureInstructionsScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 14);
+//        pictureTaskScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 17);
+//        readingBehaviorInstructionsScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 18);
+//        readingBehaviorScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 19);
+//        submitDataScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 20);
+//        completionScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 21);
+//        restartScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 22);
+//        registeredScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 23);
+        return wizardData;
+    }
+
+    public Experiment getExperiment() {
+        final Experiment experiment = wizardController.getExperiment(getWizardData());
+        wizardController.addMetadata(experiment);
         return experiment;
     }
 }

@@ -308,7 +308,7 @@ public class HRPretest {
         WizardData wizardData = new WizardData();
         wizardData.setAppName(getExperimentName());
         wizardData.setShowMenuBar(false);
-        wizardData.setTextFontSize(22);
+        wizardData.setTextFontSize(17);
         wizardData.setObfuscateScreenNames(false);
         WizardTextScreen wizardTextScreen2 = new WizardTextScreen("InformationScreen1", informationScreenText2(),
                 "volgende [ spatiebalk ]"

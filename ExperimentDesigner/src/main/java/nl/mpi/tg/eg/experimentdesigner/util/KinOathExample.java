@@ -37,9 +37,9 @@ public class KinOathExample {
 
     public WizardData getWizardData() {
         WizardData wizardData = new WizardData();
-        wizardData.setAppName("KinOath Example");
+        wizardData.setAppName("Kinship Example");
         wizardData.setShowMenuBar(true);
-        wizardData.setTextFontSize(22);
+        wizardData.setTextFontSize(17);
         wizardData.setObfuscateScreenNames(false);
         WizardTextScreen introTextScreen = new WizardTextScreen("InformationScreen", informationScreenText,
                 "volgende [ spatiebalk ]"

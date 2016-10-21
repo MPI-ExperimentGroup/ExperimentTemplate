@@ -168,7 +168,7 @@ public class RosselFieldKit {
         final WizardSelectUserScreen wizardSelectUserScreen = new WizardSelectUserScreen("Select Participant");
         wizardSelectUserScreen.setBackWizardScreen(welcomePresenter);
         wizardSelectUserScreen.setNextWizardScreen(menuScreen);
-        final WizardEditUserScreen editUserPresenter = new WizardEditUserScreen("Information about the participant", "Edit User", null, null, "Save and continue", null, null, null, false, "Could not contact the server, please check your internet connection and try again.");
+        final WizardEditUserScreen editUserPresenter = new WizardEditUserScreen("Information about the participant", "Edit User", null, "Save and continue", null, null, null, false, "Could not contact the server, please check your internet connection and try again.");
         editUserPresenter.setCustomFields(new String[]{"workerId:Participant ID:.'{'3,'}':Please enter at least three letters."});
 //        final WizardAboutScreen debugScreenPresenter = new WizardAboutScreen();
 
@@ -244,4 +244,15 @@ public class RosselFieldKit {
     public Experiment getExperiment() {
         return wizardController.getExperiment(getWizardData());
     }
+    todo
+    // training phase (can record)
+    // issue with doubletap skipping the next stimulus (look into tapping solution but also consider swipe)
+    // flashing photo (web view maybe) (perhaps images too large)
+    // skip and next buttons should not be in the same location
+    // blootooth presentation remote button
+    // already has a polar heart reate monitor (maybe add to field kit plugin)
+    // video stimuli (does this already work or not?)
+    // would be nice to have the tablet mic into one channel of the wav and a bluetooth headset into a second channel in the wav
+    // stimuli images could be bigger (maximum possible)
+    
 }

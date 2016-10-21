@@ -52,7 +52,7 @@ public class HRExperiment01 {
         WizardData wizardData = new WizardData();
         wizardData.setAppName("Online Emotions");
         wizardData.setShowMenuBar(false);
-        wizardData.setTextFontSize(22);
+        wizardData.setTextFontSize(17);
         wizardData.setObfuscateScreenNames(false);
         WizardTextScreen wizardTextScreen = new WizardTextScreen("InformationScreen", informationScreenText,
                 "volgende [ spatiebalk ]"

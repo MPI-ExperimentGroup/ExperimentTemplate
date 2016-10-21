@@ -699,7 +699,7 @@ public class Sara01 {
         WizardData wizardData = new WizardData();
         wizardData.setAppName("AntwoordRaden");
         wizardData.setShowMenuBar(false);
-        wizardData.setTextFontSize(22);
+        wizardData.setTextFontSize(17);
         wizardData.setObfuscateScreenNames(false);
         //Here is the updated experiment flow and the suggested directory structure:
         //Directory/introimage
