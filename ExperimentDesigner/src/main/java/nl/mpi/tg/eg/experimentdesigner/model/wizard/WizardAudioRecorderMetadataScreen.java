@@ -35,8 +35,12 @@ import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
  */
 public class WizardAudioRecorderMetadataScreen extends AbstractWizardScreen {
 
+    public WizardAudioRecorderMetadataScreen() {
+        super(WizardScreenEnum.WizardAudioRecorderMetadataScreen);
+    }
+
     public WizardAudioRecorderMetadataScreen(String[] metadataStrings, String next_button) {
-        super("Metadata", "Metadata", "MetadataScreen");
+        super(WizardScreenEnum.WizardAudioRecorderMetadataScreen, "Metadata", "Metadata", "MetadataScreen");
 
         final List<Stimulus> stimuliList = new ArrayList<>();
         final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{"metadata"}));

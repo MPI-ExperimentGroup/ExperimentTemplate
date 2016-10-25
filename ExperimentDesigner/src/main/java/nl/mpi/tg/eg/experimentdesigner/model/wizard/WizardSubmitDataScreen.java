@@ -34,11 +34,11 @@ public class WizardSubmitDataScreen extends AbstractWizardScreen {
     private String retryButtonLabel;
 
     public WizardSubmitDataScreen() {
-        super("SubmitData", "SubmitData", "SubmitData");
+        super(WizardScreenEnum.WizardSubmitDataScreen, "SubmitData", "SubmitData", "SubmitData");
     }
 
     public WizardSubmitDataScreen(final String screenTitle, final String could_not_contact_the_server_please_check, final String retryButtonLabel) {
-        super(screenTitle, screenTitle, screenTitle);
+        super(WizardScreenEnum.WizardSubmitDataScreen, screenTitle, screenTitle, screenTitle);
         this.could_not_contact_the_server_please_check = could_not_contact_the_server_please_check;
         this.retryButtonLabel = retryButtonLabel;
     }

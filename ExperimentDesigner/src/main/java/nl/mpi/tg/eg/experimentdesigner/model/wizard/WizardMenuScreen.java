@@ -34,11 +34,11 @@ public class WizardMenuScreen extends AbstractWizardScreen {
     final private ArrayList<AbstractWizardScreen> targetScreens = new ArrayList<>();
 
     public WizardMenuScreen() {
-        super("Menu", "Menu", "Menu");
+        super(WizardScreenEnum.WizardMenuScreen, "Menu", "Menu", "Menu");
     }
 
     public WizardMenuScreen(String screenTitle, String menuLabel, String screenTag) {
-        super(screenTitle, menuLabel, screenTag);
+        super(WizardScreenEnum.WizardMenuScreen, screenTitle, menuLabel, screenTag);
     }
 
     public void addTargetScreen(final AbstractWizardScreen targetScreen) {

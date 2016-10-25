@@ -47,11 +47,11 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
     private WizardScreen endOfStimulisWizardScreen = null;
 
     public WizardStimulusScreen() {
-        super("Stimulus", "Stimulus", "Stimulus");
+        super(WizardScreenEnum.WizardStimulusScreen, "Stimulus", "Stimulus", "Stimulus");
     }
 
     public WizardStimulusScreen(String screenName) {
-        super(screenName, screenName, screenName);
+        super(WizardScreenEnum.WizardStimulusScreen, screenName, screenName, screenName);
     }
 
     public String getScreenLabel() {

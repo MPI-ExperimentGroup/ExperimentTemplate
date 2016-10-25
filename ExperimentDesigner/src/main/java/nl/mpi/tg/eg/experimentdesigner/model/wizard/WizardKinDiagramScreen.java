@@ -37,8 +37,20 @@ public class WizardKinDiagramScreen extends AbstractWizardScreen {
     }
     private final ExampleType exampleType;
 
+    static WizardScreenEnum WizardScreenEnumFromExampleType(ExampleType exampleType) {
+        switch (exampleType) {
+            case PredefinedKinDiagram:
+                return WizardScreenEnum.WizardPredefinedKinDiagram;
+            case EditableEntitesDiagram:
+                return WizardScreenEnum.WizardEditableEntitesDiagram;
+            case SavedKinDiagram:
+                return WizardScreenEnum.WizardSavedKinDiagram;
+        }
+        throw new UnsupportedOperationException();
+    }
+
     public WizardKinDiagramScreen(ExampleType exampleType) {
-        super(exampleType.name(), exampleType.name(), exampleType.name());
+        super(WizardScreenEnumFromExampleType(exampleType), exampleType.name(), exampleType.name(), exampleType.name());
         this.exampleType = exampleType;
     }
 

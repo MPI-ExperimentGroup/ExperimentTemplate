@@ -36,11 +36,11 @@ public class WizardWelcomeScreen extends AbstractWizardScreen {
     private WizardScreen programWizardScreen = null;
 
     public WizardWelcomeScreen() {
-        super("Welcome", "Welcome", "Welcome");
+        super(WizardScreenEnum.WizardWelcomeScreen, "Welcome", "Welcome", "Welcome");
     }
 
     public WizardWelcomeScreen(final String screenTitle, final String screenLabel, final String instructions_button, final String go_directly_to_program, WizardScreen instructionsScreen, WizardScreen programWizardScreen) {
-        super(screenTitle, screenLabel, screenLabel);
+        super(WizardScreenEnum.WizardWelcomeScreen, screenTitle, screenLabel, screenLabel);
         this.instructions_button = instructions_button;
         this.go_directly_to_program = go_directly_to_program;
         this.programWizardScreen = programWizardScreen;

@@ -30,11 +30,11 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
 public class WizardSelectUserScreen extends AbstractWizardScreen {
 
     public WizardSelectUserScreen() {
-        super("Select User", "Select User", "SelectUser");
+        super(WizardScreenEnum.WizardSelectUserScreen, "Select User", "Select User", "SelectUser");
     }
 
     public WizardSelectUserScreen(String titleString) {
-        super(titleString, titleString, "SelectUser");
+        super(WizardScreenEnum.WizardSelectUserScreen, titleString, titleString, "SelectUser");
     }
 
     @Override

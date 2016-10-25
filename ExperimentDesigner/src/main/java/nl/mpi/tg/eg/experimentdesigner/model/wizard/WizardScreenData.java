@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -47,6 +49,9 @@ public class WizardScreenData implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    @Enumerated(EnumType.STRING)
+    private final WizardScreenEnum wizardScreenType;
 
     @OneToOne(targetEntity = WizardScreenData.class, cascade = CascadeType.ALL)
     private WizardScreenData backWizardScreenData = null;
@@ -88,6 +93,10 @@ public class WizardScreenData implements Serializable {
     private String stimulusResponseLabelLeft = null;
     private Boolean showProgress = null;
 
+    public WizardScreenData(WizardScreenEnum wizardScreenType) {
+        this.wizardScreenType = wizardScreenType;
+    }
+
     public long getId() {
         return id;
     }
@@ -96,7 +105,6 @@ public class WizardScreenData implements Serializable {
         this.id = id;
     }
 
-    @Transient
     public PresenterScreen getPresenterScreen() {
         return presenterScreen;
     }

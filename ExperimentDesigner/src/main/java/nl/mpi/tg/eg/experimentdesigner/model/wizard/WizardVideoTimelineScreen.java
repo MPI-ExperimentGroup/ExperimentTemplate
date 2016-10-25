@@ -30,8 +30,12 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
  */
 public class WizardVideoTimelineScreen extends AbstractWizardScreen {
 
+    public WizardVideoTimelineScreen() {
+        super(WizardScreenEnum.WizardVideoTimelineScreen);
+    }
+
     public WizardVideoTimelineScreen(final String screenName) {
-        super(screenName, screenName, screenName);
+        super(WizardScreenEnum.WizardVideoTimelineScreen, screenName, screenName, screenName);
     }
 
     @Override

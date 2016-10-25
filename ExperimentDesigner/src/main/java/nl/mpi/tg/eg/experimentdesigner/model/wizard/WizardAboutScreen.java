@@ -32,12 +32,12 @@ public class WizardAboutScreen extends AbstractWizardScreen {
     private final boolean showDebug;
 
     public WizardAboutScreen(boolean showDebug) {
-        super("Debug Screen", "Debug Screen", "DebugScreen");
+        super(WizardScreenEnum.WizardAboutScreen, "Debug Screen", "Debug Screen", "DebugScreen");
         this.showDebug = showDebug;
     }
 
     public WizardAboutScreen(String screenTitle, boolean showDebug) {
-        super(screenTitle, screenTitle, screenTitle);
+        super(WizardScreenEnum.WizardAboutScreen, screenTitle, screenTitle, screenTitle);
         this.showDebug = showDebug;
     }
 

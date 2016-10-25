@@ -28,16 +28,12 @@ public abstract class AbstractWizardScreen implements WizardScreen {
 
     protected final WizardScreenData wizardScreenData;
 
-    public AbstractWizardScreen() {
-        this.wizardScreenData = new WizardScreenData();
+    public AbstractWizardScreen(WizardScreenEnum wizardScreenEnum) {
+        this.wizardScreenData = new WizardScreenData(wizardScreenEnum);
     }
 
-    public AbstractWizardScreen(WizardScreenData wizardScreenData) {
-        this.wizardScreenData = wizardScreenData;
-    }
-
-    public AbstractWizardScreen(String screenTitle, String menuLabel, String screenTag) {
-        this.wizardScreenData = new WizardScreenData();
+    public AbstractWizardScreen(WizardScreenEnum wizardScreenEnum, String screenTitle, String menuLabel, String screenTag) {
+        this.wizardScreenData = new WizardScreenData(wizardScreenEnum);
         this.wizardScreenData.setScreenTitle(screenTitle);
         this.wizardScreenData.setMenuLabel(menuLabel);
         this.wizardScreenData.setScreenTag(screenTag.replaceAll("[^A-Za-z0-9]", "_"));

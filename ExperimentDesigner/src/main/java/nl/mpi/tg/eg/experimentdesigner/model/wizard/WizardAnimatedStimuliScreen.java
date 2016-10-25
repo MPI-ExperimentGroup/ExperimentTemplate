@@ -40,11 +40,11 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
     private boolean isSecondTask = false;
 
     public WizardAnimatedStimuliScreen() {
-        super("AnimatedStimuli", "AnimatedStimuli", "AnimatedStimuli");
+        super(WizardScreenEnum.WizardAnimatedStimuliScreen, "AnimatedStimuli", "AnimatedStimuli", "AnimatedStimuli");
     }
 
     public WizardAnimatedStimuliScreen(String screenName, String[] screenTextArray, boolean sdCardStimuli, int maxStimuli, final boolean randomiseStimuli, final String buttonLabelEventTag, final String backgroundImage, boolean isSecondTask) {
-        super(screenName, screenName, screenName);
+        super(WizardScreenEnum.WizardAnimatedStimuliScreen, screenName, screenName, screenName);
         this.setScreenTitle(screenName);
 
         final List<Stimulus> stimuliList = new ArrayList<>();

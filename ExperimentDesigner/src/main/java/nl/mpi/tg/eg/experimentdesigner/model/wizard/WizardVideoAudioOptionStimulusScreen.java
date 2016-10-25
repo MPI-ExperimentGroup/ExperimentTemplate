@@ -38,11 +38,11 @@ import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
 public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
 
     public WizardVideoAudioOptionStimulusScreen() {
-        super("VideoAudioOption", "VideoAudioOption", "VideoAudioOption");
+        super(WizardScreenEnum.WizardVideoAudioOptionStimulusScreen, "VideoAudioOption", "VideoAudioOption", "VideoAudioOption");
     }
 
     public WizardVideoAudioOptionStimulusScreen(String screenName, boolean centreScreen, String[] screenTextArray, boolean useCodeVideo, String[] randomStimuliTags, int maxStimuli, int repeatCount, int repeatRandomWindow, final boolean randomiseStimuli, int stimulusMsDelay, String responseOptionsLabelLeft, String responseOptionsLabelRight) {
-        super(screenName, screenName, screenName);
+        super(WizardScreenEnum.WizardVideoAudioOptionStimulusScreen, screenName, screenName, screenName);
         this.setScreenTitle(screenName);
         this.setCentreScreen(centreScreen);
 

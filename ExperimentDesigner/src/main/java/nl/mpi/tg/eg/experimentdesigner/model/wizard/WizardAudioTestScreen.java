@@ -31,11 +31,11 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
 public class WizardAudioTestScreen extends AbstractWizardScreen {
 
     public WizardAudioTestScreen() {
-        super("AudioTest", "AudioTest", "AudioTest");
+        super(WizardScreenEnum.WizardAudioTestScreen, "AudioTest", "AudioTest", "AudioTest");
     }
 
     public WizardAudioTestScreen(String screenName, String pageText, String buttonLabel, String audioPath) {
-        super(screenName, screenName, screenName);
+        super(WizardScreenEnum.WizardAudioTestScreen, screenName, screenName, screenName);
         this.setScreenText(pageText);
         this.setNextButton(buttonLabel);
         this.wizardScreenData.setScreenMediaPath(audioPath);

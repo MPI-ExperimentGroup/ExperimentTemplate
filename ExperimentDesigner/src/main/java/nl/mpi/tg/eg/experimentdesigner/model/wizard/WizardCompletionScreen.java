@@ -31,11 +31,11 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
 public class WizardCompletionScreen extends AbstractWizardScreen {
 
     public WizardCompletionScreen() {
-        super("Completion", "Completion", "Completion");
+        super(WizardScreenEnum.WizardCompletionScreen, "Completion", "Completion", "Completion");
     }
 
     public WizardCompletionScreen(String completedText1, final boolean allowUserRestart, boolean generateCompletionCode, String completedText2, String eraseUsersDataButtonlabel, final String screenTitle, final String could_not_contact_the_server_please_check, final String retryButtonLabel) {
-        super(screenTitle, screenTitle, screenTitle);
+        super(WizardScreenEnum.WizardCompletionScreen, screenTitle, screenTitle, screenTitle);
         wizardScreenData.setScreenText1(completedText1);
         wizardScreenData.setScreenText2(completedText2);
         wizardScreenData.setAllowUserRestart(allowUserRestart);

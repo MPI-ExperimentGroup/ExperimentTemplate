@@ -33,11 +33,11 @@ public class WizardKinshipScreen extends AbstractWizardScreen {
     private String diagramName = "kinDiagram";
 
     public WizardKinshipScreen() {
-        super("Kinship", "Kinship", "Kinship");
+        super(WizardScreenEnum.WizardKinshipScreen, "Kinship", "Kinship", "Kinship");
     }
 
     public WizardKinshipScreen(String screenTitle, String diagramName) {
-        super(screenTitle, screenTitle, screenTitle);
+        super(WizardScreenEnum.WizardKinshipScreen, screenTitle, screenTitle, screenTitle);
         this.diagramName = diagramName;
     }
 

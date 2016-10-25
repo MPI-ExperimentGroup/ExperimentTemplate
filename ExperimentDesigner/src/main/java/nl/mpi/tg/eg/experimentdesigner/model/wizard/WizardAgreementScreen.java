@@ -30,8 +30,12 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
  */
 public class WizardAgreementScreen extends AbstractWizardScreen {
 
+    public WizardAgreementScreen() {
+        super(WizardScreenEnum.WizardAgreementScreen);
+    }
+
     public WizardAgreementScreen(String screenTitle, String screenText, final String agreementButtonLabel) {
-        super(screenTitle, screenTitle, screenTitle);
+        super(WizardScreenEnum.WizardAgreementScreen, screenTitle, screenTitle, screenTitle);
         this.setNextButton(agreementButtonLabel);
         this.setScreenText(screenText);
 

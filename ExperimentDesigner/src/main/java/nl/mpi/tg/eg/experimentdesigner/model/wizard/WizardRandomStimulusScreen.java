@@ -57,11 +57,11 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
     private boolean allowHotkeyNextButton = true;
 
     public WizardRandomStimulusScreen() {
-        super("RandomStimulus", "RandomStimulus", "RandomStimulus");
+        super(WizardScreenEnum.WizardRandomStimulusScreen, "RandomStimulus", "RandomStimulus", "RandomStimulus");
     }
 
     public WizardRandomStimulusScreen(String screenName, boolean centreScreen, String[] screenTextArray, String[] randomStimuliTags, int maxStimuli, final boolean randomiseStimuli, String stimulusCodeMatch, int stimulusDelay, int codeStimulusDelay, String codeFormat, String responseOptions, String responseOptionsLabelLeft, String responseOptionsLabelRight, final String spacebar) {
-        super(screenName, screenName, screenName);
+        super(WizardScreenEnum.WizardRandomStimulusScreen, screenName, screenName, screenName);
         this.setScreenTitle(screenName);
         this.setCentreScreen(centreScreen);
         this.stimuliPath = "";
@@ -83,7 +83,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
     }
 
     public WizardRandomStimulusScreen(String screenName, String[] screenTextArray, int maxStimuli, final boolean randomiseStimuli, String responseOptions, String responseOptionsLabelLeft, String responseOptionsLabelRight) {
-        super(screenName, screenName, screenName);
+        super(WizardScreenEnum.WizardRandomStimulusScreen, screenName, screenName, screenName);
         this.setScreenTitle(screenName);
         this.stimuliPath = "";
         this.stimuliSet = screenTextArray;
