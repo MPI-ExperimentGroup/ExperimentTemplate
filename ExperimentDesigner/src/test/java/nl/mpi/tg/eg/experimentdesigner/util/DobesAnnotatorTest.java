@@ -15,7 +15,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-
 package nl.mpi.tg.eg.experimentdesigner.util;
 
 import java.io.File;
@@ -34,26 +33,28 @@ import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-
+import static org.junit.Assert.assertEquals;
 
 /**
  * @since May 4, 2016 10:23:29 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class DefaultExperimentsTest {
-        /**
-     * Test of getExperiment method, of class FactOrFiction.
+public class DobesAnnotatorTest {
+
+    /**
+     * Test of getExperiment method, of class DobesAnnotator.
+     *
      * @throws java.io.IOException
      * @throws javax.xml.bind.JAXBException
      * @throws java.net.URISyntaxException
      */
     @Test
-    public void testDobesExperiment() throws IOException,JAXBException,URISyntaxException{
+    public void testDobesAnnotator() throws IOException, JAXBException, URISyntaxException {
         System.out.println("getDobesExperiment");
-        DefaultExperiments instance = new DefaultExperiments();
+        DobesAnnotator instance = new DobesAnnotator();
         URI testXmlUri = this.getClass().getResource("/frinex-rest-output/dobesannotator.xml").toURI();
         String expResult = new String(Files.readAllBytes(Paths.get(testXmlUri)), StandardCharsets.UTF_8);
-        Experiment result = instance.getDobesExperiment();
+        Experiment result = instance.getExperiment();
         result.getPresenterScreen().sort(new Comparator<PresenterScreen>() {
             // because the experiment has not been stored and retrieved from the DB we need to sort this manually
             @Override
