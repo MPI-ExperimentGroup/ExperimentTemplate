@@ -32,11 +32,15 @@ import nl.mpi.tg.eg.experimentdesigner.util.HRExperiment01;
 import nl.mpi.tg.eg.experimentdesigner.util.HRPretest;
 import nl.mpi.tg.eg.experimentdesigner.util.HRPretest02;
 import nl.mpi.tg.eg.experimentdesigner.util.JenaFieldKit;
+import nl.mpi.tg.eg.experimentdesigner.util.KinOathExample;
+import nl.mpi.tg.eg.experimentdesigner.util.LimorMultiParticipant;
 import nl.mpi.tg.eg.experimentdesigner.util.NblExperiment01;
+import nl.mpi.tg.eg.experimentdesigner.util.RdExperiment02;
+import nl.mpi.tg.eg.experimentdesigner.util.RosselFieldKit;
 import nl.mpi.tg.eg.experimentdesigner.util.Sara01;
-import nl.mpi.tg.eg.experimentdesigner.util.Sentveri_exp3;
 import nl.mpi.tg.eg.experimentdesigner.util.ShawiFieldKit;
-import nl.mpi.tg.eg.experimentdesigner.util.SynQuiz2;
+import nl.mpi.tg.eg.experimentdesigner.util.TransmissionChain;
+import nl.mpi.tg.eg.experimentdesigner.util.WellspringsSamoanFieldKit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -120,15 +124,15 @@ public class ExperimentController {
                     wizardData = new Sara01().getWizardData();
                     break;
                 case "Leeservaring":
-//                    wizardData = new FactOrFiction().getWizardData();
+                    wizardData = new FactOrFiction().getWizardData();
                     break;
                 case "SynQuiz2":
-                    wizardData = new SynQuiz2().getWizardData();
+//                    wizardData = new SynQuiz2().getWizardData();
                     break;
                 case "Zinnen Beoordelen":
                     wizardData = new NblExperiment01().getWizardData();
                     break;
-                case "VideoImageExample":
+                case "Online Emotions":
                     wizardData = new HRExperiment01().getWizardData();
                     break;
                 case "HRPretest":
@@ -136,6 +140,24 @@ public class ExperimentController {
                     break;
                 case "HRPretest02":
                     wizardData = new HRPretest02().getWizardData();
+                    break;
+                case "TransmissionChain":
+                    wizardData = new TransmissionChain().getWizardData();
+                    break;
+                case "Zinnen afmaken":
+                    wizardData = new RdExperiment02().getWizardData();
+                    break;
+                case "Kinship Example":
+                    wizardData = new KinOathExample().getWizardData();
+                    break;
+                case "RosselFieldKit":
+                    wizardData = new RosselFieldKit().getWizardData();
+                    break;
+                case "WellspringsSamoan":
+                    wizardData = new WellspringsSamoanFieldKit().getWizardData();
+                    break;
+                case "LimorMultiParticipant":
+                    wizardData = new LimorMultiParticipant().getWizardData();
                     break;
             }
         }
@@ -152,9 +174,15 @@ public class ExperimentController {
             "AntwoordRaden",
             "Leeservaring",
             "SynQuiz2",
-            "VideoImageExample",
+            "Online Emotions",
             "HRPretest02",
             "HRPretest",
+            "TransmissionChain",
+            "Zinnen afmaken",
+            "Kinship Example",
+            "RosselFieldKit",
+            "WellspringsSamoan",
+            "LimorMultiParticipant",
             "Zinnen Beoordelen"});
         return "design";
     }
