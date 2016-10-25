@@ -33,15 +33,15 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardVideoAudioOptionStimul
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public class HRPretest {
-    // done: add a worker id entry befor the agree screen
-    // done: shift the audio test to InformationScreen1  
-    // done: make the next button appear only after the audio has played
-    // done: remove the Edit_User screen 
-    // done: add the stimuli counter 1/10 at the top of the screen 
-    // done: run the stimuli twice and a fresh randomisation for each run
-    // todo: participant.csv is missing the UUID
-    // todo: add a csv that has a row for each stimuli and the metadata of the user on each row
-    // done: remove the restart button
+    // @done: add a worker id entry befor the agree screen
+    // @done: shift the audio test to InformationScreen1  
+    // @done: make the next button appear only after the audio has played
+    // @done: remove the Edit_User screen 
+    // @done: add the stimuli counter 1/10 at the top of the screen 
+    // @done: run the stimuli twice and a fresh randomisation for each run
+    // @todo: participant.csv is missing the UUID
+    // @todo: add a csv that has a row for each stimuli and the metadata of the user on each row
+    // @done: remove the restart button
 
     private final WizardController wizardController = new WizardController();
 

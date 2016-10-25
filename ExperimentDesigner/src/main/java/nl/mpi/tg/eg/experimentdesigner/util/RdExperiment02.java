@@ -770,7 +770,7 @@ public class RdExperiment02 {
         list1234Screen.setAllowHotkeyNextButton(false);
         wizardData.addScreen(list1234Screen);
 
-        // todo: remove the restart button
+        // @todo: remove the restart button
         // 
         WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, false, true,
                 //                "Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop.",

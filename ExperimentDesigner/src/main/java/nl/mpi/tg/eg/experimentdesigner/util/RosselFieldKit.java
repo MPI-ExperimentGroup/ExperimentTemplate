@@ -244,7 +244,7 @@ public class RosselFieldKit {
     public Experiment getExperiment() {
         return wizardController.getExperiment(getWizardData());
     }
-    todo
+    // @todo:
     // training phase (can record)
     // issue with doubletap skipping the next stimulus (look into tapping solution but also consider swipe)
     // flashing photo (web view maybe) (perhaps images too large)

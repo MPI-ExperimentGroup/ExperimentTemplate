@@ -29,6 +29,7 @@ public class LimorMultiParticipant {
 
     private final WizardController wizardController = new WizardController();
 
+    // @todo: server shared variables to be used in animations and interactions concurrently displayed on multiple users devices 
     public WizardData getWizardData() {
         WizardData wizardData = new WizardData();
         wizardData.setAppName("LimorMultiParticipant");

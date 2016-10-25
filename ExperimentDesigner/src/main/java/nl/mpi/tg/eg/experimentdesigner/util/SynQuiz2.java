@@ -43,6 +43,8 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMenuScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreenData;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreenEnum;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
 
 /**
  * @since Jan 18, 2016 11:20:47 AM (creation date)
@@ -50,14 +52,14 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreenData;
  */
 public class SynQuiz2 {
 
-    // todo: discuss the details of adding social media sharing and related informed consent check box
+    // @todo: discuss the details of adding social media sharing and related informed consent check box
     // checkbox = share this experiment or share my results in a pretty grapheme cloud
     // <a href="https://www.facebook.com/sharer/sharer.php?u=www.mpi.nl">Share on Facebook</a>
 //    <a href="https://twitter.com/home?status=www.mpi.nl">Share on Twitter</a>
 //    <a href="https://plus.google.com/share?url=www.mpi.nl">Share on Google+</a>
     // <a href="https://www.linkedin.com/shareArticle?mini=true&url=www.mpi.nl&title=www.mpi.nl&summary=www.mpi.nl&source=www.mpi.nl">Share on LinkedIn</a>
     // <a href="https://pinterest.com/pin/create/button/?url=www.mpi.nl&media=www.mpi.nl&description=www.mpi.nl">Pin on Pinterest</a>
-    // todo: graphime cloud with the highest scoring graphemes being larger and shown in the average colour for that grapheme: https://github.com/jasondavies/d3-cloud
+    // @todo: graphime cloud with the highest scoring graphemes being larger and shown in the average colour for that grapheme: https://github.com/jasondavies/d3-cloud
     private final WizardController wizardController = new WizardController();
     private final String imageSize = "80";
 
@@ -199,7 +201,7 @@ public class SynQuiz2 {
         presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, "This project is organised and funded by the Language & Genetics Department at the Max Planck Institute for Psycholinguistics in Nijmegen in the Netherlands, directed by Prof. Dr. Simon E. Fisher. "
                 + "The synaesthesia studies are coordinated by Dr. Amanda Tilot and Dr. Sarah Graham. "
                 + "If you have any questions about our research, please contact us at " + formatLink("synaesthesia@mpi.nl", "mailto:synaesthesia@mpi.nl") + "."));
-        return new AbstractWizardScreen() {
+        return new WizardTextScreen() {
 //            @Override
 //            public PresenterScreen getPresenterScreen() {
 //                return presenterScreen;
@@ -212,7 +214,7 @@ public class SynQuiz2 {
 
             @Override
             public WizardScreenData getWizardScreenData() {
-                return new WizardScreenData() {
+                return new WizardScreenData(WizardScreenEnum.WizardTextScreen) {
                     @Override
                     public PresenterScreen getPresenterScreen() {
                         return presenterScreen;
@@ -270,8 +272,8 @@ public class SynQuiz2 {
 //        presenterFeatureList.add(submitButtonFeature);
 //        return presenterScreen;
 //    }
-// todo: show complete on test that have been done like in SynQuiz1
-// todo: add finish button on the test menu screen which submits all data and leads to a restart(erase) all
+// @todo: show complete on test that have been done like in SynQuiz1
+// @todo: add finish button on the test menu screen which submits all data and leads to a restart(erase) all
 //    private PresenterScreen createDemographicsScreen1(Experiment experiment, String screenName, long displayOrder) {
 //        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, null, screenName + "Screen", null, PresenterType.metadata, displayOrder);
 //        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
@@ -502,7 +504,7 @@ public class SynQuiz2 {
 //        endOfStimulusFeature.getPresenterFeatureList().add(menuButtonFeature);
 //        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
-        return new AbstractWizardScreen() {
+        return new WizardTextScreen() {
             @Override
             public PresenterScreen getPresenterScreen() {
                 return presenterScreen;
@@ -551,7 +553,7 @@ public class SynQuiz2 {
         submitTestResults.getPresenterFeatureList().add(new PresenterFeature(FeatureType.onSuccess, null));
         submitTestResults.getPresenterFeatureList().add(new PresenterFeature(FeatureType.onError, null));
         presenterScreen.getPresenterFeatureList().add(submitTestResults);
-        return new AbstractWizardScreen() {
+        return new WizardTextScreen() {
             @Override
             public PresenterScreen getPresenterScreen() {
                 return presenterScreen;
@@ -592,10 +594,10 @@ public class SynQuiz2 {
         belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
         showColourReport.getPresenterFeatureList().add(belowThreshold);
         presenterScreen.getPresenterFeatureList().add(showColourReport);
-        return new AbstractWizardScreen() {
+        return new WizardTextScreen() {
             @Override
             public WizardScreenData getWizardScreenData() {
-                return new WizardScreenData() {
+                return new WizardScreenData(WizardScreenEnum.WizardTextScreen) {
                     @Override
                     public PresenterScreen getPresenterScreen() {
                         return presenterScreen;
