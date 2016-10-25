@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -38,7 +39,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Entity
-public class WizardScreenData {
+public class WizardScreenData implements Serializable {
 
     @Transient
     final PresenterScreen presenterScreen = new PresenterScreen();

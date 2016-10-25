@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment appNameDisplay="Dobes Annotator" appNameInternal="dobesannotator" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="true" textFontSize="17">
-    <metadata>
-        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" duplicatesControlledMessage="This test can only be done once per worker." postName="workerId" preventServerDuplicates="true" registrationField="Reporter name *"/>
-        <field controlledMessage="Please enter the device model" controlledRegex=".'{'2,'}'" postName="errordevice" preventServerDuplicates="false" registrationField="Device model"/>
-        <field controlledMessage="Please enter a short description of the issue" controlledRegex=".'{'2,'}'" postName="errordescription" preventServerDuplicates="false" registrationField="Please describe the error"/>
-    </metadata>
-    <presenter displayOrder="2" menuLabel="AnnotationTimelinePanel" type="timeline" self="AnnotationTimelinePanel" title="Annotation Timeline">
-        <AnnotationTimelinePanel mp4="http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4" eventTag="annotationtimeline" columnCount="2" maxStimuli="10">
+<experiment appNameDisplay="Dobes Annotator" appNameInternal="dobes_annotator" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="true" textFontSize="17">
+    <metadata/>
+    <presenter back="DebugScreen" displayOrder="1" menuLabel="Annotation Timeline Panel" type="timeline" self="Annotation_Timeline_Panel" title="Annotation Timeline Panel">
+        <AnnotationTimelinePanel mp4="http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4" eventTag="Annotation_Timeline_Panel" columnCount="2" maxStimuli="10">
             <stimuli>
                 <tag>videotag</tag>
             </stimuli>
         </AnnotationTimelinePanel>
+    </presenter>
+    <presenter back="Annotation_Timeline_Panel" displayOrder="2" menuLabel="Debug Screen" type="debug" self="DebugScreen" title="Debug Screen">
+        <versionData/>
+        <eraseLocalStorageButton/>
+        <localStorageData/>
     </presenter>
     <stimuli>
         <stimulus identifier="videotag0" imagePath="videotag0.png" label="videotag0" pauseMs="0">
