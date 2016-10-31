@@ -18,7 +18,7 @@
 /*
  * @since Oct 26, 2016 2:08:45 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
-*/
+ */
 
 var stompClient = null;
 var userId = Math.floor((1 + Math.random()) * 0x10000);
@@ -31,7 +31,7 @@ function setConnected(connected) {
     $("#animateTarget").html("");
     if (connected) {
         $("#conversation").show();
-        $("#groupTarget").append("<tr><td>userId</td><td>Label</td><td>MemberCodes</td><td>Code</td><td>stimulusId</td><td>message</td><td>Ready</td></tr>");
+        $("#groupTarget").append("<tr><td>userId</td><td>Label</td><td>Group</td><td>MemberCodes</td><td>Code</td><td>stimulusId</td><td>message</td><td>Ready</td></tr>");
     } else {
         $("#conversation").hide();
     }
@@ -62,7 +62,7 @@ function connect() {
                 $("#groupTarget").append("<tr id=\"userId" + contentData.userId + "\"></tr>");
                 usersTableRow = $("#userId" + contentData.userId);
             }
-            var usersTableCells = "<td>" + contentData.userId + "</td><td>" + contentData.userLabel + "</td><td>" + contentData.allMemberCodes + "</td><td>" + contentData.memberCode + "</td><td>" + contentData.stimulusId + "</td><td>" + contentData.messageString + "</td><td>" + contentData.groupReady + "</td>";
+            var usersTableCells = "<td>" + contentData.userId + "</td><td>" + contentData.userLabel + "</td><td>" + contentData.groupId + "</td><td>" + contentData.allMemberCodes + "</td><td>" + contentData.memberCode + "</td><td>" + contentData.stimulusId + "</td><td>" + contentData.messageString + "</td><td>" + contentData.groupReady + "</td>";
             usersTableRow.html(usersTableCells);
 
 //            var groupMemberDiv = $("<div style='background: grey;' class='progressDivBar'>&nbsp;</div>");

@@ -24,6 +24,7 @@ package nl.mpi.tg.eg.frinex.sharedobjects;
 public class GroupMessage {
 
     private String userId;
+    private String groupId;
     private String userLabel;
     private String allMemberCodes;
     private String memberCode;
@@ -40,6 +41,14 @@ public class GroupMessage {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
     }
 
     public String getUserLabel() {
