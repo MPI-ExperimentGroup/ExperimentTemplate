@@ -23,6 +23,14 @@ package nl.mpi.tg.eg.frinex.sharedobjects;
  */
 public class SharedData {
 
+    // user uuid generated in the client app (GWT) which is not sent back to the clients but is used to track who has locked the object
+    private String userId;
+    // the uuid for this request generated in the client app (GWT) and used by the client to determin if its request was accepted or rejected
+    private String requestId;
+    // if set to locked and sent to the server and the object is not already locked then the user will be granted the lock on the object
+    private boolean isLocked;
+    // id of the dom object being animated that is should be present in all client html doms
+    private String domId;
     private String text;
     private String fill;
     private String cx;

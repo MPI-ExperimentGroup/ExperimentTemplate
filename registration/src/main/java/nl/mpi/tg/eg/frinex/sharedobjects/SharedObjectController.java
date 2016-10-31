@@ -17,6 +17,9 @@
  */
 package nl.mpi.tg.eg.frinex.sharedobjects;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
@@ -28,9 +31,42 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class SharedObjectController {
 
+    private final HashMap<String, GroupMessage> groupMemberList = new HashMap<>();
+    private ArrayList<String> unAllocatedMemberCodes = null;
+    private String allMemberCodes;
+
     @MessageMapping("/shared")
     @SendTo("/shared/animation")
     public SharedData getSharedData(SharedData sharedData) throws Exception {
         return sharedData;
+    }
+
+    @MessageMapping("/group")
+    @SendTo("/shared/group")
+    public GroupMessage getGroupData(GroupMessage groupMessage) throws Exception {
+        return updateGroupData(groupMessage);
+    }
+
+    private synchronized GroupMessage updateGroupData(GroupMessage groupMessage) {
+        final GroupMessage storedMessage;
+        if (groupMemberList.containsKey(groupMessage.getUserId())) {
+            storedMessage = groupMemberList.get(groupMessage.getUserId());
+            storedMessage.setStimulusId(groupMessage.getStimulusId());
+            storedMessage.setMessageString(groupMessage.getMessageString());
+        } else {
+            if (unAllocatedMemberCodes == null) {
+                unAllocatedMemberCodes = new ArrayList<>(Arrays.asList(groupMessage.getAllMemberCodes().split(",")));
+                allMemberCodes = groupMessage.getAllMemberCodes();
+            }
+            if (!unAllocatedMemberCodes.isEmpty()) {
+                groupMessage.setMemberCode(unAllocatedMemberCodes.remove(0));
+                groupMessage.setUserLabel(groupMessage.getMemberCode() + groupMessage.getUserId());
+                groupMemberList.put(groupMessage.getUserId(), groupMessage);
+            }
+            storedMessage = groupMessage;
+        }
+        groupMessage.setGroupReady(unAllocatedMemberCodes.isEmpty());
+        groupMessage.setAllMemberCodes(allMemberCodes);
+        return storedMessage;
     }
 }

@@ -50,6 +50,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().formLogin().loginPage("/login").permitAll()
                 .and().logout().permitAll();
         http.csrf().disable();
+        
+        // @todo: the disabling of httpStrictTransportSecuritygroup is only for testpage.html and can be safely removed (.antMatchers("grouptestpage.html"))
+        http.headers().frameOptions().sameOrigin().httpStrictTransportSecurity().disable();
     }
 
     @Autowired
