@@ -748,7 +748,7 @@ public class RdExperiment02 {
         wizardEditUserScreen.setScreenTag("Gegevens");
         wizardEditUserScreen.setNextButton("Volgende");
         wizardEditUserScreen.setSendData(true);
-//        wizardEditUserScreen.setMetadataScreen(true);
+        wizardEditUserScreen.setOn_Error_Text("Could not contact the server, please check your internet connection and try again.");
 //        wizardData.setAgeField(true);
         wizardEditUserScreen.setCustomFields(new String[]{
             "workerId:Proefpersoon ID:.*:.",
