@@ -42,14 +42,14 @@ public class WizardAgreementScreen extends AbstractWizardScreen {
     }
 
     @Override
-    public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        getPresenterScreen().setPresenterType(PresenterType.metadata);
-        super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, getScreenText()));
-        final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.targetButton, getNextButton());
-        presenterFeature.addFeatureAttributes(FeatureAttribute.target, getNextWizardScreenData().getScreenTag());
-        getPresenterScreen().getPresenterFeatureList().add(presenterFeature);
-        experiment.getPresenterScreen().add(getPresenterScreen());
-        return getPresenterScreen();
+    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+        storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.metadata);
+        super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
+        storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText1()));
+        final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.targetButton, storedWizardScreenData.getNextButton()[0]);
+        presenterFeature.addFeatureAttributes(FeatureAttribute.target, storedWizardScreenData.getNextWizardScreenData().getScreenTag());
+        storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(presenterFeature);
+        experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
+        return storedWizardScreenData.getPresenterScreen();
     }
 }

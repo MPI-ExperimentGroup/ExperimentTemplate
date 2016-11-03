@@ -791,22 +791,22 @@ public class Sara01 {
         //                end of audio 1-7 rating buttons
         //                next stimuli
         WizardRandomStimulusScreen randomStimulusScreenP = new WizardRandomStimulusScreen();
-        randomStimulusScreenP.setScreenTitle("StimulusScreenP");
-        randomStimulusScreenP.setMenuLabel("StimulusScreenP");
-        randomStimulusScreenP.setScreenTag("StimulusScreenP");
-        randomStimulusScreenP.setStimuliPath("stimuliPath");
+        randomStimulusScreenP.getWizardScreenData().setScreenTitle("StimulusScreenP");
+        randomStimulusScreenP.getWizardScreenData().setMenuLabel("StimulusScreenP");
+        randomStimulusScreenP.getWizardScreenData().setScreenTag("StimulusScreenP");
+//        randomStimulusScreenP.setStimuliPath("stimuliPath");
         randomStimulusScreenP.setButtonLabel("volgende [ spatiebalk ]");
-        randomStimulusScreenP.setStimuliRandomTags(new String[]{"groupA", "groupB"});
+        randomStimulusScreenP.getWizardScreenData().setStimuliRandomTags(new String[]{"groupA", "groupB"});
+        randomStimulusScreenP.getWizardScreenData().setStimulusCodeMatch("/([ET]_[0-9]+)_");
+        randomStimulusScreenP.getWizardScreenData().setStimulusCodeFormat("static/practice/wav/<code>");
         randomStimulusScreenP.setStimuliSet(stimuliPracticeArray);
-        randomStimulusScreenP.setStimulusCodeMatch("/([ET]_[0-9]+)_");
-        randomStimulusScreenP.setStimuliCount(1000);
-        randomStimulusScreenP.setRandomiseStimuli(true);
-        randomStimulusScreenP.setStimulusMsDelay(1000);
-        randomStimulusScreenP.setStimulusCodeMsDelay(500);
-        randomStimulusScreenP.setStimulusCodeFormat("static/practice/wav/<code>");
-        randomStimulusScreenP.setStimulusResponseOptions("1,2,3,4,5,6,7");
-        randomStimulusScreenP.setStimulusResponseLabelLeft("zeer waarschijnlijk negatief");
-        randomStimulusScreenP.setStimulusResponseLabelRight("zeer waarschijnlijk positief");
+        randomStimulusScreenP.getWizardScreenData().setStimuliCount(1000);
+        randomStimulusScreenP.getWizardScreenData().setRandomiseStimuli(true);
+        randomStimulusScreenP.getWizardScreenData().setStimulusMsDelay(1000);
+        randomStimulusScreenP.getWizardScreenData().setStimulusCodeMsDelay(500);
+        randomStimulusScreenP.getWizardScreenData().setStimulusResponseOptions("1,2,3,4,5,6,7");
+        randomStimulusScreenP.getWizardScreenData().setStimulusResponseLabelLeft("zeer waarschijnlijk negatief");
+        randomStimulusScreenP.getWizardScreenData().setStimulusResponseLabelRight("zeer waarschijnlijk positief");
         wizardData.addScreen(randomStimulusScreenP);
         //experiment round (120 items):
         //     
@@ -815,19 +815,19 @@ public class Sara01 {
         randomStimulusScreenE.setScreenTitle("StimulusScreenE");
         randomStimulusScreenE.setMenuLabel("StimulusScreenE");
         randomStimulusScreenE.setScreenTag("StimulusScreenE");
-        randomStimulusScreenE.setStimuliPath("stimuliPath");
+//        randomStimulusScreenE.setStimuliPath("stimuliPath");
         randomStimulusScreenE.setButtonLabel("volgende [ spatiebalk ]");
-        randomStimulusScreenE.setStimuliRandomTags(new String[]{"groupA", "groupB"});
+        randomStimulusScreenE.getWizardScreenData().setStimuliRandomTags(new String[]{"groupA", "groupB"});
+        randomStimulusScreenE.getWizardScreenData().setStimulusCodeMatch("/([ET]_[0-9]+)_");
+        randomStimulusScreenE.getWizardScreenData().setStimuliCount(1000);
+        randomStimulusScreenE.getWizardScreenData().setRandomiseStimuli(true);
+        randomStimulusScreenE.getWizardScreenData().setStimulusMsDelay(1000);
+        randomStimulusScreenE.getWizardScreenData().setStimulusCodeMsDelay(500);
+        randomStimulusScreenE.getWizardScreenData().setStimulusCodeFormat("static/experiment/wav/<code>");
         randomStimulusScreenE.setStimuliSet(stimuliExperimentArray);
-        randomStimulusScreenE.setStimulusCodeMatch("/([ET]_[0-9]+)_");
-        randomStimulusScreenE.setStimuliCount(1000);
-        randomStimulusScreenE.setRandomiseStimuli(true);
-        randomStimulusScreenE.setStimulusMsDelay(1000);
-        randomStimulusScreenE.setStimulusCodeMsDelay(500);
-        randomStimulusScreenE.setStimulusCodeFormat("static/experiment/wav/<code>");
-        randomStimulusScreenE.setStimulusResponseOptions("1,2,3,4,5,6,7");
-        randomStimulusScreenE.setStimulusResponseLabelLeft("zeer waarschijnlijk negatief");
-        randomStimulusScreenE.setStimulusResponseLabelRight("zeer waarschijnlijk positief");
+        randomStimulusScreenE.getWizardScreenData().setStimulusResponseOptions("1,2,3,4,5,6,7");
+        randomStimulusScreenE.getWizardScreenData().setStimulusResponseLabelLeft("zeer waarschijnlijk negatief");
+        randomStimulusScreenE.getWizardScreenData().setStimulusResponseLabelRight("zeer waarschijnlijk positief");
         wizardData.addScreen(randomStimulusScreenE);
 
         WizardCompletionScreen completionScreen = new WizardCompletionScreen("Dit is het einde van het experiment.<br/>"

@@ -29,6 +29,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
@@ -272,5 +273,16 @@ public class Experiment implements Serializable {
 
     public void setStimuli(List<Stimulus> stimuli) {
         this.stimuli = stimuli;
+    }
+
+    @Transient
+    public void appendUniqueStimuli(List<Stimulus> stimuliList) {
+        if (stimuliList != null) {
+            for (Stimulus stimulus : stimuliList) {
+                if (!this.stimuli.contains(stimulus)) {
+                    this.stimuli.add(stimulus);
+                }
+            }
+        }
     }
 }

@@ -42,18 +42,18 @@ public class WizardKinshipScreen extends AbstractWizardScreen {
     }
 
     @Override
-    public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        getPresenterScreen().setPresenterType(PresenterType.kindiagram);
+    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+        super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
+        storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.kindiagram);
         final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.addKinTypeGui, null);
         presenterFeature1.addFeatureAttributes(FeatureAttribute.diagramName, diagramName);
-        getPresenterScreen().getPresenterFeatureList().add(presenterFeature1);
+        storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(presenterFeature1);
         final PresenterFeature presenterFeature2 = new PresenterFeature(FeatureType.loadKinTypeStringDiagram, null);
         presenterFeature2.addFeatureAttributes(FeatureAttribute.diagramName, diagramName);
         presenterFeature2.addFeatureAttributes(FeatureAttribute.msToNext, "0");
-        getPresenterScreen().getPresenterFeatureList().add(presenterFeature2);
-        experiment.getPresenterScreen().add(getPresenterScreen());
-        return getPresenterScreen();
+        storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(presenterFeature2);
+        experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
+        return storedWizardScreenData.getPresenterScreen();
 
     }
 

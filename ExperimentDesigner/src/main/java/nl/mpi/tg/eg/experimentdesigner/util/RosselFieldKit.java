@@ -45,7 +45,6 @@ public class RosselFieldKit {
         wizardData.setShowMenuBar(true);
         wizardData.setObfuscateScreenNames(false);
 
-        final WizardWelcomeScreen welcomePresenter = new WizardWelcomeScreen("Rossel Island FieldKit", "Welcome", "Instructions", "Begin", null, null);
         final WizardExistingUserCheckScreen welcomeMenuPresenter = new WizardExistingUserCheckScreen("Start", "New interview", "Resume interview", "Begin a new interview with a new participant", "Resume an interview with an existing participant");
         final WizardTextScreen instructionsPresenter = new WizardTextScreen("Instructions",
                 "The stimuli used by this app and the recordings created by this app are stored in MPI_STIMULI and MPI_Recorder respectively. "
@@ -146,7 +145,7 @@ public class RosselFieldKit {
                 + "/MPI_STIMULI/Task_2/2_fish.png<br/>"
                 + "/MPI_STIMULI/Task_2/2_fish_question.mp3",
                 "Begin");
-
+        final WizardWelcomeScreen welcomePresenter = new WizardWelcomeScreen("Rossel Island FieldKit", "Welcome", "Instructions", "Begin", welcomeMenuPresenter, instructionsPresenter);
         final WizardMenuScreen menuScreen = new WizardMenuScreen("Menu", "Menu", "Menu");
         menuScreen.setBackWizardScreen(welcomePresenter);
 //        String[] images = new String[]{
@@ -163,8 +162,6 @@ public class RosselFieldKit {
 //        final WizardAnimatedStimuliScreen pictureTaskScreen = new WizardAnimatedStimuliScreen("PictureTask", images, false, 1000, true, "Next", "background.png", false);
         final WizardAnimatedStimuliScreen task1ScreenSD = new WizardAnimatedStimuliScreen("Task 1", new String[]{"Task1"}, true, 1000, true, "Next", "file:///storage/emulated/0/MPI_STIMULI/background1.png", false);
         final WizardAnimatedStimuliScreen task2ScreenSD = new WizardAnimatedStimuliScreen("Task 2", new String[]{"Task2"}, true, 1000, true, "Next", "file:///storage/emulated/0/MPI_STIMULI/background2.png", true);
-        welcomePresenter.setInstructionsScreen(instructionsPresenter);
-        welcomePresenter.setProgramWizardScreen(welcomeMenuPresenter);
         final WizardSelectUserScreen wizardSelectUserScreen = new WizardSelectUserScreen("Select Participant");
         wizardSelectUserScreen.setBackWizardScreen(welcomePresenter);
         wizardSelectUserScreen.setNextWizardScreen(menuScreen);
@@ -175,10 +172,11 @@ public class RosselFieldKit {
         final WizardStimulusScreen wizardStimulusScreenSequential = new WizardStimulusScreen();
         wizardStimulusScreenSequential.setScreenTitle("FieldKit Sequential");
         wizardStimulusScreenSequential.setMenuLabel("FieldKit Sequential");
-        wizardStimulusScreenSequential.setScreenLabel("FieldKit Sequential");
+//        wizardStimulusScreenSequential.setScreenLabel("FieldKit Sequential");
         wizardStimulusScreenSequential.setScreenTag("FieldKitSequential");
 //        experiment, welcomePresenter, "cutbreak", welcomePresenter, new String[]{"cutbreak"}, grammaticalityValuesArray, true, 1000, false, "end_of_stimuli", 15, obfuscateScreenNames
         wizardStimulusScreenSequential.setStimulusTagArray(new String[]{"FieldKit"});
+//        wizardStimulusScreenSequential.setStimulusArray(new String[]{"FieldKit"});
         wizardStimulusScreenSequential.setFeatureValuesArray(new StimuliSubAction[]{new StimuliSubAction("80", "the informant talks about the image", "next")});
         wizardStimulusScreenSequential.setMaxStimuli(1000);
         wizardStimulusScreenSequential.setRandomiseStimuli(false);
@@ -188,10 +186,11 @@ public class RosselFieldKit {
         final WizardStimulusScreen wizardStimulusScreenRandom = new WizardStimulusScreen();
         wizardStimulusScreenRandom.setScreenTitle("FieldKit Random");
         wizardStimulusScreenRandom.setMenuLabel("FieldKit Random");
-        wizardStimulusScreenRandom.setScreenLabel("FieldKit Random");
+//        wizardStimulusScreenRandom.setScreenLabel("FieldKit Random");
         wizardStimulusScreenRandom.setScreenTag("FieldKitRandom");
 //        experiment, welcomePresenter, "cutbreak", welcomePresenter, new String[]{"cutbreak"}, grammaticalityValuesArray, true, 1000, false, "end_of_stimuli", 15, obfuscateScreenNames
         wizardStimulusScreenRandom.setStimulusTagArray(new String[]{"FieldKit"});
+//        wizardStimulusScreenRandom.setStimulusArray(new String[]{"FieldKit"});
         wizardStimulusScreenRandom.setFeatureValuesArray(new StimuliSubAction[]{new StimuliSubAction("80", "the informant talks about the image", "next")});
         wizardStimulusScreenRandom.setMaxStimuli(1000);
         wizardStimulusScreenRandom.setRandomiseStimuli(true);
@@ -254,5 +253,5 @@ public class RosselFieldKit {
     // video stimuli (does this already work or not?)
     // would be nice to have the tablet mic into one channel of the wav and a bluetooth headset into a second channel in the wav
     // stimuli images could be bigger (maximum possible)
-    
+
 }

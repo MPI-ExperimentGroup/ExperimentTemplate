@@ -30,6 +30,7 @@ public abstract class AbstractWizardScreen implements WizardScreen {
 
     public AbstractWizardScreen(WizardScreenEnum wizardScreenEnum) {
         this.wizardScreenData = new WizardScreenData(wizardScreenEnum);
+        this.wizardScreenData.setCentreScreen(false);
     }
 
     public AbstractWizardScreen(WizardScreenEnum wizardScreenEnum, String screenTitle, String menuLabel, String screenTag) {
@@ -37,28 +38,15 @@ public abstract class AbstractWizardScreen implements WizardScreen {
         this.wizardScreenData.setScreenTitle(screenTitle);
         this.wizardScreenData.setMenuLabel(menuLabel);
         this.wizardScreenData.setScreenTag(screenTag.replaceAll("[^A-Za-z0-9]", "_"));
-    }
-
-    public String getScreenTitle() {
-        return this.wizardScreenData.getScreenTitle();
+        this.wizardScreenData.setCentreScreen(false);
     }
 
     public final void setScreenTitle(String screenTitle) {
         this.wizardScreenData.setScreenTitle(screenTitle);
     }
 
-    @Override
-    public String getMenuLabel() {
-        return this.wizardScreenData.getMenuLabel();
-    }
-
     public final void setMenuLabel(String menuLabel) {
         this.wizardScreenData.setMenuLabel(menuLabel);
-    }
-
-    @Override
-    public String getScreenTag() {
-        return this.wizardScreenData.getScreenTag();
     }
 
     @Override
@@ -102,17 +90,8 @@ public abstract class AbstractWizardScreen implements WizardScreen {
     }
 
     @Override
-    public String getScreenText() {
-        return this.wizardScreenData.getScreenText1();
-    }
-
-    @Override
     public final void setScreenText(String screenText) {
         this.wizardScreenData.setScreenText1(screenText);
-    }
-
-    public boolean isCentreScreen() {
-        return this.wizardScreenData.isCentreScreen();
     }
 
     public final void setCentreScreen(boolean centreScreen) {
@@ -120,33 +99,23 @@ public abstract class AbstractWizardScreen implements WizardScreen {
     }
 
     @Override
-    public String getNextButton() {
-        return this.wizardScreenData.getNextButton();
-    }
-
-    @Override
     public final void setNextButton(String nextButton) {
-        this.wizardScreenData.setNextButton(nextButton);
+        this.wizardScreenData.setNextButton(new String[]{nextButton});
     }
 
     @Override
-    public PresenterScreen getPresenterScreen() {
-        return this.wizardScreenData.getPresenterScreen();
-    }
-
-    @Override
-    public PresenterScreen populatePresenterScreen(final Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        this.wizardScreenData.getPresenterScreen().setTitle((obfuscateScreenNames) ? experiment.getAppNameDisplay() + " " + displayOrder : getScreenTitle());
-        this.wizardScreenData.getPresenterScreen().setMenuLabel((getMenuLabel() != null) ? getMenuLabel() : getScreenTitle());
-        final String currentTagString = (getScreenTag() != null) ? getScreenTag() : getScreenTitle();
-        this.wizardScreenData.getPresenterScreen().setSelfPresenterTag(currentTagString.replaceAll("[^A-Za-z0-9]", "_"));
-        if (getBackWizardScreenData() != null) {
-            this.wizardScreenData.getPresenterScreen().setBackPresenter(getBackWizardScreenData().getPresenterScreen());
+    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, final Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+        storedWizardScreenData.getPresenterScreen().setTitle((obfuscateScreenNames) ? experiment.getAppNameDisplay() + " " + displayOrder : storedWizardScreenData.getScreenTitle());
+        storedWizardScreenData.getPresenterScreen().setMenuLabel((storedWizardScreenData.getMenuLabel() != null) ? storedWizardScreenData.getMenuLabel() : storedWizardScreenData.getScreenTitle());
+        final String currentTagString = (storedWizardScreenData.getScreenTag() != null) ? storedWizardScreenData.getScreenTag() : storedWizardScreenData.getScreenTitle();
+        storedWizardScreenData.getPresenterScreen().setSelfPresenterTag(currentTagString.replaceAll("[^A-Za-z0-9]", "_"));
+        if (storedWizardScreenData.getBackWizardScreenData() != null) {
+            storedWizardScreenData.getPresenterScreen().setBackPresenter(storedWizardScreenData.getBackWizardScreenData().getPresenterScreen());
         }
-        if (getNextWizardScreenData() != null) {
-            this.wizardScreenData.getPresenterScreen().setNextPresenter(getNextWizardScreenData().getPresenterScreen());
+        if (storedWizardScreenData.getNextWizardScreenData() != null) {
+            storedWizardScreenData.getPresenterScreen().setNextPresenter(storedWizardScreenData.getNextWizardScreenData().getPresenterScreen());
         }
-        this.wizardScreenData.getPresenterScreen().setDisplayOrder(displayOrder);
-        return this.wizardScreenData.getPresenterScreen();
+        storedWizardScreenData.getPresenterScreen().setDisplayOrder(displayOrder);
+        return storedWizardScreenData.getPresenterScreen();
     }
 }

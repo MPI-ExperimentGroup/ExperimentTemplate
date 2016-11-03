@@ -31,8 +31,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
  */
 public class WizardMenuScreen extends AbstractWizardScreen {
 
-    final private ArrayList<AbstractWizardScreen> targetScreens = new ArrayList<>();
-
+//    final private ArrayList<AbstractWizardScreen> targetScreens = new ArrayList<>();
     public WizardMenuScreen() {
         super(WizardScreenEnum.WizardMenuScreen, "Menu", "Menu", "Menu");
     }
@@ -42,29 +41,29 @@ public class WizardMenuScreen extends AbstractWizardScreen {
     }
 
     public void addTargetScreen(final AbstractWizardScreen targetScreen) {
-        targetScreens.add(targetScreen);
+        wizardScreenData.getMenuWizardScreenData().add(targetScreen.getWizardScreenData());
     }
 
     @Override
-    public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        getPresenterScreen().setPresenterType(PresenterType.menu);
-        if (wizardScreenData.getScreenText1() != null) {
-            getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, wizardScreenData.getScreenText1()));
+    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+        super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
+        storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.menu);
+        if (storedWizardScreenData.getScreenText1() != null) {
+            storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText1()));
         }
-        if (targetScreens.isEmpty()) {
-            getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMenuItems, null));
+        if (storedWizardScreenData.getMenuWizardScreenData().isEmpty()) {
+            storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMenuItems, null));
         } else {
-            for (AbstractWizardScreen targetScreen : targetScreens) {
+            for (WizardScreenData targetScreen : storedWizardScreenData.getMenuWizardScreenData()) {
                 final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.menuItem, targetScreen.getMenuLabel());
                 presenterFeature1.addFeatureAttributes(FeatureAttribute.target, targetScreen.getScreenTag());
-                getPresenterScreen().getPresenterFeatureList().add(presenterFeature1);
+                storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(presenterFeature1);
             }
         }
-        if (wizardScreenData.getScreenText2() != null) {
-            getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, wizardScreenData.getScreenText2()));
+        if (storedWizardScreenData.getScreenText2() != null) {
+            storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText2()));
         }
-        experiment.getPresenterScreen().add(getPresenterScreen());
-        return getPresenterScreen();
+        experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
+        return storedWizardScreenData.getPresenterScreen();
     }
 }

@@ -37,8 +37,6 @@ import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
  */
 public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
 
-    private boolean isSecondTask = false;
-
     public WizardAnimatedStimuliScreen() {
         super(WizardScreenEnum.WizardAnimatedStimuliScreen, "AnimatedStimuli", "AnimatedStimuli", "AnimatedStimuli");
     }
@@ -66,55 +64,56 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
         this.wizardScreenData.setStimulusMsDelay(0);
         this.wizardScreenData.setStimuliCount(maxStimuli);
         this.wizardScreenData.setRandomiseStimuli(randomiseStimuli);
-        this.wizardScreenData.setNextButton(buttonLabelEventTag);
+        this.wizardScreenData.setNextButton(new String[]{buttonLabelEventTag});
         this.wizardScreenData.setBackgroundImage(backgroundImage);
         this.wizardScreenData.setSdCardStimuli(sdCardStimuli);
-        this.isSecondTask = isSecondTask;
+        this.wizardScreenData.setTaskIndex((isSecondTask) ? 2 : 1);
+        this.wizardScreenData.setCentreScreen(Boolean.TRUE);
     }
     private static final String BASE_FILE_REGEX = "\\.[a-zA-Z34]+$";
 
     @Override
-    public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        experiment.getStimuli().addAll(this.wizardScreenData.getStimuli());
-        super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        getPresenterScreen().setPresenterType(PresenterType.stimulus);
-        List<PresenterFeature> presenterFeatureList = getPresenterScreen().getPresenterFeatureList();
-        if (isCentreScreen()) {
+    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+        experiment.appendUniqueStimuli(storedWizardScreenData.getStimuli());
+        super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
+        storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.stimulus);
+        List<PresenterFeature> presenterFeatureList = storedWizardScreenData.getPresenterScreen().getPresenterFeatureList();
+        if (storedWizardScreenData.isCentreScreen()) {
             presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
         }
-        final PresenterFeature loadStimuliFeature = new PresenterFeature((!this.wizardScreenData.isSdCardStimuli()) ? FeatureType.loadStimulus : FeatureType.loadSdCardStimulus, null);
-        loadStimuliFeature.addStimulusTag(getScreenTitle());
+        final PresenterFeature loadStimuliFeature = new PresenterFeature((!storedWizardScreenData.isSdCardStimuli()) ? FeatureType.loadStimulus : FeatureType.loadSdCardStimulus, null);
+        loadStimuliFeature.addStimulusTag(storedWizardScreenData.getScreenTitle());
         final RandomGrouping randomGrouping = new RandomGrouping();
-        if (this.wizardScreenData.getStimuliRandomTags() != null) {
-            for (String randomTag : this.wizardScreenData.getStimuliRandomTags()) {
+        if (storedWizardScreenData.getStimuliRandomTags() != null) {
+            for (String randomTag : storedWizardScreenData.getStimuliRandomTags()) {
                 randomGrouping.addRandomTag(randomTag);
             }
-            final String metadataFieldname = "groupAllocation_" + getScreenTag();
+            final String metadataFieldname = "groupAllocation_" + storedWizardScreenData.getScreenTag();
             randomGrouping.setStorageField(metadataFieldname);
             loadStimuliFeature.setRandomGrouping(randomGrouping);
             experiment.getMetadata().add(new Metadata(metadataFieldname, metadataFieldname, ".*", ".", false, null));
         }
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, getScreenTitle());
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(this.wizardScreenData.isRandomiseStimuli()));
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(storedWizardScreenData.isRandomiseStimuli()));
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "1");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, "0");
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(this.wizardScreenData.getStimuliCount()));
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(storedWizardScreenData.getStimuliCount()));
         presenterFeatureList.add(loadStimuliFeature);
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
         // start the audio recorder
         final PresenterFeature startRecorderFeature = new PresenterFeature(FeatureType.startAudioRecorder, null);
         startRecorderFeature.addFeatureAttributes(FeatureAttribute.wavFormat, "true");
         startRecorderFeature.addFeatureAttributes(FeatureAttribute.filePerStimulus, "false");
-        startRecorderFeature.addFeatureAttributes(FeatureAttribute.eventTag, this.getScreenTitle());
+        startRecorderFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
         hasMoreStimulusFeature.getPresenterFeatureList().add(startRecorderFeature);
 
-        if (!isSecondTask) {
+        if (storedWizardScreenData.getTaskIndex() == 1) {
             final PresenterFeature withMatchingStimulus = new PresenterFeature(FeatureType.withMatchingStimulus, null);
             withMatchingStimulus.addFeatureAttributes(FeatureAttribute.matchingRegex, MATCHING_REGEX);
             withMatchingStimulus.addFeatureAttributes(FeatureAttribute.maxStimuli, "1000");
             withMatchingStimulus.addFeatureAttributes(FeatureAttribute.repeatCount, "1");
             withMatchingStimulus.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, "0");
-            withMatchingStimulus.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(this.wizardScreenData.isRandomiseStimuli()));
+            withMatchingStimulus.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(storedWizardScreenData.isRandomiseStimuli()));
             withMatchingStimulus.addFeatureAttributes(FeatureAttribute.eventTag, "");
 
             final PresenterFeature hasMoreMatchingStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
@@ -125,8 +124,8 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             hasMoreStimulusFeature.getPresenterFeatureList().add(withMatchingStimulus);
 
             // show stimulus a
-            final PresenterFeature imageFeature1 = addStimulusImage(hasMoreMatchingStimulusFeature, 80, false, false, false);
-            PresenterFeature nextButtonFeature1 = getNextButtonFeature();
+            final PresenterFeature imageFeature1 = addStimulusImage(storedWizardScreenData, hasMoreMatchingStimulusFeature, 80, false, false, false);
+            PresenterFeature nextButtonFeature1 = getNextButtonFeature(storedWizardScreenData);
             imageFeature1.getPresenterFeatureList().add(nextButtonFeature1);
 
             final PresenterFeature endAudioRecorderTagFeature1 = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
@@ -139,8 +138,8 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             imageFeature1.getPresenterFeatureList().add(startTagFeature1);
 
             // show small stimulus on background
-            final PresenterFeature imageFeature2 = addStimulusImage(nextButtonFeature1, 30, true, true, true);
-            PresenterFeature nextButtonFeature2 = getNextButtonFeature();
+            final PresenterFeature imageFeature2 = addStimulusImage(storedWizardScreenData, nextButtonFeature1, 30, true, true, true);
+            PresenterFeature nextButtonFeature2 = getNextButtonFeature(storedWizardScreenData);
             imageFeature2.getPresenterFeatureList().add(nextButtonFeature2);
 //        nextButtonFeature1.getPresenterFeatureList().add(imageFeature2);
 
@@ -168,12 +167,12 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
 //            imageFeature4.getPresenterFeatureList().add(startTagFeature4);
             final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
             nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
-            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + getScreenTitle());
+            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + storedWizardScreenData.getScreenTitle());
             endOfMatchingStimulusFeature.getPresenterFeatureList().add(nextStimulusFeature);
             loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
         } else {
             // show group without background or animation and play code audio
-            final PresenterFeature gridFeature = addStimulusGrid(hasMoreStimulusFeature, 100, false, false, false);
+            final PresenterFeature gridFeature = addStimulusGrid(storedWizardScreenData, hasMoreStimulusFeature, 100, false, false, false);
 
             final PresenterFeature stimulusCodeAudio1 = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
             stimulusCodeAudio1.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>_question");
@@ -186,8 +185,8 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             presenterFeature.getPresenterFeatureList().add(stimulusCodeAudio1);
             gridFeature.getPresenterFeatureList().add(presenterFeature);
             gridFeature.getPresenterFeatureList().add(stimulusCodeAudio2);
-            if (!isSecondTask) {
-                PresenterFeature nextButtonFeature4 = getNextButtonFeature();
+            if (storedWizardScreenData.getTaskIndex() == 1) {
+                PresenterFeature nextButtonFeature4 = getNextButtonFeature(storedWizardScreenData);
                 gridFeature.getPresenterFeatureList().add(nextButtonFeature4);
 
                 final PresenterFeature endAudioRecorderTagFeature4 = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
@@ -197,7 +196,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
 
                 final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
                 nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
-                nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + getScreenTitle());
+                nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + storedWizardScreenData.getScreenTitle());
                 nextButtonFeature4.getPresenterFeatureList().add(nextStimulusFeature);
             }
             final PresenterFeature startTagFeature4 = new PresenterFeature(FeatureType.startAudioRecorderTag, null);
@@ -214,7 +213,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             skipFeature.getPresenterFeatureList().add(endAudioRecorderTagFeature4);
             final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
             nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
-            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + getScreenTitle());
+            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + storedWizardScreenData.getScreenTitle());
             skipFeature.getPresenterFeatureList().add(nextStimulusFeature);
             gridFeature.getPresenterFeatureList().add(skipFeature);
 
@@ -226,30 +225,30 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
         final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
         endOfStimulusFeature.getPresenterFeatureList().add(autoNextPresenter);
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
-        experiment.getPresenterScreen().add(getPresenterScreen());
-        return getPresenterScreen();
+        experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
+        return storedWizardScreenData.getPresenterScreen();
     }
     private static final String MATCHING_REGEX = "([^_]*_)*";
 
-    private PresenterFeature getNextButtonFeature() {
-        final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionButton, this.wizardScreenData.getNextButton());
-        nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, this.wizardScreenData.getNextButton());
+    private PresenterFeature getNextButtonFeature(WizardScreenData storedWizardScreenData) {
+        final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionButton, storedWizardScreenData.getNextButton()[0]);
+        nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getNextButton()[0]);
         nextButtonFeature.addFeatureAttributes(FeatureAttribute.styleName, "hiddenBottomRight");
         nextButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
         return nextButtonFeature;
     }
 
-    private PresenterFeature addStimulusImage(final PresenterFeature hasMoreStimulusFeature, final int stimulusSize, final boolean animate, final boolean background, final boolean playSound) {
+    private PresenterFeature addStimulusImage(WizardScreenData storedWizardScreenData, final PresenterFeature hasMoreStimulusFeature, final int stimulusSize, final boolean animate, final boolean background, final boolean playSound) {
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
         imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, Integer.toString(stimulusSize));
         imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, Integer.toString(stimulusSize));
         imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
-        imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(this.wizardScreenData.getStimulusMsDelay()));
+        imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
         imageFeature.addFeatureAttributes(FeatureAttribute.animate, (animate) ? "bounce" : "none");
         if (background) {
             final PresenterFeature backgroundImageFeature = new PresenterFeature(FeatureType.backgroundImage, null);
-            backgroundImageFeature.addFeatureAttributes(FeatureAttribute.src, this.wizardScreenData.getBackgroundImage());
+            backgroundImageFeature.addFeatureAttributes(FeatureAttribute.src, storedWizardScreenData.getBackgroundImage());
             backgroundImageFeature.addFeatureAttributes(FeatureAttribute.msToNext, "1");
             hasMoreStimulusFeature.getPresenterFeatureList().add(backgroundImageFeature);
             backgroundImageFeature.getPresenterFeatureList().add(imageFeature);
@@ -271,20 +270,20 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
         return imageFeature;
     }
 
-    private PresenterFeature addStimulusGrid(final PresenterFeature hasMoreStimulusFeature, final int stimulusSize, final boolean animate, final boolean background, final boolean playSound) {
+    private PresenterFeature addStimulusGrid(WizardScreenData storedWizardScreenData, final PresenterFeature hasMoreStimulusFeature, final int stimulusSize, final boolean animate, final boolean background, final boolean playSound) {
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         final PresenterFeature matchingStimulusGrid = new PresenterFeature(FeatureType.matchingStimulusGrid, null);
         matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(1000));
-        matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(this.wizardScreenData.isRandomiseStimuli()));
+        matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(storedWizardScreenData.isRandomiseStimuli()));
         matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.maxWidth, Integer.toString(stimulusSize));
         matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.animate, (animate) ? "bounce" : "none");
         matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.columnCount, "10");
-//        matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(this.wizardScreenData.getStimulusMsDelay()));
+//        matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
         matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.matchingRegex, MATCHING_REGEX);
         final PresenterFeature returnFeature;
         if (background) {
             final PresenterFeature backgroundImageFeature = new PresenterFeature(FeatureType.backgroundImage, null);
-            backgroundImageFeature.addFeatureAttributes(FeatureAttribute.src, this.wizardScreenData.getBackgroundImage());
+            backgroundImageFeature.addFeatureAttributes(FeatureAttribute.src, storedWizardScreenData.getBackgroundImage());
             backgroundImageFeature.addFeatureAttributes(FeatureAttribute.msToNext, "1");
             hasMoreStimulusFeature.getPresenterFeatureList().add(backgroundImageFeature);
             backgroundImageFeature.getPresenterFeatureList().add(matchingStimulusGrid);
@@ -321,24 +320,24 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
         endAudioRecorderTagFeatureIncorrect.addFeatureAttributes(FeatureAttribute.eventTier, "4");
         endAudioRecorderTagFeatureIncorrect.addFeatureAttributes(FeatureAttribute.eventTag, "incorrect image clicked");
         responseIncorrect.getPresenterFeatureList().add(endAudioRecorderTagFeatureIncorrect);
-        if (!isSecondTask) {
+        if (storedWizardScreenData.getTaskIndex() == 1) {
             final PresenterFeature nextStimulusCorrectFeature = new PresenterFeature(FeatureType.nextStimulus, null);
             nextStimulusCorrectFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
-            nextStimulusCorrectFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextCorrect" + getScreenTitle());
+            nextStimulusCorrectFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextCorrect" + storedWizardScreenData.getScreenTitle());
             responseCorrect.getPresenterFeatureList().add(nextStimulusCorrectFeature);
 
             final PresenterFeature nextStimulusIncorrectFeature = new PresenterFeature(FeatureType.nextStimulus, null);
             nextStimulusIncorrectFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
-            nextStimulusIncorrectFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextIncorrect" + getScreenTitle());
+            nextStimulusIncorrectFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextIncorrect" + storedWizardScreenData.getScreenTitle());
             responseIncorrect.getPresenterFeatureList().add(nextStimulusIncorrectFeature);
         } else {
-            addTask2StimulusGrid(responseIncorrect, 30, true, true, true);
-            addTask2StimulusGrid(responseCorrect, 30, true, true, true);
+            addTask2StimulusGrid(storedWizardScreenData, responseIncorrect, 30, true, true, true);
+            addTask2StimulusGrid(storedWizardScreenData, responseCorrect, 30, true, true, true);
         }
         return returnFeature;
     }
 
-    private PresenterFeature addTask2StimulusGrid(final PresenterFeature hasMoreStimulusFeature, final int stimulusSize, final boolean animate, final boolean background, final boolean playSound) {
+    private PresenterFeature addTask2StimulusGrid(WizardScreenData storedWizardScreenData, final PresenterFeature hasMoreStimulusFeature, final int stimulusSize, final boolean animate, final boolean background, final boolean playSound) {
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         final PresenterFeature matchingStimulusGrid = new PresenterFeature(FeatureType.stimulusImage, null);
 //        matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(1000));
@@ -346,14 +345,14 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
         matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.maxWidth, Integer.toString(stimulusSize));
         matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.animate, (animate) ? "bounce" : "none");
 //        matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.columnCount, "10");
-        matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(this.wizardScreenData.getStimulusMsDelay()));
+        matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
 //        matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.matchingRegex, MATCHING_REGEX);
         matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.maxHeight, Integer.toString(stimulusSize));
         matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
         final PresenterFeature returnFeature;
         if (background) {
             final PresenterFeature backgroundImageFeature = new PresenterFeature(FeatureType.backgroundImage, null);
-            backgroundImageFeature.addFeatureAttributes(FeatureAttribute.src, this.wizardScreenData.getBackgroundImage());
+            backgroundImageFeature.addFeatureAttributes(FeatureAttribute.src, storedWizardScreenData.getBackgroundImage());
             backgroundImageFeature.addFeatureAttributes(FeatureAttribute.msToNext, "1");
             hasMoreStimulusFeature.getPresenterFeatureList().add(backgroundImageFeature);
             backgroundImageFeature.getPresenterFeatureList().add(matchingStimulusGrid);
@@ -375,7 +374,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             returnFeature.getPresenterFeatureList().add(presenterFeature);
         }
 
-        PresenterFeature nextButtonFeature1 = getNextButtonFeature();
+        PresenterFeature nextButtonFeature1 = getNextButtonFeature(storedWizardScreenData);
         returnFeature.getPresenterFeatureList().add(nextButtonFeature1);
 
         final PresenterFeature endAudioRecorderTagFeature1 = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
@@ -385,7 +384,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
 
         final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
         nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
-        nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + getScreenTitle());
+        nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + storedWizardScreenData.getScreenTitle());
         nextButtonFeature1.getPresenterFeatureList().add(nextStimulusFeature);
         return returnFeature;
     }

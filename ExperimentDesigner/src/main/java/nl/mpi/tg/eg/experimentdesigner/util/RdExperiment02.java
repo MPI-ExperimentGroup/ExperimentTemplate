@@ -765,9 +765,9 @@ public class RdExperiment02 {
         final WizardRandomStimulusScreen list1234Screen = new WizardRandomStimulusScreen("Zinnen afmaken", false, stimuliString,
                 new String[]{"list_a", "list_b", "list_c"}, 1000, true, null, 0, 0, null, null, null, null, "volgende");
         list1234Screen.setStimulusFreeText(true, ".{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
-        list1234Screen.setStimulusResponseLabelLeft("");
-        list1234Screen.setStimulusResponseLabelRight("");
-        list1234Screen.setAllowHotkeyNextButton(false);
+        list1234Screen.getWizardScreenData().setStimulusResponseLabelLeft("");
+        list1234Screen.getWizardScreenData().setStimulusResponseLabelRight("");
+        list1234Screen.getWizardScreenData().setAllowHotkeyButtons(false);
         wizardData.addScreen(list1234Screen);
 
         // @todo: remove the restart button

@@ -45,14 +45,14 @@ public class JenaFieldKit {
         wizardData.setShowMenuBar(true);
         wizardData.setObfuscateScreenNames(false);
 //        wizardController.addMetadata(experiment);
-
-//        final PresenterScreen autoMenuPresenter = null;//wizardController.addAutoMenu(experiment, 12, false);//(Blong programa)
-        final WizardWelcomeScreen welcomePresenter = new WizardWelcomeScreen("Welkam", "Welkam", "Instruksen", "Stat - Go long program nao", null, null);
-//wizardController.addWelcomeScreen(experiment, autoMenuPresenter, "Welkam", null, 1, "Instruksen", "Stat - Go long program nao", false);
         final WizardExistingUserCheckScreen welcomeMenuPresenter = new WizardExistingUserCheckScreen("Start", "Niu rikording", "Gobak long wan olfala rikoding", "Makem wan niufala rikoding", "Gobak long wan rikoding we yu stat hem finis");
         final WizardTextScreen instructionsPresenter = new WizardTextScreen("Instruksen", "Wetem aplikasen ia yu save makem rikoding blong lanwis blong yu,"
                 + " bambai ol pipol blong Vanuatu mo ol pipol blong evri ples long world save harem lanwis blong yu. I gat fulap foto blong difren ples long Malakula wea i stap insaed long aplikasen ia. "
                 + "Bai yu showem ol foto ia long wan olfala woman o wan olfala man blong vilej blong yu mo askem long hem se i tokabaot ol foto ia long lanwis blong hem. Yu save transletem wanem i talem, tu.", "Go long program nao");
+
+//        final PresenterScreen autoMenuPresenter = null;//wizardController.addAutoMenu(experiment, 12, false);//(Blong programa)
+        final WizardWelcomeScreen welcomePresenter = new WizardWelcomeScreen("Welkam", "Welkam", "Instruksen", "Stat - Go long program nao", welcomeMenuPresenter, instructionsPresenter);
+//wizardController.addWelcomeScreen(experiment, autoMenuPresenter, "Welkam", null, 1, "Instruksen", "Stat - Go long program nao", false);
         StimuliSubAction[] featureValuesArray = new StimuliSubAction[]{new StimuliSubAction("80", "Askem long man o woman wea i toktok se i talem nem blong wanem i stap lo foto long lanwis blong hem.", "Finis"),
             new StimuliSubAction("60", "Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis.", "Finis"),
             new StimuliSubAction("80", "Askem long man o woman we i toktok se i gat sam stori blong laef blong hem long saed blong ting ia we i stap long foto ia.", "Finis"),
@@ -64,9 +64,10 @@ public class JenaFieldKit {
         final WizardStimulusScreen captureStimulusScreen = new WizardStimulusScreen("Capture");
         captureStimulusScreen.setScreenTitle("Mekem ol foto");
         captureStimulusScreen.setMenuLabel("Mekem ol foto");
-        captureStimulusScreen.setScreenLabel("Mekem ol foto");
+//        captureStimulusScreen.setScreenLabel("Mekem ol foto");
         captureStimulusScreen.setEnd_of_stimuli("Finis olgeta");
         captureStimulusScreen.setStimulusTagArray(new String[]{"Pictures"});
+//        captureStimulusScreen.setStimulusArray(new String[]{"Pictures"});
         captureStimulusScreen.setFeatureValuesArray(featureValuesArray);
         captureStimulusScreen.setMaxStimuli(1000);
         captureStimulusScreen.setRandomiseStimuli(true);
@@ -77,9 +78,10 @@ public class JenaFieldKit {
         final WizardStimulusScreen wizardStimulusScreen = new WizardStimulusScreen();
         wizardStimulusScreen.setScreenTitle("Lukluk ol foto");
         wizardStimulusScreen.setMenuLabel("Lukluk ol foto");
-        wizardStimulusScreen.setScreenLabel("Lukluk ol foto");
+//        wizardStimulusScreen.setScreenLabel("Lukluk ol foto");
         wizardStimulusScreen.setEnd_of_stimuli("Finis olgeta");
         wizardStimulusScreen.setStimulusTagArray(new String[]{"Pictures"});
+//        wizardStimulusScreen.setStimulusArray(new String[]{"Pictures"});
         wizardStimulusScreen.setFeatureValuesArray(featureValuesArray);
         wizardStimulusScreen.setMaxStimuli(1000);
         wizardStimulusScreen.setRandomiseStimuli(true);
@@ -88,8 +90,6 @@ public class JenaFieldKit {
         wizardStimulusScreen.setBackWizardScreen(welcomePresenter);
         wizardStimulusScreen.setEndOfStimulisWizardScreen(welcomePresenter);
 
-        welcomePresenter.setInstructionsScreen(instructionsPresenter);
-        welcomePresenter.setProgramWizardScreen(welcomeMenuPresenter);
 //        final PresenterScreen vanuatuScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, stimulusScreen, new String[]{"vanuatu"}, featureValuesArray, true, 1000, true, 7, false);
 //        final PresenterScreen bowpedStimulusScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, vanuatuScreen, new String[]{"bowped"}, featureValuesArray, true, 1000, true, 9, false);
 //        final PresenterScreen bodiesStimulusScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, bowpedStimulusScreen, new String[]{"bodies"}, featureValuesArray, true, 1000, true, 10, false);

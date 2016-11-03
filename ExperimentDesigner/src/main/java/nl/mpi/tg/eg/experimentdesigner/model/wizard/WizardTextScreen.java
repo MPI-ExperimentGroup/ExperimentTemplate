@@ -52,17 +52,17 @@ public class WizardTextScreen extends AbstractWizardScreen {
 //        return buttonNextWizardScreen;
 //    }
     @Override
-    public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        getPresenterScreen().setPresenterType(PresenterType.text);
-        super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        getPresenterScreen().setNextPresenter(null);
-        getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, getScreenText()));
-        final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.targetButton, getNextButton());
-        actionButtonFeature.addFeatureAttributes(FeatureAttribute.target, getNextWizardScreenData().getScreenTag());
+    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+        storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.text);
+        super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
+        storedWizardScreenData.getPresenterScreen().setNextPresenter(null);
+        storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText1()));
+        final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.targetButton, storedWizardScreenData.getNextButton()[0]);
+        actionButtonFeature.addFeatureAttributes(FeatureAttribute.target, storedWizardScreenData.getNextWizardScreenData().getScreenTag());
         actionButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
-        getPresenterScreen().getPresenterFeatureList().add(actionButtonFeature);
-        experiment.getPresenterScreen().add(getPresenterScreen());
-        return getPresenterScreen();
+        storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(actionButtonFeature);
+        experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
+        return storedWizardScreenData.getPresenterScreen();
     }
 }
 //actionButtonFeature.addFeatureAttributes(FeatureAttribute.target, nextWizardScreen.getScreenTag());

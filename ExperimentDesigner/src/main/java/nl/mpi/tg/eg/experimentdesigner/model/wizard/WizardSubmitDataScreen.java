@@ -30,26 +30,25 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
  */
 public class WizardSubmitDataScreen extends AbstractWizardScreen {
 
-    private String could_not_contact_the_server_please_check;
-    private String retryButtonLabel;
-
+//    private String could_not_contact_the_server_please_check;
+//    private String retryButtonLabel;
     public WizardSubmitDataScreen() {
         super(WizardScreenEnum.WizardSubmitDataScreen, "SubmitData", "SubmitData", "SubmitData");
     }
 
     public WizardSubmitDataScreen(final String screenTitle, final String could_not_contact_the_server_please_check, final String retryButtonLabel) {
         super(WizardScreenEnum.WizardSubmitDataScreen, screenTitle, screenTitle, screenTitle);
-        this.could_not_contact_the_server_please_check = could_not_contact_the_server_please_check;
-        this.retryButtonLabel = retryButtonLabel;
+        this.wizardScreenData.setCould_not_contact_the_server_please_check(could_not_contact_the_server_please_check);
+        this.wizardScreenData.setNextButton(new String[]{retryButtonLabel});
     }
 
     @Override
-    public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
+    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+        super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
 
-        getPresenterScreen().setPresenterType(PresenterType.transmission);
+        storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.transmission);
         final PresenterFeature sendAllDataFeature = new PresenterFeature(FeatureType.sendAllData, null);
-        getPresenterScreen().getPresenterFeatureList().add(sendAllDataFeature);
+        storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(sendAllDataFeature);
 
         final PresenterFeature onSuccessFeature = new PresenterFeature(FeatureType.onSuccess, null);
         sendAllDataFeature.getPresenterFeatureList().add(onSuccessFeature);
@@ -57,13 +56,13 @@ public class WizardSubmitDataScreen extends AbstractWizardScreen {
 
         final PresenterFeature onErrorFeature = new PresenterFeature(FeatureType.onError, null);
         sendAllDataFeature.getPresenterFeatureList().add(onErrorFeature);
-        onErrorFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, could_not_contact_the_server_please_check));
-        final PresenterFeature retryFeature = new PresenterFeature(FeatureType.targetButton, retryButtonLabel);
+        onErrorFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, storedWizardScreenData.getCould_not_contact_the_server_please_check()));
+        final PresenterFeature retryFeature = new PresenterFeature(FeatureType.targetButton, storedWizardScreenData.getNextButton()[0]);
         onErrorFeature.getPresenterFeatureList().add(retryFeature);
-        retryFeature.addFeatureAttributes(FeatureAttribute.target, getScreenTitle());
+        retryFeature.addFeatureAttributes(FeatureAttribute.target, storedWizardScreenData.getScreenTitle());
 
-        experiment.getPresenterScreen().add(getPresenterScreen());
-        return getPresenterScreen();
+        experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
+        return storedWizardScreenData.getPresenterScreen();
     }
 
 }

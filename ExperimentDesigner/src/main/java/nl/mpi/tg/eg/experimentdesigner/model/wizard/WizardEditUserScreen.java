@@ -31,65 +31,34 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
  */
 public class WizardEditUserScreen extends AbstractWizardScreen {
 
-    private String postText;
-    private WizardScreen alternateNextScreen;
-    private String alternateButtonLabel;
-    private boolean sendData;
-    private String on_Error_Text = "Could not contact the server, please check your internet connection and try again.";
-
+//    private String postText;
+//    private WizardScreen alternateNextScreen;
+//    private String alternateButtonLabel;
+//    
+//    private String on_Error_Text = "Could not contact the server, please check your internet connection and try again.";
     public WizardEditUserScreen() {
         super(WizardScreenEnum.WizardEditUserScreen, "EditUser", "EditUser", "EditUser");
+       // this.wizardScreenData.setOn_Error_Text("Could not contact the server, please check your internet connection and try again.");
     }
 
     public WizardEditUserScreen(final String screenTitle, final String screenTag, String dispalyText, final String saveButtonLabel, final String postText, final AbstractWizardScreen alternateNextScreen, final String alternateButtonLabel, final boolean sendData, final String on_Error_Text) {
         super(WizardScreenEnum.WizardEditUserScreen, screenTitle, screenTitle, screenTag);
-        this.setScreenText(dispalyText);
-        this.wizardScreenData.setNextButton(saveButtonLabel);
-        this.postText = postText;
-        this.alternateButtonLabel = alternateButtonLabel;
-        this.sendData = sendData;
-        this.on_Error_Text = on_Error_Text;
-        this.alternateNextScreen = alternateNextScreen;
-    }
-
-    public String getPostText() {
-        return postText;
-    }
-
-    public void setPostText(String postText) {
-        this.postText = postText;
-    }
-
-    public WizardScreen getAlternateNextScreen() {
-        return alternateNextScreen;
-    }
-
-    public void setAlternateNextScreen(WizardScreen alternateNextScreen) {
-        this.alternateNextScreen = alternateNextScreen;
-    }
-
-    public String getAlternateButtonLabel() {
-        return alternateButtonLabel;
-    }
-
-    public void setAlternateButtonLabel(String alternateButtonLabel) {
-        this.alternateButtonLabel = alternateButtonLabel;
-    }
-
-    public boolean isSendData() {
-        return sendData;
+        this.wizardScreenData.setScreenText1(dispalyText);
+        this.wizardScreenData.setNextButton(new String[]{saveButtonLabel, alternateButtonLabel});
+        this.wizardScreenData.setScreenText2(postText);
+        this.wizardScreenData.setSendData(sendData);
+        this.wizardScreenData.setOn_Error_Text(on_Error_Text);
+        if (alternateNextScreen != null) {
+            this.wizardScreenData.getMenuWizardScreenData().add(0, alternateNextScreen.getWizardScreenData());
+        }
     }
 
     public void setSendData(boolean sendData) {
-        this.sendData = sendData;
-    }
-
-    public String getOn_Error_Text() {
-        return on_Error_Text;
+        this.wizardScreenData.setSendData(sendData);
     }
 
     public void setOn_Error_Text(String on_Error_Text) {
-        this.on_Error_Text = on_Error_Text;
+        this.wizardScreenData.setOn_Error_Text(on_Error_Text);
     }
 
     public void setFirstNameField() {
@@ -146,44 +115,44 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
 //
 //    public PresenterScreen addEditUserScreen() {
     @Override
-    public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        getPresenterScreen().setPresenterType(PresenterType.metadata);
-        if (getScreenText() != null) {
-            getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, getScreenText()));
+    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+        super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
+        storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.metadata);
+        if (storedWizardScreenData.getScreenText1() != null) {
+            storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText1()));
         }
-        for (Metadata metadata : wizardScreenData.getMetadataFields()) {
+        for (Metadata metadata : storedWizardScreenData.getMetadataFields()) {
             experiment.getMetadata().add(metadata);
             final PresenterFeature metadataField = new PresenterFeature(FeatureType.metadataField, null);
             metadataField.addFeatureAttributes(FeatureAttribute.fieldName, metadata.getPostName());
-            getPresenterScreen().getPresenterFeatureList().add(metadataField);
+            storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(metadataField);
         }
-//        if (wizardScreenData.getMetadataFields().isEmpty()) {
+//        if (storedWizardScreenData.getMetadataFields().isEmpty()) {
 //            presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMetadataFields, null));
 //        }
-        final PresenterFeature saveMetadataButton = new PresenterFeature(FeatureType.saveMetadataButton, wizardScreenData.getNextButton());
-        saveMetadataButton.addFeatureAttributes(FeatureAttribute.sendData, Boolean.toString(sendData));
-        saveMetadataButton.addFeatureAttributes(FeatureAttribute.networkErrorMessage, on_Error_Text);
+        final PresenterFeature saveMetadataButton = new PresenterFeature(FeatureType.saveMetadataButton, storedWizardScreenData.getNextButton()[0]);
+        saveMetadataButton.addFeatureAttributes(FeatureAttribute.sendData, Boolean.toString(storedWizardScreenData.getSendData()));
+        saveMetadataButton.addFeatureAttributes(FeatureAttribute.networkErrorMessage, storedWizardScreenData.getOn_Error_Text());
         final PresenterFeature onErrorFeature = new PresenterFeature(FeatureType.onError, null);
         saveMetadataButton.getPresenterFeatureList().add(onErrorFeature);
         final PresenterFeature onSuccessFeature = new PresenterFeature(FeatureType.onSuccess, null);
         final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.autoNextPresenter, null);
         onSuccessFeature.getPresenterFeatureList().add(menuButtonFeature);
         saveMetadataButton.getPresenterFeatureList().add(onSuccessFeature);
-        getPresenterScreen().getPresenterFeatureList().add(saveMetadataButton);
-        if (postText != null || alternateNextScreen != null) {
-            getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-            if (postText != null) {
-                getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, postText));
+        storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(saveMetadataButton);
+        if (storedWizardScreenData.getScreenText2() != null || storedWizardScreenData.getMenuWizardScreenData().size() > 0) {
+            storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+            if (storedWizardScreenData.getScreenText2() != null) {
+                storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText2()));
             }
-            if (alternateNextScreen != null) {
-                final PresenterFeature alternateNextFeature = new PresenterFeature(FeatureType.targetButton, alternateButtonLabel);
-                alternateNextFeature.addFeatureAttributes(FeatureAttribute.target, alternateNextScreen.getScreenTag());
-                getPresenterScreen().getPresenterFeatureList().add(alternateNextFeature);
+            if (storedWizardScreenData.getMenuWizardScreenData().size() > 0) {
+                final PresenterFeature alternateNextFeature = new PresenterFeature(FeatureType.targetButton, storedWizardScreenData.getNextButton()[1]);
+                alternateNextFeature.addFeatureAttributes(FeatureAttribute.target, storedWizardScreenData.getMenuWizardScreenData().get(0).getScreenTag());
+                storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(alternateNextFeature);
             }
         }
-        experiment.getPresenterScreen().add(getPresenterScreen());
-        return getPresenterScreen();
+        experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
+        return storedWizardScreenData.getPresenterScreen();
     }
 
     final public void insertMetadataByString(String fieldString) {

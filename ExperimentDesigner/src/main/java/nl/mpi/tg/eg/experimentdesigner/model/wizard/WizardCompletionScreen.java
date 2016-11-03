@@ -46,38 +46,38 @@ public class WizardCompletionScreen extends AbstractWizardScreen {
     }
 
     @Override
-    public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        getPresenterScreen().setPresenterType(PresenterType.transmission);
+    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+        super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
+        storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.transmission);
         final PresenterFeature sendAllDataFeature = new PresenterFeature(FeatureType.sendAllData, null);
-        getPresenterScreen().getPresenterFeatureList().add(sendAllDataFeature);
+        storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(sendAllDataFeature);
 
         final PresenterFeature onSuccessFeature = new PresenterFeature(FeatureType.onSuccess, null);
         sendAllDataFeature.getPresenterFeatureList().add(onSuccessFeature);
-        onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, wizardScreenData.getScreenText1()));
+        onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText1()));
         onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-        if (wizardScreenData.getGenerateCompletionCode()) {
+        if (storedWizardScreenData.getGenerateCompletionCode()) {
             onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.generateCompletionCode, null));
         }
 
-        if (wizardScreenData.getScreenText2() != null) {
+        if (storedWizardScreenData.getScreenText2() != null) {
             onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-            onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, wizardScreenData.getScreenText2()));
+            onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText2()));
         }
-        if (wizardScreenData.getAllowUserRestart()) {
+        if (storedWizardScreenData.getAllowUserRestart()) {
             onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-            onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.eraseUsersDataButton, wizardScreenData.getEraseUsersDataButtonlabel()));
+            onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.eraseUsersDataButton, storedWizardScreenData.getEraseUsersDataButtonlabel()));
         }
         final PresenterFeature onErrorFeature = new PresenterFeature(FeatureType.onError, null);
         sendAllDataFeature.getPresenterFeatureList().add(onErrorFeature);
 //        final String could_not_contact_the_server_please_check = "Could not contact the server, please check your internet connection and try again.";
-        onErrorFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, wizardScreenData.getCould_not_contact_the_server_please_check()));
+        onErrorFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, storedWizardScreenData.getCould_not_contact_the_server_please_check()));
 //        final String retryButtonLabel = "Retry";
-        final PresenterFeature retryFeature = new PresenterFeature(FeatureType.targetButton, wizardScreenData.getRetryButtonLabel());
+        final PresenterFeature retryFeature = new PresenterFeature(FeatureType.targetButton, storedWizardScreenData.getRetryButtonLabel());
         onErrorFeature.getPresenterFeatureList().add(retryFeature);
-        retryFeature.addFeatureAttributes(FeatureAttribute.target, getScreenTag());
+        retryFeature.addFeatureAttributes(FeatureAttribute.target, storedWizardScreenData.getScreenTag());
 
-        experiment.getPresenterScreen().add(getPresenterScreen());
-        return getPresenterScreen();
+        experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
+        return storedWizardScreenData.getPresenterScreen();
     }
 }

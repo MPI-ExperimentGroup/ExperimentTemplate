@@ -194,7 +194,8 @@ public class Sentveri_exp3 {
                     if (Sentveri_exp3Data.QorNOT[index]) {
                         tagSet.add("question");
                     }
-                    final Stimulus stimulus = new Stimulus(null, null, null, null, tagString + "_" + setChar + "_" + Sentveri_exp3Data.pictureIndex[index] + ((Sentveri_exp3Data.QorNOT[index]) ? "_q" : ""), "" + Sentveri_exp3Data.pictureIndex[index], (currendSlow[index]) ? 1000 : 0, tagSet, null);
+                    final String identifierString = tagString + "_" + setChar + "_" + Sentveri_exp3Data.pictureIndex[index] + ((Sentveri_exp3Data.QorNOT[index]) ? "_q" : "");
+                    final Stimulus stimulus = new Stimulus(identifierString, null, null, null, identifierString, "" + Sentveri_exp3Data.pictureIndex[index], (currendSlow[index]) ? 1000 : 0, tagSet, null);
                     stimuliList.add(stimulus);
                 }
             }

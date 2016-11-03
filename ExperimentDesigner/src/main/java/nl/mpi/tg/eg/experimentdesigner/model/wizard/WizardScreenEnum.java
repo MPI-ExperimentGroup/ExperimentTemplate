@@ -47,7 +47,11 @@ public enum WizardScreenEnum {
     WizardTextScreen(new WizardTextScreen()),
     WizardVideoAudioOptionStimulusScreen(new WizardVideoAudioOptionStimulusScreen()),
     WizardVideoTimelineScreen(new WizardVideoTimelineScreen()),
-    WizardWelcomeScreen(new WizardWelcomeScreen());
+    WizardWelcomeScreen(new WizardWelcomeScreen()),
+    WizardSinQuizIntroductionScreen(new WizardSynQuizIntroductionScreen()),
+    WizardSynQuizStimulusScreen(new WizardSynQuizStimulusScreen()),
+    WizardSynQuizReportScreen(new WizardSynQuizReportScreen()),
+    WizardSynQuizSumbitScreen(new WizardSynQuizSumbitScreen());
     public final WizardScreen wizardScreen;
 
     private WizardScreenEnum(WizardScreen wizardScreen) {

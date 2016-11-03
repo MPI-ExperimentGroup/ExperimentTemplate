@@ -39,21 +39,21 @@ public class WizardVideoTimelineScreen extends AbstractWizardScreen {
     }
 
     @Override
-    public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        getPresenterScreen().setPresenterType(PresenterType.timeline);
-        super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        getPresenterScreen().setNextPresenter(null);
+    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+        storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.timeline);
+        super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
+        storedWizardScreenData.getPresenterScreen().setNextPresenter(null);
         final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.AnnotationTimelinePanel, null);
-        for (String tagString : getWizardScreenData().getStimuliRandomTags()) {
+        for (String tagString : storedWizardScreenData.getStimuliRandomTags()) {
             presenterFeature1.addStimulusTag(tagString);
         }
         presenterFeature1.addFeatureAttributes(FeatureAttribute.columnCount, "2");
-        presenterFeature1.addFeatureAttributes(FeatureAttribute.eventTag, getScreenTag());
-        presenterFeature1.addFeatureAttributes(FeatureAttribute.maxStimuli, String.valueOf(getWizardScreenData().getStimuliCount()));
-        presenterFeature1.addFeatureAttributes(FeatureAttribute.mp4, getWizardScreenData().getScreenMediaPath());
-        getPresenterScreen().getPresenterFeatureList().add(presenterFeature1);
-        experiment.getPresenterScreen().add(getPresenterScreen());
-        experiment.getStimuli().addAll(this.wizardScreenData.getStimuli());
-        return getPresenterScreen();
+        presenterFeature1.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTag());
+        presenterFeature1.addFeatureAttributes(FeatureAttribute.maxStimuli, String.valueOf(storedWizardScreenData.getStimuliCount()));
+        presenterFeature1.addFeatureAttributes(FeatureAttribute.mp4, storedWizardScreenData.getScreenMediaPath());
+        storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(presenterFeature1);
+        experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
+        experiment.appendUniqueStimuli(storedWizardScreenData.getStimuli());
+        return storedWizardScreenData.getPresenterScreen();
     }
 }

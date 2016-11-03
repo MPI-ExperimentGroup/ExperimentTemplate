@@ -49,17 +49,17 @@ public class WizardAudioRecorderMetadataScreen extends AbstractWizardScreen {
             stimuliList.add(stimulus);
         }
         this.wizardScreenData.setStimuli(stimuliList);
-        this.wizardScreenData.setNextButton(next_button);
+        this.wizardScreenData.setNextButton(new String[]{next_button});
     }
 
     @Override
-    public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        getPresenterScreen().setPresenterType(PresenterType.stimulus);
+    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+        super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
+        storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.stimulus);
         //    Metadata is collected in the spoken form (audio recording) with screen prompts for each item in metadataStrings:
-        experiment.getStimuli().addAll(this.wizardScreenData.getStimuli());
+        experiment.appendUniqueStimuli(storedWizardScreenData.getStimuli());
 //        experiment.setStimuli(stimuliList);
-        List<PresenterFeature> presenterFeatureList = getPresenterScreen().getPresenterFeatureList();
+        List<PresenterFeature> presenterFeatureList = storedWizardScreenData.getPresenterScreen().getPresenterFeatureList();
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadAllStimulus, null);
         loadStimuliFeature.addStimulusTag("metadata");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, "Metadata");
@@ -80,7 +80,7 @@ public class WizardAudioRecorderMetadataScreen extends AbstractWizardScreen {
         hasMoreStimulusFeature.getPresenterFeatureList().add(startTagFeature);
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
-        final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.actionButton, this.wizardScreenData.getNextButton());
+        final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.actionButton, storedWizardScreenData.getNextButton()[0]);
         final PresenterFeature endAudioRecorderTagFeature = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
         endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
         endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTag, "");
@@ -102,7 +102,7 @@ public class WizardAudioRecorderMetadataScreen extends AbstractWizardScreen {
 //        menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, nextPresenter.getSelfPresenterTag());
 //        endOfStimulusFeature.getPresenterFeatureList().add(menuButtonFeature);
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
-        experiment.getPresenterScreen().add(getPresenterScreen());
-        return getPresenterScreen();
+        experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
+        return storedWizardScreenData.getPresenterScreen();
     }
 }

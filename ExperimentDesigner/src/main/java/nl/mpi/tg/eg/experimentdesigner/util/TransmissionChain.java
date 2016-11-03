@@ -45,7 +45,6 @@ public class TransmissionChain {
         wizardData.setShowMenuBar(true);
         wizardData.setObfuscateScreenNames(false);
 
-        final WizardWelcomeScreen welcomePresenter = new WizardWelcomeScreen("Transmission Chain", "Welcome", "Instructions", "Begin", null, null);
         final WizardExistingUserCheckScreen welcomeMenuPresenter = new WizardExistingUserCheckScreen("Start", "New interview", "Resume interview", "Begin a new interview with a new participant", "Resume an interview with an existing participant");
         final WizardTextScreen instructionsPresenter = new WizardTextScreen("Instructions",
                 "The stimuli used by this app and the recordings created by this app are stored in MPI_STIMULI and MPI_Recorder respectively. "
@@ -85,11 +84,10 @@ public class TransmissionChain {
                 + "</table>"
                 + "<br/>",
                 "Begin");
+        final WizardWelcomeScreen welcomePresenter = new WizardWelcomeScreen("Transmission Chain", "Welcome", "Instructions", "Begin", welcomeMenuPresenter, instructionsPresenter);
 
         final WizardMenuScreen menuScreen = new WizardMenuScreen("Menu", "Menu", "Menu");
         menuScreen.setBackWizardScreen(welcomePresenter);
-        welcomePresenter.setInstructionsScreen(instructionsPresenter);
-        welcomePresenter.setProgramWizardScreen(welcomeMenuPresenter);
         final WizardSelectUserScreen wizardSelectUserScreen = new WizardSelectUserScreen("Select Participant");
         wizardSelectUserScreen.setBackWizardScreen(welcomePresenter);
         wizardSelectUserScreen.setNextWizardScreen(menuScreen);
@@ -100,7 +98,7 @@ public class TransmissionChain {
         final WizardStimulusScreen wizardStimulusScreenSequential = new WizardStimulusScreen();
         wizardStimulusScreenSequential.setScreenTitle("FieldKit Sequential");
         wizardStimulusScreenSequential.setMenuLabel("FieldKit Sequential");
-        wizardStimulusScreenSequential.setScreenLabel("FieldKit Sequential");
+//        wizardStimulusScreenSequential.setScreenLabel("FieldKit Sequential");
         wizardStimulusScreenSequential.setScreenTag("FieldKitSequential");
 //        experiment, welcomePresenter, "cutbreak", welcomePresenter, new String[]{"cutbreak"}, grammaticalityValuesArray, true, 1000, false, "end_of_stimuli", 15, obfuscateScreenNames
         wizardStimulusScreenSequential.setStimulusTagArray(new String[]{"FieldKit"});
@@ -113,7 +111,7 @@ public class TransmissionChain {
         final WizardStimulusScreen wizardStimulusScreenRandom = new WizardStimulusScreen();
         wizardStimulusScreenRandom.setScreenTitle("FieldKit Random");
         wizardStimulusScreenRandom.setMenuLabel("FieldKit Random");
-        wizardStimulusScreenRandom.setScreenLabel("FieldKit Random");
+//        wizardStimulusScreenRandom.setScreenLabel("FieldKit Random");
         wizardStimulusScreenRandom.setScreenTag("FieldKitRandom");
 //        experiment, welcomePresenter, "cutbreak", welcomePresenter, new String[]{"cutbreak"}, grammaticalityValuesArray, true, 1000, false, "end_of_stimuli", 15, obfuscateScreenNames
         wizardStimulusScreenRandom.setStimulusTagArray(new String[]{"FieldKit"});

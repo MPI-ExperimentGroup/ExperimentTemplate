@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -38,201 +39,71 @@ import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
  */
 public class WizardRandomStimulusScreen extends AbstractWizardScreen {
 
-    private String stimuliPath = "";
-    private String[] stimuliSet = null;
-    private String[] stimuliRandomTags = null;
-    private String stimulusCodeMatch = null;
-    private int stimulusCodeMsDelay = 0;
-    private int stimulusMsDelay = 0;
-    private String stimulusCodeFormat = null;
-    private int stimuliCount = 1;
-    private String stimulusResponseLabelLeft = null;
-    private String stimulusResponseLabelRight = null;
-    private String stimulusResponseOptions = null;
-    private String freeTextValidationRegex = null;
-    private String freeTextValidationMessage = null;
-    private boolean stimulusFreeText = false;
-    private boolean randomiseStimuli = false;
-    private String buttonLabelEventTag;
-    private boolean allowHotkeyNextButton = true;
-
     public WizardRandomStimulusScreen() {
         super(WizardScreenEnum.WizardRandomStimulusScreen, "RandomStimulus", "RandomStimulus", "RandomStimulus");
+        this.wizardScreenData.setRandomiseStimuli(false);
+        this.wizardScreenData.setStimuliCount(1);
+        this.wizardScreenData.setStimulusMsDelay(0);
+        this.wizardScreenData.setStimulusFreeText(false);
+        this.wizardScreenData.setAllowHotkeyButtons(true);
+//        this.wizardScreenData.setButtonLabelEventTag("");
+        this.wizardScreenData.setCentreScreen(true);
     }
 
     public WizardRandomStimulusScreen(String screenName, boolean centreScreen, String[] screenTextArray, String[] randomStimuliTags, int maxStimuli, final boolean randomiseStimuli, String stimulusCodeMatch, int stimulusDelay, int codeStimulusDelay, String codeFormat, String responseOptions, String responseOptionsLabelLeft, String responseOptionsLabelRight, final String spacebar) {
         super(WizardScreenEnum.WizardRandomStimulusScreen, screenName, screenName, screenName);
         this.setScreenTitle(screenName);
-        this.setCentreScreen(centreScreen);
-        this.stimuliPath = "";
-        this.stimuliSet = screenTextArray;
-        this.stimuliRandomTags = randomStimuliTags;
-        this.stimulusCodeMatch = stimulusCodeMatch;
-        this.stimulusCodeMsDelay = 0;
-        this.stimulusMsDelay = 0;
-        this.stimulusCodeFormat = codeFormat;
-        this.stimuliCount = maxStimuli;
-        this.stimulusResponseLabelLeft = responseOptionsLabelLeft;
-        this.stimulusResponseLabelRight = responseOptionsLabelRight;
-        this.stimulusResponseOptions = responseOptions;
-        this.randomiseStimuli = randomiseStimuli;
+        this.wizardScreenData.setStimuliRandomTags(randomStimuliTags);
+        this.wizardScreenData.setStimulusCodeMatch(stimulusCodeMatch);
+        this.wizardScreenData.setStimulusCodeMsDelay(0);
+        this.wizardScreenData.setStimulusMsDelay(0);
+        this.wizardScreenData.setStimulusCodeFormat(codeFormat);
+        this.wizardScreenData.setStimuliCount(maxStimuli);
+        this.wizardScreenData.setStimulusResponseLabelLeft(responseOptionsLabelLeft);
+        this.wizardScreenData.setStimulusResponseLabelRight(responseOptionsLabelRight);
+        this.wizardScreenData.setStimulusResponseOptions(responseOptions);
+        this.wizardScreenData.setRandomiseStimuli(randomiseStimuli);
+        this.wizardScreenData.setCentreScreen(centreScreen);
+        this.wizardScreenData.setAllowHotkeyButtons(true);
+        this.wizardScreenData.setStimulusFreeText(false);
         if (spacebar == null) {
             throw new UnsupportedOperationException("button text cannot be null");
         }
-        this.buttonLabelEventTag = spacebar;
+        setButtonLabel(spacebar);
+//        this.wizardScreenData.setButtonLabelEventTag(spacebar);
+        setStimuliSet(screenTextArray);
     }
 
     public WizardRandomStimulusScreen(String screenName, String[] screenTextArray, int maxStimuli, final boolean randomiseStimuli, String responseOptions, String responseOptionsLabelLeft, String responseOptionsLabelRight) {
         super(WizardScreenEnum.WizardRandomStimulusScreen, screenName, screenName, screenName);
         this.setScreenTitle(screenName);
-        this.stimuliPath = "";
-        this.stimuliSet = screenTextArray;
-        this.stimuliRandomTags = null;
-        this.stimulusCodeMatch = null;
-        this.stimulusCodeMsDelay = 0;
-        this.stimulusMsDelay = 0;
-        this.stimulusCodeFormat = null;
-        this.stimuliCount = maxStimuli;
-        this.stimulusResponseLabelLeft = responseOptionsLabelLeft;
-        this.stimulusResponseLabelRight = responseOptionsLabelRight;
-        this.stimulusResponseOptions = responseOptions;
-        this.randomiseStimuli = randomiseStimuli;
+        this.wizardScreenData.setStimulusCodeMsDelay(0);
+        this.wizardScreenData.setStimulusMsDelay(0);
+        this.wizardScreenData.setStimuliCount(maxStimuli);
+        this.wizardScreenData.setStimulusResponseLabelLeft(responseOptionsLabelLeft);
+        this.wizardScreenData.setStimulusResponseLabelRight(responseOptionsLabelRight);
+        this.wizardScreenData.setStimulusResponseOptions(responseOptions);
+        this.wizardScreenData.setRandomiseStimuli(randomiseStimuli);
+        this.wizardScreenData.setCentreScreen(true);
+        this.wizardScreenData.setStimulusFreeText(false);
+        setStimuliSet(screenTextArray);
     }
 
-    public String getStimuliPath() {
-        return stimuliPath;
-    }
-
-    public void setStimuliPath(String stimuliPath) {
-        this.stimuliPath = stimuliPath;
-    }
-
-    public String[] getStimuliSet() {
-        return stimuliSet;
-    }
-
-    public void setStimuliSet(String[] stimuliSet) {
-        this.stimuliSet = stimuliSet;
-    }
-
-    public String[] getStimuliRandomTags() {
-        return stimuliRandomTags;
-    }
-
-    public void setStimuliRandomTags(String[] stimuliRandomTags) {
-        this.stimuliRandomTags = stimuliRandomTags;
-    }
-
-    public String getStimulusCodeMatch() {
-        return stimulusCodeMatch;
-    }
-
-    public void setStimulusCodeMatch(String stimulusCodeMatch) {
-        this.stimulusCodeMatch = stimulusCodeMatch;
-    }
-
-    public int getStimulusCodeMsDelay() {
-        return stimulusCodeMsDelay;
-    }
-
-    public void setStimulusCodeMsDelay(int stimulusCodeMsDelay) {
-        this.stimulusCodeMsDelay = stimulusCodeMsDelay;
-    }
-
-    public int getStimulusMsDelay() {
-        return stimulusMsDelay;
-    }
-
-    public void setStimulusMsDelay(int stimulusMsDelay) {
-        this.stimulusMsDelay = stimulusMsDelay;
-    }
-
-    public String getStimulusCodeFormat() {
-        return stimulusCodeFormat;
-    }
-
-    public void setStimulusCodeFormat(String stimulusCodeFormat) {
-        this.stimulusCodeFormat = stimulusCodeFormat;
-    }
-
-    public int getStimuliCount() {
-        return stimuliCount;
-    }
-
-    public void setStimuliCount(int stimuliCount) {
-        this.stimuliCount = stimuliCount;
-    }
-
-    public String getStimulusResponseLabelLeft() {
-        return stimulusResponseLabelLeft;
-    }
-
-    public void setStimulusResponseLabelLeft(String stimulusResponseLabelLeft) {
-        this.stimulusResponseLabelLeft = stimulusResponseLabelLeft;
-    }
-
-    public String getStimulusResponseLabelRight() {
-        return stimulusResponseLabelRight;
-    }
-
-    public void setStimulusResponseLabelRight(String stimulusResponseLabelRight) {
-        this.stimulusResponseLabelRight = stimulusResponseLabelRight;
-    }
-
-    public String getStimulusResponseOptions() {
-        return stimulusResponseOptions;
-    }
-
-    public void setStimulusResponseOptions(String stimulusResponseOptions) {
-        this.stimulusResponseOptions = stimulusResponseOptions;
-    }
-
-    public boolean isStimulusFreeText() {
-        return stimulusFreeText;
-    }
-
-    public void setStimulusFreeText(boolean stimulusFreeText, String freeTextValidationRegex, String freeTextValidationMessage) {
-        this.stimulusFreeText = stimulusFreeText;
-        this.freeTextValidationRegex = freeTextValidationRegex;
-        this.freeTextValidationMessage = freeTextValidationMessage;
-    }
-
-    public boolean isRandomiseStimuli() {
-        return randomiseStimuli;
-    }
-
-    public void setRandomiseStimuli(boolean randomiseStimuli) {
-        this.randomiseStimuli = randomiseStimuli;
-    }
-
-    public String getButtonLabel() {
-        return buttonLabelEventTag;
-    }
-
-    public void setButtonLabel(String buttonLabelEventTag) {
-        this.buttonLabelEventTag = buttonLabelEventTag;
-    }
-
-    public boolean isAllowHotkeyNextButton() {
-        return allowHotkeyNextButton;
-    }
-
-    public void setAllowHotkeyNextButton(boolean allowHotkeyNextStimulus) {
-        this.allowHotkeyNextButton = allowHotkeyNextStimulus;
-    }
-
-    private static final String BASE_FILE_REGEX = "\\.[a-zA-Z34]+$";
-
-    @Override
-    public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        final List<Stimulus> stimuliList = experiment.getStimuli();
-        final Pattern stimulusCodePattern = (stimulusCodeMatch != null) ? Pattern.compile(stimulusCodeMatch) : null;
+//    public void setStimuliPath(String stimuliPath) {
+//        this.stimuliPath = stimuliPath;
+//    }
+    public final void setStimuliSet(String[] stimuliSet) {
+        if (this.wizardScreenData.getStimuli() == null) {
+            this.wizardScreenData.setStimuli(new ArrayList<>());
+        }
+        final List<Stimulus> stimuliList = this.wizardScreenData.getStimuli();
+        final Pattern stimulusCodePattern = (wizardScreenData.getStimulusCodeMatch() != null) ? Pattern.compile(wizardScreenData.getStimulusCodeMatch()) : null;
         if (stimuliSet != null) {
             for (String stimulusLine : stimuliSet) {
-                final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{getScreenTitle()}));
+                final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{this.wizardScreenData.getScreenTitle()}));
                 final Stimulus stimulus;
                 if (stimulusCodePattern != null) {
-                    System.out.println("stimulusCodeMatch:" + stimulusCodeMatch);
+                    System.out.println("stimulusCodeMatch:" + wizardScreenData.getStimulusCodeMatch());
                     Matcher matcher = stimulusCodePattern.matcher(stimulusLine);
                     final String codeString = (matcher.find()) ? matcher.group(1) : null;
                     System.out.println("codeString: " + codeString);
@@ -251,31 +122,48 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
                 stimuliList.add(stimulus);
             }
         }
+    }
 
+    public void setStimulusFreeText(boolean stimulusFreeText, String freeTextValidationRegex, String freeTextValidationMessage) {
+        this.wizardScreenData.setStimulusFreeText(stimulusFreeText);
+        this.wizardScreenData.setFreeTextValidationRegex(freeTextValidationRegex);
+        this.wizardScreenData.setFreeTextValidationMessage(freeTextValidationMessage);
+    }
+
+    final public void setButtonLabel(String buttonLabelEventTag) {
+        this.wizardScreenData.setNextButton(new String[]{buttonLabelEventTag});
+        this.wizardScreenData.setButtonLabelEventTag(buttonLabelEventTag);
+    }
+
+    private static final String BASE_FILE_REGEX = "\\.[a-zA-Z34]+$";
+
+    @Override
+    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+        experiment.appendUniqueStimuli(storedWizardScreenData.getStimuli());
 //        final PresenterScreen presenterScreen = new PresenterScreen((obfuscateScreenNames) ? experiment.getAppNameDisplay() + " " + displayOrder : getScreenTitle(), getScreenTitle(), backPresenter, screenName, null, PresenterType.stimulus, displayOrder);
-        super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        getPresenterScreen().setPresenterType(PresenterType.stimulus);
-        List<PresenterFeature> presenterFeatureList = getPresenterScreen().getPresenterFeatureList();
-        if (isCentreScreen()) {
+        super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
+        storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.stimulus);
+        List<PresenterFeature> presenterFeatureList = storedWizardScreenData.getPresenterScreen().getPresenterFeatureList();
+        if (storedWizardScreenData.isCentreScreen()) {
             presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
         }
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadStimulus, null);
-        loadStimuliFeature.addStimulusTag(getScreenTitle());
+        loadStimuliFeature.addStimulusTag(storedWizardScreenData.getScreenTitle());
         final RandomGrouping randomGrouping = new RandomGrouping();
-        if (stimuliRandomTags != null) {
-            for (String randomTag : stimuliRandomTags) {
+        if (storedWizardScreenData.getStimuliRandomTags() != null) {
+            for (String randomTag : storedWizardScreenData.getStimuliRandomTags()) {
                 randomGrouping.addRandomTag(randomTag);
             }
-            final String metadataFieldname = "groupAllocation_" + getScreenTag();
+            final String metadataFieldname = "groupAllocation_" + storedWizardScreenData.getScreenTag();
             randomGrouping.setStorageField(metadataFieldname);
             loadStimuliFeature.setRandomGrouping(randomGrouping);
             experiment.getMetadata().add(new Metadata(metadataFieldname, metadataFieldname, ".*", ".", false, null));
         }
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, getScreenTitle());
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(randomiseStimuli));
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(storedWizardScreenData.isRandomiseStimuli()));
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "1");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, "0");
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(stimuliCount));
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(storedWizardScreenData.getStimuliCount()));
         presenterFeatureList.add(loadStimuliFeature);
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
@@ -284,21 +172,21 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
         imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
         imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
-        imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(stimulusMsDelay));
+        imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
         final PresenterFeature presenterFeature;
         final String hotKeyString = "SPACE";
-        if (stimulusCodeFormat != null) {
-            final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionButton, buttonLabelEventTag);
-            nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, buttonLabelEventTag);
-            if (allowHotkeyNextButton) {
+        if (storedWizardScreenData.getStimulusCodeFormat() != null) {
+            final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionButton, storedWizardScreenData.getNextButton()[0]);
+            nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getButtonLabelEventTag());
+            if (storedWizardScreenData.getAllowHotkeyButtons()) {
                 nextButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, hotKeyString);
             }
             nextButtonFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
             final PresenterFeature pauseFeature = new PresenterFeature(FeatureType.pause, null);
-            pauseFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(stimulusCodeMsDelay));
+            pauseFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusCodeMsDelay()));
             nextButtonFeature.getPresenterFeatureList().add(pauseFeature);
             final PresenterFeature stimulusCodeAudio = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
-            stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.codeFormat, stimulusCodeFormat);
+            stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.codeFormat, storedWizardScreenData.getStimulusCodeFormat());
             stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.msToNext, "0");
             pauseFeature.getPresenterFeatureList().add(stimulusCodeAudio);
             imageFeature.getPresenterFeatureList().add(nextButtonFeature);
@@ -316,31 +204,31 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
             presenterFeature = imageFeature;
         }
         presenterFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-        if (stimulusFreeText) {
-            final PresenterFeature stimulusFreeTextFeature = new PresenterFeature(FeatureType.stimulusFreeText, freeTextValidationMessage);
-            stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.validationRegex, freeTextValidationRegex);
+        if (storedWizardScreenData.getStimulusFreeText()) {
+            final PresenterFeature stimulusFreeTextFeature = new PresenterFeature(FeatureType.stimulusFreeText, storedWizardScreenData.getFreeTextValidationMessage());
+            stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.validationRegex, storedWizardScreenData.getFreeTextValidationRegex());
             presenterFeature.getPresenterFeatureList().add(stimulusFreeTextFeature);
         }
-        if (stimulusResponseOptions != null) {
+        if (storedWizardScreenData.getStimulusResponseOptions() != null) {
             final PresenterFeature ratingFooterButtonFeature = new PresenterFeature(FeatureType.ratingButton, null);
-            ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabels, stimulusResponseOptions);
-            ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelLeft, stimulusResponseLabelLeft);
-            ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelRight, stimulusResponseLabelRight);
+            ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabels, storedWizardScreenData.getStimulusResponseOptions());
+            ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelLeft, storedWizardScreenData.getStimulusResponseLabelLeft());
+            ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelRight, storedWizardScreenData.getStimulusResponseLabelRight());
             ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
             final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
             nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
-            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "NextStimulus" + getScreenTitle());
+            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "NextStimulus" + storedWizardScreenData.getScreenTitle());
             ratingFooterButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
             presenterFeature.getPresenterFeatureList().add(ratingFooterButtonFeature);
         } else {
-            final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionButton, buttonLabelEventTag);
-            nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, buttonLabelEventTag);
-            if (allowHotkeyNextButton) {
+            final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionButton, storedWizardScreenData.getNextButton()[0]);
+            nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getButtonLabelEventTag());
+            if (storedWizardScreenData.getAllowHotkeyButtons()) {
                 nextButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, hotKeyString);
             }
             final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
             nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
-            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + getScreenTitle());
+            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + storedWizardScreenData.getScreenTitle());
             nextButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
             presenterFeature.getPresenterFeatureList().add(nextButtonFeature);
         }
@@ -350,7 +238,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
         endOfStimulusFeature.getPresenterFeatureList().add(autoNextPresenter);
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
-        experiment.getPresenterScreen().add(getPresenterScreen());
-        return getPresenterScreen();
+        experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
+        return storedWizardScreenData.getPresenterScreen();
     }
 }

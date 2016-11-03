@@ -30,59 +30,21 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
  */
 public class WizardExistingUserCheckScreen extends AbstractWizardScreen {
 
-    private String new_Interview;
-    private String resume_Interview;
-    private String startNewText;
-    private String resumeoldText;
-
     public WizardExistingUserCheckScreen() {
         super(WizardScreenEnum.WizardExistingUserCheckScreen, "ExistingUserCheck", "ExistingUserCheck", "ExistingUserCheck");
     }
 
     public WizardExistingUserCheckScreen(final String screenTitle, final String new_Interview, final String resume_Interview, final String startNewText, final String resumeoldText) {
         super(WizardScreenEnum.WizardExistingUserCheckScreen, screenTitle, screenTitle, screenTitle);
-        this.new_Interview = new_Interview;
-        this.resume_Interview = resume_Interview;
-        this.startNewText = startNewText;
-        this.resumeoldText = resumeoldText;
-    }
-
-    public String getNew_Interview() {
-        return new_Interview;
-    }
-
-    public void setNew_Interview(String new_Interview) {
-        this.new_Interview = new_Interview;
-    }
-
-    public String getResume_Interview() {
-        return resume_Interview;
-    }
-
-    public void setResume_Interview(String resume_Interview) {
-        this.resume_Interview = resume_Interview;
-    }
-
-    public String getStartNewText() {
-        return startNewText;
-    }
-
-    public void setStartNewText(String startNewText) {
-        this.startNewText = startNewText;
-    }
-
-    public String getResumeoldText() {
-        return resumeoldText;
-    }
-
-    public void setResumeoldText(String resumeoldText) {
-        this.resumeoldText = resumeoldText;
+        this.wizardScreenData.setNextButton(new String[]{new_Interview, resume_Interview});
+        this.wizardScreenData.setScreenText1(startNewText);
+        this.wizardScreenData.setScreenText2(resumeoldText);
     }
 
     @Override
-    public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        getPresenterScreen().setPresenterType(PresenterType.metadata);
+    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+        super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
+        storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.metadata);
         final PresenterFeature userCheckFeature = new PresenterFeature(FeatureType.existingUserCheck, null);
         final PresenterFeature multipleUsersFeature = new PresenterFeature(FeatureType.multipleUsers, null);
         userCheckFeature.getPresenterFeatureList().add(multipleUsersFeature);
@@ -90,18 +52,18 @@ public class WizardExistingUserCheckScreen extends AbstractWizardScreen {
         final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
         singleUserFeature.getPresenterFeatureList().add(autoNextPresenter);
         userCheckFeature.getPresenterFeatureList().add(singleUserFeature);
-        multipleUsersFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, startNewText));
-        final PresenterFeature createUserFeature = new PresenterFeature(FeatureType.createUserButton, new_Interview);
+        multipleUsersFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, storedWizardScreenData.getScreenText1()));
+        final PresenterFeature createUserFeature = new PresenterFeature(FeatureType.createUserButton, storedWizardScreenData.getNextButton()[0]);
         createUserFeature.addFeatureAttributes(FeatureAttribute.target, "Edit_User");
         multipleUsersFeature.getPresenterFeatureList().add(createUserFeature);
         multipleUsersFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-        multipleUsersFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, resumeoldText));
+        multipleUsersFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, storedWizardScreenData.getScreenText2()));
 
-        final PresenterFeature selectUserFeature = new PresenterFeature(FeatureType.targetButton, resume_Interview);
+        final PresenterFeature selectUserFeature = new PresenterFeature(FeatureType.targetButton, storedWizardScreenData.getNextButton()[1]);
         selectUserFeature.addFeatureAttributes(FeatureAttribute.target, "SelectUser");
         multipleUsersFeature.getPresenterFeatureList().add(selectUserFeature);
-        getPresenterScreen().getPresenterFeatureList().add(userCheckFeature);
-        experiment.getPresenterScreen().add(getPresenterScreen());
-        return getPresenterScreen();
+        storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(userCheckFeature);
+        experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
+        return storedWizardScreenData.getPresenterScreen();
     }
 }

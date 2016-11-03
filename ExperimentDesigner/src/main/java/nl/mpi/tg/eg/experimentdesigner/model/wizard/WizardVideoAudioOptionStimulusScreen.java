@@ -89,59 +89,59 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
     private static final String BASE_FILE_REGEX = "\\.[a-zA-Z34]+$";
 
     @Override
-    public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        experiment.setStimuli(this.wizardScreenData.getStimuli());
+    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+        experiment.appendUniqueStimuli(storedWizardScreenData.getStimuli());
 //        final PresenterScreen presenterScreen = new PresenterScreen((obfuscateScreenNames) ? experiment.getAppNameDisplay() + " " + displayOrder : getScreenTitle(), getScreenTitle(), backPresenter, screenName, null, PresenterType.stimulus, displayOrder);
-        super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        getPresenterScreen().setPresenterType(PresenterType.stimulus);
-        List<PresenterFeature> presenterFeatureList = getPresenterScreen().getPresenterFeatureList();
-        if (isCentreScreen()) {
+        super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
+        storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.stimulus);
+        List<PresenterFeature> presenterFeatureList = storedWizardScreenData.getPresenterScreen().getPresenterFeatureList();
+        if (storedWizardScreenData.isCentreScreen()) {
             presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
         }
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadStimulus, null);
-        loadStimuliFeature.addStimulusTag(getScreenTitle());
-        if (this.wizardScreenData.getStimuliRandomTags() != null) {
+        loadStimuliFeature.addStimulusTag(storedWizardScreenData.getScreenTitle());
+        if (storedWizardScreenData.getStimuliRandomTags() != null) {
             final RandomGrouping randomGrouping = new RandomGrouping();
-            for (String randomTag : this.wizardScreenData.getStimuliRandomTags()) {
+            for (String randomTag : storedWizardScreenData.getStimuliRandomTags()) {
                 randomGrouping.addRandomTag(randomTag);
             }
-            final String metadataFieldname = "groupAllocation_" + getScreenTag();
+            final String metadataFieldname = "groupAllocation_" + storedWizardScreenData.getScreenTag();
             randomGrouping.setStorageField(metadataFieldname);
             loadStimuliFeature.setRandomGrouping(randomGrouping);
             experiment.getMetadata().add(new Metadata(metadataFieldname, metadataFieldname, ".*", ".", false, null));
         }
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, getScreenTitle());
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(this.wizardScreenData.isRandomiseStimuli()));
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, Integer.toString(this.wizardScreenData.getRepeatCount()));
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, Integer.toString(this.wizardScreenData.getRepeatRandomWindow()));
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(this.wizardScreenData.getStimuliCount()));
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(storedWizardScreenData.isRandomiseStimuli()));
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, Integer.toString(storedWizardScreenData.getRepeatCount()));
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, Integer.toString(storedWizardScreenData.getRepeatRandomWindow()));
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(storedWizardScreenData.getStimuliCount()));
         presenterFeatureList.add(loadStimuliFeature);
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
 
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
 
-        if (wizardScreenData.getShowProgress()) {
+        if (storedWizardScreenData.getShowProgress()) {
             hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
         }
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusAudio, null);
 //        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
 //        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
 //        imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
-        imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(this.wizardScreenData.getStimulusMsDelay()));
+        imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
 
-        if (wizardScreenData.getUseCodeVideo()) {
+        if (storedWizardScreenData.getUseCodeVideo()) {
             final PresenterFeature codeVideoFeature = new PresenterFeature(FeatureType.stimulusCodeVideo, null);
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>");
-            codeVideoFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(this.wizardScreenData.getStimulusMsDelay()));
+            codeVideoFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
             hasMoreStimulusFeature.getPresenterFeatureList().add(codeVideoFeature);
             codeVideoFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
             codeVideoFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
             final PresenterFeature pauseFeature = new PresenterFeature(FeatureType.pause, null);
-            pauseFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(this.wizardScreenData.getStimulusMsDelay()));
+            pauseFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
             codeVideoFeature.getPresenterFeatureList().add(pauseFeature);
 
             pauseFeature.getPresenterFeatureList().add(imageFeature);
@@ -179,12 +179,12 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
 //        if (stimulusResponseOptions != null) {
         final PresenterFeature ratingFooterButtonFeature = new PresenterFeature(FeatureType.stimulusRatingButton, null);
 //            ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabels, stimulusResponseOptions);
-        ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelLeft, wizardScreenData.getStimulusResponseLabelLeft());
-        ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelRight, wizardScreenData.getStimulusResponseLabelRight());
+        ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelLeft, storedWizardScreenData.getStimulusResponseLabelLeft());
+        ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelRight, storedWizardScreenData.getStimulusResponseLabelRight());
         ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
         final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
         nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
-        nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "NextStimulus" + getScreenTitle());
+        nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "NextStimulus" + storedWizardScreenData.getScreenTitle());
         ratingFooterButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
         presenterFeature.getPresenterFeatureList().add(ratingFooterButtonFeature);
 //        } else {
@@ -203,7 +203,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
         endOfStimulusFeature.getPresenterFeatureList().add(autoNextPresenter);
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
-        experiment.getPresenterScreen().add(getPresenterScreen());
-        return getPresenterScreen();
+        experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
+        return storedWizardScreenData.getPresenterScreen();
     }
 }

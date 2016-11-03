@@ -20,31 +20,18 @@ package nl.mpi.tg.eg.experimentdesigner.util;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
-import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
-import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.link;
-import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.maxHeight;
-import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.maxWidth;
-import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.percentOfPage;
-import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.src;
-import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.target;
-import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
 import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
-import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
-import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
 import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.AbstractWizardScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardSynQuizIntroductionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMenuScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreenData;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreenEnum;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardSynQuizReportScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardSynQuizStimulusScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardSynQuizSumbitScreen;
 
 /**
  * @since Jan 18, 2016 11:20:47 AM (creation date)
@@ -61,12 +48,11 @@ public class SynQuiz2 {
     // <a href="https://pinterest.com/pin/create/button/?url=www.mpi.nl&media=www.mpi.nl&description=www.mpi.nl">Pin on Pinterest</a>
     // @todo: graphime cloud with the highest scoring graphemes being larger and shown in the average colour for that grapheme: https://github.com/jasondavies/d3-cloud
     private final WizardController wizardController = new WizardController();
-    private final String imageSize = "80";
 
     public Experiment getExperiment() {
         final Experiment experiment = wizardController.getExperiment(getWizardData());
         wizardController.addMetadata(experiment);
-        experiment.setStimuli(new SynQuiz2().createStimuli());
+        experiment.appendUniqueStimuli(new SynQuiz2().createStimuli());
         return experiment;
     }
 
@@ -75,7 +61,26 @@ public class SynQuiz2 {
         wizardData.setAppName("SynQuiz2");
         wizardData.setShowMenuBar(true);
         wizardData.setObfuscateScreenNames(false);
-        final AbstractWizardScreen introductionScreen = createIntroductionScreen("Introduction", 1);
+        final String we_are_studying_the_genetic_basis_of_syna = "We are studying the genetic basis of synaesthesia, a neurological phenomenon described as a \"mixing of the senses\". To find out how our genes shape how we see the world, "
+                + "we are looking for people who connect letters, numbers, days of the week, or months with specific colours. This is called \"grapheme-colour\" synaesthesia. ";
+        final String how_our_study_works = "How our study works:";
+        final String staticstudy_diagramsvg = "static/study_diagram.svg";
+        final String the_synaesthesia_tests_take_about_20_minu = "The synaesthesia tests take about 20 minutes to complete, and you can choose the ones that apply to you. "
+                + "Depending on your scores, we may send you an email inviting you to participate in the genetics part of the study. There is no cost to participate, and you can do everything from home.";
+        final String for_more_information_about_synaesthesia_p = "For more information about synaesthesia, please see our 'About synaesthesia' page. "
+                + "If you are not sure if you have synaesthesia, and want to find out, try our SynQuiz app or take a quick test at synesthete.org.";
+        final String this_project_is_organised_and_funded_by_t = "This project is organised and funded by the Language & Genetics Department at the Max Planck Institute for Psycholinguistics in Nijmegen in the Netherlands, directed by Prof. Dr. Simon E. Fisher. " + "The synaesthesia studies are coordinated by Dr. Amanda Tilot and Dr. Sarah Graham. "
+                + "If you have any questions about our research, please contact us at " + formatLink("synaesthesia@mpi.nl", "mailto:synaesthesia@mpi.nl") + ".";
+        final String participateButton = "Participate!";
+        final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
+        final WizardSynQuizIntroductionScreen introductionScreen = new WizardSynQuizIntroductionScreen("Introduction",
+                "Decoding the Genetics of Synaesthesia",
+                we_are_studying_the_genetic_basis_of_syna,
+                how_our_study_works,
+                staticstudy_diagramsvg,
+                the_synaesthesia_tests_take_about_20_minu,
+                for_more_information_about_synaesthesia_p,
+                this_project_is_organised_and_funded_by_t, participateButton, wizardEditUserScreen.getWizardScreenData());
         final WizardCompletionScreen completionScreen = new WizardCompletionScreen(
                 "Thank you for participating! You may hear from us in the next few weeks to ask if you would like to participate in the genetics part of the study. Your data has been saved, and you can now close your browser. <br><br>"
                 + "If you have any questions about the study, you can email them to us at "
@@ -89,7 +94,7 @@ public class SynQuiz2 {
                 "Could not contact the server, please check your internet connection and try again.", "Retry");
 //        final PresenterScreen registrationScreen = createRegistrationScreen("Registration", 2);
 //        presenterScreenList.add(registrationScreen);
-        final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
+
         wizardEditUserScreen.setScreenText("Please read the " + formatLink("Participant Information Sheet", "static/synaesthesia_info_sheet_ENGLISH_webversion.pdf") + " carefully!");
         wizardEditUserScreen.setBackWizardScreen(introductionScreen);
         wizardEditUserScreen.setFirstNameField();
@@ -113,7 +118,9 @@ public class SynQuiz2 {
 
         final WizardMenuScreen menuScreen = new WizardMenuScreen("Menu", "Menu", "Menu");
 
-        final AbstractWizardScreen sumbitScreen = createSumbitScreen("Register", menuScreen, completionScreen, 20);;
+        final String submit_my_results = "Submit my results";
+        final String error_submitting_data = "Error submitting data.";
+        final WizardSynQuizSumbitScreen sumbitScreen = new WizardSynQuizSumbitScreen("Register", menuScreen.getWizardScreenData(), completionScreen.getWizardScreenData(), submit_my_results, error_submitting_data);
         sumbitScreen.setNextWizardScreen(completionScreen);
         completionScreen.setBackWizardScreen(menuScreen);
         completionScreen.setNextWizardScreen(introductionScreen);
@@ -125,7 +132,6 @@ public class SynQuiz2 {
 //        wizardEditUserScreen.setNextWizardScreen(demographicsScreen1);
 //        demographicsScreen1.setBackWizardScreen(wizardEditUserScreen);
         wizardData.addScreen(introductionScreen);
-        wizardData.addScreen(sumbitScreen);
         wizardData.addScreen(wizardEditUserScreen);
         WizardEditUserScreen previousDemographicsScreen = wizardEditUserScreen;//demographicsScreen1.getPresenterScreen();
         for (DemographicScreenType demographicScreenType : DemographicScreenType.values()) {
@@ -141,21 +147,21 @@ public class SynQuiz2 {
 //        demographicsScreen2.setBackPresenter(demographicsScreen1);
         previousDemographicsScreen.setNextWizardScreen(menuScreen);
         final WizardEditUserScreen menuBackPresenter = previousDemographicsScreen;
-        menuScreen.getPresenterScreen().setBackPresenter(menuBackPresenter.getPresenterScreen());
-        menuScreen.getPresenterScreen().setNextPresenter(sumbitScreen.getWizardScreenData().getPresenterScreen());
-        final AbstractWizardScreen reportScreen = createReportScreen("Report", menuScreen.getPresenterScreen(), menuScreen.getPresenterScreen(), 20);
-        wizardData.addScreen(reportScreen);
+        menuScreen.getWizardScreenData().getPresenterScreen().setBackPresenter(menuBackPresenter.getWizardScreenData().getPresenterScreen());
+        menuScreen.getWizardScreenData().getPresenterScreen().setNextPresenter(sumbitScreen.getWizardScreenData().getPresenterScreen());
+        final WizardSynQuizReportScreen reportScreen = new WizardSynQuizReportScreen("Report", menuScreen.getWizardScreenData(), menuScreen.getWizardScreenData());
         wizardData.addScreen(menuScreen);
-        final AbstractWizardScreen weekdaysScreen = createStimulusScreen("Weekdays", "Weekdays", menuScreen, reportScreen, 16);
+        final String ok_go_to_test = "OK, go to test!";
+        final String helpText = "<b>Instructions</b>\\n<p>Select the colour that you associate with the presented character or word \\n<ol>\\n<li>Select the hue by tapping on the colour bar on the right </li><li>Select the shade by tapping on the square on the left </li>\\n<li>When the colour of the preview rectangle matches your association, tap \"Submit\"</li>\\n<li>If you have no colour association tap \"No colour\"</li>\\n</ol>\\n</p>";
+        final WizardSynQuizStimulusScreen weekdaysScreen = new WizardSynQuizStimulusScreen("Weekdays", "Weekdays", menuScreen.getWizardScreenData(), reportScreen.getWizardScreenData(), ok_go_to_test, helpText);
         wizardData.addScreen(weekdaysScreen);
 //        final PresenterScreen numbersScreen = createStimulusScreen("Numbers", menuScreen.getPresenterScreen(), reportScreen, 17);
 //        presenterScreenList.add(numbersScreen);
 //        final PresenterScreen lettersScreen = createStimulusScreen("Letters", menuScreen.getPresenterScreen(), reportScreen, 18);
 //        presenterScreenList.add(lettersScreen);
-        final AbstractWizardScreen lettersScreen = createStimulusScreen("LettersNumbers", "Letters and Numbers", menuScreen, reportScreen, 18);
+        final WizardSynQuizStimulusScreen lettersScreen = new WizardSynQuizStimulusScreen("LettersNumbers", "Letters and Numbers", menuScreen.getWizardScreenData(), reportScreen.getWizardScreenData(), ok_go_to_test, helpText);
         wizardData.addScreen(lettersScreen);
-        final AbstractWizardScreen monthsScreen = createStimulusScreen("Months", "Months", menuScreen, reportScreen, 19);
-        wizardData.addScreen(monthsScreen);
+        final WizardSynQuizStimulusScreen monthsScreen = new WizardSynQuizStimulusScreen("Months", "Months", menuScreen.getWizardScreenData(), reportScreen.getWizardScreenData(), ok_go_to_test, helpText);
         menuScreen.addTargetScreen(weekdaysScreen);
         menuScreen.addTargetScreen(lettersScreen);
         menuScreen.addTargetScreen(monthsScreen);
@@ -168,79 +174,11 @@ public class SynQuiz2 {
 //        wizardEditUserScreen.populatePresenterScreen(experiment, false, 3);
 //        demographicsScreen1.populatePresenterScreen(experiment, false, 5);
         wizardData.addScreen(completionScreen);
+        wizardData.addScreen(monthsScreen);
+        wizardData.addScreen(sumbitScreen);
+        wizardData.addScreen(reportScreen);
 
         return wizardData;
-    }
-
-    private AbstractWizardScreen createIntroductionScreen(String screenName, long displayOrder) {
-        final PresenterScreen presenterScreen = new PresenterScreen("Decoding the Genetics of Synaesthesia", screenName, null, screenName, null, PresenterType.text, displayOrder);
-        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
-//        presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
-        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "We are studying the genetic basis of synaesthesia, a neurological phenomenon described as a \"mixing of the senses\". To find out how our genes shape how we see the world, "
-                + "we are looking for people who connect letters, numbers, days of the week, or months with specific colours. This is called \"grapheme-colour\" synaesthesia. "));
-        presenterFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
-        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "How our study works:"));
-        presenterFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
-        final PresenterFeature studyDiagramFeature = new PresenterFeature(FeatureType.image, null);
-        studyDiagramFeature.addFeatureAttributes(percentOfPage, imageSize);
-        studyDiagramFeature.addFeatureAttributes(maxHeight, imageSize);
-        studyDiagramFeature.addFeatureAttributes(maxWidth, imageSize);
-        studyDiagramFeature.addFeatureAttributes(src, "static/study_diagram.svg");
-        studyDiagramFeature.addFeatureAttributes(link, "");
-        presenterFeatureList.add(studyDiagramFeature);
-        presenterFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
-        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "The synaesthesia tests take about 20 minutes to complete, and you can choose the ones that apply to you. "
-                + "Depending on your scores, we may send you an email inviting you to participate in the genetics part of the study. There is no cost to participate, and you can do everything from home."));
-        presenterFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
-        final PresenterFeature targetButtonFeature = new PresenterFeature(FeatureType.targetButton, "Participate!");
-        targetButtonFeature.addFeatureAttributes(target, "Participant");
-        presenterFeatureList.add(targetButtonFeature);
-        presenterFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
-        presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, "For more information about synaesthesia, please see our 'About synaesthesia' page. "
-                + "If you are not sure if you have synaesthesia, and want to find out, try our SynQuiz app or take a quick test at synesthete.org."));
-        presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, "This project is organised and funded by the Language & Genetics Department at the Max Planck Institute for Psycholinguistics in Nijmegen in the Netherlands, directed by Prof. Dr. Simon E. Fisher. "
-                + "The synaesthesia studies are coordinated by Dr. Amanda Tilot and Dr. Sarah Graham. "
-                + "If you have any questions about our research, please contact us at " + formatLink("synaesthesia@mpi.nl", "mailto:synaesthesia@mpi.nl") + "."));
-        return new WizardTextScreen() {
-//            @Override
-//            public PresenterScreen getPresenterScreen() {
-//                return presenterScreen;
-//            }
-
-            @Override
-            public String getMenuLabel() {
-                return presenterScreen.getMenuLabel();
-            }
-
-            @Override
-            public WizardScreenData getWizardScreenData() {
-                return new WizardScreenData(WizardScreenEnum.WizardTextScreen) {
-                    @Override
-                    public PresenterScreen getPresenterScreen() {
-                        return presenterScreen;
-                    }
-//                    @Override
-//                    public String getScreenTag() {
-//                        return screenName;
-//                    }
-                };
-            }
-//            @Override
-//            public String getScreenTag() {
-//                return presenterScreen.getSelfPresenterTag();
-//            }
-
-            @Override
-            public String getScreenTitle() {
-                return presenterScreen.getTitle();
-            }
-
-            @Override
-            public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-                experiment.getPresenterScreen().add(presenterScreen);
-                return presenterScreen;
-            }
-        };
     }
 
     private String formatLink(String linkUrl) {
@@ -478,168 +416,6 @@ public class SynQuiz2 {
 //        presenterScreen.getPresenterFeatureList().add(saveMetadataButton);
 //        wizardEditUserScreen.populatePresenterScreen(experiment, false, displayOrder + screenName.ordinal());
         return wizardEditUserScreen;
-    }
-
-    private AbstractWizardScreen createStimulusScreen(String screenName, String menuLabel, final AbstractWizardScreen backPresenter, final AbstractWizardScreen nextPresenter, long displayOrder) {
-        final PresenterScreen presenterScreen = new PresenterScreen(screenName, menuLabel, backPresenter.getPresenterScreen(), screenName, nextPresenter.getPresenterScreen(), PresenterType.colourPicker, displayOrder);
-        final PresenterFeature helpDialogue = new PresenterFeature(FeatureType.helpDialogue, "<b>Instructions</b>\\n<p>Select the colour that you associate with the presented character or word \\n<ol>\\n<li>Select the hue by tapping on the colour bar on the right </li><li>Select the shade by tapping on the square on the left </li>\\n<li>When the colour of the preview rectangle matches your association, tap \"Submit\"</li>\\n<li>If you have no colour association tap \"No colour\"</li>\\n</ol>\\n</p>");
-        helpDialogue.addFeatureAttributes(FeatureAttribute.closeButtonLabel, "OK, go to test!");
-        presenterScreen.getPresenterFeatureList().add(helpDialogue);
-        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
-        final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadAllStimulus, null);
-        loadStimuliFeature.addStimulusTag(screenName);
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, screenName);
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "true");
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "3");
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, "0"); // todo: does Amanda want a random window to be used
-        presenterFeatureList.add(loadStimuliFeature);
-        final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
-//        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
-//        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
-        loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
-        final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
-//        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.text, "end of stimuli"));
-//        final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.targetButton, "Menu");
-//        menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, "AutoMenu");
-//        endOfStimulusFeature.getPresenterFeatureList().add(menuButtonFeature);
-//        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
-        loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
-        return new WizardTextScreen() {
-            @Override
-            public PresenterScreen getPresenterScreen() {
-                return presenterScreen;
-            }
-
-            @Override
-            public String getMenuLabel() {
-                return presenterScreen.getMenuLabel();
-            }
-
-            @Override
-            public String getScreenTag() {
-                return presenterScreen.getSelfPresenterTag();
-            }
-
-            @Override
-            public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-                experiment.getPresenterScreen().add(presenterScreen);
-                return presenterScreen;
-            }
-        };
-    }
-
-    private AbstractWizardScreen createReportScreen(String screenName, final PresenterScreen backPresenter, final PresenterScreen nextPresenter, long displayOrder) {
-        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, backPresenter, screenName, nextPresenter, PresenterType.colourReport, displayOrder);
-//        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
-        final PresenterFeature showColourReport = new PresenterFeature(FeatureType.showColourReport, null);
-//        showColourReport.addStimulusTag(screenName);
-        showColourReport.addFeatureAttributes(FeatureAttribute.scoreThreshold, "1");
-//        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "true");
-//        presenterFeatureList.add(loadStimuliFeature);
-        final PresenterFeature aboveThreshold = new PresenterFeature(FeatureType.aboveThreshold, null);
-//        aboveThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "above threshold"));
-//        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
-//        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
-        showColourReport.getPresenterFeatureList().add(aboveThreshold);
-        final PresenterFeature belowThreshold = new PresenterFeature(FeatureType.belowThreshold, null);
-//        belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "below threshold"));
-//        final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.targetButton, "Menu");
-//        menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, "AutoMenu");
-//        endOfStimulusFeature.getPresenterFeatureList().add(menuButtonFeature);
-//        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
-        showColourReport.getPresenterFeatureList().add(belowThreshold);
-        presenterScreen.getPresenterFeatureList().add(showColourReport);
-        final PresenterFeature submitTestResults = new PresenterFeature(FeatureType.submitTestResults, null);
-        submitTestResults.getPresenterFeatureList().add(new PresenterFeature(FeatureType.onSuccess, null));
-        submitTestResults.getPresenterFeatureList().add(new PresenterFeature(FeatureType.onError, null));
-        presenterScreen.getPresenterFeatureList().add(submitTestResults);
-        return new WizardTextScreen() {
-            @Override
-            public PresenterScreen getPresenterScreen() {
-                return presenterScreen;
-            }
-
-            @Override
-            public String getMenuLabel() {
-                return presenterScreen.getMenuLabel();
-            }
-
-            @Override
-            public String getScreenTag() {
-                return presenterScreen.getSelfPresenterTag();
-            }
-
-            @Override
-            public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-                experiment.getPresenterScreen().add(presenterScreen);
-                return presenterScreen;
-            }
-        };
-    }
-
-    private AbstractWizardScreen createSumbitScreen(String screenName, final WizardScreen backPresenter, final WizardScreen nextPresenter, long displayOrder) {
-        final PresenterScreen presenterScreen = new PresenterScreen(screenName, "Submit my results", backPresenter.getPresenterScreen(), screenName, nextPresenter.getPresenterScreen(), PresenterType.colourReport, displayOrder);
-//        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
-        final PresenterFeature showColourReport = new PresenterFeature(FeatureType.submitTestResults, null);
-        final PresenterFeature aboveThreshold = new PresenterFeature(FeatureType.onError, null);
-        aboveThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "Error submitting data."));
-//        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
-//        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
-        showColourReport.getPresenterFeatureList().add(aboveThreshold);
-        final PresenterFeature belowThreshold = new PresenterFeature(FeatureType.onSuccess, null);
-//        belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "data sumbitted"));
-//        final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.targetButton, "Menu");
-//        menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, "AutoMenu");
-//        endOfStimulusFeature.getPresenterFeatureList().add(menuButtonFeature);
-        belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
-        showColourReport.getPresenterFeatureList().add(belowThreshold);
-        presenterScreen.getPresenterFeatureList().add(showColourReport);
-        return new WizardTextScreen() {
-            @Override
-            public WizardScreenData getWizardScreenData() {
-                return new WizardScreenData(WizardScreenEnum.WizardTextScreen) {
-                    @Override
-                    public PresenterScreen getPresenterScreen() {
-                        return presenterScreen;
-                    }
-
-                    @Override
-                    public String getScreenTag() {
-                        return screenName;
-                    }
-
-                };
-            }
-
-//            @Override
-//            public WizardScreenData getBackWizardScreenData() {
-//                return backPresenter;
-//            }
-//
-//            @Override
-//            public WizardScreenData getNextWizardScreenData() {
-//                return nextPresenterData;
-//            }
-//            @Override
-//            public PresenterScreen getPresenterScreen() {
-//                return presenterScreen;
-//            }
-            @Override
-            public String getMenuLabel() {
-                return presenterScreen.getMenuLabel();
-            }
-
-            @Override
-            public String getScreenTag() {
-                return presenterScreen.getSelfPresenterTag();
-            }
-
-            @Override
-            public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-                experiment.getPresenterScreen().add(presenterScreen);
-                return presenterScreen;
-            }
-        };
     }
 
     private void insertStimulusGroup(final ArrayList<Stimulus> stimuliList, String groupName, String groupItems) {

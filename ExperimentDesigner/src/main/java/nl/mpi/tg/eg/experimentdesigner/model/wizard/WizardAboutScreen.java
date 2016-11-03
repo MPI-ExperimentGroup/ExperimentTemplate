@@ -32,8 +32,16 @@ public class WizardAboutScreen extends AbstractWizardScreen {
     private final boolean showDebug;
 
     public WizardAboutScreen(boolean showDebug) {
-        super(WizardScreenEnum.WizardAboutScreen, "Debug Screen", "Debug Screen", "DebugScreen");
+        super(WizardScreenEnumFromDebugType(showDebug), "Debug Screen", "Debug Screen", "DebugScreen");
         this.showDebug = showDebug;
+    }
+
+    static WizardScreenEnum WizardScreenEnumFromDebugType(boolean showDebug) {
+        if (showDebug) {
+            return WizardScreenEnum.WizardDebugAboutScreen;
+        } else {
+            return WizardScreenEnum.WizardAboutScreen;
+        }
     }
 
     public WizardAboutScreen(String screenTitle, boolean showDebug) {
@@ -42,15 +50,15 @@ public class WizardAboutScreen extends AbstractWizardScreen {
     }
 
     @Override
-    public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        getPresenterScreen().setPresenterType(PresenterType.debug);
-        getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.versionData, null));
-        getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.eraseLocalStorageButton, null));
+    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+        super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
+        storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.debug);
+        storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.versionData, null));
+        storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.eraseLocalStorageButton, null));
         if (showDebug) {
-            getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.localStorageData, null));
+            storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.localStorageData, null));
         }
-        experiment.getPresenterScreen().add(getPresenterScreen());
-        return getPresenterScreen();
+        experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
+        return storedWizardScreenData.getPresenterScreen();
     }
 }

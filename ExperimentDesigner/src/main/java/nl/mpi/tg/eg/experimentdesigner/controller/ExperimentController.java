@@ -27,6 +27,7 @@ import nl.mpi.tg.eg.experimentdesigner.dao.WizardRepository;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.util.DefaultExperiments;
+import nl.mpi.tg.eg.experimentdesigner.util.DobesAnnotator;
 import nl.mpi.tg.eg.experimentdesigner.util.FactOrFiction;
 import nl.mpi.tg.eg.experimentdesigner.util.HRExperiment01;
 import nl.mpi.tg.eg.experimentdesigner.util.HRPretest;
@@ -38,7 +39,9 @@ import nl.mpi.tg.eg.experimentdesigner.util.NblExperiment01;
 import nl.mpi.tg.eg.experimentdesigner.util.RdExperiment02;
 import nl.mpi.tg.eg.experimentdesigner.util.RosselFieldKit;
 import nl.mpi.tg.eg.experimentdesigner.util.Sara01;
+import nl.mpi.tg.eg.experimentdesigner.util.Sentveri_exp3;
 import nl.mpi.tg.eg.experimentdesigner.util.ShawiFieldKit;
+import nl.mpi.tg.eg.experimentdesigner.util.SynQuiz2;
 import nl.mpi.tg.eg.experimentdesigner.util.TransmissionChain;
 import nl.mpi.tg.eg.experimentdesigner.util.WellspringsSamoanFieldKit;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -110,7 +113,7 @@ public class ExperimentController {
 //                    wizardData = new Sentveri_exp3().getWizardData();
                     break;
                 case "Dobes Annotator":
-//                    wizardData = new Dobes().getWizardData();
+                    wizardData = new DobesAnnotator().getWizardData();
                     break;
                 case "All Options":
                     break;
@@ -127,7 +130,7 @@ public class ExperimentController {
                     wizardData = new FactOrFiction().getWizardData();
                     break;
                 case "SynQuiz2":
-//                    wizardData = new SynQuiz2().getWizardData();
+                    wizardData = new SynQuiz2().getWizardData();
                     break;
                 case "Zinnen Beoordelen":
                     wizardData = new NblExperiment01().getWizardData();

@@ -319,6 +319,7 @@ public class FactOrFiction {
 //        wizardData.setGenderField(true);
 //        wizardData.setCustomTextField("level of proficiency in Dutch");
         WizardAgreementScreen wizardAgreementScreen = new WizardAgreementScreen("Toestemming", agreementScreenText, "Akkoord");
+        wizardAgreementScreen.getWizardScreenData().setGenerateCompletionCode(Boolean.FALSE);
         wizardData.addScreen(wizardAgreementScreen);
 //        final PresenterScreen agreementScreen = wizardAgreementScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), 1);
 //agreementScreen.setBackWizardScreen(new AbstractWizardScreen() {

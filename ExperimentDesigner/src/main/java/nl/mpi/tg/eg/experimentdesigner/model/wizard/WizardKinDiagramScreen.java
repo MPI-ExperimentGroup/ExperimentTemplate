@@ -55,42 +55,42 @@ public class WizardKinDiagramScreen extends AbstractWizardScreen {
     }
 
     @Override
-    public PresenterScreen populatePresenterScreen(Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        super.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
-        getPresenterScreen().setPresenterType(PresenterType.kindiagram);
+    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+        super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
+        storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.kindiagram);
         switch (exampleType) {
             case PredefinedKinDiagram:
                 final PresenterFeature kinTypeStringDiagram = new PresenterFeature(FeatureType.kinTypeStringDiagram, null);
                 kinTypeStringDiagram.addFeatureAttributes(FeatureAttribute.msToNext, "0");
                 kinTypeStringDiagram.addFeatureAttributes(FeatureAttribute.kintypestring, "EmMD:1:|EmFD:1:|EmS:2:|EmWD:3:|EmD:3:|EmWS:2:|EmZ:1:");
                 kinTypeStringDiagram.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "This screen shows a simple predefined kin type string diagram."));
-                getPresenterScreen().getPresenterFeatureList().add(kinTypeStringDiagram);
+                storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(kinTypeStringDiagram);
                 break;
             case SavedKinDiagram:
-                getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "This screen shows a freeform kin type string diagram that you create. Use this form to add individuals to this kin type string diagram below."));
-                getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+                storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "This screen shows a freeform kin type string diagram that you create. Use this form to add individuals to this kin type string diagram below."));
+                storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
                 final PresenterFeature loadKinTypeStringDiagram = new PresenterFeature(FeatureType.loadKinTypeStringDiagram, null);
                 loadKinTypeStringDiagram.addFeatureAttributes(FeatureAttribute.msToNext, "0");
                 loadKinTypeStringDiagram.addFeatureAttributes(FeatureAttribute.diagramName, "kinTypeDiagram");
-                getPresenterScreen().getPresenterFeatureList().add(loadKinTypeStringDiagram);
+                storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(loadKinTypeStringDiagram);
                 final PresenterFeature addKinTypeGui = new PresenterFeature(FeatureType.addKinTypeGui, null);
                 addKinTypeGui.addFeatureAttributes(FeatureAttribute.diagramName, "kinTypeDiagram");
-                getPresenterScreen().getPresenterFeatureList().add(addKinTypeGui);
-                experiment.getPresenterScreen().add(getPresenterScreen());
+                storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(addKinTypeGui);
+                experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
                 break;
             case EditableEntitesDiagram:
-                getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "This screen shows diagram on which you can editi the entities. Use the mouse to add relations and entites."));
-                getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+                storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "This screen shows diagram on which you can editi the entities. Use the mouse to add relations and entites."));
+                storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
                 final PresenterFeature editableKinEntitesDiagram = new PresenterFeature(FeatureType.editableKinEntitesDiagram, null);
                 editableKinEntitesDiagram.addFeatureAttributes(FeatureAttribute.msToNext, "0");
                 editableKinEntitesDiagram.addFeatureAttributes(FeatureAttribute.diagramName, "kinTypeDiagram");
-                getPresenterScreen().getPresenterFeatureList().add(editableKinEntitesDiagram);
+                storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(editableKinEntitesDiagram);
 //        final PresenterFeature addKinTypeGui = new PresenterFeature(FeatureType.addKinTypeGui, null);
 //        addKinTypeGui.addFeatureAttributes(FeatureAttribute.diagramName, "kinTypeDiagram");
 //        presenterScreen.getPresenterFeatureList().add(addKinTypeGui);
-                experiment.getPresenterScreen().add(getPresenterScreen());
+                experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
                 break;
         }
-        return getPresenterScreen();
+        return storedWizardScreenData.getPresenterScreen();
     }
 }

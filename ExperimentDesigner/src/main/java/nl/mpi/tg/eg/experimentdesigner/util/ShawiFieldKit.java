@@ -55,10 +55,10 @@ public class ShawiFieldKit {
         experiment.setPrimaryColour2("#f03b20");
 //        wizardController.addMetadata(experiment);
         final WizardMenuScreen autoMenuPresenter = new WizardMenuScreen("Auto Menu", "Menu", "AutoMenu");
-        final WizardWelcomeScreen welcomePresenter = new WizardWelcomeScreen("Welcome", "Welcome", "Instructions", "Go directly to program", null, null);
         final WizardExistingUserCheckScreen welcomeMenuPresenter = new WizardExistingUserCheckScreen("Start", "New Interview.", "Resume Interview", "Is this a new recording?", "Have you already started a recording and do you want to go back to it?");
         final WizardTextScreen instructionsPresenter = new WizardTextScreen("Instructions", "With this app you can make recordings of your language. "
                 + "Describe pictures in this app by speaking and the app records what you say.", "Go directly to program");
+        final WizardWelcomeScreen welcomePresenter = new WizardWelcomeScreen("Welcome", "Welcome", "Instructions", "Go directly to program", welcomeMenuPresenter, instructionsPresenter);
         StimuliSubAction[] picturesValuesArray = new StimuliSubAction[]{new StimuliSubAction("80", "the informant talks/says whatever s/he wants", "next")};
         StimuliSubAction[] grammaticalityValuesArray = new StimuliSubAction[]{new StimuliSubAction("80", new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"})};
 // this should not be random but use alphanum sorting 
@@ -80,8 +80,6 @@ public class ShawiFieldKit {
         editUserPresenter.setCustomFields(new String[]{"workerId:Speaker name *:.'{'3,'}':Please enter at least three letters."});
         final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen(true);
         final WizardKinshipScreen kinshipPresenter = addKinshipScreen(experiment, autoMenuPresenter, null, 16, obfuscateScreenNames);
-        welcomePresenter.setInstructionsScreen(instructionsPresenter);
-        welcomePresenter.setProgramWizardScreen(welcomeMenuPresenter);
         instructionsPresenter.setBackWizardScreen(welcomePresenter);
         instructionsPresenter.setNextWizardScreen(welcomeMenuPresenter);
         metadataScreen.setBackWizardScreen(autoMenuPresenter);
@@ -95,14 +93,14 @@ public class ShawiFieldKit {
         editUserPresenter.setNextWizardScreen(metadataScreen);
         wizardAboutScreen.setBackWizardScreen(autoMenuPresenter);
         welcomePresenter.setBackWizardScreen(autoMenuPresenter);
-        wizardAboutScreen.populatePresenterScreen(experiment, obfuscateScreenNames, 17);
-        autoMenuPresenter.populatePresenterScreen(experiment, obfuscateScreenNames, 18);
-        welcomePresenter.populatePresenterScreen(experiment, obfuscateScreenNames, 1);
-        welcomeMenuPresenter.populatePresenterScreen(experiment, obfuscateScreenNames, 2);
-        instructionsPresenter.populatePresenterScreen(experiment, obfuscateScreenNames, 3);
-        metadataScreen.populatePresenterScreen(experiment, obfuscateScreenNames, 4);
-        wizardSelectUserScreen.populatePresenterScreen(experiment, false, 5);
-        editUserPresenter.populatePresenterScreen(experiment, obfuscateScreenNames, 6);
+        wizardAboutScreen.populatePresenterScreen(wizardAboutScreen.getWizardScreenData(), experiment, obfuscateScreenNames, 17);
+        autoMenuPresenter.populatePresenterScreen(autoMenuPresenter.getWizardScreenData(), experiment, obfuscateScreenNames, 18);
+        welcomePresenter.populatePresenterScreen(welcomePresenter.getWizardScreenData(), experiment, obfuscateScreenNames, 1);
+        welcomeMenuPresenter.populatePresenterScreen(welcomeMenuPresenter.getWizardScreenData(), experiment, obfuscateScreenNames, 2);
+        instructionsPresenter.populatePresenterScreen(instructionsPresenter.getWizardScreenData(), experiment, obfuscateScreenNames, 3);
+        metadataScreen.populatePresenterScreen(metadataScreen.getWizardScreenData(), experiment, obfuscateScreenNames, 4);
+        wizardSelectUserScreen.populatePresenterScreen(wizardSelectUserScreen.getWizardScreenData(), experiment, false, 5);
+        editUserPresenter.populatePresenterScreen(editUserPresenter.getWizardScreenData(), experiment, obfuscateScreenNames, 6);
         return experiment;
     }
 
@@ -110,7 +108,7 @@ public class ShawiFieldKit {
         final WizardStimulusScreen wizardStimulusScreen = new WizardStimulusScreen();
         wizardStimulusScreen.setScreenTitle(screenLabel);
         wizardStimulusScreen.setMenuLabel(screenLabel);
-        wizardStimulusScreen.setScreenLabel(screenLabel);
+//        wizardStimulusScreen.setScreenLabel(screenLabel);
         wizardStimulusScreen.setScreenTag(screenLabel);
         wizardStimulusScreen.setStimulusTagArray(stimulusTagArray);
         wizardStimulusScreen.setFeatureValuesArray(featureValuesArray);
@@ -120,7 +118,7 @@ public class ShawiFieldKit {
         wizardStimulusScreen.setEnd_of_stimuli(end_of_stimuli);
         wizardStimulusScreen.setBackWizardScreen(backPresenter);
         wizardStimulusScreen.setEndOfStimulisWizardScreen(nextPresenter);
-        wizardStimulusScreen.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
+        wizardStimulusScreen.populatePresenterScreen(wizardStimulusScreen.getWizardScreenData(), experiment, obfuscateScreenNames, displayOrder);
         return wizardStimulusScreen;
     }
 
@@ -129,7 +127,7 @@ public class ShawiFieldKit {
         final String title = "Kinship";
         WizardKinshipScreen kinshipScreen = new WizardKinshipScreen(title, diagramName);
         kinshipScreen.setBackWizardScreen(backPresenter);
-        kinshipScreen.populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
+        kinshipScreen.populatePresenterScreen(kinshipScreen.getWizardScreenData(), experiment, obfuscateScreenNames, displayOrder);
         return kinshipScreen;
     }
 }

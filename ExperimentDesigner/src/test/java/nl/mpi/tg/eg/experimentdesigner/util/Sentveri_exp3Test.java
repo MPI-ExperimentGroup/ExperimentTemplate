@@ -55,7 +55,7 @@ public class Sentveri_exp3Test {
         URI testXmlUri = this.getClass().getResource("/frinex-rest-output/sentveri_exp3.xml").toURI();
         String expResult = new String(Files.readAllBytes(Paths.get(testXmlUri)), StandardCharsets.UTF_8);
         Experiment result = new DefaultExperiments().getDefault("Sentveri_exp3");
-        result.setStimuli(new Sentveri_exp3().createStimuli());
+        result.appendUniqueStimuli(new Sentveri_exp3().createStimuli());
         new Sentveri_exp3().create3c(result.getPresenterScreen());
         result.getPresenterScreen().sort(new Comparator<PresenterScreen>() {
             // because the experiment has not been stored and retrieved from the DB we need to sort this manually

@@ -82,11 +82,9 @@ public class DefaultExperiments {
         }
     }
 
-    
-
     public Experiment getSentveri_exp3Experiment() {
         Experiment experiment = getDefault("Sentveri_exp3");
-        experiment.setStimuli(new Sentveri_exp3().createStimuli());
+        experiment.appendUniqueStimuli(new Sentveri_exp3().createStimuli());
         new Sentveri_exp3().create3c(experiment.getPresenterScreen());
         return experiment;
     }
@@ -164,8 +162,6 @@ public class DefaultExperiments {
         return experiment;
     }
 
-    
-
     private void addStimuli(final Experiment experiment) {
         final ArrayList<Stimulus> stimuliList = new ArrayList<>();
         final HashSet<String> tagSet = new HashSet<>();
@@ -198,7 +194,7 @@ public class DefaultExperiments {
             }
         }
         stimuliList.add(new Stimulus("bad chars", "bad chars", "bad chars", "bad chars", "bad chars", "bad chars", 0, new HashSet<>(Arrays.asList("bad chars bad_chars bad_chars  ( ) {\n    ( ) {\n         = .(\"[ \\\\t\\\\n\\\\x0B\\\\f\\\\r\\\\(\\\\)\\\\{\\\\};\\\\?\\\\/\\\\\\\\]\", \"_\");\n        this..add();\n    }         = .(\"[ \\\\t\\\\n\\\\x0B\\\\f\\\\r\\\\(\\\\)\\\\{\\\\};\\\\?\\\\/\\\\\\\\]\", \"_\");\n        this..add();\n    }".split(" "))), null));
-        experiment.setStimuli(stimuliList);
+        experiment.appendUniqueStimuli(stimuliList);
     }
 
     private void addAllFeaturesAsPages(PresenterFeatureRepository presenterFeatureRepository, final Experiment experiment, PresenterScreen backPresenter, long displayOrder) {

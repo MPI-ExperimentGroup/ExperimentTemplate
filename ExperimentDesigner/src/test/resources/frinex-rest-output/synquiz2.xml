@@ -141,7 +141,7 @@
         <htmlText featureText="For more information about synaesthesia, please see our 'About synaesthesia' page. If you are not sure if you have synaesthesia, and want to find out, try our SynQuiz app or take a quick test at synesthete.org."/>
         <htmlText featureText="This project is organised and funded by the Language &amp; Genetics Department at the Max Planck Institute for Psycholinguistics in Nijmegen in the Netherlands, directed by Prof. Dr. Simon E. Fisher. The synaesthesia studies are coordinated by Dr. Amanda Tilot and Dr. Sarah Graham. If you have any questions about our research, please contact us at &lt;a href=&quot;#&quot; onclick=&quot;window.open('mailto:synaesthesia@mpi.nl','_system'); return false;&quot;&gt;synaesthesia@mpi.nl&lt;/a&gt;."/>
     </presenter>
-    <presenter back="Introduction" displayOrder="3" menuLabel="Participant" next="Details" type="metadata" self="Participant" title="Participant">
+    <presenter back="Introduction" displayOrder="2" menuLabel="Participant" next="Details" type="metadata" self="Participant" title="Participant">
         <htmlText featureText="Please read the &lt;a href=&quot;#&quot; onclick=&quot;window.open('static/synaesthesia_info_sheet_ENGLISH_webversion.pdf','_system'); return false;&quot;&gt;Participant Information Sheet&lt;/a&gt; carefully!"/>
         <metadataField fieldName="firstName"/>
         <metadataField fieldName="lastName"/>
@@ -155,7 +155,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Participant" displayOrder="4" menuLabel="Details" next="Study" type="metadata" self="Details" title="Details">
+    <presenter back="Participant" displayOrder="3" menuLabel="Details" next="Study" type="metadata" self="Details" title="Details">
         <metadataField fieldName="DateOfBirth"/>
         <metadataField fieldName="Gender"/>
         <metadataField fieldName="AbsolutePitch"/>
@@ -173,7 +173,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Details" displayOrder="5" menuLabel="Study" next="Colour" type="metadata" self="Study" title="Tell us about your synaesthesia: Study(1/8)">
+    <presenter back="Details" displayOrder="4" menuLabel="Study" next="Colour" type="metadata" self="Study" title="Tell us about your synaesthesia: Study(1/8)">
         <htmlText featureText="Our study at the Max Planck Institute focuses on synaesthesia where numbers, letters, weekdays, or months cause people to have a colour experience. To someone with synaesthesia, the letter A might &quot;mean&quot; red to them, or the number &quot;5&quot; might make them experience the colour green. Please let us know if you experience any other types of synaesthesia by checking the boxes in the following screens. We may contact you in the future about studies related to these other types."/>
         <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
             <onError/>
@@ -182,7 +182,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Study" displayOrder="6" menuLabel="Colour" next="Smell" type="metadata" self="Colour" title="Tell us about your synaesthesia: Colour(2/8)">
+    <presenter back="Study" displayOrder="5" menuLabel="Colour" next="Smell" type="metadata" self="Colour" title="Tell us about your synaesthesia: Colour(2/8)">
         <htmlText featureText="Do any of the items below cause you to have a color experience?&lt;br/&gt;&lt;br/&gt;Examples: Does the letter M &quot;mean&quot; orange to you? Or does hearing a piano being played make you perceive red?&lt;br/&gt;&lt;br/&gt;"/>
         <metadataField fieldName="Numbers__Colour"/>
         <metadataField fieldName="Letters__Colour"/>
@@ -209,7 +209,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Colour" displayOrder="7" menuLabel="Smell" next="Sound" type="metadata" self="Smell" title="Tell us about your synaesthesia: Smell(3/8)">
+    <presenter back="Colour" displayOrder="6" menuLabel="Smell" next="Sound" type="metadata" self="Smell" title="Tell us about your synaesthesia: Smell(3/8)">
         <htmlText featureText="Do any of the items below cause you to experience smells?&lt;br/&gt;&lt;br/&gt;Example: Does Tuesday smell like bananas?&lt;br/&gt;&lt;br/&gt;"/>
         <metadataField fieldName="Numbers__Smell"/>
         <metadataField fieldName="Letters__Smell"/>
@@ -236,7 +236,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Smell" displayOrder="8" menuLabel="Sound" next="Spatial" type="metadata" self="Sound" title="Tell us about your synaesthesia: Sound(4/8)">
+    <presenter back="Smell" displayOrder="7" menuLabel="Sound" next="Spatial" type="metadata" self="Sound" title="Tell us about your synaesthesia: Sound(4/8)">
         <htmlText featureText="Do any of the items below cause you to experience sound?&lt;br/&gt;&lt;br/&gt;Example: Do you hear a particular sound when you experience cold temperatures?&lt;br/&gt;&lt;br/&gt;"/>
         <metadataField fieldName="Numbers__Sound"/>
         <metadataField fieldName="Letters__Sound"/>
@@ -263,7 +263,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Sound" displayOrder="9" menuLabel="Spatial" next="Taste" type="metadata" self="Spatial" title="Tell us about your synaesthesia: Spatial(5/8)">
+    <presenter back="Sound" displayOrder="8" menuLabel="Spatial" next="Taste" type="metadata" self="Spatial" title="Tell us about your synaesthesia: Spatial(5/8)">
         <htmlText featureText="Do you experience any of the items below in a particular spatial location?&lt;br/&gt;&lt;br/&gt;Example: Do you &quot;see&quot; sequences like the days of the month or numbers in physical space?&lt;br/&gt;&lt;br/&gt;"/>
         <metadataField fieldName="Numbers__Spatial"/>
         <metadataField fieldName="Letters__Spatial"/>
@@ -290,7 +290,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Spatial" displayOrder="10" menuLabel="Taste" next="Touch" type="metadata" self="Taste" title="Tell us about your synaesthesia: Taste(6/8)">
+    <presenter back="Spatial" displayOrder="9" menuLabel="Taste" next="Touch" type="metadata" self="Taste" title="Tell us about your synaesthesia: Taste(6/8)">
         <htmlText featureText="Do any of the items below cause you to experience tastes?&lt;br/&gt;&lt;br/&gt;Examples: &quot;Philip tastes of bitter oranges, while April tastes of apricots.&quot; &quot;The word 'safety' tastes of lightly buttered toast&quot;&lt;br/&gt;&lt;br/&gt;"/>
         <metadataField fieldName="Numbers__Taste"/>
         <metadataField fieldName="Letters__Taste"/>
@@ -317,7 +317,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Taste" displayOrder="11" menuLabel="Touch" next="Other" type="metadata" self="Touch" title="Tell us about your synaesthesia: Touch(7/8)">
+    <presenter back="Taste" displayOrder="10" menuLabel="Touch" next="Other" type="metadata" self="Touch" title="Tell us about your synaesthesia: Touch(7/8)">
         <htmlText featureText="Do any of the items below cause you to experience a sense of touch?&lt;br/&gt;&lt;br/&gt;Example: You feel a touch on your arm when you see someone else being touched on their arm.&lt;br/&gt;&lt;br/&gt;"/>
         <metadataField fieldName="Numbers__Touch"/>
         <metadataField fieldName="Letters__Touch"/>
@@ -344,7 +344,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Touch" displayOrder="12" menuLabel="Other" next="Menu" type="metadata" self="Other" title="Tell us about your synaesthesia: Other(8/8)">
+    <presenter back="Touch" displayOrder="11" menuLabel="Other" next="Menu" type="metadata" self="Other" title="Tell us about your synaesthesia: Other(8/8)">
         <metadataField fieldName="AnyOtherTypes"/>
         <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
             <onError/>
@@ -353,13 +353,13 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Other" displayOrder="14" menuLabel="Menu" next="Register" type="menu" self="Menu" title="Menu">
+    <presenter back="Other" displayOrder="12" menuLabel="Menu" next="Register" type="menu" self="Menu" title="Menu">
         <menuItem featureText="Weekdays" target="Weekdays"/>
         <menuItem featureText="Letters and Numbers" target="LettersNumbers"/>
         <menuItem featureText="Months" target="Months"/>
         <htmlText featureText="The tests above will ask about the colours that you associate with Weekdays, Letters and Numbers, or Months. If you do not have colour associations with one of the options, you can skip that test. After each test you can view your results.&lt;br/&gt;&lt;br/&gt;When you are finished taking the tests that apply to you, please click &lt;b&gt;Submit my results&lt;/b&gt; below to finish the experiment."/>
     </presenter>
-    <presenter back="Menu" displayOrder="16" menuLabel="Weekdays" next="Report" type="colourPicker" self="Weekdays" title="Weekdays">
+    <presenter back="Menu" displayOrder="13" menuLabel="Weekdays" next="Report" type="colourPicker" self="Weekdays" title="Weekdays">
         <helpDialogue featureText="&lt;b&gt;Instructions&lt;/b&gt;\n&lt;p&gt;Select the colour that you associate with the presented character or word \n&lt;ol&gt;\n&lt;li&gt;Select the hue by tapping on the colour bar on the right &lt;/li&gt;&lt;li&gt;Select the shade by tapping on the square on the left &lt;/li&gt;\n&lt;li&gt;When the colour of the preview rectangle matches your association, tap &quot;Submit&quot;&lt;/li&gt;\n&lt;li&gt;If you have no colour association tap &quot;No colour&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, go to test!"/>
         <loadAllStimulus eventTag="Weekdays" randomise="true" repeatRandomWindow="0" repeatCount="3">
             <hasMoreStimulus/>
@@ -369,7 +369,7 @@
             </stimuli>
         </loadAllStimulus>
     </presenter>
-    <presenter back="Menu" displayOrder="18" menuLabel="Letters and Numbers" next="Report" type="colourPicker" self="LettersNumbers" title="LettersNumbers">
+    <presenter back="Menu" displayOrder="14" menuLabel="Letters and Numbers" next="Report" type="colourPicker" self="LettersNumbers" title="LettersNumbers">
         <helpDialogue featureText="&lt;b&gt;Instructions&lt;/b&gt;\n&lt;p&gt;Select the colour that you associate with the presented character or word \n&lt;ol&gt;\n&lt;li&gt;Select the hue by tapping on the colour bar on the right &lt;/li&gt;&lt;li&gt;Select the shade by tapping on the square on the left &lt;/li&gt;\n&lt;li&gt;When the colour of the preview rectangle matches your association, tap &quot;Submit&quot;&lt;/li&gt;\n&lt;li&gt;If you have no colour association tap &quot;No colour&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, go to test!"/>
         <loadAllStimulus eventTag="LettersNumbers" randomise="true" repeatRandomWindow="0" repeatCount="3">
             <hasMoreStimulus/>
@@ -379,7 +379,7 @@
             </stimuli>
         </loadAllStimulus>
     </presenter>
-    <presenter back="Menu" displayOrder="18" menuLabel="Completion" next="Introduction" type="transmission" self="Completion" title="Completion">
+    <presenter back="Menu" displayOrder="15" menuLabel="Completion" next="Introduction" type="transmission" self="Completion" title="Completion">
         <sendAllData>
             <onSuccess>
                 <htmlText featureText="Thank you for participating! You may hear from us in the next few weeks to ask if you would like to participate in the genetics part of the study. Your data has been saved, and you can now close your browser. &lt;br&gt;&lt;br&gt;If you have any questions about the study, you can email them to us at &lt;a href=&quot;#&quot; onclick=&quot;window.open('mailto:synaesthesia@mpi.nl','_system'); return false;&quot;&gt;synaesthesia@mpi.nl&lt;/a&gt;. It will be a year or more before there are results, but when we publish our study it will be posted on our &lt;a href=&quot;#&quot; onclick=&quot;window.open('http://www.mpi.nl/departments/language-and-genetics/projects/decoding-the-genetics-of-synaesthesia/publications','_system'); return false;&quot;&gt;website&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;"/>
@@ -393,7 +393,7 @@
             </onError>
         </sendAllData>
     </presenter>
-    <presenter back="Menu" displayOrder="19" menuLabel="Months" next="Report" type="colourPicker" self="Months" title="Months">
+    <presenter back="Menu" displayOrder="16" menuLabel="Months" next="Report" type="colourPicker" self="Months" title="Months">
         <helpDialogue featureText="&lt;b&gt;Instructions&lt;/b&gt;\n&lt;p&gt;Select the colour that you associate with the presented character or word \n&lt;ol&gt;\n&lt;li&gt;Select the hue by tapping on the colour bar on the right &lt;/li&gt;&lt;li&gt;Select the shade by tapping on the square on the left &lt;/li&gt;\n&lt;li&gt;When the colour of the preview rectangle matches your association, tap &quot;Submit&quot;&lt;/li&gt;\n&lt;li&gt;If you have no colour association tap &quot;No colour&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, go to test!"/>
         <loadAllStimulus eventTag="Months" randomise="true" repeatRandomWindow="0" repeatCount="3">
             <hasMoreStimulus/>
@@ -403,7 +403,7 @@
             </stimuli>
         </loadAllStimulus>
     </presenter>
-    <presenter back="Menu" displayOrder="20" menuLabel="Submit my results" next="Completion" type="colourReport" self="Register" title="Register">
+    <presenter back="Menu" displayOrder="17" menuLabel="Submit my results" next="Completion" type="colourReport" self="Register" title="Register">
         <submitTestResults>
             <onError>
                 <plainText featureText="Error submitting data."/>
@@ -413,7 +413,7 @@
             </onSuccess>
         </submitTestResults>
     </presenter>
-    <presenter back="Menu" displayOrder="20" menuLabel="Report" next="Menu" type="colourReport" self="Report" title="Report">
+    <presenter back="Menu" displayOrder="18" menuLabel="Report" next="Menu" type="colourReport" self="Report" title="Report">
         <showColourReport scoreThreshold="1">
             <aboveThreshold/>
             <belowThreshold/>

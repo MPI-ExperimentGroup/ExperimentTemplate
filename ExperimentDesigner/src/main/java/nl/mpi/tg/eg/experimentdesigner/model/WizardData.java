@@ -26,7 +26,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Transient;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreenData;
 
 /**
@@ -47,9 +46,6 @@ public class WizardData {
 
     @OneToMany(targetEntity = WizardScreenData.class, cascade = CascadeType.ALL)
     private final List<WizardScreenData> wizardScreenData = new ArrayList<>();
-    @Transient
-    @Deprecated
-    private final List<WizardScreen> wizardScreens = new ArrayList<>();
 
     public WizardData() {
     }
@@ -87,16 +83,10 @@ public class WizardData {
     }
 
     public void addScreen(final WizardScreen wizardScreen) {
-        wizardScreens.add(wizardScreen);
         wizardScreenData.add(wizardScreen.getWizardScreenData());
     }
 
     public List<WizardScreenData> getWizardScreens() {
         return wizardScreenData;
-    }
-
-    @Deprecated
-    public List<WizardScreen> getWizardScreensTemp() {
-        return wizardScreens;
     }
 }
