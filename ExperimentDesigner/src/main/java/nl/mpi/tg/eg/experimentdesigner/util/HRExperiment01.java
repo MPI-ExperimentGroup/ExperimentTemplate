@@ -69,7 +69,7 @@ public class HRExperiment01 {
         wizardEditUserScreen.setScreenTag("Edit_User");
         wizardEditUserScreen.setNextButton("Save Details");
         wizardEditUserScreen.setSendData(true);
-//        wizardEditUserScreen.setMetadataScreen(true);
+        wizardEditUserScreen.setOn_Error_Text("Could not contact the server, please check your internet connection and try again.");
 //        wizardData.setAgeField(true);
         wizardEditUserScreen.setCustomFields(new String[]{
             "workerId:Arbeider id:.*:.",

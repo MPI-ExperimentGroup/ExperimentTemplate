@@ -69,6 +69,7 @@ public class KinOathExample {
         wizardEditUserScreen.setScreenTag("Edit_User");
         wizardEditUserScreen.setNextButton("Save Details");
         wizardEditUserScreen.setSendData(true);
+        wizardEditUserScreen.setOn_Error_Text("Could not contact the server, please check your internet connection and try again.");
 //        wizardEditUserScreen.setMetadataScreen(true);
 //        wizardData.setAgeField(true);
         wizardEditUserScreen.setCustomFields(new String[]{

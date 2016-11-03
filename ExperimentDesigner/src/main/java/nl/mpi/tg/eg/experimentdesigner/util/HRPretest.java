@@ -327,6 +327,7 @@ public class HRPretest {
         wizardEditUserScreen.setNextButton("Volgende");
         wizardEditUserScreen.setScreenText("Vul hier je login code in:");
         wizardEditUserScreen.setSendData(true);
+        wizardEditUserScreen.setOn_Error_Text("Could not contact the server, please check your internet connection and try again.");
         wizardEditUserScreen.setCustomFields(new String[]{
             "workerId:login code:.'{'3,'}':Voer minimaal drie letters."
 //            "firstName:Voornaam:.'{'3,'}':Voer minimaal drie letters.",

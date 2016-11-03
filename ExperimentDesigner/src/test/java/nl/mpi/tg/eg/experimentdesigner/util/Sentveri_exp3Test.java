@@ -52,7 +52,7 @@ public class Sentveri_exp3Test {
         System.out.println("create3c");
         Sentveri_exp3 instance = new Sentveri_exp3();
         
-        URI testXmlUri = this.getClass().getResource("/frinex-rest-output/sentveri_exp3.xml").toURI();
+        URI testXmlUri = this.getClass().getResource("/frinex-rest-output/sentveri-exp3.xml").toURI();
         String expResult = new String(Files.readAllBytes(Paths.get(testXmlUri)), StandardCharsets.UTF_8);
         Experiment result = new DefaultExperiments().getDefault("Sentveri_exp3");
         result.appendUniqueStimuli(new Sentveri_exp3().createStimuli());
@@ -69,7 +69,7 @@ public class Sentveri_exp3Test {
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
         StringWriter stringWriter = new StringWriter();
 //        jaxbMarshaller.marshal(result, System.out);
-        jaxbMarshaller.marshal(result, new File(new File(testXmlUri).getParentFile(), "sentveri_exp3-testoutput.xml"));
+        jaxbMarshaller.marshal(result, new File(new File(testXmlUri).getParentFile(), "sentveri-exp3-testoutput.xml"));
         jaxbMarshaller.marshal(result, stringWriter);
         assertEquals(expResult, stringWriter.toString());
     }

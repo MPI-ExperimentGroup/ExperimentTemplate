@@ -17,7 +17,6 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
-import java.util.ArrayList;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
@@ -31,7 +30,6 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
  */
 public class WizardMenuScreen extends AbstractWizardScreen {
 
-//    final private ArrayList<AbstractWizardScreen> targetScreens = new ArrayList<>();
     public WizardMenuScreen() {
         super(WizardScreenEnum.WizardMenuScreen, "Menu", "Menu", "Menu");
     }

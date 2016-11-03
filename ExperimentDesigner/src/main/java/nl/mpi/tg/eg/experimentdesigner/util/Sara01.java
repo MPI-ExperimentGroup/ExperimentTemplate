@@ -748,6 +748,7 @@ public class Sara01 {
 //        wizardData.setDisagreementScreenText("disagreementScreenText");
         //metadata
         final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
+        wizardEditUserScreen.setOn_Error_Text("Could not contact the server, please check your internet connection and try again.");
         wizardEditUserScreen.setScreenTitle("Edit User");
         wizardEditUserScreen.setMenuLabel("Edit User");
         wizardEditUserScreen.setScreenTag("Edit_User");

@@ -34,7 +34,6 @@ public class WizardTextScreen extends AbstractWizardScreen {
         super(WizardScreenEnum.WizardTextScreen);
     }
 
-//    private WizardScreen buttonNextWizardScreen = null;
     public WizardTextScreen(final String screenName, String screenText, final String nextButtonLabel) {
         super(WizardScreenEnum.WizardTextScreen, screenName, screenName, screenName);
         this.setNextButton(nextButtonLabel);
@@ -42,15 +41,6 @@ public class WizardTextScreen extends AbstractWizardScreen {
 
     }
 
-//    @Override
-//    public void setNextWizardScreen(WizardScreen nextWizardScreen) {
-//        buttonNextWizardScreen = nextWizardScreen;
-//    }
-//
-//    @Override
-//    public WizardScreen getNextWizardScreen() {
-//        return buttonNextWizardScreen;
-//    }
     @Override
     public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.text);
@@ -65,5 +55,3 @@ public class WizardTextScreen extends AbstractWizardScreen {
         return storedWizardScreenData.getPresenterScreen();
     }
 }
-//actionButtonFeature.addFeatureAttributes(FeatureAttribute.target, nextWizardScreen.getScreenTag());
-//        presenterScreen.getPresenterFeatureList().add(actionButtonFeature);

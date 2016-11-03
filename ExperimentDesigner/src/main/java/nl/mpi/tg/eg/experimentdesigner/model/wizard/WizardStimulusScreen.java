@@ -39,7 +39,7 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
 //    private WizardScreen endOfStimulisWizardScreen = null;
     public WizardStimulusScreen() {
         super(WizardScreenEnum.WizardStimulusScreen, "Stimulus", "Stimulus", "Stimulus");
-//        wizardScreenData.setStimulusImageCapture(Boolean.FALSE);
+        wizardScreenData.setStimulusImageCapture(Boolean.FALSE);
     }
 
     public WizardStimulusScreen(String screenName) {

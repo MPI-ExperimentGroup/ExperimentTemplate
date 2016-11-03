@@ -114,7 +114,7 @@ public class SynQuiz2 {
 //        wizardEditUserScreen.setPostText(postText);
 //        wizardEditUserScreen.setAlternateButtonLabel(alternateButtonLabel);
         wizardEditUserScreen.setSendData(true);
-        wizardEditUserScreen.setOn_Error_Text("Could not contact the server, please check your internet connection and try again.");
+        wizardEditUserScreen.setOn_Error_Text(COULD_NOT_CONTACT_THE_SERVER_PLEASE_CHECK);
 
         final WizardMenuScreen menuScreen = new WizardMenuScreen("Menu", "Menu", "Menu");
 
@@ -180,6 +180,7 @@ public class SynQuiz2 {
 
         return wizardData;
     }
+    protected static final String COULD_NOT_CONTACT_THE_SERVER_PLEASE_CHECK = "Could not contact the server, please check your internet connection and try again.";
 
     private String formatLink(String linkUrl) {
         return formatLink(linkUrl, linkUrl);
@@ -232,6 +233,7 @@ public class SynQuiz2 {
         wizardEditUserScreen.setMenuLabel(screenName.name());
         wizardEditUserScreen.setSendData(true);
         wizardEditUserScreen.setNextButton("Continue");
+        wizardEditUserScreen.setOn_Error_Text(COULD_NOT_CONTACT_THE_SERVER_PLEASE_CHECK);
 //        wizardEditUserScreen.setScreenTitle();
 //        final WizardEditUserScreen presenterScreen = new WizardEditUserScreen();
 //                "Tell us about your synaesthesia: " + screenName.name() + "(" + (screenName.ordinal() + 1) + "/" + DemographicScreenType.values().length + ")",

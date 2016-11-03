@@ -31,7 +31,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
  * @since Mar 16, 2016 2:35:56 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  *
- * Prose text in storyTexts are copywright Martin Rombouts used by permission
+ * Prose text in storyTexts are copyright Martin Rombouts used by permission
  */
 public class FactOrFiction {
 
