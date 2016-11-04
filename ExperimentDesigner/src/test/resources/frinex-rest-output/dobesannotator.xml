@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment appNameDisplay="Dobes Annotator" appNameInternal="dobes_annotator" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="true" textFontSize="17">
-    <metadata/>
+    <metadata>
+        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Worker ID"/>
+    </metadata>
     <presenter back="DebugScreen" displayOrder="1" menuLabel="Annotation Timeline Panel" type="timeline" self="Annotation_Timeline_Panel" title="Annotation Timeline Panel">
         <AnnotationTimelinePanel mp4="http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4" eventTag="Annotation_Timeline_Panel" columnCount="2" maxStimuli="10">
             <stimuli>
