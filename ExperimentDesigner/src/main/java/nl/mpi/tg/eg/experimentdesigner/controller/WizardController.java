@@ -17,12 +17,7 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.controller;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
 import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 import nl.mpi.tg.eg.experimentdesigner.dao.ExperimentRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.MetadataRepository;
@@ -30,24 +25,20 @@ import nl.mpi.tg.eg.experimentdesigner.dao.PresenterFeatureRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterScreenRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PublishEventRepository;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
-import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
-import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
 import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
-import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
-import nl.mpi.tg.eg.experimentdesigner.model.StimuliSubAction;
-import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.AbstractWizardScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreenData;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import static nl.mpi.tg.eg.experimentdesigner.util.DefaultExperiments.getDefault;
+import nl.mpi.tg.eg.experimentdesigner.util.HRPretest02;
+import nl.mpi.tg.eg.experimentdesigner.util.JenaFieldKit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @since Feb 22, 2016 4:23:36 PM (creation date)
@@ -68,34 +59,30 @@ public class WizardController {
     @Autowired
     ExperimentRepository experimentRepository;
 
-    @RequestMapping(value = "/experiments/wizard/create", method = RequestMethod.POST)
-    public String create(final HttpServletRequest req, @ModelAttribute WizardData wizardData) {
-        final Experiment experiment = getExperiment(wizardData);
-        experimentRepository.save(experiment);
-        return "redirect:/experiment/" + experiment.getId();
-    }
+//    @RequestMapping(value = "/experiments/wizard/json", method = RequestMethod.GET)
+//    public @ResponseBody
+//    WizardData getJson() {
+//        return new HRPretest02().getWizardData();
+//    }
+
+//    @RequestMapping(value = "/experiments/wizard/create", method = RequestMethod.POST)
+//    public String create(final HttpServletRequest req, @ModelAttribute WizardData wizardData) {
+////        final Experiment experiment = getExperiment(wizardData);
+//        final Experiment experiment = new JenaFieldKit().getExperiment();
+////        final Experiment experiment = new Sara01().getExperiment();
+//        experimentRepository.save(experiment);
+//        return "redirect:/experiment/" + experiment.getId();
+//    }
 
     public Experiment getExperiment(WizardData wizardData) {
         final Experiment experiment = getExperiment(wizardData.getAppName().replaceAll("[^A-Za-z0-9]", "_"), wizardData.getAppName(), wizardData.isShowMenuBar());
-//        PresenterScreen previousScreen = null;
-//        PresenterScreen nextScreen = null;
-//        PresenterScreen editUserScreen = null;
-        PresenterScreen userSelectMenu = null;
-        PresenterScreen agreementScreen = null;
-        PresenterScreen informationScreen = null;
-//        PresenterScreen audioTestScreen = null;
-        PresenterScreen practiceStimulusScreen = null;
-        PresenterScreen stimulusScreen = null;
-        PresenterScreen completionScreen = null;
-        PresenterScreen autoMenu = null;
-        int currentDisplaySequence = 4;
-        PresenterScreen previousScreen = informationScreen;
-        for (WizardScreen wizardScreen : wizardData.getWizardScreens()) {
-            PresenterScreen currentScreen = wizardScreen.populatePresenterScreen(experiment, wizardData.isObfuscateScreenNames(), currentDisplaySequence++);
-            if (previousScreen != null) {
-                previousScreen.setNextPresenter(currentScreen);
-                previousScreen = currentScreen;
-            }
+        experiment.setTextFontSize(wizardData.getTextFontSize());
+        int currentDisplaySequence = 1;
+        for (WizardScreenData wizardScreen : wizardData.getWizardScreens()) {
+            final WizardScreen wizardScreenType = wizardScreen.getWizardScreenType().wizardScreen;
+//            wizardScreenType.set
+            // get the wizard screen defined in the enumeration which is storable in the DB
+            PresenterScreen currentScreen = wizardScreenType.populatePresenterScreen(wizardScreen, experiment, wizardData.isObfuscateScreenNames(), currentDisplaySequence++);
         }
         return experiment;
     }
