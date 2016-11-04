@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
+import java.util.Arrays;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
@@ -37,8 +38,8 @@ public class WizardExistingUserCheckScreen extends AbstractWizardScreen {
     public WizardExistingUserCheckScreen(final String screenTitle, final String new_Interview, final String resume_Interview, final String startNewText, final String resumeoldText) {
         super(WizardScreenEnum.WizardExistingUserCheckScreen, screenTitle, screenTitle, screenTitle);
         this.wizardScreenData.setNextButton(new String[]{new_Interview, resume_Interview});
-        this.wizardScreenData.setScreenText1(startNewText);
-        this.wizardScreenData.setScreenText2(resumeoldText);
+        this.wizardScreenData.setScreenText(0, startNewText);
+        this.wizardScreenData.setScreenText(1, resumeoldText);
     }
 
     @Override
@@ -52,12 +53,12 @@ public class WizardExistingUserCheckScreen extends AbstractWizardScreen {
         final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
         singleUserFeature.getPresenterFeatureList().add(autoNextPresenter);
         userCheckFeature.getPresenterFeatureList().add(singleUserFeature);
-        multipleUsersFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, storedWizardScreenData.getScreenText1()));
+        multipleUsersFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, storedWizardScreenData.getScreenText(0)));
         final PresenterFeature createUserFeature = new PresenterFeature(FeatureType.createUserButton, storedWizardScreenData.getNextButton()[0]);
         createUserFeature.addFeatureAttributes(FeatureAttribute.target, "Edit_User");
         multipleUsersFeature.getPresenterFeatureList().add(createUserFeature);
         multipleUsersFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-        multipleUsersFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, storedWizardScreenData.getScreenText2()));
+        multipleUsersFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, storedWizardScreenData.getScreenText(1)));
 
         final PresenterFeature selectUserFeature = new PresenterFeature(FeatureType.targetButton, storedWizardScreenData.getNextButton()[1]);
         selectUserFeature.addFeatureAttributes(FeatureAttribute.target, "SelectUser");

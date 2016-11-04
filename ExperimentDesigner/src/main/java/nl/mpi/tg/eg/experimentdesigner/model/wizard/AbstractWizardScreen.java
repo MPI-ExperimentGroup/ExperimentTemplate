@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
+import java.util.Arrays;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 
@@ -91,7 +92,7 @@ public abstract class AbstractWizardScreen implements WizardScreen {
 
     @Override
     public final void setScreenText(String screenText) {
-        this.wizardScreenData.setScreenText1(screenText);
+        this.wizardScreenData.setScreenText(0, screenText);
     }
 
     public final void setCentreScreen(boolean centreScreen) {

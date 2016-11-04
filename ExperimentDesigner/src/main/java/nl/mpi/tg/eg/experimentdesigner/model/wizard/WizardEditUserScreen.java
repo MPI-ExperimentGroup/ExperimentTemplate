@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
+import java.util.Arrays;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
@@ -37,9 +38,9 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
 
     public WizardEditUserScreen(final String screenTitle, final String screenTag, String dispalyText, final String saveButtonLabel, final String postText, final AbstractWizardScreen alternateNextScreen, final String alternateButtonLabel, final boolean sendData, final String on_Error_Text) {
         super(WizardScreenEnum.WizardEditUserScreen, screenTitle, screenTitle, screenTag);
-        this.wizardScreenData.setScreenText1(dispalyText);
+        this.wizardScreenData.setScreenText(0, dispalyText);
         this.wizardScreenData.setNextButton(new String[]{saveButtonLabel, alternateButtonLabel});
-        this.wizardScreenData.setScreenText2(postText);
+        this.wizardScreenData.setScreenText(1, postText);
         this.wizardScreenData.setSendData(sendData);
         this.wizardScreenData.setOn_Error_Text(on_Error_Text);
         if (alternateNextScreen != null) {
@@ -104,8 +105,8 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
     public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.metadata);
-        if (storedWizardScreenData.getScreenText1() != null) {
-            storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText1()));
+        if (storedWizardScreenData.getScreenText(0) != null) {
+            storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
         }
         for (Metadata metadata : storedWizardScreenData.getMetadataFields()) {
             experiment.getMetadata().add(metadata);
@@ -126,10 +127,10 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
         onSuccessFeature.getPresenterFeatureList().add(menuButtonFeature);
         saveMetadataButton.getPresenterFeatureList().add(onSuccessFeature);
         storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(saveMetadataButton);
-        if (storedWizardScreenData.getScreenText2() != null || storedWizardScreenData.getMenuWizardScreenData().size() > 0) {
+        if (storedWizardScreenData.getScreenText(1) != null && storedWizardScreenData.getMenuWizardScreenData().size() > 0) {
             storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-            if (storedWizardScreenData.getScreenText2() != null) {
-                storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText2()));
+            if (storedWizardScreenData.getScreenText(1) != null) {
+                storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(1)));
             }
             if (storedWizardScreenData.getMenuWizardScreenData().size() > 0) {
                 final PresenterFeature alternateNextFeature = new PresenterFeature(FeatureType.targetButton, storedWizardScreenData.getNextButton()[1]);

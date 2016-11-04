@@ -85,7 +85,7 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
     }
 
     public void setEnd_of_stimuli(String end_of_stimuli) {
-        wizardScreenData.setScreenText1(end_of_stimuli);
+        this.wizardScreenData.setScreenText(0, end_of_stimuli);
     }
 
     public void setEndOfStimulisWizardScreen(WizardScreen endOfStimulisWizardScreen) {
@@ -150,7 +150,7 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
         }
         loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
-        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, storedWizardScreenData.getScreenText1()));
+        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, storedWizardScreenData.getScreenText(0)));
         final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.targetButton, storedWizardScreenData.getMenuWizardScreenData().get(0).getScreenTag());
         menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, storedWizardScreenData.getMenuWizardScreenData().get(0).getScreenTag());
         endOfStimulusFeature.getPresenterFeatureList().add(menuButtonFeature);

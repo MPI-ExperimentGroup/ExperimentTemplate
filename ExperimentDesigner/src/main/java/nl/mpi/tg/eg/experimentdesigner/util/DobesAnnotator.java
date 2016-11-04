@@ -100,6 +100,8 @@ public class DobesAnnotator {
     }
 
     public Experiment getExperiment() {
-        return wizardController.getExperiment(getWizardData());
+        final Experiment experiment = wizardController.getExperiment(getWizardData());
+        wizardController.addMetadata(experiment);
+        return experiment;
     }
 }

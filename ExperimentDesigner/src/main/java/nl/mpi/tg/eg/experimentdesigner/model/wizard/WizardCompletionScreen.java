@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
+import java.util.Arrays;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
@@ -36,8 +37,8 @@ public class WizardCompletionScreen extends AbstractWizardScreen {
 
     public WizardCompletionScreen(String completedText1, final boolean allowUserRestart, boolean generateCompletionCode, String completedText2, String eraseUsersDataButtonlabel, final String screenTitle, final String could_not_contact_the_server_please_check, final String retryButtonLabel) {
         super(WizardScreenEnum.WizardCompletionScreen, screenTitle, screenTitle, screenTitle);
-        wizardScreenData.setScreenText1(completedText1);
-        wizardScreenData.setScreenText2(completedText2);
+        wizardScreenData.setScreenText(0, completedText1);
+        wizardScreenData.setScreenText(1, completedText2);
         wizardScreenData.setAllowUserRestart(allowUserRestart);
         wizardScreenData.setGenerateCompletionCode(generateCompletionCode);
         wizardScreenData.setEraseUsersDataButtonlabel(eraseUsersDataButtonlabel);
@@ -54,15 +55,14 @@ public class WizardCompletionScreen extends AbstractWizardScreen {
 
         final PresenterFeature onSuccessFeature = new PresenterFeature(FeatureType.onSuccess, null);
         sendAllDataFeature.getPresenterFeatureList().add(onSuccessFeature);
-        onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText1()));
+        onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
         onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
         if (storedWizardScreenData.getGenerateCompletionCode()) {
             onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.generateCompletionCode, null));
         }
-
-        if (storedWizardScreenData.getScreenText2() != null) {
+        if (storedWizardScreenData.getScreenText(1) != null) {
             onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-            onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText2()));
+            onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(1)));
         }
         if (storedWizardScreenData.getAllowUserRestart()) {
             onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));

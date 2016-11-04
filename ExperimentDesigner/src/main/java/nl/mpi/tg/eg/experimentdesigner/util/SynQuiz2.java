@@ -165,7 +165,7 @@ public class SynQuiz2 {
         menuScreen.addTargetScreen(weekdaysScreen);
         menuScreen.addTargetScreen(lettersScreen);
         menuScreen.addTargetScreen(monthsScreen);
-        menuScreen.getWizardScreenData().setScreenText2("The tests above will ask about the colours that you associate with Weekdays, Letters and Numbers, or Months. If you do not have colour associations with one of the options, you can skip that test. After each test you can view your results.<br/><br/>"
+        menuScreen.getWizardScreenData().setScreenText(1, "The tests above will ask about the colours that you associate with Weekdays, Letters and Numbers, or Months. If you do not have colour associations with one of the options, you can skip that test. After each test you can view your results.<br/><br/>"
                 + "When you are finished taking the tests that apply to you, please click <b>Submit my results</b> below to finish the experiment.");
 //        
 //        menuScreen.addTargetScreen(weekdaysScreen);

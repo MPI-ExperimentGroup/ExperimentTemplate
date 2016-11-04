@@ -58,13 +58,12 @@ public class WizardSynQuizIntroductionScreen extends AbstractWizardScreen {
         super(WizardSinQuizIntroductionScreen, screenName, screenName, screenName);
         wizardScreenData.setScreenTag(screenName);
         wizardScreenData.setScreenTitle(decoding_the_Genetics_of_Synaesthesia);
-        final ArrayList<String> screenText = wizardScreenData.getScreenText();
-        screenText.add(we_are_studying_the_genetic_basis_of_syna);
-        screenText.add(how_our_study_works);
-        screenText.add(staticstudy_diagramsvg);
-        screenText.add(the_synaesthesia_tests_take_about_20_minu);
-        screenText.add(for_more_information_about_synaesthesia_p);
-        screenText.add(this_project_is_organised_and_funded_by_t);
+        wizardScreenData.setScreenText(0, we_are_studying_the_genetic_basis_of_syna);
+        wizardScreenData.setScreenText(1, how_our_study_works);
+        wizardScreenData.setScreenText(2, staticstudy_diagramsvg);
+        wizardScreenData.setScreenText(3, the_synaesthesia_tests_take_about_20_minu);
+        wizardScreenData.setScreenText(4, for_more_information_about_synaesthesia_p);
+        wizardScreenData.setScreenText(5, this_project_is_organised_and_funded_by_t);
         wizardScreenData.setNextButton(new String[]{participateButton});
         wizardScreenData.getMenuWizardScreenData().add(participatePresenter);
     }
@@ -77,28 +76,28 @@ public class WizardSynQuizIntroductionScreen extends AbstractWizardScreen {
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
 
 //        presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
-        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, storedWizardScreenData.getScreenText().get(0)));
+        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, storedWizardScreenData.getScreenText(0)));
         presenterFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
 
-        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, storedWizardScreenData.getScreenText().get(1)));
+        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, storedWizardScreenData.getScreenText(1)));
         presenterFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
         final PresenterFeature studyDiagramFeature = new PresenterFeature(FeatureType.image, null);
         studyDiagramFeature.addFeatureAttributes(percentOfPage, imageSize);
         studyDiagramFeature.addFeatureAttributes(maxHeight, imageSize);
         studyDiagramFeature.addFeatureAttributes(maxWidth, imageSize);
-        studyDiagramFeature.addFeatureAttributes(src, storedWizardScreenData.getScreenText().get(2));
+        studyDiagramFeature.addFeatureAttributes(src, storedWizardScreenData.getScreenText(2));
         studyDiagramFeature.addFeatureAttributes(link, "");
         presenterFeatureList.add(studyDiagramFeature);
         presenterFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
-        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, storedWizardScreenData.getScreenText().get(3)));
+        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, storedWizardScreenData.getScreenText(3)));
         presenterFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
 
         final PresenterFeature targetButtonFeature = new PresenterFeature(FeatureType.targetButton, storedWizardScreenData.getNextButton()[0]);
         targetButtonFeature.addFeatureAttributes(target, storedWizardScreenData.getMenuWizardScreenData().get(0).getScreenTag());
         presenterFeatureList.add(targetButtonFeature);
         presenterFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
-        presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText().get(4)));
-        presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText().get(5)));
+        presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(4)));
+        presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(5)));
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
         return storedWizardScreenData.getPresenterScreen();
     }

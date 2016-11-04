@@ -120,9 +120,66 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                             </div>
                                             <br/>
                                             <div class="">
+<!--                                                private final WizardScreenEnum wizardScreenType;
+
+    @OneToOne(targetEntity = WizardScreenData.class, cascade = CascadeType.ALL)
+    private WizardScreenData backWizardScreenData = null;
+    @OneToOne(targetEntity = WizardScreenData.class, cascade = CascadeType.ALL)
+    private WizardScreenData nextWizardScreenData = null;
+    @OneToOne(targetEntity = WizardScreenData.class, cascade = CascadeType.ALL)
+    private ArrayList<WizardScreenData> menuWizardScreenData = new ArrayList<>();
+    @Size(max = 6000)
+    private ArrayList<String> screenText = new ArrayList<>();
+    private String[] nextButton = null;
+    private String screenTitle = null;
+    private String menuLabel = null;
+    private String screenTag = null;
+    private Boolean centreScreen = null;
+    private Boolean stimulusFreeText = null;
+    private String freeTextValidationRegex = null;
+    private String freeTextValidationMessage = null;
+    private Boolean sendData = null;
+    private Boolean filePerStimulus = null;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Stimulus> stimuli = null;
+
+    private String[] stimuliRandomTags = null;
+    private String screenMediaPath = null;
+    private Integer stimulusMsDelay = null;
+    private String stimulusCodeMatch = null;
+    private Integer stimulusCodeMsDelay = null;
+    private String stimulusCodeFormat = null;
+    private Boolean randomiseStimuli = null;
+    private Integer stimuliCount = null;
+    private Integer repeatCount = null;
+    private Integer repeatRandomWindow = null;
+    private String buttonLabelEventTag = null;
+    private String backgroundImage = null;
+    private Boolean sdCardStimuli = null;
+    private Boolean allowHotkeyButtons = null;
+    private String eraseUsersDataButtonlabel = null;
+    private String could_not_contact_the_server_please_check = null;
+    private String on_Error_Text = null;
+    private String retryButtonLabel = null;
+    private String helpText = null;
+
+    private Boolean generateCompletionCode = null;
+    private Boolean allowUserRestart = null;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Metadata> metadataFields = null;
+    private Boolean useCodeVideo = null;
+    private String stimulusResponseOptions = null;
+    private String stimulusResponseLabelRight = null;
+    private String stimulusResponseLabelLeft = null;
+    private Boolean showProgress = null;
+    private StimuliSubAction[] stimuliSubActions = null;
+    private Boolean stimulusImageCapture = null;
+    private Integer taskIndex = null;-->
                                                 <span th:replace="wizard :: wizardCheckBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='Centre Screen', wizardFragmentValue=${wizardScreen.centreScreen}, wizardFragmentName='centreScreen')"></span>
-                                                <span th:replace="wizard :: wizardTextArea(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='Screen Text', wizardFragmentValue=${wizardScreen.screenText1}, wizardFragmentName='screenText1')"></span>
-                                                <span th:replace="wizard :: wizardTextArea(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='Screen Text', wizardFragmentValue=${wizardScreen.screenText2}, wizardFragmentName='screenText2')"></span>
+                                                <!--<span th:replace="wizard :: wizardTextArea(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='Screen Text', wizardFragmentValue=${wizardScreen.screenText1}, wizardFragmentName='screenText1')"></span>-->
+                                                <!--<span th:replace="wizard :: wizardTextArea(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='Screen Text', wizardFragmentValue=${wizardScreen.screenText2}, wizardFragmentName='screenText2')"></span>-->
                                                 <span th:replace="wizard :: wizardStimuliEditor(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='stimuliList', wizardFragmentValue=${wizardScreen.stimuli}, wizardFragmentName='stimuliList')"></span>
                                                 <span th:replace="wizard :: wizardTextArray(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='stimuliRandomTags', wizardFragmentValue=${wizardScreen.stimuliRandomTags}, wizardFragmentName='stimuliRandomTags')"></span>
                                                 <span th:replace="wizard :: wizardNumberBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='stimulusMsDelay', wizardFragmentValue=${wizardScreen.stimulusMsDelay}, wizardFragmentName='stimulusMsDelay')"></span>

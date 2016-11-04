@@ -15,52 +15,26 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.experimentdesigner.model;
+package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 
 /**
- * @since Feb 23, 2016 3:00:09 PM (creation date)
+ * @since Nov 4, 2016 2:15:50 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Entity
-public class StimuliSubAction implements Serializable {
+public class ScreenText implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String percentOfPage;
-    private String label;
-    private String[] buttonArray;
 
-    public StimuliSubAction() {
-    }
-
-    public StimuliSubAction(String percentOfPage, String label, String button) {
-        this.percentOfPage = percentOfPage;
-        this.label = label;
-        this.buttonArray = new String[]{button};
-    }
-
-    public StimuliSubAction(String percentOfPage, String[] buttonArray) {
-        this.percentOfPage = percentOfPage;
-        this.label = null;
-        this.buttonArray = buttonArray;
-    }
-
-    public String getPercentOfPage() {
-        return percentOfPage;
-    }
-
-    public String getLabel() {
-        return label;
-    }
-
-    public String[] getButtons() {
-        return buttonArray;
-    }
+    @Size(max = 6000)
+    protected String screenText = null;
 }
