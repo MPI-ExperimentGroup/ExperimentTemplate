@@ -25,14 +25,14 @@ import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
  * @since Oct 21, 2016 11:52:03 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class LimorMultiParticipant {
+public class MultiParticipant {
 
     private final WizardController wizardController = new WizardController();
 
     // @todo: server shared variables to be used in animations and interactions concurrently displayed on multiple users devices 
     public WizardData getWizardData() {
         WizardData wizardData = new WizardData();
-        wizardData.setAppName("LimorMultiParticipant");
+        wizardData.setAppName("MultiParticipant");
         wizardData.setShowMenuBar(true);
         wizardData.setObfuscateScreenNames(false);
         return wizardData;

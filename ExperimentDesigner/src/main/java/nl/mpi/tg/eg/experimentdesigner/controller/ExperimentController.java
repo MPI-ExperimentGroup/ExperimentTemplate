@@ -34,7 +34,7 @@ import nl.mpi.tg.eg.experimentdesigner.util.HRPretest;
 import nl.mpi.tg.eg.experimentdesigner.util.HRPretest02;
 import nl.mpi.tg.eg.experimentdesigner.util.JenaFieldKit;
 import nl.mpi.tg.eg.experimentdesigner.util.KinOathExample;
-import nl.mpi.tg.eg.experimentdesigner.util.LimorMultiParticipant;
+import nl.mpi.tg.eg.experimentdesigner.util.MultiParticipant;
 import nl.mpi.tg.eg.experimentdesigner.util.NblExperiment01;
 import nl.mpi.tg.eg.experimentdesigner.util.RdExperiment02;
 import nl.mpi.tg.eg.experimentdesigner.util.RosselFieldKit;
@@ -159,8 +159,8 @@ public class ExperimentController {
                 case "WellspringsSamoan":
                     wizardData = new WellspringsSamoanFieldKit().getWizardData();
                     break;
-                case "LimorMultiParticipant":
-                    wizardData = new LimorMultiParticipant().getWizardData();
+                case "MultiParticipant":
+                    wizardData = new MultiParticipant().getWizardData();
                     break;
             }
         }
@@ -185,7 +185,7 @@ public class ExperimentController {
             "Kinship Example",
             "RosselFieldKit",
             "WellspringsSamoan",
-            "LimorMultiParticipant",
+            "MultiParticipant",
             "Zinnen Beoordelen"});
         return "design";
     }
