@@ -31,9 +31,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
-import javax.validation.constraints.Size;
 import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.StimuliSubAction;
 import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
 
 /**
@@ -47,51 +47,66 @@ public class WizardScreenData implements Serializable {
     final PresenterScreen presenterScreen = new PresenterScreen();
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Enumerated(EnumType.STRING)
-    private final WizardScreenEnum wizardScreenType;
-
+    private WizardScreenEnum wizardScreenType = null;
     @OneToOne(targetEntity = WizardScreenData.class, cascade = CascadeType.ALL)
     private WizardScreenData backWizardScreenData = null;
     @OneToOne(targetEntity = WizardScreenData.class, cascade = CascadeType.ALL)
     private WizardScreenData nextWizardScreenData = null;
-    @Size(max = 6000)
-    private String screenText1 = null;
-    private String screenText2 = null;
-    private String nextButton = null;
+    @OneToMany(targetEntity = WizardScreenData.class, cascade = CascadeType.ALL)
+    private List<WizardScreenData> menuWizardScreenData = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<ScreenText> screenText = null;
+    private String[] nextButton = null;
     private String screenTitle = null;
     private String menuLabel = null;
     private String screenTag = null;
-    private Boolean centreScreen = true;
-
+    private Boolean centreScreen = null;
+    private Boolean stimulusFreeText = null;
+    private String freeTextValidationRegex = null;
+    private String freeTextValidationMessage = null;
+    private Boolean sendData = null;
+    private Boolean filePerStimulus = null;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Stimulus> stimuli = null;
-
     private String[] stimuliRandomTags = null;
     private String screenMediaPath = null;
     private Integer stimulusMsDelay = null;
+    private String stimulusCodeMatch = null;
+    private Integer stimulusCodeMsDelay = null;
+    private String stimulusCodeFormat = null;
     private Boolean randomiseStimuli = null;
     private Integer stimuliCount = null;
     private Integer repeatCount = null;
     private Integer repeatRandomWindow = null;
-//    private String buttonLabelEventTag = null;
+    private String buttonLabelEventTag = null;
     private String backgroundImage = null;
     private Boolean sdCardStimuli = null;
+    private Boolean allowHotkeyButtons = null;
     private String eraseUsersDataButtonlabel = null;
     private String could_not_contact_the_server_please_check = null;
+    private String on_Error_Text = null;
     private String retryButtonLabel = null;
-
+    private String helpText = null;
     private Boolean generateCompletionCode = null;
     private Boolean allowUserRestart = null;
-
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Metadata> metadataFields = null;
     private Boolean useCodeVideo = null;
+    private String stimulusResponseOptions = null;
     private String stimulusResponseLabelRight = null;
     private String stimulusResponseLabelLeft = null;
     private Boolean showProgress = null;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private StimuliSubAction[] stimuliSubActions = null;
+    private Boolean stimulusImageCapture = null;
+    private Integer taskIndex = null;
+
+    public WizardScreenData() {
+    }
 
     public WizardScreenData(WizardScreenEnum wizardScreenType) {
         this.wizardScreenType = wizardScreenType;
@@ -103,6 +118,10 @@ public class WizardScreenData implements Serializable {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public WizardScreenEnum getWizardScreenType() {
+        return wizardScreenType;
     }
 
     public PresenterScreen getPresenterScreen() {
@@ -125,27 +144,33 @@ public class WizardScreenData implements Serializable {
         this.nextWizardScreenData = nextWizardScreenData;
     }
 
-    public String getScreenText1() {
-        return screenText1;
+    public List<WizardScreenData> getMenuWizardScreenData() {
+        return menuWizardScreenData;
     }
 
-    public void setScreenText1(String screenText) {
-        this.screenText1 = screenText;
+    public void setMenuWizardScreenData(List<WizardScreenData> menuWizardScreenData) {
+        this.menuWizardScreenData = menuWizardScreenData;
     }
 
-    public String getScreenText2() {
-        return screenText2;
+    public String getScreenText(int index) {
+        return (screenText != null && screenText.size() > index) ? screenText.get(index).screenText : null;
     }
 
-    public void setScreenText2(String screenText) {
-        this.screenText2 = screenText;
+    public void setScreenText(int index, String screenTextString) {
+        if (screenText == null) {
+            screenText = new ArrayList<>();
+        }
+        while (screenText.size() <= index) {
+            screenText.add(new ScreenText());
+        }
+        this.screenText.get(index).screenText = screenTextString;
     }
 
-    public String getNextButton() {
+    public String[] getNextButton() {
         return nextButton;
     }
 
-    public void setNextButton(String nextButton) {
+    public void setNextButton(String[] nextButton) {
         this.nextButton = nextButton;
     }
 
@@ -213,12 +238,68 @@ public class WizardScreenData implements Serializable {
         this.stimulusMsDelay = stimulusMsDelay;
     }
 
+    public String getStimulusCodeMatch() {
+        return stimulusCodeMatch;
+    }
+
+    public void setStimulusCodeMatch(String stimulusCodeMatch) {
+        this.stimulusCodeMatch = stimulusCodeMatch;
+    }
+
+    public Integer getStimulusCodeMsDelay() {
+        return stimulusCodeMsDelay;
+    }
+
+    public void setStimulusCodeMsDelay(Integer stimulusCodeMsDelay) {
+        this.stimulusCodeMsDelay = stimulusCodeMsDelay;
+    }
+
+    public String getStimulusCodeFormat() {
+        return stimulusCodeFormat;
+    }
+
+    public void setStimulusCodeFormat(String stimulusCodeFormat) {
+        this.stimulusCodeFormat = stimulusCodeFormat;
+    }
+
     public Boolean isRandomiseStimuli() {
         return randomiseStimuli;
     }
 
     public void setRandomiseStimuli(Boolean randomiseStimuli) {
         this.randomiseStimuli = randomiseStimuli;
+    }
+
+    public Boolean getAllowHotkeyButtons() {
+        return allowHotkeyButtons;
+    }
+
+    public void setAllowHotkeyButtons(Boolean allowHotkeyButtons) {
+        this.allowHotkeyButtons = allowHotkeyButtons;
+    }
+
+    public Boolean getStimulusFreeText() {
+        return stimulusFreeText;
+    }
+
+    public void setStimulusFreeText(Boolean stimulusFreeText) {
+        this.stimulusFreeText = stimulusFreeText;
+    }
+
+    public String getFreeTextValidationRegex() {
+        return freeTextValidationRegex;
+    }
+
+    public void setFreeTextValidationRegex(String freeTextValidationRegex) {
+        this.freeTextValidationRegex = freeTextValidationRegex;
+    }
+
+    public String getFreeTextValidationMessage() {
+        return freeTextValidationMessage;
+    }
+
+    public void setFreeTextValidationMessage(String freeTextValidationMessage) {
+        this.freeTextValidationMessage = freeTextValidationMessage;
     }
 
     public Integer getStimuliCount() {
@@ -229,13 +310,14 @@ public class WizardScreenData implements Serializable {
         this.stimuliCount = stimuliCount;
     }
 
-//    public String getButtonLabelEventTag() {
-//        return buttonLabelEventTag;
-//    }
-//
-//    public void setButtonLabelEventTag(String buttonLabelEventTag) {
-//        this.buttonLabelEventTag = buttonLabelEventTag;
-//    }
+    public String getButtonLabelEventTag() {
+        return buttonLabelEventTag;
+    }
+
+    public void setButtonLabelEventTag(String buttonLabelEventTag) {
+        this.buttonLabelEventTag = buttonLabelEventTag;
+    }
+
     public String getBackgroundImage() {
         return backgroundImage;
     }
@@ -266,6 +348,14 @@ public class WizardScreenData implements Serializable {
 
     public void setCould_not_contact_the_server_please_check(String could_not_contact_the_server_please_check) {
         this.could_not_contact_the_server_please_check = could_not_contact_the_server_please_check;
+    }
+
+    public String getOn_Error_Text() {
+        return on_Error_Text;
+    }
+
+    public void setOn_Error_Text(String on_Error_Text) {
+        this.on_Error_Text = on_Error_Text;
     }
 
     public String getRetryButtonLabel() {
@@ -323,6 +413,14 @@ public class WizardScreenData implements Serializable {
         this.useCodeVideo = useCodeVideo;
     }
 
+    public String getStimulusResponseOptions() {
+        return stimulusResponseOptions;
+    }
+
+    public void setStimulusResponseOptions(String stimulusResponseOptions) {
+        this.stimulusResponseOptions = stimulusResponseOptions;
+    }
+
     public String getStimulusResponseLabelRight() {
         return stimulusResponseLabelRight;
     }
@@ -347,4 +445,51 @@ public class WizardScreenData implements Serializable {
         this.showProgress = showProgress;
     }
 
+    public Boolean getSendData() {
+        return sendData;
+    }
+
+    public void setSendData(Boolean sendData) {
+        this.sendData = sendData;
+    }
+
+    public StimuliSubAction[] getStimuliSubActions() {
+        return stimuliSubActions;
+    }
+
+    public void setStimuliSubActions(StimuliSubAction[] stimuliSubActions) {
+        this.stimuliSubActions = stimuliSubActions;
+    }
+
+    public Boolean getStimulusImageCapture() {
+        return stimulusImageCapture;
+    }
+
+    public void setStimulusImageCapture(Boolean stimulusImageCapture) {
+        this.stimulusImageCapture = stimulusImageCapture;
+    }
+
+    public Boolean getFilePerStimulus() {
+        return filePerStimulus;
+    }
+
+    public void setFilePerStimulus(Boolean filePerStimulus) {
+        this.filePerStimulus = filePerStimulus;
+    }
+
+    public Integer getTaskIndex() {
+        return taskIndex;
+    }
+
+    public void setTaskIndex(Integer taskIndex) {
+        this.taskIndex = taskIndex;
+    }
+
+    public String getHelpText() {
+        return helpText;
+    }
+
+    public void setHelpText(String helpText) {
+        this.helpText = helpText;
+    }
 }
