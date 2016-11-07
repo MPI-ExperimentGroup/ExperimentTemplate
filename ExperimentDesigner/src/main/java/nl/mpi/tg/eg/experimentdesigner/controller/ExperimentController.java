@@ -34,12 +34,12 @@ import nl.mpi.tg.eg.experimentdesigner.util.HRPretest;
 import nl.mpi.tg.eg.experimentdesigner.util.HRPretest02;
 import nl.mpi.tg.eg.experimentdesigner.util.JenaFieldKit;
 import nl.mpi.tg.eg.experimentdesigner.util.KinOathExample;
+import nl.mpi.tg.eg.experimentdesigner.util.ManipulatedContours;
 import nl.mpi.tg.eg.experimentdesigner.util.MultiParticipant;
 import nl.mpi.tg.eg.experimentdesigner.util.NblExperiment01;
 import nl.mpi.tg.eg.experimentdesigner.util.RdExperiment02;
 import nl.mpi.tg.eg.experimentdesigner.util.RosselFieldKit;
 import nl.mpi.tg.eg.experimentdesigner.util.Sara01;
-import nl.mpi.tg.eg.experimentdesigner.util.Sentveri_exp3;
 import nl.mpi.tg.eg.experimentdesigner.util.ShawiFieldKit;
 import nl.mpi.tg.eg.experimentdesigner.util.SynQuiz2;
 import nl.mpi.tg.eg.experimentdesigner.util.TransmissionChain;
@@ -162,6 +162,9 @@ public class ExperimentController {
                 case "MultiParticipant":
                     wizardData = new MultiParticipant().getWizardData();
                     break;
+                case "ManipulatedContours":
+                    wizardData = new ManipulatedContours().getWizardData();
+                    break;
             }
         }
         wizardRepository.save(wizardData);
@@ -186,7 +189,8 @@ public class ExperimentController {
             "RosselFieldKit",
             "WellspringsSamoan",
             "MultiParticipant",
-            "Zinnen Beoordelen"});
+            "Zinnen Beoordelen",
+            "ManipulatedContours"});
         return "design";
     }
 
