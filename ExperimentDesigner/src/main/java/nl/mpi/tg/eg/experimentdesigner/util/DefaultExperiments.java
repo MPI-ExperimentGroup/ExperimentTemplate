@@ -76,6 +76,7 @@ public class DefaultExperiments {
         experimentRepository.save(new RosselFieldKit().getExperiment());
         experimentRepository.save(new WellspringsSamoanFieldKit().getExperiment());
         experimentRepository.save(new MultiParticipant().getExperiment());
+        experimentRepository.save(new ManipulatedContours().getExperiment());
 
         for (Experiment experiment : experimentRepository.findAll()) {
             eventRepository.save(new PublishEvents(experiment, new Date(), new Date(), PublishEvents.PublishState.published, true, true, true));
@@ -318,7 +319,11 @@ public class DefaultExperiments {
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.belowThreshold, presenterFeatureRepository));
                 presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
                 break;
-
+            case hasGroupActivities:
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.groupNetworkActivity, presenterFeatureRepository));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.groupNetworkActivity, presenterFeatureRepository));
+                presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                break;
             default:
                 break;
         }
