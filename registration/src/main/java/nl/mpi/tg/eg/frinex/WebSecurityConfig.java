@@ -35,10 +35,10 @@ import org.springframework.security.config.annotation.web.servlet.configuration.
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @NotNull
-    @Value("${nl.mpi.tg.eg.frinex.admin.user}")
+    @Value("@nl.mpi.tg.eg.frinex.admin.user@")
     protected String USER;
     @NotNull
-    @Value("${nl.mpi.tg.eg.frinex.admin.password}")
+    @Value("@nl.mpi.tg.eg.frinex.admin.password@")
     protected String PASSWORD;
 
     @Override
