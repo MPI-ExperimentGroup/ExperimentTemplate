@@ -4,7 +4,7 @@ cd "$(dirname "$0")"
 pwd
 #mvn install
 #cd target
-appname=${experiment.configuration.name}-${project.artifactId}-${project.version}
+appname=@experiment.configuration.name@-@project.artifactId@-@project.version@
 rm -rf $appname-cordova
 unzip $appname-cordova.zip -d $appname-cordova
 cd $appname-cordova
@@ -31,6 +31,7 @@ cordova plugin add cordova-plugin-file
 #cordova plugin add cordova-plugin-statusbar
 cordova plugin add cordova-plugin-fullscreen 
 cordova plugin add cordova-plugin-media-capture
+#cordova plugin add cordova-plugin-camera
 
 #splashResourcesDir="./platforms/ios/LingQuest/Resources/splash/"
 #echo $splashResourcesDir
