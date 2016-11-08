@@ -56,6 +56,10 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
         this.wizardScreenData.setOn_Error_Text(on_Error_Text);
     }
 
+    public void setWorkerIdField() {
+        wizardScreenData.getMetadataFields().add(new Metadata("workerId", "Login code", ".'{'3,'}'", "Please enter your login code.", false, null));
+    }
+
     public void setFirstNameField() {
         wizardScreenData.getMetadataFields().add(new Metadata("firstName", "First name", ".'{'3,'}'", "Please enter at least three letters.", false, null));
     }
