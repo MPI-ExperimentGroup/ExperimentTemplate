@@ -21,10 +21,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     Author     : Peter Withers <peter.withers@mpi.nl>
 -->
 <widget id="nl.mpi.tg.eg.frinex.${experiment.configuration.name}" 
-        version="${application.majorVersion}.${application.minorVersion}.${application.buildVersion}" 
+        version="@application.majorVersion@.@application.minorVersion@.@application.buildVersion@" 
         xmlns="http://www.w3.org/ns/widgets" 
         xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>${experiment.configuration.displayName}</name>
+    <name>@experiment.configuration.displayName@</name>
 
     <description>
         A mobile application wrapper for FRINEX experiment framework.
