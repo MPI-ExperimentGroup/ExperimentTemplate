@@ -342,7 +342,7 @@ public class HRPretest {
         wizardData.addScreen(wizardTextScreen2);
 
         final WizardVideoAudioOptionStimulusScreen list1234Screen = new WizardVideoAudioOptionStimulusScreen("Stimuli", false, getStimuliString(), false,
-                null, 1000, repeatCount(), 20, true, 100, "", "");
+                null, 1000, repeatCount(), 20, true, 100, "", "", false);
 //        list1234Screen.setStimulusResponseOptions("1,2,3,4,5");
 //        list1234Screen.setStimulusResponseLabelLeft("zeer waarschijnlijk negatief");
 //        list1234Screen.setStimulusResponseLabelRight("zeer waarschijnlijk positief");
