@@ -68,10 +68,14 @@ public enum FeatureAttribute {
     imageWidth,
     alternativeChoice,
     msToNext,
-    animate,
+    animate, // @todo: animate currently is bounce or none, but might gain a serverside animation for multi participant experiments
     maxStimuli,
     condition0Tag,
     condition1Tag,
     condition2Tag,
-    scoreThreshold
+    scoreThreshold,
+    showPlaybackIndicator,
+    groupRole,
+    groupMembers,
+    groupCommunicationChannels
 }
