@@ -9,7 +9,7 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-gui</artifactId>
     <packaging>war</packaging>
-    <version>0.1.885-testing</version>
+    <version>0.1.939-testing</version>
     <name>FRINEX GWT-Cordova Template</name>
     <organization>
         <name>Max Planck Institute for Psycholinguistics, Nijmegen</name>
@@ -30,7 +30,7 @@
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
         <finalName>${experiment.configuration.name}-${project.artifactId}-${project.version}</finalName>
     </properties>
-
+    
     <dependencies>
         <!--        <dependency>
             <groupId>com.google.gwt</groupId>
@@ -88,6 +88,34 @@
             <groupId>nl.mpi</groupId>
             <artifactId>kin-type-string-parser</artifactId>
             <version>1.6-pretesting-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>webjars-locator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>sockjs-client</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>stomp-websocket</artifactId>
+            <version>2.3.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>3.3.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>3.1.0</version>
         </dependency>
     </dependencies>
 
@@ -559,6 +587,25 @@
                     <path>/${experiment.configuration.name}</path>
                 </configuration>
             </plugin>  
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <webResources>
+                        <resource>
+                            <directory>${project.build.sourceDirectory}/../resources</directory>
+                            <filtering>true</filtering>                
+                            <includes>
+                                <include>**/context.xml</include>
+                            </includes>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
