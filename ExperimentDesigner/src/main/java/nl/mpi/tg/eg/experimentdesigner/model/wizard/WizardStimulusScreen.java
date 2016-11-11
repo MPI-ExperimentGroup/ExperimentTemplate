@@ -65,7 +65,7 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
     }
 
     public void setFeatureValuesArray(StimuliSubAction[] featureValuesArray) {
-        wizardScreenData.setStimuliSubActions(featureValuesArray);
+        wizardScreenData.setStimuliSubActions(Arrays.asList(featureValuesArray));
     }
 
     public void setRandomiseStimuli(boolean randomiseStimuli) {
