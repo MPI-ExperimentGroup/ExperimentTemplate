@@ -22,7 +22,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 <html>
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' ${experiment.scriptSrcUrl} 'unsafe-inline'; script-src ${experiment.scriptSrcUrl} 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self' ${experiment.destinationServerUrl}; media-src 'self' http://corpus1.mpi.nl/media-archive/ ${experiment.staticFilesUrl};">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' @experiment.scriptSrcUrl@ 'unsafe-inline'; script-src @experiment.scriptSrcUrl@ 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self' @experiment.destinationServerUrl@ @experiment.groupsSocketUrl@; media-src 'self' http://corpus1.mpi.nl/media-archive/ @experiment.staticFilesUrl@;">
         <!--
                 <meta name="format-detection" content="telephone=no">
                 <meta name="msapplication-tap-highlight" content="no">
@@ -32,6 +32,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <title>ExperimentTemplate</title>
         <script type="text/javascript" language="javascript" src="ExperimentTemplate/ExperimentTemplate.nocache.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
+        <script src="webjars/jquery/jquery.min.js"></script>
+        <script src="webjars/sockjs-client/sockjs.min.js"></script>
+        <script src="webjars/stomp-websocket/stomp.min.js"></script>
     </head>
     <body>        
         <iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1' style="position:absolute;width:0;height:0;border:0"></iframe>
@@ -44,12 +47,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <h1 id="prerunMessage">
             Please enable javascript for this application to display correctly.<br/>
             <br/>
-            Frinex Experiment: ${experiment.configuration.name}<br/>           
-            ${experiment.destinationServer}<br/>
-            ${experiment.destinationServerUrl}<br/>
-            ${experiment.scriptSrcUrl}<br/>
-            ${experiment.staticFilesUrl}<br/>
-            Version: ${project.version}<br/>
+            Frinex Experiment: @experiment.configuration.name@<br/>           
+            @experiment.destinationServer@<br/>
+            @experiment.destinationServerUrl@<br/>
+            @experiment.scriptSrcUrl@<br/>
+            @experiment.staticFilesUrl@<br/>
+            Version: @project.version@<br/>
         </h1> 
     </body>
 </html>
