@@ -38,7 +38,7 @@ function setConnected(connected) {
 }
 
 function connect() {
-    var socket = new SockJS('/synquiz2-admin/gs-guide-websocket');
+    var socket = new SockJS('/multiparticipant/gs-guide-websocket');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         setConnected(true);
