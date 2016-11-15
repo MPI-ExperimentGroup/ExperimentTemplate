@@ -47,6 +47,7 @@ import nl.mpi.tg.eg.experiment.client.model.StimulusFreeText;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
+import nl.mpi.tg.eg.experiment.client.service.GroupParticipantService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.MatchingStimuliGroup;
 import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
@@ -68,6 +69,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
     private final LocalStorage localStorage;
     private final DataSubmissionService submissionService;
+    private GroupParticipantService groupParticipantService = null;
     final UserResults userResults;
     private final Duration duration;
     final ArrayList<ButtonBase> buttonList = new ArrayList<>();
@@ -164,15 +166,29 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         showStimulus();
     }
 
-    protected void loadSdCardStimulus(final String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
-        loadSdCardStimulus(eventTag, selectionTags, "", maxStimulusCount, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, endOfStimulusListener);
-    }
-
-    protected void loadSdCardStimulus(final String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final String subDirectory, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+    protected void loadSdCardStimulus(final String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+        final String subDirectory = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag());
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
-        final String storedStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag());
+        final String storedStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag() + subDirectory);
+        int seenStimulusIndextemp;
+        try {
+            seenStimulusIndextemp = Integer.parseInt(localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag()));
+        } catch (NumberFormatException exception) {
+            seenStimulusIndextemp = -1;
+        }
+        final int seenStimulusIndex = seenStimulusIndextemp;
         this.hasMoreStimulusListener = hasMoreStimulusListener;
-        this.endOfStimulusListener = endOfStimulusListener;
+        this.endOfStimulusListener = new TimedStimulusListener() {
+            @Override
+            public void postLoadTimerFired() {
+                if (subDirectory == null || subDirectory.isEmpty()) {
+                    endOfStimulusListener.postLoadTimerFired();
+                } else {
+                    localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag(), "");
+                    loadSdCardStimulus(eventTag, selectionTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, endOfStimulusListener);
+                }
+            }
+        };
         ArrayList<String> directoryTagArray = new ArrayList<>();
         if (subDirectory == null || subDirectory.isEmpty()) {
             for (GeneratedStimulus.Tag directoryTag : selectionTags) {
@@ -192,7 +208,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 } else {
                     hasSubdirectories = true;
                     for (final String[] directory : directoryList) {
-                        final boolean directoryCompleted = Boolean.parseBoolean(localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "completed-directory-" + directory[0]));
+                        final boolean directoryCompleted = Boolean.parseBoolean(localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "completed-directory-" + directory[0] + "-" + getSelfTag()));
                         ((TimedStimulusView) simpleView).addOptionButton(new PresenterEventListner() {
                             @Override
                             public String getLabel() {
@@ -201,13 +217,15 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
                             @Override
                             public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
-                                // show the subdirectory
-                                loadSdCardStimulus(directory[1], selectionTags, directory[0], maxStimulusCount, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, new TimedStimulusListener() {
+                                // show the subdirectorydirectory[0], 
+                                localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag(), directory[0]);
+                                loadSdCardStimulus(directory[1], selectionTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, new TimedStimulusListener() {
                                     @Override
                                     public void postLoadTimerFired() {
-                                        localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "completed-directory-" + directory[0], Boolean.toString(true));
+                                        localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "completed-directory-" + directory[0] + "-" + getSelfTag(), Boolean.toString(true));
                                         // go back to the initial directory 
-                                        loadSdCardStimulus(eventTag, selectionTags, subDirectory, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, endOfStimulusListener);
+                                        localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag(), "");
+                                        loadSdCardStimulus(eventTag, selectionTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, endOfStimulusListener);
                                     }
                                 });
                             }
@@ -225,7 +243,23 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             public void postLoadTimerFired() {
                 ((TimedStimulusView) simpleView).addText("Stimulus loading error");
             }
-        }, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, storedStimulusList);
+        }, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, storedStimulusList, seenStimulusIndex);
+    }
+
+    @Override
+    protected boolean allowBackAction(final AppEventListner appEventListner) {
+        final String subDirectory = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag());
+        if (subDirectory != null) {
+            if (!subDirectory.isEmpty()) {
+                localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag(), "");
+                setContent(appEventListner);
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return true;
+        }
     }
 
     protected void loadStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
@@ -310,17 +344,17 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void showStimulus() {
         final int currentStimulusIndex = stimulusProvider.getCurrentStimulusIndex();
-        localStorage.setStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag(), Integer.toString(currentStimulusIndex));
-        localStorage.setStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag(), stimulusProvider.getLoadedStimulusString());
+        final String subDirectory = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag());
+        localStorage.setStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag() + ((subDirectory != null) ? subDirectory : ""), Integer.toString(currentStimulusIndex));
+        localStorage.setStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag() + ((subDirectory != null) ? subDirectory : ""), stimulusProvider.getLoadedStimulusString());
         if (stimulusProvider.hasNextStimulus()) {
             stimulusProvider.nextStimulus();
 //            submissionService.submitTagValue(userResults.getUserData().getUserId(), "NextStimulus", stimulusProvider.getCurrentStimulus().getUniqueId(), duration.elapsedMillis());
 //            super.startAudioRecorderTag(STIMULUS_TIER);
             hasMoreStimulusListener.postLoadTimerFired();
+//        } else if (!hasSubdirectories) {
+//            localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "completed-screen-" + getSelfTag(), Boolean.toString(true));
         } else {
-            if (!hasSubdirectories) {
-                localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "completed-screen-" + getSelfTag(), Boolean.toString(true));
-            }
             endOfStimulusListener.postLoadTimerFired();
         }
     }
@@ -354,6 +388,50 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         stimulusProvider.pushCurrentStimulusToEnd();
     }
 
+    protected void groupNetwork(final String groupMembers, final String groupCommunicationChannels, final TimedStimulusListener timedStimulusListener) {
+        ((ComplexView) simpleView).addText("Group Members");
+        ((ComplexView) simpleView).addText(groupMembers);
+        ((ComplexView) simpleView).addPadding();
+        ((ComplexView) simpleView).addText("Group Communication Channels");
+        ((ComplexView) simpleView).addText(groupCommunicationChannels);
+        if (groupParticipantService == null) {
+            groupParticipantService = new GroupParticipantService(groupMembers, groupCommunicationChannels, new TimedStimulusListener() {
+                @Override
+                public void postLoadTimerFired() {
+                    ((ComplexView) simpleView).addPadding();
+                    ((ComplexView) simpleView).addText("connected: " + groupParticipantService.isConnected());
+                    timedStimulusListener.postLoadTimerFired();
+                    groupParticipantService.messageGroup(userResults.getUserData().getUserId().toString(), groupMembers, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null);
+                }
+            }, new TimedStimulusListener() {
+                @Override
+                public void postLoadTimerFired() {
+                    ((ComplexView) simpleView).addPadding();
+                    ((ComplexView) simpleView).addHighlightedText("Message Received");
+                    ((ComplexView) simpleView).addText("AllMemberCodes: " + groupParticipantService.getAllMemberCodes());
+                    ((ComplexView) simpleView).addText("GroupId: " + groupParticipantService.getGroupId());
+                    ((ComplexView) simpleView).addText("MemberCode: " + groupParticipantService.getMemberCode());
+                    ((ComplexView) simpleView).addText("MessageString: " + groupParticipantService.getMessageString());
+                    ((ComplexView) simpleView).addText("StimulusId: " + groupParticipantService.getStimulusId());
+                    ((ComplexView) simpleView).addText("StimulusIndex: " + groupParticipantService.getStimulusIndex());
+                    ((ComplexView) simpleView).addText("UserLabel: " + groupParticipantService.getUserLabel());
+                    ((ComplexView) simpleView).addText("GroupReady: " + groupParticipantService.isGroupReady());
+                    ((ComplexView) simpleView).addText("UserIdMatches: " + groupParticipantService.isUserIdMatches());
+                    ((ComplexView) simpleView).addPadding();
+                }
+            });
+            groupParticipantService.joinGroupNetwork(serviceLocations.groupServerUrl(), getSelfTag());
+        } else {
+            groupParticipantService.messageGroup(userResults.getUserData().getUserId().toString(), groupMembers, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null);
+        }
+    }
+
+    protected void groupNetworkActivity(String groupRole, final TimedStimulusListener timedStimulusListener) {
+        ((ComplexView) simpleView).addPadding();
+        ((ComplexView) simpleView).addText("Adding GroupRole: " + groupRole);
+        groupParticipantService.addGroupActivity(groupRole, timedStimulusListener);
+    }
+
     protected void stimulusFreeText(String validationRegex, String validationChallenge) {
         StimulusFreeText stimulusFreeText = ((TimedStimulusView) simpleView).addStimulusFreeText(validationRegex, validationChallenge);
         stimulusFreeTextList.add(stimulusFreeText);
@@ -364,9 +442,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         final SdCardImageCapture sdCardImageCapture = new SdCardImageCapture(new TimedStimulusListener() {
             @Override
             public void postLoadTimerFired() {
-               // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                ((TimedStimulusView) simpleView).clearPage();
+                // cause the taken image to be shown
+                hasMoreStimulusListener.postLoadTimerFired();
             }
-        }, currentStimulus, userResults.getUserData().getUserId());
+        }, currentStimulus, userResults.getUserData().getUserId(), localStorage);
         if (sdCardImageCapture.hasBeenCaptured()) {
             final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
                 @Override
@@ -515,7 +595,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, postLoadMs, shownStimulusListener, timedStimulusListener);
     }
 
-    protected void stimulusAudio(int postLoadMs, TimedStimulusListener timedStimulusListener) {
+    protected void stimulusAudio(int postLoadMs, TimedStimulusListener timedStimulusListener, boolean showPlaybackIndicator) {
+        //@todo: utilise the showPlaybackIndicator
         final String audio = stimulusProvider.getCurrentStimulus().getAudio();
         final String uniqueId = stimulusProvider.getCurrentStimulus().getUniqueId();
         String ogg = audio + ".ogg";
