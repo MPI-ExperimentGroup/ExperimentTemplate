@@ -93,10 +93,8 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
         final PresenterFeature groupNetworkActivity1 = new PresenterFeature(FeatureType.groupNetworkActivity, null);
         groupNetworkActivity1.addFeatureAttributes(FeatureAttribute.groupRole, "A,C,E:B,D,F:A,C,G:B,D,H");
-        groupNetwork.getPresenterFeatureList().add(groupNetworkActivity1);
         final PresenterFeature groupNetworkActivity2 = new PresenterFeature(FeatureType.groupNetworkActivity, null);
         groupNetworkActivity2.addFeatureAttributes(FeatureAttribute.groupRole, "B,D,F,G,H:A,C,E,G,H:B,D,E,F,H:A,C,E,F,G");
-        groupNetwork.getPresenterFeatureList().add(groupNetworkActivity2);
 
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadStimulus, null);
         loadStimuliFeature.addStimulusTag(storedWizardScreenData.getScreenTitle());
@@ -106,7 +104,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "1");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, "0");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(storedWizardScreenData.getStimuliCount()));
-        presenterFeatureList.add(loadStimuliFeature);
+
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
         groupNetworkActivity1.getPresenterFeatureList().add(imageFeature);
@@ -130,7 +128,14 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         nextStimulusFeature1.addFeatureAttributes(FeatureAttribute.hotKey, "W");
         groupNetworkActivity1.getPresenterFeatureList().add(nextStimulusFeature1);
         // end testing features
+
         hasMoreStimulusFeature.getPresenterFeatureList().add(groupNetwork);
+        presenterFeatureList.add(loadStimuliFeature);
+        groupNetwork.getPresenterFeatureList().add(groupNetworkActivity1);
+        groupNetwork.getPresenterFeatureList().add(groupNetworkActivity2);
+//        hasMoreStimulusFeature.getPresenterFeatureList().add(groupNetworkActivity1);
+//        hasMoreStimulusFeature.getPresenterFeatureList().add(groupNetworkActivity2);
+
         imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
         imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
         imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
