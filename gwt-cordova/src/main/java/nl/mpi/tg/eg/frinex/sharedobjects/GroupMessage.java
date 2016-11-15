@@ -29,6 +29,7 @@ public class GroupMessage {
     private String allMemberCodes;
     private String memberCode;
     private String stimulusId;
+    private Integer stimulusIndex;
     private String messageString;
     private boolean groupReady;
 
@@ -97,5 +98,13 @@ public class GroupMessage {
 
     public void setGroupReady(boolean groupReady) {
         this.groupReady = groupReady;
+    }
+
+    public Integer getStimulusIndex() {
+        return stimulusIndex;
+    }
+
+    public void setStimulusIndex(Integer stimulusIndex) {
+        this.stimulusIndex = stimulusIndex;
     }
 }
