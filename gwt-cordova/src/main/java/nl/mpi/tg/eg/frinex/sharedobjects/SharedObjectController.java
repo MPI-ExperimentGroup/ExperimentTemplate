@@ -54,6 +54,7 @@ public class SharedObjectController {
         if (allMembersList.containsKey(groupMessage.getUserId())) {
             storedMessage = allMembersList.get(groupMessage.getUserId());
             storedMessage.setStimulusId(groupMessage.getStimulusId());
+            storedMessage.setStimulusIndex(groupMessage.getStimulusIndex());
             storedMessage.setMessageString(groupMessage.getMessageString());
         } else {
             allMembersList.put(groupMessage.getUserId(), groupMessage);
@@ -74,7 +75,7 @@ public class SharedObjectController {
         }
         if (storedMessage.getMemberCode() == null || storedMessage.getMemberCode().isEmpty()) {
             storedMessage.setMemberCode(unAllocatedMemberCodes.get(storedMessage.getGroupId()).remove(0));
-            storedMessage.setUserLabel(storedMessage.getMemberCode() + storedMessage.getUserId());
+            storedMessage.setUserLabel(storedMessage.getMemberCode());
         }
         storedMessage.setGroupReady(unAllocatedMemberCodes.get(storedMessage.getGroupId()).isEmpty());
         storedMessage.setAllMemberCodes(allMemberCodes.get(storedMessage.getGroupId()));
