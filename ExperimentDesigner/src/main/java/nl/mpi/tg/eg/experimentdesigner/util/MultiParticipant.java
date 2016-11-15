@@ -30,7 +30,23 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMultiParticipantScreen
 public class MultiParticipant {
 
     private final WizardController wizardController = new WizardController();
+    // @todo: scoring for each participant 
+    // @todo: the allocated member id must maintained thoughout the experiment
+    // @todo: show the experiment total score not the participants score
+    // @todo: round 0 is the naming screen and does not collect guesses and therefore no scores
 
+//,Round,Dyad,Game.no,Item.ID,Shape,Size,RawSize,ItemCurrentAge,Producer,Word,ACC
+//165,1,AB,1,10,2,small,2.74,2,A,flup,0
+//167,1,CD,1,10,2,small,2.74,2,C,mozel,1
+//65,1,AB,2,5,1,small,2.94,2,B,mozel,1
+//67,1,CD,2,5,1,small,2.94,2,D,tjalp,1
+//297,1,AB,3,19,4,medium,4.4,2,A,flolp,1
+//299,1,CD,3,19,4,medium,3.95,2,C,vlolp,1
+//147,1,AB,4,9,2,medium,4.51,2,B,kimi,0
+//149,1,CD,4,9,2,medium,4.51,2,D,vlalp,0
+//85,1,AB,5,6,2,big,7.6,2,A,dauft,0
+//87,1,CD,5,6,2,big,7.6,2,C,potmik,1
+    
     private final String[] stimuliArray
             = new String[]{"1-1.png", "1-7.png", "2-6.png", "3-5.png", "4-4.png"
                 + "1-2.png", "2-1.png", "2-7.png", "3-6.png", "4-5.png"

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<experiment appNameDisplay="MultiParticipant" appNameInternal="multiparticipant" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="true" textFontSize="17">
+    <metadata>
+        <field controlledMessage="Please enter a valid age." controlledRegex="[0-9]+" postName="age" preventServerDuplicates="false" registrationField="Age"/>
+        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="firstName" preventServerDuplicates="false" registrationField="First name"/>
+        <field controlledRegex="|male|female|other" postName="gender" preventServerDuplicates="false" registrationField="Gender"/>
+        <field controlledMessage="Please enter your login code." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Login code"/>
+    </metadata>
+    <presenter displayOrder="1" menuLabel="Edit User" next="MultiParticipant" type="metadata" self="Edit_User" title="Edit User">
+        <metadataField fieldName="age"/>
+        <metadataField fieldName="firstName"/>
+        <metadataField fieldName="gender"/>
+        <metadataField fieldName="workerId"/>
+        <saveMetadataButton featureText="Next" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+            <onError/>
+            <onSuccess>
+                <autoNextPresenter/>
+            </onSuccess>
+        </saveMetadataButton>
+    </presenter>
+    <presenter displayOrder="2" menuLabel="MultiParticipant" type="stimulus" self="MultiParticipant" title="MultiParticipant">
+        <centrePage/>
+        <loadStimulus eventTag="MultiParticipant" randomise="false" repeatRandomWindow="0" maxStimuli="8" repeatCount="1">
+            <hasMoreStimulus>
+                <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,B|C,D|E,F,G,H">
+                    <groupNetworkActivity groupRole="A,C,E:B,D,F:A,C,G:B,D,H">
+                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
+                            <addPadding/>
+                        </stimulusImage>
+                        <nextStimulusButton featureText="groupNetworkActivity1" eventTag="groupNetworkActivity1" hotKey="W" norepeat="true"/>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupRole="B,D,F,G,H:A,C,E,G,H:B,D,E,F,H:A,C,E,F,G">
+                        <ratingButton eventTier="1" ratingLabelRight="" ratingLabels="one,two,three" ratingLabelLeft=""/>
+                        <nextStimulusButton featureText="groupNetworkActivity2" eventTag="groupNetworkActivity2" hotKey="Q" norepeat="true"/>
+                    </groupNetworkActivity>
+                </groupNetwork>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <autoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>MultiParticipant</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <stimuli>
+        <stimulus identifier="1-1" imagePath="1-1.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+        <stimulus identifier="1-7" imagePath="1-7.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+        <stimulus identifier="2-6" imagePath="2-6.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+        <stimulus identifier="3-5" imagePath="3-5.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+        <stimulus identifier="4-41-2" imagePath="4-4.png1-2.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+        <stimulus identifier="2-1" imagePath="2-1.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+        <stimulus identifier="2-7" imagePath="2-7.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+        <stimulus identifier="3-6" imagePath="3-6.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+        <stimulus identifier="4-51-3" imagePath="4-5.png1-3.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+        <stimulus identifier="2-2" imagePath="2-2.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+        <stimulus identifier="3-1" imagePath="3-1.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+        <stimulus identifier="3-7" imagePath="3-7.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+        <stimulus identifier="4-61-4" imagePath="4-6.png1-4.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+        <stimulus identifier="2-3" imagePath="2-3.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+        <stimulus identifier="3-2" imagePath="3-2.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+        <stimulus identifier="4-1" imagePath="4-1.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+        <stimulus identifier="4-71-5" imagePath="4-7.png1-5.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+        <stimulus identifier="2-4" imagePath="2-4.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+        <stimulus identifier="3-3" imagePath="3-3.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+        <stimulus identifier="4-2" imagePath="4-2.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+        <stimulus identifier="1-6" imagePath="1-6.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+        <stimulus identifier="2-5" imagePath="2-5.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+        <stimulus identifier="3-4" imagePath="3-4.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+        <stimulus identifier="4-3" imagePath="4-3.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+    </stimuli>
+</experiment>

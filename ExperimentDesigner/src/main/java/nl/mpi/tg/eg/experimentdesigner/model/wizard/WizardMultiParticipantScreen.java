@@ -110,6 +110,26 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
         groupNetworkActivity1.getPresenterFeatureList().add(imageFeature);
+        // temporary testing features
+        final PresenterFeature guesserRatingButtons = new PresenterFeature(FeatureType.ratingButton, null);
+        guesserRatingButtons.addFeatureAttributes(FeatureAttribute.ratingLabels, "one,two,three");
+        guesserRatingButtons.addFeatureAttributes(FeatureAttribute.ratingLabelLeft, "");
+        guesserRatingButtons.addFeatureAttributes(FeatureAttribute.ratingLabelRight, "");
+        guesserRatingButtons.addFeatureAttributes(FeatureAttribute.eventTier, "1");
+        groupNetworkActivity2.getPresenterFeatureList().add(guesserRatingButtons);
+        // temporary testing features
+        final PresenterFeature nextStimulusFeature2 = new PresenterFeature(FeatureType.nextStimulusButton, "groupNetworkActivity2");
+        nextStimulusFeature2.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+        nextStimulusFeature2.addFeatureAttributes(FeatureAttribute.eventTag, "groupNetworkActivity2");
+        nextStimulusFeature2.addFeatureAttributes(FeatureAttribute.hotKey, "Q");
+        groupNetworkActivity2.getPresenterFeatureList().add(nextStimulusFeature2);
+        // temporary testing features
+        final PresenterFeature nextStimulusFeature1 = new PresenterFeature(FeatureType.nextStimulusButton, "groupNetworkActivity1");
+        nextStimulusFeature1.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+        nextStimulusFeature1.addFeatureAttributes(FeatureAttribute.eventTag, "groupNetworkActivity1");
+        nextStimulusFeature1.addFeatureAttributes(FeatureAttribute.hotKey, "W");
+        groupNetworkActivity1.getPresenterFeatureList().add(nextStimulusFeature1);
+        // end testing features
         hasMoreStimulusFeature.getPresenterFeatureList().add(groupNetwork);
         imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
         imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
