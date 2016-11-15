@@ -79,6 +79,7 @@ public class MultiParticipant {
         wizardMultiParticipantScreen.setStimuliSet(stimuliArray);
         wizardData.addScreen(wizardMultiParticipantScreen);
         wizardEditUserScreen.setNextWizardScreen(wizardMultiParticipantScreen);
+        wizardMultiParticipantScreen.setNextWizardScreen(wizardEditUserScreen);
         return wizardData;
     }
 
