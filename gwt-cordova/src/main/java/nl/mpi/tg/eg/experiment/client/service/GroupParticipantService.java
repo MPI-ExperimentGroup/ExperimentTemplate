@@ -24,7 +24,7 @@ import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
  * @since Nov 8, 2016 1:47:57 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class GroupParticipantService implements TimedStimulusListener {
+public class GroupParticipantService {
 
     private final HashMap<String, TimedStimulusListener> groupActivityListeners = new HashMap<>();
     private final String groupMembers;
@@ -39,9 +39,10 @@ public class GroupParticipantService implements TimedStimulusListener {
     private String memberCode = null;
     private String groupId = null;
     private String stimulusId = null;
+    private Integer stimulusIndex = null;
     private String messageString = null;
     private Boolean groupReady = false;
-    private boolean userIdMatches = false;
+    private Boolean userIdMatches = false;
 
     public GroupParticipantService(String groupMembers, String groupCommunicationChannels, TimedStimulusListener connectedListener, TimedStimulusListener messageListener) {
         this.groupMembers = groupMembers;
@@ -54,21 +55,26 @@ public class GroupParticipantService implements TimedStimulusListener {
         groupActivityListeners.put(groupRole, activityListener);
     }
 
-    @Override
-    public void postLoadTimerFired() {
-        connectedListener.postLoadTimerFired();
-    }
-
-    protected void handleGroupMessage(String userId, String userLabel, String groupId, String allMemberCodes, String memberCode, String stimulusId, String messageString, Boolean groupReady) {
+    protected void handleGroupMessage(String userId, String userLabel, String groupId, String allMemberCodes, String memberCode, String stimulusId, String stimulusIndex, String messageString, Boolean groupReady) {
         userIdMatches = this.userId.equals(userId);
         this.userLabel = userLabel;
         this.allMemberCodes = allMemberCodes;
         this.memberCode = memberCode;
         this.groupId = groupId;
         this.stimulusId = stimulusId;
+        this.stimulusIndex = Integer.parseInt(stimulusIndex);
         this.messageString = messageString;
         this.groupReady = groupReady;
         messageListener.postLoadTimerFired();
+
+        for (String groupRole : groupActivityListeners.keySet()) {
+            final String[] splitRole = groupRole.split(":");
+            int roleIndex = this.stimulusIndex % splitRole.length;
+            if (splitRole[roleIndex].contains(memberCode)) {
+                groupActivityListeners.get(groupRole).postLoadTimerFired();
+            }
+        }
+
     }
 
     protected void setConnected(Boolean isConnected) {
@@ -104,6 +110,10 @@ public class GroupParticipantService implements TimedStimulusListener {
         return stimulusId;
     }
 
+    public Integer getStimulusIndex() {
+        return stimulusIndex;
+    }
+
     public String getMessageString() {
         return messageString;
     }
@@ -122,25 +132,26 @@ public class GroupParticipantService implements TimedStimulusListener {
             {
 //            withCredentials: false,
 //            noCredentials : true
-            }, 
+            },
             function (frame) {
             groupParticipantService.@nl.mpi.tg.eg.experiment.client.service.GroupParticipantService::setConnected(Ljava/lang/Boolean;)(@java.lang.Boolean::TRUE);
             console.log('Connected: ' + frame);
             stompClient.subscribe('/shared/group', function (groupMessage) {
                 var contentData = JSON.parse(groupMessage.body);
                 console.log('contentData: ' + contentData);
-                groupParticipantService.@nl.mpi.tg.eg.experiment.client.service.GroupParticipantService::handleGroupMessage(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;)(contentData.userId, contentData.userLabel, contentData.groupId, contentData.allMemberCodes, contentData.memberCode, contentData.stimulusId, contentData.messageString, contentData.groupReady == true);
+                groupParticipantService.@nl.mpi.tg.eg.experiment.client.service.GroupParticipantService::handleGroupMessage(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;)(contentData.userId, contentData.userLabel, contentData.groupId, contentData.allMemberCodes, contentData.memberCode, contentData.stimulusId, Number(contentData.stimulusIndex), contentData.messageString, (contentData.groupReady)?@java.lang.Boolean::TRUE : @java.lang.Boolean::FALSE);
             });
         });
      }-*/;
 
-    public native void messageGroup(String userId, String messageString) /*-{
+    public native void messageGroup(String userId, String allMemberCodes, String stimulusId, String stimulusIndex, String messageString) /*-{
     stompClient.send("/app/group", {}, JSON.stringify({
         'userId': userId,
         'userLabel': null,
-        'allMemberCodes': 'A,B,C,D,E,F,G',
+        'allMemberCodes': allMemberCodes,
         'memberCode': null,
-        'stimulusId': Math.floor((1 + Math.random()) * 0x10000),
+        'stimulusId': stimulusId,
+        'stimulusIndex': stimulusIndex,
         'messageString': messageString,
         'groupReady': null
     }));
