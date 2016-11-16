@@ -124,6 +124,8 @@ public enum FeatureType {
     versionData(false, false, null),
     preventWindowClose(false, false, null),
     showColourReport(true, false, new FeatureAttribute[]{scoreThreshold}, false, false, Contitionals.hasThreshold),
+    groupNetwork(true, false, new FeatureAttribute[]{groupMembers, groupCommunicationChannels}, false, false, Contitionals.hasGroupActivities),
+    groupNetworkActivity(true, false, new FeatureAttribute[]{groupRole, groupMessageMatch}, false, false, Contitionals.none),
     submitTestResults(true, false, null, false, false, Contitionals.hasErrorSuccess);
     private final boolean canHaveFeatures;
     private final boolean canHaveText;
@@ -139,6 +141,7 @@ public enum FeatureType {
         hasErrorSuccess,
         hasUserCount,
         hasThreshold,
+        hasGroupActivities,
         none
     }
 
