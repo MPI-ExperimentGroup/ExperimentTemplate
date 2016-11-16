@@ -25,6 +25,7 @@ public class GroupMessage {
 
     private String userId;
     private String groupId;
+    private String screenId;
     private String userLabel;
     private String allMemberCodes;
     private String memberCode;
@@ -42,6 +43,14 @@ public class GroupMessage {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getScreenId() {
+        return screenId;
+    }
+
+    public void setScreenId(String screenId) {
+        this.screenId = screenId;
     }
 
     public String getGroupId() {

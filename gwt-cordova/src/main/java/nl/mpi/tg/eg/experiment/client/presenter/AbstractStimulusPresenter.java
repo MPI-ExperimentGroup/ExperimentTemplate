@@ -55,6 +55,7 @@ import nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture;
 import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
+import nl.mpi.tg.eg.experiment.client.sharedobjects.GroupMessageMatch;
 
 /**
  * @since Jun 23, 2015 11:36:37 AM (creation date)
@@ -395,13 +396,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((ComplexView) simpleView).addText("Group Communication Channels");
         ((ComplexView) simpleView).addText(groupCommunicationChannels);
         if (groupParticipantService == null) {
-            groupParticipantService = new GroupParticipantService(groupMembers, groupCommunicationChannels, new TimedStimulusListener() {
+            groupParticipantService = new GroupParticipantService(userResults.getUserData().getUserId().toString(), getSelfTag(), groupMembers, groupCommunicationChannels, new TimedStimulusListener() {
                 @Override
                 public void postLoadTimerFired() {
                     ((ComplexView) simpleView).addPadding();
                     ((ComplexView) simpleView).addText("connected: " + groupParticipantService.isConnected());
                     timedStimulusListener.postLoadTimerFired();
-                    groupParticipantService.messageGroup(userResults.getUserData().getUserId().toString(), groupMembers, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null);
+                    groupParticipantService.messageGroup(stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null);
                 }
             }, new TimedStimulusListener() {
                 @Override
@@ -416,20 +417,20 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     ((ComplexView) simpleView).addText("StimulusIndex: " + groupParticipantService.getStimulusIndex());
                     ((ComplexView) simpleView).addText("UserLabel: " + groupParticipantService.getUserLabel());
                     ((ComplexView) simpleView).addText("GroupReady: " + groupParticipantService.isGroupReady());
-                    ((ComplexView) simpleView).addText("UserIdMatches: " + groupParticipantService.isUserIdMatches());
+//                    ((ComplexView) simpleView).addText("UserIdMatches: " + groupParticipantService.isUserIdMatches());
                     ((ComplexView) simpleView).addPadding();
                 }
             });
-            groupParticipantService.joinGroupNetwork(serviceLocations.groupServerUrl(), getSelfTag());
+            groupParticipantService.joinGroupNetwork(serviceLocations.groupServerUrl());
         } else {
-            groupParticipantService.messageGroup(userResults.getUserData().getUserId().toString(), groupMembers, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null);
+            groupParticipantService.messageGroup(stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null);
         }
     }
 
-    protected void groupNetworkActivity(String groupRole, final TimedStimulusListener timedStimulusListener) {
+    protected void groupNetworkActivity(final String groupRole, final GroupMessageMatch groupMessageMatch, final TimedStimulusListener timedStimulusListener) {
         ((ComplexView) simpleView).addPadding();
         ((ComplexView) simpleView).addText("Adding GroupRole: " + groupRole);
-        groupParticipantService.addGroupActivity(groupRole, timedStimulusListener);
+        groupParticipantService.addGroupActivity(groupRole, groupMessageMatch, timedStimulusListener);
     }
 
     protected void stimulusFreeText(String validationRegex, String validationChallenge) {
