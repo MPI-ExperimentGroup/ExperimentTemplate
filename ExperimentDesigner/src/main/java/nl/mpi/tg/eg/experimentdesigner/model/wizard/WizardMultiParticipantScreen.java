@@ -23,6 +23,7 @@ import java.util.HashSet;
 import java.util.List;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
+import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.groupMessageMatch;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
@@ -93,8 +94,10 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
         final PresenterFeature groupNetworkActivity1 = new PresenterFeature(FeatureType.groupNetworkActivity, null);
         groupNetworkActivity1.addFeatureAttributes(FeatureAttribute.groupRole, "A,C,E:B,D,F:A,C,G:B,D,H");
+        groupNetworkActivity1.addFeatureAttributes(FeatureAttribute.groupMessageMatch, "self");
         final PresenterFeature groupNetworkActivity2 = new PresenterFeature(FeatureType.groupNetworkActivity, null);
         groupNetworkActivity2.addFeatureAttributes(FeatureAttribute.groupRole, "B,D,F,G,H:A,C,E,G,H:B,D,E,F,H:A,C,E,F,G");
+        groupNetworkActivity2.addFeatureAttributes(FeatureAttribute.groupMessageMatch, "other");
 
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadStimulus, null);
         loadStimuliFeature.addStimulusTag(storedWizardScreenData.getScreenTitle());

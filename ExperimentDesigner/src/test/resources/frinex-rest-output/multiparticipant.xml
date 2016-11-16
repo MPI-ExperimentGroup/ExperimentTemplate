@@ -18,18 +18,18 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter displayOrder="2" menuLabel="MultiParticipant" type="stimulus" self="MultiParticipant" title="MultiParticipant">
+    <presenter displayOrder="2" menuLabel="MultiParticipant" next="Edit_User" type="stimulus" self="MultiParticipant" title="MultiParticipant">
         <centrePage/>
         <loadStimulus eventTag="MultiParticipant" randomise="false" repeatRandomWindow="0" maxStimuli="8" repeatCount="1">
             <hasMoreStimulus>
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,B|C,D|E,F,G,H">
-                    <groupNetworkActivity groupRole="A,C,E:B,D,F:A,C,G:B,D,H">
+                    <groupNetworkActivity groupMessageMatch="self" groupRole="A,C,E:B,D,F:A,C,G:B,D,H">
                         <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                             <addPadding/>
                         </stimulusImage>
                         <nextStimulusButton featureText="groupNetworkActivity1" eventTag="groupNetworkActivity1" hotKey="W" norepeat="true"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupRole="B,D,F,G,H:A,C,E,G,H:B,D,E,F,H:A,C,E,F,G">
+                    <groupNetworkActivity groupMessageMatch="other" groupRole="B,D,F,G,H:A,C,E,G,H:B,D,E,F,H:A,C,E,F,G">
                         <ratingButton eventTier="1" ratingLabelRight="" ratingLabels="one,two,three" ratingLabelLeft=""/>
                         <nextStimulusButton featureText="groupNetworkActivity2" eventTag="groupNetworkActivity2" hotKey="Q" norepeat="true"/>
                     </groupNetworkActivity>
