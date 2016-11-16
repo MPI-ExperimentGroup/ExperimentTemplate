@@ -77,5 +77,6 @@ public enum FeatureAttribute {
     showPlaybackIndicator,
     groupRole,
     groupMembers,
+    groupMessageMatch,
     groupCommunicationChannels
 }
