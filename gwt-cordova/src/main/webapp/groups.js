@@ -31,7 +31,7 @@ function setConnected(connected) {
     $("#animateTarget").html("");
     if (connected) {
         $("#conversation").show();
-        $("#groupTarget").append("<tr><td>userId</td><td>Label</td><td>Group</td><td>MemberCodes</td><td>Code</td><td>stimulusId</td><td>message</td><td>Ready</td></tr>");
+        $("#groupTarget").append("<tr><td>userId</td><td>Label</td><td>Group</td><td>MemberCodes</td><td>Code</td><td>requestedPhase</td><td>stimulusId</td><td>message</td><td>Ready</td></tr>");
     } else {
         $("#conversation").hide();
     }
@@ -62,9 +62,9 @@ function connect() {
                 $("#groupTarget").append("<tr id=\"userId" + contentData.userId + "\"></tr>");
                 usersTableRow = $("#userId" + contentData.userId);
             }
-            var usersTableCells = "<td>" + contentData.userId + "</td><td>" + contentData.userLabel + "</td><td>" + contentData.groupId + "</td><td>" + contentData.allMemberCodes + "</td><td>" + contentData.memberCode + "</td><td>" + contentData.stimulusId + "</td><td>" + contentData.messageString + "</td><td>" + contentData.groupReady + "</td>";
-            var messageButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup('" + contentData.userId + "','" + contentData.userLabel + "','" + contentData.groupId + "','" + contentData.allMemberCodes + "','" + contentData.memberCode + "','" + contentData.stimulusId + "')\">message</button></td>";
-            var addButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup(Math.floor((1 + Math.random()) * 0x10000),null,'" + contentData.groupId + "','" + contentData.allMemberCodes + "',null,null)\">add member</button></td>";
+            var usersTableCells = "<td>" + contentData.userId + "</td><td>" + contentData.userLabel + "</td><td>" + contentData.groupId + "</td><td>" + contentData.allMemberCodes + "</td><td>" + contentData.memberCode + "</td><td>" + contentData.requestedPhase + "</td><td>" + contentData.stimulusId + "</td><td>" + contentData.messageString + "</td><td>" + contentData.groupReady + "</td>";
+            var messageButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup('" + contentData.userId + "','" + contentData.screenId + "','" + contentData.userLabel + "','" + contentData.groupId + "','" + contentData.allMemberCodes + "','" + contentData.memberCode + "','" + contentData.stimulusId + "')\">message</button></td>";
+            var addButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup(Math.floor((1 + Math.random()) * 0x10000),null,'" + contentData.screenId + "','" + contentData.groupId + "','" + contentData.allMemberCodes + "',null,null)\">add member</button></td>";
             usersTableRow.html(usersTableCells + messageButtonCell + addButtonCell);
 
 //            var groupMemberDiv = $("<div style='background: grey;' class='progressDivBar'>&nbsp;</div>");
@@ -109,11 +109,12 @@ function updateGroup() {
         'groupReady': null
     }));
 }
-function messageGroup(currentUserId, userLabel, groupId, allMemberCodes, memberCode, stimulusId) {
+function messageGroup(currentUserId, screenId, userLabel, groupId, allMemberCodes, memberCode, stimulusId) {
     stompClient.send("/app/group", {}, JSON.stringify({
         'userId': currentUserId,
         'userLabel': userLabel,
         'groupId': groupId,
+        'screenId': screenId,
         'allMemberCodes': allMemberCodes,
         'memberCode': memberCode,
         'stimulusId': stimulusId,

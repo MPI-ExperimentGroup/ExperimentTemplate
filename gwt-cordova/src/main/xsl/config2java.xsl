@@ -424,9 +424,9 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             }
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-            appEventListner.requestApplicationState(ApplicationState.</xsl:text>
-        <xsl:value-of select="@target" />
-        <xsl:text>);
+                    appEventListner.requestApplicationState(ApplicationState.</xsl:text>
+                <xsl:value-of select="@target" />
+                <xsl:text>);
             }
             }</xsl:text>
         <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
@@ -468,7 +468,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="logTimeStamp|audioButton|nextStimulusButton|nextStimulus|nextMatchingStimulus">            
+    <xsl:template match="logTimeStamp|audioButton|nextStimulusButton|nextStimulus|nextMatchingStimulus|sendGroupMessageButton">              
         <xsl:text>    </xsl:text>    
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
@@ -479,6 +479,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />        
         <xsl:value-of select="if(@norepeat) then concat(', ', @norepeat eq 'true') else ''" />
         <xsl:value-of select="if(@hotKey) then concat(', KeyCodes.KEY_', @hotKey) else ''" />
+        <xsl:value-of select="if(@requestedPhase) then concat(', ', @requestedPhase) else ''" />
         <xsl:if test="local-name() eq 'audioButton'">
             <xsl:text>, new TimedStimulusListener() {
 

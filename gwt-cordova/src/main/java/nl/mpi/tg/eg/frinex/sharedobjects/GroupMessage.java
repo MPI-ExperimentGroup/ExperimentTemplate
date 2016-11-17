@@ -31,6 +31,7 @@ public class GroupMessage {
     private String memberCode;
     private String stimulusId;
     private Integer stimulusIndex;
+    private Integer requestedPhase;
     private String messageString;
     private boolean groupReady;
 
@@ -115,5 +116,13 @@ public class GroupMessage {
 
     public void setStimulusIndex(Integer stimulusIndex) {
         this.stimulusIndex = stimulusIndex;
+    }
+
+    public Integer getRequestedPhase() {
+        return requestedPhase;
+    }
+
+    public void setRequestedPhase(Integer requestedPhase) {
+        this.requestedPhase = requestedPhase;
     }
 }

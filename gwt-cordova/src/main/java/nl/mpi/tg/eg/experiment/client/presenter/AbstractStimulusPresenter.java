@@ -402,19 +402,26 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     ((ComplexView) simpleView).addPadding();
                     ((ComplexView) simpleView).addText("connected: " + groupParticipantService.isConnected());
                     timedStimulusListener.postLoadTimerFired();
-                    groupParticipantService.messageGroup(stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null);
+                    Timer timer = new Timer() {
+                        public void run() {
+                            groupParticipantService.messageGroup(0, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null);
+                        }
+                    };
+                    timer.schedule(100);
                 }
             }, new TimedStimulusListener() {
                 @Override
                 public void postLoadTimerFired() {
+                    ((ComplexView) simpleView).clearPage();
                     ((ComplexView) simpleView).addPadding();
-                    ((ComplexView) simpleView).addHighlightedText("Message Received");
+                    ((ComplexView) simpleView).addHighlightedText("Group not ready");
                     ((ComplexView) simpleView).addText("AllMemberCodes: " + groupParticipantService.getAllMemberCodes());
                     ((ComplexView) simpleView).addText("GroupId: " + groupParticipantService.getGroupId());
                     ((ComplexView) simpleView).addText("MemberCode: " + groupParticipantService.getMemberCode());
                     ((ComplexView) simpleView).addText("MessageString: " + groupParticipantService.getMessageString());
                     ((ComplexView) simpleView).addText("StimulusId: " + groupParticipantService.getStimulusId());
                     ((ComplexView) simpleView).addText("StimulusIndex: " + groupParticipantService.getStimulusIndex());
+                    ((ComplexView) simpleView).addText("RequestedPhase: " + groupParticipantService.getRequestedPhase());
                     ((ComplexView) simpleView).addText("UserLabel: " + groupParticipantService.getUserLabel());
                     ((ComplexView) simpleView).addText("GroupReady: " + groupParticipantService.isGroupReady());
 //                    ((ComplexView) simpleView).addText("UserIdMatches: " + groupParticipantService.isUserIdMatches());
@@ -423,7 +430,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             });
             groupParticipantService.joinGroupNetwork(serviceLocations.groupServerUrl());
         } else {
-            groupParticipantService.messageGroup(stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null);
+            groupParticipantService.messageGroup(0, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null);
         }
     }
 
@@ -873,6 +880,41 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         stimulusFreeTextList.clear();
         buttonList.clear();
         showStimulus();
+    }
+
+    protected void sendGroupMessageButton(final String eventTag, final String buttonLabel, final boolean norepeat, final int hotKey, final int requestedPhase) {
+        PresenterEventListner eventListner = new PresenterEventListner() {
+
+            @Override
+            public String getLabel() {
+                return buttonLabel;
+            }
+
+            @Override
+            public int getHotKey() {
+                return hotKey;
+            }
+
+            @Override
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+                for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
+                    if (!stimulusFreeText.isValid()) {
+                        return;
+                    }
+                }
+                String messageString = "";
+                for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
+                    messageString += stimulusFreeText.getValue();
+                }
+                submissionService.submitTagValue(userResults.getUserData().getUserId(), eventTag, messageString, duration.elapsedMillis());
+                groupParticipantService.messageGroup(requestedPhase, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), messageString);
+                ((TimedStimulusView) simpleView).stopAudio();
+                ((TimedStimulusView) simpleView).clearPage();
+                stimulusFreeTextList.clear();
+                buttonList.clear();
+            }
+        };
+        ((TimedStimulusView) simpleView).addOptionButton(eventListner);
     }
 
     protected void nextStimulusButton(final String eventTag, final String buttonLabel, final boolean norepeat, final int hotKey) {

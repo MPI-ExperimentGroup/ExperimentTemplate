@@ -55,6 +55,7 @@ public class SharedObjectController {
             storedMessage = allMembersList.get(groupMessage.getUserId());
             storedMessage.setStimulusId(groupMessage.getStimulusId());
             storedMessage.setStimulusIndex(groupMessage.getStimulusIndex());
+            storedMessage.setRequestedPhase(groupMessage.getRequestedPhase());
             storedMessage.setMessageString(groupMessage.getMessageString());
         } else {
             allMembersList.put(groupMessage.getUserId(), groupMessage);

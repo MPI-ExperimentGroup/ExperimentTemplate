@@ -32,7 +32,7 @@ public class GroupParticipantService {
     private final String allMemberCodes;
     private final String groupCommunicationChannels;
     private final TimedStimulusListener connectedListener;
-    private final TimedStimulusListener messageListener;
+    private final TimedStimulusListener groupNotReadyListener;
     private boolean isConnected = false;
 
     private final String userId;
@@ -43,16 +43,17 @@ public class GroupParticipantService {
     private String groupId = null;
     private String stimulusId = null;
     private Integer stimulusIndex = null;
+    private Integer requestedPhase = null;
     private String messageString = null;
     private Boolean groupReady = false;
 //    private Boolean userIdMatches = false;
 
-    public GroupParticipantService(final String userId, String screenId, String groupMembers, String groupCommunicationChannels, TimedStimulusListener connectedListener, TimedStimulusListener messageListener) {
+    public GroupParticipantService(final String userId, String screenId, String groupMembers, String groupCommunicationChannels, TimedStimulusListener connectedListener, TimedStimulusListener groupNotReadyListener) {
         this.userId = userId;
         this.allMemberCodes = groupMembers;
         this.groupCommunicationChannels = groupCommunicationChannels;
         this.connectedListener = connectedListener;
-        this.messageListener = messageListener;
+        this.groupNotReadyListener = groupNotReadyListener;
         this.screenId = screenId;
     }
 
@@ -71,7 +72,7 @@ public class GroupParticipantService {
         }
     }
 
-    protected void handleGroupMessage(String userId, String screenId, String userLabel, String groupId, String allMemberCodes, String memberCode, String stimulusId, String stimulusIndex, String messageString, Boolean groupReady) {
+    protected void handleGroupMessage(String userId, String screenId, String userLabel, String groupId, String allMemberCodes, String memberCode, String stimulusId, String stimulusIndex, String requestedPhase, String messageString, Boolean groupReady) {
         final boolean userIdMatches = this.userId.equals(userId);
         final boolean screenIdMatches = this.screenId.equals(screenId);
         if (userIdMatches && screenIdMatches) {
@@ -79,11 +80,11 @@ public class GroupParticipantService {
             this.memberCode = memberCode;
             this.groupId = groupId;
         }
-        messageListener.postLoadTimerFired();
         if (this.groupId.equals(groupId)) {
 //            this.allMemberCodes = allMemberCodes;
             this.stimulusId = stimulusId;
             this.stimulusIndex = Integer.parseInt(stimulusIndex);
+            this.requestedPhase = Integer.parseInt(requestedPhase);
             this.messageString = messageString;
             this.groupReady = groupReady;
             if (groupReady) {
@@ -94,6 +95,8 @@ public class GroupParticipantService {
                         ((userIdMatches) ? selfActivityListeners : othersActivityListeners).get(groupRole).postLoadTimerFired();
                     }
                 }
+            } else {
+                groupNotReadyListener.postLoadTimerFired();
             }
         }
     }
@@ -131,6 +134,10 @@ public class GroupParticipantService {
         return stimulusIndex;
     }
 
+    public Integer getRequestedPhase() {
+        return requestedPhase;
+    }
+
     public String getMessageString() {
         return messageString;
     }
@@ -156,16 +163,16 @@ public class GroupParticipantService {
             stompClient.subscribe('/shared/group', function (groupMessage) {
                 var contentData = JSON.parse(groupMessage.body);
                 console.log('contentData: ' + contentData);
-                groupParticipantService.@nl.mpi.tg.eg.experiment.client.service.GroupParticipantService::handleGroupMessage(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;)(contentData.userId, contentData.screenId,contentData.userLabel, contentData.groupId, contentData.allMemberCodes, contentData.memberCode, contentData.stimulusId, Number(contentData.stimulusIndex), contentData.messageString, (contentData.groupReady)?@java.lang.Boolean::TRUE : @java.lang.Boolean::FALSE);
+                groupParticipantService.@nl.mpi.tg.eg.experiment.client.service.GroupParticipantService::handleGroupMessage(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;)(contentData.userId, contentData.screenId,contentData.userLabel, contentData.groupId, contentData.allMemberCodes, contentData.memberCode, contentData.stimulusId, Number(contentData.stimulusIndex), Number(contentData.requestedPhase), contentData.messageString, (contentData.groupReady)?@java.lang.Boolean::TRUE : @java.lang.Boolean::FALSE);
             });
         });
      }-*/;
 
-    public void messageGroup(String stimulusId, String stimulusIndex, String messageString) {
-        messageGroup(userId, screenId, allMemberCodes, stimulusId, stimulusIndex, messageString);
+    public void messageGroup(int requestedPhase,String stimulusId, String stimulusIndex, String messageString) {
+        messageGroup(requestedPhase, userId, screenId, allMemberCodes, stimulusId, stimulusIndex, messageString);
     }
 
-    private native void messageGroup(String userId, String screenId, String allMemberCodes, String stimulusId, String stimulusIndex, String messageString) /*-{
+    private native void messageGroup(int requestedPhase, String userId, String screenId, String allMemberCodes, String stimulusId, String stimulusIndex, String messageString) /*-{
     var groupParticipantService = this;
     stompClient.send("/app/group", {}, JSON.stringify({
         'userId': userId,
@@ -174,6 +181,7 @@ public class GroupParticipantService {
         'allMemberCodes': allMemberCodes,
         'memberCode': null,
         'stimulusId': stimulusId,
+        'requestedPhase': requestedPhase,
         'stimulusIndex': stimulusIndex,
         'messageString': messageString,
         'groupReady': null
