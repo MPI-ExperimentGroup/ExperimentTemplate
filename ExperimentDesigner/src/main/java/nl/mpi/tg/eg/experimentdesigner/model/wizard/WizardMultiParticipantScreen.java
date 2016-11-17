@@ -99,6 +99,17 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         groupNetworkActivity2.addFeatureAttributes(FeatureAttribute.groupRole, "B,D,F,G,H:A,C,E,G,H:B,D,E,F,H:A,C,E,F,G");
         groupNetworkActivity2.addFeatureAttributes(FeatureAttribute.groupMessageMatch, "other");
 
+        groupNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+        groupNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+
+        groupNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "The producer sees the stimulus and enters some text"));
+        groupNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "The guesser sees the text with a grid of stimuli, from which they select one based on the text"));
+
+//        if (storedWizardScreenData.getStimulusFreeText()) {
+//            final PresenterFeature stimulusFreeTextFeature = new PresenterFeature(FeatureType.stimulusFreeText, storedWizardScreenData.getFreeTextValidationMessage());
+//            stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.validationRegex, storedWizardScreenData.getFreeTextValidationRegex());
+//            groupNetworkActivity1.getPresenterFeatureList().add(stimulusFreeTextFeature);
+//        }
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadStimulus, null);
         loadStimuliFeature.addStimulusTag(storedWizardScreenData.getScreenTitle());
 
@@ -119,16 +130,18 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         guesserRatingButtons.addFeatureAttributes(FeatureAttribute.eventTier, "1");
         groupNetworkActivity2.getPresenterFeatureList().add(guesserRatingButtons);
         // temporary testing features
-        final PresenterFeature nextStimulusFeature2 = new PresenterFeature(FeatureType.nextStimulusButton, "groupNetworkActivity2");
+        final PresenterFeature nextStimulusFeature2 = new PresenterFeature(FeatureType.sendGroupMessageButton, "groupNetworkActivity2");
         nextStimulusFeature2.addFeatureAttributes(FeatureAttribute.norepeat, "true");
         nextStimulusFeature2.addFeatureAttributes(FeatureAttribute.eventTag, "groupNetworkActivity2");
         nextStimulusFeature2.addFeatureAttributes(FeatureAttribute.hotKey, "Q");
+        nextStimulusFeature2.addFeatureAttributes(FeatureAttribute.requestedPhase, "2");
         groupNetworkActivity2.getPresenterFeatureList().add(nextStimulusFeature2);
         // temporary testing features
-        final PresenterFeature nextStimulusFeature1 = new PresenterFeature(FeatureType.nextStimulusButton, "groupNetworkActivity1");
+        final PresenterFeature nextStimulusFeature1 = new PresenterFeature(FeatureType.sendGroupMessageButton, "groupNetworkActivity1");
         nextStimulusFeature1.addFeatureAttributes(FeatureAttribute.norepeat, "true");
         nextStimulusFeature1.addFeatureAttributes(FeatureAttribute.eventTag, "groupNetworkActivity1");
         nextStimulusFeature1.addFeatureAttributes(FeatureAttribute.hotKey, "W");
+        nextStimulusFeature1.addFeatureAttributes(FeatureAttribute.requestedPhase, "1");
         groupNetworkActivity1.getPresenterFeatureList().add(nextStimulusFeature1);
         // end testing features
 

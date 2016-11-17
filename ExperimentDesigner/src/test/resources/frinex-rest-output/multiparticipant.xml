@@ -24,14 +24,19 @@
             <hasMoreStimulus>
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,B|C,D|E,F,G,H">
                     <groupNetworkActivity groupMessageMatch="self" groupRole="A,C,E:B,D,F:A,C,G:B,D,H">
+                        <clearPage/>
+                        <htmlText featureText="The producer sees the stimulus and enters some text"/>
                         <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                             <addPadding/>
+                            <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." validationRegex=".{2,}"/>
                         </stimulusImage>
-                        <nextStimulusButton featureText="groupNetworkActivity1" eventTag="groupNetworkActivity1" hotKey="W" norepeat="true"/>
+                        <sendGroupMessageButton featureText="groupNetworkActivity1" eventTag="groupNetworkActivity1" hotKey="W" requestedPhase="1" norepeat="true"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupMessageMatch="other" groupRole="B,D,F,G,H:A,C,E,G,H:B,D,E,F,H:A,C,E,F,G">
+                        <clearPage/>
+                        <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
                         <ratingButton eventTier="1" ratingLabelRight="" ratingLabels="one,two,three" ratingLabelLeft=""/>
-                        <nextStimulusButton featureText="groupNetworkActivity2" eventTag="groupNetworkActivity2" hotKey="Q" norepeat="true"/>
+                        <sendGroupMessageButton featureText="groupNetworkActivity2" eventTag="groupNetworkActivity2" hotKey="Q" requestedPhase="2" norepeat="true"/>
                     </groupNetworkActivity>
                 </groupNetwork>
             </hasMoreStimulus>

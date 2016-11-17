@@ -78,5 +78,6 @@ public enum FeatureAttribute {
     groupRole,
     groupMembers,
     groupMessageMatch,
-    groupCommunicationChannels
+    groupCommunicationChannels,
+    requestedPhase
 }

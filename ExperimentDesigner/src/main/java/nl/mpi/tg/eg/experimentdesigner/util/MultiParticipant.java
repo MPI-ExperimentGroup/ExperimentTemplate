@@ -46,7 +46,6 @@ public class MultiParticipant {
 //149,1,CD,4,9,2,medium,4.51,2,D,vlalp,0
 //85,1,AB,5,6,2,big,7.6,2,A,dauft,0
 //87,1,CD,5,6,2,big,7.6,2,C,potmik,1
-    
     private final String[] stimuliArray
             = new String[]{"1-1.png", "1-7.png", "2-6.png", "3-5.png", "4-4.png"
                 + "1-2.png", "2-1.png", "2-7.png", "3-6.png", "4-5.png"
@@ -80,6 +79,8 @@ public class MultiParticipant {
         wizardData.addScreen(wizardMultiParticipantScreen);
         wizardEditUserScreen.setNextWizardScreen(wizardMultiParticipantScreen);
         wizardMultiParticipantScreen.setNextWizardScreen(wizardEditUserScreen);
+
+        wizardMultiParticipantScreen.setStimulusFreeText(true, ".{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
         return wizardData;
     }
 
