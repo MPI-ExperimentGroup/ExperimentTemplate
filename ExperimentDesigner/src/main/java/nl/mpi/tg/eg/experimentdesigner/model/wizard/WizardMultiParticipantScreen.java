@@ -92,36 +92,36 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         //@todo: add groupRoleSequence
         groupNetwork.addFeatureAttributes(FeatureAttribute.groupCommunicationChannels, "A,B|C,D|E,F,G,H");
 
-        final PresenterFeature selfNetworkActivity1 = new PresenterFeature(FeatureType.groupNetworkActivity, null);
-        selfNetworkActivity1.addFeatureAttributes(FeatureAttribute.groupRole, "A,C,E:B,D,F:A,C,G:B,D,H"); // @todo change to roles not meber ids
-        selfNetworkActivity1.addFeatureAttributes(FeatureAttribute.groupMessageMatch, "self"); // @ todo: this might not be needed if groupRoleSequence is added
+        final PresenterFeature producerNetworkActivity0 = new PresenterFeature(FeatureType.groupNetworkActivity, null);
+        producerNetworkActivity0.addFeatureAttributes(FeatureAttribute.groupRole, "A,C,E::::B,D,F:::A,C,G:::B,D,H"); // @todo change to roles not meber ids
+        producerNetworkActivity0.addFeatureAttributes(FeatureAttribute.groupMessageMatch, "all"); // @ todo: this might not be needed if groupRoleSequence is added
 //        selfNetworkActivity1.addFeatureAttributes(FeatureAttribute.requestedPhase, "0");
-        final PresenterFeature selfNetworkActivity2 = new PresenterFeature(FeatureType.groupNetworkActivity, null);
-        selfNetworkActivity2.addFeatureAttributes(FeatureAttribute.groupRole, ":A,C,E:::");
-        selfNetworkActivity2.addFeatureAttributes(FeatureAttribute.groupMessageMatch, "self");
+        final PresenterFeature producerNetworkActivity1 = new PresenterFeature(FeatureType.groupNetworkActivity, null);
+        producerNetworkActivity1.addFeatureAttributes(FeatureAttribute.groupRole, ":A,C,E:::");
+        producerNetworkActivity1.addFeatureAttributes(FeatureAttribute.groupMessageMatch, "all");
 //        selfNetworkActivity2.addFeatureAttributes(FeatureAttribute.requestedPhase, "1");
-        final PresenterFeature groupNetworkActivity1 = new PresenterFeature(FeatureType.groupNetworkActivity, null);
-        groupNetworkActivity1.addFeatureAttributes(FeatureAttribute.groupRole, "B,D,F,G,H:A,C,E,G,H:B,D,E,F,H:A,C,E,F,G");
-        groupNetworkActivity1.addFeatureAttributes(FeatureAttribute.groupMessageMatch, "other");
-        final PresenterFeature groupNetworkActivity2 = new PresenterFeature(FeatureType.groupNetworkActivity, null);
-        groupNetworkActivity2.addFeatureAttributes(FeatureAttribute.groupRole, "B,D,F,G,H:A,C,E,G,H:B,D,E,F,H:A,C,E,F,G");
-        groupNetworkActivity2.addFeatureAttributes(FeatureAttribute.groupMessageMatch, "other");
-        final PresenterFeature groupNetworkActivity3 = new PresenterFeature(FeatureType.groupNetworkActivity, null);
-        groupNetworkActivity3.addFeatureAttributes(FeatureAttribute.groupRole, "B,D,F,G,H:A,C,E,G,H:B,D,E,F,H:A,C,E,F,G");
-        groupNetworkActivity3.addFeatureAttributes(FeatureAttribute.groupMessageMatch, "other");
+        final PresenterFeature guesserNetworkActivity0 = new PresenterFeature(FeatureType.groupNetworkActivity, null);
+        guesserNetworkActivity0.addFeatureAttributes(FeatureAttribute.groupRole, "B,D,F,G,H:::A,C,E,G,H:::B,D,E,F,H:::A,C,E,F,G");
+        guesserNetworkActivity0.addFeatureAttributes(FeatureAttribute.groupMessageMatch, "all");
+        final PresenterFeature guesserNetworkActivity1 = new PresenterFeature(FeatureType.groupNetworkActivity, null);
+        guesserNetworkActivity1.addFeatureAttributes(FeatureAttribute.groupRole, ":B,D,F,G,H:::A,C,E,G,H:::B,D,E,F,H:::A,C,E,F,G");
+        guesserNetworkActivity1.addFeatureAttributes(FeatureAttribute.groupMessageMatch, "all");
+        final PresenterFeature allNetworkActivity2 = new PresenterFeature(FeatureType.groupNetworkActivity, null);
+        allNetworkActivity2.addFeatureAttributes(FeatureAttribute.groupRole, ":::A,B,C,D,E,F,G,H:");
+        allNetworkActivity2.addFeatureAttributes(FeatureAttribute.groupMessageMatch, "all");
 //        groupNetworkActivity2.addFeatureAttributes(FeatureAttribute.requestedPhase, "1");
 
-        selfNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
-        selfNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
-        groupNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
-        groupNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
-        groupNetworkActivity3.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+//        producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+//        producerNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+//        guesserNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+//        guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+//        allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
 
-        selfNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "The producer sees the stimulus and enters some text"));
-        selfNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "The producer waits for the guesser"));
-        groupNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "The guesser sees the text with a grid of stimuli, from which they select one based on the text"));
-        groupNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "The guesser sees the text with a grid of stimuli, from which they select one based on the text"));
-        groupNetworkActivity3.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "The guesser sees the text with a grid of stimuli, from which they select one based on the text"));
+        producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "The producer sees the stimulus and enters some text"));
+        producerNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "The producer waits for the guesser"));
+        guesserNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "The guesser waits for the producer"));
+        guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "The guesser sees the text with a grid of stimuli, from which they select one based on the text"));
+        allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "The guesser and producer see the grid of stimuli with the guessers selection highlighted and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."));
 
 //        if (storedWizardScreenData.getStimulusFreeText()) {
 //            final PresenterFeature stimulusFreeTextFeature = new PresenterFeature(FeatureType.stimulusFreeText, storedWizardScreenData.getFreeTextValidationMessage());
@@ -139,7 +139,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
-        selfNetworkActivity1.getPresenterFeatureList().add(imageFeature);
+        producerNetworkActivity0.getPresenterFeatureList().add(imageFeature);
         // temporary testing features
 //        final PresenterFeature guesserRatingButtons = new PresenterFeature(FeatureType.ratingButton, null);
 //        guesserRatingButtons.addFeatureAttributes(FeatureAttribute.ratingLabels, "one,two,three");
@@ -153,19 +153,19 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         nextStimulusFeature1.addFeatureAttributes(FeatureAttribute.eventTag, "groupNetworkActivity1");
         nextStimulusFeature1.addFeatureAttributes(FeatureAttribute.hotKey, "Q");
         nextStimulusFeature1.addFeatureAttributes(FeatureAttribute.requestedPhase, "2");
-        groupNetworkActivity1.getPresenterFeatureList().add(nextStimulusFeature1);
+        guesserNetworkActivity0.getPresenterFeatureList().add(nextStimulusFeature1);
         final PresenterFeature nextStimulusFeature2 = new PresenterFeature(FeatureType.sendGroupMessageButton, "groupNetworkActivity2");
         nextStimulusFeature2.addFeatureAttributes(FeatureAttribute.norepeat, "true");
         nextStimulusFeature2.addFeatureAttributes(FeatureAttribute.eventTag, "groupNetworkActivity2");
         nextStimulusFeature2.addFeatureAttributes(FeatureAttribute.hotKey, "Q");
         nextStimulusFeature2.addFeatureAttributes(FeatureAttribute.requestedPhase, "3");
-        groupNetworkActivity2.getPresenterFeatureList().add(nextStimulusFeature2);
+        guesserNetworkActivity1.getPresenterFeatureList().add(nextStimulusFeature2);
         final PresenterFeature nextStimulusFeature3 = new PresenterFeature(FeatureType.sendGroupMessageButton, "groupNetworkActivity3");
         nextStimulusFeature3.addFeatureAttributes(FeatureAttribute.norepeat, "true");
         nextStimulusFeature3.addFeatureAttributes(FeatureAttribute.eventTag, "groupNetworkActivity3");
         nextStimulusFeature3.addFeatureAttributes(FeatureAttribute.hotKey, "Q");
         nextStimulusFeature3.addFeatureAttributes(FeatureAttribute.requestedPhase, "4");
-        groupNetworkActivity3.getPresenterFeatureList().add(nextStimulusFeature3);
+        allNetworkActivity2.getPresenterFeatureList().add(nextStimulusFeature3);
         // temporary testing features
         final PresenterFeature nextStimulusFeatureSelf1 = new PresenterFeature(FeatureType.sendGroupMessageButton, "groupNetworkActivitySelf1");
         nextStimulusFeatureSelf1.addFeatureAttributes(FeatureAttribute.norepeat, "true");
@@ -176,11 +176,11 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
         hasMoreStimulusFeature.getPresenterFeatureList().add(groupNetwork);
         presenterFeatureList.add(loadStimuliFeature);
-        groupNetwork.getPresenterFeatureList().add(selfNetworkActivity1);
-        groupNetwork.getPresenterFeatureList().add(selfNetworkActivity2);
-        groupNetwork.getPresenterFeatureList().add(groupNetworkActivity2);
-        hasMoreStimulusFeature.getPresenterFeatureList().add(groupNetworkActivity3);
-        hasMoreStimulusFeature.getPresenterFeatureList().add(groupNetworkActivity2);
+        groupNetwork.getPresenterFeatureList().add(producerNetworkActivity0);
+        groupNetwork.getPresenterFeatureList().add(producerNetworkActivity1);
+        groupNetwork.getPresenterFeatureList().add(guesserNetworkActivity1);
+        hasMoreStimulusFeature.getPresenterFeatureList().add(allNetworkActivity2);
+        hasMoreStimulusFeature.getPresenterFeatureList().add(guesserNetworkActivity1);
 
         imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
         imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
