@@ -63,8 +63,8 @@ function connect() {
                 usersTableRow = $("#userId" + contentData.userId);
             }
             var usersTableCells = "<td>" + contentData.userId + "</td><td>" + contentData.userLabel + "</td><td>" + contentData.groupId + "</td><td>" + contentData.allMemberCodes + "</td><td>" + contentData.memberCode + "</td><td>" + contentData.requestedPhase + "</td><td>" + contentData.stimulusId + "</td><td>" + contentData.messageString + "</td><td>" + contentData.groupReady + "</td>";
-            var messageButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup('" + contentData.userId + "','" + contentData.screenId + "','" + contentData.userLabel + "','" + contentData.groupId + "','" + contentData.allMemberCodes + "','" + contentData.memberCode + "','" + contentData.stimulusId + "')\">message</button></td>";
-            var addButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup(Math.floor((1 + Math.random()) * 0x10000),null,'" + contentData.screenId + "','" + contentData.groupId + "','" + contentData.allMemberCodes + "',null,null)\">add member</button></td>";
+            var messageButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup('" + contentData.userId + "','" + contentData.requestedPhase + "','" + contentData.screenId + "','" + contentData.userLabel + "','" + contentData.groupId + "','" + contentData.allMemberCodes + "','" + contentData.memberCode + "','" + contentData.stimulusId + "')\">message</button></td>";
+            var addButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup(Math.floor((1 + Math.random()) * 0x10000),null,'" + contentData.requestedPhase + "','" + contentData.screenId + "','" + contentData.groupId + "','" + contentData.allMemberCodes + "',null,null)\">add member</button></td>";
             usersTableRow.html(usersTableCells + messageButtonCell + addButtonCell);
 
 //            var groupMemberDiv = $("<div style='background: grey;' class='progressDivBar'>&nbsp;</div>");
@@ -109,7 +109,7 @@ function updateGroup() {
         'groupReady': null
     }));
 }
-function messageGroup(currentUserId, screenId, userLabel, groupId, allMemberCodes, memberCode, stimulusId) {
+function messageGroup(currentUserId, requestedPhase, screenId, userLabel, groupId, allMemberCodes, memberCode, stimulusId) {
     stompClient.send("/app/group", {}, JSON.stringify({
         'userId': currentUserId,
         'userLabel': userLabel,
@@ -119,7 +119,8 @@ function messageGroup(currentUserId, screenId, userLabel, groupId, allMemberCode
         'memberCode': memberCode,
         'stimulusId': stimulusId,
         'messageString': $("#messageString").val(),
-        'groupReady': null
+        'groupReady': null,
+        'requestedPhase': requestedPhase
     }));
 }
 
@@ -146,4 +147,5 @@ $(function () {
     $("#messageString").change(function () {
         updateGroup();
     });
+    connect();
 });
