@@ -23,22 +23,30 @@
         <loadStimulus eventTag="MultiParticipant" randomise="false" repeatRandomWindow="0" maxStimuli="8" repeatCount="1">
             <hasMoreStimulus>
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,B|C,D|E,F,G,H">
-                    <groupNetworkActivity groupMessageMatch="self" groupRole="A,C,E:B,D,F:A,C,G:B,D,H">
-                        <clearPage/>
+                    <groupNetworkActivity groupMessageMatch="all" groupRole="A,C,E::::B,D,F:::A,C,G:::B,D,H">
                         <htmlText featureText="The producer sees the stimulus and enters some text"/>
                         <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                             <addPadding/>
                             <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." validationRegex=".{2,}"/>
+                            <sendGroupMessageButton featureText="groupNetworkActivitySelf1" eventTag="groupNetworkActivitySelf1" hotKey="W" requestedPhase="1" norepeat="true"/>
                         </stimulusImage>
-                        <sendGroupMessageButton featureText="groupNetworkActivity1" eventTag="groupNetworkActivity1" hotKey="W" requestedPhase="1" norepeat="true"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupMessageMatch="other" groupRole="B,D,F,G,H:A,C,E,G,H:B,D,E,F,H:A,C,E,F,G">
-                        <clearPage/>
+                    <groupNetworkActivity groupMessageMatch="all" groupRole=":A,C,E:::">
+                        <htmlText featureText="The producer waits for the guesser"/>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupMessageMatch="all" groupRole=":B,D,F,G,H:::A,C,E,G,H:::B,D,E,F,H:::A,C,E,F,G">
                         <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
-                        <ratingButton eventTier="1" ratingLabelRight="" ratingLabels="one,two,three" ratingLabelLeft=""/>
-                        <sendGroupMessageButton featureText="groupNetworkActivity2" eventTag="groupNetworkActivity2" hotKey="Q" requestedPhase="2" norepeat="true"/>
+                        <sendGroupMessageButton featureText="groupNetworkActivity2" eventTag="groupNetworkActivity2" hotKey="Q" requestedPhase="3" norepeat="true"/>
                     </groupNetworkActivity>
                 </groupNetwork>
+                <groupNetworkActivity groupMessageMatch="all" groupRole=":::A,B,C,D,E,F,G,H:">
+                    <htmlText featureText="The guesser and producer see the grid of stimuli with the guessers selection highlighted and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
+                    <sendGroupMessageButton featureText="groupNetworkActivity3" eventTag="groupNetworkActivity3" hotKey="Q" requestedPhase="4" norepeat="true"/>
+                </groupNetworkActivity>
+                <groupNetworkActivity groupMessageMatch="all" groupRole=":B,D,F,G,H:::A,C,E,G,H:::B,D,E,F,H:::A,C,E,F,G">
+                    <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
+                    <sendGroupMessageButton featureText="groupNetworkActivity2" eventTag="groupNetworkActivity2" hotKey="Q" requestedPhase="3" norepeat="true"/>
+                </groupNetworkActivity>
             </hasMoreStimulus>
             <endOfStimulus>
                 <autoNextPresenter/>
