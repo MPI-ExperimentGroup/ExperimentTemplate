@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
+import com.google.gwt.user.client.Window;
 import java.util.HashMap;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.sharedobjects.GroupMessageMatch;
@@ -27,6 +28,8 @@ import nl.mpi.tg.eg.experiment.client.sharedobjects.GroupMessageMatch;
  */
 public class GroupParticipantService {
 
+//    private final HashMap<String, ArrayList<TimedStimulusListener>> selfActivityListeners = new HashMap<>();
+//    private final HashMap<String, ArrayList<TimedStimulusListener>> othersActivityListeners = new HashMap<>();
     private final HashMap<String, TimedStimulusListener> selfActivityListeners = new HashMap<>();
     private final HashMap<String, TimedStimulusListener> othersActivityListeners = new HashMap<>();
     private final String allMemberCodes;
@@ -57,6 +60,37 @@ public class GroupParticipantService {
         this.screenId = screenId;
     }
 
+//    public void addGroupActivity(final String groupRole, final int requestedPhase, final GroupMessageMatch groupMessageMatch, final TimedStimulusListener activityListener) {
+//
+//        ArrayList<TimedStimulusListener> currentSelfRoles = selfActivityListeners.get(groupRole);
+//        ArrayList<TimedStimulusListener> currentOthersRoles = othersActivityListeners.get(groupRole);
+//        if (currentSelfRoles == null) {
+//            currentSelfRoles = new ArrayList<>();
+//            selfActivityListeners.put(groupRole, currentSelfRoles);
+//        }
+//        if (currentOthersRoles == null) {
+//            currentOthersRoles = new ArrayList<>();
+//            othersActivityListeners.put(groupRole, currentOthersRoles);
+//        }
+//        while (currentSelfRoles.size() < requestedPhase) {
+//            currentSelfRoles.add(null);
+//        }
+//        while (currentOthersRoles.size() < requestedPhase) {
+//            currentOthersRoles.add(null);
+//        }
+//        switch (groupMessageMatch) {
+//            case self:
+//                currentSelfRoles.add(requestedPhase, activityListener);
+//                break;
+//            case other:
+//                currentOthersRoles.add(requestedPhase, activityListener);
+//                break;
+//            case all:
+//                currentSelfRoles.add(requestedPhase, activityListener);
+//                currentOthersRoles.add(requestedPhase, activityListener);
+//                break;
+//        }
+//    }
     public void addGroupActivity(final String groupRole, final GroupMessageMatch groupMessageMatch, final TimedStimulusListener activityListener) {
         switch (groupMessageMatch) {
             case self:
@@ -75,12 +109,13 @@ public class GroupParticipantService {
     protected void handleGroupMessage(String userId, String screenId, String userLabel, String groupId, String allMemberCodes, String memberCode, String stimulusId, String stimulusIndex, String requestedPhase, String messageString, Boolean groupReady) {
         final boolean userIdMatches = this.userId.equals(userId);
         final boolean screenIdMatches = this.screenId.equals(screenId);
+        final boolean groupIdMatches = this.groupId.equals(groupId);
         if (userIdMatches && screenIdMatches) {
             this.userLabel = userLabel;
             this.memberCode = memberCode;
             this.groupId = groupId;
         }
-        if (this.groupId.equals(groupId)) {
+        if (groupIdMatches && screenIdMatches) {
 //            this.allMemberCodes = allMemberCodes;
             this.stimulusId = stimulusId;
             this.stimulusIndex = Integer.parseInt(stimulusIndex);
@@ -90,8 +125,9 @@ public class GroupParticipantService {
             if (groupReady) {
                 for (String groupRole : ((userIdMatches) ? selfActivityListeners : othersActivityListeners).keySet()) {
                     final String[] splitRole = groupRole.split(":");
-                    int roleIndex = this.stimulusIndex % splitRole.length;
-                    if (splitRole[roleIndex].contains(memberCode)) {
+                    int roleIndex = this.requestedPhase % splitRole.length;
+                    if (splitRole[roleIndex].contains(this.memberCode)) {
+//                        ((userIdMatches) ? selfActivityListeners : othersActivityListeners).get(groupRole).get(this.requestedPhase).postLoadTimerFired();
                         ((userIdMatches) ? selfActivityListeners : othersActivityListeners).get(groupRole).postLoadTimerFired();
                     }
                 }
@@ -168,14 +204,16 @@ public class GroupParticipantService {
         });
      }-*/;
 
-    public void messageGroup(int requestedPhase,String stimulusId, String stimulusIndex, String messageString) {
-        messageGroup(requestedPhase, userId, screenId, allMemberCodes, stimulusId, stimulusIndex, messageString);
+    public void messageGroup(int requestedPhase, String stimulusId, String stimulusIndex, String messageString) {
+        String windowGroupId = Window.Location.getParameter("group");
+        messageGroup(requestedPhase, userId, windowGroupId, screenId, allMemberCodes, stimulusId, stimulusIndex, messageString);
     }
 
-    private native void messageGroup(int requestedPhase, String userId, String screenId, String allMemberCodes, String stimulusId, String stimulusIndex, String messageString) /*-{
+    private native void messageGroup(int requestedPhase, String userId, String groupId, String screenId, String allMemberCodes, String stimulusId, String stimulusIndex, String messageString) /*-{
     var groupParticipantService = this;
     stompClient.send("/app/group", {}, JSON.stringify({
         'userId': userId,
+        'groupId': groupId,
         'screenId': screenId,
         'userLabel': null,
         'allMemberCodes': allMemberCodes,
