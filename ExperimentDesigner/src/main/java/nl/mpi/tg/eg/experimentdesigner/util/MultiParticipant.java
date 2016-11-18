@@ -52,7 +52,7 @@ public class MultiParticipant {
                 + "1-3.png", "2-2.png", "3-1.png", "3-7.png", "4-6.png"
                 + "1-4.png", "2-3.png", "3-2.png", "4-1.png", "4-7.png"
                 + "1-5.png", "2-4.png", "3-3.png", "4-2.png",
-                "1-6.png", "2-5.png", "3-4.png", "4-3.png", "beep.wav"};
+                "1-6.png", "2-5.png", "3-4.png", "4-3.png" /*, "beep.wav"*/};
 
     // @todo: server shared variables to be used in animations and interactions concurrently displayed on multiple users devices 
     public WizardData getWizardData() {
