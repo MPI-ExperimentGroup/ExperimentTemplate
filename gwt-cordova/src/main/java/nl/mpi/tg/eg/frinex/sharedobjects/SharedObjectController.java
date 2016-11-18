@@ -17,10 +17,6 @@
  */
 package nl.mpi.tg.eg.frinex.sharedobjects;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.UUID;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
@@ -32,10 +28,8 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class SharedObjectController {
 
-    private final HashMap<String, GroupMessage> allMembersList = new HashMap<>();
-    private final HashMap<String, ArrayList<String>> unAllocatedMemberCodes = new HashMap<>();
-    private final HashMap<String, String> allMemberCodes = new HashMap<>();
-    private String currentGroupId = null;
+    private final static GroupManager GROUP_MANAGER = new GroupManager();
+//    private String currentGroupId = null;
 
     @MessageMapping("/shared")
     @SendTo("/shared/animation")
@@ -51,35 +45,30 @@ public class SharedObjectController {
 
     private synchronized GroupMessage updateGroupData(GroupMessage groupMessage) {
         final GroupMessage storedMessage;
-        if (allMembersList.containsKey(groupMessage.getUserId())) {
-            storedMessage = allMembersList.get(groupMessage.getUserId());
+        if (GROUP_MANAGER.isGroupMember(groupMessage.getGroupId(), groupMessage.getUserId())) {
+            storedMessage = GROUP_MANAGER.getGroupMember(groupMessage.getUserId());
             storedMessage.setStimulusId(groupMessage.getStimulusId());
+            storedMessage.setScreenId(groupMessage.getScreenId());
             storedMessage.setStimulusIndex(groupMessage.getStimulusIndex());
             storedMessage.setRequestedPhase(groupMessage.getRequestedPhase());
             storedMessage.setMessageString(groupMessage.getMessageString());
+            storedMessage.setAllMemberCodes(groupMessage.getAllMemberCodes());
+//            storedMessage.setGroupId(groupMessage.getGroupId());
+//            storedMessage.setRequestedPhase(groupMessage.getRequestedPhase());
         } else {
-            allMembersList.put(groupMessage.getUserId(), groupMessage);
+            GROUP_MANAGER.addGroupMember(groupMessage);
             storedMessage = groupMessage;
         }
-        if (storedMessage.getGroupId() == null || storedMessage.getGroupId().isEmpty()) {
-            if (currentGroupId == null) {
-                currentGroupId = UUID.randomUUID().toString();
-            }
-            if (unAllocatedMemberCodes.containsKey(currentGroupId) && unAllocatedMemberCodes.get(currentGroupId).isEmpty()) {
-                currentGroupId = UUID.randomUUID().toString();
-            }
-            storedMessage.setGroupId(currentGroupId);
-        }
-        if (allMemberCodes.get(storedMessage.getGroupId()) == null) {
-            allMemberCodes.put(storedMessage.getGroupId(), storedMessage.getAllMemberCodes());
-            unAllocatedMemberCodes.put(storedMessage.getGroupId(), new ArrayList<>(Arrays.asList(groupMessage.getAllMemberCodes().split(","))));
-        }
-        if (storedMessage.getMemberCode() == null || storedMessage.getMemberCode().isEmpty()) {
-            storedMessage.setMemberCode(unAllocatedMemberCodes.get(storedMessage.getGroupId()).remove(0));
-            storedMessage.setUserLabel(storedMessage.getMemberCode());
-        }
-        storedMessage.setGroupReady(unAllocatedMemberCodes.get(storedMessage.getGroupId()).isEmpty());
-        storedMessage.setAllMemberCodes(allMemberCodes.get(storedMessage.getGroupId()));
+//        if (storedMessage.getGroupId() == null || storedMessage.getGroupId().isEmpty()) {
+//            if (currentGroupId == null) {
+//                currentGroupId = UUID.randomUUID().toString();
+//                storedMessage.setGroupId(currentGroupId);
+//            }
+//        }
+//        if (unAllocatedMemberCodes.containsKey(currentGroupId) && unAllocatedMemberCodes.get(currentGroupId).isEmpty()) {
+////                currentGroupId = UUID.randomUUID().toString();
+//        }
+        storedMessage.setGroupReady(GROUP_MANAGER.isGroupReady(storedMessage.getGroupId(), storedMessage.getUserId()));        
         return storedMessage;
     }
 }
