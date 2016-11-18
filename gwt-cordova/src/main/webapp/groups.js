@@ -31,7 +31,7 @@ function setConnected(connected) {
     $("#animateTarget").html("");
     if (connected) {
         $("#conversation").show();
-        $("#groupTarget").append("<tr><td>userId</td><td>Label</td><td>Group</td><td>MemberCodes</td><td>Code</td><td>requestedPhase</td><td>stimulusId</td><td>message</td><td>Ready</td></tr>");
+        $("#groupTarget").append("<tr><td>userId</td><td>Label</td><td>Group</td><td>AllMemberCodes</td><td>MemberCode</td><td>requestedPhase</td><td>stimulusId</td><td>message</td><td>Ready</td></tr>");
     } else {
         $("#conversation").hide();
     }
