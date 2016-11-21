@@ -64,7 +64,7 @@ function connect() {
             }
             var usersTableCells = "<td>" + contentData.userId + "</td><td>" + contentData.userLabel + "</td><td>" + contentData.groupId + "</td><td>" + contentData.allMemberCodes + "</td><td>" + contentData.memberCode + "</td><td>" + contentData.requestedPhase + "</td><td>" + contentData.stimulusId + "</td><td>" + contentData.messageString + "</td><td>" + contentData.groupReady + "</td>";
             var messageButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup('" + contentData.userId + "','" + contentData.requestedPhase + "','" + contentData.screenId + "','" + contentData.userLabel + "','" + contentData.groupId + "','" + contentData.allMemberCodes + "','" + contentData.memberCode + "','" + contentData.stimulusId + "')\">message</button></td>";
-            var addButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup(Math.floor((1 + Math.random()) * 0x10000),null,'" + contentData.requestedPhase + "','" + contentData.screenId + "','" + contentData.groupId + "','" + contentData.allMemberCodes + "',null,null)\">add member</button></td>";
+            var addButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup(Math.floor((1 + Math.random()) * 0x10000),'" + contentData.requestedPhase + "','" + contentData.screenId + "',null,'" + contentData.groupId + "','" + contentData.allMemberCodes + "',null,null)\">add member</button></td>";
             usersTableRow.html(usersTableCells + messageButtonCell + addButtonCell);
 
 //            var groupMemberDiv = $("<div style='background: grey;' class='progressDivBar'>&nbsp;</div>");
@@ -148,4 +148,4 @@ $(function () {
         updateGroup();
     });
     connect();
-});
+}); 

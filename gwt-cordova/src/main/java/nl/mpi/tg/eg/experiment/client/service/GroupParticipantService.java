@@ -37,6 +37,7 @@ public class GroupParticipantService {
     private final TimedStimulusListener connectedListener;
     private final TimedStimulusListener groupNotReadyListener;
     private boolean isConnected = false;
+    private TimedStimulusListener lastFiredListner = null;
 
     private final String userId;
     private final String screenId;
@@ -109,11 +110,14 @@ public class GroupParticipantService {
     protected void handleGroupMessage(String userId, String screenId, String userLabel, String groupId, String allMemberCodes, String memberCode, String stimulusId, String stimulusIndex, String requestedPhase, String messageString, Boolean groupReady) {
         final boolean userIdMatches = this.userId.equals(userId);
         final boolean screenIdMatches = this.screenId.equals(screenId);
-        final boolean groupIdMatches = this.groupId.equals(groupId);
+        final boolean groupIdMatches;
         if (userIdMatches && screenIdMatches) {
             this.userLabel = userLabel;
             this.memberCode = memberCode;
             this.groupId = groupId;
+            groupIdMatches = true;
+        } else {
+            groupIdMatches = this.groupId.equals(groupId);
         }
         if (groupIdMatches && screenIdMatches) {
 //            this.allMemberCodes = allMemberCodes;
@@ -127,13 +131,19 @@ public class GroupParticipantService {
                     final String[] splitRole = groupRole.split(":");
                     int roleIndex = this.requestedPhase % splitRole.length;
                     if (splitRole[roleIndex].contains(this.memberCode)) {
+                        final TimedStimulusListener currentListner = ((userIdMatches) ? selfActivityListeners : othersActivityListeners).get(groupRole);
 //                        ((userIdMatches) ? selfActivityListeners : othersActivityListeners).get(groupRole).get(this.requestedPhase).postLoadTimerFired();
-                        ((userIdMatches) ? selfActivityListeners : othersActivityListeners).get(groupRole).postLoadTimerFired();
+                        if (lastFiredListner == null || !lastFiredListner.equals(currentListner)) {
+                            currentListner.postLoadTimerFired();
+                            lastFiredListner = currentListner;
+                        }
                     }
                 }
             } else {
                 groupNotReadyListener.postLoadTimerFired();
             }
+        } else {
+            groupNotReadyListener.postLoadTimerFired();
         }
     }
 
