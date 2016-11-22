@@ -34,7 +34,9 @@ public class MultiParticipant {
     // @todo: the allocated member id must maintained thoughout the experiment
     // @todo: show the experiment total score not the participants score
     // @todo: round 0 is the naming screen and does not collect guesses and therefore no scores
-
+    // @todo: add the group data collection and CSV output
+    // @todo: make the stimuli list common between all group members
+    
 //,Round,Dyad,Game.no,Item.ID,Shape,Size,RawSize,ItemCurrentAge,Producer,Word,ACC
 //165,1,AB,1,10,2,small,2.74,2,A,flup,0
 //167,1,CD,1,10,2,small,2.74,2,C,mozel,1
