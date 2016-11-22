@@ -25,6 +25,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAudioTestScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMenuScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardVideoAudioOptionStimulusScreen;
 
@@ -38,7 +39,7 @@ public class ManipulatedContours {
     // two sub groups: one gets part a (context) and part b(final, items), the other gets only part b
     // @todo: progress bar like indicator of the sound playback position 
     // buttons appear as soon as the sound ends
-   
+
     private final WizardController wizardController = new WizardController();
 
     protected String getExperimentName() {
@@ -69,12 +70,28 @@ public class ManipulatedContours {
             + "<br/>"
             + "[Cliquez sur SUIVANT si vos réglages sonores sont bons...]";
 
-    protected String informationScreenText2() {
+    protected String informationScreenText2a() {
         return "Cette expérience en ligne est une expérience audio. Vous entendrez à plusieurs reprises un extrait de conversation naturelle suivi d'un silence. Votre tâche est d'indiquer si le locuteur qui parle avant le silence va continuer ou arrêter de parler après le silence.<br/>"
                 + "<br/>"
                 + "Par example:<br/>"
                 + "Vous entendez l'extrait puis deux boutons apparaissent sur l'écran:<br/>"
                 + "à droite, il est marqué “continue” et à gauche, il est marqué “arrête”.<br/>"
+                + "Votre tâche est alors de cliquer sur le bouton à droite ou à gauche, suivant votre décision.<br/>"
+                + "<br/>"
+                + "Il y a environ 80 extraits dans cette expérience. Une session dure environ 20 minutes. Votre progrès est indiqué en haut de chaque écran.<br/>"
+                + "<br/>"
+                + "Attention: vous NE POUVEZ PAS mettre en pause, interrompre, ou reprendre l'expérience. Faites UNIQUEMENT cette expérience si vous avez vraiment le temps de la faire en entier. Faites l'expérience entièrement et sérieusement.<br/>"
+                + "<br/>"
+                + "Si l'expérience est claire et que vous êtes prêt(e) à commencer, cliquez sur SUIVANT.<br/>"
+                + "L'expérience commencera IMMEDIATEMENT";
+    }
+
+    protected String informationScreenText2b() {
+        return "Cette expérience en ligne est une expérience audio. Vous entendrez à plusieurs reprises un extrait de conversation naturelle suivi d'un silence. Votre tâche est d'indiquer si le locuteur qui parle avant le silence va continuer ou arrêter de parler après le silence.<br/>"
+                + "<br/>"
+                + "Par example:<br/>"
+                + "Vous entendez l'extrait puis deux boutons apparaissent sur l'écran:<br/>"
+                + "à gauche, il est marqué “continue” et à droite, il est marqué “arrête”.<br/>"
                 + "Votre tâche est alors de cliquer sur le bouton à droite ou à gauche, suivant votre décision.<br/>"
                 + "<br/>"
                 + "Il y a environ 80 extraits dans cette expérience. Une session dure environ 20 minutes. Votre progrès est indiqué en haut de chaque écran.<br/>"
@@ -93,7 +110,7 @@ public class ManipulatedContours {
         return 4;
     }
 
-    protected String[] getStimuliString() {
+    protected String[] getStimuliStringA() {
         return new String[]{
             "999:03-12-07_1_p1_M19R_i_54470_manipulated.wav:continue,arrête",
             "999:05-12-07_1_p1_M23R_i_359359_manipulated.wav:continue,arrête",
@@ -165,13 +182,88 @@ public class ManipulatedContours {
         };
     }
 
+    protected String[] getStimuliStringB() {
+        return new String[]{
+            "999:03-12-07_1_p1_M19R_i_54470_original.wav:continue,arrête",
+            "999:05-12-07_1_p1_M23R_i_359359_original.wav:continue,arrête",
+            "999:04-12-07_2_p1_M21L_f_208696_original.wav:continue,arrête",
+            "999:04-12-07_2_p1_M21L_f_608165_original.wav:continue,arrête",
+            "999:14-11-07_1_p1_M01R_r_483828_manipulated.wav:continue,arrête",
+            "999:04-12-07_2_p1_M21R_f_164284_original.wav:continue,arrête",
+            "999:04-12-07_2_p1_M21L_i_254252_manipulated.wav:continue,arrête",
+            "999:03-12-07_1_p1_M19L_f_929888_original.wav:continue,arrête",
+            "999:22-11-07_2_p1_F07L_f_1377242_original.wav:continue,arrête",
+            "999:04-12-07_2_p1_M21L_f_358114_original.wav:continue,arrête",
+            "999:14-11-07_2_p1_M02R_i_530691_original.wav:continue,arrête",
+            "999:22-11-07_2_p1_F07L_i_1450339_manipulated.wav:continue,arrête",
+            "999:22-11-07_2_p1_F07L_f_1397300_original.wav:continue,arrête",
+            "999:03-12-07_1_p1_M19L_f_226523_original.wav:continue,arrête",
+            "999:14-11-07_2_p1_M02R_f_660313_original.wav:continue,arrête",
+            "999:14-11-07_1_p1_M01R_r_369646_original.wav:continue,arrête",
+            "999:14-11-07_2_p1_M02L_r_782925_manipulated.wav:continue,arrête",
+            "999:14-11-07_1_p1_M01L_r_325139_manipulated.wav:continue,arrête",
+            "999:20-11-07_1_p1_F05R_i_315485_original.wav:continue,arrête",
+            "999:14-11-07_1_p1_M01L_r_50507_original.wav:continue,arrête",
+            "999:22-11-07_2_p1_F07L_f_1398960_original.wav:continue,arrête",
+            "999:22-11-07_2_p1_F07R_i_1198900_original.wav:continue,arrête",
+            "999:14-11-07_2_p1_M02R_f_831537_original.wav:continue,arrête",
+            "999:04-12-07_2_p1_M21L_i_11468_manipulated.wav:continue,arrête",
+            "999:03-12-07_1_p1_M19L_i_146083_original.wav:continue,arrête",
+            "999:14-11-07_1_p1_M01R_i_219580_manipulated.wav:continue,arrête",
+            "999:03-12-07_1_p1_M19R_r_416402_manipulated.wav:continue,arrête",
+            "999:04-12-07_2_p1_M21L_i_255747_original.wav:continue,arrête",
+            "999:14-11-07_2_p1_M02L_i_22560_original.wav:continue,arrête",
+            "999:14-11-07_2_p1_M02R_i_542926_manipulated.wav:continue,arrête",
+            "999:14-11-07_2_p1_M02L_r_343273_original.wav:continue,arrête",
+            "999:03-12-07_1_p1_M19R_r_518943_original.wav:continue,arrête",
+            "999:22-11-07_2_p1_F07R_f_1086927_original.wav:continue,arrête",
+            "999:20-11-07_1_p1_F05R_f_619771_original.wav:continue,arrête",
+            "999:20-11-07_1_p1_F05L_i_106723_manipulated.wav:continue,arrête",
+            "999:04-12-07_1_p1_M20R_i_129603_manipulated.wav:continue,arrête",
+            "999:03-12-07_1_p1_M19L_i_779215_original.wav:continue,arrête",
+            "999:14-11-07_1_p1_M01R_f_222400_original.wav:continue,arrête",
+            "999:14-11-07_2_p1_M02L_i_75209_manipulated.wav:continue,arrête",
+            "999:03-12-07_1_p1_M19R_f_340735_original.wav:continue,arrête",
+            "999:14-11-07_1_p1_M01R_r_242530_original.wav:continue,arrête",
+            "999:04-12-07_1_p1_M20R_i_146255_original.wav:continue,arrête",
+            "999:22-11-07_1_p1_F06R_f_1696027_original.wav:continue,arrête",
+            "999:14-11-07_2_p1_M02R_i_662936_original.wav:continue,arrête",
+            "999:22-11-07_2_p1_F07L_i_280359_manipulated.wav:continue,arrête",
+            "999:20-11-07_1_p1_F05R_f_624120_original.wav:continue,arrête",
+            "999:14-11-07_1_p1_M01R_r_160211_manipulated.wav:continue,arrête",
+            "999:03-12-07_1_p1_M19R_r_529986_manipulated.wav:continue,arrête",
+            "999:03-12-07_1_p1_M19L_r_838332_original.wav:continue,arrête",
+            "999:14-11-07_2_p1_M02R_f_669651_original.wav:continue,arrête",
+            "999:14-11-07_1_p1_M01L_r_23773_manipulated.wav:continue,arrête",
+            "999:14-11-07_1_p1_M01R_r_394807_manipulated.wav:continue,arrête",
+            "999:22-11-07_2_p1_F07L_f_888933_original.wav:continue,arrête",
+            "999:04-12-07_2_p1_M21L_f_427727_original.wav:continue,arrête",
+            "999:05-12-07_1_p1_M23L_i_259230_manipulated.wav:continue,arrête",
+            "999:03-12-07_1_p1_M19R_i_353600_manipulated.wav:continue,arrête",
+            "999:04-12-07_2_p1_M21R_i_770591_manipulated.wav:continue,arrête",
+            "999:14-11-07_1_p1_M01R_r_397825_original.wav:continue,arrête",
+            "999:04-12-07_2_p1_M21L_i_803331_original.wav:continue,arrête",
+            "999:03-12-07_1_p1_M19R_i_60085_manipulated.wav:continue,arrête",
+            "999:04-12-07_1_p1_M20R_r_226308_manipulated.wav:continue,arrête",
+            "999:03-12-07_1_p1_M19R_r_374050_original.wav:continue,arrête",
+            "999:04-12-07_2_p1_M21L_i_139907_original.wav:continue,arrête",
+            "999:14-11-07_2_p1_M02R_f_681124_original.wav:continue,arrête",
+            "999:22-11-07_1_p1_F06R_f_1430740_original.wav:continue,arrête",
+            "999:04-12-07_2_p1_M21L_f_431951_original.wav:continue,arrête",
+            "999:04-12-07_2_p1_M21L_r_380821_original.wav:continue,arrête"
+        };
+    }
+
     public WizardData getWizardData() {
         WizardData wizardData = new WizardData();
         wizardData.setAppName(getExperimentName());
         wizardData.setShowMenuBar(false);
         wizardData.setTextFontSize(17);
         wizardData.setObfuscateScreenNames(false);
-        WizardTextScreen wizardTextScreen2 = new WizardTextScreen("InformationScreen1", informationScreenText2(),
+        WizardTextScreen wizardTextScreen2a = new WizardTextScreen("InformationScreen1a", informationScreenText2a(),
+                "volgende [ spatiebalk ]"
+        );
+        WizardTextScreen wizardTextScreen2b = new WizardTextScreen("InformationScreen1b", informationScreenText2b(),
                 "volgende [ spatiebalk ]"
         );
         WizardAudioTestScreen wizardTextScreen1 = new WizardAudioTestScreen("AudioTest", informationScreenText1, "suivant [ barre d'espacement ]", "bienvenue");
@@ -200,14 +292,18 @@ public class ManipulatedContours {
         wizardData.addScreen(wizardEditUserScreen);
         wizardData.addScreen(agreementScreen);
         wizardData.addScreen(wizardTextScreen1);
-        wizardData.addScreen(wizardTextScreen2);
+        wizardData.addScreen(wizardTextScreen2a);
+        wizardData.addScreen(wizardTextScreen2b);
 
-        final WizardVideoAudioOptionStimulusScreen list1234Screen = new WizardVideoAudioOptionStimulusScreen("Stimuli", false, getStimuliString(), false,
+        final WizardVideoAudioOptionStimulusScreen list1234ScreenA = new WizardVideoAudioOptionStimulusScreen("Stimuli", false, getStimuliStringA(), false,
+                null, 1000, repeatCount(), 20, true, 100, "", "", true);
+        final WizardVideoAudioOptionStimulusScreen list1234ScreenB = new WizardVideoAudioOptionStimulusScreen("Stimuli", false, getStimuliStringB(), false,
                 null, 1000, repeatCount(), 20, true, 100, "", "", true);
 //        list1234Screen.setStimulusResponseOptions("1,2,3,4,5");
 //        list1234Screen.setStimulusResponseLabelLeft("très probable négatif");
 //        list1234Screen.setStimulusResponseLabelRight("très probable positif");
-        wizardData.addScreen(list1234Screen);
+        wizardData.addScreen(list1234ScreenA);
+        wizardData.addScreen(list1234ScreenB);
 
         WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, false, true,
                 null, //Si quelqu'un d'autre veut participer à l'expérience sur cet ordinateur, veuillez cliquer sur le bouton ci-dessous.",
@@ -221,13 +317,31 @@ public class ManipulatedContours {
 
         wizardEditUserScreen.setNextWizardScreen(agreementScreen);
         agreementScreen.setNextWizardScreen(wizardTextScreen1);
-        wizardTextScreen1.setNextWizardScreen(wizardTextScreen2);
-        wizardTextScreen2.setNextWizardScreen(list1234Screen);
-        list1234Screen.setNextWizardScreen(completionScreen);
+        WizardMenuScreen menuScreen = new WizardMenuScreen("temporary menu", "temporary menu", "temporary menu");
+        menuScreen.addTargetScreen(wizardTextScreen2a);
+        menuScreen.addTargetScreen(wizardTextScreen2b);
+        wizardData.addScreen(menuScreen);
+        wizardTextScreen1.setNextWizardScreen(menuScreen);
+
+        wizardTextScreen2a.setNextWizardScreen(list1234ScreenA);
+        wizardTextScreen2b.setNextWizardScreen(list1234ScreenB);
+        list1234ScreenA.setNextWizardScreen(completionScreen);
+        list1234ScreenB.setNextWizardScreen(completionScreen);
         return wizardData;
     }
 
     public Experiment getExperiment() {
         return wizardController.getExperiment(getWizardData());
     }
+
+//final RandomGrouping randomGrouping = new RandomGrouping();
+//        if (storedWizardScreenData.getStimuliRandomTags() != null) {
+//            for (String randomTag : storedWizardScreenData.getStimuliRandomTags()) {
+//                randomGrouping.addRandomTag(randomTag);
+//            }
+//            final String metadataFieldname = "groupAllocation_" + storedWizardScreenData.getScreenTag();
+//            randomGrouping.setStorageField(metadataFieldname);
+//            loadStimuliFeature.setRandomGrouping(randomGrouping);
+//            experiment.getMetadata().add(new Metadata(metadataFieldname, metadataFieldname, ".*", ".", false, null));
+//        }
 }
