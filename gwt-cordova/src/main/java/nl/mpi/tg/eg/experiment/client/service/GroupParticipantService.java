@@ -47,7 +47,7 @@ public class GroupParticipantService {
     private String groupId = null;
     private String stimulusId = null;
     private Integer stimulusIndex = null;
-    private Integer requestedPhase = null;
+    private Integer requestedPhase = 0;
     private String messageString = null;
     private Boolean groupReady = false;
 //    private Boolean userIdMatches = false;
@@ -105,6 +105,10 @@ public class GroupParticipantService {
                 othersActivityListeners.put(groupRole, activityListener);
                 break;
         }
+    }
+
+    protected void clearLastFiredListner() {
+        this.lastFiredListner = null;
     }
 
     protected void handleGroupMessage(String userId, String screenId, String userLabel, String groupId, String allMemberCodes, String memberCode, String stimulusId, String stimulusIndex, String requestedPhase, String messageString, Boolean groupReady) {
@@ -214,9 +218,9 @@ public class GroupParticipantService {
         });
      }-*/;
 
-    public void messageGroup(int requestedPhase, String stimulusId, String stimulusIndex, String messageString) {
+    public void messageGroup(int incrementPhase, String stimulusId, String stimulusIndex, String messageString) {
         String windowGroupId = Window.Location.getParameter("group");
-        messageGroup(requestedPhase, userId, windowGroupId, screenId, allMemberCodes, stimulusId, stimulusIndex, messageString);
+        messageGroup(this.requestedPhase + incrementPhase, userId, windowGroupId, screenId, allMemberCodes, stimulusId, stimulusIndex, messageString);
     }
 
     private native void messageGroup(int requestedPhase, String userId, String groupId, String screenId, String allMemberCodes, String stimulusId, String stimulusIndex, String messageString) /*-{

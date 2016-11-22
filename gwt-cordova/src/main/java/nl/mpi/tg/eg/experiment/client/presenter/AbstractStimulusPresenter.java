@@ -882,7 +882,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         showStimulus();
     }
 
-    protected void sendGroupMessageButton(final String eventTag, final String buttonLabel, final boolean norepeat, final int hotKey, final int requestedPhase) {
+    protected void sendGroupMessageButton(final String eventTag, final String buttonLabel, final boolean norepeat, final int hotKey, final int incrementPhase) {
         PresenterEventListner eventListner = new PresenterEventListner() {
 
             @Override
@@ -907,7 +907,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     messageString += stimulusFreeText.getValue();
                 }
                 submissionService.submitTagValue(userResults.getUserData().getUserId(), eventTag, messageString, duration.elapsedMillis());
-                groupParticipantService.messageGroup(requestedPhase, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), messageString);
+                groupParticipantService.messageGroup(incrementPhase, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), messageString);
                 ((TimedStimulusView) simpleView).stopAudio();
                 ((TimedStimulusView) simpleView).clearPage();
                 stimulusFreeTextList.clear();
