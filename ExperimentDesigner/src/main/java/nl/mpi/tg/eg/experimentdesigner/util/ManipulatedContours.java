@@ -295,9 +295,9 @@ public class ManipulatedContours {
         wizardData.addScreen(wizardTextScreen2a);
         wizardData.addScreen(wizardTextScreen2b);
 
-        final WizardVideoAudioOptionStimulusScreen list1234ScreenA = new WizardVideoAudioOptionStimulusScreen("Stimuli", false, getStimuliStringA(), false,
+        final WizardVideoAudioOptionStimulusScreen list1234ScreenA = new WizardVideoAudioOptionStimulusScreen("StimuliA", false, getStimuliStringA(), false,
                 null, 1000, repeatCount(), 20, true, 100, "", "", true);
-        final WizardVideoAudioOptionStimulusScreen list1234ScreenB = new WizardVideoAudioOptionStimulusScreen("Stimuli", false, getStimuliStringB(), false,
+        final WizardVideoAudioOptionStimulusScreen list1234ScreenB = new WizardVideoAudioOptionStimulusScreen("StimuliB", false, getStimuliStringB(), false,
                 null, 1000, repeatCount(), 20, true, 100, "", "", true);
 //        list1234Screen.setStimulusResponseOptions("1,2,3,4,5");
 //        list1234Screen.setStimulusResponseLabelLeft("très probable négatif");
