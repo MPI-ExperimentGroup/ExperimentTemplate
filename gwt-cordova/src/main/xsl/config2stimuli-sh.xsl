@@ -11,6 +11,8 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
     <xsl:output method="text" encoding="UTF-8" />
     <xsl:template match="/">
+        <xsl:text>for i in *.wav; do ffmpeg -i "$i" "${i%.wav}.mp3"; done</xsl:text>
+        <xsl:text>for i in *.wav; do ffmpeg -i "$i" "${i%.wav}.ogg"; done</xsl:text>
         <xsl:for-each select="experiment/stimuli/stimulus">
             <xsl:text>&#xa;</xsl:text>
             <xsl:text>#convert -gravity center -background blue -fill white -font /Library/Fonts/Tahoma.ttf -pointsize 80 label:"</xsl:text>
