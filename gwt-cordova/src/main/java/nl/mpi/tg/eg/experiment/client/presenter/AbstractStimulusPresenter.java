@@ -603,7 +603,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, postLoadMs, shownStimulusListener, timedStimulusListener);
     }
 
-    protected void stimulusAudio(int postLoadMs, TimedStimulusListener timedStimulusListener, boolean showPlaybackIndicator) {
+    protected void stimulusAudio(int postLoadMs, boolean showPlaybackIndicator, TimedStimulusListener timedStimulusListener) {
         //@todo: utilise the showPlaybackIndicator
         final String audio = stimulusProvider.getCurrentStimulus().getAudio();
         final String uniqueId = stimulusProvider.getCurrentStimulus().getUniqueId();
