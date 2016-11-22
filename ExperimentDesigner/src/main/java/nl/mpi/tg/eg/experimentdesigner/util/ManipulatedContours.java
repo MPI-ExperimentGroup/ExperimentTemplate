@@ -36,58 +36,58 @@ public class ManipulatedContours {
 // two groups of participants: butons left to right and buttons right to left
     // time taken popup or other pester action to tell the participant to speed up
     // two sub groups: one gets part a (context) and part b(final, items), the other gets only part b
-    // todo: progress bar like indicator of the sound playback position 
+    // @todo: progress bar like indicator of the sound playback position 
     // buttons appear as soon as the sound ends
-
+   
     private final WizardController wizardController = new WizardController();
 
     protected String getExperimentName() {
         return "ManipulatedContours";
     }
 
-    final String agreementScreenText = "Alvast bedankt voor uw interesse in dit online-experiment! Gedetailleerde instructies over de taak worden op de volgende pagina gegeven. <br/>"
+    final String agreementScreenText = "Merci beaucoup pour votre intérêt pour cette expérience scientifique en ligne! Les instructions détaillées pour la tâche seront données à la page suivante.<br/>"
             + "<br/>"
-            + "Voordat u begint, dient u eerst te bevestigen dat u toestemt met deelname aan dit experiment. Let erop dat we uw antwoorden opslaan voor latere analyse. We gebruiken de resultaten alleen voor onderzoeksdoeleinden, en zullen ze beschrijven in gespecialiseerde tijdschriften of wellicht in kranten of op onze website. Echter, we zullen de resultaten NOOIT rapporteren op zo'n manier dat u zou kunnen worden geïdentificeerd. <br/>"
+            + "Avant de commencer, vous devez d'abord confirmer que vous êtes d'accord pour participer à cette expérience. Veuillez noter que nous enregistrerons vos réponses pour des analyses scientifiques ultérieures. Nous utiliserons les résultats uniquement pour des buts scientifiques et nous allons les décrire dans des journaux scientifiques ou peut-être dans des quotidiens ou sur notre site web. Cependant, nous NE RAPORTERONS JAMAIS les résultats d'une manière qui permettrait de vous identifier. <br/>"
             + "<br/>"
-            + "U bent tijdens dit experiment op elk moment vrij om de taak af te breken zonder uitleg te geven. Ook kunt u uw gegevens laten verwijderen tot het moment van publicatie, zonder uit te leggen waarom u dat doet. <br/>"
+            + "Vous êtes libre d'interrompre l'expérience à tout moment sans aucune explication. En outre, vous pourrez supprimer vos données ultérieurement sans avoir à fournir aucune explication également.<br/>"
             + "<br/>"
-            + "Er zijn geen risico's bekend van het meedoen aan dit experiment. <br/>"
+            + "Il n'y a aucun risque connu à participer à cette expérience. <br/>"
             + "<br/>"
-            + "Als u ermee instemt om door te gaan met dit experiment, klikt u op 'Ik ga akkoord'. Als u besluit niet deel te nemen aan het experiment, klikt u op 'Ik ga niet akkoord'. Verlaat het experiment door naar een andere website te gaan of de pagina af te sluiten."
+            + "Si vous êtes d'accord pour participer à cette expérience, cliquez sur 'Je suis d'accord'. Si vous décidez de ne pas participer à cette expérience, cliquez sur 'Je ne suis pas d'accord'. Abandonnez l'expérience en allant sur un autre site web ou en quittant le site web.<br/>"
             + "<br/>";
-    final String informationScreenText1 = "Dit online experiment is een luisterexperiment. Daarom vragen we je nu de geluidsinstellingen van je computersysteem te testen door op de grote ronde knop hieronder te klikken.<br/>"
+    final String informationScreenText1 = "Cette expérience en ligne est une expérience audio. Pour cette raison, nous vous demandons de tester les réglages sonores de votre ordinateur en cliquant sur le gros bouton rouge ci-dessous.<br/>"
             + "<br/>"
-            + "<b>Hoor je geen geluid?</b> Dan is er iets mis met je huidige geluidsinstellingen. Pas deze zelf aan en probeer het nogmaals.<br/>"
+            + "<b>Vous n'entendez aucun son?</b> Dans ce cas, il y a quelque chose qui ne va pas avec les réglages sonores de votre ordinateur. Personnalisez les réglages et essayez de nouveau.<br/>"
             + "<br/>"
-            + "<b>Hoor je een geluid?</b> Dan staan je geluidsinstellingen goed ingesteld. Stel zelf het volume van je computersysteem in op een comfortabel niveau.<br/>"
+            + "<b>Entendez-vous un son?</b> Dans ce cas, vos réglages sonores sont bons. Ajustez le volume de l'ordinateur à un niveau confortable.<br/>"
             + "<br/>"
             + "----------------------------------------------------------------<br/>"
-            + "LET OP: Doe dit experiment ALLEEN als je in een rustige omgeving zit zonder achtergrondgeluid. Dit is heel belangrijk!<br/>"
+            + "ATTENTION: Faites UNIQUEMENT cette expérience si vous vous trouvez dans un environment calme sans aucun bruit de fond. C'est très important!<br/>"
             + "----------------------------------------------------------------<br/>"
             + "<br/>"
             + "<br/>"
             + "<br/>"
-            + "[Druk pas op VOLGENDE als de geluidsinstellingen goed zijn...]";
+            + "[Cliquez sur SUIVANT si vos réglages sonores sont bons...]";
 
     protected String informationScreenText2() {
-        return "Dit online experiment is een luisterexperiment. Je krijgt telkens een woord te horen dat ofwel een <b>a-klinker</b> bevat (bijv. dan) ofwel een <b>aa-klinker</b> bevat (bijv. Daan). Jouw taak is om aan te geven welk woord je hoort.<br/>"
+        return "Cette expérience en ligne est une expérience audio. Vous entendrez à plusieurs reprises un extrait de conversation naturelle suivi d'un silence. Votre tâche est d'indiquer si le locuteur qui parle avant le silence va continuer ou arrêter de parler après le silence.<br/>"
                 + "<br/>"
-//                + "Bijvoorbeeld:<br/>"
-//                + "Je hoort het woord [bas] en daarna verschijnen er twee namen op het scherm:<br/>"
-//                + "links staat “bas” en rechts staat “baas”.<br/>"
-//                + "Jouw taak is dan om links op “bas” te klikken.<br/>"
-//                + "<br/>"
-//                + "Er zijn ongeveer 800 woorden in dit experiment. Een normale sessie duurt daarom ongeveer 30 minuten. Bovenaan elk scherm staat aangegeven hoe ver je in het experiment bent.<br/>"
+                + "Par example:<br/>"
+                + "Vous entendez l'extrait puis deux boutons apparaissent sur l'écran:<br/>"
+                + "à droite, il est marqué “continue” et à gauche, il est marqué “arrête”.<br/>"
+                + "Votre tâche est alors de cliquer sur le bouton à droite ou à gauche, suivant votre décision.<br/>"
                 + "<br/>"
-                + "Let op: je kunt het experiment NIET pauzeren, onderbreken, of later weer hervatten. Doe dit experiment daarom ALLEEN als je ook echt de tijd hebt ervoor. Voer het experiment volledig en serieus uit.<br/>"
+                + "Il y a environ 80 extraits dans cette expérience. Une session dure environ 20 minutes. Votre progrès est indiqué en haut de chaque écran.<br/>"
                 + "<br/>"
-                + "Als het experiment helder is en je klaar bent om te beginnen, druk dan op VOLGENDE.<br/>"
-                + "Het experiment start dan METEEN!";
+                + "Attention: vous NE POUVEZ PAS mettre en pause, interrompre, ou reprendre l'expérience. Faites UNIQUEMENT cette expérience si vous avez vraiment le temps de la faire en entier. Faites l'expérience entièrement et sérieusement.<br/>"
+                + "<br/>"
+                + "Si l'expérience est claire et que vous êtes prêt(e) à commencer, cliquez sur SUIVANT.<br/>"
+                + "L'expérience commencera IMMEDIATEMENT";
     }
-    final String completionScreenText1 = "Dit is het einde van het experiment.<br/>"
+    final String completionScreenText1 = "L'expérience est terminée.<br/>"
             + "<br/>"
             + "<br/>"
-            + "Bedankt voor je deelname!";
+            + "Merci beaucoup pour votre participation!";
 
     protected int repeatCount() {
         return 4;
@@ -95,12 +95,73 @@ public class ManipulatedContours {
 
     protected String[] getStimuliString() {
         return new String[]{
-            "999:tgt_5_1100Hz_100ms.wav:bas,baas",
-            "999:tgt_5_1100Hz_120ms.wav:bas,baas",
-            "999:tgt_5_1100Hz_130ms.wav:bas,baas",
-            "999:tgt_5_1100Hz_140ms.wav:bas,baas",
-            "999:tgt_5_1100Hz_150ms.wav:bas,baas",
-            "999:tgt_5_1100Hz_160ms.wav:bas,baas"
+            "999:03-12-07_1_p1_M19R_i_54470_manipulated.wav:continue,arrête",
+            "999:05-12-07_1_p1_M23R_i_359359_manipulated.wav:continue,arrête",
+            "999:04-12-07_2_p1_M21L_f_208696_original.wav:continue,arrête",
+            "999:04-12-07_2_p1_M21L_f_608165_original.wav:continue,arrête",
+            "999:14-11-07_1_p1_M01R_r_483828_original.wav:continue,arrête",
+            "999:04-12-07_2_p1_M21R_f_164284_original.wav:continue,arrête",
+            "999:04-12-07_2_p1_M21L_i_254252_original.wav:continue,arrête",
+            "999:03-12-07_1_p1_M19L_f_929888_original.wav:continue,arrête",
+            "999:22-11-07_2_p1_F07L_f_1377242_original.wav:continue,arrête",
+            "999:04-12-07_2_p1_M21L_f_358114_original.wav:continue,arrête",
+            "999:14-11-07_2_p1_M02R_i_530691_manipulated.wav:continue,arrête",
+            "999:22-11-07_2_p1_F07L_i_1450339_original.wav:continue,arrête",
+            "999:22-11-07_2_p1_F07L_f_1397300_original.wav:continue,arrête",
+            "999:03-12-07_1_p1_M19L_f_226523_original.wav:continue,arrête",
+            "999:14-11-07_2_p1_M02R_f_660313_original.wav:continue,arrête",
+            "999:14-11-07_1_p1_M01R_r_369646_manipulated.wav:continue,arrête",
+            "999:14-11-07_2_p1_M02L_r_782925_original.wav:continue,arrête",
+            "999:14-11-07_1_p1_M01L_r_325139_original.wav:continue,arrête",
+            "999:20-11-07_1_p1_F05R_i_315485_manipulated.wav:continue,arrête",
+            "999:14-11-07_1_p1_M01L_r_50507_manipulated.wav:continue,arrête",
+            "999:22-11-07_2_p1_F07L_f_1398960_original.wav:continue,arrête",
+            "999:22-11-07_2_p1_F07R_i_1198900_manipulated.wav:continue,arrête",
+            "999:14-11-07_2_p1_M02R_f_831537_original.wav:continue,arrête",
+            "999:04-12-07_2_p1_M21L_i_11468_original.wav:continue,arrête",
+            "999:03-12-07_1_p1_M19L_i_146083_manipulated.wav:continue,arrête",
+            "999:14-11-07_1_p1_M01R_i_219580_original.wav:continue,arrête",
+            "999:03-12-07_1_p1_M19R_r_416402_original.wav:continue,arrête",
+            "999:04-12-07_2_p1_M21L_i_255747_manipulated.wav:continue,arrête",
+            "999:14-11-07_2_p1_M02L_i_22560_manipulated.wav:continue,arrête",
+            "999:14-11-07_2_p1_M02R_i_542926_original.wav:continue,arrête",
+            "999:14-11-07_2_p1_M02L_r_343273_manipulated.wav:continue,arrête",
+            "999:03-12-07_1_p1_M19R_r_518943_manipulated.wav:continue,arrête",
+            "999:22-11-07_2_p1_F07R_f_1086927_original.wav:continue,arrête",
+            "999:20-11-07_1_p1_F05R_f_619771_original.wav:continue,arrête",
+            "999:20-11-07_1_p1_F05L_i_106723_original.wav:continue,arrête",
+            "999:04-12-07_1_p1_M20R_i_129603_original.wav:continue,arrête",
+            "999:03-12-07_1_p1_M19L_i_779215_manipulated.wav:continue,arrête",
+            "999:14-11-07_1_p1_M01R_f_222400_original.wav:continue,arrête",
+            "999:14-11-07_2_p1_M02L_i_75209_original.wav:continue,arrête",
+            "999:03-12-07_1_p1_M19R_f_340735_original.wav:continue,arrête",
+            "999:14-11-07_1_p1_M01R_r_242530_manipulated.wav:continue,arrête",
+            "999:04-12-07_1_p1_M20R_i_146255_manipulated.wav:continue,arrête",
+            "999:22-11-07_1_p1_F06R_f_1696027_original.wav:continue,arrête",
+            "999:14-11-07_2_p1_M02R_i_662936_manipulated.wav:continue,arrête",
+            "999:22-11-07_2_p1_F07L_i_280359_original.wav:continue,arrête",
+            "999:20-11-07_1_p1_F05R_f_624120_original.wav:continue,arrête",
+            "999:14-11-07_1_p1_M01R_r_160211_original.wav:continue,arrête",
+            "999:03-12-07_1_p1_M19R_r_529986_original.wav:continue,arrête",
+            "999:03-12-07_1_p1_M19L_r_838332_manipulated.wav:continue,arrête",
+            "999:14-11-07_2_p1_M02R_f_669651_original.wav:continue,arrête",
+            "999:14-11-07_1_p1_M01L_r_23773_original.wav:continue,arrête",
+            "999:14-11-07_1_p1_M01R_r_394807_original.wav:continue,arrête",
+            "999:22-11-07_2_p1_F07L_f_888933_original.wav:continue,arrête",
+            "999:04-12-07_2_p1_M21L_f_427727_original.wav:continue,arrête",
+            "999:05-12-07_1_p1_M23L_i_259230_original.wav:continue,arrête",
+            "999:03-12-07_1_p1_M19R_i_353600_original.wav:continue,arrête",
+            "999:04-12-07_2_p1_M21R_i_770591_original.wav:continue,arrête",
+            "999:14-11-07_1_p1_M01R_r_397825_manipulated.wav:continue,arrête",
+            "999:04-12-07_2_p1_M21L_i_803331_manipulated.wav:continue,arrête",
+            "999:03-12-07_1_p1_M19R_i_60085_original.wav:continue,arrête",
+            "999:04-12-07_1_p1_M20R_r_226308_original.wav:continue,arrête",
+            "999:03-12-07_1_p1_M19R_r_374050_manipulated.wav:continue,arrête",
+            "999:04-12-07_2_p1_M21L_i_139907_manipulated.wav:continue,arrête",
+            "999:14-11-07_2_p1_M02R_f_681124_original.wav:continue,arrête",
+            "999:22-11-07_1_p1_F06R_f_1430740_original.wav:continue,arrête",
+            "999:04-12-07_2_p1_M21L_f_431951_original.wav:continue,arrête",
+            "999:04-12-07_2_p1_M21L_r_380821_manipulated.wav:continue,arrête"
         };
     }
 
@@ -113,10 +174,10 @@ public class ManipulatedContours {
         WizardTextScreen wizardTextScreen2 = new WizardTextScreen("InformationScreen1", informationScreenText2(),
                 "volgende [ spatiebalk ]"
         );
-        WizardAudioTestScreen wizardTextScreen1 = new WizardAudioTestScreen("AudioTest", informationScreenText1, "volgende [ spatiebalk ]", "welkom");
+        WizardAudioTestScreen wizardTextScreen1 = new WizardAudioTestScreen("AudioTest", informationScreenText1, "suivant [ barre d'espacement ]", "bienvenue");
         //Information screen 
         //Agreement
-        WizardAgreementScreen agreementScreen = new WizardAgreementScreen("Agreement", agreementScreenText, "Ik ga akkoord");
+        WizardAgreementScreen agreementScreen = new WizardAgreementScreen("Accord", agreementScreenText, "Je suis d'accord");
 //        wizardData.setAgreementText("agreementText");
 //        wizardData.setDisagreementScreenText("disagreementScreenText");
         //metadata
@@ -124,16 +185,16 @@ public class ManipulatedContours {
         wizardEditUserScreen.setScreenTitle("Edit User");
         wizardEditUserScreen.setMenuLabel("Edit User");
         wizardEditUserScreen.setScreenTag("Edit_User");
-        wizardEditUserScreen.setNextButton("Volgende");
-        wizardEditUserScreen.setScreenText("Vul hier je login code in:");
+        wizardEditUserScreen.setNextButton("Suivant");
+        wizardEditUserScreen.setScreenText("Entrez votre code identifiant ici:");
         wizardEditUserScreen.setSendData(true);
-        wizardEditUserScreen.setOn_Error_Text("Could not contact the server, please check your internet connection and try again.");
+        wizardEditUserScreen.setOn_Error_Text("Impossible de contacter le serveur, vérifiez votre connexion Internet s'il vous plaît.");
         wizardEditUserScreen.setCustomFields(new String[]{
-            "workerId:login code:.'{'3,'}':Voer minimaal drie letters."
-//            "firstName:Voornaam:.'{'3,'}':Voer minimaal drie letters.",
-//            "lastName:Achternaam:.'{'3,'}':Voer minimaal drie letters.",
-//            "age:Leeftijd:[0-9]+:Voer een getal.",
-//            "gender:Geslacht:|man|vrouw|anders:."
+            "workerId:code identifiant:.'{'3,'}':Entrez au moins trois lettres."
+//            "firstName:Prénom:.'{'3,'}':Entrez au moins trois lettres.",
+//            "lastName:Nom de famille:.'{'3,'}':Entrez au moins trois lettres.",
+//            "age:Âge:[0-9]+:Entrez un nombre.",
+//            "gender:Sexe:|homme|femme|autre:."
         });
 
         wizardData.addScreen(wizardEditUserScreen);
@@ -144,15 +205,15 @@ public class ManipulatedContours {
         final WizardVideoAudioOptionStimulusScreen list1234Screen = new WizardVideoAudioOptionStimulusScreen("Stimuli", false, getStimuliString(), false,
                 null, 1000, repeatCount(), 20, true, 100, "", "", true);
 //        list1234Screen.setStimulusResponseOptions("1,2,3,4,5");
-//        list1234Screen.setStimulusResponseLabelLeft("zeer waarschijnlijk negatief");
-//        list1234Screen.setStimulusResponseLabelRight("zeer waarschijnlijk positief");
+//        list1234Screen.setStimulusResponseLabelLeft("très probable négatif");
+//        list1234Screen.setStimulusResponseLabelRight("très probable positif");
         wizardData.addScreen(list1234Screen);
 
         WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, false, true,
-                null, //Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop.",
-                "Opnieuw beginnen",
-                "Finished",
-                "Could not contact the server, please check your internet connection and try again.", "Retry");
+                null, //Si quelqu'un d'autre veut participer à l'expérience sur cet ordinateur, veuillez cliquer sur le bouton ci-dessous.",
+                "Redémarrer",
+                "Fini",
+                "Impossible de contacter le serveur, vérifiez votre connexion Internet s'il vous plaît.", "Réessayer");
         wizardData.addScreen(completionScreen);
         final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("Over", false);
         wizardAboutScreen.setBackWizardScreen(wizardEditUserScreen);
@@ -169,16 +230,4 @@ public class ManipulatedContours {
     public Experiment getExperiment() {
         return wizardController.getExperiment(getWizardData());
     }
-
-//final RandomGrouping randomGrouping = new RandomGrouping();
-//        if (storedWizardScreenData.getStimuliRandomTags() != null) {
-//            for (String randomTag : storedWizardScreenData.getStimuliRandomTags()) {
-//                randomGrouping.addRandomTag(randomTag);
-//            }
-//            final String metadataFieldname = "groupAllocation_" + storedWizardScreenData.getScreenTag();
-//            randomGrouping.setStorageField(metadataFieldname);
-//            loadStimuliFeature.setRandomGrouping(randomGrouping);
-//            experiment.getMetadata().add(new Metadata(metadataFieldname, metadataFieldname, ".*", ".", false, null));
-//        }
-
 }
