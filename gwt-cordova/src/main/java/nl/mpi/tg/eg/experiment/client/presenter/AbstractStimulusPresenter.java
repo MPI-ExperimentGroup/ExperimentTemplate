@@ -440,6 +440,35 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         groupParticipantService.addGroupActivity(groupRole, groupMessageMatch, timedStimulusListener);
     }
 
+    protected void scoreIncrement(final int scoreThreshold, final int scoreValue, final TimedStimulusListener aboveThreshold, final TimedStimulusListener belowThreshold) {
+        userResults.getUserData().updateBestScore(scoreValue + userResults.getUserData().getBestScore());
+        if (userResults.getUserData().getBestScore() >= scoreThreshold) {
+            aboveThreshold.postLoadTimerFired();
+        } else {
+            belowThreshold.postLoadTimerFired();
+        }
+    }
+
+    protected void scoreLabel() {
+        ((TimedStimulusView) simpleView).addHtmlText("scoreLabel:" + userResults.getUserData().getBestScore());
+    }
+
+    protected void groupChannelScoreLabel() {
+        ((TimedStimulusView) simpleView).addHtmlText("groupChannelScoreLabel");
+    }
+
+    protected void groupScoreLabel() {
+        ((TimedStimulusView) simpleView).addHtmlText("groupScoreLabel");
+    }
+
+    protected void groupMemberLabel() {
+        ((TimedStimulusView) simpleView).addHtmlText("groupMemberLabel: " + groupParticipantService.getUserLabel());
+    }
+
+    protected void groupMemberCodeLabel() {
+        ((TimedStimulusView) simpleView).addHtmlText("groupMemberCodeLabel: " + groupParticipantService.getMemberCode());
+    }
+
     protected void stimulusFreeText(String validationRegex, String validationChallenge) {
         StimulusFreeText stimulusFreeText = ((TimedStimulusView) simpleView).addStimulusFreeText(validationRegex, validationChallenge);
         stimulusFreeTextList.add(stimulusFreeText);
