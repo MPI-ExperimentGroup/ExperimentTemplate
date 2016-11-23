@@ -41,7 +41,7 @@ public enum FeatureType {
     currentStimulusHasTag(true, false, new FeatureAttribute[]{msToNext}, true, false, Contitionals.hasStimulusTag),
     targetButton(false, true, new FeatureAttribute[]{target, styleName}),
     actionButton(true, true, new FeatureAttribute[]{hotKey, styleName}),
-    sendGroupMessageButton(true, true, new FeatureAttribute[]{hotKey, styleName, requestedPhase}),
+    sendGroupMessageButton(true, true, new FeatureAttribute[]{hotKey, styleName, incrementPhase}),
     ratingButton(false, false, new FeatureAttribute[]{eventTier, ratingLabels, ratingLabelLeft, ratingLabelRight}),
     stimulusFreeText(true, true, new FeatureAttribute[]{validationRegex}),
     stimulusRatingButton(false, false, new FeatureAttribute[]{eventTier, ratingLabelLeft, ratingLabelRight}),
@@ -111,7 +111,7 @@ public enum FeatureType {
     stimulusCodeImage(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, codeFormat, animate}),
     stimulusCodeVideo(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, codeFormat}),
     stimulusCodeAudio(true, false, new FeatureAttribute[]{msToNext, codeFormat}),
-    stimulusAudio(true, false, new FeatureAttribute[]{msToNext, mp3,}),
+    stimulusAudio(true, false, new FeatureAttribute[]{msToNext, mp3, showPlaybackIndicator}),
     stimulusImageCapture(true, true, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext}),
     //    captureStimulusImage(true, true, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth}),
     VideoPanel(false, false, new FeatureAttribute[]{mp4, ogg, webm, percentOfPage, maxHeight, maxWidth, poster}),
@@ -127,6 +127,12 @@ public enum FeatureType {
     showColourReport(true, false, new FeatureAttribute[]{scoreThreshold}, false, false, Contitionals.hasThreshold),
     groupNetwork(true, false, new FeatureAttribute[]{groupMembers, groupCommunicationChannels}, false, false, Contitionals.hasGroupActivities),
     groupNetworkActivity(true, false, new FeatureAttribute[]{groupRole, groupMessageMatch}, false, false, Contitionals.none),
+    groupMemberCodeLabel(false, false, null),
+    groupMemberLabel(false, false, null),
+    groupScoreLabel(false, false, null),
+    groupChannelScoreLabel(false, false, null),
+    scoreLabel(false, false, null),
+    scoreIncrement(true, false, new FeatureAttribute[]{scoreThreshold, scoreValue}, false, false, Contitionals.hasThreshold),
     submitTestResults(true, false, null, false, false, Contitionals.hasErrorSuccess);
     private final boolean canHaveFeatures;
     private final boolean canHaveText;

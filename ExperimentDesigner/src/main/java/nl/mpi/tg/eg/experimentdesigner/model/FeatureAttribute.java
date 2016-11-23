@@ -74,10 +74,11 @@ public enum FeatureAttribute {
     condition1Tag,
     condition2Tag,
     scoreThreshold,
-    showPlaybackIndicator,
+    showPlaybackIndicator, // @todo: add the PlaybackIndicator
     groupRole,
     groupMembers,
     groupMessageMatch,
     groupCommunicationChannels,
-    requestedPhase
+    incrementPhase,
+    scoreValue
 }

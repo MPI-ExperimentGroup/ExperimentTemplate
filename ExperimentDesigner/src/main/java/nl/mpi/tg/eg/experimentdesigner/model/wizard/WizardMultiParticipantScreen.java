@@ -78,6 +78,19 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         this.wizardScreenData.setButtonLabelEventTag(buttonLabelEventTag);
     }
 
+    private void addScoreFeatures(final PresenterFeature presenterFeature) {
+        final PresenterFeature scoreIncrement = new PresenterFeature(FeatureType.scoreIncrement, null);
+        presenterFeature.getPresenterFeatureList().add(scoreIncrement);
+        scoreIncrement.addFeatureAttributes(FeatureAttribute.scoreThreshold, "5");
+        scoreIncrement.addFeatureAttributes(FeatureAttribute.scoreValue, "1");
+        final PresenterFeature aboveThreshold = new PresenterFeature(FeatureType.aboveThreshold, null);
+        aboveThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "above threshold"));
+        scoreIncrement.getPresenterFeatureList().add(aboveThreshold);
+        final PresenterFeature belowThreshold = new PresenterFeature(FeatureType.belowThreshold, null);
+        belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "below threshold"));
+        scoreIncrement.getPresenterFeatureList().add(belowThreshold);
+    }
+
     @Override
     public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         experiment.appendUniqueStimuli(storedWizardScreenData.getStimuli());
@@ -105,17 +118,53 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         final PresenterFeature allNetworkActivity2 = new PresenterFeature(FeatureType.groupNetworkActivity, null);
         allNetworkActivity2.addFeatureAttributes(FeatureAttribute.groupMessageMatch, "all");
 //        groupNetworkActivity2.addFeatureAttributes(FeatureAttribute.requestedPhase, "1");
-        producerNetworkActivity0.addFeatureAttributes(FeatureAttribute.groupRole,   "A,C,E,G:-:-:B,D,F,H:-:-");
-        guesserNetworkActivity0.addFeatureAttributes(FeatureAttribute.groupRole,    "B,D,F,H:-:-:A,C,E,G:-:-");
-        producerNetworkActivity1.addFeatureAttributes(FeatureAttribute.groupRole,   "-:A,C,E,G:-:-:B,D,F,H:-");
-        guesserNetworkActivity1.addFeatureAttributes(FeatureAttribute.groupRole,    "-:B,D,F,H:-:-:A,C,E,G:-");
-        allNetworkActivity2.addFeatureAttributes(FeatureAttribute.groupRole,        "-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H");
+        producerNetworkActivity0.addFeatureAttributes(FeatureAttribute.groupRole, "A,C,E,G:-:-:B,D,F,H:-:-");
+        guesserNetworkActivity0.addFeatureAttributes(FeatureAttribute.groupRole, "B,D,F,H:-:-:A,C,E,G:-:-");
+        producerNetworkActivity1.addFeatureAttributes(FeatureAttribute.groupRole, "-:A,C,E,G:-:-:B,D,F,H:-");
+        guesserNetworkActivity1.addFeatureAttributes(FeatureAttribute.groupRole, "-:B,D,F,H:-:-:A,C,E,G:-");
+        allNetworkActivity2.addFeatureAttributes(FeatureAttribute.groupRole, "-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H");
 
         producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         producerNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         guesserNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+
+        addScoreFeatures(producerNetworkActivity0);
+        addScoreFeatures(producerNetworkActivity1);
+        addScoreFeatures(guesserNetworkActivity0);
+        addScoreFeatures(guesserNetworkActivity1);
+        addScoreFeatures(allNetworkActivity2);
+
+        producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
+        producerNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
+        guesserNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
+        guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
+        allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
+
+        producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupChannelScoreLabel, null));
+        producerNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupChannelScoreLabel, null));
+        guesserNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupChannelScoreLabel, null));
+        guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupChannelScoreLabel, null));
+        allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupChannelScoreLabel, null));
+
+        producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupScoreLabel, null));
+        producerNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupScoreLabel, null));
+        guesserNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupScoreLabel, null));
+        guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupScoreLabel, null));
+        allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupScoreLabel, null));
+
+        producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberLabel, null));
+        producerNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberLabel, null));
+        guesserNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberLabel, null));
+        guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberLabel, null));
+        allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberLabel, null));
+
+        producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberCodeLabel, null));
+        producerNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberCodeLabel, null));
+        guesserNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberCodeLabel, null));
+        guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberCodeLabel, null));
+        allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberCodeLabel, null));
 
         producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "The producer sees the stimulus and enters some text"));
         producerNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "The producer waits for the guesser"));

@@ -22,31 +22,109 @@
         <centrePage/>
         <loadStimulus eventTag="MultiParticipant" randomise="false" repeatRandomWindow="0" maxStimuli="8" repeatCount="1">
             <hasMoreStimulus>
-                <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,B|C,D|E,F,G,H">
-                    <groupNetworkActivity groupMessageMatch="all" groupRole="A,C,E::::B,D,F:::A,C,G:::B,D,H">
+                <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,B|C,D|E,F|G,H">
+                    <groupNetworkActivity groupMessageMatch="all" groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
+                        <clearPage/>
+                        <scoreIncrement scoreThreshold="5" scoreValue="1">
+                            <aboveThreshold>
+<plainText featureText="above threshold"/>
+                            </aboveThreshold>
+                            <belowThreshold>
+<plainText featureText="below threshold"/>
+                            </belowThreshold>
+                        </scoreIncrement>
+                        <scoreLabel/>
+                        <groupChannelScoreLabel/>
+                        <groupScoreLabel/>
+                        <groupMemberLabel/>
+                        <groupMemberCodeLabel/>
                         <htmlText featureText="The producer sees the stimulus and enters some text"/>
                         <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                             <addPadding/>
-                            <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." validationRegex=".{2,}"/>
-                            <sendGroupMessageButton featureText="groupNetworkActivitySelf1" eventTag="groupNetworkActivitySelf1" hotKey="W" requestedPhase="1" norepeat="true"/>
+                            <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." validationRegex="[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}"/>
+                            <sendGroupMessageButton featureText="groupNetworkActivitySelf1" eventTag="groupNetworkActivitySelf1" incrementPhase="1" hotKey="W" norepeat="true"/>
                         </stimulusImage>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupMessageMatch="all" groupRole=":A,C,E:::">
+                    <groupNetworkActivity groupMessageMatch="all" groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
+                        <clearPage/>
+                        <scoreIncrement scoreThreshold="5" scoreValue="1">
+                            <aboveThreshold>
+<plainText featureText="above threshold"/>
+                            </aboveThreshold>
+                            <belowThreshold>
+<plainText featureText="below threshold"/>
+                            </belowThreshold>
+                        </scoreIncrement>
+                        <scoreLabel/>
+                        <groupChannelScoreLabel/>
+                        <groupScoreLabel/>
+                        <groupMemberLabel/>
+                        <groupMemberCodeLabel/>
                         <htmlText featureText="The producer waits for the guesser"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupMessageMatch="all" groupRole=":B,D,F,G,H:::A,C,E,G,H:::B,D,E,F,H:::A,C,E,F,G">
+                    <groupNetworkActivity groupMessageMatch="all" groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
+                        <clearPage/>
+                        <scoreIncrement scoreThreshold="5" scoreValue="1">
+                            <aboveThreshold>
+<plainText featureText="above threshold"/>
+                            </aboveThreshold>
+                            <belowThreshold>
+<plainText featureText="below threshold"/>
+                            </belowThreshold>
+                        </scoreIncrement>
+                        <scoreLabel/>
+                        <groupChannelScoreLabel/>
+                        <groupScoreLabel/>
+                        <groupMemberLabel/>
+                        <groupMemberCodeLabel/>
+                        <htmlText featureText="The guesser waits for the producer"/>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupMessageMatch="all" groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
+                        <clearPage/>
+                        <scoreIncrement scoreThreshold="5" scoreValue="1">
+                            <aboveThreshold>
+<plainText featureText="above threshold"/>
+                            </aboveThreshold>
+                            <belowThreshold>
+<plainText featureText="below threshold"/>
+                            </belowThreshold>
+                        </scoreIncrement>
+                        <scoreLabel/>
+                        <groupChannelScoreLabel/>
+                        <groupScoreLabel/>
+                        <groupMemberLabel/>
+                        <groupMemberCodeLabel/>
                         <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
-                        <sendGroupMessageButton featureText="groupNetworkActivity2" eventTag="groupNetworkActivity2" hotKey="Q" requestedPhase="3" norepeat="true"/>
+                        <showStimulusGrid imageWidth="10%" eventTag="guesserNetworkActivity1Grid" columnCount="5">
+                            <responseCorrect msToNext="0">
+                                <htmlText featureText="responseCorrect"/>
+                            </responseCorrect>
+                            <responseIncorrect msToNext="0">
+                                <htmlText featureText="responseIncorrect"/>
+                            </responseIncorrect>
+                            <stimuli/>
+                        </showStimulusGrid>
+                        <sendGroupMessageButton featureText="groupNetworkActivity2" eventTag="groupNetworkActivity2" incrementPhase="1" hotKey="Q" norepeat="true"/>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupMessageMatch="all" groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
+                        <clearPage/>
+                        <scoreIncrement scoreThreshold="5" scoreValue="1">
+                            <aboveThreshold>
+<plainText featureText="above threshold"/>
+                            </aboveThreshold>
+                            <belowThreshold>
+<plainText featureText="below threshold"/>
+                            </belowThreshold>
+                        </scoreIncrement>
+                        <scoreLabel/>
+                        <groupChannelScoreLabel/>
+                        <groupScoreLabel/>
+                        <groupMemberLabel/>
+                        <groupMemberCodeLabel/>
+                        <htmlText featureText="The guesser and producer see the grid of stimuli with the guessers selection highlighted and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
+                        <sendGroupMessageButton featureText="groupNetworkActivity3" eventTag="groupNetworkActivity3" incrementPhase="1" hotKey="Q" norepeat="true"/>
                     </groupNetworkActivity>
                 </groupNetwork>
-                <groupNetworkActivity groupMessageMatch="all" groupRole=":::A,B,C,D,E,F,G,H:">
-                    <htmlText featureText="The guesser and producer see the grid of stimuli with the guessers selection highlighted and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                    <sendGroupMessageButton featureText="groupNetworkActivity3" eventTag="groupNetworkActivity3" hotKey="Q" requestedPhase="4" norepeat="true"/>
-                </groupNetworkActivity>
-                <groupNetworkActivity groupMessageMatch="all" groupRole=":B,D,F,G,H:::A,C,E,G,H:::B,D,E,F,H:::A,C,E,F,G">
-                    <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
-                    <sendGroupMessageButton featureText="groupNetworkActivity2" eventTag="groupNetworkActivity2" hotKey="Q" requestedPhase="3" norepeat="true"/>
-                </groupNetworkActivity>
             </hasMoreStimulus>
             <endOfStimulus>
                 <autoNextPresenter/>
@@ -70,7 +148,10 @@
         <stimulus identifier="3-5" imagePath="3-5.png" pauseMs="0">
             <tag>MultiParticipant</tag>
         </stimulus>
-        <stimulus identifier="4-41-2" imagePath="4-4.png1-2.png" pauseMs="0">
+        <stimulus identifier="4-4" imagePath="4-4.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+        <stimulus identifier="1-2" imagePath="1-2.png" pauseMs="0">
             <tag>MultiParticipant</tag>
         </stimulus>
         <stimulus identifier="2-1" imagePath="2-1.png" pauseMs="0">
@@ -82,7 +163,10 @@
         <stimulus identifier="3-6" imagePath="3-6.png" pauseMs="0">
             <tag>MultiParticipant</tag>
         </stimulus>
-        <stimulus identifier="4-51-3" imagePath="4-5.png1-3.png" pauseMs="0">
+        <stimulus identifier="4-5" imagePath="4-5.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+        <stimulus identifier="1-3" imagePath="1-3.png" pauseMs="0">
             <tag>MultiParticipant</tag>
         </stimulus>
         <stimulus identifier="2-2" imagePath="2-2.png" pauseMs="0">
@@ -94,7 +178,10 @@
         <stimulus identifier="3-7" imagePath="3-7.png" pauseMs="0">
             <tag>MultiParticipant</tag>
         </stimulus>
-        <stimulus identifier="4-61-4" imagePath="4-6.png1-4.png" pauseMs="0">
+        <stimulus identifier="4-6" imagePath="4-6.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+        <stimulus identifier="1-4" imagePath="1-4.png" pauseMs="0">
             <tag>MultiParticipant</tag>
         </stimulus>
         <stimulus identifier="2-3" imagePath="2-3.png" pauseMs="0">
@@ -106,7 +193,10 @@
         <stimulus identifier="4-1" imagePath="4-1.png" pauseMs="0">
             <tag>MultiParticipant</tag>
         </stimulus>
-        <stimulus identifier="4-71-5" imagePath="4-7.png1-5.png" pauseMs="0">
+        <stimulus identifier="4-7" imagePath="4-7.png" pauseMs="0">
+            <tag>MultiParticipant</tag>
+        </stimulus>
+        <stimulus identifier="1-5" imagePath="1-5.png" pauseMs="0">
             <tag>MultiParticipant</tag>
         </stimulus>
         <stimulus identifier="2-4" imagePath="2-4.png" pauseMs="0">
