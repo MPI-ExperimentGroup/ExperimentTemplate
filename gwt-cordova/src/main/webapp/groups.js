@@ -66,7 +66,10 @@ function connect() {
             var messageButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup('" + contentData.userId + "','" + contentData.requestedPhase + "','" + contentData.screenId + "','" + contentData.userLabel + "','" + contentData.groupId + "','" + contentData.allMemberCodes + "','" + contentData.memberCode + "','" + contentData.stimulusId + "')\">message</button></td>";
             var addButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup(Math.floor((1 + Math.random()) * 0x10000),'" + contentData.requestedPhase + "','" + contentData.screenId + "',null,'" + contentData.groupId + "','" + contentData.allMemberCodes + "',null,null)\">add member</button></td>";
             usersTableRow.html(usersTableCells + messageButtonCell + addButtonCell);
-
+            usersTableRow.css("outline-style", "solid");
+            usersTableRow.css("outline-width", "5px");
+            usersTableRow.css("outline-color", "green");
+            usersTableRow.animate({outlineWidth: 0}, "slow");
 //            var groupMemberDiv = $("<div style='background: grey;' class='progressDivBar'>&nbsp;</div>");
 //            $("#groupTarget").append(groupMemberDiv);
         });
@@ -148,4 +151,4 @@ $(function () {
         updateGroup();
     });
     connect();
-}); 
+});
