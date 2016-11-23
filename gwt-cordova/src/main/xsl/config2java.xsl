@@ -424,9 +424,9 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             }
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                    appEventListner.requestApplicationState(ApplicationState.</xsl:text>
-                <xsl:value-of select="@target" />
-                <xsl:text>);
+            appEventListner.requestApplicationState(ApplicationState.</xsl:text>
+        <xsl:value-of select="@target" />
+        <xsl:text>);
             }
             }</xsl:text>
         <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
@@ -612,7 +612,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             <xsl:value-of select="if(@storageField) then concat(', metadataFieldProvider.', @storageField, 'MetadataField') else ',null'" />
         </xsl:if>
     </xsl:template>
-    <xsl:template match="withMatchingStimulus|showColourReport|submitTestResults|VideoPanel|startAudioRecorder|stopAudioRecorder|startAudioRecorderTag|endAudioRecorderTag|AnnotationTimelinePanel|loadStimulus|loadSdCardStimulus|loadAllStimulus|loadSubsetStimulus|currentStimulusHasTag|existingUserCheck">
+    <xsl:template match="groupMemberCodeLabel|groupMemberLabel|groupScoreLabel|groupChannelScoreLabel|scoreLabel|scoreIncrement|withMatchingStimulus|showColourReport|submitTestResults|VideoPanel|startAudioRecorder|stopAudioRecorder|startAudioRecorderTag|endAudioRecorderTag|AnnotationTimelinePanel|loadStimulus|loadSdCardStimulus|loadAllStimulus|loadSubsetStimulus|currentStimulusHasTag|existingUserCheck">
         <xsl:value-of select="if(ends-with(local-name(), 'Panel')) then '    set' else '    '" />
         <xsl:value-of select="local-name()" />
         <!--        <xsl:text>(new </xsl:text>
@@ -641,6 +641,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@condition2Tag) then concat(', Tag.tag_', @condition2Tag, '') else ''" />
         <xsl:value-of select="if(@maxStimuli) then concat(', ', @maxStimuli, '') else ''" />
         <xsl:value-of select="if(@scoreThreshold) then concat('', @scoreThreshold, ', ') else ''" />
+        <xsl:value-of select="if(@scoreValue) then concat('', @scoreValue, '') else ''" />
         <xsl:value-of select="if(@columnCount) then concat(', ', @columnCount, '') else ''" />
         <xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" />
         <xsl:value-of select="if(@randomise) then concat(', ', @randomise eq 'true') else ''" />
