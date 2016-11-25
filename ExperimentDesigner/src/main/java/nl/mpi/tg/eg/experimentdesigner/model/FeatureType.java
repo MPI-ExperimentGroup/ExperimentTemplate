@@ -132,6 +132,7 @@ public enum FeatureType {
     groupScoreLabel(false, false, null),
     groupChannelScoreLabel(false, false, null),
     scoreLabel(false, false, null),
+    submitGroupEvent(false, false, null),
     scoreIncrement(true, false, new FeatureAttribute[]{scoreThreshold, scoreValue}, false, false, Contitionals.hasThreshold),
     submitTestResults(true, false, null, false, false, Contitionals.hasErrorSuccess);
     private final boolean canHaveFeatures;
