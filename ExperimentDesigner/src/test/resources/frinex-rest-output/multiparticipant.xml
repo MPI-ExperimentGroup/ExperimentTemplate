@@ -100,6 +100,7 @@
                             </scoreIncrement>
                         </actionButton>
                         <sendGroupMessageButton featureText="incorrect" eventTag="incorrect" incrementPhase="1" hotKey="NUM_PERIOD" norepeat="true"/>
+                        <submitGroupEvent/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupMessageMatch="all" groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
                         <clearPage/>
