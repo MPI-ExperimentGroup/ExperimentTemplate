@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.frinex.rest;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import nl.mpi.tg.eg.frinex.model.DataSubmissionResult;
+import nl.mpi.tg.eg.frinex.model.GroupData;
 import nl.mpi.tg.eg.frinex.model.TagData;
 import nl.mpi.tg.eg.frinex.model.Participant;
 import nl.mpi.tg.eg.frinex.model.ScreenData;
@@ -53,6 +54,8 @@ public class ExperimentService {
     TagRepository tagRepository;
     @Autowired
     TagPairRepository tagPairRepository;
+    @Autowired
+    GroupDataRepository groupDataRepository;
 
 //    @RequestMapping(value = "/registerUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 //    @ResponseBody
@@ -152,23 +155,26 @@ public class ExperimentService {
             responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         } else {
             for (Participant participant : participantList) {
-                if (participantRepository.countByWorkerId(participant.getWorkerId()) > 0) {
-                    responseEntity = new ResponseEntity<>(new DataSubmissionResult(participant.getUserId(), "Unfortunately, you have already taken this HIT, and therefore cannot continue.", false), HttpStatus.NOT_ACCEPTABLE);
-                    return responseEntity;
-                } else {
-                    participant.setSubmitDate(new java.util.Date());
-                    final String remoteAddr = request.getRemoteAddr();
-                    final int lastIndexOf = remoteAddr.lastIndexOf(".");
-                    if (lastIndexOf > 0) {
-                        participant.setRemoteAddr(remoteAddr.substring(0, lastIndexOf) + ".0");
+//   @todo: set up the limiting of worker id as an option for each experiment and each metadata field
+// if (participantRepository.countByWorkerIdCustomField(participant.getworkerIdCustomField()) > 0) {
+////                    final TagData tagData = new TagData();                    
+////                    tagRepository.save(tagData);
+//                    responseEntity = new ResponseEntity<>(new DataSubmissionResult(participant.getUserId(), "Unfortunately, you have already taken this HIT, and therefore cannot continue.", false), HttpStatus.NOT_ACCEPTABLE);
+//                    return responseEntity;
 //                } else {
-                        // todo: IPv6 is not handled at this stage but it should be striped to 80 bits when added
+                participant.setSubmitDate(new java.util.Date());
+                final String remoteAddr = request.getRemoteAddr();
+                final int lastIndexOf = remoteAddr.lastIndexOf(".");
+                if (lastIndexOf > 0) {
+                    participant.setRemoteAddr(remoteAddr.substring(0, lastIndexOf) + ".0");
+//                } else {
+                    // todo: IPv6 is not handled at this stage but it should be striped to 80 bits when added
 //                    participant.setRemoteAddr(remoteAddr);
-                    }
-                    participant.setAcceptLang(acceptLang);
-                    participant.setUserAgent(userAgent);
-                    participantRepository.save(participant);
                 }
+                participant.setAcceptLang(acceptLang);
+                participant.setUserAgent(userAgent);
+                participantRepository.save(participant);
+//                }
             }
             responseEntity = new ResponseEntity<>(new DataSubmissionResult(participantList.get(0).getUserId(), "", true), HttpStatus.OK);
         }
@@ -204,6 +210,22 @@ public class ExperimentService {
         }
         return responseEntity;
     }
+
+    @RequestMapping(value = "/groupEvent", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<DataSubmissionResult> registerGroupDataEvent(@RequestBody List<GroupData> groupDataList) {
+        final ResponseEntity responseEntity;
+        if (groupDataList.isEmpty()) {
+            responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        } else {
+            for (GroupData groupData : groupDataList) {
+                groupData.setSubmitDate(new java.util.Date());
+                groupDataRepository.save(groupData);
+            }
+            responseEntity = new ResponseEntity<>(new DataSubmissionResult(groupDataList.get(0).getUserId(), "", true), HttpStatus.OK);
+        }
+        return responseEntity;
+    }
+
 //    @RequestMapping(value = "/experimentData/csv", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
 //    public @ResponseBody
 //    ExperimentData getCsv(@RequestParam(value = "name", required = false, defaultValue = "param12") String name) {
