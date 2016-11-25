@@ -217,6 +217,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //        final PresenterFeature nextStimulusFeature2 = addGroupMessageButton("groupNetworkActivity2", "Q");
         guesserNetworkActivity1.getPresenterFeatureList().add(correctButton);
         guesserNetworkActivity1.getPresenterFeatureList().add(incorrectButton);
+        guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.submitGroupEvent, null));
 
         final PresenterFeature nextStimulusFeature3 = addGroupMessageButton("nextStimulusFeature3", "Q");
         allNetworkActivity2.getPresenterFeatureList().add(nextStimulusFeature3);
