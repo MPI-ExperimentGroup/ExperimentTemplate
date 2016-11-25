@@ -440,8 +440,24 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         groupParticipantService.addGroupActivity(groupRole, groupMessageMatch, timedStimulusListener);
     }
 
+    public void submitGroupEvent() {
+        // @todo: groupParticipantService.getStimuliOptions()
+        submissionService.submitGroupEvent(userResults.getUserData().getUserId(),
+                groupParticipantService.getGroupId(),
+                groupParticipantService.getAllMemberCodes(),
+                groupParticipantService.getGroupCommunicationChannels(),
+                getSelfTag(),
+                groupParticipantService.getMemberCode(),
+                groupParticipantService.getUserLabel(),
+                groupParticipantService.getStimulusId(),
+                groupParticipantService.getMessageString(),
+                "todo: StimuliOptions",
+                duration.elapsedMillis());
+    }
+
     protected void scoreIncrement(final int scoreThreshold, final int scoreValue, final TimedStimulusListener aboveThreshold, final TimedStimulusListener belowThreshold) {
         userResults.getUserData().updateBestScore(scoreValue + userResults.getUserData().getBestScore());
+        submissionService.submitTagValue(userResults.getUserData().getUserId(), "scoreIncrement", String.valueOf(userResults.getUserData().getBestScore()), duration.elapsedMillis());
         if (userResults.getUserData().getBestScore() >= scoreThreshold) {
             aboveThreshold.postLoadTimerFired();
         } else {
