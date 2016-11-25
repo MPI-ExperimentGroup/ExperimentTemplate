@@ -44,7 +44,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
 
     private enum ServiceEndpoint {
 
-        timeStamp, screenChange, tagEvent, tagPairEvent, metadata, stowedData
+        timeStamp, screenChange, tagEvent, tagPairEvent, metadata, stowedData, groupEvent
     }
     private final LocalStorage localStorage;
     private final String experimentName;
@@ -56,6 +56,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
     }
 
     public String getCompletionCode() {
+        // todo: this should be generated on the server rather than on the client
         String completionCode = localStorage.getCompletionCode();
         if (completionCode == null) {
             final Random random = new Random();
@@ -100,6 +101,31 @@ public class DataSubmissionService extends AbstractSubmissionService {
                 + "\"eventMs\": \"" + eventMs + "\" \n}");
     }
 
+    public void submitGroupEvent(final UserId userId,
+            String groupName,
+            String allMemberCodes,
+            String groupCommunicationChannels,
+            String screenName,
+            String memberCode,
+            String userLabel,
+            String stimulusId,
+            String messageString,
+            String stimulusOptionIds,
+            int eventMs) {
+        submitData(ServiceEndpoint.groupEvent, userId, "{\"tagDate\" :\"" + format.format(new Date()) + "\",\n"
+                + "\"experimentName\": \"" + experimentName + "\",\n"
+                + "\"userId\": \"" + userId + "\",\n"
+                + "\"groupName\": \"" + groupName + "\",\n"
+                + "\"memberCode\": \"" + memberCode + "\",\n"
+                + "\"screenName\": \"" + screenName + "\",\n"
+                + "\"userLabel\": \"" + userLabel + "\",\n"
+                + "\"messageString\": \"" + messageString + "\",\n"
+//                + "\"stimulusId\": \"" + stimulusId + "\",\n"
+//                + "\"stimulusOptionIds\": \"" + stimulusOptionIds + "\",\n"
+//                + "\"groupCommunicationChannels\": \"" + groupCommunicationChannels + "\",\n"
+                + "\"eventMs\": \"" + eventMs + "\" \n}");
+    }
+
     public void submitTimeStamp(final UserId userId, String eventTag, int eventMs) {
         submitData(ServiceEndpoint.timeStamp, userId, "{\"tagDate\" :\"" + format.format(new Date()) + "\",\n"
                 + "\"experimentName\": \"" + experimentName + "\",\n"
@@ -137,6 +163,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
         }
         final ResultCounts resultCounts = new ResultCounts();
         for (final ServiceEndpoint endpoint : ServiceEndpoint.values()) {
+            // todo: the ServiceEndpoint.metadata never seems to get its data stored so this data might not get sent on retries
             final String storedScreenData = localStorage.getStoredScreenData(userId, endpoint.name());
             if (storedScreenData.isEmpty()) {
                 resultCounts.successCounter++;
@@ -160,10 +187,15 @@ public class DataSubmissionService extends AbstractSubmissionService {
             }
         }
     }
+//    private Timer dataSubmitTimer = null;
 
     private void submitData(final ServiceEndpoint endpoint, final UserId userId, final String jsonData) {
         localStorage.addStoredScreenData(userId, endpoint.name(), jsonData);
-
+//        if (dataSubmitTimer == null) {
+//            dataSubmitTimer = new Timer() {
+//                @Override
+//                public void run() {
+//                    dataSubmitTimer = null;
         final String storedScreenData = localStorage.getStoredScreenData(userId, endpoint.name());
         submitData(endpoint, userId, "[" + storedScreenData + "]", new DataSubmissionListener() {
 
@@ -176,6 +208,11 @@ public class DataSubmissionService extends AbstractSubmissionService {
                 localStorage.deleteStoredScreenData(userId, endpoint.name(), storedScreenData);
             }
         });
+//                }
+//            };
+//        }
+//        // clear previous schedule and set the timer to run 5 seconds.
+//        dataSubmitTimer.schedule(5000);
     }
 
     private void submitData(final ServiceEndpoint endpoint, final UserId userId, final String jsonData, final DataSubmissionListener dataSubmissionListener) {
@@ -196,6 +233,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
                 if (200 == response.getStatusCode() && sumbmissionResult.length() > 0 && sumbmissionResult.get(0).getSuccess() && userId.toString().equals(sumbmissionResult.get(0).getUserId())) {
                     final String text = response.getText();
                     logger.info(text);
+//                    localStorage.stowSentData(userId, jsonData);
                     dataSubmissionListener.scoreSubmissionComplete(sumbmissionResult);
                 } else {
                     logger.warning(builder.getUrl());
