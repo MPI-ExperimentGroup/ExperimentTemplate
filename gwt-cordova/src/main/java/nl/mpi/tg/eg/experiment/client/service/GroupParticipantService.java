@@ -180,6 +180,10 @@ public class GroupParticipantService {
         return stimulusId;
     }
 
+    public String getGroupCommunicationChannels() {
+        return groupCommunicationChannels;
+    }
+
     public Integer getStimulusIndex() {
         return stimulusIndex;
     }
