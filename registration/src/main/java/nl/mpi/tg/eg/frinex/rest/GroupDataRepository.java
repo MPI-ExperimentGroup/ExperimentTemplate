@@ -33,7 +33,7 @@ public interface GroupDataRepository extends PagingAndSortingRepository<GroupDat
     @Override
     List<GroupData> findAll();
 
-    List<GroupData> findByUserIdOrderByTagDateAsc(@Param("userId") String userId);
+    List<GroupData> findByUserIdOrderByViewDateAsc(@Param("userId") String userId);
 
-    List<GroupData> findByGroupNameOrderByTagDateAsc(@Param("groupName") String userId);
+    List<GroupData> findByGroupNameOrderByViewDateAsc(@Param("groupName") String userId);
 }

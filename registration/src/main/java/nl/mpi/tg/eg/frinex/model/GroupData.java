@@ -51,6 +51,9 @@ public class GroupData implements Serializable {
     private String stimulusOptionIds;
     private String messageString;
 
+    public GroupData() {
+    }
+
     public long getId() {
         return id;
     }

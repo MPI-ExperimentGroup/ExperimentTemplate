@@ -35,7 +35,7 @@ public interface ParticipantRepository extends PagingAndSortingRepository<Partic
     List<Participant> findByUserId(@Param("userId") String userId);
 
 //    @Query("select distinct new Participant() from Participant order by submitDate desc")
-    List<Participant> findAllOrderBySubmitDateDesc();
+    List<Participant> findAllByOrderBySubmitDateDesc();
 
     @Query("select distinct userId from Participant")
     List<String> findDistinctUserIdByOrderBySubmitDateDesc();

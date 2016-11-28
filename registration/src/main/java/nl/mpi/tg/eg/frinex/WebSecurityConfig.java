@@ -35,22 +35,22 @@ import org.springframework.security.config.annotation.web.servlet.configuration.
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @NotNull
-    @Value("@nl.mpi.tg.eg.frinex.admin.user@")
+    @Value("${nl.mpi.tg.eg.frinex.admin.user}")
     protected String USER;
     @NotNull
-    @Value("@nl.mpi.tg.eg.frinex.admin.password@")
+    @Value("${nl.mpi.tg.eg.frinex.admin.password}")
     protected String PASSWORD;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/screenChange", "/timeStamp", "/metadata", "/tagEvent", "/tagPairEvent", "/adminpages.css").permitAll()
+                .antMatchers("/screenChange", "/timeStamp", "/metadata", "/tagEvent", "/tagPairEvent", "/groupEvent", "/adminpages.css").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login").permitAll()
                 .and().logout().permitAll();
         http.csrf().disable();
-        
+
         // @todo: the disabling of httpStrictTransportSecuritygroup is only for testpage.html and can be safely removed (.antMatchers("grouptestpage.html"))
         http.headers().frameOptions().sameOrigin().httpStrictTransportSecurity().disable();
     }
