@@ -120,9 +120,9 @@ public class DataSubmissionService extends AbstractSubmissionService {
                 + "\"screenName\": \"" + screenName + "\",\n"
                 + "\"userLabel\": \"" + userLabel + "\",\n"
                 + "\"messageString\": \"" + messageString + "\",\n"
-//                + "\"stimulusId\": \"" + stimulusId + "\",\n"
-//                + "\"stimulusOptionIds\": \"" + stimulusOptionIds + "\",\n"
-//                + "\"groupCommunicationChannels\": \"" + groupCommunicationChannels + "\",\n"
+                + "\"stimulusId\": \"" + stimulusId + "\",\n"
+                + "\"stimulusOptionIds\": \"" + stimulusOptionIds + "\",\n"
+                + "\"groupCommunicationChannels\": \"" + groupCommunicationChannels + "\",\n"
                 + "\"eventMs\": \"" + eventMs + "\" \n}");
     }
 
