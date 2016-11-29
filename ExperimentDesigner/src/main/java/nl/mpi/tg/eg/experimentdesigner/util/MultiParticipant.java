@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experimentdesigner.util;
 import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMultiParticipantScreen;
 
@@ -34,8 +35,11 @@ public class MultiParticipant {
     // @todo: the allocated member id must maintained thoughout the experiment
     // @todo: show the experiment total score not the participants score
     // @todo: round 0 is the naming screen and does not collect guesses and therefore no scores
-    // @todo: add the group data collection and CSV output
     // @todo: make the stimuli list common between all group members
+    //  @todo: limit the communication to within each channel
+    // @todo: add the group data collection
+    // @todo: add the group data CSV output
+    // @todo: add an option in the admin reporting app to "hide ugly details" which hides strings like UUID and browser version strings
     
 //,Round,Dyad,Game.no,Item.ID,Shape,Size,RawSize,ItemCurrentAge,Producer,Word,ACC
 //165,1,AB,1,10,2,small,2.74,2,A,flup,0
@@ -78,6 +82,7 @@ public class MultiParticipant {
         wizardMultiParticipantScreen.setNextWizardScreen(wizardEditUserScreen);
 
         wizardMultiParticipantScreen.setStimulusFreeText(true, "[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
+        wizardData.addScreen(new WizardAboutScreen(true));
         return wizardData;
     }
 
