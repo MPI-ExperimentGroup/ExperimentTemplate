@@ -110,6 +110,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
             String userLabel,
             String stimulusId,
             String messageString,
+            String responseStimulusId,
             String stimulusOptionIds,
             int eventMs) {
         submitData(ServiceEndpoint.groupEvent, userId, "{\"tagDate\" :\"" + format.format(new Date()) + "\",\n"
@@ -121,6 +122,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
                 + "\"userLabel\": \"" + userLabel + "\",\n"
                 + "\"messageString\": \"" + messageString + "\",\n"
                 + "\"stimulusId\": \"" + stimulusId + "\",\n"
+                + "\"responseStimulusId\": \"" + responseStimulusId + "\",\n"
                 + "\"stimulusOptionIds\": \"" + stimulusOptionIds + "\",\n"
                 + "\"groupCommunicationChannels\": \"" + groupCommunicationChannels + "\",\n"
                 + "\"eventMs\": \"" + eventMs + "\" \n}");
