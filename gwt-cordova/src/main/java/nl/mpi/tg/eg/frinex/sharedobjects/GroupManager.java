@@ -22,6 +22,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @since Nov 18, 2016 2:53:20 PM (creation date)
@@ -31,6 +32,7 @@ public class GroupManager {
 
     private final HashMap<String, GroupMessage> allMembersList = new HashMap<>();
     private final HashMap<String, String> allMemberCodes = new HashMap<>();
+    private final HashMap<String, String> groupUUIDs = new HashMap<>();
     private final HashMap<String, List<String>> unAllocatedMemberCodes = new HashMap<>();
     private final HashMap<String, HashSet<String>> groupsMembers = new HashMap();
 
@@ -53,6 +55,18 @@ public class GroupManager {
         if (allMemberCodes.get(groupMessage.getGroupId()) == null) {
             allMemberCodes.put(groupMessage.getGroupId(), groupMessage.getAllMemberCodes());
             unAllocatedMemberCodes.put(groupMessage.getGroupId(), new ArrayList<>(Arrays.asList(groupMessage.getAllMemberCodes().split(","))));
+            // keeping a UUID for each group could help disambiguate when the server is restarted and the same group name reused
+            groupUUIDs.put(groupMessage.getGroupId(), UUID.randomUUID().toString());
+
+//        if (storedMessage.getGroupId() == null || storedMessage.getGroupId().isEmpty()) {
+//            if (currentGroupId == null) {
+//                currentGroupId = UUID.randomUUID().toString();
+//                storedMessage.setGroupId(currentGroupId);
+//            }
+//        }
+//        if (unAllocatedMemberCodes.containsKey(currentGroupId) && unAllocatedMemberCodes.get(currentGroupId).isEmpty()) {
+////                currentGroupId = UUID.randomUUID().toString();
+//        }
         }// else if (allMemberCodes.get(groupMessage.getGroupId()).equals(groupMessage.getAllMemberCodes())) {
         final List<String> availableMemberCodes = unAllocatedMemberCodes.get(groupMessage.getGroupId());
         if (groupMessage.getMemberCode() != null
@@ -64,6 +78,7 @@ public class GroupManager {
             groupMessage.setMemberCode(availableMemberCodes.remove(0));
         }
         groupMessage.setUserLabel(groupMessage.getMemberCode() + " : " + groupMessage.getGroupId());
+        groupMessage.setGroupUUID(groupUUIDs.get(groupMessage.getGroupId()));
         allMembersList.put(groupMessage.getUserId(), groupMessage);
         groupsMembers.get(groupMessage.getGroupId()).add(groupMessage.getUserId());
         //}

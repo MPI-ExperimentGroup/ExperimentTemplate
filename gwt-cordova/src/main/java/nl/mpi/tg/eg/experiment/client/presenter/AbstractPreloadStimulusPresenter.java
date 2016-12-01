@@ -24,6 +24,7 @@ import java.util.List;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
+import nl.mpi.tg.eg.experiment.client.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
@@ -40,10 +41,10 @@ public abstract class AbstractPreloadStimulusPresenter extends AbstractStimulusP
         super(widgetTag, audioPlayer, submissionService, userResults, null);
     }
 
-    private void preloadAllStimuli(final AppEventListner appEventListner, final HorizontalPanel progressBar, final TimedStimulusListener timedStimulusListener, final List<String> pictureList, final int totalImages) {
+    private void preloadAllStimuli(final AppEventListner appEventListner, final HorizontalPanel progressBar, final TimedStimulusListener timedStimulusListener, final List<Stimulus> pictureList, final int totalImages) {
         ((TimedStimulusView) simpleView).updateProgressBar(progressBar, 0, totalImages - pictureList.size(), totalImages);
         if (!pictureList.isEmpty()) {
-            ((TimedStimulusView) simpleView).preloadImage(UriUtils.fromString(pictureList.remove(0)), new TimedStimulusListener() {
+            ((TimedStimulusView) simpleView).preloadImage(UriUtils.fromString(pictureList.remove(0).getImage()), new TimedStimulusListener() {
 
                 @Override
                 public void postLoadTimerFired() {
@@ -58,7 +59,7 @@ public abstract class AbstractPreloadStimulusPresenter extends AbstractStimulusP
     protected void preloadAllStimuli(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final List<GeneratedStimulus.Tag> selectionTags) {
         final StimulusProvider stimulusProvider = new StimulusProvider();
         stimulusProvider.getSubset(selectionTags, false, 1, 0, "", -1);
-        final List<String> pictureList = stimulusProvider.getPictureList();
+        final List<Stimulus> pictureList = stimulusProvider.getPictureList(null);
         final HorizontalPanel progressBar = ((TimedStimulusView) simpleView).addProgressBar(0, 0, pictureList.size());
         preloadAllStimuli(appEventListner, progressBar, timedStimulusListener, pictureList, pictureList.size());
     }

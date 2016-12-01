@@ -101,30 +101,39 @@ public class DataSubmissionService extends AbstractSubmissionService {
                 + "\"eventMs\": \"" + eventMs + "\" \n}");
     }
 
-    public void submitGroupEvent(final UserId userId,
+    public void submitGroupEvent(final UserId messageRespondentId,
+            String groupUUID,
             String groupName,
             String allMemberCodes,
             String groupCommunicationChannels,
             String screenName,
-            String memberCode,
+            String respondentMemberCode,
             String userLabel,
             String stimulusId,
+            String messageSenderId,
             String messageString,
             String responseStimulusId,
             String stimulusOptionIds,
+            String senderId,
+            String senderMemberCode,
             int eventMs) {
-        submitData(ServiceEndpoint.groupEvent, userId, "{\"tagDate\" :\"" + format.format(new Date()) + "\",\n"
+        submitData(ServiceEndpoint.groupEvent, messageRespondentId, "{\"eventDate\" :\"" + format.format(new Date()) + "\",\n"
                 + "\"experimentName\": \"" + experimentName + "\",\n"
-                + "\"userId\": \"" + userId + "\",\n"
-                + "\"groupName\": \"" + groupName + "\",\n"
-                + "\"memberCode\": \"" + memberCode + "\",\n"
                 + "\"screenName\": \"" + screenName + "\",\n"
+                + "\"messageRespondentId\": \"" + messageRespondentId + "\",\n"
+                + "\"groupUUID\": \"" + groupUUID + "\",\n"
+                + "\"groupName\": \"" + groupName + "\",\n"
+                + "\"groupCommunicationChannels\": \"" + groupCommunicationChannels + "\",\n"
+                + "\"senderMemberCode\": \"" + senderMemberCode + "\",\n"
+                + "\"respondentMemberCode\": \"" + respondentMemberCode + "\",\n"
+                + "\"allMemberCodes\": \"" + allMemberCodes + "\",\n"
                 + "\"userLabel\": \"" + userLabel + "\",\n"
+                + "\"senderId\": \"" + senderId + "\",\n"
                 + "\"messageString\": \"" + messageString + "\",\n"
                 + "\"stimulusId\": \"" + stimulusId + "\",\n"
+                + "\"messageSenderId\": \"" + messageSenderId + "\",\n"
                 + "\"responseStimulusId\": \"" + responseStimulusId + "\",\n"
                 + "\"stimulusOptionIds\": \"" + stimulusOptionIds + "\",\n"
-                + "\"groupCommunicationChannels\": \"" + groupCommunicationChannels + "\",\n"
                 + "\"eventMs\": \"" + eventMs + "\" \n}");
     }
 

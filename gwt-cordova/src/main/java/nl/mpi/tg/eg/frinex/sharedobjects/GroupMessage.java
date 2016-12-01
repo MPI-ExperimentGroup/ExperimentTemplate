@@ -25,15 +25,19 @@ public class GroupMessage {
 
     private String userId;
     private String groupId;
+    private String groupUUID;
     private String screenId;
     private String userLabel;
     private String allMemberCodes;
     private String memberCode;
     private String stimulusId;
+    private String responseStimulusOptions;
+    private String responseStimulusId;
     private Integer stimulusIndex;
     private Integer requestedPhase;
     private String messageString;
     private boolean groupReady;
+    private int eventMs;
 
     public GroupMessage() {
     }
@@ -60,6 +64,30 @@ public class GroupMessage {
 
     public void setGroupId(String groupId) {
         this.groupId = groupId;
+    }
+
+    public String getGroupUUID() {
+        return groupUUID;
+    }
+
+    public void setGroupUUID(String groupUUID) {
+        this.groupUUID = groupUUID;
+    }
+
+    public String getResponseStimulusOptions() {
+        return responseStimulusOptions;
+    }
+
+    public void setResponseStimulusOptions(String responseStimulusOptions) {
+        this.responseStimulusOptions = responseStimulusOptions;
+    }
+
+    public String getResponseStimulusId() {
+        return responseStimulusId;
+    }
+
+    public void setResponseStimulusId(String responseStimulusId) {
+        this.responseStimulusId = responseStimulusId;
     }
 
     public String getUserLabel() {
@@ -124,5 +152,13 @@ public class GroupMessage {
 
     public void setRequestedPhase(Integer requestedPhase) {
         this.requestedPhase = requestedPhase;
+    }
+
+    public int getEventMs() {
+        return eventMs;
+    }
+
+    public void setEventMs(int eventMs) {
+        this.eventMs = eventMs;
     }
 }
