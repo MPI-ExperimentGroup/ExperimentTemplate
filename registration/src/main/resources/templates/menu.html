@@ -28,12 +28,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     </head>
     <body>
         <div th:replace="fragments/adminpagelayout :: logout"></div>
-        <a th:href="'dataviewer' + ${(param.simple != null)? '?simple=true' : ''}">Screen Events Viewer</a><br/>
+        <a th:if="!${param.simple}" th:href="'dataviewer' + ${(param.simple != null)? '?simple=true' : ''}">Screen Events Viewer</a><br/>
         <a th:href="'participantlisting' + ${(param.simple != null)? '?simple=true' : ''}">Participant Listing</a><br/>
-        <a th:href="'tagviewer' + ${(param.simple != null)? '?simple=true' : ''}">Experiment Data Viewer</a><br/>
+        <a th:if="!${param.simple}" th:href="'tagviewer' + ${(param.simple != null)? '?simple=true' : ''}">Experiment Data Viewer</a><br/>
         <a th:href="'tagpairviewer' + ${(param.simple != null)? '?simple=true' : ''}">Experiment Data Pair Viewer</a><br/>
         <a th:href="'groupdataviewer' + ${(param.simple != null)? '?simple=true' : ''}">Group Data Viewer</a><br/>
-        <a th:href="'timestampviewer' + ${(param.simple != null)? '?simple=true' : ''}">Time Stamp Viewer</a><br/>
+        <a th:if="!${param.simple}" th:href="'timestampviewer' + ${(param.simple != null)? '?simple=true' : ''}">Time Stamp Viewer</a><br/>
         <a href="aggregate">Download Single CSV</a><br/>
         <a href="zip">Download Zipped Data</a><br/>
         
