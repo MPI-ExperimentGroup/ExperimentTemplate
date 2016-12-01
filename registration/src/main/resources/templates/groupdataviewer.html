@@ -33,36 +33,42 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <table id="datatable">
             <thead>
                 <tr>
-                    <!--<th>id</th>-->
-                    <th>UserId</th>
-                    <!--<th>submitDate</th>-->
-                    <!--<th>experimentName</th>-->
-                    <th>EventTag</th>
-                    <th>TagValue1</th>
-                    <th>TagValue2</th>
-                    <th>EventMs</th>
+                    <th>ID</th>
                     <th>TagDate</th>
+                    <th>messageRespondentId</th>
+                    <th>GroupUUID</th>
+                    <th>GroupName</th>
+                    <th>allMemberCodes</th>
+                    <th>groupCommunicationChannels</th>
+                    <th>screenName</th>
+                    <th>senderMemberCode</th>
+                    <th>respondentMemberCode</th>
+                    <th>stimulusId</th>
+                    <th>responseStimulusId</th>
+                    <th>stimulusOptionIds</th>
+                    <th>messageSenderId</th>
+                    <th>messageString</th>
+                    <th>EventMs</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="prod : ${allGroupData}">
-                    <!--<td th:text="${prod.id}">id</td>-->
-                    <td th:text="${prod.userId}" id="clickablerow" th:onclick="'javascript:window.location=\'participantdetail?id=' + ${prod.userId} + '\';'">userId</td>
-                    <!--<td th:text="${prod.submitDate}">submitDate</td>-->
-                    <!--<td th:text="${prod.experimentName}">experimentName</td>-->
-                    <td th:text="${prod.messageString}">messageString</td>
-                    <td th:text="${prod.stimulusOptionIds}">stimulusOptionIds</td>
-                    <td th:text="${prod.stimulusId}">stimulusId</td>
-                    <td th:text="${prod.memberCode}">memberCode</td>
-                    <td th:text="${prod.groupCommunicationChannels}">groupCommunicationChannels</td>
-                    <td th:text="${prod.allMemberCodes}">allMemberCodes</td>
-                    <td th:text="${prod.userLabel}">userLabel</td>
-                    <td th:text="${prod.groupName}">groupName</td>
-                    <td th:text="${prod.screenName}">screenName</td>
-                    <td th:text="${prod.experimentName}">experimentName</td>
-                    <td th:text="${prod.submitDate}">submitDate</td>
-                    <!--<td th:text="${prod.eventMs}">eventMs</td>-->
-                    <td th:text="${prod.viewDate}">viewDate</td>
+                <tr th:each="groupData : ${allGroupData}">
+                    <td th:text="${groupData.id}">id</td>
+                    <td th:text="${groupData.eventDate}">eventDate</td>
+                    <td th:text="${groupData.messageRespondentId}" id="clickablerow" th:onclick="'javascript:window.location=\'participantdetail?id=' + ${groupData.messageRespondentId} + '\';'">userId</td>
+                    <td th:text="${groupData.groupUUID}" id="clickablerow" th:onclick="'javascript:window.location=\'groupdetail?id=' + ${groupData.groupUUID} + '\';'">groupUUID</td>
+                    <td th:text="${groupData.groupName}">groupName</td>
+                    <td th:text="${groupData.allMemberCodes}">allMemberCodes</td>
+                    <td th:text="${groupData.groupCommunicationChannels}">groupCommunicationChannels</td>
+                    <td th:text="${groupData.screenName}">screenName</td>
+                    <td th:text="${groupData.senderMemberCode}">senderMemberCode</td>
+                    <td th:text="${groupData.respondentMemberCode}">respondentMemberCode</td>
+                    <td th:text="${groupData.stimulusId}">stimulusId</td>
+                    <td th:text="${groupData.responseStimulusId}">responseStimulusId</td>
+                    <td th:text="${groupData.stimulusOptionIds}">stimulusOptionIds</td>                    
+                    <td th:text="${groupData.messageSenderId}" id="clickablerow" th:onclick="'javascript:window.location=\'participantdetail?id=' + ${groupData.messageSenderId} + '\';'">userId</td>
+                    <td th:text="${groupData.messageString}">messageString</td>
+                    <td th:text="${groupData.eventMs}">eventMs</td>
                 </tr>
             </tbody>
         </table>

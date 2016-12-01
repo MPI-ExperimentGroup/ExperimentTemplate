@@ -221,7 +221,7 @@ public class ExperimentService {
                 groupData.setSubmitDate(new java.util.Date());
                 groupDataRepository.save(groupData);
             }
-            responseEntity = new ResponseEntity<>(new DataSubmissionResult(groupDataList.get(0).getUserId(), "", true), HttpStatus.OK);
+            responseEntity = new ResponseEntity<>(new DataSubmissionResult(groupDataList.get(0).getMessageRespondentId(), "", true), HttpStatus.OK);
         }
         return responseEntity;
     }

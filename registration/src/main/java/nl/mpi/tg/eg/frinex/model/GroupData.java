@@ -36,20 +36,24 @@ public class GroupData implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    private Date viewDate;
+    private Date eventDate;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date submitDate;
     private String experimentName;
+    private String groupUUID;
     private String groupName;
     private String screenName;
-    private String userId;
-    private String userLabel;
+    private String messageRespondentId;
     private String allMemberCodes;
     private String groupCommunicationChannels;
-    private String memberCode;
+    private String senderMemberCode;
+    private String respondentMemberCode;
     private String stimulusId;
+    private String responseStimulusId;
     private String stimulusOptionIds;
+    private String messageSenderId = null;
     private String messageString;
+    private int eventMs;
 
     public GroupData() {
     }
@@ -62,12 +66,36 @@ public class GroupData implements Serializable {
         this.id = id;
     }
 
-    public Date getViewDate() {
-        return viewDate;
+    public Date getEventDate() {
+        return eventDate;
     }
 
-    public void setViewDate(Date viewDate) {
-        this.viewDate = viewDate;
+    public void setEventDate(Date eventDate) {
+        this.eventDate = eventDate;
+    }
+
+    public String getGroupUUID() {
+        return groupUUID;
+    }
+
+    public void setGroupUUID(String groupUUID) {
+        this.groupUUID = groupUUID;
+    }
+
+    public String getResponseStimulusId() {
+        return responseStimulusId;
+    }
+
+    public void setResponseStimulusId(String responseStimulusId) {
+        this.responseStimulusId = responseStimulusId;
+    }
+
+    public String getMessageSenderId() {
+        return messageSenderId;
+    }
+
+    public void setMessageSenderId(String messageSenderId) {
+        this.messageSenderId = messageSenderId;
     }
 
     public Date getSubmitDate() {
@@ -102,20 +130,12 @@ public class GroupData implements Serializable {
         this.screenName = screenName;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getMessageRespondentId() {
+        return messageRespondentId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getUserLabel() {
-        return userLabel;
-    }
-
-    public void setUserLabel(String userLabel) {
-        this.userLabel = userLabel;
+    public void setMessageRespondentId(String messageRespondentId) {
+        this.messageRespondentId = messageRespondentId;
     }
 
     public String getAllMemberCodes() {
@@ -126,12 +146,20 @@ public class GroupData implements Serializable {
         this.allMemberCodes = allMemberCodes;
     }
 
-    public String getMemberCode() {
-        return memberCode;
+    public String getRespondentMemberCode() {
+        return respondentMemberCode;
     }
 
-    public void setMemberCode(String memberCode) {
-        this.memberCode = memberCode;
+    public void setRespondentMemberCode(String respondentMemberCode) {
+        this.respondentMemberCode = respondentMemberCode;
+    }
+
+    public String getSenderMemberCode() {
+        return senderMemberCode;
+    }
+
+    public void setSenderMemberCode(String senderMemberCode) {
+        this.senderMemberCode = senderMemberCode;
     }
 
     public String getStimulusId() {
@@ -164,5 +192,13 @@ public class GroupData implements Serializable {
 
     public void setGroupCommunicationChannels(String groupCommunicationChannels) {
         this.groupCommunicationChannels = groupCommunicationChannels;
+    }
+
+    public int getEventMs() {
+        return eventMs;
+    }
+
+    public void setEventMs(int eventMs) {
+        this.eventMs = eventMs;
     }
 }
