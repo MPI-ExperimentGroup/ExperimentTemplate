@@ -20,7 +20,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  * @since Aug 11, 2015 5:47:41 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
 -->
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
         <title>General Administration Fragments</title>
         <meta charset="UTF-8"/>
@@ -28,20 +29,20 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     </head>
     <body>
         <div th:fragment="header">
-            <div th:fragment="navigation">
-                <div align="left">
-                    <form action="." method="post">
-                        <input type="submit" value="Menu"/>
-                    </form>
-                </div>
-            </div>
-            <div th:fragment="logout">
-                <div align="right">
-                    <div th:inline="text">Logged in as: [[${#httpServletRequest.remoteUser}]]</div>
+            <!--<div th:fragment="navigation">-->
+                <span>
+                    <a class="headerButton" th:onclick="'javascript:window.location=\'' + @{/} + ${(param.simple != null)? '?simple=true' : ''} + '\';'"> Menu</a>
+                </span>
+            <!--</div>-->
+            <div th:fragment="logout" align="right">
+                <!--<div>-->
                     <form th:action="@{/logout}" method="post">
                         <input type="submit" value="Sign Out"/>
                     </form>
-                </div>
+                    <div th:inline="text">Logged in as: [[${#httpServletRequest.remoteUser}]]</div>
+                    <div th:if="${param.simple}"><a th:href="${#httpServletRequest.requestURI}">This view is simplified. Click to show all available information.</a></div>
+                    <div th:if="!${param.simple}"><a th:href="${#httpServletRequest.requestURI} + '?simple=true'">Click to simplify the information shown in this table.</a></div>
+                <!--</div>-->
             </div>
         </div>
     </body>
