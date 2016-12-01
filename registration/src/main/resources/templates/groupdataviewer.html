@@ -33,40 +33,40 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <table id="datatable">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>EventDate</th>
-                    <th>screenName</th>
-                    <th>GroupUUID</th>
-                    <th>GroupName</th>
-                    <th>allMemberCodes</th>
-                    <th>groupCommunicationChannels</th>
-                    <th>senderMemberCode</th>
-                    <th>respondentMemberCode</th>
-                    <th>stimulusId</th>
-                    <th>responseStimulusId</th>
-                    <th>stimulusOptionIds</th>
-                    <th>messageSenderId</th>
-                    <th>messageRespondentId</th>
-                    <th>messageString</th>
-                    <th>EventMs</th>
+                    <th th:if="!${param.simple}">ID</th>
+                    <th>Event Date</th>
+                    <th>Screen Name</th>
+                    <th th:if="!${param.simple}">Group UUID</th>
+                    <th>Group Name</th>
+                    <th>Member Codes</th>
+                    <th>Communication Channels</th>
+                    <th th:if="!${param.simple}">Sender Id</th>
+                    <th th:if="!${param.simple}">Respondent Id</th>
+                    <th>Sender Code</th>
+                    <th>Respondent Code</th>
+                    <th>Stimulus</th>
+                    <th>Response</th>
+                    <th>Options</th>
+                    <th>Message</th>
+                    <th>ms</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="groupData : ${allGroupData}">
-                    <td th:text="${groupData.id}">id</td>
+                    <td th:if="!${param.simple}" th:text="${groupData.id}">id</td>
                     <td th:text="${groupData.eventDate}">eventDate</td>
-                    <td th:text="${groupData.screenName}">screenName</td>
-                    <td th:text="${groupData.groupUUID}" id="clickablerow" th:onclick="'javascript:window.location=\'groupdetail?id=' + ${groupData.groupUUID} + '\';'">groupUUID</td>
-                    <td th:text="${groupData.groupName}">groupName</td>
+                    <td th:text="${groupData.screenName}" id="clickablerow" th:onclick="'javascript:window.location=\'groupdataviewer?' + ${(param.simple != null)? 'simple=true&amp;' : ''} + 'screenName=' + ${groupData.screenName} + '\';'">screenName</td>
+                    <td th:if="!${param.simple}" th:text="${groupData.groupUUID}" id="clickablerow" th:onclick="'javascript:window.location=\'groupdataviewer?' + ${(param.simple != null)? 'simple=true&amp;' : ''} + 'id=' + ${groupData.groupUUID} + '\';'">groupUUID</td>
+                    <td th:text="${groupData.groupName}" id="clickablerow" th:onclick="'javascript:window.location=\'groupdataviewer?' + ${(param.simple != null)? 'simple=true&amp;' : ''} + 'groupUUID=' + ${groupData.groupUUID} + '\';'">groupName</td>
                     <td th:text="${groupData.allMemberCodes}">allMemberCodes</td>
                     <td th:text="${groupData.groupCommunicationChannels}">groupCommunicationChannels</td>
-                    <td th:text="${groupData.senderMemberCode}">senderMemberCode</td>
-                    <td th:text="${groupData.respondentMemberCode}">respondentMemberCode</td>
+                    <td th:if="!${param.simple}" th:text="${groupData.messageSenderId}" id="clickablerow" th:onclick="'javascript:window.location=\'participantdetail?id=' + ${groupData.messageSenderId} + '\';'">userId</td>
+                    <td th:if="!${param.simple}" th:text="${groupData.messageRespondentId}" id="clickablerow" th:onclick="'javascript:window.location=\'participantdetail?id=' + ${groupData.messageRespondentId} + '\';'">userId</td>
+                    <td th:text="${groupData.senderMemberCode}" id="clickablerow" th:onclick="'javascript:window.location=\'groupdataviewer?' + ${(param.simple != null)? 'simple=true&amp;' : ''} + 'senderMemberCode=' + ${groupData.messageSenderId} + '\';'">senderMemberCode</td>
+                    <td th:text="${groupData.respondentMemberCode}" id="clickablerow" th:onclick="'javascript:window.location=\'groupdataviewer?' + ${(param.simple != null)? 'simple=true&amp;' : ''} + 'respondentMemberCode=' + ${groupData.messageRespondentId} + '\';'">respondentMemberCode</td>
                     <td th:text="${groupData.stimulusId}">stimulusId</td>
                     <td th:text="${groupData.responseStimulusId}">responseStimulusId</td>
                     <td th:text="${groupData.stimulusOptionIds}">stimulusOptionIds</td>                    
-                    <td th:text="${groupData.messageSenderId}" id="clickablerow" th:onclick="'javascript:window.location=\'participantdetail?id=' + ${groupData.messageSenderId} + '\';'">userId</td>
-                    <td th:text="${groupData.messageRespondentId}" id="clickablerow" th:onclick="'javascript:window.location=\'participantdetail?id=' + ${groupData.messageRespondentId} + '\';'">userId</td>
                     <td th:text="${groupData.messageString}">messageString</td>
                     <td th:text="${groupData.eventMs}">eventMs</td>
                 </tr>
