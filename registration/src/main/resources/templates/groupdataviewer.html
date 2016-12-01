@@ -34,19 +34,19 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>TagDate</th>
-                    <th>messageRespondentId</th>
+                    <th>EventDate</th>
+                    <th>screenName</th>
                     <th>GroupUUID</th>
                     <th>GroupName</th>
                     <th>allMemberCodes</th>
                     <th>groupCommunicationChannels</th>
-                    <th>screenName</th>
                     <th>senderMemberCode</th>
                     <th>respondentMemberCode</th>
                     <th>stimulusId</th>
                     <th>responseStimulusId</th>
                     <th>stimulusOptionIds</th>
                     <th>messageSenderId</th>
+                    <th>messageRespondentId</th>
                     <th>messageString</th>
                     <th>EventMs</th>
                 </tr>
@@ -55,18 +55,18 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 <tr th:each="groupData : ${allGroupData}">
                     <td th:text="${groupData.id}">id</td>
                     <td th:text="${groupData.eventDate}">eventDate</td>
-                    <td th:text="${groupData.messageRespondentId}" id="clickablerow" th:onclick="'javascript:window.location=\'participantdetail?id=' + ${groupData.messageRespondentId} + '\';'">userId</td>
+                    <td th:text="${groupData.screenName}">screenName</td>
                     <td th:text="${groupData.groupUUID}" id="clickablerow" th:onclick="'javascript:window.location=\'groupdetail?id=' + ${groupData.groupUUID} + '\';'">groupUUID</td>
                     <td th:text="${groupData.groupName}">groupName</td>
                     <td th:text="${groupData.allMemberCodes}">allMemberCodes</td>
                     <td th:text="${groupData.groupCommunicationChannels}">groupCommunicationChannels</td>
-                    <td th:text="${groupData.screenName}">screenName</td>
                     <td th:text="${groupData.senderMemberCode}">senderMemberCode</td>
                     <td th:text="${groupData.respondentMemberCode}">respondentMemberCode</td>
                     <td th:text="${groupData.stimulusId}">stimulusId</td>
                     <td th:text="${groupData.responseStimulusId}">responseStimulusId</td>
                     <td th:text="${groupData.stimulusOptionIds}">stimulusOptionIds</td>                    
                     <td th:text="${groupData.messageSenderId}" id="clickablerow" th:onclick="'javascript:window.location=\'participantdetail?id=' + ${groupData.messageSenderId} + '\';'">userId</td>
+                    <td th:text="${groupData.messageRespondentId}" id="clickablerow" th:onclick="'javascript:window.location=\'participantdetail?id=' + ${groupData.messageRespondentId} + '\';'">userId</td>
                     <td th:text="${groupData.messageString}">messageString</td>
                     <td th:text="${groupData.eventMs}">eventMs</td>
                 </tr>
