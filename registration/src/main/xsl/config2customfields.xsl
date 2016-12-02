@@ -280,15 +280,15 @@
     &lt;body&gt;
         &lt;table&gt;
                     &lt;tr th:fragment="participantheader"&gt;
-                    &lt;th th:if="!${param.simple}"&gt;&lt;a th:attr="href='?' + ${(param.simple != null)? 'simple=true&amp;amp;' : ''} + 'sort=id'"&gt;ID&lt;/a&gt;&lt;/th&gt;
-                    &lt;th th:if="!${param.simple}"&gt;&lt;a th:attr="href='?' + ${(param.simple != null)? 'simple=true&amp;amp;' : ''} + 'sort=userId'"&gt;UUID&lt;/a&gt;&lt;/th&gt;
-                    &lt;th th:if="!${param.simple}"&gt;&lt;a th:attr="href='?' + ${(param.simple != null)? 'simple=true&amp;amp;' : ''} + 'sort=userAgent'"&gt;User Agent&lt;/a&gt;&lt;/th&gt;
-                    &lt;th th:if="!${param.simple}"&gt;&lt;a th:attr="href='?' + ${(param.simple != null)? 'simple=true&amp;amp;' : ''} + 'sort=acceptLang'"&gt;Browser Language&lt;/a&gt;&lt;/th&gt;
+                    &lt;th th:if="${param.detailed}"&gt;&lt;a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;amp;sort=id'"&gt;ID&lt;/a&gt;&lt;/th&gt;
+                    &lt;th th:if="${param.detailed}"&gt;&lt;a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;amp;sort=userId'"&gt;UUID&lt;/a&gt;&lt;/th&gt;
+                    &lt;th th:if="${param.detailed}"&gt;&lt;a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;amp;sort=userAgent'"&gt;User Agent&lt;/a&gt;&lt;/th&gt;
+                    &lt;th th:if="${param.detailed}"&gt;&lt;a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;amp;sort=acceptLang'"&gt;Browser Language&lt;/a&gt;&lt;/th&gt;
                 <!--&lt;th&gt;&lt;a th:attr="href='?sort=remoteAddr'"&gt;remoteAddr&lt;/a&gt;&lt;/th&gt;-->
             </xsl:text>
             <!--&amp;${(sortOrder='a')? 'd' : 'a'}-->
             <xsl:for-each select="experiment/metadata/field">
-                <xsl:text>&lt;th&gt;&lt;a th:attr="href='?' + ${(param.simple != null)? 'simple=true&amp;amp;' : ''} + 'sort=</xsl:text>
+                <xsl:text>&lt;th&gt;&lt;a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;amp;sort=</xsl:text>
                 <xsl:value-of select="@postName" />
                 <xsl:text>'"&gt;</xsl:text>
                 <xsl:value-of select="@registrationField" />
@@ -296,13 +296,13 @@
                 </xsl:text>
             </xsl:for-each>
             <xsl:text>    
-                &lt;th&gt;&lt;a th:attr="href='?' + ${(param.simple != null)? 'simple=true&amp;amp;' : ''} + 'sort=submitDate'"&gt;Date&lt;/a&gt;&lt;/th&gt;
+                &lt;th&gt;&lt;a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;amp;sort=submitDate'"&gt;Date&lt;/a&gt;&lt;/th&gt;
                 &lt;/tr&gt;
                     &lt;tr th:fragment="participantrows"&gt;
-                    &lt;td th:if="!${param.simple}" th:text="${participant.id}"&gt;id&lt;/td&gt;
-                    &lt;td th:if="!${param.simple}" th:text="${participant.userId}"&gt;userId&lt;/td&gt;
-                    &lt;td th:if="!${param.simple}" th:text="${participant.userAgent}"&gt;userAgent&lt;/td&gt;
-                    &lt;td th:if="!${param.simple}" th:text="${participant.acceptLang}"&gt;acceptLang&lt;/td&gt;
+                    &lt;td th:if="${param.detailed}" th:text="${participant.id}"&gt;id&lt;/td&gt;
+                    &lt;td th:if="${param.detailed}" th:text="${participant.userId}"&gt;userId&lt;/td&gt;
+                    &lt;td th:if="${param.detailed}" th:text="${participant.userAgent}"&gt;userAgent&lt;/td&gt;
+                    &lt;td th:if="${param.detailed}" th:text="${participant.acceptLang}"&gt;acceptLang&lt;/td&gt;
                 <!--&lt;td th:text="${participant.remoteAddr}"&gt;remoteAddr&lt;/td&gt;-->
             </xsl:text>
             <xsl:for-each select="experiment/metadata/field">
@@ -315,10 +315,10 @@
                 &lt;td th:text="${participant.submitDate}"&gt;submitDate&lt;/td&gt;
                 &lt;/tr&gt;
                 &lt;tr th:fragment="participantinputfields"&gt;
-                &lt;td th:if="!${param.simple}"&gt;&lt;/td&gt;
-                &lt;td th:if="!${param.simple}"&gt;&lt;/td&gt;
-                &lt;td th:if="!${param.simple}"&gt;&lt;/td&gt;
-                &lt;td th:if="!${param.simple}"&gt;&lt;/td&gt;
+                &lt;td th:if="${param.detailed}"&gt;&lt;/td&gt;
+                &lt;td th:if="${param.detailed}"&gt;&lt;/td&gt;
+                &lt;td th:if="${param.detailed}"&gt;&lt;/td&gt;
+                &lt;td th:if="${param.detailed}"&gt;&lt;/td&gt;
             </xsl:text>
             <xsl:for-each select="experiment/metadata/field">
                 <xsl:text>&lt;td&gt;&lt;input id="</xsl:text>
