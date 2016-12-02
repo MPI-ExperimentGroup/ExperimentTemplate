@@ -26,11 +26,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link type="text/css" rel="stylesheet" href="adminpages.css"/>
+        <script src="webjars/jquery/jquery.min.js"></script>
+        <script th:replace="participanttable :: addparticipantscript"/>
     </head>
     <body>
         <div th:replace="fragments/adminpagelayout :: header"></div>
-        <p th:text="'Participant Count, ' + ${count}" />        
-        <form th:action="@{/participantlisting}" method="post">
+        <p th:text="'Participant Count, ' + ${count}" />
             <table id="datatable">
                 <thead>
                     <tr th:replace="participanttable :: participantheader"></tr>
@@ -42,7 +43,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <td></td>
                     </tr>
                 </tbody>
-            </table>
-        </form>
+            </table>        
     </body>
 </html>
