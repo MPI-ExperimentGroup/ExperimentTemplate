@@ -323,13 +323,46 @@
             <xsl:for-each select="experiment/metadata/field">
                 <xsl:text>&lt;td&gt;&lt;input id="</xsl:text>
                 <xsl:value-of select="@postName" />
-                <xsl:text>" /&gt;&lt;/td&gt;</xsl:text>
+                <xsl:text>Input" /&gt;&lt;/td&gt;</xsl:text>
             </xsl:for-each>
             <xsl:text>    
-                &lt;td&gt;&lt;button type="submit" name="add"&gt;Add Participant&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;td&gt;&lt;button id="addParticipantButton" class="tableButton" &gt;Add Participant&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;
                 &lt;/table&gt;
             &lt;/body&gt;
         &lt;/html&gt;
+            </xsl:text>
+            <xsl:text>    
+                    &lt;script th:fragment="addparticipantscript"&gt;
+                $(document).ready(function () {
+                $("#addParticipantButton").on('click', function () {
+                $.ajax({
+                url: 'metadata',
+                type: "POST",
+                dataType : "json",
+                contentType: "application/json; charset=utf-8",
+                data: "[{</xsl:text>
+            <xsl:for-each select="experiment/metadata/field">
+                <xsl:text>\"</xsl:text>
+                <xsl:value-of select="@postName" />
+                <xsl:text>\": \"" + $("#</xsl:text>
+                <xsl:value-of select="@postName" />
+                <xsl:text>Input").val() + "\"</xsl:text>
+                <xsl:if test="position() != last()">
+                    <xsl:text>,</xsl:text>
+                </xsl:if>
+            </xsl:for-each>
+            <xsl:text>}]",
+                success: function (result) {
+                location.reload();
+                },
+                error: function (xhr, resp, text) {
+                console.log(xhr, resp, text);
+                }
+                })
+                });
+                });
+
+                    &lt;/script&gt;
             </xsl:text>
         </xsl:result-document>
     </xsl:template>
