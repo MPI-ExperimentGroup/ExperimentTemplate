@@ -289,7 +289,7 @@
             <!--&amp;${(sortOrder='a')? 'd' : 'a'}-->
             <xsl:for-each select="experiment/metadata/field">
                 <xsl:text>&lt;th&gt;&lt;a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;amp;sort=</xsl:text>
-                <xsl:value-of select="@postName" />
+                <xsl:value-of select="replace(@postName,'_','\\_')" />
                 <xsl:text>'"&gt;</xsl:text>
                 <xsl:value-of select="@registrationField" />
                 <xsl:text>&lt;/a&gt;&lt;/th&gt;
