@@ -21,6 +21,7 @@ import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMultiParticipantScreen;
 
@@ -40,7 +41,7 @@ public class MultiParticipant {
     // @todo: add the group data collection
     // @todo: add the group data CSV output
     // @todo: add an option in the admin reporting app to "hide ugly details" which hides strings like UUID and browser version strings
-    
+
 //,Round,Dyad,Game.no,Item.ID,Shape,Size,RawSize,ItemCurrentAge,Producer,Word,ACC
 //165,1,AB,1,10,2,small,2.74,2,A,flup,0
 //167,1,CD,1,10,2,small,2.74,2,C,mozel,1
@@ -52,8 +53,21 @@ public class MultiParticipant {
 //149,1,CD,4,9,2,medium,4.51,2,D,vlalp,0
 //85,1,AB,5,6,2,big,7.6,2,A,dauft,0
 //87,1,CD,5,6,2,big,7.6,2,C,potmik,1
-    private final String[] stimuliArray = new String[]{"1-1.png", "1-7.png", "2-6.png", "3-5.png", "4-4.png", "1-2.png", "2-1.png", "2-7.png", "3-6.png", "4-5.png", "1-3.png", "2-2.png", "3-1.png", "3-7.png", "4-6.png", "1-4.png", "2-3.png", "3-2.png", "4-1.png", "4-7.png", "1-5.png", "2-4.png", "3-3.png", "4-2.png",
-        "1-6.png", "2-5.png", "3-4.png", "4-3.png" /*, "beep.wav"*/};
+    private final String[] stimuliArray = new String[]{
+        "1-1.png:small", "1-7.png:small", "2-6.png:small", "3-5.png:small", "4-4.png:small", "1-2.png:small", "2-1.png:small", "2-7.png:small",
+        "3-6.png:small", "4-5.png:small", "1-3.png:small", "2-2.png:small", "3-1.png:small", "3-7.png:small", "4-6.png:small", "1-4.png:small",
+        "2-3.png:small", "3-2.png:small", "4-1.png:small", "4-7.png:small", "1-5.png:small", "2-4.png:small", "3-3.png:small", "4-2.png:small",
+        "1-6.png:small", "2-5.png:small", "3-4.png:small", "4-3.png:small",
+        "1-1.png:large", "1-7.png:large", "2-6.png:large", "3-5.png:large", "4-4.png:large", "1-2.png:large", "2-1.png:large", "2-7.png:large",
+        "3-6.png:large", "4-5.png:large", "1-3.png:large", "2-2.png:large", "3-1.png:large", "3-7.png:large", "4-6.png:large", "1-4.png:large",
+        "2-3.png:large", "3-2.png:large", "4-1.png:large", "4-7.png:large", "1-5.png:large", "2-4.png:large", "3-3.png:large", "4-2.png:large",
+        "1-6.png:large", "2-5.png:large", "3-4.png:large", "4-3.png:large",
+        "1-1.png:medium", "1-7.png:medium", "2-6.png:medium", "3-5.png:medium", "4-4.png:medium", "1-2.png:medium", "2-1.png:medium", "2-7.png:medium",
+        "3-6.png:medium", "4-5.png:medium", "1-3.png:medium", "2-2.png:medium", "3-1.png:medium", "3-7.png:medium", "4-6.png:medium", "1-4.png:medium",
+        "2-3.png:medium", "3-2.png:medium", "4-1.png:medium", "4-7.png:medium", "1-5.png:medium", "2-4.png:medium", "3-3.png:medium", "4-2.png:medium",
+        "1-6.png:medium", "2-5.png:medium", "3-4.png:medium", "4-3.png:medium"
+    /*, "beep.wav"*/
+    };
 
     // @todo: server shared variables to be used in animations and interactions concurrently displayed on multiple users devices 
     public WizardData getWizardData() {
@@ -61,6 +75,17 @@ public class MultiParticipant {
         wizardData.setAppName("MultiParticipant");
         wizardData.setShowMenuBar(true);
         wizardData.setObfuscateScreenNames(false);
+
+        final WizardAgreementScreen wizardAgreementScreen = new WizardAgreementScreen("Agreement", "<b>This is a prototype multiparticipant experiment.</b><br/><br/>"
+                + "With this prototype you can:<br/>"
+                + "<li>view the group activity and add dummy users to a group for testing purposes <a href='/multiparticipant/grouptestpage.html'>/multiparticipant/grouptestpage.html</a>.</li>"
+                + "<li>erase the local data for this browser <a href='/multiparticipant?debug'>/multiparticipant?debug</a></li>"
+                + "<li>random data can be generated with the testing robot <a href='/multiparticipant/TestingFrame.html'>/multiparticipant/TestingFrame.html</a></li><br/>"
+                + "The group name must be allocated with the following with <a href='/multiparticipant/?group=a_group_name'>/multiparticipant/?group=a_group_name</a> where a_group_name should be replaced with a suitable string. A second user can be tested on one computer via the incognito browser window with this link, providing the group name matches.<br/><br/>"
+                + "There needs to be eight users connected for the group process to begin. Once a group is full, any subsequent users will need to be allocated a different group via the a_group_name parameter.<br/><br/><br/>"
+                + "You can view the collected group data with <a href='/multiparticipant-admin/groupdataviewer'>/multiparticipant-admin/groupdataviewer</a> with the user and password you have been supplied.<br/><br/><br/>",
+                "Continue");
+        final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen(true);
 
         final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
         wizardEditUserScreen.setScreenTitle("Edit User");
@@ -73,16 +98,23 @@ public class MultiParticipant {
         wizardEditUserScreen.setFirstNameField();
         wizardEditUserScreen.setGenderField();
         wizardEditUserScreen.setWorkerIdField();
-        wizardData.addScreen(wizardEditUserScreen);
 
         final WizardMultiParticipantScreen wizardMultiParticipantScreen = new WizardMultiParticipantScreen();
         wizardMultiParticipantScreen.setStimuliSet(stimuliArray);
-        wizardData.addScreen(wizardMultiParticipantScreen);
-        wizardEditUserScreen.setNextWizardScreen(wizardMultiParticipantScreen);
-        wizardMultiParticipantScreen.setNextWizardScreen(wizardEditUserScreen);
-
         wizardMultiParticipantScreen.setStimulusFreeText(true, "[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
-        wizardData.addScreen(new WizardAboutScreen(true));
+
+        wizardData.addScreen(wizardAgreementScreen);
+        wizardData.addScreen(wizardEditUserScreen);
+        wizardData.addScreen(wizardMultiParticipantScreen);
+        wizardData.addScreen(wizardAboutScreen);
+
+        wizardAgreementScreen.setNextWizardScreen(wizardEditUserScreen);
+        wizardEditUserScreen.setBackWizardScreen(wizardAgreementScreen);
+        wizardEditUserScreen.setNextWizardScreen(wizardMultiParticipantScreen);
+        wizardMultiParticipantScreen.setBackWizardScreen(wizardEditUserScreen);
+        wizardMultiParticipantScreen.setNextWizardScreen(wizardEditUserScreen);
+        wizardAboutScreen.setBackWizardScreen(wizardAgreementScreen);
+
         return wizardData;
     }
 
