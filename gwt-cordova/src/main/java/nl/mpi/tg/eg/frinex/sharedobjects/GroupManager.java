@@ -17,8 +17,11 @@
  */
 package nl.mpi.tg.eg.frinex.sharedobjects;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -35,12 +38,25 @@ public class GroupManager {
     private final HashMap<String, String> groupUUIDs = new HashMap<>();
     private final HashMap<String, List<String>> unAllocatedMemberCodes = new HashMap<>();
     private final HashMap<String, HashSet<String>> groupsMembers = new HashMap();
+    String lastGroupId = null;
 
-    public boolean isGroupMember(final String groupId, final String memberId) {
-        if (!groupsMembers.containsKey(groupId)) {
-            groupsMembers.put(groupId, new HashSet<String>());
+    public boolean isGroupMember(GroupMessage groupMessage) {
+        if (groupMessage.getGroupId() == null) {
+            final List<String> lastGroupMemberCodes = unAllocatedMemberCodes.get(lastGroupId);
+            if (lastGroupMemberCodes == null || lastGroupMemberCodes.isEmpty()) {
+                lastGroupId = null;
+            }
+            if (lastGroupId == null) {
+                DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                Date date = new Date();
+                lastGroupId = "started:" + dateFormat.format(date);
+            }
+            groupMessage.setGroupId(lastGroupId);
         }
-        return groupsMembers.get(groupId).contains(memberId);
+        if (!groupsMembers.containsKey(groupMessage.getGroupId())) {
+            groupsMembers.put(groupMessage.getGroupId(), new HashSet<String>());
+        }
+        return groupsMembers.get(groupMessage.getGroupId()).contains(groupMessage.getUserId());
     }
 
     public boolean isGroupReady(final String groupId, final String memberId) {
