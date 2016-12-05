@@ -45,7 +45,7 @@ public class SharedObjectController {
 
     private synchronized GroupMessage updateGroupData(GroupMessage groupMessage) {
         final GroupMessage storedMessage;
-        if (GROUP_MANAGER.isGroupMember(groupMessage.getGroupId(), groupMessage.getUserId())) {
+        if (GROUP_MANAGER.isGroupMember(groupMessage)) {
             storedMessage = GROUP_MANAGER.getGroupMember(groupMessage.getUserId());
             storedMessage.setStimulusId(groupMessage.getStimulusId());
             storedMessage.setScreenId(groupMessage.getScreenId());
