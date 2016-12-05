@@ -76,7 +76,7 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
             localStorage.storeData(userResults);
         }
         String debugValue = Window.Location.getParameter("debug");
-        if (debugValue != null && debugValue.equals("true")) {
+        if (debugValue != null) {
             localStorage.saveAppState(ApplicationState.about.name());
         }
 
