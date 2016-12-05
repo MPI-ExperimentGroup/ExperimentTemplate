@@ -261,6 +261,9 @@ public class GroupParticipantService {
 
     public void messageGroup(int incrementPhase, String stimulusId, String stimulusIndex, String messageString, String responseStimulusOptions, String responseStimulusId) {
         String windowGroupId = Window.Location.getParameter("group");
+        if (windowGroupId == null) {
+            windowGroupId = groupId;
+        }
         messageGroup(this.requestedPhase + incrementPhase, userId, windowGroupId, screenId, allMemberCodes, stimulusId, stimulusIndex, messageString, responseStimulusOptions, responseStimulusId);
     }
 
