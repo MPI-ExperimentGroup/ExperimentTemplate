@@ -71,7 +71,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     var textinput = document.getElementById('testingFrame').contentWindow.document.getElementsByTagName(tagArray[tagInxex]);
                     for (var inputIndex = 0; inputIndex < textinput.length; inputIndex++) {
                         if (textinput[inputIndex].className === "metadataError") {
-                            textinput[inputIndex].value = "0";
+                            if (textinput[inputIndex].value === "0") {
+                                textinput[inputIndex].value = "qqq";
+                            } else {
+                                textinput[inputIndex].value = "0";
+                            }
                         } else {
                             textinput[inputIndex].value = "robot run " + new Date().toLocaleTimeString();
                         }
