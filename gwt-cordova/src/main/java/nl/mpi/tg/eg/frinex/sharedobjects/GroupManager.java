@@ -41,6 +41,11 @@ public class GroupManager {
     String lastGroupId = null;
 
     public boolean isGroupMember(GroupMessage groupMessage) {
+        final GroupMessage lastMessage = allMembersList.get(groupMessage.getUserId());
+        if (lastMessage != null && lastMessage.getScreenId().equals(groupMessage.getScreenId())) {
+            // preserve the group id when the browser window is refreshed without get parameters
+            groupMessage.setGroupId(lastMessage.getGroupId());
+        }
         if (groupMessage.getGroupId() == null) {
             final List<String> lastGroupMemberCodes = unAllocatedMemberCodes.get(lastGroupId);
             if (lastGroupMemberCodes == null || lastGroupMemberCodes.isEmpty()) {
