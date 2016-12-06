@@ -73,8 +73,8 @@ public class DataSubmissionService extends AbstractSubmissionService {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("{");
         for (MetadataField key : userResults.getUserData().getMetadataFields()) {
-            String value = JsonUtils.escapeValue(userResults.getUserData().getMetadataValue(key));
-            stringBuilder.append(JsonUtils.escapeValue(key.getPostName())).append(": ").append(value).append(",\n");
+            String value = jsonEscape(userResults.getUserData().getMetadataValue(key));
+            stringBuilder.append(jsonEscape(key.getPostName())).append(": ").append(value).append(",\n");
         }
         stringBuilder.append("\"userId\": \"").append(userResults.getUserData().getUserId()).append("\"\n}");
         //localStorage.addStoredScreenData(userResults.getUserData().getUserId(), ServiceEndpoint.metadata.name(), stringBuilder.toString());
@@ -82,22 +82,26 @@ public class DataSubmissionService extends AbstractSubmissionService {
     }
 
     public void submitTagValue(final UserId userId, String eventTag, String tagValue, int eventMs) {
-        submitData(ServiceEndpoint.tagEvent, userId, "{\"tagDate\" : " + JsonUtils.escapeValue(format.format(new Date())) + ",\n"
-                + "\"experimentName\": " + JsonUtils.escapeValue(experimentName) + ",\n"
-                + "\"userId\": " + JsonUtils.escapeValue(userId.toString()) + ",\n"
-                + "\"eventTag\": " + JsonUtils.escapeValue(eventTag) + ",\n"
-                + "\"tagValue\": " + JsonUtils.escapeValue(tagValue) + ",\n"
+        submitData(ServiceEndpoint.tagEvent, userId, "{\"tagDate\" : " + jsonEscape(format.format(new Date())) + ",\n"
+                + "\"experimentName\": " + jsonEscape(experimentName) + ",\n"
+                + "\"userId\": " + jsonEscape(userId.toString()) + ",\n"
+                + "\"eventTag\": " + jsonEscape(eventTag) + ",\n"
+                + "\"tagValue\": " + jsonEscape(tagValue) + ",\n"
                 + "\"eventMs\": \"" + eventMs + "\" \n}");
     }
 
     public void submitTagPairValue(final UserId userId, String eventTag, String tagValue1, String tagValue2, int eventMs) {
-        submitData(ServiceEndpoint.tagPairEvent, userId, "{\"tagDate\" : " + JsonUtils.escapeValue(format.format(new Date())) + ",\n"
-                + "\"experimentName\": " + JsonUtils.escapeValue(experimentName) + ",\n"
-                + "\"userId\": " + JsonUtils.escapeValue(userId.toString()) + ",\n"
-                + "\"eventTag\": " + JsonUtils.escapeValue(eventTag) + ",\n"
-                + "\"tagValue1\": " + JsonUtils.escapeValue(tagValue1) + ",\n"
-                + "\"tagValue2\": " + JsonUtils.escapeValue(tagValue2) + ",\n"
+        submitData(ServiceEndpoint.tagPairEvent, userId, "{\"tagDate\" : " + jsonEscape(format.format(new Date())) + ",\n"
+                + "\"experimentName\": " + jsonEscape(experimentName) + ",\n"
+                + "\"userId\": " + jsonEscape(userId.toString()) + ",\n"
+                + "\"eventTag\": " + jsonEscape(eventTag) + ",\n"
+                + "\"tagValue1\": " + jsonEscape(tagValue1) + ",\n"
+                + "\"tagValue2\": " + jsonEscape(tagValue2) + ",\n"
                 + "\"eventMs\": \"" + eventMs + "\" \n}");
+    }
+
+    private String jsonEscape(String inputString) {
+        return (inputString == null) ? null : JsonUtils.escapeValue(inputString);
     }
 
     public void submitGroupEvent(final UserId messageRespondentId,
@@ -117,40 +121,40 @@ public class DataSubmissionService extends AbstractSubmissionService {
             String senderId,
             String senderMemberCode,
             int eventMs) {
-        submitData(ServiceEndpoint.groupEvent, messageRespondentId, "{\"eventDate\" : " + JsonUtils.escapeValue(format.format(new Date())) + ",\n"
-                + "\"experimentName\": " + JsonUtils.escapeValue(experimentName) + ",\n"
-                + "\"screenName\": " + JsonUtils.escapeValue(screenName) + ",\n"
-                + "\"messageRespondentId\": " + JsonUtils.escapeValue(messageRespondentId.toString()) + ",\n"
-                + "\"groupUUID\": " + JsonUtils.escapeValue(groupUUID) + ",\n"
-                + "\"groupName\": " + JsonUtils.escapeValue(groupName) + ",\n"
-                + "\"groupCommunicationChannels\": " + JsonUtils.escapeValue(groupCommunicationChannels) + ",\n"
-                + "\"senderMemberCode\": " + JsonUtils.escapeValue(senderMemberCode) + ",\n"
-                + "\"respondentMemberCode\": " + JsonUtils.escapeValue(respondentMemberCode) + ",\n"
-                + "\"allMemberCodes\": " + JsonUtils.escapeValue(allMemberCodes) + ",\n"
-                + "\"userLabel\": " + JsonUtils.escapeValue(userLabel) + ",\n"
-                + "\"senderId\": " + JsonUtils.escapeValue(senderId) + ",\n"
-                + "\"messageString\": " + JsonUtils.escapeValue(messageString) + ",\n"
-                + "\"stimulusId\": " + JsonUtils.escapeValue(stimulusId) + ",\n"
-                + "\"stimulusIndex\": " + stimulusIndex + ",\n" 
-                + "\"messageSenderId\": " + JsonUtils.escapeValue(messageSenderId) + ",\n"
-                + "\"responseStimulusId\": " + JsonUtils.escapeValue(responseStimulusId) + ",\n"
-                + "\"stimulusOptionIds\": " + JsonUtils.escapeValue(stimulusOptionIds) + ",\n"
+        submitData(ServiceEndpoint.groupEvent, messageRespondentId, "{\"eventDate\" : " + jsonEscape(format.format(new Date())) + ",\n"
+                + "\"experimentName\": " + jsonEscape(experimentName) + ",\n"
+                + "\"screenName\": " + jsonEscape(screenName) + ",\n"
+                + "\"messageRespondentId\": " + jsonEscape(messageRespondentId.toString()) + ",\n"
+                + "\"groupUUID\": " + jsonEscape(groupUUID) + ",\n"
+                + "\"groupName\": " + jsonEscape(groupName) + ",\n"
+                + "\"groupCommunicationChannels\": " + jsonEscape(groupCommunicationChannels) + ",\n"
+                + "\"senderMemberCode\": " + jsonEscape(senderMemberCode) + ",\n"
+                + "\"respondentMemberCode\": " + jsonEscape(respondentMemberCode) + ",\n"
+                + "\"allMemberCodes\": " + jsonEscape(allMemberCodes) + ",\n"
+                + "\"userLabel\": " + jsonEscape(userLabel) + ",\n"
+                + "\"senderId\": " + jsonEscape(senderId) + ",\n"
+                + "\"messageString\": " + jsonEscape(messageString) + ",\n"
+                + "\"stimulusId\": " + jsonEscape(stimulusId) + ",\n"
+                + "\"stimulusIndex\": " + stimulusIndex + ",\n"
+                + "\"messageSenderId\": " + jsonEscape(messageSenderId) + ",\n"
+                + "\"responseStimulusId\": " + jsonEscape(responseStimulusId) + ",\n"
+                + "\"stimulusOptionIds\": " + jsonEscape(stimulusOptionIds) + ",\n"
                 + "\"eventMs\": \"" + eventMs + "\" \n}");
     }
 
     public void submitTimeStamp(final UserId userId, String eventTag, int eventMs) {
-        submitData(ServiceEndpoint.timeStamp, userId, "{\"tagDate\" : " + JsonUtils.escapeValue(format.format(new Date())) + ",\n"
-                + "\"experimentName\": " + JsonUtils.escapeValue(experimentName) + ",\n"
-                + "\"userId\": " + JsonUtils.escapeValue(userId.toString()) + ",\n"
-                + "\"eventTag\": " + JsonUtils.escapeValue(eventTag) + ",\n"
+        submitData(ServiceEndpoint.timeStamp, userId, "{\"tagDate\" : " + jsonEscape(format.format(new Date())) + ",\n"
+                + "\"experimentName\": " + jsonEscape(experimentName) + ",\n"
+                + "\"userId\": " + jsonEscape(userId.toString()) + ",\n"
+                + "\"eventTag\": " + jsonEscape(eventTag) + ",\n"
                 + "\"eventMs\": \"" + eventMs + "\" \n}");
     }
 
     public void submitScreenChange(final UserId userId, String applicationState) {
-        submitData(ServiceEndpoint.screenChange, userId, "{\"viewDate\" : " + JsonUtils.escapeValue(format.format(new Date())) + ",\n"
-                + "\"experimentName\": " + JsonUtils.escapeValue(experimentName) + ",\n"
-                + "\"userId\": " + JsonUtils.escapeValue(userId.toString()) + ",\n"
-                + "\"screenName\": " + JsonUtils.escapeValue(applicationState) + " \n}");
+        submitData(ServiceEndpoint.screenChange, userId, "{\"viewDate\" : " + jsonEscape(format.format(new Date())) + ",\n"
+                + "\"experimentName\": " + jsonEscape(experimentName) + ",\n"
+                + "\"userId\": " + jsonEscape(userId.toString()) + ",\n"
+                + "\"screenName\": " + jsonEscape(applicationState) + " \n}");
 
         // todo: optionally include the analytics call also
         trackView(applicationState);
