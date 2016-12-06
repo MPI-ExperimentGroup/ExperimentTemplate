@@ -109,6 +109,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
             String respondentMemberCode,
             String userLabel,
             String stimulusId,
+            int stimulusIndex,
             String messageSenderId,
             String messageString,
             String responseStimulusId,
@@ -130,6 +131,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
                 + "\"senderId\": " + JsonUtils.escapeValue(senderId) + ",\n"
                 + "\"messageString\": " + JsonUtils.escapeValue(messageString) + ",\n"
                 + "\"stimulusId\": " + JsonUtils.escapeValue(stimulusId) + ",\n"
+                + "\"stimulusIndex\": " + stimulusIndex + ",\n" 
                 + "\"messageSenderId\": " + JsonUtils.escapeValue(messageSenderId) + ",\n"
                 + "\"responseStimulusId\": " + JsonUtils.escapeValue(responseStimulusId) + ",\n"
                 + "\"stimulusOptionIds\": " + JsonUtils.escapeValue(stimulusOptionIds) + ",\n"
