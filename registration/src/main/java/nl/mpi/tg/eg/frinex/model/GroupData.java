@@ -49,6 +49,7 @@ public class GroupData implements Serializable {
     private String senderMemberCode;
     private String respondentMemberCode;
     private String stimulusId;
+    private String stimulusIndex;
     private String responseStimulusId;
     private String stimulusOptionIds;
     private String messageSenderId = null;
@@ -88,6 +89,14 @@ public class GroupData implements Serializable {
 
     public void setResponseStimulusId(String responseStimulusId) {
         this.responseStimulusId = responseStimulusId;
+    }
+
+    public String getStimulusIndex() {
+        return stimulusIndex;
+    }
+
+    public void setStimulusIndex(String stimulusIndex) {
+        this.stimulusIndex = stimulusIndex;
     }
 
     public String getMessageSenderId() {
