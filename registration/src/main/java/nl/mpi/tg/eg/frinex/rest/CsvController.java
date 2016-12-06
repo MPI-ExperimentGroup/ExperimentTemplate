@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 import javax.servlet.http.HttpServletResponse;
+import nl.mpi.tg.eg.frinex.model.GroupData;
 import nl.mpi.tg.eg.frinex.model.Participant;
 import nl.mpi.tg.eg.frinex.model.ScreenData;
 import nl.mpi.tg.eg.frinex.model.TagData;
@@ -56,6 +57,8 @@ public class CsvController {
     TagRepository tagRepository;
     @Autowired
     TagPairRepository tagPairRepository;
+    @Autowired
+    private GroupDataRepository groupDataRepository;
 
     @RequestMapping(value = "/zip", method = RequestMethod.GET)
     @ResponseBody
@@ -94,6 +97,50 @@ public class CsvController {
 //        response.getOutputStream().flush();
     }
 
+    @RequestMapping(value = "/groupdatacsv", method = RequestMethod.GET)
+    @ResponseBody
+    public void getGroupData(HttpServletResponse response) throws IOException, CsvExportException {
+//        response.setContentType("application/text");
+//        response.addHeader("Content-Disposition", "attachment; filename=\"groupdata.csv\"");
+//        response.addHeader("Content-Transfer-Encoding", "text");
+        CSVPrinter printer = new CSVPrinter(
+                response.getWriter(),
+                CSVFormat.DEFAULT
+        );
+        printer.printRecord(
+                //       " th:if="${param.detailed}"ID",
+                "Event Date",
+                "Screen Name",
+                //                    " th:if="${param.detailed}"Group UUID",
+                "Group Name",
+                "Member Codes",
+                "Communication Channels",
+                //                    " th:if="${param.detailed}"Sender Id",
+                //                    " th:if="${param.detailed}"Respondent Id",
+                "Sender Code",
+                "Respondent Code",
+                "Stimulus",
+                "Response",
+                "Options",
+                "Message",
+                "ms"
+        );
+        for (GroupData groupData : groupDataRepository.findAll()) {
+            printer.printRecord(groupData.getEventDate(), groupData.getScreenName(), groupData.getGroupName(),
+                    groupData.getAllMemberCodes(),
+                    groupData.getGroupCommunicationChannels(),
+                    groupData.getSenderMemberCode(),
+                    groupData.getRespondentMemberCode(),
+                    groupData.getStimulusId(),
+                    groupData.getResponseStimulusId(),
+                    groupData.getStimulusOptionIds(),
+                    groupData.getMessageString(),
+                    groupData.getEventMs()
+            );
+        }
+        printer.close();
+    }
+
     private void addToZipArchive(final ZipOutputStream zipStream, String fileName, byte[] content) throws IOException {
         ZipEntry zipEntry = new ZipEntry(fileName);
         zipStream.putNextEntry(zipEntry);
@@ -109,6 +156,7 @@ public class CsvController {
             addToZipArchive(zipOutputStream, "tagdata.csv", getTagDataCsv());
             addToZipArchive(zipOutputStream, "tagpairdata.csv", getTagPairDataCsv());
             addToZipArchive(zipOutputStream, "timestampdata.csv", getTimeStampDataCsv());
+//            addToZipArchive(zipOutputStream, "groupdata.csv", getTimeStampDataCsv());
         }
     }
 
