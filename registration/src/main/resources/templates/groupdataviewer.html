@@ -44,6 +44,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <th th:if="${param.detailed}">Respondent Id</th>
                     <th>Sender Code</th>
                     <th>Respondent Code</th>
+                    <th>Index</th>
                     <th>Stimulus</th>
                     <th>Response</th>
                     <th>Options</th>
@@ -64,6 +65,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <td th:if="${param.detailed}" th:text="${groupData.messageRespondentId}" id="clickablerow" th:onclick="'javascript:window.location=\'participantdetail?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;id=' + ${groupData.messageRespondentId} + '\';'">userId</td>
                     <td th:text="${groupData.senderMemberCode}" id="clickablerow" th:onclick="'javascript:window.location=\'groupdataviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;senderMemberCode=' + ${groupData.messageSenderId} + '\';'">senderMemberCode</td>
                     <td th:text="${groupData.respondentMemberCode}" id="clickablerow" th:onclick="'javascript:window.location=\'groupdataviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;respondentMemberCode=' + ${groupData.messageRespondentId} + '\';'">respondentMemberCode</td>
+                    <td th:text="${groupData.stimulusIndex}">stimulusIndex</td>
                     <td th:text="${groupData.stimulusId}">stimulusId</td>
                     <td th:text="${groupData.responseStimulusId}">responseStimulusId</td>
                     <td th:text="${groupData.stimulusOptionIds}">stimulusOptionIds</td>                    
