@@ -58,7 +58,11 @@ public class GroupParticipantService {
     private String groupUUID = null;
 
     public GroupParticipantService(final String userId, String screenId, String groupMembers, String groupCommunicationChannels, TimedStimulusListener connectedListener, TimedStimulusListener groupNotReadyListener) {
-        this.userId = userId;
+        if (Window.Location.getParameter("testuser") != null) {
+            this.userId = "testuser-" + Window.Location.getParameter("testuser");
+        } else {
+            this.userId = userId;
+        }
         this.allMemberCodes = groupMembers;
         this.groupCommunicationChannels = groupCommunicationChannels;
         this.connectedListener = connectedListener;
