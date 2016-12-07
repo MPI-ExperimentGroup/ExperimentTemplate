@@ -26,12 +26,60 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+        <script language="javascript" type="text/javascript">
+            function robot() {
+                var robotMessagesDiv = document.getElementById("robot_messages");
+                robotMessagesDiv.innerHTML = "robot started";
+                var robotTimer = setInterval(function () {
+                    findAndClick()
+                }, 1000);
+                var iframes = document.getElementsByTagName("iframe");
+                if (document.getElementById('groupName').value === "") {
+                    document.getElementById('groupName').value = "robot group at " + new Date().toLocaleTimeString();
+                }
+                for (frameIndex = 0; frameIndex < iframes.length; ++frameIndex) {
+                    var iframeTimer = setTimeout(function (frameIndex) {
+                        iframes[frameIndex].src = "http://localhost:8080/multiparticipant?testuser=" + frameIndex + "&group=" + document.getElementById('groupName').value;
+                    }, 1000 * frameIndex, frameIndex);
+                }
+            }
+            function findAndClick() {
+                document.getElementById("robot_messages").innerHTML = "robot activated at " + new Date().toLocaleTimeString();
+                var tagArray = ['input', 'textarea'];
+                var iframes = document.getElementsByTagName("iframe");
+                for (frameIndex = 0; frameIndex < iframes.length; ++frameIndex) {
+                    for (tagInxex in tagArray) {
+                        var textinput = iframes[frameIndex].contentWindow.document.getElementsByTagName(tagArray[tagInxex]);
+                        for (var inputIndex = 0; inputIndex < textinput.length; inputIndex++) {
+                            if (textinput[inputIndex].className === "metadataError") {
+                                if (textinput[inputIndex].value === "0") {
+                                    textinput[inputIndex].value = "qqq";
+                                } else {
+                                    textinput[inputIndex].value = "0";
+                                }
+                            } else {
+                                textinput[inputIndex].value = "robot run " + new Date().toLocaleTimeString();
+                            }
+                        }
+                    }
+                    var buttons = iframes[frameIndex].contentWindow.document.getElementsByTagName('button');
+                    if (buttons.length > 0) {
+                        var randomIndex = Math.floor((Math.random() * buttons.length));
+                        if (buttons[randomIndex] !== 'undefined' && buttons[randomIndex] !== null) {
+                            buttons[randomIndex].click();
+                        }
+                    }
+                }
+            }
+        </script>
     </head>
     <body>
+        <div id="robot_messages"></div>
+        <button type="button" onclick="robot();">start robot</button>
+        <input type="text" id="groupName" class="form-control" placeholder="Type a group name...">  
         <table>
-            <tr><td><iframe height="500" width="500" src="grouptestpage.html"></iframe></td><td><iframe height="500" width="500" src="grouptestpage.html"></iframe></td><td><iframe height="500" width="500" src="grouptestpage.html"></iframe></td><td><iframe height="500" width="500" src="grouptestpage.html"></iframe></td></tr>
-            <tr><td><iframe height="500" width="500" src="grouptestpage.html"></iframe></td><td><iframe height="500" width="500" src="grouptestpage.html"></iframe></td><td><iframe height="500" width="500" src="grouptestpage.html"></iframe></td><td><iframe height="500" width="500" src="grouptestpage.html"></iframe></td></tr>
-            <tr><td><iframe height="500" width="500" src="grouptestpage.html"></iframe></td><td><iframe height="500" width="500" src="grouptestpage.html"></iframe></td><td><iframe height="500" width="500" src="grouptestpage.html"></iframe></td><td><iframe height="500" width="500" src="grouptestpage.html"></iframe></td></tr>
+            <tr><td><iframe height="500" width="500"></iframe></td><td><iframe height="500" width="500"></iframe></td><td><iframe height="500" width="500"></iframe></td><td><iframe height="500" width="500"></iframe></td></tr>
+            <tr><td><iframe height="500" width="500"></iframe></td><td><iframe height="500" width="500"></iframe></td><td><iframe height="500" width="500"></iframe></td><td><iframe height="500" width="500"></iframe></td></tr>
         </table>
     </body>
 </html>
