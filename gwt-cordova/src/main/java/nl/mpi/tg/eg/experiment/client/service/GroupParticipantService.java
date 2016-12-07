@@ -132,18 +132,28 @@ public class GroupParticipantService {
         } else {
             groupIdMatches = this.groupId.equals(groupId);
         }
+
         if (groupIdMatches && screenIdMatches) {
-//            this.allMemberCodes = allMemberCodes;
-            this.stimulusId = stimulusId;
-            this.stimulusIndex = Integer.parseInt(stimulusIndex);
-            this.requestedPhase = Integer.parseInt(requestedPhase);
-            this.messageString = messageString;
             this.messageSenderMemberCode = memberCode;
-            this.messageSenderId = userId;
-            this.responseStimulusId = responseStimulusId;
             this.groupUUID = groupUUID;
             this.groupReady = groupReady;
-            if (groupReady) {
+            boolean messageIsRelevant = false;
+            for (String channel : groupCommunicationChannels.split("\\|")) {
+                // check communication channel before responding to the message
+                if (channel.contains(this.memberCode) && channel.contains(this.messageSenderMemberCode)) {
+                    messageIsRelevant = true;
+                    break;
+                }
+            }
+            if (messageIsRelevant) {
+//            this.allMemberCodes = allMemberCodes;
+                this.stimulusId = stimulusId;
+                this.stimulusIndex = Integer.parseInt(stimulusIndex);
+                this.requestedPhase = Integer.parseInt(requestedPhase);
+                this.messageString = messageString;
+                this.messageSenderId = userId;
+                this.responseStimulusId = responseStimulusId;
+//                if (groupReady) {
                 for (String groupRole : ((userIdMatches) ? selfActivityListeners : othersActivityListeners).keySet()) {
                     final String[] splitRole = groupRole.split(":");
                     int roleIndex = this.requestedPhase % splitRole.length;
@@ -156,8 +166,9 @@ public class GroupParticipantService {
                         }
                     }
                 }
-            } else {
-                groupNotReadyListener.postLoadTimerFired();
+//                } else {
+//                    groupNotReadyListener.postLoadTimerFired();
+//                }
             }
         } else {
             groupNotReadyListener.postLoadTimerFired();
