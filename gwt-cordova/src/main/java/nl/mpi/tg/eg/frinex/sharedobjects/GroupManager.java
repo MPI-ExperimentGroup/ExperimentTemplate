@@ -41,22 +41,23 @@ public class GroupManager {
     String lastGroupId = null;
 
     public boolean isGroupMember(GroupMessage groupMessage) {
-        final GroupMessage lastMessage = allMembersList.get(groupMessage.getUserId());
-        if (lastMessage != null && lastMessage.getScreenId().equals(groupMessage.getScreenId())) {
-            // preserve the group id when the browser window is refreshed without get parameters
-            groupMessage.setGroupId(lastMessage.getGroupId());
-        }
         if (groupMessage.getGroupId() == null) {
-            final List<String> lastGroupMemberCodes = unAllocatedMemberCodes.get(lastGroupId);
-            if (lastGroupMemberCodes == null || lastGroupMemberCodes.isEmpty()) {
-                lastGroupId = null;
+            final GroupMessage lastMessage = allMembersList.get(groupMessage.getUserId());
+            if (lastMessage != null && lastMessage.getScreenId().equals(groupMessage.getScreenId())) {
+                // preserve the group id when the browser window is refreshed without get parameters
+                groupMessage.setGroupId(lastMessage.getGroupId());
+            } else {
+                final List<String> lastGroupMemberCodes = unAllocatedMemberCodes.get(lastGroupId);
+                if (lastGroupMemberCodes == null || lastGroupMemberCodes.isEmpty()) {
+                    lastGroupId = null;
+                }
+                if (lastGroupId == null) {
+                    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                    Date date = new Date();
+                    lastGroupId = "started:" + dateFormat.format(date);
+                }
+                groupMessage.setGroupId(lastGroupId);
             }
-            if (lastGroupId == null) {
-                DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-                Date date = new Date();
-                lastGroupId = "started:" + dateFormat.format(date);
-            }
-            groupMessage.setGroupId(lastGroupId);
         }
         if (!groupsMembers.containsKey(groupMessage.getGroupId())) {
             groupsMembers.put(groupMessage.getGroupId(), new HashSet<String>());
