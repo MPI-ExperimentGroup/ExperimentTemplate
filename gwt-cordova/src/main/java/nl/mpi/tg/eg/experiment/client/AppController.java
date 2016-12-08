@@ -34,6 +34,7 @@ import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.presenter.StorageFullPresenter;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
@@ -131,30 +132,35 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
 
     public void start() {
         setBackButtonAction();
-        submissionService.submitScreenChange(userResults.getUserData().getUserId(), "ApplicationStarted");
-        // application specific information
-        submissionService.submitTagValue(userResults.getUserData().getUserId(), "projectVersion", version.projectVersion(), 0);
-        submissionService.submitTagValue(userResults.getUserData().getUserId(), "lastCommitDate", version.lastCommitDate().replace("\"", ""), 0);
-        submissionService.submitTagValue(userResults.getUserData().getUserId(), "compileDate", version.compileDate(), 0);
-        submissionService.submitTagValue(userResults.getUserData().getUserId(), "navigator.platform", Window.Navigator.getPlatform(), 0);
-        submissionService.submitTagValue(userResults.getUserData().getUserId(), "navigator.userAgent", Window.Navigator.getUserAgent(), 0);
-        submissionService.submitTagValue(userResults.getUserData().getUserId(), "navigator.cookieEnabled", Boolean.toString(Window.Navigator.isCookieEnabled()), 0);
-        if (hasCordova()) {
-            // cordova specific information
-            submissionService.submitTagValue(userResults.getUserData().getUserId(), "cordovaVersion", getCordovaVersion(), 0);
-            submissionService.submitTagValue(userResults.getUserData().getUserId(), "deviceModel", getDeviceModel(), 0);
-            submissionService.submitTagValue(userResults.getUserData().getUserId(), "devicePlatform", getDevicePlatform(), 0);
-            submissionService.submitTagValue(userResults.getUserData().getUserId(), "deviceUUID", getDeviceUUID(), 0);
-            submissionService.submitTagValue(userResults.getUserData().getUserId(), "deviceVersion", getDeviceVersion(), 0);
-        }
         try {
-            final String appState = localStorage.getAppState();
-            final ApplicationState lastAppState = (appState != null) ? ApplicationState.valueOf(appState) : ApplicationState.start;
-            requestApplicationState(lastAppState);
-        } catch (IllegalArgumentException argumentException) {
-            requestApplicationState(ApplicationState.start);
+            submissionService.submitScreenChange(userResults.getUserData().getUserId(), "ApplicationStarted");
+            // application specific information
+            submissionService.submitTagValue(userResults.getUserData().getUserId(), "projectVersion", version.projectVersion(), 0);
+            submissionService.submitTagValue(userResults.getUserData().getUserId(), "lastCommitDate", version.lastCommitDate().replace("\"", ""), 0);
+            submissionService.submitTagValue(userResults.getUserData().getUserId(), "compileDate", version.compileDate(), 0);
+            submissionService.submitTagValue(userResults.getUserData().getUserId(), "navigator.platform", Window.Navigator.getPlatform(), 0);
+            submissionService.submitTagValue(userResults.getUserData().getUserId(), "navigator.userAgent", Window.Navigator.getUserAgent(), 0);
+            submissionService.submitTagValue(userResults.getUserData().getUserId(), "navigator.cookieEnabled", Boolean.toString(Window.Navigator.isCookieEnabled()), 0);
+            if (hasCordova()) {
+                // cordova specific information
+                submissionService.submitTagValue(userResults.getUserData().getUserId(), "cordovaVersion", getCordovaVersion(), 0);
+                submissionService.submitTagValue(userResults.getUserData().getUserId(), "deviceModel", getDeviceModel(), 0);
+                submissionService.submitTagValue(userResults.getUserData().getUserId(), "devicePlatform", getDevicePlatform(), 0);
+                submissionService.submitTagValue(userResults.getUserData().getUserId(), "deviceUUID", getDeviceUUID(), 0);
+                submissionService.submitTagValue(userResults.getUserData().getUserId(), "deviceVersion", getDeviceVersion(), 0);
+            }
+            try {
+                final String appState = localStorage.getAppState();
+                final ApplicationState lastAppState = (appState != null) ? ApplicationState.valueOf(appState) : ApplicationState.start;
+                requestApplicationState(lastAppState);
+            } catch (IllegalArgumentException argumentException) {
+                requestApplicationState(ApplicationState.start);
+            }
+            addKeyboardEvents();
+        } catch (Exception exception) {
+            this.presenter = new StorageFullPresenter(widgetTag, exception.getMessage());
+            presenter.setState(this, ApplicationState.start, null);
         }
-        addKeyboardEvents();
     }
 
     public void backAction() {
