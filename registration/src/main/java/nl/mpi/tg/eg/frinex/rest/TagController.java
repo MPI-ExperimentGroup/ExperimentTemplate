@@ -47,11 +47,10 @@ public class TagController {
     public String tagPairViewer(Model model, @RequestParam(value = "page", defaultValue = "0", required = false) Integer page, @RequestParam(value = "size", defaultValue = "2000", required = false) Integer size) {//, Pageable pageable
         final long count = this.tagRepository.count();
         model.addAttribute("count", count);
-        final Page<TagData> tagPageData = this.tagRepository.findAll(new PageRequest(page, size, Direction.ASC, "tagDate"));
-        final List<TagData> content = tagPageData.getContent();
+        final Page<TagData> pageData = this.tagRepository.findAll(new PageRequest(page, size, Direction.ASC, "tagDate"));
+        final List<TagData> content = pageData.getContent();
         model.addAttribute("allTagData", new TreeSet(content));
-        model.addAttribute("tagPageData", tagPageData);
-        model.addAttribute("pageurl", "tagviewer");
+        model.addAttribute("pageData", pageData);
         return "tagviewer";
     }
 }

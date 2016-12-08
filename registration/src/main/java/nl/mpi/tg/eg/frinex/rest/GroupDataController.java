@@ -17,10 +17,17 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.util.List;
+import java.util.TreeSet;
+import nl.mpi.tg.eg.frinex.model.GroupData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @since Nov 30, 2016 1:58:25 PM (creation date)
@@ -33,9 +40,20 @@ public class GroupDataController {
     private GroupDataRepository groupDataRepository;
 
     @RequestMapping("groupdataviewer")
-    public String tagPairViewer(Model model) {
+    public String tagPairViewer(Model model,
+            @RequestParam(value = "page", defaultValue = "0", required = false) Integer page,
+            @RequestParam(value = "size", defaultValue = "2000", required = false) Integer size,
+            @RequestParam(value = "sort", required = false, defaultValue = "submitDate") String sortColumn,
+            @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection) {
         model.addAttribute("count", this.groupDataRepository.count());
-        model.addAttribute("allGroupData", this.groupDataRepository.findAll());
+//        model.addAttribute("allGroupData", this.groupDataRepository.findAll(
+//                
+//                new Sort(("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn)
+//        ));
+        final Page<GroupData> pageData = this.groupDataRepository.findAll(new PageRequest(page, size, Sort.Direction.ASC, sortColumn));
+        final List<GroupData> content = pageData.getContent();
+        model.addAttribute("allGroupData", new TreeSet(content));
+        model.addAttribute("pageData", pageData);
         return "groupdataviewer";
     }
 }

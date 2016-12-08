@@ -30,6 +30,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     <body>
         <div th:replace="fragments/adminpagelayout :: header"></div>
         <p th:text="'Activity Count, ' + ${count}" />
+        <div th:replace="fragments/adminpagelayout :: pagemenu"></div>
         <table id="datatable">
             <thead>
                 <tr>

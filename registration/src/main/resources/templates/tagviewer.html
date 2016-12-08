@@ -31,30 +31,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     <body>
         <div th:replace="fragments/adminpagelayout :: header"></div>
         <p th:text="'Activity Count, ' + ${count}" />
-        <div>
-            <ul>
-                <li style="display: inline;" th:class="${tagPageData.first}? 'disabled' : ''">
-                    <span th:if='${tagPageData.first}'>First</span>
-                    <a th:if='${not tagPageData.first}' th:href='@{${pageurl}(page=0)}'>First</a><!--'@{${pageurl}(page=0,size=${tagPageData.size})}-->
-                </li>
-                <li style="display: inline;" th:class="${tagPageData.first}? '' : 'disabled'">
-                    <span th:if='${tagPageData.first}'>&lt;&lt;</span>
-                    <a th:if='${not tagPageData.first}' th:href='@{${pageurl}(page=${tagPageData.number-1})}' title='Go to previous page'>&lt;&lt;</a>
-                </li>
-                <li style="display: inline;" th:each="item : ${#numbers.sequence(tagPageData.number - 10, tagPageData.number + 10)}" th:class="${item}? 'active' : ''">
-                    <span th:if='${item eq tagPageData.number}' th:text='${item}'>1</span>
-                    <a th:if='${item ne tagPageData.number and item ge 0 and item lt tagPageData.totalPages}' th:href='@{${pageurl}(page=${item})}'><span th:text='${item}'>1</span></a>
-                </li>
-                <li style="display: inline;" th:class="${not tagPageData.last}? '' : 'disabled'">
-                    <span th:if='${tagPageData.last}'>&gt;&gt;</span>
-                    <a th:if='${not tagPageData.last}' th:href='@{${pageurl}(page=${tagPageData.number+1})}' title='Go to next page'>&gt;&gt;</a>
-                </li>
-                <li style="display: inline;" th:class="${tagPageData.last}? 'disabled' : ''">
-                    <span th:if='${tagPageData.last}'>Last</span>
-                    <a th:if="${not tagPageData.last}" th:href="@{${pageurl}(page=${tagPageData.totalPages})}">Last</a>
-                </li>
-            </ul>
-        </div>
+        <div th:replace="fragments/adminpagelayout :: pagemenu"></div>
         <table id="datatable">
             <thead>
                 <tr>

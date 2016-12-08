@@ -30,7 +30,7 @@ import javax.persistence.Temporal;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Entity
-public class GroupData implements Serializable {
+public class GroupData implements Comparable<GroupData> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -209,5 +209,10 @@ public class GroupData implements Serializable {
 
     public void setEventMs(int eventMs) {
         this.eventMs = eventMs;
+    }
+
+    @Override
+    public int compareTo(GroupData o) {
+        return eventDate.compareTo(o.getEventDate());
     }
 }
