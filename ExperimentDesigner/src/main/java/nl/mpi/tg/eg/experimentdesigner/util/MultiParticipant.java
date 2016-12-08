@@ -100,7 +100,32 @@ public class MultiParticipant {
         wizardEditUserScreen.setGenderField();
         wizardEditUserScreen.setWorkerIdField();
 
-        final WizardMultiParticipantScreen wizardMultiParticipantScreen = new WizardMultiParticipantScreen();
+        final String groupMembers = "A,B,C,D,E,F,G,H";
+        final String communicationChannels = "A,B|C,D|E,F|G,H";
+        final String textEntryPhaseRoles = "A,C,E,G:-:-:B,D,F,H:-:-";
+        final String textEntryPhaseText = "The producer sees the stimulus and enters some text";
+        final String textWaitPhaseRoles = "B,D,F,H:-:-:A,C,E,G:-:-";
+        final String textWaitPhaseText = "The guesser waits for the producer";
+        final String gridWaitPhaseRoles = "-:A,C,E,G:-:-:B,D,F,H:-";
+        final String gridWaitPhaseText = "The producer waits for the guesser";
+        final String responseGridPhaseRoles = "-:B,D,F,H:-:-:A,C,E,G:-";
+        final String responseGridPhaseText = "The guesser sees the text with a grid of stimuli, from which they select one based on the text";
+        final String mutualFeedbackPhaseRoles = "-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H";
+        final String mutualFeedbackPhaseText = "The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0.";
+
+        final WizardMultiParticipantScreen wizardMultiParticipantScreen = new WizardMultiParticipantScreen("MultiParticipant",
+                groupMembers,
+                communicationChannels,
+                textEntryPhaseRoles,
+                textEntryPhaseText,
+                textWaitPhaseRoles,
+                textWaitPhaseText,
+                gridWaitPhaseRoles,
+                gridWaitPhaseText,
+                responseGridPhaseRoles,
+                responseGridPhaseText,
+                mutualFeedbackPhaseRoles,
+                mutualFeedbackPhaseText);
         wizardMultiParticipantScreen.setStimuliSet(stimuliArray);
         wizardMultiParticipantScreen.setStimulusFreeText(true, "[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
 
