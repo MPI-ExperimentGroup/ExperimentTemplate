@@ -100,10 +100,14 @@ public class WizardScreenData implements Serializable {
     private String stimulusResponseLabelRight = null;
     private String stimulusResponseLabelLeft = null;
     private Boolean showProgress = null;
+    private Boolean showHurryIndicator = null;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private StimuliSubAction[] stimuliSubActions = null;
+    private List<StimuliSubAction> stimuliSubActions = null;
     private Boolean stimulusImageCapture = null;
     private Integer taskIndex = null;
+    private String groupMembers = null;
+    private String groupCommunicationChannels = null;
+    private String[] groupPhasesRoles = null;
 
     public WizardScreenData() {
     }
@@ -445,6 +449,14 @@ public class WizardScreenData implements Serializable {
         this.showProgress = showProgress;
     }
 
+    public Boolean getShowHurryIndicator() {
+        return showHurryIndicator;
+    }
+
+    public void setShowHurryIndicator(Boolean showHurryIndicator) {
+        this.showHurryIndicator = showHurryIndicator;
+    }
+
     public Boolean getSendData() {
         return sendData;
     }
@@ -453,11 +465,11 @@ public class WizardScreenData implements Serializable {
         this.sendData = sendData;
     }
 
-    public StimuliSubAction[] getStimuliSubActions() {
+    public List<StimuliSubAction> getStimuliSubActions() {
         return stimuliSubActions;
     }
 
-    public void setStimuliSubActions(StimuliSubAction[] stimuliSubActions) {
+    public void setStimuliSubActions(List<StimuliSubAction> stimuliSubActions) {
         this.stimuliSubActions = stimuliSubActions;
     }
 
@@ -492,4 +504,29 @@ public class WizardScreenData implements Serializable {
     public void setHelpText(String helpText) {
         this.helpText = helpText;
     }
+
+    public String getGroupMembers() {
+        return groupMembers;
+    }
+
+    public void setGroupMembers(String groupMembers) {
+        this.groupMembers = groupMembers;
+    }
+
+    public String getGroupCommunicationChannels() {
+        return groupCommunicationChannels;
+    }
+
+    public void setGroupCommunicationChannels(String groupCommunicationChannels) {
+        this.groupCommunicationChannels = groupCommunicationChannels;
+    }
+
+    public String[] getGroupPhasesRoles() {
+        return groupPhasesRoles;
+    }
+
+    public void setGroupPhasesRoles(String[] groupPhasesRoles) {
+        this.groupPhasesRoles = groupPhasesRoles;
+    }
+
 }
