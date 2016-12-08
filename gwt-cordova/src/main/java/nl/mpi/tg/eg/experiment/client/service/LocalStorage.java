@@ -41,7 +41,7 @@ public class LocalStorage {
     private final String LAST_USER_ID;
     private final String GAME_DATA; // todo: perhaps merge game and screen data concepts
     private final String SCREEN_DATA;
-    private final String STOWED_DATA; // todo: send the stowed data to the server when the user has completed the entire application
+//    private final String STOWED_DATA; // todo: send the stowed data to the server when the user has completed the entire application
 //    private final String FAILED_DATA;
     protected final String MAX_SCORE;
     protected final String GAMES_PLAYED;
@@ -54,7 +54,7 @@ public class LocalStorage {
         LAST_USER_ID = messages.appNameInternal() + ".LastUserId";
         GAME_DATA = messages.appNameInternal() + ".GameData.";
         SCREEN_DATA = messages.appNameInternal() + ".ScreenData.";
-        STOWED_DATA = messages.appNameInternal() + ".SentData.";
+//        STOWED_DATA = messages.appNameInternal() + ".SentData.";
 //        FAILED_DATA = messages.appNameInternal() + ".FailedData.";
         MAX_SCORE = messages.appNameInternal() + ".maxScore";
         GAMES_PLAYED = messages.appNameInternal() + ".gamesPlayed";
@@ -106,10 +106,10 @@ public class LocalStorage {
         return getCleanStoredData(GAME_DATA + userId.toString());
     }
 
-    public String getSowedData(UserId userId) {
-        loadStorage();
-        return getCleanStoredData(STOWED_DATA + userId.toString());
-    }
+//    public String getSowedData(UserId userId) {
+//        loadStorage();
+//        return getCleanStoredData(STOWED_DATA + userId.toString());
+//    }
 
     public void addStoredGameData(UserId userId, String serialisedGameData) {
         loadStorage();
@@ -120,15 +120,15 @@ public class LocalStorage {
 //        loadStorage();
 //        dataStore.setItem(FAILED_DATA, getCleanStoredData(FAILED_DATA) + serialisedGameData);
 //    }
-    private void stowSentData(UserId userId, String sendData) {
-        loadStorage();
-        final String sentStoredData = getCleanStoredData(STOWED_DATA + userId.toString());
-        if (sentStoredData.isEmpty()) {
-            dataStore.setItem(STOWED_DATA + userId.toString(), sendData);
-        } else {
-            dataStore.setItem(STOWED_DATA + userId.toString(), sentStoredData + "," + sendData);
-        }
-    }
+//    private void stowSentData(UserId userId, String sendData) {
+//        loadStorage();
+//        final String sentStoredData = getCleanStoredData(STOWED_DATA + userId.toString());
+//        if (sentStoredData.isEmpty()) {
+//            dataStore.setItem(STOWED_DATA + userId.toString(), sendData);
+//        } else {
+//            dataStore.setItem(STOWED_DATA + userId.toString(), sentStoredData + "," + sendData);
+//        }
+//    }
 
     public String getStoredScreenData(UserId userId, String endpoint) {
         loadStorage();
@@ -141,7 +141,7 @@ public class LocalStorage {
         // replacing this segment will sometimes fail due to non matching strings, but the result of failure is only a second transmission of the data which is a preferred option over complexity
         final String remainingStoredData = sentStoredData.replace(segmentToDelete, "").replaceFirst("^,", "");
         dataStore.setItem(SCREEN_DATA + endpoint + "." + userId.toString(), remainingStoredData);
-        stowSentData(userId, segmentToDelete);
+//        stowSentData(userId, segmentToDelete);
     }
 
     public String getStoredDataValue(UserId userId, String label) {
