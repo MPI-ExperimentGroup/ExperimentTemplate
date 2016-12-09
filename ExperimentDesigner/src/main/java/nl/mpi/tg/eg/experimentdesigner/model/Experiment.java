@@ -281,6 +281,9 @@ public class Experiment implements Serializable {
             for (Stimulus stimulus : stimuliList) {
                 if (!this.stimuli.contains(stimulus)) {
                     this.stimuli.add(stimulus);
+                } else {
+                    final int indexExisting = this.stimuli.indexOf(stimulus);
+                    this.stimuli.get(indexExisting).getStimulusTags().addAll(stimulus.getStimulusTags());
                 }
             }
         }
