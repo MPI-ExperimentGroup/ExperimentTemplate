@@ -56,13 +56,13 @@ public class SharedObjectController {
 //            storedMessage.setGroupUUID(groupMessage.getGroupUUID());
             storedMessage.setResponseStimulusId(groupMessage.getResponseStimulusId());
             storedMessage.setResponseStimulusOptions(groupMessage.getResponseStimulusOptions());
-//            storedMessage.setGroupId(groupMessage.getGroupId());
+            storedMessage.setGroupId(groupMessage.getGroupId());
 //            storedMessage.setRequestedPhase(groupMessage.getRequestedPhase());
         } else {
             GROUP_MANAGER.addGroupMember(groupMessage);
             storedMessage = groupMessage;
         }
-        storedMessage.setGroupReady(GROUP_MANAGER.isGroupReady(storedMessage.getGroupId(), storedMessage.getUserId()));
+        storedMessage.setGroupReady(GROUP_MANAGER.isGroupReady(storedMessage));
         return storedMessage;
     }
 }
