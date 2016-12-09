@@ -18,7 +18,9 @@
 package nl.mpi.tg.eg.experiment.client.service;
 
 import com.google.gwt.user.client.Window;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.sharedobjects.GroupMessageMatch;
 
@@ -56,13 +58,10 @@ public class GroupParticipantService {
     private String responseStimulusOptions = null;
     private String responseStimulusId = null;
     private String groupUUID = null;
+    private ArrayList<HashSet<String>> phaseMemberResponses = new ArrayList();
 
     public GroupParticipantService(final String userId, String screenId, String groupMembers, String groupCommunicationChannels, TimedStimulusListener connectedListener, TimedStimulusListener groupNotReadyListener) {
-        if (Window.Location.getParameter("testuser") != null) {
-            this.userId = "testuser-" + Window.Location.getParameter("testuser");
-        } else {
-            this.userId = userId;
-        }
+        this.userId = userId;
         this.allMemberCodes = groupMembers;
         this.groupCommunicationChannels = groupCommunicationChannels;
         this.connectedListener = connectedListener;
@@ -124,6 +123,7 @@ public class GroupParticipantService {
         final boolean userIdMatches = this.userId.equals(userId);
         final boolean screenIdMatches = this.screenId.equals(screenId);
         final boolean groupIdMatches;
+        boolean adequateMessagesReceived = false;
         if (userIdMatches && screenIdMatches) {
             this.userLabel = userLabel;
             this.memberCode = memberCode;
@@ -142,18 +142,25 @@ public class GroupParticipantService {
                 // check communication channel before responding to the message
                 if (channel.contains(this.memberCode) && channel.contains(this.messageSenderMemberCode)) {
                     messageIsRelevant = true;
+                    while (phaseMemberResponses.size() <= Integer.parseInt(requestedPhase)) {
+                        phaseMemberResponses.add(new HashSet<String>());
+                    }
+                    final HashSet<String> messagesReceived = phaseMemberResponses.get(Integer.parseInt(requestedPhase));
+                    messagesReceived.add(this.messageSenderMemberCode);
+                    final int memberMessagesExpected = channel.split(",").length - 1;
+                    final int memberMessagesReceived = messagesReceived.size();
+                    adequateMessagesReceived = memberMessagesExpected <= memberMessagesReceived;
                     break;
                 }
             }
-            if (messageIsRelevant) {
-//            this.allMemberCodes = allMemberCodes;
+            if (messageIsRelevant && groupReady /*adequateMessagesReceived*/) {
                 this.stimulusId = stimulusId;
                 this.stimulusIndex = Integer.parseInt(stimulusIndex);
                 this.requestedPhase = Integer.parseInt(requestedPhase);
                 this.messageString = messageString;
                 this.messageSenderId = userId;
                 this.responseStimulusId = responseStimulusId;
-//                if (groupReady) {
+                //                if (groupReady) {
                 for (String groupRole : ((userIdMatches) ? selfActivityListeners : othersActivityListeners).keySet()) {
                     final String[] splitRole = groupRole.split(":");
                     int roleIndex = this.requestedPhase % splitRole.length;
