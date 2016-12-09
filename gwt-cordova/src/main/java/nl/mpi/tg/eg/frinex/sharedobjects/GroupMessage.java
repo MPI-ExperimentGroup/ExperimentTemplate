@@ -17,11 +17,42 @@
  */
 package nl.mpi.tg.eg.frinex.sharedobjects;
 
+import java.util.Objects;
+
 /**
  * @since Oct 27, 2016 4:03:41 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public class GroupMessage {
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 59 * hash + Objects.hashCode(this.groupId);
+        hash = 59 * hash + Objects.hashCode(this.screenId);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final GroupMessage other = (GroupMessage) obj;
+        if (!Objects.equals(this.groupId, other.groupId)) {
+            return false;
+        }
+        if (!Objects.equals(this.screenId, other.screenId)) {
+            return false;
+        }
+        return true;
+    }
 
     private String userId;
     private String groupId;
@@ -40,6 +71,11 @@ public class GroupMessage {
     private int eventMs;
 
     public GroupMessage() {
+    }
+
+    public GroupMessage(String groupId, String screenId) {
+        this.groupId = groupId;
+        this.screenId = screenId;
     }
 
     public String getUserId() {
