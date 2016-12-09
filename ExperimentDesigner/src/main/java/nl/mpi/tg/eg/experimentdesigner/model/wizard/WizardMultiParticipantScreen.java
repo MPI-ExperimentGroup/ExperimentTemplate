@@ -51,7 +51,9 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             final String responseGridPhaseRoles,
             final String responseGridPhaseText,
             final String mutualFeedbackPhaseRoles,
-            final String mutualFeedbackPhaseText
+            final String mutualFeedbackPhaseText,
+            final String trainingDisplayPhaseRoles,
+            final String trainingDisplayPhaseText
     ) {
         super(WizardScreenEnum.WizardMultiParticipantScreen, screenName, screenName, screenName);
         this.wizardScreenData.setRandomiseStimuli(false);
@@ -63,12 +65,13 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         this.wizardScreenData.setCentreScreen(true);
         this.wizardScreenData.setGroupMembers(groupMembers);
         this.wizardScreenData.setGroupCommunicationChannels(communicationChannels);
-        this.wizardScreenData.setGroupPhasesRoles(new String[]{textEntryPhaseRoles, textWaitPhaseRoles, gridWaitPhaseRoles, responseGridPhaseRoles, mutualFeedbackPhaseRoles});
+        this.wizardScreenData.setGroupPhasesRoles(new String[]{textEntryPhaseRoles, textWaitPhaseRoles, gridWaitPhaseRoles, responseGridPhaseRoles, mutualFeedbackPhaseRoles, trainingDisplayPhaseRoles});
         this.wizardScreenData.setScreenText(0, textEntryPhaseText);
         this.wizardScreenData.setScreenText(1, gridWaitPhaseText);
         this.wizardScreenData.setScreenText(2, textWaitPhaseText);
         this.wizardScreenData.setScreenText(3, responseGridPhaseText);
         this.wizardScreenData.setScreenText(4, mutualFeedbackPhaseText);
+        this.wizardScreenData.setScreenText(5, trainingDisplayPhaseText);
     }
 
 //    public void setStimuliPath(String stimuliPath) {
@@ -152,9 +155,9 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         final PresenterFeature groupNetwork = new PresenterFeature(FeatureType.groupNetwork, null);
         groupNetwork.addFeatureAttributes(FeatureAttribute.groupMembers, storedWizardScreenData.getGroupMembers());
         //@todo: add groupRoleSequence
-//        groupNetwork.addFeatureAttributes(FeatureAttribute.groupCommunicationChannels, "A,B,C,D,E,F,G,H"); // @todo: round 0
-        groupNetwork.addFeatureAttributes(FeatureAttribute.groupCommunicationChannels, storedWizardScreenData.getGroupCommunicationChannels()); // @todo: round 1
-//        groupNetwork.addFeatureAttributes(FeatureAttribute.groupCommunicationChannels, "B,C|D,E|F,G|H,A"); // @todo: round 2
+//        groupNetwork.addFeatureAttributes(FeatureAttribute.groupCommunicationChannels, 
+        groupNetwork.addFeatureAttributes(FeatureAttribute.groupCommunicationChannels, storedWizardScreenData.getGroupCommunicationChannels());
+//        groupNetwork.addFeatureAttributes(FeatureAttribute.groupCommunicationChannels, 
 
         final PresenterFeature producerNetworkActivity0 = new PresenterFeature(FeatureType.groupNetworkActivity, null);
         producerNetworkActivity0.addFeatureAttributes(FeatureAttribute.groupMessageMatch, "all"); // @ todo: this might not be needed if groupRoleSequence is added
@@ -169,17 +172,22 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         final PresenterFeature allNetworkActivity2 = new PresenterFeature(FeatureType.groupNetworkActivity, null);
         allNetworkActivity2.addFeatureAttributes(FeatureAttribute.groupMessageMatch, "all");
 //        groupNetworkActivity2.addFeatureAttributes(FeatureAttribute.requestedPhase, "1");
+        final PresenterFeature trainingDisplayNetworkActivity3 = new PresenterFeature(FeatureType.groupNetworkActivity, null);
+        trainingDisplayNetworkActivity3.addFeatureAttributes(FeatureAttribute.groupMessageMatch, "all");
+
         producerNetworkActivity0.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[0]);
         guesserNetworkActivity0.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[1]);
         producerNetworkActivity1.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[2]);
         guesserNetworkActivity1.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[3]);
         allNetworkActivity2.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[4]);
+        trainingDisplayNetworkActivity3.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[5]);
 
         producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         producerNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         guesserNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+        trainingDisplayNetworkActivity3.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
 
         producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
         producerNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
@@ -204,18 +212,32 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         guesserNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberLabel, null));
         guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberLabel, null));
         allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberLabel, null));
+        trainingDisplayNetworkActivity3.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberLabel, null));
 
         producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberCodeLabel, null));
         producerNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberCodeLabel, null));
         guesserNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberCodeLabel, null));
         guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberCodeLabel, null));
         allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberCodeLabel, null));
+        trainingDisplayNetworkActivity3.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberCodeLabel, null));
+
+        producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
+        
+        final PresenterFeature nextStimulusP = new PresenterFeature(FeatureType.nextStimulus, null);
+        producerNetworkActivity1.getPresenterFeatureList().add(nextStimulusP);
+        nextStimulusP.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+        nextStimulusP.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusProducerNetworkActivity1" + storedWizardScreenData.getScreenTitle());
+        final PresenterFeature nextStimulusG = new PresenterFeature(FeatureType.nextStimulus, null);
+        guesserNetworkActivity1.getPresenterFeatureList().add(nextStimulusG);
+        nextStimulusG.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+        nextStimulusG.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusGuesserNetworkActivity1" + storedWizardScreenData.getScreenTitle());
 
         producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
         producerNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(1)));
         guesserNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(2)));
         guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(3)));
         allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(4)));
+        trainingDisplayNetworkActivity3.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(5)));
 
 //        if (storedWizardScreenData.getStimulusFreeText()) {
 //            final PresenterFeature stimulusFreeTextFeature = new PresenterFeature(FeatureType.stimulusFreeText, storedWizardScreenData.getFreeTextValidationMessage());
@@ -251,6 +273,8 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
         final PresenterFeature nextStimulusFeature3 = addGroupMessageButton("nextStimulusFeature3", "Q");
         allNetworkActivity2.getPresenterFeatureList().add(nextStimulusFeature3);
+        final PresenterFeature nextStimulusFeature4 = addGroupMessageButton("nextStimulusFeatureTrainingDisplay", "Q");
+        trainingDisplayNetworkActivity3.getPresenterFeatureList().add(nextStimulusFeature4);
         // temporary testing features
         final PresenterFeature groupNetworkActivitySelf1 = addGroupMessageButton("groupNetworkActivitySelf1", "W");
         // end testing features
@@ -262,6 +286,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         groupNetwork.getPresenterFeatureList().add(guesserNetworkActivity0);
         groupNetwork.getPresenterFeatureList().add(guesserNetworkActivity1);
         groupNetwork.getPresenterFeatureList().add(allNetworkActivity2);
+        groupNetwork.getPresenterFeatureList().add(trainingDisplayNetworkActivity3);
 //        hasMoreStimulusFeature.getPresenterFeatureList().add(allNetworkActivity2);
 //        hasMoreStimulusFeature.getPresenterFeatureList().add(guesserNetworkActivity1);
 
