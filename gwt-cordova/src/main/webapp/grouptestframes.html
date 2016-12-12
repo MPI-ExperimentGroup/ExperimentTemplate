@@ -39,34 +39,38 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 }
                 for (frameIndex = 0; frameIndex < iframes.length; ++frameIndex) {
                     var iframeTimer = setTimeout(function (frameIndex) {
-                        iframes[frameIndex].src = "http://localhost:8080/multiparticipant?testuser=" + frameIndex + "&group=" + document.getElementById('groupName').value;
+                        iframes[frameIndex].src = "/multiparticipant?testuser=" + frameIndex + "&group=" + document.getElementById('groupName').value;
                     }, 1000 * frameIndex, frameIndex);
                 }
             }
             function findAndClick() {
-                document.getElementById("robot_messages").innerHTML = "robot activated at " + new Date().toLocaleTimeString();
-                var tagArray = ['input', 'textarea'];
-                var iframes = document.getElementsByTagName("iframe");
-                for (frameIndex = 0; frameIndex < iframes.length; ++frameIndex) {
-                    for (tagInxex in tagArray) {
-                        var textinput = iframes[frameIndex].contentWindow.document.getElementsByTagName(tagArray[tagInxex]);
-                        for (var inputIndex = 0; inputIndex < textinput.length; inputIndex++) {
-                            if (textinput[inputIndex].className === "metadataError") {
-                                if (textinput[inputIndex].value === "0") {
-                                    textinput[inputIndex].value = "qqq";
+                if (document.getElementById("pauseRobot").checked) {
+                    document.getElementById("robot_messages").innerHTML = "robot paused";
+                } else {
+                    document.getElementById("robot_messages").innerHTML = "robot activated at " + new Date().toLocaleTimeString();
+                    var tagArray = ['input', 'textarea'];
+                    var iframes = document.getElementsByTagName("iframe");
+                    for (frameIndex = 0; frameIndex < iframes.length; ++frameIndex) {
+                        for (tagInxex in tagArray) {
+                            var textinput = iframes[frameIndex].contentWindow.document.getElementsByTagName(tagArray[tagInxex]);
+                            for (var inputIndex = 0; inputIndex < textinput.length; inputIndex++) {
+                                if (textinput[inputIndex].className === "metadataError") {
+                                    if (textinput[inputIndex].value === "0") {
+                                        textinput[inputIndex].value = "qqq";
+                                    } else {
+                                        textinput[inputIndex].value = "0";
+                                    }
                                 } else {
-                                    textinput[inputIndex].value = "0";
+                                    textinput[inputIndex].value = "robot run " + new Date().toLocaleTimeString();
                                 }
-                            } else {
-                                textinput[inputIndex].value = "robot run " + new Date().toLocaleTimeString();
                             }
                         }
-                    }
-                    var buttons = iframes[frameIndex].contentWindow.document.getElementsByTagName('button');
-                    if (buttons.length > 0) {
-                        var randomIndex = Math.floor((Math.random() * buttons.length));
-                        if (buttons[randomIndex] !== 'undefined' && buttons[randomIndex] !== null) {
-                            buttons[randomIndex].click();
+                        var buttons = iframes[frameIndex].contentWindow.document.getElementsByTagName('button');
+                        if (buttons.length > 0) {
+                            var randomIndex = Math.floor((Math.random() * buttons.length));
+                            if (buttons[randomIndex] !== 'undefined' && buttons[randomIndex] !== null) {
+                                buttons[randomIndex].click();
+                            }
                         }
                     }
                 }
@@ -77,6 +81,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <div id="robot_messages"></div>
         <button type="button" onclick="robot();">start robot</button>
         <input type="text" id="groupName" class="form-control" placeholder="Type a group name...">  
+        Pause Robot: <input type="checkbox" id="pauseRobot" />
         <table>
             <tr><td><iframe height="500" width="500"></iframe></td><td><iframe height="500" width="500"></iframe></td><td><iframe height="500" width="500"></iframe></td><td><iframe height="500" width="500"></iframe></td></tr>
             <tr><td><iframe height="500" width="500"></iframe></td><td><iframe height="500" width="500"></iframe></td><td><iframe height="500" width="500"></iframe></td><td><iframe height="500" width="500"></iframe></td></tr>
