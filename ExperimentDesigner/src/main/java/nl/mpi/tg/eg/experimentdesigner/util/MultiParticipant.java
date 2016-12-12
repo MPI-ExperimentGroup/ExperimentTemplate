@@ -165,7 +165,6 @@ public class MultiParticipant {
         round2MultiParticipantScreen.setStimulusFreeText(true, "[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
 
 //        final WizardTextScreen endTextScreen = new WizardTextScreen("finish", "test complete", "restart");
-
         wizardData.addScreen(wizardAgreementScreen);
         wizardData.addScreen(wizardEditUserScreen);
         wizardData.addScreen(round0MultiParticipantScreen);
@@ -179,9 +178,9 @@ public class MultiParticipant {
         wizardEditUserScreen.setNextWizardScreen(round0MultiParticipantScreen);
         round0MultiParticipantScreen.setNextWizardScreen(round1MultiParticipantScreen);
         round1MultiParticipantScreen.setNextWizardScreen(round2MultiParticipantScreen);
-        round0MultiParticipantScreen.setBackWizardScreen(wizardEditUserScreen);
-        round1MultiParticipantScreen.setBackWizardScreen(round0MultiParticipantScreen);
-        round2MultiParticipantScreen.setBackWizardScreen(round1MultiParticipantScreen);
+        round0MultiParticipantScreen.setBackWizardScreen(wizardAgreementScreen);
+        round1MultiParticipantScreen.setBackWizardScreen(wizardAgreementScreen);
+        round2MultiParticipantScreen.setBackWizardScreen(wizardAgreementScreen);
 //        round2MultiParticipantScreen.setNextWizardScreen(endTextScreen);
         wizardAboutScreen.setBackWizardScreen(wizardAgreementScreen);
 
