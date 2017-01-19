@@ -24,7 +24,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     <body>
         <div th:fragment="metadatatable">
             Metadata fields can be used to collect data from the user via an input form, but they can also be prepopulated via the get parameters in the URL provided to the user. The get parameters should be in the form &lt;URL&gt;?&lt;Post Name&gt;=&lt;value&gt;[&amp;&lt;Post Name&gt;=&lt;value&gt;...].
-            <div class="presenter">
+            <div class="presenter" th:fragment="metadatashorttable">
                 <div class="table">
                     <div class="tr">
                         <span class="td"></span>
@@ -58,39 +58,39 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <span class="td"><input type="text" name="duplicatesControlledMessage" /></span>
                         <span class="td"><button type="button" name="addScreen" onclick="postScreen()">Add Metadata Field</button></span>                    
                     </form>
-                    <script th:inline="javascript">
-                                /*<![CDATA[*/
+                    <script th:inline="javascript" th:with="serverUpdatePath=${(wizardScreenId != null)? contextPath + '/wizard/' + wizardScreenId : contextPath + '/experiment/' + experiment.id}">
+                        /*<![CDATA[*/
 //                                $("[id^=updateRowButton]").hide();
-                                        function postChanges(rowId) {
-                                        $.post(/*[[${contextPath + '/experiment/' + experiment.id + '/metadata/update'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
-                                        $('#metadataErrorDiv').text("");
-                                                $('#updateRowForm' + rowId).html(data);
-                                                $('#updateRowButton' + rowId).hide();
-                                        }).fail(function(data) {
-                                        var jsonResponse = JSON.parse(data.responseText);
-                                                $('#metadataErrorDiv').text(jsonResponse.message);
-                                        });
-                                        };
-                                        function deleteRow(rowId) {
-                                        $.post(/*[[${contextPath + '/experiment/' + experiment.id + '/metadata/delete'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
-                                        $('#metadataErrorDiv').text("");
-                                                $('#updateRowForm' + rowId).remove();
-                                                $('#updateRowButton' + rowId).hide();
-                                        }).fail(function(data) {
-                                        var jsonResponse = JSON.parse(data.responseText);
-                                                $('#metadataErrorDiv').text(jsonResponse.message);
-                                        });
-                                        };
-                                        function postScreen() {
-                                        $.post(/*[[${contextPath + '/experiment/' + experiment.id + '/metadata/add'}]]*/, $("#addMetadataForm").serialize()).done(function(data) {
-                                        $('#metadataErrorDiv').text("");
-                                                $('#metadataErrorDiv').before(data);
-                                        }).fail(function(data) {
-                                        var jsonResponse = JSON.parse(data.responseText);
-                                                $('#metadataErrorDiv').text(jsonResponse.message);
-                                        });
-                                        }
-                                /*]]>*/
+                        function postChanges(rowId) {
+                        $.post(/*[[${serverUpdatePath + '/metadata/update'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
+                        $('#metadataErrorDiv').text("");
+                        $('#updateRowForm' + rowId).html(data);
+                        $('#updateRowButton' + rowId).hide();
+                        }).fail(function(data) {
+                        var jsonResponse = JSON.parse(data.responseText);
+                        $('#metadataErrorDiv').text(jsonResponse.message);
+                        });
+                        };
+                        function deleteRow(rowId) {
+                        $.post(/*[[${serverUpdatePath + '/metadata/delete'}]]*/, $('#updateRowForm' + rowId).serialize()).done(function(data) {
+                        $('#metadataErrorDiv').text("");
+                        $('#updateRowForm' + rowId).remove();
+                        $('#updateRowButton' + rowId).hide();
+                        }).fail(function(data) {
+                        var jsonResponse = JSON.parse(data.responseText);
+                        $('#metadataErrorDiv').text(jsonResponse.message);
+                        });
+                        };
+                        function postScreen() {
+                        $.post(/*[[${serverUpdatePath + '/metadata/add'}]]*/, $("#addMetadataForm").serialize()).done(function(data) {
+                        $('#metadataErrorDiv').text("");
+                        $('#metadataErrorDiv').before(data);
+                        }).fail(function(data) {
+                        var jsonResponse = JSON.parse(data.responseText);
+                        $('#metadataErrorDiv').text(jsonResponse.message);
+                        });
+                        }
+                        /*]]>*/
                     </script>
                 </div>
             </div>
