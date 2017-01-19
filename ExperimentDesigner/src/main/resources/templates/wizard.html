@@ -108,17 +108,16 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                                         <td>Screen Title</td>
                                                         <td>Menu Label</td>
                                                         <td>Screen Tag</td>
-                                                        <td>Next Button Label</td>
                                                     </tr>
                                                     <tr>
                                                         <td><input name="screenTitle" th:value="${wizardScreen.screenTitle}" /></td>
                                                         <td><input name="menuLabel" th:value="${wizardScreen.menuLabel}" /></td>
                                                         <td><input name="screenTag" th:value="${wizardScreen.screenTag}" /></td>
-                                                        <td><input name="nextButton" th:value="${wizardScreen.nextButton}" /></td>
                                                     </tr>
                                                 </table>
                                             </div>
                                             <br/>
+                                            <div class="featuresrow featurescell" th:if="${!wizardScreen.getMetadataFields().isEmpty()}" th:include="metadata :: metadatashorttable(updatedMetadata=${wizardScreen.getMetadataFields()}, wizardScreenId=${wizardScreen.getId()})"></div>
                                             <div class="">
                                                 <!--                                                private final WizardScreenEnum wizardScreenType;
                                                 
@@ -180,6 +179,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                                 <span th:replace="wizard :: wizardCheckBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='Centre Screen', wizardFragmentValue=${wizardScreen.centreScreen}, wizardFragmentName='centreScreen')"></span>
                                                 <div th:each="screenText : ${wizardScreen.getScreenText()}">      
                                                     <span th:replace="wizard :: wizardTextArea(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel=${wizardScreen.getWizardScreenType().wizardScreen.getScreenTextInfo(screenTextStat.index)}, wizardFragmentValue=${screenText.getScreenText()}, wizardFragmentName=${'screenText'+ screenText.getId()})"></span>
+                                                </div>    
+                                                <div th:each="nextButtonLabel : ${wizardScreen.nextButton}">      
+                                                    <span th:replace="wizard :: wizardTextBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel=${wizardScreen.getWizardScreenType().wizardScreen.getNextButtonInfo(nextButtonLabelStat.index)}, wizardFragmentValue=${nextButtonLabel}, wizardFragmentName=${'nextButtonLabel'+nextButtonLabelStat.index})"></span>
                                                 </div>                                                
                                                 <!--<span th:replace="wizard :: wizardTextArea(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='Screen Text', wizardFragmentValue=${wizardScreen.screenText2}, wizardFragmentName='screenText2')"></span>-->
                                                 <span th:replace="wizard :: wizardStimuliEditor(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='stimuliList', wizardFragmentValue=${wizardScreen.stimuli}, wizardFragmentName='stimuliList')"></span>
@@ -195,11 +197,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                                 <span th:replace="wizard :: wizardCheckBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='showProgress', wizardFragmentValue=${wizardScreen.showProgress}, wizardFragmentName='showProgress')"></span>                                                
                                                 <span th:replace="wizard :: wizardTextBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='backgroundImage', wizardFragmentValue=${wizardScreen.backgroundImage}, wizardFragmentName='backgroundImage')"></span>
                                                 <span th:replace="wizard :: wizardCheckBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='sdCardStimuli', wizardFragmentValue=${wizardScreen.sdCardStimuli}, wizardFragmentName='sdCardStimuli')"></span>
-                                                <span th:replace="wizard :: wizardTextBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='eraseUsersDataButtonlabel', wizardFragmentValue=${wizardScreen.eraseUsersDataButtonlabel}, wizardFragmentName='eraseUsersDataButtonlabel')"></span>
-                                                <span th:replace="wizard :: wizardTextArea(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='could_not_contact_the_server_please_check', wizardFragmentValue=${wizardScreen.could_not_contact_the_server_please_check}, wizardFragmentName='could_not_contact_the_server_please_check')"></span>
-                                                <span th:replace="wizard :: wizardTextBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='retryButtonLabel', wizardFragmentValue=${wizardScreen.retryButtonLabel}, wizardFragmentName='retryButtonLabel')"></span>
                                                 <span th:replace="wizard :: wizardCheckBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='generateCompletionCode', wizardFragmentValue=${wizardScreen.generateCompletionCode}, wizardFragmentName='generateCompletionCode')"></span>    
-                                                <span th:replace="wizard :: wizardCheckBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='allowUserRestart', wizardFragmentValue=${wizardScreen.allowUserRestart}, wizardFragmentName='allowUserRestart')"></span>
+                                                <span th:replace="wizard :: wizardCheckBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='Allow User Restart', wizardFragmentValue=${wizardScreen.allowUserRestart}, wizardFragmentName='allowUserRestart')"></span>
+                                                <span th:replace="wizard :: wizardTextBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='Group Members', wizardFragmentValue=${wizardScreen.groupMembers}, wizardFragmentName='groupMembers')"></span>
+                                                <span th:replace="wizard :: wizardTextBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='Group Communication Channels', wizardFragmentValue=${wizardScreen.groupCommunicationChannels}, wizardFragmentName='groupCommunicationChannels')"></span>
+                                                <span th:replace="wizard :: wizardTextArray(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='Group Phases Roles', wizardFragmentValue=${wizardScreen.groupPhasesRoles}, wizardFragmentName='groupPhasesRoles')"></span>
                                             </div>
                                             <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen'}">WizardAboutScreen</div>
                                             <div th:if="${wizardScreen.class.name == 'nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen'}">WizardAgreementScreen</div>
