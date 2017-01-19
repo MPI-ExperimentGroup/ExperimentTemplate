@@ -38,13 +38,13 @@ public class WizardSubmitDataScreen extends AbstractWizardScreen {
 
     public WizardSubmitDataScreen(final String screenTitle, final String could_not_contact_the_server_please_check, final String retryButtonLabel) {
         super(WizardScreenEnum.WizardSubmitDataScreen, screenTitle, screenTitle, screenTitle);
-        this.wizardScreenData.setCould_not_contact_the_server_please_check(could_not_contact_the_server_please_check);
+        this.wizardScreenData.setScreenText(0, could_not_contact_the_server_please_check);
         this.wizardScreenData.setNextButton(new String[]{retryButtonLabel});
     }
 
     @Override
     public String getScreenTextInfo(int index) {
-        throw new UnsupportedOperationException("Not supported.");
+        return new String[]{"Network Error Message"}[index];
     }
 
     @Override
@@ -66,7 +66,7 @@ public class WizardSubmitDataScreen extends AbstractWizardScreen {
 
         final PresenterFeature onErrorFeature = new PresenterFeature(FeatureType.onError, null);
         sendAllDataFeature.getPresenterFeatureList().add(onErrorFeature);
-        onErrorFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, storedWizardScreenData.getCould_not_contact_the_server_please_check()));
+        onErrorFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, storedWizardScreenData.getScreenText(0)));
         final PresenterFeature retryFeature = new PresenterFeature(FeatureType.targetButton, storedWizardScreenData.getNextButton()[0]);
         onErrorFeature.getPresenterFeatureList().add(retryFeature);
         retryFeature.addFeatureAttributes(FeatureAttribute.target, storedWizardScreenData.getScreenTitle());

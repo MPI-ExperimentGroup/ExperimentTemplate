@@ -87,10 +87,7 @@ public class WizardScreenData implements Serializable {
     private String backgroundImage = null;
     private Boolean sdCardStimuli = null;
     private Boolean allowHotkeyButtons = null;
-    private String eraseUsersDataButtonlabel = null;
-    private String could_not_contact_the_server_please_check = null;
     private String on_Error_Text = null;
-    private String retryButtonLabel = null;
     @Size(max = 2000)
     private String helpText = null;
     private Boolean generateCompletionCode = null;
@@ -344,36 +341,12 @@ public class WizardScreenData implements Serializable {
         this.sdCardStimuli = sdCardStimuli;
     }
 
-    public String getEraseUsersDataButtonlabel() {
-        return eraseUsersDataButtonlabel;
-    }
-
-    public void setEraseUsersDataButtonlabel(String eraseUsersDataButtonlabel) {
-        this.eraseUsersDataButtonlabel = eraseUsersDataButtonlabel;
-    }
-
-    public String getCould_not_contact_the_server_please_check() {
-        return could_not_contact_the_server_please_check;
-    }
-
-    public void setCould_not_contact_the_server_please_check(String could_not_contact_the_server_please_check) {
-        this.could_not_contact_the_server_please_check = could_not_contact_the_server_please_check;
-    }
-
     public String getOn_Error_Text() {
         return on_Error_Text;
     }
 
     public void setOn_Error_Text(String on_Error_Text) {
         this.on_Error_Text = on_Error_Text;
-    }
-
-    public String getRetryButtonLabel() {
-        return retryButtonLabel;
-    }
-
-    public void setRetryButtonLabel(String retryButtonLabel) {
-        this.retryButtonLabel = retryButtonLabel;
     }
 
     public Boolean getGenerateCompletionCode() {

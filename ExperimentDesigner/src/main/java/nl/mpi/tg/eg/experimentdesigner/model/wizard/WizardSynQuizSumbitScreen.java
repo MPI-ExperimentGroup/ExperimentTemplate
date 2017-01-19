@@ -38,14 +38,14 @@ public class WizardSynQuizSumbitScreen extends AbstractWizardScreen {
         wizardScreenData.setScreenTitle(screenName);
         wizardScreenData.setScreenTag(screenName);
         wizardScreenData.setMenuLabel(submit_my_results);
-        wizardScreenData.setCould_not_contact_the_server_please_check(error_submitting_data);
+        wizardScreenData.setScreenText(0, error_submitting_data);
         wizardScreenData.setBackWizardScreenData(backPresenter);
         wizardScreenData.setNextWizardScreenData(nextPresenter);
     }
 
     @Override
     public String getScreenTextInfo(int index) {
-        throw new UnsupportedOperationException("Not supported.");
+        return new String[]{"Network Error Message"}[index];
     }
 
     @Override
@@ -61,7 +61,7 @@ public class WizardSynQuizSumbitScreen extends AbstractWizardScreen {
         //        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
         final PresenterFeature showColourReport = new PresenterFeature(FeatureType.submitTestResults, null);
         final PresenterFeature aboveThreshold = new PresenterFeature(FeatureType.onError, null);
-        aboveThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, storedWizardScreenData.getCould_not_contact_the_server_please_check()));
+        aboveThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, storedWizardScreenData.getScreenText(0)));
 //        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
 //        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
         showColourReport.getPresenterFeatureList().add(aboveThreshold);

@@ -17,7 +17,6 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
-import java.util.Arrays;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
@@ -41,19 +40,18 @@ public class WizardCompletionScreen extends AbstractWizardScreen {
         wizardScreenData.setScreenText(1, completedText2);
         wizardScreenData.setAllowUserRestart(allowUserRestart);
         wizardScreenData.setGenerateCompletionCode(generateCompletionCode);
-        wizardScreenData.setEraseUsersDataButtonlabel(eraseUsersDataButtonlabel);
-        wizardScreenData.setCould_not_contact_the_server_please_check(could_not_contact_the_server_please_check);
-        wizardScreenData.setRetryButtonLabel(retryButtonLabel);
+        wizardScreenData.setScreenText(2, could_not_contact_the_server_please_check);
+        wizardScreenData.setNextButton(new String[]{retryButtonLabel, eraseUsersDataButtonlabel});
     }
 
     @Override
     public String getScreenTextInfo(int index) {
-        return new String[]{"completedText1", "completedText2"}[index];
+        return new String[]{"completedText1", "completedText2", "Network Error Message"}[index];
     }
 
     @Override
     public String getNextButtonInfo(int index) {
-        throw new UnsupportedOperationException("Not supported.");
+        return new String[]{"Retry Button Label", "Erase Users Data Button Label"}[index];
     }
 
     @Override
@@ -76,14 +74,14 @@ public class WizardCompletionScreen extends AbstractWizardScreen {
         }
         if (storedWizardScreenData.getAllowUserRestart()) {
             onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-            onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.eraseUsersDataButton, storedWizardScreenData.getEraseUsersDataButtonlabel()));
+            onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.eraseUsersDataButton, storedWizardScreenData.getNextButton()[1]));
         }
         final PresenterFeature onErrorFeature = new PresenterFeature(FeatureType.onError, null);
         sendAllDataFeature.getPresenterFeatureList().add(onErrorFeature);
 //        final String could_not_contact_the_server_please_check = "Could not contact the server, please check your internet connection and try again.";
-        onErrorFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, storedWizardScreenData.getCould_not_contact_the_server_please_check()));
+        onErrorFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, storedWizardScreenData.getScreenText(2)));
 //        final String retryButtonLabel = "Retry";
-        final PresenterFeature retryFeature = new PresenterFeature(FeatureType.targetButton, storedWizardScreenData.getRetryButtonLabel());
+        final PresenterFeature retryFeature = new PresenterFeature(FeatureType.targetButton, storedWizardScreenData.getNextButton()[0]);
         onErrorFeature.getPresenterFeatureList().add(retryFeature);
         retryFeature.addFeatureAttributes(FeatureAttribute.target, storedWizardScreenData.getScreenTag());
 
