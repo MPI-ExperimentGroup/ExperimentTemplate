@@ -38,6 +38,11 @@ public class WizardSelectUserScreen extends AbstractWizardScreen {
     }
 
     @Override
+    public String getScreenTextInfo(int index) {
+        return null;
+    }
+
+    @Override
     public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.metadata);
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);

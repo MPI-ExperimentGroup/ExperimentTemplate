@@ -38,6 +38,11 @@ public class WizardMenuScreen extends AbstractWizardScreen {
         super(WizardScreenEnum.WizardMenuScreen, screenTitle, menuLabel, screenTag);
     }
 
+    @Override
+    public String getScreenTextInfo(int index) {
+        return null;
+    }
+
     public void addTargetScreen(final AbstractWizardScreen targetScreen) {
         wizardScreenData.getMenuWizardScreenData().add(targetScreen.getWizardScreenData());
     }

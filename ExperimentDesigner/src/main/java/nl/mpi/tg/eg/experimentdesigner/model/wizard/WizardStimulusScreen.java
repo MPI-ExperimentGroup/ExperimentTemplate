@@ -42,6 +42,11 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
         wizardScreenData.setStimulusImageCapture(Boolean.FALSE);
     }
 
+    @Override
+    public String getScreenTextInfo(int index) {
+        return new String[]{"end_of_stimuli"}[index];
+    }
+
     public WizardStimulusScreen(String screenName) {
         super(WizardScreenEnum.WizardStimulusScreen, screenName, screenName, screenName);
         wizardScreenData.setStimulusImageCapture(Boolean.FALSE);

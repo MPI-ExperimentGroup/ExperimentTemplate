@@ -44,6 +44,11 @@ public class WizardSynQuizSumbitScreen extends AbstractWizardScreen {
     }
 
     @Override
+    public String getScreenTextInfo(int index) {
+        return null;
+    }
+
+    @Override
     public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         final PresenterScreen presenterScreen = storedWizardScreenData.getPresenterScreen();
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);

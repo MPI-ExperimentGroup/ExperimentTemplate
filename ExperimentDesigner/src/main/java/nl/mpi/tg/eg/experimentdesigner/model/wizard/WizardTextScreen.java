@@ -42,6 +42,11 @@ public class WizardTextScreen extends AbstractWizardScreen {
     }
 
     @Override
+    public String getScreenTextInfo(int index) {
+        return "Screen Text";
+    }
+
+    @Override
     public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.text);
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);

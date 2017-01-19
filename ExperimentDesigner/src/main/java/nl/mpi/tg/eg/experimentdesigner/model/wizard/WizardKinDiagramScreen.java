@@ -55,6 +55,11 @@ public class WizardKinDiagramScreen extends AbstractWizardScreen {
     }
 
     @Override
+    public String getScreenTextInfo(int index) {
+        return null;
+    }
+
+    @Override
     public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.kindiagram);

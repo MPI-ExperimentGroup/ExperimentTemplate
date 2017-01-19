@@ -48,6 +48,11 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
         }
     }
 
+    @Override
+    public String getScreenTextInfo(int index) {
+        return new String[]{"dispalyText", "postText"}[index];
+    }
+
     public void setSendData(boolean sendData) {
         this.wizardScreenData.setSendData(sendData);
     }

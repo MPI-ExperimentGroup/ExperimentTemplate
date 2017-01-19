@@ -37,4 +37,12 @@ public class ScreenText implements Serializable {
 
     @Size(max = 6000)
     protected String screenText = null;
+
+    public long getId() {
+        return id;
+    }
+
+    public String getScreenText() {
+        return screenText;
+    }
 }

@@ -89,9 +89,14 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         setStimuliSet(screenTextArray);
     }
 
+    @Override
+    public String getScreenTextInfo(int index) {
+        return null;
+    }
 //    public void setStimuliPath(String stimuliPath) {
 //        this.stimuliPath = stimuliPath;
 //    }
+
     public final void setStimuliSet(String[] stimuliSet) {
         if (this.wizardScreenData.getStimuli() == null) {
             this.wizardScreenData.setStimuli(new ArrayList<>());

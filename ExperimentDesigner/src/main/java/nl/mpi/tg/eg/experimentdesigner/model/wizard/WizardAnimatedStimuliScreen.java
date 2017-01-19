@@ -73,6 +73,11 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
     private static final String BASE_FILE_REGEX = "\\.[a-zA-Z34]+$";
 
     @Override
+    public String getScreenTextInfo(int index) {
+        return null;
+    }
+
+    @Override
     public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         experiment.appendUniqueStimuli(storedWizardScreenData.getStimuli());
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);

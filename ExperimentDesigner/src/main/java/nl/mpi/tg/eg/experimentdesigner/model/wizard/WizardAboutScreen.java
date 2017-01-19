@@ -36,6 +36,11 @@ public class WizardAboutScreen extends AbstractWizardScreen {
         this.showDebug = showDebug;
     }
 
+    @Override
+    public String getScreenTextInfo(int index) {
+        return null;
+    }
+
     static WizardScreenEnum WizardScreenEnumFromDebugType(boolean showDebug) {
         if (showDebug) {
             return WizardScreenEnum.WizardDebugAboutScreen;

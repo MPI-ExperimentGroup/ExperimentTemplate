@@ -156,6 +156,10 @@ public class WizardScreenData implements Serializable {
         this.menuWizardScreenData = menuWizardScreenData;
     }
 
+    public List<ScreenText> getScreenText() {
+        return screenText;
+    }
+
     public String getScreenText(int index) {
         return (screenText != null && screenText.size() > index) ? screenText.get(index).screenText : null;
     }

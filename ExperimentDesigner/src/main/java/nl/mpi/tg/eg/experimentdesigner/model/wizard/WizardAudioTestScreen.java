@@ -41,9 +41,14 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
         this.wizardScreenData.setScreenMediaPath(audioPath);
     }
 
+    @Override
+    public String getScreenTextInfo(int index) {
+        return "Audio Test Instructions";
+    }
 //    public String getAudioPath() {
 //        return this.wizardScreenData
 //    }
+
     public void setAudioPath(String audioPath) {
         this.wizardScreenData.setScreenMediaPath(audioPath);
     }

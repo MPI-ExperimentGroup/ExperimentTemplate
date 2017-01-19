@@ -47,6 +47,11 @@ public class WizardCompletionScreen extends AbstractWizardScreen {
     }
 
     @Override
+    public String getScreenTextInfo(int index) {
+        return new String[]{"completedText1", "completedText2"}[index];
+    }
+
+    @Override
     public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.transmission);

@@ -69,6 +69,16 @@ public class WizardSynQuizIntroductionScreen extends AbstractWizardScreen {
     }
 
     @Override
+    public String getScreenTextInfo(int index) {
+        return new String[]{"we_are_studying_the_genetic_basis_of_syna",
+            "how_our_study_works",
+            "staticstudy_diagramsvg",
+            "the_synaesthesia_tests_take_about_20_minu",
+            "for_more_information_about_synaesthesia_p",
+            "this_project_is_organised_and_funded_by_t"}[index];
+    }
+
+    @Override
     public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.text);
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);

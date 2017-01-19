@@ -45,6 +45,10 @@ public class WizardWelcomeScreen extends AbstractWizardScreen {
 //        wizardScreenData.getMenuWizardScreenData().add(0, programWizardScreen.getWizardScreenData());
 //        wizardScreenData.getMenuWizardScreenData().add(1, instructionsScreen.getWizardScreenData());
 //    }
+    @Override
+    public String getScreenTextInfo(int index) {
+        return null;
+    }
 
     @Override
     public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
