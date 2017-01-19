@@ -311,7 +311,7 @@ public class ManipulatedContours {
                 "Fini",
                 "Impossible de contacter le serveur, vérifiez votre connexion Internet s'il vous plaît.", "Réessayer");
         wizardData.addScreen(completionScreen);
-        final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("Over", false);
+        final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("about", false);
         wizardAboutScreen.setBackWizardScreen(wizardEditUserScreen);
         wizardData.addScreen(wizardAboutScreen);
 
