@@ -47,7 +47,12 @@ public class WizardWelcomeScreen extends AbstractWizardScreen {
 //    }
     @Override
     public String getScreenTextInfo(int index) {
-        return null;
+        throw new UnsupportedOperationException("Not supported.");
+    }
+
+    @Override
+    public String getNextButtonInfo(int index) {
+        return new String[]{"Go Directly To Program Button Label", "Instructions Button Label"}[index];
     }
 
     @Override

@@ -48,6 +48,11 @@ public class WizardExistingUserCheckScreen extends AbstractWizardScreen {
     }
 
     @Override
+    public String getNextButtonInfo(int index) {
+        return new String[]{"New Interview Button Label","Resume Interview Button Label"}[index];
+    }
+
+    @Override
     public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.metadata);

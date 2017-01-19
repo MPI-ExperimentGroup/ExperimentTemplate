@@ -54,7 +54,12 @@ public class WizardAudioRecorderMetadataScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenTextInfo(int index) {
-        return null;
+        throw new UnsupportedOperationException("Not supported.");
+    }
+
+    @Override
+    public String getNextButtonInfo(int index) {
+        return new String[]{"Next Button Label"}[index];
     }
 
     @Override

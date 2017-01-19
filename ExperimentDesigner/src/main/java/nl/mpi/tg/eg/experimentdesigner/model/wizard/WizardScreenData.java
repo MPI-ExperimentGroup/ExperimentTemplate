@@ -31,6 +31,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
+import javax.validation.constraints.Size;
 import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.StimuliSubAction;
@@ -90,6 +91,7 @@ public class WizardScreenData implements Serializable {
     private String could_not_contact_the_server_please_check = null;
     private String on_Error_Text = null;
     private String retryButtonLabel = null;
+    @Size(max = 2000)
     private String helpText = null;
     private Boolean generateCompletionCode = null;
     private Boolean allowUserRestart = null;

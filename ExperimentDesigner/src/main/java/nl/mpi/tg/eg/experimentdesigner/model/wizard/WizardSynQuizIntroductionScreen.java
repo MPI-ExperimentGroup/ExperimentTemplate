@@ -79,6 +79,11 @@ public class WizardSynQuizIntroductionScreen extends AbstractWizardScreen {
     }
 
     @Override
+    public String getNextButtonInfo(int index) {
+        return new String[]{"Participate Button Label"}[index];
+    }
+
+    @Override
     public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.text);
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);

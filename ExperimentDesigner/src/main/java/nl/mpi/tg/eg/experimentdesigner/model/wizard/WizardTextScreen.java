@@ -43,7 +43,12 @@ public class WizardTextScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenTextInfo(int index) {
-        return "Screen Text";
+        return new String[]{"Screen Text"}[index];
+    }
+
+    @Override
+    public String getNextButtonInfo(int index) {
+        return new String[]{"Next Button Label"}[index];
     }
 
     @Override

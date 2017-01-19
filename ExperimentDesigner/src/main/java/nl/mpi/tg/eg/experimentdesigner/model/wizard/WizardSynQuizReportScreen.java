@@ -42,7 +42,12 @@ public class WizardSynQuizReportScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenTextInfo(int index) {
-        return null;
+        throw new UnsupportedOperationException("Not supported.");
+    }
+
+    @Override
+    public String getNextButtonInfo(int index) {
+        throw new UnsupportedOperationException("Not supported.");
     }
 
     @Override

@@ -46,7 +46,12 @@ public class WizardSynQuizStimulusScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenTextInfo(int index) {
-        return null;
+        throw new UnsupportedOperationException("Not supported.");
+    }
+
+    @Override
+    public String getNextButtonInfo(int index) {
+        return new String[]{"Go To Test Button Label"}[index];
     }
 
     @Override

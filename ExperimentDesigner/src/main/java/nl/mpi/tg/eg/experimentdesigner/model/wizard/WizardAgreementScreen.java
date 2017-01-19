@@ -43,7 +43,12 @@ public class WizardAgreementScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenTextInfo(int index) {
-        return "Agreement Text";
+        return new String[]{"Agreement Text"}[index];
+    }
+
+    @Override
+    public String getNextButtonInfo(int index) {
+        return new String[]{"Agreement Button Label"}[index];
     }
 
     @Override

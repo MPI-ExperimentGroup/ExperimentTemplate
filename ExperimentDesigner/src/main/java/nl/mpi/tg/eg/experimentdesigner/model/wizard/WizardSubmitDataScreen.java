@@ -44,7 +44,12 @@ public class WizardSubmitDataScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenTextInfo(int index) {
-        return null;
+        throw new UnsupportedOperationException("Not supported.");
+    }
+
+    @Override
+    public String getNextButtonInfo(int index) {
+        return new String[]{"Retry Button Label"}[index];
     }
 
     @Override
