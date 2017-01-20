@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experimentdesigner.dao;
 
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -26,4 +27,8 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface WizardRepository extends CrudRepository<WizardData, Long> {
 
+    @Query("select distinct appName from WizardData order by appName asc")
+    Iterable<String> findDistinctAppName();
+
+    WizardData findByAppName(String appName);
 }
