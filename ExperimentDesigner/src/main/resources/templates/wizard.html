@@ -23,6 +23,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Frinex Experiment Wizard</title>
+        <link rel="stylesheet" type="text/css" href="/ExperimentDesigner/designer.css"/>
     </head>
     <body>
         <div th:fragment="wizard">
@@ -452,9 +453,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </div>
             </span>
             <span th:fragment="wizardTextBox(wizardScreenId, wizardFragmentLabel, wizardFragmentValue, wizardFragmentName)">
-                <div class="featuresrow featurescell" th:if="${wizardFragmentValue != null}">
-                    <span th:text="${wizardFragmentLabel}">wizardTextBox</span>
-                    <input th:value="${wizardFragmentValue}" th:name="${wizardFragmentName}" th:onchange="${'$(updateFeatureButton' + wizardScreenId + ').show();'}" />
+                <div class="featuresrow featurescell wizardrow" th:if="${wizardFragmentValue != null}">
+                    <span class="wizardcell" th:text="${wizardFragmentLabel}">wizardTextBox</span>
+                    <input th:value="${wizardFragmentValue}" class="wizardgrowcell" th:name="${wizardFragmentName}" th:onchange="${'$(updateFeatureButton' + wizardScreenId + ').show();'}" />
                     <br/>
                 </div>
             </span>

@@ -323,3 +323,13 @@ textarea.wizardTextbox {
     padding: 0px;
 }
 
+.wizardrow{
+    display: flex;
+}
+.wizardcell{
+    flex-grow: 0;
+    margin-right: 20px;
+}
+.wizardgrowcell{
+    flex-grow: 15;
+}
