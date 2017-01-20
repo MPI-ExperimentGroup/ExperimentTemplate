@@ -26,7 +26,55 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <link rel="stylesheet" type="text/css" href="/ExperimentDesigner/designer.css"/>
     </head>
     <body>
-        <div th:fragment="wizard">
+        <div th:fragment="wizardlisting">
+            <table id="wizardlisting" class="presenter">
+                <thead>
+                    <tr>
+                        <th>Experiment Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="clickablerow" th:each="wizardData : ${wizardList}" th:onclick="'javascript:window.location=\'wizard/edit/' + ${wizardData.getId()} + '\';'">
+                        <td th:text="${wizardData.getAppName()}"></td>
+                        <td th:text="${wizardData.getWizardScreens().size()}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:fragment="wizardstart">
+            <script th:inline="javascript">
+                /*<![CDATA[*/
+                function validateForm() {
+                    if ($("#experimentName").val() === "") {
+                        $("#errorMessage").html("experiment name cannot be blank");
+                        return false;
+                    }
+                    if ($.inArray($("#experimentName").val(), /*[[${existingWizardList}]]*/) > -1) {
+                        $("#errorMessage").html("experiment name must be unique");
+                        return false;
+                    }
+                }
+                /*]]>*/
+            </script>
+            <div class="presenter">
+                <form action="#" th:action="${contextPath + '/wizard/create'}" onsubmit="return validateForm()" method="post">
+                    <div class="featurescell wizardrow">
+                        <span class="wizardcell">Experiment Name</span><input class="wizardgrowcell" type="text" name="experimentName" id="experimentName" />
+                        &nbsp;<div id="errorMessage" class="errorDiv"></div>
+                    </div>
+                    <div class="featurescell wizardrow">
+                        <span class="wizardcell">Template</span>
+                        <select class="wizardcell" name="templateName" id="templateName" >
+                            <option th:each="templateName : ${templateList}" th:text="${templateName}" th:value="${templateName}"></option>
+                        </select>
+                    </div>
+                    <div class="featurescell wizardrow">
+                        <button type="submit" name="saveExperiment">Start Wizard</button>                
+                    </div>
+                </form>
+            </div>  
+        </div>
+        <div th:fragment="wizardedit">
             <form action="#" th:action="${contextPath + '/experiments/wizard/create'}" method="post">
                 <table class="presenter">
                     <tr><td>Experiment Name</td><td><input type="text" th:field="${wizardData.appName}" /></td></tr>
@@ -392,7 +440,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         var xhRequest = new XMLHttpRequest();
                         var contextPath = /*[[${contextPath}]]*/ 'contextPath';
                         xhRequest.open("post", contextPath + "/wizard/" + wizardScreenId + "/stimulus/" + fileToUpload.name + "/" + fileToUpload.type + "/upload", true);
-
                         var progressDivBar = $("<div class='progressDivBar'>&nbsp;</div>");
                         var progressDivLabel = $("<div class='progressDivLabel'>" + fileToUpload.name + "</div>");
                         var progressDivOuter = $("<div class='progressDivOuter'></div>");
@@ -426,7 +473,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         xhRequest.setRequestHeader("X-File-Name", fileToUpload.name);
                         xhRequest.setRequestHeader("X-File-Size", fileToUpload.size);
                         xhRequest.setRequestHeader("X-File-Type", fileToUpload.type);
-
                         var formData = new FormData();
                         formData.append('stimulusFile', fileToUpload);
                         xhRequest.send(formData);
