@@ -22,10 +22,12 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreenData;
 
 /**
@@ -44,7 +46,8 @@ public class WizardData {
 
     private int textFontSize = 17;
 
-    @OneToMany(targetEntity = WizardScreenData.class, cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OrderBy("displayOrder ASC")
     private final List<WizardScreenData> wizardScreenData = new ArrayList<>();
 
     public WizardData() {
@@ -52,6 +55,10 @@ public class WizardData {
 
     public String getAppName() {
         return appName;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public void setAppName(String appName) {
