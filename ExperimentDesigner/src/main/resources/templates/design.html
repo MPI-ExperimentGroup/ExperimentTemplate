@@ -32,7 +32,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <div id="header"><h1>Frinex Experiment Designer</h1></div>
         <table id="menu" class="menu">
             <tr>
-                <td><a th:attr="class=${detailType eq 'wizard' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiments/wizard'">Experiment Wizard</a></td>
+                <td><a th:attr="class=${detailType eq 'wizard' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/wizard'">Experiment Wizard</a></td>
                 <td><a th:attr="class=${detailType eq 'experiments' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiments'">Experiment List</a></td>                
                 <td><a th:attr="class=${detailType eq 'translations' ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiments/translations'">Translations</a></td>
                 <td><a th:href="${contextPath} + '/edituser'">User Profile</a></td>
@@ -42,10 +42,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <table>
             <tr th:if="${experiment} ne null"><td></td><td><div id="pageTitle" th:text="${experiment.appNameDisplay}"></div></td></tr>
             <tr><td id="sideMenu">
-                    <table class="experimentmenu menu" th:if="${wizardData} ne null">            
-                        <tr th:each="templateName : ${templateList}">
-                            <td><a th:attr="class=${wizardData.appName eq templateName ? 'sel' : 'unsel'}" th:href="${contextPath} + '/experiments/wizard/' + ${templateName}" th:text="${templateName}"></a></td>
-                        </tr>
+                    <table class="experimentmenu menu" th:if="${detailType eq 'wizard'}">            
+                        <tr><td><a th:attr="class=${(wizardList ne null) ? 'sel' : 'unsel'}" th:href="${contextPath} + '/wizard'">List Existing</a></td></tr>
+                        <tr><td><a th:attr="class=${templateList ne null ? 'sel' : 'unsel'}" th:href="${contextPath} + '/wizard/start'">Create From Template</a></td></tr>
+                        <!--<tr><td><a th:attr="class=${wizardData ne null ? 'sel' : 'unsel'}" th:href="${contextPath} + '/wizard/edit/' + ${templateName}">Edit Existing</a></td></tr>-->
                     </table>
                     <table class="experimentmenu menu" th:if="${detailType eq 'experiments'}">            
                         <tr>
@@ -70,7 +70,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </td><td><table id="main">
                         <tr>
                             <td id="editarea">
-                                <table th:if="${detailType} eq 'wizard'" th:include="wizard :: wizard"></table>
+                                <table th:if="${detailType} eq 'wizard' and ${wizardList} ne null" th:include="wizard :: wizardlisting"></table>
+                                <table th:if="${detailType} eq 'wizard' and ${wizardData} ne null" th:include="wizard :: wizardedit"></table>
+                                <table th:if="${detailType} eq 'wizard' and ${templateList} ne null" th:include="wizard :: wizardstart"></table>
                                 <table th:if="${detailType} eq 'translations'" th:include="featuretexts :: translations"></table>
                                 <table th:if="${detailType} eq 'experiments'" th:include="experiments :: experimentlisting"></table>
                                 <div th:if="${detailType} eq 'configuration'" th:include="experiments :: editexperiment"></div>
