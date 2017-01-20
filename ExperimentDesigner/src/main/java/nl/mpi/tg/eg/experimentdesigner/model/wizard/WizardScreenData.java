@@ -50,14 +50,14 @@ public class WizardScreenData implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
+    private long displayOrder; //@ todo: set and provide a method for the user to change displayOrder
     @Enumerated(EnumType.STRING)
     private WizardScreenEnum wizardScreenType = null;
-    @OneToOne(targetEntity = WizardScreenData.class, cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private WizardScreenData backWizardScreenData = null;
-    @OneToOne(targetEntity = WizardScreenData.class, cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private WizardScreenData nextWizardScreenData = null;
-    @OneToMany(targetEntity = WizardScreenData.class, cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<WizardScreenData> menuWizardScreenData = new ArrayList<>();
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<ScreenText> screenText = null;
