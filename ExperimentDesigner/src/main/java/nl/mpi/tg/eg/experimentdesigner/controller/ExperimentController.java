@@ -51,6 +51,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @since Nov 4, 2015 1:59:50 PM (creation date)
@@ -98,13 +99,44 @@ public class ExperimentController {
         return "design";
     }
 
-    @RequestMapping("/experiments/wizard")
-    public String showWizard(Model model, @ModelAttribute WizardData wizardData, HttpServletRequest request) {
-        return showWizard(model, wizardData, request, null);
+    @RequestMapping("/wizard")
+    public String listWizard(Model model, HttpServletRequest request) {
+        model.addAttribute("contextPath", request.getContextPath());
+        model.addAttribute("detailType", "wizard");
+        model.addAttribute("wizardList", wizardRepository.findAll());
+        return "design";
     }
 
-    @RequestMapping("/experiments/wizard/{templateName}")
-    public String showWizard(Model model, @ModelAttribute WizardData wizardData, HttpServletRequest request, @PathVariable String templateName) {
+    @RequestMapping("/wizard/start")
+    public String startWizard(Model model, HttpServletRequest request) {
+        model.addAttribute("contextPath", request.getContextPath());
+        model.addAttribute("detailType", "wizard");
+        model.addAttribute("templateList", new String[]{
+            "MultiParticipant",
+            "Sentveri_exp3",
+            "Dobes Annotator",
+            "All Options",
+            "Vanuatu FieldKit",
+            "Shawi FieldKit",
+            "AntwoordRaden",
+            "Leeservaring",
+            "SynQuiz2",
+            "Online Emotions",
+            "HRPretest02",
+            "HRPretest",
+            "TransmissionChain",
+            "Zinnen afmaken",
+            "Kinship Example",
+            "RosselFieldKit",
+            "WellspringsSamoan",
+            "Zinnen Beoordelen",
+            "ManipulatedContours"});
+        model.addAttribute("existingWizardList", wizardRepository.findDistinctAppName());
+        return "design";
+    }
+
+    @RequestMapping("/wizard/create")
+    public String showWizard(Model model, @ModelAttribute WizardData wizardData, HttpServletRequest request, @RequestParam String templateName, @RequestParam String experimentName) {
 //        Experiment createdExperiment = DefaultExperiments.getDefault();
 //        experimentRepository.save(createdExperiment);
         if (templateName != null) {
@@ -167,30 +199,19 @@ public class ExperimentController {
                     break;
             }
         }
+        wizardData.setAppName(experimentName);
         wizardRepository.save(wizardData);
+//        model.addAttribute("contextPath", request.getContextPath());
+//        model.addAttribute("detailType", "wizard");
+//        model.addAttribute("wizardData", wizardData);
+        return "redirect:/wizard/edit/" + wizardData.getId();
+    }
+
+    @RequestMapping("/wizard/edit/{wizardData}")
+    public String editWizard(Model model, HttpServletRequest request, @PathVariable WizardData wizardData) {
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", "wizard");
         model.addAttribute("wizardData", wizardData);
-        model.addAttribute("templateList", new String[]{
-            "Sentveri_exp3",
-            "Dobes Annotator",
-            "All Options",
-            "Vanuatu FieldKit",
-            "Shawi FieldKit",
-            "AntwoordRaden",
-            "Leeservaring",
-            "SynQuiz2",
-            "Online Emotions",
-            "HRPretest02",
-            "HRPretest",
-            "TransmissionChain",
-            "Zinnen afmaken",
-            "Kinship Example",
-            "RosselFieldKit",
-            "WellspringsSamoan",
-            "MultiParticipant",
-            "Zinnen Beoordelen",
-            "ManipulatedContours"});
         return "design";
     }
 
