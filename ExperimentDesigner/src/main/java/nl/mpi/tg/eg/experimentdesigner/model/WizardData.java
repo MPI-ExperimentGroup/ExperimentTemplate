@@ -28,6 +28,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreenData;
 
 /**
@@ -35,6 +37,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreenData;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Entity
+@XmlRootElement
 public class WizardData {
 
     @Id
@@ -48,6 +51,7 @@ public class WizardData {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @OrderBy("displayOrder ASC")
+    @XmlElement
     private final List<WizardScreenData> wizardScreenList = new ArrayList<>();
 
     public WizardData() {
