@@ -45,6 +45,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             final String textEntryPhaseRoles,
             final String textEntryPhaseText,
             final String textWaitPhaseRoles,
+            final boolean textWaitPhaseStimuluIncrement,
             final String textWaitPhaseText,
             final String gridWaitPhaseRoles,
             final String gridWaitPhaseText,
@@ -66,6 +67,8 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         this.wizardScreenData.setGroupMembers(groupMembers);
         this.wizardScreenData.setGroupCommunicationChannels(communicationChannels);
         this.wizardScreenData.setGroupPhasesRoles(new String[]{textEntryPhaseRoles, textWaitPhaseRoles, gridWaitPhaseRoles, responseGridPhaseRoles, mutualFeedbackPhaseRoles, trainingDisplayPhaseRoles});
+
+        this.wizardScreenData.setTaskIndex((textWaitPhaseStimuluIncrement) ? 1 : 0);
         this.wizardScreenData.setScreenText(0, textEntryPhaseText);
         this.wizardScreenData.setScreenText(1, gridWaitPhaseText);
         this.wizardScreenData.setScreenText(2, textWaitPhaseText);
@@ -77,6 +80,16 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //    public void setStimuliPath(String stimuliPath) {
 //        this.stimuliPath = stimuliPath;
 //    }
+    @Override
+    public String getScreenTextInfo(int index) {
+        return new String[]{"Text Entry Phase Text", "Grid Wait Phase Text", "Text Wait Phase Text", "Response Grid Phase Text", "Mutual Feedback Phase Text", "Training Display Phase Text"}[index];
+    }
+
+    @Override
+    public String getNextButtonInfo(int index) {
+        throw new UnsupportedOperationException("Not supported.");
+    }
+
     public final void setStimuliSet(String[] stimuliSet) {
         if (this.wizardScreenData.getStimuli() == null) {
             this.wizardScreenData.setStimuli(new ArrayList<>());
@@ -107,7 +120,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         this.wizardScreenData.setButtonLabelEventTag(buttonLabelEventTag);
     }
 
-    private PresenterFeature getScoreFeatures(final PresenterFeature aboveFeature, final PresenterFeature belowFeature) {
+    private PresenterFeature getScoreFeatures() {
         final PresenterFeature scoreButtonFeature = new PresenterFeature(FeatureType.actionButton, "correct");
         scoreButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, "correct button");
         scoreButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, "Z");
@@ -122,7 +135,6 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "below threshold"));
         scoreIncrement.getPresenterFeatureList().add(belowThreshold);
         scoreButtonFeature.getPresenterFeatureList().add(scoreIncrement);
-
         aboveThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
         aboveThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
         aboveThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
@@ -138,6 +150,8 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
         belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupScoreLabel, null));
         belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+        final PresenterFeature aboveFeature = addGroupMessageButton("correctNetworkActivityAboveThreshold", "Z");
+        final PresenterFeature belowFeature = addGroupMessageButton("correctNetworkActivityBelowThreshold", "Z");
         aboveThreshold.getPresenterFeatureList().add(aboveFeature);
         belowThreshold.getPresenterFeatureList().add(belowFeature);
         return scoreButtonFeature;
@@ -222,7 +236,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         trainingDisplayNetworkActivity3.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberCodeLabel, null));
 
         producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
-        
+
         final PresenterFeature nextStimulusP = new PresenterFeature(FeatureType.nextStimulus, null);
         producerNetworkActivity1.getPresenterFeatureList().add(nextStimulusP);
         nextStimulusP.addFeatureAttributes(FeatureAttribute.norepeat, "true");
@@ -232,6 +246,12 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         nextStimulusG.addFeatureAttributes(FeatureAttribute.norepeat, "true");
         nextStimulusG.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusGuesserNetworkActivity1" + storedWizardScreenData.getScreenTitle());
 
+        if (storedWizardScreenData.getTaskIndex() == 1) {
+            final PresenterFeature nextStimulusX = new PresenterFeature(FeatureType.nextStimulus, null);
+            guesserNetworkActivity0.getPresenterFeatureList().add(nextStimulusX);
+            nextStimulusX.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+            nextStimulusX.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusFeatureTrainingDisplay" + storedWizardScreenData.getScreenTitle());
+        }
         producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
         producerNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(1)));
         guesserNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(2)));
@@ -262,7 +282,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         final PresenterFeature resultsGrid = addStimuliGrid("resultsGrid", new PresenterFeature(FeatureType.htmlText, "response not relevant"), new PresenterFeature(FeatureType.htmlText, "response not relevant"));
         allNetworkActivity2.getPresenterFeatureList().add(resultsGrid);
 //        (true, false, new FeatureAttribute[]{, , }, true, false, FeatureType.Contitionals.hasCorrectIncorrect),
-        final PresenterFeature correctButton = getScoreFeatures(addGroupMessageButton("corectNetworkActivity2", "Z"), addGroupMessageButton("corectNetworkActivity2", "Z"));
+        final PresenterFeature correctButton = getScoreFeatures();
         final PresenterFeature incorrectButton = addGroupMessageButton("incorrect", "NUM_PERIOD");
 //        final PresenterFeature nextStimulusFeature2 = addGroupMessageButton("groupNetworkActivity2", "Q");
         guesserNetworkActivity1.getPresenterFeatureList().add(correctButton);
@@ -275,9 +295,6 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         allNetworkActivity2.getPresenterFeatureList().add(nextStimulusFeature3);
         final PresenterFeature nextStimulusFeature4 = addGroupMessageButton("nextStimulusFeatureTrainingDisplay", "Q");
         trainingDisplayNetworkActivity3.getPresenterFeatureList().add(nextStimulusFeature4);
-        // temporary testing features
-        final PresenterFeature groupNetworkActivitySelf1 = addGroupMessageButton("groupNetworkActivitySelf1", "W");
-        // end testing features
 
         hasMoreStimulusFeature.getPresenterFeatureList().add(groupNetwork);
         presenterFeatureList.add(loadStimuliFeature);
@@ -326,6 +343,10 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //            nextButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
 //            presenterFeature.getPresenterFeatureList().add(nextButtonFeature);
         }
+        // temporary testing features
+        final PresenterFeature groupNetworkActivitySelf1 = addGroupMessageButton("groupNetworkActivitySelf1", "W");
+        // end testing features
+
         presenterFeature.getPresenterFeatureList().add(groupNetworkActivitySelf1);
         loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
 
