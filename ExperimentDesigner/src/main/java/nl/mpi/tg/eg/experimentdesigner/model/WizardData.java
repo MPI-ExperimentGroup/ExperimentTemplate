@@ -48,7 +48,7 @@ public class WizardData {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @OrderBy("displayOrder ASC")
-    private final List<WizardScreenData> wizardScreenData = new ArrayList<>();
+    private final List<WizardScreenData> wizardScreenList = new ArrayList<>();
 
     public WizardData() {
     }
@@ -90,10 +90,12 @@ public class WizardData {
     }
 
     public void addScreen(final WizardScreen wizardScreen) {
-        wizardScreenData.add(wizardScreen.getWizardScreenData());
+        final WizardScreenData wizardScreenData = wizardScreen.getWizardScreenData();
+        wizardScreenData.setDisplayOrder(wizardScreenList.size());
+        wizardScreenList.add(wizardScreenData);
     }
 
     public List<WizardScreenData> getWizardScreens() {
-        return wizardScreenData;
+        return wizardScreenList;
     }
 }
