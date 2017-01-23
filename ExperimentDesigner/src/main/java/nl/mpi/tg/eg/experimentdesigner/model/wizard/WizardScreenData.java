@@ -123,6 +123,14 @@ public class WizardScreenData implements Serializable {
         this.id = id;
     }
 
+    public long getDisplayOrder() {
+        return displayOrder;
+    }
+
+    public void setDisplayOrder(long displayOrder) {
+        this.displayOrder = displayOrder;
+    }
+
     public WizardScreenEnum getWizardScreenType() {
         return wizardScreenType;
     }
