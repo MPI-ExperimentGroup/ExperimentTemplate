@@ -32,6 +32,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlTransient;
 import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.StimuliSubAction;
@@ -115,6 +118,7 @@ public class WizardScreenData implements Serializable {
         this.wizardScreenType = wizardScreenType;
     }
 
+    @XmlTransient
     public long getId() {
         return id;
     }
@@ -139,6 +143,7 @@ public class WizardScreenData implements Serializable {
         return presenterScreen;
     }
 
+    @XmlIDREF
     public WizardScreenData getBackWizardScreenData() {
         return backWizardScreenData;
     }
@@ -147,6 +152,7 @@ public class WizardScreenData implements Serializable {
         this.backWizardScreenData = backWizardScreenData;
     }
 
+    @XmlIDREF
     public WizardScreenData getNextWizardScreenData() {
         return nextWizardScreenData;
     }
@@ -155,6 +161,7 @@ public class WizardScreenData implements Serializable {
         this.nextWizardScreenData = nextWizardScreenData;
     }
 
+    @XmlIDREF
     public List<WizardScreenData> getMenuWizardScreenData() {
         return menuWizardScreenData;
     }
@@ -205,6 +212,7 @@ public class WizardScreenData implements Serializable {
         this.menuLabel = menuLabel;
     }
 
+    @XmlID
     public String getScreenTag() {
         return screenTag;
     }
