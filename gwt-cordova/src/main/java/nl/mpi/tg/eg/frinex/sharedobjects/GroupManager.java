@@ -35,6 +35,7 @@ public class GroupManager {
 
     private final HashMap<String, GroupMessage> allMembersList = new HashMap<>();
     private final HashMap<GroupMessage, String> allMemberCodes = new HashMap<>();
+    private final HashMap<GroupMessage, String> stimuliLists = new HashMap<>();
     private final HashMap<GroupMessage, String> groupUUIDs = new HashMap<>();
     private final HashMap<GroupMessage, List<String>> unAllocatedMemberCodes = new HashMap<>();
     private final HashMap<GroupMessage, HashSet<String>> groupsMembers = new HashMap();
@@ -76,6 +77,8 @@ public class GroupManager {
     public void addGroupMember(GroupMessage groupMessage) {
         if (allMemberCodes.get(groupMessage) == null) {
             allMemberCodes.put(groupMessage, groupMessage.getAllMemberCodes());
+            // keep the first stimuli list sent so that it can be set it into each subsequent message
+            stimuliLists.put(groupMessage, groupMessage.getStimuliList()); 
             unAllocatedMemberCodes.put(groupMessage, new ArrayList<>(Arrays.asList(groupMessage.getAllMemberCodes().split(","))));
             // keeping a UUID for each group could help disambiguate when the server is restarted and the same group name reused
             groupUUIDs.put(groupMessage, UUID.randomUUID().toString());
@@ -101,6 +104,7 @@ public class GroupManager {
         }
         groupMessage.setUserLabel(groupMessage.getMemberCode() + " : " + groupMessage.getGroupId());
         groupMessage.setGroupUUID(groupUUIDs.get(groupMessage));
+        groupMessage.setStimuliList(stimuliLists.get(groupMessage));
         allMembersList.put(groupMessage.getUserId(), groupMessage);
         groupsMembers.get(groupMessage).add(groupMessage.getUserId());
         //}

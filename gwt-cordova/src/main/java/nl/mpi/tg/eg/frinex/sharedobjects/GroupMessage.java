@@ -65,6 +65,7 @@ public class GroupMessage {
     private String responseStimulusOptions;
     private String responseStimulusId;
     private Integer stimulusIndex;
+    private String stimuliList;
     private Integer requestedPhase;
     private String messageString;
     private boolean groupReady;
@@ -180,6 +181,14 @@ public class GroupMessage {
 
     public void setStimulusIndex(Integer stimulusIndex) {
         this.stimulusIndex = stimulusIndex;
+    }
+
+    public String getStimuliList() {
+        return stimuliList;
+    }
+
+    public void setStimuliList(String stimuliList) {
+        this.stimuliList = stimuliList;
     }
 
     public Integer getRequestedPhase() {
