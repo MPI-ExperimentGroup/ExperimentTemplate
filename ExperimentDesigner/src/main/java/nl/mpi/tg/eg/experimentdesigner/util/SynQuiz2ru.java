@@ -39,14 +39,6 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardSynQuizSumbitScreen;
  */
 public class SynQuiz2ru {
 
-    // @todo: discuss the details of adding social media sharing and related informed consent check box
-    // checkbox = share this experiment or share my results in a pretty grapheme cloud
-    // <a href="https://www.facebook.com/sharer/sharer.php?u=www.mpi.nl">Share on Facebook</a>
-//    <a href="https://twitter.com/home?status=www.mpi.nl">Share on Twitter</a>
-//    <a href="https://plus.google.com/share?url=www.mpi.nl">Share on Google+</a>
-    // <a href="https://www.linkedin.com/shareArticle?mini=true&url=www.mpi.nl&title=www.mpi.nl&summary=www.mpi.nl&source=www.mpi.nl">Share on LinkedIn</a>
-    // <a href="https://pinterest.com/pin/create/button/?url=www.mpi.nl&media=www.mpi.nl&description=www.mpi.nl">Pin on Pinterest</a>
-    // @todo: graphime cloud with the highest scoring graphemes being larger and shown in the average colour for that grapheme: https://github.com/jasondavies/d3-cloud
     private final WizardController wizardController = new WizardController();
 
     public Experiment getExperiment() {
@@ -92,8 +84,6 @@ public class SynQuiz2ru {
                 "Finish this expriment and start from the begining",
                 "Completion",
                 "Could not contact the server, please check your internet connection and try again.", "Retry");
-//        final PresenterScreen registrationScreen = createRegistrationScreen("Registration", 2);
-//        presenterScreenList.add(registrationScreen);
 
         wizardEditUserScreen.setScreenText("Please read the " + formatLink("Participant Information Sheet", "static/synaesthesia_info_sheet_ENGLISH_webversion.pdf") + " carefully!");
         wizardEditUserScreen.setBackWizardScreen(introductionScreen);
@@ -106,13 +96,8 @@ public class SynQuiz2ru {
         wizardEditUserScreen.setScreenTitle("Participant");
         wizardEditUserScreen.setScreenTag("Participant");
         wizardEditUserScreen.setMenuLabel("Participant");
-//        wizardEditUserScreen.setScreenText(dispalyText);
-//        wizardEditUserScreen.setCustomFields(customFields);
-//        wizardEditUserScreen.setNextButton("Continue");
         wizardEditUserScreen.setSendData(true);
         wizardEditUserScreen.setNextButton("Continue");
-//        wizardEditUserScreen.setPostText(postText);
-//        wizardEditUserScreen.setAlternateButtonLabel(alternateButtonLabel);
         wizardEditUserScreen.setSendData(true);
         wizardEditUserScreen.setOn_Error_Text(COULD_NOT_CONTACT_THE_SERVER_PLEASE_CHECK);
 
@@ -124,13 +109,7 @@ public class SynQuiz2ru {
         sumbitScreen.setNextWizardScreen(completionScreen);
         completionScreen.setBackWizardScreen(menuScreen);
         completionScreen.setNextWizardScreen(introductionScreen);
-//        final PresenterScreen demographicsScreen1 = createDemographicsScreen1(experiment, "Demographics1", 4);
-//        presenterScreenList.add(demographicsScreen1);
-//wizardController.addEditUserScreen(experiment, introductionScreen, "Participant", "Participant", null, 3, wizardData, null, null, "Continue", null, null, null, true, "Could not contact the server, please check your internet connection and try again.", false);
-//        final WizardEditUserScreen demographicsScreen1 = new WizardEditUserScreen("Details", "Details", null, null, demographicsFields1, "Continue", null, null, null, true, "Could not contact the server, please check your internet connection and try again.");
 
-//        wizardEditUserScreen.setNextWizardScreen(demographicsScreen1);
-//        demographicsScreen1.setBackWizardScreen(wizardEditUserScreen);
         wizardData.addScreen(introductionScreen);
         wizardData.addScreen(wizardEditUserScreen);
         WizardEditUserScreen previousDemographicsScreen = wizardEditUserScreen;//demographicsScreen1.getPresenterScreen();
@@ -141,10 +120,6 @@ public class SynQuiz2ru {
             previousDemographicsScreen = demographicsScreen;
         }
 
-//        final PresenterScreen demographicsScreen2 = createDemographicsScreen2(experiment, "Demographics2", 4);
-//        presenterScreenList.add(demographicsScreen2);
-//        demographicsScreen1.setNextPresenter(demographicsScreen2);
-//        demographicsScreen2.setBackPresenter(demographicsScreen1);
         previousDemographicsScreen.setNextWizardScreen(menuScreen);
         final WizardEditUserScreen menuBackPresenter = previousDemographicsScreen;
         menuScreen.getWizardScreenData().getPresenterScreen().setBackPresenter(menuBackPresenter.getWizardScreenData().getPresenterScreen());
@@ -155,10 +130,6 @@ public class SynQuiz2ru {
         final String helpText = "<b>Instructions</b>\\n<p>Select the colour that you associate with the presented character or word \\n<ol>\\n<li>Select the hue by tapping on the colour bar on the right </li><li>Select the shade by tapping on the square on the left </li>\\n<li>When the colour of the preview rectangle matches your association, tap \"Submit\"</li>\\n<li>If you have no colour association tap \"No colour\"</li>\\n</ol>\\n</p>";
         final WizardSynQuizStimulusScreen weekdaysScreen = new WizardSynQuizStimulusScreen("Weekdays", "Weekdays", menuScreen.getWizardScreenData(), reportScreen.getWizardScreenData(), ok_go_to_test, helpText);
         wizardData.addScreen(weekdaysScreen);
-//        final PresenterScreen numbersScreen = createStimulusScreen("Numbers", menuScreen.getPresenterScreen(), reportScreen, 17);
-//        presenterScreenList.add(numbersScreen);
-//        final PresenterScreen lettersScreen = createStimulusScreen("Letters", menuScreen.getPresenterScreen(), reportScreen, 18);
-//        presenterScreenList.add(lettersScreen);
         final WizardSynQuizStimulusScreen lettersScreen = new WizardSynQuizStimulusScreen("LettersNumbers", "Letters and Numbers", menuScreen.getWizardScreenData(), reportScreen.getWizardScreenData(), ok_go_to_test, helpText);
         wizardData.addScreen(lettersScreen);
         final WizardSynQuizStimulusScreen monthsScreen = new WizardSynQuizStimulusScreen("Months", "Months", menuScreen.getWizardScreenData(), reportScreen.getWizardScreenData(), ok_go_to_test, helpText);
@@ -167,12 +138,7 @@ public class SynQuiz2ru {
         menuScreen.addTargetScreen(monthsScreen);
         menuScreen.getWizardScreenData().setScreenText(1, "The tests above will ask about the colours that you associate with Weekdays, Letters and Numbers, or Months. If you do not have colour associations with one of the options, you can skip that test. After each test you can view your results.<br/><br/>"
                 + "When you are finished taking the tests that apply to you, please click <b>Submit my results</b> below to finish the experiment.");
-//        
-//        menuScreen.addTargetScreen(weekdaysScreen);
-//        menuScreen.populatePresenterScreen(experiment, false, 15);
-//        completionScreen.populatePresenterScreen(experiment, false, 21);
-//        wizardEditUserScreen.populatePresenterScreen(experiment, false, 3);
-//        demographicsScreen1.populatePresenterScreen(experiment, false, 5);
+
         wizardData.addScreen(completionScreen);
         wizardData.addScreen(monthsScreen);
         wizardData.addScreen(sumbitScreen);
@@ -190,37 +156,6 @@ public class SynQuiz2ru {
         return "<a href=\"#\" onclick=\"window.open('" + linkUrl + "','_system'); return false;\">" + linkText + "</a>";
     }
 
-//    private PresenterScreen createRegistrationScreen(String screenName, long displayOrder) {
-//        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, null, screenName + "Screen", null, PresenterType.metadata, displayOrder);
-//        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
-//        presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
-////        presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, ));
-////        presenterFeatureList.add(new PresenterFeature(FeatureType.text, ""));
-////        presenterFeatureList.add(new PresenterFeature(FeatureType.text, ""));
-////        final PresenterFeature targetButtonFeature = new PresenterFeature(FeatureType.targetButton, "Participant Information Sheet");
-////        targetButtonFeature.addFeatureAttributes(target, "InformationScreen");
-////        presenterFeatureList.add(targetButtonFeature);
-////        insertMetadataInput("First Name", ".'{'3,'}'");
-////        insertMetadataInput("Last Name", ".'{'3,'}'");
-////        insertMetadataInput("Email address", "^[^@]+@[^@]+$");
-////        insertMetadataInput("\"I would like to be contacted about participating in other synaesthesia research studies\" (optional)", "true|false");
-////        insertMetadataInput("\"By checking this box I confirm that I have read and understood the Volunteer's Information Sheet and I agree to take part in this study\"", "true|false");
-//        presenterFeatureList.add(new PresenterFeature(FeatureType.allMetadataFields, null));
-//        final PresenterFeature submitButtonFeature = new PresenterFeature(FeatureType.targetButton, "Submit");
-//        submitButtonFeature.addFeatureAttributes(target, "DemographicsScreen");
-//        presenterFeatureList.add(submitButtonFeature);
-//        return presenterScreen;
-//    }
-// @todo: show complete on test that have been done like in SynQuiz1
-// @todo: add finish button on the test menu screen which submits all data and leads to a restart(erase) all
-//    private PresenterScreen createDemographicsScreen1(Experiment experiment, String screenName, long displayOrder) {
-//        final PresenterScreen presenterScreen = new PresenterScreen(screenName, screenName, null, screenName + "Screen", null, PresenterType.metadata, displayOrder);
-//        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
-//        
-//        final PresenterFeature targetButtonFeature = new PresenterFeature(FeatureType.saveMetadataButton, "Take the tests!");
-//        presenterFeatureList.add(targetButtonFeature);
-//        return presenterScreen;
-//    }
     enum DemographicScreenType {
         Details, Study, Colour, Smell, Sound, Spatial, Taste, Touch, Other
     }
@@ -234,18 +169,6 @@ public class SynQuiz2ru {
         wizardEditUserScreen.setSendData(true);
         wizardEditUserScreen.setNextButton("Continue");
         wizardEditUserScreen.setOn_Error_Text(COULD_NOT_CONTACT_THE_SERVER_PLEASE_CHECK);
-//        wizardEditUserScreen.setScreenTitle();
-//        final WizardEditUserScreen presenterScreen = new WizardEditUserScreen();
-//                "Tell us about your synaesthesia: " + screenName.name() + "(" + (screenName.ordinal() + 1) + "/" + DemographicScreenType.values().length + ")",
-//                screenName.name(),
-//                backPresenter,
-//                screenName.name(),
-//                null,
-//                PresenterType.metadata,
-//                displayOrder + screenName.ordinal());
-//        List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
-//        presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
-//        presenterFeatureList.add(new PresenterFeature(FeatureType.plainText, "Tell Us About Your Synaesthesia"));
         switch (screenName) {
             case Details:
                 wizardEditUserScreen.setScreenTitle(screenName.name());
@@ -405,18 +328,6 @@ public class SynQuiz2ru {
             case Other:
                 wizardEditUserScreen.insertMetadataField(new Metadata("AnyOtherTypes", "If you experience any other types, please explain below.", "['\\\\'S'\\\\'s]'{'0,'}'", "", false, null));
         }
-
-//        final PresenterFeature saveMetadataButton = new PresenterFeature(FeatureType.saveMetadataButton, "Continue");
-//        saveMetadataButton.addFeatureAttributes(FeatureAttribute.sendData, "true");
-//        saveMetadataButton.addFeatureAttributes(FeatureAttribute.networkErrorMessage, "Could not contact the server, please check your internet connection and try again.");
-//        final PresenterFeature onErrorFeature = new PresenterFeature(FeatureType.onError, null);
-//        saveMetadataButton.getPresenterFeatureList().add(onErrorFeature);
-//        final PresenterFeature onSuccessFeature = new PresenterFeature(FeatureType.onSuccess, null);
-//        final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
-//        onSuccessFeature.getPresenterFeatureList().add(autoNextPresenter);
-//        saveMetadataButton.getPresenterFeatureList().add(onSuccessFeature);
-//        presenterScreen.getPresenterFeatureList().add(saveMetadataButton);
-//        wizardEditUserScreen.populatePresenterScreen(experiment, false, displayOrder + screenName.ordinal());
         return wizardEditUserScreen;
     }
 
