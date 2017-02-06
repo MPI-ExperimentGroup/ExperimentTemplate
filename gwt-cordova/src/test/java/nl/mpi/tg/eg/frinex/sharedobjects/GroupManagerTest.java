@@ -29,6 +29,21 @@ public class GroupManagerTest {
     public GroupManagerTest() {
     }
 
+    private GroupMessage[] getGroupMembersArray() {
+        final GroupMessage groupMessage1 = new GroupMessage("groupId", "screenId", "1");
+        groupMessage1.setAllMemberCodes("A,B,C,D,E,F,G,H");
+        final GroupMessage groupMessage2 = new GroupMessage("groupId", "screenId", "2");
+        final GroupMessage groupMessage3 = new GroupMessage("groupId", "screenId", "3");
+        final GroupMessage groupMessage4 = new GroupMessage("groupId", "screenId", "4");
+        final GroupMessage groupMessage5 = new GroupMessage("groupId", "screenId", "5");
+        final GroupMessage groupMessage6 = new GroupMessage("groupId", "screenId", "6");
+        final GroupMessage groupMessage7 = new GroupMessage("groupId", "screenId", "7");
+        final GroupMessage groupMessage8 = new GroupMessage("groupId", "screenId", "8");
+        final GroupMessage groupMessage9 = new GroupMessage("groupIdOther", "screenId", "9");
+        groupMessage9.setAllMemberCodes("A,B,C,D,E,F");
+        return new GroupMessage[]{groupMessage1, groupMessage2, groupMessage3, groupMessage4, groupMessage5, groupMessage6, groupMessage7, groupMessage8, groupMessage9};
+    }
+
     /**
      * Test of isGroupMember method, of class GroupManager.
      */
@@ -50,47 +65,37 @@ public class GroupManagerTest {
     @Test
     public void testIsGroupReady() {
         System.out.println("isGroupReady");
-        GroupMessage groupMessage1 = new GroupMessage("groupId", "screenId", "1");
-        groupMessage1.setAllMemberCodes("A,B,C,D,E,F,G,H");
+        GroupMessage[] groupMembers = getGroupMembersArray();
         GroupManager instance = new GroupManager();
 
-        assertEquals(false, instance.isGroupReady(groupMessage1));
-        instance.isGroupMember(groupMessage1);
-        instance.addGroupMember(groupMessage1);
-        assertEquals(false, instance.isGroupReady(groupMessage1));
-        final GroupMessage groupMessage2 = new GroupMessage("groupId", "screenId", "2");
-        instance.isGroupMember(groupMessage2);
-        instance.addGroupMember(groupMessage2);
-        assertEquals(false, instance.isGroupReady(groupMessage1));
-        final GroupMessage groupMessage3 = new GroupMessage("groupId", "screenId", "3");
-        instance.isGroupMember(groupMessage3);
-        instance.addGroupMember(groupMessage3);
-        assertEquals(false, instance.isGroupReady(groupMessage1));
-        final GroupMessage groupMessage4 = new GroupMessage("groupId", "screenId", "4");
-        instance.isGroupMember(groupMessage4);
-        instance.addGroupMember(groupMessage4);
-        assertEquals(false, instance.isGroupReady(groupMessage1));
-        final GroupMessage groupMessage9 = new GroupMessage("groupIdOther", "screenId", "9");
-        groupMessage9.setAllMemberCodes("A,B,C,D,E,F");
-        instance.isGroupMember(groupMessage9);
-        instance.addGroupMember(groupMessage9);
-        assertEquals(false, instance.isGroupReady(groupMessage1));
-        final GroupMessage groupMessage5 = new GroupMessage("groupId", "screenId", "5");
-        instance.isGroupMember(groupMessage5);
-        instance.addGroupMember(groupMessage5);
-        assertEquals(false, instance.isGroupReady(groupMessage1));
-        final GroupMessage groupMessage6 = new GroupMessage("groupId", "screenId", "6");
-        instance.isGroupMember(groupMessage6);
-        instance.addGroupMember(groupMessage6);
-        assertEquals(false, instance.isGroupReady(groupMessage1));
-        final GroupMessage groupMessage7 = new GroupMessage("groupId", "screenId", "7");
-        instance.isGroupMember(groupMessage7);
-        instance.addGroupMember(groupMessage7);
-        assertEquals(false, instance.isGroupReady(groupMessage1));
-        final GroupMessage groupMessage8 = new GroupMessage("groupId", "screenId", "8");
-        instance.isGroupMember(groupMessage8);
-        instance.addGroupMember(groupMessage8);
-        assertEquals(true, instance.isGroupReady(groupMessage1));
+        assertEquals(false, instance.isGroupReady(groupMembers[0]));
+        instance.isGroupMember(groupMembers[0]);
+        instance.addGroupMember(groupMembers[0]);
+        assertEquals(false, instance.isGroupReady(groupMembers[0]));
+        instance.isGroupMember(groupMembers[1]);
+        instance.addGroupMember(groupMembers[1]);
+        assertEquals(false, instance.isGroupReady(groupMembers[0]));
+        instance.isGroupMember(groupMembers[2]);
+        instance.addGroupMember(groupMembers[2]);
+        assertEquals(false, instance.isGroupReady(groupMembers[0]));
+        instance.isGroupMember(groupMembers[3]);
+        instance.addGroupMember(groupMembers[3]);
+        assertEquals(false, instance.isGroupReady(groupMembers[0]));
+        instance.isGroupMember(groupMembers[8]);
+        instance.addGroupMember(groupMembers[8]);
+        assertEquals(false, instance.isGroupReady(groupMembers[0]));
+        instance.isGroupMember(groupMembers[4]);
+        instance.addGroupMember(groupMembers[4]);
+        assertEquals(false, instance.isGroupReady(groupMembers[0]));
+        instance.isGroupMember(groupMembers[5]);
+        instance.addGroupMember(groupMembers[5]);
+        assertEquals(false, instance.isGroupReady(groupMembers[0]));
+        instance.isGroupMember(groupMembers[6]);
+        instance.addGroupMember(groupMembers[6]);
+        assertEquals(false, instance.isGroupReady(groupMembers[0]));
+        instance.isGroupMember(groupMembers[7]);
+        instance.addGroupMember(groupMembers[7]);
+        assertEquals(true, instance.isGroupReady(groupMembers[0]));
     }
 
     /**
@@ -99,42 +104,39 @@ public class GroupManagerTest {
     @Test
     public void testUpdateChannelMessageIfOutOfDate() {
         System.out.println("updateChannelMessageIfOutOfDate");
-        GroupMessage incomingMessage = null;
-        GroupMessage storedMessage = null;
         GroupManager instance = new GroupManager();
-        GroupMessage expResult = null;
-        GroupMessage result = instance.updateChannelMessageIfOutOfDate(incomingMessage, storedMessage);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        final String groupCommunicationChannels = "A,B|C,D|E,F|G,H";
+        final String[] meberCodes = new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "X"};
+        final GroupMessage storedMessage = new GroupMessage("groupId", "screenId", "5");
+        storedMessage.setGroupCommunicationChannels(groupCommunicationChannels);
+        storedMessage.setMemberCode("E");
+        storedMessage.setRequestedPhase(12);
+        int requestPhase = 0;
+        for (GroupMessage groupMessage : getGroupMembersArray()) {
+            groupMessage.setGroupCommunicationChannels(groupCommunicationChannels);
+            groupMessage.setMemberCode(meberCodes[requestPhase]);
+            groupMessage.setRequestedPhase(0);
+            final GroupMessage updateChannelMessageIfOutOfDate = instance.updateChannelMessageIfOutOfDate(groupMessage, groupMessage);
+            assertEquals(0, updateChannelMessageIfOutOfDate.getRequestedPhase().intValue());
+        }
+        requestPhase = 0;
+        for (GroupMessage groupMessage : getGroupMembersArray()) {
+            groupMessage.setRequestedPhase(requestPhase + 3);
+            groupMessage.setGroupCommunicationChannels(groupCommunicationChannels);
+            groupMessage.setMemberCode(meberCodes[requestPhase]);
+            final GroupMessage updateChannelMessageIfOutOfDate = instance.updateChannelMessageIfOutOfDate(groupMessage, groupMessage);
+            assertEquals(requestPhase + 3, updateChannelMessageIfOutOfDate.getRequestedPhase().intValue());
+            requestPhase++;
+        }
+        requestPhase = 0;
+        for (GroupMessage groupMessage : getGroupMembersArray()) {
+            groupMessage.setRequestedPhase(requestPhase);
+            groupMessage.setGroupCommunicationChannels(groupCommunicationChannels);
+            groupMessage.setMemberCode(meberCodes[requestPhase]);
+            final GroupMessage updateChannelMessageIfOutOfDate = instance.updateChannelMessageIfOutOfDate(groupMessage, groupMessage);
+            final int[] expectedValues = new int[]{4, 4, 6, 6, 8, 8, 10, 10, 8};
+            assertEquals(expectedValues[requestPhase], updateChannelMessageIfOutOfDate.getRequestedPhase().intValue());
+            requestPhase++;
+        }
     }
-
-    /**
-     * Test of addGroupMember method, of class GroupManager.
-     */
-    @Test
-    public void testAddGroupMember() {
-        System.out.println("addGroupMember");
-        GroupMessage groupMessage = null;
-        GroupManager instance = new GroupManager();
-        instance.addGroupMember(groupMessage);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getGroupMember method, of class GroupManager.
-     */
-    @Test
-    public void testGetGroupMember() {
-        System.out.println("getGroupMember");
-        String memberId = "";
-        GroupManager instance = new GroupManager();
-        GroupMessage expResult = null;
-        GroupMessage result = instance.getGroupMember(memberId);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
 }

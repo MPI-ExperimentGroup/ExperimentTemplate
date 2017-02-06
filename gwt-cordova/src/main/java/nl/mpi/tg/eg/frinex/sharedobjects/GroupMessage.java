@@ -60,6 +60,7 @@ public class GroupMessage {
     private String screenId;
     private String userLabel;
     private String allMemberCodes;
+    private String groupCommunicationChannels;
     private String memberCode;
     private String stimulusId;
     private String responseStimulusOptions;
@@ -74,9 +75,10 @@ public class GroupMessage {
     public GroupMessage() {
     }
 
-    public GroupMessage(String groupId, String screenId) {
+    public GroupMessage(String groupId, String screenId, String userId) {
         this.groupId = groupId;
         this.screenId = screenId;
+        this.userId = userId;
     }
 
     public String getUserId() {
@@ -141,6 +143,14 @@ public class GroupMessage {
 
     public void setAllMemberCodes(String allMemberCodes) {
         this.allMemberCodes = allMemberCodes;
+    }
+
+    public String getGroupCommunicationChannels() {
+        return groupCommunicationChannels;
+    }
+
+    public void setGroupCommunicationChannels(String groupCommunicationChannels) {
+        this.groupCommunicationChannels = groupCommunicationChannels;
     }
 
     public String getMemberCode() {
