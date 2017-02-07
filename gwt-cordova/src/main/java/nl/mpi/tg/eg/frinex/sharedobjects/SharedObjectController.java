@@ -45,8 +45,30 @@ public class SharedObjectController {
 
     private synchronized GroupMessage updateGroupData(GroupMessage incomingMessage) {
         final GroupMessage storedMessage;
+        if (incomingMessage == null) {
+            System.out.println("incomingMessage == null");
+            return null;
+        }
+        System.out.println("incomingMessage: ");
+        System.out.println(incomingMessage.getAllMemberCodes());
+        System.out.println(incomingMessage.getGroupCommunicationChannels());
+        System.out.println(incomingMessage.getGroupId());
+        System.out.println(incomingMessage.getGroupUUID());
+        System.out.println(incomingMessage.getMemberCode());
+        System.out.println(incomingMessage.getRequestedPhase());
+        System.out.println(incomingMessage.getUserId());
         if (GROUP_MANAGER.isGroupMember(incomingMessage)) {
             storedMessage = GROUP_MANAGER.getGroupMember(incomingMessage.getUserId());
+
+            System.out.println("storedMessage: ");
+            System.out.println(storedMessage.getAllMemberCodes());
+            System.out.println(storedMessage.getGroupCommunicationChannels());
+            System.out.println(storedMessage.getGroupId());
+            System.out.println(storedMessage.getGroupUUID());
+            System.out.println(storedMessage.getMemberCode());
+            System.out.println(storedMessage.getRequestedPhase());
+            System.out.println(storedMessage.getUserId());
+
             // if the message is a reconnect request then send the last message for that chanel
             final GroupMessage latestGroupMessage = GROUP_MANAGER.updateChannelMessageIfOutOfDate(incomingMessage, storedMessage);
 
@@ -65,6 +87,7 @@ public class SharedObjectController {
             GROUP_MANAGER.addGroupMember(incomingMessage);
             storedMessage = incomingMessage;
         }
+        GROUP_MANAGER.setUsersLastMessage(storedMessage);
         storedMessage.setGroupReady(GROUP_MANAGER.isGroupReady(storedMessage));
         return storedMessage;
     }
