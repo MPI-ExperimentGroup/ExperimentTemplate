@@ -22,7 +22,6 @@
 
 var stompClient = null;
 var userId = Math.floor((1 + Math.random()) * 0x10000);
-
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
@@ -31,7 +30,25 @@ function setConnected(connected) {
     $("#animateTarget").html("");
     if (connected) {
         $("#conversation").show();
-        $("#groupTarget").append("<tr><td>userId</td><td>Label</td><td>Group</td><td>AllMemberCodes</td><td>MemberCode</td><td>requestedPhase</td><td>stimulusId</td><td>message</td><td>Ready</td></tr>");
+        $("#groupTarget").append("<tr>" +
+                "<td>userId</td>" +
+                "<td>Group</td>" +
+                "<td>groupUUID</td>" +
+                "<td>screenId</td>" +
+                "<td>Label</td>" +
+                "<td>Members</td>" +
+                "<td>Channels</td>" +
+                "<td>MemberCode</td>" +
+                "<td>Stimulus</td>" +
+                "<td>Options</td>" +
+                "<td>Response</td>" +
+                "<td>stimulusIndex</td>" +
+                "<td>stimuliList</td>" +
+                "<td>Phase</td>" +
+                "<td>message</td>" +
+                "<td>Ready</td>" +
+                "<td>eventMs</td>" +
+                "</tr>");
     } else {
         $("#conversation").hide();
     }
@@ -49,7 +66,6 @@ function connect() {
             $("#startBar").prop("disabled", true);
             var contentData = JSON.parse(greeting.body);
             showData(contentData);
-
             progressDivBar.css("width", contentData.width + "px");
 //            $("#send").hide();
         });
@@ -62,7 +78,25 @@ function connect() {
                 $("#groupTarget").append("<tr id=\"userId" + contentData.userId + "\"></tr>");
                 usersTableRow = $("#userId" + contentData.userId);
             }
-            var usersTableCells = "<td>" + contentData.userId + "</td><td>" + contentData.userLabel + "</td><td>" + contentData.groupId + "</td><td>" + contentData.allMemberCodes + "</td><td>" + contentData.memberCode + "</td><td>" + contentData.requestedPhase + "</td><td>" + contentData.stimulusId + "</td><td>" + contentData.messageString + "</td><td>" + contentData.groupReady + "</td>";
+            var usersTableCells =
+                    "<td>" + contentData.userId +
+                    "</td><td>" + contentData.groupId +
+                    "</td><td>" + contentData.groupUUID +
+                    "</td><td>" + contentData.screenId +
+                    "</td><td>" + contentData.userLabel +
+                    "</td><td>" + contentData.allMemberCodes +
+                    "</td><td>" + contentData.groupCommunicationChannels +
+                    "</td><td>" + contentData.memberCode +
+                    "</td><td>" + contentData.stimulusId +
+                    "</td><td>" + contentData.responseStimulusOptions +
+                    "</td><td>" + contentData.responseStimulusId +
+                    "</td><td>" + contentData.stimulusIndex +
+                    "</td><td>" + contentData.stimuliList +
+                    "</td><td>" + contentData.requestedPhase +
+                    "</td><td>" + contentData.messageString +
+                    "</td><td>" + contentData.groupReady +
+                    "</td><td>" + contentData.eventMs +
+                    "</td>";
             var messageButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup('" + contentData.userId + "','" + contentData.requestedPhase + "','" + contentData.screenId + "','" + contentData.userLabel + "','" + contentData.groupId + "','" + contentData.allMemberCodes + "','" + contentData.memberCode + "','" + contentData.stimulusId + "')\">message</button></td>";
             var addButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup(Math.floor((1 + Math.random()) * 0x10000),'" + contentData.requestedPhase + "','" + contentData.screenId + "',null,'" + contentData.groupId + "','" + contentData.allMemberCodes + "',null,null)\">add member</button></td>";
             usersTableRow.html(usersTableCells + messageButtonCell + addButtonCell);
@@ -85,7 +119,6 @@ function disconnect() {
     $("#groupTarget").append("<tr><td>Disconnected</td></tr>");
 }
 var stepCounter = 0;
-
 function startBar() {
     stompClient.send("/app/shared", {}, JSON.stringify({
         'text': '',
