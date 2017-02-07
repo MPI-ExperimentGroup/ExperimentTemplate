@@ -117,6 +117,7 @@ public class GroupManagerTest {
             groupMessage.setMemberCode(meberCodes[requestPhase]);
             groupMessage.setRequestedPhase(0);
             final GroupMessage updateChannelMessageIfOutOfDate = instance.updateChannelMessageIfOutOfDate(groupMessage, groupMessage);
+            instance.setUsersLastMessage(updateChannelMessageIfOutOfDate);
             assertEquals(0, updateChannelMessageIfOutOfDate.getRequestedPhase().intValue());
         }
         requestPhase = 0;
@@ -125,6 +126,7 @@ public class GroupManagerTest {
             groupMessage.setGroupCommunicationChannels(groupCommunicationChannels);
             groupMessage.setMemberCode(meberCodes[requestPhase]);
             final GroupMessage updateChannelMessageIfOutOfDate = instance.updateChannelMessageIfOutOfDate(groupMessage, groupMessage);
+            instance.setUsersLastMessage(updateChannelMessageIfOutOfDate);
             assertEquals(requestPhase + 3, updateChannelMessageIfOutOfDate.getRequestedPhase().intValue());
             requestPhase++;
         }
@@ -134,6 +136,7 @@ public class GroupManagerTest {
             groupMessage.setGroupCommunicationChannels(groupCommunicationChannels);
             groupMessage.setMemberCode(meberCodes[requestPhase]);
             final GroupMessage updateChannelMessageIfOutOfDate = instance.updateChannelMessageIfOutOfDate(groupMessage, groupMessage);
+            instance.setUsersLastMessage(updateChannelMessageIfOutOfDate);
             final int[] expectedValues = new int[]{4, 4, 6, 6, 8, 8, 10, 10, 8};
             assertEquals(expectedValues[requestPhase], updateChannelMessageIfOutOfDate.getRequestedPhase().intValue());
             requestPhase++;
