@@ -58,7 +58,11 @@ public class GroupParticipantServiceTest {
     @Test
     public void testAddGroupActivity() {
         System.out.println("addGroupActivity");
-        GroupParticipantService instance = new GroupParticipantService("userId", "screenId", "A,B,C,D,E,F,G,H", "A,B|C,D|E,F|G,H", new TimedStimulusListener() {
+        GroupParticipantService instance = new GroupParticipantService("userId", "screenId", "A,B,C,D,E,F,G,H", "A,B|C,D|E,F|G,H", "stimuliList", new TimedStimulusListener() {
+            @Override
+            public void postLoadTimerFired() {
+            }
+        }, new TimedStimulusListener() {
             @Override
             public void postLoadTimerFired() {
             }
@@ -76,7 +80,7 @@ public class GroupParticipantServiceTest {
         for (int phaseCounter = 0; phaseCounter < 10; phaseCounter++) {
             for (int memberIndex = 0; memberIndex < 8; memberIndex++) {
                 instance.clearLastFiredListner();
-                instance.handleGroupMessage("userId", "screenId", "userLabel", "groupId", "A,B,C,D,E,F,G,H", "A,B,C,D,E,F,G,H".split(",")[memberIndex], "stimulusId", "0", Integer.toString(phaseCounter), "messageString", Boolean.TRUE, "responseStimulusOptions", "responseStimulusId");
+                instance.handleGroupMessage("userId", "screenId", "userLabel", "groupId", "A,B,C,D,E,F,G,H", "A,B,C,D,E,F,G,H".split(",")[memberIndex], "stimulusId", "0", "stimuliList", Integer.toString(phaseCounter), "messageString", Boolean.TRUE, "responseStimulusOptions", "responseStimulusId");
             }
         }
         assertEquals("0-A[A,C,E,G:-:-:B,D,F,H:-:-]\n"
