@@ -21,10 +21,12 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -114,18 +116,21 @@ public class GroupManager {
             groupUUIDs.put(groupMessage, UUID.randomUUID().toString());
         }
         final List<String> availableMemberCodes = unAllocatedMemberCodes.get(groupMessage);
-        if (groupMessage.getMemberCode() != null
-                && !groupMessage.getMemberCode().isEmpty()
-                && availableMemberCodes.contains(groupMessage.getMemberCode())) {
-            // if the member code is provided and it is available then allocate it
-            availableMemberCodes.remove(groupMessage.getMemberCode());
-        } else if (!availableMemberCodes.isEmpty()) {
-            groupMessage.setMemberCode(availableMemberCodes.remove(0));
+        if (groupMessage.getStimuliList().equals(stimuliLists.get(groupMessage))) {
+            // if the message has the wrong stimuli list then do not add them yet (this will keep the group in a not ready state until everyone has the same stimili list)
+            if (groupMessage.getMemberCode() != null
+                    && !groupMessage.getMemberCode().isEmpty()
+                    && availableMemberCodes.contains(groupMessage.getMemberCode())) {
+                // if the member code is provided and it is available then allocate it
+                availableMemberCodes.remove(groupMessage.getMemberCode());
+            } else if (!availableMemberCodes.isEmpty()) {
+                groupMessage.setMemberCode(availableMemberCodes.remove(0));
+            }
+            groupMessage.setUserLabel(groupMessage.getMemberCode() + " : " + groupMessage.getGroupId());
+            groupMessage.setGroupUUID(groupUUIDs.get(groupMessage));
+            groupsMembers.get(groupMessage).add(groupMessage.getUserId());
         }
-        groupMessage.setUserLabel(groupMessage.getMemberCode() + " : " + groupMessage.getGroupId());
-        groupMessage.setGroupUUID(groupUUIDs.get(groupMessage));
         groupMessage.setStimuliList(stimuliLists.get(groupMessage));
-        groupsMembers.get(groupMessage).add(groupMessage.getUserId());
         System.out.println("groupMessage: ");
         System.out.println(groupMessage.getAllMemberCodes());
         System.out.println(groupMessage.getGroupCommunicationChannels());
@@ -134,6 +139,37 @@ public class GroupManager {
         System.out.println(groupMessage.getMemberCode());
         System.out.println(groupMessage.getRequestedPhase());
         System.out.println(groupMessage.getUserId());
+    }
+
+    public void updateResponderListForMessagePhase(GroupMessage storedMessage) {
+        final Set<String> respondingMemberCodes = new HashSet<>();
+        if (storedMessage.getMemberCode() != null) {
+            respondingMemberCodes.add(storedMessage.getMemberCode());
+        }
+        for (GroupMessage lastMessage : allMembersList.values()) {
+            if (lastMessage.getMemberCode() != null) {
+//          if the group matches
+                if (storedMessage.equals(lastMessage)) {
+                    // this is the same phase
+                    if (storedMessage.getRequestedPhase().equals(lastMessage.getRequestedPhase())) {
+                        respondingMemberCodes.add(lastMessage.getMemberCode());
+                    }
+                }
+            }
+        }
+        List sortedRespondingMemberCodes = new ArrayList(respondingMemberCodes);
+        Collections.sort(sortedRespondingMemberCodes);
+        String respondingMemberCodesString = String.join(",", sortedRespondingMemberCodes);
+        storedMessage.setActualRespondents(respondingMemberCodesString);
+        for (GroupMessage lastMessage : allMembersList.values()) {
+//          if the group matches
+            if (storedMessage.equals(lastMessage)) {
+                // this is the same phase
+                if (storedMessage.getRequestedPhase().equals(lastMessage.getRequestedPhase())) {
+                    lastMessage.setActualRespondents(respondingMemberCodesString);
+                }
+            }
+        }
     }
 
     public void setUsersLastMessage(GroupMessage storedMessage) {
