@@ -65,6 +65,8 @@ public class GroupMessage {
     private String stimulusId;
     private String responseStimulusOptions;
     private String responseStimulusId;
+    private String expectedRespondents;
+    private String actualRespondents;
     private Integer stimulusIndex;
     private String stimuliList;
     private Integer requestedPhase;
@@ -127,6 +129,22 @@ public class GroupMessage {
 
     public void setResponseStimulusId(String responseStimulusId) {
         this.responseStimulusId = responseStimulusId;
+    }
+
+    public String getExpectedRespondents() {
+        return expectedRespondents;
+    }
+
+    public void setExpectedRespondents(String expectedRespondents) {
+        this.expectedRespondents = expectedRespondents;
+    }
+
+    public String getActualRespondents() {
+        return actualRespondents;
+    }
+
+    public void setActualRespondents(String actualRespondents) {
+        this.actualRespondents = actualRespondents;
     }
 
     public String getUserLabel() {
