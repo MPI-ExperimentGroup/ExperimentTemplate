@@ -24,10 +24,10 @@
     </presenter>
     <presenter back="Agreement" displayOrder="3" menuLabel="Round 0" next="Round_1" type="stimulus" self="Round_0" title="Round 0">
         <centrePage/>
-        <loadStimulus eventTag="Round 0" randomise="false" repeatRandomWindow="0" maxStimuli="8" repeatCount="1">
+        <loadStimulus eventTag="Round 0" randomise="true" repeatRandomWindow="0" maxStimuli="8" repeatCount="1">
             <hasMoreStimulus>
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,B,C,D,E,F,G,H">
-                    <groupNetworkActivity groupMessageMatch="all" groupRole="A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-">
+                    <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-">
                         <clearPage/>
                         <scoreLabel/>
                         <groupChannelScoreLabel/>
@@ -42,7 +42,7 @@
                             <sendGroupMessageButton featureText="groupNetworkActivitySelf1" eventTag="groupNetworkActivitySelf1" incrementPhase="1" hotKey="W" norepeat="true"/>
                         </stimulusImage>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupMessageMatch="all" groupRole="-:A:-:B:-:C:-:D:-:E:-:F:-:G:-:H">
+                    <groupNetworkActivity groupRole="-:A:-:B:-:C:-:D:-:E:-:F:-:G:-:H">
                         <clearPage/>
                         <scoreLabel/>
                         <groupChannelScoreLabel/>
@@ -52,7 +52,7 @@
                         <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 0" norepeat="true"/>
                         <htmlText featureText="The producer waits for all other participants"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupMessageMatch="all" groupRole="B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-">
+                    <groupNetworkActivity groupRole="B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-">
                         <clearPage/>
                         <scoreLabel/>
                         <groupChannelScoreLabel/>
@@ -62,7 +62,7 @@
                         <nextStimulus eventTag="nextStimulusFeatureTrainingDisplayRound 0" norepeat="true"/>
                         <htmlText featureText="All other participants wait for the producer"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupMessageMatch="all" groupRole="">
+                    <groupNetworkActivity groupRole="">
                         <clearPage/>
                         <scoreLabel/>
                         <groupChannelScoreLabel/>
@@ -110,7 +110,7 @@
                         <sendGroupMessageButton featureText="incorrect" eventTag="incorrect" incrementPhase="1" hotKey="NUM_PERIOD" norepeat="true"/>
                         <submitGroupEvent/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupMessageMatch="all" groupRole="">
+                    <groupNetworkActivity groupRole="">
                         <clearPage/>
                         <scoreLabel/>
                         <groupChannelScoreLabel/>
@@ -129,7 +129,7 @@
                         </showStimulusGrid>
                         <sendGroupMessageButton featureText="nextStimulusFeature3" eventTag="nextStimulusFeature3" incrementPhase="1" hotKey="Q" norepeat="true"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupMessageMatch="all" groupRole="-:B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A">
+                    <groupNetworkActivity groupRole="-:B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A">
                         <clearPage/>
                         <groupMemberLabel/>
                         <groupMemberCodeLabel/>
@@ -149,10 +149,10 @@
     </presenter>
     <presenter back="Agreement" displayOrder="4" menuLabel="Round 1" next="Round_2" type="stimulus" self="Round_1" title="Round 1">
         <centrePage/>
-        <loadStimulus eventTag="Round 1" randomise="false" repeatRandomWindow="0" maxStimuli="8" repeatCount="1">
+        <loadStimulus eventTag="Round 1" randomise="true" repeatRandomWindow="0" maxStimuli="8" repeatCount="1">
             <hasMoreStimulus>
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,B|C,D|E,F|G,H">
-                    <groupNetworkActivity groupMessageMatch="all" groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
+                    <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
                         <clearPage/>
                         <scoreLabel/>
                         <groupChannelScoreLabel/>
@@ -167,7 +167,7 @@
                             <sendGroupMessageButton featureText="groupNetworkActivitySelf1" eventTag="groupNetworkActivitySelf1" incrementPhase="1" hotKey="W" norepeat="true"/>
                         </stimulusImage>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupMessageMatch="all" groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
+                    <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
                         <clearPage/>
                         <scoreLabel/>
                         <groupChannelScoreLabel/>
@@ -177,7 +177,7 @@
                         <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 1" norepeat="true"/>
                         <htmlText featureText="The producer waits for the guesser"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupMessageMatch="all" groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
+                    <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
                         <clearPage/>
                         <scoreLabel/>
                         <groupChannelScoreLabel/>
@@ -186,7 +186,7 @@
                         <groupMemberCodeLabel/>
                         <htmlText featureText="The guesser waits for the producer"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupMessageMatch="all" groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
+                    <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
                         <clearPage/>
                         <scoreLabel/>
                         <groupChannelScoreLabel/>
@@ -234,7 +234,7 @@
                         <sendGroupMessageButton featureText="incorrect" eventTag="incorrect" incrementPhase="1" hotKey="NUM_PERIOD" norepeat="true"/>
                         <submitGroupEvent/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupMessageMatch="all" groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
+                    <groupNetworkActivity groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
                         <clearPage/>
                         <scoreLabel/>
                         <groupChannelScoreLabel/>
@@ -253,7 +253,7 @@
                         </showStimulusGrid>
                         <sendGroupMessageButton featureText="nextStimulusFeature3" eventTag="nextStimulusFeature3" incrementPhase="1" hotKey="Q" norepeat="true"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupMessageMatch="all" groupRole="">
+                    <groupNetworkActivity groupRole="">
                         <clearPage/>
                         <groupMemberLabel/>
                         <groupMemberCodeLabel/>
@@ -273,10 +273,10 @@
     </presenter>
     <presenter back="Agreement" displayOrder="5" menuLabel="Round 2" type="stimulus" self="Round_2" title="Round 2">
         <centrePage/>
-        <loadStimulus eventTag="Round 2" randomise="false" repeatRandomWindow="0" maxStimuli="8" repeatCount="1">
+        <loadStimulus eventTag="Round 2" randomise="true" repeatRandomWindow="0" maxStimuli="8" repeatCount="1">
             <hasMoreStimulus>
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="B,C|D,E|F,G|H,A">
-                    <groupNetworkActivity groupMessageMatch="all" groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
+                    <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
                         <clearPage/>
                         <scoreLabel/>
                         <groupChannelScoreLabel/>
@@ -291,7 +291,7 @@
                             <sendGroupMessageButton featureText="groupNetworkActivitySelf1" eventTag="groupNetworkActivitySelf1" incrementPhase="1" hotKey="W" norepeat="true"/>
                         </stimulusImage>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupMessageMatch="all" groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
+                    <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
                         <clearPage/>
                         <scoreLabel/>
                         <groupChannelScoreLabel/>
@@ -301,7 +301,7 @@
                         <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 2" norepeat="true"/>
                         <htmlText featureText="The producer waits for the guesser"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupMessageMatch="all" groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
+                    <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
                         <clearPage/>
                         <scoreLabel/>
                         <groupChannelScoreLabel/>
@@ -310,7 +310,7 @@
                         <groupMemberCodeLabel/>
                         <htmlText featureText="The guesser waits for the producer"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupMessageMatch="all" groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
+                    <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
                         <clearPage/>
                         <scoreLabel/>
                         <groupChannelScoreLabel/>
@@ -358,7 +358,7 @@
                         <sendGroupMessageButton featureText="incorrect" eventTag="incorrect" incrementPhase="1" hotKey="NUM_PERIOD" norepeat="true"/>
                         <submitGroupEvent/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupMessageMatch="all" groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
+                    <groupNetworkActivity groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
                         <clearPage/>
                         <scoreLabel/>
                         <groupChannelScoreLabel/>
@@ -377,7 +377,7 @@
                         </showStimulusGrid>
                         <sendGroupMessageButton featureText="nextStimulusFeature3" eventTag="nextStimulusFeature3" incrementPhase="1" hotKey="Q" norepeat="true"/>
                     </groupNetworkActivity>
-                    <groupNetworkActivity groupMessageMatch="all" groupRole="">
+                    <groupNetworkActivity groupRole="">
                         <clearPage/>
                         <groupMemberLabel/>
                         <groupMemberCodeLabel/>
