@@ -42,6 +42,8 @@ function setConnected(connected) {
                 "<td>Stimulus</td>" +
                 "<td>Options</td>" +
                 "<td>Response</td>" +
+                "<td>ExpectedRespondents</td>" +
+                "<td>ActualRespondents</td>" +
                 "<td>stimulusIndex</td>" +
                 "<td>stimuliList</td>" +
                 "<td>Phase</td>" +
@@ -90,6 +92,8 @@ function connect() {
                     "</td><td>" + contentData.stimulusId +
                     "</td><td>" + contentData.responseStimulusOptions +
                     "</td><td>" + contentData.responseStimulusId +
+                    "</td><td>" + contentData.expectedRespondents +
+                    "</td><td>" + contentData.actualRespondents +
                     "</td><td>" + contentData.stimulusIndex +
                     "</td><td>" + contentData.stimuliList +
                     "</td><td>" + contentData.requestedPhase +
@@ -106,6 +110,38 @@ function connect() {
             usersTableRow.animate({outlineWidth: 0}, "slow");
 //            var groupMemberDiv = $("<div style='background: grey;' class='progressDivBar'>&nbsp;</div>");
 //            $("#groupTarget").append(groupMemberDiv);
+            $("#unittestdata").append(
+                    "instance.handleGroupMessage(\"" +
+                    contentData.userId + "\", \"" +
+                    contentData.screenId + "\", \"" +
+                    contentData.userLabel + "\", \"" +
+                    contentData.groupId + "\", \"" +
+                    contentData.allMemberCodes + "\", \"" +
+                    contentData.memberCode + "\", \"" +
+                    contentData.stimulusId + "\", \"" +
+                    contentData.stimulusIndex + "\", \"" +
+                    contentData.stimuliList + "\", \"" +
+                    contentData.requestedPhase + "\", \"" +
+                    contentData.messageString + "\", " +
+                    contentData.groupReady + ", \"" +
+                    contentData.responseStimulusId + "\", \"" +
+                    contentData.expectedRespondents + "\", \"" +
+                    contentData.actualRespondents + "\", \"" +
+                    contentData.groupUUID + "\");<br/>");
+            //String userId, 
+            //String screenId,
+            // String userLabel,
+            //  String groupId, 
+            //  String allMemberCodes,
+            //   String memberCode, 
+            //   String stimulusId, 
+            //   String stimulusIndex, 
+            //   String stimuliList, 
+            //   String requestedPhase,
+            //    String messageString,
+            //     Boolean groupReady, 
+            //     String responseStimulusId, 
+            //     String groupUUID
         });
     });
 }
