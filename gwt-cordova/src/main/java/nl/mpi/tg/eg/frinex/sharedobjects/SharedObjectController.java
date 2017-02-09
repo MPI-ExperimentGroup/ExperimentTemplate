@@ -56,6 +56,7 @@ public class SharedObjectController {
         System.out.println(incomingMessage.getGroupUUID());
         System.out.println(incomingMessage.getMemberCode());
         System.out.println(incomingMessage.getRequestedPhase());
+        System.out.println(incomingMessage.getExpectedRespondents());
         System.out.println(incomingMessage.getUserId());
         if (GROUP_MANAGER.isGroupMember(incomingMessage)) {
             storedMessage = GROUP_MANAGER.getGroupMember(incomingMessage.getUserId());
@@ -67,6 +68,7 @@ public class SharedObjectController {
             System.out.println(storedMessage.getGroupUUID());
             System.out.println(storedMessage.getMemberCode());
             System.out.println(storedMessage.getRequestedPhase());
+            System.out.println(storedMessage.getExpectedRespondents());
             System.out.println(storedMessage.getUserId());
 
             // if the message is a reconnect request then send the last message for that chanel
@@ -76,6 +78,7 @@ public class SharedObjectController {
             storedMessage.setScreenId(latestGroupMessage.getScreenId());
             storedMessage.setStimulusIndex(latestGroupMessage.getStimulusIndex());
             storedMessage.setRequestedPhase(latestGroupMessage.getRequestedPhase());
+            storedMessage.setExpectedRespondents(latestGroupMessage.getExpectedRespondents());
             storedMessage.setMessageString(latestGroupMessage.getMessageString());
             storedMessage.setAllMemberCodes(latestGroupMessage.getAllMemberCodes());
 //            storedMessage.setGroupUUID(latestGroupMessage.getGroupUUID());
@@ -87,6 +90,7 @@ public class SharedObjectController {
             GROUP_MANAGER.addGroupMember(incomingMessage);
             storedMessage = incomingMessage;
         }
+        GROUP_MANAGER.updateResponderListForMessagePhase(storedMessage);
         GROUP_MANAGER.setUsersLastMessage(storedMessage);
         storedMessage.setGroupReady(GROUP_MANAGER.isGroupReady(storedMessage));
         return storedMessage;
