@@ -201,7 +201,6 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService; 
                 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
                 import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
-                import nl.mpi.tg.eg.experiment.client.sharedobjects.GroupMessageMatch;
                         
                 // generated with config2java.xsl
                 public class </xsl:text>
@@ -572,7 +571,6 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@groupMembers) then concat('&quot;', @groupMembers, '&quot;, ') else ''" />
         <xsl:value-of select="if(@groupCommunicationChannels) then concat('&quot;', @groupCommunicationChannels, '&quot;, ') else ''" />
         <xsl:value-of select="if(@groupRole) then concat('&quot;', @groupRole, '&quot;, ') else ''" />
-        <xsl:value-of select="if(@groupMessageMatch) then concat('GroupMessageMatch.', @groupMessageMatch, ', ') else ''" />
         <xsl:text>new TimedStimulusListener() {
 
             @Override
