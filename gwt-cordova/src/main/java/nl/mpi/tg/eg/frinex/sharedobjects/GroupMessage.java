@@ -62,6 +62,7 @@ public class GroupMessage {
     private String allMemberCodes;
     private String groupCommunicationChannels;
     private String memberCode;
+    private String originMemberCode;
     private String stimulusId;
     private String responseStimulusOptions;
     private String responseStimulusId;
@@ -177,6 +178,14 @@ public class GroupMessage {
 
     public void setMemberCode(String memberCode) {
         this.memberCode = memberCode;
+    }
+
+    public String getOriginMemberCode() {
+        return originMemberCode;
+    }
+
+    public void setOriginMemberCode(String originMemberCode) {
+        this.originMemberCode = originMemberCode;
     }
 
     public String getStimulusId() {
