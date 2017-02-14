@@ -54,9 +54,9 @@ public class DataSubmissionService extends AbstractSubmissionService {
         this.experimentName = messages.appNameInternal();
     }
 
-    public String getCompletionCode() {
+    public String getCompletionCode(UserId userId) {
         // todo: this should be generated on the server rather than on the client
-        String completionCode = localStorage.getCompletionCode();
+        String completionCode = localStorage.getCompletionCode(userId);
         if (completionCode == null) {
             final Random random = new Random();
             final StringBuffer stringBuffer = new StringBuffer();
@@ -64,7 +64,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
                 stringBuffer.append(Integer.toHexString(random.nextInt(16)));
             }
             completionCode = stringBuffer.toString();
-            localStorage.saveCompletionCode(completionCode);
+            localStorage.saveCompletionCode(userId, completionCode);
         }
         return completionCode;
     }
