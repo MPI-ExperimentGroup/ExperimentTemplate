@@ -30,9 +30,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             function robot() {
                 var robotMessagesDiv = document.getElementById("robot_messages");
                 robotMessagesDiv.innerHTML = "robot started";
-                var robotTimer = setInterval(function () {
-                    findAndClick()
-                }, 1000);
                 var iframes = document.getElementsByTagName("iframe");
                 if (document.getElementById('groupName').value === "") {
                     document.getElementById('groupName').value = "robot group at " + new Date().toLocaleTimeString();
@@ -42,6 +39,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         iframes[frameIndex].src = "/multiparticipant?testuser=" + frameIndex + "&group=" + document.getElementById('groupName').value;
                     }, 1000 * frameIndex, frameIndex);
                 }
+                findAndClick();
             }
             function findAndClick() {
                 if (document.getElementById("pauseRobot").checked) {
@@ -74,13 +72,17 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         }
                     }
                 }
+                var robotTimer = setTimeout(function () {
+                    findAndClick();
+                }, document.getElementById('robotSpeed').value);
             }
         </script>
     </head>
     <body>
         <div id="robot_messages"></div>
         <button type="button" onclick="robot();">start robot</button>
-        <input type="text" id="groupName" class="form-control" placeholder="Type a group name...">  
+        <input type="text" id="groupName" placeholder="Type a group name...">  
+        <input type="number" id="robotSpeed" value="1000" max="10000" min="100">  
         Pause Robot: <input type="checkbox" id="pauseRobot" />
         <table>
             <tr><td><iframe height="500" width="500"></iframe></td><td><iframe height="500" width="500"></iframe></td><td><iframe height="500" width="500"></iframe></td><td><iframe height="500" width="500"></iframe></td></tr>
