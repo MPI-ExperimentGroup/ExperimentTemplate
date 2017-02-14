@@ -62,7 +62,7 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
     }
 
     public void generateCompletionCode() {
-        String completionCode = submissionService.getCompletionCode();
+        String completionCode = submissionService.getCompletionCode(userResults.getUserData().getUserId());
         // todo: consider changing this to something other than just a tag value
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "CompletionCode", completionCode, duration.elapsedMillis());
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "DataSubmissionComplete", "CompletionCode", completionCode, 0);
