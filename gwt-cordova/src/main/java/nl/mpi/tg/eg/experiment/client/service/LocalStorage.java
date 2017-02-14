@@ -110,7 +110,6 @@ public class LocalStorage {
 //        loadStorage();
 //        return getCleanStoredData(STOWED_DATA + userId.toString());
 //    }
-
     public void addStoredGameData(UserId userId, String serialisedGameData) {
         loadStorage();
         dataStore.setItem(GAME_DATA + userId.toString(), getCleanStoredData(GAME_DATA + userId.toString()) + serialisedGameData);
@@ -129,7 +128,6 @@ public class LocalStorage {
 //            dataStore.setItem(STOWED_DATA + userId.toString(), sentStoredData + "," + sendData);
 //        }
 //    }
-
     public String getStoredScreenData(UserId userId, String endpoint) {
         loadStorage();
         return getCleanStoredData(SCREEN_DATA + endpoint + "." + userId.toString());
@@ -230,15 +228,15 @@ public class LocalStorage {
         dataStore.setItem(LAST_USER_ID, userResults.getUserData().getUserId().toString());
     }
 
-    public void saveAppState(String appState) {
+    public void saveAppState(UserId userId, String appState) {
         loadStorage();
-        dataStore.setItem(APP_STATE, appState);
+        dataStore.setItem(APP_STATE + "." + userId.toString(), appState);
     }
 
-    public String getAppState() {
+    public String getAppState(UserId userId) {
         loadStorage();
         if (dataStore != null) {
-            final String appState = getCleanStoredData(APP_STATE);
+            final String appState = getCleanStoredData(APP_STATE + "." + userId.toString());
             if (!appState.isEmpty()) {
                 return appState;
             }
@@ -246,15 +244,15 @@ public class LocalStorage {
         return null;
     }
 
-    public void saveCompletionCode(String completionCode) {
+    public void saveCompletionCode(UserId userId, String completionCode) {
         loadStorage();
-        dataStore.setItem(COMPLETION_CODE, completionCode);
+        dataStore.setItem(COMPLETION_CODE + "." + userId.toString(), completionCode);
     }
 
-    public String getCompletionCode() {
+    public String getCompletionCode(UserId userId) {
         loadStorage();
         if (dataStore != null) {
-            final String completionCode = getCleanStoredData(COMPLETION_CODE);
+            final String completionCode = getCleanStoredData(COMPLETION_CODE + "." + userId.toString());
             if (!completionCode.isEmpty()) {
                 return completionCode;
             }
