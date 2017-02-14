@@ -44,53 +44,62 @@ public class SharedObjectController {
     }
 
     private synchronized GroupMessage updateGroupData(GroupMessage incomingMessage) {
-        final GroupMessage storedMessage;
+        GroupMessage storedMessage;
         if (incomingMessage == null) {
             System.out.println("incomingMessage == null");
             return null;
         }
+        final String incomingStimuliList = incomingMessage.getStimuliList();
         System.out.println("incomingMessage: ");
         System.out.println(incomingMessage.getAllMemberCodes());
         System.out.println(incomingMessage.getGroupCommunicationChannels());
         System.out.println(incomingMessage.getGroupId());
         System.out.println(incomingMessage.getGroupUUID());
         System.out.println(incomingMessage.getMemberCode());
+        System.out.println(incomingMessage.getOriginMemberCode());
         System.out.println(incomingMessage.getRequestedPhase());
+        System.out.println(incomingMessage.getActualRespondents());
         System.out.println(incomingMessage.getExpectedRespondents());
+        System.out.println(incomingStimuliList);
+        System.out.println(incomingMessage.getStimulusId());
+        System.out.println(incomingMessage.getStimulusIndex());
         System.out.println(incomingMessage.getUserId());
+        System.out.println(incomingMessage.getScreenId());
         if (GROUP_MANAGER.isGroupMember(incomingMessage)) {
             storedMessage = GROUP_MANAGER.getGroupMember(incomingMessage.getUserId());
 
-            System.out.println("storedMessage: ");
+            incomingMessage.setMemberCode(storedMessage.getMemberCode());
+            incomingMessage.setOriginMemberCode(storedMessage.getMemberCode());
+            incomingMessage.setUserLabel(storedMessage.getUserLabel());
+            incomingMessage.setGroupUUID(storedMessage.getGroupUUID());
+            incomingMessage.setStimuliList(storedMessage.getStimuliList());
+
+            System.out.println("updatedMessage: ");
             System.out.println(storedMessage.getAllMemberCodes());
             System.out.println(storedMessage.getGroupCommunicationChannels());
             System.out.println(storedMessage.getGroupId());
             System.out.println(storedMessage.getGroupUUID());
             System.out.println(storedMessage.getMemberCode());
+            System.out.println(storedMessage.getOriginMemberCode());
             System.out.println(storedMessage.getRequestedPhase());
+            System.out.println(storedMessage.getActualRespondents());
             System.out.println(storedMessage.getExpectedRespondents());
+            System.out.println(storedMessage.getStimuliList());
+            System.out.println(storedMessage.getStimulusId());
+            System.out.println(storedMessage.getStimulusIndex());
             System.out.println(storedMessage.getUserId());
+            System.out.println(storedMessage.getScreenId());
 
             // if the message is a reconnect request then send the last message for that chanel
-            final GroupMessage latestGroupMessage = GROUP_MANAGER.updateChannelMessageIfOutOfDate(incomingMessage, storedMessage);
-
-            storedMessage.setStimulusId(latestGroupMessage.getStimulusId());
-            storedMessage.setScreenId(latestGroupMessage.getScreenId());
-            storedMessage.setStimulusIndex(latestGroupMessage.getStimulusIndex());
-            storedMessage.setRequestedPhase(latestGroupMessage.getRequestedPhase());
-            storedMessage.setExpectedRespondents(latestGroupMessage.getExpectedRespondents());
-            storedMessage.setMessageString(latestGroupMessage.getMessageString());
-            storedMessage.setAllMemberCodes(latestGroupMessage.getAllMemberCodes());
-//            storedMessage.setGroupUUID(latestGroupMessage.getGroupUUID());
-            storedMessage.setResponseStimulusId(latestGroupMessage.getResponseStimulusId());
-            storedMessage.setResponseStimulusOptions(latestGroupMessage.getResponseStimulusOptions());
-            storedMessage.setGroupId(latestGroupMessage.getGroupId());
-//            storedMessage.setRequestedPhase(latestGroupMessage.getRequestedPhase());
+            storedMessage = GROUP_MANAGER.updateChannelMessageIfOutOfDate(incomingMessage, storedMessage);
         } else {
             GROUP_MANAGER.addGroupMember(incomingMessage);
+            incomingMessage.setOriginMemberCode(incomingMessage.getMemberCode());
             storedMessage = incomingMessage;
         }
-        GROUP_MANAGER.updateResponderListForMessagePhase(storedMessage);
+        if (incomingStimuliList != null && incomingStimuliList.equals(storedMessage.getStimuliList())) {
+            GROUP_MANAGER.updateResponderListForMessagePhase(storedMessage);
+        }
         GROUP_MANAGER.setUsersLastMessage(storedMessage);
         storedMessage.setGroupReady(GROUP_MANAGER.isGroupReady(storedMessage));
         return storedMessage;
