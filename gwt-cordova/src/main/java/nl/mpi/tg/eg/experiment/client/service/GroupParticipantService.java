@@ -33,6 +33,7 @@ public class GroupParticipantService {
 //    private final HashMap<String, ArrayList<TimedStimulusListener>> othersActivityListeners = new HashMap<>();
     private final HashMap<String, TimedStimulusListener> activityListeners = new HashMap<>();
     private final TimedStimulusListener screenResetRequestListner;
+    private final TimedStimulusListener stimulusSyncListner;
     private final String allMemberCodes;
     private final String groupCommunicationChannels;
     private final TimedStimulusListener connectedListener;
@@ -61,13 +62,14 @@ public class GroupParticipantService {
     private String groupUUID = null;
     private ArrayList<HashSet<String>> phaseMemberResponses = new ArrayList();
 
-    public GroupParticipantService(final String userId, String screenId, String groupMembers, String groupCommunicationChannels, String stimuliList, TimedStimulusListener connectedListener, TimedStimulusListener groupNotReadyListener, TimedStimulusListener screenResetRequestListner) {
+    public GroupParticipantService(final String userId, String screenId, String groupMembers, String groupCommunicationChannels, String stimuliList, TimedStimulusListener connectedListener, TimedStimulusListener groupNotReadyListener, TimedStimulusListener screenResetRequestListner, TimedStimulusListener stimulusSyncListner) {
         this.userId = userId;
         this.allMemberCodes = groupMembers;
         this.groupCommunicationChannels = groupCommunicationChannels;
         this.connectedListener = connectedListener;
         this.groupNotReadyListener = groupNotReadyListener;
         this.screenResetRequestListner = screenResetRequestListner;
+        this.stimulusSyncListner = stimulusSyncListner;
         this.screenId = screenId;
         this.stimuliList = stimuliList;
     }
@@ -112,7 +114,9 @@ public class GroupParticipantService {
         this.lastFiredListnerGroupRole = null;
     }
 
-    protected void handleGroupMessage(String userId, String screenId, String userLabel, String groupId, String allMemberCodes, String memberCode,
+    protected synchronized void handleGroupMessage(String userId, String screenId, String userLabel, String groupId, String allMemberCodes, 
+            String memberCode,
+            String originMemberCode,
             String expectedRespondents,
             String actualRespondents,
             String stimulusId, String stimulusIndex, String stimuliList, String requestedPhase,
@@ -129,7 +133,7 @@ public class GroupParticipantService {
 
         if (groupIdMatches && screenIdMatches) {
             // handle group messages
-            this.messageSenderMemberCode = memberCode;
+            this.messageSenderMemberCode = originMemberCode;
             this.groupUUID = groupUUID;
             this.groupReady = groupReady;
             if (!this.stimuliList.equals(stimuliList)) {
@@ -162,6 +166,7 @@ public class GroupParticipantService {
                         this.messageString = messageString;
                         this.messageSenderId = userId;
                         this.responseStimulusId = responseStimulusId;
+                        stimulusSyncListner.postLoadTimerFired();
                         //                if (groupReady) {
                         for (String groupRole : activityListeners.keySet()) {
                             final String[] splitRole = groupRole.split(":");
@@ -296,6 +301,7 @@ public class GroupParticipantService {
             Ljava/lang/String;
             Ljava/lang/String;
             Ljava/lang/String;
+            Ljava/lang/String;
             Ljava/lang/Boolean;
             Ljava/lang/String;
             Ljava/lang/String;
@@ -306,6 +312,7 @@ public class GroupParticipantService {
             contentData.groupId,
             contentData.allMemberCodes, 
             contentData.memberCode, 
+            contentData.originMemberCode, 
             contentData.expectedRespondents,
             contentData.actualRespondents,
             contentData.stimulusId,
@@ -343,6 +350,7 @@ public class GroupParticipantService {
         'groupCommunicationChannels': groupCommunicationChannels,
         'expectedRespondents': expectedRespondents,
         'memberCode': null,
+        'originMemberCode': null,
         'stimulusId': stimulusId,
         'requestedPhase': requestedPhase,
         'stimulusIndex': stimulusIndex,
