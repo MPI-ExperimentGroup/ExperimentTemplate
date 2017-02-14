@@ -56,7 +56,7 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
 
     public AppController(RootLayoutPanel widgetTag) {
         this.widgetTag = widgetTag;
-        final UserId lastUserId = localStorage.getLastUserId();
+        final UserId lastUserId = (Window.Location.getParameter("testuser") != null) ? new UserId("testuser-" + Window.Location.getParameter("testuser")) : localStorage.getLastUserId();
         if (lastUserId == null) {
             userResults = new UserResults(new UserData());
             // we save the results here so that the newly created user id is preserved even if the user refreshes
@@ -78,7 +78,7 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
         }
         String debugValue = Window.Location.getParameter("debug");
         if (debugValue != null) {
-            localStorage.saveAppState(ApplicationState.about.name());
+            localStorage.saveAppState(userResults.getUserData().getUserId(), ApplicationState.about.name());
         }
 
 //        detectWindowDefocus(widgetTag);
@@ -150,7 +150,7 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
                 submissionService.submitTagValue(userResults.getUserData().getUserId(), "deviceVersion", getDeviceVersion(), 0);
             }
             try {
-                final String appState = localStorage.getAppState();
+                final String appState = localStorage.getAppState(userResults.getUserData().getUserId());
                 final ApplicationState lastAppState = (appState != null) ? ApplicationState.valueOf(appState) : ApplicationState.start;
                 requestApplicationState(lastAppState);
             } catch (IllegalArgumentException argumentException) {
