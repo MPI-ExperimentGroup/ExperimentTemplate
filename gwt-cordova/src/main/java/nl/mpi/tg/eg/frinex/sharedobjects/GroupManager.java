@@ -102,6 +102,9 @@ public class GroupManager {
 
             }
         }
+        // preserve the user id and member code of the requesting participant, even if the message is a resend from a different participant
+        mostRecentChannelMessage.setMemberCode(incomingMessage.getMemberCode());
+        mostRecentChannelMessage.setUserId(incomingMessage.getUserId());
         return mostRecentChannelMessage;
     }
 
@@ -116,20 +119,18 @@ public class GroupManager {
             groupUUIDs.put(groupMessage, UUID.randomUUID().toString());
         }
         final List<String> availableMemberCodes = unAllocatedMemberCodes.get(groupMessage);
-        if (groupMessage.getStimuliList().equals(stimuliLists.get(groupMessage))) {
-            // if the message has the wrong stimuli list then do not add them yet (this will keep the group in a not ready state until everyone has the same stimili list)
-            if (groupMessage.getMemberCode() != null
-                    && !groupMessage.getMemberCode().isEmpty()
-                    && availableMemberCodes.contains(groupMessage.getMemberCode())) {
-                // if the member code is provided and it is available then allocate it
-                availableMemberCodes.remove(groupMessage.getMemberCode());
-            } else if (!availableMemberCodes.isEmpty()) {
-                groupMessage.setMemberCode(availableMemberCodes.remove(0));
-            }
-            groupMessage.setUserLabel(groupMessage.getMemberCode() + " : " + groupMessage.getGroupId());
-            groupMessage.setGroupUUID(groupUUIDs.get(groupMessage));
-            groupsMembers.get(groupMessage).add(groupMessage.getUserId());
+        // even if the message has the wrong stimuli list, the participant will still be added to the group, but the correct stimili list will be returned so as to trigger the client to reload its stimili.
+        if (groupMessage.getMemberCode() != null
+                && !groupMessage.getMemberCode().isEmpty()
+                && availableMemberCodes.contains(groupMessage.getMemberCode())) {
+            // if the member code is provided and it is available then allocate it
+            availableMemberCodes.remove(groupMessage.getMemberCode());
+        } else if (!availableMemberCodes.isEmpty()) {
+            groupMessage.setMemberCode(availableMemberCodes.remove(0));
         }
+        groupMessage.setUserLabel(groupMessage.getMemberCode() + " : " + groupMessage.getGroupId());
+        groupMessage.setGroupUUID(groupUUIDs.get(groupMessage));
+        groupsMembers.get(groupMessage).add(groupMessage.getUserId());
         groupMessage.setStimuliList(stimuliLists.get(groupMessage));
         System.out.println("groupMessage: ");
         System.out.println(groupMessage.getAllMemberCodes());
@@ -137,8 +138,14 @@ public class GroupManager {
         System.out.println(groupMessage.getGroupId());
         System.out.println(groupMessage.getGroupUUID());
         System.out.println(groupMessage.getMemberCode());
+        System.out.println(groupMessage.getOriginMemberCode());
         System.out.println(groupMessage.getRequestedPhase());
+        System.out.println(groupMessage.getExpectedRespondents());
+        System.out.println(groupMessage.getStimuliList());
+        System.out.println(groupMessage.getStimulusId());
+        System.out.println(groupMessage.getStimulusIndex());
         System.out.println(groupMessage.getUserId());
+        System.out.println(groupMessage.getScreenId());
     }
 
     public void updateResponderListForMessagePhase(GroupMessage storedMessage) {
