@@ -56,7 +56,6 @@ import nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture;
 import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
-import nl.mpi.tg.eg.experiment.client.sharedobjects.GroupMessageMatch;
 
 /**
  * @since Jun 23, 2015 11:36:37 AM (creation date)
@@ -447,9 +446,24 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }, new TimedStimulusListener() {
                 @Override
                 public void postLoadTimerFired() {
-                    // when the stimuli list for this screen does not match that of the group, this listener is fired to: save the group stimuli list and then clear the screen causing the group stimuli list to be loaded
-                    localStorage.setStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag(), groupParticipantService.getStimuliList());
-                    appEventListner.requestApplicationState(selfApplicationState);
+                    ((ComplexView) simpleView).clearPage();
+                    Timer timer = new Timer() {
+                        public void run() {
+                            // when the stimuli list for this screen does not match that of the group, this listener is fired to: save the group stimuli list and then clear the screen causing the group stimuli list to be loaded
+                            localStorage.setStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag(), groupParticipantService.getStimuliList());
+                            appEventListner.requestApplicationState(selfApplicationState);
+                        }
+                    };
+                    timer.schedule(10);
+                }
+            }, new TimedStimulusListener() {
+                @Override
+                public void postLoadTimerFired() {
+                    // when a valid message has been received the current stimuli needs to be synchronised with the group
+                    stimulusProvider.setCurrentStimuliIndex(groupParticipantService.getStimulusIndex());
+                    ((ComplexView) simpleView).addText("stimulusProvider: " + stimulusProvider.getCurrentStimulusIndex());
+                    ((ComplexView) simpleView).addText("stimulusProvider: " + stimulusProvider.getCurrentStimulus().getUniqueId());
+                    ((ComplexView) simpleView).addText("stimulusProvider: " + stimulusProvider.getLoadedStimulusString());
                 }
             });
             groupParticipantService.joinGroupNetwork(serviceLocations.groupServerUrl());
@@ -458,10 +472,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
-    protected void groupNetworkActivity(final String groupRole, final GroupMessageMatch groupMessageMatch, final TimedStimulusListener timedStimulusListener) {
+    protected void groupNetworkActivity(final String groupRole, final TimedStimulusListener timedStimulusListener) {
         ((ComplexView) simpleView).addPadding();
         ((ComplexView) simpleView).addText("Adding GroupRole: " + groupRole);
-        groupParticipantService.addGroupActivity(groupRole, groupMessageMatch, timedStimulusListener);
+        groupParticipantService.addGroupActivity(groupRole, timedStimulusListener);
     }
 
     public void submitGroupEvent() {
