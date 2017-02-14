@@ -57,7 +57,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             final String trainingDisplayPhaseText
     ) {
         super(WizardScreenEnum.WizardMultiParticipantScreen, screenName, screenName, screenName);
-        this.wizardScreenData.setRandomiseStimuli(false);
+        this.wizardScreenData.setRandomiseStimuli(true);
         this.wizardScreenData.setStimuliCount(8);
         this.wizardScreenData.setStimulusMsDelay(0);
         this.wizardScreenData.setStimulusFreeText(false);
@@ -174,20 +174,14 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //        groupNetwork.addFeatureAttributes(FeatureAttribute.groupCommunicationChannels, 
 
         final PresenterFeature producerNetworkActivity0 = new PresenterFeature(FeatureType.groupNetworkActivity, null);
-        producerNetworkActivity0.addFeatureAttributes(FeatureAttribute.groupMessageMatch, "all"); // @ todo: this might not be needed if groupRoleSequence is added
 //        selfNetworkActivity1.addFeatureAttributes(FeatureAttribute.requestedPhase, "0");
         final PresenterFeature producerNetworkActivity1 = new PresenterFeature(FeatureType.groupNetworkActivity, null);
-        producerNetworkActivity1.addFeatureAttributes(FeatureAttribute.groupMessageMatch, "all");
 //        selfNetworkActivity2.addFeatureAttributes(FeatureAttribute.requestedPhase, "1");
         final PresenterFeature guesserNetworkActivity0 = new PresenterFeature(FeatureType.groupNetworkActivity, null);
-        guesserNetworkActivity0.addFeatureAttributes(FeatureAttribute.groupMessageMatch, "all");
         final PresenterFeature guesserNetworkActivity1 = new PresenterFeature(FeatureType.groupNetworkActivity, null);
-        guesserNetworkActivity1.addFeatureAttributes(FeatureAttribute.groupMessageMatch, "all");
         final PresenterFeature allNetworkActivity2 = new PresenterFeature(FeatureType.groupNetworkActivity, null);
-        allNetworkActivity2.addFeatureAttributes(FeatureAttribute.groupMessageMatch, "all");
 //        groupNetworkActivity2.addFeatureAttributes(FeatureAttribute.requestedPhase, "1");
         final PresenterFeature trainingDisplayNetworkActivity3 = new PresenterFeature(FeatureType.groupNetworkActivity, null);
-        trainingDisplayNetworkActivity3.addFeatureAttributes(FeatureAttribute.groupMessageMatch, "all");
 
         producerNetworkActivity0.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[0]);
         guesserNetworkActivity0.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[1]);
