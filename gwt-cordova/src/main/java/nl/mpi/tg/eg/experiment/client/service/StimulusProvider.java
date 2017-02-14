@@ -79,35 +79,44 @@ public class StimulusProvider {
         getSubset(selectionTags, stimulusArray.size(), randomise, repeatCount, repeatRandomWindow, storedStimulusList, currentStimuliIndex);
     }
 
-    public void getSdCardSubset(final ArrayList<String> directoryTagArray, final List<String[]> directoryList, final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String seenList) {
+    public void getSdCardSubset(final ArrayList<String> directoryTagArray, final List<String[]> directoryList, final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String storedStimulusList, final int currentStimuliIndex) {
         final List<Stimulus> stimulusListCopy = new ArrayList<>();
         stimulusSelectionArray.clear();
-        appendSdCardSubset(directoryTagArray, stimulusListCopy, directoryList, simulusLoadedListener, simulusErrorListener, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, seenList);
+        appendSdCardSubset(directoryTagArray, stimulusListCopy, directoryList, simulusLoadedListener, simulusErrorListener, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, storedStimulusList, currentStimuliIndex);
     }
 
-    private void appendSdCardSubset(final ArrayList<String> directoryTagArray, final List<Stimulus> stimulusListCopy, final List<String[]> directoryList, final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String seenList) {
+    private void appendSdCardSubset(final ArrayList<String> directoryTagArray, final List<Stimulus> stimulusListCopy, final List<String[]> directoryList, final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String storedStimulusList, final int currentStimuliIndex) {
         if (directoryTagArray.isEmpty()) {
             final List<Stimulus> stimulusSubsetArrayTemp = new ArrayList<>();
             if (!directoryList.isEmpty()) {
                 simulusLoadedListener.postLoadTimerFired();
             } else {
-                while (!stimulusListCopy.isEmpty() && maxStimulusCount > stimulusSubsetArrayTemp.size()) {
-                    final int nextIndex = (randomise) ? new Random().nextInt(stimulusListCopy.size()) : 0;
-                    Stimulus stimulus = stimulusListCopy.remove(nextIndex);
-                    stimulusSelectionArray.add(stimulus);
-                    if (!seenList.contains(stimulus.getUniqueId())) {
+                this.currentStimuliIndex = currentStimuliIndex;
+                if (!storedStimulusList.isEmpty()) {
+//                    stimulusArray.clear();
+//                    stimulusArray.addAll(stimulusListCopy);
+                    // todo: also load the list for other getSubset related methods
+                    loadStoredStimulusList(storedStimulusList, stimulusSubsetArrayTemp);
+                } else {
+                    while (!stimulusListCopy.isEmpty() && maxStimulusCount > stimulusSubsetArrayTemp.size()) {
+                        final int nextIndex = (randomise) ? new Random().nextInt(stimulusListCopy.size()) : 0;
+                        Stimulus stimulus = stimulusListCopy.remove(nextIndex);
+                        stimulusSelectionArray.add(stimulus);
+//                    if (!seenList.contains(stimulus.getUniqueId())) {
+                        // this is not how seen list now works, it is now a list of stimuli allowing rewind
                         stimulusSubsetArrayTemp.add(stimulus);
+//                    }
                     }
+                    if (!randomise) {
+                        Collections.sort(stimulusSubsetArrayTemp, new Comparator<Stimulus>() {
+                            @Override
+                            public int compare(Stimulus o1, Stimulus o2) {
+                                return (o1.getUniqueId().compareTo(o2.getUniqueId()));
+                            }
+                        });
+                    }
+                    applyRepeatRandomWindow(stimulusSubsetArrayTemp, repeatCount, repeatRandomWindow);
                 }
-                if (!randomise) {
-                    Collections.sort(stimulusSubsetArrayTemp, new Comparator<Stimulus>() {
-                        @Override
-                        public int compare(Stimulus o1, Stimulus o2) {
-                            return (o1.getUniqueId().compareTo(o2.getUniqueId()));
-                        }
-                    });
-                }
-                applyRepeatRandomWindow(stimulusSubsetArrayTemp, repeatCount, repeatRandomWindow);
 //                totalStimuli = stimulusSubsetArray.size();
                 simulusLoadedListener.postLoadTimerFired();
             }
@@ -116,7 +125,7 @@ public class StimulusProvider {
             final SdCardStimuli sdCardStimuli = new SdCardStimuli(stimulusListCopy, directoryList, ".*_question\\....$", new TimedStimulusListener() {
                 @Override
                 public void postLoadTimerFired() {
-                    appendSdCardSubset(directoryTagArray, stimulusListCopy, directoryList, simulusLoadedListener, simulusErrorListener, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, seenList);
+                    appendSdCardSubset(directoryTagArray, stimulusListCopy, directoryList, simulusLoadedListener, simulusErrorListener, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, storedStimulusList, currentStimuliIndex);
                 }
             }, simulusErrorListener);
             sdCardStimuli.fillStimulusList(directoryTag);
@@ -128,17 +137,17 @@ public class StimulusProvider {
         this.currentStimuliIndex = currentStimuliIndex;
         if (!storedStimulusList.isEmpty()) {
             // todo: also load the list for other getSubset related methods
-            loadStoredStimulusList(storedStimulusList);
+            loadStoredStimulusList(storedStimulusList, stimulusArray);
         } else {
             getSubset(selectionTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, storedStimulusList, stimulusListCopy);
         }
     }
 
-    private void loadStoredStimulusList(String storedStimulusList) {
+    private void loadStoredStimulusList(String storedStimulusList, final List<Stimulus> stimulusArrayTemp) {
         while (!storedStimulusList.isEmpty()) {
             // stimuli ids can contain - so we cant split the string on -
             //storedStimulusList = storedStimulusList.replaceFirst("^-", storedStimulusList);
-            for (Stimulus stimulus : stimulusArray) {
+            for (Stimulus stimulus : stimulusArrayTemp) {
                 if (storedStimulusList.startsWith(stimulus.getUniqueId())) {
                     stimulusSubsetArray.add(stimulus);
                     storedStimulusList = storedStimulusList.substring(stimulus.getUniqueId().length());
@@ -283,6 +292,10 @@ public class StimulusProvider {
         return currentStimuliIndex;
     }
 
+    public void setCurrentStimuliIndex(int currentStimuliIndex) {
+        this.currentStimuliIndex = currentStimuliIndex;
+    }
+
     public String getLoadedStimulusString() {
         StringBuilder stringBuilder = new StringBuilder();
         for (Stimulus stimulus : this.stimulusSubsetArray) {
@@ -298,11 +311,11 @@ public class StimulusProvider {
         this.stimulusSubsetArray.get(currentStimuliIndex);
     }*/
 
-    public void removeStimulus(Stimulus removeStimulus) {
-        stimulusSubsetArray.remove(removeStimulus);
+    /*public void removeStimulus(Stimulus removeStimulus) {
+        stimulusSubsetArray.remove(removeStimulus); // todo: is this valid in the current design?
         stimulusSubsetArray.add(currentStimuliIndex - 1, removeStimulus);
         currentStimuliIndex++;
-    }
+    }*/
 
     public void nextStimulus() {
         currentStimuliIndex++;
@@ -360,12 +373,22 @@ public class StimulusProvider {
 //        totalStimuli = stimulusSubsetArray.size();
 //    }
     @Deprecated // todo: perhaps this would be better done in the respective presenters
-    public List<String> getPictureList() {
-        final ArrayList<String> returnList = new ArrayList<>();
+    public List<Stimulus> getPictureList(GroupParticipantService groupParticipantService) {
+        final ArrayList<Stimulus> returnList = new ArrayList<>();
+        String groupResponseOptions = null;
         for (Stimulus stimulus : stimulusSubsetArray) {
             if (stimulus.getImage() != null && !stimulus.getImage().isEmpty()) {
-                returnList.add(stimulus.getImage());
+                if (groupResponseOptions == null) {
+                    groupResponseOptions = "";
+                } else {
+                    groupResponseOptions += ",";
+                }
+                groupResponseOptions += stimulus.getUniqueId();
+                returnList.add(stimulus);
             }
+        }
+        if (groupParticipantService != null) {
+            groupParticipantService.setResponseStimulusOptions(groupResponseOptions);
         }
         return returnList;
     }
