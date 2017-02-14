@@ -84,7 +84,7 @@
             
             @Override
             public void requestApplicationState(ApplicationState applicationState) {
-            localStorage.saveAppState(applicationState.name());
+            localStorage.saveAppState(userResults.getUserData().getUserId(), applicationState.name());
             if (presenter != null) {
             presenter.savePresenterState();
             }
