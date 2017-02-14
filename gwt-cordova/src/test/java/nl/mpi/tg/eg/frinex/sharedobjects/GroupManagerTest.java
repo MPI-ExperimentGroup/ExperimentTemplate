@@ -54,6 +54,7 @@ public class GroupManagerTest {
         groupMessage.setAllMemberCodes("A,B,C,D,E,F");
         GroupManager instance = new GroupManager();
 
+        groupMessage.setStimuliList("4-7:medium-2-5:small-2-3:small-1-2:medium-1-4:small-2-1:large-1-6:small-1-7:small");
         assertEquals(false, instance.isGroupMember(groupMessage));
         instance.addGroupMember(groupMessage);
         assertEquals(true, instance.isGroupMember(groupMessage));
@@ -67,7 +68,9 @@ public class GroupManagerTest {
         System.out.println("isGroupReady");
         GroupMessage[] groupMembers = getGroupMembersArray();
         GroupManager instance = new GroupManager();
-
+        for (GroupMessage groupMessage : groupMembers) {
+            groupMessage.setStimuliList("4-7:medium-2-5:small-2-3:small-1-2:medium-1-4:small-2-1:large-1-6:small-1-7:small");
+        }
         assertEquals(false, instance.isGroupReady(groupMembers[0]));
         instance.isGroupMember(groupMembers[0]);
         instance.addGroupMember(groupMembers[0]);
