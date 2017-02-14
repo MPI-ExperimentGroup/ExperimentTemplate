@@ -39,6 +39,7 @@ function setConnected(connected) {
                 "<td>Members</td>" +
                 "<td>Channels</td>" +
                 "<td>MemberCode</td>" +
+                "<td>OriginCode</td>" +
                 "<td>Stimulus</td>" +
                 "<td>Options</td>" +
                 "<td>Response</td>" +
@@ -51,6 +52,24 @@ function setConnected(connected) {
                 "<td>Ready</td>" +
                 "<td>eventMs</td>" +
                 "</tr>");
+        $("#unittestdata").append(
+                "<tr><td>userId</td>" +
+                "<td>screenId</td>" +
+                "<td>userLabel</td>" +
+                "<td>groupId</td>" +
+                "<td>allMemberCodes</td>" +
+                "<td>memberCode</td>" +
+                "<td>originMemberCode</td>" +
+                "<td>stimulusId</td>" +
+                "<td>stimulusIndex</td>" +
+                "<td>stimuliList</td>" +
+                "<td>requestedPhase</td>" +
+                "<td>messageString</td>" +
+                "<td>groupReady</td>" +
+                "<td>responseStimulusId</td>" +
+                "<td>expectedRespondents</td>" +
+                "<td>actualRespondents</td>" +
+                "<td>groupUUID</td></tr>");
     } else {
         $("#conversation").hide();
     }
@@ -89,6 +108,7 @@ function connect() {
                     "</td><td>" + contentData.allMemberCodes +
                     "</td><td>" + contentData.groupCommunicationChannels +
                     "</td><td>" + contentData.memberCode +
+                    "</td><td>" + contentData.originMemberCode +
                     "</td><td>" + contentData.stimulusId +
                     "</td><td>" + contentData.responseStimulusOptions +
                     "</td><td>" + contentData.responseStimulusId +
@@ -101,7 +121,7 @@ function connect() {
                     "</td><td>" + contentData.groupReady +
                     "</td><td>" + contentData.eventMs +
                     "</td>";
-            var messageButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup('" + contentData.userId + "','" + contentData.requestedPhase + "','" + contentData.screenId + "','" + contentData.userLabel + "','" + contentData.groupId + "','" + contentData.allMemberCodes + "','" + contentData.memberCode + "','" + contentData.stimulusId + "')\">message</button></td>";
+            var messageButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup('" + contentData.userId + "','" + contentData.requestedPhase + "','" + contentData.screenId + "','" + contentData.userLabel + "','" + contentData.groupId + "','" + contentData.allMemberCodes + "','" + contentData.memberCode + "','" + contentData.originMemberCode + "','" + contentData.stimulusId + "')\">message</button></td>";
             var addButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup(Math.floor((1 + Math.random()) * 0x10000),'" + contentData.requestedPhase + "','" + contentData.screenId + "',null,'" + contentData.groupId + "','" + contentData.allMemberCodes + "',null,null)\">add member</button></td>";
             usersTableRow.html(usersTableCells + messageButtonCell + addButtonCell);
             usersTableRow.css("outline-style", "solid");
@@ -111,23 +131,24 @@ function connect() {
 //            var groupMemberDiv = $("<div style='background: grey;' class='progressDivBar'>&nbsp;</div>");
 //            $("#groupTarget").append(groupMemberDiv);
             $("#unittestdata").append(
-                    "instance.handleGroupMessage(\"" +
-                    contentData.userId + "\", \"" +
-                    contentData.screenId + "\", \"" +
-                    contentData.userLabel + "\", \"" +
-                    contentData.groupId + "\", \"" +
-                    contentData.allMemberCodes + "\", \"" +
-                    contentData.memberCode + "\", \"" +
-                    contentData.stimulusId + "\", \"" +
-                    contentData.stimulusIndex + "\", \"" +
-                    contentData.stimuliList + "\", \"" +
-                    contentData.requestedPhase + "\", \"" +
-                    contentData.messageString + "\", " +
-                    contentData.groupReady + ", \"" +
-                    contentData.responseStimulusId + "\", \"" +
-                    contentData.expectedRespondents + "\", \"" +
-                    contentData.actualRespondents + "\", \"" +
-                    contentData.groupUUID + "\");<br/>");
+                    "<tr><td>\"" +
+                    contentData.userId + "\", </td><td>\"" +
+                    contentData.screenId + "\", </td><td>\"" +
+                    contentData.userLabel + "\", </td><td>\"" +
+                    contentData.groupId + "\", </td><td>\"" +
+                    contentData.allMemberCodes + "\", </td><td>\"" +
+                    contentData.memberCode + "\", </td><td>\"" +
+                    contentData.originMemberCode + "\", </td><td>\"" +
+                    contentData.stimulusId + "\", </td><td>\"" +
+                    contentData.stimulusIndex + "\", </td><td>\"" +
+                    contentData.stimuliList + "\", </td><td>\"" +
+                    contentData.requestedPhase + "\", </td><td>\"" +
+                    contentData.messageString + "\", </td><td>" +
+                    contentData.groupReady + ", </td><td>\"" +
+                    contentData.responseStimulusId + "\", </td><td>\"" +
+                    contentData.expectedRespondents + "\", </td><td>\"" +
+                    contentData.actualRespondents + "\", </td><td>\"" +
+                    contentData.groupUUID + "\"</td></tr>");
             //String userId, 
             //String screenId,
             // String userLabel,
