@@ -132,7 +132,11 @@
                         <groupMemberLabel/>
                         <groupMemberCodeLabel/>
                         <htmlText featureText="The stimulus and the producers text are shown to all other participants"/>
-                        <sendGroupMessageButton featureText="nextStimulusFeatureTrainingDisplay" eventTag="nextStimulusFeatureTrainingDisplay" incrementPhase="1" hotKey="Q" norepeat="true"/>
+                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
+                            <addPadding/>
+                            <sendGroupMessageButton featureText="nextStimulusFeatureTrainingDisplay" eventTag="nextStimulusFeatureTrainingDisplay" incrementPhase="1" hotKey="Q" norepeat="true"/>
+                        </stimulusImage>
+                        <groupMessageLabel/>
                     </groupNetworkActivity>
                 </groupNetwork>
             </hasMoreStimulus>
@@ -255,7 +259,11 @@
                         <groupMemberLabel/>
                         <groupMemberCodeLabel/>
                         <htmlText featureText="This phase is not used in this screen"/>
-                        <sendGroupMessageButton featureText="nextStimulusFeatureTrainingDisplay" eventTag="nextStimulusFeatureTrainingDisplay" incrementPhase="1" hotKey="Q" norepeat="true"/>
+                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
+                            <addPadding/>
+                            <sendGroupMessageButton featureText="nextStimulusFeatureTrainingDisplay" eventTag="nextStimulusFeatureTrainingDisplay" incrementPhase="1" hotKey="Q" norepeat="true"/>
+                        </stimulusImage>
+                        <groupMessageLabel/>
                     </groupNetworkActivity>
                 </groupNetwork>
             </hasMoreStimulus>
@@ -378,7 +386,11 @@
                         <groupMemberLabel/>
                         <groupMemberCodeLabel/>
                         <htmlText featureText="This phase is not used in this screen"/>
-                        <sendGroupMessageButton featureText="nextStimulusFeatureTrainingDisplay" eventTag="nextStimulusFeatureTrainingDisplay" incrementPhase="1" hotKey="Q" norepeat="true"/>
+                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
+                            <addPadding/>
+                            <sendGroupMessageButton featureText="nextStimulusFeatureTrainingDisplay" eventTag="nextStimulusFeatureTrainingDisplay" incrementPhase="1" hotKey="Q" norepeat="true"/>
+                        </stimulusImage>
+                        <groupMessageLabel/>
                     </groupNetworkActivity>
                 </groupNetwork>
             </hasMoreStimulus>

@@ -287,8 +287,21 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
         final PresenterFeature nextStimulusFeature3 = addGroupMessageButton("nextStimulusFeature3", "Q");
         allNetworkActivity2.getPresenterFeatureList().add(nextStimulusFeature3);
+
+        final PresenterFeature stimulusImage = new PresenterFeature(FeatureType.stimulusImage, null);
+
+        stimulusImage.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
+        stimulusImage.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
+        stimulusImage.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
+        stimulusImage.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
+        trainingDisplayNetworkActivity3.getPresenterFeatureList().add(stimulusImage);
+
+        final PresenterFeature groupMessageLabel = new PresenterFeature(FeatureType.groupMessageLabel, null);
+        trainingDisplayNetworkActivity3.getPresenterFeatureList().add(groupMessageLabel);
+
         final PresenterFeature nextStimulusFeature4 = addGroupMessageButton("nextStimulusFeatureTrainingDisplay", "Q");
-        trainingDisplayNetworkActivity3.getPresenterFeatureList().add(nextStimulusFeature4);
+        stimulusImage.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+        stimulusImage.getPresenterFeatureList().add(nextStimulusFeature4);
 
         hasMoreStimulusFeature.getPresenterFeatureList().add(groupNetwork);
         presenterFeatureList.add(loadStimuliFeature);
