@@ -18,7 +18,6 @@
 package nl.mpi.tg.eg.experiment.client.service;
 
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
-import nl.mpi.tg.eg.experiment.client.sharedobjects.GroupMessageMatch;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -31,20 +30,17 @@ public class GroupParticipantServiceTest {
     public GroupParticipantServiceTest() {
     }
 
-    private void groupNetworkActivity(final StringBuilder stringBuilder, final GroupParticipantService instance, final String groupRole, final GroupMessageMatch groupMessageMatch) {
-        instance.addGroupActivity(groupRole, groupMessageMatch, new TimedStimulusListener() {
+    private void groupNetworkActivity(final StringBuilder stringBuilder, final GroupParticipantService instance, final String groupRole, final int requiredMessageCount, final String description) {
+        instance.addGroupActivity(groupRole, new TimedStimulusListener() {
             @Override
             public void postLoadTimerFired() {
-//                fail("The test case is a prototype."+groupRole);
-                System.out.print(instance.getRequestedPhase());
-                System.out.print("-");
-                System.out.print(instance.getMemberCode());
-                System.out.print("[");
-                System.out.print(groupRole);
-                System.out.println("]");
                 stringBuilder.append(instance.getRequestedPhase());
                 stringBuilder.append("-");
                 stringBuilder.append(instance.getMemberCode());
+                if (description != null) {
+                    stringBuilder.append("-");
+                    stringBuilder.append(description);
+                }
                 stringBuilder.append("[");
                 stringBuilder.append(groupRole);
                 stringBuilder.append("]\n");
@@ -70,17 +66,28 @@ public class GroupParticipantServiceTest {
             @Override
             public void postLoadTimerFired() {
             }
+        }, new TimedStimulusListener() {
+            @Override
+            public void postLoadTimerFired() {
+            }
+        }, new TimedStimulusListener() {
+            @Override
+            public void postLoadTimerFired() {
+            }
         });
         final StringBuilder stringBuilder = new StringBuilder();
-        groupNetworkActivity(stringBuilder, instance, "A,C,E,G:-:-:B,D,F,H:-:-", GroupMessageMatch.all);
-        groupNetworkActivity(stringBuilder, instance, "-:A,C,E,G:-:-:B,D,F,H:-", GroupMessageMatch.all);
-        groupNetworkActivity(stringBuilder, instance, "B,D,F,H:-:-:A,C,E,G:-:-", GroupMessageMatch.all);
-        groupNetworkActivity(stringBuilder, instance, "-:B,D,F,H:-:-:A,C,E,G:-", GroupMessageMatch.all);
-        groupNetworkActivity(stringBuilder, instance, "-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H", GroupMessageMatch.all);
+        groupNetworkActivity(stringBuilder, instance, "A,C,E,G:-:-:B,D,F,H:-:-", 1, null);
+        groupNetworkActivity(stringBuilder, instance, "-:A,C,E,G:-:-:B,D,F,H:-", 1, null);
+        groupNetworkActivity(stringBuilder, instance, "B,D,F,H:-:-:A,C,E,G:-:-", 1, null);
+        groupNetworkActivity(stringBuilder, instance, "-:B,D,F,H:-:-:A,C,E,G:-", 1, null);
+        groupNetworkActivity(stringBuilder, instance, "-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H", 1, null);
         for (int phaseCounter = 0; phaseCounter < 10; phaseCounter++) {
             for (int memberIndex = 0; memberIndex < 8; memberIndex++) {
                 instance.clearLastFiredListner();
-                instance.handleGroupMessage("userId", "screenId", "userLabel", "groupId", "A,B,C,D,E,F,G,H", "A,B,C,D,E,F,G,H".split(",")[memberIndex], "stimulusId", "0", "stimuliList", Integer.toString(phaseCounter), "messageString", Boolean.TRUE, "responseStimulusOptions", "responseStimulusId");
+                instance.handleGroupMessage("userId", "screenId", "userLabel", "groupId", "A,B,C,D,E,F,G,H", "A,B,C,D,E,F,G,H".split(",")[memberIndex], "A,B,C,D,E,F,G,H".split(",")[memberIndex],
+                        "expectedRespondents",
+                        "actualRespondents  ",
+                        "stimulusId", "0", "stimuliList", Integer.toString(phaseCounter), "messageString", Boolean.TRUE, "responseStimulusOptions", "responseStimulusId");
             }
         }
         assertEquals("0-A[A,C,E,G:-:-:B,D,F,H:-:-]\n"
@@ -165,27 +172,60 @@ public class GroupParticipantServiceTest {
                 + "9-H[A,C,E,G:-:-:B,D,F,H:-:-]\n", stringBuilder.toString());
     }
 
+    private GroupParticipantService groupParticipantService;
+
     /**
      * Test of handleGroupMessage method, of class GroupParticipantService.
      */
     @Test
     public void testHandleGroupMessage() {
-//        System.out.println("handleGroupMessage");
-//        String userId = "";
-//        String screenId = "";
-//        String userLabel = "";
-//        String groupId = "";
-//        String allMemberCodes = "";
-//        String memberCode = "";
-//        String stimulusId = "";
-//        String stimulusIndex = "";
-//        String requestedPhase = "";
-//        String messageString = "";
-//        Boolean groupReady = null;
-//        GroupParticipantService instance = null;
-//        instance.handleGroupMessage(userId, screenId, userLabel, groupId, allMemberCodes, memberCode, stimulusId, stimulusIndex, requestedPhase, messageString, groupReady);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-    }
+        System.out.println("handleGroupMessage");
+        final StringBuilder stringBuilder = new StringBuilder();
+        for (String[] expectedData : new TestData().getExpectedData()) {
+            groupParticipantService = new GroupParticipantService(expectedData[0], "Round_0", "A,B,C,D,E,F,G,H", "A,B,C,D,E,F,G,H",
+                    "4-7:medium-2-5:small-2-3:small-1-2:medium-1-4:small-2-1:large-1-6:small-1-7:small", new TimedStimulusListener() {
+                @Override
+                public void postLoadTimerFired() {
+                    // connectedListener
+                    stringBuilder.append("connectedListener\n");
+                }
+            }, new TimedStimulusListener() {
+                @Override
+                public void postLoadTimerFired() {
+                    // groupNotReadyListener
+                    stringBuilder.append("groupNotReadyListener\n");
+                }
+            }, new TimedStimulusListener() {
+                @Override
+                public void postLoadTimerFired() {
+                    // screenResetRequestListner
+                    stringBuilder.append("screenResetRequestListner\n");
+                    groupParticipantService.setStimuliListLoaded(groupParticipantService.getStimuliListGroup());
+                }
+            }, new TimedStimulusListener() {
+                @Override
+                public void postLoadTimerFired() {
+                    // stimulusSyncListner
+                    stringBuilder.append("stimulusSyncListner\n");
+                }
+            }, new TimedStimulusListener() {
+                @Override
+                public void postLoadTimerFired() {
+                    // groupInfoChangeListner
+                    stringBuilder.append("groupInfoChangeListner\n");
+                }
+            });
 
+            groupNetworkActivity(stringBuilder, groupParticipantService, "A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-", 1, "producer");
+            groupNetworkActivity(stringBuilder, groupParticipantService, "-:A:-:B:-:C:-:D:-:E:-:F:-:G:-:H", 7, "producer wait");
+            groupNetworkActivity(stringBuilder, groupParticipantService, "B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-",
+                    1, "guesser wait");
+            groupNetworkActivity(stringBuilder, groupParticipantService, "", 1, "not used");
+            groupNetworkActivity(stringBuilder, groupParticipantService, "-:B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A",
+                    1, "guesser");
+            new TestData().processTestMessages(groupParticipantService);
+            System.out.println(stringBuilder.toString());
+            assertEquals(expectedData[1], stringBuilder.toString());
+        }
+    }
 }
