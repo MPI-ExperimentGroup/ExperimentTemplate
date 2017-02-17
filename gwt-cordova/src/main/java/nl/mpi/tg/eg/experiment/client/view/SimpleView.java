@@ -63,13 +63,30 @@ public class SimpleView extends AbstractView {
 
     public final void setContent(Panel panel) {
         panel.setStylePrimaryName("contentBody");
-        scrollPanel.setWidget(panel);       
+        scrollPanel.setWidget(panel);
     }
 
     public void setDisplayText(String text) {
         final HTML html = new HTML(new SafeHtmlBuilder().appendEscapedLines(text).toSafeHtml());
         html.setStylePrimaryName("contentBody");
         scrollPanel.setWidget(html);
+    }
+
+    public void addInfoButton(final PresenterEventListner presenterListerner) {
+        final Label headerButton = new Label(presenterListerner.getLabel());
+        headerButton.addStyleName("headerButton");
+        SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
+
+            @Override
+            protected void singleShotFired() {
+                presenterListerner.eventFired(null, this);
+            }
+        };
+        headerButton.addClickHandler(singleShotEventListner);
+        headerButton.addTouchStartHandler(singleShotEventListner);
+        headerButton.addTouchMoveHandler(singleShotEventListner);
+        headerButton.addTouchEndHandler(singleShotEventListner);
+        headerPanel.setWidget(0, 2, headerButton);
     }
 
     public void addTitle(String label, final PresenterEventListner presenterListerner) {
