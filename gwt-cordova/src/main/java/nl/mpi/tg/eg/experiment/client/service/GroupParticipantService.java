@@ -127,13 +127,16 @@ public class GroupParticipantService {
         final boolean userIdMatches = this.userId.equals(userId);
         final boolean screenIdMatches = this.screenId.equals(screenId);
         final boolean groupIdMatches = (this.groupId != null) ? this.groupId.equals(groupId) : true; // if a group id was provided then ignore anyother groups
-        final boolean userGroupLabelUpdateNeeded = (userIdMatches && screenIdMatches) && (this.memberCode == null && memberCode != null);
         if (userIdMatches && screenIdMatches) {
+            final boolean userGroupLabelUpdateNeeded = (userIdMatches && screenIdMatches) && (this.memberCode == null && memberCode != null);
             // handle direct messages
             this.userLabel = userLabel;
             this.memberCode = memberCode;
             this.groupId = groupId;
             this.stimuliListGroup = stimuliListGroup;
+            if (userGroupLabelUpdateNeeded) {
+                groupInfoChangeListner.postLoadTimerFired();
+            }
             if (!this.stimuliListLoaded.equals(this.stimuliListGroup)) {
                 // if the stimuli list does not match then reset the page after storing the received stimuli list
                 screenResetRequestListner.postLoadTimerFired();
@@ -192,9 +195,6 @@ public class GroupParticipantService {
             } else {
                 groupNotReadyListener.postLoadTimerFired();
             }
-        }
-        if (userGroupLabelUpdateNeeded) {
-            groupInfoChangeListner.postLoadTimerFired();
         }
     }
 
