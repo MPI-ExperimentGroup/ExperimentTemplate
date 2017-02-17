@@ -180,8 +180,10 @@ public class GroupParticipantServiceTest {
     @Test
     public void testHandleGroupMessage() {
         System.out.println("handleGroupMessage");
-        final StringBuilder stringBuilder = new StringBuilder();
         for (String[] expectedData : new TestData().getExpectedData()) {
+            final StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append(expectedData[0]);
+            stringBuilder.append("\n");
             groupParticipantService = new GroupParticipantService(expectedData[0], "Round_0", "A,B,C,D,E,F,G,H", "A,B,C,D,E,F,G,H",
                     "4-7:medium-2-5:small-2-3:small-1-2:medium-1-4:small-2-1:large-1-6:small-1-7:small", new TimedStimulusListener() {
                 @Override
