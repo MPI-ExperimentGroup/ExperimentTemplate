@@ -119,6 +119,7 @@ public class GroupManagerTest {
             groupMessage.setGroupCommunicationChannels(groupCommunicationChannels);
             groupMessage.setMemberCode(meberCodes[requestPhase]);
             groupMessage.setRequestedPhase(0);
+            groupMessage.setMemberCode("E");
             final GroupMessage updateChannelMessageIfOutOfDate = instance.updateChannelMessageIfOutOfDate(groupMessage, groupMessage);
             instance.setUsersLastMessage(updateChannelMessageIfOutOfDate);
             assertEquals(0, updateChannelMessageIfOutOfDate.getRequestedPhase().intValue());

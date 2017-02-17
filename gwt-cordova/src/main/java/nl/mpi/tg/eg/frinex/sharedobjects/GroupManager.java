@@ -35,7 +35,7 @@ import java.util.UUID;
  */
 public class GroupManager {
 
-    private final HashMap<String, GroupMessage> allMembersList = new HashMap<>();
+    private final HashMap<String, HashMap<GroupMessage, GroupMessage>> allMembersList = new HashMap<>();
     private final HashMap<GroupMessage, String> allMemberCodes = new HashMap<>();
     private final HashMap<GroupMessage, String> stimuliLists = new HashMap<>();
     private final HashMap<GroupMessage, String> groupUUIDs = new HashMap<>();
@@ -45,7 +45,13 @@ public class GroupManager {
 
     public boolean isGroupMember(GroupMessage groupMessage) {
         if (groupMessage.getGroupId() == null) {
-            final GroupMessage lastMessage = allMembersList.get(groupMessage.getUserId());
+            final GroupMessage lastMessage;
+            final HashMap<GroupMessage, GroupMessage> userGroups = allMembersList.get(groupMessage.getUserId());
+            if (userGroups != null) {
+                lastMessage = userGroups.get(groupMessage);
+            } else {
+                lastMessage = null;
+            }
             if (lastMessage != null /*&& lastMessage.getScreenId().equals(groupMessage.getScreenId())*/) {
                 // preserve the group id when the browser window is refreshed without get parameters
                 groupMessage.setGroupId(lastMessage.getGroupId());
@@ -83,18 +89,21 @@ public class GroupManager {
         for (String channel : groupCommunicationChannels.split("\\|")) // check if the communication channel applies to this group member
         {
             if (channel.contains(memberCode)) {
-                for (GroupMessage membersLastMessage : allMembersList.values()) {
-                    final String currentMemberCode = membersLastMessage.getMemberCode();
-                    if (currentMemberCode != null) {
-                        System.out.println("currentMemberCode: " + currentMemberCode);
-                        if (channel.contains(currentMemberCode)) {
-                            System.out.println("is common member");
-                            System.out.println("mostRecentChannelMessage.getRequestedPhase():" + mostRecentChannelMessage.getRequestedPhase());
-                            System.out.println("membersLastMessage.getRequestedPhase():" + membersLastMessage.getRequestedPhase());
-                            if (mostRecentChannelMessage.getRequestedPhase() < membersLastMessage.getRequestedPhase()) {
-                                System.out.println("other is more advanced than sent");
-                                // select only the most recent message for any user in this channel
-                                mostRecentChannelMessage = membersLastMessage;
+                for (final HashMap<GroupMessage, GroupMessage> userGroups : allMembersList.values()) {
+                    GroupMessage membersLastMessage = userGroups.get(incomingMessage);
+                    if (membersLastMessage != null) {
+                        final String currentMemberCode = membersLastMessage.getMemberCode();
+                        if (currentMemberCode != null) {
+                            System.out.println("currentMemberCode: " + currentMemberCode);
+                            if (channel.contains(currentMemberCode)) {
+                                System.out.println("is common member");
+                                System.out.println("mostRecentChannelMessage.getRequestedPhase():" + mostRecentChannelMessage.getRequestedPhase());
+                                System.out.println("membersLastMessage.getRequestedPhase():" + membersLastMessage.getRequestedPhase());
+                                if (mostRecentChannelMessage.getRequestedPhase() < membersLastMessage.getRequestedPhase()) {
+                                    System.out.println("other is more advanced than sent");
+                                    // select only the most recent message for any user in this channel
+                                    mostRecentChannelMessage = membersLastMessage;
+                                }
                             }
                         }
                     }
@@ -153,13 +162,14 @@ public class GroupManager {
         if (storedMessage.getMemberCode() != null) {
             respondingMemberCodes.add(storedMessage.getMemberCode());
         }
-        for (GroupMessage lastMessage : allMembersList.values()) {
-            if (lastMessage.getMemberCode() != null) {
+        for (final HashMap<GroupMessage, GroupMessage> userGroups : allMembersList.values()) {
+            GroupMessage lastGroupMessage = userGroups.get(storedMessage);
+            if (lastGroupMessage != null && lastGroupMessage.getMemberCode() != null) {
 //          if the group matches
-                if (storedMessage.equals(lastMessage)) {
+                if (storedMessage.equals(lastGroupMessage)) {
                     // this is the same phase
-                    if (storedMessage.getRequestedPhase().equals(lastMessage.getRequestedPhase())) {
-                        respondingMemberCodes.add(lastMessage.getMemberCode());
+                    if (storedMessage.getRequestedPhase().equals(lastGroupMessage.getRequestedPhase())) {
+                        respondingMemberCodes.add(lastGroupMessage.getMemberCode());
                     }
                 }
             }
@@ -168,22 +178,31 @@ public class GroupManager {
         Collections.sort(sortedRespondingMemberCodes);
         String respondingMemberCodesString = String.join(",", sortedRespondingMemberCodes);
         storedMessage.setActualRespondents(respondingMemberCodesString);
-        for (GroupMessage lastMessage : allMembersList.values()) {
+        for (final HashMap<GroupMessage, GroupMessage> userGroups : allMembersList.values()) {
+            GroupMessage lastGroupMessage = userGroups.get(storedMessage);
 //          if the group matches
-            if (storedMessage.equals(lastMessage)) {
+            if (storedMessage.equals(lastGroupMessage)) {
                 // this is the same phase
-                if (storedMessage.getRequestedPhase().equals(lastMessage.getRequestedPhase())) {
-                    lastMessage.setActualRespondents(respondingMemberCodesString);
+                if (storedMessage.getRequestedPhase().equals(lastGroupMessage.getRequestedPhase())) {
+                    lastGroupMessage.setActualRespondents(respondingMemberCodesString);
                 }
             }
         }
     }
 
     public void setUsersLastMessage(GroupMessage storedMessage) {
-        allMembersList.put(storedMessage.getUserId(), storedMessage);
+        if (!allMembersList.containsKey(storedMessage.getUserId())) {
+            allMembersList.put(storedMessage.getUserId(), new HashMap<GroupMessage, GroupMessage>());
+        }
+        allMembersList.get(storedMessage.getUserId()).put(storedMessage, storedMessage);
     }
 
-    public GroupMessage getGroupMember(final String memberId) {
-        return allMembersList.get(memberId);
+    public GroupMessage getGroupMember(GroupMessage incomingMessage) {
+        HashMap<GroupMessage, GroupMessage> userGroups = allMembersList.get(incomingMessage.getUserId());
+        if (userGroups != null) {
+            return userGroups.get(incomingMessage);
+        } else {
+            return null;
+        }
     }
 }
