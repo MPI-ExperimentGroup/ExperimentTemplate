@@ -351,7 +351,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         if (stimulusProvider.hasNextStimulus()) {
             stimulusProvider.nextStimulus();
             if (groupParticipantService != null) {
-                // todo: consider the placement of this response data clearing, does this scope cover all cases?      -
+                // @todo: consider the placement of this response data clearing, does this scope cover all cases?      -
                 groupParticipantService.setResponseStimulusId(null);
                 groupParticipantService.setResponseStimulusOptions(null);
             }
@@ -376,7 +376,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         throw new UnsupportedOperationException("todo: responseIncorrect");
     }
 
-    @Deprecated // todo: is this really used anymore? -
+    @Deprecated // @todo: is this really used anymore? -
     protected void removeStimulus() {
         stimulusProvider.nextStimulus();
         //localStorage.setStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()));
@@ -396,11 +396,12 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void groupNetwork(final AppEventListner appEventListner, final ApplicationState selfApplicationState, final String groupMembers, final String groupCommunicationChannels, final TimedStimulusListener timedStimulusListener) {
-        ((ComplexView) simpleView).addText("Group Members");
-        ((ComplexView) simpleView).addText(groupMembers);
-        ((ComplexView) simpleView).addPadding();
-        ((ComplexView) simpleView).addText("Group Communication Channels");
-        ((ComplexView) simpleView).addText(groupCommunicationChannels);
+        final Timer groupKickTimer = new Timer() {
+            @Override
+            public void run() {
+                groupParticipantService.messageGroup(0, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null, null, null);
+            }
+        };
         if (groupParticipantService == null) {
             groupParticipantService = new GroupParticipantService(
                     userResults.getUserData().getUserId().toString(),
@@ -411,14 +412,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 public void postLoadTimerFired() {
                     ((ComplexView) simpleView).addPadding();
                     ((ComplexView) simpleView).addText("connected: " + groupParticipantService.isConnected());
-                    ((ComplexView) simpleView).addText("StimuliList: " + groupParticipantService.getStimuliList());
                     timedStimulusListener.postLoadTimerFired();
-                    Timer timer = new Timer() {
-                        public void run() {
-                            groupParticipantService.messageGroup(0, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null, null, null);
-                        }
-                    };
-                    timer.schedule(100);
+                    groupKickTimer.schedule(1000);
                 }
             }, new TimedStimulusListener() {
                 @Override
@@ -426,44 +421,67 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     ((ComplexView) simpleView).clearPage();
                     ((ComplexView) simpleView).addPadding();
                     ((ComplexView) simpleView).addHighlightedText("Group not ready");
-                    ((ComplexView) simpleView).addText("AllMemberCodes: " + groupParticipantService.getAllMemberCodes());
-                    ((ComplexView) simpleView).addText("GroupId: " + groupParticipantService.getGroupId());
-                    ((ComplexView) simpleView).addText("GroupUUID: " + groupParticipantService.getGroupUUID());
-                    ((ComplexView) simpleView).addText("MemberCode: " + groupParticipantService.getMemberCode());
-                    ((ComplexView) simpleView).addText("MessageSender: " + groupParticipantService.getMessageSenderId());
-                    ((ComplexView) simpleView).addText("MessageString: " + groupParticipantService.getMessageString());
-                    ((ComplexView) simpleView).addText("StimulusId: " + groupParticipantService.getStimulusId());
-                    ((ComplexView) simpleView).addText("StimuliList: " + groupParticipantService.getStimuliList());
-                    ((ComplexView) simpleView).addText("ResponseStimulusOptions: " + groupParticipantService.getResponseStimulusOptions());
-                    ((ComplexView) simpleView).addText("ResponseStimulusId: " + groupParticipantService.getResponseStimulusId());
-                    ((ComplexView) simpleView).addText("StimulusIndex: " + groupParticipantService.getStimulusIndex());
-                    ((ComplexView) simpleView).addText("RequestedPhase: " + groupParticipantService.getRequestedPhase());
-                    ((ComplexView) simpleView).addText("UserLabel: " + groupParticipantService.getUserLabel());
-                    ((ComplexView) simpleView).addText("GroupReady: " + groupParticipantService.isGroupReady());
-//                    ((ComplexView) simpleView).addText("UserIdMatches: " + groupParticipantService.isUserIdMatches());
                     ((ComplexView) simpleView).addPadding();
+                    groupKickTimer.schedule(10000);
                 }
             }, new TimedStimulusListener() {
                 @Override
                 public void postLoadTimerFired() {
-                    ((ComplexView) simpleView).clearPage();
-                    Timer timer = new Timer() {
-                        public void run() {
-                            // when the stimuli list for this screen does not match that of the group, this listener is fired to: save the group stimuli list and then clear the screen causing the group stimuli list to be loaded
-                            localStorage.setStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag(), groupParticipantService.getStimuliList());
-                            appEventListner.requestApplicationState(selfApplicationState);
-                        }
-                    };
-                    timer.schedule(10);
+                    final String stimuliListGroup = groupParticipantService.getStimuliListGroup();
+                    // when the stimuli list for this screen does not match that of the group, this listener is fired to: save the group stimuli list and then load the group stimuli list
+                    stimulusProvider.loadStoredStimulusList(stimuliListGroup);
+                    final String loadedStimulusString = stimulusProvider.getLoadedStimulusString();
+                    localStorage.setStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag(), loadedStimulusString);
+                    groupParticipantService.setStimuliListLoaded(loadedStimulusString);
+                    groupKickTimer.schedule(1000);
                 }
             }, new TimedStimulusListener() {
                 @Override
                 public void postLoadTimerFired() {
                     // when a valid message has been received the current stimuli needs to be synchronised with the group
                     stimulusProvider.setCurrentStimuliIndex(groupParticipantService.getStimulusIndex());
-                    ((ComplexView) simpleView).addText("stimulusProvider: " + stimulusProvider.getCurrentStimulusIndex());
-                    ((ComplexView) simpleView).addText("stimulusProvider: " + stimulusProvider.getCurrentStimulus().getUniqueId());
-                    ((ComplexView) simpleView).addText("stimulusProvider: " + stimulusProvider.getLoadedStimulusString());
+                    if (!stimulusProvider.hasNextStimulus()) {
+                        // if the group message puts the stimuli list at the end then fire the end of stimulus listner
+                        endOfStimulusListener.postLoadTimerFired();
+                    }
+                }
+            }, new TimedStimulusListener() {
+                @Override
+                public void postLoadTimerFired() {
+                    ((ComplexView) simpleView).addInfoButton(new PresenterEventListner() {
+                        @Override
+                        public String getLabel() {
+                            return groupParticipantService.getMemberCode();
+                        }
+
+                        @Override
+                        public void eventFired(ButtonBase button, final SingleShotEventListner shotEventListner) {
+                            ((ComplexView) simpleView).showHtmlPopup(null,
+                                    "Group Members\n" + groupParticipantService.getAllMemberCodes()
+                                    + "\n\nGroup Communication Channels\n" + groupParticipantService.getGroupCommunicationChannels()
+                                    + "\n\nGroupId\n" + groupParticipantService.getGroupId()
+                                    + "\n\nGroupUUID\n" + groupParticipantService.getGroupUUID()
+                                    + "\n\nMemberCode\n" + groupParticipantService.getMemberCode()
+                                    + "\n\nMessageSender\n" + groupParticipantService.getMessageSenderId()
+                                    + "\n\nMessageString\n" + groupParticipantService.getMessageString()
+                                    + "\n\nStimulusId\n" + groupParticipantService.getStimulusId()
+                                    + "\n\nStimuliListLoaded\n" + groupParticipantService.getStimuliListLoaded()
+                                    + "\n\nStimuliListGroup\n" + groupParticipantService.getStimuliListGroup()
+                                    + "\n\nResponseStimulusOptions\n" + groupParticipantService.getResponseStimulusOptions()
+                                    + "\n\nResponseStimulusId\n" + groupParticipantService.getResponseStimulusId()
+                                    + "\n\nStimulusIndex\n" + groupParticipantService.getStimulusIndex()
+                                    + "\n\nRequestedPhase\n" + groupParticipantService.getRequestedPhase()
+                                    + "\n\nUserLabel\n" + groupParticipantService.getUserLabel()
+                                    + "\n\nGroupReady\n" + groupParticipantService.isGroupReady()
+                            );
+                            shotEventListner.resetSingleShot();
+                        }
+
+                        @Override
+                        public int getHotKey() {
+                            return -1;
+                        }
+                    });
                 }
             });
             groupParticipantService.joinGroupNetwork(serviceLocations.groupServerUrl());
@@ -473,8 +491,6 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void groupNetworkActivity(final String groupRole, final TimedStimulusListener timedStimulusListener) {
-        ((ComplexView) simpleView).addPadding();
-        ((ComplexView) simpleView).addText("Adding GroupRole: " + groupRole);
         groupParticipantService.addGroupActivity(groupRole, timedStimulusListener);
     }
 
@@ -523,7 +539,6 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void groupMemberLabel() {
         ((TimedStimulusView) simpleView).addHtmlText("groupMemberLabel: " + groupParticipantService.getUserLabel());
-        ((TimedStimulusView) simpleView).addHtmlText("StimuliList: " + groupParticipantService.getStimuliList());
     }
 
     protected void groupMemberCodeLabel() {

@@ -34,6 +34,7 @@ public class GroupParticipantService {
     private final HashMap<String, TimedStimulusListener> activityListeners = new HashMap<>();
     private final TimedStimulusListener screenResetRequestListner;
     private final TimedStimulusListener stimulusSyncListner;
+    private final TimedStimulusListener groupInfoChangeListner;
     private final String allMemberCodes;
     private final String groupCommunicationChannels;
     private final TimedStimulusListener connectedListener;
@@ -49,7 +50,8 @@ public class GroupParticipantService {
     private String memberCode = null;
     private String groupId = null;
     private String stimulusId = null;
-    private String stimuliList;
+    private String stimuliListLoaded;
+    private String stimuliListGroup;
     private Integer stimulusIndex = null;
     private Integer requestedPhase = 0;
     private String messageSenderId = null;
@@ -62,16 +64,17 @@ public class GroupParticipantService {
     private String groupUUID = null;
     private ArrayList<HashSet<String>> phaseMemberResponses = new ArrayList();
 
-    public GroupParticipantService(final String userId, String screenId, String groupMembers, String groupCommunicationChannels, String stimuliList, TimedStimulusListener connectedListener, TimedStimulusListener groupNotReadyListener, TimedStimulusListener screenResetRequestListner, TimedStimulusListener stimulusSyncListner) {
+    public GroupParticipantService(final String userId, String screenId, String groupMembers, String groupCommunicationChannels, String stimuliListLoaded, TimedStimulusListener connectedListener, TimedStimulusListener groupNotReadyListener, TimedStimulusListener screenResetRequestListner, TimedStimulusListener stimulusSyncListner, TimedStimulusListener groupInfoChangeListner) {
         this.userId = userId;
         this.allMemberCodes = groupMembers;
         this.groupCommunicationChannels = groupCommunicationChannels;
         this.connectedListener = connectedListener;
         this.groupNotReadyListener = groupNotReadyListener;
         this.screenResetRequestListner = screenResetRequestListner;
+        this.groupInfoChangeListner = groupInfoChangeListner;
         this.stimulusSyncListner = stimulusSyncListner;
         this.screenId = screenId;
-        this.stimuliList = stimuliList;
+        this.stimuliListLoaded = stimuliListLoaded;
     }
 
 //    public void addGroupActivity(final String groupRole, final int requestedPhase, final TimedStimulusListener activityListener) {
@@ -114,21 +117,28 @@ public class GroupParticipantService {
         this.lastFiredListnerGroupRole = null;
     }
 
-    protected synchronized void handleGroupMessage(String userId, String screenId, String userLabel, String groupId, String allMemberCodes, 
+    protected synchronized void handleGroupMessage(String userId, String screenId, String userLabel, String groupId, String allMemberCodes,
             String memberCode,
             String originMemberCode,
             String expectedRespondents,
             String actualRespondents,
-            String stimulusId, String stimulusIndex, String stimuliList, String requestedPhase,
+            String stimulusId, String stimulusIndex, String stimuliListGroup, String requestedPhase,
             String messageString, Boolean groupReady, String responseStimulusId, String groupUUID) {
         final boolean userIdMatches = this.userId.equals(userId);
         final boolean screenIdMatches = this.screenId.equals(screenId);
         final boolean groupIdMatches = (this.groupId != null) ? this.groupId.equals(groupId) : true; // if a group id was provided then ignore anyother groups
+        final boolean userGroupLabelUpdateNeeded = (userIdMatches && screenIdMatches) && (this.memberCode == null && memberCode != null);
         if (userIdMatches && screenIdMatches) {
             // handle direct messages
             this.userLabel = userLabel;
             this.memberCode = memberCode;
             this.groupId = groupId;
+            this.stimuliListGroup = stimuliListGroup;
+            if (!this.stimuliListLoaded.equals(this.stimuliListGroup)) {
+                // if the stimuli list does not match then reset the page after storing the received stimuli list
+                screenResetRequestListner.postLoadTimerFired();
+                return;
+            }
         }
 
         if (groupIdMatches && screenIdMatches) {
@@ -136,11 +146,7 @@ public class GroupParticipantService {
             this.messageSenderMemberCode = originMemberCode;
             this.groupUUID = groupUUID;
             this.groupReady = groupReady;
-            if (!this.stimuliList.equals(stimuliList)) {
-                // if the stimuli list does not match then reset the page after storing the received stimuli list
-                this.stimuliList = stimuliList;
-                screenResetRequestListner.postLoadTimerFired();
-            } else if (groupReady) {
+            if (groupReady && this.stimuliListLoaded.equals(this.stimuliListGroup)) {
                 // only if the group is ready do we try to process the group message
                 boolean messageIsRelevant = false;
                 for (String channel : groupCommunicationChannels.split("\\|")) {
@@ -187,6 +193,9 @@ public class GroupParticipantService {
                 groupNotReadyListener.postLoadTimerFired();
             }
         }
+        if (userGroupLabelUpdateNeeded) {
+            groupInfoChangeListner.postLoadTimerFired();
+        }
     }
 
     protected void setConnected(Boolean isConnected) {
@@ -226,8 +235,16 @@ public class GroupParticipantService {
         return stimulusIndex;
     }
 
-    public String getStimuliList() {
-        return stimuliList;
+    public String getStimuliListLoaded() {
+        return stimuliListLoaded;
+    }
+
+    public void setStimuliListLoaded(String stimuliListLoaded) {
+        this.stimuliListLoaded = stimuliListLoaded;
+    }
+
+    public String getStimuliListGroup() {
+        return stimuliListGroup;
     }
 
     public Integer getRequestedPhase() {
@@ -336,7 +353,7 @@ public class GroupParticipantService {
         if (windowGroupId == null) {
             windowGroupId = groupId;
         }
-        messageGroup(this.requestedPhase + incrementPhase, userId, windowGroupId, screenId, allMemberCodes, groupCommunicationChannels, lastFiredListnerGroupRole, stimulusId, stimulusIndex, stimuliList, messageString, responseStimulusOptions, responseStimulusId);
+        messageGroup(this.requestedPhase + incrementPhase, userId, windowGroupId, screenId, allMemberCodes, groupCommunicationChannels, lastFiredListnerGroupRole, stimulusId, stimulusIndex, stimuliListLoaded, messageString, responseStimulusOptions, responseStimulusId);
     }
 
     private native void messageGroup(int requestedPhase, String userId, String groupId, String screenId, String allMemberCodes, String groupCommunicationChannels, String expectedRespondents, String stimulusId, String stimulusIndex, String stimuliList, String messageString, String responseStimulusOptions, String responseStimulusId) /*-{
