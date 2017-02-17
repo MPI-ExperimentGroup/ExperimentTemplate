@@ -79,6 +79,8 @@ public abstract class SingleShotEventListner extends HandlesAllTouchEvents imple
     @Override
     public void onTouchStart(TouchStartEvent event) {
         sawTouchStart = true;
+        // @todo: ignore any multi touch events
+        // @todo: add a setting for ignoring any touch within x ms of a touch anywhere on the screen
 //        final JsArray<Touch> targetTouches = event.getTargetTouches();
 //        button.setText("onTouchStart:" + targetTouches.length());
 //        event.preventDefault();
