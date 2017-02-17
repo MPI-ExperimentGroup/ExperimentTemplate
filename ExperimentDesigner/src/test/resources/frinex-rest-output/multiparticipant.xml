@@ -59,7 +59,6 @@
                         <groupScoreLabel/>
                         <groupMemberLabel/>
                         <groupMemberCodeLabel/>
-                        <nextStimulus eventTag="nextStimulusFeatureTrainingDisplayRound 0" norepeat="true"/>
                         <htmlText featureText="All other participants wait for the producer"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="">
@@ -69,7 +68,6 @@
                         <groupScoreLabel/>
                         <groupMemberLabel/>
                         <groupMemberCodeLabel/>
-                        <nextStimulus eventTag="nextStimulusGuesserNetworkActivity1Round 0" norepeat="true"/>
                         <htmlText featureText="This phase is not used in this screen"/>
                         <showStimulusGrid imageWidth="10%" eventTag="guesserNetworkActivity1Grid" columnCount="5">
                             <responseCorrect msToNext="0">
@@ -193,7 +191,6 @@
                         <groupScoreLabel/>
                         <groupMemberLabel/>
                         <groupMemberCodeLabel/>
-                        <nextStimulus eventTag="nextStimulusGuesserNetworkActivity1Round 1" norepeat="true"/>
                         <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
                         <showStimulusGrid imageWidth="10%" eventTag="guesserNetworkActivity1Grid" columnCount="5">
                             <responseCorrect msToNext="0">
@@ -317,7 +314,6 @@
                         <groupScoreLabel/>
                         <groupMemberLabel/>
                         <groupMemberCodeLabel/>
-                        <nextStimulus eventTag="nextStimulusGuesserNetworkActivity1Round 2" norepeat="true"/>
                         <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
                         <showStimulusGrid imageWidth="10%" eventTag="guesserNetworkActivity1Grid" columnCount="5">
                             <responseCorrect msToNext="0">

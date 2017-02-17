@@ -235,16 +235,16 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         producerNetworkActivity1.getPresenterFeatureList().add(nextStimulusP);
         nextStimulusP.addFeatureAttributes(FeatureAttribute.norepeat, "true");
         nextStimulusP.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusProducerNetworkActivity1" + storedWizardScreenData.getScreenTitle());
-        final PresenterFeature nextStimulusG = new PresenterFeature(FeatureType.nextStimulus, null);
-        guesserNetworkActivity1.getPresenterFeatureList().add(nextStimulusG);
-        nextStimulusG.addFeatureAttributes(FeatureAttribute.norepeat, "true");
-        nextStimulusG.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusGuesserNetworkActivity1" + storedWizardScreenData.getScreenTitle());
+//        final PresenterFeature nextStimulusG = new PresenterFeature(FeatureType.nextStimulus, null);
+//        guesserNetworkActivity1.getPresenterFeatureList().add(nextStimulusG);
+//        nextStimulusG.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+//        nextStimulusG.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusGuesserNetworkActivity1" + storedWizardScreenData.getScreenTitle());
 
         if (storedWizardScreenData.getTaskIndex() == 1) {
-            final PresenterFeature nextStimulusX = new PresenterFeature(FeatureType.nextStimulus, null);
-            guesserNetworkActivity0.getPresenterFeatureList().add(nextStimulusX);
-            nextStimulusX.addFeatureAttributes(FeatureAttribute.norepeat, "true");
-            nextStimulusX.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusFeatureTrainingDisplay" + storedWizardScreenData.getScreenTitle());
+//            final PresenterFeature nextStimulusX = new PresenterFeature(FeatureType.nextStimulus, null);
+//            guesserNetworkActivity0.getPresenterFeatureList().add(nextStimulusX);
+//            nextStimulusX.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+//            nextStimulusX.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusFeatureTrainingDisplay" + storedWizardScreenData.getScreenTitle());
         }
         producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
         producerNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(1)));
