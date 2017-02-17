@@ -39,6 +39,14 @@ public class GroupManagerTest {
         final GroupMessage groupMessage6 = new GroupMessage("groupId", "screenId", "6");
         final GroupMessage groupMessage7 = new GroupMessage("groupId", "screenId", "7");
         final GroupMessage groupMessage8 = new GroupMessage("groupId", "screenId", "8");
+        groupMessage2.setActualRespondents("Respondents");
+        groupMessage2.setExpectedRespondents("Respondents");
+        groupMessage4.setActualRespondents("Respondents");
+        groupMessage4.setExpectedRespondents("Respondents");
+        groupMessage6.setActualRespondents("Respondents");
+        groupMessage6.setExpectedRespondents("Respondents");
+        groupMessage8.setActualRespondents("Respondents");
+        groupMessage8.setExpectedRespondents("Respondents");
         final GroupMessage groupMessage9 = new GroupMessage("groupIdOther", "screenId", "9");
         groupMessage9.setAllMemberCodes("A,B,C,D,E,F");
         return new GroupMessage[]{groupMessage1, groupMessage2, groupMessage3, groupMessage4, groupMessage5, groupMessage6, groupMessage7, groupMessage8, groupMessage9};

@@ -102,7 +102,12 @@ public class GroupManager {
                                 if (mostRecentChannelMessage.getRequestedPhase() < membersLastMessage.getRequestedPhase()) {
                                     System.out.println("other is more advanced than sent");
                                     // select only the most recent message for any user in this channel
-                                    mostRecentChannelMessage = membersLastMessage;
+                                    if (membersLastMessage.getExpectedRespondents() != null && membersLastMessage.getActualRespondents() != null
+                                            && membersLastMessage.getExpectedRespondents().equals(membersLastMessage.getActualRespondents())) {
+                                        System.out.println("all ExpectedRespondents replied");
+                                        // only resend a message if all expected respondants have replied                                        
+                                        mostRecentChannelMessage = membersLastMessage;
+                                    }
                                 }
                             }
                         }

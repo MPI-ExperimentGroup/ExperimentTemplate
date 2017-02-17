@@ -126,6 +126,7 @@ public class TestData {
     public String[][] getExpectedData() {
         return new String[][]{
             {"testuser-0", "testuser-0\n"
+                + "groupInfoChangeListner\n"
                 + "screenResetRequestListner\n"
                 + "groupNotReadyListener\n"
                 + "groupNotReadyListener\n"
@@ -174,8 +175,7 @@ public class TestData {
                 + "12-A-guesser wait[B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-]\n"
                 + "stimulusSyncListner\n"
                 + "13-A-guesser[-:B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A]\n"
-                + "stimulusSyncListner\n"
-                + ""},
+                + "stimulusSyncListner\n"},
             {"testuser-7", "testuser-7\n"
                 + "groupNotReadyListener\n"
                 + "groupNotReadyListener\n"
@@ -191,6 +191,7 @@ public class TestData {
                 + "groupNotReadyListener\n"
                 + "groupNotReadyListener\n"
                 + "groupNotReadyListener\n"
+                + "groupInfoChangeListner\n"
                 + "screenResetRequestListner\n"
                 + "stimulusSyncListner\n"
                 + "1-H-guesser[-:B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A]\n"
