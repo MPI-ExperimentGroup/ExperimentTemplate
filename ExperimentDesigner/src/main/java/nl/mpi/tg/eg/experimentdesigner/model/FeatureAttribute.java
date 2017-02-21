@@ -77,7 +77,6 @@ public enum FeatureAttribute {
     showPlaybackIndicator, // @todo: add the PlaybackIndicator
     groupRole,
     groupMembers,
-    groupMessageMatch,
     groupCommunicationChannels,
     incrementPhase,
     scoreValue
