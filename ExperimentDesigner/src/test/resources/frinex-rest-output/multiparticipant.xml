@@ -28,15 +28,11 @@
             <hasMoreStimulus>
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,B,C,D,E,F,G,H">
                     <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-">
+                        <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 0" norepeat="true"/>
                         <clearPage/>
-                        <scoreLabel/>
-                        <groupChannelScoreLabel/>
-                        <groupScoreLabel/>
-                        <groupMemberLabel/>
-                        <groupMemberCodeLabel/>
                         <stimulusLabel/>
                         <htmlText featureText="The producer sees the stimulus and enters some text"/>
-                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
+                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="topLeft2BottomRight" maxWidth="80">
                             <addPadding/>
                             <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." validationRegex="[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}"/>
                             <sendGroupMessageButton featureText="groupNetworkActivitySelf1" eventTag="groupNetworkActivitySelf1" incrementPhase="1" hotKey="W" norepeat="true"/>
@@ -44,79 +40,78 @@
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="-:A:-:B:-:C:-:D:-:E:-:F:-:G:-:H">
                         <clearPage/>
-                        <scoreLabel/>
-                        <groupChannelScoreLabel/>
-                        <groupScoreLabel/>
-                        <groupMemberLabel/>
-                        <groupMemberCodeLabel/>
-                        <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 0" norepeat="true"/>
                         <htmlText featureText="The producer waits for all other participants"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-">
                         <clearPage/>
-                        <scoreLabel/>
-                        <groupChannelScoreLabel/>
-                        <groupScoreLabel/>
-                        <groupMemberLabel/>
-                        <groupMemberCodeLabel/>
                         <htmlText featureText="All other participants wait for the producer"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="">
                         <clearPage/>
-                        <scoreLabel/>
-                        <groupChannelScoreLabel/>
-                        <groupScoreLabel/>
-                        <groupMemberLabel/>
-                        <groupMemberCodeLabel/>
                         <htmlText featureText="This phase is not used in this screen"/>
-                        <showStimulusGrid imageWidth="10%" eventTag="guesserNetworkActivity1Grid" columnCount="5">
+                        <showStimulusGrid imageWidth="50%" eventTag="guesserNetworkActivity1Grid" columnCount="5">
                             <responseCorrect msToNext="0">
-                                <htmlText featureText="responseCorrect"/>
+                                <scoreIncrement scoreThreshold="5" scoreValue="1">
+                                    <aboveThreshold>
+                                        <plainText featureText="above threshold"/>
+                                        <addPadding/>
+                                        <scoreLabel/>
+                                        <addPadding/>
+                                        <groupChannelScoreLabel/>
+                                        <addPadding/>
+                                        <groupScoreLabel/>
+                                        <addPadding/>
+                                        <sendGroupMessageButton featureText="correctNetworkActivityAboveThreshold" eventTag="correctNetworkActivityAboveThreshold" incrementPhase="1" hotKey="Z" norepeat="true"/>
+                                    </aboveThreshold>
+                                    <belowThreshold>
+                                        <plainText featureText="below threshold"/>
+                                        <addPadding/>
+                                        <scoreLabel/>
+                                        <addPadding/>
+                                        <groupChannelScoreLabel/>
+                                        <addPadding/>
+                                        <groupScoreLabel/>
+                                        <addPadding/>
+                                        <sendGroupMessageButton featureText="correctNetworkActivityBelowThreshold" eventTag="correctNetworkActivityBelowThreshold" incrementPhase="1" hotKey="Z" norepeat="true"/>
+                                    </belowThreshold>
+                                </scoreIncrement>
                             </responseCorrect>
                             <responseIncorrect msToNext="0">
-                                <htmlText featureText="responseIncorrect"/>
+                                <scoreIncrement scoreThreshold="5" scoreValue="0">
+                                    <aboveThreshold>
+                                        <plainText featureText="above threshold"/>
+                                        <addPadding/>
+                                        <scoreLabel/>
+                                        <addPadding/>
+                                        <groupChannelScoreLabel/>
+                                        <addPadding/>
+                                        <groupScoreLabel/>
+                                        <addPadding/>
+                                        <sendGroupMessageButton featureText="correctNetworkActivityAboveThreshold" eventTag="correctNetworkActivityAboveThreshold" incrementPhase="1" hotKey="Z" norepeat="true"/>
+                                    </aboveThreshold>
+                                    <belowThreshold>
+                                        <plainText featureText="below threshold"/>
+                                        <addPadding/>
+                                        <scoreLabel/>
+                                        <addPadding/>
+                                        <groupChannelScoreLabel/>
+                                        <addPadding/>
+                                        <groupScoreLabel/>
+                                        <addPadding/>
+                                        <sendGroupMessageButton featureText="correctNetworkActivityBelowThreshold" eventTag="correctNetworkActivityBelowThreshold" incrementPhase="1" hotKey="Z" norepeat="true"/>
+                                    </belowThreshold>
+                                </scoreIncrement>
                             </responseIncorrect>
                             <stimuli/>
                         </showStimulusGrid>
-                        <actionButton featureText="correct" eventTag="correct button" hotKey="Z">
-                            <clearPage/>
-                            <scoreIncrement scoreThreshold="5" scoreValue="1">
-                                <aboveThreshold>
-                                    <plainText featureText="above threshold"/>
-                                    <addPadding/>
-                                    <scoreLabel/>
-                                    <addPadding/>
-                                    <groupChannelScoreLabel/>
-                                    <addPadding/>
-                                    <groupScoreLabel/>
-                                    <addPadding/>
-                                    <sendGroupMessageButton featureText="correctNetworkActivityAboveThreshold" eventTag="correctNetworkActivityAboveThreshold" incrementPhase="1" hotKey="Z" norepeat="true"/>
-                                </aboveThreshold>
-                                <belowThreshold>
-                                    <plainText featureText="below threshold"/>
-                                    <addPadding/>
-                                    <scoreLabel/>
-                                    <addPadding/>
-                                    <groupChannelScoreLabel/>
-                                    <addPadding/>
-                                    <groupScoreLabel/>
-                                    <addPadding/>
-                                    <sendGroupMessageButton featureText="correctNetworkActivityBelowThreshold" eventTag="correctNetworkActivityBelowThreshold" incrementPhase="1" hotKey="Z" norepeat="true"/>
-                                </belowThreshold>
-                            </scoreIncrement>
-                        </actionButton>
-                        <sendGroupMessageButton featureText="incorrect" eventTag="incorrect" incrementPhase="1" hotKey="NUM_PERIOD" norepeat="true"/>
+                        <groupMessageLabel/>
                         <submitGroupEvent/>
+                        <enableStimulusButtons/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="">
                         <clearPage/>
-                        <scoreLabel/>
-                        <groupChannelScoreLabel/>
-                        <groupScoreLabel/>
-                        <groupMemberLabel/>
-                        <groupMemberCodeLabel/>
                         <htmlText featureText="This phase is not used in this screen"/>
-                        <showStimulusGrid imageWidth="10%" eventTag="resultsGrid" columnCount="5">
+                        <showStimulusGrid imageWidth="50%" eventTag="resultsGrid" columnCount="5">
                             <responseCorrect msToNext="0">
                                 <htmlText featureText="response not relevant"/>
                             </responseCorrect>
@@ -125,12 +120,11 @@
                             </responseIncorrect>
                             <stimuli/>
                         </showStimulusGrid>
+                        <groupMessageLabel/>
                         <sendGroupMessageButton featureText="nextStimulusFeature3" eventTag="nextStimulusFeature3" incrementPhase="1" hotKey="Q" norepeat="true"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="-:B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A">
                         <clearPage/>
-                        <groupMemberLabel/>
-                        <groupMemberCodeLabel/>
                         <htmlText featureText="The stimulus and the producers text are shown to all other participants"/>
                         <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                             <addPadding/>
@@ -155,15 +149,11 @@
             <hasMoreStimulus>
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,B|C,D|E,F|G,H">
                     <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
+                        <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 1" norepeat="true"/>
                         <clearPage/>
-                        <scoreLabel/>
-                        <groupChannelScoreLabel/>
-                        <groupScoreLabel/>
-                        <groupMemberLabel/>
-                        <groupMemberCodeLabel/>
                         <stimulusLabel/>
                         <htmlText featureText="The producer sees the stimulus and enters some text"/>
-                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
+                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="topLeft2BottomRight" maxWidth="80">
                             <addPadding/>
                             <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." validationRegex="[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}"/>
                             <sendGroupMessageButton featureText="groupNetworkActivitySelf1" eventTag="groupNetworkActivitySelf1" incrementPhase="1" hotKey="W" norepeat="true"/>
@@ -171,79 +161,78 @@
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
                         <clearPage/>
-                        <scoreLabel/>
-                        <groupChannelScoreLabel/>
-                        <groupScoreLabel/>
-                        <groupMemberLabel/>
-                        <groupMemberCodeLabel/>
-                        <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 1" norepeat="true"/>
                         <htmlText featureText="The producer waits for the guesser"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
                         <clearPage/>
-                        <scoreLabel/>
-                        <groupChannelScoreLabel/>
-                        <groupScoreLabel/>
-                        <groupMemberLabel/>
-                        <groupMemberCodeLabel/>
                         <htmlText featureText="The guesser waits for the producer"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
                         <clearPage/>
-                        <scoreLabel/>
-                        <groupChannelScoreLabel/>
-                        <groupScoreLabel/>
-                        <groupMemberLabel/>
-                        <groupMemberCodeLabel/>
                         <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
-                        <showStimulusGrid imageWidth="10%" eventTag="guesserNetworkActivity1Grid" columnCount="5">
+                        <showStimulusGrid imageWidth="50%" eventTag="guesserNetworkActivity1Grid" columnCount="5">
                             <responseCorrect msToNext="0">
-                                <htmlText featureText="responseCorrect"/>
+                                <scoreIncrement scoreThreshold="5" scoreValue="1">
+                                    <aboveThreshold>
+                                        <plainText featureText="above threshold"/>
+                                        <addPadding/>
+                                        <scoreLabel/>
+                                        <addPadding/>
+                                        <groupChannelScoreLabel/>
+                                        <addPadding/>
+                                        <groupScoreLabel/>
+                                        <addPadding/>
+                                        <sendGroupMessageButton featureText="correctNetworkActivityAboveThreshold" eventTag="correctNetworkActivityAboveThreshold" incrementPhase="1" hotKey="Z" norepeat="true"/>
+                                    </aboveThreshold>
+                                    <belowThreshold>
+                                        <plainText featureText="below threshold"/>
+                                        <addPadding/>
+                                        <scoreLabel/>
+                                        <addPadding/>
+                                        <groupChannelScoreLabel/>
+                                        <addPadding/>
+                                        <groupScoreLabel/>
+                                        <addPadding/>
+                                        <sendGroupMessageButton featureText="correctNetworkActivityBelowThreshold" eventTag="correctNetworkActivityBelowThreshold" incrementPhase="1" hotKey="Z" norepeat="true"/>
+                                    </belowThreshold>
+                                </scoreIncrement>
                             </responseCorrect>
                             <responseIncorrect msToNext="0">
-                                <htmlText featureText="responseIncorrect"/>
+                                <scoreIncrement scoreThreshold="5" scoreValue="0">
+                                    <aboveThreshold>
+                                        <plainText featureText="above threshold"/>
+                                        <addPadding/>
+                                        <scoreLabel/>
+                                        <addPadding/>
+                                        <groupChannelScoreLabel/>
+                                        <addPadding/>
+                                        <groupScoreLabel/>
+                                        <addPadding/>
+                                        <sendGroupMessageButton featureText="correctNetworkActivityAboveThreshold" eventTag="correctNetworkActivityAboveThreshold" incrementPhase="1" hotKey="Z" norepeat="true"/>
+                                    </aboveThreshold>
+                                    <belowThreshold>
+                                        <plainText featureText="below threshold"/>
+                                        <addPadding/>
+                                        <scoreLabel/>
+                                        <addPadding/>
+                                        <groupChannelScoreLabel/>
+                                        <addPadding/>
+                                        <groupScoreLabel/>
+                                        <addPadding/>
+                                        <sendGroupMessageButton featureText="correctNetworkActivityBelowThreshold" eventTag="correctNetworkActivityBelowThreshold" incrementPhase="1" hotKey="Z" norepeat="true"/>
+                                    </belowThreshold>
+                                </scoreIncrement>
                             </responseIncorrect>
                             <stimuli/>
                         </showStimulusGrid>
-                        <actionButton featureText="correct" eventTag="correct button" hotKey="Z">
-                            <clearPage/>
-                            <scoreIncrement scoreThreshold="5" scoreValue="1">
-                                <aboveThreshold>
-                                    <plainText featureText="above threshold"/>
-                                    <addPadding/>
-                                    <scoreLabel/>
-                                    <addPadding/>
-                                    <groupChannelScoreLabel/>
-                                    <addPadding/>
-                                    <groupScoreLabel/>
-                                    <addPadding/>
-                                    <sendGroupMessageButton featureText="correctNetworkActivityAboveThreshold" eventTag="correctNetworkActivityAboveThreshold" incrementPhase="1" hotKey="Z" norepeat="true"/>
-                                </aboveThreshold>
-                                <belowThreshold>
-                                    <plainText featureText="below threshold"/>
-                                    <addPadding/>
-                                    <scoreLabel/>
-                                    <addPadding/>
-                                    <groupChannelScoreLabel/>
-                                    <addPadding/>
-                                    <groupScoreLabel/>
-                                    <addPadding/>
-                                    <sendGroupMessageButton featureText="correctNetworkActivityBelowThreshold" eventTag="correctNetworkActivityBelowThreshold" incrementPhase="1" hotKey="Z" norepeat="true"/>
-                                </belowThreshold>
-                            </scoreIncrement>
-                        </actionButton>
-                        <sendGroupMessageButton featureText="incorrect" eventTag="incorrect" incrementPhase="1" hotKey="NUM_PERIOD" norepeat="true"/>
+                        <groupMessageLabel/>
                         <submitGroupEvent/>
+                        <enableStimulusButtons/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
                         <clearPage/>
-                        <scoreLabel/>
-                        <groupChannelScoreLabel/>
-                        <groupScoreLabel/>
-                        <groupMemberLabel/>
-                        <groupMemberCodeLabel/>
                         <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                        <showStimulusGrid imageWidth="10%" eventTag="resultsGrid" columnCount="5">
+                        <showStimulusGrid imageWidth="50%" eventTag="resultsGrid" columnCount="5">
                             <responseCorrect msToNext="0">
                                 <htmlText featureText="response not relevant"/>
                             </responseCorrect>
@@ -252,12 +241,11 @@
                             </responseIncorrect>
                             <stimuli/>
                         </showStimulusGrid>
+                        <groupMessageLabel/>
                         <sendGroupMessageButton featureText="nextStimulusFeature3" eventTag="nextStimulusFeature3" incrementPhase="1" hotKey="Q" norepeat="true"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="">
                         <clearPage/>
-                        <groupMemberLabel/>
-                        <groupMemberCodeLabel/>
                         <htmlText featureText="This phase is not used in this screen"/>
                         <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                             <addPadding/>
@@ -282,15 +270,11 @@
             <hasMoreStimulus>
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="B,C|D,E|F,G|H,A">
                     <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
+                        <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 2" norepeat="true"/>
                         <clearPage/>
-                        <scoreLabel/>
-                        <groupChannelScoreLabel/>
-                        <groupScoreLabel/>
-                        <groupMemberLabel/>
-                        <groupMemberCodeLabel/>
                         <stimulusLabel/>
                         <htmlText featureText="The producer sees the stimulus and enters some text"/>
-                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
+                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="topLeft2BottomRight" maxWidth="80">
                             <addPadding/>
                             <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." validationRegex="[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}"/>
                             <sendGroupMessageButton featureText="groupNetworkActivitySelf1" eventTag="groupNetworkActivitySelf1" incrementPhase="1" hotKey="W" norepeat="true"/>
@@ -298,79 +282,78 @@
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
                         <clearPage/>
-                        <scoreLabel/>
-                        <groupChannelScoreLabel/>
-                        <groupScoreLabel/>
-                        <groupMemberLabel/>
-                        <groupMemberCodeLabel/>
-                        <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 2" norepeat="true"/>
                         <htmlText featureText="The producer waits for the guesser"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
                         <clearPage/>
-                        <scoreLabel/>
-                        <groupChannelScoreLabel/>
-                        <groupScoreLabel/>
-                        <groupMemberLabel/>
-                        <groupMemberCodeLabel/>
                         <htmlText featureText="The guesser waits for the producer"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
                         <clearPage/>
-                        <scoreLabel/>
-                        <groupChannelScoreLabel/>
-                        <groupScoreLabel/>
-                        <groupMemberLabel/>
-                        <groupMemberCodeLabel/>
                         <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
-                        <showStimulusGrid imageWidth="10%" eventTag="guesserNetworkActivity1Grid" columnCount="5">
+                        <showStimulusGrid imageWidth="50%" eventTag="guesserNetworkActivity1Grid" columnCount="5">
                             <responseCorrect msToNext="0">
-                                <htmlText featureText="responseCorrect"/>
+                                <scoreIncrement scoreThreshold="5" scoreValue="1">
+                                    <aboveThreshold>
+                                        <plainText featureText="above threshold"/>
+                                        <addPadding/>
+                                        <scoreLabel/>
+                                        <addPadding/>
+                                        <groupChannelScoreLabel/>
+                                        <addPadding/>
+                                        <groupScoreLabel/>
+                                        <addPadding/>
+                                        <sendGroupMessageButton featureText="correctNetworkActivityAboveThreshold" eventTag="correctNetworkActivityAboveThreshold" incrementPhase="1" hotKey="Z" norepeat="true"/>
+                                    </aboveThreshold>
+                                    <belowThreshold>
+                                        <plainText featureText="below threshold"/>
+                                        <addPadding/>
+                                        <scoreLabel/>
+                                        <addPadding/>
+                                        <groupChannelScoreLabel/>
+                                        <addPadding/>
+                                        <groupScoreLabel/>
+                                        <addPadding/>
+                                        <sendGroupMessageButton featureText="correctNetworkActivityBelowThreshold" eventTag="correctNetworkActivityBelowThreshold" incrementPhase="1" hotKey="Z" norepeat="true"/>
+                                    </belowThreshold>
+                                </scoreIncrement>
                             </responseCorrect>
                             <responseIncorrect msToNext="0">
-                                <htmlText featureText="responseIncorrect"/>
+                                <scoreIncrement scoreThreshold="5" scoreValue="0">
+                                    <aboveThreshold>
+                                        <plainText featureText="above threshold"/>
+                                        <addPadding/>
+                                        <scoreLabel/>
+                                        <addPadding/>
+                                        <groupChannelScoreLabel/>
+                                        <addPadding/>
+                                        <groupScoreLabel/>
+                                        <addPadding/>
+                                        <sendGroupMessageButton featureText="correctNetworkActivityAboveThreshold" eventTag="correctNetworkActivityAboveThreshold" incrementPhase="1" hotKey="Z" norepeat="true"/>
+                                    </aboveThreshold>
+                                    <belowThreshold>
+                                        <plainText featureText="below threshold"/>
+                                        <addPadding/>
+                                        <scoreLabel/>
+                                        <addPadding/>
+                                        <groupChannelScoreLabel/>
+                                        <addPadding/>
+                                        <groupScoreLabel/>
+                                        <addPadding/>
+                                        <sendGroupMessageButton featureText="correctNetworkActivityBelowThreshold" eventTag="correctNetworkActivityBelowThreshold" incrementPhase="1" hotKey="Z" norepeat="true"/>
+                                    </belowThreshold>
+                                </scoreIncrement>
                             </responseIncorrect>
                             <stimuli/>
                         </showStimulusGrid>
-                        <actionButton featureText="correct" eventTag="correct button" hotKey="Z">
-                            <clearPage/>
-                            <scoreIncrement scoreThreshold="5" scoreValue="1">
-                                <aboveThreshold>
-                                    <plainText featureText="above threshold"/>
-                                    <addPadding/>
-                                    <scoreLabel/>
-                                    <addPadding/>
-                                    <groupChannelScoreLabel/>
-                                    <addPadding/>
-                                    <groupScoreLabel/>
-                                    <addPadding/>
-                                    <sendGroupMessageButton featureText="correctNetworkActivityAboveThreshold" eventTag="correctNetworkActivityAboveThreshold" incrementPhase="1" hotKey="Z" norepeat="true"/>
-                                </aboveThreshold>
-                                <belowThreshold>
-                                    <plainText featureText="below threshold"/>
-                                    <addPadding/>
-                                    <scoreLabel/>
-                                    <addPadding/>
-                                    <groupChannelScoreLabel/>
-                                    <addPadding/>
-                                    <groupScoreLabel/>
-                                    <addPadding/>
-                                    <sendGroupMessageButton featureText="correctNetworkActivityBelowThreshold" eventTag="correctNetworkActivityBelowThreshold" incrementPhase="1" hotKey="Z" norepeat="true"/>
-                                </belowThreshold>
-                            </scoreIncrement>
-                        </actionButton>
-                        <sendGroupMessageButton featureText="incorrect" eventTag="incorrect" incrementPhase="1" hotKey="NUM_PERIOD" norepeat="true"/>
+                        <groupMessageLabel/>
                         <submitGroupEvent/>
+                        <enableStimulusButtons/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
                         <clearPage/>
-                        <scoreLabel/>
-                        <groupChannelScoreLabel/>
-                        <groupScoreLabel/>
-                        <groupMemberLabel/>
-                        <groupMemberCodeLabel/>
                         <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                        <showStimulusGrid imageWidth="10%" eventTag="resultsGrid" columnCount="5">
+                        <showStimulusGrid imageWidth="50%" eventTag="resultsGrid" columnCount="5">
                             <responseCorrect msToNext="0">
                                 <htmlText featureText="response not relevant"/>
                             </responseCorrect>
@@ -379,12 +362,11 @@
                             </responseIncorrect>
                             <stimuli/>
                         </showStimulusGrid>
+                        <groupMessageLabel/>
                         <sendGroupMessageButton featureText="nextStimulusFeature3" eventTag="nextStimulusFeature3" incrementPhase="1" hotKey="Q" norepeat="true"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="">
                         <clearPage/>
-                        <groupMemberLabel/>
-                        <groupMemberCodeLabel/>
                         <htmlText featureText="This phase is not used in this screen"/>
                         <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                             <addPadding/>

@@ -120,21 +120,21 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         this.wizardScreenData.setButtonLabelEventTag(buttonLabelEventTag);
     }
 
-    private PresenterFeature getScoreFeatures() {
-        final PresenterFeature scoreButtonFeature = new PresenterFeature(FeatureType.actionButton, "correct");
-        scoreButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, "correct button");
-        scoreButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, "Z");
-        scoreButtonFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+    private PresenterFeature getScoreFeatures(boolean correctResponse) {
+//        final PresenterFeature scoreButtonFeature = new PresenterFeature(FeatureType.actionButton, "correct");
+//        scoreButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, "correct button");
+//        scoreButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, "Z");
+//        scoreButtonFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         final PresenterFeature scoreIncrement = new PresenterFeature(FeatureType.scoreIncrement, null);
         scoreIncrement.addFeatureAttributes(FeatureAttribute.scoreThreshold, "5");
-        scoreIncrement.addFeatureAttributes(FeatureAttribute.scoreValue, "1");
+        scoreIncrement.addFeatureAttributes(FeatureAttribute.scoreValue, (correctResponse) ? "1" : "0");
         final PresenterFeature aboveThreshold = new PresenterFeature(FeatureType.aboveThreshold, null);
         aboveThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "above threshold"));
         scoreIncrement.getPresenterFeatureList().add(aboveThreshold);
         final PresenterFeature belowThreshold = new PresenterFeature(FeatureType.belowThreshold, null);
         belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "below threshold"));
         scoreIncrement.getPresenterFeatureList().add(belowThreshold);
-        scoreButtonFeature.getPresenterFeatureList().add(scoreIncrement);
+//        scoreButtonFeature.getPresenterFeatureList().add(scoreIncrement);
         aboveThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
         aboveThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
         aboveThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
@@ -154,7 +154,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         final PresenterFeature belowFeature = addGroupMessageButton("correctNetworkActivityBelowThreshold", "Z");
         aboveThreshold.getPresenterFeatureList().add(aboveFeature);
         belowThreshold.getPresenterFeatureList().add(belowFeature);
-        return scoreButtonFeature;
+        return scoreIncrement;
     }
 
     @Override
@@ -183,6 +183,11 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //        groupNetworkActivity2.addFeatureAttributes(FeatureAttribute.requestedPhase, "1");
         final PresenterFeature trainingDisplayNetworkActivity3 = new PresenterFeature(FeatureType.groupNetworkActivity, null);
 
+        final PresenterFeature nextStimulusP = new PresenterFeature(FeatureType.nextStimulus, null);
+        producerNetworkActivity0.getPresenterFeatureList().add(nextStimulusP);
+        nextStimulusP.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+        nextStimulusP.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusProducerNetworkActivity1" + storedWizardScreenData.getScreenTitle());
+
         producerNetworkActivity0.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[0]);
         guesserNetworkActivity0.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[1]);
         producerNetworkActivity1.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[2]);
@@ -197,49 +202,39 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         trainingDisplayNetworkActivity3.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
 
-        producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
-        producerNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
-        guesserNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
-        guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
-        allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
-
-        producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupChannelScoreLabel, null));
-        producerNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupChannelScoreLabel, null));
-        guesserNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupChannelScoreLabel, null));
-        guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupChannelScoreLabel, null));
-        allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupChannelScoreLabel, null));
-
-        producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupScoreLabel, null));
-        producerNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupScoreLabel, null));
-        guesserNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupScoreLabel, null));
-        guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupScoreLabel, null));
-        allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupScoreLabel, null));
-
-        producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberLabel, null));
-        producerNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberLabel, null));
-        guesserNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberLabel, null));
-        guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberLabel, null));
-        allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberLabel, null));
-        trainingDisplayNetworkActivity3.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberLabel, null));
-
-        producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberCodeLabel, null));
-        producerNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberCodeLabel, null));
-        guesserNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberCodeLabel, null));
-        guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberCodeLabel, null));
-        allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberCodeLabel, null));
-        trainingDisplayNetworkActivity3.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberCodeLabel, null));
-
+//        producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
+//        producerNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
+//        guesserNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
+//        guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
+//        allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
+//        producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupChannelScoreLabel, null));
+//        producerNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupChannelScoreLabel, null));
+//        guesserNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupChannelScoreLabel, null));
+//        guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupChannelScoreLabel, null));
+//        allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupChannelScoreLabel, null));
+//        producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupScoreLabel, null));
+//        producerNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupScoreLabel, null));
+//        guesserNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupScoreLabel, null));
+//        guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupScoreLabel, null));
+//        allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupScoreLabel, null));
+//        producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberLabel, null));
+//        producerNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberLabel, null));
+//        guesserNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberLabel, null));
+//        guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberLabel, null));
+//        allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberLabel, null));
+//        trainingDisplayNetworkActivity3.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberLabel, null));
+//        producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberCodeLabel, null));
+//        producerNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberCodeLabel, null));
+//        guesserNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberCodeLabel, null));
+//        guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberCodeLabel, null));
+//        allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberCodeLabel, null));
+//        trainingDisplayNetworkActivity3.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMemberCodeLabel, null));
         producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
 
-        final PresenterFeature nextStimulusP = new PresenterFeature(FeatureType.nextStimulus, null);
-        producerNetworkActivity1.getPresenterFeatureList().add(nextStimulusP);
-        nextStimulusP.addFeatureAttributes(FeatureAttribute.norepeat, "true");
-        nextStimulusP.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusProducerNetworkActivity1" + storedWizardScreenData.getScreenTitle());
 //        final PresenterFeature nextStimulusG = new PresenterFeature(FeatureType.nextStimulus, null);
 //        guesserNetworkActivity1.getPresenterFeatureList().add(nextStimulusG);
 //        nextStimulusG.addFeatureAttributes(FeatureAttribute.norepeat, "true");
 //        nextStimulusG.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusGuesserNetworkActivity1" + storedWizardScreenData.getScreenTitle());
-
         if (storedWizardScreenData.getTaskIndex() == 1) {
 //            final PresenterFeature nextStimulusX = new PresenterFeature(FeatureType.nextStimulus, null);
 //            guesserNetworkActivity0.getPresenterFeatureList().add(nextStimulusX);
@@ -269,20 +264,26 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
+        imageFeature.addFeatureAttributes(FeatureAttribute.animate, "topLeft2BottomRight");
         producerNetworkActivity0.getPresenterFeatureList().add(imageFeature);
         // temporary testing features
-        final PresenterFeature stimulusGrid = addStimuliGrid("guesserNetworkActivity1Grid", new PresenterFeature(FeatureType.htmlText, "responseCorrect"), new PresenterFeature(FeatureType.htmlText, "responseIncorrect"));
+        final PresenterFeature stimulusGrid = addStimuliGrid("guesserNetworkActivity1Grid", getScoreFeatures(true), getScoreFeatures(false));
         guesserNetworkActivity1.getPresenterFeatureList().add(stimulusGrid);
         final PresenterFeature resultsGrid = addStimuliGrid("resultsGrid", new PresenterFeature(FeatureType.htmlText, "response not relevant"), new PresenterFeature(FeatureType.htmlText, "response not relevant"));
         allNetworkActivity2.getPresenterFeatureList().add(resultsGrid);
+
+        guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMessageLabel, null));
+        allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMessageLabel, null));
+
 //        (true, false, new FeatureAttribute[]{, , }, true, false, FeatureType.Contitionals.hasCorrectIncorrect),
-        final PresenterFeature correctButton = getScoreFeatures();
-        final PresenterFeature incorrectButton = addGroupMessageButton("incorrect", "NUM_PERIOD");
+//        final PresenterFeature correctButton = getScoreFeatures();
+//        final PresenterFeature incorrectButton = addGroupMessageButton("incorrect", "NUM_PERIOD");
 //        final PresenterFeature nextStimulusFeature2 = addGroupMessageButton("groupNetworkActivity2", "Q");
-        guesserNetworkActivity1.getPresenterFeatureList().add(correctButton);
-        guesserNetworkActivity1.getPresenterFeatureList().add(incorrectButton);
+//        guesserNetworkActivity1.getPresenterFeatureList().add(correctButton);
+//        guesserNetworkActivity1.getPresenterFeatureList().add(incorrectButton);
         // @todo: is this inserted into the correct location
         guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.submitGroupEvent, null));
+        guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.enableStimulusButtons, null));
 //        incorrectButton.getPresenterFeatureList().add(new PresenterFeature(FeatureType.submitGroupEvent, null));
 
         final PresenterFeature nextStimulusFeature3 = addGroupMessageButton("nextStimulusFeature3", "Q");
@@ -381,7 +382,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //        guesserNetworkActivity0.getPresenterFeatureList().add(nextStimulusFeature1);
         final PresenterFeature resultsGrid = new PresenterFeature(FeatureType.showStimulusGrid, null);
         resultsGrid.addFeatureAttributes(FeatureAttribute.columnCount, "5");
-        resultsGrid.addFeatureAttributes(FeatureAttribute.imageWidth, "10%");
+        resultsGrid.addFeatureAttributes(FeatureAttribute.imageWidth, "50%");
         resultsGrid.addFeatureAttributes(FeatureAttribute.eventTag, eventTagString);
         final PresenterFeature responseCorrect = new PresenterFeature(FeatureType.responseCorrect, null);
         responseCorrect.getPresenterFeatureList().add(responseCorrectFeatures);
