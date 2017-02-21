@@ -3,14 +3,14 @@
     <metadata>
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Worker ID"/>
     </metadata>
-    <presenter back="DebugScreen" displayOrder="1" menuLabel="Annotation Timeline Panel" type="timeline" self="Annotation_Timeline_Panel" title="Annotation Timeline Panel">
+    <presenter back="about" displayOrder="1" menuLabel="Annotation Timeline Panel" type="timeline" self="Annotation_Timeline_Panel" title="Annotation Timeline Panel">
         <AnnotationTimelinePanel mp4="http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4" eventTag="Annotation_Timeline_Panel" columnCount="2" maxStimuli="10">
             <stimuli>
                 <tag>videotag</tag>
             </stimuli>
         </AnnotationTimelinePanel>
     </presenter>
-    <presenter back="Annotation_Timeline_Panel" displayOrder="2" menuLabel="Debug Screen" type="debug" self="DebugScreen" title="Debug Screen">
+    <presenter back="Annotation_Timeline_Panel" displayOrder="2" menuLabel="About Screen" type="debug" self="about" title="About Screen">
         <versionData/>
         <eraseLocalStorageButton/>
         <localStorageData/>
