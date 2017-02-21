@@ -18,9 +18,9 @@
 package nl.mpi.tg.eg.experiment.client.service;
 
 import com.google.gwt.user.client.Window;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.List;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 
 /**
@@ -62,7 +62,6 @@ public class GroupParticipantService {
     private String responseStimulusOptions = null;
     private String responseStimulusId = null;
     private String groupUUID = null;
-    private ArrayList<HashSet<String>> phaseMemberResponses = new ArrayList();
 
     public GroupParticipantService(final String userId, String screenId, String groupMembers, String groupCommunicationChannels, String stimuliListLoaded, TimedStimulusListener connectedListener, TimedStimulusListener groupNotReadyListener, TimedStimulusListener screenResetRequestListner, TimedStimulusListener stimulusSyncListner, TimedStimulusListener groupInfoChangeListner) {
         this.userId = userId;
@@ -153,16 +152,15 @@ public class GroupParticipantService {
                 // only if the group is ready do we try to process the group message
                 boolean messageIsRelevant = false;
                 for (String channel : groupCommunicationChannels.split("\\|")) {
+                    final List<String> channelList = Arrays.asList(channel.split(","));
                     // check communication channel before responding to the message
-                    if (channel.contains(this.memberCode) && channel.contains(this.messageSenderMemberCode)) {
-                        messageIsRelevant = true;
-                        while (phaseMemberResponses.size() <= Integer.parseInt(requestedPhase)) {
-                            phaseMemberResponses.add(new HashSet<String>());
+                    if (channelList.contains(this.memberCode) && channelList.contains(this.messageSenderMemberCode)) {
+                        final List<String> requiredRespondentsList = Arrays.asList(expectedRespondents.split(","));
+                        requiredRespondentsList.retainAll(channelList);
+                        final List<String> actualRespondentsList = Arrays.asList(actualRespondents.split(","));
+                        if (actualRespondentsList.containsAll(requiredRespondentsList)) {
+                            messageIsRelevant = true;
                         }
-                        final HashSet<String> messagesReceived = phaseMemberResponses.get(Integer.parseInt(requestedPhase));
-                        messagesReceived.add(this.messageSenderMemberCode);
-                        // todo: make sure each message is a complete state, therefore each message must hold the members that have responded to a given stage from which the readyness should be calculated
-                        break;
                     }
                 }
                 if (messageIsRelevant && groupReady) {
