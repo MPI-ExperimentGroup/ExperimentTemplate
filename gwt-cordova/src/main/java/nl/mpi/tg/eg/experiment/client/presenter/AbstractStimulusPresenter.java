@@ -81,7 +81,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     private boolean hasSubdirectories = false;
 
     protected enum AnimateTypes {
-        bounce, none
+        bounce, none, topLeft2BottomRight
     }
 
     public AbstractStimulusPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage) {
@@ -422,7 +422,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     ((ComplexView) simpleView).addPadding();
                     ((ComplexView) simpleView).addHighlightedText("Group not ready");
                     ((ComplexView) simpleView).addPadding();
-                    groupKickTimer.schedule(10000);
+//                    groupKickTimer.schedule(10000);
                 }
             }, new TimedStimulusListener() {
                 @Override
@@ -486,7 +486,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             });
             groupParticipantService.joinGroupNetwork(serviceLocations.groupServerUrl());
         } else {
-            groupParticipantService.messageGroup(0, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null, null, null);
+//            groupParticipantService.messageGroup(0, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null, null, null);
+//              groupParticipantService.messageGroup(0, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), messageString, groupParticipantService.getResponseStimulusOptions(), groupParticipantService.getResponseStimulusId());
         }
     }
 
@@ -531,6 +532,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void groupChannelScoreLabel() {
         ((TimedStimulusView) simpleView).addHtmlText("groupChannelScoreLabel");
+    }
+
+    protected void groupMessageLabel() {
+        ((TimedStimulusView) simpleView).addHtmlText(groupParticipantService.getMessageString());
     }
 
     protected void groupScoreLabel() {
@@ -617,7 +622,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 }
             };
 //            submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusImage", image, duration.elapsedMillis());
-            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(image), percentOfPage, maxHeight, maxWidth, (animateType.equals(AnimateTypes.bounce)) ? "bounceAnimation" : null, fixedPositionY, postLoadMs, shownStimulusListener, timedStimulusListener, clickedStimulusListener);
+            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(image), percentOfPage, maxHeight, maxWidth, (animateType != AnimateTypes.none) ? animateType.name() + "Animation" : null, fixedPositionY, postLoadMs, shownStimulusListener, timedStimulusListener, clickedStimulusListener);
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
         } else if (currentStimulus.hasAudio()) {
             String mp3 = currentStimulus.getAudio() + ".mp3";

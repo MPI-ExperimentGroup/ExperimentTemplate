@@ -385,8 +385,8 @@ table#screenExample td, .stimulusHelpPanel .gwt-Button, .stimulusHelpText, .popu
 } 
 
 .gwt-PushButton.stimulusButton, .gwt-Button.stimulusButton{
-    width: 60%;    
-    height: 100%;    
+    /*width: 60%;*/    
+    /*height: 100%;*/    
     /*vertical-align: middle;*/
     margin-top: auto;
     margin-bottom: auto;
@@ -554,11 +554,16 @@ table#screenExample td {
 }
 
 .bounceAnimation {
-    /*position: relative;*/
     position: fixed;
     top: 35%;
     -webkit-animation: bouncekeyframes 2s 1;
     -webkit-animation-timing-function: cubic-bezier(0.835, 1.555, 0.695, 0.675);
+}
+
+.topLeft2BottomRightAnimation {
+    position: relative;
+    -webkit-animation: topLeft2BottomRightKeyFrames 2s infinite;
+    animation-timing-function: ease;
 }
 
 .gwt-Button.optionButton.hiddenTopRight, .gwt-Button.optionButton.hiddenBottomRight{
@@ -581,6 +586,11 @@ table#screenExample td {
 @-webkit-keyframes bouncekeyframes {
     from {top: -50%;}
     to {top: 35%;}
+}
+
+@-webkit-keyframes topLeft2BottomRightKeyFrames {
+    from {padding-left: 0px; padding-top: 0px; padding-bottom: 50px; padding-right: 50px;}
+    to {padding-left: 50px; padding-top: 50px; padding-bottom: 0px; padding-right: 0px;}
 }
 
 textarea.metadataError, textarea.metadataOK {
