@@ -167,7 +167,7 @@ public class RosselFieldKit {
         wizardSelectUserScreen.setNextWizardScreen(menuScreen);
         final WizardEditUserScreen editUserPresenter = new WizardEditUserScreen("Information about the participant", "Edit User", null, "Save and continue", null, null, null, false, "Could not contact the server, please check your internet connection and try again.");
         editUserPresenter.setCustomFields(new String[]{"workerId:Participant ID:.'{'3,'}':Please enter at least three letters."});
-//        final WizardAboutScreen debugScreenPresenter = new WizardAboutScreen();
+        final WizardAboutScreen debugScreenPresenter = new WizardAboutScreen("About this app", true);
 
         final WizardStimulusScreen wizardStimulusScreenSequential = new WizardStimulusScreen();
         wizardStimulusScreenSequential.setScreenTitle("FieldKit Sequential");
@@ -202,7 +202,7 @@ public class RosselFieldKit {
 //        task2Screen.setBackWizardScreen(menuScreen);
 //        task1Screen.setNextWizardScreen(menuScreen);
 //        task2Screen.setNextWizardScreen(menuScreen);
-//        debugScreenPresenter.setBackWizardScreen(menuScreen);
+        debugScreenPresenter.setBackWizardScreen(menuScreen);
         task1ScreenSD.setBackWizardScreen(menuScreen);
         task1ScreenSD.setNextWizardScreen(menuScreen);
         task2ScreenSD.setBackWizardScreen(menuScreen);
@@ -222,7 +222,7 @@ public class RosselFieldKit {
 //        menuScreen.addTargetScreen(task2Screen);
         menuScreen.addTargetScreen(wizardStimulusScreenSequential);
         menuScreen.addTargetScreen(wizardStimulusScreenRandom);
-//        menuScreen.addTargetScreen(debugScreenPresenter);
+        menuScreen.addTargetScreen(debugScreenPresenter);
         menuScreen.addTargetScreen(instructionsPresenter);
         wizardData.addScreen(welcomePresenter);
         wizardData.addScreen(welcomeMenuPresenter);
@@ -236,7 +236,7 @@ public class RosselFieldKit {
 //        wizardData.addScreen(task2Screen);
         wizardData.addScreen(task1ScreenSD);
         wizardData.addScreen(task2ScreenSD);
-//        wizardData.addScreen(debugScreenPresenter);
+        wizardData.addScreen(debugScreenPresenter);
         return wizardData;
     }
 
