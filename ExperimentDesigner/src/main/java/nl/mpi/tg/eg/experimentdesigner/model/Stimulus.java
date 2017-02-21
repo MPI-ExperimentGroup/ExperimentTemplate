@@ -60,7 +60,7 @@ public class Stimulus implements Serializable {
     }
 
     public Stimulus(String identifier, String audioPath, String videoPath, String imagePath, String label, String code, int pauseMs, HashSet<String> stimulusTags, String ratingLabels) {
-        this.identifier = (identifier == null) ? null : cleanTagString(identifier);
+        this.identifier = (identifier == null) ? null : identifier;
         this.audioPath = audioPath;
         this.videoPath = videoPath;
         this.imagePath = imagePath;
@@ -192,7 +192,7 @@ public class Stimulus implements Serializable {
     }
 
     public static final String cleanTagString(String stimulusTag) {
-        return stimulusTag.replaceAll("[ \\t\\n\\x0B\\f\\r\\(\\)\\{\\};\\?\\/\\\\\\]\\[,'\"\\.=]+", "_");
+        return stimulusTag.replaceAll("[ \\t\\n\\x0B\\f\\r\\(\\)\\{\\};\\?\\/\\\\\\]\\[,'\"\\.=-]+", "_");
     }
 
     @Override

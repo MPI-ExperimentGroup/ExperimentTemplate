@@ -88,19 +88,19 @@
             </stimuli>
         </loadSdCardStimulus>
     </presenter>
-    <presenter displayOrder="9" menuLabel="Debug Screen" type="debug" self="DebugScreen" title="Debug Screen">
+    <presenter displayOrder="9" menuLabel="About Screen" type="debug" self="about" title="About Screen">
         <versionData/>
         <eraseLocalStorageButton/>
         <localStorageData/>
     </presenter>
     <stimuli>
-        <stimulus identifier="the_full_name_of_the_interviewer_date_and_place_of_the_interview" label="the full name of the interviewer, date and place of the interview" pauseMs="0">
+        <stimulus identifier="the full name of the interviewer, date and place of the interview" label="the full name of the interviewer, date and place of the interview" pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus identifier="the_name_of_the_person_interviewed_â€“_their_real_name_and_or_preferred_name_and_title" label="the name of the person interviewed â€“ their real name, and/or preferred name, and title" pauseMs="0">
+        <stimulus identifier="the name of the person interviewed â€“ their real name, and/or preferred name, and title" label="the name of the person interviewed â€“ their real name, and/or preferred name, and title" pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus identifier="age_and_gender_of_interviewee" label="age and gender of interviewee" pauseMs="0">
+        <stimulus identifier="age and gender of interviewee" label="age and gender of interviewee" pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
         <stimulus identifier="Pictures" imagePath="Pictures" label="Pictures" pauseMs="0">

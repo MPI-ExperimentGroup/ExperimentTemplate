@@ -158,25 +158,25 @@
             </stimuli>
         </loadSdCardStimulus>
     </presenter>
-    <presenter displayOrder="10" menuLabel="Debug Screen" type="debug" self="DebugScreen" title="Debug Screen">
+    <presenter displayOrder="10" menuLabel="About Screen" type="debug" self="about" title="About Screen">
         <versionData/>
         <eraseLocalStorageButton/>
         <localStorageData/>
     </presenter>
     <stimuli>
-        <stimulus identifier="I_stap_rikod_nao_Man_o_woman_we_i_toktok_bai_i_talem_nem_blong_hem_" label="I stap rikod nao. Man o woman we i toktok bai i talem nem blong hem." pauseMs="0">
+        <stimulus identifier="I stap rikod nao. Man o woman we i toktok bai i talem nem blong hem." label="I stap rikod nao. Man o woman we i toktok bai i talem nem blong hem." pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus identifier="Bai_i_talem_nem_blong_lanwis_wea_it_toktok_long_hem_" label="Bai i talem nem blong lanwis wea it toktok long hem." pauseMs="0">
+        <stimulus identifier="Bai i talem nem blong lanwis wea it toktok long hem." label="Bai i talem nem blong lanwis wea it toktok long hem." pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus identifier="Bai_i_talem_nem_blong_ples_wea_i_stap_nao_" label="Bai i talem nem blong ples wea i stap nao." pauseMs="0">
+        <stimulus identifier="Bai i talem nem blong ples wea i stap nao." label="Bai i talem nem blong ples wea i stap nao." pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus identifier="Bai_i_talem_nem_blong_ples_wea_i_bon_long_hem_" label="Bai i talem nem blong ples wea i bon long hem." pauseMs="0">
+        <stimulus identifier="Bai i talem nem blong ples wea i bon long hem." label="Bai i talem nem blong ples wea i bon long hem." pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus identifier="Bai_i_talem_wanem_yea_i_bon_" label="Bai i talem wanem yea i bon." pauseMs="0">
+        <stimulus identifier="Bai i talem wanem yea i bon." label="Bai i talem wanem yea i bon." pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
         <stimulus identifier="Pictures" imagePath="Pictures" label="Pictures" pauseMs="0">

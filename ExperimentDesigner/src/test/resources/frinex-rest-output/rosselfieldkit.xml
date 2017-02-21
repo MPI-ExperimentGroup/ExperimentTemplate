@@ -39,6 +39,7 @@
         <menuItem featureText="Task 2" target="Task_2"/>
         <menuItem featureText="FieldKit Sequential" target="FieldKitSequential"/>
         <menuItem featureText="FieldKit Random" target="FieldKitRandom"/>
+        <menuItem featureText="About this app" target="about"/>
         <menuItem featureText="Instructions" target="Instructions"/>
     </presenter>
     <presenter back="Welcome" displayOrder="6" menuLabel="Select Participant" next="Menu" type="metadata" self="SelectUser" title="Select Participant">
@@ -112,9 +113,9 @@
                                 <backgroundImage msToNext="1" src="file:///storage/emulated/0/MPI_STIMULI/background1.png">
                                     <stimulusImage msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" maxWidth="30">
                                         <addPadding/>
-                                        <stimulusAudio msToNext="0"/>
+                                        <stimulusAudio msToNext="0" showPlaybackIndicator="false"/>
                                         <actionButton featureText="Play Sound" styleName="hiddenTopRight">
-                                            <stimulusAudio msToNext="0"/>
+                                            <stimulusAudio msToNext="0" showPlaybackIndicator="false"/>
                                         </actionButton>
                                         <actionButton featureText="Next" eventTag="Next" hotKey="SPACE" styleName="hiddenBottomRight">
                                             <endAudioRecorderTag eventTier="2" eventTag="image bounce audio"/>
@@ -155,9 +156,9 @@
                         <backgroundImage msToNext="1" src="file:///storage/emulated/0/MPI_STIMULI/background2.png">
                             <stimulusImage msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" maxWidth="30"/>
                             <addPadding/>
-                            <stimulusAudio msToNext="0"/>
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false"/>
                             <actionButton featureText="Play Sound" styleName="hiddenTopRight">
-                                <stimulusAudio msToNext="0"/>
+                                <stimulusAudio msToNext="0" showPlaybackIndicator="false"/>
                             </actionButton>
                             <actionButton featureText="Next" eventTag="Next" hotKey="SPACE" styleName="hiddenBottomRight">
                                 <endAudioRecorderTag eventTier="1" eventTag="task 2 animated"/>
@@ -171,9 +172,9 @@
                         <backgroundImage msToNext="1" src="file:///storage/emulated/0/MPI_STIMULI/background2.png">
                             <stimulusImage msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" maxWidth="30"/>
                             <addPadding/>
-                            <stimulusAudio msToNext="0"/>
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false"/>
                             <actionButton featureText="Play Sound" styleName="hiddenTopRight">
-                                <stimulusAudio msToNext="0"/>
+                                <stimulusAudio msToNext="0" showPlaybackIndicator="false"/>
                             </actionButton>
                             <actionButton featureText="Next" eventTag="Next" hotKey="SPACE" styleName="hiddenBottomRight">
                                 <endAudioRecorderTag eventTier="1" eventTag="task 2 animated"/>
@@ -201,6 +202,9 @@
                 <tag>Task_2</tag>
             </stimuli>
         </loadSdCardStimulus>
+    </presenter>
+    <presenter back="Menu" displayOrder="11" menuLabel="About this app" type="debug" self="about" title="About this app">
+        <versionData/>
     </presenter>
     <stimuli>
         <stimulus identifier="FieldKit" imagePath="FieldKit" label="FieldKit" pauseMs="0">

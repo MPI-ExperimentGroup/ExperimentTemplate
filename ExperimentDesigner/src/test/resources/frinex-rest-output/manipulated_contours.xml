@@ -90,456 +90,478 @@
             </onError>
         </sendAllData>
     </presenter>
-    <presenter back="Edit_User" displayOrder="9" menuLabel="Over" type="debug" self="Over" title="Over">
+    <presenter back="Edit_User" displayOrder="9" menuLabel="about" type="debug" self="about" title="about">
         <versionData/>
-        <eraseLocalStorageButton/>
     </presenter>
     <presenter displayOrder="10" menuLabel="temporary menu" type="menu" self="temporary_menu" title="temporary menu">
         <menuItem featureText="InformationScreen1a" target="InformationScreen1a"/>
         <menuItem featureText="InformationScreen1b" target="InformationScreen1b"/>
     </presenter>
     <stimuli>
-        <stimulus audioPath="03-12-07_1_p1_M19R_i_54470_manipulated" identifier="999:03-12-07_1_p1_M19R_i_54470_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="03-12-07_1_p1_M19R_i_54470_manipulated" identifier="999:03-12-07_1_p1_M19R_i_54470_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="05-12-07_1_p1_M23R_i_359359_manipulated" identifier="999:05-12-07_1_p1_M23R_i_359359_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="05-12-07_1_p1_M23R_i_359359_manipulated" identifier="999:05-12-07_1_p1_M23R_i_359359_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="04-12-07_2_p1_M21L_f_208696_original" identifier="999:04-12-07_2_p1_M21L_f_208696_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="04-12-07_2_p1_M21L_f_208696_original" identifier="999:04-12-07_2_p1_M21L_f_208696_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
+            <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="04-12-07_2_p1_M21L_f_608165_original" identifier="999:04-12-07_2_p1_M21L_f_608165_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="04-12-07_2_p1_M21L_f_608165_original" identifier="999:04-12-07_2_p1_M21L_f_608165_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
+            <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_1_p1_M01R_r_483828_original" identifier="999:14-11-07_1_p1_M01R_r_483828_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_1_p1_M01R_r_483828_original" identifier="999:14-11-07_1_p1_M01R_r_483828_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="04-12-07_2_p1_M21R_f_164284_original" identifier="999:04-12-07_2_p1_M21R_f_164284_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="04-12-07_2_p1_M21R_f_164284_original" identifier="999:04-12-07_2_p1_M21R_f_164284_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
+            <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="04-12-07_2_p1_M21L_i_254252_original" identifier="999:04-12-07_2_p1_M21L_i_254252_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="04-12-07_2_p1_M21L_i_254252_original" identifier="999:04-12-07_2_p1_M21L_i_254252_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="03-12-07_1_p1_M19L_f_929888_original" identifier="999:03-12-07_1_p1_M19L_f_929888_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="03-12-07_1_p1_M19L_f_929888_original" identifier="999:03-12-07_1_p1_M19L_f_929888_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
+            <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="22-11-07_2_p1_F07L_f_1377242_original" identifier="999:22-11-07_2_p1_F07L_f_1377242_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="22-11-07_2_p1_F07L_f_1377242_original" identifier="999:22-11-07_2_p1_F07L_f_1377242_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
+            <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="04-12-07_2_p1_M21L_f_358114_original" identifier="999:04-12-07_2_p1_M21L_f_358114_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="04-12-07_2_p1_M21L_f_358114_original" identifier="999:04-12-07_2_p1_M21L_f_358114_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
+            <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_2_p1_M02R_i_530691_manipulated" identifier="999:14-11-07_2_p1_M02R_i_530691_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_2_p1_M02R_i_530691_manipulated" identifier="999:14-11-07_2_p1_M02R_i_530691_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="22-11-07_2_p1_F07L_i_1450339_original" identifier="999:22-11-07_2_p1_F07L_i_1450339_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="22-11-07_2_p1_F07L_i_1450339_original" identifier="999:22-11-07_2_p1_F07L_i_1450339_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="22-11-07_2_p1_F07L_f_1397300_original" identifier="999:22-11-07_2_p1_F07L_f_1397300_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="22-11-07_2_p1_F07L_f_1397300_original" identifier="999:22-11-07_2_p1_F07L_f_1397300_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
+            <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="03-12-07_1_p1_M19L_f_226523_original" identifier="999:03-12-07_1_p1_M19L_f_226523_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="03-12-07_1_p1_M19L_f_226523_original" identifier="999:03-12-07_1_p1_M19L_f_226523_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
+            <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_2_p1_M02R_f_660313_original" identifier="999:14-11-07_2_p1_M02R_f_660313_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_2_p1_M02R_f_660313_original" identifier="999:14-11-07_2_p1_M02R_f_660313_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
+            <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_1_p1_M01R_r_369646_manipulated" identifier="999:14-11-07_1_p1_M01R_r_369646_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_1_p1_M01R_r_369646_manipulated" identifier="999:14-11-07_1_p1_M01R_r_369646_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_2_p1_M02L_r_782925_original" identifier="999:14-11-07_2_p1_M02L_r_782925_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_2_p1_M02L_r_782925_original" identifier="999:14-11-07_2_p1_M02L_r_782925_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_1_p1_M01L_r_325139_original" identifier="999:14-11-07_1_p1_M01L_r_325139_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_1_p1_M01L_r_325139_original" identifier="999:14-11-07_1_p1_M01L_r_325139_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="20-11-07_1_p1_F05R_i_315485_manipulated" identifier="999:20-11-07_1_p1_F05R_i_315485_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="20-11-07_1_p1_F05R_i_315485_manipulated" identifier="999:20-11-07_1_p1_F05R_i_315485_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_1_p1_M01L_r_50507_manipulated" identifier="999:14-11-07_1_p1_M01L_r_50507_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_1_p1_M01L_r_50507_manipulated" identifier="999:14-11-07_1_p1_M01L_r_50507_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="22-11-07_2_p1_F07L_f_1398960_original" identifier="999:22-11-07_2_p1_F07L_f_1398960_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="22-11-07_2_p1_F07L_f_1398960_original" identifier="999:22-11-07_2_p1_F07L_f_1398960_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
+            <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="22-11-07_2_p1_F07R_i_1198900_manipulated" identifier="999:22-11-07_2_p1_F07R_i_1198900_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="22-11-07_2_p1_F07R_i_1198900_manipulated" identifier="999:22-11-07_2_p1_F07R_i_1198900_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_2_p1_M02R_f_831537_original" identifier="999:14-11-07_2_p1_M02R_f_831537_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_2_p1_M02R_f_831537_original" identifier="999:14-11-07_2_p1_M02R_f_831537_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
+            <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="04-12-07_2_p1_M21L_i_11468_original" identifier="999:04-12-07_2_p1_M21L_i_11468_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="04-12-07_2_p1_M21L_i_11468_original" identifier="999:04-12-07_2_p1_M21L_i_11468_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="03-12-07_1_p1_M19L_i_146083_manipulated" identifier="999:03-12-07_1_p1_M19L_i_146083_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="03-12-07_1_p1_M19L_i_146083_manipulated" identifier="999:03-12-07_1_p1_M19L_i_146083_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_1_p1_M01R_i_219580_original" identifier="999:14-11-07_1_p1_M01R_i_219580_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_1_p1_M01R_i_219580_original" identifier="999:14-11-07_1_p1_M01R_i_219580_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="03-12-07_1_p1_M19R_r_416402_original" identifier="999:03-12-07_1_p1_M19R_r_416402_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="03-12-07_1_p1_M19R_r_416402_original" identifier="999:03-12-07_1_p1_M19R_r_416402_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="04-12-07_2_p1_M21L_i_255747_manipulated" identifier="999:04-12-07_2_p1_M21L_i_255747_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="04-12-07_2_p1_M21L_i_255747_manipulated" identifier="999:04-12-07_2_p1_M21L_i_255747_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_2_p1_M02L_i_22560_manipulated" identifier="999:14-11-07_2_p1_M02L_i_22560_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_2_p1_M02L_i_22560_manipulated" identifier="999:14-11-07_2_p1_M02L_i_22560_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_2_p1_M02R_i_542926_original" identifier="999:14-11-07_2_p1_M02R_i_542926_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_2_p1_M02R_i_542926_original" identifier="999:14-11-07_2_p1_M02R_i_542926_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_2_p1_M02L_r_343273_manipulated" identifier="999:14-11-07_2_p1_M02L_r_343273_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_2_p1_M02L_r_343273_manipulated" identifier="999:14-11-07_2_p1_M02L_r_343273_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="03-12-07_1_p1_M19R_r_518943_manipulated" identifier="999:03-12-07_1_p1_M19R_r_518943_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="03-12-07_1_p1_M19R_r_518943_manipulated" identifier="999:03-12-07_1_p1_M19R_r_518943_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="22-11-07_2_p1_F07R_f_1086927_original" identifier="999:22-11-07_2_p1_F07R_f_1086927_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="22-11-07_2_p1_F07R_f_1086927_original" identifier="999:22-11-07_2_p1_F07R_f_1086927_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
+            <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="20-11-07_1_p1_F05R_f_619771_original" identifier="999:20-11-07_1_p1_F05R_f_619771_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="20-11-07_1_p1_F05R_f_619771_original" identifier="999:20-11-07_1_p1_F05R_f_619771_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
+            <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="20-11-07_1_p1_F05L_i_106723_original" identifier="999:20-11-07_1_p1_F05L_i_106723_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="20-11-07_1_p1_F05L_i_106723_original" identifier="999:20-11-07_1_p1_F05L_i_106723_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="04-12-07_1_p1_M20R_i_129603_original" identifier="999:04-12-07_1_p1_M20R_i_129603_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="04-12-07_1_p1_M20R_i_129603_original" identifier="999:04-12-07_1_p1_M20R_i_129603_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="03-12-07_1_p1_M19L_i_779215_manipulated" identifier="999:03-12-07_1_p1_M19L_i_779215_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="03-12-07_1_p1_M19L_i_779215_manipulated" identifier="999:03-12-07_1_p1_M19L_i_779215_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_1_p1_M01R_f_222400_original" identifier="999:14-11-07_1_p1_M01R_f_222400_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_1_p1_M01R_f_222400_original" identifier="999:14-11-07_1_p1_M01R_f_222400_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
+            <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_2_p1_M02L_i_75209_original" identifier="999:14-11-07_2_p1_M02L_i_75209_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_2_p1_M02L_i_75209_original" identifier="999:14-11-07_2_p1_M02L_i_75209_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="03-12-07_1_p1_M19R_f_340735_original" identifier="999:03-12-07_1_p1_M19R_f_340735_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="03-12-07_1_p1_M19R_f_340735_original" identifier="999:03-12-07_1_p1_M19R_f_340735_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
+            <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_1_p1_M01R_r_242530_manipulated" identifier="999:14-11-07_1_p1_M01R_r_242530_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_1_p1_M01R_r_242530_manipulated" identifier="999:14-11-07_1_p1_M01R_r_242530_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="04-12-07_1_p1_M20R_i_146255_manipulated" identifier="999:04-12-07_1_p1_M20R_i_146255_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="04-12-07_1_p1_M20R_i_146255_manipulated" identifier="999:04-12-07_1_p1_M20R_i_146255_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="22-11-07_1_p1_F06R_f_1696027_original" identifier="999:22-11-07_1_p1_F06R_f_1696027_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="22-11-07_1_p1_F06R_f_1696027_original" identifier="999:22-11-07_1_p1_F06R_f_1696027_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
+            <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_2_p1_M02R_i_662936_manipulated" identifier="999:14-11-07_2_p1_M02R_i_662936_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_2_p1_M02R_i_662936_manipulated" identifier="999:14-11-07_2_p1_M02R_i_662936_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="22-11-07_2_p1_F07L_i_280359_original" identifier="999:22-11-07_2_p1_F07L_i_280359_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="22-11-07_2_p1_F07L_i_280359_original" identifier="999:22-11-07_2_p1_F07L_i_280359_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="20-11-07_1_p1_F05R_f_624120_original" identifier="999:20-11-07_1_p1_F05R_f_624120_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="20-11-07_1_p1_F05R_f_624120_original" identifier="999:20-11-07_1_p1_F05R_f_624120_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
+            <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_1_p1_M01R_r_160211_original" identifier="999:14-11-07_1_p1_M01R_r_160211_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_1_p1_M01R_r_160211_original" identifier="999:14-11-07_1_p1_M01R_r_160211_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="03-12-07_1_p1_M19R_r_529986_original" identifier="999:03-12-07_1_p1_M19R_r_529986_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="03-12-07_1_p1_M19R_r_529986_original" identifier="999:03-12-07_1_p1_M19R_r_529986_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="03-12-07_1_p1_M19L_r_838332_manipulated" identifier="999:03-12-07_1_p1_M19L_r_838332_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="03-12-07_1_p1_M19L_r_838332_manipulated" identifier="999:03-12-07_1_p1_M19L_r_838332_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_2_p1_M02R_f_669651_original" identifier="999:14-11-07_2_p1_M02R_f_669651_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_2_p1_M02R_f_669651_original" identifier="999:14-11-07_2_p1_M02R_f_669651_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
+            <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_1_p1_M01L_r_23773_original" identifier="999:14-11-07_1_p1_M01L_r_23773_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_1_p1_M01L_r_23773_original" identifier="999:14-11-07_1_p1_M01L_r_23773_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_1_p1_M01R_r_394807_original" identifier="999:14-11-07_1_p1_M01R_r_394807_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_1_p1_M01R_r_394807_original" identifier="999:14-11-07_1_p1_M01R_r_394807_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="22-11-07_2_p1_F07L_f_888933_original" identifier="999:22-11-07_2_p1_F07L_f_888933_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="22-11-07_2_p1_F07L_f_888933_original" identifier="999:22-11-07_2_p1_F07L_f_888933_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
+            <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="04-12-07_2_p1_M21L_f_427727_original" identifier="999:04-12-07_2_p1_M21L_f_427727_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="04-12-07_2_p1_M21L_f_427727_original" identifier="999:04-12-07_2_p1_M21L_f_427727_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
+            <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="05-12-07_1_p1_M23L_i_259230_original" identifier="999:05-12-07_1_p1_M23L_i_259230_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="05-12-07_1_p1_M23L_i_259230_original" identifier="999:05-12-07_1_p1_M23L_i_259230_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="03-12-07_1_p1_M19R_i_353600_original" identifier="999:03-12-07_1_p1_M19R_i_353600_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="03-12-07_1_p1_M19R_i_353600_original" identifier="999:03-12-07_1_p1_M19R_i_353600_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="04-12-07_2_p1_M21R_i_770591_original" identifier="999:04-12-07_2_p1_M21R_i_770591_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="04-12-07_2_p1_M21R_i_770591_original" identifier="999:04-12-07_2_p1_M21R_i_770591_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_1_p1_M01R_r_397825_manipulated" identifier="999:14-11-07_1_p1_M01R_r_397825_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_1_p1_M01R_r_397825_manipulated" identifier="999:14-11-07_1_p1_M01R_r_397825_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="04-12-07_2_p1_M21L_i_803331_manipulated" identifier="999:04-12-07_2_p1_M21L_i_803331_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="04-12-07_2_p1_M21L_i_803331_manipulated" identifier="999:04-12-07_2_p1_M21L_i_803331_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="03-12-07_1_p1_M19R_i_60085_original" identifier="999:03-12-07_1_p1_M19R_i_60085_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="03-12-07_1_p1_M19R_i_60085_original" identifier="999:03-12-07_1_p1_M19R_i_60085_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="04-12-07_1_p1_M20R_r_226308_original" identifier="999:04-12-07_1_p1_M20R_r_226308_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="04-12-07_1_p1_M20R_r_226308_original" identifier="999:04-12-07_1_p1_M20R_r_226308_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="03-12-07_1_p1_M19R_r_374050_manipulated" identifier="999:03-12-07_1_p1_M19R_r_374050_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="03-12-07_1_p1_M19R_r_374050_manipulated" identifier="999:03-12-07_1_p1_M19R_r_374050_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="04-12-07_2_p1_M21L_i_139907_manipulated" identifier="999:04-12-07_2_p1_M21L_i_139907_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="04-12-07_2_p1_M21L_i_139907_manipulated" identifier="999:04-12-07_2_p1_M21L_i_139907_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_2_p1_M02R_f_681124_original" identifier="999:14-11-07_2_p1_M02R_f_681124_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_2_p1_M02R_f_681124_original" identifier="999:14-11-07_2_p1_M02R_f_681124_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
+            <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="22-11-07_1_p1_F06R_f_1430740_original" identifier="999:22-11-07_1_p1_F06R_f_1430740_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="22-11-07_1_p1_F06R_f_1430740_original" identifier="999:22-11-07_1_p1_F06R_f_1430740_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
+            <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="04-12-07_2_p1_M21L_f_431951_original" identifier="999:04-12-07_2_p1_M21L_f_431951_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="04-12-07_2_p1_M21L_f_431951_original" identifier="999:04-12-07_2_p1_M21L_f_431951_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
+            <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="04-12-07_2_p1_M21L_r_380821_manipulated" identifier="999:04-12-07_2_p1_M21L_r_380821_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="04-12-07_2_p1_M21L_r_380821_manipulated" identifier="999:04-12-07_2_p1_M21L_r_380821_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliA</tag>
         </stimulus>
-        <stimulus audioPath="03-12-07_1_p1_M19R_i_54470_original" identifier="999:03-12-07_1_p1_M19R_i_54470_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="03-12-07_1_p1_M19R_i_54470_original" identifier="999:03-12-07_1_p1_M19R_i_54470_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="05-12-07_1_p1_M23R_i_359359_original" identifier="999:05-12-07_1_p1_M23R_i_359359_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="05-12-07_1_p1_M23R_i_359359_original" identifier="999:05-12-07_1_p1_M23R_i_359359_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_1_p1_M01R_r_483828_manipulated" identifier="999:14-11-07_1_p1_M01R_r_483828_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_1_p1_M01R_r_483828_manipulated" identifier="999:14-11-07_1_p1_M01R_r_483828_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="04-12-07_2_p1_M21L_i_254252_manipulated" identifier="999:04-12-07_2_p1_M21L_i_254252_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="04-12-07_2_p1_M21L_i_254252_manipulated" identifier="999:04-12-07_2_p1_M21L_i_254252_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_2_p1_M02R_i_530691_original" identifier="999:14-11-07_2_p1_M02R_i_530691_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_2_p1_M02R_i_530691_original" identifier="999:14-11-07_2_p1_M02R_i_530691_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="22-11-07_2_p1_F07L_i_1450339_manipulated" identifier="999:22-11-07_2_p1_F07L_i_1450339_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="22-11-07_2_p1_F07L_i_1450339_manipulated" identifier="999:22-11-07_2_p1_F07L_i_1450339_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_1_p1_M01R_r_369646_original" identifier="999:14-11-07_1_p1_M01R_r_369646_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_1_p1_M01R_r_369646_original" identifier="999:14-11-07_1_p1_M01R_r_369646_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_2_p1_M02L_r_782925_manipulated" identifier="999:14-11-07_2_p1_M02L_r_782925_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_2_p1_M02L_r_782925_manipulated" identifier="999:14-11-07_2_p1_M02L_r_782925_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_1_p1_M01L_r_325139_manipulated" identifier="999:14-11-07_1_p1_M01L_r_325139_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_1_p1_M01L_r_325139_manipulated" identifier="999:14-11-07_1_p1_M01L_r_325139_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="20-11-07_1_p1_F05R_i_315485_original" identifier="999:20-11-07_1_p1_F05R_i_315485_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="20-11-07_1_p1_F05R_i_315485_original" identifier="999:20-11-07_1_p1_F05R_i_315485_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_1_p1_M01L_r_50507_original" identifier="999:14-11-07_1_p1_M01L_r_50507_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_1_p1_M01L_r_50507_original" identifier="999:14-11-07_1_p1_M01L_r_50507_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="22-11-07_2_p1_F07R_i_1198900_original" identifier="999:22-11-07_2_p1_F07R_i_1198900_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="22-11-07_2_p1_F07R_i_1198900_original" identifier="999:22-11-07_2_p1_F07R_i_1198900_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="04-12-07_2_p1_M21L_i_11468_manipulated" identifier="999:04-12-07_2_p1_M21L_i_11468_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="04-12-07_2_p1_M21L_i_11468_manipulated" identifier="999:04-12-07_2_p1_M21L_i_11468_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="03-12-07_1_p1_M19L_i_146083_original" identifier="999:03-12-07_1_p1_M19L_i_146083_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="03-12-07_1_p1_M19L_i_146083_original" identifier="999:03-12-07_1_p1_M19L_i_146083_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_1_p1_M01R_i_219580_manipulated" identifier="999:14-11-07_1_p1_M01R_i_219580_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_1_p1_M01R_i_219580_manipulated" identifier="999:14-11-07_1_p1_M01R_i_219580_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="03-12-07_1_p1_M19R_r_416402_manipulated" identifier="999:03-12-07_1_p1_M19R_r_416402_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="03-12-07_1_p1_M19R_r_416402_manipulated" identifier="999:03-12-07_1_p1_M19R_r_416402_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="04-12-07_2_p1_M21L_i_255747_original" identifier="999:04-12-07_2_p1_M21L_i_255747_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="04-12-07_2_p1_M21L_i_255747_original" identifier="999:04-12-07_2_p1_M21L_i_255747_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_2_p1_M02L_i_22560_original" identifier="999:14-11-07_2_p1_M02L_i_22560_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_2_p1_M02L_i_22560_original" identifier="999:14-11-07_2_p1_M02L_i_22560_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_2_p1_M02R_i_542926_manipulated" identifier="999:14-11-07_2_p1_M02R_i_542926_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_2_p1_M02R_i_542926_manipulated" identifier="999:14-11-07_2_p1_M02R_i_542926_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_2_p1_M02L_r_343273_original" identifier="999:14-11-07_2_p1_M02L_r_343273_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_2_p1_M02L_r_343273_original" identifier="999:14-11-07_2_p1_M02L_r_343273_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="03-12-07_1_p1_M19R_r_518943_original" identifier="999:03-12-07_1_p1_M19R_r_518943_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="03-12-07_1_p1_M19R_r_518943_original" identifier="999:03-12-07_1_p1_M19R_r_518943_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="20-11-07_1_p1_F05L_i_106723_manipulated" identifier="999:20-11-07_1_p1_F05L_i_106723_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="20-11-07_1_p1_F05L_i_106723_manipulated" identifier="999:20-11-07_1_p1_F05L_i_106723_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="04-12-07_1_p1_M20R_i_129603_manipulated" identifier="999:04-12-07_1_p1_M20R_i_129603_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="04-12-07_1_p1_M20R_i_129603_manipulated" identifier="999:04-12-07_1_p1_M20R_i_129603_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="03-12-07_1_p1_M19L_i_779215_original" identifier="999:03-12-07_1_p1_M19L_i_779215_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="03-12-07_1_p1_M19L_i_779215_original" identifier="999:03-12-07_1_p1_M19L_i_779215_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_2_p1_M02L_i_75209_manipulated" identifier="999:14-11-07_2_p1_M02L_i_75209_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_2_p1_M02L_i_75209_manipulated" identifier="999:14-11-07_2_p1_M02L_i_75209_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_1_p1_M01R_r_242530_original" identifier="999:14-11-07_1_p1_M01R_r_242530_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_1_p1_M01R_r_242530_original" identifier="999:14-11-07_1_p1_M01R_r_242530_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="04-12-07_1_p1_M20R_i_146255_original" identifier="999:04-12-07_1_p1_M20R_i_146255_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="04-12-07_1_p1_M20R_i_146255_original" identifier="999:04-12-07_1_p1_M20R_i_146255_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_2_p1_M02R_i_662936_original" identifier="999:14-11-07_2_p1_M02R_i_662936_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_2_p1_M02R_i_662936_original" identifier="999:14-11-07_2_p1_M02R_i_662936_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="22-11-07_2_p1_F07L_i_280359_manipulated" identifier="999:22-11-07_2_p1_F07L_i_280359_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="22-11-07_2_p1_F07L_i_280359_manipulated" identifier="999:22-11-07_2_p1_F07L_i_280359_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_1_p1_M01R_r_160211_manipulated" identifier="999:14-11-07_1_p1_M01R_r_160211_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_1_p1_M01R_r_160211_manipulated" identifier="999:14-11-07_1_p1_M01R_r_160211_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="03-12-07_1_p1_M19R_r_529986_manipulated" identifier="999:03-12-07_1_p1_M19R_r_529986_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="03-12-07_1_p1_M19R_r_529986_manipulated" identifier="999:03-12-07_1_p1_M19R_r_529986_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="03-12-07_1_p1_M19L_r_838332_original" identifier="999:03-12-07_1_p1_M19L_r_838332_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="03-12-07_1_p1_M19L_r_838332_original" identifier="999:03-12-07_1_p1_M19L_r_838332_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_1_p1_M01L_r_23773_manipulated" identifier="999:14-11-07_1_p1_M01L_r_23773_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_1_p1_M01L_r_23773_manipulated" identifier="999:14-11-07_1_p1_M01L_r_23773_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_1_p1_M01R_r_394807_manipulated" identifier="999:14-11-07_1_p1_M01R_r_394807_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_1_p1_M01R_r_394807_manipulated" identifier="999:14-11-07_1_p1_M01R_r_394807_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="05-12-07_1_p1_M23L_i_259230_manipulated" identifier="999:05-12-07_1_p1_M23L_i_259230_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="05-12-07_1_p1_M23L_i_259230_manipulated" identifier="999:05-12-07_1_p1_M23L_i_259230_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="03-12-07_1_p1_M19R_i_353600_manipulated" identifier="999:03-12-07_1_p1_M19R_i_353600_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="03-12-07_1_p1_M19R_i_353600_manipulated" identifier="999:03-12-07_1_p1_M19R_i_353600_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="04-12-07_2_p1_M21R_i_770591_manipulated" identifier="999:04-12-07_2_p1_M21R_i_770591_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="04-12-07_2_p1_M21R_i_770591_manipulated" identifier="999:04-12-07_2_p1_M21R_i_770591_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="14-11-07_1_p1_M01R_r_397825_original" identifier="999:14-11-07_1_p1_M01R_r_397825_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="14-11-07_1_p1_M01R_r_397825_original" identifier="999:14-11-07_1_p1_M01R_r_397825_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="04-12-07_2_p1_M21L_i_803331_original" identifier="999:04-12-07_2_p1_M21L_i_803331_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="04-12-07_2_p1_M21L_i_803331_original" identifier="999:04-12-07_2_p1_M21L_i_803331_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="03-12-07_1_p1_M19R_i_60085_manipulated" identifier="999:03-12-07_1_p1_M19R_i_60085_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="03-12-07_1_p1_M19R_i_60085_manipulated" identifier="999:03-12-07_1_p1_M19R_i_60085_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="04-12-07_1_p1_M20R_r_226308_manipulated" identifier="999:04-12-07_1_p1_M20R_r_226308_manipulated_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="04-12-07_1_p1_M20R_r_226308_manipulated" identifier="999:04-12-07_1_p1_M20R_r_226308_manipulated.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="03-12-07_1_p1_M19R_r_374050_original" identifier="999:03-12-07_1_p1_M19R_r_374050_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="03-12-07_1_p1_M19R_r_374050_original" identifier="999:03-12-07_1_p1_M19R_r_374050_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="04-12-07_2_p1_M21L_i_139907_original" identifier="999:04-12-07_2_p1_M21L_i_139907_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="04-12-07_2_p1_M21L_i_139907_original" identifier="999:04-12-07_2_p1_M21L_i_139907_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>
-        <stimulus audioPath="04-12-07_2_p1_M21L_r_380821_original" identifier="999:04-12-07_2_p1_M21L_r_380821_original_wav:continue_arrête" pauseMs="0" ratingLabels="continue,arrête">
+        <stimulus audioPath="04-12-07_2_p1_M21L_r_380821_original" identifier="999:04-12-07_2_p1_M21L_r_380821_original.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>999</tag>
             <tag>StimuliB</tag>
         </stimulus>

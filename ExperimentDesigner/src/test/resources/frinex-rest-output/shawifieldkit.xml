@@ -284,7 +284,7 @@
         <addKinTypeGui diagramName="kinDiagram"/>
         <loadKinTypeStringDiagram msToNext="0" diagramName="kinDiagram"/>
     </presenter>
-    <presenter back="AutoMenu" displayOrder="17" menuLabel="Debug Screen" type="debug" self="DebugScreen" title="Debug Screen">
+    <presenter back="AutoMenu" displayOrder="17" menuLabel="About Screen" type="debug" self="about" title="About Screen">
         <versionData/>
         <eraseLocalStorageButton/>
         <localStorageData/>
@@ -329,25 +329,25 @@
         <stimulus identifier="Edad" label="Edad" pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus identifier="Estado_civil" label="Estado civil" pauseMs="0">
+        <stimulus identifier="Estado civil" label="Estado civil" pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
         <stimulus identifier="Origen" label="Origen" pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus identifier="Lugar_de_residencia" label="Lugar de residencia" pauseMs="0">
+        <stimulus identifier="Lugar de residencia" label="Lugar de residencia" pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus identifier="Nombre_de_la_comunidad_a_la_que_pertenece" label="Nombre de la comunidad a la que pertenece" pauseMs="0">
+        <stimulus identifier="Nombre de la comunidad a la que pertenece" label="Nombre de la comunidad a la que pertenece" pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus identifier="Actividad_laboral" label="Actividad laboral" pauseMs="0">
+        <stimulus identifier="Actividad laboral" label="Actividad laboral" pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus identifier="Nivel_de_estudios" label="Nivel de estudios" pauseMs="0">
+        <stimulus identifier="Nivel de estudios" label="Nivel de estudios" pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
-        <stimulus identifier="Número_de_hijos" label="Número de hijos" pauseMs="0">
+        <stimulus identifier="Número de hijos" label="Número de hijos" pauseMs="0">
             <tag>metadata</tag>
         </stimulus>
         <stimulus identifier="Religión" label="Religión" pauseMs="0">

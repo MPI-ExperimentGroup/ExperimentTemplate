@@ -423,6 +423,11 @@
             <onError/>
         </submitTestResults>
     </presenter>
+    <presenter displayOrder="19" menuLabel="About Screen" type="debug" self="about" title="About Screen">
+        <versionData/>
+        <eraseLocalStorageButton/>
+        <localStorageData/>
+    </presenter>
     <stimuli>
         <stimulus identifier="Monday" label="Monday" pauseMs="0">
             <tag>Weekdays</tag>

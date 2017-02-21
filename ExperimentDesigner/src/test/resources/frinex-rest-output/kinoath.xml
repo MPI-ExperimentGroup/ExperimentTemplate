@@ -49,7 +49,7 @@
                     <clearPage/>
                     <centrePage/>
                     <pause msToNext="100">
-                        <stimulusAudio msToNext="100">
+                        <stimulusAudio msToNext="100" showPlaybackIndicator="false">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
                                 <nextStimulus eventTag="NextStimulusVideoAudioOption" norepeat="true"/>
@@ -70,12 +70,12 @@
         </loadStimulus>
     </presenter>
     <stimuli>
-        <stimulus audioPath="prevoicing9_e_440Hz_coda_k" code="AV_happy" identifier="list_1_list_2:AV_happy_mpg:prevoicing9_e_440Hz_coda_k_wav:bik_bek" pauseMs="0" ratingLabels="bik,bek">
+        <stimulus audioPath="prevoicing9_e_440Hz_coda_k" code="AV_happy" identifier="list_1/list_2:AV_happy.mpg:prevoicing9_e_440Hz_coda_k.wav:bik,bek" pauseMs="0" ratingLabels="bik,bek">
             <tag>VideoAudioOption</tag>
             <tag>list_1</tag>
             <tag>list_2</tag>
         </stimulus>
-        <stimulus audioPath="prevoicing9_e_440Hz_coda_t" code="AV_sad" identifier="list_2_list_3:AV_sad_mpg:prevoicing9_e_440Hz_coda_t_wav:bid_bed" pauseMs="0" ratingLabels="bid,bed">
+        <stimulus audioPath="prevoicing9_e_440Hz_coda_t" code="AV_sad" identifier="list_2/list_3:AV_sad.mpg:prevoicing9_e_440Hz_coda_t.wav:bid,bed" pauseMs="0" ratingLabels="bid,bed">
             <tag>VideoAudioOption</tag>
             <tag>list_2</tag>
             <tag>list_3</tag>
