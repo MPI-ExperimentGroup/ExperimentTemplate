@@ -55,7 +55,7 @@ public class WizardAboutScreen extends AbstractWizardScreen {
     }
 
     public WizardAboutScreen(String screenTitle, boolean showDebug) {
-        super(WizardScreenEnum.WizardAboutScreen, screenTitle, screenTitle, screenTitle);
+        super(WizardScreenEnum.WizardAboutScreen, screenTitle, screenTitle, "about");
         this.showDebug = showDebug;
     }
 
@@ -64,8 +64,8 @@ public class WizardAboutScreen extends AbstractWizardScreen {
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.debug);
         storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.versionData, null));
-        storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.eraseLocalStorageButton, null));
         if (showDebug) {
+            storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.eraseLocalStorageButton, null));
             storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.localStorageData, null));
         }
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
