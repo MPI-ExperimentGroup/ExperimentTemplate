@@ -58,6 +58,7 @@ function setConnected(connected) {
                 "<td>userLabel</td>" +
                 "<td>groupId</td>" +
                 "<td>allMemberCodes</td>" +
+                "<td>Channels</td>" +
                 "<td>memberCode</td>" +
                 "<td>originMemberCode</td>" +
                 "<td>stimulusId</td>" +
@@ -137,6 +138,7 @@ function connect() {
                     contentData.userLabel + "\", </td><td>\"" +
                     contentData.groupId + "\", </td><td>\"" +
                     contentData.allMemberCodes + "\", </td><td>\"" +
+                    contentData.groupCommunicationChannels + "\", </td><td>\"" +
                     contentData.memberCode + "\", </td><td>\"" +
                     contentData.originMemberCode + "\", </td><td>\"" +
                     contentData.stimulusId + "\", </td><td>\"" +
