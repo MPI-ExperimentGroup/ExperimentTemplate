@@ -150,7 +150,7 @@ public class GroupParticipantService {
             this.messageSenderMemberCode = originMemberCode;
             this.groupUUID = groupUUID;
             this.groupReady = groupReady;
-            if (groupReady && this.stimuliListLoaded.equals(this.stimuliListGroup)) {
+            if (this.stimuliListLoaded.equals(this.stimuliListGroup)) {
                 // only if the group is ready do we try to process the group message
                 boolean messageIsRelevant = false;
                 for (String channel : groupCommunicationChannels.split("\\|")) {
@@ -166,10 +166,8 @@ public class GroupParticipantService {
                         }
                     }
                 }
-                if (messageIsRelevant && groupReady) {
-//                    final boolean adequateMessagesReceived = (expectedRespondents != null) ? expectedRespondents.length() == actualRespondents.length() : true;
+                if (messageIsRelevant) {
                     // make sure that all relevent members have responded before moving to the next phase
-//                    if (adequateMessagesReceived) {
                     this.stimulusId = stimulusId;
                     this.stimulusIndex = Integer.parseInt(stimulusIndex);
                     this.requestedPhase = Integer.parseInt(requestedPhase);
@@ -177,7 +175,6 @@ public class GroupParticipantService {
                     this.messageSenderId = userId;
                     this.responseStimulusId = responseStimulusId;
                     stimulusSyncListner.postLoadTimerFired();
-                    //                if (groupReady) {
                     for (String groupRole : activityListeners.keySet()) {
                         final String[] splitRole = groupRole.split(":");
                         int roleIndex = this.requestedPhase % splitRole.length;
@@ -190,7 +187,6 @@ public class GroupParticipantService {
                                 lastFiredListnerGroupRole = splitRole[roleIndex];
                             }
                         }
-//                        }
                     }
                 }
             } else {
