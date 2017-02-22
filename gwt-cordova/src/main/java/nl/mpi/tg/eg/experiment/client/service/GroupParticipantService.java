@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experiment.client.service;
 
 import com.google.gwt.user.client.Window;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -66,6 +67,7 @@ public class GroupParticipantService {
     public GroupParticipantService(final String userId, String screenId, String groupMembers, String groupCommunicationChannels, String stimuliListLoaded, TimedStimulusListener connectedListener, TimedStimulusListener groupNotReadyListener, TimedStimulusListener screenResetRequestListner, TimedStimulusListener stimulusSyncListner, TimedStimulusListener groupInfoChangeListner) {
         this.userId = userId;
         this.allMemberCodes = groupMembers;
+        this.lastFiredListnerGroupRole = groupMembers; // the first connection should require all members to respond
         this.groupCommunicationChannels = groupCommunicationChannels;
         this.connectedListener = connectedListener;
         this.groupNotReadyListener = groupNotReadyListener;
@@ -155,7 +157,8 @@ public class GroupParticipantService {
                     final List<String> channelList = Arrays.asList(channel.split(","));
                     // check communication channel before responding to the message
                     if (channelList.contains(this.memberCode) && channelList.contains(this.messageSenderMemberCode)) {
-                        final List<String> requiredRespondentsList = Arrays.asList(expectedRespondents.split(","));
+                        final List<String> expectedRespondentsList = Arrays.asList(expectedRespondents.split(","));
+                        final List<String> requiredRespondentsList = new ArrayList<>(expectedRespondentsList);
                         requiredRespondentsList.retainAll(channelList);
                         final List<String> actualRespondentsList = Arrays.asList(actualRespondents.split(","));
                         if (actualRespondentsList.containsAll(requiredRespondentsList)) {
@@ -164,30 +167,30 @@ public class GroupParticipantService {
                     }
                 }
                 if (messageIsRelevant && groupReady) {
-                    final boolean adequateMessagesReceived = (expectedRespondents != null) ? expectedRespondents.length() == actualRespondents.length() : true;
+//                    final boolean adequateMessagesReceived = (expectedRespondents != null) ? expectedRespondents.length() == actualRespondents.length() : true;
                     // make sure that all relevent members have responded before moving to the next phase
-                    if (adequateMessagesReceived) {
-                        this.stimulusId = stimulusId;
-                        this.stimulusIndex = Integer.parseInt(stimulusIndex);
-                        this.requestedPhase = Integer.parseInt(requestedPhase);
-                        this.messageString = messageString;
-                        this.messageSenderId = userId;
-                        this.responseStimulusId = responseStimulusId;
-                        stimulusSyncListner.postLoadTimerFired();
-                        //                if (groupReady) {
-                        for (String groupRole : activityListeners.keySet()) {
-                            final String[] splitRole = groupRole.split(":");
-                            int roleIndex = this.requestedPhase % splitRole.length;
-                            if (splitRole[roleIndex].contains(this.memberCode)) {
-                                final TimedStimulusListener currentListner = activityListeners.get(groupRole);
+//                    if (adequateMessagesReceived) {
+                    this.stimulusId = stimulusId;
+                    this.stimulusIndex = Integer.parseInt(stimulusIndex);
+                    this.requestedPhase = Integer.parseInt(requestedPhase);
+                    this.messageString = messageString;
+                    this.messageSenderId = userId;
+                    this.responseStimulusId = responseStimulusId;
+                    stimulusSyncListner.postLoadTimerFired();
+                    //                if (groupReady) {
+                    for (String groupRole : activityListeners.keySet()) {
+                        final String[] splitRole = groupRole.split(":");
+                        int roleIndex = this.requestedPhase % splitRole.length;
+                        if (splitRole[roleIndex].contains(this.memberCode)) {
+                            final TimedStimulusListener currentListner = activityListeners.get(groupRole);
 //                        ((userIdMatches) ? selfActivityListeners : othersActivityListeners).get(groupRole).get(this.requestedPhase).postLoadTimerFired();
-                                if (lastFiredListner == null || !lastFiredListner.equals(currentListner)) {
-                                    currentListner.postLoadTimerFired();
-                                    lastFiredListner = currentListner;
-                                    lastFiredListnerGroupRole = splitRole[roleIndex];
-                                }
+                            if (lastFiredListner == null || !lastFiredListner.equals(currentListner)) {
+                                currentListner.postLoadTimerFired();
+                                lastFiredListner = currentListner;
+                                lastFiredListnerGroupRole = splitRole[roleIndex];
                             }
                         }
+//                        }
                     }
                 }
             } else {

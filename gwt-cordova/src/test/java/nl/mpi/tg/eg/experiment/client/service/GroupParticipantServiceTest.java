@@ -230,4 +230,61 @@ public class GroupParticipantServiceTest {
             assertEquals(expectedData[1], stringBuilder.toString());
         }
     }
+
+    /**
+     * Test of handleGroupMessage Round 1 method, of class
+     * GroupParticipantService.
+     */
+    @Test
+    public void testHandleGroupMessageRound1() {
+        System.out.println("handleGroupMessageRound1");
+        for (String[] expectedData : new TestData().getExpectedDataRound1()) {
+            final StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append(expectedData[0]);
+            stringBuilder.append("\n");
+
+            groupParticipantService = new GroupParticipantService(expectedData[0], "Round_1", "A,B,C,D,E,F,G,H", "A,B|C,D|E,F|G,H",
+                    "2-4:medium-2-2:medium-4-6:medium-1-3:small-2-3:small-4-6:large-2-7:medium-1-1:medium", new TimedStimulusListener() {
+                @Override
+                public void postLoadTimerFired() {
+                    // connectedListener
+                    stringBuilder.append("connectedListener\n");
+                }
+            }, new TimedStimulusListener() {
+                @Override
+                public void postLoadTimerFired() {
+                    // groupNotReadyListener
+                    stringBuilder.append("groupNotReadyListener\n");
+                }
+            }, new TimedStimulusListener() {
+                @Override
+                public void postLoadTimerFired() {
+                    // screenResetRequestListner
+                    stringBuilder.append("screenResetRequestListner\n");
+                    groupParticipantService.setStimuliListLoaded(groupParticipantService.getStimuliListGroup());
+                }
+            }, new TimedStimulusListener() {
+                @Override
+                public void postLoadTimerFired() {
+                    // stimulusSyncListner
+                    stringBuilder.append("stimulusSyncListner\n");
+                }
+            }, new TimedStimulusListener() {
+                @Override
+                public void postLoadTimerFired() {
+                    // groupInfoChangeListner
+                    stringBuilder.append("groupInfoChangeListner\n");
+                }
+            });
+
+            groupNetworkActivity(stringBuilder, groupParticipantService, "-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H", 1, "feedback");
+            groupNetworkActivity(stringBuilder, groupParticipantService, "-:B,D,F,H:-:-:A,C,E,G:-", 1, "guesser");
+            groupNetworkActivity(stringBuilder, groupParticipantService, "B,D,F,H:-:-:A,C,E,G:-:-", 1, "guesser wait");
+            groupNetworkActivity(stringBuilder, groupParticipantService, "-:A,C,E,G:-:-:B,D,F,H:-", 1, "producer wait");
+            groupNetworkActivity(stringBuilder, groupParticipantService, "A,C,E,G:-:-:B,D,F,H:-:-", 1, "producer");
+            new TestData().processTestMessagesRound1(groupParticipantService);
+            System.out.println(stringBuilder.toString());
+            assertEquals(expectedData[1], stringBuilder.toString());
+        }
+    }
 }
