@@ -550,6 +550,27 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addHtmlText("groupMemberCodeLabel: " + groupParticipantService.getMemberCode());
     }
 
+    protected void groupResponseFeedback(final AppEventListner appEventListner, final int postLoadCorrectMs, final TimedStimulusListener correctListener, final int postLoadIncorrectMs, final TimedStimulusListener incorrectListener) {
+        if (groupParticipantService.getStimulusId().equals(groupParticipantService.getResponseStimulusId())) {
+            Timer timer = new Timer() {
+                @Override
+                public void run() {
+                    correctListener.postLoadTimerFired();
+                }
+            };
+            timer.schedule(postLoadCorrectMs);
+        } else {
+            Timer timer = new Timer() {
+                @Override
+                public void run() {
+                    incorrectListener.postLoadTimerFired();
+                }
+            };
+            timer.schedule(postLoadIncorrectMs);
+        }
+
+    }
+
     protected void stimulusFreeText(String validationRegex, String validationChallenge) {
         StimulusFreeText stimulusFreeText = ((TimedStimulusView) simpleView).addStimulusFreeText(validationRegex, validationChallenge);
         stimulusFreeTextList.add(stimulusFreeText);
@@ -607,11 +628,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final Integer fixedPositionY, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
-        stimulusImage(percentOfPage, maxHeight, maxWidth, animateType, fixedPositionY, postLoadMs, timedStimulusListener, null);
+        stimulusImage(stimulusProvider.getCurrentStimulus(), percentOfPage, maxHeight, maxWidth, animateType, fixedPositionY, postLoadMs, timedStimulusListener, null);
     }
 
-    protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final Integer fixedPositionY, int postLoadMs, final TimedStimulusListener timedStimulusListener, final TimedStimulusListener clickedStimulusListener) {
-        final Stimulus currentStimulus = stimulusProvider.getCurrentStimulus();
+    protected void stimulusImage(final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final Integer fixedPositionY, int postLoadMs, final TimedStimulusListener timedStimulusListener, final TimedStimulusListener clickedStimulusListener) {
         if (currentStimulus.hasImage()) {
             final String image = currentStimulus.getImage();
             final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
@@ -870,14 +890,14 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         while (matchingStimuliGroup.getNextStimulus(stimulusProvider)) {
             yPos += ySpacing;
             if (matchingStimuliGroup.isCorrect(stimulusProvider.getCurrentStimulus())) {
-                stimulusImage(0, maxWidth, maxWidth, animateType, yPos - (maxWidth / 2), postLoadCorrectMs, new TimedStimulusListener() {
+                stimulusImage(stimulusProvider.getCurrentStimulus(), 0, maxWidth, maxWidth, animateType, yPos - (maxWidth / 2), postLoadCorrectMs, new TimedStimulusListener() {
                     @Override
                     public void postLoadTimerFired() {
 
                     }
                 }, correctListener);
             } else {
-                stimulusImage(0, maxWidth, maxWidth, animateType, yPos - (maxWidth / 2), postLoadIncorrectMs, new TimedStimulusListener() {
+                stimulusImage(stimulusProvider.getCurrentStimulus(), 0, maxWidth, maxWidth, animateType, yPos - (maxWidth / 2), postLoadIncorrectMs, new TimedStimulusListener() {
                     @Override
                     public void postLoadTimerFired() {
 
@@ -992,6 +1012,19 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         stimulusFreeTextList.clear();
         buttonList.clear();
         showStimulus();
+    }
+
+    protected void groupResponseStimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+        stimulusImage(stimulusProvider.getStimuliFromString(groupParticipantService.getResponseStimulusId()), percentOfPage, maxHeight, maxWidth, animateType, (int) (50 - (maxHeight / 2.0)), postLoadMs, timedStimulusListener, null);
+    }
+
+    protected void sendGroupMessage(final String eventTag, final int incrementPhase) {
+        submissionService.submitTagValue(userResults.getUserData().getUserId(), eventTag, groupParticipantService.getMessageString(), duration.elapsedMillis());
+        groupParticipantService.messageGroup(incrementPhase, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), groupParticipantService.getMessageString(), groupParticipantService.getResponseStimulusOptions(), groupParticipantService.getResponseStimulusId());
+        ((TimedStimulusView) simpleView).stopAudio();
+        ((TimedStimulusView) simpleView).clearPage();
+        stimulusFreeTextList.clear();
+        buttonList.clear();
     }
 
     protected void sendGroupMessageButton(final String eventTag, final String buttonLabel, final boolean norepeat, final int hotKey, final int incrementPhase) {
