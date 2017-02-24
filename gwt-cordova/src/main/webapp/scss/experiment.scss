@@ -136,40 +136,50 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     margin: 50px;
     background: none;
     position: relative;
-    -webkit-animation: moveRotated10KeyFrames 2s infinite;
+    animation: moveRotated10KeyFrames 2s infinite;
     animation-timing-function: ease;
+    /*    -webkit-animation: moveRotated10KeyFrames 2s infinite;
+        -webkit-animation-timing-function: ease;*/
 }
 .gwt-Image.moveRotated180Animation,
 .gwt-Button.stimulusButton.moveRotated180Animation {
     margin: 50px;
     background: none;
     position: relative;
-    -webkit-animation: moveRotated180KeyFrames 2s infinite;
+    animation: moveRotated180KeyFrames 2s infinite;
     animation-timing-function: ease;
+    /*    -webkit-animation: moveRotated180KeyFrames 2s infinite;
+        -webkit-animation-timing-function: ease;*/
 }
 .gwt-Image.moveRotated200Animation,
 .gwt-Button.stimulusButton.moveRotated200Animation {
     margin: 50px;
     background: none;
     position: relative;
-    -webkit-animation: moveRotated200KeyFrames 2s infinite;
+    animation: moveRotated200KeyFrames 2s infinite;
     animation-timing-function: ease;
+    /*    -webkit-animation: moveRotated200KeyFrames 2s infinite;
+        -webkit-animation-timing-function: ease;*/
 }
 .gwt-Image.moveRotated300Animation,
 .gwt-Button.stimulusButton.moveRotated300Animation {
     margin: 50px;
     background: none;
     position: relative;
-    -webkit-animation: moveRotated300KeyFrames 2s infinite;
+    animation: moveRotated300KeyFrames 2s infinite;
     animation-timing-function: ease;
+    /*    -webkit-animation: moveRotated300KeyFrames 2s infinite;
+        -webkit-animation-timing-function: ease;*/
 }
 .gwt-Image.moveRotated350Animation,
 .gwt-Button.stimulusButton.moveRotated350Animation {
     margin: 50px;
     background: none;
     position: relative;
-    -webkit-animation: moveRotated350KeyFrames 2s infinite;
+    animation: moveRotated350KeyFrames 2s infinite;
     animation-timing-function: ease;
+    /*    -webkit-animation: moveRotated350KeyFrames 2s infinite;
+        -webkit-animation-timing-function: ease;*/
 }
 
 .svgPopupPanel .gwt-Button, 
@@ -618,12 +628,12 @@ table#screenExample td {
     right: 0px;
 }
 
-@-webkit-keyframes bouncekeyframes {
+@keyframes bouncekeyframes {
     from {top: -50%;}
     to {top: 35%;}
 }
 
-@-webkit-keyframes moveRotated10KeyFrames {
+@keyframes moveRotated10KeyFrames {
     from {
         transform: rotate(10deg)
             translate(-50px)
@@ -635,7 +645,7 @@ table#screenExample td {
             rotate(-10deg);
     }
 }
-@-webkit-keyframes moveRotated180KeyFrames {
+@keyframes moveRotated180KeyFrames {
     from {
         transform: rotate(180deg)
             translate(-50px)
@@ -647,7 +657,7 @@ table#screenExample td {
             rotate(-180deg);
     }
 }
-@-webkit-keyframes moveRotated200KeyFrames {
+@keyframes moveRotated200KeyFrames {
     from {
         transform: rotate(200deg)
             translate(-50px)
@@ -659,7 +669,7 @@ table#screenExample td {
             rotate(-200deg);
     }
 }
-@-webkit-keyframes moveRotated300KeyFrames {
+@keyframes moveRotated300KeyFrames {
     from {
         transform: rotate(300deg)
             translate(-50px)
@@ -671,7 +681,7 @@ table#screenExample td {
             rotate(-300deg);
     }
 }
-@-webkit-keyframes moveRotated350KeyFrames {
+@keyframes moveRotated350KeyFrames {
     from {
         transform: rotate(350deg)
             translate(-50px)
