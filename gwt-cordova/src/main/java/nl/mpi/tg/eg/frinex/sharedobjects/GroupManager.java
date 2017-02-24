@@ -79,7 +79,7 @@ public class GroupManager {
         return membercodes.isEmpty() && groupsMembers.get(groupMessage).contains(groupMessage.getUserId());
     }
 
-    public GroupMessage updateChannelMessageIfOutOfDate(GroupMessage incomingMessage, final GroupMessage storedMessage) {
+    public void updateChannelMessageIfOutOfDate(GroupMessage incomingMessage, final GroupMessage storedMessage) {
         GroupMessage mostRecentChannelMessage = incomingMessage;
         // keep the member id and the channel data before updating the message to the most recent seen by the server, if found
         final String memberCode = storedMessage.getMemberCode();
@@ -117,9 +117,13 @@ public class GroupManager {
             }
         }
         // preserve the user id and member code of the requesting participant, even if the message is a resend from a different participant
-        mostRecentChannelMessage.setMemberCode(incomingMessage.getMemberCode());
-        mostRecentChannelMessage.setUserId(incomingMessage.getUserId());
-        return mostRecentChannelMessage;
+        incomingMessage.setOriginMemberCode(mostRecentChannelMessage.getMemberCode());
+        incomingMessage.setStimulusId(mostRecentChannelMessage.getStimulusId());
+        incomingMessage.setStimulusIndex(mostRecentChannelMessage.getStimulusIndex());
+        incomingMessage.setRequestedPhase(mostRecentChannelMessage.getRequestedPhase());
+        incomingMessage.setMessageString(mostRecentChannelMessage.getMessageString());
+        incomingMessage.setResponseStimulusId(mostRecentChannelMessage.getResponseStimulusId());
+        incomingMessage.setExpectedRespondents(mostRecentChannelMessage.getExpectedRespondents());
     }
 
     public void addGroupMember(GroupMessage groupMessage) {
@@ -164,17 +168,17 @@ public class GroupManager {
 
     public void updateResponderListForMessagePhase(GroupMessage storedMessage) {
         final Set<String> respondingMemberCodes = new HashSet<>();
-        if (storedMessage.getMemberCode() != null) {
-            respondingMemberCodes.add(storedMessage.getMemberCode());
+        if (storedMessage.getOriginMemberCode() != null) {
+            respondingMemberCodes.add(storedMessage.getOriginMemberCode());
         }
         for (final HashMap<GroupMessage, GroupMessage> userGroups : allMembersList.values()) {
             GroupMessage lastGroupMessage = userGroups.get(storedMessage);
-            if (lastGroupMessage != null && lastGroupMessage.getMemberCode() != null) {
+            if (lastGroupMessage != null && lastGroupMessage.getOriginMemberCode() != null) {
 //          if the group matches
                 if (storedMessage.equals(lastGroupMessage)) {
                     // this is the same phase
                     if (storedMessage.getRequestedPhase().equals(lastGroupMessage.getRequestedPhase())) {
-                        respondingMemberCodes.add(lastGroupMessage.getMemberCode());
+                        respondingMemberCodes.add(lastGroupMessage.getOriginMemberCode());
                     }
                 }
             }

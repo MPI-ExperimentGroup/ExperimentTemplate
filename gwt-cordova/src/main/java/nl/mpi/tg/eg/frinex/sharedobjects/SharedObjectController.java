@@ -91,7 +91,8 @@ public class SharedObjectController {
             System.out.println(storedMessage.getScreenId());
 
             // if the message is a reconnect request then send the last message for that chanel
-            storedMessage = GROUP_MANAGER.updateChannelMessageIfOutOfDate(incomingMessage, storedMessage);
+            GROUP_MANAGER.updateChannelMessageIfOutOfDate(incomingMessage, storedMessage);
+            storedMessage = incomingMessage;
         } else {
             GROUP_MANAGER.addGroupMember(incomingMessage);
             incomingMessage.setOriginMemberCode(incomingMessage.getMemberCode());
