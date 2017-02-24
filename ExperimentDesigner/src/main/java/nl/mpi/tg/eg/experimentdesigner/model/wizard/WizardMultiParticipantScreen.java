@@ -98,11 +98,12 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         if (stimuliSet != null) {
             for (String stimulusLine : stimuliSet) {
                 final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{this.wizardScreenData.getScreenTitle()}));
-                tagSet.addAll(Arrays.asList(stimulusLine.split("\\.png:")));
+                tagSet.addAll(Arrays.asList(stimulusLine.split("(\\.png)?:")));
                 final Stimulus stimulus;
                 if (stimulusLine.contains(".png")) {
+                    final String[] splitLine = stimulusLine.split(":");
 //                    tagSet.addAll(Arrays.asList(stimulusLine.split("/")));
-                    stimulus = new Stimulus(stimulusLine.replace(".png", ""), null, null, stimulusLine.split(":")[0], null, null, 0, tagSet, null);
+                    stimulus = new Stimulus(stimulusLine.replace(".png", ""), null, null, splitLine[0], null, splitLine[2], 0, tagSet, null);
                     stimuliList.add(stimulus);
                 }
             }
@@ -271,7 +272,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
-        imageFeature.addFeatureAttributes(FeatureAttribute.animate, "topLeft2BottomRight");
+        imageFeature.addFeatureAttributes(FeatureAttribute.animate, "stimuliCode");
         producerNetworkActivity0.getPresenterFeatureList().add(imageFeature);
         // temporary testing features
         final PresenterFeature stimulusGrid = addStimuliGrid("guesserNetworkActivity1Grid", getScoreFeatures(true), getScoreFeatures(false));
@@ -283,7 +284,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
-        allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.animate, "topLeft2BottomRight");
+        allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.animate, "stimuliCode");
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
         allNetworkActivity2.getPresenterFeatureList().add(allNetworkActivity2Image);
 
@@ -307,7 +308,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
         groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
         groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
-        groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.animate, "topLeft2BottomRight");
+        groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.animate, "stimuliCode");
         groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
         responseIncorrect.getPresenterFeatureList().add(groupResponseStimulusImage);
         allNetworkActivity2.getPresenterFeatureList().add(groupResponseFeedback);
@@ -428,6 +429,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         final PresenterFeature resultsGrid = new PresenterFeature(FeatureType.showStimulusGrid, null);
         resultsGrid.addFeatureAttributes(FeatureAttribute.columnCount, "5");
         resultsGrid.addFeatureAttributes(FeatureAttribute.imageWidth, "50%");
+        resultsGrid.addFeatureAttributes(FeatureAttribute.animate, "stimuliCode");
         resultsGrid.addFeatureAttributes(FeatureAttribute.eventTag, eventTagString);
         final PresenterFeature responseCorrect = new PresenterFeature(FeatureType.responseCorrect, null);
         responseCorrect.getPresenterFeatureList().add(responseCorrectFeatures);
