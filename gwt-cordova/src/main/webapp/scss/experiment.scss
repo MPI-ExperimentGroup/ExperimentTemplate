@@ -131,6 +131,47 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     width: 100%;
 }
 
+.gwt-Image.moveRotated10Animation,
+.gwt-Button.stimulusButton.moveRotated10Animation {
+    margin: 50px;
+    background: none;
+    position: relative;
+    -webkit-animation: moveRotated10KeyFrames 2s infinite;
+    animation-timing-function: ease;
+}
+.gwt-Image.moveRotated180Animation,
+.gwt-Button.stimulusButton.moveRotated180Animation {
+    margin: 50px;
+    background: none;
+    position: relative;
+    -webkit-animation: moveRotated180KeyFrames 2s infinite;
+    animation-timing-function: ease;
+}
+.gwt-Image.moveRotated200Animation,
+.gwt-Button.stimulusButton.moveRotated200Animation {
+    margin: 50px;
+    background: none;
+    position: relative;
+    -webkit-animation: moveRotated200KeyFrames 2s infinite;
+    animation-timing-function: ease;
+}
+.gwt-Image.moveRotated300Animation,
+.gwt-Button.stimulusButton.moveRotated300Animation {
+    margin: 50px;
+    background: none;
+    position: relative;
+    -webkit-animation: moveRotated300KeyFrames 2s infinite;
+    animation-timing-function: ease;
+}
+.gwt-Image.moveRotated350Animation,
+.gwt-Button.stimulusButton.moveRotated350Animation {
+    margin: 50px;
+    background: none;
+    position: relative;
+    -webkit-animation: moveRotated350KeyFrames 2s infinite;
+    animation-timing-function: ease;
+}
+
 .svgPopupPanel .gwt-Button, 
 .stimulusHelpPanel .gwt-Button,
 .choosePlayerList,
@@ -560,12 +601,6 @@ table#screenExample td {
     -webkit-animation-timing-function: cubic-bezier(0.835, 1.555, 0.695, 0.675);
 }
 
-.topLeft2BottomRightAnimation {
-    position: relative;
-    -webkit-animation: topLeft2BottomRightKeyFrames 2s infinite;
-    animation-timing-function: ease;
-}
-
 .gwt-Button.optionButton.hiddenTopRight, .gwt-Button.optionButton.hiddenBottomRight{
     position: fixed;
     margin: 0;
@@ -588,10 +623,70 @@ table#screenExample td {
     to {top: 35%;}
 }
 
-@-webkit-keyframes topLeft2BottomRightKeyFrames {
+@-webkit-keyframes moveRotated10KeyFrames {
+    from {
+        transform: rotate(10deg)
+            translate(-50px)
+            rotate(-10deg);
+    }
+    to {
+        transform: rotate(10deg)
+            translate(50px)
+            rotate(-10deg);
+    }
+}
+@-webkit-keyframes moveRotated180KeyFrames {
+    from {
+        transform: rotate(180deg)
+            translate(-50px)
+            rotate(-180deg);
+    }
+    to {
+        transform: rotate(180deg)
+            translate(50px)
+            rotate(-180deg);
+    }
+}
+@-webkit-keyframes moveRotated200KeyFrames {
+    from {
+        transform: rotate(200deg)
+            translate(-50px)
+            rotate(-200deg);
+    }
+    to {
+        transform: rotate(200deg)
+            translate(50px)
+            rotate(-200deg);
+    }
+}
+@-webkit-keyframes moveRotated300KeyFrames {
+    from {
+        transform: rotate(300deg)
+            translate(-50px)
+            rotate(-300deg);
+    }
+    to {
+        transform: rotate(300deg)
+            translate(50px)
+            rotate(-300deg);
+    }
+}
+@-webkit-keyframes moveRotated350KeyFrames {
+    from {
+        transform: rotate(350deg)
+            translate(-50px)
+            rotate(-350deg);
+    }
+    to {
+        transform: rotate(350deg)
+            translate(50px)
+            rotate(-350deg);
+    }
+}
+/*@-webkit-keyframes topLeft2BottomRightKeyFrames {
     from {padding-left: 0px; padding-top: 0px; padding-bottom: 50px; padding-right: 50px;}
     to {padding-left: 50px; padding-top: 50px; padding-bottom: 0px; padding-right: 0px;}
-}
+}*/
 
 textarea.metadataError, textarea.metadataOK {
     width: 100%;
