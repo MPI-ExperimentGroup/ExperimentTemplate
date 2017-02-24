@@ -143,6 +143,11 @@ public class StimulusProvider {
         }
     }
 
+    public void loadStoredStimulusList(String storedStimulusList) {
+        stimulusSubsetArray.clear();
+        loadStoredStimulusList(storedStimulusList, stimulusArray);
+    }
+
     private void loadStoredStimulusList(String storedStimulusList, final List<Stimulus> stimulusArrayTemp) {
         while (!storedStimulusList.isEmpty()) {
             // stimuli ids can contain - so we cant split the string on -
@@ -311,12 +316,11 @@ public class StimulusProvider {
         this.stimulusSubsetArray.get(currentStimuliIndex);
     }*/
 
-    /*public void removeStimulus(Stimulus removeStimulus) {
+ /*public void removeStimulus(Stimulus removeStimulus) {
         stimulusSubsetArray.remove(removeStimulus); // todo: is this valid in the current design?
         stimulusSubsetArray.add(currentStimuliIndex - 1, removeStimulus);
         currentStimuliIndex++;
     }*/
-
     public void nextStimulus() {
         currentStimuliIndex++;
     }
@@ -331,6 +335,16 @@ public class StimulusProvider {
 
     public int getTotalStimuli() {
         return stimulusSubsetArray.size();
+    }
+
+    public Stimulus getStimuliFromString(final String stimuliString) {
+        for (Stimulus stimulus : stimulusArray) {
+            final String uniqueId = stimulus.getUniqueId();
+            if (uniqueId.equals(stimuliString)) {
+                return stimulus;
+            }
+        }
+        return null;
     }
 
     public List<Stimulus> getMatchingStimuli(final String matchingRegex, final int maxStimulusCount) {
