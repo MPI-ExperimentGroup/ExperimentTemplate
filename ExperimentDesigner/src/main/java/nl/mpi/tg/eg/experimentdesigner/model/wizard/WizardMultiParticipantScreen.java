@@ -340,6 +340,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         stimulusImage.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
         stimulusImage.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
         stimulusImage.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
+        stimulusImage.addFeatureAttributes(FeatureAttribute.animate, "stimuliCode");
         stimulusImage.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
         trainingDisplayNetworkActivity3.getPresenterFeatureList().add(stimulusImage);
 
