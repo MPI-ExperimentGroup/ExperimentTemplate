@@ -76,12 +76,12 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     final ArrayList<ButtonBase> buttonList = new ArrayList<>();
     private TimedStimulusListener hasMoreStimulusListener;
     private TimedStimulusListener endOfStimulusListener;
-    private ArrayList<StimulusFreeText> stimulusFreeTextList = new ArrayList<StimulusFreeText>();
+    private final ArrayList<StimulusFreeText> stimulusFreeTextList = new ArrayList<>();
     MatchingStimuliGroup matchingStimuliGroup = null;
     private boolean hasSubdirectories = false;
 
     protected enum AnimateTypes {
-        bounce, none, topLeft2BottomRight
+        bounce, none, stimuliCode
     }
 
     public AbstractStimulusPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage) {
@@ -642,7 +642,15 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 }
             };
 //            submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusImage", image, duration.elapsedMillis());
-            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(image), percentOfPage, maxHeight, maxWidth, (animateType != AnimateTypes.none) ? animateType.name() + "Animation" : null, fixedPositionY, postLoadMs, shownStimulusListener, timedStimulusListener, clickedStimulusListener);
+            final String animateStyle;
+            if (animateType == AnimateTypes.stimuliCode) {
+                animateStyle = currentStimulus.getCode() + "Animation";
+            } else if (animateType != AnimateTypes.none) {
+                animateStyle = animateType.name() + "Animation";
+            } else {
+                animateStyle = null;
+            }
+            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(image), percentOfPage, maxHeight, maxWidth, animateStyle, fixedPositionY, postLoadMs, shownStimulusListener, timedStimulusListener, clickedStimulusListener);
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
         } else if (currentStimulus.hasAudio()) {
             String mp3 = currentStimulus.getAudio() + ".mp3";
@@ -841,7 +849,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         super.startAudioRecorder(true, subdirectoryName, directoryName, (filePerStimulus) ? stimulusProvider.getCurrentStimulus().getUniqueId() : "");
     }
 
-    protected void showStimulusGrid(final AppEventListner appEventListner, final int postLoadCorrectMs, final TimedStimulusListener correctListener, final int postLoadIncorrectMs, final TimedStimulusListener incorrectListener, final int columnCount, final String imageWidth, final String eventTag) {
+    protected void showStimulusGrid(final AppEventListner appEventListner, final int postLoadCorrectMs, final TimedStimulusListener correctListener, final int postLoadIncorrectMs, final TimedStimulusListener incorrectListener, final int columnCount, final String imageWidth, final AnimateTypes animateType, final String eventTag) {
         ((TimedStimulusView) simpleView).stopAudio();
         TimedStimulusListener correctTimedListener = new TimedStimulusListener() {
 
@@ -875,7 +883,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //            buttonList.add(((TimedStimulusView) simpleView).addStringItem(getEventListener(buttonList, eventTag, stimulusProvider.getCurrentStimulus(), alternativeChoice, correctTimedListener, incorrectTimedListener), alternativeChoice, 0, 0, imageWidth));
 //        }
         for (final Stimulus nextJpgStimulus : stimulusProvider.getPictureList(groupParticipantService)) {
-            buttonList.add(((TimedStimulusView) simpleView).addImageItem(getEventListener(buttonList, eventTag, stimulusProvider.getCurrentStimulus(), nextJpgStimulus, correctTimedListener, incorrectTimedListener), UriUtils.fromString(nextJpgStimulus.getImage()), imageCounter / columnCount, 1 + imageCounter++ % columnCount, imageWidth));
+            final ButtonBase imageItem = ((TimedStimulusView) simpleView).addImageItem(getEventListener(buttonList, eventTag, stimulusProvider.getCurrentStimulus(), nextJpgStimulus, correctTimedListener, incorrectTimedListener), UriUtils.fromString(nextJpgStimulus.getImage()), imageCounter / columnCount, 1 + imageCounter++ % columnCount, imageWidth);
+            buttonList.add(imageItem);
+            if (animateType == AnimateTypes.stimuliCode) {
+                imageItem.addStyleName(nextJpgStimulus.getCode() + "Animation");
+            } else if (animateType != AnimateTypes.none) {
+                imageItem.addStyleName(animateType.name() + "Animation");
+            }
         }
         disableStimulusButtons();
         ((TimedStimulusView) simpleView).endGrid();
