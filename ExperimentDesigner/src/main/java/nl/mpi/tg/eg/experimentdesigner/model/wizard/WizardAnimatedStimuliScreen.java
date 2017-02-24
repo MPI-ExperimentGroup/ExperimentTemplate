@@ -270,9 +270,11 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.actionButton, "Play Sound");
             presenterFeature.addFeatureAttributes(FeatureAttribute.styleName, "hiddenTopRight");
             final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.stimulusAudio, null);
+            presenterFeature1.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(false));
             presenterFeature1.addFeatureAttributes(FeatureAttribute.msToNext, "0");
             presenterFeature.getPresenterFeatureList().add(presenterFeature1);
             final PresenterFeature presenterFeature2 = new PresenterFeature(FeatureType.stimulusAudio, null);
+            presenterFeature2.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(false));
             presenterFeature2.addFeatureAttributes(FeatureAttribute.msToNext, "0");
             imageFeature.getPresenterFeatureList().add(presenterFeature2);
             imageFeature.getPresenterFeatureList().add(presenterFeature);
@@ -307,9 +309,11 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.actionButton, "Play Sound");
             presenterFeature.addFeatureAttributes(FeatureAttribute.styleName, "hiddenTopRight");
             final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.stimulusAudio, null);
+            presenterFeature1.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(false));
             presenterFeature1.addFeatureAttributes(FeatureAttribute.msToNext, "0");
             presenterFeature.getPresenterFeatureList().add(presenterFeature1);
             final PresenterFeature presenterFeature2 = new PresenterFeature(FeatureType.stimulusAudio, null);
+            presenterFeature2.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(false));
             presenterFeature2.addFeatureAttributes(FeatureAttribute.msToNext, "0");
             returnFeature.getPresenterFeatureList().add(presenterFeature2);
             returnFeature.getPresenterFeatureList().add(presenterFeature);
@@ -376,9 +380,11 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.actionButton, "Play Sound");
             presenterFeature.addFeatureAttributes(FeatureAttribute.styleName, "hiddenTopRight");
             final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.stimulusAudio, null);
+            presenterFeature1.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(false));
             presenterFeature1.addFeatureAttributes(FeatureAttribute.msToNext, "0");
             presenterFeature.getPresenterFeatureList().add(presenterFeature1);
             final PresenterFeature presenterFeature2 = new PresenterFeature(FeatureType.stimulusAudio, null);
+            presenterFeature2.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(false));
             presenterFeature2.addFeatureAttributes(FeatureAttribute.msToNext, "0");
             returnFeature.getPresenterFeatureList().add(presenterFeature2);
             returnFeature.getPresenterFeatureList().add(presenterFeature);
