@@ -54,18 +54,18 @@ public class MultiParticipant {
 //85,1,AB,5,6,2,big,7.6,2,A,dauft,0
 //87,1,CD,5,6,2,big,7.6,2,C,potmik,1
     private final String[] stimuliArray = new String[]{
-        "1-1.png:small", "1-7.png:small", "2-6.png:small", "3-5.png:small", "4-4.png:small", "1-2.png:small", "2-1.png:small", "2-7.png:small",
-        "3-6.png:small", "4-5.png:small", "1-3.png:small", "2-2.png:small", "3-1.png:small", "3-7.png:small", "4-6.png:small", "1-4.png:small",
-        "2-3.png:small", "3-2.png:small", "4-1.png:small", "4-7.png:small", "1-5.png:small", "2-4.png:small", "3-3.png:small", "4-2.png:small",
-        "1-6.png:small", "2-5.png:small", "3-4.png:small", "4-3.png:small",
-        "1-1.png:large", "1-7.png:large", "2-6.png:large", "3-5.png:large", "4-4.png:large", "1-2.png:large", "2-1.png:large", "2-7.png:large",
-        "3-6.png:large", "4-5.png:large", "1-3.png:large", "2-2.png:large", "3-1.png:large", "3-7.png:large", "4-6.png:large", "1-4.png:large",
-        "2-3.png:large", "3-2.png:large", "4-1.png:large", "4-7.png:large", "1-5.png:large", "2-4.png:large", "3-3.png:large", "4-2.png:large",
-        "1-6.png:large", "2-5.png:large", "3-4.png:large", "4-3.png:large",
-        "1-1.png:medium", "1-7.png:medium", "2-6.png:medium", "3-5.png:medium", "4-4.png:medium", "1-2.png:medium", "2-1.png:medium", "2-7.png:medium",
-        "3-6.png:medium", "4-5.png:medium", "1-3.png:medium", "2-2.png:medium", "3-1.png:medium", "3-7.png:medium", "4-6.png:medium", "1-4.png:medium",
-        "2-3.png:medium", "3-2.png:medium", "4-1.png:medium", "4-7.png:medium", "1-5.png:medium", "2-4.png:medium", "3-3.png:medium", "4-2.png:medium",
-        "1-6.png:medium", "2-5.png:medium", "3-4.png:medium", "4-3.png:medium"
+        "1-1.png:small:moveRotated10", "1-7.png:small:moveRotated180", "2-6.png:small:moveRotated350", "3-5.png:small:moveRotated300", "4-4.png:small:moveRotated200", "1-2.png:small:moveRotated200", "2-1.png:small:moveRotated200", "2-7.png:small:moveRotated200",
+        "3-6.png:small:moveRotated10", "4-5.png:small:moveRotated180", "1-3.png:small:moveRotated350", "2-2.png:small:moveRotated300", "3-1.png:small:moveRotated200", "3-7.png:small:moveRotated200", "4-6.png:small:moveRotated200", "1-4.png:small:moveRotated200",
+        "2-3.png:small:moveRotated10", "3-2.png:small:moveRotated180", "4-1.png:small:moveRotated350", "4-7.png:small:moveRotated300", "1-5.png:small:moveRotated200", "2-4.png:small:moveRotated200", "3-3.png:small:moveRotated200", "4-2.png:small:moveRotated200",
+        "1-6.png:small:moveRotated10", "2-5.png:small:moveRotated180", "3-4.png:small:moveRotated350", "4-3.png:small:moveRotated300",
+        "1-1.png:large:moveRotated10", "1-7.png:large:moveRotated180", "2-6.png:large:moveRotated350", "3-5.png:large:moveRotated300", "4-4.png:large:moveRotated200", "1-2.png:large:moveRotated200", "2-1.png:large:moveRotated200", "2-7.png:large:moveRotated200",
+        "3-6.png:large:moveRotated10", "4-5.png:large:moveRotated180", "1-3.png:large:moveRotated350", "2-2.png:large:moveRotated300", "3-1.png:large:moveRotated200", "3-7.png:large:moveRotated200", "4-6.png:large:moveRotated200", "1-4.png:large:moveRotated200",
+        "2-3.png:large:moveRotated10", "3-2.png:large:moveRotated180", "4-1.png:large:moveRotated350", "4-7.png:large:moveRotated300", "1-5.png:large:moveRotated200", "2-4.png:large:moveRotated200", "3-3.png:large:moveRotated200", "4-2.png:large:moveRotated200",
+        "1-6.png:large:moveRotated10", "2-5.png:large:moveRotated180", "3-4.png:large:moveRotated350", "4-3.png:large:moveRotated300",
+        "1-1.png:medium:moveRotated10", "1-7.png:medium:moveRotated180", "2-6.png:medium:moveRotated350", "3-5.png:medium:moveRotated300", "4-4.png:medium:moveRotated200", "1-2.png:medium:moveRotated200", "2-1.png:medium:moveRotated200", "2-7.png:medium:moveRotated200",
+        "3-6.png:medium:moveRotated10", "4-5.png:medium:moveRotated180", "1-3.png:medium:moveRotated350", "2-2.png:medium:moveRotated300", "3-1.png:medium:moveRotated200", "3-7.png:medium:moveRotated200", "4-6.png:medium:moveRotated200", "1-4.png:medium:moveRotated200",
+        "2-3.png:medium:moveRotated10", "3-2.png:medium:moveRotated180", "4-1.png:medium:moveRotated350", "4-7.png:medium:moveRotated300", "1-5.png:medium:moveRotated200", "2-4.png:medium:moveRotated200", "3-3.png:medium:moveRotated200", "4-2.png:medium:moveRotated200",
+        "1-6.png:medium:moveRotated10", "2-5.png:medium:moveRotated180", "3-4.png:medium:moveRotated350", "4-3.png:medium:moveRotated300"
     /*, "beep.wav"*/
     };
 
