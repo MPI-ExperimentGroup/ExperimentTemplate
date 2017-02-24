@@ -14,7 +14,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.2.5.RELEASE</version>
+        <version>1.4.1.RELEASE</version>
     </parent>
     <properties>        
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -28,31 +28,51 @@
         <!--<experiment.configuration.path>${project.build.sourceDirectory}/../xml</experiment.configuration.path>-->
         <!--<experiment.configuration.path>${project.build.sourceDirectory}/../../../../../ExperimentBuilder/src/main/xml</experiment.configuration.path>-->      
         <experiment.configuration.path>../frinex-rest-output</experiment.configuration.path>      
-        <experiment.webservice>http://localhost:8080/ExperimentDesigner</experiment.webservice>   
+        <experiment.webservice></experiment.webservice>   
+        <experiment.scriptSrcUrl>http://127.0.0.1:9876 http://localhost:8080 http://localhost:9876</experiment.scriptSrcUrl>   
+        <experiment.synQuizRegistrationUrl></experiment.synQuizRegistrationUrl>
+        <experiment.groupsSocketUrl>ws://localhost:8080/</experiment.groupsSocketUrl>   
+        <experiment.destinationServer>http://localhost:8080</experiment.destinationServer>   
+        <experiment.staticFilesUrl>http://localhost:8080</experiment.staticFilesUrl>   
         <!--<experiment.destinationName>localhost</experiment.destinationName>-->      
-        <experiment.destinationUrl>http://localhost:8080</experiment.destinationUrl>      
-          
-        <!--<experiment.configuration.name>dobesannotator</experiment.configuration.name>-->
-        <experiment.configuration.name>alloptions</experiment.configuration.name>
-        <!--        <experiment.configuration.name>shawifieldkit</experiment.configuration.name>
-        <experiment.configuration.displayName>Shawi FieldKit</experiment.configuration.displayName>-->
-        <!--        <experiment.configuration.name>vanuatufieldkit</experiment.configuration.name>
-        <experiment.configuration.displayName>Vanuatu FieldKit</experiment.configuration.displayName>-->
-        <!--<experiment.configuration.name>sentveri_exp3</experiment.configuration.name>-->
-        <!--<experiment.configuration.displayName>sentveri_exp3</experiment.configuration.displayName>-->
+        <experiment.destinationServerUrl>http://localhost:8080/</experiment.destinationServerUrl>      
+        <!--<experiment.destinationServerUrl></experiment.destinationServerUrl>-->      
+        <!--<experiment.destinationServer></experiment.destinationServer>-->
+        <!--<experiment.configuration.name>parcours01</experiment.configuration.name>-->
+        <experiment.configuration.name>multiparticipant</experiment.configuration.name>
+        <!--<experiment.configuration.name>manipulatedcontours</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>dobes_annotator</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>antwoordraden</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>leeservaring</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>online_emotions</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>alloptions</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>three_lists</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>hrpretest</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>shawifieldkit</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>kinoath_example</experiment.configuration.name>-->
+        <!--<experiment.configuration.displayName>Shawi FieldKit</experiment.configuration.displayName>-->
+        <!--<experiment.configuration.name>vanuatufieldkit</experiment.configuration.name>-->
+        <!--<experiment.configuration.displayName>Vanuatu FieldKit</experiment.configuration.displayName>-->
+        <!--        <experiment.configuration.name>sentveri_exp3</experiment.configuration.name>
+        <experiment.configuration.displayName>sentveri_exp3</experiment.configuration.displayName>-->
         <!--<experiment.configuration.displayName>SynQuiz2</experiment.configuration.displayName>-->
+        <!--<experiment.configuration.name>zinnen_beoordelen</experiment.configuration.name>-->
         <!--<experiment.configuration.name>synquiz2</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>zinnen_afmaken</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>rosselfieldkit</experiment.configuration.name>-->
         <!--<experiment.configuration.name>snspsem</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>wellspringssamoan</experiment.configuration.name>-->
         <experiment.configuration.admin.password></experiment.configuration.admin.password>
-        <experiment.configuration.db.password></experiment.configuration.db.password>
+        <experiment.configuration.db.password></experiment.configuration.db.password>        
         
         <!--<experiment.configuration.name>kinoath</experiment.configuration.name>-->
+        <!--        <experiment.configuration.admin.password></experiment.configuration.admin.password>
+        <experiment.configuration.db.password></experiment.configuration.db.password>-->
+        <!--<experiment.configuration.name>dobes</experiment.configuration.name>-->
         <!--<experiment.configuration.admin.password></experiment.configuration.admin.password>-->
         <!--<experiment.configuration.db.password></experiment.configuration.db.password>-->
-        <!--<experiment.configuration.name>dobes</experiment.configuration.name>-->
-        <experiment.configuration.admin.password></experiment.configuration.admin.password>
-        <experiment.configuration.db.password></experiment.configuration.db.password>
         <finalName>${experiment.configuration.name}-${project.artifactId}-${project.version}</finalName>
+        <experiment.noCacheString>${project.version}</experiment.noCacheString>
     </properties>
     <build>
         <plugins>
