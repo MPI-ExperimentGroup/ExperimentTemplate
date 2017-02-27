@@ -212,7 +212,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter back="Agreement" displayOrder="5" menuLabel="Round 2" next="finish" type="stimulus" self="Round_2" title="Round 2">
+    <presenter back="Agreement" displayOrder="5" menuLabel="Round 2" next="Einde_van_het_experiment" type="stimulus" self="Round_2" title="Round 2">
         <centrePage/>
         <loadStimulus eventTag="Round 2" randomise="true" repeatRandomWindow="0" maxStimuli="8" repeatCount="1">
             <hasMoreStimulus>
@@ -312,9 +312,19 @@
         <eraseLocalStorageButton/>
         <localStorageData/>
     </presenter>
-    <presenter displayOrder="7" menuLabel="finish" type="text" self="finish" title="finish">
-        <htmlText featureText="test complete"/>
-        <targetButton featureText="restart" hotKey="SPACE" target="about"/>
+    <presenter displayOrder="7" menuLabel="Einde van het experiment" type="transmission" self="Einde_van_het_experiment" title="Einde van het experiment">
+        <sendAllData>
+            <onSuccess>
+                <htmlText featureText="Einde van het experiment"/>
+                <addPadding/>
+                <addPadding/>
+                <htmlText featureText=""/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw."/>
+                <targetButton featureText="Probeer opnieuw" target="Einde_van_het_experiment"/>
+            </onError>
+        </sendAllData>
     </presenter>
     <stimuli>
         <stimulus code="moveRotated10" identifier="1-1:small:moveRotated10" imagePath="1-1.png" pauseMs="0">
