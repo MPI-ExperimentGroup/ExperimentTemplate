@@ -22,9 +22,9 @@ import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMultiParticipantScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
 
 /**
  * @since Oct 21, 2016 11:52:03 AM (creation date)
@@ -168,14 +168,20 @@ public class MultiParticipant {
         round1MultiParticipantScreen.setStimulusFreeText(true, "[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
         round2MultiParticipantScreen.setStimulusFreeText(true, "[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
 
-        final WizardTextScreen endTextScreen = new WizardTextScreen("finish", "test complete", "restart");
+        WizardCompletionScreen completionScreen = new WizardCompletionScreen("Einde van het experiment", false, false,
+                //                                "Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop.",
+                "",
+                "Opnieuw beginnen",
+                "Einde van het experiment",
+                "Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.",
+                "Probeer opnieuw");
         wizardData.addScreen(wizardAgreementScreen);
         wizardData.addScreen(wizardEditUserScreen);
         wizardData.addScreen(round0MultiParticipantScreen);
         wizardData.addScreen(round1MultiParticipantScreen);
         wizardData.addScreen(round2MultiParticipantScreen);
         wizardData.addScreen(wizardAboutScreen);
-        wizardData.addScreen(endTextScreen);
+        wizardData.addScreen(completionScreen);
 
         wizardAgreementScreen.setNextWizardScreen(wizardEditUserScreen);
         wizardEditUserScreen.setBackWizardScreen(wizardAgreementScreen);
@@ -185,8 +191,8 @@ public class MultiParticipant {
         round0MultiParticipantScreen.setBackWizardScreen(wizardAgreementScreen);
         round1MultiParticipantScreen.setBackWizardScreen(wizardAgreementScreen);
         round2MultiParticipantScreen.setBackWizardScreen(wizardAgreementScreen);
-        round2MultiParticipantScreen.setNextWizardScreen(endTextScreen);
-        endTextScreen.setNextWizardScreen(wizardAboutScreen);
+        round2MultiParticipantScreen.setNextWizardScreen(completionScreen);
+//        endTextScreen.setNextWizardScreen(wizardAboutScreen);
         wizardAboutScreen.setBackWizardScreen(wizardAgreementScreen);
 
         return wizardData;
