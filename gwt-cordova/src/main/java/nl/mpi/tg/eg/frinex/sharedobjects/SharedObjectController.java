@@ -65,6 +65,7 @@ public class SharedObjectController {
         System.out.println(incomingMessage.getStimulusIndex());
         System.out.println(incomingMessage.getUserId());
         System.out.println(incomingMessage.getScreenId());
+        final boolean resendingOldMessage;
         if (GROUP_MANAGER.isGroupMember(incomingMessage)) {
             storedMessage = GROUP_MANAGER.getGroupMember(incomingMessage);
 
@@ -91,17 +92,20 @@ public class SharedObjectController {
             System.out.println(storedMessage.getScreenId());
 
             // if the message is a reconnect request then send the last message for that chanel
-            GROUP_MANAGER.updateChannelMessageIfOutOfDate(incomingMessage, storedMessage);
+            resendingOldMessage = GROUP_MANAGER.updateChannelMessageIfOutOfDate(incomingMessage, storedMessage);
             storedMessage = incomingMessage;
         } else {
             GROUP_MANAGER.addGroupMember(incomingMessage);
             incomingMessage.setOriginMemberCode(incomingMessage.getMemberCode());
             storedMessage = incomingMessage;
+            resendingOldMessage = false;
         }
         if (incomingStimuliList != null && incomingStimuliList.equals(storedMessage.getStimuliList())) {
             GROUP_MANAGER.updateResponderListForMessagePhase(storedMessage);
         }
-        GROUP_MANAGER.setUsersLastMessage(storedMessage);
+        if (!resendingOldMessage) {
+            GROUP_MANAGER.setUsersLastMessage(storedMessage);
+        }
         storedMessage.setGroupReady(GROUP_MANAGER.isGroupReady(storedMessage));
         return storedMessage;
     }

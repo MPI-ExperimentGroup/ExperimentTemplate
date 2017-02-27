@@ -79,8 +79,9 @@ public class GroupManager {
         return membercodes.isEmpty() && groupsMembers.get(groupMessage).contains(groupMessage.getUserId());
     }
 
-    public void updateChannelMessageIfOutOfDate(GroupMessage incomingMessage, final GroupMessage storedMessage) {
+    public boolean updateChannelMessageIfOutOfDate(GroupMessage incomingMessage, final GroupMessage storedMessage) {
         GroupMessage mostRecentChannelMessage = incomingMessage;
+        boolean resendingOldMessage = false;
         // keep the member id and the channel data before updating the message to the most recent seen by the server, if found
         final String memberCode = storedMessage.getMemberCode();
         final String groupCommunicationChannels = incomingMessage.getGroupCommunicationChannels();
@@ -107,6 +108,7 @@ public class GroupManager {
                                         System.out.println("all ExpectedRespondents replied");
                                         // only resend a message if all expected respondants have replied                                        
                                         mostRecentChannelMessage = membersLastMessage;
+                                        resendingOldMessage = true;
                                     }
                                 }
                             }
@@ -124,6 +126,7 @@ public class GroupManager {
         incomingMessage.setMessageString(mostRecentChannelMessage.getMessageString());
         incomingMessage.setResponseStimulusId(mostRecentChannelMessage.getResponseStimulusId());
         incomingMessage.setExpectedRespondents(mostRecentChannelMessage.getExpectedRespondents());
+        return resendingOldMessage;
     }
 
     public void addGroupMember(GroupMessage groupMessage) {
