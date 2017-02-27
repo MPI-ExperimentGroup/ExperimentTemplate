@@ -168,20 +168,21 @@ public class GroupParticipantService {
                 }
                 if (messageIsRelevant) {
                     // make sure that all relevent members have responded before moving to the next phase
-                    this.stimulusId = stimulusId;
-                    this.stimulusIndex = Integer.parseInt(stimulusIndex);
-                    this.requestedPhase = Integer.parseInt(requestedPhase);
-                    this.messageString = messageString;
-                    this.messageSenderId = userId;
-                    this.responseStimulusId = responseStimulusId;
-                    stimulusSyncListner.postLoadTimerFired();
+                    final int currentRequestedPhase = Integer.parseInt(requestedPhase);
                     for (String groupRole : activityListeners.keySet()) {
                         final String[] splitRole = groupRole.split(":");
-                        int roleIndex = this.requestedPhase % splitRole.length;
+                        int roleIndex = currentRequestedPhase % splitRole.length;
                         if (splitRole[roleIndex].contains(this.memberCode)) {
                             final TimedStimulusListener currentListner = activityListeners.get(groupRole);
 //                        ((userIdMatches) ? selfActivityListeners : othersActivityListeners).get(groupRole).get(this.requestedPhase).postLoadTimerFired();
                             if (lastFiredListner == null || !lastFiredListner.equals(currentListner)) {
+                                this.stimulusId = stimulusId;
+                                this.stimulusIndex = Integer.parseInt(stimulusIndex); // todo check for double adding of stimulus index and or something like that
+                                this.requestedPhase = currentRequestedPhase;
+                                this.messageString = messageString;
+                                this.messageSenderId = userId;
+                                this.responseStimulusId = responseStimulusId;
+                                stimulusSyncListner.postLoadTimerFired();
                                 currentListner.postLoadTimerFired();
                                 lastFiredListner = currentListner;
                                 lastFiredListnerGroupRole = splitRole[roleIndex];
