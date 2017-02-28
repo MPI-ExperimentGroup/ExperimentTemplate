@@ -56,7 +56,7 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
 
     public AppController(RootLayoutPanel widgetTag) {
         this.widgetTag = widgetTag;
-        final UserId lastUserId = (Window.Location.getParameter("testuser") != null) ? new UserId("testuser-" + Window.Location.getParameter("testuser")) : localStorage.getLastUserId();
+        final UserId lastUserId = localStorage.getLastUserId();
         if (lastUserId == null) {
             userResults = new UserResults(new UserData());
             // we save the results here so that the newly created user id is preserved even if the user refreshes

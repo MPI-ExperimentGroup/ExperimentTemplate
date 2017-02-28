@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experiment.client.service;
 import com.google.gwt.core.client.GWT;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import com.google.gwt.storage.client.Storage;
+import com.google.gwt.user.client.Window;
 import java.util.ArrayList;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.Messages;
@@ -225,7 +226,10 @@ public class LocalStorage {
         }
         dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + MAX_SCORE, Double.toString(userResults.getUserData().getBestScore()));
         dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + GAMES_PLAYED, Integer.toString(userResults.getUserData().getGamesPlayed()));
-        dataStore.setItem(LAST_USER_ID, userResults.getUserData().getUserId().toString());
+        if ((Window.Location.getParameter("testuser") == null)) {
+            // only store the last user id if the id is not a URL defined test user
+            dataStore.setItem(LAST_USER_ID, userResults.getUserData().getUserId().toString());
+        }
     }
 
     public void saveAppState(UserId userId, String appState) {
@@ -262,7 +266,9 @@ public class LocalStorage {
 
     public UserId getLastUserId() {
         loadStorage();
-        if (dataStore != null) {
+        if (Window.Location.getParameter("testuser") != null) {
+            return new UserId("testuser-" + Window.Location.getParameter("testuser"));
+        } else if (dataStore != null) {
             final String storedUserId = getCleanStoredData(LAST_USER_ID);
             if (!storedUserId.isEmpty()) {
                 return new UserId(storedUserId);
