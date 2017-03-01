@@ -17,8 +17,8 @@
  */
 package nl.mpi.tg.eg.frinex.model;
 
-import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -51,6 +51,7 @@ public class GroupData implements Comparable<GroupData> {
     private String stimulusId;
     private String stimulusIndex;
     private String responseStimulusId;
+    @Column(length = 1024)
     private String stimulusOptionIds;
     private String messageSenderId = null;
     private String messageString;
