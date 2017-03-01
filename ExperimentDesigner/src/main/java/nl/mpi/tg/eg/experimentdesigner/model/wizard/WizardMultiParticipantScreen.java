@@ -54,11 +54,12 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             final String mutualFeedbackPhaseRoles,
             final String mutualFeedbackPhaseText,
             final String trainingDisplayPhaseRoles,
-            final String trainingDisplayPhaseText
+            final String trainingDisplayPhaseText,
+            final int stimuliCount
     ) {
         super(WizardScreenEnum.WizardMultiParticipantScreen, screenName, screenName, screenName);
         this.wizardScreenData.setRandomiseStimuli(true);
-        this.wizardScreenData.setStimuliCount(8);
+        this.wizardScreenData.setStimuliCount(stimuliCount);
         this.wizardScreenData.setStimulusMsDelay(0);
         this.wizardScreenData.setStimulusFreeText(false);
         this.wizardScreenData.setAllowHotkeyButtons(false);
