@@ -69,7 +69,7 @@ public class MultiParticipant {
         "1-6.png:medium:moveRotated10", "2-5.png:medium:moveRotated180", "3-4.png:medium:moveRotated350", "4-3.png:medium:moveRotated300"
     /*, "beep.wav"*/
     };
-
+    
     // @todo: server shared variables to be used in animations and interactions concurrently displayed on multiple users devices 
     public WizardData getWizardData() {
         WizardData wizardData = new WizardData();
@@ -128,7 +128,7 @@ public class MultiParticipant {
                 "",
                 "This phase is not used in this screen",
                 "-:B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A",
-                "The stimulus and the producers text are shown to all other participants");
+                "The stimulus and the producers text are shown to all other participants", 23);
         final WizardMultiParticipantScreen round1MultiParticipantScreen = new WizardMultiParticipantScreen("Round 1",
                 groupMembers,
                 "A,B|C,D|E,F|G,H",
@@ -144,7 +144,7 @@ public class MultiParticipant {
                 mutualFeedbackPhaseRoles,
                 mutualFeedbackPhaseText,
                 "",
-                "This phase is not used in this screen");
+                "This phase is not used in this screen", 23);
         final WizardMultiParticipantScreen round2MultiParticipantScreen = new WizardMultiParticipantScreen("Round 2",
                 groupMembers,
                 "B,C|D,E|F,G|H,A",
@@ -160,7 +160,7 @@ public class MultiParticipant {
                 mutualFeedbackPhaseRoles,
                 mutualFeedbackPhaseText,
                 "",
-                "This phase is not used in this screen");
+                "This phase is not used in this screen", 23);
         round0MultiParticipantScreen.setStimuliSet(stimuliArray);
         round1MultiParticipantScreen.setStimuliSet(stimuliArray);
         round2MultiParticipantScreen.setStimuliSet(stimuliArray);
@@ -170,9 +170,9 @@ public class MultiParticipant {
 
         WizardCompletionScreen completionScreen = new WizardCompletionScreen("Einde van het experiment", false, false,
                 //                                "Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop.",
-                "",
+                "Einde van het experiment1",
                 "Opnieuw beginnen",
-                "Einde van het experiment",
+                "Einde van het experiment2",
                 "Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.",
                 "Probeer opnieuw");
         wizardData.addScreen(wizardAgreementScreen);
