@@ -24,7 +24,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="3" menuLabel="Round 0" next="Round_1" type="stimulus" self="Round_0" title="Round 0">
         <centrePage/>
-        <loadStimulus eventTag="Round 0" randomise="true" repeatRandomWindow="0" maxStimuli="8" repeatCount="1">
+        <loadStimulus eventTag="Round 0" randomise="true" repeatRandomWindow="0" maxStimuli="23" repeatCount="1">
             <hasMoreStimulus>
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,B,C,D,E,F,G,H">
                     <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-">
@@ -119,7 +119,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="4" menuLabel="Round 1" next="Round_2" type="stimulus" self="Round_1" title="Round 1">
         <centrePage/>
-        <loadStimulus eventTag="Round 1" randomise="true" repeatRandomWindow="0" maxStimuli="8" repeatCount="1">
+        <loadStimulus eventTag="Round 1" randomise="true" repeatRandomWindow="0" maxStimuli="23" repeatCount="1">
             <hasMoreStimulus>
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,B|C,D|E,F|G,H">
                     <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
@@ -212,9 +212,9 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter back="Agreement" displayOrder="5" menuLabel="Round 2" next="Einde_van_het_experiment" type="stimulus" self="Round_2" title="Round 2">
+    <presenter back="Agreement" displayOrder="5" menuLabel="Round 2" next="Einde_van_het_experiment2" type="stimulus" self="Round_2" title="Round 2">
         <centrePage/>
-        <loadStimulus eventTag="Round 2" randomise="true" repeatRandomWindow="0" maxStimuli="8" repeatCount="1">
+        <loadStimulus eventTag="Round 2" randomise="true" repeatRandomWindow="0" maxStimuli="23" repeatCount="1">
             <hasMoreStimulus>
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="B,C|D,E|F,G|H,A">
                     <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
@@ -312,17 +312,17 @@
         <eraseLocalStorageButton/>
         <localStorageData/>
     </presenter>
-    <presenter displayOrder="7" menuLabel="Einde van het experiment" type="transmission" self="Einde_van_het_experiment" title="Einde van het experiment">
+    <presenter displayOrder="7" menuLabel="Einde van het experiment2" type="transmission" self="Einde_van_het_experiment2" title="Einde van het experiment2">
         <sendAllData>
             <onSuccess>
                 <htmlText featureText="Einde van het experiment"/>
                 <addPadding/>
                 <addPadding/>
-                <htmlText featureText=""/>
+                <htmlText featureText="Einde van het experiment1"/>
             </onSuccess>
             <onError>
                 <plainText featureText="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw."/>
-                <targetButton featureText="Probeer opnieuw" target="Einde_van_het_experiment"/>
+                <targetButton featureText="Probeer opnieuw" target="Einde_van_het_experiment2"/>
             </onError>
         </sendAllData>
     </presenter>
