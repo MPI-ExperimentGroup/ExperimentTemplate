@@ -152,10 +152,10 @@ public class StimulusProviderTest {
             instance.nextStimulus();
             Stimulus stimulus = instance.getCurrentStimulus();
             if (seenLabelString.contains(stimulus.getLabel())) {
-                seenString = seenString + "," + stimulus.getUniqueId();
+                seenString = seenString + "-" + stimulus.getUniqueId();
             }
         }
-        return seenString;
+        return seenString + "-";
     }
 
     /**

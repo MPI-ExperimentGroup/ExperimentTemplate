@@ -153,9 +153,9 @@ public class StimulusProvider {
             // stimuli ids can contain - so we cant split the string on -
             //storedStimulusList = storedStimulusList.replaceFirst("^-", storedStimulusList);
             for (Stimulus stimulus : stimulusArrayTemp) {
-                if (storedStimulusList.startsWith(stimulus.getUniqueId())) {
+                if (storedStimulusList.startsWith("-" + stimulus.getUniqueId() + "-")) {
                     stimulusSubsetArray.add(stimulus);
-                    storedStimulusList = storedStimulusList.substring(stimulus.getUniqueId().length());
+                    storedStimulusList = storedStimulusList.substring(("-" + stimulus.getUniqueId()).length() - 1);
                 }
             }
             if (!storedStimulusList.isEmpty()) {
@@ -172,7 +172,7 @@ public class StimulusProvider {
             Stimulus stimulus = stimulusListCopy.remove(nextIndex);
             if (stimulus.getTags().containsAll(selectionTags)) {
                 stimulusSelectionArray.add(stimulus);
-                if (!storedStimulusList.contains(stimulus.getUniqueId())) {
+                if (!storedStimulusList.contains("-" + stimulus.getUniqueId() + "-")) {
                     stimulusSubsetArrayTemp.add(stimulus);
                 }
             }
@@ -205,7 +205,7 @@ public class StimulusProvider {
         HashMap<String, Integer> similarityCounter = new HashMap<>();
         // preload counters
         for (Stimulus stimulus : new ArrayList<>(stimulusArray)) {
-            if (storedStimulusList.contains(stimulus.getUniqueId())) {
+            if (storedStimulusList.contains("-" + stimulus.getUniqueId() + "-")) {
                 Tag wordTag = getFirstTagMatch(wordTags, stimulus);
                 Tag speakerTag = getFirstTagMatch(speakerTags, stimulus);
                 if (wordTag != null && speakerTag != null) {
@@ -223,7 +223,7 @@ public class StimulusProvider {
         List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
         while (!stimulusListCopy.isEmpty()) {
             Stimulus stimulus = stimulusListCopy.remove(new Random().nextInt(stimulusListCopy.size()));
-            if (!storedStimulusList.contains(stimulus.getUniqueId())) {
+            if (!storedStimulusList.contains("-" + stimulus.getUniqueId() + "-")) {
                 Tag wordTag = getFirstTagMatch(wordTags, stimulus);
                 Tag speakerTag = getFirstTagMatch(speakerTags, stimulus);
                 if (wordTag != null && speakerTag != null) {
@@ -253,7 +253,7 @@ public class StimulusProvider {
         HashMap<Tag, Integer> wordCounter = new HashMap<>();
         // preload counters
         for (Stimulus stimulus : new ArrayList<>(stimulusArray)) {
-            if (storedStimulusList.contains(stimulus.getUniqueId())) {
+            if (storedStimulusList.contains("-" + stimulus.getUniqueId() + "-")) {
                 Set<Tag> commonTags = new HashSet<>(wordTags);
                 commonTags.retainAll(stimulus.getTags());
                 for (Tag wordTag : commonTags) {
@@ -267,7 +267,7 @@ public class StimulusProvider {
         List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
         while (!stimulusListCopy.isEmpty()) {
             Stimulus stimulus = stimulusListCopy.remove(new Random().nextInt(stimulusListCopy.size()));
-            if (stimulus.getTags().contains(similarity) && !storedStimulusList.contains(stimulus.getUniqueId())) {
+            if (stimulus.getTags().contains(similarity) && !storedStimulusList.contains("-" + stimulus.getUniqueId() + "-")) {
                 List<Tag> commonTags = new ArrayList<>(wordTags);
                 commonTags.retainAll(stimulus.getTags());
                 for (Tag wordTag : commonTags) {
@@ -303,11 +303,13 @@ public class StimulusProvider {
 
     public String getLoadedStimulusString() {
         StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("-");
         for (Stimulus stimulus : this.stimulusSubsetArray) {
-            if (stringBuilder.length() > 0) {
-                stringBuilder.append("-");
-            }
+//            if (stringBuilder.length() > 0) {
+//                stringBuilder.append("-");
+//            }
             stringBuilder.append(stimulus.getUniqueId());
+            stringBuilder.append("-"); // always keep a "-" after each id
         }
         return stringBuilder.toString();
     }
