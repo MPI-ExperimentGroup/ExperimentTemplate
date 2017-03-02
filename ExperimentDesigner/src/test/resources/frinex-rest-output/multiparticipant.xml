@@ -10,7 +10,7 @@
         <htmlText featureText="&lt;b&gt;This is a prototype multiparticipant experiment.&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;With this prototype you can:&lt;br/&gt;&lt;li&gt;view the group activity and add dummy users to a group for testing purposes &lt;a href='/multiparticipant/grouptestpage.html'&gt;/multiparticipant/grouptestpage.html&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;erase the local data for this browser &lt;a href='/multiparticipant?debug'&gt;/multiparticipant?debug&lt;/a&gt;&lt;/li&gt;&lt;li&gt;random data can be generated with the testing robot &lt;a href='/multiparticipant/TestingFrame.html'&gt;/multiparticipant/TestingFrame.html&lt;/a&gt;&lt;/li&gt;&lt;br/&gt;&lt;li&gt;eight users intracting can be randomly simulated testing robot &lt;a href='/multiparticipant/grouptestframes.html'&gt;/multiparticipant/grouptestframes.html&lt;/a&gt;&lt;/li&gt;&lt;br/&gt;The group name must be allocated with the following with &lt;a href='/multiparticipant/?group=a_group_name'&gt;/multiparticipant/?group=a_group_name&lt;/a&gt; where a_group_name should be replaced with a suitable string. A second user can be tested on one computer via the incognito browser window with this link, providing the group name matches.&lt;br/&gt;&lt;br/&gt;There needs to be eight users connected for the group process to begin. Once a group is full, any subsequent users will need to be allocated a different group via the a_group_name parameter.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;You can view the collected group data with &lt;a href='/multiparticipant-admin/groupdataviewer'&gt;/multiparticipant-admin/groupdataviewer&lt;/a&gt; with the user and password you have been supplied.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;"/>
         <targetButton featureText="Continue" target="Edit_User"/>
     </presenter>
-    <presenter back="Agreement" displayOrder="2" menuLabel="Edit User" next="Round_0" type="metadata" self="Edit_User" title="Edit User">
+    <presenter back="Agreement" displayOrder="2" menuLabel="Edit User" next="GroupSizeMenu" type="metadata" self="Edit_User" title="Edit User">
         <metadataField fieldName="age"/>
         <metadataField fieldName="firstName"/>
         <metadataField fieldName="gender"/>
@@ -22,13 +22,302 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="3" menuLabel="Round 0" next="Round_1" type="stimulus" self="Round_0" title="Round 0">
+    <presenter displayOrder="3" menuLabel="GroupSizeMenu" type="menu" self="GroupSizeMenu" title="GroupSizeMenu">
+        <menuItem featureText="Round 0 - 4" target="Round_0___4"/>
+        <menuItem featureText="Round 0 - 8" target="Round_0___8"/>
+    </presenter>
+    <presenter back="Agreement" displayOrder="4" menuLabel="Round 0 - 4" next="Round_1___4" type="stimulus" self="Round_0___4" title="Round 0 - 4">
         <centrePage/>
-        <loadStimulus eventTag="Round 0" randomise="true" repeatRandomWindow="0" maxStimuli="23" repeatCount="1">
+        <loadStimulus eventTag="Round 0 - 4" randomise="true" repeatRandomWindow="0" maxStimuli="23" repeatCount="1">
+            <hasMoreStimulus>
+                <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A,B,C,D">
+                    <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-">
+                        <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 0 - 4" norepeat="true"/>
+                        <clearPage/>
+                        <stimulusLabel/>
+                        <htmlText featureText="The producer sees the stimulus and enters some text"/>
+                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="stimuliCode" maxWidth="80">
+                            <addPadding/>
+                            <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." validationRegex="[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}"/>
+                            <sendGroupMessageButton featureText="groupNetworkActivitySelf1" eventTag="groupNetworkActivitySelf1" incrementPhase="1" hotKey="W" norepeat="true"/>
+                        </stimulusImage>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupRole="-:A:-:B:-:C:-:D">
+                        <clearPage/>
+                        <htmlText featureText="The producer waits for all other participants"/>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupRole="B,C,D:-:A,C,D:-:B,A,D:-:B,C,A:-">
+                        <clearPage/>
+                        <htmlText featureText="All other participants wait for the producer"/>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupRole="">
+                        <clearPage/>
+                        <htmlText featureText="This phase is not used in this screen"/>
+                        <showStimulusGrid imageWidth="50%" eventTag="guesserNetworkActivity1Grid" columnCount="5" animate="stimuliCode">
+                            <responseCorrect msToNext="0">
+                                <scoreIncrement scoreThreshold="5" scoreValue="1">
+                                    <aboveThreshold>
+                                        <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
+                                    </aboveThreshold>
+                                    <belowThreshold>
+                                        <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
+                                    </belowThreshold>
+                                </scoreIncrement>
+                            </responseCorrect>
+                            <responseIncorrect msToNext="0">
+                                <scoreIncrement scoreThreshold="5" scoreValue="0">
+                                    <aboveThreshold>
+                                        <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
+                                    </aboveThreshold>
+                                    <belowThreshold>
+                                        <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
+                                    </belowThreshold>
+                                </scoreIncrement>
+                            </responseIncorrect>
+                            <stimuli/>
+                        </showStimulusGrid>
+                        <groupMessageLabel/>
+                        <submitGroupEvent/>
+                        <enableStimulusButtons/>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupRole="">
+                        <clearPage/>
+                        <htmlText featureText="This phase is not used in this screen"/>
+                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="stimuliCode" maxWidth="80"/>
+                        <groupMessageLabel/>
+                        <groupResponseFeedback>
+                            <responseCorrect msToNext="0">
+                                <htmlText featureText="responseCorrect"/>
+                                <sendGroupMessageButton featureText="nextStimulusCorrect" eventTag="nextStimulusCorrect" incrementPhase="1" hotKey="Q" norepeat="true"/>
+                            </responseCorrect>
+                            <responseIncorrect msToNext="0">
+                                <htmlText featureText="responseIncorrect"/>
+                                <htmlText featureText="your guesser chose"/>
+                                <groupResponseStimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="stimuliCode" maxWidth="80"/>
+                                <sendGroupMessageButton featureText="nextStimulusIncorrect" eventTag="nextStimulusIncorrect" incrementPhase="1" hotKey="Q" norepeat="true"/>
+                            </responseIncorrect>
+                        </groupResponseFeedback>
+                        <groupScoreLabel/>
+                        <groupChannelScoreLabel/>
+                        <scoreLabel/>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupRole="-:B,C,D:-:A,C,D:-:B,A,D:-:B,C,A">
+                        <clearPage/>
+                        <htmlText featureText="The stimulus and the producers text are shown to all other participants"/>
+                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="stimuliCode" maxWidth="80">
+                            <addPadding/>
+                            <sendGroupMessageButton featureText="nextStimulusFeatureTrainingDisplay" eventTag="nextStimulusFeatureTrainingDisplay" incrementPhase="1" hotKey="Q" norepeat="true"/>
+                        </stimulusImage>
+                        <groupMessageLabel/>
+                    </groupNetworkActivity>
+                </groupNetwork>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <autoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>Round_0_4</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter back="Agreement" displayOrder="5" menuLabel="Round 1 - 4" next="Round_2___4" type="stimulus" self="Round_1___4" title="Round 1 - 4">
+        <centrePage/>
+        <loadStimulus eventTag="Round 1 - 4" randomise="true" repeatRandomWindow="0" maxStimuli="23" repeatCount="1">
+            <hasMoreStimulus>
+                <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A,B|C,D">
+                    <groupNetworkActivity groupRole="A,C:-:-:B,D:-:-">
+                        <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 1 - 4" norepeat="true"/>
+                        <clearPage/>
+                        <stimulusLabel/>
+                        <htmlText featureText="The producer sees the stimulus and enters some text"/>
+                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="stimuliCode" maxWidth="80">
+                            <addPadding/>
+                            <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." validationRegex="[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}"/>
+                            <sendGroupMessageButton featureText="groupNetworkActivitySelf1" eventTag="groupNetworkActivitySelf1" incrementPhase="1" hotKey="W" norepeat="true"/>
+                        </stimulusImage>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupRole="-:A,C:-:-:B,D:-">
+                        <clearPage/>
+                        <htmlText featureText="The producer waits for the guesser"/>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupRole="B,D:-:-:A,C:-:-">
+                        <clearPage/>
+                        <htmlText featureText="The guesser waits for the producer"/>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupRole="-:B,D:-:-:A,C:-">
+                        <clearPage/>
+                        <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
+                        <showStimulusGrid imageWidth="50%" eventTag="guesserNetworkActivity1Grid" columnCount="5" animate="stimuliCode">
+                            <responseCorrect msToNext="0">
+                                <scoreIncrement scoreThreshold="5" scoreValue="1">
+                                    <aboveThreshold>
+                                        <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
+                                    </aboveThreshold>
+                                    <belowThreshold>
+                                        <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
+                                    </belowThreshold>
+                                </scoreIncrement>
+                            </responseCorrect>
+                            <responseIncorrect msToNext="0">
+                                <scoreIncrement scoreThreshold="5" scoreValue="0">
+                                    <aboveThreshold>
+                                        <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
+                                    </aboveThreshold>
+                                    <belowThreshold>
+                                        <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
+                                    </belowThreshold>
+                                </scoreIncrement>
+                            </responseIncorrect>
+                            <stimuli/>
+                        </showStimulusGrid>
+                        <groupMessageLabel/>
+                        <submitGroupEvent/>
+                        <enableStimulusButtons/>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D">
+                        <clearPage/>
+                        <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
+                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="stimuliCode" maxWidth="80"/>
+                        <groupMessageLabel/>
+                        <groupResponseFeedback>
+                            <responseCorrect msToNext="0">
+                                <htmlText featureText="responseCorrect"/>
+                                <sendGroupMessageButton featureText="nextStimulusCorrect" eventTag="nextStimulusCorrect" incrementPhase="1" hotKey="Q" norepeat="true"/>
+                            </responseCorrect>
+                            <responseIncorrect msToNext="0">
+                                <htmlText featureText="responseIncorrect"/>
+                                <htmlText featureText="your guesser chose"/>
+                                <groupResponseStimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="stimuliCode" maxWidth="80"/>
+                                <sendGroupMessageButton featureText="nextStimulusIncorrect" eventTag="nextStimulusIncorrect" incrementPhase="1" hotKey="Q" norepeat="true"/>
+                            </responseIncorrect>
+                        </groupResponseFeedback>
+                        <groupScoreLabel/>
+                        <groupChannelScoreLabel/>
+                        <scoreLabel/>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupRole="">
+                        <clearPage/>
+                        <htmlText featureText="This phase is not used in this screen"/>
+                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="stimuliCode" maxWidth="80">
+                            <addPadding/>
+                            <sendGroupMessageButton featureText="nextStimulusFeatureTrainingDisplay" eventTag="nextStimulusFeatureTrainingDisplay" incrementPhase="1" hotKey="Q" norepeat="true"/>
+                        </stimulusImage>
+                        <groupMessageLabel/>
+                    </groupNetworkActivity>
+                </groupNetwork>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <autoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>Round_1_4</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter back="Agreement" displayOrder="6" menuLabel="Round 2 - 4" next="Einde_van_het_experiment2" type="stimulus" self="Round_2___4" title="Round 2 - 4">
+        <centrePage/>
+        <loadStimulus eventTag="Round 2 - 4" randomise="true" repeatRandomWindow="0" maxStimuli="23" repeatCount="1">
+            <hasMoreStimulus>
+                <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="B,C|D,A">
+                    <groupNetworkActivity groupRole="A,C:-:-:B,D:-:-">
+                        <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 2 - 4" norepeat="true"/>
+                        <clearPage/>
+                        <stimulusLabel/>
+                        <htmlText featureText="The producer sees the stimulus and enters some text"/>
+                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="stimuliCode" maxWidth="80">
+                            <addPadding/>
+                            <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." validationRegex="[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}"/>
+                            <sendGroupMessageButton featureText="groupNetworkActivitySelf1" eventTag="groupNetworkActivitySelf1" incrementPhase="1" hotKey="W" norepeat="true"/>
+                        </stimulusImage>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupRole="-:A,C:-:-:B,D:-">
+                        <clearPage/>
+                        <htmlText featureText="The producer waits for the guesser"/>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupRole="B,D:-:-:A,C:-:-">
+                        <clearPage/>
+                        <htmlText featureText="The guesser waits for the producer"/>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupRole="-:B,D:-:-:A,C:-">
+                        <clearPage/>
+                        <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
+                        <showStimulusGrid imageWidth="50%" eventTag="guesserNetworkActivity1Grid" columnCount="5" animate="stimuliCode">
+                            <responseCorrect msToNext="0">
+                                <scoreIncrement scoreThreshold="5" scoreValue="1">
+                                    <aboveThreshold>
+                                        <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
+                                    </aboveThreshold>
+                                    <belowThreshold>
+                                        <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
+                                    </belowThreshold>
+                                </scoreIncrement>
+                            </responseCorrect>
+                            <responseIncorrect msToNext="0">
+                                <scoreIncrement scoreThreshold="5" scoreValue="0">
+                                    <aboveThreshold>
+                                        <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
+                                    </aboveThreshold>
+                                    <belowThreshold>
+                                        <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
+                                    </belowThreshold>
+                                </scoreIncrement>
+                            </responseIncorrect>
+                            <stimuli/>
+                        </showStimulusGrid>
+                        <groupMessageLabel/>
+                        <submitGroupEvent/>
+                        <enableStimulusButtons/>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D">
+                        <clearPage/>
+                        <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
+                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="stimuliCode" maxWidth="80"/>
+                        <groupMessageLabel/>
+                        <groupResponseFeedback>
+                            <responseCorrect msToNext="0">
+                                <htmlText featureText="responseCorrect"/>
+                                <sendGroupMessageButton featureText="nextStimulusCorrect" eventTag="nextStimulusCorrect" incrementPhase="1" hotKey="Q" norepeat="true"/>
+                            </responseCorrect>
+                            <responseIncorrect msToNext="0">
+                                <htmlText featureText="responseIncorrect"/>
+                                <htmlText featureText="your guesser chose"/>
+                                <groupResponseStimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="stimuliCode" maxWidth="80"/>
+                                <sendGroupMessageButton featureText="nextStimulusIncorrect" eventTag="nextStimulusIncorrect" incrementPhase="1" hotKey="Q" norepeat="true"/>
+                            </responseIncorrect>
+                        </groupResponseFeedback>
+                        <groupScoreLabel/>
+                        <groupChannelScoreLabel/>
+                        <scoreLabel/>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupRole="">
+                        <clearPage/>
+                        <htmlText featureText="This phase is not used in this screen"/>
+                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" animate="stimuliCode" maxWidth="80">
+                            <addPadding/>
+                            <sendGroupMessageButton featureText="nextStimulusFeatureTrainingDisplay" eventTag="nextStimulusFeatureTrainingDisplay" incrementPhase="1" hotKey="Q" norepeat="true"/>
+                        </stimulusImage>
+                        <groupMessageLabel/>
+                    </groupNetworkActivity>
+                </groupNetwork>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <autoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>Round_2_4</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter back="Agreement" displayOrder="7" menuLabel="Round 0 - 8" next="Round_1___8" type="stimulus" self="Round_0___8" title="Round 0 - 8">
+        <centrePage/>
+        <loadStimulus eventTag="Round 0 - 8" randomise="true" repeatRandomWindow="0" maxStimuli="23" repeatCount="1">
             <hasMoreStimulus>
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,B,C,D,E,F,G,H">
                     <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-">
-                        <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 0" norepeat="true"/>
+                        <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 0 - 8" norepeat="true"/>
                         <clearPage/>
                         <stimulusLabel/>
                         <htmlText featureText="The producer sees the stimulus and enters some text"/>
@@ -113,17 +402,17 @@
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
-                <tag>Round_0</tag>
+                <tag>Round_0_8</tag>
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter back="Agreement" displayOrder="4" menuLabel="Round 1" next="Round_2" type="stimulus" self="Round_1" title="Round 1">
+    <presenter back="Agreement" displayOrder="8" menuLabel="Round 1 - 8" next="Round_2___8" type="stimulus" self="Round_1___8" title="Round 1 - 8">
         <centrePage/>
-        <loadStimulus eventTag="Round 1" randomise="true" repeatRandomWindow="0" maxStimuli="23" repeatCount="1">
+        <loadStimulus eventTag="Round 1 - 8" randomise="true" repeatRandomWindow="0" maxStimuli="23" repeatCount="1">
             <hasMoreStimulus>
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,B|C,D|E,F|G,H">
                     <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
-                        <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 1" norepeat="true"/>
+                        <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 1 - 8" norepeat="true"/>
                         <clearPage/>
                         <stimulusLabel/>
                         <htmlText featureText="The producer sees the stimulus and enters some text"/>
@@ -208,17 +497,17 @@
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
-                <tag>Round_1</tag>
+                <tag>Round_1_8</tag>
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter back="Agreement" displayOrder="5" menuLabel="Round 2" next="Einde_van_het_experiment2" type="stimulus" self="Round_2" title="Round 2">
+    <presenter back="Agreement" displayOrder="9" menuLabel="Round 2 - 8" next="Einde_van_het_experiment2" type="stimulus" self="Round_2___8" title="Round 2 - 8">
         <centrePage/>
-        <loadStimulus eventTag="Round 2" randomise="true" repeatRandomWindow="0" maxStimuli="23" repeatCount="1">
+        <loadStimulus eventTag="Round 2 - 8" randomise="true" repeatRandomWindow="0" maxStimuli="23" repeatCount="1">
             <hasMoreStimulus>
                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="B,C|D,E|F,G|H,A">
                     <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
-                        <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 2" norepeat="true"/>
+                        <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 2 - 8" norepeat="true"/>
                         <clearPage/>
                         <stimulusLabel/>
                         <htmlText featureText="The producer sees the stimulus and enters some text"/>
@@ -303,16 +592,16 @@
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
-                <tag>Round_2</tag>
+                <tag>Round_2_8</tag>
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter back="Agreement" displayOrder="6" menuLabel="About Screen" type="debug" self="about" title="About Screen">
+    <presenter back="Agreement" displayOrder="10" menuLabel="About Screen" type="debug" self="about" title="About Screen">
         <versionData/>
         <eraseLocalStorageButton/>
         <localStorageData/>
     </presenter>
-    <presenter displayOrder="7" menuLabel="Einde van het experiment2" type="transmission" self="Einde_van_het_experiment2" title="Einde van het experiment2">
+    <presenter displayOrder="11" menuLabel="Einde van het experiment2" type="transmission" self="Einde_van_het_experiment2" title="Einde van het experiment2">
         <sendAllData>
             <onSuccess>
                 <htmlText featureText="Einde van het experiment"/>
@@ -329,673 +618,925 @@
     <stimuli>
         <stimulus code="moveRotated10" identifier="1-1:small:moveRotated10" imagePath="1-1.png" pauseMs="0">
             <tag>1_1</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated10</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated180" identifier="1-7:small:moveRotated180" imagePath="1-7.png" pauseMs="0">
             <tag>1_7</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated180</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated350" identifier="2-6:small:moveRotated350" imagePath="2-6.png" pauseMs="0">
             <tag>2_6</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated350</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated300" identifier="3-5:small:moveRotated300" imagePath="3-5.png" pauseMs="0">
             <tag>3_5</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated300</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="4-4:small:moveRotated200" imagePath="4-4.png" pauseMs="0">
             <tag>4_4</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated200</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="1-2:small:moveRotated200" imagePath="1-2.png" pauseMs="0">
             <tag>1_2</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated200</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="2-1:small:moveRotated200" imagePath="2-1.png" pauseMs="0">
             <tag>2_1</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated200</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="2-7:small:moveRotated200" imagePath="2-7.png" pauseMs="0">
             <tag>2_7</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated200</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated10" identifier="3-6:small:moveRotated10" imagePath="3-6.png" pauseMs="0">
             <tag>3_6</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated10</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated180" identifier="4-5:small:moveRotated180" imagePath="4-5.png" pauseMs="0">
             <tag>4_5</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated180</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated350" identifier="1-3:small:moveRotated350" imagePath="1-3.png" pauseMs="0">
             <tag>1_3</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated350</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated300" identifier="2-2:small:moveRotated300" imagePath="2-2.png" pauseMs="0">
             <tag>2_2</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated300</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="3-1:small:moveRotated200" imagePath="3-1.png" pauseMs="0">
             <tag>3_1</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated200</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="3-7:small:moveRotated200" imagePath="3-7.png" pauseMs="0">
             <tag>3_7</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated200</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="4-6:small:moveRotated200" imagePath="4-6.png" pauseMs="0">
             <tag>4_6</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated200</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="1-4:small:moveRotated200" imagePath="1-4.png" pauseMs="0">
             <tag>1_4</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated200</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated10" identifier="2-3:small:moveRotated10" imagePath="2-3.png" pauseMs="0">
             <tag>2_3</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated10</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated180" identifier="3-2:small:moveRotated180" imagePath="3-2.png" pauseMs="0">
             <tag>3_2</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated180</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated350" identifier="4-1:small:moveRotated350" imagePath="4-1.png" pauseMs="0">
             <tag>4_1</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated350</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated300" identifier="4-7:small:moveRotated300" imagePath="4-7.png" pauseMs="0">
             <tag>4_7</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated300</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="1-5:small:moveRotated200" imagePath="1-5.png" pauseMs="0">
             <tag>1_5</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated200</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="2-4:small:moveRotated200" imagePath="2-4.png" pauseMs="0">
             <tag>2_4</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated200</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="3-3:small:moveRotated200" imagePath="3-3.png" pauseMs="0">
             <tag>3_3</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated200</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="4-2:small:moveRotated200" imagePath="4-2.png" pauseMs="0">
             <tag>4_2</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated200</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated10" identifier="1-6:small:moveRotated10" imagePath="1-6.png" pauseMs="0">
             <tag>1_6</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated10</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated180" identifier="2-5:small:moveRotated180" imagePath="2-5.png" pauseMs="0">
             <tag>2_5</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated180</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated350" identifier="3-4:small:moveRotated350" imagePath="3-4.png" pauseMs="0">
             <tag>3_4</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated350</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated300" identifier="4-3:small:moveRotated300" imagePath="4-3.png" pauseMs="0">
             <tag>4_3</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>moveRotated300</tag>
             <tag>small</tag>
         </stimulus>
         <stimulus code="moveRotated10" identifier="1-1:large:moveRotated10" imagePath="1-1.png" pauseMs="0">
             <tag>1_1</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated10</tag>
         </stimulus>
         <stimulus code="moveRotated180" identifier="1-7:large:moveRotated180" imagePath="1-7.png" pauseMs="0">
             <tag>1_7</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated180</tag>
         </stimulus>
         <stimulus code="moveRotated350" identifier="2-6:large:moveRotated350" imagePath="2-6.png" pauseMs="0">
             <tag>2_6</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated350</tag>
         </stimulus>
         <stimulus code="moveRotated300" identifier="3-5:large:moveRotated300" imagePath="3-5.png" pauseMs="0">
             <tag>3_5</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated300</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="4-4:large:moveRotated200" imagePath="4-4.png" pauseMs="0">
             <tag>4_4</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated200</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="1-2:large:moveRotated200" imagePath="1-2.png" pauseMs="0">
             <tag>1_2</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated200</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="2-1:large:moveRotated200" imagePath="2-1.png" pauseMs="0">
             <tag>2_1</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated200</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="2-7:large:moveRotated200" imagePath="2-7.png" pauseMs="0">
             <tag>2_7</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated200</tag>
         </stimulus>
         <stimulus code="moveRotated10" identifier="3-6:large:moveRotated10" imagePath="3-6.png" pauseMs="0">
             <tag>3_6</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated10</tag>
         </stimulus>
         <stimulus code="moveRotated180" identifier="4-5:large:moveRotated180" imagePath="4-5.png" pauseMs="0">
             <tag>4_5</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated180</tag>
         </stimulus>
         <stimulus code="moveRotated350" identifier="1-3:large:moveRotated350" imagePath="1-3.png" pauseMs="0">
             <tag>1_3</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated350</tag>
         </stimulus>
         <stimulus code="moveRotated300" identifier="2-2:large:moveRotated300" imagePath="2-2.png" pauseMs="0">
             <tag>2_2</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated300</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="3-1:large:moveRotated200" imagePath="3-1.png" pauseMs="0">
             <tag>3_1</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated200</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="3-7:large:moveRotated200" imagePath="3-7.png" pauseMs="0">
             <tag>3_7</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated200</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="4-6:large:moveRotated200" imagePath="4-6.png" pauseMs="0">
             <tag>4_6</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated200</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="1-4:large:moveRotated200" imagePath="1-4.png" pauseMs="0">
             <tag>1_4</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated200</tag>
         </stimulus>
         <stimulus code="moveRotated10" identifier="2-3:large:moveRotated10" imagePath="2-3.png" pauseMs="0">
             <tag>2_3</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated10</tag>
         </stimulus>
         <stimulus code="moveRotated180" identifier="3-2:large:moveRotated180" imagePath="3-2.png" pauseMs="0">
             <tag>3_2</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated180</tag>
         </stimulus>
         <stimulus code="moveRotated350" identifier="4-1:large:moveRotated350" imagePath="4-1.png" pauseMs="0">
             <tag>4_1</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated350</tag>
         </stimulus>
         <stimulus code="moveRotated300" identifier="4-7:large:moveRotated300" imagePath="4-7.png" pauseMs="0">
             <tag>4_7</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated300</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="1-5:large:moveRotated200" imagePath="1-5.png" pauseMs="0">
             <tag>1_5</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated200</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="2-4:large:moveRotated200" imagePath="2-4.png" pauseMs="0">
             <tag>2_4</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated200</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="3-3:large:moveRotated200" imagePath="3-3.png" pauseMs="0">
             <tag>3_3</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated200</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="4-2:large:moveRotated200" imagePath="4-2.png" pauseMs="0">
             <tag>4_2</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated200</tag>
         </stimulus>
         <stimulus code="moveRotated10" identifier="1-6:large:moveRotated10" imagePath="1-6.png" pauseMs="0">
             <tag>1_6</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated10</tag>
         </stimulus>
         <stimulus code="moveRotated180" identifier="2-5:large:moveRotated180" imagePath="2-5.png" pauseMs="0">
             <tag>2_5</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated180</tag>
         </stimulus>
         <stimulus code="moveRotated350" identifier="3-4:large:moveRotated350" imagePath="3-4.png" pauseMs="0">
             <tag>3_4</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated350</tag>
         </stimulus>
         <stimulus code="moveRotated300" identifier="4-3:large:moveRotated300" imagePath="4-3.png" pauseMs="0">
             <tag>4_3</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>large</tag>
             <tag>moveRotated300</tag>
         </stimulus>
         <stimulus code="moveRotated10" identifier="1-1:medium:moveRotated10" imagePath="1-1.png" pauseMs="0">
             <tag>1_1</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated10</tag>
         </stimulus>
         <stimulus code="moveRotated180" identifier="1-7:medium:moveRotated180" imagePath="1-7.png" pauseMs="0">
             <tag>1_7</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated180</tag>
         </stimulus>
         <stimulus code="moveRotated350" identifier="2-6:medium:moveRotated350" imagePath="2-6.png" pauseMs="0">
             <tag>2_6</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated350</tag>
         </stimulus>
         <stimulus code="moveRotated300" identifier="3-5:medium:moveRotated300" imagePath="3-5.png" pauseMs="0">
             <tag>3_5</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated300</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="4-4:medium:moveRotated200" imagePath="4-4.png" pauseMs="0">
             <tag>4_4</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated200</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="1-2:medium:moveRotated200" imagePath="1-2.png" pauseMs="0">
             <tag>1_2</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated200</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="2-1:medium:moveRotated200" imagePath="2-1.png" pauseMs="0">
             <tag>2_1</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated200</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="2-7:medium:moveRotated200" imagePath="2-7.png" pauseMs="0">
             <tag>2_7</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated200</tag>
         </stimulus>
         <stimulus code="moveRotated10" identifier="3-6:medium:moveRotated10" imagePath="3-6.png" pauseMs="0">
             <tag>3_6</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated10</tag>
         </stimulus>
         <stimulus code="moveRotated180" identifier="4-5:medium:moveRotated180" imagePath="4-5.png" pauseMs="0">
             <tag>4_5</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated180</tag>
         </stimulus>
         <stimulus code="moveRotated350" identifier="1-3:medium:moveRotated350" imagePath="1-3.png" pauseMs="0">
             <tag>1_3</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated350</tag>
         </stimulus>
         <stimulus code="moveRotated300" identifier="2-2:medium:moveRotated300" imagePath="2-2.png" pauseMs="0">
             <tag>2_2</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated300</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="3-1:medium:moveRotated200" imagePath="3-1.png" pauseMs="0">
             <tag>3_1</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated200</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="3-7:medium:moveRotated200" imagePath="3-7.png" pauseMs="0">
             <tag>3_7</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated200</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="4-6:medium:moveRotated200" imagePath="4-6.png" pauseMs="0">
             <tag>4_6</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated200</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="1-4:medium:moveRotated200" imagePath="1-4.png" pauseMs="0">
             <tag>1_4</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated200</tag>
         </stimulus>
         <stimulus code="moveRotated10" identifier="2-3:medium:moveRotated10" imagePath="2-3.png" pauseMs="0">
             <tag>2_3</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated10</tag>
         </stimulus>
         <stimulus code="moveRotated180" identifier="3-2:medium:moveRotated180" imagePath="3-2.png" pauseMs="0">
             <tag>3_2</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated180</tag>
         </stimulus>
         <stimulus code="moveRotated350" identifier="4-1:medium:moveRotated350" imagePath="4-1.png" pauseMs="0">
             <tag>4_1</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated350</tag>
         </stimulus>
         <stimulus code="moveRotated300" identifier="4-7:medium:moveRotated300" imagePath="4-7.png" pauseMs="0">
             <tag>4_7</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated300</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="1-5:medium:moveRotated200" imagePath="1-5.png" pauseMs="0">
             <tag>1_5</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated200</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="2-4:medium:moveRotated200" imagePath="2-4.png" pauseMs="0">
             <tag>2_4</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated200</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="3-3:medium:moveRotated200" imagePath="3-3.png" pauseMs="0">
             <tag>3_3</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated200</tag>
         </stimulus>
         <stimulus code="moveRotated200" identifier="4-2:medium:moveRotated200" imagePath="4-2.png" pauseMs="0">
             <tag>4_2</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated200</tag>
         </stimulus>
         <stimulus code="moveRotated10" identifier="1-6:medium:moveRotated10" imagePath="1-6.png" pauseMs="0">
             <tag>1_6</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated10</tag>
         </stimulus>
         <stimulus code="moveRotated180" identifier="2-5:medium:moveRotated180" imagePath="2-5.png" pauseMs="0">
             <tag>2_5</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated180</tag>
         </stimulus>
         <stimulus code="moveRotated350" identifier="3-4:medium:moveRotated350" imagePath="3-4.png" pauseMs="0">
             <tag>3_4</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated350</tag>
         </stimulus>
         <stimulus code="moveRotated300" identifier="4-3:medium:moveRotated300" imagePath="4-3.png" pauseMs="0">
             <tag>4_3</tag>
-            <tag>Round_0</tag>
-            <tag>Round_1</tag>
-            <tag>Round_2</tag>
+            <tag>Round_0_4</tag>
+            <tag>Round_0_8</tag>
+            <tag>Round_1_4</tag>
+            <tag>Round_1_8</tag>
+            <tag>Round_2_4</tag>
+            <tag>Round_2_8</tag>
             <tag>medium</tag>
             <tag>moveRotated300</tag>
         </stimulus>
