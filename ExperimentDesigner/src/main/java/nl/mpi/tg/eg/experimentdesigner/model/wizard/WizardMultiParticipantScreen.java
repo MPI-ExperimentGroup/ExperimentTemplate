@@ -282,8 +282,8 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //        allNetworkActivity2.getPresenterFeatureList().add(resultsGrid);
 
         final PresenterFeature allNetworkActivity2Image = new PresenterFeature(FeatureType.stimulusImage, null);
-        allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
-        allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
+        allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.maxHeight, "0");
+        allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.maxWidth, "0");
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.animate, "stimuliCode");
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
@@ -306,8 +306,8 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         responseIncorrect.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "your guesser chose"));
 
         final PresenterFeature groupResponseStimulusImage = new PresenterFeature(FeatureType.groupResponseStimulusImage, null);
-        groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
-        groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
+        groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.maxHeight, "0");
+        groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.maxWidth, "0");
         groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
         groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.animate, "stimuliCode");
         groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
@@ -338,8 +338,8 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
         final PresenterFeature stimulusImage = new PresenterFeature(FeatureType.stimulusImage, null);
 
-        stimulusImage.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
-        stimulusImage.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
+        stimulusImage.addFeatureAttributes(FeatureAttribute.maxHeight, "0");
+        stimulusImage.addFeatureAttributes(FeatureAttribute.maxWidth, "0");
         stimulusImage.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
         stimulusImage.addFeatureAttributes(FeatureAttribute.animate, "stimuliCode");
         stimulusImage.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
@@ -363,8 +363,8 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //        hasMoreStimulusFeature.getPresenterFeatureList().add(allNetworkActivity2);
 //        hasMoreStimulusFeature.getPresenterFeatureList().add(guesserNetworkActivity1);
 
-        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
-        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
+        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "0");
+        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "0");
         imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
         imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
         final PresenterFeature presenterFeature;
@@ -429,8 +429,9 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //        nextStimulusFeature1.addFeatureAttributes(FeatureAttribute.requestedPhase, "2");
 //        guesserNetworkActivity0.getPresenterFeatureList().add(nextStimulusFeature1);
         final PresenterFeature resultsGrid = new PresenterFeature(FeatureType.showStimulusGrid, null);
-        resultsGrid.addFeatureAttributes(FeatureAttribute.columnCount, "5");
-        resultsGrid.addFeatureAttributes(FeatureAttribute.imageWidth, "50%");
+        resultsGrid.addFeatureAttributes(FeatureAttribute.columnCount, "4");
+        resultsGrid.addFeatureAttributes(FeatureAttribute.maxStimuli, "8");
+        resultsGrid.addFeatureAttributes(FeatureAttribute.imageWidth, "100");
         resultsGrid.addFeatureAttributes(FeatureAttribute.animate, "stimuliCode");
         resultsGrid.addFeatureAttributes(FeatureAttribute.eventTag, eventTagString);
         final PresenterFeature responseCorrect = new PresenterFeature(FeatureType.responseCorrect, null);

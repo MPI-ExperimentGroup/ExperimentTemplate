@@ -87,7 +87,7 @@ public enum FeatureType {
     audioButton(true, false, new FeatureAttribute[]{eventTag, mp3, ogg, poster}),
     preloadAllStimuli(true, false, null, true, false, Contitionals.none),
     showStimulus(true, false, null, false, false, Contitionals.none), // todo: should this be here?
-    showStimulusGrid(true, false, new FeatureAttribute[]{columnCount, imageWidth, eventTag, animate}, true, false, Contitionals.hasCorrectIncorrect),
+    showStimulusGrid(true, false, new FeatureAttribute[]{maxStimuli, columnCount, imageWidth, eventTag, animate}, true, false, Contitionals.hasCorrectIncorrect),
     matchingStimulusGrid(false, false, new FeatureAttribute[]{columnCount, maxWidth, animate, matchingRegex, maxStimuli, randomise}, false, false, Contitionals.hasCorrectIncorrect),
     pause(true, false, new FeatureAttribute[]{msToNext}),
     stimulusPause(true, false, null),
