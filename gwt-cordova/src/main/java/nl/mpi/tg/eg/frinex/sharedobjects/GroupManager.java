@@ -37,6 +37,7 @@ public class GroupManager {
 
     private final HashMap<String, HashMap<GroupMessage, GroupMessage>> allMembersList = new HashMap<>();
     private final HashMap<GroupMessage, String> allMemberCodes = new HashMap<>();
+    private final HashMap<GroupMessage, HashMap<String, Integer>> groupScores = new HashMap<>();
     private final HashMap<GroupMessage, String> stimuliLists = new HashMap<>();
     private final HashMap<GroupMessage, String> groupUUIDs = new HashMap<>();
     private final HashMap<GroupMessage, List<String>> unAllocatedMemberCodes = new HashMap<>();
@@ -77,6 +78,21 @@ public class GroupManager {
             return false;
         }
         return membercodes.isEmpty() && groupsMembers.get(groupMessage).contains(groupMessage.getUserId());
+    }
+
+    public void updateGroupScore(GroupMessage groupMessage) {
+        if (!groupScores.containsKey(groupMessage)) {
+            groupScores.put(groupMessage, new HashMap<String, Integer>());
+        }
+        final HashMap<String, Integer> groupScoresMap = groupScores.get(groupMessage);
+        if (groupMessage.getMemberCode() != null && !groupMessage.getMemberCode().isEmpty()) {
+            groupScoresMap.put(groupMessage.getMemberCode(), groupMessage.getMemberScore());
+        }
+        int groupScore = 0;
+        for (Integer currentScore : groupScoresMap.values()) {
+            groupScore += currentScore;
+        }
+        groupMessage.setGroupScore(groupScore);
     }
 
     public boolean updateChannelMessageIfOutOfDate(GroupMessage incomingMessage, final GroupMessage storedMessage) {

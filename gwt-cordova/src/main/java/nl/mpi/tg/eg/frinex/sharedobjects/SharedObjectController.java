@@ -107,6 +107,7 @@ public class SharedObjectController {
             GROUP_MANAGER.setUsersLastMessage(storedMessage);
         }
         storedMessage.setGroupReady(GROUP_MANAGER.isGroupReady(storedMessage));
+        GROUP_MANAGER.updateGroupScore(storedMessage);
         return storedMessage;
     }
 }

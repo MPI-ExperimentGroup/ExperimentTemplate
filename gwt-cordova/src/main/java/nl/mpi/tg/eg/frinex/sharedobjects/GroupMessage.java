@@ -73,6 +73,8 @@ public class GroupMessage {
     private Integer requestedPhase;
     private String messageString;
     private boolean groupReady;
+    private int memberScore;
+    private int groupScore;
     private int eventMs;
 
     public GroupMessage() {
@@ -234,6 +236,22 @@ public class GroupMessage {
 
     public void setRequestedPhase(Integer requestedPhase) {
         this.requestedPhase = requestedPhase;
+    }
+
+    public int getMemberScore() {
+        return memberScore;
+    }
+
+    public void setMemberScore(int memberScore) {
+        this.memberScore = memberScore;
+    }
+
+    public int getGroupScore() {
+        return groupScore;
+    }
+
+    public void setGroupScore(int groupScore) {
+        this.groupScore = groupScore;
     }
 
     public int getEventMs() {
