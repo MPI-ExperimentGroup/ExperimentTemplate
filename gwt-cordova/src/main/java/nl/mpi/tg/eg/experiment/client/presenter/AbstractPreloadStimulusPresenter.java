@@ -59,7 +59,7 @@ public abstract class AbstractPreloadStimulusPresenter extends AbstractStimulusP
     protected void preloadAllStimuli(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final List<GeneratedStimulus.Tag> selectionTags) {
         final StimulusProvider stimulusProvider = new StimulusProvider();
         stimulusProvider.getSubset(selectionTags, false, 1, 0, "", -1);
-        final List<Stimulus> pictureList = stimulusProvider.getPictureList(null);
+        final List<Stimulus> pictureList = stimulusProvider.getPictureList(null, stimulusProvider.getTotalStimuli());
         final HorizontalPanel progressBar = ((TimedStimulusView) simpleView).addProgressBar(0, 0, pictureList.size());
         preloadAllStimuli(appEventListner, progressBar, timedStimulusListener, pictureList, pictureList.size());
     }
