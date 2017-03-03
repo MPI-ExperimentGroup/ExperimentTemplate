@@ -527,7 +527,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void scoreLabel() {
-        ((TimedStimulusView) simpleView).addHtmlText("scoreLabel:" + userResults.getUserData().getBestScore());
+        ((TimedStimulusView) simpleView).addHtmlText("Your Score:" + userResults.getUserData().getBestScore());
     }
 
     protected void groupChannelScoreLabel() {
@@ -539,7 +539,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void groupScoreLabel() {
-        ((TimedStimulusView) simpleView).addHtmlText("groupScoreLabel: " + groupParticipantService.getGroupScore());
+        ((TimedStimulusView) simpleView).addHtmlText("Group Score: " + groupParticipantService.getGroupScore());
     }
 
     protected void groupMemberLabel() {
@@ -1031,7 +1031,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void groupResponseStimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
-        stimulusImage(stimulusProvider.getStimuliFromString(groupParticipantService.getResponseStimulusId()), percentOfPage, maxHeight, maxWidth, animateType, (int) (50 - (maxHeight / 2.0)), postLoadMs, timedStimulusListener, null);
+        stimulusImage(stimulusProvider.getStimuliFromString(groupParticipantService.getResponseStimulusId()), percentOfPage, maxHeight, maxWidth, animateType, null, postLoadMs, timedStimulusListener, null);
     }
 
     protected void sendGroupMessage(final String eventTag, final int incrementPhase) {
