@@ -33,11 +33,10 @@ import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 public class StimulusGrid extends FlexTable {
 
     public StimulusGrid() {
-        this.setStylePrimaryName("menuTable");
     }
 
     private ButtonBase addButton(final PresenterEventListner menuItemListerner, final ButtonBase pushButton, final int rowIndex, final int columnIndex, final String widthString) {
-
+        this.setStylePrimaryName("gridTable");
         pushButton.addStyleName("stimulusButton");
         pushButton.setEnabled(true);
         final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
@@ -55,6 +54,7 @@ public class StimulusGrid extends FlexTable {
         pushButton.addTouchEndHandler(singleShotEventListner);
         this.setWidget(rowIndex, columnIndex, pushButton);
         this.getCellFormatter().setHorizontalAlignment(rowIndex, columnIndex, HasHorizontalAlignment.ALIGN_CENTER);
+        this.getCellFormatter().setStylePrimaryName(rowIndex, columnIndex, "gridCell");
         return pushButton;
     }
 
@@ -63,9 +63,12 @@ public class StimulusGrid extends FlexTable {
         return addButton(menuItemListerner, pushButton, rowIndex, columnIndex, widthString);
     }
 
-    public ButtonBase addImageItem(final PresenterEventListner menuItemListerner, final SafeUri imagePath, final int rowIndex, final int columnIndex, final String widthString) {
+    public ButtonBase addImageItem(final PresenterEventListner menuItemListerner, final SafeUri imagePath, final int rowIndex, final int columnIndex, final String widthString, final String styleName) {
         final Image image = new Image(imagePath);
         image.setWidth(widthString);
+        if (styleName != null) {
+            image.addStyleName(styleName);
+        }
         final Button imageButton = new Button();
         imageButton.getElement().appendChild(image.getElement());
         imageButton.addStyleName("stimulusImageButton");

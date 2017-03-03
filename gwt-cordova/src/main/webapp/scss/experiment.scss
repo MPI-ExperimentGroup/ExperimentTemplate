@@ -131,55 +131,33 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     width: 100%;
 }
 
-.gwt-Image.moveRotated10Animation,
-.gwt-Button.stimulusButton.moveRotated10Animation {
-    margin: 50px;
-    background: none;
-    position: relative;
-    animation: moveRotated10KeyFrames 2s infinite;
-    animation-timing-function: ease;
-    /*    -webkit-animation: moveRotated10KeyFrames 2s infinite;
-        -webkit-animation-timing-function: ease;*/
+$angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 255 270 285 300 315 330 345 350 360;
+@each $currentAngle in $angleArray {
+    .gwt-Image.moveRotated#{$currentAngle}Animation,
+    .gwt-Button.stimulusButton.moveRotated#{$currentAngle}Animation {
+        animation: moveRotated#{$currentAngle}KeyFrames 2s infinite;
+        /*-webkit-animation: moveRotated10KeyFrames 2s infinite;*/
+        margin: 50px;
+        background: none;
+        position: relative;
+        animation-timing-function: ease;
+        /*-webkit-animation-timing-function: ease;*/
+        width: 100px;
+    }
 }
-.gwt-Image.moveRotated180Animation,
-.gwt-Button.stimulusButton.moveRotated180Animation {
-    margin: 50px;
-    background: none;
-    position: relative;
-    animation: moveRotated180KeyFrames 2s infinite;
-    animation-timing-function: ease;
-    /*    -webkit-animation: moveRotated180KeyFrames 2s infinite;
-        -webkit-animation-timing-function: ease;*/
-}
-.gwt-Image.moveRotated200Animation,
-.gwt-Button.stimulusButton.moveRotated200Animation {
-    margin: 50px;
-    background: none;
-    position: relative;
-    animation: moveRotated200KeyFrames 2s infinite;
-    animation-timing-function: ease;
-    /*    -webkit-animation: moveRotated200KeyFrames 2s infinite;
-        -webkit-animation-timing-function: ease;*/
-}
-.gwt-Image.moveRotated300Animation,
-.gwt-Button.stimulusButton.moveRotated300Animation {
-    margin: 50px;
-    background: none;
-    position: relative;
-    animation: moveRotated300KeyFrames 2s infinite;
-    animation-timing-function: ease;
-    /*    -webkit-animation: moveRotated300KeyFrames 2s infinite;
-        -webkit-animation-timing-function: ease;*/
-}
-.gwt-Image.moveRotated350Animation,
-.gwt-Button.stimulusButton.moveRotated350Animation {
-    margin: 50px;
-    background: none;
-    position: relative;
-    animation: moveRotated350KeyFrames 2s infinite;
-    animation-timing-function: ease;
-    /*    -webkit-animation: moveRotated350KeyFrames 2s infinite;
-        -webkit-animation-timing-function: ease;*/
+@each $currentAngle in $angleArray {
+    @keyframes moveRotated#{$currentAngle}KeyFrames {
+        from {
+            transform: rotate(#{$currentAngle}deg)
+            translate(-50px)
+            rotate(-#{$currentAngle}deg);
+        }
+        to {
+            transform: rotate(#{$currentAngle}deg)
+            translate(50px)
+            rotate(-#{$currentAngle}deg);
+        }
+    }
 }
 
 .svgPopupPanel .gwt-Button, 
@@ -368,13 +346,15 @@ canvas {
 }
 
 .menuTable {
+    width: 100%;
+}
+.menuTable, .gridTable, .gridCell {
     padding: 10px 10px;
     border-color: $primaryColour2;
     border-radius: 15px;
     outline: none;
     border-width: 1px;
     border-style: solid;
-    width: 100%;
     margin-bottom: 10px;
 }
 .gwt-HTML, .resultsTablePanel, .metadataTable, .menuTable, .gwt-CheckBox, .pageLink {
@@ -628,71 +608,6 @@ table#screenExample td {
     right: 0px;
 }
 
-@keyframes bouncekeyframes {
-    from {top: -50%;}
-    to {top: 35%;}
-}
-
-@keyframes moveRotated10KeyFrames {
-    from {
-        transform: rotate(10deg)
-            translate(-50px)
-            rotate(-10deg);
-    }
-    to {
-        transform: rotate(10deg)
-            translate(50px)
-            rotate(-10deg);
-    }
-}
-@keyframes moveRotated180KeyFrames {
-    from {
-        transform: rotate(180deg)
-            translate(-50px)
-            rotate(-180deg);
-    }
-    to {
-        transform: rotate(180deg)
-            translate(50px)
-            rotate(-180deg);
-    }
-}
-@keyframes moveRotated200KeyFrames {
-    from {
-        transform: rotate(200deg)
-            translate(-50px)
-            rotate(-200deg);
-    }
-    to {
-        transform: rotate(200deg)
-            translate(50px)
-            rotate(-200deg);
-    }
-}
-@keyframes moveRotated300KeyFrames {
-    from {
-        transform: rotate(300deg)
-            translate(-50px)
-            rotate(-300deg);
-    }
-    to {
-        transform: rotate(300deg)
-            translate(50px)
-            rotate(-300deg);
-    }
-}
-@keyframes moveRotated350KeyFrames {
-    from {
-        transform: rotate(350deg)
-            translate(-50px)
-            rotate(-350deg);
-    }
-    to {
-        transform: rotate(350deg)
-            translate(50px)
-            rotate(-350deg);
-    }
-}
 /*@-webkit-keyframes topLeft2BottomRightKeyFrames {
     from {padding-left: 0px; padding-top: 0px; padding-bottom: 50px; padding-right: 50px;}
     to {padding-left: 50px; padding-top: 50px; padding-bottom: 0px; padding-right: 0px;}

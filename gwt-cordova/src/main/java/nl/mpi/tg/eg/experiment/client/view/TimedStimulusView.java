@@ -79,8 +79,8 @@ public class TimedStimulusView extends ComplexView {
         return stimulusGrid.addStringItem(menuItemListerner, labelString, rowIndex, columnIndex, widthString);
     }
 
-    public ButtonBase addImageItem(final PresenterEventListner menuItemListerner, final SafeUri imagePath, final int rowIndex, final int columnIndex, final String widthString) {
-        return stimulusGrid.addImageItem(menuItemListerner, imagePath, rowIndex, columnIndex, widthString);
+    public ButtonBase addImageItem(final PresenterEventListner menuItemListerner, final SafeUri imagePath, final int rowIndex, final int columnIndex, final String widthString, final String styleName) {
+        return stimulusGrid.addImageItem(menuItemListerner, imagePath, rowIndex, columnIndex, widthString, styleName);
     }
 
     public void preloadImage(SafeUri imagePath, final TimedStimulusListener timedStimulusListener) {
@@ -132,7 +132,9 @@ public class TimedStimulusView extends ComplexView {
         final Image image = new Image(imagePath);
         if (animateStyle != null) {
             image.addStyleName(animateStyle);
-            image.getElement().getStyle().setLeft(fixedPositionY, Style.Unit.PCT);
+            if (fixedPositionY != null) {
+                image.getElement().getStyle().setLeft(fixedPositionY, Style.Unit.PCT);
+            }
         }
         addSizeAttributes(image.getElement(), percentOfPage, maxHeight, maxWidth);
         image.addLoadHandler(new LoadHandler() {

@@ -389,19 +389,30 @@ public class StimulusProvider {
 //        totalStimuli = stimulusSubsetArray.size();
 //    }
     @Deprecated // todo: perhaps this would be better done in the respective presenters
-    public List<Stimulus> getPictureList(GroupParticipantService groupParticipantService) {
+    public List<Stimulus> getPictureList(GroupParticipantService groupParticipantService, int maxStimuli) {
+        final HashSet<Stimulus> uniqueList = new HashSet<>();
+        uniqueList.add(getCurrentStimulus());
+        ArrayList<Stimulus> stimulusListCopy = new ArrayList<>(stimulusSubsetArray);
+        while (!stimulusListCopy.isEmpty() && uniqueList.size() < maxStimuli) {
+            final int nextIndex = new Random().nextInt(stimulusListCopy.size());
+            Stimulus stimulus = stimulusListCopy.remove(nextIndex);
+            if (stimulus.getImage() != null && !stimulus.getImage().isEmpty()) {
+                uniqueList.add(stimulus);
+            }
+        }
+        final ArrayList<Stimulus> inputList = new ArrayList<>(uniqueList);
         final ArrayList<Stimulus> returnList = new ArrayList<>();
         String groupResponseOptions = null;
-        for (Stimulus stimulus : stimulusSubsetArray) {
-            if (stimulus.getImage() != null && !stimulus.getImage().isEmpty()) {
-                if (groupResponseOptions == null) {
-                    groupResponseOptions = "";
-                } else {
-                    groupResponseOptions += ",";
-                }
-                groupResponseOptions += stimulus.getUniqueId();
-                returnList.add(stimulus);
+        while (!inputList.isEmpty()) {
+            final int nextIndex = new Random().nextInt(inputList.size());
+            Stimulus stimulus = inputList.remove(nextIndex);
+            if (groupResponseOptions == null) {
+                groupResponseOptions = "";
+            } else {
+                groupResponseOptions += ",";
             }
+            groupResponseOptions += stimulus.getUniqueId();
+            returnList.add(stimulus);
         }
         if (groupParticipantService != null) {
             groupParticipantService.setResponseStimulusOptions(groupResponseOptions);
