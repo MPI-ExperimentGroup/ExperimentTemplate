@@ -70,12 +70,12 @@ public class ManipulatedContours {
             + "<br/>"
             + "[Cliquez sur SUIVANT si vos réglages sonores sont bons...]";
 
-    protected String informationScreenText2a() {
+    protected String informationScreenText2() {
         return "Cette expérience en ligne est une expérience audio. Vous entendrez à plusieurs reprises un extrait de conversation naturelle suivi d'un silence. Votre tâche est d'indiquer si le locuteur qui parle avant le silence va continuer ou arrêter de parler après le silence.<br/>"
                 + "<br/>"
                 + "Par example:<br/>"
                 + "Vous entendez l'extrait puis deux boutons apparaissent sur l'écran:<br/>"
-                + "à droite, il est marqué “continue” et à gauche, il est marqué “arrête”.<br/>"
+                + "ils sont marqués “continue” et “arrête”.<br/>"
                 + "Votre tâche est alors de cliquer sur le bouton à droite ou à gauche, suivant votre décision.<br/>"
                 + "<br/>"
                 + "Il y a environ 80 extraits dans cette expérience. Une session dure environ 20 minutes. Votre progrès est indiqué en haut de chaque écran.<br/>"
@@ -86,21 +86,6 @@ public class ManipulatedContours {
                 + "L'expérience commencera IMMEDIATEMENT";
     }
 
-    protected String informationScreenText2b() {
-        return "Cette expérience en ligne est une expérience audio. Vous entendrez à plusieurs reprises un extrait de conversation naturelle suivi d'un silence. Votre tâche est d'indiquer si le locuteur qui parle avant le silence va continuer ou arrêter de parler après le silence.<br/>"
-                + "<br/>"
-                + "Par example:<br/>"
-                + "Vous entendez l'extrait puis deux boutons apparaissent sur l'écran:<br/>"
-                + "à gauche, il est marqué “continue” et à droite, il est marqué “arrête”.<br/>"
-                + "Votre tâche est alors de cliquer sur le bouton à droite ou à gauche, suivant votre décision.<br/>"
-                + "<br/>"
-                + "Il y a environ 80 extraits dans cette expérience. Une session dure environ 20 minutes. Votre progrès est indiqué en haut de chaque écran.<br/>"
-                + "<br/>"
-                + "Attention: vous NE POUVEZ PAS mettre en pause, interrompre, ou reprendre l'expérience. Faites UNIQUEMENT cette expérience si vous avez vraiment le temps de la faire en entier. Faites l'expérience entièrement et sérieusement.<br/>"
-                + "<br/>"
-                + "Si l'expérience est claire et que vous êtes prêt(e) à commencer, cliquez sur SUIVANT.<br/>"
-                + "L'expérience commencera IMMEDIATEMENT";
-    }
     final String completionScreenText1 = "L'expérience est terminée.<br/>"
             + "<br/>"
             + "<br/>"
@@ -110,148 +95,474 @@ public class ManipulatedContours {
         return 4;
     }
 
-    protected String[] getStimuliStringA() {
+    protected String[] getStimuliOut1Ver1ConArr() {
         return new String[]{
-            "999:03-12-07_1_p1_M19R_i_54470_manipulated.wav:continue,arrête",
-            "999:05-12-07_1_p1_M23R_i_359359_manipulated.wav:continue,arrête",
-            "999:04-12-07_2_p1_M21L_f_208696_original.wav:continue,arrête",
-            "999:04-12-07_2_p1_M21L_f_608165_original.wav:continue,arrête",
-            "999:14-11-07_1_p1_M01R_r_483828_original.wav:continue,arrête",
-            "999:04-12-07_2_p1_M21R_f_164284_original.wav:continue,arrête",
-            "999:04-12-07_2_p1_M21L_i_254252_original.wav:continue,arrête",
-            "999:03-12-07_1_p1_M19L_f_929888_original.wav:continue,arrête",
-            "999:22-11-07_2_p1_F07L_f_1377242_original.wav:continue,arrête",
-            "999:04-12-07_2_p1_M21L_f_358114_original.wav:continue,arrête",
-            "999:14-11-07_2_p1_M02R_i_530691_manipulated.wav:continue,arrête",
-            "999:22-11-07_2_p1_F07L_i_1450339_original.wav:continue,arrête",
-            "999:22-11-07_2_p1_F07L_f_1397300_original.wav:continue,arrête",
-            "999:03-12-07_1_p1_M19L_f_226523_original.wav:continue,arrête",
-            "999:14-11-07_2_p1_M02R_f_660313_original.wav:continue,arrête",
-            "999:14-11-07_1_p1_M01R_r_369646_manipulated.wav:continue,arrête",
-            "999:14-11-07_2_p1_M02L_r_782925_original.wav:continue,arrête",
-            "999:14-11-07_1_p1_M01L_r_325139_original.wav:continue,arrête",
-            "999:20-11-07_1_p1_F05R_i_315485_manipulated.wav:continue,arrête",
-            "999:14-11-07_1_p1_M01L_r_50507_manipulated.wav:continue,arrête",
-            "999:22-11-07_2_p1_F07L_f_1398960_original.wav:continue,arrête",
-            "999:22-11-07_2_p1_F07R_i_1198900_manipulated.wav:continue,arrête",
-            "999:14-11-07_2_p1_M02R_f_831537_original.wav:continue,arrête",
-            "999:04-12-07_2_p1_M21L_i_11468_original.wav:continue,arrête",
-            "999:03-12-07_1_p1_M19L_i_146083_manipulated.wav:continue,arrête",
-            "999:14-11-07_1_p1_M01R_i_219580_original.wav:continue,arrête",
-            "999:03-12-07_1_p1_M19R_r_416402_original.wav:continue,arrête",
-            "999:04-12-07_2_p1_M21L_i_255747_manipulated.wav:continue,arrête",
-            "999:14-11-07_2_p1_M02L_i_22560_manipulated.wav:continue,arrête",
-            "999:14-11-07_2_p1_M02R_i_542926_original.wav:continue,arrête",
-            "999:14-11-07_2_p1_M02L_r_343273_manipulated.wav:continue,arrête",
-            "999:03-12-07_1_p1_M19R_r_518943_manipulated.wav:continue,arrête",
-            "999:22-11-07_2_p1_F07R_f_1086927_original.wav:continue,arrête",
-            "999:20-11-07_1_p1_F05R_f_619771_original.wav:continue,arrête",
-            "999:20-11-07_1_p1_F05L_i_106723_original.wav:continue,arrête",
-            "999:04-12-07_1_p1_M20R_i_129603_original.wav:continue,arrête",
-            "999:03-12-07_1_p1_M19L_i_779215_manipulated.wav:continue,arrête",
-            "999:14-11-07_1_p1_M01R_f_222400_original.wav:continue,arrête",
-            "999:14-11-07_2_p1_M02L_i_75209_original.wav:continue,arrête",
-            "999:03-12-07_1_p1_M19R_f_340735_original.wav:continue,arrête",
-            "999:14-11-07_1_p1_M01R_r_242530_manipulated.wav:continue,arrête",
-            "999:04-12-07_1_p1_M20R_i_146255_manipulated.wav:continue,arrête",
-            "999:22-11-07_1_p1_F06R_f_1696027_original.wav:continue,arrête",
-            "999:14-11-07_2_p1_M02R_i_662936_manipulated.wav:continue,arrête",
-            "999:22-11-07_2_p1_F07L_i_280359_original.wav:continue,arrête",
-            "999:20-11-07_1_p1_F05R_f_624120_original.wav:continue,arrête",
-            "999:14-11-07_1_p1_M01R_r_160211_original.wav:continue,arrête",
-            "999:03-12-07_1_p1_M19R_r_529986_original.wav:continue,arrête",
-            "999:03-12-07_1_p1_M19L_r_838332_manipulated.wav:continue,arrête",
-            "999:14-11-07_2_p1_M02R_f_669651_original.wav:continue,arrête",
-            "999:14-11-07_1_p1_M01L_r_23773_original.wav:continue,arrête",
-            "999:14-11-07_1_p1_M01R_r_394807_original.wav:continue,arrête",
-            "999:22-11-07_2_p1_F07L_f_888933_original.wav:continue,arrête",
-            "999:04-12-07_2_p1_M21L_f_427727_original.wav:continue,arrête",
-            "999:05-12-07_1_p1_M23L_i_259230_original.wav:continue,arrête",
-            "999:03-12-07_1_p1_M19R_i_353600_original.wav:continue,arrête",
-            "999:04-12-07_2_p1_M21R_i_770591_original.wav:continue,arrête",
-            "999:14-11-07_1_p1_M01R_r_397825_manipulated.wav:continue,arrête",
-            "999:04-12-07_2_p1_M21L_i_803331_manipulated.wav:continue,arrête",
-            "999:03-12-07_1_p1_M19R_i_60085_original.wav:continue,arrête",
-            "999:04-12-07_1_p1_M20R_r_226308_original.wav:continue,arrête",
-            "999:03-12-07_1_p1_M19R_r_374050_manipulated.wav:continue,arrête",
-            "999:04-12-07_2_p1_M21L_i_139907_manipulated.wav:continue,arrête",
-            "999:14-11-07_2_p1_M02R_f_681124_original.wav:continue,arrête",
-            "999:22-11-07_1_p1_F06R_f_1430740_original.wav:continue,arrête",
-            "999:04-12-07_2_p1_M21L_f_431951_original.wav:continue,arrête",
-            "999:04-12-07_2_p1_M21L_r_380821_manipulated.wav:continue,arrête"
+            "out1ver1conarr:03-12-07_1_p1_M19L_i_178668.wav:continue,arrête",
+            "out1ver1conarr:04-12-07_2_p1_M21L_i_378137.wav:continue,arrête",
+            "out1ver1conarr:14-11-07_1_p1_M01R_r_374964.wav:continue,arrête",
+            "out1ver1conarr:22-11-07_2_p1_F07L_i_1458920.wav:continue,arrête",
+            "out1ver1conarr:22-11-07_2_p1_F07L_r_943288.wav:continue,arrête",
+            "out1ver1conarr:03-12-07_1_p1_M19R_i_54470_original.wav:continue,arrête",
+            "out1ver1conarr:05-12-07_1_p1_M23R_i_359359_short_imp_manip.wav:continue,arrête",
+            "out1ver1conarr:04-12-07_2_p1_M21L_f_208696_original.wav:continue,arrête",
+            "out1ver1conarr:04-12-07_2_p1_M21L_f_608165_original.wav:continue,arrête",
+            "out1ver1conarr:14-11-07_1_p1_M01R_r_483828_short_imp_manip.wav:continue,arrête",
+            "out1ver1conarr:04-12-07_2_p1_M21R_f_164284_original.wav:continue,arrête",
+            "out1ver1conarr:04-12-07_2_p1_M21L_i_254252_short_rise_manip.wav:continue,arrête",
+            "out1ver1conarr:03-12-07_1_p1_M19L_f_929888_original.wav:continue,arrête",
+            "out1ver1conarr:22-11-07_2_p1_F07L_f_1377242_original.wav:continue,arrête",
+            "out1ver1conarr:04-12-07_2_p1_M21L_f_358114_original.wav:continue,arrête",
+            "out1ver1conarr:14-11-07_2_p1_M02R_i_530691_short_imp_manip.wav:continue,arrête",
+            "out1ver1conarr:22-11-07_2_p1_F07L_i_1450339_short_rise_manip.wav:continue,arrête",
+            "out1ver1conarr:22-11-07_2_p1_F07L_f_1397300_original.wav:continue,arrête",
+            "out1ver1conarr:03-12-07_1_p1_M19L_f_226523_original.wav:continue,arrête",
+            "out1ver1conarr:14-11-07_2_p1_M02R_f_660313_original.wav:continue,arrête",
+            "out1ver1conarr:14-11-07_1_p1_M01R_r_369646_original.wav:continue,arrête",
+            "out1ver1conarr:14-11-07_2_p1_M02L_r_782925_short_imp_manip.wav:continue,arrête",
+            "out1ver1conarr:14-11-07_1_p1_M01L_r_325139_short_imp_manip.wav:continue,arrête",
+            "out1ver1conarr:20-11-07_1_p1_F05R_i_315485_short_imp_manip.wav:continue,arrête",
+            "out1ver1conarr:14-11-07_1_p1_M01L_r_50507_long_original.wav:continue,arrête",
+            "out1ver1conarr:22-11-07_2_p1_F07L_f_1398960_original.wav:continue,arrête",
+            "out1ver1conarr:22-11-07_2_p1_F07R_i_1198900_short_imp_manip.wav:continue,arrête",
+            "out1ver1conarr:14-11-07_2_p1_M02R_f_831537_original.wav:continue,arrête",
+            "out1ver1conarr:04-12-07_2_p1_M21L_i_11468_long_rise_manip.wav:continue,arrête",
+            "out1ver1conarr:03-12-07_1_p1_M19L_i_146083_original.wav:continue,arrête",
+            "out1ver1conarr:14-11-07_1_p1_M01R_i_219580_short_rise_manip.wav:continue,arrête",
+            "out1ver1conarr:03-12-07_1_p1_M19R_r_416402_short_imp_manip.wav:continue,arrête",
+            "out1ver1conarr:04-12-07_2_p1_M21L_i_255747_short_imp_manip.wav:continue,arrête",
+            "out1ver1conarr:14-11-07_2_p1_M02L_i_22560_original.wav:continue,arrête",
+            "out1ver1conarr:14-11-07_2_p1_M02R_i_542926_long_rise_manip.wav:continue,arrête",
+            "out1ver1conarr:14-11-07_2_p1_M02L_r_343273_short_rise_manip.wav:continue,arrête",
+            "out1ver1conarr:03-12-07_1_p1_M19R_r_518943_long_original.wav:continue,arrête",
+            "out1ver1conarr:22-11-07_2_p1_F07R_f_1086927_original.wav:continue,arrête",
+            "out1ver1conarr:20-11-07_1_p1_F05R_f_619771_original.wav:continue,arrête",
+            "out1ver1conarr:20-11-07_1_p1_F05L_i_106723_short_rise_manip.wav:continue,arrête",
+            "out1ver1conarr:04-12-07_1_p1_M20R_i_129603_short_rise_manip.wav:continue,arrête",
+            "out1ver1conarr:03-12-07_1_p1_M19L_i_779215_short_imp_manip.wav:continue,arrête",
+            "out1ver1conarr:14-11-07_1_p1_M01R_f_222400_original.wav:continue,arrête",
+            "out1ver1conarr:14-11-07_2_p1_M02L_i_75209_short_rise_manip.wav:continue,arrête",
+            "out1ver1conarr:03-12-07_1_p1_M19R_f_340735_original.wav:continue,arrête",
+            "out1ver1conarr:14-11-07_1_p1_M01R_r_242530_original.wav:continue,arrête",
+            "out1ver1conarr:04-12-07_1_p1_M20R_i_146255_short_imp_manip.wav:continue,arrête",
+            "out1ver1conarr:22-11-07_1_p1_F06R_f_1696027_original.wav:continue,arrête",
+            "out1ver1conarr:14-11-07_2_p1_M02R_i_662936_original.wav:continue,arrête",
+            "out1ver1conarr:22-11-07_2_p1_F07L_i_280359_short_rise_manip.wav:continue,arrête",
+            "out1ver1conarr:20-11-07_1_p1_F05R_f_624120_original.wav:continue,arrête",
+            "out1ver1conarr:14-11-07_1_p1_M01R_r_160211_short_imp_manip.wav:continue,arrête",
+            "out1ver1conarr:03-12-07_1_p1_M19R_r_529986_long_imp_manip.wav:continue,arrête",
+            "out1ver1conarr:03-12-07_1_p1_M19L_r_838332_short_rise_manip.wav:continue,arrête",
+            "out1ver1conarr:14-11-07_2_p1_M02R_f_669651_original.wav:continue,arrête",
+            "out1ver1conarr:14-11-07_1_p1_M01L_r_23773_short_imp_manip.wav:continue,arrête",
+            "out1ver1conarr:14-11-07_1_p1_M01R_r_394807_short_imp_manip.wav:continue,arrête",
+            "out1ver1conarr:22-11-07_2_p1_F07L_f_888933_original.wav:continue,arrête",
+            "out1ver1conarr:04-12-07_2_p1_M21L_f_427727_original.wav:continue,arrête",
+            "out1ver1conarr:05-12-07_1_p1_M23L_i_259230_short_rise_manip.wav:continue,arrête",
+            "out1ver1conarr:03-12-07_1_p1_M19R_i_353600_short_rise_manip.wav:continue,arrête",
+            "out1ver1conarr:04-12-07_2_p1_M21R_i_770591_short_rise_manip.wav:continue,arrête",
+            "out1ver1conarr:14-11-07_1_p1_M01R_r_397825_original.wav:continue,arrête",
+            "out1ver1conarr:04-12-07_2_p1_M21L_i_803331_short_imp_manip.wav:continue,arrête",
+            "out1ver1conarr:03-12-07_1_p1_M19R_i_60085_short_rise_manip.wav:continue,arrête",
+            "out1ver1conarr:04-12-07_1_p1_M20R_r_226308_short_imp_manip.wav:continue,arrête",
+            "out1ver1conarr:03-12-07_1_p1_M19R_r_374050_original.wav:continue,arrête",
+            "out1ver1conarr:04-12-07_2_p1_M21L_i_139907_short_imp_manip.wav:continue,arrête",
+            "out1ver1conarr:14-11-07_2_p1_M02R_f_681124_original.wav:continue,arrête",
+            "out1ver1conarr:22-11-07_1_p1_F06R_f_1430740_original.wav:continue,arrête",
+            "out1ver1conarr:04-12-07_2_p1_M21L_f_431951_original.wav:continue,arrête",
+            "out1ver1conarr:04-12-07_2_p1_M21L_r_380821_original.wav:continue,arrête"
         };
     }
 
-    protected String[] getStimuliStringB() {
+    protected String[] getStimuliOut1Ver2ConArr() {
+        return new String[]{"out1ver2conarr:03-12-07_1_p1_M19L_i_178668.wav:continue,arrête",
+            "out1ver2conarr:04-12-07_2_p1_M21L_i_378137.wav:continue,arrête",
+            "out1ver2conarr:14-11-07_1_p1_M01R_r_374964.wav:continue,arrête",
+            "out1ver2conarr:22-11-07_2_p1_F07L_i_1458920.wav:continue,arrête",
+            "out1ver2conarr:22-11-07_2_p1_F07L_r_943288.wav:continue,arrête",
+            "out1ver2conarr:03-12-07_1_p1_M19R_i_54470_short_rise_manip.wav:continue,arrête",
+            "out1ver2conarr:05-12-07_1_p1_M23R_i_359359_original.wav:continue,arrête",
+            "out1ver2conarr:04-12-07_2_p1_M21L_f_208696_original.wav:continue,arrête",
+            "out1ver2conarr:04-12-07_2_p1_M21L_f_608165_original.wav:continue,arrête",
+            "out1ver2conarr:14-11-07_1_p1_M01R_r_483828_short_rise_manip.wav:continue,arrête",
+            "out1ver2conarr:04-12-07_2_p1_M21R_f_164284_original.wav:continue,arrête",
+            "out1ver2conarr:04-12-07_2_p1_M21L_i_254252_short_imp_manip.wav:continue,arrête",
+            "out1ver2conarr:03-12-07_1_p1_M19L_f_929888_original.wav:continue,arrête",
+            "out1ver2conarr:22-11-07_2_p1_F07L_f_1377242_original.wav:continue,arrête",
+            "out1ver2conarr:04-12-07_2_p1_M21L_f_358114_original.wav:continue,arrête",
+            "out1ver2conarr:14-11-07_2_p1_M02R_i_530691_original.wav:continue,arrête",
+            "out1ver2conarr:22-11-07_2_p1_F07L_i_1450339_short_imp_manip.wav:continue,arrête",
+            "out1ver2conarr:22-11-07_2_p1_F07L_f_1397300_original.wav:continue,arrête",
+            "out1ver2conarr:03-12-07_1_p1_M19L_f_226523_original.wav:continue,arrête",
+            "out1ver2conarr:14-11-07_2_p1_M02R_f_660313_original.wav:continue,arrête",
+            "out1ver2conarr:14-11-07_1_p1_M01R_r_369646_short_imp_manip.wav:continue,arrête",
+            "out1ver2conarr:14-11-07_2_p1_M02L_r_782925_short_rise_manip.wav:continue,arrête",
+            "out1ver2conarr:14-11-07_1_p1_M01L_r_325139_short_rise_manip.wav:continue,arrête",
+            "out1ver2conarr:20-11-07_1_p1_F05R_i_315485_original.wav:continue,arrête",
+            "out1ver2conarr:14-11-07_1_p1_M01L_r_50507_long_imp_manip.wav:continue,arrête",
+            "out1ver2conarr:22-11-07_2_p1_F07L_f_1398960_original.wav:continue,arrête",
+            "out1ver2conarr:22-11-07_2_p1_F07R_i_1198900_original.wav:continue,arrête",
+            "out1ver2conarr:14-11-07_2_p1_M02R_f_831537_original.wav:continue,arrête",
+            "out1ver2conarr:04-12-07_2_p1_M21L_i_11468_long_imp_manip.wav:continue,arrête",
+            "out1ver2conarr:03-12-07_1_p1_M19L_i_146083_short_rise_manip.wav:continue,arrête",
+            "out1ver2conarr:14-11-07_1_p1_M01R_i_219580_short_imp_manip.wav:continue,arrête",
+            "out1ver2conarr:03-12-07_1_p1_M19R_r_416402_short_rise_manip.wav:continue,arrête",
+            "out1ver2conarr:04-12-07_2_p1_M21L_i_255747_original.wav:continue,arrête",
+            "out1ver2conarr:14-11-07_2_p1_M02L_i_22560_short_rise_manip.wav:continue,arrête",
+            "out1ver2conarr:14-11-07_2_p1_M02R_i_542926_long_imp_manip.wav:continue,arrête",
+            "out1ver2conarr:14-11-07_2_p1_M02L_r_343273_original.wav:continue,arrête",
+            "out1ver2conarr:03-12-07_1_p1_M19R_r_518943_long_imp_manip.wav:continue,arrête",
+            "out1ver2conarr:22-11-07_2_p1_F07R_f_1086927_original.wav:continue,arrête",
+            "out1ver2conarr:20-11-07_1_p1_F05R_f_619771_original.wav:continue,arrête",
+            "out1ver2conarr:20-11-07_1_p1_F05L_i_106723_short_imp_manip.wav:continue,arrête",
+            "out1ver2conarr:04-12-07_1_p1_M20R_i_129603_short_imp_manip.wav:continue,arrête",
+            "out1ver2conarr:03-12-07_1_p1_M19L_i_779215_original.wav:continue,arrête",
+            "out1ver2conarr:14-11-07_1_p1_M01R_f_222400_original.wav:continue,arrête",
+            "out1ver2conarr:14-11-07_2_p1_M02L_i_75209_short_imp_manip.wav:continue,arrête",
+            "out1ver2conarr:03-12-07_1_p1_M19R_f_340735_original.wav:continue,arrête",
+            "out1ver2conarr:14-11-07_1_p1_M01R_r_242530_short_imp_manip.wav:continue,arrête",
+            "out1ver2conarr:04-12-07_1_p1_M20R_i_146255_original.wav:continue,arrête",
+            "out1ver2conarr:22-11-07_1_p1_F06R_f_1696027_original.wav:continue,arrête",
+            "out1ver2conarr:14-11-07_2_p1_M02R_i_662936_short_rise_manip.wav:continue,arrête",
+            "out1ver2conarr:22-11-07_2_p1_F07L_i_280359_short_imp_manip.wav:continue,arrête",
+            "out1ver2conarr:20-11-07_1_p1_F05R_f_624120_original.wav:continue,arrête",
+            "out1ver2conarr:14-11-07_1_p1_M01R_r_160211_short_rise_manip.wav:continue,arrête",
+            "out1ver2conarr:03-12-07_1_p1_M19R_r_529986_long_rise_manip.wav:continue,arrête",
+            "out1ver2conarr:03-12-07_1_p1_M19L_r_838332_original.wav:continue,arrête",
+            "out1ver2conarr:14-11-07_2_p1_M02R_f_669651_original.wav:continue,arrête",
+            "out1ver2conarr:14-11-07_1_p1_M01L_r_23773_short_rise_manip.wav:continue,arrête",
+            "out1ver2conarr:14-11-07_1_p1_M01R_r_394807_short_rise_manip.wav:continue,arrête",
+            "out1ver2conarr:22-11-07_2_p1_F07L_f_888933_original.wav:continue,arrête",
+            "out1ver2conarr:04-12-07_2_p1_M21L_f_427727_original.wav:continue,arrête",
+            "out1ver2conarr:05-12-07_1_p1_M23L_i_259230_short_imp_manip.wav:continue,arrête",
+            "out1ver2conarr:03-12-07_1_p1_M19R_i_353600_short_imp_manip.wav:continue,arrête",
+            "out1ver2conarr:04-12-07_2_p1_M21R_i_770591_short_imp_manip.wav:continue,arrête",
+            "out1ver2conarr:14-11-07_1_p1_M01R_r_397825_short_imp_manip.wav:continue,arrête",
+            "out1ver2conarr:04-12-07_2_p1_M21L_i_803331_original.wav:continue,arrête",
+            "out1ver2conarr:03-12-07_1_p1_M19R_i_60085_short_imp_manip.wav:continue,arrête",
+            "out1ver2conarr:04-12-07_1_p1_M20R_r_226308_short_rise_manip.wav:continue,arrête",
+            "out1ver2conarr:03-12-07_1_p1_M19R_r_374050_short_imp_manip.wav:continue,arrête",
+            "out1ver2conarr:04-12-07_2_p1_M21L_i_139907_original.wav:continue,arrête",
+            "out1ver2conarr:14-11-07_2_p1_M02R_f_681124_original.wav:continue,arrête",
+            "out1ver2conarr:22-11-07_1_p1_F06R_f_1430740_original.wav:continue,arrête",
+            "out1ver2conarr:04-12-07_2_p1_M21L_f_431951_original.wav:continue,arrête",
+            "out1ver2conarr:04-12-07_2_p1_M21L_r_380821_short_imp_manip.wav:continue,arrête"};
+    }
+
+    protected String[] getStimuliOut1Ver3ConArr() {
         return new String[]{
-            "999:03-12-07_1_p1_M19R_i_54470_original.wav:continue,arrête",
-            "999:05-12-07_1_p1_M23R_i_359359_original.wav:continue,arrête",
-            "999:04-12-07_2_p1_M21L_f_208696_original.wav:continue,arrête",
-            "999:04-12-07_2_p1_M21L_f_608165_original.wav:continue,arrête",
-            "999:14-11-07_1_p1_M01R_r_483828_manipulated.wav:continue,arrête",
-            "999:04-12-07_2_p1_M21R_f_164284_original.wav:continue,arrête",
-            "999:04-12-07_2_p1_M21L_i_254252_manipulated.wav:continue,arrête",
-            "999:03-12-07_1_p1_M19L_f_929888_original.wav:continue,arrête",
-            "999:22-11-07_2_p1_F07L_f_1377242_original.wav:continue,arrête",
-            "999:04-12-07_2_p1_M21L_f_358114_original.wav:continue,arrête",
-            "999:14-11-07_2_p1_M02R_i_530691_original.wav:continue,arrête",
-            "999:22-11-07_2_p1_F07L_i_1450339_manipulated.wav:continue,arrête",
-            "999:22-11-07_2_p1_F07L_f_1397300_original.wav:continue,arrête",
-            "999:03-12-07_1_p1_M19L_f_226523_original.wav:continue,arrête",
-            "999:14-11-07_2_p1_M02R_f_660313_original.wav:continue,arrête",
-            "999:14-11-07_1_p1_M01R_r_369646_original.wav:continue,arrête",
-            "999:14-11-07_2_p1_M02L_r_782925_manipulated.wav:continue,arrête",
-            "999:14-11-07_1_p1_M01L_r_325139_manipulated.wav:continue,arrête",
-            "999:20-11-07_1_p1_F05R_i_315485_original.wav:continue,arrête",
-            "999:14-11-07_1_p1_M01L_r_50507_original.wav:continue,arrête",
-            "999:22-11-07_2_p1_F07L_f_1398960_original.wav:continue,arrête",
-            "999:22-11-07_2_p1_F07R_i_1198900_original.wav:continue,arrête",
-            "999:14-11-07_2_p1_M02R_f_831537_original.wav:continue,arrête",
-            "999:04-12-07_2_p1_M21L_i_11468_manipulated.wav:continue,arrête",
-            "999:03-12-07_1_p1_M19L_i_146083_original.wav:continue,arrête",
-            "999:14-11-07_1_p1_M01R_i_219580_manipulated.wav:continue,arrête",
-            "999:03-12-07_1_p1_M19R_r_416402_manipulated.wav:continue,arrête",
-            "999:04-12-07_2_p1_M21L_i_255747_original.wav:continue,arrête",
-            "999:14-11-07_2_p1_M02L_i_22560_original.wav:continue,arrête",
-            "999:14-11-07_2_p1_M02R_i_542926_manipulated.wav:continue,arrête",
-            "999:14-11-07_2_p1_M02L_r_343273_original.wav:continue,arrête",
-            "999:03-12-07_1_p1_M19R_r_518943_original.wav:continue,arrête",
-            "999:22-11-07_2_p1_F07R_f_1086927_original.wav:continue,arrête",
-            "999:20-11-07_1_p1_F05R_f_619771_original.wav:continue,arrête",
-            "999:20-11-07_1_p1_F05L_i_106723_manipulated.wav:continue,arrête",
-            "999:04-12-07_1_p1_M20R_i_129603_manipulated.wav:continue,arrête",
-            "999:03-12-07_1_p1_M19L_i_779215_original.wav:continue,arrête",
-            "999:14-11-07_1_p1_M01R_f_222400_original.wav:continue,arrête",
-            "999:14-11-07_2_p1_M02L_i_75209_manipulated.wav:continue,arrête",
-            "999:03-12-07_1_p1_M19R_f_340735_original.wav:continue,arrête",
-            "999:14-11-07_1_p1_M01R_r_242530_original.wav:continue,arrête",
-            "999:04-12-07_1_p1_M20R_i_146255_original.wav:continue,arrête",
-            "999:22-11-07_1_p1_F06R_f_1696027_original.wav:continue,arrête",
-            "999:14-11-07_2_p1_M02R_i_662936_original.wav:continue,arrête",
-            "999:22-11-07_2_p1_F07L_i_280359_manipulated.wav:continue,arrête",
-            "999:20-11-07_1_p1_F05R_f_624120_original.wav:continue,arrête",
-            "999:14-11-07_1_p1_M01R_r_160211_manipulated.wav:continue,arrête",
-            "999:03-12-07_1_p1_M19R_r_529986_manipulated.wav:continue,arrête",
-            "999:03-12-07_1_p1_M19L_r_838332_original.wav:continue,arrête",
-            "999:14-11-07_2_p1_M02R_f_669651_original.wav:continue,arrête",
-            "999:14-11-07_1_p1_M01L_r_23773_manipulated.wav:continue,arrête",
-            "999:14-11-07_1_p1_M01R_r_394807_manipulated.wav:continue,arrête",
-            "999:22-11-07_2_p1_F07L_f_888933_original.wav:continue,arrête",
-            "999:04-12-07_2_p1_M21L_f_427727_original.wav:continue,arrête",
-            "999:05-12-07_1_p1_M23L_i_259230_manipulated.wav:continue,arrête",
-            "999:03-12-07_1_p1_M19R_i_353600_manipulated.wav:continue,arrête",
-            "999:04-12-07_2_p1_M21R_i_770591_manipulated.wav:continue,arrête",
-            "999:14-11-07_1_p1_M01R_r_397825_original.wav:continue,arrête",
-            "999:04-12-07_2_p1_M21L_i_803331_original.wav:continue,arrête",
-            "999:03-12-07_1_p1_M19R_i_60085_manipulated.wav:continue,arrête",
-            "999:04-12-07_1_p1_M20R_r_226308_manipulated.wav:continue,arrête",
-            "999:03-12-07_1_p1_M19R_r_374050_original.wav:continue,arrête",
-            "999:04-12-07_2_p1_M21L_i_139907_original.wav:continue,arrête",
-            "999:14-11-07_2_p1_M02R_f_681124_original.wav:continue,arrête",
-            "999:22-11-07_1_p1_F06R_f_1430740_original.wav:continue,arrête",
-            "999:04-12-07_2_p1_M21L_f_431951_original.wav:continue,arrête",
-            "999:04-12-07_2_p1_M21L_r_380821_original.wav:continue,arrête"
-        };
+            "out1ver3conarr:03-12-07_1_p1_M19L_i_178668.wav:continue,arrête",
+            "out1ver3conarr:04-12-07_2_p1_M21L_i_378137.wav:continue,arrête",
+            "out1ver3conarr:14-11-07_1_p1_M01R_r_374964.wav:continue,arrête",
+            "out1ver3conarr:22-11-07_2_p1_F07L_i_1458920.wav:continue,arrête",
+            "out1ver3conarr:22-11-07_2_p1_F07L_r_943288.wav:continue,arrête",
+            "out1ver3conarr:03-12-07_1_p1_M19R_i_54470_short_imp_manip.wav:continue,arrête",
+            "out1ver3conarr:05-12-07_1_p1_M23R_i_359359_short_rise_manip.wav:continue,arrête",
+            "out1ver3conarr:04-12-07_2_p1_M21L_f_208696_original.wav:continue,arrête",
+            "out1ver3conarr:04-12-07_2_p1_M21L_f_608165_original.wav:continue,arrête",
+            "out1ver3conarr:14-11-07_1_p1_M01R_r_483828_original.wav:continue,arrête",
+            "out1ver3conarr:04-12-07_2_p1_M21R_f_164284_original.wav:continue,arrête",
+            "out1ver3conarr:04-12-07_2_p1_M21L_i_254252_original.wav:continue,arrête",
+            "out1ver3conarr:03-12-07_1_p1_M19L_f_929888_original.wav:continue,arrête",
+            "out1ver3conarr:22-11-07_2_p1_F07L_f_1377242_original.wav:continue,arrête",
+            "out1ver3conarr:04-12-07_2_p1_M21L_f_358114_original.wav:continue,arrête",
+            "out1ver3conarr:14-11-07_2_p1_M02R_i_530691_short_rise_manip.wav:continue,arrête",
+            "out1ver3conarr:22-11-07_2_p1_F07L_i_1450339_original.wav:continue,arrête",
+            "out1ver3conarr:22-11-07_2_p1_F07L_f_1397300_original.wav:continue,arrête",
+            "out1ver3conarr:03-12-07_1_p1_M19L_f_226523_original.wav:continue,arrête",
+            "out1ver3conarr:14-11-07_2_p1_M02R_f_660313_original.wav:continue,arrête",
+            "out1ver3conarr:14-11-07_1_p1_M01R_r_369646_short_rise_manip.wav:continue,arrête",
+            "out1ver3conarr:14-11-07_2_p1_M02L_r_782925_original.wav:continue,arrête",
+            "out1ver3conarr:14-11-07_1_p1_M01L_r_325139_original.wav:continue,arrête",
+            "out1ver3conarr:20-11-07_1_p1_F05R_i_315485_short_rise_manip.wav:continue,arrête",
+            "out1ver3conarr:14-11-07_1_p1_M01L_r_50507_long_rise_manip.wav:continue,arrête",
+            "out1ver3conarr:22-11-07_2_p1_F07L_f_1398960_original.wav:continue,arrête",
+            "out1ver3conarr:22-11-07_2_p1_F07R_i_1198900_short_rise_manip.wav:continue,arrête",
+            "out1ver3conarr:14-11-07_2_p1_M02R_f_831537_original.wav:continue,arrête",
+            "out1ver3conarr:04-12-07_2_p1_M21L_i_11468_long_original.wav:continue,arrête",
+            "out1ver3conarr:03-12-07_1_p1_M19L_i_146083_short_imp_manip.wav:continue,arrête",
+            "out1ver3conarr:14-11-07_1_p1_M01R_i_219580_original.wav:continue,arrête",
+            "out1ver3conarr:03-12-07_1_p1_M19R_r_416402_original.wav:continue,arrête",
+            "out1ver3conarr:04-12-07_2_p1_M21L_i_255747_short_rise_manip.wav:continue,arrête",
+            "out1ver3conarr:14-11-07_2_p1_M02L_i_22560_short_imp_manip.wav:continue,arrête",
+            "out1ver3conarr:14-11-07_2_p1_M02R_i_542926_long_original.wav:continue,arrête",
+            "out1ver3conarr:14-11-07_2_p1_M02L_r_343273_short_imp_manip.wav:continue,arrête",
+            "out1ver3conarr:03-12-07_1_p1_M19R_r_518943_long_rise_manip.wav:continue,arrête",
+            "out1ver3conarr:22-11-07_2_p1_F07R_f_1086927_original.wav:continue,arrête",
+            "out1ver3conarr:20-11-07_1_p1_F05R_f_619771_original.wav:continue,arrête",
+            "out1ver3conarr:20-11-07_1_p1_F05L_i_106723_original.wav:continue,arrête",
+            "out1ver3conarr:04-12-07_1_p1_M20R_i_129603_original.wav:continue,arrête",
+            "out1ver3conarr:03-12-07_1_p1_M19L_i_779215_short_rise_manip.wav:continue,arrête",
+            "out1ver3conarr:14-11-07_1_p1_M01R_f_222400_original.wav:continue,arrête",
+            "out1ver3conarr:14-11-07_2_p1_M02L_i_75209_original.wav:continue,arrête",
+            "out1ver3conarr:03-12-07_1_p1_M19R_f_340735_original.wav:continue,arrête",
+            "out1ver3conarr:14-11-07_1_p1_M01R_r_242530_short_rise_manip.wav:continue,arrête",
+            "out1ver3conarr:04-12-07_1_p1_M20R_i_146255_short_rise_manip.wav:continue,arrête",
+            "out1ver3conarr:22-11-07_1_p1_F06R_f_1696027_original.wav:continue,arrête",
+            "out1ver3conarr:14-11-07_2_p1_M02R_i_662936_short_imp_manip.wav:continue,arrête",
+            "out1ver3conarr:22-11-07_2_p1_F07L_i_280359_original.wav:continue,arrête",
+            "out1ver3conarr:20-11-07_1_p1_F05R_f_624120_original.wav:continue,arrête",
+            "out1ver3conarr:14-11-07_1_p1_M01R_r_160211_original.wav:continue,arrête",
+            "out1ver3conarr:03-12-07_1_p1_M19R_r_529986_long_original.wav:continue,arrête",
+            "out1ver3conarr:03-12-07_1_p1_M19L_r_838332_short_imp_manip.wav:continue,arrête",
+            "out1ver3conarr:14-11-07_2_p1_M02R_f_669651_original.wav:continue,arrête",
+            "out1ver3conarr:14-11-07_1_p1_M01L_r_23773_original.wav:continue,arrête",
+            "out1ver3conarr:14-11-07_1_p1_M01R_r_394807_original.wav:continue,arrête",
+            "out1ver3conarr:22-11-07_2_p1_F07L_f_888933_original.wav:continue,arrête",
+            "out1ver3conarr:04-12-07_2_p1_M21L_f_427727_original.wav:continue,arrête",
+            "out1ver3conarr:05-12-07_1_p1_M23L_i_259230_original.wav:continue,arrête",
+            "out1ver3conarr:03-12-07_1_p1_M19R_i_353600_original.wav:continue,arrête",
+            "out1ver3conarr:04-12-07_2_p1_M21R_i_770591_original.wav:continue,arrête",
+            "out1ver3conarr:14-11-07_1_p1_M01R_r_397825_short_rise_manip.wav:continue,arrête",
+            "out1ver3conarr:04-12-07_2_p1_M21L_i_803331_short_rise_manip.wav:continue,arrête",
+            "out1ver3conarr:03-12-07_1_p1_M19R_i_60085_original.wav:continue,arrête",
+            "out1ver3conarr:04-12-07_1_p1_M20R_r_226308_original.wav:continue,arrête",
+            "out1ver3conarr:03-12-07_1_p1_M19R_r_374050_short_rise_manip.wav:continue,arrête",
+            "out1ver3conarr:04-12-07_2_p1_M21L_i_139907_short_rise_manip.wav:continue,arrête",
+            "out1ver3conarr:14-11-07_2_p1_M02R_f_681124_original.wav:continue,arrête",
+            "out1ver3conarr:22-11-07_1_p1_F06R_f_1430740_original.wav:continue,arrête",
+            "out1ver3conarr:04-12-07_2_p1_M21L_f_431951_original.wav:continue,arrête",
+            "out1ver3conarr:04-12-07_2_p1_M21L_r_380821_short_rise_manip.wav:continue,arrête"};
+    }
+
+    protected String[] getStimuliOut2Ver1ConArr() {
+        return new String[]{"out2ver1conarr:03-12-07_1_p1_M19L_i_178668.wav:continue,arrête",
+            "out2ver1conarr:04-12-07_2_p1_M21L_i_378137.wav:continue,arrête",
+            "out2ver1conarr:14-11-07_1_p1_M01R_r_374964.wav:continue,arrête",
+            "out2ver1conarr:22-11-07_2_p1_F07L_i_1458920.wav:continue,arrête",
+            "out2ver1conarr:22-11-07_2_p1_F07L_r_943288.wav:continue,arrête",
+            "out2ver1conarr:04-12-07_2_p1_M21L_f_427727_original.wav:continue,arrête",
+            "out2ver1conarr:14-11-07_1_p1_M01L_r_50507_long_original.wav:continue,arrête",
+            "out2ver1conarr:14-11-07_1_p1_M01R_i_219580_short_rise_manip.wav:continue,arrête",
+            "out2ver1conarr:04-12-07_2_p1_M21L_i_11468_long_rise_manip.wav:continue,arrête",
+            "out2ver1conarr:14-11-07_2_p1_M02R_i_530691_short_imp_manip.wav:continue,arrête",
+            "out2ver1conarr:20-11-07_1_p1_F05R_f_619771_original.wav:continue,arrête",
+            "out2ver1conarr:04-12-07_2_p1_M21L_r_380821_original.wav:continue,arrête",
+            "out2ver1conarr:03-12-07_1_p1_M19L_f_226523_original.wav:continue,arrête",
+            "out2ver1conarr:04-12-07_2_p1_M21L_f_431951_original.wav:continue,arrête",
+            "out2ver1conarr:14-11-07_2_p1_M02L_i_75209_short_rise_manip.wav:continue,arrête",
+            "out2ver1conarr:14-11-07_2_p1_M02L_i_22560_short_imp_manip.wav:continue,arrête",
+            "out2ver1conarr:04-12-07_1_p1_M20R_r_226308_short_imp_manip.wav:continue,arrête",
+            "out2ver1conarr:04-12-07_2_p1_M21L_i_254252_short_rise_manip.wav:continue,arrête",
+            "out2ver1conarr:20-11-07_1_p1_F05R_i_315485_original.wav:continue,arrête",
+            "out2ver1conarr:22-11-07_2_p1_F07L_f_888933_original.wav:continue,arrête",
+            "out2ver1conarr:05-12-07_1_p1_M23L_i_259230_short_rise_manip.wav:continue,arrête",
+            "out2ver1conarr:04-12-07_1_p1_M20R_i_129603_short_rise_manip.wav:continue,arrête",
+            "out2ver1conarr:14-11-07_1_p1_M01R_r_483828_short_imp_manip.wav:continue,arrête",
+            "out2ver1conarr:14-11-07_1_p1_M01L_r_23773_short_imp_manip.wav:continue,arrête",
+            "out2ver1conarr:03-12-07_1_p1_M19R_r_416402_short_imp_manip.wav:continue,arrête",
+            "out2ver1conarr:04-12-07_1_p1_M20R_i_146255_short_imp_manip.wav:continue,arrête",
+            "out2ver1conarr:14-11-07_1_p1_M01R_r_160211_short_imp_manip.wav:continue,arrête",
+            "out2ver1conarr:03-12-07_1_p1_M19R_i_54470_original.wav:continue,arrête",
+            "out2ver1conarr:04-12-07_2_p1_M21L_i_139907_short_imp_manip.wav:continue,arrête",
+            "out2ver1conarr:14-11-07_2_p1_M02R_f_660313_original.wav:continue,arrête",
+            "out2ver1conarr:04-12-07_2_p1_M21L_f_208696_original.wav:continue,arrête",
+            "out2ver1conarr:04-12-07_2_p1_M21R_i_770591_short_rise_manip.wav:continue,arrête",
+            "out2ver1conarr:03-12-07_1_p1_M19R_f_340735_original.wav:continue,arrête",
+            "out2ver1conarr:03-12-07_1_p1_M19L_r_838332_original.wav:continue,arrête",
+            "out2ver1conarr:03-12-07_1_p1_M19R_i_60085_short_rise_manip.wav:continue,arrête",
+            "out2ver1conarr:04-12-07_2_p1_M21L_i_803331_short_imp_manip.wav:continue,arrête",
+            "out2ver1conarr:14-11-07_1_p1_M01R_r_369646_original.wav:continue,arrête",
+            "out2ver1conarr:03-12-07_1_p1_M19L_i_779215_short_imp_manip.wav:continue,arrête",
+            "out2ver1conarr:14-11-07_1_p1_M01R_f_222400_original.wav:continue,arrête",
+            "out2ver1conarr:20-11-07_1_p1_F05L_i_106723_short_rise_manip.wav:continue,arrête",
+            "out2ver1conarr:14-11-07_1_p1_M01R_r_394807_short_imp_manip.wav:continue,arrête",
+            "out2ver1conarr:22-11-07_1_p1_F06R_f_1430740_original.wav:continue,arrête",
+            "out2ver1conarr:22-11-07_2_p1_F07L_f_1377242_original.wav:continue,arrête",
+            "out2ver1conarr:05-12-07_1_p1_M23R_i_359359_original.wav:continue,arrête",
+            "out2ver1conarr:03-12-07_1_p1_M19L_f_929888_original.wav:continue,arrête",
+            "out2ver1conarr:14-11-07_1_p1_M01R_r_242530_short_rise_manip.wav:continue,arrête",
+            "out2ver1conarr:14-11-07_2_p1_M02R_i_662936_original.wav:continue,arrête",
+            "out2ver1conarr:22-11-07_2_p1_F07R_f_1086927_original.wav:continue,arrête",
+            "out2ver1conarr:03-12-07_1_p1_M19R_i_353600_short_rise_manip.wav:continue,arrête",
+            "out2ver1conarr:04-12-07_2_p1_M21L_f_608165_original.wav:continue,arrête",
+            "out2ver1conarr:04-12-07_2_p1_M21L_i_255747_short_imp_manip.wav:continue,arrête",
+            "out2ver1conarr:22-11-07_2_p1_F07R_i_1198900_original.wav:continue,arrête",
+            "out2ver1conarr:14-11-07_2_p1_M02R_i_542926_long_rise_manip.wav:continue,arrête",
+            "out2ver1conarr:14-11-07_2_p1_M02R_f_831537_original.wav:continue,arrête",
+            "out2ver1conarr:22-11-07_2_p1_F07L_i_280359_short_rise_manip.wav:continue,arrête",
+            "out2ver1conarr:03-12-07_1_p1_M19R_r_518943_long_rise_manip.wav:continue,arrête",
+            "out2ver1conarr:22-11-07_2_p1_F07L_i_1450339_short_rise_manip.wav:continue,arrête",
+            "out2ver1conarr:22-11-07_2_p1_F07L_f_1397300_original.wav:continue,arrête",
+            "out2ver1conarr:14-11-07_2_p1_M02L_r_782925_short_imp_manip.wav:continue,arrête",
+            "out2ver1conarr:03-12-07_1_p1_M19R_r_529986_long_imp_manip.wav:continue,arrête",
+            "out2ver1conarr:14-11-07_1_p1_M01L_r_325139_short_imp_manip.wav:continue,arrête",
+            "out2ver1conarr:04-12-07_2_p1_M21R_f_164284_original.wav:continue,arrête",
+            "out2ver1conarr:22-11-07_2_p1_F07L_f_1398960_original.wav:continue,arrête",
+            "out2ver1conarr:03-12-07_1_p1_M19R_r_374050_original.wav:continue,arrête",
+            "out2ver1conarr:03-12-07_1_p1_M19L_i_146083_short_imp_manip.wav:continue,arrête",
+            "out2ver1conarr:14-11-07_2_p1_M02R_f_669651_original.wav:continue,arrête",
+            "out2ver1conarr:22-11-07_1_p1_F06R_f_1696027_original.wav:continue,arrête",
+            "out2ver1conarr:20-11-07_1_p1_F05R_f_624120_original.wav:continue,arrête",
+            "out2ver1conarr:14-11-07_2_p1_M02L_r_343273_original.wav:continue,arrête",
+            "out2ver1conarr:04-12-07_2_p1_M21L_f_358114_original.wav:continue,arrête",
+            "out2ver1conarr:14-11-07_1_p1_M01R_r_397825_short_rise_manip.wav:continue,arrête",
+            "out2ver1conarr:14-11-07_2_p1_M02R_f_681124_original.wav:continue,arrête"};
+    }
+
+    protected String[] getStimuliOut2Ver2ConArr() {
+        return new String[]{"out2ver2conarr:03-12-07_1_p1_M19L_i_178668.wav:continue,arrête",
+            "out2ver2conarr:04-12-07_2_p1_M21L_i_378137.wav:continue,arrête",
+            "out2ver2conarr:14-11-07_1_p1_M01R_r_374964.wav:continue,arrête",
+            "out2ver2conarr:22-11-07_2_p1_F07L_i_1458920.wav:continue,arrête",
+            "out2ver2conarr:22-11-07_2_p1_F07L_r_943288.wav:continue,arrête",
+            "out2ver2conarr:04-12-07_2_p1_M21L_f_427727_original.wav:continue,arrête",
+            "out2ver2conarr:14-11-07_1_p1_M01L_r_50507_long_imp_manip.wav:continue,arrête",
+            "out2ver2conarr:14-11-07_1_p1_M01R_i_219580_short_imp_manip.wav:continue,arrête",
+            "out2ver2conarr:04-12-07_2_p1_M21L_i_11468_long_imp_manip.wav:continue,arrête",
+            "out2ver2conarr:14-11-07_2_p1_M02R_i_530691_original.wav:continue,arrête",
+            "out2ver2conarr:20-11-07_1_p1_F05R_f_619771_original.wav:continue,arrête",
+            "out2ver2conarr:04-12-07_2_p1_M21L_r_380821_short_imp_manip.wav:continue,arrête",
+            "out2ver2conarr:03-12-07_1_p1_M19L_f_226523_original.wav:continue,arrête",
+            "out2ver2conarr:04-12-07_2_p1_M21L_f_431951_original.wav:continue,arrête",
+            "out2ver2conarr:14-11-07_2_p1_M02L_i_75209_short_imp_manip.wav:continue,arrête",
+            "out2ver2conarr:14-11-07_2_p1_M02L_i_22560_original.wav:continue,arrête",
+            "out2ver2conarr:04-12-07_1_p1_M20R_r_226308_short_rise_manip.wav:continue,arrête",
+            "out2ver2conarr:04-12-07_2_p1_M21L_i_254252_short_imp_manip.wav:continue,arrête",
+            "out2ver2conarr:20-11-07_1_p1_F05R_i_315485_short_rise_manip.wav:continue,arrête",
+            "out2ver2conarr:22-11-07_2_p1_F07L_f_888933_original.wav:continue,arrête",
+            "out2ver2conarr:05-12-07_1_p1_M23L_i_259230_short_imp_manip.wav:continue,arrête",
+            "out2ver2conarr:04-12-07_1_p1_M20R_i_129603_short_imp_manip.wav:continue,arrête",
+            "out2ver2conarr:14-11-07_1_p1_M01R_r_483828_short_rise_manip.wav:continue,arrête",
+            "out2ver2conarr:14-11-07_1_p1_M01L_r_23773_short_rise_manip.wav:continue,arrête",
+            "out2ver2conarr:03-12-07_1_p1_M19R_r_416402_short_rise_manip.wav:continue,arrête",
+            "out2ver2conarr:04-12-07_1_p1_M20R_i_146255_original.wav:continue,arrête",
+            "out2ver2conarr:14-11-07_1_p1_M01R_r_160211_short_rise_manip.wav:continue,arrête",
+            "out2ver2conarr:03-12-07_1_p1_M19R_i_54470_short_rise_manip.wav:continue,arrête",
+            "out2ver2conarr:04-12-07_2_p1_M21L_i_139907_original.wav:continue,arrête",
+            "out2ver2conarr:14-11-07_2_p1_M02R_f_660313_original.wav:continue,arrête",
+            "out2ver2conarr:04-12-07_2_p1_M21L_f_208696_original.wav:continue,arrête",
+            "out2ver2conarr:04-12-07_2_p1_M21R_i_770591_short_imp_manip.wav:continue,arrête",
+            "out2ver2conarr:03-12-07_1_p1_M19R_f_340735_original.wav:continue,arrête",
+            "out2ver2conarr:03-12-07_1_p1_M19L_r_838332_short_imp_manip.wav:continue,arrête",
+            "out2ver2conarr:03-12-07_1_p1_M19R_i_60085_short_imp_manip.wav:continue,arrête",
+            "out2ver2conarr:04-12-07_2_p1_M21L_i_803331_original.wav:continue,arrête",
+            "out2ver2conarr:14-11-07_1_p1_M01R_r_369646_short_imp_manip.wav:continue,arrête",
+            "out2ver2conarr:03-12-07_1_p1_M19L_i_779215_original.wav:continue,arrête",
+            "out2ver2conarr:14-11-07_1_p1_M01R_f_222400_original.wav:continue,arrête",
+            "out2ver2conarr:20-11-07_1_p1_F05L_i_106723_short_imp_manip.wav:continue,arrête",
+            "out2ver2conarr:14-11-07_1_p1_M01R_r_394807_short_rise_manip.wav:continue,arrête",
+            "out2ver2conarr:22-11-07_1_p1_F06R_f_1430740_original.wav:continue,arrête",
+            "out2ver2conarr:22-11-07_2_p1_F07L_f_1377242_original.wav:continue,arrête",
+            "out2ver2conarr:05-12-07_1_p1_M23R_i_359359_short_rise_manip.wav:continue,arrête",
+            "out2ver2conarr:03-12-07_1_p1_M19L_f_929888_original.wav:continue,arrête",
+            "out2ver2conarr:14-11-07_1_p1_M01R_r_242530_original.wav:continue,arrête",
+            "out2ver2conarr:14-11-07_2_p1_M02R_i_662936_short_rise_manip.wav:continue,arrête",
+            "out2ver2conarr:22-11-07_2_p1_F07R_f_1086927_original.wav:continue,arrête",
+            "out2ver2conarr:03-12-07_1_p1_M19R_i_353600_short_imp_manip.wav:continue,arrête",
+            "out2ver2conarr:04-12-07_2_p1_M21L_f_608165_original.wav:continue,arrête",
+            "out2ver2conarr:04-12-07_2_p1_M21L_i_255747_original.wav:continue,arrête",
+            "out2ver2conarr:22-11-07_2_p1_F07R_i_1198900_short_rise_manip.wav:continue,arrête",
+            "out2ver2conarr:14-11-07_2_p1_M02R_i_542926_long_imp_manip.wav:continue,arrête",
+            "out2ver2conarr:14-11-07_2_p1_M02R_f_831537_original.wav:continue,arrête",
+            "out2ver2conarr:22-11-07_2_p1_F07L_i_280359_short_imp_manip.wav:continue,arrête",
+            "out2ver2conarr:03-12-07_1_p1_M19R_r_518943_long_original.wav:continue,arrête",
+            "out2ver2conarr:22-11-07_2_p1_F07L_i_1450339_short_imp_manip.wav:continue,arrête",
+            "out2ver2conarr:22-11-07_2_p1_F07L_f_1397300_original.wav:continue,arrête",
+            "out2ver2conarr:14-11-07_2_p1_M02L_r_782925_short_rise_manip.wav:continue,arrête",
+            "out2ver2conarr:03-12-07_1_p1_M19R_r_529986_long_rise_manip.wav:continue,arrête",
+            "out2ver2conarr:14-11-07_1_p1_M01L_r_325139_short_rise_manip.wav:continue,arrête",
+            "out2ver2conarr:04-12-07_2_p1_M21R_f_164284_original.wav:continue,arrête",
+            "out2ver2conarr:22-11-07_2_p1_F07L_f_1398960_original.wav:continue,arrête",
+            "out2ver2conarr:03-12-07_1_p1_M19R_r_374050_short_imp_manip.wav:continue,arrête",
+            "out2ver2conarr:03-12-07_1_p1_M19L_i_146083_original.wav:continue,arrête",
+            "out2ver2conarr:14-11-07_2_p1_M02R_f_669651_original.wav:continue,arrête",
+            "out2ver2conarr:22-11-07_1_p1_F06R_f_1696027_original.wav:continue,arrête",
+            "out2ver2conarr:20-11-07_1_p1_F05R_f_624120_original.wav:continue,arrête",
+            "out2ver2conarr:14-11-07_2_p1_M02L_r_343273_short_imp_manip.wav:continue,arrête",
+            "out2ver2conarr:04-12-07_2_p1_M21L_f_358114_original.wav:continue,arrête",
+            "out2ver2conarr:14-11-07_1_p1_M01R_r_397825_original.wav:continue,arrête",
+            "out2ver2conarr:14-11-07_2_p1_M02R_f_681124_original.wav:continue,arrête"};
+    }
+
+    protected String[] getStimuliOut2Ver3ConArr() {
+        return new String[]{"out2ver3conarr:03-12-07_1_p1_M19L_i_178668.wav:continue,arrête",
+            "out2ver3conarr:04-12-07_2_p1_M21L_i_378137.wav:continue,arrête",
+            "out2ver3conarr:14-11-07_1_p1_M01R_r_374964.wav:continue,arrête",
+            "out2ver3conarr:22-11-07_2_p1_F07L_i_1458920.wav:continue,arrête",
+            "out2ver3conarr:22-11-07_2_p1_F07L_r_943288.wav:continue,arrête",
+            "out2ver3conarr:04-12-07_2_p1_M21L_f_427727_original.wav:continue,arrête",
+            "out2ver3conarr:14-11-07_1_p1_M01L_r_50507_long_rise_manip.wav:continue,arrête",
+            "out2ver3conarr:14-11-07_1_p1_M01R_i_219580_original.wav:continue,arrête",
+            "out2ver3conarr:04-12-07_2_p1_M21L_i_11468_long_original.wav:continue,arrête",
+            "out2ver3conarr:14-11-07_2_p1_M02R_i_530691_short_rise_manip.wav:continue,arrête",
+            "out2ver3conarr:20-11-07_1_p1_F05R_f_619771_original.wav:continue,arrête",
+            "out2ver3conarr:04-12-07_2_p1_M21L_r_380821_short_rise_manip.wav:continue,arrête",
+            "out2ver3conarr:03-12-07_1_p1_M19L_f_226523_original.wav:continue,arrête",
+            "out2ver3conarr:04-12-07_2_p1_M21L_f_431951_original.wav:continue,arrête",
+            "out2ver3conarr:14-11-07_2_p1_M02L_i_75209_original.wav:continue,arrête",
+            "out2ver3conarr:14-11-07_2_p1_M02L_i_22560_short_rise_manip.wav:continue,arrête",
+            "out2ver3conarr:04-12-07_1_p1_M20R_r_226308_original.wav:continue,arrête",
+            "out2ver3conarr:04-12-07_2_p1_M21L_i_254252_original.wav:continue,arrête",
+            "out2ver3conarr:20-11-07_1_p1_F05R_i_315485_short_imp_manip.wav:continue,arrête",
+            "out2ver3conarr:22-11-07_2_p1_F07L_f_888933_original.wav:continue,arrête",
+            "out2ver3conarr:05-12-07_1_p1_M23L_i_259230_original.wav:continue,arrête",
+            "out2ver3conarr:04-12-07_1_p1_M20R_i_129603_original.wav:continue,arrête",
+            "out2ver3conarr:14-11-07_1_p1_M01R_r_483828_original.wav:continue,arrête",
+            "out2ver3conarr:14-11-07_1_p1_M01L_r_23773_original.wav:continue,arrête",
+            "out2ver3conarr:03-12-07_1_p1_M19R_r_416402_original.wav:continue,arrête",
+            "out2ver3conarr:04-12-07_1_p1_M20R_i_146255_short_rise_manip.wav:continue,arrête",
+            "out2ver3conarr:14-11-07_1_p1_M01R_r_160211_original.wav:continue,arrête",
+            "out2ver3conarr:03-12-07_1_p1_M19R_i_54470_short_imp_manip.wav:continue,arrête",
+            "out2ver3conarr:04-12-07_2_p1_M21L_i_139907_short_rise_manip.wav:continue,arrête",
+            "out2ver3conarr:14-11-07_2_p1_M02R_f_660313_original.wav:continue,arrête",
+            "out2ver3conarr:04-12-07_2_p1_M21L_f_208696_original.wav:continue,arrête",
+            "out2ver3conarr:04-12-07_2_p1_M21R_i_770591_original.wav:continue,arrête",
+            "out2ver3conarr:03-12-07_1_p1_M19R_f_340735_original.wav:continue,arrête",
+            "out2ver3conarr:03-12-07_1_p1_M19L_r_838332_short_rise_manip.wav:continue,arrête",
+            "out2ver3conarr:03-12-07_1_p1_M19R_i_60085_original.wav:continue,arrête",
+            "out2ver3conarr:04-12-07_2_p1_M21L_i_803331_short_rise_manip.wav:continue,arrête",
+            "out2ver3conarr:14-11-07_1_p1_M01R_r_369646_short_rise_manip.wav:continue,arrête",
+            "out2ver3conarr:03-12-07_1_p1_M19L_i_779215_short_rise_manip.wav:continue,arrête",
+            "out2ver3conarr:14-11-07_1_p1_M01R_f_222400_original.wav:continue,arrête",
+            "out2ver3conarr:20-11-07_1_p1_F05L_i_106723_original.wav:continue,arrête",
+            "out2ver3conarr:14-11-07_1_p1_M01R_r_394807_original.wav:continue,arrête",
+            "out2ver3conarr:22-11-07_1_p1_F06R_f_1430740_original.wav:continue,arrête",
+            "out2ver3conarr:22-11-07_2_p1_F07L_f_1377242_original.wav:continue,arrête",
+            "out2ver3conarr:05-12-07_1_p1_M23R_i_359359_short_imp_manip.wav:continue,arrête",
+            "out2ver3conarr:03-12-07_1_p1_M19L_f_929888_original.wav:continue,arrête",
+            "out2ver3conarr:14-11-07_1_p1_M01R_r_242530_short_imp_manip.wav:continue,arrête",
+            "out2ver3conarr:14-11-07_2_p1_M02R_i_662936_short_imp_manip.wav:continue,arrête",
+            "out2ver3conarr:22-11-07_2_p1_F07R_f_1086927_original.wav:continue,arrête",
+            "out2ver3conarr:03-12-07_1_p1_M19R_i_353600_original.wav:continue,arrête",
+            "out2ver3conarr:04-12-07_2_p1_M21L_f_608165_original.wav:continue,arrête",
+            "out2ver3conarr:04-12-07_2_p1_M21L_i_255747_short_rise_manip.wav:continue,arrête",
+            "out2ver3conarr:22-11-07_2_p1_F07R_i_1198900_short_imp_manip.wav:continue,arrête",
+            "out2ver3conarr:14-11-07_2_p1_M02R_i_542926_long_original.wav:continue,arrête",
+            "out2ver3conarr:14-11-07_2_p1_M02R_f_831537_original.wav:continue,arrête",
+            "out2ver3conarr:22-11-07_2_p1_F07L_i_280359_original.wav:continue,arrête",
+            "out2ver3conarr:03-12-07_1_p1_M19R_r_518943_long_imp_manip.wav:continue,arrête",
+            "out2ver3conarr:22-11-07_2_p1_F07L_i_1450339_original.wav:continue,arrête",
+            "out2ver3conarr:22-11-07_2_p1_F07L_f_1397300_original.wav:continue,arrête",
+            "out2ver3conarr:14-11-07_2_p1_M02L_r_782925_original.wav:continue,arrête",
+            "out2ver3conarr:03-12-07_1_p1_M19R_r_529986_long_original.wav:continue,arrête",
+            "out2ver3conarr:14-11-07_1_p1_M01L_r_325139_original.wav:continue,arrête",
+            "out2ver3conarr:04-12-07_2_p1_M21R_f_164284_original.wav:continue,arrête",
+            "out2ver3conarr:22-11-07_2_p1_F07L_f_1398960_original.wav:continue,arrête",
+            "out2ver3conarr:03-12-07_1_p1_M19R_r_374050_short_rise_manip.wav:continue,arrête",
+            "out2ver3conarr:03-12-07_1_p1_M19L_i_146083_short_rise_manip.wav:continue,arrête",
+            "out2ver3conarr:14-11-07_2_p1_M02R_f_669651_original.wav:continue,arrête",
+            "out2ver3conarr:22-11-07_1_p1_F06R_f_1696027_original.wav:continue,arrête",
+            "out2ver3conarr:20-11-07_1_p1_F05R_f_624120_original.wav:continue,arrête",
+            "out2ver3conarr:14-11-07_2_p1_M02L_r_343273_short_rise_manip.wav:continue,arrête",
+            "out2ver3conarr:04-12-07_2_p1_M21L_f_358114_original.wav:continue,arrête",
+            "out2ver3conarr:14-11-07_1_p1_M01R_r_397825_short_imp_manip.wav:continue,arrête",
+            "out2ver3conarr:14-11-07_2_p1_M02R_f_681124_original.wav:continue,arrête"};
+    }
+
+    private String[] invertButtons(String[] stimuliArray) {
+        for (int currentIndex = 0; currentIndex < stimuliArray.length; currentIndex++) {
+            stimuliArray[currentIndex] = stimuliArray[currentIndex].replace("out2ver3conarr", "out2ver3arrcon");
+            stimuliArray[currentIndex] = stimuliArray[currentIndex].replace(":continue,arrête", ":arrête,continue");
+        }
+        return stimuliArray;
+    }
+
+    private String[] addCodePart(String[] stimuliArray) {
+        for (int currentIndex = 0; currentIndex < stimuliArray.length; currentIndex++) {
+            final String[] lineParts = stimuliArray[currentIndex].split(":");
+            String codePart = lineParts[1].replaceAll("[^0-9]*$", "");
+            stimuliArray[currentIndex] = lineParts[0] + ":" + codePart + "_context" + ":" + lineParts[1] + ":" + lineParts[2];
+        }
+        return stimuliArray;
     }
 
     public WizardData getWizardData() {
@@ -260,10 +571,7 @@ public class ManipulatedContours {
         wizardData.setShowMenuBar(false);
         wizardData.setTextFontSize(17);
         wizardData.setObfuscateScreenNames(false);
-        WizardTextScreen wizardTextScreen2a = new WizardTextScreen("InformationScreen1a", informationScreenText2a(),
-                "volgende [ spatiebalk ]"
-        );
-        WizardTextScreen wizardTextScreen2b = new WizardTextScreen("InformationScreen1b", informationScreenText2b(),
+        WizardTextScreen wizardTextScreen2 = new WizardTextScreen("InformationScreen2", informationScreenText2(),
                 "volgende [ spatiebalk ]"
         );
         WizardAudioTestScreen wizardTextScreen1 = new WizardAudioTestScreen("AudioTest", informationScreenText1, "suivant [ barre d'espacement ]", "bienvenue");
@@ -292,18 +600,35 @@ public class ManipulatedContours {
         wizardData.addScreen(wizardEditUserScreen);
         wizardData.addScreen(agreementScreen);
         wizardData.addScreen(wizardTextScreen1);
-        wizardData.addScreen(wizardTextScreen2a);
-        wizardData.addScreen(wizardTextScreen2b);
+        wizardData.addScreen(wizardTextScreen2);
 
-        final WizardVideoAudioOptionStimulusScreen list1234ScreenA = new WizardVideoAudioOptionStimulusScreen("StimuliA", false, getStimuliStringA(), false,
-                null, 1000, repeatCount(), 20, true, 100, "", "", true);
-        final WizardVideoAudioOptionStimulusScreen list1234ScreenB = new WizardVideoAudioOptionStimulusScreen("StimuliB", false, getStimuliStringB(), false,
-                null, 1000, repeatCount(), 20, true, 100, "", "", true);
-//        list1234Screen.setStimulusResponseOptions("1,2,3,4,5");
+        final WizardVideoAudioOptionStimulusScreen out1ver1Screen = new WizardVideoAudioOptionStimulusScreen("out1ver1Screen", false, addCodePart(getStimuliOut1Ver1ConArr()), true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final WizardVideoAudioOptionStimulusScreen out1ver2Screen = new WizardVideoAudioOptionStimulusScreen("out1ver2Screen", false, addCodePart(getStimuliOut1Ver2ConArr()), true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final WizardVideoAudioOptionStimulusScreen out1ver3Screen = new WizardVideoAudioOptionStimulusScreen("out1ver3Screen", false, addCodePart(getStimuliOut1Ver3ConArr()), true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final WizardVideoAudioOptionStimulusScreen out2ver1Screen = new WizardVideoAudioOptionStimulusScreen("out2ver1Screen", false, addCodePart(getStimuliOut2Ver1ConArr()), true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final WizardVideoAudioOptionStimulusScreen out2ver2Screen = new WizardVideoAudioOptionStimulusScreen("out2ver2Screen", false, addCodePart(getStimuliOut2Ver2ConArr()), true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final WizardVideoAudioOptionStimulusScreen out2ver3Screen = new WizardVideoAudioOptionStimulusScreen("out2ver3Screen", false, addCodePart(getStimuliOut2Ver3ConArr()), true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final WizardVideoAudioOptionStimulusScreen out1ver1ScreenI = new WizardVideoAudioOptionStimulusScreen("out1ver1ScreenI", false, invertButtons(addCodePart(getStimuliOut1Ver1ConArr())), true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final WizardVideoAudioOptionStimulusScreen out1ver2ScreenI = new WizardVideoAudioOptionStimulusScreen("out1ver2ScreenI", false, invertButtons(addCodePart(getStimuliOut1Ver2ConArr())), true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final WizardVideoAudioOptionStimulusScreen out1ver3ScreenI = new WizardVideoAudioOptionStimulusScreen("out1ver3ScreenI", false, invertButtons(addCodePart(getStimuliOut1Ver3ConArr())), true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final WizardVideoAudioOptionStimulusScreen out2ver1ScreenI = new WizardVideoAudioOptionStimulusScreen("out2ver1ScreenI", false, invertButtons(addCodePart(getStimuliOut2Ver1ConArr())), true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final WizardVideoAudioOptionStimulusScreen out2ver2ScreenI = new WizardVideoAudioOptionStimulusScreen("out2ver2ScreenI", false, invertButtons(addCodePart(getStimuliOut2Ver2ConArr())), true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final WizardVideoAudioOptionStimulusScreen out2ver3ScreenI = new WizardVideoAudioOptionStimulusScreen("out2ver3ScreenI", false, invertButtons(addCodePart(getStimuliOut2Ver3ConArr())), true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
+        //        list1234Screen.setStimulusResponseOptions("1,2,3,4,5");
 //        list1234Screen.setStimulusResponseLabelLeft("très probable négatif");
 //        list1234Screen.setStimulusResponseLabelRight("très probable positif");
-        wizardData.addScreen(list1234ScreenA);
-        wizardData.addScreen(list1234ScreenB);
+        wizardData.addScreen(out1ver1Screen);
+        wizardData.addScreen(out1ver2Screen);
+        wizardData.addScreen(out1ver3Screen);
+        wizardData.addScreen(out2ver1Screen);
+        wizardData.addScreen(out2ver2Screen);
+        wizardData.addScreen(out2ver3Screen);
+        wizardData.addScreen(out1ver1ScreenI);
+        wizardData.addScreen(out1ver2ScreenI);
+        wizardData.addScreen(out1ver3ScreenI);
+        wizardData.addScreen(out2ver1ScreenI);
+        wizardData.addScreen(out2ver2ScreenI);
+        wizardData.addScreen(out2ver3ScreenI);
 
         WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, false, true,
                 null, //Si quelqu'un d'autre veut participer à l'expérience sur cet ordinateur, veuillez cliquer sur le bouton ci-dessous.",
@@ -318,15 +643,34 @@ public class ManipulatedContours {
         wizardEditUserScreen.setNextWizardScreen(agreementScreen);
         agreementScreen.setNextWizardScreen(wizardTextScreen1);
         WizardMenuScreen menuScreen = new WizardMenuScreen("temporary menu", "temporary menu", "temporary menu");
-        menuScreen.addTargetScreen(wizardTextScreen2a);
-        menuScreen.addTargetScreen(wizardTextScreen2b);
         wizardData.addScreen(menuScreen);
-        wizardTextScreen1.setNextWizardScreen(menuScreen);
-
-        wizardTextScreen2a.setNextWizardScreen(list1234ScreenA);
-        wizardTextScreen2b.setNextWizardScreen(list1234ScreenB);
-        list1234ScreenA.setNextWizardScreen(completionScreen);
-        list1234ScreenB.setNextWizardScreen(completionScreen);
+        wizardTextScreen1.setNextWizardScreen(wizardTextScreen2);
+        wizardTextScreen2.setNextWizardScreen(menuScreen);
+        
+        menuScreen.addTargetScreen(out1ver1Screen);
+        menuScreen.addTargetScreen(out1ver2Screen);
+        menuScreen.addTargetScreen(out1ver3Screen);
+        menuScreen.addTargetScreen(out2ver1Screen);
+        menuScreen.addTargetScreen(out2ver2Screen);
+        menuScreen.addTargetScreen(out2ver3Screen);
+        menuScreen.addTargetScreen(out1ver1ScreenI);
+        menuScreen.addTargetScreen(out1ver2ScreenI);
+        menuScreen.addTargetScreen(out1ver3ScreenI);
+        menuScreen.addTargetScreen(out2ver1ScreenI);
+        menuScreen.addTargetScreen(out2ver2ScreenI);
+        menuScreen.addTargetScreen(out2ver3ScreenI);
+        out1ver1Screen.setNextWizardScreen(completionScreen);
+        out1ver2Screen.setNextWizardScreen(completionScreen);
+        out1ver3Screen.setNextWizardScreen(completionScreen);
+        out2ver1Screen.setNextWizardScreen(completionScreen);
+        out2ver2Screen.setNextWizardScreen(completionScreen);
+        out2ver3Screen.setNextWizardScreen(completionScreen);
+        out1ver1ScreenI.setNextWizardScreen(completionScreen);
+        out1ver2ScreenI.setNextWizardScreen(completionScreen);
+        out1ver3ScreenI.setNextWizardScreen(completionScreen);
+        out2ver1ScreenI.setNextWizardScreen(completionScreen);
+        out2ver2ScreenI.setNextWizardScreen(completionScreen);
+        out2ver3ScreenI.setNextWizardScreen(completionScreen);
         return wizardData;
     }
 
