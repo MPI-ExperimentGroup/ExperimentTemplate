@@ -42,10 +42,14 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
         wizardScreenData.setStimulusImageCapture(Boolean.FALSE);
     }
 
-
     public WizardStimulusScreen(String screenName) {
         super(WizardScreenEnum.WizardStimulusScreen, screenName, screenName, screenName);
         wizardScreenData.setStimulusImageCapture(Boolean.FALSE);
+    }
+
+    @Override
+    public String getScreenBooleanInfo(int index) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
@@ -91,6 +95,10 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
         wizardScreenData.setStimuliCount(maxStimuli);
     }
 
+    public void setMaxStimuliPerTag(int maxStimuliPerTag) {
+        wizardScreenData.setMaxStimuliPerTag(maxStimuliPerTag);
+    }
+
     public void setFilePerStimulus(boolean filePerStimulus) {
         wizardScreenData.setFilePerStimulus(filePerStimulus);
     }
@@ -121,6 +129,9 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
             loadStimuliFeature.addStimulusTag(stimulusTag);
         }
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(storedWizardScreenData.getStimuliCount()));
+        if (storedWizardScreenData.getMaxStimuliPerTag() != null) {
+            loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuliPerTag, Integer.toString(storedWizardScreenData.getMaxStimuliPerTag()));
+        }
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(storedWizardScreenData.isRandomiseStimuli()));
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "1");

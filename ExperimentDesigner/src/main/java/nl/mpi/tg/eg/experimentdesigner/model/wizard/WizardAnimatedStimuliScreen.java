@@ -73,6 +73,11 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
     private static final String BASE_FILE_REGEX = "\\.[a-zA-Z34]+$";
 
     @Override
+    public String getScreenBooleanInfo(int index) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
     public String getScreenTextInfo(int index) {
         throw new UnsupportedOperationException("Not supported.");
     }

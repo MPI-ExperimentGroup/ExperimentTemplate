@@ -21,6 +21,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -64,6 +65,8 @@ public class WizardScreenData implements Serializable {
     private List<WizardScreenData> menuWizardScreenData = new ArrayList<>();
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<ScreenText> screenText = null;
+    @ElementCollection(targetClass=Boolean.class)
+    private List<Boolean> screenBooleans = null;
     private String[] nextButton = null;
     private String screenTitle = null;
     private String menuLabel = null;
@@ -84,6 +87,7 @@ public class WizardScreenData implements Serializable {
     private String stimulusCodeFormat = null;
     private Boolean randomiseStimuli = null;
     private Integer stimuliCount = null;
+    private Integer maxStimuliPerTag = null;
     private Integer repeatCount = null;
     private Integer repeatRandomWindow = null;
     private String buttonLabelEventTag = null;
@@ -97,7 +101,6 @@ public class WizardScreenData implements Serializable {
     private Boolean allowUserRestart = null;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Metadata> metadataFields = null;
-    private Boolean useCodeVideo = null;
     private String stimulusResponseOptions = null;
     private String stimulusResponseLabelRight = null;
     private String stimulusResponseLabelLeft = null;
@@ -186,6 +189,24 @@ public class WizardScreenData implements Serializable {
             screenText.add(new ScreenText());
         }
         this.screenText.get(index).screenText = screenTextString;
+    }
+
+    public List<Boolean> getScreenBooleans() {
+        return screenBooleans;
+    }
+
+    public Boolean getScreenBoolean(int index) {
+        return (screenBooleans != null && screenBooleans.size() > index) ? screenBooleans.get(index) : null;
+    }
+
+    public void setScreenBoolean(int index, Boolean screenBoolean) {
+        if (screenBooleans == null) {
+            screenBooleans = new ArrayList<>();
+        }
+        while (screenBooleans.size() <= index) {
+            screenBooleans.add(null);
+        }
+        this.screenBooleans.set(index, screenBoolean);
     }
 
     public String[] getNextButton() {
@@ -333,6 +354,14 @@ public class WizardScreenData implements Serializable {
         this.stimuliCount = stimuliCount;
     }
 
+    public Integer getMaxStimuliPerTag() {
+        return maxStimuliPerTag;
+    }
+
+    public void setMaxStimuliPerTag(Integer maxStimuliPerTag) {
+        this.maxStimuliPerTag = maxStimuliPerTag;
+    }
+
     public String getButtonLabelEventTag() {
         return buttonLabelEventTag;
     }
@@ -402,14 +431,6 @@ public class WizardScreenData implements Serializable {
             metadataFields = new ArrayList<>();
         }
         return metadataFields;
-    }
-
-    public Boolean getUseCodeVideo() {
-        return useCodeVideo;
-    }
-
-    public void setUseCodeVideo(Boolean useCodeVideo) {
-        this.useCodeVideo = useCodeVideo;
     }
 
     public String getStimulusResponseOptions() {

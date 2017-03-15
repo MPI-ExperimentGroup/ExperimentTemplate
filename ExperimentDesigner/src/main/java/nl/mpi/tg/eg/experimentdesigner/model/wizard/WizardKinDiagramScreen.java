@@ -55,6 +55,11 @@ public class WizardKinDiagramScreen extends AbstractWizardScreen {
     }
 
     @Override
+    public String getScreenBooleanInfo(int index) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
     public String getScreenTextInfo(int index) {
         throw new UnsupportedOperationException("Not supported.");
     }

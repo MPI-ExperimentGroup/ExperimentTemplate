@@ -82,6 +82,11 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //        this.stimuliPath = stimuliPath;
 //    }
     @Override
+    public String getScreenBooleanInfo(int index) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
     public String getScreenTextInfo(int index) {
         return new String[]{"Text Entry Phase Text", "Grid Wait Phase Text", "Text Wait Phase Text", "Response Grid Phase Text", "Mutual Feedback Phase Text", "Training Display Phase Text"}[index];
     }
@@ -266,6 +271,8 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         loadStimuliFeature.addStimulusTag(storedWizardScreenData.getScreenTitle());
 
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.minStimuliPerTag, "1");
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuliPerTag, "100");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(storedWizardScreenData.isRandomiseStimuli()));
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "1");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, "0");

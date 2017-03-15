@@ -46,6 +46,11 @@ public class WizardWelcomeScreen extends AbstractWizardScreen {
 //        wizardScreenData.getMenuWizardScreenData().add(1, instructionsScreen.getWizardScreenData());
 //    }
     @Override
+    public String getScreenBooleanInfo(int index) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
     public String getScreenTextInfo(int index) {
         throw new UnsupportedOperationException("Not supported.");
     }

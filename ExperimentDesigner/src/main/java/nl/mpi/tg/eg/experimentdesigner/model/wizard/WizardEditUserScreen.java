@@ -49,6 +49,11 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
     }
 
     @Override
+    public String getScreenBooleanInfo(int index) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
     public String getScreenTextInfo(int index) {
         return new String[]{"dispalyText", "postText"}[index];
     }

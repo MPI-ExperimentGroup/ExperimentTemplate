@@ -43,13 +43,18 @@ public class WizardExistingUserCheckScreen extends AbstractWizardScreen {
     }
 
     @Override
+    public String getScreenBooleanInfo(int index) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
     public String getScreenTextInfo(int index) {
         return new String[]{"startNewText", "resumeoldText"}[index];
     }
 
     @Override
     public String getNextButtonInfo(int index) {
-        return new String[]{"New Interview Button Label","Resume Interview Button Label"}[index];
+        return new String[]{"New Interview Button Label", "Resume Interview Button Label"}[index];
     }
 
     @Override

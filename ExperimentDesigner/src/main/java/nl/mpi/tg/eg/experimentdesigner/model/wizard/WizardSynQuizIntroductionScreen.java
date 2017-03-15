@@ -69,6 +69,11 @@ public class WizardSynQuizIntroductionScreen extends AbstractWizardScreen {
     }
 
     @Override
+    public String getScreenBooleanInfo(int index) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
     public String getScreenTextInfo(int index) {
         return new String[]{"we_are_studying_the_genetic_basis_of_syna",
             "how_our_study_works",

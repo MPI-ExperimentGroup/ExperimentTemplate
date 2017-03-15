@@ -94,5 +94,7 @@ public interface WizardScreen {
 
     public String getScreenTextInfo(int index);
 
+    public String getScreenBooleanInfo(int index);
+
     public String getNextButtonInfo(int index);
 }
