@@ -75,35 +75,43 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             </div>  
         </div>
         <div th:fragment="wizardedit">
-            <form action="#" th:action="${contextPath + '/experiments/wizard/create'}" method="post">
-                <table class="presenter">
-                    <tr><td>Experiment Name</td><td><input type="text" th:field="${wizardData.appName}" /></td></tr>
-                    <tr><td>obfuscateScreenNames</td><td><input type="checkbox" th:field="${wizardData.obfuscateScreenNames}" /></td></tr>
-                    <tr><td>showMenuBar</td><td><input type="checkbox" th:field="${wizardData.showMenuBar}" /></td></tr>
-                    <!--<tr><td>User select screen</td><td><input type="checkbox" th:field="${wizardData.userSelectScreen}" /></td></tr>-->
-                    <!--<tr><td>User agreement screen</td><td><input type="checkbox" th:field="${wizardData.agreementScreen}" /><input type="text" th:field="${wizardData.agreementText}" /></td></tr>-->
-                    <!--<tr><td>Agreement screen text</td><td><input type="text" th:field="${wizardData.agreementScreenText}" /></td></tr>-->
-                    <!--<tr><td>Disagreement screen text</td><td><input type="text" th:field="${wizardData.disagreementScreenText}" /></td></tr>-->
-                    <!--<tr><td>User metadata screen</td><td><input type="checkbox" th:field="${wizardData.metadataScreen}" /></td></tr>-->
-                    <!--<tr><td>Metadata screen text</td><td><input type="text" th:field="${wizardData.metadataScreenText}" /></td></tr>-->
-                    <!--<tr><td>First name field</td><td><input type="checkbox" th:field="${wizardData.firstNameField}" /></td></tr>-->
-                    <!--<tr><td>Last name field</td><td><input type="checkbox" th:field="${wizardData.lastNameField}" /></td></tr>-->
-                    <!--<tr><td>Speaker name field</td><td><input type="checkbox" th:field="${wizardData.speakerNameField}" /></td></tr>-->
-                    <!--<tr><td>User age field</td><td><input type="checkbox" th:field="${wizardData.ageField}" /></td></tr>-->
-                    <!--<tr><td>User email field</td><td><input type="checkbox" th:field="${wizardData.emailAddressField}" /></td></tr>-->
-                    <!--<tr><td>Option CheckBox 1</td><td><input type="checkbox" /><input type="text" th:field="${wizardData.optionCheckBox1}" /></td></tr>-->
-                    <!--<tr><td>Option CheckBox 2</td><td><input type="checkbox" /><input type="text" th:field="${wizardData.optionCheckBox2}" /></td></tr>-->
-                    <!--<tr><td>mandatory CheckBox</td><td><input type="checkbox" /><input type="text" th:field="${wizardData.mandatoryCheckBox}" /></td></tr>-->
-                    <!--<tr><td>Audio test screen</td><td><input type="checkbox" th:field="${wizardData.audioTestScreen}" /><input type="text" th:field="${wizardData.testAudioPath}" /></td></tr>-->
-                    <!--<tr><td>Practice screen</td><td><input type="checkbox" th:field="${wizardData.practiceScreen}" /><input type="text" th:field="${wizardData.practiceStimuliPath}" /></td></tr>-->
-                    <!--<tr><td>Stimuli screen</td><td><input type="checkbox" th:field="${wizardData.stimuliScreen}" /><input type="text" th:field="${wizardData.stimuliPath}" /></td></tr>-->
-                    <!--<tr><td>Colour picker screen</td><td><input type="checkbox" th:field="${wizardData.colourPickerScreen}" /></td></tr>-->
-                    <!--<tr><td>Colour report screen</td><td><input type="checkbox" th:field="${wizardData.colourReportScreen}" /></td></tr>-->
-                    <!--<tr><td>Completion code/data upload screen</td><td><input type="checkbox" th:field="${wizardData.completionScreen}" /><input type="text" th:field="${wizardData.completionText}" /></td></tr>-->        
-                    <!--<tr><td>Menu screen</td><td><input type="checkbox" th:field="${wizardData.menuScreen}" /></td></tr>-->        
-                    <tr><td><button type="reset" >Reset</button></td><td><button type="submit" name="saveExperiment">Create Experiment</button></td></tr>
-                </table>  
-            </form>
+            <table class="presenter">
+                <tr>
+                    <td>Experiment Name</td>
+                    <td>
+                        <input th:value="${wizardData.appName}" class="wizardgrowcell" th:name="${wizardFragmentName}" th:onchange="${'$(updateExperimentButton' + wizardData.getId() + ').show();'}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Obfuscate Screen Names</td>
+                    <td>
+                        <input type="checkbox" th:checked="${wizardData.obfuscateScreenNames}" class="wizardgrowcell" th:name="obfuscateScreenNames" th:onchange="${'$(updateExperimentButton' + wizardData.getId() + ').show();'}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Show Menu Bar</td>
+                    <td>
+                        <input type="checkbox" th:checked="${wizardData.showMenuBar}" class="wizardgrowcell" th:name="showMenuBar" th:onchange="${'$(updateExperimentButton' + wizardData.getId() + ').show();'}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Text Font Size</td>
+                    <td>
+                        <input type="number" th:value="${wizardData.textFontSize}" class="wizardgrowcell" th:name="textFontSize" th:onchange="${'$(updateExperimentButton' + wizardData.getId() + ').show();'}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <form action="#" th:action="${contextPath + '/wizard/json/' + wizardData.getId()}" method="get">
+                            <button type="submit">View JSON</button>
+                        </form>
+                    </td><td>
+                        <form action="#" th:action="${contextPath + '/experiments/wizard/create/' + wizardData.getId()}" method="get">
+                            <button type="submit" name="saveExperiment">Create Experiment</button>
+                        </form>
+                    </td>
+                </tr>
+            </table>  
             <!--            <ul id="wizardScreenList" class="presenter">
                             <li th:each="wizardScreen : ${wizardData.getWizardScreens()}" th:fragment="wizardScreenForm"
                                 th:id="${'updateWizardForm' + wizardScreen.getScreenTag()}"
@@ -232,15 +240,21 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                                 <div th:each="nextButtonLabel : ${wizardScreen.nextButton}">      
                                                     <span th:replace="wizard :: wizardTextBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel=${wizardScreen.getWizardScreenType().wizardScreen.getNextButtonInfo(nextButtonLabelStat.index)}, wizardFragmentValue=${nextButtonLabel}, wizardFragmentName=${'nextButtonLabel'+nextButtonLabelStat.index})"></span>
                                                 </div>                                                
+                                                <div th:each="screenBoolean : ${wizardScreen.screenBooleans}">      
+                                                    <span th:replace="wizard :: wizardCheckBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel=${wizardScreen.getWizardScreenType().wizardScreen.getScreenBooleanInfo(screenBooleanStat.index)}, wizardFragmentValue=${screenBoolean}, wizardFragmentName=${'screenBoolean'+screenBooleanStat.index})"></span>
+                                                </div>                                                
                                                 <!--<span th:replace="wizard :: wizardTextArea(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='Screen Text', wizardFragmentValue=${wizardScreen.screenText2}, wizardFragmentName='screenText2')"></span>-->
+                                                <!--th:if="${wizardScreen.stimuli != null && wizardScreen.stimuli.size() > 0}"--> 
+                                                <!--<span th:if="${wizardScreen.getStimuli() != null}">-->
                                                 <span th:replace="wizard :: wizardStimuliEditor(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='stimuliList', wizardFragmentValue=${wizardScreen.stimuli}, wizardFragmentName='stimuliList')"></span>
+                                                <!--</span>-->
                                                 <span th:replace="wizard :: wizardTextArray(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='stimuliRandomTags', wizardFragmentValue=${wizardScreen.stimuliRandomTags}, wizardFragmentName='stimuliRandomTags')"></span>
                                                 <span th:replace="wizard :: wizardNumberBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='stimulusMsDelay', wizardFragmentValue=${wizardScreen.stimulusMsDelay}, wizardFragmentName='stimulusMsDelay')"></span>
                                                 <span th:replace="wizard :: wizardCheckBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='randomiseStimuli', wizardFragmentValue=${wizardScreen.randomiseStimuli}, wizardFragmentName='randomiseStimuli')"></span>
                                                 <span th:replace="wizard :: wizardNumberBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='stimuliCount', wizardFragmentValue=${wizardScreen.stimuliCount}, wizardFragmentName='stimuliCount')"></span>
                                                 <span th:replace="wizard :: wizardNumberBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='repeatCount', wizardFragmentValue=${wizardScreen.repeatCount}, wizardFragmentName='repeatCount')"></span>
                                                 <span th:replace="wizard :: wizardNumberBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='repeatRandomWindow', wizardFragmentValue=${wizardScreen.repeatRandomWindow}, wizardFragmentName='repeatRandomWindow')"></span>
-                                                <span th:replace="wizard :: wizardCheckBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='useCodeVideo', wizardFragmentValue=${wizardScreen.useCodeVideo}, wizardFragmentName='useCodeVideo')"></span>
+                                                <!--<span th:replace="wizard :: wizardCheckBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='useCodeVideo', wizardFragmentValue=${wizardScreen.useCodeVideo}, wizardFragmentName='useCodeVideo')"></span>-->
                                                 <span th:replace="wizard :: wizardTextBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='stimulusResponseLabelLeft', wizardFragmentValue=${wizardScreen.stimulusResponseLabelLeft}, wizardFragmentName='stimulusResponseLabelLeft')"></span>
                                                 <span th:replace="wizard :: wizardTextBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='stimulusResponseLabelRight', wizardFragmentValue=${wizardScreen.stimulusResponseLabelRight}, wizardFragmentName='stimulusResponseLabelRight')"></span>
                                                 <span th:replace="wizard :: wizardCheckBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='showProgress', wizardFragmentValue=${wizardScreen.showProgress}, wizardFragmentName='showProgress')"></span>                                                
@@ -416,9 +430,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     event.stopPropagation();
                     event.preventDefault();
                     $('#stimulusUploadBox' + wizardScreenId).removeClass("stimulusUploadBoxActive");
-//                    console.log(event);
-//                    console.log(event.dataTransfer);
-//                    console.log(event.dataTransfer.files);
+                    //                    console.log(event);
+                    //                    console.log(event.dataTransfer);
+                    //                    console.log(event.dataTransfer.files);
                     checkFiles(event.dataTransfer.files, wizardScreenId);
                 }
                 function checkFiles(droppedFiles, wizardScreenId) {
@@ -459,8 +473,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         xhRequest.onreadystatechange = function (oEvent) {
                             if (xhRequest.readyState === 4) {
                                 if (xhRequest.status === 200) {
-//                                    progressDivBar.css("width", "100%");
-//                                    progressDivLabel.html("100% " + fileToUpload.name);
+                                    //                                    progressDivBar.css("width", "100%");
+                                    //                                    progressDivLabel.html("100% " + fileToUpload.name);
                                     $(xhRequest.responseText).insertAfter(progressDivOuter);
                                     progressDivOuter.hide();
                                 } else {
@@ -487,7 +501,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <span th:fragment="wizardCheckBox(wizardScreenId, wizardFragmentLabel, wizardFragmentValue, wizardFragmentName)">
                 <div class="featuresrow featurescell" th:if="${wizardFragmentValue != null}">
                     <span th:text="${wizardFragmentLabel}">wizardCheckBox</span>
-                    <input type="checkbox" th:value="${wizardFragmentValue}" th:name="${wizardFragmentName}" th:onchange="${'$(updateFeatureButton' + wizardScreenId + ').show();'}" />
+                    <input type="checkbox" th:checked="${wizardFragmentValue}" th:name="${wizardFragmentName}" th:onchange="${'$(updateFeatureButton' + wizardScreenId + ').show();'}" />
                     <br/>
                 </div>
             </span>
