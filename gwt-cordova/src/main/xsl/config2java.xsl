@@ -361,7 +361,11 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@validationRegex) then concat('&quot;', @validationRegex, '&quot;') else 'null'" />
         <xsl:text>, messages.</xsl:text>
         <xsl:value-of select="generate-id(.)" />
-        <xsl:text>());
+        <xsl:text>(),</xsl:text>
+        <xsl:value-of select="if(@excludedCharCodes) then concat('&quot;', @excludedCharCodes, '&quot;') else 'null'" />
+        <xsl:text>,</xsl:text>
+        <xsl:value-of select="if(@hotKey) then concat('KeyCodes.KEY_', @hotKey) else '-1'" />
+        <xsl:text>);
         </xsl:text>
     </xsl:template>
     <xsl:template match="targetButton|actionButton|targetFooterButton|actionFooterButton">
@@ -639,6 +643,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@condition1Tag) then concat(', Tag.tag_', @condition1Tag, '') else ''" />
         <xsl:value-of select="if(@condition2Tag) then concat(', Tag.tag_', @condition2Tag, '') else ''" />
         <xsl:value-of select="if(@maxStimuli) then concat(', ', @maxStimuli, '') else ''" />
+        <xsl:value-of select="if(@minStimuliPerTag) then concat(', ', @minStimuliPerTag, '') else ''" />
+        <xsl:value-of select="if(@maxStimuliPerTag) then concat(', ', @maxStimuliPerTag, '') else ''" />
         <xsl:value-of select="if(@scoreThreshold) then concat('', @scoreThreshold, ', ') else ''" />
         <xsl:value-of select="if(@scoreValue) then concat('', @scoreValue, '') else ''" />
         <xsl:value-of select="if(@columnCount) then concat(', ', @columnCount, '') else ''" />
