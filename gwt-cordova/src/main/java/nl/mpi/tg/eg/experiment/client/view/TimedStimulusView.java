@@ -23,6 +23,8 @@ import com.google.gwt.event.dom.client.CanPlayThroughEvent;
 import com.google.gwt.event.dom.client.CanPlayThroughHandler;
 import com.google.gwt.event.dom.client.EndedEvent;
 import com.google.gwt.event.dom.client.EndedHandler;
+import com.google.gwt.event.dom.client.KeyPressEvent;
+import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.LoadEvent;
 import com.google.gwt.event.dom.client.LoadHandler;
 import com.google.gwt.media.client.Video;
@@ -174,7 +176,7 @@ public class TimedStimulusView extends ComplexView {
         ((horizontalPanel != null) ? horizontalPanel : outerPanel).add(htmlPanel);
     }
 
-    public StimulusFreeText addStimulusFreeText(final String validationRegex, final String validationChallenge) {
+    public StimulusFreeText addStimulusFreeText(final String validationRegex, final String validationChallenge, final String excludedCharCodes, final SingleShotEventListner enterKeyListner, final int hotKey) {
         final Label errorLabel = new Label(validationChallenge);
         errorLabel.setStylePrimaryName("metadataErrorMessage");
         errorLabel.setVisible(false);
@@ -183,7 +185,22 @@ public class TimedStimulusView extends ComplexView {
         textBox.setStylePrimaryName("metadataOK");
         outerPanel.add(textBox);
         textBox.setFocus(true);
-        return new StimulusFreeText() {
+        textBox.addKeyPressHandler(new KeyPressHandler() {
+            @Override
+            public void onKeyPress(KeyPressEvent event) {
+                final char charCode = event.getCharCode();
+                if (charCode > -1 && charCode == hotKey) {
+                    event.getNativeEvent().preventDefault();
+                    enterKeyListner.eventFired();
+                } else if (excludedCharCodes != null) {
+                    if (-1 < excludedCharCodes.indexOf(charCode)) {
+                        event.getNativeEvent().preventDefault();
+                    }
+                }
+            }
+        });
+        final StimulusFreeText stimulusFreeText = new StimulusFreeText() {
+
             @Override
             public String getValue() {
                 return textBox.getValue();
@@ -203,10 +220,25 @@ public class TimedStimulusView extends ComplexView {
                 }
             }
         };
+
+        return stimulusFreeText;
     }
 
-    public void addTimedAudio(SafeUri oggPath, SafeUri mp3Path, final int postLoadMs, final TimedStimulusListener shownStimulusListener, final TimedStimulusListener timedStimulusListener) {
+    public void addTimedAudio(SafeUri oggPath, SafeUri mp3Path, final int postLoadMs, boolean showPlaybackIndicator, final TimedStimulusListener shownStimulusListener, final TimedStimulusListener timedStimulusListener) {
         audioPlayer.stopAll();
+        if (showPlaybackIndicator) {
+            final Label playbackIndicator = new Label();
+            playbackIndicator.setStylePrimaryName("playbackIndicator");
+            outerPanel.add(playbackIndicator);
+            final Timer playbackIndicatorTimer = new Timer() {
+                public void run() {
+                    playbackIndicator.setText("CurrentTime: " + audioPlayer.getCurrentTime());
+//                    playbackIndicator.setWidth();
+                    this.schedule(100);
+                }
+            };
+            playbackIndicatorTimer.schedule(500);
+        }
         audioPlayer.setOnEndedListener(new AudioEventListner() {
             @Override
             public void audioLoaded() {
