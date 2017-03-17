@@ -118,6 +118,10 @@ public class AudioPlayer {
         audioPlayer.load();
     }
 
+    public double getCurrentTime() {
+        return audioPlayer.getCurrentTime();
+    }
+
     public void stopAll() {
 //        audioPlayer.pause();
         if (audioPlayer != null) {
