@@ -45,8 +45,10 @@ public class Parcours {
             + "<br/>"
             + "Alvast ontzettend bedankt voor uw deelname aan dit onderzoek.<br/>"
             + "U gaat steeds korte gesprekjes lezen die eindigen met een onafgemaakte zin; het is uw taak om die zin af te maken. Voordat u gaat beginnen is het belangrijk dat u kennis neemt van de procedure die in het onderzoek wordt gevolgd. Leest u daarom onderstaande instructies zorgvuldig door. <br/>"
+            + "<br/>"
             + "<b>Doel van het onderzoek</b><br/>"
             + "U gaat meedoen aan een onderzoek waarin we de mate van overeenstemming tussen mensen onderzoeken met betrekking tot hun voorspellingen over het einde van een zin.<br/>"
+            + "<br/>"
             + "<b>Instructies</b><br/>"
             + "U krijgt steeds korte gesprekjes te zien die eindigen met een onafgemaakte zin. Maak de zin telkens af met <b>één of enkele woorden</b>. U hoeft niet te lang na te denken; vul gewoon in wat het eerste in u opkomt.<br/>"
             + "<br/>"
@@ -126,7 +128,7 @@ public class Parcours {
         "setnr_10/cond_c/list_a:Sven heeft een jaar in China gewoond, en Dennis heeft beloofd voor hem te koken.<br/>"
         + "Sven zegt: ik hoop dat je Hollandse kost hebt gemaakt!<br/>"
         + "Dennis zegt: ik heb vanmiddag een flinke pan ",
-        "setnr_11/cond_c/list_a:Bea en Christine gaan na een bergtocht door de sneeuw een cafÈ in om op te warmen. <br/>"
+        "setnr_11/cond_c/list_a:Bea en Christine gaan na een bergtocht door de sneeuw een café in om op te warmen. <br/>"
         + "Bea vraagt: neem jij ook een lekker warm drankje?<br/>"
         + "Christine zegt: ik heb ontzettende trek in een ",
         "setnr_12/cond_c/list_a:Ans heeft een enorme bos bloemen van Jaap gekregen.<br/>"
@@ -153,9 +155,9 @@ public class Parcours {
         "setnr_19/cond_c/list_a:Thomas maakt zich op voor een cultureel dagje Amsterdam.<br/>"
         + "Tim vraagt: je gaat zeker de meesterwerken in het Rijksmuseum bewonderen? <br/>"
         + "Thomas zegt: ik kijk er vooral naar uit om de ",
-        "setnr_20/cond_c/list_a:RenÈ moet naar de tandarts om drie gaatjes te laten boren.<br/>"
+        "setnr_20/cond_c/list_a:René moet naar de tandarts om drie gaatjes te laten boren.<br/>"
         + "De tandarts vraagt: eet je toevallig veel zoetigheid?<br/>"
-        + "RenÈ zegt: ik heb volgens mij de laatste tijd best vaak ",
+        + "René zegt: ik heb volgens mij de laatste tijd best vaak ",
         "setnr_21/cond_c/list_a:Liam wil zijn afstuderen groots vieren. <br/>"
         + "Zijn moeder vraagt: wil je al je vrienden hier thuis uitnodigen?<br/>"
         + "Liam zegt: ik wil heel graag een feestje in de  ",
@@ -172,7 +174,7 @@ public class Parcours {
         + "Haar zus vraagt: je laat je toch wel onderzoeken vandaag?<br/>"
         + "Iris zegt: ik moet vanmiddag om twee uur bij de ",
         "setnr_26/cond_c/list_a:Na een saai college zit Sharon uitgebreid te gapen. <br/>"
-        + "Olivier zegt: volgens mij kan jij wel een caffeÔneboost gebruiken!<br/>"
+        + "Olivier zegt: volgens mij kan jij wel een caffeïneboost gebruiken!<br/>"
         + "Sharon zegt: ik heb best trek in een ",
         "setnr_27/cond_c/list_a:Ilse is samen met Sybrine de was aan het ophangen.<br/>"
         + "Sybrine vraagt: heb je iets speciaals gebruikt om het beddengoed zo zacht te krijgen? <br/>"
@@ -199,7 +201,7 @@ public class Parcours {
         + "Thea vraagt: ben je ook op weg naar de manege?<br/>"
         + "Olaf zegt: ik wilde best een ritje gaan maken op mijn ",
         "setnr_35/cond_c/list_a:Teun en Bella zitten 's avonds te lezen op de bank, als Teun zijn boek even opzij legt.<br/>"
-        + "Bella vraagt: het wordt wel een beetje donker om te lezen hË?<br/>"
+        + "Bella vraagt: het wordt wel een beetje donker om te lezen hè?<br/>"
         + "Teun zegt: ik was net van plan de ",
         "setnr_36/cond_c/list_a:Stefan gaat vanavond een serenade brengen aan de liefde van zijn leven.<br/>"
         + "Bernard vraagt: je gaat jezelf zeker begeleiden bij het zingen?<br/>"
@@ -247,22 +249,22 @@ public class Parcours {
         + "Nick vraagt: jij wilt zeker naar Spanje toe?<br/>"
         + "Lynn zegt: het lijkt me erg leuk om naar ",
         "setnr_51/cond_c/list_a:Sarah en Koen zijn bezig om een wandelvakantie te boeken.<br/>"
-        + "Sarah vraagt: is ScandinaviÎ een idee?<br/>"
+        + "Sarah vraagt: is Scandinavië een idee?<br/>"
         + "Koen zegt: ik zou heel graag naar ",
         "setnr_52/cond_c/list_a:Tess en Ruben willen een weekje naar een all-inclusive hotel in de zon. <br/>"
         + "Ruben vraagt: jij dacht aan de Antillen toch? <br/>"
         + "Tess zegt: ik wil heel graag naar ",
         "setnr_53/cond_c/list_a:Emma en Isa gaan een middagje shoppen, Emma past een groene blouse.<br/>"
-        + "Emma vraagt: groen is echt mijn kleur hË?<br/>"
+        + "Emma vraagt: groen is echt mijn kleur hè?<br/>"
         + "Isa zegt: ik vind echt dat deze blouse je ",
         "setnr_54/cond_c/list_a:Rianne en Lotte werken op een HR-afdeling en zijn in gesprek over de sollicitanten.<br/>"
         + "Rianne vraagt: gaat jouw voorkeur ook uit naar Pieter? <br/>"
         + "Lotte zegt: ik vind hem vooralsnog vergeleken met de rest de ",
         "setnr_55/cond_c/list_a:Nina en Sven willen dit weekend uit eten, en bekijken de website van een Grieks restaurant.<br/>"
-        + "Sven vraagt: dit restaurant was de vorige keer erg goed bevallen hË?<br/>"
+        + "Sven vraagt: dit restaurant was de vorige keer erg goed bevallen hè?<br/>"
         + "Nina zegt: ik herinner me nog dat de moussaka daar ",
         "setnr_56/cond_c/list_a:Jesse en Maud willen binnenkort met de familie uit eten, en bekijken de website van een restaurant. <br/>"
-        + "Maud zegt: hier hebben we de vorige keer goed gegeten hË?<br/>"
+        + "Maud zegt: hier hebben we de vorige keer goed gegeten hè?<br/>"
         + "Jesse zegt: ik herinner me nog dat de porties daar erg ",
         "setnr_57/cond_c/list_a:Lieke en Finn werken aan de promotie van een evenement, en zoeken een drukker voor de posters.<br/>"
         + "Lieke zegt: volgens mij waren we de vorige keer erg tevreden over deze drukker?<br/>"
@@ -316,10 +318,10 @@ public class Parcours {
         + "Piet zegt: met deze sneeuw kunnen we wel de helling af!<br/>"
         + "Nel zegt: volgens mij wil hij inderdaad niets liever dan  ",
         "setnr_74/cond_i/list_a:Ilse en Patty hebben het over de boeken van hun lievelings auteur.<br/>"
-        + "Ilse zegt: haar vroege werk is wel het mooiste hË?<br/>"
+        + "Ilse zegt: haar vroege werk is wel het mooiste hè?<br/>"
         + "Patty zegt: ik vind haar debuutroman inderdaad een van haar ",
         "setnr_75/cond_i/list_a:Jochem en Ilona hebben het over de acteur Tom Hanks.<br/>"
-        + "Jochem zegt: hij is erg gegroeid als acteur in zijn carriËre hË?<br/>"
+        + "Jochem zegt: hij is erg gegroeid als acteur in zijn carrière hè?<br/>"
         + "Ilona zegt: ik vind hem inderdaad in zijn laastste film het ",
         "setnr_76/cond_i/list_a:Stan en Romy luisteren naar muziek van hun favoriete rockband.<br/>"
         + "Stan zegt: hun recente muziek is echt geweldig!<br/>"
@@ -331,7 +333,7 @@ public class Parcours {
         + "Ben vraagt: heb je de telefoon zeker weer in de slaapkamer laten liggen?<br/>"
         + "Kim zegt: ik denk dat ik hem inderdaad bovenop het ",
         "setnr_79/cond_i/list_a:Peter en Elly zoeken bij de bloemist iets uit voor hun moeders verjaardag.<br/>"
-        + "Peter vraagt: ze vindt warme kleuren erg mooi hË?<br/>"
+        + "Peter vraagt: ze vindt warme kleuren erg mooi hè?<br/>"
         + "Elly zegt: ze houdt inderdaad erg veel van  ",
         "setnr_80/cond_i/list_a:Anne en Jens hebben het over de verkiezingen.<br/>"
         + "Anne vraagt: jij gaat vast voor een partij die zich sterk maakt voor het milieu?<br/>"
@@ -412,10 +414,10 @@ public class Parcours {
         + "Levi zegt: hij is vast al aan het eten..<br/>"
         + "Noah zegt: ik zag hem inderdaad in de richting van de  ",
         "setnr_106/cond_i/list_a:Gerard en Annemarie hebben het over de schoolresultaten van hun dochter.<br/>"
-        + "Gerard zegt: vooral met wiskunde heeft ze erg veel moeite hËÖ<br/>"
+        + "Gerard zegt: vooral met wiskunde heeft ze erg veel moeite hèÖ<br/>"
         + "Annemarie zegt: ik begreep inderdaad dat haar gemiddelde zo rond de  ",
         "setnr_107/cond_i/list_a:Henk en Annemieke bespreken hoe het met de schoolprestaties van hun zoon gaat.<br/>"
-        + "Annemieke zegt: een talenknobbel heeft hij niet hË?<br/>"
+        + "Annemieke zegt: een talenknobbel heeft hij niet hè?<br/>"
         + "Henk zegt: hij heeft inderdaad de meeste moeite met het vak ",
         "setnr_108/cond_i/list_a:Bregje en Rosanne gaan samen een middagje shoppen.<br/>"
         + "Bregje zegt: je wil graag wat leuke winterkleding kopen toch?<br/>"
@@ -498,13 +500,13 @@ public class Parcours {
         "setnr_134/cond_e/list_a:Rick en Gerard zitten op te scheppen over hun wagenpark.<br/>"
         + "Rick vraagt: jij houdt toch het meest van sportwagens?<br/>"
         + "Gerard zegt: ik rijd eigenlijk het liefst in mijn ",
-        "setnr_135/cond_e/list_a:Joris en Noor willen een lang weekend weg naar BelgiÎ.<br/>"
+        "setnr_135/cond_e/list_a:Joris en Noor willen een lang weekend weg naar België.<br/>"
         + "Joris vraagt: zullen we een huisje aan het strand zoeken?<br/>"
         + "Noor zegt: het lijkt me eigenlijk leuk om naar de ",
         "setnr_136/cond_e/list_a:Cornelis en Elisa zijn aan het overleggen over het avondeten.<br/>"
         + "Cornelis vraagt: zullen we een ovenschotel maken?<br/>"
         + "Elisa zegt: ik heb eigenlijk veel zin in ",
-        "setnr_137/cond_e/list_a:Sandra en Jeroen zijn aan het barbecueÎn.<br/>"
+        "setnr_137/cond_e/list_a:Sandra en Jeroen zijn aan het barbecueën.<br/>"
         + "Sandra vraagt: zal ik er voor jou nog wat vlees op leggen?<br/>"
         + "Jeroen zegt: doe mij eigenlijk nog maar een ",
         "setnr_138/cond_e/list_a:Vanmiddag komt de familie op bezoek bij Adriana en Martin.<br/>"
@@ -525,50 +527,50 @@ public class Parcours {
         "setnr_143/cond_e/list_a:Karin en Arie zijn net terug van wintersport in Zwitserland.<br/>"
         + "Een vriend van hen vraagt: hebben jullie genoten van de traditionele gerechten daar?<br/>"
         + "Karin zegt: we hebben eigenlijk bijna elke dag ",
-        "setnr_144/cond_e/list_a:Iris en Chantal gaan na het stappen naar de cafetaria; Chantal is een flexitariÎr.<br/>"
+        "setnr_144/cond_e/list_a:Iris en Chantal gaan na het stappen naar de cafetaria; Chantal is een flexitariër.<br/>"
         + "Iris vraagt: jij wil zeker een vega snack?<br/>"
         + "Chantal zegt: doe mij eigenlijk maar een ",
         "setnr_145/cond_e/list_a:Michael en Bianca gaan gezellig ergens lunchen; Bianca eet de laatste tijd niet meer zo veel vlees.<br/>"
         + "Michael vraagt: bestel jij de vegetarische salade?<br/>"
         + "Bianca zegt: ik neem eigenlijk de salade met ",
-        "setnr_146/cond_e/list_a:Patricia en RenÈ gaan wat drinken bij een nieuw koffietentje; RenÈ is lactose-intolerant. <br/>"
-        + "Patricia zegt: Ooh RenÈ je kunt hier lekkere koffie met sojamelk bestellen!<br/>"
-        + "RenÈ zegt: ik heb eigenlijk enorme zin in ",
+        "setnr_146/cond_e/list_a:Patricia en René gaan wat drinken bij een nieuw koffietentje; René is lactose-intolerant. <br/>"
+        + "Patricia zegt: Ooh René je kunt hier lekkere koffie met sojamelk bestellen!<br/>"
+        + "René zegt: ik heb eigenlijk enorme zin in ",
         "setnr_147/cond_e/list_a:Jacqueline en Anouk zijn op zoek naar een outfit voor een feestje.<br/>"
         + "Jacqueline zegt: jij hebt zo'n mooi figuur, dat je kun je gerust laten zien!<br/>"
         + "Anouk zegt: Ik draag eigenlijk graag kleding die in de taille ",
-        "setnr_148/cond_e/list_a:Ellen en DaniÎl hebben het over de familiereunie van vorige week.<br/>"
-        + "Ellen zegt: tante Marie is flink aangekomen hË?<br/>"
-        + "DaniÎl zegt: Ik dacht eigenlijk dat ze vorig jaar een stuk ",
+        "setnr_148/cond_e/list_a:Ellen en Daniël hebben het over de familiereunie van vorige week.<br/>"
+        + "Ellen zegt: tante Marie is flink aangekomen hè?<br/>"
+        + "Daniël zegt: Ik dacht eigenlijk dat ze vorig jaar een stuk ",
         "setnr_149/cond_e/list_a:Wendy en Edwin gaan op bezoek bij hun opa die al een tijd in het ziekenhuis ligt.<br/>"
-        + "Wendy zegt: de vorige keer leek hij al wel wat opgeknapt te zijn hË?<br/>"
+        + "Wendy zegt: de vorige keer leek hij al wel wat opgeknapt te zijn hè?<br/>"
         + "Edwin zegt: ik herinner me eigenlijk dat hij er toen best wel ",
         "setnr_150/cond_e/list_a:Francisca en Stefan blikken terug op het vorige familieweekend.<br/>"
-        + "Francisca zegt: tante Gerda was weer het zonnetje in huis hË?<br/>"
+        + "Francisca zegt: tante Gerda was weer het zonnetje in huis hè?<br/>"
         + "Stefan zegt: ik had eigenlijk het idee dat ze ontzettend ",
         "setnr_151/cond_e/list_a:Maartje en Michel hebben het over hun klasgenootjes op de basisschool. <br/>"
-        + "Maartje zegt: Sjors deed nooit een vlieg kwaad hË?<br/>"
+        + "Maartje zegt: Sjors deed nooit een vlieg kwaad hè?<br/>"
         + "Michel zegt: ik herinner me eigenlijk dat hij in de klas heel ",
         "setnr_152/cond_e/list_a:Roy en Simone hebben het over hun klasgenootjes van de middelbare school.<br/>"
-        + "Roy zegt: Mats had altijd een grote mond hË?<br/>"
+        + "Roy zegt: Mats had altijd een grote mond hè?<br/>"
         + "Simone zegt: ik herinner me eigenlijk dat hij in de klas heel ",
         "setnr_153/cond_e/list_a:Sylvia en Roelof blikken terug op de schooltijd van hun kinderen. <br/>"
-        + "Sylvia zegt: dat handschrift van Remko was niet te lezen hË?<br/>"
+        + "Sylvia zegt: dat handschrift van Remko was niet te lezen hè?<br/>"
         + "Roelof zegt: ik herinner me eigenlijk dat zijn schrift altijd erg ",
         "setnr_154/cond_e/list_a:Geert en Marijke blikken terug op hun studententijd.<br/>"
-        + "Marijke zegt: van studeren kwam bij jou niet zo veel terecht hË..<br/>"
+        + "Marijke zegt: van studeren kwam bij jou niet zo veel terecht hè..<br/>"
         + "Geert zegt: ik herinner me eigenlijk dat ik de eerste twee jaar heel ",
         "setnr_155/cond_e/list_a:Gerda en Lucas hebben het over hun oude vriendengroep. <br/>"
-        + "Gerda zegt: Joeri was altijd de gangmaker hË?<br/>"
+        + "Gerda zegt: Joeri was altijd de gangmaker hè?<br/>"
         + "Lucas zegt: ik herinner me eigenlijk dat hij qua karakter erg ",
         "setnr_156/cond_e/list_a:Michiel en Barbara hebben het over hun neefjes en nichtjes met wie ze vroeger veel optrokken.<br/>"
-        + "Michiel zegt: Veerle was altijd het muurbloempje hË?<br/>"
+        + "Michiel zegt: Veerle was altijd het muurbloempje hè?<br/>"
         + "Barbara zegt: ik herinner me eigenlijk dat zij altijd erg ",
         "setnr_157/cond_e/list_a:Evert en Louise zitten in de lerarenkamer, en hebben het over een oud-collega. <br/>"
         + "Evert zegt: als leerlingen het niet snapten, legde zij het gerust nog tien keer uit!<br/>"
         + "Louise zegt: ik herinner me eigenlijk dat ze tijdens het lesgeven erg ",
         "setnr_158/cond_e/list_a:Maurice en Carla zitten in de kantine, en hebben het over een oud-collega.<br/>"
-        + "Maurice zegt: wat was zijn bureau altijd een zootje hË!<br/>"
+        + "Maurice zegt: wat was zijn bureau altijd een zootje hè!<br/>"
         + "Carla zegt: ik herinner me eigenlijk dat de manier waarop hij werkte erg ",
         "setnr_159/cond_e/list_a:Erwin en Daphne zijn bezig met het voorbereiden van een lunch in hun tuin. <br/>"
         + "Erwin vraagt: zullen we de tafel een beetje chic dekken? <br/>"
@@ -577,7 +579,7 @@ public class Parcours {
         + "Marcus zegt: tegenwoordig trakteren kinderen altijd iets gezonds toch?<br/>"
         + "Nathalie zegt: hij wilde eigenlijk prikkers met ",
         "setnr_161/cond_e/list_a:Sander komt zijn beste vriend Luuc tegen.<br/>"
-        + "Luuc zegt: HË Sander, je hebt zo college toch?<br/>"
+        + "Luuc zegt: Hè Sander, je hebt zo college toch?<br/>"
         + "Sander zegt: ik ben eigenlijk op weg naar de ",
         "setnr_162/cond_e/list_a:Melanie zet wat water op voor een kopje thee.<br/>"
         + "Melanie vraagt: wil jij ook fruitige thee?<br/>"
@@ -592,7 +594,7 @@ public class Parcours {
         + "Gert zegt: het zal wel niet voor iets ernstigs zijn toch?<br/>"
         + "Zijn collega zegt: hij zei eigenlijk dat hij er voor een ",
         "setnr_166/cond_e/list_a:Eveline en Roel hebben het over de toekomstplannen van hun muzikale zoon.<br/>"
-        + "Evelien zegt: misschien dat hij later verder wil in de muziek hË..<br/>"
+        + "Evelien zegt: misschien dat hij later verder wil in de muziek hè..<br/>"
         + "Roel zegt: hij wil eigenlijk zijn brood verdienen als ",
         "setnr_167/cond_e/list_a:Nancy en Sam gaan samen studeren in de bibliotheek.<br/>"
         + "Nancy vraagt: zullen we in die ene studiezaal achterin gaan zitten?<br/>"
@@ -625,7 +627,7 @@ public class Parcours {
         + "Marvin vraagt: pak je iets om te lezen?<br/>"
         + "Stefanie zegt: ik ben eigenlijk aan het zoeken naar mijn  ",
         "setnr_177/cond_e/list_a:Veronique is naar een lezing van een beroemde hoogleraar geweest. <br/>"
-        + "Haar collega zegt: hij kan zijn verhaal altijd erg goed overbrengen hË?<br/>"
+        + "Haar collega zegt: hij kan zijn verhaal altijd erg goed overbrengen hè?<br/>"
         + "Veronique zegt: ik vond zijn lezing eigenlijk ontzettend ",
         "setnr_178/cond_e/list_a:Vivian is naar een feestje geweest en komt laat thuis.<br/>"
         + "Haar huisgenoot zegt: je hebt je vast goed vermaakt?<br/>"
@@ -666,7 +668,7 @@ public class Parcours {
         "setnr_10/cond_e/list_b:Sven heeft een jaar in China gewoond, en Dennis heeft beloofd voor hem te koken.<br/>"
         + "Sven zegt: ik hoop dat je Hollandse kost hebt gemaakt!<br/>"
         + "Dennis zegt: ik heb eigenlijk een flinke pan ",
-        "setnr_11/cond_e/list_b:Bea en Christine gaan na een bergtocht door de sneeuw een cafÈ in om op te warmen. <br/>"
+        "setnr_11/cond_e/list_b:Bea en Christine gaan na een bergtocht door de sneeuw een café in om op te warmen. <br/>"
         + "Bea vraagt: neem jij ook een lekker warm drankje?<br/>"
         + "Christine zegt: ik heb eigenlijk trek in een ",
         "setnr_12/cond_e/list_b:Ans heeft een enorme bos bloemen van Jaap gekregen.<br/>"
@@ -693,9 +695,9 @@ public class Parcours {
         "setnr_19/cond_e/list_b:Thomas maakt zich op voor een cultureel dagje Amsterdam.<br/>"
         + "Tim vraagt: je gaat zeker de meesterwerken in het Rijksmuseum bewonderen? <br/>"
         + "Thomas zegt: ik kijk er eigenlijk naar uit om de ",
-        "setnr_20/cond_e/list_b:RenÈ moet naar de tandarts om drie gaatjes te laten boren.<br/>"
+        "setnr_20/cond_e/list_b:René moet naar de tandarts om drie gaatjes te laten boren.<br/>"
         + "De tandarts vraagt: eet je toevallig veel zoetigheid?<br/>"
-        + "RenÈ zegt: ik heb eigenlijk de laatste tijd best vaak ",
+        + "René zegt: ik heb eigenlijk de laatste tijd best vaak ",
         "setnr_21/cond_e/list_b:Liam wil zijn afstuderen groots vieren. <br/>"
         + "Zijn moeder vraagt: wil je al je vrienden hier thuis uitnodigen?<br/>"
         + "Liam zegt: ik wil eigenlijk een feestje in de  ",
@@ -712,7 +714,7 @@ public class Parcours {
         + "Haar zus vraagt: je laat je toch wel onderzoeken vandaag?<br/>"
         + "Iris zegt: ik moet eigenlijk om twee uur bij de ",
         "setnr_26/cond_e/list_b:Na een saai college zit Sharon uitgebreid te gapen. <br/>"
-        + "Olivier zegt: volgens mij kan jij wel een caffeÔneboost gebruiken!<br/>"
+        + "Olivier zegt: volgens mij kan jij wel een caffeïneboost gebruiken!<br/>"
         + "Sharon zegt: ik heb eigenlijk trek in een ",
         "setnr_27/cond_e/list_b:Ilse is samen met Sybrine de was aan het ophangen.<br/>"
         + "Sybrine vraagt: heb je iets speciaals gebruikt om het beddengoed zo zacht te krijgen? <br/>"
@@ -739,7 +741,7 @@ public class Parcours {
         + "Thea vraagt: ben je ook op weg naar de manege?<br/>"
         + "Olaf zegt: ik wilde eigenlijk een ritje gaan maken op mijn ",
         "setnr_35/cond_e/list_b:Teun en Bella zitten 's avonds te lezen op de bank, als Teun zijn boek even opzij legt.<br/>"
-        + "Bella vraagt: het wordt wel een beetje donker om te lezen hË?<br/>"
+        + "Bella vraagt: het wordt wel een beetje donker om te lezen hè?<br/>"
         + "Teun zegt: ik was eigenlijk van plan de ",
         "setnr_36/cond_e/list_b:Stefan gaat vanavond een serenade brengen aan de liefde van zijn leven.<br/>"
         + "Bernard vraagt: je gaat jezelf zeker begeleiden bij het zingen?<br/>"
@@ -787,22 +789,22 @@ public class Parcours {
         + "Nick vraagt: jij wilt zeker naar Spanje toe?<br/>"
         + "Lynn zegt: het lijkt me eigenlijk leuk om naar ",
         "setnr_51/cond_e/list_b:Sarah en Koen zijn bezig om een wandelvakantie te boeken.<br/>"
-        + "Sarah vraagt: is ScandinaviÎ een idee?<br/>"
+        + "Sarah vraagt: is Scandinavië een idee?<br/>"
         + "Koen zegt: ik zou eigenlijk graag naar ",
         "setnr_52/cond_e/list_b:Tess en Ruben willen een weekje naar een all-inclusive hotel in de zon. <br/>"
         + "Ruben vraagt: jij dacht aan de Antillen toch? <br/>"
         + "Tess zegt: ik wil eigenlijk graag naar ",
         "setnr_53/cond_e/list_b:Emma en Isa gaan een middagje shoppen, Emma past een groene blouse.<br/>"
-        + "Emma vraagt: groen is echt mijn kleur hË?<br/>"
+        + "Emma vraagt: groen is echt mijn kleur hè?<br/>"
         + "Isa zegt: ik vind eigenlijk dat deze blouse je ",
         "setnr_54/cond_e/list_b:Rianne en Lotte werken op een HR-afdeling en zijn in gesprek over de sollicitanten.<br/>"
         + "Rianne vraagt: gaat jouw voorkeur ook uit naar Pieter? <br/>"
         + "Lotte zegt: ik vind hem eigenlijk vergeleken met de rest de ",
         "setnr_55/cond_e/list_b:Nina en Sven willen dit weekend uit eten, en bekijken de website van een Grieks restaurant.<br/>"
-        + "Sven vraagt: dit restaurant was de vorige keer erg goed bevallen hË?<br/>"
+        + "Sven vraagt: dit restaurant was de vorige keer erg goed bevallen hè?<br/>"
         + "Nina zegt: ik herinner me eigenlijk dat de moussaka daar ",
         "setnr_56/cond_e/list_b:Jesse en Maud willen binnenkort met de familie uit eten, en bekijken de website van een restaurant. <br/>"
-        + "Maud zegt: hier hebben we de vorige keer goed gegeten hË?<br/>"
+        + "Maud zegt: hier hebben we de vorige keer goed gegeten hè?<br/>"
         + "Jesse zegt: ik herinner me eigenlijk dat de porties daar erg ",
         "setnr_57/cond_e/list_b:Lieke en Finn werken aan de promotie van een evenement, en zoeken een drukker voor de posters.<br/>"
         + "Lieke zegt: volgens mij waren we de vorige keer erg tevreden over deze drukker?<br/>"
@@ -856,10 +858,10 @@ public class Parcours {
         + "Piet zegt: met deze sneeuw kunnen we wel de helling af!<br/>"
         + "Nel zegt: volgens mij wil hij echt niets liever dan  ",
         "setnr_74/cond_c/list_b:Ilse en Patty hebben het over de boeken van hun lievelings auteur.<br/>"
-        + "Ilse zegt: haar vroege werk is wel het mooiste hË?<br/>"
+        + "Ilse zegt: haar vroege werk is wel het mooiste hè?<br/>"
         + "Patty zegt: ik vind haar debuutroman al jaren een van haar ",
         "setnr_75/cond_c/list_b:Jochem en Ilona hebben het over de acteur Tom Hanks.<br/>"
-        + "Jochem zegt: hij is erg gegroeid als acteur in zijn carriËre hË?<br/>"
+        + "Jochem zegt: hij is erg gegroeid als acteur in zijn carrière hè?<br/>"
         + "Ilona zegt: ik vind hem geloof ik in zijn laastste film het ",
         "setnr_76/cond_c/list_b:Stan en Romy luisteren naar muziek van hun favoriete rockband.<br/>"
         + "Stan zegt: hun recente muziek is echt geweldig!<br/>"
@@ -871,7 +873,7 @@ public class Parcours {
         + "Ben vraagt: heb je de telefoon zeker weer in de slaapkamer laten liggen?<br/>"
         + "Kim zegt: ik denk dat ik hem daarnet bovenop het ",
         "setnr_79/cond_c/list_b:Peter en Elly zoeken bij de bloemist iets uit voor hun moeders verjaardag.<br/>"
-        + "Peter vraagt: ze vindt warme kleuren erg mooi hË?<br/>"
+        + "Peter vraagt: ze vindt warme kleuren erg mooi hè?<br/>"
         + "Elly zegt: ze houdt heel erg veel van  ",
         "setnr_80/cond_c/list_b:Anne en Jens hebben het over de verkiezingen.<br/>"
         + "Anne vraagt: jij gaat vast voor een partij die zich sterk maakt voor het milieu?<br/>"
@@ -952,10 +954,10 @@ public class Parcours {
         + "Levi zegt: hij is vast al aan het eten..<br/>"
         + "Noah zegt: ik zag hem met zijn broer in de richting van de  ",
         "setnr_106/cond_c/list_b:Gerard en Annemarie hebben het over de schoolresultaten van hun dochter.<br/>"
-        + "Gerard zegt: vooral met wiskunde heeft ze erg veel moeite hËÖ<br/>"
+        + "Gerard zegt: vooral met wiskunde heeft ze erg veel moeite hèÖ<br/>"
         + "Annemarie zegt: ik begreep van haar dat haar gemiddelde zo rond de  ",
         "setnr_107/cond_c/list_b:Henk en Annemieke bespreken hoe het met de schoolprestaties van hun zoon gaat.<br/>"
-        + "Annemieke zegt: een talenknobbel heeft hij niet hË?<br/>"
+        + "Annemieke zegt: een talenknobbel heeft hij niet hè?<br/>"
         + "Henk zegt: hij heeft veruit de meeste moeite met het vak ",
         "setnr_108/cond_c/list_b:Bregje en Rosanne gaan samen een middagje shoppen.<br/>"
         + "Bregje zegt: je wil graag wat leuke winterkleding kopen toch?<br/>"
@@ -1038,13 +1040,13 @@ public class Parcours {
         "setnr_134/cond_i/list_b:Rick en Gerard zitten op te scheppen over hun wagenpark.<br/>"
         + "Rick vraagt: jij houdt toch het meest van sportwagens?<br/>"
         + "Gerard zegt: ik rijd inderdaad het liefst in mijn ",
-        "setnr_135/cond_i/list_b:Joris en Noor willen een lang weekend weg naar BelgiÎ.<br/>"
+        "setnr_135/cond_i/list_b:Joris en Noor willen een lang weekend weg naar België.<br/>"
         + "Joris vraagt: zullen we een huisje aan het strand zoeken?<br/>"
         + "Noor zegt: het lijkt me inderdaad leuk om naar de ",
         "setnr_136/cond_i/list_b:Cornelis en Elisa zijn aan het overleggen over het avondeten.<br/>"
         + "Cornelis vraagt: zullen we een ovenschotel maken?<br/>"
         + "Elisa zegt: ik heb inderdaad veel zin in ",
-        "setnr_137/cond_i/list_b:Sandra en Jeroen zijn aan het barbecueÎn.<br/>"
+        "setnr_137/cond_i/list_b:Sandra en Jeroen zijn aan het barbecueën.<br/>"
         + "Sandra vraagt: zal ik er voor jou nog wat vlees op leggen?<br/>"
         + "Jeroen zegt: doe mij inderdaad nog maar een ",
         "setnr_138/cond_i/list_b:Vanmiddag komt de familie op bezoek bij Adriana en Martin.<br/>"
@@ -1065,50 +1067,50 @@ public class Parcours {
         "setnr_143/cond_i/list_b:Karin en Arie zijn net terug van wintersport in Zwitserland.<br/>"
         + "Een vriend van hen vraagt: hebben jullie genoten van de traditionele gerechten daar?<br/>"
         + "Karin zegt: we hebben inderdaad bijna elke dag ",
-        "setnr_144/cond_i/list_b:Iris en Chantal gaan na het stappen naar de cafetaria; Chantal is een flexitariÎr.<br/>"
+        "setnr_144/cond_i/list_b:Iris en Chantal gaan na het stappen naar de cafetaria; Chantal is een flexitariër.<br/>"
         + "Iris vraagt: jij wil zeker een vega snack?<br/>"
         + "Chantal zegt: doe mij inderdaad maar een ",
         "setnr_145/cond_i/list_b:Michael en Bianca gaan gezellig ergens lunchen; Bianca eet de laatste tijd niet meer zo veel vlees.<br/>"
         + "Michael vraagt: bestel jij de vegetarische salade?<br/>"
         + "Bianca zegt: ik neem inderdaad de salade met ",
-        "setnr_146/cond_i/list_b:Patricia en RenÈ gaan wat drinken bij een nieuw koffietentje; RenÈ is lactose-intolerant. <br/>"
-        + "Patricia zegt: Ooh RenÈ je kunt hier lekkere koffie met sojamelk bestellen!<br/>"
-        + "RenÈ zegt: ik heb inderdaad enorme zin in ",
+        "setnr_146/cond_i/list_b:Patricia en René gaan wat drinken bij een nieuw koffietentje; René is lactose-intolerant. <br/>"
+        + "Patricia zegt: Ooh René je kunt hier lekkere koffie met sojamelk bestellen!<br/>"
+        + "René zegt: ik heb inderdaad enorme zin in ",
         "setnr_147/cond_i/list_b:Jacqueline en Anouk zijn op zoek naar een outfit voor een feestje.<br/>"
         + "Jacqueline zegt: jij hebt zo'n mooi figuur, dat je kun je gerust laten zien!<br/>"
         + "Anouk zegt: Ik draag inderdaad graag kleding die in de taille ",
-        "setnr_148/cond_i/list_b:Ellen en DaniÎl hebben het over de familiereunie van vorige week.<br/>"
-        + "Ellen zegt: tante Marie is flink aangekomen hË?<br/>"
-        + "DaniÎl zegt: Ik dacht inderdaad dat ze vorig jaar een stuk ",
+        "setnr_148/cond_i/list_b:Ellen en Daniël hebben het over de familiereunie van vorige week.<br/>"
+        + "Ellen zegt: tante Marie is flink aangekomen hè?<br/>"
+        + "Daniël zegt: Ik dacht inderdaad dat ze vorig jaar een stuk ",
         "setnr_149/cond_i/list_b:Wendy en Edwin gaan op bezoek bij hun opa die al een tijd in het ziekenhuis ligt.<br/>"
-        + "Wendy zegt: de vorige keer leek hij al wel wat opgeknapt te zijn hË?<br/>"
+        + "Wendy zegt: de vorige keer leek hij al wel wat opgeknapt te zijn hè?<br/>"
         + "Edwin zegt: ik herinner me inderdaad dat hij er toen best wel ",
         "setnr_150/cond_i/list_b:Francisca en Stefan blikken terug op het vorige familieweekend.<br/>"
-        + "Francisca zegt: tante Gerda was weer het zonnetje in huis hË?<br/>"
+        + "Francisca zegt: tante Gerda was weer het zonnetje in huis hè?<br/>"
         + "Stefan zegt: ik had inderdaad het idee dat ze ontzettend ",
         "setnr_151/cond_i/list_b:Maartje en Michel hebben het over hun klasgenootjes op de basisschool. <br/>"
-        + "Maartje zegt: Sjors deed nooit een vlieg kwaad hË?<br/>"
+        + "Maartje zegt: Sjors deed nooit een vlieg kwaad hè?<br/>"
         + "Michel zegt: ik herinner me inderdaad dat hij in de klas heel ",
         "setnr_152/cond_i/list_b:Roy en Simone hebben het over hun klasgenootjes van de middelbare school.<br/>"
-        + "Roy zegt: Mats had altijd een grote mond hË?<br/>"
+        + "Roy zegt: Mats had altijd een grote mond hè?<br/>"
         + "Simone zegt: ik herinner me inderdaad dat hij in de klas heel ",
         "setnr_153/cond_i/list_b:Sylvia en Roelof blikken terug op de schooltijd van hun kinderen. <br/>"
-        + "Sylvia zegt: dat handschrift van Remko was niet te lezen hË?<br/>"
+        + "Sylvia zegt: dat handschrift van Remko was niet te lezen hè?<br/>"
         + "Roelof zegt: ik herinner me inderdaad dat zijn schrift altijd erg ",
         "setnr_154/cond_i/list_b:Geert en Marijke blikken terug op hun studententijd.<br/>"
-        + "Marijke zegt: van studeren kwam bij jou niet zo veel terecht hË..<br/>"
+        + "Marijke zegt: van studeren kwam bij jou niet zo veel terecht hè..<br/>"
         + "Geert zegt: ik herinner me inderdaad dat ik de eerste twee jaar heel ",
         "setnr_155/cond_i/list_b:Gerda en Lucas hebben het over hun oude vriendengroep. <br/>"
-        + "Gerda zegt: Joeri was altijd de gangmaker hË?<br/>"
+        + "Gerda zegt: Joeri was altijd de gangmaker hè?<br/>"
         + "Lucas zegt: ik herinner me inderdaad dat hij qua karakter erg ",
         "setnr_156/cond_i/list_b:Michiel en Barbara hebben het over hun neefjes en nichtjes met wie ze vroeger veel optrokken.<br/>"
-        + "Michiel zegt: Veerle was altijd het muurbloempje hË?<br/>"
+        + "Michiel zegt: Veerle was altijd het muurbloempje hè?<br/>"
         + "Barbara zegt: ik herinner me inderdaad dat zij altijd erg ",
         "setnr_157/cond_i/list_b:Evert en Louise zitten in de lerarenkamer, en hebben het over een oud-collega. <br/>"
         + "Evert zegt: als leerlingen het niet snapten, legde zij het gerust nog tien keer uit!<br/>"
         + "Louise zegt: ik herinner me inderdaad dat ze tijdens het lesgeven erg ",
         "setnr_158/cond_i/list_b:Maurice en Carla zitten in de kantine, en hebben het over een oud-collega.<br/>"
-        + "Maurice zegt: wat was zijn bureau altijd een zootje hË!<br/>"
+        + "Maurice zegt: wat was zijn bureau altijd een zootje hè!<br/>"
         + "Carla zegt: ik herinner me inderdaad dat de manier waarop hij werkte erg ",
         "setnr_159/cond_i/list_b:Erwin en Daphne zijn bezig met het voorbereiden van een lunch in hun tuin. <br/>"
         + "Erwin vraagt: zullen we de tafel een beetje chic dekken? <br/>"
@@ -1117,7 +1119,7 @@ public class Parcours {
         + "Marcus zegt: tegenwoordig trakteren kinderen altijd iets gezonds toch?<br/>"
         + "Nathalie zegt: hij wilde inderdaad prikkers met ",
         "setnr_161/cond_i/list_b:Sander komt zijn beste vriend Luuc tegen.<br/>"
-        + "Luuc zegt: HË Sander, je hebt zo college toch?<br/>"
+        + "Luuc zegt: Hè Sander, je hebt zo college toch?<br/>"
         + "Sander zegt: ik ben inderdaad op weg naar de ",
         "setnr_162/cond_i/list_b:Melanie zet wat water op voor een kopje thee.<br/>"
         + "Melanie vraagt: wil jij ook fruitige thee?<br/>"
@@ -1132,7 +1134,7 @@ public class Parcours {
         + "Gert zegt: het zal wel niet voor iets ernstigs zijn toch?<br/>"
         + "Zijn collega zegt: hij zei inderdaad dat hij er voor een ",
         "setnr_166/cond_i/list_b:Eveline en Roel hebben het over de toekomstplannen van hun muzikale zoon.<br/>"
-        + "Evelien zegt: misschien dat hij later verder wil in de muziek hË..<br/>"
+        + "Evelien zegt: misschien dat hij later verder wil in de muziek hè..<br/>"
         + "Roel zegt: hij wil inderdaad zijn brood verdienen als ",
         "setnr_167/cond_i/list_b:Nancy en Sam gaan samen studeren in de bibliotheek.<br/>"
         + "Nancy vraagt: zullen we in die ene studiezaal achterin gaan zitten?<br/>"
@@ -1165,7 +1167,7 @@ public class Parcours {
         + "Marvin vraagt: pak je iets om te lezen?<br/>"
         + "Stefanie zegt: ik ben inderdaad aan het zoeken naar mijn  ",
         "setnr_177/cond_i/list_b:Veronique is naar een lezing van een beroemde hoogleraar geweest. <br/>"
-        + "Haar collega zegt: hij kan zijn verhaal altijd erg goed overbrengen hË?<br/>"
+        + "Haar collega zegt: hij kan zijn verhaal altijd erg goed overbrengen hè?<br/>"
         + "Veronique zegt: ik vond zijn lezing inderdaad ontzettend ",
         "setnr_178/cond_i/list_b:Vivian is naar een feestje geweest en komt laat thuis.<br/>"
         + "Haar huisgenoot zegt: je hebt je vast goed vermaakt?<br/>"
@@ -1206,7 +1208,7 @@ public class Parcours {
         "setnr_10/cond_i/list_c:Sven heeft een jaar in China gewoond, en Dennis heeft beloofd voor hem te koken.<br/>"
         + "Sven zegt: ik hoop dat je Hollandse kost hebt gemaakt!<br/>"
         + "Dennis zegt: ik heb inderdaad een flinke pan ",
-        "setnr_11/cond_i/list_c:Bea en Christine gaan na een bergtocht door de sneeuw een cafÈ in om op te warmen. <br/>"
+        "setnr_11/cond_i/list_c:Bea en Christine gaan na een bergtocht door de sneeuw een café in om op te warmen. <br/>"
         + "Bea vraagt: neem jij ook een lekker warm drankje?<br/>"
         + "Christine zegt: ik heb inderdaad trek in een ",
         "setnr_12/cond_i/list_c:Ans heeft een enorme bos bloemen van Jaap gekregen.<br/>"
@@ -1233,9 +1235,9 @@ public class Parcours {
         "setnr_19/cond_i/list_c:Thomas maakt zich op voor een cultureel dagje Amsterdam.<br/>"
         + "Tim vraagt: je gaat zeker de meesterwerken in het Rijksmuseum bewonderen? <br/>"
         + "Thomas zegt: ik kijk er inderdaad naar uit om de ",
-        "setnr_20/cond_i/list_c:RenÈ moet naar de tandarts om drie gaatjes te laten boren.<br/>"
+        "setnr_20/cond_i/list_c:René moet naar de tandarts om drie gaatjes te laten boren.<br/>"
         + "De tandarts vraagt: eet je toevallig veel zoetigheid?<br/>"
-        + "RenÈ zegt: ik heb inderdaad de laatste tijd best vaak ",
+        + "René zegt: ik heb inderdaad de laatste tijd best vaak ",
         "setnr_21/cond_i/list_c:Liam wil zijn afstuderen groots vieren. <br/>"
         + "Zijn moeder vraagt: wil je al je vrienden hier thuis uitnodigen?<br/>"
         + "Liam zegt: ik wil inderdaad een feestje in de  ",
@@ -1252,7 +1254,7 @@ public class Parcours {
         + "Haar zus vraagt: je laat je toch wel onderzoeken vandaag?<br/>"
         + "Iris zegt: ik moet inderdaad om twee uur bij de ",
         "setnr_26/cond_i/list_c:Na een saai college zit Sharon uitgebreid te gapen. <br/>"
-        + "Olivier zegt: volgens mij kan jij wel een caffeÔneboost gebruiken!<br/>"
+        + "Olivier zegt: volgens mij kan jij wel een caffeïneboost gebruiken!<br/>"
         + "Sharon zegt: ik heb inderdaad trek in een ",
         "setnr_27/cond_i/list_c:Ilse is samen met Sybrine de was aan het ophangen.<br/>"
         + "Sybrine vraagt: heb je iets speciaals gebruikt om het beddengoed zo zacht te krijgen? <br/>"
@@ -1279,7 +1281,7 @@ public class Parcours {
         + "Thea vraagt: ben je ook op weg naar de manege?<br/>"
         + "Olaf zegt: ik wilde inderdaad een ritje gaan maken op mijn ",
         "setnr_35/cond_i/list_c:Teun en Bella zitten 's avonds te lezen op de bank, als Teun zijn boek even opzij legt.<br/>"
-        + "Bella vraagt: het wordt wel een beetje donker om te lezen hË?<br/>"
+        + "Bella vraagt: het wordt wel een beetje donker om te lezen hè?<br/>"
         + "Teun zegt: ik was inderdaad van plan de ",
         "setnr_36/cond_i/list_c:Stefan gaat vanavond een serenade brengen aan de liefde van zijn leven.<br/>"
         + "Bernard vraagt: je gaat jezelf zeker begeleiden bij het zingen?<br/>"
@@ -1327,22 +1329,22 @@ public class Parcours {
         + "Nick vraagt: jij wilt zeker naar Spanje toe?<br/>"
         + "Lynn zegt: het lijkt me inderdaad leuk om naar ",
         "setnr_51/cond_i/list_c:Sarah en Koen zijn bezig om een wandelvakantie te boeken.<br/>"
-        + "Sarah vraagt: is ScandinaviÎ een idee?<br/>"
+        + "Sarah vraagt: is Scandinavië een idee?<br/>"
         + "Koen zegt: ik zou inderdaad graag naar ",
         "setnr_52/cond_i/list_c:Tess en Ruben willen een weekje naar een all-inclusive hotel in de zon. <br/>"
         + "Ruben vraagt: jij dacht aan de Antillen toch? <br/>"
         + "Tess zegt: ik wil inderdaad graag naar ",
         "setnr_53/cond_i/list_c:Emma en Isa gaan een middagje shoppen, Emma past een groene blouse.<br/>"
-        + "Emma vraagt: groen is echt mijn kleur hË?<br/>"
+        + "Emma vraagt: groen is echt mijn kleur hè?<br/>"
         + "Isa zegt: ik vind inderdaad dat deze blouse je ",
         "setnr_54/cond_i/list_c:Rianne en Lotte werken op een HR-afdeling en zijn in gesprek over de sollicitanten.<br/>"
         + "Rianne vraagt: gaat jouw voorkeur ook uit naar Pieter? <br/>"
         + "Lotte zegt: ik vind hem inderdaad vergeleken met de rest de ",
         "setnr_55/cond_i/list_c:Nina en Sven willen dit weekend uit eten, en bekijken de website van een Grieks restaurant.<br/>"
-        + "Sven vraagt: dit restaurant was de vorige keer erg goed bevallen hË?<br/>"
+        + "Sven vraagt: dit restaurant was de vorige keer erg goed bevallen hè?<br/>"
         + "Nina zegt: ik herinner me inderdaad dat de moussaka daar ",
         "setnr_56/cond_i/list_c:Jesse en Maud willen binnenkort met de familie uit eten, en bekijken de website van een restaurant. <br/>"
-        + "Maud zegt: hier hebben we de vorige keer goed gegeten hË?<br/>"
+        + "Maud zegt: hier hebben we de vorige keer goed gegeten hè?<br/>"
         + "Jesse zegt: ik herinner me inderdaad dat de porties daar erg ",
         "setnr_57/cond_i/list_c:Lieke en Finn werken aan de promotie van een evenement, en zoeken een drukker voor de posters.<br/>"
         + "Lieke zegt: volgens mij waren we de vorige keer erg tevreden over deze drukker?<br/>"
@@ -1396,10 +1398,10 @@ public class Parcours {
         + "Piet zegt: met deze sneeuw kunnen we wel de helling af!<br/>"
         + "Nel zegt: volgens mij wil hij eigenlijk niets liever dan  ",
         "setnr_74/cond_e/list_c:Ilse en Patty hebben het over de boeken van hun lievelings auteur.<br/>"
-        + "Ilse zegt: haar vroege werk is wel het mooiste hË?<br/>"
+        + "Ilse zegt: haar vroege werk is wel het mooiste hè?<br/>"
         + "Patty zegt: ik vind haar debuutroman eigenlijk een van haar ",
         "setnr_75/cond_e/list_c:Jochem en Ilona hebben het over de acteur Tom Hanks.<br/>"
-        + "Jochem zegt: hij is erg gegroeid als acteur in zijn carriËre hË?<br/>"
+        + "Jochem zegt: hij is erg gegroeid als acteur in zijn carrière hè?<br/>"
         + "Ilona zegt: ik vind hem eigenlijk in zijn laastste film het ",
         "setnr_76/cond_e/list_c:Stan en Romy luisteren naar muziek van hun favoriete rockband.<br/>"
         + "Stan zegt: hun recente muziek is echt geweldig!<br/>"
@@ -1411,7 +1413,7 @@ public class Parcours {
         + "Ben vraagt: heb je de telefoon zeker weer in de slaapkamer laten liggen?<br/>"
         + "Kim zegt: ik denk dat ik hem eigenlijk bovenop het ",
         "setnr_79/cond_e/list_c:Peter en Elly zoeken bij de bloemist iets uit voor hun moeders verjaardag.<br/>"
-        + "Peter vraagt: ze vindt warme kleuren erg mooi hË?<br/>"
+        + "Peter vraagt: ze vindt warme kleuren erg mooi hè?<br/>"
         + "Elly zegt: ze houdt eigenlijk erg veel van  ",
         "setnr_80/cond_e/list_c:Anne en Jens hebben het over de verkiezingen.<br/>"
         + "Anne vraagt: jij gaat vast voor een partij die zich sterk maakt voor het milieu?<br/>"
@@ -1492,10 +1494,10 @@ public class Parcours {
         + "Levi zegt: hij is vast al aan het eten..<br/>"
         + "Noah zegt: ik zag hem eigenlijk in de richting van de  ",
         "setnr_106/cond_e/list_c:Gerard en Annemarie hebben het over de schoolresultaten van hun dochter.<br/>"
-        + "Gerard zegt: vooral met wiskunde heeft ze erg veel moeite hËÖ<br/>"
+        + "Gerard zegt: vooral met wiskunde heeft ze erg veel moeite hèÖ<br/>"
         + "Annemarie zegt: ik begreep eigenlijk dat haar gemiddelde zo rond de  ",
         "setnr_107/cond_e/list_c:Henk en Annemieke bespreken hoe het met de schoolprestaties van hun zoon gaat.<br/>"
-        + "Annemieke zegt: een talenknobbel heeft hij niet hË?<br/>"
+        + "Annemieke zegt: een talenknobbel heeft hij niet hè?<br/>"
         + "Henk zegt: hij heeft eigenlijk de meeste moeite met het vak ",
         "setnr_108/cond_e/list_c:Bregje en Rosanne gaan samen een middagje shoppen.<br/>"
         + "Bregje zegt: je wil graag wat leuke winterkleding kopen toch?<br/>"
@@ -1578,13 +1580,13 @@ public class Parcours {
         "setnr_134/cond_c/list_c:Rick en Gerard zitten op te scheppen over hun wagenpark.<br/>"
         + "Rick vraagt: jij houdt toch het meest van sportwagens?<br/>"
         + "Gerard zegt: ik rijd al jaren het liefst in mijn ",
-        "setnr_135/cond_c/list_c:Joris en Noor willen een lang weekend weg naar BelgiÎ.<br/>"
+        "setnr_135/cond_c/list_c:Joris en Noor willen een lang weekend weg naar België.<br/>"
         + "Joris vraagt: zullen we een huisje aan het strand zoeken?<br/>"
         + "Noor zegt: het lijkt me best leuk om naar de ",
         "setnr_136/cond_c/list_c:Cornelis en Elisa zijn aan het overleggen over het avondeten.<br/>"
         + "Cornelis vraagt: zullen we een ovenschotel maken?<br/>"
         + "Elisa zegt: ik heb best veel zin in ",
-        "setnr_137/cond_c/list_c:Sandra en Jeroen zijn aan het barbecueÎn.<br/>"
+        "setnr_137/cond_c/list_c:Sandra en Jeroen zijn aan het barbecueën.<br/>"
         + "Sandra vraagt: zal ik er voor jou nog wat vlees op leggen?<br/>"
         + "Jeroen zegt: doe mij zo nog maar een ",
         "setnr_138/cond_c/list_c:Vanmiddag komt de familie op bezoek bij Adriana en Martin.<br/>"
@@ -1605,50 +1607,50 @@ public class Parcours {
         "setnr_143/cond_c/list_c:Karin en Arie zijn net terug van wintersport in Zwitserland.<br/>"
         + "Een vriend van hen vraagt: hebben jullie genoten van de traditionele gerechten daar?<br/>"
         + "Karin zegt: we hebben toen bijna elke dag ",
-        "setnr_144/cond_c/list_c:Iris en Chantal gaan na het stappen naar de cafetaria; Chantal is een flexitariÎr.<br/>"
+        "setnr_144/cond_c/list_c:Iris en Chantal gaan na het stappen naar de cafetaria; Chantal is een flexitariër.<br/>"
         + "Iris vraagt: jij wil zeker een vega snack?<br/>"
         + "Chantal zegt: doe mij zometeen maar een ",
         "setnr_145/cond_c/list_c:Michael en Bianca gaan gezellig ergens lunchen; Bianca eet de laatste tijd niet meer zo veel vlees.<br/>"
         + "Michael vraagt: bestel jij de vegetarische salade?<br/>"
         + "Bianca zegt: ik neem denk ik de salade met ",
-        "setnr_146/cond_c/list_c:Patricia en RenÈ gaan wat drinken bij een nieuw koffietentje; RenÈ is lactose-intolerant. <br/>"
-        + "Patricia zegt: Ooh RenÈ je kunt hier lekkere koffie met sojamelk bestellen!<br/>"
-        + "RenÈ zegt: ik heb echt enorme zin in ",
+        "setnr_146/cond_c/list_c:Patricia en René gaan wat drinken bij een nieuw koffietentje; René is lactose-intolerant. <br/>"
+        + "Patricia zegt: Ooh René je kunt hier lekkere koffie met sojamelk bestellen!<br/>"
+        + "René zegt: ik heb echt enorme zin in ",
         "setnr_147/cond_c/list_c:Jacqueline en Anouk zijn op zoek naar een outfit voor een feestje.<br/>"
         + "Jacqueline zegt: jij hebt zo'n mooi figuur, dat je kun je gerust laten zien!<br/>"
         + "Anouk zegt: Ik draag op feestjes graag kleding die in de taille ",
-        "setnr_148/cond_c/list_c:Ellen en DaniÎl hebben het over de familiereunie van vorige week.<br/>"
-        + "Ellen zegt: tante Marie is flink aangekomen hË?<br/>"
-        + "DaniÎl zegt: Ik dacht echt dat ze vorig jaar een stuk ",
+        "setnr_148/cond_c/list_c:Ellen en Daniël hebben het over de familiereunie van vorige week.<br/>"
+        + "Ellen zegt: tante Marie is flink aangekomen hè?<br/>"
+        + "Daniël zegt: Ik dacht echt dat ze vorig jaar een stuk ",
         "setnr_149/cond_c/list_c:Wendy en Edwin gaan op bezoek bij hun opa die al een tijd in het ziekenhuis ligt.<br/>"
-        + "Wendy zegt: de vorige keer leek hij al wel wat opgeknapt te zijn hË?<br/>"
+        + "Wendy zegt: de vorige keer leek hij al wel wat opgeknapt te zijn hè?<br/>"
         + "Edwin zegt: ik herinner me nog dat hij er toen best wel ",
         "setnr_150/cond_c/list_c:Francisca en Stefan blikken terug op het vorige familieweekend.<br/>"
-        + "Francisca zegt: tante Gerda was weer het zonnetje in huis hË?<br/>"
+        + "Francisca zegt: tante Gerda was weer het zonnetje in huis hè?<br/>"
         + "Stefan zegt: ik had echt het idee dat ze ontzettend ",
         "setnr_151/cond_c/list_c:Maartje en Michel hebben het over hun klasgenootjes op de basisschool. <br/>"
-        + "Maartje zegt: Sjors deed nooit een vlieg kwaad hË?<br/>"
+        + "Maartje zegt: Sjors deed nooit een vlieg kwaad hè?<br/>"
         + "Michel zegt: ik herinner me nog dat hij in de klas heel ",
         "setnr_152/cond_c/list_c:Roy en Simone hebben het over hun klasgenootjes van de middelbare school.<br/>"
-        + "Roy zegt: Mats had altijd een grote mond hË?<br/>"
+        + "Roy zegt: Mats had altijd een grote mond hè?<br/>"
         + "Simone zegt: ik herinner me nog dat hij in de klas heel ",
         "setnr_153/cond_c/list_c:Sylvia en Roelof blikken terug op de schooltijd van hun kinderen. <br/>"
-        + "Sylvia zegt: dat handschrift van Remko was niet te lezen hË?<br/>"
+        + "Sylvia zegt: dat handschrift van Remko was niet te lezen hè?<br/>"
         + "Roelof zegt: ik herinner me nog dat zijn schrift altijd erg ",
         "setnr_154/cond_c/list_c:Geert en Marijke blikken terug op hun studententijd.<br/>"
-        + "Marijke zegt: van studeren kwam bij jou niet zo veel terecht hË..<br/>"
+        + "Marijke zegt: van studeren kwam bij jou niet zo veel terecht hè..<br/>"
         + "Geert zegt: ik herinner me nog dat ik de eerste twee jaar heel ",
         "setnr_155/cond_c/list_c:Gerda en Lucas hebben het over hun oude vriendengroep. <br/>"
-        + "Gerda zegt: Joeri was altijd de gangmaker hË?<br/>"
+        + "Gerda zegt: Joeri was altijd de gangmaker hè?<br/>"
         + "Lucas zegt: ik herinner me nog dat hij qua karakter erg ",
         "setnr_156/cond_c/list_c:Michiel en Barbara hebben het over hun neefjes en nichtjes met wie ze vroeger veel optrokken.<br/>"
-        + "Michiel zegt: Veerle was altijd het muurbloempje hË?<br/>"
+        + "Michiel zegt: Veerle was altijd het muurbloempje hè?<br/>"
         + "Barbara zegt: ik herinner me nog dat zij altijd erg ",
         "setnr_157/cond_c/list_c:Evert en Louise zitten in de lerarenkamer, en hebben het over een oud-collega. <br/>"
         + "Evert zegt: als leerlingen het niet snapten, legde zij het gerust nog tien keer uit!<br/>"
         + "Louise zegt: ik herinner me nog dat ze tijdens het lesgeven erg ",
         "setnr_158/cond_c/list_c:Maurice en Carla zitten in de kantine, en hebben het over een oud-collega.<br/>"
-        + "Maurice zegt: wat was zijn bureau altijd een zootje hË!<br/>"
+        + "Maurice zegt: wat was zijn bureau altijd een zootje hè!<br/>"
         + "Carla zegt: ik herinner me nog dat de manier waarop hij werkte erg ",
         "setnr_159/cond_c/list_c:Erwin en Daphne zijn bezig met het voorbereiden van een lunch in hun tuin. <br/>"
         + "Erwin vraagt: zullen we de tafel een beetje chic dekken? <br/>"
@@ -1657,7 +1659,7 @@ public class Parcours {
         + "Marcus zegt: tegenwoordig trakteren kinderen altijd iets gezonds toch?<br/>"
         + "Nathalie zegt: hij wilde geloof ik prikkers met ",
         "setnr_161/cond_c/list_c:Sander komt zijn beste vriend Luuc tegen.<br/>"
-        + "Luuc zegt: HË Sander, je hebt zo college toch?<br/>"
+        + "Luuc zegt: Hè Sander, je hebt zo college toch?<br/>"
         + "Sander zegt: ik ben net op weg naar de ",
         "setnr_162/cond_c/list_c:Melanie zet wat water op voor een kopje thee.<br/>"
         + "Melanie vraagt: wil jij ook fruitige thee?<br/>"
@@ -1672,7 +1674,7 @@ public class Parcours {
         + "Gert zegt: het zal wel niet voor iets ernstigs zijn toch?<br/>"
         + "Zijn collega zegt: hij zei gisteren dat hij er voor een ",
         "setnr_166/cond_c/list_c:Eveline en Roel hebben het over de toekomstplannen van hun muzikale zoon.<br/>"
-        + "Evelien zegt: misschien dat hij later verder wil in de muziek hË..<br/>"
+        + "Evelien zegt: misschien dat hij later verder wil in de muziek hè..<br/>"
         + "Roel zegt: hij wil geloof ik zijn brood verdienen als ",
         "setnr_167/cond_c/list_c:Nancy en Sam gaan samen studeren in de bibliotheek.<br/>"
         + "Nancy vraagt: zullen we in die ene studiezaal achterin gaan zitten?<br/>"
@@ -1705,7 +1707,7 @@ public class Parcours {
         + "Marvin vraagt: pak je iets om te lezen?<br/>"
         + "Stefanie zegt: ik ben tussen de spullen aan het zoeken naar mijn  ",
         "setnr_177/cond_c/list_c:Veronique is naar een lezing van een beroemde hoogleraar geweest. <br/>"
-        + "Haar collega zegt: hij kan zijn verhaal altijd erg goed overbrengen hË?<br/>"
+        + "Haar collega zegt: hij kan zijn verhaal altijd erg goed overbrengen hè?<br/>"
         + "Veronique zegt: ik vond zijn lezing echt ontzettend ",
         "setnr_178/cond_c/list_c:Vivian is naar een feestje geweest en komt laat thuis.<br/>"
         + "Haar huisgenoot zegt: je hebt je vast goed vermaakt?<br/>"
@@ -1743,9 +1745,11 @@ public class Parcours {
         wizardEditUserScreen.setOn_Error_Text("Could not contact the server, please check your internet connection and try again.");
 //        wizardData.setAgeField(true);
         wizardEditUserScreen.setCustomFields(new String[]{
-            "workerId:Proefpersoon ID:.*:.",
-            "firstName:Voornaam:.'{'3,'}':Voer minimaal drie letters.",
-            "lastName:Achternaam:.'{'3,'}':Voer minimaal drie letters.",
+            "workerId:Proefpersoon ID:.'{'3,'}':Voer minimaal drie letters.",
+//            "firstName:Voornaam:.'{'3,'}':Voer minimaal drie letters.",
+//            "lastName:Achternaam:.'{'3,'}':Voer minimaal drie letters.",
+            "education:Opleidingsniveau:.'{'3,'}':Voer minimaal drie letters.",
+//            "education:Opleidingsniveau:primair onderwijs (basisschool)|voortgezet onderwijs|middelbaar beroepsonderwijs (MBO)|hoger onderwijs (HBO, universiteit)|anders:.",
             "age:Leeftijd:[0-9]+:Voer een getal.",
             "gender:Geslacht:|man|vrouw|anders:."
         });
@@ -1757,12 +1761,12 @@ public class Parcours {
         final WizardRandomStimulusScreen list1234Screen = new WizardRandomStimulusScreen("Zinnen afmaken", false, stimuliString,
                 new String[]{"list_a",
                     "list_b",
-                    "list_c"}, 1000, true, null, 0, 0, null, null, null, null, "volgende");
+                    "list_c"}, 1000, true, null, 0, 0, null, null, null, null, "Volgende [tab + enter]");
         list1234Screen.setStimulusFreeText(true, ".{2,}",
                 "Vul één of enkele woorden in die volgens u het beste aan het eind van de zin passen.");
         list1234Screen.getWizardScreenData().setStimulusResponseLabelLeft("");
         list1234Screen.getWizardScreenData().setStimulusResponseLabelRight("");
-        list1234Screen.getWizardScreenData().setAllowHotkeyButtons(false);
+        list1234Screen.setAllowHotkeyButtons(false);
         wizardData.addScreen(list1234Screen);
 
         // @todo: remove the restart button
@@ -1770,7 +1774,7 @@ public class Parcours {
         WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, false, true,
                 //                "Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop.",
                 "<br/>"
-                + "Het onderstaande nummer is het bewijs dat u het experiment heeft voltooid, en is vereist voor het in orde maken van uw vergoeding. Gelieve het nummer te kopieëren en per email terug te sturen naar de onderzoeker:  <br/>"
+                + "Het bovenstaande nummer is het bewijs dat u het experiment heeft voltooid, en is vereist voor het in orde maken van uw vergoeding. Gelieve het nummer te kopieëren en per email terug te sturen naar de onderzoeker:  <br/>"
                 + "marlou.rasenberg@mpi.nl",
                 "Opnieuw beginnen",
                 "Einde van het experiment",
