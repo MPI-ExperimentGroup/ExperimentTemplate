@@ -19,7 +19,6 @@ package nl.mpi.tg.eg.experiment.client.presenter;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
-import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.Version;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
@@ -40,12 +39,12 @@ public class StorageFullPresenter extends LocalStoragePresenter implements Prese
 
     @Override
     protected String getTitle() {
-        return messages.titleaboutPresenter();
+        return "StorageFullPresenter";
     }
 
     @Override
     protected String getSelfTag() {
-        return ApplicationController.ApplicationState.about.name();
+        return "StorageFullPresenter";
     }
 
     @Override
