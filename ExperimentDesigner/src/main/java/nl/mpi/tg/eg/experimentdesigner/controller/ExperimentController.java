@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.controller;
 
+import java.util.Arrays;
 import javax.servlet.http.HttpServletRequest;
 import nl.mpi.tg.eg.experimentdesigner.dao.ExperimentRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.MetadataRepository;
@@ -37,6 +38,7 @@ import nl.mpi.tg.eg.experimentdesigner.util.KinOathExample;
 import nl.mpi.tg.eg.experimentdesigner.util.ManipulatedContours;
 import nl.mpi.tg.eg.experimentdesigner.util.MultiParticipant;
 import nl.mpi.tg.eg.experimentdesigner.util.NblExperiment01;
+import nl.mpi.tg.eg.experimentdesigner.util.Parcours;
 import nl.mpi.tg.eg.experimentdesigner.util.RdExperiment02;
 import nl.mpi.tg.eg.experimentdesigner.util.RosselFieldKit;
 import nl.mpi.tg.eg.experimentdesigner.util.Sara01;
@@ -111,7 +113,7 @@ public class ExperimentController {
     public String startWizard(Model model, HttpServletRequest request) {
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", "wizard");
-        model.addAttribute("templateList", new String[]{
+        final String[] wizardTemplateList = new String[]{
             "MultiParticipant",
             "Sentveri_exp3",
             "Dobes Annotator",
@@ -122,6 +124,7 @@ public class ExperimentController {
             "Leeservaring",
             "SynQuiz2",
             "Online Emotions",
+            "Parcours01",
             "HRPretest02",
             "HRPretest",
             "TransmissionChain",
@@ -130,7 +133,9 @@ public class ExperimentController {
             "RosselFieldKit",
             "WellspringsSamoan",
             "Zinnen Beoordelen",
-            "ManipulatedContours"});
+            "ManipulatedContours"};
+        Arrays.sort(wizardTemplateList);
+        model.addAttribute("templateList", wizardTemplateList);
         model.addAttribute("existingWizardList", wizardRepository.findDistinctAppName());
         return "design";
     }
@@ -196,6 +201,9 @@ public class ExperimentController {
                     break;
                 case "ManipulatedContours":
                     wizardData = new ManipulatedContours().getWizardData();
+                    break;
+                case "Parcours01":
+                    wizardData = new Parcours().getWizardData();
                     break;
             }
         }
