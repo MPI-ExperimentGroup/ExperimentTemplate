@@ -1751,7 +1751,7 @@ public class Parcours {
 //            "lastName:Achternaam:.'{'3,'}':Voer minimaal drie letters.",
 //            "education:Opleidingsniveau:primair onderwijs (basisschool)|voortgezet onderwijs|middelbaar beroepsonderwijs (MBO)|hoger onderwijs (HBO, universiteit)|anders:.",
             "education:Opleidingsniveau:basisonderwijs|voortgezet onderwijs|MBO|HBO|universiteit|anders:.",
-            "educationOther:Opleidingsniveau (anders, namelijk):[.]+':.",
+            "educationOther:Opleidingsniveau (anders, namelijk):.*:.",
 //            "education:Opleidingsniveau:.'{'3,'}':Voer minimaal drie letters.",
             "gender:Geslacht:|man|vrouw|anders:."
         });
