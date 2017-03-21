@@ -35,14 +35,14 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusCodeAudio msToNext="100" maxHeight="80" codeFormat="&lt;code&gt;" percentOfPage="0" maxWidth="80">
+                <stimulusCodeAudio msToNext="100" codeFormat="&lt;code&gt;">
                     <clearPage/>
                     <centrePage/>
                     <pause msToNext="100">
                         <stimulusAudio msToNext="100" showPlaybackIndicator="true">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-<nextStimulus eventTag="NextStimulusout1ver1Screen" norepeat="true"/>
+                                <nextStimulus eventTag="NextStimulusout1ver1Screen" norepeat="true"/>
                             </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>
@@ -63,14 +63,14 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusCodeAudio msToNext="100" maxHeight="80" codeFormat="&lt;code&gt;" percentOfPage="0" maxWidth="80">
+                <stimulusCodeAudio msToNext="100" codeFormat="&lt;code&gt;">
                     <clearPage/>
                     <centrePage/>
                     <pause msToNext="100">
                         <stimulusAudio msToNext="100" showPlaybackIndicator="true">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-<nextStimulus eventTag="NextStimulusout1ver2Screen" norepeat="true"/>
+                                <nextStimulus eventTag="NextStimulusout1ver2Screen" norepeat="true"/>
                             </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>
@@ -91,14 +91,14 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusCodeAudio msToNext="100" maxHeight="80" codeFormat="&lt;code&gt;" percentOfPage="0" maxWidth="80">
+                <stimulusCodeAudio msToNext="100" codeFormat="&lt;code&gt;">
                     <clearPage/>
                     <centrePage/>
                     <pause msToNext="100">
                         <stimulusAudio msToNext="100" showPlaybackIndicator="true">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-<nextStimulus eventTag="NextStimulusout1ver3Screen" norepeat="true"/>
+                                <nextStimulus eventTag="NextStimulusout1ver3Screen" norepeat="true"/>
                             </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>
@@ -119,14 +119,14 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusCodeAudio msToNext="100" maxHeight="80" codeFormat="&lt;code&gt;" percentOfPage="0" maxWidth="80">
+                <stimulusCodeAudio msToNext="100" codeFormat="&lt;code&gt;">
                     <clearPage/>
                     <centrePage/>
                     <pause msToNext="100">
                         <stimulusAudio msToNext="100" showPlaybackIndicator="true">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-<nextStimulus eventTag="NextStimulusout2ver1Screen" norepeat="true"/>
+                                <nextStimulus eventTag="NextStimulusout2ver1Screen" norepeat="true"/>
                             </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>
@@ -147,14 +147,14 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusCodeAudio msToNext="100" maxHeight="80" codeFormat="&lt;code&gt;" percentOfPage="0" maxWidth="80">
+                <stimulusCodeAudio msToNext="100" codeFormat="&lt;code&gt;">
                     <clearPage/>
                     <centrePage/>
                     <pause msToNext="100">
                         <stimulusAudio msToNext="100" showPlaybackIndicator="true">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-<nextStimulus eventTag="NextStimulusout2ver2Screen" norepeat="true"/>
+                                <nextStimulus eventTag="NextStimulusout2ver2Screen" norepeat="true"/>
                             </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>
@@ -175,14 +175,14 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusCodeAudio msToNext="100" maxHeight="80" codeFormat="&lt;code&gt;" percentOfPage="0" maxWidth="80">
+                <stimulusCodeAudio msToNext="100" codeFormat="&lt;code&gt;">
                     <clearPage/>
                     <centrePage/>
                     <pause msToNext="100">
                         <stimulusAudio msToNext="100" showPlaybackIndicator="true">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-<nextStimulus eventTag="NextStimulusout2ver3Screen" norepeat="true"/>
+                                <nextStimulus eventTag="NextStimulusout2ver3Screen" norepeat="true"/>
                             </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>
@@ -203,14 +203,14 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusCodeAudio msToNext="100" maxHeight="80" codeFormat="&lt;code&gt;" percentOfPage="0" maxWidth="80">
+                <stimulusCodeAudio msToNext="100" codeFormat="&lt;code&gt;">
                     <clearPage/>
                     <centrePage/>
                     <pause msToNext="100">
                         <stimulusAudio msToNext="100" showPlaybackIndicator="true">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-<nextStimulus eventTag="NextStimulusout1ver1ScreenI" norepeat="true"/>
+                                <nextStimulus eventTag="NextStimulusout1ver1ScreenI" norepeat="true"/>
                             </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>
@@ -231,14 +231,14 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusCodeAudio msToNext="100" maxHeight="80" codeFormat="&lt;code&gt;" percentOfPage="0" maxWidth="80">
+                <stimulusCodeAudio msToNext="100" codeFormat="&lt;code&gt;">
                     <clearPage/>
                     <centrePage/>
                     <pause msToNext="100">
                         <stimulusAudio msToNext="100" showPlaybackIndicator="true">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-<nextStimulus eventTag="NextStimulusout1ver2ScreenI" norepeat="true"/>
+                                <nextStimulus eventTag="NextStimulusout1ver2ScreenI" norepeat="true"/>
                             </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>
@@ -259,14 +259,14 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusCodeAudio msToNext="100" maxHeight="80" codeFormat="&lt;code&gt;" percentOfPage="0" maxWidth="80">
+                <stimulusCodeAudio msToNext="100" codeFormat="&lt;code&gt;">
                     <clearPage/>
                     <centrePage/>
                     <pause msToNext="100">
                         <stimulusAudio msToNext="100" showPlaybackIndicator="true">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-<nextStimulus eventTag="NextStimulusout1ver3ScreenI" norepeat="true"/>
+                                <nextStimulus eventTag="NextStimulusout1ver3ScreenI" norepeat="true"/>
                             </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>
@@ -287,14 +287,14 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusCodeAudio msToNext="100" maxHeight="80" codeFormat="&lt;code&gt;" percentOfPage="0" maxWidth="80">
+                <stimulusCodeAudio msToNext="100" codeFormat="&lt;code&gt;">
                     <clearPage/>
                     <centrePage/>
                     <pause msToNext="100">
                         <stimulusAudio msToNext="100" showPlaybackIndicator="true">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-<nextStimulus eventTag="NextStimulusout2ver1ScreenI" norepeat="true"/>
+                                <nextStimulus eventTag="NextStimulusout2ver1ScreenI" norepeat="true"/>
                             </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>
@@ -315,14 +315,14 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusCodeAudio msToNext="100" maxHeight="80" codeFormat="&lt;code&gt;" percentOfPage="0" maxWidth="80">
+                <stimulusCodeAudio msToNext="100" codeFormat="&lt;code&gt;">
                     <clearPage/>
                     <centrePage/>
                     <pause msToNext="100">
                         <stimulusAudio msToNext="100" showPlaybackIndicator="true">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-<nextStimulus eventTag="NextStimulusout2ver2ScreenI" norepeat="true"/>
+                                <nextStimulus eventTag="NextStimulusout2ver2ScreenI" norepeat="true"/>
                             </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>
@@ -343,14 +343,14 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusCodeAudio msToNext="100" maxHeight="80" codeFormat="&lt;code&gt;" percentOfPage="0" maxWidth="80">
+                <stimulusCodeAudio msToNext="100" codeFormat="&lt;code&gt;">
                     <clearPage/>
                     <centrePage/>
                     <pause msToNext="100">
                         <stimulusAudio msToNext="100" showPlaybackIndicator="true">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-<nextStimulus eventTag="NextStimulusout2ver3ScreenI" norepeat="true"/>
+                                <nextStimulus eventTag="NextStimulusout2ver3ScreenI" norepeat="true"/>
                             </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>
