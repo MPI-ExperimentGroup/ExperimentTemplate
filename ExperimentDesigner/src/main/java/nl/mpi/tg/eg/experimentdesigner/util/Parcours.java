@@ -78,7 +78,7 @@ public class Parcours {
             + "In totaal zal het onderzoek ongeveer <b>60 minuten</b> duren. Zorg ervoor dat u tijdens het experiment in een rustige omgeving zit, zonder afleiding van bijvoorbeeld uw mobiele telefoon, TV of van andere mensen. <br/>"
             + "<br/>"
             + "Zo begint u:<br/>"
-            + "Door te klikken op 'Volgende' gaat u naar de volgende pagina. Voer hier alsublieft uw gegevens in: uw voornaam, achternaam, leeftijd en geslacht. Vul bij proefpersoon ID het nummer in dat u per email van de onderzoeker heeft ontvangen. <br/>"
+            + "Door te klikken op 'Volgende' gaat u naar de volgende pagina. Voer hier alstublieft uw gegevens in: uw leeftijd, opleidingsniveau en geslacht.<br/>"
             + "<br/>"
             + "U begint het onderzoek door weer te klikken op 'Volgende'. U ziet dan een gesprekje, dat eindigt met een onafgemaakte zin. U kunt de zin afmaken door één of enkele woorden in te vullen in de textbox onder het gesprekje.  Door te klikken op 'Volgende' gaat u naar het volgende gesprekje. Let op: het is niet mogelijk om terug te gaan naar eerdere gesprekjes!<br/>"
             + "<br/>"
@@ -414,7 +414,7 @@ public class Parcours {
         + "Levi zegt: hij is vast al aan het eten..<br/>"
         + "Noah zegt: ik zag hem inderdaad in de richting van de  ",
         "setnr_106/cond_i/list_a:Gerard en Annemarie hebben het over de schoolresultaten van hun dochter.<br/>"
-        + "Gerard zegt: vooral met wiskunde heeft ze erg veel moeite hèÖ<br/>"
+        + "Gerard zegt: vooral met wiskunde heeft ze erg veel moeite hè...<br/>"
         + "Annemarie zegt: ik begreep inderdaad dat haar gemiddelde zo rond de  ",
         "setnr_107/cond_i/list_a:Henk en Annemieke bespreken hoe het met de schoolprestaties van hun zoon gaat.<br/>"
         + "Annemieke zegt: een talenknobbel heeft hij niet hè?<br/>"
@@ -954,7 +954,7 @@ public class Parcours {
         + "Levi zegt: hij is vast al aan het eten..<br/>"
         + "Noah zegt: ik zag hem met zijn broer in de richting van de  ",
         "setnr_106/cond_c/list_b:Gerard en Annemarie hebben het over de schoolresultaten van hun dochter.<br/>"
-        + "Gerard zegt: vooral met wiskunde heeft ze erg veel moeite hèÖ<br/>"
+        + "Gerard zegt: vooral met wiskunde heeft ze erg veel moeite hè...<br/>"
         + "Annemarie zegt: ik begreep van haar dat haar gemiddelde zo rond de  ",
         "setnr_107/cond_c/list_b:Henk en Annemieke bespreken hoe het met de schoolprestaties van hun zoon gaat.<br/>"
         + "Annemieke zegt: een talenknobbel heeft hij niet hè?<br/>"
@@ -1494,7 +1494,7 @@ public class Parcours {
         + "Levi zegt: hij is vast al aan het eten..<br/>"
         + "Noah zegt: ik zag hem eigenlijk in de richting van de  ",
         "setnr_106/cond_e/list_c:Gerard en Annemarie hebben het over de schoolresultaten van hun dochter.<br/>"
-        + "Gerard zegt: vooral met wiskunde heeft ze erg veel moeite hèÖ<br/>"
+        + "Gerard zegt: vooral met wiskunde heeft ze erg veel moeite hè...<br/>"
         + "Annemarie zegt: ik begreep eigenlijk dat haar gemiddelde zo rond de  ",
         "setnr_107/cond_e/list_c:Henk en Annemieke bespreken hoe het met de schoolprestaties van hun zoon gaat.<br/>"
         + "Annemieke zegt: een talenknobbel heeft hij niet hè?<br/>"
@@ -1746,11 +1746,13 @@ public class Parcours {
 //        wizardData.setAgeField(true);
         wizardEditUserScreen.setCustomFields(new String[]{
             "workerId:Proefpersoon ID:.'{'3,'}':Voer minimaal drie letters.",
+            "age:Leeftijd:[0-9]+:Voer een getal.",
 //            "firstName:Voornaam:.'{'3,'}':Voer minimaal drie letters.",
 //            "lastName:Achternaam:.'{'3,'}':Voer minimaal drie letters.",
-            "education:Opleidingsniveau:.'{'3,'}':Voer minimaal drie letters.",
 //            "education:Opleidingsniveau:primair onderwijs (basisschool)|voortgezet onderwijs|middelbaar beroepsonderwijs (MBO)|hoger onderwijs (HBO, universiteit)|anders:.",
-            "age:Leeftijd:[0-9]+:Voer een getal.",
+            "education:Opleidingsniveau:basisonderwijs|voortgezet onderwijs|MBO|HBO|universiteit|anders:.",
+            "educationOther:Opleidingsniveau (anders, namelijk):[.]+':.",
+//            "education:Opleidingsniveau:.'{'3,'}':Voer minimaal drie letters.",
             "gender:Geslacht:|man|vrouw|anders:."
         });
 
