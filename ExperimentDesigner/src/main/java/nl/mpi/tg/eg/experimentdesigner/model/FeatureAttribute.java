@@ -34,6 +34,7 @@ public enum FeatureAttribute {
     code,
     codeFormat,
     validationRegex,
+    allowedCharCodes,
     matchingRegex,
     src,
     link,
@@ -44,7 +45,7 @@ public enum FeatureAttribute {
     target,
     styleName,
     eventTier,
-    filePerStimulus,
+    filePerStimulus, // when recording audio this boolean determins if a separate recording should be made for each stimulus or one recording for the set of stimuli
     eventTag,
     ratingLabels,
     ratingLabelLeft,
@@ -54,7 +55,7 @@ public enum FeatureAttribute {
     randomise,
     repeatCount,
     repeatRandomWindow,
-    norepeat,
+    repeatIncorrect,
     hotKey,
     mp3,
     mp4,
@@ -68,13 +69,15 @@ public enum FeatureAttribute {
     imageWidth,
     alternativeChoice,
     msToNext,
-    animate, // @todo: animate currently is bounce or none, but might gain a serverside animation for multi participant experiments
+    animate, // animate currently has bounce stimuliCode or none
+    minStimuliPerTag, // for each tag there should be at least N of each represented in the final list
+    maxStimuliPerTag, // for each tag there should be no more than N of each represented in the final list
     maxStimuli,
     condition0Tag,
     condition1Tag,
     condition2Tag,
     scoreThreshold,
-    showPlaybackIndicator, // @todo: add the PlaybackIndicator
+    showPlaybackIndicator,
     groupRole,
     groupMembers,
     groupCommunicationChannels,

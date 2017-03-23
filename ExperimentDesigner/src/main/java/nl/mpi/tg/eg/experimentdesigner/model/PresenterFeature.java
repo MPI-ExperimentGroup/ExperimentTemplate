@@ -198,7 +198,7 @@ public class PresenterFeature {
 
     public void addFeatureAttributes(FeatureAttribute featureAttribute, String attributeValue) {
         if (attributeValue == null) {
-            throw new IllegalArgumentException("attributeValue cannot be null");
+            throw new IllegalArgumentException("attributeValue cannot be null: " + featureAttribute.name());
         }
         this.featureAttributes.put(featureAttribute, attributeValue);
     }
