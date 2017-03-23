@@ -53,13 +53,14 @@ public class Stimulus implements Serializable {
     private byte[] audioData = null;
     private byte[] videoData = null;
     private String ratingLabels = null;
+    private String correctResponses = null;
 
     TreeSet<String> stimulusTags;
 
     public Stimulus() {
     }
 
-    public Stimulus(String identifier, String audioPath, String videoPath, String imagePath, String label, String code, int pauseMs, HashSet<String> stimulusTags, String ratingLabels) {
+    public Stimulus(String identifier, String audioPath, String videoPath, String imagePath, String label, String code, int pauseMs, HashSet<String> stimulusTags, String ratingLabels, String correctResponses) {
         this.identifier = (identifier == null) ? null : identifier;
         this.audioPath = audioPath;
         this.videoPath = videoPath;
@@ -72,6 +73,7 @@ public class Stimulus implements Serializable {
             addStimulusTag(tag);
         }
         this.ratingLabels = ratingLabels;
+        this.correctResponses = correctResponses;
     }
 
     @XmlTransient
@@ -180,6 +182,15 @@ public class Stimulus implements Serializable {
 
     public void setRatingLabels(String ratingLabels) {
         this.ratingLabels = ratingLabels;
+    }
+
+    @XmlAttribute
+    public String getCorrectResponses() {
+        return correctResponses;
+    }
+
+    public void setCorrectResponses(String correctResponses) {
+        this.correctResponses = correctResponses;
     }
 
     @XmlElement(name = "tag")
