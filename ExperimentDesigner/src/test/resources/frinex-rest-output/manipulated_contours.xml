@@ -17,7 +17,7 @@
         <htmlText featureText="Merci beaucoup pour votre intérêt pour cette expérience scientifique en ligne! Les instructions détaillées pour la tâche seront données à la page suivante.&lt;br/&gt;&lt;br/&gt;Avant de commencer, vous devez d'abord confirmer que vous êtes d'accord pour participer à cette expérience. Veuillez noter que nous enregistrerons vos réponses pour des analyses scientifiques ultérieures. Nous utiliserons les résultats uniquement pour des buts scientifiques et nous allons les décrire dans des journaux scientifiques ou peut-être dans des quotidiens ou sur notre site web. Cependant, nous NE RAPORTERONS JAMAIS les résultats d'une manière qui permettrait de vous identifier. &lt;br/&gt;&lt;br/&gt;Vous êtes libre d'interrompre l'expérience à tout moment sans aucune explication. En outre, vous pourrez supprimer vos données ultérieurement sans avoir à fournir aucune explication également.&lt;br/&gt;&lt;br/&gt;Il n'y a aucun risque connu à participer à cette expérience. &lt;br/&gt;&lt;br/&gt;Si vous êtes d'accord pour participer à cette expérience, cliquez sur 'Je suis d'accord'. Si vous décidez de ne pas participer à cette expérience, cliquez sur 'Je ne suis pas d'accord'. Abandonnez l'expérience en allant sur un autre site web ou en quittant le site web.&lt;br/&gt;&lt;br/&gt;"/>
         <targetButton featureText="Je suis d'accord" target="AudioTest"/>
     </presenter>
-    <presenter displayOrder="3" menuLabel="AudioTest" next="InformationScreen2" type="stimulus" self="AudioTest" title="AudioTest">
+    <presenter displayOrder="3" menuLabel="AudioTest" next="Pretest_Screen" type="stimulus" self="AudioTest" title="AudioTest">
         <htmlText featureText="Cette expérience en ligne est une expérience audio. Pour cette raison, nous vous demandons de tester les réglages sonores de votre ordinateur en cliquant sur le gros bouton rouge ci-dessous.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Vous n'entendez aucun son?&lt;/b&gt; Dans ce cas, il y a quelque chose qui ne va pas avec les réglages sonores de votre ordinateur. Personnalisez les réglages et essayez de nouveau.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Entendez-vous un son?&lt;/b&gt; Dans ce cas, vos réglages sonores sont bons. Ajustez le volume de l'ordinateur à un niveau confortable.&lt;br/&gt;&lt;br/&gt;----------------------------------------------------------------&lt;br/&gt;ATTENTION: Faites UNIQUEMENT cette expérience si vous vous trouvez dans un environment calme sans aucun bruit de fond. C'est très important!&lt;br/&gt;----------------------------------------------------------------&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;[Cliquez sur SUIVANT si vos réglages sonores sont bons...]"/>
         <audioButton mp3="bienvenue.mp3" eventTag="AudioTest" poster="bienvenue.jpg" ogg="bienvenue.ogg">
             <actionButton featureText="suivant [ barre d'espacement ]">
@@ -29,7 +29,38 @@
         <htmlText featureText="Cette expérience en ligne est une expérience audio. Vous entendrez à plusieurs reprises un extrait de conversation naturelle suivi d'un silence. Votre tâche est d'indiquer si le locuteur qui parle avant le silence va continuer ou arrêter de parler après le silence.&lt;br/&gt;&lt;br/&gt;Par example:&lt;br/&gt;Vous entendez l'extrait puis deux boutons apparaissent sur l'écran:&lt;br/&gt;ils sont marqués “continue” et “arrête”.&lt;br/&gt;Votre tâche est alors de cliquer sur le bouton à droite ou à gauche, suivant votre décision.&lt;br/&gt;&lt;br/&gt;Il y a environ 80 extraits dans cette expérience. Une session dure environ 20 minutes. Votre progrès est indiqué en haut de chaque écran.&lt;br/&gt;&lt;br/&gt;Attention: vous NE POUVEZ PAS mettre en pause, interrompre, ou reprendre l'expérience. Faites UNIQUEMENT cette expérience si vous avez vraiment le temps de la faire en entier. Faites l'expérience entièrement et sérieusement.&lt;br/&gt;&lt;br/&gt;Si l'expérience est claire et que vous êtes prêt(e) à commencer, cliquez sur SUIVANT.&lt;br/&gt;L'expérience commencera IMMEDIATEMENT"/>
         <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="temporary_menu"/>
     </presenter>
-    <presenter displayOrder="5" menuLabel="out1ver1Screen" next="Fini" type="stimulus" self="out1ver1Screen" title="out1ver1Screen">
+    <presenter displayOrder="5" menuLabel="Pretest Screen" next="InformationScreen2" type="stimulus" self="Pretest_Screen" title="Pretest Screen">
+        <loadStimulus eventTag="Pretest Screen" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <showStimulusProgress/>
+                <scoreLabel/>
+                <stimulusAudio msToNext="100" showPlaybackIndicator="true">
+                    <addPadding/>
+                    <stimulusHasRatingOptions>
+                        <responseCorrect>
+                            <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
+                                <nextStimulus eventTag="NextStimulusPretest Screen" repeatIncorrect="false"/>
+                            </stimulusRatingButton>
+                        </responseCorrect>
+                        <responseIncorrect>
+                            <stimulusFreeText featureText="Entrez au moins trois lettres." validationRegex=".{3,}"/>
+                            <nextStimulusButton featureText="Next [TAB + ENTER]" eventTag="Next [TAB + ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
+                        </responseIncorrect>
+                    </stimulusHasRatingOptions>
+                </stimulusAudio>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <autoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>Pretest_Screen</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter displayOrder="6" menuLabel="out1ver1Screen" next="Fini" type="stimulus" self="out1ver1Screen" title="out1ver1Screen">
         <loadStimulus eventTag="out1ver1Screen" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="4">
             <hasMoreStimulus>
                 <clearPage/>
@@ -42,7 +73,7 @@
                         <stimulusAudio msToNext="100" showPlaybackIndicator="true">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-                                <nextStimulus eventTag="NextStimulusout1ver1Screen" norepeat="true"/>
+                                <nextStimulus eventTag="NextStimulusout1ver1Screen" repeatIncorrect="false"/>
                             </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>
@@ -57,7 +88,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="6" menuLabel="out1ver2Screen" next="Fini" type="stimulus" self="out1ver2Screen" title="out1ver2Screen">
+    <presenter displayOrder="7" menuLabel="out1ver2Screen" next="Fini" type="stimulus" self="out1ver2Screen" title="out1ver2Screen">
         <loadStimulus eventTag="out1ver2Screen" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="4">
             <hasMoreStimulus>
                 <clearPage/>
@@ -70,7 +101,7 @@
                         <stimulusAudio msToNext="100" showPlaybackIndicator="true">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-                                <nextStimulus eventTag="NextStimulusout1ver2Screen" norepeat="true"/>
+                                <nextStimulus eventTag="NextStimulusout1ver2Screen" repeatIncorrect="false"/>
                             </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>
@@ -85,7 +116,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="7" menuLabel="out1ver3Screen" next="Fini" type="stimulus" self="out1ver3Screen" title="out1ver3Screen">
+    <presenter displayOrder="8" menuLabel="out1ver3Screen" next="Fini" type="stimulus" self="out1ver3Screen" title="out1ver3Screen">
         <loadStimulus eventTag="out1ver3Screen" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="4">
             <hasMoreStimulus>
                 <clearPage/>
@@ -98,7 +129,7 @@
                         <stimulusAudio msToNext="100" showPlaybackIndicator="true">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-                                <nextStimulus eventTag="NextStimulusout1ver3Screen" norepeat="true"/>
+                                <nextStimulus eventTag="NextStimulusout1ver3Screen" repeatIncorrect="false"/>
                             </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>
@@ -113,7 +144,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="8" menuLabel="out2ver1Screen" next="Fini" type="stimulus" self="out2ver1Screen" title="out2ver1Screen">
+    <presenter displayOrder="9" menuLabel="out2ver1Screen" next="Fini" type="stimulus" self="out2ver1Screen" title="out2ver1Screen">
         <loadStimulus eventTag="out2ver1Screen" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="4">
             <hasMoreStimulus>
                 <clearPage/>
@@ -126,7 +157,7 @@
                         <stimulusAudio msToNext="100" showPlaybackIndicator="true">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-                                <nextStimulus eventTag="NextStimulusout2ver1Screen" norepeat="true"/>
+                                <nextStimulus eventTag="NextStimulusout2ver1Screen" repeatIncorrect="false"/>
                             </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>
@@ -141,7 +172,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="9" menuLabel="out2ver2Screen" next="Fini" type="stimulus" self="out2ver2Screen" title="out2ver2Screen">
+    <presenter displayOrder="10" menuLabel="out2ver2Screen" next="Fini" type="stimulus" self="out2ver2Screen" title="out2ver2Screen">
         <loadStimulus eventTag="out2ver2Screen" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="4">
             <hasMoreStimulus>
                 <clearPage/>
@@ -154,7 +185,7 @@
                         <stimulusAudio msToNext="100" showPlaybackIndicator="true">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-                                <nextStimulus eventTag="NextStimulusout2ver2Screen" norepeat="true"/>
+                                <nextStimulus eventTag="NextStimulusout2ver2Screen" repeatIncorrect="false"/>
                             </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>
@@ -169,7 +200,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="10" menuLabel="out2ver3Screen" next="Fini" type="stimulus" self="out2ver3Screen" title="out2ver3Screen">
+    <presenter displayOrder="11" menuLabel="out2ver3Screen" next="Fini" type="stimulus" self="out2ver3Screen" title="out2ver3Screen">
         <loadStimulus eventTag="out2ver3Screen" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="4">
             <hasMoreStimulus>
                 <clearPage/>
@@ -182,7 +213,7 @@
                         <stimulusAudio msToNext="100" showPlaybackIndicator="true">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-                                <nextStimulus eventTag="NextStimulusout2ver3Screen" norepeat="true"/>
+                                <nextStimulus eventTag="NextStimulusout2ver3Screen" repeatIncorrect="false"/>
                             </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>
@@ -197,7 +228,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="11" menuLabel="out1ver1ScreenI" next="Fini" type="stimulus" self="out1ver1ScreenI" title="out1ver1ScreenI">
+    <presenter displayOrder="12" menuLabel="out1ver1ScreenI" next="Fini" type="stimulus" self="out1ver1ScreenI" title="out1ver1ScreenI">
         <loadStimulus eventTag="out1ver1ScreenI" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="4">
             <hasMoreStimulus>
                 <clearPage/>
@@ -210,7 +241,7 @@
                         <stimulusAudio msToNext="100" showPlaybackIndicator="true">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-                                <nextStimulus eventTag="NextStimulusout1ver1ScreenI" norepeat="true"/>
+                                <nextStimulus eventTag="NextStimulusout1ver1ScreenI" repeatIncorrect="false"/>
                             </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>
@@ -225,7 +256,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="12" menuLabel="out1ver2ScreenI" next="Fini" type="stimulus" self="out1ver2ScreenI" title="out1ver2ScreenI">
+    <presenter displayOrder="13" menuLabel="out1ver2ScreenI" next="Fini" type="stimulus" self="out1ver2ScreenI" title="out1ver2ScreenI">
         <loadStimulus eventTag="out1ver2ScreenI" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="4">
             <hasMoreStimulus>
                 <clearPage/>
@@ -238,7 +269,7 @@
                         <stimulusAudio msToNext="100" showPlaybackIndicator="true">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-                                <nextStimulus eventTag="NextStimulusout1ver2ScreenI" norepeat="true"/>
+                                <nextStimulus eventTag="NextStimulusout1ver2ScreenI" repeatIncorrect="false"/>
                             </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>
@@ -253,7 +284,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="13" menuLabel="out1ver3ScreenI" next="Fini" type="stimulus" self="out1ver3ScreenI" title="out1ver3ScreenI">
+    <presenter displayOrder="14" menuLabel="out1ver3ScreenI" next="Fini" type="stimulus" self="out1ver3ScreenI" title="out1ver3ScreenI">
         <loadStimulus eventTag="out1ver3ScreenI" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="4">
             <hasMoreStimulus>
                 <clearPage/>
@@ -266,7 +297,7 @@
                         <stimulusAudio msToNext="100" showPlaybackIndicator="true">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-                                <nextStimulus eventTag="NextStimulusout1ver3ScreenI" norepeat="true"/>
+                                <nextStimulus eventTag="NextStimulusout1ver3ScreenI" repeatIncorrect="false"/>
                             </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>
@@ -281,7 +312,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="14" menuLabel="out2ver1ScreenI" next="Fini" type="stimulus" self="out2ver1ScreenI" title="out2ver1ScreenI">
+    <presenter displayOrder="15" menuLabel="out2ver1ScreenI" next="Fini" type="stimulus" self="out2ver1ScreenI" title="out2ver1ScreenI">
         <loadStimulus eventTag="out2ver1ScreenI" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="4">
             <hasMoreStimulus>
                 <clearPage/>
@@ -294,7 +325,7 @@
                         <stimulusAudio msToNext="100" showPlaybackIndicator="true">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-                                <nextStimulus eventTag="NextStimulusout2ver1ScreenI" norepeat="true"/>
+                                <nextStimulus eventTag="NextStimulusout2ver1ScreenI" repeatIncorrect="false"/>
                             </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>
@@ -309,7 +340,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="15" menuLabel="out2ver2ScreenI" next="Fini" type="stimulus" self="out2ver2ScreenI" title="out2ver2ScreenI">
+    <presenter displayOrder="16" menuLabel="out2ver2ScreenI" next="Fini" type="stimulus" self="out2ver2ScreenI" title="out2ver2ScreenI">
         <loadStimulus eventTag="out2ver2ScreenI" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="4">
             <hasMoreStimulus>
                 <clearPage/>
@@ -322,7 +353,7 @@
                         <stimulusAudio msToNext="100" showPlaybackIndicator="true">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-                                <nextStimulus eventTag="NextStimulusout2ver2ScreenI" norepeat="true"/>
+                                <nextStimulus eventTag="NextStimulusout2ver2ScreenI" repeatIncorrect="false"/>
                             </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>
@@ -337,7 +368,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="16" menuLabel="out2ver3ScreenI" next="Fini" type="stimulus" self="out2ver3ScreenI" title="out2ver3ScreenI">
+    <presenter displayOrder="17" menuLabel="out2ver3ScreenI" next="Fini" type="stimulus" self="out2ver3ScreenI" title="out2ver3ScreenI">
         <loadStimulus eventTag="out2ver3ScreenI" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="4">
             <hasMoreStimulus>
                 <clearPage/>
@@ -350,7 +381,7 @@
                         <stimulusAudio msToNext="100" showPlaybackIndicator="true">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-                                <nextStimulus eventTag="NextStimulusout2ver3ScreenI" norepeat="true"/>
+                                <nextStimulus eventTag="NextStimulusout2ver3ScreenI" repeatIncorrect="false"/>
                             </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>
@@ -365,7 +396,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="17" menuLabel="Fini" type="transmission" self="Fini" title="Fini">
+    <presenter displayOrder="18" menuLabel="Fini" type="transmission" self="Fini" title="Fini">
         <sendAllData>
             <onSuccess>
                 <htmlText featureText="L'expérience est terminée.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Merci beaucoup pour votre participation!"/>
@@ -378,10 +409,10 @@
             </onError>
         </sendAllData>
     </presenter>
-    <presenter back="Edit_User" displayOrder="18" menuLabel="about" type="debug" self="about" title="about">
+    <presenter back="Edit_User" displayOrder="19" menuLabel="about" type="debug" self="about" title="about">
         <versionData/>
     </presenter>
-    <presenter displayOrder="19" menuLabel="temporary menu" type="menu" self="temporary_menu" title="temporary menu">
+    <presenter displayOrder="20" menuLabel="temporary menu" type="menu" self="temporary_menu" title="temporary menu">
         <menuItem featureText="out1ver1Screen" target="out1ver1Screen"/>
         <menuItem featureText="out1ver2Screen" target="out1ver2Screen"/>
         <menuItem featureText="out1ver3Screen" target="out1ver3Screen"/>
@@ -396,6 +427,34 @@
         <menuItem featureText="out2ver3ScreenI" target="out2ver3ScreenI"/>
     </presenter>
     <stimuli>
+        <stimulus audioPath="Q1" identifier="Q1:Q1.wav:" pauseMs="0">
+            <tag>Pretest_Screen</tag>
+            <tag>Q1</tag>
+        </stimulus>
+        <stimulus audioPath="Q2" identifier="Q2:Q2.wav:" pauseMs="0">
+            <tag>Pretest_Screen</tag>
+            <tag>Q2</tag>
+        </stimulus>
+        <stimulus audioPath="Q3" identifier="Q3:Q3.wav:" pauseMs="0">
+            <tag>Pretest_Screen</tag>
+            <tag>Q3</tag>
+        </stimulus>
+        <stimulus audioPath="Q4" identifier="Q4:Q4.wav:" pauseMs="0">
+            <tag>Pretest_Screen</tag>
+            <tag>Q4</tag>
+        </stimulus>
+        <stimulus audioPath="Q5" identifier="Q5:Q5.wav:" pauseMs="0">
+            <tag>Pretest_Screen</tag>
+            <tag>Q5</tag>
+        </stimulus>
+        <stimulus audioPath="Q6" identifier="Q6:Q6.wav:h,H" pauseMs="0" ratingLabels="h,H">
+            <tag>Pretest_Screen</tag>
+            <tag>Q6</tag>
+        </stimulus>
+        <stimulus audioPath="Q6" correctResponses="test correct response" identifier="Q6:Q6.wav:test correct response,test incorrect response:test correct response" pauseMs="0" ratingLabels="test correct response,test incorrect response">
+            <tag>Pretest_Screen</tag>
+            <tag>Q6</tag>
+        </stimulus>
         <stimulus audioPath="03-12-07_1_p1_M19L_i_178668" code="03-12-07_1_p1_M19L_i_178668_context" identifier="out1ver1conarr:03-12-07_1_p1_M19L_i_178668_context:03-12-07_1_p1_M19L_i_178668.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>out1ver1Screen</tag>
             <tag>out1ver1conarr</tag>

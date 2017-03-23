@@ -36,7 +36,7 @@
                     <addPadding/>
                     <stimulusFreeText featureText="Vul één of enkele woorden in die volgens u het beste aan het eind van de zin passen." validationRegex=".{2,}"/>
                     <actionButton featureText="Volgende [tab + enter]" eventTag="Volgende [tab + enter]">
-                        <nextStimulus eventTag="nextStimulusZinnen afmaken" norepeat="true"/>
+                        <nextStimulus eventTag="nextStimulusZinnen afmaken" repeatIncorrect="false"/>
                     </actionButton>
                 </stimulusImage>
             </hasMoreStimulus>

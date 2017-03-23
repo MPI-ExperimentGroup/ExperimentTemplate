@@ -58,7 +58,7 @@
                     <actionButton featureText="next">
                         <endAudioRecorderTag eventTier="1" eventTag="the informant talks about the image"/>
                         <clearPage/>
-                        <nextStimulus eventTag="nextImage" norepeat="true"/>
+                        <nextStimulus eventTag="nextImage" repeatIncorrect="false"/>
                     </actionButton>
                 </stimulusImage>
             </hasMoreStimulus>
@@ -84,7 +84,7 @@
                     <actionButton featureText="next">
                         <endAudioRecorderTag eventTier="1" eventTag="the informant talks about the image"/>
                         <clearPage/>
-                        <nextStimulus eventTag="nextImage" norepeat="true"/>
+                        <nextStimulus eventTag="nextImage" repeatIncorrect="false"/>
                     </actionButton>
                 </stimulusImage>
             </hasMoreStimulus>
@@ -130,7 +130,7 @@
                         </stimulusImage>
                     </hasMoreStimulus>
                     <endOfStimulus>
-                        <nextStimulus eventTag="nextStimulusTask 1" norepeat="true"/>
+                        <nextStimulus eventTag="nextStimulusTask 1" repeatIncorrect="false"/>
                     </endOfStimulus>
                 </withMatchingStimulus>
             </hasMoreStimulus>
@@ -162,7 +162,7 @@
                             </actionButton>
                             <actionButton featureText="Next" eventTag="Next" hotKey="SPACE" styleName="hiddenBottomRight">
                                 <endAudioRecorderTag eventTier="1" eventTag="task 2 animated"/>
-                                <nextStimulus eventTag="nextStimulusTask 2" norepeat="true"/>
+                                <nextStimulus eventTag="nextStimulusTask 2" repeatIncorrect="false"/>
                             </actionButton>
                         </backgroundImage>
                     </responseCorrect>
@@ -178,7 +178,7 @@
                             </actionButton>
                             <actionButton featureText="Next" eventTag="Next" hotKey="SPACE" styleName="hiddenBottomRight">
                                 <endAudioRecorderTag eventTier="1" eventTag="task 2 animated"/>
-                                <nextStimulus eventTag="nextStimulusTask 2" norepeat="true"/>
+                                <nextStimulus eventTag="nextStimulusTask 2" repeatIncorrect="false"/>
                             </actionButton>
                         </backgroundImage>
                     </responseIncorrect>
@@ -191,7 +191,7 @@
                 <startAudioRecorderTag eventTier="4"/>
                 <actionButton featureText="Skip" eventTag="Skip" hotKey="SPACE" styleName="hiddenBottomRight">
                     <endAudioRecorderTag eventTier="1" eventTag="task 2 skipped"/>
-                    <nextStimulus eventTag="nextStimulusTask 2" norepeat="true"/>
+                    <nextStimulus eventTag="nextStimulusTask 2" repeatIncorrect="false"/>
                 </actionButton>
             </hasMoreStimulus>
             <endOfStimulus>

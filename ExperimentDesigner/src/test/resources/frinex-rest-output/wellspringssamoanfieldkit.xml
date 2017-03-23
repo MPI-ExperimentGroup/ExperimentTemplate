@@ -50,7 +50,7 @@
                 <stimulusLabel/>
                 <actionButton featureText="Neks">
                     <endAudioRecorderTag eventTier="1" eventTag=""/>
-                    <nextStimulus eventTag="nextStimulusMetadata" norepeat="true"/>
+                    <nextStimulus eventTag="nextStimulusMetadata" repeatIncorrect="false"/>
                 </actionButton>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -75,7 +75,7 @@
                     <actionButton featureText="Finis">
                         <endAudioRecorderTag eventTier="1" eventTag="Askem long man o woman wea i toktok se i talem nem blong wanem i stap lo foto long lanwis blong hem."/>
                         <clearPage/>
-                        <nextStimulus eventTag="nextImage" norepeat="true"/>
+                        <nextStimulus eventTag="nextImage" repeatIncorrect="false"/>
                     </actionButton>
                 </stimulusImage>
             </hasMoreStimulus>

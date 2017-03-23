@@ -50,7 +50,7 @@
                 <stimulusLabel/>
                 <actionButton featureText="Neks">
                     <endAudioRecorderTag eventTier="1" eventTag=""/>
-                    <nextStimulus eventTag="nextStimulusMetadata" norepeat="true"/>
+                    <nextStimulus eventTag="nextStimulusMetadata" repeatIncorrect="false"/>
                 </actionButton>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -120,7 +120,7 @@
                                                             <actionButton featureText="Finis">
                                                                 <endAudioRecorderTag eventTier="1" eventTag="Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis."/>
                                                                 <clearPage/>
-                                                                <nextStimulus eventTag="nextImage" norepeat="true"/>
+                                                                <nextStimulus eventTag="nextImage" repeatIncorrect="false"/>
                                                             </actionButton>
                                                         </stimulusImage>
                                                     </actionButton>
@@ -147,7 +147,7 @@
         <loadSdCardStimulus eventTag="Mekem ol foto" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusImageCapture featureText="Take Photo" msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80"/>
-                <nextStimulusButton featureText="Next" eventTag="nextImage" hotKey="SPACE" norepeat="true"/>
+                <nextStimulusButton featureText="Next" eventTag="nextImage" hotKey="SPACE" repeatIncorrect="false"/>
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="Finis olgeta"/>
