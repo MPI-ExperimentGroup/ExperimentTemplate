@@ -45,7 +45,7 @@ public class WizardAudioRecorderMetadataScreen extends AbstractWizardScreen {
         final List<Stimulus> stimuliList = new ArrayList<>();
         final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{"metadata"}));
         for (String metadataString : metadataStrings) {
-            final Stimulus stimulus = new Stimulus(metadataString, null, null, null, metadataString, null, 0, tagSet, null);
+            final Stimulus stimulus = new Stimulus(metadataString, null, null, null, metadataString, null, 0, tagSet, null, null);
             stimuliList.add(stimulus);
         }
         this.wizardScreenData.setStimuli(stimuliList);
@@ -101,7 +101,7 @@ public class WizardAudioRecorderMetadataScreen extends AbstractWizardScreen {
         endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTag, "");
         actionButtonFeature.getPresenterFeatureList().add(endAudioRecorderTagFeature);
         final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
-        nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+        nextStimulusFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
         nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusMetadata");
         actionButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
         hasMoreStimulusFeature.getPresenterFeatureList().add(actionButtonFeature);

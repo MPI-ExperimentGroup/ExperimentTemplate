@@ -41,7 +41,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         super(WizardScreenEnum.WizardVideoAudioOptionStimulusScreen, "VideoAudioOption", "VideoAudioOption", "VideoAudioOption");
     }
 
-    public WizardVideoAudioOptionStimulusScreen(String screenName, boolean centreScreen, String[] screenTextArray, boolean useCodeVideo, String[] randomStimuliTags, int maxStimuli, int repeatCount, int repeatRandomWindow, final boolean randomiseStimuli, int stimulusMsDelay, String responseOptionsLabelLeft, String responseOptionsLabelRight) {
+    public WizardVideoAudioOptionStimulusScreen(String screenName, boolean centreScreen, String[] screenTextArray, boolean useCodeVideo, boolean useCodeAudio, String[] randomStimuliTags, int maxStimuli, int repeatCount, int repeatRandomWindow, final boolean randomiseStimuli, int stimulusMsDelay, String responseOptionsLabelLeft, String responseOptionsLabelRight, boolean showHurryIndicator) {
         super(WizardScreenEnum.WizardVideoAudioOptionStimulusScreen, screenName, screenName, screenName);
         this.setScreenTitle(screenName);
         this.setCentreScreen(centreScreen);
@@ -53,27 +53,32 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
                 final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{screenName}));
                 final Stimulus stimulus;
 
-                final String[] splitScreenText = stimulusLine.split(":", 5);
+                final String[] splitScreenText = stimulusLine.split(":", 6);
                 tagSet.addAll(Arrays.asList(splitScreenText[0].split("/")));
                 final String audioPath;
                 final String codeVideoPath;
                 final String responseOptions;
-                if (useCodeVideo) {
+                final String stimuliCorrectResponses;
+                if (useCodeVideo || useCodeAudio) {
                     audioPath = splitScreenText[2].replaceAll(BASE_FILE_REGEX, "");
                     codeVideoPath = splitScreenText[1].replaceAll(BASE_FILE_REGEX, "");
                     responseOptions = splitScreenText[3];
+                    stimuliCorrectResponses = (splitScreenText.length > 4) ? splitScreenText[4] : null;
                 } else {
                     audioPath = splitScreenText[1].replaceAll(BASE_FILE_REGEX, "");
                     codeVideoPath = null;
-                    responseOptions = splitScreenText[2];
+                    responseOptions = (splitScreenText[2].length() > 0) ? splitScreenText[2] : null;
+                    stimuliCorrectResponses = (splitScreenText.length > 3) ? splitScreenText[3] : null;
                 }
-                stimulus = new Stimulus(stimulusLine, audioPath, null, null, null, codeVideoPath, 0, tagSet, responseOptions);
+
+                stimulus = new Stimulus(stimulusLine, audioPath, null, null, null, codeVideoPath, 0, tagSet, responseOptions, stimuliCorrectResponses);
                 stimuliList.add(stimulus);
             }
             wizardScreenData.setStimuli(stimuliList);
         }
 
-        this.wizardScreenData.setUseCodeVideo(useCodeVideo);
+        this.wizardScreenData.setScreenBoolean(0, useCodeVideo);
+        this.wizardScreenData.setScreenBoolean(1, useCodeAudio);
         this.wizardScreenData.setStimuliRandomTags(randomStimuliTags);
         this.wizardScreenData.setStimulusMsDelay(stimulusMsDelay);
         this.wizardScreenData.setStimuliCount(maxStimuli);
@@ -82,10 +87,109 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         this.wizardScreenData.setStimulusResponseLabelLeft(responseOptionsLabelLeft);
         this.wizardScreenData.setStimulusResponseLabelRight(responseOptionsLabelRight);
 //        this.stimulusResponseOptions = responseOptions;
-        this.wizardScreenData.setRandomiseStimuli(randomiseStimuli);
-        this.wizardScreenData.setShowProgress(true);
+        setRandomiseStimuli(randomiseStimuli);
+        setShowProgress(true);
+        setShowHurryIndicator(showHurryIndicator);
+        setAllowFreeText(false, null, null, null, null, null);
+        setRepeatIncorrect(false);
     }
 
+    final public void setUseCodeVideo(boolean useCodeVideo) {
+        this.wizardScreenData.setScreenBoolean(0, useCodeVideo);
+    }
+
+    final public void setUseCodeAudio(boolean useCodeAudio) {
+        this.wizardScreenData.setScreenBoolean(1, useCodeAudio);
+    }
+
+    final public void setRandomiseStimuli(boolean randomiseStimuli) {
+        this.wizardScreenData.setScreenBoolean(2, randomiseStimuli);
+    }
+
+    final public void setShowProgress(boolean showProgress) {
+        this.wizardScreenData.setScreenBoolean(3, showProgress);
+    }
+
+    final public void setShowHurryIndicator(boolean showHurryIndicator) {
+        this.wizardScreenData.setScreenBoolean(4, showHurryIndicator);
+    }
+
+    final public void setRepeatIncorrect(boolean showHurryIndicator) {
+        this.wizardScreenData.setScreenBoolean(6, showHurryIndicator);
+    }
+
+    final public void setAllowFreeText(boolean allowFreeText, String nextStimulusButton,
+            String validationRegex, String validationChallenge, final String allowedCharCodes, final String hotKey) {
+        this.wizardScreenData.setScreenBoolean(5, allowFreeText);
+        this.wizardScreenData.setScreenText(0, nextStimulusButton);
+        this.wizardScreenData.setScreenText(1, validationRegex);
+        this.wizardScreenData.setScreenText(2, validationChallenge);
+        this.wizardScreenData.setScreenText(3, allowedCharCodes);
+        this.wizardScreenData.setScreenText(4, hotKey);
+    }
+
+    private String getNextStimulusButton(WizardScreenData wizardScreenData) {
+        return wizardScreenData.getScreenText(0);
+    }
+
+    private String getFreeTextValidationRegex(WizardScreenData wizardScreenData) {
+        return wizardScreenData.getScreenText(1);
+    }
+
+    private String getFreeTextValidationChallenge(WizardScreenData wizardScreenData) {
+        return wizardScreenData.getScreenText(2);
+    }
+
+    private String getFreeTextAllowedCharCodes(WizardScreenData wizardScreenData) {
+        return wizardScreenData.getScreenText(3);
+    }
+
+    private String getFreeTextHotKey(WizardScreenData wizardScreenData) {
+        return wizardScreenData.getScreenText(4);
+    }
+
+    private boolean isUseCodeVideo(WizardScreenData wizardScreenData) {
+        return wizardScreenData.getScreenBoolean(0);
+    }
+
+    private boolean isUseCodeAudio(WizardScreenData wizardScreenData) {
+        return wizardScreenData.getScreenBoolean(1);
+    }
+
+    private boolean isRandomiseStimuli(WizardScreenData wizardScreenData) {
+        return wizardScreenData.getScreenBoolean(2);
+    }
+
+    private boolean isShowProgress(WizardScreenData wizardScreenData) {
+        return wizardScreenData.getScreenBoolean(3);
+    }
+
+    private boolean isShowHurryIndicator(WizardScreenData wizardScreenData) {
+        return wizardScreenData.getScreenBoolean(4);
+    }
+
+    private boolean isAllowFreeText(WizardScreenData wizardScreenData) {
+        return wizardScreenData.getScreenBoolean(5);
+    }
+
+    private boolean isRepeatIncorrect(WizardScreenData wizardScreenData) {
+        return wizardScreenData.getScreenBoolean(6);
+    }
+
+    @Override
+    public String getScreenBooleanInfo(int index) {
+        return new String[]{"Use Code Video", "Use Code Audio", "Randomise Stimuli", "Show Progress", "Show Hurry Indicator", "Allow Free Text"}[index];
+    }
+
+    @Override
+    public String getScreenTextInfo(int index) {
+        return new String[]{"Next Stimulus Button Label (when Allow Free Text is enabled)", "Validation Regex (when Allow Free Text is enabled)", "Validation Challenge (when Allow Free Text is enabled)", "Allowed Char Codes (when Allow Free Text is enabled)", "Next Button HotKey (when Allow Free Text is enabled)", ""}[index];
+    }
+
+    @Override
+    public String getNextButtonInfo(int index) {
+        throw new UnsupportedOperationException("Not supported.");
+    }
     private static final String BASE_FILE_REGEX = "\\.[a-zA-Z34]+$";
 
     @Override
@@ -111,7 +215,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
             experiment.getMetadata().add(new Metadata(metadataFieldname, metadataFieldname, ".*", ".", false, null));
         }
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(storedWizardScreenData.isRandomiseStimuli()));
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(isRandomiseStimuli(storedWizardScreenData)));
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, Integer.toString(storedWizardScreenData.getRepeatCount()));
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, Integer.toString(storedWizardScreenData.getRepeatRandomWindow()));
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(storedWizardScreenData.getStimuliCount()));
@@ -121,16 +225,24 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
 
-        if (storedWizardScreenData.getShowProgress()) {
+        if (isShowProgress(storedWizardScreenData)) {
+            // todo: remove after testing or parameterise
             hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
+        }
+        if (isAllowFreeText(storedWizardScreenData)) {
+            hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
         }
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusAudio, null);
 //        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
 //        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
+        imageFeature.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(isShowHurryIndicator(storedWizardScreenData)));
 //        imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
         imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
 
-        if (storedWizardScreenData.getUseCodeVideo()) {
+        boolean useCodeVideo = isUseCodeVideo(storedWizardScreenData);
+        boolean useCodeAudio = isUseCodeAudio(storedWizardScreenData);
+
+        if (useCodeVideo) {
             final PresenterFeature codeVideoFeature = new PresenterFeature(FeatureType.stimulusCodeVideo, null);
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
@@ -144,6 +256,17 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
             pauseFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
             codeVideoFeature.getPresenterFeatureList().add(pauseFeature);
 
+            pauseFeature.getPresenterFeatureList().add(imageFeature);
+        } else if (useCodeAudio) {
+            final PresenterFeature codeAudioFeature = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
+            codeAudioFeature.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>");
+            codeAudioFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
+            hasMoreStimulusFeature.getPresenterFeatureList().add(codeAudioFeature);
+            codeAudioFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+            codeAudioFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
+            final PresenterFeature pauseFeature = new PresenterFeature(FeatureType.pause, null);
+            pauseFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
+            codeAudioFeature.getPresenterFeatureList().add(pauseFeature);
             pauseFeature.getPresenterFeatureList().add(imageFeature);
         } else {
             hasMoreStimulusFeature.getPresenterFeatureList().add(imageFeature);
@@ -176,6 +299,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         presenterFeature = imageFeature;
 //        }
         presenterFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+
 //        if (stimulusResponseOptions != null) {
         final PresenterFeature ratingFooterButtonFeature = new PresenterFeature(FeatureType.stimulusRatingButton, null);
 //            ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabels, stimulusResponseOptions);
@@ -183,16 +307,39 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelRight, storedWizardScreenData.getStimulusResponseLabelRight());
         ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
         final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
-        nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+        nextStimulusFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, (isRepeatIncorrect(storedWizardScreenData)) ? "true" : "false");
         nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "NextStimulus" + storedWizardScreenData.getScreenTitle());
         ratingFooterButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
-        presenterFeature.getPresenterFeatureList().add(ratingFooterButtonFeature);
+        if (isAllowFreeText(storedWizardScreenData)) {
+            final PresenterFeature stimulusHasRatingOptions = new PresenterFeature(FeatureType.stimulusHasRatingOptions, null);
+            final PresenterFeature stimulusFreeText = new PresenterFeature(FeatureType.stimulusFreeText, getFreeTextValidationChallenge(storedWizardScreenData));
+            stimulusFreeText.addFeatureAttributes(FeatureAttribute.validationRegex, getFreeTextValidationRegex(storedWizardScreenData));
+            if (getFreeTextAllowedCharCodes(storedWizardScreenData) != null) {
+                stimulusFreeText.addFeatureAttributes(FeatureAttribute.allowedCharCodes, getFreeTextAllowedCharCodes(storedWizardScreenData));
+            }
+//            stimulusFreeText.addFeatureAttributes(FeatureAttribute.hotKey, getFreeTextHotKey(storedWizardScreenData));
+
+            final PresenterFeature responseCorrect = new PresenterFeature(FeatureType.responseCorrect, null);
+            final PresenterFeature responseIncorrect = new PresenterFeature(FeatureType.responseIncorrect, null);
+            responseCorrect.getPresenterFeatureList().add(ratingFooterButtonFeature);
+            responseIncorrect.getPresenterFeatureList().add(stimulusFreeText);
+            final PresenterFeature nextStimulusButton = new PresenterFeature(FeatureType.nextStimulusButton, getNextStimulusButton(storedWizardScreenData));
+            responseIncorrect.getPresenterFeatureList().add(nextStimulusButton);
+            nextStimulusButton.addFeatureAttributes(FeatureAttribute.eventTag, getNextStimulusButton(storedWizardScreenData));
+            nextStimulusButton.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
+            nextStimulusButton.addFeatureAttributes(FeatureAttribute.hotKey, getFreeTextHotKey(storedWizardScreenData));
+            stimulusHasRatingOptions.getPresenterFeatureList().add(responseCorrect);
+            stimulusHasRatingOptions.getPresenterFeatureList().add(responseIncorrect);
+            presenterFeature.getPresenterFeatureList().add(stimulusHasRatingOptions);
+        } else {
+            presenterFeature.getPresenterFeatureList().add(ratingFooterButtonFeature);
+        }
 //        } else {
 //            final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionButton, buttonLabelEventTag);
 //            nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, buttonLabelEventTag);
 //            nextButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
 //            final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
-//            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+//            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
 //            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + getScreenTitle());
 //            nextButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
 //            presenterFeature.getPresenterFeatureList().add(nextButtonFeature);

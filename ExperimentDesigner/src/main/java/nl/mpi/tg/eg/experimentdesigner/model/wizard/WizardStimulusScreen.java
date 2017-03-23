@@ -39,17 +39,41 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
 //    private WizardScreen endOfStimulisWizardScreen = null;
     public WizardStimulusScreen() {
         super(WizardScreenEnum.WizardStimulusScreen, "Stimulus", "Stimulus", "Stimulus");
-        wizardScreenData.setStimulusImageCapture(Boolean.FALSE);
+        setStimulusImageCapture(Boolean.FALSE);
     }
 
     public WizardStimulusScreen(String screenName) {
         super(WizardScreenEnum.WizardStimulusScreen, screenName, screenName, screenName);
-        wizardScreenData.setStimulusImageCapture(Boolean.FALSE);
+        setStimulusImageCapture(Boolean.FALSE);
+    }
+
+    final public void setStimulusImageCapture(boolean stimulusImageCapture) {
+        this.wizardScreenData.setScreenBoolean(0, stimulusImageCapture);
+    }
+
+    final public void setRandomiseStimuli(boolean randomiseStimuli) {
+        this.wizardScreenData.setScreenBoolean(1, randomiseStimuli);
+    }
+
+    final public void setFilePerStimulus(boolean filePerStimulus) {
+        this.wizardScreenData.setScreenBoolean(2, filePerStimulus);
+    }
+
+    private boolean isStimulusImageCapture(WizardScreenData wizardScreenData) {
+        return wizardScreenData.getScreenBoolean(0);
+    }
+
+    private boolean isRandomiseStimuli(WizardScreenData wizardScreenData) {
+        return wizardScreenData.getScreenBoolean(1);
+    }
+
+    private boolean isFilePerStimulus(WizardScreenData wizardScreenData) {
+        return wizardScreenData.getScreenBoolean(2);
     }
 
     @Override
     public String getScreenBooleanInfo(int index) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new String[]{"Stimulus Image Capture", "RandomiseStimuli", "File Per Stimulus"}[index];
     }
 
     @Override
@@ -71,7 +95,7 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
         }
         final List<Stimulus> stimuliList = this.wizardScreenData.getStimuli();
         for (final String stimulusTag : stimulusTagArray) {
-            final Stimulus stimulus = new Stimulus(stimulusTag, null, null, stimulusTag, stimulusTag, null, 0, new HashSet<>(Arrays.asList(new String[]{stimulusTag})), null);
+            final Stimulus stimulus = new Stimulus(stimulusTag, null, null, stimulusTag, stimulusTag, null, 0, new HashSet<>(Arrays.asList(new String[]{stimulusTag})), null, null);
             if (!stimuliList.contains(stimulus)) {
                 // keep the stimulus list unique while still ordered
                 stimuliList.add(stimulus);
@@ -83,24 +107,12 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
         wizardScreenData.setStimuliSubActions(Arrays.asList(featureValuesArray));
     }
 
-    public void setRandomiseStimuli(boolean randomiseStimuli) {
-        wizardScreenData.setRandomiseStimuli(randomiseStimuli);
-    }
-
-    public void setStimulusImageCapture(boolean stimulusImageCapture) {
-        wizardScreenData.setStimulusImageCapture(stimulusImageCapture);
-    }
-
     public void setMaxStimuli(int maxStimuli) {
         wizardScreenData.setStimuliCount(maxStimuli);
     }
 
     public void setMaxStimuliPerTag(int maxStimuliPerTag) {
         wizardScreenData.setMaxStimuliPerTag(maxStimuliPerTag);
-    }
-
-    public void setFilePerStimulus(boolean filePerStimulus) {
-        wizardScreenData.setFilePerStimulus(filePerStimulus);
     }
 
     public void setEnd_of_stimuli(String end_of_stimuli) {
@@ -133,13 +145,13 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
             loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuliPerTag, Integer.toString(storedWizardScreenData.getMaxStimuliPerTag()));
         }
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(storedWizardScreenData.isRandomiseStimuli()));
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(isRandomiseStimuli(storedWizardScreenData)));
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "1");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, "0");
         presenterFeatureList.add(loadStimuliFeature);
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
         // todo: add more reverter tags as required
-        if (storedWizardScreenData.getStimulusImageCapture()) {
+        if (isStimulusImageCapture(storedWizardScreenData)) {
             final PresenterFeature startRecorderFeature = new PresenterFeature(FeatureType.stimulusImageCapture, "Take Photo"); // todo: add a paramter for this string
             startRecorderFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
             startRecorderFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
@@ -150,23 +162,23 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
             final PresenterFeature startRecorderFeature = new PresenterFeature(FeatureType.startAudioRecorder, null);
             startRecorderFeature.addFeatureAttributes(FeatureAttribute.wavFormat, "true");
             startRecorderFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
-            startRecorderFeature.addFeatureAttributes(FeatureAttribute.filePerStimulus, (storedWizardScreenData.getFilePerStimulus()) ? "true" : "false");
+            startRecorderFeature.addFeatureAttributes(FeatureAttribute.filePerStimulus, (isFilePerStimulus(storedWizardScreenData)) ? "true" : "false");
             hasMoreStimulusFeature.getPresenterFeatureList().add(startRecorderFeature);
         }
         PresenterFeature previousPresenterFeature = hasMoreStimulusFeature;
-        if (!storedWizardScreenData.getStimulusImageCapture()) {
+        if (!isStimulusImageCapture(storedWizardScreenData)) {
             for (StimuliSubAction imageFeatureValues : storedWizardScreenData.getStimuliSubActions()) {
                 final PresenterFeature lanwisImage = addImageFeature(previousPresenterFeature, imageFeatureValues);
                 previousPresenterFeature = lanwisImage;
             }
             final PresenterFeature autoNextFeature = new PresenterFeature(FeatureType.nextStimulus, null);
             autoNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextImage");
-            autoNextFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+            autoNextFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
             previousPresenterFeature.getPresenterFeatureList().add(autoNextFeature);
         } else {
             final PresenterFeature autoNextFeature = new PresenterFeature(FeatureType.nextStimulusButton, "Next");
             autoNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextImage");
-            autoNextFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+            autoNextFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
             autoNextFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
             previousPresenterFeature.getPresenterFeatureList().add(autoNextFeature);
         }

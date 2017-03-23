@@ -65,18 +65,15 @@ public class WizardScreenData implements Serializable {
     private List<WizardScreenData> menuWizardScreenData = new ArrayList<>();
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<ScreenText> screenText = null;
-    @ElementCollection(targetClass=Boolean.class)
+    @ElementCollection(targetClass = Boolean.class)
     private List<Boolean> screenBooleans = null;
     private String[] nextButton = null;
     private String screenTitle = null;
     private String menuLabel = null;
     private String screenTag = null;
     private Boolean centreScreen = null;
-    private Boolean stimulusFreeText = null;
     private String freeTextValidationRegex = null;
     private String freeTextValidationMessage = null;
-    private Boolean sendData = null;
-    private Boolean filePerStimulus = null;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Stimulus> stimuli = null;
     private String[] stimuliRandomTags = null;
@@ -85,30 +82,22 @@ public class WizardScreenData implements Serializable {
     private String stimulusCodeMatch = null;
     private Integer stimulusCodeMsDelay = null;
     private String stimulusCodeFormat = null;
-    private Boolean randomiseStimuli = null;
     private Integer stimuliCount = null;
     private Integer maxStimuliPerTag = null;
     private Integer repeatCount = null;
     private Integer repeatRandomWindow = null;
     private String buttonLabelEventTag = null;
     private String backgroundImage = null;
-    private Boolean sdCardStimuli = null;
-    private Boolean allowHotkeyButtons = null;
     private String on_Error_Text = null;
     @Size(max = 2000)
     private String helpText = null;
-    private Boolean generateCompletionCode = null;
-    private Boolean allowUserRestart = null;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Metadata> metadataFields = null;
     private String stimulusResponseOptions = null;
     private String stimulusResponseLabelRight = null;
     private String stimulusResponseLabelLeft = null;
-    private Boolean showProgress = null;
-    private Boolean showHurryIndicator = null;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<StimuliSubAction> stimuliSubActions = null;
-    private Boolean stimulusImageCapture = null;
     private Integer taskIndex = null;
     private String groupMembers = null;
     private String groupCommunicationChannels = null;
@@ -306,30 +295,6 @@ public class WizardScreenData implements Serializable {
         this.stimulusCodeFormat = stimulusCodeFormat;
     }
 
-    public Boolean isRandomiseStimuli() {
-        return randomiseStimuli;
-    }
-
-    public void setRandomiseStimuli(Boolean randomiseStimuli) {
-        this.randomiseStimuli = randomiseStimuli;
-    }
-
-    public Boolean getAllowHotkeyButtons() {
-        return allowHotkeyButtons;
-    }
-
-    public void setAllowHotkeyButtons(Boolean allowHotkeyButtons) {
-        this.allowHotkeyButtons = allowHotkeyButtons;
-    }
-
-    public Boolean getStimulusFreeText() {
-        return stimulusFreeText;
-    }
-
-    public void setStimulusFreeText(Boolean stimulusFreeText) {
-        this.stimulusFreeText = stimulusFreeText;
-    }
-
     public String getFreeTextValidationRegex() {
         return freeTextValidationRegex;
     }
@@ -378,36 +343,12 @@ public class WizardScreenData implements Serializable {
         this.backgroundImage = backgroundImage;
     }
 
-    public Boolean isSdCardStimuli() {
-        return sdCardStimuli;
-    }
-
-    public void setSdCardStimuli(Boolean sdCardStimuli) {
-        this.sdCardStimuli = sdCardStimuli;
-    }
-
     public String getOn_Error_Text() {
         return on_Error_Text;
     }
 
     public void setOn_Error_Text(String on_Error_Text) {
         this.on_Error_Text = on_Error_Text;
-    }
-
-    public Boolean getGenerateCompletionCode() {
-        return generateCompletionCode;
-    }
-
-    public void setGenerateCompletionCode(Boolean generateCompletionCode) {
-        this.generateCompletionCode = generateCompletionCode;
-    }
-
-    public Boolean getAllowUserRestart() {
-        return allowUserRestart;
-    }
-
-    public void setAllowUserRestart(Boolean allowUserRestart) {
-        this.allowUserRestart = allowUserRestart;
     }
 
     public Integer getRepeatCount() {
@@ -457,52 +398,12 @@ public class WizardScreenData implements Serializable {
         this.stimulusResponseLabelLeft = stimulusResponseLabelLeft;
     }
 
-    public Boolean getShowProgress() {
-        return showProgress;
-    }
-
-    public void setShowProgress(Boolean showProgress) {
-        this.showProgress = showProgress;
-    }
-
-    public Boolean getShowHurryIndicator() {
-        return showHurryIndicator;
-    }
-
-    public void setShowHurryIndicator(Boolean showHurryIndicator) {
-        this.showHurryIndicator = showHurryIndicator;
-    }
-
-    public Boolean getSendData() {
-        return sendData;
-    }
-
-    public void setSendData(Boolean sendData) {
-        this.sendData = sendData;
-    }
-
     public List<StimuliSubAction> getStimuliSubActions() {
         return stimuliSubActions;
     }
 
     public void setStimuliSubActions(List<StimuliSubAction> stimuliSubActions) {
         this.stimuliSubActions = stimuliSubActions;
-    }
-
-    public Boolean getStimulusImageCapture() {
-        return stimulusImageCapture;
-    }
-
-    public void setStimulusImageCapture(Boolean stimulusImageCapture) {
-        this.stimulusImageCapture = stimulusImageCapture;
-    }
-
-    public Boolean getFilePerStimulus() {
-        return filePerStimulus;
-    }
-
-    public void setFilePerStimulus(Boolean filePerStimulus) {
-        this.filePerStimulus = filePerStimulus;
     }
 
     public Integer getTaskIndex() {

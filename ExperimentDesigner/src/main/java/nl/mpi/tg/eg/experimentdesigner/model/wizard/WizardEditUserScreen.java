@@ -41,7 +41,7 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
         this.wizardScreenData.setScreenText(0, dispalyText);
         this.wizardScreenData.setNextButton(new String[]{saveButtonLabel, alternateButtonLabel});
         this.wizardScreenData.setScreenText(1, postText);
-        this.wizardScreenData.setSendData(sendData);
+        this.wizardScreenData.setScreenBoolean(0, sendData);
         this.wizardScreenData.setOn_Error_Text(on_Error_Text);
         if (alternateNextScreen != null) {
             this.wizardScreenData.getMenuWizardScreenData().add(0, alternateNextScreen.getWizardScreenData());
@@ -50,7 +50,7 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenBooleanInfo(int index) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new String[]{"Send Data"}[index];
     }
 
     @Override
@@ -64,7 +64,7 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
     }
 
     public void setSendData(boolean sendData) {
-        this.wizardScreenData.setSendData(sendData);
+        this.wizardScreenData.setScreenBoolean(0, sendData);
     }
 
     public void setOn_Error_Text(String on_Error_Text) {
@@ -137,7 +137,7 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
 //            presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMetadataFields, null));
 //        }
         final PresenterFeature saveMetadataButton = new PresenterFeature(FeatureType.saveMetadataButton, storedWizardScreenData.getNextButton()[0]);
-        saveMetadataButton.addFeatureAttributes(FeatureAttribute.sendData, Boolean.toString(storedWizardScreenData.getSendData()));
+        saveMetadataButton.addFeatureAttributes(FeatureAttribute.sendData, Boolean.toString(storedWizardScreenData.getScreenBoolean(0)));
         saveMetadataButton.addFeatureAttributes(FeatureAttribute.networkErrorMessage, storedWizardScreenData.getOn_Error_Text());
         final PresenterFeature onErrorFeature = new PresenterFeature(FeatureType.onError, null);
         saveMetadataButton.getPresenterFeatureList().add(onErrorFeature);

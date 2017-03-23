@@ -58,11 +58,11 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             final int stimuliCount
     ) {
         super(WizardScreenEnum.WizardMultiParticipantScreen, screenName, screenName, screenName);
-        this.wizardScreenData.setRandomiseStimuli(true);
+        setRandomiseStimuli(true);
         this.wizardScreenData.setStimuliCount(stimuliCount);
         this.wizardScreenData.setStimulusMsDelay(0);
-        this.wizardScreenData.setStimulusFreeText(false);
-        this.wizardScreenData.setAllowHotkeyButtons(false);
+        setStimulusFreeText(false);
+        setAllowHotkeyButtons(false);
 //        this.wizardScreenData.setButtonLabelEventTag("");
         this.wizardScreenData.setCentreScreen(true);
         this.wizardScreenData.setGroupMembers(groupMembers);
@@ -76,14 +76,37 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         this.wizardScreenData.setScreenText(3, responseGridPhaseText);
         this.wizardScreenData.setScreenText(4, mutualFeedbackPhaseText);
         this.wizardScreenData.setScreenText(5, trainingDisplayPhaseText);
+        this.wizardScreenData.setScreenText(6, "");
+        setAllowedCharCodes("etuiopasdfgkzbnm");
     }
 
-//    public void setStimuliPath(String stimuliPath) {
-//        this.stimuliPath = stimuliPath;
-//    }
+    final public void setRandomiseStimuli(Boolean randomiseStimuli) {
+        this.wizardScreenData.setScreenBoolean(0, randomiseStimuli);
+    }
+
+    final public void setStimulusFreeText(Boolean stimulusFreeText) {
+        this.wizardScreenData.setScreenBoolean(1, stimulusFreeText);
+    }
+
+    final public void setAllowHotkeyButtons(Boolean allowHotkeyButtons) {
+        this.wizardScreenData.setScreenBoolean(2, allowHotkeyButtons);
+    }
+
+    private boolean isRandomiseStimuli(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenBoolean(0);
+    }
+
+    private String getAllowedCharCodes(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(7);
+    }
+
+    final public void setAllowedCharCodes(String allowedCharCodes) {
+        this.wizardScreenData.setScreenText(7, allowedCharCodes);
+    }
+
     @Override
     public String getScreenBooleanInfo(int index) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new String[]{"Randomise Stimuli", "Stimulus Free Text", "Allow Hotkey Buttons", "Allowed Char Codes"}[index];
     }
 
     @Override
@@ -109,7 +132,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
                 if (stimulusLine.contains(".png")) {
                     final String[] splitLine = stimulusLine.split(":");
 //                    tagSet.addAll(Arrays.asList(stimulusLine.split("/")));
-                    stimulus = new Stimulus(stimulusLine.replace(".png", ""), null, null, splitLine[0], null, splitLine[2], 0, tagSet, null);
+                    stimulus = new Stimulus(stimulusLine.replace(".png", ""), null, null, splitLine[0], null, splitLine[2], 0, tagSet, null, null);
                     stimuliList.add(stimulus);
                 }
             }
@@ -117,7 +140,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
     }
 
     public void setStimulusFreeText(boolean stimulusFreeText, String freeTextValidationRegex, String freeTextValidationMessage) {
-        this.wizardScreenData.setStimulusFreeText(stimulusFreeText);
+        this.wizardScreenData.setScreenBoolean(0, stimulusFreeText);
         this.wizardScreenData.setFreeTextValidationRegex(freeTextValidationRegex);
         this.wizardScreenData.setFreeTextValidationMessage(freeTextValidationMessage);
     }
@@ -199,7 +222,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
         final PresenterFeature nextStimulusP = new PresenterFeature(FeatureType.nextStimulus, null);
         producerNetworkActivity0.getPresenterFeatureList().add(nextStimulusP);
-        nextStimulusP.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+        nextStimulusP.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
         nextStimulusP.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusProducerNetworkActivity1" + storedWizardScreenData.getScreenTitle());
 
         producerNetworkActivity0.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[0]);
@@ -247,12 +270,12 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
 //        final PresenterFeature nextStimulusG = new PresenterFeature(FeatureType.nextStimulus, null);
 //        guesserNetworkActivity1.getPresenterFeatureList().add(nextStimulusG);
-//        nextStimulusG.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+//        nextStimulusG.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
 //        nextStimulusG.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusGuesserNetworkActivity1" + storedWizardScreenData.getScreenTitle());
         if (storedWizardScreenData.getTaskIndex() == 1) {
 //            final PresenterFeature nextStimulusX = new PresenterFeature(FeatureType.nextStimulus, null);
 //            guesserNetworkActivity0.getPresenterFeatureList().add(nextStimulusX);
-//            nextStimulusX.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+//            nextStimulusX.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
 //            nextStimulusX.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusFeatureTrainingDisplay" + storedWizardScreenData.getScreenTitle());
         }
         producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
@@ -273,7 +296,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.minStimuliPerTag, "1");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuliPerTag, "100");
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(storedWizardScreenData.isRandomiseStimuli()));
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(isRandomiseStimuli(storedWizardScreenData)));
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "1");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, "0");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(storedWizardScreenData.getStimuliCount()));
@@ -378,9 +401,11 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //        final String hotKeyString = "SPACE";
         presenterFeature = imageFeature;
         presenterFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-        if (storedWizardScreenData.getStimulusFreeText()) {
+        if (storedWizardScreenData.getScreenBoolean(0)) {
             final PresenterFeature stimulusFreeTextFeature = new PresenterFeature(FeatureType.stimulusFreeText, storedWizardScreenData.getFreeTextValidationMessage());
             stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.validationRegex, storedWizardScreenData.getFreeTextValidationRegex());
+            stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.allowedCharCodes, getAllowedCharCodes(storedWizardScreenData));
+            stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.hotKey, "ENTER");
             presenterFeature.getPresenterFeatureList().add(stimulusFreeTextFeature);
         }
         if (storedWizardScreenData.getStimulusResponseOptions() != null) {
@@ -390,7 +415,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelRight, storedWizardScreenData.getStimulusResponseLabelRight());
             ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
             final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
-            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
             nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "NextStimulus" + storedWizardScreenData.getScreenTitle());
             ratingFooterButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
             presenterFeature.getPresenterFeatureList().add(ratingFooterButtonFeature);
@@ -401,7 +426,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //                nextButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, hotKeyString);
 //            }
 //            final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
-//            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+//            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
 //            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus" + storedWizardScreenData.getScreenTitle());
 //            nextButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
 //            presenterFeature.getPresenterFeatureList().add(nextButtonFeature);
@@ -430,7 +455,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //        groupNetworkActivity2.getPresenterFeatureList().add(guesserRatingButtons);
 // temporary testing features
 //        final PresenterFeature nextStimulusFeature1 = new PresenterFeature(FeatureType.sendGroupMessageButton, "groupNetworkActivity1");
-//        nextStimulusFeature1.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+//        nextStimulusFeature1.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
 //        nextStimulusFeature1.addFeatureAttributes(FeatureAttribute.eventTag, "groupNetworkActivity1");
 //        nextStimulusFeature1.addFeatureAttributes(FeatureAttribute.hotKey, "Q");
 //        nextStimulusFeature1.addFeatureAttributes(FeatureAttribute.requestedPhase, "2");
@@ -457,7 +482,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //     , true, false, FeatureType.Contitionals.hasCorrectIncorrect
     protected PresenterFeature addGroupMessageButton(final String labelString, final String hotKey) {
         final PresenterFeature nextStimulusFeature2 = new PresenterFeature(FeatureType.sendGroupMessageButton, labelString);
-        nextStimulusFeature2.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+        nextStimulusFeature2.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
         nextStimulusFeature2.addFeatureAttributes(FeatureAttribute.eventTag, labelString);
         nextStimulusFeature2.addFeatureAttributes(FeatureAttribute.hotKey, hotKey);
         nextStimulusFeature2.addFeatureAttributes(FeatureAttribute.incrementPhase, "1");
