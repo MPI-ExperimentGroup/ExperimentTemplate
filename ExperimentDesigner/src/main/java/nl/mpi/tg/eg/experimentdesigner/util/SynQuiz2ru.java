@@ -335,7 +335,7 @@ public class SynQuiz2ru {
         final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{groupName}));
         final String[] itemArray = groupItems.split(",");
         for (String itemString : itemArray) {
-            final Stimulus stimulus = new Stimulus(itemString, null, null, null, itemString, null, 0, tagSet, null);
+            final Stimulus stimulus = new Stimulus(itemString, null, null, null, itemString, null, 0, tagSet, null, null);
             stimuliList.add(stimulus);
         }
     }

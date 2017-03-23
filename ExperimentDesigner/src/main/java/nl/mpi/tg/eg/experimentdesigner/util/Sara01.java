@@ -802,7 +802,7 @@ public class Sara01 {
         randomStimulusScreenP.getWizardScreenData().setStimulusCodeFormat("static/practice/wav/<code>");
         randomStimulusScreenP.setStimuliSet(stimuliPracticeArray);
         randomStimulusScreenP.getWizardScreenData().setStimuliCount(1000);
-        randomStimulusScreenP.getWizardScreenData().setRandomiseStimuli(true);
+        randomStimulusScreenP.setRandomiseStimuli(true);
         randomStimulusScreenP.getWizardScreenData().setStimulusMsDelay(1000);
         randomStimulusScreenP.getWizardScreenData().setStimulusCodeMsDelay(500);
         randomStimulusScreenP.getWizardScreenData().setStimulusResponseOptions("1,2,3,4,5,6,7");
@@ -821,7 +821,7 @@ public class Sara01 {
         randomStimulusScreenE.getWizardScreenData().setStimuliRandomTags(new String[]{"groupA", "groupB"});
         randomStimulusScreenE.getWizardScreenData().setStimulusCodeMatch("/([ET]_[0-9]+)_");
         randomStimulusScreenE.getWizardScreenData().setStimuliCount(1000);
-        randomStimulusScreenE.getWizardScreenData().setRandomiseStimuli(true);
+        randomStimulusScreenE.setRandomiseStimuli(true);
         randomStimulusScreenE.getWizardScreenData().setStimulusMsDelay(1000);
         randomStimulusScreenE.getWizardScreenData().setStimulusCodeMsDelay(500);
         randomStimulusScreenE.getWizardScreenData().setStimulusCodeFormat("static/experiment/wav/<code>");

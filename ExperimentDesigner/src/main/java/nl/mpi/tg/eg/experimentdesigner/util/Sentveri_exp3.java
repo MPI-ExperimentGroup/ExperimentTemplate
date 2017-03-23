@@ -109,14 +109,14 @@ public class Sentveri_exp3 {
         final PresenterFeature imageFeature = addStimulusImage(screenName, "image_" + screenName, "0");
         delayFeature.getPresenterFeatureList().add(imageFeature);
         final PresenterFeature responseZFeature = new PresenterFeature(FeatureType.actionFooterButton, "z");
-//        responseZFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+//        responseZFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
         responseZFeature.addFeatureAttributes(FeatureAttribute.eventTag, "responseZ");
         responseZFeature.addFeatureAttributes(FeatureAttribute.hotKey, "Z");
         responseZFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         responseZFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
         imageFeature.getPresenterFeatureList().add(responseZFeature);
         final PresenterFeature responseDotFeature = new PresenterFeature(FeatureType.actionFooterButton, ".");
-//        responseDotFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+//        responseDotFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
         responseDotFeature.addFeatureAttributes(FeatureAttribute.eventTag, "responseDot");
         responseDotFeature.addFeatureAttributes(FeatureAttribute.hotKey, "NUM_PERIOD");
         responseDotFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
@@ -135,7 +135,7 @@ public class Sentveri_exp3 {
         final PresenterFeature withoutTagFeature = new PresenterFeature(FeatureType.withoutTag, null);
         final PresenterFeature autoNextFeature = new PresenterFeature(FeatureType.nextStimulus, null);
         autoNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nonquestion");
-        autoNextFeature.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+        autoNextFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
         withoutTagFeature.getPresenterFeatureList().add(autoNextFeature);
         checkTagFeature.getPresenterFeatureList().add(withoutTagFeature);
         final PresenterFeature hasTagFeature = new PresenterFeature(FeatureType.hasTag, null);
@@ -147,7 +147,7 @@ public class Sentveri_exp3 {
         responseZFeature.addFeatureAttributes(FeatureAttribute.eventTag, "responseZ");
         responseZFeature.addFeatureAttributes(FeatureAttribute.hotKey, "Z");
         final PresenterFeature nextStimulusFeature1 = new PresenterFeature(FeatureType.nextStimulus, null);
-        nextStimulusFeature1.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+        nextStimulusFeature1.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
         nextStimulusFeature1.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus");
         responseZFeature.getPresenterFeatureList().add(nextStimulusFeature1);
         hasTagFeature.getPresenterFeatureList().add(responseZFeature);
@@ -156,7 +156,7 @@ public class Sentveri_exp3 {
         responseDotFeature.addFeatureAttributes(FeatureAttribute.eventTag, "responseDot");
         responseDotFeature.addFeatureAttributes(FeatureAttribute.hotKey, "NUM_PERIOD");
         final PresenterFeature nextStimulusFeature2 = new PresenterFeature(FeatureType.nextStimulus, null);
-        nextStimulusFeature2.addFeatureAttributes(FeatureAttribute.norepeat, "true");
+        nextStimulusFeature2.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
         nextStimulusFeature2.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus");
         responseDotFeature.getPresenterFeatureList().add(nextStimulusFeature2);
         hasTagFeature.getPresenterFeatureList().add(responseDotFeature);
@@ -172,7 +172,7 @@ public class Sentveri_exp3 {
                 tagSet.add("question");
             }
             final String labelString = "prac_" + Sentveri_exp3Data.practPictureIndex[index] + ((Sentveri_exp3Data.practQorNOT[index]) ? "_q" : "");
-            final Stimulus stimulus = new Stimulus(labelString, null, null, null, labelString, "" + Sentveri_exp3Data.practPictureIndex[index], (Sentveri_exp3Data.practslow[index]) ? 1000 : 0, tagSet, null);
+            final Stimulus stimulus = new Stimulus(labelString, null, null, null, labelString, "" + Sentveri_exp3Data.practPictureIndex[index], (Sentveri_exp3Data.practslow[index]) ? 1000 : 0, tagSet, null, null);
             stimuliList.add(stimulus);
         }
 
@@ -195,7 +195,7 @@ public class Sentveri_exp3 {
                         tagSet.add("question");
                     }
                     final String identifierString = tagString + "_" + setChar + "_" + Sentveri_exp3Data.pictureIndex[index] + ((Sentveri_exp3Data.QorNOT[index]) ? "_q" : "");
-                    final Stimulus stimulus = new Stimulus(identifierString, null, null, null, identifierString, "" + Sentveri_exp3Data.pictureIndex[index], (currendSlow[index]) ? 1000 : 0, tagSet, null);
+                    final Stimulus stimulus = new Stimulus(identifierString, null, null, null, identifierString, "" + Sentveri_exp3Data.pictureIndex[index], (currendSlow[index]) ? 1000 : 0, tagSet, null, null);
                     stimuliList.add(stimulus);
                 }
             }

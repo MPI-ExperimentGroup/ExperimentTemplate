@@ -25,6 +25,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
 import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardSynQuizIntroductionScreen;
@@ -177,7 +178,7 @@ public class SynQuiz2 {
         wizardData.addScreen(monthsScreen);
         wizardData.addScreen(sumbitScreen);
         wizardData.addScreen(reportScreen);
-
+        wizardData.addScreen(new WizardAboutScreen(true));
         return wizardData;
     }
     protected static final String COULD_NOT_CONTACT_THE_SERVER_PLEASE_CHECK = "Could not contact the server, please check your internet connection and try again.";
@@ -424,7 +425,7 @@ public class SynQuiz2 {
         final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{groupName}));
         final String[] itemArray = groupItems.split(",");
         for (String itemString : itemArray) {
-            final Stimulus stimulus = new Stimulus(itemString, null, null, null, itemString, null, 0, tagSet, null);
+            final Stimulus stimulus = new Stimulus(itemString, null, null, null, itemString, null, 0, tagSet, null, null);
             stimuliList.add(stimulus);
         }
     }

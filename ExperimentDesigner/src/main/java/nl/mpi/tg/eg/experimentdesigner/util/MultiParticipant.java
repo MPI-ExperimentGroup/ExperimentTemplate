@@ -55,7 +55,17 @@ public class MultiParticipant {
 //149,1,CD,4,9,2,medium,4.51,2,D,vlalp,0
 //85,1,AB,5,6,2,big,7.6,2,A,dauft,0
 //87,1,CD,5,6,2,big,7.6,2,C,potmik,1
+//    int[] possibleAngles = new int[]{30, 45, 60, 90, 120, 135, 150, 180, 210, 225, 240, 270, 300, 315, 330, 360};   
+//    private String[] getStimuli(){
+//        for (int textureIndex = 1; textureIndex < 29; textureIndex++) {
+//            
+//        }
+//    }
     private final String[] stimuliArray = new String[]{
+        //        "1.png:shape1:version1:moveRotated15",
+        //        "2.png:shape1:version1:version1zero:moveRotated15",
+        //        "3.png:shape1:version1:version1zero:version2:moveRotated15",
+        //        "4.png:shape1:version3:version3zero:moveRotated15",
         "1.png:shape1:moveRotated15",
         "2.png:shape1:moveRotated15",
         "3.png:shape1:moveRotated15",
@@ -506,20 +516,24 @@ public class MultiParticipant {
         "28.png:shape4:moveRotated240",
         "1.png:shape1:moveRotated255",
         "2.png:shape1:moveRotated255",
+        //        "3.png:shape1:version1:moveRotated255",
         "3.png:shape1:moveRotated255",
         "4.png:shape1:moveRotated255",
         "5.png:shape1:moveRotated255",
         "6.png:shape1:moveRotated255",
         "7.png:shape1:moveRotated255",
+        //        "8.png:shape2:version1:version2:moveRotated255",
         "8.png:shape2:moveRotated255",
         "9.png:shape2:moveRotated255",
         "10.png:shape2:moveRotated255",
         "11.png:shape2:moveRotated255",
+        //        "11.png:shape2:version2:version2zero:moveRotated255",
         "12.png:shape2:moveRotated255",
         "13.png:shape2:moveRotated255",
         "14.png:shape2:moveRotated255",
         "15.png:shape3:moveRotated255",
         "16.png:shape3:moveRotated255",
+        //        "16.png:shape3:version1:moveRotated255",
         "17.png:shape3:moveRotated255",
         "18.png:shape3:moveRotated255",
         "19.png:shape3:moveRotated255",

@@ -75,6 +75,7 @@ public class DefaultExperiments {
         experimentRepository.save(new KinOathExample().getExperiment());
         experimentRepository.save(new RosselFieldKit().getExperiment());
         experimentRepository.save(new WellspringsSamoanFieldKit().getExperiment());
+        experimentRepository.save(new Parcours().getExperiment());
         experimentRepository.save(new MultiParticipant().getExperiment());
         experimentRepository.save(new ManipulatedContours().getExperiment());
 
@@ -168,33 +169,33 @@ public class DefaultExperiments {
         final HashSet<String> tagSet = new HashSet<>();
         tagSet.add("number");
         tagSet.add("interesting");
-        stimuliList.add(new Stimulus("one", "one.mp3", "one.mp4", "one.jpg", "One", "One", 0, tagSet, null));
+        stimuliList.add(new Stimulus("one", "one.mp3", "one.mp4", "one.jpg", "One", "One", 0, tagSet, null, null));
         tagSet.add("multiple words");
-        stimuliList.add(new Stimulus("two", "two.mp3", "two.mp4", "two.jpg", "Two", "Two", 0, tagSet, null));
+        stimuliList.add(new Stimulus("two", "two.mp3", "two.mp4", "two.jpg", "Two", "Two", 0, tagSet, null, null));
         tagSet.clear();
         tagSet.add("FILLER_AUDIO");
-        stimuliList.add(new Stimulus("three", "three.mp3", "three.mp4", "three.jpg", "Three", "Three", 0, tagSet, null));
-        stimuliList.add(new Stimulus("four", "four.mp3", "four.mp4", "four.jpg", "Four", "Four", 0, tagSet, null));
+        stimuliList.add(new Stimulus("three", "three.mp3", "three.mp4", "three.jpg", "Three", "Three", 0, tagSet, null, null));
+        stimuliList.add(new Stimulus("four", "four.mp3", "four.mp4", "four.jpg", "Four", "Four", 0, tagSet, null, null));
         tagSet.clear();
         tagSet.add("NOISE_AUDIO");
-        stimuliList.add(new Stimulus("five", "five.mp3", "five.mp4", "five.jpg", "Five", "Five", 0, tagSet, null));
-        stimuliList.add(new Stimulus("six", "six.mp3", "six.mp4", "six.jpg", "Six", "Six", 0, tagSet, null));
+        stimuliList.add(new Stimulus("five", "five.mp3", "five.mp4", "five.jpg", "Five", "Five", 0, tagSet, null, null));
+        stimuliList.add(new Stimulus("six", "six.mp3", "six.mp4", "six.jpg", "Six", "Six", 0, tagSet, null, null));
         for (String tag : new String[]{"sim", "mid", "diff", "noise"}) {
             for (String label : new String[]{"rabbit", "cat", "muffin", "you"}) {
                 tagSet.clear();
                 tagSet.add(tag);
-                stimuliList.add(new Stimulus(tag + "_" + label, tag + "_" + label, tag + "_" + label, tag + "_" + label, tag + "_" + label + ".jpg", tag + "_" + label, 0, tagSet, null));
+                stimuliList.add(new Stimulus(tag + "_" + label, tag + "_" + label, tag + "_" + label, tag + "_" + label, tag + "_" + label + ".jpg", tag + "_" + label, 0, tagSet, null, null));
             }
         }
         tagSet.clear();
         for (String word : "termites scorpions centipedes".split(" ")) {
             for (String speaker : "Rocket Festival Thai ประเพณีบุญบั้งไฟ Lao ບຸນບັ້ງໄຟ".split(" ")) {
                 for (int i = 0; i < 6; i++) {
-                    stimuliList.add(new Stimulus(word + "_" + speaker + "_" + i, word + "_" + speaker + "_" + i + ".mp3", word + "_" + speaker + "_" + i + ".mp4", word + "_" + speaker + "_" + i + ".jpg", word + "_" + speaker + "_" + i, word + "_" + speaker + "_" + i, 0, new HashSet<>(Arrays.asList(new String[]{word, speaker})), null));
+                    stimuliList.add(new Stimulus(word + "_" + speaker + "_" + i, word + "_" + speaker + "_" + i + ".mp3", word + "_" + speaker + "_" + i + ".mp4", word + "_" + speaker + "_" + i + ".jpg", word + "_" + speaker + "_" + i, word + "_" + speaker + "_" + i, 0, new HashSet<>(Arrays.asList(new String[]{word, speaker})), null, null));
                 }
             }
         }
-        stimuliList.add(new Stimulus("bad chars", "bad chars", "bad chars", "bad chars", "bad chars", "bad chars", 0, new HashSet<>(Arrays.asList("bad chars bad_chars bad_chars  ( ) {\n    ( ) {\n         = .(\"[ \\\\t\\\\n\\\\x0B\\\\f\\\\r\\\\(\\\\)\\\\{\\\\};\\\\?\\\\/\\\\\\\\]\", \"_\");\n        this..add();\n    }         = .(\"[ \\\\t\\\\n\\\\x0B\\\\f\\\\r\\\\(\\\\)\\\\{\\\\};\\\\?\\\\/\\\\\\\\]\", \"_\");\n        this..add();\n    }".split(" "))), null));
+        stimuliList.add(new Stimulus("bad chars", "bad chars", "bad chars", "bad chars", "bad chars", "bad chars", 0, new HashSet<>(Arrays.asList("bad chars bad_chars bad_chars  ( ) {\n    ( ) {\n         = .(\"[ \\\\t\\\\n\\\\x0B\\\\f\\\\r\\\\(\\\\)\\\\{\\\\};\\\\?\\\\/\\\\\\\\]\", \"_\");\n        this..add();\n    }         = .(\"[ \\\\t\\\\n\\\\x0B\\\\f\\\\r\\\\(\\\\)\\\\{\\\\};\\\\?\\\\/\\\\\\\\]\", \"_\");\n        this..add();\n    }".split(" "))), null, null));
         experiment.appendUniqueStimuli(stimuliList);
     }
 

@@ -86,7 +86,7 @@ public class KinOathExample {
             "list_1/list_2:AV_happy.mpg:prevoicing9_e_440Hz_coda_k.wav:bik,bek",
             "list_2/list_3:AV_sad.mpg:prevoicing9_e_440Hz_coda_t.wav:bid,bed"
         };
-        final WizardVideoAudioOptionStimulusScreen list1234Screen = new WizardVideoAudioOptionStimulusScreen("VideoAudioOption", false, stimuliString, true, new String[]{"list_2"}, 1000, 1, 0, true, 100, "", "");
+        final WizardVideoAudioOptionStimulusScreen list1234Screen = new WizardVideoAudioOptionStimulusScreen("VideoAudioOption", false, stimuliString, true, false, new String[]{"list_2"}, 1000, 1, 0, true, 100, "", "", false);
         wizardData.addScreen(list1234Screen);
         list1234Screen.setBackWizardScreen(autoMenuPresenter);
         return wizardData;

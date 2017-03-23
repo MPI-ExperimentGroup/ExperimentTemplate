@@ -601,22 +601,35 @@ public class ManipulatedContours {
         wizardData.addScreen(agreementScreen);
         wizardData.addScreen(wizardTextScreen1);
         wizardData.addScreen(wizardTextScreen2);
-
-        final WizardVideoAudioOptionStimulusScreen out1ver1Screen = new WizardVideoAudioOptionStimulusScreen("out1ver1Screen", false, addCodePart(getStimuliOut1Ver1ConArr()),false,true,null, 1000, repeatCount(), 20, false, 100, "", "", true);
-        final WizardVideoAudioOptionStimulusScreen out1ver2Screen = new WizardVideoAudioOptionStimulusScreen("out1ver2Screen", false, addCodePart(getStimuliOut1Ver2ConArr()),false,true,null, 1000, repeatCount(), 20, false, 100, "", "", true);
-        final WizardVideoAudioOptionStimulusScreen out1ver3Screen = new WizardVideoAudioOptionStimulusScreen("out1ver3Screen", false, addCodePart(getStimuliOut1Ver3ConArr()),false,true,null, 1000, repeatCount(), 20, false, 100, "", "", true);
-        final WizardVideoAudioOptionStimulusScreen out2ver1Screen = new WizardVideoAudioOptionStimulusScreen("out2ver1Screen", false, addCodePart(getStimuliOut2Ver1ConArr()),false,true,null, 1000, repeatCount(), 20, false, 100, "", "", true);
-        final WizardVideoAudioOptionStimulusScreen out2ver2Screen = new WizardVideoAudioOptionStimulusScreen("out2ver2Screen", false, addCodePart(getStimuliOut2Ver2ConArr()),false,true,null, 1000, repeatCount(), 20, false, 100, "", "", true);
-        final WizardVideoAudioOptionStimulusScreen out2ver3Screen = new WizardVideoAudioOptionStimulusScreen("out2ver3Screen", false, addCodePart(getStimuliOut2Ver3ConArr()),false,true,null, 1000, repeatCount(), 20, false, 100, "", "", true);
-        final WizardVideoAudioOptionStimulusScreen out1ver1ScreenI = new WizardVideoAudioOptionStimulusScreen("out1ver1ScreenI", false, invertButtons(addCodePart(getStimuliOut1Ver1ConArr())),false,true,null, 1000, repeatCount(), 20, false, 100, "", "", true);
-        final WizardVideoAudioOptionStimulusScreen out1ver2ScreenI = new WizardVideoAudioOptionStimulusScreen("out1ver2ScreenI", false, invertButtons(addCodePart(getStimuliOut1Ver2ConArr())),false,true,null, 1000, repeatCount(), 20, false, 100, "", "", true);
-        final WizardVideoAudioOptionStimulusScreen out1ver3ScreenI = new WizardVideoAudioOptionStimulusScreen("out1ver3ScreenI", false, invertButtons(addCodePart(getStimuliOut1Ver3ConArr())),false,true,null, 1000, repeatCount(), 20, false, 100, "", "", true);
-        final WizardVideoAudioOptionStimulusScreen out2ver1ScreenI = new WizardVideoAudioOptionStimulusScreen("out2ver1ScreenI", false, invertButtons(addCodePart(getStimuliOut2Ver1ConArr())),false,true,null, 1000, repeatCount(), 20, false, 100, "", "", true);
-        final WizardVideoAudioOptionStimulusScreen out2ver2ScreenI = new WizardVideoAudioOptionStimulusScreen("out2ver2ScreenI", false, invertButtons(addCodePart(getStimuliOut2Ver2ConArr())),false,true,null, 1000, repeatCount(), 20, false, 100, "", "", true);
-        final WizardVideoAudioOptionStimulusScreen out2ver3ScreenI = new WizardVideoAudioOptionStimulusScreen("out2ver3ScreenI", false, invertButtons(addCodePart(getStimuliOut2Ver3ConArr())),false,true,null, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final String[] pretestScreenStimuli = new String[]{
+            // (Q1-Q5), whereas Q6 can only be answered with "h" or "H"
+            "Q1:Q1.wav:",
+            "Q2:Q2.wav:",
+            "Q3:Q3.wav:",
+            "Q4:Q4.wav:",
+            "Q5:Q5.wav:",
+            "Q6:Q6.wav:h,H",
+            "Q6:Q6.wav:test correct response,test incorrect response:test correct response"};
+        final WizardVideoAudioOptionStimulusScreen pretestScreen = new WizardVideoAudioOptionStimulusScreen("Pretest Screen", false, pretestScreenStimuli, false, false, null, 1000, 1, 20, false, 100, "", "", true);
+        pretestScreen.setAllowFreeText(true, "Next [TAB + ENTER]", ".{3,}", "Entrez au moins trois lettres.", null, "ENTER"
+                + "");
+        pretestScreen.setRepeatIncorrect(true);
+        final WizardVideoAudioOptionStimulusScreen out1ver1Screen = new WizardVideoAudioOptionStimulusScreen("out1ver1Screen", false, addCodePart(getStimuliOut1Ver1ConArr()), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final WizardVideoAudioOptionStimulusScreen out1ver2Screen = new WizardVideoAudioOptionStimulusScreen("out1ver2Screen", false, addCodePart(getStimuliOut1Ver2ConArr()), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final WizardVideoAudioOptionStimulusScreen out1ver3Screen = new WizardVideoAudioOptionStimulusScreen("out1ver3Screen", false, addCodePart(getStimuliOut1Ver3ConArr()), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final WizardVideoAudioOptionStimulusScreen out2ver1Screen = new WizardVideoAudioOptionStimulusScreen("out2ver1Screen", false, addCodePart(getStimuliOut2Ver1ConArr()), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final WizardVideoAudioOptionStimulusScreen out2ver2Screen = new WizardVideoAudioOptionStimulusScreen("out2ver2Screen", false, addCodePart(getStimuliOut2Ver2ConArr()), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final WizardVideoAudioOptionStimulusScreen out2ver3Screen = new WizardVideoAudioOptionStimulusScreen("out2ver3Screen", false, addCodePart(getStimuliOut2Ver3ConArr()), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final WizardVideoAudioOptionStimulusScreen out1ver1ScreenI = new WizardVideoAudioOptionStimulusScreen("out1ver1ScreenI", false, invertButtons(addCodePart(getStimuliOut1Ver1ConArr())), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final WizardVideoAudioOptionStimulusScreen out1ver2ScreenI = new WizardVideoAudioOptionStimulusScreen("out1ver2ScreenI", false, invertButtons(addCodePart(getStimuliOut1Ver2ConArr())), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final WizardVideoAudioOptionStimulusScreen out1ver3ScreenI = new WizardVideoAudioOptionStimulusScreen("out1ver3ScreenI", false, invertButtons(addCodePart(getStimuliOut1Ver3ConArr())), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final WizardVideoAudioOptionStimulusScreen out2ver1ScreenI = new WizardVideoAudioOptionStimulusScreen("out2ver1ScreenI", false, invertButtons(addCodePart(getStimuliOut2Ver1ConArr())), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final WizardVideoAudioOptionStimulusScreen out2ver2ScreenI = new WizardVideoAudioOptionStimulusScreen("out2ver2ScreenI", false, invertButtons(addCodePart(getStimuliOut2Ver2ConArr())), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final WizardVideoAudioOptionStimulusScreen out2ver3ScreenI = new WizardVideoAudioOptionStimulusScreen("out2ver3ScreenI", false, invertButtons(addCodePart(getStimuliOut2Ver3ConArr())), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
         //        list1234Screen.setStimulusResponseOptions("1,2,3,4,5");
 //        list1234Screen.setStimulusResponseLabelLeft("très probable négatif");
 //        list1234Screen.setStimulusResponseLabelRight("très probable positif");
+        wizardData.addScreen(pretestScreen);
         wizardData.addScreen(out1ver1Screen);
         wizardData.addScreen(out1ver2Screen);
         wizardData.addScreen(out1ver3Screen);
@@ -644,9 +657,10 @@ public class ManipulatedContours {
         agreementScreen.setNextWizardScreen(wizardTextScreen1);
         WizardMenuScreen menuScreen = new WizardMenuScreen("temporary menu", "temporary menu", "temporary menu");
         wizardData.addScreen(menuScreen);
-        wizardTextScreen1.setNextWizardScreen(wizardTextScreen2);
+        wizardTextScreen1.setNextWizardScreen(pretestScreen);
+        pretestScreen.setNextWizardScreen(wizardTextScreen2);
         wizardTextScreen2.setNextWizardScreen(menuScreen);
-        
+
         menuScreen.addTargetScreen(out1ver1Screen);
         menuScreen.addTargetScreen(out1ver2Screen);
         menuScreen.addTargetScreen(out1ver3Screen);

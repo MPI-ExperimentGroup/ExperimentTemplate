@@ -767,7 +767,7 @@ public class RdExperiment02 {
         list1234Screen.setStimulusFreeText(true, ".{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
         list1234Screen.getWizardScreenData().setStimulusResponseLabelLeft("");
         list1234Screen.getWizardScreenData().setStimulusResponseLabelRight("");
-        list1234Screen.getWizardScreenData().setAllowHotkeyButtons(false);
+        list1234Screen.setAllowHotkeyButtons(false);
         wizardData.addScreen(list1234Screen);
 
         // @todo: remove the restart button

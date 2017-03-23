@@ -47,7 +47,7 @@ public class DobesAnnotator {
 
         tagSet.add("videotag");
         for (int i = 0; i < 10; i++) {
-            final Stimulus stimulus = new Stimulus("videotag" + i, null, null, "videotag" + i + ".png", "videotag" + i, null, 0, tagSet, null);
+            final Stimulus stimulus = new Stimulus("videotag" + i, null, null, "videotag" + i + ".png", "videotag" + i, null, 0, tagSet, null, null);
             final URL resourceUrl = DefaultExperiments.class.getResource("/stimuli/videotag" + (i + 1) + ".png");
             File file = new File(resourceUrl.getFile());
             byte[] fileBytes = new byte[(int) file.length()];
@@ -66,14 +66,14 @@ public class DobesAnnotator {
             for (String label : new String[]{"rabbit", "cat", "muffin", "you"}) {
                 tagSet.clear();
                 tagSet.add(tag);
-                stimuliList.add(new Stimulus(tag + "_" + label, tag + "_" + label, tag + "_" + label, tag + "_" + label + ".jpg", tag + "_" + label, tag + "_" + label, 0, tagSet, null));
+                stimuliList.add(new Stimulus(tag + "_" + label, tag + "_" + label, tag + "_" + label, tag + "_" + label + ".jpg", tag + "_" + label, tag + "_" + label, 0, tagSet, null, null));
             }
         }
         tagSet.clear();
         for (String word : "termites scorpions centipedes".split(" ")) {
             for (String speaker : "Rocket Festival Thai ประเพณีบุญบั้งไฟ Lao ບຸນບັ້ງໄຟ".split(" ")) {
                 for (int i = 0; i < 6; i++) {
-                    stimuliList.add(new Stimulus(word + "_" + speaker + "_" + i, word + "_" + speaker + "_" + i + ".mp3", word + "_" + speaker + "_" + i + ".mp4", word + "_" + speaker + "_" + i + ".jpg", word + "_" + speaker + "_" + i, word + "_" + speaker + "_" + i, 0, new HashSet<>(Arrays.asList(new String[]{word, speaker})), null));
+                    stimuliList.add(new Stimulus(word + "_" + speaker + "_" + i, word + "_" + speaker + "_" + i + ".mp3", word + "_" + speaker + "_" + i + ".mp4", word + "_" + speaker + "_" + i + ".jpg", word + "_" + speaker + "_" + i, word + "_" + speaker + "_" + i, 0, new HashSet<>(Arrays.asList(new String[]{word, speaker})), null, null));
                 }
             }
         }

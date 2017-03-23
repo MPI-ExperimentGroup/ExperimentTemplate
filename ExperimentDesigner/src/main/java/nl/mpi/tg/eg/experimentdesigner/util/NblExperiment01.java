@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experimentdesigner.util;
 import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
@@ -65,9 +66,10 @@ public class NblExperiment01 {
         wizardEditUserScreen.setScreenTitle("Gegevens");
         wizardEditUserScreen.setMenuLabel("Terug");
         wizardEditUserScreen.setScreenTag("Gegevens");
-        wizardEditUserScreen.setSaveButtonLabel("Volgende");
+        wizardEditUserScreen.setNextButton("Volgende");
         wizardEditUserScreen.setSendData(true);
-        wizardEditUserScreen.setMetadataScreen(true);
+        wizardEditUserScreen.setOn_Error_Text("Could not contact the server, please check your internet connection and try again.");
+//        wizardEditUserScreen.setMetadataScreen(true);
 //        wizardData.setAgeField(true);
         wizardEditUserScreen.setCustomFields(new String[]{
             "workerId:Proefpersoon id:.*:.",
@@ -83,12 +85,12 @@ public class NblExperiment01 {
 
         final WizardRandomStimulusScreen list1234Screen = new WizardRandomStimulusScreen("Stimulus", false, stimuliString,
                 new String[]{"list_1", "list_2", "list_3", "list_4"}, 1000, true, null, 0, 0, null, null, null, null, "volgende [ spatiebalk ]");
-        list1234Screen.setStimulusResponseOptions("1,2,3,4,5");
-        list1234Screen.setStimulusResponseLabelLeft("helemaal niet plausibel");
-        list1234Screen.setStimulusResponseLabelRight("heel erg plausibel");
+        list1234Screen.getWizardScreenData().setStimulusResponseOptions("1,2,3,4,5");
+        list1234Screen.getWizardScreenData().setStimulusResponseLabelLeft("helemaal niet plausibel");
+        list1234Screen.getWizardScreenData().setStimulusResponseLabelRight("heel erg plausibel");
         wizardData.addScreen(list1234Screen);
 
-        WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, true,
+        WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, true, true,
                 "Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop.",
                 "Opnieuw beginnen",
                 "Finished",
@@ -104,7 +106,9 @@ public class NblExperiment01 {
         wizardTextScreen.setBackWizardScreen(agreementScreen);
         list1234Screen.setBackWizardScreen(wizardEditUserScreen);
         //completionScreen.setBackWizardScreen(list1234Screen);
-
+        final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("Over", false);
+        wizardAboutScreen.setBackWizardScreen(wizardEditUserScreen);
+        wizardData.addScreen(wizardAboutScreen);
         return wizardData;
     }
 
