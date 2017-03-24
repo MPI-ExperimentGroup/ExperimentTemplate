@@ -176,7 +176,7 @@ public class TimedStimulusView extends ComplexView {
         ((horizontalPanel != null) ? horizontalPanel : outerPanel).add(htmlPanel);
     }
 
-    public StimulusFreeText addStimulusFreeText(final String validationRegex, final String validationChallenge, final String excludedCharCodes, final SingleShotEventListner enterKeyListner, final int hotKey) {
+    public StimulusFreeText addStimulusFreeText(final String validationRegex, final String validationChallenge, final String allowedCharCodes, final SingleShotEventListner enterKeyListner, final int hotKey) {
         final Label errorLabel = new Label(validationChallenge);
         errorLabel.setStylePrimaryName("metadataErrorMessage");
         errorLabel.setVisible(false);
@@ -192,8 +192,8 @@ public class TimedStimulusView extends ComplexView {
                 if (charCode > -1 && charCode == hotKey) {
                     event.getNativeEvent().preventDefault();
                     enterKeyListner.eventFired();
-                } else if (excludedCharCodes != null) {
-                    if (-1 < excludedCharCodes.indexOf(charCode)) {
+                } else if (allowedCharCodes != null) {
+                    if (0 > allowedCharCodes.indexOf(charCode)) {
                         event.getNativeEvent().preventDefault();
                     }
                 }
@@ -208,7 +208,7 @@ public class TimedStimulusView extends ComplexView {
 
             @Override
             public boolean isValid() {
-                if (getValue().matches(validationRegex)) {
+                if (validationRegex == null || getValue().matches(validationRegex)) {
                     textBox.setStylePrimaryName("metadataOK");
                     errorLabel.setVisible(false);
                     return true;
