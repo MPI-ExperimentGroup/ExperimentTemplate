@@ -46,6 +46,8 @@ public class LocalStorage {
 //    private final String FAILED_DATA;
     protected final String MAX_SCORE;
     protected final String GAMES_PLAYED;
+    protected final String TURNS_PLAYED;
+    protected final String CURRENT_SCORE;
     private final String COMPLETION_CODE;
     final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
 
@@ -59,6 +61,8 @@ public class LocalStorage {
 //        FAILED_DATA = messages.appNameInternal() + ".FailedData.";
         MAX_SCORE = messages.appNameInternal() + ".maxScore";
         GAMES_PLAYED = messages.appNameInternal() + ".gamesPlayed";
+        TURNS_PLAYED = messages.appNameInternal() + ".turnsPlayed";
+        CURRENT_SCORE = messages.appNameInternal() + ".currentScore";
         COMPLETION_CODE = messages.appNameInternal() + ".completionCode";
     }
 
@@ -184,6 +188,8 @@ public class LocalStorage {
         }
         userData.updateBestScore(getCleanStoredDouble(USER_RESULTS + userData.getUserId().toString() + "." + MAX_SCORE));
         userData.setGamesPlayed(getCleanStoredInt(USER_RESULTS + userData.getUserId().toString() + "." + GAMES_PLAYED));
+        userData.setCurrentScore(getCleanStoredInt(USER_RESULTS + userData.getUserId().toString() + "." + CURRENT_SCORE));
+        userData.setTurnsPlayed(getCleanStoredInt(USER_RESULTS + userData.getUserId().toString() + "." + TURNS_PLAYED));
         return userData;
     }
 
@@ -217,6 +223,14 @@ public class LocalStorage {
         }
     }
 
+    public void storeUserScore(UserResults userResults) {
+        loadStorage();
+        dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + MAX_SCORE, Double.toString(userResults.getUserData().getBestScore()));
+        dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + GAMES_PLAYED, Integer.toString(userResults.getUserData().getGamesPlayed()));
+        dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + CURRENT_SCORE, Integer.toString(userResults.getUserData().getCurrentScore()));
+        dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + TURNS_PLAYED, Integer.toString(userResults.getUserData().getTurnsPlayed()));
+    }
+
     public void storeData(UserResults userResults) {
         loadStorage();
         if (dataStore != null) {
@@ -224,8 +238,7 @@ public class LocalStorage {
                 dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + metadataField.getPostName(), userResults.getUserData().getMetadataValue(metadataField));
             }
         }
-        dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + MAX_SCORE, Double.toString(userResults.getUserData().getBestScore()));
-        dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + GAMES_PLAYED, Integer.toString(userResults.getUserData().getGamesPlayed()));
+        storeUserScore(userResults);
         if ((Window.Location.getParameter("testuser") == null)) {
             // only store the last user id if the id is not a URL defined test user
             dataStore.setItem(LAST_USER_ID, userResults.getUserData().getUserId().toString());
