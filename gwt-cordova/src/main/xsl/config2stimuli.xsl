@@ -84,6 +84,7 @@
                     <xsl:value-of select="if(@imagePath) then concat('&quot;', @imagePath, '&quot;') else 'null'" />
                 </xsl:if>
                 <xsl:value-of select="if(@ratingLabels) then concat(',&quot;', @ratingLabels, '&quot;') else ',null'" />
+                <xsl:value-of select="if(@correctResponses) then concat(',&quot;', @correctResponses, '&quot;') else ',null'" />
                 <xsl:text>)</xsl:text>
                 <xsl:if test="position() != last()">
                     <xsl:text>,
@@ -125,8 +126,9 @@
             final private String videoPath;
             final private String imagePath;
             final private String ratingLabels;
+            final private String correctResponses;
 
-            public GeneratedStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels) {
+            public GeneratedStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses) {
             this.uniqueId = uniqueId;
             this.tags = Arrays.asList(tags);
             this.label = label;
@@ -136,9 +138,10 @@
             this.videoPath = videoPath;
             this.imagePath = imagePath;
             this.ratingLabels = ratingLabels;
+            this.correctResponses = correctResponses;
             }
             
-            public GeneratedStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String ratingLabels) {
+            public GeneratedStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String ratingLabels, String correctResponses) {
             this.uniqueId = (uniqueId != null) ? uniqueId : code;
             this.tags = Arrays.asList(tags);
             this.label = label;
@@ -148,6 +151,7 @@
             this.videoPath = null;
             this.imagePath = null;
             this.ratingLabels = ratingLabels;
+            this.correctResponses = correctResponses;
             }
     
             public String getUniqueId() {
@@ -168,6 +172,10 @@
             
             public String getRatingLabels() {
             return ratingLabels;
+            }
+            
+            public String getCorrectResponses() {
+            return correctResponses;
             }
             
             public int getPauseMs() {
@@ -200,6 +208,10 @@
             
             public boolean hasRatingLabels() {
             return ratingLabels != null;
+            }
+            
+            public boolean hasCorrectResponses() {
+            return correctResponses != null;
             }
             
             @Override
