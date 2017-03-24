@@ -32,6 +32,9 @@ public class UserData {
     private final UserId userId;
     private double bestScore = 0;
     private int gamesPlayed = 0;
+    private int currentScore = 0;
+    private int turnsPlayed = 0;
+    private Boolean currentIsCorrect = null;
 
     public UserData() {
         this.userId = new UserId();
@@ -75,6 +78,46 @@ public class UserData {
 
     public void addGamePlayed() {
         this.gamesPlayed++;
+    }
+
+    public void setCurrentScore(int currentScore) {
+        this.currentScore = currentScore;
+    }
+
+    public void setTurnsPlayed(int turnsPlayed) {
+        this.turnsPlayed = turnsPlayed;
+    }
+
+    public int getCurrentScore() {
+        return currentScore;
+    }
+
+    public void clearCurrentScore() {
+        this.currentScore = 0;
+    }
+
+    public void clearCurrentResponse() {
+        this.currentIsCorrect = null;
+    }
+
+    public int getTurnsPlayed() {
+        return turnsPlayed;
+    }
+
+    public void addTurnPlayed(boolean currentIsCorrect) {
+        this.turnsPlayed++;
+        this.currentIsCorrect = currentIsCorrect;
+        if (currentIsCorrect) {
+            this.currentScore++;
+        }
+    }
+
+    public boolean isCurrentCorrect() {
+        return (currentIsCorrect != null) ? currentIsCorrect : false;
+    }
+
+    public boolean isCurrentIncorrect() {
+        return (currentIsCorrect != null) ? currentIsCorrect == false : false;
     }
 
     public double getBestScore() {
