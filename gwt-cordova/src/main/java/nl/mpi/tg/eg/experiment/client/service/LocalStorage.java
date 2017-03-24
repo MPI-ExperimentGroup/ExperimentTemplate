@@ -46,7 +46,7 @@ public class LocalStorage {
 //    private final String FAILED_DATA;
     protected final String MAX_SCORE;
     protected final String GAMES_PLAYED;
-    protected final String TURNS_PLAYED;
+    protected final String CURRENT_POTENTIAL;
     protected final String CURRENT_SCORE;
     private final String COMPLETION_CODE;
     final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
@@ -61,7 +61,7 @@ public class LocalStorage {
 //        FAILED_DATA = messages.appNameInternal() + ".FailedData.";
         MAX_SCORE = messages.appNameInternal() + ".maxScore";
         GAMES_PLAYED = messages.appNameInternal() + ".gamesPlayed";
-        TURNS_PLAYED = messages.appNameInternal() + ".turnsPlayed";
+        CURRENT_POTENTIAL = messages.appNameInternal() + ".currentPotential";
         CURRENT_SCORE = messages.appNameInternal() + ".currentScore";
         COMPLETION_CODE = messages.appNameInternal() + ".completionCode";
     }
@@ -189,7 +189,7 @@ public class LocalStorage {
         userData.updateBestScore(getCleanStoredDouble(USER_RESULTS + userData.getUserId().toString() + "." + MAX_SCORE));
         userData.setGamesPlayed(getCleanStoredInt(USER_RESULTS + userData.getUserId().toString() + "." + GAMES_PLAYED));
         userData.setCurrentScore(getCleanStoredInt(USER_RESULTS + userData.getUserId().toString() + "." + CURRENT_SCORE));
-        userData.setTurnsPlayed(getCleanStoredInt(USER_RESULTS + userData.getUserId().toString() + "." + TURNS_PLAYED));
+        userData.setPotentialScore(getCleanStoredInt(USER_RESULTS + userData.getUserId().toString() + "." + CURRENT_POTENTIAL));
         return userData;
     }
 
@@ -228,7 +228,7 @@ public class LocalStorage {
         dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + MAX_SCORE, Double.toString(userResults.getUserData().getBestScore()));
         dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + GAMES_PLAYED, Integer.toString(userResults.getUserData().getGamesPlayed()));
         dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + CURRENT_SCORE, Integer.toString(userResults.getUserData().getCurrentScore()));
-        dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + TURNS_PLAYED, Integer.toString(userResults.getUserData().getTurnsPlayed()));
+        dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + CURRENT_POTENTIAL, Integer.toString(userResults.getUserData().getPotentialScore()));
     }
 
     public void storeData(UserResults userResults) {

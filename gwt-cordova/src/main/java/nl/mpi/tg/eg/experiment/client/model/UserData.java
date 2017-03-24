@@ -33,7 +33,7 @@ public class UserData {
     private double bestScore = 0;
     private int gamesPlayed = 0;
     private int currentScore = 0;
-    private int turnsPlayed = 0;
+    private int potentialScore = 0;
     private Boolean currentIsCorrect = null;
 
     public UserData() {
@@ -84,8 +84,8 @@ public class UserData {
         this.currentScore = currentScore;
     }
 
-    public void setTurnsPlayed(int turnsPlayed) {
-        this.turnsPlayed = turnsPlayed;
+    public void setPotentialScore(int potentialScore) {
+        this.potentialScore = potentialScore;
     }
 
     public int getCurrentScore() {
@@ -100,12 +100,12 @@ public class UserData {
         this.currentIsCorrect = null;
     }
 
-    public int getTurnsPlayed() {
-        return turnsPlayed;
+    public int getPotentialScore() {
+        return potentialScore;
     }
 
-    public void addTurnPlayed(boolean currentIsCorrect) {
-        this.turnsPlayed++;
+    public void addPotentialScore(boolean currentIsCorrect) {
+        this.potentialScore++;
         this.currentIsCorrect = currentIsCorrect;
         if (currentIsCorrect) {
             this.currentScore++;
