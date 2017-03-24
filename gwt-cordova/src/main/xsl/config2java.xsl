@@ -467,7 +467,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@featureText) then concat(', messages.', generate-id(.), '()') else ''" />
         <xsl:value-of select="if(@target) then concat(', ApplicationState.', @target) else ''" />
         <xsl:value-of select="if(local-name() eq 'allMenuItems') then ', selfApplicationState' else ''" />        
-        <xsl:value-of select="if(@norepeat) then concat(', ', @norepeat eq 'true') else ''" />
+        <!--<xsl:value-of select="if(@repeatIncorrect) then concat(', ', @repeatIncorrect eq 'true') else ''" />-->
         <xsl:text>);
         </xsl:text>
     </xsl:template>
@@ -480,7 +480,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@mp3) then concat(', &quot;', @mp3, '&quot;') else ''" />
         <xsl:value-of select="if(@ogg) then concat(', &quot;', @ogg, '&quot;') else ''" />
         <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />        
-        <xsl:value-of select="if(@norepeat) then concat(', ', @norepeat eq 'true') else ''" />
+        <xsl:value-of select="if(@repeatIncorrect) then concat(', ', @repeatIncorrect eq 'true') else ''" />
         <xsl:value-of select="if(@hotKey) then concat(', KeyCodes.KEY_', @hotKey) else ''" />
         <xsl:value-of select="if(@incrementPhase) then concat(', ', @incrementPhase) else ''" />
         <xsl:if test="local-name() eq 'audioButton'">
@@ -537,7 +537,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             }
             }</xsl:text>
     </xsl:template>
-    <xsl:template match="showStimulusGrid|matchingStimulusGrid|groupResponseFeedback">
+    <xsl:template match="showStimulusGrid|matchingStimulusGrid|groupResponseFeedback|stimulusHasRatingOptions">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(appEventListner</xsl:text>
