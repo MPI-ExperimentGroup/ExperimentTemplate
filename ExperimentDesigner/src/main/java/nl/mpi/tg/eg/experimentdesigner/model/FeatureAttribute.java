@@ -31,6 +31,7 @@ public enum FeatureAttribute {
     back,
     next,
     fieldName,
+    linkedFieldName,
     code,
     codeFormat,
     validationRegex,

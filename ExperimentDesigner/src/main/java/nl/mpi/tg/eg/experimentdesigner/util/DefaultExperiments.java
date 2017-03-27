@@ -156,9 +156,12 @@ public class DefaultExperiments {
 //        experiment.getPresenterScreen().add(addVideoWorksPage(presenterFeatureRepository));
 //        experiment.getPresenterScreen().add(addVideoFailedPage(presenterFeatureRepository));
         final PresenterScreen autoMenu = addAutoMenu(0);
+        final PresenterScreen aboutScreen = addAbout(1);
+        presenterFeatureRepository.save(aboutScreen.getPresenterFeatureList());
         presenterFeatureRepository.save(autoMenu.getPresenterFeatureList());
         experiment.getPresenterScreen().add(addTargetScreen(autoMenu, 0));
         experiment.getPresenterScreen().add(autoMenu);
+        experiment.getPresenterScreen().add(aboutScreen);
         addAllFeaturesAsPages(presenterFeatureRepository, experiment, autoMenu, 0);
         presenterScreenRepository.save(experiment.getPresenterScreen());
         return experiment;
@@ -209,6 +212,8 @@ public class DefaultExperiments {
                         && featureType != FeatureType.withoutTag
                         && featureType != FeatureType.onError
                         && featureType != FeatureType.onSuccess
+                        && featureType != FeatureType.conditionTrue
+                        && featureType != FeatureType.conditionFalse
                         && featureType != FeatureType.hasMoreStimulus
                         && featureType != FeatureType.endOfStimulus) {
                     if (featureType == FeatureType.clearPage) {
@@ -238,6 +243,10 @@ public class DefaultExperiments {
                     case repeatCount:
                     case repeatRandomWindow:
                     case scoreThreshold:
+                    case incrementPhase:
+                    case scoreValue:
+                    case minStimuliPerTag:
+                    case maxStimuliPerTag:
                         presenterFeature.addFeatureAttributes(attribute, "3");
                         break;
                     case maxHeight:
@@ -264,6 +273,7 @@ public class DefaultExperiments {
                         presenterFeature.addFeatureAttributes(attribute, "8");
                         break;
                     case fieldName:
+                    case linkedFieldName:
                         presenterFeature.addFeatureAttributes(attribute, "workerId");
                         break;
                     case animate:
@@ -291,8 +301,8 @@ public class DefaultExperiments {
         }
         switch (featureType.getContitionals()) {
             case hasTrueFalseCondition:
-                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.responseCorrect, presenterFeatureRepository));
-                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.responseIncorrect, presenterFeatureRepository));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.conditionTrue, presenterFeatureRepository));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.conditionFalse, presenterFeatureRepository));
                 presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
                 break;
             case hasCorrectIncorrect:
@@ -366,6 +376,11 @@ public class DefaultExperiments {
     private PresenterScreen addAutoMenu(long displayOrder) {
         final PresenterScreen presenterScreen = new PresenterScreen("Auto Menu", "Menu", null, "AutoMenu", null, PresenterType.menu, displayOrder);
         presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMenuItems, null));
+        return presenterScreen;
+    }
+
+    private PresenterScreen addAbout(long displayOrder) {
+        final PresenterScreen presenterScreen = new PresenterScreen("about", "about", null, "about", null, PresenterType.debug, displayOrder);
         return presenterScreen;
     }
 
