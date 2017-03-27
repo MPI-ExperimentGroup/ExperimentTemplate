@@ -39,15 +39,15 @@
                 <stimulusAudio msToNext="100" showPlaybackIndicator="true">
                     <addPadding/>
                     <stimulusHasRatingOptions>
-                        <responseCorrect>
+                        <conditionTrue>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-                                <nextStimulus eventTag="NextStimulusPretest Screen" repeatIncorrect="false"/>
+                                <nextStimulus eventTag="NextStimulusPretest Screen" repeatIncorrect="true"/>
                             </stimulusRatingButton>
-                        </responseCorrect>
-                        <responseIncorrect>
+                        </conditionTrue>
+                        <conditionFalse>
                             <stimulusFreeText featureText="Entrez au moins trois lettres." validationRegex=".{3,}"/>
                             <nextStimulusButton featureText="Next [TAB + ENTER]" eventTag="Next [TAB + ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
-                        </responseIncorrect>
+                        </conditionFalse>
                     </stimulusHasRatingOptions>
                 </stimulusAudio>
             </hasMoreStimulus>

@@ -46,7 +46,7 @@ public enum FeatureType {
     ratingButton(false, false, new FeatureAttribute[]{eventTier, ratingLabels, ratingLabelLeft, ratingLabelRight}),
     stimulusFreeText(true, true, new FeatureAttribute[]{validationRegex, allowedCharCodes, hotKey}),
     stimulusRatingButton(false, false, new FeatureAttribute[]{eventTier, ratingLabelLeft, ratingLabelRight}),
-    stimulusHasRatingOptions(true, false, new FeatureAttribute[]{}, false, false, Contitionals.hasCorrectIncorrect),
+    stimulusHasRatingOptions(true, false, new FeatureAttribute[]{}, false, false, Contitionals.hasTrueFalseCondition),
     ratingFooterButton(false, true, new FeatureAttribute[]{eventTier, ratingLabels, ratingLabelLeft, ratingLabelRight}),
     targetFooterButton(false, true, new FeatureAttribute[]{target}),
     actionFooterButton(true, true, new FeatureAttribute[]{eventTag, hotKey}),
@@ -98,6 +98,8 @@ public enum FeatureType {
     kinTypeStringDiagram(true, false, new FeatureAttribute[]{msToNext, kintypestring}),
     loadKinTypeStringDiagram(true, false, new FeatureAttribute[]{msToNext, diagramName}),
     editableKinEntitesDiagram(true, false, new FeatureAttribute[]{msToNext, diagramName}),
+    conditionTrue(true, false, null),
+    conditionFalse(true, false, null),
     responseCorrect(true, false, new FeatureAttribute[]{msToNext}),
     responseIncorrect(true, false, new FeatureAttribute[]{msToNext}),
     hasMoreStimulus(true, false, null),
@@ -148,6 +150,7 @@ public enum FeatureType {
     private final Contitionals contitionals;
 
     public enum Contitionals {
+        hasTrueFalseCondition,
         hasCorrectIncorrect,
         hasMoreStimulus,
         hasStimulusTag,

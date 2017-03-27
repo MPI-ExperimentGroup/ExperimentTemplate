@@ -22,7 +22,7 @@
         <metadataField fieldName="education"/>
         <metadataField fieldName="educationOther"/>
         <metadataField fieldName="gender"/>
-        <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+        <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
             <onError/>
             <onSuccess>
                 <autoNextPresenter/>

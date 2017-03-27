@@ -290,6 +290,11 @@ public class DefaultExperiments {
             experiment.getMetadata().add(new Metadata(metadataFieldname, metadataFieldname, ".*", ".", false, null));
         }
         switch (featureType.getContitionals()) {
+            case hasTrueFalseCondition:
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.responseCorrect, presenterFeatureRepository));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.responseIncorrect, presenterFeatureRepository));
+                presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                break;
             case hasCorrectIncorrect:
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.responseCorrect, presenterFeatureRepository));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.responseIncorrect, presenterFeatureRepository));

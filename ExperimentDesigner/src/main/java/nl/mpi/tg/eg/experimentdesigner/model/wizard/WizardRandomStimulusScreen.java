@@ -50,7 +50,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         this.wizardScreenData.setCentreScreen(true);
     }
 
-    public WizardRandomStimulusScreen(String screenName, boolean centreScreen, String[] screenTextArray, String[] randomStimuliTags, int maxStimuli, final boolean randomiseStimuli, String stimulusCodeMatch, int stimulusDelay, int codeStimulusDelay, String codeFormat, String responseOptions, String responseOptionsLabelLeft, String responseOptionsLabelRight, final String spacebar) {
+    public WizardRandomStimulusScreen(String screenName, boolean centreScreen, String[] stimuliStringArray, String[] randomStimuliTags, int maxStimuli, final boolean randomiseStimuli, String stimulusCodeMatch, int stimulusDelay, int codeStimulusDelay, String codeFormat, String responseOptions, String responseOptionsLabelLeft, String responseOptionsLabelRight, final String spacebar) {
         super(WizardScreenEnum.WizardRandomStimulusScreen, screenName, screenName, screenName);
         this.setScreenTitle(screenName);
         this.wizardScreenData.setStimuliRandomTags(randomStimuliTags);
@@ -71,7 +71,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         }
         setButtonLabel(spacebar);
 //        this.wizardScreenData.setButtonLabelEventTag(spacebar);
-        setStimuliSet(screenTextArray);
+        setStimuliSet(stimuliStringArray);
     }
 
     final public void setRandomiseStimuli(boolean randomiseStimuli) {

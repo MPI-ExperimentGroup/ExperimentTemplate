@@ -329,7 +329,7 @@ public class Parcours {
         "setnr_77/cond_i/list_a:Rianne en Justus bespreken wat voor sport leuk zou zijn voor hun zoon.<br/>"
         + "Rianne vraagt: zullen we hem voor een teamsport opgeven?<br/>"
         + "Justus zegt: ik denk dat hij het inderdaad leuk zou vinden om op ",
-        "setnr_78/cond_i/list_a:Ben en Kim staan te kibbelen; Kim laat altijd de huistelefoon ergens slingeren.<br/>"
+        "setnr_78/cond_i/list_a:Ben en Kim staan te kibbelen; Kim laat altijd de huistelefoon ergens slingeren.<br/>" // items with ; are not breaking the JSON data transfer this was an incorrect error report
         + "Ben vraagt: heb je de telefoon zeker weer in de slaapkamer laten liggen?<br/>"
         + "Kim zegt: ik denk dat ik hem inderdaad bovenop het ",
         "setnr_79/cond_i/list_a:Peter en Elly zoeken bij de bloemist iets uit voor hun moeders verjaardag.<br/>"
@@ -1742,7 +1742,7 @@ public class Parcours {
         wizardEditUserScreen.setScreenTag("Gegevens");
         wizardEditUserScreen.setNextButton("Volgende");
         wizardEditUserScreen.setSendData(true);
-        wizardEditUserScreen.setOn_Error_Text("Could not contact the server, please check your internet connection and try again.");
+        wizardEditUserScreen.setOn_Error_Text("Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.");
 //        wizardData.setAgeField(true);
         wizardEditUserScreen.setCustomFields(new String[]{
             "workerId:Proefpersoon ID:.'{'3,'}':Voer minimaal drie letters.",

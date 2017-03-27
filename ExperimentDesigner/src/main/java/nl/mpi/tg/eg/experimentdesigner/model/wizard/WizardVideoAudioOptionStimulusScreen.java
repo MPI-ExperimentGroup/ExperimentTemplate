@@ -319,17 +319,17 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
             }
 //            stimulusFreeText.addFeatureAttributes(FeatureAttribute.hotKey, getFreeTextHotKey(storedWizardScreenData));
 
-            final PresenterFeature responseCorrect = new PresenterFeature(FeatureType.responseCorrect, null);
-            final PresenterFeature responseIncorrect = new PresenterFeature(FeatureType.responseIncorrect, null);
-            responseCorrect.getPresenterFeatureList().add(ratingFooterButtonFeature);
-            responseIncorrect.getPresenterFeatureList().add(stimulusFreeText);
+            final PresenterFeature conditionTrue = new PresenterFeature(FeatureType.conditionTrue, null);
+            final PresenterFeature conditionFalse = new PresenterFeature(FeatureType.conditionFalse, null);
+            conditionTrue.getPresenterFeatureList().add(ratingFooterButtonFeature);
+            conditionFalse.getPresenterFeatureList().add(stimulusFreeText);
             final PresenterFeature nextStimulusButton = new PresenterFeature(FeatureType.nextStimulusButton, getNextStimulusButton(storedWizardScreenData));
-            responseIncorrect.getPresenterFeatureList().add(nextStimulusButton);
+            conditionFalse.getPresenterFeatureList().add(nextStimulusButton);
             nextStimulusButton.addFeatureAttributes(FeatureAttribute.eventTag, getNextStimulusButton(storedWizardScreenData));
             nextStimulusButton.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
             nextStimulusButton.addFeatureAttributes(FeatureAttribute.hotKey, getFreeTextHotKey(storedWizardScreenData));
-            stimulusHasRatingOptions.getPresenterFeatureList().add(responseCorrect);
-            stimulusHasRatingOptions.getPresenterFeatureList().add(responseIncorrect);
+            stimulusHasRatingOptions.getPresenterFeatureList().add(conditionTrue);
+            stimulusHasRatingOptions.getPresenterFeatureList().add(conditionFalse);
             presenterFeature.getPresenterFeatureList().add(stimulusHasRatingOptions);
         } else {
             presenterFeature.getPresenterFeatureList().add(ratingFooterButtonFeature);
