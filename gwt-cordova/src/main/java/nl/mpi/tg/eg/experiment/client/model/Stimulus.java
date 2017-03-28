@@ -41,6 +41,8 @@ public interface Stimulus extends Comparable<Stimulus> {
 
     boolean hasRatingLabels();
 
+    boolean hasCorrectResponses();
+
     String getAudio();
 
     String getImage();
@@ -48,6 +50,8 @@ public interface Stimulus extends Comparable<Stimulus> {
     String getVideo();
 
     String getRatingLabels();
+
+    String getCorrectResponses();
 
     List<?> getTags();
 }
