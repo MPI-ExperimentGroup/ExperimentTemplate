@@ -331,6 +331,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void pause(int postLoadMs, final TimedStimulusListener timedStimulusListener) {
         Timer timer = new Timer() {
+            @Override
             public void run() {
 //                ((TimedStimulusView) simpleView).addText("pause: " + duration.elapsedMillis() + "ms");
                 timedStimulusListener.postLoadTimerFired();
@@ -367,6 +368,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         final String subDirectory = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag());
         localStorage.setStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag() + ((subDirectory != null) ? subDirectory : ""), Integer.toString(currentStimulusIndex));
         localStorage.setStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag() + ((subDirectory != null) ? subDirectory : ""), stimulusProvider.getLoadedStimulusString());
+        localStorage.storeUserScore(userResults);
         if (stimulusProvider.hasNextStimulus()) {
             stimulusProvider.nextStimulus();
             if (groupParticipantService != null) {
@@ -534,10 +536,15 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 duration.elapsedMillis());
     }
 
-    protected void scoreIncrement(final int scoreThreshold, final int scoreValue, final TimedStimulusListener aboveThreshold, final TimedStimulusListener belowThreshold) {
-        // todo: is updateBestScore the correct method to use?
-        userResults.getUserData().updateBestScore(scoreValue + userResults.getUserData().getBestScore());
-        submissionService.submitTagValue(userResults.getUserData().getUserId(), "scoreIncrement", String.valueOf(userResults.getUserData().getBestScore()), duration.elapsedMillis());
+    protected void scoreAboveThreshold(final int scoreThreshold, final TimedStimulusListener aboveThreshold, final TimedStimulusListener belowThreshold) {
+        if (userResults.getUserData().getCurrentScore() >= scoreThreshold) {
+            aboveThreshold.postLoadTimerFired();
+        } else {
+            belowThreshold.postLoadTimerFired();
+        }
+    }
+
+    protected void bestScoreAboveThreshold(final int scoreThreshold, final TimedStimulusListener aboveThreshold, final TimedStimulusListener belowThreshold) {
         if (userResults.getUserData().getBestScore() >= scoreThreshold) {
             aboveThreshold.postLoadTimerFired();
         } else {
@@ -545,8 +552,14 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
+    protected void scoreIncrement(final boolean isCorrect) {
+        userResults.getUserData().addPotentialScore(isCorrect);
+        submissionService.submitTagValue(userResults.getUserData().getUserId(), "scoreIncrement", userResults.getUserData().getCurrentScore() + "/" + userResults.getUserData().getPotentialScore(), duration.elapsedMillis());
+    }
+
     protected void scoreLabel() {
-        ((TimedStimulusView) simpleView).addHtmlText("Your Score:" + userResults.getUserData().getBestScore());
+        ((TimedStimulusView) simpleView).addHtmlText("Current Score:" + userResults.getUserData().getCurrentScore() + "/" + userResults.getUserData().getPotentialScore());
+        ((TimedStimulusView) simpleView).addHtmlText("Best Score:" + userResults.getUserData().getBestScore());
     }
 
     protected void groupChannelScoreLabel() {
@@ -590,11 +603,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     }
 
-    protected void stimulusFreeText(String validationRegex, String validationChallenge, final String excludedCharCodes, final int hotKey) {
-        StimulusFreeText stimulusFreeText = ((TimedStimulusView) simpleView).addStimulusFreeText(validationRegex, validationChallenge, excludedCharCodes, new SingleShotEventListner() {
+    protected void stimulusFreeText(String validationRegex, String validationChallenge, final String allowedCharCodes, final int hotKey) {
+        StimulusFreeText stimulusFreeText = ((TimedStimulusView) simpleView).addStimulusFreeText(validationRegex, validationChallenge, allowedCharCodes, new SingleShotEventListner() {
             @Override
             protected void singleShotFired() {
-                nextStimulus("stimulusFreeTextEnter", true);
+                nextStimulus("stimulusFreeTextEnter", false);
             }
         }, hotKey);
         stimulusFreeTextList.add(stimulusFreeText);
@@ -780,21 +793,30 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //        ((TimedStimulusView) simpleView).addText("playStimulusAudio: " + duration.elapsedMillis() + "ms");
     }
 
+    public void stimulusHasRatingOptions(final AppEventListner appEventListner, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener) {
+        if (stimulusProvider.getCurrentStimulus().hasRatingLabels()) {
+            correctListener.postLoadTimerFired();
+        } else {
+            incorrectListener.postLoadTimerFired();
+        }
+    }
+
     public void stimulusRatingButton(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final String ratingLabelLeft, final String ratingLabelRight, final int eventTier) {
-        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, timedStimulusListener, stimulusProvider.getCurrentStimulus().getUniqueId(), stimulusProvider.getCurrentStimulus().getRatingLabels(), eventTier), ratingLabelLeft, ratingLabelRight, false);
+        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, timedStimulusListener, stimulusProvider.getCurrentStimulus().getUniqueId(), stimulusProvider.getCurrentStimulus().getRatingLabels(), stimulusProvider.getCurrentStimulus().getCorrectResponses(), eventTier), ratingLabelLeft, ratingLabelRight, false);
     }
 
     public void ratingButton(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final int eventTier) {
-        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, timedStimulusListener, stimulusProvider.getCurrentStimulus().getUniqueId(), ratingLabels, eventTier), ratingLabelLeft, ratingLabelRight, false);
+        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, timedStimulusListener, stimulusProvider.getCurrentStimulus().getUniqueId(), ratingLabels, null, eventTier), ratingLabelLeft, ratingLabelRight, false);
     }
 
     public void ratingFooterButton(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final int eventTier) {
-        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, timedStimulusListener, stimulusProvider.getCurrentStimulus().getUniqueId(), ratingLabels, eventTier), ratingLabelLeft, ratingLabelRight, true);
+        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, timedStimulusListener, stimulusProvider.getCurrentStimulus().getUniqueId(), ratingLabels, null, eventTier), ratingLabelLeft, ratingLabelRight, true);
     }
 
-    public List<PresenterEventListner> getRatingEventListners(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final String stimulusString, final String ratingLabels, final int eventTier) {
+    public List<PresenterEventListner> getRatingEventListners(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final String stimulusString, final String ratingLabels, final String correctLabels, final int eventTier) {
         ArrayList<PresenterEventListner> eventListners = new ArrayList<>();
         final String[] splitRatingLabels = ratingLabels.split(",");
+        final String[] splitCorrectLabels = (correctLabels != null) ? correctLabels.split(",") : new String[]{};
         for (final String ratingItem : splitRatingLabels) {
             int derivedHotKey = -1;
             if (ratingItem.equals("0")) {
@@ -837,6 +859,12 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
                     endAudioRecorderTag(eventTier, ratingItem);
                     submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "RatingButton", stimulusString, ratingItem, duration.elapsedMillis());
+                    boolean itemIsCorrect = Arrays.asList(splitCorrectLabels).contains(ratingItem);
+                    if (itemIsCorrect) {
+                        userResults.getUserData().addPotentialScore(true);
+                    } else if (splitCorrectLabels.length > 0) {
+                        userResults.getUserData().addPotentialScore(false);
+                    }
                     timedStimulusListener.postLoadTimerFired();
                 }
 
@@ -861,6 +889,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         super.endAudioRecorderTag(tier, stimulusProvider.getCurrentStimulus().getUniqueId(), stimulusProvider.getCurrentStimulus().getUniqueId(), tagString);
     }
 
+    @Override
     protected void startAudioRecorderTag(int tier) {
         super.startAudioRecorderTag(tier); //((tier < 1) ? 1 : tier) + 2); //  tier 1 and 2 are reserved for stimulus set loading and stimulus display events
     }
@@ -878,6 +907,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             @Override
             public void postLoadTimerFired() {
                 Timer timer = new Timer() {
+                    @Override
                     public void run() {
                         correctListener.postLoadTimerFired();
                     }
@@ -890,6 +920,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             @Override
             public void postLoadTimerFired() {
                 Timer timer = new Timer() {
+                    @Override
                     public void run() {
                         incorrectListener.postLoadTimerFired();
                     }
@@ -1016,9 +1047,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //        ((TimedStimulusView) simpleView).addText("showStimulusProgress: " + duration.elapsedMillis() + "ms");
     }
 
-    public void popupMessage(final PresenterEventListner presenterListerner, String message) {
-        ((TimedStimulusView) simpleView).showHtmlPopup(presenterListerner, message);
-    }
+//    public void popupMessage(final PresenterEventListner presenterListerner, String message) {
+//        ((TimedStimulusView) simpleView).showHtmlPopup(presenterListerner, message);
+//    }
 
     /*protected boolean stimulusIndexIn(int[] validIndexes) {
         int currentIndex = stimulusProvider.getTotalStimuli() - stimulusProvider.getRemainingStimuli();
@@ -1034,7 +1065,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         buttonList.clear();
     }
 
-    protected void nextStimulus(final String eventTag, final boolean norepeat) {
+    protected void nextStimulus(final String eventTag, final boolean repeatIncorrect) {
         for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
             if (!stimulusFreeText.isValid()) {
                 return;
@@ -1043,9 +1074,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
             submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusFreeText", stimulusProvider.getCurrentStimulus().getUniqueId(), stimulusFreeText.getValue(), duration.elapsedMillis());
         }
-        if (!norepeat) {
+        if (repeatIncorrect && userResults.getUserData().isCurrentIncorrect()) {
             stimulusProvider.pushCurrentStimulusToEnd();
         }
+        userResults.getUserData().clearCurrentResponse();
         ((TimedStimulusView) simpleView).stopAudio();
         ((TimedStimulusView) simpleView).clearPage();
         stimulusFreeTextList.clear();
@@ -1101,7 +1133,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addOptionButton(eventListner);
     }
 
-    protected void nextStimulusButton(final String eventTag, final String buttonLabel, final boolean norepeat, final int hotKey) {
+    protected void nextStimulusButton(final String eventTag, final String buttonLabel, final boolean repeatIncorrect, final int hotKey) {
 //        if (stimulusProvider.hasNextStimulus()) {
         PresenterEventListner eventListner = new PresenterEventListner() {
 
@@ -1117,7 +1149,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                nextStimulus(eventTag, norepeat);
+                nextStimulus(eventTag, repeatIncorrect);
             }
         };
         ((TimedStimulusView) simpleView).addOptionButton(eventListner);
@@ -1173,5 +1205,4 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         super.savePresenterState();
         stopAudioRecorder();
     }
-
 }
