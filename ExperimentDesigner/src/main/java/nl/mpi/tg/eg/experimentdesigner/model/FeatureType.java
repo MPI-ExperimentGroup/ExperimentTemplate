@@ -140,7 +140,9 @@ public enum FeatureType {
     groupChannelScoreLabel(false, false, null),
     scoreLabel(false, false, null),
     submitGroupEvent(false, false, null),
-    scoreIncrement(true, false, new FeatureAttribute[]{scoreThreshold, scoreValue}, false, false, Contitionals.hasThreshold),
+    scoreIncrement(true, false, new FeatureAttribute[]{scoreValue}, false, false, Contitionals.none),
+    bestScoreAboveThreshold(true, false, new FeatureAttribute[]{scoreThreshold}, false, false, Contitionals.hasThreshold),
+    scoreAboveThreshold(true, false, new FeatureAttribute[]{scoreThreshold}, false, false, Contitionals.hasThreshold),
     submitTestResults(true, false, null, false, false, Contitionals.hasErrorSuccess);
     private final boolean canHaveFeatures;
     private final boolean canHaveText;

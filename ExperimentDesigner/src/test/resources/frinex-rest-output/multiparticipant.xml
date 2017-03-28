@@ -55,24 +55,26 @@
                         <htmlText featureText="This phase is not used in this screen"/>
                         <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                             <responseCorrect msToNext="0">
-                                <scoreIncrement scoreThreshold="5" scoreValue="1">
+                                <scoreIncrement scoreValue="true"/>
+                                <scoreAboveThreshold scoreThreshold="5">
                                     <aboveThreshold>
                                         <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                     </aboveThreshold>
                                     <belowThreshold>
                                         <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                     </belowThreshold>
-                                </scoreIncrement>
+                                </scoreAboveThreshold>
                             </responseCorrect>
                             <responseIncorrect msToNext="0">
-                                <scoreIncrement scoreThreshold="5" scoreValue="0">
+                                <scoreIncrement scoreValue="false"/>
+                                <scoreAboveThreshold scoreThreshold="5">
                                     <aboveThreshold>
                                         <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                     </aboveThreshold>
                                     <belowThreshold>
                                         <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                     </belowThreshold>
-                                </scoreIncrement>
+                                </scoreAboveThreshold>
                             </responseIncorrect>
                             <stimuli/>
                         </showStimulusGrid>
@@ -150,24 +152,26 @@
                         <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
                         <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                             <responseCorrect msToNext="0">
-                                <scoreIncrement scoreThreshold="5" scoreValue="1">
+                                <scoreIncrement scoreValue="true"/>
+                                <scoreAboveThreshold scoreThreshold="5">
                                     <aboveThreshold>
                                         <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                     </aboveThreshold>
                                     <belowThreshold>
                                         <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                     </belowThreshold>
-                                </scoreIncrement>
+                                </scoreAboveThreshold>
                             </responseCorrect>
                             <responseIncorrect msToNext="0">
-                                <scoreIncrement scoreThreshold="5" scoreValue="0">
+                                <scoreIncrement scoreValue="false"/>
+                                <scoreAboveThreshold scoreThreshold="5">
                                     <aboveThreshold>
                                         <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                     </aboveThreshold>
                                     <belowThreshold>
                                         <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                     </belowThreshold>
-                                </scoreIncrement>
+                                </scoreAboveThreshold>
                             </responseIncorrect>
                             <stimuli/>
                         </showStimulusGrid>
@@ -245,24 +249,26 @@
                         <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
                         <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                             <responseCorrect msToNext="0">
-                                <scoreIncrement scoreThreshold="5" scoreValue="1">
+                                <scoreIncrement scoreValue="true"/>
+                                <scoreAboveThreshold scoreThreshold="5">
                                     <aboveThreshold>
                                         <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                     </aboveThreshold>
                                     <belowThreshold>
                                         <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                     </belowThreshold>
-                                </scoreIncrement>
+                                </scoreAboveThreshold>
                             </responseCorrect>
                             <responseIncorrect msToNext="0">
-                                <scoreIncrement scoreThreshold="5" scoreValue="0">
+                                <scoreIncrement scoreValue="false"/>
+                                <scoreAboveThreshold scoreThreshold="5">
                                     <aboveThreshold>
                                         <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                     </aboveThreshold>
                                     <belowThreshold>
                                         <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                     </belowThreshold>
-                                </scoreIncrement>
+                                </scoreAboveThreshold>
                             </responseIncorrect>
                             <stimuli/>
                         </showStimulusGrid>
@@ -340,24 +346,26 @@
                         <htmlText featureText="This phase is not used in this screen"/>
                         <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                             <responseCorrect msToNext="0">
-                                <scoreIncrement scoreThreshold="5" scoreValue="1">
+                                <scoreIncrement scoreValue="true"/>
+                                <scoreAboveThreshold scoreThreshold="5">
                                     <aboveThreshold>
                                         <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                     </aboveThreshold>
                                     <belowThreshold>
                                         <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                     </belowThreshold>
-                                </scoreIncrement>
+                                </scoreAboveThreshold>
                             </responseCorrect>
                             <responseIncorrect msToNext="0">
-                                <scoreIncrement scoreThreshold="5" scoreValue="0">
+                                <scoreIncrement scoreValue="false"/>
+                                <scoreAboveThreshold scoreThreshold="5">
                                     <aboveThreshold>
                                         <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                     </aboveThreshold>
                                     <belowThreshold>
                                         <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                     </belowThreshold>
-                                </scoreIncrement>
+                                </scoreAboveThreshold>
                             </responseIncorrect>
                             <stimuli/>
                         </showStimulusGrid>
@@ -435,24 +443,26 @@
                         <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
                         <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                             <responseCorrect msToNext="0">
-                                <scoreIncrement scoreThreshold="5" scoreValue="1">
+                                <scoreIncrement scoreValue="true"/>
+                                <scoreAboveThreshold scoreThreshold="5">
                                     <aboveThreshold>
                                         <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                     </aboveThreshold>
                                     <belowThreshold>
                                         <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                     </belowThreshold>
-                                </scoreIncrement>
+                                </scoreAboveThreshold>
                             </responseCorrect>
                             <responseIncorrect msToNext="0">
-                                <scoreIncrement scoreThreshold="5" scoreValue="0">
+                                <scoreIncrement scoreValue="false"/>
+                                <scoreAboveThreshold scoreThreshold="5">
                                     <aboveThreshold>
                                         <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                     </aboveThreshold>
                                     <belowThreshold>
                                         <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                     </belowThreshold>
-                                </scoreIncrement>
+                                </scoreAboveThreshold>
                             </responseIncorrect>
                             <stimuli/>
                         </showStimulusGrid>
@@ -530,24 +540,26 @@
                         <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
                         <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                             <responseCorrect msToNext="0">
-                                <scoreIncrement scoreThreshold="5" scoreValue="1">
+                                <scoreIncrement scoreValue="true"/>
+                                <scoreAboveThreshold scoreThreshold="5">
                                     <aboveThreshold>
                                         <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                     </aboveThreshold>
                                     <belowThreshold>
                                         <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                     </belowThreshold>
-                                </scoreIncrement>
+                                </scoreAboveThreshold>
                             </responseCorrect>
                             <responseIncorrect msToNext="0">
-                                <scoreIncrement scoreThreshold="5" scoreValue="0">
+                                <scoreIncrement scoreValue="false"/>
+                                <scoreAboveThreshold scoreThreshold="5">
                                     <aboveThreshold>
                                         <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                     </aboveThreshold>
                                     <belowThreshold>
                                         <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                     </belowThreshold>
-                                </scoreIncrement>
+                                </scoreAboveThreshold>
                             </responseIncorrect>
                             <stimuli/>
                         </showStimulusGrid>

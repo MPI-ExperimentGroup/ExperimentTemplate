@@ -150,20 +150,21 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         this.wizardScreenData.setButtonLabelEventTag(buttonLabelEventTag);
     }
 
-    private PresenterFeature getScoreFeatures(boolean correctResponse) {
+    private List<PresenterFeature> getScoreFeatures(boolean correctResponse) {
 //        final PresenterFeature scoreButtonFeature = new PresenterFeature(FeatureType.actionButton, "correct");
 //        scoreButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, "correct button");
 //        scoreButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, "Z");
 //        scoreButtonFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         final PresenterFeature scoreIncrement = new PresenterFeature(FeatureType.scoreIncrement, null);
-        scoreIncrement.addFeatureAttributes(FeatureAttribute.scoreThreshold, "5");
-        scoreIncrement.addFeatureAttributes(FeatureAttribute.scoreValue, (correctResponse) ? "1" : "0");
+        scoreIncrement.addFeatureAttributes(FeatureAttribute.scoreValue, (correctResponse) ? "true" : "false");
+        final PresenterFeature scoreAboveThreshold = new PresenterFeature(FeatureType.scoreAboveThreshold, null);
+        scoreAboveThreshold.addFeatureAttributes(FeatureAttribute.scoreThreshold, "5");
         final PresenterFeature aboveThreshold = new PresenterFeature(FeatureType.aboveThreshold, null);
 //        aboveThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "above threshold"));
-        scoreIncrement.getPresenterFeatureList().add(aboveThreshold);
+        scoreAboveThreshold.getPresenterFeatureList().add(aboveThreshold);
         final PresenterFeature belowThreshold = new PresenterFeature(FeatureType.belowThreshold, null);
 //        belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "below threshold"));
-        scoreIncrement.getPresenterFeatureList().add(belowThreshold);
+        scoreAboveThreshold.getPresenterFeatureList().add(belowThreshold);
 //        scoreButtonFeature.getPresenterFeatureList().add(scoreIncrement);
 //        aboveThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
 //        aboveThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
@@ -191,7 +192,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
         aboveThreshold.getPresenterFeatureList().add(aboveFeature);
         belowThreshold.getPresenterFeatureList().add(belowFeature);
-        return scoreIncrement;
+        return Arrays.asList(new PresenterFeature[]{scoreIncrement, scoreAboveThreshold});
     }
 
     @Override
@@ -446,7 +447,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         return storedWizardScreenData.getPresenterScreen();
     }
 
-    protected PresenterFeature addStimuliGrid(String eventTagString, final PresenterFeature responseCorrectFeatures, final PresenterFeature responseIncorrectFeatures) {
+    protected PresenterFeature addStimuliGrid(String eventTagString, final List<PresenterFeature> responseCorrectFeatures, final List<PresenterFeature> responseIncorrectFeatures) {
         //        final PresenterFeature guesserRatingButtons = new PresenterFeature(FeatureType.ratingButton, null);
 //        guesserRatingButtons.addFeatureAttributes(FeatureAttribute.ratingLabels, "one,two,three");
 //        guesserRatingButtons.addFeatureAttributes(FeatureAttribute.ratingLabelLeft, "");
@@ -467,12 +468,12 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         resultsGrid.addFeatureAttributes(FeatureAttribute.animate, "stimuliCode");
         resultsGrid.addFeatureAttributes(FeatureAttribute.eventTag, eventTagString);
         final PresenterFeature responseCorrect = new PresenterFeature(FeatureType.responseCorrect, null);
-        responseCorrect.getPresenterFeatureList().add(responseCorrectFeatures);
+        responseCorrect.getPresenterFeatureList().addAll(responseCorrectFeatures);
         responseCorrect.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         resultsGrid.getPresenterFeatureList().add(responseCorrect);
         final PresenterFeature resultsIncorrect = new PresenterFeature(FeatureType.responseIncorrect, null);
         resultsIncorrect.addFeatureAttributes(FeatureAttribute.msToNext, "0");
-        resultsIncorrect.getPresenterFeatureList().add(responseIncorrectFeatures);
+        resultsIncorrect.getPresenterFeatureList().addAll(responseIncorrectFeatures);
         resultsGrid.getPresenterFeatureList().add(resultsIncorrect);
         return resultsGrid;
     }
