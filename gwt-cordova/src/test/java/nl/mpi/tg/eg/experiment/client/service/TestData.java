@@ -24,7 +24,7 @@ package nl.mpi.tg.eg.experiment.client.service;
 public class TestData {
 
     private void processMessage(GroupParticipantService instance, String userId, String screenId, String userLabel, String groupId, String allMemberCodes, String communicationChannels, String memberCode, String originMemberCode, String stimulusId, String stimulusIndex, String stimuliList, String requestedPhase, String messageString, boolean groupReady, String responseStimulusId, String expectedRespondents, String actualRespondents, String groupUUID) {
-        instance.handleGroupMessage(userId, screenId, userLabel, groupId, allMemberCodes, memberCode, originMemberCode, expectedRespondents, actualRespondents, stimulusId, stimulusIndex, stimuliList, requestedPhase, messageString, groupReady, responseStimulusId, groupUUID);
+        instance.handleGroupMessage(userId, screenId, userLabel, groupId, allMemberCodes, memberCode, originMemberCode, expectedRespondents, actualRespondents, stimulusId, stimulusIndex, stimuliList, requestedPhase, messageString, groupReady, responseStimulusId, "groupScore", groupUUID);
     }
 
     public void processTestMessagesRound1(GroupParticipantService instance) {
@@ -157,7 +157,7 @@ public class TestData {
             {"testuser-0", "testuser-0\n"
                 + "groupInfoChangeListner\n"
                 + "screenResetRequestListner\n"
-//                + "screenResetRequestListner\n"
+                //                + "screenResetRequestListner\n"
                 + "stimulusSyncListner\n"
                 + "0-A-producer[A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-]\n"
                 + "stimulusSyncListner\n"
@@ -232,7 +232,7 @@ public class TestData {
                 + "12-H-guesser wait[B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-]\n"
                 + "stimulusSyncListner\n"
                 + "13-H-guesser[-:B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A]\n"
-                },};
+            },};
     }
 
     public String[][] getExpectedDataRound1() {
