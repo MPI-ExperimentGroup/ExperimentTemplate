@@ -109,6 +109,7 @@ public class UserData {
         this.currentIsCorrect = currentIsCorrect;
         if (currentIsCorrect) {
             this.currentScore++;
+            updateBestScore(this.currentScore);
         }
     }
 
