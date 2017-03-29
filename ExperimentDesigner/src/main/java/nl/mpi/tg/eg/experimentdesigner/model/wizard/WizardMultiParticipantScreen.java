@@ -137,7 +137,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
                 if (stimulusLine.contains(".png")) {
                     final String[] splitLine = stimulusLine.split(":");
 //                    tagSet.addAll(Arrays.asList(stimulusLine.split("/")));
-                    stimulus = new Stimulus(stimulusLine.replace(".png", ""), null, null, splitLine[0], null, splitLine[2], 0, tagSet, null, null);
+                    stimulus = new Stimulus(stimulusLine.replace(".png", ""), null, null, splitLine[0], null, splitLine[splitLine.length - 1], 0, tagSet, null, null);
                     stimuliList.add(stimulus);
                 }
             }
