@@ -167,7 +167,10 @@ public class TimedStimulusView extends ComplexView {
             image.addTouchMoveHandler(singleShotEventListner);
             image.addTouchEndHandler(singleShotEventListner);
         }
-        ((horizontalPanel != null) ? horizontalPanel : outerPanel).add(image);
+        final HTMLPanel htmlPanel = new HTMLPanel("");
+        htmlPanel.setStylePrimaryName("gridCell");
+        htmlPanel.add(image);
+        ((horizontalPanel != null) ? horizontalPanel : outerPanel).add(htmlPanel);
     }
 
     public void addSvgImage(String svgContent, int percentWidth) {

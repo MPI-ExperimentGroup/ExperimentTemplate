@@ -357,6 +357,13 @@ canvas {
     border-style: solid;
     margin-bottom: 10px;
 }
+.gridCell {
+    vertical-align: middle;
+    display: table-cell;
+    margin: auto;   
+    width: 300px;
+    height: 300px;
+}
 .gwt-HTML, .resultsTablePanel, .metadataTable, .menuTable, .gwt-CheckBox, .pageLink {
 }
 .resultsTableTitle {
