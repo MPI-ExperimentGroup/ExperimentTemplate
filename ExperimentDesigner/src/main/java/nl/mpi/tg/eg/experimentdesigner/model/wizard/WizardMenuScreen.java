@@ -53,6 +53,11 @@ public class WizardMenuScreen extends AbstractWizardScreen {
         throw new UnsupportedOperationException("Not supported.");
     }
 
+    @Override
+    public String getScreenIntegerInfo(int index) {
+        return new String[]{}[index];
+    }
+
     public void addTargetScreen(final AbstractWizardScreen targetScreen) {
         wizardScreenData.getMenuWizardScreenData().add(targetScreen.getWizardScreenData());
     }

@@ -51,6 +51,11 @@ public class WizardAboutScreen extends AbstractWizardScreen {
         throw new UnsupportedOperationException("Not supported.");
     }
 
+    @Override
+    public String getScreenIntegerInfo(int index) {
+        return new String[]{}[index];
+    }
+
     static WizardScreenEnum WizardScreenEnumFromDebugType(boolean showDebug) {
         if (showDebug) {
             return WizardScreenEnum.WizardDebugAboutScreen;

@@ -104,6 +104,11 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
     }
 
     @Override
+    public String getScreenIntegerInfo(int index) {
+        return new String[]{}[index];
+    }
+
+    @Override
     public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         experiment.appendUniqueStimuli(storedWizardScreenData.getStimuli());
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);

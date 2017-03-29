@@ -63,6 +63,11 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
         return new String[]{"Save Button Label", "Alternate Button Label"}[index];
     }
 
+    @Override
+    public String getScreenIntegerInfo(int index) {
+        return new String[]{}[index];
+    }
+
     public void setSendData(boolean sendData) {
         this.wizardScreenData.setScreenBoolean(0, sendData);
     }

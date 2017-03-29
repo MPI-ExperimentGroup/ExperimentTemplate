@@ -82,6 +82,11 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
     }
 
     @Override
+    public String getScreenIntegerInfo(int index) {
+        return new String[]{}[index];
+    }
+
+    @Override
     public String getNextButtonInfo(int index) {
         throw new UnsupportedOperationException("Not supported.");
     }

@@ -56,9 +56,14 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
         return new String[]{"Audio Confirmation Button Label"}[index];
     }
 
+    @Override
+    public String getScreenIntegerInfo(int index) {
+        return new String[]{}[index];
+    }
 //    public String getAudioPath() {
 //        return this.wizardScreenData
 //    }
+
     public void setAudioPath(String audioPath) {
         this.wizardScreenData.setScreenMediaPath(audioPath);
     }

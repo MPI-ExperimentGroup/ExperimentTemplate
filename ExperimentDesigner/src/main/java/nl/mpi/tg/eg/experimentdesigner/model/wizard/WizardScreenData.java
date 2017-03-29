@@ -67,6 +67,8 @@ public class WizardScreenData implements Serializable {
     private List<ScreenText> screenText = null;
     @ElementCollection(targetClass = Boolean.class)
     private List<Boolean> screenBooleans = null;
+    @ElementCollection(targetClass = Integer.class)
+    private List<Integer> screenIntegers = null;
     private String[] nextButton = null;
     private String screenTitle = null;
     private String menuLabel = null;
@@ -196,6 +198,28 @@ public class WizardScreenData implements Serializable {
             screenBooleans.add(null);
         }
         this.screenBooleans.set(index, screenBoolean);
+    }
+
+    public List<Integer> getScreenIntegers() {
+        return screenIntegers;
+    }
+
+    public void setScreenIntegers(List<Integer> screenIntegers) {
+        this.screenIntegers = screenIntegers;
+    }
+
+    public Integer getScreenInteger(int index) {
+        return (screenIntegers != null && screenIntegers.size() > index) ? screenIntegers.get(index) : null;
+    }
+
+    public void setScreenIntegers(int index, Integer screenInteger) {
+        if (screenIntegers == null) {
+            screenIntegers = new ArrayList<>();
+        }
+        while (screenIntegers.size() <= index) {
+            screenIntegers.add(null);
+        }
+        this.screenIntegers.set(index, screenInteger);
     }
 
     public String[] getNextButton() {

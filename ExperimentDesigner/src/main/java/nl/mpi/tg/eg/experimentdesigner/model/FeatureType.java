@@ -143,6 +143,7 @@ public enum FeatureType {
     scoreIncrement(true, false, new FeatureAttribute[]{scoreValue}, false, false, Contitionals.none),
     bestScoreAboveThreshold(true, false, new FeatureAttribute[]{scoreThreshold}, false, false, Contitionals.hasThreshold),
     scoreAboveThreshold(true, false, new FeatureAttribute[]{scoreThreshold}, false, false, Contitionals.hasThreshold),
+    resetStimulus(false, false, new FeatureAttribute[]{target}, false, false, Contitionals.none),
     submitTestResults(true, false, null, false, false, Contitionals.hasErrorSuccess);
     private final boolean canHaveFeatures;
     private final boolean canHaveText;

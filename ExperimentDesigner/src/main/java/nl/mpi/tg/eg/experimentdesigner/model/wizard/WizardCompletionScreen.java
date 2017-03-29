@@ -29,11 +29,11 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public class WizardCompletionScreen extends AbstractWizardScreen {
-    
+
     public WizardCompletionScreen() {
         super(WizardScreenEnum.WizardCompletionScreen, "Completion", "Completion", "Completion");
     }
-    
+
     public WizardCompletionScreen(String completedText1, final boolean allowUserRestart, boolean generateCompletionCode, String completedText2, String eraseUsersDataButtonlabel, final String screenTitle, final String could_not_contact_the_server_please_check, final String retryButtonLabel) {
         super(WizardScreenEnum.WizardCompletionScreen, screenTitle, screenTitle, screenTitle);
         wizardScreenData.setScreenText(0, completedText1);
@@ -43,29 +43,34 @@ public class WizardCompletionScreen extends AbstractWizardScreen {
         wizardScreenData.setScreenText(2, could_not_contact_the_server_please_check);
         wizardScreenData.setNextButton(new String[]{retryButtonLabel, eraseUsersDataButtonlabel});
     }
-    
+
     @Override
     public String getScreenBooleanInfo(int index) {
         return new String[]{"Allow User Restart", "Generate Completion Code"}[index];
     }
-    
+
     @Override
     public String getScreenTextInfo(int index) {
         return new String[]{"completedText1", "completedText2", "Network Error Message"}[index];
     }
-    
+
     @Override
     public String getNextButtonInfo(int index) {
         return new String[]{"Retry Button Label", "Erase Users Data Button Label"}[index];
     }
-    
+
+    @Override
+    public String getScreenIntegerInfo(int index) {
+        return new String[]{}[index];
+    }
+
     @Override
     public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.transmission);
         final PresenterFeature sendAllDataFeature = new PresenterFeature(FeatureType.sendAllData, null);
         storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(sendAllDataFeature);
-        
+
         final PresenterFeature onSuccessFeature = new PresenterFeature(FeatureType.onSuccess, null);
         sendAllDataFeature.getPresenterFeatureList().add(onSuccessFeature);
         onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
@@ -89,7 +94,7 @@ public class WizardCompletionScreen extends AbstractWizardScreen {
         final PresenterFeature retryFeature = new PresenterFeature(FeatureType.targetButton, storedWizardScreenData.getNextButton()[0]);
         onErrorFeature.getPresenterFeatureList().add(retryFeature);
         retryFeature.addFeatureAttributes(FeatureAttribute.target, storedWizardScreenData.getScreenTag());
-        
+
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
         return storedWizardScreenData.getPresenterScreen();
     }

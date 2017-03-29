@@ -26,6 +26,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAudioTestScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMenuScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScoreThresholdScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardVideoAudioOptionStimulusScreen;
 
@@ -92,7 +93,7 @@ public class ManipulatedContours {
             + "Merci beaucoup pour votre participation!";
 
     protected int repeatCount() {
-        return 4;
+        return 1;
     }
 
     protected String[] getStimuliOut1Ver1ConArr() {
@@ -608,12 +609,13 @@ public class ManipulatedContours {
             "Q3:Q3.wav:",
             "Q4:Q4.wav:",
             "Q5:Q5.wav:",
-            "Q6:Q6.wav:h,H",
-            "Q6:Q6.wav:test correct response,test incorrect response:test correct response"};
+            "Q6:Q6.wav::h,H", //            "Q6:Q6.wav:test correct response,test incorrect response:test correct response"
+        };
         final WizardVideoAudioOptionStimulusScreen pretestScreen = new WizardVideoAudioOptionStimulusScreen("Pretest Screen", false, pretestScreenStimuli, false, false, null, 1000, 1, 20, false, 100, "", "", true);
-        pretestScreen.setAllowFreeText(true, "Next [TAB + ENTER]", ".{3,}", "Entrez au moins trois lettres.", null, "ENTER"
+        pretestScreen.setAllowFreeText(true, "Next [TAB + ENTER]", ".{1,}", "Entrez au moins trois lettres.", null, "ENTER"
                 + "");
         pretestScreen.setRepeatIncorrect(true);
+        WizardScoreThresholdScreen scoreThresholdScreen = new WizardScoreThresholdScreen("You need to get an adequate score", 1, "ScoreThreshold", pretestScreen, "Retry");
         final WizardVideoAudioOptionStimulusScreen out1ver1Screen = new WizardVideoAudioOptionStimulusScreen("out1ver1Screen", false, addCodePart(getStimuliOut1Ver1ConArr()), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
         final WizardVideoAudioOptionStimulusScreen out1ver2Screen = new WizardVideoAudioOptionStimulusScreen("out1ver2Screen", false, addCodePart(getStimuliOut1Ver2ConArr()), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
         final WizardVideoAudioOptionStimulusScreen out1ver3Screen = new WizardVideoAudioOptionStimulusScreen("out1ver3Screen", false, addCodePart(getStimuliOut1Ver3ConArr()), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
@@ -630,6 +632,7 @@ public class ManipulatedContours {
 //        list1234Screen.setStimulusResponseLabelLeft("très probable négatif");
 //        list1234Screen.setStimulusResponseLabelRight("très probable positif");
         wizardData.addScreen(pretestScreen);
+        wizardData.addScreen(scoreThresholdScreen);
         wizardData.addScreen(out1ver1Screen);
         wizardData.addScreen(out1ver2Screen);
         wizardData.addScreen(out1ver3Screen);
@@ -658,7 +661,8 @@ public class ManipulatedContours {
         WizardMenuScreen menuScreen = new WizardMenuScreen("temporary menu", "temporary menu", "temporary menu");
         wizardData.addScreen(menuScreen);
         wizardTextScreen1.setNextWizardScreen(pretestScreen);
-        pretestScreen.setNextWizardScreen(wizardTextScreen2);
+        pretestScreen.setNextWizardScreen(scoreThresholdScreen);
+        scoreThresholdScreen.setNextWizardScreen(wizardTextScreen2);
         wizardTextScreen2.setNextWizardScreen(menuScreen);
 
         menuScreen.addTargetScreen(out1ver1Screen);

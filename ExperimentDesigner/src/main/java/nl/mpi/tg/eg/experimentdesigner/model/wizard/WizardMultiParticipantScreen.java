@@ -115,6 +115,11 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
     }
 
     @Override
+    public String getScreenIntegerInfo(int index) {
+        return new String[]{}[index];
+    }
+
+    @Override
     public String getNextButtonInfo(int index) {
         throw new UnsupportedOperationException("Not supported.");
     }

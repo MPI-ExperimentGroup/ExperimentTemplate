@@ -136,9 +136,14 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         return new String[]{"Next Button Label"}[index];
     }
 
+    @Override
+    public String getScreenIntegerInfo(int index) {
+        return new String[]{}[index];
+    }
 //    public void setStimuliPath(String stimuliPath) {
 //        this.stimuliPath = stimuliPath;
 //    }
+
     public final void setStimuliSet(String[] stimuliSet) {
         if (this.wizardScreenData.getStimuli() == null) {
             this.wizardScreenData.setStimuli(new ArrayList<>());

@@ -54,6 +54,11 @@ public class WizardVideoTimelineScreen extends AbstractWizardScreen {
     }
 
     @Override
+    public String getScreenIntegerInfo(int index) {
+        return new String[]{}[index];
+    }
+
+    @Override
     public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.timeline);
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);

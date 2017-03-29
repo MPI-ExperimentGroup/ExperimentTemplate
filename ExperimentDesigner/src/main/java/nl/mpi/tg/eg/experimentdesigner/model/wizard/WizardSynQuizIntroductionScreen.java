@@ -89,6 +89,11 @@ public class WizardSynQuizIntroductionScreen extends AbstractWizardScreen {
     }
 
     @Override
+    public String getScreenIntegerInfo(int index) {
+        return new String[]{}[index];
+    }
+
+    @Override
     public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.text);
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);

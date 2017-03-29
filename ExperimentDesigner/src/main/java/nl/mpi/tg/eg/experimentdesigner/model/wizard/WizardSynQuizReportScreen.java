@@ -56,6 +56,11 @@ public class WizardSynQuizReportScreen extends AbstractWizardScreen {
     }
 
     @Override
+    public String getScreenIntegerInfo(int index) {
+        return new String[]{}[index];
+    }
+
+    @Override
     public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         final PresenterScreen presenterScreen = storedWizardScreenData.getPresenterScreen();
         presenterScreen.setPresenterType(PresenterType.colourReport);
