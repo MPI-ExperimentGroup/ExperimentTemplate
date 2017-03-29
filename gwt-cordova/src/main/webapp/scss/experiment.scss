@@ -357,6 +357,9 @@ canvas {
     border-style: solid;
     margin-bottom: 10px;
 }
+td.gridCell:hover {
+    background: lightgray;
+}
 .gridCell {
     vertical-align: middle;
     display: table-cell;
@@ -455,7 +458,7 @@ table#screenExample td, .stimulusHelpPanel .gwt-Button, .stimulusHelpText, .popu
 .gwt-Button.stimulusImageButton:active,
 .gwt-Button.stimulusImageButton
 {
-    background: white;
+    background: none;
 }
 
 .gwt-PushButton.stimulusButtonHighlight,
