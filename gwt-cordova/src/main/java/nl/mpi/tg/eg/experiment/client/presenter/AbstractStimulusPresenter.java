@@ -552,6 +552,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
+    protected void resetStimulus(final String stimuliScreenToReset) {
+        if (stimuliScreenToReset != null) {
+            localStorage.deleteStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + stimuliScreenToReset);
+            localStorage.deleteStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + stimuliScreenToReset);
+        }
+    }
+
     protected void scoreIncrement(final boolean isCorrect) {
         userResults.getUserData().addPotentialScore(isCorrect);
         submissionService.submitTagValue(userResults.getUserData().getUserId(), "scoreIncrement", userResults.getUserData().getCurrentScore() + "/" + userResults.getUserData().getPotentialScore(), duration.elapsedMillis());
@@ -1073,6 +1080,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
         for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
             submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "StimulusFreeText", stimulusProvider.getCurrentStimulus().getUniqueId(), stimulusFreeText.getValue(), duration.elapsedMillis());
+            final String correctResponses = stimulusProvider.getCurrentStimulus().getCorrectResponses();
+            if (correctResponses != null && !correctResponses.isEmpty()) {
+                // if there are correct responses to this stimulus then increment the score
+                userResults.getUserData().addPotentialScore(correctResponses.contains(stimulusFreeText.getValue()));
+            }
         }
         if (repeatIncorrect && userResults.getUserData().isCurrentIncorrect()) {
             stimulusProvider.pushCurrentStimulusToEnd();
