@@ -140,7 +140,7 @@ $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 25
         margin: 50px;
         background: none;
         position: relative;
-        animation-timing-function: ease;
+        animation-timing-function: linear;
         /*-webkit-animation-timing-function: ease;*/
         width: 100px;
     }
@@ -149,12 +149,12 @@ $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 25
     @keyframes moveRotated#{$currentAngle}KeyFrames {
         from {
             transform: rotate(#{$currentAngle}deg)
-            translate(-50px)
+            translate(0px)
             rotate(-#{$currentAngle}deg);
         }
         to {
             transform: rotate(#{$currentAngle}deg)
-            translate(50px)
+            translate(100px)
             rotate(-#{$currentAngle}deg);
         }
     }
