@@ -17,6 +17,8 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.util;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
@@ -25,7 +27,6 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAudioTestScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMenuScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScoreThresholdScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardVideoAudioOptionStimulusScreen;
@@ -557,11 +558,11 @@ public class ManipulatedContours {
         return stimuliArray;
     }
 
-    private String[] addCodePart(String[] stimuliArray) {
+    private String[] addCodePart(String groupTag, String[] stimuliArray) {
         for (int currentIndex = 0; currentIndex < stimuliArray.length; currentIndex++) {
             final String[] lineParts = stimuliArray[currentIndex].split(":");
             String codePart = lineParts[1].replaceAll("[^0-9]*$", "");
-            stimuliArray[currentIndex] = lineParts[0] + ":" + codePart + "_context" + ":" + lineParts[1] + ":" + lineParts[2];
+            stimuliArray[currentIndex] = lineParts[0] + "/" + groupTag + ":" + codePart + "_context" + ":" + lineParts[1] + ":" + lineParts[2];
         }
         return stimuliArray;
     }
@@ -616,38 +617,39 @@ public class ManipulatedContours {
                 + "");
         pretestScreen.setRepeatIncorrect(true);
         WizardScoreThresholdScreen scoreThresholdScreen = new WizardScoreThresholdScreen("You need to get an adequate score", 1, "ScoreThreshold", pretestScreen, "Retry");
-        final WizardVideoAudioOptionStimulusScreen out1ver1Screen = new WizardVideoAudioOptionStimulusScreen("out1ver1Screen", false, addCodePart(getStimuliOut1Ver1ConArr()), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
-        final WizardVideoAudioOptionStimulusScreen out1ver2Screen = new WizardVideoAudioOptionStimulusScreen("out1ver2Screen", false, addCodePart(getStimuliOut1Ver2ConArr()), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
-        final WizardVideoAudioOptionStimulusScreen out1ver3Screen = new WizardVideoAudioOptionStimulusScreen("out1ver3Screen", false, addCodePart(getStimuliOut1Ver3ConArr()), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
-        final WizardVideoAudioOptionStimulusScreen out2ver1Screen = new WizardVideoAudioOptionStimulusScreen("out2ver1Screen", false, addCodePart(getStimuliOut2Ver1ConArr()), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
-        final WizardVideoAudioOptionStimulusScreen out2ver2Screen = new WizardVideoAudioOptionStimulusScreen("out2ver2Screen", false, addCodePart(getStimuliOut2Ver2ConArr()), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
-        final WizardVideoAudioOptionStimulusScreen out2ver3Screen = new WizardVideoAudioOptionStimulusScreen("out2ver3Screen", false, addCodePart(getStimuliOut2Ver3ConArr()), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
-        final WizardVideoAudioOptionStimulusScreen out1ver1ScreenI = new WizardVideoAudioOptionStimulusScreen("out1ver1ScreenI", false, invertButtons(addCodePart(getStimuliOut1Ver1ConArr())), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
-        final WizardVideoAudioOptionStimulusScreen out1ver2ScreenI = new WizardVideoAudioOptionStimulusScreen("out1ver2ScreenI", false, invertButtons(addCodePart(getStimuliOut1Ver2ConArr())), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
-        final WizardVideoAudioOptionStimulusScreen out1ver3ScreenI = new WizardVideoAudioOptionStimulusScreen("out1ver3ScreenI", false, invertButtons(addCodePart(getStimuliOut1Ver3ConArr())), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
-        final WizardVideoAudioOptionStimulusScreen out2ver1ScreenI = new WizardVideoAudioOptionStimulusScreen("out2ver1ScreenI", false, invertButtons(addCodePart(getStimuliOut2Ver1ConArr())), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
-        final WizardVideoAudioOptionStimulusScreen out2ver2ScreenI = new WizardVideoAudioOptionStimulusScreen("out2ver2ScreenI", false, invertButtons(addCodePart(getStimuliOut2Ver2ConArr())), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
-        final WizardVideoAudioOptionStimulusScreen out2ver3ScreenI = new WizardVideoAudioOptionStimulusScreen("out2ver3ScreenI", false, invertButtons(addCodePart(getStimuliOut2Ver3ConArr())), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final ArrayList<String> stimuliList = new ArrayList();
+        stimuliList.addAll(Arrays.asList(addCodePart("out1ver1Screen", getStimuliOut1Ver1ConArr())));
+        stimuliList.addAll(Arrays.asList(addCodePart("out1ver2Screen", getStimuliOut1Ver2ConArr())));
+        stimuliList.addAll(Arrays.asList(addCodePart("out1ver3Screen", getStimuliOut1Ver3ConArr())));
+        stimuliList.addAll(Arrays.asList(addCodePart("out2ver1Screen", getStimuliOut2Ver1ConArr())));
+        stimuliList.addAll(Arrays.asList(addCodePart("out2ver2Screen", getStimuliOut2Ver2ConArr())));
+        stimuliList.addAll(Arrays.asList(addCodePart("out2ver3Screen", getStimuliOut2Ver3ConArr())));
+        stimuliList.addAll(Arrays.asList(invertButtons(addCodePart("out1ver1ScreenI", getStimuliOut1Ver1ConArr()))));
+        stimuliList.addAll(Arrays.asList(invertButtons(addCodePart("out1ver2ScreenI", getStimuliOut1Ver2ConArr()))));
+        stimuliList.addAll(Arrays.asList(invertButtons(addCodePart("out1ver3ScreenI", getStimuliOut1Ver3ConArr()))));
+        stimuliList.addAll(Arrays.asList(invertButtons(addCodePart("out2ver1ScreenI", getStimuliOut2Ver1ConArr()))));
+        stimuliList.addAll(Arrays.asList(invertButtons(addCodePart("out2ver2ScreenI", getStimuliOut2Ver2ConArr()))));
+        stimuliList.addAll(Arrays.asList(invertButtons(addCodePart("out2ver3ScreenI", getStimuliOut2Ver3ConArr()))));
         String[] randomStimuliTags = new String[]{"out1ver1Screen", "out1ver2Screen", "out1ver3Screen", "out2ver1Screen", "out2ver2Screen", "out2ver3Screen", "out1ver1ScreenI", "out1ver2ScreenI", "out1ver3ScreenI", "out2ver1ScreenI", "out2ver2ScreenI", "out2ver3ScreenI"};
-        final WizardVideoAudioOptionStimulusScreen randomStimuliTagsScreen = new WizardVideoAudioOptionStimulusScreen("RandomScreen", false, new String[0], false, true, randomStimuliTags, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final WizardVideoAudioOptionStimulusScreen randomStimuliTagsScreen = new WizardVideoAudioOptionStimulusScreen("stimuli", false, stimuliList.toArray(new String[]{}), false, true, randomStimuliTags, 1000, repeatCount(), 20, false, 100, "", "", true);
 //        list1234Screen.setStimulusResponseOptions("1,2,3,4,5");
 //        list1234Screen.setStimulusResponseLabelLeft("très probable négatif");
 //        list1234Screen.setStimulusResponseLabelRight("très probable positif");
         wizardData.addScreen(pretestScreen);
         wizardData.addScreen(scoreThresholdScreen);
         wizardData.addScreen(randomStimuliTagsScreen);
-        wizardData.addScreen(out1ver1Screen);
-        wizardData.addScreen(out1ver2Screen);
-        wizardData.addScreen(out1ver3Screen);
-        wizardData.addScreen(out2ver1Screen);
-        wizardData.addScreen(out2ver2Screen);
-        wizardData.addScreen(out2ver3Screen);
-        wizardData.addScreen(out1ver1ScreenI);
-        wizardData.addScreen(out1ver2ScreenI);
-        wizardData.addScreen(out1ver3ScreenI);
-        wizardData.addScreen(out2ver1ScreenI);
-        wizardData.addScreen(out2ver2ScreenI);
-        wizardData.addScreen(out2ver3ScreenI);
+//        wizardData.addScreen(out1ver1Screen);
+//        wizardData.addScreen(out1ver2Screen);
+//        wizardData.addScreen(out1ver3Screen);
+//        wizardData.addScreen(out2ver1Screen);
+//        wizardData.addScreen(out2ver2Screen);
+//        wizardData.addScreen(out2ver3Screen);
+//        wizardData.addScreen(out1ver1ScreenI);
+//        wizardData.addScreen(out1ver2ScreenI);
+//        wizardData.addScreen(out1ver3ScreenI);
+//        wizardData.addScreen(out2ver1ScreenI);
+//        wizardData.addScreen(out2ver2ScreenI);
+//        wizardData.addScreen(out2ver3ScreenI);
 
         WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, false, true,
                 null, //Si quelqu'un d'autre veut participer à l'expérience sur cet ordinateur, veuillez cliquer sur le bouton ci-dessous.",
@@ -661,39 +663,39 @@ public class ManipulatedContours {
 
         wizardEditUserScreen.setNextWizardScreen(agreementScreen);
         agreementScreen.setNextWizardScreen(wizardTextScreen1);
-        WizardMenuScreen menuScreen = new WizardMenuScreen("temporary menu", "temporary menu", "temporary menu");
-        wizardData.addScreen(menuScreen);
+//        WizardMenuScreen menuScreen = new WizardMenuScreen("temporary menu", "temporary menu", "temporary menu");
+//        wizardData.addScreen(menuScreen);
         wizardTextScreen1.setNextWizardScreen(pretestScreen);
         pretestScreen.setNextWizardScreen(scoreThresholdScreen);
         scoreThresholdScreen.setNextWizardScreen(wizardTextScreen2);
-        wizardTextScreen2.setNextWizardScreen(menuScreen);
+        wizardTextScreen2.setNextWizardScreen(randomStimuliTagsScreen);
 
-        menuScreen.addTargetScreen(randomStimuliTagsScreen);
-        menuScreen.addTargetScreen(out1ver1Screen);
-        menuScreen.addTargetScreen(out1ver2Screen);
-        menuScreen.addTargetScreen(out1ver3Screen);
-        menuScreen.addTargetScreen(out2ver1Screen);
-        menuScreen.addTargetScreen(out2ver2Screen);
-        menuScreen.addTargetScreen(out2ver3Screen);
-        menuScreen.addTargetScreen(out1ver1ScreenI);
-        menuScreen.addTargetScreen(out1ver2ScreenI);
-        menuScreen.addTargetScreen(out1ver3ScreenI);
-        menuScreen.addTargetScreen(out2ver1ScreenI);
-        menuScreen.addTargetScreen(out2ver2ScreenI);
-        menuScreen.addTargetScreen(out2ver3ScreenI);
+//        menuScreen.addTargetScreen(randomStimuliTagsScreen);
+//        menuScreen.addTargetScreen(out1ver1Screen);
+//        menuScreen.addTargetScreen(out1ver2Screen);
+//        menuScreen.addTargetScreen(out1ver3Screen);
+//        menuScreen.addTargetScreen(out2ver1Screen);
+//        menuScreen.addTargetScreen(out2ver2Screen);
+//        menuScreen.addTargetScreen(out2ver3Screen);
+//        menuScreen.addTargetScreen(out1ver1ScreenI);
+//        menuScreen.addTargetScreen(out1ver2ScreenI);
+//        menuScreen.addTargetScreen(out1ver3ScreenI);
+//        menuScreen.addTargetScreen(out2ver1ScreenI);
+//        menuScreen.addTargetScreen(out2ver2ScreenI);
+//        menuScreen.addTargetScreen(out2ver3ScreenI);
         randomStimuliTagsScreen.setNextWizardScreen(completionScreen);
-        out1ver1Screen.setNextWizardScreen(completionScreen);
-        out1ver2Screen.setNextWizardScreen(completionScreen);
-        out1ver3Screen.setNextWizardScreen(completionScreen);
-        out2ver1Screen.setNextWizardScreen(completionScreen);
-        out2ver2Screen.setNextWizardScreen(completionScreen);
-        out2ver3Screen.setNextWizardScreen(completionScreen);
-        out1ver1ScreenI.setNextWizardScreen(completionScreen);
-        out1ver2ScreenI.setNextWizardScreen(completionScreen);
-        out1ver3ScreenI.setNextWizardScreen(completionScreen);
-        out2ver1ScreenI.setNextWizardScreen(completionScreen);
-        out2ver2ScreenI.setNextWizardScreen(completionScreen);
-        out2ver3ScreenI.setNextWizardScreen(completionScreen);
+//        out1ver1Screen.setNextWizardScreen(completionScreen);
+//        out1ver2Screen.setNextWizardScreen(completionScreen);
+//        out1ver3Screen.setNextWizardScreen(completionScreen);
+//        out2ver1Screen.setNextWizardScreen(completionScreen);
+//        out2ver2Screen.setNextWizardScreen(completionScreen);
+//        out2ver3Screen.setNextWizardScreen(completionScreen);
+//        out1ver1ScreenI.setNextWizardScreen(completionScreen);
+//        out1ver2ScreenI.setNextWizardScreen(completionScreen);
+//        out1ver3ScreenI.setNextWizardScreen(completionScreen);
+//        out2ver1ScreenI.setNextWizardScreen(completionScreen);
+//        out2ver2ScreenI.setNextWizardScreen(completionScreen);
+//        out2ver3ScreenI.setNextWizardScreen(completionScreen);
         return wizardData;
     }
 
