@@ -2,6 +2,7 @@
 <experiment appNameDisplay="ManipulatedContours" appNameInternal="manipulatedcontours" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="false" textFontSize="17">
     <metadata>
         <field controlledMessage="Entrez au moins trois lettres." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="code identifiant"/>
+        <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_RandomScreen" preventServerDuplicates="false" registrationField="groupAllocation_RandomScreen"/>
     </metadata>
     <presenter displayOrder="1" menuLabel="Edit User" next="Accord" type="metadata" self="Edit_User" title="Edit User">
         <htmlText featureText="Entrez votre code identifiant ici:"/>
@@ -72,7 +73,48 @@
             </belowThreshold>
         </bestScoreAboveThreshold>
     </presenter>
-    <presenter displayOrder="7" menuLabel="out1ver1Screen" next="Fini" type="stimulus" self="out1ver1Screen" title="out1ver1Screen">
+    <presenter displayOrder="7" menuLabel="RandomScreen" next="Fini" type="stimulus" self="RandomScreen" title="RandomScreen">
+        <loadStimulus eventTag="RandomScreen" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <showStimulusProgress/>
+                <stimulusCodeAudio msToNext="100" codeFormat="&lt;code&gt;">
+                    <clearPage/>
+                    <centrePage/>
+                    <pause msToNext="100">
+                        <stimulusAudio msToNext="100" showPlaybackIndicator="true">
+                            <addPadding/>
+                            <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
+                                <nextStimulus eventTag="NextStimulusRandomScreen" repeatIncorrect="false"/>
+                            </stimulusRatingButton>
+                        </stimulusAudio>
+                    </pause>
+                </stimulusCodeAudio>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <autoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping storageField="groupAllocation_RandomScreen">
+                <tag>out1ver1Screen</tag>
+                <tag>out1ver2Screen</tag>
+                <tag>out1ver3Screen</tag>
+                <tag>out2ver1Screen</tag>
+                <tag>out2ver2Screen</tag>
+                <tag>out2ver3Screen</tag>
+                <tag>out1ver1ScreenI</tag>
+                <tag>out1ver2ScreenI</tag>
+                <tag>out1ver3ScreenI</tag>
+                <tag>out2ver1ScreenI</tag>
+                <tag>out2ver2ScreenI</tag>
+                <tag>out2ver3ScreenI</tag>
+            </randomGrouping>
+            <stimuli>
+                <tag>RandomScreen</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter displayOrder="8" menuLabel="out1ver1Screen" next="Fini" type="stimulus" self="out1ver1Screen" title="out1ver1Screen">
         <loadStimulus eventTag="out1ver1Screen" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
@@ -100,7 +142,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="8" menuLabel="out1ver2Screen" next="Fini" type="stimulus" self="out1ver2Screen" title="out1ver2Screen">
+    <presenter displayOrder="9" menuLabel="out1ver2Screen" next="Fini" type="stimulus" self="out1ver2Screen" title="out1ver2Screen">
         <loadStimulus eventTag="out1ver2Screen" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
@@ -128,7 +170,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="9" menuLabel="out1ver3Screen" next="Fini" type="stimulus" self="out1ver3Screen" title="out1ver3Screen">
+    <presenter displayOrder="10" menuLabel="out1ver3Screen" next="Fini" type="stimulus" self="out1ver3Screen" title="out1ver3Screen">
         <loadStimulus eventTag="out1ver3Screen" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
@@ -156,7 +198,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="10" menuLabel="out2ver1Screen" next="Fini" type="stimulus" self="out2ver1Screen" title="out2ver1Screen">
+    <presenter displayOrder="11" menuLabel="out2ver1Screen" next="Fini" type="stimulus" self="out2ver1Screen" title="out2ver1Screen">
         <loadStimulus eventTag="out2ver1Screen" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
@@ -184,7 +226,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="11" menuLabel="out2ver2Screen" next="Fini" type="stimulus" self="out2ver2Screen" title="out2ver2Screen">
+    <presenter displayOrder="12" menuLabel="out2ver2Screen" next="Fini" type="stimulus" self="out2ver2Screen" title="out2ver2Screen">
         <loadStimulus eventTag="out2ver2Screen" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
@@ -212,7 +254,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="12" menuLabel="out2ver3Screen" next="Fini" type="stimulus" self="out2ver3Screen" title="out2ver3Screen">
+    <presenter displayOrder="13" menuLabel="out2ver3Screen" next="Fini" type="stimulus" self="out2ver3Screen" title="out2ver3Screen">
         <loadStimulus eventTag="out2ver3Screen" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
@@ -240,7 +282,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="13" menuLabel="out1ver1ScreenI" next="Fini" type="stimulus" self="out1ver1ScreenI" title="out1ver1ScreenI">
+    <presenter displayOrder="14" menuLabel="out1ver1ScreenI" next="Fini" type="stimulus" self="out1ver1ScreenI" title="out1ver1ScreenI">
         <loadStimulus eventTag="out1ver1ScreenI" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
@@ -268,7 +310,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="14" menuLabel="out1ver2ScreenI" next="Fini" type="stimulus" self="out1ver2ScreenI" title="out1ver2ScreenI">
+    <presenter displayOrder="15" menuLabel="out1ver2ScreenI" next="Fini" type="stimulus" self="out1ver2ScreenI" title="out1ver2ScreenI">
         <loadStimulus eventTag="out1ver2ScreenI" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
@@ -296,7 +338,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="15" menuLabel="out1ver3ScreenI" next="Fini" type="stimulus" self="out1ver3ScreenI" title="out1ver3ScreenI">
+    <presenter displayOrder="16" menuLabel="out1ver3ScreenI" next="Fini" type="stimulus" self="out1ver3ScreenI" title="out1ver3ScreenI">
         <loadStimulus eventTag="out1ver3ScreenI" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
@@ -324,7 +366,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="16" menuLabel="out2ver1ScreenI" next="Fini" type="stimulus" self="out2ver1ScreenI" title="out2ver1ScreenI">
+    <presenter displayOrder="17" menuLabel="out2ver1ScreenI" next="Fini" type="stimulus" self="out2ver1ScreenI" title="out2ver1ScreenI">
         <loadStimulus eventTag="out2ver1ScreenI" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
@@ -352,7 +394,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="17" menuLabel="out2ver2ScreenI" next="Fini" type="stimulus" self="out2ver2ScreenI" title="out2ver2ScreenI">
+    <presenter displayOrder="18" menuLabel="out2ver2ScreenI" next="Fini" type="stimulus" self="out2ver2ScreenI" title="out2ver2ScreenI">
         <loadStimulus eventTag="out2ver2ScreenI" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
@@ -380,7 +422,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="18" menuLabel="out2ver3ScreenI" next="Fini" type="stimulus" self="out2ver3ScreenI" title="out2ver3ScreenI">
+    <presenter displayOrder="19" menuLabel="out2ver3ScreenI" next="Fini" type="stimulus" self="out2ver3ScreenI" title="out2ver3ScreenI">
         <loadStimulus eventTag="out2ver3ScreenI" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
@@ -408,7 +450,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="19" menuLabel="Fini" type="transmission" self="Fini" title="Fini">
+    <presenter displayOrder="20" menuLabel="Fini" type="transmission" self="Fini" title="Fini">
         <sendAllData>
             <onSuccess>
                 <htmlText featureText="L'expérience est terminée.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Merci beaucoup pour votre participation!"/>
@@ -421,10 +463,11 @@
             </onError>
         </sendAllData>
     </presenter>
-    <presenter back="Edit_User" displayOrder="20" menuLabel="about" type="debug" self="about" title="about">
+    <presenter back="Edit_User" displayOrder="21" menuLabel="about" type="debug" self="about" title="about">
         <versionData/>
     </presenter>
-    <presenter displayOrder="21" menuLabel="temporary menu" type="menu" self="temporary_menu" title="temporary menu">
+    <presenter displayOrder="22" menuLabel="temporary menu" type="menu" self="temporary_menu" title="temporary menu">
+        <menuItem featureText="RandomScreen" target="RandomScreen"/>
         <menuItem featureText="out1ver1Screen" target="out1ver1Screen"/>
         <menuItem featureText="out1ver2Screen" target="out1ver2Screen"/>
         <menuItem featureText="out1ver3Screen" target="out1ver3Screen"/>

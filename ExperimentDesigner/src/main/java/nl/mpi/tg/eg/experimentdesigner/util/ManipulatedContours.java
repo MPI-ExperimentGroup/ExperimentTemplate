@@ -628,11 +628,14 @@ public class ManipulatedContours {
         final WizardVideoAudioOptionStimulusScreen out2ver1ScreenI = new WizardVideoAudioOptionStimulusScreen("out2ver1ScreenI", false, invertButtons(addCodePart(getStimuliOut2Ver1ConArr())), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
         final WizardVideoAudioOptionStimulusScreen out2ver2ScreenI = new WizardVideoAudioOptionStimulusScreen("out2ver2ScreenI", false, invertButtons(addCodePart(getStimuliOut2Ver2ConArr())), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
         final WizardVideoAudioOptionStimulusScreen out2ver3ScreenI = new WizardVideoAudioOptionStimulusScreen("out2ver3ScreenI", false, invertButtons(addCodePart(getStimuliOut2Ver3ConArr())), false, true, null, 1000, repeatCount(), 20, false, 100, "", "", true);
-        //        list1234Screen.setStimulusResponseOptions("1,2,3,4,5");
+        String[] randomStimuliTags = new String[]{"out1ver1Screen", "out1ver2Screen", "out1ver3Screen", "out2ver1Screen", "out2ver2Screen", "out2ver3Screen", "out1ver1ScreenI", "out1ver2ScreenI", "out1ver3ScreenI", "out2ver1ScreenI", "out2ver2ScreenI", "out2ver3ScreenI"};
+        final WizardVideoAudioOptionStimulusScreen randomStimuliTagsScreen = new WizardVideoAudioOptionStimulusScreen("RandomScreen", false, new String[0], false, true, randomStimuliTags, 1000, repeatCount(), 20, false, 100, "", "", true);
+//        list1234Screen.setStimulusResponseOptions("1,2,3,4,5");
 //        list1234Screen.setStimulusResponseLabelLeft("très probable négatif");
 //        list1234Screen.setStimulusResponseLabelRight("très probable positif");
         wizardData.addScreen(pretestScreen);
         wizardData.addScreen(scoreThresholdScreen);
+        wizardData.addScreen(randomStimuliTagsScreen);
         wizardData.addScreen(out1ver1Screen);
         wizardData.addScreen(out1ver2Screen);
         wizardData.addScreen(out1ver3Screen);
@@ -665,6 +668,7 @@ public class ManipulatedContours {
         scoreThresholdScreen.setNextWizardScreen(wizardTextScreen2);
         wizardTextScreen2.setNextWizardScreen(menuScreen);
 
+        menuScreen.addTargetScreen(randomStimuliTagsScreen);
         menuScreen.addTargetScreen(out1ver1Screen);
         menuScreen.addTargetScreen(out1ver2Screen);
         menuScreen.addTargetScreen(out1ver3Screen);
@@ -677,6 +681,7 @@ public class ManipulatedContours {
         menuScreen.addTargetScreen(out2ver1ScreenI);
         menuScreen.addTargetScreen(out2ver2ScreenI);
         menuScreen.addTargetScreen(out2ver3ScreenI);
+        randomStimuliTagsScreen.setNextWizardScreen(completionScreen);
         out1ver1Screen.setNextWizardScreen(completionScreen);
         out1ver2Screen.setNextWizardScreen(completionScreen);
         out1ver3Screen.setNextWizardScreen(completionScreen);
