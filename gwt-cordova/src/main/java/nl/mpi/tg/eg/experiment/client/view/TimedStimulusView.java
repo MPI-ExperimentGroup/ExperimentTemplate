@@ -23,6 +23,7 @@ import com.google.gwt.event.dom.client.CanPlayThroughEvent;
 import com.google.gwt.event.dom.client.CanPlayThroughHandler;
 import com.google.gwt.event.dom.client.EndedEvent;
 import com.google.gwt.event.dom.client.EndedHandler;
+import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.LoadEvent;
@@ -185,6 +186,10 @@ public class TimedStimulusView extends ComplexView {
         errorLabel.setVisible(false);
         outerPanel.add(errorLabel);
         final TextArea textBox = new TextArea();
+        if (hotKey == KeyCodes.KEY_ENTER) {
+            textBox.setVisibleLines(1);
+            textBox.getElement().getStyle().setProperty("minHeight", "26px");
+        }
         textBox.setStylePrimaryName("metadataOK");
         outerPanel.add(textBox);
         textBox.setFocus(true);
