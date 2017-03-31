@@ -538,7 +538,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             }
             }</xsl:text>
     </xsl:template>
-    <xsl:template match="showStimulusGrid|matchingStimulusGrid|groupResponseFeedback|stimulusHasRatingOptions">
+    <xsl:template match="hasGetParameter|showStimulusGrid|matchingStimulusGrid|groupResponseFeedback|stimulusHasRatingOptions">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(appEventListner</xsl:text>
@@ -558,6 +558,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@msToNext) then concat(', ', @msToNext) else ''" />
         <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
         <xsl:value-of select="if(@alternativeChoice) then concat(', &quot;', @alternativeChoice, '&quot;') else ''" />
+        <xsl:value-of select="if(@parameterName) then concat(', &quot;', @parameterName, '&quot;') else ''" />
         <xsl:text>);
         </xsl:text>
     </xsl:template>
