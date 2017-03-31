@@ -353,7 +353,7 @@ public class MultiParticipant {
                 "Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.",
                 "Probeer opnieuw");
         WizardMenuScreen menuScreen4or8Members = new WizardMenuScreen("GroupSizeMenu", "GroupSizeMenu", "GroupSizeMenu");
-
+        menuScreen4or8Members.setBranchOnGetParam(true, "A choice must be provided out of the following:<br/>");
         wizardData.addScreen(wizardAgreementScreen);
         wizardData.addScreen(wizardEditUserScreen);
         wizardData.addScreen(menuScreen4or8Members);

@@ -36,11 +36,12 @@ public class WizardMenuScreen extends AbstractWizardScreen {
 
     public WizardMenuScreen(String screenTitle, String menuLabel, String screenTag) {
         super(WizardScreenEnum.WizardMenuScreen, screenTitle, menuLabel, screenTag);
+        setBranchOnGetParam(false, null);
     }
 
     @Override
     public String getScreenBooleanInfo(int index) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new String[]{"Requre URL GET parameter of a screen name to branch to rather than showing the menu"}[index];
     }
 
     @Override
@@ -58,6 +59,15 @@ public class WizardMenuScreen extends AbstractWizardScreen {
         return new String[]{}[index];
     }
 
+    final public void setBranchOnGetParam(boolean branchOnGetParam, String errorMessage) {
+        this.wizardScreenData.setScreenText(0, errorMessage);
+        this.wizardScreenData.setScreenBoolean(0, branchOnGetParam);
+    }
+
+    private boolean isBranchOnGetParam(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenBoolean(0);
+    }
+
     public void addTargetScreen(final AbstractWizardScreen targetScreen) {
         wizardScreenData.getMenuWizardScreenData().add(targetScreen.getWizardScreenData());
     }
@@ -69,7 +79,22 @@ public class WizardMenuScreen extends AbstractWizardScreen {
         if (storedWizardScreenData.getScreenText(0) != null) {
             storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
         }
-        if (storedWizardScreenData.getMenuWizardScreenData().isEmpty()) {
+        if (isBranchOnGetParam(storedWizardScreenData)) {
+            String aChoiceMustBeProvidedMessage = "";
+            for (WizardScreenData targetScreen : storedWizardScreenData.getMenuWizardScreenData()) {
+                final PresenterFeature hasGetParameter = new PresenterFeature(FeatureType.hasGetParameter, null);
+                hasGetParameter.addFeatureAttributes(FeatureAttribute.parameterName, targetScreen.getScreenTag());
+                final PresenterFeature conditionTrue = new PresenterFeature(FeatureType.conditionTrue, null);
+                final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
+                autoNextPresenter.addFeatureAttributes(FeatureAttribute.target, targetScreen.getScreenTag());
+                conditionTrue.getPresenterFeatureList().add(autoNextPresenter);
+                hasGetParameter.getPresenterFeatureList().add(conditionTrue);
+                hasGetParameter.getPresenterFeatureList().add(new PresenterFeature(FeatureType.conditionFalse, null));
+                storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(hasGetParameter);
+                aChoiceMustBeProvidedMessage += targetScreen.getScreenTag() + "<br/>";
+            }
+            storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, aChoiceMustBeProvidedMessage));
+        } else if (storedWizardScreenData.getMenuWizardScreenData().isEmpty()) {
             storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMenuItems, null));
         } else {
             for (WizardScreenData targetScreen : storedWizardScreenData.getMenuWizardScreenData()) {
