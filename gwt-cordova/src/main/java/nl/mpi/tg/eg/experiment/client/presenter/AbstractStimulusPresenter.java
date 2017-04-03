@@ -623,6 +623,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //                    nextStimulus("stimulusFreeTextEnter", false);
                     }
                 }
+                this.resetSingleShot();
             }
         }, hotKey);
         stimulusFreeTextList.add(stimulusFreeText);
