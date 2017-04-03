@@ -50,7 +50,7 @@
                         <htmlText featureText="All 23 stimuli are presented all participants in random order similar to the producer screen"/>
                         <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                             <addPadding/>
-                            <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm" validationRegex="[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}"/>
+                            <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </stimulusImage>
                     </groupNetworkActivity>
@@ -147,7 +147,7 @@
                         <htmlText featureText="All 23 stimuli are presented all participants in random order similar to the producer screen"/>
                         <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                             <addPadding/>
-                            <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm" validationRegex="[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}"/>
+                            <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </stimulusImage>
                     </groupNetworkActivity>
@@ -244,7 +244,7 @@
                         <htmlText featureText="All 23 stimuli are presented all participants in random order similar to the producer screen"/>
                         <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                             <addPadding/>
-                            <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm" validationRegex="[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}"/>
+                            <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </stimulusImage>
                     </groupNetworkActivity>
@@ -341,7 +341,7 @@
                         <htmlText featureText="The producer sees the stimulus and enters some text"/>
                         <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                             <addPadding/>
-                            <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm" validationRegex="[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}"/>
+                            <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </stimulusImage>
                     </groupNetworkActivity>
@@ -438,7 +438,7 @@
                         <htmlText featureText="The producer sees the stimulus and enters some text"/>
                         <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                             <addPadding/>
-                            <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm" validationRegex="[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}"/>
+                            <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </stimulusImage>
                     </groupNetworkActivity>
@@ -535,7 +535,7 @@
                         <htmlText featureText="The producer sees the stimulus and enters some text"/>
                         <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                             <addPadding/>
-                            <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm" validationRegex="[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}"/>
+                            <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </stimulusImage>
                     </groupNetworkActivity>
@@ -632,7 +632,7 @@
                         <htmlText featureText="The producer sees the stimulus and enters some text"/>
                         <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                             <addPadding/>
-                            <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm" validationRegex="[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}"/>
+                            <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </stimulusImage>
                     </groupNetworkActivity>
@@ -729,7 +729,7 @@
                         <htmlText featureText="The producer sees the stimulus and enters some text"/>
                         <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                             <addPadding/>
-                            <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm" validationRegex="[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}"/>
+                            <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </stimulusImage>
                     </groupNetworkActivity>
@@ -826,7 +826,7 @@
                         <htmlText featureText="The producer sees the stimulus and enters some text"/>
                         <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                             <addPadding/>
-                            <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm" validationRegex="[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}"/>
+                            <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </stimulusImage>
                     </groupNetworkActivity>
