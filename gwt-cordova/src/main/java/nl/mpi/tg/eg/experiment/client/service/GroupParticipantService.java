@@ -176,7 +176,8 @@ public class GroupParticipantService {
                         if (splitRole[roleIndex].contains(this.memberCode)) {
                             final TimedStimulusListener currentListner = activityListeners.get(groupRole);
 //                        ((userIdMatches) ? selfActivityListeners : othersActivityListeners).get(groupRole).get(this.requestedPhase).postLoadTimerFired();
-                            if (lastFiredListner == null || !lastFiredListner.equals(currentListner)) {
+                            if (splitRole.length == 1 /* if there is only one role to this screen then it is ok to refire the last */
+                                    || (lastFiredListner == null || !lastFiredListner.equals(currentListner))) {
                                 this.stimulusId = stimulusId;
                                 this.stimulusIndex = Integer.parseInt(stimulusIndex); // todo check for double adding of stimulus index and or something like that
                                 this.requestedPhase = currentRequestedPhase;
