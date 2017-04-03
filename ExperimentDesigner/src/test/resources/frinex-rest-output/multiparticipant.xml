@@ -51,7 +51,7 @@
                         <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                             <addPadding/>
                             <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm" validationRegex="[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}"/>
-                            <sendGroupMessageButton featureText="groupNetworkActivitySelf1" eventTag="groupNetworkActivitySelf1" incrementPhase="1" hotKey="W" repeatIncorrect="false"/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </stimulusImage>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="">
@@ -102,13 +102,13 @@
                         <groupResponseFeedback>
                             <responseCorrect msToNext="0">
                                 <htmlText featureText="responseCorrect"/>
-                                <sendGroupMessageButton featureText="nextStimulusCorrect" eventTag="nextStimulusCorrect" incrementPhase="1" hotKey="Q" repeatIncorrect="false"/>
+                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </responseCorrect>
                             <responseIncorrect msToNext="0">
                                 <htmlText featureText="responseIncorrect"/>
                                 <htmlText featureText="your guesser chose"/>
                                 <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                <sendGroupMessageButton featureText="nextStimulusIncorrect" eventTag="nextStimulusIncorrect" incrementPhase="1" hotKey="Q" repeatIncorrect="false"/>
+                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </responseIncorrect>
                         </groupResponseFeedback>
                         <groupScoreLabel/>
@@ -120,7 +120,7 @@
                         <htmlText featureText="This phase is not used in this screen"/>
                         <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                             <addPadding/>
-                            <sendGroupMessageButton featureText="nextStimulusFeatureTrainingDisplay" eventTag="nextStimulusFeatureTrainingDisplay" incrementPhase="1" hotKey="Q" repeatIncorrect="false"/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </stimulusImage>
                         <groupMessageLabel/>
                     </groupNetworkActivity>
@@ -148,7 +148,7 @@
                         <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                             <addPadding/>
                             <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm" validationRegex="[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}"/>
-                            <sendGroupMessageButton featureText="groupNetworkActivitySelf1" eventTag="groupNetworkActivitySelf1" incrementPhase="1" hotKey="W" repeatIncorrect="false"/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </stimulusImage>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="">
@@ -199,13 +199,13 @@
                         <groupResponseFeedback>
                             <responseCorrect msToNext="0">
                                 <htmlText featureText="responseCorrect"/>
-                                <sendGroupMessageButton featureText="nextStimulusCorrect" eventTag="nextStimulusCorrect" incrementPhase="1" hotKey="Q" repeatIncorrect="false"/>
+                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </responseCorrect>
                             <responseIncorrect msToNext="0">
                                 <htmlText featureText="responseIncorrect"/>
                                 <htmlText featureText="your guesser chose"/>
                                 <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                <sendGroupMessageButton featureText="nextStimulusIncorrect" eventTag="nextStimulusIncorrect" incrementPhase="1" hotKey="Q" repeatIncorrect="false"/>
+                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </responseIncorrect>
                         </groupResponseFeedback>
                         <groupScoreLabel/>
@@ -217,7 +217,7 @@
                         <htmlText featureText="This phase is not used in this screen"/>
                         <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                             <addPadding/>
-                            <sendGroupMessageButton featureText="nextStimulusFeatureTrainingDisplay" eventTag="nextStimulusFeatureTrainingDisplay" incrementPhase="1" hotKey="Q" repeatIncorrect="false"/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </stimulusImage>
                         <groupMessageLabel/>
                     </groupNetworkActivity>
@@ -245,7 +245,7 @@
                         <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                             <addPadding/>
                             <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm" validationRegex="[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}"/>
-                            <sendGroupMessageButton featureText="groupNetworkActivitySelf1" eventTag="groupNetworkActivitySelf1" incrementPhase="1" hotKey="W" repeatIncorrect="false"/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </stimulusImage>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="">
@@ -296,13 +296,13 @@
                         <groupResponseFeedback>
                             <responseCorrect msToNext="0">
                                 <htmlText featureText="responseCorrect"/>
-                                <sendGroupMessageButton featureText="nextStimulusCorrect" eventTag="nextStimulusCorrect" incrementPhase="1" hotKey="Q" repeatIncorrect="false"/>
+                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </responseCorrect>
                             <responseIncorrect msToNext="0">
                                 <htmlText featureText="responseIncorrect"/>
                                 <htmlText featureText="your guesser chose"/>
                                 <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                <sendGroupMessageButton featureText="nextStimulusIncorrect" eventTag="nextStimulusIncorrect" incrementPhase="1" hotKey="Q" repeatIncorrect="false"/>
+                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </responseIncorrect>
                         </groupResponseFeedback>
                         <groupScoreLabel/>
@@ -314,7 +314,7 @@
                         <htmlText featureText="This phase is not used in this screen"/>
                         <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                             <addPadding/>
-                            <sendGroupMessageButton featureText="nextStimulusFeatureTrainingDisplay" eventTag="nextStimulusFeatureTrainingDisplay" incrementPhase="1" hotKey="Q" repeatIncorrect="false"/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </stimulusImage>
                         <groupMessageLabel/>
                     </groupNetworkActivity>
@@ -342,7 +342,7 @@
                         <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                             <addPadding/>
                             <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm" validationRegex="[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}"/>
-                            <sendGroupMessageButton featureText="groupNetworkActivitySelf1" eventTag="groupNetworkActivitySelf1" incrementPhase="1" hotKey="W" repeatIncorrect="false"/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </stimulusImage>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="-:A:-:B:-:C:-:D">
@@ -393,13 +393,13 @@
                         <groupResponseFeedback>
                             <responseCorrect msToNext="0">
                                 <htmlText featureText="responseCorrect"/>
-                                <sendGroupMessageButton featureText="nextStimulusCorrect" eventTag="nextStimulusCorrect" incrementPhase="1" hotKey="Q" repeatIncorrect="false"/>
+                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </responseCorrect>
                             <responseIncorrect msToNext="0">
                                 <htmlText featureText="responseIncorrect"/>
                                 <htmlText featureText="your guesser chose"/>
                                 <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                <sendGroupMessageButton featureText="nextStimulusIncorrect" eventTag="nextStimulusIncorrect" incrementPhase="1" hotKey="Q" repeatIncorrect="false"/>
+                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </responseIncorrect>
                         </groupResponseFeedback>
                         <groupScoreLabel/>
@@ -411,7 +411,7 @@
                         <htmlText featureText="The stimulus and the producers text are shown to all other participants"/>
                         <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                             <addPadding/>
-                            <sendGroupMessageButton featureText="nextStimulusFeatureTrainingDisplay" eventTag="nextStimulusFeatureTrainingDisplay" incrementPhase="1" hotKey="Q" repeatIncorrect="false"/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </stimulusImage>
                         <groupMessageLabel/>
                     </groupNetworkActivity>
@@ -439,7 +439,7 @@
                         <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                             <addPadding/>
                             <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm" validationRegex="[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}"/>
-                            <sendGroupMessageButton featureText="groupNetworkActivitySelf1" eventTag="groupNetworkActivitySelf1" incrementPhase="1" hotKey="W" repeatIncorrect="false"/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </stimulusImage>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="-:A,C:-:-:B,D:-">
@@ -490,13 +490,13 @@
                         <groupResponseFeedback>
                             <responseCorrect msToNext="0">
                                 <htmlText featureText="responseCorrect"/>
-                                <sendGroupMessageButton featureText="nextStimulusCorrect" eventTag="nextStimulusCorrect" incrementPhase="1" hotKey="Q" repeatIncorrect="false"/>
+                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </responseCorrect>
                             <responseIncorrect msToNext="0">
                                 <htmlText featureText="responseIncorrect"/>
                                 <htmlText featureText="your guesser chose"/>
                                 <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                <sendGroupMessageButton featureText="nextStimulusIncorrect" eventTag="nextStimulusIncorrect" incrementPhase="1" hotKey="Q" repeatIncorrect="false"/>
+                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </responseIncorrect>
                         </groupResponseFeedback>
                         <groupScoreLabel/>
@@ -508,7 +508,7 @@
                         <htmlText featureText="This phase is not used in this screen"/>
                         <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                             <addPadding/>
-                            <sendGroupMessageButton featureText="nextStimulusFeatureTrainingDisplay" eventTag="nextStimulusFeatureTrainingDisplay" incrementPhase="1" hotKey="Q" repeatIncorrect="false"/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </stimulusImage>
                         <groupMessageLabel/>
                     </groupNetworkActivity>
@@ -536,7 +536,7 @@
                         <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                             <addPadding/>
                             <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm" validationRegex="[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}"/>
-                            <sendGroupMessageButton featureText="groupNetworkActivitySelf1" eventTag="groupNetworkActivitySelf1" incrementPhase="1" hotKey="W" repeatIncorrect="false"/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </stimulusImage>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="-:A,C:-:-:B,D:-">
@@ -587,13 +587,13 @@
                         <groupResponseFeedback>
                             <responseCorrect msToNext="0">
                                 <htmlText featureText="responseCorrect"/>
-                                <sendGroupMessageButton featureText="nextStimulusCorrect" eventTag="nextStimulusCorrect" incrementPhase="1" hotKey="Q" repeatIncorrect="false"/>
+                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </responseCorrect>
                             <responseIncorrect msToNext="0">
                                 <htmlText featureText="responseIncorrect"/>
                                 <htmlText featureText="your guesser chose"/>
                                 <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                <sendGroupMessageButton featureText="nextStimulusIncorrect" eventTag="nextStimulusIncorrect" incrementPhase="1" hotKey="Q" repeatIncorrect="false"/>
+                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </responseIncorrect>
                         </groupResponseFeedback>
                         <groupScoreLabel/>
@@ -605,7 +605,7 @@
                         <htmlText featureText="This phase is not used in this screen"/>
                         <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                             <addPadding/>
-                            <sendGroupMessageButton featureText="nextStimulusFeatureTrainingDisplay" eventTag="nextStimulusFeatureTrainingDisplay" incrementPhase="1" hotKey="Q" repeatIncorrect="false"/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </stimulusImage>
                         <groupMessageLabel/>
                     </groupNetworkActivity>
@@ -633,7 +633,7 @@
                         <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                             <addPadding/>
                             <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm" validationRegex="[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}"/>
-                            <sendGroupMessageButton featureText="groupNetworkActivitySelf1" eventTag="groupNetworkActivitySelf1" incrementPhase="1" hotKey="W" repeatIncorrect="false"/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </stimulusImage>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="-:A:-:B:-:C:-:D:-:E:-:F:-:G:-:H">
@@ -684,13 +684,13 @@
                         <groupResponseFeedback>
                             <responseCorrect msToNext="0">
                                 <htmlText featureText="responseCorrect"/>
-                                <sendGroupMessageButton featureText="nextStimulusCorrect" eventTag="nextStimulusCorrect" incrementPhase="1" hotKey="Q" repeatIncorrect="false"/>
+                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </responseCorrect>
                             <responseIncorrect msToNext="0">
                                 <htmlText featureText="responseIncorrect"/>
                                 <htmlText featureText="your guesser chose"/>
                                 <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                <sendGroupMessageButton featureText="nextStimulusIncorrect" eventTag="nextStimulusIncorrect" incrementPhase="1" hotKey="Q" repeatIncorrect="false"/>
+                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </responseIncorrect>
                         </groupResponseFeedback>
                         <groupScoreLabel/>
@@ -702,7 +702,7 @@
                         <htmlText featureText="The stimulus and the producers text are shown to all other participants"/>
                         <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                             <addPadding/>
-                            <sendGroupMessageButton featureText="nextStimulusFeatureTrainingDisplay" eventTag="nextStimulusFeatureTrainingDisplay" incrementPhase="1" hotKey="Q" repeatIncorrect="false"/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </stimulusImage>
                         <groupMessageLabel/>
                     </groupNetworkActivity>
@@ -730,7 +730,7 @@
                         <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                             <addPadding/>
                             <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm" validationRegex="[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}"/>
-                            <sendGroupMessageButton featureText="groupNetworkActivitySelf1" eventTag="groupNetworkActivitySelf1" incrementPhase="1" hotKey="W" repeatIncorrect="false"/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </stimulusImage>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
@@ -781,13 +781,13 @@
                         <groupResponseFeedback>
                             <responseCorrect msToNext="0">
                                 <htmlText featureText="responseCorrect"/>
-                                <sendGroupMessageButton featureText="nextStimulusCorrect" eventTag="nextStimulusCorrect" incrementPhase="1" hotKey="Q" repeatIncorrect="false"/>
+                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </responseCorrect>
                             <responseIncorrect msToNext="0">
                                 <htmlText featureText="responseIncorrect"/>
                                 <htmlText featureText="your guesser chose"/>
                                 <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                <sendGroupMessageButton featureText="nextStimulusIncorrect" eventTag="nextStimulusIncorrect" incrementPhase="1" hotKey="Q" repeatIncorrect="false"/>
+                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </responseIncorrect>
                         </groupResponseFeedback>
                         <groupScoreLabel/>
@@ -799,7 +799,7 @@
                         <htmlText featureText="This phase is not used in this screen"/>
                         <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                             <addPadding/>
-                            <sendGroupMessageButton featureText="nextStimulusFeatureTrainingDisplay" eventTag="nextStimulusFeatureTrainingDisplay" incrementPhase="1" hotKey="Q" repeatIncorrect="false"/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </stimulusImage>
                         <groupMessageLabel/>
                     </groupNetworkActivity>
@@ -827,7 +827,7 @@
                         <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                             <addPadding/>
                             <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm" validationRegex="[^0-9^S^J^s^j^C^c^V^v^W^w^T^t^Z^z^Y^y^X^x]{2,}"/>
-                            <sendGroupMessageButton featureText="groupNetworkActivitySelf1" eventTag="groupNetworkActivitySelf1" incrementPhase="1" hotKey="W" repeatIncorrect="false"/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </stimulusImage>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
@@ -878,13 +878,13 @@
                         <groupResponseFeedback>
                             <responseCorrect msToNext="0">
                                 <htmlText featureText="responseCorrect"/>
-                                <sendGroupMessageButton featureText="nextStimulusCorrect" eventTag="nextStimulusCorrect" incrementPhase="1" hotKey="Q" repeatIncorrect="false"/>
+                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </responseCorrect>
                             <responseIncorrect msToNext="0">
                                 <htmlText featureText="responseIncorrect"/>
                                 <htmlText featureText="your guesser chose"/>
                                 <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                <sendGroupMessageButton featureText="nextStimulusIncorrect" eventTag="nextStimulusIncorrect" incrementPhase="1" hotKey="Q" repeatIncorrect="false"/>
+                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </responseIncorrect>
                         </groupResponseFeedback>
                         <groupScoreLabel/>
@@ -896,7 +896,7 @@
                         <htmlText featureText="This phase is not used in this screen"/>
                         <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                             <addPadding/>
-                            <sendGroupMessageButton featureText="nextStimulusFeatureTrainingDisplay" eventTag="nextStimulusFeatureTrainingDisplay" incrementPhase="1" hotKey="Q" repeatIncorrect="false"/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </stimulusImage>
                         <groupMessageLabel/>
                     </groupNetworkActivity>
