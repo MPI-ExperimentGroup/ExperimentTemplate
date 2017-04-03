@@ -17,12 +17,15 @@
  */
 package nl.mpi.tg.eg.experiment.client.presenter;
 
+import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.view.MenuView;
@@ -41,6 +44,20 @@ public abstract class AbstractMenuPresenter extends AbstractPresenter implements
         super(widgetTag, simpleView);
         this.userResults = userResults;
         this.localStorage = localStorage;
+    }
+
+    public void hasGetParameter(final AppEventListner appEventListner, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse, final String getParamName) {
+        Timer timer = new Timer() {
+            public void run() {
+                String paramValue = Window.Location.getParameter(getParamName);
+                if (paramValue != null) {
+                    conditionTrue.postLoadTimerFired();
+                } else {
+                    conditionFalse.postLoadTimerFired();
+                }
+            }
+        };
+        timer.schedule(100);
     }
 
     public void allMenuItems(final AppEventListner appEventListner, final ApplicationController.ApplicationState selfApplicationState) {
