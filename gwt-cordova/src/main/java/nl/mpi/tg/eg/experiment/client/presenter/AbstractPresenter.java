@@ -64,7 +64,9 @@ public abstract class AbstractPresenter implements Presenter {
 
                 @Override
                 public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                    appEventListner.requestApplicationState(prevState);
+                    if (allowBackAction(appEventListner)) {
+                        appEventListner.requestApplicationState(prevState);
+                    }
                 }
 
                 @Override
@@ -142,6 +144,16 @@ public abstract class AbstractPresenter implements Presenter {
         this.windowClosingEventListner = windowClosingEventListner;
     }
 
+    /**
+     * called before the back event listener is triggered
+     *
+     * @param appEventListner
+     * @return {@code true} if the back event is to continue
+     */
+    protected boolean allowBackAction(final AppEventListner appEventListner) {
+        return true;
+    }
+
     protected abstract String getTitle();
 
     protected abstract String getSelfTag();
@@ -152,6 +164,15 @@ public abstract class AbstractPresenter implements Presenter {
         Timer timer = new Timer() {
             public void run() {
                 appEventListner.requestApplicationState(nextState);
+            }
+        };
+        timer.schedule(100);
+    }
+
+    protected void autoNextPresenter(final AppEventListner appEventListner, final ApplicationState targetState) {
+        Timer timer = new Timer() {
+            public void run() {
+                appEventListner.requestApplicationState(targetState);
             }
         };
         timer.schedule(100);
