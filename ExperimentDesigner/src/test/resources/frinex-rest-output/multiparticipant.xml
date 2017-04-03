@@ -23,8 +23,20 @@
         </saveMetadataButton>
     </presenter>
     <presenter displayOrder="3" menuLabel="GroupSizeMenu" type="menu" self="GroupSizeMenu" title="GroupSizeMenu">
-        <menuItem featureText="Round 0 - 4" target="Round_0___4"/>
-        <menuItem featureText="Round 0 - 8" target="Round_0___8"/>
+        <htmlText featureText="A choice must be provided out of the following:&lt;br/&gt;"/>
+        <hasGetParameter parameterName="Round_0___4">
+            <conditionTrue>
+                <autoNextPresenter target="Round_0___4"/>
+            </conditionTrue>
+            <conditionFalse/>
+        </hasGetParameter>
+        <hasGetParameter parameterName="Round_0___8">
+            <conditionTrue>
+                <autoNextPresenter target="Round_0___8"/>
+            </conditionTrue>
+            <conditionFalse/>
+        </hasGetParameter>
+        <htmlText featureText="Round_0___4&lt;br/&gt;Round_0___8&lt;br/&gt;"/>
     </presenter>
     <presenter back="Agreement" displayOrder="4" menuLabel="Round 0 - 4" next="Round_1___4" type="stimulus" self="Round_0___4" title="Round 0 - 4">
         <centrePage/>
