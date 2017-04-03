@@ -76,6 +76,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     final ArrayList<ButtonBase> buttonList = new ArrayList<>();
     private TimedStimulusListener hasMoreStimulusListener;
     private TimedStimulusListener endOfStimulusListener;
+    final private ArrayList<PresenterEventListner> nextButtonEventListnerList = new ArrayList<>();
     private final ArrayList<StimulusFreeText> stimulusFreeTextList = new ArrayList<>();
     MatchingStimuliGroup matchingStimuliGroup = null;
     private boolean hasSubdirectories = false;
@@ -614,7 +615,14 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         StimulusFreeText stimulusFreeText = ((TimedStimulusView) simpleView).addStimulusFreeText(validationRegex, validationChallenge, allowedCharCodes, new SingleShotEventListner() {
             @Override
             protected void singleShotFired() {
-                nextStimulus("stimulusFreeTextEnter", false);
+                for (PresenterEventListner nextButtonEventListner : nextButtonEventListnerList) {
+                    // this process is to make sure that group events are submitted and not just call nextStimulus
+                    if (nextButtonEventListner.getHotKey() == hotKey) {
+                        nextButtonEventListner.eventFired(null, this);
+                    } else {
+//                    nextStimulus("stimulusFreeTextEnter", false);
+                    }
+                }
             }
         }, hotKey);
         stimulusFreeTextList.add(stimulusFreeText);
@@ -1142,6 +1150,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 buttonList.clear();
             }
         };
+        nextButtonEventListnerList.add(eventListner);
         ((TimedStimulusView) simpleView).addOptionButton(eventListner);
     }
 
@@ -1164,6 +1173,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 nextStimulus(eventTag, repeatIncorrect);
             }
         };
+        nextButtonEventListnerList.add(eventListner);
         ((TimedStimulusView) simpleView).addOptionButton(eventListner);
 //        }
     }
