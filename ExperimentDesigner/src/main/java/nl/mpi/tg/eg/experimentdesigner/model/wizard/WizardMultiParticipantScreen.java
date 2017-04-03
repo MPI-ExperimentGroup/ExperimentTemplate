@@ -77,7 +77,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         this.wizardScreenData.setScreenText(4, mutualFeedbackPhaseText);
         this.wizardScreenData.setScreenText(5, trainingDisplayPhaseText);
         this.wizardScreenData.setScreenText(6, "");
-        setAllowedCharCodes("etuiopasdfgkzbnm");
+        setAllowedCharCodes("etuiopasdfgkzbnm ");
     }
 
     final public void setRandomiseStimuli(Boolean randomiseStimuli) {
