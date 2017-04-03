@@ -369,8 +369,8 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
 
         // allNetworkActivity2 phase shows the stimulus and the selected stimulus and the message and the group score
-        responseCorrect.getPresenterFeatureList().add(addGroupMessageButton("nextStimulusCorrect", "Q"));
-        responseIncorrect.getPresenterFeatureList().add(addGroupMessageButton("nextStimulusIncorrect", "Q"));
+        responseCorrect.getPresenterFeatureList().add(addGroupMessageButton("Next [enter]", "ENTER"));
+        responseIncorrect.getPresenterFeatureList().add(addGroupMessageButton("Next [enter]", "ENTER"));
 
         final PresenterFeature stimulusImage = new PresenterFeature(FeatureType.stimulusImage, null);
 
@@ -384,7 +384,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         final PresenterFeature groupMessageLabel = new PresenterFeature(FeatureType.groupMessageLabel, null);
         trainingDisplayNetworkActivity3.getPresenterFeatureList().add(groupMessageLabel);
 
-        final PresenterFeature nextStimulusFeature4 = addGroupMessageButton("nextStimulusFeatureTrainingDisplay", "Q");
+        final PresenterFeature nextStimulusFeature4 = addGroupMessageButton("Next [enter]", "ENTER");
         stimulusImage.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
         stimulusImage.getPresenterFeatureList().add(nextStimulusFeature4);
 
@@ -438,7 +438,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //            presenterFeature.getPresenterFeatureList().add(nextButtonFeature);
         }
         // temporary testing features
-        final PresenterFeature groupNetworkActivitySelf1 = addGroupMessageButton("groupNetworkActivitySelf1", "W");
+        final PresenterFeature groupNetworkActivitySelf1 = addGroupMessageButton("Next [enter]", "ENTER");
         // end testing features
 
         presenterFeature.getPresenterFeatureList().add(groupNetworkActivitySelf1);
