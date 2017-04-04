@@ -362,7 +362,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>, messages.</xsl:text>
         <xsl:value-of select="generate-id(.)" />
         <xsl:text>(),</xsl:text>
-        <xsl:value-of select="if(@excludedCharCodes) then concat('&quot;', @excludedCharCodes, '&quot;') else 'null'" />
+        <xsl:value-of select="if(@allowedCharCodes) then concat('&quot;', @allowedCharCodes, '&quot;') else 'null'" />
         <xsl:text>,</xsl:text>
         <xsl:value-of select="if(@hotKey) then concat('KeyCodes.KEY_', @hotKey) else '-1'" />
         <xsl:text>);
