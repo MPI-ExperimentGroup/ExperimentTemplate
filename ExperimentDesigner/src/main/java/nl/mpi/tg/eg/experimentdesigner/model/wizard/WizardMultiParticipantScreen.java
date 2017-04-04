@@ -55,6 +55,8 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             final String mutualFeedbackPhaseText,
             final String trainingDisplayPhaseRoles,
             final String trainingDisplayPhaseText,
+            final String preStimuliText,
+            final String postStimuliText,
             final int stimuliCount
     ) {
         super(WizardScreenEnum.WizardMultiParticipantScreen, screenName, screenName, screenName);
@@ -77,6 +79,9 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         this.wizardScreenData.setScreenText(4, mutualFeedbackPhaseText);
         this.wizardScreenData.setScreenText(5, trainingDisplayPhaseText);
         this.wizardScreenData.setScreenText(6, "");
+        this.wizardScreenData.setScreenText(7, "");
+        this.wizardScreenData.setScreenText(8, preStimuliText);
+        this.wizardScreenData.setScreenText(9, postStimuliText);
         setAllowedCharCodes("etuiopasdfgkzbnm ");
     }
 
@@ -96,6 +101,14 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         return storedWizardScreenData.getScreenBoolean(0);
     }
 
+    private String getPreStimuliText(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(8);
+    }
+
+    private String getPostStimuliText(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(9);
+    }
+
     private String getAllowedCharCodes(WizardScreenData storedWizardScreenData) {
         return storedWizardScreenData.getScreenText(7);
     }
@@ -106,7 +119,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenBooleanInfo(int index) {
-        return new String[]{"Randomise Stimuli", "Stimulus Free Text", "Allow Hotkey Buttons", "Allowed Char Codes"}[index];
+        return new String[]{"Randomise Stimuli", "Stimulus Free Text", "Allow Hotkey Buttons", "Allowed Char Codes", "Text shown before the stimuli are presented", "Text shown after all the stimuli have been presented"}[index];
     }
 
     @Override
@@ -389,7 +402,17 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         stimulusImage.getPresenterFeatureList().add(nextStimulusFeature4);
 
         hasMoreStimulusFeature.getPresenterFeatureList().add(groupNetwork);
-        presenterFeatureList.add(loadStimuliFeature);
+
+        final String preStimuliText = getPreStimuliText(storedWizardScreenData);
+        if (preStimuliText != null && !preStimuliText.isEmpty()) {
+            presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, preStimuliText));
+            final PresenterFeature actionButton = new PresenterFeature(FeatureType.actionButton, "Next [enter]");
+            actionButton.addFeatureAttributes(FeatureAttribute.hotKey, "ENTER");
+            actionButton.getPresenterFeatureList().add(loadStimuliFeature);
+            presenterFeatureList.add(actionButton);
+        } else {
+            presenterFeatureList.add(loadStimuliFeature);
+        }
         groupNetwork.getPresenterFeatureList().add(producerNetworkActivity0);
         groupNetwork.getPresenterFeatureList().add(producerNetworkActivity1);
         groupNetwork.getPresenterFeatureList().add(guesserNetworkActivity0);
@@ -446,7 +469,18 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
         final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
-        endOfStimulusFeature.getPresenterFeatureList().add(autoNextPresenter);
+
+        final String postStimuliText = getPostStimuliText(storedWizardScreenData);
+        if (postStimuliText != null && !postStimuliText.isEmpty()) {
+            endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+            endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, postStimuliText));
+            final PresenterFeature actionButton = new PresenterFeature(FeatureType.actionButton, "Next [enter]");
+            actionButton.addFeatureAttributes(FeatureAttribute.hotKey, "ENTER");
+            actionButton.getPresenterFeatureList().add(autoNextPresenter);
+            endOfStimulusFeature.getPresenterFeatureList().add(actionButton);
+        } else {
+            endOfStimulusFeature.getPresenterFeatureList().add(autoNextPresenter);
+        }
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
         return storedWizardScreenData.getPresenterScreen();
