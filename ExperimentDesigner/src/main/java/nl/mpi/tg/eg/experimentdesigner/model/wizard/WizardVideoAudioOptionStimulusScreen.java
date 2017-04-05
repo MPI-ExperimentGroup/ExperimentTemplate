@@ -234,9 +234,9 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
             // todo: remove after testing or parameterise
             hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
         }
-        if (isAllowFreeText(storedWizardScreenData)) {
-            hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
-        }
+//        if (isAllowFreeText(storedWizardScreenData)) {
+//            hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
+//        }
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusAudio, null);
 //        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
 //        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");

@@ -615,8 +615,10 @@ public class ManipulatedContours {
         final WizardVideoAudioOptionStimulusScreen pretestScreen = new WizardVideoAudioOptionStimulusScreen("Pretest Screen", false, pretestScreenStimuli, false, false, null, 1000, 1, 20, false, 100, "", "", true);
         pretestScreen.setAllowFreeText(true, "Next [TAB + ENTER]", ".{1,}", "Entrez au moins trois lettres.", null, "ENTER"
                 + "");
-        pretestScreen.setRepeatIncorrect(true);
-        WizardScoreThresholdScreen scoreThresholdScreen = new WizardScoreThresholdScreen("You need to get an adequate score", 1, "ScoreThreshold", pretestScreen, "Retry");
+        pretestScreen.setShowProgress(false);
+        pretestScreen.setShowHurryIndicator(false);
+        pretestScreen.setRepeatIncorrect(false);
+        WizardScoreThresholdScreen scoreThresholdScreen = new WizardScoreThresholdScreen("Si votre réponse n'est pas correcte, vous ne pourrez pas poursuivre l'expérience", 1, "ScoreThreshold", pretestScreen, "Retry");
         final ArrayList<String> stimuliList = new ArrayList();
         stimuliList.addAll(Arrays.asList(addCodePart("out1ver1Screen", getStimuliOut1Ver1ConArr())));
         stimuliList.addAll(Arrays.asList(addCodePart("out1ver2Screen", getStimuliOut1Ver2ConArr())));
@@ -632,6 +634,8 @@ public class ManipulatedContours {
         stimuliList.addAll(Arrays.asList(invertButtons(addCodePart("out2ver3ScreenI", getStimuliOut2Ver3ConArr()))));
         String[] randomStimuliTags = new String[]{"out1ver1Screen", "out1ver2Screen", "out1ver3Screen", "out2ver1Screen", "out2ver2Screen", "out2ver3Screen", "out1ver1ScreenI", "out1ver2ScreenI", "out1ver3ScreenI", "out2ver1ScreenI", "out2ver2ScreenI", "out2ver3ScreenI"};
         final WizardVideoAudioOptionStimulusScreen randomStimuliTagsScreen = new WizardVideoAudioOptionStimulusScreen("stimuli", false, stimuliList.toArray(new String[]{}), false, true, randomStimuliTags, 1000, repeatCount(), 20, false, 100, "", "", true);
+        randomStimuliTagsScreen.setShowProgress(false);
+        randomStimuliTagsScreen.setShowHurryIndicator(false);
 //        list1234Screen.setStimulusResponseOptions("1,2,3,4,5");
 //        list1234Screen.setStimulusResponseLabelLeft("très probable négatif");
 //        list1234Screen.setStimulusResponseLabelRight("très probable positif");

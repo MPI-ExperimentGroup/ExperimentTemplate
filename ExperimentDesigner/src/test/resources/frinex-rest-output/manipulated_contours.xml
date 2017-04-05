@@ -35,14 +35,12 @@
             <hasMoreStimulus>
                 <clearPage/>
                 <centrePage/>
-                <showStimulusProgress/>
-                <scoreLabel/>
-                <stimulusAudio msToNext="100" showPlaybackIndicator="true">
+                <stimulusAudio msToNext="100" showPlaybackIndicator="false">
                     <addPadding/>
                     <stimulusHasRatingOptions>
                         <conditionTrue>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-                                <nextStimulus eventTag="NextStimulusPretest Screen" repeatIncorrect="true"/>
+                                <nextStimulus eventTag="NextStimulusPretest Screen" repeatIncorrect="false"/>
                             </stimulusRatingButton>
                         </conditionTrue>
                         <conditionFalse>
@@ -67,7 +65,7 @@
                 <autoNextPresenter/>
             </aboveThreshold>
             <belowThreshold>
-                <htmlText featureText="You need to get an adequate score"/>
+                <htmlText featureText="Si votre réponse n'est pas correcte, vous ne pourrez pas poursuivre l'expérience"/>
                 <resetStimulus target="Pretest_Screen"/>
                 <targetButton featureText="Retry" target="Pretest_Screen"/>
             </belowThreshold>
@@ -78,12 +76,11 @@
             <hasMoreStimulus>
                 <clearPage/>
                 <centrePage/>
-                <showStimulusProgress/>
                 <stimulusCodeAudio msToNext="100" codeFormat="&lt;code&gt;">
                     <clearPage/>
                     <centrePage/>
                     <pause msToNext="100">
-                        <stimulusAudio msToNext="100" showPlaybackIndicator="true">
+                        <stimulusAudio msToNext="100" showPlaybackIndicator="false">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
                                 <nextStimulus eventTag="NextStimulusstimuli" repeatIncorrect="false"/>
