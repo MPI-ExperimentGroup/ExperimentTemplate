@@ -42,6 +42,7 @@
         <centrePage/>
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
+            <clearPage/>
             <loadStimulus eventTag="Round 8 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A|B|C|D">
@@ -146,6 +147,7 @@
         <centrePage/>
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
+            <clearPage/>
             <loadStimulus eventTag="Round 8 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A|B|C|D|E|F|G|H">
@@ -250,6 +252,7 @@
         <centrePage/>
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
+            <clearPage/>
             <loadStimulus eventTag="Round 16 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A|B|C|D|E|F|G|H">
@@ -354,6 +357,7 @@
         <centrePage/>
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
+            <clearPage/>
             <loadStimulus eventTag="Round 0 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A,B,C,D">
@@ -458,6 +462,7 @@
         <centrePage/>
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
+            <clearPage/>
             <loadStimulus eventTag="Round 1 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A,B|C,D">
@@ -562,6 +567,7 @@
         <centrePage/>
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
+            <clearPage/>
             <loadStimulus eventTag="Round 2 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="B,C|D,A">
@@ -666,6 +672,7 @@
         <centrePage/>
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
+            <clearPage/>
             <loadStimulus eventTag="Round 0 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,B,C,D,E,F,G,H">
@@ -770,6 +777,7 @@
         <centrePage/>
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
+            <clearPage/>
             <loadStimulus eventTag="Round 1 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,B|C,D|E,F|G,H">
@@ -874,6 +882,7 @@
         <centrePage/>
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
+            <clearPage/>
             <loadStimulus eventTag="Round 2 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="B,C|D,E|F,G|H,A">

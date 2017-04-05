@@ -408,6 +408,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, preStimuliText));
             final PresenterFeature actionButton = new PresenterFeature(FeatureType.actionButton, "Next [enter]");
             actionButton.addFeatureAttributes(FeatureAttribute.hotKey, "ENTER");
+            actionButton.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
             actionButton.getPresenterFeatureList().add(loadStimuliFeature);
             presenterFeatureList.add(actionButton);
         } else {
