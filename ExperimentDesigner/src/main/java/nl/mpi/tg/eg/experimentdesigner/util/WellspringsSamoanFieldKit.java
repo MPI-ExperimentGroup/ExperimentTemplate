@@ -48,24 +48,22 @@ public class WellspringsSamoanFieldKit {
 
         final PresenterScreen autoMenuPresenter = null;//wizardController.addAutoMenu(experiment, 12, false);//(Blong programa)
         //wizardController.addWelcomeScreen(experiment, autoMenuPresenter, "Welcome", null, 1, "Instructions", "Stat - Go long program nao", false);
-        final WizardExistingUserCheckScreen welcomeMenuPresenter = new WizardExistingUserCheckScreen("Start", "Niu rikording", "Gobak long wan olfala rikoding", "Makem wan niufala rikoding", "Gobak long wan rikoding we yu stat hem finis");
-        final WizardTextScreen instructionsPresenter = new WizardTextScreen("Instructions", "Wetem aplikasen ia yu save makem rikoding blong lanwis blong yu,"
-                + " bambai ol pipol blong Vanuatu mo ol pipol blong evri ples long world save harem lanwis blong yu. I gat fulap foto blong difren ples long Malakula wea i stap insaed long aplikasen ia. "
-                + "Bai yu showem ol foto ia long wan olfala woman o wan olfala man blong vilej blong yu mo askem long hem se i tokabaot ol foto ia long lanwis blong hem. Yu save transletem wanem i talem, tu.", "Go long program nao");
-        final WizardWelcomeScreen welcomePresenter = new WizardWelcomeScreen("Welcome", "Welcome", "Instructions", "Stat - Go long program nao", welcomeMenuPresenter, instructionsPresenter);
+        final WizardExistingUserCheckScreen welcomeMenuPresenter = new WizardExistingUserCheckScreen("Start", "Pu’eina fou (new recording)", "Toe fo'i ma fa'auma le pu'eina (go back and finish recording", "Faia pu'eina fou (make new recording)", "Toe fo'i ma fa'auma le pu'eina (go back and finish recording)");
+        final WizardTextScreen instructionsPresenter = new WizardTextScreen("Fa’atonuga (instructions)", "This application will make a recording of you. The recording will be archived at the ANU and it will be possible for other people in the world to hear what you say.", "Go long program nao");
+        final WizardWelcomeScreen welcomePresenter = new WizardWelcomeScreen("Afio mai (welcome)", "Afio mai (welcome)", "Fa'atonuga (instructions)", "Āmata i le taimi lava (start right away)", welcomeMenuPresenter, instructionsPresenter);
         StimuliSubAction[] featureValuesArray = new StimuliSubAction[]{
-            new StimuliSubAction("80", "Askem long man o woman wea i toktok se i talem nem blong wanem i stap lo foto long lanwis blong hem.", "Finis")
+            new StimuliSubAction("80", "Askem long man o woman wea i toktok se i talem nem blong wanem i stap lo foto long lanwis blong hem.", "’Uma (finished)")
         };
 
         final WizardStimulusScreen wizardStimulusScreen = new WizardStimulusScreen();
-        wizardStimulusScreen.setScreenTitle("Lukluk ol foto");
-        wizardStimulusScreen.setMenuLabel("Lukluk ol foto");
+        wizardStimulusScreen.setScreenTitle("Va’ai i le ata (look at the picture)");
+        wizardStimulusScreen.setMenuLabel("Va’ai i le ata (look at the picture)");
 //        wizardStimulusScreen.setScreenLabel("Lukluk ol foto");
-        wizardStimulusScreen.setEnd_of_stimuli("Finis olgeta");
-        wizardStimulusScreen.setStimulusTagArray(new String[]{"Pictures"});
+        wizardStimulusScreen.setEnd_of_stimuli("’Uma (finished)");
+        wizardStimulusScreen.setStimulusTagArray(new String[]{"Ata (pictures)"});
         wizardStimulusScreen.setFeatureValuesArray(featureValuesArray);
         wizardStimulusScreen.setMaxStimuli(1000);
-//        wizardStimulusScreen.setMaxStimuliPerTag(null);
+        wizardStimulusScreen.setMaxStimuliPerTag(1000);
         wizardStimulusScreen.setRandomiseStimuli(true);
 //        wizardStimulusScreen.setStimulusImageCapture(true);
         wizardStimulusScreen.setFilePerStimulus(true);
@@ -75,21 +73,28 @@ public class WellspringsSamoanFieldKit {
 //        final PresenterScreen bowpedStimulusScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, vanuatuScreen, new String[]{"bowped"}, featureValuesArray, true, 1000, true, 9, false);
 //        final PresenterScreen bodiesStimulusScreen = wizardController.createStimulusScreen(experiment, welcomePresenter, bowpedStimulusScreen, new String[]{"bodies"}, featureValuesArray, true, 1000, true, 10, false);
         final WizardAudioRecorderMetadataScreen metadataScreen = new WizardAudioRecorderMetadataScreen(new String[]{
-            "the full name of the interviewer, date and place of the interview",
-            "the name of the person interviewed â€“ their real name, and/or preferred name, and title",
-            "age and gender of interviewee"
-        }, "Neks"
+            "Igoa/suafa atoa ’o lē ’olo’o faia le fa’atalanoaga, nofaga ma aso o le talanoaga (full name of interviewee and location and date)",
+            "Igoa/suafa atoa ’o lē ’olo’o fa’atalanoa (full name of interviewee)",
+            "tausaga ma le itūpā tama’ita’i po ’o le ali’i (po ’o le fa’afafine) (age and gender of interviewee)"
+        }, "Fa’asolo (continue)"
         //                , "Finis olgeta"
         );
         metadataScreen.setBackWizardScreen(welcomePresenter);
         metadataScreen.setNextWizardScreen(wizardStimulusScreen);
-        WizardAgreementScreen wizardTextScreen = new WizardAgreementScreen("Consent", "This is an interview for Hedvig's research project and that it will be recorded and stored at ANU, and possible for anyone in our research to listen to. Do you agree?", "Agree");
+        WizardAgreementScreen wizardTextScreen = new WizardAgreementScreen("Fa’atagaga (consent)", " ’E te malie ’e pu’e le fa’atalanoaga lenei? (Do you agree to this interview being audio taped?)<br/>"
+                + "<br/>"
+                + "’E te malie ’e fa’aaogā mea ia ’ua pu’e ’e isi tagata ’i nei ma so’o se isi vāega o le lalolagi e fa’alogologo ma matamata, ’ina ’ia mafai ’ona o lātou fa’alogologo ’iā ’oe ’o tautala ’i lau gagana ma fa’amatala au tala? (Are you happy for these recordings to be made available for other people, here and in other parts of the world, to listen to and watch, so they can hear you speaking your language and telling your stories?)<br/>"
+                + "<br/>"
+                + "’E te mālamalama ’a fa’apea ’e toe sui lou māfaufau ’e tapē le pu’ega ’o au fa’amatalaga, ’e mafai ’ona ’e ta’ua ’iā Heti ’ae le’i toe fo’i ’i Kenipera ’ina ’ia mafai ’ona tapē ’ese ma lē teua? (Do you understand that if you change you mind and want to close off the recordings, you can tell Heti before she goes back to Canberra so that she can delete them and not put them in the archive?)", "Ioe (yes)");
 
         final WizardSelectUserScreen wizardSelectUserScreen = new WizardSelectUserScreen();
         wizardSelectUserScreen.setBackWizardScreen(welcomePresenter);
         wizardSelectUserScreen.setNextWizardScreen(wizardTextScreen);
-        final WizardEditUserScreen editUserPresenter = new WizardEditUserScreen("Infomesen blong man/woman we i toktok", "Edit User", null, "Savem infomesen", null, null, null, false, "Could not contact the server, please check your internet connection and try again.");
-        editUserPresenter.setCustomFields(new String[]{"workerId:Nem blong man/woman we i toktok:.'{'3,'}':Please enter at least three letters."});
+        final WizardEditUserScreen editUserPresenter = new WizardEditUserScreen("Infomesen blong man/woman we i toktok", "Edit User", null, "Save information", null, null, null, false, "Could not contact the server, please check your internet connection and try again.");
+        editUserPresenter.setCustomFields(new String[]{
+            "workerId:Igoa/suafa:.'{'3,'}':Please enter at least three letters.",
+            "connectionString:connection:.'{'3,'}':Please enter at least three letters."
+        });
         final WizardAboutScreen debugScreenPresenter = new WizardAboutScreen(true);
         editUserPresenter.setBackWizardScreen(welcomePresenter);
         wizardTextScreen.setBackWizardScreen(welcomePresenter);
@@ -112,6 +117,8 @@ public class WellspringsSamoanFieldKit {
     }
 
     public Experiment getExperiment() {
-        return wizardController.getExperiment(getWizardData());
+        final Experiment experiment = wizardController.getExperiment(getWizardData());
+        experiment.setPrimaryColour4("#DCF4F4");
+        return experiment;
     }
 }
