@@ -33,6 +33,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
+import nl.mpi.tg.eg.experiment.client.model.UserId;
+import nl.mpi.tg.eg.experiment.client.model.UserLabelData;
 
 /**
  * @since Oct 21, 2014 11:56:23 AM (creation date)
@@ -42,6 +44,7 @@ public class MetadataView extends ComplexView {
 
     private FlexTable flexTable = null;
     final private HashMap<MetadataField, FocusWidget> fieldBoxes;
+    final private HashMap<MetadataField, ListBox> fieldConnections;
     final private ArrayList<MetadataField> orderedFields;
     private FocusWidget firstTextBox = null;
     private final Label errorText;
@@ -49,6 +52,7 @@ public class MetadataView extends ComplexView {
 
     public MetadataView() {
         fieldBoxes = new HashMap<>();
+        fieldConnections = new HashMap<>();
         orderedFields = new ArrayList<>();
         errorText = new Label();
         keyboardPadding = new VerticalPanel();
@@ -56,7 +60,7 @@ public class MetadataView extends ComplexView {
         errorText.setStylePrimaryName("metadataErrorMessage");
     }
 
-    public void addField(final MetadataField metadataField, final String existingValue, String labelString) {
+    public void addField(final MetadataField metadataField, final String existingValue, String labelString, List<UserLabelData> otherUsersList, UserId selectedUser) {
         if (flexTable == null) {
             flexTable = new FlexTable();
             flexTable.setStylePrimaryName("metadataTable");
@@ -117,6 +121,22 @@ public class MetadataView extends ComplexView {
                 });
             }
             flexTable.setWidget(rowCount + 1, 0, focusWidget);
+            if (otherUsersList != null) {
+                ListBox listBox = new ListBox();
+                int selectedIndex = 0;
+                int itemCounter = 0;
+                ((ListBox) listBox).addItem(""); // make sure there is an empty item at the top of the list
+                for (UserLabelData userLabelData : otherUsersList) {
+                    listBox.addItem(userLabelData.getUserName(), userLabelData.getUserId().toString());
+                    itemCounter++;
+                    if (selectedUser != null && selectedUser.equals(userLabelData.getUserId())) {
+                        selectedIndex = itemCounter;
+                    }
+                }
+                listBox.setSelectedIndex(selectedIndex);
+                flexTable.setWidget(rowCount + 1, 1, listBox);
+                fieldConnections.put(metadataField, listBox);
+            }
         }
         focusWidget.setStylePrimaryName("metadataOK");
 //        textBox.addBlurHandler(new BlurHandler() {
@@ -169,6 +189,11 @@ public class MetadataView extends ComplexView {
         } else {
             throw new UnsupportedOperationException("Unexpected type for: " + focusWidget.getClass());
         }
+    }
+
+    public UserId getFieldConnection(MetadataField metadataField) {
+        final ListBox listBox = fieldConnections.get(metadataField);
+        return (listBox != null) ? new UserId(listBox.getSelectedValue()) : null;
     }
 
     public void showFieldError(MetadataField metadataField) {

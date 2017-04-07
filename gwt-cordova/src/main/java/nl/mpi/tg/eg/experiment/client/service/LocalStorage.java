@@ -44,6 +44,7 @@ public class LocalStorage {
     private final String SCREEN_DATA;
 //    private final String STOWED_DATA; // todo: send the stowed data to the server when the user has completed the entire application
 //    private final String FAILED_DATA;
+    protected final String CONNECTION = "userId";
     protected final String MAX_SCORE;
     protected final String GAMES_PLAYED;
     protected final String CURRENT_POTENTIAL;
@@ -184,6 +185,10 @@ public class LocalStorage {
         if (dataStore != null) {
             for (MetadataField metadataField : metadataFieldProvider.metadataFieldArray) {
                 userData.setMetadataValue(metadataField, getCleanStoredData(USER_RESULTS + userData.getUserId().toString() + "." + metadataField.getPostName()));
+                final String cleanedUserId = getCleanStoredData(USER_RESULTS + userData.getUserId().toString() + "." + metadataField.getPostName() + "." + CONNECTION);
+                if (cleanedUserId != null && !cleanedUserId.isEmpty()) {
+                    userData.setMetadataConnection(metadataField, new UserId(cleanedUserId));
+                }
             }
         }
         userData.updateBestScore(getCleanStoredDouble(USER_RESULTS + userData.getUserId().toString() + "." + MAX_SCORE));
@@ -236,6 +241,12 @@ public class LocalStorage {
         if (dataStore != null) {
             for (MetadataField metadataField : metadataFieldProvider.metadataFieldArray) {
                 dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + metadataField.getPostName(), userResults.getUserData().getMetadataValue(metadataField));
+                final UserId metadataConnection = userResults.getUserData().getMetadataConnection(metadataField);
+                if (metadataConnection != null && !metadataConnection.toString().isEmpty()) {
+                    dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + metadataField.getPostName() + "." + CONNECTION, metadataConnection.toString());
+                } else {
+                    dataStore.removeItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + metadataField.getPostName() + "." + CONNECTION);
+                }
             }
         }
         storeUserScore(userResults);
@@ -290,8 +301,8 @@ public class LocalStorage {
         return null;
     }
 
-    public List<UserLabelData> getUserIdList() {
-        final String postName = metadataFieldProvider.workerIdMetadataField.getPostName();
+    public List<UserLabelData> getUserIdList(MetadataField metadataField) {
+        final String postName = metadataField.getPostName();
         ArrayList<UserLabelData> userIdList = new ArrayList<>();
         loadStorage();
         if (dataStore != null) {

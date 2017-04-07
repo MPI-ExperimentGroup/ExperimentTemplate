@@ -29,6 +29,7 @@ import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
 public class UserData {
 
     private final HashMap<MetadataField, String> metadataValues = new HashMap<>();
+    private final HashMap<MetadataField, UserId> metadataConnections = new HashMap<>();
     private final UserId userId;
     private double bestScore = 0;
     private int gamesPlayed = 0;
@@ -59,9 +60,20 @@ public class UserData {
         metadataValues.put(metadataField, value);
     }
 
+    public void setMetadataConnection(MetadataField metadataField, UserId value) {
+        if (value != null && !value.toString().isEmpty()) {
+            metadataConnections.put(metadataField, value);
+        }
+    }
+
     public String getMetadataValue(MetadataField metadataField) {
         final String returnString = metadataValues.get(metadataField);
         return (returnString == null) ? "" : returnString;
+    }
+
+    public UserId getMetadataConnection(MetadataField metadataField) {
+        final UserId returnString = metadataConnections.get(metadataField);
+        return (returnString == null) ? null : returnString;
     }
 
     public Set<MetadataField> getMetadataFields() {

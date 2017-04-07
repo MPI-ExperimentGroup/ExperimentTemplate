@@ -36,6 +36,7 @@ import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
+import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.experiment.client.model.UserLabelData;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 
@@ -126,12 +127,14 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
         for (MetadataField fieldName : ((MetadataView) simpleView).getFieldNames()) {
             String fieldString = ((MetadataView) simpleView).getFieldValue(fieldName);
             userResults.getUserData().setMetadataValue(fieldName, fieldString);
+            UserId fieldConnection = ((MetadataView) simpleView).getFieldConnection(fieldName);
+            userResults.getUserData().setMetadataConnection(fieldName, fieldConnection);
         }
         localStorage.storeData(userResults);
     }
 
     protected void selectUserMenu(final AppEventListner appEventListner) {
-        for (final UserLabelData labelData : localStorage.getUserIdList()) {
+        for (final UserLabelData labelData : localStorage.getUserIdList(metadataFieldProvider.workerIdMetadataField)) {
             final Button optionButton = ((MetadataView) simpleView).addOptionButton(new PresenterEventListner() {
 
                 @Override
@@ -180,7 +183,7 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
     }
 
     protected void existingUserCheck(TimedStimulusListener multipleUsers, TimedStimulusListener singleUser) {
-        if (localStorage.getUserIdList().size() > 1 || !userResults.getUserData().getMetadataFields().isEmpty()) {
+        if (localStorage.getUserIdList(metadataFieldProvider.workerIdMetadataField).size() > 1 || !userResults.getUserData().getMetadataFields().isEmpty()) {
             multipleUsers.postLoadTimerFired();
         } else {
             singleUser.postLoadTimerFired();
@@ -189,12 +192,16 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
 
     protected void allMetadataFields() {
         for (MetadataField metadataField : metadataFieldProvider.metadataFieldArray) {
-            ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel());
+            ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel(), null, null);
         }
     }
 
+    protected void metadataFieldConnection(final MetadataField metadataField, final MetadataField metadataFieldOther) {
+        ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel(), localStorage.getUserIdList(metadataFieldOther), userResults.getUserData().getUserId());
+    }
+
     protected void metadataField(MetadataField metadataField) {
-        ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel());
+        ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel(), null, null);
     }
 
     public void focusFirstTextBox() {
