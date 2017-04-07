@@ -36,7 +36,7 @@ public enum FeatureType {
     loadSubsetStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli, condition0Tag, condition1Tag, condition2Tag}, true, true, Contitionals.none),
     loadStimulus(false, false, new FeatureAttribute[]{eventTag, minStimuliPerTag, maxStimuliPerTag, maxStimuli, randomise, repeatCount, repeatRandomWindow}, true, true, Contitionals.hasMoreStimulus),
     withMatchingStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli, randomise, repeatCount, repeatRandomWindow, matchingRegex}, false, false, Contitionals.hasMoreStimulus),
-    loadSdCardStimulus(false, false, new FeatureAttribute[]{eventTag, /*minStimuliPerTag,*/ maxStimuliPerTag, maxStimuli, randomise, repeatCount, repeatRandomWindow}, true, false, Contitionals.hasMoreStimulus),
+    loadSdCardStimulus(false, false, new FeatureAttribute[]{eventTag, /*minStimuliPerTag, maxStimuliPerTag,*/ maxStimuli, randomise, repeatCount, repeatRandomWindow}, true, false, Contitionals.hasMoreStimulus),
     loadAllStimulus(false, false, new FeatureAttribute[]{eventTag, randomise, repeatCount, repeatRandomWindow}, true, false, Contitionals.hasMoreStimulus),
     currentStimulusHasTag(true, false, new FeatureAttribute[]{msToNext}, true, false, Contitionals.hasStimulusTag),
     targetButton(false, true, new FeatureAttribute[]{target, styleName}),
