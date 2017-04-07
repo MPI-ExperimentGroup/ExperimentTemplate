@@ -348,6 +348,10 @@ canvas {
 .menuTable {
     width: 100%;
 }
+.gridCellLabel {
+    font-size: 15pt;
+    padding: 0px;
+}
 .menuTable, .gridTable, .gridCell {
     padding: 10px 10px;
     border-color: $primaryColour2;
@@ -357,7 +361,7 @@ canvas {
     border-style: solid;
     margin-bottom: 10px;
 }
-td.gridCell:hover {
+table.gridCell:hover, td.gridCell:hover {
     background: lightgray;
 }
 .gridCell {

@@ -158,7 +158,7 @@ public class AnnotationTimelineView extends TimedStimulusView {
             stimuliSet.add(stimulus);
         }
 
-        final StimulusGrid stimulusGrid = new StimulusGrid();
+        final StimulusGrid stimulusGrid = new StimulusGrid(domHandlerArray);
         int stimulusCounter = 0;
         annotationTimelinePanel.setTierCount(stimuliSet.size());
         for (Stimulus stimulus : stimuliSet) {

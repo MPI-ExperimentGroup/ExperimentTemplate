@@ -61,7 +61,7 @@ public class TimedStimulusView extends ComplexView {
 
     public void startGrid() {
         outerPanel.setStylePrimaryName("menuOuter");
-        stimulusGrid = new StimulusGrid();
+        stimulusGrid = new StimulusGrid(domHandlerArray);
         outerPanel.add(stimulusGrid);
     }
 
@@ -78,12 +78,12 @@ public class TimedStimulusView extends ComplexView {
         stimulusGrid = null;
     }
 
-    public ButtonBase addStringItem(final PresenterEventListner menuItemListerner, final String labelString, final int rowIndex, final int columnIndex, final String widthString) {
-        return stimulusGrid.addStringItem(menuItemListerner, labelString, rowIndex, columnIndex, widthString);
+    public ButtonBase addStringItem(final PresenterEventListner menuItemListerner, final String labelString, final int rowIndex, final int columnIndex, final int hotKeyIndex) {
+        return stimulusGrid.addStringItem(menuItemListerner, labelString, rowIndex, columnIndex, hotKeyIndex);
     }
 
-    public ButtonBase addImageItem(final PresenterEventListner menuItemListerner, final SafeUri imagePath, final int rowIndex, final int columnIndex, final String widthString, final String styleName) {
-        return stimulusGrid.addImageItem(menuItemListerner, imagePath, rowIndex, columnIndex, widthString, styleName);
+    public ButtonBase addImageItem(final PresenterEventListner menuItemListerner, final SafeUri imagePath, final int rowIndex, final int columnIndex, final String widthString, final String styleName, final int hotKeyIndex) {
+        return stimulusGrid.addImageItem(menuItemListerner, imagePath, rowIndex, columnIndex, widthString, styleName, hotKeyIndex);
     }
 
     public void preloadImage(SafeUri imagePath, final TimedStimulusListener timedStimulusListener) {
