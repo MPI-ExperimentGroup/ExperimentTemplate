@@ -26,6 +26,27 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <title>General Administration Fragments</title>
         <meta charset="UTF-8"/>
         <link type="text/css" rel="stylesheet" href="../../../webapp/adminpages.css"/>
+        <script th:fragment="tableHeaderScript">
+            /*<![CDATA[*/
+            $(document).ready(function () {
+                var tableFloatingHeaderTop = $('#tableFloatingHeader').offset().top;
+                for (index = 1; index < $('#tableFloatingHeader').find('th').length; index++) {
+                    var cellWidth = $('#tableFloatingHeader').parents("table").find('td:nth-child(' + index + ')').css('width')
+                    // set the header cell width from the row
+                    $('#tableFloatingHeader').find('th:nth-child(' + index + ')').css('width', cellWidth);
+                    // also set the first row cell width from the row for cases where the cell width was determined by the cell header
+                    $('#tableFloatingHeader').parents("table").find('td:nth-child(' + index + ')').css('width', cellWidth);
+                }
+                $(window).scroll(function () {
+                    if ($(window).scrollTop() > tableFloatingHeaderTop) {
+                        $('#tableFloatingHeader').css({position: 'fixed', top: '0px', left: (-$(window).scrollLeft()) + $('#tableFloatingHeader').parents("table").find("td:first").offset().left + 'px', width: $('#tableFloatingHeader').parents("table").find('tr:nth(0)').css('width')});
+                    } else {
+                        $('#tableFloatingHeader').css({position: 'static', top: '0px', left: '0px'});
+                    }
+                });
+            });
+            /*]]>*/
+        </script>
     </head>
     <body>
         <div th:fragment="header">

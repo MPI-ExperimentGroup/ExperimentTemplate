@@ -27,6 +27,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link type="text/css" rel="stylesheet" href="adminpages.css"/>
+        <script src="webjars/jquery/jquery.min.js"></script>
+        <script th:replace="fragments/adminpagelayout :: tableHeaderScript"></script>
     </head>
     <body>
         <div th:replace="fragments/adminpagelayout :: header"></div>
@@ -34,7 +36,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <div th:replace="fragments/adminpagelayout :: pagemenu"></div>
         <table id="datatable">
             <thead>
-                <tr>
+                <tr id='tableFloatingHeader'>
                     <!--<th>id</th>-->
                     <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=userId'">UserId</a></th>
                     <!--<th>submitDate</th>-->
