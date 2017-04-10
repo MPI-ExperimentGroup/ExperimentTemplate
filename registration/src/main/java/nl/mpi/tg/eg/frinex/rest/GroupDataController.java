@@ -17,8 +17,8 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.TreeSet;
 import nl.mpi.tg.eg.frinex.model.GroupData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -42,17 +42,25 @@ public class GroupDataController {
     @RequestMapping("groupdataviewer")
     public String tagPairViewer(Model model,
             @RequestParam(value = "page", defaultValue = "0", required = false) Integer page,
-            @RequestParam(value = "size", defaultValue = "2000", required = false) Integer size,
+            @RequestParam(value = "size", defaultValue = "100", required = false) Integer size,
             @RequestParam(value = "sort", required = false, defaultValue = "submitDate") String sortColumn,
-            @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection) {
+            @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection,
+            @RequestParam(value = "groupUUID", required = false) String groupUUID) {
         model.addAttribute("count", this.groupDataRepository.count());
-//        model.addAttribute("allGroupData", this.groupDataRepository.findAll(
-//                
-//                new Sort(("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn)
-//        ));
-        final Page<GroupData> pageData = this.groupDataRepository.findAll(new PageRequest(page, size, Sort.Direction.ASC, sortColumn));
+        final Page<GroupData> pageData;
+        if (groupUUID != null) {
+            pageData = this.groupDataRepository.findByGroupUUID(groupUUID, new PageRequest(page, size, Sort.Direction.ASC, sortColumn));
+        } else {
+            pageData = this.groupDataRepository.findAll(new PageRequest(page, size, Sort.Direction.ASC, sortColumn));
+        }
         final List<GroupData> content = pageData.getContent();
-        model.addAttribute("allGroupData", new TreeSet(content));
+        final List<GroupData> contentDistinct = new ArrayList<>();
+        for (GroupData groupData : content) {
+            if (!contentDistinct.contains(groupData)) {
+                contentDistinct.add(groupData);
+            }
+        }
+        model.addAttribute("allGroupData", contentDistinct);
         model.addAttribute("pageData", pageData);
         return "groupdataviewer";
     }
