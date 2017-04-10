@@ -20,20 +20,23 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  * @since Nov 29, 2016 11:13 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
 -->
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
         <title>Group Data Page</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link type="text/css" rel="stylesheet" href="adminpages.css"/>
+        <script src="webjars/jquery/jquery.min.js"></script>
+        <script th:replace="fragments/adminpagelayout :: tableHeaderScript"></script>
     </head>
     <body>
         <div th:replace="fragments/adminpagelayout :: header"></div>
-        <p th:text="'Activity Count, ' + ${count}" />
+        <!--<p th:text="'Activity Count, ' + ${count}" />-->
         <div th:replace="fragments/adminpagelayout :: pagemenu"></div>
         <table id="datatable">
             <thead>
-                <tr>
+                <tr id='tableFloatingHeader'>
                     <th th:if="${param.detailed}">ID</th>
                     <th>Event Date</th>
                     <th>Screen Name</th>
@@ -57,15 +60,16 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 <tr th:each="groupData : ${allGroupData}">
                     <td th:if="${param.detailed}" th:text="${groupData.id}">id</td>
                     <td th:text="${groupData.eventDate}">eventDate</td>
-                    <td th:text="${groupData.screenName}" id="clickablerow" th:onclick="'javascript:window.location=\'groupdataviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;screenName=' + ${groupData.screenName} + '\';'">screenName</td>
-                    <td th:if="${param.detailed}" th:text="${groupData.groupUUID}" id="clickablerow" th:onclick="'javascript:window.location=\'groupdataviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;id=' + ${groupData.groupUUID} + '\';'">groupUUID</td>
+                    <td th:text="${groupData.screenName}">screenName</td>
+                    <!--id="clickablerow" th:onclick="'javascript:window.location=\'groupdataviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;screenName=' + ${groupData.screenName} + '\';'"-->
+                    <td th:if="${param.detailed}" th:text="${groupData.groupUUID}" id="clickablerow" th:onclick="'javascript:window.location=\'groupdataviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;groupUUID=' + ${groupData.groupUUID} + '\';'">groupUUID</td>
                     <td th:text="${groupData.groupName}" id="clickablerow" th:onclick="'javascript:window.location=\'groupdataviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;groupUUID=' + ${groupData.groupUUID} + '\';'">groupName</td>
                     <td th:text="${groupData.allMemberCodes}">allMemberCodes</td>
                     <td th:text="${groupData.groupCommunicationChannels}">groupCommunicationChannels</td>
                     <td th:if="${param.detailed}" th:text="${groupData.messageSenderId}" id="clickablerow" th:onclick="'javascript:window.location=\'participantdetail?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;id=' + ${groupData.messageSenderId} + '\';'">userId</td>
                     <td th:if="${param.detailed}" th:text="${groupData.messageRespondentId}" id="clickablerow" th:onclick="'javascript:window.location=\'participantdetail?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;id=' + ${groupData.messageRespondentId} + '\';'">userId</td>
-                    <td th:text="${groupData.senderMemberCode}" id="clickablerow" th:onclick="'javascript:window.location=\'groupdataviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;senderMemberCode=' + ${groupData.messageSenderId} + '\';'">senderMemberCode</td>
-                    <td th:text="${groupData.respondentMemberCode}" id="clickablerow" th:onclick="'javascript:window.location=\'groupdataviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;respondentMemberCode=' + ${groupData.messageRespondentId} + '\';'">respondentMemberCode</td>
+                    <td th:text="${groupData.senderMemberCode}" id="clickablerow" th:onclick="'javascript:window.location=\'participantdetail?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;id=' + ${groupData.messageSenderId} + '\';'">senderMemberCode</td>
+                    <td th:text="${groupData.respondentMemberCode}" id="clickablerow" th:onclick="'javascript:window.location=\'participantdetail?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;id=' + ${groupData.messageRespondentId} + '\';'">respondentMemberCode</td>
                     <td th:text="${groupData.stimulusIndex}">stimulusIndex</td>
                     <td th:text="${groupData.stimulusId}">stimulusId</td>
                     <td th:text="${groupData.responseStimulusId}">responseStimulusId</td>
