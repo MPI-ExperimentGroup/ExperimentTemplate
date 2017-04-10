@@ -25,18 +25,18 @@
                 import javax.persistence.Temporal;
 
                 @Entity                     
-                public class Participant implements Serializable {
+                public class Participant implements Serializable, Comparable&lt;Participant&gt; {
 
-                @Id
-                @GeneratedValue(strategy = GenerationType.AUTO)
-                private long id;
+                    @Id
+                    @GeneratedValue(strategy = GenerationType.AUTO)
+                    private long id;
 
-                @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-                private Date submitDate;
-                private String userId;
-                private String remoteAddr;
-                private String acceptLang;
-                private String userAgent;
+                    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+                    private Date submitDate;
+                    private String userId;
+                    private String remoteAddr;
+                    private String acceptLang;
+                    private String userAgent;
             </xsl:text>
             <xsl:for-each select="experiment/metadata/field">
                 <xsl:text>
@@ -45,7 +45,12 @@
                 <xsl:text>;</xsl:text>
             </xsl:for-each>
             <xsl:text>
-    
+                
+                @Override
+                public int compareTo(Participant o) {
+                return (this.userId != null) ? this.userId.compareTo(o.getUserId()) : 1;
+                }
+                
                 public long getId() {
                 return id;
                 }

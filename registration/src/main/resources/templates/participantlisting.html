@@ -31,18 +31,19 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     </head>
     <body>
         <div th:replace="fragments/adminpagelayout :: header"></div>
+        <div th:replace="fragments/adminpagelayout :: pagemenu"></div>
         <p th:text="'Participant Count, ' + ${count}" />
-            <table id="datatable">
-                <thead>
-                    <tr th:replace="participanttable :: participantheader"></tr>
-                </thead>
-                <tbody>
-                    <tr th:include="participanttable :: participantrows" id="clickablerow" th:each="prod : ${allParticipantData}" th:with="participant=${prod}" th:onclick="'javascript:window.location=\'participantdetail?id=' + ${prod.userId} + '\';'">
-                    </tr>
-                    <tr th:replace="participanttable :: participantinputfields">
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>        
+        <table id="datatable">
+            <thead>
+                <tr th:replace="participanttable :: participantheader"></tr>
+            </thead>
+            <tbody>
+                <tr th:include="participanttable :: participantrows" id="clickablerow" th:each="prod : ${allParticipantData}" th:with="participant=${prod}" th:onclick="'javascript:window.location=\'participantdetail?id=' + ${prod.userId} + '&amp;' + ${(param.detailed != null)? 'detailed' : 'simple'} + '\';'">
+                </tr>
+                <tr th:replace="participanttable :: participantinputfields">
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>        
     </body>
 </html>

@@ -36,13 +36,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <thead>
                 <tr>
                     <!--<th>id</th>-->
-                    <th>UserId</th>
+                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=userId'">UserId</a></th>
                     <!--<th>submitDate</th>-->
                     <!--<th>experimentName</th>-->
-                    <th>EventTag</th>
-                    <th>TagValue</th>
-                    <th>EventMs</th>
-                    <th>TagDate</th>
+                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=eventTag'">EventTag</a></th>
+                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=tagValue'">TagValue</a></th>
+                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=eventMs'">EventMs</a></th>
+                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=tagDate'">TagDate</a></th>
                 </tr>
             </thead>
             <tbody>

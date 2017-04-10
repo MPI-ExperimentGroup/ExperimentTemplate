@@ -17,17 +17,13 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
 import nl.mpi.tg.eg.frinex.model.TagData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort.Direction;
-import org.springframework.data.repository.query.Param;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,12 +40,21 @@ public class TagController {
     private TagRepository tagRepository;
 
     @RequestMapping("tagviewer")
-    public String tagPairViewer(Model model, @RequestParam(value = "page", defaultValue = "0", required = false) Integer page, @RequestParam(value = "size", defaultValue = "2000", required = false) Integer size) {//, Pageable pageable
+    public String tagPairViewer(Model model, @RequestParam(value = "page", defaultValue = "0", required = false) Integer page,
+            @RequestParam(value = "sort", required = false, defaultValue = "tagDate") String sortColumn,
+            @RequestParam(value = "size", defaultValue = "2000", required = false) Integer size,
+            @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection) {//, Pageable pageable
         final long count = this.tagRepository.count();
         model.addAttribute("count", count);
-        final Page<TagData> pageData = this.tagRepository.findAll(new PageRequest(page, size, Direction.ASC, "tagDate"));
+        final Page<TagData> pageData = this.tagRepository.findAll(new PageRequest(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
         final List<TagData> content = pageData.getContent();
-        model.addAttribute("allTagData", new TreeSet(content));
+        final List<TagData> contentDistinct = new ArrayList<>();
+        for (TagData tagData : content) {
+            if (!contentDistinct.contains(tagData)) {
+                contentDistinct.add(tagData);
+            }
+        }
+        model.addAttribute("allTagData", contentDistinct);
         model.addAttribute("pageData", pageData);
         return "tagviewer";
     }

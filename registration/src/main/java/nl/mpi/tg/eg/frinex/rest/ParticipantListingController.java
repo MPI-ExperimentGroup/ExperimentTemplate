@@ -17,7 +17,12 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.util.ArrayList;
+import java.util.List;
+import nl.mpi.tg.eg.frinex.model.Participant;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,9 +42,20 @@ public class ParticipantListingController {
     @RequestMapping("participantlisting")
     public String participantListing(Model model,
             @RequestParam(value = "sort", required = false, defaultValue = "submitDate") String sortColumn,
-            @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection) {
+            @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection,
+            @RequestParam(value = "page", defaultValue = "0", required = false) Integer page,
+            @RequestParam(value = "size", defaultValue = "2000", required = false) Integer size) {
         model.addAttribute("count", this.participantRepository.count());
-        model.addAttribute("allParticipantData", this.participantRepository.findAll(new Sort(("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn)));
+        final Page<Participant> pageData = this.participantRepository.findAll(new PageRequest(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
+        final List<Participant> content = pageData.getContent();
+        final List<Participant> contentDistinct = new ArrayList<>();
+        for (Participant participant : content) {
+            if (!contentDistinct.contains(participant)) {
+                contentDistinct.add(participant);
+            }
+        }
+        model.addAttribute("allParticipantData", contentDistinct);
+        model.addAttribute("pageData", pageData);
         return "participantlisting";
     }
 }

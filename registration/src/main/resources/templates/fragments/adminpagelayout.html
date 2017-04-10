@@ -40,8 +40,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <input type="submit" value="Sign Out"/>
                 </form>
                 <div th:inline="text">Logged in as: [[${#httpServletRequest.remoteUser}]]</div>
-                <div th:if="!${param.detailed}"><a th:href="${#httpServletRequest.requestURI} + '?detailed'">This view is simplified. Click to show all available information.</a></div>
-                <div th:if="${param.detailed}"><a th:href="${#httpServletRequest.requestURI} + '?simple'">Click to simplify the information shown in this table.</a></div>
+                <div th:if="!${param.detailed}"><a th:href="${#httpServletRequest.requestURI} + '?detailed' + ${(param.id != null)? '&amp;id='+param.id : ''}">This view is simplified. Click to show all available information.</a></div>
+                <div th:if="${param.detailed}"><a th:href="${#httpServletRequest.requestURI} + '?simple' + ${(param.id != null)? '&amp;id='+param.id : ''}">Click to simplify the information shown in this table.</a></div>
                 <!--</div>-->
             </div>
         </div>
