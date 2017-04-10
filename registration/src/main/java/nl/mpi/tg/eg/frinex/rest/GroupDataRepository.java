@@ -19,6 +19,8 @@ package nl.mpi.tg.eg.frinex.rest;
 
 import java.util.List;
 import nl.mpi.tg.eg.frinex.model.GroupData;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -33,7 +35,5 @@ public interface GroupDataRepository extends PagingAndSortingRepository<GroupDat
     @Override
     List<GroupData> findAll();
 
-    List<GroupData> findByUserIdOrderByViewDateAsc(@Param("userId") String userId);
-
-    List<GroupData> findByGroupNameOrderByViewDateAsc(@Param("groupName") String userId);
+    public Page<GroupData> findByGroupUUID(@Param("groupUUID") String groupUUID, Pageable pageable);
 }
