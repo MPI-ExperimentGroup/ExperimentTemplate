@@ -372,9 +372,9 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A:-:B:-:C:-:D">
+                        <groupNetworkActivity groupRole="">
                             <clearPage/>
-                            <htmlText featureText="The producer waits for all other participants"/>
+                            <htmlText featureText="This phase is not used in this screen"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,C,D:-:A,C,D:-:B,A,D:-:B,C,A:-">
                             <clearPage/>
@@ -433,9 +433,9 @@
                             <groupChannelScoreLabel/>
                             <scoreLabel/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,C,D:-:A,C,D:-:B,A,D:-:B,C,A">
+                        <groupNetworkActivity groupRole="-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D">
                             <clearPage/>
-                            <htmlText featureText="The stimulus and the producers text are shown to all other participants"/>
+                            <htmlText featureText="The stimulus and the producers text are shown to all participants"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
@@ -687,9 +687,9 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A:-:B:-:C:-:D:-:E:-:F:-:G:-:H">
+                        <groupNetworkActivity groupRole="">
                             <clearPage/>
-                            <htmlText featureText="The producer waits for all other participants"/>
+                            <htmlText featureText="This phase is not used in this screen"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-">
                             <clearPage/>
@@ -748,9 +748,9 @@
                             <groupChannelScoreLabel/>
                             <scoreLabel/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A">
+                        <groupNetworkActivity groupRole="-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H">
                             <clearPage/>
-                            <htmlText featureText="The stimulus and the producers text are shown to all other participants"/>
+                            <htmlText featureText="The stimulus and the producers text are shown to all participants"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
