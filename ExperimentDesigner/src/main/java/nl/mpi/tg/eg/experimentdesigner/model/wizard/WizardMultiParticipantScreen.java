@@ -57,12 +57,13 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             final String trainingDisplayPhaseText,
             final String preStimuliText,
             final String postStimuliText,
-            final int stimuliCount
+            final int stimuliCount,
+            final int msToShow
     ) {
         super(WizardScreenEnum.WizardMultiParticipantScreen, screenName, screenName, screenName);
         setRandomiseStimuli(true);
         this.wizardScreenData.setStimuliCount(stimuliCount);
-        this.wizardScreenData.setStimulusMsDelay(0);
+        this.wizardScreenData.setStimulusMsDelay(msToShow);
         setStimulusFreeText(false);
         setAllowHotkeyButtons(false);
 //        this.wizardScreenData.setButtonLabelEventTag("");
@@ -129,7 +130,8 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenIntegerInfo(int index) {
-        return new String[]{}[index];
+        // todo: migrate this from StimulusMsDelay to here in screen integers
+        return new String[]{"Seconds to show the screen, rather than showing a next button"}[index];
     }
 
     @Override
@@ -335,7 +337,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.maxWidth, "0");
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.animate, "stimuliCode");
-        allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
+        allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         allNetworkActivity2.getPresenterFeatureList().add(allNetworkActivity2Image);
 
         guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMessageLabel, null));
@@ -359,7 +361,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.maxWidth, "0");
         groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
         groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.animate, "stimuliCode");
-        groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
+        groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         responseIncorrect.getPresenterFeatureList().add(groupResponseStimulusImage);
         allNetworkActivity2.getPresenterFeatureList().add(groupResponseFeedback);
 
@@ -391,16 +393,24 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         stimulusImage.addFeatureAttributes(FeatureAttribute.maxWidth, "0");
         stimulusImage.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
         stimulusImage.addFeatureAttributes(FeatureAttribute.animate, "stimuliCode");
-        stimulusImage.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
+        stimulusImage.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         trainingDisplayNetworkActivity3.getPresenterFeatureList().add(stimulusImage);
 
         final PresenterFeature groupMessageLabel = new PresenterFeature(FeatureType.groupMessageLabel, null);
         trainingDisplayNetworkActivity3.getPresenterFeatureList().add(groupMessageLabel);
-
-        final PresenterFeature nextStimulusFeature4 = addGroupMessageButton("Next [enter]", "ENTER");
-        stimulusImage.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-        stimulusImage.getPresenterFeatureList().add(nextStimulusFeature4);
-
+        if (storedWizardScreenData.getStimulusMsDelay() > 0) {
+            final PresenterFeature pause = new PresenterFeature(FeatureType.pause, null);
+            final PresenterFeature sendGroupMessage = new PresenterFeature(FeatureType.sendGroupMessage, null);
+            pause.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
+            sendGroupMessage.addFeatureAttributes(FeatureAttribute.eventTag, "Next [enter]");
+            sendGroupMessage.addFeatureAttributes(FeatureAttribute.incrementPhase, "1");
+            pause.getPresenterFeatureList().add(sendGroupMessage);
+            stimulusImage.getPresenterFeatureList().add(pause);
+        } else {
+            final PresenterFeature nextStimulusFeature4 = addGroupMessageButton("Next [enter]", "ENTER");
+            stimulusImage.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+            stimulusImage.getPresenterFeatureList().add(nextStimulusFeature4);
+        }
         hasMoreStimulusFeature.getPresenterFeatureList().add(groupNetwork);
 
         final String preStimuliText = getPreStimuliText(storedWizardScreenData);
@@ -426,7 +436,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "0");
         imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "0");
         imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
-        imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
+        imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         final PresenterFeature presenterFeature;
 //        final String hotKeyString = "SPACE";
         presenterFeature = imageFeature;

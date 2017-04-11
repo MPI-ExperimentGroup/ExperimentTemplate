@@ -255,7 +255,7 @@ public class MultiParticipant {
                 "This phase is not used in this screen",
                 "",
                 "This phase is not used in this screen",
-                preStimuliText, postStimuliText, 23);
+                preStimuliText, postStimuliText, 23, 0);
         final WizardMultiParticipantScreen round8MultiParticipantScreen8 = new WizardMultiParticipantScreen("Round 8 - 8",
                 groupMembers8,
                 "A|B|C|D|E|F|G|H",
@@ -272,7 +272,7 @@ public class MultiParticipant {
                 "This phase is not used in this screen",
                 "",
                 "This phase is not used in this screen",
-                preStimuliText, postStimuliText, 23);
+                preStimuliText, postStimuliText, 23, 0);
         final WizardMultiParticipantScreen round16MultiParticipantScreen8 = new WizardMultiParticipantScreen("Round 16 - 8",
                 groupMembers8,
                 "A|B|C|D|E|F|G|H",
@@ -289,7 +289,7 @@ public class MultiParticipant {
                 "This phase is not used in this screen",
                 "",
                 "This phase is not used in this screen",
-                preStimuliText, postStimuliText, 23);
+                preStimuliText, postStimuliText, 23, 0);
         final WizardMultiParticipantScreen round0MultiParticipantScreen4 = new WizardMultiParticipantScreen("Round 0 - 4",
                 groupMembers4,
                 "A,B,C,D",
@@ -306,7 +306,7 @@ public class MultiParticipant {
                 "This phase is not used in this screen",
                 "-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D",
                 "The stimulus and the producers text are shown to all participants",
-                preStimuliText, postStimuliText, 23);
+                preStimuliText, postStimuliText, 23, 7000);
         final WizardMultiParticipantScreen round0MultiParticipantScreen8 = new WizardMultiParticipantScreen("Round 0 - 8",
                 groupMembers8,
                 "A,B,C,D,E,F,G,H",
@@ -323,7 +323,7 @@ public class MultiParticipant {
                 "This phase is not used in this screen",
                 "-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H",
                 "The stimulus and the producers text are shown to all participants",
-                preStimuliText, postStimuliText, 23);
+                preStimuliText, postStimuliText, 23, 7000);
         final WizardMultiParticipantScreen round1MultiParticipantScreen4 = new WizardMultiParticipantScreen("Round 1 - 4",
                 groupMembers4,
                 "A,B|C,D",
@@ -340,7 +340,7 @@ public class MultiParticipant {
                 mutualFeedbackPhaseText,
                 "",
                 "This phase is not used in this screen",
-                preStimuliText, postStimuliText, 23);
+                preStimuliText, postStimuliText, 23, 0);
         final WizardMultiParticipantScreen round1MultiParticipantScreen8 = new WizardMultiParticipantScreen("Round 1 - 8",
                 groupMembers8,
                 "A,B|C,D|E,F|G,H",
@@ -357,7 +357,7 @@ public class MultiParticipant {
                 mutualFeedbackPhaseText,
                 "",
                 "This phase is not used in this screen",
-                preStimuliText, postStimuliText, 23);
+                preStimuliText, postStimuliText, 23, 0);
         final WizardMultiParticipantScreen round2MultiParticipantScreen4 = new WizardMultiParticipantScreen("Round 2 - 4",
                 groupMembers4,
                 "B,C|D,A",
@@ -374,7 +374,7 @@ public class MultiParticipant {
                 mutualFeedbackPhaseText,
                 "",
                 "This phase is not used in this screen",
-                preStimuliText, postStimuliText, 23);
+                preStimuliText, postStimuliText, 23, 0);
         final WizardMultiParticipantScreen round2MultiParticipantScreen8 = new WizardMultiParticipantScreen("Round 2 - 8",
                 groupMembers8,
                 "B,C|D,E|F,G|H,A",
@@ -391,7 +391,7 @@ public class MultiParticipant {
                 mutualFeedbackPhaseText,
                 "",
                 "This phase is not used in this screen",
-                preStimuliText, postStimuliText, 23);
+                preStimuliText, postStimuliText, 23, 0);
         round8MultiParticipantScreen4.setStimuliSet(stimuliArray);
         round0MultiParticipantScreen4.setStimuliSet(stimuliArray);
         round1MultiParticipantScreen4.setStimuliSet(stimuliArray);
