@@ -41,6 +41,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 }
                 findAndClick();
             }
+            function reloadIframes() {
+                var iframes = document.getElementsByTagName("iframe");
+                for (frameIndex = 0; frameIndex < iframes.length; ++frameIndex) {
+                    iframes[frameIndex].contentDocument.location.reload(true);
+                }
+            }
             function findAndClick() {
                 if (document.getElementById("pauseRobot").checked) {
                     document.getElementById("robot_messages").innerHTML = "robot paused";
@@ -84,6 +90,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <input type="text" id="groupName" placeholder="Type a group name...">  
         <input type="number" id="robotSpeed" value="1000" max="10000" min="100">  
         Pause Robot: <input type="checkbox" id="pauseRobot" />
+        <button type="button" onclick="reloadIframes();">reload frames</button>
         <table style="width: 100%; height: 90%;">
             <tr><td><iframe style="width: 100%; height: 100%;"></iframe></td><td> <iframe style="width: 100%; height: 100%;"></iframe></td><td> <iframe style="width: 100%; height: 100%;"></iframe></td><td> <iframe style="width: 100%; height: 100%;"></iframe></td></tr>
             <tr><td><iframe style="width: 100%; height: 100%;"></iframe></td><td> <iframe style="width: 100%; height: 100%;"></iframe></td><td> <iframe style="width: 100%; height: 100%;"></iframe></td><td> <iframe style="width: 100%; height: 100%;"></iframe></td></tr>
