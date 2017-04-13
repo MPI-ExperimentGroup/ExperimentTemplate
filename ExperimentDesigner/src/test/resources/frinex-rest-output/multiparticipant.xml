@@ -438,7 +438,7 @@
                             <htmlText featureText="The stimulus and the producers text are shown to all participants"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <pause msToNext="7000">
-                                    <sendGroupMessage eventTag="Next [enter]" incrementPhase="1"/>
+                                    <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
                                 </pause>
                             </stimulusImage>
                             <groupMessageLabel/>
@@ -754,7 +754,7 @@
                             <htmlText featureText="The stimulus and the producers text are shown to all participants"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <pause msToNext="7000">
-                                    <sendGroupMessage eventTag="Next [enter]" incrementPhase="1"/>
+                                    <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
                                 </pause>
                             </stimulusImage>
                             <groupMessageLabel/>

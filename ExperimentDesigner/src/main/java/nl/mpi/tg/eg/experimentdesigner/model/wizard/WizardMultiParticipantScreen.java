@@ -102,6 +102,10 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         return storedWizardScreenData.getScreenBoolean(0);
     }
 
+    private boolean isStimulusFreeText(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenBoolean(1);
+    }
+
     private String getPreStimuliText(WizardScreenData storedWizardScreenData) {
         return storedWizardScreenData.getScreenText(8);
     }
@@ -160,7 +164,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
     }
 
     public void setStimulusFreeText(boolean stimulusFreeText, String freeTextValidationRegex, String freeTextValidationMessage) {
-        this.wizardScreenData.setScreenBoolean(0, stimulusFreeText);
+        setStimulusFreeText(stimulusFreeText);
         this.wizardScreenData.setFreeTextValidationRegex(freeTextValidationRegex);
         this.wizardScreenData.setFreeTextValidationMessage(freeTextValidationMessage);
     }
@@ -402,7 +406,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             final PresenterFeature pause = new PresenterFeature(FeatureType.pause, null);
             final PresenterFeature sendGroupMessage = new PresenterFeature(FeatureType.sendGroupMessage, null);
             pause.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
-            sendGroupMessage.addFeatureAttributes(FeatureAttribute.eventTag, "Next [enter]");
+            sendGroupMessage.addFeatureAttributes(FeatureAttribute.eventTag, "autoNext");
             sendGroupMessage.addFeatureAttributes(FeatureAttribute.incrementPhase, "1");
             pause.getPresenterFeatureList().add(sendGroupMessage);
             stimulusImage.getPresenterFeatureList().add(pause);
@@ -441,7 +445,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //        final String hotKeyString = "SPACE";
         presenterFeature = imageFeature;
         presenterFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-        if (storedWizardScreenData.getScreenBoolean(0)) {
+        if (isStimulusFreeText(storedWizardScreenData)) {
             final PresenterFeature stimulusFreeTextFeature = new PresenterFeature(FeatureType.stimulusFreeText, storedWizardScreenData.getFreeTextValidationMessage());
             stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.validationRegex, storedWizardScreenData.getFreeTextValidationRegex());
             stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.allowedCharCodes, getAllowedCharCodes(storedWizardScreenData));
