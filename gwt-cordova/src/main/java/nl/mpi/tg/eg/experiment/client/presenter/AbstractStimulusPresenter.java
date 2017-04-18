@@ -21,13 +21,16 @@ import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.event.dom.client.KeyCodes;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.ButtonBase;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
@@ -168,7 +171,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         showStimulus();
     }
 
-    protected void loadSdCardStimulus(final String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final int maxStimulusCount, final int maxStimulusPerTag, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+    protected void loadSdCardStimulus(final String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         final String subDirectory = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag());
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
         final String storedStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag() + subDirectory);
@@ -187,7 +190,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     endOfStimulusListener.postLoadTimerFired();
                 } else {
                     localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag(), "");
-                    loadSdCardStimulus(eventTag, selectionTags, maxStimulusCount, maxStimulusPerTag, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, endOfStimulusListener);
+                    loadSdCardStimulus(eventTag, selectionTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, endOfStimulusListener);
                 }
             }
         };
@@ -222,13 +225,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                             public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
                                 // show the subdirectorydirectory[0], 
                                 localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag(), directory[0]);
-                                loadSdCardStimulus(directory[1], selectionTags, maxStimulusCount, maxStimulusPerTag, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, new TimedStimulusListener() {
+                                loadSdCardStimulus(directory[1], selectionTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, new TimedStimulusListener() {
                                     @Override
                                     public void postLoadTimerFired() {
                                         localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "completed-directory-" + directory[0] + "-" + getSelfTag(), Boolean.toString(true));
                                         // go back to the initial directory 
                                         localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag(), "");
-                                        loadSdCardStimulus(eventTag, selectionTags, maxStimulusCount, maxStimulusPerTag, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, endOfStimulusListener);
+                                        loadSdCardStimulus(eventTag, selectionTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, endOfStimulusListener);
                                     }
                                 });
                             }
@@ -328,6 +331,28 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         matchingStimuliGroup = new MatchingStimuliGroup(stimulusProvider.getCurrentStimulus(), stimulusProvider.getMatchingStimuli(matchingRegex, maxStimulusCount), randomise, repeatCount, hasMoreStimulusListener, endOfStimulusListener);
         matchingStimuliGroup.getNextStimulus(stimulusProvider);
         matchingStimuliGroup.showNextStimulus();
+    }
+
+    protected void countdownLabel(final String timesUpLabel, final int postLoadMs, final String msLabelFormat, final TimedStimulusListener timedStimulusListener) {
+        final Duration labelDuration = new Duration();
+        final DateTimeFormat formatter = DateTimeFormat.getFormat(msLabelFormat);
+        final HTML html = ((TimedStimulusView) simpleView).addHtmlText(formatter.format(new Date((long) postLoadMs)));
+        Timer labelTimer = new Timer() {
+            @Override
+            public void run() {
+                final long remainingMs = (long) postLoadMs - labelDuration.elapsedMillis();
+                if (remainingMs > 0) {
+                    Date msBasedDate = new Date(remainingMs);
+                    String labelText = formatter.format(msBasedDate);
+                    html.setHTML(labelText);
+                    schedule(500);
+                } else {
+                    html.setHTML(timesUpLabel);
+                    timedStimulusListener.postLoadTimerFired();
+                }
+            }
+        };
+        labelTimer.schedule(500);
     }
 
     protected void pause(int postLoadMs, final TimedStimulusListener timedStimulusListener) {
@@ -960,7 +985,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             } else {
                 styleName = null;
             }
-            final ButtonBase imageItem = ((TimedStimulusView) simpleView).addImageItem(getEventListener(buttonList, eventTag, stimulusProvider.getCurrentStimulus(), nextJpgStimulus, correctTimedListener, incorrectTimedListener), UriUtils.fromString(nextJpgStimulus.getImage()), imageCounter / columnCount, 1 + imageCounter++ % columnCount, imageWidth, styleName);
+            final ButtonBase imageItem = ((TimedStimulusView) simpleView).addImageItem(getEventListener(buttonList, eventTag, stimulusProvider.getCurrentStimulus(), nextJpgStimulus, correctTimedListener, incorrectTimedListener), UriUtils.fromString(nextJpgStimulus.getImage()), imageCounter / columnCount, 1 + imageCounter++ % columnCount, imageWidth, styleName, imageCounter);
             buttonList.add(imageItem);
         }
         disableStimulusButtons();
