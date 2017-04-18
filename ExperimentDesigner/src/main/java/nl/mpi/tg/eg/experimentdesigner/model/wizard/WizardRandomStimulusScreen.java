@@ -43,7 +43,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         super(WizardScreenEnum.WizardRandomStimulusScreen, "RandomStimulus", "RandomStimulus", "RandomStimulus");
         setRandomiseStimuli(false);
         this.wizardScreenData.setStimuliCount(1);
-        this.wizardScreenData.setStimulusMsDelay(0);
+        setStimulusMsDelay(0);
         setStimulusFreeText(false);
         setAllowHotkeyButtons(true);
 //        this.wizardScreenData.setButtonLabelEventTag("");
@@ -56,7 +56,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         this.wizardScreenData.setStimuliRandomTags(randomStimuliTags);
         this.wizardScreenData.setStimulusCodeMatch(stimulusCodeMatch);
         this.wizardScreenData.setStimulusCodeMsDelay(0);
-        this.wizardScreenData.setStimulusMsDelay(0);
+        setStimulusMsDelay(0);
         this.wizardScreenData.setStimulusCodeFormat(codeFormat);
         this.wizardScreenData.setStimuliCount(maxStimuli);
         this.wizardScreenData.setStimulusResponseLabelLeft(responseOptionsLabelLeft);
@@ -73,7 +73,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
 //        this.wizardScreenData.setButtonLabelEventTag(spacebar);
         setStimuliSet(stimuliStringArray);
     }
-
+    
     final public void setRandomiseStimuli(boolean randomiseStimuli) {
         this.wizardScreenData.setScreenBoolean(0, randomiseStimuli);
     }
@@ -109,7 +109,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         super(WizardScreenEnum.WizardRandomStimulusScreen, screenName, screenName, screenName);
         this.setScreenTitle(screenName);
         this.wizardScreenData.setStimulusCodeMsDelay(0);
-        this.wizardScreenData.setStimulusMsDelay(0);
+        setStimulusMsDelay(0);
         this.wizardScreenData.setStimuliCount(maxStimuli);
         this.wizardScreenData.setStimulusResponseLabelLeft(responseOptionsLabelLeft);
         this.wizardScreenData.setStimulusResponseLabelRight(responseOptionsLabelRight);
@@ -136,9 +136,17 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         return new String[]{"Next Button Label"}[index];
     }
 
+    private int getStimulusMsDelay(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenInteger(0);
+    }
+
+    final public void setStimulusMsDelay(int stimulusMsDelay) {
+        this.wizardScreenData.setScreenIntegers(0, stimulusMsDelay);
+    }
+
     @Override
     public String getScreenIntegerInfo(int index) {
-        return new String[]{}[index];
+        return new String[]{"Stimulus Ms Delay"}[index];
     }
 //    public void setStimuliPath(String stimuliPath) {
 //        this.stimuliPath = stimuliPath;
@@ -224,7 +232,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
         imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
         imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
-        imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
+        imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getStimulusMsDelay(storedWizardScreenData)));
         final PresenterFeature presenterFeature;
         final String hotKeyString = "SPACE";
         if (storedWizardScreenData.getStimulusCodeFormat() != null) {
