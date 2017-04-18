@@ -80,7 +80,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         this.wizardScreenData.setScreenBoolean(0, useCodeVideo);
         this.wizardScreenData.setScreenBoolean(1, useCodeAudio);
         this.wizardScreenData.setStimuliRandomTags(randomStimuliTags);
-        this.wizardScreenData.setStimulusMsDelay(stimulusMsDelay);
+        setStimulusMsDelay(stimulusMsDelay);
         this.wizardScreenData.setStimuliCount(maxStimuli);
         this.wizardScreenData.setRepeatCount(repeatCount);
         this.wizardScreenData.setRepeatRandomWindow(repeatRandomWindow);
@@ -176,6 +176,14 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         return wizardScreenData.getScreenBoolean(6);
     }
 
+    private int getStimulusMsDelay(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenInteger(0);
+    }
+
+    final public void setStimulusMsDelay(int stimulusMsDelay) {
+        this.wizardScreenData.setScreenIntegers(0, stimulusMsDelay);
+    }
+
     @Override
     public String getScreenBooleanInfo(int index) {
         return new String[]{"Use Code Video", "Use Code Audio", "Randomise Stimuli", "Show Progress", "Show Hurry Indicator", "Allow Free Text"}[index];
@@ -188,7 +196,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenIntegerInfo(int index) {
-        return new String[]{}[index];
+        return new String[]{"Stimulus Ms Delay"}[index];
     }
 
     @Override
@@ -242,7 +250,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
 //        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
         imageFeature.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(isShowHurryIndicator(storedWizardScreenData)));
 //        imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
-        imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
+        imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getStimulusMsDelay(storedWizardScreenData)));
 
         boolean useCodeVideo = isUseCodeVideo(storedWizardScreenData);
         boolean useCodeAudio = isUseCodeAudio(storedWizardScreenData);
@@ -253,24 +261,24 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>");
-            codeVideoFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
+            codeVideoFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getStimulusMsDelay(storedWizardScreenData)));
             hasMoreStimulusFeature.getPresenterFeatureList().add(codeVideoFeature);
             codeVideoFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
             codeVideoFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
             final PresenterFeature pauseFeature = new PresenterFeature(FeatureType.pause, null);
-            pauseFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
+            pauseFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getStimulusMsDelay(storedWizardScreenData)));
             codeVideoFeature.getPresenterFeatureList().add(pauseFeature);
 
             pauseFeature.getPresenterFeatureList().add(imageFeature);
         } else if (useCodeAudio) {
             final PresenterFeature codeAudioFeature = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
             codeAudioFeature.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>");
-            codeAudioFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
+            codeAudioFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getStimulusMsDelay(storedWizardScreenData)));
             hasMoreStimulusFeature.getPresenterFeatureList().add(codeAudioFeature);
             codeAudioFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
             codeAudioFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
             final PresenterFeature pauseFeature = new PresenterFeature(FeatureType.pause, null);
-            pauseFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
+            pauseFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getStimulusMsDelay(storedWizardScreenData)));
             codeAudioFeature.getPresenterFeatureList().add(pauseFeature);
             pauseFeature.getPresenterFeatureList().add(imageFeature);
         } else {
