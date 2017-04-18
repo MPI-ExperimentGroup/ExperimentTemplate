@@ -80,7 +80,7 @@ public class WizardScreenData implements Serializable {
     private List<Stimulus> stimuli = null;
     private String[] stimuliRandomTags = null;
     private String screenMediaPath = null;
-    private Integer stimulusMsDelay = null;
+//    private Integer stimulusMsDelay = null;
     private String stimulusCodeMatch = null;
     private Integer stimulusCodeMsDelay = null;
     private String stimulusCodeFormat = null;
@@ -285,14 +285,6 @@ public class WizardScreenData implements Serializable {
 
     public void setStimuliRandomTags(String[] stimuliRandomTags) {
         this.stimuliRandomTags = stimuliRandomTags;
-    }
-
-    public Integer getStimulusMsDelay() {
-        return stimulusMsDelay;
-    }
-
-    public void setStimulusMsDelay(int stimulusMsDelay) {
-        this.stimulusMsDelay = stimulusMsDelay;
     }
 
     public String getStimulusCodeMatch() {
