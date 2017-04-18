@@ -58,12 +58,15 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             final String preStimuliText,
             final String postStimuliText,
             final int stimuliCount,
-            final int msToShow
+            final int msToShow,
+            final int timerCountDownProducerMs,
+            final int timerCountDownGuesserMs,
+            final String timerCountDownLabel
     ) {
         super(WizardScreenEnum.WizardMultiParticipantScreen, screenName, screenName, screenName);
         setRandomiseStimuli(true);
         this.wizardScreenData.setStimuliCount(stimuliCount);
-        this.wizardScreenData.setStimulusMsDelay(msToShow);
+        setStimulusMsDelay(msToShow);
         setStimulusFreeText(false);
         setAllowHotkeyButtons(false);
 //        this.wizardScreenData.setButtonLabelEventTag("");
@@ -83,6 +86,9 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         this.wizardScreenData.setScreenText(7, "");
         this.wizardScreenData.setScreenText(8, preStimuliText);
         this.wizardScreenData.setScreenText(9, postStimuliText);
+        setTimerCountDownGuesserMs(timerCountDownGuesserMs);
+        setTimerCountDownProducerMs(timerCountDownProducerMs);
+        setTimerCountDownLabel(timerCountDownLabel);
         setAllowedCharCodes("etuiopasdfgkzbnm ");
     }
 
@@ -114,12 +120,44 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         return storedWizardScreenData.getScreenText(9);
     }
 
+    private String getTimerCountDownLabel(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(10);
+    }
+
+    final public void setTimerCountDownLabel(String timerCountDownLabel) {
+        this.wizardScreenData.setScreenText(10, timerCountDownLabel);
+    }
+
     private String getAllowedCharCodes(WizardScreenData storedWizardScreenData) {
         return storedWizardScreenData.getScreenText(7);
     }
 
     final public void setAllowedCharCodes(String allowedCharCodes) {
         this.wizardScreenData.setScreenText(7, allowedCharCodes);
+    }
+
+    private int getTimerCountDownProducerMs(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenInteger(2);
+    }
+
+    final public void setTimerCountDownProducerMs(int timerCountDownProducerMs) {
+        this.wizardScreenData.setScreenIntegers(2, timerCountDownProducerMs);
+    }
+
+    private int getTimerCountDownGuesserMs(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenInteger(1);
+    }
+
+    final public void setTimerCountDownGuesserMs(int timerCountDownGuesserMs) {
+        this.wizardScreenData.setScreenIntegers(1, timerCountDownGuesserMs);
+    }
+
+    private int getStimulusMsDelay(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenInteger(0);
+    }
+
+    final public void setStimulusMsDelay(int stimulusMsDelay) {
+        this.wizardScreenData.setScreenIntegers(0, stimulusMsDelay);
     }
 
     @Override
@@ -129,13 +167,12 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenTextInfo(int index) {
-        return new String[]{"Text Entry Phase Text", "Grid Wait Phase Text", "Text Wait Phase Text", "Response Grid Phase Text", "Mutual Feedback Phase Text", "Training Display Phase Text"}[index];
+        return new String[]{"Text Entry Phase Text", "Grid Wait Phase Text", "Text Wait Phase Text", "Response Grid Phase Text", "Mutual Feedback Phase Text", "Training Display Phase Text", "Timer Count Down Ended Label"}[index];
     }
 
     @Override
     public String getScreenIntegerInfo(int index) {
-        // todo: migrate this from StimulusMsDelay to here in screen integers
-        return new String[]{"Seconds to show the screen, rather than showing a next button"}[index];
+        return new String[]{"Seconds to show the screen, rather than showing a next button", "timerCountDownProducerMs", "timerCountDownGuesserMs"}[index];
     }
 
     @Override
@@ -325,11 +362,22 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "1");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, "0");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(storedWizardScreenData.getStimuliCount()));
-
+        if (getTimerCountDownProducerMs(storedWizardScreenData) > 0) {
+            final PresenterFeature countDownFeature = new PresenterFeature(FeatureType.countdownLabel, getTimerCountDownLabel(storedWizardScreenData));
+            countDownFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getTimerCountDownProducerMs(storedWizardScreenData)));
+            countDownFeature.addFeatureAttributes(FeatureAttribute.msLabelFormat, "ss"); // HH:mm:ss
+            producerNetworkActivity0.getPresenterFeatureList().add(countDownFeature);
+        }
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
         imageFeature.addFeatureAttributes(FeatureAttribute.animate, "stimuliCode");
         producerNetworkActivity0.getPresenterFeatureList().add(imageFeature);
+        if (getTimerCountDownGuesserMs(storedWizardScreenData) > 0) {
+            final PresenterFeature countDownFeature = new PresenterFeature(FeatureType.countdownLabel, getTimerCountDownLabel(storedWizardScreenData));
+            countDownFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getTimerCountDownGuesserMs(storedWizardScreenData)));
+            countDownFeature.addFeatureAttributes(FeatureAttribute.msLabelFormat, "ss"); // HH:mm:ss
+            guesserNetworkActivity1.getPresenterFeatureList().add(countDownFeature);
+        }
         // temporary testing features
         final PresenterFeature stimulusGrid = addStimuliGrid("guesserNetworkActivity1Grid", getScoreFeatures(true), getScoreFeatures(false));
         guesserNetworkActivity1.getPresenterFeatureList().add(stimulusGrid);
@@ -402,10 +450,10 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
         final PresenterFeature groupMessageLabel = new PresenterFeature(FeatureType.groupMessageLabel, null);
         trainingDisplayNetworkActivity3.getPresenterFeatureList().add(groupMessageLabel);
-        if (storedWizardScreenData.getStimulusMsDelay() > 0) {
+        if (getStimulusMsDelay(storedWizardScreenData) > 0) {
             final PresenterFeature pause = new PresenterFeature(FeatureType.pause, null);
             final PresenterFeature sendGroupMessage = new PresenterFeature(FeatureType.sendGroupMessage, null);
-            pause.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusMsDelay()));
+            pause.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getStimulusMsDelay(storedWizardScreenData)));
             sendGroupMessage.addFeatureAttributes(FeatureAttribute.eventTag, "autoNext");
             sendGroupMessage.addFeatureAttributes(FeatureAttribute.incrementPhase, "1");
             pause.getPresenterFeatureList().add(sendGroupMessage);
