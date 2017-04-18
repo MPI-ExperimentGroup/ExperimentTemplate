@@ -86,15 +86,17 @@ public class ComplexView extends SimpleView {
         outerPanel.add(html);
     }
 
-    public void addHtmlText(String textString) {
+    public HTML addHtmlText(String textString) {
         HTML html = new HTML(new SafeHtmlBuilder().appendHtmlConstant(textString).toSafeHtml());
         outerPanel.add(html);
+        return html;
     }
 
-    public void addHighlightedText(String textString) {
+    public HTML addHighlightedText(String textString) {
         HTML html = new HTML(new SafeHtmlBuilder().appendEscapedLines(textString).toSafeHtml());
         html.addStyleName("highlightedText");
         outerPanel.add(html);
+        return html;
     }
 
     public void addPadding() {
