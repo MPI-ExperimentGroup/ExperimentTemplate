@@ -238,7 +238,10 @@ public class MultiParticipant {
         final String mutualFeedbackPhaseRoles4 = "-:-:A,B,C,D:-:-:A,B,C,D";
         final String mutualFeedbackPhaseRoles8 = "-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H";
         final String mutualFeedbackPhaseText = "The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0.";
-
+        final int timerCountDownProducerMs = 30 * 1000;
+        final int timerCountDownGuesserMs = 20 * 1000;
+        final String timerCountDownLabel = "Time is up! Play now!";
+        final int numberOfStimuli = 3;
         final WizardMultiParticipantScreen round8MultiParticipantScreen4 = new WizardMultiParticipantScreen("Round 8 - 4",
                 groupMembers4,
                 "A|B|C|D",
@@ -255,7 +258,9 @@ public class MultiParticipant {
                 "This phase is not used in this screen",
                 "",
                 "This phase is not used in this screen",
-                preStimuliText, postStimuliText, 23, 0);
+                preStimuliText, postStimuliText, numberOfStimuli, 0,
+                0, 0, null
+        );
         final WizardMultiParticipantScreen round8MultiParticipantScreen8 = new WizardMultiParticipantScreen("Round 8 - 8",
                 groupMembers8,
                 "A|B|C|D|E|F|G|H",
@@ -272,7 +277,8 @@ public class MultiParticipant {
                 "This phase is not used in this screen",
                 "",
                 "This phase is not used in this screen",
-                preStimuliText, postStimuliText, 23, 0);
+                preStimuliText, postStimuliText, numberOfStimuli, 0,
+                0, 0, null);
         final WizardMultiParticipantScreen round16MultiParticipantScreen8 = new WizardMultiParticipantScreen("Round 16 - 8",
                 groupMembers8,
                 "A|B|C|D|E|F|G|H",
@@ -289,7 +295,8 @@ public class MultiParticipant {
                 "This phase is not used in this screen",
                 "",
                 "This phase is not used in this screen",
-                preStimuliText, postStimuliText, 23, 0);
+                preStimuliText, postStimuliText, numberOfStimuli, 0,
+                timerCountDownProducerMs, timerCountDownGuesserMs, timerCountDownLabel);
         final WizardMultiParticipantScreen round0MultiParticipantScreen4 = new WizardMultiParticipantScreen("Round 0 - 4",
                 groupMembers4,
                 "A,B,C,D",
@@ -306,7 +313,8 @@ public class MultiParticipant {
                 "This phase is not used in this screen",
                 "-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D",
                 "The stimulus and the producers text are shown to all participants",
-                preStimuliText, postStimuliText, 23, 7000);
+                preStimuliText, postStimuliText, numberOfStimuli, 7000,
+                0, 0, null);
         final WizardMultiParticipantScreen round0MultiParticipantScreen8 = new WizardMultiParticipantScreen("Round 0 - 8",
                 groupMembers8,
                 "A,B,C,D,E,F,G,H",
@@ -323,7 +331,8 @@ public class MultiParticipant {
                 "This phase is not used in this screen",
                 "-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H",
                 "The stimulus and the producers text are shown to all participants",
-                preStimuliText, postStimuliText, 23, 7000);
+                preStimuliText, postStimuliText, numberOfStimuli, 7000,
+                0, 0, null);
         final WizardMultiParticipantScreen round1MultiParticipantScreen4 = new WizardMultiParticipantScreen("Round 1 - 4",
                 groupMembers4,
                 "A,B|C,D",
@@ -340,7 +349,8 @@ public class MultiParticipant {
                 mutualFeedbackPhaseText,
                 "",
                 "This phase is not used in this screen",
-                preStimuliText, postStimuliText, 23, 0);
+                preStimuliText, postStimuliText, numberOfStimuli, 0,
+                timerCountDownProducerMs, timerCountDownGuesserMs, timerCountDownLabel);
         final WizardMultiParticipantScreen round1MultiParticipantScreen8 = new WizardMultiParticipantScreen("Round 1 - 8",
                 groupMembers8,
                 "A,B|C,D|E,F|G,H",
@@ -357,7 +367,8 @@ public class MultiParticipant {
                 mutualFeedbackPhaseText,
                 "",
                 "This phase is not used in this screen",
-                preStimuliText, postStimuliText, 23, 0);
+                preStimuliText, postStimuliText, numberOfStimuli, 0,
+                timerCountDownProducerMs, timerCountDownGuesserMs, timerCountDownLabel);
         final WizardMultiParticipantScreen round2MultiParticipantScreen4 = new WizardMultiParticipantScreen("Round 2 - 4",
                 groupMembers4,
                 "B,C|D,A",
@@ -374,7 +385,8 @@ public class MultiParticipant {
                 mutualFeedbackPhaseText,
                 "",
                 "This phase is not used in this screen",
-                preStimuliText, postStimuliText, 23, 0);
+                preStimuliText, postStimuliText, numberOfStimuli, 0,
+                timerCountDownProducerMs, timerCountDownGuesserMs, timerCountDownLabel);
         final WizardMultiParticipantScreen round2MultiParticipantScreen8 = new WizardMultiParticipantScreen("Round 2 - 8",
                 groupMembers8,
                 "B,C|D,E|F,G|H,A",
@@ -391,7 +403,8 @@ public class MultiParticipant {
                 mutualFeedbackPhaseText,
                 "",
                 "This phase is not used in this screen",
-                preStimuliText, postStimuliText, 23, 0);
+                preStimuliText, postStimuliText, numberOfStimuli, 0,
+                timerCountDownProducerMs, timerCountDownGuesserMs, timerCountDownLabel);
         round8MultiParticipantScreen4.setStimuliSet(stimuliArray);
         round0MultiParticipantScreen4.setStimuliSet(stimuliArray);
         round1MultiParticipantScreen4.setStimuliSet(stimuliArray);
