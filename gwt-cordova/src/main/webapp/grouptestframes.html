@@ -31,9 +31,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 var robotMessagesDiv = document.getElementById("robot_messages");
                 robotMessagesDiv.innerHTML = "robot started";
                 var iframes = document.getElementsByTagName("iframe");
-                if (document.getElementById('groupName').value === "") {
+//                if (document.getElementById('groupName').value === "") {
                     document.getElementById('groupName').value = "robot group at " + new Date().toLocaleTimeString();
-                }
+//                }
                 for (frameIndex = 0; frameIndex < iframes.length; ++frameIndex) {
                     var iframeTimer = setTimeout(function (frameIndex) {
                         iframes[frameIndex].src = "/multiparticipant?Round_8___4&testuser=" + Math.floor((Math.random() * 1000000000) + 1) + "&group=" + document.getElementById('groupName').value;
