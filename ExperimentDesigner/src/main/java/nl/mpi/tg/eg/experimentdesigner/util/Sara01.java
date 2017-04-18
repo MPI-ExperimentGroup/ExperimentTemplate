@@ -803,7 +803,7 @@ public class Sara01 {
         randomStimulusScreenP.setStimuliSet(stimuliPracticeArray);
         randomStimulusScreenP.getWizardScreenData().setStimuliCount(1000);
         randomStimulusScreenP.setRandomiseStimuli(true);
-        randomStimulusScreenP.getWizardScreenData().setStimulusMsDelay(1000);
+        randomStimulusScreenP.setStimulusMsDelay(1000);
         randomStimulusScreenP.getWizardScreenData().setStimulusCodeMsDelay(500);
         randomStimulusScreenP.getWizardScreenData().setStimulusResponseOptions("1,2,3,4,5,6,7");
         randomStimulusScreenP.getWizardScreenData().setStimulusResponseLabelLeft("zeer waarschijnlijk negatief");
@@ -822,7 +822,7 @@ public class Sara01 {
         randomStimulusScreenE.getWizardScreenData().setStimulusCodeMatch("/([ET]_[0-9]+)_");
         randomStimulusScreenE.getWizardScreenData().setStimuliCount(1000);
         randomStimulusScreenE.setRandomiseStimuli(true);
-        randomStimulusScreenE.getWizardScreenData().setStimulusMsDelay(1000);
+        randomStimulusScreenE.setStimulusMsDelay(1000);
         randomStimulusScreenE.getWizardScreenData().setStimulusCodeMsDelay(500);
         randomStimulusScreenE.getWizardScreenData().setStimulusCodeFormat("static/experiment/wav/<code>");
         randomStimulusScreenE.setStimuliSet(stimuliExperimentArray);
