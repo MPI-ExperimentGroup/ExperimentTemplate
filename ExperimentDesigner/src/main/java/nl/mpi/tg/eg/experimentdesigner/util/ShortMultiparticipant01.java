@@ -65,7 +65,8 @@ public class ShortMultiparticipant01 {
                 "This phase is not used in this screen",
                 "",
                 "This phase is not used in this screen",
-                "preStimuliText", "postStimuliText", 23, 0);
+                "preStimuliText", "postStimuliText", 23, 0,
+                0, 0, null);
         WizardCompletionScreen completionScreen = new WizardCompletionScreen("completionScreenText1", false, true,
                 null, //Si quelqu'un d'autre veut participer à l'expérience sur cet ordinateur, veuillez cliquer sur le bouton ci-dessous.",
                 "Redémarrer",
