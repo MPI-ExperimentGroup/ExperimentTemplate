@@ -62,6 +62,8 @@ public class GroupDataController {
         }
         model.addAttribute("allGroupData", contentDistinct);
         model.addAttribute("pageData", pageData);
+        model.addAttribute("tagColumns", new String[]{"shape", "version", "quadrant", "move"});
+        model.addAttribute("distractorColums", new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"});
         return "groupdataviewer";
     }
 }
