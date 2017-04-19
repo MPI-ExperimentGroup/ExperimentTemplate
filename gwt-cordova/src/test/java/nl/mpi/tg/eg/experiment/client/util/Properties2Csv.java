@@ -15,9 +15,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.ru.languageininteraction.synaesthesia.client.view;
+package nl.mpi.tg.eg.experiment.client.util;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -35,6 +36,7 @@ public class Properties2Csv {
     private static final String FILE_SUFFIX = ".csv";
     private static final String COLUMN_SEPARATOR = ",";
     private static final String DE_COLUMN = "DE";
+    private static final String RU_COLUMN = "RU";
     private static final String NL_COLUMN = "NL";
     private static final String EN_COLUMN = "EN";
     private static final String KEY_COLUMN = "key";
@@ -49,12 +51,13 @@ public class Properties2Csv {
         Properties properties = new Properties();
         Properties properties_nl = new Properties();
         Properties properties_de = new Properties();
-        final InputStream resourceAsStream = SimpleViewTest.class.getResourceAsStream("/nl/ru/languageininteraction/language/client/" + propertiesFileName + ".properties");
+        Properties properties_ru = new Properties();
+        final InputStream resourceAsStream = new FileInputStream("target/generated-sources/gwt/nl/mpi/tg/eg/experiment/client/" + propertiesFileName + ".properties");
         properties.load(resourceAsStream);
-        final InputStream resourceAsStream_nl = SimpleViewTest.class.getResourceAsStream("/nl/ru/languageininteraction/language/client/" + propertiesFileName + "_nl.properties");
-        properties_nl.load(resourceAsStream_nl);
-        final InputStream resourceAsStream_de = SimpleViewTest.class.getResourceAsStream("/nl/ru/languageininteraction/language/client/" + propertiesFileName + "_de.properties");
-        properties_de.load(resourceAsStream_de);
+//        final InputStream resourceAsStream_nl = SimpleViewTest.class.getResourceAsStream("/nl/mpi/tg/eg/experiment/client/" + propertiesFileName + "_nl.properties");
+//        properties_nl.load(resourceAsStream_nl);
+//        final InputStream resourceAsStream_de = SimpleViewTest.class.getResourceAsStream("/nl/mpi/tg/eg/experiment/client/" + propertiesFileName + "_de.properties");
+//        properties_de.load(resourceAsStream_de);
         OutputStream outputStream = new FileOutputStream(outputFile, true);
         try (OutputStreamWriter writer = new OutputStreamWriter(outputStream, "UTF-8")) {
             writer.write(KEY_COLUMN);
@@ -64,6 +67,8 @@ public class Properties2Csv {
             writer.write(NL_COLUMN);
             writer.write(COLUMN_SEPARATOR);
             writer.write(DE_COLUMN);
+            writer.write(COLUMN_SEPARATOR);
+            writer.write(RU_COLUMN);
             writer.write("\n");
             for (String key : properties.stringPropertyNames()) {
                 writer.write(key);
@@ -73,6 +78,8 @@ public class Properties2Csv {
                 writer.write(escapeString(properties_nl.getProperty(key, "")));
                 writer.write(COLUMN_SEPARATOR);
                 writer.write(escapeString(properties_de.getProperty(key, "")));
+                writer.write(COLUMN_SEPARATOR);
+                writer.write(escapeString(properties_ru.getProperty(key, "")));
                 writer.write("\n");
             }
             writer.close();
