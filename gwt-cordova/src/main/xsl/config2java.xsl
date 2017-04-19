@@ -651,7 +651,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@maxStimuli) then concat(', ', @maxStimuli, '') else ''" />
         <xsl:value-of select="if(@minStimuliPerTag) then concat(', ', @minStimuliPerTag, '') else ''" />
         <xsl:value-of select="if(@maxStimuliPerTag) then concat(', ', @maxStimuliPerTag, '') else ''" />
-        <xsl:value-of select="if(@scoreThreshold) then concat('', @scoreThreshold, '') else ''" />
+        <xsl:value-of select="if(@scoreThreshold) then concat('', @scoreThreshold, ',') else ''" /> <!-- the trailing comma is needed for SynQuiz2, needs to be checked for other configurations. -->
         <xsl:value-of select="if(@scoreValue) then concat('', @scoreValue, '') else ''" />
         <xsl:value-of select="if(@columnCount) then concat(', ', @columnCount, '') else ''" />
         <xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" />
