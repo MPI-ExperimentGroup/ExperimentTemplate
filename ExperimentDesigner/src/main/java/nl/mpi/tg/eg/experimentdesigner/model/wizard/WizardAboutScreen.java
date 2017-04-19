@@ -38,17 +38,17 @@ public class WizardAboutScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenBooleanInfo(int index) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new String[]{}[index];
     }
 
     @Override
     public String getScreenTextInfo(int index) {
-        throw new UnsupportedOperationException("Not supported.");
+        return new String[]{}[index];
     }
 
     @Override
     public String getNextButtonInfo(int index) {
-        throw new UnsupportedOperationException("Not supported.");
+        return new String[]{}[index];
     }
 
     @Override

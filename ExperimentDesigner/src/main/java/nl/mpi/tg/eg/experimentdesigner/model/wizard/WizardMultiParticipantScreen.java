@@ -83,9 +83,8 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         this.wizardScreenData.setScreenText(4, mutualFeedbackPhaseText);
         this.wizardScreenData.setScreenText(5, trainingDisplayPhaseText);
         this.wizardScreenData.setScreenText(6, "");
-        this.wizardScreenData.setScreenText(7, "");
-        this.wizardScreenData.setScreenText(8, preStimuliText);
-        this.wizardScreenData.setScreenText(9, postStimuliText);
+        this.wizardScreenData.setScreenText(7, preStimuliText);
+        this.wizardScreenData.setScreenText(8, postStimuliText);
         setTimerCountDownGuesserMs(timerCountDownGuesserMs);
         setTimerCountDownProducerMs(timerCountDownProducerMs);
         setTimerCountDownLabel(timerCountDownLabel);
@@ -113,27 +112,27 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
     }
 
     private String getPreStimuliText(WizardScreenData storedWizardScreenData) {
-        return storedWizardScreenData.getScreenText(8);
-    }
-
-    private String getPostStimuliText(WizardScreenData storedWizardScreenData) {
-        return storedWizardScreenData.getScreenText(9);
-    }
-
-    private String getTimerCountDownLabel(WizardScreenData storedWizardScreenData) {
-        return storedWizardScreenData.getScreenText(10);
-    }
-
-    final public void setTimerCountDownLabel(String timerCountDownLabel) {
-        this.wizardScreenData.setScreenText(10, timerCountDownLabel);
-    }
-
-    private String getAllowedCharCodes(WizardScreenData storedWizardScreenData) {
         return storedWizardScreenData.getScreenText(7);
     }
 
+    private String getPostStimuliText(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(8);
+    }
+
+    private String getTimerCountDownLabel(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(9);
+    }
+
+    final public void setTimerCountDownLabel(String timerCountDownLabel) {
+        this.wizardScreenData.setScreenText(9, timerCountDownLabel);
+    }
+
+    private String getAllowedCharCodes(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(6);
+    }
+
     final public void setAllowedCharCodes(String allowedCharCodes) {
-        this.wizardScreenData.setScreenText(7, allowedCharCodes);
+        this.wizardScreenData.setScreenText(6, allowedCharCodes);
     }
 
     private int getTimerCountDownProducerMs(WizardScreenData storedWizardScreenData) {
@@ -167,7 +166,9 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenTextInfo(int index) {
-        return new String[]{"Text Entry Phase Text", "Grid Wait Phase Text", "Text Wait Phase Text", "Response Grid Phase Text", "Mutual Feedback Phase Text", "Training Display Phase Text", "Timer Count Down Ended Label"}[index];
+        return new String[]{"Text Entry Phase Text", "Grid Wait Phase Text", "Text Wait Phase Text", "Response Grid Phase Text", "Mutual Feedback Phase Text", "Training Display Phase Text",
+            "Allowed Char Codes", "Pre Stimuli Text", "Post Stimuli Text",
+            "Timer Count Down Ended Label"}[index];
     }
 
     @Override

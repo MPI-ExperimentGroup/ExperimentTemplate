@@ -49,17 +49,17 @@ public class WizardScoreThresholdScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenIntegerInfo(int index) {
-        return new String[]{}[index];
+        return new String[]{"Score Threshold"}[index];
     }
 
     @Override
     public String getScreenTextInfo(int index) {
-        return new String[]{}[index];
+        return new String[]{"Screen Text"}[index];
     }
 
     @Override
     public String getNextButtonInfo(int index) {
-        return new String[]{}[index];
+        return new String[]{"Retry Button Text"}[index];
     }
 
     final public void setScoreThreshold(Integer scoreThreshold) {
