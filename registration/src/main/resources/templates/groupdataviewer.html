@@ -49,9 +49,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <th><a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=senderMemberCode'">Sender Code</a></th>
                     <th><a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=respondentMemberCode'">Respondent Code</a></th>
                     <th><a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=stimulusIndex'">Index</a></th>
-                    <th><a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=stimulusId'">Stimulus</a></th>
+                    <!--<th th:each="tag,status : ${#strings.arraySplit(allGroupData[0].stimulusId, ':')}"><a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=stimulusId'" th:text="${'Target-tag-' + (status.index + 1)}">Stimulus</a></th>-->
+                    <th th:each="tag,status : ${tagColumns}"><a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=stimulusId'" th:text="${'Target-' + tag}">Stimulus</a></th>
+
                     <th><a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=responseStimulusId'">Response</a></th>
-                    <th><a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=stimulusOptionIds'">Options</a></th>
+                    <!--<th><a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=stimulusOptionIds'">Options</a></th>-->
+                    <th th:each="distractorColumn : ${distractorColums}"><a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=stimulusOptionIds'" th:text="${distractorColumn}">Options</a></th>
                     <th><a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=messageString'">Message</a></th>
                     <th><a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=eventMs'">ms</a></th>
                 </tr>
@@ -71,9 +74,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <td th:text="${groupData.senderMemberCode}" id="clickablerow" th:onclick="'javascript:window.location=\'participantdetail?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;id=' + ${groupData.messageSenderId} + '\';'">senderMemberCode</td>
                     <td th:text="${groupData.respondentMemberCode}" id="clickablerow" th:onclick="'javascript:window.location=\'participantdetail?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;id=' + ${groupData.messageRespondentId} + '\';'">respondentMemberCode</td>
                     <td th:text="${groupData.stimulusIndex}">stimulusIndex</td>
-                    <td th:text="${groupData.stimulusId}">stimulusId</td>
+                    <!--<td th:each="tag,status : ${#strings.arraySplit(groupData.stimulusId, ':')}" th:text="${tag}">stimulusId</td>-->
+                    <td th:with="rowTags=${#strings.arraySplit(groupData.stimulusId, ':')}" th:each="columnTag : ${tagColumns}"> <span th:each="tag : ${rowTags}" th:if="${#strings.startsWith(tag,columnTag)}" th:text="${tag}">stimulusId</span></td>
                     <td th:text="${groupData.responseStimulusId}">responseStimulusId</td>
-                    <td th:text="${groupData.stimulusOptionIds}">stimulusOptionIds</td>                    
+                    <td th:each="distractorId : ${#strings.arraySplit(groupData.stimulusOptionIds, ',')}" th:text="${distractorId}">stimulusOptionIds</td>                    
                     <td th:text="${groupData.messageString}">messageString</td>
                     <td th:text="${groupData.eventMs}">eventMs</td>
                 </tr>
