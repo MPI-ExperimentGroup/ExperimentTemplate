@@ -156,7 +156,7 @@
             <tag>list_a</tag>
             <tag>setnr_14</tag>
         </stimulus>
-        <stimulus identifier="setnr_15/cond_c/list_a:Diana en Thomas ruimen hun oude" label="Diana en Thomas ruimen hun oude DVD's op.&lt;br/&gt;Diana vraagt: waar ging deze film ook alweer over?&lt;br/&gt;Thomas zegt: ik herinner me nu alleen die scËne met de" pauseMs="0">
+        <stimulus identifier="setnr_15/cond_c/list_a:Diana en Thomas ruimen hun oude" label="Diana en Thomas ruimen hun oude DVD's op.&lt;br/&gt;Diana vraagt: waar ging deze film ook alweer over?&lt;br/&gt;Thomas zegt: ik herinner me nu alleen die scène met de" pauseMs="0">
             <tag>Zinnen_afmaken</tag>
             <tag>cond_c</tag>
             <tag>list_a</tag>
@@ -174,7 +174,7 @@
             <tag>list_a</tag>
             <tag>setnr_17</tag>
         </stimulus>
-        <stimulus identifier="setnr_18/cond_c/list_a:RenÈ en Liam zijn aan het klets" label="RenÈ en Liam zijn aan het kletsen over hun kindertijd.&lt;br/&gt;RenÈ vraagt: wat herinner je je nog van de kleuterschool?&lt;br/&gt;Liam zegt: ik was toen de enige die een" pauseMs="0">
+        <stimulus identifier="setnr_18/cond_c/list_a:René en Liam zijn aan het klets" label="René en Liam zijn aan het kletsen over hun kindertijd.&lt;br/&gt;René vraagt: wat herinner je je nog van de kleuterschool?&lt;br/&gt;Liam zegt: ik was toen de enige die een" pauseMs="0">
             <tag>Zinnen_afmaken</tag>
             <tag>cond_c</tag>
             <tag>list_a</tag>
@@ -300,7 +300,7 @@
             <tag>list_a</tag>
             <tag>setnr_38</tag>
         </stimulus>
-        <stimulus identifier="setnr_39/cond_i/list_a:Dylan komt geÎrgerd binnenlopen" label="Dylan komt geÎrgerd binnenlopen.&lt;br/&gt;Zijn vriendin vraagt: waarom ben je zo overstuur?&lt;br/&gt;Dylan zegt: we hebben inderdaad problemen met de" pauseMs="0">
+        <stimulus identifier="setnr_39/cond_i/list_a:Dylan komt geërgerd binnenlopen" label="Dylan komt geërgerd binnenlopen.&lt;br/&gt;Zijn vriendin vraagt: waarom ben je zo overstuur?&lt;br/&gt;Dylan zegt: we hebben inderdaad problemen met de" pauseMs="0">
             <tag>Zinnen_afmaken</tag>
             <tag>cond_i</tag>
             <tag>list_a</tag>
@@ -804,7 +804,7 @@
             <tag>list_b</tag>
             <tag>setnr_14</tag>
         </stimulus>
-        <stimulus identifier="setnr_15/cond_e/list_b:Diana en Thomas ruimen hun oude" label="Diana en Thomas ruimen hun oude DVD's op.&lt;br/&gt;Diana vraagt: waar ging deze film ook alweer over?&lt;br/&gt;Thomas zegt: ik herinner me eigenlijk alleen die scËne met de" pauseMs="0">
+        <stimulus identifier="setnr_15/cond_e/list_b:Diana en Thomas ruimen hun oude" label="Diana en Thomas ruimen hun oude DVD's op.&lt;br/&gt;Diana vraagt: waar ging deze film ook alweer over?&lt;br/&gt;Thomas zegt: ik herinner me eigenlijk alleen die scène met de" pauseMs="0">
             <tag>Zinnen_afmaken</tag>
             <tag>cond_e</tag>
             <tag>list_b</tag>
@@ -822,7 +822,7 @@
             <tag>list_b</tag>
             <tag>setnr_17</tag>
         </stimulus>
-        <stimulus identifier="setnr_18/cond_e/list_b:RenÈ en Liam zijn aan het klets" label="RenÈ en Liam zijn aan het kletsen over hun kindertijd.&lt;br/&gt;RenÈ vraagt: wat herinner je je nog van de kleuterschool?&lt;br/&gt;Liam zegt: ik was  eigenlijk de enige die een" pauseMs="0">
+        <stimulus identifier="setnr_18/cond_e/list_b:René en Liam zijn aan het klets" label="René en Liam zijn aan het kletsen over hun kindertijd.&lt;br/&gt;René vraagt: wat herinner je je nog van de kleuterschool?&lt;br/&gt;Liam zegt: ik was  eigenlijk de enige die een" pauseMs="0">
             <tag>Zinnen_afmaken</tag>
             <tag>cond_e</tag>
             <tag>list_b</tag>
@@ -948,7 +948,7 @@
             <tag>list_b</tag>
             <tag>setnr_38</tag>
         </stimulus>
-        <stimulus identifier="setnr_39/cond_c/list_b:Dylan komt geÎrgerd binnenlopen" label="Dylan komt geÎrgerd binnenlopen.&lt;br/&gt;Zijn vriendin vraagt: waarom ben je zo overstuur?&lt;br/&gt;Dylan zegt: we hebben vandaag problemen met de" pauseMs="0">
+        <stimulus identifier="setnr_39/cond_c/list_b:Dylan komt geërgerd binnenlopen" label="Dylan komt geërgerd binnenlopen.&lt;br/&gt;Zijn vriendin vraagt: waarom ben je zo overstuur?&lt;br/&gt;Dylan zegt: we hebben vandaag problemen met de" pauseMs="0">
             <tag>Zinnen_afmaken</tag>
             <tag>cond_c</tag>
             <tag>list_b</tag>
@@ -1452,7 +1452,7 @@
             <tag>list_c</tag>
             <tag>setnr_14</tag>
         </stimulus>
-        <stimulus identifier="setnr_15/cond_i/list_c:Diana en Thomas ruimen hun oude" label="Diana en Thomas ruimen hun oude DVD's op.&lt;br/&gt;Diana vraagt: waar ging deze film ook alweer over?&lt;br/&gt;Thomas zegt: ik herinner me inderdaad alleen die scËne met de" pauseMs="0">
+        <stimulus identifier="setnr_15/cond_i/list_c:Diana en Thomas ruimen hun oude" label="Diana en Thomas ruimen hun oude DVD's op.&lt;br/&gt;Diana vraagt: waar ging deze film ook alweer over?&lt;br/&gt;Thomas zegt: ik herinner me inderdaad alleen die scène met de" pauseMs="0">
             <tag>Zinnen_afmaken</tag>
             <tag>cond_i</tag>
             <tag>list_c</tag>
@@ -1470,7 +1470,7 @@
             <tag>list_c</tag>
             <tag>setnr_17</tag>
         </stimulus>
-        <stimulus identifier="setnr_18/cond_i/list_c:RenÈ en Liam zijn aan het klets" label="RenÈ en Liam zijn aan het kletsen over hun kindertijd.&lt;br/&gt;RenÈ vraagt: wat herinner je je nog van de kleuterschool?&lt;br/&gt;Liam zegt: ik was inderdaad de enige die een" pauseMs="0">
+        <stimulus identifier="setnr_18/cond_i/list_c:René en Liam zijn aan het klets" label="René en Liam zijn aan het kletsen over hun kindertijd.&lt;br/&gt;René vraagt: wat herinner je je nog van de kleuterschool?&lt;br/&gt;Liam zegt: ik was inderdaad de enige die een" pauseMs="0">
             <tag>Zinnen_afmaken</tag>
             <tag>cond_i</tag>
             <tag>list_c</tag>
@@ -1596,7 +1596,7 @@
             <tag>list_c</tag>
             <tag>setnr_38</tag>
         </stimulus>
-        <stimulus identifier="setnr_39/cond_e/list_c:Dylan komt geÎrgerd binnenlopen" label="Dylan komt geÎrgerd binnenlopen.&lt;br/&gt;Zijn vriendin vraagt: waarom ben je zo overstuur?&lt;br/&gt;Dylan zegt: we hebben eigenlijk problemen met de" pauseMs="0">
+        <stimulus identifier="setnr_39/cond_e/list_c:Dylan komt geërgerd binnenlopen" label="Dylan komt geërgerd binnenlopen.&lt;br/&gt;Zijn vriendin vraagt: waarom ben je zo overstuur?&lt;br/&gt;Dylan zegt: we hebben eigenlijk problemen met de" pauseMs="0">
             <tag>Zinnen_afmaken</tag>
             <tag>cond_e</tag>
             <tag>list_c</tag>
