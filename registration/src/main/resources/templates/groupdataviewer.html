@@ -53,14 +53,17 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <th th:each="tag,status : ${tagColumns}">
                         <span th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=stimulusId'" th:text="${'Target-' + tag}">Stimulus</span>
                     </th>
-                    <th><a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=stimulusId'">Stimulus</a></th>
+                    <th><a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=stimulusId'">Target</a></th>
+                    <th th:each="tag,status : ${tagColumns}">
+                        <span th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=stimulusId'" th:text="${'Response-' + tag}">Stimulus</span>
+                    </th>
                     <th><a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=responseStimulusId'">Response</a></th>
                     <!--<th><a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=stimulusOptionIds'">Options</a></th>-->
-                    <!--/*/ <th:block th:each="distractorColumn : ${distractorColums}"> /*/-->
+                    <!--/*/ <th:block th:each="distractorColumn : ${distractorColumns}"> /*/-->
                     <th th:each="tag,status : ${tagColumns}">
-                        <span th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=stimulusOptionIds'" th:text="${'Distractor-' + distractorColumn + '-' + tag}">Options</span>
+                        <span th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=stimulusOptionIds'" th:text="${'Distractor-' + (distractorColumn + 1) + '-' + tag}">Options</span>
                     </th>
-                    <th th:text="${'Distractor-' + distractorColumn}"></th>
+                    <th th:text="${'Distractor-' + (distractorColumn + 1)}"></th>
                     <!--/*/ </th:block> /*/-->
                     <th><a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=messageString'">Message</a></th>
                     <th><a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=eventMs'">ms</a></th>
@@ -86,12 +89,19 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <span th:each="tag : ${rowTags}" th:if="${#strings.contains(tag,columnTag)}" th:text="${tag}">stimulusId</span>
                     </td>
                     <td th:text="${groupData.stimulusId}">stimulusId</td>
+                    <td th:if="${groupData.responseStimulusId != null}" th:with="rowTags=${#strings.arraySplit(groupData.responseStimulusId, ':')}" th:each="columnTag : ${tagColumns}">
+                        <span th:each="tag : ${rowTags}" th:if="${#strings.contains(tag,columnTag)}" th:text="${tag}">stimulusId</span>
+                    </td>
+                    <td th:if="${groupData.responseStimulusId == null}" th:each="columnTag : ${tagColumns}">
+                    </td>
                     <td th:text="${groupData.responseStimulusId}">responseStimulusId</td>
-                    <!--/*/ <th:block th:each="distractorId : ${#strings.arraySplit(groupData.stimulusOptionIds, ',')}"> /*/-->
-                    <td th:with="rowTags=${#strings.arraySplit(distractorId, ':')}" th:each="columnTag : ${tagColumns}">
+                    <!--/*/ <th:block th:with="distractorIds=${#strings.arraySplit(groupData.stimulusOptionIds, ',')}" th:each="distractorIndex : ${distractorColumns}"> /*/-->
+                    <td th:if="${distractorIndex &lt; distractorIds.length}" th:with="rowTags=${#strings.arraySplit(distractorIds[distractorIndex], ':')}" th:each="columnTag : ${tagColumns}">
                         <span th:each="tag : ${rowTags}" th:if="${#strings.contains(tag,columnTag)}" th:text="${tag}">stimulusOptionIds</span>
-                    </td>                   
-                    <td th:text="${distractorId}">distractorId</td> 
+                    </td>  
+                    <td th:if="${distractorIndex &gt;= distractorIds.length}" th:each="columnTag : ${tagColumns}"></td>
+                    <td th:if="${distractorIndex &lt; distractorIds.length}" th:text="${distractorIds[distractorIndex]}">distractorId</td> 
+                    <td th:if="${distractorIndex &gt;= distractorIds.length}"></td> 
                     <!--/*/ </th:block> /*/-->
                     <td th:text="${groupData.messageString}">messageString</td>
                     <td th:text="${groupData.eventMs}">eventMs</td>
