@@ -75,7 +75,7 @@ public class Parcours {
             + "- Vermijd typ- en spelfouten;<br/>"
             + "- Vul overal iets in.<br/>"
             + "<br/>"
-            + "In totaal zal het onderzoek ongeveer <b>60 minuten</b> duren. Zorg ervoor dat u tijdens het experiment in een rustige omgeving zit, zonder afleiding van bijvoorbeeld uw mobiele telefoon, TV of van andere mensen. <br/>"
+            + "In totaal zal het onderzoek ongeveer <b>30 minuten</b> duren. Zorg ervoor dat u tijdens het experiment in een rustige omgeving zit, zonder afleiding van bijvoorbeeld uw mobiele telefoon, TV of van andere mensen. <br/>"
             + "<br/>"
             + "Zo begint u:<br/>"
             + "Door te klikken op 'Volgende' gaat u naar de volgende pagina. Voer hier alsublieft uw gegevens in: uw leeftijd, opleidingsniveau en geslacht.  De proefpersoon-ID code is al voor u ingevuld.<br/>"
