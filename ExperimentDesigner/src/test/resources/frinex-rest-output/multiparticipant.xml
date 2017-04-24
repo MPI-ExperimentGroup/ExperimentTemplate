@@ -51,7 +51,6 @@
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="All 23 stimuli are presented all participants in random order similar to the producer screen"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
@@ -69,7 +68,6 @@
                         <groupNetworkActivity groupRole="">
                             <clearPage/>
                             <htmlText featureText="This phase is not used in this screen"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                                 <responseCorrect msToNext="0">
                                     <scoreIncrement scoreValue="true"/>
@@ -81,6 +79,7 @@
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                         </belowThreshold>
                                     </scoreAboveThreshold>
+                                    <submitGroupEvent/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -92,11 +91,11 @@
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                         </belowThreshold>
                                     </scoreAboveThreshold>
+                                    <submitGroupEvent/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
                             <groupMessageLabel/>
-                            <submitGroupEvent/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="">
@@ -158,7 +157,6 @@
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="All 23 stimuli are presented all participants in random order similar to the producer screen"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
@@ -176,7 +174,6 @@
                         <groupNetworkActivity groupRole="">
                             <clearPage/>
                             <htmlText featureText="This phase is not used in this screen"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                                 <responseCorrect msToNext="0">
                                     <scoreIncrement scoreValue="true"/>
@@ -188,6 +185,7 @@
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                         </belowThreshold>
                                     </scoreAboveThreshold>
+                                    <submitGroupEvent/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -199,11 +197,11 @@
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                         </belowThreshold>
                                     </scoreAboveThreshold>
+                                    <submitGroupEvent/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
                             <groupMessageLabel/>
-                            <submitGroupEvent/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="">
@@ -295,6 +293,7 @@
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                         </belowThreshold>
                                     </scoreAboveThreshold>
+                                    <submitGroupEvent/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -306,11 +305,11 @@
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                         </belowThreshold>
                                     </scoreAboveThreshold>
+                                    <submitGroupEvent/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
                             <groupMessageLabel/>
-                            <submitGroupEvent/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="">
@@ -372,7 +371,6 @@
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="The producer sees the stimulus and enters some text"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
@@ -390,7 +388,6 @@
                         <groupNetworkActivity groupRole="">
                             <clearPage/>
                             <htmlText featureText="This phase is not used in this screen"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                                 <responseCorrect msToNext="0">
                                     <scoreIncrement scoreValue="true"/>
@@ -402,6 +399,7 @@
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                         </belowThreshold>
                                     </scoreAboveThreshold>
+                                    <submitGroupEvent/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -413,11 +411,11 @@
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                         </belowThreshold>
                                     </scoreAboveThreshold>
+                                    <submitGroupEvent/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
                             <groupMessageLabel/>
-                            <submitGroupEvent/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="">
@@ -510,6 +508,7 @@
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                         </belowThreshold>
                                     </scoreAboveThreshold>
+                                    <submitGroupEvent/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -521,11 +520,11 @@
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                         </belowThreshold>
                                     </scoreAboveThreshold>
+                                    <submitGroupEvent/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
                             <groupMessageLabel/>
-                            <submitGroupEvent/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D">
@@ -617,6 +616,7 @@
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                         </belowThreshold>
                                     </scoreAboveThreshold>
+                                    <submitGroupEvent/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -628,11 +628,11 @@
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                         </belowThreshold>
                                     </scoreAboveThreshold>
+                                    <submitGroupEvent/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
                             <groupMessageLabel/>
-                            <submitGroupEvent/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D">
@@ -694,7 +694,6 @@
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="The producer sees the stimulus and enters some text"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
@@ -712,7 +711,6 @@
                         <groupNetworkActivity groupRole="">
                             <clearPage/>
                             <htmlText featureText="This phase is not used in this screen"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                                 <responseCorrect msToNext="0">
                                     <scoreIncrement scoreValue="true"/>
@@ -724,6 +722,7 @@
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                         </belowThreshold>
                                     </scoreAboveThreshold>
+                                    <submitGroupEvent/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -735,11 +734,11 @@
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                         </belowThreshold>
                                     </scoreAboveThreshold>
+                                    <submitGroupEvent/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
                             <groupMessageLabel/>
-                            <submitGroupEvent/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="">
@@ -832,6 +831,7 @@
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                         </belowThreshold>
                                     </scoreAboveThreshold>
+                                    <submitGroupEvent/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -843,11 +843,11 @@
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                         </belowThreshold>
                                     </scoreAboveThreshold>
+                                    <submitGroupEvent/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
                             <groupMessageLabel/>
-                            <submitGroupEvent/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
@@ -939,6 +939,7 @@
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                         </belowThreshold>
                                     </scoreAboveThreshold>
+                                    <submitGroupEvent/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -950,11 +951,11 @@
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
                                         </belowThreshold>
                                     </scoreAboveThreshold>
+                                    <submitGroupEvent/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
                             <groupMessageLabel/>
-                            <submitGroupEvent/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
@@ -1023,7 +1024,7 @@
         </sendAllData>
     </presenter>
     <stimuli>
-        <stimulus code="moveRotated90" identifier="1:shape1:version4:quadrant1:moveRotated90" imagePath="1.png" pauseMs="0">
+        <stimulus code="moveRotated90" identifier="1.png:shape1:version4:quadrant1:moveRotated90" imagePath="1.png" pauseMs="0">
             <tag>1</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1039,7 +1040,7 @@
             <tag>shape1</tag>
             <tag>version4</tag>
         </stimulus>
-        <stimulus code="moveRotated150" identifier="1:shape1:version2:version3:quadrant2:moveRotated150" imagePath="1.png" pauseMs="0">
+        <stimulus code="moveRotated150" identifier="1.png:shape1:version2:version3:quadrant2:moveRotated150" imagePath="1.png" pauseMs="0">
             <tag>1</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1056,7 +1057,7 @@
             <tag>version2</tag>
             <tag>version3</tag>
         </stimulus>
-        <stimulus code="moveRotated210" identifier="1:shape1:version1:version5:quadrant3:moveRotated210" imagePath="1.png" pauseMs="0">
+        <stimulus code="moveRotated210" identifier="1.png:shape1:version1:version5:quadrant3:moveRotated210" imagePath="1.png" pauseMs="0">
             <tag>1</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1073,7 +1074,7 @@
             <tag>version1</tag>
             <tag>version5</tag>
         </stimulus>
-        <stimulus code="moveRotated30" identifier="2:shape1:version2:version2zero:quadrant1:moveRotated30" imagePath="2.png" pauseMs="0">
+        <stimulus code="moveRotated30" identifier="2.png:shape1:version2:version2zero:quadrant1:moveRotated30" imagePath="2.png" pauseMs="0">
             <tag>2</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1090,7 +1091,7 @@
             <tag>version2</tag>
             <tag>version2zero</tag>
         </stimulus>
-        <stimulus code="moveRotated120" identifier="2:shape1:version6:quadrant2:moveRotated120" imagePath="2.png" pauseMs="0">
+        <stimulus code="moveRotated120" identifier="2.png:shape1:version6:quadrant2:moveRotated120" imagePath="2.png" pauseMs="0">
             <tag>2</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1106,7 +1107,7 @@
             <tag>shape1</tag>
             <tag>version6</tag>
         </stimulus>
-        <stimulus code="moveRotated135" identifier="2:shape1:version5:quadrant2:moveRotated135" imagePath="2.png" pauseMs="0">
+        <stimulus code="moveRotated135" identifier="2.png:shape1:version5:quadrant2:moveRotated135" imagePath="2.png" pauseMs="0">
             <tag>2</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1122,7 +1123,7 @@
             <tag>shape1</tag>
             <tag>version5</tag>
         </stimulus>
-        <stimulus code="moveRotated270" identifier="2:shape1:version1:quadrant3:moveRotated270" imagePath="2.png" pauseMs="0">
+        <stimulus code="moveRotated270" identifier="2.png:shape1:version1:quadrant3:moveRotated270" imagePath="2.png" pauseMs="0">
             <tag>2</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1138,7 +1139,7 @@
             <tag>shape1</tag>
             <tag>version1</tag>
         </stimulus>
-        <stimulus code="moveRotated315" identifier="2:shape1:version4:version4zero:quadrant4:moveRotated315" imagePath="2.png" pauseMs="0">
+        <stimulus code="moveRotated315" identifier="2.png:shape1:version4:version4zero:quadrant4:moveRotated315" imagePath="2.png" pauseMs="0">
             <tag>2</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1155,7 +1156,7 @@
             <tag>version4</tag>
             <tag>version4zero</tag>
         </stimulus>
-        <stimulus code="moveRotated90" identifier="3:shape1:version1:quadrant1:moveRotated90" imagePath="3.png" pauseMs="0">
+        <stimulus code="moveRotated90" identifier="3.png:shape1:version1:quadrant1:moveRotated90" imagePath="3.png" pauseMs="0">
             <tag>3</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1171,7 +1172,7 @@
             <tag>shape1</tag>
             <tag>version1</tag>
         </stimulus>
-        <stimulus code="moveRotated210" identifier="3:shape1:version2:version4:version4zero:quadrant3:moveRotated210" imagePath="3.png" pauseMs="0">
+        <stimulus code="moveRotated210" identifier="3.png:shape1:version2:version4:version4zero:quadrant3:moveRotated210" imagePath="3.png" pauseMs="0">
             <tag>3</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1189,7 +1190,7 @@
             <tag>version4</tag>
             <tag>version4zero</tag>
         </stimulus>
-        <stimulus code="moveRotated315" identifier="3:shape1:version6:quadrant4:moveRotated315" imagePath="3.png" pauseMs="0">
+        <stimulus code="moveRotated315" identifier="3.png:shape1:version6:quadrant4:moveRotated315" imagePath="3.png" pauseMs="0">
             <tag>3</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1205,7 +1206,7 @@
             <tag>shape1</tag>
             <tag>version6</tag>
         </stimulus>
-        <stimulus code="moveRotated360" identifier="3:shape1:version3:version3zero:quadrant4:moveRotated360" imagePath="3.png" pauseMs="0">
+        <stimulus code="moveRotated360" identifier="3.png:shape1:version3:version3zero:quadrant4:moveRotated360" imagePath="3.png" pauseMs="0">
             <tag>3</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1222,7 +1223,7 @@
             <tag>version3</tag>
             <tag>version3zero</tag>
         </stimulus>
-        <stimulus code="moveRotated30" identifier="4:shape1:version4:quadrant1:moveRotated30" imagePath="4.png" pauseMs="0">
+        <stimulus code="moveRotated30" identifier="4.png:shape1:version4:quadrant1:moveRotated30" imagePath="4.png" pauseMs="0">
             <tag>4</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1238,7 +1239,7 @@
             <tag>shape1</tag>
             <tag>version4</tag>
         </stimulus>
-        <stimulus code="moveRotated90" identifier="4:shape1:version2:version2zero:quadrant1:moveRotated90" imagePath="4.png" pauseMs="0">
+        <stimulus code="moveRotated90" identifier="4.png:shape1:version2:version2zero:quadrant1:moveRotated90" imagePath="4.png" pauseMs="0">
             <tag>4</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1255,7 +1256,7 @@
             <tag>version2</tag>
             <tag>version2zero</tag>
         </stimulus>
-        <stimulus code="moveRotated210" identifier="4:shape1:version3:version3zero:quadrant3:moveRotated210" imagePath="4.png" pauseMs="0">
+        <stimulus code="moveRotated210" identifier="4.png:shape1:version3:version3zero:quadrant3:moveRotated210" imagePath="4.png" pauseMs="0">
             <tag>4</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1272,7 +1273,7 @@
             <tag>version3</tag>
             <tag>version3zero</tag>
         </stimulus>
-        <stimulus code="moveRotated330" identifier="4:shape1:version1:version5:version5zero:quadrant4:moveRotated330" imagePath="4.png" pauseMs="0">
+        <stimulus code="moveRotated330" identifier="4.png:shape1:version1:version5:version5zero:quadrant4:moveRotated330" imagePath="4.png" pauseMs="0">
             <tag>4</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1290,7 +1291,7 @@
             <tag>version5</tag>
             <tag>version5zero</tag>
         </stimulus>
-        <stimulus code="moveRotated30" identifier="5:shape1:version1:version1zero:version6:quadrant1:moveRotated30" imagePath="5.png" pauseMs="0">
+        <stimulus code="moveRotated30" identifier="5.png:shape1:version1:version1zero:version6:quadrant1:moveRotated30" imagePath="5.png" pauseMs="0">
             <tag>5</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1308,7 +1309,7 @@
             <tag>version1zero</tag>
             <tag>version6</tag>
         </stimulus>
-        <stimulus code="moveRotated60" identifier="5:shape1:version3:quadrant1:moveRotated60" imagePath="5.png" pauseMs="0">
+        <stimulus code="moveRotated60" identifier="5.png:shape1:version3:quadrant1:moveRotated60" imagePath="5.png" pauseMs="0">
             <tag>5</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1324,7 +1325,7 @@
             <tag>shape1</tag>
             <tag>version3</tag>
         </stimulus>
-        <stimulus code="moveRotated300" identifier="5:shape1:version2:quadrant4:moveRotated300" imagePath="5.png" pauseMs="0">
+        <stimulus code="moveRotated300" identifier="5.png:shape1:version2:quadrant4:moveRotated300" imagePath="5.png" pauseMs="0">
             <tag>5</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1340,7 +1341,7 @@
             <tag>shape1</tag>
             <tag>version2</tag>
         </stimulus>
-        <stimulus code="moveRotated90" identifier="6:shape1:version5:quadrant1:moveRotated90" imagePath="6.png" pauseMs="0">
+        <stimulus code="moveRotated90" identifier="6.png:shape1:version5:quadrant1:moveRotated90" imagePath="6.png" pauseMs="0">
             <tag>6</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1356,7 +1357,7 @@
             <tag>shape1</tag>
             <tag>version5</tag>
         </stimulus>
-        <stimulus code="moveRotated225" identifier="6:shape1:version6:version6zero:quadrant3:moveRotated225" imagePath="6.png" pauseMs="0">
+        <stimulus code="moveRotated225" identifier="6.png:shape1:version6:version6zero:quadrant3:moveRotated225" imagePath="6.png" pauseMs="0">
             <tag>6</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1373,7 +1374,7 @@
             <tag>version6</tag>
             <tag>version6zero</tag>
         </stimulus>
-        <stimulus code="moveRotated240" identifier="6:shape1:version3:quadrant3:moveRotated240" imagePath="6.png" pauseMs="0">
+        <stimulus code="moveRotated240" identifier="6.png:shape1:version3:quadrant3:moveRotated240" imagePath="6.png" pauseMs="0">
             <tag>6</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1389,7 +1390,7 @@
             <tag>shape1</tag>
             <tag>version3</tag>
         </stimulus>
-        <stimulus code="moveRotated300" identifier="6:shape1:version1:quadrant4:moveRotated300" imagePath="6.png" pauseMs="0">
+        <stimulus code="moveRotated300" identifier="6.png:shape1:version1:quadrant4:moveRotated300" imagePath="6.png" pauseMs="0">
             <tag>6</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1405,7 +1406,7 @@
             <tag>shape1</tag>
             <tag>version1</tag>
         </stimulus>
-        <stimulus code="moveRotated360" identifier="6:shape1:version2:quadrant4:moveRotated360" imagePath="6.png" pauseMs="0">
+        <stimulus code="moveRotated360" identifier="6.png:shape1:version2:quadrant4:moveRotated360" imagePath="6.png" pauseMs="0">
             <tag>6</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1421,7 +1422,7 @@
             <tag>shape1</tag>
             <tag>version2</tag>
         </stimulus>
-        <stimulus code="moveRotated30" identifier="7:shape1:version5:version5zero:quadrant1:moveRotated30" imagePath="7.png" pauseMs="0">
+        <stimulus code="moveRotated30" identifier="7.png:shape1:version5:version5zero:quadrant1:moveRotated30" imagePath="7.png" pauseMs="0">
             <tag>7</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1438,7 +1439,7 @@
             <tag>version5</tag>
             <tag>version5zero</tag>
         </stimulus>
-        <stimulus code="moveRotated135" identifier="7:shape1:version1:version1zero:quadrant2:moveRotated135" imagePath="7.png" pauseMs="0">
+        <stimulus code="moveRotated135" identifier="7.png:shape1:version1:version1zero:quadrant2:moveRotated135" imagePath="7.png" pauseMs="0">
             <tag>7</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1455,7 +1456,7 @@
             <tag>version1</tag>
             <tag>version1zero</tag>
         </stimulus>
-        <stimulus code="moveRotated225" identifier="7:shape1:version4:quadrant3:moveRotated225" imagePath="7.png" pauseMs="0">
+        <stimulus code="moveRotated225" identifier="7.png:shape1:version4:quadrant3:moveRotated225" imagePath="7.png" pauseMs="0">
             <tag>7</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1471,7 +1472,7 @@
             <tag>shape1</tag>
             <tag>version4</tag>
         </stimulus>
-        <stimulus code="moveRotated240" identifier="7:shape1:version2:quadrant3:moveRotated240" imagePath="7.png" pauseMs="0">
+        <stimulus code="moveRotated240" identifier="7.png:shape1:version2:quadrant3:moveRotated240" imagePath="7.png" pauseMs="0">
             <tag>7</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1487,7 +1488,7 @@
             <tag>shape1</tag>
             <tag>version2</tag>
         </stimulus>
-        <stimulus code="moveRotated270" identifier="7:shape1:version6:quadrant3:moveRotated270" imagePath="7.png" pauseMs="0">
+        <stimulus code="moveRotated270" identifier="7.png:shape1:version6:quadrant3:moveRotated270" imagePath="7.png" pauseMs="0">
             <tag>7</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1503,7 +1504,7 @@
             <tag>shape1</tag>
             <tag>version6</tag>
         </stimulus>
-        <stimulus code="moveRotated315" identifier="7:shape1:version3:quadrant4:moveRotated315" imagePath="7.png" pauseMs="0">
+        <stimulus code="moveRotated315" identifier="7.png:shape1:version3:quadrant4:moveRotated315" imagePath="7.png" pauseMs="0">
             <tag>7</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1519,7 +1520,7 @@
             <tag>shape1</tag>
             <tag>version3</tag>
         </stimulus>
-        <stimulus code="moveRotated45" identifier="8:shape2:version5:quadrant1:moveRotated45" imagePath="8.png" pauseMs="0">
+        <stimulus code="moveRotated45" identifier="8.png:shape2:version5:quadrant1:moveRotated45" imagePath="8.png" pauseMs="0">
             <tag>8</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1535,7 +1536,7 @@
             <tag>shape2</tag>
             <tag>version5</tag>
         </stimulus>
-        <stimulus code="moveRotated60" identifier="8:shape2:version4:quadrant1:moveRotated60" imagePath="8.png" pauseMs="0">
+        <stimulus code="moveRotated60" identifier="8.png:shape2:version4:quadrant1:moveRotated60" imagePath="8.png" pauseMs="0">
             <tag>8</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1551,7 +1552,7 @@
             <tag>shape2</tag>
             <tag>version4</tag>
         </stimulus>
-        <stimulus code="moveRotated120" identifier="8:shape2:version2:version2zero:quadrant2:moveRotated120" imagePath="8.png" pauseMs="0">
+        <stimulus code="moveRotated120" identifier="8.png:shape2:version2:version2zero:quadrant2:moveRotated120" imagePath="8.png" pauseMs="0">
             <tag>8</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1568,7 +1569,7 @@
             <tag>version2</tag>
             <tag>version2zero</tag>
         </stimulus>
-        <stimulus code="moveRotated225" identifier="8:shape2:version6:quadrant3:moveRotated225" imagePath="8.png" pauseMs="0">
+        <stimulus code="moveRotated225" identifier="8.png:shape2:version6:quadrant3:moveRotated225" imagePath="8.png" pauseMs="0">
             <tag>8</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1584,7 +1585,7 @@
             <tag>shape2</tag>
             <tag>version6</tag>
         </stimulus>
-        <stimulus code="moveRotated270" identifier="8:shape2:version3:version3zero:quadrant3:moveRotated270" imagePath="8.png" pauseMs="0">
+        <stimulus code="moveRotated270" identifier="8.png:shape2:version3:version3zero:quadrant3:moveRotated270" imagePath="8.png" pauseMs="0">
             <tag>8</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1601,7 +1602,7 @@
             <tag>version3</tag>
             <tag>version3zero</tag>
         </stimulus>
-        <stimulus code="moveRotated45" identifier="9:shape2:version2:quadrant1:moveRotated45" imagePath="9.png" pauseMs="0">
+        <stimulus code="moveRotated45" identifier="9.png:shape2:version2:quadrant1:moveRotated45" imagePath="9.png" pauseMs="0">
             <tag>9</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1617,7 +1618,7 @@
             <tag>shape2</tag>
             <tag>version2</tag>
         </stimulus>
-        <stimulus code="moveRotated90" identifier="9:shape2:version3:version3zero:version4:version4zero:quadrant1:moveRotated90" imagePath="9.png" pauseMs="0">
+        <stimulus code="moveRotated90" identifier="9.png:shape2:version3:version3zero:version4:version4zero:quadrant1:moveRotated90" imagePath="9.png" pauseMs="0">
             <tag>9</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1636,7 +1637,7 @@
             <tag>version4</tag>
             <tag>version4zero</tag>
         </stimulus>
-        <stimulus code="moveRotated270" identifier="9:shape2:version1:version1zero:quadrant3:moveRotated270" imagePath="9.png" pauseMs="0">
+        <stimulus code="moveRotated270" identifier="9.png:shape2:version1:version1zero:quadrant3:moveRotated270" imagePath="9.png" pauseMs="0">
             <tag>9</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1653,7 +1654,7 @@
             <tag>version1</tag>
             <tag>version1zero</tag>
         </stimulus>
-        <stimulus code="moveRotated300" identifier="9:shape2:version6:version6zero:quadrant4:moveRotated300" imagePath="9.png" pauseMs="0">
+        <stimulus code="moveRotated300" identifier="9.png:shape2:version6:version6zero:quadrant4:moveRotated300" imagePath="9.png" pauseMs="0">
             <tag>9</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1670,7 +1671,7 @@
             <tag>version6</tag>
             <tag>version6zero</tag>
         </stimulus>
-        <stimulus code="moveRotated330" identifier="9:shape2:version5:quadrant4:moveRotated330" imagePath="9.png" pauseMs="0">
+        <stimulus code="moveRotated330" identifier="9.png:shape2:version5:quadrant4:moveRotated330" imagePath="9.png" pauseMs="0">
             <tag>9</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1686,7 +1687,7 @@
             <tag>shape2</tag>
             <tag>version5</tag>
         </stimulus>
-        <stimulus code="moveRotated120" identifier="10:shape2:version5:quadrant2:moveRotated120" imagePath="10.png" pauseMs="0">
+        <stimulus code="moveRotated120" identifier="10.png:shape2:version5:quadrant2:moveRotated120" imagePath="10.png" pauseMs="0">
             <tag>10</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1702,7 +1703,7 @@
             <tag>shape2</tag>
             <tag>version5</tag>
         </stimulus>
-        <stimulus code="moveRotated150" identifier="10:shape2:version1:version1zero:quadrant2:moveRotated150" imagePath="10.png" pauseMs="0">
+        <stimulus code="moveRotated150" identifier="10.png:shape2:version1:version1zero:quadrant2:moveRotated150" imagePath="10.png" pauseMs="0">
             <tag>10</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1719,7 +1720,7 @@
             <tag>version1</tag>
             <tag>version1zero</tag>
         </stimulus>
-        <stimulus code="moveRotated210" identifier="10:shape2:version3:quadrant3:moveRotated210" imagePath="10.png" pauseMs="0">
+        <stimulus code="moveRotated210" identifier="10.png:shape2:version3:quadrant3:moveRotated210" imagePath="10.png" pauseMs="0">
             <tag>10</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1735,7 +1736,7 @@
             <tag>shape2</tag>
             <tag>version3</tag>
         </stimulus>
-        <stimulus code="moveRotated225" identifier="10:shape2:version2:quadrant3:moveRotated225" imagePath="10.png" pauseMs="0">
+        <stimulus code="moveRotated225" identifier="10.png:shape2:version2:quadrant3:moveRotated225" imagePath="10.png" pauseMs="0">
             <tag>10</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1751,7 +1752,7 @@
             <tag>shape2</tag>
             <tag>version2</tag>
         </stimulus>
-        <stimulus code="moveRotated45" identifier="11:shape2:version3:quadrant1:moveRotated45" imagePath="11.png" pauseMs="0">
+        <stimulus code="moveRotated45" identifier="11.png:shape2:version3:quadrant1:moveRotated45" imagePath="11.png" pauseMs="0">
             <tag>11</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1767,7 +1768,7 @@
             <tag>shape2</tag>
             <tag>version3</tag>
         </stimulus>
-        <stimulus code="moveRotated90" identifier="11:shape2:version5:quadrant1:moveRotated90" imagePath="11.png" pauseMs="0">
+        <stimulus code="moveRotated90" identifier="11.png:shape2:version5:quadrant1:moveRotated90" imagePath="11.png" pauseMs="0">
             <tag>11</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1783,7 +1784,7 @@
             <tag>shape2</tag>
             <tag>version5</tag>
         </stimulus>
-        <stimulus code="moveRotated150" identifier="11:shape2:version4:quadrant2:moveRotated150" imagePath="11.png" pauseMs="0">
+        <stimulus code="moveRotated150" identifier="11.png:shape2:version4:quadrant2:moveRotated150" imagePath="11.png" pauseMs="0">
             <tag>11</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1799,7 +1800,7 @@
             <tag>shape2</tag>
             <tag>version4</tag>
         </stimulus>
-        <stimulus code="moveRotated180" identifier="11:shape2:version6:quadrant2:moveRotated180" imagePath="11.png" pauseMs="0">
+        <stimulus code="moveRotated180" identifier="11.png:shape2:version6:quadrant2:moveRotated180" imagePath="11.png" pauseMs="0">
             <tag>11</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1815,7 +1816,7 @@
             <tag>shape2</tag>
             <tag>version6</tag>
         </stimulus>
-        <stimulus code="moveRotated300" identifier="11:shape2:version1:quadrant4:moveRotated300" imagePath="11.png" pauseMs="0">
+        <stimulus code="moveRotated300" identifier="11.png:shape2:version1:quadrant4:moveRotated300" imagePath="11.png" pauseMs="0">
             <tag>11</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1831,7 +1832,7 @@
             <tag>shape2</tag>
             <tag>version1</tag>
         </stimulus>
-        <stimulus code="moveRotated330" identifier="11:shape2:version1:quadrant4:moveRotated330" imagePath="11.png" pauseMs="0">
+        <stimulus code="moveRotated330" identifier="11.png:shape2:version1:quadrant4:moveRotated330" imagePath="11.png" pauseMs="0">
             <tag>11</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1847,7 +1848,7 @@
             <tag>shape2</tag>
             <tag>version1</tag>
         </stimulus>
-        <stimulus code="moveRotated30" identifier="12:shape2:version1:quadrant1:moveRotated30" imagePath="12.png" pauseMs="0">
+        <stimulus code="moveRotated30" identifier="12.png:shape2:version1:quadrant1:moveRotated30" imagePath="12.png" pauseMs="0">
             <tag>12</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1863,7 +1864,7 @@
             <tag>shape2</tag>
             <tag>version1</tag>
         </stimulus>
-        <stimulus code="moveRotated60" identifier="12:shape2:version6:version6zero:quadrant1:moveRotated60" imagePath="12.png" pauseMs="0">
+        <stimulus code="moveRotated60" identifier="12.png:shape2:version6:version6zero:quadrant1:moveRotated60" imagePath="12.png" pauseMs="0">
             <tag>12</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1880,7 +1881,7 @@
             <tag>version6</tag>
             <tag>version6zero</tag>
         </stimulus>
-        <stimulus code="moveRotated135" identifier="12:shape2:version3:quadrant2:moveRotated135" imagePath="12.png" pauseMs="0">
+        <stimulus code="moveRotated135" identifier="12.png:shape2:version3:quadrant2:moveRotated135" imagePath="12.png" pauseMs="0">
             <tag>12</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1896,7 +1897,7 @@
             <tag>shape2</tag>
             <tag>version3</tag>
         </stimulus>
-        <stimulus code="moveRotated225" identifier="12:shape2:version5:version5zero:quadrant3:moveRotated225" imagePath="12.png" pauseMs="0">
+        <stimulus code="moveRotated225" identifier="12.png:shape2:version5:version5zero:quadrant3:moveRotated225" imagePath="12.png" pauseMs="0">
             <tag>12</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1913,7 +1914,7 @@
             <tag>version5</tag>
             <tag>version5zero</tag>
         </stimulus>
-        <stimulus code="moveRotated315" identifier="12:shape2:version4:quadrant4:moveRotated315" imagePath="12.png" pauseMs="0">
+        <stimulus code="moveRotated315" identifier="12.png:shape2:version4:quadrant4:moveRotated315" imagePath="12.png" pauseMs="0">
             <tag>12</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1929,7 +1930,7 @@
             <tag>shape2</tag>
             <tag>version4</tag>
         </stimulus>
-        <stimulus code="moveRotated180" identifier="13:shape2:version2:quadrant2:moveRotated180" imagePath="13.png" pauseMs="0">
+        <stimulus code="moveRotated180" identifier="13.png:shape2:version2:quadrant2:moveRotated180" imagePath="13.png" pauseMs="0">
             <tag>13</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1945,7 +1946,7 @@
             <tag>shape2</tag>
             <tag>version2</tag>
         </stimulus>
-        <stimulus code="moveRotated210" identifier="13:shape2:version4:version4zero:quadrant3:moveRotated210" imagePath="13.png" pauseMs="0">
+        <stimulus code="moveRotated210" identifier="13.png:shape2:version4:version4zero:quadrant3:moveRotated210" imagePath="13.png" pauseMs="0">
             <tag>13</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1962,7 +1963,7 @@
             <tag>version4</tag>
             <tag>version4zero</tag>
         </stimulus>
-        <stimulus code="moveRotated270" identifier="13:shape2:version5:quadrant3:moveRotated270" imagePath="13.png" pauseMs="0">
+        <stimulus code="moveRotated270" identifier="13.png:shape2:version5:quadrant3:moveRotated270" imagePath="13.png" pauseMs="0">
             <tag>13</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1978,7 +1979,7 @@
             <tag>shape2</tag>
             <tag>version5</tag>
         </stimulus>
-        <stimulus code="moveRotated330" identifier="13:shape2:version3:version3zero:quadrant4:moveRotated330" imagePath="13.png" pauseMs="0">
+        <stimulus code="moveRotated330" identifier="13.png:shape2:version3:version3zero:quadrant4:moveRotated330" imagePath="13.png" pauseMs="0">
             <tag>13</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -1995,7 +1996,7 @@
             <tag>version3</tag>
             <tag>version3zero</tag>
         </stimulus>
-        <stimulus code="moveRotated360" identifier="13:shape2:version6:quadrant4:moveRotated360" imagePath="13.png" pauseMs="0">
+        <stimulus code="moveRotated360" identifier="13.png:shape2:version6:quadrant4:moveRotated360" imagePath="13.png" pauseMs="0">
             <tag>13</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2011,7 +2012,7 @@
             <tag>shape2</tag>
             <tag>version6</tag>
         </stimulus>
-        <stimulus code="moveRotated120" identifier="14:shape2:version1:quadrant2:moveRotated120" imagePath="14.png" pauseMs="0">
+        <stimulus code="moveRotated120" identifier="14.png:shape2:version1:quadrant2:moveRotated120" imagePath="14.png" pauseMs="0">
             <tag>14</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2027,7 +2028,7 @@
             <tag>shape2</tag>
             <tag>version1</tag>
         </stimulus>
-        <stimulus code="moveRotated135" identifier="14:shape2:version5:version6:quadrant2:moveRotated135" imagePath="14.png" pauseMs="0">
+        <stimulus code="moveRotated135" identifier="14.png:shape2:version5:version6:quadrant2:moveRotated135" imagePath="14.png" pauseMs="0">
             <tag>14</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2044,7 +2045,7 @@
             <tag>version5</tag>
             <tag>version6</tag>
         </stimulus>
-        <stimulus code="moveRotated180" identifier="14:shape2:version3:quadrant2:moveRotated180" imagePath="14.png" pauseMs="0">
+        <stimulus code="moveRotated180" identifier="14.png:shape2:version3:quadrant2:moveRotated180" imagePath="14.png" pauseMs="0">
             <tag>14</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2060,7 +2061,7 @@
             <tag>shape2</tag>
             <tag>version3</tag>
         </stimulus>
-        <stimulus code="moveRotated330" identifier="14:shape2:version2:quadrant4:moveRotated330" imagePath="14.png" pauseMs="0">
+        <stimulus code="moveRotated330" identifier="14.png:shape2:version2:quadrant4:moveRotated330" imagePath="14.png" pauseMs="0">
             <tag>14</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2076,7 +2077,7 @@
             <tag>shape2</tag>
             <tag>version2</tag>
         </stimulus>
-        <stimulus code="moveRotated45" identifier="15:shape3:version3:version3zero:quadrant1:moveRotated45" imagePath="15.png" pauseMs="0">
+        <stimulus code="moveRotated45" identifier="15.png:shape3:version3:version3zero:quadrant1:moveRotated45" imagePath="15.png" pauseMs="0">
             <tag>15</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2093,7 +2094,7 @@
             <tag>version3</tag>
             <tag>version3zero</tag>
         </stimulus>
-        <stimulus code="moveRotated60" identifier="15:shape3:version2:quadrant1:moveRotated60" imagePath="15.png" pauseMs="0">
+        <stimulus code="moveRotated60" identifier="15.png:shape3:version2:quadrant1:moveRotated60" imagePath="15.png" pauseMs="0">
             <tag>15</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2109,7 +2110,7 @@
             <tag>shape3</tag>
             <tag>version2</tag>
         </stimulus>
-        <stimulus code="moveRotated300" identifier="15:shape3:version5:version5zero:quadrant4:moveRotated300" imagePath="15.png" pauseMs="0">
+        <stimulus code="moveRotated300" identifier="15.png:shape3:version5:version5zero:quadrant4:moveRotated300" imagePath="15.png" pauseMs="0">
             <tag>15</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2126,7 +2127,7 @@
             <tag>version5</tag>
             <tag>version5zero</tag>
         </stimulus>
-        <stimulus code="moveRotated315" identifier="15:shape3:version6:quadrant4:moveRotated315" imagePath="15.png" pauseMs="0">
+        <stimulus code="moveRotated315" identifier="15.png:shape3:version6:quadrant4:moveRotated315" imagePath="15.png" pauseMs="0">
             <tag>15</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2142,7 +2143,7 @@
             <tag>shape3</tag>
             <tag>version6</tag>
         </stimulus>
-        <stimulus code="moveRotated330" identifier="15:shape3:version4:quadrant4:moveRotated330" imagePath="15.png" pauseMs="0">
+        <stimulus code="moveRotated330" identifier="15.png:shape3:version4:quadrant4:moveRotated330" imagePath="15.png" pauseMs="0">
             <tag>15</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2158,7 +2159,7 @@
             <tag>shape3</tag>
             <tag>version4</tag>
         </stimulus>
-        <stimulus code="moveRotated45" identifier="16:shape3:version1:version4:version4zero:quadrant1:moveRotated45" imagePath="16.png" pauseMs="0">
+        <stimulus code="moveRotated45" identifier="16.png:shape3:version1:version4:version4zero:quadrant1:moveRotated45" imagePath="16.png" pauseMs="0">
             <tag>16</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2176,7 +2177,7 @@
             <tag>version4</tag>
             <tag>version4zero</tag>
         </stimulus>
-        <stimulus code="moveRotated135" identifier="16:shape3:version3:version3zero:quadrant2:moveRotated135" imagePath="16.png" pauseMs="0">
+        <stimulus code="moveRotated135" identifier="16.png:shape3:version3:version3zero:quadrant2:moveRotated135" imagePath="16.png" pauseMs="0">
             <tag>16</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2193,7 +2194,7 @@
             <tag>version3</tag>
             <tag>version3zero</tag>
         </stimulus>
-        <stimulus code="moveRotated180" identifier="16:shape3:version2:version2zero:version5:quadrant2:moveRotated180" imagePath="16.png" pauseMs="0">
+        <stimulus code="moveRotated180" identifier="16.png:shape3:version2:version2zero:version5:quadrant2:moveRotated180" imagePath="16.png" pauseMs="0">
             <tag>16</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2211,7 +2212,7 @@
             <tag>version2zero</tag>
             <tag>version5</tag>
         </stimulus>
-        <stimulus code="moveRotated240" identifier="16:shape3:version6:quadrant3:moveRotated240" imagePath="16.png" pauseMs="0">
+        <stimulus code="moveRotated240" identifier="16.png:shape3:version6:quadrant3:moveRotated240" imagePath="16.png" pauseMs="0">
             <tag>16</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2227,7 +2228,7 @@
             <tag>shape3</tag>
             <tag>version6</tag>
         </stimulus>
-        <stimulus code="moveRotated120" identifier="17:shape3:version4:version6:version6zero:quadrant2:moveRotated120" imagePath="17.png" pauseMs="0">
+        <stimulus code="moveRotated120" identifier="17.png:shape3:version4:version6:version6zero:quadrant2:moveRotated120" imagePath="17.png" pauseMs="0">
             <tag>17</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2245,7 +2246,7 @@
             <tag>version6</tag>
             <tag>version6zero</tag>
         </stimulus>
-        <stimulus code="moveRotated240" identifier="17:shape3:version5:version5zero:quadrant3:moveRotated240" imagePath="17.png" pauseMs="0">
+        <stimulus code="moveRotated240" identifier="17.png:shape3:version5:version5zero:quadrant3:moveRotated240" imagePath="17.png" pauseMs="0">
             <tag>17</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2262,7 +2263,7 @@
             <tag>version5</tag>
             <tag>version5zero</tag>
         </stimulus>
-        <stimulus code="moveRotated315" identifier="17:shape3:version1:version1zero:version2:quadrant4:moveRotated315" imagePath="17.png" pauseMs="0">
+        <stimulus code="moveRotated315" identifier="17.png:shape3:version1:version1zero:version2:quadrant4:moveRotated315" imagePath="17.png" pauseMs="0">
             <tag>17</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2280,7 +2281,7 @@
             <tag>version1zero</tag>
             <tag>version2</tag>
         </stimulus>
-        <stimulus code="moveRotated45" identifier="18:shape3:version6:quadrant1:moveRotated45" imagePath="18.png" pauseMs="0">
+        <stimulus code="moveRotated45" identifier="18.png:shape3:version6:quadrant1:moveRotated45" imagePath="18.png" pauseMs="0">
             <tag>18</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2296,7 +2297,7 @@
             <tag>shape3</tag>
             <tag>version6</tag>
         </stimulus>
-        <stimulus code="moveRotated150" identifier="18:shape3:version5:version5zero:quadrant2:moveRotated150" imagePath="18.png" pauseMs="0">
+        <stimulus code="moveRotated150" identifier="18.png:shape3:version5:version5zero:quadrant2:moveRotated150" imagePath="18.png" pauseMs="0">
             <tag>18</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2313,7 +2314,7 @@
             <tag>version5</tag>
             <tag>version5zero</tag>
         </stimulus>
-        <stimulus code="moveRotated180" identifier="18:shape3:version3:quadrant2:moveRotated180" imagePath="18.png" pauseMs="0">
+        <stimulus code="moveRotated180" identifier="18.png:shape3:version3:quadrant2:moveRotated180" imagePath="18.png" pauseMs="0">
             <tag>18</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2329,7 +2330,7 @@
             <tag>shape3</tag>
             <tag>version3</tag>
         </stimulus>
-        <stimulus code="moveRotated300" identifier="18:shape3:version4:version4zero:quadrant4:moveRotated300" imagePath="18.png" pauseMs="0">
+        <stimulus code="moveRotated300" identifier="18.png:shape3:version4:version4zero:quadrant4:moveRotated300" imagePath="18.png" pauseMs="0">
             <tag>18</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2346,7 +2347,7 @@
             <tag>version4</tag>
             <tag>version4zero</tag>
         </stimulus>
-        <stimulus code="moveRotated135" identifier="19:shape3:version1:version1zero:quadrant2:moveRotated135" imagePath="19.png" pauseMs="0">
+        <stimulus code="moveRotated135" identifier="19.png:shape3:version1:version1zero:quadrant2:moveRotated135" imagePath="19.png" pauseMs="0">
             <tag>19</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2363,7 +2364,7 @@
             <tag>version1</tag>
             <tag>version1zero</tag>
         </stimulus>
-        <stimulus code="moveRotated240" identifier="19:shape3:version3:version4:quadrant3:moveRotated240" imagePath="19.png" pauseMs="0">
+        <stimulus code="moveRotated240" identifier="19.png:shape3:version3:version4:quadrant3:moveRotated240" imagePath="19.png" pauseMs="0">
             <tag>19</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2380,7 +2381,7 @@
             <tag>version3</tag>
             <tag>version4</tag>
         </stimulus>
-        <stimulus code="moveRotated270" identifier="19:shape3:version6:version6zero:quadrant3:moveRotated270" imagePath="19.png" pauseMs="0">
+        <stimulus code="moveRotated270" identifier="19.png:shape3:version6:version6zero:quadrant3:moveRotated270" imagePath="19.png" pauseMs="0">
             <tag>19</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2397,7 +2398,7 @@
             <tag>version6</tag>
             <tag>version6zero</tag>
         </stimulus>
-        <stimulus code="moveRotated120" identifier="20:shape3:version4:version4zero:quadrant2:moveRotated120" imagePath="20.png" pauseMs="0">
+        <stimulus code="moveRotated120" identifier="20.png:shape3:version4:version4zero:quadrant2:moveRotated120" imagePath="20.png" pauseMs="0">
             <tag>20</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2414,7 +2415,7 @@
             <tag>version4</tag>
             <tag>version4zero</tag>
         </stimulus>
-        <stimulus code="moveRotated180" identifier="20:shape3:version6:version6zero:quadrant2:moveRotated180" imagePath="20.png" pauseMs="0">
+        <stimulus code="moveRotated180" identifier="20.png:shape3:version6:version6zero:quadrant2:moveRotated180" imagePath="20.png" pauseMs="0">
             <tag>20</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2431,7 +2432,7 @@
             <tag>version6</tag>
             <tag>version6zero</tag>
         </stimulus>
-        <stimulus code="moveRotated240" identifier="20:shape3:version1:quadrant3:moveRotated240" imagePath="20.png" pauseMs="0">
+        <stimulus code="moveRotated240" identifier="20.png:shape3:version1:quadrant3:moveRotated240" imagePath="20.png" pauseMs="0">
             <tag>20</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2447,7 +2448,7 @@
             <tag>shape3</tag>
             <tag>version1</tag>
         </stimulus>
-        <stimulus code="moveRotated315" identifier="20:shape3:version3:quadrant4:moveRotated315" imagePath="20.png" pauseMs="0">
+        <stimulus code="moveRotated315" identifier="20.png:shape3:version3:quadrant4:moveRotated315" imagePath="20.png" pauseMs="0">
             <tag>20</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2463,7 +2464,7 @@
             <tag>shape3</tag>
             <tag>version3</tag>
         </stimulus>
-        <stimulus code="moveRotated30" identifier="21:shape3:version5:quadrant1:moveRotated30" imagePath="21.png" pauseMs="0">
+        <stimulus code="moveRotated30" identifier="21.png:shape3:version5:quadrant1:moveRotated30" imagePath="21.png" pauseMs="0">
             <tag>21</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2479,7 +2480,7 @@
             <tag>shape3</tag>
             <tag>version5</tag>
         </stimulus>
-        <stimulus code="moveRotated60" identifier="21:shape3:version6:quadrant1:moveRotated60" imagePath="21.png" pauseMs="0">
+        <stimulus code="moveRotated60" identifier="21.png:shape3:version6:quadrant1:moveRotated60" imagePath="21.png" pauseMs="0">
             <tag>21</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2495,7 +2496,7 @@
             <tag>shape3</tag>
             <tag>version6</tag>
         </stimulus>
-        <stimulus code="moveRotated180" identifier="21:shape3:version4:quadrant2:moveRotated180" imagePath="21.png" pauseMs="0">
+        <stimulus code="moveRotated180" identifier="21.png:shape3:version4:quadrant2:moveRotated180" imagePath="21.png" pauseMs="0">
             <tag>21</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2511,7 +2512,7 @@
             <tag>shape3</tag>
             <tag>version4</tag>
         </stimulus>
-        <stimulus code="moveRotated240" identifier="21:shape3:version2:quadrant3:moveRotated240" imagePath="21.png" pauseMs="0">
+        <stimulus code="moveRotated240" identifier="21.png:shape3:version2:quadrant3:moveRotated240" imagePath="21.png" pauseMs="0">
             <tag>21</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2527,7 +2528,7 @@
             <tag>shape3</tag>
             <tag>version2</tag>
         </stimulus>
-        <stimulus code="moveRotated270" identifier="21:shape3:version3:quadrant3:moveRotated270" imagePath="21.png" pauseMs="0">
+        <stimulus code="moveRotated270" identifier="21.png:shape3:version3:quadrant3:moveRotated270" imagePath="21.png" pauseMs="0">
             <tag>21</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2543,7 +2544,7 @@
             <tag>shape3</tag>
             <tag>version3</tag>
         </stimulus>
-        <stimulus code="moveRotated360" identifier="21:shape3:version1:quadrant4:moveRotated360" imagePath="21.png" pauseMs="0">
+        <stimulus code="moveRotated360" identifier="21.png:shape3:version1:quadrant4:moveRotated360" imagePath="21.png" pauseMs="0">
             <tag>21</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2559,7 +2560,7 @@
             <tag>shape3</tag>
             <tag>version1</tag>
         </stimulus>
-        <stimulus code="moveRotated45" identifier="22:shape4:version4:quadrant1:moveRotated45" imagePath="22.png" pauseMs="0">
+        <stimulus code="moveRotated45" identifier="22.png:shape4:version4:quadrant1:moveRotated45" imagePath="22.png" pauseMs="0">
             <tag>22</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2575,7 +2576,7 @@
             <tag>shape4</tag>
             <tag>version4</tag>
         </stimulus>
-        <stimulus code="moveRotated60" identifier="22:shape4:version1:version1zero:quadrant1:moveRotated60" imagePath="22.png" pauseMs="0">
+        <stimulus code="moveRotated60" identifier="22.png:shape4:version1:version1zero:quadrant1:moveRotated60" imagePath="22.png" pauseMs="0">
             <tag>22</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2592,7 +2593,7 @@
             <tag>version1</tag>
             <tag>version1zero</tag>
         </stimulus>
-        <stimulus code="moveRotated90" identifier="22:shape4:version2:quadrant1:moveRotated90" imagePath="22.png" pauseMs="0">
+        <stimulus code="moveRotated90" identifier="22.png:shape4:version2:quadrant1:moveRotated90" imagePath="22.png" pauseMs="0">
             <tag>22</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2608,7 +2609,7 @@
             <tag>shape4</tag>
             <tag>version2</tag>
         </stimulus>
-        <stimulus code="moveRotated150" identifier="22:shape4:version5:version5zero:quadrant2:moveRotated150" imagePath="22.png" pauseMs="0">
+        <stimulus code="moveRotated150" identifier="22.png:shape4:version5:version5zero:quadrant2:moveRotated150" imagePath="22.png" pauseMs="0">
             <tag>22</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2625,7 +2626,7 @@
             <tag>version5</tag>
             <tag>version5zero</tag>
         </stimulus>
-        <stimulus code="moveRotated330" identifier="22:shape4:version6:quadrant4:moveRotated330" imagePath="22.png" pauseMs="0">
+        <stimulus code="moveRotated330" identifier="22.png:shape4:version6:quadrant4:moveRotated330" imagePath="22.png" pauseMs="0">
             <tag>22</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2641,7 +2642,7 @@
             <tag>shape4</tag>
             <tag>version6</tag>
         </stimulus>
-        <stimulus code="moveRotated135" identifier="23:shape4:version2:quadrant2:moveRotated135" imagePath="23.png" pauseMs="0">
+        <stimulus code="moveRotated135" identifier="23.png:shape4:version2:quadrant2:moveRotated135" imagePath="23.png" pauseMs="0">
             <tag>23</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2657,7 +2658,7 @@
             <tag>shape4</tag>
             <tag>version2</tag>
         </stimulus>
-        <stimulus code="moveRotated210" identifier="23:shape4:version6:quadrant3:moveRotated210" imagePath="23.png" pauseMs="0">
+        <stimulus code="moveRotated210" identifier="23.png:shape4:version6:quadrant3:moveRotated210" imagePath="23.png" pauseMs="0">
             <tag>23</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2673,7 +2674,7 @@
             <tag>shape4</tag>
             <tag>version6</tag>
         </stimulus>
-        <stimulus code="moveRotated300" identifier="23:shape4:version3:quadrant4:moveRotated300" imagePath="23.png" pauseMs="0">
+        <stimulus code="moveRotated300" identifier="23.png:shape4:version3:quadrant4:moveRotated300" imagePath="23.png" pauseMs="0">
             <tag>23</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2689,7 +2690,7 @@
             <tag>shape4</tag>
             <tag>version3</tag>
         </stimulus>
-        <stimulus code="moveRotated330" identifier="23:shape4:version4:version4zero:quadrant4:moveRotated330" imagePath="23.png" pauseMs="0">
+        <stimulus code="moveRotated330" identifier="23.png:shape4:version4:version4zero:quadrant4:moveRotated330" imagePath="23.png" pauseMs="0">
             <tag>23</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2706,7 +2707,7 @@
             <tag>version4</tag>
             <tag>version4zero</tag>
         </stimulus>
-        <stimulus code="moveRotated360" identifier="23:shape4:version1:version5:quadrant4:moveRotated360" imagePath="23.png" pauseMs="0">
+        <stimulus code="moveRotated360" identifier="23.png:shape4:version1:version5:quadrant4:moveRotated360" imagePath="23.png" pauseMs="0">
             <tag>23</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2723,7 +2724,7 @@
             <tag>version1</tag>
             <tag>version5</tag>
         </stimulus>
-        <stimulus code="moveRotated90" identifier="24:shape4:version5:version5zero:quadrant1:moveRotated90" imagePath="24.png" pauseMs="0">
+        <stimulus code="moveRotated90" identifier="24.png:shape4:version5:version5zero:quadrant1:moveRotated90" imagePath="24.png" pauseMs="0">
             <tag>24</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2740,7 +2741,7 @@
             <tag>version5</tag>
             <tag>version5zero</tag>
         </stimulus>
-        <stimulus code="moveRotated150" identifier="24:shape4:version6:quadrant2:moveRotated150" imagePath="24.png" pauseMs="0">
+        <stimulus code="moveRotated150" identifier="24.png:shape4:version6:quadrant2:moveRotated150" imagePath="24.png" pauseMs="0">
             <tag>24</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2756,7 +2757,7 @@
             <tag>shape4</tag>
             <tag>version6</tag>
         </stimulus>
-        <stimulus code="moveRotated180" identifier="24:shape4:version1:version4:version4zero:quadrant2:moveRotated180" imagePath="24.png" pauseMs="0">
+        <stimulus code="moveRotated180" identifier="24.png:shape4:version1:version4:version4zero:quadrant2:moveRotated180" imagePath="24.png" pauseMs="0">
             <tag>24</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2774,7 +2775,7 @@
             <tag>version4</tag>
             <tag>version4zero</tag>
         </stimulus>
-        <stimulus code="moveRotated210" identifier="24:shape4:version2:version2zero:quadrant3:moveRotated210" imagePath="24.png" pauseMs="0">
+        <stimulus code="moveRotated210" identifier="24.png:shape4:version2:version2zero:quadrant3:moveRotated210" imagePath="24.png" pauseMs="0">
             <tag>24</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2791,7 +2792,7 @@
             <tag>version2</tag>
             <tag>version2zero</tag>
         </stimulus>
-        <stimulus code="moveRotated45" identifier="25:shape4:version2:version2zero:quadrant1:moveRotated45" imagePath="25.png" pauseMs="0">
+        <stimulus code="moveRotated45" identifier="25.png:shape4:version2:version2zero:quadrant1:moveRotated45" imagePath="25.png" pauseMs="0">
             <tag>25</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2808,7 +2809,7 @@
             <tag>version2</tag>
             <tag>version2zero</tag>
         </stimulus>
-        <stimulus code="moveRotated120" identifier="25:shape4:version3:version3zero:quadrant2:moveRotated120" imagePath="25.png" pauseMs="0">
+        <stimulus code="moveRotated120" identifier="25.png:shape4:version3:version3zero:quadrant2:moveRotated120" imagePath="25.png" pauseMs="0">
             <tag>25</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2825,7 +2826,7 @@
             <tag>version3</tag>
             <tag>version3zero</tag>
         </stimulus>
-        <stimulus code="moveRotated150" identifier="25:shape4:version4:quadrant2:moveRotated150" imagePath="25.png" pauseMs="0">
+        <stimulus code="moveRotated150" identifier="25.png:shape4:version4:quadrant2:moveRotated150" imagePath="25.png" pauseMs="0">
             <tag>25</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2841,7 +2842,7 @@
             <tag>shape4</tag>
             <tag>version4</tag>
         </stimulus>
-        <stimulus code="moveRotated225" identifier="25:shape4:version5:quadrant3:moveRotated225" imagePath="25.png" pauseMs="0">
+        <stimulus code="moveRotated225" identifier="25.png:shape4:version5:quadrant3:moveRotated225" imagePath="25.png" pauseMs="0">
             <tag>25</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2857,7 +2858,7 @@
             <tag>shape4</tag>
             <tag>version5</tag>
         </stimulus>
-        <stimulus code="moveRotated315" identifier="25:shape4:version1:quadrant4:moveRotated315" imagePath="25.png" pauseMs="0">
+        <stimulus code="moveRotated315" identifier="25.png:shape4:version1:quadrant4:moveRotated315" imagePath="25.png" pauseMs="0">
             <tag>25</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2873,7 +2874,7 @@
             <tag>shape4</tag>
             <tag>version1</tag>
         </stimulus>
-        <stimulus code="moveRotated90" identifier="26:shape4:version6:quadrant1:moveRotated90" imagePath="26.png" pauseMs="0">
+        <stimulus code="moveRotated90" identifier="26.png:shape4:version6:quadrant1:moveRotated90" imagePath="26.png" pauseMs="0">
             <tag>26</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2889,7 +2890,7 @@
             <tag>shape4</tag>
             <tag>version6</tag>
         </stimulus>
-        <stimulus code="moveRotated225" identifier="26:shape4:version3:quadrant3:moveRotated225" imagePath="26.png" pauseMs="0">
+        <stimulus code="moveRotated225" identifier="26.png:shape4:version3:quadrant3:moveRotated225" imagePath="26.png" pauseMs="0">
             <tag>26</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2905,7 +2906,7 @@
             <tag>shape4</tag>
             <tag>version3</tag>
         </stimulus>
-        <stimulus code="moveRotated270" identifier="26:shape4:version2:quadrant3:moveRotated270" imagePath="26.png" pauseMs="0">
+        <stimulus code="moveRotated270" identifier="26.png:shape4:version2:quadrant3:moveRotated270" imagePath="26.png" pauseMs="0">
             <tag>26</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2921,7 +2922,7 @@
             <tag>shape4</tag>
             <tag>version2</tag>
         </stimulus>
-        <stimulus code="moveRotated45" identifier="27:shape4:version5:quadrant1:moveRotated45" imagePath="27.png" pauseMs="0">
+        <stimulus code="moveRotated45" identifier="27.png:shape4:version5:quadrant1:moveRotated45" imagePath="27.png" pauseMs="0">
             <tag>27</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2937,7 +2938,7 @@
             <tag>shape4</tag>
             <tag>version5</tag>
         </stimulus>
-        <stimulus code="moveRotated120" identifier="27:shape4:version1:quadrant2:moveRotated120" imagePath="27.png" pauseMs="0">
+        <stimulus code="moveRotated120" identifier="27.png:shape4:version1:quadrant2:moveRotated120" imagePath="27.png" pauseMs="0">
             <tag>27</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2953,7 +2954,7 @@
             <tag>shape4</tag>
             <tag>version1</tag>
         </stimulus>
-        <stimulus code="moveRotated270" identifier="27:shape4:version4:quadrant3:moveRotated270" imagePath="27.png" pauseMs="0">
+        <stimulus code="moveRotated270" identifier="27.png:shape4:version4:quadrant3:moveRotated270" imagePath="27.png" pauseMs="0">
             <tag>27</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2969,7 +2970,7 @@
             <tag>shape4</tag>
             <tag>version4</tag>
         </stimulus>
-        <stimulus code="moveRotated30" identifier="28:shape4:version3:version6:version6zero:quadrant1:moveRotated30" imagePath="28.png" pauseMs="0">
+        <stimulus code="moveRotated30" identifier="28.png:shape4:version3:version6:version6zero:quadrant1:moveRotated30" imagePath="28.png" pauseMs="0">
             <tag>28</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -2987,7 +2988,7 @@
             <tag>version6</tag>
             <tag>version6zero</tag>
         </stimulus>
-        <stimulus code="moveRotated225" identifier="28:shape4:version1:version1zero:quadrant3:moveRotated225" imagePath="28.png" pauseMs="0">
+        <stimulus code="moveRotated225" identifier="28.png:shape4:version1:version1zero:quadrant3:moveRotated225" imagePath="28.png" pauseMs="0">
             <tag>28</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -3004,7 +3005,7 @@
             <tag>version1</tag>
             <tag>version1zero</tag>
         </stimulus>
-        <stimulus code="moveRotated300" identifier="28:shape4:version4:version5:quadrant4:moveRotated300" imagePath="28.png" pauseMs="0">
+        <stimulus code="moveRotated300" identifier="28.png:shape4:version4:version5:quadrant4:moveRotated300" imagePath="28.png" pauseMs="0">
             <tag>28</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
@@ -3021,7 +3022,7 @@
             <tag>version4</tag>
             <tag>version5</tag>
         </stimulus>
-        <stimulus code="moveRotated330" identifier="28:shape4:version2:version2zero:quadrant4:moveRotated330" imagePath="28.png" pauseMs="0">
+        <stimulus code="moveRotated330" identifier="28.png:shape4:version2:version2zero:quadrant4:moveRotated330" imagePath="28.png" pauseMs="0">
             <tag>28</tag>
             <tag>Round_0_4</tag>
             <tag>Round_0_8</tag>
