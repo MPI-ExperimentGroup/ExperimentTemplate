@@ -194,7 +194,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
                 if (stimulusLine.contains(".png")) {
                     final String[] splitLine = stimulusLine.split(":");
 //                    tagSet.addAll(Arrays.asList(stimulusLine.split("/")));
-                    stimulus = new Stimulus(stimulusLine.replace(".png", ""), null, null, splitLine[0], null, splitLine[splitLine.length - 1], 0, tagSet, null, null);
+                    stimulus = new Stimulus(stimulusLine, null, null, splitLine[0], null, splitLine[splitLine.length - 1], 0, tagSet, null, null);
                     stimuliList.add(stimulus);
                 }
             }
@@ -254,7 +254,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
         aboveThreshold.getPresenterFeatureList().add(aboveFeature);
         belowThreshold.getPresenterFeatureList().add(belowFeature);
-        return Arrays.asList(new PresenterFeature[]{scoreIncrement, scoreAboveThreshold});
+        return Arrays.asList(new PresenterFeature[]{scoreIncrement, scoreAboveThreshold, new PresenterFeature(FeatureType.submitGroupEvent, null)});
     }
 
     @Override
@@ -425,7 +425,6 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //        guesserNetworkActivity1.getPresenterFeatureList().add(correctButton);
 //        guesserNetworkActivity1.getPresenterFeatureList().add(incorrectButton);
         // @todo: is this inserted into the correct location
-        guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.submitGroupEvent, null));
         guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.enableStimulusButtons, null));
 //        incorrectButton.getPresenterFeatureList().add(new PresenterFeature(FeatureType.submitGroupEvent, null));
 
