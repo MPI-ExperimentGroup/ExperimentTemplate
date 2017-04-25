@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.frinex.rest;
 import java.util.ArrayList;
 import java.util.List;
 import nl.mpi.tg.eg.frinex.model.GroupData;
+import nl.mpi.tg.eg.frinex.util.StimuliTagExpander;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -62,8 +63,7 @@ public class GroupDataController {
         }
         model.addAttribute("allGroupData", contentDistinct);
         model.addAttribute("pageData", pageData);
-        model.addAttribute("tagColumns", new String[]{"shape", "version", "quadrant", "move"});
-        model.addAttribute("distractorColums", new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"});
+        model.addAttribute("stimuliTagExpander", new StimuliTagExpander());
         return "groupdataviewer";
     }
 }
