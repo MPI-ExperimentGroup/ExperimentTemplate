@@ -85,24 +85,19 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <td th:text="${groupData.respondentMemberCode}" id="clickablerow" th:onclick="'javascript:window.location=\'participantdetail?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;id=' + ${groupData.messageRespondentId} + '\';'">respondentMemberCode</td>
                     <td th:text="${groupData.stimulusIndex}">stimulusIndex</td>
                     <!--<td th:each="tag,status : ${#strings.arraySplit(groupData.stimulusId, ':')}" th:text="${tag}">stimulusId</td>-->
-                    <td th:with="rowTags=${#strings.arraySplit(groupData.stimulusId, ':')}" th:each="columnTag : ${stimuliTagExpander.getTagColumns()}">
-                        <span th:each="tag : ${rowTags}" th:if="${#strings.contains(tag,columnTag)}" th:text="${tag}">stimulusId</span>
+                    <td th:each="columnTag : ${stimuliTagExpander.getTagColumns(groupData.stimulusId, ':')}">
+                        <span th:each="singleTag : ${#strings.arraySplit(columnTag, ':')}" th:text="${singleTag}">stimulusId</span>
                     </td>
                     <td th:text="${groupData.stimulusId}">stimulusId</td>
-                    <td th:if="${groupData.responseStimulusId != null}" th:with="rowTags=${#strings.arraySplit(groupData.responseStimulusId, ':')}" th:each="columnTag : ${stimuliTagExpander.getTagColumns()}">
-                        <span th:each="tag : ${rowTags}" th:if="${#strings.contains(tag,columnTag)}" th:text="${tag}">stimulusId</span>
+                    <td th:if="${groupData.responseStimulusId != null}" th:each="columnTag : ${stimuliTagExpander.getTagColumns(groupData.responseStimulusId, ':')}">
+                        <span th:each="singleTag : ${#strings.arraySplit(columnTag, ':')}" th:text="${singleTag}">stimulusId</span>
                     </td>
                     <td th:if="${groupData.responseStimulusId == null}" th:each="columnTag : ${stimuliTagExpander.getTagColumns()}">
                     </td>
                     <td th:text="${groupData.responseStimulusId}">responseStimulusId</td>
-                    <!--/*/ <th:block th:with="distractorIds=${#strings.arraySplit(groupData.stimulusOptionIds, ',')}" th:each="distractorIndex : ${stimuliTagExpander.getDistractorColumns()}"> /*/-->
-                    <td th:if="${distractorIndex &lt; distractorIds.length}" th:with="rowTags=${#strings.arraySplit(distractorIds[distractorIndex], ':')}" th:each="columnTag : ${stimuliTagExpander.getTagColumns()}">
-                        <span th:each="tag : ${rowTags}" th:if="${#strings.contains(tag,columnTag)}" th:text="${tag}">stimulusOptionIds</span>
+                    <td th:each="columnTag : ${stimuliTagExpander.getDistractorTagColumns(groupData.stimulusOptionIds, ',')}">
+                        <span th:each="singleTag : ${#strings.arraySplit(columnTag, ',')}" th:text="${singleTag}">stimulusOptionIds</span>
                     </td>  
-                    <td th:if="${distractorIndex &gt;= distractorIds.length}" th:each="columnTag : ${stimuliTagExpander.getTagColumns()}"></td>
-                    <td th:if="${distractorIndex &lt; distractorIds.length}" th:text="${distractorIds[distractorIndex]}">distractorId</td> 
-                    <td th:if="${distractorIndex &gt;= distractorIds.length}"></td> 
-                    <!--/*/ </th:block> /*/-->
                     <td th:text="${groupData.messageString}">messageString</td>
                     <td th:text="${groupData.eventMs}">eventMs</td>
                 </tr>
