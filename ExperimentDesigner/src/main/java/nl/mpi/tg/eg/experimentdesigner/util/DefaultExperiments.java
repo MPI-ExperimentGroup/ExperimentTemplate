@@ -77,6 +77,7 @@ public class DefaultExperiments {
         experimentRepository.save(new WellspringsSamoanFieldKit().getExperiment());
         experimentRepository.save(new Parcours().getExperiment());
         experimentRepository.save(new MultiParticipant().getExperiment());
+        experimentRepository.save(new ShortMultiparticipant01().getExperiment());
         experimentRepository.save(new ManipulatedContours().getExperiment());
 
         for (Experiment experiment : experimentRepository.findAll()) {
