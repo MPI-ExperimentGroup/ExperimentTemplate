@@ -21,6 +21,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -32,6 +33,7 @@ import nl.mpi.tg.eg.frinex.model.TagPairData;
 import nl.mpi.tg.eg.frinex.model.TimeStamp;
 import nl.mpi.tg.eg.frinex.util.CsvExportException;
 import nl.mpi.tg.eg.frinex.util.ParticipantCsvExporter;
+import nl.mpi.tg.eg.frinex.util.StimuliTagExpander;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -107,38 +109,57 @@ public class CsvController {
                 response.getWriter(),
                 CSVFormat.DEFAULT
         );
-        printer.printRecord(
-                //       " th:if="${param.detailed}"ID",
-                "Event Date",
-                "Screen Name",
-                //                    " th:if="${param.detailed}"Group UUID",
-                "Group Name",
-                "Member Codes",
-                "Communication Channels",
-                //                    " th:if="${param.detailed}"Sender Id",
-                //                    " th:if="${param.detailed}"Respondent Id",
-                "Sender Code",
-                "Respondent Code",
-                "Index",
-                "Stimulus",
-                "Response",
-                "Options",
-                "Message",
-                "ms"
-        );
+        List<String> headerList = new ArrayList();
+        headerList.add("Event Date");
+        headerList.add("Screen Name");
+        headerList.add("Group Name");
+        headerList.add("Member Codes");
+        headerList.add("Communication Channels");
+        headerList.add("Sender Code");
+        headerList.add("Respondent Code");
+        headerList.add("Index");
+        final StimuliTagExpander stimuliTagExpander = new StimuliTagExpander();
+        for (String columnTag : stimuliTagExpander.getTagColumns()) {
+            headerList.add("Target-" + columnTag);
+        }
+        headerList.add("Target");
+        for (String columnTag : stimuliTagExpander.getTagColumns()) {
+            headerList.add("Response-" + columnTag);
+        }
+        headerList.add("Response");
+        for (int distractorIndex : stimuliTagExpander.getDistractorColumns()) {
+            for (String columnTag : stimuliTagExpander.getTagColumns()) {
+                headerList.add("Distractor-" + (distractorIndex + 1) + "-" + columnTag);
+            }
+            headerList.add("Distractor-" + (distractorIndex + 1));
+        }
+        headerList.add("Message");
+        headerList.add("ms");
+        printer.printRecord(headerList);
         for (GroupData groupData : groupDataRepository.findAll()) {
-            printer.printRecord(groupData.getEventDate(), groupData.getScreenName(), groupData.getGroupName(),
-                    groupData.getAllMemberCodes(),
-                    groupData.getGroupCommunicationChannels(),
-                    groupData.getSenderMemberCode(),
-                    groupData.getRespondentMemberCode(),
-                    groupData.getStimulusIndex(),
-                    groupData.getStimulusId(),
-                    groupData.getResponseStimulusId(),
-                    groupData.getStimulusOptionIds(),
-                    groupData.getMessageString(),
-                    groupData.getEventMs()
-            );
+            List<Object> rowList = new ArrayList();
+            rowList.add(groupData.getEventDate());
+            rowList.add(groupData.getScreenName());
+            rowList.add(groupData.getGroupName());
+            rowList.add(groupData.getAllMemberCodes());
+            rowList.add(groupData.getGroupCommunicationChannels());
+            rowList.add(groupData.getSenderMemberCode());
+            rowList.add(groupData.getRespondentMemberCode());
+            rowList.add(groupData.getStimulusIndex());
+            for (String tagColumn : stimuliTagExpander.getTagColumns(groupData.getStimulusId(), ":")) {
+                rowList.add(tagColumn);
+            }
+            rowList.add(groupData.getStimulusId());
+            for (String tagColumn : stimuliTagExpander.getTagColumns(groupData.getResponseStimulusId(), ":")) {
+                rowList.add(tagColumn);
+            }
+            rowList.add(groupData.getResponseStimulusId());
+            for (String tagColumn : stimuliTagExpander.getDistractorTagColumns(groupData.getStimulusOptionIds(), ":")) {
+                rowList.add(tagColumn);
+            }
+            rowList.add(groupData.getMessageString());
+            rowList.add(groupData.getEventMs());
+            printer.printRecord(rowList);
         }
         printer.close();
     }
