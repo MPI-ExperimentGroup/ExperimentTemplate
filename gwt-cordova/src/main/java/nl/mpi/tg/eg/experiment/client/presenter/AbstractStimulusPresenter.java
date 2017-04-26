@@ -269,7 +269,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void loadStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
-        loadStimulus(eventTag, selectionTags, Arrays.asList(new GeneratedStimulus.Tag[]{}), null, null, null, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, endOfStimulusListener);
+        loadStimulus(eventTag, selectionTags, Arrays.asList(new GeneratedStimulus.Tag[]{}), null, maxStimulusCount, null, null, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, endOfStimulusListener);
     }
 
     protected void loadStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final List<GeneratedStimulus.Tag> randomTags, final MetadataField stimulusAllocationField, final int maxStimulusCount, final boolean randomise, int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
@@ -281,9 +281,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             final List<GeneratedStimulus.Tag> selectionTags, // only stimuli with tags in this list can be included
             final List<GeneratedStimulus.Tag> randomTags,
             final MetadataField stimulusAllocationField,
+            final int maxStimulusCount,
             final Integer minStimuliPerTag,
             final Integer maxStimuliPerTag,
-            final int maxStimulusCount,
             final boolean randomise,
             int repeatCount,
             final int repeatRandomWindow,
@@ -1117,7 +1117,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             final String correctResponses = stimulusProvider.getCurrentStimulus().getCorrectResponses();
             if (correctResponses != null && !correctResponses.isEmpty()) {
                 // if there are correct responses to this stimulus then increment the score
-                userResults.getUserData().addPotentialScore(correctResponses.contains(stimulusFreeText.getValue()));
+                userResults.getUserData().addPotentialScore(stimulusFreeText.getValue().matches(correctResponses));
             }
         }
         if (repeatIncorrect && userResults.getUserData().isCurrentIncorrect()) {
