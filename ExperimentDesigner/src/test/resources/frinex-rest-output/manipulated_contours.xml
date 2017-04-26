@@ -35,6 +35,7 @@
             <hasMoreStimulus>
                 <clearPage/>
                 <centrePage/>
+                <showStimulusProgress/>
                 <stimulusAudio msToNext="100" showPlaybackIndicator="false">
                     <addPadding/>
                     <stimulusHasRatingOptions>
@@ -60,7 +61,7 @@
         </loadStimulus>
     </presenter>
     <presenter displayOrder="6" menuLabel="ScoreThreshold" next="InformationScreen2" type="stimulus" self="ScoreThreshold" title="ScoreThreshold">
-        <bestScoreAboveThreshold scoreThreshold="1">
+        <bestScoreAboveThreshold scoreThreshold="2">
             <aboveThreshold>
                 <autoNextPresenter/>
             </aboveThreshold>
@@ -76,6 +77,7 @@
             <hasMoreStimulus>
                 <clearPage/>
                 <centrePage/>
+                <showStimulusProgress/>
                 <stimulusCodeAudio msToNext="100" codeFormat="&lt;code&gt;">
                     <clearPage/>
                     <centrePage/>
@@ -148,9 +150,13 @@
             <tag>Pretest_Screen</tag>
             <tag>Q5</tag>
         </stimulus>
-        <stimulus audioPath="Q6" correctResponses="h,H" identifier="Q6:Q6.wav::h,H" pauseMs="0">
+        <stimulus audioPath="Q6" correctResponses="[hH]" identifier="Q6:Q6.wav::[hH]" pauseMs="0">
             <tag>Pretest_Screen</tag>
             <tag>Q6</tag>
+        </stimulus>
+        <stimulus audioPath="Q7" correctResponses=".*[Cc][Rr][Aa][Yy][Oo][Nn]" identifier="Q7:Q7.wav::.*[Cc][Rr][Aa][Yy][Oo][Nn]" pauseMs="0">
+            <tag>Pretest_Screen</tag>
+            <tag>Q7</tag>
         </stimulus>
         <stimulus audioPath="03-12-07_1_p1_M19L_i_178668" code="03-12-07_1_p1_M19L_i_178668_context" identifier="out1ver1conarr/out1ver1Screen:03-12-07_1_p1_M19L_i_178668_context:03-12-07_1_p1_M19L_i_178668.wav:continue,arrête" pauseMs="0" ratingLabels="continue,arrête">
             <tag>out1ver1Screen</tag>
