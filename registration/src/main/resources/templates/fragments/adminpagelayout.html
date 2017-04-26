@@ -27,9 +27,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <meta charset="UTF-8"/>
         <link type="text/css" rel="stylesheet" href="../../../webapp/adminpages.css"/>
         <script th:fragment="tableHeaderScript">
-            /*<![CDATA[*/
+/*<![CDATA[*/
             $(document).ready(function () {
                 var tableFloatingHeaderTop = $('#tableFloatingHeader').offset().top;
+                $("<tr id=\"tablePaddingHeader\" style=\"position: static; top: 0px; left: 0px;\"><th>&nbsp;</th></tr>").insertBefore("#tableFloatingHeader");
+                $('#tablePaddingHeader').hide();
                 for (index = 1; index <= $('#tableFloatingHeader').find('th').length; index++) {
                     var cellWidth = $('#tableFloatingHeader').parents("table").find('td:nth-child(' + index + ')').outerWidth();
                     // set the computed header cell width from the row
@@ -41,17 +43,21 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 }
                 $(window).scroll(function () {
                     if ($(window).scrollTop() > tableFloatingHeaderTop) {
+                        $('#tablePaddingHeader').height($('#tableFloatingHeader').height());
                         $('#tableFloatingHeader').css({position: 'fixed', top: '0px', left: (-$(window).scrollLeft()) + $('#tableFloatingHeader').parents("table").find("td:first").offset().left + 'px'});
+                        $('#tablePaddingHeader').show();
                     } else {
                         $('#tableFloatingHeader').css({position: 'static', top: '0px', left: '0px'});
+                        $('#tablePaddingHeader').hide();
                     }
+//                    $('#headerDiv').css({marginLeft: $('window').scrollLeft() + 'px', width: '100%'});
                 });
             });
             /*]]>*/
         </script>
     </head>
     <body>
-        <div th:fragment="header">
+        <div th:fragment="header" id="headerDiv">
             <!--<div th:fragment="navigation">-->
             <span>
                 <a class="headerButton" th:onclick="'javascript:window.location=\'' + @{/} + '?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '\';'"> Menu</a>
