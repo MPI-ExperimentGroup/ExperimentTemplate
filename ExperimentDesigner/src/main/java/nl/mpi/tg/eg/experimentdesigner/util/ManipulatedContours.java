@@ -610,15 +610,16 @@ public class ManipulatedContours {
             "Q3:Q3.wav:",
             "Q4:Q4.wav:",
             "Q5:Q5.wav:",
-            "Q6:Q6.wav::h,H", //            "Q6:Q6.wav:test correct response,test incorrect response:test correct response"
+            "Q6:Q6.wav::[hH]", //            "Q6:Q6.wav:test correct response,test incorrect response:test correct response"
+            "Q7:Q7.wav::.*[Cc][Rr][Aa][Yy][Oo][Nn]"
         };
         final WizardVideoAudioOptionStimulusScreen pretestScreen = new WizardVideoAudioOptionStimulusScreen("Pretest Screen", false, pretestScreenStimuli, false, false, null, 1000, 1, 20, false, 100, "", "", true);
         pretestScreen.setAllowFreeText(true, "Next [TAB + ENTER]", ".{1,}", "Entrez au moins trois lettres.", null, "ENTER"
                 + "");
-        pretestScreen.setShowProgress(false);
+        pretestScreen.setShowProgress(true);
         pretestScreen.setShowHurryIndicator(false);
         pretestScreen.setRepeatIncorrect(false);
-        WizardScoreThresholdScreen scoreThresholdScreen = new WizardScoreThresholdScreen("Si votre réponse n'est pas correcte, vous ne pourrez pas poursuivre l'expérience", 1, "ScoreThreshold", pretestScreen, "Retry");
+        WizardScoreThresholdScreen scoreThresholdScreen = new WizardScoreThresholdScreen("Si votre réponse n'est pas correcte, vous ne pourrez pas poursuivre l'expérience", 2, "ScoreThreshold", pretestScreen, "Retry");
         final ArrayList<String> stimuliList = new ArrayList();
         stimuliList.addAll(Arrays.asList(addCodePart("out1ver1Screen", getStimuliOut1Ver1ConArr())));
         stimuliList.addAll(Arrays.asList(addCodePart("out1ver2Screen", getStimuliOut1Ver2ConArr())));
@@ -634,7 +635,7 @@ public class ManipulatedContours {
         stimuliList.addAll(Arrays.asList(invertButtons(addCodePart("out2ver3ScreenI", getStimuliOut2Ver3ConArr()))));
         String[] randomStimuliTags = new String[]{"out1ver1Screen", "out1ver2Screen", "out1ver3Screen", "out2ver1Screen", "out2ver2Screen", "out2ver3Screen", "out1ver1ScreenI", "out1ver2ScreenI", "out1ver3ScreenI", "out2ver1ScreenI", "out2ver2ScreenI", "out2ver3ScreenI"};
         final WizardVideoAudioOptionStimulusScreen randomStimuliTagsScreen = new WizardVideoAudioOptionStimulusScreen("stimuli", false, stimuliList.toArray(new String[]{}), false, true, randomStimuliTags, 1000, repeatCount(), 20, false, 100, "", "", true);
-        randomStimuliTagsScreen.setShowProgress(false);
+        randomStimuliTagsScreen.setShowProgress(true);
         randomStimuliTagsScreen.setShowHurryIndicator(false);
 //        list1234Screen.setStimulusResponseOptions("1,2,3,4,5");
 //        list1234Screen.setStimulusResponseLabelLeft("très probable négatif");
