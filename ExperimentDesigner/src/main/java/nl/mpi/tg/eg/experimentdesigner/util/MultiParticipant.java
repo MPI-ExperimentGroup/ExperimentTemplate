@@ -253,11 +253,11 @@ public class MultiParticipant {
             {"0", "A,B,C,D", "naming"},
             {"1", "A,B|C,D", "play"},
             {"2", "A,C|B,D", "play"},
-            //            {"3", "A,D|B,C", "play"},
-            //            {"4", "A,B|C,D", "play"},
-            //            {"5", "A,C|B,D", "play"},
-            //            {"6", "A,D|B,C", "play"},
-            //            {"7", "A,B|C,D", "play"},
+            {"3", "A,D|B,C", "play"},
+            {"4", "A,B|C,D", "play"},
+            {"5", "A,C|B,D", "play"},
+            {"6", "A,D|B,C", "play"},
+            {"7", "A,B|C,D", "play"},
             {"8", "A|B|C|D", "test"}
         };
         WizardMultiParticipantScreen roundOfFourScreenOuter = null;
