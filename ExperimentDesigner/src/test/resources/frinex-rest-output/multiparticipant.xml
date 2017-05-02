@@ -5,6 +5,7 @@
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="firstName" preventServerDuplicates="false" registrationField="First name"/>
         <field controlledRegex="|male|female|other" postName="gender" preventServerDuplicates="false" registrationField="Gender"/>
         <field controlledMessage="Please enter your login code." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Login code"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocation" preventServerDuplicates="false" registrationField="stimuliAllocation"/>
     </metadata>
     <presenter displayOrder="1" menuLabel="Agreement" next="Edit_User" type="metadata" self="Agreement" title="Agreement">
         <htmlText featureText="&lt;b&gt;This is a prototype multiparticipant experiment.&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;With this prototype you can:&lt;br/&gt;&lt;li&gt;view the group activity and add dummy users to a group for testing purposes &lt;a href='/multiparticipant/grouptestpage.html'&gt;/multiparticipant/grouptestpage.html&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;erase the local data for this browser &lt;a href='/multiparticipant?debug'&gt;/multiparticipant?debug&lt;/a&gt;&lt;/li&gt;&lt;li&gt;random data can be generated with the testing robot &lt;a href='/multiparticipant/TestingFrame.html'&gt;/multiparticipant/TestingFrame.html&lt;/a&gt;&lt;/li&gt;&lt;br/&gt;&lt;li&gt;eight users intracting can be randomly simulated testing robot &lt;a href='/multiparticipant/grouptestframes.html'&gt;/multiparticipant/grouptestframes.html&lt;/a&gt;&lt;/li&gt;&lt;br/&gt;The group name must be allocated with the following with &lt;a href='/multiparticipant/?group=a_group_name'&gt;/multiparticipant/?group=a_group_name&lt;/a&gt; where a_group_name should be replaced with a suitable string. A second user can be tested on one computer via the incognito browser window with this link, providing the group name matches.&lt;br/&gt;&lt;br/&gt;There needs to be eight users connected for the group process to begin. Once a group is full, any subsequent users will need to be allocated a different group via the a_group_name parameter.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;You can view the collected group data with &lt;a href='/multiparticipant-admin/groupdataviewer'&gt;/multiparticipant-admin/groupdataviewer&lt;/a&gt; with the user and password you have been supplied.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;"/>
@@ -138,10 +139,15 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_0_4</tag>
-                </stimuli>
+                <randomGrouping storageField="stimuliAllocation">
+                    <tag>version1zero</tag>
+                    <tag>version2zero</tag>
+                    <tag>version3zero</tag>
+                    <tag>version4zero</tag>
+                    <tag>version5zero</tag>
+                    <tag>version6zero</tag>
+                </randomGrouping>
+                <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
@@ -246,10 +252,15 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_1_4</tag>
-                </stimuli>
+                <randomGrouping storageField="stimuliAllocation">
+                    <tag>version1zero</tag>
+                    <tag>version2zero</tag>
+                    <tag>version3zero</tag>
+                    <tag>version4zero</tag>
+                    <tag>version5zero</tag>
+                    <tag>version6zero</tag>
+                </randomGrouping>
+                <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
@@ -354,10 +365,15 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_2_4</tag>
-                </stimuli>
+                <randomGrouping storageField="stimuliAllocation">
+                    <tag>version1zero</tag>
+                    <tag>version2zero</tag>
+                    <tag>version3zero</tag>
+                    <tag>version4zero</tag>
+                    <tag>version5zero</tag>
+                    <tag>version6zero</tag>
+                </randomGrouping>
+                <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
@@ -462,10 +478,15 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_3_4</tag>
-                </stimuli>
+                <randomGrouping storageField="stimuliAllocation">
+                    <tag>version1zero</tag>
+                    <tag>version2zero</tag>
+                    <tag>version3zero</tag>
+                    <tag>version4zero</tag>
+                    <tag>version5zero</tag>
+                    <tag>version6zero</tag>
+                </randomGrouping>
+                <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
@@ -570,10 +591,15 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_4_4</tag>
-                </stimuli>
+                <randomGrouping storageField="stimuliAllocation">
+                    <tag>version1zero</tag>
+                    <tag>version2zero</tag>
+                    <tag>version3zero</tag>
+                    <tag>version4zero</tag>
+                    <tag>version5zero</tag>
+                    <tag>version6zero</tag>
+                </randomGrouping>
+                <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
@@ -678,10 +704,15 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_5_4</tag>
-                </stimuli>
+                <randomGrouping storageField="stimuliAllocation">
+                    <tag>version1zero</tag>
+                    <tag>version2zero</tag>
+                    <tag>version3zero</tag>
+                    <tag>version4zero</tag>
+                    <tag>version5zero</tag>
+                    <tag>version6zero</tag>
+                </randomGrouping>
+                <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
@@ -786,10 +817,15 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_6_4</tag>
-                </stimuli>
+                <randomGrouping storageField="stimuliAllocation">
+                    <tag>version1zero</tag>
+                    <tag>version2zero</tag>
+                    <tag>version3zero</tag>
+                    <tag>version4zero</tag>
+                    <tag>version5zero</tag>
+                    <tag>version6zero</tag>
+                </randomGrouping>
+                <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
@@ -894,10 +930,15 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_7_4</tag>
-                </stimuli>
+                <randomGrouping storageField="stimuliAllocation">
+                    <tag>version1zero</tag>
+                    <tag>version2zero</tag>
+                    <tag>version3zero</tag>
+                    <tag>version4zero</tag>
+                    <tag>version5zero</tag>
+                    <tag>version6zero</tag>
+                </randomGrouping>
+                <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
@@ -1000,10 +1041,15 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_8_4</tag>
-                </stimuli>
+                <randomGrouping storageField="stimuliAllocation">
+                    <tag>version1zero</tag>
+                    <tag>version2zero</tag>
+                    <tag>version3zero</tag>
+                    <tag>version4zero</tag>
+                    <tag>version5zero</tag>
+                    <tag>version6zero</tag>
+                </randomGrouping>
+                <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
@@ -1107,10 +1153,15 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_0_8</tag>
-                </stimuli>
+                <randomGrouping storageField="stimuliAllocation">
+                    <tag>version1zero</tag>
+                    <tag>version2zero</tag>
+                    <tag>version3zero</tag>
+                    <tag>version4zero</tag>
+                    <tag>version5zero</tag>
+                    <tag>version6zero</tag>
+                </randomGrouping>
+                <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
@@ -1215,10 +1266,15 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_1_8</tag>
-                </stimuli>
+                <randomGrouping storageField="stimuliAllocation">
+                    <tag>version1zero</tag>
+                    <tag>version2zero</tag>
+                    <tag>version3zero</tag>
+                    <tag>version4zero</tag>
+                    <tag>version5zero</tag>
+                    <tag>version6zero</tag>
+                </randomGrouping>
+                <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
@@ -1323,10 +1379,15 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_2_8</tag>
-                </stimuli>
+                <randomGrouping storageField="stimuliAllocation">
+                    <tag>version1zero</tag>
+                    <tag>version2zero</tag>
+                    <tag>version3zero</tag>
+                    <tag>version4zero</tag>
+                    <tag>version5zero</tag>
+                    <tag>version6zero</tag>
+                </randomGrouping>
+                <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
@@ -1431,10 +1492,15 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_3_8</tag>
-                </stimuli>
+                <randomGrouping storageField="stimuliAllocation">
+                    <tag>version1zero</tag>
+                    <tag>version2zero</tag>
+                    <tag>version3zero</tag>
+                    <tag>version4zero</tag>
+                    <tag>version5zero</tag>
+                    <tag>version6zero</tag>
+                </randomGrouping>
+                <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
@@ -1539,10 +1605,15 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_4_8</tag>
-                </stimuli>
+                <randomGrouping storageField="stimuliAllocation">
+                    <tag>version1zero</tag>
+                    <tag>version2zero</tag>
+                    <tag>version3zero</tag>
+                    <tag>version4zero</tag>
+                    <tag>version5zero</tag>
+                    <tag>version6zero</tag>
+                </randomGrouping>
+                <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
@@ -1647,10 +1718,15 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_5_8</tag>
-                </stimuli>
+                <randomGrouping storageField="stimuliAllocation">
+                    <tag>version1zero</tag>
+                    <tag>version2zero</tag>
+                    <tag>version3zero</tag>
+                    <tag>version4zero</tag>
+                    <tag>version5zero</tag>
+                    <tag>version6zero</tag>
+                </randomGrouping>
+                <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
@@ -1755,10 +1831,15 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_6_8</tag>
-                </stimuli>
+                <randomGrouping storageField="stimuliAllocation">
+                    <tag>version1zero</tag>
+                    <tag>version2zero</tag>
+                    <tag>version3zero</tag>
+                    <tag>version4zero</tag>
+                    <tag>version5zero</tag>
+                    <tag>version6zero</tag>
+                </randomGrouping>
+                <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
@@ -1863,10 +1944,15 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_7_8</tag>
-                </stimuli>
+                <randomGrouping storageField="stimuliAllocation">
+                    <tag>version1zero</tag>
+                    <tag>version2zero</tag>
+                    <tag>version3zero</tag>
+                    <tag>version4zero</tag>
+                    <tag>version5zero</tag>
+                    <tag>version6zero</tag>
+                </randomGrouping>
+                <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
@@ -1969,10 +2055,15 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_8_8</tag>
-                </stimuli>
+                <randomGrouping storageField="stimuliAllocation">
+                    <tag>version1zero</tag>
+                    <tag>version2zero</tag>
+                    <tag>version3zero</tag>
+                    <tag>version4zero</tag>
+                    <tag>version5zero</tag>
+                    <tag>version6zero</tag>
+                </randomGrouping>
+                <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
@@ -2077,10 +2168,15 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_9_8</tag>
-                </stimuli>
+                <randomGrouping storageField="stimuliAllocation">
+                    <tag>version1zero</tag>
+                    <tag>version2zero</tag>
+                    <tag>version3zero</tag>
+                    <tag>version4zero</tag>
+                    <tag>version5zero</tag>
+                    <tag>version6zero</tag>
+                </randomGrouping>
+                <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
@@ -2185,10 +2281,15 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_10_8</tag>
-                </stimuli>
+                <randomGrouping storageField="stimuliAllocation">
+                    <tag>version1zero</tag>
+                    <tag>version2zero</tag>
+                    <tag>version3zero</tag>
+                    <tag>version4zero</tag>
+                    <tag>version5zero</tag>
+                    <tag>version6zero</tag>
+                </randomGrouping>
+                <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
@@ -2293,10 +2394,15 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_11_8</tag>
-                </stimuli>
+                <randomGrouping storageField="stimuliAllocation">
+                    <tag>version1zero</tag>
+                    <tag>version2zero</tag>
+                    <tag>version3zero</tag>
+                    <tag>version4zero</tag>
+                    <tag>version5zero</tag>
+                    <tag>version6zero</tag>
+                </randomGrouping>
+                <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
@@ -2401,10 +2507,15 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_12_8</tag>
-                </stimuli>
+                <randomGrouping storageField="stimuliAllocation">
+                    <tag>version1zero</tag>
+                    <tag>version2zero</tag>
+                    <tag>version3zero</tag>
+                    <tag>version4zero</tag>
+                    <tag>version5zero</tag>
+                    <tag>version6zero</tag>
+                </randomGrouping>
+                <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
@@ -2509,10 +2620,15 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_13_8</tag>
-                </stimuli>
+                <randomGrouping storageField="stimuliAllocation">
+                    <tag>version1zero</tag>
+                    <tag>version2zero</tag>
+                    <tag>version3zero</tag>
+                    <tag>version4zero</tag>
+                    <tag>version5zero</tag>
+                    <tag>version6zero</tag>
+                </randomGrouping>
+                <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
@@ -2617,10 +2733,15 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_14_8</tag>
-                </stimuli>
+                <randomGrouping storageField="stimuliAllocation">
+                    <tag>version1zero</tag>
+                    <tag>version2zero</tag>
+                    <tag>version3zero</tag>
+                    <tag>version4zero</tag>
+                    <tag>version5zero</tag>
+                    <tag>version6zero</tag>
+                </randomGrouping>
+                <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
@@ -2725,10 +2846,15 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_15_8</tag>
-                </stimuli>
+                <randomGrouping storageField="stimuliAllocation">
+                    <tag>version1zero</tag>
+                    <tag>version2zero</tag>
+                    <tag>version3zero</tag>
+                    <tag>version4zero</tag>
+                    <tag>version5zero</tag>
+                    <tag>version6zero</tag>
+                </randomGrouping>
+                <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
@@ -2831,10 +2957,15 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_16_8</tag>
-                </stimuli>
+                <randomGrouping storageField="stimuliAllocation">
+                    <tag>version1zero</tag>
+                    <tag>version2zero</tag>
+                    <tag>version3zero</tag>
+                    <tag>version4zero</tag>
+                    <tag>version5zero</tag>
+                    <tag>version6zero</tag>
+                </randomGrouping>
+                <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
