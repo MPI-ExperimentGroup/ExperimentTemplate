@@ -356,7 +356,6 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //            groupNetworkActivity1.getPresenterFeatureList().add(stimulusFreeTextFeature);
 //        }
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadStimulus, null);
-//        loadStimuliFeature.addStimulusTag(storedWizardScreenData.getScreenTitle());
         if (storedWizardScreenData.getStimuliRandomTags() != null) {
             final RandomGrouping randomGrouping = new RandomGrouping();
             for (String randomTag : storedWizardScreenData.getStimuliRandomTags()) {
@@ -369,6 +368,8 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             if (!experiment.getMetadata().contains(metadataField)) {
                 experiment.getMetadata().add(metadataField);
             }
+        } else {
+            loadStimuliFeature.addStimulusTag(storedWizardScreenData.getScreenTitle());
         }
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.minStimuliPerTag, "1");
