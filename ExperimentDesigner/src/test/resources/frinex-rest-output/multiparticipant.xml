@@ -152,7 +152,7 @@
             <loadStimulus eventTag="Round 8 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A|B|C|D|E|F|G|H">
-                        <groupNetworkActivity groupRole="A|B|C|D|,E,F,G,H">
+                        <groupNetworkActivity groupRole="A,B,C,D,E,F,G,H">
                             <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 8 - 8" repeatIncorrect="false"/>
                             <clearPage/>
                             <stimulusLabel/>
@@ -258,7 +258,7 @@
             <loadStimulus eventTag="Round 16 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A|B|C|D|E|F|G|H">
-                        <groupNetworkActivity groupRole="A|B|C|D|,E,F,G,H">
+                        <groupNetworkActivity groupRole="A,B,C,D,E,F,G,H">
                             <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 16 - 8" repeatIncorrect="false"/>
                             <clearPage/>
                             <stimulusLabel/>
