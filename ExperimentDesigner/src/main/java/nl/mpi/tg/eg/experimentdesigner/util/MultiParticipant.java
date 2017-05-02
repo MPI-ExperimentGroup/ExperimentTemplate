@@ -61,6 +61,10 @@ public class MultiParticipant {
 //            
 //        }
 //    }
+    final int numberOfStimuli = 3;
+    final String preStimuliText = "Add information before the beginning of each round, telling the participants who they’re about to play with";
+    final String postStimuliText = "there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far).";
+
     private final String[] stimuliArray = new String[]{
         "1.png:shape1:version4:quadrant1:moveRotated90",
         "1.png:shape1:version2:version3:quadrant2:moveRotated150",
@@ -194,9 +198,6 @@ public class MultiParticipant {
         wizardData.setObfuscateScreenNames(false);
         wizardData.setTextFontSize(24);
 
-        final String preStimuliText = "Add information before the beginning of each round, telling the participants who they’re about to play with";
-        final String postStimuliText = "there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far).";
-
         final WizardAgreementScreen wizardAgreementScreen = new WizardAgreementScreen("Agreement", "<b>This is a prototype multiparticipant experiment.</b><br/><br/>"
                 + "With this prototype you can:<br/>"
                 + "<li>view the group activity and add dummy users to a group for testing purposes <a href='/multiparticipant/grouptestpage.html'>/multiparticipant/grouptestpage.html</a>.</li>"
@@ -241,98 +242,11 @@ public class MultiParticipant {
         final int timerCountDownProducerMs = 30 * 1000;
         final int timerCountDownGuesserMs = 20 * 1000;
         final String timerCountDownLabel = "Time is up! Play now!";
-        final int numberOfStimuli = 3;
-        final WizardMultiParticipantScreen round8MultiParticipantScreen4 = new WizardMultiParticipantScreen("Round 8 - 4",
-                groupMembers4,
-                "A|B|C|D",
-                "A,B,C,D",
-                "All 23 stimuli are presented all participants in random order similar to the producer screen",
-                "",
-                true,
-                "This phase is not used in this screen",
-                "",
-                "This phase is not used in this screen",
-                "",
-                "This phase is not used in this screen",
-                "",
-                "This phase is not used in this screen",
-                "",
-                "This phase is not used in this screen",
-                preStimuliText, postStimuliText, numberOfStimuli, 0,
-                0, 0, null
-        );
-        final WizardMultiParticipantScreen round8MultiParticipantScreen8 = new WizardMultiParticipantScreen("Round 8 - 8",
-                groupMembers8,
-                "A|B|C|D|E|F|G|H",
-                "A|B|C|D|,E,F,G,H",
-                "All 23 stimuli are presented all participants in random order similar to the producer screen",
-                "",
-                true,
-                "This phase is not used in this screen",
-                "",
-                "This phase is not used in this screen",
-                "",
-                "This phase is not used in this screen",
-                "",
-                "This phase is not used in this screen",
-                "",
-                "This phase is not used in this screen",
-                preStimuliText, postStimuliText, numberOfStimuli, 0,
-                0, 0, null);
-        final WizardMultiParticipantScreen round16MultiParticipantScreen8 = new WizardMultiParticipantScreen("Round 16 - 8",
-                groupMembers8,
-                "A|B|C|D|E|F|G|H",
-                "A|B|C|D|,E,F,G,H",
-                "All 23 stimuli are presented all participants in random order similar to the producer screen",
-                "",
-                true,
-                "This phase is not used in this screen",
-                "",
-                "This phase is not used in this screen",
-                "",
-                "This phase is not used in this screen",
-                "",
-                "This phase is not used in this screen",
-                "",
-                "This phase is not used in this screen",
-                preStimuliText, postStimuliText, numberOfStimuli, 0,
-                timerCountDownProducerMs, timerCountDownGuesserMs, timerCountDownLabel);
-        final WizardMultiParticipantScreen round0MultiParticipantScreen4 = new WizardMultiParticipantScreen("Round 0 - 4",
-                groupMembers4,
-                "A,B,C,D",
-                "A:-:B:-:C:-:D:-",
-                "The producer sees the stimulus and enters some text",
-                "B,C,D:-:A,C,D:-:B,A,D:-:B,C,A:-",
-                true,
-                "All other participants wait for the producer",
-                "",
-                "This phase is not used in this screen",
-                "",
-                "This phase is not used in this screen",
-                "",
-                "This phase is not used in this screen",
-                "-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D",
-                "The stimulus and the producers text are shown to all participants",
-                preStimuliText, postStimuliText, numberOfStimuli, 7000,
-                0, 0, null);
-        final WizardMultiParticipantScreen round0MultiParticipantScreen8 = new WizardMultiParticipantScreen("Round 0 - 8",
-                groupMembers8,
-                "A,B,C,D,E,F,G,H",
-                "A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-",
-                "The producer sees the stimulus and enters some text",
-                "B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-",
-                true,
-                "All other participants wait for the producer",
-                "",
-                "This phase is not used in this screen",
-                "",
-                "This phase is not used in this screen",
-                "",
-                "This phase is not used in this screen",
-                "-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H",
-                "The stimulus and the producers text are shown to all participants",
-                preStimuliText, postStimuliText, numberOfStimuli, 7000,
-                0, 0, null);
+        final WizardMultiParticipantScreen round8MultiParticipantScreen4 = getTestRound("Round 8 - 4", groupMembers4, "A|B|C|D", "A,B,C,D");
+        final WizardMultiParticipantScreen round8MultiParticipantScreen8 = getTestRound("Round 8 - 8", groupMembers8, "A|B|C|D|E|F|G|H", "A|B|C|D|,E,F,G,H");
+        final WizardMultiParticipantScreen round16MultiParticipantScreen8 = getTestRound("Round 16 - 8", groupMembers8, "A|B|C|D|E|F|G|H", "A|B|C|D|,E,F,G,H");
+        final WizardMultiParticipantScreen round0MultiParticipantScreen4 = getNamingRound("Round 0 - 4", groupMembers4, "A,B,C,D", "A:-:B:-:C:-:D:-", "B,C,D:-:A,C,D:-:B,A,D:-:B,C,A:-", "-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D");
+        final WizardMultiParticipantScreen round0MultiParticipantScreen8 = getNamingRound("Round 0 - 8", groupMembers8, "A,B,C,D,E,F,G,H", "A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-", "B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-", "-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H");
         final WizardMultiParticipantScreen round1MultiParticipantScreen4 = new WizardMultiParticipantScreen("Round 1 - 4",
                 groupMembers4,
                 "A,B|C,D",
@@ -475,6 +389,45 @@ public class MultiParticipant {
         wizardAboutScreen.setBackWizardScreen(wizardAgreementScreen);
 
         return wizardData;
+    }
+
+    protected WizardMultiParticipantScreen getTestRound(final String screenName, final String groupMembers4, final String communicationChannels, final String textEntryPhaseRoles) {
+        return new WizardMultiParticipantScreen(screenName,
+                groupMembers4,
+                communicationChannels, textEntryPhaseRoles,
+                "All 23 stimuli are presented all participants in random order similar to the producer screen",
+                "",
+                true,
+                "This phase is not used in this screen",
+                "",
+                "This phase is not used in this screen",
+                "",
+                "This phase is not used in this screen",
+                "",
+                "This phase is not used in this screen",
+                "",
+                "This phase is not used in this screen",
+                preStimuliText, postStimuliText, numberOfStimuli, 0,
+                0, 0, null
+        );
+    }
+
+    protected WizardMultiParticipantScreen getNamingRound(final String screenName, final String groupMembers4, final String communicationChannels, final String textEntryPhaseRoles, final String waitingForProducerPhaseRoles, final String outcomeDisplayedPhaseRoles) {
+        return new WizardMultiParticipantScreen(screenName,
+                groupMembers4,
+                communicationChannels, textEntryPhaseRoles,
+                "The producer sees the stimulus and enters some text", waitingForProducerPhaseRoles,
+                true,
+                "All other participants wait for the producer",
+                "",
+                "This phase is not used in this screen",
+                "",
+                "This phase is not used in this screen",
+                "",
+                "This phase is not used in this screen", outcomeDisplayedPhaseRoles,
+                "The stimulus and the producers text are shown to all participants",
+                preStimuliText, postStimuliText, numberOfStimuli, 7000,
+                0, 0, null);
     }
 
     public Experiment getExperiment() {
