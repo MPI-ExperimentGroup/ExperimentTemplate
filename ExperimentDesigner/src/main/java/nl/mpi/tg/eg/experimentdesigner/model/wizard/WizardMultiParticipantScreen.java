@@ -24,9 +24,11 @@ import java.util.List;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
+import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
+import nl.mpi.tg.eg.experimentdesigner.model.RandomGrouping;
 import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
 
 /**
@@ -354,14 +356,26 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //            groupNetworkActivity1.getPresenterFeatureList().add(stimulusFreeTextFeature);
 //        }
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadStimulus, null);
-        loadStimuliFeature.addStimulusTag(storedWizardScreenData.getScreenTitle());
-
+//        loadStimuliFeature.addStimulusTag(storedWizardScreenData.getScreenTitle());
+        if (storedWizardScreenData.getStimuliRandomTags() != null) {
+            final RandomGrouping randomGrouping = new RandomGrouping();
+            for (String randomTag : storedWizardScreenData.getStimuliRandomTags()) {
+                randomGrouping.addRandomTag(randomTag);
+            }
+            final String metadataFieldname = "stimuliAllocation";
+            randomGrouping.setStorageField(metadataFieldname);
+            loadStimuliFeature.setRandomGrouping(randomGrouping);
+            final Metadata metadataField = new Metadata(metadataFieldname, metadataFieldname, ".*", ".", false, null);
+            if (!experiment.getMetadata().contains(metadataField)) {
+                experiment.getMetadata().add(metadataField);
+            }
+        }
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.minStimuliPerTag, "1");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuliPerTag, "100");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(isRandomiseStimuli(storedWizardScreenData)));
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "1");
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, "0");
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "1"/*Integer.toString(storedWizardScreenData.getRepeatCount())*/);
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, "0"/*Integer.toString(storedWizardScreenData.getRepeatRandomWindow())*/);
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(storedWizardScreenData.getStimuliCount()));
         if (getTimerCountDownProducerMs(storedWizardScreenData) > 0) {
             final PresenterFeature countDownFeature = new PresenterFeature(FeatureType.countdownLabel, getTimerCountDownLabel(storedWizardScreenData));
