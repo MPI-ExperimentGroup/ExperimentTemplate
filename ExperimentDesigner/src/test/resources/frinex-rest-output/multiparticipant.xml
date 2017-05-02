@@ -263,7 +263,6 @@
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="All 23 stimuli are presented all participants in random order similar to the producer screen"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
@@ -281,7 +280,6 @@
                         <groupNetworkActivity groupRole="">
                             <clearPage/>
                             <htmlText featureText="This phase is not used in this screen"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                                 <responseCorrect msToNext="0">
                                     <scoreIncrement scoreValue="true"/>
