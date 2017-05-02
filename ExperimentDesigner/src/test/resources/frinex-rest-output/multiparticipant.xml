@@ -24,9 +24,9 @@
     </presenter>
     <presenter displayOrder="3" menuLabel="GroupSizeMenu" type="menu" self="GroupSizeMenu" title="GroupSizeMenu">
         <htmlText featureText="A choice must be provided out of the following:&lt;br/&gt;"/>
-        <hasGetParameter parameterName="Round_8___4">
+        <hasGetParameter parameterName="Round_0___4">
             <conditionTrue>
-                <autoNextPresenter target="Round_8___4"/>
+                <autoNextPresenter target="Round_0___4"/>
             </conditionTrue>
             <conditionFalse/>
         </hasGetParameter>
@@ -36,327 +36,9 @@
             </conditionTrue>
             <conditionFalse/>
         </hasGetParameter>
-        <htmlText featureText="Round_8___4&lt;br/&gt;Round_0___8&lt;br/&gt;"/>
+        <htmlText featureText="Round_0___4&lt;br/&gt;Round_0___8&lt;br/&gt;"/>
     </presenter>
-    <presenter back="Agreement" displayOrder="4" menuLabel="Round 8 - 4" next="Round_0___4" type="stimulus" self="Round_8___4" title="Round 8 - 4">
-        <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
-        <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <clearPage/>
-            <loadStimulus eventTag="Round 8 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
-                <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A|B|C|D">
-                        <groupNetworkActivity groupRole="A,B,C,D">
-                            <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 8 - 4" repeatIncorrect="false"/>
-                            <clearPage/>
-                            <stimulusLabel/>
-                            <htmlText featureText="All 23 stimuli are presented all participants in random order similar to the producer screen"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
-                                <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
-                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
-                        </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="">
-                            <clearPage/>
-                            <htmlText featureText="This phase is not used in this screen"/>
-                        </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="">
-                            <clearPage/>
-                            <htmlText featureText="This phase is not used in this screen"/>
-                        </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="">
-                            <clearPage/>
-                            <htmlText featureText="This phase is not used in this screen"/>
-                            <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
-                                <responseCorrect msToNext="0">
-                                    <scoreIncrement scoreValue="true"/>
-                                    <scoreAboveThreshold scoreThreshold="5">
-                                        <aboveThreshold>
-                                            <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
-                                        </aboveThreshold>
-                                        <belowThreshold>
-                                            <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
-                                    </scoreAboveThreshold>
-                                    <submitGroupEvent/>
-                                </responseCorrect>
-                                <responseIncorrect msToNext="0">
-                                    <scoreIncrement scoreValue="false"/>
-                                    <scoreAboveThreshold scoreThreshold="5">
-                                        <aboveThreshold>
-                                            <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
-                                        </aboveThreshold>
-                                        <belowThreshold>
-                                            <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
-                                    </scoreAboveThreshold>
-                                    <submitGroupEvent/>
-                                </responseIncorrect>
-                                <stimuli/>
-                            </showStimulusGrid>
-                            <groupMessageLabel/>
-                            <enableStimulusButtons/>
-                        </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="">
-                            <clearPage/>
-                            <htmlText featureText="This phase is not used in this screen"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                            <groupMessageLabel/>
-                            <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
-                                    <htmlText featureText="responseCorrect"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseCorrect>
-                                <responseIncorrect msToNext="0">
-                                    <htmlText featureText="responseIncorrect"/>
-                                    <htmlText featureText="your guesser chose"/>
-                                    <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
-                            <groupScoreLabel/>
-                            <groupChannelScoreLabel/>
-                            <scoreLabel/>
-                        </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="">
-                            <clearPage/>
-                            <htmlText featureText="This phase is not used in this screen"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
-                                <addPadding/>
-                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
-                            <groupMessageLabel/>
-                        </groupNetworkActivity>
-                    </groupNetwork>
-                </hasMoreStimulus>
-                <endOfStimulus>
-                    <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
-                    <actionButton featureText="Next [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
-                    </actionButton>
-                </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_8_4</tag>
-                </stimuli>
-            </loadStimulus>
-        </actionButton>
-    </presenter>
-    <presenter back="Agreement" displayOrder="5" menuLabel="Round 8 - 8" next="Round_16___8" type="stimulus" self="Round_8___8" title="Round 8 - 8">
-        <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
-        <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <clearPage/>
-            <loadStimulus eventTag="Round 8 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
-                <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A|B|C|D|E|F|G|H">
-                        <groupNetworkActivity groupRole="A,B,C,D,E,F,G,H">
-                            <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 8 - 8" repeatIncorrect="false"/>
-                            <clearPage/>
-                            <stimulusLabel/>
-                            <htmlText featureText="All 23 stimuli are presented all participants in random order similar to the producer screen"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
-                                <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
-                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
-                        </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="">
-                            <clearPage/>
-                            <htmlText featureText="This phase is not used in this screen"/>
-                        </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="">
-                            <clearPage/>
-                            <htmlText featureText="This phase is not used in this screen"/>
-                        </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="">
-                            <clearPage/>
-                            <htmlText featureText="This phase is not used in this screen"/>
-                            <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
-                                <responseCorrect msToNext="0">
-                                    <scoreIncrement scoreValue="true"/>
-                                    <scoreAboveThreshold scoreThreshold="5">
-                                        <aboveThreshold>
-                                            <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
-                                        </aboveThreshold>
-                                        <belowThreshold>
-                                            <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
-                                    </scoreAboveThreshold>
-                                    <submitGroupEvent/>
-                                </responseCorrect>
-                                <responseIncorrect msToNext="0">
-                                    <scoreIncrement scoreValue="false"/>
-                                    <scoreAboveThreshold scoreThreshold="5">
-                                        <aboveThreshold>
-                                            <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
-                                        </aboveThreshold>
-                                        <belowThreshold>
-                                            <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
-                                    </scoreAboveThreshold>
-                                    <submitGroupEvent/>
-                                </responseIncorrect>
-                                <stimuli/>
-                            </showStimulusGrid>
-                            <groupMessageLabel/>
-                            <enableStimulusButtons/>
-                        </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="">
-                            <clearPage/>
-                            <htmlText featureText="This phase is not used in this screen"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                            <groupMessageLabel/>
-                            <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
-                                    <htmlText featureText="responseCorrect"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseCorrect>
-                                <responseIncorrect msToNext="0">
-                                    <htmlText featureText="responseIncorrect"/>
-                                    <htmlText featureText="your guesser chose"/>
-                                    <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
-                            <groupScoreLabel/>
-                            <groupChannelScoreLabel/>
-                            <scoreLabel/>
-                        </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="">
-                            <clearPage/>
-                            <htmlText featureText="This phase is not used in this screen"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
-                                <addPadding/>
-                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
-                            <groupMessageLabel/>
-                        </groupNetworkActivity>
-                    </groupNetwork>
-                </hasMoreStimulus>
-                <endOfStimulus>
-                    <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
-                    <actionButton featureText="Next [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
-                    </actionButton>
-                </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_8_8</tag>
-                </stimuli>
-            </loadStimulus>
-        </actionButton>
-    </presenter>
-    <presenter back="Agreement" displayOrder="6" menuLabel="Round 16 - 8" next="Einde_van_het_experiment2" type="stimulus" self="Round_16___8" title="Round 16 - 8">
-        <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
-        <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <clearPage/>
-            <loadStimulus eventTag="Round 16 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
-                <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A|B|C|D|E|F|G|H">
-                        <groupNetworkActivity groupRole="A,B,C,D,E,F,G,H">
-                            <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 16 - 8" repeatIncorrect="false"/>
-                            <clearPage/>
-                            <stimulusLabel/>
-                            <htmlText featureText="All 23 stimuli are presented all participants in random order similar to the producer screen"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
-                                <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
-                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
-                        </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="">
-                            <clearPage/>
-                            <htmlText featureText="This phase is not used in this screen"/>
-                        </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="">
-                            <clearPage/>
-                            <htmlText featureText="This phase is not used in this screen"/>
-                        </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="">
-                            <clearPage/>
-                            <htmlText featureText="This phase is not used in this screen"/>
-                            <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
-                                <responseCorrect msToNext="0">
-                                    <scoreIncrement scoreValue="true"/>
-                                    <scoreAboveThreshold scoreThreshold="5">
-                                        <aboveThreshold>
-                                            <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
-                                        </aboveThreshold>
-                                        <belowThreshold>
-                                            <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
-                                    </scoreAboveThreshold>
-                                    <submitGroupEvent/>
-                                </responseCorrect>
-                                <responseIncorrect msToNext="0">
-                                    <scoreIncrement scoreValue="false"/>
-                                    <scoreAboveThreshold scoreThreshold="5">
-                                        <aboveThreshold>
-                                            <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
-                                        </aboveThreshold>
-                                        <belowThreshold>
-                                            <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
-                                    </scoreAboveThreshold>
-                                    <submitGroupEvent/>
-                                </responseIncorrect>
-                                <stimuli/>
-                            </showStimulusGrid>
-                            <groupMessageLabel/>
-                            <enableStimulusButtons/>
-                        </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="">
-                            <clearPage/>
-                            <htmlText featureText="This phase is not used in this screen"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                            <groupMessageLabel/>
-                            <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
-                                    <htmlText featureText="responseCorrect"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseCorrect>
-                                <responseIncorrect msToNext="0">
-                                    <htmlText featureText="responseIncorrect"/>
-                                    <htmlText featureText="your guesser chose"/>
-                                    <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
-                            <groupScoreLabel/>
-                            <groupChannelScoreLabel/>
-                            <scoreLabel/>
-                        </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="">
-                            <clearPage/>
-                            <htmlText featureText="This phase is not used in this screen"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
-                                <addPadding/>
-                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
-                            <groupMessageLabel/>
-                        </groupNetworkActivity>
-                    </groupNetwork>
-                </hasMoreStimulus>
-                <endOfStimulus>
-                    <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
-                    <actionButton featureText="Next [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
-                    </actionButton>
-                </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Round_16_8</tag>
-                </stimuli>
-            </loadStimulus>
-        </actionButton>
-    </presenter>
-    <presenter back="Agreement" displayOrder="7" menuLabel="Round 0 - 4" next="Round_1___4" type="stimulus" self="Round_0___4" title="Round 0 - 4">
+    <presenter back="Agreement" displayOrder="4" menuLabel="Round 0 - 4" next="Round_1___4" type="stimulus" self="Round_0___4" title="Round 0 - 4">
         <centrePage/>
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -463,7 +145,7 @@
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="8" menuLabel="Round 1 - 4" next="Round_2___4" type="stimulus" self="Round_1___4" title="Round 1 - 4">
+    <presenter back="Agreement" displayOrder="5" menuLabel="Round 1 - 4" next="Round_2___4" type="stimulus" self="Round_1___4" title="Round 1 - 4">
         <centrePage/>
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -571,14 +253,14 @@
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="9" menuLabel="Round 2 - 4" next="Einde_van_het_experiment2" type="stimulus" self="Round_2___4" title="Round 2 - 4">
+    <presenter back="Agreement" displayOrder="6" menuLabel="Round 2 - 4" next="Round_8___4" type="stimulus" self="Round_2___4" title="Round 2 - 4">
         <centrePage/>
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <clearPage/>
             <loadStimulus eventTag="Round 2 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="B,C|D,A">
+                    <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A,C|B,D">
                         <groupNetworkActivity groupRole="A,C:-:-:B,D:-:-">
                             <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 2 - 4" repeatIncorrect="false"/>
                             <clearPage/>
@@ -675,6 +357,324 @@
                 <randomGrouping/>
                 <stimuli>
                     <tag>Round_2_4</tag>
+                </stimuli>
+            </loadStimulus>
+        </actionButton>
+    </presenter>
+    <presenter back="Agreement" displayOrder="7" menuLabel="Round 8 - 4" next="Einde_van_het_experiment2" type="stimulus" self="Round_8___4" title="Round 8 - 4">
+        <centrePage/>
+        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <actionButton featureText="Next [enter]" hotKey="ENTER">
+            <clearPage/>
+            <loadStimulus eventTag="Round 8 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+                <hasMoreStimulus>
+                    <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A|B|C|D">
+                        <groupNetworkActivity groupRole="A,B,C,D">
+                            <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 8 - 4" repeatIncorrect="false"/>
+                            <clearPage/>
+                            <stimulusLabel/>
+                            <htmlText featureText="All 23 stimuli are presented all participants in random order similar to the producer screen"/>
+                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                <addPadding/>
+                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
+                            </stimulusImage>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="">
+                            <clearPage/>
+                            <htmlText featureText="This phase is not used in this screen"/>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="">
+                            <clearPage/>
+                            <htmlText featureText="This phase is not used in this screen"/>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="">
+                            <clearPage/>
+                            <htmlText featureText="This phase is not used in this screen"/>
+                            <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
+                                <responseCorrect msToNext="0">
+                                    <scoreIncrement scoreValue="true"/>
+                                    <scoreAboveThreshold scoreThreshold="5">
+                                        <aboveThreshold>
+                                            <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
+                                        </aboveThreshold>
+                                        <belowThreshold>
+                                            <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
+                                        </belowThreshold>
+                                    </scoreAboveThreshold>
+                                    <submitGroupEvent/>
+                                </responseCorrect>
+                                <responseIncorrect msToNext="0">
+                                    <scoreIncrement scoreValue="false"/>
+                                    <scoreAboveThreshold scoreThreshold="5">
+                                        <aboveThreshold>
+                                            <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
+                                        </aboveThreshold>
+                                        <belowThreshold>
+                                            <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
+                                        </belowThreshold>
+                                    </scoreAboveThreshold>
+                                    <submitGroupEvent/>
+                                </responseIncorrect>
+                                <stimuli/>
+                            </showStimulusGrid>
+                            <groupMessageLabel/>
+                            <enableStimulusButtons/>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="">
+                            <clearPage/>
+                            <htmlText featureText="This phase is not used in this screen"/>
+                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                            <groupMessageLabel/>
+                            <groupResponseFeedback>
+                                <responseCorrect msToNext="0">
+                                    <htmlText featureText="responseCorrect"/>
+                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
+                                </responseCorrect>
+                                <responseIncorrect msToNext="0">
+                                    <htmlText featureText="responseIncorrect"/>
+                                    <htmlText featureText="your guesser chose"/>
+                                    <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <groupScoreLabel/>
+                            <groupChannelScoreLabel/>
+                            <scoreLabel/>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="">
+                            <clearPage/>
+                            <htmlText featureText="This phase is not used in this screen"/>
+                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                <addPadding/>
+                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
+                            </stimulusImage>
+                            <groupMessageLabel/>
+                        </groupNetworkActivity>
+                    </groupNetwork>
+                </hasMoreStimulus>
+                <endOfStimulus>
+                    <clearPage/>
+                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <actionButton featureText="Next [enter]" hotKey="ENTER">
+                        <autoNextPresenter/>
+                    </actionButton>
+                </endOfStimulus>
+                <randomGrouping/>
+                <stimuli>
+                    <tag>Round_8_4</tag>
+                </stimuli>
+            </loadStimulus>
+        </actionButton>
+    </presenter>
+    <presenter back="Agreement" displayOrder="8" menuLabel="Round 8 - 8" next="Round_16___8" type="stimulus" self="Round_8___8" title="Round 8 - 8">
+        <centrePage/>
+        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <actionButton featureText="Next [enter]" hotKey="ENTER">
+            <clearPage/>
+            <loadStimulus eventTag="Round 8 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+                <hasMoreStimulus>
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A|B|C|D|E|F|G|H">
+                        <groupNetworkActivity groupRole="A,B,C,D,E,F,G,H">
+                            <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 8 - 8" repeatIncorrect="false"/>
+                            <clearPage/>
+                            <stimulusLabel/>
+                            <htmlText featureText="All 23 stimuli are presented all participants in random order similar to the producer screen"/>
+                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                <addPadding/>
+                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
+                            </stimulusImage>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="">
+                            <clearPage/>
+                            <htmlText featureText="This phase is not used in this screen"/>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="">
+                            <clearPage/>
+                            <htmlText featureText="This phase is not used in this screen"/>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="">
+                            <clearPage/>
+                            <htmlText featureText="This phase is not used in this screen"/>
+                            <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
+                                <responseCorrect msToNext="0">
+                                    <scoreIncrement scoreValue="true"/>
+                                    <scoreAboveThreshold scoreThreshold="5">
+                                        <aboveThreshold>
+                                            <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
+                                        </aboveThreshold>
+                                        <belowThreshold>
+                                            <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
+                                        </belowThreshold>
+                                    </scoreAboveThreshold>
+                                    <submitGroupEvent/>
+                                </responseCorrect>
+                                <responseIncorrect msToNext="0">
+                                    <scoreIncrement scoreValue="false"/>
+                                    <scoreAboveThreshold scoreThreshold="5">
+                                        <aboveThreshold>
+                                            <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
+                                        </aboveThreshold>
+                                        <belowThreshold>
+                                            <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
+                                        </belowThreshold>
+                                    </scoreAboveThreshold>
+                                    <submitGroupEvent/>
+                                </responseIncorrect>
+                                <stimuli/>
+                            </showStimulusGrid>
+                            <groupMessageLabel/>
+                            <enableStimulusButtons/>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="">
+                            <clearPage/>
+                            <htmlText featureText="This phase is not used in this screen"/>
+                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                            <groupMessageLabel/>
+                            <groupResponseFeedback>
+                                <responseCorrect msToNext="0">
+                                    <htmlText featureText="responseCorrect"/>
+                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
+                                </responseCorrect>
+                                <responseIncorrect msToNext="0">
+                                    <htmlText featureText="responseIncorrect"/>
+                                    <htmlText featureText="your guesser chose"/>
+                                    <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <groupScoreLabel/>
+                            <groupChannelScoreLabel/>
+                            <scoreLabel/>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="">
+                            <clearPage/>
+                            <htmlText featureText="This phase is not used in this screen"/>
+                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                <addPadding/>
+                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
+                            </stimulusImage>
+                            <groupMessageLabel/>
+                        </groupNetworkActivity>
+                    </groupNetwork>
+                </hasMoreStimulus>
+                <endOfStimulus>
+                    <clearPage/>
+                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <actionButton featureText="Next [enter]" hotKey="ENTER">
+                        <autoNextPresenter/>
+                    </actionButton>
+                </endOfStimulus>
+                <randomGrouping/>
+                <stimuli>
+                    <tag>Round_8_8</tag>
+                </stimuli>
+            </loadStimulus>
+        </actionButton>
+    </presenter>
+    <presenter back="Agreement" displayOrder="9" menuLabel="Round 16 - 8" next="Einde_van_het_experiment2" type="stimulus" self="Round_16___8" title="Round 16 - 8">
+        <centrePage/>
+        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <actionButton featureText="Next [enter]" hotKey="ENTER">
+            <clearPage/>
+            <loadStimulus eventTag="Round 16 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+                <hasMoreStimulus>
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A|B|C|D|E|F|G|H">
+                        <groupNetworkActivity groupRole="A,B,C,D,E,F,G,H">
+                            <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 16 - 8" repeatIncorrect="false"/>
+                            <clearPage/>
+                            <stimulusLabel/>
+                            <htmlText featureText="All 23 stimuli are presented all participants in random order similar to the producer screen"/>
+                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                <addPadding/>
+                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
+                            </stimulusImage>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="">
+                            <clearPage/>
+                            <htmlText featureText="This phase is not used in this screen"/>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="">
+                            <clearPage/>
+                            <htmlText featureText="This phase is not used in this screen"/>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="">
+                            <clearPage/>
+                            <htmlText featureText="This phase is not used in this screen"/>
+                            <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
+                                <responseCorrect msToNext="0">
+                                    <scoreIncrement scoreValue="true"/>
+                                    <scoreAboveThreshold scoreThreshold="5">
+                                        <aboveThreshold>
+                                            <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
+                                        </aboveThreshold>
+                                        <belowThreshold>
+                                            <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
+                                        </belowThreshold>
+                                    </scoreAboveThreshold>
+                                    <submitGroupEvent/>
+                                </responseCorrect>
+                                <responseIncorrect msToNext="0">
+                                    <scoreIncrement scoreValue="false"/>
+                                    <scoreAboveThreshold scoreThreshold="5">
+                                        <aboveThreshold>
+                                            <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
+                                        </aboveThreshold>
+                                        <belowThreshold>
+                                            <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
+                                        </belowThreshold>
+                                    </scoreAboveThreshold>
+                                    <submitGroupEvent/>
+                                </responseIncorrect>
+                                <stimuli/>
+                            </showStimulusGrid>
+                            <groupMessageLabel/>
+                            <enableStimulusButtons/>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="">
+                            <clearPage/>
+                            <htmlText featureText="This phase is not used in this screen"/>
+                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                            <groupMessageLabel/>
+                            <groupResponseFeedback>
+                                <responseCorrect msToNext="0">
+                                    <htmlText featureText="responseCorrect"/>
+                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
+                                </responseCorrect>
+                                <responseIncorrect msToNext="0">
+                                    <htmlText featureText="responseIncorrect"/>
+                                    <htmlText featureText="your guesser chose"/>
+                                    <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <groupScoreLabel/>
+                            <groupChannelScoreLabel/>
+                            <scoreLabel/>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="">
+                            <clearPage/>
+                            <htmlText featureText="This phase is not used in this screen"/>
+                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                <addPadding/>
+                                <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
+                            </stimulusImage>
+                            <groupMessageLabel/>
+                        </groupNetworkActivity>
+                    </groupNetwork>
+                </hasMoreStimulus>
+                <endOfStimulus>
+                    <clearPage/>
+                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <actionButton featureText="Next [enter]" hotKey="ENTER">
+                        <autoNextPresenter/>
+                    </actionButton>
+                </endOfStimulus>
+                <randomGrouping/>
+                <stimuli>
+                    <tag>Round_16_8</tag>
                 </stimuli>
             </loadStimulus>
         </actionButton>
