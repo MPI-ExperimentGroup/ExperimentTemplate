@@ -226,99 +226,23 @@ public class MultiParticipant {
         final String groupMembers8 = "A,B,C,D,E,F,G,H";
         final String textEntryPhaseRoles4 = "A,C:-:-:B,D:-:-";
         final String textEntryPhaseRoles8 = "A,C,E,G:-:-:B,D,F,H:-:-";
-        final String textEntryPhaseText = "The producer sees the stimulus and enters some text";
         final String textWaitPhaseRoles4 = "B,D:-:-:A,C:-:-";
         final String textWaitPhaseRoles8 = "B,D,F,H:-:-:A,C,E,G:-:-";
-        final String textWaitPhaseText = "The guesser waits for the producer";
         final String gridWaitPhaseRoles4 = "-:A,C:-:-:B,D:-";
         final String gridWaitPhaseRoles8 = "-:A,C,E,G:-:-:B,D,F,H:-";
-        final String gridWaitPhaseText = "The producer waits for the guesser";
         final String responseGridPhaseRoles4 = "-:B,D:-:-:A,C:-";
         final String responseGridPhaseRoles8 = "-:B,D,F,H:-:-:A,C,E,G:-";
-        final String responseGridPhaseText = "The guesser sees the text with a grid of stimuli, from which they select one based on the text";
         final String mutualFeedbackPhaseRoles4 = "-:-:A,B,C,D:-:-:A,B,C,D";
         final String mutualFeedbackPhaseRoles8 = "-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H";
-        final String mutualFeedbackPhaseText = "The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0.";
-        final int timerCountDownProducerMs = 30 * 1000;
-        final int timerCountDownGuesserMs = 20 * 1000;
-        final String timerCountDownLabel = "Time is up! Play now!";
         final WizardMultiParticipantScreen round8MultiParticipantScreen4 = getTestRound("Round 8 - 4", groupMembers4, "A|B|C|D", "A,B,C,D");
         final WizardMultiParticipantScreen round8MultiParticipantScreen8 = getTestRound("Round 8 - 8", groupMembers8, "A|B|C|D|E|F|G|H", "A|B|C|D|,E,F,G,H");
         final WizardMultiParticipantScreen round16MultiParticipantScreen8 = getTestRound("Round 16 - 8", groupMembers8, "A|B|C|D|E|F|G|H", "A|B|C|D|,E,F,G,H");
         final WizardMultiParticipantScreen round0MultiParticipantScreen4 = getNamingRound("Round 0 - 4", groupMembers4, "A,B,C,D", "A:-:B:-:C:-:D:-", "B,C,D:-:A,C,D:-:B,A,D:-:B,C,A:-", "-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D");
         final WizardMultiParticipantScreen round0MultiParticipantScreen8 = getNamingRound("Round 0 - 8", groupMembers8, "A,B,C,D,E,F,G,H", "A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-", "B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-", "-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H");
-        final WizardMultiParticipantScreen round1MultiParticipantScreen4 = new WizardMultiParticipantScreen("Round 1 - 4",
-                groupMembers4,
-                "A,B|C,D",
-                textEntryPhaseRoles4,
-                textEntryPhaseText,
-                textWaitPhaseRoles4,
-                false,
-                textWaitPhaseText,
-                gridWaitPhaseRoles4,
-                gridWaitPhaseText,
-                responseGridPhaseRoles4,
-                responseGridPhaseText,
-                mutualFeedbackPhaseRoles4,
-                mutualFeedbackPhaseText,
-                "",
-                "This phase is not used in this screen",
-                preStimuliText, postStimuliText, numberOfStimuli, 0,
-                timerCountDownProducerMs, timerCountDownGuesserMs, timerCountDownLabel);
-        final WizardMultiParticipantScreen round1MultiParticipantScreen8 = new WizardMultiParticipantScreen("Round 1 - 8",
-                groupMembers8,
-                "A,B|C,D|E,F|G,H",
-                textEntryPhaseRoles8,
-                textEntryPhaseText,
-                textWaitPhaseRoles8,
-                false,
-                textWaitPhaseText,
-                gridWaitPhaseRoles8,
-                gridWaitPhaseText,
-                responseGridPhaseRoles8,
-                responseGridPhaseText,
-                mutualFeedbackPhaseRoles8,
-                mutualFeedbackPhaseText,
-                "",
-                "This phase is not used in this screen",
-                preStimuliText, postStimuliText, numberOfStimuli, 0,
-                timerCountDownProducerMs, timerCountDownGuesserMs, timerCountDownLabel);
-        final WizardMultiParticipantScreen round2MultiParticipantScreen4 = new WizardMultiParticipantScreen("Round 2 - 4",
-                groupMembers4,
-                "B,C|D,A",
-                textEntryPhaseRoles4,
-                textEntryPhaseText,
-                textWaitPhaseRoles4,
-                false,
-                textWaitPhaseText,
-                gridWaitPhaseRoles4,
-                gridWaitPhaseText,
-                responseGridPhaseRoles4,
-                responseGridPhaseText,
-                mutualFeedbackPhaseRoles4,
-                mutualFeedbackPhaseText,
-                "",
-                "This phase is not used in this screen",
-                preStimuliText, postStimuliText, numberOfStimuli, 0,
-                timerCountDownProducerMs, timerCountDownGuesserMs, timerCountDownLabel);
-        final WizardMultiParticipantScreen round2MultiParticipantScreen8 = new WizardMultiParticipantScreen("Round 2 - 8",
-                groupMembers8,
-                "B,C|D,E|F,G|H,A",
-                textEntryPhaseRoles8,
-                textEntryPhaseText,
-                textWaitPhaseRoles8,
-                false,
-                textWaitPhaseText,
-                gridWaitPhaseRoles8,
-                gridWaitPhaseText,
-                responseGridPhaseRoles8,
-                responseGridPhaseText,
-                mutualFeedbackPhaseRoles8,
-                mutualFeedbackPhaseText,
-                "",
-                "This phase is not used in this screen",
-                preStimuliText, postStimuliText, numberOfStimuli, 0,
-                timerCountDownProducerMs, timerCountDownGuesserMs, timerCountDownLabel);
+        final WizardMultiParticipantScreen round1MultiParticipantScreen4 = getPlayingRound("Round 1 - 4", groupMembers4, "A,B|C,D", textEntryPhaseRoles4, textWaitPhaseRoles4, gridWaitPhaseRoles4, responseGridPhaseRoles4, mutualFeedbackPhaseRoles4);
+        final WizardMultiParticipantScreen round1MultiParticipantScreen8 = getPlayingRound("Round 1 - 8", groupMembers8, "A,B|C,D|E,F|G,H", textEntryPhaseRoles8, textWaitPhaseRoles8, gridWaitPhaseRoles8, responseGridPhaseRoles8, mutualFeedbackPhaseRoles8);
+        final WizardMultiParticipantScreen round2MultiParticipantScreen4 = getPlayingRound("Round 2 - 4", groupMembers4, "B,C|D,A", textEntryPhaseRoles4, textWaitPhaseRoles4, gridWaitPhaseRoles4, responseGridPhaseRoles4, mutualFeedbackPhaseRoles4);
+        final WizardMultiParticipantScreen round2MultiParticipantScreen8 = getPlayingRound("Round 2 - 8", groupMembers8, "B,C|D,E|F,G|H,A", textEntryPhaseRoles8, textWaitPhaseRoles8, gridWaitPhaseRoles8, responseGridPhaseRoles8, mutualFeedbackPhaseRoles8);
         round8MultiParticipantScreen4.setStimuliSet(stimuliArray);
         round0MultiParticipantScreen4.setStimuliSet(stimuliArray);
         round1MultiParticipantScreen4.setStimuliSet(stimuliArray);
@@ -428,6 +352,36 @@ public class MultiParticipant {
                 "The stimulus and the producers text are shown to all participants",
                 preStimuliText, postStimuliText, numberOfStimuli, 7000,
                 0, 0, null);
+    }
+
+    protected WizardMultiParticipantScreen getPlayingRound(final String screenName, final String groupMembers, final String communicationChannels, final String textEntryPhaseRoles, final String textWaitPhaseRoles, final String gridWaitPhaseRoles, final String responseGridPhaseRoles, final String mutualFeedbackPhaseRoles) {
+        final String textEntryPhaseText = "The producer sees the stimulus and enters some text";
+        final String textWaitPhaseText = "The guesser waits for the producer";
+        final String gridWaitPhaseText = "The producer waits for the guesser";
+        final String responseGridPhaseText = "The guesser sees the text with a grid of stimuli, from which they select one based on the text";
+        final String mutualFeedbackPhaseText = "The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0.";
+        final int timerCountDownProducerMs = 30 * 1000;
+        final int timerCountDownGuesserMs = 20 * 1000;
+        final String timerCountDownLabel = "Time is up! Play now!";
+
+        return new WizardMultiParticipantScreen(screenName,
+                groupMembers,
+                communicationChannels,
+                textEntryPhaseRoles,
+                textEntryPhaseText,
+                textWaitPhaseRoles,
+                false,
+                textWaitPhaseText,
+                gridWaitPhaseRoles,
+                gridWaitPhaseText,
+                responseGridPhaseRoles,
+                responseGridPhaseText,
+                mutualFeedbackPhaseRoles,
+                mutualFeedbackPhaseText,
+                "",
+                "This phase is not used in this screen",
+                preStimuliText, postStimuliText, numberOfStimuli, 0,
+                timerCountDownProducerMs, timerCountDownGuesserMs, timerCountDownLabel);
     }
 
     public Experiment getExperiment() {
