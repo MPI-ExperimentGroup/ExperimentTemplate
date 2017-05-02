@@ -287,13 +287,21 @@ public class MultiParticipant {
         String[][] groupOfEightCommunicationChannels = new String[][]{
             {"0", "A,B,C,D,E,F,G,H", "naming"},
             {"1", "A,B|C,D|E,F|G,H", "play"},
-            {"2", "B,C|D,E|F,G|H,A", "play"},
+            {"2", "A,H|E,D|C,F|G,B", "play"},
+            {"3", "A,D|G,F|E,B|C,H", "play"},
+            {"4", "A,C|B,D|E,G|F,H", "play"},
+            {"5", "A,E|H,D|B,F|G,C", "play"},
+            {"6", "A,F|G,D|C,B|E,H", "play"},
+            {"7", "A,G|B,H|E,C|D,F", "play"},
             {"8", "A|B|C|D|E|F|G|H", "test"},
+            {"9", "A,B|C,D|E,F|G,H", "play"},
+            {"10", "A,H|E,D|C,F|G,B", "play"},
+            {"11", "A,D|G,F|E,B|C,H", "play"},
+            {"12", "A,C|B,D|E,G|F,H", "play"},
+            {"13", "A,E|H,D|B,F|G,C", "play"},
+            {"14", "A,F|G,D|C,B|E,H", "play"},
+            {"15", "A,G|B,H|E,C|D,F", "play"},
             {"16", "A|B|C|D|E|F|G|H", "test"}
-        //            {"4", "A,B|C,D", "play"},
-        //            {"5", "A,C|B,D", "play"},
-        //            {"6", "A,D|B,C", "play"},
-        //            {"7", "A,B|C,D", "play"},
         };
         WizardMultiParticipantScreen roundOfEightScreenOuter = null;
         for (String[] currentChannel : groupOfEightCommunicationChannels) {
