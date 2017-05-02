@@ -235,8 +235,8 @@ public class MultiParticipant {
         final String mutualFeedbackPhaseRoles4 = "-:-:A,B,C,D:-:-:A,B,C,D";
         final String mutualFeedbackPhaseRoles8 = "-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H";
         final WizardMultiParticipantScreen round8MultiParticipantScreen4 = getTestRound("Round 8 - 4", groupMembers4, "A|B|C|D", "A,B,C,D");
-        final WizardMultiParticipantScreen round8MultiParticipantScreen8 = getTestRound("Round 8 - 8", groupMembers8, "A|B|C|D|E|F|G|H", "A|B|C|D|,E,F,G,H");
-        final WizardMultiParticipantScreen round16MultiParticipantScreen8 = getTestRound("Round 16 - 8", groupMembers8, "A|B|C|D|E|F|G|H", "A|B|C|D|,E,F,G,H");
+        final WizardMultiParticipantScreen round8MultiParticipantScreen8 = getTestRound("Round 8 - 8", groupMembers8, "A|B|C|D|E|F|G|H", "A,B,C,D,E,F,G,H");
+        final WizardMultiParticipantScreen round16MultiParticipantScreen8 = getTestRound("Round 16 - 8", groupMembers8, "A|B|C|D|E|F|G|H", "A,B,C,D,E,F,G,H");
         final WizardMultiParticipantScreen round0MultiParticipantScreen4 = getNamingRound("Round 0 - 4", groupMembers4, "A,B,C,D", "A:-:B:-:C:-:D:-", "B,C,D:-:A,C,D:-:B,A,D:-:B,C,A:-", "-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D");
         final WizardMultiParticipantScreen round0MultiParticipantScreen8 = getNamingRound("Round 0 - 8", groupMembers8, "A,B,C,D,E,F,G,H", "A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-", "B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-", "-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H");
         final WizardMultiParticipantScreen round1MultiParticipantScreen4 = getPlayingRound("Round 1 - 4", groupMembers4, "A,B|C,D", textEntryPhaseRoles4, textWaitPhaseRoles4, gridWaitPhaseRoles4, responseGridPhaseRoles4, mutualFeedbackPhaseRoles4);
