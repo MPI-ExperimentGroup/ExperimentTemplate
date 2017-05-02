@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model;
 
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -116,4 +117,28 @@ public class Metadata {
         this.duplicatesControlledMessage = duplicatesControlledMessage;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.postName);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Metadata other = (Metadata) obj;
+        if (!Objects.equals(this.postName, other.postName)) {
+            return false;
+        }
+        return true;
+    }
 }
