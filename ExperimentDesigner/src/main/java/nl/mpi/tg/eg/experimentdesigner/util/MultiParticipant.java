@@ -234,34 +234,9 @@ public class MultiParticipant {
         final String responseGridPhaseRoles8 = "-:B,D,F,H:-:-:A,C,E,G:-";
         final String mutualFeedbackPhaseRoles4 = "-:-:A,B,C,D:-:-:A,B,C,D";
         final String mutualFeedbackPhaseRoles8 = "-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H";
-        final WizardMultiParticipantScreen round8MultiParticipantScreen4 = getTestRound("Round 8 - 4", groupMembers4, "A|B|C|D", "A,B,C,D");
-        final WizardMultiParticipantScreen round8MultiParticipantScreen8 = getTestRound("Round 8 - 8", groupMembers8, "A|B|C|D|E|F|G|H", "A,B,C,D,E,F,G,H");
-        final WizardMultiParticipantScreen round16MultiParticipantScreen8 = getTestRound("Round 16 - 8", groupMembers8, "A|B|C|D|E|F|G|H", "A,B,C,D,E,F,G,H");
-        final WizardMultiParticipantScreen round0MultiParticipantScreen4 = getNamingRound("Round 0 - 4", groupMembers4, "A,B,C,D", "A:-:B:-:C:-:D:-", "B,C,D:-:A,C,D:-:B,A,D:-:B,C,A:-", "-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D");
-        final WizardMultiParticipantScreen round0MultiParticipantScreen8 = getNamingRound("Round 0 - 8", groupMembers8, "A,B,C,D,E,F,G,H", "A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-", "B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-", "-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H");
-        final WizardMultiParticipantScreen round1MultiParticipantScreen4 = getPlayingRound("Round 1 - 4", groupMembers4, "A,B|C,D", textEntryPhaseRoles4, textWaitPhaseRoles4, gridWaitPhaseRoles4, responseGridPhaseRoles4, mutualFeedbackPhaseRoles4);
-        final WizardMultiParticipantScreen round1MultiParticipantScreen8 = getPlayingRound("Round 1 - 8", groupMembers8, "A,B|C,D|E,F|G,H", textEntryPhaseRoles8, textWaitPhaseRoles8, gridWaitPhaseRoles8, responseGridPhaseRoles8, mutualFeedbackPhaseRoles8);
-        final WizardMultiParticipantScreen round2MultiParticipantScreen4 = getPlayingRound("Round 2 - 4", groupMembers4, "B,C|D,A", textEntryPhaseRoles4, textWaitPhaseRoles4, gridWaitPhaseRoles4, responseGridPhaseRoles4, mutualFeedbackPhaseRoles4);
-        final WizardMultiParticipantScreen round2MultiParticipantScreen8 = getPlayingRound("Round 2 - 8", groupMembers8, "B,C|D,E|F,G|H,A", textEntryPhaseRoles8, textWaitPhaseRoles8, gridWaitPhaseRoles8, responseGridPhaseRoles8, mutualFeedbackPhaseRoles8);
-        round8MultiParticipantScreen4.setStimuliSet(stimuliArray);
-        round0MultiParticipantScreen4.setStimuliSet(stimuliArray);
-        round1MultiParticipantScreen4.setStimuliSet(stimuliArray);
-        round2MultiParticipantScreen4.setStimuliSet(stimuliArray);
-        round8MultiParticipantScreen8.setStimuliSet(stimuliArray);
-        round16MultiParticipantScreen8.setStimuliSet(stimuliArray);
-        round0MultiParticipantScreen8.setStimuliSet(stimuliArray);
-        round1MultiParticipantScreen8.setStimuliSet(stimuliArray);
-        round2MultiParticipantScreen8.setStimuliSet(stimuliArray);
-        round8MultiParticipantScreen8.setStimulusFreeText(true, "[etuiopasdfgkzbnm ]{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
-        round16MultiParticipantScreen8.setStimulusFreeText(true, "[etuiopasdfgkzbnm ]{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
-        round8MultiParticipantScreen4.setStimulusFreeText(true, "[etuiopasdfgkzbnm ]{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
-        round0MultiParticipantScreen4.setStimulusFreeText(true, "[etuiopasdfgkzbnm ]{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
-        round1MultiParticipantScreen4.setStimulusFreeText(true, "[etuiopasdfgkzbnm ]{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
-        round2MultiParticipantScreen4.setStimulusFreeText(true, "[etuiopasdfgkzbnm ]{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
-        round0MultiParticipantScreen8.setStimulusFreeText(true, "[etuiopasdfgkzbnm ]{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
-        round1MultiParticipantScreen8.setStimulusFreeText(true, "[etuiopasdfgkzbnm ]{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
-        round2MultiParticipantScreen8.setStimulusFreeText(true, "[etuiopasdfgkzbnm ]{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
 
+        WizardMenuScreen menuScreen4or8Members = new WizardMenuScreen("GroupSizeMenu", "GroupSizeMenu", "GroupSizeMenu");
+        menuScreen4or8Members.setBranchOnGetParam(true, "A choice must be provided out of the following:<br/>");
         WizardCompletionScreen completionScreen = new WizardCompletionScreen("Einde van het experiment", false, false,
                 //                                "Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop.",
                 "Einde van het experiment1",
@@ -269,17 +244,67 @@ public class MultiParticipant {
                 "Einde van het experiment2",
                 "Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.",
                 "Probeer opnieuw");
-        WizardMenuScreen menuScreen4or8Members = new WizardMenuScreen("GroupSizeMenu", "GroupSizeMenu", "GroupSizeMenu");
-        menuScreen4or8Members.setBranchOnGetParam(true, "A choice must be provided out of the following:<br/>");
+
         wizardData.addScreen(wizardAgreementScreen);
         wizardData.addScreen(wizardEditUserScreen);
         wizardData.addScreen(menuScreen4or8Members);
-        wizardData.addScreen(round8MultiParticipantScreen4);
+
+        String[][] groupOfFourCommunicationChannels = new String[][]{
+            {"0", "A,B,C,D", "naming"},
+            {"1", "A,B|C,D", "play"},
+            {"2", "A,C|B,D", "play"},
+            //            {"3", "A,D|B,C", "play"},
+            //            {"4", "A,B|C,D", "play"},
+            //            {"5", "A,C|B,D", "play"},
+            //            {"6", "A,D|B,C", "play"},
+            //            {"7", "A,B|C,D", "play"},
+            {"8", "A|B|C|D", "test"}
+        };
+        WizardMultiParticipantScreen roundScreenOuter = null;
+        for (String[] currentChannel : groupOfFourCommunicationChannels) {
+            final WizardMultiParticipantScreen roundScreen;
+            if ("naming".equals(currentChannel[2])) {
+                roundScreen = getNamingRound("Round " + currentChannel[0] + " - 4", groupMembers4, currentChannel[1], "A:-:B:-:C:-:D:-", "B,C,D:-:A,C,D:-:B,A,D:-:B,C,A:-", "-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D");
+            } else if ("test".equals(currentChannel[2])) {
+                roundScreen = getTestRound("Round " + currentChannel[0] + " - 4", groupMembers4, currentChannel[1], "A,B,C,D");
+            } else {
+                roundScreen = getPlayingRound("Round " + currentChannel[0] + " - 4", groupMembers4, currentChannel[1], textEntryPhaseRoles4, textWaitPhaseRoles4, gridWaitPhaseRoles4, responseGridPhaseRoles4, mutualFeedbackPhaseRoles4);
+            }
+            roundScreen.setStimuliSet(stimuliArray);
+            roundScreen.setStimulusFreeText(true, "[etuiopasdfgkzbnm ]{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
+            wizardData.addScreen(roundScreen);
+            if (roundScreenOuter == null) {
+                menuScreen4or8Members.addTargetScreen(roundScreen);
+            } else {
+                roundScreenOuter.setNextWizardScreen(roundScreen);
+            }
+            roundScreen.setBackWizardScreen(wizardAgreementScreen);
+            roundScreenOuter = roundScreen;
+        }
+        if (roundScreenOuter != null) {
+            roundScreenOuter.setNextWizardScreen(completionScreen);
+        }
+
+        final WizardMultiParticipantScreen round8MultiParticipantScreen8 = getTestRound("Round 8 - 8", groupMembers8, "A|B|C|D|E|F|G|H", "A,B,C,D,E,F,G,H");
+        final WizardMultiParticipantScreen round16MultiParticipantScreen8 = getTestRound("Round 16 - 8", groupMembers8, "A|B|C|D|E|F|G|H", "A,B,C,D,E,F,G,H");
+        final WizardMultiParticipantScreen round0MultiParticipantScreen8 = getNamingRound("Round 0 - 8", groupMembers8, "A,B,C,D,E,F,G,H", "A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-", "B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-", "-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H");
+        final WizardMultiParticipantScreen round1MultiParticipantScreen8 = getPlayingRound("Round 1 - 8", groupMembers8, "A,B|C,D|E,F|G,H", textEntryPhaseRoles8, textWaitPhaseRoles8, gridWaitPhaseRoles8, responseGridPhaseRoles8, mutualFeedbackPhaseRoles8);
+        final WizardMultiParticipantScreen round2MultiParticipantScreen8 = getPlayingRound("Round 2 - 8", groupMembers8, "B,C|D,E|F,G|H,A", textEntryPhaseRoles8, textWaitPhaseRoles8, gridWaitPhaseRoles8, responseGridPhaseRoles8, mutualFeedbackPhaseRoles8);
+
+        round8MultiParticipantScreen8.setStimuliSet(stimuliArray);
+        round16MultiParticipantScreen8.setStimuliSet(stimuliArray);
+        round0MultiParticipantScreen8.setStimuliSet(stimuliArray);
+        round1MultiParticipantScreen8.setStimuliSet(stimuliArray);
+        round2MultiParticipantScreen8.setStimuliSet(stimuliArray);
+        round8MultiParticipantScreen8.setStimulusFreeText(true, "[etuiopasdfgkzbnm ]{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
+        round16MultiParticipantScreen8.setStimulusFreeText(true, "[etuiopasdfgkzbnm ]{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
+
+        round0MultiParticipantScreen8.setStimulusFreeText(true, "[etuiopasdfgkzbnm ]{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
+        round1MultiParticipantScreen8.setStimulusFreeText(true, "[etuiopasdfgkzbnm ]{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
+        round2MultiParticipantScreen8.setStimulusFreeText(true, "[etuiopasdfgkzbnm ]{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
+
         wizardData.addScreen(round8MultiParticipantScreen8);
         wizardData.addScreen(round16MultiParticipantScreen8);
-        wizardData.addScreen(round0MultiParticipantScreen4);
-        wizardData.addScreen(round1MultiParticipantScreen4);
-        wizardData.addScreen(round2MultiParticipantScreen4);
         wizardData.addScreen(round0MultiParticipantScreen8);
         wizardData.addScreen(round1MultiParticipantScreen8);
         wizardData.addScreen(round2MultiParticipantScreen8);
@@ -289,23 +314,15 @@ public class MultiParticipant {
         wizardAgreementScreen.setNextWizardScreen(wizardEditUserScreen);
         wizardEditUserScreen.setBackWizardScreen(wizardAgreementScreen);
         wizardEditUserScreen.setNextWizardScreen(menuScreen4or8Members);
-        menuScreen4or8Members.addTargetScreen(round8MultiParticipantScreen4);
+
         menuScreen4or8Members.addTargetScreen(round0MultiParticipantScreen8);
-        round8MultiParticipantScreen4.setNextWizardScreen(round0MultiParticipantScreen4);
-        round0MultiParticipantScreen4.setNextWizardScreen(round1MultiParticipantScreen4);
         round0MultiParticipantScreen8.setNextWizardScreen(round1MultiParticipantScreen8);
-        round1MultiParticipantScreen4.setNextWizardScreen(round2MultiParticipantScreen4);
         round1MultiParticipantScreen8.setNextWizardScreen(round2MultiParticipantScreen8);
-        round8MultiParticipantScreen4.setBackWizardScreen(wizardAgreementScreen);
-        round0MultiParticipantScreen4.setBackWizardScreen(wizardAgreementScreen);
-        round0MultiParticipantScreen8.setBackWizardScreen(wizardAgreementScreen);
-        round1MultiParticipantScreen4.setBackWizardScreen(wizardAgreementScreen);
         round1MultiParticipantScreen8.setBackWizardScreen(wizardAgreementScreen);
-        round2MultiParticipantScreen4.setBackWizardScreen(wizardAgreementScreen);
+        round0MultiParticipantScreen8.setBackWizardScreen(wizardAgreementScreen);
         round2MultiParticipantScreen8.setBackWizardScreen(wizardAgreementScreen);
         round8MultiParticipantScreen8.setBackWizardScreen(wizardAgreementScreen);
         round16MultiParticipantScreen8.setBackWizardScreen(wizardAgreementScreen);
-        round2MultiParticipantScreen4.setNextWizardScreen(completionScreen);
         round2MultiParticipantScreen8.setNextWizardScreen(round8MultiParticipantScreen8);
         round8MultiParticipantScreen8.setNextWizardScreen(round16MultiParticipantScreen8);
         round16MultiParticipantScreen8.setNextWizardScreen(completionScreen);
