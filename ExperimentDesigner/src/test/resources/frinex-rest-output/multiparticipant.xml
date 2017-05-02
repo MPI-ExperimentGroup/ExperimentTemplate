@@ -43,7 +43,7 @@
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <clearPage/>
-            <loadStimulus eventTag="Round 0 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+            <loadStimulus eventTag="Round 0 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A,B,C,D">
                         <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-">
@@ -150,7 +150,7 @@
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <clearPage/>
-            <loadStimulus eventTag="Round 1 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+            <loadStimulus eventTag="Round 1 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A,B|C,D">
                         <groupNetworkActivity groupRole="A,C:-:-:B,D:-:-">
@@ -258,7 +258,7 @@
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <clearPage/>
-            <loadStimulus eventTag="Round 2 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+            <loadStimulus eventTag="Round 2 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A,C|B,D">
                         <groupNetworkActivity groupRole="A,C:-:-:B,D:-:-">
@@ -366,7 +366,7 @@
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <clearPage/>
-            <loadStimulus eventTag="Round 3 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+            <loadStimulus eventTag="Round 3 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A,D|B,C">
                         <groupNetworkActivity groupRole="A,C:-:-:B,D:-:-">
@@ -474,7 +474,7 @@
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <clearPage/>
-            <loadStimulus eventTag="Round 4 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+            <loadStimulus eventTag="Round 4 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A,B|C,D">
                         <groupNetworkActivity groupRole="A,C:-:-:B,D:-:-">
@@ -582,7 +582,7 @@
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <clearPage/>
-            <loadStimulus eventTag="Round 5 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+            <loadStimulus eventTag="Round 5 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A,C|B,D">
                         <groupNetworkActivity groupRole="A,C:-:-:B,D:-:-">
@@ -690,7 +690,7 @@
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <clearPage/>
-            <loadStimulus eventTag="Round 6 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+            <loadStimulus eventTag="Round 6 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A,D|B,C">
                         <groupNetworkActivity groupRole="A,C:-:-:B,D:-:-">
@@ -798,7 +798,7 @@
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <clearPage/>
-            <loadStimulus eventTag="Round 7 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+            <loadStimulus eventTag="Round 7 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A,B|C,D">
                         <groupNetworkActivity groupRole="A,C:-:-:B,D:-:-">
@@ -906,7 +906,7 @@
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <clearPage/>
-            <loadStimulus eventTag="Round 8 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+            <loadStimulus eventTag="Round 8 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A|B|C|D">
                         <groupNetworkActivity groupRole="A,B,C,D">
@@ -1012,7 +1012,7 @@
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <clearPage/>
-            <loadStimulus eventTag="Round 0 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+            <loadStimulus eventTag="Round 0 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,B,C,D,E,F,G,H">
                         <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-">
@@ -1119,7 +1119,7 @@
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <clearPage/>
-            <loadStimulus eventTag="Round 1 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+            <loadStimulus eventTag="Round 1 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,B|C,D|E,F|G,H">
                         <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
@@ -1227,7 +1227,7 @@
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <clearPage/>
-            <loadStimulus eventTag="Round 2 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+            <loadStimulus eventTag="Round 2 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,H|E,D|C,F|G,B">
                         <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
@@ -1335,7 +1335,7 @@
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <clearPage/>
-            <loadStimulus eventTag="Round 3 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+            <loadStimulus eventTag="Round 3 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,D|G,F|E,B|C,H">
                         <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
@@ -1443,7 +1443,7 @@
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <clearPage/>
-            <loadStimulus eventTag="Round 4 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+            <loadStimulus eventTag="Round 4 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,C|B,D|E,G|F,H">
                         <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
@@ -1551,7 +1551,7 @@
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <clearPage/>
-            <loadStimulus eventTag="Round 5 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+            <loadStimulus eventTag="Round 5 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,E|H,D|B,F|G,C">
                         <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
@@ -1659,7 +1659,7 @@
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <clearPage/>
-            <loadStimulus eventTag="Round 6 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+            <loadStimulus eventTag="Round 6 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,F|G,D|C,B|E,H">
                         <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
@@ -1767,7 +1767,7 @@
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <clearPage/>
-            <loadStimulus eventTag="Round 7 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+            <loadStimulus eventTag="Round 7 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,G|B,H|E,C|D,F">
                         <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
@@ -1875,7 +1875,7 @@
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <clearPage/>
-            <loadStimulus eventTag="Round 8 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+            <loadStimulus eventTag="Round 8 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A|B|C|D|E|F|G|H">
                         <groupNetworkActivity groupRole="A,B,C,D,E,F,G,H">
@@ -1981,7 +1981,7 @@
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <clearPage/>
-            <loadStimulus eventTag="Round 9 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+            <loadStimulus eventTag="Round 9 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,B|C,D|E,F|G,H">
                         <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
@@ -2089,7 +2089,7 @@
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <clearPage/>
-            <loadStimulus eventTag="Round 10 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+            <loadStimulus eventTag="Round 10 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,H|E,D|C,F|G,B">
                         <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
@@ -2197,7 +2197,7 @@
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <clearPage/>
-            <loadStimulus eventTag="Round 11 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+            <loadStimulus eventTag="Round 11 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,D|G,F|E,B|C,H">
                         <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
@@ -2305,7 +2305,7 @@
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <clearPage/>
-            <loadStimulus eventTag="Round 12 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+            <loadStimulus eventTag="Round 12 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,C|B,D|E,G|F,H">
                         <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
@@ -2413,7 +2413,7 @@
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <clearPage/>
-            <loadStimulus eventTag="Round 13 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+            <loadStimulus eventTag="Round 13 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,E|H,D|B,F|G,C">
                         <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
@@ -2521,7 +2521,7 @@
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <clearPage/>
-            <loadStimulus eventTag="Round 14 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+            <loadStimulus eventTag="Round 14 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,F|G,D|C,B|E,H">
                         <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
@@ -2629,7 +2629,7 @@
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <clearPage/>
-            <loadStimulus eventTag="Round 15 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+            <loadStimulus eventTag="Round 15 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,G|B,H|E,C|D,F">
                         <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
@@ -2737,7 +2737,7 @@
         <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <clearPage/>
-            <loadStimulus eventTag="Round 16 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="3" repeatCount="1">
+            <loadStimulus eventTag="Round 16 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A|B|C|D|E|F|G|H">
                         <groupNetworkActivity groupRole="A,B,C,D,E,F,G,H">
@@ -2860,32 +2860,6 @@
     <stimuli>
         <stimulus code="moveRotated90" identifier="1.png:shape1:version4:quadrant1:moveRotated90" imagePath="1.png" pauseMs="0">
             <tag>1</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated90</tag>
             <tag>quadrant1</tag>
             <tag>shape1</tag>
@@ -2893,32 +2867,6 @@
         </stimulus>
         <stimulus code="moveRotated150" identifier="1.png:shape1:version2:version3:quadrant2:moveRotated150" imagePath="1.png" pauseMs="0">
             <tag>1</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated150</tag>
             <tag>quadrant2</tag>
             <tag>shape1</tag>
@@ -2927,32 +2875,6 @@
         </stimulus>
         <stimulus code="moveRotated210" identifier="1.png:shape1:version1:version5:quadrant3:moveRotated210" imagePath="1.png" pauseMs="0">
             <tag>1</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated210</tag>
             <tag>quadrant3</tag>
             <tag>shape1</tag>
@@ -2961,32 +2883,6 @@
         </stimulus>
         <stimulus code="moveRotated30" identifier="2.png:shape1:version2:version2zero:quadrant1:moveRotated30" imagePath="2.png" pauseMs="0">
             <tag>2</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated30</tag>
             <tag>quadrant1</tag>
             <tag>shape1</tag>
@@ -2995,32 +2891,6 @@
         </stimulus>
         <stimulus code="moveRotated120" identifier="2.png:shape1:version6:quadrant2:moveRotated120" imagePath="2.png" pauseMs="0">
             <tag>2</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated120</tag>
             <tag>quadrant2</tag>
             <tag>shape1</tag>
@@ -3028,32 +2898,6 @@
         </stimulus>
         <stimulus code="moveRotated135" identifier="2.png:shape1:version5:quadrant2:moveRotated135" imagePath="2.png" pauseMs="0">
             <tag>2</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated135</tag>
             <tag>quadrant2</tag>
             <tag>shape1</tag>
@@ -3061,32 +2905,6 @@
         </stimulus>
         <stimulus code="moveRotated270" identifier="2.png:shape1:version1:quadrant3:moveRotated270" imagePath="2.png" pauseMs="0">
             <tag>2</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated270</tag>
             <tag>quadrant3</tag>
             <tag>shape1</tag>
@@ -3094,32 +2912,6 @@
         </stimulus>
         <stimulus code="moveRotated315" identifier="2.png:shape1:version4:version4zero:quadrant4:moveRotated315" imagePath="2.png" pauseMs="0">
             <tag>2</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated315</tag>
             <tag>quadrant4</tag>
             <tag>shape1</tag>
@@ -3128,32 +2920,6 @@
         </stimulus>
         <stimulus code="moveRotated90" identifier="3.png:shape1:version1:quadrant1:moveRotated90" imagePath="3.png" pauseMs="0">
             <tag>3</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated90</tag>
             <tag>quadrant1</tag>
             <tag>shape1</tag>
@@ -3161,32 +2927,6 @@
         </stimulus>
         <stimulus code="moveRotated210" identifier="3.png:shape1:version2:version4:version4zero:quadrant3:moveRotated210" imagePath="3.png" pauseMs="0">
             <tag>3</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated210</tag>
             <tag>quadrant3</tag>
             <tag>shape1</tag>
@@ -3196,32 +2936,6 @@
         </stimulus>
         <stimulus code="moveRotated315" identifier="3.png:shape1:version6:quadrant4:moveRotated315" imagePath="3.png" pauseMs="0">
             <tag>3</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated315</tag>
             <tag>quadrant4</tag>
             <tag>shape1</tag>
@@ -3229,32 +2943,6 @@
         </stimulus>
         <stimulus code="moveRotated360" identifier="3.png:shape1:version3:version3zero:quadrant4:moveRotated360" imagePath="3.png" pauseMs="0">
             <tag>3</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated360</tag>
             <tag>quadrant4</tag>
             <tag>shape1</tag>
@@ -3263,32 +2951,6 @@
         </stimulus>
         <stimulus code="moveRotated30" identifier="4.png:shape1:version4:quadrant1:moveRotated30" imagePath="4.png" pauseMs="0">
             <tag>4</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated30</tag>
             <tag>quadrant1</tag>
             <tag>shape1</tag>
@@ -3296,32 +2958,6 @@
         </stimulus>
         <stimulus code="moveRotated90" identifier="4.png:shape1:version2:version2zero:quadrant1:moveRotated90" imagePath="4.png" pauseMs="0">
             <tag>4</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated90</tag>
             <tag>quadrant1</tag>
             <tag>shape1</tag>
@@ -3330,32 +2966,6 @@
         </stimulus>
         <stimulus code="moveRotated210" identifier="4.png:shape1:version3:version3zero:quadrant3:moveRotated210" imagePath="4.png" pauseMs="0">
             <tag>4</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated210</tag>
             <tag>quadrant3</tag>
             <tag>shape1</tag>
@@ -3364,32 +2974,6 @@
         </stimulus>
         <stimulus code="moveRotated330" identifier="4.png:shape1:version1:version5:version5zero:quadrant4:moveRotated330" imagePath="4.png" pauseMs="0">
             <tag>4</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated330</tag>
             <tag>quadrant4</tag>
             <tag>shape1</tag>
@@ -3399,32 +2983,6 @@
         </stimulus>
         <stimulus code="moveRotated30" identifier="5.png:shape1:version1:version1zero:version6:quadrant1:moveRotated30" imagePath="5.png" pauseMs="0">
             <tag>5</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated30</tag>
             <tag>quadrant1</tag>
             <tag>shape1</tag>
@@ -3434,32 +2992,6 @@
         </stimulus>
         <stimulus code="moveRotated60" identifier="5.png:shape1:version3:quadrant1:moveRotated60" imagePath="5.png" pauseMs="0">
             <tag>5</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated60</tag>
             <tag>quadrant1</tag>
             <tag>shape1</tag>
@@ -3467,32 +2999,6 @@
         </stimulus>
         <stimulus code="moveRotated300" identifier="5.png:shape1:version2:quadrant4:moveRotated300" imagePath="5.png" pauseMs="0">
             <tag>5</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated300</tag>
             <tag>quadrant4</tag>
             <tag>shape1</tag>
@@ -3500,32 +3006,6 @@
         </stimulus>
         <stimulus code="moveRotated90" identifier="6.png:shape1:version5:quadrant1:moveRotated90" imagePath="6.png" pauseMs="0">
             <tag>6</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated90</tag>
             <tag>quadrant1</tag>
             <tag>shape1</tag>
@@ -3533,32 +3013,6 @@
         </stimulus>
         <stimulus code="moveRotated225" identifier="6.png:shape1:version6:version6zero:quadrant3:moveRotated225" imagePath="6.png" pauseMs="0">
             <tag>6</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated225</tag>
             <tag>quadrant3</tag>
             <tag>shape1</tag>
@@ -3567,32 +3021,6 @@
         </stimulus>
         <stimulus code="moveRotated240" identifier="6.png:shape1:version3:quadrant3:moveRotated240" imagePath="6.png" pauseMs="0">
             <tag>6</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated240</tag>
             <tag>quadrant3</tag>
             <tag>shape1</tag>
@@ -3600,32 +3028,6 @@
         </stimulus>
         <stimulus code="moveRotated300" identifier="6.png:shape1:version1:quadrant4:moveRotated300" imagePath="6.png" pauseMs="0">
             <tag>6</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated300</tag>
             <tag>quadrant4</tag>
             <tag>shape1</tag>
@@ -3633,32 +3035,6 @@
         </stimulus>
         <stimulus code="moveRotated360" identifier="6.png:shape1:version2:quadrant4:moveRotated360" imagePath="6.png" pauseMs="0">
             <tag>6</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated360</tag>
             <tag>quadrant4</tag>
             <tag>shape1</tag>
@@ -3666,32 +3042,6 @@
         </stimulus>
         <stimulus code="moveRotated30" identifier="7.png:shape1:version5:version5zero:quadrant1:moveRotated30" imagePath="7.png" pauseMs="0">
             <tag>7</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated30</tag>
             <tag>quadrant1</tag>
             <tag>shape1</tag>
@@ -3700,32 +3050,6 @@
         </stimulus>
         <stimulus code="moveRotated135" identifier="7.png:shape1:version1:version1zero:quadrant2:moveRotated135" imagePath="7.png" pauseMs="0">
             <tag>7</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated135</tag>
             <tag>quadrant2</tag>
             <tag>shape1</tag>
@@ -3734,32 +3058,6 @@
         </stimulus>
         <stimulus code="moveRotated225" identifier="7.png:shape1:version4:quadrant3:moveRotated225" imagePath="7.png" pauseMs="0">
             <tag>7</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated225</tag>
             <tag>quadrant3</tag>
             <tag>shape1</tag>
@@ -3767,32 +3065,6 @@
         </stimulus>
         <stimulus code="moveRotated240" identifier="7.png:shape1:version2:quadrant3:moveRotated240" imagePath="7.png" pauseMs="0">
             <tag>7</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated240</tag>
             <tag>quadrant3</tag>
             <tag>shape1</tag>
@@ -3800,32 +3072,6 @@
         </stimulus>
         <stimulus code="moveRotated270" identifier="7.png:shape1:version6:quadrant3:moveRotated270" imagePath="7.png" pauseMs="0">
             <tag>7</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated270</tag>
             <tag>quadrant3</tag>
             <tag>shape1</tag>
@@ -3833,32 +3079,6 @@
         </stimulus>
         <stimulus code="moveRotated315" identifier="7.png:shape1:version3:quadrant4:moveRotated315" imagePath="7.png" pauseMs="0">
             <tag>7</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated315</tag>
             <tag>quadrant4</tag>
             <tag>shape1</tag>
@@ -3866,32 +3086,6 @@
         </stimulus>
         <stimulus code="moveRotated45" identifier="8.png:shape2:version5:quadrant1:moveRotated45" imagePath="8.png" pauseMs="0">
             <tag>8</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated45</tag>
             <tag>quadrant1</tag>
             <tag>shape2</tag>
@@ -3899,32 +3093,6 @@
         </stimulus>
         <stimulus code="moveRotated60" identifier="8.png:shape2:version4:quadrant1:moveRotated60" imagePath="8.png" pauseMs="0">
             <tag>8</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated60</tag>
             <tag>quadrant1</tag>
             <tag>shape2</tag>
@@ -3932,32 +3100,6 @@
         </stimulus>
         <stimulus code="moveRotated120" identifier="8.png:shape2:version2:version2zero:quadrant2:moveRotated120" imagePath="8.png" pauseMs="0">
             <tag>8</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated120</tag>
             <tag>quadrant2</tag>
             <tag>shape2</tag>
@@ -3966,32 +3108,6 @@
         </stimulus>
         <stimulus code="moveRotated225" identifier="8.png:shape2:version6:quadrant3:moveRotated225" imagePath="8.png" pauseMs="0">
             <tag>8</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated225</tag>
             <tag>quadrant3</tag>
             <tag>shape2</tag>
@@ -3999,32 +3115,6 @@
         </stimulus>
         <stimulus code="moveRotated270" identifier="8.png:shape2:version3:version3zero:quadrant3:moveRotated270" imagePath="8.png" pauseMs="0">
             <tag>8</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated270</tag>
             <tag>quadrant3</tag>
             <tag>shape2</tag>
@@ -4033,32 +3123,6 @@
         </stimulus>
         <stimulus code="moveRotated45" identifier="9.png:shape2:version2:quadrant1:moveRotated45" imagePath="9.png" pauseMs="0">
             <tag>9</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated45</tag>
             <tag>quadrant1</tag>
             <tag>shape2</tag>
@@ -4066,32 +3130,6 @@
         </stimulus>
         <stimulus code="moveRotated90" identifier="9.png:shape2:version3:version3zero:version4:version4zero:quadrant1:moveRotated90" imagePath="9.png" pauseMs="0">
             <tag>9</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated90</tag>
             <tag>quadrant1</tag>
             <tag>shape2</tag>
@@ -4102,32 +3140,6 @@
         </stimulus>
         <stimulus code="moveRotated270" identifier="9.png:shape2:version1:version1zero:quadrant3:moveRotated270" imagePath="9.png" pauseMs="0">
             <tag>9</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated270</tag>
             <tag>quadrant3</tag>
             <tag>shape2</tag>
@@ -4136,32 +3148,6 @@
         </stimulus>
         <stimulus code="moveRotated300" identifier="9.png:shape2:version6:version6zero:quadrant4:moveRotated300" imagePath="9.png" pauseMs="0">
             <tag>9</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated300</tag>
             <tag>quadrant4</tag>
             <tag>shape2</tag>
@@ -4170,32 +3156,6 @@
         </stimulus>
         <stimulus code="moveRotated330" identifier="9.png:shape2:version5:quadrant4:moveRotated330" imagePath="9.png" pauseMs="0">
             <tag>9</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated330</tag>
             <tag>quadrant4</tag>
             <tag>shape2</tag>
@@ -4203,32 +3163,6 @@
         </stimulus>
         <stimulus code="moveRotated120" identifier="10.png:shape2:version5:quadrant2:moveRotated120" imagePath="10.png" pauseMs="0">
             <tag>10</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated120</tag>
             <tag>quadrant2</tag>
             <tag>shape2</tag>
@@ -4236,32 +3170,6 @@
         </stimulus>
         <stimulus code="moveRotated150" identifier="10.png:shape2:version1:version1zero:quadrant2:moveRotated150" imagePath="10.png" pauseMs="0">
             <tag>10</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated150</tag>
             <tag>quadrant2</tag>
             <tag>shape2</tag>
@@ -4270,32 +3178,6 @@
         </stimulus>
         <stimulus code="moveRotated210" identifier="10.png:shape2:version3:quadrant3:moveRotated210" imagePath="10.png" pauseMs="0">
             <tag>10</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated210</tag>
             <tag>quadrant3</tag>
             <tag>shape2</tag>
@@ -4303,32 +3185,6 @@
         </stimulus>
         <stimulus code="moveRotated225" identifier="10.png:shape2:version2:quadrant3:moveRotated225" imagePath="10.png" pauseMs="0">
             <tag>10</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated225</tag>
             <tag>quadrant3</tag>
             <tag>shape2</tag>
@@ -4336,32 +3192,6 @@
         </stimulus>
         <stimulus code="moveRotated45" identifier="11.png:shape2:version3:quadrant1:moveRotated45" imagePath="11.png" pauseMs="0">
             <tag>11</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated45</tag>
             <tag>quadrant1</tag>
             <tag>shape2</tag>
@@ -4369,32 +3199,6 @@
         </stimulus>
         <stimulus code="moveRotated90" identifier="11.png:shape2:version5:quadrant1:moveRotated90" imagePath="11.png" pauseMs="0">
             <tag>11</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated90</tag>
             <tag>quadrant1</tag>
             <tag>shape2</tag>
@@ -4402,32 +3206,6 @@
         </stimulus>
         <stimulus code="moveRotated150" identifier="11.png:shape2:version4:quadrant2:moveRotated150" imagePath="11.png" pauseMs="0">
             <tag>11</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated150</tag>
             <tag>quadrant2</tag>
             <tag>shape2</tag>
@@ -4435,32 +3213,6 @@
         </stimulus>
         <stimulus code="moveRotated180" identifier="11.png:shape2:version6:quadrant2:moveRotated180" imagePath="11.png" pauseMs="0">
             <tag>11</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated180</tag>
             <tag>quadrant2</tag>
             <tag>shape2</tag>
@@ -4468,32 +3220,6 @@
         </stimulus>
         <stimulus code="moveRotated300" identifier="11.png:shape2:version1:quadrant4:moveRotated300" imagePath="11.png" pauseMs="0">
             <tag>11</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated300</tag>
             <tag>quadrant4</tag>
             <tag>shape2</tag>
@@ -4501,32 +3227,6 @@
         </stimulus>
         <stimulus code="moveRotated330" identifier="11.png:shape2:version1:quadrant4:moveRotated330" imagePath="11.png" pauseMs="0">
             <tag>11</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated330</tag>
             <tag>quadrant4</tag>
             <tag>shape2</tag>
@@ -4534,32 +3234,6 @@
         </stimulus>
         <stimulus code="moveRotated30" identifier="12.png:shape2:version1:quadrant1:moveRotated30" imagePath="12.png" pauseMs="0">
             <tag>12</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated30</tag>
             <tag>quadrant1</tag>
             <tag>shape2</tag>
@@ -4567,32 +3241,6 @@
         </stimulus>
         <stimulus code="moveRotated60" identifier="12.png:shape2:version6:version6zero:quadrant1:moveRotated60" imagePath="12.png" pauseMs="0">
             <tag>12</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated60</tag>
             <tag>quadrant1</tag>
             <tag>shape2</tag>
@@ -4601,32 +3249,6 @@
         </stimulus>
         <stimulus code="moveRotated135" identifier="12.png:shape2:version3:quadrant2:moveRotated135" imagePath="12.png" pauseMs="0">
             <tag>12</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated135</tag>
             <tag>quadrant2</tag>
             <tag>shape2</tag>
@@ -4634,32 +3256,6 @@
         </stimulus>
         <stimulus code="moveRotated225" identifier="12.png:shape2:version5:version5zero:quadrant3:moveRotated225" imagePath="12.png" pauseMs="0">
             <tag>12</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated225</tag>
             <tag>quadrant3</tag>
             <tag>shape2</tag>
@@ -4668,32 +3264,6 @@
         </stimulus>
         <stimulus code="moveRotated315" identifier="12.png:shape2:version4:quadrant4:moveRotated315" imagePath="12.png" pauseMs="0">
             <tag>12</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated315</tag>
             <tag>quadrant4</tag>
             <tag>shape2</tag>
@@ -4701,32 +3271,6 @@
         </stimulus>
         <stimulus code="moveRotated180" identifier="13.png:shape2:version2:quadrant2:moveRotated180" imagePath="13.png" pauseMs="0">
             <tag>13</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated180</tag>
             <tag>quadrant2</tag>
             <tag>shape2</tag>
@@ -4734,32 +3278,6 @@
         </stimulus>
         <stimulus code="moveRotated210" identifier="13.png:shape2:version4:version4zero:quadrant3:moveRotated210" imagePath="13.png" pauseMs="0">
             <tag>13</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated210</tag>
             <tag>quadrant3</tag>
             <tag>shape2</tag>
@@ -4768,32 +3286,6 @@
         </stimulus>
         <stimulus code="moveRotated270" identifier="13.png:shape2:version5:quadrant3:moveRotated270" imagePath="13.png" pauseMs="0">
             <tag>13</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated270</tag>
             <tag>quadrant3</tag>
             <tag>shape2</tag>
@@ -4801,32 +3293,6 @@
         </stimulus>
         <stimulus code="moveRotated330" identifier="13.png:shape2:version3:version3zero:quadrant4:moveRotated330" imagePath="13.png" pauseMs="0">
             <tag>13</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated330</tag>
             <tag>quadrant4</tag>
             <tag>shape2</tag>
@@ -4835,32 +3301,6 @@
         </stimulus>
         <stimulus code="moveRotated360" identifier="13.png:shape2:version6:quadrant4:moveRotated360" imagePath="13.png" pauseMs="0">
             <tag>13</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated360</tag>
             <tag>quadrant4</tag>
             <tag>shape2</tag>
@@ -4868,32 +3308,6 @@
         </stimulus>
         <stimulus code="moveRotated120" identifier="14.png:shape2:version1:quadrant2:moveRotated120" imagePath="14.png" pauseMs="0">
             <tag>14</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated120</tag>
             <tag>quadrant2</tag>
             <tag>shape2</tag>
@@ -4901,32 +3315,6 @@
         </stimulus>
         <stimulus code="moveRotated135" identifier="14.png:shape2:version5:version6:quadrant2:moveRotated135" imagePath="14.png" pauseMs="0">
             <tag>14</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated135</tag>
             <tag>quadrant2</tag>
             <tag>shape2</tag>
@@ -4935,32 +3323,6 @@
         </stimulus>
         <stimulus code="moveRotated180" identifier="14.png:shape2:version3:quadrant2:moveRotated180" imagePath="14.png" pauseMs="0">
             <tag>14</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated180</tag>
             <tag>quadrant2</tag>
             <tag>shape2</tag>
@@ -4968,32 +3330,6 @@
         </stimulus>
         <stimulus code="moveRotated330" identifier="14.png:shape2:version2:quadrant4:moveRotated330" imagePath="14.png" pauseMs="0">
             <tag>14</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated330</tag>
             <tag>quadrant4</tag>
             <tag>shape2</tag>
@@ -5001,32 +3337,6 @@
         </stimulus>
         <stimulus code="moveRotated45" identifier="15.png:shape3:version3:version3zero:quadrant1:moveRotated45" imagePath="15.png" pauseMs="0">
             <tag>15</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated45</tag>
             <tag>quadrant1</tag>
             <tag>shape3</tag>
@@ -5035,32 +3345,6 @@
         </stimulus>
         <stimulus code="moveRotated60" identifier="15.png:shape3:version2:quadrant1:moveRotated60" imagePath="15.png" pauseMs="0">
             <tag>15</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated60</tag>
             <tag>quadrant1</tag>
             <tag>shape3</tag>
@@ -5068,32 +3352,6 @@
         </stimulus>
         <stimulus code="moveRotated300" identifier="15.png:shape3:version5:version5zero:quadrant4:moveRotated300" imagePath="15.png" pauseMs="0">
             <tag>15</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated300</tag>
             <tag>quadrant4</tag>
             <tag>shape3</tag>
@@ -5102,32 +3360,6 @@
         </stimulus>
         <stimulus code="moveRotated315" identifier="15.png:shape3:version6:quadrant4:moveRotated315" imagePath="15.png" pauseMs="0">
             <tag>15</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated315</tag>
             <tag>quadrant4</tag>
             <tag>shape3</tag>
@@ -5135,32 +3367,6 @@
         </stimulus>
         <stimulus code="moveRotated330" identifier="15.png:shape3:version4:quadrant4:moveRotated330" imagePath="15.png" pauseMs="0">
             <tag>15</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated330</tag>
             <tag>quadrant4</tag>
             <tag>shape3</tag>
@@ -5168,32 +3374,6 @@
         </stimulus>
         <stimulus code="moveRotated45" identifier="16.png:shape3:version1:version4:version4zero:quadrant1:moveRotated45" imagePath="16.png" pauseMs="0">
             <tag>16</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated45</tag>
             <tag>quadrant1</tag>
             <tag>shape3</tag>
@@ -5203,32 +3383,6 @@
         </stimulus>
         <stimulus code="moveRotated135" identifier="16.png:shape3:version3:version3zero:quadrant2:moveRotated135" imagePath="16.png" pauseMs="0">
             <tag>16</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated135</tag>
             <tag>quadrant2</tag>
             <tag>shape3</tag>
@@ -5237,32 +3391,6 @@
         </stimulus>
         <stimulus code="moveRotated180" identifier="16.png:shape3:version2:version2zero:version5:quadrant2:moveRotated180" imagePath="16.png" pauseMs="0">
             <tag>16</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated180</tag>
             <tag>quadrant2</tag>
             <tag>shape3</tag>
@@ -5272,32 +3400,6 @@
         </stimulus>
         <stimulus code="moveRotated240" identifier="16.png:shape3:version6:quadrant3:moveRotated240" imagePath="16.png" pauseMs="0">
             <tag>16</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated240</tag>
             <tag>quadrant3</tag>
             <tag>shape3</tag>
@@ -5305,32 +3407,6 @@
         </stimulus>
         <stimulus code="moveRotated120" identifier="17.png:shape3:version4:version6:version6zero:quadrant2:moveRotated120" imagePath="17.png" pauseMs="0">
             <tag>17</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated120</tag>
             <tag>quadrant2</tag>
             <tag>shape3</tag>
@@ -5340,32 +3416,6 @@
         </stimulus>
         <stimulus code="moveRotated240" identifier="17.png:shape3:version5:version5zero:quadrant3:moveRotated240" imagePath="17.png" pauseMs="0">
             <tag>17</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated240</tag>
             <tag>quadrant3</tag>
             <tag>shape3</tag>
@@ -5374,32 +3424,6 @@
         </stimulus>
         <stimulus code="moveRotated315" identifier="17.png:shape3:version1:version1zero:version2:quadrant4:moveRotated315" imagePath="17.png" pauseMs="0">
             <tag>17</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated315</tag>
             <tag>quadrant4</tag>
             <tag>shape3</tag>
@@ -5409,32 +3433,6 @@
         </stimulus>
         <stimulus code="moveRotated45" identifier="18.png:shape3:version6:quadrant1:moveRotated45" imagePath="18.png" pauseMs="0">
             <tag>18</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated45</tag>
             <tag>quadrant1</tag>
             <tag>shape3</tag>
@@ -5442,32 +3440,6 @@
         </stimulus>
         <stimulus code="moveRotated150" identifier="18.png:shape3:version5:version5zero:quadrant2:moveRotated150" imagePath="18.png" pauseMs="0">
             <tag>18</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated150</tag>
             <tag>quadrant2</tag>
             <tag>shape3</tag>
@@ -5476,32 +3448,6 @@
         </stimulus>
         <stimulus code="moveRotated180" identifier="18.png:shape3:version3:quadrant2:moveRotated180" imagePath="18.png" pauseMs="0">
             <tag>18</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated180</tag>
             <tag>quadrant2</tag>
             <tag>shape3</tag>
@@ -5509,32 +3455,6 @@
         </stimulus>
         <stimulus code="moveRotated300" identifier="18.png:shape3:version4:version4zero:quadrant4:moveRotated300" imagePath="18.png" pauseMs="0">
             <tag>18</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated300</tag>
             <tag>quadrant4</tag>
             <tag>shape3</tag>
@@ -5543,32 +3463,6 @@
         </stimulus>
         <stimulus code="moveRotated135" identifier="19.png:shape3:version1:version1zero:quadrant2:moveRotated135" imagePath="19.png" pauseMs="0">
             <tag>19</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated135</tag>
             <tag>quadrant2</tag>
             <tag>shape3</tag>
@@ -5577,32 +3471,6 @@
         </stimulus>
         <stimulus code="moveRotated240" identifier="19.png:shape3:version3:version4:quadrant3:moveRotated240" imagePath="19.png" pauseMs="0">
             <tag>19</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated240</tag>
             <tag>quadrant3</tag>
             <tag>shape3</tag>
@@ -5611,32 +3479,6 @@
         </stimulus>
         <stimulus code="moveRotated270" identifier="19.png:shape3:version6:version6zero:quadrant3:moveRotated270" imagePath="19.png" pauseMs="0">
             <tag>19</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated270</tag>
             <tag>quadrant3</tag>
             <tag>shape3</tag>
@@ -5645,32 +3487,6 @@
         </stimulus>
         <stimulus code="moveRotated120" identifier="20.png:shape3:version4:version4zero:quadrant2:moveRotated120" imagePath="20.png" pauseMs="0">
             <tag>20</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated120</tag>
             <tag>quadrant2</tag>
             <tag>shape3</tag>
@@ -5679,32 +3495,6 @@
         </stimulus>
         <stimulus code="moveRotated180" identifier="20.png:shape3:version6:version6zero:quadrant2:moveRotated180" imagePath="20.png" pauseMs="0">
             <tag>20</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated180</tag>
             <tag>quadrant2</tag>
             <tag>shape3</tag>
@@ -5713,32 +3503,6 @@
         </stimulus>
         <stimulus code="moveRotated240" identifier="20.png:shape3:version1:quadrant3:moveRotated240" imagePath="20.png" pauseMs="0">
             <tag>20</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated240</tag>
             <tag>quadrant3</tag>
             <tag>shape3</tag>
@@ -5746,32 +3510,6 @@
         </stimulus>
         <stimulus code="moveRotated315" identifier="20.png:shape3:version3:quadrant4:moveRotated315" imagePath="20.png" pauseMs="0">
             <tag>20</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated315</tag>
             <tag>quadrant4</tag>
             <tag>shape3</tag>
@@ -5779,32 +3517,6 @@
         </stimulus>
         <stimulus code="moveRotated30" identifier="21.png:shape3:version5:quadrant1:moveRotated30" imagePath="21.png" pauseMs="0">
             <tag>21</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated30</tag>
             <tag>quadrant1</tag>
             <tag>shape3</tag>
@@ -5812,32 +3524,6 @@
         </stimulus>
         <stimulus code="moveRotated60" identifier="21.png:shape3:version6:quadrant1:moveRotated60" imagePath="21.png" pauseMs="0">
             <tag>21</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated60</tag>
             <tag>quadrant1</tag>
             <tag>shape3</tag>
@@ -5845,32 +3531,6 @@
         </stimulus>
         <stimulus code="moveRotated180" identifier="21.png:shape3:version4:quadrant2:moveRotated180" imagePath="21.png" pauseMs="0">
             <tag>21</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated180</tag>
             <tag>quadrant2</tag>
             <tag>shape3</tag>
@@ -5878,32 +3538,6 @@
         </stimulus>
         <stimulus code="moveRotated240" identifier="21.png:shape3:version2:quadrant3:moveRotated240" imagePath="21.png" pauseMs="0">
             <tag>21</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated240</tag>
             <tag>quadrant3</tag>
             <tag>shape3</tag>
@@ -5911,32 +3545,6 @@
         </stimulus>
         <stimulus code="moveRotated270" identifier="21.png:shape3:version3:quadrant3:moveRotated270" imagePath="21.png" pauseMs="0">
             <tag>21</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated270</tag>
             <tag>quadrant3</tag>
             <tag>shape3</tag>
@@ -5944,32 +3552,6 @@
         </stimulus>
         <stimulus code="moveRotated360" identifier="21.png:shape3:version1:quadrant4:moveRotated360" imagePath="21.png" pauseMs="0">
             <tag>21</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated360</tag>
             <tag>quadrant4</tag>
             <tag>shape3</tag>
@@ -5977,32 +3559,6 @@
         </stimulus>
         <stimulus code="moveRotated45" identifier="22.png:shape4:version4:quadrant1:moveRotated45" imagePath="22.png" pauseMs="0">
             <tag>22</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated45</tag>
             <tag>quadrant1</tag>
             <tag>shape4</tag>
@@ -6010,32 +3566,6 @@
         </stimulus>
         <stimulus code="moveRotated60" identifier="22.png:shape4:version1:version1zero:quadrant1:moveRotated60" imagePath="22.png" pauseMs="0">
             <tag>22</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated60</tag>
             <tag>quadrant1</tag>
             <tag>shape4</tag>
@@ -6044,32 +3574,6 @@
         </stimulus>
         <stimulus code="moveRotated90" identifier="22.png:shape4:version2:quadrant1:moveRotated90" imagePath="22.png" pauseMs="0">
             <tag>22</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated90</tag>
             <tag>quadrant1</tag>
             <tag>shape4</tag>
@@ -6077,32 +3581,6 @@
         </stimulus>
         <stimulus code="moveRotated150" identifier="22.png:shape4:version5:version5zero:quadrant2:moveRotated150" imagePath="22.png" pauseMs="0">
             <tag>22</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated150</tag>
             <tag>quadrant2</tag>
             <tag>shape4</tag>
@@ -6111,32 +3589,6 @@
         </stimulus>
         <stimulus code="moveRotated330" identifier="22.png:shape4:version6:quadrant4:moveRotated330" imagePath="22.png" pauseMs="0">
             <tag>22</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated330</tag>
             <tag>quadrant4</tag>
             <tag>shape4</tag>
@@ -6144,32 +3596,6 @@
         </stimulus>
         <stimulus code="moveRotated135" identifier="23.png:shape4:version2:quadrant2:moveRotated135" imagePath="23.png" pauseMs="0">
             <tag>23</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated135</tag>
             <tag>quadrant2</tag>
             <tag>shape4</tag>
@@ -6177,32 +3603,6 @@
         </stimulus>
         <stimulus code="moveRotated210" identifier="23.png:shape4:version6:quadrant3:moveRotated210" imagePath="23.png" pauseMs="0">
             <tag>23</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated210</tag>
             <tag>quadrant3</tag>
             <tag>shape4</tag>
@@ -6210,32 +3610,6 @@
         </stimulus>
         <stimulus code="moveRotated300" identifier="23.png:shape4:version3:quadrant4:moveRotated300" imagePath="23.png" pauseMs="0">
             <tag>23</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated300</tag>
             <tag>quadrant4</tag>
             <tag>shape4</tag>
@@ -6243,32 +3617,6 @@
         </stimulus>
         <stimulus code="moveRotated330" identifier="23.png:shape4:version4:version4zero:quadrant4:moveRotated330" imagePath="23.png" pauseMs="0">
             <tag>23</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated330</tag>
             <tag>quadrant4</tag>
             <tag>shape4</tag>
@@ -6277,32 +3625,6 @@
         </stimulus>
         <stimulus code="moveRotated360" identifier="23.png:shape4:version1:version5:quadrant4:moveRotated360" imagePath="23.png" pauseMs="0">
             <tag>23</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated360</tag>
             <tag>quadrant4</tag>
             <tag>shape4</tag>
@@ -6311,32 +3633,6 @@
         </stimulus>
         <stimulus code="moveRotated90" identifier="24.png:shape4:version5:version5zero:quadrant1:moveRotated90" imagePath="24.png" pauseMs="0">
             <tag>24</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated90</tag>
             <tag>quadrant1</tag>
             <tag>shape4</tag>
@@ -6345,32 +3641,6 @@
         </stimulus>
         <stimulus code="moveRotated150" identifier="24.png:shape4:version6:quadrant2:moveRotated150" imagePath="24.png" pauseMs="0">
             <tag>24</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated150</tag>
             <tag>quadrant2</tag>
             <tag>shape4</tag>
@@ -6378,32 +3648,6 @@
         </stimulus>
         <stimulus code="moveRotated180" identifier="24.png:shape4:version1:version4:version4zero:quadrant2:moveRotated180" imagePath="24.png" pauseMs="0">
             <tag>24</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated180</tag>
             <tag>quadrant2</tag>
             <tag>shape4</tag>
@@ -6413,32 +3657,6 @@
         </stimulus>
         <stimulus code="moveRotated210" identifier="24.png:shape4:version2:version2zero:quadrant3:moveRotated210" imagePath="24.png" pauseMs="0">
             <tag>24</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated210</tag>
             <tag>quadrant3</tag>
             <tag>shape4</tag>
@@ -6447,32 +3665,6 @@
         </stimulus>
         <stimulus code="moveRotated45" identifier="25.png:shape4:version2:version2zero:quadrant1:moveRotated45" imagePath="25.png" pauseMs="0">
             <tag>25</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated45</tag>
             <tag>quadrant1</tag>
             <tag>shape4</tag>
@@ -6481,32 +3673,6 @@
         </stimulus>
         <stimulus code="moveRotated120" identifier="25.png:shape4:version3:version3zero:quadrant2:moveRotated120" imagePath="25.png" pauseMs="0">
             <tag>25</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated120</tag>
             <tag>quadrant2</tag>
             <tag>shape4</tag>
@@ -6515,32 +3681,6 @@
         </stimulus>
         <stimulus code="moveRotated150" identifier="25.png:shape4:version4:quadrant2:moveRotated150" imagePath="25.png" pauseMs="0">
             <tag>25</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated150</tag>
             <tag>quadrant2</tag>
             <tag>shape4</tag>
@@ -6548,32 +3688,6 @@
         </stimulus>
         <stimulus code="moveRotated225" identifier="25.png:shape4:version5:quadrant3:moveRotated225" imagePath="25.png" pauseMs="0">
             <tag>25</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated225</tag>
             <tag>quadrant3</tag>
             <tag>shape4</tag>
@@ -6581,32 +3695,6 @@
         </stimulus>
         <stimulus code="moveRotated315" identifier="25.png:shape4:version1:quadrant4:moveRotated315" imagePath="25.png" pauseMs="0">
             <tag>25</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated315</tag>
             <tag>quadrant4</tag>
             <tag>shape4</tag>
@@ -6614,32 +3702,6 @@
         </stimulus>
         <stimulus code="moveRotated90" identifier="26.png:shape4:version6:quadrant1:moveRotated90" imagePath="26.png" pauseMs="0">
             <tag>26</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated90</tag>
             <tag>quadrant1</tag>
             <tag>shape4</tag>
@@ -6647,32 +3709,6 @@
         </stimulus>
         <stimulus code="moveRotated225" identifier="26.png:shape4:version3:quadrant3:moveRotated225" imagePath="26.png" pauseMs="0">
             <tag>26</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated225</tag>
             <tag>quadrant3</tag>
             <tag>shape4</tag>
@@ -6680,32 +3716,6 @@
         </stimulus>
         <stimulus code="moveRotated270" identifier="26.png:shape4:version2:quadrant3:moveRotated270" imagePath="26.png" pauseMs="0">
             <tag>26</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated270</tag>
             <tag>quadrant3</tag>
             <tag>shape4</tag>
@@ -6713,32 +3723,6 @@
         </stimulus>
         <stimulus code="moveRotated45" identifier="27.png:shape4:version5:quadrant1:moveRotated45" imagePath="27.png" pauseMs="0">
             <tag>27</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated45</tag>
             <tag>quadrant1</tag>
             <tag>shape4</tag>
@@ -6746,32 +3730,6 @@
         </stimulus>
         <stimulus code="moveRotated120" identifier="27.png:shape4:version1:quadrant2:moveRotated120" imagePath="27.png" pauseMs="0">
             <tag>27</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated120</tag>
             <tag>quadrant2</tag>
             <tag>shape4</tag>
@@ -6779,32 +3737,6 @@
         </stimulus>
         <stimulus code="moveRotated270" identifier="27.png:shape4:version4:quadrant3:moveRotated270" imagePath="27.png" pauseMs="0">
             <tag>27</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated270</tag>
             <tag>quadrant3</tag>
             <tag>shape4</tag>
@@ -6812,32 +3744,6 @@
         </stimulus>
         <stimulus code="moveRotated30" identifier="28.png:shape4:version3:version6:version6zero:quadrant1:moveRotated30" imagePath="28.png" pauseMs="0">
             <tag>28</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated30</tag>
             <tag>quadrant1</tag>
             <tag>shape4</tag>
@@ -6847,32 +3753,6 @@
         </stimulus>
         <stimulus code="moveRotated225" identifier="28.png:shape4:version1:version1zero:quadrant3:moveRotated225" imagePath="28.png" pauseMs="0">
             <tag>28</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated225</tag>
             <tag>quadrant3</tag>
             <tag>shape4</tag>
@@ -6881,32 +3761,6 @@
         </stimulus>
         <stimulus code="moveRotated300" identifier="28.png:shape4:version4:version5:quadrant4:moveRotated300" imagePath="28.png" pauseMs="0">
             <tag>28</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated300</tag>
             <tag>quadrant4</tag>
             <tag>shape4</tag>
@@ -6915,32 +3769,6 @@
         </stimulus>
         <stimulus code="moveRotated330" identifier="28.png:shape4:version2:version2zero:quadrant4:moveRotated330" imagePath="28.png" pauseMs="0">
             <tag>28</tag>
-            <tag>Round_0_4</tag>
-            <tag>Round_0_8</tag>
-            <tag>Round_10_8</tag>
-            <tag>Round_11_8</tag>
-            <tag>Round_12_8</tag>
-            <tag>Round_13_8</tag>
-            <tag>Round_14_8</tag>
-            <tag>Round_15_8</tag>
-            <tag>Round_16_8</tag>
-            <tag>Round_1_4</tag>
-            <tag>Round_1_8</tag>
-            <tag>Round_2_4</tag>
-            <tag>Round_2_8</tag>
-            <tag>Round_3_4</tag>
-            <tag>Round_3_8</tag>
-            <tag>Round_4_4</tag>
-            <tag>Round_4_8</tag>
-            <tag>Round_5_4</tag>
-            <tag>Round_5_8</tag>
-            <tag>Round_6_4</tag>
-            <tag>Round_6_8</tag>
-            <tag>Round_7_4</tag>
-            <tag>Round_7_8</tag>
-            <tag>Round_8_4</tag>
-            <tag>Round_8_8</tag>
-            <tag>Round_9_8</tag>
             <tag>moveRotated330</tag>
             <tag>quadrant4</tag>
             <tag>shape4</tag>
