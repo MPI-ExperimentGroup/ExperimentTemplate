@@ -61,7 +61,7 @@ public class MultiParticipant {
 //            
 //        }
 //    }
-    final int numberOfStimuli = 3;
+    final int numberOfStimuli = 9;
     final String preStimuliText = "Add information before the beginning of each round, telling the participants who they’re about to play with";
     final String postStimuliText = "there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far).";
 
