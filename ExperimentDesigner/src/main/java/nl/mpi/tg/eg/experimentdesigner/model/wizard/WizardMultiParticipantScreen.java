@@ -188,7 +188,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         final List<Stimulus> stimuliList = this.wizardScreenData.getStimuli();
         if (stimuliSet != null) {
             for (String stimulusLine : stimuliSet) {
-                final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{this.wizardScreenData.getScreenTitle()}));
+                final HashSet<String> tagSet = new HashSet<>(/*Arrays.asList(new String[]{this.wizardScreenData.getScreenTitle()})*/);
                 tagSet.addAll(Arrays.asList(stimulusLine.split("(\\.png)?:")));
                 final Stimulus stimulus;
                 if (stimulusLine.contains(".png")) {
