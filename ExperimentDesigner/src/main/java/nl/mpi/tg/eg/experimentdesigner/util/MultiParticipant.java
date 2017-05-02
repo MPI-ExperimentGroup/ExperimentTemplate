@@ -271,6 +271,7 @@ public class MultiParticipant {
                 roundScreen = getPlayingRound("Round " + currentChannel[0] + " - 4", groupMembers4, currentChannel[1], textEntryPhaseRoles4, textWaitPhaseRoles4, gridWaitPhaseRoles4, responseGridPhaseRoles4, mutualFeedbackPhaseRoles4);
             }
             roundScreen.setStimuliSet(stimuliArray);
+            roundScreen.getWizardScreenData().setStimuliRandomTags(new String[]{"version1zero", "version2zero", "version3zero", "version4zero", "version5zero", "version6zero"});
             roundScreen.setStimulusFreeText(true, "[etuiopasdfgkzbnm ]{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
             wizardData.addScreen(roundScreen);
             if (roundOfFourScreenOuter == null) {
@@ -314,6 +315,7 @@ public class MultiParticipant {
                 roundScreen = getPlayingRound("Round " + currentChannel[0] + " - 8", groupMembers8, currentChannel[1], textEntryPhaseRoles8, textWaitPhaseRoles8, gridWaitPhaseRoles8, responseGridPhaseRoles8, mutualFeedbackPhaseRoles8);
             }
             roundScreen.setStimuliSet(stimuliArray);
+            roundScreen.getWizardScreenData().setStimuliRandomTags(new String[]{"version1zero", "version2zero", "version3zero", "version4zero", "version5zero", "version6zero"});
             roundScreen.setStimulusFreeText(true, "[etuiopasdfgkzbnm ]{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
             wizardData.addScreen(roundScreen);
             if (roundOfEightScreenOuter == null) {
