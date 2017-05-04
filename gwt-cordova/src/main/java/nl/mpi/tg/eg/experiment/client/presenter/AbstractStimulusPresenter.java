@@ -457,6 +457,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     new TimedStimulusListener() {
                 @Override
                 public void postLoadTimerFired() {
+                    ((ComplexView) simpleView).clearPage();
                     ((ComplexView) simpleView).addPadding();
                     ((ComplexView) simpleView).addText("connected: " + groupParticipantService.isConnected());
                     timedStimulusListener.postLoadTimerFired();
@@ -469,7 +470,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     ((ComplexView) simpleView).addPadding();
                     ((ComplexView) simpleView).addHighlightedText("Group not ready");
                     ((ComplexView) simpleView).addPadding();
-//                    groupKickTimer.schedule(10000);
+                    groupKickTimer.schedule(10000);
                 }
             }, new TimedStimulusListener() {
                 @Override
@@ -490,6 +491,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     if (!stimulusProvider.hasNextStimulus()) {
                         // if the group message puts the stimuli list at the end then fire the end of stimulus listner
                         endOfStimulusListener.postLoadTimerFired();
+                        groupParticipantService.setEndOfStimuli(true);
                     }
                 }
             }, new TimedStimulusListener() {
