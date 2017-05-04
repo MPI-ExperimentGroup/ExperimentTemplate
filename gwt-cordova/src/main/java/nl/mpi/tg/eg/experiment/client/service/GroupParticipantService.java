@@ -59,6 +59,7 @@ public class GroupParticipantService {
     private String messageSenderMemberCode = null;
     private String messageString = null;
     private Boolean groupReady = false;
+    private Boolean endOfStimuli = false;
 //    private Boolean userIdMatches = false;
     private String responseStimulusOptions = null;
     private String responseStimulusId = null;
@@ -186,9 +187,11 @@ public class GroupParticipantService {
                                 this.responseStimulusId = responseStimulusId;
                                 this.groupScore = groupScore;
                                 stimulusSyncListner.postLoadTimerFired();
-                                currentListner.postLoadTimerFired();
-                                lastFiredListner = currentListner;
-                                lastFiredListnerGroupRole = splitRole[roleIndex];
+                                if (!endOfStimuli) {
+                                    currentListner.postLoadTimerFired();
+                                    lastFiredListner = currentListner;
+                                    lastFiredListnerGroupRole = splitRole[roleIndex];
+                                }
                             }
                         }
                     }
@@ -286,6 +289,10 @@ public class GroupParticipantService {
 
     public boolean isGroupReady() {
         return groupReady;
+    }
+
+    public void setEndOfStimuli(Boolean endofStimuli) {
+        this.endOfStimuli = endofStimuli;
     }
 
     public String getMessageSenderMemberCode() {
