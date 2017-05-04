@@ -211,7 +211,7 @@
                             <groupMessageLabel/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D">
+                        <groupNetworkActivity groupRole="-:-:A,C,B,D:-:-:A,C,B,D">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -269,7 +269,7 @@
             <loadStimulus eventTag="Round 2 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A,C|B,D">
-                        <groupNetworkActivity groupRole="A,C:-:-:B,D:-:-">
+                        <groupNetworkActivity groupRole="A,B:-:-:C,D:-:-">
                             <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 2 - 4" repeatIncorrect="false"/>
                             <clearPage/>
                             <stimulusLabel/>
@@ -281,15 +281,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,C:-:-:B,D:-">
+                        <groupNetworkActivity groupRole="-:A,B:-:-:C,D:-">
                             <clearPage/>
                             <htmlText featureText="The producer waits for the guesser"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,D:-:-:A,C:-:-">
+                        <groupNetworkActivity groupRole="C,D:-:-:A,B:-:-">
                             <clearPage/>
                             <htmlText featureText="The guesser waits for the producer"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,D:-:-:A,C:-">
+                        <groupNetworkActivity groupRole="-:C,D:-:-:A,B:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
@@ -381,7 +381,7 @@
             <loadStimulus eventTag="Round 3 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A,D|B,C">
-                        <groupNetworkActivity groupRole="A,C:-:-:B,D:-:-">
+                        <groupNetworkActivity groupRole="A,B:-:-:D,C:-:-">
                             <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 3 - 4" repeatIncorrect="false"/>
                             <clearPage/>
                             <stimulusLabel/>
@@ -393,15 +393,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,C:-:-:B,D:-">
+                        <groupNetworkActivity groupRole="-:A,B:-:-:D,C:-">
                             <clearPage/>
                             <htmlText featureText="The producer waits for the guesser"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,D:-:-:A,C:-:-">
+                        <groupNetworkActivity groupRole="D,C:-:-:A,B:-:-">
                             <clearPage/>
                             <htmlText featureText="The guesser waits for the producer"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,D:-:-:A,C:-">
+                        <groupNetworkActivity groupRole="-:D,C:-:-:A,B:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
@@ -435,7 +435,7 @@
                             <groupMessageLabel/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D">
+                        <groupNetworkActivity groupRole="-:-:A,B,D,C:-:-:A,B,D,C">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -547,7 +547,7 @@
                             <groupMessageLabel/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D">
+                        <groupNetworkActivity groupRole="-:-:A,C,B,D:-:-:A,C,B,D">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -605,7 +605,7 @@
             <loadStimulus eventTag="Round 5 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A,C|B,D">
-                        <groupNetworkActivity groupRole="A,C:-:-:B,D:-:-">
+                        <groupNetworkActivity groupRole="A,B:-:-:C,D:-:-">
                             <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 5 - 4" repeatIncorrect="false"/>
                             <clearPage/>
                             <stimulusLabel/>
@@ -617,15 +617,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,C:-:-:B,D:-">
+                        <groupNetworkActivity groupRole="-:A,B:-:-:C,D:-">
                             <clearPage/>
                             <htmlText featureText="The producer waits for the guesser"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,D:-:-:A,C:-:-">
+                        <groupNetworkActivity groupRole="C,D:-:-:A,B:-:-">
                             <clearPage/>
                             <htmlText featureText="The guesser waits for the producer"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,D:-:-:A,C:-">
+                        <groupNetworkActivity groupRole="-:C,D:-:-:A,B:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
@@ -717,7 +717,7 @@
             <loadStimulus eventTag="Round 6 - 4" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A,D|B,C">
-                        <groupNetworkActivity groupRole="A,C:-:-:B,D:-:-">
+                        <groupNetworkActivity groupRole="A,B:-:-:D,C:-:-">
                             <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 6 - 4" repeatIncorrect="false"/>
                             <clearPage/>
                             <stimulusLabel/>
@@ -729,15 +729,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,C:-:-:B,D:-">
+                        <groupNetworkActivity groupRole="-:A,B:-:-:D,C:-">
                             <clearPage/>
                             <htmlText featureText="The producer waits for the guesser"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,D:-:-:A,C:-:-">
+                        <groupNetworkActivity groupRole="D,C:-:-:A,B:-:-">
                             <clearPage/>
                             <htmlText featureText="The guesser waits for the producer"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,D:-:-:A,C:-">
+                        <groupNetworkActivity groupRole="-:D,C:-:-:A,B:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
@@ -771,7 +771,7 @@
                             <groupMessageLabel/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D">
+                        <groupNetworkActivity groupRole="-:-:A,B,D,C:-:-:A,B,D,C">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -883,7 +883,7 @@
                             <groupMessageLabel/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D">
+                        <groupNetworkActivity groupRole="-:-:A,C,B,D:-:-:A,C,B,D">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -1216,7 +1216,7 @@
                             <groupMessageLabel/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
+                        <groupNetworkActivity groupRole="-:-:A,C,E,G,B,D,F,H:-:-:A,C,E,G,B,D,F,H">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -1274,7 +1274,7 @@
             <loadStimulus eventTag="Round 2 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,H|E,D|C,F|G,B">
-                        <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
+                        <groupNetworkActivity groupRole="A,E,C,G:-:-:H,D,F,B:-:-">
                             <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 2 - 8" repeatIncorrect="false"/>
                             <clearPage/>
                             <stimulusLabel/>
@@ -1286,15 +1286,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
+                        <groupNetworkActivity groupRole="-:A,E,C,G:-:-:H,D,F,B:-">
                             <clearPage/>
                             <htmlText featureText="The producer waits for the guesser"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
+                        <groupNetworkActivity groupRole="H,D,F,B:-:-:A,E,C,G:-:-">
                             <clearPage/>
                             <htmlText featureText="The guesser waits for the producer"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
+                        <groupNetworkActivity groupRole="-:H,D,F,B:-:-:A,E,C,G:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
@@ -1328,7 +1328,7 @@
                             <groupMessageLabel/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
+                        <groupNetworkActivity groupRole="-:-:A,E,C,G,H,D,F,B:-:-:A,E,C,G,H,D,F,B">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -1386,7 +1386,7 @@
             <loadStimulus eventTag="Round 3 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,D|G,F|E,B|C,H">
-                        <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
+                        <groupNetworkActivity groupRole="A,G,E,C:-:-:D,F,B,H:-:-">
                             <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 3 - 8" repeatIncorrect="false"/>
                             <clearPage/>
                             <stimulusLabel/>
@@ -1398,15 +1398,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
+                        <groupNetworkActivity groupRole="-:A,G,E,C:-:-:D,F,B,H:-">
                             <clearPage/>
                             <htmlText featureText="The producer waits for the guesser"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
+                        <groupNetworkActivity groupRole="D,F,B,H:-:-:A,G,E,C:-:-">
                             <clearPage/>
                             <htmlText featureText="The guesser waits for the producer"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
+                        <groupNetworkActivity groupRole="-:D,F,B,H:-:-:A,G,E,C:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
@@ -1440,7 +1440,7 @@
                             <groupMessageLabel/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
+                        <groupNetworkActivity groupRole="-:-:A,G,E,C,D,F,B,H:-:-:A,G,E,C,D,F,B,H">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -1498,7 +1498,7 @@
             <loadStimulus eventTag="Round 4 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,C|B,D|E,G|F,H">
-                        <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
+                        <groupNetworkActivity groupRole="A,B,E,F:-:-:C,D,G,H:-:-">
                             <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 4 - 8" repeatIncorrect="false"/>
                             <clearPage/>
                             <stimulusLabel/>
@@ -1510,15 +1510,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
+                        <groupNetworkActivity groupRole="-:A,B,E,F:-:-:C,D,G,H:-">
                             <clearPage/>
                             <htmlText featureText="The producer waits for the guesser"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
+                        <groupNetworkActivity groupRole="C,D,G,H:-:-:A,B,E,F:-:-">
                             <clearPage/>
                             <htmlText featureText="The guesser waits for the producer"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
+                        <groupNetworkActivity groupRole="-:C,D,G,H:-:-:A,B,E,F:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
@@ -1552,7 +1552,7 @@
                             <groupMessageLabel/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
+                        <groupNetworkActivity groupRole="-:-:A,B,E,F,C,D,G,H:-:-:A,B,E,F,C,D,G,H">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -1610,7 +1610,7 @@
             <loadStimulus eventTag="Round 5 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,E|H,D|B,F|G,C">
-                        <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
+                        <groupNetworkActivity groupRole="A,H,B,G:-:-:E,D,F,C:-:-">
                             <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 5 - 8" repeatIncorrect="false"/>
                             <clearPage/>
                             <stimulusLabel/>
@@ -1622,15 +1622,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
+                        <groupNetworkActivity groupRole="-:A,H,B,G:-:-:E,D,F,C:-">
                             <clearPage/>
                             <htmlText featureText="The producer waits for the guesser"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
+                        <groupNetworkActivity groupRole="E,D,F,C:-:-:A,H,B,G:-:-">
                             <clearPage/>
                             <htmlText featureText="The guesser waits for the producer"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
+                        <groupNetworkActivity groupRole="-:E,D,F,C:-:-:A,H,B,G:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
@@ -1664,7 +1664,7 @@
                             <groupMessageLabel/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
+                        <groupNetworkActivity groupRole="-:-:A,H,B,G,E,D,F,C:-:-:A,H,B,G,E,D,F,C">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -1722,7 +1722,7 @@
             <loadStimulus eventTag="Round 6 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,F|G,D|C,B|E,H">
-                        <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
+                        <groupNetworkActivity groupRole="A,G,C,E:-:-:F,D,B,H:-:-">
                             <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 6 - 8" repeatIncorrect="false"/>
                             <clearPage/>
                             <stimulusLabel/>
@@ -1734,15 +1734,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
+                        <groupNetworkActivity groupRole="-:A,G,C,E:-:-:F,D,B,H:-">
                             <clearPage/>
                             <htmlText featureText="The producer waits for the guesser"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
+                        <groupNetworkActivity groupRole="F,D,B,H:-:-:A,G,C,E:-:-">
                             <clearPage/>
                             <htmlText featureText="The guesser waits for the producer"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
+                        <groupNetworkActivity groupRole="-:F,D,B,H:-:-:A,G,C,E:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
@@ -1776,7 +1776,7 @@
                             <groupMessageLabel/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
+                        <groupNetworkActivity groupRole="-:-:A,G,C,E,F,D,B,H:-:-:A,G,C,E,F,D,B,H">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -1834,7 +1834,7 @@
             <loadStimulus eventTag="Round 7 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,G|B,H|E,C|D,F">
-                        <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
+                        <groupNetworkActivity groupRole="A,B,E,D:-:-:G,H,C,F:-:-">
                             <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 7 - 8" repeatIncorrect="false"/>
                             <clearPage/>
                             <stimulusLabel/>
@@ -1846,15 +1846,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
+                        <groupNetworkActivity groupRole="-:A,B,E,D:-:-:G,H,C,F:-">
                             <clearPage/>
                             <htmlText featureText="The producer waits for the guesser"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
+                        <groupNetworkActivity groupRole="G,H,C,F:-:-:A,B,E,D:-:-">
                             <clearPage/>
                             <htmlText featureText="The guesser waits for the producer"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
+                        <groupNetworkActivity groupRole="-:G,H,C,F:-:-:A,B,E,D:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
@@ -1888,7 +1888,7 @@
                             <groupMessageLabel/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
+                        <groupNetworkActivity groupRole="-:-:A,B,E,D,G,H,C,F:-:-:A,B,E,D,G,H,C,F">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -2110,7 +2110,7 @@
                             <groupMessageLabel/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
+                        <groupNetworkActivity groupRole="-:-:A,C,E,G,B,D,F,H:-:-:A,C,E,G,B,D,F,H">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -2168,7 +2168,7 @@
             <loadStimulus eventTag="Round 10 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,H|E,D|C,F|G,B">
-                        <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
+                        <groupNetworkActivity groupRole="A,E,C,G:-:-:H,D,F,B:-:-">
                             <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 10 - 8" repeatIncorrect="false"/>
                             <clearPage/>
                             <stimulusLabel/>
@@ -2180,15 +2180,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
+                        <groupNetworkActivity groupRole="-:A,E,C,G:-:-:H,D,F,B:-">
                             <clearPage/>
                             <htmlText featureText="The producer waits for the guesser"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
+                        <groupNetworkActivity groupRole="H,D,F,B:-:-:A,E,C,G:-:-">
                             <clearPage/>
                             <htmlText featureText="The guesser waits for the producer"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
+                        <groupNetworkActivity groupRole="-:H,D,F,B:-:-:A,E,C,G:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
@@ -2222,7 +2222,7 @@
                             <groupMessageLabel/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
+                        <groupNetworkActivity groupRole="-:-:A,E,C,G,H,D,F,B:-:-:A,E,C,G,H,D,F,B">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -2280,7 +2280,7 @@
             <loadStimulus eventTag="Round 11 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,D|G,F|E,B|C,H">
-                        <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
+                        <groupNetworkActivity groupRole="A,G,E,C:-:-:D,F,B,H:-:-">
                             <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 11 - 8" repeatIncorrect="false"/>
                             <clearPage/>
                             <stimulusLabel/>
@@ -2292,15 +2292,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
+                        <groupNetworkActivity groupRole="-:A,G,E,C:-:-:D,F,B,H:-">
                             <clearPage/>
                             <htmlText featureText="The producer waits for the guesser"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
+                        <groupNetworkActivity groupRole="D,F,B,H:-:-:A,G,E,C:-:-">
                             <clearPage/>
                             <htmlText featureText="The guesser waits for the producer"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
+                        <groupNetworkActivity groupRole="-:D,F,B,H:-:-:A,G,E,C:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
@@ -2334,7 +2334,7 @@
                             <groupMessageLabel/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
+                        <groupNetworkActivity groupRole="-:-:A,G,E,C,D,F,B,H:-:-:A,G,E,C,D,F,B,H">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -2392,7 +2392,7 @@
             <loadStimulus eventTag="Round 12 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,C|B,D|E,G|F,H">
-                        <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
+                        <groupNetworkActivity groupRole="A,B,E,F:-:-:C,D,G,H:-:-">
                             <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 12 - 8" repeatIncorrect="false"/>
                             <clearPage/>
                             <stimulusLabel/>
@@ -2404,15 +2404,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
+                        <groupNetworkActivity groupRole="-:A,B,E,F:-:-:C,D,G,H:-">
                             <clearPage/>
                             <htmlText featureText="The producer waits for the guesser"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
+                        <groupNetworkActivity groupRole="C,D,G,H:-:-:A,B,E,F:-:-">
                             <clearPage/>
                             <htmlText featureText="The guesser waits for the producer"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
+                        <groupNetworkActivity groupRole="-:C,D,G,H:-:-:A,B,E,F:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
@@ -2446,7 +2446,7 @@
                             <groupMessageLabel/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
+                        <groupNetworkActivity groupRole="-:-:A,B,E,F,C,D,G,H:-:-:A,B,E,F,C,D,G,H">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -2504,7 +2504,7 @@
             <loadStimulus eventTag="Round 13 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,E|H,D|B,F|G,C">
-                        <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
+                        <groupNetworkActivity groupRole="A,H,B,G:-:-:E,D,F,C:-:-">
                             <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 13 - 8" repeatIncorrect="false"/>
                             <clearPage/>
                             <stimulusLabel/>
@@ -2516,15 +2516,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
+                        <groupNetworkActivity groupRole="-:A,H,B,G:-:-:E,D,F,C:-">
                             <clearPage/>
                             <htmlText featureText="The producer waits for the guesser"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
+                        <groupNetworkActivity groupRole="E,D,F,C:-:-:A,H,B,G:-:-">
                             <clearPage/>
                             <htmlText featureText="The guesser waits for the producer"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
+                        <groupNetworkActivity groupRole="-:E,D,F,C:-:-:A,H,B,G:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
@@ -2558,7 +2558,7 @@
                             <groupMessageLabel/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
+                        <groupNetworkActivity groupRole="-:-:A,H,B,G,E,D,F,C:-:-:A,H,B,G,E,D,F,C">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -2616,7 +2616,7 @@
             <loadStimulus eventTag="Round 14 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,F|G,D|C,B|E,H">
-                        <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
+                        <groupNetworkActivity groupRole="A,G,C,E:-:-:F,D,B,H:-:-">
                             <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 14 - 8" repeatIncorrect="false"/>
                             <clearPage/>
                             <stimulusLabel/>
@@ -2628,15 +2628,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
+                        <groupNetworkActivity groupRole="-:A,G,C,E:-:-:F,D,B,H:-">
                             <clearPage/>
                             <htmlText featureText="The producer waits for the guesser"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
+                        <groupNetworkActivity groupRole="F,D,B,H:-:-:A,G,C,E:-:-">
                             <clearPage/>
                             <htmlText featureText="The guesser waits for the producer"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
+                        <groupNetworkActivity groupRole="-:F,D,B,H:-:-:A,G,C,E:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
@@ -2670,7 +2670,7 @@
                             <groupMessageLabel/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
+                        <groupNetworkActivity groupRole="-:-:A,G,C,E,F,D,B,H:-:-:A,G,C,E,F,D,B,H">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -2728,7 +2728,7 @@
             <loadStimulus eventTag="Round 15 - 8" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="9" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,G|B,H|E,C|D,F">
-                        <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
+                        <groupNetworkActivity groupRole="A,B,E,D:-:-:G,H,C,F:-:-">
                             <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 15 - 8" repeatIncorrect="false"/>
                             <clearPage/>
                             <stimulusLabel/>
@@ -2740,15 +2740,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="Next [enter]" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
+                        <groupNetworkActivity groupRole="-:A,B,E,D:-:-:G,H,C,F:-">
                             <clearPage/>
                             <htmlText featureText="The producer waits for the guesser"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
+                        <groupNetworkActivity groupRole="G,H,C,F:-:-:A,B,E,D:-:-">
                             <clearPage/>
                             <htmlText featureText="The guesser waits for the producer"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
+                        <groupNetworkActivity groupRole="-:G,H,C,F:-:-:A,B,E,D:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
@@ -2782,7 +2782,7 @@
                             <groupMessageLabel/>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
+                        <groupNetworkActivity groupRole="-:-:A,B,E,D,G,H,C,F:-:-:A,B,E,D,G,H,C,F">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
