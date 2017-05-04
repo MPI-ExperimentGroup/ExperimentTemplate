@@ -224,16 +224,6 @@ public class MultiParticipant {
 
         final String groupMembers4 = "A,B,C,D";
         final String groupMembers8 = "A,B,C,D,E,F,G,H";
-        final String textEntryPhaseRoles4 = "A,C:-:-:B,D:-:-";
-        final String textEntryPhaseRoles8 = "A,C,E,G:-:-:B,D,F,H:-:-";
-        final String textWaitPhaseRoles4 = "B,D:-:-:A,C:-:-";
-        final String textWaitPhaseRoles8 = "B,D,F,H:-:-:A,C,E,G:-:-";
-        final String gridWaitPhaseRoles4 = "-:A,C:-:-:B,D:-";
-        final String gridWaitPhaseRoles8 = "-:A,C,E,G:-:-:B,D,F,H:-";
-        final String responseGridPhaseRoles4 = "-:B,D:-:-:A,C:-";
-        final String responseGridPhaseRoles8 = "-:B,D,F,H:-:-:A,C,E,G:-";
-        final String mutualFeedbackPhaseRoles4 = "-:-:A,B,C,D:-:-:A,B,C,D";
-        final String mutualFeedbackPhaseRoles8 = "-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H";
 
         WizardMenuScreen menuScreen4or8Members = new WizardMenuScreen("GroupSizeMenu", "GroupSizeMenu", "GroupSizeMenu");
         menuScreen4or8Members.setBranchOnGetParam(true, "A choice must be provided out of the following:<br/>");
@@ -268,7 +258,7 @@ public class MultiParticipant {
             } else if ("test".equals(currentChannel[2])) {
                 roundScreen = getTestRound("Round " + currentChannel[0] + " - 4", groupMembers4, currentChannel[1], "A,B,C,D");
             } else {
-                roundScreen = getPlayingRound("Round " + currentChannel[0] + " - 4", groupMembers4, currentChannel[1], textEntryPhaseRoles4, textWaitPhaseRoles4, gridWaitPhaseRoles4, responseGridPhaseRoles4, mutualFeedbackPhaseRoles4);
+                roundScreen = getPlayingRound("Round " + currentChannel[0] + " - 4", groupMembers4, currentChannel[1]);
             }
             roundScreen.setStimuliSet(stimuliArray);
             roundScreen.getWizardScreenData().setStimuliRandomTags(new String[]{"version1zero", "version2zero", "version3zero", "version4zero", "version5zero", "version6zero"});
@@ -312,7 +302,7 @@ public class MultiParticipant {
             } else if ("test".equals(currentChannel[2])) {
                 roundScreen = getTestRound("Round " + currentChannel[0] + " - 8", groupMembers8, currentChannel[1], "A,B,C,D,E,F,G,H");
             } else {
-                roundScreen = getPlayingRound("Round " + currentChannel[0] + " - 8", groupMembers8, currentChannel[1], textEntryPhaseRoles8, textWaitPhaseRoles8, gridWaitPhaseRoles8, responseGridPhaseRoles8, mutualFeedbackPhaseRoles8);
+                roundScreen = getPlayingRound("Round " + currentChannel[0] + " - 8", groupMembers8, currentChannel[1]);
             }
             roundScreen.setStimuliSet(stimuliArray);
             roundScreen.getWizardScreenData().setStimuliRandomTags(new String[]{"version1zero", "version2zero", "version3zero", "version4zero", "version5zero", "version6zero"});
@@ -382,7 +372,7 @@ public class MultiParticipant {
                 0, 0, null);
     }
 
-    protected WizardMultiParticipantScreen getPlayingRound(final String screenName, final String groupMembers, final String communicationChannels, final String textEntryPhaseRoles, final String textWaitPhaseRoles, final String gridWaitPhaseRoles, final String responseGridPhaseRoles, final String mutualFeedbackPhaseRoles) {
+    protected WizardMultiParticipantScreen getPlayingRound(final String screenName, final String groupMembers, final String communicationChannels) {
         final String textEntryPhaseText = "The producer sees the stimulus and enters some text";
         final String textWaitPhaseText = "The guesser waits for the producer";
         final String gridWaitPhaseText = "The producer waits for the guesser";
@@ -391,6 +381,28 @@ public class MultiParticipant {
         final int timerCountDownProducerMs = 30 * 1000;
         final int timerCountDownGuesserMs = 20 * 1000;
         final String timerCountDownLabel = "Time is up! Play now!";
+
+        String phaseRoleA = "";
+        String phaseRoleB = "";
+        for (final String channel : communicationChannels.split("\\|")) {
+            System.out.println("channel:" + channel);
+            final String[] members = channel.split(",");
+            for (int index = 0; index < members.length; index += 2) {
+                if (!phaseRoleA.isEmpty()) {
+                    phaseRoleA += ",";
+                }
+                if (!phaseRoleB.isEmpty()) {
+                    phaseRoleB += ",";
+                }
+                phaseRoleA += members[index];
+                phaseRoleB += members[index + 1];
+            }
+        }
+        final String responseGridPhaseRoles = "-:" + phaseRoleB + ":-:-:" + phaseRoleA + ":-";
+        final String mutualFeedbackPhaseRoles = "-:-:" + phaseRoleA + "," + phaseRoleB + ":-:-:" + phaseRoleA + "," + phaseRoleB;
+        final String textWaitPhaseRoles = phaseRoleB + ":-:-:" + phaseRoleA + ":-:-";
+        final String textEntryPhaseRoles = phaseRoleA + ":-:-:" + phaseRoleB + ":-:-";
+        final String gridWaitPhaseRoles = "-:" + phaseRoleA + ":-:-:" + phaseRoleB + ":-";
 
         return new WizardMultiParticipantScreen(screenName,
                 groupMembers,
