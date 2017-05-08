@@ -138,6 +138,7 @@
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
+                        <sendGroupMessage eventTag="groupMessageEndOfStimuli" incrementPhase="0"/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocation">
@@ -252,6 +253,7 @@
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
+                        <sendGroupMessage eventTag="groupMessageEndOfStimuli" incrementPhase="0"/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocation">
@@ -366,6 +368,7 @@
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
+                        <sendGroupMessage eventTag="groupMessageEndOfStimuli" incrementPhase="0"/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocation">
@@ -480,6 +483,7 @@
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
+                        <sendGroupMessage eventTag="groupMessageEndOfStimuli" incrementPhase="0"/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocation">
@@ -594,6 +598,7 @@
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
+                        <sendGroupMessage eventTag="groupMessageEndOfStimuli" incrementPhase="0"/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocation">
@@ -708,6 +713,7 @@
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
+                        <sendGroupMessage eventTag="groupMessageEndOfStimuli" incrementPhase="0"/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocation">
@@ -822,6 +828,7 @@
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
+                        <sendGroupMessage eventTag="groupMessageEndOfStimuli" incrementPhase="0"/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocation">
@@ -936,6 +943,7 @@
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
+                        <sendGroupMessage eventTag="groupMessageEndOfStimuli" incrementPhase="0"/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocation">
@@ -1048,6 +1056,7 @@
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
+                        <sendGroupMessage eventTag="groupMessageEndOfStimuli" incrementPhase="0"/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocation">
@@ -1161,6 +1170,7 @@
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
+                        <sendGroupMessage eventTag="groupMessageEndOfStimuli" incrementPhase="0"/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocation">
@@ -1275,6 +1285,7 @@
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
+                        <sendGroupMessage eventTag="groupMessageEndOfStimuli" incrementPhase="0"/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocation">
@@ -1389,6 +1400,7 @@
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
+                        <sendGroupMessage eventTag="groupMessageEndOfStimuli" incrementPhase="0"/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocation">
@@ -1503,6 +1515,7 @@
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
+                        <sendGroupMessage eventTag="groupMessageEndOfStimuli" incrementPhase="0"/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocation">
@@ -1617,6 +1630,7 @@
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
+                        <sendGroupMessage eventTag="groupMessageEndOfStimuli" incrementPhase="0"/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocation">
@@ -1731,6 +1745,7 @@
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
+                        <sendGroupMessage eventTag="groupMessageEndOfStimuli" incrementPhase="0"/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocation">
@@ -1845,6 +1860,7 @@
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
+                        <sendGroupMessage eventTag="groupMessageEndOfStimuli" incrementPhase="0"/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocation">
@@ -1959,6 +1975,7 @@
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
+                        <sendGroupMessage eventTag="groupMessageEndOfStimuli" incrementPhase="0"/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocation">
@@ -2071,6 +2088,7 @@
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
+                        <sendGroupMessage eventTag="groupMessageEndOfStimuli" incrementPhase="0"/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocation">
@@ -2185,6 +2203,7 @@
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
+                        <sendGroupMessage eventTag="groupMessageEndOfStimuli" incrementPhase="0"/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocation">
@@ -2299,6 +2318,7 @@
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
+                        <sendGroupMessage eventTag="groupMessageEndOfStimuli" incrementPhase="0"/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocation">
@@ -2413,6 +2433,7 @@
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
+                        <sendGroupMessage eventTag="groupMessageEndOfStimuli" incrementPhase="0"/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocation">
@@ -2527,6 +2548,7 @@
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
+                        <sendGroupMessage eventTag="groupMessageEndOfStimuli" incrementPhase="0"/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocation">
@@ -2641,6 +2663,7 @@
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
+                        <sendGroupMessage eventTag="groupMessageEndOfStimuli" incrementPhase="0"/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocation">
@@ -2755,6 +2778,7 @@
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
+                        <sendGroupMessage eventTag="groupMessageEndOfStimuli" incrementPhase="0"/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocation">
@@ -2869,6 +2893,7 @@
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
+                        <sendGroupMessage eventTag="groupMessageEndOfStimuli" incrementPhase="0"/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocation">
@@ -2981,6 +3006,7 @@
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
+                        <sendGroupMessage eventTag="groupMessageEndOfStimuli" incrementPhase="0"/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocation">
