@@ -74,6 +74,7 @@ public class GroupMessage {
     private String messageString;
     private boolean groupReady;
     private int memberScore;
+    private int channelScore;
     private int groupScore;
     private int eventMs;
 
@@ -252,6 +253,14 @@ public class GroupMessage {
 
     public void setGroupScore(int groupScore) {
         this.groupScore = groupScore;
+    }
+
+    public int getChannelScore() {
+        return channelScore;
+    }
+
+    public void setChannelScore(int channelScore) {
+        this.channelScore = channelScore;
     }
 
     public int getEventMs() {
