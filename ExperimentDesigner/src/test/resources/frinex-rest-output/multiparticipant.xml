@@ -134,6 +134,8 @@
                 <endOfStimulus>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <groupChannelScoreLabel/>
+                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -246,6 +248,8 @@
                 <endOfStimulus>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <groupChannelScoreLabel/>
+                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -358,6 +362,8 @@
                 <endOfStimulus>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <groupChannelScoreLabel/>
+                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -470,6 +476,8 @@
                 <endOfStimulus>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <groupChannelScoreLabel/>
+                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -582,6 +590,8 @@
                 <endOfStimulus>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <groupChannelScoreLabel/>
+                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -694,6 +704,8 @@
                 <endOfStimulus>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <groupChannelScoreLabel/>
+                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -806,6 +818,8 @@
                 <endOfStimulus>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <groupChannelScoreLabel/>
+                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -918,6 +932,8 @@
                 <endOfStimulus>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <groupChannelScoreLabel/>
+                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -1028,6 +1044,8 @@
                 <endOfStimulus>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <groupChannelScoreLabel/>
+                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -1139,6 +1157,8 @@
                 <endOfStimulus>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <groupChannelScoreLabel/>
+                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -1251,6 +1271,8 @@
                 <endOfStimulus>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <groupChannelScoreLabel/>
+                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -1363,6 +1385,8 @@
                 <endOfStimulus>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <groupChannelScoreLabel/>
+                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -1475,6 +1499,8 @@
                 <endOfStimulus>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <groupChannelScoreLabel/>
+                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -1587,6 +1613,8 @@
                 <endOfStimulus>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <groupChannelScoreLabel/>
+                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -1699,6 +1727,8 @@
                 <endOfStimulus>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <groupChannelScoreLabel/>
+                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -1811,6 +1841,8 @@
                 <endOfStimulus>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <groupChannelScoreLabel/>
+                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -1923,6 +1955,8 @@
                 <endOfStimulus>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <groupChannelScoreLabel/>
+                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -2033,6 +2067,8 @@
                 <endOfStimulus>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <groupChannelScoreLabel/>
+                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -2145,6 +2181,8 @@
                 <endOfStimulus>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <groupChannelScoreLabel/>
+                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -2257,6 +2295,8 @@
                 <endOfStimulus>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <groupChannelScoreLabel/>
+                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -2369,6 +2409,8 @@
                 <endOfStimulus>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <groupChannelScoreLabel/>
+                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -2481,6 +2523,8 @@
                 <endOfStimulus>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <groupChannelScoreLabel/>
+                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -2593,6 +2637,8 @@
                 <endOfStimulus>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <groupChannelScoreLabel/>
+                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -2705,6 +2751,8 @@
                 <endOfStimulus>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <groupChannelScoreLabel/>
+                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -2817,6 +2865,8 @@
                 <endOfStimulus>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <groupChannelScoreLabel/>
+                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -2927,6 +2977,8 @@
                 <endOfStimulus>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <groupChannelScoreLabel/>
+                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
