@@ -551,6 +551,8 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         if (postStimuliText != null && !postStimuliText.isEmpty()) {
             endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
             endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, postStimuliText));
+            endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupChannelScoreLabel, null));
+            endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupScoreLabel, null));
             final PresenterFeature actionButton = new PresenterFeature(FeatureType.actionButton, "Next [enter]");
             actionButton.addFeatureAttributes(FeatureAttribute.hotKey, "ENTER");
             actionButton.getPresenterFeatureList().add(autoNextPresenter);
