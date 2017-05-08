@@ -89,10 +89,23 @@ public class GroupManager {
             groupScoresMap.put(groupMessage.getMemberCode(), groupMessage.getMemberScore());
         }
         int groupScore = 0;
-        for (Integer currentScore : groupScoresMap.values()) {
+        int groupChannelScore = 0;
+        String channelMembers = "";
+        for (String channel : groupMessage.getGroupCommunicationChannels().split("\\|")) // check if the communication channel applies to this group member
+        {
+            if (channel.contains(groupMessage.getMemberCode())) {
+                channelMembers += channel;
+            }
+        }
+        for (String currentMember : groupScoresMap.keySet()) {
+            Integer currentScore = groupScoresMap.get(currentMember);
             groupScore += currentScore;
+            if (channelMembers.contains(currentMember)) {
+                groupChannelScore += currentScore;
+            }
         }
         groupMessage.setGroupScore(groupScore);
+        groupMessage.setChannelScore(groupChannelScore);
     }
 
     public boolean updateChannelMessageIfOutOfDate(GroupMessage incomingMessage, final GroupMessage storedMessage) {
