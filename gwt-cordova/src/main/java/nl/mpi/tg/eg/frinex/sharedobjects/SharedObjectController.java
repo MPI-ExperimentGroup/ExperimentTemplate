@@ -44,7 +44,6 @@ public class SharedObjectController {
     }
 
     private synchronized GroupMessage updateGroupData(GroupMessage incomingMessage) {
-        GroupMessage storedMessage;
         if (incomingMessage == null) {
             System.out.println("incomingMessage == null");
             return null;
@@ -65,49 +64,21 @@ public class SharedObjectController {
         System.out.println(incomingMessage.getStimulusIndex());
         System.out.println(incomingMessage.getUserId());
         System.out.println(incomingMessage.getScreenId());
-        final boolean resendingOldMessage;
-        if (GROUP_MANAGER.isGroupMember(incomingMessage)) {
-            storedMessage = GROUP_MANAGER.getGroupMember(incomingMessage);
-
-            incomingMessage.setMemberCode(storedMessage.getMemberCode());
-            incomingMessage.setOriginMemberCode(storedMessage.getMemberCode());
-            incomingMessage.setUserLabel(storedMessage.getUserLabel());
-            incomingMessage.setGroupUUID(storedMessage.getGroupUUID());
-            incomingMessage.setStimuliList(storedMessage.getStimuliList());
-
-            System.out.println("updatedMessage: ");
-            System.out.println(storedMessage.getAllMemberCodes());
-            System.out.println(storedMessage.getGroupCommunicationChannels());
-            System.out.println(storedMessage.getGroupId());
-            System.out.println(storedMessage.getGroupUUID());
-            System.out.println(storedMessage.getMemberCode());
-            System.out.println(storedMessage.getOriginMemberCode());
-            System.out.println(storedMessage.getRequestedPhase());
-            System.out.println(storedMessage.getActualRespondents());
-            System.out.println(storedMessage.getExpectedRespondents());
-            System.out.println(storedMessage.getStimuliList());
-            System.out.println(storedMessage.getStimulusId());
-            System.out.println(storedMessage.getStimulusIndex());
-            System.out.println(storedMessage.getUserId());
-            System.out.println(storedMessage.getScreenId());
-
-            // if the message is a reconnect request then send the last message for that chanel
-            resendingOldMessage = GROUP_MANAGER.updateChannelMessageIfOutOfDate(incomingMessage, storedMessage);
-            storedMessage = incomingMessage;
-        } else {
+        if (!GROUP_MANAGER.isGroupMember(incomingMessage)) {
             GROUP_MANAGER.addGroupMember(incomingMessage);
-            incomingMessage.setOriginMemberCode(incomingMessage.getMemberCode());
-            storedMessage = incomingMessage;
-            resendingOldMessage = false;
         }
-        if (incomingStimuliList != null && incomingStimuliList.equals(storedMessage.getStimuliList())) {
-            GROUP_MANAGER.updateResponderListForMessagePhase(storedMessage);
+        incomingMessage.setOriginMemberCode(incomingMessage.getMemberCode());
+        GROUP_MANAGER.updateGroupData(incomingMessage);
+        GROUP_MANAGER.updateResponderListForMessagePhase(incomingMessage);
+        GROUP_MANAGER.updateGroupScore(incomingMessage);
+        incomingMessage.setGroupReady(GROUP_MANAGER.isGroupReady(incomingMessage));
+        // if the message is a reconnect request then send the last message for that chanel
+        GroupMessage resendMessage = GROUP_MANAGER.updateChannelMessageIfOutOfDate(incomingMessage);
+        if (resendMessage == null) {
+            GROUP_MANAGER.setUsersLastMessage(incomingMessage);
+            return incomingMessage;
+        } else {
+            return resendMessage;
         }
-        if (!resendingOldMessage) {
-            GROUP_MANAGER.setUsersLastMessage(storedMessage);
-        }
-        storedMessage.setGroupReady(GROUP_MANAGER.isGroupReady(storedMessage));
-        GROUP_MANAGER.updateGroupScore(storedMessage);
-        return storedMessage;
     }
 }

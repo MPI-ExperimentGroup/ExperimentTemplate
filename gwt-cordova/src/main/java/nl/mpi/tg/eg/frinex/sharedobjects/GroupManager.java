@@ -17,17 +17,14 @@
  */
 package nl.mpi.tg.eg.frinex.sharedobjects;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+import nl.mpi.tg.eg.experiment.client.model.UserId;
 
 /**
  * @since Nov 18, 2016 2:53:20 PM (creation date)
@@ -35,57 +32,45 @@ import java.util.UUID;
  */
 public class GroupManager {
 
-    private final HashMap<String, HashMap<GroupMessage, GroupMessage>> allMembersList = new HashMap<>();
-    private final HashMap<GroupMessage, String> allMemberCodes = new HashMap<>();
-    private final HashMap<GroupMessage, HashMap<String, Integer>> groupScores = new HashMap<>();
+    private final HashMap<UserId, HashMap<GroupMessage, GroupMessage>> allMembersList = new HashMap<>();
+    private final HashMap<GroupMessage, List<MemberCode>> allMemberCodes = new HashMap<>();
+    private final HashMap<GroupMessage, HashMap<MemberCode, Integer>> groupScores = new HashMap<>();
     private final HashMap<GroupMessage, String> stimuliLists = new HashMap<>();
-    private final HashMap<GroupMessage, String> groupUUIDs = new HashMap<>();
-    private final HashMap<GroupMessage, List<String>> unAllocatedMemberCodes = new HashMap<>();
-    private final HashMap<GroupMessage, HashSet<String>> groupsMembers = new HashMap();
+    private final HashMap<GroupId, GroupUUID> groupUUIDs = new HashMap<>();
+    private final HashMap<GroupMessage, List<MemberCode>> unAllocatedMemberCodes = new HashMap<>();
+    private final HashMap<GroupId, HashSet<UserId>> groupsMembers = new HashMap();
     GroupMessage lastGroupId = null;
 
     public boolean isGroupMember(GroupMessage groupMessage) {
-        if (groupMessage.getGroupId() == null) {
-            final GroupMessage lastMessage;
-            final HashMap<GroupMessage, GroupMessage> userGroups = allMembersList.get(groupMessage.getUserId());
-            if (userGroups != null) {
-                lastMessage = userGroups.get(groupMessage);
-            } else {
-                lastMessage = null;
-            }
-            if (lastMessage != null /*&& lastMessage.getScreenId().equals(groupMessage.getScreenId())*/) {
-                // preserve the group id when the browser window is refreshed without get parameters
-                groupMessage.setGroupId(lastMessage.getGroupId());
-            } else {
-                final List<String> lastGroupMemberCodes = unAllocatedMemberCodes.get(lastGroupId);
-                if (lastGroupMemberCodes == null || lastGroupMemberCodes.isEmpty()) {
-                    lastGroupId = null;
-                }
-                if (lastGroupId == null) {
-                    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-                    Date date = new Date();
-                    lastGroupId = new GroupMessage("Auto group started:" + dateFormat.format(date), groupMessage.getScreenId(), null);
-                }
-                groupMessage.setGroupId(lastGroupId.getGroupId());
-            }
+        return groupsMembers.containsKey(groupMessage.getGroupId()) && groupsMembers.get(groupMessage.getGroupId()).contains(groupMessage.getUserId());
+    }
+
+    public void updateGroupData(GroupMessage groupMessage) {
+        groupMessage.setUserLabel(groupMessage.getMemberCode() + " : " + groupMessage.getGroupId());
+        groupMessage.setGroupUUID(groupUUIDs.get(groupMessage.getGroupId()));
+        final String groupStimuliList = stimuliLists.get(groupMessage);
+        if (groupStimuliList == null) {
+            // keep the first stimuli list sent so that it can be set it into each subsequent message
+            stimuliLists.put(groupMessage, groupMessage.getStimuliList());
+        } else {
+            groupMessage.setStimuliList(groupStimuliList);
         }
-        return groupsMembers.containsKey(groupMessage) && groupsMembers.get(groupMessage).contains(groupMessage.getUserId());
     }
 
     public boolean isGroupReady(GroupMessage groupMessage) {
-        final List<String> membercodes = unAllocatedMemberCodes.get(groupMessage);
+        final List<MemberCode> membercodes = unAllocatedMemberCodes.get(groupMessage);
         if (membercodes == null) {
             return false;
         }
-        return membercodes.isEmpty() && groupsMembers.get(groupMessage).contains(groupMessage.getUserId());
+        return membercodes.isEmpty();
     }
 
     public void updateGroupScore(GroupMessage groupMessage) {
         if (!groupScores.containsKey(groupMessage)) {
-            groupScores.put(groupMessage, new HashMap<String, Integer>());
+            groupScores.put(groupMessage, new HashMap<MemberCode, Integer>());
         }
-        final HashMap<String, Integer> groupScoresMap = groupScores.get(groupMessage);
-        if (groupMessage.getMemberCode() != null && !groupMessage.getMemberCode().isEmpty()) {
+        final HashMap<MemberCode, Integer> groupScoresMap = groupScores.get(groupMessage);
+        if (groupMessage.getMemberCode() != null && groupMessage.getMemberCode().isValid()) {
             groupScoresMap.put(groupMessage.getMemberCode(), groupMessage.getMemberScore());
         }
         int groupScore = 0;
@@ -93,14 +78,14 @@ public class GroupManager {
         String channelMembers = "";
         for (String channel : groupMessage.getGroupCommunicationChannels().split("\\|")) // check if the communication channel applies to this group member
         {
-            if (channel.contains(groupMessage.getMemberCode())) {
+            if (groupMessage.getMemberCode().memberOfChannel(channel)) {
                 channelMembers += channel;
             }
         }
-        for (String currentMember : groupScoresMap.keySet()) {
+        for (MemberCode currentMember : groupScoresMap.keySet()) {
             Integer currentScore = groupScoresMap.get(currentMember);
             groupScore += currentScore;
-            if (channelMembers.contains(currentMember)) {
+            if (currentMember.memberOfChannel(channelMembers)) {
                 groupChannelScore += currentScore;
             }
         }
@@ -108,24 +93,23 @@ public class GroupManager {
         groupMessage.setChannelScore(groupChannelScore);
     }
 
-    public boolean updateChannelMessageIfOutOfDate(GroupMessage incomingMessage, final GroupMessage storedMessage) {
+    public GroupMessage updateChannelMessageIfOutOfDate(final GroupMessage incomingMessage) {
         GroupMessage mostRecentChannelMessage = incomingMessage;
         boolean resendingOldMessage = false;
         // keep the member id and the channel data before updating the message to the most recent seen by the server, if found
-        final String memberCode = storedMessage.getMemberCode();
         final String groupCommunicationChannels = incomingMessage.getGroupCommunicationChannels();
         System.out.println("groupCommunicationChannels: " + groupCommunicationChannels);
-        System.out.println("memberCode: " + memberCode);
+        System.out.println("memberCode: " + incomingMessage.getMemberCode());
         for (String channel : groupCommunicationChannels.split("\\|")) // check if the communication channel applies to this group member
         {
-            if (channel.contains(memberCode)) {
+            if (incomingMessage.getMemberCode().memberOfChannel(channel)) {
                 for (final HashMap<GroupMessage, GroupMessage> userGroups : allMembersList.values()) {
                     GroupMessage membersLastMessage = userGroups.get(incomingMessage);
                     if (membersLastMessage != null) {
-                        final String currentMemberCode = membersLastMessage.getMemberCode();
+                        final MemberCode currentMemberCode = membersLastMessage.getMemberCode();
                         if (currentMemberCode != null) {
                             System.out.println("currentMemberCode: " + currentMemberCode);
-                            if (channel.contains(currentMemberCode)) {
+                            if (currentMemberCode.memberOfChannel(channel)) {
                                 System.out.println("is common member");
                                 System.out.println("mostRecentChannelMessage.getRequestedPhase():" + mostRecentChannelMessage.getRequestedPhase());
                                 System.out.println("membersLastMessage.getRequestedPhase():" + membersLastMessage.getRequestedPhase());
@@ -147,41 +131,56 @@ public class GroupManager {
 
             }
         }
-        // preserve the user id and member code of the requesting participant, even if the message is a resend from a different participant
-        incomingMessage.setOriginMemberCode(mostRecentChannelMessage.getMemberCode());
-        incomingMessage.setStimulusId(mostRecentChannelMessage.getStimulusId());
-        incomingMessage.setStimulusIndex(mostRecentChannelMessage.getStimulusIndex());
-        incomingMessage.setRequestedPhase(mostRecentChannelMessage.getRequestedPhase());
-        incomingMessage.setMessageString(mostRecentChannelMessage.getMessageString());
-        incomingMessage.setResponseStimulusId(mostRecentChannelMessage.getResponseStimulusId());
-        incomingMessage.setExpectedRespondents(mostRecentChannelMessage.getExpectedRespondents());
-        return resendingOldMessage;
+        if (resendingOldMessage) {
+            GroupMessage resendMessage = new GroupMessage();
+            // preserve the user id and member code of the requesting participant, even if the message is a resend from a different participant
+            resendMessage.setActualRespondents(mostRecentChannelMessage.getActualRespondents());
+            resendMessage.setAllMemberCodes(mostRecentChannelMessage.getAllMemberCodes());
+            resendMessage.setChannelScore(mostRecentChannelMessage.getChannelScore());
+            resendMessage.setEventMs(mostRecentChannelMessage.getEventMs());
+            resendMessage.setExpectedRespondents(mostRecentChannelMessage.getExpectedRespondents());
+            resendMessage.setGroupCommunicationChannels(mostRecentChannelMessage.getGroupCommunicationChannels());
+            resendMessage.setGroupId(mostRecentChannelMessage.getGroupId());
+            resendMessage.setGroupReady(mostRecentChannelMessage.isGroupReady());
+            resendMessage.setGroupScore(mostRecentChannelMessage.getGroupScore());
+            resendMessage.setMessageString(mostRecentChannelMessage.getMessageString());
+            resendMessage.setOriginMemberCode(mostRecentChannelMessage.getMemberCode());
+            resendMessage.setRequestedPhase(mostRecentChannelMessage.getRequestedPhase());
+            resendMessage.setResponseStimulusId(mostRecentChannelMessage.getResponseStimulusId());
+            resendMessage.setResponseStimulusOptions(mostRecentChannelMessage.getResponseStimulusOptions());
+            resendMessage.setStimulusId(mostRecentChannelMessage.getStimulusId());
+            resendMessage.setStimulusIndex(mostRecentChannelMessage.getStimulusIndex());
+            resendMessage.setStimuliList(mostRecentChannelMessage.getStimuliList());
+
+            resendMessage.setMemberCode(incomingMessage.getMemberCode());
+            resendMessage.setUserId(incomingMessage.getUserId());
+            resendMessage.setUserLabel(incomingMessage.getUserLabel());
+            resendMessage.setOriginMemberCode(mostRecentChannelMessage.getMemberCode());
+            return resendMessage;
+        } else {
+            return null;
+        }
     }
 
     public void addGroupMember(GroupMessage groupMessage) {
         if (!unAllocatedMemberCodes.containsKey(groupMessage)) {
-            groupsMembers.put(groupMessage, new HashSet<String>());
-            allMemberCodes.put(groupMessage, groupMessage.getAllMemberCodes());
-            // keep the first stimuli list sent so that it can be set it into each subsequent message
-            stimuliLists.put(groupMessage, groupMessage.getStimuliList());
-            unAllocatedMemberCodes.put(groupMessage, new ArrayList<>(Arrays.asList(groupMessage.getAllMemberCodes().split(","))));
+            groupsMembers.put(groupMessage.getGroupId(), new HashSet<UserId>());
+            allMemberCodes.put(groupMessage, MemberCode.fromAllMemberCodes(groupMessage.getAllMemberCodes()));
+            unAllocatedMemberCodes.put(groupMessage, MemberCode.fromAllMemberCodes(groupMessage.getAllMemberCodes()));
             // keeping a UUID for each group could help disambiguate when the server is restarted and the same group name reused
-            groupUUIDs.put(groupMessage, UUID.randomUUID().toString());
+            groupUUIDs.put(groupMessage.getGroupId(), new GroupUUID(groupMessage.getGroupId(), UUID.randomUUID().toString()));
         }
-        final List<String> availableMemberCodes = unAllocatedMemberCodes.get(groupMessage);
+        final List<MemberCode> availableMemberCodes = unAllocatedMemberCodes.get(groupMessage);
         // even if the message has the wrong stimuli list, the participant will still be added to the group, but the correct stimili list will be returned so as to trigger the client to reload its stimili.
         if (groupMessage.getMemberCode() != null
-                && !groupMessage.getMemberCode().isEmpty()
+                && groupMessage.getMemberCode().isValid()
                 && availableMemberCodes.contains(groupMessage.getMemberCode())) {
             // if the member code is provided and it is available then allocate it
             availableMemberCodes.remove(groupMessage.getMemberCode());
-        } else if (!availableMemberCodes.isEmpty()) {
-            groupMessage.setMemberCode(availableMemberCodes.remove(0));
+//        } else if (!availableMemberCodes.isEmpty()) {
+//            groupMessage.setMemberCode(availableMemberCodes.remove(0));
         }
-        groupMessage.setUserLabel(groupMessage.getMemberCode() + " : " + groupMessage.getGroupId());
-        groupMessage.setGroupUUID(groupUUIDs.get(groupMessage));
-        groupsMembers.get(groupMessage).add(groupMessage.getUserId());
-        groupMessage.setStimuliList(stimuliLists.get(groupMessage));
+        groupsMembers.get(groupMessage.getGroupId()).add(groupMessage.getUserId());
         System.out.println("groupMessage: ");
         System.out.println(groupMessage.getAllMemberCodes());
         System.out.println(groupMessage.getGroupCommunicationChannels());
@@ -199,7 +198,7 @@ public class GroupManager {
     }
 
     public void updateResponderListForMessagePhase(GroupMessage storedMessage) {
-        final Set<String> respondingMemberCodes = new HashSet<>();
+        final Set<MemberCode> respondingMemberCodes = new HashSet<>();
         if (storedMessage.getOriginMemberCode() != null) {
             respondingMemberCodes.add(storedMessage.getOriginMemberCode());
         }
@@ -215,9 +214,15 @@ public class GroupManager {
                 }
             }
         }
-        List sortedRespondingMemberCodes = new ArrayList(respondingMemberCodes);
+        List<MemberCode> sortedRespondingMemberCodes = new ArrayList(respondingMemberCodes);
         Collections.sort(sortedRespondingMemberCodes);
-        String respondingMemberCodesString = String.join(",", sortedRespondingMemberCodes);
+        String respondingMemberCodesString = "";
+        for (MemberCode memberCode : sortedRespondingMemberCodes) {
+            if (!respondingMemberCodesString.isEmpty()) {
+                respondingMemberCodesString += ",";
+            }
+            respondingMemberCodesString += memberCode.toString();
+        }
         storedMessage.setActualRespondents(respondingMemberCodesString);
         for (final HashMap<GroupMessage, GroupMessage> userGroups : allMembersList.values()) {
             GroupMessage lastGroupMessage = userGroups.get(storedMessage);

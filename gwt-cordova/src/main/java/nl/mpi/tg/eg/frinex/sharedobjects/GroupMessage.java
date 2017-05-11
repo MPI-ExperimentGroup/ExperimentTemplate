@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.frinex.sharedobjects;
 
 import java.util.Objects;
+import nl.mpi.tg.eg.experiment.client.model.UserId;
 
 /**
  * @since Oct 27, 2016 4:03:41 PM (creation date)
@@ -54,15 +55,15 @@ public class GroupMessage {
         return true;
     }
 
-    private String userId;
-    private String groupId;
-    private String groupUUID;
+    private UserId userId;
+    private GroupId groupId;
+    private GroupUUID groupUUID;
     private String screenId;
     private String userLabel;
     private String allMemberCodes;
     private String groupCommunicationChannels;
-    private String memberCode;
-    private String originMemberCode;
+    private MemberCode memberCode;
+    private MemberCode originMemberCode;
     private String stimulusId;
     private String responseStimulusOptions;
     private String responseStimulusId;
@@ -81,17 +82,18 @@ public class GroupMessage {
     public GroupMessage() {
     }
 
-    public GroupMessage(String groupId, String screenId, String userId) {
-        this.groupId = groupId;
+    public GroupMessage(String groupId, String screenId, String userId, String memberCode) {
+        this.groupId = new GroupId(groupId);
         this.screenId = screenId;
-        this.userId = userId;
+        this.userId = new UserId(userId);
+        this.memberCode = new MemberCode(memberCode);
     }
 
-    public String getUserId() {
+    public UserId getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(UserId userId) {
         this.userId = userId;
     }
 
@@ -103,19 +105,19 @@ public class GroupMessage {
         this.screenId = screenId;
     }
 
-    public String getGroupId() {
+    public GroupId getGroupId() {
         return groupId;
     }
 
-    public void setGroupId(String groupId) {
+    public void setGroupId(GroupId groupId) {
         this.groupId = groupId;
     }
 
-    public String getGroupUUID() {
+    public GroupUUID getGroupUUID() {
         return groupUUID;
     }
 
-    public void setGroupUUID(String groupUUID) {
+    public void setGroupUUID(GroupUUID groupUUID) {
         this.groupUUID = groupUUID;
     }
 
@@ -175,19 +177,19 @@ public class GroupMessage {
         this.groupCommunicationChannels = groupCommunicationChannels;
     }
 
-    public String getMemberCode() {
+    public MemberCode getMemberCode() {
         return memberCode;
     }
 
-    public void setMemberCode(String memberCode) {
+    public void setMemberCode(MemberCode memberCode) {
         this.memberCode = memberCode;
     }
 
-    public String getOriginMemberCode() {
+    public MemberCode getOriginMemberCode() {
         return originMemberCode;
     }
 
-    public void setOriginMemberCode(String originMemberCode) {
+    public void setOriginMemberCode(MemberCode originMemberCode) {
         this.originMemberCode = originMemberCode;
     }
 
