@@ -24,7 +24,7 @@ package nl.mpi.tg.eg.experiment.client.service;
 public class TestData {
 
     private void processMessage(GroupParticipantService instance, String userId, String screenId, String userLabel, String groupId, String allMemberCodes, String communicationChannels, String memberCode, String originMemberCode, String stimulusId, String stimulusIndex, String stimuliList, String requestedPhase, String messageString, boolean groupReady, String responseStimulusId, String expectedRespondents, String actualRespondents, String groupUUID) {
-        instance.handleGroupMessage(userId, screenId, userLabel, groupId, allMemberCodes, memberCode, originMemberCode, expectedRespondents, actualRespondents, stimulusId, stimulusIndex, stimuliList, requestedPhase, messageString, groupReady, responseStimulusId, "groupScore", groupUUID);
+        instance.handleGroupMessage(userId, screenId, userLabel, groupId, allMemberCodes, memberCode, originMemberCode, expectedRespondents, actualRespondents, stimulusId, stimulusIndex, stimuliList, requestedPhase, messageString, groupReady, responseStimulusId, "groupScore", "channelScore", groupUUID);
     }
 
     public void processTestMessagesRound1(GroupParticipantService instance) {
