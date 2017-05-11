@@ -32,11 +32,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 robotMessagesDiv.innerHTML = "robot started";
                 var iframes = document.getElementsByTagName("iframe");
 //                if (document.getElementById('groupName').value === "") {
-                    document.getElementById('groupName').value = "robot group at " + new Date().toLocaleTimeString();
+                document.getElementById('groupName').value = "robot group at " + new Date().toLocaleTimeString();
 //                }
+                var memberCodes = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
                 for (frameIndex = 0; frameIndex < iframes.length; ++frameIndex) {
                     var iframeTimer = setTimeout(function (frameIndex) {
-                        iframes[frameIndex].src = "/multiparticipant?Round_0___4&testuser=" + Math.floor((Math.random() * 1000000000) + 1) + "&group=" + document.getElementById('groupName').value;
+                        iframes[frameIndex].src = "/multiparticipant?Round_0___4&testuser=" + Math.floor((Math.random() * 1000000000) + 1) + "&group=" + document.getElementById('groupName').value + "&member=" + memberCodes[frameIndex];
                     }, 1000 * frameIndex, frameIndex);
                 }
                 findAndClick();
