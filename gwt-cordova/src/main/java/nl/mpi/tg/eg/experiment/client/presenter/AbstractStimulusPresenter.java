@@ -468,13 +468,16 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 public void postLoadTimerFired() {
                     ((ComplexView) simpleView).clearPage();
                     ((ComplexView) simpleView).addPadding();
+//                    ((ComplexView) simpleView).addText("connected: " + groupParticipantService.isConnected());
                     ((ComplexView) simpleView).addHighlightedText("Group not ready");
                     ((ComplexView) simpleView).addPadding();
-                    groupKickTimer.schedule(10000);
+                    groupKickTimer.schedule(1000);
                 }
             }, new TimedStimulusListener() {
                 @Override
                 public void postLoadTimerFired() {
+                    ((ComplexView) simpleView).addPadding();
+                    ((ComplexView) simpleView).addText("synchronising the stimuli");
                     final String stimuliListGroup = groupParticipantService.getStimuliListGroup();
                     // when the stimuli list for this screen does not match that of the group, this listener is fired to: save the group stimuli list and then load the group stimuli list
                     stimulusProvider.loadStoredStimulusList(stimuliListGroup);
@@ -598,7 +601,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void groupChannelScoreLabel() {
-        ((TimedStimulusView) simpleView).addHtmlText("groupChannelScoreLabel");
+        ((TimedStimulusView) simpleView).addHtmlText("Channel Score: " + groupParticipantService.getChannelScore());
     }
 
     protected void groupMessageLabel() {
