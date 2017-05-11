@@ -65,7 +65,9 @@ public class SharedObjectController {
         System.out.println(incomingMessage.getUserId());
         System.out.println(incomingMessage.getScreenId());
         if (!GROUP_MANAGER.isGroupMember(incomingMessage)) {
-            GROUP_MANAGER.addGroupMember(incomingMessage);
+            if (!GROUP_MANAGER.addGroupMember(incomingMessage)) {
+                return incomingMessage; // reject the request
+            }
         }
         incomingMessage.setOriginMemberCode(incomingMessage.getMemberCode());
         GROUP_MANAGER.updateGroupData(incomingMessage);
