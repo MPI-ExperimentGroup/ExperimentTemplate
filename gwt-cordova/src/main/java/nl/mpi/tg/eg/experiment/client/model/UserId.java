@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.model;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Date;
 import java.util.Objects;
 
@@ -62,6 +63,7 @@ public class UserId {
         return true;
     }
 
+    @JsonValue
     @Override
     public String toString() {
         return randomIdString;
