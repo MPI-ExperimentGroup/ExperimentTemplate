@@ -30,15 +30,15 @@ public class GroupManagerTest {
     }
 
     private GroupMessage[] getGroupMembersArray() {
-        final GroupMessage groupMessage1 = new GroupMessage("groupId", "screenId", "1");
+        final GroupMessage groupMessage1 = new GroupMessage("groupId", "screenId", "1", "A");
         groupMessage1.setAllMemberCodes("A,B,C,D,E,F,G,H");
-        final GroupMessage groupMessage2 = new GroupMessage("groupId", "screenId", "2");
-        final GroupMessage groupMessage3 = new GroupMessage("groupId", "screenId", "3");
-        final GroupMessage groupMessage4 = new GroupMessage("groupId", "screenId", "4");
-        final GroupMessage groupMessage5 = new GroupMessage("groupId", "screenId", "5");
-        final GroupMessage groupMessage6 = new GroupMessage("groupId", "screenId", "6");
-        final GroupMessage groupMessage7 = new GroupMessage("groupId", "screenId", "7");
-        final GroupMessage groupMessage8 = new GroupMessage("groupId", "screenId", "8");
+        final GroupMessage groupMessage2 = new GroupMessage("groupId", "screenId", "2", "B");
+        final GroupMessage groupMessage3 = new GroupMessage("groupId", "screenId", "3", "C");
+        final GroupMessage groupMessage4 = new GroupMessage("groupId", "screenId", "4", "D");
+        final GroupMessage groupMessage5 = new GroupMessage("groupId", "screenId", "5", "E");
+        final GroupMessage groupMessage6 = new GroupMessage("groupId", "screenId", "6", "F");
+        final GroupMessage groupMessage7 = new GroupMessage("groupId", "screenId", "7", "G");
+        final GroupMessage groupMessage8 = new GroupMessage("groupId", "screenId", "8", "H");
         groupMessage2.setActualRespondents("Respondents");
         groupMessage2.setExpectedRespondents("Respondents");
         groupMessage4.setActualRespondents("Respondents");
@@ -47,7 +47,7 @@ public class GroupManagerTest {
         groupMessage6.setExpectedRespondents("Respondents");
         groupMessage8.setActualRespondents("Respondents");
         groupMessage8.setExpectedRespondents("Respondents");
-        final GroupMessage groupMessage9 = new GroupMessage("groupIdOther", "screenId", "9");
+        final GroupMessage groupMessage9 = new GroupMessage("groupIdOther", "screenId", "9", "A");
         groupMessage9.setAllMemberCodes("A,B,C,D,E,F");
         return new GroupMessage[]{groupMessage1, groupMessage2, groupMessage3, groupMessage4, groupMessage5, groupMessage6, groupMessage7, groupMessage8, groupMessage9};
     }
@@ -58,7 +58,7 @@ public class GroupManagerTest {
     @Test
     public void testIsGroupMember() {
         System.out.println("isGroupMember");
-        GroupMessage groupMessage = new GroupMessage("groupId", "screenId", "1");
+        GroupMessage groupMessage = new GroupMessage("groupId", "screenId", "1", "A");
         groupMessage.setAllMemberCodes("A,B,C,D,E,F");
         GroupManager instance = new GroupManager();
 
@@ -117,18 +117,18 @@ public class GroupManagerTest {
         System.out.println("updateChannelMessageIfOutOfDate");
         GroupManager instance = new GroupManager();
         final String groupCommunicationChannels = "A,B|C,D|E,F|G,H";
-        final String[] meberCodes = new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "X"};
-        final GroupMessage storedMessage = new GroupMessage("groupId", "screenId", "5");
+        final MemberCode[] meberCodes = new MemberCode[]{new MemberCode("A"), new MemberCode("B"), new MemberCode("C"), new MemberCode("D"), new MemberCode("E"), new MemberCode("F"), new MemberCode("G"), new MemberCode("H"), new MemberCode("X")};
+        final GroupMessage storedMessage = new GroupMessage("groupId", "screenId", "5", "E");
         storedMessage.setGroupCommunicationChannels(groupCommunicationChannels);
-        storedMessage.setMemberCode("E");
+//        storedMessage.setMemberCode("E");
         storedMessage.setRequestedPhase(12);
         int requestPhase = 0;
         for (GroupMessage groupMessage : getGroupMembersArray()) {
             groupMessage.setGroupCommunicationChannels(groupCommunicationChannels);
             groupMessage.setMemberCode(meberCodes[requestPhase]);
             groupMessage.setRequestedPhase(0);
-            groupMessage.setMemberCode("E");
-            instance.updateChannelMessageIfOutOfDate(groupMessage, groupMessage);
+            groupMessage.setMemberCode(new MemberCode("E"));
+            instance.updateChannelMessageIfOutOfDate(groupMessage);
             instance.setUsersLastMessage(groupMessage);
             assertEquals(0, groupMessage.getRequestedPhase().intValue());
         }
@@ -137,7 +137,7 @@ public class GroupManagerTest {
             groupMessage.setRequestedPhase(requestPhase + 3);
             groupMessage.setGroupCommunicationChannels(groupCommunicationChannels);
             groupMessage.setMemberCode(meberCodes[requestPhase]);
-            instance.updateChannelMessageIfOutOfDate(groupMessage, groupMessage);
+            instance.updateChannelMessageIfOutOfDate(groupMessage);
             instance.setUsersLastMessage(groupMessage);
             assertEquals(requestPhase + 3, groupMessage.getRequestedPhase().intValue());
             requestPhase++;
@@ -147,10 +147,14 @@ public class GroupManagerTest {
             groupMessage.setRequestedPhase(requestPhase);
             groupMessage.setGroupCommunicationChannels(groupCommunicationChannels);
             groupMessage.setMemberCode(meberCodes[requestPhase]);
-            instance.updateChannelMessageIfOutOfDate(groupMessage, groupMessage);
-            instance.setUsersLastMessage(groupMessage);
+            final GroupMessage updateChannelMessageIfOutOfDate = instance.updateChannelMessageIfOutOfDate(groupMessage);
             final int[] expectedValues = new int[]{4, 4, 6, 6, 8, 8, 10, 10, 8};
-            assertEquals(expectedValues[requestPhase], groupMessage.getRequestedPhase().intValue());
+            if (updateChannelMessageIfOutOfDate == null) {
+                instance.setUsersLastMessage(groupMessage);
+                assertEquals(expectedValues[requestPhase], groupMessage.getRequestedPhase().intValue());
+            } else {
+                assertEquals(expectedValues[requestPhase], updateChannelMessageIfOutOfDate.getRequestedPhase().intValue());
+            }
             requestPhase++;
         }
     }
