@@ -148,9 +148,8 @@ public class GroupParticipantService {
             }
         }
 
-        if (groupIdMatches && screenIdMatches) {
+        if (groupReady && groupIdMatches && screenIdMatches) {
             // handle group messages
-            this.messageSenderMemberCode = originMemberCode;
             this.groupUUID = groupUUID;
             this.groupReady = groupReady;
             if (this.stimuliListLoaded.equals(this.stimuliListGroup)) {
@@ -159,7 +158,7 @@ public class GroupParticipantService {
                 for (String channel : groupCommunicationChannels.split("\\|")) {
                     final List<String> channelList = Arrays.asList(channel.split(","));
                     // check communication channel before responding to the message
-                    if (channelList.contains(this.memberCode) && channelList.contains(this.messageSenderMemberCode)) {
+                    if (channelList.contains(this.memberCode) && channelList.contains(originMemberCode)) {
                         final List<String> expectedRespondentsList = Arrays.asList(expectedRespondents.split(","));
                         final List<String> requiredRespondentsList = new ArrayList<>(expectedRespondentsList);
                         requiredRespondentsList.retainAll(channelList);
@@ -170,6 +169,7 @@ public class GroupParticipantService {
                     }
                 }
                 if (messageIsRelevant) {
+                    this.messageSenderMemberCode = originMemberCode;
                     // make sure that all relevent members have responded before moving to the next phase
                     final int currentRequestedPhase = Integer.parseInt(requestedPhase);
                     for (String groupRole : activityListeners.keySet()) {
