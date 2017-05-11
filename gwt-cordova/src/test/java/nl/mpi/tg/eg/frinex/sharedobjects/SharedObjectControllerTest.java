@@ -46,7 +46,7 @@ public class SharedObjectControllerTest {
             String expectedRespondents,
             String actualRespondents,
             String groupUUID) throws Exception {
-        GroupMessage groupMessage = new GroupMessage(groupId, screenId, userId);
+        GroupMessage groupMessage = new GroupMessage(groupId, screenId, userId, memberCode);
         groupMessage.setAllMemberCodes(allMemberCodes);
         groupMessage.setGroupCommunicationChannels(communicationChannels);
         groupMessage.setRequestedPhase(Integer.parseInt(requestedPhase));
@@ -63,17 +63,17 @@ public class SharedObjectControllerTest {
         SharedObjectController instance = new SharedObjectController();
 
         GroupMessage result = processMessage(instance, "testuser-0", "Round_0", "A : robot group at 5:36:59 PM", "robot group at 5:36:59 PM", ABCDEFGH, ABCDEFGH, "A", "A", "4-1:medium", "7", "3-2:large-2-7:medium-3-1:medium-1-5:medium-1-2:small-3-7:large-3-2:medium-4-1:medium", "8", "", true, "null", "B,C,A,E,F,G,H", "G", "155557d6-83a5-4fb6-af3c-67fd40635b75");
-        assertEquals("robot group at 5:36:59 PM", result.getGroupId());
+        GroupId expectedGroupId= result.getGroupId();
         result = processMessage(instance, "testuser-0", "Round_0", "A : robot group at 5:36:59 PM", "robot group at 5:36:59 PM", ABCDEFGH, ABCDEFGH, "A", "A", "4-1:medium", "7", "3-2:large-2-7:medium-3-1:medium-1-5:medium-1-2:small-3-7:large-3-2:medium-4-1:medium", "8", "", true, "null", "B,C,A,E,F,G,H", "G", "155557d6-83a5-4fb6-af3c-67fd40635b75");
-        assertEquals("robot group at 5:36:59 PM", result.getGroupId());
+        assertEquals(expectedGroupId, result.getGroupId());
         result = processMessage(instance, "testuser-0", "Round_0", "A : robot group at 10:23:42 AM", "robot group at 10:23:42 AM", ABCDEFGH, ABCDEFGH, "A", "A", "2-7:small", "0", "2-7:small-4-5:small-3-1:large-1-5:medium-3-6:medium-3-1:medium-3-4:large-1-7:medium", "0", "null", false, "null", "null", "A", "0502002b-84d6-4e9c-86e9-1b81a7be81ca");
-        assertEquals("robot group at 10:23:42 AM", result.getGroupId());
+        assertNotEquals(expectedGroupId, result.getGroupId());
         result = processMessage(instance, "testuser-1", "Round_0", "B : robot group at 10:23:42 AM", "robot group at 10:23:42 AM", ABCDEFGH, ABCDEFGH, "B", "B", "2-1:medium", "0", "2-7:small-4-5:small-3-1:large-1-5:medium-3-6:medium-3-1:medium-3-4:large-1-7:medium", "0", "null", false, "null", "null", "null", "0502002b-84d6-4e9c-86e9-1b81a7be81ca");
-        assertEquals("robot group at 10:23:42 AM", result.getGroupId());
+        assertNotEquals(expectedGroupId, result.getGroupId());
         result = processMessage(instance, "testuser-0", "Round_0", "A : robot group at 5:36:59 PM", "robot group at 5:36:59 PM", ABCDEFGH, ABCDEFGH, "A", "A", "4-1:medium", "7", "3-2:large-2-7:medium-3-1:medium-1-5:medium-1-2:small-3-7:large-3-2:medium-4-1:medium", "8", "", true, "null", "B,C,A,E,F,G,H", "G", "155557d6-83a5-4fb6-af3c-67fd40635b75");
-        assertEquals("robot group at 5:36:59 PM", result.getGroupId());
+        assertEquals(expectedGroupId, result.getGroupId());
         result = processMessage(instance, "testuser-0", "Round_0", "A : robot group at 10:23:42 AM", "robot group at 10:23:42 AM", ABCDEFGH, ABCDEFGH, "A", "A", "2-7:small", "0", "2-7:small-4-5:small-3-1:large-1-5:medium-3-6:medium-3-1:medium-3-4:large-1-7:medium", "0", "null", false, "null", "null", "A", "0502002b-84d6-4e9c-86e9-1b81a7be81ca");
-        assertEquals("robot group at 10:23:42 AM", result.getGroupId());
+        assertNotEquals(expectedGroupId, result.getGroupId());
     }
 
     @Ignore //@todo: complete this test and make sure ActualRespondents is correct and that the user code does not switch
