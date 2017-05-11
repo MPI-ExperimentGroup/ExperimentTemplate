@@ -37,7 +37,7 @@ public class GroupManager {
     private final HashMap<GroupMessage, HashMap<MemberCode, Integer>> groupScores = new HashMap<>();
     private final HashMap<GroupMessage, String> stimuliLists = new HashMap<>();
     private final HashMap<GroupId, GroupUUID> groupUUIDs = new HashMap<>();
-    private final HashMap<GroupMessage, List<MemberCode>> unAllocatedMemberCodes = new HashMap<>();
+    private final HashMap<GroupId, List<MemberCode>> unAllocatedMemberCodes = new HashMap<>();
     private final HashMap<GroupId, HashSet<UserId>> groupsMembers = new HashMap();
     GroupMessage lastGroupId = null;
 
@@ -58,7 +58,7 @@ public class GroupManager {
     }
 
     public boolean isGroupReady(GroupMessage groupMessage) {
-        final List<MemberCode> membercodes = unAllocatedMemberCodes.get(groupMessage);
+        final List<MemberCode> membercodes = unAllocatedMemberCodes.get(groupMessage.getGroupId());
         if (membercodes == null) {
             return false;
         }
@@ -162,15 +162,16 @@ public class GroupManager {
         }
     }
 
-    public void addGroupMember(GroupMessage groupMessage) {
-        if (!unAllocatedMemberCodes.containsKey(groupMessage)) {
+    public boolean addGroupMember(GroupMessage groupMessage) {
+        boolean memberAdded = false;
+        if (!unAllocatedMemberCodes.containsKey(groupMessage.getGroupId())) {
             groupsMembers.put(groupMessage.getGroupId(), new HashSet<UserId>());
             allMemberCodes.put(groupMessage, MemberCode.fromAllMemberCodes(groupMessage.getAllMemberCodes()));
-            unAllocatedMemberCodes.put(groupMessage, MemberCode.fromAllMemberCodes(groupMessage.getAllMemberCodes()));
+            unAllocatedMemberCodes.put(groupMessage.getGroupId(), MemberCode.fromAllMemberCodes(groupMessage.getAllMemberCodes()));
             // keeping a UUID for each group could help disambiguate when the server is restarted and the same group name reused
             groupUUIDs.put(groupMessage.getGroupId(), new GroupUUID(groupMessage.getGroupId(), UUID.randomUUID().toString()));
         }
-        final List<MemberCode> availableMemberCodes = unAllocatedMemberCodes.get(groupMessage);
+        final List<MemberCode> availableMemberCodes = unAllocatedMemberCodes.get(groupMessage.getGroupId());
         // even if the message has the wrong stimuli list, the participant will still be added to the group, but the correct stimili list will be returned so as to trigger the client to reload its stimili.
         if (groupMessage.getMemberCode() != null
                 && groupMessage.getMemberCode().isValid()
@@ -179,8 +180,9 @@ public class GroupManager {
             availableMemberCodes.remove(groupMessage.getMemberCode());
 //        } else if (!availableMemberCodes.isEmpty()) {
 //            groupMessage.setMemberCode(availableMemberCodes.remove(0));
+            groupsMembers.get(groupMessage.getGroupId()).add(groupMessage.getUserId());
+            memberAdded = true;
         }
-        groupsMembers.get(groupMessage.getGroupId()).add(groupMessage.getUserId());
         System.out.println("groupMessage: ");
         System.out.println(groupMessage.getAllMemberCodes());
         System.out.println(groupMessage.getGroupCommunicationChannels());
@@ -195,6 +197,7 @@ public class GroupManager {
         System.out.println(groupMessage.getStimulusIndex());
         System.out.println(groupMessage.getUserId());
         System.out.println(groupMessage.getScreenId());
+        return memberAdded;
     }
 
     public void updateResponderListForMessagePhase(GroupMessage storedMessage) {
