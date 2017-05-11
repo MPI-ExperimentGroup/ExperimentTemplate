@@ -87,7 +87,7 @@ public class GroupParticipantServiceTest {
                 instance.handleGroupMessage("userId", "screenId", "userLabel", "groupId", "A,B,C,D,E,F,G,H", "A,B,C,D,E,F,G,H".split(",")[memberIndex], "A,B,C,D,E,F,G,H".split(",")[memberIndex],
                         "expectedRespondents",
                         "actualRespondents  ",
-                        "stimulusId", "0", "stimuliList", Integer.toString(phaseCounter), "messageString", Boolean.TRUE, "responseStimulusOptions", "groupScore", "responseStimulusId");
+                        "stimulusId", "0", "stimuliList", Integer.toString(phaseCounter), "messageString", Boolean.TRUE, "responseStimulusOptions", "groupScore", "channelScore", "responseStimulusId");
             }
         }
         assertEquals("0-A[A,C,E,G:-:-:B,D,F,H:-:-]\n"
