@@ -188,20 +188,6 @@ public class TestData {
                 + "13-A-guesser[-:B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A]\n"
             },
             {"testuser-7", "testuser-7\n"
-                + "groupNotReadyListener\n"
-                + "groupNotReadyListener\n"
-                + "groupNotReadyListener\n"
-                + "groupNotReadyListener\n"
-                + "groupNotReadyListener\n"
-                + "groupNotReadyListener\n"
-                + "groupNotReadyListener\n"
-                + "groupNotReadyListener\n"
-                + "groupNotReadyListener\n"
-                + "groupNotReadyListener\n"
-                + "groupNotReadyListener\n"
-                + "groupNotReadyListener\n"
-                + "groupNotReadyListener\n"
-                + "groupNotReadyListener\n"
                 + "groupInfoChangeListner\n"
                 + "screenResetRequestListner\n"
                 + "stimulusSyncListner\n"
@@ -238,7 +224,6 @@ public class TestData {
     public String[][] getExpectedDataRound1() {
         return new String[][]{
             {"testuser-1", "testuser-1\n"
-                + "groupNotReadyListener\n"
                 + "groupInfoChangeListner\n"
                 + "stimulusSyncListner\n"
                 + "0-B-guesser wait[B,D,F,H:-:-:A,C,E,G:-:-]\n"
