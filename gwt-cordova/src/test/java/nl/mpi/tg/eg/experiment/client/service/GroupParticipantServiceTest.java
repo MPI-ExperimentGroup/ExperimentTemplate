@@ -226,7 +226,8 @@ public class GroupParticipantServiceTest {
             groupNetworkActivity(stringBuilder, groupParticipantService, "-:B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A",
                     1, "guesser");
             new TestData().processTestMessages(groupParticipantService);
-            System.out.println(stringBuilder.toString());
+//            System.out.println("Expecting: " + expectedData[1]);
+//            System.out.println("Found: " + stringBuilder.toString());
             assertEquals(expectedData[1], stringBuilder.toString());
         }
     }
@@ -283,7 +284,8 @@ public class GroupParticipantServiceTest {
             groupNetworkActivity(stringBuilder, groupParticipantService, "-:A,C,E,G:-:-:B,D,F,H:-", 1, "producer wait");
             groupNetworkActivity(stringBuilder, groupParticipantService, "A,C,E,G:-:-:B,D,F,H:-:-", 1, "producer");
             new TestData().processTestMessagesRound1(groupParticipantService);
-            System.out.println(stringBuilder.toString());
+//            System.out.println("Expecting: " + expectedData[1]);
+//            System.out.println("Found: " + stringBuilder.toString());
             assertEquals(expectedData[1], stringBuilder.toString());
         }
     }
