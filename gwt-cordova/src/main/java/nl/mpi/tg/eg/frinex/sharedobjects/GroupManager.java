@@ -102,26 +102,43 @@ public class GroupManager {
         System.out.println("memberCode: " + incomingMessage.getMemberCode());
         for (String channel : groupCommunicationChannels.split("\\|")) // check if the communication channel applies to this group member
         {
+            System.out.println("channel: " + channel);
             if (incomingMessage.getMemberCode().memberOfChannel(channel)) {
+                System.out.println("is channel member");
                 for (final HashMap<GroupMessage, GroupMessage> userGroups : allMembersList.values()) {
                     GroupMessage membersLastMessage = userGroups.get(incomingMessage);
                     if (membersLastMessage != null) {
                         final MemberCode currentMemberCode = membersLastMessage.getMemberCode();
                         if (currentMemberCode != null) {
-                            System.out.println("currentMemberCode: " + currentMemberCode);
                             if (currentMemberCode.memberOfChannel(channel)) {
+                                System.out.println("currentMemberCode: " + currentMemberCode);
                                 System.out.println("is common member");
                                 System.out.println("mostRecentChannelMessage.getRequestedPhase():" + mostRecentChannelMessage.getRequestedPhase());
                                 System.out.println("membersLastMessage.getRequestedPhase():" + membersLastMessage.getRequestedPhase());
                                 if (mostRecentChannelMessage.getRequestedPhase() < membersLastMessage.getRequestedPhase()) {
                                     System.out.println("other is more advanced than sent");
                                     // select only the most recent message for any user in this channel
+                                    System.out.println("membersLastMessage.getExpectedRespondents(): " + membersLastMessage.getExpectedRespondents());
+                                    System.out.println("membersLastMessage.getActualRespondents(): " + membersLastMessage.getActualRespondents());
                                     if (membersLastMessage.getExpectedRespondents() != null && membersLastMessage.getActualRespondents() != null
-                                            && membersLastMessage.getExpectedRespondents().equals(membersLastMessage.getActualRespondents())) {
-                                        System.out.println("all ExpectedRespondents replied");
-                                        // only resend a message if all expected respondants have replied                                        
-                                        mostRecentChannelMessage = membersLastMessage;
-                                        resendingOldMessage = true;
+                                            && membersLastMessage.getExpectedRespondents().length() <= membersLastMessage.getActualRespondents().length()) {
+                                        System.out.println("ExpectedRespondents and ActualRespondents length adequate");
+                                        boolean allResponded = true;
+                                        if (!membersLastMessage.getActualRespondents().contains(membersLastMessage.getMemberCode().toString())) {
+                                            for (String respondant : membersLastMessage.getExpectedRespondents().split(",")) {
+                                                if (!membersLastMessage.getActualRespondents().contains(respondant)) {
+                                                    if (channel.contains(respondant)) {
+                                                        allResponded = false;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        if (allResponded) {
+                                            System.out.println("all ExpectedRespondents replied");
+                                            // only resend a message if all expected respondants have replied                                        
+                                            mostRecentChannelMessage = membersLastMessage;
+                                            resendingOldMessage = true;
+                                        }
                                     }
                                 }
                             }
@@ -132,6 +149,7 @@ public class GroupManager {
             }
         }
         if (resendingOldMessage) {
+            System.out.println("resendingOldMessage");
             GroupMessage resendMessage = new GroupMessage();
             // preserve the user id and member code of the requesting participant, even if the message is a resend from a different participant
             resendMessage.setActualRespondents(mostRecentChannelMessage.getActualRespondents());
@@ -142,6 +160,7 @@ public class GroupManager {
             resendMessage.setGroupCommunicationChannels(mostRecentChannelMessage.getGroupCommunicationChannels());
             resendMessage.setGroupId(mostRecentChannelMessage.getGroupId());
             resendMessage.setGroupReady(mostRecentChannelMessage.isGroupReady());
+            resendMessage.setGroupUUID(mostRecentChannelMessage.getGroupUUID());
             resendMessage.setGroupScore(mostRecentChannelMessage.getGroupScore());
             resendMessage.setMessageString(mostRecentChannelMessage.getMessageString());
             resendMessage.setOriginMemberCode(mostRecentChannelMessage.getMemberCode());
@@ -151,6 +170,7 @@ public class GroupManager {
             resendMessage.setStimulusId(mostRecentChannelMessage.getStimulusId());
             resendMessage.setStimulusIndex(mostRecentChannelMessage.getStimulusIndex());
             resendMessage.setStimuliList(mostRecentChannelMessage.getStimuliList());
+            resendMessage.setScreenId(mostRecentChannelMessage.getScreenId());
 
             resendMessage.setMemberCode(incomingMessage.getMemberCode());
             resendMessage.setUserId(incomingMessage.getUserId());
