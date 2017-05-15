@@ -58,7 +58,7 @@ public class ManipulatedContours {
             + "<br/>"
             + "Si vous êtes d'accord pour participer à cette expérience, cliquez sur 'Je suis d'accord'. Si vous décidez de ne pas participer à cette expérience, cliquez sur 'Je ne suis pas d'accord'. Abandonnez l'expérience en allant sur un autre site web ou en quittant le site web.<br/>"
             + "<br/>";
-    final String informationScreenText1 = "Cette expérience en ligne est une expérience audio. Pour cette raison, nous vous demandons de tester les réglages sonores de votre ordinateur en cliquant sur le gros bouton rouge ci-dessous.<br/>"
+    final String informationScreenText1 = "Cette expérience en ligne est une expérience audio. Pour cette raison, nous vous demandons de tester les réglages sonores de votre ordinateur en cliquant sur le gros bouton ci-dessous.<br/>"
             + "<br/>"
             + "<b>Vous n'entendez aucun son?</b> Dans ce cas, il y a quelque chose qui ne va pas avec les réglages sonores de votre ordinateur. Personnalisez les réglages et essayez de nouveau.<br/>"
             + "<br/>"
