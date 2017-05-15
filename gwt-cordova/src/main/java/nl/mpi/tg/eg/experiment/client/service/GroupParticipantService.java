@@ -190,9 +190,9 @@ public class GroupParticipantService {
                                 this.channelScore = channelScore;
                                 stimulusSyncListner.postLoadTimerFired();
                                 if (!endOfStimuli) {
+                                    lastFiredListnerGroupRole = splitRole[roleIndex];
                                     currentListner.postLoadTimerFired();
                                     lastFiredListner = currentListner;
-                                    lastFiredListnerGroupRole = splitRole[roleIndex];
                                 }
                             }
                         }
