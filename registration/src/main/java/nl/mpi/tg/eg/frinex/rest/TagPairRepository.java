@@ -31,12 +31,12 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(collectionResourceRel = "tagevents", path = "tagevents")
 public interface TagPairRepository extends PagingAndSortingRepository<TagPairData, Long> {
 
-    @Query("select distinct new TagPairData(userId, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData order by tagDate asc")
+    @Query("select distinct new TagPairData(userId, screenName, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData order by tagDate asc")
     List<TagPairData> findAllDistinctRecords();
 
-    @Query("select distinct new TagPairData(userId, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData where userId = :userId order by tagDate asc, eventTag desc")
+    @Query("select distinct new TagPairData(userId, screenName, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData where userId = :userId order by tagDate asc, eventTag desc")
     List<TagPairData> findByUserIdOrderByTagDateAsc(@Param("userId") String userId);
 
-    @Query("select distinct new TagPairData(userId, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData where userId = :userId and eventTag = :eventTag order by tagDate asc")
+    @Query("select distinct new TagPairData(userId, screenName, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData where userId = :userId and eventTag = :eventTag order by tagDate asc")
     List<TagPairData> findByUserIdAndEventTagOrderByTagDateAsc(@Param("userId") String userId, @Param("eventTag") String eventTag);
 }
