@@ -39,6 +39,7 @@ public class TagPairData {
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date submitDate;
     private String experimentName;
+    private String screenName;
     private String eventTag;
     private String tagValue1;
     private String tagValue2;
@@ -48,8 +49,9 @@ public class TagPairData {
     public TagPairData() {
     }
 
-    public TagPairData(String userId, String eventTag, String tagValue1, String tagValue2, int eventMs, Date tagDate) {
+    public TagPairData(String userId, String screenName, String eventTag, String tagValue1, String tagValue2, int eventMs, Date tagDate){
         this.tagDate = tagDate;
+        this.screenName = screenName;
         this.eventTag = eventTag;
         this.tagValue1 = tagValue1;
         this.tagValue2 = tagValue2;
@@ -71,6 +73,10 @@ public class TagPairData {
 
     public String getExperimentName() {
         return experimentName;
+    }
+
+    public String getScreenName() {
+        return screenName;
     }
 
     public String getEventTag() {
