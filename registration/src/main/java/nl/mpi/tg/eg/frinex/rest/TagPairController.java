@@ -17,10 +17,17 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.util.ArrayList;
+import java.util.List;
+import nl.mpi.tg.eg.frinex.model.TagPairData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @since Jul 23, 2015 3:27:13 PM (creation date)
@@ -33,9 +40,22 @@ public class TagPairController {
     private TagPairRepository tagPairRepository;
 
     @RequestMapping("tagpairviewer")
-    public String tagPairViewer(Model model) {
-        model.addAttribute("count", this.tagPairRepository.count());
-        model.addAttribute("allTagPairData", this.tagPairRepository.findAllDistinctRecords());
+    public String tagPairViewer(Model model, @RequestParam(value = "page", defaultValue = "0", required = false) Integer page,
+            @RequestParam(value = "sort", required = false, defaultValue = "tagDate") String sortColumn,
+            @RequestParam(value = "size", defaultValue = "2000", required = false) Integer size,
+            @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection) {//, Pageable pageable
+        final long count = this.tagPairRepository.count();
+        model.addAttribute("count", count);
+        final Page<TagPairData> pageData = this.tagPairRepository.findAll(new PageRequest(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
+        final List<TagPairData> content = pageData.getContent();
+        final List<TagPairData> contentDistinct = new ArrayList<>();
+        for (TagPairData tagData : content) {
+            if (!contentDistinct.contains(tagData)) {
+                contentDistinct.add(tagData);
+            }
+        }
+        model.addAttribute("allTagPairData", contentDistinct);
+        model.addAttribute("pageData", pageData);
         return "tagpairviewer";
     }
 }
