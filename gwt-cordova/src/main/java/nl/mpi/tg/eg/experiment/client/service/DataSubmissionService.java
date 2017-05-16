@@ -81,19 +81,21 @@ public class DataSubmissionService extends AbstractSubmissionService {
         submitData(ServiceEndpoint.metadata, userResults.getUserData().getUserId(), "[" + stringBuilder.toString() + "]", dataSubmissionListener);
     }
 
-    public void submitTagValue(final UserId userId, String eventTag, String tagValue, int eventMs) {
+    public void submitTagValue(final UserId userId, final String screenName, String eventTag, String tagValue, int eventMs) {
         submitData(ServiceEndpoint.tagEvent, userId, "{\"tagDate\" : " + jsonEscape(format.format(new Date())) + ",\n"
                 + "\"experimentName\": " + jsonEscape(experimentName) + ",\n"
                 + "\"userId\": " + jsonEscape(userId.toString()) + ",\n"
+                + "\"screenName\": " + jsonEscape(screenName) + ",\n"
                 + "\"eventTag\": " + jsonEscape(eventTag) + ",\n"
                 + "\"tagValue\": " + jsonEscape(tagValue) + ",\n"
                 + "\"eventMs\": \"" + eventMs + "\" \n}");
     }
 
-    public void submitTagPairValue(final UserId userId, String eventTag, String tagValue1, String tagValue2, int eventMs) {
+    public void submitTagPairValue(final UserId userId, final String screenName, String eventTag, String tagValue1, String tagValue2, int eventMs) {
         submitData(ServiceEndpoint.tagPairEvent, userId, "{\"tagDate\" : " + jsonEscape(format.format(new Date())) + ",\n"
                 + "\"experimentName\": " + jsonEscape(experimentName) + ",\n"
                 + "\"userId\": " + jsonEscape(userId.toString()) + ",\n"
+                + "\"screenName\": " + jsonEscape(screenName) + ",\n"
                 + "\"eventTag\": " + jsonEscape(eventTag) + ",\n"
                 + "\"tagValue1\": " + jsonEscape(tagValue1) + ",\n"
                 + "\"tagValue2\": " + jsonEscape(tagValue2) + ",\n"
