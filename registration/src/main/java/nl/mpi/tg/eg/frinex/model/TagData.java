@@ -40,6 +40,7 @@ public class TagData implements Comparable<TagData> {
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date submitDate;
     private String experimentName;
+    private String screenName;
     private String eventTag;
     private String tagValue;
     private String userId;
@@ -48,8 +49,9 @@ public class TagData implements Comparable<TagData> {
     public TagData() {
     }
 
-    public TagData(String userId, String eventTag, String tagValue, int eventMs, Date tagDate) {
+    public TagData(String userId, String screenName, String eventTag, String tagValue, int eventMs, Date tagDate) {
         this.tagDate = tagDate;
+        this.screenName = screenName;
         this.eventTag = eventTag;
         this.tagValue = tagValue;
         this.userId = userId;
@@ -70,6 +72,10 @@ public class TagData implements Comparable<TagData> {
 
     public String getExperimentName() {
         return experimentName;
+    }
+
+    public String getScreenName() {
+        return screenName;
     }
 
     public String getEventTag() {
