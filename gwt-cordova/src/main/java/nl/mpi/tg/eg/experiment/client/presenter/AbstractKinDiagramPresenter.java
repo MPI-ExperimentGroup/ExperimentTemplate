@@ -192,7 +192,7 @@ public abstract class AbstractKinDiagramPresenter extends AbstractPresenter impl
 
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                submissionService.submitTagValue(userResults.getUserData().getUserId(), "SaveDiagram", loadKinTypeString(diagramName), duration.elapsedMillis());
+                submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "SaveDiagram", loadKinTypeString(diagramName), duration.elapsedMillis());
             }
         });
         ((KinTypeView) simpleView).addOptionButton(new PresenterEventListner() {
