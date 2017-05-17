@@ -135,19 +135,19 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
         try {
             submissionService.submitScreenChange(userResults.getUserData().getUserId(), "ApplicationStarted");
             // application specific information
-            submissionService.submitTagValue(userResults.getUserData().getUserId(), "projectVersion", version.projectVersion(), 0);
-            submissionService.submitTagValue(userResults.getUserData().getUserId(), "lastCommitDate", version.lastCommitDate().replace("\"", ""), 0);
-            submissionService.submitTagValue(userResults.getUserData().getUserId(), "compileDate", version.compileDate(), 0);
-            submissionService.submitTagValue(userResults.getUserData().getUserId(), "navigator.platform", Window.Navigator.getPlatform(), 0);
-            submissionService.submitTagValue(userResults.getUserData().getUserId(), "navigator.userAgent", Window.Navigator.getUserAgent(), 0);
-            submissionService.submitTagValue(userResults.getUserData().getUserId(), "navigator.cookieEnabled", Boolean.toString(Window.Navigator.isCookieEnabled()), 0);
+            submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "projectVersion", version.projectVersion(), 0);
+            submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "lastCommitDate", version.lastCommitDate().replace("\"", ""), 0);
+            submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "compileDate", version.compileDate(), 0);
+            submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "navigator.platform", Window.Navigator.getPlatform(), 0);
+            submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "navigator.userAgent", Window.Navigator.getUserAgent(), 0);
+            submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "navigator.cookieEnabled", Boolean.toString(Window.Navigator.isCookieEnabled()), 0);
             if (hasCordova()) {
                 // cordova specific information
-                submissionService.submitTagValue(userResults.getUserData().getUserId(), "cordovaVersion", getCordovaVersion(), 0);
-                submissionService.submitTagValue(userResults.getUserData().getUserId(), "deviceModel", getDeviceModel(), 0);
-                submissionService.submitTagValue(userResults.getUserData().getUserId(), "devicePlatform", getDevicePlatform(), 0);
-                submissionService.submitTagValue(userResults.getUserData().getUserId(), "deviceUUID", getDeviceUUID(), 0);
-                submissionService.submitTagValue(userResults.getUserData().getUserId(), "deviceVersion", getDeviceVersion(), 0);
+                submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "cordovaVersion", getCordovaVersion(), 0);
+                submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "deviceModel", getDeviceModel(), 0);
+                submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "devicePlatform", getDevicePlatform(), 0);
+                submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "deviceUUID", getDeviceUUID(), 0);
+                submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "deviceVersion", getDeviceVersion(), 0);
             }
             try {
                 final String appState = localStorage.getAppState(userResults.getUserData().getUserId());
