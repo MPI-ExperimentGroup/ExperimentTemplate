@@ -146,7 +146,7 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
             public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
                 final long durationMs = System.currentTimeMillis() - startMs;
                 stimulusResponseGroup.addResponse(stimulusProvider.getCurrentStimulus(), new StimulusResponse(colourPickerCanvasView.getColour(), new Date(), durationMs));
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), stimulusResponseGroup.getPostName(), stimulusProvider.getCurrentStimulus().getUniqueId(), colourPickerCanvasView.getColour().getHexValue(), (int) (durationMs));
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), stimulusResponseGroup.getPostName(), stimulusProvider.getCurrentStimulus().getUniqueId(), colourPickerCanvasView.getColour().getHexValue(), (int) (durationMs));
                 triggerEvent();
             }
 
@@ -166,7 +166,7 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
             public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
                 final long durationMs = System.currentTimeMillis() - startMs;
                 stimulusResponseGroup.addResponse(stimulusProvider.getCurrentStimulus(), new StimulusResponse(null, new Date(), durationMs));
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), stimulusResponseGroup.getPostName(), stimulusProvider.getCurrentStimulus().getUniqueId(), "", (int) (durationMs));
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), stimulusResponseGroup.getPostName(), stimulusProvider.getCurrentStimulus().getUniqueId(), "", (int) (durationMs));
                 triggerEvent();
             }
 
