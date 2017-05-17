@@ -20,7 +20,6 @@ package nl.mpi.tg.eg.experiment.client.presenter;
 import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JsArray;
-import com.google.gwt.storage.client.Storage;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
@@ -65,7 +64,7 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
         String completionCode = submissionService.getCompletionCode(userResults.getUserData().getUserId());
         // todo: consider changing this to something other than just a tag value
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "CompletionCode", completionCode, duration.elapsedMillis());
-        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), "DataSubmissionComplete", "CompletionCode", completionCode, 0);
+        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), "DataSubmissionComplete", "CompletionCode", completionCode, 0);
         ((ComplexView) simpleView).addTextField(completionCode, true);
     }
 
