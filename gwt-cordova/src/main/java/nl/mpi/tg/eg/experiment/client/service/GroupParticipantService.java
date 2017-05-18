@@ -321,7 +321,7 @@ public class GroupParticipantService {
             console.log('Connected: ' + frame);
             stompClient.subscribe('/shared/group', function (groupMessage) {
                 var contentData = JSON.parse(groupMessage.body);
-                console.log('contentData: ' + contentData);
+                //console.log('contentData: ' + contentData);
                 groupParticipantService.@nl.mpi.tg.eg.experiment.client.service.GroupParticipantService::handleGroupMessage(
             Ljava/lang/String;
             Ljava/lang/String;
@@ -363,9 +363,10 @@ public class GroupParticipantService {
             contentData.channelScore,
             contentData.groupUUID
             );
-//            }, function(error) {
-//                // display the error's message header:
-//                alert(error.headers.message);
+            }, function(error) {
+                // display the error's message header:
+                console.log('contentData: ' + contentData);
+                console.log('error.headers.message: ' + error.headers.message);
             });
         });
      }-*/;
