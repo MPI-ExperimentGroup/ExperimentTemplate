@@ -479,6 +479,12 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             stimulusImage.getPresenterFeatureList().add(nextStimulusFeature4);
         }
         hasMoreStimulusFeature.getPresenterFeatureList().add(groupNetwork);
+//        presenterFeatureList.add(groupNetwork);
+//        presenterFeatureList.add(loadStimuliFeature);
+//
+//        final PresenterFeature groupMessageShowingStimuli = new PresenterFeature(FeatureType.sendGroupMessage, null);
+//        groupMessageShowingStimuli.addFeatureAttributes(FeatureAttribute.eventTag, "groupMessageShowingStimuli");
+//        groupMessageShowingStimuli.addFeatureAttributes(FeatureAttribute.incrementPhase, "0");
 
         final String preStimuliText = getPreStimuliText(storedWizardScreenData);
         if (preStimuliText != null && !preStimuliText.isEmpty()) {
@@ -559,7 +565,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //            final PresenterFeature groupMessageEndOfStimuli = new PresenterFeature(FeatureType.sendGroupMessage, null);
 //            groupMessageEndOfStimuli.addFeatureAttributes(FeatureAttribute.eventTag, "groupMessageEndOfStimuli");
 //            groupMessageEndOfStimuli.addFeatureAttributes(FeatureAttribute.incrementPhase, "0");
-//            actionButton.getPresenterFeatureList().add(groupMessageEndOfStimuli);
+//            endOfStimulusFeature.getPresenterFeatureList().add(groupMessageEndOfStimuli);
             endOfStimulusFeature.getPresenterFeatureList().add(actionButton);
         } else {
             endOfStimulusFeature.getPresenterFeatureList().add(autoNextPresenter);
