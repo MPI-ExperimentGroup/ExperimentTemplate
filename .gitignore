@@ -1,17 +1,6 @@
 .DS_Store
 /registration/target/
 /gwt-cordova/target/
-/gwt-cordova/src/main/webapp/media/*.wav
-/gwt-cordova/src/main/webapp/media/*/*.mp3
-/gwt-cordova/src/main/webapp/media/*/*.m4a
-/gwt-cordova/src/main/webapp/static/*.wav
-/gwt-cordova/src/main/webapp/static/*.mp3
-/gwt-cordova/src/main/webapp/static/*.m4a
-/gwt-cordova/src/main/webapp/static/*.mp4
-/gwt-cordova/src/main/webapp/static/*.jpg
-/gwt-cordova/src/main/webapp/static/*.ogg
-/gwt-cordova/src/main/webapp/static/*.aiff
-/gwt-cordova/src/main/ReplacementAudio/
 /target/
 /ExperimentDesigner/target/
 /gwt-cordova/targetDirectory/
@@ -32,8 +21,6 @@
 /registration/src/main/sh/timestamps0.json
 /registration/src/main/sh/timestamps3.json
 /registration/src/main/sh/frinexdb_db.sql
-/frinex-cordova/nbproject/private/
-/HTML5Application-to-delete/nbproject/private/
 /frinex-cordova/platforms/
 /frinex-cordova/plugins/
 /frinex-cordova/www/ExperimentTemplate/
@@ -41,3 +28,9 @@
 /frinex-cordova/hooks/before_build/node_modules/
 /gwt-cordova/replacements/
 /gwt-cordova/src/main/webapp/badNames/
+/gwt-cordova/nbproject/
+/gwt-cordova/src/main/static/
+/node_modules/
+/ExperimentDesigner/nbproject/
+/dbbackups/
+/frinex-rest-output/
