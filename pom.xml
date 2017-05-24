@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>nl.mpi.tg.eg</groupId>
+    <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-parent</artifactId>
     <name>Frinex Parent</name>
     <version>0.1-testing-SNAPSHOT</version>
@@ -10,12 +10,17 @@
         <module>gwt-cordova</module>
         <module>registration</module>
         <module>ExperimentDesigner</module>
+        <module>common</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.4.1.RELEASE</version>
     </parent>
+    <organization>
+        <name>Max Planck Institute for Psycholinguistics, Nijmegen</name>
+        <url>https://www.mpi.nl</url>
+    </organization>    
     <properties>        
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -61,6 +66,7 @@
         <!--<experiment.configuration.name>zinnen_afmaken</experiment.configuration.name>-->
         <!--<experiment.configuration.name>rosselfieldkit</experiment.configuration.name>-->
         <!--<experiment.configuration.name>snspsem</experiment.configuration.name>-->
+        <!--<experiment.configuration.displayName>Wellsprings Samoan FieldKit</experiment.configuration.displayName>-->
         <!--<experiment.configuration.name>wellspringssamoan</experiment.configuration.name>-->
         <experiment.configuration.admin.password></experiment.configuration.admin.password>
         <experiment.configuration.db.password></experiment.configuration.db.password>        
@@ -119,6 +125,33 @@
                     <server>${experiment.destinationServer}</server>
                     <url>${experiment.destinationServerUrl}/manager/text</url>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.mycila.maven-license-plugin</groupId>
+                <artifactId>maven-license-plugin</artifactId>
+                <version>1.9.0</version> 
+                <configuration>
+                    <header>${project.basedir}/src/license-header.txt</header>
+                    <strictCheck>false</strictCheck>
+                    <properties>
+                        <year>${plugin.license.copyrightYear}</year>
+                        <organization>${project.organization.name}</organization>
+                    </properties>
+                    <mapping>
+                        <svg>XML_STYLE</svg>
+                    </mapping>
+                    <excludes>
+                        <exclude>**/*.txt</exclude>
+                        <exclude>**/nbactions.xml</exclude>
+                    </excludes>
+                </configuration>
+                <!--                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>-->
             </plugin>
         </plugins>
     </build>
