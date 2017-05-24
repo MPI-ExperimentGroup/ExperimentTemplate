@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.experiment.client.listener;
+package nl.mpi.tg.eg.frinex.common;
 
 /**
  * @since Jun 26, 2015 10:31:20 AM (creation date)
