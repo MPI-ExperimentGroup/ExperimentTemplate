@@ -64,7 +64,7 @@ public class WellspringsSamoanFieldKit {
         wizardStimulusScreen.setFeatureValuesArray(featureValuesArray);
         wizardStimulusScreen.setMaxStimuli(1000);
 //        wizardStimulusScreen.setMaxStimuliPerTag(1000);
-        wizardStimulusScreen.setRandomiseStimuli(true);
+        wizardStimulusScreen.setRandomiseStimuli(false);
 //        wizardStimulusScreen.setStimulusImageCapture(true);
         wizardStimulusScreen.setFilePerStimulus(true);
         wizardStimulusScreen.setBackWizardScreen(welcomePresenter);
