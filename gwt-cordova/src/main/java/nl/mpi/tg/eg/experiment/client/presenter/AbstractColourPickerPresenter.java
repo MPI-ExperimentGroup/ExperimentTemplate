@@ -28,8 +28,7 @@ import nl.mpi.tg.eg.experiment.client.Messages;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
-import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
+import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
@@ -39,6 +38,7 @@ import nl.mpi.tg.eg.experiment.client.exception.CanvasError;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponse;
 import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponseGroup;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  * @since Oct 10, 2014 9:52:25 AM (creation date)
@@ -209,7 +209,7 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
         colourPickerCanvasView.setInstructions(helpText, messages.helpButtonChar(), closeButtonLabel);
     }
 
-    protected void loadAllStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final boolean randomise, int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+    protected void loadAllStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final boolean randomise, int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
         stimulusProvider.getSubset(selectionTags, randomise, repeatCount, repeatRandomWindow, "", -1);
         this.hasMoreStimulusListener = hasMoreStimulusListener;
