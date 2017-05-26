@@ -17,6 +17,8 @@
  */
 package nl.mpi.tg.eg.experiment.client.model;
 
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -119,8 +121,18 @@ public class SdCardStimulus implements Stimulus {
     }
 
     @Override
-    public List<?> getTags() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean hasCorrectResponses() {
+        return false;
+    }
+
+    @Override
+    public String getCorrectResponses() {
+        return null;
+    }
+
+    @Override
+    public List<String> getTags() {
+        return Arrays.asList(stimulusImagePath.split("_"));
     }
 
     @Override
