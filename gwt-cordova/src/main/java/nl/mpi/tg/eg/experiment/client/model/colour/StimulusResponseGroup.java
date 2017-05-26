@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-import nl.mpi.tg.eg.experiment.client.model.Stimulus;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  * @since Oct 22, 2014 5:28:55 PM (creation date)
