@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.SortedSet;
 import java.util.logging.Logger;
-import nl.mpi.tg.eg.experiment.client.model.Stimulus;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.model.colour.ColourData;
 import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponse;
