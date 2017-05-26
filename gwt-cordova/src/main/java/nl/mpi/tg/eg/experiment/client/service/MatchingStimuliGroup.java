@@ -20,8 +20,8 @@ package nl.mpi.tg.eg.experiment.client.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
-import nl.mpi.tg.eg.experiment.client.model.Stimulus;
+import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  * @since Jul 23, 2016 2:14:16 PM (creation date)
@@ -65,7 +65,8 @@ public class MatchingStimuliGroup {
 
     public boolean getNextStimulus(final StimulusProvider stimulusProvider) {
         stimulusIndex++;
-        stimulusProvider.setCurrentStimulus((stimulusArray.size() <= stimulusIndex) ? correctStimulus : stimulusArray.get(stimulusIndex));
+        // todo: based on what was in setCurrentStimulus, this would not work
+        // stimulusProvider.setCurrentStimulus((stimulusArray.size() <= stimulusIndex) ? correctStimulus : stimulusArray.get(stimulusIndex));
         return (stimulusArray.size() > stimulusIndex);
     }
 
