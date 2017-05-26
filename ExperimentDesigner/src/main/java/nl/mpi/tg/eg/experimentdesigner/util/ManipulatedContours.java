@@ -633,7 +633,22 @@ public class ManipulatedContours {
         stimuliList.addAll(Arrays.asList(invertButtons(addCodePart("out2ver1ScreenI", getStimuliOut2Ver1ConArr()))));
         stimuliList.addAll(Arrays.asList(invertButtons(addCodePart("out2ver2ScreenI", getStimuliOut2Ver2ConArr()))));
         stimuliList.addAll(Arrays.asList(invertButtons(addCodePart("out2ver3ScreenI", getStimuliOut2Ver3ConArr()))));
-        String[] randomStimuliTags = new String[]{"out1ver1Screen", "out1ver2Screen", "out1ver3Screen", "out2ver1Screen", "out2ver2Screen", "out2ver3Screen", "out1ver1ScreenI", "out1ver2ScreenI", "out1ver3ScreenI", "out2ver1ScreenI", "out2ver2ScreenI", "out2ver3ScreenI"};
+        stimuliList.addAll(Arrays.asList(addCodePart("out1ver1ScreenC", getStimuliOut1Ver1ConArr())));
+        stimuliList.addAll(Arrays.asList(addCodePart("out1ver2ScreenC", getStimuliOut1Ver2ConArr())));
+        stimuliList.addAll(Arrays.asList(addCodePart("out1ver3ScreenC", getStimuliOut1Ver3ConArr())));
+        stimuliList.addAll(Arrays.asList(addCodePart("out2ver1ScreenC", getStimuliOut2Ver1ConArr())));
+        stimuliList.addAll(Arrays.asList(addCodePart("out2ver2ScreenC", getStimuliOut2Ver2ConArr())));
+        stimuliList.addAll(Arrays.asList(addCodePart("out2ver3ScreenC", getStimuliOut2Ver3ConArr())));
+        stimuliList.addAll(Arrays.asList(invertButtons(addCodePart("out1ver1ScreenIC", getStimuliOut1Ver1ConArr()))));
+        stimuliList.addAll(Arrays.asList(invertButtons(addCodePart("out1ver2ScreenIC", getStimuliOut1Ver2ConArr()))));
+        stimuliList.addAll(Arrays.asList(invertButtons(addCodePart("out1ver3ScreenIC", getStimuliOut1Ver3ConArr()))));
+        stimuliList.addAll(Arrays.asList(invertButtons(addCodePart("out2ver1ScreenIC", getStimuliOut2Ver1ConArr()))));
+        stimuliList.addAll(Arrays.asList(invertButtons(addCodePart("out2ver2ScreenIC", getStimuliOut2Ver2ConArr()))));
+        stimuliList.addAll(Arrays.asList(invertButtons(addCodePart("out2ver3ScreenIC", getStimuliOut2Ver3ConArr()))));
+        String[] randomStimuliTags = new String[]{
+            "out1ver1Screen", "out1ver2Screen", "out1ver3Screen", "out2ver1Screen", "out2ver2Screen", "out2ver3Screen", "out1ver1ScreenI", "out1ver2ScreenI", "out1ver3ScreenI", "out2ver1ScreenI", "out2ver2ScreenI", "out2ver3ScreenI",
+            "out1ver1ScreenC", "out1ver2ScreenC", "out1ver3ScreenC", "out2ver1ScreenC", "out2ver2ScreenC", "out2ver3ScreenC", "out1ver1ScreenIC", "out1ver2ScreenIC", "out1ver3ScreenIC", "out2ver1ScreenIC", "out2ver2ScreenIC", "out2ver3ScreenIC"
+        };
         final WizardVideoAudioOptionStimulusScreen randomStimuliTagsScreen = new WizardVideoAudioOptionStimulusScreen("stimuli", false, stimuliList.toArray(new String[]{}), false, true, randomStimuliTags, 1000, repeatCount(), 20, false, 100, "", "", true);
         randomStimuliTagsScreen.setShowProgress(true);
         randomStimuliTagsScreen.setShowHurryIndicator(false);
