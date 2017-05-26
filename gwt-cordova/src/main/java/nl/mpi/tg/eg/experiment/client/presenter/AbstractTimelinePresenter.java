@@ -26,7 +26,6 @@ import java.util.List;
 import java.util.Set;
 import nl.mpi.tg.eg.experiment.client.model.AnnotationData;
 import nl.mpi.tg.eg.experiment.client.model.AnnotationSet;
-import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.DataFactory;
@@ -36,6 +35,7 @@ import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
 import nl.mpi.tg.eg.experiment.client.view.AnnotationTimelinePanel;
 import nl.mpi.tg.eg.experiment.client.view.AnnotationTimelineView;
 import nl.mpi.tg.eg.experiment.client.view.VideoPanel;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  * @since Oct 2, 2015 4:22:12 PM (creation date)
@@ -61,7 +61,7 @@ public abstract class AbstractTimelinePresenter extends AbstractPresenter implem
         ((AnnotationTimelineView) simpleView).setVideoPanel(videoPanel);
     }
 
-    public void setAnnotationTimelinePanel(String eventTag, String poster, String mp4, String ogg, String webm, List<GeneratedStimulus.Tag> tags, int maxStimuli, int columnCount) {
+    public void setAnnotationTimelinePanel(String eventTag, String poster, String mp4, String ogg, String webm, List<Stimulus.Tag> tags, int maxStimuli, int columnCount) {
         this.storageTag = eventTag;
         final VideoPanel videoPanel = new VideoPanel("50%", poster, mp4, ogg, webm);
         ((AnnotationTimelineView) simpleView).setVideoPanel(videoPanel);
