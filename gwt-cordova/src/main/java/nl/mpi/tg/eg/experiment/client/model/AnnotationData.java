@@ -17,6 +17,8 @@
  */
 package nl.mpi.tg.eg.experiment.client.model;
 
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
+
 /**
  * @since Jan 31, 2014 10:04 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
