@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
+import nl.mpi.tg.eg.frinex.common.StimuliProvider;
 import com.google.gwt.regexp.shared.MatchResult;
 import com.google.gwt.regexp.shared.RegExp;
 import java.util.ArrayList;
@@ -27,16 +28,16 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
-import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
+import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
-import nl.mpi.tg.eg.experiment.client.model.Stimulus;
-import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus.Tag;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag;
 
 /**
  * @since Jun 23, 2015 11:07:47 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class StimulusProvider {
+public class StimulusProvider implements StimuliProvider {
 
     private final List<Stimulus> stimulusArray = new ArrayList<>();
     private final List<Stimulus> stimulusSelectionArray = new ArrayList<>();
@@ -56,6 +57,7 @@ public class StimulusProvider {
 //        totalStimuli = stimulusSubsetArray.size();
     }
 
+    @Override
     public void getAll() {
         stimulusSubsetArray.addAll(stimulusArray);
     }
@@ -75,10 +77,12 @@ public class StimulusProvider {
         return wordTag;
     }
 
+    @Override
     public void getSubset(final List<Tag> selectionTags, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String storedStimulusList, final int currentStimuliIndex) {
         getSubset(selectionTags, stimulusArray.size(), randomise, repeatCount, repeatRandomWindow, storedStimulusList, currentStimuliIndex);
     }
 
+    @Override
     public void getSdCardSubset(final ArrayList<String> directoryTagArray, final List<String[]> directoryList, final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String storedStimulusList, final int currentStimuliIndex) {
         final List<Stimulus> stimulusListCopy = new ArrayList<>();
         stimulusSelectionArray.clear();
@@ -125,6 +129,8 @@ public class StimulusProvider {
             final SdCardStimuli sdCardStimuli = new SdCardStimuli(stimulusListCopy, directoryList, ".*_question\\....$", new TimedStimulusListener() {
                 @Override
                 public void postLoadTimerFired() {
+                    // todo: should this not take a single directory?
+                    // todo: can this take a file limit per directory?
                     appendSdCardSubset(directoryTagArray, stimulusListCopy, directoryList, simulusLoadedListener, simulusErrorListener, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, storedStimulusList, currentStimuliIndex);
                 }
             }, simulusErrorListener);
@@ -132,6 +138,7 @@ public class StimulusProvider {
         }
     }
 
+    @Override
     public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String storedStimulusList, final int currentStimuliIndex) {
         List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
         this.currentStimuliIndex = currentStimuliIndex;
@@ -143,6 +150,7 @@ public class StimulusProvider {
         }
     }
 
+    @Override
     public void loadStoredStimulusList(String storedStimulusList) {
         stimulusSubsetArray.clear();
         loadStoredStimulusList(storedStimulusList, stimulusArray);
@@ -164,6 +172,7 @@ public class StimulusProvider {
         }
     }
 
+    @Override
     public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String storedStimulusList, List<Stimulus> stimulusListCopy) {
         final List<Stimulus> stimulusSubsetArrayTemp = new ArrayList<>();
         stimulusSelectionArray.clear();
@@ -198,6 +207,7 @@ public class StimulusProvider {
         }
     }
 
+    @Override
     public void getSubset(final int maxWordUse, final String storedStimulusList, final int currentStimuliIndex, final List<Tag> speakerTags, final List<Tag> wordTags, final int maxSpeakerWordCount) {
         this.currentStimuliIndex = currentStimuliIndex;
         // we now also handle subsetting with setCount and seenList
@@ -247,6 +257,7 @@ public class StimulusProvider {
 //        setCurrentTags(selectionTags); // todo: this tag list is inadequate and needs to take tow arrays in this case
     }
 
+    @Override
     public void getSubset(final Tag similarity, final int maxWordUse, final List<Tag> wordTags, final String storedStimulusList, final int currentStimuliIndex) {
         this.currentStimuliIndex = currentStimuliIndex;
         // we now also handle subsetting with setCount and seenList
@@ -289,18 +300,22 @@ public class StimulusProvider {
 
     // todo: audio and image evetns do not indicate phase learning or test
     // todo: next button could have its own timer to make reporting easier
+    @Override
     public Stimulus getCurrentStimulus() {
         return this.stimulusSubsetArray.get(currentStimuliIndex);
     }
 
+    @Override
     public int getCurrentStimulusIndex() {
         return currentStimuliIndex;
     }
 
+    @Override
     public void setCurrentStimuliIndex(int currentStimuliIndex) {
         this.currentStimuliIndex = currentStimuliIndex;
     }
 
+    @Override
     public String getLoadedStimulusString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("-");
@@ -323,22 +338,27 @@ public class StimulusProvider {
         stimulusSubsetArray.add(currentStimuliIndex - 1, removeStimulus);
         currentStimuliIndex++;
     }*/
+    @Override
     public void nextStimulus() {
         currentStimuliIndex++;
     }
 
+    @Override
     public void pushCurrentStimulusToEnd() {
         stimulusSubsetArray.add(getCurrentStimulus());
     }
 
+    @Override
     public boolean hasNextStimulus() {
         return currentStimuliIndex + 1 < stimulusSubsetArray.size();
     }
 
+    @Override
     public int getTotalStimuli() {
         return stimulusSubsetArray.size();
     }
 
+    @Override
     public Stimulus getStimuliFromString(final String stimuliString) {
         for (Stimulus stimulus : stimulusArray) {
             final String uniqueId = stimulus.getUniqueId();
@@ -349,6 +369,7 @@ public class StimulusProvider {
         return null;
     }
 
+    @Override
     public List<Stimulus> getMatchingStimuli(final String matchingRegex, final int maxStimulusCount) {
         final List<Stimulus> matchingStimuli = new ArrayList<>();
         RegExp pattern = RegExp.compile(matchingRegex);
@@ -389,6 +410,7 @@ public class StimulusProvider {
 //        totalStimuli = stimulusSubsetArray.size();
 //    }
     @Deprecated // todo: perhaps this would be better done in the respective presenters
+//    @Override
     public List<Stimulus> getPictureList(GroupParticipantService groupParticipantService, int maxStimuli) {
         final HashSet<Stimulus> uniqueList = new HashSet<>();
         uniqueList.add(getCurrentStimulus());
