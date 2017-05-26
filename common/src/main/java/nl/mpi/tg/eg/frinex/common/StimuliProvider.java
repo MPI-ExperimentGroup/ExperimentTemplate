@@ -19,9 +19,8 @@ package nl.mpi.tg.eg.frinex.common;
 
 import java.util.ArrayList;
 import java.util.List;
-import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
-import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
-import nl.mpi.tg.eg.experiment.client.model.Stimulus;
+import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  * @since May 24, 2017 11:48:44 AM (creation date)
@@ -43,15 +42,15 @@ public interface StimuliProvider {
 
     Stimulus getStimuliFromString(final String stimuliString);
 
-    void getSubset(final List<GeneratedStimulus.Tag> selectionTags, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String storedStimulusList, final int currentStimuliIndex);
+    void getSubset(final List<Stimulus.Tag> selectionTags, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String storedStimulusList, final int currentStimuliIndex);
 
-    void getSubset(final List<GeneratedStimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String storedStimulusList, final int currentStimuliIndex);
+    void getSubset(final List<Stimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String storedStimulusList, final int currentStimuliIndex);
 
-    void getSubset(final List<GeneratedStimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String storedStimulusList, List<Stimulus> stimulusListCopy);
+    void getSubset(final List<Stimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final String storedStimulusList, List<Stimulus> stimulusListCopy);
 
-    void getSubset(final int maxWordUse, final String storedStimulusList, final int currentStimuliIndex, final List<GeneratedStimulus.Tag> speakerTags, final List<GeneratedStimulus.Tag> wordTags, final int maxSpeakerWordCount);
+    void getSubset(final int maxWordUse, final String storedStimulusList, final int currentStimuliIndex, final List<Stimulus.Tag> speakerTags, final List<Stimulus.Tag> wordTags, final int maxSpeakerWordCount);
 
-    void getSubset(final GeneratedStimulus.Tag similarity, final int maxWordUse, final List<GeneratedStimulus.Tag> wordTags, final String storedStimulusList, final int currentStimuliIndex);
+    void getSubset(final Stimulus.Tag similarity, final int maxWordUse, final List<Stimulus.Tag> wordTags, final String storedStimulusList, final int currentStimuliIndex);
 
     int getTotalStimuli();
 

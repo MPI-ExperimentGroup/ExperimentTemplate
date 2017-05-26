@@ -25,6 +25,11 @@ import java.util.List;
  */
 public interface Stimulus extends Comparable<Stimulus> {
 
+    interface Tag {
+
+        String name();
+    };
+
     String getCode();
 
     String getLabel();
