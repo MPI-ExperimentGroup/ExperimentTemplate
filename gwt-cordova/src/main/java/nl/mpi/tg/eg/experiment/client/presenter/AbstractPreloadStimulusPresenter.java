@@ -22,9 +22,8 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
-import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
-import nl.mpi.tg.eg.experiment.client.model.Stimulus;
+import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
@@ -56,7 +55,7 @@ public abstract class AbstractPreloadStimulusPresenter extends AbstractStimulusP
         }
     }
 
-    protected void preloadAllStimuli(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final List<GeneratedStimulus.Tag> selectionTags) {
+    protected void preloadAllStimuli(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final List<Stimulus.Tag> selectionTags) {
         final StimulusProvider stimulusProvider = new StimulusProvider();
         stimulusProvider.getSubset(selectionTags, false, 1, 0, "", -1);
         final List<Stimulus> pictureList = stimulusProvider.getPictureList(null, stimulusProvider.getTotalStimuli());
