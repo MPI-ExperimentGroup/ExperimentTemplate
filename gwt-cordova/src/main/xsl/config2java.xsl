@@ -192,7 +192,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 import nl.mpi.tg.eg.experiment.client.view.AnnotationTimelinePanel;
                 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
                 import nl.mpi.tg.eg.experiment.client.view.MenuView;     
-                import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;  
+                import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;  
                 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus.Tag;  
                 import nl.mpi.tg.eg.experiment.client.model.UserId;    
                 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
@@ -607,7 +607,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         </xsl:text>
     </xsl:template>
     <xsl:template match="stimuli|randomGrouping" mode="stimuliTags">
-        <xsl:text>, Arrays.asList(new Tag[]{</xsl:text>
+        <xsl:text>, Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{</xsl:text>
         <xsl:for-each select="distinct-values(tag/text())">
             <xsl:text>Tag.tag_</xsl:text>
             <xsl:value-of select="." />

@@ -20,6 +20,7 @@
             import java.util.Objects;
             import nl.mpi.tg.eg.experiment.client.ServiceLocations;
             import nl.mpi.tg.eg.experiment.client.util.GeneratedStimulusProvider;
+            import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
             public class GeneratedStimulus implements Stimulus {
             protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
@@ -100,7 +101,7 @@
         </xsl:result-document>
         <xsl:text>
      
-            public enum Tag {
+            public enum Tag implements nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag {
 
         </xsl:text>
         <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/tag/text())">
@@ -112,7 +113,7 @@
         </xsl:for-each>
         <xsl:text>
             }
-                   
+
             public static final void fillStimulusList(List&lt;Stimulus&gt; stimulusArray) {
             stimulusArray.addAll(Arrays.asList(GeneratedStimulusProvider.values));</xsl:text>
         <xsl:text>
