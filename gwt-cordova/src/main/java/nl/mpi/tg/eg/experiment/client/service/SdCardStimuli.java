@@ -17,14 +17,12 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Timer;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
+import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.SdCardStimulus;
-import nl.mpi.tg.eg.experiment.client.model.Stimulus;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  * @since Jan 8, 2016 11:31:32 AM (creation date)
@@ -32,7 +30,7 @@ import nl.mpi.tg.eg.experiment.client.model.Stimulus;
  */
 public class SdCardStimuli {
 
-    static final String MPI_STIMULI = "MPI_STIMULI";
+    static public final String MPI_STIMULI = "MPI_STIMULI";
     private final List<Stimulus> stimulusArray;
     private final HashMap<String, SdCardStimulus> stimulusHashMap = new HashMap<>();
     private final List<String[]> directoryList;
@@ -52,7 +50,7 @@ public class SdCardStimuli {
         final String directoryTag1 = (directoryTag.contains(MPI_STIMULI)) ? directoryTag.split(MPI_STIMULI, 2)[1] : directoryTag;
         scanSdCard(MPI_STIMULI, directoryTag1);
 //        testInsertStimulus();
-        nonScan(directoryTag);
+//        nonScan(directoryTag);
 //        for (GeneratedStimulus.Tag currentTag : tagArray) {
 //            scanSdCard(MPI_STIMULI, currentTag.name().replaceFirst("^tag_", ""));
 //        }
@@ -222,7 +220,7 @@ public class SdCardStimuli {
             }, function (error) {
                     console.log("resolveLocalFileSystemURL error: " + error.code);
                     console.log("resolveLocalFileSystemURL error: " + error.message);
-    //                sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::errorAction(Ljava/lang/String;Ljava/lang/String;)(error.code, error.message);
+//                    sdCardStimuli.@nl.mpi.tg.eg.experiment.client.service.SdCardStimuli::errorAction(Ljava/lang/String;Ljava/lang/String;)(error.code, error.message + "Plase make sure that the directory " + stimuliDirectory + "/" + cleanedTag + " exists and has stimuli files.");
                 });
             }
         }
