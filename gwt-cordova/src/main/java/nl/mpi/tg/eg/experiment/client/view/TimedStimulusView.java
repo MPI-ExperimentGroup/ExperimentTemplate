@@ -40,7 +40,7 @@ import com.google.gwt.user.client.ui.TextArea;
 import nl.mpi.tg.eg.experiment.client.listener.AudioEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
+import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.StimulusFreeText;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 
