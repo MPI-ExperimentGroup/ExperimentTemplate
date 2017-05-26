@@ -18,10 +18,9 @@
 package nl.mpi.tg.eg.experiment.client.service;
 
 import com.google.gwt.user.client.Timer;
-import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
+import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.SdCardStimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
-import nl.mpi.tg.eg.experiment.client.model.UserResults;
 
 /**
  * @since Jun 29, 2016 2:49:37 PM (creation date)
@@ -88,26 +87,28 @@ public class SdCardImageCapture {
     private native void captureImageUI(String userIdString, String stimulusIdString) /*-{
         var sdCardImageCapture = this;
         console.log("captureImageUI: " + userIdString + " : " + stimulusIdString);
-        if($wnd.navigator.camera){
-            $wnd.navigator.camera.getPicture(function (imageURI) {
-                console.log("captureImageOk: " + imageURI);
-                sdCardImageCapture.@nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture::imageCaptured(Ljava/lang/String;Ljava/lang/String;)(stimulusIdString, imageURI);
-                $wnd.navigator.camera.cleanup(function () {
-                    console.log("Camera cleanup success.")
-                }, function (message) {
-                    console.log('Failed cleanup because: ' + message);
-                });
+        if($wnd.navigator.device.capture){
+            $wnd.AndroidFullScreen.showSystemUI();
+            $wnd.navigator.device.capture.captureImage(function (mediaFiles) {
+                console.log("captureImageOk: " + mediaFiles.length);
+                sdCardImageCapture.@nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture::imageCaptured(Ljava/lang/String;Ljava/lang/String;)(stimulusIdString, mediaFiles[0].fullPath);
+//                $wnd.navigator.camera.cleanup(function () {
+//                    console.log("Camera cleanup success.")
+//                }, function (message) {
+//                    console.log('Failed cleanup because: ' + message);
+//                });
             }, function (error) {
-                console.log("captureImageError: " + error);
-                abstractPresenter.@nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture::imageCapturedFailed(Ljava/lang/String;Ljava/lang/String;)(stimulusIdString, "Error:" + error);
-                $wnd.navigator.camera.cleanup(function () {
-                    console.log("Camera cleanup success.")
-                }, function (message) {
-                    console.log('Failed cleanup because: ' + message);
-                });
-            }, { destinationType: $wnd.Camera.DestinationType.FILE_URI });
+                console.log("captureImageError: " + error.code);
+                sdCardImageCapture.@nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture::imageCapturedFailed(Ljava/lang/String;Ljava/lang/String;)(stimulusIdString, "Error:" + error.code);
+//                $wnd.navigator.camera.cleanup(function () {
+//                    console.log("Camera cleanup success.")
+//                }, function (message) {
+//                    console.log('Failed cleanup because: ' + message);
+//                });
+            }, { limit: 1 });
         } else {
           //  sdCardImageCapture.@nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture::imageCapturedFailed(Ljava/lang/String;Ljava/lang/String;)(stimulusIdString, null);
+            console.log("camera not defined");
         }
      }-*/;
 }
