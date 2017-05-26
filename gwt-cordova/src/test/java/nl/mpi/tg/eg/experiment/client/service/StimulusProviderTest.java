@@ -21,7 +21,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus.Tag;
-import nl.mpi.tg.eg.experiment.client.model.Stimulus;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -39,7 +39,7 @@ public class StimulusProviderTest {
     public void testGetSubset_0args() {
         System.out.println("getSubset_0args");
         StimulusProvider instance = new StimulusProvider();
-        instance.getSubset(6, "", -1, Arrays.asList(new Tag[]{Tag.tag_centipedes, Tag.tag_scorpions, Tag.tag_termites}), Arrays.asList(new Tag[]{Tag.tag_ประเพณีบุญบั้งไฟ, Tag.tag_Rocket, Tag.tag_Festival, Tag.tag_Lao, Tag.tag_Thai, Tag.tag_ບຸນບັ້ງໄຟ}), 2);
+        instance.getSubset(6, "", -1, Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_centipedes, Tag.tag_scorpions, Tag.tag_termites}), Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_ประเพณีบุญบั้งไฟ, Tag.tag_Rocket, Tag.tag_Festival, Tag.tag_Lao, Tag.tag_Thai, Tag.tag_ບຸນບັ້ງໄຟ}), 2);
         final String seenString = "";
         final int expectedStimuliCount = 36;
         final int expectedSpeakerCount = 12;
@@ -54,7 +54,7 @@ public class StimulusProviderTest {
     public void testGetSubset_0args_3() {
         System.out.println("getSubset_0args_3");
         StimulusProvider instance = new StimulusProvider();
-        instance.getSubset(3, "", -1, Arrays.asList(new Tag[]{Tag.tag_centipedes, Tag.tag_scorpions, Tag.tag_termites}), Arrays.asList(new Tag[]{Tag.tag_ประเพณีบุญบั้งไฟ, Tag.tag_Rocket, Tag.tag_Festival, Tag.tag_Lao, Tag.tag_Thai, Tag.tag_ບຸນບັ້ງໄຟ}), 2);
+        instance.getSubset(3, "", -1, Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_centipedes, Tag.tag_scorpions, Tag.tag_termites}), Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_ประเพณีบุญบั้งไฟ, Tag.tag_Rocket, Tag.tag_Festival, Tag.tag_Lao, Tag.tag_Thai, Tag.tag_ບຸນບັ້ງໄຟ}), 2);
         final String seenString = "";
         final int expectedStimuliCount = 18;
         final Integer expectedSpeakerCount = null;
@@ -70,7 +70,7 @@ public class StimulusProviderTest {
         System.out.println("getSubset_0args_3_seen");
         StimulusProvider instance = new StimulusProvider();
         final String seenString = getSeenList(instance);
-        instance.getSubset(3, seenString, -1, Arrays.asList(new Tag[]{Tag.tag_centipedes, Tag.tag_scorpions, Tag.tag_termites}), Arrays.asList(new Tag[]{Tag.tag_ประเพณีบุญบั้งไฟ, Tag.tag_Rocket, Tag.tag_Festival, Tag.tag_Lao, Tag.tag_Thai, Tag.tag_ບຸນບັ້ງໄຟ}), 2);
+        instance.getSubset(3, seenString, -1, Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_centipedes, Tag.tag_scorpions, Tag.tag_termites}), Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_ประเพณีบุญบั้งไฟ, Tag.tag_Rocket, Tag.tag_Festival, Tag.tag_Lao, Tag.tag_Thai, Tag.tag_ບຸນບັ້ງໄຟ}), 2);
         final int expectedStimuliCount = 13;
         final Integer expectedSpeakerCount = null;
         final int expectedKijfCount = 1;
@@ -106,7 +106,7 @@ public class StimulusProviderTest {
     public void testGetSubset_StimulusSimilarity() {
         System.out.println("getSubset");
         StimulusProvider instance = new StimulusProvider();
-        instance.getSubset(GeneratedStimulus.Tag.tag_centipedes, 6, Arrays.asList(new Tag[]{Tag.tag_ประเพณีบุญบั้งไฟ, Tag.tag_Rocket, Tag.tag_Festival, Tag.tag_Lao, Tag.tag_Thai, Tag.tag_ບຸນບັ້ງໄຟ}), "", -1);
+        instance.getSubset(GeneratedStimulus.Tag.tag_centipedes, 6, Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_ประเพณีบุญบั้งไฟ, Tag.tag_Rocket, Tag.tag_Festival, Tag.tag_Lao, Tag.tag_Thai, Tag.tag_ບຸນບັ້ງໄຟ}), "", -1);
         final String seenString = "";
         final int expectedStimuliCount = 36;
         final int expectedSpeakerCount = 36;
@@ -121,7 +121,7 @@ public class StimulusProviderTest {
     public void testGetSubset3_StimulusSimilarity() {
         System.out.println("getSubset 3");
         StimulusProvider instance = new StimulusProvider();
-        instance.getSubset(GeneratedStimulus.Tag.tag_centipedes, 3, Arrays.asList(new Tag[]{Tag.tag_ประเพณีบุญบั้งไฟ, Tag.tag_Rocket, Tag.tag_Festival, Tag.tag_Lao, Tag.tag_Thai, Tag.tag_ບຸນບັ້ງໄຟ}), "", -1);
+        instance.getSubset(GeneratedStimulus.Tag.tag_centipedes, 3, Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_ประเพณีบุญบั้งไฟ, Tag.tag_Rocket, Tag.tag_Festival, Tag.tag_Lao, Tag.tag_Thai, Tag.tag_ບຸນບັ້ງໄຟ}), "", -1);
         final String seenString = "";
         final int expectedStimuliCount = 18;
         final int expectedSpeakerCount = 18;
@@ -137,7 +137,7 @@ public class StimulusProviderTest {
         System.out.println("getSubset 3 seen");
         StimulusProvider instance = new StimulusProvider();
         String seenString = getSeenList(instance);
-        instance.getSubset(GeneratedStimulus.Tag.tag_centipedes, 3, Arrays.asList(new Tag[]{Tag.tag_ประเพณีบุญบั้งไฟ, Tag.tag_Rocket, Tag.tag_Festival, Tag.tag_Lao, Tag.tag_Thai, Tag.tag_ບຸນບັ້ງໄຟ}), seenString, -1);
+        instance.getSubset(GeneratedStimulus.Tag.tag_centipedes, 3, Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_ประเพณีบุญบั้งไฟ, Tag.tag_Rocket, Tag.tag_Festival, Tag.tag_Lao, Tag.tag_Thai, Tag.tag_ບຸນບັ້ງໄຟ}), seenString, -1);
         final int expectedStimuliCount = 13;
         final int expectedSpeakerCount = 13;
         final int expectedKijfCount = 1;
@@ -147,7 +147,7 @@ public class StimulusProviderTest {
     private String getSeenList(StimulusProvider instance) {
         String seenString = "";
         final String seenLabelString = "centipedes_Rocket_4," + "centipedes_Rocket_5," + "centipedes_Rocket_3," + "centipedes_Festival_4," + "centipedes_Festival_5";
-        instance.getSubset(6, "", -1, Arrays.asList(new Tag[]{Tag.tag_centipedes}), Arrays.asList(new Tag[]{Tag.tag_Rocket, Tag.tag_Festival}), 32);
+        instance.getSubset(6, "", -1, Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_centipedes}), Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_Rocket, Tag.tag_Festival}), 32);
         while (instance.hasNextStimulus()) {
             instance.nextStimulus();
             Stimulus stimulus = instance.getCurrentStimulus();
@@ -166,7 +166,7 @@ public class StimulusProviderTest {
         // unit test for HR stimuli to check that each stimuli is shown 3 times and all stimuli are represented
         System.out.println("getSubset HR stimuli");
         StimulusProvider instance = new StimulusProvider();
-        instance.getSubset(Arrays.asList(new Tag[]{Tag.tag_HRPretest01}), 1000, true, 3, 20, "", -1);
+        instance.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_HRPretest01}), 1000, true, 3, 20, "", -1);
         final int expectedStimuliCount = 196 * 3;
         assertEquals(expectedStimuliCount, instance.getTotalStimuli());
     }
@@ -180,7 +180,7 @@ public class StimulusProviderTest {
         // unit test for HR stimuli to check that each stimuli is shown 3 times and all stimuli are represented
         System.out.println("getSubset uniqueStimuli");
         StimulusProvider instance = new StimulusProvider();
-        instance.getSubset(Arrays.asList(new Tag[]{Tag.tag_HRPretest01}), 1000, true, 2, 20, "", -1);
+        instance.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_HRPretest01}), 1000, true, 2, 20, "", -1);
         final int expectedStimuliCount = 196;
         HashSet<Stimulus> stimulusSet = new HashSet();
         while (instance.hasNextStimulus()) {
@@ -198,7 +198,7 @@ public class StimulusProviderTest {
         // unit test for HR stimuli to check that each stimuli is shown 3 times and all stimuli are represented
         System.out.println("getSubset HR stimuli");
         StimulusProvider instance = new StimulusProvider();
-        instance.getSubset(Arrays.asList(new Tag[]{Tag.tag_HRPretest02}), 1000, true, 3, 20, "", -1);
+        instance.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_HRPretest02}), 1000, true, 3, 20, "", -1);
         final int expectedStimuliCount = 256 * 3;
         assertEquals(expectedStimuliCount, instance.getTotalStimuli());
     }
@@ -210,7 +210,7 @@ public class StimulusProviderTest {
     public void testGetSubset_Reload() {
         System.out.println("getSubset Reload");
         StimulusProvider instance1 = new StimulusProvider();
-        instance1.getSubset(Arrays.asList(new Tag[]{Tag.tag_HRPretest02}), 1000, true, 3, 20, "", -1);
+        instance1.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_HRPretest02}), 1000, true, 3, 20, "", -1);
         int seenStimuliCounter = 0;
         for (int counter = 0; counter < 25; counter++) {
             instance1.nextStimulus();
@@ -221,7 +221,7 @@ public class StimulusProviderTest {
         System.out.println("loadedStimulusString: " + loadedStimulusString);
         System.out.println("currentStimulusIndex: " + currentStimulusIndex);
         StimulusProvider instance2 = new StimulusProvider();
-        instance2.getSubset(Arrays.asList(new Tag[]{Tag.tag_HRPretest02}), 1000, true, 3, 20, loadedStimulusString, currentStimulusIndex);
+        instance2.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_HRPretest02}), 1000, true, 3, 20, loadedStimulusString, currentStimulusIndex);
         while (instance2.hasNextStimulus()) {
             instance2.nextStimulus();
             seenStimuliCounter++;

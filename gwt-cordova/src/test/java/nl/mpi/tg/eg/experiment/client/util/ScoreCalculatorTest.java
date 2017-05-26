@@ -23,7 +23,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
-import nl.mpi.tg.eg.experiment.client.model.Stimulus;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.model.colour.ColourData;

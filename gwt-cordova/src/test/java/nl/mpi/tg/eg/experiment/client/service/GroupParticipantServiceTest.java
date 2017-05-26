@@ -17,7 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
-import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
+import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

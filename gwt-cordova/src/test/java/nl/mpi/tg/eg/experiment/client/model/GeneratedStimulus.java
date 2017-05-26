@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.model;
 
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.List;
@@ -613,7 +614,7 @@ public class GeneratedStimulus implements Stimulus {
         new GeneratedStimulus("999:tgt_8_1400Hz_180ms.wav:dan,daan", new Tag[]{Tag.tag_HRPretest01}, "label_d1e1043", "code_d1e1043", 0, "tgt_8_1400Hz_180ms", null, null, "dan,daan")
     };
 
-    public enum Tag {
+    public enum Tag implements nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag {
         tag_HRPretest01, tag_HRPretest02, tag_grammar, tag_number, tag_interesting, tag_multiple_words, tag_FILLER_AUDIO, tag_NOISE_AUDIO, tag_sim, tag_mid, tag_diff, tag_noise, tag_termites, tag_Rocket, tag_Festival, tag_Thai, tag_ประเพณีบุญบั้งไฟ, tag_Lao, tag_ບຸນບັ້ງໄຟ, tag_scorpions, tag_centipedes, tag_bad, tag_, tag__t_n_x0B_f_r_, tag_bad_chars, tag_this_add_, tag__, tag____, tag_chars
     }
 

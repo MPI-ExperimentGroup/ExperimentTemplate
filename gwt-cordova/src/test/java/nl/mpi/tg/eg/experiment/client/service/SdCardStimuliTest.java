@@ -18,7 +18,7 @@
 package nl.mpi.tg.eg.experiment.client.service;
 
 import java.util.ArrayList;
-import nl.mpi.tg.eg.experiment.client.model.Stimulus;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
