@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Objects;
 import nl.mpi.tg.eg.experiment.client.exception.StimulusError;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
-import nl.mpi.tg.eg.experiment.client.model.Stimulus;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.model.colour.ColourData;
