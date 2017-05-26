@@ -41,12 +41,12 @@ import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.TimedStimulusListener;
+import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.SdCardStimulus;
-import nl.mpi.tg.eg.experiment.client.model.Stimulus;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.model.StimulusFreeText;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
@@ -103,7 +103,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     // todo: maxSpeakerWordCount needs to be utilised correctly
-    protected void loadSubsetStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final List<GeneratedStimulus.Tag> randomTags, final MetadataField stimulusAllocationField, final GeneratedStimulus.Tag condition0Tag, final GeneratedStimulus.Tag condition1Tag, final GeneratedStimulus.Tag condition2Tag, final int maxStimulusCount) {
+    protected void loadSubsetStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final List<GeneratedStimulus.Tag> randomTags, final MetadataField stimulusAllocationField, final GeneratedStimulus.Tag condition0Tag, final GeneratedStimulus.Tag condition1Tag, final GeneratedStimulus.Tag condition2Tag, final int maxStimulusCount) {
         // todo: implement randomTags
         final String storedDataValue = userResults.getUserData().getMetadataValue(stimulusAllocationField);
         int stimulusAllocation;
@@ -151,12 +151,12 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 break;
             default:
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), eventTag, "Condition3", "", duration.elapsedMillis());
-                stimulusProvider.getSubset(maxStimulusCount, storedStimulusList, seenStimulusIndex, Arrays.asList(new GeneratedStimulus.Tag[]{condition1Tag, condition2Tag, condition0Tag}), selectionTags, 32);
+                stimulusProvider.getSubset(maxStimulusCount, storedStimulusList, seenStimulusIndex, Arrays.asList(new Stimulus.Tag[]{condition1Tag, condition2Tag, condition0Tag}), selectionTags, 32);
                 break;
         }
     }
 
-    protected void loadAllStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final boolean randomise, int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+    protected void loadAllStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final boolean randomise, int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
         final String storedStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag());
         int seenStimulusIndex;
@@ -171,7 +171,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         showStimulus();
     }
 
-    protected void loadSdCardStimulus(final String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+    protected void loadSdCardStimulus(final String eventTag, final List<Stimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         final String subDirectory = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag());
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
         final String storedStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag() + subDirectory);
@@ -196,7 +196,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         };
         ArrayList<String> directoryTagArray = new ArrayList<>();
         if (subDirectory == null || subDirectory.isEmpty()) {
-            for (GeneratedStimulus.Tag directoryTag : selectionTags) {
+            for (Stimulus.Tag directoryTag : selectionTags) {
                 directoryTagArray.add(directoryTag.name().substring("tag_".length()));
             }
         } else {
@@ -268,18 +268,18 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
-    protected void loadStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
-        loadStimulus(eventTag, selectionTags, Arrays.asList(new GeneratedStimulus.Tag[]{}), null, maxStimulusCount, null, null, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, endOfStimulusListener);
+    protected void loadStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+        loadStimulus(eventTag, selectionTags, Arrays.asList(new Stimulus.Tag[]{}), null, maxStimulusCount, null, null, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, endOfStimulusListener);
     }
 
-    protected void loadStimulus(String eventTag, final List<GeneratedStimulus.Tag> selectionTags, final List<GeneratedStimulus.Tag> randomTags, final MetadataField stimulusAllocationField, final int maxStimulusCount, final boolean randomise, int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
-        // todo: remove this when the experiment definition is updated -
+    protected void loadStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final List<Stimulus.Tag> randomTags, final MetadataField stimulusAllocationField, final int maxStimulusCount, final boolean randomise, int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+        // todo: remove this when the experiment definition is updated
         loadStimulus(eventTag, selectionTags, randomTags, stimulusAllocationField, maxStimulusCount, maxStimulusCount, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, endOfStimulusListener);
     }
 
     protected void loadStimulus(String eventTag,
-            final List<GeneratedStimulus.Tag> selectionTags, // only stimuli with tags in this list can be included
-            final List<GeneratedStimulus.Tag> randomTags,
+            final List<Stimulus.Tag> selectionTags, // only stimuli with tags in this list can be included
+            final List<Stimulus.Tag> randomTags,
             final MetadataField stimulusAllocationField,
             final int maxStimulusCount,
             final Integer minStimuliPerTag,
@@ -298,13 +298,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         } catch (NumberFormatException exception) {
             seenStimulusIndex = -1;
         }
-        final List<GeneratedStimulus.Tag> allocatedTags = new ArrayList<>(selectionTags);
+        final List<Stimulus.Tag> allocatedTags = new ArrayList<>(selectionTags);
         if (!randomTags.isEmpty()) {
             final String storedStimulusAllocation = userResults.getUserData().getMetadataValue(stimulusAllocationField);
             try {
                 allocatedTags.add(GeneratedStimulus.Tag.valueOf(storedStimulusAllocation));
             } catch (IllegalArgumentException exception) {
-                GeneratedStimulus.Tag stimulusAllocation = randomTags.get(new Random().nextInt(randomTags.size()));
+                Stimulus.Tag stimulusAllocation = randomTags.get(new Random().nextInt(randomTags.size()));
                 userResults.getUserData().setMetadataValue(stimulusAllocationField, stimulusAllocation.name());
                 localStorage.storeData(userResults);
                 allocatedTags.add(stimulusAllocation);
@@ -370,7 +370,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         pause(stimulusProvider.getCurrentStimulus().getPauseMs(), timedStimulusListener);
     }
 
-    protected void currentStimulusHasTag(int postLoadMs, final List<GeneratedStimulus.Tag> tagList, final TimedStimulusListener hasTagListener, final TimedStimulusListener hasntTagListener) {
+    protected void currentStimulusHasTag(int postLoadMs, final List<Stimulus.Tag> tagList, final TimedStimulusListener hasTagListener, final TimedStimulusListener hasntTagListener) {
 // todo: implement randomTags
 //        List<Stimulus.Tag> editableList = new LinkedList<Stimulus.Tag>(tagList);
 //        editableList.retainAll();
