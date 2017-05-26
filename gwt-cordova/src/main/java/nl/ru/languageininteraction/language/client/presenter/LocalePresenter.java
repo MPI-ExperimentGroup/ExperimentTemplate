@@ -39,8 +39,13 @@ public class LocalePresenter extends AbstractPresenter implements Presenter {
     }
 
     @Override
-    protected void setTitle(PresenterEventListner titleBarListner) {
-//        simpleView.addTitle(messages.localeScreenTitle(), titleBarListner);
+    protected String getTitle() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected String getSelfTag() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -68,6 +73,11 @@ public class LocalePresenter extends AbstractPresenter implements Presenter {
                             updatedPathValue = queryString + separator + localeGet + localeName;
                         }
                         Window.Location.replace(Window.Location.getPath() + updatedPathValue);
+                    }
+
+                    @Override
+                    public int getHotKey() {
+                        return -1;
                     }
 
                     @Override
