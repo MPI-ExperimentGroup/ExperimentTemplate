@@ -20,7 +20,7 @@ package nl.mpi.tg.eg.experiment.client.service.synaesthesia.registration;
 import java.util.Date;
 import java.util.SortedSet;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
-import nl.mpi.tg.eg.experiment.client.model.Stimulus;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.model.colour.ColourData;
 import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponse;
