@@ -296,14 +296,6 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         nextStimulusP.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
         nextStimulusP.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusProducerNetworkActivity1" + storedWizardScreenData.getScreenTitle());
 
-        producerNetworkActivity0.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[0]);
-        guesserNetworkActivity0.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[1]);
-        producerNetworkActivity1.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[2]);
-        guesserNetworkActivity1.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[3]);
-        allNetworkActivity2.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[4]);
-        trainingDisplayNetworkActivity3.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[5]);
-        groupRecordSubmition.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[6]);
-
         producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         producerNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         guesserNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
@@ -503,13 +495,35 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         } else {
             presenterFeatureList.add(loadStimuliFeature);
         }
-        groupNetwork.getPresenterFeatureList().add(producerNetworkActivity0);
-        groupNetwork.getPresenterFeatureList().add(producerNetworkActivity1);
-        groupNetwork.getPresenterFeatureList().add(guesserNetworkActivity0);
-        groupNetwork.getPresenterFeatureList().add(guesserNetworkActivity1);
-        groupNetwork.getPresenterFeatureList().add(allNetworkActivity2);
-        groupNetwork.getPresenterFeatureList().add(trainingDisplayNetworkActivity3);
-        groupNetwork.getPresenterFeatureList().add(groupRecordSubmition);
+
+        if (!storedWizardScreenData.getGroupPhasesRoles()[0].isEmpty()) {
+            producerNetworkActivity0.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[0]);
+            groupNetwork.getPresenterFeatureList().add(producerNetworkActivity0);
+        }
+        if (!storedWizardScreenData.getGroupPhasesRoles()[1].isEmpty()) {
+            guesserNetworkActivity0.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[1]);
+            groupNetwork.getPresenterFeatureList().add(guesserNetworkActivity0);
+        }
+        if (!storedWizardScreenData.getGroupPhasesRoles()[2].isEmpty()) {
+            producerNetworkActivity1.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[2]);
+            groupNetwork.getPresenterFeatureList().add(producerNetworkActivity1);
+        }
+        if (!storedWizardScreenData.getGroupPhasesRoles()[3].isEmpty()) {
+            guesserNetworkActivity1.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[3]);
+            groupNetwork.getPresenterFeatureList().add(guesserNetworkActivity1);
+        }
+        if (!storedWizardScreenData.getGroupPhasesRoles()[4].isEmpty()) {
+            allNetworkActivity2.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[4]);
+            groupNetwork.getPresenterFeatureList().add(allNetworkActivity2);
+        }
+        if (!storedWizardScreenData.getGroupPhasesRoles()[5].isEmpty()) {
+            trainingDisplayNetworkActivity3.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[5]);
+            groupNetwork.getPresenterFeatureList().add(trainingDisplayNetworkActivity3);
+        }
+        if (!storedWizardScreenData.getGroupPhasesRoles()[6].isEmpty()) {
+            groupRecordSubmition.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[6]);
+            groupNetwork.getPresenterFeatureList().add(groupRecordSubmition);
+        }
 //        hasMoreStimulusFeature.getPresenterFeatureList().add(allNetworkActivity2);
 //        hasMoreStimulusFeature.getPresenterFeatureList().add(guesserNetworkActivity1);
 
