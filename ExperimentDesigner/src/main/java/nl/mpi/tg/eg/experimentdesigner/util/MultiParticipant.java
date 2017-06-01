@@ -61,7 +61,9 @@ public class MultiParticipant {
 //            
 //        }
 //    }
-    final int numberOfStimuli = 9;
+    final int numberOfStimuli = 23;
+    final int repeatCountStimuli = 3;
+    final int randomWindowStimuli = 3;
     final String preStimuliText = "Add information before the beginning of each round, telling the participants who they’re about to play with";
     final String postStimuliText = "there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far).";
 
@@ -155,9 +157,9 @@ public class MultiParticipant {
         for (String[] currentChannel : groupOfFourCommunicationChannels) {
             final WizardMultiParticipantScreen roundScreen;
             if ("naming".equals(currentChannel[2])) {
-                roundScreen = getNamingRound("Round " + currentChannel[0] + " - 4", groupMembers4, currentChannel[1], "A:-:B:-:C:-:D:-", "B,C,D:-:A,C,D:-:B,A,D:-:B,C,A:-", "-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D");
+                roundScreen = getNamingRound("Round " + currentChannel[0] + " - 4", groupMembers4, currentChannel[1], "A:-:B:-:C:-:D:-", "B,C,D:-:A,C,D:-:B,A,D:-:B,C,A:-", "-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D", "-:A:-:B:-:C:-:D");
             } else if ("test".equals(currentChannel[2])) {
-                roundScreen = getTestRound("Round " + currentChannel[0] + " - 4", groupMembers4, currentChannel[1], "A,B,C,D");
+                roundScreen = getTestRound("Round " + currentChannel[0] + " - 4", groupMembers4, currentChannel[1], "A:-:B:-:C:-:D:-", "-:A:-:B:-:C:-:D");
             } else {
                 roundScreen = getPlayingRound("Round " + currentChannel[0] + " - 4", groupMembers4, currentChannel[1]);
             }
@@ -199,9 +201,9 @@ public class MultiParticipant {
         for (String[] currentChannel : groupOfEightCommunicationChannels) {
             final WizardMultiParticipantScreen roundScreen;
             if ("naming".equals(currentChannel[2])) {
-                roundScreen = getNamingRound("Round " + currentChannel[0] + " - 8", groupMembers8, currentChannel[1], "A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-", "B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-", "-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H");
+                roundScreen = getNamingRound("Round " + currentChannel[0] + " - 8", groupMembers8, currentChannel[1], "A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-", "B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-", "-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H", "-:A:-:B:-:C:-:D:-:E:-:F:-:G:-:H");
             } else if ("test".equals(currentChannel[2])) {
-                roundScreen = getTestRound("Round " + currentChannel[0] + " - 8", groupMembers8, currentChannel[1], "A,B,C,D,E,F,G,H");
+                roundScreen = getTestRound("Round " + currentChannel[0] + " - 8", groupMembers8, currentChannel[1], "A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-", "-:A:-:B:-:C:-:D:-:E:-:F:-:G:-:H");
             } else {
                 roundScreen = getPlayingRound("Round " + currentChannel[0] + " - 8", groupMembers8, currentChannel[1]);
             }
@@ -234,7 +236,7 @@ public class MultiParticipant {
         return wizardData;
     }
 
-    protected WizardMultiParticipantScreen getTestRound(final String screenName, final String groupMembers4, final String communicationChannels, final String textEntryPhaseRoles) {
+    protected WizardMultiParticipantScreen getTestRound(final String screenName, final String groupMembers4, final String communicationChannels, final String textEntryPhaseRoles, final String groupRecordSubmitionPhaseRoles) {
         return new WizardMultiParticipantScreen(screenName,
                 groupMembers4,
                 communicationChannels, textEntryPhaseRoles,
@@ -250,12 +252,16 @@ public class MultiParticipant {
                 "This phase is not used in this screen",
                 "",
                 "This phase is not used in this screen",
-                preStimuliText, postStimuliText, numberOfStimuli, 0,
+                "",
+                groupRecordSubmitionPhaseRoles,
+                preStimuliText, postStimuliText,
+                numberOfStimuli, repeatCountStimuli, randomWindowStimuli,
+                0,
                 0, 0, null
         );
     }
 
-    protected WizardMultiParticipantScreen getNamingRound(final String screenName, final String groupMembers4, final String communicationChannels, final String textEntryPhaseRoles, final String waitingForProducerPhaseRoles, final String outcomeDisplayedPhaseRoles) {
+    protected WizardMultiParticipantScreen getNamingRound(final String screenName, final String groupMembers4, final String communicationChannels, final String textEntryPhaseRoles, final String waitingForProducerPhaseRoles, final String outcomeDisplayedPhaseRoles, final String groupRecordSubmitionPhaseRoles) {
         return new WizardMultiParticipantScreen(screenName,
                 groupMembers4,
                 communicationChannels, textEntryPhaseRoles,
@@ -269,7 +275,11 @@ public class MultiParticipant {
                 "",
                 "This phase is not used in this screen", outcomeDisplayedPhaseRoles,
                 "The stimulus and the producers text are shown to all participants",
-                preStimuliText, postStimuliText, numberOfStimuli, 7000,
+                groupRecordSubmitionPhaseRoles,
+                "",
+                preStimuliText, postStimuliText,
+                numberOfStimuli, repeatCountStimuli, randomWindowStimuli,
+                7000,
                 0, 0, null);
     }
 
@@ -321,7 +331,11 @@ public class MultiParticipant {
                 mutualFeedbackPhaseText,
                 "",
                 "This phase is not used in this screen",
-                preStimuliText, postStimuliText, numberOfStimuli, 0,
+                "",
+                "",
+                preStimuliText, postStimuliText,
+                numberOfStimuli, repeatCountStimuli, randomWindowStimuli,
+                0,
                 timerCountDownProducerMs, timerCountDownGuesserMs, timerCountDownLabel);
     }
 
