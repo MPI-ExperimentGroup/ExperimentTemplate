@@ -230,4 +230,20 @@ public class StimulusProviderTest {
         assertEquals(expectedStimuliCount, seenStimuliCounter);
         assertEquals(expectedStimuliCount, instance2.getTotalStimuli());
     }
+
+    /**
+     * Test of getSubset for MultiParticipant stimuli, of class
+     * StimulusProvider.
+     */
+    @Test
+    public void testGetSubset_MultiParticipant() {
+        System.out.println("getSubset MultiParticipant stimuli");
+        StimulusProvider instance = new StimulusProvider();
+        instance.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_version1zero}), 23, true, 1, 3, "", -1);
+        assertEquals(8, instance.getTotalStimuli());
+        instance.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_version1round5}), 23, true, 1, 3, "", -1);
+        assertEquals(20, instance.getTotalStimuli());
+        instance.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_version1zero}), 23, true, 6, 3, "", -1);
+        assertEquals(23, instance.getTotalStimuli());
+    }
 }
