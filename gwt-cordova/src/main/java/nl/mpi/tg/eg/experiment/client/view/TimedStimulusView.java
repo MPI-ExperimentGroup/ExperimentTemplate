@@ -35,8 +35,10 @@ import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.InsertPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextArea;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import nl.mpi.tg.eg.experiment.client.listener.AudioEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
@@ -53,6 +55,7 @@ public class TimedStimulusView extends ComplexView {
     private final AudioPlayer audioPlayer;
     private StimulusGrid stimulusGrid = null;
     private HorizontalPanel horizontalPanel = null;
+    private VerticalPanel cellPanel = null;
 
     public TimedStimulusView(AudioPlayer audioPlayer) {
         super();
@@ -63,6 +66,15 @@ public class TimedStimulusView extends ComplexView {
         outerPanel.setStylePrimaryName("menuOuter");
         stimulusGrid = new StimulusGrid(domHandlerArray);
         outerPanel.add(stimulusGrid);
+    }
+
+    public void startCell() {
+        cellPanel = new VerticalPanel();
+        horizontalPanel.add(cellPanel);
+    }
+
+    public void endCell() {
+        cellPanel = null;
     }
 
     public void startHorizontalPanel() {
@@ -96,7 +108,11 @@ public class TimedStimulusView extends ComplexView {
                 timedStimulusListener.postLoadTimerFired();
             }
         });
-        ((horizontalPanel != null) ? horizontalPanel : outerPanel).add(image);
+        getActivePanel().add(image);
+    }
+
+    private InsertPanel.ForIsWidget getActivePanel() {
+        return (cellPanel != null) ? cellPanel : (horizontalPanel != null) ? horizontalPanel : outerPanel;
     }
 
     public void addBackgroundImage(final SafeUri imagePath, final int postLoadMs, final TimedStimulusListener timedStimulusListener) {
@@ -171,13 +187,13 @@ public class TimedStimulusView extends ComplexView {
         final HTMLPanel htmlPanel = new HTMLPanel("");
         htmlPanel.setStylePrimaryName("gridCell");
         htmlPanel.add(image);
-        ((horizontalPanel != null) ? horizontalPanel : outerPanel).add(htmlPanel);
+        getActivePanel().add(htmlPanel);
     }
 
     public void addSvgImage(String svgContent, int percentWidth) {
         final HTMLPanel htmlPanel = new HTMLPanel(svgContent);
         htmlPanel.setWidth(percentWidth + "%");
-        ((horizontalPanel != null) ? horizontalPanel : outerPanel).add(htmlPanel);
+        getActivePanel().add(htmlPanel);
     }
 
     public StimulusFreeText addStimulusFreeText(final String validationRegex, final String validationChallenge, final String allowedCharCodes, final SingleShotEventListner enterKeyListner, final int hotKey) {
@@ -274,7 +290,7 @@ public class TimedStimulusView extends ComplexView {
             video.setControls(true);
             video.setPreload(MediaElement.PRELOAD_AUTO);
             addSizeAttributes(video.getElement(), percentOfPage, maxHeight, maxWidth);
-            ((horizontalPanel != null) ? horizontalPanel : outerPanel).add(video);
+            getActivePanel().add(video);
             if (oggPath != null) {
                 video.addSource(oggPath.asString(), "video/ogg");
             }
@@ -311,7 +327,7 @@ public class TimedStimulusView extends ComplexView {
     }
 
     public void addAudioPlayerGui() {
-        ((horizontalPanel != null) ? horizontalPanel : outerPanel).add(audioPlayer.getAudioPlayer());
+        getActivePanel().add(audioPlayer.getAudioPlayer());
     }
 
     public void stopAudio() {
