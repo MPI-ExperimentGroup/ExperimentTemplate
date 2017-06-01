@@ -57,7 +57,8 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             final String mutualFeedbackPhaseText,
             final String trainingDisplayPhaseRoles,
             final String trainingDisplayPhaseText,
-            final String groupRecordSubmitionPhaseRoles,
+            final String groupRecordSubmissionPhaseRoles,
+            final String groupRecordSubmissionNextPhaseRoles,
             final String preStimuliText,
             final String postStimuliText,
             final int stimuliCount,
@@ -80,7 +81,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         this.wizardScreenData.setCentreScreen(true);
         this.wizardScreenData.setGroupMembers(groupMembers);
         this.wizardScreenData.setGroupCommunicationChannels(communicationChannels);
-        this.wizardScreenData.setGroupPhasesRoles(new String[]{textEntryPhaseRoles, textWaitPhaseRoles, gridWaitPhaseRoles, responseGridPhaseRoles, mutualFeedbackPhaseRoles, trainingDisplayPhaseRoles, groupRecordSubmitionPhaseRoles});
+        this.wizardScreenData.setGroupPhasesRoles(new String[]{textEntryPhaseRoles, textWaitPhaseRoles, gridWaitPhaseRoles, responseGridPhaseRoles, mutualFeedbackPhaseRoles, trainingDisplayPhaseRoles, groupRecordSubmissionPhaseRoles, groupRecordSubmissionNextPhaseRoles});
 
         this.wizardScreenData.setTaskIndex((textWaitPhaseStimuluIncrement) ? 1 : 0);
         this.wizardScreenData.setScreenText(0, textEntryPhaseText);
@@ -289,7 +290,8 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         final PresenterFeature allNetworkActivity2 = new PresenterFeature(FeatureType.groupNetworkActivity, null);
 //        groupNetworkActivity2.addFeatureAttributes(FeatureAttribute.requestedPhase, "1");
         final PresenterFeature trainingDisplayNetworkActivity3 = new PresenterFeature(FeatureType.groupNetworkActivity, null);
-        final PresenterFeature groupRecordSubmition = new PresenterFeature(FeatureType.groupNetworkActivity, null);
+        final PresenterFeature groupRecordSubmission = new PresenterFeature(FeatureType.groupNetworkActivity, null);
+        final PresenterFeature groupRecordSubmissionNext = new PresenterFeature(FeatureType.groupNetworkActivity, null);
 
         final PresenterFeature nextStimulusP = new PresenterFeature(FeatureType.nextStimulus, null);
         producerNetworkActivity0.getPresenterFeatureList().add(nextStimulusP);
@@ -521,11 +523,14 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             groupNetwork.getPresenterFeatureList().add(trainingDisplayNetworkActivity3);
         }
         if (!storedWizardScreenData.getGroupPhasesRoles()[6].isEmpty()) {
-            groupRecordSubmition.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[6]);
-            groupNetwork.getPresenterFeatureList().add(groupRecordSubmition);
+            groupRecordSubmission.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[6]);
+            groupNetwork.getPresenterFeatureList().add(groupRecordSubmission);
         }
-//        hasMoreStimulusFeature.getPresenterFeatureList().add(allNetworkActivity2);
-//        hasMoreStimulusFeature.getPresenterFeatureList().add(guesserNetworkActivity1);
+        if (!storedWizardScreenData.getGroupPhasesRoles()[7].isEmpty()) {
+            // this is used as a next phase phase for the testing screen that needs to only submit a group record after a message has been sent and then return to the previous phase
+            groupRecordSubmissionNext.addFeatureAttributes(FeatureAttribute.groupRole, storedWizardScreenData.getGroupPhasesRoles()[7]);
+            groupNetwork.getPresenterFeatureList().add(groupRecordSubmissionNext);
+        }
 
         imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "0");
         imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "0");
@@ -566,7 +571,12 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //            presenterFeature.getPresenterFeatureList().add(nextButtonFeature);
         }
         final PresenterFeature groupNetworkActivitySelf1 = addGroupMessageButton("Next [enter]", "TextEntered", "ENTER");
-        groupRecordSubmition.getPresenterFeatureList().add(new PresenterFeature(FeatureType.submitGroupEvent, null));
+        groupRecordSubmission.getPresenterFeatureList().add(new PresenterFeature(FeatureType.submitGroupEvent, null));
+        groupRecordSubmissionNext.getPresenterFeatureList().add(new PresenterFeature(FeatureType.submitGroupEvent, null));
+        final PresenterFeature groupRecordSubmissionNextFeature = new PresenterFeature(FeatureType.sendGroupMessage, null);
+        groupRecordSubmissionNext.getPresenterFeatureList().add(groupRecordSubmissionNextFeature);
+        groupRecordSubmissionNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "group record submitted");
+        groupRecordSubmissionNextFeature.addFeatureAttributes(FeatureAttribute.incrementPhase, "1");
         presenterFeature.getPresenterFeatureList().add(groupNetworkActivitySelf1);
         loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
 
