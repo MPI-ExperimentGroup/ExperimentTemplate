@@ -152,11 +152,11 @@ public class StimulusProvider implements StimuliProvider {
 
     @Override
     public void loadStoredStimulusList(String storedStimulusList) {
-        stimulusSubsetArray.clear();
         loadStoredStimulusList(storedStimulusList, stimulusArray);
     }
 
     private void loadStoredStimulusList(String storedStimulusList, final List<Stimulus> stimulusArrayTemp) {
+        stimulusSubsetArray.clear();
         while (!storedStimulusList.isEmpty()) {
             // stimuli ids can contain - so we cant split the string on -
             //storedStimulusList = storedStimulusList.replaceFirst("^-", storedStimulusList);
