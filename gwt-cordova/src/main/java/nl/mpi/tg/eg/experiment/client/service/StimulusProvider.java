@@ -119,7 +119,7 @@ public class StimulusProvider implements StimuliProvider {
                             }
                         });
                     }
-                    applyRepeatRandomWindow(stimulusSubsetArrayTemp, repeatCount, repeatRandomWindow);
+                    applyRepeatRandomWindow(stimulusSubsetArrayTemp, repeatCount, repeatRandomWindow, maxStimulusCount);
                 }
 //                totalStimuli = stimulusSubsetArray.size();
                 simulusLoadedListener.postLoadTimerFired();
@@ -186,13 +186,17 @@ public class StimulusProvider implements StimuliProvider {
                 }
             }
         }
-        applyRepeatRandomWindow(stimulusSubsetArrayTemp, repeatCount, repeatRandomWindow);
+        applyRepeatRandomWindow(stimulusSubsetArrayTemp, repeatCount, repeatRandomWindow, maxStimulusCount);
     }
 
-    private void applyRepeatRandomWindow(final List<Stimulus> stimulusSubsetArrayTemp, final int repeatCount, final int repeatRandomWindow) {
+    private void applyRepeatRandomWindow(final List<Stimulus> stimulusSubsetArrayTemp, final int repeatCount, final int repeatRandomWindow, final int maxStimulusCount) {
         stimulusSubsetArray.clear();
         for (int repeatIndex = 0; repeatIndex < repeatCount; repeatIndex++) {
             stimulusSubsetArray.addAll(stimulusSubsetArrayTemp);
+        }
+        while (stimulusSubsetArray.size() > maxStimulusCount) {
+            // cap the number of stimuli by the max stimuli requested
+            stimulusSubsetArray.remove(stimulusSubsetArray.size() - 1);
         }
         if (repeatCount > 1 && repeatRandomWindow > 0 && stimulusSubsetArray.size() > repeatRandomWindow) {
             // todo: perhaps also do this when the repeatRandomWindow is bigger than the stimulusSubsetArray but just reduce the repeatRandomWindow accordingly
