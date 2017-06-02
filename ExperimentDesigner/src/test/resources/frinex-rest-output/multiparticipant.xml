@@ -164,10 +164,10 @@
                                 <column>
                                     <groupResponseFeedback>
                                         <responseCorrect>
-                                            <htmlText featureText="responseCorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
                                         <responseIncorrect>
-                                            <htmlText featureText="responseIncorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
@@ -271,10 +271,10 @@
                                 <column>
                                     <groupResponseFeedback>
                                         <responseCorrect>
-                                            <htmlText featureText="responseCorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
                                         <responseIncorrect>
-                                            <htmlText featureText="responseIncorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
@@ -378,10 +378,10 @@
                                 <column>
                                     <groupResponseFeedback>
                                         <responseCorrect>
-                                            <htmlText featureText="responseCorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
                                         <responseIncorrect>
-                                            <htmlText featureText="responseIncorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
@@ -485,10 +485,10 @@
                                 <column>
                                     <groupResponseFeedback>
                                         <responseCorrect>
-                                            <htmlText featureText="responseCorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
                                         <responseIncorrect>
-                                            <htmlText featureText="responseIncorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
@@ -592,10 +592,10 @@
                                 <column>
                                     <groupResponseFeedback>
                                         <responseCorrect>
-                                            <htmlText featureText="responseCorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
                                         <responseIncorrect>
-                                            <htmlText featureText="responseIncorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
@@ -699,10 +699,10 @@
                                 <column>
                                     <groupResponseFeedback>
                                         <responseCorrect>
-                                            <htmlText featureText="responseCorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
                                         <responseIncorrect>
-                                            <htmlText featureText="responseIncorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
@@ -806,10 +806,10 @@
                                 <column>
                                     <groupResponseFeedback>
                                         <responseCorrect>
-                                            <htmlText featureText="responseCorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
                                         <responseIncorrect>
-                                            <htmlText featureText="responseIncorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
@@ -1006,10 +1006,10 @@
                                 <column>
                                     <groupResponseFeedback>
                                         <responseCorrect>
-                                            <htmlText featureText="responseCorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
                                         <responseIncorrect>
-                                            <htmlText featureText="responseIncorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
@@ -1113,10 +1113,10 @@
                                 <column>
                                     <groupResponseFeedback>
                                         <responseCorrect>
-                                            <htmlText featureText="responseCorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
                                         <responseIncorrect>
-                                            <htmlText featureText="responseIncorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
@@ -1220,10 +1220,10 @@
                                 <column>
                                     <groupResponseFeedback>
                                         <responseCorrect>
-                                            <htmlText featureText="responseCorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
                                         <responseIncorrect>
-                                            <htmlText featureText="responseIncorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
@@ -1327,10 +1327,10 @@
                                 <column>
                                     <groupResponseFeedback>
                                         <responseCorrect>
-                                            <htmlText featureText="responseCorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
                                         <responseIncorrect>
-                                            <htmlText featureText="responseIncorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
@@ -1434,10 +1434,10 @@
                                 <column>
                                     <groupResponseFeedback>
                                         <responseCorrect>
-                                            <htmlText featureText="responseCorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
                                         <responseIncorrect>
-                                            <htmlText featureText="responseIncorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
@@ -1541,10 +1541,10 @@
                                 <column>
                                     <groupResponseFeedback>
                                         <responseCorrect>
-                                            <htmlText featureText="responseCorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
                                         <responseIncorrect>
-                                            <htmlText featureText="responseIncorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
@@ -1648,10 +1648,10 @@
                                 <column>
                                     <groupResponseFeedback>
                                         <responseCorrect>
-                                            <htmlText featureText="responseCorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
                                         <responseIncorrect>
-                                            <htmlText featureText="responseIncorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
@@ -1795,10 +1795,10 @@
                                 <column>
                                     <groupResponseFeedback>
                                         <responseCorrect>
-                                            <htmlText featureText="responseCorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
                                         <responseIncorrect>
-                                            <htmlText featureText="responseIncorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
@@ -1902,10 +1902,10 @@
                                 <column>
                                     <groupResponseFeedback>
                                         <responseCorrect>
-                                            <htmlText featureText="responseCorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
                                         <responseIncorrect>
-                                            <htmlText featureText="responseIncorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
@@ -2009,10 +2009,10 @@
                                 <column>
                                     <groupResponseFeedback>
                                         <responseCorrect>
-                                            <htmlText featureText="responseCorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
                                         <responseIncorrect>
-                                            <htmlText featureText="responseIncorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
@@ -2116,10 +2116,10 @@
                                 <column>
                                     <groupResponseFeedback>
                                         <responseCorrect>
-                                            <htmlText featureText="responseCorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
                                         <responseIncorrect>
-                                            <htmlText featureText="responseIncorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
@@ -2223,10 +2223,10 @@
                                 <column>
                                     <groupResponseFeedback>
                                         <responseCorrect>
-                                            <htmlText featureText="responseCorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
                                         <responseIncorrect>
-                                            <htmlText featureText="responseIncorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
@@ -2330,10 +2330,10 @@
                                 <column>
                                     <groupResponseFeedback>
                                         <responseCorrect>
-                                            <htmlText featureText="responseCorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
                                         <responseIncorrect>
-                                            <htmlText featureText="responseIncorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
@@ -2437,10 +2437,10 @@
                                 <column>
                                     <groupResponseFeedback>
                                         <responseCorrect>
-                                            <htmlText featureText="responseCorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
                                         <responseIncorrect>
-                                            <htmlText featureText="responseIncorrect"/>
+                                            <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
