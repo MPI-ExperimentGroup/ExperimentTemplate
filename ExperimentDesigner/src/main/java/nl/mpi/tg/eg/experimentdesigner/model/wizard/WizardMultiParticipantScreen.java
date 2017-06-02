@@ -427,8 +427,8 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         final PresenterFeature responseIncorrect = new PresenterFeature(FeatureType.responseIncorrect, null);
         groupResponseFeedback.getPresenterFeatureList().add(responseIncorrect);
 
-        responseCorrect.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "responseCorrect"));
-        responseIncorrect.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "responseIncorrect"));
+        responseCorrect.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "<h1 style=\"color:green;\">&#10004;</h1>"));
+        responseIncorrect.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "<h1 style=\"color:red;\">&#10008;</h1>"));
 //        responseIncorrect.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "your guesser chose"));
 
         final PresenterFeature groupResponseStimulusImage = new PresenterFeature(FeatureType.groupResponseStimulusImage, null);
