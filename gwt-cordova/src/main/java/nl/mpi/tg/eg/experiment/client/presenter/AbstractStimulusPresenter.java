@@ -355,6 +355,18 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         labelTimer.schedule(500);
     }
 
+    protected void row(final TimedStimulusListener timedStimulusListener) {
+        ((TimedStimulusView) simpleView).startHorizontalPanel();
+        timedStimulusListener.postLoadTimerFired();
+        ((TimedStimulusView) simpleView).endHorizontalPanel();
+    }
+
+    protected void column(final TimedStimulusListener timedStimulusListener) {
+        ((TimedStimulusView) simpleView).startCell();
+        timedStimulusListener.postLoadTimerFired();
+        ((TimedStimulusView) simpleView).endCell();
+    }
+
     protected void pause(int postLoadMs, final TimedStimulusListener timedStimulusListener) {
         Timer timer = new Timer() {
             @Override
@@ -632,23 +644,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addHtmlText("groupMemberCodeLabel: " + groupParticipantService.getMemberCode());
     }
 
-    protected void groupResponseFeedback(final AppEventListner appEventListner, final int postLoadCorrectMs, final TimedStimulusListener correctListener, final int postLoadIncorrectMs, final TimedStimulusListener incorrectListener) {
+    protected void groupResponseFeedback(final AppEventListner appEventListner, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener) {
         if (groupParticipantService.getStimulusId().equals(groupParticipantService.getResponseStimulusId())) {
-            Timer timer = new Timer() {
-                @Override
-                public void run() {
-                    correctListener.postLoadTimerFired();
-                }
-            };
-            timer.schedule(postLoadCorrectMs);
+            correctListener.postLoadTimerFired();
         } else {
-            Timer timer = new Timer() {
-                @Override
-                public void run() {
-                    incorrectListener.postLoadTimerFired();
-                }
-            };
-            timer.schedule(postLoadIncorrectMs);
+            incorrectListener.postLoadTimerFired();
         }
 
     }
