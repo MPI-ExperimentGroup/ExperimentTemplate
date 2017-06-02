@@ -25,13 +25,17 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.dom.client.Element;
+//import com.google.gwt.event.dom.client.DragStartEvent;
+//import com.google.gwt.event.dom.client.DragStartHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
+import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.InsertPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PopupPanel;
@@ -51,6 +55,8 @@ import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 public class ComplexView extends SimpleView {
 
     private Label recordingLabel = null;
+    private HorizontalPanel horizontalPanel = null;
+    private VerticalPanel cellPanel = null;
 
     private class ImageEntry {
 
@@ -71,7 +77,41 @@ public class ComplexView extends SimpleView {
     public ComplexView() {
         super();
         outerPanel = new VerticalPanel();
+//
+//        outerPanel.getElement().setDraggable(Element.DRAGGABLE_TRUE);
+//        outerPanel.addDragStartHandler(new DragStartHandler() {
+//
+//            @Override
+//            public void onDragStart(DragStartEvent event) {
+//                // TODO Auto-generated method stub
+//                event.setData("text", "i am widget1");
+//            }
+//        ;
+//        });
         setContent(outerPanel);
+    }
+
+    public void startCell() {
+        cellPanel = new VerticalPanel();
+        horizontalPanel.add(cellPanel);
+    }
+
+    public void endCell() {
+        cellPanel = null;
+    }
+
+    public void startHorizontalPanel() {
+        horizontalPanel = new HorizontalPanel();
+        horizontalPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
+        outerPanel.add(horizontalPanel);
+    }
+
+    public void endHorizontalPanel() {
+        horizontalPanel = null;
+    }
+
+    protected InsertPanel.ForIsWidget getActivePanel() {
+        return (cellPanel != null) ? cellPanel : (horizontalPanel != null) ? horizontalPanel : outerPanel;
     }
 
     public void clearPage() {
@@ -83,24 +123,24 @@ public class ComplexView extends SimpleView {
 
     public void addText(String textString) {
         HTML html = new HTML(new SafeHtmlBuilder().appendEscapedLines(textString).toSafeHtml());
-        outerPanel.add(html);
+        getActivePanel().add(html);
     }
 
     public HTML addHtmlText(String textString) {
         HTML html = new HTML(new SafeHtmlBuilder().appendHtmlConstant(textString).toSafeHtml());
-        outerPanel.add(html);
+        getActivePanel().add(html);
         return html;
     }
 
     public HTML addHighlightedText(String textString) {
         HTML html = new HTML(new SafeHtmlBuilder().appendEscapedLines(textString).toSafeHtml());
         html.addStyleName("highlightedText");
-        outerPanel.add(html);
+        getActivePanel().add(html);
         return html;
     }
 
     public void addPadding() {
-        outerPanel.add(new HTML("&nbsp;"));
+        getActivePanel().add(new HTML("&nbsp;"));
     }
 
     public void setRecorderState(String message, boolean isRecording) {
@@ -117,7 +157,7 @@ public class ComplexView extends SimpleView {
     }
 
     public void addWidget(IsWidget isWidget) {
-        outerPanel.add(isWidget);
+        getActivePanel().add(isWidget);
     }
 
     protected void addSizeAttributes(final Element imageElement, int percentOfPage, int maxHeight, int maxWidth) {
@@ -151,7 +191,7 @@ public class ComplexView extends SimpleView {
         image.addTouchStartHandler(singleShotEventListner);
         image.addTouchMoveHandler(singleShotEventListner);
         image.addTouchEndHandler(singleShotEventListner);
-        outerPanel.add(image);
+        getActivePanel().add(image);
     }
 
     public void centrePage() {
@@ -162,7 +202,7 @@ public class ComplexView extends SimpleView {
         final Anchor anchor = new Anchor(new SafeHtmlBuilder().appendEscapedLines(label).toSafeHtml());
         // this link relies on the org.apache.cordova.inappbrowser which offers secure viewing of external html pages and handles user navigation such as back navigation.
         // in this case the link will be opend in the system browser rather than in the cordova application.
-        outerPanel.add(anchor);
+        getActivePanel().add(anchor);
         final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
 
             @Override
@@ -186,7 +226,7 @@ public class ComplexView extends SimpleView {
         if (styleName != null) {
             nextButton.addStyleName(styleName);
         }
-        outerPanel.add(nextButton);
+        getActivePanel().add(nextButton);
         return nextButton;
     }
 
@@ -276,7 +316,7 @@ public class ComplexView extends SimpleView {
         imageButton.getElement().appendChild(image.getElement());
         imageButton.addStyleName("imageButton");
         imageButton.setEnabled(true);
-        outerPanel.add(imageButton);
+        getActivePanel().add(imageButton);
         final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
 
             @Override
@@ -303,7 +343,7 @@ public class ComplexView extends SimpleView {
         bargraphOuter.setStyleName("bargraphOuter");
         bargraphInner.setStyleName("bargraphInner");
         bargraphOuter.add(bargraphInner);
-        outerPanel.add(bargraphOuter);
+        getActivePanel().add(bargraphOuter);
         return bargraphInner;
     }
 
@@ -370,7 +410,7 @@ public class ComplexView extends SimpleView {
         textBox.setReadOnly(readOnly);
         textBox.setStylePrimaryName("metadataOK");
         textBox.setText(value);
-        outerPanel.add(textBox);
+        getActivePanel().add(textBox);
     }
 
     @Override
