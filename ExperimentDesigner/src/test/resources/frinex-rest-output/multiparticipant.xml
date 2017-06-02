@@ -156,23 +156,30 @@
                         <groupNetworkActivity groupRole="-:-:A,C,B,D:-:-:A,C,B,D">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                            <groupMessageLabel/>
-                            <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
-                                    <htmlText featureText="responseCorrect"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was correct" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseCorrect>
-                                <responseIncorrect msToNext="0">
-                                    <htmlText featureText="responseIncorrect"/>
-                                    <htmlText featureText="your guesser chose"/>
+                            <row>
+                                <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was incorrect" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
+                                    <htmlText featureText="groupResponse"/>
+                                </column>
+                                <column>
+                                    <groupResponseFeedback>
+                                        <responseCorrect>
+                                            <htmlText featureText="responseCorrect"/>
+                                        </responseCorrect>
+                                        <responseIncorrect>
+                                            <htmlText featureText="responseIncorrect"/>
+                                        </responseIncorrect>
+                                    </groupResponseFeedback>
+                                </column>
+                                <column>
+                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <groupMessageLabel/>
+                                </column>
+                            </row>
                             <groupScoreLabel/>
                             <groupChannelScoreLabel/>
                             <scoreLabel/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
@@ -256,23 +263,30 @@
                         <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                            <groupMessageLabel/>
-                            <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
-                                    <htmlText featureText="responseCorrect"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was correct" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseCorrect>
-                                <responseIncorrect msToNext="0">
-                                    <htmlText featureText="responseIncorrect"/>
-                                    <htmlText featureText="your guesser chose"/>
+                            <row>
+                                <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was incorrect" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
+                                    <htmlText featureText="groupResponse"/>
+                                </column>
+                                <column>
+                                    <groupResponseFeedback>
+                                        <responseCorrect>
+                                            <htmlText featureText="responseCorrect"/>
+                                        </responseCorrect>
+                                        <responseIncorrect>
+                                            <htmlText featureText="responseIncorrect"/>
+                                        </responseIncorrect>
+                                    </groupResponseFeedback>
+                                </column>
+                                <column>
+                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <groupMessageLabel/>
+                                </column>
+                            </row>
                             <groupScoreLabel/>
                             <groupChannelScoreLabel/>
                             <scoreLabel/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
@@ -356,23 +370,30 @@
                         <groupNetworkActivity groupRole="-:-:A,B,D,C:-:-:A,B,D,C">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                            <groupMessageLabel/>
-                            <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
-                                    <htmlText featureText="responseCorrect"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was correct" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseCorrect>
-                                <responseIncorrect msToNext="0">
-                                    <htmlText featureText="responseIncorrect"/>
-                                    <htmlText featureText="your guesser chose"/>
+                            <row>
+                                <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was incorrect" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
+                                    <htmlText featureText="groupResponse"/>
+                                </column>
+                                <column>
+                                    <groupResponseFeedback>
+                                        <responseCorrect>
+                                            <htmlText featureText="responseCorrect"/>
+                                        </responseCorrect>
+                                        <responseIncorrect>
+                                            <htmlText featureText="responseIncorrect"/>
+                                        </responseIncorrect>
+                                    </groupResponseFeedback>
+                                </column>
+                                <column>
+                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <groupMessageLabel/>
+                                </column>
+                            </row>
                             <groupScoreLabel/>
                             <groupChannelScoreLabel/>
                             <scoreLabel/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
@@ -456,23 +477,30 @@
                         <groupNetworkActivity groupRole="-:-:A,C,B,D:-:-:A,C,B,D">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                            <groupMessageLabel/>
-                            <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
-                                    <htmlText featureText="responseCorrect"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was correct" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseCorrect>
-                                <responseIncorrect msToNext="0">
-                                    <htmlText featureText="responseIncorrect"/>
-                                    <htmlText featureText="your guesser chose"/>
+                            <row>
+                                <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was incorrect" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
+                                    <htmlText featureText="groupResponse"/>
+                                </column>
+                                <column>
+                                    <groupResponseFeedback>
+                                        <responseCorrect>
+                                            <htmlText featureText="responseCorrect"/>
+                                        </responseCorrect>
+                                        <responseIncorrect>
+                                            <htmlText featureText="responseIncorrect"/>
+                                        </responseIncorrect>
+                                    </groupResponseFeedback>
+                                </column>
+                                <column>
+                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <groupMessageLabel/>
+                                </column>
+                            </row>
                             <groupScoreLabel/>
                             <groupChannelScoreLabel/>
                             <scoreLabel/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
@@ -556,23 +584,30 @@
                         <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                            <groupMessageLabel/>
-                            <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
-                                    <htmlText featureText="responseCorrect"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was correct" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseCorrect>
-                                <responseIncorrect msToNext="0">
-                                    <htmlText featureText="responseIncorrect"/>
-                                    <htmlText featureText="your guesser chose"/>
+                            <row>
+                                <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was incorrect" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
+                                    <htmlText featureText="groupResponse"/>
+                                </column>
+                                <column>
+                                    <groupResponseFeedback>
+                                        <responseCorrect>
+                                            <htmlText featureText="responseCorrect"/>
+                                        </responseCorrect>
+                                        <responseIncorrect>
+                                            <htmlText featureText="responseIncorrect"/>
+                                        </responseIncorrect>
+                                    </groupResponseFeedback>
+                                </column>
+                                <column>
+                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <groupMessageLabel/>
+                                </column>
+                            </row>
                             <groupScoreLabel/>
                             <groupChannelScoreLabel/>
                             <scoreLabel/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
@@ -656,23 +691,30 @@
                         <groupNetworkActivity groupRole="-:-:A,B,D,C:-:-:A,B,D,C">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                            <groupMessageLabel/>
-                            <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
-                                    <htmlText featureText="responseCorrect"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was correct" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseCorrect>
-                                <responseIncorrect msToNext="0">
-                                    <htmlText featureText="responseIncorrect"/>
-                                    <htmlText featureText="your guesser chose"/>
+                            <row>
+                                <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was incorrect" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
+                                    <htmlText featureText="groupResponse"/>
+                                </column>
+                                <column>
+                                    <groupResponseFeedback>
+                                        <responseCorrect>
+                                            <htmlText featureText="responseCorrect"/>
+                                        </responseCorrect>
+                                        <responseIncorrect>
+                                            <htmlText featureText="responseIncorrect"/>
+                                        </responseIncorrect>
+                                    </groupResponseFeedback>
+                                </column>
+                                <column>
+                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <groupMessageLabel/>
+                                </column>
+                            </row>
                             <groupScoreLabel/>
                             <groupChannelScoreLabel/>
                             <scoreLabel/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
@@ -756,23 +798,30 @@
                         <groupNetworkActivity groupRole="-:-:A,C,B,D:-:-:A,C,B,D">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                            <groupMessageLabel/>
-                            <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
-                                    <htmlText featureText="responseCorrect"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was correct" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseCorrect>
-                                <responseIncorrect msToNext="0">
-                                    <htmlText featureText="responseIncorrect"/>
-                                    <htmlText featureText="your guesser chose"/>
+                            <row>
+                                <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was incorrect" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
+                                    <htmlText featureText="groupResponse"/>
+                                </column>
+                                <column>
+                                    <groupResponseFeedback>
+                                        <responseCorrect>
+                                            <htmlText featureText="responseCorrect"/>
+                                        </responseCorrect>
+                                        <responseIncorrect>
+                                            <htmlText featureText="responseIncorrect"/>
+                                        </responseIncorrect>
+                                    </groupResponseFeedback>
+                                </column>
+                                <column>
+                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <groupMessageLabel/>
+                                </column>
+                            </row>
                             <groupScoreLabel/>
                             <groupChannelScoreLabel/>
                             <scoreLabel/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
@@ -949,23 +998,30 @@
                         <groupNetworkActivity groupRole="-:-:A,C,E,G,B,D,F,H:-:-:A,C,E,G,B,D,F,H">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                            <groupMessageLabel/>
-                            <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
-                                    <htmlText featureText="responseCorrect"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was correct" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseCorrect>
-                                <responseIncorrect msToNext="0">
-                                    <htmlText featureText="responseIncorrect"/>
-                                    <htmlText featureText="your guesser chose"/>
+                            <row>
+                                <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was incorrect" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
+                                    <htmlText featureText="groupResponse"/>
+                                </column>
+                                <column>
+                                    <groupResponseFeedback>
+                                        <responseCorrect>
+                                            <htmlText featureText="responseCorrect"/>
+                                        </responseCorrect>
+                                        <responseIncorrect>
+                                            <htmlText featureText="responseIncorrect"/>
+                                        </responseIncorrect>
+                                    </groupResponseFeedback>
+                                </column>
+                                <column>
+                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <groupMessageLabel/>
+                                </column>
+                            </row>
                             <groupScoreLabel/>
                             <groupChannelScoreLabel/>
                             <scoreLabel/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
@@ -1049,23 +1105,30 @@
                         <groupNetworkActivity groupRole="-:-:A,E,C,G,H,D,F,B:-:-:A,E,C,G,H,D,F,B">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                            <groupMessageLabel/>
-                            <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
-                                    <htmlText featureText="responseCorrect"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was correct" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseCorrect>
-                                <responseIncorrect msToNext="0">
-                                    <htmlText featureText="responseIncorrect"/>
-                                    <htmlText featureText="your guesser chose"/>
+                            <row>
+                                <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was incorrect" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
+                                    <htmlText featureText="groupResponse"/>
+                                </column>
+                                <column>
+                                    <groupResponseFeedback>
+                                        <responseCorrect>
+                                            <htmlText featureText="responseCorrect"/>
+                                        </responseCorrect>
+                                        <responseIncorrect>
+                                            <htmlText featureText="responseIncorrect"/>
+                                        </responseIncorrect>
+                                    </groupResponseFeedback>
+                                </column>
+                                <column>
+                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <groupMessageLabel/>
+                                </column>
+                            </row>
                             <groupScoreLabel/>
                             <groupChannelScoreLabel/>
                             <scoreLabel/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
@@ -1149,23 +1212,30 @@
                         <groupNetworkActivity groupRole="-:-:A,G,E,C,D,F,B,H:-:-:A,G,E,C,D,F,B,H">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                            <groupMessageLabel/>
-                            <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
-                                    <htmlText featureText="responseCorrect"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was correct" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseCorrect>
-                                <responseIncorrect msToNext="0">
-                                    <htmlText featureText="responseIncorrect"/>
-                                    <htmlText featureText="your guesser chose"/>
+                            <row>
+                                <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was incorrect" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
+                                    <htmlText featureText="groupResponse"/>
+                                </column>
+                                <column>
+                                    <groupResponseFeedback>
+                                        <responseCorrect>
+                                            <htmlText featureText="responseCorrect"/>
+                                        </responseCorrect>
+                                        <responseIncorrect>
+                                            <htmlText featureText="responseIncorrect"/>
+                                        </responseIncorrect>
+                                    </groupResponseFeedback>
+                                </column>
+                                <column>
+                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <groupMessageLabel/>
+                                </column>
+                            </row>
                             <groupScoreLabel/>
                             <groupChannelScoreLabel/>
                             <scoreLabel/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
@@ -1249,23 +1319,30 @@
                         <groupNetworkActivity groupRole="-:-:A,B,E,F,C,D,G,H:-:-:A,B,E,F,C,D,G,H">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                            <groupMessageLabel/>
-                            <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
-                                    <htmlText featureText="responseCorrect"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was correct" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseCorrect>
-                                <responseIncorrect msToNext="0">
-                                    <htmlText featureText="responseIncorrect"/>
-                                    <htmlText featureText="your guesser chose"/>
+                            <row>
+                                <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was incorrect" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
+                                    <htmlText featureText="groupResponse"/>
+                                </column>
+                                <column>
+                                    <groupResponseFeedback>
+                                        <responseCorrect>
+                                            <htmlText featureText="responseCorrect"/>
+                                        </responseCorrect>
+                                        <responseIncorrect>
+                                            <htmlText featureText="responseIncorrect"/>
+                                        </responseIncorrect>
+                                    </groupResponseFeedback>
+                                </column>
+                                <column>
+                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <groupMessageLabel/>
+                                </column>
+                            </row>
                             <groupScoreLabel/>
                             <groupChannelScoreLabel/>
                             <scoreLabel/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
@@ -1349,23 +1426,30 @@
                         <groupNetworkActivity groupRole="-:-:A,H,B,G,E,D,F,C:-:-:A,H,B,G,E,D,F,C">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                            <groupMessageLabel/>
-                            <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
-                                    <htmlText featureText="responseCorrect"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was correct" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseCorrect>
-                                <responseIncorrect msToNext="0">
-                                    <htmlText featureText="responseIncorrect"/>
-                                    <htmlText featureText="your guesser chose"/>
+                            <row>
+                                <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was incorrect" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
+                                    <htmlText featureText="groupResponse"/>
+                                </column>
+                                <column>
+                                    <groupResponseFeedback>
+                                        <responseCorrect>
+                                            <htmlText featureText="responseCorrect"/>
+                                        </responseCorrect>
+                                        <responseIncorrect>
+                                            <htmlText featureText="responseIncorrect"/>
+                                        </responseIncorrect>
+                                    </groupResponseFeedback>
+                                </column>
+                                <column>
+                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <groupMessageLabel/>
+                                </column>
+                            </row>
                             <groupScoreLabel/>
                             <groupChannelScoreLabel/>
                             <scoreLabel/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
@@ -1449,23 +1533,30 @@
                         <groupNetworkActivity groupRole="-:-:A,G,C,E,F,D,B,H:-:-:A,G,C,E,F,D,B,H">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                            <groupMessageLabel/>
-                            <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
-                                    <htmlText featureText="responseCorrect"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was correct" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseCorrect>
-                                <responseIncorrect msToNext="0">
-                                    <htmlText featureText="responseIncorrect"/>
-                                    <htmlText featureText="your guesser chose"/>
+                            <row>
+                                <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was incorrect" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
+                                    <htmlText featureText="groupResponse"/>
+                                </column>
+                                <column>
+                                    <groupResponseFeedback>
+                                        <responseCorrect>
+                                            <htmlText featureText="responseCorrect"/>
+                                        </responseCorrect>
+                                        <responseIncorrect>
+                                            <htmlText featureText="responseIncorrect"/>
+                                        </responseIncorrect>
+                                    </groupResponseFeedback>
+                                </column>
+                                <column>
+                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <groupMessageLabel/>
+                                </column>
+                            </row>
                             <groupScoreLabel/>
                             <groupChannelScoreLabel/>
                             <scoreLabel/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
@@ -1549,23 +1640,30 @@
                         <groupNetworkActivity groupRole="-:-:A,B,E,D,G,H,C,F:-:-:A,B,E,D,G,H,C,F">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                            <groupMessageLabel/>
-                            <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
-                                    <htmlText featureText="responseCorrect"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was correct" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseCorrect>
-                                <responseIncorrect msToNext="0">
-                                    <htmlText featureText="responseIncorrect"/>
-                                    <htmlText featureText="your guesser chose"/>
+                            <row>
+                                <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was incorrect" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
+                                    <htmlText featureText="groupResponse"/>
+                                </column>
+                                <column>
+                                    <groupResponseFeedback>
+                                        <responseCorrect>
+                                            <htmlText featureText="responseCorrect"/>
+                                        </responseCorrect>
+                                        <responseIncorrect>
+                                            <htmlText featureText="responseIncorrect"/>
+                                        </responseIncorrect>
+                                    </groupResponseFeedback>
+                                </column>
+                                <column>
+                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <groupMessageLabel/>
+                                </column>
+                            </row>
                             <groupScoreLabel/>
                             <groupChannelScoreLabel/>
                             <scoreLabel/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
@@ -1689,23 +1787,30 @@
                         <groupNetworkActivity groupRole="-:-:A,C,E,G,B,D,F,H:-:-:A,C,E,G,B,D,F,H">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                            <groupMessageLabel/>
-                            <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
-                                    <htmlText featureText="responseCorrect"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was correct" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseCorrect>
-                                <responseIncorrect msToNext="0">
-                                    <htmlText featureText="responseIncorrect"/>
-                                    <htmlText featureText="your guesser chose"/>
+                            <row>
+                                <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was incorrect" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
+                                    <htmlText featureText="groupResponse"/>
+                                </column>
+                                <column>
+                                    <groupResponseFeedback>
+                                        <responseCorrect>
+                                            <htmlText featureText="responseCorrect"/>
+                                        </responseCorrect>
+                                        <responseIncorrect>
+                                            <htmlText featureText="responseIncorrect"/>
+                                        </responseIncorrect>
+                                    </groupResponseFeedback>
+                                </column>
+                                <column>
+                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <groupMessageLabel/>
+                                </column>
+                            </row>
                             <groupScoreLabel/>
                             <groupChannelScoreLabel/>
                             <scoreLabel/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
@@ -1789,23 +1894,30 @@
                         <groupNetworkActivity groupRole="-:-:A,E,C,G,H,D,F,B:-:-:A,E,C,G,H,D,F,B">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                            <groupMessageLabel/>
-                            <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
-                                    <htmlText featureText="responseCorrect"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was correct" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseCorrect>
-                                <responseIncorrect msToNext="0">
-                                    <htmlText featureText="responseIncorrect"/>
-                                    <htmlText featureText="your guesser chose"/>
+                            <row>
+                                <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was incorrect" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
+                                    <htmlText featureText="groupResponse"/>
+                                </column>
+                                <column>
+                                    <groupResponseFeedback>
+                                        <responseCorrect>
+                                            <htmlText featureText="responseCorrect"/>
+                                        </responseCorrect>
+                                        <responseIncorrect>
+                                            <htmlText featureText="responseIncorrect"/>
+                                        </responseIncorrect>
+                                    </groupResponseFeedback>
+                                </column>
+                                <column>
+                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <groupMessageLabel/>
+                                </column>
+                            </row>
                             <groupScoreLabel/>
                             <groupChannelScoreLabel/>
                             <scoreLabel/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
@@ -1889,23 +2001,30 @@
                         <groupNetworkActivity groupRole="-:-:A,G,E,C,D,F,B,H:-:-:A,G,E,C,D,F,B,H">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                            <groupMessageLabel/>
-                            <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
-                                    <htmlText featureText="responseCorrect"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was correct" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseCorrect>
-                                <responseIncorrect msToNext="0">
-                                    <htmlText featureText="responseIncorrect"/>
-                                    <htmlText featureText="your guesser chose"/>
+                            <row>
+                                <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was incorrect" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
+                                    <htmlText featureText="groupResponse"/>
+                                </column>
+                                <column>
+                                    <groupResponseFeedback>
+                                        <responseCorrect>
+                                            <htmlText featureText="responseCorrect"/>
+                                        </responseCorrect>
+                                        <responseIncorrect>
+                                            <htmlText featureText="responseIncorrect"/>
+                                        </responseIncorrect>
+                                    </groupResponseFeedback>
+                                </column>
+                                <column>
+                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <groupMessageLabel/>
+                                </column>
+                            </row>
                             <groupScoreLabel/>
                             <groupChannelScoreLabel/>
                             <scoreLabel/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
@@ -1989,23 +2108,30 @@
                         <groupNetworkActivity groupRole="-:-:A,B,E,F,C,D,G,H:-:-:A,B,E,F,C,D,G,H">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                            <groupMessageLabel/>
-                            <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
-                                    <htmlText featureText="responseCorrect"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was correct" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseCorrect>
-                                <responseIncorrect msToNext="0">
-                                    <htmlText featureText="responseIncorrect"/>
-                                    <htmlText featureText="your guesser chose"/>
+                            <row>
+                                <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was incorrect" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
+                                    <htmlText featureText="groupResponse"/>
+                                </column>
+                                <column>
+                                    <groupResponseFeedback>
+                                        <responseCorrect>
+                                            <htmlText featureText="responseCorrect"/>
+                                        </responseCorrect>
+                                        <responseIncorrect>
+                                            <htmlText featureText="responseIncorrect"/>
+                                        </responseIncorrect>
+                                    </groupResponseFeedback>
+                                </column>
+                                <column>
+                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <groupMessageLabel/>
+                                </column>
+                            </row>
                             <groupScoreLabel/>
                             <groupChannelScoreLabel/>
                             <scoreLabel/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
@@ -2089,23 +2215,30 @@
                         <groupNetworkActivity groupRole="-:-:A,H,B,G,E,D,F,C:-:-:A,H,B,G,E,D,F,C">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                            <groupMessageLabel/>
-                            <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
-                                    <htmlText featureText="responseCorrect"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was correct" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseCorrect>
-                                <responseIncorrect msToNext="0">
-                                    <htmlText featureText="responseIncorrect"/>
-                                    <htmlText featureText="your guesser chose"/>
+                            <row>
+                                <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was incorrect" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
+                                    <htmlText featureText="groupResponse"/>
+                                </column>
+                                <column>
+                                    <groupResponseFeedback>
+                                        <responseCorrect>
+                                            <htmlText featureText="responseCorrect"/>
+                                        </responseCorrect>
+                                        <responseIncorrect>
+                                            <htmlText featureText="responseIncorrect"/>
+                                        </responseIncorrect>
+                                    </groupResponseFeedback>
+                                </column>
+                                <column>
+                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <groupMessageLabel/>
+                                </column>
+                            </row>
                             <groupScoreLabel/>
                             <groupChannelScoreLabel/>
                             <scoreLabel/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
@@ -2189,23 +2322,30 @@
                         <groupNetworkActivity groupRole="-:-:A,G,C,E,F,D,B,H:-:-:A,G,C,E,F,D,B,H">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                            <groupMessageLabel/>
-                            <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
-                                    <htmlText featureText="responseCorrect"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was correct" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseCorrect>
-                                <responseIncorrect msToNext="0">
-                                    <htmlText featureText="responseIncorrect"/>
-                                    <htmlText featureText="your guesser chose"/>
+                            <row>
+                                <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was incorrect" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
+                                    <htmlText featureText="groupResponse"/>
+                                </column>
+                                <column>
+                                    <groupResponseFeedback>
+                                        <responseCorrect>
+                                            <htmlText featureText="responseCorrect"/>
+                                        </responseCorrect>
+                                        <responseIncorrect>
+                                            <htmlText featureText="responseIncorrect"/>
+                                        </responseIncorrect>
+                                    </groupResponseFeedback>
+                                </column>
+                                <column>
+                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <groupMessageLabel/>
+                                </column>
+                            </row>
                             <groupScoreLabel/>
                             <groupChannelScoreLabel/>
                             <scoreLabel/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
@@ -2289,23 +2429,30 @@
                         <groupNetworkActivity groupRole="-:-:A,B,E,D,G,H,C,F:-:-:A,B,E,D,G,H,C,F">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                            <groupMessageLabel/>
-                            <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
-                                    <htmlText featureText="responseCorrect"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was correct" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseCorrect>
-                                <responseIncorrect msToNext="0">
-                                    <htmlText featureText="responseIncorrect"/>
-                                    <htmlText featureText="your guesser chose"/>
+                            <row>
+                                <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response was incorrect" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
+                                    <htmlText featureText="groupResponse"/>
+                                </column>
+                                <column>
+                                    <groupResponseFeedback>
+                                        <responseCorrect>
+                                            <htmlText featureText="responseCorrect"/>
+                                        </responseCorrect>
+                                        <responseIncorrect>
+                                            <htmlText featureText="responseIncorrect"/>
+                                        </responseIncorrect>
+                                    </groupResponseFeedback>
+                                </column>
+                                <column>
+                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <groupMessageLabel/>
+                                </column>
+                            </row>
                             <groupScoreLabel/>
                             <groupChannelScoreLabel/>
                             <scoreLabel/>
+                            <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
