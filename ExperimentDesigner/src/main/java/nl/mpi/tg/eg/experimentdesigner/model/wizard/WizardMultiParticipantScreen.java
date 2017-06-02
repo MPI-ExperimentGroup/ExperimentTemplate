@@ -401,29 +401,35 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //        final PresenterFeature resultsGrid = addStimuliGrid("resultsGrid", new PresenterFeature(FeatureType.htmlText, "response not relevant"), new PresenterFeature(FeatureType.htmlText, "response not relevant"));
 //        allNetworkActivity2.getPresenterFeatureList().add(resultsGrid);
 
+        final PresenterFeature allNetworkActivityRow = new PresenterFeature(FeatureType.row, null);
+        final PresenterFeature allNetworkActivityColumn1 = new PresenterFeature(FeatureType.column, null);
+        final PresenterFeature allNetworkActivityColumn2 = new PresenterFeature(FeatureType.column, null);
+        final PresenterFeature allNetworkActivityColumn3 = new PresenterFeature(FeatureType.column, null);
+        allNetworkActivityRow.getPresenterFeatureList().add(allNetworkActivityColumn1);
+        allNetworkActivityRow.getPresenterFeatureList().add(allNetworkActivityColumn2);
+        allNetworkActivityRow.getPresenterFeatureList().add(allNetworkActivityColumn3);
         final PresenterFeature allNetworkActivity2Image = new PresenterFeature(FeatureType.stimulusImage, null);
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.maxHeight, "0");
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.maxWidth, "0");
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.animate, "stimuliCode");
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.msToNext, "0");
-        allNetworkActivity2.getPresenterFeatureList().add(allNetworkActivity2Image);
+        allNetworkActivityColumn3.getPresenterFeatureList().add(allNetworkActivity2Image);
+        allNetworkActivity2.getPresenterFeatureList().add(allNetworkActivityRow);
 
         guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMessageLabel, null));
 
-        allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMessageLabel, null));
+        allNetworkActivityColumn3.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMessageLabel, null));
 
         final PresenterFeature groupResponseFeedback = new PresenterFeature(FeatureType.groupResponseFeedback, null);
         final PresenterFeature responseCorrect = new PresenterFeature(FeatureType.responseCorrect, null);
-        responseCorrect.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         groupResponseFeedback.getPresenterFeatureList().add(responseCorrect);
         final PresenterFeature responseIncorrect = new PresenterFeature(FeatureType.responseIncorrect, null);
-        responseIncorrect.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         groupResponseFeedback.getPresenterFeatureList().add(responseIncorrect);
 
         responseCorrect.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "responseCorrect"));
         responseIncorrect.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "responseIncorrect"));
-        responseIncorrect.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "your guesser chose"));
+//        responseIncorrect.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "your guesser chose"));
 
         final PresenterFeature groupResponseStimulusImage = new PresenterFeature(FeatureType.groupResponseStimulusImage, null);
         groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.maxHeight, "0");
@@ -431,8 +437,9 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
         groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.animate, "stimuliCode");
         groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.msToNext, "0");
-        responseIncorrect.getPresenterFeatureList().add(groupResponseStimulusImage);
-        allNetworkActivity2.getPresenterFeatureList().add(groupResponseFeedback);
+        allNetworkActivityColumn1.getPresenterFeatureList().add(groupResponseStimulusImage);
+        allNetworkActivityColumn1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "groupResponse"));
+        allNetworkActivityColumn2.getPresenterFeatureList().add(groupResponseFeedback);
 
 //        (true, false, new FeatureAttribute[]{, , }, true, false, FeatureType.Contitionals.hasCorrectIncorrect),
 //        final PresenterFeature correctButton = getScoreFeatures();
@@ -452,8 +459,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
 
         // allNetworkActivity2 phase shows the stimulus and the selected stimulus and the message and the group score
-        responseCorrect.getPresenterFeatureList().add(addGroupMessageButton("Next [enter]", "guesser and producer see the response was correct", "ENTER"));
-        responseIncorrect.getPresenterFeatureList().add(addGroupMessageButton("Next [enter]", "guesser and producer see the response was incorrect", "ENTER"));
+        allNetworkActivity2.getPresenterFeatureList().add(addGroupMessageButton("Next [enter]", "guesser and producer see the response", "ENTER"));
 
         final PresenterFeature stimulusImage = new PresenterFeature(FeatureType.stimulusImage, null);
 
