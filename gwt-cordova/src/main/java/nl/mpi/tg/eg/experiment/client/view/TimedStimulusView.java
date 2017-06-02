@@ -33,12 +33,9 @@ import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.HTMLPanel;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.InsertPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextArea;
-import com.google.gwt.user.client.ui.VerticalPanel;
 import nl.mpi.tg.eg.experiment.client.listener.AudioEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
@@ -54,8 +51,6 @@ public class TimedStimulusView extends ComplexView {
 
     private final AudioPlayer audioPlayer;
     private StimulusGrid stimulusGrid = null;
-    private HorizontalPanel horizontalPanel = null;
-    private VerticalPanel cellPanel = null;
 
     public TimedStimulusView(AudioPlayer audioPlayer) {
         super();
@@ -66,24 +61,6 @@ public class TimedStimulusView extends ComplexView {
         outerPanel.setStylePrimaryName("menuOuter");
         stimulusGrid = new StimulusGrid(domHandlerArray);
         outerPanel.add(stimulusGrid);
-    }
-
-    public void startCell() {
-        cellPanel = new VerticalPanel();
-        horizontalPanel.add(cellPanel);
-    }
-
-    public void endCell() {
-        cellPanel = null;
-    }
-
-    public void startHorizontalPanel() {
-        horizontalPanel = new HorizontalPanel();
-        outerPanel.add(horizontalPanel);
-    }
-
-    public void endHorizontalPanel() {
-        horizontalPanel = null;
     }
 
     public void endGrid() {
@@ -109,10 +86,6 @@ public class TimedStimulusView extends ComplexView {
             }
         });
         getActivePanel().add(image);
-    }
-
-    private InsertPanel.ForIsWidget getActivePanel() {
-        return (cellPanel != null) ? cellPanel : (horizontalPanel != null) ? horizontalPanel : outerPanel;
     }
 
     public void addBackgroundImage(final SafeUri imagePath, final int postLoadMs, final TimedStimulusListener timedStimulusListener) {
