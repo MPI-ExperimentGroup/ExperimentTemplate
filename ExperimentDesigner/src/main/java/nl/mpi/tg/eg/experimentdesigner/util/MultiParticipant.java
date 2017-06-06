@@ -159,7 +159,7 @@ public class MultiParticipant {
             if ("naming".equals(currentChannel[2])) {
                 roundScreen = getNamingRound("Round " + currentChannel[0] + " - 4", groupMembers4, currentChannel[1], "A:-:B:-:C:-:D:-", "B,C,D:-:A,C,D:-:B,A,D:-:B,C,A:-", "-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D", "-:A:-:B:-:C:-:D");
             } else if ("test".equals(currentChannel[2])) {
-                roundScreen = getTestRound("Round " + currentChannel[0] + " - 4", groupMembers4, currentChannel[1], "A:-:B:-:C:-:D:-", "-:A:-:B:-:C:-:D");
+                roundScreen = getTestRound("Round " + currentChannel[0] + " - 4", groupMembers4, currentChannel[1], "A,B,C,D:-", "-:A,B,C,D");
             } else {
                 roundScreen = getPlayingRound("Round " + currentChannel[0] + " - 4", groupMembers4, currentChannel[1]);
             }
@@ -203,7 +203,7 @@ public class MultiParticipant {
             if ("naming".equals(currentChannel[2])) {
                 roundScreen = getNamingRound("Round " + currentChannel[0] + " - 8", groupMembers8, currentChannel[1], "A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-", "B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-", "-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H", "-:A:-:B:-:C:-:D:-:E:-:F:-:G:-:H");
             } else if ("test".equals(currentChannel[2])) {
-                roundScreen = getTestRound("Round " + currentChannel[0] + " - 8", groupMembers8, currentChannel[1], "A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-", "-:A:-:B:-:C:-:D:-:E:-:F:-:G:-:H");
+                roundScreen = getTestRound("Round " + currentChannel[0] + " - 8", groupMembers8, currentChannel[1], "A,B,C,D,E,F,G,H:-", "-:A,B,C,D,E,F,G,H");
             } else {
                 roundScreen = getPlayingRound("Round " + currentChannel[0] + " - 8", groupMembers8, currentChannel[1]);
             }
