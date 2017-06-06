@@ -848,7 +848,7 @@
             <loadStimulus eventTag="Round 8 - 4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A|B|C|D">
-                        <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-">
+                        <groupNetworkActivity groupRole="A,B,C,D:-">
                             <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 8 - 4" repeatIncorrect="false"/>
                             <clearPage/>
                             <stimulusLabel/>
@@ -859,7 +859,7 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A:-:B:-:C:-:D">
+                        <groupNetworkActivity groupRole="-:A,B,C,D">
                             <submitGroupEvent/>
                             <sendGroupMessage eventTag="group record submitted" incrementPhase="1"/>
                         </groupNetworkActivity>
@@ -1690,7 +1690,7 @@
             <loadStimulus eventTag="Round 8 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A|B|C|D|E|F|G|H">
-                        <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-">
+                        <groupNetworkActivity groupRole="A,B,C,D,E,F,G,H:-">
                             <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 8 - 8" repeatIncorrect="false"/>
                             <clearPage/>
                             <stimulusLabel/>
@@ -1701,7 +1701,7 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A:-:B:-:C:-:D:-:E:-:F:-:G:-:H">
+                        <groupNetworkActivity groupRole="-:A,B,C,D,E,F,G,H">
                             <submitGroupEvent/>
                             <sendGroupMessage eventTag="group record submitted" incrementPhase="1"/>
                         </groupNetworkActivity>
@@ -2479,7 +2479,7 @@
             <loadStimulus eventTag="Round 16 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A|B|C|D|E|F|G|H">
-                        <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-">
+                        <groupNetworkActivity groupRole="A,B,C,D,E,F,G,H:-">
                             <nextStimulus eventTag="nextStimulusProducerNetworkActivity1Round 16 - 8" repeatIncorrect="false"/>
                             <clearPage/>
                             <stimulusLabel/>
@@ -2490,7 +2490,7 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A:-:B:-:C:-:D:-:E:-:F:-:G:-:H">
+                        <groupNetworkActivity groupRole="-:A,B,C,D,E,F,G,H">
                             <submitGroupEvent/>
                             <sendGroupMessage eventTag="group record submitted" incrementPhase="1"/>
                         </groupNetworkActivity>
