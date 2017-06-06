@@ -26,6 +26,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+        <script src="webjars/jquery/jquery.min.js"></script>
         <script language="javascript" type="text/javascript">
             function robot() {
                 var robotMessagesDiv = document.getElementById("robot_messages");
@@ -47,6 +48,18 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 for (frameIndex = 0; frameIndex < iframes.length; ++frameIndex) {
                     iframes[frameIndex].contentDocument.location.reload(true);
                 }
+            }
+            function singleFrame(memberCode) {
+                $(".startRobotButton").prop('disabled', true);
+                document.getElementsByTagName("table")[0].remove();
+                var iframe = document.createElement('iframe');
+                iframe.setAttribute('width', '100%');
+                iframe.setAttribute('height', '100%');
+                iframe.src = "/multiparticipant?Round_0___4&testuser=" + Math.floor((Math.random() * 1000000000) + 1) + "&group=" + document.getElementById('groupName').value + "&member=" + memberCode;
+                document.getElementsByTagName("body")[0].append(iframe);
+                var robotMessagesDiv = document.getElementById("robot_messages");
+                robotMessagesDiv.innerHTML = "robot started " + memberCode;
+                findAndClick();
             }
             function findAndClick() {
                 if (document.getElementById("pauseRobot").checked) {
@@ -87,7 +100,15 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     </head>
     <body style="width: 100%; height: 100%;">
         <div id="robot_messages"></div>
-        <button type="button" onclick="robot();">start robot</button>
+        <button type="button" class="startRobotButton" onclick="robot();">All</button>
+        <button type="button" class="startRobotButton" onclick="singleFrame('A');">A</button>
+        <button type="button" class="startRobotButton" onclick="singleFrame('B');">B</button>
+        <button type="button" class="startRobotButton" onclick="singleFrame('C');">C</button>
+        <button type="button" class="startRobotButton" onclick="singleFrame('D');">D</button>
+        <button type="button" class="startRobotButton" onclick="singleFrame('E');">E</button>
+        <button type="button" class="startRobotButton" onclick="singleFrame('F');">F</button>
+        <button type="button" class="startRobotButton" onclick="singleFrame('G');">G</button>
+        <button type="button" class="startRobotButton" onclick="singleFrame('H');">H</button>
         <input type="text" id="groupName" placeholder="Type a group name...">  
         <input type="number" id="robotSpeed" value="1000" max="10000" min="100">  
         Pause Robot: <input type="checkbox" id="pauseRobot" />
