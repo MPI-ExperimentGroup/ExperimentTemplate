@@ -1195,6 +1195,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 ((TimedStimulusView) simpleView).clearPage();
                 stimulusFreeTextList.clear();
                 buttonList.clear();
+                nextButtonEventListnerList.clear(); // clear this now to prevent refires of the event
             }
         };
         nextButtonEventListnerList.add(eventListner);
@@ -1217,6 +1218,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+                nextButtonEventListnerList.clear(); // clear this now to prevent refires of the event
                 nextStimulus(eventTag, repeatIncorrect);
             }
         };
