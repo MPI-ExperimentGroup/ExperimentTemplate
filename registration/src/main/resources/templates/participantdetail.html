@@ -127,6 +127,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 <tr>
                     <!--<th>id</th>-->
                     <!--<th>userId</th>-->
+                    <th>Screen</th>
                     <th>Date</th>
                     <!--<th>submitDate</th>-->
                     <!--<th>experimentName</th>-->
@@ -140,6 +141,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 <tr id="clickablerow" th:each="tagPairData : ${participantTagPairData}">
                     <!--<td th:text="${tagPairData.id}">id</td>-->
                     <!--<td th:text="${tagPairData.userId}">userId</td>-->
+                    <td th:text="${tagPairData.screenName}">screenName</td>
                     <td th:text="${tagPairData.tagDate}">tagDate</td>
                     <!--<td th:text="${tagPairData.submitDate}">submitDate</td>-->
                     <!--<td th:text="${tagPairData.experimentName}">experimentName</td>-->
@@ -156,6 +158,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 <tr>
                     <!--<th>id</th>-->
                     <!--<th>userId</th>-->
+                    <th>Screen</th>
                     <th>Date</th>
                     <!--<th>submitDate</th>-->
                     <!--<th>experimentName</th>-->
@@ -168,6 +171,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 <tr id="clickablerow" th:each="tagData : ${participantTagData}">
                     <!--<td th:text="${tagData.id}">id</td>-->
                     <!--<td th:text="${tagData.userId}">userId</td>-->
+                    <td th:text="${tagData.screenName}">screenName</td>
                     <td th:text="${tagData.tagDate}">tagDate</td>
                     <!--<td th:text="${tagData.submitDate}">submitDate</td>-->
                     <!--<td th:text="${tagData.experimentName}">experimentName</td>-->
@@ -177,7 +181,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </tr>
             </tbody>
         </table>
-        <h3>Time Stamp Data</h3>
+        <h3>Time Stamp Data</h3>    
         <table id="datatable">       
             <thead>
                 <tr>
