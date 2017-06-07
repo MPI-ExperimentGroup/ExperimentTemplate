@@ -89,13 +89,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <span th:if="${columnTag}" th:each="singleTag : ${#strings.arraySplit(columnTag, ':')}" th:text="${singleTag}">stimulusId</span>
                     </td>
                     <td th:text="${groupData.stimulusId}">stimulusId</td>
-                    <td th:if="${groupData.responseStimulusId != null}" th:each="columnTag : ${stimuliTagExpander.getTagColumns(groupData.responseStimulusId, ':')}">
+                    <td th:each="columnTag : ${stimuliTagExpander.getTagColumns(groupData.responseStimulusId, ':')}">
                         <span th:each="singleTag : ${#strings.arraySplit(columnTag, ':')}" th:text="${singleTag}">stimulusId</span>
                     </td>
-                    <td th:if="${groupData.responseStimulusId == null}" th:each="columnTag : ${stimuliTagExpander.getTagColumns()}">
-                    </td>
                     <td th:text="${groupData.responseStimulusId}">responseStimulusId</td>
-                    <td th:if="${groupData.stimulusOptionIds}" th:each="columnTag : ${stimuliTagExpander.getDistractorTagColumns(groupData.stimulusOptionIds, ',')}">
+                    <td th:each="columnTag : ${stimuliTagExpander.getDistractorTagColumns(groupData.stimulusOptionIds, ',')}">
                         <span th:each="singleTag : ${#strings.arraySplit(columnTag, ',')}" th:text="${singleTag}">stimulusOptionIds</span>
                     </td>  
                     <td th:text="${groupData.messageString}">messageString</td>
