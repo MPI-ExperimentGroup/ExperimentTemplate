@@ -27,8 +27,8 @@ import java.util.List;
  */
 public class StimuliTagExpander {
 
-    String[] tagColumns = new String[]{"png", "shape", "version", "quadrant", "move"};
-    int[] distractorColumns = new int[]{0, 1, 2, 3, 4, 5, 6, 7};
+    final String[] tagColumns = new String[]{"png", "shape", "version", "quadrant", "move"};
+    final int[] distractorColumns = new int[]{0, 1, 2, 3, 4, 5, 6, 7};
 
     public String[] getTagColumns() {
         return tagColumns;
@@ -36,8 +36,8 @@ public class StimuliTagExpander {
 
     public List<String> getDistractorTagColumns(final String distractorString, final String spacerString) {
         List<String> returnList = new ArrayList<>();
-        String[] distractorArray = distractorString.split(",");
-        for (int distractorIndex : new StimuliTagExpander().getDistractorColumns()) {
+        String[] distractorArray = (distractorString != null) ? distractorString.split(",") : new String[0];
+        for (int distractorIndex : getDistractorColumns()) {
             if (distractorArray.length > distractorIndex) {
                 returnList.addAll(Arrays.asList(getTagColumns(distractorArray[distractorIndex], spacerString)));
                 returnList.add(distractorArray[distractorIndex]);
@@ -53,15 +53,19 @@ public class StimuliTagExpander {
 
     public String[] getTagColumns(final String stimulusString, final String spacerString) {
         String[] returnColumns = new String[tagColumns.length];
-        String[] stimulusTags = (stimulusString != null) ? stimulusString.split(":") : new String[0];
+        String[] stimulusTags = (stimulusString != null) ? stimulusString.split(":") : null;
         for (int columnIndex = 0; columnIndex < tagColumns.length; columnIndex++) {
             String columnContents = "";
             String tag = tagColumns[columnIndex];
-            for (String stimulusTag : stimulusTags) {
-                if (stimulusTag.contains(tag)) {
-                    columnContents += ((columnContents.isEmpty()) ? "" : spacerString) + stimulusTag;
+            if (stimulusTags != null) {
+                for (String stimulusTag : stimulusTags) {
+                    if (stimulusTag.contains(tag)) {
+                        columnContents += ((columnContents.isEmpty()) ? "" : spacerString) + stimulusTag;
+                    }
+                    returnColumns[columnIndex] = columnContents;
                 }
-                returnColumns[columnIndex] = columnContents;
+            } else {
+                returnColumns[columnIndex] = "";
             }
         }
         return returnColumns;
