@@ -126,12 +126,13 @@ public class GroupParticipantService {
             String originMemberCode,
             String expectedRespondents,
             String actualRespondents,
-            String stimulusId, String stimulusIndex, String stimuliListGroup, String requestedPhase,
+            String stimulusId, String stimulusIndex, String stimuliListGroup, String originPhase, String requestedPhase,
             String messageString, Boolean groupReady, String responseStimulusId, String groupScore, String channelScore, String groupUUID) {
+        final boolean originPhaseMatches = this.requestedPhase.equals(Integer.parseInt(originPhase));
         final boolean userIdMatches = this.userId.equals(userId);
         final boolean screenIdMatches = this.screenId.equals(screenId);
         final boolean groupIdMatches = (this.groupId != null) ? this.groupId.equals(groupId) : true; // if a group id was provided then ignore anyother groups
-        if (userIdMatches && screenIdMatches) {
+        if (userIdMatches && screenIdMatches && originPhaseMatches) {
             final boolean userGroupLabelUpdateNeeded = (userIdMatches && screenIdMatches) && (this.memberCode == null && memberCode != null);
             // handle direct messages
             this.userLabel = userLabel;
@@ -174,7 +175,7 @@ public class GroupParticipantService {
                     final int currentRequestedPhase = Integer.parseInt(requestedPhase);
                     for (String groupRole : activityListeners.keySet()) {
                         final String[] splitRole = groupRole.split(":");
-                        int roleIndex = this.requestedPhase % splitRole.length;
+                        int roleIndex = currentRequestedPhase % splitRole.length;
                         if (splitRole[roleIndex].contains(this.memberCode)) {
                             final TimedStimulusListener currentListner = activityListeners.get(groupRole);
 //                        ((userIdMatches) ? selfActivityListeners : othersActivityListeners).get(groupRole).get(this.requestedPhase).postLoadTimerFired();
@@ -337,6 +338,7 @@ public class GroupParticipantService {
             Ljava/lang/String;
             Ljava/lang/String;
             Ljava/lang/String;
+            Ljava/lang/String;
             Ljava/lang/Boolean;
             Ljava/lang/String;
             Ljava/lang/String;
@@ -355,6 +357,7 @@ public class GroupParticipantService {
             contentData.stimulusId,
             Number(contentData.stimulusIndex),
             contentData.stimuliList, 
+            Number(contentData.originPhase), 
             Number(contentData.requestedPhase), 
             contentData.messageString,
             (contentData.groupReady)?@java.lang.Boolean::TRUE : @java.lang.Boolean::FALSE, 
@@ -377,10 +380,10 @@ public class GroupParticipantService {
         if (windowGroupId == null) {
             windowGroupId = groupId;
         }
-        messageGroup(this.requestedPhase + incrementPhase, userId, windowGroupId, windowMemberCode, screenId, allMemberCodes, groupCommunicationChannels, lastFiredListnerGroupRole, stimulusId, stimulusIndex, stimuliListLoaded, messageString, responseStimulusOptions, responseStimulusId, memberScore);
+        messageGroup(this.requestedPhase, this.requestedPhase + incrementPhase, userId, windowGroupId, windowMemberCode, screenId, allMemberCodes, groupCommunicationChannels, lastFiredListnerGroupRole, stimulusId, stimulusIndex, stimuliListLoaded, messageString, responseStimulusOptions, responseStimulusId, memberScore);
     }
 
-    private native void messageGroup(int requestedPhase, String userId, String windowGroupId, String windowMemberCode, String screenId, String allMemberCodes, String groupCommunicationChannels, String expectedRespondents, String stimulusId, String stimulusIndex, String stimuliList, String messageString, String responseStimulusOptions, String responseStimulusId, int memberScore) /*-{
+    private native void messageGroup(int originPhase, int requestedPhase, String userId, String windowGroupId, String windowMemberCode, String screenId, String allMemberCodes, String groupCommunicationChannels, String expectedRespondents, String stimulusId, String stimulusIndex, String stimuliList, String messageString, String responseStimulusOptions, String responseStimulusId, int memberScore) /*-{
     var groupParticipantService = this;
     stompClient.send("/app/group", {}, JSON.stringify({
         'userId': userId,
@@ -393,6 +396,7 @@ public class GroupParticipantService {
         'memberCode': windowMemberCode,
         'originMemberCode': null,
         'stimulusId': stimulusId,
+        'originPhase': originPhase,
         'requestedPhase': requestedPhase,
         'stimulusIndex': stimulusIndex,
         'stimuliList': stimuliList,
