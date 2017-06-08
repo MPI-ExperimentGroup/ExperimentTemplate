@@ -164,6 +164,7 @@ public class GroupManager {
             resendMessage.setGroupScore(mostRecentChannelMessage.getGroupScore());
             resendMessage.setMessageString(mostRecentChannelMessage.getMessageString());
             resendMessage.setOriginMemberCode(mostRecentChannelMessage.getMemberCode());
+            resendMessage.setOriginPhase(mostRecentChannelMessage.getOriginPhase());
             resendMessage.setRequestedPhase(mostRecentChannelMessage.getRequestedPhase());
             resendMessage.setResponseStimulusId(mostRecentChannelMessage.getResponseStimulusId());
             resendMessage.setResponseStimulusOptions(mostRecentChannelMessage.getResponseStimulusOptions());
