@@ -71,6 +71,7 @@ public class GroupMessage {
     private String actualRespondents;
     private Integer stimulusIndex;
     private String stimuliList;
+    private Integer originPhase;
     private Integer requestedPhase;
     private String messageString;
     private boolean groupReady;
@@ -231,6 +232,14 @@ public class GroupMessage {
 
     public void setStimuliList(String stimuliList) {
         this.stimuliList = stimuliList;
+    }
+
+    public Integer getOriginPhase() {
+        return originPhase;
+    }
+
+    public void setOriginPhase(Integer originPhase) {
+        this.originPhase = originPhase;
     }
 
     public Integer getRequestedPhase() {
