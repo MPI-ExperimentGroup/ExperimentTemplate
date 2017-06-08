@@ -174,7 +174,7 @@ public class GroupParticipantService {
                     final int currentRequestedPhase = Integer.parseInt(requestedPhase);
                     for (String groupRole : activityListeners.keySet()) {
                         final String[] splitRole = groupRole.split(":");
-                        int roleIndex = currentRequestedPhase % splitRole.length;
+                        int roleIndex = this.requestedPhase % splitRole.length;
                         if (splitRole[roleIndex].contains(this.memberCode)) {
                             final TimedStimulusListener currentListner = activityListeners.get(groupRole);
 //                        ((userIdMatches) ? selfActivityListeners : othersActivityListeners).get(groupRole).get(this.requestedPhase).postLoadTimerFired();
