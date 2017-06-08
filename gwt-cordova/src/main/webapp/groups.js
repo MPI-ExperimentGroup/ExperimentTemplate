@@ -47,7 +47,8 @@ function setConnected(connected) {
                 "<td>ActualRespondents</td>" +
                 "<td>stimulusIndex</td>" +
                 "<td>stimuliList</td>" +
-                "<td>Phase</td>" +
+                "<td>originPhase</td>" +
+                "<td>requestedPhase</td>" +
                 "<td>message</td>" +
                 "<td>Ready</td>" +
                 "<td>eventMs</td>" +
@@ -64,6 +65,7 @@ function setConnected(connected) {
                 "<td>stimulusId</td>" +
                 "<td>stimulusIndex</td>" +
                 "<td>stimuliList</td>" +
+                "<td>originPhase</td>" +
                 "<td>requestedPhase</td>" +
                 "<td>messageString</td>" +
                 "<td>groupReady</td>" +
@@ -117,13 +119,14 @@ function connect() {
                     "</td><td>" + contentData.actualRespondents +
                     "</td><td>" + contentData.stimulusIndex +
                     "</td><td>" + contentData.stimuliList +
+                    "</td><td>" + contentData.originPhase +
                     "</td><td>" + contentData.requestedPhase +
                     "</td><td>" + contentData.messageString +
                     "</td><td>" + contentData.groupReady +
                     "</td><td>" + contentData.eventMs +
                     "</td>";
-            var messageButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup('" + contentData.userId + "','" + contentData.requestedPhase + "','" + contentData.screenId + "','" + contentData.userLabel + "','" + contentData.groupId + "','" + contentData.allMemberCodes + "','" + contentData.memberCode + "','" + contentData.originMemberCode + "','" + contentData.stimulusId + "')\">message</button></td>";
-            var addButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup(Math.floor((1 + Math.random()) * 0x10000),'" + contentData.requestedPhase + "','" + contentData.screenId + "',null,'" + contentData.groupId + "','" + contentData.allMemberCodes + "',null,null)\">add member</button></td>";
+            var messageButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup('" + contentData.userId + "','" + contentData.originPhase + "','" + contentData.requestedPhase + "','" + contentData.screenId + "','" + contentData.userLabel + "','" + contentData.groupId + "','" + contentData.allMemberCodes + "','" + contentData.memberCode + "','" + contentData.originMemberCode + "','" + contentData.stimulusId + "')\">message</button></td>";
+            var addButtonCell = "<td><button class='btn btn-default' type='submit' onClick=\"messageGroup(Math.floor((1 + Math.random()) * 0x10000),'" + contentData.originPhase + "','" + contentData.requestedPhase + "','" + contentData.screenId + "',null,'" + contentData.groupId + "','" + contentData.allMemberCodes + "',null,null)\">add member</button></td>";
             usersTableRow.html(usersTableCells + messageButtonCell + addButtonCell);
             usersTableRow.css("outline-style", "solid");
             usersTableRow.css("outline-width", "5px");
@@ -144,6 +147,7 @@ function connect() {
                     contentData.stimulusId + "\", </td><td>\"" +
                     contentData.stimulusIndex + "\", </td><td>\"" +
                     contentData.stimuliList + "\", </td><td>\"" +
+                    contentData.originPhase + "\", </td><td>\"" +
                     contentData.requestedPhase + "\", </td><td>\"" +
                     contentData.messageString + "\", </td><td>" +
                     contentData.groupReady + ", </td><td>\"" +
