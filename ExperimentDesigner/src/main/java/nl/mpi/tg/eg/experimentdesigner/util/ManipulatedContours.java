@@ -27,6 +27,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAudioTestScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMenuScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScoreThresholdScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardVideoAudioOptionStimulusScreen;
@@ -45,7 +46,7 @@ public class ManipulatedContours {
     private final WizardController wizardController = new WizardController();
 
     protected String getExperimentName() {
-        return "ManipulatedContours";
+        return "french_audio";
     }
 
     final String agreementScreenText = "Merci beaucoup pour votre intérêt pour cette expérience scientifique en ligne! Les instructions détaillées pour la tâche seront données à la page suivante.<br/>"
@@ -56,7 +57,7 @@ public class ManipulatedContours {
             + "<br/>"
             + "Il n'y a aucun risque connu à participer à cette expérience. <br/>"
             + "<br/>"
-            + "Si vous êtes d'accord pour participer à cette expérience, cliquez sur 'Je suis d'accord'. Si vous décidez de ne pas participer à cette expérience, cliquez sur 'Je ne suis pas d'accord'. Abandonnez l'expérience en allant sur un autre site web ou en quittant le site web.<br/>"
+            + "Si vous êtes d'accord pour participer à cette expérience, cliquez sur 'Je suis d'accord'. Si vous décidez de ne pas participer à cette expérience, abandonnez l'expérience en allant sur un autre site web ou en quittant le site web.<br/>"
             + "<br/>";
     final String informationScreenText1 = "Cette expérience en ligne est une expérience audio. Pour cette raison, nous vous demandons de tester les réglages sonores de votre ordinateur en cliquant sur le gros bouton ci-dessous.<br/>"
             + "<br/>"
@@ -90,6 +91,7 @@ public class ManipulatedContours {
 
     final String completionScreenText1 = "L'expérience est terminée.<br/>"
             + "<br/>"
+            + "Voici votre code d'expérience. Vos devez le mettre sur Crowdflower afin d'être payé.<br/>"
             + "<br/>"
             + "Merci beaucoup pour votre participation!";
 
@@ -633,31 +635,25 @@ public class ManipulatedContours {
         stimuliList.addAll(Arrays.asList(invertButtons(addCodePart("out2ver1ScreenI", getStimuliOut2Ver1ConArr()))));
         stimuliList.addAll(Arrays.asList(invertButtons(addCodePart("out2ver2ScreenI", getStimuliOut2Ver2ConArr()))));
         stimuliList.addAll(Arrays.asList(invertButtons(addCodePart("out2ver3ScreenI", getStimuliOut2Ver3ConArr()))));
-        stimuliList.addAll(Arrays.asList(addCodePart("out1ver1ScreenC", getStimuliOut1Ver1ConArr())));
-        stimuliList.addAll(Arrays.asList(addCodePart("out1ver2ScreenC", getStimuliOut1Ver2ConArr())));
-        stimuliList.addAll(Arrays.asList(addCodePart("out1ver3ScreenC", getStimuliOut1Ver3ConArr())));
-        stimuliList.addAll(Arrays.asList(addCodePart("out2ver1ScreenC", getStimuliOut2Ver1ConArr())));
-        stimuliList.addAll(Arrays.asList(addCodePart("out2ver2ScreenC", getStimuliOut2Ver2ConArr())));
-        stimuliList.addAll(Arrays.asList(addCodePart("out2ver3ScreenC", getStimuliOut2Ver3ConArr())));
-        stimuliList.addAll(Arrays.asList(invertButtons(addCodePart("out1ver1ScreenIC", getStimuliOut1Ver1ConArr()))));
-        stimuliList.addAll(Arrays.asList(invertButtons(addCodePart("out1ver2ScreenIC", getStimuliOut1Ver2ConArr()))));
-        stimuliList.addAll(Arrays.asList(invertButtons(addCodePart("out1ver3ScreenIC", getStimuliOut1Ver3ConArr()))));
-        stimuliList.addAll(Arrays.asList(invertButtons(addCodePart("out2ver1ScreenIC", getStimuliOut2Ver1ConArr()))));
-        stimuliList.addAll(Arrays.asList(invertButtons(addCodePart("out2ver2ScreenIC", getStimuliOut2Ver2ConArr()))));
-        stimuliList.addAll(Arrays.asList(invertButtons(addCodePart("out2ver3ScreenIC", getStimuliOut2Ver3ConArr()))));
-        String[] randomStimuliTags = new String[]{
-            "out1ver1Screen", "out1ver2Screen", "out1ver3Screen", "out2ver1Screen", "out2ver2Screen", "out2ver3Screen", "out1ver1ScreenI", "out1ver2ScreenI", "out1ver3ScreenI", "out2ver1ScreenI", "out2ver2ScreenI", "out2ver3ScreenI",
-            "out1ver1ScreenC", "out1ver2ScreenC", "out1ver3ScreenC", "out2ver1ScreenC", "out2ver2ScreenC", "out2ver3ScreenC", "out1ver1ScreenIC", "out1ver2ScreenIC", "out1ver3ScreenIC", "out2ver1ScreenIC", "out2ver2ScreenIC", "out2ver3ScreenIC"
-        };
-        final WizardVideoAudioOptionStimulusScreen randomStimuliTagsScreen = new WizardVideoAudioOptionStimulusScreen("stimuli", false, stimuliList.toArray(new String[]{}), false, true, randomStimuliTags, 1000, repeatCount(), 20, false, 100, "", "", true);
-        randomStimuliTagsScreen.setShowProgress(true);
-        randomStimuliTagsScreen.setShowHurryIndicator(false);
+        String[] randomStimuliTags = new String[]{"out1ver1Screen", "out1ver2Screen", "out1ver3Screen", "out2ver1Screen", "out2ver2Screen", "out2ver3Screen", "out1ver1ScreenI", "out1ver2ScreenI", "out1ver3ScreenI", "out2ver1ScreenI", "out2ver2ScreenI", "out2ver3ScreenI"};
+
+        WizardMenuScreen contextMenu = new WizardMenuScreen("ContextMenu", "ContextMenu", "ContextMenu");
+        contextMenu.setBranchOnGetParam(true, "A choice must be provided out of the following:<br/>");
+        wizardData.addScreen(contextMenu);
+
+        final WizardVideoAudioOptionStimulusScreen randomStimuliTagsScreenC = new WizardVideoAudioOptionStimulusScreen("stimuli", false, stimuliList.toArray(new String[]{}), false, true, randomStimuliTags, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final WizardVideoAudioOptionStimulusScreen randomStimuliTagsScreenN = new WizardVideoAudioOptionStimulusScreen("stimuli", false, stimuliList.toArray(new String[]{}), false, false, randomStimuliTags, 1000, repeatCount(), 20, false, 100, "", "", true);
+        randomStimuliTagsScreenC.setShowProgress(true);
+        randomStimuliTagsScreenC.setShowHurryIndicator(false);
+        randomStimuliTagsScreenN.setShowProgress(true);
+        randomStimuliTagsScreenN.setShowHurryIndicator(false);
 //        list1234Screen.setStimulusResponseOptions("1,2,3,4,5");
 //        list1234Screen.setStimulusResponseLabelLeft("très probable négatif");
 //        list1234Screen.setStimulusResponseLabelRight("très probable positif");
         wizardData.addScreen(pretestScreen);
         wizardData.addScreen(scoreThresholdScreen);
-        wizardData.addScreen(randomStimuliTagsScreen);
+        wizardData.addScreen(randomStimuliTagsScreenC);
+        wizardData.addScreen(randomStimuliTagsScreenN);
 //        wizardData.addScreen(out1ver1Screen);
 //        wizardData.addScreen(out1ver2Screen);
 //        wizardData.addScreen(out1ver3Screen);
@@ -671,13 +667,22 @@ public class ManipulatedContours {
 //        wizardData.addScreen(out2ver2ScreenI);
 //        wizardData.addScreen(out2ver3ScreenI);
 
+        final WizardEditUserScreen wizardFeedbackScreen = new WizardEditUserScreen();
+        wizardFeedbackScreen.setScreenText("D'après vous, quel est le thème/but de cette expérience?");
+        wizardFeedbackScreen.setSendData(true);
+        wizardFeedbackScreen.setOn_Error_Text("Impossible de contacter le serveur, vérifiez votre connexion Internet s'il vous plaît.");
+        wizardFeedbackScreen.setCustomFields(new String[]{
+            "feedBack::[\\s.]'{'3,'}':Entrez au moins trois lettres."
+        });
+        wizardData.addScreen(wizardFeedbackScreen);
+
         WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, false, true,
                 null, //Si quelqu'un d'autre veut participer à l'expérience sur cet ordinateur, veuillez cliquer sur le bouton ci-dessous.",
                 "Redémarrer",
                 "Fini",
                 "Impossible de contacter le serveur, vérifiez votre connexion Internet s'il vous plaît.", "Réessayer");
         wizardData.addScreen(completionScreen);
-        final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("about", false);
+        final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("about", true);
         wizardAboutScreen.setBackWizardScreen(wizardEditUserScreen);
         wizardData.addScreen(wizardAboutScreen);
 
@@ -688,7 +693,10 @@ public class ManipulatedContours {
         wizardTextScreen1.setNextWizardScreen(pretestScreen);
         pretestScreen.setNextWizardScreen(scoreThresholdScreen);
         scoreThresholdScreen.setNextWizardScreen(wizardTextScreen2);
-        wizardTextScreen2.setNextWizardScreen(randomStimuliTagsScreen);
+        wizardTextScreen2.setNextWizardScreen(contextMenu);
+
+        contextMenu.addTargetScreen(randomStimuliTagsScreenC);
+        contextMenu.addTargetScreen(randomStimuliTagsScreenN);
 
 //        menuScreen.addTargetScreen(randomStimuliTagsScreen);
 //        menuScreen.addTargetScreen(out1ver1Screen);
@@ -703,7 +711,8 @@ public class ManipulatedContours {
 //        menuScreen.addTargetScreen(out2ver1ScreenI);
 //        menuScreen.addTargetScreen(out2ver2ScreenI);
 //        menuScreen.addTargetScreen(out2ver3ScreenI);
-        randomStimuliTagsScreen.setNextWizardScreen(completionScreen);
+        randomStimuliTagsScreenC.setNextWizardScreen(wizardFeedbackScreen);
+        randomStimuliTagsScreenN.setNextWizardScreen(wizardFeedbackScreen);
 //        out1ver1Screen.setNextWizardScreen(completionScreen);
 //        out1ver2Screen.setNextWizardScreen(completionScreen);
 //        out1ver3Screen.setNextWizardScreen(completionScreen);
@@ -716,6 +725,7 @@ public class ManipulatedContours {
 //        out2ver1ScreenI.setNextWizardScreen(completionScreen);
 //        out2ver2ScreenI.setNextWizardScreen(completionScreen);
 //        out2ver3ScreenI.setNextWizardScreen(completionScreen);
+        wizardFeedbackScreen.setNextWizardScreen(completionScreen);
         return wizardData;
     }
 
