@@ -41,7 +41,7 @@ public class GroupParticipantService {
     private final TimedStimulusListener connectedListener;
     private final TimedStimulusListener groupNotReadyListener;
     private boolean isConnected = false;
-    private TimedStimulusListener lastFiredListner = null;
+    private List<TimedStimulusListener> lastFiredListnerList = null;
     private String lastFiredListnerGroupRole = null;
 
     private final String userId;
@@ -117,7 +117,7 @@ public class GroupParticipantService {
     }
 
     protected void clearLastFiredListner() {
-        this.lastFiredListner = null;
+        this.lastFiredListnerList = null;
         this.lastFiredListnerGroupRole = null;
     }
 
@@ -173,6 +173,7 @@ public class GroupParticipantService {
                     this.messageSenderMemberCode = originMemberCode;
                     // make sure that all relevent members have responded before moving to the next phase
                     final int currentRequestedPhase = Integer.parseInt(requestedPhase);
+                    final List<TimedStimulusListener> currentFiredListnerList = new ArrayList();
                     for (String groupRole : activityListeners.keySet()) {
                         final String[] splitRole = groupRole.split(":");
                         int roleIndex = currentRequestedPhase % splitRole.length;
@@ -180,7 +181,7 @@ public class GroupParticipantService {
                             final TimedStimulusListener currentListner = activityListeners.get(groupRole);
 //                        ((userIdMatches) ? selfActivityListeners : othersActivityListeners).get(groupRole).get(this.requestedPhase).postLoadTimerFired();
                             if (splitRole.length == 1 /* if there is only one role to this screen then it is ok to refire the last */
-                                    || (lastFiredListner == null || !lastFiredListner.equals(currentListner))) {
+                                    || (lastFiredListnerList == null || !lastFiredListnerList.contains(currentListner))) {
                                 this.stimulusId = stimulusId;
                                 this.stimulusIndex = Integer.parseInt(stimulusIndex); // todo check for double adding of stimulus index and or something like that
                                 this.requestedPhase = currentRequestedPhase;
@@ -193,10 +194,13 @@ public class GroupParticipantService {
                                 if (!endOfStimuli) {
                                     lastFiredListnerGroupRole = splitRole[roleIndex];
                                     currentListner.postLoadTimerFired();
-                                    lastFiredListner = currentListner;
+                                    currentFiredListnerList.add(currentListner);
                                 }
                             }
                         }
+                    }
+                    if (!currentFiredListnerList.isEmpty()) {
+                        lastFiredListnerList = currentFiredListnerList;
                     }
                 }
             } else {
