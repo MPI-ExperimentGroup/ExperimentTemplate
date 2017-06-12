@@ -26,12 +26,18 @@ import java.util.Objects;
 public abstract class GroupActivityListener {
 
     final private String id;
+    final private String groupRole;
 
-    public GroupActivityListener(String id) {
+    public GroupActivityListener(String id, String groupRole) {
         this.id = id;
+        this.groupRole = groupRole;
     }
 
-    abstract public void triggerActivityListener(final int callerPhase);
+    public String getGroupRole() {
+        return groupRole;
+    }
+
+    abstract public void triggerActivityListener(final int callerPhase, final String expectedRespondents);
 
     @Override
     public int hashCode() {
