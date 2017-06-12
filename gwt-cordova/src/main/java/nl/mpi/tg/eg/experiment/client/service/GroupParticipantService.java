@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import nl.mpi.tg.eg.experiment.client.listener.GroupActivityListener;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 
 /**
@@ -32,7 +33,7 @@ public class GroupParticipantService {
 
 //    private final HashMap<String, ArrayList<TimedStimulusListener>> selfActivityListeners = new HashMap<>();
 //    private final HashMap<String, ArrayList<TimedStimulusListener>> othersActivityListeners = new HashMap<>();
-    private final HashMap<String, TimedStimulusListener> activityListeners = new HashMap<>();
+    private final HashMap<String, GroupActivityListener> activityListeners = new HashMap<>();
     private final TimedStimulusListener screenResetRequestListner;
     private final TimedStimulusListener stimulusSyncListner;
     private final TimedStimulusListener groupInfoChangeListner;
@@ -41,7 +42,7 @@ public class GroupParticipantService {
     private final TimedStimulusListener connectedListener;
     private final TimedStimulusListener groupNotReadyListener;
     private boolean isConnected = false;
-    private List<TimedStimulusListener> lastFiredListnerList = null;
+    private List<GroupActivityListener> lastFiredListnerList = null;
     private String lastFiredListnerGroupRole = null;
 
     private final String userId;
@@ -112,7 +113,7 @@ public class GroupParticipantService {
 //                break;
 //        }
 //    }
-    public void addGroupActivity(final String groupRole, final TimedStimulusListener activityListener) {
+    public void addGroupActivity(final String groupRole, final GroupActivityListener activityListener) {
         activityListeners.put(groupRole, activityListener);
     }
 
@@ -128,11 +129,12 @@ public class GroupParticipantService {
             String actualRespondents,
             String stimulusId, String stimulusIndex, String stimuliListGroup, String originPhase, String requestedPhase,
             String messageString, Boolean groupReady, String responseStimulusId, String groupScore, String channelScore, String groupUUID) {
-        final boolean originPhaseMatches = this.requestedPhase.equals(Integer.parseInt(originPhase));
+        final boolean originPhaseMatches = true; //this.requestedPhase.equals(Integer.parseInt(originPhase));
+        System.out.println("originPhaseMatches: " + originPhaseMatches + " requestedPhase: '" + this.requestedPhase + "' originPhase: '" + originPhase + "'");
         final boolean userIdMatches = this.userId.equals(userId);
         final boolean screenIdMatches = this.screenId.equals(screenId);
         final boolean groupIdMatches = (this.groupId != null) ? this.groupId.equals(groupId) : true; // if a group id was provided then ignore anyother groups
-        if (userIdMatches && screenIdMatches && originPhaseMatches) {
+        if (userIdMatches && screenIdMatches) {
             final boolean userGroupLabelUpdateNeeded = (userIdMatches && screenIdMatches) && (this.memberCode == null && memberCode != null);
             // handle direct messages
             this.userLabel = userLabel;
@@ -149,7 +151,7 @@ public class GroupParticipantService {
             }
         }
 
-        if (groupReady && groupIdMatches && screenIdMatches) {
+        if (groupReady && groupIdMatches && screenIdMatches && originPhaseMatches) {
             // handle group messages
             this.groupUUID = groupUUID;
             this.groupReady = groupReady;
@@ -173,12 +175,12 @@ public class GroupParticipantService {
                     this.messageSenderMemberCode = originMemberCode;
                     // make sure that all relevent members have responded before moving to the next phase
                     final int currentRequestedPhase = Integer.parseInt(requestedPhase);
-                    final List<TimedStimulusListener> currentFiredListnerList = new ArrayList();
+                    final List<GroupActivityListener> currentFiredListnerList = new ArrayList();
                     for (String groupRole : activityListeners.keySet()) {
                         final String[] splitRole = groupRole.split(":");
                         int roleIndex = currentRequestedPhase % splitRole.length;
                         if (splitRole[roleIndex].contains(this.memberCode)) {
-                            final TimedStimulusListener currentListner = activityListeners.get(groupRole);
+                            final GroupActivityListener currentListner = activityListeners.get(groupRole);
 //                        ((userIdMatches) ? selfActivityListeners : othersActivityListeners).get(groupRole).get(this.requestedPhase).postLoadTimerFired();
                             if (splitRole.length == 1 /* if there is only one role to this screen then it is ok to refire the last */
                                     || (lastFiredListnerList == null || !lastFiredListnerList.contains(currentListner))) {
@@ -193,7 +195,7 @@ public class GroupParticipantService {
                                 stimulusSyncListner.postLoadTimerFired();
                                 if (!endOfStimuli) {
                                     lastFiredListnerGroupRole = splitRole[roleIndex];
-                                    currentListner.postLoadTimerFired();
+                                    currentListner.triggerActivityListener(currentRequestedPhase);
                                     currentFiredListnerList.add(currentListner);
                                 }
                             }
@@ -378,13 +380,13 @@ public class GroupParticipantService {
         });
      }-*/;
 
-    public void messageGroup(int incrementPhase, String stimulusId, String stimulusIndex, String messageString, String responseStimulusOptions, String responseStimulusId, int memberScore) {
+    public void messageGroup(int originPhase, int incrementPhase, String stimulusId, String stimulusIndex, String messageString, String responseStimulusOptions, String responseStimulusId, int memberScore) {
         String windowGroupId = Window.Location.getParameter("group");
         String windowMemberCode = Window.Location.getParameter("member");
         if (windowGroupId == null) {
             windowGroupId = groupId;
         }
-        messageGroup(this.requestedPhase, this.requestedPhase + incrementPhase, userId, windowGroupId, windowMemberCode, screenId, allMemberCodes, groupCommunicationChannels, lastFiredListnerGroupRole, stimulusId, stimulusIndex, stimuliListLoaded, messageString, responseStimulusOptions, responseStimulusId, memberScore);
+        messageGroup(originPhase, originPhase + incrementPhase, userId, windowGroupId, windowMemberCode, screenId, allMemberCodes, groupCommunicationChannels, lastFiredListnerGroupRole, stimulusId, stimulusIndex, stimuliListLoaded, messageString, responseStimulusOptions, responseStimulusId, memberScore);
     }
 
     private native void messageGroup(int originPhase, int requestedPhase, String userId, String windowGroupId, String windowMemberCode, String screenId, String allMemberCodes, String groupCommunicationChannels, String expectedRespondents, String stimulusId, String stimulusIndex, String stimuliList, String messageString, String responseStimulusOptions, String responseStimulusId, int memberScore) /*-{
