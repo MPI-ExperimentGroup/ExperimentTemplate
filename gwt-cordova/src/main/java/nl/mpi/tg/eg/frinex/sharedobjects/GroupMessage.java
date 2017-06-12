@@ -281,4 +281,9 @@ public class GroupMessage {
     public void setEventMs(int eventMs) {
         this.eventMs = eventMs;
     }
+
+    @Override
+    public String toString() {
+        return "GroupMessage{" + "groupId=" + groupId + ", screenId=" + screenId + ", allMemberCodes=" + allMemberCodes + ", groupCommunicationChannels=" + groupCommunicationChannels + ", memberCode=" + memberCode + ", originMemberCode=" + originMemberCode + ", expectedRespondents=" + expectedRespondents + ", actualRespondents=" + actualRespondents + ", stimulusIndex=" + stimulusIndex + ", originPhase=" + originPhase + ", requestedPhase=" + requestedPhase + ", messageString=" + messageString + ", groupReady=" + groupReady + ", memberScore=" + memberScore + ", channelScore=" + channelScore + ", groupScore=" + groupScore + ", eventMs=" + eventMs + '}';
+    }
 }
