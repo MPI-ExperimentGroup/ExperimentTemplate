@@ -169,7 +169,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         stimulusProvider.getSubset(selectionTags, randomise, repeatCount, repeatRandomWindow, storedStimulusList, seenStimulusIndex);
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
-        showStimulus();
+        showStimulus(null);
     }
 
     protected void loadSdCardStimulus(final String eventTag, final List<Stimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
@@ -211,7 +211,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             public void postLoadTimerFired() {
                 ((TimedStimulusView) simpleView).clearPage();
                 if (directoryList.isEmpty()) {
-                    showStimulus();
+                    showStimulus(null);
                 } else {
                     hasSubdirectories = true;
                     for (final String[] directory : directoryList) {
@@ -325,7 +325,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         stimulusProvider.getSubset(allocatedTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, storedStimulusList, seenStimulusIndex);
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
-        showStimulus();
+        showStimulus(null);
     }
 
     protected void withMatchingStimulus(String eventTag, final String matchingRegex, final int maxStimulusCount, final boolean randomise, int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
@@ -402,7 +402,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
-    protected void showStimulus() {
+    protected void showStimulus(GroupActivityListener groupActivityListener) {
         final int currentStimulusIndex = stimulusProvider.getCurrentStimulusIndex();
         final String subDirectory = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag());
         localStorage.setStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag() + ((subDirectory != null) ? subDirectory : ""), Integer.toString(currentStimulusIndex));
@@ -425,7 +425,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "showStimulus.endOfStimulusListener", stimulusProvider.getCurrentStimulus().getUniqueId() + ":" + stimulusProvider.getCurrentStimulusIndex() + "/" + stimulusProvider.getTotalStimuli(), duration.elapsedMillis());
             if (groupParticipantService != null) {
                 // sending messageGroup(0,0, ...) is probably reliable at this point since the stimuli is past the last index and the message should trigger a next screen not a phase display
-                groupParticipantService.messageGroup(0, 0, null, Integer.toString(stimulusProvider.getCurrentStimulusIndex() + 1), null, null, null, (int) userResults.getUserData().getBestScore());
+                groupParticipantService.messageGroup(0, 0, null, Integer.toString(stimulusProvider.getCurrentStimulusIndex() + 1), null, null, null, (int) userResults.getUserData().getBestScore(), groupActivityListener.getGroupRole());
             } else {
                 endOfStimulusListener.postLoadTimerFired();
             }
@@ -466,7 +466,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         final Timer groupKickTimer = new Timer() {
             @Override
             public void run() {
-                groupParticipantService.messageGroup(0, 0, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null, null, null, (int) userResults.getUserData().getBestScore());
+                groupParticipantService.messageGroup(0, 0, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null, null, null, (int) userResults.getUserData().getBestScore(), groupMembers);
             }
         };
         if (groupParticipantService == null) {
@@ -565,8 +565,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
-    protected void groupNetworkActivity(final String groupRole, final GroupActivityListener timedStimulusListener) {
-        groupParticipantService.addGroupActivity(groupRole, timedStimulusListener);
+    protected void groupNetworkActivity(final GroupActivityListener timedStimulusListener) {
+        groupParticipantService.addGroupActivity(timedStimulusListener);
     }
 
     public void submitGroupEvent() {
@@ -1147,18 +1147,18 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).clearPage();
         stimulusFreeTextList.clear();
         buttonList.clear();
-        showStimulus();
+        showStimulus(null);
     }
 
     protected void groupResponseStimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
         stimulusImage(stimulusProvider.getStimuliFromString(groupParticipantService.getResponseStimulusId()), percentOfPage, maxHeight, maxWidth, animateType, null, postLoadMs, timedStimulusListener, null);
     }
 
-    protected void sendGroupMessage(final String eventTag, final int originPhase, final int incrementPhase) {
+    protected void sendGroupMessage(final String eventTag, final int originPhase, final int incrementPhase, String expectedRespondents) {
         submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), eventTag, (groupParticipantService != null) ? groupParticipantService.getMessageString() : null, duration.elapsedMillis());
         final String uniqueId = (stimulusProvider.getCurrentStimulusIndex() < stimulusProvider.getTotalStimuli()) ? stimulusProvider.getCurrentStimulus().getUniqueId() : null;
         if (groupParticipantService != null) {
-            groupParticipantService.messageGroup(originPhase, incrementPhase, uniqueId, Integer.toString(stimulusProvider.getCurrentStimulusIndex()), groupParticipantService.getMessageString(), groupParticipantService.getResponseStimulusOptions(), groupParticipantService.getResponseStimulusId(), (int) userResults.getUserData().getBestScore());
+            groupParticipantService.messageGroup(originPhase, incrementPhase, uniqueId, Integer.toString(stimulusProvider.getCurrentStimulusIndex()), groupParticipantService.getMessageString(), groupParticipantService.getResponseStimulusOptions(), groupParticipantService.getResponseStimulusId(), (int) userResults.getUserData().getBestScore(), expectedRespondents);
         }
         ((TimedStimulusView) simpleView).stopAudio();
         ((TimedStimulusView) simpleView).clearPage();
@@ -1167,7 +1167,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addText("Waiting for a group response. <br/>" + eventTag + ":" + originPhase + ":" + incrementPhase + ":" + groupParticipantService.getRequestedPhase());
     }
 
-    protected void sendGroupMessageButton(final String eventTag, final String buttonLabel, final boolean norepeat, final int hotKey, final int originPhase, final int incrementPhase) {
+    protected void sendGroupMessageButton(final String eventTag, final String buttonLabel, final boolean norepeat, final int hotKey, final int originPhase, final int incrementPhase, final String expectedRespondents) {
         PresenterEventListner eventListner = new PresenterEventListner() {
 
             @Override
@@ -1192,7 +1192,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     messageString += stimulusFreeText.getValue();
                 }
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), eventTag, (stimulusProvider.getCurrentStimulusIndex() < stimulusProvider.getTotalStimuli()) ? stimulusProvider.getCurrentStimulus().getUniqueId() : null, messageString, duration.elapsedMillis());
-                groupParticipantService.messageGroup(originPhase, incrementPhase, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), messageString, groupParticipantService.getResponseStimulusOptions(), groupParticipantService.getResponseStimulusId(), (int) userResults.getUserData().getBestScore());
+                groupParticipantService.messageGroup(originPhase, incrementPhase, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), messageString, groupParticipantService.getResponseStimulusOptions(), groupParticipantService.getResponseStimulusId(), (int) userResults.getUserData().getBestScore(), expectedRespondents);
                 ((TimedStimulusView) simpleView).stopAudio();
                 ((TimedStimulusView) simpleView).clearPage();
                 stimulusFreeTextList.clear();
