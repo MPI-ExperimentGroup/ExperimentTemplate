@@ -43,7 +43,6 @@ public class GroupParticipantService {
     private final TimedStimulusListener groupNotReadyListener;
     private boolean isConnected = false;
     private List<GroupActivityListener> lastFiredListnerList = null;
-    private String lastFiredListnerGroupRole = null;
 
     private final String userId;
     private final String screenId;
@@ -71,7 +70,6 @@ public class GroupParticipantService {
     public GroupParticipantService(final String userId, String screenId, String groupMembers, String groupCommunicationChannels, String stimuliListLoaded, TimedStimulusListener connectedListener, TimedStimulusListener groupNotReadyListener, TimedStimulusListener screenResetRequestListner, TimedStimulusListener stimulusSyncListner, TimedStimulusListener groupInfoChangeListner) {
         this.userId = userId;
         this.allMemberCodes = groupMembers;
-        this.lastFiredListnerGroupRole = groupMembers; // the first connection should require all members to respond
         this.groupCommunicationChannels = groupCommunicationChannels;
         this.connectedListener = connectedListener;
         this.groupNotReadyListener = groupNotReadyListener;
@@ -113,13 +111,12 @@ public class GroupParticipantService {
 //                break;
 //        }
 //    }
-    public void addGroupActivity(final String groupRole, final GroupActivityListener activityListener) {
-        activityListeners.put(groupRole, activityListener);
+    public void addGroupActivity(final GroupActivityListener activityListener) {
+        activityListeners.put(activityListener.getGroupRole(), activityListener);
     }
 
     protected void clearLastFiredListner() {
         this.lastFiredListnerList = null;
-        this.lastFiredListnerGroupRole = null;
     }
 
     protected synchronized void handleGroupMessage(String userId, String screenId, String userLabel, String groupId, String allMemberCodes,
@@ -129,7 +126,7 @@ public class GroupParticipantService {
             String actualRespondents,
             String stimulusId, String stimulusIndex, String stimuliListGroup, String originPhase, String requestedPhase,
             String messageString, Boolean groupReady, String responseStimulusId, String groupScore, String channelScore, String groupUUID) {
-        final boolean originPhaseMatches = true; //this.requestedPhase.equals(Integer.parseInt(originPhase));
+        final boolean originPhaseMatches = this.requestedPhase.equals(Integer.parseInt(originPhase));
         System.out.println("originPhaseMatches: " + originPhaseMatches + " requestedPhase: '" + this.requestedPhase + "' originPhase: '" + originPhase + "'");
         final boolean userIdMatches = this.userId.equals(userId);
         final boolean screenIdMatches = this.screenId.equals(screenId);
@@ -194,8 +191,7 @@ public class GroupParticipantService {
                                 this.channelScore = channelScore;
                                 stimulusSyncListner.postLoadTimerFired();
                                 if (!endOfStimuli) {
-                                    lastFiredListnerGroupRole = splitRole[roleIndex];
-                                    currentListner.triggerActivityListener(currentRequestedPhase);
+                                    currentListner.triggerActivityListener(currentRequestedPhase, splitRole[roleIndex]);
                                     currentFiredListnerList.add(currentListner);
                                 }
                             }
@@ -380,13 +376,13 @@ public class GroupParticipantService {
         });
      }-*/;
 
-    public void messageGroup(int originPhase, int incrementPhase, String stimulusId, String stimulusIndex, String messageString, String responseStimulusOptions, String responseStimulusId, int memberScore) {
+    public void messageGroup(int originPhase, int incrementPhase, String stimulusId, String stimulusIndex, String messageString, String responseStimulusOptions, String responseStimulusId, int memberScore, String groupRole) {
         String windowGroupId = Window.Location.getParameter("group");
         String windowMemberCode = Window.Location.getParameter("member");
         if (windowGroupId == null) {
             windowGroupId = groupId;
         }
-        messageGroup(originPhase, originPhase + incrementPhase, userId, windowGroupId, windowMemberCode, screenId, allMemberCodes, groupCommunicationChannels, lastFiredListnerGroupRole, stimulusId, stimulusIndex, stimuliListLoaded, messageString, responseStimulusOptions, responseStimulusId, memberScore);
+        messageGroup(originPhase, originPhase + incrementPhase, userId, windowGroupId, windowMemberCode, screenId, allMemberCodes, groupCommunicationChannels, groupRole, stimulusId, stimulusIndex, stimuliListLoaded, messageString, responseStimulusOptions, responseStimulusId, memberScore);
     }
 
     private native void messageGroup(int originPhase, int requestedPhase, String userId, String windowGroupId, String windowMemberCode, String screenId, String allMemberCodes, String groupCommunicationChannels, String expectedRespondents, String stimulusId, String stimulusIndex, String stimuliList, String messageString, String responseStimulusOptions, String responseStimulusId, int memberScore) /*-{
