@@ -48,22 +48,23 @@ public class SharedObjectController {
             System.out.println("incomingMessage == null");
             return null;
         }
-        final String incomingStimuliList = incomingMessage.getStimuliList();
-        System.out.println("incomingMessage: ");
-        System.out.println(incomingMessage.getAllMemberCodes());
-        System.out.println(incomingMessage.getGroupCommunicationChannels());
-        System.out.println(incomingMessage.getGroupId());
-        System.out.println(incomingMessage.getGroupUUID());
-        System.out.println(incomingMessage.getMemberCode());
-        System.out.println(incomingMessage.getOriginMemberCode());
-        System.out.println(incomingMessage.getRequestedPhase());
-        System.out.println(incomingMessage.getActualRespondents());
-        System.out.println(incomingMessage.getExpectedRespondents());
-        System.out.println(incomingStimuliList);
-        System.out.println(incomingMessage.getStimulusId());
-        System.out.println(incomingMessage.getStimulusIndex());
-        System.out.println(incomingMessage.getUserId());
-        System.out.println(incomingMessage.getScreenId());
+        System.out.println("InMessage:" + incomingMessage.toString());
+//        final String incomingStimuliList = incomingMessage.getStimuliList();
+//        System.out.println("incomingMessage: ");
+//        System.out.println(incomingMessage.getAllMemberCodes());
+//        System.out.println(incomingMessage.getGroupCommunicationChannels());
+//        System.out.println(incomingMessage.getGroupId());
+//        System.out.println(incomingMessage.getGroupUUID());
+//        System.out.println(incomingMessage.getMemberCode());
+//        System.out.println(incomingMessage.getOriginMemberCode());
+//        System.out.println(incomingMessage.getRequestedPhase());
+//        System.out.println(incomingMessage.getActualRespondents());
+//        System.out.println(incomingMessage.getExpectedRespondents());
+//        System.out.println(incomingStimuliList);
+//        System.out.println(incomingMessage.getStimulusId());
+//        System.out.println(incomingMessage.getStimulusIndex());
+//        System.out.println(incomingMessage.getUserId());
+//        System.out.println(incomingMessage.getScreenId());
         if (!GROUP_MANAGER.isGroupMember(incomingMessage)) {
             if (!GROUP_MANAGER.addGroupMember(incomingMessage)) {
                 return incomingMessage; // reject the request
@@ -78,8 +79,10 @@ public class SharedObjectController {
         GroupMessage resendMessage = GROUP_MANAGER.updateChannelMessageIfOutOfDate(incomingMessage);
         if (resendMessage == null) {
             GROUP_MANAGER.setUsersLastMessage(incomingMessage);
+            System.out.println("OutMessage:" + incomingMessage.toString());
             return incomingMessage;
         } else {
+            System.out.println("ResendMessage:" + resendMessage.toString());
             return resendMessage;
         }
     }
