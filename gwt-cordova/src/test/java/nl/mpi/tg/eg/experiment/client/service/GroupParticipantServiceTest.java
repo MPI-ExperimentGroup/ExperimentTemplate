@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
+import nl.mpi.tg.eg.experiment.client.listener.GroupActivityListener;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -30,10 +31,10 @@ public class GroupParticipantServiceTest {
     public GroupParticipantServiceTest() {
     }
 
-    private void groupNetworkActivity(final StringBuilder stringBuilder, final GroupParticipantService instance, final String groupRole, final int requiredMessageCount, final String description) {
-        instance.addGroupActivity(groupRole, new TimedStimulusListener() {
+    private void groupNetworkActivity(final StringBuilder stringBuilder, final String id, final GroupParticipantService instance, final String groupRole, final int requiredMessageCount, final String description) {
+        instance.addGroupActivity(groupRole, new GroupActivityListener(id) {
             @Override
-            public void postLoadTimerFired() {
+            public void triggerActivityListener(int callerPhase) {
                 stringBuilder.append(instance.getRequestedPhase());
                 stringBuilder.append("-");
                 stringBuilder.append(instance.getMemberCode());
@@ -76,11 +77,11 @@ public class GroupParticipantServiceTest {
             }
         });
         final StringBuilder stringBuilder = new StringBuilder();
-        groupNetworkActivity(stringBuilder, instance, "A,C,E,G:-:-:B,D,F,H:-:-", 1, null);
-        groupNetworkActivity(stringBuilder, instance, "-:A,C,E,G:-:-:B,D,F,H:-", 1, null);
-        groupNetworkActivity(stringBuilder, instance, "B,D,F,H:-:-:A,C,E,G:-:-", 1, null);
-        groupNetworkActivity(stringBuilder, instance, "-:B,D,F,H:-:-:A,C,E,G:-", 1, null);
-        groupNetworkActivity(stringBuilder, instance, "-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H", 1, null);
+        groupNetworkActivity(stringBuilder, "a", instance, "A,C,E,G:-:-:B,D,F,H:-:-", 1, null);
+        groupNetworkActivity(stringBuilder, "b", instance, "-:A,C,E,G:-:-:B,D,F,H:-", 1, null);
+        groupNetworkActivity(stringBuilder, "c", instance, "B,D,F,H:-:-:A,C,E,G:-:-", 1, null);
+        groupNetworkActivity(stringBuilder, "d", instance, "-:B,D,F,H:-:-:A,C,E,G:-", 1, null);
+        groupNetworkActivity(stringBuilder, "e", instance, "-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H", 1, null);
         for (int phaseCounter = 0; phaseCounter < 10; phaseCounter++) {
             for (int memberIndex = 0; memberIndex < 8; memberIndex++) {
                 instance.clearLastFiredListner();
@@ -218,12 +219,12 @@ public class GroupParticipantServiceTest {
                 }
             });
 
-            groupNetworkActivity(stringBuilder, groupParticipantService, "A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-", 1, "producer");
-            groupNetworkActivity(stringBuilder, groupParticipantService, "-:A:-:B:-:C:-:D:-:E:-:F:-:G:-:H", 7, "producer wait");
-            groupNetworkActivity(stringBuilder, groupParticipantService, "B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-",
+            groupNetworkActivity(stringBuilder, "1", groupParticipantService, "A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-", 1, "producer");
+            groupNetworkActivity(stringBuilder, "2", groupParticipantService, "-:A:-:B:-:C:-:D:-:E:-:F:-:G:-:H", 7, "producer wait");
+            groupNetworkActivity(stringBuilder, "3", groupParticipantService, "B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-",
                     1, "guesser wait");
-            groupNetworkActivity(stringBuilder, groupParticipantService, "", 1, "not used");
-            groupNetworkActivity(stringBuilder, groupParticipantService, "-:B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A",
+            groupNetworkActivity(stringBuilder, "4", groupParticipantService, "", 1, "not used");
+            groupNetworkActivity(stringBuilder, "5", groupParticipantService, "-:B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A",
                     1, "guesser");
             new TestData().processTestMessages(groupParticipantService);
 //            System.out.println("Expecting: " + expectedData[1]);
@@ -278,11 +279,11 @@ public class GroupParticipantServiceTest {
                 }
             });
 
-            groupNetworkActivity(stringBuilder, groupParticipantService, "-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H", 1, "feedback");
-            groupNetworkActivity(stringBuilder, groupParticipantService, "-:B,D,F,H:-:-:A,C,E,G:-", 1, "guesser");
-            groupNetworkActivity(stringBuilder, groupParticipantService, "B,D,F,H:-:-:A,C,E,G:-:-", 1, "guesser wait");
-            groupNetworkActivity(stringBuilder, groupParticipantService, "-:A,C,E,G:-:-:B,D,F,H:-", 1, "producer wait");
-            groupNetworkActivity(stringBuilder, groupParticipantService, "A,C,E,G:-:-:B,D,F,H:-:-", 1, "producer");
+            groupNetworkActivity(stringBuilder, "q", groupParticipantService, "-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H", 1, "feedback");
+            groupNetworkActivity(stringBuilder, "w", groupParticipantService, "-:B,D,F,H:-:-:A,C,E,G:-", 1, "guesser");
+            groupNetworkActivity(stringBuilder, "e", groupParticipantService, "B,D,F,H:-:-:A,C,E,G:-:-", 1, "guesser wait");
+            groupNetworkActivity(stringBuilder, "r", groupParticipantService, "-:A,C,E,G:-:-:B,D,F,H:-", 1, "producer wait");
+            groupNetworkActivity(stringBuilder, "t", groupParticipantService, "A,C,E,G:-:-:B,D,F,H:-:-", 1, "producer");
             new TestData().processTestMessagesRound1(groupParticipantService);
 //            System.out.println("Expecting: " + expectedData[1]);
 //            System.out.println("Found: " + stringBuilder.toString());
