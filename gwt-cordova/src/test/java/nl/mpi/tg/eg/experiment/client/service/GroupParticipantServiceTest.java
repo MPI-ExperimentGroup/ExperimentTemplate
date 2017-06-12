@@ -32,9 +32,9 @@ public class GroupParticipantServiceTest {
     }
 
     private void groupNetworkActivity(final StringBuilder stringBuilder, final String id, final GroupParticipantService instance, final String groupRole, final int requiredMessageCount, final String description) {
-        instance.addGroupActivity(groupRole, new GroupActivityListener(id) {
+        instance.addGroupActivity(new GroupActivityListener(id, groupRole) {
             @Override
-            public void triggerActivityListener(int callerPhase) {
+            public void triggerActivityListener(int callerPhase, String expectedRespondents) {
                 stringBuilder.append(instance.getRequestedPhase());
                 stringBuilder.append("-");
                 stringBuilder.append(instance.getMemberCode());
