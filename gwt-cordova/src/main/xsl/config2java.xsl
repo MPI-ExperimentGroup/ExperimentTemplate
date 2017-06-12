@@ -192,6 +192,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 import nl.mpi.tg.eg.experiment.client.view.AnnotationTimelinePanel;
                 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
                 import nl.mpi.tg.eg.experiment.client.view.MenuView;     
+                import nl.mpi.tg.eg.experiment.client.listener.GroupActivityListener;
                 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;  
                 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus.Tag;  
                 import nl.mpi.tg.eg.experiment.client.model.UserId;    
@@ -483,7 +484,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />        
         <xsl:value-of select="if(@repeatIncorrect) then concat(', ', @repeatIncorrect eq 'true') else ''" />
         <xsl:value-of select="if(@hotKey) then concat(', KeyCodes.KEY_', @hotKey) else ''" />
-        <xsl:value-of select="if(@incrementPhase) then concat(', ', @incrementPhase) else ''" />
+        <xsl:value-of select="if(@incrementPhase) then concat(', callerPhase, ', @incrementPhase) else ''" />
         <xsl:if test="local-name() eq 'audioButton'">
             <xsl:text>, new TimedStimulusListener() {
 
@@ -580,16 +581,31 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@groupMembers) then concat('&quot;', @groupMembers, '&quot;, ') else ''" />
         <xsl:value-of select="if(@groupCommunicationChannels) then concat('&quot;', @groupCommunicationChannels, '&quot;, ') else ''" />
         <xsl:value-of select="if(@groupRole) then concat('&quot;', @groupRole, '&quot;, ') else ''" />
-        <xsl:text>new TimedStimulusListener() {
-
-            @Override
-            public void postLoadTimerFired() {
-        </xsl:text>
-        <xsl:apply-templates/>
-        <xsl:text>
-            }
-            });
-        </xsl:text>
+        
+        <xsl:if test="local-name() eq 'groupNetworkActivity'">
+            <xsl:text>new GroupActivityListener("</xsl:text>
+            <xsl:value-of select="generate-id(.)" />
+            <xsl:text>") {
+                @Override
+                public void triggerActivityListener(final int callerPhase) {
+            </xsl:text>
+            <xsl:apply-templates/>
+            <xsl:text>
+                }
+                });
+            </xsl:text>            
+        </xsl:if>
+        <xsl:if test="local-name() ne 'groupNetworkActivity'">
+            <xsl:text>new TimedStimulusListener() {
+                @Override
+                public void postLoadTimerFired() {
+            </xsl:text>
+            <xsl:apply-templates/>
+            <xsl:text>
+                }
+                });
+            </xsl:text>
+        </xsl:if>
     </xsl:template>
     <xsl:template match="userInfo">
         <xsl:text>    ((ComplexView) simpleView).addHtmlText(messages.</xsl:text>
