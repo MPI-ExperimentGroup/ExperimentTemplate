@@ -43,6 +43,7 @@ public enum FeatureType {
     actionButton(true, true, new FeatureAttribute[]{hotKey, styleName}),
     sendGroupMessageButton(false, true, new FeatureAttribute[]{hotKey, eventTag, repeatIncorrect, incrementPhase}),
     sendGroupMessage(false, false, new FeatureAttribute[]{eventTag, incrementPhase}),
+    sendGroupEndOfStimuli(false, false, new FeatureAttribute[]{eventTag}),
     ratingButton(false, false, new FeatureAttribute[]{eventTier, ratingLabels, ratingLabelLeft, ratingLabelRight}),
     stimulusFreeText(true, true, new FeatureAttribute[]{validationRegex, allowedCharCodes, hotKey}),
     stimulusRatingButton(false, false, new FeatureAttribute[]{eventTier, ratingLabelLeft, ratingLabelRight}),
