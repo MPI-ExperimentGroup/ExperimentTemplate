@@ -126,7 +126,7 @@ public class GroupParticipantService {
             String actualRespondents,
             String stimulusId, String stimulusIndex, String stimuliListGroup, String originPhase, String requestedPhase,
             String messageString, Boolean groupReady, String responseStimulusId, String groupScore, String channelScore, String groupUUID) {
-        final boolean originPhaseMatches = this.requestedPhase.equals(Integer.parseInt(originPhase));
+        final boolean originPhaseMatches = true; //this.requestedPhase.equals(Integer.parseInt(originPhase));
         System.out.println("originPhaseMatches: " + originPhaseMatches + " requestedPhase: '" + this.requestedPhase + "' originPhase: '" + originPhase + "'");
         final boolean userIdMatches = this.userId.equals(userId);
         final boolean screenIdMatches = this.screenId.equals(screenId);
