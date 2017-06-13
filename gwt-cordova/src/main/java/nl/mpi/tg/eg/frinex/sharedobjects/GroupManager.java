@@ -230,9 +230,11 @@ public class GroupManager {
             GroupMessage lastGroupMessage = userGroups.get(storedMessage);
             if (lastGroupMessage != null && lastGroupMessage.getOriginMemberCode() != null) {
 //          if the group matches
-                if (storedMessage.equals(lastGroupMessage)) {
-                    // this is the same or later phase
-                    if (storedMessage.getRequestedPhase().compareTo(lastGroupMessage.getRequestedPhase()) <= 0) {
+                if (storedMessage.equals(lastGroupMessage)) {                    
+//                    // this is the same or later phase
+//                    if (storedMessage.getRequestedPhase().compareTo(lastGroupMessage.getRequestedPhase()) <= 0) {
+                    // this is the same phase
+                    if (storedMessage.getRequestedPhase().equals(lastGroupMessage.getRequestedPhase())) {
                         respondingMemberCodes.add(lastGroupMessage.getOriginMemberCode());
                     }
                 }
