@@ -422,13 +422,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //            localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "completed-screen-" + getSelfTag(), Boolean.toString(true));
         } else {
             // message the group message the updated stimuli index that is beyond the end of the list, so that all group memebers know to switch screens
-            submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "showStimulus.endOfStimulusListener", stimulusProvider.getCurrentStimulus().getUniqueId() + ":" + stimulusProvider.getCurrentStimulusIndex() + "/" + stimulusProvider.getTotalStimuli(), duration.elapsedMillis());
-            if (groupParticipantService != null) {
-                // sending messageGroup(0,0, ...) is probably reliable at this point since the stimuli is past the last index and the message should trigger a next screen not a phase display
-                groupParticipantService.messageGroup(0, 0, null, Integer.toString(stimulusProvider.getCurrentStimulusIndex() + 1), null, null, null, (int) userResults.getUserData().getBestScore(), groupActivityListener.getGroupRole());
-            } else {
-                endOfStimulusListener.postLoadTimerFired();
-            }
+            submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "showStimulus.endOfStimulusListener", stimulusProvider.getCurrentStimulus().getUniqueId() + ":" + stimulusProvider.getCurrentStimulusIndex() + "/" + stimulusProvider.getTotalStimuli(), duration.elapsedMillis()); // todo: this is sent
+            endOfStimulusListener.postLoadTimerFired();
         }
     }
 //    private static final int STIMULUS_TIER = 2;
@@ -463,13 +458,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void groupNetwork(final AppEventListner appEventListner, final ApplicationState selfApplicationState, final String groupMembers, final String groupCommunicationChannels, final TimedStimulusListener timedStimulusListener) {
-        final Timer groupKickTimer = new Timer() {
-            @Override
-            public void run() {
-                groupParticipantService.messageGroup(0, 0, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null, null, null, (int) userResults.getUserData().getBestScore(), groupMembers);
-            }
-        };
         if (groupParticipantService == null) {
+            final Timer groupKickTimer = new Timer() {
+                @Override
+                public void run() {
+                    groupParticipantService.messageGroup(0, 0, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null, null, null, (int) userResults.getUserData().getBestScore(), groupMembers);
+                }
+            };
             groupParticipantService = new GroupParticipantService(
                     userResults.getUserData().getUserId().toString(),
                     getSelfTag(), groupMembers, groupCommunicationChannels,
@@ -477,7 +472,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     new TimedStimulusListener() {
                 @Override
                 public void postLoadTimerFired() {
-                    ((ComplexView) simpleView).clearPage();
+                    // do not clear the screen at this point because reconnects when the stimuli list is at the end will need to keep its UI items
+//                    ((ComplexView) simpleView).clearPage();
                     ((ComplexView) simpleView).addPadding();
                     ((ComplexView) simpleView).addText("connected: " + groupParticipantService.isConnected());
                     timedStimulusListener.postLoadTimerFired();
@@ -560,6 +556,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             });
             groupParticipantService.joinGroupNetwork(serviceLocations.groupServerUrl());
         } else {
+            timedStimulusListener.postLoadTimerFired();
 //            groupParticipantService.messageGroup(0, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null, null, null);
 //              groupParticipantService.messageGroup(0, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), messageString, groupParticipantService.getResponseStimulusOptions(), groupParticipantService.getResponseStimulusId());
         }
@@ -1152,6 +1149,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void groupResponseStimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
         stimulusImage(stimulusProvider.getStimuliFromString(groupParticipantService.getResponseStimulusId()), percentOfPage, maxHeight, maxWidth, animateType, null, postLoadMs, timedStimulusListener, null);
+    }
+
+    protected void sendGroupEndOfStimuli(final String eventTag) {
+        groupParticipantService.messageGroup(groupParticipantService.getRequestedPhase(), 1, null, Integer.toString(stimulusProvider.getCurrentStimulusIndex() + 1), groupParticipantService.getMessageString(), groupParticipantService.getResponseStimulusOptions(), groupParticipantService.getResponseStimulusId(), (int) userResults.getUserData().getBestScore(), "");
+//        showStimulusProgress();
     }
 
     protected void sendGroupMessage(final String eventTag, final int originPhase, final int incrementPhase, String expectedRespondents) {
