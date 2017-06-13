@@ -82,8 +82,15 @@ public class SharedObjectController {
             System.out.println("OutMessage:" + incomingMessage.toString());
             return incomingMessage;
         } else {
-            System.out.println("ResendMessage:" + resendMessage.toString());
-            return resendMessage;
+            // if the message is a reconnect but the stimuli index is greater and the stimulus id == null then trigger an end of stimulus screen change
+            if (incomingMessage.getStimulusIndex() > resendMessage.getStimulusIndex() && incomingMessage.getStimulusId() == null && incomingMessage.getExpectedRespondents() == "") {
+                System.out.println("trigger an end of stimulus screen change:" + incomingMessage.toString());
+//                incomingMessage.setExpectedRespondents(incomingMessage.getMemberCode().toString());
+                return incomingMessage;
+            } else {
+                System.out.println("ResendMessage:" + resendMessage.toString());
+                return resendMessage;
+            }
         }
     }
 }
