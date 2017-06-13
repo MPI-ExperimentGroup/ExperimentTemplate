@@ -591,6 +591,14 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
         final String postStimuliText = getPostStimuliText(storedWizardScreenData);
         if (postStimuliText != null && !postStimuliText.isEmpty()) {
+            final PresenterFeature endOfStimulusGroupNetwork = new PresenterFeature(FeatureType.groupNetwork, null);
+            endOfStimulusGroupNetwork.addFeatureAttributes(FeatureAttribute.groupMembers, storedWizardScreenData.getGroupMembers());
+            endOfStimulusGroupNetwork.addFeatureAttributes(FeatureAttribute.groupCommunicationChannels, storedWizardScreenData.getGroupCommunicationChannels());
+            endOfStimulusFeature.getPresenterFeatureList().add(endOfStimulusGroupNetwork);
+            final PresenterFeature endOfStimulusGroupMessage = new PresenterFeature(FeatureType.sendGroupEndOfStimuli, null);
+            endOfStimulusGroupNetwork.getPresenterFeatureList().add(endOfStimulusGroupMessage);
+            endOfStimulusGroupMessage.addFeatureAttributes(FeatureAttribute.eventTag, "endOfStimulusGroupMessage");
+//            endOfStimulusGroupMessage.addFeatureAttributes(FeatureAttribute.incrementPhase, "1");
             endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
             endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, postStimuliText));
             endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupChannelScoreLabel, null));
