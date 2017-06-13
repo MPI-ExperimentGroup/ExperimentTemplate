@@ -77,6 +77,9 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
+                    <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A,B,C,D">
+                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                    </groupNetwork>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
                     <groupChannelScoreLabel/>
@@ -184,6 +187,9 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
+                    <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A,B|C,D">
+                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                    </groupNetwork>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
                     <groupChannelScoreLabel/>
@@ -291,6 +297,9 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
+                    <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A,C|B,D">
+                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                    </groupNetwork>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
                     <groupChannelScoreLabel/>
@@ -398,6 +407,9 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
+                    <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A,D|B,C">
+                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                    </groupNetwork>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
                     <groupChannelScoreLabel/>
@@ -505,6 +517,9 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
+                    <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A,B|C,D">
+                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                    </groupNetwork>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
                     <groupChannelScoreLabel/>
@@ -612,6 +627,9 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
+                    <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A,C|B,D">
+                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                    </groupNetwork>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
                     <groupChannelScoreLabel/>
@@ -719,6 +737,9 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
+                    <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A,D|B,C">
+                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                    </groupNetwork>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
                     <groupChannelScoreLabel/>
@@ -826,6 +847,9 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
+                    <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A,B|C,D">
+                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                    </groupNetwork>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
                     <groupChannelScoreLabel/>
@@ -866,6 +890,9 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
+                    <groupNetwork groupMembers="A,B,C,D" groupCommunicationChannels="A|B|C|D">
+                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                    </groupNetwork>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
                     <groupChannelScoreLabel/>
@@ -919,6 +946,9 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,B,C,D,E,F,G,H">
+                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                    </groupNetwork>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
                     <groupChannelScoreLabel/>
@@ -1026,6 +1056,9 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,B|C,D|E,F|G,H">
+                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                    </groupNetwork>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
                     <groupChannelScoreLabel/>
@@ -1133,6 +1166,9 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,H|E,D|C,F|G,B">
+                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                    </groupNetwork>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
                     <groupChannelScoreLabel/>
@@ -1240,6 +1276,9 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,D|G,F|E,B|C,H">
+                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                    </groupNetwork>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
                     <groupChannelScoreLabel/>
@@ -1347,6 +1386,9 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,C|B,D|E,G|F,H">
+                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                    </groupNetwork>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
                     <groupChannelScoreLabel/>
@@ -1454,6 +1496,9 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,E|H,D|B,F|G,C">
+                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                    </groupNetwork>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
                     <groupChannelScoreLabel/>
@@ -1561,6 +1606,9 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,F|G,D|C,B|E,H">
+                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                    </groupNetwork>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
                     <groupChannelScoreLabel/>
@@ -1668,6 +1716,9 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,G|B,H|E,C|D,F">
+                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                    </groupNetwork>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
                     <groupChannelScoreLabel/>
@@ -1708,6 +1759,9 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A|B|C|D|E|F|G|H">
+                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                    </groupNetwork>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
                     <groupChannelScoreLabel/>
@@ -1815,6 +1869,9 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,B|C,D|E,F|G,H">
+                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                    </groupNetwork>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
                     <groupChannelScoreLabel/>
@@ -1922,6 +1979,9 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,H|E,D|C,F|G,B">
+                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                    </groupNetwork>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
                     <groupChannelScoreLabel/>
@@ -2029,6 +2089,9 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,D|G,F|E,B|C,H">
+                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                    </groupNetwork>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
                     <groupChannelScoreLabel/>
@@ -2136,6 +2199,9 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,C|B,D|E,G|F,H">
+                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                    </groupNetwork>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
                     <groupChannelScoreLabel/>
@@ -2243,6 +2309,9 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,E|H,D|B,F|G,C">
+                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                    </groupNetwork>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
                     <groupChannelScoreLabel/>
@@ -2350,6 +2419,9 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,F|G,D|C,B|E,H">
+                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                    </groupNetwork>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
                     <groupChannelScoreLabel/>
@@ -2457,6 +2529,9 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A,G|B,H|E,C|D,F">
+                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                    </groupNetwork>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
                     <groupChannelScoreLabel/>
@@ -2497,6 +2572,9 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" groupCommunicationChannels="A|B|C|D|E|F|G|H">
+                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                    </groupNetwork>
                     <clearPage/>
                     <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
                     <groupChannelScoreLabel/>
