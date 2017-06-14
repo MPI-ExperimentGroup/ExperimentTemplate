@@ -189,8 +189,12 @@ public class GroupParticipantService {
                                 this.responseStimulusId = responseStimulusId;
                                 this.groupScore = groupScore;
                                 this.channelScore = channelScore;
-                                stimulusSyncListner.postLoadTimerFired();
                                 if (!endOfStimuli) {
+                                    // if we are already at the end of the stimuli list then do not sync again
+                                    stimulusSyncListner.postLoadTimerFired();
+                                }
+                                if (!endOfStimuli) {
+                                    // if the stimulusSyncListner has put us at the end of the stimuli list then trigger any phases
                                     currentListner.triggerActivityListener(currentRequestedPhase, splitRole[roleIndex]);
                                     currentFiredListnerList.add(currentListner);
                                 }
