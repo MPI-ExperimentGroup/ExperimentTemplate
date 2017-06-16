@@ -5,7 +5,32 @@
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="firstName" preventServerDuplicates="false" registrationField="First name"/>
         <field controlledRegex="|male|female|other" postName="gender" preventServerDuplicates="false" registrationField="Gender"/>
         <field controlledMessage="Please enter your login code." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Login code"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocation" preventServerDuplicates="false" registrationField="stimuliAllocation"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_0___4" preventServerDuplicates="false" registrationField="stimuliAllocationRound_0___4"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_1___4" preventServerDuplicates="false" registrationField="stimuliAllocationRound_1___4"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_2___4" preventServerDuplicates="false" registrationField="stimuliAllocationRound_2___4"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_3___4" preventServerDuplicates="false" registrationField="stimuliAllocationRound_3___4"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_4___4" preventServerDuplicates="false" registrationField="stimuliAllocationRound_4___4"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_5___4" preventServerDuplicates="false" registrationField="stimuliAllocationRound_5___4"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_6___4" preventServerDuplicates="false" registrationField="stimuliAllocationRound_6___4"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_7___4" preventServerDuplicates="false" registrationField="stimuliAllocationRound_7___4"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_8___4" preventServerDuplicates="false" registrationField="stimuliAllocationRound_8___4"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_0___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_0___8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_1___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_1___8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_2___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_2___8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_3___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_3___8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_4___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_4___8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_5___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_5___8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_6___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_6___8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_7___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_7___8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_8___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_8___8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_9___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_9___8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_10___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_10___8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_11___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_11___8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_12___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_12___8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_13___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_13___8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_14___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_14___8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_15___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_15___8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_16___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_16___8"/>
     </metadata>
     <presenter displayOrder="1" menuLabel="Agreement" next="Edit_User" type="metadata" self="Agreement" title="Agreement">
         <htmlText featureText="&lt;b&gt;This is a prototype multiparticipant experiment.&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;With this prototype you can:&lt;br/&gt;&lt;li&gt;view the group activity and add dummy users to a group for testing purposes &lt;a href='/multiparticipant/grouptestpage.html'&gt;/multiparticipant/grouptestpage.html&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;erase the local data for this browser &lt;a href='/multiparticipant?debug'&gt;/multiparticipant?debug&lt;/a&gt;&lt;/li&gt;&lt;li&gt;random data can be generated with the testing robot &lt;a href='/multiparticipant/TestingFrame.html'&gt;/multiparticipant/TestingFrame.html&lt;/a&gt;&lt;/li&gt;&lt;br/&gt;&lt;li&gt;eight users intracting can be randomly simulated testing robot &lt;a href='/multiparticipant/grouptestframes.html'&gt;/multiparticipant/grouptestframes.html&lt;/a&gt;&lt;/li&gt;&lt;br/&gt;The group name must be allocated with the following with &lt;a href='/multiparticipant/?group=a_group_name'&gt;/multiparticipant/?group=a_group_name&lt;/a&gt; where a_group_name should be replaced with a suitable string. A second user can be tested on one computer via the incognito browser window with this link, providing the group name matches.&lt;br/&gt;&lt;br/&gt;There needs to be eight users connected for the group process to begin. Once a group is full, any subsequent users will need to be allocated a different group via the a_group_name parameter.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;You can view the collected group data with &lt;a href='/multiparticipant-admin/groupdataviewer'&gt;/multiparticipant-admin/groupdataviewer&lt;/a&gt; with the user and password you have been supplied.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;"/>
@@ -88,7 +113,7 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocation">
+                <randomGrouping storageField="stimuliAllocationRound_0___4">
                     <tag>version1zero</tag>
                 </randomGrouping>
                 <stimuli/>
@@ -198,7 +223,7 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocation">
+                <randomGrouping storageField="stimuliAllocationRound_1___4">
                     <tag>version1zero</tag>
                 </randomGrouping>
                 <stimuli/>
@@ -308,7 +333,7 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocation">
+                <randomGrouping storageField="stimuliAllocationRound_2___4">
                     <tag>version1round2</tag>
                 </randomGrouping>
                 <stimuli/>
@@ -418,7 +443,7 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocation">
+                <randomGrouping storageField="stimuliAllocationRound_3___4">
                     <tag>version1round3</tag>
                 </randomGrouping>
                 <stimuli/>
@@ -528,7 +553,7 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocation">
+                <randomGrouping storageField="stimuliAllocationRound_4___4">
                     <tag>version1round4</tag>
                 </randomGrouping>
                 <stimuli/>
@@ -638,7 +663,7 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocation">
+                <randomGrouping storageField="stimuliAllocationRound_5___4">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
@@ -748,7 +773,7 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocation">
+                <randomGrouping storageField="stimuliAllocationRound_6___4">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
@@ -858,7 +883,7 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocation">
+                <randomGrouping storageField="stimuliAllocationRound_7___4">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
@@ -901,7 +926,7 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocation">
+                <randomGrouping storageField="stimuliAllocationRound_8___4">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
@@ -957,7 +982,7 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocation">
+                <randomGrouping storageField="stimuliAllocationRound_0___8">
                     <tag>version1zero</tag>
                 </randomGrouping>
                 <stimuli/>
@@ -1067,7 +1092,7 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocation">
+                <randomGrouping storageField="stimuliAllocationRound_1___8">
                     <tag>version1zero</tag>
                 </randomGrouping>
                 <stimuli/>
@@ -1177,7 +1202,7 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocation">
+                <randomGrouping storageField="stimuliAllocationRound_2___8">
                     <tag>version1round2</tag>
                 </randomGrouping>
                 <stimuli/>
@@ -1287,7 +1312,7 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocation">
+                <randomGrouping storageField="stimuliAllocationRound_3___8">
                     <tag>version1round3</tag>
                 </randomGrouping>
                 <stimuli/>
@@ -1397,7 +1422,7 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocation">
+                <randomGrouping storageField="stimuliAllocationRound_4___8">
                     <tag>version1round4</tag>
                 </randomGrouping>
                 <stimuli/>
@@ -1507,7 +1532,7 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocation">
+                <randomGrouping storageField="stimuliAllocationRound_5___8">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
@@ -1617,7 +1642,7 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocation">
+                <randomGrouping storageField="stimuliAllocationRound_6___8">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
@@ -1727,7 +1752,7 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocation">
+                <randomGrouping storageField="stimuliAllocationRound_7___8">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
@@ -1770,7 +1795,7 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocation">
+                <randomGrouping storageField="stimuliAllocationRound_8___8">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
@@ -1880,7 +1905,7 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocation">
+                <randomGrouping storageField="stimuliAllocationRound_9___8">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
@@ -1990,7 +2015,7 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocation">
+                <randomGrouping storageField="stimuliAllocationRound_10___8">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
@@ -2100,7 +2125,7 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocation">
+                <randomGrouping storageField="stimuliAllocationRound_11___8">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
@@ -2210,7 +2235,7 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocation">
+                <randomGrouping storageField="stimuliAllocationRound_12___8">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
@@ -2320,7 +2345,7 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocation">
+                <randomGrouping storageField="stimuliAllocationRound_13___8">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
@@ -2430,7 +2455,7 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocation">
+                <randomGrouping storageField="stimuliAllocationRound_14___8">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
@@ -2540,7 +2565,7 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocation">
+                <randomGrouping storageField="stimuliAllocationRound_15___8">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
@@ -2583,7 +2608,7 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocation">
+                <randomGrouping storageField="stimuliAllocationRound_16___8">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
