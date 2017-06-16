@@ -163,10 +163,10 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
                 final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{this.wizardScreenData.getScreenTitle()}));
                 final Stimulus stimulus;
                 if (stimulusCodePattern != null) {
-                    System.out.println("stimulusCodeMatch:" + wizardScreenData.getStimulusCodeMatch());
+//                    System.out.println("stimulusCodeMatch:" + wizardScreenData.getStimulusCodeMatch());
                     Matcher matcher = stimulusCodePattern.matcher(stimulusLine);
                     final String codeString = (matcher.find()) ? matcher.group(1) : null;
-                    System.out.println("codeString: " + codeString);
+//                    System.out.println("codeString: " + codeString);
                     final String baseFileName = stimulusLine.replaceAll(BASE_FILE_REGEX, "");
                     tagSet.addAll(Arrays.asList(baseFileName.split("/")));
                     stimulus = new Stimulus(baseFileName, null, null, stimulusLine, null, codeString, 0, tagSet, null, null);
