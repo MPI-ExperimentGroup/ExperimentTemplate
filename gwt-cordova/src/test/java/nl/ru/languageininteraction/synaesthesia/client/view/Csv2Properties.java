@@ -43,58 +43,73 @@ public class Csv2Properties {
     private static final String PROPERTIES_SUFFIX = ".properties";
     private static final String COLUMN_SEPARATOR = ",";
     private static final String PROPERTY_SEPARATOR = "=";
-    private static final int DE_COLUMN = 3;
+    private static final int DE_COLUMN = 4;
+    private static final int RU_COLUMN = 3;
     private static final int NL_COLUMN = 2;
     private static final int EN_COLUMN = 1;
     private static final int KEY_COLUMN = 0;
     private final HashMap<String, String> translationsEN = new HashMap<>();
     private final HashMap<String, String> translationsDE = new HashMap<>();
+    private final HashMap<String, String> translationsRU = new HashMap<>();
     private final HashMap<String, String> translationsNL = new HashMap<>();
-    final File inputFile = new File("target/translations" + FILE_SUFFIX);
+    final File inputFile = new File("src/main/static/synquiz2/translations" + FILE_SUFFIX);
 
     public void readTranslations() {
 
     }
 
     public void parseInputCSV() throws IOException {
-        final Reader reader = new InputStreamReader(inputFile.toURL().openStream(), "UTF-8");
+        final Reader reader = new InputStreamReader(inputFile.toURL().openStream(), "UTF-8"); // todo: this might need to change to "ISO-8859-1" depending on the usage
         Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(reader);
         for (CSVRecord record : records) {
             String key_name = record.get(KEY_COLUMN);
-            String en_value = record.get(EN_COLUMN + 2);
-            String nl_value = record.get(NL_COLUMN + 2);
-            String de_value = record.get(DE_COLUMN + 2);
+            System.out.println(key_name);
+            String en_value = record.get(EN_COLUMN);
+            String nl_value = record.get(NL_COLUMN);
+            String ru_value = record.get(RU_COLUMN);
+//            String de_value = record.get(DE_COLUMN);
             System.out.println(key_name);
             System.out.println(en_value);
             System.out.println(nl_value);
-            System.out.println(de_value);
+            System.out.println(ru_value);
+            //   System.out.println(de_value);
             translationsEN.put(key_name, en_value);
             translationsNL.put(key_name, nl_value);
-            translationsDE.put(key_name, de_value);
+            translationsRU.put(key_name, ru_value);
+            //    translationsDE.put(key_name, de_value);
         }
     }
 
     public void writePropertyValues(String propertiesFileName) throws FileNotFoundException, IOException {
         System.out.println("propertiesFileName: " + propertiesFileName);
         Properties properties = new Properties();
-        Properties properties_nl = new Properties();
-        Properties properties_de = new Properties();
+//        Properties properties_nl = new Properties();
+//        Properties properties_ru = new Properties();
+//        Properties properties_de = new Properties();
         final InputStream resourceAsStream = SimpleViewTest.class.getResourceAsStream("/nl/ru/languageininteraction/language/client/" + propertiesFileName + ".properties");
         properties.load(resourceAsStream);
-        final InputStream resourceAsStream_nl = SimpleViewTest.class.getResourceAsStream("/nl/ru/languageininteraction/language/client/" + propertiesFileName + "_nl.properties");
-        properties_nl.load(resourceAsStream_nl);
-        final InputStream resourceAsStream_de = SimpleViewTest.class.getResourceAsStream("/nl/ru/languageininteraction/language/client/" + propertiesFileName + "_de.properties");
-        properties_de.load(resourceAsStream_de);
+//        final InputStream resourceAsStream_nl = SimpleViewTest.class.getResourceAsStream("/nl/ru/languageininteraction/language/client/" + propertiesFileName + "_nl.properties");
+//        properties_nl.load(resourceAsStream_nl);
+//        final InputStream resourceAsStream_de = SimpleViewTest.class.getResourceAsStream("/nl/ru/languageininteraction/language/client/" + propertiesFileName + "_de.properties");
+//        properties_de.load(resourceAsStream_de);
+//        final InputStream resourceAsStream_ru = SimpleViewTest.class.getResourceAsStream("/nl/ru/languageininteraction/language/client/" + propertiesFileName + "_ru.properties");
+//        properties_ru.load(resourceAsStream_ru);
         final String targetDirectory = "src/main/resources/nl/ru/languageininteraction/language/client/";
+        final File outputFileJava = new File(targetDirectory + propertiesFileName + ".txt");
         final File outputFile = new File(targetDirectory + propertiesFileName + PROPERTIES_SUFFIX);
         final File outputFileDE = new File(targetDirectory + propertiesFileName + "_de" + PROPERTIES_SUFFIX);
+        final File outputFileRU = new File(targetDirectory + propertiesFileName + "_ru" + PROPERTIES_SUFFIX);
         final File outputFileNL = new File(targetDirectory + propertiesFileName + "_nl" + PROPERTIES_SUFFIX);
+        OutputStream outputStreamJava = new FileOutputStream(outputFileJava, false);
         OutputStream outputStream = new FileOutputStream(outputFile, false);
         OutputStream outputStreamDE = new FileOutputStream(outputFileDE, false);
         OutputStream outputStreamNL = new FileOutputStream(outputFileNL, false);
-        try (OutputStreamWriter writer = new OutputStreamWriter(outputStream, "ISO-8859-1");
+        OutputStream outputStreamRU = new FileOutputStream(outputFileRU, false);
+        try (OutputStreamWriter writerJava = new OutputStreamWriter(outputStreamJava, "UTF-8");
+                OutputStreamWriter writer = new OutputStreamWriter(outputStream, "ISO-8859-1");
                 OutputStreamWriter writerDE = new OutputStreamWriter(outputStreamDE, "ISO-8859-1");
-                OutputStreamWriter writerNL = new OutputStreamWriter(outputStreamNL, "ISO-8859-1")) {
+                OutputStreamWriter writerNL = new OutputStreamWriter(outputStreamNL, "ISO-8859-1");
+                OutputStreamWriter writerRU = new OutputStreamWriter(outputStreamRU, "ISO-8859-1")) {
 
             final InputStream propertiesFileStream = SimpleViewTest.class.getResourceAsStream("/nl/ru/languageininteraction/language/client/" + propertiesFileName + ".properties");
             InputStreamReader inputStreamReader = new InputStreamReader(propertiesFileStream, Charset.forName("UTF-8"));
@@ -105,13 +120,16 @@ public class Csv2Properties {
                     writer.write("\n");
                     writerDE.write("\n");
                     writerNL.write("\n");
+                    writerRU.write("\n");
                 } else if (lineString.startsWith("#")) {
                     writer.write(lineString);
                     writerDE.write(lineString);
                     writerNL.write(lineString);
+                    writerRU.write(lineString);
                     writer.write("\n");
                     writerDE.write("\n");
                     writerNL.write("\n");
+                    writerRU.write("\n");
                 } else {
                     String key = lineString.split("=")[0];
                     final String escapedStringEN = (translationsEN.containsKey(key)) ? escapeString(translationsEN.get(key)) : escapePropertiesString(properties.getProperty(key, ""));
@@ -135,11 +153,29 @@ public class Csv2Properties {
                         writerNL.write(escapedStringNL);
                         writerNL.write("\n");
                     }
+                    final String escapedStringRU = (translationsRU.containsKey(key)) ? escapeString(translationsRU.get(key)) : ""; //escapePropertiesString(properties_nl.getProperty(key, ""));
+                    if (!escapedStringRU.isEmpty()) {
+                        writerRU.write(key);
+                        writerRU.write(PROPERTY_SEPARATOR);
+                        writerRU.write(escapedStringRU);
+                        writerRU.write("\n");
+                    }
+                    writerJava.write("insertEnNlDeRu(\"");
+                    writerJava.write(escapedStringEN.replace("\"", "\\\""));
+                    writerJava.write("\", \"");
+                    writerJava.write(escapedStringNL.replace("\"", "\\\""));
+                    writerJava.write("\", \"");
+                    writerJava.write(escapedStringDE.replace("\"", "\\\""));
+                    writerJava.write("\", \"");
+                    writerJava.write(escapedStringRU.replace("\"", "\\\""));
+                    writerJava.write("\");\n");
                 }
             }
+            writerJava.close();
             writer.close();
             writerDE.close();
             writerNL.close();
+            writerRU.close();
         }
     }
 
