@@ -19,9 +19,11 @@ package nl.mpi.tg.eg.experimentdesigner.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import javax.persistence.CollectionTable;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -50,7 +52,8 @@ public class Translation implements Serializable {
     @ElementCollection
     @CollectionTable(name = "locale_text_table")
     @MapKeyColumn(name = "locale_key")
-    Map<String, String> translationMap;
+    @Column(length = 6000)
+    private final Map<String, String> translationMap = new HashMap<>();
 
     public Translation() {
         if (createdDate == null) {
