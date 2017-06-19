@@ -22,8 +22,8 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.logging.Logger;
-import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.dao.ExperimentRepository;
+import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.dao.MetadataRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterFeatureRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterScreenRepository;
@@ -58,6 +58,7 @@ public class DefaultExperiments {
             MetadataRepository metadataRepository,
             ExperimentRepository experimentRepository,
             PublishEventRepository eventRepository) {
+        new DefaultTranslations().insertTranslations();
         experimentRepository.save(getSentveri_exp3Experiment());
         experimentRepository.save(new DobesAnnotator().getExperiment());
         experimentRepository.save(getAllOptionsExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
