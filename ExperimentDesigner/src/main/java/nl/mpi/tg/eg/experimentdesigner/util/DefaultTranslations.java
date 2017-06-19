@@ -19,7 +19,6 @@ package nl.mpi.tg.eg.experimentdesigner.util;
 
 import nl.mpi.tg.eg.experimentdesigner.dao.TranslationRepository;
 import nl.mpi.tg.eg.experimentdesigner.model.Translation;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @since Jun 19, 2017 11:49:13 AM (creation date)
@@ -27,8 +26,11 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class DefaultTranslations {
 
-    @Autowired
-    TranslationRepository translationRepository;
+    private final TranslationRepository translationRepository;
+
+    public DefaultTranslations(TranslationRepository translationRepository) {
+        this.translationRepository = translationRepository;
+    }
 
     public void insertTranslations() {
         insertEnNlDeRu("Submit", "Sla op", "", "Отправить");
