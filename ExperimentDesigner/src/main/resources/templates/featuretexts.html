@@ -27,7 +27,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     <body>
         <div th:fragment="translations">
             <table class="presenter">
-                <tr th:each="currentText : ${featureTexts}"><td th:text="${currentText}" /></tr>
+                <tr><td th:each="currentLocale : ${localeList}" th:text="${currentLocale}" /></tr>
+                <tr th:each="currentTranslation : ${translationTexts}"><td th:each="currentLocale : ${localeList}" th:text="${currentTranslation.getLocaleString(currentLocale)}"/></tr>
             </table>                
         </div>
     </body>
