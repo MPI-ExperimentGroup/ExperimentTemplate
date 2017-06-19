@@ -24,6 +24,7 @@ import nl.mpi.tg.eg.experimentdesigner.dao.MetadataRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterFeatureRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterScreenRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PublishEventRepository;
+import nl.mpi.tg.eg.experimentdesigner.dao.TranslationRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.WizardRepository;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
@@ -74,6 +75,8 @@ public class ExperimentController {
     MetadataRepository metadataRepository;
     @Autowired
     WizardRepository wizardRepository;
+    @Autowired
+    TranslationRepository translationRepository;
 
     @RequestMapping("/experiments")
     public String designView(Model model, HttpServletRequest request) {
@@ -229,7 +232,8 @@ public class ExperimentController {
 //        experimentRepository.save(createdExperiment);
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", "translations");
-        model.addAttribute("featureTexts", presenterFeatureRepository.getFeatureTexts());
+        model.addAttribute("localeList", new String[]{"en", "nl", "de", "ru"}); // todo: add a qeury for the local list
+        model.addAttribute("translationTexts", translationRepository.findAll());
         return "design";
     }
 
@@ -238,7 +242,7 @@ public class ExperimentController {
         // todo: this is currently here to simplify the development process and should be removed in production
 //        experimentRepository.deleteAll();
 //        if (experimentRepository.count() == 0) {
-        new DefaultExperiments().insertDefaultExperiment(presenterScreenRepository, presenterFeatureRepository, metadataRepository, experimentRepository, eventRepository);
+        new DefaultExperiments().insertDefaultExperiment(presenterScreenRepository, presenterFeatureRepository, metadataRepository, experimentRepository, eventRepository, translationRepository);
 //        }
         return "redirect:/";
     }
