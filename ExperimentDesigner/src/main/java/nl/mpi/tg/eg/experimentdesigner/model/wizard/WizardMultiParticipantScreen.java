@@ -389,6 +389,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
         imageFeature.addFeatureAttributes(FeatureAttribute.animate, "stimuliCode");
         producerNetworkActivity0.getPresenterFeatureList().add(imageFeature);
+        guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMessageLabel, null));
         if (getTimerCountDownGuesserMs(storedWizardScreenData) > 0) {
             final PresenterFeature countDownFeature = new PresenterFeature(FeatureType.countdownLabel, getTimerCountDownLabel(storedWizardScreenData));
             countDownFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getTimerCountDownGuesserMs(storedWizardScreenData)));
@@ -401,6 +402,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //        final PresenterFeature resultsGrid = addStimuliGrid("resultsGrid", new PresenterFeature(FeatureType.htmlText, "response not relevant"), new PresenterFeature(FeatureType.htmlText, "response not relevant"));
 //        allNetworkActivity2.getPresenterFeatureList().add(resultsGrid);
 
+        allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMessageLabel, null));
         final PresenterFeature allNetworkActivityRow = new PresenterFeature(FeatureType.row, null);
         final PresenterFeature allNetworkActivityColumn1 = new PresenterFeature(FeatureType.column, null);
         final PresenterFeature allNetworkActivityColumn2 = new PresenterFeature(FeatureType.column, null);
@@ -416,10 +418,6 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         allNetworkActivityColumn3.getPresenterFeatureList().add(allNetworkActivity2Image);
         allNetworkActivity2.getPresenterFeatureList().add(allNetworkActivityRow);
-
-        guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMessageLabel, null));
-
-        allNetworkActivityColumn3.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupMessageLabel, null));
 
         final PresenterFeature groupResponseFeedback = new PresenterFeature(FeatureType.groupResponseFeedback, null);
         final PresenterFeature responseCorrect = new PresenterFeature(FeatureType.responseCorrect, null);
