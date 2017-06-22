@@ -2,8 +2,7 @@
 <experiment appNameDisplay="french_audio" appNameInternal="french_audio" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="false" textFontSize="17">
     <metadata>
         <field controlledMessage="Entrez au moins trois lettres." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="code identifiant"/>
-        <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_stimuliC" preventServerDuplicates="false" registrationField="groupAllocation_stimuliC"/>
-        <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_stimuliN" preventServerDuplicates="false" registrationField="groupAllocation_stimuliN"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuli" preventServerDuplicates="false" registrationField="stimuli"/>
         <field controlledMessage="Entrez au moins trois lettres." controlledRegex="['\\'S'\\'s]'{'3,'}'" postName="feedBack" preventServerDuplicates="false" registrationField=""/>
     </metadata>
     <presenter displayOrder="1" menuLabel="Edit User" next="Accord" type="metadata" self="Edit_User" title="Edit User">
@@ -112,7 +111,7 @@
             <endOfStimulus>
                 <autoNextPresenter/>
             </endOfStimulus>
-            <randomGrouping storageField="groupAllocation_stimuliC">
+            <randomGrouping storageField="stimuli">
                 <tag>out1ver1Screen</tag>
                 <tag>out1ver2Screen</tag>
                 <tag>out1ver3Screen</tag>
@@ -147,7 +146,7 @@
             <endOfStimulus>
                 <autoNextPresenter/>
             </endOfStimulus>
-            <randomGrouping storageField="groupAllocation_stimuliN">
+            <randomGrouping storageField="stimuli">
                 <tag>out1ver1Screen</tag>
                 <tag>out1ver2Screen</tag>
                 <tag>out1ver3Screen</tag>
