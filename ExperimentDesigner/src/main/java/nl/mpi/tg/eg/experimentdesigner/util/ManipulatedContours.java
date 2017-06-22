@@ -554,7 +554,7 @@ public class ManipulatedContours {
 
     private String[] invertButtons(String[] stimuliArray) {
         for (int currentIndex = 0; currentIndex < stimuliArray.length; currentIndex++) {
-            stimuliArray[currentIndex] = stimuliArray[currentIndex].replace("out2ver3conarr", "out2ver3arrcon");
+            stimuliArray[currentIndex] = stimuliArray[currentIndex].replace("conarr", "arrcon");
             stimuliArray[currentIndex] = stimuliArray[currentIndex].replace(":continue,arrête", ":arrête,continue");
         }
         return stimuliArray;
@@ -641,8 +641,8 @@ public class ManipulatedContours {
         contextMenu.setBranchOnGetParam(true, "A choice must be provided out of the following:<br/>");
         wizardData.addScreen(contextMenu);
 
-        final WizardVideoAudioOptionStimulusScreen randomStimuliTagsScreenC = new WizardVideoAudioOptionStimulusScreen("stimuli", false, stimuliList.toArray(new String[]{}), false, true, randomStimuliTags, 1000, repeatCount(), 20, false, 100, "", "", true);
-        final WizardVideoAudioOptionStimulusScreen randomStimuliTagsScreenN = new WizardVideoAudioOptionStimulusScreen("stimuli", false, stimuliList.toArray(new String[]{}), false, false, randomStimuliTags, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final WizardVideoAudioOptionStimulusScreen randomStimuliTagsScreenC = new WizardVideoAudioOptionStimulusScreen("stimuliC", false, stimuliList.toArray(new String[]{}), false, true, randomStimuliTags, 1000, repeatCount(), 20, false, 100, "", "", true);
+        final WizardVideoAudioOptionStimulusScreen randomStimuliTagsScreenN = new WizardVideoAudioOptionStimulusScreen("stimuliN", false, stimuliList.toArray(new String[]{}), false, false, randomStimuliTags, 1000, repeatCount(), 20, false, 100, "", "", true);
         randomStimuliTagsScreenC.setShowProgress(true);
         randomStimuliTagsScreenC.setShowHurryIndicator(false);
         randomStimuliTagsScreenN.setShowProgress(true);
@@ -670,9 +670,10 @@ public class ManipulatedContours {
         final WizardEditUserScreen wizardFeedbackScreen = new WizardEditUserScreen();
         wizardFeedbackScreen.setScreenText("D'après vous, quel est le thème/but de cette expérience?");
         wizardFeedbackScreen.setSendData(true);
+        wizardFeedbackScreen.setNextButton("Suivant");
         wizardFeedbackScreen.setOn_Error_Text("Impossible de contacter le serveur, vérifiez votre connexion Internet s'il vous plaît.");
         wizardFeedbackScreen.setCustomFields(new String[]{
-            "feedBack::[\\s.]'{'3,'}':Entrez au moins trois lettres."
+            "feedBack::['\\\\'S'\\\\'s]'{'3,'}':Entrez au moins trois lettres."
         });
         wizardData.addScreen(wizardFeedbackScreen);
 
