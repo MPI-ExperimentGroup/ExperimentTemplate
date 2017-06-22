@@ -200,7 +200,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenTextInfo(int index) {
-        return new String[]{"Next Stimulus Button Label (when Allow Free Text is enabled)", "Validation Regex (when Allow Free Text is enabled)", "Validation Challenge (when Allow Free Text is enabled)", "Allowed Char Codes (when Allow Free Text is enabled)", "Next Button HotKey (when Allow Free Text is enabled)", "Free Text Hotkey"}[index];
+        return new String[]{"Next Stimulus Button Label (when Allow Free Text is enabled)", "Validation Regex (when Allow Free Text is enabled)", "Validation Challenge (when Allow Free Text is enabled)", "Allowed Char Codes (when Allow Free Text is enabled)", "Next Button HotKey (when Allow Free Text is enabled)", "Free Text Hotkey", "Storage field used for stimuli allocation URL parameters"}[index];
     }
 
     @Override
