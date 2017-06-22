@@ -80,6 +80,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         this.wizardScreenData.setScreenBoolean(0, useCodeVideo);
         this.wizardScreenData.setScreenBoolean(1, useCodeAudio);
         this.wizardScreenData.setStimuliRandomTags(randomStimuliTags);
+        this.wizardScreenData.setScreenText(5, null);
         setStimulusMsDelay(stimulusMsDelay);
         this.wizardScreenData.setStimuliCount(maxStimuli);
         this.wizardScreenData.setRepeatCount(repeatCount);
@@ -146,6 +147,14 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
 
     private String getFreeTextHotKey(WizardScreenData wizardScreenData) {
         return wizardScreenData.getScreenText(4);
+    }
+
+    public void setRandomTagField(String randomTagField) {
+        this.wizardScreenData.setScreenText(5, randomTagField);
+    }
+
+    private String getRandomTagField(WizardScreenData wizardScreenData) {
+        return wizardScreenData.getScreenText(5);
     }
 
     private boolean isUseCodeVideo(WizardScreenData wizardScreenData) {
@@ -222,10 +231,13 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
             for (String randomTag : storedWizardScreenData.getStimuliRandomTags()) {
                 randomGrouping.addRandomTag(randomTag);
             }
-            final String metadataFieldname = "groupAllocation_" + storedWizardScreenData.getScreenTag();
+            final String metadataFieldname = (getRandomTagField(storedWizardScreenData) != null) ? getRandomTagField(storedWizardScreenData) : "groupAllocation_" + storedWizardScreenData.getScreenTag();
             randomGrouping.setStorageField(metadataFieldname);
             loadStimuliFeature.setRandomGrouping(randomGrouping);
-            experiment.getMetadata().add(new Metadata(metadataFieldname, metadataFieldname, ".*", ".", false, null));
+            final Metadata storageMetadata = new Metadata(metadataFieldname, metadataFieldname, ".*", ".", false, null);
+            if (!experiment.getMetadata().contains(storageMetadata)) {
+                experiment.getMetadata().add(storageMetadata);
+            }
         }
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(isRandomiseStimuli(storedWizardScreenData)));
@@ -240,7 +252,9 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
 
         if (isShowProgress(storedWizardScreenData)) {
             // todo: remove after testing or parameterise
-            hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
+            final PresenterFeature showStimulusProgress = new PresenterFeature(FeatureType.showStimulusProgress, null);
+//            showStimulusProgress.addFeatureAttributes(FeatureAttribute.styleName, "");
+            hasMoreStimulusFeature.getPresenterFeatureList().add(showStimulusProgress);
         }
 //        if (isAllowFreeText(storedWizardScreenData)) {
 //            hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
