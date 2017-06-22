@@ -643,6 +643,8 @@ public class ManipulatedContours {
 
         final WizardVideoAudioOptionStimulusScreen randomStimuliTagsScreenC = new WizardVideoAudioOptionStimulusScreen("stimuliC", false, stimuliList.toArray(new String[]{}), false, true, randomStimuliTags, 1000, repeatCount(), 20, false, 100, "", "", true);
         final WizardVideoAudioOptionStimulusScreen randomStimuliTagsScreenN = new WizardVideoAudioOptionStimulusScreen("stimuliN", false, stimuliList.toArray(new String[]{}), false, false, randomStimuliTags, 1000, repeatCount(), 20, false, 100, "", "", true);
+        randomStimuliTagsScreenC.setRandomTagField("stimuli");
+        randomStimuliTagsScreenN.setRandomTagField("stimuli");
         randomStimuliTagsScreenC.setShowProgress(true);
         randomStimuliTagsScreenC.setShowHurryIndicator(false);
         randomStimuliTagsScreenN.setShowProgress(true);
