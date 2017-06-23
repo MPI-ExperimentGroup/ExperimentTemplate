@@ -410,11 +410,13 @@ table#screenExample td, .stimulusHelpPanel .gwt-Button, .stimulusHelpText, .popu
 }
 
 /*.menuTable .gwt-HTML,*/
-.menuTable.gwt-HTML .highlightedText {
+.menuTable.gwt-HTML.highlightedText,
+.gwt-HTML.groupMessageLabel {
     text-align: center;
 }
 
-.gwt-HTML.highlightedText {
+.gwt-HTML.highlightedText,
+.gwt-HTML.groupMessageLabel {
     font-weight: bold; 
     text-align: center;
     /*text-transform: uppercase;*/
