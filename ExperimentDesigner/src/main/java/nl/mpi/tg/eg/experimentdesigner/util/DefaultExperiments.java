@@ -28,6 +28,7 @@ import nl.mpi.tg.eg.experimentdesigner.dao.MetadataRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterFeatureRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterScreenRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PublishEventRepository;
+import nl.mpi.tg.eg.experimentdesigner.dao.TranslationRepository;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.condition0Tag;
 import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.condition1Tag;
@@ -57,8 +58,10 @@ public class DefaultExperiments {
             PresenterFeatureRepository presenterFeatureRepository,
             MetadataRepository metadataRepository,
             ExperimentRepository experimentRepository,
-            PublishEventRepository eventRepository) {
-        new DefaultTranslations().insertTranslations();
+            PublishEventRepository eventRepository,
+            TranslationRepository translationRepository) {
+        final DefaultTranslations defaultTranslations = new DefaultTranslations(translationRepository);
+        defaultTranslations.insertTranslations();
         experimentRepository.save(getSentveri_exp3Experiment());
         experimentRepository.save(new DobesAnnotator().getExperiment());
         experimentRepository.save(getAllOptionsExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
@@ -67,7 +70,7 @@ public class DefaultExperiments {
         experimentRepository.save(new ShawiFieldKit().getShawiExperiment());
         experimentRepository.save(new Sara01().getExperiment());
         experimentRepository.save(new FactOrFiction().getExperiment());
-        experimentRepository.save(new SynQuiz2().getExperiment());
+        experimentRepository.save(defaultTranslations.applyTranslations(new SynQuiz2().getExperiment()));
         experimentRepository.save(new RdExperiment02().getExperiment());
         experimentRepository.save(new NblExperiment01().getExperiment());
         experimentRepository.save(new HRExperiment01().getExperiment());
