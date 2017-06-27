@@ -17,6 +17,10 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
@@ -24,6 +28,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
+import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
 
 /**
  * @since Jun 16, 2017 10:30:28 AM (creation date)
@@ -50,6 +55,17 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
 //            this.wizardScreenData.getMenuWizardScreenData().add(0, alternateNextScreen.getWizardScreenData());
 //        }
 //    }
+    public WizardStimuliJsonMetadataScreen(String[] metadataStrings) {
+        super(WizardScreenEnum.WizardStimuliJsonMetadataScreen, "JsonMetadata", "JsonMetadata", "JsonMetadata");
+        final List<Stimulus> stimuliList = new ArrayList<>();
+        final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{"metadata"}));
+        for (String metadataString : metadataStrings) {
+            final Stimulus stimulus = new Stimulus(metadataString, null, null, null, metadataString, null, 0, tagSet, null, null);
+            stimuliList.add(stimulus);
+        }
+        this.wizardScreenData.setStimuli(stimuliList);
+    }
+
     @Override
     public String getScreenTextInfo(int index) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -82,6 +98,7 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
     public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.stimulus);
+        experiment.appendUniqueStimuli(storedWizardScreenData.getStimuli());
         if (storedWizardScreenData.getScreenText(0) != null) {
             storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
         }
@@ -104,8 +121,16 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
             metadataField.addFeatureAttributes(FeatureAttribute.fieldName, metadata.getPostName());
             hasMoreStimulusFeature.getPresenterFeatureList().add(metadataField);
         }
-        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.prevStimulusButton, "Previous"));
-        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.nextStimulusButton, "Next"));
+        final PresenterFeature prevStimulusButton = new PresenterFeature(FeatureType.prevStimulusButton, "Previous");
+        prevStimulusButton.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
+        prevStimulusButton.addFeatureAttributes(FeatureAttribute.eventTag, "prevStimulusButton");
+        prevStimulusButton.addFeatureAttributes(FeatureAttribute.hotKey, "-1");
+        hasMoreStimulusFeature.getPresenterFeatureList().add(prevStimulusButton);
+        final PresenterFeature nextStimulusButton = new PresenterFeature(FeatureType.nextStimulusButton, "Next");
+        nextStimulusButton.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
+        nextStimulusButton.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusButton");
+        nextStimulusButton.addFeatureAttributes(FeatureAttribute.hotKey, "-1");
+        hasMoreStimulusFeature.getPresenterFeatureList().add(nextStimulusButton);
         loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
         final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.htmlText, "No stimuli found");
