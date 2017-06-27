@@ -49,7 +49,7 @@ public class StorageFullPresenter extends LocalStoragePresenter implements Prese
 
     @Override
     protected void setContent(final AppEventListner appEventListner) {
-        ((ComplexView) simpleView).addHighlightedText(messages.errorScreenText(errorMessage));
+        ((ComplexView) simpleView).addHtmlText(messages.errorScreenText(errorMessage), "highlightedText");
         ((ComplexView) simpleView).addPadding();
         ((ComplexView) simpleView).addPadding();
         ((ComplexView) simpleView).addText("Framework For Interactive Experiments\n" + "Version: " + version.majorVersion() + "."
