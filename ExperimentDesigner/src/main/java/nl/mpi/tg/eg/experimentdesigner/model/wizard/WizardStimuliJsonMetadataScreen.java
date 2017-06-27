@@ -85,6 +85,15 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
         if (storedWizardScreenData.getScreenText(0) != null) {
             storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
         }
+        final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadAllStimulus, null);
+        loadStimuliFeature.addStimulusTag("metadata");
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, "Metadata");
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "false");
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "1");
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, "0");
+        storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(loadStimuliFeature);
+        final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
+        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
         for (Metadata metadata : storedWizardScreenData.getMetadataFields()) {
             experiment.getMetadata().add(metadata);
             // todo: this metadataFieldConnection use needs to be replaced with wizard parameters
@@ -93,21 +102,15 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
                 metadataField.addFeatureAttributes(FeatureAttribute.linkedFieldName, "workerId");
             }
             metadataField.addFeatureAttributes(FeatureAttribute.fieldName, metadata.getPostName());
-            storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(metadataField);
+            hasMoreStimulusFeature.getPresenterFeatureList().add(metadataField);
         }
-//        if (storedWizardScreenData.getMetadataFields().isEmpty()) {
-//            presenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMetadataFields, null));
-//        }
-//        final PresenterFeature saveMetadataButton = new PresenterFeature(FeatureType.saveMetadataButton, storedWizardScreenData.getNextButton()[0]);
-//        saveMetadataButton.addFeatureAttributes(FeatureAttribute.sendData, Boolean.toString(storedWizardScreenData.getScreenBoolean(0)));
-//        saveMetadataButton.addFeatureAttributes(FeatureAttribute.networkErrorMessage, storedWizardScreenData.getOn_Error_Text());
-//        final PresenterFeature onErrorFeature = new PresenterFeature(FeatureType.onError, null);
-//        saveMetadataButton.getPresenterFeatureList().add(onErrorFeature);
-//        final PresenterFeature onSuccessFeature = new PresenterFeature(FeatureType.onSuccess, null);
-//        final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.autoNextPresenter, null);
-//        onSuccessFeature.getPresenterFeatureList().add(menuButtonFeature);
-//        saveMetadataButton.getPresenterFeatureList().add(onSuccessFeature);
-//        storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(saveMetadataButton);
+        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.prevStimulusButton, "Previous"));
+        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.nextStimulusButton, "Next"));
+        loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
+        final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
+        final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.htmlText, "No stimuli found");
+        endOfStimulusFeature.getPresenterFeatureList().add(autoNextPresenter);
+        loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
         if (storedWizardScreenData.getScreenText(1) != null && storedWizardScreenData.getMenuWizardScreenData().size() > 0) {
             storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
             if (storedWizardScreenData.getScreenText(1) != null) {
