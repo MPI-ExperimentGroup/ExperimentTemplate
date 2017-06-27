@@ -94,7 +94,7 @@
                                     <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
                                 </pause>
                             </stimulusImage>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A:-:B:-:C:-:D">
                             <submitGroupEvent/>
@@ -150,7 +150,7 @@
                         <groupNetworkActivity groupRole="-:B,D:-:-:A,C:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                                 <responseCorrect msToNext="0">
@@ -184,7 +184,7 @@
                         <groupNetworkActivity groupRole="-:-:A,C,B,D:-:-:A,C,B,D">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -260,7 +260,7 @@
                         <groupNetworkActivity groupRole="-:C,D:-:-:A,B:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                                 <responseCorrect msToNext="0">
@@ -294,7 +294,7 @@
                         <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -370,7 +370,7 @@
                         <groupNetworkActivity groupRole="-:D,C:-:-:A,B:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                                 <responseCorrect msToNext="0">
@@ -404,7 +404,7 @@
                         <groupNetworkActivity groupRole="-:-:A,B,D,C:-:-:A,B,D,C">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -480,7 +480,7 @@
                         <groupNetworkActivity groupRole="-:B,D:-:-:A,C:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                                 <responseCorrect msToNext="0">
@@ -514,7 +514,7 @@
                         <groupNetworkActivity groupRole="-:-:A,C,B,D:-:-:A,C,B,D">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -590,7 +590,7 @@
                         <groupNetworkActivity groupRole="-:C,D:-:-:A,B:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                                 <responseCorrect msToNext="0">
@@ -624,7 +624,7 @@
                         <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -700,7 +700,7 @@
                         <groupNetworkActivity groupRole="-:D,C:-:-:A,B:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                                 <responseCorrect msToNext="0">
@@ -734,7 +734,7 @@
                         <groupNetworkActivity groupRole="-:-:A,B,D,C:-:-:A,B,D,C">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -810,7 +810,7 @@
                         <groupNetworkActivity groupRole="-:B,D:-:-:A,C:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                                 <responseCorrect msToNext="0">
@@ -844,7 +844,7 @@
                         <groupNetworkActivity groupRole="-:-:A,C,B,D:-:-:A,C,B,D">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -963,7 +963,7 @@
                                     <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
                                 </pause>
                             </stimulusImage>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A:-:B:-:C:-:D:-:E:-:F:-:G:-:H">
                             <submitGroupEvent/>
@@ -1019,7 +1019,7 @@
                         <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                                 <responseCorrect msToNext="0">
@@ -1053,7 +1053,7 @@
                         <groupNetworkActivity groupRole="-:-:A,C,E,G,B,D,F,H:-:-:A,C,E,G,B,D,F,H">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -1129,7 +1129,7 @@
                         <groupNetworkActivity groupRole="-:H,D,F,B:-:-:A,E,C,G:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                                 <responseCorrect msToNext="0">
@@ -1163,7 +1163,7 @@
                         <groupNetworkActivity groupRole="-:-:A,E,C,G,H,D,F,B:-:-:A,E,C,G,H,D,F,B">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -1239,7 +1239,7 @@
                         <groupNetworkActivity groupRole="-:D,F,B,H:-:-:A,G,E,C:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                                 <responseCorrect msToNext="0">
@@ -1273,7 +1273,7 @@
                         <groupNetworkActivity groupRole="-:-:A,G,E,C,D,F,B,H:-:-:A,G,E,C,D,F,B,H">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -1349,7 +1349,7 @@
                         <groupNetworkActivity groupRole="-:C,D,G,H:-:-:A,B,E,F:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                                 <responseCorrect msToNext="0">
@@ -1383,7 +1383,7 @@
                         <groupNetworkActivity groupRole="-:-:A,B,E,F,C,D,G,H:-:-:A,B,E,F,C,D,G,H">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -1459,7 +1459,7 @@
                         <groupNetworkActivity groupRole="-:E,D,F,C:-:-:A,H,B,G:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                                 <responseCorrect msToNext="0">
@@ -1493,7 +1493,7 @@
                         <groupNetworkActivity groupRole="-:-:A,H,B,G,E,D,F,C:-:-:A,H,B,G,E,D,F,C">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -1569,7 +1569,7 @@
                         <groupNetworkActivity groupRole="-:F,D,B,H:-:-:A,G,C,E:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                                 <responseCorrect msToNext="0">
@@ -1603,7 +1603,7 @@
                         <groupNetworkActivity groupRole="-:-:A,G,C,E,F,D,B,H:-:-:A,G,C,E,F,D,B,H">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -1679,7 +1679,7 @@
                         <groupNetworkActivity groupRole="-:G,H,C,F:-:-:A,B,E,D:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                                 <responseCorrect msToNext="0">
@@ -1713,7 +1713,7 @@
                         <groupNetworkActivity groupRole="-:-:A,B,E,D,G,H,C,F:-:-:A,B,E,D,G,H,C,F">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -1832,7 +1832,7 @@
                         <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                                 <responseCorrect msToNext="0">
@@ -1866,7 +1866,7 @@
                         <groupNetworkActivity groupRole="-:-:A,C,E,G,B,D,F,H:-:-:A,C,E,G,B,D,F,H">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -1942,7 +1942,7 @@
                         <groupNetworkActivity groupRole="-:H,D,F,B:-:-:A,E,C,G:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                                 <responseCorrect msToNext="0">
@@ -1976,7 +1976,7 @@
                         <groupNetworkActivity groupRole="-:-:A,E,C,G,H,D,F,B:-:-:A,E,C,G,H,D,F,B">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -2052,7 +2052,7 @@
                         <groupNetworkActivity groupRole="-:D,F,B,H:-:-:A,G,E,C:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                                 <responseCorrect msToNext="0">
@@ -2086,7 +2086,7 @@
                         <groupNetworkActivity groupRole="-:-:A,G,E,C,D,F,B,H:-:-:A,G,E,C,D,F,B,H">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -2162,7 +2162,7 @@
                         <groupNetworkActivity groupRole="-:C,D,G,H:-:-:A,B,E,F:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                                 <responseCorrect msToNext="0">
@@ -2196,7 +2196,7 @@
                         <groupNetworkActivity groupRole="-:-:A,B,E,F,C,D,G,H:-:-:A,B,E,F,C,D,G,H">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -2272,7 +2272,7 @@
                         <groupNetworkActivity groupRole="-:E,D,F,C:-:-:A,H,B,G:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                                 <responseCorrect msToNext="0">
@@ -2306,7 +2306,7 @@
                         <groupNetworkActivity groupRole="-:-:A,H,B,G,E,D,F,C:-:-:A,H,B,G,E,D,F,C">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -2382,7 +2382,7 @@
                         <groupNetworkActivity groupRole="-:F,D,B,H:-:-:A,G,C,E:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                                 <responseCorrect msToNext="0">
@@ -2416,7 +2416,7 @@
                         <groupNetworkActivity groupRole="-:-:A,G,C,E,F,D,B,H:-:-:A,G,C,E,F,D,B,H">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -2492,7 +2492,7 @@
                         <groupNetworkActivity groupRole="-:G,H,C,F:-:-:A,B,E,D:-">
                             <clearPage/>
                             <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
                                 <responseCorrect msToNext="0">
@@ -2526,7 +2526,7 @@
                         <groupNetworkActivity groupRole="-:-:A,B,E,D,G,H,C,F:-:-:A,B,E,D,G,H,C,F">
                             <clearPage/>
                             <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
-                            <groupMessageLabel/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
