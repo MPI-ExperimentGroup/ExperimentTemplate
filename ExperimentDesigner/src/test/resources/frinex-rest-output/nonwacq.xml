@@ -1,5 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment appNameDisplay="NonWacq" appNameInternal="nonwacq" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="true" textFontSize="17">
-    <metadata/>
+    <metadata>
+        <field controlledMessage="Please enter at least the characters." controlledRegex=".'{'3,'}'" postName="DateCreated" preventServerDuplicates="false" registrationField="DateCreated"/>
+        <field controlledMessage="Please enter at least the characters." controlledRegex=".'{'3,'}'" postName="DateSaved" preventServerDuplicates="false" registrationField="DateSaved"/>
+        <field controlledMessage="Please enter at least the characters." controlledRegex=".'{'3,'}'" postName="Coder" preventServerDuplicates="false" registrationField="Coder"/>
+        <field controlledMessage="Please enter at least the characters." controlledRegex=".'{'3,'}'" postName="ChildId" preventServerDuplicates="false" registrationField="ChildId"/>
+        <field controlledMessage="Please enter at least the characters." controlledRegex=".'{'3,'}'" postName="Informant" preventServerDuplicates="false" registrationField="Informant"/>
+        <field controlledMessage="Please enter at least the characters." controlledRegex=".'{'3,'}'" postName="StimulusId" preventServerDuplicates="false" registrationField="StimulusId"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="ChildSpeaks" preventServerDuplicates="false" registrationField="ChildSpeaks"/>
+        <field controlledMessage="Please enter at least the characters." controlledRegex=".'{'3,'}'" postName="WhoSpeaks" preventServerDuplicates="false" registrationField="WhoSpeaks"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Understandable" preventServerDuplicates="false" registrationField="Understandable"/>
+        <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="IsChildAddressed" preventServerDuplicates="false" registrationField="IsChildAddressed"/>
+        <field controlledMessage="Please enter at least the characters." controlledRegex=".'{'3,'}'" postName="WhichLanguage" preventServerDuplicates="false" registrationField="WhichLanguage"/>
+        <field controlledMessage="Please enter at least the characters." controlledRegex=".'{'3,'}'" postName="WhichLanguage" preventServerDuplicates="false" registrationField="WhichLanguage"/>
+        <field controlledMessage="Please enter at least the characters." controlledRegex=".'{'3,'}'" postName="LanguageLat" preventServerDuplicates="false" registrationField="LanguageLat"/>
+        <field controlledMessage="Please enter at least the characters." controlledRegex=".'{'3,'}'" postName="LanguageLon" preventServerDuplicates="false" registrationField="LanguageLon"/>
+        <field controlledMessage="Please enter at least the characters." controlledRegex=".'{'3,'}'" postName="TimesPlayed" preventServerDuplicates="false" registrationField="TimesPlayed"/>
+        <field controlledMessage="Please enter at least the characters." controlledRegex=".'{'3,'}'" postName="TimesContextPlayed" preventServerDuplicates="false" registrationField="TimesContextPlayed"/>
+    </metadata>
+    <presenter displayOrder="1" menuLabel="Terug" type="stimulus" self="Gegevens" title="Gegevens">
+        <loadAllStimulus eventTag="Metadata" randomise="false" repeatRandomWindow="0" repeatCount="1">
+            <hasMoreStimulus>
+                <showStimulusProgress/>
+                <stimulusMetadataField fieldName="DateCreated"/>
+                <stimulusMetadataField fieldName="DateSaved"/>
+                <stimulusMetadataField fieldName="Coder"/>
+                <stimulusMetadataField fieldName="ChildId"/>
+                <stimulusMetadataField fieldName="Informant"/>
+                <stimulusMetadataField fieldName="StimulusId"/>
+                <stimulusMetadataField fieldName="ChildSpeaks"/>
+                <stimulusMetadataField fieldName="WhoSpeaks"/>
+                <stimulusMetadataField fieldName="Understandable"/>
+                <stimulusMetadataField fieldName="IsChildAddressed"/>
+                <stimulusMetadataField fieldName="WhichLanguage"/>
+                <stimulusMetadataField fieldName="WhichLanguage"/>
+                <stimulusMetadataField fieldName="LanguageLat"/>
+                <stimulusMetadataField fieldName="LanguageLon"/>
+                <stimulusMetadataField fieldName="TimesPlayed"/>
+                <stimulusMetadataField fieldName="TimesContextPlayed"/>
+                <prevStimulusButton featureText="Previous"/>
+                <nextStimulusButton featureText="Next"/>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <htmlText featureText="No stimuli found"/>
+            </endOfStimulus>
+            <stimuli>
+                <tag>metadata</tag>
+            </stimuli>
+        </loadAllStimulus>
+    </presenter>
     <stimuli/>
 </experiment>
