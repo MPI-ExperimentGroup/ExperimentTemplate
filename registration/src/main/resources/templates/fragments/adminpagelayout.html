@@ -27,7 +27,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <meta charset="UTF-8"/>
         <link type="text/css" rel="stylesheet" href="../../../webapp/adminpages.css"/>
         <script th:fragment="tableHeaderScript">
-/*<![CDATA[*/
+
+            // @done: for some reason emails are shown with url encoidng: test%40bla.bla
+            // @todo: prevent history/duplicates for most views
+            // @done: add paging of the results to the participant listing
+            // @todo: add field searching to the participant listing
+            // @done: lock the table header so that it stays visible when the user scrolls
+            // @todo: table header needs to show a short name with the full string shown on mouse over-->
+            /*<![CDATA[*/
             $(document).ready(function () {
                 var tableFloatingHeaderTop = $('#tableFloatingHeader').offset().top;
                 $("<tr id=\"tablePaddingHeader\" style=\"position: static; top: 0px; left: 0px;\"><th>&nbsp;</th></tr>").insertBefore("#tableFloatingHeader");
@@ -78,23 +85,23 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <ul>
                 <li style="display: inline;" th:class="${pageData.first}? 'disabled' : ''">
                     <span th:if='${pageData.first}'>First</span>
-                    <a th:if='${not pageData.first}' th:href="${#httpServletRequest.requestURI} + '?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;page=0'">First</a><!--'@{(page=0,size=${pageData.size})}-->
+                    <a th:if='${not pageData.first}' th:href="${#httpServletRequest.requestURI} + '?' + ${#httpServletRequest.queryString.replaceFirst('[&amp;]?page=[0-9]*','')} + '&amp;page=0'">First</a><!--'@{(page=0,size=${pageData.size})}-->
                 </li>
                 <li style="display: inline;" th:class="${pageData.first}? '' : 'disabled'">
                     <span th:if='${pageData.first}'>&lt;&lt;</span>
-                    <a th:if='${not pageData.first}' th:href="${#httpServletRequest.requestURI} + '?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;page=' + ${pageData.number-1}" title='Go to previous page'>&lt;&lt;</a>
+                    <a th:if='${not pageData.first}' th:href="${#httpServletRequest.requestURI} + '?' + ${#httpServletRequest.queryString.replaceFirst('[&amp;]?page=[0-9]*','')} + '&amp;page=' + ${pageData.number-1}" title='Go to previous page'>&lt;&lt;</a>
                 </li>
                 <li style="display: inline;" th:each="item : ${#numbers.sequence(pageData.number - 10, pageData.number + 10)}" th:class="${item}? 'active' : ''">
                     <span th:if='${item eq pageData.number}' th:text='${item}'>1</span>
-                    <a th:if='${item ne pageData.number and item ge 0 and item lt pageData.totalPages}' th:href="${#httpServletRequest.requestURI} + '?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;page='+${item}"><span th:text='${item}'>1</span></a>
+                    <a th:if='${item ne pageData.number and item ge 0 and item lt pageData.totalPages}' th:href="${#httpServletRequest.requestURI} + '?' + ${#httpServletRequest.queryString.replaceFirst('[&amp;]?page=[0-9]*','')} + '&amp;page='+${item}"><span th:text='${item}'>1</span></a>
                 </li>
                 <li style="display: inline;" th:class="${not pageData.last}? '' : 'disabled'">
                     <span th:if='${pageData.last}'>&gt;&gt;</span>
-                    <a th:if='${not pageData.last}' th:href="${#httpServletRequest.requestURI} + '?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;page=' + ${pageData.number+1}" title='Go to next page'>&gt;&gt;</a>
+                    <a th:if='${not pageData.last}' th:href="${#httpServletRequest.requestURI} + '?' + ${#httpServletRequest.queryString.replaceFirst('[&amp;]?page=[0-9]*','')} + '&amp;page=' + ${pageData.number+1}" title='Go to next page'>&gt;&gt;</a>
                 </li>
                 <li style="display: inline;" th:class="${pageData.last}? 'disabled' : ''">
                     <span th:if='${pageData.last}'>Last</span>
-                    <a th:if="${not pageData.last}" th:href="${#httpServletRequest.requestURI} + '?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;page=' + ${pageData.totalPages-1}">Last</a>
+                    <a th:if="${not pageData.last}" th:href="${#httpServletRequest.requestURI} + '?' + ${#httpServletRequest.queryString.replaceFirst('[&amp;]?page=[0-9]*','')} + '&amp;page=' + ${pageData.totalPages-1}">Last</a>
                 </li>
             </ul>
         </div>
