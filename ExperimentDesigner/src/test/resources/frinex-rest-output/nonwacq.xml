@@ -12,11 +12,11 @@
         <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="Understandable" preventServerDuplicates="false" registrationField="Understandable"/>
         <field controlledMessage="Please enter true or false." controlledRegex="true|false" postName="IsChildAddressed" preventServerDuplicates="false" registrationField="IsChildAddressed"/>
         <field controlledMessage="Please enter at least the characters." controlledRegex=".'{'3,'}'" postName="WhichLanguage" preventServerDuplicates="false" registrationField="WhichLanguage"/>
-        <field controlledMessage="Please enter at least the characters." controlledRegex=".'{'3,'}'" postName="WhichLanguage" preventServerDuplicates="false" registrationField="WhichLanguage"/>
         <field controlledMessage="Please enter at least the characters." controlledRegex=".'{'3,'}'" postName="LanguageLat" preventServerDuplicates="false" registrationField="LanguageLat"/>
         <field controlledMessage="Please enter at least the characters." controlledRegex=".'{'3,'}'" postName="LanguageLon" preventServerDuplicates="false" registrationField="LanguageLon"/>
         <field controlledMessage="Please enter at least the characters." controlledRegex=".'{'3,'}'" postName="TimesPlayed" preventServerDuplicates="false" registrationField="TimesPlayed"/>
         <field controlledMessage="Please enter at least the characters." controlledRegex=".'{'3,'}'" postName="TimesContextPlayed" preventServerDuplicates="false" registrationField="TimesContextPlayed"/>
+        <field controlledMessage="Please enter your login code." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Login code"/>
     </metadata>
     <presenter displayOrder="1" menuLabel="Terug" type="stimulus" self="Gegevens" title="Gegevens">
         <loadAllStimulus eventTag="Metadata" randomise="false" repeatRandomWindow="0" repeatCount="1">
@@ -33,13 +33,12 @@
                 <stimulusMetadataField fieldName="Understandable"/>
                 <stimulusMetadataField fieldName="IsChildAddressed"/>
                 <stimulusMetadataField fieldName="WhichLanguage"/>
-                <stimulusMetadataField fieldName="WhichLanguage"/>
                 <stimulusMetadataField fieldName="LanguageLat"/>
                 <stimulusMetadataField fieldName="LanguageLon"/>
                 <stimulusMetadataField fieldName="TimesPlayed"/>
                 <stimulusMetadataField fieldName="TimesContextPlayed"/>
-                <prevStimulusButton featureText="Previous"/>
-                <nextStimulusButton featureText="Next"/>
+                <prevStimulusButton featureText="Previous" eventTag="prevStimulusButton" hotKey="-1" repeatIncorrect="false"/>
+                <nextStimulusButton featureText="Next" eventTag="nextStimulusButton" hotKey="-1" repeatIncorrect="false"/>
             </hasMoreStimulus>
             <endOfStimulus>
                 <htmlText featureText="No stimuli found"/>
@@ -49,5 +48,20 @@
             </stimuli>
         </loadAllStimulus>
     </presenter>
-    <stimuli/>
+    <presenter displayOrder="2" menuLabel="About Screen" type="debug" self="about" title="About Screen">
+        <versionData/>
+        <eraseLocalStorageButton/>
+        <localStorageData/>
+    </presenter>
+    <stimuli>
+        <stimulus identifier="TestOne" label="TestOne" pauseMs="0">
+            <tag>metadata</tag>
+        </stimulus>
+        <stimulus identifier="TestTwo" label="TestTwo" pauseMs="0">
+            <tag>metadata</tag>
+        </stimulus>
+        <stimulus identifier="TestThree" label="TestThree" pauseMs="0">
+            <tag>metadata</tag>
+        </stimulus>
+    </stimuli>
 </experiment>
