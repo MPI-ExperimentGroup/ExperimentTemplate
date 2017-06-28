@@ -774,7 +774,7 @@
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocationRound_6___4">
-                    <tag>version1round5</tag>
+                    <tag>version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -884,7 +884,7 @@
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocationRound_7___4">
-                    <tag>version1round5</tag>
+                    <tag>version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -927,7 +927,7 @@
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocationRound_8___4">
-                    <tag>version1round5</tag>
+                    <tag>version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
