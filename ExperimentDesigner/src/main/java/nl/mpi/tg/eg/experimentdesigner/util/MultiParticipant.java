@@ -149,9 +149,9 @@ public class MultiParticipant {
             {"3", "A,D|B,C", "play", "version1round3"},
             {"4", "A,B|C,D", "play", "version1round4"},
             {"5", "A,C|B,D", "play", "version1round5"},
-            {"6", "A,D|B,C", "play", "version1round5"},
-            {"7", "A,B|C,D", "play", "version1round5"},
-            {"8", "A|B|C|D", "test", "version1round5"}
+            {"6", "A,D|B,C", "play", "version1"},
+            {"7", "A,B|C,D", "play", "version1"},
+            {"8", "A|B|C|D", "test", "version1"}
         };
         WizardMultiParticipantScreen roundOfFourScreenOuter = null;
         for (String[] currentChannel : groupOfFourCommunicationChannels) {
@@ -237,6 +237,8 @@ public class MultiParticipant {
     }
 
     protected WizardMultiParticipantScreen getTestRound(final String screenName, final String groupMembers4, final String communicationChannels, final String textEntryPhaseRoles, final String groupRecordSubmitionPhaseRoles) {
+        // done: test round needs to submit dat to the group table even though its not a group interaction
+        // done: in the testing round there are cases where the entered text is not recorded but the interaction is!!!
         return new WizardMultiParticipantScreen(screenName,
                 groupMembers4,
                 communicationChannels, textEntryPhaseRoles,
