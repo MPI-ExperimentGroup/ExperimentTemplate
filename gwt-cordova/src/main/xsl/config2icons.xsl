@@ -10,7 +10,7 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
     <xsl:output method="text" encoding="UTF-8" />
-<!--     <xsl:variable name="iconSizes">
+    <!--     <xsl:variable name="iconSizes">
         <element>
             <iconSize>512x512</iconSize>
             <destinationFile>icon.png</destinationFile>
@@ -40,11 +40,16 @@
         </xsl:for-each>
     </xsl:template>-->
     <xsl:template match="/">
+        <xsl:text>if [ ! -f icon.png ]; then&#xa;</xsl:text>
         <xsl:text>convert -gravity center -size 512x512 -background "</xsl:text>
-        <xsl:value-of select="experiment/@backgroundColour" /><xsl:text>" -fill "</xsl:text>
-        <xsl:value-of select="experiment/@primaryColour4" /><xsl:text>" -bordercolor "</xsl:text>
-        <xsl:value-of select="experiment/@primaryColour2" /><xsl:text>" -border 10x10 -font /Library/Fonts/Arial\ Black.ttf -pointsize 80 label:"</xsl:text>
-        <xsl:value-of select="replace(experiment/@appNameDisplay, ' ', '\\ ')" /><xsl:text>\nFrinex\nFieldKit" icon.png
-</xsl:text>
+        <xsl:value-of select="experiment/@backgroundColour" />
+        <xsl:text>" -fill "</xsl:text>
+        <xsl:value-of select="experiment/@primaryColour4" />
+        <xsl:text>" -bordercolor "</xsl:text>
+        <xsl:value-of select="experiment/@primaryColour2" />
+        <xsl:text>" -border 10x10 -font /Library/Fonts/Arial\ Black.ttf -pointsize 80 label:"</xsl:text>
+        <xsl:value-of select="replace(experiment/@appNameDisplay, ' ', '\\ ')" />
+        <xsl:text>\nFrinex\nFieldKit" icon.png&#xa;</xsl:text>
+        <xsl:text>fi&#xa;</xsl:text>
     </xsl:template>
 </xsl:stylesheet>
