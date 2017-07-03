@@ -107,7 +107,7 @@ public abstract class LocalStoragePresenter extends AbstractPresenter {
         final Storage localStorage = Storage.getLocalStorageIfSupported();
         for (int itemIndex = 0; itemIndex < localStorage.getLength(); itemIndex++) {
             final String key = localStorage.key(itemIndex);
-            ((ComplexView) simpleView).addHighlightedText(key);
+            ((ComplexView) simpleView).addHtmlText(key, "highlightedText");
             ((ComplexView) simpleView).addText(localStorage.getItem(key));
         }
     }
