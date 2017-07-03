@@ -19,8 +19,9 @@
         <field controlledMessage="Please enter your login code." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Login code"/>
     </metadata>
     <presenter displayOrder="1" menuLabel="Terug" type="stimulus" self="Gegevens" title="Gegevens">
-        <loadAllStimulus eventTag="Metadata" randomise="false" repeatRandomWindow="0" repeatCount="1">
+        <loadSdCardStimulus eventTag="Metadata" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
+                <centrePage/>
                 <showStimulusProgress/>
                 <stimulusMetadataField fieldName="DateCreated"/>
                 <stimulusMetadataField fieldName="DateSaved"/>
@@ -37,6 +38,10 @@
                 <stimulusMetadataField fieldName="LanguageLon"/>
                 <stimulusMetadataField fieldName="TimesPlayed"/>
                 <stimulusMetadataField fieldName="TimesContextPlayed"/>
+                <stimulusLabel/>
+                <showStimulusProgress/>
+                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" matchingRegex="metadata" replacement="context" animate="none" maxWidth="80"/>
+                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" animate="none" maxWidth="80"/>
                 <prevStimulusButton featureText="Previous" eventTag="prevStimulusButton" hotKey="-1" repeatIncorrect="false"/>
                 <nextStimulusButton featureText="Next" eventTag="nextStimulusButton" hotKey="-1" repeatIncorrect="false"/>
             </hasMoreStimulus>
@@ -46,7 +51,7 @@
             <stimuli>
                 <tag>metadata</tag>
             </stimuli>
-        </loadAllStimulus>
+        </loadSdCardStimulus>
     </presenter>
     <presenter displayOrder="2" menuLabel="About Screen" type="debug" self="about" title="About Screen">
         <versionData/>
