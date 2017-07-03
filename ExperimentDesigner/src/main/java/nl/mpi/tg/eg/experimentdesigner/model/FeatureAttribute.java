@@ -38,6 +38,7 @@ public enum FeatureAttribute {
     validationRegex,
     allowedCharCodes,
     matchingRegex,
+    replacement,
     src,
     link,
     percentOfPage,
