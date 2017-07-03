@@ -9,7 +9,7 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-gui</artifactId>
     <packaging>war</packaging>
-    <version>0.1.1133-testing</version>
+    <version>0.1.1215-testing</version>
     <name>FRINEX GWT-Cordova Template</name>
     <parent>
         <groupId>nl.mpi.tg.eg.frinex</groupId>
@@ -71,6 +71,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>nl.mpi.tg.eg.frinex</groupId>
+            <artifactId>common</artifactId>
+            <version>0.1-testing-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>nl.mpi</groupId>
             <artifactId>kinoath-diagram</artifactId>
             <version>1.6-pretesting-SNAPSHOT</version>
@@ -101,7 +106,7 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>stomp-websocket</artifactId>
-            <version>2.3.3</version>
+            <version>2.3.3-1</version>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
