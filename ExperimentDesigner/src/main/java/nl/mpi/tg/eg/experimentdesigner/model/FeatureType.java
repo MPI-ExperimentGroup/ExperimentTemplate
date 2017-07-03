@@ -118,7 +118,7 @@ public enum FeatureType {
     belowThreshold(true, false, null),
     row(true, false, null),
     column(true, false, null),
-    stimulusImage(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, animate}), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
+    stimulusImage(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, animate, matchingRegex, replacement}), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
     stimulusCodeImage(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, codeFormat, animate}),
     stimulusCodeVideo(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, codeFormat}),
     stimulusCodeAudio(true, false, new FeatureAttribute[]{msToNext, codeFormat}),
