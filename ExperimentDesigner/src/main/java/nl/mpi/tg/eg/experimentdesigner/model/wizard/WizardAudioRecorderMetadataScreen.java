@@ -98,8 +98,12 @@ public class WizardAudioRecorderMetadataScreen extends AbstractWizardScreen {
         final PresenterFeature startTagFeature = new PresenterFeature(FeatureType.startAudioRecorderTag, null);
         startTagFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
         hasMoreStimulusFeature.getPresenterFeatureList().add(startTagFeature);
-        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
-        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
+        final PresenterFeature showStimulusProgress = new PresenterFeature(FeatureType.showStimulusProgress, null);
+//        showStimulusProgress.addFeatureAttributes(FeatureAttribute.styleName, "");
+        hasMoreStimulusFeature.getPresenterFeatureList().add(showStimulusProgress);
+        final PresenterFeature stimulusLabel = new PresenterFeature(FeatureType.stimulusLabel, null);
+//        stimulusLabel.addFeatureAttributes(FeatureAttribute.styleName, "");
+        hasMoreStimulusFeature.getPresenterFeatureList().add(stimulusLabel);
         final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.actionButton, storedWizardScreenData.getNextButton()[0]);
         final PresenterFeature endAudioRecorderTagFeature = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
         endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
