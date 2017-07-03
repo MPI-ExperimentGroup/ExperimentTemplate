@@ -15,19 +15,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-
 package nl.mpi.tg.eg.experimentdesigner.util;
 
 import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
+import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAnimatedStimuliScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardGridStimulusScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardStimuliJsonMetadataScreen;
 
 /**
  * @since Mar 7, 2017 11:44:39 AM (creation date)
@@ -43,11 +38,29 @@ public class NonWacq {
         wizardData.setShowMenuBar(true);
         wizardData.setTextFontSize(17);
         wizardData.setObfuscateScreenNames(false);
-//        final WizardStimuliJsonMetadataScreen wizardEditUserScreen = new WizardStimuliJsonMetadataScreen();
-//        wizardEditUserScreen.setScreenTitle("Gegevens");
-//        wizardEditUserScreen.setMenuLabel("Terug");
-//        wizardEditUserScreen.setScreenTag("Gegevens");
-//        wizardEditUserScreen.setNextButton("Volgende");
+        final WizardStimuliJsonMetadataScreen jsonMetadataScreenrScreen = new WizardStimuliJsonMetadataScreen(new String[]{"TestOne", "TestTwo", "TestThree"});
+        jsonMetadataScreenrScreen.setScreenTitle("Gegevens");
+        jsonMetadataScreenrScreen.setMenuLabel("Terug");
+        jsonMetadataScreenrScreen.setScreenTag("Gegevens");
+        jsonMetadataScreenrScreen.setNextButton("Volgende");
+        jsonMetadataScreenrScreen.getWizardScreenData().getMetadataFields();
+
+        jsonMetadataScreenrScreen.addStimuliMetadataField("DateCreated", "DateCreated");
+        jsonMetadataScreenrScreen.addStimuliMetadataField("DateSaved", "DateSaved");
+        jsonMetadataScreenrScreen.addStimuliMetadataField("Coder", "Coder");
+        jsonMetadataScreenrScreen.addStimuliMetadataField("ChildId", "ChildId");
+        jsonMetadataScreenrScreen.addStimuliMetadataField("Informant", "Informant");
+        jsonMetadataScreenrScreen.addStimuliMetadataField("StimulusId", "StimulusId");
+        jsonMetadataScreenrScreen.addStimuliBooleanMetadataField("ChildSpeaks", "ChildSpeaks");
+        jsonMetadataScreenrScreen.addStimuliMetadataField("WhoSpeaks", "WhoSpeaks");
+        jsonMetadataScreenrScreen.addStimuliBooleanMetadataField("Understandable", "Understandable");
+        jsonMetadataScreenrScreen.addStimuliBooleanMetadataField("IsChildAddressed", "IsChildAddressed");
+        jsonMetadataScreenrScreen.addStimuliMetadataField("WhichLanguage", "WhichLanguage");
+        jsonMetadataScreenrScreen.addStimuliMetadataField("LanguageLat", "LanguageLat");
+        jsonMetadataScreenrScreen.addStimuliMetadataField("LanguageLon", "LanguageLon");
+        jsonMetadataScreenrScreen.addStimuliMetadataField("TimesPlayed", "TimesPlayed");
+        jsonMetadataScreenrScreen.addStimuliMetadataField("TimesContextPlayed", "TimesContextPlayed");
+
 //        wizardEditUserScreen.setSendData(true);
 //        wizardEditUserScreen.setOn_Error_Text("Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.");
 //        wizardEditUserScreen.setCustomFields(new String[]{
@@ -66,11 +79,14 @@ public class NonWacq {
 //        wizardAboutScreen.setBackWizardScreen(wizardEditUserScreen);
 //        wizardEditUserScreen.setNextWizardScreen(wizardAboutScreen);
 //        wizardData.addScreen(wizardAboutScreen);
-//        wizardData.addScreen(wizardEditUserScreen);
+        wizardData.addScreen(jsonMetadataScreenrScreen);
+        wizardData.addScreen(new WizardAboutScreen(true));
         return wizardData;
     }
 
     public Experiment getExperiment() {
-        return wizardController.getExperiment(getWizardData());
+        final Experiment experiment = wizardController.getExperiment(getWizardData());
+        experiment.getMetadata().add(new Metadata("workerId", "Login code", ".'{'3,'}'", "Please enter your login code.", false, null));
+        return experiment;
     }
 }
