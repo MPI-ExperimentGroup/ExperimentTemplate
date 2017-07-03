@@ -17,6 +17,8 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlType;
 import static nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardKinDiagramScreen.ExampleType.EditableEntitesDiagram;
 import static nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardKinDiagramScreen.ExampleType.PredefinedKinDiagram;
 import static nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardKinDiagramScreen.ExampleType.SavedKinDiagram;
@@ -25,6 +27,8 @@ import static nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardKinDiagramScree
  * @since Oct 25(new ()), 2016 2:21:49 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
+//@XmlType
+//@XmlEnum(String.class)
 public enum WizardScreenEnum {
     WizardDebugAboutScreen(new WizardAboutScreen(true)),
     WizardAboutScreen(new WizardAboutScreen(false)),
@@ -34,6 +38,7 @@ public enum WizardScreenEnum {
     WizardAudioTestScreen(new WizardAudioTestScreen()),
     WizardCompletionScreen(new WizardCompletionScreen()),
     WizardEditUserScreen(new WizardEditUserScreen()),
+    WizardStimuliJsonMetadataScreen(new WizardStimuliJsonMetadataScreen()),
     WizardExistingUserCheckScreen(new WizardExistingUserCheckScreen()),
     WizardPredefinedKinDiagram(new WizardKinDiagramScreen(PredefinedKinDiagram)),
     WizardSavedKinDiagram(new WizardKinDiagramScreen(SavedKinDiagram)),
@@ -43,6 +48,8 @@ public enum WizardScreenEnum {
     WizardRandomStimulusScreen(new WizardRandomStimulusScreen()),
     WizardSelectUserScreen(new WizardSelectUserScreen()),
     WizardStimulusScreen(new WizardStimulusScreen()),
+//    WizardGridStimulusScreen(new WizardGridStimulusScreen()),
+    WizardScoreThresholdScreen(new WizardScoreThresholdScreen()),
     WizardSubmitDataScreen(new WizardSubmitDataScreen()),
     WizardTextScreen(new WizardTextScreen()),
     WizardVideoAudioOptionStimulusScreen(new WizardVideoAudioOptionStimulusScreen()),
