@@ -102,14 +102,16 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
         if (storedWizardScreenData.getScreenText(0) != null) {
             storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
         }
-        final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadAllStimulus, null);
+        final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadSdCardStimulus, null);
         loadStimuliFeature.addStimulusTag("metadata");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, "Metadata");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "false");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "1");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, "0");
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, "1000");
         storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(loadStimuliFeature);
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
+        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
         for (Metadata metadata : storedWizardScreenData.getMetadataFields()) {
             experiment.getMetadata().add(metadata);
@@ -121,6 +123,25 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
             metadataField.addFeatureAttributes(FeatureAttribute.fieldName, metadata.getPostName());
             hasMoreStimulusFeature.getPresenterFeatureList().add(metadataField);
         }
+        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
+        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
+        final PresenterFeature contextFeature = new PresenterFeature(FeatureType.stimulusImage, null);
+        contextFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
+        contextFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
+        contextFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "80");
+        contextFeature.addFeatureAttributes(FeatureAttribute.animate, "none");
+        contextFeature.addFeatureAttributes(FeatureAttribute.matchingRegex, "metadata");
+        contextFeature.addFeatureAttributes(FeatureAttribute.replacement, "context");
+        contextFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+        hasMoreStimulusFeature.getPresenterFeatureList().add(contextFeature);
+        final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
+        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
+        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
+        imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "80");
+        imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+        imageFeature.addFeatureAttributes(FeatureAttribute.animate, "none");
+        hasMoreStimulusFeature.getPresenterFeatureList().add(imageFeature);
+
         final PresenterFeature prevStimulusButton = new PresenterFeature(FeatureType.prevStimulusButton, "Previous");
         prevStimulusButton.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
         prevStimulusButton.addFeatureAttributes(FeatureAttribute.eventTag, "prevStimulusButton");
