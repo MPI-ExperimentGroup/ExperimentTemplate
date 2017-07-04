@@ -335,9 +335,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void countdownLabel(final String timesUpLabel, final int postLoadMs, final String msLabelFormat, final TimedStimulusListener timedStimulusListener) {
+        countdownLabel(timesUpLabel, postLoadMs, msLabelFormat, null, timedStimulusListener);
+    }
+
+    protected void countdownLabel(final String timesUpLabel, final int postLoadMs, final String msLabelFormat, String styleName, final TimedStimulusListener timedStimulusListener) {
         final Duration labelDuration = new Duration();
         final DateTimeFormat formatter = DateTimeFormat.getFormat(msLabelFormat);
-        final HTML html = ((TimedStimulusView) simpleView).addHtmlText(formatter.format(new Date((long) postLoadMs)));
+        final HTML html = ((TimedStimulusView) simpleView).addHtmlText(formatter.format(new Date((long) postLoadMs)), styleName);
         Timer labelTimer = new Timer() {
             @Override
             public void run() {
@@ -396,13 +400,21 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     public void stimulusLabel() {
+        stimulusLabel(null);
+    }
+
+    public void stimulusLabel(String styleName) {
         final String label = stimulusProvider.getCurrentStimulus().getLabel();
         if (label != null) {
-            ((TimedStimulusView) simpleView).addHtmlText(label);
+            ((TimedStimulusView) simpleView).addHtmlText(label, styleName);
         }
     }
 
     protected void showStimulus(GroupActivityListener groupActivityListener) {
+        if (groupParticipantService != null) {
+            ((ComplexView) simpleView).addText("showStimulus should not be used with the groupParticipantService");
+            throw new UnsupportedOperationException("showStimulus should not be used with the groupParticipantService");
+        }
         final int currentStimulusIndex = stimulusProvider.getCurrentStimulusIndex();
         final String subDirectory = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag());
         localStorage.setStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag() + ((subDirectory != null) ? subDirectory : ""), Integer.toString(currentStimulusIndex));
@@ -410,18 +422,12 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         localStorage.storeUserScore(userResults);
         if (stimulusProvider.hasNextStimulus()) {
             stimulusProvider.nextStimulus();
-            if (groupParticipantService != null) {
-                // @todo: consider the placement of this response data clearing, does this scope cover all cases?      -
-                groupParticipantService.setResponseStimulusId(null);
-                groupParticipantService.setResponseStimulusOptions(null);
-            }
 //            submissionService.submitTagValue(userResults.getUserData().getUserId(), "NextStimulus", stimulusProvider.getCurrentStimulus().getUniqueId(), duration.elapsedMillis());
 //            super.startAudioRecorderTag(STIMULUS_TIER);
             hasMoreStimulusListener.postLoadTimerFired();
 //        } else if (!hasSubdirectories) {
 //            localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "completed-screen-" + getSelfTag(), Boolean.toString(true));
         } else {
-            // message the group message the updated stimuli index that is beyond the end of the list, so that all group memebers know to switch screens
             submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "showStimulus.endOfStimulusListener", stimulusProvider.getCurrentStimulus().getUniqueId() + ":" + stimulusProvider.getCurrentStimulusIndex() + "/" + stimulusProvider.getTotalStimuli(), duration.elapsedMillis()); // todo: this is sent
             endOfStimulusListener.postLoadTimerFired();
         }
@@ -457,7 +463,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         stimulusProvider.pushCurrentStimulusToEnd();
     }
 
-    protected void groupNetwork(final AppEventListner appEventListner, final ApplicationState selfApplicationState, final String groupMembers, final String groupCommunicationChannels, final TimedStimulusListener timedStimulusListener) {
+    protected void groupNetwork(final AppEventListner appEventListner, final ApplicationState selfApplicationState, final String groupMembers, final String groupCommunicationChannels, final int phasesPerStimulus, final TimedStimulusListener timedStimulusListener) {
         if (groupParticipantService == null) {
             final Timer groupKickTimer = new Timer() {
                 @Override
@@ -468,6 +474,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             groupParticipantService = new GroupParticipantService(
                     userResults.getUserData().getUserId().toString(),
                     getSelfTag(), groupMembers, groupCommunicationChannels,
+                    phasesPerStimulus,
                     stimulusProvider.getLoadedStimulusString(),
                     new TimedStimulusListener() {
                 @Override
@@ -485,7 +492,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     ((ComplexView) simpleView).clearPage();
                     ((ComplexView) simpleView).addPadding();
 //                    ((ComplexView) simpleView).addText("connected: " + groupParticipantService.isConnected());
-                    ((ComplexView) simpleView).addHighlightedText("Group not ready");
+                    ((ComplexView) simpleView).addHtmlText("Group not ready", "highlightedText");
                     ((ComplexView) simpleView).addPadding();
                     groupKickTimer.schedule(1000);
                 }
@@ -506,6 +513,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 @Override
                 public void postLoadTimerFired() {
                     if (groupParticipantService.getStimulusIndex() < stimulusProvider.getTotalStimuli()) {
+                        if (groupParticipantService.getStimulusIndex() != stimulusProvider.getCurrentStimulusIndex()) {
+                            groupParticipantService.setResponseStimulusId(null);
+                            groupParticipantService.setResponseStimulusOptions(null);
+                        }
                         // when a valid message has been received the current stimuli needs to be synchronised with the group
                         stimulusProvider.setCurrentStimuliIndex(groupParticipantService.getStimulusIndex());
                     } else {
@@ -553,7 +564,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                         }
                     });
                 }
-            });
+            }
+            //                    , endOfStimulusListener
+            );
             groupParticipantService.joinGroupNetwork(serviceLocations.groupServerUrl());
         } else {
             timedStimulusListener.postLoadTimerFired();
@@ -615,32 +628,57 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void scoreLabel() {
-        ((TimedStimulusView) simpleView).addHtmlText("Current Score:" + userResults.getUserData().getCurrentScore() + "/" + userResults.getUserData().getPotentialScore());
-        ((TimedStimulusView) simpleView).addHtmlText("Best Score:" + userResults.getUserData().getBestScore());
+        scoreLabel(null);
+    }
+
+    protected void scoreLabel(String styleName) {
+        ((TimedStimulusView) simpleView).addHtmlText("Current Score:" + userResults.getUserData().getCurrentScore() + "/" + userResults.getUserData().getPotentialScore(), styleName);
+        ((TimedStimulusView) simpleView).addHtmlText("Best Score:" + userResults.getUserData().getBestScore(), styleName);
     }
 
     protected void groupChannelScoreLabel() {
+        groupChannelScoreLabel(null);
+    }
+
+    protected void groupChannelScoreLabel(String styleName) {
         if (groupParticipantService != null) {
-            ((TimedStimulusView) simpleView).addHtmlText("Channel Score: " + groupParticipantService.getChannelScore());
+            ((TimedStimulusView) simpleView).addHtmlText(groupParticipantService.getChannelScore(), styleName);
         }
     }
 
     protected void groupMessageLabel() {
-        ((TimedStimulusView) simpleView).addHtmlText(groupParticipantService.getMessageString());
+        groupMessageLabel(null);
+    }
+
+    protected void groupMessageLabel(String styleName) {
+        ((TimedStimulusView) simpleView).addHtmlText(groupParticipantService.getMessageString(), styleName);
     }
 
     protected void groupScoreLabel() {
+        groupScoreLabel(null);
+
+    }
+
+    protected void groupScoreLabel(String styleName) {
         if (groupParticipantService != null) {
-            ((TimedStimulusView) simpleView).addHtmlText("Group Score: " + groupParticipantService.getGroupScore());
+            ((TimedStimulusView) simpleView).addHtmlText(groupParticipantService.getGroupScore(), styleName);
         }
     }
 
     protected void groupMemberLabel() {
-        ((TimedStimulusView) simpleView).addHtmlText("groupMemberLabel: " + groupParticipantService.getUserLabel());
+        groupMemberLabel(null);
+    }
+
+    protected void groupMemberLabel(String styleName) {
+        ((TimedStimulusView) simpleView).addHtmlText(groupParticipantService.getUserLabel(), styleName);
     }
 
     protected void groupMemberCodeLabel() {
-        ((TimedStimulusView) simpleView).addHtmlText("groupMemberCodeLabel: " + groupParticipantService.getMemberCode());
+        groupMemberCodeLabel(null);
+    }
+
+    protected void groupMemberCodeLabel(String styleName) {
+        ((TimedStimulusView) simpleView).addHtmlText(groupParticipantService.getMemberCode(), styleName);
     }
 
     protected void groupResponseFeedback(final AppEventListner appEventListner, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener) {
@@ -650,6 +688,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             incorrectListener.postLoadTimerFired();
         }
 
+    }
+
+    protected void stimulusMetadataField(MetadataField metadataField) {
+        ((TimedStimulusView) simpleView).addHtmlText(metadataField.getFieldLabel());
     }
 
     protected void stimulusFreeText(String validationRegex, String validationChallenge, final String allowedCharCodes, final int hotKey) {
@@ -717,14 +759,18 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
-        stimulusImage(stimulusProvider.getCurrentStimulus(), percentOfPage, maxHeight, maxWidth, animateType, null, postLoadMs, timedStimulusListener, null);
+        stimulusImage(stimulusProvider.getCurrentStimulus(), percentOfPage, maxHeight, maxWidth, animateType, null, postLoadMs, null, null, timedStimulusListener, null);
+    }
+
+    protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, String regex, String replacement, final TimedStimulusListener timedStimulusListener) {
+        stimulusImage(stimulusProvider.getCurrentStimulus(), percentOfPage, maxHeight, maxWidth, animateType, null, postLoadMs, regex, replacement, timedStimulusListener, null);
     }
 
     protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final Integer fixedPositionY, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
-        stimulusImage(stimulusProvider.getCurrentStimulus(), percentOfPage, maxHeight, maxWidth, animateType, fixedPositionY, postLoadMs, timedStimulusListener, null);
+        stimulusImage(stimulusProvider.getCurrentStimulus(), percentOfPage, maxHeight, maxWidth, animateType, fixedPositionY, postLoadMs, null, null, timedStimulusListener, null);
     }
 
-    protected void stimulusImage(final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final Integer fixedPositionY, int postLoadMs, final TimedStimulusListener timedStimulusListener, final TimedStimulusListener clickedStimulusListener) {
+    protected void stimulusImage(final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final Integer fixedPositionY, int postLoadMs, String regex, String replacement, final TimedStimulusListener timedStimulusListener, final TimedStimulusListener clickedStimulusListener) {
         if (currentStimulus.hasImage()) {
             final String image = currentStimulus.getImage();
             final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
@@ -774,7 +820,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             };
             ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, postLoadMs, shownStimulusListener, timedStimulusListener);
         } else if (currentStimulus.getLabel() != null) {
-            ((TimedStimulusView) simpleView).addHtmlText(currentStimulus.getLabel());
+            ((TimedStimulusView) simpleView).addHtmlText(currentStimulus.getLabel(), null);
             // send label shown tag
             submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), "StimulusLabelShown", currentStimulus.getUniqueId(), currentStimulus.getLabel(), duration.elapsedMillis());
             timedStimulusListener.postLoadTimerFired();
@@ -1017,14 +1063,14 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         while (matchingStimuliGroup.getNextStimulus(stimulusProvider)) {
             yPos += ySpacing;
             if (matchingStimuliGroup.isCorrect(stimulusProvider.getCurrentStimulus())) {
-                stimulusImage(stimulusProvider.getCurrentStimulus(), 0, maxWidth, maxWidth, animateType, yPos - (maxWidth / 2), postLoadCorrectMs, new TimedStimulusListener() {
+                stimulusImage(stimulusProvider.getCurrentStimulus(), 0, maxWidth, maxWidth, animateType, yPos - (maxWidth / 2), postLoadCorrectMs, null, null, new TimedStimulusListener() {
                     @Override
                     public void postLoadTimerFired() {
 
                     }
                 }, correctListener);
             } else {
-                stimulusImage(stimulusProvider.getCurrentStimulus(), 0, maxWidth, maxWidth, animateType, yPos - (maxWidth / 2), postLoadIncorrectMs, new TimedStimulusListener() {
+                stimulusImage(stimulusProvider.getCurrentStimulus(), 0, maxWidth, maxWidth, animateType, yPos - (maxWidth / 2), postLoadIncorrectMs, null, null, new TimedStimulusListener() {
                     @Override
                     public void postLoadTimerFired() {
 
@@ -1100,7 +1146,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     public void showStimulusProgress() {
-        ((TimedStimulusView) simpleView).addHtmlText((stimulusProvider.getCurrentStimulusIndex() + 1) + " / " + stimulusProvider.getTotalStimuli());
+        showStimulusProgress(null);
+    }
+
+    public void showStimulusProgress(String styleName) {
+        ((TimedStimulusView) simpleView).addHtmlText((stimulusProvider.getCurrentStimulusIndex() + 1) + " / " + stimulusProvider.getTotalStimuli(), styleName);
 //        ((TimedStimulusView) simpleView).addText("showStimulusProgress: " + duration.elapsedMillis() + "ms");
     }
 
@@ -1148,7 +1198,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void groupResponseStimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
-        stimulusImage(stimulusProvider.getStimuliFromString(groupParticipantService.getResponseStimulusId()), percentOfPage, maxHeight, maxWidth, animateType, null, postLoadMs, timedStimulusListener, null);
+        stimulusImage(stimulusProvider.getStimuliFromString(groupParticipantService.getResponseStimulusId()), percentOfPage, maxHeight, maxWidth, animateType, null, postLoadMs, null, null, timedStimulusListener, null);
     }
 
     protected void sendGroupEndOfStimuli(final String eventTag) {
@@ -1200,6 +1250,29 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 stimulusFreeTextList.clear();
                 buttonList.clear();
                 nextButtonEventListnerList.clear(); // clear this now to prevent refires of the event
+            }
+        };
+        nextButtonEventListnerList.add(eventListner);
+        ((TimedStimulusView) simpleView).addOptionButton(eventListner);
+    }
+
+    protected void prevStimulusButton(final String eventTag, final String buttonLabel, final boolean repeatIncorrect, final int hotKey) {
+        PresenterEventListner eventListner = new PresenterEventListner() {
+
+            @Override
+            public String getLabel() {
+                return buttonLabel + " (not yet implemented)";
+            }
+
+            @Override
+            public int getHotKey() {
+                return hotKey;
+            }
+
+            @Override
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+                nextButtonEventListnerList.clear(); // clear this now to prevent refires of the event
+//                prevStimulus(eventTag, repeatIncorrect);
             }
         };
         nextButtonEventListnerList.add(eventListner);
