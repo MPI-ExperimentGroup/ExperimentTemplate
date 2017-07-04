@@ -240,7 +240,7 @@ public class MultiParticipant {
         // done: test round needs to submit dat to the group table even though its not a group interaction
         // done: in the testing round there are cases where the entered text is not recorded but the interaction is!!!
         return new WizardMultiParticipantScreen(screenName,
-                groupMembers4,
+                groupMembers4, 2,
                 communicationChannels, textEntryPhaseRoles,
                 "All 23 stimuli are presented all participants in random order similar to the producer screen",
                 "",
@@ -265,7 +265,7 @@ public class MultiParticipant {
 
     protected WizardMultiParticipantScreen getNamingRound(final String screenName, final String groupMembers4, final String communicationChannels, final String textEntryPhaseRoles, final String waitingForProducerPhaseRoles, final String outcomeDisplayedPhaseRoles, final String groupRecordSubmitionPhaseRoles) {
         return new WizardMultiParticipantScreen(screenName,
-                groupMembers4,
+                groupMembers4, 2,
                 communicationChannels, textEntryPhaseRoles,
                 "The producer sees the stimulus and enters some text", waitingForProducerPhaseRoles,
                 true,
@@ -318,7 +318,7 @@ public class MultiParticipant {
         final String gridWaitPhaseRoles = "-:" + phaseRoleA + ":-:-:" + phaseRoleB + ":-";
 
         return new WizardMultiParticipantScreen(screenName,
-                groupMembers,
+                groupMembers, 3,
                 communicationChannels,
                 textEntryPhaseRoles,
                 textEntryPhaseText,
