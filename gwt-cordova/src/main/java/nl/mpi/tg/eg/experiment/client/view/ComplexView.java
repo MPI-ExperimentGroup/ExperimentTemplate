@@ -127,18 +127,24 @@ public class ComplexView extends SimpleView {
     }
 
     public HTML addHtmlText(String textString) {
+        return addHtmlText(textString, null);
+    }
+
+    public HTML addHtmlText(String textString, String styleName) {
         HTML html = new HTML(new SafeHtmlBuilder().appendHtmlConstant(textString).toSafeHtml());
+        if (styleName != null) {
+            html.addStyleName(styleName);
+        }
         getActivePanel().add(html);
         return html;
     }
 
-    public HTML addHighlightedText(String textString) {
-        HTML html = new HTML(new SafeHtmlBuilder().appendEscapedLines(textString).toSafeHtml());
-        html.addStyleName("highlightedText");
-        getActivePanel().add(html);
-        return html;
-    }
-
+//    public HTML addHighlightedText(String textString) {
+//        HTML html = new HTML(new SafeHtmlBuilder().appendEscapedLines(textString).toSafeHtml());
+//        html.addStyleName("highlightedText");
+//        getActivePanel().add(html);
+//        return html;
+//    }
     public void addPadding() {
         getActivePanel().add(new HTML("&nbsp;"));
     }
