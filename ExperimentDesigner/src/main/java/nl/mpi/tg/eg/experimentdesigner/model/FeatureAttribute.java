@@ -86,5 +86,7 @@ public enum FeatureAttribute {
     groupMembers,
     groupCommunicationChannels,
     incrementPhase,
+    //    incrementStimulus,
+    phasesPerStimulus,
     scoreValue
 }
