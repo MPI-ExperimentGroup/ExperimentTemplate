@@ -203,8 +203,12 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
         startTagFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
         parentFeature.getPresenterFeatureList().add(startTagFeature);
         parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
-        parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
-        parentFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
+        final PresenterFeature stimulusLabel = new PresenterFeature(FeatureType.stimulusLabel, null);
+//        stimulusLabel.addFeatureAttributes(FeatureAttribute.styleName, "");
+        parentFeature.getPresenterFeatureList().add(stimulusLabel);
+        final PresenterFeature showStimulusProgress = new PresenterFeature(FeatureType.showStimulusProgress, null);
+//        showStimulusProgress.addFeatureAttributes(FeatureAttribute.styleName, "");
+        parentFeature.getPresenterFeatureList().add(showStimulusProgress);
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
         imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, imageFeatureValues.getPercentOfPage());
         imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, imageFeatureValues.getPercentOfPage());
