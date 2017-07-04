@@ -41,6 +41,7 @@ public class GroupParticipantService {
     private final String groupCommunicationChannels;
     private final TimedStimulusListener connectedListener;
     private final TimedStimulusListener groupNotReadyListener;
+//    private final TimedStimulusListener endOfStimulusListener;
     private boolean isConnected = false;
     private List<GroupActivityListener> lastFiredListnerList = null;
 
@@ -50,6 +51,7 @@ public class GroupParticipantService {
 //    private final String allMemberCodes = null;
     private String memberCode = null;
     private String groupId = null;
+    private int phasesPerStimulus = 0;
     private String stimulusId = null;
     private String stimuliListLoaded;
     private String stimuliListGroup;
@@ -67,10 +69,13 @@ public class GroupParticipantService {
     private String channelScore = null;
     private String groupUUID = null;
 
-    public GroupParticipantService(final String userId, String screenId, String groupMembers, String groupCommunicationChannels, String stimuliListLoaded, TimedStimulusListener connectedListener, TimedStimulusListener groupNotReadyListener, TimedStimulusListener screenResetRequestListner, TimedStimulusListener stimulusSyncListner, TimedStimulusListener groupInfoChangeListner) {
+    public GroupParticipantService(final String userId, String screenId, String groupMembers, String groupCommunicationChannels, final int phasesPerStimulus, String stimuliListLoaded, TimedStimulusListener connectedListener, TimedStimulusListener groupNotReadyListener, TimedStimulusListener screenResetRequestListner, TimedStimulusListener stimulusSyncListner, TimedStimulusListener groupInfoChangeListner
+    //            , TimedStimulusListener endOfStimulusListener
+    ) {
         this.userId = userId;
         this.allMemberCodes = groupMembers;
         this.groupCommunicationChannels = groupCommunicationChannels;
+        this.phasesPerStimulus = phasesPerStimulus;
         this.connectedListener = connectedListener;
         this.groupNotReadyListener = groupNotReadyListener;
         this.screenResetRequestListner = screenResetRequestListner;
@@ -78,6 +83,7 @@ public class GroupParticipantService {
         this.stimulusSyncListner = stimulusSyncListner;
         this.screenId = screenId;
         this.stimuliListLoaded = stimuliListLoaded;
+//        this.endOfStimulusListener = endOfStimulusListener;
     }
 
 //    public void addGroupActivity(final String groupRole, final int requestedPhase, final TimedStimulusListener activityListener) {
@@ -112,6 +118,9 @@ public class GroupParticipantService {
 //        }
 //    }
     public void addGroupActivity(final GroupActivityListener activityListener) {
+//        int phaseCount = activityListener.getGroupRole().split(":").length;
+        // todo: phasesPerStimulus being based on the maximum phaseCount is a bit abitary and could perhaps be an explicit parameter in the experiment configuration
+//        phasesPerStimulus = (phasesPerStimulus >= phaseCount) ? phasesPerStimulus : phaseCount;
         activityListeners.put(activityListener.getGroupRole(), activityListener);
     }
 
@@ -182,7 +191,8 @@ public class GroupParticipantService {
                             if (splitRole.length == 1 /* if there is only one role to this screen then it is ok to refire the last */
                                     || (lastFiredListnerList == null || !lastFiredListnerList.contains(currentListner))) {
                                 this.stimulusId = stimulusId;
-                                this.stimulusIndex = Integer.parseInt(stimulusIndex); // todo check for double adding of stimulus index and or something like that
+//                                this.stimulusIndex = Integer.parseInt(stimulusIndex); // todo check for double adding of stimulus index and or something like that
+                                this.stimulusIndex = currentRequestedPhase / phasesPerStimulus;
                                 this.requestedPhase = currentRequestedPhase;
                                 this.messageString = messageString;
                                 this.messageSenderId = userId;
@@ -197,6 +207,10 @@ public class GroupParticipantService {
                                     // if the stimulusSyncListner has put us at the end of the stimuli list then trigger any phases
                                     currentListner.triggerActivityListener(currentRequestedPhase, splitRole[roleIndex]);
                                     currentFiredListnerList.add(currentListner);
+//                                    if (endOfStimuli) {
+//                                        // if endOfStimuli has changed state here then we must trigger the endOfStimulusListener
+//                                        endOfStimulusListener.postLoadTimerFired();
+//                                    }
                                 }
                             }
                         }
@@ -322,6 +336,7 @@ public class GroupParticipantService {
             {
 //            withCredentials: false,
 //            noCredentials : true
+//            }, "","",
             },
             function (frame) {
             groupParticipantService.@nl.mpi.tg.eg.experiment.client.service.GroupParticipantService::setConnected(Ljava/lang/Boolean;)(@java.lang.Boolean::TRUE);
@@ -377,7 +392,10 @@ public class GroupParticipantService {
                 console.log('contentData: ' + contentData);
                 console.log('error.headers.message: ' + error.headers.message);
             });
-        });
+//        }, function(error) {
+//                console.log('error: ' + error);
+//                console.log('error.headers.message: ' + error.headers.message);
+            });
      }-*/;
 
     public void messageGroup(int originPhase, int incrementPhase, String stimulusId, String stimulusIndex, String messageString, String responseStimulusOptions, String responseStimulusId, int memberScore, String groupRole) {
