@@ -411,10 +411,6 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void showStimulus(GroupActivityListener groupActivityListener) {
-        if (groupParticipantService != null) {
-            ((ComplexView) simpleView).addText("showStimulus should not be used with the groupParticipantService");
-            throw new UnsupportedOperationException("showStimulus should not be used with the groupParticipantService");
-        }
         final int currentStimulusIndex = stimulusProvider.getCurrentStimulusIndex();
         final String subDirectory = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag());
         localStorage.setStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag() + ((subDirectory != null) ? subDirectory : ""), Integer.toString(currentStimulusIndex));
@@ -1173,6 +1169,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void nextStimulus(final String eventTag, final boolean repeatIncorrect) {
+        if (groupParticipantService != null) {
+            ((ComplexView) simpleView).addText("showStimulus should not be used with the groupParticipantService");
+            throw new UnsupportedOperationException("showStimulus should not be used with the groupParticipantService");
+        }        
         for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
             if (!stimulusFreeText.isValid()) {
                 return;
