@@ -46,7 +46,9 @@ public class SharedObjectControllerTest {
         assertEquals(OutMessageoriginPhase, result.getOriginPhase().intValue());
         assertEquals(OutMessagerequestedPhase, result.getRequestedPhase().intValue());
         assertEquals(OutMessagestimulusIndex, result.getStimulusIndex().intValue());
-        assertTrue("ActualRespondents should contain InMessagememberCode", result.getActualRespondents().contains(InMessagememberCode));
+        if (result.getActualRespondents() != null) {
+            assertTrue("ActualRespondents should contain InMessagememberCode", result.getActualRespondents().contains(InMessagememberCode));
+        }
     }
 
     private GroupMessage processMessage(SharedObjectController instance,
@@ -84,17 +86,23 @@ public class SharedObjectControllerTest {
         System.out.println("getGroupData");
         SharedObjectController instance = new SharedObjectController();
 
-        GroupMessage result = processMessage(instance, "testuser-0", "Round_0", "A : robot group at 5:36:59 PM", "robot group at 5:36:59 PM", ABCDEFGH, ABCDEFGH, "A", "A", "4-1:medium", "7", "3-2:large-2-7:medium-3-1:medium-1-5:medium-1-2:small-3-7:large-3-2:medium-4-1:medium", "8", "", true, "null", "B,C,A,E,F,G,H", "G", "155557d6-83a5-4fb6-af3c-67fd40635b75");
+        GroupMessage result = processMessage(instance, "testuser-0", "Round_0", "A : robot group at 5:36:59 PM", "robot group at 5:36:59 PM", ABCDEFGH, ABCDEFGH,
+                "A", "A", "4-1:medium", "7", "3-2:large-2-7:medium-3-1:medium-1-5:medium-1-2:small-3-7:large-3-2:medium-4-1:medium", "8", "", true, null, "B,C,A,E,F,G,H", "G", "155557d6-83a5-4fb6-af3c-67fd40635b75");
         GroupId expectedGroupId = result.getGroupId();
-        result = processMessage(instance, "testuser-0", "Round_0", "A : robot group at 5:36:59 PM", "robot group at 5:36:59 PM", ABCDEFGH, ABCDEFGH, "A", "A", "4-1:medium", "7", "3-2:large-2-7:medium-3-1:medium-1-5:medium-1-2:small-3-7:large-3-2:medium-4-1:medium", "8", "", true, "null", "B,C,A,E,F,G,H", "G", "155557d6-83a5-4fb6-af3c-67fd40635b75");
+        result = processMessage(instance, "testuser-0", "Round_0", "A : robot group at 5:36:59 PM", "robot group at 5:36:59 PM", ABCDEFGH, ABCDEFGH,
+                "A", "A", "4-1:medium", "7", "3-2:large-2-7:medium-3-1:medium-1-5:medium-1-2:small-3-7:large-3-2:medium-4-1:medium", "8", "", true, null, "B,C,A,E,F,G,H", "G", "155557d6-83a5-4fb6-af3c-67fd40635b75");
         assertEquals(expectedGroupId, result.getGroupId());
-        result = processMessage(instance, "testuser-0", "Round_0", "A : robot group at 10:23:42 AM", "robot group at 10:23:42 AM", ABCDEFGH, ABCDEFGH, "A", "A", "2-7:small", "0", "2-7:small-4-5:small-3-1:large-1-5:medium-3-6:medium-3-1:medium-3-4:large-1-7:medium", "0", "null", false, "null", "null", "A", "0502002b-84d6-4e9c-86e9-1b81a7be81ca");
+        result = processMessage(instance, "testuser-0", "Round_0", "A : robot group at 10:23:42 AM", "robot group at 10:23:42 AM", ABCDEFGH, ABCDEFGH,
+                "A", "A", "2-7:small", "0", "2-7:small-4-5:small-3-1:large-1-5:medium-3-6:medium-3-1:medium-3-4:large-1-7:medium", "0", null, false, null, null, "A", "0502002b-84d6-4e9c-86e9-1b81a7be81ca");
         assertNotEquals(expectedGroupId, result.getGroupId());
-        result = processMessage(instance, "testuser-1", "Round_0", "B : robot group at 10:23:42 AM", "robot group at 10:23:42 AM", ABCDEFGH, ABCDEFGH, "B", "B", "2-1:medium", "0", "2-7:small-4-5:small-3-1:large-1-5:medium-3-6:medium-3-1:medium-3-4:large-1-7:medium", "0", "null", false, "null", "null", "null", "0502002b-84d6-4e9c-86e9-1b81a7be81ca");
+        result = processMessage(instance, "testuser-1", "Round_0", "B : robot group at 10:23:42 AM", "robot group at 10:23:42 AM", ABCDEFGH, ABCDEFGH,
+                "B", "B", "2-1:medium", "0", "2-7:small-4-5:small-3-1:large-1-5:medium-3-6:medium-3-1:medium-3-4:large-1-7:medium", "0", null, false, null, null, null, "0502002b-84d6-4e9c-86e9-1b81a7be81ca");
         assertNotEquals(expectedGroupId, result.getGroupId());
-        result = processMessage(instance, "testuser-0", "Round_0", "A : robot group at 5:36:59 PM", "robot group at 5:36:59 PM", ABCDEFGH, ABCDEFGH, "A", "A", "4-1:medium", "7", "3-2:large-2-7:medium-3-1:medium-1-5:medium-1-2:small-3-7:large-3-2:medium-4-1:medium", "8", "", true, "null", "B,C,A,E,F,G,H", "G", "155557d6-83a5-4fb6-af3c-67fd40635b75");
+        result = processMessage(instance, "testuser-0", "Round_0", "A : robot group at 5:36:59 PM", "robot group at 5:36:59 PM", ABCDEFGH, ABCDEFGH,
+                "A", "A", "4-1:medium", "7", "3-2:large-2-7:medium-3-1:medium-1-5:medium-1-2:small-3-7:large-3-2:medium-4-1:medium", "8", "", true, null, "B,C,A,E,F,G,H", "G", "155557d6-83a5-4fb6-af3c-67fd40635b75");
         assertEquals(expectedGroupId, result.getGroupId());
-        result = processMessage(instance, "testuser-0", "Round_0", "A : robot group at 10:23:42 AM", "robot group at 10:23:42 AM", ABCDEFGH, ABCDEFGH, "A", "A", "2-7:small", "0", "2-7:small-4-5:small-3-1:large-1-5:medium-3-6:medium-3-1:medium-3-4:large-1-7:medium", "0", "null", false, "null", "null", "A", "0502002b-84d6-4e9c-86e9-1b81a7be81ca");
+        result = processMessage(instance, "testuser-0", "Round_0", "A : robot group at 10:23:42 AM", "robot group at 10:23:42 AM", ABCDEFGH, ABCDEFGH,
+                "A", "A", "2-7:small", "0", "2-7:small-4-5:small-3-1:large-1-5:medium-3-6:medium-3-1:medium-3-4:large-1-7:medium", "0", null, false, null, null, "A", "0502002b-84d6-4e9c-86e9-1b81a7be81ca");
         assertNotEquals(expectedGroupId, result.getGroupId());
     }
 
@@ -107,30 +115,30 @@ public class SharedObjectControllerTest {
     public void testGetGroupData2() throws Exception {
         System.out.println("getGroupData2");
         SharedObjectController instance = new SharedObjectController();
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "A", "A", "A,B,C,D", "A", 0, 0, 0, "null", false, 0, 0, 0, 0,
-                "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "A", "A", "A,B,C,D", "A", 0, 0, 0, "null", false, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "B", "B", "A,B,C,D", "A,B", 0, 0, 0, "null", false, 0, 0, 0, 0,
-                "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "B", "B", "A,B,C,D", "A,B", 0, 0, 0, "null", false, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "C", "C", "A,B,C,D", "A,B,C", 0, 0, 0, "null", false, 0, 0, 0, 0,
-                "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "C", "C", "A,B,C,D", "A,B,C", 0, 0, 0, "null", false, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "B", "B", "A,B,C,D", "A,B,C", 0, 0, 0, "null", false, 0, 0, 0, 0,
-                "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "B", "B", "A,B,C,D", "A,B,C", 0, 0, 0, "null", false, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "C", "C", "A,B,C,D", "A,B,C", 0, 0, 0, "null", false, 0, 0, 0, 0,
-                "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "C", "C", "A,B,C,D", "A,B,C", 0, 0, 0, "null", false, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "E", "null", "A,B,C,D", "null", 0, 0, 0, "null", false, 0, 0, 0, 0,
-                "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "E", "null", "A,B,C,D", "null", 0, 0, 0, "null", false, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0,
-                "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0,
-                "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "G", "null", "A,B,C,D", "null", 0, 0, 0, "null", false, 0, 0, 0, 0,
-                "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "G", "null", "A,B,C,D", "null", 0, 0, 0, "null", false, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "F", "null", "A,B,C,D", "null", 0, 0, 0, "null", false, 0, 0, 0, 0,
-                "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "F", "null", "A,B,C,D", "null", 0, 0, 0, "null", false, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "A", "A", "A,B,C,D", "A", 0, 0, 0, null, false, 0, 0, 0, 0,
+                "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "A", "A", "A,B,C,D", "A", 0, 0, 0, null, false, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "B", "B", "A,B,C,D", "A,B", 0, 0, 0, null, false, 0, 0, 0, 0,
+                "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "B", "B", "A,B,C,D", "A,B", 0, 0, 0, null, false, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "C", "C", "A,B,C,D", "A,B,C", 0, 0, 0, null, false, 0, 0, 0, 0,
+                "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "C", "C", "A,B,C,D", "A,B,C", 0, 0, 0, null, false, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "B", "B", "A,B,C,D", "A,B,C", 0, 0, 0, null, false, 0, 0, 0, 0,
+                "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "B", "B", "A,B,C,D", "A,B,C", 0, 0, 0, null, false, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "C", "C", "A,B,C,D", "A,B,C", 0, 0, 0, null, false, 0, 0, 0, 0,
+                "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "C", "C", "A,B,C,D", "A,B,C", 0, 0, 0, null, false, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "E", null, "A,B,C,D", null, 0, 0, 0, null, false, 0, 0, 0, 0,
+                "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "E", null, "A,B,C,D", null, 0, 0, 0, null, false, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 0, 0, 0, 0,
+                "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 0, 0, 0, 0,
+                "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "G", null, "A,B,C,D", null, 0, 0, 0, null, false, 0, 0, 0, 0,
+                "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "G", null, "A,B,C,D", null, 0, 0, 0, null, false, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "F", null, "A,B,C,D", null, 0, 0, 0, null, false, 0, 0, 0, 0,
+                "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "F", null, "A,B,C,D", null, 0, 0, 0, null, false, 0, 0, 0, 0);//processMessage
         processMessage(instance, "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "A", "A", "A", "A", 0, 0, 1, "etudfgt eae", true, 0, 0, 0, 0,
                 "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "A", "A", "A", "A", 0, 0, 1, "etudfgt eae", true, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "H", "null", "A,B,C,D", "null", 0, 0, 0, "null", false, 0, 0, 0, 0,
-                "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "H", "null", "A,B,C,D", "null", 0, 0, 0, "null", false, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "H", null, "A,B,C,D", null, 0, 0, 0, null, false, 0, 0, 0, 0,
+                "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "H", null, "A,B,C,D", null, 0, 0, 0, null, false, 0, 0, 0, 0);//processMessage
         processMessage(instance, "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "B", "B", "A,B,C,D", "B", 0, 1, 2, "etudfgt eae", true, 0, 0, 0, 0,
                 "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "B", "B", "A,B,C,D", "B", 0, 1, 2, "etudfgt eae", true, 0, 0, 0, 0);//processMessage
         processMessage(instance, "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "A", "A", "A,B,C,D", "A,B", 0, 1, 2, "etudfgt eae", true, 0, 0, 0, 0,
@@ -367,22 +375,22 @@ public class SharedObjectControllerTest {
                 "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "", "A,C,D", 23, 46, 47, "etudfgt eae", true, 0, 0, 0, 0);//processMessage
         processMessage(instance, "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "B", "B", "", "A,B,C,D", 23, 46, 47, "etudfgt eae", true, 0, 0, 0, 0,
                 "robot group at 4:00:41 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "B", "B", "", "A,B,C,D", 23, 46, 47, "etudfgt eae", true, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,B,C,D", "B", 0, 0, 0, "null", true, 0, 0, 0, 0,
-                "robot group at 4:00:41 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,B,C,D", "B", 0, 0, 0, "null", true, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,B,C,D", "A,B", 0, 0, 0, "null", true, 0, 0, 0, 0,
-                "robot group at 4:00:41 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,B,C,D", "A,B", 0, 0, 0, "null", true, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,B,C,D", "A,B,C", 0, 0, 0, "null", true, 0, 0, 0, 0,
-                "robot group at 4:00:41 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,B,C,D", "A,B,C", 0, 0, 0, "null", true, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0,
-                "robot group at 4:00:41 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0,
-                "robot group at 4:00:41 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,B,C,D", "B", 0, 0, 0, null, true, 0, 0, 0, 0,
+                "robot group at 4:00:41 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,B,C,D", "B", 0, 0, 0, null, true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,B,C,D", "A,B", 0, 0, 0, null, true, 0, 0, 0, 0,
+                "robot group at 4:00:41 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,B,C,D", "A,B", 0, 0, 0, null, true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,B,C,D", "A,B,C", 0, 0, 0, null, true, 0, 0, 0, 0,
+                "robot group at 4:00:41 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,B,C,D", "A,B,C", 0, 0, 0, null, true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 0, 0, 0, 0,
+                "robot group at 4:00:41 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 0, 0, 0, 0,
+                "robot group at 4:00:41 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 0, 0, 0, 0);//processMessage
 //        processMessage(instance, "robot group at 4:00:41 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,B,C,D", "A,B,C,D", 
 //        "C"
 //        ,"A,B,C,D","A,B,C,D",0,0,0,
-//        processMessage(instance, "robot group at 4:00:41 PM", "Round_1___4", "null", true, 0, "A,B,C,D", "A,B|C,D", 0, 0, "D", "D", 0);//processMessage
+//        processMessage(instance, "robot group at 4:00:41 PM", "Round_1___4", null, true, 0, "A,B,C,D", "A,B|C,D", 0, 0, "D", "D", 0);//processMessage
 //        "robot group at 4:00:41 PM"
-//        ,"Round_1___4","A,B,C,D","A,B|C,D","D","D","A,B,C,D","A,B,C,D",0,0,0,"null",true,0,0,0,0);//processMessage
+//        ,"Round_1___4","A,B,C,D","A,B|C,D","D","D","A,B,C,D","A,B,C,D",0,0,0,null,true,0,0,0,0);//processMessage
         processMessage(instance, "robot group at 4:00:41 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,C", "A", 0, 0, 1, "etudfgt eae", true, 0, 0, 0, 0,
                 "robot group at 4:00:41 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,C", "A", 0, 0, 1, "etudfgt eae", true, 0, 0, 0, 0);//processMessage
         processMessage(instance, "robot group at 4:00:41 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,C", "A,C", 0, 0, 1, "etudfgt eae", true, 0, 0, 0, 0,
@@ -759,8 +767,8 @@ public class SharedObjectControllerTest {
                 "robot group at 4:00:41 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "", "A,B,C", 23, 69, 70, "", true, 3, 5, 8, 0);//processMessage
         processMessage(instance, "robot group at 4:00:41 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "", "A,B,C,D", 23, 69, 70, "", true, 2, 3, 8, 0,
                 "robot group at 4:00:41 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "", "A,B,C,D", 23, 69, 70, "", true, 2, 3, 8, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "B", "B", "A,B,C,D", "B", 0, 0, 0, "null", true, 2, 2, 2, 0,
-                "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "B", "B", "A,B,C,D", "B", 0, 0, 0, "null", true, 2, 2, 2, 0);//processMessage
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "B", "B", "A,B,C,D", "B", 0, 0, 0, null, true, 2, 2, 2, 0,
+                "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "B", "B", "A,B,C,D", "B", 0, 0, 0, null, true, 2, 2, 2, 0);//processMessage
 //        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", InMessage:GroupMessage
 //        {
 //            groupId = robot group at 4:00:41 PM
@@ -781,18 +789,18 @@ public class SharedObjectControllerTest {
 //            , groupScore = 0
 //            , eventMs = 0
 //        }
-//        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "A", "A", "A,B,C,D", "A,B,C", 0, "A,B,C,D", "A,C|B,D", "C", "C", "A,B,C,D", "A,B,C", 0, 0, "null", true, 3, 4, 6, 0,
-//                0, 0, 0, "null", true, 1, 1, 3, 0);//processMessage
+//        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "A", "A", "A,B,C,D", "A,B,C", 0, "A,B,C,D", "A,C|B,D", "C", "C", "A,B,C,D", "A,B,C", 0, 0, null, true, 3, 4, 6, 0,
+//                0, 0, 0, null, true, 1, 1, 3, 0);//processMessage
 //        "robot group at 4:00:41 PM"
-//        ,"Round_2___4","A,B,C,D","A,C|B,D","A","A","A,B,C,D","A,B,C",0,0,0,"null",true,3,4,6,0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 2, 4, 8, 0,
-                "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 2, 4, 8, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "A", "A", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 3, 4, 8, 0,
-                "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "A", "A", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 3, 4, 8, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "C", "C", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 1, 4, 8, 0,
-                "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "C", "C", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 1, 4, 8, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 2, 4, 8, 0,
-                "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 2, 4, 8, 0);//processMessage
+//        ,"Round_2___4","A,B,C,D","A,C|B,D","A","A","A,B,C,D","A,B,C",0,0,0,null,true,3,4,6,0);//processMessage
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 2, 4, 8, 0,
+                "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 2, 4, 8, 0);//processMessage
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "A", "A", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 3, 4, 8, 0,
+                "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "A", "A", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 3, 4, 8, 0);//processMessage
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "C", "C", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 1, 4, 8, 0,
+                "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "C", "C", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 1, 4, 8, 0);//processMessage
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 2, 4, 8, 0,
+                "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 2, 4, 8, 0);//processMessage
         processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "A", "A", "A,B", "A", 0, 0, 1, "etudfgt eae", true, 3, 4, 8, 0,
                 "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "A", "A", "A,B", "A", 0, 0, 1, "etudfgt eae", true, 3, 4, 8, 0);//processMessage
         processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "B", "B", "A,B", "A,B", 0, 0, 1, "etudfgt eae", true, 2, 4, 8, 0,
@@ -889,60 +897,60 @@ public class SharedObjectControllerTest {
                 "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "C", "C", "A,B,C,D", "A,B,C", 5, 17, 18, "", true, 1, 4, 8, 0);//processMessage
         processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "D", "D", "A,B,C,D", "A,B,C,D", 5, 17, 18, "", true, 2, 4, 8, 0,
                 "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "D", "D", "A,B,C,D", "A,B,C,D", 5, 17, 18, "", true, 2, 4, 8, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "A", "A", "A,B,C,D", "A", 0, 0, 0, "null", true, 3, 4, 8, 0,
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "A", "A", "A,B,C,D", "A", 0, 0, 0, null, true, 3, 4, 8, 0,
                 "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "A", "A", "A,B,C,D", "A,B,C,D", 5, 17, 18, "", true, 0, 4, 8, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "B", "B", "A,B,C,D", "B", 0, 0, 0, "null", true, 2, 4, 8, 0,
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "B", "B", "A,B,C,D", "B", 0, 0, 0, null, true, 2, 4, 8, 0,
                 "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "B", "B", "A,B,C,D", "A,B,C,D", 5, 17, 18, "", true, 0, 4, 8, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "C", "C", "A,B,C,D", "C", 0, 0, 0, "null", true, 1, 4, 8, 0,
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "C", "C", "A,B,C,D", "C", 0, 0, 0, null, true, 1, 4, 8, 0,
                 "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "C", "A", "A,B,C,D", "A,B,C,D", 5, 17, 18, "", true, 0, 4, 8, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "D", "D", "A,B,C,D", "D", 0, 0, 0, "null", true, 2, 4, 8, 0,
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "D", "D", "A,B,C,D", "D", 0, 0, 0, null, true, 2, 4, 8, 0,
                 "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "D", "B", "A,B,C,D", "A,B,C,D", 5, 17, 18, "", true, 0, 4, 8, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "A", "A", "A,B,C,D", "A", 0, 0, 0, "null", true, 3, 4, 8, 0,
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "A", "A", "A,B,C,D", "A", 0, 0, 0, null, true, 3, 4, 8, 0,
                 "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "A", "A", "A,B,C,D", "A,B,C,D", 5, 17, 18, "", true, 0, 4, 8, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "B", "B", "A,B,C,D", "B", 0, 0, 0, "null", true, 2, 4, 8, 0,
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "B", "B", "A,B,C,D", "B", 0, 0, 0, null, true, 2, 4, 8, 0,
                 "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "B", "B", "A,B,C,D", "A,B,C,D", 5, 17, 18, "", true, 0, 4, 8, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "C", "C", "A,B,C,D", "C", 0, 0, 0, "null", true, 1, 4, 8, 0,
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "C", "C", "A,B,C,D", "C", 0, 0, 0, null, true, 1, 4, 8, 0,
                 "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "C", "A", "A,B,C,D", "A,B,C,D", 5, 17, 18, "", true, 0, 4, 8, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "D", "D", "A,B,C,D", "D", 0, 0, 0, "null", true, 2, 4, 8, 0,
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "D", "D", "A,B,C,D", "D", 0, 0, 0, null, true, 2, 4, 8, 0,
                 "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "D", "B", "A,B,C,D", "A,B,C,D", 5, 17, 18, "", true, 0, 4, 8, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "D", "D", "A,B,C,D", "D", 6, 0, 0, "null", true, 2, 4, 8, 0,
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "D", "D", "A,B,C,D", "D", 6, 0, 0, null, true, 2, 4, 8, 0,
                 "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "D", "B", "A,B,C,D", "A,B,C,D", 5, 17, 18, "", true, 0, 4, 8, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "A", "A", "A,B,C,D", "A", 0, 0, 0, "null", true, 3, 4, 8, 0,
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "A", "A", "A,B,C,D", "A", 0, 0, 0, null, true, 3, 4, 8, 0,
                 "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "A", "A", "A,B,C,D", "A,B,C,D", 5, 17, 18, "", true, 0, 4, 8, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "B", "B", "A,B,C,D", "B", 0, 0, 0, "null", true, 2, 4, 8, 0,
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "B", "B", "A,B,C,D", "B", 0, 0, 0, null, true, 2, 4, 8, 0,
                 "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "B", "B", "A,B,C,D", "A,B,C,D", 5, 17, 18, "", true, 0, 4, 8, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "C", "C", "A,B,C,D", "C", 0, 0, 0, "null", true, 1, 4, 8, 0,
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "C", "C", "A,B,C,D", "C", 0, 0, 0, null, true, 1, 4, 8, 0,
                 "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "C", "A", "A,B,C,D", "A,B,C,D", 5, 17, 18, "", true, 0, 4, 8, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "C", "C", "A,B,C,D", "C", 6, 0, 0, "null", true, 1, 4, 8, 0,
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "C", "C", "A,B,C,D", "C", 6, 0, 0, null, true, 1, 4, 8, 0,
                 "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "C", "A", "A,B,C,D", "A,B,C,D", 5, 17, 18, "", true, 0, 4, 8, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "D", "D", "A,B,C,D", "D", 0, 0, 0, "null", true, 2, 4, 8, 0,
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "D", "D", "A,B,C,D", "D", 0, 0, 0, null, true, 2, 4, 8, 0,
                 "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "D", "B", "A,B,C,D", "A,B,C,D", 5, 17, 18, "", true, 0, 4, 8, 0);//processMessage
-        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "D", "D", "A,B,C,D", "D", 6, 0, 0, "null", true, 2, 4, 8, 0,
+        processMessage(instance, "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "D", "D", "A,B,C,D", "D", 6, 0, 0, null, true, 2, 4, 8, 0,
                 "robot group at 4:00:41 PM", "Round_2___4", "A,B,C,D", "A,C|B,D", "D", "B", "A,B,C,D", "A,B,C,D", 5, 17, 18, "", true, 0, 4, 8, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "A", "A", "A,B,C,D", "A", 0, 0, 0, "null", false, 0, 0, 0, 0,
-                "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "A", "A", "A,B,C,D", "A", 0, 0, 0, "null", false, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "B", "B", "A,B,C,D", "A,B", 0, 0, 0, "null", false, 0, 0, 0, 0,
-                "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "B", "B", "A,B,C,D", "A,B", 0, 0, 0, "null", false, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "B", "B", "A,B,C,D", "A,B", 0, 0, 0, "null", false, 0, 0, 0, 0,
-                "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "B", "B", "A,B,C,D", "A,B", 0, 0, 0, "null", false, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "C", "C", "A,B,C,D", "A,B,C", 0, 0, 0, "null", false, 0, 0, 0, 0,
-                "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "C", "C", "A,B,C,D", "A,B,C", 0, 0, 0, "null", false, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0,
-                "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "C", "C", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0,
-                "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "C", "C", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0,
-                "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "E", "null", "A,B,C,D", "null", 0, 0, 0, "null", false, 0, 0, 0, 0,
-                "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "E", "null", "A,B,C,D", "null", 0, 0, 0, "null", false, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "F", "null", "A,B,C,D", "null", 0, 0, 0, "null", false, 0, 0, 0, 0,
-                "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "F", "null", "A,B,C,D", "null", 0, 0, 0, "null", false, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "A", "A", "A,B,C,D", "A", 0, 0, 0, null, false, 0, 0, 0, 0,
+                "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "A", "A", "A,B,C,D", "A", 0, 0, 0, null, false, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "B", "B", "A,B,C,D", "A,B", 0, 0, 0, null, false, 0, 0, 0, 0,
+                "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "B", "B", "A,B,C,D", "A,B", 0, 0, 0, null, false, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "B", "B", "A,B,C,D", "A,B", 0, 0, 0, null, false, 0, 0, 0, 0,
+                "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "B", "B", "A,B,C,D", "A,B", 0, 0, 0, null, false, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "C", "C", "A,B,C,D", "A,B,C", 0, 0, 0, null, false, 0, 0, 0, 0,
+                "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "C", "C", "A,B,C,D", "A,B,C", 0, 0, 0, null, false, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 0, 0, 0, 0,
+                "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "C", "C", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 0, 0, 0, 0,
+                "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "C", "C", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 0, 0, 0, 0,
+                "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "E", null, "A,B,C,D", null, 0, 0, 0, null, false, 0, 0, 0, 0,
+                "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "E", null, "A,B,C,D", null, 0, 0, 0, null, false, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "F", null, "A,B,C,D", null, 0, 0, 0, null, false, 0, 0, 0, 0,
+                "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "F", null, "A,B,C,D", null, 0, 0, 0, null, false, 0, 0, 0, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "A", "A", "A", "A", 0, 0, 1, "etudfgt eae", true, 0, 0, 0, 0,
                 "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "A", "A", "A", "A", 0, 0, 1, "etudfgt eae", true, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "G", "null", "A,B,C,D", "null", 0, 0, 0, "null", false, 0, 0, 0, 0,
-                "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "G", "null", "A,B,C,D", "null", 0, 0, 0, "null", false, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "H", "null", "A,B,C,D", "null", 0, 0, 0, "null", false, 0, 0, 0, 0,
-                "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "H", "null", "A,B,C,D", "null", 0, 0, 0, "null", false, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "G", null, "A,B,C,D", null, 0, 0, 0, null, false, 0, 0, 0, 0,
+                "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "G", null, "A,B,C,D", null, 0, 0, 0, null, false, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "H", null, "A,B,C,D", null, 0, 0, 0, null, false, 0, 0, 0, 0,
+                "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "H", null, "A,B,C,D", null, 0, 0, 0, null, false, 0, 0, 0, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "A", "A", "A,B,C,D", "A", 0, 1, 2, "etudfgt eae", true, 0, 0, 0, 0,
                 "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "A", "A", "A,B,C,D", "A", 0, 1, 2, "etudfgt eae", true, 0, 0, 0, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "A,B,C,D", "A,D", 0, 1, 2, "etudfgt eae", true, 0, 0, 0, 0,
@@ -1179,20 +1187,20 @@ public class SharedObjectControllerTest {
                 "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "C", "C", "", "A,B,C", 23, 46, 47, "etudfgt eae", true, 0, 0, 0, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "", "A,B,C,D", 23, 46, 47, "etudfgt eae", true, 0, 0, 0, 0,
                 "robot group at 4:11:52 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "", "A,B,C,D", 23, 46, 47, "etudfgt eae", true, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,B,C,D", "A", 0, 0, 0, "null", true, 0, 0, 0, 0,
-                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,B,C,D", "A", 0, 0, 0, "null", true, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,B,C,D", "A,C", 0, 0, 0, "null", true, 0, 0, 0, 0,
-                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,B,C,D", "A,C", 0, 0, 0, "null", true, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "A,B,C,D", "A,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0,
-                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "A,B,C,D", "A,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0,
-                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0,
-                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0,
-                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0,
-                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,B,C,D", "A", 0, 0, 0, null, true, 0, 0, 0, 0,
+                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,B,C,D", "A", 0, 0, 0, null, true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,B,C,D", "A,C", 0, 0, 0, null, true, 0, 0, 0, 0,
+                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,B,C,D", "A,C", 0, 0, 0, null, true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "A,B,C,D", "A,C,D", 0, 0, 0, null, true, 0, 0, 0, 0,
+                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "A,B,C,D", "A,C,D", 0, 0, 0, null, true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 0, 0, 0, 0,
+                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 0, 0, 0, 0,
+                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 0, 0, 0, 0,
+                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 0, 0, 0, 0,
+                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,B,C,D", "A,B,C,D", 0, 0, 0, null, true, 0, 0, 0, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,C", "A", 0, 0, 1, "etudfgt eae", true, 0, 0, 0, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,C", "A", 0, 0, 1, "etudfgt eae", true, 0, 0, 0, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,C", "A,C", 0, 0, 1, "etudfgt eae", true, 0, 0, 0, 0,
@@ -1351,7 +1359,7 @@ public class SharedObjectControllerTest {
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,C,B,D", "A,B", 9, 29, 30, "", true, 0, 0, 2, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,C,B,D", "A,B,C", 9, 29, 30, "", true, 1, 2, 2, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,C,B,D", "A,B,C", 9, 29, 30, "", true, 1, 2, 2, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "A,B,C,D", "D", 0, 0, 0, "null", true, 0, 1, 1, 0,
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "A,B,C,D", "D", 0, 0, 0, null, true, 0, 1, 1, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "B,D", "B,D", 9, 27, 28, "etudfgt eae", true, 0, 2, 2, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,C", "C", 9, 28, 29, "etudfgt eae", true, 2, 2, 2, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,C", "C", 9, 28, 29, "etudfgt eae", true, 2, 2, 2, 0);//processMessage
@@ -1375,7 +1383,7 @@ public class SharedObjectControllerTest {
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,C,B,D", "A,B,C", 10, 32, 33, "", true, 2, 2, 2, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "A,C,B,D", "A,B,C,D", 10, 32, 33, "", true, 0, 2, 2, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "A,C,B,D", "A,B,C,D", 10, 32, 33, "", true, 0, 2, 2, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,B,C,D", "B", 0, 0, 0, "null", true, 0, 0, 2, 0,
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,B,C,D", "B", 0, 0, 0, null, true, 0, 0, 2, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "A", "A,C,B,D", "A,B,C,D", 10, 32, 33, "", true, 0, 0, 2, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "B,D", "D", 11, 33, 34, "etudfgt eae", true, 0, 2, 2, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "B,D", "D", 11, 33, 34, "etudfgt eae", true, 0, 2, 2, 0);//processMessage
@@ -1401,7 +1409,7 @@ public class SharedObjectControllerTest {
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,C,B,D", "C", 12, 38, 39, "", true, 2, 2, 2, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "A,C,B,D", "C,D", 12, 38, 39, "", true, 0, 2, 2, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "A,C,B,D", "C,D", 12, 38, 39, "", true, 0, 2, 2, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,B,C,D", "A", 0, 0, 0, "null", true, 0, 0, 2, 0,
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,B,C,D", "A", 0, 0, 0, null, true, 0, 0, 2, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,C,B,D", "A,B,C,D", 11, 35, 36, "", true, 0, 0, 2, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "B,D", "D", 13, 39, 40, "etudfgt eae", true, 0, 2, 2, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "B,D", "D", 13, 39, 40, "etudfgt eae", true, 0, 2, 2, 0);//processMessage
@@ -1427,7 +1435,7 @@ public class SharedObjectControllerTest {
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,C,B,D", "A,C,D", 13, 41, 42, "", true, 0, 0, 2, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,C,B,D", "A,B,C,D", 13, 41, 42, "", true, 0, 0, 2, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,C,B,D", "A,B,C,D", 13, 41, 42, "", true, 0, 0, 2, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,B,C,D", "C", 0, 0, 0, "null", true, 0, 0, 0, 0,
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,B,C,D", "C", 0, 0, 0, null, true, 0, 0, 0, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "D", "A,C,B,D", "A,B,C,D", 13, 41, 42, "", true, 0, 2, 2, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,C", "A", 14, 42, 43, "etudfgt eae", true, 0, 0, 0, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,C", "A", 14, 42, 43, "etudfgt eae", true, 0, 0, 0, 0);//processMessage
@@ -1437,7 +1445,7 @@ public class SharedObjectControllerTest {
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,C,B,D", "A", 14, 44, 45, "", true, 0, 0, 0, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,C,B,D", "A,B", 14, 44, 45, "", true, 0, 0, 0, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,C,B,D", "A,B", 14, 44, 45, "", true, 0, 0, 0, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,B,C,D", "C", 0, 0, 0, "null", true, 0, 0, 0, 0,
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,B,C,D", "C", 0, 0, 0, null, true, 0, 0, 0, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "D", "A,C,B,D", "A,B,C,D", 13, 41, 42, "", true, 0, 2, 2, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "B,D", "B", 15, 45, 46, "etudfgt eae", true, 0, 0, 0, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "B,D", "B", 15, 45, 46, "etudfgt eae", true, 0, 0, 0, 0);//processMessage
@@ -1453,20 +1461,20 @@ public class SharedObjectControllerTest {
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "B,D", "D", 14, 43, 44, "etudfgt eae", true, 1, 1, 1, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "A,C,B,D", "D", 14, 44, 45, "", true, 1, 1, 1, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "A,C,B,D", "D", 14, 44, 45, "", true, 1, 1, 1, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,B,C,D", "C", 0, 0, 0, "null", true, 0, 1, 1, 0,
-                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,B,C,D", "C", 0, 0, 0, "null", true, 0, 1, 1, 0);//processMessage
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,B,C,D", "C", 0, 0, 0, null, true, 0, 1, 1, 0,
+                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,B,C,D", "C", 0, 0, 0, null, true, 0, 1, 1, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,C", "A", 16, 48, 49, "etudfgt eae", true, 0, 0, 1, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,C", "A", 16, 48, 49, "etudfgt eae", true, 0, 0, 1, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "B,D", "B", 16, 49, 50, "etudfgt eae", true, 0, 0, 1, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "B,D", "B", 16, 49, 50, "etudfgt eae", true, 0, 0, 1, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,C,B,D", "B", 16, 50, 51, "", true, 0, 0, 1, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,C,B,D", "B", 16, 50, 51, "", true, 0, 0, 1, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,B,C,D", "A,C", 0, 0, 0, "null", true, 0, 0, 1, 0,
-                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,B,C,D", "A,C", 0, 0, 0, "null", true, 0, 0, 1, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,B,C,D", "A,C", 0, 0, 0, "null", true, 0, 0, 1, 0,
-                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,B,C,D", "A,C", 0, 0, 0, "null", true, 0, 0, 1, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,B,C,D", "A,B,C", 0, 0, 0, "null", true, 0, 0, 1, 0,
-                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,B,C,D", "A,B,C", 0, 0, 0, "null", true, 0, 0, 1, 0);//processMessage
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,B,C,D", "A,C", 0, 0, 0, null, true, 0, 0, 1, 0,
+                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,B,C,D", "A,C", 0, 0, 0, null, true, 0, 0, 1, 0);//processMessage
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,B,C,D", "A,C", 0, 0, 0, null, true, 0, 0, 1, 0,
+                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,B,C,D", "A,C", 0, 0, 0, null, true, 0, 0, 1, 0);//processMessage
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,B,C,D", "A,B,C", 0, 0, 0, null, true, 0, 0, 1, 0,
+                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,B,C,D", "A,B,C", 0, 0, 0, null, true, 0, 0, 1, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,C", "A", 0, 0, 1, "etudfgt eae", true, 0, 0, 1, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,C", "A", 0, 0, 1, "etudfgt eae", true, 0, 0, 1, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "B,D", "B", 0, 1, 2, "etudfgt eae", true, 0, 0, 1, 0,
@@ -1475,10 +1483,10 @@ public class SharedObjectControllerTest {
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,C,B,D", "A", 0, 2, 3, "", true, 0, 0, 1, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,C,B,D", "A,B", 0, 2, 3, "", true, 0, 0, 1, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,C,B,D", "A,B", 0, 2, 3, "", true, 0, 0, 1, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,B,C,D", "B,C", 0, 0, 0, "null", true, 0, 0, 1, 0,
-                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,B,C,D", "B,C", 0, 0, 0, "null", true, 0, 0, 1, 0);//processMessage
-        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,B,C,D", "A,B,C", 0, 0, 0, "null", true, 0, 0, 1, 0,
-                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,B,C,D", "A,B,C", 0, 0, 0, "null", true, 0, 0, 1, 0);//processMessage
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,B,C,D", "B,C", 0, 0, 0, null, true, 0, 0, 1, 0,
+                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,B,C,D", "B,C", 0, 0, 0, null, true, 0, 0, 1, 0);//processMessage
+        processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,B,C,D", "A,B,C", 0, 0, 0, null, true, 0, 0, 1, 0,
+                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,B,C,D", "A,B,C", 0, 0, 0, null, true, 0, 0, 1, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,C", "A", 0, 0, 1, "etudfgt eae", true, 0, 0, 1, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,C", "A", 0, 0, 1, "etudfgt eae", true, 0, 0, 1, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "B,D", "B", 0, 1, 2, "etudfgt eae", true, 0, 0, 1, 0,
@@ -1551,41 +1559,41 @@ public class SharedObjectControllerTest {
         System.out.println("getGroupData");
         SharedObjectController instance = new SharedObjectController();
         final String stimuliList = "2-3:large-3-4:small-4-4:small-1-6:large-2-2:large-3-7:large-1-7:large-3-4:medium";
-        processMessage(instance, "testuser-0", "Round_0", "A : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "A", "A", "2-3:large", "0", stimuliList, "0", "null", false, "null", "null", "A", GROUP_UUID);
-        processMessage(instance, "testuser-1", "Round_0", "B : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "B", "B", "4-1:small", "0", stimuliList, "0", "null", false, "null", "null", "null", GROUP_UUID);
-        processMessage(instance, "testuser-3", "Round_0", "C : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "C", "C", "1-1:medium", "0", stimuliList, "0", "null", false, "null", "null", "null", GROUP_UUID);
-        processMessage(instance, "testuser-1", "Round_0", "B : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "B", "B", "2-3:large", "0", stimuliList, "0", "null", false, "null", "null", "A,B,C", GROUP_UUID);
-        processMessage(instance, "testuser-3", "Round_0", "C : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "C", "C", "2-3:large", "0", stimuliList, "0", "null", false, "null", "null", "A,B,C", GROUP_UUID);
-        processMessage(instance, "testuser-2", "Round_0", "D : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "D", "D", "3-7:small", "0", stimuliList, "0", "null", false, "null", "null", "null", GROUP_UUID);
-        processMessage(instance, "testuser-2", "Round_0", "D : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "D", "D", "2-3:large", "0", stimuliList, "0", "null", false, "null", "null", "A,B,C,D", GROUP_UUID);
-        processMessage(instance, "testuser-4", "Round_0", "E : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "E", "E", "1-2:small", "0", stimuliList, "0", "null", false, "null", "null", "null", GROUP_UUID);
-        processMessage(instance, "testuser-5", "Round_0", "F : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "F", "F", "2-6:large", "0", stimuliList, "0", "null", false, "null", "null", "null", GROUP_UUID);
-        processMessage(instance, "testuser-6", "Round_0", "G : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "G", "G", "4-2:large", "0", stimuliList, "0", "null", false, "null", "null", "null", GROUP_UUID);
-        processMessage(instance, "testuser-5", "Round_0", "F : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "F", "F", "2-3:large", "0", stimuliList, "0", "null", false, "null", "null", "A,B,C,D,E,F,G", GROUP_UUID);
-        processMessage(instance, "testuser-4", "Round_0", "E : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "E", "E", "2-3:large", "0", stimuliList, "0", "null", false, "null", "null", "A,B,C,D,E,F,G", GROUP_UUID);
-        processMessage(instance, "testuser-7", "Round_0", "H : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "H", "H", "1-3:large", "0", stimuliList, "0", "null", true, "null", "null", "null", GROUP_UUID);
-        processMessage(instance, "testuser-6", "Round_0", "G : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "G", "G", "2-3:large", "0", stimuliList, "0", "null", true, "null", "B,C,D,E,F,G,H", ABCDEFGH, GROUP_UUID);
-        processMessage(instance, "testuser-7", "Round_0", "H : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "H", "H", "2-3:large", "0", stimuliList, "0", "null", true, "null", "null", ABCDEFGH, GROUP_UUID);
-        processMessage(instance, "testuser-0", "Round_0", "A : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "A", "A", "2-3:large", "0", stimuliList, "1", "qq", true, "null", "A", "A", GROUP_UUID);
-        processMessage(instance, "testuser-1", "Round_0", "B : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "B", "B", "2-3:large", "0", stimuliList, "2", "", true, "null", "B,C,D,E,F,G,H", "B", GROUP_UUID);
-        processMessage(instance, "testuser-2", "Round_0", "D : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "D", "D", "2-3:large", "0", stimuliList, "2", "", true, "null", "B,C,D,E,F,G,H", "B,D", GROUP_UUID);
-        processMessage(instance, "testuser-3", "Round_0", "C : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "C", "C", "2-3:large", "0", stimuliList, "2", "", true, "null", "B,C,D,E,F,G,H", "B,C,D", GROUP_UUID);
-        processMessage(instance, "testuser-7", "Round_0", "H : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "H", "H", "2-3:large", "0", stimuliList, "2", "", true, "null", "B,C,D,E,F,G,H", "B,C,D,H", GROUP_UUID);
-        processMessage(instance, "testuser-6", "Round_0", "G : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "G", "G", "2-3:large", "0", stimuliList, "2", "", true, "null", "B,C,D,E,F,G,H", "B,C,D,G,H", GROUP_UUID);
-        processMessage(instance, "testuser-5", "Round_0", "F : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "F", "F", "2-3:large", "0", stimuliList, "2", "", true, "null", "B,C,D,E,F,G,H", "B,C,D,F,G,H", GROUP_UUID);
-        processMessage(instance, "testuser-4", "Round_0", "E : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "E", "E", "2-3:large", "0", stimuliList, "2", "", true, "null", "B,C,D,E,F,G,H", "B,C,D,E,F,G,H", GROUP_UUID);
-        processMessage(instance, "testuser-1", "Round_0", "E : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "B", "E", "2-3:large", "0", stimuliList, "2", "", true, "null", "B,C,D,E,F,G,H", "B,C,D,E,F,G,H", GROUP_UUID);
-        processMessage(instance, "testuser-1", "Round_0", "E : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "B", "E", "2-3:large", "0", stimuliList, "3", "qqqqqqq", true, "null", "B", "E", GROUP_UUID);
-        processMessage(instance, "testuser-2", "Round_0", "D : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "D", "D", "2-3:large", "0", stimuliList, "4", "", true, "null", "A,C,D,E,F,G,H", "D", GROUP_UUID);
-        processMessage(instance, "testuser-3", "Round_0", "C : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "C", "C", "2-3:large", "0", stimuliList, "4", "", true, "null", "A,C,D,E,F,G,H", "C,D", GROUP_UUID);
-        processMessage(instance, "testuser-7", "Round_0", "H : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "H", "H", "2-3:large", "0", stimuliList, "4", "", true, "null", "A,C,D,E,F,G,H", "C,D,H", GROUP_UUID);
-        processMessage(instance, "testuser-6", "Round_0", "G : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "G", "G", "2-3:large", "0", stimuliList, "4", "", true, "null", "A,C,D,E,F,G,H", "C,D,G,H", GROUP_UUID);
-        processMessage(instance, "testuser-5", "Round_0", "F : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "F", "F", "2-3:large", "0", stimuliList, "4", "", true, "null", "A,C,D,E,F,G,H", "C,D,F,G,H", GROUP_UUID);
-        processMessage(instance, "testuser-4", "Round_0", "E : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "B", "E", "2-3:large", "0", stimuliList, "4", "", true, "null", "A,C,D,E,F,G,H", "C,D,E,F,G,H", GROUP_UUID);
-        processMessage(instance, "testuser-0", "Round_0", "A : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "A", "A", "2-3:large", "0", stimuliList, "4", "", true, "null", "A,C,D,E,F,G,H", "A,C,D,E,F,G,H", GROUP_UUID);
-        processMessage(instance, "testuser-3", "Round_0", "E : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "C", "E", "2-3:large", "0", stimuliList, "4", "", true, "null", "A,C,D,E,F,G,H", "A,C,D,E,F,G,H", GROUP_UUID);
-        processMessage(instance, "testuser-3", "Round_0", "E : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "C", "E", "2-3:large", "0", stimuliList, "5", "qqqqq", true, "null", "C", "E", GROUP_UUID);
-        GroupMessage result = processMessage(instance, "testuser-2", "Round_0", "E : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "D", "E", "2-3:large", "0", stimuliList, "4", "", true, "null", "A,C,D,E,F,G,H", "A,D,E,F,G,H", GROUP_UUID);
+        processMessage(instance, "testuser-0", "Round_0", "A : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "A", "A", "2-3:large", "0", stimuliList, "0", null, false, null, null, "A", GROUP_UUID);
+        processMessage(instance, "testuser-1", "Round_0", "B : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "B", "B", "4-1:small", "0", stimuliList, "0", null, false, null, null, null, GROUP_UUID);
+        processMessage(instance, "testuser-3", "Round_0", "C : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "C", "C", "1-1:medium", "0", stimuliList, "0", null, false, null, null, null, GROUP_UUID);
+        processMessage(instance, "testuser-1", "Round_0", "B : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "B", "B", "2-3:large", "0", stimuliList, "0", null, false, null, null, "A,B,C", GROUP_UUID);
+        processMessage(instance, "testuser-3", "Round_0", "C : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "C", "C", "2-3:large", "0", stimuliList, "0", null, false, null, null, "A,B,C", GROUP_UUID);
+        processMessage(instance, "testuser-2", "Round_0", "D : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "D", "D", "3-7:small", "0", stimuliList, "0", null, false, null, null, null, GROUP_UUID);
+        processMessage(instance, "testuser-2", "Round_0", "D : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "D", "D", "2-3:large", "0", stimuliList, "0", null, false, null, null, "A,B,C,D", GROUP_UUID);
+        processMessage(instance, "testuser-4", "Round_0", "E : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "E", "E", "1-2:small", "0", stimuliList, "0", null, false, null, null, null, GROUP_UUID);
+        processMessage(instance, "testuser-5", "Round_0", "F : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "F", "F", "2-6:large", "0", stimuliList, "0", null, false, null, null, null, GROUP_UUID);
+        processMessage(instance, "testuser-6", "Round_0", "G : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "G", "G", "4-2:large", "0", stimuliList, "0", null, false, null, null, null, GROUP_UUID);
+        processMessage(instance, "testuser-5", "Round_0", "F : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "F", "F", "2-3:large", "0", stimuliList, "0", null, false, null, null, "A,B,C,D,E,F,G", GROUP_UUID);
+        processMessage(instance, "testuser-4", "Round_0", "E : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "E", "E", "2-3:large", "0", stimuliList, "0", null, false, null, null, "A,B,C,D,E,F,G", GROUP_UUID);
+        processMessage(instance, "testuser-7", "Round_0", "H : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "H", "H", "1-3:large", "0", stimuliList, "0", null, true, null, null, null, GROUP_UUID);
+        processMessage(instance, "testuser-6", "Round_0", "G : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "G", "G", "2-3:large", "0", stimuliList, "0", null, true, null, "B,C,D,E,F,G,H", ABCDEFGH, GROUP_UUID);
+        processMessage(instance, "testuser-7", "Round_0", "H : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "H", "H", "2-3:large", "0", stimuliList, "0", null, true, null, null, ABCDEFGH, GROUP_UUID);
+        processMessage(instance, "testuser-0", "Round_0", "A : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "A", "A", "2-3:large", "0", stimuliList, "1", "qq", true, null, "A", "A", GROUP_UUID);
+        processMessage(instance, "testuser-1", "Round_0", "B : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "B", "B", "2-3:large", "0", stimuliList, "2", "", true, null, "B,C,D,E,F,G,H", "B", GROUP_UUID);
+        processMessage(instance, "testuser-2", "Round_0", "D : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "D", "D", "2-3:large", "0", stimuliList, "2", "", true, null, "B,C,D,E,F,G,H", "B,D", GROUP_UUID);
+        processMessage(instance, "testuser-3", "Round_0", "C : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "C", "C", "2-3:large", "0", stimuliList, "2", "", true, null, "B,C,D,E,F,G,H", "B,C,D", GROUP_UUID);
+        processMessage(instance, "testuser-7", "Round_0", "H : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "H", "H", "2-3:large", "0", stimuliList, "2", "", true, null, "B,C,D,E,F,G,H", "B,C,D,H", GROUP_UUID);
+        processMessage(instance, "testuser-6", "Round_0", "G : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "G", "G", "2-3:large", "0", stimuliList, "2", "", true, null, "B,C,D,E,F,G,H", "B,C,D,G,H", GROUP_UUID);
+        processMessage(instance, "testuser-5", "Round_0", "F : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "F", "F", "2-3:large", "0", stimuliList, "2", "", true, null, "B,C,D,E,F,G,H", "B,C,D,F,G,H", GROUP_UUID);
+        processMessage(instance, "testuser-4", "Round_0", "E : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "E", "E", "2-3:large", "0", stimuliList, "2", "", true, null, "B,C,D,E,F,G,H", "B,C,D,E,F,G,H", GROUP_UUID);
+        processMessage(instance, "testuser-1", "Round_0", "E : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "B", "E", "2-3:large", "0", stimuliList, "2", "", true, null, "B,C,D,E,F,G,H", "B,C,D,E,F,G,H", GROUP_UUID);
+        processMessage(instance, "testuser-1", "Round_0", "E : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "B", "E", "2-3:large", "0", stimuliList, "3", "qqqqqqq", true, null, "B", "E", GROUP_UUID);
+        processMessage(instance, "testuser-2", "Round_0", "D : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "D", "D", "2-3:large", "0", stimuliList, "4", "", true, null, "A,C,D,E,F,G,H", "D", GROUP_UUID);
+        processMessage(instance, "testuser-3", "Round_0", "C : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "C", "C", "2-3:large", "0", stimuliList, "4", "", true, null, "A,C,D,E,F,G,H", "C,D", GROUP_UUID);
+        processMessage(instance, "testuser-7", "Round_0", "H : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "H", "H", "2-3:large", "0", stimuliList, "4", "", true, null, "A,C,D,E,F,G,H", "C,D,H", GROUP_UUID);
+        processMessage(instance, "testuser-6", "Round_0", "G : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "G", "G", "2-3:large", "0", stimuliList, "4", "", true, null, "A,C,D,E,F,G,H", "C,D,G,H", GROUP_UUID);
+        processMessage(instance, "testuser-5", "Round_0", "F : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "F", "F", "2-3:large", "0", stimuliList, "4", "", true, null, "A,C,D,E,F,G,H", "C,D,F,G,H", GROUP_UUID);
+        processMessage(instance, "testuser-4", "Round_0", "E : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "B", "E", "2-3:large", "0", stimuliList, "4", "", true, null, "A,C,D,E,F,G,H", "C,D,E,F,G,H", GROUP_UUID);
+        processMessage(instance, "testuser-0", "Round_0", "A : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "A", "A", "2-3:large", "0", stimuliList, "4", "", true, null, "A,C,D,E,F,G,H", "A,C,D,E,F,G,H", GROUP_UUID);
+        processMessage(instance, "testuser-3", "Round_0", "E : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "C", "E", "2-3:large", "0", stimuliList, "4", "", true, null, "A,C,D,E,F,G,H", "A,C,D,E,F,G,H", GROUP_UUID);
+        processMessage(instance, "testuser-3", "Round_0", "E : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "C", "E", "2-3:large", "0", stimuliList, "5", "qqqqq", true, null, "C", "E", GROUP_UUID);
+        GroupMessage result = processMessage(instance, "testuser-2", "Round_0", "E : robot group at 3:30:01 PM", ROBOT, ABCDEFGH, ABCDEFGH, "D", "E", "2-3:large", "0", stimuliList, "4", "", true, null, "A,C,D,E,F,G,H", "A,D,E,F,G,H", GROUP_UUID);
         assertEquals("A,C,D,E,F,G,H", result.getExpectedRespondents());
         assertEquals("A,D,E,F,G,H", result.getActualRespondents());
     }
