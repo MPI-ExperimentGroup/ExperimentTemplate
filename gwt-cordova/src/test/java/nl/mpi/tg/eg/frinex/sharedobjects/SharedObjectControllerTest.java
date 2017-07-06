@@ -27,6 +27,28 @@ import org.junit.Ignore;
  */
 public class SharedObjectControllerTest {
 
+    private void processMessage(SharedObjectController instance,
+            String InMessagegroupId, String InMessagescreenId, String InMessageallMemberCodes, String InMessagegroupCommunicationChannels, String InMessagememberCode, String InMessageoriginMemberCode,
+            String InMessageexpectedRespondents, String InMessageactualRespondents, int InMessagestimulusIndex, int InMessageoriginPhase, int InMessagerequestedPhase, String InMessagemessageString,
+            boolean InMessagegroupReady, int InMessagememberScore, int InMessagechannelScore, int InMessagegroupScore, int InMessageeventMs,
+            String OutMessagegroupId, String OutMessagescreenId, String OutMessageallMemberCodes, String OutMessagegroupCommunicationChannels, String OutMessagememberCode, String OutMessageoriginMemberCode,
+            String OutMessageexpectedRespondents, String OutMessageactualRespondents, int OutMessagestimulusIndex, int OutMessageoriginPhase, int OutMessagerequestedPhase, String OutMessagemessageString,
+            boolean OutMessagegroupReady, int OutMessagememberScore, int OutMessagechannelScore, int OutMessagegroupScore, int OutMessageeventMs
+    ) throws Exception {
+        GroupMessage groupMessage = new GroupMessage(InMessagegroupId, InMessagescreenId, InMessagememberCode, InMessagememberCode);
+        groupMessage.setAllMemberCodes(InMessageallMemberCodes);
+        groupMessage.setGroupCommunicationChannels(InMessagegroupCommunicationChannels);
+        groupMessage.setStimulusIndex(InMessagestimulusIndex);
+        groupMessage.setOriginPhase(InMessageoriginPhase);
+        groupMessage.setRequestedPhase(InMessagerequestedPhase);
+        groupMessage.setExpectedRespondents(InMessageexpectedRespondents);
+        final GroupMessage result = instance.getGroupData(groupMessage);
+        assertEquals(OutMessageoriginPhase, result.getOriginPhase().intValue());
+        assertEquals(OutMessagerequestedPhase, result.getRequestedPhase().intValue());
+        assertEquals(OutMessagestimulusIndex, result.getStimulusIndex().intValue());
+        assertTrue("ActualRespondents should contain InMessagememberCode", result.getActualRespondents().contains(InMessagememberCode));
+    }
+
     private GroupMessage processMessage(SharedObjectController instance,
             String userId,
             String screenId,
@@ -63,7 +85,7 @@ public class SharedObjectControllerTest {
         SharedObjectController instance = new SharedObjectController();
 
         GroupMessage result = processMessage(instance, "testuser-0", "Round_0", "A : robot group at 5:36:59 PM", "robot group at 5:36:59 PM", ABCDEFGH, ABCDEFGH, "A", "A", "4-1:medium", "7", "3-2:large-2-7:medium-3-1:medium-1-5:medium-1-2:small-3-7:large-3-2:medium-4-1:medium", "8", "", true, "null", "B,C,A,E,F,G,H", "G", "155557d6-83a5-4fb6-af3c-67fd40635b75");
-        GroupId expectedGroupId= result.getGroupId();
+        GroupId expectedGroupId = result.getGroupId();
         result = processMessage(instance, "testuser-0", "Round_0", "A : robot group at 5:36:59 PM", "robot group at 5:36:59 PM", ABCDEFGH, ABCDEFGH, "A", "A", "4-1:medium", "7", "3-2:large-2-7:medium-3-1:medium-1-5:medium-1-2:small-3-7:large-3-2:medium-4-1:medium", "8", "", true, "null", "B,C,A,E,F,G,H", "G", "155557d6-83a5-4fb6-af3c-67fd40635b75");
         assertEquals(expectedGroupId, result.getGroupId());
         result = processMessage(instance, "testuser-0", "Round_0", "A : robot group at 10:23:42 AM", "robot group at 10:23:42 AM", ABCDEFGH, ABCDEFGH, "A", "A", "2-7:small", "0", "2-7:small-4-5:small-3-1:large-1-5:medium-3-6:medium-3-1:medium-3-4:large-1-7:medium", "0", "null", false, "null", "null", "A", "0502002b-84d6-4e9c-86e9-1b81a7be81ca");
@@ -74,6 +96,37 @@ public class SharedObjectControllerTest {
         assertEquals(expectedGroupId, result.getGroupId());
         result = processMessage(instance, "testuser-0", "Round_0", "A : robot group at 10:23:42 AM", "robot group at 10:23:42 AM", ABCDEFGH, ABCDEFGH, "A", "A", "2-7:small", "0", "2-7:small-4-5:small-3-1:large-1-5:medium-3-6:medium-3-1:medium-3-4:large-1-7:medium", "0", "null", false, "null", "null", "A", "0502002b-84d6-4e9c-86e9-1b81a7be81ca");
         assertNotEquals(expectedGroupId, result.getGroupId());
+    }
+
+    /**
+     * Test of getGroupData method, of class SharedObjectController.
+     *
+     * @throws java.lang.Exception
+     */
+    @Test
+    public void testGetGroupData2() throws Exception {
+        System.out.println("getGroupData2");
+        SharedObjectController instance = new SharedObjectController();
+        processMessage(instance, "robot group at 11:41:24 AM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", null, "A,C,B,D", null, 12, 38, 39, "", false, 1, 0, 0, 0,
+                "robot group at 11:41:24 AM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,C,B,D", "A,B", 12, 38, 39, "", true, 1, 2, 2, 0);
+        processMessage(instance, "robot group at 11:41:24 AM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", null, "A,C", null, 12, 36, 37, "etudfgt eae", false, 0, 0, 0, 0,
+                "robot group at 11:41:24 AM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,C", "C", 12, 36, 37, "etudfgt eae", true, 0, 0, 2, 0);
+        processMessage(instance, "robot group at 11:41:24 AM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", null, "B,D", null, 13, 39, 40, "etudfgt eae", false, 1, 0, 0, 0,
+                "robot group at 11:41:24 AM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "B,D", "B", 13, 39, 40, "etudfgt eae", true, 1, 2, 2, 0);
+        processMessage(instance, "robot group at 11:41:24 AM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", null, "B,D", null, 12, 37, 38, "etudfgt eae", false, 1, 0, 0, 0,
+                "robot group at 11:41:24 AM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "B,D", "D", 12, 37, 38, "etudfgt eae", true, 1, 1, 3, 0);
+        processMessage(instance, "robot group at 11:41:24 AM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", null, "A,C,B,D", null, 12, 38, 39, "", false, 0, 0, 0, 0,
+                "robot group at 11:41:24 AM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,C,B,D", "A,C", 12, 38, 39, "", true, 0, 1, 3, 0);
+        processMessage(instance, "robot group at 11:41:24 AM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", null, "A,C,B,D", null, 12, 38, 39, "", false, 1, 0, 0, 0,
+                "robot group at 11:41:24 AM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "A,C,B,D", "A,C,D", 12, 38, 39, "", true, 1, 1, 3, 0);
+        processMessage(instance, "robot group at 11:41:24 AM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", null, "A,C", null, 13, 40, 41, "etudfgt eae", false, 1, 0, 0, 0,
+                "robot group at 11:41:24 AM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,C", "A", 13, 40, 41, "etudfgt eae", true, 1, 2, 3, 0);
+        processMessage(instance, "robot group at 11:41:24 AM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", null, "A,C,B,D", null, 13, 41, 42, "", false, 1, 0, 0, 0,
+                "robot group at 11:41:24 AM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,C,B,D", "A", 13, 41, 42, "", true, 1, 2, 3, 0);
+        processMessage(instance, "robot group at 11:41:24 AM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", null, "A,B,C,D", null, 0, 0, 0, null, false, 0, 0, 0, 0,
+                "robot group at 11:41:24 AM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,B,C,D", "B", 0, 41, 0, null, true, 0, 1, 2, 0);
+        processMessage(instance, "robot group at 11:41:24 AM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", null, "B,D", null, 13, 39, 40, "etudfgt eae", false, 1, 0, 0, 0,
+                "robot group at 11:41:24 AM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "B,D", "D", 13, 39, 40, "etudfgt eae", true, 1, 1, 2, 0);
     }
 
     @Ignore //@todo: complete this test and make sure ActualRespondents is correct and that the user code does not switch
