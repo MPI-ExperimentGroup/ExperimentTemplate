@@ -29,7 +29,6 @@ public class SharedObjectControllerTest {
 
 //    String lastScreenId = "";
 //    int lastPhase = 0;
-
     private void processMessage(SharedObjectController instance,
             String InMessagegroupId, String InMessagescreenId, String InMessageallMemberCodes, String InMessagegroupCommunicationChannels, String InMessagememberCode, String InMessageoriginMemberCode,
             String InMessageexpectedRespondents, String InMessageactualRespondents, int InMessagestimulusIndex, int InMessageoriginPhase, int InMessagerequestedPhase, String InMessagemessageString,
@@ -1373,7 +1372,7 @@ public class SharedObjectControllerTest {
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,C,B,D", "A,B,C", 9, 29, 30, "", true, 1, 2, 2, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,C,B,D", "A,B,C", 9, 29, 30, "", true, 1, 2, 2, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "A,B,C,D", "D", 0, 0, 0, null, true, 0, 1, 1, 0,
-                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "B,D", "B,D", 9, 29, 30, "etudfgt eae", true, 0, 2, 2, 0);//processMessage
+                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "B,D", "B,D", 9, 28, 29, "etudfgt eae", true, 0, 2, 2, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,C", "C", 9, 28, 29, "etudfgt eae", true, 2, 2, 2, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,C", "C", 9, 29, 30, "etudfgt eae", true, 2, 2, 2, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,C", "A", 10, 30, 31, "etudfgt eae", true, 0, 0, 2, 0,
@@ -1564,6 +1563,52 @@ public class SharedObjectControllerTest {
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,C,B,D", "A", 7, 23, 24, "", true, 0, 1, 2, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,C,B,D", "A,B", 7, 23, 24, "", true, 1, 1, 2, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "B", "B", "A,C,B,D", "A,B", 7, 23, 24, "", true, 1, 1, 2, 0);//processMessage
+        processMessage(instance, "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "A", "A", "A,B,C,D", "A", 0, 0, 0, "null", false, 0, 0, 0, 0,
+                "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "A", "A", "A,B,C,D", "A", 0, 0, 0, "null", false, 0, 0, 0, 0);//processMessage
+//processMessage(instance,"robot group at 2:27:38 PM","Round_0___4","A,B,C,D",
+//        InMessage:GroupMessage{groupId=robot group at 2:27:38 PM, screenId=Round_0___4, allMemberCodes=A,B,C,D, groupCommunicationChannels=A,B,C,D, memberCode=C, originMemberCode=null, expectedRespondents=A,B,C,D, actualRespondents=null, stimulusIndex=0, originPhase=0, requestedPhase=0, messageString=null, groupReady=false, memberScore=0, channelScore=0, groupScore=0, eventMs=0}
+//processMessage(instance,"robot group at 2:27:38 PM","Round_0___4","A,B,C,D","A,B,C,D","C","C","A,B,C,D","A,B,C",0,0,0,"null",false,0,0,0,0,
+//0,"null",false,"robot group at 2:27:38 PM","Round_0___4","A,B,C,D","A,B,C,D","B","B","A,B,C,D","A,B,C",0,0,0,"null",0,0,0,0);//processMessage
+//false,0,0,0,0);//processMessage
+        processMessage(instance, "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0,
+                "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "C", "C", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0,
+                "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "C", "C", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "B", "B", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0,
+                "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "B", "B", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0,
+                "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 0, 0, "null", true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "F", "null", "A,B,C,D", "null", 0, 0, 0, "null", false, 0, 0, 0, 0,
+                //processMessage(instance,0,0,0);//processMessage
+                "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "E", "null", "A,B,C,D", "null", 0, 0, 0, "null", false, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "A", "A", "A", "A", 0, 0, 1, "etudfgt eae", true, 0, 0, 0, 0,
+                "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "A", "A", "A", "A", 0, 0, 1, "etudfgt eae", true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "G", "null", "A,B,C,D", "null", 0, 0, 0, "null", false, 0, 0, 0, 0,
+                "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "G", "null", "A,B,C,D", "null", 0, 0, 0, "null", false, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "H", "null", "A,B,C,D", "null", 0, 0, 0, "null", false, 0, 0, 0, 0,
+                "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "H", "null", "A,B,C,D", "null", 0, 0, 0, "null", false, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "C", "C", "A,B,C,D", "C", 0, 1, 2, "etudfgt eae", true, 0, 0, 0, 0,
+                "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "C", "C", "A,B,C,D", "C", 0, 1, 2, "etudfgt eae", true, 0, 0, 0, 0);//processMessage
+//processMessage(instance,"robot group at 2:27:38 PM","Round_0___4",
+//        InMessage:GroupMessage{groupId=robot group at 2:27:38 PM, screenId=Round_0___4, allMemberCodes=A,B,C,D, groupCommunicationChannels=A,B,C,D, memberCode=B, originMemberCode=null, expectedRespondents=A,B,C,D, actualRespondents=null, stimulusIndex=0, originPhase=1, requestedPhase=2, messageString=etudfgt eae, groupReady=false, memberScore=0, channelScore=0, groupScore=0, eventMs=0}
+//processMessage(instance,"robot group at 2:27:38 PM","Round_0___4","A,B,C,D","A,B,C,D","B","B","A,B,C,D","A,B,C",0,0,0,1,2,"etudfgt eae",true,0,0,0,0,
+//"robot group at 2:27:38 PM","Round_0___4","A,B,C,D","A,B,C,D",0,0);//processMessage
+//"B","B","A,B,C,D","A,B,C",0,1,2,"etudfgt eae",true,0,0,0,0);//processMessage
+        processMessage(instance, "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 1, 2, "etudfgt eae", true, 0, 0, 0, 0,
+                "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "A,B,C,D", "A,B,C,D", 0, 1, 2, "etudfgt eae", true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "B", "B", "B", "B", 1, 2, 3, "etudfgt eae", true, 0, 0, 0, 0,
+                "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "B", "B", "B", "B", 1, 2, 3, "etudfgt eae", true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "A", "A", "A,B,C,D", "A", 0, 0, 0, "null", true, 0, 0, 0, 0,
+                "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "A", "B", "B", "B", 1, 2, 3, "etudfgt eae", true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "B", "B", "A,B,C,D", "B", 1, 3, 4, "etudfgt eae", true, 0, 0, 0, 0,
+                "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "B", "B", "A,B,C,D", "B", 1, 3, 4, "etudfgt eae", true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "C", "C", "A,B,C,D", "B,C", 1, 3, 4, "etudfgt eae", true, 0, 0, 0, 0,
+                "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "C", "C", "A,B,C,D", "B,C", 1, 3, 4, "etudfgt eae", true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "A,B,C,D", "B,C,D", 1, 3, 4, "etudfgt eae", true, 0, 0, 0, 0,
+                "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "D", "D", "A,B,C,D", "B,C,D", 1, 3, 4, "etudfgt eae", true, 0, 0, 0, 0);//processMessage
+        processMessage(instance, "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "A", "A", "A,B,C,D", "A", 0, 0, 0, "null", true, 0, 0, 0, 0,
+                "robot group at 2:27:38 PM", "Round_0___4", "A,B,C,D", "A,B,C,D", "A", "C", "A,B,C,D", "B,C,D", 1, 3, 4, "etudfgt eae", true, 0, 0, 0, 0);//processMessage
+
     }
 
     @Ignore //@todo: complete this test and make sure ActualRespondents is correct and that the user code does not switch
