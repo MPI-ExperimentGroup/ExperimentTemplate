@@ -39,6 +39,7 @@ public class GroupManager {
     private final HashMap<GroupId, GroupUUID> groupUUIDs = new HashMap<>();
     private final HashMap<GroupId, List<MemberCode>> unAllocatedMemberCodes = new HashMap<>();
     private final HashMap<GroupId, HashSet<UserId>> groupsMembers = new HashMap();
+    private final HashMap<GroupMessage, HashMap<String, GroupMessage>> recentChannelMessages = new HashMap();
     GroupMessage lastGroupId = null;
 
     public boolean isGroupMember(GroupMessage groupMessage) {
@@ -105,34 +106,26 @@ public class GroupManager {
             System.out.println("channel: " + channel);
             if (incomingMessage.getMemberCode().memberOfChannel(channel)) {
                 System.out.println("is channel member");
-                for (final HashMap<GroupMessage, GroupMessage> userGroups : allMembersList.values()) {
-                    GroupMessage membersLastMessage = userGroups.get(incomingMessage);
-                    if (membersLastMessage != null) {
-                        final MemberCode currentMemberCode = membersLastMessage.getMemberCode();
-                        if (currentMemberCode != null) {
-                            if (currentMemberCode.memberOfChannel(channel)) {
-                                System.out.println("currentMemberCode: " + currentMemberCode);
-                                System.out.println("is common member");
-                                System.out.println("mostRecentChannelMessage.getRequestedPhase():" + mostRecentChannelMessage.getRequestedPhase());
-                                System.out.println("membersLastMessage.getRequestedPhase():" + membersLastMessage.getRequestedPhase());
-                                if (mostRecentChannelMessage.getRequestedPhase() < membersLastMessage.getRequestedPhase()) {
-                                    System.out.println("other is more advanced than sent");
-                                    // select only the most recent message for any user in this channel
-                                    System.out.println("membersLastMessage.getExpectedRespondents(): " + membersLastMessage.getExpectedRespondents());
-                                    System.out.println("membersLastMessage.getActualRespondents(): " + membersLastMessage.getActualRespondents());
-                                    // expected respondants list should have out of channel respondents omitted for this comparison
-                                    if (membersLastMessage.haveAllRespondended(channel)) {
-                                        System.out.println("all ExpectedRespondents replied");
-                                        // only resend a message if all expected respondants have replied                                        
-                                        mostRecentChannelMessage = membersLastMessage;
-                                        resendingOldMessage = true;
-                                    }
-                                }
-                            }
+                if (recentChannelMessages.containsKey(incomingMessage)) {
+                    final GroupMessage channelLastMessage = recentChannelMessages.get(incomingMessage).get(channel);
+                    if (channelLastMessage != null) {
+                        System.out.println("currentMemberCode: " + channelLastMessage.getMemberCode());
+                        System.out.println("is common member");
+                        System.out.println("mostRecentChannelMessage.getRequestedPhase():" + mostRecentChannelMessage.getRequestedPhase());
+                        System.out.println("membersLastMessage.getRequestedPhase():" + channelLastMessage.getRequestedPhase());
+                        if (mostRecentChannelMessage.getRequestedPhase() < channelLastMessage.getRequestedPhase()) {
+                            System.out.println("other is more advanced than sent");
+                            // select only the most recent message for any user in this channel
+                            System.out.println("membersLastMessage.getExpectedRespondents(): " + channelLastMessage.getExpectedRespondents());
+                            System.out.println("membersLastMessage.getActualRespondents(): " + channelLastMessage.getActualRespondents());
+                            // expected respondants list should have out of channel respondents omitted for this comparison
+                            System.out.println("all ExpectedRespondents replied");
+                            // only resend a message if all expected respondants have replied                                        
+                            mostRecentChannelMessage = channelLastMessage;
+                            resendingOldMessage = true;
                         }
                     }
                 }
-
             }
         }
         if (resendingOldMessage) {
@@ -245,6 +238,28 @@ public class GroupManager {
                 // this is the same phase
                 if (storedMessage.getRequestedPhase().equals(lastGroupMessage.getRequestedPhase())) {
                     lastGroupMessage.setActualRespondents(respondingMemberCodesString);
+                }
+            }
+        }
+        if (storedMessage.getGroupUUID() != null) /* check that the message is from a group member */ {
+            for (String channel : storedMessage.getGroupCommunicationChannels().split("\\|")) // check if the communication channel applies to this group member
+            {
+                System.out.println("channel: " + channel);
+                System.out.println("MemberCode: " + storedMessage.getMemberCode());
+                System.out.println("RequestedPhase: " + storedMessage.getRequestedPhase());
+                System.out.println("ActualRespondents: " + storedMessage.getActualRespondents());
+                System.out.println("ExpectedRespondents: " + storedMessage.getExpectedRespondents());
+                if (storedMessage.getMemberCode().memberOfChannel(channel)) {
+                    System.out.println("memberOfChannel");
+                    if (storedMessage.haveAllRespondended(channel)) {
+                        System.out.println("AllRespondended");
+                        HashMap<String, GroupMessage> groupCompleteMessages = recentChannelMessages.get(storedMessage);
+                        if (groupCompleteMessages == null) {
+                            groupCompleteMessages = new HashMap<>();
+                            recentChannelMessages.put(storedMessage, groupCompleteMessages);
+                        }
+                        groupCompleteMessages.put(channel, storedMessage);
+                    }
                 }
             }
         }
