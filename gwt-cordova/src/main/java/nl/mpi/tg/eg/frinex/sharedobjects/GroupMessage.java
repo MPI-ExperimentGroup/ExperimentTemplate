@@ -17,6 +17,9 @@
  */
 package nl.mpi.tg.eg.frinex.sharedobjects;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 
@@ -152,6 +155,21 @@ public class GroupMessage {
 
     public void setActualRespondents(String actualRespondents) {
         this.actualRespondents = actualRespondents;
+    }
+
+    public boolean haveAllRespondended(String channel) {
+        if (expectedRespondents == null) {
+            return true;
+        }
+        if (actualRespondents == null) {
+            return false;
+        }
+        final List<String> expectedRespondentsList = new ArrayList(Arrays.asList(expectedRespondents.split(",")));
+        final List<String> actualRespondentsList = Arrays.asList(actualRespondents.split(","));
+        final List<String> channelList = Arrays.asList(channel.split(","));
+        expectedRespondentsList.removeAll(channelList);
+        expectedRespondentsList.removeAll(actualRespondentsList);
+        return expectedRespondentsList.isEmpty();
     }
 
     public String getUserLabel() {
