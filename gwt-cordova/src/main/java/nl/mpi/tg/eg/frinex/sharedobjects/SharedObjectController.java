@@ -40,7 +40,44 @@ public class SharedObjectController {
     @MessageMapping("/group")
     @SendTo("/shared/group")
     public GroupMessage getGroupData(GroupMessage groupMessage) throws Exception {
-        return updateGroupData(groupMessage);
+        final GroupMessage updateGroupData = updateGroupData(groupMessage);
+        System.out.print("processMessage(instance,");
+        System.out.print("\"" + groupMessage.getGroupId() + "\",");
+        System.out.print("\"" + groupMessage.getScreenId() + "\",");
+        System.out.print("\"" + groupMessage.getAllMemberCodes() + "\",");
+        System.out.print("\"" + groupMessage.getGroupCommunicationChannels() + "\",");
+        System.out.print("\"" + groupMessage.getMemberCode() + "\",");
+        System.out.print("\"" + groupMessage.getOriginMemberCode() + "\",");
+        System.out.print("\"" + groupMessage.getExpectedRespondents() + "\",");
+        System.out.print("\"" + groupMessage.getActualRespondents() + "\",");
+        System.out.print("" + groupMessage.getStimulusIndex() + ",");
+        System.out.print("" + groupMessage.getOriginPhase() + ",");
+        System.out.print("" + groupMessage.getRequestedPhase() + ",");
+        System.out.print("\"" + groupMessage.getMessageString() + "\",");
+        System.out.print("" + groupMessage.isGroupReady() + ",");
+        System.out.print("" + groupMessage.getMemberScore() + ",");
+        System.out.print("" + groupMessage.getChannelScore() + ",");
+        System.out.print("" + groupMessage.getGroupScore() + ",");
+        System.out.println("" + groupMessage.getEventMs() + ",");
+
+        System.out.print("\"" + updateGroupData.getGroupId() + "\",");
+        System.out.print("\"" + updateGroupData.getScreenId() + "\",");
+        System.out.print("\"" + updateGroupData.getAllMemberCodes() + "\",");
+        System.out.print("\"" + updateGroupData.getGroupCommunicationChannels() + "\",");
+        System.out.print("\"" + updateGroupData.getMemberCode() + "\",");
+        System.out.print("\"" + updateGroupData.getOriginMemberCode() + "\",");
+        System.out.print("\"" + updateGroupData.getExpectedRespondents() + "\",");
+        System.out.print("\"" + updateGroupData.getActualRespondents() + "\",");
+        System.out.print("" + updateGroupData.getStimulusIndex() + ",");
+        System.out.print("" + updateGroupData.getOriginPhase() + ",");
+        System.out.print("" + updateGroupData.getRequestedPhase() + ",");
+        System.out.print("\"" + updateGroupData.getMessageString() + "\",");
+        System.out.print("" + updateGroupData.isGroupReady() + ",");
+        System.out.print("" + updateGroupData.getMemberScore() + ",");
+        System.out.print("" + updateGroupData.getChannelScore() + ",");
+        System.out.print("" + updateGroupData.getGroupScore() + ",");
+        System.out.println("" + updateGroupData.getEventMs() + ");//processMessage");
+        return updateGroupData;
     }
 
     private synchronized GroupMessage updateGroupData(GroupMessage incomingMessage) {
@@ -83,7 +120,7 @@ public class SharedObjectController {
             return incomingMessage;
         } else {
             // if the message is a reconnect but the stimuli index is greater and the stimulus id == null then trigger an end of stimulus screen change
-            if (incomingMessage.getStimulusIndex() > resendMessage.getStimulusIndex() && incomingMessage.getStimulusId() == null && incomingMessage.getExpectedRespondents() == "") {
+            if (incomingMessage.getStimulusIndex() > resendMessage.getStimulusIndex() && incomingMessage.getStimulusId() == null && incomingMessage.getExpectedRespondents().isEmpty()) {
                 System.out.println("trigger an end of stimulus screen change:" + incomingMessage.toString());
 //                incomingMessage.setExpectedRespondents(incomingMessage.getMemberCode().toString());
                 return incomingMessage;
@@ -93,4 +130,25 @@ public class SharedObjectController {
             }
         }
     }
+//    private void generateTestData(GroupMessage incomingMessage, GroupMessage outgoingMessage){
+//        System.out.print("processMessage(instance,");
+//            String userId,
+//            String screenId,
+//            String userLabel,
+//            String groupId,
+//            String allMemberCodes,
+//            String communicationChannels,
+//            String memberCode,
+//            String originMemberCode,
+//            String stimulusId,
+//            String stimulusIndex,
+//            String stimuliList,
+//            String requestedPhase,
+//            String messageString,
+//            boolean groupReady,
+//            String responseStimulusId,
+//            String expectedRespondents,
+//            String actualRespondents,
+//            String groupUUID)
+//    }
 }
