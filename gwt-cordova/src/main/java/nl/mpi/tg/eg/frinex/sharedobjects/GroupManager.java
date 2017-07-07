@@ -120,25 +120,12 @@ public class GroupManager {
                                     // select only the most recent message for any user in this channel
                                     System.out.println("membersLastMessage.getExpectedRespondents(): " + membersLastMessage.getExpectedRespondents());
                                     System.out.println("membersLastMessage.getActualRespondents(): " + membersLastMessage.getActualRespondents());
-                                    if (membersLastMessage.getExpectedRespondents() != null && membersLastMessage.getActualRespondents() != null
-                                            && membersLastMessage.getExpectedRespondents().length() <= membersLastMessage.getActualRespondents().length()) {
-                                        System.out.println("ExpectedRespondents and ActualRespondents length adequate");
-                                        boolean allResponded = true;
-                                        if (!membersLastMessage.getActualRespondents().contains(membersLastMessage.getMemberCode().toString())) {
-                                            for (String respondant : membersLastMessage.getExpectedRespondents().split(",")) {
-                                                if (!membersLastMessage.getActualRespondents().contains(respondant)) {
-                                                    if (channel.contains(respondant)) {
-                                                        allResponded = false;
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        if (allResponded) {
-                                            System.out.println("all ExpectedRespondents replied");
-                                            // only resend a message if all expected respondants have replied                                        
-                                            mostRecentChannelMessage = membersLastMessage;
-                                            resendingOldMessage = true;
-                                        }
+                                    // expected respondants list should have out of channel respondents omitted for this comparison
+                                    if (membersLastMessage.haveAllRespondended(channel)) {
+                                        System.out.println("all ExpectedRespondents replied");
+                                        // only resend a message if all expected respondants have replied                                        
+                                        mostRecentChannelMessage = membersLastMessage;
+                                        resendingOldMessage = true;
                                     }
                                 }
                             }
@@ -222,6 +209,7 @@ public class GroupManager {
     }
 
     public void updateResponderListForMessagePhase(GroupMessage storedMessage) {
+        // todo: this might be loosing responder members for older phases
         final Set<MemberCode> respondingMemberCodes = new HashSet<>();
         if (storedMessage.getOriginMemberCode() != null) {
             respondingMemberCodes.add(storedMessage.getOriginMemberCode());
@@ -230,7 +218,7 @@ public class GroupManager {
             GroupMessage lastGroupMessage = userGroups.get(storedMessage);
             if (lastGroupMessage != null && lastGroupMessage.getOriginMemberCode() != null) {
 //          if the group matches
-                if (storedMessage.equals(lastGroupMessage)) {                    
+                if (storedMessage.equals(lastGroupMessage)) {
 //                    // this is the same or later phase
 //                    if (storedMessage.getRequestedPhase().compareTo(lastGroupMessage.getRequestedPhase()) <= 0) {
                     // this is the same phase
