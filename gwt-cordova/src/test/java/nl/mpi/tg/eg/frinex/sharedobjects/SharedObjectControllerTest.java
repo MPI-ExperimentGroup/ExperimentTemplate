@@ -27,6 +27,9 @@ import org.junit.Ignore;
  */
 public class SharedObjectControllerTest {
 
+//    String lastScreenId = "";
+//    int lastPhase = 0;
+
     private void processMessage(SharedObjectController instance,
             String InMessagegroupId, String InMessagescreenId, String InMessageallMemberCodes, String InMessagegroupCommunicationChannels, String InMessagememberCode, String InMessageoriginMemberCode,
             String InMessageexpectedRespondents, String InMessageactualRespondents, int InMessagestimulusIndex, int InMessageoriginPhase, int InMessagerequestedPhase, String InMessagemessageString,
@@ -39,6 +42,7 @@ public class SharedObjectControllerTest {
         groupMessage.setAllMemberCodes(InMessageallMemberCodes);
         groupMessage.setGroupCommunicationChannels(InMessagegroupCommunicationChannels);
         groupMessage.setStimulusIndex(InMessagestimulusIndex);
+        groupMessage.setStimuliList("StimuliList");
         groupMessage.setOriginPhase(InMessageoriginPhase);
         groupMessage.setRequestedPhase(InMessagerequestedPhase);
         groupMessage.setExpectedRespondents(InMessageexpectedRespondents);
@@ -46,9 +50,18 @@ public class SharedObjectControllerTest {
         assertEquals(OutMessageoriginPhase, result.getOriginPhase().intValue());
         assertEquals(OutMessagerequestedPhase, result.getRequestedPhase().intValue());
         assertEquals(OutMessagestimulusIndex, result.getStimulusIndex().intValue());
-        if (result.getActualRespondents() != null) {
-            assertTrue("ActualRespondents should contain InMessagememberCode", result.getActualRespondents().contains(InMessagememberCode));
-        }
+//        if (result.isGroupReady()) {
+//            assertTrue("ActualRespondents should contain InMessagememberCode", result.getActualRespondents().contains(InMessagememberCode));
+//            if (lastScreenId.equals(result.getScreenId())) {
+//                if (result.getOriginPhase() != null) {
+//                    assertTrue(result.getOriginPhase() > 0);
+//                }
+//                lastPhase = result.getOriginPhase();
+//            } else {
+//                lastScreenId = result.getScreenId();
+//                lastPhase = result.getOriginPhase();
+//            }
+//        }
     }
 
     private GroupMessage processMessage(SharedObjectController instance,
@@ -1360,9 +1373,9 @@ public class SharedObjectControllerTest {
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,C,B,D", "A,B,C", 9, 29, 30, "", true, 1, 2, 2, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,C,B,D", "A,B,C", 9, 29, 30, "", true, 1, 2, 2, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "A,B,C,D", "D", 0, 0, 0, null, true, 0, 1, 1, 0,
-                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "B,D", "B,D", 9, 27, 28, "etudfgt eae", true, 0, 2, 2, 0);//processMessage
+                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "D", "D", "B,D", "B,D", 9, 29, 30, "etudfgt eae", true, 0, 2, 2, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,C", "C", 9, 28, 29, "etudfgt eae", true, 2, 2, 2, 0,
-                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,C", "C", 9, 28, 29, "etudfgt eae", true, 2, 2, 2, 0);//processMessage
+                "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,C", "C", 9, 29, 30, "etudfgt eae", true, 2, 2, 2, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,C", "A", 10, 30, 31, "etudfgt eae", true, 0, 0, 2, 0,
                 "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "A", "A", "A,C", "A", 10, 30, 31, "etudfgt eae", true, 0, 0, 2, 0);//processMessage
         processMessage(instance, "robot group at 4:11:52 PM", "Round_1___4", "A,B,C,D", "A,B|C,D", "C", "C", "A,C,B,D", "B,C", 9, 29, 30, "", true, 2, 2, 2, 0,
