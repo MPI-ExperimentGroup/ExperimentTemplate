@@ -158,7 +158,7 @@ public class GroupMessage {
     }
 
     public boolean haveAllRespondended(String channel) {
-        if (expectedRespondents == null) {
+        if (expectedRespondents == null || expectedRespondents.isEmpty()) {
             return true;
         }
         if (actualRespondents == null) {
@@ -167,7 +167,7 @@ public class GroupMessage {
         final List<String> expectedRespondentsList = new ArrayList(Arrays.asList(expectedRespondents.split(",")));
         final List<String> actualRespondentsList = Arrays.asList(actualRespondents.split(","));
         final List<String> channelList = Arrays.asList(channel.split(","));
-        expectedRespondentsList.removeAll(channelList);
+        expectedRespondentsList.retainAll(channelList);
         expectedRespondentsList.removeAll(actualRespondentsList);
         return expectedRespondentsList.isEmpty();
     }
