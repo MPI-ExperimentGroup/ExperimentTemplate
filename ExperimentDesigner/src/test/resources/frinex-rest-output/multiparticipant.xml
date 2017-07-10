@@ -66,7 +66,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="4" menuLabel="Round 0 - 4" next="Round_1___4" type="stimulus" self="Round_0___4" title="Round 0 - 4">
         <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="Round 0 - 4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -74,20 +74,20 @@
                         <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="The producer sees the stimulus and enters some text"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,C,D:-:A,C,D:-:B,A,D:-:B,C,A:-">
                             <clearPage/>
-                            <htmlText featureText="All other participants wait for the producer"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D">
                             <clearPage/>
-                            <htmlText featureText="The stimulus and the producers text are shown to all participants"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <pause msToNext="7000">
                                     <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
@@ -105,7 +105,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <htmlText featureText="&amp;nbsp;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -121,7 +121,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="5" menuLabel="Round 1 - 4" next="Round_2___4" type="stimulus" self="Round_1___4" title="Round 1 - 4">
         <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="Round 1 - 4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -129,25 +129,25 @@
                         <groupNetworkActivity groupRole="A,C:-:-:B,D:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="The producer sees the stimulus and enters some text"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss"/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,D:-:-:A,C:-:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser waits for the producer"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,C:-:-:B,D:-">
                             <clearPage/>
-                            <htmlText featureText="The producer waits for the guesser"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:B,D:-:-:A,C:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -181,7 +181,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,C,B,D:-:-:A,C,B,D">
                             <clearPage/>
-                            <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -214,7 +214,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <htmlText featureText="&amp;nbsp;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -230,7 +230,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="6" menuLabel="Round 2 - 4" next="Round_3___4" type="stimulus" self="Round_2___4" title="Round 2 - 4">
         <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="Round 2 - 4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -238,25 +238,25 @@
                         <groupNetworkActivity groupRole="A,B:-:-:C,D:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="The producer sees the stimulus and enters some text"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss"/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="C,D:-:-:A,B:-:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser waits for the producer"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B:-:-:C,D:-">
                             <clearPage/>
-                            <htmlText featureText="The producer waits for the guesser"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:C,D:-:-:A,B:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -290,7 +290,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D">
                             <clearPage/>
-                            <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -323,7 +323,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <htmlText featureText="&amp;nbsp;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -339,7 +339,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="7" menuLabel="Round 3 - 4" next="Round_4___4" type="stimulus" self="Round_3___4" title="Round 3 - 4">
         <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="Round 3 - 4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -347,25 +347,25 @@
                         <groupNetworkActivity groupRole="A,B:-:-:D,C:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="The producer sees the stimulus and enters some text"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss"/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="D,C:-:-:A,B:-:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser waits for the producer"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B:-:-:D,C:-">
                             <clearPage/>
-                            <htmlText featureText="The producer waits for the guesser"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:D,C:-:-:A,B:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -399,7 +399,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,B,D,C:-:-:A,B,D,C">
                             <clearPage/>
-                            <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -432,7 +432,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <htmlText featureText="&amp;nbsp;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -448,7 +448,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="8" menuLabel="Round 4 - 4" next="Round_5___4" type="stimulus" self="Round_4___4" title="Round 4 - 4">
         <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="Round 4 - 4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -456,25 +456,25 @@
                         <groupNetworkActivity groupRole="A,C:-:-:B,D:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="The producer sees the stimulus and enters some text"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss"/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,D:-:-:A,C:-:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser waits for the producer"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,C:-:-:B,D:-">
                             <clearPage/>
-                            <htmlText featureText="The producer waits for the guesser"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:B,D:-:-:A,C:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -508,7 +508,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,C,B,D:-:-:A,C,B,D">
                             <clearPage/>
-                            <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -541,7 +541,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <htmlText featureText="&amp;nbsp;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -557,7 +557,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="9" menuLabel="Round 5 - 4" next="Round_6___4" type="stimulus" self="Round_5___4" title="Round 5 - 4">
         <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="Round 5 - 4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -565,25 +565,25 @@
                         <groupNetworkActivity groupRole="A,B:-:-:C,D:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="The producer sees the stimulus and enters some text"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss"/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="C,D:-:-:A,B:-:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser waits for the producer"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B:-:-:C,D:-">
                             <clearPage/>
-                            <htmlText featureText="The producer waits for the guesser"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:C,D:-:-:A,B:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -617,7 +617,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D">
                             <clearPage/>
-                            <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -650,7 +650,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <htmlText featureText="&amp;nbsp;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -666,7 +666,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="10" menuLabel="Round 6 - 4" next="Round_7___4" type="stimulus" self="Round_6___4" title="Round 6 - 4">
         <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="Round 6 - 4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -674,25 +674,25 @@
                         <groupNetworkActivity groupRole="A,B:-:-:D,C:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="The producer sees the stimulus and enters some text"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss"/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="D,C:-:-:A,B:-:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser waits for the producer"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B:-:-:D,C:-">
                             <clearPage/>
-                            <htmlText featureText="The producer waits for the guesser"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:D,C:-:-:A,B:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -726,7 +726,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,B,D,C:-:-:A,B,D,C">
                             <clearPage/>
-                            <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -759,7 +759,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <htmlText featureText="&amp;nbsp;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -775,7 +775,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="11" menuLabel="Round 7 - 4" next="Round_8___4" type="stimulus" self="Round_7___4" title="Round 7 - 4">
         <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="Round 7 - 4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -783,25 +783,25 @@
                         <groupNetworkActivity groupRole="A,C:-:-:B,D:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="The producer sees the stimulus and enters some text"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss"/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,D:-:-:A,C:-:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser waits for the producer"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,C:-:-:B,D:-">
                             <clearPage/>
-                            <htmlText featureText="The producer waits for the guesser"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:B,D:-:-:A,C:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -835,7 +835,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,C,B,D:-:-:A,C,B,D">
                             <clearPage/>
-                            <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -868,7 +868,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <htmlText featureText="&amp;nbsp;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -884,7 +884,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="12" menuLabel="Round 8 - 4" next="Einde_van_het_experiment2" type="stimulus" self="Round_8___4" title="Round 8 - 4">
         <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="Round 8 - 4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -892,10 +892,10 @@
                         <groupNetworkActivity groupRole="A,B,C,D:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="All 23 stimuli are presented all participants in random order similar to the producer screen"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -910,7 +910,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <htmlText featureText="&amp;nbsp;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -926,7 +926,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="13" menuLabel="Round 0 - 8" next="Round_1___8" type="stimulus" self="Round_0___8" title="Round 0 - 8">
         <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="Round 0 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -934,20 +934,20 @@
                         <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="The producer sees the stimulus and enters some text"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-">
                             <clearPage/>
-                            <htmlText featureText="All other participants wait for the producer"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H">
                             <clearPage/>
-                            <htmlText featureText="The stimulus and the producers text are shown to all participants"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <pause msToNext="7000">
                                     <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
@@ -965,7 +965,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <htmlText featureText="&amp;nbsp;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -981,7 +981,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="14" menuLabel="Round 1 - 8" next="Round_2___8" type="stimulus" self="Round_1___8" title="Round 1 - 8">
         <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="Round 1 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -989,25 +989,25 @@
                         <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="The producer sees the stimulus and enters some text"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss"/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser waits for the producer"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
                             <clearPage/>
-                            <htmlText featureText="The producer waits for the guesser"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -1041,7 +1041,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,C,E,G,B,D,F,H:-:-:A,C,E,G,B,D,F,H">
                             <clearPage/>
-                            <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -1074,7 +1074,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <htmlText featureText="&amp;nbsp;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1090,7 +1090,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="15" menuLabel="Round 2 - 8" next="Round_3___8" type="stimulus" self="Round_2___8" title="Round 2 - 8">
         <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="Round 2 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -1098,25 +1098,25 @@
                         <groupNetworkActivity groupRole="A,E,C,G:-:-:H,D,F,B:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="The producer sees the stimulus and enters some text"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss"/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="H,D,F,B:-:-:A,E,C,G:-:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser waits for the producer"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,E,C,G:-:-:H,D,F,B:-">
                             <clearPage/>
-                            <htmlText featureText="The producer waits for the guesser"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:H,D,F,B:-:-:A,E,C,G:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -1150,7 +1150,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,E,C,G,H,D,F,B:-:-:A,E,C,G,H,D,F,B">
                             <clearPage/>
-                            <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -1183,7 +1183,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <htmlText featureText="&amp;nbsp;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1199,7 +1199,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="16" menuLabel="Round 3 - 8" next="Round_4___8" type="stimulus" self="Round_3___8" title="Round 3 - 8">
         <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="Round 3 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -1207,25 +1207,25 @@
                         <groupNetworkActivity groupRole="A,G,E,C:-:-:D,F,B,H:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="The producer sees the stimulus and enters some text"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss"/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="D,F,B,H:-:-:A,G,E,C:-:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser waits for the producer"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,G,E,C:-:-:D,F,B,H:-">
                             <clearPage/>
-                            <htmlText featureText="The producer waits for the guesser"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:D,F,B,H:-:-:A,G,E,C:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -1259,7 +1259,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,G,E,C,D,F,B,H:-:-:A,G,E,C,D,F,B,H">
                             <clearPage/>
-                            <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -1292,7 +1292,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <htmlText featureText="&amp;nbsp;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1308,7 +1308,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="17" menuLabel="Round 4 - 8" next="Round_5___8" type="stimulus" self="Round_4___8" title="Round 4 - 8">
         <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="Round 4 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -1316,25 +1316,25 @@
                         <groupNetworkActivity groupRole="A,B,E,F:-:-:C,D,G,H:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="The producer sees the stimulus and enters some text"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss"/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="C,D,G,H:-:-:A,B,E,F:-:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser waits for the producer"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B,E,F:-:-:C,D,G,H:-">
                             <clearPage/>
-                            <htmlText featureText="The producer waits for the guesser"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:C,D,G,H:-:-:A,B,E,F:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -1368,7 +1368,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,B,E,F,C,D,G,H:-:-:A,B,E,F,C,D,G,H">
                             <clearPage/>
-                            <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -1401,7 +1401,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <htmlText featureText="&amp;nbsp;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1417,7 +1417,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="18" menuLabel="Round 5 - 8" next="Round_6___8" type="stimulus" self="Round_5___8" title="Round 5 - 8">
         <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="Round 5 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -1425,25 +1425,25 @@
                         <groupNetworkActivity groupRole="A,H,B,G:-:-:E,D,F,C:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="The producer sees the stimulus and enters some text"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss"/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="E,D,F,C:-:-:A,H,B,G:-:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser waits for the producer"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,H,B,G:-:-:E,D,F,C:-">
                             <clearPage/>
-                            <htmlText featureText="The producer waits for the guesser"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:E,D,F,C:-:-:A,H,B,G:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -1477,7 +1477,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,H,B,G,E,D,F,C:-:-:A,H,B,G,E,D,F,C">
                             <clearPage/>
-                            <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -1510,7 +1510,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <htmlText featureText="&amp;nbsp;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1526,7 +1526,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="19" menuLabel="Round 6 - 8" next="Round_7___8" type="stimulus" self="Round_6___8" title="Round 6 - 8">
         <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="Round 6 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -1534,25 +1534,25 @@
                         <groupNetworkActivity groupRole="A,G,C,E:-:-:F,D,B,H:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="The producer sees the stimulus and enters some text"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss"/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="F,D,B,H:-:-:A,G,C,E:-:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser waits for the producer"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,G,C,E:-:-:F,D,B,H:-">
                             <clearPage/>
-                            <htmlText featureText="The producer waits for the guesser"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:F,D,B,H:-:-:A,G,C,E:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -1586,7 +1586,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,G,C,E,F,D,B,H:-:-:A,G,C,E,F,D,B,H">
                             <clearPage/>
-                            <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -1619,7 +1619,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <htmlText featureText="&amp;nbsp;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1635,7 +1635,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="20" menuLabel="Round 7 - 8" next="Round_8___8" type="stimulus" self="Round_7___8" title="Round 7 - 8">
         <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="Round 7 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -1643,25 +1643,25 @@
                         <groupNetworkActivity groupRole="A,B,E,D:-:-:G,H,C,F:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="The producer sees the stimulus and enters some text"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss"/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="G,H,C,F:-:-:A,B,E,D:-:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser waits for the producer"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B,E,D:-:-:G,H,C,F:-">
                             <clearPage/>
-                            <htmlText featureText="The producer waits for the guesser"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:G,H,C,F:-:-:A,B,E,D:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -1695,7 +1695,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,B,E,D,G,H,C,F:-:-:A,B,E,D,G,H,C,F">
                             <clearPage/>
-                            <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -1728,7 +1728,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <htmlText featureText="&amp;nbsp;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1744,7 +1744,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="21" menuLabel="Round 8 - 8" next="Round_9___8" type="stimulus" self="Round_8___8" title="Round 8 - 8">
         <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="Round 8 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -1752,10 +1752,10 @@
                         <groupNetworkActivity groupRole="A,B,C,D,E,F,G,H:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="All 23 stimuli are presented all participants in random order similar to the producer screen"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -1770,7 +1770,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <htmlText featureText="&amp;nbsp;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1786,7 +1786,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="22" menuLabel="Round 9 - 8" next="Round_10___8" type="stimulus" self="Round_9___8" title="Round 9 - 8">
         <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="Round 9 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -1794,25 +1794,25 @@
                         <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="The producer sees the stimulus and enters some text"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss"/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser waits for the producer"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
                             <clearPage/>
-                            <htmlText featureText="The producer waits for the guesser"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -1846,7 +1846,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,C,E,G,B,D,F,H:-:-:A,C,E,G,B,D,F,H">
                             <clearPage/>
-                            <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -1879,7 +1879,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <htmlText featureText="&amp;nbsp;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1895,7 +1895,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="23" menuLabel="Round 10 - 8" next="Round_11___8" type="stimulus" self="Round_10___8" title="Round 10 - 8">
         <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="Round 10 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -1903,25 +1903,25 @@
                         <groupNetworkActivity groupRole="A,E,C,G:-:-:H,D,F,B:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="The producer sees the stimulus and enters some text"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss"/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="H,D,F,B:-:-:A,E,C,G:-:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser waits for the producer"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,E,C,G:-:-:H,D,F,B:-">
                             <clearPage/>
-                            <htmlText featureText="The producer waits for the guesser"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:H,D,F,B:-:-:A,E,C,G:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -1955,7 +1955,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,E,C,G,H,D,F,B:-:-:A,E,C,G,H,D,F,B">
                             <clearPage/>
-                            <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -1988,7 +1988,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <htmlText featureText="&amp;nbsp;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2004,7 +2004,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="24" menuLabel="Round 11 - 8" next="Round_12___8" type="stimulus" self="Round_11___8" title="Round 11 - 8">
         <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="Round 11 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -2012,25 +2012,25 @@
                         <groupNetworkActivity groupRole="A,G,E,C:-:-:D,F,B,H:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="The producer sees the stimulus and enters some text"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss"/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="D,F,B,H:-:-:A,G,E,C:-:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser waits for the producer"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,G,E,C:-:-:D,F,B,H:-">
                             <clearPage/>
-                            <htmlText featureText="The producer waits for the guesser"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:D,F,B,H:-:-:A,G,E,C:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -2064,7 +2064,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,G,E,C,D,F,B,H:-:-:A,G,E,C,D,F,B,H">
                             <clearPage/>
-                            <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -2097,7 +2097,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <htmlText featureText="&amp;nbsp;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2113,7 +2113,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="25" menuLabel="Round 12 - 8" next="Round_13___8" type="stimulus" self="Round_12___8" title="Round 12 - 8">
         <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="Round 12 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -2121,25 +2121,25 @@
                         <groupNetworkActivity groupRole="A,B,E,F:-:-:C,D,G,H:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="The producer sees the stimulus and enters some text"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss"/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="C,D,G,H:-:-:A,B,E,F:-:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser waits for the producer"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B,E,F:-:-:C,D,G,H:-">
                             <clearPage/>
-                            <htmlText featureText="The producer waits for the guesser"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:C,D,G,H:-:-:A,B,E,F:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -2173,7 +2173,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,B,E,F,C,D,G,H:-:-:A,B,E,F,C,D,G,H">
                             <clearPage/>
-                            <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -2206,7 +2206,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <htmlText featureText="&amp;nbsp;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2222,7 +2222,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="26" menuLabel="Round 13 - 8" next="Round_14___8" type="stimulus" self="Round_13___8" title="Round 13 - 8">
         <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="Round 13 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -2230,25 +2230,25 @@
                         <groupNetworkActivity groupRole="A,H,B,G:-:-:E,D,F,C:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="The producer sees the stimulus and enters some text"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss"/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="E,D,F,C:-:-:A,H,B,G:-:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser waits for the producer"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,H,B,G:-:-:E,D,F,C:-">
                             <clearPage/>
-                            <htmlText featureText="The producer waits for the guesser"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:E,D,F,C:-:-:A,H,B,G:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -2282,7 +2282,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,H,B,G,E,D,F,C:-:-:A,H,B,G,E,D,F,C">
                             <clearPage/>
-                            <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -2315,7 +2315,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <htmlText featureText="&amp;nbsp;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2331,7 +2331,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="27" menuLabel="Round 14 - 8" next="Round_15___8" type="stimulus" self="Round_14___8" title="Round 14 - 8">
         <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="Round 14 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -2339,25 +2339,25 @@
                         <groupNetworkActivity groupRole="A,G,C,E:-:-:F,D,B,H:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="The producer sees the stimulus and enters some text"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss"/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="F,D,B,H:-:-:A,G,C,E:-:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser waits for the producer"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,G,C,E:-:-:F,D,B,H:-">
                             <clearPage/>
-                            <htmlText featureText="The producer waits for the guesser"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:F,D,B,H:-:-:A,G,C,E:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -2391,7 +2391,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,G,C,E,F,D,B,H:-:-:A,G,C,E,F,D,B,H">
                             <clearPage/>
-                            <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -2424,7 +2424,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <htmlText featureText="&amp;nbsp;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2440,7 +2440,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="28" menuLabel="Round 15 - 8" next="Round_16___8" type="stimulus" self="Round_15___8" title="Round 15 - 8">
         <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="Round 15 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -2448,25 +2448,25 @@
                         <groupNetworkActivity groupRole="A,B,E,D:-:-:G,H,C,F:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="The producer sees the stimulus and enters some text"/>
-                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss"/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                            <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="G,H,C,F:-:-:A,B,E,D:-:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser waits for the producer"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B,E,D:-:-:G,H,C,F:-">
                             <clearPage/>
-                            <htmlText featureText="The producer waits for the guesser"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:G,H,C,F:-:-:A,B,E,D:-">
                             <clearPage/>
-                            <htmlText featureText="The guesser sees the text with a grid of stimuli, from which they select one based on the text"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -2500,7 +2500,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,B,E,D,G,H,C,F:-:-:A,B,E,D,G,H,C,F">
                             <clearPage/>
-                            <htmlText featureText="The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0."/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -2533,7 +2533,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <htmlText featureText="&amp;nbsp;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2549,7 +2549,7 @@
     </presenter>
     <presenter back="Agreement" displayOrder="29" menuLabel="Round 16 - 8" next="Einde_van_het_experiment2" type="stimulus" self="Round_16___8" title="Round 16 - 8">
         <centrePage/>
-        <htmlText featureText="Add information before the beginning of each round, telling the participants who they’re about to play with"/>
+        <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="Round 16 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -2557,10 +2557,10 @@
                         <groupNetworkActivity groupRole="A,B,C,D,E,F,G,H:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="All 23 stimuli are presented all participants in random order similar to the producer screen"/>
+                            <htmlText featureText="&amp;nbsp;"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." hotKey="ENTER" allowedCharCodes="etuiopasdfgkzbnm " validationRegex="[etuiopasdfgkzbnm ]{2,}"/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -2575,7 +2575,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far)."/>
+                    <htmlText featureText="&amp;nbsp;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
