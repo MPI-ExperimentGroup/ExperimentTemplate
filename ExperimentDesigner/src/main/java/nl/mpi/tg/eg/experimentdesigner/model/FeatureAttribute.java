@@ -55,6 +55,7 @@ public enum FeatureAttribute {
     ratingLabelRight,
     sendData,
     networkErrorMessage,
+    inputErrorMessage,
     randomise,
     repeatCount,
     repeatRandomWindow,
