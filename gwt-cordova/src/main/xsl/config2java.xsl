@@ -360,7 +360,10 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select ="local-name()"/>    
         <xsl:text>(</xsl:text>
         <xsl:value-of select="if(@validationRegex) then concat('&quot;', @validationRegex, '&quot;') else 'null'" />
-        <xsl:text>, messages.</xsl:text>
+        <xsl:text>, messages.inputErrorMessage</xsl:text>
+        <xsl:value-of select="generate-id(.)" />
+        <xsl:text>(),</xsl:text>
+        <xsl:text>messages.</xsl:text>
         <xsl:value-of select="generate-id(.)" />
         <xsl:text>(),</xsl:text>
         <xsl:value-of select="if(@allowedCharCodes) then concat('&quot;', @allowedCharCodes, '&quot;') else 'null'" />
