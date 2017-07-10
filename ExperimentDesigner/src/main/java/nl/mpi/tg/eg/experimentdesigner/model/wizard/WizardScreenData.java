@@ -311,22 +311,6 @@ public class WizardScreenData implements Serializable {
         this.stimulusCodeFormat = stimulusCodeFormat;
     }
 
-    public String getFreeTextValidationRegex() {
-        return freeTextValidationRegex;
-    }
-
-    public void setFreeTextValidationRegex(String freeTextValidationRegex) {
-        this.freeTextValidationRegex = freeTextValidationRegex;
-    }
-
-    public String getFreeTextValidationMessage() {
-        return freeTextValidationMessage;
-    }
-
-    public void setFreeTextValidationMessage(String freeTextValidationMessage) {
-        this.freeTextValidationMessage = freeTextValidationMessage;
-    }
-
     public Integer getStimuliCount() {
         return stimuliCount;
     }
