@@ -71,6 +71,14 @@
             <xsl:text>
             </xsl:text>
         </xsl:if>
+        <xsl:if test="@inputErrorMessage != ''">   
+            <xsl:text>inputErrorMessage</xsl:text>
+            <xsl:value-of select="generate-id(.)" />
+            <xsl:text>=</xsl:text>
+            <xsl:value-of select="replace(@inputErrorMessage,'''','''''')"/>
+            <xsl:text>
+            </xsl:text>
+        </xsl:if>
         <xsl:if test="@closeButtonLabel != ''">   
             <xsl:text>closeButtonLabel</xsl:text>
             <xsl:value-of select="generate-id(.)" />
