@@ -169,7 +169,7 @@ public class TimedStimulusView extends ComplexView {
         getActivePanel().add(htmlPanel);
     }
 
-    public StimulusFreeText addStimulusFreeText(final String validationRegex, final String validationChallenge, final String allowedCharCodes, final SingleShotEventListner enterKeyListner, final int hotKey) {
+    public StimulusFreeText addStimulusFreeText(final String validationRegex, final String keyCodeChallenge, final String validationChallenge, final String allowedCharCodes, final SingleShotEventListner enterKeyListner, final int hotKey) {
         final Label errorLabel = new Label(validationChallenge);
         errorLabel.setStylePrimaryName("metadataErrorMessage");
         errorLabel.setVisible(false);
@@ -193,8 +193,19 @@ public class TimedStimulusView extends ComplexView {
                 } else if (allowedCharCodes != null) {
                     if (0 > allowedCharCodes.indexOf(charCode)) {
                         event.getNativeEvent().preventDefault();
-                        errorLabel.setText("The key '" + charCode + "' is not allowed");
-                        errorLabel.setVisible(true);
+                        final char invertedCaseCode = (Character.isLowerCase(charCode)) ? Character.toUpperCase(charCode) : Character.toLowerCase(charCode);
+                        if (0 > allowedCharCodes.indexOf(invertedCaseCode)) {
+//                            final String messageString = "The key '<keycode>' is not allowed. " + validationChallenge;
+                            errorLabel.setText(keyCodeChallenge.replace("<keycode>", "" + charCode) + validationChallenge);
+                            errorLabel.setVisible(true);
+                        } else {
+                            final int cursorPos = textBox.getCursorPos();
+                            String pretext = textBox.getText().substring(0, cursorPos);
+                            String posttext = textBox.getText().substring(textBox.getCursorPos());
+                            textBox.setText(pretext + invertedCaseCode + posttext);
+                            textBox.setCursorPos(cursorPos + 1);
+                            errorLabel.setVisible(false);
+                        }
                     } else {
                         errorLabel.setVisible(false);
                     }
@@ -218,6 +229,7 @@ public class TimedStimulusView extends ComplexView {
                     return true;
                 } else {
                     textBox.setStylePrimaryName("metadataError");
+                    errorLabel.setText(validationChallenge);
                     errorLabel.setVisible(true);
                     textBox.setFocus(true);
                     return false;
