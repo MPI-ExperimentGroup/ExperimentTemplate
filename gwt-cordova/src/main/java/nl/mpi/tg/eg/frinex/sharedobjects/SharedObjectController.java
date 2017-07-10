@@ -85,7 +85,7 @@ public class SharedObjectController {
             System.out.println("incomingMessage == null");
             return null;
         }
-        System.out.println("InMessage:" + incomingMessage.toString());
+//        System.out.println("InMessage:" + incomingMessage.toString());
 //        final String incomingStimuliList = incomingMessage.getStimuliList();
 //        System.out.println("incomingMessage: ");
 //        System.out.println(incomingMessage.getAllMemberCodes());
@@ -116,7 +116,7 @@ public class SharedObjectController {
         GroupMessage resendMessage = GROUP_MANAGER.updateChannelMessageIfOutOfDate(incomingMessage);
         if (resendMessage == null) {
             GROUP_MANAGER.setUsersLastMessage(incomingMessage);
-            System.out.println("OutMessage:" + incomingMessage.toString());
+//            System.out.println("OutMessage:" + incomingMessage.toString());
             return incomingMessage;
         } else {
             // if the message is a reconnect but the stimuli index is greater and the stimulus id == null then trigger an end of stimulus screen change
@@ -125,7 +125,7 @@ public class SharedObjectController {
 //                incomingMessage.setExpectedRespondents(incomingMessage.getMemberCode().toString());
                 return incomingMessage;
             } else {
-                System.out.println("ResendMessage:" + resendMessage.toString());
+//                System.out.println("ResendMessage:" + resendMessage.toString());
                 return resendMessage;
             }
         }

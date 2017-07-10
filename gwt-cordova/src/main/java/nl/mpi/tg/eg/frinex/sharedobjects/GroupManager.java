@@ -202,7 +202,6 @@ public class GroupManager {
     }
 
     public void updateResponderListForMessagePhase(GroupMessage storedMessage) {
-        // todo: this might be loosing responder members for older phases
         final Set<MemberCode> respondingMemberCodes = new HashSet<>();
         if (storedMessage.getOriginMemberCode() != null) {
             respondingMemberCodes.add(storedMessage.getOriginMemberCode());
@@ -258,7 +257,10 @@ public class GroupManager {
                             groupCompleteMessages = new HashMap<>();
                             recentChannelMessages.put(storedMessage, groupCompleteMessages);
                         }
-                        groupCompleteMessages.put(channel, storedMessage);
+                        final GroupMessage previousMessage = groupCompleteMessages.get(channel);
+                        if (previousMessage == null || previousMessage.getRequestedPhase() <= storedMessage.getRequestedPhase()) {
+                            groupCompleteMessages.put(channel, storedMessage);
+                        }
                     }
                 }
             }

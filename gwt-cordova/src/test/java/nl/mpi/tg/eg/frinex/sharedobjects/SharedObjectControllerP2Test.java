@@ -25,7 +25,41 @@ import org.junit.Ignore;
  * @since Feb 3, 2017 3:36:50 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class SharedObjectControllerP2Test extends SharedObjectControllerTest {
+public class SharedObjectControllerP2Test {
+
+    protected void processMessage(SharedObjectController instance,
+            String InMessagegroupId, String InMessagescreenId, String InMessageallMemberCodes, String InMessagegroupCommunicationChannels, String InMessagememberCode, String InMessageoriginMemberCode,
+            String InMessageexpectedRespondents, String InMessageactualRespondents, int InMessagestimulusIndex, int InMessageoriginPhase, int InMessagerequestedPhase, String InMessagemessageString,
+            boolean InMessagegroupReady, int InMessagememberScore, int InMessagechannelScore, int InMessagegroupScore, int InMessageeventMs,
+            String OutMessagegroupId, String OutMessagescreenId, String OutMessageallMemberCodes, String OutMessagegroupCommunicationChannels, String OutMessagememberCode, String OutMessageoriginMemberCode,
+            String OutMessageexpectedRespondents, String OutMessageactualRespondents, int OutMessagestimulusIndex, int OutMessageoriginPhase, int OutMessagerequestedPhase, String OutMessagemessageString,
+            boolean OutMessagegroupReady, int OutMessagememberScore, int OutMessagechannelScore, int OutMessagegroupScore, int OutMessageeventMs
+    ) throws Exception {
+        GroupMessage groupMessage = new GroupMessage(InMessagegroupId, InMessagescreenId, InMessagememberCode, InMessagememberCode);
+        groupMessage.setAllMemberCodes(InMessageallMemberCodes);
+        groupMessage.setGroupCommunicationChannels(InMessagegroupCommunicationChannels);
+        groupMessage.setStimulusIndex(InMessagestimulusIndex);
+        groupMessage.setStimuliList("StimuliList");
+        groupMessage.setOriginPhase(InMessageoriginPhase);
+        groupMessage.setRequestedPhase(InMessagerequestedPhase);
+        groupMessage.setExpectedRespondents(InMessageexpectedRespondents);
+        final GroupMessage result = instance.getGroupData(groupMessage);
+        assertEquals(OutMessageoriginPhase, result.getOriginPhase().intValue());
+        assertEquals(OutMessagerequestedPhase, result.getRequestedPhase().intValue());
+        assertEquals(OutMessagestimulusIndex, result.getStimulusIndex().intValue());
+//        if (result.isGroupReady()) {
+//            assertTrue("ActualRespondents should contain InMessagememberCode", result.getActualRespondents().contains(InMessagememberCode));
+//            if (lastScreenId.equals(result.getScreenId())) {
+//                if (result.getOriginPhase() != null) {
+//                    assertTrue(result.getOriginPhase() > 0);
+//                }
+//                lastPhase = result.getOriginPhase();
+//            } else {
+//                lastScreenId = result.getScreenId();
+//                lastPhase = result.getOriginPhase();
+//            }
+//        }
+    }
 
     /**
      * Test of getGroupData method, of class SharedObjectController.
