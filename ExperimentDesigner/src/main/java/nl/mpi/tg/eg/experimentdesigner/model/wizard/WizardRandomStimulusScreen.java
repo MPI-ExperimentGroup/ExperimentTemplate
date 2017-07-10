@@ -73,7 +73,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
 //        this.wizardScreenData.setButtonLabelEventTag(spacebar);
         setStimuliSet(stimuliStringArray);
     }
-    
+
     final public void setRandomiseStimuli(boolean randomiseStimuli) {
         this.wizardScreenData.setScreenBoolean(0, randomiseStimuli);
     }
@@ -184,10 +184,34 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         }
     }
 
+//    private String getInputErrorMessage(WizardScreenData storedWizardScreenData) {
+//        return storedWizardScreenData.getScreenText(0);
+//    }
+//
+//    final public void setInputErrorMessage(String inputErrorMessage) {
+//        this.wizardScreenData.setScreenText(0, inputErrorMessage);
+//    }
+
+    private String getFreeTextValidationMessage(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(1);
+    }
+
+    final public void setFreeTextValidationMessage(String freeTextValidationMessage) {
+        this.wizardScreenData.setScreenText(1, freeTextValidationMessage);
+    }
+
+    private String getFreeTextValidationRegex(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(2);
+    }
+
+    final public void setFreeTextValidationRegex(String freeTextValidationRegex) {
+        this.wizardScreenData.setScreenText(2, freeTextValidationRegex);
+    }
+
     public void setStimulusFreeText(boolean stimulusFreeText, String freeTextValidationRegex, String freeTextValidationMessage) {
         setStimulusFreeText(stimulusFreeText);
-        this.wizardScreenData.setFreeTextValidationRegex(freeTextValidationRegex);
-        this.wizardScreenData.setFreeTextValidationMessage(freeTextValidationMessage);
+        setFreeTextValidationRegex(freeTextValidationRegex);
+        setFreeTextValidationMessage(freeTextValidationMessage);
     }
 
     final public void setButtonLabel(String buttonLabelEventTag) {
@@ -265,8 +289,8 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         }
         presenterFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
         if (isStimulusFreeText(storedWizardScreenData)) {
-            final PresenterFeature stimulusFreeTextFeature = new PresenterFeature(FeatureType.stimulusFreeText, storedWizardScreenData.getFreeTextValidationMessage());
-            stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.validationRegex, storedWizardScreenData.getFreeTextValidationRegex());
+            final PresenterFeature stimulusFreeTextFeature = new PresenterFeature(FeatureType.stimulusFreeText, getFreeTextValidationMessage(storedWizardScreenData));
+            stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.validationRegex, getFreeTextValidationRegex(storedWizardScreenData));
 //            stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.excludedCharCodes, storedWizardScreenData.getExcludedCharCodes());
             if (isAllowHotkeyButtons(storedWizardScreenData)) {
                 stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.hotKey, "ENTER");
