@@ -189,10 +189,17 @@ public class TimedStimulusView extends ComplexView {
                 if (charCode > -1 && charCode == hotKey) {
                     event.getNativeEvent().preventDefault();
                     enterKeyListner.eventFired();
+                    errorLabel.setVisible(false);
                 } else if (allowedCharCodes != null) {
                     if (0 > allowedCharCodes.indexOf(charCode)) {
                         event.getNativeEvent().preventDefault();
+                        errorLabel.setText("The key '" + charCode + "' is not allowed");
+                        errorLabel.setVisible(true);
+                    } else {
+                        errorLabel.setVisible(false);
                     }
+                } else {
+                    errorLabel.setVisible(false);
                 }
             }
         });
