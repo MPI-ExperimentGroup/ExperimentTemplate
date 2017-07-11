@@ -64,8 +64,8 @@ public class MultiParticipant {
     final int numberOfStimuli = 23;
     final int repeatCountStimuli = 3;
     final int randomWindowStimuli = 3;
-    final String preStimuliText = "Add information before the beginning of each round, telling the participants who they’re about to play with";
-    final String postStimuliText = "there should be a summary informing participants at the end of each round about how many points they made as a dyad and as a group for that round (and so far).";
+    final String preStimuliText = "&nbsp;";
+    final String postStimuliText = "&nbsp;";
 
     private final String[] stimuliArray = new String[]{
         "2.png:shape1:version1:quadrant3:moveRotated270",
@@ -165,7 +165,8 @@ public class MultiParticipant {
             }
             roundScreen.setStimuliSet(stimuliArray);
             roundScreen.getWizardScreenData().setStimuliRandomTags(new String[]{currentChannel[3]});
-            roundScreen.setStimulusFreeText(true, "[etuiopasdfgkzbnm ]{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
+            roundScreen.setStimulusFreeText(true, "[wetuiopasfghknm ]{2,}", "You can only use the letters 'wetuiopasfghknm'.", "The key '<keycode>' is not allowed.");
+            roundScreen.setAllowedCharCodes("wetuiopasfghknm");
             wizardData.addScreen(roundScreen);
             if (roundOfFourScreenOuter == null) {
                 menuScreen4or8Members.addTargetScreen(roundScreen);
@@ -209,7 +210,8 @@ public class MultiParticipant {
             }
             roundScreen.setStimuliSet(stimuliArray);
             roundScreen.getWizardScreenData().setStimuliRandomTags(new String[]{currentChannel[3]});
-            roundScreen.setStimulusFreeText(true, "[etuiopasdfgkzbnm ]{2,}", "Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past.");
+            roundScreen.setStimulusFreeText(true, "[wetuiopasfghknm ]{2,}", "You can only use the letters 'wetuiopasfghknm'.", "The key '<keycode>' is not allowed.");
+            roundScreen.setAllowedCharCodes("wetuiopasfghknm");
             wizardData.addScreen(roundScreen);
             if (roundOfEightScreenOuter == null) {
                 menuScreen4or8Members.addTargetScreen(roundScreen);
@@ -242,7 +244,7 @@ public class MultiParticipant {
         return new WizardMultiParticipantScreen(screenName,
                 groupMembers4, 2,
                 communicationChannels, textEntryPhaseRoles,
-                "All 23 stimuli are presented all participants in random order similar to the producer screen",
+                "&nbsp;",
                 "",
                 true,
                 "This phase is not used in this screen",
@@ -267,16 +269,16 @@ public class MultiParticipant {
         return new WizardMultiParticipantScreen(screenName,
                 groupMembers4, 2,
                 communicationChannels, textEntryPhaseRoles,
-                "The producer sees the stimulus and enters some text", waitingForProducerPhaseRoles,
+                "&nbsp;", waitingForProducerPhaseRoles,
                 true,
-                "All other participants wait for the producer",
+                "&nbsp;",
                 "",
                 "This phase is not used in this screen",
                 "",
                 "This phase is not used in this screen",
                 "",
                 "This phase is not used in this screen", outcomeDisplayedPhaseRoles,
-                "The stimulus and the producers text are shown to all participants",
+                "&nbsp;",
                 groupRecordSubmitionPhaseRoles,
                 "",
                 preStimuliText, postStimuliText,
@@ -286,11 +288,11 @@ public class MultiParticipant {
     }
 
     protected WizardMultiParticipantScreen getPlayingRound(final String screenName, final String groupMembers, final String communicationChannels) {
-        final String textEntryPhaseText = "The producer sees the stimulus and enters some text";
-        final String textWaitPhaseText = "The guesser waits for the producer";
-        final String gridWaitPhaseText = "The producer waits for the guesser";
-        final String responseGridPhaseText = "The guesser sees the text with a grid of stimuli, from which they select one based on the text";
-        final String mutualFeedbackPhaseText = "The guesser and producer see the allocated stimuli with the guessers selected stimuli and the text from the producer. Following this the next stimulus is selected and the flow returns to activity 0.";
+        final String textEntryPhaseText = "&nbsp;";
+        final String textWaitPhaseText = "&nbsp;";
+        final String gridWaitPhaseText = "&nbsp;";
+        final String responseGridPhaseText = "&nbsp;";
+        final String mutualFeedbackPhaseText = "&nbsp;";
         final int timerCountDownProducerMs = 30 * 1000;
         final int timerCountDownGuesserMs = 20 * 1000;
         final String timerCountDownLabel = "Time is up! Play now!";
@@ -342,6 +344,9 @@ public class MultiParticipant {
     }
 
     public Experiment getExperiment() {
-        return wizardController.getExperiment(getWizardData());
+        final Experiment experiment = wizardController.getExperiment(getWizardData());
+        experiment.setIsScalable(false);
+        experiment.setDefaultScale(1.2f);
+        return experiment;
     }
 }
