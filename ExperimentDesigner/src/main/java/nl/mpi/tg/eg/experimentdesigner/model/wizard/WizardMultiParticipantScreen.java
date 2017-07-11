@@ -98,7 +98,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         setTimerCountDownGuesserMs(timerCountDownGuesserMs);
         setTimerCountDownProducerMs(timerCountDownProducerMs);
         setTimerCountDownLabel(timerCountDownLabel);
-        setAllowedCharCodes("etuiopasdfgkzbnm ");
+        setAllowedCharCodes("");
     }
 
     final public void setRandomiseStimuli(Boolean randomiseStimuli) {
@@ -145,6 +145,30 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         this.wizardScreenData.setScreenText(6, allowedCharCodes);
     }
 
+    private String getInputErrorMessage(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(12);
+    }
+
+    final public void setInputErrorMessage(String inputErrorMessage) {
+        this.wizardScreenData.setScreenText(12, inputErrorMessage);
+    }
+
+    private String getFreeTextValidationMessage(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(11);
+    }
+
+    final public void setFreeTextValidationMessage(String freeTextValidationMessage) {
+        this.wizardScreenData.setScreenText(11, freeTextValidationMessage);
+    }
+
+    private String getFreeTextValidationRegex(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(10);
+    }
+
+    final public void setFreeTextValidationRegex(String freeTextValidationRegex) {
+        this.wizardScreenData.setScreenText(10, freeTextValidationRegex);
+    }
+
     private int getPhasesPerStimulus(WizardScreenData storedWizardScreenData) {
         return storedWizardScreenData.getScreenInteger(3);
     }
@@ -186,7 +210,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
     public String getScreenTextInfo(int index) {
         return new String[]{"Text Entry Phase Text", "Grid Wait Phase Text", "Text Wait Phase Text", "Response Grid Phase Text", "Mutual Feedback Phase Text", "Training Display Phase Text",
             "Allowed Char Codes", "Pre Stimuli Text", "Post Stimuli Text",
-            "Timer Count Down Ended Label"}[index];
+            "Timer Count Down Ended Label", "FreeTextValidationRegex", "FreeTextValidationMessage", "KeyInputErrorMessage"}[index];
     }
 
     @Override
@@ -219,10 +243,11 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         }
     }
 
-    public void setStimulusFreeText(boolean stimulusFreeText, String freeTextValidationRegex, String freeTextValidationMessage) {
+    public void setStimulusFreeText(boolean stimulusFreeText, String freeTextValidationRegex, String freeTextValidationMessage, String inputErrorMessage) {
         setStimulusFreeText(stimulusFreeText);
-        this.wizardScreenData.setFreeTextValidationRegex(freeTextValidationRegex);
-        this.wizardScreenData.setFreeTextValidationMessage(freeTextValidationMessage);
+        setFreeTextValidationRegex(freeTextValidationRegex);
+        setFreeTextValidationMessage(freeTextValidationMessage);
+        setInputErrorMessage(inputErrorMessage);
     }
 
     final public void setButtonLabel(String buttonLabelEventTag) {
@@ -395,7 +420,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             final PresenterFeature countDownFeature = new PresenterFeature(FeatureType.countdownLabel, getTimerCountDownLabel(storedWizardScreenData));
             countDownFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getTimerCountDownProducerMs(storedWizardScreenData)));
             countDownFeature.addFeatureAttributes(FeatureAttribute.msLabelFormat, "ss"); // HH:mm:ss
-//            countDownFeature.addFeatureAttributes(FeatureAttribute.styleName, "");
+            countDownFeature.addFeatureAttributes(FeatureAttribute.styleName, "countDownLabel");
             producerNetworkActivity0.getPresenterFeatureList().add(countDownFeature);
         }
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
@@ -409,7 +434,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             final PresenterFeature countDownFeature = new PresenterFeature(FeatureType.countdownLabel, getTimerCountDownLabel(storedWizardScreenData));
             countDownFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getTimerCountDownGuesserMs(storedWizardScreenData)));
             countDownFeature.addFeatureAttributes(FeatureAttribute.msLabelFormat, "ss"); // HH:mm:ss
-//            countDownFeature.addFeatureAttributes(FeatureAttribute.styleName, "");
+            countDownFeature.addFeatureAttributes(FeatureAttribute.styleName, "countDownLabel");
             guesserNetworkActivity1.getPresenterFeatureList().add(countDownFeature);
         }
         // temporary testing features
@@ -434,6 +459,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.animate, "stimuliCode");
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         allNetworkActivityColumn3.getPresenterFeatureList().add(allNetworkActivity2Image);
+        allNetworkActivityColumn3.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "Target"));
         allNetworkActivity2.getPresenterFeatureList().add(allNetworkActivityRow);
 
         final PresenterFeature groupResponseFeedback = new PresenterFeature(FeatureType.groupResponseFeedback, null);
@@ -453,7 +479,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.animate, "stimuliCode");
         groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         allNetworkActivityColumn1.getPresenterFeatureList().add(groupResponseStimulusImage);
-        allNetworkActivityColumn1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "groupResponse"));
+        allNetworkActivityColumn1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "Chosen"));
         allNetworkActivityColumn2.getPresenterFeatureList().add(groupResponseFeedback);
 
 //        (true, false, new FeatureAttribute[]{, , }, true, false, FeatureType.Contitionals.hasCorrectIncorrect),
@@ -482,8 +508,11 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         // allNetworkActivity2 phase shows the stimulus and the selected stimulus and the message and the group score
         allNetworkActivity2.getPresenterFeatureList().add(addGroupMessageButton("Next [enter]", "guesser and producer see the response", "ENTER"));
 
-        final PresenterFeature stimulusImage = new PresenterFeature(FeatureType.stimulusImage, null);
+        final PresenterFeature groupMessageLabel3 = new PresenterFeature(FeatureType.groupMessageLabel, null);
+        groupMessageLabel3.addFeatureAttributes(FeatureAttribute.styleName, "groupMessageLabel");
+        trainingDisplayNetworkActivity3.getPresenterFeatureList().add(groupMessageLabel3);
 
+        final PresenterFeature stimulusImage = new PresenterFeature(FeatureType.stimulusImage, null);
         stimulusImage.addFeatureAttributes(FeatureAttribute.maxHeight, "0");
         stimulusImage.addFeatureAttributes(FeatureAttribute.maxWidth, "0");
         stimulusImage.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
@@ -491,9 +520,6 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         stimulusImage.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         trainingDisplayNetworkActivity3.getPresenterFeatureList().add(stimulusImage);
 
-        final PresenterFeature groupMessageLabel3 = new PresenterFeature(FeatureType.groupMessageLabel, null);
-        groupMessageLabel3.addFeatureAttributes(FeatureAttribute.styleName, "groupMessageLabel");
-        trainingDisplayNetworkActivity3.getPresenterFeatureList().add(groupMessageLabel3);
         if (getStimulusMsDelay(storedWizardScreenData) > 0) {
             final PresenterFeature pause = new PresenterFeature(FeatureType.pause, null);
             final PresenterFeature sendGroupMessage = new PresenterFeature(FeatureType.sendGroupMessage, null);
@@ -569,10 +595,12 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         presenterFeature = imageFeature;
         presenterFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
         if (isStimulusFreeText(storedWizardScreenData)) {
-            final PresenterFeature stimulusFreeTextFeature = new PresenterFeature(FeatureType.stimulusFreeText, storedWizardScreenData.getFreeTextValidationMessage());
-            stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.validationRegex, storedWizardScreenData.getFreeTextValidationRegex());
+            final PresenterFeature stimulusFreeTextFeature = new PresenterFeature(FeatureType.stimulusFreeText, getFreeTextValidationMessage(storedWizardScreenData));
+            stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.validationRegex, getFreeTextValidationRegex(storedWizardScreenData));
+            stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.inputErrorMessage, getInputErrorMessage(storedWizardScreenData));
             stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.allowedCharCodes, getAllowedCharCodes(storedWizardScreenData));
             stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.hotKey, "ENTER");
+            stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.styleName, "minimalWidth");
             presenterFeature.getPresenterFeatureList().add(stimulusFreeTextFeature);
         }
         if (storedWizardScreenData.getStimulusResponseOptions() != null) {
