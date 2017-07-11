@@ -35,7 +35,9 @@ $complementColour4: </xsl:text>
 $backgroundColour: </xsl:text>
         <xsl:value-of select="experiment/@backgroundColour" /><xsl:text>;
 $textFontSize: </xsl:text>
-        <xsl:value-of select="experiment/@textFontSize" />pt<xsl:text>;
+        <xsl:value-of select="experiment/@textFontSize" /><xsl:text>pt;
+$gridCellZoom: </xsl:text>
+        <xsl:value-of select="experiment/@defaultScale" /><xsl:text>;
 </xsl:text>
     </xsl:template>
 </xsl:stylesheet>
