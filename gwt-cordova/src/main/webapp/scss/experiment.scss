@@ -372,6 +372,7 @@ table.gridCell:hover, td.gridCell:hover {
     height: 300px;
     min-width: 300px;
     min-height: 300px;
+    zoom: $gridCellZoom;
 }
 .gwt-HTML, .resultsTablePanel, .metadataTable, .menuTable, .gwt-CheckBox, .pageLink {
 }
@@ -409,14 +410,35 @@ table#screenExample td, .stimulusHelpPanel .gwt-Button, .stimulusHelpText, .popu
     */
 }
 
+/*#widgetTag {
+        transform: -ms-scale($widgetTagScale,$widgetTagScale);
+        transform: -webkit-scale($widgetTagScale,$widgetTagScale);
+        transform: scale($widgetTagScale,$widgetTagScale);
+    zoom: $widgetTagScale;
+}*/
+.minimalWidth {
+    max-width: 500px;
+}
+.gwt-HTML.countDownLabel {
+    color: red; 
+    padding: 10px;
+}
+
+.gwt-HTML.groupMessageLabel {
+    font-size: 60px;
+    padding: 10px;
+}
+
 /*.menuTable .gwt-HTML,*/
 .menuTable.gwt-HTML.highlightedText,
-.gwt-HTML.groupMessageLabel {
+.gwt-HTML.groupMessageLabel,
+.gwt-HTML.countDownLabel {
     text-align: center;
 }
 
 .gwt-HTML.highlightedText,
-.gwt-HTML.groupMessageLabel {
+.gwt-HTML.groupMessageLabel,
+.gwt-HTML.countDownLabel {
     font-weight: bold; 
     text-align: center;
     /*text-transform: uppercase;*/
