@@ -93,6 +93,7 @@ public class ComplexView extends SimpleView {
 
     public void startCell() {
         cellPanel = new VerticalPanel();
+        cellPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
         horizontalPanel.add(cellPanel);
     }
 
