@@ -65,6 +65,8 @@ public class Experiment implements Serializable {
     private String complementColour4;
     private String backgroundColour;
     private int textFontSize = 17;
+    private boolean isScalable = true;
+    private float defaultScale = 1;
 
     @OneToMany(mappedBy = "experiment")
     private List<PublishEvents> publishEvents = new ArrayList<>();
@@ -121,6 +123,24 @@ public class Experiment implements Serializable {
 
     public void setTextFontSize(int textFontSize) {
         this.textFontSize = textFontSize;
+    }
+
+    @XmlAttribute
+    public boolean isIsScalable() {
+        return isScalable;
+    }
+
+    public void setIsScalable(boolean isScalable) {
+        this.isScalable = isScalable;
+    }
+
+    @XmlAttribute
+    public float getDefaultScale() {
+        return defaultScale;
+    }
+
+    public void setDefaultScale(float defaultScale) {
+        this.defaultScale = defaultScale;
     }
 
     @XmlAttribute
