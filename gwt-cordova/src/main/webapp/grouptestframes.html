@@ -65,6 +65,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 if (document.getElementById("pauseRobot").checked) {
                     document.getElementById("robot_messages").innerHTML = "robot paused";
                 } else {
+//                    if (Math.floor((Math.random() * 100)) === 5) {
+//                        document.getElementsByTagName("iframe")[1].contentDocument.location.reload(true);
+//                    }
                     document.getElementById("robot_messages").innerHTML = "robot activated at " + new Date().toLocaleTimeString();
                     var tagArray = ['input', 'textarea'];
                     var iframes = document.getElementsByTagName("iframe");
@@ -72,9 +75,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         for (tagInxex in tagArray) {
                             var textinput = iframes[frameIndex].contentWindow.document.getElementsByTagName(tagArray[tagInxex]);
                             for (var inputIndex = 0; inputIndex < textinput.length; inputIndex++) {
-                                if (textinput[inputIndex].className === "metadataError") {
+                                if (textinput[inputIndex].className.indexOf("metadataError") !== -1) {
                                     if (textinput[inputIndex].value === "0") {
-                                        textinput[inputIndex].value = "etudfgt eae";
+                                        textinput[inputIndex].value = "awasasfwa";
                                     } else {
                                         textinput[inputIndex].value = "0";
                                     }
