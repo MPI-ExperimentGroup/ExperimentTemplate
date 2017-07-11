@@ -105,4 +105,12 @@ public class PublishEvents {
     public boolean isIsAndroid() {
         return isAndroid;
     }
+
+    public float getDefaultScale() {
+        return experiment.getDefaultScale();
+    }
+
+    public int isIsScalable() {
+        return (experiment.isIsScalable()) ? 1 : 0;
+    }
 }
