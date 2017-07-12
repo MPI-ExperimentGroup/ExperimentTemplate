@@ -50,6 +50,7 @@ public class GroupParticipantService {
     private String userLabel = null;
 //    private final String allMemberCodes = null;
     private String memberCode = null;
+    private String activeChannel = null;
     private String groupId = null;
     private int phasesPerStimulus = 0;
     private String stimulusId = null;
@@ -140,16 +141,13 @@ public class GroupParticipantService {
         final boolean userIdMatches = this.userId.equals(userId);
         final boolean screenIdMatches = this.screenId.equals(screenId);
         final boolean groupIdMatches = (this.groupId != null) ? this.groupId.equals(groupId) : true; // if a group id was provided then ignore anyother groups
+        boolean userGroupLabelUpdateNeeded = (userIdMatches && screenIdMatches) && (this.memberCode == null && memberCode != null);
         if (userIdMatches && screenIdMatches) {
-            final boolean userGroupLabelUpdateNeeded = (userIdMatches && screenIdMatches) && (this.memberCode == null && memberCode != null);
             // handle direct messages
             this.userLabel = userLabel;
             this.memberCode = memberCode;
             this.groupId = groupId;
             this.stimuliListGroup = stimuliListGroup;
-            if (userGroupLabelUpdateNeeded) {
-                groupInfoChangeListner.postLoadTimerFired();
-            }
             if (!this.stimuliListLoaded.equals(this.stimuliListGroup)) {
                 // if the stimuli list does not match then reset the page after storing the received stimuli list
                 screenResetRequestListner.postLoadTimerFired();
@@ -168,12 +166,14 @@ public class GroupParticipantService {
                     final List<String> channelList = Arrays.asList(channel.split(","));
                     // check communication channel before responding to the message
                     if (channelList.contains(this.memberCode) && channelList.contains(originMemberCode)) {
+                        activeChannel = channel;
                         final List<String> expectedRespondentsList = Arrays.asList(expectedRespondents.split(","));
                         final List<String> requiredRespondentsList = new ArrayList<>(expectedRespondentsList);
                         requiredRespondentsList.retainAll(channelList);
                         final List<String> actualRespondentsList = Arrays.asList(actualRespondents.split(","));
                         if (actualRespondentsList.containsAll(requiredRespondentsList)) {
                             messageIsRelevant = true;
+                            userGroupLabelUpdateNeeded = true;
                         }
                     }
                 }
@@ -223,6 +223,9 @@ public class GroupParticipantService {
                 groupNotReadyListener.postLoadTimerFired();
             }
         }
+        if (userGroupLabelUpdateNeeded) {
+            groupInfoChangeListner.postLoadTimerFired();
+        }
     }
 
     protected void setConnected(Boolean isConnected) {
@@ -244,6 +247,10 @@ public class GroupParticipantService {
 
     public String getMemberCode() {
         return memberCode;
+    }
+
+    public String getActiveChannel() {
+        return activeChannel;
     }
 
     public String getGroupId() {
