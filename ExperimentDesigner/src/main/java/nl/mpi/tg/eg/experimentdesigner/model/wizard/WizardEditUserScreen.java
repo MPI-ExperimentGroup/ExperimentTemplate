@@ -113,6 +113,10 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
         wizardScreenData.getMetadataFields().add(new Metadata("gender", "Gender", "|male|female|other", null, false, null));
     }
 
+    public void setMandatoryGenderField() {
+        wizardScreenData.getMetadataFields().add(new Metadata("gender", "Gender", "female|male|other", "Please choose a gender.", false, null));
+    }
+
     public void setCustomTextField(String customTextField) {
         wizardScreenData.getMetadataFields().add(new Metadata("customTextField1", customTextField, ".'{'3,'}'", "Please enter at least three letters.", false, null));
     }
