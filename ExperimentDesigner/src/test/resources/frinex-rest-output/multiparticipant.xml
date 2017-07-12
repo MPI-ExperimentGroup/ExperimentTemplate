@@ -3,34 +3,34 @@
     <metadata>
         <field controlledMessage="Please enter a valid age." controlledRegex="[0-9]+" postName="age" preventServerDuplicates="false" registrationField="Age"/>
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="firstName" preventServerDuplicates="false" registrationField="First name"/>
-        <field controlledRegex="|male|female|other" postName="gender" preventServerDuplicates="false" registrationField="Gender"/>
+        <field controlledMessage="Please choose a gender." controlledRegex="female|male|other" postName="gender" preventServerDuplicates="false" registrationField="Gender"/>
         <field controlledMessage="Please enter your login code." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Login code"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_0___4" preventServerDuplicates="false" registrationField="stimuliAllocationRound_0___4"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_1___4" preventServerDuplicates="false" registrationField="stimuliAllocationRound_1___4"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_2___4" preventServerDuplicates="false" registrationField="stimuliAllocationRound_2___4"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_3___4" preventServerDuplicates="false" registrationField="stimuliAllocationRound_3___4"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_4___4" preventServerDuplicates="false" registrationField="stimuliAllocationRound_4___4"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_5___4" preventServerDuplicates="false" registrationField="stimuliAllocationRound_5___4"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_6___4" preventServerDuplicates="false" registrationField="stimuliAllocationRound_6___4"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_7___4" preventServerDuplicates="false" registrationField="stimuliAllocationRound_7___4"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_8___4" preventServerDuplicates="false" registrationField="stimuliAllocationRound_8___4"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_0___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_0___8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_1___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_1___8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_2___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_2___8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_3___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_3___8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_4___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_4___8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_5___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_5___8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_6___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_6___8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_7___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_7___8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_8___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_8___8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_9___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_9___8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_10___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_10___8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_11___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_11___8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_12___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_12___8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_13___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_13___8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_14___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_14___8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_15___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_15___8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationRound_16___8" preventServerDuplicates="false" registrationField="stimuliAllocationRound_16___8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR0_4" preventServerDuplicates="false" registrationField="stimuliAllocationR0_4"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR1_4" preventServerDuplicates="false" registrationField="stimuliAllocationR1_4"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR2_4" preventServerDuplicates="false" registrationField="stimuliAllocationR2_4"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR3_4" preventServerDuplicates="false" registrationField="stimuliAllocationR3_4"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR4_4" preventServerDuplicates="false" registrationField="stimuliAllocationR4_4"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR5_4" preventServerDuplicates="false" registrationField="stimuliAllocationR5_4"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR6_4" preventServerDuplicates="false" registrationField="stimuliAllocationR6_4"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR7_4" preventServerDuplicates="false" registrationField="stimuliAllocationR7_4"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR8_4" preventServerDuplicates="false" registrationField="stimuliAllocationR8_4"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR0_8" preventServerDuplicates="false" registrationField="stimuliAllocationR0_8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR1_8" preventServerDuplicates="false" registrationField="stimuliAllocationR1_8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR2_8" preventServerDuplicates="false" registrationField="stimuliAllocationR2_8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR3_8" preventServerDuplicates="false" registrationField="stimuliAllocationR3_8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR4_8" preventServerDuplicates="false" registrationField="stimuliAllocationR4_8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR5_8" preventServerDuplicates="false" registrationField="stimuliAllocationR5_8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR6_8" preventServerDuplicates="false" registrationField="stimuliAllocationR6_8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR7_8" preventServerDuplicates="false" registrationField="stimuliAllocationR7_8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR8_8" preventServerDuplicates="false" registrationField="stimuliAllocationR8_8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR9_8" preventServerDuplicates="false" registrationField="stimuliAllocationR9_8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR10_8" preventServerDuplicates="false" registrationField="stimuliAllocationR10_8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR11_8" preventServerDuplicates="false" registrationField="stimuliAllocationR11_8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR12_8" preventServerDuplicates="false" registrationField="stimuliAllocationR12_8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR13_8" preventServerDuplicates="false" registrationField="stimuliAllocationR13_8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR14_8" preventServerDuplicates="false" registrationField="stimuliAllocationR14_8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR15_8" preventServerDuplicates="false" registrationField="stimuliAllocationR15_8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR16_8" preventServerDuplicates="false" registrationField="stimuliAllocationR16_8"/>
     </metadata>
     <presenter displayOrder="1" menuLabel="Agreement" next="Edit_User" type="metadata" self="Agreement" title="Agreement">
         <htmlText featureText="&lt;b&gt;This is a prototype multiparticipant experiment.&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;With this prototype you can:&lt;br/&gt;&lt;li&gt;view the group activity and add dummy users to a group for testing purposes &lt;a href='/multiparticipant/grouptestpage.html'&gt;/multiparticipant/grouptestpage.html&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;erase the local data for this browser &lt;a href='/multiparticipant?debug'&gt;/multiparticipant?debug&lt;/a&gt;&lt;/li&gt;&lt;li&gt;random data can be generated with the testing robot &lt;a href='/multiparticipant/TestingFrame.html'&gt;/multiparticipant/TestingFrame.html&lt;/a&gt;&lt;/li&gt;&lt;br/&gt;&lt;li&gt;eight users intracting can be randomly simulated testing robot &lt;a href='/multiparticipant/grouptestframes.html'&gt;/multiparticipant/grouptestframes.html&lt;/a&gt;&lt;/li&gt;&lt;br/&gt;The group name must be allocated with the following with &lt;a href='/multiparticipant/?group=a_group_name'&gt;/multiparticipant/?group=a_group_name&lt;/a&gt; where a_group_name should be replaced with a suitable string. A second user can be tested on one computer via the incognito browser window with this link, providing the group name matches.&lt;br/&gt;&lt;br/&gt;There needs to be eight users connected for the group process to begin. Once a group is full, any subsequent users will need to be allocated a different group via the a_group_name parameter.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;You can view the collected group data with &lt;a href='/multiparticipant-admin/groupdataviewer'&gt;/multiparticipant-admin/groupdataviewer&lt;/a&gt; with the user and password you have been supplied.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;"/>
@@ -50,25 +50,25 @@
     </presenter>
     <presenter displayOrder="3" menuLabel="GroupSizeMenu" type="menu" self="GroupSizeMenu" title="GroupSizeMenu">
         <htmlText featureText="A choice must be provided out of the following:&lt;br/&gt;"/>
-        <hasGetParameter parameterName="Round_0___4">
+        <hasGetParameter parameterName="R0_4">
             <conditionTrue>
-                <autoNextPresenter target="Round_0___4"/>
+                <autoNextPresenter target="R0_4"/>
             </conditionTrue>
             <conditionFalse/>
         </hasGetParameter>
-        <hasGetParameter parameterName="Round_0___8">
+        <hasGetParameter parameterName="R0_8">
             <conditionTrue>
-                <autoNextPresenter target="Round_0___8"/>
+                <autoNextPresenter target="R0_8"/>
             </conditionTrue>
             <conditionFalse/>
         </hasGetParameter>
-        <htmlText featureText="Round_0___4&lt;br/&gt;Round_0___8&lt;br/&gt;"/>
+        <htmlText featureText="R0_4&lt;br/&gt;R0_8&lt;br/&gt;"/>
     </presenter>
-    <presenter back="Agreement" displayOrder="4" menuLabel="Round 0 - 4" next="Round_1___4" type="stimulus" self="Round_0___4" title="Round 0 - 4">
+    <presenter displayOrder="4" menuLabel="R0-4" next="R1_4" type="stimulus" self="R0_4" title="R0-4">
         <centrePage/>
         <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="Round 0 - 4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R0-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="2" groupCommunicationChannels="A,B,C,D">
                         <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-">
@@ -112,18 +112,18 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationRound_0___4">
+                <randomGrouping storageField="stimuliAllocationR0_4">
                     <tag>version1zero</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="5" menuLabel="Round 1 - 4" next="Round_2___4" type="stimulus" self="Round_1___4" title="Round 1 - 4">
+    <presenter displayOrder="5" menuLabel="R1-4" next="R2_4" type="stimulus" self="R1_4" title="R1-4">
         <centrePage/>
         <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="Round 1 - 4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R1-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|C,D">
                         <groupNetworkActivity groupRole="A,C:-:-:B,D:-:-">
@@ -186,7 +186,7 @@
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <htmlText featureText="Chosen"/>
+                                    <htmlText featureText="Gekozen"/>
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
@@ -222,18 +222,18 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationRound_1___4">
+                <randomGrouping storageField="stimuliAllocationR1_4">
                     <tag>version1zero</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="6" menuLabel="Round 2 - 4" next="Round_3___4" type="stimulus" self="Round_2___4" title="Round 2 - 4">
+    <presenter displayOrder="6" menuLabel="R2-4" next="R3_4" type="stimulus" self="R2_4" title="R2-4">
         <centrePage/>
         <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="Round 2 - 4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R2-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,C|B,D">
                         <groupNetworkActivity groupRole="A,B:-:-:C,D:-:-">
@@ -296,7 +296,7 @@
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <htmlText featureText="Chosen"/>
+                                    <htmlText featureText="Gekozen"/>
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
@@ -332,18 +332,18 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationRound_2___4">
+                <randomGrouping storageField="stimuliAllocationR2_4">
                     <tag>version1round2</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="7" menuLabel="Round 3 - 4" next="Round_4___4" type="stimulus" self="Round_3___4" title="Round 3 - 4">
+    <presenter displayOrder="7" menuLabel="R3-4" next="R4_4" type="stimulus" self="R3_4" title="R3-4">
         <centrePage/>
         <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="Round 3 - 4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R3-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,D|B,C">
                         <groupNetworkActivity groupRole="A,B:-:-:D,C:-:-">
@@ -406,7 +406,7 @@
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <htmlText featureText="Chosen"/>
+                                    <htmlText featureText="Gekozen"/>
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
@@ -442,18 +442,18 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationRound_3___4">
+                <randomGrouping storageField="stimuliAllocationR3_4">
                     <tag>version1round3</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="8" menuLabel="Round 4 - 4" next="Round_5___4" type="stimulus" self="Round_4___4" title="Round 4 - 4">
+    <presenter displayOrder="8" menuLabel="R4-4" next="R5_4" type="stimulus" self="R4_4" title="R4-4">
         <centrePage/>
         <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="Round 4 - 4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R4-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|C,D">
                         <groupNetworkActivity groupRole="A,C:-:-:B,D:-:-">
@@ -516,7 +516,7 @@
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <htmlText featureText="Chosen"/>
+                                    <htmlText featureText="Gekozen"/>
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
@@ -552,18 +552,18 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationRound_4___4">
+                <randomGrouping storageField="stimuliAllocationR4_4">
                     <tag>version1round4</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="9" menuLabel="Round 5 - 4" next="Round_6___4" type="stimulus" self="Round_5___4" title="Round 5 - 4">
+    <presenter displayOrder="9" menuLabel="R5-4" next="R6_4" type="stimulus" self="R5_4" title="R5-4">
         <centrePage/>
         <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="Round 5 - 4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R5-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,C|B,D">
                         <groupNetworkActivity groupRole="A,B:-:-:C,D:-:-">
@@ -626,7 +626,7 @@
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <htmlText featureText="Chosen"/>
+                                    <htmlText featureText="Gekozen"/>
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
@@ -662,18 +662,18 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationRound_5___4">
+                <randomGrouping storageField="stimuliAllocationR5_4">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="10" menuLabel="Round 6 - 4" next="Round_7___4" type="stimulus" self="Round_6___4" title="Round 6 - 4">
+    <presenter displayOrder="10" menuLabel="R6-4" next="R7_4" type="stimulus" self="R6_4" title="R6-4">
         <centrePage/>
         <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="Round 6 - 4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R6-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,D|B,C">
                         <groupNetworkActivity groupRole="A,B:-:-:D,C:-:-">
@@ -736,7 +736,7 @@
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <htmlText featureText="Chosen"/>
+                                    <htmlText featureText="Gekozen"/>
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
@@ -772,18 +772,18 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationRound_6___4">
+                <randomGrouping storageField="stimuliAllocationR6_4">
                     <tag>version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="11" menuLabel="Round 7 - 4" next="Round_8___4" type="stimulus" self="Round_7___4" title="Round 7 - 4">
+    <presenter displayOrder="11" menuLabel="R7-4" next="R8_4" type="stimulus" self="R7_4" title="R7-4">
         <centrePage/>
         <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="Round 7 - 4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R7-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|C,D">
                         <groupNetworkActivity groupRole="A,C:-:-:B,D:-:-">
@@ -846,7 +846,7 @@
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <htmlText featureText="Chosen"/>
+                                    <htmlText featureText="Gekozen"/>
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
@@ -882,18 +882,18 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationRound_7___4">
+                <randomGrouping storageField="stimuliAllocationR7_4">
                     <tag>version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="12" menuLabel="Round 8 - 4" next="Einde_van_het_experiment2" type="stimulus" self="Round_8___4" title="Round 8 - 4">
+    <presenter displayOrder="12" menuLabel="R8-4" next="Einde_van_het_experiment2" type="stimulus" self="R8_4" title="R8-4">
         <centrePage/>
         <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="Round 8 - 4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R8-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="2" groupCommunicationChannels="A|B|C|D">
                         <groupNetworkActivity groupRole="A,B,C,D:-">
@@ -924,18 +924,18 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationRound_8___4">
+                <randomGrouping storageField="stimuliAllocationR8_4">
                     <tag>version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="13" menuLabel="Round 0 - 8" next="Round_1___8" type="stimulus" self="Round_0___8" title="Round 0 - 8">
+    <presenter displayOrder="13" menuLabel="R0-8" next="R1_8" type="stimulus" self="R0_8" title="R0-8">
         <centrePage/>
         <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="Round 0 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R0-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A,B,C,D,E,F,G,H">
                         <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-">
@@ -979,18 +979,18 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationRound_0___8">
+                <randomGrouping storageField="stimuliAllocationR0_8">
                     <tag>version1zero</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="14" menuLabel="Round 1 - 8" next="Round_2___8" type="stimulus" self="Round_1___8" title="Round 1 - 8">
+    <presenter displayOrder="14" menuLabel="R1-8" next="R2_8" type="stimulus" self="R1_8" title="R1-8">
         <centrePage/>
         <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="Round 1 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R1-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B|C,D|E,F|G,H">
                         <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
@@ -1053,7 +1053,7 @@
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <htmlText featureText="Chosen"/>
+                                    <htmlText featureText="Gekozen"/>
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
@@ -1089,18 +1089,18 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationRound_1___8">
+                <randomGrouping storageField="stimuliAllocationR1_8">
                     <tag>version1zero</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="15" menuLabel="Round 2 - 8" next="Round_3___8" type="stimulus" self="Round_2___8" title="Round 2 - 8">
+    <presenter displayOrder="15" menuLabel="R2-8" next="R3_8" type="stimulus" self="R2_8" title="R2-8">
         <centrePage/>
         <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="Round 2 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R2-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,H|E,D|C,F|G,B">
                         <groupNetworkActivity groupRole="A,E,C,G:-:-:H,D,F,B:-:-">
@@ -1163,7 +1163,7 @@
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <htmlText featureText="Chosen"/>
+                                    <htmlText featureText="Gekozen"/>
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
@@ -1199,18 +1199,18 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationRound_2___8">
+                <randomGrouping storageField="stimuliAllocationR2_8">
                     <tag>version1round2</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="16" menuLabel="Round 3 - 8" next="Round_4___8" type="stimulus" self="Round_3___8" title="Round 3 - 8">
+    <presenter displayOrder="16" menuLabel="R3-8" next="R4_8" type="stimulus" self="R3_8" title="R3-8">
         <centrePage/>
         <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="Round 3 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R3-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,D|G,F|E,B|C,H">
                         <groupNetworkActivity groupRole="A,G,E,C:-:-:D,F,B,H:-:-">
@@ -1273,7 +1273,7 @@
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <htmlText featureText="Chosen"/>
+                                    <htmlText featureText="Gekozen"/>
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
@@ -1309,18 +1309,18 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationRound_3___8">
+                <randomGrouping storageField="stimuliAllocationR3_8">
                     <tag>version1round3</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="17" menuLabel="Round 4 - 8" next="Round_5___8" type="stimulus" self="Round_4___8" title="Round 4 - 8">
+    <presenter displayOrder="17" menuLabel="R4-8" next="R5_8" type="stimulus" self="R4_8" title="R4-8">
         <centrePage/>
         <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="Round 4 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R4-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,C|B,D|E,G|F,H">
                         <groupNetworkActivity groupRole="A,B,E,F:-:-:C,D,G,H:-:-">
@@ -1383,7 +1383,7 @@
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <htmlText featureText="Chosen"/>
+                                    <htmlText featureText="Gekozen"/>
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
@@ -1419,18 +1419,18 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationRound_4___8">
+                <randomGrouping storageField="stimuliAllocationR4_8">
                     <tag>version1round4</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="18" menuLabel="Round 5 - 8" next="Round_6___8" type="stimulus" self="Round_5___8" title="Round 5 - 8">
+    <presenter displayOrder="18" menuLabel="R5-8" next="R6_8" type="stimulus" self="R5_8" title="R5-8">
         <centrePage/>
         <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="Round 5 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R5-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,E|H,D|B,F|G,C">
                         <groupNetworkActivity groupRole="A,H,B,G:-:-:E,D,F,C:-:-">
@@ -1493,7 +1493,7 @@
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <htmlText featureText="Chosen"/>
+                                    <htmlText featureText="Gekozen"/>
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
@@ -1529,18 +1529,18 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationRound_5___8">
+                <randomGrouping storageField="stimuliAllocationR5_8">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="19" menuLabel="Round 6 - 8" next="Round_7___8" type="stimulus" self="Round_6___8" title="Round 6 - 8">
+    <presenter displayOrder="19" menuLabel="R6-8" next="R7_8" type="stimulus" self="R6_8" title="R6-8">
         <centrePage/>
         <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="Round 6 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R6-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,F|G,D|C,B|E,H">
                         <groupNetworkActivity groupRole="A,G,C,E:-:-:F,D,B,H:-:-">
@@ -1603,7 +1603,7 @@
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <htmlText featureText="Chosen"/>
+                                    <htmlText featureText="Gekozen"/>
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
@@ -1639,18 +1639,18 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationRound_6___8">
+                <randomGrouping storageField="stimuliAllocationR6_8">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="20" menuLabel="Round 7 - 8" next="Round_8___8" type="stimulus" self="Round_7___8" title="Round 7 - 8">
+    <presenter displayOrder="20" menuLabel="R7-8" next="R8_8" type="stimulus" self="R7_8" title="R7-8">
         <centrePage/>
         <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="Round 7 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R7-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,G|B,H|E,C|D,F">
                         <groupNetworkActivity groupRole="A,B,E,D:-:-:G,H,C,F:-:-">
@@ -1713,7 +1713,7 @@
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <htmlText featureText="Chosen"/>
+                                    <htmlText featureText="Gekozen"/>
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
@@ -1749,18 +1749,18 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationRound_7___8">
+                <randomGrouping storageField="stimuliAllocationR7_8">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="21" menuLabel="Round 8 - 8" next="Round_9___8" type="stimulus" self="Round_8___8" title="Round 8 - 8">
+    <presenter displayOrder="21" menuLabel="R8-8" next="R9_8" type="stimulus" self="R8_8" title="R8-8">
         <centrePage/>
         <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="Round 8 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R8-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A|B|C|D|E|F|G|H">
                         <groupNetworkActivity groupRole="A,B,C,D,E,F,G,H:-">
@@ -1791,18 +1791,18 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationRound_8___8">
+                <randomGrouping storageField="stimuliAllocationR8_8">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="22" menuLabel="Round 9 - 8" next="Round_10___8" type="stimulus" self="Round_9___8" title="Round 9 - 8">
+    <presenter displayOrder="22" menuLabel="R9-8" next="R10_8" type="stimulus" self="R9_8" title="R9-8">
         <centrePage/>
         <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="Round 9 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R9-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B|C,D|E,F|G,H">
                         <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
@@ -1865,7 +1865,7 @@
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <htmlText featureText="Chosen"/>
+                                    <htmlText featureText="Gekozen"/>
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
@@ -1901,18 +1901,18 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationRound_9___8">
+                <randomGrouping storageField="stimuliAllocationR9_8">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="23" menuLabel="Round 10 - 8" next="Round_11___8" type="stimulus" self="Round_10___8" title="Round 10 - 8">
+    <presenter displayOrder="23" menuLabel="R10-8" next="R11_8" type="stimulus" self="R10_8" title="R10-8">
         <centrePage/>
         <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="Round 10 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R10-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,H|E,D|C,F|G,B">
                         <groupNetworkActivity groupRole="A,E,C,G:-:-:H,D,F,B:-:-">
@@ -1975,7 +1975,7 @@
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <htmlText featureText="Chosen"/>
+                                    <htmlText featureText="Gekozen"/>
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
@@ -2011,18 +2011,18 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationRound_10___8">
+                <randomGrouping storageField="stimuliAllocationR10_8">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="24" menuLabel="Round 11 - 8" next="Round_12___8" type="stimulus" self="Round_11___8" title="Round 11 - 8">
+    <presenter displayOrder="24" menuLabel="R11-8" next="R12_8" type="stimulus" self="R11_8" title="R11-8">
         <centrePage/>
         <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="Round 11 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R11-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,D|G,F|E,B|C,H">
                         <groupNetworkActivity groupRole="A,G,E,C:-:-:D,F,B,H:-:-">
@@ -2085,7 +2085,7 @@
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <htmlText featureText="Chosen"/>
+                                    <htmlText featureText="Gekozen"/>
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
@@ -2121,18 +2121,18 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationRound_11___8">
+                <randomGrouping storageField="stimuliAllocationR11_8">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="25" menuLabel="Round 12 - 8" next="Round_13___8" type="stimulus" self="Round_12___8" title="Round 12 - 8">
+    <presenter displayOrder="25" menuLabel="R12-8" next="R13_8" type="stimulus" self="R12_8" title="R12-8">
         <centrePage/>
         <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="Round 12 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R12-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,C|B,D|E,G|F,H">
                         <groupNetworkActivity groupRole="A,B,E,F:-:-:C,D,G,H:-:-">
@@ -2195,7 +2195,7 @@
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <htmlText featureText="Chosen"/>
+                                    <htmlText featureText="Gekozen"/>
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
@@ -2231,18 +2231,18 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationRound_12___8">
+                <randomGrouping storageField="stimuliAllocationR12_8">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="26" menuLabel="Round 13 - 8" next="Round_14___8" type="stimulus" self="Round_13___8" title="Round 13 - 8">
+    <presenter displayOrder="26" menuLabel="R13-8" next="R14_8" type="stimulus" self="R13_8" title="R13-8">
         <centrePage/>
         <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="Round 13 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R13-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,E|H,D|B,F|G,C">
                         <groupNetworkActivity groupRole="A,H,B,G:-:-:E,D,F,C:-:-">
@@ -2305,7 +2305,7 @@
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <htmlText featureText="Chosen"/>
+                                    <htmlText featureText="Gekozen"/>
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
@@ -2341,18 +2341,18 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationRound_13___8">
+                <randomGrouping storageField="stimuliAllocationR13_8">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="27" menuLabel="Round 14 - 8" next="Round_15___8" type="stimulus" self="Round_14___8" title="Round 14 - 8">
+    <presenter displayOrder="27" menuLabel="R14-8" next="R15_8" type="stimulus" self="R14_8" title="R14-8">
         <centrePage/>
         <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="Round 14 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R14-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,F|G,D|C,B|E,H">
                         <groupNetworkActivity groupRole="A,G,C,E:-:-:F,D,B,H:-:-">
@@ -2415,7 +2415,7 @@
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <htmlText featureText="Chosen"/>
+                                    <htmlText featureText="Gekozen"/>
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
@@ -2451,18 +2451,18 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationRound_14___8">
+                <randomGrouping storageField="stimuliAllocationR14_8">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="28" menuLabel="Round 15 - 8" next="Round_16___8" type="stimulus" self="Round_15___8" title="Round 15 - 8">
+    <presenter displayOrder="28" menuLabel="R15-8" next="R16_8" type="stimulus" self="R15_8" title="R15-8">
         <centrePage/>
         <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="Round 15 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R15-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,G|B,H|E,C|D,F">
                         <groupNetworkActivity groupRole="A,B,E,D:-:-:G,H,C,F:-:-">
@@ -2525,7 +2525,7 @@
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
-                                    <htmlText featureText="Chosen"/>
+                                    <htmlText featureText="Gekozen"/>
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
@@ -2561,18 +2561,18 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationRound_15___8">
+                <randomGrouping storageField="stimuliAllocationR15_8">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="29" menuLabel="Round 16 - 8" next="Einde_van_het_experiment2" type="stimulus" self="Round_16___8" title="Round 16 - 8">
+    <presenter displayOrder="29" menuLabel="R16-8" next="Einde_van_het_experiment2" type="stimulus" self="R16_8" title="R16-8">
         <centrePage/>
         <htmlText featureText="&amp;nbsp;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="Round 16 - 8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R16-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A|B|C|D|E|F|G|H">
                         <groupNetworkActivity groupRole="A,B,C,D,E,F,G,H:-">
@@ -2603,7 +2603,7 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationRound_16___8">
+                <randomGrouping storageField="stimuliAllocationR16_8">
                     <tag>version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
