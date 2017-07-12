@@ -476,9 +476,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 @Override
                 public void postLoadTimerFired() {
                     // do not clear the screen at this point because reconnects when the stimuli list is at the end will need to keep its UI items
-//                    ((ComplexView) simpleView).clearPage();
+                    ((ComplexView) simpleView).clearPage();
                     ((ComplexView) simpleView).addPadding();
-                    ((ComplexView) simpleView).addText("connected: " + groupParticipantService.isConnected());
+                    if (groupParticipantService.isConnected()) {
+                        ((ComplexView) simpleView).addText("connected, waiting for other members");
+                    } else {
+                        ((ComplexView) simpleView).addText("not connected");
+                    }
                     timedStimulusListener.postLoadTimerFired();
                     groupKickTimer.schedule(1000);
                 }
@@ -528,29 +532,37 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     ((ComplexView) simpleView).addInfoButton(new PresenterEventListner() {
                         @Override
                         public String getLabel() {
-                            return groupParticipantService.getMemberCode();
+                            final Integer stimulusIndex = groupParticipantService.getStimulusIndex();
+                            final String activeChannel = groupParticipantService.getActiveChannel();
+                            return groupParticipantService.getMemberCode()
+                                    + ((stimulusIndex != null) ? "("
+                                            + activeChannel
+                                            + ")" : "")
+                                    + ((stimulusIndex != null) ? "G"
+                                            + stimulusIndex : "");
                         }
 
                         @Override
                         public void eventFired(ButtonBase button, final SingleShotEventListner shotEventListner) {
-                            ((ComplexView) simpleView).showHtmlPopup(null,
-                                    "Group Members\n" + groupParticipantService.getAllMemberCodes()
-                                    + "\n\nGroup Communication Channels\n" + groupParticipantService.getGroupCommunicationChannels()
-                                    + "\n\nGroupId\n" + groupParticipantService.getGroupId()
-                                    + "\n\nGroupUUID\n" + groupParticipantService.getGroupUUID()
-                                    + "\n\nMemberCode\n" + groupParticipantService.getMemberCode()
-                                    + "\n\nMessageSender\n" + groupParticipantService.getMessageSenderId()
-                                    + "\n\nMessageString\n" + groupParticipantService.getMessageString()
-                                    + "\n\nStimulusId\n" + groupParticipantService.getStimulusId()
-                                    + "\n\nStimuliListLoaded\n" + groupParticipantService.getStimuliListLoaded()
-                                    + "\n\nStimuliListGroup\n" + groupParticipantService.getStimuliListGroup()
-                                    + "\n\nResponseStimulusOptions\n" + groupParticipantService.getResponseStimulusOptions()
-                                    + "\n\nResponseStimulusId\n" + groupParticipantService.getResponseStimulusId()
-                                    + "\n\nStimulusIndex\n" + groupParticipantService.getStimulusIndex()
-                                    + "\n\nRequestedPhase\n" + groupParticipantService.getRequestedPhase()
-                                    + "\n\nUserLabel\n" + groupParticipantService.getUserLabel()
-                                    + "\n\nGroupReady\n" + groupParticipantService.isGroupReady()
-                            );
+                            groupParticipantService.messageGroup(0, 0, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null, null, null, (int) userResults.getUserData().getBestScore(), groupMembers);
+//                            ((ComplexView) simpleView).showHtmlPopup(null,
+//                                    "Group Members\n" + groupParticipantService.getAllMemberCodes()
+//                                    + "\n\nGroup Communication Channels\n" + groupParticipantService.getGroupCommunicationChannels()
+//                                    + "\n\nGroupId\n" + groupParticipantService.getGroupId()
+//                                    + "\n\nGroupUUID\n" + groupParticipantService.getGroupUUID()
+//                                    + "\n\nMemberCode\n" + groupParticipantService.getMemberCode()
+//                                    + "\n\nMessageSender\n" + groupParticipantService.getMessageSenderId()
+//                                    + "\n\nMessageString\n" + groupParticipantService.getMessageString()
+//                                    + "\n\nStimulusId\n" + groupParticipantService.getStimulusId()
+//                                    + "\n\nStimuliListLoaded\n" + groupParticipantService.getStimuliListLoaded()
+//                                    + "\n\nStimuliListGroup\n" + groupParticipantService.getStimuliListGroup()
+//                                    + "\n\nResponseStimulusOptions\n" + groupParticipantService.getResponseStimulusOptions()
+//                                    + "\n\nResponseStimulusId\n" + groupParticipantService.getResponseStimulusId()
+//                                    + "\n\nStimulusIndex\n" + groupParticipantService.getStimulusIndex()
+//                                    + "\n\nRequestedPhase\n" + groupParticipantService.getRequestedPhase()
+//                                    + "\n\nUserLabel\n" + groupParticipantService.getUserLabel()
+//                                    + "\n\nGroupReady\n" + groupParticipantService.isGroupReady()
+//                            );
                             shotEventListner.resetSingleShot();
                         }
 
@@ -628,8 +640,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void scoreLabel(String styleName) {
-        ((TimedStimulusView) simpleView).addHtmlText("Current Score:" + userResults.getUserData().getCurrentScore() + "/" + userResults.getUserData().getPotentialScore(), styleName);
-        ((TimedStimulusView) simpleView).addHtmlText("Best Score:" + userResults.getUserData().getBestScore(), styleName);
+        ((TimedStimulusView) simpleView).addHtmlText("Current Score: " + userResults.getUserData().getCurrentScore() + "/" + userResults.getUserData().getPotentialScore(), styleName);
+        ((TimedStimulusView) simpleView).addHtmlText("Best Score: " + userResults.getUserData().getBestScore(), styleName);
     }
 
     protected void groupChannelScoreLabel() {
@@ -638,7 +650,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void groupChannelScoreLabel(String styleName) {
         if (groupParticipantService != null) {
-            ((TimedStimulusView) simpleView).addHtmlText(groupParticipantService.getChannelScore(), styleName);
+            ((TimedStimulusView) simpleView).addHtmlText("Channel Score: " + groupParticipantService.getChannelScore(), styleName);
         }
     }
 
@@ -657,7 +669,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void groupScoreLabel(String styleName) {
         if (groupParticipantService != null) {
-            ((TimedStimulusView) simpleView).addHtmlText(groupParticipantService.getGroupScore(), styleName);
+            ((TimedStimulusView) simpleView).addHtmlText("Group Score: " + groupParticipantService.getGroupScore(), styleName);
         }
     }
 
@@ -690,8 +702,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addHtmlText(metadataField.getFieldLabel());
     }
 
-    protected void stimulusFreeText(String validationRegex, String validationChallenge, final String allowedCharCodes, final int hotKey) {
-        StimulusFreeText stimulusFreeText = ((TimedStimulusView) simpleView).addStimulusFreeText(validationRegex, validationChallenge, allowedCharCodes, new SingleShotEventListner() {
+    protected void stimulusFreeText(String validationRegex, String keyCodeChallenge, String validationChallenge, final String allowedCharCodes, final int hotKey, String styleName) {
+        StimulusFreeText stimulusFreeText = ((TimedStimulusView) simpleView).addStimulusFreeText(validationRegex, keyCodeChallenge, validationChallenge, allowedCharCodes, new SingleShotEventListner() {
             @Override
             protected void singleShotFired() {
                 for (PresenterEventListner nextButtonEventListner : nextButtonEventListnerList) {
@@ -704,7 +716,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 }
                 this.resetSingleShot();
             }
-        }, hotKey);
+        }, hotKey, styleName);
         stimulusFreeTextList.add(stimulusFreeText);
     }
 
@@ -1172,7 +1184,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         if (groupParticipantService != null) {
             ((ComplexView) simpleView).addText("showStimulus should not be used with the groupParticipantService");
             throw new UnsupportedOperationException("showStimulus should not be used with the groupParticipantService");
-        }        
+        }
         for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
             if (!stimulusFreeText.isValid()) {
                 return;
@@ -1216,7 +1228,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).clearPage();
         stimulusFreeTextList.clear();
         buttonList.clear();
-        ((TimedStimulusView) simpleView).addText("Waiting for a group response. <br/>" + eventTag + ":" + originPhase + ":" + incrementPhase + ":" + groupParticipantService.getRequestedPhase());
+        ((TimedStimulusView) simpleView).addText("Waiting for a group response."); // + eventTag + ":" + originPhase + ":" + incrementPhase + ":" + groupParticipantService.getRequestedPhase());
     }
 
     protected void sendGroupMessageButton(final String eventTag, final String buttonLabel, final boolean norepeat, final int hotKey, final int originPhase, final int incrementPhase, final String expectedRespondents) {
