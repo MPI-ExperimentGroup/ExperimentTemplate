@@ -125,8 +125,8 @@
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R1-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|C,D">
-                        <groupNetworkActivity groupRole="A,C:-:-:B,D:-:-">
+                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|D,C">
+                        <groupNetworkActivity groupRole="A,D:-:-:B,C:-:-">
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
@@ -137,15 +137,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,D:-:-:A,C:-:-">
+                        <groupNetworkActivity groupRole="B,C:-:-:A,D:-:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,C:-:-:B,D:-">
+                        <groupNetworkActivity groupRole="-:A,D:-:-:B,C:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,D:-:-:A,C:-">
+                        <groupNetworkActivity groupRole="-:B,C:-:-:A,D:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -179,7 +179,7 @@
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,C,B,D:-:-:A,C,B,D">
+                        <groupNetworkActivity groupRole="-:-:A,D,B,C:-:-:A,D,B,C">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -211,7 +211,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|C,D">
+                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|D,C">
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
@@ -235,8 +235,8 @@
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R2-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,C|B,D">
-                        <groupNetworkActivity groupRole="A,B:-:-:C,D:-:-">
+                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="C,A|D,B">
+                        <groupNetworkActivity groupRole="C,D:-:-:A,B:-:-">
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
@@ -247,15 +247,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="C,D:-:-:A,B:-:-">
-                            <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
-                        </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,B:-:-:C,D:-">
+                        <groupNetworkActivity groupRole="A,B:-:-:C,D:-:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:C,D:-:-:A,B:-">
+                            <clearPage/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="-:A,B:-:-:C,D:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -289,7 +289,7 @@
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D">
+                        <groupNetworkActivity groupRole="-:-:C,D,A,B:-:-:C,D,A,B">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -321,7 +321,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,C|B,D">
+                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="C,A|D,B">
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
@@ -345,8 +345,8 @@
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R3-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,D|B,C">
-                        <groupNetworkActivity groupRole="A,B:-:-:D,C:-:-">
+                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="B,C|A,D">
+                        <groupNetworkActivity groupRole="B,A:-:-:C,D:-:-">
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
@@ -357,15 +357,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="D,C:-:-:A,B:-:-">
+                        <groupNetworkActivity groupRole="C,D:-:-:B,A:-:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,B:-:-:D,C:-">
+                        <groupNetworkActivity groupRole="-:B,A:-:-:C,D:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:D,C:-:-:A,B:-">
+                        <groupNetworkActivity groupRole="-:C,D:-:-:B,A:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -399,7 +399,7 @@
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,D,C:-:-:A,B,D,C">
+                        <groupNetworkActivity groupRole="-:-:B,A,C,D:-:-:B,A,C,D">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -431,7 +431,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,D|B,C">
+                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="B,C|A,D">
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
@@ -455,8 +455,8 @@
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R4-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|C,D">
-                        <groupNetworkActivity groupRole="A,C:-:-:B,D:-:-">
+                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|D,C">
+                        <groupNetworkActivity groupRole="A,D:-:-:B,C:-:-">
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
@@ -467,15 +467,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,D:-:-:A,C:-:-">
+                        <groupNetworkActivity groupRole="B,C:-:-:A,D:-:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,C:-:-:B,D:-">
+                        <groupNetworkActivity groupRole="-:A,D:-:-:B,C:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,D:-:-:A,C:-">
+                        <groupNetworkActivity groupRole="-:B,C:-:-:A,D:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -509,7 +509,7 @@
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,C,B,D:-:-:A,C,B,D">
+                        <groupNetworkActivity groupRole="-:-:A,D,B,C:-:-:A,D,B,C">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -541,7 +541,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|C,D">
+                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|D,C">
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
@@ -565,8 +565,8 @@
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R5-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,C|B,D">
-                        <groupNetworkActivity groupRole="A,B:-:-:C,D:-:-">
+                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="C,A|D,B">
+                        <groupNetworkActivity groupRole="C,D:-:-:A,B:-:-">
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
@@ -577,15 +577,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="C,D:-:-:A,B:-:-">
-                            <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
-                        </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,B:-:-:C,D:-">
+                        <groupNetworkActivity groupRole="A,B:-:-:C,D:-:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:C,D:-:-:A,B:-">
+                            <clearPage/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="-:A,B:-:-:C,D:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -619,7 +619,7 @@
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D">
+                        <groupNetworkActivity groupRole="-:-:C,D,A,B:-:-:C,D,A,B">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -651,7 +651,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,C|B,D">
+                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="C,A|D,B">
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
@@ -675,8 +675,8 @@
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R6-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,D|B,C">
-                        <groupNetworkActivity groupRole="A,B:-:-:D,C:-:-">
+                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="B,C|A,D">
+                        <groupNetworkActivity groupRole="B,A:-:-:C,D:-:-">
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
@@ -687,15 +687,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="D,C:-:-:A,B:-:-">
+                        <groupNetworkActivity groupRole="C,D:-:-:B,A:-:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,B:-:-:D,C:-">
+                        <groupNetworkActivity groupRole="-:B,A:-:-:C,D:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:D,C:-:-:A,B:-">
+                        <groupNetworkActivity groupRole="-:C,D:-:-:B,A:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -729,7 +729,7 @@
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,D,C:-:-:A,B,D,C">
+                        <groupNetworkActivity groupRole="-:-:B,A,C,D:-:-:B,A,C,D">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -761,7 +761,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,D|B,C">
+                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="B,C|A,D">
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
@@ -785,8 +785,8 @@
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R7-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|C,D">
-                        <groupNetworkActivity groupRole="A,C:-:-:B,D:-:-">
+                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|D,C">
+                        <groupNetworkActivity groupRole="A,D:-:-:B,C:-:-">
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
@@ -797,15 +797,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,D:-:-:A,C:-:-">
+                        <groupNetworkActivity groupRole="B,C:-:-:A,D:-:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,C:-:-:B,D:-">
+                        <groupNetworkActivity groupRole="-:A,D:-:-:B,C:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,D:-:-:A,C:-">
+                        <groupNetworkActivity groupRole="-:B,C:-:-:A,D:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -839,7 +839,7 @@
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,C,B,D:-:-:A,C,B,D">
+                        <groupNetworkActivity groupRole="-:-:A,D,B,C:-:-:A,D,B,C">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -871,7 +871,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|C,D">
+                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|D,C">
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
@@ -1102,8 +1102,8 @@
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R2-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,H|E,D|C,F|G,B">
-                        <groupNetworkActivity groupRole="A,E,C,G:-:-:H,D,F,B:-:-">
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="H,A|D,E|F,C|B,G">
+                        <groupNetworkActivity groupRole="H,D,F,B:-:-:A,E,C,G:-:-">
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
@@ -1114,15 +1114,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="H,D,F,B:-:-:A,E,C,G:-:-">
-                            <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
-                        </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,E,C,G:-:-:H,D,F,B:-">
+                        <groupNetworkActivity groupRole="A,E,C,G:-:-:H,D,F,B:-:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:H,D,F,B:-:-:A,E,C,G:-">
+                            <clearPage/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="-:A,E,C,G:-:-:H,D,F,B:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -1156,7 +1156,7 @@
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,E,C,G,H,D,F,B:-:-:A,E,C,G,H,D,F,B">
+                        <groupNetworkActivity groupRole="-:-:H,D,F,B,A,E,C,G:-:-:H,D,F,B,A,E,C,G">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -1188,7 +1188,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,H|E,D|C,F|G,B">
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="H,A|D,E|F,C|B,G">
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
@@ -1322,8 +1322,8 @@
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R4-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,C|B,D|E,G|F,H">
-                        <groupNetworkActivity groupRole="A,B,E,F:-:-:C,D,G,H:-:-">
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="C,A|B,D|E,G|F,H">
+                        <groupNetworkActivity groupRole="C,B,E,F:-:-:A,D,G,H:-:-">
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
@@ -1334,15 +1334,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="C,D,G,H:-:-:A,B,E,F:-:-">
+                        <groupNetworkActivity groupRole="A,D,G,H:-:-:C,B,E,F:-:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,B,E,F:-:-:C,D,G,H:-">
+                        <groupNetworkActivity groupRole="-:C,B,E,F:-:-:A,D,G,H:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:C,D,G,H:-:-:A,B,E,F:-">
+                        <groupNetworkActivity groupRole="-:A,D,G,H:-:-:C,B,E,F:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -1376,7 +1376,7 @@
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,E,F,C,D,G,H:-:-:A,B,E,F,C,D,G,H">
+                        <groupNetworkActivity groupRole="-:-:C,B,E,F,A,D,G,H:-:-:C,B,E,F,A,D,G,H">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -1408,7 +1408,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,C|B,D|E,G|F,H">
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="C,A|B,D|E,G|F,H">
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
@@ -1432,8 +1432,8 @@
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R5-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,E|H,D|B,F|G,C">
-                        <groupNetworkActivity groupRole="A,H,B,G:-:-:E,D,F,C:-:-">
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,E|D,H|B,F|G,C">
+                        <groupNetworkActivity groupRole="A,D,B,G:-:-:E,H,F,C:-:-">
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
@@ -1444,15 +1444,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="E,D,F,C:-:-:A,H,B,G:-:-">
+                        <groupNetworkActivity groupRole="E,H,F,C:-:-:A,D,B,G:-:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,H,B,G:-:-:E,D,F,C:-">
+                        <groupNetworkActivity groupRole="-:A,D,B,G:-:-:E,H,F,C:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:E,D,F,C:-:-:A,H,B,G:-">
+                        <groupNetworkActivity groupRole="-:E,H,F,C:-:-:A,D,B,G:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -1486,7 +1486,7 @@
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,H,B,G,E,D,F,C:-:-:A,H,B,G,E,D,F,C">
+                        <groupNetworkActivity groupRole="-:-:A,D,B,G,E,H,F,C:-:-:A,D,B,G,E,H,F,C">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -1518,7 +1518,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,E|H,D|B,F|G,C">
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,E|D,H|B,F|G,C">
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
@@ -1542,8 +1542,8 @@
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R6-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,F|G,D|C,B|E,H">
-                        <groupNetworkActivity groupRole="A,G,C,E:-:-:F,D,B,H:-:-">
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="F,A|G,D|C,B|H,E">
+                        <groupNetworkActivity groupRole="F,G,C,H:-:-:A,D,B,E:-:-">
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
@@ -1554,15 +1554,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="F,D,B,H:-:-:A,G,C,E:-:-">
+                        <groupNetworkActivity groupRole="A,D,B,E:-:-:F,G,C,H:-:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,G,C,E:-:-:F,D,B,H:-">
+                        <groupNetworkActivity groupRole="-:F,G,C,H:-:-:A,D,B,E:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:F,D,B,H:-:-:A,G,C,E:-">
+                        <groupNetworkActivity groupRole="-:A,D,B,E:-:-:F,G,C,H:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -1596,7 +1596,7 @@
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,G,C,E,F,D,B,H:-:-:A,G,C,E,F,D,B,H">
+                        <groupNetworkActivity groupRole="-:-:F,G,C,H,A,D,B,E:-:-:F,G,C,H,A,D,B,E">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -1628,7 +1628,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,F|G,D|C,B|E,H">
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="F,A|G,D|C,B|H,E">
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
@@ -1652,8 +1652,8 @@
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R7-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,G|B,H|E,C|D,F">
-                        <groupNetworkActivity groupRole="A,B,E,D:-:-:G,H,C,F:-:-">
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,G|H,B|E,C|D,F">
+                        <groupNetworkActivity groupRole="A,H,E,D:-:-:G,B,C,F:-:-">
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
@@ -1664,15 +1664,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="G,H,C,F:-:-:A,B,E,D:-:-">
+                        <groupNetworkActivity groupRole="G,B,C,F:-:-:A,H,E,D:-:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,B,E,D:-:-:G,H,C,F:-">
+                        <groupNetworkActivity groupRole="-:A,H,E,D:-:-:G,B,C,F:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:G,H,C,F:-:-:A,B,E,D:-">
+                        <groupNetworkActivity groupRole="-:G,B,C,F:-:-:A,H,E,D:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -1706,7 +1706,7 @@
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,E,D,G,H,C,F:-:-:A,B,E,D,G,H,C,F">
+                        <groupNetworkActivity groupRole="-:-:A,H,E,D,G,B,C,F:-:-:A,H,E,D,G,B,C,F">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -1738,7 +1738,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,G|B,H|E,C|D,F">
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,G|H,B|E,C|D,F">
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
@@ -1804,8 +1804,8 @@
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R9-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B|C,D|E,F|G,H">
-                        <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="B,A|D,C|F,E|H,G">
+                        <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
@@ -1816,15 +1816,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
-                            <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
-                        </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
+                        <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
+                            <clearPage/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -1858,7 +1858,7 @@
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,C,E,G,B,D,F,H:-:-:A,C,E,G,B,D,F,H">
+                        <groupNetworkActivity groupRole="-:-:B,D,F,H,A,C,E,G:-:-:B,D,F,H,A,C,E,G">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -1890,7 +1890,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B|C,D|E,F|G,H">
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="B,A|D,C|F,E|H,G">
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
@@ -2024,8 +2024,8 @@
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R11-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,D|G,F|E,B|C,H">
-                        <groupNetworkActivity groupRole="A,G,E,C:-:-:D,F,B,H:-:-">
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="D,A|F,G|B,E|H,C">
+                        <groupNetworkActivity groupRole="D,F,B,H:-:-:A,G,E,C:-:-">
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
@@ -2036,15 +2036,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="D,F,B,H:-:-:A,G,E,C:-:-">
-                            <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
-                        </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,G,E,C:-:-:D,F,B,H:-">
+                        <groupNetworkActivity groupRole="A,G,E,C:-:-:D,F,B,H:-:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:D,F,B,H:-:-:A,G,E,C:-">
+                            <clearPage/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="-:A,G,E,C:-:-:D,F,B,H:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -2078,7 +2078,7 @@
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,G,E,C,D,F,B,H:-:-:A,G,E,C,D,F,B,H">
+                        <groupNetworkActivity groupRole="-:-:D,F,B,H,A,G,E,C:-:-:D,F,B,H,A,G,E,C">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -2110,7 +2110,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,D|G,F|E,B|C,H">
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="D,A|F,G|B,E|H,C">
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
@@ -2134,8 +2134,8 @@
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R12-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,C|B,D|E,G|F,H">
-                        <groupNetworkActivity groupRole="A,B,E,F:-:-:C,D,G,H:-:-">
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,C|D,B|G,E|H,F">
+                        <groupNetworkActivity groupRole="A,D,G,H:-:-:C,B,E,F:-:-">
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
@@ -2146,15 +2146,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="C,D,G,H:-:-:A,B,E,F:-:-">
+                        <groupNetworkActivity groupRole="C,B,E,F:-:-:A,D,G,H:-:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,B,E,F:-:-:C,D,G,H:-">
+                        <groupNetworkActivity groupRole="-:A,D,G,H:-:-:C,B,E,F:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:C,D,G,H:-:-:A,B,E,F:-">
+                        <groupNetworkActivity groupRole="-:C,B,E,F:-:-:A,D,G,H:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -2188,7 +2188,7 @@
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,E,F,C,D,G,H:-:-:A,B,E,F,C,D,G,H">
+                        <groupNetworkActivity groupRole="-:-:A,D,G,H,C,B,E,F:-:-:A,D,G,H,C,B,E,F">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -2220,7 +2220,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,C|B,D|E,G|F,H">
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,C|D,B|G,E|H,F">
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
@@ -2244,8 +2244,8 @@
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R13-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,E|H,D|B,F|G,C">
-                        <groupNetworkActivity groupRole="A,H,B,G:-:-:E,D,F,C:-:-">
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="E,A|H,D|F,B|C,G">
+                        <groupNetworkActivity groupRole="E,H,F,C:-:-:A,D,B,G:-:-">
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
@@ -2256,15 +2256,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="E,D,F,C:-:-:A,H,B,G:-:-">
+                        <groupNetworkActivity groupRole="A,D,B,G:-:-:E,H,F,C:-:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,H,B,G:-:-:E,D,F,C:-">
+                        <groupNetworkActivity groupRole="-:E,H,F,C:-:-:A,D,B,G:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:E,D,F,C:-:-:A,H,B,G:-">
+                        <groupNetworkActivity groupRole="-:A,D,B,G:-:-:E,H,F,C:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -2298,7 +2298,7 @@
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,H,B,G,E,D,F,C:-:-:A,H,B,G,E,D,F,C">
+                        <groupNetworkActivity groupRole="-:-:E,H,F,C,A,D,B,G:-:-:E,H,F,C,A,D,B,G">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -2330,7 +2330,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,E|H,D|B,F|G,C">
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="E,A|H,D|F,B|C,G">
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
@@ -2354,8 +2354,8 @@
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R14-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,F|G,D|C,B|E,H">
-                        <groupNetworkActivity groupRole="A,G,C,E:-:-:F,D,B,H:-:-">
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,F|D,G|B,C|E,H">
+                        <groupNetworkActivity groupRole="A,D,B,E:-:-:F,G,C,H:-:-">
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
@@ -2366,15 +2366,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="F,D,B,H:-:-:A,G,C,E:-:-">
+                        <groupNetworkActivity groupRole="F,G,C,H:-:-:A,D,B,E:-:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,G,C,E:-:-:F,D,B,H:-">
+                        <groupNetworkActivity groupRole="-:A,D,B,E:-:-:F,G,C,H:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:F,D,B,H:-:-:A,G,C,E:-">
+                        <groupNetworkActivity groupRole="-:F,G,C,H:-:-:A,D,B,E:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -2408,7 +2408,7 @@
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,G,C,E,F,D,B,H:-:-:A,G,C,E,F,D,B,H">
+                        <groupNetworkActivity groupRole="-:-:A,D,B,E,F,G,C,H:-:-:A,D,B,E,F,G,C,H">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -2440,7 +2440,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,F|G,D|C,B|E,H">
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,F|D,G|B,C|E,H">
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
@@ -2464,8 +2464,8 @@
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R15-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,G|B,H|E,C|D,F">
-                        <groupNetworkActivity groupRole="A,B,E,D:-:-:G,H,C,F:-:-">
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="G,A|B,H|C,E|F,D">
+                        <groupNetworkActivity groupRole="G,B,C,F:-:-:A,H,E,D:-:-">
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
@@ -2476,15 +2476,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="G,H,C,F:-:-:A,B,E,D:-:-">
+                        <groupNetworkActivity groupRole="A,H,E,D:-:-:G,B,C,F:-:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,B,E,D:-:-:G,H,C,F:-">
+                        <groupNetworkActivity groupRole="-:G,B,C,F:-:-:A,H,E,D:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:G,H,C,F:-:-:A,B,E,D:-">
+                        <groupNetworkActivity groupRole="-:A,H,E,D:-:-:G,B,C,F:-">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -2518,7 +2518,7 @@
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,B,E,D,G,H,C,F:-:-:A,B,E,D,G,H,C,F">
+                        <groupNetworkActivity groupRole="-:-:G,B,C,F,A,H,E,D:-:-:G,B,C,F,A,H,E,D">
                             <clearPage/>
                             <htmlText featureText="&amp;nbsp;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -2550,7 +2550,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,G|B,H|E,C|D,F">
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="G,A|B,H|C,E|F,D">
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
