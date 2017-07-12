@@ -144,13 +144,13 @@ public class MultiParticipant {
 
         String[][] groupOfFourCommunicationChannels = new String[][]{
             {"0", "A,B,C,D", "naming", "version1zero"},
-            {"1", "A,B|C,D", "play", "version1zero"},
-            {"2", "A,C|B,D", "play", "version1round2"},
-            {"3", "A,D|B,C", "play", "version1round3"},
-            {"4", "A,B|C,D", "play", "version1round4"},
-            {"5", "A,C|B,D", "play", "version1round5"},
-            {"6", "A,D|B,C", "play", "version1"},
-            {"7", "A,B|C,D", "play", "version1"},
+            {"1", "A,B|D,C", "play", "version1zero"},
+            {"2", "C,A|D,B", "play", "version1round2"},
+            {"3", "B,C|A,D", "play", "version1round3"},
+            {"4", "A,B|D,C", "play", "version1round4"},
+            {"5", "C,A|D,B", "play", "version1round5"},
+            {"6", "B,C|A,D", "play", "version1"},
+            {"7", "A,B|D,C", "play", "version1"},
             {"8", "A|B|C|D", "test", "version1"}
         };
         WizardMultiParticipantScreen roundOfFourScreenOuter = null;
@@ -182,20 +182,20 @@ public class MultiParticipant {
         String[][] groupOfEightCommunicationChannels = new String[][]{
             {"0", "A,B,C,D,E,F,G,H", "naming", "version1zero"},
             {"1", "A,B|C,D|E,F|G,H", "play", "version1zero"},
-            {"2", "A,H|E,D|C,F|G,B", "play", "version1round2"},
+            {"2", "H,A|D,E|F,C|B,G", "play", "version1round2"},
             {"3", "A,D|G,F|E,B|C,H", "play", "version1round3"},
-            {"4", "A,C|B,D|E,G|F,H", "play", "version1round4"},
-            {"5", "A,E|H,D|B,F|G,C", "play", "version1round5"},
-            {"6", "A,F|G,D|C,B|E,H", "play", "version1round5"},
-            {"7", "A,G|B,H|E,C|D,F", "play", "version1round5"},
+            {"4", "C,A|B,D|E,G|F,H", "play", "version1round4"},
+            {"5", "A,E|D,H|B,F|G,C", "play", "version1round5"},
+            {"6", "F,A|G,D|C,B|H,E", "play", "version1round5"},
+            {"7", "A,G|H,B|E,C|D,F", "play", "version1round5"},
             {"8", "A|B|C|D|E|F|G|H", "test", "version1round5"},
-            {"9", "A,B|C,D|E,F|G,H", "play", "version1round5"},
+            {"9", "B,A|D,C|F,E|H,G", "play", "version1round5"},
             {"10", "A,H|E,D|C,F|G,B", "play", "version1round5"},
-            {"11", "A,D|G,F|E,B|C,H", "play", "version1round5"},
-            {"12", "A,C|B,D|E,G|F,H", "play", "version1round5"},
-            {"13", "A,E|H,D|B,F|G,C", "play", "version1round5"},
-            {"14", "A,F|G,D|C,B|E,H", "play", "version1round5"},
-            {"15", "A,G|B,H|E,C|D,F", "play", "version1round5"},
+            {"11", "D,A|F,G|B,E|H,C", "play", "version1round5"},
+            {"12", "A,C|D,B|G,E|H,F", "play", "version1round5"},
+            {"13", "E,A|H,D|F,B|C,G", "play", "version1round5"},
+            {"14", "A,F|D,G|B,C|E,H", "play", "version1round5"},
+            {"15", "G,A|B,H|C,E|F,D", "play", "version1round5"},
             {"16", "A|B|C|D|E|F|G|H", "test", "version1round5"}
         };
         WizardMultiParticipantScreen roundOfEightScreenOuter = null;
