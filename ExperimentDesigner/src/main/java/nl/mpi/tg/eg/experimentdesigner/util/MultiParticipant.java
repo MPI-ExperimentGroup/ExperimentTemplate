@@ -122,7 +122,7 @@ public class MultiParticipant {
         wizardEditUserScreen.setOn_Error_Text("Could not contact the server, please check your internet connection and try again.");
         wizardEditUserScreen.setAgeField();
         wizardEditUserScreen.setFirstNameField();
-        wizardEditUserScreen.setGenderField();
+        wizardEditUserScreen.setMandatoryGenderField();
         wizardEditUserScreen.setWorkerIdField();
 
         final String groupMembers4 = "A,B,C,D";
@@ -157,11 +157,11 @@ public class MultiParticipant {
         for (String[] currentChannel : groupOfFourCommunicationChannels) {
             final WizardMultiParticipantScreen roundScreen;
             if ("naming".equals(currentChannel[2])) {
-                roundScreen = getNamingRound("Round " + currentChannel[0] + " - 4", groupMembers4, currentChannel[1], "A:-:B:-:C:-:D:-", "B,C,D:-:A,C,D:-:B,A,D:-:B,C,A:-", "-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D", "-:A:-:B:-:C:-:D");
+                roundScreen = getNamingRound("R" + currentChannel[0] + "-4", groupMembers4, currentChannel[1], "A:-:B:-:C:-:D:-", "B,C,D:-:A,C,D:-:B,A,D:-:B,C,A:-", "-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D", "-:A:-:B:-:C:-:D");
             } else if ("test".equals(currentChannel[2])) {
-                roundScreen = getTestRound("Round " + currentChannel[0] + " - 4", groupMembers4, currentChannel[1], "A,B,C,D:-", "-:A,B,C,D");
+                roundScreen = getTestRound("R" + currentChannel[0] + "-4", groupMembers4, currentChannel[1], "A,B,C,D:-", "-:A,B,C,D");
             } else {
-                roundScreen = getPlayingRound("Round " + currentChannel[0] + " - 4", groupMembers4, currentChannel[1]);
+                roundScreen = getPlayingRound("R" + currentChannel[0] + "-4", groupMembers4, currentChannel[1]);
             }
             roundScreen.setStimuliSet(stimuliArray);
             roundScreen.getWizardScreenData().setStimuliRandomTags(new String[]{currentChannel[3]});
@@ -173,7 +173,7 @@ public class MultiParticipant {
             } else {
                 roundOfFourScreenOuter.setNextWizardScreen(roundScreen);
             }
-            roundScreen.setBackWizardScreen(wizardAgreementScreen);
+//            roundScreen.setBackWizardScreen(wizardAgreementScreen);
             roundOfFourScreenOuter = roundScreen;
         }
         if (roundOfFourScreenOuter != null) {
@@ -202,11 +202,11 @@ public class MultiParticipant {
         for (String[] currentChannel : groupOfEightCommunicationChannels) {
             final WizardMultiParticipantScreen roundScreen;
             if ("naming".equals(currentChannel[2])) {
-                roundScreen = getNamingRound("Round " + currentChannel[0] + " - 8", groupMembers8, currentChannel[1], "A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-", "B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-", "-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H", "-:A:-:B:-:C:-:D:-:E:-:F:-:G:-:H");
+                roundScreen = getNamingRound("R" + currentChannel[0] + "-8", groupMembers8, currentChannel[1], "A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-", "B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-", "-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H", "-:A:-:B:-:C:-:D:-:E:-:F:-:G:-:H");
             } else if ("test".equals(currentChannel[2])) {
-                roundScreen = getTestRound("Round " + currentChannel[0] + " - 8", groupMembers8, currentChannel[1], "A,B,C,D,E,F,G,H:-", "-:A,B,C,D,E,F,G,H");
+                roundScreen = getTestRound("R" + currentChannel[0] + "-8", groupMembers8, currentChannel[1], "A,B,C,D,E,F,G,H:-", "-:A,B,C,D,E,F,G,H");
             } else {
-                roundScreen = getPlayingRound("Round " + currentChannel[0] + " - 8", groupMembers8, currentChannel[1]);
+                roundScreen = getPlayingRound("R" + currentChannel[0] + "-8", groupMembers8, currentChannel[1]);
             }
             roundScreen.setStimuliSet(stimuliArray);
             roundScreen.getWizardScreenData().setStimuliRandomTags(new String[]{currentChannel[3]});
@@ -218,7 +218,7 @@ public class MultiParticipant {
             } else {
                 roundOfEightScreenOuter.setNextWizardScreen(roundScreen);
             }
-            roundScreen.setBackWizardScreen(wizardAgreementScreen);
+//            roundScreen.setBackWizardScreen(wizardAgreementScreen);
             roundOfEightScreenOuter = roundScreen;
         }
         if (roundOfEightScreenOuter != null) {
