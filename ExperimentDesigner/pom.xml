@@ -4,7 +4,7 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-experiment-designer</artifactId>
     <name>Frinex Experiment Designer</name>
-    <version>0.1.888-testing</version>
+    <version>0.1-testing-SNAPSHOT</version>
     <packaging>war</packaging>
     <parent>
         <groupId>nl.mpi.tg.eg.frinex</groupId>
