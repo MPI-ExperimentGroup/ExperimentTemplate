@@ -286,8 +286,8 @@ $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 25
     width: 80%;
     margin-top: 50px;    
     margin-bottom: -50px;    
-    margin-left: 10%;   
-    margin-right: 10%;   
+    margin-left: auto; // this was 10% but for the multiparticipant grid it was changed to auto, however the change might affect the display of mobile menus
+    margin-right: auto;   
 }
 
 .menuOuter {
