@@ -7,7 +7,11 @@
         <version>0.1-testing-SNAPSHOT</version>
     </parent>
     <artifactId>common</artifactId>
-    <version>0.1.7-testing</version>
+    <version>0.1-testing-SNAPSHOT</version>
+    
+    <!--<version>${nl.mpi.tg.eg.frinex.common.moduleVersion}</version>-->
+    <!--<version>1.6-pretesting-SNAPSHOT</version>-->
+    <!--<version>${application.majorVersion}.${application.minorVersion}.62-${application.branch}</version>-->
     <name>FRINEX Shared Components</name>
     <packaging>jar</packaging>
     <build>
