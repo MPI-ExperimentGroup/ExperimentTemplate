@@ -290,7 +290,7 @@ public class MultiParticipant {
     protected WizardMultiParticipantScreen getPlayingRound(final String screenName, final String groupMembers, final String communicationChannels) {
         final String textEntryPhaseText = "&nbsp;";
         final String textWaitPhaseText = "&nbsp;";
-        final String gridWaitPhaseText = "&nbsp;";
+        final String gridWaitPhaseText = null;
         final String responseGridPhaseText = "&nbsp;";
         final String mutualFeedbackPhaseText = "&nbsp;";
         final int timerCountDownProducerMs = 30 * 1000;
