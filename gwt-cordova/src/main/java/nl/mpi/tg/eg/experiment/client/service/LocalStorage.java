@@ -18,6 +18,8 @@
 package nl.mpi.tg.eg.experiment.client.service;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.json.client.JSONObject;
+import com.google.gwt.json.client.JSONParser;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import com.google.gwt.storage.client.Storage;
 import com.google.gwt.user.client.Window;
@@ -28,6 +30,7 @@ import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.experiment.client.model.UserLabelData;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  * @since Oct 24, 2014 3:01:35 PM (creation date)
@@ -41,6 +44,7 @@ public class LocalStorage {
     private final String USER_RESULTS;
     private final String LAST_USER_ID;
     private final String GAME_DATA; // todo: perhaps merge game and screen data concepts
+    private final String STIMULI_DATA;
     private final String SCREEN_DATA;
 //    private final String STOWED_DATA; // todo: send the stowed data to the server when the user has completed the entire application
 //    private final String FAILED_DATA;
@@ -57,6 +61,7 @@ public class LocalStorage {
         USER_RESULTS = messages.appNameInternal() + ".UserResults.";
         LAST_USER_ID = messages.appNameInternal() + ".LastUserId";
         GAME_DATA = messages.appNameInternal() + ".GameData.";
+        STIMULI_DATA = messages.appNameInternal() + ".StimuliData.";
         SCREEN_DATA = messages.appNameInternal() + ".ScreenData.";
 //        STOWED_DATA = messages.appNameInternal() + ".SentData.";
 //        FAILED_DATA = messages.appNameInternal() + ".FailedData.";
@@ -146,6 +151,21 @@ public class LocalStorage {
         final String remainingStoredData = sentStoredData.replace(segmentToDelete, "").replaceFirst("^,", "");
         dataStore.setItem(SCREEN_DATA + endpoint + "." + userId.toString(), remainingStoredData);
 //        stowSentData(userId, segmentToDelete);
+    }
+
+    public JSONObject getStoredJSONObject(UserId userId, Stimulus stimulus) {
+        loadStorage();
+        final String cleanStoredData = getCleanStoredData(STIMULI_DATA + userId.toString() + "." + stimulus.getUniqueId());
+        if (cleanStoredData.isEmpty()) {
+            return null;
+        }
+        JSONObject jsonObject = (JSONObject) JSONParser.parseStrict(cleanStoredData);
+        return jsonObject;
+    }
+
+    public void setStoredJSONObject(UserId userId, Stimulus stimulus, JSONObject jSONObject) {
+        loadStorage();
+        dataStore.setItem(STIMULI_DATA + userId.toString() + "." + stimulus.getUniqueId(), jSONObject.toString());
     }
 
     public String getStoredDataValue(UserId userId, String label) {
