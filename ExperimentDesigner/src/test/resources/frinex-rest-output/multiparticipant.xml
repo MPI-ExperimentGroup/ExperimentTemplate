@@ -73,13 +73,20 @@
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="2" groupCommunicationChannels="A,B,C,D">
                         <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-">
                             <clearPage/>
-                            <stimulusLabel/>
-                            <htmlText featureText="&amp;nbsp;"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
-                                <addPadding/>
-                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
-                                <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
+                            <stimulusHasResponse>
+                                <conditionTrue>
+                                    <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="1"/>
+                                </conditionTrue>
+                                <conditionFalse>
+                                    <stimulusLabel/>
+                                    <htmlText featureText="&amp;nbsp;"/>
+                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                        <addPadding/>
+                                        <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                        <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
+                                    </stimulusImage>
+                                </conditionFalse>
+                            </stimulusHasResponse>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,C,D:-:A,C,D:-:B,A,D:-:B,C,A:-">
                             <clearPage/>
@@ -933,13 +940,20 @@
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A,B,C,D,E,F,G,H">
                         <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-">
                             <clearPage/>
-                            <stimulusLabel/>
-                            <htmlText featureText="&amp;nbsp;"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
-                                <addPadding/>
-                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
-                                <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
+                            <stimulusHasResponse>
+                                <conditionTrue>
+                                    <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="1"/>
+                                </conditionTrue>
+                                <conditionFalse>
+                                    <stimulusLabel/>
+                                    <htmlText featureText="&amp;nbsp;"/>
+                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                        <addPadding/>
+                                        <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                        <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
+                                    </stimulusImage>
+                                </conditionFalse>
+                            </stimulusHasResponse>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-">
                             <clearPage/>
