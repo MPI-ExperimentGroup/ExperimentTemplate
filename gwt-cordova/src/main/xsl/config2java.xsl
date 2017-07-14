@@ -369,6 +369,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@allowedCharCodes) then concat('&quot;', @allowedCharCodes, '&quot;') else 'null'" />
         <xsl:text>,</xsl:text>
         <xsl:value-of select="if(@hotKey) then concat('KeyCodes.KEY_', @hotKey) else '-1'" />
+        <xsl:text>,</xsl:text>
+        <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else 'null'" />
         <xsl:text>);
         </xsl:text>
     </xsl:template>
@@ -477,7 +479,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="logTimeStamp|audioButton|prevStimulusButton|nextStimulusButton|nextStimulus|nextMatchingStimulus|sendGroupMessageButton|sendGroupMessage|sendGroupEndOfStimuli">
+    <xsl:template match="logTimeStamp|audioButton|prevStimulusButton|nextStimulusButton|nextStimulus|nextMatchingStimulus|sendGroupMessageButton|sendGroupMessage|sendGroupEndOfStimuli|sendGroupStoredMessage">
         <xsl:text>    </xsl:text>    
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
@@ -544,7 +546,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             }
             }</xsl:text>
     </xsl:template>
-    <xsl:template match="hasGetParameter|showStimulusGrid|matchingStimulusGrid|groupResponseFeedback|stimulusHasRatingOptions">
+    <xsl:template match="hasGetParameter|showStimulusGrid|matchingStimulusGrid|groupResponseFeedback|stimulusHasRatingOptions|stimulusHasResponse">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(appEventListner</xsl:text>
