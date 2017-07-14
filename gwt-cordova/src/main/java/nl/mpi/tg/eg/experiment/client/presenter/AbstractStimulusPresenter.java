@@ -22,6 +22,9 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.i18n.client.DateTimeFormat;
+import com.google.gwt.json.client.JSONObject;
+import com.google.gwt.json.client.JSONString;
+import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.Timer;
@@ -516,6 +519,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                         if (groupParticipantService.getStimulusIndex() != stimulusProvider.getCurrentStimulusIndex()) {
                             groupParticipantService.setResponseStimulusId(null);
                             groupParticipantService.setResponseStimulusOptions(null);
+                        } else {
+                            if (groupParticipantService.getMessageString() != null && !groupParticipantService.getMessageString().isEmpty()) {
+                                JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), stimulusProvider.getCurrentStimulus());
+                                storedStimulusJSONObject = (storedStimulusJSONObject == null) ? new JSONObject() : storedStimulusJSONObject;
+                                storedStimulusJSONObject.put("groupMessage", new JSONString(groupParticipantService.getMessageString()));
+                                localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), stimulusProvider.getCurrentStimulus(), storedStimulusJSONObject);
+                            }
                         }
                         // when a valid message has been received the current stimuli needs to be synchronised with the group
                         stimulusProvider.setCurrentStimuliIndex(groupParticipantService.getStimulusIndex());
@@ -696,6 +706,14 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             incorrectListener.postLoadTimerFired();
         }
 
+    }
+
+    public void stimulusHasResponse(final AppEventListner appEventListner, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener) {
+        if (localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), stimulusProvider.getCurrentStimulus()) != null) {
+            correctListener.postLoadTimerFired();
+        } else {
+            incorrectListener.postLoadTimerFired();
+        }
     }
 
     protected void stimulusMetadataField(MetadataField metadataField) {
@@ -1216,6 +1234,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     protected void sendGroupEndOfStimuli(final String eventTag) {
         groupParticipantService.messageGroup(groupParticipantService.getRequestedPhase(), 1, null, Integer.toString(stimulusProvider.getCurrentStimulusIndex() + 1), groupParticipantService.getMessageString(), groupParticipantService.getResponseStimulusOptions(), groupParticipantService.getResponseStimulusId(), (int) userResults.getUserData().getBestScore(), "");
 //        showStimulusProgress();
+    }
+
+    protected void sendGroupStoredMessage(final String eventTag, final int originPhase, final int incrementPhase, String expectedRespondents) {
+        final JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), stimulusProvider.getCurrentStimulus());
+        final JSONValue freeTextValue = (storedStimulusJSONObject == null) ? null : storedStimulusJSONObject.get("groupMessage");
+        String messageString = ((freeTextValue != null) ? freeTextValue.isString().stringValue() : null);
+        groupParticipantService.messageGroup(originPhase, incrementPhase, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), messageString, groupParticipantService.getResponseStimulusOptions(), groupParticipantService.getResponseStimulusId(), (int) userResults.getUserData().getBestScore(), expectedRespondents);
     }
 
     protected void sendGroupMessage(final String eventTag, final int originPhase, final int incrementPhase, String expectedRespondents) {
