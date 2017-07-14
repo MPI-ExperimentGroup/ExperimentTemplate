@@ -266,7 +266,7 @@ public class MultiParticipant {
     }
 
     protected WizardMultiParticipantScreen getNamingRound(final String screenName, final String groupMembers4, final String communicationChannels, final String textEntryPhaseRoles, final String waitingForProducerPhaseRoles, final String outcomeDisplayedPhaseRoles, final String groupRecordSubmitionPhaseRoles) {
-        return new WizardMultiParticipantScreen(screenName,
+        final WizardMultiParticipantScreen wizardMultiParticipantScreen = new WizardMultiParticipantScreen(screenName,
                 groupMembers4, 2,
                 communicationChannels, textEntryPhaseRoles,
                 "&nbsp;", waitingForProducerPhaseRoles,
@@ -285,6 +285,8 @@ public class MultiParticipant {
                 numberOfStimuli, repeatCountStimuli, randomWindowStimuli,
                 7000,
                 0, 0, null);
+        wizardMultiParticipantScreen.setUseDictionary(true);
+        return wizardMultiParticipantScreen;
     }
 
     protected WizardMultiParticipantScreen getPlayingRound(final String screenName, final String groupMembers, final String communicationChannels) {
