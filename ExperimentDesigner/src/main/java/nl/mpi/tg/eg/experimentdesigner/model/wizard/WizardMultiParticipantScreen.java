@@ -689,7 +689,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             endOfStimulusGroupMessage.addFeatureAttributes(FeatureAttribute.eventTag, "endOfStimulusGroupMessage");
 //            endOfStimulusGroupMessage.addFeatureAttributes(FeatureAttribute.incrementPhase, "1");
             endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
-            endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, postStimuliText));
+            endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlTokenText, postStimuliText));
             final PresenterFeature groupChannelScoreLabel1 = new PresenterFeature(FeatureType.groupChannelScoreLabel, null);
 //            groupChannelScoreLabel1.addFeatureAttributes(FeatureAttribute.styleName, "");
             endOfStimulusFeature.getPresenterFeatureList().add(groupChannelScoreLabel1);
