@@ -29,6 +29,7 @@ import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.*;
 public enum FeatureType {
 
     htmlText(false, true, null),
+    htmlTokenText(false, true, null) /* string tokens will be replaced with score values eg <groupScore> <channelScore> etc. */,
     plainText(false, true, null),
     image(false, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, src, link}),
     menuItem(false, true, new FeatureAttribute[]{target}),
