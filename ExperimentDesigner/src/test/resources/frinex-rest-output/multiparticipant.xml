@@ -6,6 +6,8 @@
         <field controlledMessage="Please choose a gender." controlledRegex="female|male|other" postName="gender" preventServerDuplicates="false" registrationField="Gender"/>
         <field controlledMessage="Please enter your login code." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Login code"/>
         <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR0_4" preventServerDuplicates="false" registrationField="stimuliAllocationR0_4"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR0_1_4" preventServerDuplicates="false" registrationField="stimuliAllocationR0_1_4"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR0_2_4" preventServerDuplicates="false" registrationField="stimuliAllocationR0_2_4"/>
         <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR1_4" preventServerDuplicates="false" registrationField="stimuliAllocationR1_4"/>
         <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR2_4" preventServerDuplicates="false" registrationField="stimuliAllocationR2_4"/>
         <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR3_4" preventServerDuplicates="false" registrationField="stimuliAllocationR3_4"/>
@@ -15,6 +17,8 @@
         <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR7_4" preventServerDuplicates="false" registrationField="stimuliAllocationR7_4"/>
         <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR8_4" preventServerDuplicates="false" registrationField="stimuliAllocationR8_4"/>
         <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR0_8" preventServerDuplicates="false" registrationField="stimuliAllocationR0_8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR0_1_8" preventServerDuplicates="false" registrationField="stimuliAllocationR0_1_8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR0_2_8" preventServerDuplicates="false" registrationField="stimuliAllocationR0_2_8"/>
         <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR1_8" preventServerDuplicates="false" registrationField="stimuliAllocationR1_8"/>
         <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR2_8" preventServerDuplicates="false" registrationField="stimuliAllocationR2_8"/>
         <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR3_8" preventServerDuplicates="false" registrationField="stimuliAllocationR3_8"/>
@@ -32,11 +36,11 @@
         <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR15_8" preventServerDuplicates="false" registrationField="stimuliAllocationR15_8"/>
         <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR16_8" preventServerDuplicates="false" registrationField="stimuliAllocationR16_8"/>
     </metadata>
-    <presenter displayOrder="1" menuLabel="Agreement" next="Edit_User" type="metadata" self="Agreement" title="Agreement">
-        <htmlText featureText="&lt;b&gt;This is a prototype multiparticipant experiment.&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;With this prototype you can:&lt;br/&gt;&lt;li&gt;view the group activity and add dummy users to a group for testing purposes &lt;a href='/multiparticipant/grouptestpage.html'&gt;/multiparticipant/grouptestpage.html&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;erase the local data for this browser &lt;a href='/multiparticipant?debug'&gt;/multiparticipant?debug&lt;/a&gt;&lt;/li&gt;&lt;li&gt;random data can be generated with the testing robot &lt;a href='/multiparticipant/TestingFrame.html'&gt;/multiparticipant/TestingFrame.html&lt;/a&gt;&lt;/li&gt;&lt;br/&gt;&lt;li&gt;eight users intracting can be randomly simulated testing robot &lt;a href='/multiparticipant/grouptestframes.html'&gt;/multiparticipant/grouptestframes.html&lt;/a&gt;&lt;/li&gt;&lt;br/&gt;The group name must be allocated with the following with &lt;a href='/multiparticipant/?group=a_group_name'&gt;/multiparticipant/?group=a_group_name&lt;/a&gt; where a_group_name should be replaced with a suitable string. A second user can be tested on one computer via the incognito browser window with this link, providing the group name matches.&lt;br/&gt;&lt;br/&gt;There needs to be eight users connected for the group process to begin. Once a group is full, any subsequent users will need to be allocated a different group via the a_group_name parameter.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;You can view the collected group data with &lt;a href='/multiparticipant-admin/groupdataviewer'&gt;/multiparticipant-admin/groupdataviewer&lt;/a&gt; with the user and password you have been supplied.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;"/>
-        <targetButton featureText="Continue" target="Edit_User"/>
+    <presenter displayOrder="1" menuLabel="Introductie" next="Edit_User" type="metadata" self="Introductie" title="Introductie">
+        <htmlText featureText="Welkom bij het fantasietaal spel!&lt;br/&gt;&lt;br/&gt;In dit experiment ga je een speciale taal creëren om verschillende soorten &quot;scènes&quot; te beschrijven. In deze scènes zijn verschillende voorwerpen te zien die in verschillende richtingen bewegen.&lt;br/&gt;&lt;br/&gt;Daarna ga je deze taal gebruiken om te communiceren met andere leden van je groep tijdens het spelen van het spel op de laptops. Je speelt in tweetallen en na elke ronde wissel je van partner.&lt;br/&gt;&lt;br/&gt;De bedoeling is dat de communicatie tussen jou en je partner zo succesvol mogelijk verloopt. Je krijgt 1 punt voor elke geslaagde beurt. Nadat we alle groepjes in ons experiment getest hebben (kan even duren), krijgt de groep met de hoogste gemiddelde score een extra prijs. Dit betekent dat je moet proberen om zoveel mogelijk punten te verdienen door zo goed mogelijk met elkaar te communiceren - communicatie is de enige manier om punten te verdienen!&lt;br/&gt;&lt;br/&gt;Je mag geen Nederlands of andere bestaande talen gebruiken tijdens deze taak. Gebruik ook niets dat heel erg op het Nederlands of andere talen lijkt. Als je bijvoorbeeld een scène met een blauw voorwerp er in wilt beschrijven, gebruik dan niet een andere variatie van het woord blauw zoals blaw, blu, blieblie of zelfs een ander woord beginnend met dezelfde letter. Het gebruik van afkortingen is ook niet toegestaan. Probeer creatief te zijn en niet terug te vallen op je kennis van het Nederlands of andere talen. Als je niet zeker weet of een woord is toegestaan, vraag ons dit dan van tevoren. Het doel van het spel is goed te communiceren in een nieuwe fantasietaal. Daarom moeten we helaas de hele groep uitsluiten van het spel als er een woord gebruikt wordt dat niet is toegestaan.&lt;br/&gt;&lt;br/&gt;Verder mag je niet praten, gebaren of wijzen tijdens het experiment, je communiceert enkel door beschrijvingen te typen.&lt;br/&gt;&lt;br/&gt;Veel succes!&lt;br/&gt;&lt;br/&gt;"/>
+        <targetButton featureText="Volgende" target="Edit_User"/>
     </presenter>
-    <presenter back="Agreement" displayOrder="2" menuLabel="Edit User" next="GroupSizeMenu" type="metadata" self="Edit_User" title="Edit User">
+    <presenter back="Introductie" displayOrder="2" menuLabel="Edit User" next="GroupSizeMenu" type="metadata" self="Edit_User" title="Edit User">
         <metadataField fieldName="age"/>
         <metadataField fieldName="firstName"/>
         <metadataField fieldName="gender"/>
@@ -64,11 +68,11 @@
         </hasGetParameter>
         <htmlText featureText="R0_4&lt;br/&gt;R0_8&lt;br/&gt;"/>
     </presenter>
-    <presenter displayOrder="4" menuLabel="R0-4" next="R1_4" type="stimulus" self="R0_4" title="R0-4">
+    <presenter displayOrder="4" menuLabel="R0-4" next="R0_1_4" type="stimulus" self="R0_4" title="R0-4">
         <centrePage/>
-        <htmlText featureText="&amp;nbsp;"/>
+        <htmlText featureText="Om het spel te kunnen spelen moet je eerst acht beschrijvingen voor acht scènes in de fantasietaal creëren. &lt;br/&gt;&lt;br/&gt;Gebruik geen bestaande dingen in het Nederlands of in een andere taal - probeer creatief te zijn en gebruik je fantasie om een taal te creëren. Je kun de spatiebalk gebruiken om beschrijvingen te maken met meerdere woorden. Maar let op, je kunt niet alle letters gebruiken. Alleen de letters die zichtbaar zijn op het keyboard kunnen gebruikt worden. Check dus eerst of je de beschrijving die je in gedachten hebt, kunt typen voor je verder gaat. De backspace toets is bruikbaar als je de beschrijving wilt aanpassen of herschrijven. &lt;br/&gt;&lt;br/&gt;Proefpersoon 1 begint. Hij/zij zal een beschrijving geven aan de eerste scène op het scherm. Toon de beschrijving eerst aan de onderzoeker voor je verder gaat. Omdat dit de eerste ronde is van het spel willen we even checken of het aan de eisen voldoet. Als de beschrijving goed is, zal hij zeven seconden samen met de scène op het scherm getoond worden aan alle deelnemers van de groep.&lt;br/&gt;&lt;br/&gt;Daarna benoemt proefpersoon 2 de tweede scène en zo verder.&lt;br/&gt;&lt;br/&gt;Wanneer alle scènes benoemd zijn, krijg je ze nog twee keer te zien. Probeer de beschrijvingen en de bijhorende scènes zo goed mogelijk te onthouden zodat je beter kunt communiceren in de volgende rondes.&lt;br/&gt;&lt;br/&gt;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="R0-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R0-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="2" groupCommunicationChannels="A,B,C,D">
                         <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-">
@@ -82,7 +86,7 @@
                                     <htmlText featureText="&amp;nbsp;"/>
                                     <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <addPadding/>
-                                        <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                        <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                         <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                                     </stimulusImage>
                                 </conditionFalse>
@@ -108,16 +112,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="2" groupCommunicationChannels="A,B,C,D">
-                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
-                    </groupNetwork>
-                    <clearPage/>
-                    <htmlText featureText="&amp;nbsp;"/>
-                    <groupChannelScoreLabel/>
-                    <groupScoreLabel/>
-                    <actionButton featureText="Next [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
-                    </actionButton>
+                    <autoNextPresenter/>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocationR0_4">
                     <tag>version1zero</tag>
@@ -126,9 +121,115 @@
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter displayOrder="5" menuLabel="R1-4" next="R2_4" type="stimulus" self="R1_4" title="R1-4">
+    <presenter displayOrder="5" menuLabel="R0.1-4" next="R0_2_4" type="stimulus" self="R0_1_4" title="R0.1-4">
         <centrePage/>
-        <htmlText featureText="&amp;nbsp;"/>
+        <htmlText featureText="Je krijgt de scenes nog twee keer te zien.&lt;br/&gt;&lt;br/&gt;Probeer de beschrijvingen en de scenes die ze beschrijven zo goed mogelijk te onthouden.&lt;br/&gt;&lt;br/&gt;Druk op de knop of Enter om verder te gaan.&lt;br/&gt;&lt;br/&gt;"/>
+        <actionButton featureText="Next [enter]" hotKey="ENTER">
+            <loadStimulus eventTag="R0.1-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
+                <hasMoreStimulus>
+                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="2" groupCommunicationChannels="A,B,C,D">
+                        <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-">
+                            <clearPage/>
+                            <stimulusHasResponse>
+                                <conditionTrue>
+                                    <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="1"/>
+                                </conditionTrue>
+                                <conditionFalse>
+                                    <stimulusLabel/>
+                                    <htmlText featureText="&amp;nbsp;"/>
+                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                        <addPadding/>
+                                        <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                        <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
+                                    </stimulusImage>
+                                </conditionFalse>
+                            </stimulusHasResponse>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="B,C,D:-:A,C,D:-:B,A,D:-:B,C,A:-">
+                            <clearPage/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D">
+                            <clearPage/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
+                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                <pause msToNext="7000">
+                                    <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
+                                </pause>
+                            </stimulusImage>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="-:A:-:B:-:C:-:D">
+                            <submitGroupEvent/>
+                        </groupNetworkActivity>
+                    </groupNetwork>
+                </hasMoreStimulus>
+                <endOfStimulus>
+                    <autoNextPresenter/>
+                </endOfStimulus>
+                <randomGrouping storageField="stimuliAllocationR0_1_4">
+                    <tag>version1zero</tag>
+                </randomGrouping>
+                <stimuli/>
+            </loadStimulus>
+        </actionButton>
+    </presenter>
+    <presenter displayOrder="6" menuLabel="R0.2-4" next="R1_4" type="stimulus" self="R0_2_4" title="R0.2-4">
+        <centrePage/>
+        <htmlText featureText="Je krijgt de scenes nog één keer te zien.&lt;br/&gt;&lt;br/&gt;Probeer de beschrijvingen en de scenes die ze beschrijven zo goed mogelijk te onthouden.&lt;br/&gt;&lt;br/&gt;Druk op de knop of Enter om verder te gaan.&lt;br/&gt;&lt;br/&gt;"/>
+        <actionButton featureText="Next [enter]" hotKey="ENTER">
+            <loadStimulus eventTag="R0.2-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
+                <hasMoreStimulus>
+                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="2" groupCommunicationChannels="A,B,C,D">
+                        <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-">
+                            <clearPage/>
+                            <stimulusHasResponse>
+                                <conditionTrue>
+                                    <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="1"/>
+                                </conditionTrue>
+                                <conditionFalse>
+                                    <stimulusLabel/>
+                                    <htmlText featureText="&amp;nbsp;"/>
+                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                        <addPadding/>
+                                        <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                        <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
+                                    </stimulusImage>
+                                </conditionFalse>
+                            </stimulusHasResponse>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="B,C,D:-:A,C,D:-:B,A,D:-:B,C,A:-">
+                            <clearPage/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D">
+                            <clearPage/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
+                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                <pause msToNext="7000">
+                                    <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
+                                </pause>
+                            </stimulusImage>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="-:A:-:B:-:C:-:D">
+                            <submitGroupEvent/>
+                        </groupNetworkActivity>
+                    </groupNetwork>
+                </hasMoreStimulus>
+                <endOfStimulus>
+                    <autoNextPresenter/>
+                </endOfStimulus>
+                <randomGrouping storageField="stimuliAllocationR0_2_4">
+                    <tag>version1zero</tag>
+                </randomGrouping>
+                <stimuli/>
+            </loadStimulus>
+        </actionButton>
+    </presenter>
+    <presenter displayOrder="7" menuLabel="R1-4" next="R2_4" type="stimulus" self="R1_4" title="R1-4">
+        <centrePage/>
+        <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Nu verdelen we jullie in paren. In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;In elke beurt krijgt een van de spelers één scène te zien, de ander speler krijgt acht scènes te zien. De speler met één scène bedenkt een beschrijving voor die scène en toont die beschrijving aan de andere speler. De ander speler moet dan raden om welk van de acht scènes op zijn/haar scherm het gaat.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om een beschrijving te bedenken is het doel ervoor te zorgen dat je medespeler je zo goed mogelijk begrijpt zodat die het juiste scène uit de reeks scènes zal kiezen. Je mag beschrijvingen gebruiken die je in een eerdere ronde hebt geleerd of je mag een nieuwe beschrijving bedenken. Dit is geen geheugen test, dus als je denkt dat je een beter beschrijving weet schroom dan niet om die te gebruiken. Als je het niet goed weet, probeer dan een beschrijving te bedenken met de kennis die je tot dan toe hebt opgedaan over de fantasietaal. Onthoud dat als je scènes benoemt, je enkel de zichtbare letters kunt gebruiken. Als je een beschrijving bedacht hebt, kun je op Enter drukken. &lt;br/&gt;&lt;br/&gt;De andere speler kan nu uit de acht scènes kiezen welke scène hij/zij denkt dat je bedoelt.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om te kiezen welke scène bedoeld wordt met de beschrijving, doe je dit door op een van de nummers (1-8) te drukken (kan zowel bovenaan als rechts) of op het juiste plaatje te klikken. &lt;br/&gt;&lt;br/&gt;Nadat er een scène gekozen is, krijg je een feedback scherm waarop 2 scènes komen te staan; de gekozen scène en de scène die het had moeten zijn. Als de gekozen scène correct was, krijg je een punt. Goed gedaan! Zo niet, dan kun je de feedback gebruiken om het volgende ronde beter te doen.  &lt;br/&gt;&lt;br/&gt;De volgende beurt keren jullie de rollen om. 1 ronde bestaat uit 23 beurten. Veel succes!&lt;br/&gt;&lt;br/&gt;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R1-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -136,11 +237,11 @@
                         <groupNetworkActivity groupRole="A,D:-:-:B,C:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -153,7 +254,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:B,C:-:-:A,D:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -187,7 +288,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,D,B,C:-:-:A,D,B,C">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="If correct: Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;If incorrect: Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -221,7 +322,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="&amp;nbsp;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -235,9 +336,9 @@
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter displayOrder="6" menuLabel="R2-4" next="R3_4" type="stimulus" self="R2_4" title="R2-4">
+    <presenter displayOrder="8" menuLabel="R2-4" next="R3_4" type="stimulus" self="R2_4" title="R2-4">
         <centrePage/>
-        <htmlText featureText="&amp;nbsp;"/>
+        <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R2-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -245,11 +346,11 @@
                         <groupNetworkActivity groupRole="C,D:-:-:A,B:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -262,7 +363,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B:-:-:C,D:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -296,7 +397,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:C,D,A,B:-:-:C,D,A,B">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="If correct: Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;If incorrect: Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -330,7 +431,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="&amp;nbsp;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -344,9 +445,9 @@
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter displayOrder="7" menuLabel="R3-4" next="R4_4" type="stimulus" self="R3_4" title="R3-4">
+    <presenter displayOrder="9" menuLabel="R3-4" next="R4_4" type="stimulus" self="R3_4" title="R3-4">
         <centrePage/>
-        <htmlText featureText="&amp;nbsp;"/>
+        <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R3-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -354,11 +455,11 @@
                         <groupNetworkActivity groupRole="B,A:-:-:C,D:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -371,7 +472,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:C,D:-:-:B,A:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -405,7 +506,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:B,A,C,D:-:-:B,A,C,D">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="If correct: Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;If incorrect: Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -439,7 +540,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="&amp;nbsp;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -453,9 +554,9 @@
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter displayOrder="8" menuLabel="R4-4" next="R5_4" type="stimulus" self="R4_4" title="R4-4">
+    <presenter displayOrder="10" menuLabel="R4-4" next="R5_4" type="stimulus" self="R4_4" title="R4-4">
         <centrePage/>
-        <htmlText featureText="&amp;nbsp;"/>
+        <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R4-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -463,11 +564,11 @@
                         <groupNetworkActivity groupRole="A,D:-:-:B,C:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -480,7 +581,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:B,C:-:-:A,D:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -514,7 +615,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,D,B,C:-:-:A,D,B,C">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="If correct: Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;If incorrect: Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -548,7 +649,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="&amp;nbsp;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -562,9 +663,9 @@
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter displayOrder="9" menuLabel="R5-4" next="R6_4" type="stimulus" self="R5_4" title="R5-4">
+    <presenter displayOrder="11" menuLabel="R5-4" next="R6_4" type="stimulus" self="R5_4" title="R5-4">
         <centrePage/>
-        <htmlText featureText="&amp;nbsp;"/>
+        <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R5-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -572,11 +673,11 @@
                         <groupNetworkActivity groupRole="C,D:-:-:A,B:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -589,7 +690,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B:-:-:C,D:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -623,7 +724,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:C,D,A,B:-:-:C,D,A,B">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="If correct: Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;If incorrect: Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -657,7 +758,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="&amp;nbsp;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -671,9 +772,9 @@
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter displayOrder="10" menuLabel="R6-4" next="R7_4" type="stimulus" self="R6_4" title="R6-4">
+    <presenter displayOrder="12" menuLabel="R6-4" next="R7_4" type="stimulus" self="R6_4" title="R6-4">
         <centrePage/>
-        <htmlText featureText="&amp;nbsp;"/>
+        <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R6-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -681,11 +782,11 @@
                         <groupNetworkActivity groupRole="B,A:-:-:C,D:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -698,7 +799,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:C,D:-:-:B,A:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -732,7 +833,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:B,A,C,D:-:-:B,A,C,D">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="If correct: Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;If incorrect: Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -766,7 +867,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="&amp;nbsp;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -780,9 +881,9 @@
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter displayOrder="11" menuLabel="R7-4" next="R8_4" type="stimulus" self="R7_4" title="R7-4">
+    <presenter displayOrder="13" menuLabel="R7-4" next="R8_4" type="stimulus" self="R7_4" title="R7-4">
         <centrePage/>
-        <htmlText featureText="&amp;nbsp;"/>
+        <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R7-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -790,11 +891,11 @@
                         <groupNetworkActivity groupRole="A,D:-:-:B,C:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -807,7 +908,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:B,C:-:-:A,D:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -841,7 +942,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,D,B,C:-:-:A,D,B,C">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="If correct: Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;If incorrect: Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -875,7 +976,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="&amp;nbsp;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -889,9 +990,9 @@
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter displayOrder="12" menuLabel="R8-4" next="Einde_van_het_experiment2" type="stimulus" self="R8_4" title="R8-4">
+    <presenter displayOrder="14" menuLabel="R8-4" next="Einde_van_het_experiment2" type="stimulus" self="R8_4" title="R8-4">
         <centrePage/>
-        <htmlText featureText="&amp;nbsp;"/>
+        <htmlText featureText="Als laatste willen we graag weten wat je kennis van de taal is. Je krijgt telkens een van de scènes uit het spel te zien. Typ de  beschrijving waarvan je denkt dat die de scène beschrijft in de fantasietaal. Dit doe je zonder te overleggen."/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R8-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -902,7 +1003,7 @@
                             <htmlText featureText="&amp;nbsp;"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -917,7 +1018,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="&amp;nbsp;"/>
+                    <htmlTokenText featureText="Geweldig! Jullie groep heeft een totaal van &lt;groupScore&gt; punten verdiend in dit spel!&lt;br/&gt;&lt;br/&gt;Hartelijk dank voor het meespelen!"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -931,11 +1032,11 @@
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter displayOrder="13" menuLabel="R0-8" next="R1_8" type="stimulus" self="R0_8" title="R0-8">
+    <presenter displayOrder="15" menuLabel="R0-8" next="R0_1_8" type="stimulus" self="R0_8" title="R0-8">
         <centrePage/>
-        <htmlText featureText="&amp;nbsp;"/>
+        <htmlText featureText="Om het spel te kunnen spelen moet je eerst acht beschrijvingen voor acht scènes in de fantasietaal creëren. &lt;br/&gt;&lt;br/&gt;Gebruik geen bestaande dingen in het Nederlands of in een andere taal - probeer creatief te zijn en gebruik je fantasie om een taal te creëren. Je kun de spatiebalk gebruiken om beschrijvingen te maken met meerdere woorden. Maar let op, je kunt niet alle letters gebruiken. Alleen de letters die zichtbaar zijn op het keyboard kunnen gebruikt worden. Check dus eerst of je de beschrijving die je in gedachten hebt, kunt typen voor je verder gaat. De backspace toets is bruikbaar als je de beschrijving wilt aanpassen of herschrijven. &lt;br/&gt;&lt;br/&gt;Proefpersoon 1 begint. Hij/zij zal een beschrijving geven aan de eerste scène op het scherm. Toon de beschrijving eerst aan de onderzoeker voor je verder gaat. Omdat dit de eerste ronde is van het spel willen we even checken of het aan de eisen voldoet. Als de beschrijving goed is, zal hij zeven seconden samen met de scène op het scherm getoond worden aan alle deelnemers van de groep.&lt;br/&gt;&lt;br/&gt;Daarna benoemt proefpersoon 2 de tweede scène en zo verder.&lt;br/&gt;&lt;br/&gt;Wanneer alle scènes benoemd zijn, krijg je ze nog twee keer te zien. Probeer de beschrijvingen en de bijhorende scènes zo goed mogelijk te onthouden zodat je beter kunt communiceren in de volgende rondes.&lt;br/&gt;&lt;br/&gt;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="R0-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R0-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A,B,C,D,E,F,G,H">
                         <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-">
@@ -949,7 +1050,7 @@
                                     <htmlText featureText="&amp;nbsp;"/>
                                     <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <addPadding/>
-                                        <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                        <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                         <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                                     </stimulusImage>
                                 </conditionFalse>
@@ -975,16 +1076,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A,B,C,D,E,F,G,H">
-                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
-                    </groupNetwork>
-                    <clearPage/>
-                    <htmlText featureText="&amp;nbsp;"/>
-                    <groupChannelScoreLabel/>
-                    <groupScoreLabel/>
-                    <actionButton featureText="Next [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
-                    </actionButton>
+                    <autoNextPresenter/>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocationR0_8">
                     <tag>version1zero</tag>
@@ -993,9 +1085,115 @@
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter displayOrder="14" menuLabel="R1-8" next="R2_8" type="stimulus" self="R1_8" title="R1-8">
+    <presenter displayOrder="16" menuLabel="R0.1-8" next="R0_2_8" type="stimulus" self="R0_1_8" title="R0.1-8">
         <centrePage/>
-        <htmlText featureText="&amp;nbsp;"/>
+        <htmlText featureText="Je krijgt de scenes nog twee keer te zien.&lt;br/&gt;&lt;br/&gt;Probeer de beschrijvingen en de scenes die ze beschrijven zo goed mogelijk te onthouden.&lt;br/&gt;&lt;br/&gt;Druk op de knop of Enter om verder te gaan.&lt;br/&gt;&lt;br/&gt;"/>
+        <actionButton featureText="Next [enter]" hotKey="ENTER">
+            <loadStimulus eventTag="R0.1-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
+                <hasMoreStimulus>
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A,B,C,D,E,F,G,H">
+                        <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-">
+                            <clearPage/>
+                            <stimulusHasResponse>
+                                <conditionTrue>
+                                    <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="1"/>
+                                </conditionTrue>
+                                <conditionFalse>
+                                    <stimulusLabel/>
+                                    <htmlText featureText="&amp;nbsp;"/>
+                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                        <addPadding/>
+                                        <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                        <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
+                                    </stimulusImage>
+                                </conditionFalse>
+                            </stimulusHasResponse>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-">
+                            <clearPage/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H">
+                            <clearPage/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
+                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                <pause msToNext="7000">
+                                    <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
+                                </pause>
+                            </stimulusImage>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="-:A:-:B:-:C:-:D:-:E:-:F:-:G:-:H">
+                            <submitGroupEvent/>
+                        </groupNetworkActivity>
+                    </groupNetwork>
+                </hasMoreStimulus>
+                <endOfStimulus>
+                    <autoNextPresenter/>
+                </endOfStimulus>
+                <randomGrouping storageField="stimuliAllocationR0_1_8">
+                    <tag>version1zero</tag>
+                </randomGrouping>
+                <stimuli/>
+            </loadStimulus>
+        </actionButton>
+    </presenter>
+    <presenter displayOrder="17" menuLabel="R0.2-8" next="R1_8" type="stimulus" self="R0_2_8" title="R0.2-8">
+        <centrePage/>
+        <htmlText featureText="Je krijgt de scenes nog één keer te zien.&lt;br/&gt;&lt;br/&gt;Probeer de beschrijvingen en de scenes die ze beschrijven zo goed mogelijk te onthouden.&lt;br/&gt;&lt;br/&gt;Druk op de knop of Enter om verder te gaan.&lt;br/&gt;&lt;br/&gt;"/>
+        <actionButton featureText="Next [enter]" hotKey="ENTER">
+            <loadStimulus eventTag="R0.2-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
+                <hasMoreStimulus>
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A,B,C,D,E,F,G,H">
+                        <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-">
+                            <clearPage/>
+                            <stimulusHasResponse>
+                                <conditionTrue>
+                                    <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="1"/>
+                                </conditionTrue>
+                                <conditionFalse>
+                                    <stimulusLabel/>
+                                    <htmlText featureText="&amp;nbsp;"/>
+                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                        <addPadding/>
+                                        <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                        <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
+                                    </stimulusImage>
+                                </conditionFalse>
+                            </stimulusHasResponse>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-">
+                            <clearPage/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H">
+                            <clearPage/>
+                            <htmlText featureText="&amp;nbsp;"/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
+                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                <pause msToNext="7000">
+                                    <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
+                                </pause>
+                            </stimulusImage>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="-:A:-:B:-:C:-:D:-:E:-:F:-:G:-:H">
+                            <submitGroupEvent/>
+                        </groupNetworkActivity>
+                    </groupNetwork>
+                </hasMoreStimulus>
+                <endOfStimulus>
+                    <autoNextPresenter/>
+                </endOfStimulus>
+                <randomGrouping storageField="stimuliAllocationR0_2_8">
+                    <tag>version1zero</tag>
+                </randomGrouping>
+                <stimuli/>
+            </loadStimulus>
+        </actionButton>
+    </presenter>
+    <presenter displayOrder="18" menuLabel="R1-8" next="R2_8" type="stimulus" self="R1_8" title="R1-8">
+        <centrePage/>
+        <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Nu verdelen we jullie in paren. In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;In elke beurt krijgt een van de spelers één scène te zien, de ander speler krijgt acht scènes te zien. De speler met één scène bedenkt een beschrijving voor die scène en toont die beschrijving aan de andere speler. De ander speler moet dan raden om welk van de acht scènes op zijn/haar scherm het gaat.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om een beschrijving te bedenken is het doel ervoor te zorgen dat je medespeler je zo goed mogelijk begrijpt zodat die het juiste scène uit de reeks scènes zal kiezen. Je mag beschrijvingen gebruiken die je in een eerdere ronde hebt geleerd of je mag een nieuwe beschrijving bedenken. Dit is geen geheugen test, dus als je denkt dat je een beter beschrijving weet schroom dan niet om die te gebruiken. Als je het niet goed weet, probeer dan een beschrijving te bedenken met de kennis die je tot dan toe hebt opgedaan over de fantasietaal. Onthoud dat als je scènes benoemt, je enkel de zichtbare letters kunt gebruiken. Als je een beschrijving bedacht hebt, kun je op Enter drukken. &lt;br/&gt;&lt;br/&gt;De andere speler kan nu uit de acht scènes kiezen welke scène hij/zij denkt dat je bedoelt.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om te kiezen welke scène bedoeld wordt met de beschrijving, doe je dit door op een van de nummers (1-8) te drukken (kan zowel bovenaan als rechts) of op het juiste plaatje te klikken. &lt;br/&gt;&lt;br/&gt;Nadat er een scène gekozen is, krijg je een feedback scherm waarop 2 scènes komen te staan; de gekozen scène en de scène die het had moeten zijn. Als de gekozen scène correct was, krijg je een punt. Goed gedaan! Zo niet, dan kun je de feedback gebruiken om het volgende ronde beter te doen.  &lt;br/&gt;&lt;br/&gt;De volgende beurt keren jullie de rollen om. 1 ronde bestaat uit 23 beurten. Veel succes!&lt;br/&gt;&lt;br/&gt;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R1-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -1003,11 +1201,11 @@
                         <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -1020,7 +1218,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -1054,7 +1252,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,C,E,G,B,D,F,H:-:-:A,C,E,G,B,D,F,H">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="If correct: Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;If incorrect: Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -1088,7 +1286,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="&amp;nbsp;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1102,9 +1300,9 @@
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter displayOrder="15" menuLabel="R2-8" next="R3_8" type="stimulus" self="R2_8" title="R2-8">
+    <presenter displayOrder="19" menuLabel="R2-8" next="R3_8" type="stimulus" self="R2_8" title="R2-8">
         <centrePage/>
-        <htmlText featureText="&amp;nbsp;"/>
+        <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R2-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -1112,11 +1310,11 @@
                         <groupNetworkActivity groupRole="H,D,F,B:-:-:A,E,C,G:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -1129,7 +1327,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,E,C,G:-:-:H,D,F,B:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -1163,7 +1361,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:H,D,F,B,A,E,C,G:-:-:H,D,F,B,A,E,C,G">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="If correct: Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;If incorrect: Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -1197,7 +1395,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="&amp;nbsp;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1211,9 +1409,9 @@
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter displayOrder="16" menuLabel="R3-8" next="R4_8" type="stimulus" self="R3_8" title="R3-8">
+    <presenter displayOrder="20" menuLabel="R3-8" next="R4_8" type="stimulus" self="R3_8" title="R3-8">
         <centrePage/>
-        <htmlText featureText="&amp;nbsp;"/>
+        <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R3-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -1221,11 +1419,11 @@
                         <groupNetworkActivity groupRole="A,G,E,C:-:-:D,F,B,H:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -1238,7 +1436,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:D,F,B,H:-:-:A,G,E,C:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -1272,7 +1470,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,G,E,C,D,F,B,H:-:-:A,G,E,C,D,F,B,H">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="If correct: Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;If incorrect: Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -1306,7 +1504,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="&amp;nbsp;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1320,9 +1518,9 @@
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter displayOrder="17" menuLabel="R4-8" next="R5_8" type="stimulus" self="R4_8" title="R4-8">
+    <presenter displayOrder="21" menuLabel="R4-8" next="R5_8" type="stimulus" self="R4_8" title="R4-8">
         <centrePage/>
-        <htmlText featureText="&amp;nbsp;"/>
+        <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R4-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -1330,11 +1528,11 @@
                         <groupNetworkActivity groupRole="C,B,E,F:-:-:A,D,G,H:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -1347,7 +1545,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,D,G,H:-:-:C,B,E,F:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -1381,7 +1579,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:C,B,E,F,A,D,G,H:-:-:C,B,E,F,A,D,G,H">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="If correct: Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;If incorrect: Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -1415,7 +1613,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="&amp;nbsp;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1429,9 +1627,9 @@
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter displayOrder="18" menuLabel="R5-8" next="R6_8" type="stimulus" self="R5_8" title="R5-8">
+    <presenter displayOrder="22" menuLabel="R5-8" next="R6_8" type="stimulus" self="R5_8" title="R5-8">
         <centrePage/>
-        <htmlText featureText="&amp;nbsp;"/>
+        <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R5-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -1439,11 +1637,11 @@
                         <groupNetworkActivity groupRole="A,D,B,G:-:-:E,H,F,C:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -1456,7 +1654,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:E,H,F,C:-:-:A,D,B,G:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -1490,7 +1688,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,D,B,G,E,H,F,C:-:-:A,D,B,G,E,H,F,C">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="If correct: Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;If incorrect: Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -1524,7 +1722,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="&amp;nbsp;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1538,9 +1736,9 @@
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter displayOrder="19" menuLabel="R6-8" next="R7_8" type="stimulus" self="R6_8" title="R6-8">
+    <presenter displayOrder="23" menuLabel="R6-8" next="R7_8" type="stimulus" self="R6_8" title="R6-8">
         <centrePage/>
-        <htmlText featureText="&amp;nbsp;"/>
+        <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R6-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -1548,11 +1746,11 @@
                         <groupNetworkActivity groupRole="F,G,C,H:-:-:A,D,B,E:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -1565,7 +1763,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,D,B,E:-:-:F,G,C,H:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -1599,7 +1797,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:F,G,C,H,A,D,B,E:-:-:F,G,C,H,A,D,B,E">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="If correct: Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;If incorrect: Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -1633,7 +1831,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="&amp;nbsp;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1641,15 +1839,15 @@
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocationR6_8">
-                    <tag>version1round5</tag>
+                    <tag>version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter displayOrder="20" menuLabel="R7-8" next="R8_8" type="stimulus" self="R7_8" title="R7-8">
+    <presenter displayOrder="24" menuLabel="R7-8" next="R8_8" type="stimulus" self="R7_8" title="R7-8">
         <centrePage/>
-        <htmlText featureText="&amp;nbsp;"/>
+        <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R7-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -1657,11 +1855,11 @@
                         <groupNetworkActivity groupRole="A,H,E,D:-:-:G,B,C,F:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -1674,7 +1872,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:G,B,C,F:-:-:A,H,E,D:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -1708,7 +1906,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,H,E,D,G,B,C,F:-:-:A,H,E,D,G,B,C,F">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="If correct: Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;If incorrect: Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -1742,7 +1940,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="&amp;nbsp;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1750,15 +1948,15 @@
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocationR7_8">
-                    <tag>version1round5</tag>
+                    <tag>version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter displayOrder="21" menuLabel="R8-8" next="R9_8" type="stimulus" self="R8_8" title="R8-8">
+    <presenter displayOrder="25" menuLabel="R8-8" next="R9_8" type="stimulus" self="R8_8" title="R8-8">
         <centrePage/>
-        <htmlText featureText="&amp;nbsp;"/>
+        <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R8-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -1769,7 +1967,7 @@
                             <htmlText featureText="&amp;nbsp;"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -1784,7 +1982,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="&amp;nbsp;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1792,15 +1990,15 @@
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocationR8_8">
-                    <tag>version1round5</tag>
+                    <tag>version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter displayOrder="22" menuLabel="R9-8" next="R10_8" type="stimulus" self="R9_8" title="R9-8">
+    <presenter displayOrder="26" menuLabel="R9-8" next="R10_8" type="stimulus" self="R9_8" title="R9-8">
         <centrePage/>
-        <htmlText featureText="&amp;nbsp;"/>
+        <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R9-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -1808,11 +2006,11 @@
                         <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -1825,7 +2023,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -1859,7 +2057,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:B,D,F,H,A,C,E,G:-:-:B,D,F,H,A,C,E,G">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="If correct: Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;If incorrect: Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -1893,7 +2091,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="&amp;nbsp;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1901,15 +2099,15 @@
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocationR9_8">
-                    <tag>version1round5</tag>
+                    <tag>version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter displayOrder="23" menuLabel="R10-8" next="R11_8" type="stimulus" self="R10_8" title="R10-8">
+    <presenter displayOrder="27" menuLabel="R10-8" next="R11_8" type="stimulus" self="R10_8" title="R10-8">
         <centrePage/>
-        <htmlText featureText="&amp;nbsp;"/>
+        <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R10-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -1917,11 +2115,11 @@
                         <groupNetworkActivity groupRole="A,E,C,G:-:-:H,D,F,B:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -1934,7 +2132,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:H,D,F,B:-:-:A,E,C,G:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -1968,7 +2166,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,E,C,G,H,D,F,B:-:-:A,E,C,G,H,D,F,B">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="If correct: Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;If incorrect: Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -2002,7 +2200,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="&amp;nbsp;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2010,15 +2208,15 @@
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocationR10_8">
-                    <tag>version1round5</tag>
+                    <tag>version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter displayOrder="24" menuLabel="R11-8" next="R12_8" type="stimulus" self="R11_8" title="R11-8">
+    <presenter displayOrder="28" menuLabel="R11-8" next="R12_8" type="stimulus" self="R11_8" title="R11-8">
         <centrePage/>
-        <htmlText featureText="&amp;nbsp;"/>
+        <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R11-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -2026,11 +2224,11 @@
                         <groupNetworkActivity groupRole="D,F,B,H:-:-:A,G,E,C:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -2043,7 +2241,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,G,E,C:-:-:D,F,B,H:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -2077,7 +2275,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:D,F,B,H,A,G,E,C:-:-:D,F,B,H,A,G,E,C">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="If correct: Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;If incorrect: Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -2111,7 +2309,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="&amp;nbsp;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2119,15 +2317,15 @@
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocationR11_8">
-                    <tag>version1round5</tag>
+                    <tag>version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter displayOrder="25" menuLabel="R12-8" next="R13_8" type="stimulus" self="R12_8" title="R12-8">
+    <presenter displayOrder="29" menuLabel="R12-8" next="R13_8" type="stimulus" self="R12_8" title="R12-8">
         <centrePage/>
-        <htmlText featureText="&amp;nbsp;"/>
+        <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R12-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -2135,11 +2333,11 @@
                         <groupNetworkActivity groupRole="A,D,G,H:-:-:C,B,E,F:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -2152,7 +2350,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:C,B,E,F:-:-:A,D,G,H:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -2186,7 +2384,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,D,G,H,C,B,E,F:-:-:A,D,G,H,C,B,E,F">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="If correct: Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;If incorrect: Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -2220,7 +2418,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="&amp;nbsp;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2228,15 +2426,15 @@
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocationR12_8">
-                    <tag>version1round5</tag>
+                    <tag>version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter displayOrder="26" menuLabel="R13-8" next="R14_8" type="stimulus" self="R13_8" title="R13-8">
+    <presenter displayOrder="30" menuLabel="R13-8" next="R14_8" type="stimulus" self="R13_8" title="R13-8">
         <centrePage/>
-        <htmlText featureText="&amp;nbsp;"/>
+        <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R13-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -2244,11 +2442,11 @@
                         <groupNetworkActivity groupRole="E,H,F,C:-:-:A,D,B,G:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -2261,7 +2459,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,D,B,G:-:-:E,H,F,C:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -2295,7 +2493,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:E,H,F,C,A,D,B,G:-:-:E,H,F,C,A,D,B,G">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="If correct: Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;If incorrect: Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -2329,7 +2527,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="&amp;nbsp;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2337,15 +2535,15 @@
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocationR13_8">
-                    <tag>version1round5</tag>
+                    <tag>version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter displayOrder="27" menuLabel="R14-8" next="R15_8" type="stimulus" self="R14_8" title="R14-8">
+    <presenter displayOrder="31" menuLabel="R14-8" next="R15_8" type="stimulus" self="R14_8" title="R14-8">
         <centrePage/>
-        <htmlText featureText="&amp;nbsp;"/>
+        <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R14-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -2353,11 +2551,11 @@
                         <groupNetworkActivity groupRole="A,D,B,E:-:-:F,G,C,H:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -2370,7 +2568,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:F,G,C,H:-:-:A,D,B,E:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -2404,7 +2602,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,D,B,E,F,G,C,H:-:-:A,D,B,E,F,G,C,H">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="If correct: Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;If incorrect: Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -2438,7 +2636,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="&amp;nbsp;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2446,15 +2644,15 @@
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocationR14_8">
-                    <tag>version1round5</tag>
+                    <tag>version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter displayOrder="28" menuLabel="R15-8" next="R16_8" type="stimulus" self="R15_8" title="R15-8">
+    <presenter displayOrder="32" menuLabel="R15-8" next="R16_8" type="stimulus" self="R15_8" title="R15-8">
         <centrePage/>
-        <htmlText featureText="&amp;nbsp;"/>
+        <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R15-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -2462,11 +2660,11 @@
                         <groupNetworkActivity groupRole="G,B,C,F:-:-:A,H,E,D:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -2479,7 +2677,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,H,E,D:-:-:G,B,C,F:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -2513,7 +2711,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:G,B,C,F,A,H,E,D:-:-:G,B,C,F,A,H,E,D">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="If correct: Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;If incorrect: Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
                                 <column>
@@ -2547,7 +2745,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="&amp;nbsp;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2555,15 +2753,15 @@
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocationR15_8">
-                    <tag>version1round5</tag>
+                    <tag>version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter displayOrder="29" menuLabel="R16-8" next="Einde_van_het_experiment2" type="stimulus" self="R16_8" title="R16-8">
+    <presenter displayOrder="33" menuLabel="R16-8" next="Einde_van_het_experiment2" type="stimulus" self="R16_8" title="R16-8">
         <centrePage/>
-        <htmlText featureText="&amp;nbsp;"/>
+        <htmlText featureText="Als laatste willen we graag weten wat je kennis van de taal is. Je krijgt telkens een van de scènes uit het spel te zien. Typ de  beschrijving waarvan je denkt dat die de scène beschrijft in de fantasietaal. Dit doe je zonder te overleggen."/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R16-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -2574,7 +2772,7 @@
                             <htmlText featureText="&amp;nbsp;"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm" styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
+                                <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -2589,7 +2787,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlText featureText="&amp;nbsp;"/>
+                    <htmlTokenText featureText="Geweldig! Jullie groep heeft een totaal van &lt;groupScore&gt; punten verdiend in dit spel!&lt;br/&gt;&lt;br/&gt;Hartelijk dank voor het meespelen!"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2597,18 +2795,18 @@
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuliAllocationR16_8">
-                    <tag>version1round5</tag>
+                    <tag>version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Agreement" displayOrder="30" menuLabel="About Screen" type="debug" self="about" title="About Screen">
+    <presenter back="Introductie" displayOrder="34" menuLabel="About Screen" type="debug" self="about" title="About Screen">
         <versionData/>
         <eraseLocalStorageButton/>
         <localStorageData/>
     </presenter>
-    <presenter displayOrder="31" menuLabel="Einde van het experiment2" type="transmission" self="Einde_van_het_experiment2" title="Einde van het experiment2">
+    <presenter displayOrder="35" menuLabel="Einde van het experiment2" type="transmission" self="Einde_van_het_experiment2" title="Einde van het experiment2">
         <sendAllData>
             <onSuccess>
                 <htmlText featureText="Einde van het experiment"/>
