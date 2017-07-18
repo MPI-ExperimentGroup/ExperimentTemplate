@@ -298,6 +298,12 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>());
         </xsl:text>
     </xsl:template>
+    <xsl:template match="htmlTokenText">
+        <xsl:text>    ((ComplexView) simpleView).addHtmlTokenText(messages.</xsl:text>
+        <xsl:value-of select="generate-id(.)" />
+        <xsl:text>());
+        </xsl:text>
+    </xsl:template>
     <xsl:template match="plainText">
         <xsl:text>    ((ComplexView) simpleView).addText(messages.</xsl:text>
         <xsl:value-of select="generate-id(.)" />
