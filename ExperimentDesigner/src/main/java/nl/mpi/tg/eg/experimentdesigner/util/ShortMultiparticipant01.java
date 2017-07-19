@@ -64,6 +64,8 @@ public class ShortMultiparticipant01 {
                 "",
                 "This phase is not used in this screen",
                 "",
+                "",
+                "",
                 "This phase is not used in this screen",
                 "",
                 "",
