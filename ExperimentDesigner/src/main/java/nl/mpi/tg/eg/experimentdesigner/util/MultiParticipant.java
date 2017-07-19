@@ -125,8 +125,9 @@ public class MultiParticipant {
     final private String ronde1tm7GUESSERSCREEN = "Kies de scène die bij de beschrijving hoort: <br/><br/>"
             + "waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen.";
 
-    final private String ronde1tm7FEEDBACKSCREEN = "If correct: Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!<br/><br/>"
-            + "If incorrect: Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!";
+    final private String ronde1tm7FEEDBACKSCREEN = null;
+    final private String ronde1tm7FeedbackCorrect = "Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!";
+    final private String ronde1tm7FeedbackIncorrect = "Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!";
     final private String ronde1tm7ENDSCREEN = "De huidige ronde is klaar! Goed gedaan!<br/><br/>"
             + "Jij en je partner hebben <channelScore> punten verdiend voor jullie groep!<br/><br/>"
             + "Jullie groep heeft nu een totaal van <groupScore> punten. <br/><br/>"
@@ -342,6 +343,8 @@ public class MultiParticipant {
                 "",
                 "This phase is not used in this screen",
                 "",
+                "",
+                "",
                 "This phase is not used in this screen",
                 "",
                 "This phase is not used in this screen",
@@ -367,6 +370,8 @@ public class MultiParticipant {
                 "This phase is not used in this screen",
                 "",
                 "This phase is not used in this screen",
+                "",
+                "",
                 "",
                 "This phase is not used in this screen", outcomeDisplayedPhaseRoles,
                 "&nbsp;",
@@ -427,6 +432,8 @@ public class MultiParticipant {
                 ronde1tm7GUESSERSCREEN,
                 mutualFeedbackPhaseRoles,
                 ronde1tm7FEEDBACKSCREEN,
+                ronde1tm7FeedbackCorrect,
+                ronde1tm7FeedbackIncorrect,
                 "",
                 "This phase is not used in this screen",
                 "",
