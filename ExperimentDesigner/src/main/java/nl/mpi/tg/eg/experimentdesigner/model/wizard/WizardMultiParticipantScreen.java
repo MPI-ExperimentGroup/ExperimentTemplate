@@ -56,6 +56,8 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             final String responseGridPhaseText,
             final String mutualFeedbackPhaseRoles,
             final String mutualFeedbackPhaseText,
+            final String mutualFeedbackPhaseCorrectText,
+            final String mutualFeedbackPhaseIncorrectText,
             final String trainingDisplayPhaseRoles,
             final String trainingDisplayPhaseText,
             final String groupRecordSubmissionPhaseRoles,
@@ -95,6 +97,8 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         this.wizardScreenData.setScreenText(6, "");
         this.wizardScreenData.setScreenText(7, preStimuliText);
         this.wizardScreenData.setScreenText(8, postStimuliText);
+        this.wizardScreenData.setScreenText(13, mutualFeedbackPhaseCorrectText);
+        this.wizardScreenData.setScreenText(14, mutualFeedbackPhaseIncorrectText);
         setTimerCountDownGuesserMs(timerCountDownGuesserMs);
         setTimerCountDownProducerMs(timerCountDownProducerMs);
         setTimerCountDownLabel(timerCountDownLabel);
@@ -264,7 +268,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         this.wizardScreenData.setButtonLabelEventTag(buttonLabelEventTag);
     }
 
-    private List<PresenterFeature> getScoreFeatures(boolean correctResponse) {
+    private List<PresenterFeature> getScoreFeatures(boolean correctResponse, String feedbackText) {
 //        final PresenterFeature scoreButtonFeature = new PresenterFeature(FeatureType.actionButton, "correct");
 //        scoreButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, "correct button");
 //        scoreButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, "Z");
@@ -306,7 +310,8 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
         aboveThreshold.getPresenterFeatureList().add(aboveFeature);
         belowThreshold.getPresenterFeatureList().add(belowFeature);
-        return Arrays.asList(new PresenterFeature[]{scoreIncrement, scoreAboveThreshold, new PresenterFeature(FeatureType.submitGroupEvent, null)});
+        return Arrays.asList(new PresenterFeature[]{scoreIncrement, scoreAboveThreshold, new PresenterFeature(FeatureType.submitGroupEvent, null),
+            new PresenterFeature(FeatureType.htmlText, feedbackText)});
     }
 
     @Override
@@ -474,8 +479,9 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             countDownFeature.addFeatureAttributes(FeatureAttribute.styleName, "countDownLabel");
             guesserNetworkActivity1.getPresenterFeatureList().add(countDownFeature);
         }
-        // temporary testing features
-        final PresenterFeature stimulusGrid = addStimuliGrid("guesserNetworkActivity1Grid", getScoreFeatures(true), getScoreFeatures(false));
+        String mutualFeedbackPhaseCorrectText = (storedWizardScreenData.getScreenText(13) != null) ? storedWizardScreenData.getScreenText(13) : "";
+        String mutualFeedbackPhaseIncorrectText = (storedWizardScreenData.getScreenText(14) != null) ? storedWizardScreenData.getScreenText(14) : "";
+        final PresenterFeature stimulusGrid = addStimuliGrid("guesserNetworkActivity1Grid", getScoreFeatures(true, mutualFeedbackPhaseCorrectText), getScoreFeatures(false, mutualFeedbackPhaseIncorrectText));
         guesserNetworkActivity1.getPresenterFeatureList().add(stimulusGrid);
 //        final PresenterFeature resultsGrid = addStimuliGrid("resultsGrid", new PresenterFeature(FeatureType.htmlText, "response not relevant"), new PresenterFeature(FeatureType.htmlText, "response not relevant"));
 //        allNetworkActivity2.getPresenterFeatureList().add(resultsGrid);
