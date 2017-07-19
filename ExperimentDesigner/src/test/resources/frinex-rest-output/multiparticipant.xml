@@ -269,7 +269,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -282,7 +281,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
@@ -311,9 +309,14 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupScoreLabel/>
-                            <groupChannelScoreLabel/>
-                            <scoreLabel/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -323,7 +326,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -379,7 +382,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -392,7 +394,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
@@ -421,9 +422,14 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupScoreLabel/>
-                            <groupChannelScoreLabel/>
-                            <scoreLabel/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -433,7 +439,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -489,7 +495,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -502,7 +507,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
@@ -531,9 +535,14 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupScoreLabel/>
-                            <groupChannelScoreLabel/>
-                            <scoreLabel/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -543,7 +552,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -599,7 +608,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -612,7 +620,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
@@ -641,9 +648,14 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupScoreLabel/>
-                            <groupChannelScoreLabel/>
-                            <scoreLabel/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -653,7 +665,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -709,7 +721,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -722,7 +733,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
@@ -751,9 +761,14 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupScoreLabel/>
-                            <groupChannelScoreLabel/>
-                            <scoreLabel/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -763,7 +778,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -819,7 +834,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -832,7 +846,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
@@ -861,9 +874,14 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupScoreLabel/>
-                            <groupChannelScoreLabel/>
-                            <scoreLabel/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -873,7 +891,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -929,7 +947,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -942,7 +959,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
@@ -971,9 +987,14 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupScoreLabel/>
-                            <groupChannelScoreLabel/>
-                            <scoreLabel/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -983,7 +1004,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1240,7 +1261,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -1253,7 +1273,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
@@ -1282,9 +1301,14 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupScoreLabel/>
-                            <groupChannelScoreLabel/>
-                            <scoreLabel/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -1294,7 +1318,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1350,7 +1374,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -1363,7 +1386,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
@@ -1392,9 +1414,14 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupScoreLabel/>
-                            <groupChannelScoreLabel/>
-                            <scoreLabel/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -1404,7 +1431,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1460,7 +1487,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -1473,7 +1499,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
@@ -1502,9 +1527,14 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupScoreLabel/>
-                            <groupChannelScoreLabel/>
-                            <scoreLabel/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -1514,7 +1544,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1570,7 +1600,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -1583,7 +1612,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
@@ -1612,9 +1640,14 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupScoreLabel/>
-                            <groupChannelScoreLabel/>
-                            <scoreLabel/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -1624,7 +1657,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1680,7 +1713,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -1693,7 +1725,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
@@ -1722,9 +1753,14 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupScoreLabel/>
-                            <groupChannelScoreLabel/>
-                            <scoreLabel/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -1734,7 +1770,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1790,7 +1826,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -1803,7 +1838,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
@@ -1832,9 +1866,14 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupScoreLabel/>
-                            <groupChannelScoreLabel/>
-                            <scoreLabel/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -1844,7 +1883,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1900,7 +1939,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -1913,7 +1951,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
@@ -1942,9 +1979,14 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupScoreLabel/>
-                            <groupChannelScoreLabel/>
-                            <scoreLabel/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -1954,7 +1996,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1996,7 +2038,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2052,7 +2094,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -2065,7 +2106,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
@@ -2094,9 +2134,14 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupScoreLabel/>
-                            <groupChannelScoreLabel/>
-                            <scoreLabel/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -2106,7 +2151,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2162,7 +2207,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -2175,7 +2219,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
@@ -2204,9 +2247,14 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupScoreLabel/>
-                            <groupChannelScoreLabel/>
-                            <scoreLabel/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -2216,7 +2264,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2272,7 +2320,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -2285,7 +2332,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
@@ -2314,9 +2360,14 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupScoreLabel/>
-                            <groupChannelScoreLabel/>
-                            <scoreLabel/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -2326,7 +2377,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2382,7 +2433,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -2395,7 +2445,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
@@ -2424,9 +2473,14 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupScoreLabel/>
-                            <groupChannelScoreLabel/>
-                            <scoreLabel/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -2436,7 +2490,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2492,7 +2546,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -2505,7 +2558,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
@@ -2534,9 +2586,14 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupScoreLabel/>
-                            <groupChannelScoreLabel/>
-                            <scoreLabel/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -2546,7 +2603,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2602,7 +2659,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -2615,7 +2671,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
@@ -2644,9 +2699,14 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupScoreLabel/>
-                            <groupChannelScoreLabel/>
-                            <scoreLabel/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -2656,7 +2716,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2712,7 +2772,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
                                 <responseIncorrect msToNext="0">
                                     <scoreIncrement scoreValue="false"/>
@@ -2725,7 +2784,6 @@
                                         </belowThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
-                                    <htmlText featureText="Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                                 <stimuli/>
                             </showStimulusGrid>
@@ -2754,9 +2812,14 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupScoreLabel/>
-                            <groupChannelScoreLabel/>
-                            <scoreLabel/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -2766,7 +2829,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
