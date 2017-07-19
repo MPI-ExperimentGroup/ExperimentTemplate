@@ -126,16 +126,16 @@ public class MultiParticipant {
             + "waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen.";
 
     final private String ronde1tm7FEEDBACKSCREEN = null;
-    final private String ronde1tm7FeedbackCorrect = "Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!";
-    final private String ronde1tm7FeedbackIncorrect = "Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!";
+    final private String ronde1tm7FeedbackCorrect = "<br/>Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!";
+    final private String ronde1tm7FeedbackIncorrect = "<br/>Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!";
     final private String ronde1tm7ENDSCREEN = "De huidige ronde is klaar! Goed gedaan!<br/><br/>"
             + "Jij en je partner hebben <channelScore> punten verdiend voor jullie groep!<br/><br/>"
             + "Jullie groep heeft nu een totaal van <groupScore> punten. <br/><br/>"
             + "Dit zijn de scores van deze ronde:<br/><br/>"
-            + "Duo X-X heeft XX punten.<br/><br/>"
-            + "Duo X-X heeft XX punten.<br/><br/>"
-            + "Duo X-X heeft XX punten.<br/><br/>"
-            + "Duo X-X heeft XX punten.";
+            + "<channelLoop>Duo <channelLabel> heeft <channelScore> punten.<br/><br/></channelLoop>";
+//            + "Duo X-X heeft XX punten.<br/><br/>"
+//            + "Duo X-X heeft XX punten.<br/><br/>"
+//            + "Duo X-X heeft XX punten.";
     final private String ronde8test1 = "Als laatste willen we graag weten wat je kennis van de taal is. Je krijgt telkens een van de scènes "
             + "uit het spel te zien. Typ de  beschrijving waarvan je denkt dat die de scène beschrijft in de fantasietaal. "
             + "Dit doe je zonder te overleggen.";
