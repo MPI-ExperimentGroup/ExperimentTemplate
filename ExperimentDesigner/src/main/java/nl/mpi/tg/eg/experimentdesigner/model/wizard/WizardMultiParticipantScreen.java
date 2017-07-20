@@ -704,12 +704,12 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //            endOfStimulusGroupMessage.addFeatureAttributes(FeatureAttribute.incrementPhase, "1");
             endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
             endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlTokenText, postStimuliText));
-            final PresenterFeature groupChannelScoreLabel1 = new PresenterFeature(FeatureType.groupChannelScoreLabel, null);
+//            final PresenterFeature groupChannelScoreLabel1 = new PresenterFeature(FeatureType.groupChannelScoreLabel, null);
 //            groupChannelScoreLabel1.addFeatureAttributes(FeatureAttribute.styleName, "");
-            endOfStimulusFeature.getPresenterFeatureList().add(groupChannelScoreLabel1);
-            final PresenterFeature groupScoreLabel1 = new PresenterFeature(FeatureType.groupScoreLabel, null);
+//            endOfStimulusFeature.getPresenterFeatureList().add(groupChannelScoreLabel1);
+//            final PresenterFeature groupScoreLabel1 = new PresenterFeature(FeatureType.groupScoreLabel, null);
 //            groupScoreLabel1.addFeatureAttributes(FeatureAttribute.styleName, "");
-            endOfStimulusFeature.getPresenterFeatureList().add(groupScoreLabel1);
+//            endOfStimulusFeature.getPresenterFeatureList().add(groupScoreLabel1);
             final PresenterFeature actionButton = new PresenterFeature(FeatureType.actionButton, "Next [enter]");
             actionButton.addFeatureAttributes(FeatureAttribute.hotKey, "ENTER");
             actionButton.getPresenterFeatureList().add(autoNextPresenter);
