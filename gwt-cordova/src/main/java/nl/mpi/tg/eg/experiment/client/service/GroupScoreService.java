@@ -17,6 +17,8 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
+import java.util.Set;
+
 /**
  * @since Jul 19, 2017 5:14:28 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
@@ -30,6 +32,8 @@ public interface GroupScoreService {
     String getChannelScore();
 
     String getChannelScore(String channel);
+
+    Set<String> getChannelScoreKeys();
 
     String getGroupCommunicationChannels();
 

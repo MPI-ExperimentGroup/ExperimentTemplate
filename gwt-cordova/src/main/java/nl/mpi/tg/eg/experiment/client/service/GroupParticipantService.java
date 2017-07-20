@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 import nl.mpi.tg.eg.experiment.client.listener.GroupActivityListener;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 
@@ -67,7 +68,7 @@ public class GroupParticipantService implements GroupScoreService {
     private String responseStimulusOptions = null;
     private String responseStimulusId = null;
     private String groupScore = null;
-    private String channelScore = null;
+    private final HashMap<String, String> channelScores = new HashMap<>();
     private String groupUUID = null;
 
     public GroupParticipantService(final String userId, String screenId, String groupMembers, String groupCommunicationChannels, final int phasesPerStimulus, String stimuliListLoaded, TimedStimulusListener connectedListener, TimedStimulusListener groupNotReadyListener, TimedStimulusListener screenResetRequestListner, TimedStimulusListener stimulusSyncListner, TimedStimulusListener groupInfoChangeListner
@@ -164,6 +165,10 @@ public class GroupParticipantService implements GroupScoreService {
                 boolean messageIsRelevant = false;
                 for (String channel : groupCommunicationChannels.split("\\|")) {
                     final List<String> channelList = Arrays.asList(channel.split(","));
+                    if (channelList.contains(originMemberCode)) {
+                        this.channelScores.put(channel, channelScore);
+                    }
+                    this.groupScore = groupScore;
                     // check communication channel before responding to the message
                     if (channelList.contains(this.memberCode) && channelList.contains(originMemberCode)) {
                         activeChannel = channel;
@@ -197,8 +202,6 @@ public class GroupParticipantService implements GroupScoreService {
                                 this.messageString = messageString;
                                 this.messageSenderId = userId;
                                 this.responseStimulusId = responseStimulusId;
-                                this.groupScore = groupScore;
-                                this.channelScore = channelScore;
                                 if (!endOfStimuli) {
                                     // if we are already at the end of the stimuli list then do not sync again
                                     stimulusSyncListner.postLoadTimerFired();
@@ -322,7 +325,17 @@ public class GroupParticipantService implements GroupScoreService {
 
     @Override
     public String getChannelScore() {
-        return channelScore;
+        return channelScores.get(activeChannel);
+    }
+
+    @Override
+    public String getChannelScore(String channel) {
+        return channelScores.get(channel);
+    }
+
+    @Override
+    public Set<String> getChannelScoreKeys() {
+        return channelScores.keySet();
     }
 
     public String getGroupUUID() {
@@ -398,8 +411,8 @@ public class GroupParticipantService implements GroupScoreService {
             contentData.messageString,
             (contentData.groupReady)?@java.lang.Boolean::TRUE : @java.lang.Boolean::FALSE, 
             contentData.responseStimulusId,
-            contentData.groupScore,
-            contentData.channelScore,
+            String(contentData.groupScore),
+            String(contentData.channelScore),
             contentData.groupUUID
             );
             }, function(error) {
