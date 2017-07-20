@@ -120,10 +120,10 @@ public class MultiParticipant {
             + "die je tot dan toe hebt opgedaan over de fantasietaal.<br/><br/>"
             + "In deze ronde zul je het spel spelen met proefpersoon X.<br/><br/>"
             + "Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! ";
-    final private String ronde1tm7PRODUCERSCREEN = "Typ je beschrijving voor de scène: <br/><br/>"
-            + "waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken.";
-    final private String ronde1tm7GUESSERSCREEN = "Kies de scène die bij de beschrijving hoort: <br/><br/>"
-            + "waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen.";
+    final private String ronde1tm7PRODUCERSCREEN = "Typ je beschrijving voor de scène: <br/><br/>";
+    final private String waitingScreenForGuesser = "Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken.";
+    final private String ronde1tm7GUESSERSCREEN = "Kies de scène die bij de beschrijving hoort: <br/><br/>";
+    final private String waitingScreenForProducer = "Een moment alsjeblieft. Je partner is een scène aan het kiezen.";
 
     final private String ronde1tm7FEEDBACKSCREEN = null;
     final private String ronde1tm7FeedbackCorrect = "<br/>Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!";
@@ -388,8 +388,8 @@ public class MultiParticipant {
     protected WizardMultiParticipantScreen getPlayingRound(final String screenName, final String groupMembers, final String communicationChannels,
             final String preStimuliText, final String postStimuliText) {
         final String textEntryPhaseText = "&nbsp;";
-        final String textWaitPhaseText = "&nbsp;";
-        final String gridWaitPhaseText = null;
+        final String textWaitPhaseText = waitingScreenForGuesser;
+        final String gridWaitPhaseText = waitingScreenForProducer;
         final String responseGridPhaseText = "&nbsp;";
         final String mutualFeedbackPhaseText = "&nbsp;";
         final int timerCountDownProducerMs = 30 * 1000;
