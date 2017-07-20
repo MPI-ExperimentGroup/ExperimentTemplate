@@ -29,7 +29,7 @@ import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
  * @since Nov 8, 2016 1:47:57 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class GroupParticipantService {
+public class GroupParticipantService implements GroupScoreService {
 
 //    private final HashMap<String, ArrayList<TimedStimulusListener>> selfActivityListeners = new HashMap<>();
 //    private final HashMap<String, ArrayList<TimedStimulusListener>> othersActivityListeners = new HashMap<>();
@@ -237,18 +237,22 @@ public class GroupParticipantService {
         return isConnected;
     }
 
+    @Override
     public String getUserLabel() {
         return userLabel;
     }
 
+    @Override
     public String getAllMemberCodes() {
         return allMemberCodes;
     }
 
+    @Override
     public String getMemberCode() {
         return memberCode;
     }
 
+    @Override
     public String getActiveChannel() {
         return activeChannel;
     }
@@ -261,6 +265,7 @@ public class GroupParticipantService {
         return stimulusId;
     }
 
+    @Override
     public String getGroupCommunicationChannels() {
         return groupCommunicationChannels;
     }
@@ -285,6 +290,7 @@ public class GroupParticipantService {
         return requestedPhase;
     }
 
+    @Override
     public String getMessageString() {
         return messageString;
     }
@@ -309,10 +315,12 @@ public class GroupParticipantService {
         this.responseStimulusId = responseStimulusId;
     }
 
+    @Override
     public String getGroupScore() {
         return groupScore;
     }
 
+    @Override
     public String getChannelScore() {
         return channelScore;
     }
