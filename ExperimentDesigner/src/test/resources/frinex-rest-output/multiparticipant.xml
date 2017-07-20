@@ -237,7 +237,7 @@
                         <groupNetworkActivity groupRole="A,D:-:-:B,C:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
@@ -247,14 +247,15 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,C:-:-:A,D:-:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,D:-:-:B,C:-">
                             <clearPage/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:B,C:-:-:A,D:-">
                             <clearPage/>
-                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -326,7 +327,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -350,7 +351,7 @@
                         <groupNetworkActivity groupRole="C,D:-:-:A,B:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
@@ -360,14 +361,15 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="A,B:-:-:C,D:-:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:C,D:-:-:A,B:-">
                             <clearPage/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B:-:-:C,D:-">
                             <clearPage/>
-                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -439,7 +441,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -463,7 +465,7 @@
                         <groupNetworkActivity groupRole="B,A:-:-:C,D:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
@@ -473,14 +475,15 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="C,D:-:-:B,A:-:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:B,A:-:-:C,D:-">
                             <clearPage/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:C,D:-:-:B,A:-">
                             <clearPage/>
-                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -552,7 +555,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -576,7 +579,7 @@
                         <groupNetworkActivity groupRole="A,D:-:-:B,C:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
@@ -586,14 +589,15 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,C:-:-:A,D:-:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,D:-:-:B,C:-">
                             <clearPage/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:B,C:-:-:A,D:-">
                             <clearPage/>
-                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -665,7 +669,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -689,7 +693,7 @@
                         <groupNetworkActivity groupRole="C,D:-:-:A,B:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
@@ -699,14 +703,15 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="A,B:-:-:C,D:-:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:C,D:-:-:A,B:-">
                             <clearPage/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B:-:-:C,D:-">
                             <clearPage/>
-                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -778,7 +783,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -802,7 +807,7 @@
                         <groupNetworkActivity groupRole="B,A:-:-:C,D:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
@@ -812,14 +817,15 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="C,D:-:-:B,A:-:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:B,A:-:-:C,D:-">
                             <clearPage/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:C,D:-:-:B,A:-">
                             <clearPage/>
-                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -891,7 +897,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -915,7 +921,7 @@
                         <groupNetworkActivity groupRole="A,D:-:-:B,C:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
@@ -925,14 +931,15 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,C:-:-:A,D:-:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,D:-:-:B,C:-">
                             <clearPage/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:B,C:-:-:A,D:-">
                             <clearPage/>
-                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -1004,7 +1011,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1229,7 +1236,7 @@
                         <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
@@ -1239,14 +1246,15 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
                             <clearPage/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
                             <clearPage/>
-                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -1318,7 +1326,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1342,7 +1350,7 @@
                         <groupNetworkActivity groupRole="H,D,F,B:-:-:A,E,C,G:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
@@ -1352,14 +1360,15 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="A,E,C,G:-:-:H,D,F,B:-:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:H,D,F,B:-:-:A,E,C,G:-">
                             <clearPage/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,E,C,G:-:-:H,D,F,B:-">
                             <clearPage/>
-                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -1431,7 +1440,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1455,7 +1464,7 @@
                         <groupNetworkActivity groupRole="A,G,E,C:-:-:D,F,B,H:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
@@ -1465,14 +1474,15 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="D,F,B,H:-:-:A,G,E,C:-:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,G,E,C:-:-:D,F,B,H:-">
                             <clearPage/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:D,F,B,H:-:-:A,G,E,C:-">
                             <clearPage/>
-                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -1544,7 +1554,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1568,7 +1578,7 @@
                         <groupNetworkActivity groupRole="C,B,E,F:-:-:A,D,G,H:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
@@ -1578,14 +1588,15 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="A,D,G,H:-:-:C,B,E,F:-:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:C,B,E,F:-:-:A,D,G,H:-">
                             <clearPage/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,D,G,H:-:-:C,B,E,F:-">
                             <clearPage/>
-                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -1657,7 +1668,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1681,7 +1692,7 @@
                         <groupNetworkActivity groupRole="A,D,B,G:-:-:E,H,F,C:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
@@ -1691,14 +1702,15 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="E,H,F,C:-:-:A,D,B,G:-:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,D,B,G:-:-:E,H,F,C:-">
                             <clearPage/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:E,H,F,C:-:-:A,D,B,G:-">
                             <clearPage/>
-                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -1770,7 +1782,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1794,7 +1806,7 @@
                         <groupNetworkActivity groupRole="F,G,C,H:-:-:A,D,B,E:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
@@ -1804,14 +1816,15 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="A,D,B,E:-:-:F,G,C,H:-:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:F,G,C,H:-:-:A,D,B,E:-">
                             <clearPage/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,D,B,E:-:-:F,G,C,H:-">
                             <clearPage/>
-                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -1883,7 +1896,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -1907,7 +1920,7 @@
                         <groupNetworkActivity groupRole="A,H,E,D:-:-:G,B,C,F:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
@@ -1917,14 +1930,15 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="G,B,C,F:-:-:A,H,E,D:-:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,H,E,D:-:-:G,B,C,F:-">
                             <clearPage/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:G,B,C,F:-:-:A,H,E,D:-">
                             <clearPage/>
-                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -1996,7 +2010,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2038,7 +2052,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2062,7 +2076,7 @@
                         <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
@@ -2072,14 +2086,15 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
                             <clearPage/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
                             <clearPage/>
-                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -2151,7 +2166,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2175,7 +2190,7 @@
                         <groupNetworkActivity groupRole="A,E,C,G:-:-:H,D,F,B:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
@@ -2185,14 +2200,15 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="H,D,F,B:-:-:A,E,C,G:-:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,E,C,G:-:-:H,D,F,B:-">
                             <clearPage/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:H,D,F,B:-:-:A,E,C,G:-">
                             <clearPage/>
-                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -2264,7 +2280,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2288,7 +2304,7 @@
                         <groupNetworkActivity groupRole="D,F,B,H:-:-:A,G,E,C:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
@@ -2298,14 +2314,15 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="A,G,E,C:-:-:D,F,B,H:-:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:D,F,B,H:-:-:A,G,E,C:-">
                             <clearPage/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,G,E,C:-:-:D,F,B,H:-">
                             <clearPage/>
-                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -2377,7 +2394,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2401,7 +2418,7 @@
                         <groupNetworkActivity groupRole="A,D,G,H:-:-:C,B,E,F:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
@@ -2411,14 +2428,15 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="C,B,E,F:-:-:A,D,G,H:-:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,D,G,H:-:-:C,B,E,F:-">
                             <clearPage/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:C,B,E,F:-:-:A,D,G,H:-">
                             <clearPage/>
-                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -2490,7 +2508,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2514,7 +2532,7 @@
                         <groupNetworkActivity groupRole="E,H,F,C:-:-:A,D,B,G:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
@@ -2524,14 +2542,15 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="A,D,B,G:-:-:E,H,F,C:-:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:E,H,F,C:-:-:A,D,B,G:-">
                             <clearPage/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,D,B,G:-:-:E,H,F,C:-">
                             <clearPage/>
-                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -2603,7 +2622,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2627,7 +2646,7 @@
                         <groupNetworkActivity groupRole="A,D,B,E:-:-:F,G,C,H:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
@@ -2637,14 +2656,15 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="F,G,C,H:-:-:A,D,B,E:-:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,D,B,E:-:-:F,G,C,H:-">
                             <clearPage/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:F,G,C,H:-:-:A,D,B,E:-">
                             <clearPage/>
-                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -2716,7 +2736,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
@@ -2740,7 +2760,7 @@
                         <groupNetworkActivity groupRole="G,B,C,F:-:-:A,H,E,D:-:-">
                             <clearPage/>
                             <stimulusLabel/>
-                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;waiting screen for guesser: Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                            <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
@@ -2750,14 +2770,15 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="A,H,E,D:-:-:G,B,C,F:-:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:G,B,C,F:-:-:A,H,E,D:-">
                             <clearPage/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,H,E,D:-:-:G,B,C,F:-">
                             <clearPage/>
-                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;waiting screen for producer: Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
+                            <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
@@ -2829,7 +2850,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
                     <groupChannelScoreLabel/>
                     <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
