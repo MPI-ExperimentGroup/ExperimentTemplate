@@ -327,9 +327,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
-                    <groupChannelScoreLabel/>
-                    <groupScoreLabel/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -441,9 +439,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
-                    <groupChannelScoreLabel/>
-                    <groupScoreLabel/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -555,9 +551,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
-                    <groupChannelScoreLabel/>
-                    <groupScoreLabel/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -669,9 +663,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
-                    <groupChannelScoreLabel/>
-                    <groupScoreLabel/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -783,9 +775,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
-                    <groupChannelScoreLabel/>
-                    <groupScoreLabel/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -897,9 +887,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
-                    <groupChannelScoreLabel/>
-                    <groupScoreLabel/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -1011,9 +999,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
-                    <groupChannelScoreLabel/>
-                    <groupScoreLabel/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -1054,8 +1040,6 @@
                     </groupNetwork>
                     <clearPage/>
                     <htmlTokenText featureText="Geweldig! Jullie groep heeft een totaal van &lt;groupScore&gt; punten verdiend in dit spel!&lt;br/&gt;&lt;br/&gt;Hartelijk dank voor het meespelen!"/>
-                    <groupChannelScoreLabel/>
-                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -1326,9 +1310,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
-                    <groupChannelScoreLabel/>
-                    <groupScoreLabel/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -1440,9 +1422,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
-                    <groupChannelScoreLabel/>
-                    <groupScoreLabel/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -1554,9 +1534,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
-                    <groupChannelScoreLabel/>
-                    <groupScoreLabel/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -1668,9 +1646,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
-                    <groupChannelScoreLabel/>
-                    <groupScoreLabel/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -1782,9 +1758,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
-                    <groupChannelScoreLabel/>
-                    <groupScoreLabel/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -1896,9 +1870,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
-                    <groupChannelScoreLabel/>
-                    <groupScoreLabel/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -2010,9 +1982,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
-                    <groupChannelScoreLabel/>
-                    <groupScoreLabel/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -2052,9 +2022,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
-                    <groupChannelScoreLabel/>
-                    <groupScoreLabel/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -2166,9 +2134,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
-                    <groupChannelScoreLabel/>
-                    <groupScoreLabel/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -2280,9 +2246,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
-                    <groupChannelScoreLabel/>
-                    <groupScoreLabel/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -2394,9 +2358,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
-                    <groupChannelScoreLabel/>
-                    <groupScoreLabel/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -2508,9 +2470,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
-                    <groupChannelScoreLabel/>
-                    <groupScoreLabel/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -2622,9 +2582,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
-                    <groupChannelScoreLabel/>
-                    <groupScoreLabel/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -2736,9 +2694,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
-                    <groupChannelScoreLabel/>
-                    <groupScoreLabel/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -2850,9 +2806,7 @@
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
-                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten.&lt;br/&gt;&lt;br/&gt;Duo X-X heeft XX punten."/>
-                    <groupChannelScoreLabel/>
-                    <groupScoreLabel/>
+                    <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
@@ -2893,8 +2847,6 @@
                     </groupNetwork>
                     <clearPage/>
                     <htmlTokenText featureText="Geweldig! Jullie groep heeft een totaal van &lt;groupScore&gt; punten verdiend in dit spel!&lt;br/&gt;&lt;br/&gt;Hartelijk dank voor het meespelen!"/>
-                    <groupChannelScoreLabel/>
-                    <groupScoreLabel/>
                     <actionButton featureText="Next [enter]" hotKey="ENTER">
                         <autoNextPresenter/>
                     </actionButton>
