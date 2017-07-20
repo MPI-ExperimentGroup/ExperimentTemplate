@@ -61,6 +61,7 @@ import nl.mpi.tg.eg.experiment.client.service.MatchingStimuliGroup;
 import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
 import nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture;
 import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
+import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
 
@@ -335,6 +336,14 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         matchingStimuliGroup = new MatchingStimuliGroup(stimulusProvider.getCurrentStimulus(), stimulusProvider.getMatchingStimuli(matchingRegex, maxStimulusCount), randomise, repeatCount, hasMoreStimulusListener, endOfStimulusListener);
         matchingStimuliGroup.getNextStimulus(stimulusProvider);
         matchingStimuliGroup.showNextStimulus();
+    }
+
+    public void htmlTokenText(String textString) {
+        ((TimedStimulusView) simpleView).addHtmlText(new HtmlTokenFormatter(groupParticipantService, userResults.getUserData()).formatString(textString), null);
+    }
+
+    public void htmlText(String textString) {
+        ((TimedStimulusView) simpleView).addHtmlText(textString, null);
     }
 
     protected void countdownLabel(final String timesUpLabel, final int postLoadMs, final String msLabelFormat, final TimedStimulusListener timedStimulusListener) {
