@@ -44,7 +44,7 @@ public class HtmlTokenFormatterTest {
         String inputString = "Q<groupScore>W<channelScore>E"
                 + "R<channelLoop>Duo <channelLabel> heeft <channelScore> punten.<br/><br/></channelLoop>Y";
         // todo: implement the channelLoop
-        final String expectedString = "QGroupScoreWChannelScoreER<channelLoop>Duo <channelLabel> heeft ChannelScore punten.<br/><br/></channelLoop>Y";
+        final String expectedString = "QGroupScoreWChannelScoreERDuo A-B heeft 6 punten.<br/><br/>Duo C-D heeft 2 punten.<br/><br/>Y";
         final HashMap<String, String> channelScores = new HashMap<>();
         channelScores.put("A-B", "6");
         channelScores.put("C-D", "2");
@@ -101,6 +101,7 @@ public class HtmlTokenFormatterTest {
             }
         }, new UserData());
         final String formattedString = instance.formatString(inputString);
+        System.out.println("expectedString:" + expectedString);
         System.out.println("formattedString: " + formattedString);
         assertEquals(expectedString, formattedString);
     }

@@ -36,6 +36,17 @@ public class HtmlTokenFormatter {
 
     public String formatString(String inputString) {
         String replacedTokensString = inputString;
+        while (replacedTokensString.contains("</channelLoop>")) {
+            final int channelLoopStart = replacedTokensString.indexOf("<channelLoop>");
+            final int channelLoopEnd = replacedTokensString.indexOf("</channelLoop>");
+            String channelLoopString = replacedTokensString.substring(channelLoopStart, channelLoopEnd + "</channelLoop>".length());
+            System.out.println("channelLoopString:" + channelLoopString);
+            String channelLoopStringOutput = "";
+            for (String channel : groupParticipantService.getChannelScoreKeys()) {
+                channelLoopStringOutput += channelLoopString.replaceAll("<channelLabel>", channel).replaceAll("<channelScore>", groupParticipantService.getChannelScore(channel)).replaceAll("<channelLoop>", "").replaceAll("</channelLoop>", "");
+            }
+            replacedTokensString = replacedTokensString.replace(channelLoopString, channelLoopStringOutput);
+        }
         replacedTokensString = replacedTokensString.replace("<groupScore>", groupParticipantService.getGroupScore());
         replacedTokensString = replacedTokensString.replaceAll("<channelScore>", groupParticipantService.getChannelScore());
         replacedTokensString = replacedTokensString.replaceAll("<playerScore>", Integer.toString(userData.getCurrentScore()));
