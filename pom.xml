@@ -29,6 +29,9 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <netbeans.hint.license>gpl20</netbeans.hint.license> 
         <plugin.license.copyrightYear>2015</plugin.license.copyrightYear>
+        <application.majorVersion>0</application.majorVersion> 
+        <application.minorVersion>1</application.minorVersion> 
+        <application.branch>pretesting</application.branch> 
         
         <!--<experiment.configuration.path>${project.build.sourceDirectory}/../xml</experiment.configuration.path>-->
         <!--<experiment.configuration.path>${project.build.sourceDirectory}/../../../../../ExperimentBuilder/src/main/xml</experiment.configuration.path>-->      
@@ -45,7 +48,7 @@
         <!--<experiment.destinationServer></experiment.destinationServer>-->
         <!--<experiment.configuration.name>parcours01</experiment.configuration.name>-->
         <experiment.configuration.name>multiparticipant</experiment.configuration.name>
-        <!--<experiment.configuration.name>manipulatedcontours</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>french_audio</experiment.configuration.name>-->
         <!--<experiment.configuration.name>dobes_annotator</experiment.configuration.name>-->
         <!--<experiment.configuration.name>antwoordraden</experiment.configuration.name>-->
         <!--<experiment.configuration.name>leeservaring</experiment.configuration.name>-->
@@ -68,6 +71,7 @@
         <!--<experiment.configuration.name>snspsem</experiment.configuration.name>-->
         <!--<experiment.configuration.displayName>Wellsprings Samoan FieldKit</experiment.configuration.displayName>-->
         <!--<experiment.configuration.name>wellspringssamoan</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>nonwacq</experiment.configuration.name>-->
         <experiment.configuration.admin.password></experiment.configuration.admin.password>
         <experiment.configuration.db.password></experiment.configuration.db.password>        
         
@@ -77,6 +81,8 @@
         <!--<experiment.configuration.name>dobes</experiment.configuration.name>-->
         <!--<experiment.configuration.admin.password></experiment.configuration.admin.password>-->
         <!--<experiment.configuration.db.password></experiment.configuration.db.password>-->
+        <experiment.isScaleable>yes</experiment.isScaleable>
+        <experiment.defaultScale>1.0</experiment.defaultScale>
         <finalName>${experiment.configuration.name}-${project.artifactId}-${project.version}</finalName>
         <experiment.noCacheString>${project.version}</experiment.noCacheString>
     </properties>
@@ -162,6 +168,17 @@
             <url>https://lux15.mpi.nl/nexus/content/groups/public/</url>
             <snapshots>
                 <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+        <pluginRepository>
+            <id>KinOathKinshipArchiver</id>
+            <name>KinOathKinshipArchiver Repository</name>
+            <url>https://kinshipsoftware.github.io/KinOathKinshipArchiver/</url>
+            <snapshots>
+                <enabled>true</enabled>
             </snapshots>
             <releases>
                 <enabled>true</enabled>
