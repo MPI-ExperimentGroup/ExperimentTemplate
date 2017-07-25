@@ -63,6 +63,7 @@ public class MultiParticipant {
 //    }
 //    Dutch Instruction (13 JULY 2017)
 //Introductie / welcome screen
+    // todo: change this intro screen to a group screen that when not connected shows info like the "This is a prototype multiparticipant experiment." screen was. Only when connected does the text below display--
     final private String welcomeScreen = "Welkom bij het fantasietaal spel!<br/><br/>" + "In dit experiment ga je een speciale taal creëren "
             + "om verschillende soorten \"scènes\" te beschrijven. In deze scènes zijn verschillende voorwerpen te zien die in "
             + "verschillende richtingen bewegen.<br/><br/>" + "Daarna ga je deze taal gebruiken om te communiceren met andere leden van "
@@ -97,7 +98,7 @@ public class MultiParticipant {
             + "Probeer de beschrijvingen en de scenes die ze beschrijven zo goed mogelijk te onthouden.<br/><br/>"
             + "Druk op de knop of Enter om verder te gaan.<br/><br/>";
     final private String ronde1 = "Tijd om te spelen!<br/><br/>"
-            + "Nu verdelen we jullie in paren. In deze ronde zul je het spel spelen met proefpersoon X.<br/><br/>"
+            + "Nu verdelen we jullie in paren. In deze ronde zul je het spel spelen met een andere proefpersoon.<br/><br/>"
             + "In elke beurt krijgt een van de spelers één scène te zien, de ander speler krijgt acht scènes te zien. "
             + "De speler met één scène bedenkt een beschrijving voor die scène en toont die beschrijving aan de andere speler. "
             + "De ander speler moet dan raden om welk van de acht scènes op zijn/haar scherm het gaat.<br/><br/>"
@@ -150,15 +151,27 @@ public class MultiParticipant {
         "2.png:shape1:version1:quadrant3:moveRotated270",
         "6.png:shape1:version1:quadrant4:moveRotated300",
         "27.png:shape4:version1:quadrant2:moveRotated120",
+        "12.png:shape2:version1round2:quadrant1:moveRotated30",
+        "24.png:shape4:version1round2:quadrant2:moveRotated180",
+        "23.png:shape4:version1round2:quadrant4:moveRotated360",
         "12.png:shape2:version1:version1round2:version1round3:version1round4:version1round5:quadrant1:moveRotated30",
         "24.png:shape4:version1:version1round2:version1round3:version1round4:version1round5:version4:quadrant2:moveRotated180",
         "23.png:shape4:version1:version1round2:version1round3:version1round4:version1round5:version5:quadrant4:moveRotated360",
         "3.png:shape1:version1:version1round3:version1round4:version1round5:quadrant1:moveRotated90",
         "11.png:shape2:version1:version1round3:version1round4:version1round5:quadrant4:moveRotated330",
         "20.png:shape3:version1:version1round3:version1round4:version1round5:quadrant3:moveRotated240",
+        "3.png:shape1:version1:version1round3:quadrant1:moveRotated90",
+        "11.png:shape2:version1:version1round3:quadrant4:moveRotated330",
+        "20.png:shape3:version1:version1round3:quadrant3:moveRotated240",
         "14.png:shape2:version1:version1round4:version1round5:quadrant2:moveRotated120",
         "21.png:shape3:version1:version1round4:version1round5:quadrant4:moveRotated360",
         "4.png:shape1:version1:version1round4:version1round5:version5:version5zero:quadrant4:moveRotated330",
+        "14.png:shape2:version1:version1round4:quadrant2:moveRotated120",
+        "21.png:shape3:version1:version1round4:quadrant4:moveRotated360",
+        "4.png:shape1:version1:version1round4:version5:version5zero:quadrant4:moveRotated330",
+        "25.png:shape4:version1:version1round5:quadrant4:moveRotated315",
+        "16.png:shape3:version1:version1round5:version4:version4zero:quadrant1:moveRotated45",
+        "1.png:shape1:version1:version1round5:version5:quadrant3:moveRotated210",
         "25.png:shape4:version1:version1round5:quadrant4:moveRotated315",
         "16.png:shape3:version1:version1round5:version4:version4zero:quadrant1:moveRotated45",
         "1.png:shape1:version1:version1round5:version5:quadrant3:moveRotated210",
@@ -363,9 +376,9 @@ public class MultiParticipant {
         final WizardMultiParticipantScreen wizardMultiParticipantScreen = new WizardMultiParticipantScreen(screenName,
                 groupMembers4, 2,
                 communicationChannels, textEntryPhaseRoles,
-                "&nbsp;", waitingForProducerPhaseRoles,
+                ronde1tm7PRODUCERSCREEN, waitingForProducerPhaseRoles,
                 true,
-                "&nbsp;",
+                waitingScreenForGuesser,
                 "",
                 "This phase is not used in this screen",
                 "",
