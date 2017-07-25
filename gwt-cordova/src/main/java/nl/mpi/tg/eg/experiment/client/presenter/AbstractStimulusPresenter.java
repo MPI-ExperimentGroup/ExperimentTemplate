@@ -558,7 +558,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                                             + activeChannel
                                             + ")" : "")
                                     + ((stimulusIndex != null) ? "G"
-                                            + stimulusIndex : "");
+                                            + (stimulusIndex + 1) : "");
                         }
 
                         @Override
