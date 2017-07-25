@@ -83,7 +83,7 @@
                                 </conditionTrue>
                                 <conditionFalse>
                                     <stimulusLabel/>
-                                    <htmlText featureText="&amp;nbsp;"/>
+                                    <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                                     <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <addPadding/>
                                         <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
@@ -94,7 +94,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,C,D:-:A,C,D:-:B,A,D:-:B,C,A:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D">
                             <clearPage/>
@@ -136,7 +136,7 @@
                                 </conditionTrue>
                                 <conditionFalse>
                                     <stimulusLabel/>
-                                    <htmlText featureText="&amp;nbsp;"/>
+                                    <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                                     <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <addPadding/>
                                         <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
@@ -147,7 +147,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,C,D:-:A,C,D:-:B,A,D:-:B,C,A:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D">
                             <clearPage/>
@@ -189,7 +189,7 @@
                                 </conditionTrue>
                                 <conditionFalse>
                                     <stimulusLabel/>
-                                    <htmlText featureText="&amp;nbsp;"/>
+                                    <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                                     <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <addPadding/>
                                         <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
@@ -200,7 +200,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,C,D:-:A,C,D:-:B,A,D:-:B,C,A:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D">
                             <clearPage/>
@@ -229,7 +229,7 @@
     </presenter>
     <presenter displayOrder="7" menuLabel="R1-4" next="R2_4" type="stimulus" self="R1_4" title="R1-4">
         <centrePage/>
-        <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Nu verdelen we jullie in paren. In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;In elke beurt krijgt een van de spelers één scène te zien, de ander speler krijgt acht scènes te zien. De speler met één scène bedenkt een beschrijving voor die scène en toont die beschrijving aan de andere speler. De ander speler moet dan raden om welk van de acht scènes op zijn/haar scherm het gaat.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om een beschrijving te bedenken is het doel ervoor te zorgen dat je medespeler je zo goed mogelijk begrijpt zodat die het juiste scène uit de reeks scènes zal kiezen. Je mag beschrijvingen gebruiken die je in een eerdere ronde hebt geleerd of je mag een nieuwe beschrijving bedenken. Dit is geen geheugen test, dus als je denkt dat je een beter beschrijving weet schroom dan niet om die te gebruiken. Als je het niet goed weet, probeer dan een beschrijving te bedenken met de kennis die je tot dan toe hebt opgedaan over de fantasietaal. Onthoud dat als je scènes benoemt, je enkel de zichtbare letters kunt gebruiken. Als je een beschrijving bedacht hebt, kun je op Enter drukken. &lt;br/&gt;&lt;br/&gt;De andere speler kan nu uit de acht scènes kiezen welke scène hij/zij denkt dat je bedoelt.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om te kiezen welke scène bedoeld wordt met de beschrijving, doe je dit door op een van de nummers (1-8) te drukken (kan zowel bovenaan als rechts) of op het juiste plaatje te klikken. &lt;br/&gt;&lt;br/&gt;Nadat er een scène gekozen is, krijg je een feedback scherm waarop 2 scènes komen te staan; de gekozen scène en de scène die het had moeten zijn. Als de gekozen scène correct was, krijg je een punt. Goed gedaan! Zo niet, dan kun je de feedback gebruiken om het volgende ronde beter te doen.  &lt;br/&gt;&lt;br/&gt;De volgende beurt keren jullie de rollen om. 1 ronde bestaat uit 23 beurten. Veel succes!&lt;br/&gt;&lt;br/&gt;"/>
+        <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Nu verdelen we jullie in paren. In deze ronde zul je het spel spelen met een andere proefpersoon.&lt;br/&gt;&lt;br/&gt;In elke beurt krijgt een van de spelers één scène te zien, de ander speler krijgt acht scènes te zien. De speler met één scène bedenkt een beschrijving voor die scène en toont die beschrijving aan de andere speler. De ander speler moet dan raden om welk van de acht scènes op zijn/haar scherm het gaat.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om een beschrijving te bedenken is het doel ervoor te zorgen dat je medespeler je zo goed mogelijk begrijpt zodat die het juiste scène uit de reeks scènes zal kiezen. Je mag beschrijvingen gebruiken die je in een eerdere ronde hebt geleerd of je mag een nieuwe beschrijving bedenken. Dit is geen geheugen test, dus als je denkt dat je een beter beschrijving weet schroom dan niet om die te gebruiken. Als je het niet goed weet, probeer dan een beschrijving te bedenken met de kennis die je tot dan toe hebt opgedaan over de fantasietaal. Onthoud dat als je scènes benoemt, je enkel de zichtbare letters kunt gebruiken. Als je een beschrijving bedacht hebt, kun je op Enter drukken. &lt;br/&gt;&lt;br/&gt;De andere speler kan nu uit de acht scènes kiezen welke scène hij/zij denkt dat je bedoelt.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om te kiezen welke scène bedoeld wordt met de beschrijving, doe je dit door op een van de nummers (1-8) te drukken (kan zowel bovenaan als rechts) of op het juiste plaatje te klikken. &lt;br/&gt;&lt;br/&gt;Nadat er een scène gekozen is, krijg je een feedback scherm waarop 2 scènes komen te staan; de gekozen scène en de scène die het had moeten zijn. Als de gekozen scène correct was, krijg je een punt. Goed gedaan! Zo niet, dan kun je de feedback gebruiken om het volgende ronde beter te doen.  &lt;br/&gt;&lt;br/&gt;De volgende beurt keren jullie de rollen om. 1 ronde bestaat uit 23 beurten. Veel succes!&lt;br/&gt;&lt;br/&gt;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R1-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -1066,7 +1066,7 @@
                                 </conditionTrue>
                                 <conditionFalse>
                                     <stimulusLabel/>
-                                    <htmlText featureText="&amp;nbsp;"/>
+                                    <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                                     <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <addPadding/>
                                         <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
@@ -1077,7 +1077,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H">
                             <clearPage/>
@@ -1119,7 +1119,7 @@
                                 </conditionTrue>
                                 <conditionFalse>
                                     <stimulusLabel/>
-                                    <htmlText featureText="&amp;nbsp;"/>
+                                    <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                                     <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <addPadding/>
                                         <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
@@ -1130,7 +1130,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H">
                             <clearPage/>
@@ -1172,7 +1172,7 @@
                                 </conditionTrue>
                                 <conditionFalse>
                                     <stimulusLabel/>
-                                    <htmlText featureText="&amp;nbsp;"/>
+                                    <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                                     <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <addPadding/>
                                         <stimulusFreeText featureText="You can only use the letters 'wetuiopasfghknm'." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage="The key '&lt;keycode&gt;' is not allowed."/>
@@ -1183,7 +1183,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H">
                             <clearPage/>
@@ -1212,7 +1212,7 @@
     </presenter>
     <presenter displayOrder="18" menuLabel="R1-8" next="R2_8" type="stimulus" self="R1_8" title="R1-8">
         <centrePage/>
-        <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Nu verdelen we jullie in paren. In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;In elke beurt krijgt een van de spelers één scène te zien, de ander speler krijgt acht scènes te zien. De speler met één scène bedenkt een beschrijving voor die scène en toont die beschrijving aan de andere speler. De ander speler moet dan raden om welk van de acht scènes op zijn/haar scherm het gaat.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om een beschrijving te bedenken is het doel ervoor te zorgen dat je medespeler je zo goed mogelijk begrijpt zodat die het juiste scène uit de reeks scènes zal kiezen. Je mag beschrijvingen gebruiken die je in een eerdere ronde hebt geleerd of je mag een nieuwe beschrijving bedenken. Dit is geen geheugen test, dus als je denkt dat je een beter beschrijving weet schroom dan niet om die te gebruiken. Als je het niet goed weet, probeer dan een beschrijving te bedenken met de kennis die je tot dan toe hebt opgedaan over de fantasietaal. Onthoud dat als je scènes benoemt, je enkel de zichtbare letters kunt gebruiken. Als je een beschrijving bedacht hebt, kun je op Enter drukken. &lt;br/&gt;&lt;br/&gt;De andere speler kan nu uit de acht scènes kiezen welke scène hij/zij denkt dat je bedoelt.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om te kiezen welke scène bedoeld wordt met de beschrijving, doe je dit door op een van de nummers (1-8) te drukken (kan zowel bovenaan als rechts) of op het juiste plaatje te klikken. &lt;br/&gt;&lt;br/&gt;Nadat er een scène gekozen is, krijg je een feedback scherm waarop 2 scènes komen te staan; de gekozen scène en de scène die het had moeten zijn. Als de gekozen scène correct was, krijg je een punt. Goed gedaan! Zo niet, dan kun je de feedback gebruiken om het volgende ronde beter te doen.  &lt;br/&gt;&lt;br/&gt;De volgende beurt keren jullie de rollen om. 1 ronde bestaat uit 23 beurten. Veel succes!&lt;br/&gt;&lt;br/&gt;"/>
+        <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Nu verdelen we jullie in paren. In deze ronde zul je het spel spelen met een andere proefpersoon.&lt;br/&gt;&lt;br/&gt;In elke beurt krijgt een van de spelers één scène te zien, de ander speler krijgt acht scènes te zien. De speler met één scène bedenkt een beschrijving voor die scène en toont die beschrijving aan de andere speler. De ander speler moet dan raden om welk van de acht scènes op zijn/haar scherm het gaat.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om een beschrijving te bedenken is het doel ervoor te zorgen dat je medespeler je zo goed mogelijk begrijpt zodat die het juiste scène uit de reeks scènes zal kiezen. Je mag beschrijvingen gebruiken die je in een eerdere ronde hebt geleerd of je mag een nieuwe beschrijving bedenken. Dit is geen geheugen test, dus als je denkt dat je een beter beschrijving weet schroom dan niet om die te gebruiken. Als je het niet goed weet, probeer dan een beschrijving te bedenken met de kennis die je tot dan toe hebt opgedaan over de fantasietaal. Onthoud dat als je scènes benoemt, je enkel de zichtbare letters kunt gebruiken. Als je een beschrijving bedacht hebt, kun je op Enter drukken. &lt;br/&gt;&lt;br/&gt;De andere speler kan nu uit de acht scènes kiezen welke scène hij/zij denkt dat je bedoelt.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om te kiezen welke scène bedoeld wordt met de beschrijving, doe je dit door op een van de nummers (1-8) te drukken (kan zowel bovenaan als rechts) of op het juiste plaatje te klikken. &lt;br/&gt;&lt;br/&gt;Nadat er een scène gekozen is, krijg je een feedback scherm waarop 2 scènes komen te staan; de gekozen scène en de scène die het had moeten zijn. Als de gekozen scène correct was, krijg je een punt. Goed gedaan! Zo niet, dan kun je de feedback gebruiken om het volgende ronde beter te doen.  &lt;br/&gt;&lt;br/&gt;De volgende beurt keren jullie de rollen om. 1 ronde bestaat uit 23 beurten. Veel succes!&lt;br/&gt;&lt;br/&gt;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R1-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
@@ -2899,6 +2899,27 @@
             <tag>shape4</tag>
             <tag>version1</tag>
         </stimulus>
+        <stimulus code="moveRotated30" identifier="12.png:shape2:version1round2:quadrant1:moveRotated30" imagePath="12.png" pauseMs="0">
+            <tag>12</tag>
+            <tag>moveRotated30</tag>
+            <tag>quadrant1</tag>
+            <tag>shape2</tag>
+            <tag>version1round2</tag>
+        </stimulus>
+        <stimulus code="moveRotated180" identifier="24.png:shape4:version1round2:quadrant2:moveRotated180" imagePath="24.png" pauseMs="0">
+            <tag>24</tag>
+            <tag>moveRotated180</tag>
+            <tag>quadrant2</tag>
+            <tag>shape4</tag>
+            <tag>version1round2</tag>
+        </stimulus>
+        <stimulus code="moveRotated360" identifier="23.png:shape4:version1round2:quadrant4:moveRotated360" imagePath="23.png" pauseMs="0">
+            <tag>23</tag>
+            <tag>moveRotated360</tag>
+            <tag>quadrant4</tag>
+            <tag>shape4</tag>
+            <tag>version1round2</tag>
+        </stimulus>
         <stimulus code="moveRotated30" identifier="12.png:shape2:version1:version1round2:version1round3:version1round4:version1round5:quadrant1:moveRotated30" imagePath="12.png" pauseMs="0">
             <tag>12</tag>
             <tag>moveRotated30</tag>
@@ -2964,6 +2985,30 @@
             <tag>version1round4</tag>
             <tag>version1round5</tag>
         </stimulus>
+        <stimulus code="moveRotated90" identifier="3.png:shape1:version1:version1round3:quadrant1:moveRotated90" imagePath="3.png" pauseMs="0">
+            <tag>3</tag>
+            <tag>moveRotated90</tag>
+            <tag>quadrant1</tag>
+            <tag>shape1</tag>
+            <tag>version1</tag>
+            <tag>version1round3</tag>
+        </stimulus>
+        <stimulus code="moveRotated330" identifier="11.png:shape2:version1:version1round3:quadrant4:moveRotated330" imagePath="11.png" pauseMs="0">
+            <tag>11</tag>
+            <tag>moveRotated330</tag>
+            <tag>quadrant4</tag>
+            <tag>shape2</tag>
+            <tag>version1</tag>
+            <tag>version1round3</tag>
+        </stimulus>
+        <stimulus code="moveRotated240" identifier="20.png:shape3:version1:version1round3:quadrant3:moveRotated240" imagePath="20.png" pauseMs="0">
+            <tag>20</tag>
+            <tag>moveRotated240</tag>
+            <tag>quadrant3</tag>
+            <tag>shape3</tag>
+            <tag>version1</tag>
+            <tag>version1round3</tag>
+        </stimulus>
         <stimulus code="moveRotated120" identifier="14.png:shape2:version1:version1round4:version1round5:quadrant2:moveRotated120" imagePath="14.png" pauseMs="0">
             <tag>14</tag>
             <tag>moveRotated120</tag>
@@ -2990,6 +3035,32 @@
             <tag>version1</tag>
             <tag>version1round4</tag>
             <tag>version1round5</tag>
+            <tag>version5</tag>
+            <tag>version5zero</tag>
+        </stimulus>
+        <stimulus code="moveRotated120" identifier="14.png:shape2:version1:version1round4:quadrant2:moveRotated120" imagePath="14.png" pauseMs="0">
+            <tag>14</tag>
+            <tag>moveRotated120</tag>
+            <tag>quadrant2</tag>
+            <tag>shape2</tag>
+            <tag>version1</tag>
+            <tag>version1round4</tag>
+        </stimulus>
+        <stimulus code="moveRotated360" identifier="21.png:shape3:version1:version1round4:quadrant4:moveRotated360" imagePath="21.png" pauseMs="0">
+            <tag>21</tag>
+            <tag>moveRotated360</tag>
+            <tag>quadrant4</tag>
+            <tag>shape3</tag>
+            <tag>version1</tag>
+            <tag>version1round4</tag>
+        </stimulus>
+        <stimulus code="moveRotated330" identifier="4.png:shape1:version1:version1round4:version5:version5zero:quadrant4:moveRotated330" imagePath="4.png" pauseMs="0">
+            <tag>4</tag>
+            <tag>moveRotated330</tag>
+            <tag>quadrant4</tag>
+            <tag>shape1</tag>
+            <tag>version1</tag>
+            <tag>version1round4</tag>
             <tag>version5</tag>
             <tag>version5zero</tag>
         </stimulus>
