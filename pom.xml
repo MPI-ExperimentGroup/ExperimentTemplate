@@ -173,7 +173,9 @@
                 <enabled>true</enabled>
             </releases>
         </pluginRepository>
-        <pluginRepository>
+    </pluginRepositories>
+    <repositories>
+        <repository>
             <id>KinOathKinshipArchiver</id>
             <name>KinOathKinshipArchiver Repository</name>
             <url>https://kinshipsoftware.github.io/KinOathKinshipArchiver/</url>
@@ -183,6 +185,6 @@
             <releases>
                 <enabled>true</enabled>
             </releases>
-        </pluginRepository>
-    </pluginRepositories>
+        </repository>
+    </repositories>
 </project>
