@@ -416,17 +416,19 @@ public class StimulusProvider implements StimuliProvider {
     @Deprecated // todo: perhaps this would be better done in the respective presenters
 //    @Override
     public List<Stimulus> getPictureList(GroupParticipantService groupParticipantService, int maxStimuli) {
-        final HashSet<Stimulus> uniqueList = new HashSet<>();
-        uniqueList.add(getCurrentStimulus());
+        final HashMap<String, Stimulus> uniqueList = new HashMap<>();
+        uniqueList.put(getCurrentStimulus().getImage(), getCurrentStimulus());
         ArrayList<Stimulus> stimulusListCopy = new ArrayList<>(stimulusSubsetArray);
         while (!stimulusListCopy.isEmpty() && uniqueList.size() < maxStimuli) {
             final int nextIndex = new Random().nextInt(stimulusListCopy.size());
             Stimulus stimulus = stimulusListCopy.remove(nextIndex);
             if (stimulus.getImage() != null && !stimulus.getImage().isEmpty()) {
-                uniqueList.add(stimulus);
+                if (!uniqueList.containsKey(stimulus.getImage())) {
+                    uniqueList.put(stimulus.getImage(), stimulus);
+                }
             }
         }
-        final ArrayList<Stimulus> inputList = new ArrayList<>(uniqueList);
+        final ArrayList<Stimulus> inputList = new ArrayList<>(uniqueList.values());
         final ArrayList<Stimulus> returnList = new ArrayList<>();
         String groupResponseOptions = null;
         while (!inputList.isEmpty()) {
