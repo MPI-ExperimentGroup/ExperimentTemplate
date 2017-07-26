@@ -86,6 +86,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 }
                             }
                         }
+                        var selectinput = iframes[frameIndex].contentWindow.document.getElementsByTagName('select');
+                        for (var inputIndex = 0; inputIndex < selectinput.length; inputIndex++) {
+                            if (selectinput[inputIndex].className.indexOf("metadataError") !== -1) {
+                                selectinput[inputIndex].selectedIndex = (Math.floor((Math.random() * selectinput[inputIndex].options.length)));
+                            }
+                        }
                         var buttons = iframes[frameIndex].contentWindow.document.getElementsByTagName('button');
                         if (buttons.length > 0) {
                             var randomIndex = Math.floor((Math.random() * buttons.length));
