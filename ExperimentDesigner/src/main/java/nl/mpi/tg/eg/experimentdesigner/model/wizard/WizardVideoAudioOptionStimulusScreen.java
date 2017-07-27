@@ -90,6 +90,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
 //        this.stimulusResponseOptions = responseOptions;
         setRandomiseStimuli(randomiseStimuli);
         setShowProgress(true);
+        setShowRatingAfterStimuliResponse(false);
         setShowHurryIndicator(showHurryIndicator);
         setAllowFreeText(false, null, null, null, null, null);
         setRepeatIncorrect(false);
@@ -117,6 +118,14 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
 
     final public void setRepeatIncorrect(boolean showHurryIndicator) {
         this.wizardScreenData.setScreenBoolean(6, showHurryIndicator);
+    }
+
+    final public void setShowRatingAfterStimuliResponse(boolean showRatingAfterStimuliResponse) {
+        this.wizardScreenData.setScreenBoolean(7, showRatingAfterStimuliResponse);
+    }
+
+    private boolean isShowRatingAfterStimuliResponse(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenBoolean(7);
     }
 
     final public void setAllowFreeText(boolean allowFreeText, String nextStimulusButton,
@@ -195,7 +204,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenBooleanInfo(int index) {
-        return new String[]{"Use Code Video", "Use Code Audio", "Randomise Stimuli", "Show Progress", "Show Hurry Indicator", "Allow Free Text", "Repeat Incorrect"}[index];
+        return new String[]{"Use Code Video", "Use Code Audio", "Randomise Stimuli", "Show Progress", "Show Hurry Indicator", "Allow Free Text", "Repeat Incorrect", "ShowRatingAfterStimuliResponse"}[index];
     }
 
     @Override
@@ -328,15 +337,27 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         presenterFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
 
 //        if (stimulusResponseOptions != null) {
-        final PresenterFeature ratingFooterButtonFeature = new PresenterFeature(FeatureType.stimulusRatingButton, null);
+        final PresenterFeature stimulusRatingButton = new PresenterFeature(FeatureType.stimulusRatingButton, null);
 //            ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabels, stimulusResponseOptions);
-        ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelLeft, storedWizardScreenData.getStimulusResponseLabelLeft());
-        ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelRight, storedWizardScreenData.getStimulusResponseLabelRight());
-        ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
+        stimulusRatingButton.addFeatureAttributes(FeatureAttribute.ratingLabelLeft, storedWizardScreenData.getStimulusResponseLabelLeft());
+        stimulusRatingButton.addFeatureAttributes(FeatureAttribute.ratingLabelRight, storedWizardScreenData.getStimulusResponseLabelRight());
+        stimulusRatingButton.addFeatureAttributes(FeatureAttribute.eventTier, "1");
         final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
         nextStimulusFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, (isRepeatIncorrect(storedWizardScreenData)) ? "true" : "false");
         nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "NextStimulus" + storedWizardScreenData.getScreenTitle());
-        ratingFooterButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
+        if (isShowRatingAfterStimuliResponse(storedWizardScreenData)) {
+            final PresenterFeature ratingFooterButtonFeature = new PresenterFeature(FeatureType.ratingButton, null);
+            ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabels, storedWizardScreenData.getStimulusResponseOptions());
+            ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelLeft, storedWizardScreenData.getStimulusResponseLabelLeft());
+            ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelRight, storedWizardScreenData.getStimulusResponseLabelRight());
+            ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
+            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
+            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "NextStimulus" + storedWizardScreenData.getScreenTitle());
+            ratingFooterButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
+            stimulusRatingButton.getPresenterFeatureList().add(ratingFooterButtonFeature);
+        } else {
+            stimulusRatingButton.getPresenterFeatureList().add(nextStimulusFeature);
+        }
         if (isAllowFreeText(storedWizardScreenData)) {
             final PresenterFeature stimulusHasRatingOptions = new PresenterFeature(FeatureType.stimulusHasRatingOptions, null);
             final PresenterFeature stimulusFreeText = new PresenterFeature(FeatureType.stimulusFreeText, getFreeTextValidationChallenge(storedWizardScreenData));
@@ -348,7 +369,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
 
             final PresenterFeature conditionTrue = new PresenterFeature(FeatureType.conditionTrue, null);
             final PresenterFeature conditionFalse = new PresenterFeature(FeatureType.conditionFalse, null);
-            conditionTrue.getPresenterFeatureList().add(ratingFooterButtonFeature);
+            conditionTrue.getPresenterFeatureList().add(stimulusRatingButton);
             conditionFalse.getPresenterFeatureList().add(stimulusFreeText);
             final PresenterFeature nextStimulusButton = new PresenterFeature(FeatureType.nextStimulusButton, getNextStimulusButton(storedWizardScreenData));
             conditionFalse.getPresenterFeatureList().add(nextStimulusButton);
@@ -359,7 +380,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
             stimulusHasRatingOptions.getPresenterFeatureList().add(conditionFalse);
             presenterFeature.getPresenterFeatureList().add(stimulusHasRatingOptions);
         } else {
-            presenterFeature.getPresenterFeatureList().add(ratingFooterButtonFeature);
+            presenterFeature.getPresenterFeatureList().add(stimulusRatingButton);
         }
 //        } else {
 //            final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionButton, buttonLabelEventTag);
