@@ -76,6 +76,7 @@ public class DefaultExperiments {
         experimentRepository.save(new HRExperiment01().getExperiment());
         experimentRepository.save(new HRPretest().getExperiment());
         experimentRepository.save(new HRPretest02().getExperiment());
+        experimentRepository.save(new HROnlinePretest().getExperiment());
         experimentRepository.save(new KinOathExample().getExperiment());
         experimentRepository.save(new RosselFieldKit().getExperiment());
         experimentRepository.save(new WellspringsSamoanFieldKit().getExperiment());
@@ -84,6 +85,7 @@ public class DefaultExperiments {
         experimentRepository.save(new ShortMultiparticipant01().getExperiment());
         experimentRepository.save(new ManipulatedContours().getExperiment());
         experimentRepository.save(new NonWacq().getExperiment());
+        experimentRepository.save(new SentencesRatingTask().getExperiment());
 
         for (Experiment experiment : experimentRepository.findAll()) {
             eventRepository.save(new PublishEvents(experiment, new Date(), new Date(), PublishEvents.PublishState.published, true, true, true));
