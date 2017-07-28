@@ -70,7 +70,7 @@
         <versionData/>
     </presenter>
     <stimuli>
-        <stimulus audioPath="termites_ບຸນບັ້ງໄຟ_0" identifier=":termites_ບຸນບັ້ງໄຟ_0.wav:rabbit,cow" pauseMs="0" ratingLabels="rabbit,coq">
+        <stimulus audioPath="termites_ບຸນບັ້ງໄຟ_0" identifier=":termites_ບຸນບັ້ງໄຟ_0.wav:rabbit,cow" pauseMs="0" ratingLabels="rabbit,cow">
             <tag></tag>
             <tag>Stimuli</tag>
         </stimulus>
