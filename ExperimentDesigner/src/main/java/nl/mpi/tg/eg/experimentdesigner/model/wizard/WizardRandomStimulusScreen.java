@@ -54,6 +54,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         super(WizardScreenEnum.WizardRandomStimulusScreen, screenName, screenName, screenName);
         this.setScreenTitle(screenName);
         this.wizardScreenData.setStimuliRandomTags(randomStimuliTags);
+        setRandomStimuliTagsField("");
         this.wizardScreenData.setStimulusCodeMatch(stimulusCodeMatch);
         this.wizardScreenData.setStimulusCodeMsDelay(0);
         setStimulusMsDelay(0);
@@ -191,7 +192,6 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
 //    final public void setInputErrorMessage(String inputErrorMessage) {
 //        this.wizardScreenData.setScreenText(0, inputErrorMessage);
 //    }
-
     private String getFreeTextValidationMessage(WizardScreenData storedWizardScreenData) {
         return storedWizardScreenData.getScreenText(1);
     }
@@ -206,6 +206,14 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
 
     final public void setFreeTextValidationRegex(String freeTextValidationRegex) {
         this.wizardScreenData.setScreenText(2, freeTextValidationRegex);
+    }
+
+    final public void setRandomStimuliTagsField(String fieldName) {
+        this.wizardScreenData.setScreenText(3, fieldName);
+    }
+
+    private String getRandomStimuliTagsField(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(3);
     }
 
     public void setStimulusFreeText(boolean stimulusFreeText, String freeTextValidationRegex, String freeTextValidationMessage) {
@@ -238,10 +246,14 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
             for (String randomTag : storedWizardScreenData.getStimuliRandomTags()) {
                 randomGrouping.addRandomTag(randomTag);
             }
-            final String metadataFieldname = "groupAllocation_" + storedWizardScreenData.getScreenTag();
+            String metadataFieldname = getRandomStimuliTagsField(storedWizardScreenData);
+            metadataFieldname = (metadataFieldname == null || metadataFieldname.isEmpty()) ? "groupAllocation_" + storedWizardScreenData.getScreenTag() : metadataFieldname;
             randomGrouping.setStorageField(metadataFieldname);
             loadStimuliFeature.setRandomGrouping(randomGrouping);
-            experiment.getMetadata().add(new Metadata(metadataFieldname, metadataFieldname, ".*", ".", false, null));
+            final Metadata metadataField = new Metadata(metadataFieldname, metadataFieldname, ".*", ".", false, null);
+            if (!experiment.getMetadata().contains(metadataField)) {
+                experiment.getMetadata().add(metadataField);
+            }
         }
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(isRandomiseStimuli(storedWizardScreenData)));
