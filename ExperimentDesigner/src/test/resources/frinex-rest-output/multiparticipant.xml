@@ -231,7 +231,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Nu verdelen we jullie in paren. In deze ronde zul je het spel spelen met een andere proefpersoon.&lt;br/&gt;&lt;br/&gt;In elke beurt krijgt een van de spelers één scène te zien, de ander speler krijgt acht scènes te zien. De speler met één scène bedenkt een beschrijving voor die scène en toont die beschrijving aan de andere speler. De ander speler moet dan raden om welk van de acht scènes op zijn/haar scherm het gaat.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om een beschrijving te bedenken is het doel ervoor te zorgen dat je medespeler je zo goed mogelijk begrijpt zodat die het juiste scène uit de reeks scènes zal kiezen. Je mag beschrijvingen gebruiken die je in een eerdere ronde hebt geleerd of je mag een nieuwe beschrijving bedenken. Dit is geen geheugen test, dus als je denkt dat je een beter beschrijving weet schroom dan niet om die te gebruiken. Als je het niet goed weet, probeer dan een beschrijving te bedenken met de kennis die je tot dan toe hebt opgedaan over de fantasietaal. Onthoud dat als je scènes benoemt, je enkel de zichtbare letters kunt gebruiken. Als je een beschrijving bedacht hebt, kun je op Enter drukken. &lt;br/&gt;&lt;br/&gt;De andere speler kan nu uit de acht scènes kiezen welke scène hij/zij denkt dat je bedoelt.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om te kiezen welke scène bedoeld wordt met de beschrijving, doe je dit door op een van de nummers (1-8) te drukken (kan zowel bovenaan als rechts) of op het juiste plaatje te klikken. &lt;br/&gt;&lt;br/&gt;Nadat er een scène gekozen is, krijg je een feedback scherm waarop 2 scènes komen te staan; de gekozen scène en de scène die het had moeten zijn. Als de gekozen scène correct was, krijg je een punt. Goed gedaan! Zo niet, dan kun je de feedback gebruiken om het volgende ronde beter te doen.  &lt;br/&gt;&lt;br/&gt;De volgende beurt keren jullie de rollen om. 1 ronde bestaat uit 23 beurten. Veel succes!&lt;br/&gt;&lt;br/&gt;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="R1-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R1-4" randomise="false" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|D,C">
                         <groupNetworkActivity groupRole="A,D:-:-:B,C:-:-">
@@ -343,7 +343,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="R2-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R2-4" randomise="false" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="C,A|D,B">
                         <groupNetworkActivity groupRole="C,D:-:-:A,B:-:-">
@@ -455,7 +455,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="R3-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R3-4" randomise="false" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="B,C|A,D">
                         <groupNetworkActivity groupRole="B,A:-:-:C,D:-:-">
@@ -567,7 +567,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="R4-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R4-4" randomise="false" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|D,C">
                         <groupNetworkActivity groupRole="A,D:-:-:B,C:-:-">
@@ -679,7 +679,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="R5-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R5-4" randomise="false" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="C,A|D,B">
                         <groupNetworkActivity groupRole="C,D:-:-:A,B:-:-">
@@ -1214,7 +1214,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Nu verdelen we jullie in paren. In deze ronde zul je het spel spelen met een andere proefpersoon.&lt;br/&gt;&lt;br/&gt;In elke beurt krijgt een van de spelers één scène te zien, de ander speler krijgt acht scènes te zien. De speler met één scène bedenkt een beschrijving voor die scène en toont die beschrijving aan de andere speler. De ander speler moet dan raden om welk van de acht scènes op zijn/haar scherm het gaat.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om een beschrijving te bedenken is het doel ervoor te zorgen dat je medespeler je zo goed mogelijk begrijpt zodat die het juiste scène uit de reeks scènes zal kiezen. Je mag beschrijvingen gebruiken die je in een eerdere ronde hebt geleerd of je mag een nieuwe beschrijving bedenken. Dit is geen geheugen test, dus als je denkt dat je een beter beschrijving weet schroom dan niet om die te gebruiken. Als je het niet goed weet, probeer dan een beschrijving te bedenken met de kennis die je tot dan toe hebt opgedaan over de fantasietaal. Onthoud dat als je scènes benoemt, je enkel de zichtbare letters kunt gebruiken. Als je een beschrijving bedacht hebt, kun je op Enter drukken. &lt;br/&gt;&lt;br/&gt;De andere speler kan nu uit de acht scènes kiezen welke scène hij/zij denkt dat je bedoelt.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om te kiezen welke scène bedoeld wordt met de beschrijving, doe je dit door op een van de nummers (1-8) te drukken (kan zowel bovenaan als rechts) of op het juiste plaatje te klikken. &lt;br/&gt;&lt;br/&gt;Nadat er een scène gekozen is, krijg je een feedback scherm waarop 2 scènes komen te staan; de gekozen scène en de scène die het had moeten zijn. Als de gekozen scène correct was, krijg je een punt. Goed gedaan! Zo niet, dan kun je de feedback gebruiken om het volgende ronde beter te doen.  &lt;br/&gt;&lt;br/&gt;De volgende beurt keren jullie de rollen om. 1 ronde bestaat uit 23 beurten. Veel succes!&lt;br/&gt;&lt;br/&gt;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="R1-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R1-8" randomise="false" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B|C,D|E,F|G,H">
                         <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
@@ -1326,7 +1326,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="R2-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R2-8" randomise="false" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="H,A|D,E|F,C|B,G">
                         <groupNetworkActivity groupRole="H,D,F,B:-:-:A,E,C,G:-:-">
@@ -1438,7 +1438,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="R3-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R3-8" randomise="false" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,D|G,F|E,B|C,H">
                         <groupNetworkActivity groupRole="A,G,E,C:-:-:D,F,B,H:-:-">
@@ -1550,7 +1550,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="R4-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R4-8" randomise="false" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="C,A|B,D|E,G|F,H">
                         <groupNetworkActivity groupRole="C,B,E,F:-:-:A,D,G,H:-:-">
@@ -1662,7 +1662,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="R5-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R5-8" randomise="false" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,E|D,H|B,F|G,C">
                         <groupNetworkActivity groupRole="A,D,B,G:-:-:E,H,F,C:-:-">
@@ -2899,26 +2899,30 @@
             <tag>shape4</tag>
             <tag>version1</tag>
         </stimulus>
-        <stimulus code="moveRotated30" identifier="12.png:shape2:version1round2:quadrant1:moveRotated30" imagePath="12.png" pauseMs="0">
+        <stimulus code="moveRotated30" identifier="12.png:shape2:version1round2:version1round3:quadrant1:moveRotated30" imagePath="12.png" pauseMs="0">
             <tag>12</tag>
             <tag>moveRotated30</tag>
             <tag>quadrant1</tag>
             <tag>shape2</tag>
             <tag>version1round2</tag>
+            <tag>version1round3</tag>
         </stimulus>
-        <stimulus code="moveRotated180" identifier="24.png:shape4:version1round2:quadrant2:moveRotated180" imagePath="24.png" pauseMs="0">
+        <stimulus code="moveRotated180" identifier="24.png:shape4:version1round2:version1round3:quadrant2:moveRotated180" imagePath="24.png" pauseMs="0">
             <tag>24</tag>
             <tag>moveRotated180</tag>
             <tag>quadrant2</tag>
             <tag>shape4</tag>
             <tag>version1round2</tag>
+            <tag>version1round3</tag>
         </stimulus>
-        <stimulus code="moveRotated360" identifier="23.png:shape4:version1round2:quadrant4:moveRotated360" imagePath="23.png" pauseMs="0">
+        <stimulus code="moveRotated360" identifier="23.png:shape4:version1round2:version1round3:extra:quadrant4:moveRotated360" imagePath="23.png" pauseMs="0">
             <tag>23</tag>
+            <tag>extra</tag>
             <tag>moveRotated360</tag>
             <tag>quadrant4</tag>
             <tag>shape4</tag>
             <tag>version1round2</tag>
+            <tag>version1round3</tag>
         </stimulus>
         <stimulus code="moveRotated30" identifier="12.png:shape2:version1:version1round2:version1round3:version1round4:version1round5:quadrant1:moveRotated30" imagePath="12.png" pauseMs="0">
             <tag>12</tag>
@@ -2985,28 +2989,25 @@
             <tag>version1round4</tag>
             <tag>version1round5</tag>
         </stimulus>
-        <stimulus code="moveRotated90" identifier="3.png:shape1:version1:version1round3:quadrant1:moveRotated90" imagePath="3.png" pauseMs="0">
+        <stimulus code="moveRotated90" identifier="3.png:shape1:version1round3:quadrant1:moveRotated90" imagePath="3.png" pauseMs="0">
             <tag>3</tag>
             <tag>moveRotated90</tag>
             <tag>quadrant1</tag>
             <tag>shape1</tag>
-            <tag>version1</tag>
             <tag>version1round3</tag>
         </stimulus>
-        <stimulus code="moveRotated330" identifier="11.png:shape2:version1:version1round3:quadrant4:moveRotated330" imagePath="11.png" pauseMs="0">
+        <stimulus code="moveRotated330" identifier="11.png:shape2:version1round3:quadrant4:moveRotated330" imagePath="11.png" pauseMs="0">
             <tag>11</tag>
             <tag>moveRotated330</tag>
             <tag>quadrant4</tag>
             <tag>shape2</tag>
-            <tag>version1</tag>
             <tag>version1round3</tag>
         </stimulus>
-        <stimulus code="moveRotated240" identifier="20.png:shape3:version1:version1round3:quadrant3:moveRotated240" imagePath="20.png" pauseMs="0">
+        <stimulus code="moveRotated240" identifier="20.png:shape3:version1round3:quadrant3:moveRotated240" imagePath="20.png" pauseMs="0">
             <tag>20</tag>
             <tag>moveRotated240</tag>
             <tag>quadrant3</tag>
             <tag>shape3</tag>
-            <tag>version1</tag>
             <tag>version1round3</tag>
         </stimulus>
         <stimulus code="moveRotated120" identifier="14.png:shape2:version1:version1round4:version1round5:quadrant2:moveRotated120" imagePath="14.png" pauseMs="0">
@@ -3038,31 +3039,45 @@
             <tag>version5</tag>
             <tag>version5zero</tag>
         </stimulus>
-        <stimulus code="moveRotated120" identifier="14.png:shape2:version1:version1round4:quadrant2:moveRotated120" imagePath="14.png" pauseMs="0">
+        <stimulus code="moveRotated120" identifier="14.png:shape2:version1round4:quadrant2:moveRotated120" imagePath="14.png" pauseMs="0">
             <tag>14</tag>
             <tag>moveRotated120</tag>
             <tag>quadrant2</tag>
             <tag>shape2</tag>
-            <tag>version1</tag>
             <tag>version1round4</tag>
         </stimulus>
-        <stimulus code="moveRotated360" identifier="21.png:shape3:version1:version1round4:quadrant4:moveRotated360" imagePath="21.png" pauseMs="0">
-            <tag>21</tag>
-            <tag>moveRotated360</tag>
-            <tag>quadrant4</tag>
-            <tag>shape3</tag>
-            <tag>version1</tag>
-            <tag>version1round4</tag>
-        </stimulus>
-        <stimulus code="moveRotated330" identifier="4.png:shape1:version1:version1round4:version5:version5zero:quadrant4:moveRotated330" imagePath="4.png" pauseMs="0">
+        <stimulus code="moveRotated330" identifier="4.png:shape1:version1round4:version5:version5zero:quadrant4:moveRotated330" imagePath="4.png" pauseMs="0">
             <tag>4</tag>
             <tag>moveRotated330</tag>
             <tag>quadrant4</tag>
             <tag>shape1</tag>
-            <tag>version1</tag>
             <tag>version1round4</tag>
             <tag>version5</tag>
             <tag>version5zero</tag>
+        </stimulus>
+        <stimulus code="moveRotated315" identifier="25.png:shape4:version1round5:quadrant4:moveRotated315" imagePath="25.png" pauseMs="0">
+            <tag>25</tag>
+            <tag>moveRotated315</tag>
+            <tag>quadrant4</tag>
+            <tag>shape4</tag>
+            <tag>version1round5</tag>
+        </stimulus>
+        <stimulus code="moveRotated45" identifier="16.png:shape3:version1round5:version4:version4zero:quadrant1:moveRotated45" imagePath="16.png" pauseMs="0">
+            <tag>16</tag>
+            <tag>moveRotated45</tag>
+            <tag>quadrant1</tag>
+            <tag>shape3</tag>
+            <tag>version1round5</tag>
+            <tag>version4</tag>
+            <tag>version4zero</tag>
+        </stimulus>
+        <stimulus code="moveRotated210" identifier="1.png:shape1:version1round5:version5:quadrant3:moveRotated210" imagePath="1.png" pauseMs="0">
+            <tag>1</tag>
+            <tag>moveRotated210</tag>
+            <tag>quadrant3</tag>
+            <tag>shape1</tag>
+            <tag>version1round5</tag>
+            <tag>version5</tag>
         </stimulus>
         <stimulus code="moveRotated315" identifier="25.png:shape4:version1:version1round5:quadrant4:moveRotated315" imagePath="25.png" pauseMs="0">
             <tag>25</tag>
@@ -3091,6 +3106,71 @@
             <tag>version1round5</tag>
             <tag>version5</tag>
         </stimulus>
+        <stimulus code="moveRotated135" identifier="7.png:shape1:version1round2:quadrant2:moveRotated135" imagePath="7.png" pauseMs="0">
+            <tag>7</tag>
+            <tag>moveRotated135</tag>
+            <tag>quadrant2</tag>
+            <tag>shape1</tag>
+            <tag>version1round2</tag>
+        </stimulus>
+        <stimulus code="moveRotated270" identifier="9.png:shape2:version1round2:quadrant3:moveRotated270" imagePath="9.png" pauseMs="0">
+            <tag>9</tag>
+            <tag>moveRotated270</tag>
+            <tag>quadrant3</tag>
+            <tag>shape2</tag>
+            <tag>version1round2</tag>
+        </stimulus>
+        <stimulus code="moveRotated150" identifier="10.png:shape2:version1round2:quadrant2:moveRotated150" imagePath="10.png" pauseMs="0">
+            <tag>10</tag>
+            <tag>moveRotated150</tag>
+            <tag>quadrant2</tag>
+            <tag>shape2</tag>
+            <tag>version1round2</tag>
+        </stimulus>
+        <stimulus code="moveRotated135" identifier="19.png:shape3:version1round2:quadrant2:moveRotated135" imagePath="19.png" pauseMs="0">
+            <tag>19</tag>
+            <tag>moveRotated135</tag>
+            <tag>quadrant2</tag>
+            <tag>shape3</tag>
+            <tag>version1round2</tag>
+        </stimulus>
+        <stimulus code="moveRotated150" identifier="10.png:shape2:version1round4:quadrant2:moveRotated150" imagePath="10.png" pauseMs="0">
+            <tag>10</tag>
+            <tag>moveRotated150</tag>
+            <tag>quadrant2</tag>
+            <tag>shape2</tag>
+            <tag>version1round4</tag>
+        </stimulus>
+        <stimulus code="moveRotated60" identifier="22.png:shape4:version1round2:quadrant1:moveRotated60" imagePath="22.png" pauseMs="0">
+            <tag>22</tag>
+            <tag>moveRotated60</tag>
+            <tag>quadrant1</tag>
+            <tag>shape4</tag>
+            <tag>version1round2</tag>
+        </stimulus>
+        <stimulus code="moveRotated225" identifier="28.png:shape4:version1round2:quadrant3:moveRotated225" imagePath="28.png" pauseMs="0">
+            <tag>28</tag>
+            <tag>moveRotated225</tag>
+            <tag>quadrant3</tag>
+            <tag>shape4</tag>
+            <tag>version1round2</tag>
+        </stimulus>
+        <stimulus code="moveRotated315" identifier="17.png:shape3:version1round2:version2:quadrant4:moveRotated315" imagePath="17.png" pauseMs="0">
+            <tag>17</tag>
+            <tag>moveRotated315</tag>
+            <tag>quadrant4</tag>
+            <tag>shape3</tag>
+            <tag>version1round2</tag>
+            <tag>version2</tag>
+        </stimulus>
+        <stimulus code="moveRotated30" identifier="5.png:shape1:version1round2:version6:quadrant1:moveRotated30" imagePath="5.png" pauseMs="0">
+            <tag>5</tag>
+            <tag>moveRotated30</tag>
+            <tag>quadrant1</tag>
+            <tag>shape1</tag>
+            <tag>version1round2</tag>
+            <tag>version6</tag>
+        </stimulus>
         <stimulus code="moveRotated135" identifier="7.png:shape1:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated135" imagePath="7.png" pauseMs="0">
             <tag>7</tag>
             <tag>moveRotated135</tag>
@@ -3103,17 +3183,12 @@
             <tag>version1round5</tag>
             <tag>version1zero</tag>
         </stimulus>
-        <stimulus code="moveRotated270" identifier="9.png:shape2:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant3:moveRotated270" imagePath="9.png" pauseMs="0">
+        <stimulus code="moveRotated270" identifier="9.png:shape2:version1round3:quadrant3:moveRotated270" imagePath="9.png" pauseMs="0">
             <tag>9</tag>
             <tag>moveRotated270</tag>
             <tag>quadrant3</tag>
             <tag>shape2</tag>
-            <tag>version1</tag>
-            <tag>version1round2</tag>
             <tag>version1round3</tag>
-            <tag>version1round4</tag>
-            <tag>version1round5</tag>
-            <tag>version1zero</tag>
         </stimulus>
         <stimulus code="moveRotated150" identifier="10.png:shape2:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated150" imagePath="10.png" pauseMs="0">
             <tag>10</tag>
@@ -3151,6 +3226,53 @@
             <tag>version1round5</tag>
             <tag>version1zero</tag>
         </stimulus>
+        <stimulus code="moveRotated60" identifier="22.png:shape4:version1round4:quadrant1:moveRotated60" imagePath="22.png" pauseMs="0">
+            <tag>22</tag>
+            <tag>moveRotated60</tag>
+            <tag>quadrant1</tag>
+            <tag>shape4</tag>
+            <tag>version1round4</tag>
+        </stimulus>
+        <stimulus code="moveRotated270" identifier="9.png:shape2:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant3:moveRotated270" imagePath="9.png" pauseMs="0">
+            <tag>9</tag>
+            <tag>moveRotated270</tag>
+            <tag>quadrant3</tag>
+            <tag>shape2</tag>
+            <tag>version1</tag>
+            <tag>version1round2</tag>
+            <tag>version1round3</tag>
+            <tag>version1round4</tag>
+            <tag>version1round5</tag>
+            <tag>version1zero</tag>
+        </stimulus>
+        <stimulus code="moveRotated360" identifier="23.png:shape4:version1round2:version1round3:quadrant4:moveRotated360" imagePath="23.png" pauseMs="0">
+            <tag>23</tag>
+            <tag>moveRotated360</tag>
+            <tag>quadrant4</tag>
+            <tag>shape4</tag>
+            <tag>version1round2</tag>
+            <tag>version1round3</tag>
+        </stimulus>
+        <stimulus code="moveRotated30" identifier="5.png:shape1:version1:version1zero:version1round2:version1round3:version1round4:version1round5:version6:quadrant1:moveRotated30" imagePath="5.png" pauseMs="0">
+            <tag>5</tag>
+            <tag>moveRotated30</tag>
+            <tag>quadrant1</tag>
+            <tag>shape1</tag>
+            <tag>version1</tag>
+            <tag>version1round2</tag>
+            <tag>version1round3</tag>
+            <tag>version1round4</tag>
+            <tag>version1round5</tag>
+            <tag>version1zero</tag>
+            <tag>version6</tag>
+        </stimulus>
+        <stimulus code="moveRotated135" identifier="7.png:shape1:version1round4:quadrant2:moveRotated135" imagePath="7.png" pauseMs="0">
+            <tag>7</tag>
+            <tag>moveRotated135</tag>
+            <tag>quadrant2</tag>
+            <tag>shape1</tag>
+            <tag>version1round4</tag>
+        </stimulus>
         <stimulus code="moveRotated225" identifier="28.png:shape4:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant3:moveRotated225" imagePath="28.png" pauseMs="0">
             <tag>28</tag>
             <tag>moveRotated225</tag>
@@ -3162,6 +3284,13 @@
             <tag>version1round4</tag>
             <tag>version1round5</tag>
             <tag>version1zero</tag>
+        </stimulus>
+        <stimulus code="moveRotated360" identifier="21.png:shape3:version1round4:quadrant4:moveRotated360" imagePath="21.png" pauseMs="0">
+            <tag>21</tag>
+            <tag>moveRotated360</tag>
+            <tag>quadrant4</tag>
+            <tag>shape3</tag>
+            <tag>version1round4</tag>
         </stimulus>
         <stimulus code="moveRotated315" identifier="17.png:shape3:version1:version1zero:version1round2:version1round3:version1round4:version1round5:version2:quadrant4:moveRotated315" imagePath="17.png" pauseMs="0">
             <tag>17</tag>
@@ -3176,18 +3305,12 @@
             <tag>version1zero</tag>
             <tag>version2</tag>
         </stimulus>
-        <stimulus code="moveRotated30" identifier="5.png:shape1:version1:version1zero:version1round2:version1round3:version1round4:version1round5:version6:quadrant1:moveRotated30" imagePath="5.png" pauseMs="0">
+        <stimulus code="moveRotated30" identifier="5.png:shape1:version1round3:quadrant1:moveRotated30" imagePath="5.png" pauseMs="0">
             <tag>5</tag>
             <tag>moveRotated30</tag>
             <tag>quadrant1</tag>
             <tag>shape1</tag>
-            <tag>version1</tag>
-            <tag>version1round2</tag>
             <tag>version1round3</tag>
-            <tag>version1round4</tag>
-            <tag>version1round5</tag>
-            <tag>version1zero</tag>
-            <tag>version6</tag>
         </stimulus>
     </stimuli>
 </experiment>
