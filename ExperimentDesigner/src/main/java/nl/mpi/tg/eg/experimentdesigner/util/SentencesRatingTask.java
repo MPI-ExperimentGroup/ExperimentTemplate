@@ -371,12 +371,44 @@ public class SentencesRatingTask {
         wizardData.addScreen(wizardTextScreen3);
         wizardData.addScreen(wizardEditUserScreen);
 
-        final WizardRandomStimulusScreen list1234Screen = new WizardRandomStimulusScreen("Stimulus", false, stimuliString,
+        WizardTextScreen objectStateChangeIntro = new WizardTextScreen("Informatie4", informationScreenText3,
+                "volgende [ spatiebalk ]"
+        );
+        WizardTextScreen actionFamiliarityIntro = new WizardTextScreen("Informatie5", informationScreenText3,
+                "volgende [ spatiebalk ]"
+        );
+        WizardTextScreen imageabilityOfActionIntro = new WizardTextScreen("Informatie6", informationScreenText3,
+                "volgende [ spatiebalk ]"
+        );
+        objectStateChangeIntro.setMenuLabel("Terug");
+        actionFamiliarityIntro.setMenuLabel("Terug");
+        imageabilityOfActionIntro.setMenuLabel("Terug");
+
+        wizardData.addScreen(objectStateChangeIntro);
+        wizardData.addScreen(actionFamiliarityIntro);
+        wizardData.addScreen(imageabilityOfActionIntro);
+
+        final WizardRandomStimulusScreen objectStateChange = new WizardRandomStimulusScreen("objectStateChange", false, stimuliString,
                 new String[]{"List1", "List2"}, 1000, true, null, 0, 0, null, null, null, null, "volgende [ spatiebalk ]");
-        list1234Screen.getWizardScreenData().setStimulusResponseOptions("1,2,3,4,5,6,7");
-        list1234Screen.getWizardScreenData().setStimulusResponseLabelLeft("helemaal niet plausibel");
-        list1234Screen.getWizardScreenData().setStimulusResponseLabelRight("heel erg plausibel");
-        wizardData.addScreen(list1234Screen);
+        objectStateChange.getWizardScreenData().setStimulusResponseOptions("1,2,3,4,5,6,7");
+        objectStateChange.getWizardScreenData().setStimulusResponseLabelLeft("1 = no change");
+        objectStateChange.getWizardScreenData().setStimulusResponseLabelRight("7 = substantial change");
+        objectStateChange.setRandomStimuliTagsField("set");
+        wizardData.addScreen(objectStateChange);
+        final WizardRandomStimulusScreen actionFamiliarity = new WizardRandomStimulusScreen("actionFamiliarity", false, stimuliString,
+                new String[]{"List1", "List2"}, 1000, true, null, 0, 0, null, null, null, null, "volgende [ spatiebalk ]");
+        actionFamiliarity.getWizardScreenData().setStimulusResponseOptions("1,2,3,4,5,6,7");
+        actionFamiliarity.getWizardScreenData().setStimulusResponseLabelLeft("1 = not familiar at all");
+        actionFamiliarity.getWizardScreenData().setStimulusResponseLabelRight("7 = very familiar");
+        actionFamiliarity.setRandomStimuliTagsField("set");
+        wizardData.addScreen(actionFamiliarity);
+        final WizardRandomStimulusScreen imageabilityOfAction = new WizardRandomStimulusScreen("imageabilityOfAction", false, stimuliString,
+                new String[]{"List1", "List2"}, 1000, true, null, 0, 0, null, null, null, null, "volgende [ spatiebalk ]");
+        imageabilityOfAction.getWizardScreenData().setStimulusResponseOptions("1,2,3,4,5,6,7");
+        imageabilityOfAction.getWizardScreenData().setStimulusResponseLabelLeft("1 = not imageable at all");
+        imageabilityOfAction.getWizardScreenData().setStimulusResponseLabelRight("7 = very imageable");
+        imageabilityOfAction.setRandomStimuliTagsField("set");
+        wizardData.addScreen(imageabilityOfAction);
 
         WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, true, true,
                 "Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop.",
@@ -387,16 +419,21 @@ public class SentencesRatingTask {
 
         wizardTextScreen1.setNextWizardScreen(wizardTextScreen2);
         wizardTextScreen2.setNextWizardScreen(wizardTextScreen3);
-        wizardTextScreen3.setNextWizardScreen(list1234Screen);
+        wizardTextScreen3.setNextWizardScreen(objectStateChangeIntro);
+        objectStateChangeIntro.setNextWizardScreen(objectStateChange);
+        objectStateChange.setNextWizardScreen(actionFamiliarityIntro);
+        actionFamiliarityIntro.setNextWizardScreen(actionFamiliarity);
+        actionFamiliarity.setNextWizardScreen(imageabilityOfActionIntro);
+        imageabilityOfActionIntro.setNextWizardScreen(imageabilityOfAction);
+        imageabilityOfAction.setNextWizardScreen(completionScreen);
         agreementScreen.setNextWizardScreen(wizardEditUserScreen);
         wizardEditUserScreen.setNextWizardScreen(wizardTextScreen1);
-        list1234Screen.setNextWizardScreen(completionScreen);
 
         wizardEditUserScreen.setBackWizardScreen(agreementScreen);
         wizardTextScreen3.setBackWizardScreen(wizardTextScreen3);
         wizardTextScreen2.setBackWizardScreen(wizardTextScreen2);
         wizardTextScreen1.setBackWizardScreen(wizardEditUserScreen);
-        list1234Screen.setBackWizardScreen(wizardTextScreen3);
+//        list1234Screen.setBackWizardScreen(wizardTextScreen3);
         //completionScreen.setBackWizardScreen(list1234Screen);
         final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("Over", false);
         wizardAboutScreen.setBackWizardScreen(wizardEditUserScreen);
