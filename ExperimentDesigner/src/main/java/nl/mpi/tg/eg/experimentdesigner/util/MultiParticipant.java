@@ -151,38 +151,52 @@ public class MultiParticipant {
         "2.png:shape1:version1:quadrant3:moveRotated270",
         "6.png:shape1:version1:quadrant4:moveRotated300",
         "27.png:shape4:version1:quadrant2:moveRotated120",
-        "12.png:shape2:version1round2:quadrant1:moveRotated30",
-        "24.png:shape4:version1round2:quadrant2:moveRotated180",
-        "23.png:shape4:version1round2:quadrant4:moveRotated360",
+        "12.png:shape2:version1round2:version1round3:quadrant1:moveRotated30",
+        "24.png:shape4:version1round2:version1round3:quadrant2:moveRotated180",
+        "23.png:shape4:version1round2:version1round3:extra:quadrant4:moveRotated360",
         "12.png:shape2:version1:version1round2:version1round3:version1round4:version1round5:quadrant1:moveRotated30",
         "24.png:shape4:version1:version1round2:version1round3:version1round4:version1round5:version4:quadrant2:moveRotated180",
         "23.png:shape4:version1:version1round2:version1round3:version1round4:version1round5:version5:quadrant4:moveRotated360",
         "3.png:shape1:version1:version1round3:version1round4:version1round5:quadrant1:moveRotated90",
         "11.png:shape2:version1:version1round3:version1round4:version1round5:quadrant4:moveRotated330",
         "20.png:shape3:version1:version1round3:version1round4:version1round5:quadrant3:moveRotated240",
-        "3.png:shape1:version1:version1round3:quadrant1:moveRotated90",
-        "11.png:shape2:version1:version1round3:quadrant4:moveRotated330",
-        "20.png:shape3:version1:version1round3:quadrant3:moveRotated240",
+        "3.png:shape1:version1round3:quadrant1:moveRotated90",
+        "11.png:shape2:version1round3:quadrant4:moveRotated330",
+        "20.png:shape3:version1round3:quadrant3:moveRotated240",
         "14.png:shape2:version1:version1round4:version1round5:quadrant2:moveRotated120",
         "21.png:shape3:version1:version1round4:version1round5:quadrant4:moveRotated360",
         "4.png:shape1:version1:version1round4:version1round5:version5:version5zero:quadrant4:moveRotated330",
-        "14.png:shape2:version1:version1round4:quadrant2:moveRotated120",
-        "21.png:shape3:version1:version1round4:quadrant4:moveRotated360",
-        "4.png:shape1:version1:version1round4:version5:version5zero:quadrant4:moveRotated330",
+        "14.png:shape2:version1round4:quadrant2:moveRotated120",
+        "4.png:shape1:version1round4:version5:version5zero:quadrant4:moveRotated330",
+        "25.png:shape4:version1round5:quadrant4:moveRotated315",
+        "16.png:shape3:version1round5:version4:version4zero:quadrant1:moveRotated45",
+        "1.png:shape1:version1round5:version5:quadrant3:moveRotated210",
         "25.png:shape4:version1:version1round5:quadrant4:moveRotated315",
         "16.png:shape3:version1:version1round5:version4:version4zero:quadrant1:moveRotated45",
         "1.png:shape1:version1:version1round5:version5:quadrant3:moveRotated210",
-        "25.png:shape4:version1:version1round5:quadrant4:moveRotated315",
-        "16.png:shape3:version1:version1round5:version4:version4zero:quadrant1:moveRotated45",
-        "1.png:shape1:version1:version1round5:version5:quadrant3:moveRotated210",
+        "7.png:shape1:version1round2:quadrant2:moveRotated135",
+        "9.png:shape2:version1round2:quadrant3:moveRotated270",
+        "10.png:shape2:version1round2:quadrant2:moveRotated150",
+        "19.png:shape3:version1round2:quadrant2:moveRotated135",
+        "10.png:shape2:version1round4:quadrant2:moveRotated150",
+        "22.png:shape4:version1round2:quadrant1:moveRotated60",
+        "28.png:shape4:version1round2:quadrant3:moveRotated225",
+        "17.png:shape3:version1round2:version2:quadrant4:moveRotated315",
+        "5.png:shape1:version1round2:version6:quadrant1:moveRotated30",
         "7.png:shape1:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated135",
-        "9.png:shape2:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant3:moveRotated270",
+        "9.png:shape2:version1round3:quadrant3:moveRotated270",
         "10.png:shape2:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated150",
         "19.png:shape3:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated135",
         "22.png:shape4:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant1:moveRotated60",
+        "22.png:shape4:version1round4:quadrant1:moveRotated60",
+        "9.png:shape2:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant3:moveRotated270",
+        "23.png:shape4:version1round2:version1round3:quadrant4:moveRotated360",
+        "5.png:shape1:version1:version1zero:version1round2:version1round3:version1round4:version1round5:version6:quadrant1:moveRotated30",
+        "7.png:shape1:version1round4:quadrant2:moveRotated135",
         "28.png:shape4:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant3:moveRotated225",
+        "21.png:shape3:version1round4:quadrant4:moveRotated360",
         "17.png:shape3:version1:version1zero:version1round2:version1round3:version1round4:version1round5:version2:quadrant4:moveRotated315",
-        "5.png:shape1:version1:version1zero:version1round2:version1round3:version1round4:version1round5:version6:quadrant1:moveRotated30"
+        "5.png:shape1:version1round3:quadrant1:moveRotated30"
     };
 
     // @todo: server shared variables to be used in animations and interactions concurrently displayed on multiple users devices 
@@ -235,17 +249,17 @@ public class MultiParticipant {
         wizardData.addScreen(menuScreen4or8Members);
 
         String[][] groupOfFourCommunicationChannels = new String[][]{
-            {"0", "A,B,C,D", "naming", "version1zero", ronde0NAMING, null},
-            {"0.1", "A,B,C,D", "naming", "version1zero", ronde0REPETITION1, null},
-            {"0.2", "A,B,C,D", "naming", "version1zero", ronde0REPETITION2, null},
-            {"1", "A,B|D,C", "play", "version1zero", ronde1, ronde1tm7ENDSCREEN},
-            {"2", "C,A|D,B", "play", "version1round2", ronde2tm7, ronde1tm7ENDSCREEN},
-            {"3", "B,C|A,D", "play", "version1round3", ronde2tm7, ronde1tm7ENDSCREEN},
-            {"4", "A,B|D,C", "play", "version1round4", ronde2tm7, ronde1tm7ENDSCREEN},
-            {"5", "C,A|D,B", "play", "version1round5", ronde2tm7, ronde1tm7ENDSCREEN},
-            {"6", "B,C|A,D", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN},
-            {"7", "A,B|D,C", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN},
-            {"8", "A|B|C|D", "test", "version1", ronde8test1, finalSCREEN}
+            {"0", "A,B,C,D", "naming", "version1zero", ronde0NAMING, null, RANDOMISE},
+            {"0.1", "A,B,C,D", "naming", "version1zero", ronde0REPETITION1, null, RANDOMISE},
+            {"0.2", "A,B,C,D", "naming", "version1zero", ronde0REPETITION2, null, RANDOMISE},
+            {"1", "A,B|D,C", "play", "version1zero", ronde1, ronde1tm7ENDSCREEN, SEQUENTIAL},
+            {"2", "C,A|D,B", "play", "version1round2", ronde2tm7, ronde1tm7ENDSCREEN, SEQUENTIAL},
+            {"3", "B,C|A,D", "play", "version1round3", ronde2tm7, ronde1tm7ENDSCREEN, SEQUENTIAL},
+            {"4", "A,B|D,C", "play", "version1round4", ronde2tm7, ronde1tm7ENDSCREEN, SEQUENTIAL},
+            {"5", "C,A|D,B", "play", "version1round5", ronde2tm7, ronde1tm7ENDSCREEN, SEQUENTIAL},
+            {"6", "B,C|A,D", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
+            {"7", "A,B|D,C", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
+            {"8", "A|B|C|D", "test", "version1", ronde8test1, finalSCREEN, RANDOMISE}
         };
         WizardMultiParticipantScreen roundOfFourScreenOuter = null;
         for (String[] currentChannel : groupOfFourCommunicationChannels) {
@@ -259,6 +273,7 @@ public class MultiParticipant {
             } else {
                 roundScreen = getPlayingRound("R" + currentChannel[0] + "-4", groupMembers4, currentChannel[1], currentChannel[4], currentChannel[5]);
             }
+            roundScreen.setRandomiseStimuli(currentChannel[6].equals(RANDOMISE));
             roundScreen.setStimuliSet(stimuliArray);
             roundScreen.getWizardScreenData().setStimuliRandomTags(new String[]{currentChannel[3]});
             roundScreen.setStimulusFreeText(true, "[wetuiopasfghknm ]{2,}", "You can only use the letters 'wetuiopasfghknm'.", "The key '<keycode>' is not allowed.");
@@ -276,25 +291,25 @@ public class MultiParticipant {
             roundOfFourScreenOuter.setNextWizardScreen(completionScreen);
         }
         String[][] groupOfEightCommunicationChannels = new String[][]{
-            {"0", "A,B,C,D,E,F,G,H", "naming", "version1zero", ronde0NAMING, null},
-            {"0.1", "A,B,C,D,E,F,G,H", "naming", "version1zero", ronde0REPETITION1, null},
-            {"0.2", "A,B,C,D,E,F,G,H", "naming", "version1zero", ronde0REPETITION2, null},
-            {"1", "A,B|C,D|E,F|G,H", "play", "version1zero", ronde1, ronde1tm7ENDSCREEN},
-            {"2", "H,A|D,E|F,C|B,G", "play", "version1round2", ronde2tm7, ronde1tm7ENDSCREEN},
-            {"3", "A,D|G,F|E,B|C,H", "play", "version1round3", ronde2tm7, ronde1tm7ENDSCREEN},
-            {"4", "C,A|B,D|E,G|F,H", "play", "version1round4", ronde2tm7, ronde1tm7ENDSCREEN},
-            {"5", "A,E|D,H|B,F|G,C", "play", "version1round5", ronde2tm7, ronde1tm7ENDSCREEN},
-            {"6", "F,A|G,D|C,B|H,E", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN},
-            {"7", "A,G|H,B|E,C|D,F", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN},
-            {"8", "A|B|C|D|E|F|G|H", "test", "version1", ronde2tm7, ronde1tm7ENDSCREEN},
-            {"9", "B,A|D,C|F,E|H,G", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN},
-            {"10", "A,H|E,D|C,F|G,B", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN},
-            {"11", "D,A|F,G|B,E|H,C", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN},
-            {"12", "A,C|D,B|G,E|H,F", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN},
-            {"13", "E,A|H,D|F,B|C,G", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN},
-            {"14", "A,F|D,G|B,C|E,H", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN},
-            {"15", "G,A|B,H|C,E|F,D", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN},
-            {"16", "A|B|C|D|E|F|G|H", "test", "version1", ronde8test1, finalSCREEN}
+            {"0", "A,B,C,D,E,F,G,H", "naming", "version1zero", ronde0NAMING, null, RANDOMISE},
+            {"0.1", "A,B,C,D,E,F,G,H", "naming", "version1zero", ronde0REPETITION1, null, RANDOMISE},
+            {"0.2", "A,B,C,D,E,F,G,H", "naming", "version1zero", ronde0REPETITION2, null, RANDOMISE},
+            {"1", "A,B|C,D|E,F|G,H", "play", "version1zero", ronde1, ronde1tm7ENDSCREEN, SEQUENTIAL},
+            {"2", "H,A|D,E|F,C|B,G", "play", "version1round2", ronde2tm7, ronde1tm7ENDSCREEN, SEQUENTIAL},
+            {"3", "A,D|G,F|E,B|C,H", "play", "version1round3", ronde2tm7, ronde1tm7ENDSCREEN, SEQUENTIAL},
+            {"4", "C,A|B,D|E,G|F,H", "play", "version1round4", ronde2tm7, ronde1tm7ENDSCREEN, SEQUENTIAL},
+            {"5", "A,E|D,H|B,F|G,C", "play", "version1round5", ronde2tm7, ronde1tm7ENDSCREEN, SEQUENTIAL},
+            {"6", "F,A|G,D|C,B|H,E", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
+            {"7", "A,G|H,B|E,C|D,F", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
+            {"8", "A|B|C|D|E|F|G|H", "test", "version1", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
+            {"9", "B,A|D,C|F,E|H,G", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
+            {"10", "A,H|E,D|C,F|G,B", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
+            {"11", "D,A|F,G|B,E|H,C", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
+            {"12", "A,C|D,B|G,E|H,F", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
+            {"13", "E,A|H,D|F,B|C,G", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
+            {"14", "A,F|D,G|B,C|E,H", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
+            {"15", "G,A|B,H|C,E|F,D", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
+            {"16", "A|B|C|D|E|F|G|H", "test", "version1", ronde8test1, finalSCREEN, RANDOMISE}
         };
         WizardMultiParticipantScreen roundOfEightScreenOuter = null;
         for (String[] currentChannel : groupOfEightCommunicationChannels) {
@@ -310,6 +325,7 @@ public class MultiParticipant {
             } else {
                 roundScreen = getPlayingRound("R" + currentChannel[0] + "-8", groupMembers8, currentChannel[1], currentChannel[4], currentChannel[5]);
             }
+            roundScreen.setRandomiseStimuli(currentChannel[6].equals(RANDOMISE));
             roundScreen.setStimuliSet(stimuliArray);
             roundScreen.getWizardScreenData().setStimuliRandomTags(new String[]{currentChannel[3]});
             roundScreen.setStimulusFreeText(true, "[wetuiopasfghknm ]{2,}", "You can only use the letters 'wetuiopasfghknm'.", "The key '<keycode>' is not allowed.");
@@ -339,6 +355,8 @@ public class MultiParticipant {
 
         return wizardData;
     }
+    private static final String SEQUENTIAL = "sequential";
+    private static final String RANDOMISE = "randomise";
 
     protected WizardMultiParticipantScreen getTestRound(final String screenName, final String groupMembers4, final String communicationChannels,
             final String textEntryPhaseRoles, final String groupRecordSubmitionPhaseRoles, final String preStimuliText, final String postStimuliText) {
