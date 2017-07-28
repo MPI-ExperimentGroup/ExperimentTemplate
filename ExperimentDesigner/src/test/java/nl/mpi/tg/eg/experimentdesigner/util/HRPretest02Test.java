@@ -43,6 +43,61 @@ public class HRPretest02Test {
     public HRPretest02Test() {
     }
 
+    public void testGetWizardData(Experiment experiment) throws IOException, JAXBException, URISyntaxException {
+        System.out.println("getWizardData: " + experiment.getAppNameInternal());
+        final String name = "/frinex-rest-output/" + experiment.getAppNameInternal() + ".xml";
+        System.out.println(name);
+        URI testXmlUri = this.getClass().getResource(name).toURI();
+        String expResult = new String(Files.readAllBytes(Paths.get(testXmlUri)), StandardCharsets.UTF_8);
+        experiment.getPresenterScreen().sort(new Comparator<PresenterScreen>() {
+            // because the experiment has not been stored and retrieved from the DB we need to sort this manually
+            @Override
+            public int compare(PresenterScreen o1, PresenterScreen o2) {
+                return Long.compare(o1.getDisplayOrder(), o2.getDisplayOrder());
+            }
+        });
+        JAXBContext jaxbContext = JAXBContext.newInstance(Experiment.class);
+        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+        StringWriter stringWriter = new StringWriter();
+//        jaxbMarshaller.marshal(result, System.out);
+        jaxbMarshaller.marshal(experiment, new File(new File(testXmlUri).getParentFile(), experiment.getAppNameInternal() + "-testoutput.xml"));
+        jaxbMarshaller.marshal(experiment, stringWriter);
+        assertEquals(expResult, stringWriter.toString());
+    }
+
+    /**
+     * Test of getWizardData method, of multiple wizard classes.
+     */
+    @Test
+    public void testAllGetWizardData() throws IOException, JAXBException, URISyntaxException {
+        System.out.println("testAllGetWizardData");
+//        final DefaultTranslations defaultTranslations = new DefaultTranslations(translationRepository);
+//        defaultTranslations.insertTranslations();
+//        testGetWizardData(new DobesAnnotator().getExperiment());
+        testGetWizardData(new JenaFieldKit().getExperiment());
+//        testGetWizardData(new TransmissionChain().getExperiment());
+        testGetWizardData(new ShawiFieldKit().getShawiExperiment());
+        testGetWizardData(new Sara01().getExperiment());
+        testGetWizardData(new FactOrFiction().getExperiment());
+//        testGetWizardData(defaultTranslations.applyTranslations(new SynQuiz2().getExperiment()));
+        testGetWizardData(new RdExperiment02().getExperiment());
+        testGetWizardData(new NblExperiment01().getExperiment());
+//        testGetWizardData(new HRExperiment01().getExperiment());
+        testGetWizardData(new HRPretest().getExperiment());
+        testGetWizardData(new HRPretest02().getExperiment());
+        testGetWizardData(new HROnlinePretest().getExperiment());
+//        testGetWizardData(new KinOathExample().getExperiment());
+        testGetWizardData(new RosselFieldKit().getExperiment());
+//        testGetWizardData(new WellspringsSamoanFieldKit().getExperiment());
+//        testGetWizardData(new Parcours().getExperiment());
+        testGetWizardData(new MultiParticipant().getExperiment());
+//        testGetWizardData(new ShortMultiparticipant01().getExperiment());
+//        testGetWizardData(new ManipulatedContours().getExperiment());
+        testGetWizardData(new NonWacq().getExperiment());
+        testGetWizardData(new SentencesRatingTask().getExperiment());
+    }
+
     /**
      * Test of getWizardData method, of class HRPretest.
      */
