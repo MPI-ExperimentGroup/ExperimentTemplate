@@ -122,7 +122,15 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
+        PresenterFeature presenterFeatureRow = new PresenterFeature(FeatureType.row, null);
+        hasMoreStimulusFeature.getPresenterFeatureList().add(presenterFeatureRow);
+        int columnCounter = 0;
         for (Metadata metadata : storedWizardScreenData.getMetadataFields()) {
+            if (columnCounter > 3) {
+                presenterFeatureRow = new PresenterFeature(FeatureType.row, null);
+                hasMoreStimulusFeature.getPresenterFeatureList().add(presenterFeatureRow);
+                columnCounter = 0;
+            }
             if (!experiment.getMetadata().contains(metadata)) {
                 experiment.getMetadata().add(metadata);
             }
@@ -132,10 +140,15 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
                 metadataField.addFeatureAttributes(FeatureAttribute.linkedFieldName, "workerId");
             }
             metadataField.addFeatureAttributes(FeatureAttribute.fieldName, metadata.getPostName());
-            hasMoreStimulusFeature.getPresenterFeatureList().add(metadataField);
+            final PresenterFeature presenterFeatureColumn = new PresenterFeature(FeatureType.column, null);
+            presenterFeatureRow.getPresenterFeatureList().add(presenterFeatureColumn);
+            presenterFeatureColumn.getPresenterFeatureList().add(metadataField);
+            columnCounter++;
         }
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
+        PresenterFeature stimulusFeatureRow = new PresenterFeature(FeatureType.row, null);
+        hasMoreStimulusFeature.getPresenterFeatureList().add(stimulusFeatureRow);
         final PresenterFeature contextFeature = new PresenterFeature(FeatureType.stimulusImage, null);
         contextFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
         contextFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
@@ -144,14 +157,18 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
         contextFeature.addFeatureAttributes(FeatureAttribute.matchingRegex, "metadata");
         contextFeature.addFeatureAttributes(FeatureAttribute.replacement, "context");
         contextFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
-        hasMoreStimulusFeature.getPresenterFeatureList().add(contextFeature);
+        final PresenterFeature contextFeatureColumn = new PresenterFeature(FeatureType.column, null);
+        stimulusFeatureRow.getPresenterFeatureList().add(contextFeatureColumn);
+        contextFeatureColumn.getPresenterFeatureList().add(contextFeature);
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
         imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
         imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
         imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "80");
         imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         imageFeature.addFeatureAttributes(FeatureAttribute.animate, "none");
-        hasMoreStimulusFeature.getPresenterFeatureList().add(imageFeature);
+        final PresenterFeature imageFeatureColumn = new PresenterFeature(FeatureType.column, null);
+        stimulusFeatureRow.getPresenterFeatureList().add(imageFeatureColumn);
+        imageFeatureColumn.getPresenterFeatureList().add(imageFeature);
 
         final PresenterFeature prevStimulusButton = new PresenterFeature(FeatureType.prevStimulusButton, "Previous");
         prevStimulusButton.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
