@@ -64,15 +64,24 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
             stimuliList.add(stimulus);
         }
         this.wizardScreenData.setStimuli(stimuliList);
+        setUseSdCard(true);
     }
 
-    @Override
-    public String getScreenTextInfo(int index) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    final public void setUseSdCard(boolean useSdCard) {
+        this.wizardScreenData.setScreenBoolean(0, useSdCard);
+    }
+
+    private boolean useSdCard(WizardScreenData wizardScreenData) {
+        return wizardScreenData.getScreenBoolean(0);
     }
 
     @Override
     public String getScreenBooleanInfo(int index) {
+        return new String[]{"SD Card Stimuli"}[index];
+    }
+
+    @Override
+    public String getScreenTextInfo(int index) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -102,7 +111,7 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
         if (storedWizardScreenData.getScreenText(0) != null) {
             storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
         }
-        final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadSdCardStimulus, null);
+        final PresenterFeature loadStimuliFeature = (useSdCard(storedWizardScreenData)) ? new PresenterFeature(FeatureType.loadSdCardStimulus, null) : new PresenterFeature(FeatureType.loadStimulus, null);
         loadStimuliFeature.addStimulusTag("metadata");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, "Metadata");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "false");
@@ -114,7 +123,9 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
         for (Metadata metadata : storedWizardScreenData.getMetadataFields()) {
-            experiment.getMetadata().add(metadata);
+            if (!experiment.getMetadata().contains(metadata)) {
+                experiment.getMetadata().add(metadata);
+            }
             // todo: this metadataFieldConnection use needs to be replaced with wizard parameters
             final PresenterFeature metadataField = new PresenterFeature(("connectionString".equals(metadata.getPostName())) ? FeatureType.metadataFieldConnection : FeatureType.stimulusMetadataField, null);
             if ("connectionString".equals(metadata.getPostName())) {
