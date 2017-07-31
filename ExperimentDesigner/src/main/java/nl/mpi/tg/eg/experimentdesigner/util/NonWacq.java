@@ -30,18 +30,36 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardStimuliJsonMetadataScr
  */
 public class NonWacq {
     private final WizardController wizardController = new WizardController();
-    private final String[] stimuliString = {};
+    private final String[] stimuliString = {
+        //        "UttAnnotApp-Logo.png",
+        //        "UttAnnotApp-Logo512.png", 
+        "d1e128.jpg",
+        "d1e140.jpg",
+        "d1e152.jpg",
+        "videotag2.png",
+        "videotag6.png",
+        "d1e131.jpg",
+        "d1e143.jpg",
+        "d1e155.jpg",
+        "videotag3.png",
+        "videotag7.png",
+        "d1e134.jpg",
+        "d1e146.jpg",
+        "videotag0.png",
+        "videotag4.png",
+        "videotag8.png",
+        "d1e137.jpg",
+        "d1e149.jpg",
+        "videotag1.png",
+        "videotag5.png",
+        "videotag9.png"
+    };
 
-    public WizardData getWizardData() {
-        WizardData wizardData = new WizardData();
-        wizardData.setAppName("NonWacq");
-        wizardData.setShowMenuBar(true);
-        wizardData.setTextFontSize(17);
-        wizardData.setObfuscateScreenNames(false);
-        final WizardStimuliJsonMetadataScreen jsonMetadataScreenrScreen = new WizardStimuliJsonMetadataScreen(new String[]{"TestOne", "TestTwo", "TestThree"});
-        jsonMetadataScreenrScreen.setScreenTitle("Gegevens");
+    private WizardStimuliJsonMetadataScreen getJsonMetadataScreenrScreen(final String screenName) {
+        final WizardStimuliJsonMetadataScreen jsonMetadataScreenrScreen = new WizardStimuliJsonMetadataScreen(stimuliString);
+        jsonMetadataScreenrScreen.setScreenTitle(screenName);
         jsonMetadataScreenrScreen.setMenuLabel("Terug");
-        jsonMetadataScreenrScreen.setScreenTag("Gegevens");
+        jsonMetadataScreenrScreen.setScreenTag(screenName);
         jsonMetadataScreenrScreen.setNextButton("Volgende");
         jsonMetadataScreenrScreen.getWizardScreenData().getMetadataFields();
 
@@ -60,6 +78,17 @@ public class NonWacq {
         jsonMetadataScreenrScreen.addStimuliMetadataField("LanguageLon", "LanguageLon");
         jsonMetadataScreenrScreen.addStimuliMetadataField("TimesPlayed", "TimesPlayed");
         jsonMetadataScreenrScreen.addStimuliMetadataField("TimesContextPlayed", "TimesContextPlayed");
+        return jsonMetadataScreenrScreen;
+    }
+
+    public WizardData getWizardData() {
+        WizardData wizardData = new WizardData();
+        wizardData.setAppName("NonWacq");
+        wizardData.setShowMenuBar(true);
+        wizardData.setTextFontSize(17);
+        wizardData.setObfuscateScreenNames(false);
+        final WizardStimuliJsonMetadataScreen jsonMetadataScreenrScreenSdCard = getJsonMetadataScreenrScreen("MetadataScreenrScreenSdCard");
+        final WizardStimuliJsonMetadataScreen jsonMetadataScreenrScreenSample = getJsonMetadataScreenrScreen("jsonMetadataScreenrScreenSample");
 
 //        wizardEditUserScreen.setSendData(true);
 //        wizardEditUserScreen.setOn_Error_Text("Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.");
@@ -79,8 +108,15 @@ public class NonWacq {
 //        wizardAboutScreen.setBackWizardScreen(wizardEditUserScreen);
 //        wizardEditUserScreen.setNextWizardScreen(wizardAboutScreen);
 //        wizardData.addScreen(wizardAboutScreen);
-        wizardData.addScreen(jsonMetadataScreenrScreen);
-        wizardData.addScreen(new WizardAboutScreen(true));
+        wizardData.addScreen(jsonMetadataScreenrScreenSample);
+        wizardData.addScreen(jsonMetadataScreenrScreenSdCard);
+        final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen(true);
+        wizardData.addScreen(wizardAboutScreen);
+        jsonMetadataScreenrScreenSdCard.setBackWizardScreen(wizardAboutScreen);
+        jsonMetadataScreenrScreenSample.setBackWizardScreen(wizardAboutScreen);
+        wizardAboutScreen.setBackWizardScreen(jsonMetadataScreenrScreenSample);
+        jsonMetadataScreenrScreenSdCard.setNextWizardScreen(jsonMetadataScreenrScreenSample);
+        jsonMetadataScreenrScreenSample.setNextWizardScreen(jsonMetadataScreenrScreenSdCard);
         return wizardData;
     }
 
