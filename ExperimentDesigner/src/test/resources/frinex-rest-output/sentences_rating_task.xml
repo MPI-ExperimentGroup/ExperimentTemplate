@@ -135,6 +135,8 @@
     </presenter>
     <presenter back="Information" displayOrder="13" menuLabel="About" type="debug" self="about" title="About">
         <versionData/>
+        <eraseLocalStorageButton/>
+        <localStorageData/>
     </presenter>
     <stimuli>
         <stimulus identifier="0/1SCa/List1:beat the cream" label="beat the cream" pauseMs="0">
