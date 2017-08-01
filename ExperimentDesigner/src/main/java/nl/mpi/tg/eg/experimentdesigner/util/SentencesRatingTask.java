@@ -444,7 +444,7 @@ public class SentencesRatingTask {
         wizardTextScreen1.setBackWizardScreen(wizardEditUserScreen);
 //        list1234Screen.setBackWizardScreen(wizardTextScreen3);
         //completionScreen.setBackWizardScreen(list1234Screen);
-        final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("About", false);
+        final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("About", true);
         wizardAboutScreen.setBackWizardScreen(wizardEditUserScreen);
         wizardData.addScreen(wizardAboutScreen);
         return wizardData;
