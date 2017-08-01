@@ -35,26 +35,34 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
 public class SentencesRatingTask {
 
     private final WizardController wizardController = new WizardController();
-    final String agreementScreenText = "Toestemmingsverklaring voor deelname aan het onderzoek:<br/>"
-            + "ONION rating survey<br/>"
-            + "Voordat je begint met dit experiment, dien je eerst te bevestigen dat je toestemt met deelname aan dit experiment. We zullen je antwoorden opslaan voor latere analyse. We gebruiken de resultaten alleen voor onderzoeksdoeleinden, en zullen ze beschrijven in gespecialiseerde tijschriften of wellicht in kranten of op onze website. Echter, we zullen de resultaten NOOIT rapporteren op zo'n manier dat je zou kunnen worden geïdentificeerd.<br/>"
+    final String agreementScreenText = "Declaration of Consent for Participation in Research: <br/>"
+            + "ONION rating survey <br/>"
+            + "Before you begin this experiment, please confirm that you give consent to participate in this experiment. We will save your responses for later analysis. We will only use the results for scientific purposes; we will report on them in specialized journals or perhaps in newspapers or on our website. However, your data will ALWAYS be treated anonymously. <br/> "
             + "<br/>"
-            + "Door akkoord te gaan, verklaar je dat je voldoende bent geïnformeerd over het onderzoek en dat je goed over deelname aan het onderzoek hebt na kunnen denken. Je bent tijdens dit experiment op elk moment vrij om je terug te trekken zonder uitleg te geven. Ook kun je je gegevens laten verwijderen tot het moment van publicatie, zonder uit te leggen waarom je dat doet.<br/>"
+            + "By giving your consent, you declare that you have been sufficiently informed about this study and that you participate of your own free will. You are free to withdraw from this experiment at any point in time without an explanation. You may also have your data removed from the database at any time prior to publication, withtout giving a reason. <br/> "
             + "<br/>"
-            + "Er zijn geen risico's bekend met het meedoen aan dit experiment.<br/>"
+            + "There are no known risks related to your participation in this experiment. <br/>"
             + "<br/>"
-            + "Als je ermee instemt om door te gaan met dit experiment, klik dan op 'Akkoord' om verder te gaan.<br/>"
-            + "Als je besluit niet deel te nemen aan het experiment, kun je de pagina sluiten of naar een andere website gaan.<br/>"
+            + "If you agree to take part in this experiment, click 'Agree' to continue. <br/>"
+            + "If you decide not to participate in the experiment, you can close the page or go to another website. <br/>"
             + "<br/>"
             + "";
-    final String informationScreenText1 = "In the following you will read short action phrases consisting of a verb and an object (e.g., drive a car). For each phrase we would like you to answer questions along three dimensions by using a 7-point scale. The dimensions include object state change,  action familiarity and imageability of the action.";
-    final String informationScreenText2 = "For object state change, you are asked to indicate to which degree the object is changed during the action (7 = substantial change; 1 = no change). For action familiarity, please indicate how familiar you are with the action (7 = very familiar; 1 = not familiar at all). For imageability of the action, tell us how well you can image the action ( 7 = very imageable; 1 = not imageable at all).";
-    final String informationScreenText3 = "Note that each dimension will be presented to you as a block and that the order of blocks may be different to the order of you just read. You will be reminded of the question you are supposed to answer";
-    final String completionScreenText1 = "Dit is het einde van het experiment.<br/>"
+    final String informationScreenText1 = "In the following you will read short action phrases consisting of a verb and an object (e.g., drive a car). For each phrase we would like you to answer questions along three dimensions by using a 7-point scale. The dimensions include object state change, action familiarity and imageability of the action. Detailed instructions about these dimensions will follow later.";
+    final String informationScreenText2 = "For object state change, you are asked to indicate to which degree the object is changed during the action (7 = substantial change; 1 = no change). That is, whether the object itself looks differently after the action compared to the way it looked before the action. For action familiarity, please indicate how familiar you are with the action (7 = very familiar; 1 = not familiar at all). For imageability of the action, rate how much the action phrase brings to mind a clear mental image of the situation ( 7 = very imageable; 1 = not imageable at all).";
+    final String informationScreenText3 = "Note that you will rate the action phrases on these dimensions in three different parts of the survey. At the beginning of each part, the instructions for your task during that part will be repeated.";
+
+    final String informationObjectStateChangeScreenText = "For object state change, you are asked to indicate to which degree the object is changed during the action (7 = substantial change; 1 = no change). That is, whether the object itself looks differently after the action compared to the way it looked before the action.";
+    final String objectStateChangeScreenTitle = "To which degree the object is changed?";
+    final String informationActionFamiliarityScreenText = "For action familiarity, please indicate how familiar you are with the action (7 = very familiar; 1 = not familiar at all). ";
+    final String actionFamiliarityScreenTitle = "Is this action familiar?";
+    final String informationImageabilityScreenText = "For imageability of the action, rate how much the action phrase brings to mind a clear mental image of the situation ( 7 = very imageable; 1 = not imageable at all).";
+    final String imageabilityScreenTitle = "Can you imagine the situation clearly?";
+
+    final String completionScreenText1 = "This is the end of the experiment. <br/>"
             + "<br/>"
-            + "Ter bevestiging van je deelname willen we je vragen om de volgende code te sturen naar Maarten.vandenHeuvel@mpi.nl. Pas na ontvangst van deze code, kun je worden uitbetaald.<br/>"
+            + "To confirm your participation, we would like to ask you to send the following code to Maarten.vandenHeuvel@mpi.nl. Only after receiving this code can you be paid. <br/>"
             + "<br/>"
-            + "Bedankt voor je deelname!";
+            + "Thank you for your participation!";
     private final String[] stimuliString = {
         "0/1SCa/List1:beat the cream",
         "1/2NSCb/List1:pick the butter",
@@ -143,8 +151,8 @@ public class SentencesRatingTask {
         "84/57SCa/List1:squeeze the lime",
         "85/58NSCb/List1:examine the lemon",
         "86/57Fa/List1:sew the cushion",
-        "87/59SCa/List1:wash plate",
-        "88/60NSCb/List1:offer bowl",
+        "87/59SCa/List1:wash a plate",
+        "88/60NSCb/List1:offer a bowl",
         "89/59Fa/List1:wear the socks",
         "90/61SCa/List1:break the vase",
         "91/62NSCb/List1:watch the clock",
@@ -275,8 +283,8 @@ public class SentencesRatingTask {
         "84/58NSCa/List2:examine the lime",
         "85/57SCb/List2:squeeze the lemon",
         "86/57Fb/List2:sew the skirt",
-        "87/60NSCa/List2:offer plate",
-        "88/59SCb/List2:wash bowl",
+        "87/60NSCa/List2:offer a plate",
+        "88/59SCb/List2:wash a bowl",
         "89/59Fb/List2:wear the tights",
         "90/62NSCa/List2:watch the vase",
         "91/61SCb/List2:break the clock",
@@ -330,37 +338,37 @@ public class SentencesRatingTask {
         wizardData.setShowMenuBar(true);
         wizardData.setTextFontSize(22);
         wizardData.setObfuscateScreenNames(false);
-        WizardTextScreen wizardTextScreen1 = new WizardTextScreen("Informatie1", informationScreenText1,
-                "volgende [ spatiebalk ]"
+        WizardTextScreen wizardTextScreen1 = new WizardTextScreen("Instruction1", informationScreenText1,
+                "next [ spacebar ]"
         );
-        WizardTextScreen wizardTextScreen2 = new WizardTextScreen("Informatie2", informationScreenText2,
-                "volgende [ spatiebalk ]"
+        WizardTextScreen wizardTextScreen2 = new WizardTextScreen("Instruction2", informationScreenText2,
+                "next [ spacebar ]"
         );
-        WizardTextScreen wizardTextScreen3 = new WizardTextScreen("Informatie3", informationScreenText3,
-                "volgende [ spatiebalk ]"
+        WizardTextScreen wizardTextScreen3 = new WizardTextScreen("Instruction3", informationScreenText3,
+                "next [ spacebar ]"
         );
-        wizardTextScreen1.setMenuLabel("Terug");
-        wizardTextScreen2.setMenuLabel("Terug");
-        wizardTextScreen3.setMenuLabel("Terug");
+        wizardTextScreen1.setMenuLabel("Back");
+        wizardTextScreen2.setMenuLabel("Back");
+        wizardTextScreen3.setMenuLabel("Back");
         //Information screen 
         //Agreement
-        WizardAgreementScreen agreementScreen = new WizardAgreementScreen("Toestemming", agreementScreenText, "Akkoord");
-        agreementScreen.setMenuLabel("Terug");
+        WizardAgreementScreen agreementScreen = new WizardAgreementScreen("Consent", agreementScreenText, "Agree");
+        agreementScreen.setMenuLabel("Back");
 //        wizardData.setAgreementText("agreementText");
 //        wizardData.setDisagreementScreenText("disagreementScreenText");
         //metadata
         final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
-        wizardEditUserScreen.setScreenTitle("Gegevens");
-        wizardEditUserScreen.setMenuLabel("Terug");
-        wizardEditUserScreen.setScreenTag("Gegevens");
-        wizardEditUserScreen.setNextButton("Volgende");
+        wizardEditUserScreen.setScreenTitle("Information");
+        wizardEditUserScreen.setMenuLabel("Back");
+        wizardEditUserScreen.setScreenTag("Information");
+        wizardEditUserScreen.setNextButton("Next");
         wizardEditUserScreen.setSendData(true);
         wizardEditUserScreen.setOn_Error_Text("Could not contact the server, please check your internet connection and try again.");
 //        wizardEditUserScreen.setMetadataScreen(true);
 //        wizardData.setAgeField(true);
         wizardEditUserScreen.setCustomFields(new String[]{
-            "age:Leeftijd:[0-9]+:Voer een getal.",
-            "gender:Geslacht:|man|vrouw|anders:.",
+            "age:Age:[0-9]+:Enter a number.",
+            "gender:Gender:|male|female|other:.",
             "language:What is your native language?:.'{'3,'}':Please enter at least three letters.",
             "languageOthers:Which other languages do you speak?:.'{'3,'}':Please enter at least three letters.",
             "nationality:What is your nationality?:.'{'3,'}':Please enter at least three letters."
@@ -372,39 +380,39 @@ public class SentencesRatingTask {
         wizardData.addScreen(wizardTextScreen3);
         wizardData.addScreen(wizardEditUserScreen);
 
-        WizardTextScreen objectStateChangeIntro = new WizardTextScreen("Informatie4", informationScreenText3,
-                "volgende [ spatiebalk ]"
+        WizardTextScreen objectStateChangeIntro = new WizardTextScreen("Instruction4", informationObjectStateChangeScreenText,
+                "next [ spacebar ]"
         );
-        WizardTextScreen actionFamiliarityIntro = new WizardTextScreen("Informatie5", informationScreenText3,
-                "volgende [ spatiebalk ]"
+        WizardTextScreen actionFamiliarityIntro = new WizardTextScreen("Instruction5", informationActionFamiliarityScreenText,
+                "next [ spacebar ]"
         );
-        WizardTextScreen imageabilityOfActionIntro = new WizardTextScreen("Informatie6", informationScreenText3,
-                "volgende [ spatiebalk ]"
+        WizardTextScreen imageabilityOfActionIntro = new WizardTextScreen("Instruction6", informationImageabilityScreenText,
+                "next [ spacebar ]"
         );
-        objectStateChangeIntro.setMenuLabel("Terug");
-        actionFamiliarityIntro.setMenuLabel("Terug");
-        imageabilityOfActionIntro.setMenuLabel("Terug");
+        objectStateChangeIntro.setMenuLabel("Back");
+        actionFamiliarityIntro.setMenuLabel("Back");
+        imageabilityOfActionIntro.setMenuLabel("Back");
 
         wizardData.addScreen(objectStateChangeIntro);
         wizardData.addScreen(actionFamiliarityIntro);
         wizardData.addScreen(imageabilityOfActionIntro);
 
-        final WizardRandomStimulusScreen objectStateChange = new WizardRandomStimulusScreen("objectStateChange", false, stimuliString,
-                new String[]{"List1", "List2"}, 1000, true, null, 0, 0, null, null, null, null, "volgende [ spatiebalk ]");
+        final WizardRandomStimulusScreen objectStateChange = new WizardRandomStimulusScreen(objectStateChangeScreenTitle, false, stimuliString,
+                new String[]{"List1", "List2"}, 1000, true, null, 0, 0, null, null, null, null, "next [ spacebar ]");
         objectStateChange.getWizardScreenData().setStimulusResponseOptions("1,2,3,4,5,6,7");
         objectStateChange.getWizardScreenData().setStimulusResponseLabelLeft("1 = no change");
         objectStateChange.getWizardScreenData().setStimulusResponseLabelRight("7 = substantial change");
         objectStateChange.setRandomStimuliTagsField("set");
         wizardData.addScreen(objectStateChange);
-        final WizardRandomStimulusScreen actionFamiliarity = new WizardRandomStimulusScreen("actionFamiliarity", false, stimuliString,
-                new String[]{"List1", "List2"}, 1000, true, null, 0, 0, null, null, null, null, "volgende [ spatiebalk ]");
+        final WizardRandomStimulusScreen actionFamiliarity = new WizardRandomStimulusScreen(actionFamiliarityScreenTitle, false, stimuliString,
+                new String[]{"List1", "List2"}, 1000, true, null, 0, 0, null, null, null, null, "next [ spacebar ]");
         actionFamiliarity.getWizardScreenData().setStimulusResponseOptions("1,2,3,4,5,6,7");
         actionFamiliarity.getWizardScreenData().setStimulusResponseLabelLeft("1 = not familiar at all");
         actionFamiliarity.getWizardScreenData().setStimulusResponseLabelRight("7 = very familiar");
         actionFamiliarity.setRandomStimuliTagsField("set");
         wizardData.addScreen(actionFamiliarity);
-        final WizardRandomStimulusScreen imageabilityOfAction = new WizardRandomStimulusScreen("imageabilityOfAction", false, stimuliString,
-                new String[]{"List1", "List2"}, 1000, true, null, 0, 0, null, null, null, null, "volgende [ spatiebalk ]");
+        final WizardRandomStimulusScreen imageabilityOfAction = new WizardRandomStimulusScreen(imageabilityScreenTitle, false, stimuliString,
+                new String[]{"List1", "List2"}, 1000, true, null, 0, 0, null, null, null, null, "next [ spacebar ]");
         imageabilityOfAction.getWizardScreenData().setStimulusResponseOptions("1,2,3,4,5,6,7");
         imageabilityOfAction.getWizardScreenData().setStimulusResponseLabelLeft("1 = not imageable at all");
         imageabilityOfAction.getWizardScreenData().setStimulusResponseLabelRight("7 = very imageable");
@@ -412,8 +420,8 @@ public class SentencesRatingTask {
         wizardData.addScreen(imageabilityOfAction);
 
         WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, true, true,
-                "Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop.",
-                "Opnieuw beginnen",
+                "If anybody else on this device wants to participate in this research, please click on the button below.",
+                "Start over",
                 "Finished",
                 "Could not contact the server, please check your internet connection and try again.", "Retry");
         wizardData.addScreen(completionScreen);
@@ -436,7 +444,7 @@ public class SentencesRatingTask {
         wizardTextScreen1.setBackWizardScreen(wizardEditUserScreen);
 //        list1234Screen.setBackWizardScreen(wizardTextScreen3);
         //completionScreen.setBackWizardScreen(list1234Screen);
-        final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("Over", false);
+        final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("About", false);
         wizardAboutScreen.setBackWizardScreen(wizardEditUserScreen);
         wizardData.addScreen(wizardAboutScreen);
         return wizardData;
