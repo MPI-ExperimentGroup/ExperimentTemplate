@@ -30,6 +30,7 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.TextBoxBase;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
@@ -43,7 +44,7 @@ import nl.mpi.tg.eg.experiment.client.model.UserLabelData;
 public class MetadataView extends ComplexView {
 
     private FlexTable flexTable = null;
-    final private HashMap<MetadataField, FocusWidget> fieldBoxes;
+    final private HashMap<MetadataField, MetadataFieldWidget> fieldBoxes;
     final private HashMap<MetadataField, ListBox> fieldConnections;
     final private ArrayList<MetadataField> orderedFields;
     private FocusWidget firstTextBox = null;
@@ -67,78 +68,26 @@ public class MetadataView extends ComplexView {
             outerPanel.add(flexTable);
         }
         final int rowCount = flexTable.getRowCount();
-        final FocusWidget focusWidget;
-        if (metadataField.isDate()) {
-            final Label label = new Label(labelString);
-            flexTable.setWidget(rowCount, 0, label);
-//            final DateTimeFormat dateFormat = DateTimeFormat.getFormat("dd/MM/yyyy");
-//            final DateBox dateBox = new DateBox();
-//            dateBox.getDatePicker().setYearAndMonthDropdownVisible(true);
-//            dateBox.setFormat(new DateBox.DefaultFormat(dateFormat)); 
-            final DateOfBirthField dateOfBirthField = new DateOfBirthField();
-            focusWidget = dateOfBirthField.getTextBox();
-            if (existingValue != null) {
-                dateOfBirthField.setDate(existingValue);
-            }
-            flexTable.setWidget(rowCount + 1, 0, dateOfBirthField);
-        } else {
-            if (metadataField.isCheckBox()) {
-                flexTable.setWidget(rowCount, 0, new Label());
-                focusWidget = new CheckBox(labelString);
-                ((CheckBox) focusWidget).setValue((existingValue == null) ? false : Boolean.parseBoolean(existingValue));
-            } else if (metadataField.isListBox()) {
-                flexTable.setWidget(rowCount, 0, new Label(labelString));
-                focusWidget = new ListBox();
-                int selectedIndex = 0;
-                int itemCounter = 0;
-                ((ListBox) focusWidget).addItem(""); // make sure there is an empty item at the top of the list
-                for (String listItem : metadataField.getListValues()) {
-                    if (!listItem.isEmpty()) { // allow only one empty item in this list
-                        ((ListBox) focusWidget).addItem(listItem);
-                        itemCounter++;
-                    }
-                    if (existingValue != null && existingValue.equals(listItem)) {
-                        selectedIndex = itemCounter;
-                    }
+        final MetadataFieldWidget stimulusMetadataField = new MetadataFieldWidget(metadataField, existingValue);
+        if (otherUsersList != null) {
+            ListBox listBox = new ListBox();
+            int selectedIndex = 0;
+            int itemCounter = 0;
+            ((ListBox) listBox).addItem(""); // make sure there is an empty item at the top of the list
+            for (UserLabelData userLabelData : otherUsersList) {
+                listBox.addItem(userLabelData.getUserName(), userLabelData.getUserId().toString());
+                itemCounter++;
+                if (selectedUser != null && selectedUser.equals(userLabelData.getUserId())) {
+                    selectedIndex = itemCounter;
                 }
-                ((ListBox) focusWidget).setSelectedIndex(selectedIndex);
-            } else {
-                final Label label = new Label(labelString);
-                flexTable.setWidget(rowCount, 0, label);
-                if (metadataField.isMultiLine()) {
-                    focusWidget = new TextArea();
-                } else {
-                    focusWidget = new TextBox();
-                }
-                ((TextBoxBase) focusWidget).setText((existingValue == null) ? "" : existingValue);
-                ((TextBoxBase) focusWidget).addFocusHandler(new FocusHandler() {
-
-                    @Override
-                    public void onFocus(FocusEvent event) {
-                        addKeyboardPadding();
-//                scrollToPosition(label.getAbsoluteTop());
-                    }
-                });
             }
-            flexTable.setWidget(rowCount + 1, 0, focusWidget);
-            if (otherUsersList != null) {
-                ListBox listBox = new ListBox();
-                int selectedIndex = 0;
-                int itemCounter = 0;
-                ((ListBox) listBox).addItem(""); // make sure there is an empty item at the top of the list
-                for (UserLabelData userLabelData : otherUsersList) {
-                    listBox.addItem(userLabelData.getUserName(), userLabelData.getUserId().toString());
-                    itemCounter++;
-                    if (selectedUser != null && selectedUser.equals(userLabelData.getUserId())) {
-                        selectedIndex = itemCounter;
-                    }
-                }
-                listBox.setSelectedIndex(selectedIndex);
-                flexTable.setWidget(rowCount + 1, 1, listBox);
-                fieldConnections.put(metadataField, listBox);
-            }
+            listBox.setSelectedIndex(selectedIndex);
+            flexTable.setWidget(rowCount + 1, 1, listBox);
+            fieldConnections.put(metadataField, listBox);
         }
-        focusWidget.setStylePrimaryName("metadataOK");
+        flexTable.setWidget(rowCount, 0, stimulusMetadataField.getLabel());
+        flexTable.setWidget(rowCount + 1, 0, stimulusMetadataField.getFocusWidget());
+
 //        textBox.addBlurHandler(new BlurHandler() {
 //
 //            @Override
@@ -146,10 +95,10 @@ public class MetadataView extends ComplexView {
 //                removeKeyboardPadding();
 //            }
 //        });
-        fieldBoxes.put(metadataField, focusWidget);
+        fieldBoxes.put(metadataField, stimulusMetadataField);
         orderedFields.add(metadataField);
         if (firstTextBox == null) {
-            firstTextBox = focusWidget;
+            firstTextBox = stimulusMetadataField.getFocusWidget();
         }
     }
 
@@ -164,31 +113,11 @@ public class MetadataView extends ComplexView {
     }
 
     public void setFieldValue(MetadataField metadataField, String fieldValue) {
-        final FocusWidget focusWidget = fieldBoxes.get(metadataField);
-        if (focusWidget instanceof CheckBox) {
-            ((CheckBox) focusWidget).setValue(Boolean.valueOf(fieldValue));
-        } else if (focusWidget instanceof ListBox) {
-            for (int itemIndex = 0; itemIndex < ((ListBox) focusWidget).getItemCount(); itemIndex++) {
-                if (((ListBox) focusWidget).getValue(itemIndex).equals(fieldValue)) {
-                    ((ListBox) focusWidget).setSelectedIndex(itemIndex);
-                }
-            }
-        } else if (focusWidget instanceof TextBoxBase) {
-            ((TextBoxBase) focusWidget).setValue(fieldValue);
-        }
+        fieldBoxes.get(metadataField).setValue(fieldValue);
     }
 
     public String getFieldValue(MetadataField metadataField) {
-        final FocusWidget focusWidget = fieldBoxes.get(metadataField);
-        if (focusWidget instanceof CheckBox) {
-            return Boolean.toString(((CheckBox) focusWidget).getValue());
-        } else if (focusWidget instanceof ListBox) {
-            return ((ListBox) focusWidget).getSelectedValue();
-        } else if (focusWidget instanceof TextBoxBase) {
-            return ((TextBoxBase) focusWidget).getValue();
-        } else {
-            throw new UnsupportedOperationException("Unexpected type for: " + focusWidget.getClass());
-        }
+        return fieldBoxes.get(metadataField).getValue();
     }
 
     public UserId getFieldConnection(MetadataField metadataField) {
@@ -197,7 +126,7 @@ public class MetadataView extends ComplexView {
     }
 
     public void showFieldError(MetadataField metadataField) {
-        final FocusWidget focusWidget = fieldBoxes.get(metadataField);
+        final FocusWidget focusWidget = fieldBoxes.get(metadataField).getFocusWidget();
         focusWidget.setStylePrimaryName("metadataError");
         errorText.setText(metadataField.getControlledMessage());
         for (int rowCounter = 0; rowCounter < flexTable.getRowCount(); rowCounter++) {
@@ -226,7 +155,8 @@ public class MetadataView extends ComplexView {
     }
 
     public void clearErrors() {
-        for (FocusWidget focusWidget : fieldBoxes.values()) {
+        for (MetadataFieldWidget stimulusMetadataFields : fieldBoxes.values()) {
+            FocusWidget focusWidget = stimulusMetadataFields.getFocusWidget();
             focusWidget.setStylePrimaryName("metadataOK");
         }
         if (flexTable != null) {
