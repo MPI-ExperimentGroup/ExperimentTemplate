@@ -169,12 +169,15 @@ public class TimedStimulusView extends ComplexView {
         getActivePanel().add(htmlPanel);
     }
 
-    public StimulusFreeText addStimulusFreeText(final String validationRegex, final String keyCodeChallenge, final String validationChallenge, final String allowedCharCodes, final SingleShotEventListner enterKeyListner, final int hotKey, final String styleName) {
+    public StimulusFreeText addStimulusFreeText(final String postName, final String validationRegex, final String keyCodeChallenge, final String validationChallenge, final String allowedCharCodes, final SingleShotEventListner enterKeyListner, final int hotKey, final String styleName, final String textValue) {
         final Label errorLabel = new Label(validationChallenge);
         errorLabel.setStylePrimaryName("metadataErrorMessage");
         errorLabel.setVisible(false);
         outerPanel.add(errorLabel);
         final TextArea textBox = new TextArea();
+        if (textValue != null) {
+            textBox.setText(textValue);
+        }
         if (hotKey == KeyCodes.KEY_ENTER) {
             textBox.setVisibleLines(1);
             textBox.getElement().getStyle().setProperty("minHeight", "26px");
@@ -237,6 +240,11 @@ public class TimedStimulusView extends ComplexView {
                     textBox.setFocus(true);
                     return false;
                 }
+            }
+
+            @Override
+            public String getPostName() {
+                return postName;
             }
         };
 
