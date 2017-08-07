@@ -196,11 +196,29 @@ public class StimulusProvider implements StimuliProvider {
 //            System.out.println("attemptIndex: " + attemptIndex);
             boolean changeMade = false;
             for (int index = 0; index < stimulusSubsetArray.size(); index++) {
-                final String currentImage = stimulusSubsetArray.get(index).getImage();
+                final String currentImage;
+                if (stimulusSubsetArray.get(index).hasImage()) {
+                    currentImage = stimulusSubsetArray.get(index).getImage();
+                } else if (stimulusSubsetArray.get(index).hasAudio()) {
+                    currentImage = stimulusSubsetArray.get(index).getAudio();
+                } else if (stimulusSubsetArray.get(index).hasVideo()) {
+                    currentImage = stimulusSubsetArray.get(index).getVideo();
+                } else {
+                    currentImage = stimulusSubsetArray.get(index).getLabel();
+                }
                 boolean needsMoving = false;
                 for (int adjacencyIndex = 1; adjacencyIndex < adjacencyThreshold + 1; adjacencyIndex++) {
                     if (index + adjacencyIndex < stimulusSubsetArray.size()) {
-                        final String adjacentImage = stimulusSubsetArray.get(index + adjacencyIndex).getImage();
+                        final String adjacentImage;
+                        if (stimulusSubsetArray.get(index).hasImage()) {
+                            adjacentImage = stimulusSubsetArray.get(index + adjacencyIndex).getImage();
+                        } else if (stimulusSubsetArray.get(index).hasAudio()) {
+                            adjacentImage = stimulusSubsetArray.get(index + adjacencyIndex).getAudio();
+                        } else if (stimulusSubsetArray.get(index).hasVideo()) {
+                            adjacentImage = stimulusSubsetArray.get(index + adjacencyIndex).getVideo();
+                        } else {
+                            adjacentImage = stimulusSubsetArray.get(index + adjacencyIndex).getLabel();
+                        }
                         if (currentImage != null) {
                             needsMoving = currentImage.equals(adjacentImage);
                             if (needsMoving) {
@@ -217,7 +235,16 @@ public class StimulusProvider implements StimuliProvider {
                             if (adjacencyIndex + destinationindex >= 0) {
 //                                System.out.println("from " + index + " to " + destinationindex);
 //                                System.out.println("adjacencyIndex: " + adjacencyIndex);
-                                final String adjacentImage = stimulusSubsetArray.get(adjacencyIndex + destinationindex).getImage();
+                                final String adjacentImage;
+                                if (stimulusSubsetArray.get(index).hasImage()) {
+                                    adjacentImage = stimulusSubsetArray.get(adjacencyIndex + destinationindex).getImage();
+                                } else if (stimulusSubsetArray.get(index).hasAudio()) {
+                                    adjacentImage = stimulusSubsetArray.get(adjacencyIndex + destinationindex).getAudio();
+                                } else if (stimulusSubsetArray.get(index).hasVideo()) {
+                                    adjacentImage = stimulusSubsetArray.get(adjacencyIndex + destinationindex).getVideo();
+                                } else {
+                                    adjacentImage = stimulusSubsetArray.get(adjacencyIndex + destinationindex).getLabel();
+                                }
 //                            System.out.println("adjacentImage: " + adjacentImage);
                                 if (currentImage != null) {
                                     isSuitable = !currentImage.equals(adjacentImage);
