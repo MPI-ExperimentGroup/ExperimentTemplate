@@ -140,4 +140,9 @@ public class MetadataFieldWidget implements StimulusFreeText {
             return false;
         }
     }
+
+    @Override
+    public String getPostName() {
+        return metadataField.getPostName();
+    }
 }

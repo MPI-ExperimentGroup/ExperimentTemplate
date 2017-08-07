@@ -23,6 +23,8 @@ package nl.mpi.tg.eg.experiment.client.model;
  */
 public interface StimulusFreeText {
 
+    public String getPostName();
+
     public String getValue();
 
     public boolean isValid();

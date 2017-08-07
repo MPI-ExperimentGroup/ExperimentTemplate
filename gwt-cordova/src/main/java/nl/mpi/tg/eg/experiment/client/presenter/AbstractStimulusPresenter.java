@@ -63,6 +63,7 @@ import nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture;
 import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
 import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
+import nl.mpi.tg.eg.experiment.client.view.MetadataFieldWidget;
 import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
 
 /**
@@ -176,7 +177,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         showStimulus(null);
     }
 
-    protected void loadSdCardStimulus(final String eventTag, final List<Stimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+    protected void loadSdCardStimulus(final String eventTag, final List<Stimulus.Tag> selectionTags, final List<Stimulus.Tag> randomTags, final MetadataField stimulusAllocationField, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         final String subDirectory = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag());
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
         final String storedStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag() + subDirectory);
@@ -195,7 +196,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     endOfStimulusListener.postLoadTimerFired();
                 } else {
                     localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag(), "");
-                    loadSdCardStimulus(eventTag, selectionTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, endOfStimulusListener);
+                    loadSdCardStimulus(eventTag, selectionTags, randomTags, stimulusAllocationField, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, endOfStimulusListener);
                 }
             }
         };
@@ -230,13 +231,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                             public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
                                 // show the subdirectorydirectory[0], 
                                 localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag(), directory[0]);
-                                loadSdCardStimulus(directory[1], selectionTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, new TimedStimulusListener() {
+                                loadSdCardStimulus(directory[1], selectionTags, randomTags, stimulusAllocationField, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, new TimedStimulusListener() {
                                     @Override
                                     public void postLoadTimerFired() {
                                         localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "completed-directory-" + directory[0] + "-" + getSelfTag(), Boolean.toString(true));
                                         // go back to the initial directory 
                                         localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag(), "");
-                                        loadSdCardStimulus(eventTag, selectionTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, endOfStimulusListener);
+                                        loadSdCardStimulus(eventTag, selectionTags, randomTags, stimulusAllocationField, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, endOfStimulusListener);
                                     }
                                 });
                             }
@@ -534,6 +535,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                                 storedStimulusJSONObject = (storedStimulusJSONObject == null) ? new JSONObject() : storedStimulusJSONObject;
                                 storedStimulusJSONObject.put("groupMessage", new JSONString(groupParticipantService.getMessageString()));
                                 localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), stimulusProvider.getCurrentStimulus(), storedStimulusJSONObject);
+                                writeStimuliData(userResults.getUserData().getUserId().toString(), stimulusProvider.getCurrentStimulus().getUniqueId(), storedStimulusJSONObject.toString());
                             }
                         }
                         // when a valid message has been received the current stimuli needs to be synchronised with the group
@@ -726,11 +728,24 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void stimulusMetadataField(MetadataField metadataField) {
-        ((TimedStimulusView) simpleView).addHtmlText(metadataField.getFieldLabel());
+        final JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), stimulusProvider.getCurrentStimulus());
+        final String fieldValue;
+        if (storedStimulusJSONObject != null) {
+            fieldValue = storedStimulusJSONObject.containsKey(metadataField.getPostName()) ? storedStimulusJSONObject.get(metadataField.getPostName()).isString().stringValue() : "";
+        } else {
+            fieldValue = "";
+        }
+        final MetadataFieldWidget metadataFieldWidget = new MetadataFieldWidget(metadataField, fieldValue);
+        ((TimedStimulusView) simpleView).addWidget(metadataFieldWidget.getLabel());
+        ((TimedStimulusView) simpleView).addWidget(metadataFieldWidget.getFocusWidget());
+        stimulusFreeTextList.add(metadataFieldWidget);
     }
 
     protected void stimulusFreeText(String validationRegex, String keyCodeChallenge, String validationChallenge, final String allowedCharCodes, final int hotKey, String styleName) {
-        StimulusFreeText stimulusFreeText = ((TimedStimulusView) simpleView).addStimulusFreeText(validationRegex, keyCodeChallenge, validationChallenge, allowedCharCodes, new SingleShotEventListner() {
+        final JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), stimulusProvider.getCurrentStimulus());
+        final String postName = "freeText";
+        final JSONValue freeTextValue = (storedStimulusJSONObject == null) ? null : storedStimulusJSONObject.get(postName);
+        StimulusFreeText stimulusFreeText = ((TimedStimulusView) simpleView).addStimulusFreeText(postName, validationRegex, keyCodeChallenge, validationChallenge, allowedCharCodes, new SingleShotEventListner() {
             @Override
             protected void singleShotFired() {
                 for (PresenterEventListner nextButtonEventListner : nextButtonEventListnerList) {
@@ -743,7 +758,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 }
                 this.resetSingleShot();
             }
-        }, hotKey, styleName);
+        }, hotKey, styleName, ((freeTextValue != null) ? freeTextValue.isString().stringValue() : null));
         stimulusFreeTextList.add(stimulusFreeText);
     }
 
@@ -1212,13 +1227,19 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             ((ComplexView) simpleView).addText("showStimulus should not be used with the groupParticipantService");
             throw new UnsupportedOperationException("showStimulus should not be used with the groupParticipantService");
         }
+        JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), stimulusProvider.getCurrentStimulus());
+        storedStimulusJSONObject = (storedStimulusJSONObject == null) ? new JSONObject() : storedStimulusJSONObject;
+        for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
+            storedStimulusJSONObject.put(stimulusFreeText.getPostName(), new JSONString(stimulusFreeText.getValue()));
+        }
+        localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), stimulusProvider.getCurrentStimulus(), storedStimulusJSONObject);
         for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
             if (!stimulusFreeText.isValid()) {
                 return;
             }
         }
         for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
-            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), "StimulusFreeText", stimulusProvider.getCurrentStimulus().getUniqueId(), stimulusFreeText.getValue(), duration.elapsedMillis());
+            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), stimulusFreeText.getPostName(), stimulusProvider.getCurrentStimulus().getUniqueId(), stimulusFreeText.getValue(), duration.elapsedMillis());
             final String correctResponses = stimulusProvider.getCurrentStimulus().getCorrectResponses();
             if (correctResponses != null && !correctResponses.isEmpty()) {
                 // if there are correct responses to this stimulus then increment the score
