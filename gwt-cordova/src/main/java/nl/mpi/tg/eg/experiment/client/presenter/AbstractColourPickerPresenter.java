@@ -211,7 +211,7 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
 
     protected void loadAllStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final boolean randomise, int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
-        stimulusProvider.getSubset(selectionTags, randomise, repeatCount, repeatRandomWindow, "", -1);
+        stimulusProvider.getSubset(selectionTags, randomise, repeatCount, repeatRandomWindow, 0, "", -1);
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
         stimulusResponseGroup = new StimulusResponseGroup(eventTag, eventTag.replaceAll("[^A-Za-z0-9]", "_"));
