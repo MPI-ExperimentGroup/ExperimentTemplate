@@ -687,6 +687,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@randomise) then concat(', ', @randomise eq 'true') else ''" />
         <xsl:value-of select="if(@repeatCount) then concat(', ', @repeatCount) else ''" />
         <xsl:value-of select="if(@repeatRandomWindow) then concat(', ', @repeatRandomWindow) else ''" />
+        <xsl:value-of select="if(@adjacencyThreshold) then concat(', ', @adjacencyThreshold) else ''" />
         <xsl:apply-templates select="hasMoreStimulus" />
         <xsl:apply-templates select="endOfStimulus" />
         <xsl:apply-templates select="hasTag" />
