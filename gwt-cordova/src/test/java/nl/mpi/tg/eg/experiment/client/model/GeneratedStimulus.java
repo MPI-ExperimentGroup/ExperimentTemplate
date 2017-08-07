@@ -648,6 +648,7 @@ public class GeneratedStimulus implements Stimulus {
     }
     final private String uniqueId;
     final private String urlString;
+    final private String imageString;
     final private List<Tag> tags;
     final private String label;
     final private String code;
@@ -668,6 +669,7 @@ public class GeneratedStimulus implements Stimulus {
         this.mp4 = mp4;
         this.ogg = ogg;
         this.image = image;
+        this.imageString = null;
     }
 
     public GeneratedStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels) {
@@ -681,6 +683,7 @@ public class GeneratedStimulus implements Stimulus {
         this.mp4 = false;
         this.ogg = false;
         this.image = false;
+        this.imageString = imagePath;
     }
 
     @Override
@@ -734,7 +737,7 @@ public class GeneratedStimulus implements Stimulus {
 
     @Override
     public String getImage() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return imageString;
     }
 
     @Override
