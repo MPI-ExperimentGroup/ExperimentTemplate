@@ -25,6 +25,7 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  *
@@ -166,7 +167,7 @@ public class StimulusProviderTest {
         // unit test for HR stimuli to check that each stimuli is shown 3 times and all stimuli are represented
         System.out.println("getSubset HR stimuli");
         StimulusProvider instance = new StimulusProvider();
-        instance.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_HRPretest01}), 1000, true, 3, 20, "", -1);
+        instance.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_HRPretest01}), 1000, true, 3, 20, 0, "", -1);
         final int expectedStimuliCount = 196 * 3;
         assertEquals(expectedStimuliCount, instance.getTotalStimuli());
     }
@@ -180,7 +181,7 @@ public class StimulusProviderTest {
         // unit test for HR stimuli to check that each stimuli is shown 3 times and all stimuli are represented
         System.out.println("getSubset uniqueStimuli");
         StimulusProvider instance = new StimulusProvider();
-        instance.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_HRPretest01}), 1000, true, 2, 20, "", -1);
+        instance.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_HRPretest01}), 1000, true, 2, 20, 0, "", -1);
         final int expectedStimuliCount = 196;
         HashSet<Stimulus> stimulusSet = new HashSet();
         while (instance.hasNextStimulus()) {
@@ -198,7 +199,7 @@ public class StimulusProviderTest {
         // unit test for HR stimuli to check that each stimuli is shown 3 times and all stimuli are represented
         System.out.println("getSubset HR stimuli");
         StimulusProvider instance = new StimulusProvider();
-        instance.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_HRPretest02}), 1000, true, 3, 20, "", -1);
+        instance.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_HRPretest02}), 1000, true, 3, 20, 0, "", -1);
         final int expectedStimuliCount = 256 * 3;
         assertEquals(expectedStimuliCount, instance.getTotalStimuli());
     }
@@ -210,7 +211,7 @@ public class StimulusProviderTest {
     public void testGetSubset_Reload() {
         System.out.println("getSubset Reload");
         StimulusProvider instance1 = new StimulusProvider();
-        instance1.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_HRPretest02}), 1000, true, 3, 20, "", -1);
+        instance1.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_HRPretest02}), 1000, true, 3, 20, 0, "", -1);
         int seenStimuliCounter = 0;
         for (int counter = 0; counter < 25; counter++) {
             instance1.nextStimulus();
@@ -221,7 +222,7 @@ public class StimulusProviderTest {
         System.out.println("loadedStimulusString: " + loadedStimulusString);
         System.out.println("currentStimulusIndex: " + currentStimulusIndex);
         StimulusProvider instance2 = new StimulusProvider();
-        instance2.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_HRPretest02}), 1000, true, 3, 20, loadedStimulusString, currentStimulusIndex);
+        instance2.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_HRPretest02}), 1000, true, 3, 20, 0, loadedStimulusString, currentStimulusIndex);
         while (instance2.hasNextStimulus()) {
             instance2.nextStimulus();
             seenStimuliCounter++;
@@ -239,15 +240,80 @@ public class StimulusProviderTest {
     public void testGetSubset_MultiParticipant() {
         System.out.println("getSubset MultiParticipant stimuli");
         StimulusProvider instance = new StimulusProvider();
-        instance.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_version1zero}), 23, true, 1, 3, "", -1);
+        instance.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_version1zero}), 23, true, 1, 3, 0, "", -1);
         assertEquals(8, instance.getTotalStimuli());
-        instance.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_version1round5}), 23, true, 1, 3, "", -1);
+        instance.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_version1round5}), 23, true, 1, 3, 0, "", -1);
         assertEquals(20, instance.getTotalStimuli());
-        instance.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_version1zero}), 23, true, 6, 3, "", -1);
+        instance.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_version1zero}), 23, true, 6, 3, 0, "", -1);
         assertEquals(23, instance.getTotalStimuli());
         final String pngshape2version1version1zeroversion1roun = "-9.png:shape2:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant3:moveRotated270-19.png:shape3:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated135-17.png:shape3:version1:version1zero:version1round2:version1round3:version1round4:version1round5:version2:quadrant4:moveRotated315-7.png:shape1:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated135-22.png:shape4:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant1:moveRotated60-28.png:shape4:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant3:moveRotated225-5.png:shape1:version1:version1zero:version1round2:version1round3:version1round4:version1round5:version6:quadrant1:moveRotated30-22.png:shape4:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant1:moveRotated60-9.png:shape2:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant3:moveRotated270-10.png:shape2:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated150-10.png:shape2:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated150-19.png:shape3:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated135-28.png:shape4:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant3:moveRotated225-7.png:shape1:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated135-9.png:shape2:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant3:moveRotated270-17.png:shape3:version1:version1zero:version1round2:version1round3:version1round4:version1round5:version2:quadrant4:moveRotated315-5.png:shape1:version1:version1zero:version1round2:version1round3:version1round4:version1round5:version6:quadrant1:moveRotated30-19.png:shape3:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated135-10.png:shape2:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated150-7.png:shape1:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated135-17.png:shape3:version1:version1zero:version1round2:version1round3:version1round4:version1round5:version2:quadrant4:moveRotated315-22.png:shape4:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant1:moveRotated60-28.png:shape4:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant3:moveRotated225-";
-        instance.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_version1zero}), 23, true, 6, 3, pngshape2version1version1zeroversion1roun, -1);
+        instance.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_version1zero}), 23, true, 6, 3, 0, pngshape2version1version1zeroversion1roun, -1);
         assertEquals(23, instance.getTotalStimuli());
         assertEquals(pngshape2version1version1zeroversion1roun, instance.getLoadedStimulusString());
+    }
+
+    /**
+     * Test of applyAdjacencyCheck for MultiParticipant stimuli, of class
+     * StimulusProvider.
+     */
+    @Test
+    public void testApplyAdjacencyCheck_MultiParticipant() {
+        System.out.println("applyAdjacencyCheck MultiParticipant stimuli");
+        final int adjacencyThreshold = 3;
+        final String storedStimulusList = ""
+                + "-9.png:shape2:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant3:moveRotated270"
+                + "-9.png:shape2:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant3:moveRotated270"
+                + "-9.png:shape2:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant3:moveRotated270"
+                + "-19.png:shape3:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated135"
+                + "-19.png:shape3:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated135"
+                + "-19.png:shape3:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated135"
+                + "-17.png:shape3:version1:version1zero:version1round2:version1round3:version1round4:version1round5:version2:quadrant4:moveRotated315"
+                + "-17.png:shape3:version1:version1zero:version1round2:version1round3:version1round4:version1round5:version2:quadrant4:moveRotated315"
+                + "-17.png:shape3:version1:version1zero:version1round2:version1round3:version1round4:version1round5:version2:quadrant4:moveRotated315"
+                + "-7.png:shape1:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated135"
+                + "-7.png:shape1:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated135"
+                + "-7.png:shape1:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated135"
+                + "-22.png:shape4:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant1:moveRotated60"
+                + "-22.png:shape4:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant1:moveRotated60"
+                + "-22.png:shape4:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant1:moveRotated60"
+                + "-28.png:shape4:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant3:moveRotated225"
+                + "-28.png:shape4:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant3:moveRotated225"
+                + "-28.png:shape4:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant3:moveRotated225"
+                + "-5.png:shape1:version1:version1zero:version1round2:version1round3:version1round4:version1round5:version6:quadrant1:moveRotated30"
+                + "-5.png:shape1:version1:version1zero:version1round2:version1round3:version1round4:version1round5:version6:quadrant1:moveRotated30"
+                + "-10.png:shape2:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated150"
+                + "-10.png:shape2:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated150"
+                + "-10.png:shape2:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated150"
+                + "-";
+        StimulusProvider instance = new StimulusProvider();
+        instance.loadStoredStimulusList(storedStimulusList);
+        assertEquals(23, instance.getTotalStimuli());
+        instance.applyAdjacencyCheck(adjacencyThreshold);
+        instance.nextStimulus();
+        Stimulus stimulus0 = instance.getCurrentStimulus();
+        instance.nextStimulus();
+        Stimulus stimulus1 = instance.getCurrentStimulus();
+        instance.nextStimulus();
+        Stimulus stimulus2 = instance.getCurrentStimulus();
+        instance.nextStimulus();
+
+        System.out.println(stimulus0.getImage());
+        System.out.println(stimulus1.getImage());
+        System.out.println(stimulus2.getImage());
+
+        assertNotEquals(stimulus0.getImage(), stimulus1.getImage());
+        assertNotEquals(stimulus1.getImage(), stimulus2.getImage());
+        while (instance.hasNextStimulus()) {
+            instance.nextStimulus();
+            Stimulus stimulus3 = instance.getCurrentStimulus();
+            System.out.println(stimulus3.getImage());
+            assertNotEquals(stimulus0.getImage(), stimulus3.getImage());
+            assertNotEquals(stimulus1.getImage(), stimulus3.getImage());
+            assertNotEquals(stimulus2.getImage(), stimulus3.getImage());
+            stimulus0 = stimulus1;
+            stimulus1 = stimulus2;
+            stimulus2 = stimulus3;
+        }
+        assertEquals(23, instance.getTotalStimuli());
     }
 }
