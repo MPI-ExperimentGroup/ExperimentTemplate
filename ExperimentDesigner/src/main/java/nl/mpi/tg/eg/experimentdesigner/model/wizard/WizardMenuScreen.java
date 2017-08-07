@@ -32,6 +32,7 @@ public class WizardMenuScreen extends AbstractWizardScreen {
 
     public WizardMenuScreen() {
         super(WizardScreenEnum.WizardMenuScreen, "Menu", "Menu", "Menu");
+        setBranchOnGetParam(false, null);
     }
 
     public WizardMenuScreen(String screenTitle, String menuLabel, String screenTag) {
