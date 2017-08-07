@@ -59,6 +59,7 @@ public enum FeatureAttribute {
     randomise,
     repeatCount,
     repeatRandomWindow,
+    adjacencyThreshold,
     repeatIncorrect,
     hotKey,
     mp3,
