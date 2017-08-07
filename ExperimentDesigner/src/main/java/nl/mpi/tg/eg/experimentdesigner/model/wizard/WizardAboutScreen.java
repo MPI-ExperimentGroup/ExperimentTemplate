@@ -65,7 +65,7 @@ public class WizardAboutScreen extends AbstractWizardScreen {
     }
 
     public WizardAboutScreen(String screenTitle, boolean showDebug) {
-        super(WizardScreenEnum.WizardAboutScreen, screenTitle, screenTitle, "about");
+        super(WizardScreenEnumFromDebugType(showDebug), screenTitle, screenTitle, "about");
         this.showDebug = showDebug;
     }
 
