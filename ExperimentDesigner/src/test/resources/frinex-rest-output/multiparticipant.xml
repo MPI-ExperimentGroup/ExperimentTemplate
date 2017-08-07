@@ -231,7 +231,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Nu verdelen we jullie in paren. In deze ronde zul je het spel spelen met een andere proefpersoon.&lt;br/&gt;&lt;br/&gt;In elke beurt krijgt een van de spelers één scène te zien, de ander speler krijgt acht scènes te zien. De speler met één scène bedenkt een beschrijving voor die scène en toont die beschrijving aan de andere speler. De ander speler moet dan raden om welk van de acht scènes op zijn/haar scherm het gaat.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om een beschrijving te bedenken is het doel ervoor te zorgen dat je medespeler je zo goed mogelijk begrijpt zodat die het juiste scène uit de reeks scènes zal kiezen. Je mag beschrijvingen gebruiken die je in een eerdere ronde hebt geleerd of je mag een nieuwe beschrijving bedenken. Dit is geen geheugen test, dus als je denkt dat je een beter beschrijving weet schroom dan niet om die te gebruiken. Als je het niet goed weet, probeer dan een beschrijving te bedenken met de kennis die je tot dan toe hebt opgedaan over de fantasietaal. Onthoud dat als je scènes benoemt, je enkel de zichtbare letters kunt gebruiken. Als je een beschrijving bedacht hebt, kun je op Enter drukken. &lt;br/&gt;&lt;br/&gt;De andere speler kan nu uit de acht scènes kiezen welke scène hij/zij denkt dat je bedoelt.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om te kiezen welke scène bedoeld wordt met de beschrijving, doe je dit door op een van de nummers (1-8) te drukken (kan zowel bovenaan als rechts) of op het juiste plaatje te klikken. &lt;br/&gt;&lt;br/&gt;Nadat er een scène gekozen is, krijg je een feedback scherm waarop 2 scènes komen te staan; de gekozen scène en de scène die het had moeten zijn. Als de gekozen scène correct was, krijg je een punt. Goed gedaan! Zo niet, dan kun je de feedback gebruiken om het volgende ronde beter te doen.  &lt;br/&gt;&lt;br/&gt;De volgende beurt keren jullie de rollen om. 1 ronde bestaat uit 23 beurten. Veel succes!&lt;br/&gt;&lt;br/&gt;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="R1-4" randomise="false" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R1-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|D,C">
                         <groupNetworkActivity groupRole="A,D:-:-:B,C:-:-">
@@ -343,7 +343,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="R2-4" randomise="false" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R2-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="C,A|D,B">
                         <groupNetworkActivity groupRole="C,D:-:-:A,B:-:-">
@@ -455,7 +455,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="R3-4" randomise="false" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R3-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="B,C|A,D">
                         <groupNetworkActivity groupRole="B,A:-:-:C,D:-:-">
@@ -567,10 +567,10 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="R4-4" randomise="false" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R4-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|D,C">
-                        <groupNetworkActivity groupRole="A,D:-:-:B,C:-:-">
+                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="B,A|C,D">
+                        <groupNetworkActivity groupRole="B,C:-:-:A,D:-:-">
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
@@ -581,15 +581,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,C:-:-:A,D:-:-">
+                        <groupNetworkActivity groupRole="A,D:-:-:B,C:-:-">
                             <clearPage/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,D:-:-:B,C:-">
+                        <groupNetworkActivity groupRole="-:B,C:-:-:A,D:-">
                             <clearPage/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,C:-:-:A,D:-">
+                        <groupNetworkActivity groupRole="-:A,D:-:-:B,C:-">
                             <clearPage/>
                             <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -623,7 +623,7 @@
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:A,D,B,C:-:-:A,D,B,C">
+                        <groupNetworkActivity groupRole="-:-:B,C,A,D:-:-:B,C,A,D">
                             <clearPage/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
@@ -659,7 +659,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|D,C">
+                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="B,A|C,D">
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
@@ -679,10 +679,10 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="R5-4" randomise="false" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R5-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="C,A|D,B">
-                        <groupNetworkActivity groupRole="C,D:-:-:A,B:-:-">
+                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,C|B,D">
+                        <groupNetworkActivity groupRole="A,B:-:-:C,D:-:-">
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
@@ -693,15 +693,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="A,B:-:-:C,D:-:-">
+                        <groupNetworkActivity groupRole="C,D:-:-:A,B:-:-">
                             <clearPage/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:C,D:-:-:A,B:-">
+                        <groupNetworkActivity groupRole="-:A,B:-:-:C,D:-">
                             <clearPage/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,B:-:-:C,D:-">
+                        <groupNetworkActivity groupRole="-:C,D:-:-:A,B:-">
                             <clearPage/>
                             <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -735,7 +735,7 @@
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:C,D,A,B:-:-:C,D,A,B">
+                        <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D">
                             <clearPage/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
@@ -771,7 +771,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="C,A|D,B">
+                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,C|B,D">
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
@@ -793,8 +793,8 @@
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus eventTag="R6-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="B,C|A,D">
-                        <groupNetworkActivity groupRole="B,A:-:-:C,D:-:-">
+                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="C,B|D,A">
+                        <groupNetworkActivity groupRole="C,D:-:-:B,A:-:-">
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
@@ -805,15 +805,15 @@
                                 <sendGroupMessageButton featureText="Next [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="C,D:-:-:B,A:-:-">
+                        <groupNetworkActivity groupRole="B,A:-:-:C,D:-:-">
                             <clearPage/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:B,A:-:-:C,D:-">
+                        <groupNetworkActivity groupRole="-:C,D:-:-:B,A:-">
                             <clearPage/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:C,D:-:-:B,A:-">
+                        <groupNetworkActivity groupRole="-:B,A:-:-:C,D:-">
                             <clearPage/>
                             <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
@@ -847,7 +847,7 @@
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:-:B,A,C,D:-:-:B,A,C,D">
+                        <groupNetworkActivity groupRole="-:-:C,D,B,A:-:-:C,D,B,A">
                             <clearPage/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <row>
@@ -883,7 +883,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="B,C|A,D">
+                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="C,B|D,A">
                         <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
                     </groupNetwork>
                     <clearPage/>
@@ -1214,7 +1214,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Nu verdelen we jullie in paren. In deze ronde zul je het spel spelen met een andere proefpersoon.&lt;br/&gt;&lt;br/&gt;In elke beurt krijgt een van de spelers één scène te zien, de ander speler krijgt acht scènes te zien. De speler met één scène bedenkt een beschrijving voor die scène en toont die beschrijving aan de andere speler. De ander speler moet dan raden om welk van de acht scènes op zijn/haar scherm het gaat.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om een beschrijving te bedenken is het doel ervoor te zorgen dat je medespeler je zo goed mogelijk begrijpt zodat die het juiste scène uit de reeks scènes zal kiezen. Je mag beschrijvingen gebruiken die je in een eerdere ronde hebt geleerd of je mag een nieuwe beschrijving bedenken. Dit is geen geheugen test, dus als je denkt dat je een beter beschrijving weet schroom dan niet om die te gebruiken. Als je het niet goed weet, probeer dan een beschrijving te bedenken met de kennis die je tot dan toe hebt opgedaan over de fantasietaal. Onthoud dat als je scènes benoemt, je enkel de zichtbare letters kunt gebruiken. Als je een beschrijving bedacht hebt, kun je op Enter drukken. &lt;br/&gt;&lt;br/&gt;De andere speler kan nu uit de acht scènes kiezen welke scène hij/zij denkt dat je bedoelt.&lt;br/&gt;&lt;br/&gt;Als het jouw beurt is om te kiezen welke scène bedoeld wordt met de beschrijving, doe je dit door op een van de nummers (1-8) te drukken (kan zowel bovenaan als rechts) of op het juiste plaatje te klikken. &lt;br/&gt;&lt;br/&gt;Nadat er een scène gekozen is, krijg je een feedback scherm waarop 2 scènes komen te staan; de gekozen scène en de scène die het had moeten zijn. Als de gekozen scène correct was, krijg je een punt. Goed gedaan! Zo niet, dan kun je de feedback gebruiken om het volgende ronde beter te doen.  &lt;br/&gt;&lt;br/&gt;De volgende beurt keren jullie de rollen om. 1 ronde bestaat uit 23 beurten. Veel succes!&lt;br/&gt;&lt;br/&gt;"/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="R1-8" randomise="false" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R1-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B|C,D|E,F|G,H">
                         <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
@@ -1326,7 +1326,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="R2-8" randomise="false" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R2-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="H,A|D,E|F,C|B,G">
                         <groupNetworkActivity groupRole="H,D,F,B:-:-:A,E,C,G:-:-">
@@ -1438,7 +1438,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="R3-8" randomise="false" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R3-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,D|G,F|E,B|C,H">
                         <groupNetworkActivity groupRole="A,G,E,C:-:-:D,F,B,H:-:-">
@@ -1550,7 +1550,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="R4-8" randomise="false" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R4-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="C,A|B,D|E,G|F,H">
                         <groupNetworkActivity groupRole="C,B,E,F:-:-:A,D,G,H:-:-">
@@ -1662,7 +1662,7 @@
         <centrePage/>
         <htmlText featureText="Tijd om te spelen!&lt;br/&gt;&lt;br/&gt;Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis die je tot dan toe hebt opgedaan over de fantasietaal.&lt;br/&gt;&lt;br/&gt;In deze ronde zul je het spel spelen met proefpersoon X.&lt;br/&gt;&lt;br/&gt;Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! "/>
         <actionButton featureText="Next [enter]" hotKey="ENTER">
-            <loadStimulus eventTag="R5-8" randomise="false" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
+            <loadStimulus eventTag="R5-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,E|D,H|B,F|G,C">
                         <groupNetworkActivity groupRole="A,D,B,G:-:-:E,H,F,C:-:-">
@@ -2915,14 +2915,13 @@
             <tag>version1round2</tag>
             <tag>version1round3</tag>
         </stimulus>
-        <stimulus code="moveRotated360" identifier="23.png:shape4:version1round2:version1round3:extra:quadrant4:moveRotated360" imagePath="23.png" pauseMs="0">
+        <stimulus code="moveRotated360" identifier="23.png:shape4:version1round2:extra:quadrant4:moveRotated360" imagePath="23.png" pauseMs="0">
             <tag>23</tag>
             <tag>extra</tag>
             <tag>moveRotated360</tag>
             <tag>quadrant4</tag>
             <tag>shape4</tag>
             <tag>version1round2</tag>
-            <tag>version1round3</tag>
         </stimulus>
         <stimulus code="moveRotated30" identifier="12.png:shape2:version1:version1round2:version1round3:version1round4:version1round5:quadrant1:moveRotated30" imagePath="12.png" pauseMs="0">
             <tag>12</tag>
@@ -3120,12 +3119,13 @@
             <tag>shape2</tag>
             <tag>version1round2</tag>
         </stimulus>
-        <stimulus code="moveRotated225" identifier="28.png:shape4:version1round2:quadrant3:moveRotated225" imagePath="28.png" pauseMs="0">
+        <stimulus code="moveRotated225" identifier="28.png:shape4:version1round2:version1round3:quadrant3:moveRotated225" imagePath="28.png" pauseMs="0">
             <tag>28</tag>
             <tag>moveRotated225</tag>
             <tag>quadrant3</tag>
             <tag>shape4</tag>
             <tag>version1round2</tag>
+            <tag>version1round3</tag>
         </stimulus>
         <stimulus code="moveRotated135" identifier="19.png:shape3:version1round2:quadrant2:moveRotated135" imagePath="19.png" pauseMs="0">
             <tag>19</tag>
