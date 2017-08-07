@@ -52,7 +52,7 @@ public abstract class AbstractWizardScreen implements WizardScreen {
 
     @Override
     public final void setScreenTag(String screenTag) {
-        this.wizardScreenData.setScreenTag(screenTag);
+        this.wizardScreenData.setScreenTag(screenTag.replaceAll("[^A-Za-z0-9]", "_"));
     }
 
     @Override
