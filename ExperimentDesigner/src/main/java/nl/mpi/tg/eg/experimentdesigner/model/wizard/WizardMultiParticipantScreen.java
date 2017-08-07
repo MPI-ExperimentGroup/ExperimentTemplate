@@ -456,6 +456,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(isRandomiseStimuli(storedWizardScreenData)));
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, Integer.toString(storedWizardScreenData.getRepeatCount()));
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, Integer.toString(storedWizardScreenData.getRepeatRandomWindow()));
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.adjacencyThreshold, "3");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(storedWizardScreenData.getStimuliCount()));
         if (getTimerCountDownProducerMs(storedWizardScreenData) > 0) {
             final PresenterFeature countDownFeature = new PresenterFeature(FeatureType.countdownLabel, getTimerCountDownLabel(storedWizardScreenData));
