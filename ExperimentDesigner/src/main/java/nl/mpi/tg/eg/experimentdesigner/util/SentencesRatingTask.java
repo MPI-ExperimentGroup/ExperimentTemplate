@@ -39,7 +39,7 @@ public class SentencesRatingTask {
             + "ONION rating survey <br/>"
             + "Before you begin this experiment, please confirm that you give consent to participate in this experiment. We will save your responses for later analysis. We will only use the results for scientific purposes; we will report on them in specialized journals or perhaps in newspapers or on our website. However, your data will ALWAYS be treated anonymously. <br/> "
             + "<br/>"
-            + "By giving your consent, you declare that you have been sufficiently informed about this study and that you participate of your own free will. You are free to withdraw from this experiment at any point in time without an explanation. You may also have your data removed from the database at any time prior to publication, withtout giving a reason. <br/> "
+            + "By giving your consent, you declare that you have been sufficiently informed about this study and that you participate of your own free will. You are free to withdraw from this experiment at any point in time without an explanation. You may also have your data removed from the database at any time prior to publication, without giving a reason. <br/> "
             + "<br/>"
             + "There are no known risks related to your participation in this experiment. <br/>"
             + "<br/>"
@@ -47,20 +47,20 @@ public class SentencesRatingTask {
             + "If you decide not to participate in the experiment, you can close the page or go to another website. <br/>"
             + "<br/>"
             + "";
-    final String informationScreenText1 = "In the following you will read short action phrases consisting of a verb and an object (e.g., drive a car). For each phrase we would like you to answer questions along three dimensions by using a 7-point scale. The dimensions include object state change, action familiarity and imageability of the action. Detailed instructions about these dimensions will follow later.";
-    final String informationScreenText2 = "For object state change, you are asked to indicate to which degree the object is changed during the action (7 = substantial change; 1 = no change). That is, whether the object itself looks differently after the action compared to the way it looked before the action. For action familiarity, please indicate how familiar you are with the action (7 = very familiar; 1 = not familiar at all). For imageability of the action, rate how much the action phrase brings to mind a clear mental image of the situation ( 7 = very imageable; 1 = not imageable at all).";
+    final String informationScreenText1 = "In the following you will read short action phrases consisting of a verb and an object (e.g., drive a car).<br/>For each phrase we would like you to answer questions along three dimensions by using a 7-point scale.<br/>The dimensions include object state change, action familiarity and imageability of the action. Detailed instructions about these dimensions will follow later.";
+    final String informationScreenText2 = "For object state change, you are asked to indicate to which degree the object is changed during the action (7 = substantial change; 1 = no change). That is, whether the object itself looks differently after the action compared to the way it looked before the action.<br/><br/>For action familiarity, please indicate how familiar you are with the action described by the phrase (7 = very familiar; 1 = not familiar at all). <br/> <br/>For imageability of the action, rate how much the action phrase brings to mind a clear mental image of the situation ( 7 = very imageable; 1 = not imageable at all).";
     final String informationScreenText3 = "Note that you will rate the action phrases on these dimensions in three different parts of the survey. At the beginning of each part, the instructions for your task during that part will be repeated.";
 
-    final String informationObjectStateChangeScreenText = "For object state change, you are asked to indicate to which degree the object is changed during the action (7 = substantial change; 1 = no change). That is, whether the object itself looks differently after the action compared to the way it looked before the action.";
-    final String objectStateChangeScreenTitle = "To which degree the object is changed?";
-    final String informationActionFamiliarityScreenText = "For action familiarity, please indicate how familiar you are with the action (7 = very familiar; 1 = not familiar at all). ";
+    final String informationObjectStateChangeScreenText = "In this block you will rate object state change. <br/> <br/>  Please indicate to which degree the object is changed during the action (7 = substantial change; 1 = no change). That is, whether the object itself looks differently after the action compared to the way it looked before the action.";
+    final String objectStateChangeScreenTitle = "To which degree is the object changed visibly?";
+    final String informationActionFamiliarityScreenText = "In this block you will rate action familiarity. <br/> <br/>Please indicate how familiar you are with the action described by the phrase(7 = very familiar; 1 = not familiar at all). ";
     final String actionFamiliarityScreenTitle = "Is this action familiar?";
-    final String informationImageabilityScreenText = "For imageability of the action, rate how much the action phrase brings to mind a clear mental image of the situation ( 7 = very imageable; 1 = not imageable at all).";
-    final String imageabilityScreenTitle = "Can you imagine the situation clearly?";
+    final String informationImageabilityScreenText = "In this block you will rate the imageability of the action. <br/> <br/>Please rate how much the action phrase brings to mind a clear mental image of the situation ( 7 = very imageable; 1 = not imageable at all).";
+    final String imageabilityScreenTitle = "Can you create a clear mental image of the situation?";
 
     final String completionScreenText1 = "This is the end of the experiment. <br/>"
             + "<br/>"
-            + "To confirm your participation, we would like to ask you to send the following code to Maarten.vandenHeuvel@mpi.nl. Only after receiving this code can you be paid. <br/>"
+            + "To confirm your participation, we would like to ask you to send the following code to Julia.Misersky@mpi.nl. Only after receiving this code can you be paid. <br/>"
             + "<br/>"
             + "Thank you for your participation!";
     private final String[] stimuliString = {
@@ -397,21 +397,21 @@ public class SentencesRatingTask {
         wizardData.addScreen(actionFamiliarityIntro);
         wizardData.addScreen(imageabilityOfActionIntro);
 
-        final WizardRandomStimulusScreen objectStateChange = new WizardRandomStimulusScreen(objectStateChangeScreenTitle, false, stimuliString,
+        final WizardRandomStimulusScreen objectStateChange = new WizardRandomStimulusScreen(objectStateChangeScreenTitle, true, stimuliString,
                 new String[]{"List1", "List2"}, 1000, true, null, 0, 0, null, null, null, null, "next [ spacebar ]");
         objectStateChange.getWizardScreenData().setStimulusResponseOptions("1,2,3,4,5,6,7");
         objectStateChange.getWizardScreenData().setStimulusResponseLabelLeft("1 = no change");
         objectStateChange.getWizardScreenData().setStimulusResponseLabelRight("7 = substantial change");
         objectStateChange.setRandomStimuliTagsField("set");
         wizardData.addScreen(objectStateChange);
-        final WizardRandomStimulusScreen actionFamiliarity = new WizardRandomStimulusScreen(actionFamiliarityScreenTitle, false, stimuliString,
+        final WizardRandomStimulusScreen actionFamiliarity = new WizardRandomStimulusScreen(actionFamiliarityScreenTitle, true, stimuliString,
                 new String[]{"List1", "List2"}, 1000, true, null, 0, 0, null, null, null, null, "next [ spacebar ]");
         actionFamiliarity.getWizardScreenData().setStimulusResponseOptions("1,2,3,4,5,6,7");
         actionFamiliarity.getWizardScreenData().setStimulusResponseLabelLeft("1 = not familiar at all");
         actionFamiliarity.getWizardScreenData().setStimulusResponseLabelRight("7 = very familiar");
         actionFamiliarity.setRandomStimuliTagsField("set");
         wizardData.addScreen(actionFamiliarity);
-        final WizardRandomStimulusScreen imageabilityOfAction = new WizardRandomStimulusScreen(imageabilityScreenTitle, false, stimuliString,
+        final WizardRandomStimulusScreen imageabilityOfAction = new WizardRandomStimulusScreen(imageabilityScreenTitle, true, stimuliString,
                 new String[]{"List1", "List2"}, 1000, true, null, 0, 0, null, null, null, null, "next [ spacebar ]");
         imageabilityOfAction.getWizardScreenData().setStimulusResponseOptions("1,2,3,4,5,6,7");
         imageabilityOfAction.getWizardScreenData().setStimulusResponseLabelLeft("1 = not imageable at all");
