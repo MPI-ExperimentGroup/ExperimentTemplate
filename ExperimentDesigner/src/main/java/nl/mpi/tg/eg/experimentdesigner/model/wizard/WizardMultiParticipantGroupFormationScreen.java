@@ -38,7 +38,6 @@ public class WizardMultiParticipantGroupFormationScreen extends AbstractWizardSc
         super(WizardScreenEnum.WizardMultiParticipantGroupFormationScreen, screenTitle, screenTitle, screenTitle);
         this.setNextButton(agreementButtonLabel);
         this.setScreenText(screenText);
-
     }
 
     @Override
@@ -61,14 +60,69 @@ public class WizardMultiParticipantGroupFormationScreen extends AbstractWizardSc
         return new String[]{}[index];
     }
 
-    @Override
-    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
-        storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.metadata);
-        super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
-        storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
+    private PresenterFeature getGroupFeatures(WizardScreenData storedWizardScreenData, String members) {
+        String communicationChannels = members;
+        String[] groupPhasesRoles = new String[]{members + ":-", "-:" + members};
+        final PresenterFeature groupNetwork = new PresenterFeature(FeatureType.groupNetwork, null);
+        groupNetwork.addFeatureAttributes(FeatureAttribute.groupMembers, members);
+        groupNetwork.addFeatureAttributes(FeatureAttribute.phasesPerStimulus, Integer.toString(0));
+        groupNetwork.addFeatureAttributes(FeatureAttribute.groupCommunicationChannels, communicationChannels);
+        final PresenterFeature joinGroupActivity = new PresenterFeature(FeatureType.groupNetworkActivity, null);
+        final PresenterFeature agreementActivity = new PresenterFeature(FeatureType.groupNetworkActivity, null);
+        joinGroupActivity.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlTokenText, "<groupMemberCode>"));
+        final PresenterFeature joinGroupMessageButton = new PresenterFeature(FeatureType.sendGroupMessageButton, "Continue [enter]");
+        joinGroupMessageButton.addFeatureAttributes(FeatureAttribute.eventTag, "joinGroupMessageButton");
+        joinGroupMessageButton.addFeatureAttributes(FeatureAttribute.incrementPhase, "1");
+        joinGroupMessageButton.addFeatureAttributes(FeatureAttribute.hotKey, "ENTER");
+        joinGroupMessageButton.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
+        joinGroupActivity.getPresenterFeatureList().add(joinGroupMessageButton);
+        joinGroupActivity.addFeatureAttributes(FeatureAttribute.groupRole, groupPhasesRoles[0]);
+        groupNetwork.getPresenterFeatureList().add(joinGroupActivity);
+        agreementActivity.addFeatureAttributes(FeatureAttribute.groupRole, groupPhasesRoles[1]);
+        groupNetwork.getPresenterFeatureList().add(agreementActivity);
+        agreementActivity.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
         final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.targetButton, storedWizardScreenData.getNextButton()[0]);
         presenterFeature.addFeatureAttributes(FeatureAttribute.target, storedWizardScreenData.getNextWizardScreenData().getScreenTag());
-        storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(presenterFeature);
+        agreementActivity.getPresenterFeatureList().add(presenterFeature);
+        return groupNetwork;
+    }
+
+    @Override
+    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+        storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.stimulus);
+        super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
+
+        String[][] getParameters1 = {{"R0_4", "A,B,C,D"}, {"R0_8", "A,B,C,D,E,F,G,H"}};
+        String[] getParameters2 = {"group", "member"};
+        PresenterFeature conditionNested1 = null;
+        for (String[] param1 : getParameters1) {
+            final PresenterFeature hasGetParameter1 = new PresenterFeature(FeatureType.hasGetParameter, null);
+            hasGetParameter1.addFeatureAttributes(FeatureAttribute.parameterName, param1[0]);
+            final PresenterFeature conditionTrue1 = new PresenterFeature(FeatureType.conditionTrue, null);
+            PresenterFeature conditionNested2 = conditionTrue1;
+            for (String param2 : getParameters2) {
+                final PresenterFeature hasGetParameter2 = new PresenterFeature(FeatureType.hasGetParameter, null);
+                hasGetParameter2.addFeatureAttributes(FeatureAttribute.parameterName, param2);
+                final PresenterFeature conditionTrue2 = new PresenterFeature(FeatureType.conditionTrue, null);
+                hasGetParameter2.getPresenterFeatureList().add(conditionTrue2);
+                final PresenterFeature conditionFalse2 = new PresenterFeature(FeatureType.conditionFalse, null);
+                conditionFalse2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, param2 + " must be provided"));
+                hasGetParameter2.getPresenterFeatureList().add(conditionFalse2);
+                conditionNested2.getPresenterFeatureList().add(hasGetParameter2);
+                conditionNested2 = conditionTrue2;
+            }
+            conditionNested2.getPresenterFeatureList().add(getGroupFeatures(storedWizardScreenData, param1[1]));
+            hasGetParameter1.getPresenterFeatureList().add(conditionTrue1);
+            final PresenterFeature conditionFalse1 = new PresenterFeature(FeatureType.conditionFalse, null);
+            hasGetParameter1.getPresenterFeatureList().add(conditionFalse1);
+            if (conditionNested1 == null) {
+                storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(hasGetParameter1);
+            } else {
+                conditionNested1.getPresenterFeatureList().add(hasGetParameter1);
+                conditionFalse1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "R0_4 or R0_8 must be provided"));
+            }
+            conditionNested1 = conditionFalse1;
+        }
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
         return storedWizardScreenData.getPresenterScreen();
     }
