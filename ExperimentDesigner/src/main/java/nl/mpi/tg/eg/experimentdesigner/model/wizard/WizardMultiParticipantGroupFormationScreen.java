@@ -69,7 +69,9 @@ public class WizardMultiParticipantGroupFormationScreen extends AbstractWizardSc
         groupNetwork.addFeatureAttributes(FeatureAttribute.groupCommunicationChannels, communicationChannels);
         final PresenterFeature joinGroupActivity = new PresenterFeature(FeatureType.groupNetworkActivity, null);
         final PresenterFeature agreementActivity = new PresenterFeature(FeatureType.groupNetworkActivity, null);
-        joinGroupActivity.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlTokenText, "<groupMemberCode>"));
+        joinGroupActivity.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+        joinGroupActivity.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
+        joinGroupActivity.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlTokenText, "Connected to: <groupId><br/>Group members: <groupAllMemberCodes><br/>As member: <groupMemberCode><br/>"));
         final PresenterFeature joinGroupMessageButton = new PresenterFeature(FeatureType.sendGroupMessageButton, "Continue [enter]");
         joinGroupMessageButton.addFeatureAttributes(FeatureAttribute.eventTag, "joinGroupMessageButton");
         joinGroupMessageButton.addFeatureAttributes(FeatureAttribute.incrementPhase, "1");
@@ -84,7 +86,28 @@ public class WizardMultiParticipantGroupFormationScreen extends AbstractWizardSc
         final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.targetButton, storedWizardScreenData.getNextButton()[0]);
         presenterFeature.addFeatureAttributes(FeatureAttribute.target, storedWizardScreenData.getNextWizardScreenData().getScreenTag());
         agreementActivity.getPresenterFeatureList().add(presenterFeature);
-        return groupNetwork;
+//        return groupNetwork;
+        final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadStimulus, null);
+        final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
+        final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
+        loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
+        loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
+        loadStimuliFeature.addStimulusTag("version1");
+
+        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
+        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "No valid stimuli"));
+
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(false));
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "1");
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, "0");
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.adjacencyThreshold, "0");
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, "100");
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.minStimuliPerTag, "100");
+        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuliPerTag, "100");
+        hasMoreStimulusFeature.getPresenterFeatureList().add(groupNetwork);
+        return loadStimuliFeature;
     }
 
     @Override
