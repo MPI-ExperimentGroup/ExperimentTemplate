@@ -21,10 +21,10 @@ import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMenuScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMultiParticipantGroupFormationScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMultiParticipantScreen;
 
 /**
@@ -207,7 +207,7 @@ public class MultiParticipant {
         wizardData.setObfuscateScreenNames(false);
         wizardData.setTextFontSize(24);
 
-        final WizardAgreementScreen wizardAgreementScreen = new WizardAgreementScreen("Introductie", welcomeScreen,
+        final WizardMultiParticipantGroupFormationScreen wizardAgreementScreen = new WizardMultiParticipantGroupFormationScreen("Introductie", welcomeScreen,
                 "Volgende");
         final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen(true);
         wizardAboutScreen.setScreenText("<b>This is a prototype multiparticipant experiment.</b><br/><br/>"
