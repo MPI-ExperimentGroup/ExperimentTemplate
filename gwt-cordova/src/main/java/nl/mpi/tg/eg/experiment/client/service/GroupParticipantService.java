@@ -260,6 +260,7 @@ public class GroupParticipantService implements GroupScoreService {
         return activeChannel;
     }
 
+    @Override
     public String getGroupId() {
         return groupId;
     }
