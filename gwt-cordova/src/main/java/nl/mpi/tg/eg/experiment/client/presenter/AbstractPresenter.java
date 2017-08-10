@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.experiment.client.presenter;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
@@ -28,6 +29,7 @@ import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.SimpleView;
+import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 
 /**
  * @since Oct 28, 2014 3:32:10 PM (creation date)
@@ -178,6 +180,20 @@ public abstract class AbstractPresenter implements Presenter {
         timer.schedule(100);
     }
 
+    public void hasGetParameter(final AppEventListner appEventListner, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse, final String getParamName) {
+        Timer timer = new Timer() {
+            public void run() {
+                String paramValue = Window.Location.getParameter(getParamName);
+                if (paramValue != null) {
+                    conditionTrue.postLoadTimerFired();
+                } else {
+                    conditionFalse.postLoadTimerFired();
+                }
+            }
+        };
+        timer.schedule(100);
+    }
+
     protected void bumpAudioTicker() {
         audioTickerTimer.schedule(100);
     }
@@ -212,6 +228,22 @@ public abstract class AbstractPresenter implements Presenter {
         if($wnd.plugins){
             $wnd.plugins.fieldKitRecorder.record(function (tagvalue) {
                 console.log("startAudioRecorderOk: " + tagvalue);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, tagvalue);
+            }, function (tagvalue) {
+                console.log("startAudioRecorderError: " + tagvalue);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
+            },  userIdString, directoryName,  stimulusIdString);
+        } else {
+            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
+        }
+     }-*/;
+
+    protected native void writeStimuliData(String userIdString, String stimulusIdString, String stimulusJsonData) /*-{
+        var abstractPresenter = this;
+        console.log("writeStimuliData: " + userIdString + " : " + stimulusIdString + " : " + stimulusJsonData);
+        if($wnd.plugins){
+            $wnd.plugins.fieldKitRecorder.writeStimuliData(function (tagvalue) {
+                console.log("writeStimuliData: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, tagvalue);
             }, function (tagvalue) {
                 console.log("startAudioRecorderError: " + tagvalue);

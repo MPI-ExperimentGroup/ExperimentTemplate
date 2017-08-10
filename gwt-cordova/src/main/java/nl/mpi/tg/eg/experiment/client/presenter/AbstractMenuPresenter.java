@@ -46,20 +46,6 @@ public abstract class AbstractMenuPresenter extends AbstractPresenter implements
         this.localStorage = localStorage;
     }
 
-    public void hasGetParameter(final AppEventListner appEventListner, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse, final String getParamName) {
-        Timer timer = new Timer() {
-            public void run() {
-                String paramValue = Window.Location.getParameter(getParamName);
-                if (paramValue != null) {
-                    conditionTrue.postLoadTimerFired();
-                } else {
-                    conditionFalse.postLoadTimerFired();
-                }
-            }
-        };
-        timer.schedule(100);
-    }
-
     public void allMenuItems(final AppEventListner appEventListner, final ApplicationController.ApplicationState selfApplicationState) {
         for (final ApplicationController.ApplicationState currentAppState : ApplicationController.ApplicationState.values()) {
             if (currentAppState.label != null && selfApplicationState != currentAppState) {
