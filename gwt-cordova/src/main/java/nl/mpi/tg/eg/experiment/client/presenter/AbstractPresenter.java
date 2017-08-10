@@ -248,7 +248,7 @@ public abstract class AbstractPresenter implements Presenter {
             }, function (tagvalue) {
                 console.log("startAudioRecorderError: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
-            },  userIdString, directoryName,  stimulusIdString);
+            },  userIdString, stimulusIdString,  stimulusIdString);
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
         }
