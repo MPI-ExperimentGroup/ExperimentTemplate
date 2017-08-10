@@ -395,6 +395,15 @@ public class StimulusProvider implements StimuliProvider {
         return this.stimulusSubsetArray.get(currentStimuliIndex);
     }
 
+    public String getCurrentStimulusUniqueId() {
+        try {
+            final Stimulus currentStimulus = getCurrentStimulus();
+            return (currentStimulus != null) ? currentStimulus.getUniqueId() : null;
+        } catch (IndexOutOfBoundsException boundsException) {
+            return null;
+        }
+    }
+
     @Override
     public int getCurrentStimulusIndex() {
         return currentStimuliIndex;
