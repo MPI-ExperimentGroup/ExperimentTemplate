@@ -49,11 +49,13 @@ public class FieldKitRecorder extends CordovaPlugin {
         if (action.equals("requestPermissions")) {
             System.out.println("action: requestPermissions");
             if (!cordova.hasPermission(Manifest.permission.RECORD_AUDIO)
+//                    || !cordova.hasPermission(Manifest.permission.CAMERA)
                     //                    || !cordova.hasPermission(Manifest.permission.MODIFY_AUDIO_SETTINGS)
                     //                    || !cordova.hasPermission(Manifest.permission.MEDIA_CONTENT_CONTROL) // MODIFY_AUDIO_SETTINGS MEDIA_CONTENT_CONTROL?
                     || !cordova.hasPermission(Manifest.permission.READ_EXTERNAL_STORAGE) // MODIFY_AUDIO_SETTINGS MEDIA_CONTENT_CONTROL?
                     || !cordova.hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                 String[] permissions = {
+//                    Manifest.permission.CAMERA,
                     Manifest.permission.RECORD_AUDIO,
                     //                Manifest.permission.MODIFY_AUDIO_SETTINGS,
                     Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -195,6 +197,32 @@ public class FieldKitRecorder extends CordovaPlugin {
                             callbackContext.success();
                         } else {
                             callbackContext.error("not recording");
+                        }
+                    }
+                });
+                return true;
+            }
+            if (action.equals("writeStimuliData")) {
+                final String userId = args.getString(0);
+                final String stimulusId = args.getString(1);
+                final String stimuliData = args.getString(2);
+                System.out.println("userId: " + userId);
+                System.out.println("stimulusId: " + stimulusId);
+                System.out.println("stimuliData: " + stimuliData);
+                cordova.getThreadPool().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            final File outputDirectory = new File(externalStoragePath, AUDIO_RECORDER_FOLDER
+                                    + File.separator + userId + File.separator);
+                            final StimuliJsonWriter stimuliJsonWriter = new StimuliJsonWriter(outputDirectory);
+                            if (stimuliJsonWriter.writeJsonFile(FieldKitRecorder.this.cordova.getActivity().getApplicationContext(), stimulusId, stimuliData)) {
+                                callbackContext.success();
+                            } else {
+                                callbackContext.error("stimulid data not written");
+                            }
+                        } catch (final IOException e) {
+                            System.out.println("IOException, stimulid data not written: " + e.getMessage());
                         }
                     }
                 });

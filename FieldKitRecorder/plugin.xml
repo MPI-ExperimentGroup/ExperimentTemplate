@@ -41,12 +41,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             </feature>
         </config-file>
         <config-file target="AndroidManifest.xml" parent="/manifest">
+            <!--<uses-permission android:name="android.permission.CAMERA"/>-->
             <uses-permission android:name="android.permission.RECORD_AUDIO"/>
             <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
         </config-file>
         <source-file src="src/android/nl/mpi/tg/eg/frinex/FieldKitRecorder.java" target-dir="src/nl/mpi/tg/eg/frinex"/>
         <source-file src="src/android/nl/mpi/tg/eg/frinex/CsvWriter.java" target-dir="src/nl/mpi/tg/eg/frinex"/>
+        <source-file src="src/android/nl/mpi/tg/eg/frinex/StimuliJsonWriter.java" target-dir="src/nl/mpi/tg/eg/frinex"/>
         <source-file src="src/android/nl/mpi/tg/eg/frinex/CSVRow.java" target-dir="src/nl/mpi/tg/eg/frinex"/>
         <source-file src="src/android/nl/mpi/tg/eg/frinex/AudioRecorder.java" target-dir="src/nl/mpi/tg/eg/frinex"/>
         <source-file src="src/android/nl/mpi/tg/eg/frinex/WavRecorder.java" target-dir="src/nl/mpi/tg/eg/frinex"/>
