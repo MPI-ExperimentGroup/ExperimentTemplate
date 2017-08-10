@@ -99,6 +99,12 @@ public class HtmlTokenFormatterTest {
             public String getUserLabel() {
                 return "UserLabel";
             }
+
+            @Override
+            public String getGroupId() {
+                return "GroupId";
+            }
+
         }, new UserData());
         final String formattedString = instance.formatString(inputString);
         System.out.println("expectedString:" + expectedString);
