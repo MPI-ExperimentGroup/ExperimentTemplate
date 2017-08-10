@@ -47,8 +47,24 @@ public class HtmlTokenFormatter {
             }
             replacedTokensString = replacedTokensString.replace(channelLoopString, channelLoopStringOutput);
         }
-        replacedTokensString = replacedTokensString.replace("<groupScore>", groupParticipantService.getGroupScore());
-        replacedTokensString = replacedTokensString.replaceAll("<channelScore>", groupParticipantService.getChannelScore());
+        final String groupScore = groupParticipantService.getGroupScore();
+        replacedTokensString = replacedTokensString.replace("<groupScore>", (groupScore != null) ? groupScore : "---");
+        final String allMemberCodes = groupParticipantService.getAllMemberCodes();
+        replacedTokensString = replacedTokensString.replace("<groupAllMemberCodes>", (allMemberCodes != null) ? allMemberCodes : "---");
+        final String activeChannel = groupParticipantService.getActiveChannel();
+        replacedTokensString = replacedTokensString.replace("<groupActiveChannel>", (activeChannel != null) ? activeChannel : "---");
+        final String groupCommunicationChannels = groupParticipantService.getGroupCommunicationChannels();
+        replacedTokensString = replacedTokensString.replace("<groupCommunicationChannels>", (groupCommunicationChannels != null) ? groupCommunicationChannels : "---");
+        final String memberCode = groupParticipantService.getMemberCode();
+        replacedTokensString = replacedTokensString.replace("<groupMemberCode>", (memberCode != null) ? memberCode : "---");
+        final String messageString = groupParticipantService.getMessageString();
+        replacedTokensString = replacedTokensString.replace("<groupMessageString>", (messageString != null) ? messageString : "---");
+        final String groupId = groupParticipantService.getGroupId();
+        replacedTokensString = replacedTokensString.replace("<groupId>", (groupId != null) ? groupId : "---");
+        final String userLabel = groupParticipantService.getUserLabel();
+        replacedTokensString = replacedTokensString.replace("<groupUserLabel>", (userLabel != null) ? userLabel : "---");
+        final String channelScore = groupParticipantService.getChannelScore();
+        replacedTokensString = replacedTokensString.replaceAll("<channelScore>", (channelScore != null) ? channelScore : "---");
         replacedTokensString = replacedTokensString.replaceAll("<playerScore>", Integer.toString(userData.getCurrentScore()));
         replacedTokensString = replacedTokensString.replaceAll("<playerBestScore>", Double.toString(userData.getBestScore()));
         return replacedTokensString;
