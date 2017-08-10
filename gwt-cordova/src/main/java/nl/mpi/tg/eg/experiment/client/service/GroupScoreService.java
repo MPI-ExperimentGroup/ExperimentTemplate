@@ -45,4 +45,6 @@ public interface GroupScoreService {
 
     String getUserLabel();
 
+    String getGroupId();
+
 }
