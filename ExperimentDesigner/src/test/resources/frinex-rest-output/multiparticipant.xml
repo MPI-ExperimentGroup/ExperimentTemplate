@@ -49,7 +49,7 @@
                                             <groupNetworkActivity groupRole="A,B,C,D:-">
                                                 <clearPage/>
                                                 <centrePage/>
-                                                <htmlTokenText featureText="Connected to: &lt;groupId&gt;&lt;br/&gt;Group members: &lt;groupAllMemberCodes&gt;&lt;br/&gt;As member: &lt;groupMemberCode&gt;&lt;br/&gt;"/>
+                                                <htmlTokenText featureText="Connected to: &lt;groupId&gt;&lt;br/&gt;&lt;br/&gt;Group members: &lt;groupAllMemberCodes&gt;&lt;br/&gt;&lt;br/&gt;As member: &lt;groupMemberCode&gt;&lt;br/&gt;&lt;br/&gt;"/>
                                                 <sendGroupMessageButton featureText="Continue [enter]" eventTag="joinGroupMessageButton" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                                             </groupNetworkActivity>
                                             <groupNetworkActivity groupRole="-:A,B,C,D">
@@ -92,7 +92,7 @@
                                                     <groupNetworkActivity groupRole="A,B,C,D,E,F,G,H:-">
                                                         <clearPage/>
                                                         <centrePage/>
-                                                        <htmlTokenText featureText="Connected to: &lt;groupId&gt;&lt;br/&gt;Group members: &lt;groupAllMemberCodes&gt;&lt;br/&gt;As member: &lt;groupMemberCode&gt;&lt;br/&gt;"/>
+                                                        <htmlTokenText featureText="Connected to: &lt;groupId&gt;&lt;br/&gt;&lt;br/&gt;Group members: &lt;groupAllMemberCodes&gt;&lt;br/&gt;&lt;br/&gt;As member: &lt;groupMemberCode&gt;&lt;br/&gt;&lt;br/&gt;"/>
                                                         <sendGroupMessageButton featureText="Continue [enter]" eventTag="joinGroupMessageButton" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                                                     </groupNetworkActivity>
                                                     <groupNetworkActivity groupRole="-:A,B,C,D,E,F,G,H">
