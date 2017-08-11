@@ -162,7 +162,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
-    protected void loadAllStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final boolean randomise, int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+    protected void loadAllStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final boolean randomise, int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
         final String storedStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag());
         int seenStimulusIndex;
@@ -171,13 +171,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         } catch (NumberFormatException exception) {
             seenStimulusIndex = -1;
         }
-        stimulusProvider.getSubset(selectionTags, randomise, repeatCount, repeatRandomWindow, storedStimulusList, seenStimulusIndex);
+        stimulusProvider.getSubset(selectionTags, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, storedStimulusList, seenStimulusIndex);
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
         showStimulus(null);
     }
 
-    protected void loadSdCardStimulus(final String eventTag, final List<Stimulus.Tag> selectionTags, final List<Stimulus.Tag> randomTags, final MetadataField stimulusAllocationField, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+    protected void loadSdCardStimulus(final String eventTag, final List<Stimulus.Tag> selectionTags, final List<Stimulus.Tag> randomTags, final MetadataField stimulusAllocationField, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         final String subDirectory = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag());
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
         final String storedStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag() + subDirectory);
@@ -196,7 +196,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     endOfStimulusListener.postLoadTimerFired();
                 } else {
                     localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag(), "");
-                    loadSdCardStimulus(eventTag, selectionTags, randomTags, stimulusAllocationField, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, endOfStimulusListener);
+                    loadSdCardStimulus(eventTag, selectionTags, randomTags, stimulusAllocationField, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, hasMoreStimulusListener, endOfStimulusListener);
                 }
             }
         };
@@ -231,13 +231,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                             public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
                                 // show the subdirectorydirectory[0], 
                                 localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag(), directory[0]);
-                                loadSdCardStimulus(directory[1], selectionTags, randomTags, stimulusAllocationField, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, new TimedStimulusListener() {
+                                loadSdCardStimulus(directory[1], selectionTags, randomTags, stimulusAllocationField, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, hasMoreStimulusListener, new TimedStimulusListener() {
                                     @Override
                                     public void postLoadTimerFired() {
                                         localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "completed-directory-" + directory[0] + "-" + getSelfTag(), Boolean.toString(true));
                                         // go back to the initial directory 
                                         localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag(), "");
-                                        loadSdCardStimulus(eventTag, selectionTags, randomTags, stimulusAllocationField, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, endOfStimulusListener);
+                                        loadSdCardStimulus(eventTag, selectionTags, randomTags, stimulusAllocationField, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, hasMoreStimulusListener, endOfStimulusListener);
                                     }
                                 });
                             }
@@ -255,7 +255,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             public void postLoadTimerFired() {
                 ((TimedStimulusView) simpleView).addText("Stimulus loading error");
             }
-        }, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, storedStimulusList, seenStimulusIndex);
+        }, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, storedStimulusList, seenStimulusIndex);
     }
 
     @Override
@@ -274,13 +274,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
-    protected void loadStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
-        loadStimulus(eventTag, selectionTags, Arrays.asList(new Stimulus.Tag[]{}), null, maxStimulusCount, null, null, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, endOfStimulusListener);
+    protected void loadStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+        loadStimulus(eventTag, selectionTags, Arrays.asList(new Stimulus.Tag[]{}), null, maxStimulusCount, null, null, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, hasMoreStimulusListener, endOfStimulusListener);
     }
 
-    protected void loadStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final List<Stimulus.Tag> randomTags, final MetadataField stimulusAllocationField, final int maxStimulusCount, final boolean randomise, int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+    protected void loadStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final List<Stimulus.Tag> randomTags, final MetadataField stimulusAllocationField, final int maxStimulusCount, final boolean randomise, int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         // todo: remove this when the experiment definition is updated
-        loadStimulus(eventTag, selectionTags, randomTags, stimulusAllocationField, maxStimulusCount, maxStimulusCount, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, hasMoreStimulusListener, endOfStimulusListener);
+        loadStimulus(eventTag, selectionTags, randomTags, stimulusAllocationField, maxStimulusCount, maxStimulusCount, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, hasMoreStimulusListener, endOfStimulusListener);
     }
 
     protected void loadStimulus(String eventTag,
@@ -293,6 +293,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             final boolean randomise,
             int repeatCount,
             final int repeatRandomWindow,
+            final int adjacencyThreshold,
             final TimedStimulusListener hasMoreStimulusListener,
             final TimedStimulusListener endOfStimulusListener
     ) {
@@ -477,7 +478,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             final Timer groupKickTimer = new Timer() {
                 @Override
                 public void run() {
-                    groupParticipantService.messageGroup(0, 0, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null, null, null, (int) userResults.getUserData().getBestScore(), groupMembers);
+                    groupParticipantService.messageGroup(0, 0, stimulusProvider.getCurrentStimulusUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null, null, null, (int) userResults.getUserData().getBestScore(), groupMembers);
                 }
             };
             groupParticipantService = new GroupParticipantService(
@@ -542,9 +543,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                         stimulusProvider.setCurrentStimuliIndex(groupParticipantService.getStimulusIndex());
                     } else {
                         // if the group message puts the stimuli list at the end then fire the end of stimulus listner
-                        submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "group message puts the stimuli list at the end", stimulusProvider.getCurrentStimulus().getUniqueId() + ":" + stimulusProvider.getCurrentStimulusIndex() + "/" + stimulusProvider.getTotalStimuli(), duration.elapsedMillis());
+                        submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "group message puts the stimuli list at the end", stimulusProvider.getCurrentStimulusUniqueId() + ":" + stimulusProvider.getCurrentStimulusIndex() + "/" + stimulusProvider.getTotalStimuli(), duration.elapsedMillis());
                         groupParticipantService.setEndOfStimuli(true); // block further messages
-                        endOfStimulusListener.postLoadTimerFired();
+                        if (endOfStimulusListener != null) {
+                            endOfStimulusListener.postLoadTimerFired();
+                        }
                     }
                 }
             }, new TimedStimulusListener() {
@@ -565,7 +568,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
                         @Override
                         public void eventFired(ButtonBase button, final SingleShotEventListner shotEventListner) {
-                            groupParticipantService.messageGroup(0, 0, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null, null, null, (int) userResults.getUserData().getBestScore(), groupMembers);
+                            groupParticipantService.messageGroup(0, 0, stimulusProvider.getCurrentStimulusUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null, null, null, (int) userResults.getUserData().getBestScore(), groupMembers);
 //                            ((ComplexView) simpleView).showHtmlPopup(null,
 //                                    "Group Members\n" + groupParticipantService.getAllMemberCodes()
 //                                    + "\n\nGroup Communication Channels\n" + groupParticipantService.getGroupCommunicationChannels()
@@ -1238,6 +1241,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 return;
             }
         }
+        writeStimuliData(userResults.getUserData().getUserId().toString(), stimulusProvider.getCurrentStimulus().getUniqueId(), storedStimulusJSONObject.toString());
         for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
             submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), stimulusFreeText.getPostName(), stimulusProvider.getCurrentStimulus().getUniqueId(), stimulusFreeText.getValue(), duration.elapsedMillis());
             final String correctResponses = stimulusProvider.getCurrentStimulus().getCorrectResponses();
