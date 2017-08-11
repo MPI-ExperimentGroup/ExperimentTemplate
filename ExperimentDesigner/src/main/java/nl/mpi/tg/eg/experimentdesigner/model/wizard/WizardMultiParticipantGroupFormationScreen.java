@@ -71,7 +71,7 @@ public class WizardMultiParticipantGroupFormationScreen extends AbstractWizardSc
         final PresenterFeature agreementActivity = new PresenterFeature(FeatureType.groupNetworkActivity, null);
         joinGroupActivity.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         joinGroupActivity.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
-        joinGroupActivity.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlTokenText, "Connected to: <groupId><br/>Group members: <groupAllMemberCodes><br/>As member: <groupMemberCode><br/>"));
+        joinGroupActivity.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlTokenText, "Connected to: <groupId><br/><br/>Group members: <groupAllMemberCodes><br/><br/>As member: <groupMemberCode><br/><br/>"));
         final PresenterFeature joinGroupMessageButton = new PresenterFeature(FeatureType.sendGroupMessageButton, "Continue [enter]");
         joinGroupMessageButton.addFeatureAttributes(FeatureAttribute.eventTag, "joinGroupMessageButton");
         joinGroupMessageButton.addFeatureAttributes(FeatureAttribute.incrementPhase, "1");
