@@ -168,7 +168,9 @@
                             <clearPage/>
                             <stimulusHasResponse>
                                 <conditionTrue>
-                                    <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="1"/>
+                                    <pause msToNext="2000">
+                                        <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="1"/>
+                                    </pause>
                                 </conditionTrue>
                                 <conditionFalse>
                                     <stimulusLabel/>
@@ -183,7 +185,12 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,C,D:-:A,C,D:-:B,A,D:-:B,C,A:-">
                             <clearPage/>
-                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                            <stimulusHasResponse>
+                                <conditionTrue/>
+                                <conditionFalse>
+                                    <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                                </conditionFalse>
+                            </stimulusHasResponse>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D">
                             <clearPage/>
@@ -221,7 +228,9 @@
                             <clearPage/>
                             <stimulusHasResponse>
                                 <conditionTrue>
-                                    <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="1"/>
+                                    <pause msToNext="2000">
+                                        <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="1"/>
+                                    </pause>
                                 </conditionTrue>
                                 <conditionFalse>
                                     <stimulusLabel/>
@@ -236,7 +245,12 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,C,D:-:A,C,D:-:B,A,D:-:B,C,A:-">
                             <clearPage/>
-                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                            <stimulusHasResponse>
+                                <conditionTrue/>
+                                <conditionFalse>
+                                    <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                                </conditionFalse>
+                            </stimulusHasResponse>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D">
                             <clearPage/>
@@ -274,7 +288,9 @@
                             <clearPage/>
                             <stimulusHasResponse>
                                 <conditionTrue>
-                                    <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="1"/>
+                                    <pause msToNext="2000">
+                                        <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="1"/>
+                                    </pause>
                                 </conditionTrue>
                                 <conditionFalse>
                                     <stimulusLabel/>
@@ -289,7 +305,12 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,C,D:-:A,C,D:-:B,A,D:-:B,C,A:-">
                             <clearPage/>
-                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                            <stimulusHasResponse>
+                                <conditionTrue/>
+                                <conditionFalse>
+                                    <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                                </conditionFalse>
+                            </stimulusHasResponse>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D">
                             <clearPage/>
@@ -1151,7 +1172,9 @@
                             <clearPage/>
                             <stimulusHasResponse>
                                 <conditionTrue>
-                                    <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="1"/>
+                                    <pause msToNext="2000">
+                                        <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="1"/>
+                                    </pause>
                                 </conditionTrue>
                                 <conditionFalse>
                                     <stimulusLabel/>
@@ -1166,7 +1189,12 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-">
                             <clearPage/>
-                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                            <stimulusHasResponse>
+                                <conditionTrue/>
+                                <conditionFalse>
+                                    <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                                </conditionFalse>
+                            </stimulusHasResponse>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H">
                             <clearPage/>
@@ -1204,7 +1232,9 @@
                             <clearPage/>
                             <stimulusHasResponse>
                                 <conditionTrue>
-                                    <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="1"/>
+                                    <pause msToNext="2000">
+                                        <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="1"/>
+                                    </pause>
                                 </conditionTrue>
                                 <conditionFalse>
                                     <stimulusLabel/>
@@ -1219,7 +1249,12 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-">
                             <clearPage/>
-                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                            <stimulusHasResponse>
+                                <conditionTrue/>
+                                <conditionFalse>
+                                    <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                                </conditionFalse>
+                            </stimulusHasResponse>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H">
                             <clearPage/>
@@ -1257,7 +1292,9 @@
                             <clearPage/>
                             <stimulusHasResponse>
                                 <conditionTrue>
-                                    <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="1"/>
+                                    <pause msToNext="2000">
+                                        <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="1"/>
+                                    </pause>
                                 </conditionTrue>
                                 <conditionFalse>
                                     <stimulusLabel/>
@@ -1272,7 +1309,12 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-">
                             <clearPage/>
-                            <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                            <stimulusHasResponse>
+                                <conditionTrue/>
+                                <conditionFalse>
+                                    <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
+                                </conditionFalse>
+                            </stimulusHasResponse>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H">
                             <clearPage/>
