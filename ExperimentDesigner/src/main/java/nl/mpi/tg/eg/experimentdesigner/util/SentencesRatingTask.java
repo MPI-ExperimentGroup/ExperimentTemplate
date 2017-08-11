@@ -420,8 +420,8 @@ public class SentencesRatingTask {
         imageabilityOfAction.setRandomStimuliTagsField("set");
         wizardData.addScreen(imageabilityOfAction);
 
-        WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, true, true,
-                "If anybody else on this device wants to participate in this research, please click on the button below.",
+        WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, false, true,
+                "Please use this link to return to the Prolific website and register your efforts: <a href=\"https://prolific.ac/submissions/complete?cc=7A2UJ2RC\">register your efforts</a>.",
                 "Start over",
                 "Finished",
                 "Could not contact the server, please check your internet connection and try again.", "Retry");
