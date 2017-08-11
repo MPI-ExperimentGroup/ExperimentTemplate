@@ -37,7 +37,7 @@ public class AbstractWizardScreenTest {
             new WizardScoreThresholdScreen("screenText1", 8, "screenTitle", new WizardAboutScreen("screenTitle", true), "retryButton"),
             new WizardTextScreen("screenName", "screenText", "nextButtonLabel"),
             new WizardMenuScreen("screenTitle", "menuLabel", "screenTag"),
-            new WizardMultiParticipantScreen("screenName", "groupMembers", 2, "communicationChannels", "textEntryPhaseRoles", "textEntryPhaseText", "textWaitPhaseRoles", true, "textWaitPhaseText", "gridWaitPhaseRoles", "gridWaitPhaseText", "responseGridPhaseRoles", "responseGridPhaseText", "responseGridPhaseText", "responseGridPhaseText", "mutualFeedbackPhaseRoles", "mutualFeedbackPhaseText", "trainingDisplayPhaseRoles", "trainingDisplayPhaseText", "groupRecordSubmitionPhaseRoles", "groupRecordSubmitionNextPhaseRoles", "preStimuliText", "postStimuliText", 0, 0, 0, 0, 0, 0, "timerCountDownLabel")
+            new WizardMultiParticipantScreen("screenName", "groupMembers", 2, "communicationChannels", "textEntryPhaseRoles", "textEntryPhaseText", "textWaitPhaseRoles", true, "textWaitPhaseText", "gridWaitPhaseRoles", "gridWaitPhaseText", "responseGridPhaseRoles", "responseGridPhaseText", "responseGridPhaseText", "responseGridPhaseText", "mutualFeedbackPhaseRoles", "mutualFeedbackPhaseText", "trainingDisplayPhaseRoles", "trainingDisplayPhaseText", "groupRecordSubmitionPhaseRoles", "groupRecordSubmitionNextPhaseRoles", "preStimuliText", "postStimuliText", 0, 0, 0, 0, 0, 0, 0, "timerCountDownLabel")
         };
     }
 
