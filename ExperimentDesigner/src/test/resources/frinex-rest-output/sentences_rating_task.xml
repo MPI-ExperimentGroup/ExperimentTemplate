@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment appNameDisplay="Sentences Rating Task" appNameInternal="sentences_rating_task" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="true" textFontSize="22">
     <metadata>
+        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="prolific_pid" preventServerDuplicates="false" registrationField="Prolific ID"/>
         <field controlledMessage="Enter a number." controlledRegex="[0-9]+" postName="age" preventServerDuplicates="false" registrationField="Age"/>
         <field controlledMessage="." controlledRegex="|male|female|other" postName="gender" preventServerDuplicates="false" registrationField="Gender"/>
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="language" preventServerDuplicates="false" registrationField="What is your native language?"/>
@@ -8,6 +9,7 @@
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="nationality" preventServerDuplicates="false" registrationField="What is your nationality?"/>
         <field controlledMessage="." controlledRegex=".*" postName="set" preventServerDuplicates="false" registrationField="set"/>
         <field controlledMessage="Please enter your login code." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Login code"/>
+        <field controlledMessage="Please enter your login code." controlledRegex=".'{'3,'}'" postName="session_id" preventServerDuplicates="false" registrationField="session_id"/>
     </metadata>
     <presenter displayOrder="1" menuLabel="Back" next="Information" type="metadata" self="Consent" title="Consent">
         <htmlText featureText="Declaration of Consent for Participation in Research: &lt;br/&gt;ONION rating survey &lt;br/&gt;Before you begin this experiment, please confirm that you give consent to participate in this experiment. We will save your responses for later analysis. We will only use the results for scientific purposes; we will report on them in specialized journals or perhaps in newspapers or on our website. However, your data will ALWAYS be treated anonymously. &lt;br/&gt; &lt;br/&gt;By giving your consent, you declare that you have been sufficiently informed about this study and that you participate of your own free will. You are free to withdraw from this experiment at any point in time without an explanation. You may also have your data removed from the database at any time prior to publication, without giving a reason. &lt;br/&gt; &lt;br/&gt;There are no known risks related to your participation in this experiment. &lt;br/&gt;&lt;br/&gt;If you agree to take part in this experiment, click 'Agree' to continue. &lt;br/&gt;If you decide not to participate in the experiment, you can close the page or go to another website. &lt;br/&gt;&lt;br/&gt;"/>
@@ -26,6 +28,7 @@
         <targetButton featureText="next [ spacebar ]" hotKey="SPACE" target="Instruction4"/>
     </presenter>
     <presenter back="Consent" displayOrder="5" menuLabel="Back" next="Instruction1" type="metadata" self="Information" title="Information">
+        <metadataField fieldName="prolific_pid"/>
         <metadataField fieldName="age"/>
         <metadataField fieldName="gender"/>
         <metadataField fieldName="language"/>
@@ -126,9 +129,7 @@
                 <addPadding/>
                 <generateCompletionCode/>
                 <addPadding/>
-                <htmlText featureText="If anybody else on this device wants to participate in this research, please click on the button below."/>
-                <addPadding/>
-                <eraseUsersDataButton featureText="Start over"/>
+                <htmlText featureText="Please use this link to return to the Prolific website and register your efforts: &lt;a href=&quot;https://prolific.ac/submissions/complete?cc=7A2UJ2RC&quot;&gt;register your efforts&lt;/a&gt;."/>
             </onSuccess>
             <onError>
                 <plainText featureText="Could not contact the server, please check your internet connection and try again."/>
