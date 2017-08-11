@@ -383,7 +383,7 @@ public class MultiParticipant {
                 groupRecordSubmitionPhaseRoles,
                 preStimuliText, postStimuliText,
                 numberOfStimuli, repeatCountStimuli, randomWindowStimuli,
-                0,
+                0, 0,
                 0, 0, null
         );
     }
@@ -410,7 +410,7 @@ public class MultiParticipant {
                 "",
                 preStimuliText, postStimuliText,
                 numberOfStimuli, 1, randomWindowStimuli,
-                7000,
+                7000, 2000,
                 0, 0, null);
         wizardMultiParticipantScreen.setUseDictionary(true);
         return wizardMultiParticipantScreen;
@@ -471,7 +471,7 @@ public class MultiParticipant {
                 "",
                 preStimuliText, postStimuliText,
                 numberOfStimuli, repeatCountStimuli, randomWindowStimuli,
-                0,
+                0, 0,
                 timerCountDownProducerMs, timerCountDownGuesserMs, timerCountDownLabel);
     }
 
