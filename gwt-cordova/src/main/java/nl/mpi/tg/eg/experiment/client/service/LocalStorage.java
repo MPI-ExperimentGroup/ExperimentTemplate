@@ -166,6 +166,7 @@ public class LocalStorage {
     public void setStoredJSONObject(UserId userId, Stimulus stimulus, JSONObject jSONObject) {
         loadStorage();
         dataStore.setItem(STIMULI_DATA + userId.toString() + "." + stimulus.getUniqueId(), jSONObject.toString());
+        // with android versions this JSON data is saved to the SDcard via the StimulusPresenter
     }
 
     public String getStoredDataValue(UserId userId, String label) {
@@ -311,7 +312,9 @@ public class LocalStorage {
     public UserId getLastUserId() {
         loadStorage();
         if (Window.Location.getParameter("testuser") != null) {
-            return new UserId("testuser-" + Window.Location.getParameter("testuser"));
+            return new UserId("testuser-" + Window.Location.getParameter("testuser")); // 
+        } else if (Window.Location.getParameter("prolific_pid") != null) {
+            return new UserId("prolific_pid-" + Window.Location.getParameter("prolific_pid")); // 
         } else if (dataStore != null) {
             final String storedUserId = getCleanStoredData(LAST_USER_ID);
             if (!storedUserId.isEmpty()) {
