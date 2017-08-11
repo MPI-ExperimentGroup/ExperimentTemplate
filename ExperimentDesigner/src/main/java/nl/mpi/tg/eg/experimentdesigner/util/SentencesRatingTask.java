@@ -367,6 +367,7 @@ public class SentencesRatingTask {
 //        wizardEditUserScreen.setMetadataScreen(true);
 //        wizardData.setAgeField(true);
         wizardEditUserScreen.setCustomFields(new String[]{
+            "prolific_pid:Prolific ID:.'{'3,'}':Please enter at least three letters.",
             "age:Age:[0-9]+:Enter a number.",
             "gender:Gender:|male|female|other:.",
             "language:What is your native language?:.'{'3,'}':Please enter at least three letters.",
@@ -453,6 +454,7 @@ public class SentencesRatingTask {
     public Experiment getExperiment() {
         final Experiment experiment = wizardController.getExperiment(getWizardData());
         experiment.getMetadata().add(new Metadata("workerId", "Login code", ".'{'3,'}'", "Please enter your login code.", false, null));
+        experiment.getMetadata().add(new Metadata("session_id", "session_id", ".'{'3,'}'", "Please enter your login code.", false, null));
         return experiment;
     }
 }
