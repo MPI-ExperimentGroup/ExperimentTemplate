@@ -49,14 +49,15 @@ public class HtmlTokenFormatter {
         }
         final String groupScore = groupParticipantService.getGroupScore();
         replacedTokensString = replacedTokensString.replace("<groupScore>", (groupScore != null) ? groupScore : "---");
+        final String memberCode = groupParticipantService.getMemberCode();
+        replacedTokensString = replacedTokensString.replace("<groupMemberCode>", (memberCode != null) ? memberCode : "---");
         final String allMemberCodes = groupParticipantService.getAllMemberCodes();
         replacedTokensString = replacedTokensString.replace("<groupAllMemberCodes>", (allMemberCodes != null) ? allMemberCodes : "---");
+        replacedTokensString = replacedTokensString.replace("<groupOtherMemberCodes>", (allMemberCodes != null) ? allMemberCodes.replace(memberCode, "").replaceAll("[,]+", ",").replaceAll(",$", "").replaceAll("^,", "") : "---");
         final String activeChannel = groupParticipantService.getActiveChannel();
         replacedTokensString = replacedTokensString.replace("<groupActiveChannel>", (activeChannel != null) ? activeChannel : "---");
         final String groupCommunicationChannels = groupParticipantService.getGroupCommunicationChannels();
         replacedTokensString = replacedTokensString.replace("<groupCommunicationChannels>", (groupCommunicationChannels != null) ? groupCommunicationChannels : "---");
-        final String memberCode = groupParticipantService.getMemberCode();
-        replacedTokensString = replacedTokensString.replace("<groupMemberCode>", (memberCode != null) ? memberCode : "---");
         final String messageString = groupParticipantService.getMessageString();
         replacedTokensString = replacedTokensString.replace("<groupMessageString>", (messageString != null) ? messageString : "---");
         final String groupId = groupParticipantService.getGroupId();
