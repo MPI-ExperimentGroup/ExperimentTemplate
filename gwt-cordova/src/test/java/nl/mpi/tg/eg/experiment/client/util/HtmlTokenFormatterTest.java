@@ -42,9 +42,10 @@ public class HtmlTokenFormatterTest {
         System.out.println("formatString");
 
         String inputString = "Q<groupScore>W<channelScore>E"
-                + "R<channelLoop>Duo <channelLabel> heeft <channelScore> punten.<br/><br/></channelLoop>Y";
+                + "R<channelLoop>Duo <channelLabel> heeft <channelScore> punten.<br/><br/></channelLoop>Y"
+                + "C<groupOtherMemberCodes>D";
         // todo: implement the channelLoop
-        final String expectedString = "QGroupScoreWChannelScoreERDuo A-B heeft 6 punten.<br/><br/>Duo C-D heeft 2 punten.<br/><br/>Y";
+        final String expectedString = "QGroupScoreWChannelScoreERDuo A-B heeft 6 punten.<br/><br/>Duo C-D heeft 2 punten.<br/><br/>YCA,B,C,D,E,FD";
         final HashMap<String, String> channelScores = new HashMap<>();
         channelScores.put("A-B", "6");
         channelScores.put("C-D", "2");
@@ -57,7 +58,7 @@ public class HtmlTokenFormatterTest {
 
             @Override
             public String getAllMemberCodes() {
-                return "AllMemberCodes";
+                return ",A,B,,C,D,,X,E,F,";
             }
 
             @Override
@@ -87,7 +88,7 @@ public class HtmlTokenFormatterTest {
 
             @Override
             public String getMemberCode() {
-                return "MemberCode";
+                return "X";
             }
 
             @Override
