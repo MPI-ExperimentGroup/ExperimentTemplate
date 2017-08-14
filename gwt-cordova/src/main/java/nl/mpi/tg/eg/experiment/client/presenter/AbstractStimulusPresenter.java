@@ -328,7 +328,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }
         }
         // @todo: add the limits for maxStimulusCount and maxStimulusPerTag -
-        stimulusProvider.getSubset(allocatedTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, storedStimulusList, seenStimulusIndex);
+        stimulusProvider.getSubset(allocatedTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, storedStimulusList, seenStimulusIndex);
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
         showStimulus(null);
@@ -557,12 +557,12 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                         @Override
                         public String getLabel() {
                             final Integer stimulusIndex = groupParticipantService.getStimulusIndex();
-                            final String activeChannel = groupParticipantService.getActiveChannel();
+//                            final String activeChannel = groupParticipantService.getActiveChannel();
                             return groupParticipantService.getMemberCode()
-                                    + ((stimulusIndex != null) ? "("
-                                            + activeChannel
-                                            + ")" : "")
-                                    + ((stimulusIndex != null) ? "G"
+//                                    + ((stimulusIndex != null) ? "("
+//                                            + activeChannel
+//                                            + ")" : "")
+                                    + ((stimulusIndex != null) ? "-G"
                                             + (stimulusIndex + 1) : "");
                         }
 
