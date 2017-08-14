@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.experimentdesigner.util;
 
 import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
+import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
@@ -227,7 +228,8 @@ public class MultiParticipant {
         wizardEditUserScreen.setSendData(true);
         wizardEditUserScreen.setOn_Error_Text("Could not contact the server, please check your internet connection and try again.");
         wizardEditUserScreen.setAgeField();
-        wizardEditUserScreen.setFirstNameField();
+//        wizardEditUserScreen.setFirstNameField(); 
+        wizardEditUserScreen.getWizardScreenData().getMetadataFields().add(new Metadata("firstName", "First name", ".'{'1,'}'", "Please enter at least three letters or numbers.", false, null));
         wizardEditUserScreen.setMandatoryGenderField();
         wizardEditUserScreen.setWorkerIdField();
 
