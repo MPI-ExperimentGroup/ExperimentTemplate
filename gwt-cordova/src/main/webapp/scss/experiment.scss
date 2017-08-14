@@ -50,6 +50,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 .gwt-Label.headerButton {
     background: $primaryColour2;
     color: $primaryColour4;
+    white-space: nowrap;
 }
 
 .Android .gwt-Label.headerArrow {
