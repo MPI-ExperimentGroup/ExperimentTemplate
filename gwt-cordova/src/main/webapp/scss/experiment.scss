@@ -107,8 +107,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     border: none;
     /*cursor: pointer;*/
 }
-
-.headerLabel {
+.headerLabelCentered{
+    position:fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    white-space: nowrap;
+}
+.headerLabel, .headerLabelCentered {
     padding: 8px 10px;
     font-size: 30px;
 }
@@ -446,7 +452,7 @@ table#screenExample td, .stimulusHelpPanel .gwt-Button, .stimulusHelpText, .popu
 }
 
 .gwt-HTML a, .gwt-HTML a:visited, .gwt-HTML a:hover,
-.gwt-Label, .gwt-HTML, .headerLabel, .resultsTableTitle, .gwt-CheckBox, .pageLink, .contentBody {
+.gwt-Label, .gwt-HTML, .headerLabel, .headerLabelCentered, .resultsTableTitle, .gwt-CheckBox, .pageLink, .contentBody {
     color:$primaryColour1; 
     line-height: 20pt;
 } 
@@ -509,7 +515,7 @@ table#screenExample td, .stimulusHelpPanel .gwt-Button, .stimulusHelpText, .popu
 .svgPopupPanel .gwt-Button,
 .stimulusHelpText, .popupTextBox,
 table#screenExample td, .stimulusHelpPanel .gwt-Button,
-.gwt-Label, .gwt-HTML, .headerLabel, .resultsTableTitle, .gwt-CheckBox, .pageLink, .contentBody, .metadataErrorMessage,
+.gwt-Label, .gwt-HTML, .headerLabel, .headerLabelCentered, .resultsTableTitle, .gwt-CheckBox, .pageLink, .contentBody, .metadataErrorMessage,
 .gwt-Button.nextButton, .gwt-Button.menuButton,.gwt-PushButton.stimulusButton,.gwt-Button.stimulusButton,.gwt-Button.stimulusHelpButton, .gwt-Button.stimulusQuitButton, .gwt-Button.stimulusButton, .gwt-Button.optionButton, .gwt-Label.headerButton 
 {
     font-family: Calibri, "Open Sans", "Droid Sans", Arial, Candara, Segoe, "Segoe UI", Optima, sans-serif;
