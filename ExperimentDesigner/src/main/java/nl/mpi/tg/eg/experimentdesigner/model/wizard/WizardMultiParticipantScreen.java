@@ -101,6 +101,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         this.wizardScreenData.setScreenText(8, postStimuliText);
         this.wizardScreenData.setScreenText(13, mutualFeedbackPhaseCorrectText);
         this.wizardScreenData.setScreenText(14, mutualFeedbackPhaseIncorrectText);
+        this.wizardScreenData.setScreenText(15, "");
         setTimerCountDownGuesserMs(timerCountDownGuesserMs);
         setTimerCountDownProducerMs(timerCountDownProducerMs);
         setTimerCountDownLabel(timerCountDownLabel);
@@ -158,6 +159,14 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
     final public void setAllowedCharCodes(String allowedCharCodes) {
         this.wizardScreenData.setScreenText(6, allowedCharCodes);
+    }
+
+    private String getGroupTitle(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(15);
+    }
+
+    final public void setGroupTitle(String groupTitle) {
+        this.wizardScreenData.setScreenText(15, groupTitle);
     }
 
     private String getInputErrorMessage(WizardScreenData storedWizardScreenData) {
@@ -233,7 +242,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
     public String getScreenTextInfo(int index) {
         return new String[]{"Text Entry Phase Text", "Grid Wait Phase Text", "Text Wait Phase Text", "Response Grid Phase Text", "Mutual Feedback Phase Text", "Training Display Phase Text",
             "Allowed Char Codes", "Pre Stimuli Text", "Post Stimuli Text",
-            "Timer Count Down Ended Label", "FreeTextValidationRegex", "FreeTextValidationMessage", "KeyInputErrorMessage"}[index];
+            "Timer Count Down Ended Label", "FreeTextValidationRegex", "FreeTextValidationMessage", "KeyInputErrorMessage", "Group Page Title"}[index];
     }
 
     @Override
@@ -323,6 +332,15 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         return Arrays.asList(new PresenterFeature[]{scoreIncrement, scoreAboveThreshold, new PresenterFeature(FeatureType.submitGroupEvent, null)});
     }
 
+    private void addClearPageAndTitle(final WizardScreenData storedWizardScreenData, final PresenterFeature presenterFeature) {
+        presenterFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+        if (!getGroupTitle(storedWizardScreenData).isEmpty()) {
+            final PresenterFeature htmlTokenText = new PresenterFeature(FeatureType.htmlTokenText, getGroupTitle(storedWizardScreenData));
+            presenterFeature.getPresenterFeatureList().add(htmlTokenText);
+            htmlTokenText.addFeatureAttributes(FeatureAttribute.styleName, "headerLabelCentered");
+        }
+    }
+
     @Override
     public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         experiment.appendUniqueStimuli(storedWizardScreenData.getStimuli());
@@ -356,12 +374,12 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //        producerNetworkActivity0.getPresenterFeatureList().add(nextStimulusP);
 //        nextStimulusP.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
 //        nextStimulusP.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusProducerNetworkActivity1" + storedWizardScreenData.getScreenTitle());
-        producerNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
-        producerNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
-        guesserNetworkActivity0.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
-        guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
-        allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
-        trainingDisplayNetworkActivity3.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+        addClearPageAndTitle(storedWizardScreenData, producerNetworkActivity0);
+        addClearPageAndTitle(storedWizardScreenData, producerNetworkActivity1);
+        addClearPageAndTitle(storedWizardScreenData, guesserNetworkActivity0);
+        addClearPageAndTitle(storedWizardScreenData, guesserNetworkActivity1);
+        addClearPageAndTitle(storedWizardScreenData, allNetworkActivity2);
+        addClearPageAndTitle(storedWizardScreenData, trainingDisplayNetworkActivity3);
 
         final PresenterFeature conditionFalseProduer;
         final PresenterFeature conditionFalseGuesser;
