@@ -340,8 +340,12 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         matchingStimuliGroup.showNextStimulus();
     }
 
+    public void htmlTokenText(final String textString, final String styleName) {
+        ((TimedStimulusView) simpleView).addHtmlText(new HtmlTokenFormatter(groupParticipantService, userResults.getUserData()).formatString(textString), styleName);
+    }
+
     public void htmlTokenText(String textString) {
-        ((TimedStimulusView) simpleView).addHtmlText(new HtmlTokenFormatter(groupParticipantService, userResults.getUserData()).formatString(textString), null);
+        htmlTokenText(textString, null);
     }
 
     public void htmlText(String textString) {
@@ -559,9 +563,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                             final Integer stimulusIndex = groupParticipantService.getStimulusIndex();
 //                            final String activeChannel = groupParticipantService.getActiveChannel();
                             return groupParticipantService.getMemberCode()
-//                                    + ((stimulusIndex != null) ? "("
-//                                            + activeChannel
-//                                            + ")" : "")
+                                    //                                    + ((stimulusIndex != null) ? "("
+                                    //                                            + activeChannel
+                                    //                                            + ")" : "")
                                     + ((stimulusIndex != null) ? "-G"
                                             + (stimulusIndex + 1) : "");
                         }
