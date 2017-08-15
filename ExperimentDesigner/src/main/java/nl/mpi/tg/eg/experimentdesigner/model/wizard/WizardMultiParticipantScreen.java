@@ -468,7 +468,18 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         if (storedWizardScreenData.getScreenText(5) != null) {
             trainingDisplayNetworkActivity3.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(5)));
         }
+        String mutualFeedbackPhaseCorrectText = (storedWizardScreenData.getScreenText(13) != null) ? storedWizardScreenData.getScreenText(13) : "";
+        String mutualFeedbackPhaseIncorrectText = (storedWizardScreenData.getScreenText(14) != null) ? storedWizardScreenData.getScreenText(14) : "";
 
+        final PresenterFeature groupResponseFeedback2 = new PresenterFeature(FeatureType.groupResponseFeedback, null);
+        final PresenterFeature responseCorrect2 = new PresenterFeature(FeatureType.responseCorrect, null);
+        responseCorrect2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, mutualFeedbackPhaseCorrectText));
+        groupResponseFeedback2.getPresenterFeatureList().add(responseCorrect2);
+        final PresenterFeature responseIncorrect2 = new PresenterFeature(FeatureType.responseIncorrect, null);
+        responseIncorrect2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, mutualFeedbackPhaseIncorrectText));
+        groupResponseFeedback2.getPresenterFeatureList().add(responseIncorrect2);
+        allNetworkActivity2.getPresenterFeatureList().add(groupResponseFeedback2);
+        allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
 //        if (storedWizardScreenData.getStimulusFreeText()) {
 //            final PresenterFeature stimulusFreeTextFeature = new PresenterFeature(FeatureType.stimulusFreeText, storedWizardScreenData.getFreeTextValidationMessage());
 //            stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.validationRegex, storedWizardScreenData.getFreeTextValidationRegex());
@@ -526,6 +537,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         final PresenterFeature groupMessageLabel2 = new PresenterFeature(FeatureType.groupMessageLabel, null);
         groupMessageLabel2.addFeatureAttributes(FeatureAttribute.styleName, "groupMessageLabel");
         allNetworkActivity2.getPresenterFeatureList().add(groupMessageLabel2);
+        allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
         final PresenterFeature allNetworkActivityRow = new PresenterFeature(FeatureType.row, null);
         final PresenterFeature allNetworkActivityColumn1 = new PresenterFeature(FeatureType.column, null);
         final PresenterFeature allNetworkActivityColumn2 = new PresenterFeature(FeatureType.column, null);
@@ -585,18 +597,6 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //        final PresenterFeature scoreLabel = new PresenterFeature(FeatureType.scoreLabel, null);
 //        scoreLabel.addFeatureAttributes(FeatureAttribute.styleName, "");
 //        allNetworkActivity2.getPresenterFeatureList().add(scoreLabel);
-        String mutualFeedbackPhaseCorrectText = (storedWizardScreenData.getScreenText(13) != null) ? storedWizardScreenData.getScreenText(13) : "";
-        String mutualFeedbackPhaseIncorrectText = (storedWizardScreenData.getScreenText(14) != null) ? storedWizardScreenData.getScreenText(14) : "";
-
-        final PresenterFeature groupResponseFeedback2 = new PresenterFeature(FeatureType.groupResponseFeedback, null);
-        final PresenterFeature responseCorrect2 = new PresenterFeature(FeatureType.responseCorrect, null);
-        responseCorrect2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, mutualFeedbackPhaseCorrectText));
-        groupResponseFeedback2.getPresenterFeatureList().add(responseCorrect2);
-        final PresenterFeature responseIncorrect2 = new PresenterFeature(FeatureType.responseIncorrect, null);
-        responseIncorrect2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, mutualFeedbackPhaseIncorrectText));
-        groupResponseFeedback2.getPresenterFeatureList().add(responseIncorrect2);
-        allNetworkActivity2.getPresenterFeatureList().add(groupResponseFeedback2);
-
         // allNetworkActivity2 phase shows the stimulus and the selected stimulus and the message and the group score
         allNetworkActivity2.getPresenterFeatureList().add(addGroupMessageButton("Next [enter]", "guesser and producer see the response", "ENTER"));
 
