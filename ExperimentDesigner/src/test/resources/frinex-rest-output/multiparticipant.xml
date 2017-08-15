@@ -404,7 +404,17 @@
                         <groupNetworkActivity groupRole="-:-:A,D,B,C:-:-:A,D,B,C">
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -425,14 +435,6 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupResponseFeedback>
-                                <responseCorrect>
-                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
-                                </responseCorrect>
-                                <responseIncorrect>
-                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -521,7 +523,17 @@
                         <groupNetworkActivity groupRole="-:-:C,D,A,B:-:-:C,D,A,B">
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -542,14 +554,6 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupResponseFeedback>
-                                <responseCorrect>
-                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
-                                </responseCorrect>
-                                <responseIncorrect>
-                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -638,7 +642,17 @@
                         <groupNetworkActivity groupRole="-:-:B,A,C,D:-:-:B,A,C,D">
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -659,14 +673,6 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupResponseFeedback>
-                                <responseCorrect>
-                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
-                                </responseCorrect>
-                                <responseIncorrect>
-                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -755,7 +761,17 @@
                         <groupNetworkActivity groupRole="-:-:B,C,A,D:-:-:B,C,A,D">
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -776,14 +792,6 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupResponseFeedback>
-                                <responseCorrect>
-                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
-                                </responseCorrect>
-                                <responseIncorrect>
-                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -872,7 +880,17 @@
                         <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D">
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -893,14 +911,6 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupResponseFeedback>
-                                <responseCorrect>
-                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
-                                </responseCorrect>
-                                <responseIncorrect>
-                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -989,7 +999,17 @@
                         <groupNetworkActivity groupRole="-:-:C,D,B,A:-:-:C,D,B,A">
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -1010,14 +1030,6 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupResponseFeedback>
-                                <responseCorrect>
-                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
-                                </responseCorrect>
-                                <responseIncorrect>
-                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -1106,7 +1118,17 @@
                         <groupNetworkActivity groupRole="-:-:A,D,B,C:-:-:A,D,B,C">
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -1127,14 +1149,6 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupResponseFeedback>
-                                <responseCorrect>
-                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
-                                </responseCorrect>
-                                <responseIncorrect>
-                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -1443,7 +1457,17 @@
                         <groupNetworkActivity groupRole="-:-:A,C,E,G,B,D,F,H:-:-:A,C,E,G,B,D,F,H">
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -1464,14 +1488,6 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupResponseFeedback>
-                                <responseCorrect>
-                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
-                                </responseCorrect>
-                                <responseIncorrect>
-                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -1560,7 +1576,17 @@
                         <groupNetworkActivity groupRole="-:-:H,D,F,B,A,E,C,G:-:-:H,D,F,B,A,E,C,G">
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -1581,14 +1607,6 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupResponseFeedback>
-                                <responseCorrect>
-                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
-                                </responseCorrect>
-                                <responseIncorrect>
-                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -1677,7 +1695,17 @@
                         <groupNetworkActivity groupRole="-:-:A,G,E,C,D,F,B,H:-:-:A,G,E,C,D,F,B,H">
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -1698,14 +1726,6 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupResponseFeedback>
-                                <responseCorrect>
-                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
-                                </responseCorrect>
-                                <responseIncorrect>
-                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -1794,7 +1814,17 @@
                         <groupNetworkActivity groupRole="-:-:C,B,E,F,A,D,G,H:-:-:C,B,E,F,A,D,G,H">
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -1815,14 +1845,6 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupResponseFeedback>
-                                <responseCorrect>
-                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
-                                </responseCorrect>
-                                <responseIncorrect>
-                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -1911,7 +1933,17 @@
                         <groupNetworkActivity groupRole="-:-:A,D,B,G,E,H,F,C:-:-:A,D,B,G,E,H,F,C">
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -1932,14 +1964,6 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupResponseFeedback>
-                                <responseCorrect>
-                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
-                                </responseCorrect>
-                                <responseIncorrect>
-                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -2028,7 +2052,17 @@
                         <groupNetworkActivity groupRole="-:-:F,G,C,H,A,D,B,E:-:-:F,G,C,H,A,D,B,E">
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -2049,14 +2083,6 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupResponseFeedback>
-                                <responseCorrect>
-                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
-                                </responseCorrect>
-                                <responseIncorrect>
-                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -2145,7 +2171,17 @@
                         <groupNetworkActivity groupRole="-:-:A,H,E,D,G,B,C,F:-:-:A,H,E,D,G,B,C,F">
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -2166,14 +2202,6 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupResponseFeedback>
-                                <responseCorrect>
-                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
-                                </responseCorrect>
-                                <responseIncorrect>
-                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -2302,7 +2330,17 @@
                         <groupNetworkActivity groupRole="-:-:B,D,F,H,A,C,E,G:-:-:B,D,F,H,A,C,E,G">
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -2323,14 +2361,6 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupResponseFeedback>
-                                <responseCorrect>
-                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
-                                </responseCorrect>
-                                <responseIncorrect>
-                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -2419,7 +2449,17 @@
                         <groupNetworkActivity groupRole="-:-:A,E,C,G,H,D,F,B:-:-:A,E,C,G,H,D,F,B">
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -2440,14 +2480,6 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupResponseFeedback>
-                                <responseCorrect>
-                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
-                                </responseCorrect>
-                                <responseIncorrect>
-                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -2536,7 +2568,17 @@
                         <groupNetworkActivity groupRole="-:-:D,F,B,H,A,G,E,C:-:-:D,F,B,H,A,G,E,C">
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -2557,14 +2599,6 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupResponseFeedback>
-                                <responseCorrect>
-                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
-                                </responseCorrect>
-                                <responseIncorrect>
-                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -2653,7 +2687,17 @@
                         <groupNetworkActivity groupRole="-:-:A,D,G,H,C,B,E,F:-:-:A,D,G,H,C,B,E,F">
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -2674,14 +2718,6 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupResponseFeedback>
-                                <responseCorrect>
-                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
-                                </responseCorrect>
-                                <responseIncorrect>
-                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -2770,7 +2806,17 @@
                         <groupNetworkActivity groupRole="-:-:E,H,F,C,A,D,B,G:-:-:E,H,F,C,A,D,B,G">
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -2791,14 +2837,6 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupResponseFeedback>
-                                <responseCorrect>
-                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
-                                </responseCorrect>
-                                <responseIncorrect>
-                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -2887,7 +2925,17 @@
                         <groupNetworkActivity groupRole="-:-:A,D,B,E,F,G,C,H:-:-:A,D,B,E,F,G,C,H">
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -2908,14 +2956,6 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupResponseFeedback>
-                                <responseCorrect>
-                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
-                                </responseCorrect>
-                                <responseIncorrect>
-                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
@@ -3004,7 +3044,17 @@
                         <groupNetworkActivity groupRole="-:-:G,B,C,F,A,H,E,D:-:-:G,B,C,F,A,H,E,D">
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <groupResponseFeedback>
+                                <responseCorrect>
+                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
+                                </responseCorrect>
+                                <responseIncorrect>
+                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
+                                </responseIncorrect>
+                            </groupResponseFeedback>
+                            <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
                             <row>
                                 <column>
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
@@ -3025,14 +3075,6 @@
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
-                            <groupResponseFeedback>
-                                <responseCorrect>
-                                    <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
-                                </responseCorrect>
-                                <responseIncorrect>
-                                    <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
-                                </responseIncorrect>
-                            </groupResponseFeedback>
                             <sendGroupMessageButton featureText="Next [enter]" eventTag="guesser and producer see the response" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                         </groupNetworkActivity>
                     </groupNetwork>
