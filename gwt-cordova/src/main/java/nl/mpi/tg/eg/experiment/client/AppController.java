@@ -30,6 +30,7 @@ import nl.mpi.tg.eg.experiment.client.presenter.Presenter;
 import nl.mpi.tg.eg.experiment.client.presenter.ErrorPresenter;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
+import nl.mpi.tg.eg.experiment.client.exception.UserIdException;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
@@ -54,7 +55,7 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
     protected final UserResults userResults;
     final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
 
-    public AppController(RootLayoutPanel widgetTag) {
+    public AppController(RootLayoutPanel widgetTag) throws UserIdException {
         this.widgetTag = widgetTag;
         final UserId lastUserId = localStorage.getLastUserId();
         if (lastUserId == null) {
