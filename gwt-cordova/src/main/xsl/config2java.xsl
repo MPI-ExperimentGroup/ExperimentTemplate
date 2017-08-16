@@ -18,6 +18,7 @@
             import com.google.gwt.user.client.History;
             import com.google.gwt.user.client.ui.RootLayoutPanel;
             import nl.mpi.tg.eg.experiment.client.exception.AudioException;
+            import nl.mpi.tg.eg.experiment.client.exception.UserIdException;
             import nl.mpi.tg.eg.experiment.client.exception.CanvasError;
             import nl.mpi.tg.eg.experiment.client.presenter.*;
             import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
@@ -74,7 +75,7 @@
             }
             } 
 
-            public ApplicationController(RootLayoutPanel widgetTag) {
+            public ApplicationController(RootLayoutPanel widgetTag) throws UserIdException {
             super(widgetTag);
         </xsl:text>
         <!--todo: does this even work?-->
