@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import nl.mpi.tg.eg.experiment.client.exception.UserIdException;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 
 /**
@@ -86,7 +87,7 @@ public class GroupMessage {
     public GroupMessage() {
     }
 
-    public GroupMessage(String groupId, String screenId, String userId, String memberCode) {
+    public GroupMessage(String groupId, String screenId, String userId, String memberCode) throws UserIdException {
         this.groupId = new GroupId(groupId);
         this.screenId = screenId;
         this.userId = new UserId(userId);
