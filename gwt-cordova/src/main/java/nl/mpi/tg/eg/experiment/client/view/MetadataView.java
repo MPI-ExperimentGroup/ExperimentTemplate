@@ -17,22 +17,16 @@
  */
 package nl.mpi.tg.eg.experiment.client.view;
 
-import com.google.gwt.event.dom.client.FocusEvent;
-import com.google.gwt.event.dom.client.FocusHandler;
 import com.google.gwt.user.client.ui.ButtonBase;
-import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.FocusWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
-import com.google.gwt.user.client.ui.TextArea;
-import com.google.gwt.user.client.ui.TextBox;
-import com.google.gwt.user.client.ui.TextBoxBase;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
+import nl.mpi.tg.eg.experiment.client.exception.UserIdException;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.experiment.client.model.UserLabelData;
@@ -120,7 +114,7 @@ public class MetadataView extends ComplexView {
         return fieldBoxes.get(metadataField).getValue();
     }
 
-    public UserId getFieldConnection(MetadataField metadataField) {
+    public UserId getFieldConnection(MetadataField metadataField) throws UserIdException {
         final ListBox listBox = fieldConnections.get(metadataField);
         return (listBox != null) ? new UserId(listBox.getSelectedValue()) : null;
     }
