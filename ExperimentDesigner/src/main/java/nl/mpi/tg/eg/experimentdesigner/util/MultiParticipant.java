@@ -126,6 +126,7 @@ public class MultiParticipant {
     final private String waitingScreenForGuesser = "Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken.";
     final private String ronde1tm7GUESSERSCREEN = "Kies de scène die bij de beschrijving hoort: <br/><br/>";
     final private String waitingScreenForProducer = "Een moment alsjeblieft. Je partner is een scène aan het kiezen.";
+    final private String namingAndExposure = "Kijk naar de beschrijving van de scène in fantasietaal:";
 
     final private String ronde1tm7FEEDBACKSCREEN = null;
     final private String ronde1tm7FeedbackCorrect = "<br/>Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!";
@@ -392,11 +393,11 @@ public class MultiParticipant {
         );
     }
 
-    protected WizardMultiParticipantScreen getNamingRound(final String screenName, final String groupMembers4, final String communicationChannels,
+    protected WizardMultiParticipantScreen getNamingRound(final String screenName, final String groupMembers, final String communicationChannels,
             final String textEntryPhaseRoles, final String waitingForProducerPhaseRoles, final String outcomeDisplayedPhaseRoles,
             final String groupRecordSubmitionPhaseRoles, final String preStimuliText, final String postStimuliText) {
         final WizardMultiParticipantScreen wizardMultiParticipantScreen = new WizardMultiParticipantScreen(screenName,
-                groupMembers4, 2,
+                groupMembers, 2,
                 communicationChannels, textEntryPhaseRoles,
                 ronde1tm7PRODUCERSCREEN, waitingForProducerPhaseRoles,
                 true,
@@ -409,7 +410,7 @@ public class MultiParticipant {
                 "",
                 "",
                 "This phase is not used in this screen", outcomeDisplayedPhaseRoles,
-                "&nbsp;",
+                namingAndExposure,
                 groupRecordSubmitionPhaseRoles,
                 "",
                 preStimuliText, postStimuliText,
