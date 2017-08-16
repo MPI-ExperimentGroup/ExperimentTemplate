@@ -31,6 +31,7 @@ import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
 import nl.mpi.tg.eg.experiment.client.exception.MetadataFieldException;
+import nl.mpi.tg.eg.experiment.client.exception.UserIdException;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
@@ -127,8 +128,12 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
         for (MetadataField fieldName : ((MetadataView) simpleView).getFieldNames()) {
             String fieldString = ((MetadataView) simpleView).getFieldValue(fieldName);
             userResults.getUserData().setMetadataValue(fieldName, fieldString);
-            UserId fieldConnection = ((MetadataView) simpleView).getFieldConnection(fieldName);
-            userResults.getUserData().setMetadataConnection(fieldName, fieldConnection);
+            try {
+                UserId fieldConnection = ((MetadataView) simpleView).getFieldConnection(fieldName);
+                userResults.getUserData().setMetadataConnection(fieldName, fieldConnection);
+            } catch (UserIdException exception) {
+                // this should not occur since the field value should have originated from a UserId instance
+            }
         }
         localStorage.storeData(userResults);
     }
@@ -149,9 +154,13 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
 
                 @Override
                 public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                    userResults.setUser(localStorage.getStoredData(labelData.getUserId()));
-                    localStorage.storeData(userResults);
-                    appEventListner.requestApplicationState(nextState);
+                    try {
+                        userResults.setUser(localStorage.getStoredData(labelData.getUserId()));
+                        localStorage.storeData(userResults);
+                        appEventListner.requestApplicationState(nextState);
+                    } catch (UserIdException exception) {
+                        // this should not occur since the field value should have originated from a UserId instance
+                    }
                 }
             });
             if (labelData.getUserId().equals(userResults.getUserData().getUserId())) {
