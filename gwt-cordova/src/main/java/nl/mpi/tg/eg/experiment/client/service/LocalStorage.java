@@ -26,6 +26,7 @@ import com.google.gwt.user.client.Window;
 import java.util.ArrayList;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.Messages;
+import nl.mpi.tg.eg.experiment.client.exception.UserIdException;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
@@ -200,7 +201,7 @@ public class LocalStorage {
         }
     }
 
-    public UserData getStoredData(UserId userId) {
+    public UserData getStoredData(UserId userId) throws UserIdException {
         UserData userData = new UserData(userId);
         loadStorage();
         if (dataStore != null) {
@@ -309,7 +310,7 @@ public class LocalStorage {
         return null;
     }
 
-    public UserId getLastUserId() {
+    public UserId getLastUserId() throws UserIdException {
         loadStorage();
         if (Window.Location.getParameter("testuser") != null) {
             return new UserId("testuser-" + Window.Location.getParameter("testuser")); // 
@@ -336,7 +337,11 @@ public class LocalStorage {
                     final String userIdString = key.split("\\.")[2];
                     final String cleanStoredData = getCleanStoredData(key);
 //                    if (!cleanStoredData.isEmpty()) {
-                    userIdList.add(new UserLabelData(new UserId(userIdString), cleanStoredData));
+                    try {
+                        userIdList.add(new UserLabelData(new UserId(userIdString), cleanStoredData));
+                    } catch (UserIdException exception) {
+                        // this should never occur since only UserId opbects should have been stored
+                    }
 //                    }
                 }
             }
