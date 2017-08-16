@@ -60,9 +60,7 @@ public class SentencesRatingTask {
 
     final String completionScreenText1 = "This is the end of the experiment. <br/>"
             + "<br/>"
-            + "To confirm your participation, we would like to ask you to send the following code to Julia.Misersky@mpi.nl. Only after receiving this code can you be paid. <br/>"
-            + "<br/>"
-            + "Thank you for your participation!";
+            + "Please keep this completion code as verification that you have done the experiment:<br/>";
     private final String[] stimuliString = {
         "0/1SCa/List1:beat the cream",
         "1/2NSCb/List1:pick the butter",
@@ -421,7 +419,10 @@ public class SentencesRatingTask {
         wizardData.addScreen(imageabilityOfAction);
 
         WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, false, true,
-                "Please use this link to return to the Prolific website and register your efforts: <a href=\"https://prolific.ac/submissions/complete?cc=7A2UJ2RC\">register your efforts</a>.",
+                "<br/>"
+                + "Thank you for your participation!"
+                + "<br/>"
+                + "Please use this link to return to the Prolific website and register your efforts: <a href=\"https://prolific.ac/submissions/complete?cc=7A2UJ2RC\">register your efforts</a>.",
                 "Start over",
                 "Finished",
                 "Could not contact the server, please check your internet connection and try again.", "Retry");
