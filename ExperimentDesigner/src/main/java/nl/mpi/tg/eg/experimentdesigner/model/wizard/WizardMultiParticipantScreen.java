@@ -602,7 +602,9 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
         final PresenterFeature groupMessageLabel3 = new PresenterFeature(FeatureType.groupMessageLabel, null);
         groupMessageLabel3.addFeatureAttributes(FeatureAttribute.styleName, "groupMessageLabel");
+        trainingDisplayNetworkActivity3.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
         trainingDisplayNetworkActivity3.getPresenterFeatureList().add(groupMessageLabel3);
+        trainingDisplayNetworkActivity3.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
 
         final PresenterFeature stimulusImage = new PresenterFeature(FeatureType.stimulusImage, null);
         stimulusImage.addFeatureAttributes(FeatureAttribute.maxHeight, "0");
