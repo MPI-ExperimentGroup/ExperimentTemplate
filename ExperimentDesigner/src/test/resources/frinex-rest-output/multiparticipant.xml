@@ -195,7 +195,9 @@
                         <groupNetworkActivity groupRole="-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D">
                             <clearPage/>
                             <htmlText featureText="Kijk naar de beschrijving van de scène in fantasietaal:"/>
+                            <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <pause msToNext="7000">
                                     <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
@@ -255,7 +257,9 @@
                         <groupNetworkActivity groupRole="-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D">
                             <clearPage/>
                             <htmlText featureText="Kijk naar de beschrijving van de scène in fantasietaal:"/>
+                            <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <pause msToNext="7000">
                                     <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
@@ -315,7 +319,9 @@
                         <groupNetworkActivity groupRole="-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D">
                             <clearPage/>
                             <htmlText featureText="Kijk naar de beschrijving van de scène in fantasietaal:"/>
+                            <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <pause msToNext="7000">
                                     <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
@@ -1248,7 +1254,9 @@
                         <groupNetworkActivity groupRole="-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H">
                             <clearPage/>
                             <htmlText featureText="Kijk naar de beschrijving van de scène in fantasietaal:"/>
+                            <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <pause msToNext="7000">
                                     <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
@@ -1308,7 +1316,9 @@
                         <groupNetworkActivity groupRole="-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H">
                             <clearPage/>
                             <htmlText featureText="Kijk naar de beschrijving van de scène in fantasietaal:"/>
+                            <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <pause msToNext="7000">
                                     <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
@@ -1368,7 +1378,9 @@
                         <groupNetworkActivity groupRole="-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H">
                             <clearPage/>
                             <htmlText featureText="Kijk naar de beschrijving van de scène in fantasietaal:"/>
+                            <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <pause msToNext="7000">
                                     <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
