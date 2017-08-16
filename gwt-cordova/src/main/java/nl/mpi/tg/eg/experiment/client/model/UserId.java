@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experiment.client.model;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Date;
 import java.util.Objects;
+import nl.mpi.tg.eg.experiment.client.exception.UserIdException;
 
 /**
  * @since Mar 10, 2015 2:33:35 PM (creation date)
@@ -29,7 +30,10 @@ public class UserId {
 
     private final String randomIdString;
 
-    public UserId(String idString) {
+    public UserId(String idString) throws UserIdException {
+        if (idString.contains("{") || idString.contains("}") || idString.contains("%")) {
+            throw new UserIdException("Error: Invalid User ID");
+        }
         this.randomIdString = idString;
     }
 
