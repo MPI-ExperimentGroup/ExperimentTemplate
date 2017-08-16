@@ -194,7 +194,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Kijk naar de beschrijving van de scène in fantasietaal:"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <pause msToNext="7000">
@@ -254,7 +254,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Kijk naar de beschrijving van de scène in fantasietaal:"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <pause msToNext="7000">
@@ -314,7 +314,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Kijk naar de beschrijving van de scène in fantasietaal:"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <pause msToNext="7000">
@@ -1247,7 +1247,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Kijk naar de beschrijving van de scène in fantasietaal:"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <pause msToNext="7000">
@@ -1307,7 +1307,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Kijk naar de beschrijving van de scène in fantasietaal:"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <pause msToNext="7000">
@@ -1367,7 +1367,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H">
                             <clearPage/>
-                            <htmlText featureText="&amp;nbsp;"/>
+                            <htmlText featureText="Kijk naar de beschrijving van de scène in fantasietaal:"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <pause msToNext="7000">
