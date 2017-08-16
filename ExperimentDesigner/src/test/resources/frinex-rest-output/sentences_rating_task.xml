@@ -125,11 +125,11 @@
     <presenter displayOrder="12" menuLabel="Finished" type="transmission" self="Finished" title="Finished">
         <sendAllData>
             <onSuccess>
-                <htmlText featureText="This is the end of the experiment. &lt;br/&gt;&lt;br/&gt;To confirm your participation, we would like to ask you to send the following code to Julia.Misersky@mpi.nl. Only after receiving this code can you be paid. &lt;br/&gt;&lt;br/&gt;Thank you for your participation!"/>
+                <htmlText featureText="This is the end of the experiment. &lt;br/&gt;&lt;br/&gt;Please keep this completion code as verification that you have done the experiment:&lt;br/&gt;"/>
                 <addPadding/>
                 <generateCompletionCode/>
                 <addPadding/>
-                <htmlText featureText="Please use this link to return to the Prolific website and register your efforts: &lt;a href=&quot;https://prolific.ac/submissions/complete?cc=7A2UJ2RC&quot;&gt;register your efforts&lt;/a&gt;."/>
+                <htmlText featureText="&lt;br/&gt;Thank you for your participation!&lt;br/&gt;Please use this link to return to the Prolific website and register your efforts: &lt;a href=&quot;https://prolific.ac/submissions/complete?cc=7A2UJ2RC&quot;&gt;register your efforts&lt;/a&gt;."/>
             </onSuccess>
             <onError>
                 <plainText featureText="Could not contact the server, please check your internet connection and try again."/>
