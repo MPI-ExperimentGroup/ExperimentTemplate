@@ -57,8 +57,8 @@ public class TimedStimulusView extends ComplexView {
         this.audioPlayer = audioPlayer;
     }
 
-    public void startGrid() {
-        outerPanel.setStylePrimaryName("menuOuter");
+    public void startGrid(final String menuOuter) {
+        outerPanel.setStylePrimaryName(menuOuter);
         stimulusGrid = new StimulusGrid(domHandlerArray);
         outerPanel.add(stimulusGrid);
     }
