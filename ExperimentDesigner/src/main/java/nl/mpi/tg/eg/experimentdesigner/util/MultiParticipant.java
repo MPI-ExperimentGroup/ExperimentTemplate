@@ -269,8 +269,8 @@ public class MultiParticipant {
             final WizardMultiParticipantScreen roundScreen;
             if ("naming".equals(currentChannel[2])) {
                 roundScreen = getNamingRound("R" + currentChannel[0] + "-4", groupMembers4, currentChannel[1],
-                        "A:-:B:-:C:-:D:-", "B,C,D:-:A,C,D:-:B,A,D:-:B,C,A:-", "-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D",
-                        "-:A:-:B:-:C:-:D", currentChannel[4], currentChannel[5]);
+                        "A:-:-:B:-:-:C:-:-:D:-:-", "B,C,D:B,C,D:-:A,C,D:A,C,D:-:B,A,D:B,A,D:-:B,C,A:B,C,A:-", "-:-:A,B,C,D:-:-:A,B,C,D:-:-:A,B,C,D:-:-:A,B,C,D",
+                        "-:A:-:-:B:-:-:C:-:-:D:-", currentChannel[4], currentChannel[5]);
             } else if ("test".equals(currentChannel[2])) {
                 roundScreen = getTestRound("R" + currentChannel[0] + "-4", groupMembers4, currentChannel[1], "A,B,C,D:-", "-:A,B,C,D", currentChannel[4], currentChannel[5]);
             } else {
@@ -320,10 +320,10 @@ public class MultiParticipant {
             final WizardMultiParticipantScreen roundScreen;
             if ("naming".equals(currentChannel[2])) {
                 roundScreen = getNamingRound("R" + currentChannel[0] + "-8", groupMembers8, currentChannel[1],
-                        "A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-",
-                        "B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-",
-                        "-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H",
-                        "-:A:-:B:-:C:-:D:-:E:-:F:-:G:-:H", currentChannel[4], currentChannel[5]);
+                        "A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-:-",
+                        "B,C,D,E,F,G,H:B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:B,C,D,E,F,G,A:-",
+                        "-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H",
+                        "-:A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-", currentChannel[4], currentChannel[5]);
             } else if ("test".equals(currentChannel[2])) {
                 roundScreen = getTestRound("R" + currentChannel[0] + "-8", groupMembers8, currentChannel[1], "A,B,C,D,E,F,G,H:-", "-:A,B,C,D,E,F,G,H", currentChannel[4], currentChannel[5]);
             } else {
@@ -397,7 +397,7 @@ public class MultiParticipant {
             final String textEntryPhaseRoles, final String waitingForProducerPhaseRoles, final String outcomeDisplayedPhaseRoles,
             final String groupRecordSubmitionPhaseRoles, final String preStimuliText, final String postStimuliText) {
         final WizardMultiParticipantScreen wizardMultiParticipantScreen = new WizardMultiParticipantScreen(screenName,
-                groupMembers, 2,
+                groupMembers, 3,
                 communicationChannels, textEntryPhaseRoles,
                 ronde1tm7PRODUCERSCREEN, waitingForProducerPhaseRoles,
                 true,
@@ -411,8 +411,8 @@ public class MultiParticipant {
                 "",
                 "This phase is not used in this screen", outcomeDisplayedPhaseRoles,
                 namingAndExposure,
-                groupRecordSubmitionPhaseRoles,
                 "",
+                groupRecordSubmitionPhaseRoles,
                 preStimuliText, postStimuliText,
                 numberOfStimuli, 1, randomWindowStimuli,
                 7000, 2000,
@@ -483,7 +483,7 @@ public class MultiParticipant {
     public Experiment getExperiment() {
         final Experiment experiment = wizardController.getExperiment(getWizardData());
         experiment.setIsScalable(false);
-        experiment.setDefaultScale(1.2f);
+        experiment.setDefaultScale(1.1f);
         return experiment;
     }
 }
