@@ -31,14 +31,18 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             function robot() {
                 var robotMessagesDiv = document.getElementById("robot_messages");
                 robotMessagesDiv.innerHTML = "robot started";
+                var sizeSelectElement = document.getElementById("sizeSelect");
+                var sizeSelectValue = sizeSelectElement.options[sizeSelectElement.selectedIndex].text;
                 var iframes = document.getElementsByTagName("iframe");
 //                if (document.getElementById('groupName').value === "") {
                 document.getElementById('groupName').value = "robot group at " + new Date().toLocaleTimeString();
 //                }
-                var memberCodes = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+                var memberCodes = ['A', 'C', 'E', 'G', 'B', 'D', 'F', 'H'];
                 for (frameIndex = 0; frameIndex < iframes.length; ++frameIndex) {
                     var iframeTimer = setTimeout(function (frameIndex) {
-                        iframes[frameIndex].src = "/multiparticipant?R0_4&testuser=" + Math.floor((Math.random() * 1000000000) + 1) + "&group=" + document.getElementById('groupName').value + "&member=" + memberCodes[frameIndex];
+                        iframes[frameIndex].style.width = '1920px';
+                        iframes[frameIndex].style.height = '1080px';
+                        iframes[frameIndex].src = "/multiparticipant?" + sizeSelectValue + "&testuser=" + Math.floor((Math.random() * 1000000000) + 1) + "&group=" + document.getElementById('groupName').value + "&member=" + memberCodes[frameIndex];
                     }, 1000 * frameIndex, frameIndex);
                 }
                 findAndClick();
@@ -50,12 +54,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 }
             }
             function singleFrame(memberCode) {
+                var sizeSelectElement = document.getElementById("sizeSelect");
+                var sizeSelectValue = sizeSelectElement.options[sizeSelectElement.selectedIndex].text;
                 $(".startRobotButton").prop('disabled', true);
                 document.getElementsByTagName("table")[0].remove();
                 var iframe = document.createElement('iframe');
                 iframe.setAttribute('width', '100%');
                 iframe.setAttribute('height', '100%');
-                iframe.src = "/multiparticipant?R0_4&testuser=" + Math.floor((Math.random() * 1000000000) + 1) + "&group=" + document.getElementById('groupName').value + "&member=" + memberCode;
+                iframe.src = "/multiparticipant?" + sizeSelectValue + "&testuser=" + Math.floor((Math.random() * 1000000000) + 1) + "&group=" + document.getElementById('groupName').value + "&member=" + memberCode;
                 document.getElementsByTagName("body")[0].append(iframe);
                 var robotMessagesDiv = document.getElementById("robot_messages");
                 robotMessagesDiv.innerHTML = "robot started " + memberCode;
@@ -109,6 +115,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     </head>
     <body style="width: 100%; height: 100%;">
         <div id="robot_messages"></div>
+        <select id="sizeSelect">
+            <option value="1" selected="selected">R0_4</option>
+            <option value="2">R0_8</option>
+        </select>
         <button type="button" class="startRobotButton" onclick="robot();">All</button>
         <button type="button" class="startRobotButton" onclick="singleFrame('A');">A</button>
         <button type="button" class="startRobotButton" onclick="singleFrame('B');">B</button>
