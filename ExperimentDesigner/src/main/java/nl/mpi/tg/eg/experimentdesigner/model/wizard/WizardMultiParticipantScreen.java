@@ -395,7 +395,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             final PresenterFeature conditionTrueProduer = new PresenterFeature(FeatureType.conditionTrue, null);
             final PresenterFeature sendGroupStoredMessageProduer = new PresenterFeature(FeatureType.sendGroupStoredMessage, null);
             sendGroupStoredMessageProduer.addFeatureAttributes(FeatureAttribute.eventTag, "sendGroupStoredMessage");
-            sendGroupStoredMessageProduer.addFeatureAttributes(FeatureAttribute.incrementPhase, "1");
+            sendGroupStoredMessageProduer.addFeatureAttributes(FeatureAttribute.incrementPhase, "2");
             final PresenterFeature pause = new PresenterFeature(FeatureType.pause, null);
             pause.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getExposureMsDelay(storedWizardScreenData)));
             pause.getPresenterFeatureList().add(sendGroupStoredMessageProduer);
