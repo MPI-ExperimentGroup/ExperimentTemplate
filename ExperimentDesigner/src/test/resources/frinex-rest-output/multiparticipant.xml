@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment appNameDisplay="MultiParticipant" appNameInternal="multiparticipant" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.2" isScalable="false" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="true" textFontSize="24">
+<experiment appNameDisplay="MultiParticipant" appNameInternal="multiparticipant" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.1" isScalable="false" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="true" textFontSize="24">
     <metadata>
         <field controlledMessage="Please enter a valid age." controlledRegex="[0-9]+" postName="age" preventServerDuplicates="false" registrationField="Age"/>
         <field controlledMessage="Please enter at least three letters or numbers." controlledRegex=".'{'1,'}'" postName="firstName" preventServerDuplicates="false" registrationField="First name"/>
@@ -163,13 +163,13 @@
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R0-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="2" groupCommunicationChannels="A,B,C,D">
-                        <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-">
+                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D">
+                        <groupNetworkActivity groupRole="A:-:-:B:-:-:C:-:-:D:-:-">
                             <clearPage/>
                             <stimulusHasResponse>
                                 <conditionTrue>
                                     <pause msToNext="2000">
-                                        <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="1"/>
+                                        <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="2"/>
                                     </pause>
                                 </conditionTrue>
                                 <conditionFalse>
@@ -183,7 +183,7 @@
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,C,D:-:A,C,D:-:B,A,D:-:B,C,A:-">
+                        <groupNetworkActivity groupRole="B,C,D:B,C,D:-:A,C,D:A,C,D:-:B,A,D:B,A,D:-:B,C,A:B,C,A:-">
                             <clearPage/>
                             <stimulusHasResponse>
                                 <conditionTrue/>
@@ -192,7 +192,7 @@
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D">
+                        <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D:-:-:A,B,C,D:-:-:A,B,C,D">
                             <clearPage/>
                             <htmlText featureText="Kijk naar de beschrijving van de scène in fantasietaal:"/>
                             <addPadding/>
@@ -204,8 +204,9 @@
                                 </pause>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A:-:B:-:C:-:D">
+                        <groupNetworkActivity groupRole="-:A:-:-:B:-:-:C:-:-:D:-">
                             <submitGroupEvent/>
+                            <sendGroupMessage eventTag="group record submitted" incrementPhase="1"/>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
@@ -225,13 +226,13 @@
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R0.1-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="2" groupCommunicationChannels="A,B,C,D">
-                        <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-">
+                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D">
+                        <groupNetworkActivity groupRole="A:-:-:B:-:-:C:-:-:D:-:-">
                             <clearPage/>
                             <stimulusHasResponse>
                                 <conditionTrue>
                                     <pause msToNext="2000">
-                                        <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="1"/>
+                                        <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="2"/>
                                     </pause>
                                 </conditionTrue>
                                 <conditionFalse>
@@ -245,7 +246,7 @@
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,C,D:-:A,C,D:-:B,A,D:-:B,C,A:-">
+                        <groupNetworkActivity groupRole="B,C,D:B,C,D:-:A,C,D:A,C,D:-:B,A,D:B,A,D:-:B,C,A:B,C,A:-">
                             <clearPage/>
                             <stimulusHasResponse>
                                 <conditionTrue/>
@@ -254,7 +255,7 @@
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D">
+                        <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D:-:-:A,B,C,D:-:-:A,B,C,D">
                             <clearPage/>
                             <htmlText featureText="Kijk naar de beschrijving van de scène in fantasietaal:"/>
                             <addPadding/>
@@ -266,8 +267,9 @@
                                 </pause>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A:-:B:-:C:-:D">
+                        <groupNetworkActivity groupRole="-:A:-:-:B:-:-:C:-:-:D:-">
                             <submitGroupEvent/>
+                            <sendGroupMessage eventTag="group record submitted" incrementPhase="1"/>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
@@ -287,13 +289,13 @@
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R0.2-4" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="2" groupCommunicationChannels="A,B,C,D">
-                        <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-">
+                    <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D">
+                        <groupNetworkActivity groupRole="A:-:-:B:-:-:C:-:-:D:-:-">
                             <clearPage/>
                             <stimulusHasResponse>
                                 <conditionTrue>
                                     <pause msToNext="2000">
-                                        <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="1"/>
+                                        <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="2"/>
                                     </pause>
                                 </conditionTrue>
                                 <conditionFalse>
@@ -307,7 +309,7 @@
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,C,D:-:A,C,D:-:B,A,D:-:B,C,A:-">
+                        <groupNetworkActivity groupRole="B,C,D:B,C,D:-:A,C,D:A,C,D:-:B,A,D:B,A,D:-:B,C,A:B,C,A:-">
                             <clearPage/>
                             <stimulusHasResponse>
                                 <conditionTrue/>
@@ -316,7 +318,7 @@
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,B,C,D:-:A,B,C,D:-:A,B,C,D:-:A,B,C,D">
+                        <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D:-:-:A,B,C,D:-:-:A,B,C,D">
                             <clearPage/>
                             <htmlText featureText="Kijk naar de beschrijving van de scène in fantasietaal:"/>
                             <addPadding/>
@@ -328,8 +330,9 @@
                                 </pause>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A:-:B:-:C:-:D">
+                        <groupNetworkActivity groupRole="-:A:-:-:B:-:-:C:-:-:D:-">
                             <submitGroupEvent/>
+                            <sendGroupMessage eventTag="group record submitted" incrementPhase="1"/>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
@@ -1222,13 +1225,13 @@
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R0-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A,B,C,D,E,F,G,H">
-                        <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-">
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D,E,F,G,H">
+                        <groupNetworkActivity groupRole="A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-:-">
                             <clearPage/>
                             <stimulusHasResponse>
                                 <conditionTrue>
                                     <pause msToNext="2000">
-                                        <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="1"/>
+                                        <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="2"/>
                                     </pause>
                                 </conditionTrue>
                                 <conditionFalse>
@@ -1242,7 +1245,7 @@
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-">
+                        <groupNetworkActivity groupRole="B,C,D,E,F,G,H:B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:B,C,D,E,F,G,A:-">
                             <clearPage/>
                             <stimulusHasResponse>
                                 <conditionTrue/>
@@ -1251,7 +1254,7 @@
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H">
+                        <groupNetworkActivity groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
                             <clearPage/>
                             <htmlText featureText="Kijk naar de beschrijving van de scène in fantasietaal:"/>
                             <addPadding/>
@@ -1263,8 +1266,9 @@
                                 </pause>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A:-:B:-:C:-:D:-:E:-:F:-:G:-:H">
+                        <groupNetworkActivity groupRole="-:A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-">
                             <submitGroupEvent/>
+                            <sendGroupMessage eventTag="group record submitted" incrementPhase="1"/>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
@@ -1284,13 +1288,13 @@
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R0.1-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A,B,C,D,E,F,G,H">
-                        <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-">
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D,E,F,G,H">
+                        <groupNetworkActivity groupRole="A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-:-">
                             <clearPage/>
                             <stimulusHasResponse>
                                 <conditionTrue>
                                     <pause msToNext="2000">
-                                        <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="1"/>
+                                        <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="2"/>
                                     </pause>
                                 </conditionTrue>
                                 <conditionFalse>
@@ -1304,7 +1308,7 @@
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-">
+                        <groupNetworkActivity groupRole="B,C,D,E,F,G,H:B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:B,C,D,E,F,G,A:-">
                             <clearPage/>
                             <stimulusHasResponse>
                                 <conditionTrue/>
@@ -1313,7 +1317,7 @@
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H">
+                        <groupNetworkActivity groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
                             <clearPage/>
                             <htmlText featureText="Kijk naar de beschrijving van de scène in fantasietaal:"/>
                             <addPadding/>
@@ -1325,8 +1329,9 @@
                                 </pause>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A:-:B:-:C:-:D:-:E:-:F:-:G:-:H">
+                        <groupNetworkActivity groupRole="-:A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-">
                             <submitGroupEvent/>
+                            <sendGroupMessage eventTag="group record submitted" incrementPhase="1"/>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
@@ -1346,13 +1351,13 @@
         <actionButton featureText="Next [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R0.2-8" randomise="true" repeatRandomWindow="3" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
-                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A,B,C,D,E,F,G,H">
-                        <groupNetworkActivity groupRole="A:-:B:-:C:-:D:-:E:-:F:-:G:-:H:-">
+                    <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D,E,F,G,H">
+                        <groupNetworkActivity groupRole="A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-:-">
                             <clearPage/>
                             <stimulusHasResponse>
                                 <conditionTrue>
                                     <pause msToNext="2000">
-                                        <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="1"/>
+                                        <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="2"/>
                                     </pause>
                                 </conditionTrue>
                                 <conditionFalse>
@@ -1366,7 +1371,7 @@
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:-">
+                        <groupNetworkActivity groupRole="B,C,D,E,F,G,H:B,C,D,E,F,G,H:-:A,C,D,E,F,G,H:A,C,D,E,F,G,H:-:B,A,D,E,F,G,H:B,A,D,E,F,G,H:-:B,C,A,E,F,G,H:B,C,A,E,F,G,H:-:B,C,D,A,F,G,H:B,C,D,A,F,G,H:-:B,C,D,E,A,G,H:B,C,D,E,A,G,H:-:B,C,D,E,F,A,H:B,C,D,E,F,A,H:-:B,C,D,E,F,G,A:B,C,D,E,F,G,A:-">
                             <clearPage/>
                             <stimulusHasResponse>
                                 <conditionTrue/>
@@ -1375,7 +1380,7 @@
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H:-:A,B,C,D,E,F,G,H">
+                        <groupNetworkActivity groupRole="-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H:-:-:A,B,C,D,E,F,G,H">
                             <clearPage/>
                             <htmlText featureText="Kijk naar de beschrijving van de scène in fantasietaal:"/>
                             <addPadding/>
@@ -1387,8 +1392,9 @@
                                 </pause>
                             </stimulusImage>
                         </groupNetworkActivity>
-                        <groupNetworkActivity groupRole="-:A:-:B:-:C:-:D:-:E:-:F:-:G:-:H">
+                        <groupNetworkActivity groupRole="-:A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-">
                             <submitGroupEvent/>
+                            <sendGroupMessage eventTag="group record submitted" incrementPhase="1"/>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
