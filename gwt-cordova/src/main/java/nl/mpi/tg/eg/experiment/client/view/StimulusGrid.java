@@ -72,14 +72,15 @@ public class StimulusGrid extends FlexTable {
             throw new UnsupportedOperationException("Only 0-9 are valid hot keys for the stimuli grid");
         }
         if (hotKeyIndex > -1) {
-            final int hotKey = KeyCodes.KEY_ZERO + hotKeyIndex;
             RootPanel root = RootPanel.get();
             final HandlerRegistration domHandler = root.addDomHandler(new KeyDownHandler() {
                 @Override
                 public void onKeyDown(KeyDownEvent event) {
                     if (pushButton.isEnabled()) {
                         final int nativeKeyCode = event.getNativeKeyCode();
-                        if (nativeKeyCode == hotKey) {
+                        final int hotKey = KeyCodes.KEY_ZERO + hotKeyIndex;
+                        final int hotKeyNum = KeyCodes.KEY_NUM_ZERO + hotKeyIndex;
+                        if (nativeKeyCode == hotKey || nativeKeyCode == hotKeyNum) {
                             event.getNativeEvent().preventDefault();
                             singleShotEventListner.eventFired();
                         }
