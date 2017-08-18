@@ -142,7 +142,7 @@ $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 25
 @each $currentAngle in $angleArray {
     .gwt-Image.moveRotated#{$currentAngle}Animation,
     .gwt-Button.stimulusButton.moveRotated#{$currentAngle}Animation {
-        animation: moveRotated#{$currentAngle}KeyFrames 2s infinite;
+        animation: moveRotated#{$currentAngle}KeyFrames 1s infinite;
         /*-webkit-animation: moveRotated10KeyFrames 2s infinite;*/
         margin: 100px;
         background: none;
