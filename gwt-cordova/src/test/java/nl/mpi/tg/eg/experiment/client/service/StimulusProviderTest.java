@@ -82,8 +82,8 @@ public class StimulusProviderTest {
         int speakerCount = 0;
         int wordCount = 0;
         assertEquals(expectedStimuliCount, instance.getTotalStimuli());
-        while (instance.hasNextStimulus()) {
-            instance.nextStimulus();
+        while (instance.hasNextStimulus(1)) {
+            instance.nextStimulus(1);
             final Stimulus nextStimulus = instance.getCurrentStimulus();
             assertFalse(seenString.contains(nextStimulus.getUniqueId()));
             if (nextStimulus.getTags().contains(Tag.tag_centipedes)) {
@@ -149,8 +149,8 @@ public class StimulusProviderTest {
         String seenString = "";
         final String seenLabelString = "centipedes_Rocket_4," + "centipedes_Rocket_5," + "centipedes_Rocket_3," + "centipedes_Festival_4," + "centipedes_Festival_5";
         instance.getSubset(6, "", -1, Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_centipedes}), Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_Rocket, Tag.tag_Festival}), 32);
-        while (instance.hasNextStimulus()) {
-            instance.nextStimulus();
+        while (instance.hasNextStimulus(1)) {
+            instance.nextStimulus(1);
             Stimulus stimulus = instance.getCurrentStimulus();
             if (seenLabelString.contains(stimulus.getLabel())) {
                 seenString = seenString + "-" + stimulus.getUniqueId();
@@ -184,8 +184,8 @@ public class StimulusProviderTest {
         instance.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_HRPretest01}), 1000, true, 2, 20, 0, "", -1);
         final int expectedStimuliCount = 196;
         HashSet<Stimulus> stimulusSet = new HashSet();
-        while (instance.hasNextStimulus()) {
-            instance.nextStimulus();
+        while (instance.hasNextStimulus(1)) {
+            instance.nextStimulus(1);
             stimulusSet.add(instance.getCurrentStimulus());
         }
         assertEquals(expectedStimuliCount, stimulusSet.size());
@@ -214,7 +214,7 @@ public class StimulusProviderTest {
         instance1.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_HRPretest02}), 1000, true, 3, 20, 0, "", -1);
         int seenStimuliCounter = 0;
         for (int counter = 0; counter < 25; counter++) {
-            instance1.nextStimulus();
+            instance1.nextStimulus(1);
             seenStimuliCounter++;
         }
         final int currentStimulusIndex = instance1.getCurrentStimulusIndex();
@@ -223,8 +223,8 @@ public class StimulusProviderTest {
         System.out.println("currentStimulusIndex: " + currentStimulusIndex);
         StimulusProvider instance2 = new StimulusProvider();
         instance2.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_HRPretest02}), 1000, true, 3, 20, 0, loadedStimulusString, currentStimulusIndex);
-        while (instance2.hasNextStimulus()) {
-            instance2.nextStimulus();
+        while (instance2.hasNextStimulus(1)) {
+            instance2.nextStimulus(1);
             seenStimuliCounter++;
         }
         final int expectedStimuliCount = 256 * 3;
@@ -289,13 +289,13 @@ public class StimulusProviderTest {
         instance.loadStoredStimulusList(storedStimulusList);
         assertEquals(23, instance.getTotalStimuli());
         instance.applyAdjacencyCheck(adjacencyThreshold);
-        instance.nextStimulus();
+        instance.nextStimulus(1);
         Stimulus stimulus0 = instance.getCurrentStimulus();
-        instance.nextStimulus();
+        instance.nextStimulus(1);
         Stimulus stimulus1 = instance.getCurrentStimulus();
-        instance.nextStimulus();
+        instance.nextStimulus(1);
         Stimulus stimulus2 = instance.getCurrentStimulus();
-        instance.nextStimulus();
+        instance.nextStimulus(1);
 
         System.out.println(stimulus0.getImage());
         System.out.println(stimulus1.getImage());
@@ -303,8 +303,8 @@ public class StimulusProviderTest {
 
         assertNotEquals(stimulus0.getImage(), stimulus1.getImage());
         assertNotEquals(stimulus1.getImage(), stimulus2.getImage());
-        while (instance.hasNextStimulus()) {
-            instance.nextStimulus();
+        while (instance.hasNextStimulus(1)) {
+            instance.nextStimulus(1);
             Stimulus stimulus3 = instance.getCurrentStimulus();
             System.out.println(stimulus3.getImage());
             assertNotEquals(stimulus0.getImage(), stimulus3.getImage());
