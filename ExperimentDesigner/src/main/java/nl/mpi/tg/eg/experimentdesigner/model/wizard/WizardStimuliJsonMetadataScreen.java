@@ -154,8 +154,8 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
         contextFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
         contextFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "80");
         contextFeature.addFeatureAttributes(FeatureAttribute.animate, "none");
-        contextFeature.addFeatureAttributes(FeatureAttribute.matchingRegex, "metadata");
-        contextFeature.addFeatureAttributes(FeatureAttribute.replacement, "context");
+        contextFeature.addFeatureAttributes(FeatureAttribute.matchingRegex, "\\\\.");
+        contextFeature.addFeatureAttributes(FeatureAttribute.replacement, "_context.");
         contextFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         final PresenterFeature contextFeatureColumn = new PresenterFeature(FeatureType.column, null);
         stimulusFeatureRow.getPresenterFeatureList().add(contextFeatureColumn);
