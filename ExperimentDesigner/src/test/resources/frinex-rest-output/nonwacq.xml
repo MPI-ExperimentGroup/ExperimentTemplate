@@ -80,7 +80,7 @@
                 <showStimulusProgress/>
                 <row>
                     <column>
-                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" matchingRegex="metadata" replacement="context" animate="none" maxWidth="80"/>
+                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" matchingRegex="\\." replacement="_context." animate="none" maxWidth="80"/>
                     </column>
                     <column>
                         <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" animate="none" maxWidth="80"/>
@@ -167,7 +167,7 @@
                 <showStimulusProgress/>
                 <row>
                     <column>
-                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" matchingRegex="metadata" replacement="context" animate="none" maxWidth="80"/>
+                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" matchingRegex="\\." replacement="_context." animate="none" maxWidth="80"/>
                     </column>
                     <column>
                         <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" animate="none" maxWidth="80"/>
