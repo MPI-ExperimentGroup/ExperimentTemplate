@@ -152,8 +152,8 @@ public class AnnotationTimelineView extends TimedStimulusView {
 
     public void setStimuli(final DataFactory dataFactory, final AnnotationSet savedAnnotations, StimulusProvider stimulusProvider, int columnCount, String imageWidth, int maxButtons) {
         final Set<Stimulus> stimuliSet = annotationTimelinePanel.setAnnotations(savedAnnotations, videoPanel, this);
-        while (stimuliSet.size() < maxButtons && stimulusProvider.hasNextStimulus()) {
-            stimulusProvider.nextStimulus();
+        while (stimuliSet.size() < maxButtons && stimulusProvider.hasNextStimulus(1)) {
+            stimulusProvider.nextStimulus(1);
             final Stimulus stimulus = stimulusProvider.getCurrentStimulus();
             stimuliSet.add(stimulus);
         }
