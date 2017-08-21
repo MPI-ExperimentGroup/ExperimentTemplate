@@ -28,6 +28,7 @@ import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
@@ -125,7 +126,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         try {
             seenStimulusIndex = Integer.parseInt(localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag()));
         } catch (NumberFormatException exception) {
-            seenStimulusIndex = -1;
+            seenStimulusIndex = 0;
         }
 //        Participants will be exposed to 36 audio+picture combinations, 
 //        which are in fact 6 word-picture combination, 
@@ -169,12 +170,12 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         try {
             seenStimulusIndex = Integer.parseInt(localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag()));
         } catch (NumberFormatException exception) {
-            seenStimulusIndex = -1;
+            seenStimulusIndex = 0;
         }
         stimulusProvider.getSubset(selectionTags, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, storedStimulusList, seenStimulusIndex);
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
-        showStimulus(null);
+        showStimulus(null, 0);
     }
 
     protected void loadSdCardStimulus(final String eventTag, final List<Stimulus.Tag> selectionTags, final List<Stimulus.Tag> randomTags, final MetadataField stimulusAllocationField, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
@@ -185,7 +186,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         try {
             seenStimulusIndextemp = Integer.parseInt(localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag()));
         } catch (NumberFormatException exception) {
-            seenStimulusIndextemp = -1;
+            seenStimulusIndextemp = 0;
         }
         final int seenStimulusIndex = seenStimulusIndextemp;
         this.hasMoreStimulusListener = hasMoreStimulusListener;
@@ -216,7 +217,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             public void postLoadTimerFired() {
                 ((TimedStimulusView) simpleView).clearPage();
                 if (directoryList.isEmpty()) {
-                    showStimulus(null);
+                    showStimulus(null, 0);
                 } else {
                     hasSubdirectories = true;
                     for (final String[] directory : directoryList) {
@@ -303,7 +304,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         try {
             seenStimulusIndex = Integer.parseInt(localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag()));
         } catch (NumberFormatException exception) {
-            seenStimulusIndex = -1;
+            seenStimulusIndex = 0;
         }
         final List<Stimulus.Tag> allocatedTags = new ArrayList<>(selectionTags);
         if (!randomTags.isEmpty()) {
@@ -331,7 +332,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         stimulusProvider.getSubset(allocatedTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, storedStimulusList, seenStimulusIndex);
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
-        showStimulus(null);
+        showStimulus(null, 0);
     }
 
     protected void withMatchingStimulus(String eventTag, final String matchingRegex, final int maxStimulusCount, final boolean randomise, int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
@@ -428,14 +429,14 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
-    protected void showStimulus(GroupActivityListener groupActivityListener) {
+    protected void showStimulus(GroupActivityListener groupActivityListener, final int increment) {
         final int currentStimulusIndex = stimulusProvider.getCurrentStimulusIndex();
         final String subDirectory = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag());
         localStorage.setStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag() + ((subDirectory != null) ? subDirectory : ""), Integer.toString(currentStimulusIndex));
         localStorage.setStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag() + ((subDirectory != null) ? subDirectory : ""), stimulusProvider.getLoadedStimulusString());
         localStorage.storeUserScore(userResults);
-        if (stimulusProvider.hasNextStimulus()) {
-            stimulusProvider.nextStimulus();
+        if (stimulusProvider.hasNextStimulus(increment)) {
+            stimulusProvider.nextStimulus(increment);
 //            submissionService.submitTagValue(userResults.getUserData().getUserId(), "NextStimulus", stimulusProvider.getCurrentStimulus().getUniqueId(), duration.elapsedMillis());
 //            super.startAudioRecorderTag(STIMULUS_TIER);
             hasMoreStimulusListener.postLoadTimerFired();
@@ -460,7 +461,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     @Deprecated // @todo: is this really used anymore? -
     protected void removeStimulus() {
-        stimulusProvider.nextStimulus();
+        stimulusProvider.nextStimulus(1);
         //localStorage.setStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()));
     }
 
@@ -1230,7 +1231,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         buttonList.clear();
     }
 
-    protected void nextStimulus(final String eventTag, final boolean repeatIncorrect) {
+    protected void nextStimulus(final String eventTag, final boolean repeatIncorrect, final int increment) {
         if (groupParticipantService != null) {
             ((ComplexView) simpleView).addText("showStimulus should not be used with the groupParticipantService");
             throw new UnsupportedOperationException("showStimulus should not be used with the groupParticipantService");
@@ -1264,7 +1265,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).clearPage();
         stimulusFreeTextList.clear();
         buttonList.clear();
-        showStimulus(null);
+        showStimulus(null, increment);
     }
 
     protected void groupResponseStimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
@@ -1338,7 +1339,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
             @Override
             public String getLabel() {
-                return buttonLabel + " (not yet implemented)";
+                return buttonLabel;
             }
 
             @Override
@@ -1349,11 +1350,12 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 nextButtonEventListnerList.clear(); // clear this now to prevent refires of the event
-//                prevStimulus(eventTag, repeatIncorrect);
+                nextStimulus(eventTag, repeatIncorrect, -1);
             }
         };
         nextButtonEventListnerList.add(eventListner);
-        ((TimedStimulusView) simpleView).addOptionButton(eventListner);
+        final Button prevButton = ((TimedStimulusView) simpleView).addOptionButton(eventListner);
+        prevButton.setEnabled(stimulusProvider.hasNextStimulus(-1));
     }
 
     protected void nextStimulusButton(final String eventTag, final String buttonLabel, final boolean repeatIncorrect, final int hotKey) {
@@ -1373,17 +1375,18 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 nextButtonEventListnerList.clear(); // clear this now to prevent refires of the event
-                nextStimulus(eventTag, repeatIncorrect);
+                nextStimulus(eventTag, repeatIncorrect, 1);
             }
         };
         nextButtonEventListnerList.add(eventListner);
-        ((TimedStimulusView) simpleView).addOptionButton(eventListner);
-//        }
+        final Button nextButton = ((TimedStimulusView) simpleView).addOptionButton(eventListner);
+//        final boolean disableAtEnd = false;
+//        nextButton.setEnabled(stimulusProvider.hasNextStimulus(1));
     }
 
     protected void endOfStimulusButton(final PresenterEventListner appEventListner, final String eventTag) {
         //logTimeStamp(eventTag);
-        if (!stimulusProvider.hasNextStimulus()) {
+        if (!stimulusProvider.hasNextStimulus(1)) {
             ((TimedStimulusView) simpleView).addOptionButton(appEventListner);
         }
     }
