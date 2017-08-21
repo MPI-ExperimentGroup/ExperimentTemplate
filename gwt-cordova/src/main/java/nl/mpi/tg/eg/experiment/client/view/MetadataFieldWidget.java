@@ -21,11 +21,13 @@ import com.google.gwt.event.dom.client.FocusEvent;
 import com.google.gwt.event.dom.client.FocusHandler;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.FocusWidget;
+import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.TextBoxBase;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import nl.mpi.tg.eg.experiment.client.exception.MetadataFieldException;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.StimulusFreeText;
@@ -40,6 +42,8 @@ public class MetadataFieldWidget implements StimulusFreeText {
     final private String initialValue;
     final private FocusWidget focusWidget;
     final private Label label;
+    final private Label errorLabel;
+    final private VerticalPanel labelPanel;
 
     public MetadataFieldWidget(MetadataField metadataField, String initialValue) {
         this.metadataField = metadataField;
@@ -94,14 +98,18 @@ public class MetadataFieldWidget implements StimulusFreeText {
             });
         }
         focusWidget.setStylePrimaryName("metadataOK");
+        errorLabel = new Label();
+        labelPanel = new VerticalPanel();
+        labelPanel.add(label);
+        labelPanel.add(errorLabel);
     }
 
     public FocusWidget getFocusWidget() {
         return focusWidget;
     }
 
-    public Label getLabel() {
-        return label;
+    public IsWidget getLabel() {
+        return labelPanel;
     }
 
     public void setValue(String fieldValue) {
@@ -135,8 +143,16 @@ public class MetadataFieldWidget implements StimulusFreeText {
     public boolean isValid() {
         try {
             metadataField.validateValue(getValue());
+            focusWidget.setStylePrimaryName("metadataOK");
+            label.setStylePrimaryName("metadataOK");
+            errorLabel.setStylePrimaryName("metadataOK");
+            errorLabel.setText("");
             return true;
         } catch (MetadataFieldException exception) {
+            focusWidget.setStylePrimaryName("metadataError");
+            label.setStylePrimaryName("metadataError");
+            errorLabel.setStylePrimaryName("metadataErrorMessage");
+            errorLabel.setText(metadataField.getControlledMessage());
             return false;
         }
     }
