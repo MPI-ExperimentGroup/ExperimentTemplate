@@ -45,7 +45,7 @@ public class StimulusProvider implements StimuliProvider {
 //    private final List<String> noisyList = new ArrayList<>();
 //    private final List<String> pictureList = new ArrayList<>();
 //    private int totalStimuli;
-    private int currentStimuliIndex = -1;
+    private int currentStimuliIndex = 0;
 //    private Stimulus currentStimulus = null;
 
     public StimulusProvider() {
@@ -438,8 +438,9 @@ public class StimulusProvider implements StimuliProvider {
         currentStimuliIndex++;
     }*/
     @Override
-    public void nextStimulus() {
-        currentStimuliIndex++;
+    public void nextStimulus(final int increment) {
+        currentStimuliIndex += increment;
+        currentStimuliIndex = (currentStimuliIndex >= 0) ? currentStimuliIndex : 0;
     }
 
     @Override
@@ -448,8 +449,8 @@ public class StimulusProvider implements StimuliProvider {
     }
 
     @Override
-    public boolean hasNextStimulus() {
-        return currentStimuliIndex + 1 < stimulusSubsetArray.size();
+    public boolean hasNextStimulus(final int increment) {
+        return currentStimuliIndex + increment < stimulusSubsetArray.size() && currentStimuliIndex + increment >= 0;
     }
 
     @Override
