@@ -830,7 +830,12 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void stimulusImage(final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final Integer fixedPositionY, int postLoadMs, String regex, String replacement, final TimedStimulusListener timedStimulusListener, final TimedStimulusListener clickedStimulusListener) {
         if (currentStimulus.hasImage()) {
-            final String image = currentStimulus.getImage();
+            final String image;
+            if (regex != null && replacement != null) {
+                image = currentStimulus.getImage().replaceAll(regex, replacement);
+            } else {
+                image = currentStimulus.getImage();
+            }
             final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
                 @Override
                 public void postLoadTimerFired() {
@@ -852,6 +857,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         } else if (currentStimulus.hasAudio()) {
             String mp3 = currentStimulus.getAudio() + ".mp3";
             String ogg = currentStimulus.getAudio() + ".ogg";
+            if (regex != null && replacement != null) {
+                mp3 = mp3.replaceAll(regex, replacement);
+                ogg = ogg.replaceAll(regex, replacement);
+            }
             final SafeUri oggTrustedString = (ogg == null) ? null : UriUtils.fromTrustedString(ogg);
             final SafeUri mp3TrustedString = (mp3 == null) ? null : UriUtils.fromTrustedString(mp3);
             final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
@@ -866,6 +875,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         } else if (currentStimulus.hasVideo()) {
             String ogg = currentStimulus.getVideo() + ".ogg";
             String mp4 = currentStimulus.getVideo() + ".mp4";
+            if (regex != null && replacement != null) {
+                mp4 = mp4.replaceAll(regex, replacement);
+                ogg = ogg.replaceAll(regex, replacement);
+            }
 //            submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusVideo", currentStimulus.getVideo(), duration.elapsedMillis());
             final SafeUri oggTrustedString = (ogg == null) ? null : UriUtils.fromTrustedString(ogg);
             final SafeUri mp4TrustedString = (mp4 == null) ? null : UriUtils.fromTrustedString(mp4);
