@@ -60,7 +60,7 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
         final List<Stimulus> stimuliList = new ArrayList<>();
         final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{"metadata"}));
         for (String metadataString : metadataStrings) {
-            final Stimulus stimulus = new Stimulus(metadataString, null, null, null, metadataString, null, 0, tagSet, null, null);
+            final Stimulus stimulus = new Stimulus(metadataString, null, null, metadataString, metadataString, null, 0, tagSet, null, null);
             stimuliList.add(stimulus);
         }
         this.wizardScreenData.setStimuli(stimuliList);
@@ -96,7 +96,7 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
     }
 
     public void addStimuliMetadataField(String postName, String displayName) {
-        wizardScreenData.getMetadataFields().add(new Metadata(postName, displayName, ".'{'3,'}'", "Please enter at least the characters.", false, null));
+        wizardScreenData.getMetadataFields().add(new Metadata(postName, displayName, ".*", "", false, null));
     }
 
     public void addStimuliBooleanMetadataField(String postName, String displayName) {
@@ -170,20 +170,31 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
         stimulusFeatureRow.getPresenterFeatureList().add(imageFeatureColumn);
         imageFeatureColumn.getPresenterFeatureList().add(imageFeature);
 
+        PresenterFeature buttonsFeatureRow = new PresenterFeature(FeatureType.row, null);
+        final PresenterFeature prevFeatureColumn = new PresenterFeature(FeatureType.column, null);
+        buttonsFeatureRow.getPresenterFeatureList().add(prevFeatureColumn);
+        final PresenterFeature nextFeatureColumn = new PresenterFeature(FeatureType.column, null);
+        buttonsFeatureRow.getPresenterFeatureList().add(nextFeatureColumn);
+        hasMoreStimulusFeature.getPresenterFeatureList().add(buttonsFeatureRow);
         final PresenterFeature prevStimulusButton = new PresenterFeature(FeatureType.prevStimulusButton, "Previous");
         prevStimulusButton.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
         prevStimulusButton.addFeatureAttributes(FeatureAttribute.eventTag, "prevStimulusButton");
         prevStimulusButton.addFeatureAttributes(FeatureAttribute.hotKey, "-1");
-        hasMoreStimulusFeature.getPresenterFeatureList().add(prevStimulusButton);
+        prevFeatureColumn.getPresenterFeatureList().add(prevStimulusButton);
         final PresenterFeature nextStimulusButton = new PresenterFeature(FeatureType.nextStimulusButton, "Next");
         nextStimulusButton.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
         nextStimulusButton.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusButton");
         nextStimulusButton.addFeatureAttributes(FeatureAttribute.hotKey, "-1");
-        hasMoreStimulusFeature.getPresenterFeatureList().add(nextStimulusButton);
+        nextFeatureColumn.getPresenterFeatureList().add(nextStimulusButton);
         loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
-        final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.htmlText, "No stimuli found");
-        endOfStimulusFeature.getPresenterFeatureList().add(autoNextPresenter);
+        final PresenterFeature htmlText = new PresenterFeature(FeatureType.htmlText, "End of stimuli");
+        endOfStimulusFeature.getPresenterFeatureList().add(htmlText);
+        final PresenterFeature prevStimulusButton2 = new PresenterFeature(FeatureType.prevStimulusButton, "Previous");
+        prevStimulusButton2.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
+        prevStimulusButton2.addFeatureAttributes(FeatureAttribute.eventTag, "prevStimulusButton");
+        prevStimulusButton2.addFeatureAttributes(FeatureAttribute.hotKey, "-1");
+        endOfStimulusFeature.getPresenterFeatureList().add(prevStimulusButton2);
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
         if (storedWizardScreenData.getScreenText(1) != null && storedWizardScreenData.getMenuWizardScreenData().size() > 0) {
             storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
