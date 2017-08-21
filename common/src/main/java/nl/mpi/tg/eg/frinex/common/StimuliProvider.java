@@ -54,11 +54,11 @@ public interface StimuliProvider {
 
     int getTotalStimuli();
 
-    boolean hasNextStimulus();
+    boolean hasNextStimulus(final int increment);
 
     void loadStoredStimulusList(String storedStimulusList);
 
-    void nextStimulus();
+    void nextStimulus(final int increment);
 
     void pushCurrentStimulusToEnd();
 
