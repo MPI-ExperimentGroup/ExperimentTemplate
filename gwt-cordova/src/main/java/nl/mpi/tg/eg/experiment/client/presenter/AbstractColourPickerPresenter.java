@@ -106,7 +106,7 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
 //        }.serialise(stimulusResponseGroup, userResults.getUserData().getUserId().toString()), 0);
 //    }
     private void triggerEvent() {
-        if (!stimulusProvider.hasNextStimulus()) {
+        if (!stimulusProvider.hasNextStimulus(1)) {
             shownSetCount++;
 //            if (repeatCount > shownSetCount) {
 //                stimulusProvider.getSubset(selectionTags, false, "");
@@ -114,11 +114,11 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
 //            submitFrinexResults();
             appEventListner.requestApplicationState(nextState);
         }
-        if (!stimulusProvider.hasNextStimulus()) {
+        if (!stimulusProvider.hasNextStimulus(1)) {
             endOfStimulusListener.postLoadTimerFired();
         } else {
             colourPickerCanvasView.setRandomColour();
-            stimulusProvider.nextStimulus();
+            stimulusProvider.nextStimulus(1);
             startMs = System.currentTimeMillis();
             shownCount++;
             int repeatCount = 1;
