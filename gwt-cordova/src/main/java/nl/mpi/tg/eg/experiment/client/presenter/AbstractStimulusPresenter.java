@@ -1088,9 +1088,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 timer.schedule(postLoadIncorrectMs);
             }
         };
+        final String gridStyle = "stimulusGrid";
         // todo: the appendStoredDataValue should occur in the correct or incorrect response within stimulusListener
         //localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST, stimulusProvider.getCurrentStimulus().getAudioTag());
-        ((TimedStimulusView) simpleView).startGrid();
+        ((TimedStimulusView) simpleView).startGrid(gridStyle);
         int imageCounter = 0;
 //        if (alternativeChoice != null) {
 //            buttonList.add(((TimedStimulusView) simpleView).addStringItem(getEventListener(buttonList, eventTag, stimulusProvider.getCurrentStimulus(), alternativeChoice, correctTimedListener, incorrectTimedListener), alternativeChoice, 0, 0, imageWidth));
@@ -1242,6 +1243,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), stimulusProvider.getCurrentStimulus(), storedStimulusJSONObject);
         for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
             if (!stimulusFreeText.isValid()) {
+                ((MetadataFieldWidget) stimulusFreeText).getFocusWidget().setFocus(true);
                 return;
             }
         }
