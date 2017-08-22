@@ -23,77 +23,83 @@
             <hasMoreStimulus>
                 <centrePage/>
                 <showStimulusProgress/>
-                <row>
-                    <column>
-                        <stimulusMetadataField fieldName="DateCreated"/>
-                    </column>
-                    <column>
-                        <stimulusMetadataField fieldName="DateSaved"/>
-                    </column>
-                    <column>
-                        <stimulusMetadataField fieldName="Coder"/>
-                    </column>
-                    <column>
-                        <stimulusMetadataField fieldName="ChildId"/>
-                    </column>
-                </row>
-                <row>
-                    <column>
-                        <stimulusMetadataField fieldName="Informant"/>
-                    </column>
-                    <column>
-                        <stimulusMetadataField fieldName="StimulusId"/>
-                    </column>
-                    <column>
-                        <stimulusMetadataField fieldName="ChildSpeaks"/>
-                    </column>
-                    <column>
-                        <stimulusMetadataField fieldName="WhoSpeaks"/>
-                    </column>
-                </row>
-                <row>
-                    <column>
-                        <stimulusMetadataField fieldName="Understandable"/>
-                    </column>
-                    <column>
-                        <stimulusMetadataField fieldName="IsChildAddressed"/>
-                    </column>
-                    <column>
-                        <stimulusMetadataField fieldName="WhichLanguage"/>
-                    </column>
-                    <column>
-                        <stimulusMetadataField fieldName="LanguageLat"/>
-                    </column>
-                </row>
-                <row>
-                    <column>
-                        <stimulusMetadataField fieldName="LanguageLon"/>
-                    </column>
-                    <column>
-                        <stimulusMetadataField fieldName="TimesPlayed"/>
-                    </column>
-                    <column>
-                        <stimulusMetadataField fieldName="TimesContextPlayed"/>
-                    </column>
-                </row>
+                <table>
+                    <row>
+                        <column>
+                            <stimulusMetadataField fieldName="DateCreated"/>
+                        </column>
+                        <column>
+                            <stimulusMetadataField fieldName="DateSaved"/>
+                        </column>
+                        <column>
+                            <stimulusMetadataField fieldName="Coder"/>
+                        </column>
+                        <column>
+                            <stimulusMetadataField fieldName="ChildId"/>
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <stimulusMetadataField fieldName="Informant"/>
+                        </column>
+                        <column>
+                            <stimulusMetadataField fieldName="StimulusId"/>
+                        </column>
+                        <column>
+                            <stimulusMetadataField fieldName="ChildSpeaks"/>
+                        </column>
+                        <column>
+                            <stimulusMetadataField fieldName="WhoSpeaks"/>
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <stimulusMetadataField fieldName="Understandable"/>
+                        </column>
+                        <column>
+                            <stimulusMetadataField fieldName="IsChildAddressed"/>
+                        </column>
+                        <column>
+                            <stimulusMetadataField fieldName="WhichLanguage"/>
+                        </column>
+                        <column>
+                            <stimulusMetadataField fieldName="LanguageLat"/>
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <stimulusMetadataField fieldName="LanguageLon"/>
+                        </column>
+                        <column>
+                            <stimulusMetadataField fieldName="TimesPlayed"/>
+                        </column>
+                        <column>
+                            <stimulusMetadataField fieldName="TimesContextPlayed"/>
+                        </column>
+                    </row>
+                </table>
                 <stimulusLabel/>
                 <showStimulusProgress/>
-                <row>
-                    <column>
-                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" matchingRegex="\\." replacement="_context." animate="none" maxWidth="80"/>
-                    </column>
-                    <column>
-                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" animate="none" maxWidth="80"/>
-                    </column>
-                </row>
-                <row>
-                    <column>
-                        <prevStimulusButton featureText="Previous" eventTag="prevStimulusButton" hotKey="-1" repeatIncorrect="false"/>
-                    </column>
-                    <column>
-                        <nextStimulusButton featureText="Next" eventTag="nextStimulusButton" hotKey="-1" repeatIncorrect="false"/>
-                    </column>
-                </row>
+                <table>
+                    <row>
+                        <column>
+                            <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" matchingRegex="(\\.[^\\.]*)$" replacement="_context$1" animate="none" maxWidth="80"/>
+                        </column>
+                        <column>
+                            <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" animate="none" maxWidth="80"/>
+                        </column>
+                    </row>
+                </table>
+                <table>
+                    <row>
+                        <column>
+                            <prevStimulusButton featureText="Previous" eventTag="prevStimulusButton" hotKey="-1" repeatIncorrect="false"/>
+                        </column>
+                        <column>
+                            <nextStimulusButton featureText="Next" eventTag="nextStimulusButton" hotKey="-1" repeatIncorrect="false"/>
+                        </column>
+                    </row>
+                </table>
             </hasMoreStimulus>
             <endOfStimulus>
                 <htmlText featureText="End of stimuli"/>
@@ -110,77 +116,83 @@
             <hasMoreStimulus>
                 <centrePage/>
                 <showStimulusProgress/>
-                <row>
-                    <column>
-                        <stimulusMetadataField fieldName="DateCreated"/>
-                    </column>
-                    <column>
-                        <stimulusMetadataField fieldName="DateSaved"/>
-                    </column>
-                    <column>
-                        <stimulusMetadataField fieldName="Coder"/>
-                    </column>
-                    <column>
-                        <stimulusMetadataField fieldName="ChildId"/>
-                    </column>
-                </row>
-                <row>
-                    <column>
-                        <stimulusMetadataField fieldName="Informant"/>
-                    </column>
-                    <column>
-                        <stimulusMetadataField fieldName="StimulusId"/>
-                    </column>
-                    <column>
-                        <stimulusMetadataField fieldName="ChildSpeaks"/>
-                    </column>
-                    <column>
-                        <stimulusMetadataField fieldName="WhoSpeaks"/>
-                    </column>
-                </row>
-                <row>
-                    <column>
-                        <stimulusMetadataField fieldName="Understandable"/>
-                    </column>
-                    <column>
-                        <stimulusMetadataField fieldName="IsChildAddressed"/>
-                    </column>
-                    <column>
-                        <stimulusMetadataField fieldName="WhichLanguage"/>
-                    </column>
-                    <column>
-                        <stimulusMetadataField fieldName="LanguageLat"/>
-                    </column>
-                </row>
-                <row>
-                    <column>
-                        <stimulusMetadataField fieldName="LanguageLon"/>
-                    </column>
-                    <column>
-                        <stimulusMetadataField fieldName="TimesPlayed"/>
-                    </column>
-                    <column>
-                        <stimulusMetadataField fieldName="TimesContextPlayed"/>
-                    </column>
-                </row>
+                <table>
+                    <row>
+                        <column>
+                            <stimulusMetadataField fieldName="DateCreated"/>
+                        </column>
+                        <column>
+                            <stimulusMetadataField fieldName="DateSaved"/>
+                        </column>
+                        <column>
+                            <stimulusMetadataField fieldName="Coder"/>
+                        </column>
+                        <column>
+                            <stimulusMetadataField fieldName="ChildId"/>
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <stimulusMetadataField fieldName="Informant"/>
+                        </column>
+                        <column>
+                            <stimulusMetadataField fieldName="StimulusId"/>
+                        </column>
+                        <column>
+                            <stimulusMetadataField fieldName="ChildSpeaks"/>
+                        </column>
+                        <column>
+                            <stimulusMetadataField fieldName="WhoSpeaks"/>
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <stimulusMetadataField fieldName="Understandable"/>
+                        </column>
+                        <column>
+                            <stimulusMetadataField fieldName="IsChildAddressed"/>
+                        </column>
+                        <column>
+                            <stimulusMetadataField fieldName="WhichLanguage"/>
+                        </column>
+                        <column>
+                            <stimulusMetadataField fieldName="LanguageLat"/>
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <stimulusMetadataField fieldName="LanguageLon"/>
+                        </column>
+                        <column>
+                            <stimulusMetadataField fieldName="TimesPlayed"/>
+                        </column>
+                        <column>
+                            <stimulusMetadataField fieldName="TimesContextPlayed"/>
+                        </column>
+                    </row>
+                </table>
                 <stimulusLabel/>
                 <showStimulusProgress/>
-                <row>
-                    <column>
-                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" matchingRegex="\\." replacement="_context." animate="none" maxWidth="80"/>
-                    </column>
-                    <column>
-                        <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" animate="none" maxWidth="80"/>
-                    </column>
-                </row>
-                <row>
-                    <column>
-                        <prevStimulusButton featureText="Previous" eventTag="prevStimulusButton" hotKey="-1" repeatIncorrect="false"/>
-                    </column>
-                    <column>
-                        <nextStimulusButton featureText="Next" eventTag="nextStimulusButton" hotKey="-1" repeatIncorrect="false"/>
-                    </column>
-                </row>
+                <table>
+                    <row>
+                        <column>
+                            <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" matchingRegex="(\\.[^\\.]*)$" replacement="_context$1" animate="none" maxWidth="80"/>
+                        </column>
+                        <column>
+                            <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" animate="none" maxWidth="80"/>
+                        </column>
+                    </row>
+                </table>
+                <table>
+                    <row>
+                        <column>
+                            <prevStimulusButton featureText="Previous" eventTag="prevStimulusButton" hotKey="-1" repeatIncorrect="false"/>
+                        </column>
+                        <column>
+                            <nextStimulusButton featureText="Next" eventTag="nextStimulusButton" hotKey="-1" repeatIncorrect="false"/>
+                        </column>
+                    </row>
+                </table>
             </hasMoreStimulus>
             <endOfStimulus>
                 <htmlText featureText="End of stimuli"/>
