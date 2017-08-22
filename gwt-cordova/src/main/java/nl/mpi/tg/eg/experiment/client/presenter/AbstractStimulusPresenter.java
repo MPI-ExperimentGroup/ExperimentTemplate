@@ -379,10 +379,16 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         labelTimer.schedule(500);
     }
 
-    protected void row(final TimedStimulusListener timedStimulusListener) {
-        ((TimedStimulusView) simpleView).startHorizontalPanel();
+    protected void table(final TimedStimulusListener timedStimulusListener) {
+        ((TimedStimulusView) simpleView).startTable();
         timedStimulusListener.postLoadTimerFired();
-        ((TimedStimulusView) simpleView).endHorizontalPanel();
+        ((TimedStimulusView) simpleView).endTable();
+    }
+
+    protected void row(final TimedStimulusListener timedStimulusListener) {
+        ((TimedStimulusView) simpleView).startRow();
+        timedStimulusListener.postLoadTimerFired();
+        ((TimedStimulusView) simpleView).endRow();
     }
 
     protected void column(final TimedStimulusListener timedStimulusListener) {
