@@ -122,13 +122,15 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
+        PresenterFeature presenterFeatureTable = new PresenterFeature(FeatureType.table, null);
+        hasMoreStimulusFeature.getPresenterFeatureList().add(presenterFeatureTable);
         PresenterFeature presenterFeatureRow = new PresenterFeature(FeatureType.row, null);
-        hasMoreStimulusFeature.getPresenterFeatureList().add(presenterFeatureRow);
+        presenterFeatureTable.getPresenterFeatureList().add(presenterFeatureRow);
         int columnCounter = 0;
         for (Metadata metadata : storedWizardScreenData.getMetadataFields()) {
             if (columnCounter > 3) {
                 presenterFeatureRow = new PresenterFeature(FeatureType.row, null);
-                hasMoreStimulusFeature.getPresenterFeatureList().add(presenterFeatureRow);
+                presenterFeatureTable.getPresenterFeatureList().add(presenterFeatureRow);
                 columnCounter = 0;
             }
             if (!experiment.getMetadata().contains(metadata)) {
@@ -147,15 +149,17 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
         }
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
+        PresenterFeature presenterFeatureTableS = new PresenterFeature(FeatureType.table, null);
+        hasMoreStimulusFeature.getPresenterFeatureList().add(presenterFeatureTableS);
         PresenterFeature stimulusFeatureRow = new PresenterFeature(FeatureType.row, null);
-        hasMoreStimulusFeature.getPresenterFeatureList().add(stimulusFeatureRow);
+        presenterFeatureTableS.getPresenterFeatureList().add(stimulusFeatureRow);
         final PresenterFeature contextFeature = new PresenterFeature(FeatureType.stimulusImage, null);
         contextFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
         contextFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
         contextFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "80");
         contextFeature.addFeatureAttributes(FeatureAttribute.animate, "none");
-        contextFeature.addFeatureAttributes(FeatureAttribute.matchingRegex, "\\\\.");
-        contextFeature.addFeatureAttributes(FeatureAttribute.replacement, "_context.");
+        contextFeature.addFeatureAttributes(FeatureAttribute.matchingRegex, "(\\\\.[^\\\\.]*)$");
+        contextFeature.addFeatureAttributes(FeatureAttribute.replacement, "_context$1");
         contextFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         final PresenterFeature contextFeatureColumn = new PresenterFeature(FeatureType.column, null);
         stimulusFeatureRow.getPresenterFeatureList().add(contextFeatureColumn);
@@ -170,12 +174,14 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
         stimulusFeatureRow.getPresenterFeatureList().add(imageFeatureColumn);
         imageFeatureColumn.getPresenterFeatureList().add(imageFeature);
 
+        PresenterFeature presenterFeatureTableB = new PresenterFeature(FeatureType.table, null);
+        hasMoreStimulusFeature.getPresenterFeatureList().add(presenterFeatureTableB);
         PresenterFeature buttonsFeatureRow = new PresenterFeature(FeatureType.row, null);
         final PresenterFeature prevFeatureColumn = new PresenterFeature(FeatureType.column, null);
         buttonsFeatureRow.getPresenterFeatureList().add(prevFeatureColumn);
         final PresenterFeature nextFeatureColumn = new PresenterFeature(FeatureType.column, null);
         buttonsFeatureRow.getPresenterFeatureList().add(nextFeatureColumn);
-        hasMoreStimulusFeature.getPresenterFeatureList().add(buttonsFeatureRow);
+        presenterFeatureTableB.getPresenterFeatureList().add(buttonsFeatureRow);
         final PresenterFeature prevStimulusButton = new PresenterFeature(FeatureType.prevStimulusButton, "Previous");
         prevStimulusButton.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
         prevStimulusButton.addFeatureAttributes(FeatureAttribute.eventTag, "prevStimulusButton");
