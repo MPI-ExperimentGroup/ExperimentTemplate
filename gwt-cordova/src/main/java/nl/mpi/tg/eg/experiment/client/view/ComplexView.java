@@ -30,6 +30,7 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
@@ -57,6 +58,7 @@ public class ComplexView extends SimpleView {
     private Label recordingLabel = null;
     private HorizontalPanel horizontalPanel = null;
     private VerticalPanel cellPanel = null;
+    private FlexTable gridPanel = null;
 
     private class ImageEntry {
 
@@ -94,11 +96,28 @@ public class ComplexView extends SimpleView {
     public void startCell() {
         cellPanel = new VerticalPanel();
         cellPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
-        horizontalPanel.add(cellPanel);
+        gridPanel.addCell(gridPanel.getRowCount() - 1);
+        gridPanel.setWidget(gridPanel.getRowCount() - 1, gridPanel.getCellCount(gridPanel.getRowCount() - 1) - 1, cellPanel);
     }
 
     public void endCell() {
         cellPanel = null;
+    }
+
+    public void startRow() {
+        gridPanel.insertRow(gridPanel.getRowCount());
+    }
+
+    public void endRow() {
+    }
+
+    public void startTable() {
+        gridPanel = new FlexTable();
+        outerPanel.add(gridPanel);
+    }
+
+    public void endTable() {
+        gridPanel = null;
     }
 
     public void startHorizontalPanel() {
