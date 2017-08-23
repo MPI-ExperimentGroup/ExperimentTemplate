@@ -68,12 +68,17 @@ public class HRPretest02Test {
 
     /**
      * Test of getWizardData method, of multiple wizard classes.
+     *
+     * @throws java.io.IOException
+     * @throws javax.xml.bind.JAXBException
+     * @throws java.net.URISyntaxException
      */
     @Test
     public void testAllGetWizardData() throws IOException, JAXBException, URISyntaxException {
         System.out.println("testAllGetWizardData");
 //        final DefaultTranslations defaultTranslations = new DefaultTranslations(translationRepository);
 //        defaultTranslations.insertTranslations();
+//        testGetWizardData(new DefaultExperiments().getAllOptionsExperiment(null, null, null));
 //        testGetWizardData(new DobesAnnotator().getExperiment());
         testGetWizardData(new JenaFieldKit().getExperiment());
 //        testGetWizardData(new TransmissionChain().getExperiment());
