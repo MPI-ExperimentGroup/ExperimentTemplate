@@ -47,13 +47,14 @@
         <!--<experiment.destinationServerUrl></experiment.destinationServerUrl>-->      
         <!--<experiment.destinationServer></experiment.destinationServer>-->
         <!--<experiment.configuration.name>parcours01</experiment.configuration.name>-->
-        <experiment.configuration.name>multiparticipant</experiment.configuration.name>
+        <!--<experiment.configuration.name>multiparticipant</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>sentences_rating_task</experiment.configuration.name>-->
         <!--<experiment.configuration.name>french_audio</experiment.configuration.name>-->
         <!--<experiment.configuration.name>dobes_annotator</experiment.configuration.name>-->
         <!--<experiment.configuration.name>antwoordraden</experiment.configuration.name>-->
         <!--<experiment.configuration.name>leeservaring</experiment.configuration.name>-->
         <!--<experiment.configuration.name>online_emotions</experiment.configuration.name>-->
-        <!--<experiment.configuration.name>alloptions</experiment.configuration.name>-->
+        <experiment.configuration.name>alloptions</experiment.configuration.name>
         <!--<experiment.configuration.name>three_lists</experiment.configuration.name>-->
         <!--<experiment.configuration.name>hrpretest</experiment.configuration.name>-->
         <!--<experiment.configuration.name>shawifieldkit</experiment.configuration.name>-->
