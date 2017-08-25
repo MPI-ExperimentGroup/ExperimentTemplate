@@ -42,18 +42,22 @@ public class RandomGrouping implements Serializable {
     private String storageField;
 
     @ElementCollection
-    private List<String> randomTags = new ArrayList<>();
+    private List<RandomTag> randomTags = new ArrayList<>();
 
     @XmlElement(name = "tag")
-    public List<String> getRandomTags() {
+    public List<RandomTag> getRandomTags() {
         return randomTags;
     }
 
     public void addRandomTag(String tag) {
-        randomTags.add(Stimulus.cleanTagString(tag));
+        randomTags.add(new RandomTag(null, Stimulus.cleanTagString(tag), null, null));
     }
 
-    public void setRandomTags(List<String> randomTags) {
+    public void addRandomTag(String alias, String tag) {
+        randomTags.add(new RandomTag(alias, Stimulus.cleanTagString(tag), null, null));
+    }
+
+    public void setRandomTags(List<RandomTag> randomTags) {
         this.randomTags = randomTags;
     }
 
