@@ -96,8 +96,12 @@ public class ComplexView extends SimpleView {
     public void startCell() {
         cellPanel = new VerticalPanel();
         cellPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
-        gridPanel.addCell(gridPanel.getRowCount() - 1);
-        gridPanel.setWidget(gridPanel.getRowCount() - 1, gridPanel.getCellCount(gridPanel.getRowCount() - 1) - 1, cellPanel);
+        if (gridPanel != null) {
+            gridPanel.addCell(gridPanel.getRowCount() - 1);
+            gridPanel.setWidget(gridPanel.getRowCount() - 1, gridPanel.getCellCount(gridPanel.getRowCount() - 1) - 1, cellPanel);
+        } else {
+            horizontalPanel.add(cellPanel);
+        }
     }
 
     public void endCell() {
@@ -105,7 +109,11 @@ public class ComplexView extends SimpleView {
     }
 
     public void startRow() {
-        gridPanel.insertRow(gridPanel.getRowCount());
+        if (gridPanel != null) {
+            gridPanel.insertRow(gridPanel.getRowCount());
+        } else {
+            startHorizontalPanel();
+        }
     }
 
     public void endRow() {
