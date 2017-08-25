@@ -5,36 +5,7 @@
         <field controlledMessage="Please enter at least three letters or numbers." controlledRegex=".'{'1,'}'" postName="firstName" preventServerDuplicates="false" registrationField="First name"/>
         <field controlledMessage="Please choose a gender." controlledRegex="female|male|other" postName="gender" preventServerDuplicates="false" registrationField="Gender"/>
         <field controlledMessage="Please enter your login code." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Login code"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR0_4" preventServerDuplicates="false" registrationField="stimuliAllocationR0_4"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR0_1_4" preventServerDuplicates="false" registrationField="stimuliAllocationR0_1_4"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR0_2_4" preventServerDuplicates="false" registrationField="stimuliAllocationR0_2_4"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR1_4" preventServerDuplicates="false" registrationField="stimuliAllocationR1_4"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR2_4" preventServerDuplicates="false" registrationField="stimuliAllocationR2_4"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR3_4" preventServerDuplicates="false" registrationField="stimuliAllocationR3_4"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR4_4" preventServerDuplicates="false" registrationField="stimuliAllocationR4_4"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR5_4" preventServerDuplicates="false" registrationField="stimuliAllocationR5_4"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR6_4" preventServerDuplicates="false" registrationField="stimuliAllocationR6_4"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR7_4" preventServerDuplicates="false" registrationField="stimuliAllocationR7_4"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR8_4" preventServerDuplicates="false" registrationField="stimuliAllocationR8_4"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR0_8" preventServerDuplicates="false" registrationField="stimuliAllocationR0_8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR0_1_8" preventServerDuplicates="false" registrationField="stimuliAllocationR0_1_8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR0_2_8" preventServerDuplicates="false" registrationField="stimuliAllocationR0_2_8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR1_8" preventServerDuplicates="false" registrationField="stimuliAllocationR1_8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR2_8" preventServerDuplicates="false" registrationField="stimuliAllocationR2_8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR3_8" preventServerDuplicates="false" registrationField="stimuliAllocationR3_8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR4_8" preventServerDuplicates="false" registrationField="stimuliAllocationR4_8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR5_8" preventServerDuplicates="false" registrationField="stimuliAllocationR5_8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR6_8" preventServerDuplicates="false" registrationField="stimuliAllocationR6_8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR7_8" preventServerDuplicates="false" registrationField="stimuliAllocationR7_8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR8_8" preventServerDuplicates="false" registrationField="stimuliAllocationR8_8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR9_8" preventServerDuplicates="false" registrationField="stimuliAllocationR9_8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR10_8" preventServerDuplicates="false" registrationField="stimuliAllocationR10_8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR11_8" preventServerDuplicates="false" registrationField="stimuliAllocationR11_8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR12_8" preventServerDuplicates="false" registrationField="stimuliAllocationR12_8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR13_8" preventServerDuplicates="false" registrationField="stimuliAllocationR13_8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR14_8" preventServerDuplicates="false" registrationField="stimuliAllocationR14_8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR15_8" preventServerDuplicates="false" registrationField="stimuliAllocationR15_8"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuliAllocationR16_8" preventServerDuplicates="false" registrationField="stimuliAllocationR16_8"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuli" preventServerDuplicates="false" registrationField="stimuli"/>
     </metadata>
     <presenter displayOrder="1" menuLabel="Introductie" next="Edit_User" type="stimulus" self="Introductie" title="Introductie">
         <hasGetParameter parameterName="R0_4">
@@ -213,8 +184,8 @@
                 <endOfStimulus>
                     <autoNextPresenter/>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR0_4">
-                    <tag>version1zero</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1zero</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -276,8 +247,8 @@
                 <endOfStimulus>
                     <autoNextPresenter/>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR0_1_4">
-                    <tag>version1zero</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1zero</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -339,8 +310,8 @@
                 <endOfStimulus>
                     <autoNextPresenter/>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR0_2_4">
-                    <tag>version1zero</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1zero</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -355,7 +326,7 @@
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|D,C">
                         <groupNetworkActivity groupRole="A,D:-:-:B,C:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -367,17 +338,17 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,C:-:-:A,D:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,D:-:-:B,C:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:B,C:-:-:A,D:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -412,7 +383,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,D,B,C:-:-:A,D,B,C">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
                                 <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
@@ -458,8 +429,8 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR1_4">
-                    <tag>version1zero</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1zero</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -474,7 +445,7 @@
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="C,A|D,B">
                         <groupNetworkActivity groupRole="C,D:-:-:A,B:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -486,17 +457,17 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="A,B:-:-:C,D:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:C,D:-:-:A,B:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B:-:-:C,D:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -531,7 +502,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:C,D,A,B:-:-:C,D,A,B">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
                                 <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
@@ -577,8 +548,8 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR2_4">
-                    <tag>version1round2</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1round2</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -593,7 +564,7 @@
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="B,C|A,D">
                         <groupNetworkActivity groupRole="B,A:-:-:C,D:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -605,17 +576,17 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="C,D:-:-:B,A:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:B,A:-:-:C,D:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:C,D:-:-:B,A:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -650,7 +621,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:B,A,C,D:-:-:B,A,C,D">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
                                 <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
@@ -696,8 +667,8 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR3_4">
-                    <tag>version1round3</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1round3</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -712,7 +683,7 @@
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="B,A|C,D">
                         <groupNetworkActivity groupRole="B,C:-:-:A,D:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -724,17 +695,17 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="A,D:-:-:B,C:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:B,C:-:-:A,D:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,D:-:-:B,C:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -769,7 +740,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:B,C,A,D:-:-:B,C,A,D">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
                                 <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
@@ -815,8 +786,8 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR4_4">
-                    <tag>version1round4</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1round4</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -831,7 +802,7 @@
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,C|B,D">
                         <groupNetworkActivity groupRole="A,B:-:-:C,D:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -843,17 +814,17 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="C,D:-:-:A,B:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B:-:-:C,D:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:C,D:-:-:A,B:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -888,7 +859,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
                                 <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
@@ -934,8 +905,8 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR5_4">
-                    <tag>version1round5</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -950,7 +921,7 @@
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="C,B|D,A">
                         <groupNetworkActivity groupRole="C,D:-:-:B,A:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -962,17 +933,17 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,A:-:-:C,D:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:C,D:-:-:B,A:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:B,A:-:-:C,D:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -1007,7 +978,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:C,D,B,A:-:-:C,D,B,A">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
                                 <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
@@ -1053,8 +1024,8 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR6_4">
-                    <tag>version1</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -1069,7 +1040,7 @@
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|D,C">
                         <groupNetworkActivity groupRole="A,D:-:-:B,C:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -1081,17 +1052,17 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,C:-:-:A,D:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,D:-:-:B,C:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:B,C:-:-:A,D:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -1126,7 +1097,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,D,B,C:-:-:A,D,B,C">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
                                 <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
@@ -1172,8 +1143,8 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR7_4">
-                    <tag>version1</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -1212,8 +1183,8 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR8_4">
-                    <tag>version1</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -1275,8 +1246,8 @@
                 <endOfStimulus>
                     <autoNextPresenter/>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR0_8">
-                    <tag>version1zero</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1zero</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -1338,8 +1309,8 @@
                 <endOfStimulus>
                     <autoNextPresenter/>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR0_1_8">
-                    <tag>version1zero</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1zero</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -1401,8 +1372,8 @@
                 <endOfStimulus>
                     <autoNextPresenter/>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR0_2_8">
-                    <tag>version1zero</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1zero</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -1417,7 +1388,7 @@
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B|C,D|E,F|G,H">
                         <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -1429,17 +1400,17 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -1474,7 +1445,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,C,E,G,B,D,F,H:-:-:A,C,E,G,B,D,F,H">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
                                 <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
@@ -1520,8 +1491,8 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR1_8">
-                    <tag>version1zero</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1zero</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -1536,7 +1507,7 @@
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="H,A|D,E|F,C|B,G">
                         <groupNetworkActivity groupRole="H,D,F,B:-:-:A,E,C,G:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -1548,17 +1519,17 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="A,E,C,G:-:-:H,D,F,B:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:H,D,F,B:-:-:A,E,C,G:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,E,C,G:-:-:H,D,F,B:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -1593,7 +1564,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:H,D,F,B,A,E,C,G:-:-:H,D,F,B,A,E,C,G">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
                                 <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
@@ -1639,8 +1610,8 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR2_8">
-                    <tag>version1round2</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1round2</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -1655,7 +1626,7 @@
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,D|G,F|E,B|C,H">
                         <groupNetworkActivity groupRole="A,G,E,C:-:-:D,F,B,H:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -1667,17 +1638,17 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="D,F,B,H:-:-:A,G,E,C:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,G,E,C:-:-:D,F,B,H:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:D,F,B,H:-:-:A,G,E,C:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -1712,7 +1683,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,G,E,C,D,F,B,H:-:-:A,G,E,C,D,F,B,H">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
                                 <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
@@ -1758,8 +1729,8 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR3_8">
-                    <tag>version1round3</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1round3</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -1774,7 +1745,7 @@
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="C,A|B,D|E,G|F,H">
                         <groupNetworkActivity groupRole="C,B,E,F:-:-:A,D,G,H:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -1786,17 +1757,17 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="A,D,G,H:-:-:C,B,E,F:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:C,B,E,F:-:-:A,D,G,H:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,D,G,H:-:-:C,B,E,F:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -1831,7 +1802,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:C,B,E,F,A,D,G,H:-:-:C,B,E,F,A,D,G,H">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
                                 <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
@@ -1877,8 +1848,8 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR4_8">
-                    <tag>version1round4</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1round4</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -1893,7 +1864,7 @@
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,E|D,H|B,F|G,C">
                         <groupNetworkActivity groupRole="A,D,B,G:-:-:E,H,F,C:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -1905,17 +1876,17 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="E,H,F,C:-:-:A,D,B,G:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,D,B,G:-:-:E,H,F,C:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:E,H,F,C:-:-:A,D,B,G:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -1950,7 +1921,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,D,B,G,E,H,F,C:-:-:A,D,B,G,E,H,F,C">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
                                 <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
@@ -1996,8 +1967,8 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR5_8">
-                    <tag>version1round5</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1round5</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -2012,7 +1983,7 @@
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="F,A|G,D|C,B|H,E">
                         <groupNetworkActivity groupRole="F,G,C,H:-:-:A,D,B,E:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -2024,17 +1995,17 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="A,D,B,E:-:-:F,G,C,H:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:F,G,C,H:-:-:A,D,B,E:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,D,B,E:-:-:F,G,C,H:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -2069,7 +2040,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:F,G,C,H,A,D,B,E:-:-:F,G,C,H,A,D,B,E">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
                                 <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
@@ -2115,8 +2086,8 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR6_8">
-                    <tag>version1</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -2131,7 +2102,7 @@
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,G|H,B|E,C|D,F">
                         <groupNetworkActivity groupRole="A,H,E,D:-:-:G,B,C,F:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -2143,17 +2114,17 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="G,B,C,F:-:-:A,H,E,D:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,H,E,D:-:-:G,B,C,F:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:G,B,C,F:-:-:A,H,E,D:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -2188,7 +2159,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,H,E,D,G,B,C,F:-:-:A,H,E,D,G,B,C,F">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
                                 <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
@@ -2234,8 +2205,8 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR7_8">
-                    <tag>version1</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -2274,8 +2245,8 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR8_8">
-                    <tag>version1</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -2290,7 +2261,7 @@
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="B,A|D,C|F,E|H,G">
                         <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -2302,17 +2273,17 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:B,D,F,H:-:-:A,C,E,G:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,C,E,G:-:-:B,D,F,H:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -2347,7 +2318,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:B,D,F,H,A,C,E,G:-:-:B,D,F,H,A,C,E,G">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
                                 <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
@@ -2393,8 +2364,8 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR9_8">
-                    <tag>version1</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -2409,7 +2380,7 @@
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,H|E,D|C,F|G,B">
                         <groupNetworkActivity groupRole="A,E,C,G:-:-:H,D,F,B:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -2421,17 +2392,17 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="H,D,F,B:-:-:A,E,C,G:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,E,C,G:-:-:H,D,F,B:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:H,D,F,B:-:-:A,E,C,G:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -2466,7 +2437,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,E,C,G,H,D,F,B:-:-:A,E,C,G,H,D,F,B">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
                                 <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
@@ -2512,8 +2483,8 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR10_8">
-                    <tag>version1</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -2528,7 +2499,7 @@
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="D,A|F,G|B,E|H,C">
                         <groupNetworkActivity groupRole="D,F,B,H:-:-:A,G,E,C:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -2540,17 +2511,17 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="A,G,E,C:-:-:D,F,B,H:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:D,F,B,H:-:-:A,G,E,C:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,G,E,C:-:-:D,F,B,H:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -2585,7 +2556,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:D,F,B,H,A,G,E,C:-:-:D,F,B,H,A,G,E,C">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
                                 <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
@@ -2631,8 +2602,8 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR11_8">
-                    <tag>version1</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -2647,7 +2618,7 @@
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,C|D,B|G,E|H,F">
                         <groupNetworkActivity groupRole="A,D,G,H:-:-:C,B,E,F:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -2659,17 +2630,17 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="C,B,E,F:-:-:A,D,G,H:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,D,G,H:-:-:C,B,E,F:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:C,B,E,F:-:-:A,D,G,H:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -2704,7 +2675,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,D,G,H,C,B,E,F:-:-:A,D,G,H,C,B,E,F">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
                                 <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
@@ -2750,8 +2721,8 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR12_8">
-                    <tag>version1</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -2766,7 +2737,7 @@
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="E,A|H,D|F,B|C,G">
                         <groupNetworkActivity groupRole="E,H,F,C:-:-:A,D,B,G:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -2778,17 +2749,17 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="A,D,B,G:-:-:E,H,F,C:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:E,H,F,C:-:-:A,D,B,G:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,D,B,G:-:-:E,H,F,C:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -2823,7 +2794,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:E,H,F,C,A,D,B,G:-:-:E,H,F,C,A,D,B,G">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
                                 <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
@@ -2869,8 +2840,8 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR13_8">
-                    <tag>version1</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -2885,7 +2856,7 @@
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,F|D,G|B,C|E,H">
                         <groupNetworkActivity groupRole="A,D,B,E:-:-:F,G,C,H:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -2897,17 +2868,17 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="F,G,C,H:-:-:A,D,B,E:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,D,B,E:-:-:F,G,C,H:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:F,G,C,H:-:-:A,D,B,E:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -2942,7 +2913,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,D,B,E,F,G,C,H:-:-:A,D,B,E,F,G,C,H">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
                                 <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
@@ -2988,8 +2959,8 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR14_8">
-                    <tag>version1</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -3004,7 +2975,7 @@
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="G,A|B,H|C,E|F,D">
                         <groupNetworkActivity groupRole="G,B,C,F:-:-:A,H,E,D:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -3016,17 +2987,17 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="A,H,E,D:-:-:G,B,C,F:-:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:G,B,C,F:-:-:A,H,E,D:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Een moment alsjeblieft. Je partner is een scène aan het kiezen."/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,H,E,D:-:-:G,B,C,F:-">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <htmlText featureText="Kies de scène die bij de beschrijving hoort: &lt;br/&gt;&lt;br/&gt;"/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
@@ -3061,7 +3032,7 @@
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:G,B,C,F,A,H,E,D:-:-:G,B,C,F,A,H,E,D">
                             <clearPage/>
-                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;groupOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
+                            <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
                                 <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
@@ -3107,8 +3078,8 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR15_8">
-                    <tag>version1</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
@@ -3147,8 +3118,8 @@
                         <autoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
-                <randomGrouping storageField="stimuliAllocationR16_8">
-                    <tag>version1</tag>
+                <randomGrouping storageField="stimuli">
+                    <tag alias="v1">version1</tag>
                 </randomGrouping>
                 <stimuli/>
             </loadStimulus>
