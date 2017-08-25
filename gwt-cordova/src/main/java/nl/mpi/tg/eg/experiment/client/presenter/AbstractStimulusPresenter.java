@@ -66,6 +66,7 @@ import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.MetadataFieldWidget;
 import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
+import nl.mpi.tg.eg.frinex.common.model.StimulusSelector;
 
 /**
  * @since Jun 23, 2015 11:36:37 AM (creation date)
@@ -275,18 +276,18 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
-    protected void loadStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
-        loadStimulus(eventTag, selectionTags, Arrays.asList(new Stimulus.Tag[]{}), null, maxStimulusCount, null, null, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, hasMoreStimulusListener, endOfStimulusListener);
+    protected void loadStimulus(String eventTag, final StimulusSelector[] selectionTags, final int maxStimulusCount, final boolean randomise, int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+        loadStimulus(eventTag, selectionTags, new StimulusSelector[0], null, maxStimulusCount, null, null, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, hasMoreStimulusListener, endOfStimulusListener);
     }
 
-    protected void loadStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final List<Stimulus.Tag> randomTags, final MetadataField stimulusAllocationField, final int maxStimulusCount, final boolean randomise, int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+    protected void loadStimulus(String eventTag, final StimulusSelector[] selectionTags, final StimulusSelector[] randomTags, final MetadataField stimulusAllocationField, final int maxStimulusCount, final boolean randomise, int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         // todo: remove this when the experiment definition is updated
         loadStimulus(eventTag, selectionTags, randomTags, stimulusAllocationField, maxStimulusCount, maxStimulusCount, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, hasMoreStimulusListener, endOfStimulusListener);
     }
 
     protected void loadStimulus(String eventTag,
-            final List<Stimulus.Tag> selectionTags, // only stimuli with tags in this list can be included
-            final List<Stimulus.Tag> randomTags,
+            final StimulusSelector[] selectionTags, // only stimuli with tags in this list can be included
+            final StimulusSelector[] randomTags,
             final MetadataField stimulusAllocationField,
             final int maxStimulusCount,
             final Integer minStimuliPerTag,
@@ -306,16 +307,25 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         } catch (NumberFormatException exception) {
             seenStimulusIndex = 0;
         }
-        final List<Stimulus.Tag> allocatedTags = new ArrayList<>(selectionTags);
-        if (!randomTags.isEmpty()) {
+        final List<Stimulus.Tag> allocatedTags = new ArrayList<>();
+//        final List<StimulusSelector> allocatedTags = new ArrayList<>(Arrays.asList(selectionTags));
+        for (StimulusSelector selector : selectionTags) {
+            allocatedTags.add(selector.getTag());
+        }
+        if (randomTags.length > 0) {
             final String storedStimulusAllocation = userResults.getUserData().getMetadataValue(stimulusAllocationField);
-            try {
-                allocatedTags.add(GeneratedStimulus.Tag.valueOf(storedStimulusAllocation));
-            } catch (IllegalArgumentException exception) {
-                Stimulus.Tag stimulusAllocation = randomTags.get(new Random().nextInt(randomTags.size()));
-                userResults.getUserData().setMetadataValue(stimulusAllocationField, stimulusAllocation.name());
+            if (storedStimulusAllocation != null && !storedStimulusAllocation.isEmpty()) {
+                for (StimulusSelector selector : randomTags) {
+                    if (storedStimulusAllocation.equals(selector.getAlias())) {
+                        allocatedTags.add(selector.getTag());
+                    }
+                }
+            } else {
+//                final Stimulus.Tag[] tagsArray = (Stimulus.Tag[]) randomTags.values().toArray();
+                StimulusSelector stimulusAllocation = randomTags[new Random().nextInt(randomTags.length)];
+                userResults.getUserData().setMetadataValue(stimulusAllocationField, stimulusAllocation.getAlias());
                 localStorage.storeData(userResults);
-                allocatedTags.add(stimulusAllocation);
+                allocatedTags.add(stimulusAllocation.getTag());
                 // submit the user metadata so that the selected stimuli group is stored
                 submissionService.submitMetadata(userResults, new DataSubmissionListener() {
                     @Override
