@@ -203,6 +203,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService; 
                 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
                 import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
+                import nl.mpi.tg.eg.frinex.common.model.StimulusSelector;
                         
                 // generated with config2java.xsl
                 public class </xsl:text>
@@ -637,15 +638,18 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         </xsl:text>
     </xsl:template>
     <xsl:template match="stimuli|randomGrouping" mode="stimuliTags">
-        <xsl:text>, Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{</xsl:text>
-        <xsl:for-each select="distinct-values(tag/text())">
+        <xsl:text>, new StimulusSelector[]{</xsl:text>
+        <xsl:for-each select="tag">
+            <xsl:text>new StimulusSelector(</xsl:text>
+            <xsl:value-of select="if(@alias) then concat('&quot;', @alias, '&quot;,') else ''" />
             <xsl:text>Tag.tag_</xsl:text>
-            <xsl:value-of select="." />
+            <xsl:value-of select="text()" />
+            <xsl:text>)</xsl:text>
             <xsl:if test="position() != last()">
                 <xsl:text>, </xsl:text>
             </xsl:if>
         </xsl:for-each>
-        <xsl:text>})</xsl:text>
+        <xsl:text>}</xsl:text>
         <xsl:if test="local-name() eq 'randomGrouping'">
             <xsl:value-of select="if(@storageField) then concat(', metadataFieldProvider.', @storageField, 'MetadataField') else ',null'" />
         </xsl:if>
