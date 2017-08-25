@@ -61,7 +61,8 @@ public class Stimulus implements Serializable {
     }
 
     public Stimulus(String identifier, String audioPath, String videoPath, String imagePath, String label, String code, int pauseMs, HashSet<String> stimulusTags, String ratingLabels, String correctResponses) {
-        this.identifier = (identifier == null) ? null : identifier;
+        this.identifier = (identifier == null) ? null : identifier; // todo: ; in the id kills the JSON data sending cleanTagString(... or cleanIdString(
+        // todo: fields need to be systematically (identifier is treated in two different ways constructor and setter) cleaned of bad chars or the XSLT updated
         this.audioPath = audioPath;
         this.videoPath = videoPath;
         this.imagePath = imagePath;
@@ -100,7 +101,7 @@ public class Stimulus implements Serializable {
     }
 
     public void setIdentifier(String identifier) {
-        this.identifier = (identifier == null) ? null : cleanTagString(identifier);
+        this.identifier = (identifier == null) ? null : cleanIdString(identifier); // todo: ; in the id kills the JSON data sending cleanTagString(... or cleanIdString(
     }
 
     @XmlAttribute
@@ -204,6 +205,10 @@ public class Stimulus implements Serializable {
 
     public static final String cleanTagString(String stimulusTag) {
         return stimulusTag.replaceAll("[ \\t\\n\\x0B\\f\\r\\(\\)\\{\\};\\?\\/\\\\\\]\\[,'\"\\.=-]+", "_");
+    }
+
+    public static final String cleanIdString(String stimulusTag) {
+        return stimulusTag.replaceAll(";", "_");
     }
 
     @Override
