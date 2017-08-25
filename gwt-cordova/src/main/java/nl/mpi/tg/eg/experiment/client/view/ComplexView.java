@@ -117,6 +117,9 @@ public class ComplexView extends SimpleView {
     }
 
     public void endRow() {
+        if (gridPanel == null) {
+            endHorizontalPanel();
+        }
     }
 
     public void startTable() {
