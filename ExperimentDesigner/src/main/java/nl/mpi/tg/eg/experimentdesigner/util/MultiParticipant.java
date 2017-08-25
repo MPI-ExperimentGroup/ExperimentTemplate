@@ -255,6 +255,7 @@ public class MultiParticipant {
             {"0", "A,B,C,D", "naming", "version1zero", ronde0NAMING, null, RANDOMISE},
             {"0.1", "A,B,C,D", "naming", "version1zero", ronde0REPETITION1, null, RANDOMISE},
             {"0.2", "A,B,C,D", "naming", "version1zero", ronde0REPETITION2, null, RANDOMISE},
+            // todo: for the various communication channels, we can add a get param based branch to different play screen sets
             {"1", "A,B|D,C", "play", "version1zero", ronde1, ronde1tm7ENDSCREEN, RANDOMISE},
             {"2", "C,A|D,B", "play", "version1round2", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
             {"3", "B,C|A,D", "play", "version1round3", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
@@ -262,6 +263,7 @@ public class MultiParticipant {
             {"5", "A,C|B,D", "play", "version1round5", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
             {"6", "C,B|D,A", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
             {"7", "A,B|D,C", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
+            // todo: after the play screens all communication channel versions go to the same test screen
             {"8", "A|B|C|D", "test", "version1", ronde8test1, finalSCREEN, RANDOMISE}
         };
         WizardMultiParticipantScreen roundOfFourScreenOuter = null;
@@ -275,7 +277,7 @@ public class MultiParticipant {
                 roundScreen = getTestRound("R" + currentChannel[0] + "-4", groupMembers4, currentChannel[1], "A,B,C,D:-", "-:A,B,C,D", currentChannel[4], currentChannel[5]);
             } else {
                 roundScreen = getPlayingRound("R" + currentChannel[0] + "-4", groupMembers4, currentChannel[1], currentChannel[4], currentChannel[5]);
-                roundScreen.setGroupTitle("(<groupMemberCode> playing with <groupOtherMemberCodes>)");
+                roundScreen.setGroupTitle("(<groupMemberCode> playing with <channelOtherMemberCodes>)");
             }
             roundScreen.setRandomiseStimuli(currentChannel[6].equals(RANDOMISE));
             roundScreen.setStimuliSet(stimuliArray);
@@ -298,6 +300,7 @@ public class MultiParticipant {
             {"0", "A,B,C,D,E,F,G,H", "naming", "version1zero", ronde0NAMING, null, RANDOMISE},
             {"0.1", "A,B,C,D,E,F,G,H", "naming", "version1zero", ronde0REPETITION1, null, RANDOMISE},
             {"0.2", "A,B,C,D,E,F,G,H", "naming", "version1zero", ronde0REPETITION2, null, RANDOMISE},
+            // todo: for the various communication channels, we can add a get param based branch to different play screen sets
             {"1", "A,B|C,D|E,F|G,H", "play", "version1zero", ronde1, ronde1tm7ENDSCREEN, RANDOMISE},
             {"2", "H,A|D,E|F,C|B,G", "play", "version1round2", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
             {"3", "A,D|G,F|E,B|C,H", "play", "version1round3", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
@@ -305,7 +308,9 @@ public class MultiParticipant {
             {"5", "A,E|D,H|B,F|G,C", "play", "version1round5", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
             {"6", "F,A|G,D|C,B|H,E", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
             {"7", "A,G|H,B|E,C|D,F", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
+            // todo: after the play screens all communication channel versions go to the same test screen
             {"8", "A|B|C|D|E|F|G|H", "test", "version1", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
+            // todo: for the various communication channels, we can add a get param based branch to different play screen sets
             {"9", "B,A|D,C|F,E|H,G", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
             {"10", "A,H|E,D|C,F|G,B", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
             {"11", "D,A|F,G|B,E|H,C", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
@@ -313,6 +318,7 @@ public class MultiParticipant {
             {"13", "E,A|H,D|F,B|C,G", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
             {"14", "A,F|D,G|B,C|E,H", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
             {"15", "G,A|B,H|C,E|F,D", "play", "version1", ronde2tm7, ronde1tm7ENDSCREEN, RANDOMISE},
+            // todo: after the play screens all communication channel versions go to the same test screen
             {"16", "A|B|C|D|E|F|G|H", "test", "version1", ronde8test1, finalSCREEN, RANDOMISE}
         };
         WizardMultiParticipantScreen roundOfEightScreenOuter = null;
@@ -328,7 +334,7 @@ public class MultiParticipant {
                 roundScreen = getTestRound("R" + currentChannel[0] + "-8", groupMembers8, currentChannel[1], "A,B,C,D,E,F,G,H:-", "-:A,B,C,D,E,F,G,H", currentChannel[4], currentChannel[5]);
             } else {
                 roundScreen = getPlayingRound("R" + currentChannel[0] + "-8", groupMembers8, currentChannel[1], currentChannel[4], currentChannel[5]);
-                roundScreen.setGroupTitle("(<groupMemberCode> playing with <groupOtherMemberCodes>)");
+                roundScreen.setGroupTitle("(<groupMemberCode> playing with <channelOtherMemberCodes>)");
             }
             roundScreen.setRandomiseStimuli(currentChannel[6].equals(RANDOMISE));
             roundScreen.setStimuliSet(stimuliArray);
