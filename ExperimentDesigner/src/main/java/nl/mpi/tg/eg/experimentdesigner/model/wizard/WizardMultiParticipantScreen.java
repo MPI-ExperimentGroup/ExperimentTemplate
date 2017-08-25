@@ -489,9 +489,11 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         if (storedWizardScreenData.getStimuliRandomTags() != null) {
             final RandomGrouping randomGrouping = new RandomGrouping();
             for (String randomTag : storedWizardScreenData.getStimuliRandomTags()) {
-                randomGrouping.addRandomTag(randomTag);
+                // todo: move the "v1" into the congiguration data with randomTag
+                randomGrouping.addRandomTag("v1", randomTag);
             }
-            final String metadataFieldname = "stimuliAllocation" + storedWizardScreenData.getScreenTag();
+//            final String metadataFieldname = "stimuliAllocation" + storedWizardScreenData.getScreenTag();
+            final String metadataFieldname = "stimuli";
             randomGrouping.setStorageField(metadataFieldname);
             loadStimuliFeature.setRandomGrouping(randomGrouping);
             final Metadata metadataField = new Metadata(metadataFieldname, metadataFieldname, ".*", ".", false, null);
