@@ -17,6 +17,10 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlValue;
 
@@ -24,16 +28,23 @@ import javax.xml.bind.annotation.XmlValue;
  * @since Aug 24, 2017 4:09:52 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
+@Entity
 public class RandomTag {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
     @XmlAttribute
-    final String alias;
+    private String alias;
     @XmlValue
-    final String tag;
+    private String tag;
     @XmlAttribute
-    final Integer minCount;
+    private Integer minCount;
     @XmlAttribute
-    final Integer maxCount;
+    private Integer maxCount;
+
+    public RandomTag() {
+    }
 
     public RandomTag(String alias, String tag, Integer minCount, Integer maxCount) {
         this.alias = alias;
