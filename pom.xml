@@ -93,7 +93,7 @@
             <plugin>
                 <groupId>nl.mpi</groupId>
                 <artifactId>version-control-check</artifactId>
-                <version>1.0.21-testing</version>
+                <version>1.0.27-testing</version>
                 <executions>
                     <execution>
                         <goals>
@@ -165,9 +165,9 @@
     </build>
     <pluginRepositories>
         <pluginRepository>
-            <id>MPI</id>
-            <name>MPI LAT Repository</name>
-            <url>https://lux15.mpi.nl/nexus/content/groups/public/</url>
+            <id>VersionControlCheck</id>
+            <name>VersionControlCheck Repository</name>
+            <url>http://kinshipsoftware.github.io/VersionControlCheck/</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -181,6 +181,17 @@
             <id>KinOathKinshipArchiver</id>
             <name>KinOathKinshipArchiver Repository</name>
             <url>https://kinshipsoftware.github.io/KinOathKinshipArchiver/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>MPI</id>
+            <name>MPI LAT Repository</name>
+            <url>https://lux15.mpi.nl/nexus/content/groups/public/</url>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
