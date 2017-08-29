@@ -23,7 +23,6 @@ import com.google.gwt.safehtml.shared.SafeUri;
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.mpi.tg.eg.experiment.client.listener.AudioEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.AudioExceptionListner;
-import nl.mpi.tg.eg.experiment.client.model.RoundSample;
 
 /**
  * @since Jan 6, 2015 10:27:57 AM (creation date)
