@@ -35,8 +35,8 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import nl.ru.languageininteraction.language.client.MatchLanguageBuilder;
-import nl.ru.languageininteraction.language.client.Messages;
+//import nl.ru.languageininteraction.language.client.MatchLanguageBuilder;
+//import nl.ru.languageininteraction.language.client.Messages;
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
@@ -48,7 +48,7 @@ import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
  */
 public abstract class AbstractSvgView extends AbstractView {
 
-    protected final Messages messages = GWT.create(Messages.class);
+//    protected final Messages messages = GWT.create(Messages.class);
     final VerticalPanel verticalPanel = new VerticalPanel();
     protected final AudioPlayer audioPlayer;
     protected PresenterEventListner backEventListner = null;
@@ -100,7 +100,8 @@ public abstract class AbstractSvgView extends AbstractView {
         builder.append(SafeHtmlUtils.fromTrustedString("<style>.overlay {pointer-events: none;}</style>"));
 //        int height = Window.getClientHeight() - (HEADER_SIZE * 3);
 //        int width = Window.getClientWidth();
-        builder.append(SafeHtmlUtils.fromTrustedString("<svg class='svgDiagram' id='" + MatchLanguageBuilder.SvgGroupStates.svgDiagram.name() + "' width=\"100%\" height=\"100%\" viewBox='0 0 568 320' >"));
+        String svgDiagramName = null; // MatchLanguageBuilder.SvgGroupStates.svgDiagram.name();
+        builder.append(SafeHtmlUtils.fromTrustedString("<svg class='svgDiagram' id='" + svgDiagramName + "' width=\"100%\" height=\"100%\" viewBox='0 0 568 320' >"));
 //<g id=\"" + ROTATABLE_GROUP + "\">
         getSvg(builder);
         builder.append(SafeHtmlUtils.fromTrustedString("</svg>"));
@@ -138,7 +139,8 @@ public abstract class AbstractSvgView extends AbstractView {
                 targetElement = targetElement.getParentElement();
             }
             final String elementId = targetElement.getId();
-            if (elementId.equals(MatchLanguageBuilder.SvgGroupStates.svgDiagram.name())) {
+            String svgDiagramName = null; // MatchLanguageBuilder.SvgGroupStates.svgDiagram.name();
+            if (elementId.equals(svgDiagramName)) {
                 // we have navigated to the root node of the SVG
                 return;
             }
@@ -173,7 +175,8 @@ public abstract class AbstractSvgView extends AbstractView {
             }
         };
         final HorizontalPanel buttonPanel = new HorizontalPanel();
-        final Button cancelButton = new Button(messages.popupCancelButtonLabel());
+        String popupCancelButtonLabel = ""; // messages.popupCancelButtonLabel();
+        final Button cancelButton = new Button(popupCancelButtonLabel);
         cancelButton.addClickHandler(cancelSingleShotEventListner);
         cancelButton.addTouchStartHandler(cancelSingleShotEventListner);
         cancelButton.addTouchMoveHandler(cancelSingleShotEventListner);
@@ -188,7 +191,8 @@ public abstract class AbstractSvgView extends AbstractView {
                     saveEventListner.eventFired(null, this);
                 }
             };
-            final Button okButton = new Button(messages.popupOkButtonLabel());
+            String popupOkButtonLabel = ""; // messages.popupOkButtonLabel();
+            final Button okButton = new Button(popupOkButtonLabel);
             okButton.addClickHandler(okSingleShotEventListner);
             okButton.addTouchStartHandler(okSingleShotEventListner);
             okButton.addTouchMoveHandler(okSingleShotEventListner);
