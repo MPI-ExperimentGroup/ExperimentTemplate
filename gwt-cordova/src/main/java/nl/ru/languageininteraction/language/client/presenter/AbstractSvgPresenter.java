@@ -66,6 +66,12 @@ public abstract class AbstractSvgPresenter implements Presenter {
                 public String getLabel() {
                     return prevState.label;
                 }
+
+                @Override
+                public int getHotKey() {
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                }
+
             };
         } else {
             backEventListner = new PresenterEventListner() {
@@ -79,6 +85,11 @@ public abstract class AbstractSvgPresenter implements Presenter {
                 @Override
                 public String getLabel() {
                     return ApplicationState.menu.label;
+                }
+
+                @Override
+                public int getHotKey() {
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                 }
             };
         }
@@ -97,6 +108,11 @@ public abstract class AbstractSvgPresenter implements Presenter {
                 public String getLabel() {
                     return nextState.label;
                 }
+
+                @Override
+                public int getHotKey() {
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                }
             };
         }
         abstractSvgView.setupScreen(backEventListner, nextEventListner);
@@ -105,6 +121,11 @@ public abstract class AbstractSvgPresenter implements Presenter {
             @Override
             public void audioEnded() {
                 abstractSvgView.showAudioEnded();
+            }
+
+            @Override
+            public void audioLoaded() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         });
         widgetTag.add(abstractSvgView);
