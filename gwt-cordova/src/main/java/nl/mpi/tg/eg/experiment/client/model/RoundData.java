@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.experiment.client.model;
 
 import java.util.Date;
 import java.util.List;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  * @since Jan 28, 2015 4:09:17 PM (creation date)
@@ -26,19 +27,19 @@ import java.util.List;
  */
 public class RoundData {
 
-    private RoundSample chosenAnswer;
-    private final RoundSample correctSample;
-    private final List<RoundSample> roundChoices;
+    private Stimulus chosenAnswer;
+    private final Stimulus correctSample;
+    private final List<Stimulus> roundChoices;
     private final Date time;
     private long durationMs = 0;
 
-    public RoundData(RoundSample correctSample, List<RoundSample> roundChoices, Date time) {
+    public RoundData(Stimulus correctSample, List<Stimulus> roundChoices, Date time) {
         this.correctSample = correctSample;
         this.roundChoices = roundChoices;
         this.time = time;
     }
 
-    public void setChosenAnswer(RoundSample chosenAnswer) {
+    public void setChosenAnswer(Stimulus chosenAnswer) {
         this.chosenAnswer = chosenAnswer;
     }
 
@@ -46,15 +47,15 @@ public class RoundData {
         this.durationMs = durationMs;
     }
 
-    public RoundSample getChosenAnswer() {
+    public Stimulus getChosenAnswer() {
         return chosenAnswer;
     }
 
-    public RoundSample getCorrectSample() {
+    public Stimulus getCorrectSample() {
         return correctSample;
     }
 
-    public List<RoundSample> getRoundChoices() {
+    public List<Stimulus> getRoundChoices() {
         return roundChoices;
     }
 

@@ -27,7 +27,6 @@ public class GameData {
 
     private int roundsPlayed = 0;
     private int roundsCorrect = 0;
-    private int roundsCorrectEndangered = 0;
     private int choicesPerRound = 0;
     private final ArrayList<RoundData> gameRoundData = new ArrayList<>();
 
@@ -37,11 +36,8 @@ public class GameData {
 
     public void addRoundData(RoundData roundData) {
         gameRoundData.add(roundData);
-        if (roundData.getChosenAnswer().isCorrect()) {
+        if (roundData.getChosenAnswer().equals(roundData.getCorrectSample())) {
             roundsCorrect++;
-        }
-        if (roundData.getChosenAnswer().getLanguageSample().isDobes()) {
-            roundsCorrectEndangered++;
         }
         roundsPlayed++;
     }
@@ -49,7 +45,6 @@ public class GameData {
     public void clearGameCounters() {
         roundsPlayed = 0;
         roundsCorrect = 0;
-        roundsCorrectEndangered = 0;
     }
 
     public int getRoundsPlayed() {
@@ -58,10 +53,6 @@ public class GameData {
 
     public int getRoundsCorrect() {
         return roundsCorrect;
-    }
-
-    public int getRoundsCorrectEndangered() {
-        return roundsCorrectEndangered;
     }
 
     public int getChoicesPerRound() {
