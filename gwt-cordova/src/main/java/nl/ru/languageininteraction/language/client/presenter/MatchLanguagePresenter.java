@@ -48,6 +48,16 @@ public class MatchLanguagePresenter implements Presenter {
     }
 
     @Override
+    public void savePresenterState() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void fireWindowClosing() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
     public void setState(final AppEventListner appEventListner, final ApplicationState prevState, final ApplicationState nextState) {
         widgetTag.clear();
         if (prevState != null) {
@@ -63,6 +73,11 @@ public class MatchLanguagePresenter implements Presenter {
                 public String getLabel() {
                     return prevState.label;
                 }
+
+                @Override
+                public int getHotKey() {
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                }
             };
         } else {
             backEventListner = new PresenterEventListner() {
@@ -76,6 +91,11 @@ public class MatchLanguagePresenter implements Presenter {
                 @Override
                 public String getLabel() {
                     return ApplicationState.menu.label;
+                }
+
+                @Override
+                public int getHotKey() {
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                 }
             };
         }
@@ -92,6 +112,11 @@ public class MatchLanguagePresenter implements Presenter {
                 public String getLabel() {
                     return nextState.label;
                 }
+
+                @Override
+                public int getHotKey() {
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                }
             };
         }
         matchLanguageView.setupScreen(backEventListner, nextEventListner);
@@ -100,6 +125,11 @@ public class MatchLanguagePresenter implements Presenter {
             @Override
             public void audioEnded() {
                 matchLanguageView.showAudioEnded();
+            }
+
+            @Override
+            public void audioLoaded() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         });
         widgetTag.add(matchLanguageView);
