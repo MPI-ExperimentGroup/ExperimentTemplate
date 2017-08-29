@@ -21,7 +21,7 @@ import nl.mpi.tg.eg.experiment.client.presenter.Presenter;
 import nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
+//import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.ru.languageininteraction.language.client.view.MapView;
 
 /**
@@ -35,11 +35,20 @@ public class MapPresenter extends AbstractPresenter implements Presenter {
     }
 
     @Override
-    public void setTitle(PresenterEventListner titleBarListner) {
-        throw new UnsupportedOperationException();
-//        simpleView.addTitle(messages.mapScreenTitle(), titleBarListner);
+    protected String getTitle() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    protected String getSelfTag() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+//    @Override
+//    public void setTitle(PresenterEventListner titleBarListner) {
+//        throw new UnsupportedOperationException();
+////        simpleView.addTitle(messages.mapScreenTitle(), titleBarListner);
+//    }
     @Override
     public void setContent(AppEventListner appEventListner) {
         ((MapView) simpleView).addMap();
