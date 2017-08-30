@@ -166,7 +166,8 @@ public class RosselFieldKit {
         wizardSelectUserScreen.setBackWizardScreen(welcomePresenter);
         wizardSelectUserScreen.setNextWizardScreen(menuScreen);
         final WizardEditUserScreen editUserPresenter = new WizardEditUserScreen("Information about the participant", "Edit User", null, "Save and continue", null, null, null, false, "Could not contact the server, please check your internet connection and try again.");
-        editUserPresenter.setCustomFields(new String[]{"workerId:Participant ID:.'{'3,'}':Please enter at least three letters."});
+        editUserPresenter.setCustomFields(new String[]{"workerId:Participant ID:.'{'3,'}':Please enter at least three letters.",
+            "connectionString:connection:.'{'3,'}':Please enter at least three letters."});
         final WizardAboutScreen debugScreenPresenter = new WizardAboutScreen("About this app", true);
 
         final WizardStimulusScreen wizardStimulusScreenSequential = new WizardStimulusScreen();
@@ -179,6 +180,7 @@ public class RosselFieldKit {
 //        wizardStimulusScreenSequential.setStimulusArray(new String[]{"FieldKit"});
         wizardStimulusScreenSequential.setFeatureValuesArray(new StimuliSubAction[]{new StimuliSubAction("80", "the informant talks about the image", "next")});
         wizardStimulusScreenSequential.setMaxStimuli(1000);
+        wizardStimulusScreenSequential.setMaxStimuliPerTag(1000);
         wizardStimulusScreenSequential.setRandomiseStimuli(false);
         wizardStimulusScreenSequential.setFilePerStimulus(false);
         wizardStimulusScreenSequential.setEnd_of_stimuli("Complete");
@@ -193,6 +195,7 @@ public class RosselFieldKit {
 //        wizardStimulusScreenRandom.setStimulusArray(new String[]{"FieldKit"});
         wizardStimulusScreenRandom.setFeatureValuesArray(new StimuliSubAction[]{new StimuliSubAction("80", "the informant talks about the image", "next")});
         wizardStimulusScreenRandom.setMaxStimuli(1000);
+        wizardStimulusScreenRandom.setMaxStimuliPerTag(1000);
         wizardStimulusScreenRandom.setRandomiseStimuli(true);
         wizardStimulusScreenRandom.setFilePerStimulus(false);
         wizardStimulusScreenRandom.setEnd_of_stimuli("Complete");
@@ -224,11 +227,11 @@ public class RosselFieldKit {
         menuScreen.addTargetScreen(wizardStimulusScreenRandom);
         menuScreen.addTargetScreen(debugScreenPresenter);
         menuScreen.addTargetScreen(instructionsPresenter);
+        wizardData.addScreen(menuScreen);
         wizardData.addScreen(welcomePresenter);
         wizardData.addScreen(welcomeMenuPresenter);
         wizardData.addScreen(instructionsPresenter);
         wizardData.addScreen(editUserPresenter);
-        wizardData.addScreen(menuScreen);
         wizardData.addScreen(wizardSelectUserScreen);
         wizardData.addScreen(wizardStimulusScreenSequential);
         wizardData.addScreen(wizardStimulusScreenRandom);
