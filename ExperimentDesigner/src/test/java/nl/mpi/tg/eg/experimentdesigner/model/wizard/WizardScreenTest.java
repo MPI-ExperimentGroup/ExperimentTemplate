@@ -24,7 +24,7 @@ import static org.junit.Assert.*;
  * @since Apr 19, 2017 3:26:53 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class AbstractWizardScreenTest {
+public class WizardScreenTest {
 
     protected static AbstractWizardScreen[] getInstance() {
         return new AbstractWizardScreen[]{
