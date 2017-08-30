@@ -17,7 +17,6 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
-import java.util.Arrays;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 
