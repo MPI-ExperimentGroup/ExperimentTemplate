@@ -17,6 +17,9 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -26,8 +29,13 @@ import static org.junit.Assert.*;
  */
 public class WizardScreenTest {
 
-    protected static AbstractWizardScreen[] getInstance() {
-        return new AbstractWizardScreen[]{
+    protected static List<WizardScreen> getInstance() {
+        List<WizardScreen> wizardScreens = new ArrayList<>();
+        for (WizardScreenEnum wizardScreenEnum : WizardScreenEnum.values()) {
+            wizardScreens.add(wizardScreenEnum.wizardScreen);
+        }
+
+        wizardScreens.addAll(Arrays.asList(new AbstractWizardScreen[]{
             new WizardVideoAudioOptionStimulusScreen("screenName", true, new String[]{"list_1/list_2:AV_happy.mpg:prevoicing9_e_440Hz_coda_k.wav:bik,bek"}, true, true, new String[]{"randomStimuliTags"}, 0, 0, 0, true, 0, "responseOptionsLabelLeft", "responseOptionsLabelRight", true),
             new WizardAboutScreen("screenTitle", true),
             new WizardAgreementScreen("screenTitle", "screenText", "agreementButtonLabel"),
@@ -38,7 +46,8 @@ public class WizardScreenTest {
             new WizardTextScreen("screenName", "screenText", "nextButtonLabel"),
             new WizardMenuScreen("screenTitle", "menuLabel", "screenTag"),
             new WizardMultiParticipantScreen("screenName", "groupMembers", 2, "communicationChannels", "textEntryPhaseRoles", "textEntryPhaseText", "textWaitPhaseRoles", true, "textWaitPhaseText", "gridWaitPhaseRoles", "gridWaitPhaseText", "responseGridPhaseRoles", "responseGridPhaseText", "responseGridPhaseText", "responseGridPhaseText", "mutualFeedbackPhaseRoles", "mutualFeedbackPhaseText", "trainingDisplayPhaseRoles", "trainingDisplayPhaseText", "groupRecordSubmitionPhaseRoles", "groupRecordSubmitionNextPhaseRoles", "preStimuliText", "postStimuliText", 0, 0, 0, 0, 0, 0, 0, "timerCountDownLabel")
-        };
+        }));
+        return wizardScreens;
     }
 
     /**
@@ -47,9 +56,9 @@ public class WizardScreenTest {
     @Test
     public void testGetScreenBooleanInfo() {
         System.out.println("getScreenBooleanInfo");
-        for (AbstractWizardScreen instance : getInstance()) {
-            if ((instance.wizardScreenData.getScreenBooleans() != null)) {
-                assertNotNull(instance.getScreenBooleanInfo(instance.wizardScreenData.getScreenBooleans().size() - 1));
+        for (WizardScreen instance : getInstance()) {
+            if ((instance.getWizardScreenData().getScreenBooleans() != null)) {
+                assertNotNull(instance.getScreenBooleanInfo(instance.getWizardScreenData().getScreenBooleans().size() - 1));
             }
         }
     }
@@ -60,9 +69,9 @@ public class WizardScreenTest {
     @Test
     public void testGetScreenTextInfo() {
         System.out.println("getScreenTextInfo");
-        for (AbstractWizardScreen instance : getInstance()) {
-            if ((instance.wizardScreenData.getScreenText() != null)) {
-                assertNotNull(instance.getScreenTextInfo(instance.wizardScreenData.getScreenText().size() - 1));
+        for (WizardScreen instance : getInstance()) {
+            if ((instance.getWizardScreenData().getScreenText() != null)) {
+                assertNotNull(instance.getScreenTextInfo(instance.getWizardScreenData().getScreenText().size() - 1));
             }
         }
     }
@@ -73,9 +82,9 @@ public class WizardScreenTest {
     @Test
     public void testGetScreenIntegerInfo() {
         System.out.println("getScreenIntegerInfo");
-        for (AbstractWizardScreen instance : getInstance()) {
-            if ((instance.wizardScreenData.getScreenIntegers() != null)) {
-                assertNotNull(instance.getScreenIntegerInfo(instance.wizardScreenData.getScreenIntegers().size() - 1));
+        for (WizardScreen instance : getInstance()) {
+            if ((instance.getWizardScreenData().getScreenIntegers() != null)) {
+                assertNotNull(instance.getScreenIntegerInfo(instance.getWizardScreenData().getScreenIntegers().size() - 1));
             }
         }
     }
@@ -86,9 +95,9 @@ public class WizardScreenTest {
     @Test
     public void testGetNextButtonInfo() {
         System.out.println("getNextButtonInfo");
-        for (AbstractWizardScreen instance : getInstance()) {
-            if ((instance.wizardScreenData.getNextButton() != null)) {
-                assertNotNull(instance.getNextButtonInfo(instance.wizardScreenData.getNextButton().length - 1));
+        for (WizardScreen instance : getInstance()) {
+            if ((instance.getWizardScreenData().getNextButton() != null)) {
+                assertNotNull(instance.getNextButtonInfo(instance.getWizardScreenData().getNextButton().length - 1));
             }
         }
     }
