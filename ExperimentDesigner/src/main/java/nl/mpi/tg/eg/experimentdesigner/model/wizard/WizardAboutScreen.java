@@ -74,7 +74,7 @@ public class WizardAboutScreen extends AbstractWizardScreen {
     public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.debug);
-        if (!storedWizardScreenData.getScreenText(0).isEmpty()) {
+        if (storedWizardScreenData.getScreenText(0) != null && !storedWizardScreenData.getScreenText(0).isEmpty()) {
             storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
         }
         storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.versionData, null));
