@@ -129,7 +129,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenTextInfo(int index) {
-        throw new UnsupportedOperationException("Not supported.");
+        return new String[]{"FreeTextValidationMessage", "FreeTextValidationRegex", "RandomStimuliTagsField"}[index];
     }
 
     @Override
@@ -193,27 +193,27 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
 //        this.wizardScreenData.setScreenText(0, inputErrorMessage);
 //    }
     private String getFreeTextValidationMessage(WizardScreenData storedWizardScreenData) {
-        return storedWizardScreenData.getScreenText(1);
+        return storedWizardScreenData.getScreenText(0);
     }
 
     final public void setFreeTextValidationMessage(String freeTextValidationMessage) {
-        this.wizardScreenData.setScreenText(1, freeTextValidationMessage);
+        this.wizardScreenData.setScreenText(0, freeTextValidationMessage);
     }
 
     private String getFreeTextValidationRegex(WizardScreenData storedWizardScreenData) {
-        return storedWizardScreenData.getScreenText(2);
+        return storedWizardScreenData.getScreenText(1);
     }
 
     final public void setFreeTextValidationRegex(String freeTextValidationRegex) {
-        this.wizardScreenData.setScreenText(2, freeTextValidationRegex);
+        this.wizardScreenData.setScreenText(1, freeTextValidationRegex);
     }
 
     final public void setRandomStimuliTagsField(String fieldName) {
-        this.wizardScreenData.setScreenText(3, fieldName);
+        this.wizardScreenData.setScreenText(2, fieldName);
     }
 
     private String getRandomStimuliTagsField(WizardScreenData storedWizardScreenData) {
-        return storedWizardScreenData.getScreenText(3);
+        return storedWizardScreenData.getScreenText(2);
     }
 
     public void setStimulusFreeText(boolean stimulusFreeText, String freeTextValidationRegex, String freeTextValidationMessage) {
