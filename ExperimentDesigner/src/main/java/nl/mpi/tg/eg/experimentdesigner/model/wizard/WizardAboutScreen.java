@@ -34,6 +34,7 @@ public class WizardAboutScreen extends AbstractWizardScreen {
     public WizardAboutScreen(boolean showDebug) {
         super(WizardScreenEnumFromDebugType(showDebug), "About Screen", "About Screen", "about");
         this.showDebug = showDebug;
+        setScreenText("");
     }
 
     @Override
@@ -43,7 +44,7 @@ public class WizardAboutScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenTextInfo(int index) {
-        return new String[]{}[index];
+        return new String[]{"Screen text"}[index];
     }
 
     @Override
@@ -73,6 +74,9 @@ public class WizardAboutScreen extends AbstractWizardScreen {
     public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.debug);
+        if (!storedWizardScreenData.getScreenText(0).isEmpty()) {
+            storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
+        }
         storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.versionData, null));
         if (showDebug) {
             storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.eraseLocalStorageButton, null));
