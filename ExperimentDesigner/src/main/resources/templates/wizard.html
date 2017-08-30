@@ -245,9 +245,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                                 </div>                                                
                                                 <!--<span th:replace="wizard :: wizardTextArea(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='Screen Text', wizardFragmentValue=${wizardScreen.screenText2}, wizardFragmentName='screenText2')"></span>-->
                                                 <!--th:if="${wizardScreen.stimuli != null && wizardScreen.stimuli.size() > 0}"--> 
-                                                <!--<span th:if="${wizardScreen.getStimuli() != null}">-->
-                                                <span th:replace="wizard :: wizardStimuliEditor(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='stimuliList', wizardFragmentValue=${wizardScreen.stimuli}, wizardFragmentName='stimuliList')"></span>
-                                                <!--</span>-->
+                                                <span th:if="${wizardScreen.canHaveStimuli()}">
+                                                    <span th:replace="wizard :: wizardStimuliEditor(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='stimuliList', wizardFragmentValue=${wizardScreen.stimuli}, wizardFragmentName='stimuliList')"></span>
+                                                </span>
                                                 <span th:replace="wizard :: wizardTextArray(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='stimuliRandomTags', wizardFragmentValue=${wizardScreen.stimuliRandomTags}, wizardFragmentName='stimuliRandomTags')"></span>
                                                 <!--<span th:replace="wizard :: wizardNumberBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='stimulusMsDelay', wizardFragmentValue=${wizardScreen.stimulusMsDelay}, wizardFragmentName='stimulusMsDelay')"></span>-->
                                                 <!--<span th:replace="wizard :: wizardCheckBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='randomiseStimuli', wizardFragmentValue=${wizardScreen.randomiseStimuli}, wizardFragmentName='randomiseStimuli')"></span>-->
