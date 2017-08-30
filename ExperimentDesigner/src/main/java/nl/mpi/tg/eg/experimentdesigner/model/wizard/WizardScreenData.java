@@ -78,6 +78,7 @@ public class WizardScreenData implements Serializable {
     private String freeTextValidationMessage = null;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Stimulus> stimuli = null;
+    private boolean canHaveStimuli = false;
     private String[] stimuliRandomTags = null;
     private String screenMediaPath = null;
 //    private Integer stimulusMsDelay = null;
@@ -263,11 +264,16 @@ public class WizardScreenData implements Serializable {
         this.centreScreen = centreScreen;
     }
 
+    public boolean canHaveStimuli() {
+        return canHaveStimuli;
+    }
+
     public List<Stimulus> getStimuli() {
         return stimuli;
     }
 
     public void setStimuli(List<Stimulus> stimuli) {
+        canHaveStimuli = true;
         this.stimuli = stimuli;
     }
 
