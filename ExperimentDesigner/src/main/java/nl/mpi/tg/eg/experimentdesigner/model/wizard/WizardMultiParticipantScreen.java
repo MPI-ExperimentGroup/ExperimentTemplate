@@ -242,7 +242,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
     public String getScreenTextInfo(int index) {
         return new String[]{"Text Entry Phase Text", "Grid Wait Phase Text", "Text Wait Phase Text", "Response Grid Phase Text", "Mutual Feedback Phase Text", "Training Display Phase Text",
             "Allowed Char Codes", "Pre Stimuli Text", "Post Stimuli Text",
-            "Timer Count Down Ended Label", "FreeTextValidationRegex", "FreeTextValidationMessage", "KeyInputErrorMessage", "Group Page Title"}[index];
+            "Timer Count Down Ended Label", "FreeTextValidationRegex", "FreeTextValidationMessage", "KeyInputErrorMessage","MutualFeedbackPhaseCorrectText","MutualFeedbackPhaseIncorrectText", "Group Page Title"}[index];
     }
 
     @Override
