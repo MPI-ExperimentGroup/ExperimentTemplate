@@ -504,6 +504,7 @@
                 <!-- Plugin configuration. There are many available options, see 
                 gwt-maven-plugin documentation at codehaus.org -->
                 <configuration>
+                    <extraJvmArgs>-Xmx1g</extraJvmArgs>
                     <runTarget>ExperimentTemplate.html</runTarget>
                     <hostedWebapp>${webappDirectory}</hostedWebapp>
                     <i18nMessagesBundles>
