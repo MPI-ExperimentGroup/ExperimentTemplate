@@ -4,6 +4,8 @@ jdk:
 cache:
   directories:
   - $HOME/.m2
+install:
+  - mvn test -B -V
 script:
   - mvn test -B -V
 #  - mvn clean install -DdryRun=true
