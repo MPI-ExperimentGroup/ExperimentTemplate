@@ -5,7 +5,6 @@ cache:
   directories:
   - $HOME/.m2
 install:
-  - mvn test -B -V
+  - mvn install -Dgwt.validateOnly -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script:
-  - mvn test -B -V
-#  - mvn clean install -DdryRun=true
+  - mvn clean test -B -V 
