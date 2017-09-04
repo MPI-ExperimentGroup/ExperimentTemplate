@@ -44,6 +44,7 @@ public class HRPretest {
     // @done: remove the restart button
 
     private final WizardController wizardController = new WizardController();
+    protected boolean showRatingAfterStimuliResponse = false;
 
     protected String getExperimentName() {
         return "HRPretest";
@@ -95,6 +96,10 @@ public class HRPretest {
 
     protected int repeatCount() {
         return 4;
+    }
+
+    protected String getStimulusResponseOptions() {
+        return null;
     }
 
     protected String[] getStimuliString() {
@@ -343,6 +348,9 @@ public class HRPretest {
 
         final WizardVideoAudioOptionStimulusScreen list1234Screen = new WizardVideoAudioOptionStimulusScreen("Stimuli", false, getStimuliString(), false, false,
                 null, 1000, repeatCount(), 20, true, 100, "", "", false);
+        list1234Screen.setShowRatingAfterStimuliResponse(showRatingAfterStimuliResponse);
+        list1234Screen.getWizardScreenData().setStimulusResponseOptions(getStimulusResponseOptions());
+
 //        list1234Screen.setStimulusResponseOptions("1,2,3,4,5");
 //        list1234Screen.setStimulusResponseLabelLeft("zeer waarschijnlijk negatief");
 //        list1234Screen.setStimulusResponseLabelRight("zeer waarschijnlijk positief");
