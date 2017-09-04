@@ -277,7 +277,7 @@ public class MultiParticipant {
                 roundScreen = getTestRound("R" + currentChannel[0] + "-4", groupMembers4, currentChannel[1], "A,B,C,D:-", "-:A,B,C,D", currentChannel[4], currentChannel[5]);
             } else {
                 roundScreen = getPlayingRound("R" + currentChannel[0] + "-4", groupMembers4, currentChannel[1], currentChannel[4], currentChannel[5]);
-                roundScreen.setGroupTitle("(<groupMemberCode> playing with <channelOtherMemberCodes>)");
+                roundScreen.setGroupTitle("(<groupMemberCode> speelt met <channelOtherMemberCodes>)");
             }
             roundScreen.setRandomiseStimuli(currentChannel[6].equals(RANDOMISE));
             roundScreen.setStimuliSet(stimuliArray);
