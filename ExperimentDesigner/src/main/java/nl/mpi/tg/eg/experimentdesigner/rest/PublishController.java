@@ -24,6 +24,7 @@ import nl.mpi.tg.eg.experimentdesigner.dao.MetadataRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterFeatureRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterScreenRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PublishEventRepository;
+import nl.mpi.tg.eg.experimentdesigner.dao.TranslationRepository;
 import nl.mpi.tg.eg.experimentdesigner.model.PublishEvents;
 import nl.mpi.tg.eg.experimentdesigner.util.DefaultExperiments;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,15 +52,17 @@ public class PublishController {
     PresenterFeatureRepository presenterFeatureRepository;
     @Autowired
     MetadataRepository metadataRepository;
+    @Autowired
+    TranslationRepository translationRepository;
 
     @RequestMapping(value = "/listing", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<PublishEvents>> registerTimeStamp() {
         final ResponseEntity responseEntity;
-
+//        experimentRepository.deleteAll();
         if (experimentRepository.count() == 0) {
             // this insert is intended to only occur on first run with an empty DB to make development builds faster.
-            new DefaultExperiments().insertDefaultExperiment(presenterScreenRepository, presenterFeatureRepository, metadataRepository, experimentRepository, eventRepository);
+            new DefaultExperiments().insertDefaultExperiment(presenterScreenRepository, presenterFeatureRepository, metadataRepository, experimentRepository, eventRepository, translationRepository);
         }
 
         List<PublishEvents> experimentList = new ArrayList<>();
