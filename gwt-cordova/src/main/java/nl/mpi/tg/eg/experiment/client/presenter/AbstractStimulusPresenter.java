@@ -583,7 +583,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                                     //                                    + ((stimulusIndex != null) ? "("
                                     //                                            + activeChannel
                                     //                                            + ")" : "")
-                                    + ((stimulusIndex != null) ? "-G"
+                                    + ((stimulusIndex != null) ? "-T"
                                             + (stimulusIndex + 1) : "");
                         }
 
