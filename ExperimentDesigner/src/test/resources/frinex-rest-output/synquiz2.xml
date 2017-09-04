@@ -138,7 +138,11 @@
         <addPadding/>
         <targetButton featureText="Participate!" target="Participant"/>
         <addPadding/>
-        <htmlText featureText="For more information about synaesthesia, please see our 'About synaesthesia' page. If you are not sure if you have synaesthesia, and want to find out, try our SynQuiz app or take a quick test at synesthete.org."/>
+        <htmlText>
+            <featureText>For more information about synaesthesia, please see our 'About synaesthesia' page. If you are not sure if you have synaesthesia, and want to find out, try our SynQuiz app or take a quick test at synesthete.org."</featureText>
+            <featureText locale="nl">For more information about synaesthesia, please see our 'About synaesthesia' page. If you are not sure if you have synaesthesia, and want to find out, try our SynQuiz app or take a quick test at synesthete.org."</featureText>
+            <featureText locale="ru">For more information about synaesthesia, please see our 'About synaesthesia' page. If you are not sure if you have synaesthesia, and want to find out, try our SynQuiz app or take a quick test at synesthete.org."</featureText>
+        </htmlText>
         <htmlText featureText="This project is organised and funded by the Language &amp; Genetics Department at the Max Planck Institute for Psycholinguistics in Nijmegen in the Netherlands, directed by Prof. Dr. Simon E. Fisher. The synaesthesia studies are coordinated by Dr. Amanda Tilot and Dr. Sarah Graham. If you have any questions about our research, please contact us at &lt;a href=&quot;#&quot; onclick=&quot;window.open('mailto:synaesthesia@mpi.nl','_system'); return false;&quot;&gt;synaesthesia@mpi.nl&lt;/a&gt;."/>
     </presenter>
     <presenter back="Introduction" displayOrder="2" menuLabel="Participant" next="Details" type="metadata" self="Participant" title="Participant">
@@ -148,7 +152,10 @@
         <metadataField fieldName="emailAddress"/>
         <metadataField fieldName="optionCheckBox1"/>
         <metadataField fieldName="mandatoryCheckBox"/>
-        <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+        <saveMetadataButton featureText="Continue" sendData="true">
+            <networkErrorMessage>Could not contact the server, please check your internet connection and try again.</networkErrorMessage>
+            <networkErrorMessage locale="nl">Could not contact the server, please check your internet connection and try again.</networkErrorMessage>
+            <networkErrorMessage locale="ru">Could not contact the server, please check your internet connection and try again.</networkErrorMessage>    
             <onError/>
             <onSuccess>
                 <autoNextPresenter/>
@@ -593,6 +600,14 @@
         </stimulus>
         <stimulus identifier="December" label="December" pauseMs="0">
             <tag>Months</tag>
+        </stimulus>
+        <stimulus identifier="December" label="December" pauseMs="0">
+            <tag locale="en">Months</tag>
+            <tag locale="nl">Months</tag>
+        </stimulus>
+        <stimulus identifier="Декабрь" label="Декабрь" pauseMs="0">
+            <tag locale="ru">Months</tag>
+            <tag locale="ru">December</tag>
         </stimulus>
     </stimuli>
 </experiment>
