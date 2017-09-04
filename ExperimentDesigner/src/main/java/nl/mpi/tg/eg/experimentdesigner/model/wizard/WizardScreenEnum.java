@@ -48,7 +48,7 @@ public enum WizardScreenEnum {
     WizardRandomStimulusScreen(new WizardRandomStimulusScreen()),
     WizardSelectUserScreen(new WizardSelectUserScreen()),
     WizardStimulusScreen(new WizardStimulusScreen()),
-    //    WizardGridStimulusScreen(new WizardGridStimulusScreen()),
+    WizardGridStimulusScreen(new WizardGridStimulusScreen()),
     WizardScoreThresholdScreen(new WizardScoreThresholdScreen()),
     WizardSubmitDataScreen(new WizardSubmitDataScreen()),
     WizardTextScreen(new WizardTextScreen()),
