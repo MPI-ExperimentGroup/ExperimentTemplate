@@ -600,7 +600,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //        scoreLabel.addFeatureAttributes(FeatureAttribute.styleName, "");
 //        allNetworkActivity2.getPresenterFeatureList().add(scoreLabel);
         // allNetworkActivity2 phase shows the stimulus and the selected stimulus and the message and the group score
-        allNetworkActivity2.getPresenterFeatureList().add(addGroupMessageButton("Next [enter]", "guesser and producer see the response", "ENTER"));
+        allNetworkActivity2.getPresenterFeatureList().add(addGroupMessageButton("Volgende [enter]", "guesser and producer see the response", "ENTER"));
 
         final PresenterFeature groupMessageLabel3 = new PresenterFeature(FeatureType.groupMessageLabel, null);
         groupMessageLabel3.addFeatureAttributes(FeatureAttribute.styleName, "groupMessageLabel");
@@ -625,7 +625,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             pause.getPresenterFeatureList().add(sendGroupMessage);
             stimulusImage.getPresenterFeatureList().add(pause);
         } else {
-            final PresenterFeature nextStimulusFeature4 = addGroupMessageButton("Next [enter]", "nextStimulusFeature4", "ENTER");
+            final PresenterFeature nextStimulusFeature4 = addGroupMessageButton("Volgende [enter]", "nextStimulusFeature4", "ENTER");
             stimulusImage.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
             stimulusImage.getPresenterFeatureList().add(nextStimulusFeature4);
         }
@@ -640,7 +640,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         final String preStimuliText = getPreStimuliText(storedWizardScreenData);
         if (preStimuliText != null && !preStimuliText.isEmpty()) {
             presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, preStimuliText));
-            final PresenterFeature actionButton = new PresenterFeature(FeatureType.actionButton, "Next [enter]");
+            final PresenterFeature actionButton = new PresenterFeature(FeatureType.actionButton, "Volgende [enter]");
             actionButton.addFeatureAttributes(FeatureAttribute.hotKey, "ENTER");
             actionButton.getPresenterFeatureList().add(loadStimuliFeature);
             presenterFeatureList.add(actionButton);
@@ -722,7 +722,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //            nextButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
 //            presenterFeature.getPresenterFeatureList().add(nextButtonFeature);
         }
-        final PresenterFeature groupNetworkActivitySelf1 = addGroupMessageButton("Next [enter]", "TextEntered", "ENTER");
+        final PresenterFeature groupNetworkActivitySelf1 = addGroupMessageButton("Volgende [enter]", "TextEntered", "ENTER");
         groupRecordSubmission.getPresenterFeatureList().add(new PresenterFeature(FeatureType.submitGroupEvent, null));
         groupRecordSubmissionNext.getPresenterFeatureList().add(new PresenterFeature(FeatureType.submitGroupEvent, null));
         final PresenterFeature groupRecordSubmissionNextFeature = new PresenterFeature(FeatureType.sendGroupMessage, null);
@@ -755,7 +755,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //            final PresenterFeature groupScoreLabel1 = new PresenterFeature(FeatureType.groupScoreLabel, null);
 //            groupScoreLabel1.addFeatureAttributes(FeatureAttribute.styleName, "");
 //            endOfStimulusFeature.getPresenterFeatureList().add(groupScoreLabel1);
-            final PresenterFeature actionButton = new PresenterFeature(FeatureType.actionButton, "Next [enter]");
+            final PresenterFeature actionButton = new PresenterFeature(FeatureType.actionButton, "Volgende [enter]");
             actionButton.addFeatureAttributes(FeatureAttribute.hotKey, "ENTER");
             actionButton.getPresenterFeatureList().add(autoNextPresenter);
 //            final PresenterFeature groupMessageEndOfStimuli = new PresenterFeature(FeatureType.sendGroupMessage, null);
