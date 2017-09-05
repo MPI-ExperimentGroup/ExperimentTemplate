@@ -120,7 +120,7 @@ public class MultiParticipant {
             + "Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden "
             + "wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis "
             + "die je tot dan toe hebt opgedaan over de fantasietaal.<br/><br/>"
-            + "In deze ronde zul je het spel spelen met proefpersoon X.<br/><br/>"
+//            + "In deze ronde zul je het spel spelen met proefpersoon X.<br/><br/>"
             + "Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! ";
     final private String ronde1tm7PRODUCERSCREEN = "Typ je beschrijving voor de scène: <br/><br/>";
     final private String waitingScreenForGuesser = "Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken.";
@@ -225,7 +225,7 @@ public class MultiParticipant {
         wizardEditUserScreen.setScreenTitle("Edit User");
         wizardEditUserScreen.setMenuLabel("Edit User");
         wizardEditUserScreen.setScreenTag("Edit_User");
-        wizardEditUserScreen.setNextButton("Next");
+        wizardEditUserScreen.setNextButton("Volgende");
         wizardEditUserScreen.setSendData(true);
         wizardEditUserScreen.setOn_Error_Text("Could not contact the server, please check your internet connection and try again.");
         wizardEditUserScreen.setAgeField();
