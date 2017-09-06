@@ -60,8 +60,8 @@ public class DefaultExperiments {
             ExperimentRepository experimentRepository,
             PublishEventRepository eventRepository,
             TranslationRepository translationRepository) {
-        final DefaultTranslations defaultTranslations = new DefaultTranslations(translationRepository);
-        defaultTranslations.insertTranslations();
+        final DefaultTranslations defaultTranslations = new DefaultTranslations();
+//        defaultTranslations.insertTranslations();
         experimentRepository.save(getSentveri_exp3Experiment());
         experimentRepository.save(new DobesAnnotator().getExperiment());
         experimentRepository.save(getAllOptionsExperiment(metadataRepository, presenterFeatureRepository, presenterScreenRepository));
