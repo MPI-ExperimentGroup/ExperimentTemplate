@@ -30,10 +30,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
-import javax.validation.constraints.Size;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAnyAttribute;
 import javax.xml.bind.annotation.XmlAnyElement;
@@ -65,8 +65,9 @@ public class PresenterFeature {
     @OrderBy("displayOrder ASC")
     private List<PresenterFeature> presenterFeatures = new ArrayList<>();
     private HashMap<FeatureAttribute, String> featureAttributes = new HashMap<>();
-    @Size(max = 6000)
-    private String featureText;
+    @XmlTransient
+    @ManyToOne
+    private FeatureText translatable;
 
     public PresenterFeature() {
     }
@@ -74,7 +75,7 @@ public class PresenterFeature {
     public PresenterFeature(FeatureType featureType, String featureText) {
         this.featureType = featureType;
 //        this.presenterFeatures = new ArrayList<>();
-        this.featureText = featureText;
+        this.translatable = new FeatureText(featureText, null);
 //        this.featureAttributes = new HashMap<>();
         displayOrder = globalfeatureCounter;
         globalfeatureCounter++;
@@ -139,11 +140,20 @@ public class PresenterFeature {
 
     @XmlAttribute
     public String getFeatureText() {
-        return featureText;
+        return translatable.getFeatureText();
     }
 
     public void setFeatureText(String featureText) {
-        this.featureText = featureText;
+        this.translatable = new FeatureText(featureText, null);
+    }
+
+    public void addTranslation(FeatureText featureText) {
+        translatable.addTranslation(featureText);
+    }
+
+    @XmlElement(name = "translation")
+    public List<FeatureText> getTranslation() {
+        return translatable.getTranslations();
     }
 
     @XmlElementWrapper(name = "stimuli")
