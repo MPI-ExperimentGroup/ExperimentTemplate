@@ -10,6 +10,7 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
     <xsl:output method="text" encoding="UTF-8" />
+    <xsl:param name="targetClientDirectory" select="targetClientDirectory"/>
     <xsl:template match="/">
         <xsl:text>stimulusscreenselectbutton=Submit
             stimulusscreenQuitButton=Quit
@@ -88,5 +89,14 @@
             </xsl:text>
         </xsl:if>
         <xsl:apply-templates/>
+    </xsl:template>
+    <xsl:template match="translation">
+        <xsl:result-document href="{$targetClientDirectory}/Messages-{@locale}.properties" method="text">
+            <xsl:value-of select="generate-id(.)" />
+            <xsl:text>=</xsl:text>
+            <xsl:value-of select="replace(@featureText,'''','''''')"/>
+            <xsl:text>
+            </xsl:text>
+        </xsl:result-document>
     </xsl:template>
 </xsl:stylesheet>
