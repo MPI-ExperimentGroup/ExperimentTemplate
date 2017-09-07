@@ -33,6 +33,7 @@ public class UserData {
     private final UserId userId;
     private double bestScore = 0;
     private int gamesPlayed = 0;
+    private int totalScore = 0;
     private int currentScore = 0;
     private int potentialScore = 0;
     private Boolean currentIsCorrect = null;
@@ -96,12 +97,20 @@ public class UserData {
         this.currentScore = currentScore;
     }
 
+    public void setTotalScore(int totalScore) {
+        this.totalScore = totalScore;
+    }
+
     public void setPotentialScore(int potentialScore) {
         this.potentialScore = potentialScore;
     }
 
     public int getCurrentScore() {
         return currentScore;
+    }
+
+    public int getTotalScore() {
+        return totalScore;
     }
 
     public void clearCurrentScore() {
