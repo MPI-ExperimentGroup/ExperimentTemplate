@@ -106,6 +106,7 @@ public class UserData {
 
     public void clearCurrentScore() {
         this.currentScore = 0;
+        this.potentialScore = 0;
     }
 
     public void clearCurrentResponse() {
