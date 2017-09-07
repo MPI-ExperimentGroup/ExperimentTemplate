@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.frinex.model;
 
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -42,6 +43,7 @@ public class TagData implements Comparable<TagData> {
     private String experimentName;
     private String screenName;
     private String eventTag;
+    @Column(length = 1024)
     private String tagValue;
     private String userId;
     private int eventMs;
