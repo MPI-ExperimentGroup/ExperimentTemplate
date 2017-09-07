@@ -152,6 +152,7 @@ public enum FeatureType {
     groupChannelScoreLabel(false, false, new FeatureAttribute[]{styleName}),
     scoreLabel(false, false, new FeatureAttribute[]{styleName}),
     submitGroupEvent(false, false, null),
+    clearCurrentScore(false, false, new FeatureAttribute[]{}, false, false, Contitionals.none),
     scoreIncrement(true, false, new FeatureAttribute[]{scoreValue}, false, false, Contitionals.none),
     bestScoreAboveThreshold(true, false, new FeatureAttribute[]{scoreThreshold}, false, false, Contitionals.hasThreshold),
     scoreAboveThreshold(true, false, new FeatureAttribute[]{scoreThreshold}, false, false, Contitionals.hasThreshold),
