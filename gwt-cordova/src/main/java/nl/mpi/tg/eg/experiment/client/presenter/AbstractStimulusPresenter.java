@@ -353,6 +353,22 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     public void htmlTokenText(final String textString, final String styleName) {
         ((TimedStimulusView) simpleView).addHtmlText(new HtmlTokenFormatter(groupParticipantService, userResults.getUserData()).formatString(textString), styleName);
+        submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "htmlTokenText", new HtmlTokenFormatter(groupParticipantService, userResults.getUserData()).formatString(
+                "groupId:<groupId>,"
+                + "groupScore:<groupScore>,"
+                + "groupUserLabel:<groupUserLabel>,"
+                + "groupMemberCode:<groupMemberCode>,"
+                + "groupAllMemberCodes:<groupAllMemberCodes>,"
+                + "playerBestScore:<playerBestScore>,"
+                + "playerScore:<playerScore>,"
+                + "channelScore:<channelScore>,"
+                + "channelLoop:<channelLoop><channelLabel>-<channelScore>,</channelLoop>"
+                + "groupOtherMemberCodes:<groupOtherMemberCodes>,"
+                + "groupActiveChannel:<groupActiveChannel>,"
+                + "groupCommunicationChannels:<groupCommunicationChannels>,"
+                + "channelOtherMemberCodes:<channelOtherMemberCodes>,"
+                + "groupMessageString:<groupMessageString>"
+        ), duration.elapsedMillis());
     }
 
     public void htmlTokenText(String textString) {
@@ -673,6 +689,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             localStorage.deleteStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + stimuliScreenToReset);
             localStorage.deleteStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + stimuliScreenToReset);
         }
+    }
+
+    protected void clearCurrentScore() {
+        userResults.getUserData().clearCurrentScore();
     }
 
     protected void scoreIncrement(final boolean isCorrect) {
