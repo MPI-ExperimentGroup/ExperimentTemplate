@@ -54,6 +54,7 @@ public class LocalStorage {
     protected final String GAMES_PLAYED;
     protected final String CURRENT_POTENTIAL;
     protected final String CURRENT_SCORE;
+    protected final String TOTAL_SCORE;
     private final String COMPLETION_CODE;
     final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
 
@@ -70,6 +71,7 @@ public class LocalStorage {
         GAMES_PLAYED = messages.appNameInternal() + ".gamesPlayed";
         CURRENT_POTENTIAL = messages.appNameInternal() + ".currentPotential";
         CURRENT_SCORE = messages.appNameInternal() + ".currentScore";
+        TOTAL_SCORE = messages.appNameInternal() + ".totalScore";
         COMPLETION_CODE = messages.appNameInternal() + ".completionCode";
     }
 
@@ -216,6 +218,7 @@ public class LocalStorage {
         userData.updateBestScore(getCleanStoredDouble(USER_RESULTS + userData.getUserId().toString() + "." + MAX_SCORE));
         userData.setGamesPlayed(getCleanStoredInt(USER_RESULTS + userData.getUserId().toString() + "." + GAMES_PLAYED));
         userData.setCurrentScore(getCleanStoredInt(USER_RESULTS + userData.getUserId().toString() + "." + CURRENT_SCORE));
+        userData.setTotalScore(getCleanStoredInt(USER_RESULTS + userData.getUserId().toString() + "." + TOTAL_SCORE));
         userData.setPotentialScore(getCleanStoredInt(USER_RESULTS + userData.getUserId().toString() + "." + CURRENT_POTENTIAL));
         return userData;
     }
@@ -255,6 +258,7 @@ public class LocalStorage {
         dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + MAX_SCORE, Double.toString(userResults.getUserData().getBestScore()));
         dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + GAMES_PLAYED, Integer.toString(userResults.getUserData().getGamesPlayed()));
         dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + CURRENT_SCORE, Integer.toString(userResults.getUserData().getCurrentScore()));
+        dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + TOTAL_SCORE, Integer.toString(userResults.getUserData().getTotalScore()));
         dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + CURRENT_POTENTIAL, Integer.toString(userResults.getUserData().getPotentialScore()));
     }
 
