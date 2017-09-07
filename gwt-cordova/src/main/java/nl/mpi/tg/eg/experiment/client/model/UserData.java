@@ -34,6 +34,7 @@ public class UserData {
     private double bestScore = 0;
     private int gamesPlayed = 0;
     private int totalScore = 0;
+    private int totalPotentialScore = 0;
     private int currentScore = 0;
     private int potentialScore = 0;
     private Boolean currentIsCorrect = null;
@@ -122,12 +123,21 @@ public class UserData {
         this.currentIsCorrect = null;
     }
 
+    public int getTotalPotentialScore() {
+        return totalPotentialScore;
+    }
+
+    public void setTotalPotentialScore(int totalPotentialScore) {
+        this.totalPotentialScore = totalPotentialScore;
+    }
+
     public int getPotentialScore() {
         return potentialScore;
     }
 
     public void addPotentialScore(boolean currentIsCorrect) {
         this.potentialScore++;
+        this.totalPotentialScore++;
         this.currentIsCorrect = currentIsCorrect;
         if (currentIsCorrect) {
             this.currentScore++;
