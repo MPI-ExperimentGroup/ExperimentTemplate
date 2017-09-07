@@ -39,6 +39,20 @@
         <xsl:text>errorScreenText={0}
             stopSharingDetailsExplanation=({0}) and unique id ({1})
         </xsl:text>
+        <!--make separate properties files for each locale-->
+        <xsl:variable name="translationNodes" select="//translation" />
+        <xsl:for-each select="distinct-values($translationNodes/@locale)">
+            <xsl:variable name="translationLocale" select="." />
+            <xsl:result-document href="{$targetClientDirectory}/Messages-{$translationLocale}.properties" method="text">
+                <xsl:for-each select="$translationNodes[@locale eq $translationLocale]">
+                    <xsl:value-of select="generate-id(..)" />
+                    <xsl:text>=</xsl:text>
+                    <xsl:value-of select="replace(@featureText,'''','''''')"/>
+                    <xsl:text>
+                    </xsl:text>
+                </xsl:for-each>
+            </xsl:result-document>
+        </xsl:for-each>        
     </xsl:template>
     <xsl:template match="text()" /><!--prevent text nodes slipping into the output-->
     <xsl:template match="experiment/presenter">
@@ -89,20 +103,5 @@
             </xsl:text>
         </xsl:if>
         <xsl:apply-templates/>
-    </xsl:template>
-    <xsl:template match="experiment">
-        <xsl:variable name="translationNodes" select="//translation" />
-        <xsl:for-each select="distinct-values($translationNodes/@locale)">
-            <xsl:variable name="translationLocale" select="." />
-            <xsl:result-document href="{$targetClientDirectory}/Messages-{$translationLocale}.properties" method="text">
-                <xsl:for-each select="$translationNodes[@locale eq $translationLocale]">
-                    <xsl:value-of select="generate-id(.)" />
-                    <xsl:text>=</xsl:text>
-                    <xsl:value-of select="replace(@featureText,'''','''''')"/>
-                    <xsl:text>
-                    </xsl:text>
-                </xsl:for-each>
-            </xsl:result-document>
-        </xsl:for-each>        
     </xsl:template>
 </xsl:stylesheet>
