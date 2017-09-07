@@ -242,7 +242,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
     public String getScreenTextInfo(int index) {
         return new String[]{"Text Entry Phase Text", "Grid Wait Phase Text", "Text Wait Phase Text", "Response Grid Phase Text", "Mutual Feedback Phase Text", "Training Display Phase Text",
             "Allowed Char Codes", "Pre Stimuli Text", "Post Stimuli Text",
-            "Timer Count Down Ended Label", "FreeTextValidationRegex", "FreeTextValidationMessage", "KeyInputErrorMessage","MutualFeedbackPhaseCorrectText","MutualFeedbackPhaseIncorrectText", "Group Page Title"}[index];
+            "Timer Count Down Ended Label", "FreeTextValidationRegex", "FreeTextValidationMessage", "KeyInputErrorMessage", "MutualFeedbackPhaseCorrectText", "MutualFeedbackPhaseIncorrectText", "Group Page Title"}[index];
     }
 
     @Override
@@ -347,6 +347,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.stimulus);
         List<PresenterFeature> presenterFeatureList = storedWizardScreenData.getPresenterScreen().getPresenterFeatureList();
+        presenterFeatureList.add(new PresenterFeature(FeatureType.clearCurrentScore, null));
         if (storedWizardScreenData.isCentreScreen()) {
             presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
         }
