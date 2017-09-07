@@ -53,6 +53,7 @@ public class LocalStorage {
     protected final String MAX_SCORE;
     protected final String GAMES_PLAYED;
     protected final String CURRENT_POTENTIAL;
+    protected final String TOTAL_POTENTIAL;
     protected final String CURRENT_SCORE;
     protected final String TOTAL_SCORE;
     private final String COMPLETION_CODE;
@@ -70,6 +71,7 @@ public class LocalStorage {
         MAX_SCORE = messages.appNameInternal() + ".maxScore";
         GAMES_PLAYED = messages.appNameInternal() + ".gamesPlayed";
         CURRENT_POTENTIAL = messages.appNameInternal() + ".currentPotential";
+        TOTAL_POTENTIAL = messages.appNameInternal() + ".totalPotential";
         CURRENT_SCORE = messages.appNameInternal() + ".currentScore";
         TOTAL_SCORE = messages.appNameInternal() + ".totalScore";
         COMPLETION_CODE = messages.appNameInternal() + ".completionCode";
@@ -220,6 +222,7 @@ public class LocalStorage {
         userData.setCurrentScore(getCleanStoredInt(USER_RESULTS + userData.getUserId().toString() + "." + CURRENT_SCORE));
         userData.setTotalScore(getCleanStoredInt(USER_RESULTS + userData.getUserId().toString() + "." + TOTAL_SCORE));
         userData.setPotentialScore(getCleanStoredInt(USER_RESULTS + userData.getUserId().toString() + "." + CURRENT_POTENTIAL));
+        userData.setTotalPotentialScore(getCleanStoredInt(USER_RESULTS + userData.getUserId().toString() + "." + TOTAL_POTENTIAL));
         return userData;
     }
 
@@ -260,6 +263,7 @@ public class LocalStorage {
         dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + CURRENT_SCORE, Integer.toString(userResults.getUserData().getCurrentScore()));
         dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + TOTAL_SCORE, Integer.toString(userResults.getUserData().getTotalScore()));
         dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + CURRENT_POTENTIAL, Integer.toString(userResults.getUserData().getPotentialScore()));
+        dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + TOTAL_POTENTIAL, Integer.toString(userResults.getUserData().getTotalPotentialScore()));
     }
 
     public void storeData(UserResults userResults) {
