@@ -84,10 +84,18 @@ public class GroupManager {
             }
         }
         for (MemberCode currentMember : groupScoresMap.keySet()) {
-            Integer currentScore = groupScoresMap.get(currentMember);
-            groupScore += currentScore;
             if (currentMember.memberOfChannel(channelMembers)) {
+                Integer currentScore = groupScoresMap.get(currentMember);
                 groupChannelScore += currentScore;
+            }
+        }
+        for (GroupMessage groupMessageKey : groupScores.keySet()) {
+            if (groupMessageKey.getGroupUUID().equals(groupMessage.getGroupUUID())) {
+                final HashMap<MemberCode, Integer> groupScoresAllRoundsMap = groupScores.get(groupMessageKey);
+                for (MemberCode currentMember : groupScoresAllRoundsMap.keySet()) {
+                    Integer currentScore = groupScoresAllRoundsMap.get(currentMember);
+                    groupScore += currentScore;
+                }
             }
         }
         groupMessage.setGroupScore(groupScore);
