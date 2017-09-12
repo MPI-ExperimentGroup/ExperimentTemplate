@@ -28,7 +28,7 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface PresenterFeatureRepository extends CrudRepository<PresenterFeature, Long> {
 
-    @Query("select distinct featureText from PresenterFeature")
-    public List<String> getFeatureTexts();
+//    @Query("select distinct featureText from PresenterFeature")
+//    public List<String> getFeatureTexts();
 
 }
