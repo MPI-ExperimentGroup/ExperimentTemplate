@@ -60,10 +60,11 @@ public class HRPretest02Test {
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
         StringWriter stringWriter = new StringWriter();
+        final String testOutputName = experiment.getAppNameInternal() + "-testoutput.xml";
 //        jaxbMarshaller.marshal(result, System.out);
-        jaxbMarshaller.marshal(experiment, new File(new File(testXmlUri).getParentFile(), experiment.getAppNameInternal() + "-testoutput.xml"));
+        jaxbMarshaller.marshal(experiment, new File(new File(testXmlUri).getParentFile(), testOutputName));
         jaxbMarshaller.marshal(experiment, stringWriter);
-        assertEquals(expResult, stringWriter.toString());
+        assertEquals(testOutputName, expResult, stringWriter.toString());
     }
 
     /**
