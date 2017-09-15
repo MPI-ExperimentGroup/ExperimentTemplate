@@ -83,8 +83,9 @@
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="’Uma (finished)"/>
-                <targetButton featureText="Afio_mai__welcome_" target="Afio_mai__welcome_"/>
+                <targetButton featureText="Afio mai (welcome)" target="Afio_mai__welcome_"/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>Ata_pictures_</tag>
             </stimuli>
