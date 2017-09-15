@@ -81,9 +81,9 @@ public class HRPretest02Test {
 //        defaultTranslations.insertTranslations();
 //        testGetWizardData(new DefaultExperiments().getAllOptionsExperiment(null, null, null));
 //        testGetWizardData(new DobesAnnotator().getExperiment());
-        testGetWizardData(new JenaFieldKit().getExperiment());
+//        testGetWizardData(new JenaFieldKit().getExperiment());
 //        testGetWizardData(new TransmissionChain().getExperiment());
-        testGetWizardData(new ShawiFieldKit().getShawiExperiment());
+//        testGetWizardData(new ShawiFieldKit().getShawiExperiment());
         testGetWizardData(new Sara01().getExperiment());
         testGetWizardData(new FactOrFiction().getExperiment());
 //        testGetWizardData(defaultTranslations.applyTranslations(new SynQuiz2().getExperiment()));
@@ -91,7 +91,7 @@ public class HRPretest02Test {
         testGetWizardData(new NblExperiment01().getExperiment());
 //        testGetWizardData(new HRExperiment01().getExperiment());
         testGetWizardData(new HRPretest().getExperiment());
-        testGetWizardData(new HRPretest02().getExperiment());
+//        testGetWizardData(new HRPretest02().getExperiment());
         testGetWizardData(new HROnlinePretest().getExperiment());
 //        testGetWizardData(new KinOathExample().getExperiment());
         testGetWizardData(new RosselFieldKit().getExperiment());
@@ -100,7 +100,7 @@ public class HRPretest02Test {
         testGetWizardData(new MultiParticipant().getExperiment());
 //        testGetWizardData(new ShortMultiparticipant01().getExperiment());
 //        testGetWizardData(new ManipulatedContours().getExperiment());
-        testGetWizardData(new NonWacq().getExperiment());
+//        testGetWizardData(new NonWacq().getExperiment());
         testGetWizardData(new SentencesRatingTask().getExperiment());
     }
 
