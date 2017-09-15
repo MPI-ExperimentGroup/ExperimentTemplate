@@ -94,7 +94,7 @@ public class HRPretest02Test {
 //        testGetWizardData(new HRPretest02().getExperiment());
         testGetWizardData(new HROnlinePretest().getExperiment());
 //        testGetWizardData(new KinOathExample().getExperiment());
-        testGetWizardData(new RosselFieldKit().getExperiment());
+//        testGetWizardData(new RosselFieldKit().getExperiment());
 //        testGetWizardData(new WellspringsSamoanFieldKit().getExperiment());
 //        testGetWizardData(new Parcours().getExperiment());
         testGetWizardData(new MultiParticipant().getExperiment());
@@ -102,6 +102,8 @@ public class HRPretest02Test {
 //        testGetWizardData(new ManipulatedContours().getExperiment());
 //        testGetWizardData(new NonWacq().getExperiment());
         testGetWizardData(new SentencesRatingTask().getExperiment());
+//        testGetWizardData(new WellspringsSamoanFieldKit().getExperiment());
+//        testGetWizardData(new GuineaPigProject().getExperiment());
     }
 
     /**
