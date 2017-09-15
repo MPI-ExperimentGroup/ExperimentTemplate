@@ -33,6 +33,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  * @since Apr 13, 2017 2:18:39 PM (creation date)
@@ -46,6 +47,7 @@ public class GuineaPigProjectTest {
     /**
      * Test of getWizardData method, of class GuineaPigProject.
      */
+    @Ignore
     @Test
     public void testGetWizardData() throws IOException, JAXBException, URISyntaxException {
         System.out.println("getWizardData");

@@ -33,6 +33,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  * @since May 4, 2016 2:01:22 PM (creation date)
@@ -48,6 +49,7 @@ public class ShawiFieldKitTest {
      * @throws javax.xml.bind.JAXBException
      * @throws java.net.URISyntaxException
      */
+    @Ignore
     @Test
     public void testGetShawiExperiment() throws IOException, JAXBException, URISyntaxException {
         System.out.println("getShawiExperiment");

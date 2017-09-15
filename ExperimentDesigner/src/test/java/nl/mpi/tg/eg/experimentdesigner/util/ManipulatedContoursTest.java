@@ -33,6 +33,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  * @since Nov 7, 2016 1:37:49 PM (creation date)
@@ -46,6 +47,7 @@ public class ManipulatedContoursTest {
      * @throws javax.xml.bind.JAXBException
      * @throws java.net.URISyntaxException
      */
+    @Ignore
     @Test
     public void testGetWizardData() throws IOException, JAXBException, URISyntaxException {
         System.out.println("getWizardData");

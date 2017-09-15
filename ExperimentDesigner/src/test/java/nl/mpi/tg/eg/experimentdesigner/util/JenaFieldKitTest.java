@@ -33,6 +33,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  * @since May 4, 2016 10:08:28 AM (creation date)
@@ -50,6 +51,7 @@ public class JenaFieldKitTest {
      * @throws javax.xml.bind.JAXBException
      * @throws java.net.URISyntaxException
      */
+    @Ignore
     @Test
     public void testGetJenaExperiment() throws IOException, JAXBException, URISyntaxException {
         System.out.println("getJenaExperiment");

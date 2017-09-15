@@ -33,6 +33,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  * @since Jul 12, 2016 3:38:02 PM (creation date)
@@ -49,6 +50,7 @@ public class RosselFieldKitTest {
      * @throws java.io.IOException
      * @throws javax.xml.bind.JAXBException
      */
+    @Ignore
     @Test
     public void testGetExperiment() throws IOException, JAXBException, URISyntaxException {
         System.out.println("getExperiment");

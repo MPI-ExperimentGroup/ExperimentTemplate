@@ -33,6 +33,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  * @since Jul 15, 2016 5:05:35 PM (creation date)
@@ -49,6 +50,7 @@ public class WellspringsSamoanFieldKitTest {
      * @throws java.io.IOException
      * @throws javax.xml.bind.JAXBException
      */
+    @Ignore
     @Test
     public void testGetExperiment() throws IOException, JAXBException, URISyntaxException {
         System.out.println("getExperiment");
