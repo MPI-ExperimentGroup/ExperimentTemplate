@@ -88,7 +88,7 @@ public class HRPretest02Test {
         testGetWizardData(new FactOrFiction().getExperiment());
 //        testGetWizardData(defaultTranslations.applyTranslations(new SynQuiz2().getExperiment()));
         testGetWizardData(new RdExperiment02().getExperiment());
-        testGetWizardData(new NblExperiment01().getExperiment());
+//        testGetWizardData(new NblExperiment01().getExperiment());
 //        testGetWizardData(new HRExperiment01().getExperiment());
         testGetWizardData(new HRPretest().getExperiment());
 //        testGetWizardData(new HRPretest02().getExperiment());
