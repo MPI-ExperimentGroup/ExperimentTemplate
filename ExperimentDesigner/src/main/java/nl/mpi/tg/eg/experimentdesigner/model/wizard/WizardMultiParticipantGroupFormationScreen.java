@@ -82,6 +82,8 @@ public class WizardMultiParticipantGroupFormationScreen extends AbstractWizardSc
         groupNetwork.getPresenterFeatureList().add(joinGroupActivity);
         agreementActivity.addFeatureAttributes(FeatureAttribute.groupRole, groupPhasesRoles[1]);
         groupNetwork.getPresenterFeatureList().add(agreementActivity);
+        agreementActivity.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+//        agreementActivity.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
         agreementActivity.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
         final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.targetButton, storedWizardScreenData.getNextButton()[0]);
         presenterFeature.addFeatureAttributes(FeatureAttribute.target, storedWizardScreenData.getNextWizardScreenData().getScreenTag());
