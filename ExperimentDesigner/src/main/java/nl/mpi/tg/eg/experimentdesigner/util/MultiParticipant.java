@@ -120,13 +120,13 @@ public class MultiParticipant {
             + "Deze ronde werkt precies hetzelfde als de vorige ronde, maar je werkt nu samen met een andere partner en er worden "
             + "wat nieuwe scènes aan het spel toegevoegd. Als je zo'n scène ziet, probeer die dan een beschrijving te geven met de kennis "
             + "die je tot dan toe hebt opgedaan over de fantasietaal.<br/><br/>"
-//            + "In deze ronde zul je het spel spelen met proefpersoon X.<br/><br/>"
+            //            + "In deze ronde zul je het spel spelen met proefpersoon X.<br/><br/>"
             + "Onthoud: het doel is om zo goed mogelijk te communiceren met elkaar en om zoveel mogelijk punten te verdienen! ";
     final private String ronde1tm7PRODUCERSCREEN = "Typ je beschrijving voor de scène: <br/><br/>";
     final private String waitingScreenForGuesser = "Een moment alsjeblieft. Je partner is een beschrijving aan het bedenken.";
     final private String ronde1tm7GUESSERSCREEN = "Kies de scène die bij de beschrijving hoort: <br/><br/>";
     final private String waitingScreenForProducer = "Een moment alsjeblieft. Je partner is een scène aan het kiezen.";
-    final private String namingAndExposure = "Kijk naar de beschrijving van de scène in fantasietaal:";
+    final private String namingAndExposure = "Kijk naar de beschrijving van de scène in fantasietaal:<br/><br/>";
 
     final private String ronde1tm7FEEDBACKSCREEN = null;
     final private String ronde1tm7FeedbackCorrect = "<br/>Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!";
@@ -147,7 +147,7 @@ public class MultiParticipant {
             + "Hartelijk dank voor het meespelen!";
     final int numberOfStimuli = 23;
     final int repeatCountStimuli = 3;
-    final int randomWindowStimuli = 3;
+    final int randomWindowStimuli = 6;
 
     private final String[] stimuliArray = new String[]{
         "2.png:shape1:version1:quadrant3:moveRotated270",
@@ -282,7 +282,7 @@ public class MultiParticipant {
             roundScreen.setRandomiseStimuli(currentChannel[6].equals(RANDOMISE));
             roundScreen.setStimuliSet(stimuliArray);
             roundScreen.getWizardScreenData().setStimuliRandomTags(new String[]{currentChannel[3]});
-            roundScreen.setStimulusFreeText(true, "[wetuiopasfghknm ]{2,}", "You can only use the letters 'wetuiopasfghknm'.", "The key '<keycode>' is not allowed.");
+            roundScreen.setStimulusFreeText(true, "[wetuiopasfghknm ]{2,28}", "Sorry, dit teken is niet toegestaan in de Fantasietaal.", "The key '<keycode>' is not allowed.");
             roundScreen.setAllowedCharCodes("wetuiopasfghknm ");
             wizardData.addScreen(roundScreen);
             if (roundOfFourScreenOuter == null) {
@@ -339,7 +339,7 @@ public class MultiParticipant {
             roundScreen.setRandomiseStimuli(currentChannel[6].equals(RANDOMISE));
             roundScreen.setStimuliSet(stimuliArray);
             roundScreen.getWizardScreenData().setStimuliRandomTags(new String[]{currentChannel[3]});
-            roundScreen.setStimulusFreeText(true, "[wetuiopasfghknm ]{2,}", "You can only use the letters 'wetuiopasfghknm'.", "The key '<keycode>' is not allowed.");
+            roundScreen.setStimulusFreeText(true, "[wetuiopasfghknm ]{2,28}", "Sorry, dit teken is niet toegestaan in de Fantasietaal.", "The key '<keycode>' is not allowed.");
             roundScreen.setAllowedCharCodes("wetuiopasfghknm ");
             wizardData.addScreen(roundScreen);
             if (roundOfEightScreenOuter == null) {
@@ -441,7 +441,7 @@ public class MultiParticipant {
         String phaseRoleA = "";
         String phaseRoleB = "";
         for (final String channel : communicationChannels.split("\\|")) {
-            System.out.println("channel:" + channel);
+//            System.out.println("channel:" + channel);
             final String[] members = channel.split(",");
             for (int index = 0; index < members.length; index += 2) {
                 if (!phaseRoleA.isEmpty()) {
