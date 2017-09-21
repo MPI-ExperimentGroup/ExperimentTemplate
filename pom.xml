@@ -4,7 +4,7 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-parent</artifactId>
     <name>Frinex Parent</name>
-    <version>0.1-testing-SNAPSHOT</version>
+    <version>0.2-multiparticipant-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
         <module>gwt-cordova</module>
@@ -30,8 +30,8 @@
         <netbeans.hint.license>gpl20</netbeans.hint.license> 
         <plugin.license.copyrightYear>2015</plugin.license.copyrightYear>
         <application.majorVersion>0</application.majorVersion> 
-        <application.minorVersion>1</application.minorVersion> 
-        <application.branch>pretesting</application.branch> 
+        <application.minorVersion>2</application.minorVersion> 
+        <application.branch>multiparticipant</application.branch> 
         
         <!--<experiment.configuration.path>${project.build.sourceDirectory}/../xml</experiment.configuration.path>-->
         <!--<experiment.configuration.path>${project.build.sourceDirectory}/../../../../../ExperimentBuilder/src/main/xml</experiment.configuration.path>-->      
@@ -106,8 +106,8 @@
                     <vcsType>git</vcsType>
                     <allowSnapshots>true</allowSnapshots>
                     <majorVersion>0</majorVersion>
-                    <minorVersion>1</minorVersion>
-                    <buildType>testing</buildType>
+                    <minorVersion>2</minorVersion>
+                    <buildType>multiparticipant</buildType>
                     <propertiesPrefix>application</propertiesPrefix>
                     <shortVersionModule></shortVersionModule>
                 </configuration>
