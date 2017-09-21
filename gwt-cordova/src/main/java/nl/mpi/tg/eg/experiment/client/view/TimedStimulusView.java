@@ -104,7 +104,7 @@ public class TimedStimulusView extends ComplexView {
 //                Timer timer = new Timer() {
 //                    @Override
 //                    public void run() {
-                timedStimulusListener.postLoadTimerFired();
+        timedStimulusListener.postLoadTimerFired();
 //                    }
 //                };
 //                timer.schedule(postLoadMs);
@@ -197,7 +197,7 @@ public class TimedStimulusView extends ComplexView {
                     enterKeyListner.eventFired();
                     errorLabel.setVisible(false);
                 } else if (allowedCharCodes != null) {
-                    if (0 > allowedCharCodes.indexOf(charCode)) {
+                    if (0 > allowedCharCodes.indexOf(charCode) || textBox.getText().length() > 28) {
                         event.getNativeEvent().preventDefault();
                         final char invertedCaseCode = (Character.isLowerCase(charCode)) ? Character.toUpperCase(charCode) : Character.toLowerCase(charCode);
                         if (0 > allowedCharCodes.indexOf(invertedCaseCode) || textBox.getText().length() > 28) {
