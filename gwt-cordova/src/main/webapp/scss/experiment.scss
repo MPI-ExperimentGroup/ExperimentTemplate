@@ -464,12 +464,12 @@ table#screenExample td, .stimulusHelpPanel .gwt-Button, .stimulusHelpText, .popu
 .gwt-HTML a, .gwt-HTML a:visited, .gwt-HTML a:hover,
 .gwt-Label, .gwt-HTML, .headerLabel, .headerLabelCentered, .resultsTableTitle, .gwt-CheckBox, .pageLink, .contentBody {
     color:$primaryColour1; 
-    line-height: 20pt;
+    /*line-height: 20pt;*/
 } 
 
 .metadataErrorMessage {
     color:rgb(246,170,139);
-    line-height: 20pt;
+    /*line-height: 20pt;*/
     padding: 10px;
 } 
 
