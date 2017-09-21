@@ -461,10 +461,14 @@ table#screenExample td, .stimulusHelpPanel .gwt-Button, .stimulusHelpText, .popu
     /*text-transform: uppercase;*/
 }
 
+.headerLabel, .headerLabelCentered, .headerButton, .headerPanel {
+    line-height: 20pt;
+} 
+
 .gwt-HTML a, .gwt-HTML a:visited, .gwt-HTML a:hover,
-.gwt-Label, .gwt-HTML, .headerLabel, .headerLabelCentered, .resultsTableTitle, .gwt-CheckBox, .pageLink, .contentBody {
+.gwt-Label, .gwt-HTML, /*.headerLabel, .headerLabelCentered,*/ .resultsTableTitle, .gwt-CheckBox, .pageLink, .contentBody {
     color:$primaryColour1; 
-    /*line-height: 20pt;*/
+    line-height: 25pt;
 } 
 
 .metadataErrorMessage {
