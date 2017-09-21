@@ -5,6 +5,8 @@ jdk:
 #  directories:
 #    these take as long to download from the cache as from the original source
 #  - $HOME/.m2
+git:
+  depth: 3000
 install:
   - mvn install -Dgwt.validateOnly -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script:
