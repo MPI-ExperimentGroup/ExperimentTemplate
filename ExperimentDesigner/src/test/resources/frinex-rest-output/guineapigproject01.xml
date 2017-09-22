@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment appNameDisplay="GuineaPigProject" appNameInternal="guineapigproject" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="true" textFontSize="17">
+<experiment appNameDisplay="ld-screensize" appNameInternal="guineapigproject01" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="true" textFontSize="17">
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
         <field controlledMessage="Voer een getal." controlledRegex="[0-9]+" postName="age" preventServerDuplicates="false" registrationField="Leeftijd"/>
         <field controlledMessage="." controlledRegex="|man|vrouw|anders" postName="gender" preventServerDuplicates="false" registrationField="Geslacht"/>
+        <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_VideoScreen" preventServerDuplicates="false" registrationField="groupAllocation_VideoScreen"/>
     </metadata>
     <presenter displayOrder="1" menuLabel="Terug" next="Informatie" type="metadata" self="Toestemming" title="Toestemming">
         <htmlText featureText="Toestemmingsverklaring voor deelname aan het onderzoek:&lt;br/&gt;&lt;br/&gt;Ik stem geheel vrijwillig in met deelname aan dit onderzoek.&lt;br/&gt;&lt;br/&gt;Als u ermee instemt om door te gaan met dit experiment, klik dan op 'Akkoord' om verder te gaan.&lt;br/&gt;&lt;br/&gt;Als u besluit niet deel te nemen aan het experiment, kunt u de pagina sluiten of naar een andere website gaan."/>
@@ -24,7 +25,38 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter displayOrder="5" menuLabel="Einde van het experiment" type="transmission" self="completion" title="Einde van het experiment">
+    <presenter back="Gegevens" displayOrder="4" menuLabel="VideoScreen" next="completion" type="stimulus" self="VideoScreen" title="VideoScreen">
+        <backgroundImage msToNext="7000" src="background.png" styleName="zoomToBlock1">
+            <loadStimulus eventTag="VideoScreen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+                <hasMoreStimulus>
+                    <clearPage styleName="fullScreenWidth"/>
+                    <stimulusAudio msToNext="0" showPlaybackIndicator="true">
+                        <table>
+                            <row>
+                                <column>
+                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;L" percentOfPage="0" styleName="" showControls="false" maxWidth="100"/>
+                                </column>
+                                <column>
+                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;R" percentOfPage="0" styleName="" showControls="false" maxWidth="100"/>
+                                </column>
+                            </row>
+                        </table>
+                        <nextStimulusButton featureText="Next" eventTag="nextStimulusButton" hotKey="SPACE" repeatIncorrect="false"/>
+                    </stimulusAudio>
+                </hasMoreStimulus>
+                <endOfStimulus>
+                    <autoNextPresenter/>
+                </endOfStimulus>
+                <randomGrouping storageField="groupAllocation_VideoScreen">
+                    <tag>VideoScreen</tag>
+                </randomGrouping>
+                <stimuli>
+                    <tag>VideoScreen</tag>
+                </stimuli>
+            </loadStimulus>
+        </backgroundImage>
+    </presenter>
+    <presenter back="about" displayOrder="5" menuLabel="Einde van het experiment" type="transmission" self="completion" title="Einde van het experiment">
         <sendAllData>
             <onSuccess>
                 <htmlText featureText="Dit is het einde van het experiment.&lt;br/&gt;Hartelijk dank voor uw deelname! &lt;br/&gt;&lt;br/&gt;"/>
@@ -44,5 +76,174 @@
     <presenter back="Gegevens" displayOrder="6" menuLabel="Over" type="debug" self="about" title="Over">
         <versionData/>
     </presenter>
-    <stimuli/>
+    <stimuli>
+        <stimulus audioPath="filler_1_1" code="filler_1_" identifier="filler_1_1" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="intro_1" code="intro_" identifier="intro_1" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="test_2_2" code="test_2_" identifier="test_2_2" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="test_6_2" code="test_6_" identifier="test_6_2" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="training_2_2" code="training_2_" identifier="training_2_2" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="filler_1_2" code="filler_1_" identifier="filler_1_2" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="intro_2" code="intro_" identifier="intro_2" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="test_2_3" code="test_2_" identifier="test_2_3" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="test_6_3" code="test_6_" identifier="test_6_3" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="training_2_3" code="training_2_" identifier="training_2_3" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="filler_1_3" code="filler_1_" identifier="filler_1_3" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="intro_3" code="intro_" identifier="intro_3" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="test_3_1" code="test_3_" identifier="test_3_1" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="test_7_1" code="test_7_" identifier="test_7_1" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="training_3_1" code="training_3_" identifier="training_3_1" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="filler_2_1" code="filler_2_" identifier="filler_2_1" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="room_1" code="room_" identifier="room_1" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="test_3_2" code="test_3_" identifier="test_3_2" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="test_7_2" code="test_7_" identifier="test_7_2" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="training_3_2" code="training_3_" identifier="training_3_2" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="filler_2_2" code="filler_2_" identifier="filler_2_2" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="room_2" code="room_" identifier="room_2" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="test_3_3" code="test_3_" identifier="test_3_3" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="test_7_3" code="test_7_" identifier="test_7_3" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="training_3_3" code="training_3_" identifier="training_3_3" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="filler_2_3" code="filler_2_" identifier="filler_2_3" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="room_3" code="room_" identifier="room_3" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="test_4_1" code="test_4_" identifier="test_4_1" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="test_8_1" code="test_8_" identifier="test_8_1" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="training_4_1" code="training_4_" identifier="training_4_1" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="filler_3_1" code="filler_3_" identifier="filler_3_1" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="room_4" code="room_" identifier="room_4" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="test_4_2" code="test_4_" identifier="test_4_2" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="test_8_2" code="test_8_" identifier="test_8_2" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="training_4_2" code="training_4_" identifier="training_4_2" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="filler_3_2" code="filler_3_" identifier="filler_3_2" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="room_5" code="room_" identifier="room_5" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="test_4_3" code="test_4_" identifier="test_4_3" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="test_8_3" code="test_8_" identifier="test_8_3" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="training_4_3" code="training_4_" identifier="training_4_3" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="filler_3_3" code="filler_3_" identifier="filler_3_3" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="test_1_1" code="test_1_" identifier="test_1_1" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="test_5_1" code="test_5_" identifier="test_5_1" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="training_1_1" code="training_1_" identifier="training_1_1" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="filler_4_1" code="filler_4_" identifier="filler_4_1" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="test_1_2" code="test_1_" identifier="test_1_2" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="test_5_2" code="test_5_" identifier="test_5_2" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="training_1_2" code="training_1_" identifier="training_1_2" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="filler_4_2" code="filler_4_" identifier="filler_4_2" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="test_1_3" code="test_1_" identifier="test_1_3" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="test_5_3" code="test_5_" identifier="test_5_3" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="training_1_3" code="training_1_" identifier="training_1_3" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="filler_4_3" code="filler_4_" identifier="filler_4_3" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="test_2_1" code="test_2_" identifier="test_2_1" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="test_6_1" code="test_6_" identifier="test_6_1" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+        <stimulus audioPath="training_2_1" code="training_2_" identifier="training_2_1" pauseMs="0">
+            <tag>VideoScreen</tag>
+        </stimulus>
+    </stimuli>
 </experiment>
