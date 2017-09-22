@@ -88,26 +88,33 @@ public class TimedStimulusView extends ComplexView {
         getActivePanel().add(image);
     }
 
-    public void addBackgroundImage(final SafeUri imagePath, final int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+    public void addBackgroundImage(final SafeUri imagePath, final String styleName, final int postLoadMs, final TimedStimulusListener timedStimulusListener) {
 //        final Image image = new Image(imagePath);
 //            this.getElement().getStyle().setBackgroundColor("green");
-        this.getElement().getStyle().setBackgroundImage("url(" + imagePath.asString() + ")");
+        if (imagePath == null) {
+            this.getElement().getStyle().clearBackgroundImage();
+        } else {
+            this.getElement().getStyle().setBackgroundImage("url(" + imagePath.asString() + ")");
+        }
         this.getElement().getStyle().setProperty("backgroundRepeat", "no-repeat");
 //            this.getElement().getStyle().setProperty("backgroundSize", "100% 100%");
         this.getElement().getStyle().setProperty("backgroundSize", "cover");
         this.getElement().getStyle().setProperty("backgroundRepeat", "no-repeat");
         this.getElement().getStyle().setProperty("backgroundPosition", "50% 50%");
+        if (styleName != null && !styleName.isEmpty()) {
+            this.addStyleName(styleName);
+        }
 //        image.addLoadHandler(new LoadHandler() {
 //
 //            @Override
 //            public void onLoad(LoadEvent event) {
-//                Timer timer = new Timer() {
-//                    @Override
-//                    public void run() {
-        timedStimulusListener.postLoadTimerFired();
-//                    }
-//                };
-//                timer.schedule(postLoadMs);
+        Timer timer = new Timer() {
+            @Override
+            public void run() {
+                timedStimulusListener.postLoadTimerFired();
+            }
+        };
+        timer.schedule(postLoadMs);
 //            }
 //        });
 //        outerPanel.add(image);
@@ -170,6 +177,7 @@ public class TimedStimulusView extends ComplexView {
     }
 
     public StimulusFreeText addStimulusFreeText(final String postName, final String validationRegex, final String keyCodeChallenge, final String validationChallenge, final String allowedCharCodes, final SingleShotEventListner enterKeyListner, final int hotKey, final String styleName, final String textValue) {
+        final int inputLengthLimit = 28;
         final Label errorLabel = new Label(validationChallenge);
         errorLabel.setStylePrimaryName("metadataErrorMessage");
         errorLabel.setVisible(false);
@@ -197,10 +205,10 @@ public class TimedStimulusView extends ComplexView {
                     enterKeyListner.eventFired();
                     errorLabel.setVisible(false);
                 } else if (allowedCharCodes != null) {
-                    if (0 > allowedCharCodes.indexOf(charCode) || textBox.getText().length() > 28) {
+                    if (0 > allowedCharCodes.indexOf(charCode) || textBox.getText().length() <= inputLengthLimit) {
                         event.getNativeEvent().preventDefault();
                         final char invertedCaseCode = (Character.isLowerCase(charCode)) ? Character.toUpperCase(charCode) : Character.toLowerCase(charCode);
-                        if (0 > allowedCharCodes.indexOf(invertedCaseCode) || textBox.getText().length() > 28) {
+                        if (0 > allowedCharCodes.indexOf(invertedCaseCode) || textBox.getText().length() <= inputLengthLimit) {
 //                            final String messageString = "The key '<keycode>' is not allowed. " + validationChallenge;
                             errorLabel.setText(keyCodeChallenge.replace("<keycode>", "" + charCode) + validationChallenge);
                             errorLabel.setVisible(true);
@@ -286,13 +294,17 @@ public class TimedStimulusView extends ComplexView {
         audioPlayer.playSample(oggPath, mp3Path);
     }
 
-    public void addTimedVideo(SafeUri oggPath, SafeUri mp4Path, int percentOfPage, int maxHeight, int maxWidth, final int postLoadMs, final TimedStimulusListener shownStimulusListener, final TimedStimulusListener timedStimulusListener) {
+    public void addTimedVideo(SafeUri oggPath, SafeUri mp4Path, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean showControls, final int postLoadMs, final TimedStimulusListener shownStimulusListener, final TimedStimulusListener timedStimulusListener) {
         final Video video = Video.createIfSupported();
         if (video != null) {
 //            video.setPoster(poster);
-            video.setControls(true);
+            video.setControls(showControls);
             video.setPreload(MediaElement.PRELOAD_AUTO);
-            addSizeAttributes(video.getElement(), percentOfPage, maxHeight, maxWidth);
+            if (styleName != null && !styleName.isEmpty()) {
+                video.addStyleName(styleName);
+            } else {
+                addSizeAttributes(video.getElement(), percentOfPage, maxHeight, maxWidth);
+            }
             getActivePanel().add(video);
             if (oggPath != null) {
                 video.addSource(oggPath.asString(), "video/ogg");
