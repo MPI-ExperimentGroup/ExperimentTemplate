@@ -52,7 +52,7 @@ public class GuineaPigProject {
 
     public WizardData getWizardData() {
         WizardData wizardData = new WizardData();
-        wizardData.setAppName("GuineaPigProject");
+        wizardData.setAppName("ld-screensize");
         wizardData.setShowMenuBar(true);
         wizardData.setTextFontSize(17);
         wizardData.setObfuscateScreenNames(false);
@@ -83,9 +83,9 @@ public class GuineaPigProject {
         WizardAnimatedStimuliScreen trainingPhase = new WizardAnimatedStimuliScreen("Training phase", new String[]{"four training trials (practice the game in the garden)"}, false, 0, false, "game-in-the-garden", "game-in-the-garden.jpg", false);
         WizardAnimatedStimuliScreen overviewHighlight1stRoom = new WizardAnimatedStimuliScreen("Overview Highlight 1st Room", new String[]{"Overview picture of the house, highlight 1st room"}, false, 0, false, "overview-highlight-1st-room", "overview-highlight-1st-room.jpg", false);
         final WizardGridStimulusScreen gridStimulusScreen = new WizardGridStimulusScreen("VideoScreen", false, stimuliString,
-                new String[]{"list_a",
-                    "list_b",
-                    "list_c"}, 1000, true, null, 0, 0, null);
+                new String[]{
+                    //                    "list_b",
+                    "VideoScreen"}, 1000, true, null, 0, 0, null);
         wizardData.addScreen(gridStimulusScreen);
 
         WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, true, true, completionScreenText2,
@@ -96,14 +96,16 @@ public class GuineaPigProject {
         wizardData.addScreen(completionScreen);
         completionScreen.setScreenTag("completion");
         wizardTextScreen.setNextWizardScreen(wizardEditUserScreen);
+        wizardEditUserScreen.setBackWizardScreen(wizardTextScreen);
         agreementScreen.setNextWizardScreen(wizardTextScreen);
+        wizardTextScreen.setBackWizardScreen(agreementScreen);
         wizardEditUserScreen.setNextWizardScreen(gridStimulusScreen);
+        gridStimulusScreen.setBackWizardScreen(wizardEditUserScreen);
         gridStimulusScreen.setNextWizardScreen(completionScreen);
 
-        wizardEditUserScreen.setBackWizardScreen(wizardTextScreen);
-        wizardTextScreen.setBackWizardScreen(agreementScreen);
         final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("Over", false);
         wizardAboutScreen.setBackWizardScreen(wizardEditUserScreen);
+        completionScreen.setBackWizardScreen(wizardAboutScreen);
         wizardData.addScreen(wizardAboutScreen);
 
         return wizardData;
