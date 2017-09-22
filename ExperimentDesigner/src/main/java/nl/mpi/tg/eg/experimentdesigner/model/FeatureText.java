@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.experimentdesigner.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -45,7 +46,7 @@ public class FeatureText {
     private String locale;
 
     @XmlTransient
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FeatureText> translations = new ArrayList<>();
 
     public FeatureText(String featureText, String locale) {
