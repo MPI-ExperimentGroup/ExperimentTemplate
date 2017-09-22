@@ -307,27 +307,24 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         </xsl:text>
     </xsl:template>
     <xsl:template match="image">
-        <!--<xsl:choose>-->
-        <!--<xsl:when test="@link">-->
-        <xsl:text>    ((ComplexView) simpleView).addImage(UriUtils.fromString("</xsl:text>
-        <xsl:value-of select="@image" />
-        <xsl:text>"), UriUtils.fromString("</xsl:text>
-        <xsl:value-of select="@link" />
-        <xsl:text>"), </xsl:text>
-        <xsl:value-of select="@percentOfPage" />
-        <xsl:text>, </xsl:text>
-        <xsl:value-of select="@maxHeight" />
-        <xsl:text>, </xsl:text>
-        <xsl:value-of select="@maxWidth" />
-        <xsl:text>, "</xsl:text>
-        <xsl:value-of select="@align" />
-        <xsl:text>");
+        <xsl:text>    </xsl:text>
+        <xsl:value-of select="local-name()" />
+        <xsl:text>(</xsl:text>                
+        <xsl:text>"</xsl:text>
+        <xsl:value-of select="@src" />
+        <xsl:text>", "</xsl:text>
+        <xsl:value-of select="@styleName" />
+        <xsl:text>", </xsl:text>
+        <xsl:value-of select="@msToNext" />
+        <xsl:text>, new TimedStimulusListener() {
+            @Override
+            public void postLoadTimerFired() {
         </xsl:text>
-        <!--</xsl:when>
- <xsl:otherwise><xsl:text>    ((ComplexView) simpleView).addImage(UriUtils.fromString("</xsl:text><xsl:value-of select="@image" /><xsl:text>"), "",</xsl:text><xsl:value-of select="@width" /><xsl:text>);
- </xsl:text>
- </xsl:otherwise>
-        </xsl:choose>-->
+        <xsl:apply-templates/>
+        <xsl:text>
+            }
+            });
+        </xsl:text>
     </xsl:template>
     <xsl:template match="menuItem">
         <xsl:text>    ((MenuView) simpleView).addMenuItem(new PresenterEventListner() {
@@ -466,7 +463,9 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
     <xsl:template match="centrePage|clearPage|addPadding">
         <xsl:text>    ((ComplexView) simpleView).</xsl:text>    
         <xsl:value-of select ="local-name()"/>
-        <xsl:text>();
+        <xsl:text>(</xsl:text>
+        <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else ''" />
+        <xsl:text>);
         </xsl:text>
     </xsl:template>
     <xsl:template match="createUserButton|selectUserMenu|allMenuItems|addKinTypeGui|autoNextPresenter">    
@@ -584,12 +583,13 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@maxWidth) then concat(@maxWidth, ', ') else ''" />
         <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;, ') else ''" />
         <xsl:value-of select="if(@animate) then concat('AnimateTypes.', @animate, ', ') else ''" />
+        <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;, ') else ''" />
+        <xsl:value-of select="if(@showControls) then concat(@showControls, ', ') else ''" />
         <xsl:value-of select="if(@msToNext) then concat(@msToNext, ', ') else ''" />
         <xsl:value-of select="if(@matchingRegex) then concat('&quot;', @matchingRegex, '&quot;, ') else ''" />
         <xsl:value-of select="if(@replacement) then concat('&quot;', @replacement, '&quot;, ') else ''" />
         <xsl:value-of select="if(@msLabelFormat) then concat('&quot;', @msLabelFormat, '&quot;, ') else ''" />
         <xsl:value-of select="if(@codeFormat) then concat('&quot;', @codeFormat, '&quot;, ') else ''" />
-        <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;, ') else ''" />
         <xsl:value-of select="if(@showPlaybackIndicator) then concat(@showPlaybackIndicator eq 'true', ', ') else ''" />
         <xsl:value-of select="if(@groupMembers) then concat('&quot;', @groupMembers, '&quot;, ') else ''" />
         <xsl:value-of select="if(@groupCommunicationChannels) then concat('&quot;', @groupCommunicationChannels, '&quot;, ') else ''" />
