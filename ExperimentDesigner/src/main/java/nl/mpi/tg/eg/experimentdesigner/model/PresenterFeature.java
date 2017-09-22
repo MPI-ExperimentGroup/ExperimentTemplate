@@ -66,7 +66,7 @@ public class PresenterFeature {
     private List<PresenterFeature> presenterFeatures = new ArrayList<>();
     private HashMap<FeatureAttribute, String> featureAttributes = new HashMap<>();
     @XmlTransient
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private FeatureText translatable;
 
     public PresenterFeature() {
