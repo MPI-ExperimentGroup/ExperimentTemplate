@@ -370,7 +370,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 + "Message:'<groupMessageString>';"
         ), duration.elapsedMillis());
     }
-    
+
     public void htmlTokenText(String textString) {
         htmlTokenText(textString, null);
     }
@@ -843,8 +843,12 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         });
     }
 
-    protected void backgroundImage(final String imageSrc, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
-        ((TimedStimulusView) simpleView).addBackgroundImage(UriUtils.fromTrustedString((imageSrc.startsWith("file")) ? imageSrc : serviceLocations.staticFilesUrl() + imageSrc), postLoadMs, timedStimulusListener);
+    protected void image(final String imageSrc, String styleName, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString((imageSrc.startsWith("file")) ? imageSrc : serviceLocations.staticFilesUrl() + imageSrc), 0, 0, 0, styleName, null, postLoadMs, null, timedStimulusListener, timedStimulusListener);
+    }
+
+    protected void backgroundImage(final String imageSrc, String styleName, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+        ((TimedStimulusView) simpleView).addBackgroundImage((imageSrc == null || imageSrc.isEmpty()) ? null : UriUtils.fromTrustedString((imageSrc.startsWith("file")) ? imageSrc : serviceLocations.staticFilesUrl() + imageSrc), styleName, postLoadMs, timedStimulusListener);
     }
 
     @Deprecated
@@ -925,7 +929,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), "StimulusVideoShown", currentStimulus.getUniqueId(), currentStimulus.getVideo(), duration.elapsedMillis());
                 }
             };
-            ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, postLoadMs, shownStimulusListener, timedStimulusListener);
+            ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, null, true, postLoadMs, shownStimulusListener, timedStimulusListener);
         } else if (currentStimulus.getLabel() != null) {
             ((TimedStimulusView) simpleView).addHtmlText(currentStimulus.getLabel(), null);
             // send label shown tag
@@ -969,7 +973,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addTimedAudio(oggTrustedString, mp3TrustedString, postLoadMs, false, shownStimulusListener, timedStimulusListener);
     }
 
-    protected void stimulusCodeVideo(int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, String codeFormat, TimedStimulusListener timedStimulusListener) {
+    protected void stimulusCodeVideo(int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean showControls, int postLoadMs, String codeFormat, TimedStimulusListener timedStimulusListener) {
         final String formattedCode = codeFormat.replace("<code>", stimulusProvider.getCurrentStimulus().getCode());
         final String uniqueId = stimulusProvider.getCurrentStimulus().getUniqueId();
         String mp4 = formattedCode + ".mp4";
@@ -984,7 +988,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }
         };
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", formattedCode, duration.elapsedMillis());
-        ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, postLoadMs, shownStimulusListener, timedStimulusListener);
+        ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, styleName, showControls, postLoadMs, shownStimulusListener, timedStimulusListener);
     }
 
     protected void stimulusAudio(int postLoadMs, boolean showPlaybackIndicator, TimedStimulusListener timedStimulusListener) {
