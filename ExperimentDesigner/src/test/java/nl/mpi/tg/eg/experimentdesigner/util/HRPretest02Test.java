@@ -103,7 +103,7 @@ public class HRPretest02Test {
 //        testGetWizardData(new NonWacq().getExperiment());
         testGetWizardData(new SentencesRatingTask().getExperiment());
 //        testGetWizardData(new WellspringsSamoanFieldKit().getExperiment());
-//        testGetWizardData(new GuineaPigProject().getExperiment());
+        testGetWizardData(new GuineaPigProject().getExperiment());
     }
 
     /**
