@@ -285,6 +285,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             final PresenterFeature backgroundImageFeature = new PresenterFeature(FeatureType.backgroundImage, null);
             backgroundImageFeature.addFeatureAttributes(FeatureAttribute.src, storedWizardScreenData.getBackgroundImage());
             backgroundImageFeature.addFeatureAttributes(FeatureAttribute.msToNext, "1");
+            backgroundImageFeature.addFeatureAttributes(FeatureAttribute.styleName, "");
             hasMoreStimulusFeature.getPresenterFeatureList().add(backgroundImageFeature);
             backgroundImageFeature.getPresenterFeatureList().add(imageFeature);
         } else {
@@ -322,6 +323,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             final PresenterFeature backgroundImageFeature = new PresenterFeature(FeatureType.backgroundImage, null);
             backgroundImageFeature.addFeatureAttributes(FeatureAttribute.src, storedWizardScreenData.getBackgroundImage());
             backgroundImageFeature.addFeatureAttributes(FeatureAttribute.msToNext, "1");
+            backgroundImageFeature.addFeatureAttributes(FeatureAttribute.styleName, "");
             hasMoreStimulusFeature.getPresenterFeatureList().add(backgroundImageFeature);
             backgroundImageFeature.getPresenterFeatureList().add(matchingStimulusGrid);
             returnFeature = backgroundImageFeature;
@@ -393,6 +395,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             final PresenterFeature backgroundImageFeature = new PresenterFeature(FeatureType.backgroundImage, null);
             backgroundImageFeature.addFeatureAttributes(FeatureAttribute.src, storedWizardScreenData.getBackgroundImage());
             backgroundImageFeature.addFeatureAttributes(FeatureAttribute.msToNext, "1");
+            backgroundImageFeature.addFeatureAttributes(FeatureAttribute.styleName, "");
             hasMoreStimulusFeature.getPresenterFeatureList().add(backgroundImageFeature);
             backgroundImageFeature.getPresenterFeatureList().add(matchingStimulusGrid);
             returnFeature = backgroundImageFeature;
