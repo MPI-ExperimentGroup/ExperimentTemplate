@@ -56,9 +56,11 @@ public abstract class AbstractView extends DockLayoutPanel {
 
     public void setStyleByWidth(int width) {
         if (width < 500) {
-            this.setStylePrimaryName("narrowWidth");
+            this.addStyleName("narrowWidth");
+            this.removeStyleName("normalWidth");
         } else {
-            this.setStylePrimaryName("normalWidth");
+            this.addStyleName("normalWidth");
+            this.removeStyleName("narrowWidth");
         }
     }
 
