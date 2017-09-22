@@ -146,7 +146,16 @@ public class ComplexView extends SimpleView {
     }
 
     public void clearPage() {
+        clearPage(null);
+    }
+
+    public void clearPage(String styleName) {
         outerPanel.clear();
+        if (styleName != null && !styleName.isEmpty()) {
+            outerPanel.setStyleName(styleName);
+        } else {
+            outerPanel.setStyleName("contentBody");
+        }
         removeFooterButtons();
         clearDomHandlers();
         scaledImagesList.clear();
