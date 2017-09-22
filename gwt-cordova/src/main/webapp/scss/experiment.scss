@@ -167,6 +167,36 @@ $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 25
     }
 }
 
+.zoomToBlock1 {
+    /*position: absolute;*/    
+    /*height: auto;*/
+    /*width: -webkit-fill-available;*/
+    /*animation: zoomToBlock1KeyFrames 5s linear 0s 1 alternate;*/
+
+    animation-name: zoomToBlock1KeyFrames;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
+
+@keyframes zoomToBlock1KeyFrames {
+    /* (top, right, bottom, left) */
+    from {
+        /*clip: rect(0px,800px,600px,0px);*/
+        /*top: 0;*/
+        /*left: 0;*/
+        background-size: 100%;
+        background-position: 50% 50%;
+    } to {
+        background-size: 200%;
+        background-position: 0% 0%;
+        /*clip: rect(0px,800px,600px,0px);*/
+    }
+}
+
 .svgPopupPanel .gwt-Button, 
 .stimulusHelpPanel .gwt-Button,
 .choosePlayerList,
@@ -294,6 +324,14 @@ $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 25
     margin-top: 50px;    
     margin-bottom: -50px;    
     margin-left: auto; // this was 10% but for the multiparticipant grid it was changed to auto, however the change might affect the display of mobile menus
+    margin-right: auto;   
+}
+
+.fullScreenWidth {
+    width: 100%;
+    margin-top: 50px;    
+    margin-bottom: -50px;    
+    margin-left: auto;
     margin-right: auto;   
 }
 
