@@ -112,25 +112,25 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
     }
 
     public final void setStimuliSet(String[] stimuliSet) {
-        String[] tempStimuli = {
-            "filler_1_1", "intro_1", "test_2_2", "test_6_2", "training_2_2",
-            "filler_1_2", "intro_2", "test_2_3", "test_6_3", "training_2_3",
-            "filler_1_3", "intro_3", "test_3_1", "test_7_1", "training_3_1",
-            "filler_2_1", "room_1", "test_3_2", "test_7_2", "training_3_2",
-            "filler_2_2", "room_2", "test_3_3", "test_7_3", "training_3_3",
-            "filler_2_3", "room_3", "test_4_1", "test_8_1", "training_4_1",
-            "filler_3_1", "room_4", "test_4_2", "test_8_2", "training_4_2",
-            "filler_3_2", "room_5", "test_4_3", "test_8_3", "training_4_3",
-            "filler_3_3", "test_1_1", "test_5_1", "training_1_1",
-            "filler_4_1", "test_1_2", "test_5_2", "training_1_2",
-            "filler_4_2", "test_1_3", "test_5_3", "training_1_3",
-            "filler_4_3", "test_2_1", "test_6_1", "training_2_1",};
+//        String[] tempStimuli = {
+//            "filler_1_1", "intro_1", "test_2_2", "test_6_2", "training_2_2",
+//            "filler_1_2", "intro_2", "test_2_3", "test_6_3", "training_2_3",
+//            "filler_1_3", "intro_3", "test_3_1", "test_7_1", "training_3_1",
+//            "filler_2_1", "room_1", "test_3_2", "test_7_2", "training_3_2",
+//            "filler_2_2", "room_2", "test_3_3", "test_7_3", "training_3_3",
+//            "filler_2_3", "room_3", "test_4_1", "test_8_1", "training_4_1",
+//            "filler_3_1", "room_4", "test_4_2", "test_8_2", "training_4_2",
+//            "filler_3_2", "room_5", "test_4_3", "test_8_3", "training_4_3",
+//            "filler_3_3", "test_1_1", "test_5_1", "training_1_1",
+//            "filler_4_1", "test_1_2", "test_5_2", "training_1_2",
+//            "filler_4_2", "test_1_3", "test_5_3", "training_1_3",
+//            "filler_4_3", "test_2_1", "test_6_1", "training_2_1",};
         if (this.wizardScreenData.getStimuli() == null) {
             this.wizardScreenData.setStimuli(new ArrayList<>());
         }
         final List<Stimulus> stimuliList = this.wizardScreenData.getStimuli();
         final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{this.wizardScreenData.getScreenTitle()}));
-        for (String stimulusEntry : tempStimuli) {
+        for (String stimulusEntry : stimuliSet) {
             stimuliList.add(new Stimulus(stimulusEntry, stimulusEntry, null, null, null, stimulusEntry.substring(0, stimulusEntry.length() - 1), 0, tagSet, null, null));
         }
         // add screen text
@@ -252,11 +252,24 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         rowFeature.getPresenterFeatureList().add(rightColumnFeature);
         leftColumnFeature.getPresenterFeatureList().add(stimulusCodeVideoL);
         rightColumnFeature.getPresenterFeatureList().add(stimulusCodeVideoR);
-        final PresenterFeature nextStimulusButton = new PresenterFeature(FeatureType.nextStimulusButton, "Next");
-        nextStimulusButton.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusButton");
-        nextStimulusButton.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
-        nextStimulusButton.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
-        stimulusCodeAudio.getPresenterFeatureList().add(nextStimulusButton);
+        final PresenterFeature touchInputZoneL = new PresenterFeature(FeatureType.touchInputZone, null);
+        touchInputZoneL.addFeatureAttributes(FeatureAttribute.eventTag, "leftHalfScreen");
+        touchInputZoneL.addFeatureAttributes(FeatureAttribute.styleName, "leftHalfScreen");
+        touchInputZoneL.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
+        stimulusCodeVideoR.getPresenterFeatureList().add(touchInputZoneL);
+        final PresenterFeature touchInputZoneR = new PresenterFeature(FeatureType.touchInputZone, null);
+        touchInputZoneR.addFeatureAttributes(FeatureAttribute.eventTag, "rightHalfScreen");
+        touchInputZoneR.addFeatureAttributes(FeatureAttribute.styleName, "rightHalfScreen");
+        touchInputZoneR.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
+        stimulusCodeVideoR.getPresenterFeatureList().add(touchInputZoneR);
+        final PresenterFeature nextStimulusL = new PresenterFeature(FeatureType.nextStimulus, null);
+//        nextStimulusL.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusL");
+        nextStimulusL.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
+        touchInputZoneL.getPresenterFeatureList().add(nextStimulusL);
+        final PresenterFeature nextStimulusR = new PresenterFeature(FeatureType.nextStimulus, null);
+//        nextStimulusR.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusR");
+        nextStimulusR.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
+        touchInputZoneR.getPresenterFeatureList().add(nextStimulusR);
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
         final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
         endOfStimulusFeature.getPresenterFeatureList().add(autoNextPresenter);
