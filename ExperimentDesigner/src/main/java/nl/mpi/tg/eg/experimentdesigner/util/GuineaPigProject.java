@@ -23,6 +23,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAnimatedStimuliScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAudioTestScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardGridStimulusScreen;
@@ -48,7 +49,6 @@ public class GuineaPigProject {
             + "<br/>";
     final String completionScreenText2 = "<br/>"
             + "Het bovenstaande nummer is het bewijs dat u het experiment heeft voltooid, en is vereist voor het in orde maken van uw vergoeding.";
-    private final String[] stimuliString = {};
 
     public WizardData getWizardData() {
         WizardData wizardData = new WizardData();
@@ -79,14 +79,80 @@ public class GuineaPigProject {
         wizardData.addScreen(wizardTextScreen);
         wizardData.addScreen(wizardEditUserScreen);
 
+        WizardAudioTestScreen introductionAudio1 = new WizardAudioTestScreen("introduction 1", "Intro text", "continue button", "intro_1");
+        wizardData.addScreen(introductionAudio1);
+        WizardAudioTestScreen introductionAudio2 = new WizardAudioTestScreen("introduction 2", "Intro text", "continue button", "intro_2");
+        wizardData.addScreen(introductionAudio2);
+        WizardAudioTestScreen introductionAudio3 = new WizardAudioTestScreen("introduction 3", "Intro text", "continue button", "intro_3");
+        wizardData.addScreen(introductionAudio3);
         WizardAnimatedStimuliScreen overviewHighlightGarden = new WizardAnimatedStimuliScreen("Overview Highlight Garden", new String[]{"Overview picture of the house, highlight garden"}, false, 0, false, "overview-highlight-garden", "overview-highlight-garden.jpg", false);
         WizardAnimatedStimuliScreen trainingPhase = new WizardAnimatedStimuliScreen("Training phase", new String[]{"four training trials (practice the game in the garden)"}, false, 0, false, "game-in-the-garden", "game-in-the-garden.jpg", false);
         WizardAnimatedStimuliScreen overviewHighlight1stRoom = new WizardAnimatedStimuliScreen("Overview Highlight 1st Room", new String[]{"Overview picture of the house, highlight 1st room"}, false, 0, false, "overview-highlight-1st-room", "overview-highlight-1st-room.jpg", false);
-        final WizardGridStimulusScreen gridStimulusScreen = new WizardGridStimulusScreen("VideoScreen", false, stimuliString,
+        String[] fillerList = new String[]{
+            "filler_1_1",
+            "filler_1_2",
+            "filler_1_3",
+            "filler_2_1",
+            "filler_2_2",
+            "filler_2_3",
+            "filler_3_1",
+            "filler_3_2",
+            "filler_3_3",
+            "filler_4_1",
+            "filler_4_2",
+            "filler_4_3",};
+        //            "intro_1",
+        //            "intro_2",
+        //            "intro_3",
+        //            "room_1",
+        //            "room_2",
+        //            "room_3",
+        //            "room_4",
+        //            "room_5",
+        String[] testList = new String[]{
+            "test_1_1",
+            "test_1_2",
+            "test_1_3",
+            "test_2_1",
+            "test_2_2",
+            "test_2_3",
+            "test_3_1",
+            "test_3_2",
+            "test_3_3",
+            "test_4_1",
+            "test_4_2",
+            "test_4_3",
+            "test_5_1",
+            "test_5_2",
+            "test_5_3",
+            "test_6_1",
+            "test_6_2",
+            "test_6_3",
+            "test_7_1",
+            "test_7_2",
+            "test_7_3",
+            "test_8_1",
+            "test_8_2",
+            "test_8_3",};
+        String[] trainingList = new String[]{
+            "training_1_1",
+            "training_1_2",
+            "training_1_3",
+            "training_2_1",
+            "training_2_2",
+            "training_2_3",
+            "training_3_1",
+            "training_3_2",
+            "training_3_3",
+            "training_4_1",
+            "training_4_2",
+            "training_4_3",};
+
+        final WizardGridStimulusScreen fillerStimulusScreen = new WizardGridStimulusScreen("fillerScreen", false, fillerList,
                 new String[]{
                     //                    "list_b",
-                    "VideoScreen"}, 1000, true, null, 0, 0, null);
-        wizardData.addScreen(gridStimulusScreen);
+                    "fillerScreen"}, 1000, true, null, 0, 0, null);
+        wizardData.addScreen(fillerStimulusScreen);
 
         WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, true, true, completionScreenText2,
                 "Opnieuw beginnen",
@@ -99,9 +165,15 @@ public class GuineaPigProject {
         wizardEditUserScreen.setBackWizardScreen(wizardTextScreen);
         agreementScreen.setNextWizardScreen(wizardTextScreen);
         wizardTextScreen.setBackWizardScreen(agreementScreen);
-        wizardEditUserScreen.setNextWizardScreen(gridStimulusScreen);
-        gridStimulusScreen.setBackWizardScreen(wizardEditUserScreen);
-        gridStimulusScreen.setNextWizardScreen(completionScreen);
+        wizardEditUserScreen.setNextWizardScreen(introductionAudio1);
+        introductionAudio1.setNextWizardScreen(introductionAudio2);
+        introductionAudio2.setNextWizardScreen(introductionAudio3);
+        introductionAudio3.setNextWizardScreen(fillerStimulusScreen);
+        introductionAudio1.setBackWizardScreen(wizardEditUserScreen);
+        introductionAudio2.setBackWizardScreen(introductionAudio1);
+        introductionAudio3.setBackWizardScreen(introductionAudio2);
+        fillerStimulusScreen.setBackWizardScreen(introductionAudio3);
+        fillerStimulusScreen.setNextWizardScreen(completionScreen);
 
         final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("Over", false);
         wizardAboutScreen.setBackWizardScreen(wizardEditUserScreen);
