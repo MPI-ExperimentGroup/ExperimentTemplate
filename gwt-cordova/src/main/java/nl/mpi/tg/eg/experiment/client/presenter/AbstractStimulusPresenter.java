@@ -1284,7 +1284,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         buttonList.clear();
     }
 
-    protected void nextStimulus(final String eventTag, final boolean repeatIncorrect, final int increment) {
+    protected void nextStimulus(final boolean repeatIncorrect) {
+        nextStimulus(repeatIncorrect, 1);
+    }
+
+    private void nextStimulus(final boolean repeatIncorrect, final int increment) {
         if (groupParticipantService != null) {
             ((ComplexView) simpleView).addText("showStimulus should not be used with the groupParticipantService");
             throw new UnsupportedOperationException("showStimulus should not be used with the groupParticipantService");
@@ -1387,6 +1391,29 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addOptionButton(eventListner);
     }
 
+    protected void touchInputZone(final String eventTag, final String styleName, final int hotKey, final TimedStimulusListener timedStimulusListener) {
+        // @todo: replace this button with the touch input 
+        PresenterEventListner eventListner = new PresenterEventListner() {
+
+            @Override
+            public String getLabel() {
+                return styleName;
+            }
+
+            @Override
+            public int getHotKey() {
+                return hotKey;
+            }
+
+            @Override
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+                timedStimulusListener.postLoadTimerFired();
+            }
+        };
+        nextButtonEventListnerList.add(eventListner);
+        final Button prevButton = ((TimedStimulusView) simpleView).addOptionButton(eventListner);
+    }
+
     protected void prevStimulusButton(final String eventTag, final String buttonLabel, final boolean repeatIncorrect, final int hotKey) {
         PresenterEventListner eventListner = new PresenterEventListner() {
 
@@ -1403,7 +1430,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 nextButtonEventListnerList.clear(); // clear this now to prevent refires of the event
-                nextStimulus(eventTag, repeatIncorrect, -1);
+                nextStimulus(repeatIncorrect, -1);
             }
         };
         nextButtonEventListnerList.add(eventListner);
@@ -1428,7 +1455,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 nextButtonEventListnerList.clear(); // clear this now to prevent refires of the event
-                nextStimulus(eventTag, repeatIncorrect, 1);
+                nextStimulus(repeatIncorrect, 1);
             }
         };
         nextButtonEventListnerList.add(eventListner);
@@ -1444,8 +1471,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
-    protected void audioButton(final String eventTag, final String mp3Path, final String oggPath, final String imagePath, final TimedStimulusListener audioFinishedListner) {
-        ((TimedStimulusView) simpleView).addImageButton(new PresenterEventListner() {
+    protected void audioButton(final String eventTag, final String srcString, final String imagePath, final boolean autoPlay, final int hotKey, final TimedStimulusListener audioFinishedListner) {
+        final String mp3Path = srcString + ".mp3";
+        final String oggPath = srcString + ".ogg";
+        final PresenterEventListner presenterEventListner = new PresenterEventListner() {
             private boolean hasPlayed = false;
 
             @Override
@@ -1477,7 +1506,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     }
                 });
             }
-        }, UriUtils.fromString(serviceLocations.staticFilesUrl() + imagePath));
+        };
+        ((TimedStimulusView) simpleView).addImageButton(presenterEventListner, UriUtils.fromString(serviceLocations.staticFilesUrl() + imagePath));
+        if (autoPlay) {
+            presenterEventListner.eventFired(null, null);
+        }
     }
 
     @Override
