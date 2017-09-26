@@ -177,12 +177,12 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
                 previousPresenterFeature = lanwisImage;
             }
             final PresenterFeature autoNextFeature = new PresenterFeature(FeatureType.nextStimulus, null);
-            autoNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextImage");
+//            autoNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextImage");
             autoNextFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
             previousPresenterFeature.getPresenterFeatureList().add(autoNextFeature);
         } else {
             final PresenterFeature autoNextFeature = new PresenterFeature(FeatureType.nextStimulusButton, "Next");
-            autoNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextImage");
+//            autoNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextImage");
             autoNextFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
             autoNextFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
             previousPresenterFeature.getPresenterFeatureList().add(autoNextFeature);
