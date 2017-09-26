@@ -32,23 +32,29 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
 
     public WizardAudioTestScreen() {
         super(WizardScreenEnum.WizardAudioTestScreen, "AudioTest", "AudioTest", "AudioTest");
+        this.wizardScreenData.setScreenText(1, "");
+        this.wizardScreenData.setScreenText(2, "");
+        this.wizardScreenData.setScreenBoolean(0, false);
     }
 
     public WizardAudioTestScreen(String screenName, String pageText, String buttonLabel, String audioPath) {
         super(WizardScreenEnum.WizardAudioTestScreen, screenName, screenName, screenName);
         this.setScreenText(pageText);
+        this.wizardScreenData.setScreenText(1, "");
+        this.wizardScreenData.setScreenText(2, "");
+        this.wizardScreenData.setScreenBoolean(0, false);
         this.setNextButton(buttonLabel);
         this.wizardScreenData.setScreenMediaPath(audioPath);
     }
 
     @Override
     public String getScreenBooleanInfo(int index) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new String[]{"Auto Play"}[index];
     }
 
     @Override
     public String getScreenTextInfo(int index) {
-        return new String[]{"Audio Test Instructions"}[index];
+        return new String[]{"Audio Test Instructions", "Background Image", "HotKey"}[index];
     }
 
     @Override
@@ -66,6 +72,30 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
 
     public void setAudioPath(String audioPath) {
         this.wizardScreenData.setScreenMediaPath(audioPath);
+    }
+
+    private String getBackgroundImage(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(1);
+    }
+
+    public void setBackgroundImage(String backgroundImage) {
+        this.wizardScreenData.setScreenText(1, backgroundImage);
+    }
+
+    private String getHotKey(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(2);
+    }
+
+    public void setHotKey(String hotKey) {
+        this.wizardScreenData.setScreenText(2, hotKey);
+    }
+
+    private boolean getAutoPlay(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenBoolean(0);
+    }
+
+    public void setAutoPlay(boolean autoPlay) {
+        this.wizardScreenData.setScreenBoolean(0, autoPlay);
     }
 
 //    String[] fieldNames = new String[]{"audioTestScreenText", "audioWorksButtonText", "testAudioPath"};
@@ -88,12 +118,22 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
 //        populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.stimulus);
+        final String backgroundImage = getBackgroundImage(storedWizardScreenData);
+        if (backgroundImage != null && !backgroundImage.isEmpty()) {
+            final PresenterFeature backgoundFeature = new PresenterFeature(FeatureType.backgroundImage, null);
+            backgoundFeature.addFeatureAttributes(FeatureAttribute.msToNext, "1000");
+            backgoundFeature.addFeatureAttributes(FeatureAttribute.styleName, "");
+            backgoundFeature.addFeatureAttributes(FeatureAttribute.src, backgroundImage);
+            storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(backgoundFeature);
+        }
         storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
-        final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.audioButton, null);
-        presenterFeature.addFeatureAttributes(FeatureAttribute.eventTag, "AudioTest");
-        presenterFeature.addFeatureAttributes(FeatureAttribute.mp3, storedWizardScreenData.getScreenMediaPath() + ".mp3");
-        presenterFeature.addFeatureAttributes(FeatureAttribute.ogg, storedWizardScreenData.getScreenMediaPath() + ".ogg");
+        final PresenterFeature presenterFeature;
+        presenterFeature = new PresenterFeature(FeatureType.audioButton, null);
+        presenterFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenMediaPath());
+        presenterFeature.addFeatureAttributes(FeatureAttribute.src, storedWizardScreenData.getScreenMediaPath());
         presenterFeature.addFeatureAttributes(FeatureAttribute.poster, storedWizardScreenData.getScreenMediaPath() + ".jpg");
+        presenterFeature.addFeatureAttributes(FeatureAttribute.autoPlay, Boolean.toString(getAutoPlay(storedWizardScreenData)));
+        presenterFeature.addFeatureAttributes(FeatureAttribute.hotKey, getHotKey(storedWizardScreenData));
         storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(presenterFeature);
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
         final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.actionButton, storedWizardScreenData.getNextButton()[0]);
