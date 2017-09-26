@@ -71,7 +71,8 @@ public enum FeatureAttribute {
     @Deprecated
     webm,
     wavFormat,
-    poster,
+    poster, 
+    autoPlay,
     columnCount,
     kintypestring,
     diagramName,
