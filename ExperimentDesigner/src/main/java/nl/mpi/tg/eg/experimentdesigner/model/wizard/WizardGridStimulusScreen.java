@@ -131,7 +131,9 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         final List<Stimulus> stimuliList = this.wizardScreenData.getStimuli();
         final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{this.wizardScreenData.getScreenTitle()}));
         for (String stimulusEntry : stimuliSet) {
-            stimuliList.add(new Stimulus(stimulusEntry, stimulusEntry, null, null, null, stimulusEntry.substring(0, stimulusEntry.length() - 1), 0, tagSet, null, null));
+            // @todo: perhaps this is clearer if there is an explicit adjacency regex used on the identifyer in the GUI app or an explicit adjacency / sort field in the stimuli
+            final String adjacencyString = stimulusEntry.replaceAll("test_[15]", "adjacency_a").replaceAll("test_[26]", "adjacency_b").replaceAll("test_[37]", "adjacency_c").replaceAll("test_[48]", "adjacency_d");
+            stimuliList.add(new Stimulus(stimulusEntry, stimulusEntry, null, adjacencyString, null, stimulusEntry /*.substring(0, stimulusEntry.length() - 1)*/, 0, tagSet, null, null));
         }
         // add screen text
         // add grid with full screen option
@@ -218,13 +220,22 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         clearScreenFeature.addFeatureAttributes(FeatureAttribute.styleName, "fullScreenWidth");
         hasMoreStimulusFeature.getPresenterFeatureList().add(clearScreenFeature);
 
-        final PresenterFeature stimulusCodeAudio = new PresenterFeature(FeatureType.stimulusAudio, null);
-        stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(true));
-//        stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>");
-        stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.msToNext, "0");
-        hasMoreStimulusFeature.getPresenterFeatureList().add(stimulusCodeAudio);
+        final PresenterFeature stimulusCodeAudio1 = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
+        stimulusCodeAudio1.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(true));
+        stimulusCodeAudio1.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>_1");
+        stimulusCodeAudio1.addFeatureAttributes(FeatureAttribute.msToNext, "1000");
+        hasMoreStimulusFeature.getPresenterFeatureList().add(stimulusCodeAudio1);
+        final PresenterFeature stimulusCodeAudio2 = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
+        stimulusCodeAudio2.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(true));
+        stimulusCodeAudio2.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>_2");
+        stimulusCodeAudio2.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+        stimulusCodeAudio1.getPresenterFeatureList().add(stimulusCodeAudio2);
+        final PresenterFeature stimulusCodeAudio3 = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
+        stimulusCodeAudio3.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(true));
+        stimulusCodeAudio3.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>_3");
+        stimulusCodeAudio3.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         final PresenterFeature stimulusCodeVideoL = new PresenterFeature(FeatureType.stimulusCodeVideo, null);
-        stimulusCodeVideoL.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>L");
+        stimulusCodeVideoL.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>_L");
         stimulusCodeVideoL.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         stimulusCodeVideoL.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
         stimulusCodeVideoL.addFeatureAttributes(FeatureAttribute.maxHeight, "100");
@@ -233,7 +244,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
 //        stimulusCodeVideoL.addFeatureAttributes(FeatureAttribute.styleName, "leftHalfScreen");
         stimulusCodeVideoL.addFeatureAttributes(FeatureAttribute.styleName, "");
         final PresenterFeature stimulusCodeVideoR = new PresenterFeature(FeatureType.stimulusCodeVideo, null);
-        stimulusCodeVideoR.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>R");
+        stimulusCodeVideoR.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>_R");
         stimulusCodeVideoR.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         stimulusCodeVideoR.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
         stimulusCodeVideoR.addFeatureAttributes(FeatureAttribute.maxHeight, "100");
@@ -241,9 +252,10 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         stimulusCodeVideoR.addFeatureAttributes(FeatureAttribute.showControls, "false");
 //        stimulusCodeVideoR.addFeatureAttributes(FeatureAttribute.styleName, "rightHalfScreen");
         stimulusCodeVideoR.addFeatureAttributes(FeatureAttribute.styleName, "");
+        stimulusCodeVideoR.getPresenterFeatureList().add(stimulusCodeAudio3);
 //        stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         final PresenterFeature tableFeature = new PresenterFeature(FeatureType.table, null);
-        stimulusCodeAudio.getPresenterFeatureList().add(tableFeature);
+        stimulusCodeAudio1.getPresenterFeatureList().add(tableFeature);
         final PresenterFeature rowFeature = new PresenterFeature(FeatureType.row, null);
         tableFeature.getPresenterFeatureList().add(rowFeature);
         final PresenterFeature leftColumnFeature = new PresenterFeature(FeatureType.column, null);
@@ -255,21 +267,22 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         final PresenterFeature touchInputZoneL = new PresenterFeature(FeatureType.touchInputZone, null);
         touchInputZoneL.addFeatureAttributes(FeatureAttribute.eventTag, "leftHalfScreen");
         touchInputZoneL.addFeatureAttributes(FeatureAttribute.styleName, "leftHalfScreen");
-        touchInputZoneL.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
-        stimulusCodeVideoR.getPresenterFeatureList().add(touchInputZoneL);
+        touchInputZoneL.addFeatureAttributes(FeatureAttribute.hotKey, "Z");
+        hasMoreStimulusFeature.getPresenterFeatureList().add(touchInputZoneL);
         final PresenterFeature touchInputZoneR = new PresenterFeature(FeatureType.touchInputZone, null);
         touchInputZoneR.addFeatureAttributes(FeatureAttribute.eventTag, "rightHalfScreen");
         touchInputZoneR.addFeatureAttributes(FeatureAttribute.styleName, "rightHalfScreen");
-        touchInputZoneR.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
-        stimulusCodeVideoR.getPresenterFeatureList().add(touchInputZoneR);
-        final PresenterFeature nextStimulusL = new PresenterFeature(FeatureType.nextStimulus, null);
+        touchInputZoneR.addFeatureAttributes(FeatureAttribute.hotKey, "M");
+        hasMoreStimulusFeature.getPresenterFeatureList().add(touchInputZoneR);
+//        final PresenterFeature nextStimulusL = new PresenterFeature(FeatureType.nextStimulus, null);
 //        nextStimulusL.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusL");
-        nextStimulusL.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
-        touchInputZoneL.getPresenterFeatureList().add(nextStimulusL);
-        final PresenterFeature nextStimulusR = new PresenterFeature(FeatureType.nextStimulus, null);
-//        nextStimulusR.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusR");
-        nextStimulusR.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
-        touchInputZoneR.getPresenterFeatureList().add(nextStimulusR);
+//        nextStimulusL.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
+//        touchInputZoneL.getPresenterFeatureList().add(nextStimulusL);
+        final PresenterFeature nextStimulus = new PresenterFeature(FeatureType.nextStimulusButton, "Next");
+        nextStimulus.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusR");
+        nextStimulus.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
+        nextStimulus.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
+        stimulusCodeAudio3.getPresenterFeatureList().add(nextStimulus);
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
         final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
         endOfStimulusFeature.getPresenterFeatureList().add(autoNextPresenter);
