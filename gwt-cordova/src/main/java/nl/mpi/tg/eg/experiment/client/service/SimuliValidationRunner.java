@@ -68,11 +68,14 @@ public abstract class SimuliValidationRunner {
                 stimulusProvider.getSubset(allocatedTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, storedStimulusList, 0);
                 final String loadedStimulusString = stimulusProvider.getLoadedStimulusString();
 //            appendOutput(loadedStimulusString);
-                calculatedStimuliSet.add(loadedStimulusString);
+                if (calculatedStimuliSet.add(loadedStimulusString)) {
+                    appendUniqueStimuliList(loadedStimulusString);
+                }
                 sampleCount(sampleCount + 1);
                 uniqueCount(calculatedStimuliSet.size());
                 String currentStimulus = null;
-                String nextStimulus = stimulusProvider.getCurrentStimulus().getImage() + "_" + stimulusProvider.getCurrentStimulus().getCode();
+//                String nextStimulus = stimulusProvider.getCurrentStimulus().getImage() + "_" + stimulusProvider.getCurrentStimulus().getCode();
+                String nextStimulus = stimulusProvider.getCurrentStimulus().getUniqueId();
                 stimuliSet.add(nextStimulus);
                 String currentPair = currentStimulus + ":" + nextStimulus;
                 transionTable.put(currentPair, (transionTable.containsKey(currentPair)) ? transionTable.get(currentPair) + 1 : 1);
@@ -80,7 +83,8 @@ public abstract class SimuliValidationRunner {
                 while (stimulusProvider.hasNextStimulus(1)) {
                     currentStimulus = nextStimulus;
                     stimulusProvider.nextStimulus(1);
-                    nextStimulus = stimulusProvider.getCurrentStimulus().getImage() + "_" + stimulusProvider.getCurrentStimulus().getCode();
+//                    nextStimulus = stimulusProvider.getCurrentStimulus().getImage() + "_" + stimulusProvider.getCurrentStimulus().getCode();
+                    nextStimulus = stimulusProvider.getCurrentStimulus().getUniqueId();
                     stimuliSet.add(nextStimulus);
                     currentPair = currentStimulus + ":" + nextStimulus;
                     transionTable.put(currentPair, (transionTable.containsKey(currentPair)) ? transionTable.get(currentPair) + 1 : 1);
@@ -104,19 +108,19 @@ public abstract class SimuliValidationRunner {
                     transitionTableValue(1, entryIndex, transionCount.toString());
                     entryIndex++;
                 }
+                outputTableValue(0, 0, "transionTableSize: " + transionTable.size());
+                outputTableValue(0, 1, "minTransition: " + minTransition);
+                outputTableValue(0, 2, "maxTransition: " + maxTransition);
+                outputTableValue(0, 3, "totalTransition: " + totalTransition);
+                outputTableValue(0, 4, "expectedTransition: " + (totalTransition / transionTable.size()));
+                outputTableValue(0, 5, "uniqueStimuliCount: " + stimuliSet.size());
+//                outputTableValue(0, 6, "cyclesRun: " + (cyclesToRun) + " uniqueCount: " + calculatedStimuliSet.size());
                 if (sampleCount < cyclesToRun) {
                     schedule(1);
                 } else {
                     for (String uniqueStimulus : stimuliSet) {
                         appendOutput(uniqueStimulus);
                     }
-                    appendOutput("transionTableSize: " + transionTable.size());
-                    appendOutput("minTransition: " + minTransition);
-                    appendOutput("maxTransition: " + maxTransition);
-                    appendOutput("totalTransition: " + totalTransition);
-                    appendOutput("expectedTransition: " + (totalTransition / transionTable.size()));
-                    appendOutput("uniqueStimuliCount: " + stimuliSet.size());
-                    appendOutput("cyclesRun: " + (cyclesToRun) + " uniqueCount: " + calculatedStimuliSet.size());
                 }
             }
         };
@@ -129,5 +133,9 @@ public abstract class SimuliValidationRunner {
 
     public abstract void uniqueCount(int outputString);
 
+    public abstract void appendUniqueStimuliList(String outputString);
+
     public abstract void transitionTableValue(int column, int row, String value);
+
+    public abstract void outputTableValue(int column, int row, String value);
 }
