@@ -261,17 +261,17 @@ public class TimedStimulusView extends ComplexView {
 
     public void addTimedAudio(SafeUri oggPath, SafeUri mp3Path, final int postLoadMs, boolean showPlaybackIndicator, final TimedStimulusListener shownStimulusListener, final TimedStimulusListener timedStimulusListener) {
         audioPlayer.stopAll();
+        final Label playbackIndicator = new Label();
+        final Timer playbackIndicatorTimer = new Timer() {
+            public void run() {
+                playbackIndicator.setText("CurrentTime: " + audioPlayer.getCurrentTime());
+//                    playbackIndicator.setWidth();
+                this.schedule(100);
+            }
+        };
         if (showPlaybackIndicator) {
-            final Label playbackIndicator = new Label();
             playbackIndicator.setStylePrimaryName("playbackIndicator");
             outerPanel.add(playbackIndicator);
-            final Timer playbackIndicatorTimer = new Timer() {
-                public void run() {
-                    playbackIndicator.setText("CurrentTime: " + audioPlayer.getCurrentTime());
-//                    playbackIndicator.setWidth();
-                    this.schedule(100);
-                }
-            };
             playbackIndicatorTimer.schedule(500);
         }
         audioPlayer.setOnEndedListener(new AudioEventListner() {
@@ -282,6 +282,8 @@ public class TimedStimulusView extends ComplexView {
 
             @Override
             public void audioEnded() {
+                playbackIndicatorTimer.cancel();
+                playbackIndicator.removeFromParent();
                 audioPlayer.setOnEndedListener(null); // prevent multiple triggering
                 Timer timer = new Timer() {
                     public void run() {
