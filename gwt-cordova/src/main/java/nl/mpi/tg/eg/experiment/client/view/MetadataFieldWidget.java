@@ -17,8 +17,6 @@
  */
 package nl.mpi.tg.eg.experiment.client.view;
 
-import com.google.gwt.event.dom.client.FocusEvent;
-import com.google.gwt.event.dom.client.FocusHandler;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.FocusWidget;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -28,6 +26,7 @@ import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.TextBoxBase;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.Widget;
 import nl.mpi.tg.eg.experiment.client.exception.MetadataFieldException;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.StimulusFreeText;
@@ -41,6 +40,7 @@ public class MetadataFieldWidget implements StimulusFreeText {
     final private MetadataField metadataField;
     final private String initialValue;
     final private FocusWidget focusWidget;
+    final private Widget widget;
     final private Label label;
     final private Label errorLabel;
     final private VerticalPanel labelPanel;
@@ -59,11 +59,12 @@ public class MetadataFieldWidget implements StimulusFreeText {
             if (initialValue != null) {
                 dateOfBirthField.setDate(initialValue);
             }
-
+            widget = dateOfBirthField;
         } else if (metadataField.isCheckBox()) {
             label = new Label();
             focusWidget = new CheckBox(metadataField.getFieldLabel());
             ((CheckBox) focusWidget).setValue((initialValue == null) ? false : Boolean.parseBoolean(initialValue));
+            widget = focusWidget;
         } else if (metadataField.isListBox()) {
             label = new Label(metadataField.getFieldLabel());
             focusWidget = new ListBox();
@@ -80,6 +81,7 @@ public class MetadataFieldWidget implements StimulusFreeText {
                 }
             }
             ((ListBox) focusWidget).setSelectedIndex(selectedIndex);
+            widget = focusWidget;
         } else {
             label = new Label(metadataField.getFieldLabel());
             if (metadataField.isMultiLine()) {
@@ -88,16 +90,9 @@ public class MetadataFieldWidget implements StimulusFreeText {
                 focusWidget = new TextBox();
             }
             ((TextBoxBase) focusWidget).setText((initialValue == null) ? "" : initialValue);
-            ((TextBoxBase) focusWidget).addFocusHandler(new FocusHandler() {
-
-                @Override
-                public void onFocus(FocusEvent event) {
-//                        addKeyboardPadding();
-//                scrollToPosition(label.getAbsoluteTop());
-                }
-            });
+            widget = focusWidget;
         }
-        focusWidget.setStylePrimaryName("metadataOK");
+        widget.setStylePrimaryName("metadataOK");
         errorLabel = new Label();
         labelPanel = new VerticalPanel();
         labelPanel.add(label);
@@ -106,6 +101,10 @@ public class MetadataFieldWidget implements StimulusFreeText {
 
     public FocusWidget getFocusWidget() {
         return focusWidget;
+    }
+
+    public Widget getWidget() {
+        return widget;
     }
 
     public IsWidget getLabel() {
