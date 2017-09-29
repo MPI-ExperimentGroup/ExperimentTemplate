@@ -64,15 +64,23 @@
                 <include>/ExperimentTemplate/**</include>
                 <include>/css/**</include>
                 <include>/scss/**</include>
+                <include>/static/**</include>
                 <include>/${experiment.configuration.name}.xml</include>
             </includes>  
             <outputDirectory>www</outputDirectory>
             <filtered>false</filtered>
         </fileSet>
-        <fileSet>
+<!--        <fileSet>
             <directory>${basedir}/src/main/static/${experiment.configuration.name}</directory>
+            <excludes>
+                <exclude>**/*.xlsx</exclude>
+                <exclude>**/*.docx</exclude>
+                <exclude>**/*.mov</exclude>
+                <exclude>**/*.wav</exclude>
+                <exclude>**/*.avi</exclude>
+            </excludes> 
             <outputDirectory>www/static</outputDirectory>
             <filtered>false</filtered>
-        </fileSet>    
+        </fileSet>    -->
     </fileSets>
 </assembly>
