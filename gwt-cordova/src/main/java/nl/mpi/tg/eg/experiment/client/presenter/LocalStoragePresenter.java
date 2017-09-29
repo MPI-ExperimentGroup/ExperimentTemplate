@@ -112,7 +112,7 @@ public abstract class LocalStoragePresenter extends AbstractPresenter {
             ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
                 @Override
                 public String getLabel() {
-                    return tag.name();
+                    return "Stimuli Check: " + tag.name();
                 }
 
                 @Override
@@ -120,6 +120,8 @@ public abstract class LocalStoragePresenter extends AbstractPresenter {
                     final HTML simuliValidationHtmlText = ((ComplexView) simpleView).addHtmlText("simuliValidation: " + tag.name());
                     final HTML sampleCount = ((ComplexView) simpleView).addHtmlText("sampleCount");
                     final HTML uniqueCount = ((ComplexView) simpleView).addHtmlText("uniqueCount");
+                    final FlexTable outputTable = new FlexTable();
+                    ((ComplexView) simpleView).addWidget(outputTable);
                     final FlexTable transitionTable = new FlexTable();
                     ((ComplexView) simpleView).addWidget(transitionTable);
                     new SimuliValidationRunner() {
@@ -141,6 +143,16 @@ public abstract class LocalStoragePresenter extends AbstractPresenter {
                         @Override
                         public void transitionTableValue(int column, int row, String value) {
                             transitionTable.setText(row, column, value);
+                        }
+
+                        @Override
+                        public void appendUniqueStimuliList(String outputString) {
+                            ((ComplexView) simpleView).addText(outputString);
+                        }
+
+                        @Override
+                        public void outputTableValue(int column, int row, String value) {
+                            outputTable.setText(row, column, value);
                         }
 
                     }.calculate(tag);
