@@ -17,12 +17,16 @@
  */
 package nl.mpi.tg.eg.experiment.client.view;
 
+import com.google.gwt.event.dom.client.FocusEvent;
+import com.google.gwt.event.dom.client.FocusHandler;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.FocusWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.Widget;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -80,7 +84,7 @@ public class MetadataView extends ComplexView {
             fieldConnections.put(metadataField, listBox);
         }
         flexTable.setWidget(rowCount, 0, stimulusMetadataField.getLabel());
-        flexTable.setWidget(rowCount + 1, 0, stimulusMetadataField.getFocusWidget());
+        flexTable.setWidget(rowCount + 1, 0, stimulusMetadataField.getWidget());
 
 //        textBox.addBlurHandler(new BlurHandler() {
 //
@@ -89,6 +93,21 @@ public class MetadataView extends ComplexView {
 //                removeKeyboardPadding();
 //            }
 //        });
+        stimulusMetadataField.getFocusWidget().addFocusHandler(new FocusHandler() {
+
+            @Override
+            public void onFocus(FocusEvent event) {
+                addKeyboardPadding();
+                Timer timer = new Timer() {
+                    @Override
+                    public void run() {
+                        scrollToPosition(stimulusMetadataField.getFocusWidget().getAbsoluteTop());
+//                        stimulusMetadataField.getFocusWidget().getElement().scrollIntoView();
+                    }
+                };
+                timer.schedule(100);
+            }
+        });
         fieldBoxes.put(metadataField, stimulusMetadataField);
         orderedFields.add(metadataField);
         if (firstTextBox == null) {
@@ -120,7 +139,7 @@ public class MetadataView extends ComplexView {
     }
 
     public void showFieldError(MetadataField metadataField) {
-        final FocusWidget focusWidget = fieldBoxes.get(metadataField).getFocusWidget();
+        final Widget focusWidget = fieldBoxes.get(metadataField).getWidget();
         focusWidget.setStylePrimaryName("metadataError");
         errorText.setText(metadataField.getControlledMessage());
         for (int rowCounter = 0; rowCounter < flexTable.getRowCount(); rowCounter++) {
@@ -130,7 +149,7 @@ public class MetadataView extends ComplexView {
                 break;
             }
         }
-        focusWidget.setFocus(true);
+        fieldBoxes.get(metadataField).getFocusWidget().setFocus(true);
     }
 
     public void setButtonError(boolean isError, ButtonBase button, String errorMessage) {
@@ -150,7 +169,7 @@ public class MetadataView extends ComplexView {
 
     public void clearErrors() {
         for (MetadataFieldWidget stimulusMetadataFields : fieldBoxes.values()) {
-            FocusWidget focusWidget = stimulusMetadataFields.getFocusWidget();
+            Widget focusWidget = stimulusMetadataFields.getWidget();
             focusWidget.setStylePrimaryName("metadataOK");
         }
         if (flexTable != null) {
