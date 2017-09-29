@@ -235,7 +235,7 @@ $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 25
 
 .gwt-Button.optionButton {
     padding: 0px 10px 0px 10px;
-    margin: 10px 10px 10px 0;
+    /*margin: 10px 10px 10px 0; this margin was causing the page to widen past the screen width */
     border-radius: 15px;
     /*background: rgb(193,227,241);*/
     outline: none;
@@ -327,12 +327,11 @@ $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 25
     margin-right: auto;   
 }
 
+.normalWidth {
+}
+
 .fullScreenWidth {
-    width: 100%;
-    margin-top: 50px;    
-    margin-bottom: -50px;    
-    margin-left: auto;
-    margin-right: auto;   
+    width: 100%;  
 }
 
 .stimulusGrid {
