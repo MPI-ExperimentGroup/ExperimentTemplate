@@ -21,13 +21,14 @@ import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAnimatedStimuliScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAudioTestScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardExistingUserCheckScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardGridStimulusScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMenuScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardSelectUserScreen;
 
 /**
  * @since Mar 23, 2017 2:50:16 PM (creation date)
@@ -36,14 +37,14 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
 public class GuineaPigProject {
 
     private final WizardController wizardController = new WizardController();
-    final String agreementScreenText = "Toestemmingsverklaring voor deelname aan het onderzoek:<br/>"
-            + "<br/>"
-            + "Ik stem geheel vrijwillig in met deelname aan dit onderzoek.<br/>"
-            + "<br/>"
-            + "Als u ermee instemt om door te gaan met dit experiment, klik dan op 'Akkoord' om verder te gaan.<br/>"
-            + "<br/>"
-            + "Als u besluit niet deel te nemen aan het experiment, kunt u de pagina sluiten of naar een andere website gaan.";
-    final String informationScreenText = "Alvast ontzettend bedankt voor uw deelname aan dit onderzoek.<br/>";
+//    final String agreementScreenText = "Toestemmingsverklaring voor deelname aan het onderzoek:<br/>"
+//            + "<br/>"
+//            + "Ik stem geheel vrijwillig in met deelname aan dit onderzoek.<br/>"
+//            + "<br/>"
+//            + "Als u ermee instemt om door te gaan met dit experiment, klik dan op 'Akkoord' om verder te gaan.<br/>"
+//            + "<br/>"
+//            + "Als u besluit niet deel te nemen aan het experiment, kunt u de pagina sluiten of naar een andere website gaan.";
+//    final String informationScreenText = "Alvast ontzettend bedankt voor uw deelname aan dit onderzoek.<br/>";
     final String completionScreenText1 = "Dit is het einde van het experiment.<br/>"
             + "Hartelijk dank voor uw deelname! <br/>"
             + "<br/>";
@@ -53,30 +54,38 @@ public class GuineaPigProject {
     public WizardData getWizardData() {
         WizardData wizardData = new WizardData();
         wizardData.setAppName("ld-screensize");
-        wizardData.setShowMenuBar(true);
+        wizardData.setShowMenuBar(false);
         wizardData.setTextFontSize(17);
         wizardData.setObfuscateScreenNames(false);
-        WizardTextScreen wizardTextScreen = new WizardTextScreen("Informatie", informationScreenText,
-                "volgende [ spatiebalk ]"
-        );
-        wizardTextScreen.setMenuLabel("Terug");
-        WizardAgreementScreen agreementScreen = new WizardAgreementScreen("Toestemming", agreementScreenText, "Akkoord");
-        agreementScreen.setMenuLabel("Terug");
+
+        final WizardExistingUserCheckScreen existingUserCheckScreen = new WizardExistingUserCheckScreen("Start", "New interview", "Resume interview", "Begin a new interview with a new participant", "Resume an interview with an existing participant");
+
+        final WizardSelectUserScreen selectUserScreen = new WizardSelectUserScreen("Select Participant");
+        wizardData.addScreen(existingUserCheckScreen);
+        wizardData.addScreen(selectUserScreen);
+//        WizardTextScreen wizardTextScreen = new WizardTextScreen("Informatie", informationScreenText,
+//                "volgende [ spatiebalk ]"
+//        );
+//        wizardTextScreen.setMenuLabel("Terug");
+//        WizardAgreementScreen agreementScreen = new WizardAgreementScreen("Toestemming", agreementScreenText, "Akkoord");
+//        agreementScreen.setMenuLabel("Terug");
         final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
         wizardEditUserScreen.setScreenTitle("Gegevens");
         wizardEditUserScreen.setMenuLabel("Terug");
-        wizardEditUserScreen.setScreenTag("Gegevens");
+        wizardEditUserScreen.setScreenTag("Edit User");
         wizardEditUserScreen.setNextButton("Volgende");
-        wizardEditUserScreen.setSendData(true);
+        wizardEditUserScreen.setSendData(false);
         wizardEditUserScreen.setOn_Error_Text("Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.");
         wizardEditUserScreen.setCustomFields(new String[]{
-            "workerId:Proefpersoon ID:.'{'3,'}':Voer minimaal drie letters.",
-            "age:Leeftijd:[0-9]+:Voer een getal.",
+            "workerId:Proefpersoon ID:.'{'3,'}':Voer minimaal drie letters.", // @todo: update the regex to date format and in the future add a calandar popup
+            "datOfBirth:Gebortedatum:[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]:Voer een getal.",
             "gender:Geslacht:|man|vrouw|anders:."
         });
 
-        wizardData.addScreen(agreementScreen);
-        wizardData.addScreen(wizardTextScreen);
+        final WizardMenuScreen menuScreen = new WizardMenuScreen("Menu", "Menu", "Menu");
+//        wizardData.addScreen(agreementScreen);
+//        wizardData.addScreen(wizardTextScreen);
+        wizardData.addScreen(menuScreen);
         wizardData.addScreen(wizardEditUserScreen);
 
         String backgroundImage = "background.png";
@@ -89,28 +98,17 @@ public class GuineaPigProject {
         introductionAudio1.setBackgroundImage(backgroundImage);
         introductionAudio2.setBackgroundImage(backgroundImage);
         introductionAudio3.setBackgroundImage(backgroundImage);
-        introductionAudio1.setAutoPlay(true);
-        introductionAudio2.setAutoPlay(true);
-        introductionAudio3.setAutoPlay(true);
+//        introductionAudio1.setAutoPlay(true); //@todo: do not auto play, in future version the play button may be hidden
+//        introductionAudio2.setAutoPlay(true);
+//        introductionAudio3.setAutoPlay(true);
         introductionAudio1.setHotKey("SPACE");
         introductionAudio2.setHotKey("SPACE");
         introductionAudio3.setHotKey("SPACE");
         WizardAnimatedStimuliScreen overviewHighlightGarden = new WizardAnimatedStimuliScreen("Overview Highlight Garden", new String[]{"Overview picture of the house, highlight garden"}, false, 0, false, "overview-highlight-garden", "overview-highlight-garden.jpg", false);
         WizardAnimatedStimuliScreen trainingPhase = new WizardAnimatedStimuliScreen("Training phase", new String[]{"four training trials (practice the game in the garden)"}, false, 0, false, "game-in-the-garden", "game-in-the-garden.jpg", false);
         WizardAnimatedStimuliScreen overviewHighlight1stRoom = new WizardAnimatedStimuliScreen("Overview Highlight 1st Room", new String[]{"Overview picture of the house, highlight 1st room"}, false, 0, false, "overview-highlight-1st-room", "overview-highlight-1st-room.jpg", false);
-        String[] fillerList = new String[]{
-            "filler_1_1",
-            "filler_1_2",
-            "filler_1_3",
-            "filler_2_1",
-            "filler_2_2",
-            "filler_2_3",
-            "filler_3_1",
-            "filler_3_2",
-            "filler_3_3",
-            "filler_4_1",
-            "filler_4_2",
-            "filler_4_3",};
+
+//        String[] fillerList = new String[]{};
         //            "intro_1",
         //            "intro_2",
         //            "intro_3",
@@ -120,53 +118,38 @@ public class GuineaPigProject {
         //            "room_4",
         //            "room_5",
         String[] testList = new String[]{
-            "test_1_1",
-            "test_1_2",
-            "test_1_3",
-            "test_2_1",
-            "test_2_2",
-            "test_2_3",
-            "test_3_1",
-            "test_3_2",
-            "test_3_3",
-            "test_4_1",
-            "test_4_2",
-            "test_4_3",
-            "test_5_1",
-            "test_5_2",
-            "test_5_3",
-            "test_6_1",
-            "test_6_2",
-            "test_6_3",
-            "test_7_1",
-            "test_7_2",
-            "test_7_3",
-            "test_8_1",
-            "test_8_2",
-            "test_8_3",};
+            // @todo: all of test, filler and training need to be grouped by test_1 and order by test_1_1, test_1_2, test_1_3 *** change the stimuli to test_1 and code to add the _1 _2 _3 on the screen
+            // @todo: test_1 and test_5 for example must never be ajacent, perhaps this can be done with the exisiting adjacency code, by adding a test_x_1 and moving the _1 to code
+            //@todo: blank screen with audio 1
+            //@todo: videos and audio 2
+            //@todo: still of video and audio 3 with touch input can be collected during audio 1 2 and 3, touch input does not cause any action, only the remote can move to the next stimulus
+            "test_1",
+            "test_2",
+            "test_3",
+            "test_4",
+            "test_5",
+            "test_6",
+            "test_7",
+            "test_8",
+            "filler_1",
+            "filler_2",
+            "filler_3",
+            "filler_4",};
         String[] trainingList = new String[]{
-            "training_1_1",
-            "training_1_2",
-            "training_1_3",
-            "training_2_1",
-            "training_2_2",
-            "training_2_3",
-            "training_3_1",
-            "training_3_2",
-            "training_3_3",
-            "training_4_1",
-            "training_4_2",
-            "training_4_3",};
+            "training_1",
+            "training_2",
+            "training_3",
+            "training_4",};
 
-        final WizardGridStimulusScreen fillerStimulusScreen = new WizardGridStimulusScreen("fillerScreen", false, fillerList,
-                new String[]{
-                    //                    "list_b",
-                    "fillerScreen"}, 1000, true, null, 0, 0, null);
-        wizardData.addScreen(fillerStimulusScreen);
+//        final WizardGridStimulusScreen fillerStimulusScreen = new WizardGridStimulusScreen("fillerScreen", false, fillerList,
+//                new String[]{
+        //                    "list_b",
+//                    "fillerScreen"}, 1000, true, null, 0, 0, null);
+//        wizardData.addScreen(fillerStimulusScreen);
         final WizardGridStimulusScreen trainingStimulusScreen = new WizardGridStimulusScreen("trainingScreen", false, trainingList,
                 new String[]{
                     //                    "list_b",
-                    "trainingScreen"}, 1000, true, null, 0, 0, null);
+                    "trainingScreen"}, 1000, true, null, 0, 0, null); // @todo: this screen is in the garden
         wizardData.addScreen(trainingStimulusScreen);
         final WizardGridStimulusScreen testStimulusScreen = new WizardGridStimulusScreen("testScreen", false, testList,
                 new String[]{
@@ -181,33 +164,39 @@ public class GuineaPigProject {
                 "Probeer opnieuw");
         wizardData.addScreen(completionScreen);
         completionScreen.setScreenTag("completion");
-        wizardTextScreen.setNextWizardScreen(wizardEditUserScreen);
-        wizardEditUserScreen.setBackWizardScreen(wizardTextScreen);
-        agreementScreen.setNextWizardScreen(wizardTextScreen);
-        wizardTextScreen.setBackWizardScreen(agreementScreen);
+
+//        existingUserCheckScreen.setNextWizardScreen(selectUserScreen);
+        selectUserScreen.setBackWizardScreen(existingUserCheckScreen);
+        selectUserScreen.setNextWizardScreen(wizardEditUserScreen);
+
+//        wizardTextScreen.setNextWizardScreen(wizardEditUserScreen);
+//        agreementScreen.setNextWizardScreen(wizardTextScreen);
+//        wizardTextScreen.setBackWizardScreen(agreementScreen);
         wizardEditUserScreen.setNextWizardScreen(introductionAudio1);
         introductionAudio1.setNextWizardScreen(introductionAudio2);
         introductionAudio2.setNextWizardScreen(introductionAudio3);
-        introductionAudio3.setNextWizardScreen(fillerStimulusScreen);
-        fillerStimulusScreen.setNextWizardScreen(trainingStimulusScreen);
+        introductionAudio3.setNextWizardScreen(trainingStimulusScreen);
+//        fillerStimulusScreen.setNextWizardScreen(trainingStimulusScreen);
         trainingStimulusScreen.setNextWizardScreen(testStimulusScreen);
-        introductionAudio1.setBackWizardScreen(wizardEditUserScreen);
-        introductionAudio2.setBackWizardScreen(introductionAudio1);
-        introductionAudio3.setBackWizardScreen(introductionAudio2);
-        fillerStimulusScreen.setBackWizardScreen(introductionAudio3);
-        trainingStimulusScreen.setBackWizardScreen(fillerStimulusScreen);
-        testStimulusScreen.setBackWizardScreen(trainingStimulusScreen);
-        fillerStimulusScreen.setNextWizardScreen(completionScreen);
+        introductionAudio1.setBackWizardScreen(menuScreen);
+        introductionAudio2.setBackWizardScreen(menuScreen);
+        introductionAudio3.setBackWizardScreen(menuScreen);
+//        fillerStimulusScreen.setBackWizardScreen(introductionAudio3);
+        trainingStimulusScreen.setBackWizardScreen(menuScreen);
+        testStimulusScreen.setBackWizardScreen(menuScreen);
+        testStimulusScreen.setNextWizardScreen(completionScreen);
 
         final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("Over", false);
-        wizardAboutScreen.setBackWizardScreen(wizardEditUserScreen);
-        completionScreen.setBackWizardScreen(wizardAboutScreen);
+        wizardAboutScreen.setBackWizardScreen(menuScreen);
+        completionScreen.setBackWizardScreen(menuScreen);
         wizardData.addScreen(wizardAboutScreen);
+        wizardEditUserScreen.setBackWizardScreen(selectUserScreen);
 
         return wizardData;
     }
 
     public Experiment getExperiment() {
+        // @todo: prevent portrate mode
         return wizardController.getExperiment(getWizardData());
     }
 }
