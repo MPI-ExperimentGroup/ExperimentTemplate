@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
+import com.google.gwt.user.client.Timer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -30,14 +31,14 @@ import nl.mpi.tg.eg.frinex.common.model.StimulusSelector;
  * @since Sep 27, 2017 1:42:59 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class SimuliValidationRunner {
+public abstract class SimuliValidationRunner {
 
-    public static void main(String[] args) {
-        Set<String> calculatedStimuliSet = new HashSet<>();
-        Set<String> stimuliSet = new HashSet<>();
-        HashMap<String, Integer> transionTable = new HashMap<>();
-        String eventTag = "R0-4";
-        final StimulusSelector[] selectionTags = new StimulusSelector[]{new StimulusSelector("v1", GeneratedStimulus.Tag.tag_version1zero)};
+    public void calculate(GeneratedStimulus.Tag tag) {
+        final Set<String> calculatedStimuliSet = new HashSet<>();
+        final Set<String> stimuliSet = new HashSet<>();
+        final HashMap<String, Integer> transionTable = new HashMap<>();
+        final String eventTag = "R0-4";
+        final StimulusSelector[] selectionTags = new StimulusSelector[]{new StimulusSelector("v1", tag)};
         final StimulusSelector[] randomTags = new StimulusSelector[]{};
 
 //final MetadataField stimulusAllocationField= metadataFieldProvider.stimuliMetadataField;
@@ -45,7 +46,7 @@ public class SimuliValidationRunner {
         final Integer minStimuliPerTag = 1;
         final Integer maxStimuliPerTag = 100;
         final boolean randomise = true;
-        int repeatCount = 1;
+        final int repeatCount = 1;
         final int repeatRandomWindow = 6;
         final int adjacencyThreshold = 3;
         final String storedStimulusList = "";
@@ -55,51 +56,78 @@ public class SimuliValidationRunner {
             allocatedTags.add(selector.getTag());
         }
         final int cyclesToRun = 1000000;
-        for (int sampleCount = 0; sampleCount < cyclesToRun; sampleCount++) {
-            final StimulusProvider stimulusProvider = new StimulusProvider();
-            stimulusProvider.getSubset(allocatedTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, storedStimulusList, 0);
-            final String loadedStimulusString = stimulusProvider.getLoadedStimulusString();
-//            System.out.println(loadedStimulusString);
-            calculatedStimuliSet.add(loadedStimulusString);
-            System.out.println("sampleCount: " + (sampleCount + 1) + " uniqueCount: " + calculatedStimuliSet.size());
-            String currentStimulus = null;
-            String nextStimulus = stimulusProvider.getCurrentStimulus().getImage() + "_" + stimulusProvider.getCurrentStimulus().getCode();
-            stimuliSet.add(nextStimulus);
-            String currentPair = currentStimulus + ":" + nextStimulus;
-            transionTable.put(currentPair, (transionTable.containsKey(currentPair)) ? transionTable.get(currentPair) + 1 : 1);
-//            System.out.println(currentPair);
-            while (stimulusProvider.hasNextStimulus(1)) {
-                currentStimulus = nextStimulus;
-                stimulusProvider.nextStimulus(1);
-                nextStimulus = stimulusProvider.getCurrentStimulus().getImage() + "_" + stimulusProvider.getCurrentStimulus().getCode();
+        appendOutput("cyclesToRun: " + cyclesToRun);
+        final Timer timer = new Timer() {
+            int sampleCount = 0;
+
+            @Override
+            public void run() {
+
+//        for (int sampleCount = 0; sampleCount < cyclesToRun; sampleCount++) {
+                final StimulusProvider stimulusProvider = new StimulusProvider();
+                stimulusProvider.getSubset(allocatedTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, storedStimulusList, 0);
+                final String loadedStimulusString = stimulusProvider.getLoadedStimulusString();
+//            appendOutput(loadedStimulusString);
+                calculatedStimuliSet.add(loadedStimulusString);
+                sampleCount(sampleCount + 1);
+                uniqueCount(calculatedStimuliSet.size());
+                String currentStimulus = null;
+                String nextStimulus = stimulusProvider.getCurrentStimulus().getImage() + "_" + stimulusProvider.getCurrentStimulus().getCode();
                 stimuliSet.add(nextStimulus);
-                currentPair = currentStimulus + ":" + nextStimulus;
+                String currentPair = currentStimulus + ":" + nextStimulus;
                 transionTable.put(currentPair, (transionTable.containsKey(currentPair)) ? transionTable.get(currentPair) + 1 : 1);
-//                System.out.println(currentPair);
+//            appendOutput(currentPair);
+                while (stimulusProvider.hasNextStimulus(1)) {
+                    currentStimulus = nextStimulus;
+                    stimulusProvider.nextStimulus(1);
+                    nextStimulus = stimulusProvider.getCurrentStimulus().getImage() + "_" + stimulusProvider.getCurrentStimulus().getCode();
+                    stimuliSet.add(nextStimulus);
+                    currentPair = currentStimulus + ":" + nextStimulus;
+                    transionTable.put(currentPair, (transionTable.containsKey(currentPair)) ? transionTable.get(currentPair) + 1 : 1);
+//                appendOutput(currentPair);
+                }
+                currentPair = nextStimulus + ":" + null;
+                transionTable.put(currentPair, (transionTable.containsKey(currentPair)) ? transionTable.get(currentPair) + 1 : 1);
+//            appendOutput(currentPair);
+                sampleCount++;
+                int minTransition = cyclesToRun;
+                int maxTransition = 0;
+                int totalTransition = 0;
+                int entryIndex = 0;
+                for (String transionTablePair : transionTable.keySet()) {
+                    final Integer transionCount = transionTable.get(transionTablePair);
+                    totalTransition += transionCount;
+                    minTransition = (minTransition > transionCount) ? transionCount : minTransition;
+                    maxTransition = (maxTransition < transionCount) ? transionCount : maxTransition;
+//                    appendOutput(transionTablePair + " : " + transionCount);
+                    transitionTableValue(0, entryIndex, transionTablePair);
+                    transitionTableValue(1, entryIndex, transionCount.toString());
+                    entryIndex++;
+                }
+                if (sampleCount < cyclesToRun) {
+                    schedule(1);
+                } else {
+                    for (String uniqueStimulus : stimuliSet) {
+                        appendOutput(uniqueStimulus);
+                    }
+                    appendOutput("transionTableSize: " + transionTable.size());
+                    appendOutput("minTransition: " + minTransition);
+                    appendOutput("maxTransition: " + maxTransition);
+                    appendOutput("totalTransition: " + totalTransition);
+                    appendOutput("expectedTransition: " + (totalTransition / transionTable.size()));
+                    appendOutput("uniqueStimuliCount: " + stimuliSet.size());
+                    appendOutput("cyclesRun: " + (cyclesToRun) + " uniqueCount: " + calculatedStimuliSet.size());
+                }
             }
-            currentPair = nextStimulus + ":" + null;
-            transionTable.put(currentPair, (transionTable.containsKey(currentPair)) ? transionTable.get(currentPair) + 1 : 1);
-//            System.out.println(currentPair);
-        }
-        int minTransition = cyclesToRun;
-        int maxTransition = 0;
-        int totalTransition = 0;
-        for (String currentPair : transionTable.keySet()) {
-            final Integer transionCount = transionTable.get(currentPair);
-            totalTransition += transionCount;
-            minTransition = (minTransition > transionCount) ? transionCount : minTransition;
-            maxTransition = (maxTransition < transionCount) ? transionCount : maxTransition;
-            System.out.println(currentPair + " : " + transionCount);
-        }
-        for (String uniqueStimulus : stimuliSet) {
-            System.out.println(uniqueStimulus);
-        }
-        System.out.println("transionTableSize: " + transionTable.size());
-        System.out.println("minTransition: " + minTransition);
-        System.out.println("maxTransition: " + maxTransition);
-        System.out.println("totalTransition: " + totalTransition);
-        System.out.println("expectedTransition: " + (totalTransition / transionTable.size()));
-        System.out.println("uniqueStimuliCount: " + stimuliSet.size());
-        System.out.println("cyclesRun: " + (cyclesToRun) + " uniqueCount: " + calculatedStimuliSet.size());
+        };
+        timer.schedule(1);
     }
+
+    public abstract void appendOutput(String outputString);
+
+    public abstract void sampleCount(int outputString);
+
+    public abstract void uniqueCount(int outputString);
+
+    public abstract void transitionTableValue(int column, int row, String value);
 }
