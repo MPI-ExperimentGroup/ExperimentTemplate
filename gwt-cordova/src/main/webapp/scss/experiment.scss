@@ -363,8 +363,16 @@ canvas {
     font-size: 15pt;
     padding: 0px;
 }
-.menuTable, .gridTable, .gridCell {
+
+.gridTable {
+    padding: 5px 5px;
+}
+
+.menuTable,.gridCell {
     padding: 10px 10px;
+}
+
+.menuTable, .gridTable, .gridCell {
     border-color: $primaryColour2;
     border-radius: 15px;
     outline: none;
