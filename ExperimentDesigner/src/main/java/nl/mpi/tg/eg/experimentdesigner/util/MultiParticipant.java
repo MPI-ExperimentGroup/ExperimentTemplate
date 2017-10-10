@@ -282,7 +282,7 @@ public class MultiParticipant {
             roundScreen.setRandomiseStimuli(currentChannel[6].equals(RANDOMISE));
             roundScreen.setStimuliSet(stimuliArray);
             roundScreen.getWizardScreenData().setStimuliRandomTags(new String[]{currentChannel[3]});
-            roundScreen.setStimulusFreeText(true, "[wetuiopasfghknm ]{2,}", "Sorry, dit teken is niet toegestaan in de Fantasietaal.", " "/*, "The key '<keycode>' is not allowed."*/);
+            roundScreen.setStimulusFreeText(true, WETUIOPASFGHKNM_2, "Sorry, dit teken is niet toegestaan in de Fantasietaal.", " "/*, "The key '<keycode>' is not allowed."*/);
             roundScreen.setAllowedCharCodes("wetuiopasfghknm ");
             wizardData.addScreen(roundScreen);
             if (roundOfFourScreenOuter == null) {
@@ -339,7 +339,7 @@ public class MultiParticipant {
             roundScreen.setRandomiseStimuli(currentChannel[6].equals(RANDOMISE));
             roundScreen.setStimuliSet(stimuliArray);
             roundScreen.getWizardScreenData().setStimuliRandomTags(new String[]{currentChannel[3]});
-            roundScreen.setStimulusFreeText(true, "[wetuiopasfghknm ]{2,}", "Sorry, dit teken is niet toegestaan in de Fantasietaal.", " "/*, "The key '<keycode>' is not allowed."*/);
+            roundScreen.setStimulusFreeText(true, WETUIOPASFGHKNM_2, "Sorry, dit teken is niet toegestaan in de Fantasietaal.", " "/*, "The key '<keycode>' is not allowed."*/);
             roundScreen.setAllowedCharCodes("wetuiopasfghknm ");
             wizardData.addScreen(roundScreen);
             if (roundOfEightScreenOuter == null) {
@@ -366,6 +366,7 @@ public class MultiParticipant {
 
         return wizardData;
     }
+    private static final String WETUIOPASFGHKNM_2 = "[wetuiopasfghknm ]{2,}";
     private static final String SEQUENTIAL = "sequential";
     private static final String RANDOMISE = "randomise";
 
