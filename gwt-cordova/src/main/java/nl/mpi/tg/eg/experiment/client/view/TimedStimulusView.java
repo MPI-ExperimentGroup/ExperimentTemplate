@@ -197,10 +197,11 @@ public class TimedStimulusView extends ComplexView {
                     enterKeyListner.eventFired();
                     errorLabel.setVisible(false);
                 } else if (allowedCharCodes != null) {
-                    if (0 > allowedCharCodes.indexOf(charCode) || textBox.getText().length() > 28) {
+                    final int maxLength = 27;
+                    if (0 > allowedCharCodes.indexOf(charCode) || textBox.getText().length() > maxLength) {
                         event.getNativeEvent().preventDefault();
                         final char invertedCaseCode = (Character.isLowerCase(charCode)) ? Character.toUpperCase(charCode) : Character.toLowerCase(charCode);
-                        if (0 > allowedCharCodes.indexOf(invertedCaseCode) || textBox.getText().length() > 28) {
+                        if (0 > allowedCharCodes.indexOf(invertedCaseCode) || textBox.getText().length() > maxLength) {
 //                            final String messageString = "The key '<keycode>' is not allowed. " + validationChallenge;
                             errorLabel.setText(keyCodeChallenge.replace("<keycode>", "" + charCode) + validationChallenge);
                             errorLabel.setVisible(true);
