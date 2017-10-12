@@ -2,7 +2,7 @@
 <experiment appNameDisplay="ld-screensize" appNameInternal="ld_screensize" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="false" textFontSize="17">
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
-        <field controlledMessage="Voer een getal." controlledRegex="[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]" postName="datOfBirth" preventServerDuplicates="false" registrationField="Gebortedatum"/>
+        <field controlledMessage="Voer een getal." controlledRegex="[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]" postName="datOfBirth" preventServerDuplicates="false" registrationField="Geboortedatum"/>
         <field controlledMessage="." controlledRegex="|man|vrouw|anders" postName="gender" preventServerDuplicates="false" registrationField="Geslacht"/>
         <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_trainingScreen" preventServerDuplicates="false" registrationField="groupAllocation_trainingScreen"/>
         <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_testScreen" preventServerDuplicates="false" registrationField="groupAllocation_testScreen"/>
@@ -17,7 +17,7 @@
                 <targetButton featureText="Resume interview" target="SelectUser"/>
             </multipleUsers>
             <singleUser>
-                <autoNextPresenter/>
+                <autoNextPresenter target="Edit_User"/>
             </singleUser>
         </existingUserCheck>
     </presenter>
@@ -28,6 +28,7 @@
         <allMenuItems/>
     </presenter>
     <presenter back="SelectUser" displayOrder="4" menuLabel="Terug" next="introduction_1" type="metadata" self="Edit_User" title="Gegevens">
+        <htmlText featureText="When the bluetooth controller is connected the virtual keyboard will not show, to enter participant metadata please turn off the bluetooth controller so that the virtual keyboard can be shown. To start the bluetooth controller turn it on and press the button combination M+A."/>
         <metadataField fieldName="workerId"/>
         <metadataField fieldName="datOfBirth"/>
         <metadataField fieldName="gender"/>
@@ -39,34 +40,34 @@
         </saveMetadataButton>
     </presenter>
     <presenter back="Menu" displayOrder="5" menuLabel="introduction 1" next="introduction_2" type="stimulus" self="introduction_1" title="introduction 1">
-        <backgroundImage msToNext="1000" src="background.png" styleName=""/>
+        <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName=""/>
         <htmlText featureText="Intro text"/>
-        <audioButton eventTag="intro_1" src="intro_1" hotKey="SPACE" autoPlay="false" poster="intro_1.jpg">
-            <actionButton featureText="continue button">
+        <audioButton eventTag="intro_1" src="intro_1" hotKey="F6" autoPlay="false" poster="intro_1.jpg">
+            <actionButton featureText="continue button" hotKey="ENTER">
                 <autoNextPresenter/>
             </actionButton>
         </audioButton>
     </presenter>
     <presenter back="Menu" displayOrder="6" menuLabel="introduction 2" next="introduction_3" type="stimulus" self="introduction_2" title="introduction 2">
-        <backgroundImage msToNext="1000" src="background.png" styleName=""/>
+        <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName=""/>
         <htmlText featureText="Intro text"/>
-        <audioButton eventTag="intro_2" src="intro_2" hotKey="SPACE" autoPlay="false" poster="intro_2.jpg">
-            <actionButton featureText="continue button">
+        <audioButton eventTag="intro_2" src="intro_2" hotKey="F6" autoPlay="true" poster="intro_2.jpg">
+            <actionButton featureText="continue button" hotKey="ENTER">
                 <autoNextPresenter/>
             </actionButton>
         </audioButton>
     </presenter>
     <presenter back="Menu" displayOrder="7" menuLabel="introduction 3" next="trainingScreen" type="stimulus" self="introduction_3" title="introduction 3">
-        <backgroundImage msToNext="1000" src="background.png" styleName=""/>
+        <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName=""/>
         <htmlText featureText="Intro text"/>
-        <audioButton eventTag="intro_3" src="intro_3" hotKey="SPACE" autoPlay="false" poster="intro_3.jpg">
-            <actionButton featureText="continue button">
+        <audioButton eventTag="intro_3" src="intro_3" hotKey="F6" autoPlay="true" poster="intro_3.jpg">
+            <actionButton featureText="continue button" hotKey="ENTER">
                 <autoNextPresenter/>
             </actionButton>
         </audioButton>
     </presenter>
     <presenter back="Menu" displayOrder="8" menuLabel="trainingScreen" next="testScreen" type="stimulus" self="trainingScreen" title="trainingScreen">
-        <backgroundImage msToNext="7000" src="background.png" styleName="zoomToBlock1">
+        <backgroundImage msToNext="7000" src="huisje_02.jpg" styleName="zoomToBlock1">
             <loadStimulus eventTag="trainingScreen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                 <hasMoreStimulus>
                     <backgroundImage msToNext="0" src="" styleName=""/>
@@ -81,7 +82,10 @@
                                 <column>
                                     <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="" showControls="false" maxWidth="100">
                                         <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="true">
-                                            <nextStimulusButton featureText="Next" eventTag="nextStimulusR" hotKey="SPACE" repeatIncorrect="false"/>
+                                            <actionButton featureText="Repeat" eventTag="Repeat" hotKey="F6">
+                                                <showStimulus/>
+                                            </actionButton>
+                                            <nextStimulusButton featureText="Next" eventTag="nextStimulusR" hotKey="ENTER" repeatIncorrect="false"/>
                                         </stimulusCodeAudio>
                                     </stimulusCodeVideo>
                                 </column>
@@ -104,7 +108,7 @@
         </backgroundImage>
     </presenter>
     <presenter back="Menu" displayOrder="9" menuLabel="testScreen" next="completion" type="stimulus" self="testScreen" title="testScreen">
-        <backgroundImage msToNext="7000" src="background.png" styleName="zoomToBlock1">
+        <backgroundImage msToNext="7000" src="huisje_02.jpg" styleName="zoomToBlock2">
             <loadStimulus eventTag="testScreen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                 <hasMoreStimulus>
                     <backgroundImage msToNext="0" src="" styleName=""/>
@@ -119,7 +123,10 @@
                                 <column>
                                     <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="" showControls="false" maxWidth="100">
                                         <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="true">
-                                            <nextStimulusButton featureText="Next" eventTag="nextStimulusR" hotKey="SPACE" repeatIncorrect="false"/>
+                                            <actionButton featureText="Repeat" eventTag="Repeat" hotKey="F6">
+                                                <showStimulus/>
+                                            </actionButton>
+                                            <nextStimulusButton featureText="Next" eventTag="nextStimulusR" hotKey="ENTER" repeatIncorrect="false"/>
                                         </stimulusCodeAudio>
                                     </stimulusCodeVideo>
                                 </column>
