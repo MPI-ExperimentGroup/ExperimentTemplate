@@ -20,11 +20,15 @@ package nl.mpi.tg.eg.experiment.client.presenter;
 import com.google.gwt.storage.client.Storage;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
+import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
+import nl.mpi.tg.eg.experiment.client.service.SimuliValidationRunner;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 
 /**
@@ -101,6 +105,65 @@ public abstract class LocalStoragePresenter extends AbstractPresenter {
                 Window.Location.replace(Window.Location.getPath());
             }
         });
+    }
+
+    protected void stimuliValidation() {
+        for (final GeneratedStimulus.Tag tag : GeneratedStimulus.Tag.values()) {
+            ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
+                @Override
+                public String getLabel() {
+                    return "Stimuli Check: " + tag.name();
+                }
+
+                @Override
+                public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+                    final HTML simuliValidationHtmlText = ((ComplexView) simpleView).addHtmlText("simuliValidation: " + tag.name());
+                    final HTML sampleCount = ((ComplexView) simpleView).addHtmlText("sampleCount");
+                    final HTML uniqueCount = ((ComplexView) simpleView).addHtmlText("uniqueCount");
+                    final FlexTable outputTable = new FlexTable();
+                    ((ComplexView) simpleView).addWidget(outputTable);
+                    final FlexTable transitionTable = new FlexTable();
+                    ((ComplexView) simpleView).addWidget(transitionTable);
+                    new SimuliValidationRunner() {
+                        @Override
+                        public void appendOutput(String outputString) {
+                            simuliValidationHtmlText.setHTML(simuliValidationHtmlText.getHTML() + "<br/>" + outputString);
+                        }
+
+                        @Override
+                        public void sampleCount(int outputString) {
+                            sampleCount.setHTML("sampleCount: " + outputString);
+                        }
+
+                        @Override
+                        public void uniqueCount(int outputString) {
+                            uniqueCount.setHTML("uniqueCount: " + outputString);
+                        }
+
+                        @Override
+                        public void transitionTableValue(int column, int row, String value) {
+                            transitionTable.setText(row, column, value);
+                        }
+
+                        @Override
+                        public void appendUniqueStimuliList(String outputString) {
+                            ((ComplexView) simpleView).addText(outputString);
+                        }
+
+                        @Override
+                        public void outputTableValue(int column, int row, String value) {
+                            outputTable.setText(row, column, value);
+                        }
+
+                    }.calculate(tag);
+                }
+
+                @Override
+                public int getHotKey() {
+                    return -1;
+                }
+            });
+        }
     }
 
     protected void localStorageData() {
