@@ -175,6 +175,9 @@ public abstract class LocalStoragePresenter extends AbstractPresenter {
                 }
             });
         }
+    }
+
+    protected void addKeyboardDebug() {
         final Label clickLabel = new Label();
         final Label mouseLabel = new Label();
         final Label wheelLabel = new Label();
