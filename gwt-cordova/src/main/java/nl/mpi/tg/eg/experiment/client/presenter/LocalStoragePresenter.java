@@ -17,12 +17,23 @@
  */
 package nl.mpi.tg.eg.experiment.client.presenter;
 
+import com.google.gwt.event.dom.client.KeyDownEvent;
+import com.google.gwt.event.dom.client.KeyDownHandler;
+import com.google.gwt.event.dom.client.KeyUpEvent;
+import com.google.gwt.event.dom.client.KeyUpHandler;
+import com.google.gwt.event.dom.client.MouseMoveEvent;
+import com.google.gwt.event.dom.client.MouseMoveHandler;
+import com.google.gwt.event.dom.client.MouseWheelEvent;
+import com.google.gwt.event.dom.client.MouseWheelHandler;
 import com.google.gwt.storage.client.Storage;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.TextBox;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
@@ -164,6 +175,43 @@ public abstract class LocalStoragePresenter extends AbstractPresenter {
                 }
             });
         }
+        final Label clickLabel = new Label();
+        final Label mouseLabel = new Label();
+        final Label wheelLabel = new Label();
+        final Label keyDownLabel = new Label();
+
+        ((ComplexView) simpleView).addWidget(clickLabel);
+        ((ComplexView) simpleView).addWidget(mouseLabel);
+        ((ComplexView) simpleView).addWidget(wheelLabel);
+        ((ComplexView) simpleView).addWidget(keyDownLabel);
+        final TextBox textBox = new TextBox();
+        ((ComplexView) simpleView).addWidget(textBox);
+        textBox.addKeyUpHandler(new KeyUpHandler() {
+            @Override
+            public void onKeyUp(KeyUpEvent event) {
+                clickLabel.setText(event.toDebugString());
+            }
+        });
+        textBox.addMouseWheelHandler(new MouseWheelHandler() {
+            @Override
+            public void onMouseWheel(MouseWheelEvent event) {
+                wheelLabel.setText(event.toDebugString());
+            }
+        });
+        textBox.addMouseMoveHandler(new MouseMoveHandler() {
+            @Override
+            public void onMouseMove(MouseMoveEvent event) {
+                mouseLabel.setText(event.toDebugString());
+            }
+        });
+        RootPanel root = RootPanel.get();
+        root.addDomHandler(new KeyDownHandler() {
+            @Override
+            public void onKeyDown(KeyDownEvent event) {
+//                final int nativeKeyCode = event.getNativeKeyCode();
+                keyDownLabel.setText(event.toDebugString());
+            }
+        }, KeyDownEvent.getType());
     }
 
     protected void localStorageData() {
