@@ -49,6 +49,9 @@ public class FeatureText {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FeatureText> translations = new ArrayList<>();
 
+    public FeatureText() {
+    }
+
     public FeatureText(String featureText, String locale) {
         this.featureText = featureText;
         this.locale = locale;
