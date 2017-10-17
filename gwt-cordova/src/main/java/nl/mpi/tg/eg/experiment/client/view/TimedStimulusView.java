@@ -36,6 +36,8 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextArea;
+import java.util.ArrayList;
+import java.util.List;
 import nl.mpi.tg.eg.experiment.client.listener.AudioEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
@@ -51,6 +53,7 @@ public class TimedStimulusView extends ComplexView {
 
     private final AudioPlayer audioPlayer;
     private StimulusGrid stimulusGrid = null;
+    private final List<Video> videoList = new ArrayList<>();
 
     public TimedStimulusView(AudioPlayer audioPlayer) {
         super();
@@ -123,6 +126,7 @@ public class TimedStimulusView extends ComplexView {
     @Override
     public void clearPage() {
         stopAudio();
+        stopVideo();
         this.getElement().getStyle().setBackgroundImage(null);
         super.clearPage();
     }
@@ -299,6 +303,7 @@ public class TimedStimulusView extends ComplexView {
     public void addTimedVideo(SafeUri oggPath, SafeUri mp4Path, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean showControls, final int postLoadMs, final TimedStimulusListener shownStimulusListener, final TimedStimulusListener timedStimulusListener) {
         final Video video = Video.createIfSupported();
         if (video != null) {
+            videoList.add(video);
 //            video.setPoster(poster);
             video.setControls(showControls);
             video.setPreload(MediaElement.PRELOAD_AUTO);
@@ -349,5 +354,13 @@ public class TimedStimulusView extends ComplexView {
 
     public void stopAudio() {
         audioPlayer.stopAll();
+    }
+
+    public void stopVideo() {
+        for (Video video : videoList) {
+            if (video != null) {
+                video.pause();
+            }
+        }
     }
 }
