@@ -461,6 +461,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
+    protected void showStimulus() {
+        showStimulus(null, 0);
+    }
+
     protected void showStimulus(GroupActivityListener groupActivityListener, final int increment) {
         final int currentStimulusIndex = stimulusProvider.getCurrentStimulusIndex();
         final String subDirectory = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag());
@@ -475,7 +479,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //        } else if (!hasSubdirectories) {
 //            localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "completed-screen-" + getSelfTag(), Boolean.toString(true));
         } else {
-            submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "showStimulus.endOfStimulusListener", stimulusProvider.getCurrentStimulus().getUniqueId() + ":" + stimulusProvider.getCurrentStimulusIndex() + "/" + stimulusProvider.getTotalStimuli(), duration.elapsedMillis()); // todo: this is sent
+            submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "showStimulus.endOfStimulusListener", (currentStimulusIndex + increment) + "/" + stimulusProvider.getTotalStimuli(), duration.elapsedMillis()); // todo: this is sent
+            localStorage.setStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag() + ((subDirectory != null) ? subDirectory : ""), Integer.toString(currentStimulusIndex + increment));
             endOfStimulusListener.postLoadTimerFired();
         }
     }
@@ -781,7 +786,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
         final MetadataFieldWidget metadataFieldWidget = new MetadataFieldWidget(metadataField, fieldValue);
         ((TimedStimulusView) simpleView).addWidget(metadataFieldWidget.getLabel());
-        ((TimedStimulusView) simpleView).addWidget(metadataFieldWidget.getFocusWidget());
+        ((TimedStimulusView) simpleView).addWidget(metadataFieldWidget.getWidget());
         stimulusFreeTextList.add(metadataFieldWidget);
     }
 
@@ -955,7 +960,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
     }
 
-    protected void stimulusCodeAudio(int postLoadMs, String codeFormat, TimedStimulusListener timedStimulusListener) {
+    protected void stimulusCodeAudio(int postLoadMs, String codeFormat, boolean showPlaybackIndicator, TimedStimulusListener timedStimulusListener) {
         final String formattedCode = codeFormat.replace("<code>", stimulusProvider.getCurrentStimulus().getCode());
         final String uniqueId = stimulusProvider.getCurrentStimulus().getUniqueId();
         String mp3 = formattedCode + ".mp3";
@@ -970,7 +975,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), "StimulusCodeAudioShown", uniqueId, formattedCode, duration.elapsedMillis());
             }
         };
-        ((TimedStimulusView) simpleView).addTimedAudio(oggTrustedString, mp3TrustedString, postLoadMs, false, shownStimulusListener, timedStimulusListener);
+        ((TimedStimulusView) simpleView).addTimedAudio(oggTrustedString, mp3TrustedString, postLoadMs, showPlaybackIndicator, shownStimulusListener, timedStimulusListener);
     }
 
     protected void stimulusCodeVideo(int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean showControls, int postLoadMs, String codeFormat, TimedStimulusListener timedStimulusListener) {
@@ -1319,6 +1324,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
         userResults.getUserData().clearCurrentResponse();
         ((TimedStimulusView) simpleView).stopAudio();
+        ((TimedStimulusView) simpleView).stopVideo();
         ((TimedStimulusView) simpleView).clearPage();
         stimulusFreeTextList.clear();
         buttonList.clear();
@@ -1484,7 +1490,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
             @Override
             public int getHotKey() {
-                return -1;
+                return hotKey;
             }
 
             @Override
@@ -1516,6 +1522,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     @Override
     public void savePresenterState() {
         ((TimedStimulusView) simpleView).stopAudio();
+        ((TimedStimulusView) simpleView).stopVideo();
         super.savePresenterState();
         stopAudioRecorder();
     }
