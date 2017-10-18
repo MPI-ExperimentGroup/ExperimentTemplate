@@ -54,6 +54,7 @@ public class TimedStimulusView extends ComplexView {
     private final AudioPlayer audioPlayer;
     private StimulusGrid stimulusGrid = null;
     private final List<Video> videoList = new ArrayList<>();
+    private final List<Timer> timerList = new ArrayList<>();
 
     public TimedStimulusView(AudioPlayer audioPlayer) {
         super();
@@ -117,6 +118,7 @@ public class TimedStimulusView extends ComplexView {
                 timedStimulusListener.postLoadTimerFired();
             }
         };
+        timerList.add(timer);
         timer.schedule(postLoadMs);
 //            }
 //        });
@@ -125,6 +127,7 @@ public class TimedStimulusView extends ComplexView {
 
     @Override
     public void clearPage() {
+        stopTimers();
         stopAudio();
         stopVideo();
         this.getElement().getStyle().setBackgroundImage(null);
@@ -151,6 +154,7 @@ public class TimedStimulusView extends ComplexView {
                         timedStimulusListener.postLoadTimerFired();
                     }
                 };
+                timerList.add(timer);
                 timer.schedule(postLoadMs);
             }
         });
@@ -273,6 +277,7 @@ public class TimedStimulusView extends ComplexView {
                 this.schedule(100);
             }
         };
+        timerList.add(playbackIndicatorTimer);
         if (showPlaybackIndicator) {
             playbackIndicator.setStylePrimaryName("playbackIndicator");
             outerPanel.add(playbackIndicator);
@@ -294,6 +299,7 @@ public class TimedStimulusView extends ComplexView {
                         timedStimulusListener.postLoadTimerFired();
                     }
                 };
+                timerList.add(timer);
                 timer.schedule(postLoadMs);
             }
         });
@@ -339,6 +345,7 @@ public class TimedStimulusView extends ComplexView {
                                 timedStimulusListener.postLoadTimerFired();
                             }
                         };
+                        timerList.add(timer);
                         timer.schedule(postLoadMs);
                     }
                 }
@@ -360,6 +367,14 @@ public class TimedStimulusView extends ComplexView {
         for (Video video : videoList) {
             if (video != null) {
                 video.pause();
+            }
+        }
+    }
+
+    public void stopTimers() {
+        for (Timer timer : timerList) {
+            if (timer != null) {
+                timer.cancel();
             }
         }
     }
