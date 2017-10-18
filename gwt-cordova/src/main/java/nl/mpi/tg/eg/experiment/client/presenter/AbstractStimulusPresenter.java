@@ -1323,6 +1323,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             stimulusProvider.pushCurrentStimulusToEnd();
         }
         userResults.getUserData().clearCurrentResponse();
+        ((TimedStimulusView) simpleView).stopTimers();
         ((TimedStimulusView) simpleView).stopAudio();
         ((TimedStimulusView) simpleView).stopVideo();
         ((TimedStimulusView) simpleView).clearPage();
@@ -1521,6 +1522,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     @Override
     public void savePresenterState() {
+        ((TimedStimulusView) simpleView).stopTimers();
         ((TimedStimulusView) simpleView).stopAudio();
         ((TimedStimulusView) simpleView).stopVideo();
         super.savePresenterState();
