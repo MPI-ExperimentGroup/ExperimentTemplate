@@ -241,48 +241,72 @@ $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 25
 
 @keyframes zoomToGardenKeyFrames {
     from {
+        /*        background-size: 100%;
+                background-position: 0% 0%;*/
         transform: scale(1,1) translate(0%,0%);
     } to {
+        /*        background-size: 150%;
+                background-position: 5% -15%;*/
         transform: scale(1.5,1.5) translate(5%,-15%);
     }
 }
 
 @keyframes zoomToBlock1KeyFrames {
     from {
+        /*        background-size: 100%;
+                background-position: 0% 0%;*/
         transform: scale(1,1) translate(0%,0%);
     } to {
+        /*        background-size: 400%;
+                background-position: 10% -30%;*/
         transform: scale(4,4) translate(10%,-30%);
     }
 }
 
 @keyframes zoomToBlock2KeyFrames {
     from {
+        /*        background-size: 100%;
+                background-position: 0% 0%;*/
         transform: scale(1,1) translate(0%,0%);
     } to {
+        /*        background-size: 400%;
+                background-position: -10% -30%;*/
         transform: scale(4,4) translate(-10%,-30%);
     }
 }
 
 @keyframes zoomToBlock3KeyFrames {
     from {
+        /*        background-size: 100%;
+                background-position: 0% 0%;*/
         transform: scale(1,1) translate(0%,0%);
     } to {
+        /*        background-size: 400%;
+                background-position: -10% -10%;*/
         transform: scale(4,4) translate(-10%,-10%);
     }
 }
 
 @keyframes zoomToBlock4KeyFrames {
     from {
+        /*        background-size: 100%;
+                background-position: 0% 0%;*/
         transform: scale(1,1) translate(0%,0%);
     } to {
+        /*        background-size: 400%;
+                background-position: 10% -10%;*/
         transform: scale(4,4) translate(10%,-10%);
     }
 }
 
 @keyframes zoomToAtticKeyFrames {
     from {
+        /*        background-size: 100%;
+                background-position: 0% 0%;*/
         transform: scale(1,1) translate(0%,0%);
     } to {
+        /*        background-size: 400%;
+                background-position: 0% 10%;*/
         transform: scale(4,4) translate(0%,10%);
     }
 }
