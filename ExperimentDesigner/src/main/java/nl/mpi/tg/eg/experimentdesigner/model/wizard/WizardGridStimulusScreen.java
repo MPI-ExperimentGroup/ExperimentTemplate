@@ -79,6 +79,22 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         return storedWizardScreenData.getScreenBoolean(1);
     }
 
+    private String getBackgroundImage(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(0);
+    }
+
+    public void setBackgroundImage(String backgroundImage) {
+        this.wizardScreenData.setScreenText(0, backgroundImage);
+    }
+
+    private String getBackgroundStyle(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(1);
+    }
+
+    public void setBackgroundStyle(String backgroundStyle) {
+        this.wizardScreenData.setScreenText(1, backgroundStyle);
+    }
+
     final public void setSdCardStimuli(boolean sdCardStimuli) {
         this.wizardScreenData.setScreenBoolean(1, sdCardStimuli);
     }
@@ -98,7 +114,10 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenTextInfo(int index) {
-        throw new UnsupportedOperationException("Not supported.");
+        return new String[]{
+            "BackgroundImage",
+            "BackgroundStyle"
+        }[index];
     }
 
     @Override
@@ -185,9 +204,9 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         final PresenterFeature backgoundFeature = new PresenterFeature(FeatureType.backgroundImage, null);
         backgoundFeature.addFeatureAttributes(FeatureAttribute.msToNext, "7000");
 //        backgoundFeature.addFeatureAttributes(FeatureAttribute.styleName, "zoomTo3of6 zoom to house");
-        backgoundFeature.addFeatureAttributes(FeatureAttribute.styleName, "zoomToBlock1");
+        backgoundFeature.addFeatureAttributes(FeatureAttribute.styleName, getBackgroundStyle(storedWizardScreenData));
 //        backgoundFeature.addFeatureAttributes(FeatureAttribute.styleName, "zoomOut");
-        backgoundFeature.addFeatureAttributes(FeatureAttribute.src, "background.png");
+        backgoundFeature.addFeatureAttributes(FeatureAttribute.src, getBackgroundImage(storedWizardScreenData));
         presenterFeatureList.add(backgoundFeature);
 //        set the image as the parent to subsequent features
         presenterFeatureList = backgoundFeature.getPresenterFeatureList();
@@ -278,9 +297,15 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
 //        nextStimulusL.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusL");
 //        nextStimulusL.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
 //        touchInputZoneL.getPresenterFeatureList().add(nextStimulusL);
+        final PresenterFeature repeatStimulusButton = new PresenterFeature(FeatureType.actionButton, "Repeat");
+        repeatStimulusButton.addFeatureAttributes(FeatureAttribute.eventTag, "Repeat");
+        repeatStimulusButton.addFeatureAttributes(FeatureAttribute.hotKey, "F6");
+        final PresenterFeature repeatStimulus = new PresenterFeature(FeatureType.showStimulus, null);
+        repeatStimulusButton.getPresenterFeatureList().add(repeatStimulus);
+        stimulusCodeAudio3.getPresenterFeatureList().add(repeatStimulusButton);
         final PresenterFeature nextStimulus = new PresenterFeature(FeatureType.nextStimulusButton, "Next");
         nextStimulus.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusR");
-        nextStimulus.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
+        nextStimulus.addFeatureAttributes(FeatureAttribute.hotKey, "ENTER");
         nextStimulus.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
         stimulusCodeAudio3.getPresenterFeatureList().add(nextStimulus);
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
