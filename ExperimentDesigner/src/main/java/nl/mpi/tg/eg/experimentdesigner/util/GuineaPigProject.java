@@ -21,7 +21,6 @@ import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAnimatedStimuliScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAudioTestScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
@@ -59,7 +58,6 @@ public class GuineaPigProject {
         wizardData.setObfuscateScreenNames(false);
 
         final WizardExistingUserCheckScreen existingUserCheckScreen = new WizardExistingUserCheckScreen("Start", "New interview", "Resume interview", "Begin a new interview with a new participant", "Resume an interview with an existing participant");
-
         final WizardSelectUserScreen selectUserScreen = new WizardSelectUserScreen("Select Participant");
         wizardData.addScreen(existingUserCheckScreen);
         wizardData.addScreen(selectUserScreen);
@@ -70,6 +68,7 @@ public class GuineaPigProject {
 //        WizardAgreementScreen agreementScreen = new WizardAgreementScreen("Toestemming", agreementScreenText, "Akkoord");
 //        agreementScreen.setMenuLabel("Terug");
         final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
+        wizardEditUserScreen.setScreenText("When the bluetooth controller is connected the virtual keyboard will not show, to enter participant metadata please turn off the bluetooth controller so that the virtual keyboard can be shown. To start the bluetooth controller turn it on and press the button combination M+A.");
         wizardEditUserScreen.setScreenTitle("Gegevens");
         wizardEditUserScreen.setMenuLabel("Terug");
         wizardEditUserScreen.setScreenTag("Edit User");
@@ -78,7 +77,7 @@ public class GuineaPigProject {
         wizardEditUserScreen.setOn_Error_Text("Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.");
         wizardEditUserScreen.setCustomFields(new String[]{
             "workerId:Proefpersoon ID:.'{'3,'}':Voer minimaal drie letters.", // @todo: update the regex to date format and in the future add a calandar popup
-            "datOfBirth:Gebortedatum:[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]:Voer een getal.",
+            "datOfBirth:Geboortedatum:[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]:Voer een getal.",
             "gender:Geslacht:|man|vrouw|anders:."
         });
 
@@ -88,25 +87,25 @@ public class GuineaPigProject {
         wizardData.addScreen(menuScreen);
         wizardData.addScreen(wizardEditUserScreen);
 
-        String backgroundImage = "background.png";
-        WizardAudioTestScreen introductionAudio1 = new WizardAudioTestScreen("introduction 1", "Intro text", "continue button", "intro_1");
+        String backgroundImage = "huisje_02.jpg";
+        WizardAudioTestScreen introductionAudio1 = new WizardAudioTestScreen("Introduction 1", "Intro text", "continue button", "intro_1");
         wizardData.addScreen(introductionAudio1);
-        WizardAudioTestScreen introductionAudio2 = new WizardAudioTestScreen("introduction 2", "Intro text", "continue button", "intro_2");
+        WizardAudioTestScreen introductionAudio2 = new WizardAudioTestScreen("Introduction 2", "Intro text", "continue button", "intro_2");
         wizardData.addScreen(introductionAudio2);
-        WizardAudioTestScreen introductionAudio3 = new WizardAudioTestScreen("introduction 3", "Intro text", "continue button", "intro_3");
+        WizardAudioTestScreen introductionAudio3 = new WizardAudioTestScreen("Introduction 3", "Intro text", "continue button", "intro_3");
         wizardData.addScreen(introductionAudio3);
         introductionAudio1.setBackgroundImage(backgroundImage);
         introductionAudio2.setBackgroundImage(backgroundImage);
         introductionAudio3.setBackgroundImage(backgroundImage);
 //        introductionAudio1.setAutoPlay(true); //@todo: do not auto play, in future version the play button may be hidden
-//        introductionAudio2.setAutoPlay(true);
-//        introductionAudio3.setAutoPlay(true);
-        introductionAudio1.setHotKey("SPACE");
-        introductionAudio2.setHotKey("SPACE");
-        introductionAudio3.setHotKey("SPACE");
-        WizardAnimatedStimuliScreen overviewHighlightGarden = new WizardAnimatedStimuliScreen("Overview Highlight Garden", new String[]{"Overview picture of the house, highlight garden"}, false, 0, false, "overview-highlight-garden", "overview-highlight-garden.jpg", false);
-        WizardAnimatedStimuliScreen trainingPhase = new WizardAnimatedStimuliScreen("Training phase", new String[]{"four training trials (practice the game in the garden)"}, false, 0, false, "game-in-the-garden", "game-in-the-garden.jpg", false);
-        WizardAnimatedStimuliScreen overviewHighlight1stRoom = new WizardAnimatedStimuliScreen("Overview Highlight 1st Room", new String[]{"Overview picture of the house, highlight 1st room"}, false, 0, false, "overview-highlight-1st-room", "overview-highlight-1st-room.jpg", false);
+        introductionAudio2.setAutoPlay(true);
+        introductionAudio3.setAutoPlay(true);
+        introductionAudio1.setAudioHotKey("F6");
+        introductionAudio2.setAudioHotKey("F6");
+        introductionAudio3.setAudioHotKey("F6");
+        introductionAudio1.setNextHotKey("ENTER");
+        introductionAudio2.setNextHotKey("ENTER");
+        introductionAudio3.setNextHotKey("ENTER");
 
 //        String[] fillerList = new String[]{};
         //            "intro_1",
@@ -117,24 +116,24 @@ public class GuineaPigProject {
         //            "room_3",
         //            "room_4",
         //            "room_5",
-        String[] testList = new String[]{
+        String[][][] testList = new String[][][]{
             // @todo: all of test, filler and training need to be grouped by test_1 and order by test_1_1, test_1_2, test_1_3 *** change the stimuli to test_1 and code to add the _1 _2 _3 on the screen
             // @todo: test_1 and test_5 for example must never be ajacent, perhaps this can be done with the exisiting adjacency code, by adding a test_x_1 and moving the _1 to code
             //@todo: blank screen with audio 1
             //@todo: videos and audio 2
             //@todo: still of video and audio 3 with touch input can be collected during audio 1 2 and 3, touch input does not cause any action, only the remote can move to the next stimulus
-            "test_1",
-            "test_2",
-            "test_3",
-            "test_4",
-            "test_5",
-            "test_6",
-            "test_7",
-            "test_8",
-            "filler_1",
-            "filler_2",
-            "filler_3",
-            "filler_4",};
+            {{"Test 1", "zoomToBlock1"}, {"test_1",
+                "test_2",
+                "filler_1",}}, {{"Test 2", "zoomToBlock2"}, {
+                "test_3",
+                "test_4",
+                "filler_2",}}, {{"Test 3", "zoomToBlock3"}, {
+                "test_5",
+                "test_6",
+                "filler_3",}}, {{"Test 4", "zoomToBlock4"}, {
+                "test_7",
+                "test_8",
+                "filler_4",}}};
         String[] trainingList = new String[]{
             "training_1",
             "training_2",
@@ -146,17 +145,23 @@ public class GuineaPigProject {
         //                    "list_b",
 //                    "fillerScreen"}, 1000, true, null, 0, 0, null);
 //        wizardData.addScreen(fillerStimulusScreen);
-        final WizardGridStimulusScreen trainingStimulusScreen = new WizardGridStimulusScreen("trainingScreen", false, trainingList,
-                new String[]{
-                    //                    "list_b",
-                    "trainingScreen"}, 1000, true, null, 0, 0, null); // @todo: this screen is in the garden
+        final WizardGridStimulusScreen trainingStimulusScreen = new WizardGridStimulusScreen("Training", false, trainingList,
+                null, 1000, false, null, 0, 0, null); // @todo: this screen is in the garden
+        trainingStimulusScreen.setBackgroundImage(backgroundImage);
+        trainingStimulusScreen.setBackgroundStyle("zoomToGarden");
         wizardData.addScreen(trainingStimulusScreen);
-        final WizardGridStimulusScreen testStimulusScreen = new WizardGridStimulusScreen("testScreen", false, testList,
-                new String[]{
-                    //                    "list_b",
-                    "testScreen"}, 1000, true, null, 0, 0, null);
-        wizardData.addScreen(testStimulusScreen);
-
+        final WizardMenuScreen textMenuScreen = new WizardMenuScreen("TestMenu", "TestMenu", "TestMenu");
+        wizardData.addScreen(textMenuScreen);
+        for (String[][] testSubList : testList) {
+            final WizardGridStimulusScreen testStimulusScreen = new WizardGridStimulusScreen(testSubList[0][0], false, testSubList[1],
+                    null, 1000, false, null, 0, 0, null);
+            testStimulusScreen.setBackgroundImage(backgroundImage);
+            testStimulusScreen.setBackgroundStyle(testSubList[0][1]);
+            textMenuScreen.addTargetScreen(testStimulusScreen);
+            wizardData.addScreen(testStimulusScreen);
+            testStimulusScreen.setBackWizardScreen(textMenuScreen);
+            testStimulusScreen.setNextWizardScreen(textMenuScreen);
+        }
         WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, true, true, completionScreenText2,
                 "Opnieuw beginnen",
                 "Einde van het experiment",
@@ -177,14 +182,14 @@ public class GuineaPigProject {
         introductionAudio2.setNextWizardScreen(introductionAudio3);
         introductionAudio3.setNextWizardScreen(trainingStimulusScreen);
 //        fillerStimulusScreen.setNextWizardScreen(trainingStimulusScreen);
-        trainingStimulusScreen.setNextWizardScreen(testStimulusScreen);
+        trainingStimulusScreen.setNextWizardScreen(textMenuScreen);
         introductionAudio1.setBackWizardScreen(menuScreen);
         introductionAudio2.setBackWizardScreen(menuScreen);
         introductionAudio3.setBackWizardScreen(menuScreen);
 //        fillerStimulusScreen.setBackWizardScreen(introductionAudio3);
         trainingStimulusScreen.setBackWizardScreen(menuScreen);
-        testStimulusScreen.setBackWizardScreen(menuScreen);
-        testStimulusScreen.setNextWizardScreen(completionScreen);
+        textMenuScreen.setBackWizardScreen(menuScreen);
+        textMenuScreen.setNextWizardScreen(completionScreen);
 
         final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("Over", false);
         wizardAboutScreen.setBackWizardScreen(menuScreen);
