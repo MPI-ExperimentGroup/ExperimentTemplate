@@ -128,7 +128,7 @@ public class AudioPlayer {
             audioPlayer.removeFromParent();
             audioPlayer = null;
         }
-        onEndedAction();
+        //onEndedAction();
         audioEventListner = null;
     }
 }
