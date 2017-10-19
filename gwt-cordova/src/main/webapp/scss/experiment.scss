@@ -167,12 +167,20 @@ $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 25
     }
 }
 
-.zoomToBlock1 {
-    /*position: absolute;*/    
-    /*height: auto;*/
-    /*width: -webkit-fill-available;*/
-    /*animation: zoomToBlock1KeyFrames 5s linear 0s 1 alternate;*/
+.zoomToGarden {
+    background-size: contain;
+    animation-name: zoomToGardenKeyFrames;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    will-change: transform;
+}
 
+.zoomToBlock1 {
+    background-size: contain;
     animation-name: zoomToBlock1KeyFrames;
     animation-duration: 5s;
     animation-timing-function: linear;
@@ -180,22 +188,122 @@ $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 25
     animation-iteration-count: 1;
     animation-direction: normal;
     animation-fill-mode: forwards;
+    will-change: transform;
+}
+
+.zoomToBlock2 {
+    background-size: contain;
+    animation-name: zoomToBlock2KeyFrames;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    will-change: transform;
+}
+
+.zoomToBlock3 {
+    background-size: contain;
+    animation-name: zoomToBlock3KeyFrames;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    will-change: transform;
+}
+
+.zoomToBlock4 {
+    background-size: contain;
+    animation-name: zoomToBlock4KeyFrames;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    will-change: transform;
+}
+
+.zoomToAttic {
+    background-size: contain;
+    animation-name: zoomToAtticKeyFrames;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    will-change: transform;
+}
+
+@keyframes zoomToGardenKeyFrames {
+    from {
+        transform: scale(1,1) translate(0%,0%);
+    } to {
+        transform: scale(1.5,1.5) translate(5%,-15%);
+    }
 }
 
 @keyframes zoomToBlock1KeyFrames {
-    /* (top, right, bottom, left) */
     from {
-        /*clip: rect(0px,800px,600px,0px);*/
-        /*top: 0;*/
-        /*left: 0;*/
-        background-size: 100%;
-        background-position: 50% 50%;
+        transform: scale(1,1) translate(0%,0%);
     } to {
-        background-size: 200%;
-        background-position: 0% 0%;
-        /*clip: rect(0px,800px,600px,0px);*/
+        transform: scale(4,4) translate(10%,-30%);
     }
 }
+
+@keyframes zoomToBlock2KeyFrames {
+    from {
+        transform: scale(1,1) translate(0%,0%);
+    } to {
+        transform: scale(4,4) translate(-10%,-30%);
+    }
+}
+
+@keyframes zoomToBlock3KeyFrames {
+    from {
+        transform: scale(1,1) translate(0%,0%);
+    } to {
+        transform: scale(4,4) translate(-10%,-10%);
+    }
+}
+
+@keyframes zoomToBlock4KeyFrames {
+    from {
+        transform: scale(1,1) translate(0%,0%);
+    } to {
+        transform: scale(4,4) translate(10%,-10%);
+    }
+}
+
+@keyframes zoomToAtticKeyFrames {
+    from {
+        transform: scale(1,1) translate(0%,0%);
+    } to {
+        transform: scale(4,4) translate(0%,10%);
+    }
+}
+
+/*.zoomToBlock3 {
+    background-size: contain;
+    transition: transform 5s;
+    transform: scale(4,4) translate(-10%,-10%);
+}*/
+
+/*.zoomToBlock4 {
+    background-size: contain;
+    transition: transform 5s;
+    transform: scale(4,4) translate(10%,-10%);
+}*/
+
+/*.zoomToAttic {
+    background-size: contain;
+    transition: transform 5s;
+    transform: scale(4,4) translate(0%,10%);
+}*/
 
 .svgPopupPanel .gwt-Button, 
 .stimulusHelpPanel .gwt-Button,
