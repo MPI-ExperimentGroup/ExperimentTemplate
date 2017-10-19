@@ -312,6 +312,24 @@ public class ComplexView extends SimpleView {
         }
     }
 
+    private void addHotKeyListner(final PresenterEventListner presenterListerner, final SingleShotEventListner singleShotEventListner) {
+        if (presenterListerner.getHotKey() > 0) {
+            RootPanel root = RootPanel.get();
+            domHandlerArray.add(root.addDomHandler(new KeyDownHandler() {
+                @Override
+                public void onKeyDown(KeyDownEvent event) {
+                    final int nativeKeyCode = event.getNativeKeyCode();
+                    // we map 190 which is the period key to the numeric period key
+                    if (((nativeKeyCode == 190) ? KeyCodes.KEY_NUM_PERIOD : nativeKeyCode) == presenterListerner.getHotKey()) {
+                        event.stopPropagation();
+//                        clearDomHandlers();
+                        singleShotEventListner.eventFired();
+                    }
+                }
+            }, KeyDownEvent.getType()));
+        }
+    }
+
     public Button getOptionButton(final PresenterEventListner presenterListerner) {
         final Button nextButton = new Button(presenterListerner.getLabel());
         nextButton.addStyleName("optionButton");
@@ -330,21 +348,7 @@ public class ComplexView extends SimpleView {
         nextButton.addTouchStartHandler(singleShotEventListner);
         nextButton.addTouchMoveHandler(singleShotEventListner);
         nextButton.addTouchEndHandler(singleShotEventListner);
-        if (presenterListerner.getHotKey() > 0) {
-            RootPanel root = RootPanel.get();
-            domHandlerArray.add(root.addDomHandler(new KeyDownHandler() {
-                @Override
-                public void onKeyDown(KeyDownEvent event) {
-                    final int nativeKeyCode = event.getNativeKeyCode();
-                    // we map 190 which is the period key to the numeric period key
-                    if (((nativeKeyCode == 190) ? KeyCodes.KEY_NUM_PERIOD : nativeKeyCode) == presenterListerner.getHotKey()) {
-                        event.stopPropagation();
-                        clearDomHandlers();
-                        singleShotEventListner.eventFired();
-                    }
-                }
-            }, KeyDownEvent.getType()));
-        }
+        addHotKeyListner(presenterListerner, singleShotEventListner);
         return nextButton;
     }
 
@@ -377,6 +381,7 @@ public class ComplexView extends SimpleView {
         imageButton.addTouchStartHandler(singleShotEventListner);
         imageButton.addTouchMoveHandler(singleShotEventListner);
         imageButton.addTouchEndHandler(singleShotEventListner);
+        addHotKeyListner(presenterListerner, singleShotEventListner);
     }
 
     public HorizontalPanel addProgressBar(int minimum, int value, int maximum) {
