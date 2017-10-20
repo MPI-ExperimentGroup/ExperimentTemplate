@@ -35,6 +35,7 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
         this.wizardScreenData.setScreenText(1, "");
         this.wizardScreenData.setScreenText(2, "");
         this.wizardScreenData.setScreenText(3, null);
+        this.wizardScreenData.setScreenText(4, null);
         this.wizardScreenData.setScreenBoolean(0, false);
     }
 
@@ -44,6 +45,7 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
         this.wizardScreenData.setScreenText(1, "");
         this.wizardScreenData.setScreenText(2, "");
         this.wizardScreenData.setScreenText(3, null);
+        this.wizardScreenData.setScreenText(4, null);
         this.wizardScreenData.setScreenBoolean(0, false);
         this.setNextButton(buttonLabel);
         this.wizardScreenData.setScreenMediaPath(audioPath);
@@ -56,7 +58,7 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenTextInfo(int index) {
-        return new String[]{"Audio Test Instructions", "Background Image", "AudioHotKey", "NextHotKey"}[index];
+        return new String[]{"Audio Test Instructions", "Background Image", "AudioHotKey", "NextHotKey", "StyleName"}[index];
     }
 
     @Override
@@ -82,6 +84,14 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
 
     public void setBackgroundImage(String backgroundImage) {
         this.wizardScreenData.setScreenText(1, backgroundImage);
+    }
+
+    private String getStyleName(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(4);
+    }
+
+    public void setStyleName(String backgroundImage) {
+        this.wizardScreenData.setScreenText(4, backgroundImage);
     }
 
     private String getAudioHotKey(WizardScreenData storedWizardScreenData) {
@@ -144,6 +154,9 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
         presenterFeature.addFeatureAttributes(FeatureAttribute.poster, storedWizardScreenData.getScreenMediaPath() + ".jpg");
         presenterFeature.addFeatureAttributes(FeatureAttribute.autoPlay, Boolean.toString(getAutoPlay(storedWizardScreenData)));
         presenterFeature.addFeatureAttributes(FeatureAttribute.hotKey, getAudioHotKey(storedWizardScreenData));
+        if (getStyleName(storedWizardScreenData) != null) {
+            presenterFeature.addFeatureAttributes(FeatureAttribute.styleName, getStyleName(storedWizardScreenData));
+        }
         storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(presenterFeature);
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
         final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.actionButton, storedWizardScreenData.getNextButton()[0]);
