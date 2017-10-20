@@ -11,6 +11,7 @@
         <module>registration</module>
         <module>ExperimentDesigner</module>
         <module>common</module>
+        <module>AdaptiveVocabularyAssessmentModule</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -74,6 +75,9 @@
         <!--<experiment.configuration.displayName>Wellsprings Samoan FieldKit</experiment.configuration.displayName>-->
         <!--<experiment.configuration.name>wellspringssamoan</experiment.configuration.name>-->
         <!--<experiment.configuration.name>nonwacq</experiment.configuration.name>-->
+<!--        <experiment.configuration.displayName>ld_screensize</experiment.configuration.displayName>
+        <experiment.configuration.name>ld_screensize</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>guineapigproject01</experiment.configuration.name>-->
         <experiment.configuration.admin.password></experiment.configuration.admin.password>
         <experiment.configuration.db.password></experiment.configuration.db.password>        
         
@@ -161,6 +165,14 @@
                     </execution>
                 </executions>-->
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <showDeprecation>true</showDeprecation>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
     <pluginRepositories>
@@ -187,7 +199,7 @@
             <releases>
                 <enabled>true</enabled>
             </releases>
-        </repository>
+        </repository>        
         <repository>
             <id>MPI</id>
             <name>MPI LAT Repository</name>
