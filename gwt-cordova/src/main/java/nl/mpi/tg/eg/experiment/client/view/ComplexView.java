@@ -93,8 +93,11 @@ public class ComplexView extends SimpleView {
         setContent(outerPanel);
     }
 
-    public void startCell() {
+    public void startCell(String styleName) {
         cellPanel = new VerticalPanel();
+        if (styleName != null) {
+            cellPanel.addStyleName(styleName);
+        }
         cellPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
         if (gridPanel != null) {
             gridPanel.addCell(gridPanel.getRowCount() - 1);
@@ -359,12 +362,11 @@ public class ComplexView extends SimpleView {
         }
     }
 
-    public void addImageButton(final PresenterEventListner presenterListerner, final SafeUri imagePath) {
-
+    public void addImageButton(final PresenterEventListner presenterListerner, final SafeUri imagePath, final String styleName) {
         final Image image = new Image(imagePath);
         final Button imageButton = new Button();
         imageButton.getElement().appendChild(image.getElement());
-        imageButton.addStyleName("imageButton");
+        imageButton.addStyleName((styleName == null) ? "imageButton" : styleName);
         imageButton.setEnabled(true);
         getActivePanel().add(imageButton);
         final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
