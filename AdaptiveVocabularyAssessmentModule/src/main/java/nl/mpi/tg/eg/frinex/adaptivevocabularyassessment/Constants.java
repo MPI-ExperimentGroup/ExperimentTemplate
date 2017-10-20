@@ -17,28 +17,18 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
-import java.io.IOException;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassesment.bands.Bands;
-
 /**
- * @since Oct 20, 2017 11:38:57 AM (creation date)
- * @author Peter Withers <peter.withers@mpi.nl>
+ *
+ * @author olhshk
  */
-public class Main {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        System.out.println("starting work ... ");
-        Bands bands = new Bands();
-        try {
-            bands.parseInputCSV(true);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-        System.out.println("finished work. ");
-        
-    }
-
+public class Constants {
+    
+    public static final int NUMBER_OF_BANDS = 54;
+    
+    public static final int WORDS_PER_BAND = 40;
+    
+    public static final String WORD_FILE_LOCATION = "../../Data/2.selection_words_nonwords_w.csv";
+    
+    public static final String NONWORD_FILE_LOCATION = "../../Data/2.selection_words_nonwords.csv";
+    
 }

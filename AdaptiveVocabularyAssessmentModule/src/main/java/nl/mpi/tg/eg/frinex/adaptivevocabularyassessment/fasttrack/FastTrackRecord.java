@@ -15,30 +15,29 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
-
-import java.io.IOException;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassesment.bands.Bands;
+package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack;
 
 /**
- * @since Oct 20, 2017 11:38:57 AM (creation date)
- * @author Peter Withers <peter.withers@mpi.nl>
+ *
+ * @author olhshk
  */
-public class Main {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        System.out.println("starting work ... ");
-        Bands bands = new Bands();
-        try {
-            bands.parseInputCSV(true);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-        System.out.println("finished work. ");
-        
+public class FastTrackRecord {
+    
+    private int band=-1;
+    
+    private String word=null;
+    
+    public FastTrackRecord(int band, String word) {
+        this.band = band;
+        this.word = word;
     }
-
+    
+    public int getBand(){
+       return this.band; 
+    }
+    
+    public String getWord(){
+       return this.word; 
+    }
+    
 }
