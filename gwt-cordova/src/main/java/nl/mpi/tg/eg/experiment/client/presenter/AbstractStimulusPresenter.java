@@ -418,7 +418,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void column(final TimedStimulusListener timedStimulusListener) {
-        ((TimedStimulusView) simpleView).startCell();
+        column(null, timedStimulusListener);
+    }
+
+    protected void column(String styleName, final TimedStimulusListener timedStimulusListener) {
+        ((TimedStimulusView) simpleView).startCell(styleName);
         timedStimulusListener.postLoadTimerFired();
         ((TimedStimulusView) simpleView).endCell();
     }
@@ -1479,6 +1483,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void audioButton(final String eventTag, final String srcString, final String imagePath, final boolean autoPlay, final int hotKey, final TimedStimulusListener audioFinishedListner) {
+        audioButton(eventTag, srcString, null, imagePath, autoPlay, hotKey, audioFinishedListner);
+    }
+
+    protected void audioButton(final String eventTag, final String srcString, final String styleName, final String imagePath, final boolean autoPlay, final int hotKey, final TimedStimulusListener audioFinishedListner) {
         final String mp3Path = srcString + ".mp3";
         final String oggPath = srcString + ".ogg";
         final PresenterEventListner presenterEventListner = new PresenterEventListner() {
@@ -1514,7 +1522,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 });
             }
         };
-        ((TimedStimulusView) simpleView).addImageButton(presenterEventListner, UriUtils.fromString(serviceLocations.staticFilesUrl() + imagePath));
+        ((TimedStimulusView) simpleView).addImageButton(presenterEventListner, UriUtils.fromString(serviceLocations.staticFilesUrl() + imagePath), styleName);
         if (autoPlay) {
             presenterEventListner.eventFired(null, null);
         }
