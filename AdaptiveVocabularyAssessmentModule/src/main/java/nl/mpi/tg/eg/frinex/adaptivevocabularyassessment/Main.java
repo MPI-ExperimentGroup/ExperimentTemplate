@@ -37,7 +37,7 @@ public class Main {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-        System.out.println("finished work. ");
+        System.out.println("Done. ");
         
     }
 
