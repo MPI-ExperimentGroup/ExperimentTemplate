@@ -37,6 +37,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardSynQuizSumbitScreen;
  * @since Jan 18, 2016 11:20:47 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
+@Deprecated
 public class SynQuiz2ru {
 
     private final WizardController wizardController = new WizardController();
