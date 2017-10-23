@@ -31,8 +31,8 @@ import org.apache.commons.csv.CSVRecord;
  */
 public class Bands {
     
-    private final String[][] words = new String[Constants.NUMBER_OF_BANDS][Constants.WORDS_PER_BAND];
-    ArrayList<String> nonwords = new ArrayList<>(); // unknow length, cannot allocte in advance
+    private final LexicalUnit[][] words = new LexicalUnit[Constants.NUMBER_OF_BANDS][Constants.WORDS_PER_BAND];
+    ArrayList<LexicalUnit> nonwords = new ArrayList<>(); // unknow length, cannot allocte in advance
     final File inputFileWords = new File(Constants.WORD_FILE_LOCATION);
     final File inputFileNonWords = new File(Constants.NONWORD_FILE_LOCATION);
 
@@ -47,8 +47,8 @@ public class Bands {
         for (CSVRecord record : records) {
             //String number = record.get("nr");
             int bandNumber = Integer.parseInt(record.get("Band"));
-            String spelling = record.get("spelling");
-            this.words[bandNumber-1][counter[bandNumber-1]]=spelling;
+            LexicalUnit unit = new LexicalUnit(record.get("spelling"));
+            this.words[bandNumber-1][counter[bandNumber-1]]=unit;
             counter[bandNumber-1]++;
             //System.out.println(bandNumber);
             //System.out.println(spelling);
@@ -60,16 +60,16 @@ public class Bands {
         final Reader reader = new InputStreamReader(inputFileNonWords.toURL().openStream(), "UTF-8"); // todo: this might need to change to "ISO-8859-1" depending on the usage
         Iterable<CSVRecord> records = CSVFormat.newFormat(';').withHeader().parse(reader);
         for (CSVRecord record : records) {
-            String spelling = record.get("spelling");
-            nonwords.add(spelling);
+            LexicalUnit unit = new LexicalUnit(record.get("spelling"));
+            nonwords.add(unit);
         }
     }
     
-    public String[][] getWords(){
+    public LexicalUnit[][] getWords(){
         return words;
     }
     
-    public ArrayList<String> getNonWords(){
+    public ArrayList<LexicalUnit> getNonWords(){
         return nonwords;
     }
     

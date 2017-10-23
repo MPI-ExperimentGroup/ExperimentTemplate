@@ -18,7 +18,9 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassesment.bands.Bands;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassesment.bands.LexicalUnit;
 
 /**
  * @since Oct 20, 2017 11:38:57 AM (creation date)
@@ -38,8 +40,28 @@ public class Main {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+        testPrint(bands);
         System.out.println("Done. ");
-        
+
+    }
+
+    private static void testPrint(Bands bands) {
+        LexicalUnit[][] tmpwords = bands.getWords();
+        System.out.println("Words \n");
+       
+        for (int i=0; i<tmpwords.length; i++) {
+            System.out.println(i+1);
+            for (LexicalUnit unit : tmpwords[i]) {
+                System.out.println(unit.getSpelling());
+                System.out.println(unit.getIsUsed());
+            }
+        }
+        ArrayList<LexicalUnit> tmpnonwords = bands.getNonWords();
+        System.out.println("Non words \n");
+        for (LexicalUnit nonword : tmpnonwords) {
+            System.out.println(nonword.getSpelling());
+            System.out.println(nonword.getIsUsed());
+        }
     }
 
 }
