@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
+import java.util.List;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
@@ -40,13 +41,18 @@ public class WizardCompletionScreen extends AbstractWizardScreen {
         wizardScreenData.setScreenText(1, completedText2);
         wizardScreenData.setScreenBoolean(0, allowUserRestart);
         wizardScreenData.setScreenBoolean(1, generateCompletionCode);
+        wizardScreenData.setScreenBoolean(2, true);
         wizardScreenData.setScreenText(2, could_not_contact_the_server_please_check);
         wizardScreenData.setNextButton(new String[]{retryButtonLabel, eraseUsersDataButtonlabel});
     }
 
+    public void setSendData(boolean sendData) {
+        wizardScreenData.setScreenBoolean(2, sendData);
+    }
+
     @Override
     public String getScreenBooleanInfo(int index) {
-        return new String[]{"Allow User Restart", "Generate Completion Code"}[index];
+        return new String[]{"Allow User Restart", "Generate Completion Code", "Send Data"}[index];
     }
 
     @Override
@@ -68,33 +74,39 @@ public class WizardCompletionScreen extends AbstractWizardScreen {
     public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.transmission);
-        final PresenterFeature sendAllDataFeature = new PresenterFeature(FeatureType.sendAllData, null);
-        storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(sendAllDataFeature);
+        final List<PresenterFeature> onSuccessFeatureList;
+        if (storedWizardScreenData.getScreenBoolean(2)) {
+            final PresenterFeature sendAllDataFeature = new PresenterFeature(FeatureType.sendAllData, null);
+            storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(sendAllDataFeature);
 
-        final PresenterFeature onSuccessFeature = new PresenterFeature(FeatureType.onSuccess, null);
-        sendAllDataFeature.getPresenterFeatureList().add(onSuccessFeature);
-        onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
-        onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+            final PresenterFeature onSuccessFeature = new PresenterFeature(FeatureType.onSuccess, null);
+            sendAllDataFeature.getPresenterFeatureList().add(onSuccessFeature);
+            onSuccessFeatureList = onSuccessFeature.getPresenterFeatureList();
+            final PresenterFeature onErrorFeature = new PresenterFeature(FeatureType.onError, null);
+            sendAllDataFeature.getPresenterFeatureList().add(onErrorFeature);
+//        final String could_not_contact_the_server_please_check = "Could not contact the server, please check your internet connection and try again.";
+            onErrorFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, storedWizardScreenData.getScreenText(2)));
+//        final String retryButtonLabel = "Retry";
+            final PresenterFeature retryFeature = new PresenterFeature(FeatureType.targetButton, storedWizardScreenData.getNextButton()[0]);
+            onErrorFeature.getPresenterFeatureList().add(retryFeature);
+            retryFeature.addFeatureAttributes(FeatureAttribute.target, storedWizardScreenData.getScreenTag());
+        } else {
+            onSuccessFeatureList = storedWizardScreenData.getPresenterScreen().getPresenterFeatureList();
+            onSuccessFeatureList.add(new PresenterFeature(FeatureType.htmlText, "Data will not be collected in this version."));
+        }
+        onSuccessFeatureList.add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
+        onSuccessFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
         if (storedWizardScreenData.getScreenBoolean(1)) {
-            onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.generateCompletionCode, null));
+            onSuccessFeatureList.add(new PresenterFeature(FeatureType.generateCompletionCode, null));
         }
         if (storedWizardScreenData.getScreenText(1) != null) {
-            onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-            onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(1)));
+            onSuccessFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
+            onSuccessFeatureList.add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(1)));
         }
         if (storedWizardScreenData.getScreenBoolean(0)) {
-            onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-            onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.eraseUsersDataButton, storedWizardScreenData.getNextButton()[1]));
+            onSuccessFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
+            onSuccessFeatureList.add(new PresenterFeature(FeatureType.eraseUsersDataButton, storedWizardScreenData.getNextButton()[1]));
         }
-        final PresenterFeature onErrorFeature = new PresenterFeature(FeatureType.onError, null);
-        sendAllDataFeature.getPresenterFeatureList().add(onErrorFeature);
-//        final String could_not_contact_the_server_please_check = "Could not contact the server, please check your internet connection and try again.";
-        onErrorFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, storedWizardScreenData.getScreenText(2)));
-//        final String retryButtonLabel = "Retry";
-        final PresenterFeature retryFeature = new PresenterFeature(FeatureType.targetButton, storedWizardScreenData.getNextButton()[0]);
-        onErrorFeature.getPresenterFeatureList().add(retryFeature);
-        retryFeature.addFeatureAttributes(FeatureAttribute.target, storedWizardScreenData.getScreenTag());
-
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
         return storedWizardScreenData.getPresenterScreen();
     }
