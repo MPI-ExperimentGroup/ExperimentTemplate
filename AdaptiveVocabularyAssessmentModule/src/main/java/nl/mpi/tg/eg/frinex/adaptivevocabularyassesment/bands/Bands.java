@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.ArrayList;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.Constants;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
@@ -30,26 +31,46 @@ import org.apache.commons.csv.CSVRecord;
  */
 public class Bands {
     
-    private String[][] words = new String[Constants.NUMBER_OF_BANDS][Constants.WORDS_PER_BAND];
-    
+    private final String[][] words = new String[Constants.NUMBER_OF_BANDS][Constants.WORDS_PER_BAND];
+    ArrayList<String> nonwords = new ArrayList<>(); // unknow length, cannot allocte in advance
     final File inputFileWords = new File(Constants.WORD_FILE_LOCATION);
-    final File inputFileNonWords = new File(Constants.WORD_FILE_LOCATION);
+    final File inputFileNonWords = new File(Constants.NONWORD_FILE_LOCATION);
 
     
-    public void parseInputCSV(boolean isWord) throws IOException {
+    public void parseWordInputCSV() throws IOException {
         final Reader reader = new InputStreamReader(inputFileWords.toURL().openStream(), "UTF-8"); // todo: this might need to change to "ISO-8859-1" depending on the usage
         Iterable<CSVRecord> records = CSVFormat.newFormat(';').withHeader().parse(reader);
-        int tmp =0;
-        for (CSVRecord record : records) {
-            String number = record.get("nr");
-            String bandNumber = record.get("Band");
-            String spelling = record.get("spelling");
-            System.out.println(number);
-            System.out.println(bandNumber);
-            System.out.println(spelling);
-            tmp++;
-            if (tmp>100)  return;
+        int[] counter = new int[Constants.NUMBER_OF_BANDS];
+        for (int i=0; i<Constants.NUMBER_OF_BANDS; i++){
+            counter[i] =0;
         }
+        for (CSVRecord record : records) {
+            //String number = record.get("nr");
+            int bandNumber = Integer.parseInt(record.get("Band"));
+            String spelling = record.get("spelling");
+            this.words[bandNumber-1][counter[bandNumber-1]]=spelling;
+            counter[bandNumber-1]++;
+            //System.out.println(bandNumber);
+            //System.out.println(spelling);
+           
+        }
+    }
+    
+    public void parseNonWordInputCSV() throws IOException {
+        final Reader reader = new InputStreamReader(inputFileNonWords.toURL().openStream(), "UTF-8"); // todo: this might need to change to "ISO-8859-1" depending on the usage
+        Iterable<CSVRecord> records = CSVFormat.newFormat(';').withHeader().parse(reader);
+        for (CSVRecord record : records) {
+            String spelling = record.get("spelling");
+            nonwords.add(spelling);
+        }
+    }
+    
+    public String[][] getWords(){
+        return words;
+    }
+    
+    public ArrayList<String> getNonWords(){
+        return nonwords;
     }
     
 }

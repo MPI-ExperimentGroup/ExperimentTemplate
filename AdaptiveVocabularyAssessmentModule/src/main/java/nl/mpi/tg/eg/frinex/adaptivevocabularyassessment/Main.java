@@ -33,7 +33,8 @@ public class Main {
         System.out.println("starting work ... ");
         Bands bands = new Bands();
         try {
-            bands.parseInputCSV(true);
+            bands.parseWordInputCSV();
+            bands.parseNonWordInputCSV();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

@@ -27,7 +27,7 @@ public class Constants {
     
     public static final int WORDS_PER_BAND = 40;
     
-    public static final String WORD_FILE_LOCATION = "../../Data/2.selection_words_nonwords_w.csv";
+     public static final String WORD_FILE_LOCATION = "../../Data/2.selection_words_nonwords_w.csv";
     
     public static final String NONWORD_FILE_LOCATION = "../../Data/2.selection_words_nonwords.csv";
     
