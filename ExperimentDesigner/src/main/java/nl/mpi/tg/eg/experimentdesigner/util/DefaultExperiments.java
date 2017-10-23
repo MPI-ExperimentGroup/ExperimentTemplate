@@ -86,6 +86,7 @@ public class DefaultExperiments {
         experimentRepository.save(new ManipulatedContours().getExperiment());
         experimentRepository.save(new NonWacq().getExperiment());
         experimentRepository.save(new SentencesRatingTask().getExperiment());
+        experimentRepository.save(new GuineaPigProject().getExperiment());
 
         for (Experiment experiment : experimentRepository.findAll()) {
             eventRepository.save(new PublishEvents(experiment, new Date(), new Date(), PublishEvents.PublishState.published, true, true, true));
