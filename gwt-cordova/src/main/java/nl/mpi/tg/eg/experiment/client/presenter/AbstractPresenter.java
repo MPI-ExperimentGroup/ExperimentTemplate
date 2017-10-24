@@ -258,11 +258,27 @@ public abstract class AbstractPresenter implements Presenter {
         var abstractPresenter = this;
         console.log("requestRecorderPermissions");
         if($wnd.plugins){
-            $wnd.plugins.fieldKitRecorder.requestPermissions(function () {
+            $wnd.plugins.fieldKitRecorder.requestRecorderPermissions(function () {
                 console.log("requestRecorderPermissionsOk");
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, null);
             }, function (tagvalue) {
                 console.log("requestRecorderPermissionsError: " + tagvalue);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
+            });
+        } else {
+            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
+        }
+     }-*/;
+
+    protected native void requestFilePermissions() /*-{
+        var abstractPresenter = this;
+        console.log("requestFilePermissions");
+        if($wnd.plugins){
+            $wnd.plugins.fieldKitRecorder.requestFilePermissions(function () {
+                console.log("requestFilePermissionsOk");
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, null);
+            }, function (tagvalue) {
+                console.log("requestFilePermissionsError: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
             });
         } else {
