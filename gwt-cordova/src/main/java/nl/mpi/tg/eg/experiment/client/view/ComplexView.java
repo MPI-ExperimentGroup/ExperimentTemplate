@@ -25,6 +25,10 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.event.dom.client.TouchCancelEvent;
+import com.google.gwt.event.dom.client.TouchEndEvent;
+import com.google.gwt.event.dom.client.TouchMoveEvent;
+import com.google.gwt.event.dom.client.TouchStartEvent;
 //import com.google.gwt.event.dom.client.DragStartEvent;
 //import com.google.gwt.event.dom.client.DragStartHandler;
 import com.google.gwt.user.client.Window;
@@ -48,6 +52,7 @@ import java.util.List;
 import nl.mpi.tg.eg.experiment.client.Messages;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.TouchInputCapture;
 
 /**
  * @since Jan 8, 2015 5:01:05 PM (creation date)
@@ -125,8 +130,11 @@ public class ComplexView extends SimpleView {
         }
     }
 
-    public void startTable() {
+    public void startTable(final String styleName) {
         gridPanel = new FlexTable();
+        if (styleName != null) {
+            gridPanel.addStyleName(styleName);
+        }
         outerPanel.add(gridPanel);
     }
 
@@ -313,6 +321,14 @@ public class ComplexView extends SimpleView {
         } else {
             addWidget(verticalPanel);
         }
+    }
+
+    public void addTouchInputCapture(TouchInputCapture touchInputCapture) {
+        RootPanel root = RootPanel.get();
+        domHandlerArray.add(root.addDomHandler(touchInputCapture, TouchStartEvent.getType()));
+        domHandlerArray.add(root.addDomHandler(touchInputCapture, TouchMoveEvent.getType()));
+        domHandlerArray.add(root.addDomHandler(touchInputCapture, TouchEndEvent.getType()));
+        domHandlerArray.add(root.addDomHandler(touchInputCapture, TouchCancelEvent.getType()));
     }
 
     private void addHotKeyListner(final PresenterEventListner presenterListerner, final SingleShotEventListner singleShotEventListner) {
