@@ -329,6 +329,44 @@ $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 25
     transform: scale(4,4) translate(0%,10%);
 }*/
 
+.gwt-Button.titleBarButton, .titleBarButton {
+    top: 0px;
+    right: 10px;
+    position: fixed;
+}
+.gwt-Button.optionButton.rightOverlayButton, .borderedVideoRight {
+    right: 1vw;
+}
+.gwt-Button.optionButton.leftOverlayButton, .borderedVideoLeft {
+    left: 1vw;
+}
+.gwt-Button.optionButton.rightOverlayButton:hover, .gwt-Button.optionButton.leftOverlayButton:hover,
+.gwt-Button.optionButton.rightOverlayButton:active, .gwt-Button.optionButton.leftOverlayButton:active,
+{
+    opacity: 0.5;
+}
+.gwt-Button.optionButton.rightOverlayButton, .gwt-Button.optionButton.leftOverlayButton {
+    top: 80px;
+    position: fixed;
+    width: 45vw;
+    height: 34vw;
+    opacity: 0.0;
+    background: grey;
+    color: grey;
+}
+.borderedVideoLeft, .borderedVideoRight {
+    top: 80px;
+    position: fixed;
+    width: 43vw;
+    height: 33vw;
+    padding: 1vw;
+    border-color: $primaryColour2;
+    border-radius: 15px;
+    outline: none;
+    border-width: 1px;
+    border-style: solid;
+}
+
 .svgPopupPanel .gwt-Button, 
 .stimulusHelpPanel .gwt-Button,
 .choosePlayerList,
