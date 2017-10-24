@@ -17,8 +17,14 @@
  */
 package nl.mpi.tg.eg.experiment.client.listener;
 
-import com.google.gwt.user.client.Event;
-import com.google.gwt.user.client.EventListener;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.dom.client.Touch;
+import com.google.gwt.event.dom.client.HandlesAllTouchEvents;
+import com.google.gwt.event.dom.client.TouchCancelEvent;
+import com.google.gwt.event.dom.client.TouchEndEvent;
+import com.google.gwt.event.dom.client.TouchEvent;
+import com.google.gwt.event.dom.client.TouchMoveEvent;
+import com.google.gwt.event.dom.client.TouchStartEvent;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,7 +32,7 @@ import java.util.Set;
  * @since Oct 23, 2017 2:10:09 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public abstract class TouchInputCapture implements EventListener {
+public abstract class TouchInputCapture extends HandlesAllTouchEvents {
 
     private Set<String> releventStyleNames = new HashSet<>();
 
@@ -36,20 +42,35 @@ public abstract class TouchInputCapture implements EventListener {
 
     public abstract void setDebugLabel(String debugLabel);
 
+    private void touchesToDebugLabel(TouchEvent event) {
+        StringBuilder builder = new StringBuilder();
+        final JsArray<Touch> targetTouches = event.getTargetTouches();
+        for (int index = 0; index < targetTouches.length(); index++) {
+            builder.append(targetTouches.get(index).getScreenX());
+            builder.append(", ");
+            builder.append(targetTouches.get(index).getScreenY());
+            builder.append(" ");
+        }
+        setDebugLabel(builder.toString());
+    }
+
     @Override
-    public void onBrowserEvent(Event event) {
-        setDebugLabel(event.toString());
-        if (event.equals(Event.ONTOUCHSTART)) {
-            setDebugLabel("ONTOUCHSTART");
-        }
-        if (event.equals(Event.ONTOUCHMOVE)) {
-            setDebugLabel("ONTOUCHMOVE");
-        }
-        if (event.equals(Event.ONTOUCHCANCEL)) {
-            setDebugLabel("ONTOUCHCANCEL");
-        }
-        if (event.equals(Event.ONTOUCHEND)) {
-            setDebugLabel("ONTOUCHEND");
-        }
+    public void onTouchStart(TouchStartEvent event) {
+        touchesToDebugLabel(event);
+    }
+
+    @Override
+    public void onTouchMove(TouchMoveEvent event) {
+        touchesToDebugLabel(event);
+    }
+
+    @Override
+    public void onTouchEnd(TouchEndEvent event) {
+        touchesToDebugLabel(event);
+    }
+
+    @Override
+    public void onTouchCancel(TouchCancelEvent event) {
+        touchesToDebugLabel(event);
     }
 }
