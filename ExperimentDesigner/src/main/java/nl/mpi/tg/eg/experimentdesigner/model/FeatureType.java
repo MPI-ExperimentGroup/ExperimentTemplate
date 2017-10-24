@@ -42,7 +42,7 @@ public enum FeatureType {
     currentStimulusHasTag(true, false, new FeatureAttribute[]{msToNext}, true, false, Contitionals.hasStimulusTag),
     targetButton(false, true, new FeatureAttribute[]{target, styleName}),
     actionButton(true, true, new FeatureAttribute[]{hotKey, styleName}),
-    touchInputZone(true, false, new FeatureAttribute[]{eventTag, hotKey, styleName}),
+    touchInputZone(true, false, new FeatureAttribute[]{showControls, styleName}),
     sendGroupMessageButton(false, true, new FeatureAttribute[]{hotKey, eventTag, repeatIncorrect, incrementPhase, /* incrementPhaseOnDictionaryincrementStimulus */}),
     sendGroupMessage(false, false, new FeatureAttribute[]{eventTag, incrementPhase /*, incrementStimulus */}),
     sendGroupStoredMessage(false, false, new FeatureAttribute[]{eventTag, incrementPhase /*, incrementStimulus */}),
@@ -93,9 +93,9 @@ public enum FeatureType {
     hasGetParameter(true, false, new FeatureAttribute[]{parameterName}, false, false, Contitionals.hasTrueFalseCondition),
     autoNextPresenter(false, false, new FeatureAttribute[]{target}),
     logTimeStamp(false, false, new FeatureAttribute[]{eventTag}),
-    audioButton(true, false, new FeatureAttribute[]{eventTag, poster, autoPlay, hotKey}),
+    audioButton(true, false, new FeatureAttribute[]{eventTag, poster, autoPlay, hotKey, styleName}),
     preloadAllStimuli(true, false, null, true, false, Contitionals.none),
-    showStimulus(true, false, null, false, false, Contitionals.none), // todo: should this be here?
+    showStimulus(true, false, null, false, false, Contitionals.none), // todo: should this be here? or should it have an increment for next back etc
     showStimulusGrid(true, false, new FeatureAttribute[]{maxStimuli, columnCount, imageWidth, eventTag, animate}, true, false, Contitionals.hasCorrectIncorrect),
     matchingStimulusGrid(false, false, new FeatureAttribute[]{columnCount, maxWidth, animate, matchingRegex, maxStimuli, randomise}, false, false, Contitionals.hasCorrectIncorrect),
     pause(true, false, new FeatureAttribute[]{msToNext}),
@@ -120,7 +120,7 @@ public enum FeatureType {
     singleUser(true, false, null),
     aboveThreshold(true, false, null),
     belowThreshold(true, false, null),
-    table(true, false, null),
+    table(true, false, new FeatureAttribute[]{styleName}),
     row(true, false, null),
     column(true, false, new FeatureAttribute[]{styleName}),
     stimulusImage(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, animate, matchingRegex, replacement}), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
