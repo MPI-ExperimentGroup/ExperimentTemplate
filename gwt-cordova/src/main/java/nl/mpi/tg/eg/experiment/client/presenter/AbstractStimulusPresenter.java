@@ -46,6 +46,7 @@ import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.GroupActivityListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.TouchInputCapture;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
@@ -91,6 +92,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     private final ArrayList<StimulusFreeText> stimulusFreeTextList = new ArrayList<>();
     MatchingStimuliGroup matchingStimuliGroup = null;
     private boolean hasSubdirectories = false;
+    private TouchInputCapture touchInputCapture = null;
 
     protected enum AnimateTypes {
         bounce, none, stimuliCode
@@ -406,7 +408,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void table(final TimedStimulusListener timedStimulusListener) {
-        ((TimedStimulusView) simpleView).startTable();
+        table(null, timedStimulusListener);
+    }
+
+    protected void table(final String styleName, final TimedStimulusListener timedStimulusListener) {
+        ((TimedStimulusView) simpleView).startTable(styleName);
         timedStimulusListener.postLoadTimerFired();
         ((TimedStimulusView) simpleView).endTable();
     }
@@ -421,7 +427,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         column(null, timedStimulusListener);
     }
 
-    protected void column(String styleName, final TimedStimulusListener timedStimulusListener) {
+    protected void column(final String styleName, final TimedStimulusListener timedStimulusListener) {
         ((TimedStimulusView) simpleView).startCell(styleName);
         timedStimulusListener.postLoadTimerFired();
         ((TimedStimulusView) simpleView).endCell();
@@ -1402,27 +1408,26 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addOptionButton(eventListner);
     }
 
-    protected void touchInputZone(final String eventTag, final String styleName, final int hotKey, final TimedStimulusListener timedStimulusListener) {
-        // @todo: replace this button with the touch input 
-        PresenterEventListner eventListner = new PresenterEventListner() {
-
-            @Override
-            public String getLabel() {
-                return styleName;
+    protected void touchInputZone(final boolean showDebug, final String styleName, final TimedStimulusListener timedStimulusListener) {
+        if (touchInputCapture == null) {
+            final HTML debugHtmlLabel;
+            if (showDebug) {
+                debugHtmlLabel = ((TimedStimulusView) simpleView).addHtmlText("TouchInputDebug");
+            } else {
+                debugHtmlLabel = null;
             }
+            touchInputCapture = new TouchInputCapture() {
+                @Override
+                public void setDebugLabel(String debugLabel) {
+                    if (debugHtmlLabel != null) {
+                        debugHtmlLabel.setHTML(debugLabel);
+                    }
+                }
 
-            @Override
-            public int getHotKey() {
-                return hotKey;
-            }
-
-            @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                timedStimulusListener.postLoadTimerFired();
-            }
-        };
-        nextButtonEventListnerList.add(eventListner);
-        final Button prevButton = ((TimedStimulusView) simpleView).addOptionButton(eventListner);
+            };
+            ((TimedStimulusView) simpleView).addTouchInputCapture(touchInputCapture);
+        }
+        touchInputCapture.addReleventStyleName(styleName);
     }
 
     protected void prevStimulusButton(final String eventTag, final String buttonLabel, final boolean repeatIncorrect, final int hotKey) {
@@ -1533,6 +1538,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).stopTimers();
         ((TimedStimulusView) simpleView).stopAudio();
         ((TimedStimulusView) simpleView).stopVideo();
+        ((TimedStimulusView) simpleView).clearDomHandlers();
         super.savePresenterState();
         stopAudioRecorder();
     }
