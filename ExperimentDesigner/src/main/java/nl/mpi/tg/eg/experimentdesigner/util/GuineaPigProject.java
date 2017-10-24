@@ -28,6 +28,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardExistingUserCheckScree
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardGridStimulusScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMenuScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardSelectUserScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
 
 /**
  * @since Mar 23, 2017 2:50:16 PM (creation date)
@@ -57,6 +58,10 @@ public class GuineaPigProject {
         wizardData.setTextFontSize(17);
         wizardData.setObfuscateScreenNames(false);
 
+        final WizardTextScreen bluetoothInstructionsScreen = new WizardTextScreen("Bluetooth Instructions", "When the bluetooth controller is connected the virtual keyboard will not show, to enter participant metadata please turn off the bluetooth controller so that the virtual keyboard can be shown. To start the bluetooth controller turn it on and press the button combination M+A.", "Volgende");
+        wizardData.addScreen(bluetoothInstructionsScreen);
+
+        // @TODO: add use of the sound files Correct and Incorrect
         final WizardExistingUserCheckScreen existingUserCheckScreen = new WizardExistingUserCheckScreen("Start", "New interview", "Resume interview", "Begin a new interview with a new participant", "Resume an interview with an existing participant");
         final WizardSelectUserScreen selectUserScreen = new WizardSelectUserScreen("Select Participant");
         wizardData.addScreen(existingUserCheckScreen);
@@ -68,7 +73,6 @@ public class GuineaPigProject {
 //        WizardAgreementScreen agreementScreen = new WizardAgreementScreen("Toestemming", agreementScreenText, "Akkoord");
 //        agreementScreen.setMenuLabel("Terug");
         final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
-        wizardEditUserScreen.setScreenText("When the bluetooth controller is connected the virtual keyboard will not show, to enter participant metadata please turn off the bluetooth controller so that the virtual keyboard can be shown. To start the bluetooth controller turn it on and press the button combination M+A.");
         wizardEditUserScreen.setScreenTitle("Gegevens");
         wizardEditUserScreen.setMenuLabel("Terug");
         wizardEditUserScreen.setScreenTag("Edit User");
@@ -88,11 +92,11 @@ public class GuineaPigProject {
         wizardData.addScreen(wizardEditUserScreen);
 
         String backgroundImage = "huisje_02.jpg";
-        WizardAudioTestScreen introductionAudio1 = new WizardAudioTestScreen("Introduction 1", "Intro text", "continue button", "intro_1");
+        WizardAudioTestScreen introductionAudio1 = new WizardAudioTestScreen("Introduction 1", "&nbsp;", "continue button", "intro_1");
         wizardData.addScreen(introductionAudio1);
-        WizardAudioTestScreen introductionAudio2 = new WizardAudioTestScreen("Introduction 2", "Intro text", "continue button", "intro_2");
+        WizardAudioTestScreen introductionAudio2 = new WizardAudioTestScreen("Introduction 2", "&nbsp;", "continue button", "intro_2");
         wizardData.addScreen(introductionAudio2);
-        WizardAudioTestScreen introductionAudio3 = new WizardAudioTestScreen("Introduction 3", "Intro text", "continue button", "intro_3");
+        WizardAudioTestScreen introductionAudio3 = new WizardAudioTestScreen("Introduction 3", "&nbsp;", "continue button", "intro_3");
         wizardData.addScreen(introductionAudio3);
         introductionAudio1.setBackgroundImage(backgroundImage);
         introductionAudio2.setBackgroundImage(backgroundImage);
@@ -106,6 +110,9 @@ public class GuineaPigProject {
         introductionAudio1.setNextHotKey("ENTER");
         introductionAudio2.setNextHotKey("ENTER");
         introductionAudio3.setNextHotKey("ENTER");
+        introductionAudio1.setStyleName("titleBarButton");
+        introductionAudio2.setStyleName("titleBarButton");
+        introductionAudio3.setStyleName("titleBarButton");
 
 //        String[] fillerList = new String[]{};
         //            "intro_1",
@@ -167,8 +174,12 @@ public class GuineaPigProject {
                 "Einde van het experiment",
                 "Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.",
                 "Probeer opnieuw");
+        completionScreen.setSendData(false);
         wizardData.addScreen(completionScreen);
         completionScreen.setScreenTag("completion");
+
+        bluetoothInstructionsScreen.setBackWizardScreen(menuScreen);
+        bluetoothInstructionsScreen.setNextWizardScreen(introductionAudio1);
 
 //        existingUserCheckScreen.setNextWizardScreen(selectUserScreen);
         selectUserScreen.setBackWizardScreen(existingUserCheckScreen);
