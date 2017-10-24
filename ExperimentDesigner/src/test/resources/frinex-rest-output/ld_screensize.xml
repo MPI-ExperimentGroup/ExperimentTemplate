@@ -73,28 +73,31 @@
                 <hasMoreStimulus>
                     <backgroundImage msToNext="0" src="" styleName=""/>
                     <clearPage styleName="fullScreenWidth"/>
-                    <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" showPlaybackIndicator="true">
-                        <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" showPlaybackIndicator="true"/>
-                        <table>
-                            <row>
-                                <column>
-                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
-                                </column>
-                                <column styleName="middlePadding"/>
-                                <column>
-                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
-                                        <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="true">
-                                            <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton"/>
-                                            <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton"/>
+                    <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" showPlaybackIndicator="false">
+                        <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" showPlaybackIndicator="false"/>
+                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
+                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
+                            <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="false">
+                                <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton">
+                                    <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
+                                </actionButton>
+                                <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton">
+                                    <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
+                                </actionButton>
+                                <table styleName="titleBarButton">
+                                    <row>
+                                        <column>
                                             <actionButton featureText="Repeat" eventTag="Repeat" hotKey="F6">
                                                 <showStimulus/>
                                             </actionButton>
+                                        </column>
+                                        <column>
                                             <nextStimulusButton featureText="Next" eventTag="nextStimulusR" hotKey="ENTER" repeatIncorrect="false"/>
-                                        </stimulusCodeAudio>
-                                    </stimulusCodeVideo>
-                                </column>
-                            </row>
-                        </table>
+                                        </column>
+                                    </row>
+                                </table>
+                            </stimulusCodeAudio>
+                        </stimulusCodeVideo>
                     </stimulusCodeAudio>
                     <touchInputZone styleName="borderedVideoLeft" showControls="true"/>
                     <touchInputZone styleName="borderedVideoRight" showControls="true"/>
@@ -121,28 +124,31 @@
                 <hasMoreStimulus>
                     <backgroundImage msToNext="0" src="" styleName=""/>
                     <clearPage styleName="fullScreenWidth"/>
-                    <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" showPlaybackIndicator="true">
-                        <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" showPlaybackIndicator="true"/>
-                        <table>
-                            <row>
-                                <column>
-                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
-                                </column>
-                                <column styleName="middlePadding"/>
-                                <column>
-                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
-                                        <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="true">
-                                            <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton"/>
-                                            <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton"/>
+                    <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" showPlaybackIndicator="false">
+                        <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" showPlaybackIndicator="false"/>
+                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
+                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
+                            <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="false">
+                                <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton">
+                                    <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
+                                </actionButton>
+                                <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton">
+                                    <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
+                                </actionButton>
+                                <table styleName="titleBarButton">
+                                    <row>
+                                        <column>
                                             <actionButton featureText="Repeat" eventTag="Repeat" hotKey="F6">
                                                 <showStimulus/>
                                             </actionButton>
+                                        </column>
+                                        <column>
                                             <nextStimulusButton featureText="Next" eventTag="nextStimulusR" hotKey="ENTER" repeatIncorrect="false"/>
-                                        </stimulusCodeAudio>
-                                    </stimulusCodeVideo>
-                                </column>
-                            </row>
-                        </table>
+                                        </column>
+                                    </row>
+                                </table>
+                            </stimulusCodeAudio>
+                        </stimulusCodeVideo>
                     </stimulusCodeAudio>
                     <touchInputZone styleName="borderedVideoLeft" showControls="true"/>
                     <touchInputZone styleName="borderedVideoRight" showControls="true"/>
@@ -163,28 +169,31 @@
                 <hasMoreStimulus>
                     <backgroundImage msToNext="0" src="" styleName=""/>
                     <clearPage styleName="fullScreenWidth"/>
-                    <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" showPlaybackIndicator="true">
-                        <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" showPlaybackIndicator="true"/>
-                        <table>
-                            <row>
-                                <column>
-                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
-                                </column>
-                                <column styleName="middlePadding"/>
-                                <column>
-                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
-                                        <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="true">
-                                            <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton"/>
-                                            <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton"/>
+                    <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" showPlaybackIndicator="false">
+                        <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" showPlaybackIndicator="false"/>
+                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
+                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
+                            <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="false">
+                                <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton">
+                                    <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
+                                </actionButton>
+                                <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton">
+                                    <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
+                                </actionButton>
+                                <table styleName="titleBarButton">
+                                    <row>
+                                        <column>
                                             <actionButton featureText="Repeat" eventTag="Repeat" hotKey="F6">
                                                 <showStimulus/>
                                             </actionButton>
+                                        </column>
+                                        <column>
                                             <nextStimulusButton featureText="Next" eventTag="nextStimulusR" hotKey="ENTER" repeatIncorrect="false"/>
-                                        </stimulusCodeAudio>
-                                    </stimulusCodeVideo>
-                                </column>
-                            </row>
-                        </table>
+                                        </column>
+                                    </row>
+                                </table>
+                            </stimulusCodeAudio>
+                        </stimulusCodeVideo>
                     </stimulusCodeAudio>
                     <touchInputZone styleName="borderedVideoLeft" showControls="true"/>
                     <touchInputZone styleName="borderedVideoRight" showControls="true"/>
@@ -205,28 +214,31 @@
                 <hasMoreStimulus>
                     <backgroundImage msToNext="0" src="" styleName=""/>
                     <clearPage styleName="fullScreenWidth"/>
-                    <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" showPlaybackIndicator="true">
-                        <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" showPlaybackIndicator="true"/>
-                        <table>
-                            <row>
-                                <column>
-                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
-                                </column>
-                                <column styleName="middlePadding"/>
-                                <column>
-                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
-                                        <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="true">
-                                            <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton"/>
-                                            <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton"/>
+                    <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" showPlaybackIndicator="false">
+                        <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" showPlaybackIndicator="false"/>
+                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
+                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
+                            <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="false">
+                                <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton">
+                                    <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
+                                </actionButton>
+                                <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton">
+                                    <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
+                                </actionButton>
+                                <table styleName="titleBarButton">
+                                    <row>
+                                        <column>
                                             <actionButton featureText="Repeat" eventTag="Repeat" hotKey="F6">
                                                 <showStimulus/>
                                             </actionButton>
+                                        </column>
+                                        <column>
                                             <nextStimulusButton featureText="Next" eventTag="nextStimulusR" hotKey="ENTER" repeatIncorrect="false"/>
-                                        </stimulusCodeAudio>
-                                    </stimulusCodeVideo>
-                                </column>
-                            </row>
-                        </table>
+                                        </column>
+                                    </row>
+                                </table>
+                            </stimulusCodeAudio>
+                        </stimulusCodeVideo>
                     </stimulusCodeAudio>
                     <touchInputZone styleName="borderedVideoLeft" showControls="true"/>
                     <touchInputZone styleName="borderedVideoRight" showControls="true"/>
@@ -247,28 +259,31 @@
                 <hasMoreStimulus>
                     <backgroundImage msToNext="0" src="" styleName=""/>
                     <clearPage styleName="fullScreenWidth"/>
-                    <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" showPlaybackIndicator="true">
-                        <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" showPlaybackIndicator="true"/>
-                        <table>
-                            <row>
-                                <column>
-                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
-                                </column>
-                                <column styleName="middlePadding"/>
-                                <column>
-                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
-                                        <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="true">
-                                            <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton"/>
-                                            <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton"/>
+                    <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" showPlaybackIndicator="false">
+                        <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" showPlaybackIndicator="false"/>
+                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
+                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
+                            <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="false">
+                                <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton">
+                                    <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
+                                </actionButton>
+                                <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton">
+                                    <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
+                                </actionButton>
+                                <table styleName="titleBarButton">
+                                    <row>
+                                        <column>
                                             <actionButton featureText="Repeat" eventTag="Repeat" hotKey="F6">
                                                 <showStimulus/>
                                             </actionButton>
+                                        </column>
+                                        <column>
                                             <nextStimulusButton featureText="Next" eventTag="nextStimulusR" hotKey="ENTER" repeatIncorrect="false"/>
-                                        </stimulusCodeAudio>
-                                    </stimulusCodeVideo>
-                                </column>
-                            </row>
-                        </table>
+                                        </column>
+                                    </row>
+                                </table>
+                            </stimulusCodeAudio>
+                        </stimulusCodeVideo>
                     </stimulusCodeAudio>
                     <touchInputZone styleName="borderedVideoLeft" showControls="true"/>
                     <touchInputZone styleName="borderedVideoRight" showControls="true"/>
