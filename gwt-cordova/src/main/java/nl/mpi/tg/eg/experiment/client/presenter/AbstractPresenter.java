@@ -244,7 +244,7 @@ public abstract class AbstractPresenter implements Presenter {
         if($wnd.plugins){
             $wnd.plugins.fieldKitRecorder.writeStimuliData(function (tagvalue) {
                 console.log("writeStimuliData: " + tagvalue);
-                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, tagvalue);
+//                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, tagvalue);
             }, function (tagvalue) {
                 console.log("startAudioRecorderError: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
@@ -276,7 +276,7 @@ public abstract class AbstractPresenter implements Presenter {
         if($wnd.plugins){
             $wnd.plugins.fieldKitRecorder.requestFilePermissions(function () {
                 console.log("requestFilePermissionsOk");
-                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, null);
+//                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, null);
             }, function (tagvalue) {
                 console.log("requestFilePermissionsError: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
