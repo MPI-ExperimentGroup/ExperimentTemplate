@@ -261,7 +261,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         stimulusCodeVideoL.addFeatureAttributes(FeatureAttribute.maxWidth, "100");
         stimulusCodeVideoL.addFeatureAttributes(FeatureAttribute.showControls, "false");
 //        stimulusCodeVideoL.addFeatureAttributes(FeatureAttribute.styleName, "leftHalfScreen");
-        stimulusCodeVideoL.addFeatureAttributes(FeatureAttribute.styleName, "");
+        stimulusCodeVideoL.addFeatureAttributes(FeatureAttribute.styleName, "borderedVideoLeft");
         final PresenterFeature stimulusCodeVideoR = new PresenterFeature(FeatureType.stimulusCodeVideo, null);
         stimulusCodeVideoR.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>_R");
         stimulusCodeVideoR.addFeatureAttributes(FeatureAttribute.msToNext, "0");
@@ -270,7 +270,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         stimulusCodeVideoR.addFeatureAttributes(FeatureAttribute.maxWidth, "100");
         stimulusCodeVideoR.addFeatureAttributes(FeatureAttribute.showControls, "false");
 //        stimulusCodeVideoR.addFeatureAttributes(FeatureAttribute.styleName, "rightHalfScreen");
-        stimulusCodeVideoR.addFeatureAttributes(FeatureAttribute.styleName, "");
+        stimulusCodeVideoR.addFeatureAttributes(FeatureAttribute.styleName, "borderedVideoRight");
         stimulusCodeVideoR.getPresenterFeatureList().add(stimulusCodeAudio3);
 //        stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         final PresenterFeature tableFeature = new PresenterFeature(FeatureType.table, null);
@@ -279,19 +279,24 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         tableFeature.getPresenterFeatureList().add(rowFeature);
         final PresenterFeature leftColumnFeature = new PresenterFeature(FeatureType.column, null);
         rowFeature.getPresenterFeatureList().add(leftColumnFeature);
+        final PresenterFeature middleColumnFeature = new PresenterFeature(FeatureType.column, null);
+//        final PresenterFeature middlePadding = new PresenterFeature(FeatureType.htmlText, "&nbsp;");
+        middleColumnFeature.addFeatureAttributes(FeatureAttribute.styleName, "middlePadding");
+//        middleColumnFeature.getPresenterFeatureList().add(middlePadding);
+        rowFeature.getPresenterFeatureList().add(middleColumnFeature);
         final PresenterFeature rightColumnFeature = new PresenterFeature(FeatureType.column, null);
         rowFeature.getPresenterFeatureList().add(rightColumnFeature);
         leftColumnFeature.getPresenterFeatureList().add(stimulusCodeVideoL);
         rightColumnFeature.getPresenterFeatureList().add(stimulusCodeVideoR);
         final PresenterFeature touchInputZoneL = new PresenterFeature(FeatureType.touchInputZone, null);
-        touchInputZoneL.addFeatureAttributes(FeatureAttribute.eventTag, "leftHalfScreen");
-        touchInputZoneL.addFeatureAttributes(FeatureAttribute.styleName, "leftHalfScreen");
-        touchInputZoneL.addFeatureAttributes(FeatureAttribute.hotKey, "Z");
+        touchInputZoneL.addFeatureAttributes(FeatureAttribute.showControls, "true");
+        touchInputZoneL.addFeatureAttributes(FeatureAttribute.styleName, "borderedVideoLeft"); // style name is used to select an existing DOM object for touch interaction
+//        touchInputZoneL.addFeatureAttributes(FeatureAttribute.hotKey, "Z");
         hasMoreStimulusFeature.getPresenterFeatureList().add(touchInputZoneL);
         final PresenterFeature touchInputZoneR = new PresenterFeature(FeatureType.touchInputZone, null);
-        touchInputZoneR.addFeatureAttributes(FeatureAttribute.eventTag, "rightHalfScreen");
-        touchInputZoneR.addFeatureAttributes(FeatureAttribute.styleName, "rightHalfScreen");
-        touchInputZoneR.addFeatureAttributes(FeatureAttribute.hotKey, "M");
+        touchInputZoneR.addFeatureAttributes(FeatureAttribute.showControls, "true");
+        touchInputZoneR.addFeatureAttributes(FeatureAttribute.styleName, "borderedVideoRight");
+//        touchInputZoneR.addFeatureAttributes(FeatureAttribute.hotKey, "M");
         hasMoreStimulusFeature.getPresenterFeatureList().add(touchInputZoneR);
 //        final PresenterFeature nextStimulusL = new PresenterFeature(FeatureType.nextStimulus, null);
 //        nextStimulusL.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusL");
