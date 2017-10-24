@@ -46,16 +46,16 @@ public class FieldKitRecorder extends CordovaPlugin {
 
     @Override
     public boolean execute(final String action, final JSONArray args, final CallbackContext callbackContext) throws JSONException {
-        if (action.equals("requestPermissions")) {
-            System.out.println("action: requestPermissions");
+        if (action.equals("requestRecorderPermissions")) {
+            System.out.println("action: requestRecorderPermissions");
             if (!cordova.hasPermission(Manifest.permission.RECORD_AUDIO)
-//                    || !cordova.hasPermission(Manifest.permission.CAMERA)
+                    || !cordova.hasPermission(Manifest.permission.CAMERA)
                     //                    || !cordova.hasPermission(Manifest.permission.MODIFY_AUDIO_SETTINGS)
                     //                    || !cordova.hasPermission(Manifest.permission.MEDIA_CONTENT_CONTROL) // MODIFY_AUDIO_SETTINGS MEDIA_CONTENT_CONTROL?
                     || !cordova.hasPermission(Manifest.permission.READ_EXTERNAL_STORAGE) // MODIFY_AUDIO_SETTINGS MEDIA_CONTENT_CONTROL?
                     || !cordova.hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                 String[] permissions = {
-//                    Manifest.permission.CAMERA,
+                    Manifest.permission.CAMERA,
                     Manifest.permission.RECORD_AUDIO,
                     //                Manifest.permission.MODIFY_AUDIO_SETTINGS,
                     Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -71,8 +71,24 @@ public class FieldKitRecorder extends CordovaPlugin {
                 return true;
             }
         }
-        if (!cordova.hasPermission(Manifest.permission.RECORD_AUDIO)
-                || !cordova.hasPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+        if (action.equals("requestFilePermissions")) {
+            System.out.println("action: requestFilePermissions");
+            if (!cordova.hasPermission(Manifest.permission.READ_EXTERNAL_STORAGE) // MODIFY_AUDIO_SETTINGS MEDIA_CONTENT_CONTROL?
+                    || !cordova.hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                String[] permissions = {
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+                };
+                callbackContextTemp = callbackContext;
+                cordova.requestPermissions(this, 0, permissions);
+                return true;
+            } else {
+                callbackContext.success();
+                return true;
+            }
+        }
+        if (//!cordova.hasPermission(Manifest.permission.RECORD_AUDIO)||
+                !cordova.hasPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
                 || !cordova.hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             // only if permissions are available should we continue at this point
             callbackContext.error("Permissions not available");
