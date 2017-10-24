@@ -5,7 +5,11 @@
         <field controlledMessage="Voer een getal." controlledRegex="[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]" postName="datOfBirth" preventServerDuplicates="false" registrationField="Geboortedatum"/>
         <field controlledMessage="." controlledRegex="|man|vrouw|anders" postName="gender" preventServerDuplicates="false" registrationField="Geslacht"/>
     </metadata>
-    <presenter displayOrder="1" menuLabel="Start" type="metadata" self="Start" title="Start">
+    <presenter back="Menu" displayOrder="1" menuLabel="Bluetooth Instructions" type="text" self="Bluetooth_Instructions" title="Bluetooth Instructions">
+        <htmlText featureText="When the bluetooth controller is connected the virtual keyboard will not show, to enter participant metadata please turn off the bluetooth controller so that the virtual keyboard can be shown. To start the bluetooth controller turn it on and press the button combination M+A."/>
+        <targetButton featureText="Volgende" hotKey="SPACE" target="Introduction_1"/>
+    </presenter>
+    <presenter displayOrder="2" menuLabel="Start" type="metadata" self="Start" title="Start">
         <existingUserCheck>
             <multipleUsers>
                 <plainText featureText="Begin a new interview with a new participant"/>
@@ -19,14 +23,13 @@
             </singleUser>
         </existingUserCheck>
     </presenter>
-    <presenter back="Start" displayOrder="2" menuLabel="Select Participant" next="Edit_User" type="metadata" self="SelectUser" title="Select Participant">
+    <presenter back="Start" displayOrder="3" menuLabel="Select Participant" next="Edit_User" type="metadata" self="SelectUser" title="Select Participant">
         <selectUserMenu/>
     </presenter>
-    <presenter displayOrder="3" menuLabel="Menu" type="menu" self="Menu" title="Menu">
+    <presenter displayOrder="4" menuLabel="Menu" type="menu" self="Menu" title="Menu">
         <allMenuItems/>
     </presenter>
-    <presenter back="SelectUser" displayOrder="4" menuLabel="Terug" next="Introduction_1" type="metadata" self="Edit_User" title="Gegevens">
-        <htmlText featureText="When the bluetooth controller is connected the virtual keyboard will not show, to enter participant metadata please turn off the bluetooth controller so that the virtual keyboard can be shown. To start the bluetooth controller turn it on and press the button combination M+A."/>
+    <presenter back="SelectUser" displayOrder="5" menuLabel="Terug" next="Introduction_1" type="metadata" self="Edit_User" title="Gegevens">
         <metadataField fieldName="workerId"/>
         <metadataField fieldName="datOfBirth"/>
         <metadataField fieldName="gender"/>
@@ -37,34 +40,34 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Menu" displayOrder="5" menuLabel="Introduction 1" next="Introduction_2" type="stimulus" self="Introduction_1" title="Introduction 1">
+    <presenter back="Menu" displayOrder="6" menuLabel="Introduction 1" next="Introduction_2" type="stimulus" self="Introduction_1" title="Introduction 1">
         <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName=""/>
-        <htmlText featureText="Intro text"/>
-        <audioButton eventTag="intro_1" src="intro_1" hotKey="F6" autoPlay="false" poster="intro_1.jpg">
+        <htmlText featureText="&amp;nbsp;"/>
+        <audioButton eventTag="intro_1" src="intro_1" hotKey="F6" styleName="titleBarButton" autoPlay="false" poster="intro_1.jpg">
             <actionButton featureText="continue button" hotKey="ENTER">
                 <autoNextPresenter/>
             </actionButton>
         </audioButton>
     </presenter>
-    <presenter back="Menu" displayOrder="6" menuLabel="Introduction 2" next="Introduction_3" type="stimulus" self="Introduction_2" title="Introduction 2">
+    <presenter back="Menu" displayOrder="7" menuLabel="Introduction 2" next="Introduction_3" type="stimulus" self="Introduction_2" title="Introduction 2">
         <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName=""/>
-        <htmlText featureText="Intro text"/>
-        <audioButton eventTag="intro_2" src="intro_2" hotKey="F6" autoPlay="true" poster="intro_2.jpg">
+        <htmlText featureText="&amp;nbsp;"/>
+        <audioButton eventTag="intro_2" src="intro_2" hotKey="F6" styleName="titleBarButton" autoPlay="true" poster="intro_2.jpg">
             <actionButton featureText="continue button" hotKey="ENTER">
                 <autoNextPresenter/>
             </actionButton>
         </audioButton>
     </presenter>
-    <presenter back="Menu" displayOrder="7" menuLabel="Introduction 3" next="Training" type="stimulus" self="Introduction_3" title="Introduction 3">
+    <presenter back="Menu" displayOrder="8" menuLabel="Introduction 3" next="Training" type="stimulus" self="Introduction_3" title="Introduction 3">
         <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName=""/>
-        <htmlText featureText="Intro text"/>
-        <audioButton eventTag="intro_3" src="intro_3" hotKey="F6" autoPlay="true" poster="intro_3.jpg">
+        <htmlText featureText="&amp;nbsp;"/>
+        <audioButton eventTag="intro_3" src="intro_3" hotKey="F6" styleName="titleBarButton" autoPlay="true" poster="intro_3.jpg">
             <actionButton featureText="continue button" hotKey="ENTER">
                 <autoNextPresenter/>
             </actionButton>
         </audioButton>
     </presenter>
-    <presenter back="Menu" displayOrder="8" menuLabel="Training" next="TestMenu" type="stimulus" self="Training" title="Training">
+    <presenter back="Menu" displayOrder="9" menuLabel="Training" next="TestMenu" type="stimulus" self="Training" title="Training">
         <backgroundImage msToNext="7000" src="huisje_02.jpg" styleName="zoomToGarden">
             <loadStimulus eventTag="Training" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                 <hasMoreStimulus>
@@ -75,11 +78,14 @@
                         <table>
                             <row>
                                 <column>
-                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="" showControls="false" maxWidth="100"/>
+                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
                                 </column>
+                                <column styleName="middlePadding"/>
                                 <column>
-                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="" showControls="false" maxWidth="100">
+                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
                                         <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="true">
+                                            <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton"/>
+                                            <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton"/>
                                             <actionButton featureText="Repeat" eventTag="Repeat" hotKey="F6">
                                                 <showStimulus/>
                                             </actionButton>
@@ -90,8 +96,8 @@
                             </row>
                         </table>
                     </stimulusCodeAudio>
-                    <touchInputZone eventTag="leftHalfScreen" hotKey="Z" styleName="leftHalfScreen"/>
-                    <touchInputZone eventTag="rightHalfScreen" hotKey="M" styleName="rightHalfScreen"/>
+                    <touchInputZone styleName="borderedVideoLeft" showControls="true"/>
+                    <touchInputZone styleName="borderedVideoRight" showControls="true"/>
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <autoNextPresenter/>
@@ -103,13 +109,13 @@
             </loadStimulus>
         </backgroundImage>
     </presenter>
-    <presenter back="Menu" displayOrder="9" menuLabel="TestMenu" next="completion" type="menu" self="TestMenu" title="TestMenu">
+    <presenter back="Menu" displayOrder="10" menuLabel="TestMenu" next="completion" type="menu" self="TestMenu" title="TestMenu">
         <menuItem featureText="Test 1" target="Test_1"/>
         <menuItem featureText="Test 2" target="Test_2"/>
         <menuItem featureText="Test 3" target="Test_3"/>
         <menuItem featureText="Test 4" target="Test_4"/>
     </presenter>
-    <presenter back="TestMenu" displayOrder="10" menuLabel="Test 1" next="TestMenu" type="stimulus" self="Test_1" title="Test 1">
+    <presenter back="TestMenu" displayOrder="11" menuLabel="Test 1" next="TestMenu" type="stimulus" self="Test_1" title="Test 1">
         <backgroundImage msToNext="7000" src="huisje_02.jpg" styleName="zoomToBlock1">
             <loadStimulus eventTag="Test 1" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                 <hasMoreStimulus>
@@ -120,11 +126,14 @@
                         <table>
                             <row>
                                 <column>
-                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="" showControls="false" maxWidth="100"/>
+                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
                                 </column>
+                                <column styleName="middlePadding"/>
                                 <column>
-                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="" showControls="false" maxWidth="100">
+                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
                                         <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="true">
+                                            <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton"/>
+                                            <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton"/>
                                             <actionButton featureText="Repeat" eventTag="Repeat" hotKey="F6">
                                                 <showStimulus/>
                                             </actionButton>
@@ -135,8 +144,8 @@
                             </row>
                         </table>
                     </stimulusCodeAudio>
-                    <touchInputZone eventTag="leftHalfScreen" hotKey="Z" styleName="leftHalfScreen"/>
-                    <touchInputZone eventTag="rightHalfScreen" hotKey="M" styleName="rightHalfScreen"/>
+                    <touchInputZone styleName="borderedVideoLeft" showControls="true"/>
+                    <touchInputZone styleName="borderedVideoRight" showControls="true"/>
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <autoNextPresenter/>
@@ -148,7 +157,7 @@
             </loadStimulus>
         </backgroundImage>
     </presenter>
-    <presenter back="TestMenu" displayOrder="11" menuLabel="Test 2" next="TestMenu" type="stimulus" self="Test_2" title="Test 2">
+    <presenter back="TestMenu" displayOrder="12" menuLabel="Test 2" next="TestMenu" type="stimulus" self="Test_2" title="Test 2">
         <backgroundImage msToNext="7000" src="huisje_02.jpg" styleName="zoomToBlock2">
             <loadStimulus eventTag="Test 2" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                 <hasMoreStimulus>
@@ -159,11 +168,14 @@
                         <table>
                             <row>
                                 <column>
-                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="" showControls="false" maxWidth="100"/>
+                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
                                 </column>
+                                <column styleName="middlePadding"/>
                                 <column>
-                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="" showControls="false" maxWidth="100">
+                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
                                         <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="true">
+                                            <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton"/>
+                                            <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton"/>
                                             <actionButton featureText="Repeat" eventTag="Repeat" hotKey="F6">
                                                 <showStimulus/>
                                             </actionButton>
@@ -174,8 +186,8 @@
                             </row>
                         </table>
                     </stimulusCodeAudio>
-                    <touchInputZone eventTag="leftHalfScreen" hotKey="Z" styleName="leftHalfScreen"/>
-                    <touchInputZone eventTag="rightHalfScreen" hotKey="M" styleName="rightHalfScreen"/>
+                    <touchInputZone styleName="borderedVideoLeft" showControls="true"/>
+                    <touchInputZone styleName="borderedVideoRight" showControls="true"/>
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <autoNextPresenter/>
@@ -187,7 +199,7 @@
             </loadStimulus>
         </backgroundImage>
     </presenter>
-    <presenter back="TestMenu" displayOrder="12" menuLabel="Test 3" next="TestMenu" type="stimulus" self="Test_3" title="Test 3">
+    <presenter back="TestMenu" displayOrder="13" menuLabel="Test 3" next="TestMenu" type="stimulus" self="Test_3" title="Test 3">
         <backgroundImage msToNext="7000" src="huisje_02.jpg" styleName="zoomToBlock3">
             <loadStimulus eventTag="Test 3" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                 <hasMoreStimulus>
@@ -198,11 +210,14 @@
                         <table>
                             <row>
                                 <column>
-                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="" showControls="false" maxWidth="100"/>
+                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
                                 </column>
+                                <column styleName="middlePadding"/>
                                 <column>
-                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="" showControls="false" maxWidth="100">
+                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
                                         <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="true">
+                                            <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton"/>
+                                            <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton"/>
                                             <actionButton featureText="Repeat" eventTag="Repeat" hotKey="F6">
                                                 <showStimulus/>
                                             </actionButton>
@@ -213,8 +228,8 @@
                             </row>
                         </table>
                     </stimulusCodeAudio>
-                    <touchInputZone eventTag="leftHalfScreen" hotKey="Z" styleName="leftHalfScreen"/>
-                    <touchInputZone eventTag="rightHalfScreen" hotKey="M" styleName="rightHalfScreen"/>
+                    <touchInputZone styleName="borderedVideoLeft" showControls="true"/>
+                    <touchInputZone styleName="borderedVideoRight" showControls="true"/>
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <autoNextPresenter/>
@@ -226,7 +241,7 @@
             </loadStimulus>
         </backgroundImage>
     </presenter>
-    <presenter back="TestMenu" displayOrder="13" menuLabel="Test 4" next="TestMenu" type="stimulus" self="Test_4" title="Test 4">
+    <presenter back="TestMenu" displayOrder="14" menuLabel="Test 4" next="TestMenu" type="stimulus" self="Test_4" title="Test 4">
         <backgroundImage msToNext="7000" src="huisje_02.jpg" styleName="zoomToBlock4">
             <loadStimulus eventTag="Test 4" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                 <hasMoreStimulus>
@@ -237,11 +252,14 @@
                         <table>
                             <row>
                                 <column>
-                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="" showControls="false" maxWidth="100"/>
+                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
                                 </column>
+                                <column styleName="middlePadding"/>
                                 <column>
-                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="" showControls="false" maxWidth="100">
+                                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
                                         <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="true">
+                                            <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton"/>
+                                            <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton"/>
                                             <actionButton featureText="Repeat" eventTag="Repeat" hotKey="F6">
                                                 <showStimulus/>
                                             </actionButton>
@@ -252,8 +270,8 @@
                             </row>
                         </table>
                     </stimulusCodeAudio>
-                    <touchInputZone eventTag="leftHalfScreen" hotKey="Z" styleName="leftHalfScreen"/>
-                    <touchInputZone eventTag="rightHalfScreen" hotKey="M" styleName="rightHalfScreen"/>
+                    <touchInputZone styleName="borderedVideoLeft" showControls="true"/>
+                    <touchInputZone styleName="borderedVideoRight" showControls="true"/>
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <autoNextPresenter/>
@@ -265,24 +283,17 @@
             </loadStimulus>
         </backgroundImage>
     </presenter>
-    <presenter back="Menu" displayOrder="14" menuLabel="Einde van het experiment" type="transmission" self="completion" title="Einde van het experiment">
-        <sendAllData>
-            <onSuccess>
-                <htmlText featureText="Dit is het einde van het experiment.&lt;br/&gt;Hartelijk dank voor uw deelname! &lt;br/&gt;&lt;br/&gt;"/>
-                <addPadding/>
-                <generateCompletionCode/>
-                <addPadding/>
-                <htmlText featureText="&lt;br/&gt;Het bovenstaande nummer is het bewijs dat u het experiment heeft voltooid, en is vereist voor het in orde maken van uw vergoeding."/>
-                <addPadding/>
-                <eraseUsersDataButton featureText="Opnieuw beginnen"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw."/>
-                <targetButton featureText="Probeer opnieuw" target="completion"/>
-            </onError>
-        </sendAllData>
+    <presenter back="Menu" displayOrder="15" menuLabel="Einde van het experiment" type="transmission" self="completion" title="Einde van het experiment">
+        <htmlText featureText="Data will not be collected in this version."/>
+        <htmlText featureText="Dit is het einde van het experiment.&lt;br/&gt;Hartelijk dank voor uw deelname! &lt;br/&gt;&lt;br/&gt;"/>
+        <addPadding/>
+        <generateCompletionCode/>
+        <addPadding/>
+        <htmlText featureText="&lt;br/&gt;Het bovenstaande nummer is het bewijs dat u het experiment heeft voltooid, en is vereist voor het in orde maken van uw vergoeding."/>
+        <addPadding/>
+        <eraseUsersDataButton featureText="Opnieuw beginnen"/>
     </presenter>
-    <presenter back="Menu" displayOrder="15" menuLabel="Over" type="debug" self="about" title="Over">
+    <presenter back="Menu" displayOrder="16" menuLabel="Over" type="debug" self="about" title="Over">
         <versionData/>
     </presenter>
     <stimuli>
