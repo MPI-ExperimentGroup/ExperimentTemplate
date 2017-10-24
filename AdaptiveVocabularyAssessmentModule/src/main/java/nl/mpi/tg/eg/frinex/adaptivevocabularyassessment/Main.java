@@ -17,10 +17,11 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassesment.bands.Bands;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassesment.bands.LexicalUnit;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.RandomNonWordIndeces;
 
 /**
  * @since Oct 20, 2017 11:38:57 AM (creation date)
@@ -32,15 +33,27 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+      
         System.out.println("starting work ... ");
-        Bands bands = new Bands();
+        RandomNonWordIndeces rndInd = new RandomNonWordIndeces(Constants.DEFAULT_BLOCK_LENGTH, Constants.DEFAULT_BLOCK_LENGTH, Constants.NONWORD_PROBABILITY);
+        ArrayList<Integer> nonwordPositions = rndInd.updateAndGetIndices();
+        rndInd.updateFrequencesOfNonWordIndices();
+        double[] freq = rndInd.getFrequencesOfNonWordindices();
+        System.out.println("Array of frequences is of length " + freq.length);
+        for (int i = 0; i < freq.length; i++) {
+            System.out.println(freq[i]);
+        }
+
+        /*Bands bands = new Bands();
         try {
+           
             bands.parseWordInputCSV();
             bands.parseNonWordInputCSV();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
         testPrint(bands);
+         */
         System.out.println("Done. ");
 
     }
@@ -48,9 +61,9 @@ public class Main {
     private static void testPrint(Bands bands) {
         LexicalUnit[][] tmpwords = bands.getWords();
         System.out.println("Words \n");
-       
-        for (int i=0; i<tmpwords.length; i++) {
-            System.out.println(i+1);
+
+        for (int i = 0; i < tmpwords.length; i++) {
+            System.out.println(i + 1);
             for (LexicalUnit unit : tmpwords[i]) {
                 System.out.println(unit.getSpelling());
                 System.out.println(unit.getIsUsed());

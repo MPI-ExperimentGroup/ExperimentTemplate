@@ -27,7 +27,15 @@ public class Constants {
     
     public static final int WORDS_PER_BAND = 40;
     
-     public static final String WORD_FILE_LOCATION = "../../Data/2.selection_words_nonwords_w.csv";
+    public static final double NONWORD_PROBABILITY = 0.333333333333;
+    
+    public static final String DEFAULT_USER ="Anonimous";
+    
+    public static final int DEFAULT_SEQUENCE_LENGTH = 100;
+    
+    public static final int DEFAULT_BLOCK_LENGTH = 6;
+    
+    public static final String WORD_FILE_LOCATION = "../../Data/2.selection_words_nonwords_w.csv";
     
     public static final String NONWORD_FILE_LOCATION = "../../Data/2.selection_words_nonwords.csv";
     
