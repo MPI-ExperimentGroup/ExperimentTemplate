@@ -302,6 +302,14 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
 //        nextStimulusL.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusL");
 //        nextStimulusL.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
 //        touchInputZoneL.getPresenterFeatureList().add(nextStimulusL);
+        final PresenterFeature leftOverlayButton = new PresenterFeature(FeatureType.actionButton, "Left Overlay Button");
+        leftOverlayButton.addFeatureAttributes(FeatureAttribute.eventTag, "Left Overlay Button");
+        leftOverlayButton.addFeatureAttributes(FeatureAttribute.styleName, "leftOverlayButton");
+        stimulusCodeAudio3.getPresenterFeatureList().add(leftOverlayButton);
+        final PresenterFeature rightOverlayButton = new PresenterFeature(FeatureType.actionButton, "Right Overlay Button");
+        rightOverlayButton.addFeatureAttributes(FeatureAttribute.eventTag, "Right Overlay Button");
+        rightOverlayButton.addFeatureAttributes(FeatureAttribute.styleName, "rightOverlayButton");
+        stimulusCodeAudio3.getPresenterFeatureList().add(rightOverlayButton);
         final PresenterFeature repeatStimulusButton = new PresenterFeature(FeatureType.actionButton, "Repeat");
         repeatStimulusButton.addFeatureAttributes(FeatureAttribute.eventTag, "Repeat");
         repeatStimulusButton.addFeatureAttributes(FeatureAttribute.hotKey, "F6");
