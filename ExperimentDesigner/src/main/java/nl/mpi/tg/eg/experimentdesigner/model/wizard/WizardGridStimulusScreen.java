@@ -201,15 +201,17 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         if (storedWizardScreenData.isCentreScreen()) {
             presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
         }
-        final PresenterFeature backgoundFeature = new PresenterFeature(FeatureType.backgroundImage, null);
-        backgoundFeature.addFeatureAttributes(FeatureAttribute.msToNext, "7000");
+        if (getBackgroundImage(storedWizardScreenData) != null) {
+            final PresenterFeature backgoundFeature = new PresenterFeature(FeatureType.backgroundImage, null);
+            backgoundFeature.addFeatureAttributes(FeatureAttribute.msToNext, "7000");
 //        backgoundFeature.addFeatureAttributes(FeatureAttribute.styleName, "zoomTo3of6 zoom to house");
-        backgoundFeature.addFeatureAttributes(FeatureAttribute.styleName, getBackgroundStyle(storedWizardScreenData));
+            backgoundFeature.addFeatureAttributes(FeatureAttribute.styleName, getBackgroundStyle(storedWizardScreenData));
 //        backgoundFeature.addFeatureAttributes(FeatureAttribute.styleName, "zoomOut");
-        backgoundFeature.addFeatureAttributes(FeatureAttribute.src, getBackgroundImage(storedWizardScreenData));
-        presenterFeatureList.add(backgoundFeature);
+            backgoundFeature.addFeatureAttributes(FeatureAttribute.src, getBackgroundImage(storedWizardScreenData));
+            presenterFeatureList.add(backgoundFeature);
 //        set the image as the parent to subsequent features
-        presenterFeatureList = backgoundFeature.getPresenterFeatureList();
+            presenterFeatureList = backgoundFeature.getPresenterFeatureList();
+        }
         final PresenterFeature loadStimuliFeature = new PresenterFeature((!isSdCardStimuli(storedWizardScreenData)) ? FeatureType.loadStimulus : FeatureType.loadSdCardStimulus, null);
         loadStimuliFeature.addStimulusTag(storedWizardScreenData.getScreenTitle());
         final RandomGrouping randomGrouping = new RandomGrouping();
