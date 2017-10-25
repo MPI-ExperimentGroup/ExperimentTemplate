@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.ThreadLocalRandom;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.Constants;
 
 /**
  * produces the collection of [p * N] indices(for non-word) from 0 to N-1, where
@@ -29,35 +30,44 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class RandomNonWordIndeces {
 
-    private final int sequenceLength; //  N
+    private int sequenceLength; //  N
 
     private final int averageNonwordPosition; // n
 
     private final int nonwordsPerBlock;
+    
+    private final int numberOfWords; // [1/n * N]
 
-    private final int numberOfNonwords; // [1/n * N]
+    private int numberOfNonwords; // [1/n * N]
 
     private ArrayList<Integer> randomIndices;
 
     private double[] frequences;
 
-    public RandomNonWordIndeces(int sequenceLength, int nonwordsPerBlock, int averageNonwordPosition) {
-        this.sequenceLength = sequenceLength;
+    public RandomNonWordIndeces(int startBand, int nonwordsPerBlock, int averageNonwordPosition) {
         this.averageNonwordPosition = averageNonwordPosition;
         this.nonwordsPerBlock = nonwordsPerBlock;
-        this.numberOfNonwords = this.calculateNumberOfNonwords(averageNonwordPosition, sequenceLength);
+        this.numberOfWords = Constants.NUMBER_OF_BANDS - (startBand - 1);
+        this.sequenceLength = (averageNonwordPosition * numberOfWords)/(averageNonwordPosition-1); 
+        this.numberOfNonwords = this.sequenceLength - this.numberOfWords;
+        this.correctNumberOfNonWordsAndLength();
     }
+    
+   
 
-    private int calculateNumberOfNonwords(int averageNonwordPosition, int sequenceLength) {
-        int retVal = sequenceLength / averageNonwordPosition;
-        int remainder = sequenceLength - averageNonwordPosition * retVal;
-        // if remainer block is "big enough" we may place yet another non-word there
-        // "big enough" means that it is "almost averageNonwordPosition"
-        double check = ((double) remainder) / ((double) averageNonwordPosition);
-        if (check >= 0.5) {
-            retVal++;
+    private void correctNumberOfNonWordsAndLength() {
+        double probability = (1.000 / ((double) this.averageNonwordPosition));
+        double frequency = ( (double) this.numberOfNonwords) / ((double) this.sequenceLength);
+        while (probability - frequency > Constants.EPSILON) {
+           this.numberOfNonwords++;
+           this.sequenceLength++;
+           frequency = ( (double) this.numberOfNonwords) / ((double) this.sequenceLength);
         }
-        return retVal;
+        while (frequency - probability > Constants.EPSILON) {
+           this.numberOfNonwords--;
+           this.sequenceLength--;
+           frequency = ( (double) this.numberOfNonwords) / ((double) this.sequenceLength);
+        }
     }
 
     // we divide all the indices from 0 to sequenceLength-1 on blocks,
@@ -71,15 +81,15 @@ public class RandomNonWordIndeces {
         int numberOfBlocks = this.sequenceLength / blockSize;
         for (int i = 0; i < numberOfBlocks; i++) {
             ArrayList<Integer> offsetBuffer = new ArrayList<>(blockSize);
-            
+
             for (int j = 0; j < blockSize; j++) {
                 offsetBuffer.add(j);
             }
-            
-            int n=blockSize;
-            for (int k=0; k<this.nonwordsPerBlock; k++) {
+
+            int n = blockSize;
+            for (int k = 0; k < this.nonwordsPerBlock; k++) {
                 randOffset = ThreadLocalRandom.current().nextInt(0, n);
-                retVal.add(i*blockSize + offsetBuffer.get(randOffset));
+                retVal.add(i * blockSize + offsetBuffer.get(randOffset));
                 offsetBuffer.remove(randOffset);
                 n--;
             }
@@ -93,7 +103,7 @@ public class RandomNonWordIndeces {
         }
         int n = remainderBlock;
         int nonwordsRemainder = this.numberOfNonwords - retVal.size();
-        for (int k=0; k< nonwordsRemainder; k++) {
+        for (int k = 0; k < nonwordsRemainder; k++) {
             randOffset = ThreadLocalRandom.current().nextInt(0, n);
             retVal.add(blockSize * numberOfBlocks + offsetBuffer.get(randOffset));
             offsetBuffer.remove(randOffset);
@@ -102,7 +112,26 @@ public class RandomNonWordIndeces {
         ////
 
         Collections.sort(retVal);
+        this.correctLastPosition(retVal);
+        
         return retVal;
+    }
+    
+    // the last positin in any sequence must be always a word (from a band 54)
+    private void correctLastPosition(ArrayList<Integer> sortedIndices){
+       int lastNonwordPosition = sortedIndices.get(sortedIndices.size()-1);
+       if (lastNonwordPosition == this.sequenceLength-1) {
+          int wordAt = this.findLastWordPosition(sortedIndices, lastNonwordPosition);
+          sortedIndices.set(sortedIndices.size()-1,wordAt);
+       }
+    }
+    
+    private int findLastWordPosition(ArrayList<Integer> sortedIndices, int n){
+        // look for the first gap
+      while (sortedIndices.get(n) - sortedIndices.get(n-1) == 1) {
+          n--;
+      }
+      return sortedIndices.get(n)-1;
     }
 
     private int amountOfSelectedIndecesBetween(int a, int b) {
@@ -140,6 +169,10 @@ public class RandomNonWordIndeces {
 
     public double[] getFrequencesOfNonWordindices() {
         return this.frequences;
+    }
+    
+     public int getSequenceLength(){
+        return this.sequenceLength;
     }
 
 }

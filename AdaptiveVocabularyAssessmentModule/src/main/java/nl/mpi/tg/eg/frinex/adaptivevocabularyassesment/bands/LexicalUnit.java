@@ -24,10 +24,12 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassesment.bands;
 public class LexicalUnit {
     
     private final String spelling;
+    private final int bandNumber; 
     private boolean isUsed;
     
-    public LexicalUnit(String spelling){
+    public LexicalUnit(String spelling, int bandNumber){
         this.spelling = spelling;
+        this.bandNumber = bandNumber;
         this.isUsed=false;
     }
     
@@ -37,6 +39,10 @@ public class LexicalUnit {
     
     public boolean getIsUsed(){
         return this.isUsed;
+    }
+    
+    public int getBandNumber(){
+        return this.bandNumber;
     }
     
     public void setIsUsed(boolean value){

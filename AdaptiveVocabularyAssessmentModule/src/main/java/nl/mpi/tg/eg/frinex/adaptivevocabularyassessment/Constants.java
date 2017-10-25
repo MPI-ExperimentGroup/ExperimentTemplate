@@ -31,10 +31,11 @@ public class Constants {
     
     public static final String DEFAULT_USER ="Anonimous";
     
-    public static final int DEFAULT_SEQUENCE_LENGTH = 18*AVRERAGE_NON_WORD_POSITION; // ??
-    
+    public static final int START_BAND = 20;
     
     public static final int NONWORDS_PER_BLOCK = 2; // the lesser it is, the nicer but more predictable positions of nonwords one will get
+    
+    public static final double EPSILON = 0.000001;
     
     public static final String WORD_FILE_LOCATION = "../../Data/2.selection_words_nonwords_w.csv";
     

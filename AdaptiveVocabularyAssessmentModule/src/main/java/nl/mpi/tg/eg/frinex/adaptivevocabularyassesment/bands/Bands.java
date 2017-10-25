@@ -47,12 +47,9 @@ public class Bands {
         for (CSVRecord record : records) {
             //String number = record.get("nr");
             int bandNumber = Integer.parseInt(record.get("Band"));
-            LexicalUnit unit = new LexicalUnit(record.get("spelling"));
+            LexicalUnit unit = new LexicalUnit(record.get("spelling"), bandNumber);
             this.words[bandNumber-1][counter[bandNumber-1]]=unit;
             counter[bandNumber-1]++;
-            //System.out.println(bandNumber);
-            //System.out.println(spelling);
-           
         }
     }
     
@@ -60,7 +57,7 @@ public class Bands {
         final Reader reader = new InputStreamReader(inputFileNonWords.toURL().openStream(), "UTF-8"); // todo: this might need to change to "ISO-8859-1" depending on the usage
         Iterable<CSVRecord> records = CSVFormat.newFormat(';').withHeader().parse(reader);
         for (CSVRecord record : records) {
-            LexicalUnit unit = new LexicalUnit(record.get("spelling"));
+            LexicalUnit unit = new LexicalUnit(record.get("spelling"), -1);
             nonwords.add(unit);
         }
     }

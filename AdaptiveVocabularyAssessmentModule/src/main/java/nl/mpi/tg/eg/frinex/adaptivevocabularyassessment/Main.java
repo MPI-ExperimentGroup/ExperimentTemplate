@@ -18,10 +18,9 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassesment.bands.Bands;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassesment.bands.LexicalUnit;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.RandomNonWordIndeces;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.FastTrack;
 
 /**
  * @since Oct 20, 2017 11:38:57 AM (creation date)
@@ -33,18 +32,32 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-      
-        System.out.println("starting work ... ");
-        //RandomNonWordIndeces(int sequenceLength, int nonwordsPerBlock, int averageNonwordPosition)
-        RandomNonWordIndeces rndInd = new RandomNonWordIndeces(Constants.DEFAULT_SEQUENCE_LENGTH, Constants.NONWORDS_PER_BLOCK, Constants.AVRERAGE_NON_WORD_POSITION);
-        ArrayList<Integer> nonwordPositions = rndInd.updateAndGetIndices();
-        rndInd.updateFrequencesOfNonWordIndices();
-        double[] freq = rndInd.getFrequencesOfNonWordindices();
-        System.out.println("Array of frequences is of length " + freq.length);
-        for (int i = 0; i < freq.length; i++) {
-            System.out.println(freq[i]);
-        }
 
+        System.out.println("starting work ... ");
+        FastTrack fastTrack = new FastTrack(Constants.DEFAULT_USER, Constants.START_BAND,  Constants.AVRERAGE_NON_WORD_POSITION);
+        try {
+            fastTrack.initialiseWordLists();
+            fastTrack.makeStimulaeSequence(Constants.NONWORDS_PER_BLOCK);
+            ArrayList<LexicalUnit> fastTrackSequence = fastTrack.getStimulaeSequence();
+            System.out.println("Fast track example sequence");
+            int counter=0;
+            int counterNonwords = 0;
+            for(LexicalUnit unit: fastTrackSequence) {
+               counter++;
+               System.out.print(unit.getSpelling());
+               System.out.print("  ");
+               System.out.print(unit.getBandNumber());
+               if (unit.getBandNumber() == -1){
+                   counterNonwords++;
+               }
+               System.out.print(" ");
+               double check = ((double) counterNonwords) / ((double) counter);
+               System.out.println(check);
+            }
+            System.out.println("END of example sequence");
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
         /*Bands bands = new Bands();
         try {
            

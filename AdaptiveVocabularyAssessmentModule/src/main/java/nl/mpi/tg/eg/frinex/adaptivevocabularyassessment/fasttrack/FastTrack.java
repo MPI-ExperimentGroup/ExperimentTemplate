@@ -29,19 +29,22 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.Constants;
  */
 public class FastTrack {
 
-    private String username;
-
+    private final String username;
+    private final int startBand;
+    private final int averageNonwordPosition;
     private LexicalUnit[][] words;
     private ArrayList<LexicalUnit> nonwords;
     private ArrayList<LexicalUnit> stimulaeSequence;
 
-    public FastTrack(String username) {
+    public FastTrack(String username, int startBand, int averageNonwordPosition) {
         this.username = username;
+        this.startBand = startBand;
+        this.averageNonwordPosition = averageNonwordPosition;
     }
-
+    
+    
     public void initialiseWordLists() throws IOException {
-
-        Bands bands = new Bands();
+       Bands bands = new Bands();
         bands.parseWordInputCSV();
         bands.parseNonWordInputCSV();
         this.words = bands.getWords();
@@ -49,31 +52,36 @@ public class FastTrack {
 
     }
 
-    public void makeStimulaeSequence(int startBand, int nonWordsPerBlock, int sequenceLength, int averageNonwordPosition) throws Exception {
+    public void makeStimulaeSequence(int nonWordsPerBlock) throws Exception {
 
-        this.stimulaeSequence = new ArrayList<>(sequenceLength);
+        this.stimulaeSequence = new ArrayList<>();
 
-        // we need to choose the positions for nonwords (from 0 to sequenceLength-1) 
+        //we need to choose the positions for nonwords (from 0 to sequenceLength-1) 
         //int upperBound, int nonwordsPerBlock, int n
-        RandomNonWordIndeces posChooser = new RandomNonWordIndeces(sequenceLength, nonWordsPerBlock, averageNonwordPosition);
+        RandomNonWordIndeces posChooser = new RandomNonWordIndeces(this.startBand, nonWordsPerBlock, this.averageNonwordPosition);
         ArrayList<Integer> nonWordInd = posChooser.updateAndGetIndices();
+        
+        /// debug-test
+        this.debugTestNonwordFrequences(posChooser);
+        ///
 
-        int bandCounter = startBand-1;
+        int bandCounter = this.startBand - 1;
         int nonwordCounter = 0;
+        int sequenceLength = posChooser.getSequenceLength();
         for (int i = 0; i < sequenceLength; i++) {
             if (nonWordInd.contains(i)) {
                 try {
-                    stimulaeSequence.set(i, this.nonwords.get(nonwordCounter));
+                    this.stimulaeSequence.add(this.nonwords.get(nonwordCounter));
                     nonwordCounter++;
                 } catch (IndexOutOfBoundsException ex) {
-                    throw new Exception("There is no non-used nonwords left to generate a stimulae sequence of length " + sequenceLength + " starting from band " + startBand);
+                    throw new Exception("There is no non-used nonwords left to generate a stimulae sequence of length " + sequenceLength + " starting from band " + this.startBand);
                 }
             } else {
                 try {
-                    stimulaeSequence.set(i, this.words[bandCounter][0]);
+                    this.stimulaeSequence.add(this.words[bandCounter][0]);
                     bandCounter++;
                 } catch (IndexOutOfBoundsException ex) {
-                    throw new Exception("There is no non-used words left to generate a stimulae sequence of length " + sequenceLength + " starting from band " + startBand);
+                    throw new Exception("There is no non-used words left to generate a stimulae sequence of length " + sequenceLength + " starting from band " + this.startBand);
                 }
             }
         }
@@ -82,6 +90,16 @@ public class FastTrack {
 
     public ArrayList<LexicalUnit> getStimulaeSequence() {
         return this.stimulaeSequence;
+    }
+
+    private void debugTestNonwordFrequences(RandomNonWordIndeces posChooser) {
+        posChooser.updateFrequencesOfNonWordIndices();
+        double[] freq = posChooser.getFrequencesOfNonWordindices();
+        System.out.println("Array of frequences is of length " + freq.length);
+        for (int i = 0; i < freq.length; i++) {
+            System.out.println(freq[i]);
+        }
+
     }
 
 }
