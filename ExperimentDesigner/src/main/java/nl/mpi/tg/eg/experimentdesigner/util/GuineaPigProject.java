@@ -21,6 +21,7 @@ import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAnimatedStimuliScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAudioTestScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
@@ -102,8 +103,11 @@ public class GuineaPigProject {
         introductionAudio2.setBackgroundImage(backgroundImage);
         introductionAudio3.setBackgroundImage(backgroundImage);
 //        introductionAudio1.setAutoPlay(true); //@todo: do not auto play, in future version the play button may be hidden
-        introductionAudio2.setAutoPlay(true);
-        introductionAudio3.setAutoPlay(true);
+//        introductionAudio2.setAutoPlay(true);
+//        introductionAudio3.setAutoPlay(true);
+        introductionAudio1.setAutoNext(true);
+        introductionAudio2.setAutoNext(true);
+        introductionAudio3.setAutoNext(true);
         introductionAudio1.setAudioHotKey("F6");
         introductionAudio2.setAudioHotKey("F6");
         introductionAudio3.setAudioHotKey("F6");
@@ -129,15 +133,15 @@ public class GuineaPigProject {
             //@todo: blank screen with audio 1
             //@todo: videos and audio 2
             //@todo: still of video and audio 3 with touch input can be collected during audio 1 2 and 3, touch input does not cause any action, only the remote can move to the next stimulus
-            {{"Test 1", "zoomToBlock1"}, {"test_1",
+            {{"Test 1", "zoomToBlock1", "room_1"}, {"test_1",
                 "test_2",
-                "filler_1",}}, {{"Test 2", "zoomToBlock2"}, {
+                "filler_1",}}, {{"Test 2", "zoomToBlock2", "room_2"}, {
                 "test_3",
                 "test_4",
-                "filler_2",}}, {{"Test 3", "zoomToBlock3"}, {
+                "filler_2",}}, {{"Test 3", "zoomToBlock3", "room_3"}, {
                 "test_5",
                 "test_6",
-                "filler_3",}}, {{"Test 4", "zoomToBlock4"}, {
+                "filler_3",}}, {{"Test 4", "zoomToBlock4", "room_4"}, {
                 "test_7",
                 "test_8",
                 "filler_4",}}};
@@ -160,14 +164,28 @@ public class GuineaPigProject {
         final WizardMenuScreen textMenuScreen = new WizardMenuScreen("TestMenu", "TestMenu", "TestMenu");
         wizardData.addScreen(textMenuScreen);
         for (String[][] testSubList : testList) {
-            final WizardGridStimulusScreen testStimulusScreen = new WizardGridStimulusScreen(testSubList[0][0], false, testSubList[1],
+            WizardAudioTestScreen testIntroAudio = new WizardAudioTestScreen(testSubList[0][0] + "a", "&nbsp;", "continue button", testSubList[0][2]);
+            wizardData.addScreen(testIntroAudio);
+            testIntroAudio.setBackgroundImage(backgroundImage);
+            testIntroAudio.setBackgroundStyle(testSubList[0][1]);
+            testIntroAudio.setAutoPlay(true);
+            testIntroAudio.setAutoNext(true);
+            testIntroAudio.setAutoNextDelay(2000);
+            testIntroAudio.setAudioHotKey("F6");
+            testIntroAudio.setImageName("intro_1.jpg");
+            testIntroAudio.setNextHotKey("ENTER");
+            testIntroAudio.setStyleName("titleBarButton");
+
+            final WizardGridStimulusScreen testStimulusScreen = new WizardGridStimulusScreen(testSubList[0][0] + "b", false, testSubList[1],
                     null, 1000, false, null, 0, 0, null);
-            testStimulusScreen.setBackgroundImage(backgroundImage);
-            testStimulusScreen.setBackgroundStyle(testSubList[0][1]);
-            textMenuScreen.addTargetScreen(testStimulusScreen);
+//            testStimulusScreen.setBackgroundImage(backgroundImage);
+//            testStimulusScreen.setBackgroundStyle(testSubList[0][1]);
+            textMenuScreen.addTargetScreen(testIntroAudio);
             wizardData.addScreen(testStimulusScreen);
+            testIntroAudio.setBackWizardScreen(textMenuScreen);
             testStimulusScreen.setBackWizardScreen(textMenuScreen);
             testStimulusScreen.setNextWizardScreen(textMenuScreen);
+            testIntroAudio.setNextWizardScreen(testStimulusScreen);
         }
         WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, true, true, completionScreenText2,
                 "Opnieuw beginnen",
