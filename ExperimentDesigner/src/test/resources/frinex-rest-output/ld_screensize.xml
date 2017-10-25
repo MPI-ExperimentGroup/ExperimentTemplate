@@ -44,27 +44,27 @@
         <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName=""/>
         <htmlText featureText="&amp;nbsp;"/>
         <audioButton eventTag="intro_1" src="intro_1" hotKey="F6" styleName="titleBarButton" autoPlay="false" poster="intro_1.jpg">
-            <actionButton featureText="continue button" hotKey="ENTER">
+            <pause msToNext="0">
                 <autoNextPresenter/>
-            </actionButton>
+            </pause>
         </audioButton>
     </presenter>
     <presenter back="Menu" displayOrder="7" menuLabel="Introduction 2" next="Introduction_3" type="stimulus" self="Introduction_2" title="Introduction 2">
         <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName=""/>
         <htmlText featureText="&amp;nbsp;"/>
-        <audioButton eventTag="intro_2" src="intro_2" hotKey="F6" styleName="titleBarButton" autoPlay="true" poster="intro_2.jpg">
-            <actionButton featureText="continue button" hotKey="ENTER">
+        <audioButton eventTag="intro_2" src="intro_2" hotKey="F6" styleName="titleBarButton" autoPlay="false" poster="intro_2.jpg">
+            <pause msToNext="0">
                 <autoNextPresenter/>
-            </actionButton>
+            </pause>
         </audioButton>
     </presenter>
     <presenter back="Menu" displayOrder="8" menuLabel="Introduction 3" next="Training" type="stimulus" self="Introduction_3" title="Introduction 3">
         <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName=""/>
         <htmlText featureText="&amp;nbsp;"/>
-        <audioButton eventTag="intro_3" src="intro_3" hotKey="F6" styleName="titleBarButton" autoPlay="true" poster="intro_3.jpg">
-            <actionButton featureText="continue button" hotKey="ENTER">
+        <audioButton eventTag="intro_3" src="intro_3" hotKey="F6" styleName="titleBarButton" autoPlay="false" poster="intro_3.jpg">
+            <pause msToNext="0">
                 <autoNextPresenter/>
-            </actionButton>
+            </pause>
         </audioButton>
     </presenter>
     <presenter back="Menu" displayOrder="9" menuLabel="Training" next="TestMenu" type="stimulus" self="Training" title="Training">
@@ -113,192 +113,220 @@
         </backgroundImage>
     </presenter>
     <presenter back="Menu" displayOrder="10" menuLabel="TestMenu" next="completion" type="menu" self="TestMenu" title="TestMenu">
-        <menuItem featureText="Test 1" target="Test_1"/>
-        <menuItem featureText="Test 2" target="Test_2"/>
-        <menuItem featureText="Test 3" target="Test_3"/>
-        <menuItem featureText="Test 4" target="Test_4"/>
+        <menuItem featureText="Test 1a" target="Test_1a"/>
+        <menuItem featureText="Test 2a" target="Test_2a"/>
+        <menuItem featureText="Test 3a" target="Test_3a"/>
+        <menuItem featureText="Test 4a" target="Test_4a"/>
     </presenter>
-    <presenter back="TestMenu" displayOrder="11" menuLabel="Test 1" next="TestMenu" type="stimulus" self="Test_1" title="Test 1">
-        <backgroundImage msToNext="7000" src="huisje_02.jpg" styleName="zoomToBlock1">
-            <loadStimulus eventTag="Test 1" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
-                <hasMoreStimulus>
-                    <backgroundImage msToNext="0" src="" styleName=""/>
-                    <clearPage styleName="fullScreenWidth"/>
-                    <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" showPlaybackIndicator="false">
-                        <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" showPlaybackIndicator="false"/>
-                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
-                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
-                            <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="false">
-                                <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton">
-                                    <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
-                                </actionButton>
-                                <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton">
-                                    <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
-                                </actionButton>
-                                <table styleName="titleBarButton">
-                                    <row>
-                                        <column>
-                                            <actionButton featureText="Repeat" eventTag="Repeat" hotKey="F6">
-                                                <showStimulus/>
-                                            </actionButton>
-                                        </column>
-                                        <column>
-                                            <nextStimulusButton featureText="Next" eventTag="nextStimulusR" hotKey="ENTER" repeatIncorrect="false"/>
-                                        </column>
-                                    </row>
-                                </table>
-                            </stimulusCodeAudio>
-                        </stimulusCodeVideo>
-                    </stimulusCodeAudio>
-                    <touchInputZone styleName="borderedVideoLeft" showControls="true"/>
-                    <touchInputZone styleName="borderedVideoRight" showControls="true"/>
-                </hasMoreStimulus>
-                <endOfStimulus>
-                    <autoNextPresenter/>
-                </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Test_1</tag>
-                </stimuli>
-            </loadStimulus>
-        </backgroundImage>
+    <presenter back="TestMenu" displayOrder="11" menuLabel="Test 1a" next="Test_1b" type="stimulus" self="Test_1a" title="Test 1a">
+        <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName="zoomToBlock1"/>
+        <htmlText featureText="&amp;nbsp;"/>
+        <audioButton eventTag="room_1" src="room_1" hotKey="F6" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
+            <pause msToNext="2000">
+                <autoNextPresenter/>
+            </pause>
+        </audioButton>
     </presenter>
-    <presenter back="TestMenu" displayOrder="12" menuLabel="Test 2" next="TestMenu" type="stimulus" self="Test_2" title="Test 2">
-        <backgroundImage msToNext="7000" src="huisje_02.jpg" styleName="zoomToBlock2">
-            <loadStimulus eventTag="Test 2" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
-                <hasMoreStimulus>
-                    <backgroundImage msToNext="0" src="" styleName=""/>
-                    <clearPage styleName="fullScreenWidth"/>
-                    <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" showPlaybackIndicator="false">
-                        <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" showPlaybackIndicator="false"/>
-                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
-                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
-                            <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="false">
-                                <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton">
-                                    <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
-                                </actionButton>
-                                <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton">
-                                    <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
-                                </actionButton>
-                                <table styleName="titleBarButton">
-                                    <row>
-                                        <column>
-                                            <actionButton featureText="Repeat" eventTag="Repeat" hotKey="F6">
-                                                <showStimulus/>
-                                            </actionButton>
-                                        </column>
-                                        <column>
-                                            <nextStimulusButton featureText="Next" eventTag="nextStimulusR" hotKey="ENTER" repeatIncorrect="false"/>
-                                        </column>
-                                    </row>
-                                </table>
-                            </stimulusCodeAudio>
-                        </stimulusCodeVideo>
-                    </stimulusCodeAudio>
-                    <touchInputZone styleName="borderedVideoLeft" showControls="true"/>
-                    <touchInputZone styleName="borderedVideoRight" showControls="true"/>
-                </hasMoreStimulus>
-                <endOfStimulus>
-                    <autoNextPresenter/>
-                </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Test_2</tag>
-                </stimuli>
-            </loadStimulus>
-        </backgroundImage>
+    <presenter back="TestMenu" displayOrder="12" menuLabel="Test 1b" next="TestMenu" type="stimulus" self="Test_1b" title="Test 1b">
+        <loadStimulus eventTag="Test 1b" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <backgroundImage msToNext="0" src="" styleName=""/>
+                <clearPage styleName="fullScreenWidth"/>
+                <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" showPlaybackIndicator="false">
+                    <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" showPlaybackIndicator="false"/>
+                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
+                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
+                        <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="false">
+                            <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton">
+                                <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
+                            </actionButton>
+                            <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton">
+                                <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
+                            </actionButton>
+                            <table styleName="titleBarButton">
+                                <row>
+                                    <column>
+                                        <actionButton featureText="Repeat" eventTag="Repeat" hotKey="F6">
+                                            <showStimulus/>
+                                        </actionButton>
+                                    </column>
+                                    <column>
+                                        <nextStimulusButton featureText="Next" eventTag="nextStimulusR" hotKey="ENTER" repeatIncorrect="false"/>
+                                    </column>
+                                </row>
+                            </table>
+                        </stimulusCodeAudio>
+                    </stimulusCodeVideo>
+                </stimulusCodeAudio>
+                <touchInputZone styleName="borderedVideoLeft" showControls="true"/>
+                <touchInputZone styleName="borderedVideoRight" showControls="true"/>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <autoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>Test_1b</tag>
+            </stimuli>
+        </loadStimulus>
     </presenter>
-    <presenter back="TestMenu" displayOrder="13" menuLabel="Test 3" next="TestMenu" type="stimulus" self="Test_3" title="Test 3">
-        <backgroundImage msToNext="7000" src="huisje_02.jpg" styleName="zoomToBlock3">
-            <loadStimulus eventTag="Test 3" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
-                <hasMoreStimulus>
-                    <backgroundImage msToNext="0" src="" styleName=""/>
-                    <clearPage styleName="fullScreenWidth"/>
-                    <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" showPlaybackIndicator="false">
-                        <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" showPlaybackIndicator="false"/>
-                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
-                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
-                            <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="false">
-                                <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton">
-                                    <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
-                                </actionButton>
-                                <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton">
-                                    <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
-                                </actionButton>
-                                <table styleName="titleBarButton">
-                                    <row>
-                                        <column>
-                                            <actionButton featureText="Repeat" eventTag="Repeat" hotKey="F6">
-                                                <showStimulus/>
-                                            </actionButton>
-                                        </column>
-                                        <column>
-                                            <nextStimulusButton featureText="Next" eventTag="nextStimulusR" hotKey="ENTER" repeatIncorrect="false"/>
-                                        </column>
-                                    </row>
-                                </table>
-                            </stimulusCodeAudio>
-                        </stimulusCodeVideo>
-                    </stimulusCodeAudio>
-                    <touchInputZone styleName="borderedVideoLeft" showControls="true"/>
-                    <touchInputZone styleName="borderedVideoRight" showControls="true"/>
-                </hasMoreStimulus>
-                <endOfStimulus>
-                    <autoNextPresenter/>
-                </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Test_3</tag>
-                </stimuli>
-            </loadStimulus>
-        </backgroundImage>
+    <presenter back="TestMenu" displayOrder="13" menuLabel="Test 2a" next="Test_2b" type="stimulus" self="Test_2a" title="Test 2a">
+        <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName="zoomToBlock2"/>
+        <htmlText featureText="&amp;nbsp;"/>
+        <audioButton eventTag="room_2" src="room_2" hotKey="F6" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
+            <pause msToNext="2000">
+                <autoNextPresenter/>
+            </pause>
+        </audioButton>
     </presenter>
-    <presenter back="TestMenu" displayOrder="14" menuLabel="Test 4" next="TestMenu" type="stimulus" self="Test_4" title="Test 4">
-        <backgroundImage msToNext="7000" src="huisje_02.jpg" styleName="zoomToBlock4">
-            <loadStimulus eventTag="Test 4" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
-                <hasMoreStimulus>
-                    <backgroundImage msToNext="0" src="" styleName=""/>
-                    <clearPage styleName="fullScreenWidth"/>
-                    <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" showPlaybackIndicator="false">
-                        <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" showPlaybackIndicator="false"/>
-                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
-                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
-                            <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="false">
-                                <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton">
-                                    <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
-                                </actionButton>
-                                <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton">
-                                    <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
-                                </actionButton>
-                                <table styleName="titleBarButton">
-                                    <row>
-                                        <column>
-                                            <actionButton featureText="Repeat" eventTag="Repeat" hotKey="F6">
-                                                <showStimulus/>
-                                            </actionButton>
-                                        </column>
-                                        <column>
-                                            <nextStimulusButton featureText="Next" eventTag="nextStimulusR" hotKey="ENTER" repeatIncorrect="false"/>
-                                        </column>
-                                    </row>
-                                </table>
-                            </stimulusCodeAudio>
-                        </stimulusCodeVideo>
-                    </stimulusCodeAudio>
-                    <touchInputZone styleName="borderedVideoLeft" showControls="true"/>
-                    <touchInputZone styleName="borderedVideoRight" showControls="true"/>
-                </hasMoreStimulus>
-                <endOfStimulus>
-                    <autoNextPresenter/>
-                </endOfStimulus>
-                <randomGrouping/>
-                <stimuli>
-                    <tag>Test_4</tag>
-                </stimuli>
-            </loadStimulus>
-        </backgroundImage>
+    <presenter back="TestMenu" displayOrder="14" menuLabel="Test 2b" next="TestMenu" type="stimulus" self="Test_2b" title="Test 2b">
+        <loadStimulus eventTag="Test 2b" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <backgroundImage msToNext="0" src="" styleName=""/>
+                <clearPage styleName="fullScreenWidth"/>
+                <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" showPlaybackIndicator="false">
+                    <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" showPlaybackIndicator="false"/>
+                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
+                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
+                        <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="false">
+                            <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton">
+                                <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
+                            </actionButton>
+                            <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton">
+                                <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
+                            </actionButton>
+                            <table styleName="titleBarButton">
+                                <row>
+                                    <column>
+                                        <actionButton featureText="Repeat" eventTag="Repeat" hotKey="F6">
+                                            <showStimulus/>
+                                        </actionButton>
+                                    </column>
+                                    <column>
+                                        <nextStimulusButton featureText="Next" eventTag="nextStimulusR" hotKey="ENTER" repeatIncorrect="false"/>
+                                    </column>
+                                </row>
+                            </table>
+                        </stimulusCodeAudio>
+                    </stimulusCodeVideo>
+                </stimulusCodeAudio>
+                <touchInputZone styleName="borderedVideoLeft" showControls="true"/>
+                <touchInputZone styleName="borderedVideoRight" showControls="true"/>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <autoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>Test_2b</tag>
+            </stimuli>
+        </loadStimulus>
     </presenter>
-    <presenter back="Menu" displayOrder="15" menuLabel="Einde van het experiment" type="transmission" self="completion" title="Einde van het experiment">
+    <presenter back="TestMenu" displayOrder="15" menuLabel="Test 3a" next="Test_3b" type="stimulus" self="Test_3a" title="Test 3a">
+        <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName="zoomToBlock3"/>
+        <htmlText featureText="&amp;nbsp;"/>
+        <audioButton eventTag="room_3" src="room_3" hotKey="F6" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
+            <pause msToNext="2000">
+                <autoNextPresenter/>
+            </pause>
+        </audioButton>
+    </presenter>
+    <presenter back="TestMenu" displayOrder="16" menuLabel="Test 3b" next="TestMenu" type="stimulus" self="Test_3b" title="Test 3b">
+        <loadStimulus eventTag="Test 3b" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <backgroundImage msToNext="0" src="" styleName=""/>
+                <clearPage styleName="fullScreenWidth"/>
+                <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" showPlaybackIndicator="false">
+                    <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" showPlaybackIndicator="false"/>
+                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
+                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
+                        <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="false">
+                            <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton">
+                                <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
+                            </actionButton>
+                            <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton">
+                                <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
+                            </actionButton>
+                            <table styleName="titleBarButton">
+                                <row>
+                                    <column>
+                                        <actionButton featureText="Repeat" eventTag="Repeat" hotKey="F6">
+                                            <showStimulus/>
+                                        </actionButton>
+                                    </column>
+                                    <column>
+                                        <nextStimulusButton featureText="Next" eventTag="nextStimulusR" hotKey="ENTER" repeatIncorrect="false"/>
+                                    </column>
+                                </row>
+                            </table>
+                        </stimulusCodeAudio>
+                    </stimulusCodeVideo>
+                </stimulusCodeAudio>
+                <touchInputZone styleName="borderedVideoLeft" showControls="true"/>
+                <touchInputZone styleName="borderedVideoRight" showControls="true"/>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <autoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>Test_3b</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter back="TestMenu" displayOrder="17" menuLabel="Test 4a" next="Test_4b" type="stimulus" self="Test_4a" title="Test 4a">
+        <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName="zoomToBlock4"/>
+        <htmlText featureText="&amp;nbsp;"/>
+        <audioButton eventTag="room_4" src="room_4" hotKey="F6" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
+            <pause msToNext="2000">
+                <autoNextPresenter/>
+            </pause>
+        </audioButton>
+    </presenter>
+    <presenter back="TestMenu" displayOrder="18" menuLabel="Test 4b" next="TestMenu" type="stimulus" self="Test_4b" title="Test 4b">
+        <loadStimulus eventTag="Test 4b" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <backgroundImage msToNext="0" src="" styleName=""/>
+                <clearPage styleName="fullScreenWidth"/>
+                <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" showPlaybackIndicator="false">
+                    <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" showPlaybackIndicator="false"/>
+                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
+                    <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
+                        <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="false">
+                            <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton">
+                                <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
+                            </actionButton>
+                            <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton">
+                                <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
+                            </actionButton>
+                            <table styleName="titleBarButton">
+                                <row>
+                                    <column>
+                                        <actionButton featureText="Repeat" eventTag="Repeat" hotKey="F6">
+                                            <showStimulus/>
+                                        </actionButton>
+                                    </column>
+                                    <column>
+                                        <nextStimulusButton featureText="Next" eventTag="nextStimulusR" hotKey="ENTER" repeatIncorrect="false"/>
+                                    </column>
+                                </row>
+                            </table>
+                        </stimulusCodeAudio>
+                    </stimulusCodeVideo>
+                </stimulusCodeAudio>
+                <touchInputZone styleName="borderedVideoLeft" showControls="true"/>
+                <touchInputZone styleName="borderedVideoRight" showControls="true"/>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <autoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>Test_4b</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter back="Menu" displayOrder="19" menuLabel="Einde van het experiment" type="transmission" self="completion" title="Einde van het experiment">
         <htmlText featureText="Data will not be collected in this version."/>
         <htmlText featureText="Dit is het einde van het experiment.&lt;br/&gt;Hartelijk dank voor uw deelname! &lt;br/&gt;&lt;br/&gt;"/>
         <addPadding/>
@@ -308,7 +336,7 @@
         <addPadding/>
         <eraseUsersDataButton featureText="Opnieuw beginnen"/>
     </presenter>
-    <presenter back="Menu" displayOrder="16" menuLabel="Over" type="debug" self="about" title="Over">
+    <presenter back="Menu" displayOrder="20" menuLabel="Over" type="debug" self="about" title="Over">
         <versionData/>
     </presenter>
     <stimuli>
@@ -325,40 +353,40 @@
             <tag>Training</tag>
         </stimulus>
         <stimulus audioPath="test_1" code="test_1" identifier="test_1" imagePath="adjacency_a" pauseMs="0">
-            <tag>Test_1</tag>
+            <tag>Test_1b</tag>
         </stimulus>
         <stimulus audioPath="test_2" code="test_2" identifier="test_2" imagePath="adjacency_b" pauseMs="0">
-            <tag>Test_1</tag>
+            <tag>Test_1b</tag>
         </stimulus>
         <stimulus audioPath="filler_1" code="filler_1" identifier="filler_1" imagePath="filler_1" pauseMs="0">
-            <tag>Test_1</tag>
+            <tag>Test_1b</tag>
         </stimulus>
         <stimulus audioPath="test_3" code="test_3" identifier="test_3" imagePath="adjacency_c" pauseMs="0">
-            <tag>Test_2</tag>
+            <tag>Test_2b</tag>
         </stimulus>
         <stimulus audioPath="test_4" code="test_4" identifier="test_4" imagePath="adjacency_d" pauseMs="0">
-            <tag>Test_2</tag>
+            <tag>Test_2b</tag>
         </stimulus>
         <stimulus audioPath="filler_2" code="filler_2" identifier="filler_2" imagePath="filler_2" pauseMs="0">
-            <tag>Test_2</tag>
+            <tag>Test_2b</tag>
         </stimulus>
         <stimulus audioPath="test_5" code="test_5" identifier="test_5" imagePath="adjacency_a" pauseMs="0">
-            <tag>Test_3</tag>
+            <tag>Test_3b</tag>
         </stimulus>
         <stimulus audioPath="test_6" code="test_6" identifier="test_6" imagePath="adjacency_b" pauseMs="0">
-            <tag>Test_3</tag>
+            <tag>Test_3b</tag>
         </stimulus>
         <stimulus audioPath="filler_3" code="filler_3" identifier="filler_3" imagePath="filler_3" pauseMs="0">
-            <tag>Test_3</tag>
+            <tag>Test_3b</tag>
         </stimulus>
         <stimulus audioPath="test_7" code="test_7" identifier="test_7" imagePath="adjacency_c" pauseMs="0">
-            <tag>Test_4</tag>
+            <tag>Test_4b</tag>
         </stimulus>
         <stimulus audioPath="test_8" code="test_8" identifier="test_8" imagePath="adjacency_d" pauseMs="0">
-            <tag>Test_4</tag>
+            <tag>Test_4b</tag>
         </stimulus>
         <stimulus audioPath="filler_4" code="filler_4" identifier="filler_4" imagePath="filler_4" pauseMs="0">
-            <tag>Test_4</tag>
+            <tag>Test_4b</tag>
         </stimulus>
     </stimuli>
 </experiment>
