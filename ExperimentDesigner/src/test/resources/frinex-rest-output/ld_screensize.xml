@@ -112,7 +112,7 @@
             </loadStimulus>
         </backgroundImage>
     </presenter>
-    <presenter back="Menu" displayOrder="10" menuLabel="TestMenu" next="completion" type="menu" self="TestMenu" title="TestMenu">
+    <presenter back="Menu" displayOrder="10" menuLabel="TestMenu" next="Attic" type="menu" self="TestMenu" title="TestMenu">
         <menuItem featureText="Test 1a" target="Test_1a"/>
         <menuItem featureText="Test 2a" target="Test_2a"/>
         <menuItem featureText="Test 3a" target="Test_3a"/>
@@ -336,7 +336,16 @@
         <addPadding/>
         <eraseUsersDataButton featureText="Opnieuw beginnen"/>
     </presenter>
-    <presenter back="Menu" displayOrder="20" menuLabel="Over" type="debug" self="about" title="Over">
+    <presenter back="TestMenu" displayOrder="20" menuLabel="Attic" next="completion" type="stimulus" self="Attic" title="Attic">
+        <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName="zoomToAttic"/>
+        <htmlText featureText="&amp;nbsp;"/>
+        <audioButton eventTag="room_5" src="room_5" hotKey="F6" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
+            <pause msToNext="2000">
+                <autoNextPresenter/>
+            </pause>
+        </audioButton>
+    </presenter>
+    <presenter back="Menu" displayOrder="21" menuLabel="Over" type="debug" self="about" title="Over">
         <versionData/>
     </presenter>
     <stimuli>
