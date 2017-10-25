@@ -21,7 +21,6 @@ import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAnimatedStimuliScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAudioTestScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
@@ -164,28 +163,28 @@ public class GuineaPigProject {
         final WizardMenuScreen textMenuScreen = new WizardMenuScreen("TestMenu", "TestMenu", "TestMenu");
         wizardData.addScreen(textMenuScreen);
         for (String[][] testSubList : testList) {
-            WizardAudioTestScreen testIntroAudio = new WizardAudioTestScreen(testSubList[0][0] + "a", "&nbsp;", "continue button", testSubList[0][2]);
-            wizardData.addScreen(testIntroAudio);
-            testIntroAudio.setBackgroundImage(backgroundImage);
-            testIntroAudio.setBackgroundStyle(testSubList[0][1]);
-            testIntroAudio.setAutoPlay(true);
-            testIntroAudio.setAutoNext(true);
-            testIntroAudio.setAutoNextDelay(2000);
-            testIntroAudio.setAudioHotKey("F6");
-            testIntroAudio.setImageName("intro_1.jpg");
-            testIntroAudio.setNextHotKey("ENTER");
-            testIntroAudio.setStyleName("titleBarButton");
+//            WizardAudioTestScreen testIntroAudio = new WizardAudioTestScreen(testSubList[0][0] + "a", "&nbsp;", "continue button", testSubList[0][2]);
+//            wizardData.addScreen(testIntroAudio);
+//            testIntroAudio.setBackgroundImage(backgroundImage);
+//            testIntroAudio.setBackgroundStyle(testSubList[0][1]);
+//            testIntroAudio.setAutoPlay(true);
+//            testIntroAudio.setAutoNext(true);
+//            testIntroAudio.setAutoNextDelay(2000);
+//            testIntroAudio.setAudioHotKey("F6");
+//            testIntroAudio.setImageName("intro_1.jpg");
+//            testIntroAudio.setNextHotKey("ENTER");
+//            testIntroAudio.setStyleName("titleBarButton");
 
-            final WizardGridStimulusScreen testStimulusScreen = new WizardGridStimulusScreen(testSubList[0][0] + "b", false, testSubList[1],
+            final WizardGridStimulusScreen testStimulusScreen = new WizardGridStimulusScreen(testSubList[0][0], false, testSubList[1],
                     null, 1000, false, null, 0, 0, null);
-//            testStimulusScreen.setBackgroundImage(backgroundImage);
-//            testStimulusScreen.setBackgroundStyle(testSubList[0][1]);
-            textMenuScreen.addTargetScreen(testIntroAudio);
+            testStimulusScreen.setBackgroundImage(backgroundImage);
+            testStimulusScreen.setBackgroundStyle(testSubList[0][1]);
+            testStimulusScreen.setIntroAudio(testSubList[0][2]);
+            testStimulusScreen.setIntroAudioDelay(2000);
+            textMenuScreen.addTargetScreen(testStimulusScreen);
             wizardData.addScreen(testStimulusScreen);
-            testIntroAudio.setBackWizardScreen(textMenuScreen);
             testStimulusScreen.setBackWizardScreen(textMenuScreen);
             testStimulusScreen.setNextWizardScreen(textMenuScreen);
-            testIntroAudio.setNextWizardScreen(testStimulusScreen);
         }
         WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, true, true, completionScreenText2,
                 "Opnieuw beginnen",
