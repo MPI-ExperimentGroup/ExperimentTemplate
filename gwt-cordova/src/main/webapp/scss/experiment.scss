@@ -329,9 +329,19 @@ $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 25
     transform: scale(4,4) translate(0%,10%);
 }*/
 
-.gwt-Button.titleBarButton, .titleBarButton {
-    top: 0px;
-    right: 10px;
+
+.gwt-Button.titleBarButton {
+    padding: 0px;
+    margin: 0px;
+    height: 42px;
+    top: 3px;
+    right: 3px;
+    position: fixed;
+}
+
+.titleBarButton {
+    top: 1px;
+    right: 3px;
     position: fixed;
 }
 .gwt-Button.optionButton.rightOverlayButton, .borderedVideoRight {
@@ -353,6 +363,12 @@ $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 25
     opacity: 0.0;
     background: grey;
     color: grey;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 .borderedVideoLeft, .borderedVideoRight {
     top: 80px;
