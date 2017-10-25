@@ -1412,7 +1412,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         if (touchInputCapture == null) {
             final HTML debugHtmlLabel;
             if (showDebug) {
-                debugHtmlLabel = ((TimedStimulusView) simpleView).addHtmlText("TouchInputDebug");
+                debugHtmlLabel = ((TimedStimulusView) simpleView).addHtmlText("");
             } else {
                 debugHtmlLabel = null;
             }
