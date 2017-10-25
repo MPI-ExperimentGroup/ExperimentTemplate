@@ -62,12 +62,25 @@ public class RandomNonWordIndeces {
            this.numberOfNonwords++;
            this.sequenceLength++;
            frequency = ( (double) this.numberOfNonwords) / ((double) this.sequenceLength);
+           //System.out.println(frequency);
+           
         }
+        double tmpEpsilon = probability - frequency;
+        int tmpWords = this.numberOfNonwords--;
+        int tmpLength = this.sequenceLength--;
+        frequency = ( (double) tmpWords) / ((double) tmpLength);
         while (frequency - probability > Constants.EPSILON) {
-           this.numberOfNonwords--;
-           this.sequenceLength--;
-           frequency = ( (double) this.numberOfNonwords) / ((double) this.sequenceLength);
+           tmpWords--;
+           tmpLength--;
+           frequency = ( (double) tmpWords) / ((double) tmpLength);
+           //System.out.println(frequency);
         }
+        if (frequency - probability < tmpEpsilon) {
+           this.numberOfNonwords = tmpWords;
+           this.sequenceLength = tmpLength;
+        }
+        frequency = ( (double) this.numberOfNonwords) / ((double) this.sequenceLength);
+        //System.out.println(frequency);
     }
 
     // we divide all the indices from 0 to sequenceLength-1 on blocks,

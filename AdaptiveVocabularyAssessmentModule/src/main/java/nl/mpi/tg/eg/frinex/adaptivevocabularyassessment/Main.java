@@ -17,7 +17,14 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Util.baseName;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassesment.bands.Bands;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassesment.bands.LexicalUnit;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.FastTrack;
@@ -34,27 +41,12 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("starting work ... ");
-        FastTrack fastTrack = new FastTrack(Constants.DEFAULT_USER, Constants.START_BAND,  Constants.AVRERAGE_NON_WORD_POSITION);
+        FastTrack fastTrack = new FastTrack(Constants.DEFAULT_USER, Constants.START_BAND, Constants.AVRERAGE_NON_WORD_POSITION);
         try {
             fastTrack.initialiseWordLists();
             fastTrack.makeStimulaeSequence(Constants.NONWORDS_PER_BLOCK);
             ArrayList<LexicalUnit> fastTrackSequence = fastTrack.getStimulaeSequence();
-            System.out.println("Fast track example sequence");
-            int counter=0;
-            int counterNonwords = 0;
-            for(LexicalUnit unit: fastTrackSequence) {
-               counter++;
-               System.out.print(unit.getSpelling());
-               System.out.print("  ");
-               System.out.print(unit.getBandNumber());
-               if (unit.getBandNumber() == -1){
-                   counterNonwords++;
-               }
-               System.out.print(" ");
-               double check = ((double) counterNonwords) / ((double) counter);
-               System.out.println(check);
-            }
-            System.out.println("END of example sequence");
+            writeCsvFileFastTrack(fastTrackSequence);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -89,6 +81,30 @@ public class Main {
             System.out.println(nonword.getSpelling());
             System.out.println(nonword.getIsUsed());
         }
+    }
+
+    public static void writeCsvFileFastTrack(ArrayList<LexicalUnit> stimulae) throws IOException {
+        long millis = System.currentTimeMillis();
+        int blockSize = Constants.NONWORDS_PER_BLOCK*Constants.AVRERAGE_NON_WORD_POSITION;
+        String fileName = "Fast_track_test_"+blockSize+"_"+millis+".csv";
+        System.out.println("writeCsvFile: " + Constants.OUTPUT_DIRECTORY + fileName);
+        final File csvFile = new File(Constants.OUTPUT_DIRECTORY, fileName);
+        final FileWriter csvFileWriter = new FileWriter(csvFile, false);
+        csvFileWriter.write("Spelling;BandNumber;NonwordsFrequencyAtThisPoint\n");
+        int counter = 0;
+        int counterNonwords = 0;
+        for (LexicalUnit stimulus : stimulae) {
+            counter++;
+            if (stimulus.getBandNumber() == -1) {
+                    counterNonwords++;
+            }
+            double frequency = ((double) counterNonwords) / ((double) counter);
+            String row = stimulus.getSpelling() + ";" +  stimulus.getBandNumber() +
+                    ";"+frequency;
+            System.out.println(row);
+            csvFileWriter.write(row + "\n");
+        }
+        csvFileWriter.close();
     }
 
 }

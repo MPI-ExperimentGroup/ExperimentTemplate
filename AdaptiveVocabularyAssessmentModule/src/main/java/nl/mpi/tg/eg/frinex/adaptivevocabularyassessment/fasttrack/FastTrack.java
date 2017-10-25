@@ -61,10 +61,6 @@ public class FastTrack {
         RandomNonWordIndeces posChooser = new RandomNonWordIndeces(this.startBand, nonWordsPerBlock, this.averageNonwordPosition);
         ArrayList<Integer> nonWordInd = posChooser.updateAndGetIndices();
         
-        /// debug-test
-        this.debugTestNonwordFrequences(posChooser);
-        ///
-
         int bandCounter = this.startBand - 1;
         int nonwordCounter = 0;
         int sequenceLength = posChooser.getSequenceLength();
