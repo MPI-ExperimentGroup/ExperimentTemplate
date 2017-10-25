@@ -36,7 +36,11 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
         this.wizardScreenData.setScreenText(2, "");
         this.wizardScreenData.setScreenText(3, null);
         this.wizardScreenData.setScreenText(4, null);
+        this.wizardScreenData.setScreenText(5, "");
+        this.wizardScreenData.setScreenText(6, null);
         this.wizardScreenData.setScreenBoolean(0, false);
+        this.wizardScreenData.setScreenBoolean(1, false);
+        this.wizardScreenData.setScreenIntegers(0, 0);
     }
 
     public WizardAudioTestScreen(String screenName, String pageText, String buttonLabel, String audioPath) {
@@ -46,19 +50,23 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
         this.wizardScreenData.setScreenText(2, "");
         this.wizardScreenData.setScreenText(3, null);
         this.wizardScreenData.setScreenText(4, null);
+        this.wizardScreenData.setScreenText(5, "");
+        this.wizardScreenData.setScreenText(6, null);
         this.wizardScreenData.setScreenBoolean(0, false);
+        this.wizardScreenData.setScreenBoolean(1, false);
+        this.wizardScreenData.setScreenIntegers(0, 0);
         this.setNextButton(buttonLabel);
         this.wizardScreenData.setScreenMediaPath(audioPath);
     }
 
     @Override
     public String getScreenBooleanInfo(int index) {
-        return new String[]{"Auto Play"}[index];
+        return new String[]{"Auto Play", "Auto Next"}[index];
     }
 
     @Override
     public String getScreenTextInfo(int index) {
-        return new String[]{"Audio Test Instructions", "Background Image", "AudioHotKey", "NextHotKey", "StyleName"}[index];
+        return new String[]{"Audio Test Instructions", "Background Image", "AudioHotKey", "NextHotKey", "Button Style", "Background Style", "Image"}[index];
     }
 
     @Override
@@ -68,7 +76,7 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenIntegerInfo(int index) {
-        return new String[]{}[index];
+        return new String[]{"AutoNextDelay"}[index];
     }
 //    public String getAudioPath() {
 //        return this.wizardScreenData
@@ -86,12 +94,28 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
         this.wizardScreenData.setScreenText(1, backgroundImage);
     }
 
+    private String getImageName(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(6);
+    }
+
+    public void setImageName(String backgroundImage) {
+        this.wizardScreenData.setScreenText(6, backgroundImage);
+    }
+
     private String getStyleName(WizardScreenData storedWizardScreenData) {
         return storedWizardScreenData.getScreenText(4);
     }
 
     public void setStyleName(String backgroundImage) {
         this.wizardScreenData.setScreenText(4, backgroundImage);
+    }
+
+    private String getBackgroundStyle(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(5);
+    }
+
+    public void setBackgroundStyle(String backgroundStyle) {
+        this.wizardScreenData.setScreenText(5, backgroundStyle);
     }
 
     private String getAudioHotKey(WizardScreenData storedWizardScreenData) {
@@ -114,8 +138,24 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
         return storedWizardScreenData.getScreenBoolean(0);
     }
 
+    public void setAutoNextDelay(int autoNextDelay) {
+        this.wizardScreenData.setScreenIntegers(0, autoNextDelay);
+    }
+
+    private int getAutoNextDelay(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenInteger(0);
+    }
+
+    private boolean getAutoNext(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenBoolean(1);
+    }
+
     public void setAutoPlay(boolean autoPlay) {
         this.wizardScreenData.setScreenBoolean(0, autoPlay);
+    }
+
+    public void setAutoNext(boolean autoNext) {
+        this.wizardScreenData.setScreenBoolean(1, autoNext);
     }
 
 //    String[] fieldNames = new String[]{"audioTestScreenText", "audioWorksButtonText", "testAudioPath"};
@@ -142,7 +182,7 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
         if (backgroundImage != null && !backgroundImage.isEmpty()) {
             final PresenterFeature backgoundFeature = new PresenterFeature(FeatureType.backgroundImage, null);
             backgoundFeature.addFeatureAttributes(FeatureAttribute.msToNext, "1000");
-            backgoundFeature.addFeatureAttributes(FeatureAttribute.styleName, "");
+            backgoundFeature.addFeatureAttributes(FeatureAttribute.styleName, getBackgroundStyle(storedWizardScreenData));
             backgoundFeature.addFeatureAttributes(FeatureAttribute.src, backgroundImage);
             storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(backgoundFeature);
         }
@@ -151,7 +191,7 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
         presenterFeature = new PresenterFeature(FeatureType.audioButton, null);
         presenterFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenMediaPath());
         presenterFeature.addFeatureAttributes(FeatureAttribute.src, storedWizardScreenData.getScreenMediaPath());
-        presenterFeature.addFeatureAttributes(FeatureAttribute.poster, storedWizardScreenData.getScreenMediaPath() + ".jpg");
+        presenterFeature.addFeatureAttributes(FeatureAttribute.poster, (getImageName(storedWizardScreenData) != null) ? getImageName(storedWizardScreenData) : storedWizardScreenData.getScreenMediaPath() + ".jpg");
         presenterFeature.addFeatureAttributes(FeatureAttribute.autoPlay, Boolean.toString(getAutoPlay(storedWizardScreenData)));
         presenterFeature.addFeatureAttributes(FeatureAttribute.hotKey, getAudioHotKey(storedWizardScreenData));
         if (getStyleName(storedWizardScreenData) != null) {
@@ -159,12 +199,19 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
         }
         storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(presenterFeature);
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
-        final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.actionButton, storedWizardScreenData.getNextButton()[0]);
-        if (getNextHotKey(storedWizardScreenData) != null) {
-            actionButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, getNextHotKey(storedWizardScreenData));
+        if (getAutoNext(storedWizardScreenData)) {
+            final PresenterFeature pauseFeature = new PresenterFeature(FeatureType.pause, null);
+            pauseFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getAutoNextDelay(storedWizardScreenData)));
+            presenterFeature.getPresenterFeatureList().add(pauseFeature);
+            pauseFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
+        } else {
+            final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.actionButton, storedWizardScreenData.getNextButton()[0]);
+            if (getNextHotKey(storedWizardScreenData) != null) {
+                actionButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, getNextHotKey(storedWizardScreenData));
+            }
+            presenterFeature.getPresenterFeatureList().add(actionButtonFeature);
+            actionButtonFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
         }
-        presenterFeature.getPresenterFeatureList().add(actionButtonFeature);
-        actionButtonFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
         return storedWizardScreenData.getPresenterScreen();
     }
 }
