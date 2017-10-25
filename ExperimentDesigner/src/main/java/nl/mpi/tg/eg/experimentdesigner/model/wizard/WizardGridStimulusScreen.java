@@ -44,6 +44,8 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
 //        setStimulusMsDelay(0);
         setFullScreenGrid(false);
         setSdCardStimuli(false);
+        setIntroAudio(null);
+        setIntroAudioDelay(0);
         this.wizardScreenData.setButtonLabelEventTag("");
         this.wizardScreenData.setCentreScreen(true);
     }
@@ -56,6 +58,8 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         this.wizardScreenData.setStimulusCodeMsDelay(0);
 //        setStimulusMsDelay(0);
         setSdCardStimuli(false);
+        setIntroAudio(null);
+        setIntroAudioDelay(0);
         this.wizardScreenData.setStimulusCodeFormat(codeFormat);
         this.wizardScreenData.setStimuliCount(maxStimuli);
         setRandomiseStimuli(randomiseStimuli);
@@ -87,8 +91,24 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         this.wizardScreenData.setScreenText(0, backgroundImage);
     }
 
+    public void setIntroAudioDelay(int initialAudioDelay) {
+        this.wizardScreenData.setScreenIntegers(0, initialAudioDelay);
+    }
+
+    public void setIntroAudio(String initialAudio) {
+        this.wizardScreenData.setScreenText(2, initialAudio);
+    }
+
     private String getBackgroundStyle(WizardScreenData storedWizardScreenData) {
         return storedWizardScreenData.getScreenText(1);
+    }
+
+    private String getIntroAudio(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(2);
+    }
+
+    private int getIntroAudioDelay(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenInteger(0);
     }
 
     public void setBackgroundStyle(String backgroundStyle) {
@@ -116,7 +136,8 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
     public String getScreenTextInfo(int index) {
         return new String[]{
             "BackgroundImage",
-            "BackgroundStyle"
+            "BackgroundStyle",
+            "IntroAudio"
         }[index];
     }
 
@@ -127,7 +148,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenIntegerInfo(int index) {
-        return new String[]{}[index];
+        return new String[]{"IntroAudioDelay"}[index];
     }
 
     public final void setStimuliSet(String[] stimuliSet) {
@@ -203,7 +224,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         }
         if (getBackgroundImage(storedWizardScreenData) != null) {
             final PresenterFeature backgoundFeature = new PresenterFeature(FeatureType.backgroundImage, null);
-            backgoundFeature.addFeatureAttributes(FeatureAttribute.msToNext, "7000");
+            backgoundFeature.addFeatureAttributes(FeatureAttribute.msToNext, "3000");
 //        backgoundFeature.addFeatureAttributes(FeatureAttribute.styleName, "zoomTo3of6 zoom to house");
             backgoundFeature.addFeatureAttributes(FeatureAttribute.styleName, getBackgroundStyle(storedWizardScreenData));
 //        backgoundFeature.addFeatureAttributes(FeatureAttribute.styleName, "zoomOut");
@@ -211,6 +232,23 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
             presenterFeatureList.add(backgoundFeature);
 //        set the image as the parent to subsequent features
             presenterFeatureList = backgoundFeature.getPresenterFeatureList();
+        }
+        if (getIntroAudio(storedWizardScreenData) != null) {
+            final PresenterFeature introAudioFeature = new PresenterFeature(FeatureType.audioButton, null);
+            introAudioFeature.addFeatureAttributes(FeatureAttribute.eventTag, getIntroAudio(storedWizardScreenData));
+            introAudioFeature.addFeatureAttributes(FeatureAttribute.src, getIntroAudio(storedWizardScreenData));
+            introAudioFeature.addFeatureAttributes(FeatureAttribute.poster, "intro_1.jpg");
+            introAudioFeature.addFeatureAttributes(FeatureAttribute.autoPlay, Boolean.toString(true));
+            introAudioFeature.addFeatureAttributes(FeatureAttribute.hotKey, "F6");
+            introAudioFeature.addFeatureAttributes(FeatureAttribute.styleName, "titleBarButton");
+            presenterFeatureList.add(introAudioFeature);
+            presenterFeatureList = introAudioFeature.getPresenterFeatureList();
+        }
+        if (getIntroAudioDelay(storedWizardScreenData) > 0) {
+            final PresenterFeature pauseFeature = new PresenterFeature(FeatureType.pause, null);
+            pauseFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getIntroAudioDelay(storedWizardScreenData)));
+            presenterFeatureList.add(pauseFeature);
+            presenterFeatureList = pauseFeature.getPresenterFeatureList();
         }
         final PresenterFeature loadStimuliFeature = new PresenterFeature((!isSdCardStimuli(storedWizardScreenData)) ? FeatureType.loadStimulus : FeatureType.loadSdCardStimulus, null);
         loadStimuliFeature.addStimulusTag(storedWizardScreenData.getScreenTitle());
