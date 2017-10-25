@@ -35,7 +35,8 @@ public class Main {
     public static void main(String[] args) {
       
         System.out.println("starting work ... ");
-        RandomNonWordIndeces rndInd = new RandomNonWordIndeces(Constants.DEFAULT_BLOCK_LENGTH, Constants.DEFAULT_BLOCK_LENGTH, Constants.NONWORD_PROBABILITY);
+        //RandomNonWordIndeces(int sequenceLength, int nonwordsPerBlock, int averageNonwordPosition)
+        RandomNonWordIndeces rndInd = new RandomNonWordIndeces(Constants.DEFAULT_SEQUENCE_LENGTH, Constants.NONWORDS_PER_BLOCK, Constants.AVRERAGE_NON_WORD_POSITION);
         ArrayList<Integer> nonwordPositions = rndInd.updateAndGetIndices();
         rndInd.updateFrequencesOfNonWordIndices();
         double[] freq = rndInd.getFrequencesOfNonWordindices();

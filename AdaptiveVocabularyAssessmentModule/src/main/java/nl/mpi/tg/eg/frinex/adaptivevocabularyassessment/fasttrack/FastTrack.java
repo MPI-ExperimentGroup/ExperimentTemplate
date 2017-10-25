@@ -49,12 +49,13 @@ public class FastTrack {
 
     }
 
-    public void makeStimulaeSequence(int startBand, int frequenceStep, int sequenceLength) throws Exception {
+    public void makeStimulaeSequence(int startBand, int nonWordsPerBlock, int sequenceLength, int averageNonwordPosition) throws Exception {
 
         this.stimulaeSequence = new ArrayList<>(sequenceLength);
 
-        // we need to choose the positions for wnonwords (from 0 to sequenceLength-1) 
-        RandomNonWordIndeces posChooser = new RandomNonWordIndeces(sequenceLength, frequenceStep, Constants.NONWORD_PROBABILITY);
+        // we need to choose the positions for nonwords (from 0 to sequenceLength-1) 
+        //int upperBound, int nonwordsPerBlock, int n
+        RandomNonWordIndeces posChooser = new RandomNonWordIndeces(sequenceLength, nonWordsPerBlock, averageNonwordPosition);
         ArrayList<Integer> nonWordInd = posChooser.updateAndGetIndices();
 
         int bandCounter = startBand-1;

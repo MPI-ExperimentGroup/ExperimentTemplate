@@ -20,64 +20,86 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.ThreadLocalRandom;
-import org.apache.commons.lang3.ArrayUtils;
 
 /**
  * produces the collection of [p * N] indices(for non-word) from 0 to N-1, where
- * p is the probability for a non word to appear.
+ * p = 1/n is the probability for a non word to appear.
  *
  * @author olhshk
  */
 public class RandomNonWordIndeces {
 
-    private int upperBound; //  N
-    
-    private int step;
+    private final int sequenceLength; //  N
 
-    private int amountOfIndeces; // [p * N]
+    private final int averageNonwordPosition; // n
+
+    private final int nonwordsPerBlock;
+
+    private final int numberOfNonwords; // [1/n * N]
 
     private ArrayList<Integer> randomIndices;
 
     private double[] frequences;
 
-    private int[] buffer;
-
-    public RandomNonWordIndeces(int upperBound, int step, double probability) {
-        this.upperBound = upperBound;
-        this.step = step;
-        this.amountOfIndeces = this.calculateNumberOfIndices(probability, upperBound);
+    public RandomNonWordIndeces(int sequenceLength, int nonwordsPerBlock, int averageNonwordPosition) {
+        this.sequenceLength = sequenceLength;
+        this.averageNonwordPosition = averageNonwordPosition;
+        this.nonwordsPerBlock = nonwordsPerBlock;
+        this.numberOfNonwords = this.calculateNumberOfNonwords(averageNonwordPosition, sequenceLength);
     }
 
-    private int calculateNumberOfIndices(double probability, int n) {
-        double tmp = probability * n;
-        double floor = Math.floor(tmp);
-        int retVal = (int) tmp;
-        if (tmp - floor >= 0.5) {
+    private int calculateNumberOfNonwords(int averageNonwordPosition, int sequenceLength) {
+        int retVal = sequenceLength / averageNonwordPosition;
+        int remainder = sequenceLength - averageNonwordPosition * retVal;
+        // if remainer block is "big enough" we may place yet another non-word there
+        // "big enough" means that it is "almost averageNonwordPosition"
+        double check = ((double) remainder) / ((double) averageNonwordPosition);
+        if (check >= 0.5) {
             retVal++;
         }
         return retVal;
     }
 
-    private void initIndexBuffer() {
-        this.buffer = new int[this.upperBound];
-        for (int i = 0; i < this.upperBound; i++) {
-            this.buffer[i] = i;
+    // we divide all the indices from 0 to sequenceLength-1 on blocks,
+    // each block has size nonwordsPerBlock*averageNonwordPosition positions
+    // and we pick nonwordsPerBlock positions for non-words in each block
+    private ArrayList<Integer> calculateRandomIndices() {
+
+        ArrayList<Integer> retVal = new ArrayList<>();
+        int randOffset;
+        int blockSize = nonwordsPerBlock * this.averageNonwordPosition;
+        int numberOfBlocks = this.sequenceLength / blockSize;
+        for (int i = 0; i < numberOfBlocks; i++) {
+            ArrayList<Integer> offsetBuffer = new ArrayList<>(blockSize);
+            
+            for (int j = 0; j < blockSize; j++) {
+                offsetBuffer.add(j);
+            }
+            
+            int n=blockSize;
+            for (int k=0; k<this.nonwordsPerBlock; k++) {
+                randOffset = ThreadLocalRandom.current().nextInt(0, n);
+                retVal.add(i*blockSize + offsetBuffer.get(randOffset));
+                offsetBuffer.remove(randOffset);
+                n--;
+            }
         }
 
-    }
-
-    private ArrayList<Integer> calculateRandomIndices() {
-        
-        this.initIndexBuffer();
-        ArrayList<Integer> retVal = new ArrayList<>();
-        int n = this.upperBound;
-        int j;
-        for (int i = 0; i < this.amountOfIndeces; i++) {
-            j = ThreadLocalRandom.current().nextInt(0, n);
-            retVal.add(this.buffer[j]);
-            this.buffer = (int[]) ArrayUtils.remove(this.buffer, j);
+        // if there are positions to pick up left
+        int remainderBlock = this.sequenceLength - blockSize * numberOfBlocks;
+        ArrayList<Integer> offsetBuffer = new ArrayList<>(remainderBlock);
+        for (int j = 0; j < remainderBlock; j++) {
+            offsetBuffer.add(j);
+        }
+        int n = remainderBlock;
+        int nonwordsRemainder = this.numberOfNonwords - retVal.size();
+        for (int k=0; k< nonwordsRemainder; k++) {
+            randOffset = ThreadLocalRandom.current().nextInt(0, n);
+            retVal.add(blockSize * numberOfBlocks + offsetBuffer.get(randOffset));
+            offsetBuffer.remove(randOffset);
             n--;
         }
+        ////
 
         Collections.sort(retVal);
         return retVal;
@@ -94,16 +116,14 @@ public class RandomNonWordIndeces {
     }
 
     private double[] calculateFrequencesOfNonWordIndices() {
-        double[] retVal = new double[this.upperBound];
+        double[] retVal = new double[this.sequenceLength];
         int nonwordsCounter;
-        for (int i = 0; i < this.upperBound; i++) {
+        for (int i = 0; i < this.sequenceLength; i++) {
             nonwordsCounter = amountOfSelectedIndecesBetween(0, i);
             retVal[i] = ((double) nonwordsCounter) / ((double) (i + 1));
         }
         return retVal;
     }
-    
-    
 
     public ArrayList<Integer> updateAndGetIndices() {
         this.randomIndices = this.calculateRandomIndices();
