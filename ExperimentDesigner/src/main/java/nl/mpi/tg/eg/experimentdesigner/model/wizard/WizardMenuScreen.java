@@ -105,14 +105,6 @@ public class WizardMenuScreen extends AbstractWizardScreen {
                 aChoiceMustBeProvidedMessage += targetScreen.getScreenTag() + "<br/>";
             }
             storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, aChoiceMustBeProvidedMessage));
-        } else if (isJumpToRandomScreen(storedWizardScreenData)) {
-            final PresenterFeature jumpToRandomScreen = new PresenterFeature(FeatureType.activateRandomItem, null);
-            for (WizardScreenData targetScreen : storedWizardScreenData.getMenuWizardScreenData()) {
-                final PresenterFeature menuItem = new PresenterFeature(FeatureType.menuItem, targetScreen.getMenuLabel());
-                menuItem.addFeatureAttributes(FeatureAttribute.target, targetScreen.getScreenTag());
-                storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(menuItem);
-            }
-            storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(jumpToRandomScreen);
         } else if (storedWizardScreenData.getMenuWizardScreenData().isEmpty()) {
             storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMenuItems, null));
         } else {
@@ -121,6 +113,10 @@ public class WizardMenuScreen extends AbstractWizardScreen {
                 presenterFeature1.addFeatureAttributes(FeatureAttribute.target, targetScreen.getScreenTag());
                 storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(presenterFeature1);
             }
+        }
+        if (isJumpToRandomScreen(storedWizardScreenData)) {
+            final PresenterFeature jumpToRandomScreen = new PresenterFeature(FeatureType.activateRandomItem, null);
+            storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(jumpToRandomScreen);
         }
         if (storedWizardScreenData.getScreenText(1) != null) {
             storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(1)));
