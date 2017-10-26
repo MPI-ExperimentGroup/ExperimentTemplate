@@ -36,9 +36,9 @@ public class RandomNonWordIndeces {
 
     private final int nonwordsPerBlock;
 
-    private int numberOfNonwords; // [1/n * N]
+    private final int numberOfNonwords; // [1/n * N]
 
-    private int numberOfWords; // [(n-1)/n * N]
+    private final int numberOfWords; // [(n-1)/n * N]
 
     private ArrayList<Integer> randomIndices;
 
@@ -73,19 +73,21 @@ public class RandomNonWordIndeces {
         int blockSize = nonwordsPerBlock * this.averageNonwordPosition;
         int numberOfBlocks = this.sequenceLength / blockSize;
         for (int i = 0; i < numberOfBlocks; i++) {
-            ArrayList<Integer> offsetBuffer = new ArrayList<>(blockSize);
+            ArrayList<Integer> offsetBuffer = new ArrayList<>(blockSize-1); // the last element in the block should be always a word to avoid 2 words in a row
 
-            for (int j = 0; j < blockSize; j++) {
+            for (int j = 0; j < blockSize-1; j++) {
                 offsetBuffer.add(j);
             }
-
-            int n = blockSize;
             for (int k = 0; k < this.nonwordsPerBlock; k++) {
-                randOffset = ThreadLocalRandom.current().nextInt(0, n);
-                retVal.add(i * blockSize + offsetBuffer.get(randOffset));
-                offsetBuffer.remove(randOffset);
-                n--;
+                int n=offsetBuffer.size();
+                int indOffset = ThreadLocalRandom.current().nextInt(0, n); // excl.n
+                int offset = offsetBuffer.get(indOffset);
+                retVal.add(i * blockSize + offset);
+                offsetBuffer.remove(new Integer(offset));
+                offsetBuffer.remove(new Integer(offset-1)); // avoiding neigbouring nonwords
+                offsetBuffer.remove(new Integer(offset+1));
             }
+            
         }
 
         // if there are positions to pick up left
