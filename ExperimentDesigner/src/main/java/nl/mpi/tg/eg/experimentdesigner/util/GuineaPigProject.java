@@ -108,12 +108,12 @@ public class GuineaPigProject {
         introductionAudio1.setAutoNext(true);
         introductionAudio2.setAutoNext(true);
         introductionAudio3.setAutoNext(true);
-        introductionAudio1.setAudioHotKey("R1_MA_A");
-        introductionAudio2.setAudioHotKey("R1_MA_A");
-        introductionAudio3.setAudioHotKey("R1_MA_A");
-        introductionAudio1.setNextHotKey("ENTER");
-        introductionAudio2.setNextHotKey("ENTER");
-        introductionAudio3.setNextHotKey("ENTER");
+        introductionAudio1.setAudioHotKey("ENTER");
+        introductionAudio2.setAudioHotKey("ENTER");
+        introductionAudio3.setAudioHotKey("ENTER");
+//        introductionAudio1.setNextHotKey("ENTER");
+//        introductionAudio2.setNextHotKey("ENTER");
+//        introductionAudio3.setNextHotKey("ENTER");
         introductionAudio1.setStyleName("titleBarButton");
         introductionAudio2.setStyleName("titleBarButton");
         introductionAudio3.setStyleName("titleBarButton");
