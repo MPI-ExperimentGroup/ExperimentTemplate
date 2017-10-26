@@ -190,6 +190,8 @@
     </presenter>
     <presenter back="Edit_User" displayOrder="12" menuLabel="about" type="debug" self="about" title="about">
         <versionData/>
+        <eraseLocalStorageButton/>
+        <localStorageData/>
     </presenter>
     <stimuli>
         <stimulus audioPath="Q1" identifier="Q1:Q1.wav:" pauseMs="0">
