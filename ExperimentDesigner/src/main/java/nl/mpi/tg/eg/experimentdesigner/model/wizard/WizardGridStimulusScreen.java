@@ -239,7 +239,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
             introAudioFeature.addFeatureAttributes(FeatureAttribute.src, getIntroAudio(storedWizardScreenData));
             introAudioFeature.addFeatureAttributes(FeatureAttribute.poster, "intro_1.jpg");
             introAudioFeature.addFeatureAttributes(FeatureAttribute.autoPlay, Boolean.toString(true));
-            introAudioFeature.addFeatureAttributes(FeatureAttribute.hotKey, "F6");
+            introAudioFeature.addFeatureAttributes(FeatureAttribute.hotKey, "R1_MA_A");
             introAudioFeature.addFeatureAttributes(FeatureAttribute.styleName, "titleBarButton");
             presenterFeatureList.add(introAudioFeature);
             presenterFeatureList = introAudioFeature.getPresenterFeatureList();
@@ -362,7 +362,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         stimulusCodeAudio3.getPresenterFeatureList().add(rightOverlayButton);
         final PresenterFeature repeatStimulusButton = new PresenterFeature(FeatureType.actionButton, "Repeat");
         repeatStimulusButton.addFeatureAttributes(FeatureAttribute.eventTag, "Repeat");
-        repeatStimulusButton.addFeatureAttributes(FeatureAttribute.hotKey, "F6");
+        repeatStimulusButton.addFeatureAttributes(FeatureAttribute.hotKey, "R1_MA_A");
         final PresenterFeature repeatStimulus = new PresenterFeature(FeatureType.showStimulus, null);
         repeatStimulusButton.getPresenterFeatureList().add(repeatStimulus);
         final PresenterFeature nextStimulus = new PresenterFeature(FeatureType.nextStimulusButton, "Next");
