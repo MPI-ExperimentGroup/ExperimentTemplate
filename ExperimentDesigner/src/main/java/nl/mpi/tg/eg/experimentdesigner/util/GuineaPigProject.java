@@ -161,6 +161,7 @@ public class GuineaPigProject {
         trainingStimulusScreen.setBackgroundStyle("zoomToGarden");
         wizardData.addScreen(trainingStimulusScreen);
         final WizardMenuScreen textMenuScreen = new WizardMenuScreen("TestMenu", "TestMenu", "TestMenu");
+        textMenuScreen.setJumpToRandomScreen(true);
         wizardData.addScreen(textMenuScreen);
         for (String[][] testSubList : testList) {
 //            WizardAudioTestScreen testIntroAudio = new WizardAudioTestScreen(testSubList[0][0] + "a", "&nbsp;", "continue button", testSubList[0][2]);
