@@ -59,6 +59,7 @@ public class GuineaPigProject {
         wizardData.setObfuscateScreenNames(false);
 
         final WizardTextScreen bluetoothInstructionsScreen = new WizardTextScreen("Bluetooth Instructions", "When the bluetooth controller is connected the virtual keyboard will not show, to enter participant metadata please turn off the bluetooth controller so that the virtual keyboard can be shown. To start the bluetooth controller turn it on and press the button combination M+A.", "Volgende");
+        bluetoothInstructionsScreen.setNextHotKey("ENTER");
         wizardData.addScreen(bluetoothInstructionsScreen);
 
         // @TODO: add use of the sound files Correct and Incorrect
@@ -107,9 +108,9 @@ public class GuineaPigProject {
         introductionAudio1.setAutoNext(true);
         introductionAudio2.setAutoNext(true);
         introductionAudio3.setAutoNext(true);
-        introductionAudio1.setAudioHotKey("F6");
-        introductionAudio2.setAudioHotKey("F6");
-        introductionAudio3.setAudioHotKey("F6");
+        introductionAudio1.setAudioHotKey("R1_MA_A");
+        introductionAudio2.setAudioHotKey("R1_MA_A");
+        introductionAudio3.setAudioHotKey("R1_MA_A");
         introductionAudio1.setNextHotKey("ENTER");
         introductionAudio2.setNextHotKey("ENTER");
         introductionAudio3.setNextHotKey("ENTER");
@@ -203,7 +204,7 @@ public class GuineaPigProject {
         atticScreen.setAutoPlay(true);
         atticScreen.setAutoNext(true);
         atticScreen.setAutoNextDelay(2000);
-        atticScreen.setAudioHotKey("F6");
+        atticScreen.setAudioHotKey("R1_MA_A");
         atticScreen.setImageName("intro_1.jpg");
         atticScreen.setNextHotKey("ENTER");
         atticScreen.setStyleName("titleBarButton");
