@@ -117,6 +117,7 @@
         <menuItem featureText="Test 2" target="Test_2"/>
         <menuItem featureText="Test 3" target="Test_3"/>
         <menuItem featureText="Test 4" target="Test_4"/>
+        <activateRandomItem/>
     </presenter>
     <presenter back="TestMenu" displayOrder="11" menuLabel="Test 1" next="TestMenu" type="stimulus" self="Test_1" title="Test 1">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock1">
