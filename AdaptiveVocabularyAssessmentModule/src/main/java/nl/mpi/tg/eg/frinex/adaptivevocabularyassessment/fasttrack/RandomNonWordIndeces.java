@@ -116,14 +116,14 @@ public class RandomNonWordIndeces {
     private void correctLastPosition(ArrayList<Integer> sortedIndices) {
         int lastNonwordPosition = sortedIndices.get(sortedIndices.size() - 1);
         if (lastNonwordPosition == this.sequenceLength - 1) {
-            int wordAt = this.findLastWordPosition(sortedIndices, sortedIndices.size() - 1);
+            int wordAt = this.findLastWordPositionWithGap(sortedIndices, sortedIndices.size() - 1);
             sortedIndices.set(sortedIndices.size() - 1, wordAt);
         }
     }
 
-    private int findLastWordPosition(ArrayList<Integer> sortedIndices, int n) {
+    private int findLastWordPositionWithGap(ArrayList<Integer> sortedIndices, int n) {
         // look for the first gap
-        while (sortedIndices.get(n) - sortedIndices.get(n - 1) == 1) {
+        while (sortedIndices.get(n) - sortedIndices.get(n - 1) <= 2) {
             n--;
         }
         return sortedIndices.get(n) - 1;
