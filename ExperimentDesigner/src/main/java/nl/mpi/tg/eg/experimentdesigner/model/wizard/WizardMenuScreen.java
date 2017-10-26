@@ -33,16 +33,18 @@ public class WizardMenuScreen extends AbstractWizardScreen {
     public WizardMenuScreen() {
         super(WizardScreenEnum.WizardMenuScreen, "Menu", "Menu", "Menu");
         setBranchOnGetParam(false, null);
+        setJumpToRandomScreen(false);
     }
 
     public WizardMenuScreen(String screenTitle, String menuLabel, String screenTag) {
         super(WizardScreenEnum.WizardMenuScreen, screenTitle, menuLabel, screenTag);
         setBranchOnGetParam(false, null);
+        setJumpToRandomScreen(false);
     }
 
     @Override
     public String getScreenBooleanInfo(int index) {
-        return new String[]{"Requre URL GET parameter of a screen name to branch to rather than showing the menu"}[index];
+        return new String[]{"Requre URL GET parameter of a screen name to branch to rather than showing the menu", "Jump to random screen in menu, if that screen is not already completed"}[index];
     }
 
     @Override
@@ -67,6 +69,14 @@ public class WizardMenuScreen extends AbstractWizardScreen {
 
     private boolean isBranchOnGetParam(WizardScreenData storedWizardScreenData) {
         return storedWizardScreenData.getScreenBoolean(0);
+    }
+
+    final public void setJumpToRandomScreen(boolean jumpToRandomScreen) {
+        this.wizardScreenData.setScreenBoolean(1, jumpToRandomScreen);
+    }
+
+    private boolean isJumpToRandomScreen(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenBoolean(1);
     }
 
     public void addTargetScreen(final AbstractWizardScreen targetScreen) {
@@ -95,6 +105,14 @@ public class WizardMenuScreen extends AbstractWizardScreen {
                 aChoiceMustBeProvidedMessage += targetScreen.getScreenTag() + "<br/>";
             }
             storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, aChoiceMustBeProvidedMessage));
+        } else if (isJumpToRandomScreen(storedWizardScreenData)) {
+            final PresenterFeature jumpToRandomScreen = new PresenterFeature(FeatureType.activateRandomItem, null);
+            for (WizardScreenData targetScreen : storedWizardScreenData.getMenuWizardScreenData()) {
+                final PresenterFeature menuItem = new PresenterFeature(FeatureType.menuItem, targetScreen.getMenuLabel());
+                menuItem.addFeatureAttributes(FeatureAttribute.target, targetScreen.getScreenTag());
+                storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(menuItem);
+            }
+            storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(jumpToRandomScreen);
         } else if (storedWizardScreenData.getMenuWizardScreenData().isEmpty()) {
             storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.allMenuItems, null));
         } else {
