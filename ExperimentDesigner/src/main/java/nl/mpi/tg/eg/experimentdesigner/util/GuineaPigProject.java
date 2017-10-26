@@ -185,7 +185,7 @@ public class GuineaPigProject {
             testStimulusScreen.setIntroAudioDelay(2000);
             textMenuScreen.addTargetScreen(testStimulusScreen);
             wizardData.addScreen(testStimulusScreen);
-            testStimulusScreen.setBackWizardScreen(textMenuScreen);
+            testStimulusScreen.setBackWizardScreen(menuScreen);
             testStimulusScreen.setNextWizardScreen(textMenuScreen);
         }
         WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, true, true, completionScreenText2,
@@ -208,7 +208,7 @@ public class GuineaPigProject {
         atticScreen.setImageName("intro_1.jpg");
         atticScreen.setNextHotKey("ENTER");
         atticScreen.setStyleName("titleBarButton");
-        atticScreen.setBackWizardScreen(textMenuScreen);
+        atticScreen.setBackWizardScreen(menuScreen);
         atticScreen.setNextWizardScreen(completionScreen);
         bluetoothInstructionsScreen.setBackWizardScreen(menuScreen);
         bluetoothInstructionsScreen.setNextWizardScreen(introductionAudio1);
