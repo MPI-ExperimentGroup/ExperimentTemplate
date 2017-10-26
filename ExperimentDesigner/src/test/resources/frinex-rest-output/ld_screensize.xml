@@ -7,7 +7,7 @@
     </metadata>
     <presenter back="Menu" displayOrder="1" menuLabel="Bluetooth Instructions" type="text" self="Bluetooth_Instructions" title="Bluetooth Instructions">
         <htmlText featureText="When the bluetooth controller is connected the virtual keyboard will not show, to enter participant metadata please turn off the bluetooth controller so that the virtual keyboard can be shown. To start the bluetooth controller turn it on and press the button combination M+A."/>
-        <targetButton featureText="Volgende" hotKey="SPACE" target="Introduction_1"/>
+        <targetButton featureText="Volgende" hotKey="ENTER" target="Introduction_1"/>
     </presenter>
     <presenter displayOrder="2" menuLabel="Start" type="metadata" self="Start" title="Start">
         <existingUserCheck>
@@ -43,7 +43,7 @@
     <presenter back="Menu" displayOrder="6" menuLabel="Introduction 1" next="Introduction_2" type="stimulus" self="Introduction_1" title="Introduction 1">
         <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName=""/>
         <htmlText featureText="&amp;nbsp;"/>
-        <audioButton eventTag="intro_1" src="intro_1" hotKey="F6" styleName="titleBarButton" autoPlay="false" poster="intro_1.jpg">
+        <audioButton eventTag="intro_1" src="intro_1" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="false" poster="intro_1.jpg">
             <pause msToNext="0">
                 <autoNextPresenter/>
             </pause>
@@ -52,7 +52,7 @@
     <presenter back="Menu" displayOrder="7" menuLabel="Introduction 2" next="Introduction_3" type="stimulus" self="Introduction_2" title="Introduction 2">
         <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName=""/>
         <htmlText featureText="&amp;nbsp;"/>
-        <audioButton eventTag="intro_2" src="intro_2" hotKey="F6" styleName="titleBarButton" autoPlay="false" poster="intro_2.jpg">
+        <audioButton eventTag="intro_2" src="intro_2" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="false" poster="intro_2.jpg">
             <pause msToNext="0">
                 <autoNextPresenter/>
             </pause>
@@ -61,7 +61,7 @@
     <presenter back="Menu" displayOrder="8" menuLabel="Introduction 3" next="Training" type="stimulus" self="Introduction_3" title="Introduction 3">
         <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName=""/>
         <htmlText featureText="&amp;nbsp;"/>
-        <audioButton eventTag="intro_3" src="intro_3" hotKey="F6" styleName="titleBarButton" autoPlay="false" poster="intro_3.jpg">
+        <audioButton eventTag="intro_3" src="intro_3" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="false" poster="intro_3.jpg">
             <pause msToNext="0">
                 <autoNextPresenter/>
             </pause>
@@ -87,7 +87,7 @@
                                 <table styleName="titleBarButton">
                                     <row>
                                         <column>
-                                            <actionButton featureText="Repeat" eventTag="Repeat" hotKey="F6">
+                                            <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_A">
                                                 <showStimulus/>
                                             </actionButton>
                                         </column>
@@ -121,7 +121,7 @@
     </presenter>
     <presenter back="TestMenu" displayOrder="11" menuLabel="Test 1" next="TestMenu" type="stimulus" self="Test_1" title="Test 1">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock1">
-            <audioButton eventTag="room_1" src="room_1" hotKey="F6" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
+            <audioButton eventTag="room_1" src="room_1" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
                     <loadStimulus eventTag="Test 1" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                         <hasMoreStimulus>
@@ -141,7 +141,7 @@
                                         <table styleName="titleBarButton">
                                             <row>
                                                 <column>
-                                                    <actionButton featureText="Repeat" eventTag="Repeat" hotKey="F6">
+                                                    <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_A">
                                                         <showStimulus/>
                                                     </actionButton>
                                                 </column>
@@ -170,7 +170,7 @@
     </presenter>
     <presenter back="TestMenu" displayOrder="12" menuLabel="Test 2" next="TestMenu" type="stimulus" self="Test_2" title="Test 2">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock2">
-            <audioButton eventTag="room_2" src="room_2" hotKey="F6" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
+            <audioButton eventTag="room_2" src="room_2" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
                     <loadStimulus eventTag="Test 2" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                         <hasMoreStimulus>
@@ -190,7 +190,7 @@
                                         <table styleName="titleBarButton">
                                             <row>
                                                 <column>
-                                                    <actionButton featureText="Repeat" eventTag="Repeat" hotKey="F6">
+                                                    <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_A">
                                                         <showStimulus/>
                                                     </actionButton>
                                                 </column>
@@ -219,7 +219,7 @@
     </presenter>
     <presenter back="TestMenu" displayOrder="13" menuLabel="Test 3" next="TestMenu" type="stimulus" self="Test_3" title="Test 3">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock3">
-            <audioButton eventTag="room_3" src="room_3" hotKey="F6" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
+            <audioButton eventTag="room_3" src="room_3" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
                     <loadStimulus eventTag="Test 3" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                         <hasMoreStimulus>
@@ -239,7 +239,7 @@
                                         <table styleName="titleBarButton">
                                             <row>
                                                 <column>
-                                                    <actionButton featureText="Repeat" eventTag="Repeat" hotKey="F6">
+                                                    <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_A">
                                                         <showStimulus/>
                                                     </actionButton>
                                                 </column>
@@ -268,7 +268,7 @@
     </presenter>
     <presenter back="TestMenu" displayOrder="14" menuLabel="Test 4" next="TestMenu" type="stimulus" self="Test_4" title="Test 4">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock4">
-            <audioButton eventTag="room_4" src="room_4" hotKey="F6" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
+            <audioButton eventTag="room_4" src="room_4" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
                     <loadStimulus eventTag="Test 4" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                         <hasMoreStimulus>
@@ -288,7 +288,7 @@
                                         <table styleName="titleBarButton">
                                             <row>
                                                 <column>
-                                                    <actionButton featureText="Repeat" eventTag="Repeat" hotKey="F6">
+                                                    <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_A">
                                                         <showStimulus/>
                                                     </actionButton>
                                                 </column>
@@ -328,7 +328,7 @@
     <presenter back="TestMenu" displayOrder="16" menuLabel="Attic" next="completion" type="stimulus" self="Attic" title="Attic">
         <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName="zoomToAttic"/>
         <htmlText featureText="&amp;nbsp;"/>
-        <audioButton eventTag="room_5" src="room_5" hotKey="F6" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
+        <audioButton eventTag="room_5" src="room_5" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
             <pause msToNext="2000">
                 <autoNextPresenter/>
             </pause>
