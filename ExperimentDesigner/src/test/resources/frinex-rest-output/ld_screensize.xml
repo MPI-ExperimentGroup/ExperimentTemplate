@@ -43,7 +43,7 @@
     <presenter back="Menu" displayOrder="6" menuLabel="Introduction 1" next="Introduction_2" type="stimulus" self="Introduction_1" title="Introduction 1">
         <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName=""/>
         <htmlText featureText="&amp;nbsp;"/>
-        <audioButton eventTag="intro_1" src="intro_1" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="false" poster="intro_1.jpg">
+        <audioButton eventTag="intro_1" src="intro_1" hotKey="ENTER" styleName="titleBarButton" autoPlay="false" poster="intro_1.jpg">
             <pause msToNext="0">
                 <autoNextPresenter/>
             </pause>
@@ -52,7 +52,7 @@
     <presenter back="Menu" displayOrder="7" menuLabel="Introduction 2" next="Introduction_3" type="stimulus" self="Introduction_2" title="Introduction 2">
         <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName=""/>
         <htmlText featureText="&amp;nbsp;"/>
-        <audioButton eventTag="intro_2" src="intro_2" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="false" poster="intro_2.jpg">
+        <audioButton eventTag="intro_2" src="intro_2" hotKey="ENTER" styleName="titleBarButton" autoPlay="false" poster="intro_2.jpg">
             <pause msToNext="0">
                 <autoNextPresenter/>
             </pause>
@@ -61,7 +61,7 @@
     <presenter back="Menu" displayOrder="8" menuLabel="Introduction 3" next="Training" type="stimulus" self="Introduction_3" title="Introduction 3">
         <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName=""/>
         <htmlText featureText="&amp;nbsp;"/>
-        <audioButton eventTag="intro_3" src="intro_3" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="false" poster="intro_3.jpg">
+        <audioButton eventTag="intro_3" src="intro_3" hotKey="ENTER" styleName="titleBarButton" autoPlay="false" poster="intro_3.jpg">
             <pause msToNext="0">
                 <autoNextPresenter/>
             </pause>
