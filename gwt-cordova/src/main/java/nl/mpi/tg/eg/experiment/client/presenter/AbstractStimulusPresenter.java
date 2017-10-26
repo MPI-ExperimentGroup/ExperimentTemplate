@@ -487,8 +487,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //            super.startAudioRecorderTag(STIMULUS_TIER);
             hasMoreStimulusListener.postLoadTimerFired();
 //        } else if (!hasSubdirectories) {
-//            localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "completed-screen-" + getSelfTag(), Boolean.toString(true));
         } else {
+            localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "completed-screen-" + getSelfTag(), Boolean.toString(true));
             submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "showStimulus.endOfStimulusListener", (currentStimulusIndex + increment) + "/" + stimulusProvider.getTotalStimuli(), duration.elapsedMillis()); // todo: this is sent
             localStorage.setStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag() + ((subDirectory != null) ? subDirectory : ""), Integer.toString(currentStimulusIndex + increment));
             endOfStimulusListener.postLoadTimerFired();
@@ -1412,7 +1412,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         if (touchInputCapture == null) {
             final HTML debugHtmlLabel;
             if (showDebug) {
-                debugHtmlLabel = ((TimedStimulusView) simpleView).addHtmlText("");
+                debugHtmlLabel = ((TimedStimulusView) simpleView).addHtmlText("&nbsp;", "footerLabel");
             } else {
                 debugHtmlLabel = null;
             }
