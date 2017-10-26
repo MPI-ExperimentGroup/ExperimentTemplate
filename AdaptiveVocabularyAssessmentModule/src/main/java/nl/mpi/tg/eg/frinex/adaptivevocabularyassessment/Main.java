@@ -17,16 +17,10 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Util.baseName;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collections;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassesment.bands.Bands;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassesment.bands.LexicalUnit;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.FastTrack;
 
 /**
@@ -41,20 +35,26 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("starting work ... ");
-        FastTrack fastTrack = new FastTrack(Constants.DEFAULT_USER, Constants.START_BAND, Constants.AVRERAGE_NON_WORD_POSITION);
+        Vocabulary vocab = new Vocabulary();
         try {
-            fastTrack.initialiseWordLists();
-            fastTrack.makeStimulaeSequence(Constants.NONWORDS_PER_BLOCK);
-            ArrayList<LexicalUnit> fastTrackSequence = fastTrack.getStimulaeSequence();
+           
+            vocab.initialiseVocabulary();
+            AtomStimulus[][] words = vocab.getWords();
+            ArrayList<AtomStimulus> nonwords = vocab.getNonwords();
+            //FastTrack(String username, AtomStimulus[][] wrds, ArrayList<AtomStimulus> nonwrds, int nonWordsPerBlock, int startBand, int averageNonwordPosition)
+            FastTrack fastTrack = new FastTrack(Constants.DEFAULT_USER, words, nonwords, Constants.NONWORDS_PER_BLOCK, Constants.START_BAND, Constants.AVRERAGE_NON_WORD_POSITION);
+            fastTrack.createStimulae();
+            ArrayList<AtomStimulus> fastTrackSequence = fastTrack.getStimulae();
             writeCsvFileFastTrack(fastTrackSequence);
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
-        /*Bands bands = new Bands();
+        
+        /*Vocabulary bands = new Vocabulary();
         try {
            
             bands.parseWordInputCSV();
-            bands.parseNonWordInputCSV();
+            bands.parseNonwordInputCSV();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -64,26 +64,26 @@ public class Main {
 
     }
 
-    private static void testPrint(Bands bands) {
-        LexicalUnit[][] tmpwords = bands.getWords();
+    private static void testPrint(Vocabulary bands) {
+        AtomStimulus[][] tmpwords = bands.getWords();
         System.out.println("Words \n");
 
         for (int i = 0; i < tmpwords.length; i++) {
             System.out.println(i + 1);
-            for (LexicalUnit unit : tmpwords[i]) {
+            for (AtomStimulus unit : tmpwords[i]) {
                 System.out.println(unit.getSpelling());
                 System.out.println(unit.getIsUsed());
             }
         }
-        ArrayList<LexicalUnit> tmpnonwords = bands.getNonWords();
+        ArrayList<AtomStimulus> tmpnonwords = bands.getNonwords();
         System.out.println("Non words \n");
-        for (LexicalUnit nonword : tmpnonwords) {
+        for (AtomStimulus nonword : tmpnonwords) {
             System.out.println(nonword.getSpelling());
             System.out.println(nonword.getIsUsed());
         }
     }
 
-    public static void writeCsvFileFastTrack(ArrayList<LexicalUnit> stimulae) throws IOException {
+    public static void writeCsvFileFastTrack(ArrayList<AtomStimulus> stimulae) throws IOException {
         long millis = System.currentTimeMillis();
         int blockSize = Constants.NONWORDS_PER_BLOCK*Constants.AVRERAGE_NON_WORD_POSITION;
         String fileName = "Fast_track_test_"+blockSize+"_"+millis+".csv";
@@ -93,7 +93,7 @@ public class Main {
         csvFileWriter.write("Spelling;BandNumber;NonwordsFrequencyAtThisPoint\n");
         int counter = 0;
         int counterNonwords = 0;
-        for (LexicalUnit stimulus : stimulae) {
+        for (AtomStimulus stimulus : stimulae) {
             counter++;
             if (stimulus.getBandNumber() == -1) {
                     counterNonwords++;

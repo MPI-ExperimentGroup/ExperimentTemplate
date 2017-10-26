@@ -15,36 +15,30 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack;
+package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.fintetuning;
 
-import java.util.LinkedList;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.Constants;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.AtomStimulus;
 
 /**
  *
  * @author olhshk
  */
-public class FastTrackHistory {
+public class FineTuningStimulus {
+
+    private AtomStimulus[] atomStimulus;
     
-    private final LinkedList<FastTrackRecord> records = new LinkedList<>();
-    
-    //Each class variable, instance variable, or array component is initialized with a default value when it is created (§15.9, §15.10) [...] For type int, the default value is zero, that is, 0.
-    private final int[] bandvisits = new int[Constants.NUMBER_OF_BANDS];
-  
-    public LinkedList<FastTrackRecord> getRecords(){
-        return this.records;
+    public FineTuningStimulus(AtomStimulus[] lexicalUnits){
+       this.atomStimulus = lexicalUnits;// will be changed "in place", setting isUsed, userReaction, and evaluation
     }
     
-    public int[] getVisits(){
-        return this.bandvisits;
+    public AtomStimulus getAtomStimulusAt(int i){
+        return (this.atomStimulus)[i];
     }
     
-    public void addRecord(FastTrackRecord record) {
-        this.records.push(record);
+    public void setUsedAt(int i){
+        (this.atomStimulus)[i].setIsUsed(true);
     }
     
-    public void addVisitToBand(int i) {
-        this.bandvisits[i]++;
-    }
+    
     
 }

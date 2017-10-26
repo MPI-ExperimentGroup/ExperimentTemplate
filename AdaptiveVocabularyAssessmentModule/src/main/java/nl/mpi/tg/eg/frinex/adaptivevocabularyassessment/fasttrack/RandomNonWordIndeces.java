@@ -35,53 +35,33 @@ public class RandomNonWordIndeces {
     private final int averageNonwordPosition; // n
 
     private final int nonwordsPerBlock;
-    
-    private final int numberOfWords; // [1/n * N]
 
     private int numberOfNonwords; // [1/n * N]
+
+    private int numberOfWords; // [(n-1)/n * N]
 
     private ArrayList<Integer> randomIndices;
 
     private double[] frequences;
 
-    public RandomNonWordIndeces(int startBand, int nonwordsPerBlock, int averageNonwordPosition) {
+    public RandomNonWordIndeces(int startBand, int nonwordsPerBlock, int averageNonwordPosition, int nonwordsAvailable) {
         this.averageNonwordPosition = averageNonwordPosition;
         this.nonwordsPerBlock = nonwordsPerBlock;
-        this.numberOfWords = Constants.NUMBER_OF_BANDS - (startBand - 1);
-        this.sequenceLength = (averageNonwordPosition * numberOfWords)/(averageNonwordPosition-1); 
+        int wordsAvailable = Constants.NUMBER_OF_BANDS - (startBand - 1);// one from each band
+        // number of nonwords = 1/n * sequenceLength
+        // number of words = (n-1)/n * sequenceLength
+        this.sequenceLength = (averageNonwordPosition * wordsAvailable) / (averageNonwordPosition - 1);
+        if (this.sequenceLength > nonwordsAvailable){
+            this.sequenceLength = nonwordsAvailable;
+            this.numberOfWords = (this.sequenceLength * (averageNonwordPosition - 1))/averageNonwordPosition; 
+        } else {
+            this.numberOfWords = wordsAvailable;
+        }
+        
         this.numberOfNonwords = this.sequenceLength - this.numberOfWords;
-        this.correctNumberOfNonWordsAndLength();
     }
-    
-   
 
-    private void correctNumberOfNonWordsAndLength() {
-        double probability = (1.000 / ((double) this.averageNonwordPosition));
-        double frequency = ( (double) this.numberOfNonwords) / ((double) this.sequenceLength);
-        while (probability - frequency > Constants.EPSILON) {
-           this.numberOfNonwords++;
-           this.sequenceLength++;
-           frequency = ( (double) this.numberOfNonwords) / ((double) this.sequenceLength);
-           //System.out.println(frequency);
-           
-        }
-        double tmpEpsilon = probability - frequency;
-        int tmpWords = this.numberOfNonwords--;
-        int tmpLength = this.sequenceLength--;
-        frequency = ( (double) tmpWords) / ((double) tmpLength);
-        while (frequency - probability > Constants.EPSILON) {
-           tmpWords--;
-           tmpLength--;
-           frequency = ( (double) tmpWords) / ((double) tmpLength);
-           //System.out.println(frequency);
-        }
-        if (frequency - probability < tmpEpsilon) {
-           this.numberOfNonwords = tmpWords;
-           this.sequenceLength = tmpLength;
-        }
-        frequency = ( (double) this.numberOfNonwords) / ((double) this.sequenceLength);
-        //System.out.println(frequency);
-    }
+   
 
     // we divide all the indices from 0 to sequenceLength-1 on blocks,
     // each block has size nonwordsPerBlock*averageNonwordPosition positions
@@ -126,25 +106,25 @@ public class RandomNonWordIndeces {
 
         Collections.sort(retVal);
         this.correctLastPosition(retVal);
-        
+
         return retVal;
     }
-    
+
     // the last positin in any sequence must be always a word (from a band 54)
-    private void correctLastPosition(ArrayList<Integer> sortedIndices){
-       int lastNonwordPosition = sortedIndices.get(sortedIndices.size()-1);
-       if (lastNonwordPosition == this.sequenceLength-1) {
-          int wordAt = this.findLastWordPosition(sortedIndices, lastNonwordPosition);
-          sortedIndices.set(sortedIndices.size()-1,wordAt);
-       }
+    private void correctLastPosition(ArrayList<Integer> sortedIndices) {
+        int lastNonwordPosition = sortedIndices.get(sortedIndices.size() - 1);
+        if (lastNonwordPosition == this.sequenceLength - 1) {
+            int wordAt = this.findLastWordPosition(sortedIndices, sortedIndices.size() - 1);
+            sortedIndices.set(sortedIndices.size() - 1, wordAt);
+        }
     }
-    
-    private int findLastWordPosition(ArrayList<Integer> sortedIndices, int n){
+
+    private int findLastWordPosition(ArrayList<Integer> sortedIndices, int n) {
         // look for the first gap
-      while (sortedIndices.get(n) - sortedIndices.get(n-1) == 1) {
-          n--;
-      }
-      return sortedIndices.get(n)-1;
+        while (sortedIndices.get(n) - sortedIndices.get(n - 1) == 1) {
+            n--;
+        }
+        return sortedIndices.get(n) - 1;
     }
 
     private int amountOfSelectedIndecesBetween(int a, int b) {
@@ -183,8 +163,8 @@ public class RandomNonWordIndeces {
     public double[] getFrequencesOfNonWordindices() {
         return this.frequences;
     }
-    
-     public int getSequenceLength(){
+
+    public int getSequenceLength() {
         return this.sequenceLength;
     }
 

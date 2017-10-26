@@ -15,24 +15,23 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassesment.bands;
+package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.Constants;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 /**
  *
  * @author olhshk
  */
-public class Bands {
+public class Vocabulary {
     
-    private final LexicalUnit[][] words = new LexicalUnit[Constants.NUMBER_OF_BANDS][Constants.WORDS_PER_BAND];
-    ArrayList<LexicalUnit> nonwords = new ArrayList<>(); // unknow length, cannot allocte in advance
+    private final AtomStimulus[][] words = new AtomStimulus[Constants.NUMBER_OF_BANDS][Constants.WORDS_PER_BAND];
+    ArrayList<AtomStimulus> nonwords = new ArrayList<>(); // unknow length, cannot allocte in advance
     final File inputFileWords = new File(Constants.WORD_FILE_LOCATION);
     final File inputFileNonWords = new File(Constants.NONWORD_FILE_LOCATION);
 
@@ -47,27 +46,33 @@ public class Bands {
         for (CSVRecord record : records) {
             //String number = record.get("nr");
             int bandNumber = Integer.parseInt(record.get("Band"));
-            LexicalUnit unit = new LexicalUnit(record.get("spelling"), bandNumber);
+            AtomStimulus unit = new AtomStimulus(record.get("spelling"), bandNumber);
             this.words[bandNumber-1][counter[bandNumber-1]]=unit;
             counter[bandNumber-1]++;
         }
     }
     
-    public void parseNonWordInputCSV() throws IOException {
+    public void parseNonwordInputCSV() throws IOException {
         final Reader reader = new InputStreamReader(inputFileNonWords.toURL().openStream(), "UTF-8"); // todo: this might need to change to "ISO-8859-1" depending on the usage
         Iterable<CSVRecord> records = CSVFormat.newFormat(';').withHeader().parse(reader);
         for (CSVRecord record : records) {
-            LexicalUnit unit = new LexicalUnit(record.get("spelling"), -1);
+            AtomStimulus unit = new AtomStimulus(record.get("spelling"), -1);
             nonwords.add(unit);
         }
     }
     
-    public LexicalUnit[][] getWords(){
+    public AtomStimulus[][] getWords(){
         return words;
     }
     
-    public ArrayList<LexicalUnit> getNonWords(){
+    public ArrayList<AtomStimulus> getNonwords(){
         return nonwords;
+    }
+    
+    
+    public void initialiseVocabulary() throws IOException {
+        this.parseWordInputCSV();
+        this.parseNonwordInputCSV();
     }
     
 }

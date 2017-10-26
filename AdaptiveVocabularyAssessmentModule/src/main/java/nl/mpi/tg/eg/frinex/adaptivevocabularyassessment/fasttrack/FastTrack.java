@@ -17,75 +17,72 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassesment.bands.Bands;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassesment.bands.LexicalUnit;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.Constants;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.AtomStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.Series;
 
 /**
  *
  * @author olhshk
  */
-public class FastTrack {
+public class FastTrack extends Series {
 
-    private final String username;
     private final int startBand;
     private final int averageNonwordPosition;
-    private LexicalUnit[][] words;
-    private ArrayList<LexicalUnit> nonwords;
-    private ArrayList<LexicalUnit> stimulaeSequence;
+    private final int nonWordsPerBlock;
+    private ArrayList<AtomStimulus> stimulae;
 
-    public FastTrack(String username, int startBand, int averageNonwordPosition) {
-        this.username = username;
+    public FastTrack(String username, AtomStimulus[][] wrds, ArrayList<AtomStimulus> nonwrds, int nonWordsPerBlock, int startBand, int averageNonwordPosition) {
+        super(username, wrds, nonwrds);
         this.startBand = startBand;
         this.averageNonwordPosition = averageNonwordPosition;
-    }
-    
-    
-    public void initialiseWordLists() throws IOException {
-       Bands bands = new Bands();
-        bands.parseWordInputCSV();
-        bands.parseNonWordInputCSV();
-        this.words = bands.getWords();
-        this.nonwords = bands.getNonWords();
+        this.nonWordsPerBlock = nonWordsPerBlock;
 
     }
 
-    public void makeStimulaeSequence(int nonWordsPerBlock) throws Exception {
+    @Override
+    public void createStimulae() {
 
-        this.stimulaeSequence = new ArrayList<>();
+        this.stimulae = new ArrayList<>();
 
         //we need to choose the positions for nonwords (from 0 to sequenceLength-1) 
         //int upperBound, int nonwordsPerBlock, int n
-        RandomNonWordIndeces posChooser = new RandomNonWordIndeces(this.startBand, nonWordsPerBlock, this.averageNonwordPosition);
+        RandomNonWordIndeces posChooser = new RandomNonWordIndeces(this.startBand, this.nonWordsPerBlock, this.averageNonwordPosition, this.nonwords.size());
         ArrayList<Integer> nonWordInd = posChooser.updateAndGetIndices();
-        
+
         int bandCounter = this.startBand - 1;
         int nonwordCounter = 0;
         int sequenceLength = posChooser.getSequenceLength();
         for (int i = 0; i < sequenceLength; i++) {
             if (nonWordInd.contains(i)) {
-                try {
-                    this.stimulaeSequence.add(this.nonwords.get(nonwordCounter));
-                    nonwordCounter++;
-                } catch (IndexOutOfBoundsException ex) {
-                    throw new Exception("There is no non-used nonwords left to generate a stimulae sequence of length " + sequenceLength + " starting from band " + this.startBand);
-                }
+                this.stimulae.add(this.nonwords.get(nonwordCounter));
+                this.nonwords.get(nonwordCounter).setIsUsed(true);
+                nonwordCounter++;
             } else {
-                try {
-                    this.stimulaeSequence.add(this.words[bandCounter][0]);
-                    bandCounter++;
-                } catch (IndexOutOfBoundsException ex) {
-                    throw new Exception("There is no non-used words left to generate a stimulae sequence of length " + sequenceLength + " starting from band " + this.startBand);
-                }
+                this.stimulae.add(this.words[bandCounter][0]);
+                this.words[bandCounter][0].setIsUsed(true);
+                bandCounter++;
             }
         }
 
     }
 
-    public ArrayList<LexicalUnit> getStimulaeSequence() {
-        return this.stimulaeSequence;
+    public boolean runStep(int stimulusNumber, boolean answer) {
+        AtomStimulus stimulus = this.stimulae.get(stimulusNumber);
+        stimulus.setReaction(answer);
+        boolean eval = true;
+        if (stimulus.getBandNumber() < 0 && answer) {
+            eval = false;// took a non-word as a word
+        }
+        if (stimulus.getBandNumber() > 0 && !answer) {
+            eval = false;// tool a word as a nonword
+        }
+        stimulus.setCorrectness(eval);
+        return eval;
+    }
+
+    public ArrayList<AtomStimulus> getStimulae() {
+        return this.stimulae;
     }
 
     private void debugTestNonwordFrequences(RandomNonWordIndeces posChooser) {
