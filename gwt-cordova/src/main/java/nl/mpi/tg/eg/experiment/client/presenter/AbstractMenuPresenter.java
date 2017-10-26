@@ -21,11 +21,13 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
-import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.view.MenuView;
@@ -39,6 +41,7 @@ public abstract class AbstractMenuPresenter extends AbstractPresenter implements
 
     protected final LocalStorage localStorage;
     protected final UserResults userResults;
+    private final List<ApplicationController.ApplicationState> nonCompletedScreens = new ArrayList<>();
 
     public AbstractMenuPresenter(RootLayoutPanel widgetTag, SimpleView simpleView, UserResults userResults, LocalStorage localStorage) {
         super(widgetTag, simpleView);
@@ -49,25 +52,47 @@ public abstract class AbstractMenuPresenter extends AbstractPresenter implements
     public void allMenuItems(final AppEventListner appEventListner, final ApplicationController.ApplicationState selfApplicationState) {
         for (final ApplicationController.ApplicationState currentAppState : ApplicationController.ApplicationState.values()) {
             if (currentAppState.label != null && selfApplicationState != currentAppState) {
-                ((MenuView) simpleView).addMenuItem(new PresenterEventListner() {
-
-                    @Override
-                    public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                        appEventListner.requestApplicationState(currentAppState);
-                    }
-
-                    @Override
-                    public int getHotKey() {
-                        return -1;
-                    }
-
-                    @Override
-                    public String getLabel() {
-                        final boolean screenCompleted = Boolean.parseBoolean(localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "completed-screen-" + currentAppState.name()));
-                        return currentAppState.label + ((screenCompleted) ? " (complete)" : "");
-                    }
-                }, true);
+                menuItem(appEventListner, currentAppState, currentAppState.label, -1);
             }
         }
+    }
+
+    public void menuItem(final AppEventListner appEventListner, final ApplicationController.ApplicationState target, final String menuLabel, final int hotkey) {
+        final boolean screenCompleted = Boolean.parseBoolean(localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "completed-screen-" + target.name()));
+        if (!screenCompleted) {
+            nonCompletedScreens.add(target);
+        }
+        ((MenuView) simpleView).addMenuItem(new PresenterEventListner() {
+
+            @Override
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+                appEventListner.requestApplicationState(target);
+            }
+
+            @Override
+            public String getLabel() {
+                return menuLabel + ((screenCompleted) ? " (complete)" : "");
+            }
+
+            @Override
+            public int getHotKey() {
+                return hotkey;
+            }
+        }, true);
+    }
+
+    public void activateRandomItem(final AppEventListner appEventListner) {
+        final ApplicationController.ApplicationState target;
+        if (nonCompletedScreens.isEmpty()) {
+            target = nextState;
+        } else {
+            target = nonCompletedScreens.get(new Random().nextInt(nonCompletedScreens.size()));
+        }
+        Timer timer = new Timer() {
+            public void run() {
+                appEventListner.requestApplicationState(target);
+            }
+        };
+        timer.schedule(100);
     }
 }
