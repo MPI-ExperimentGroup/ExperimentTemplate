@@ -32,13 +32,23 @@ public class WizardTextScreen extends AbstractWizardScreen {
 
     public WizardTextScreen() {
         super(WizardScreenEnum.WizardTextScreen);
+        this.setNextHotKey("SPACE");
     }
 
     public WizardTextScreen(final String screenName, String screenText, final String nextButtonLabel) {
         super(WizardScreenEnum.WizardTextScreen, screenName, screenName, screenName);
         this.setNextButton(nextButtonLabel);
+        this.setNextHotKey("SPACE");
         this.setScreenText(screenText);
 
+    }
+
+    private String getNextHotKey(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(1);
+    }
+
+    public final void setNextHotKey(String hotKey) {
+        this.wizardScreenData.setScreenText(1, hotKey);
     }
 
     @Override
@@ -48,7 +58,7 @@ public class WizardTextScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenTextInfo(int index) {
-        return new String[]{"Screen Text"}[index];
+        return new String[]{"Screen Text", "NextHotKey"}[index];
     }
 
     @Override
@@ -69,7 +79,7 @@ public class WizardTextScreen extends AbstractWizardScreen {
         storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
         final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.targetButton, storedWizardScreenData.getNextButton()[0]);
         actionButtonFeature.addFeatureAttributes(FeatureAttribute.target, storedWizardScreenData.getNextWizardScreenData().getScreenTag());
-        actionButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
+        actionButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, getNextHotKey(storedWizardScreenData));
         storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(actionButtonFeature);
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
         return storedWizardScreenData.getPresenterScreen();
