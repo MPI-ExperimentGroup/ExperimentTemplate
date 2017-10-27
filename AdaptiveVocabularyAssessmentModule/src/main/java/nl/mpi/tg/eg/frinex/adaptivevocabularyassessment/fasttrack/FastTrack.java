@@ -39,6 +39,10 @@ public class FastTrack extends Series {
         this.nonWordsPerBlock = nonWordsPerBlock;
 
     }
+    
+    public int getStartBand(){
+       return this.startBand; 
+    }
 
     @Override
     public void createStimulae() {
@@ -56,11 +60,9 @@ public class FastTrack extends Series {
         for (int i = 0; i < sequenceLength; i++) {
             if (nonWordInd.contains(i)) {
                 this.stimulae.add(this.nonwords.get(nonwordCounter));
-                this.nonwords.get(nonwordCounter).setIsUsed(true);
                 nonwordCounter++;
             } else {
                 this.stimulae.add(this.words[bandCounter][0]);
-                this.words[bandCounter][0].setIsUsed(true);
                 bandCounter++;
             }
         }
@@ -78,6 +80,7 @@ public class FastTrack extends Series {
             eval = false;// tool a word as a nonword
         }
         stimulus.setCorrectness(eval);
+        stimulus.setIsUsed(true);
         return eval;
     }
 

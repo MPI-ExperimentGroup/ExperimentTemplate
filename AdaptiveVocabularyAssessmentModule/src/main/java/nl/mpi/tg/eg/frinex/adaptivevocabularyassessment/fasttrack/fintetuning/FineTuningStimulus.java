@@ -25,18 +25,18 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.AtomStimulus;
  */
 public class FineTuningStimulus {
 
-    private AtomStimulus[] atomStimulus;
+    private AtomStimulus[] atomStimulae;
     
-    public FineTuningStimulus(AtomStimulus[] lexicalUnits){
-       this.atomStimulus = lexicalUnits;// will be changed "in place", setting isUsed, userReaction, and evaluation
+    public FineTuningStimulus(AtomStimulus[] arrStimulae){
+       this.atomStimulae = arrStimulae;// will be changed "in place", setting isUsed, userReaction, and evaluation
     }
     
     public AtomStimulus getAtomStimulusAt(int i){
-        return (this.atomStimulus)[i];
+        return (this.atomStimulae)[i];
     }
     
     public void setUsedAt(int i){
-        (this.atomStimulus)[i].setIsUsed(true);
+        (this.atomStimulae)[i].setIsUsed(true);
     }
     
     

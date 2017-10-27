@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.FastTrack;
 
 /**
@@ -34,7 +35,6 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        System.out.println("starting work ... ");
         Vocabulary vocab = new Vocabulary();
         try {
            
@@ -45,7 +45,20 @@ public class Main {
             FastTrack fastTrack = new FastTrack(Constants.DEFAULT_USER, words, nonwords, Constants.NONWORDS_PER_BLOCK, Constants.START_BAND, Constants.AVRERAGE_NON_WORD_POSITION);
             fastTrack.createStimulae();
             ArrayList<AtomStimulus> fastTrackSequence = fastTrack.getStimulae();
+            /** always yes **/
+            /*System.out.println("user who always answers 'yes' ");
+            int lastCorrectBand=simulateFastTrack(fastTrack, 1, fastTrackSequence.size());
+            System.out.println("last correct band "+lastCorrectBand);
+            writeCsvFileFastTrack(fastTrackSequence);*/
+            /**/
+            
+            /** 1/2 are yes **/
+            System.out.println("user who in 1/2 says 'yes' ");
+            int lastCorrectBand=simulateFastTrack(fastTrack, 0.4, fastTrackSequence.size());
+            System.out.println("last correct band "+lastCorrectBand);
             writeCsvFileFastTrack(fastTrackSequence);
+            /**/
+            
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -90,7 +103,7 @@ public class Main {
         System.out.println("writeCsvFile: " + Constants.OUTPUT_DIRECTORY + fileName);
         final File csvFile = new File(Constants.OUTPUT_DIRECTORY, fileName);
         final FileWriter csvFileWriter = new FileWriter(csvFile, false);
-        csvFileWriter.write("Spelling;BandNumber;NonwordsFrequencyAtThisPoint\n");
+        csvFileWriter.write("Spelling;BandNumber;UserAnswer;Correctness;isUsed;NonwordsFrequencyAtThisPoint\n");
         int counter = 0;
         int counterNonwords = 0;
         for (AtomStimulus stimulus : stimulae) {
@@ -100,11 +113,30 @@ public class Main {
             }
             double frequency = ((double) counterNonwords) / ((double) counter);
             String row = stimulus.getSpelling() + ";" +  stimulus.getBandNumber() +
-                    ";"+frequency;
-            System.out.println(row);
+                    ";"+stimulus.getReaction() + ";" +  stimulus.getCorrectness() +
+                    ";" +  stimulus.getIsUsed()+";"+frequency;
+            //System.out.println(row);
             csvFileWriter.write(row + "\n");
         }
         csvFileWriter.close();
+    }
+    
+    // return the number of the band where the last correct answer is produced
+    public static int simulateFastTrack(FastTrack fastTrack, double yesProbabilityUpperBound, int sequenceLength){
+        int i=0;
+        boolean correctness = true;
+        int startBand = fastTrack.getStartBand();
+        while (i<sequenceLength && correctness) {
+          double rnd = ThreadLocalRandom.current().nextDouble();
+          System.out.println(rnd);
+          if (rnd<yesProbabilityUpperBound) {
+            correctness = fastTrack.runStep(i, true);
+          } else {
+            correctness = fastTrack.runStep(i, false);  
+          }
+          i++;
+        }
+        return (startBand+(i-1));
     }
 
 }

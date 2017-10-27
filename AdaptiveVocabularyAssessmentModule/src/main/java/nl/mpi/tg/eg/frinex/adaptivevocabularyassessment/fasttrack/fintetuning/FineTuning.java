@@ -83,19 +83,19 @@ public class FineTuning extends Series {
         int wordsCounter = 0;
         int nonwordsCounter = 0;
         for (int i = 0; i < length; i++) {
-            AtomStimulus[] atomStimulus = new AtomStimulus[Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE];
+            AtomStimulus[] tuple = new AtomStimulus[Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE];
             int nonwordPosition = ThreadLocalRandom.current().nextInt(0, Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE - 1);
             for (int j = 0; j < Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE; j++) {
                 if (j != nonwordPosition) {
-                    atomStimulus[j] = unusedWords.get(wordsCounter);
+                    tuple[j] = unusedWords.get(wordsCounter);
                     wordsCounter++;
                 } else {
-                    atomStimulus[j] = unusedNonwords.get(nonwordsCounter);
+                    tuple[j] = unusedNonwords.get(nonwordsCounter);
                     nonwordsCounter++;
                 }
-                atomStimulus[j].setIsUsed(true);
+                tuple[j].setIsUsed(true);
             }
-            FineTuningStimulus stimulus = new FineTuningStimulus(atomStimulus);
+            FineTuningStimulus stimulus = new FineTuningStimulus(tuple);
             retVal.add(stimulus);
         }
         return retVal;
