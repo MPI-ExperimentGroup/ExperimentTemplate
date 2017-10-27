@@ -140,6 +140,7 @@ public class StimulusProvider implements StimuliProvider {
     }
 
     @Override
+    // todo: start using the StimulusSelector which contains min and max count values
     public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final String storedStimulusList, final int currentStimuliIndex) {
         List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
         this.currentStimuliIndex = currentStimuliIndex;
@@ -509,9 +510,8 @@ public class StimulusProvider implements StimuliProvider {
 ////        }
 //        totalStimuli = stimulusSubsetArray.size();
 //    }
-    @Deprecated // todo: perhaps this would be better done in the respective presenters
-//    @Override
-    public List<Stimulus> getPictureList(GroupParticipantService groupParticipantService, int maxStimuli) {
+    @Override
+    public List<Stimulus> getDistractorList(int maxStimuli) {
         final HashMap<String, Stimulus> uniqueList = new HashMap<>();
         uniqueList.put(getCurrentStimulus().getImage(), getCurrentStimulus());
         ArrayList<Stimulus> stimulusListCopy = new ArrayList<>(stimulusSubsetArray);
@@ -526,20 +526,10 @@ public class StimulusProvider implements StimuliProvider {
         }
         final ArrayList<Stimulus> inputList = new ArrayList<>(uniqueList.values());
         final ArrayList<Stimulus> returnList = new ArrayList<>();
-        String groupResponseOptions = null;
         while (!inputList.isEmpty()) {
             final int nextIndex = new Random().nextInt(inputList.size());
             Stimulus stimulus = inputList.remove(nextIndex);
-            if (groupResponseOptions == null) {
-                groupResponseOptions = "";
-            } else {
-                groupResponseOptions += ",";
-            }
-            groupResponseOptions += stimulus.getUniqueId();
             returnList.add(stimulus);
-        }
-        if (groupParticipantService != null) {
-            groupParticipantService.setResponseStimulusOptions(groupResponseOptions);
         }
         return returnList;
     }
