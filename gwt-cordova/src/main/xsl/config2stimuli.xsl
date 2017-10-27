@@ -17,12 +17,12 @@
             import com.google.gwt.core.client.GWT;
             import java.util.Arrays;
             import java.util.List;
-            import java.util.Objects;
             import nl.mpi.tg.eg.experiment.client.ServiceLocations;
             import nl.mpi.tg.eg.experiment.client.util.GeneratedStimulusProvider;
+            import nl.mpi.tg.eg.frinex.common.model.AbstractStimulus;
             import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
-            public class GeneratedStimulus implements Stimulus {
+            public class GeneratedStimulus extends AbstractStimulus {
             protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
         </xsl:text>    
             
@@ -118,131 +118,28 @@
             stimulusArray.addAll(Arrays.asList(GeneratedStimulusProvider.values));</xsl:text>
         <xsl:text>
             }
-            final private String uniqueId;
-            final private List&lt;Tag&gt; tags;
-            final private String label;
-            final private String code;
-            final private int pauseMs;
-            final private String audioPath;
-            final private String videoPath;
-            final private String imagePath;
-            final private String ratingLabels;
-            final private String correctResponses;
-
-            public GeneratedStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses) {
-            this.uniqueId = uniqueId;
-            this.tags = Arrays.asList(tags);
-            this.label = label;
-            this.code = code;
-            this.pauseMs = pauseMs;
-            this.audioPath = audioPath;
-            this.videoPath = videoPath;
-            this.imagePath = imagePath;
-            this.ratingLabels = ratingLabels;
-            this.correctResponses = correctResponses;
-            }
             
-            public GeneratedStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String ratingLabels, String correctResponses) {
-            this.uniqueId = (uniqueId != null) ? uniqueId : code;
-            this.tags = Arrays.asList(tags);
-            this.label = label;
-            this.code = code;
-            this.pauseMs = pauseMs;
-            this.audioPath = null;
-            this.videoPath = null;
-            this.imagePath = null;
-            this.ratingLabels = ratingLabels;
-            this.correctResponses = correctResponses;
-            }
-    
-            public String getUniqueId() {
-            return uniqueId;
+            public GeneratedStimulus(String uniqueId, Tag[] tags, String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses) {
+            super(uniqueId, tags, label, code, pauseMs, audioPath, videoPath, imagePath, ratingLabels, correctResponses);
             }
 
-            public List&lt;Tag&gt; getTags() {
-            return tags;
+            public GeneratedStimulus(String uniqueId, Tag[] tags, String label, String code, int pauseMs, String ratingLabels, String correctResponses) {
+            super(uniqueId, tags, label, code, pauseMs, ratingLabels, correctResponses);
             }
 
-            public String getLabel() {
-            return label;
-            }
-            
-            public String getCode() {
-            return code;
-            }
-            
-            public String getRatingLabels() {
-            return ratingLabels;
-            }
-            
-            public String getCorrectResponses() {
-            return correctResponses;
-            }
-            
-            public int getPauseMs() {
-            return pauseMs;
-            }
-            
+            @Override
             public String getAudio() {
-            return serviceLocations.staticFilesUrl() + audioPath;
+            return serviceLocations.staticFilesUrl() + super.getAudio();
             }
 
+            @Override
             public String getImage() {
-            return serviceLocations.staticFilesUrl() + imagePath;
+            return serviceLocations.staticFilesUrl() + super.getImage();
             }
 
+            @Override
             public String getVideo() {
-            return serviceLocations.staticFilesUrl() + videoPath;
-            }
-            
-            public boolean hasAudio() {
-            return audioPath != null;
-            }
-
-            public boolean hasVideo() {
-            return videoPath != null;
-            }
-
-            public boolean hasImage() {
-            return imagePath != null;
-            }
-            
-            public boolean hasRatingLabels() {
-            return ratingLabels != null;
-            }
-            
-            public boolean hasCorrectResponses() {
-            return correctResponses != null;
-            }
-            
-            @Override
-            public int compareTo(Stimulus o) {
-            return this.uniqueId.compareTo(o.getUniqueId());
-            }
-            
-            @Override
-            public int hashCode() {
-            int hash = 7;
-            hash = 79 * hash + Objects.hashCode(this.uniqueId);
-            return hash;
-            }
-
-            @Override
-            public boolean equals(Object obj) {
-            if (this == obj) {
-            return true;
-            }
-            if (obj == null) {
-            return false;
-            }
-            if (getClass() != obj.getClass()) {
-            return false;
-            }
-            final Stimulus other = (Stimulus) obj;
-            if (!Objects.equals(this.uniqueId, other.getUniqueId())) {
-            return false;
-            }
-            return true;
+            return serviceLocations.staticFilesUrl() + super.getVideo();
             }
             }  
         </xsl:text>
