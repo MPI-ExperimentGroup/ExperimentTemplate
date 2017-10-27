@@ -60,14 +60,20 @@ public class FineTuning extends Series {
             if (atomStimulus.getBandNumber() > 0 && !answers[i]) {
                 eval = false;// tool a word as a nonword
             }
+            
+            atomStimulus.setIsUsed(true);
             atomStimulus.setCorrectness(eval);
             retVal = retVal && eval;
         }
         return retVal;
     }
     
-     public FineTuningStimulus getStimulus(int bandNumber, int stimulusNumber) {
+    public FineTuningStimulus getStimulus(int bandNumber, int stimulusNumber) {
         return this.stimulae.get(bandNumber).get(stimulusNumber);
+    }
+    
+    public ArrayList<ArrayList<FineTuningStimulus>> getStimulae() {
+        return this.stimulae;
     }
 
 
@@ -84,7 +90,7 @@ public class FineTuning extends Series {
         int nonwordsCounter = 0;
         for (int i = 0; i < length; i++) {
             AtomStimulus[] tuple = new AtomStimulus[Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE];
-            int nonwordPosition = ThreadLocalRandom.current().nextInt(0, Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE - 1);
+            int nonwordPosition = ThreadLocalRandom.current().nextInt(0, Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE);
             for (int j = 0; j < Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE; j++) {
                 if (j != nonwordPosition) {
                     tuple[j] = unusedWords.get(wordsCounter);
@@ -93,7 +99,6 @@ public class FineTuning extends Series {
                     tuple[j] = unusedNonwords.get(nonwordsCounter);
                     nonwordsCounter++;
                 }
-                tuple[j].setIsUsed(true);
             }
             FineTuningStimulus stimulus = new FineTuningStimulus(tuple);
             retVal.add(stimulus);

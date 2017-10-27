@@ -23,6 +23,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.FastTrack;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.fintetuning.FineTuning;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.fintetuning.FineTuningStimulus;
 
 /**
  * @since Oct 20, 2017 11:38:57 AM (creation date)
@@ -37,32 +39,37 @@ public class Main {
 
         Vocabulary vocab = new Vocabulary();
         try {
-           
+
             vocab.initialiseVocabulary();
             AtomStimulus[][] words = vocab.getWords();
             ArrayList<AtomStimulus> nonwords = vocab.getNonwords();
+
+            System.out.println("Fine tuning ");
             //FastTrack(String username, AtomStimulus[][] wrds, ArrayList<AtomStimulus> nonwrds, int nonWordsPerBlock, int startBand, int averageNonwordPosition)
             FastTrack fastTrack = new FastTrack(Constants.DEFAULT_USER, words, nonwords, Constants.NONWORDS_PER_BLOCK, Constants.START_BAND, Constants.AVRERAGE_NON_WORD_POSITION);
             fastTrack.createStimulae();
             ArrayList<AtomStimulus> fastTrackSequence = fastTrack.getStimulae();
-            /** always yes **/
-            /*System.out.println("user who always answers 'yes' ");
-            int lastCorrectBand=simulateFastTrack(fastTrack, 1, fastTrackSequence.size());
-            System.out.println("last correct band "+lastCorrectBand);
-            writeCsvFileFastTrack(fastTrackSequence);*/
+
+            /**
+             * Test user *
+             */
+            System.out.println("Test user ");
+            int stopBand = 37;
+            int lastCorrectBand = simulateFastTrackUpTo(fastTrack, stopBand);
+            System.out.println("last correct band " + lastCorrectBand);
+            writeCsvFileFastTrack(fastTrackSequence, stopBand);
+
             /**/
-            
-            /** 1/2 are yes **/
-            System.out.println("user who in 1/2 says 'yes' ");
-            int lastCorrectBand=simulateFastTrack(fastTrack, 0.4, fastTrackSequence.size());
-            System.out.println("last correct band "+lastCorrectBand);
-            writeCsvFileFastTrack(fastTrackSequence);
-            /**/
-            
+            System.out.println("Fine tuning ");
+            // FineTuning(String username, AtomStimulus[][] wrds, ArrayList<AtomStimulus> nonwrds)
+            FineTuning fineTuning = new FineTuning(Constants.DEFAULT_USER, words, nonwords);
+            fineTuning.createStimulae();
+            ArrayList<ArrayList<FineTuningStimulus>> fineTuningStimulae = fineTuning.getStimulae();
+            writeCsvFileFineTuningPreset(fineTuningStimulae);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-        
+
         /*Vocabulary bands = new Vocabulary();
         try {
            
@@ -96,10 +103,10 @@ public class Main {
         }
     }
 
-    public static void writeCsvFileFastTrack(ArrayList<AtomStimulus> stimulae) throws IOException {
+    public static void writeCsvFileFastTrack(ArrayList<AtomStimulus> stimulae, int stopBand) throws IOException {
         long millis = System.currentTimeMillis();
-        int blockSize = Constants.NONWORDS_PER_BLOCK*Constants.AVRERAGE_NON_WORD_POSITION;
-        String fileName = "Fast_track_test_"+blockSize+"_"+millis+".csv";
+        int blockSize = Constants.NONWORDS_PER_BLOCK * Constants.AVRERAGE_NON_WORD_POSITION;
+        String fileName = "Fast_track_test_stopped_at_band" + stopBand + "_" + blockSize + "_" + millis + ".csv";
         System.out.println("writeCsvFile: " + Constants.OUTPUT_DIRECTORY + fileName);
         final File csvFile = new File(Constants.OUTPUT_DIRECTORY, fileName);
         final FileWriter csvFileWriter = new FileWriter(csvFile, false);
@@ -109,34 +116,84 @@ public class Main {
         for (AtomStimulus stimulus : stimulae) {
             counter++;
             if (stimulus.getBandNumber() == -1) {
-                    counterNonwords++;
+                counterNonwords++;
             }
             double frequency = ((double) counterNonwords) / ((double) counter);
-            String row = stimulus.getSpelling() + ";" +  stimulus.getBandNumber() +
-                    ";"+stimulus.getReaction() + ";" +  stimulus.getCorrectness() +
-                    ";" +  stimulus.getIsUsed()+";"+frequency;
+            String row = stimulus.getSpelling() + ";" + stimulus.getBandNumber()
+                    + ";" + stimulus.getReaction() + ";" + stimulus.getCorrectness()
+                    + ";" + stimulus.getIsUsed() + ";" + frequency;
             //System.out.println(row);
             csvFileWriter.write(row + "\n");
         }
         csvFileWriter.close();
     }
-    
+
+    public static void writeCsvFileFineTuningPreset(ArrayList<ArrayList<FineTuningStimulus>> stimulae) throws IOException {
+        long millis = System.currentTimeMillis();
+        String fileName = "Fine_tuning_preset_" + "_" + millis + ".csv";
+        System.out.println("writeCsvFile: " + Constants.OUTPUT_DIRECTORY + fileName);
+        final File csvFile = new File(Constants.OUTPUT_DIRECTORY, fileName);
+        final FileWriter csvFileWriter = new FileWriter(csvFile, false);
+        csvFileWriter.write("QuadrupleNummer;Spelling;BandNumber;UserAnswer;Correctness;isUsed\n");
+        int quadrupleCounter = 0;
+        for (int bandCounter = 0; bandCounter < stimulae.size(); bandCounter++) {
+            for (FineTuningStimulus stimulus : stimulae.get(bandCounter)) {
+                quadrupleCounter++;
+                for (int i = 0; i < Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE; i++) {
+                    AtomStimulus aStimulus = stimulus.getAtomStimulusAt(i);
+                    String row = quadrupleCounter + ";" + aStimulus.getSpelling()
+                            + ";" + aStimulus.getBandNumber()
+                            + ";" + aStimulus.getReaction() + ";" + aStimulus.getCorrectness()
+                            + ";" + aStimulus.getIsUsed();
+                    //System.out.println(row);
+                    csvFileWriter.write(row + "\n");
+
+                }
+            }
+        }
+        csvFileWriter.close();
+    }
+
     // return the number of the band where the last correct answer is produced
-    public static int simulateFastTrack(FastTrack fastTrack, double yesProbabilityUpperBound, int sequenceLength){
-        int i=0;
+    public static int simulateFastTrackUpTo(FastTrack fastTrack, int stopBand) {
+        int i = 0;
+        boolean correctness = true;
+        ArrayList<AtomStimulus> stimulae = fastTrack.getStimulae();
+        int actualStopBand = 0;
+        while (i < stimulae.size() && correctness) {
+            int currentBand = stimulae.get(i).getBandNumber();
+            boolean answer = currentBand > 0; // correct answer, true if word, no if non-word
+            if (currentBand > stopBand) { // make a mistake
+                answer = !answer;
+            } else {
+                if (currentBand > 0) {
+                    actualStopBand = currentBand;
+                }
+            }
+            correctness = fastTrack.runStep(i, answer);
+            i++;
+        }
+        System.out.println("actual stop band : " + actualStopBand);
+        System.out.println("expected stop band : " + stopBand);
+        return actualStopBand;
+    }
+
+    // return the number of the band where the last correct answer is produced
+    public static int simulateFineTuning(FastTrack fastTrack, double yesProbabilityUpperBound, int sequenceLength) {
+        int i = 0;
         boolean correctness = true;
         int startBand = fastTrack.getStartBand();
-        while (i<sequenceLength && correctness) {
-          double rnd = ThreadLocalRandom.current().nextDouble();
-          System.out.println(rnd);
-          if (rnd<yesProbabilityUpperBound) {
-            correctness = fastTrack.runStep(i, true);
-          } else {
-            correctness = fastTrack.runStep(i, false);  
-          }
-          i++;
+        while (i < sequenceLength && correctness) {
+            double rnd = ThreadLocalRandom.current().nextDouble();
+            System.out.println(rnd);
+            if (rnd < yesProbabilityUpperBound) {
+                correctness = fastTrack.runStep(i, true);
+            } else {
+                correctness = fastTrack.runStep(i, false);
+            }
+            i++;
         }
-        return (startBand+(i-1));
+        return (startBand + (i - 1));
     }
 
 }

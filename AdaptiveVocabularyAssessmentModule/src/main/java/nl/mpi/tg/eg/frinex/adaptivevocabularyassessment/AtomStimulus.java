@@ -17,6 +17,8 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author olhshk
@@ -38,6 +40,14 @@ public class AtomStimulus {
         this.correctness = null;
     }
 
+    public AtomStimulus(AtomStimulus source) {
+        this.spelling = source.spelling;
+        this.bandNumber = source.bandNumber;
+        this.isUsed = source.isUsed;
+        this.userReaction = source.userReaction;
+        this.correctness = source.correctness;
+    }
+
     public String getSpelling() {
         return this.spelling;
     }
@@ -53,21 +63,30 @@ public class AtomStimulus {
     public void setIsUsed(boolean value) {
         this.isUsed = value;
     }
-    public Boolean getReaction(){
+
+    public Boolean getReaction() {
         return this.userReaction;
     }
-    
-    public Boolean getCorrectness(){
+
+    public Boolean getCorrectness() {
         return this.correctness;
     }
-    
-    public void setReaction(boolean  reaction){
+
+    public void setReaction(boolean reaction) {
         this.userReaction = reaction;
     }
-    
-    public void setCorrectness(boolean eval){
-        this.correctness=eval;
+
+    public void setCorrectness(boolean eval) {
+        this.correctness = eval;
     }
 
+    public static ArrayList<AtomStimulus> copyAromStimulae(ArrayList<AtomStimulus> source) {
+        ArrayList<AtomStimulus> retVal = new ArrayList<>(source.size());
+        for (AtomStimulus stimulus : source) {
+            AtomStimulus cloneStimulus = new AtomStimulus(stimulus);
+            retVal.add(cloneStimulus);
+        }
+    return retVal;
+    }
 
 }

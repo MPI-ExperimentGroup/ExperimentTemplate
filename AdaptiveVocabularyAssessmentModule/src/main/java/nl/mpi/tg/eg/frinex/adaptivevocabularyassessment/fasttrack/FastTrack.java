@@ -18,7 +18,9 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack;
 
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.AtomStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.Constants;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.Series;
 
 /**
@@ -55,14 +57,17 @@ public class FastTrack extends Series {
         ArrayList<Integer> nonWordInd = posChooser.updateAndGetIndices();
 
         int bandCounter = this.startBand - 1;
-        int nonwordCounter = 0;
+        ArrayList<AtomStimulus> nonwordsCopy = AtomStimulus.copyAromStimulae(this.nonwords);
         int sequenceLength = posChooser.getSequenceLength();
         for (int i = 0; i < sequenceLength; i++) {
-            if (nonWordInd.contains(i)) {
-                this.stimulae.add(this.nonwords.get(nonwordCounter));
-                nonwordCounter++;
+            if (nonWordInd.contains(i)) { // i is a position for a non-word
+                int nonWordCounter = nonwordsCopy.size();
+                int nonwordIndex = ThreadLocalRandom.current().nextInt(0, nonWordCounter);
+                this.stimulae.add(this.nonwords.get(nonwordIndex));
+                nonwordsCopy.remove(nonwordIndex);
             } else {
-                this.stimulae.add(this.words[bandCounter][0]);
+                int wordNumber = ThreadLocalRandom.current().nextInt(0, Constants.WORDS_PER_BAND);
+                this.stimulae.add(this.words[bandCounter][wordNumber]);
                 bandCounter++;
             }
         }
@@ -97,5 +102,7 @@ public class FastTrack extends Series {
         }
 
     }
+    
+  
 
 }
