@@ -68,11 +68,11 @@
         <eraseLocalStorageButton/>
         <localStorageData/>
     </presenter>
-    <stimuli/>        
-    <stimulus audioPath="" code="" identifier="example1" pauseMs="0" ratingLabels="arrête,continue">
-        <tag>set1</tag>
-        <tag>set2</tag>
-        <tag>set3</tag>
-    </stimulus>
-</stimuli>
+    <stimuli>        
+        <stimulus audioPath="" code="" identifier="example1" pauseMs="0" ratingLabels="arrête,continue">
+            <tag>set1</tag>
+            <tag>set2</tag>
+            <tag>set3</tag>
+        </stimulus>
+    </stimuli>
 </experiment>
