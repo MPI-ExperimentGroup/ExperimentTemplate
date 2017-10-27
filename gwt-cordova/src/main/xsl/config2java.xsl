@@ -178,7 +178,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             <xsl:text>package nl.mpi.tg.eg.experiment.client.presenter;
     
                 import com.google.gwt.core.client.GWT;     
-                import com.google.gwt.event.dom.client.KeyCodes;       
+                import nl.mpi.tg.eg.experiment.client.model.ExtendedKeyCodes;    
                 import com.google.gwt.safehtml.shared.UriUtils;
                 import com.google.gwt.user.client.ui.ButtonBase;
                 import com.google.gwt.user.client.ui.RootLayoutPanel;
@@ -252,7 +252,11 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 </xsl:when>
                 <xsl:when test="@type = 'kindiagram' or @type = 'stimulus' or @type = 'timeline' or @type = 'colourPicker'">
                     <xsl:text>
-                        super(widgetTag, audioPlayer, submissionService, userResults, localStorage);
+                        super(widgetTag, audioPlayer, submissionService, userResults, localStorage, 
+                    </xsl:text>                    
+                    <xsl:value-of select="if(descendant::loadStimulus/@class) then concat('new ', descendant::loadStimulus/@class, '()') else 'new nl.mpi.tg.eg.experiment.client.service.StimulusProvider()'" />
+                    <xsl:text>
+                        );
                     </xsl:text>                    
                 </xsl:when>
                 <xsl:when test="@type = 'metadata' or @type = 'transmission' or @type = 'colourReport'">
@@ -287,7 +291,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 @Override
                 protected void setContent(final AppEventListner appEventListner) {
             </xsl:text>
-            <xsl:value-of select="if(descendant::startAudioRecorder) then 'requestRecorderPermissions();' else ''" />
+            <xsl:value-of select="if(descendant::startAudioRecorder) then 'requestRecorderPermissions();' else 'requestFilePermissions();'" />
             <xsl:apply-templates/> <!--select="htmlText|padding|image|menuItem|text|versionData|optionButton|userInfo|localStorageData|stimulusImage|stimulusAudio"-->
             <xsl:text>    }
                 }</xsl:text>
@@ -327,32 +331,16 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         </xsl:text>
     </xsl:template>
     <xsl:template match="menuItem">
-        <xsl:text>    ((MenuView) simpleView).addMenuItem(new PresenterEventListner() {
-
-            @Override
-            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-            appEventListner.requestApplicationState(ApplicationState.</xsl:text>
+        <xsl:text>    </xsl:text>
+        <xsl:value-of select="local-name()" />
+        <xsl:text>(appEventListner, </xsl:text>      
+        <xsl:text>ApplicationState.</xsl:text>
         <xsl:value-of select="@target" />
-        <xsl:text>);
-            }
-
-            @Override
-            public String getLabel() {
-            final boolean screenCompleted = Boolean.parseBoolean(localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "completed-screen-"+ApplicationState.</xsl:text>
-        <xsl:value-of select="@target" />
-        <xsl:text>.name()));
-            return messages.</xsl:text>
+        <xsl:text>, messages.</xsl:text>
         <xsl:value-of select="generate-id(.)" />
-        <xsl:text>() + ((screenCompleted) ? " (complete)" : "");
-            }
-            
-            @Override
-            public int getHotKey() {
-            return </xsl:text>
-        <xsl:value-of select="if(@hotKey) then concat('KeyCodes.KEY_', @hotKey) else '-1'" />
-        <xsl:text>;
-            }
-            }, true);
+        <xsl:text>()</xsl:text>  
+        <xsl:value-of select="if(@hotKey) then concat(', ExtendedKeyCodes.KEY_', @hotKey) else ', -1'" />
+        <xsl:text>);
         </xsl:text>
     </xsl:template>
     <xsl:template match="stimulusFreeText">           
@@ -367,16 +355,16 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>(),</xsl:text>
         <xsl:value-of select="if(@allowedCharCodes) then concat('&quot;', @allowedCharCodes, '&quot;') else 'null'" />
         <xsl:text>,</xsl:text>
-        <xsl:value-of select="if(@hotKey) then concat('KeyCodes.KEY_', @hotKey) else '-1'" />
+        <xsl:value-of select="if(@hotKey) then concat('ExtendedKeyCodes.KEY_', @hotKey) else '-1'" />
         <xsl:text>,</xsl:text>
         <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else 'null'" />
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="targetButton|actionButton|targetFooterButton|actionFooterButton">
-        <xsl:text>    ((ComplexView) simpleView).add</xsl:text>
-        <xsl:value-of select="if(local-name() eq 'targetFooterButton' or local-name() eq 'actionFooterButton') then 'Footer' else 'Option'" />
-        <xsl:text>Button(new PresenterEventListner() {
+    <!--it should be possible to merge the two following templates into one-->
+    <xsl:template match="stimulusButton|targetButton|actionButton|targetFooterButton|actionFooterButton"> 
+        <xsl:value-of select="local-name()"/>
+        <xsl:text>(new PresenterEventListner() {
 
             @Override
             public String getLabel() {
@@ -388,7 +376,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             @Override
             public int getHotKey() {
             return </xsl:text>
-        <xsl:value-of select="if(@hotKey) then concat('KeyCodes.KEY_', @hotKey) else '-1'" />
+        <xsl:value-of select="if(@hotKey) then concat('ExtendedKeyCodes.KEY_', @hotKey) else '-1'" />
         <xsl:text>;
             }
             
@@ -427,7 +415,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             @Override
             public int getHotKey() {
             return </xsl:text>
-        <xsl:value-of select="if(@hotKey) then concat('KeyCodes.KEY_', @hotKey) else '-1'" />
+        <xsl:value-of select="if(@hotKey) then concat('ExtendedKeyCodes.KEY_', @hotKey) else '-1'" />
         <xsl:text>;
             }
             @Override
@@ -468,7 +456,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="createUserButton|selectUserMenu|allMenuItems|addKinTypeGui|autoNextPresenter">    
+    <xsl:template match="activateRandomItem|createUserButton|selectUserMenu|allMenuItems|addKinTypeGui|autoNextPresenter">    
         <xsl:text>    </xsl:text>
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(appEventListner</xsl:text>
@@ -481,20 +469,23 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="logTimeStamp|audioButton|prevStimulusButton|nextStimulusButton|nextStimulus|nextMatchingStimulus|sendGroupMessageButton|sendGroupMessage|sendGroupEndOfStimuli|sendGroupStoredMessage">
+    <xsl:template match="touchInputZone|logTimeStamp|audioButton|prevStimulusButton|nextStimulusButton|nextStimulus|nextMatchingStimulus|sendGroupMessageButton|sendGroupMessage|sendGroupEndOfStimuli|sendGroupStoredMessage">
         <xsl:text>    </xsl:text>
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
         <xsl:value-of select="if(@eventTag) then concat('&quot;', @eventTag, '&quot;') else ''" />
         <xsl:value-of select="if(@featureText) then concat(', messages.', generate-id(.), '()') else ''" />
-        <xsl:value-of select="if(@mp3) then concat(', &quot;', @mp3, '&quot;') else ''" />
-        <xsl:value-of select="if(@ogg) then concat(', &quot;', @ogg, '&quot;') else ''" />
+        <xsl:value-of select="if(@src) then concat(', &quot;', @src, '&quot;') else ''" />
+        <!--<xsl:value-of select="if(@styleName and local-name() ne 'touchInputZone') then ', ' else ''" />-->        
+        <xsl:value-of select="if(@showControls) then @showControls eq 'true' else ''" />        
+        <xsl:value-of select="if(@styleName) then concat(', &quot;', @styleName, '&quot;') else ''" />        
         <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />        
-        <xsl:value-of select="if(@repeatIncorrect) then concat(', ', @repeatIncorrect eq 'true') else ''" />
-        <xsl:value-of select="if(@hotKey eq '-1') then ', -1' else if(@hotKey) then concat(', KeyCodes.KEY_', @hotKey) else ''" />
+        <xsl:value-of select="if(@autoPlay) then concat(', ', @autoPlay) else ''" />        
+        <xsl:value-of select="if(@repeatIncorrect) then @repeatIncorrect eq 'true' else ''" />
+        <xsl:value-of select="if(@hotKey eq '-1') then ', -1' else if(@hotKey) then concat(', ExtendedKeyCodes.KEY_', @hotKey) else ''" />
         <xsl:value-of select="if(@incrementPhase) then concat(', callerPhase, ', @incrementPhase, ',expectedRespondents') else ''" />
         <!--<xsl:value-of select="if(@incrementStimulus) then concat(', ', @incrementStimulus) else ''" />-->
-        <xsl:if test="local-name() eq 'audioButton'">
+        <xsl:if test="local-name() eq 'audioButton' or local-name() eq 'touchInputZone'">
             <xsl:text>, new TimedStimulusListener() {
 
                 @Override
@@ -635,6 +626,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             + version.projectVersion() + "\n"
             + "Compile Date: " + version.compileDate() + "\n"
             + "Last Commit Date: " + version.lastCommitDate());
+            stimuliValidation();
+            addKeyboardDebug();
         </xsl:text>
     </xsl:template>
     <xsl:template match="stimuli|randomGrouping" mode="stimuliTags">
