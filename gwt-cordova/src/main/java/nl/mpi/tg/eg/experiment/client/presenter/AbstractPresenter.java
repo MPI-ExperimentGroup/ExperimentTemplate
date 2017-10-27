@@ -123,6 +123,26 @@ public abstract class AbstractPresenter implements Presenter {
         widgetTag.add(simpleView);
     }
 
+    public void actionFooterButton(final PresenterEventListner presenterListerner) {
+        ((ComplexView) simpleView).addFooterButton(presenterListerner);
+    }
+
+    public void targetFooterButton(final PresenterEventListner presenterListerner) {
+        ((ComplexView) simpleView).addFooterButton(presenterListerner);
+    }
+
+    public void actionButton(final PresenterEventListner presenterListerner, String styleName) {
+        ((ComplexView) simpleView).addOptionButton(presenterListerner, styleName);
+    }
+
+    public void targetButton(final PresenterEventListner presenterListerner, String styleName) {
+        ((ComplexView) simpleView).addOptionButton(presenterListerner, styleName);
+    }
+
+    public void optionButton(final PresenterEventListner presenterListerner, String styleName) {
+        ((ComplexView) simpleView).addOptionButton(presenterListerner, styleName);
+    }
+
     @Override
     public void fireBackEvent() {
         if (backEventListner != null) {
