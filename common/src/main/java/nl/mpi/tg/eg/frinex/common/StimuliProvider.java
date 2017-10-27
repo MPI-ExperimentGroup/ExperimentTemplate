@@ -32,9 +32,13 @@ public interface StimuliProvider {
 
     Stimulus getCurrentStimulus();
 
+    String getCurrentStimulusUniqueId();
+
     int getCurrentStimulusIndex();
 
     String getLoadedStimulusString();
+
+    List<Stimulus> getDistractorList(int maxStimuli);
 
     List<Stimulus> getMatchingStimuli(final String matchingRegex, final int maxStimulusCount);
 
