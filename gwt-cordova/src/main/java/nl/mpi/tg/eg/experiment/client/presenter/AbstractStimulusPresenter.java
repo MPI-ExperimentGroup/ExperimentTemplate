@@ -62,7 +62,7 @@ import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.MatchingStimuliGroup;
 import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
 import nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture;
-import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
+import nl.mpi.tg.eg.frinex.common.StimuliProvider;
 import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.MetadataFieldWidget;
@@ -78,7 +78,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
     private static final String LOADED_STIMULUS_LIST = "loadedStimulusList";
     private static final String SEEN_STIMULUS_INDEX = "seenStimulusIndex";
-    private final StimulusProvider stimulusProvider = new StimulusProvider();
+    private final StimuliProvider stimulusProvider;
     protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
     private final LocalStorage localStorage;
     private final DataSubmissionService submissionService;
@@ -98,12 +98,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         bounce, none, stimuliCode
     }
 
-    public AbstractStimulusPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage) {
+    public AbstractStimulusPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, StimuliProvider stimulusProvider) {
         super(widgetTag, new TimedStimulusView(audioPlayer));
         duration = new Duration();
         this.submissionService = submissionService;
         this.userResults = userResults;
         this.localStorage = localStorage;
+        this.stimulusProvider = stimulusProvider;
     }
 
     @Override
@@ -258,6 +259,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             @Override
             public void postLoadTimerFired() {
                 ((TimedStimulusView) simpleView).addText("Stimulus loading error");
+                // @todo: when sdcard stimuli sub directories are used:  + "Plase make sure that the directory " + stimuliDirectory + "/" + cleanedTag + " exists and has stimuli files."
             }
         }, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, storedStimulusList, seenStimulusIndex);
     }
@@ -1030,6 +1032,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
+    public void stimulusButton(final PresenterEventListner presenterListerner, String styleName) {
+        final ButtonBase buttonItem = ((ComplexView) simpleView).addOptionButton(presenterListerner, styleName);
+        buttonList.add(buttonItem);
+    }
+
     public void stimulusRatingButton(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final String ratingLabelLeft, final String ratingLabelRight, final int eventTier) {
         ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, timedStimulusListener, stimulusProvider.getCurrentStimulus().getUniqueId(), stimulusProvider.getCurrentStimulus().getRatingLabels(), stimulusProvider.getCurrentStimulus().getCorrectResponses(), eventTier), ratingLabelLeft, ratingLabelRight, false);
     }
@@ -1165,7 +1172,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //        if (alternativeChoice != null) {
 //            buttonList.add(((TimedStimulusView) simpleView).addStringItem(getEventListener(buttonList, eventTag, stimulusProvider.getCurrentStimulus(), alternativeChoice, correctTimedListener, incorrectTimedListener), alternativeChoice, 0, 0, imageWidth));
 //        }
-        for (final Stimulus nextJpgStimulus : stimulusProvider.getPictureList(groupParticipantService, maxStimuli)) {
+        String groupResponseOptions = null;
+        for (final Stimulus nextJpgStimulus : stimulusProvider.getDistractorList(maxStimuli)) {
             final String styleName;
             if (animateType == AnimateTypes.stimuliCode) {
                 styleName = nextJpgStimulus.getCode() + "Animation";
@@ -1174,8 +1182,18 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             } else {
                 styleName = null;
             }
+            // collect the distractor list for later reporting
+            if (groupResponseOptions == null) {
+                groupResponseOptions = "";
+            } else {
+                groupResponseOptions += ",";
+            }
+            groupResponseOptions += nextJpgStimulus.getUniqueId();
             final ButtonBase imageItem = ((TimedStimulusView) simpleView).addImageItem(getEventListener(buttonList, eventTag, stimulusProvider.getCurrentStimulus(), nextJpgStimulus, correctTimedListener, incorrectTimedListener), UriUtils.fromString(nextJpgStimulus.getImage()), imageCounter / columnCount, 1 + imageCounter++ % columnCount, imageWidth, styleName, imageCounter);
             buttonList.add(imageItem);
+        }
+        if (groupParticipantService != null) {
+            groupParticipantService.setResponseStimulusOptions(groupResponseOptions);
         }
         disableStimulusButtons();
         ((TimedStimulusView) simpleView).endGrid();
@@ -1320,8 +1338,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 return;
             }
         }
+        // @todo: probably good to check if the data has changed before writing to disk
         writeStimuliData(userResults.getUserData().getUserId().toString(), stimulusProvider.getCurrentStimulus().getUniqueId(), storedStimulusJSONObject.toString());
         for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
+            // @todo: checking the free text boxes is also done in the group stimulus sync code, therefore this should be shared in a single function
             submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), stimulusFreeText.getPostName(), stimulusProvider.getCurrentStimulus().getUniqueId(), stimulusFreeText.getValue(), duration.elapsedMillis());
             final String correctResponses = stimulusProvider.getCurrentStimulus().getCorrectResponses();
             if (correctResponses != null && !correctResponses.isEmpty()) {
@@ -1371,6 +1391,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addText("Waiting for a group response."); // + eventTag + ":" + originPhase + ":" + incrementPhase + ":" + groupParticipantService.getRequestedPhase());
     }
 
+    // @todo: tag pair data and tag data tables could show the number of stimuli show events and the unique stimuli (grouped by tag strings) show events per screen
     protected void sendGroupMessageButton(final String eventTag, final String buttonLabel, final boolean norepeat, final int hotKey, final int originPhase, final int incrementPhase, final String expectedRespondents) {
         PresenterEventListner eventListner = new PresenterEventListner() {
 
@@ -1420,6 +1441,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 @Override
                 public void setDebugLabel(String debugLabel) {
                     if (debugHtmlLabel != null) {
+                        if (debugHtmlLabel.getParent() == null) {
+                            ((TimedStimulusView) simpleView).add(debugHtmlLabel);
+                        }
                         debugHtmlLabel.setHTML(debugLabel);
                     }
                 }
