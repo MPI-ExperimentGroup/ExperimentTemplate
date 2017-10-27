@@ -118,6 +118,11 @@
             <artifactId>jquery</artifactId>
             <version>3.1.0</version>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>adaptive-vocabulary-assessment-module</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
