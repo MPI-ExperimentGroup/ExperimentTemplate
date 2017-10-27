@@ -37,7 +37,7 @@ import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
 public abstract class AbstractPreloadStimulusPresenter extends AbstractStimulusPresenter implements Presenter {
 
     public AbstractPreloadStimulusPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults) {
-        super(widgetTag, audioPlayer, submissionService, userResults, null);
+        super(widgetTag, audioPlayer, submissionService, userResults, null, null);
     }
 
     private void preloadAllStimuli(final AppEventListner appEventListner, final HorizontalPanel progressBar, final TimedStimulusListener timedStimulusListener, final List<Stimulus> pictureList, final int totalImages) {
@@ -58,7 +58,8 @@ public abstract class AbstractPreloadStimulusPresenter extends AbstractStimulusP
     protected void preloadAllStimuli(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final List<Stimulus.Tag> selectionTags) {
         final StimulusProvider stimulusProvider = new StimulusProvider();
         stimulusProvider.getSubset(selectionTags, false, 1, 0, 0, "", -1);
-        final List<Stimulus> pictureList = stimulusProvider.getPictureList(null, stimulusProvider.getTotalStimuli());
+        // todo: this should be modified to get all relevant stimuli and load as required by type
+        final List<Stimulus> pictureList = stimulusProvider.getDistractorList(stimulusProvider.getTotalStimuli());
         final HorizontalPanel progressBar = ((TimedStimulusView) simpleView).addProgressBar(0, 0, pictureList.size());
         preloadAllStimuli(appEventListner, progressBar, timedStimulusListener, pictureList, pictureList.size());
     }
