@@ -49,7 +49,7 @@
         <!--<experiment.destinationServerUrl></experiment.destinationServerUrl>-->      
         <!--<experiment.destinationServer></experiment.destinationServer>-->
         <!--<experiment.configuration.name>parcours01</experiment.configuration.name>-->
-        <experiment.configuration.name>multiparticipant</experiment.configuration.name>
+        <!--<experiment.configuration.name>multiparticipant</experiment.configuration.name>-->
         <!--<experiment.configuration.name>sentences_rating_task</experiment.configuration.name>-->
         <!--<experiment.configuration.name>french_audio</experiment.configuration.name>-->
         <!--<experiment.configuration.name>dobes_annotator</experiment.configuration.name>-->
@@ -75,8 +75,9 @@
         <!--<experiment.configuration.displayName>Wellsprings Samoan FieldKit</experiment.configuration.displayName>-->
         <!--<experiment.configuration.name>wellspringssamoan</experiment.configuration.name>-->
         <!--<experiment.configuration.name>nonwacq</experiment.configuration.name>-->
-<!--        <experiment.configuration.displayName>ld_screensize</experiment.configuration.displayName>
-        <experiment.configuration.name>ld_screensize</experiment.configuration.name>-->
+        <!--<experiment.configuration.displayName>ld_screensize</experiment.configuration.displayName>-->
+        <!--<experiment.configuration.name>ld_screensize</experiment.configuration.name>-->
+        <experiment.configuration.name>advocass</experiment.configuration.name>
         <!--<experiment.configuration.name>guineapigproject01</experiment.configuration.name>-->
         <experiment.configuration.admin.password></experiment.configuration.admin.password>
         <experiment.configuration.db.password></experiment.configuration.db.password>        
