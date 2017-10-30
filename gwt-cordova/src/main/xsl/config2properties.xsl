@@ -43,7 +43,7 @@
         <xsl:variable name="translationNodes" select="//translation" />
         <xsl:for-each select="distinct-values($translationNodes/@locale)">
             <xsl:variable name="translationLocale" select="." />
-            <xsl:result-document href="{$targetClientDirectory}/Messages-{$translationLocale}.properties" method="text">
+            <xsl:result-document href="{$targetClientDirectory}/Messages-{$translationLocale}.properties" method="text" encoding="UTF-8">
                 <xsl:for-each select="$translationNodes[@locale eq $translationLocale]">
                     <xsl:value-of select="generate-id(..)" />
                     <xsl:text>=</xsl:text>
@@ -70,7 +70,7 @@
         </xsl:text>      
         <xsl:apply-templates/>
     </xsl:template>
-    <xsl:template match="countdownLabel[@featureText != '']|stimulusImageCapture[@featureText != '']|stimulusFreeText[@featureText != '']|helpDialogue[@featureText != '']|eraseUsersDataButton[@featureText != '']|saveMetadataButton[@featureText != '']|saveMetadataButton[@networkErrorMessage != '']|createUserButton[@featureText != '']|targetButton[@featureText != '']|actionButton[@featureText != '']|targetFooterButton[@featureText != '']|actionFooterButton[@featureText != '']|plainText[@featureText != '']|popupMessage[@featureText != '']|menuItem[@featureText != '']|featureText[@featureText != '']|prevStimulusButton[@featureText != '']|nextStimulusButton[@featureText != '']|htmlText[@featureText != '']|htmlTokenText[@featureText != '']|userInfo[@featureText != '']|sendGroupMessageButton[@featureText != '']">
+    <xsl:template match="countdownLabel[@featureText != '']|stimulusImageCapture[@featureText != '']|stimulusFreeText[@featureText != '']|helpDialogue[@featureText != '']|eraseUsersDataButton[@featureText != '']|saveMetadataButton[@featureText != '']|saveMetadataButton[@networkErrorMessage != '']|createUserButton[@featureText != '']|targetButton[@featureText != '']|actionButton[@featureText != '']|targetFooterButton[@featureText != '']|actionFooterButton[@featureText != '']|plainText[@featureText != '']|popupMessage[@featureText != '']|menuItem[@featureText != '']|featureText[@featureText != '']|prevStimulusButton[@featureText != '']|stimulusButton[@featureText != '']|nextStimulusButton[@featureText != '']|htmlText[@featureText != '']|htmlTokenText[@featureText != '']|userInfo[@featureText != '']|sendGroupMessageButton[@featureText != '']">
         <xsl:if test="@featureText != ''">       
             <xsl:value-of select="generate-id(.)" />
             <xsl:text>=</xsl:text>
