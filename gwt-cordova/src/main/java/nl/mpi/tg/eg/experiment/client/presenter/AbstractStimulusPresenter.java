@@ -1286,6 +1286,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     public void enableStimulusButtons() {
         for (ButtonBase currentButton : buttonList) {
             currentButton.setEnabled(true);
+            currentButton.removeStyleName("optionButtonActivated");
         }
 //        ((TimedStimulusView) simpleView).addText("enableStimulusButtons: " + duration.elapsedMillis() + "ms");
     }
