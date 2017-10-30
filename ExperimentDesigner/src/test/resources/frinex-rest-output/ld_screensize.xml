@@ -78,12 +78,18 @@
                         <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
                         <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
                             <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="false">
-                                <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton">
-                                    <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
-                                </actionButton>
-                                <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton">
-                                    <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
-                                </actionButton>
+                                <stimulusButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton">
+                                    <disableStimulusButtons/>
+                                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
+                                        <enableStimulusButtons/>
+                                    </stimulusCodeAudio>
+                                </stimulusButton>
+                                <stimulusButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton">
+                                    <disableStimulusButtons/>
+                                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
+                                        <enableStimulusButtons/>
+                                    </stimulusCodeAudio>
+                                </stimulusButton>
                                 <table styleName="titleBarButton">
                                     <row>
                                         <column>
@@ -132,12 +138,18 @@
                                 <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
                                 <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
                                     <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="false">
-                                        <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton">
-                                            <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
-                                        </actionButton>
-                                        <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton">
-                                            <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
-                                        </actionButton>
+                                        <stimulusButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton">
+                                            <disableStimulusButtons/>
+                                            <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
+                                                <enableStimulusButtons/>
+                                            </stimulusCodeAudio>
+                                        </stimulusButton>
+                                        <stimulusButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton">
+                                            <disableStimulusButtons/>
+                                            <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
+                                                <enableStimulusButtons/>
+                                            </stimulusCodeAudio>
+                                        </stimulusButton>
                                         <table styleName="titleBarButton">
                                             <row>
                                                 <column>
@@ -181,12 +193,18 @@
                                 <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
                                 <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
                                     <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="false">
-                                        <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton">
-                                            <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
-                                        </actionButton>
-                                        <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton">
-                                            <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
-                                        </actionButton>
+                                        <stimulusButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton">
+                                            <disableStimulusButtons/>
+                                            <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
+                                                <enableStimulusButtons/>
+                                            </stimulusCodeAudio>
+                                        </stimulusButton>
+                                        <stimulusButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton">
+                                            <disableStimulusButtons/>
+                                            <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
+                                                <enableStimulusButtons/>
+                                            </stimulusCodeAudio>
+                                        </stimulusButton>
                                         <table styleName="titleBarButton">
                                             <row>
                                                 <column>
@@ -230,12 +248,18 @@
                                 <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
                                 <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
                                     <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="false">
-                                        <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton">
-                                            <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
-                                        </actionButton>
-                                        <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton">
-                                            <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
-                                        </actionButton>
+                                        <stimulusButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton">
+                                            <disableStimulusButtons/>
+                                            <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
+                                                <enableStimulusButtons/>
+                                            </stimulusCodeAudio>
+                                        </stimulusButton>
+                                        <stimulusButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton">
+                                            <disableStimulusButtons/>
+                                            <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
+                                                <enableStimulusButtons/>
+                                            </stimulusCodeAudio>
+                                        </stimulusButton>
                                         <table styleName="titleBarButton">
                                             <row>
                                                 <column>
@@ -279,12 +303,18 @@
                                 <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
                                 <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
                                     <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="false">
-                                        <actionButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton">
-                                            <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
-                                        </actionButton>
-                                        <actionButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton">
-                                            <stimulusCodeAudio msToNext="0" codeFormat="Correct" showPlaybackIndicator="false"/>
-                                        </actionButton>
+                                        <stimulusButton featureText="Left Overlay Button" eventTag="Left Overlay Button" styleName="leftOverlayButton">
+                                            <disableStimulusButtons/>
+                                            <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
+                                                <enableStimulusButtons/>
+                                            </stimulusCodeAudio>
+                                        </stimulusButton>
+                                        <stimulusButton featureText="Right Overlay Button" eventTag="Right Overlay Button" styleName="rightOverlayButton">
+                                            <disableStimulusButtons/>
+                                            <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
+                                                <enableStimulusButtons/>
+                                            </stimulusCodeAudio>
+                                        </stimulusButton>
                                         <table styleName="titleBarButton">
                                             <row>
                                                 <column>
