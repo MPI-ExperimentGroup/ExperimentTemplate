@@ -30,13 +30,16 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.Series;
 public class FineTuning extends Series {
 
     ArrayList<ArrayList<FineTuningStimulus>> stimulae = new ArrayList<>(Constants.NUMBER_OF_BANDS);
+    
+    private int stepCounter;
 
     public FineTuning(String username, AtomStimulus[][] wrds, ArrayList<AtomStimulus> nonwrds) {
         super(username, wrds, nonwrds);
+        stepCounter = 0;
     }
 
     @Override
-    public void createStimulae() {
+    public void createStimulae() throws Exception{
         for (int i = 0; i < Constants.NUMBER_OF_BANDS; i++) {
             ArrayList<FineTuningStimulus> currentBand = this.createStimulaeBand(this.words[i], this.nonwords);
             this.stimulae.add(currentBand);
@@ -45,8 +48,9 @@ public class FineTuning extends Series {
     }
 
     // return true if the answer is correct, and false otherwise
-    public boolean runStep(int bandNumber, int stimulusNumber, boolean[] answers) {
-        FineTuningStimulus stimulus = this.getStimulus(bandNumber, stimulusNumber);
+    public boolean runStep(int bandNumber, int stimulusIndex, boolean[] answers) throws Exception{
+        int bandIndex = bandNumber-1;
+        FineTuningStimulus stimulus = this.stimulae.get(bandIndex).get(stimulusIndex);
         // checking for mistakes
         boolean retVal = true;
         for (int i = 0; i < Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE; i++) {
@@ -60,24 +64,26 @@ public class FineTuning extends Series {
             if (atomStimulus.getBandNumber() > 0 && !answers[i]) {
                 eval = false;// tool a word as a nonword
             }
-            
+
             atomStimulus.setIsUsed(true);
             atomStimulus.setCorrectness(eval);
             retVal = retVal && eval;
         }
+        stimulus.setOverallCorrectness(retVal);
+        this.stepCounter++;
+        stimulus.setVisitTime(this.stepCounter);
         return retVal;
     }
-    
-    public FineTuningStimulus getStimulus(int bandNumber, int stimulusNumber) {
-        return this.stimulae.get(bandNumber).get(stimulusNumber);
+
+    public FineTuningStimulus getStimulus(int bandNumber, int stimulusIndex) {
+        return this.stimulae.get(bandNumber).get(stimulusIndex);
     }
-    
+
     public ArrayList<ArrayList<FineTuningStimulus>> getStimulae() {
         return this.stimulae;
     }
 
-
-    private ArrayList<FineTuningStimulus> createStimulaeBand(AtomStimulus[] words, ArrayList<AtomStimulus> nonwords) {
+    private ArrayList<FineTuningStimulus> createStimulaeBand(AtomStimulus[] words, ArrayList<AtomStimulus> nonwords) throws Exception{
         ArrayList<AtomStimulus> unusedWords = this.fetchUnusedUnits(words);
         ArrayList<AtomStimulus> unusedNonwords = this.fetchUnusedUnits(nonwords);
         int length = unusedWords.size() / Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE;
@@ -106,5 +112,18 @@ public class FineTuning extends Series {
         return retVal;
     }
 
-   
+    public boolean[] testProbabilisticAnswerer(int bandNumber, int stimulusInBandNummer, double correctnessUpperBound) {
+        FineTuningStimulus stimulus = this.stimulae.get(bandNumber-1).get(stimulusInBandNummer);
+        boolean[] retVal = new boolean[Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE];
+        for (int i = 0; i < Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE; i++) {
+            retVal[i] = (stimulus.getAtomStimulusAt(i).getBandNumber() > 0);
+        }
+        double rnd = ThreadLocalRandom.current().nextDouble();
+        if (rnd > correctnessUpperBound) { // spoil the answer
+            int j = ThreadLocalRandom.current().nextInt(0, Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE);
+            retVal[j] = !retVal[j];
+        }
+        return retVal;
+    }
+
 }

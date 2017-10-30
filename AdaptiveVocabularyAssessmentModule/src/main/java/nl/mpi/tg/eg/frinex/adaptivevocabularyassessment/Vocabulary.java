@@ -46,8 +46,8 @@ public class Vocabulary {
         for (CSVRecord record : records) {
             //String number = record.get("nr");
             int bandNumber = Integer.parseInt(record.get("Band"));
-            AtomStimulus unit = new AtomStimulus(record.get("spelling"), bandNumber);
-            this.words[bandNumber-1][counter[bandNumber-1]]=unit;
+            AtomStimulus stimulus = new AtomStimulus(record.get("spelling"), bandNumber);
+            this.words[bandNumber-1][counter[bandNumber-1]]=stimulus;
             counter[bandNumber-1]++;
         }
     }

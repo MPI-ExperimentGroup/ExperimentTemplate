@@ -55,7 +55,7 @@ public abstract class Series {
         return retVal;
     }
     
-    public void createStimulae(){
+    public void createStimulae() throws Exception{
     }
     
    

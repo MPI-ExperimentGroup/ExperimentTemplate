@@ -21,11 +21,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.FastTrack;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.fintetuning.FineTuning;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.fintetuning.FineTuningStimulus;
-import java.lang.reflect.Method;
 
 /**
  * @since Oct 20, 2017 11:38:57 AM (creation date)
@@ -36,7 +34,7 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         Vocabulary vocab = new Vocabulary();
         try {
@@ -45,16 +43,12 @@ public class Main {
             AtomStimulus[][] words = vocab.getWords();
             ArrayList<AtomStimulus> nonwords = vocab.getNonwords();
 
-            System.out.println("Fine tuning ");
+            System.out.println("Fast track ");
             //FastTrack(String username, AtomStimulus[][] wrds, ArrayList<AtomStimulus> nonwrds, int nonWordsPerBlock, int startBand, int averageNonwordPosition)
             FastTrack fastTrack = new FastTrack(Constants.DEFAULT_USER, words, nonwords, Constants.NONWORDS_PER_BLOCK, Constants.START_BAND, Constants.AVRERAGE_NON_WORD_POSITION);
             fastTrack.createStimulae();
             ArrayList<AtomStimulus> fastTrackSequence = fastTrack.getStimulae();
 
-            /**
-             * Test user *
-             */
-            System.out.println("Test user ");
             int stopBand = 37;
             int lastCorrectBand = simulateFastTrackUpTo(fastTrack, stopBand);
             System.out.println("last correct band " + lastCorrectBand);
@@ -67,8 +61,11 @@ public class Main {
             fineTuning.createStimulae();
             ArrayList<ArrayList<FineTuningStimulus>> fineTuningStimulae = fineTuning.getStimulae();
             //writeCsvFileFineTuningPreset(fineTuningStimulae);
-            simulateFineTuningAllCorrect(fineTuning, lastCorrectBand);
-            simulateFineTuningAllWrong(fineTuning, lastCorrectBand);
+            //simulateFineTuningAllCorrect(fineTuning, lastCorrectBand);
+            //simulateFineTuningAllWrong(fineTuning, lastCorrectBand);
+            simulateFineTuningHalfCorrect(fineTuning, lastCorrectBand);
+            //ArrayList<ArrayList<FineTuningStimulus>> fineTuningStimulae = fineTuning.getStimulae();
+            writeCsvFileFineTuningHistoryShortened(fineTuningStimulae);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -141,7 +138,6 @@ public class Main {
         int quadrupleCounter = 0;
         for (int bandCounter = 0; bandCounter < stimulae.size(); bandCounter++) {
             for (FineTuningStimulus stimulus : stimulae.get(bandCounter)) {
-                quadrupleCounter++;
                 for (int i = 0; i < Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE; i++) {
                     AtomStimulus aStimulus = stimulus.getAtomStimulusAt(i);
                     String row = quadrupleCounter + ";" + aStimulus.getSpelling()
@@ -149,10 +145,49 @@ public class Main {
                             + ";" + aStimulus.getReaction() + ";" + aStimulus.getCorrectness()
                             + ";" + aStimulus.getIsUsed();
                     //System.out.println(row);
+                    //System.out.println(row);
                     csvFileWriter.write(row + "\n");
-
                 }
             }
+        }
+        csvFileWriter.close();
+    }
+
+    private static ArrayList<FineTuningStimulus> orderFineTuningHistory(ArrayList<ArrayList<FineTuningStimulus>> stimulae) {
+        ArrayList<FineTuningStimulus> retVal = new ArrayList<>();
+        for (int bandCounter = 0; bandCounter < stimulae.size(); bandCounter++) {
+            for (FineTuningStimulus stimulus : stimulae.get(bandCounter)) {
+                insertSortFineTuningHistory(retVal, stimulus);
+            }
+        }
+        return retVal;
+    }
+
+    private static void insertSortFineTuningHistory(ArrayList<FineTuningStimulus> stimulae, FineTuningStimulus stimulus) {
+        if (stimulus.getVisitingTime() > 0) {
+            for (int i = 0; i < stimulae.size(); i++) {
+                if (stimulus.getVisitingTime() < stimulae.get(i).getVisitingTime()) {
+                    stimulae.add(i, stimulus);
+                    return;
+                }
+            }
+            stimulae.add(stimulus);
+        }
+    }
+
+    public static void writeCsvFileFineTuningHistoryShortened(ArrayList<ArrayList<FineTuningStimulus>> stimulae) throws IOException {
+        long millis = System.currentTimeMillis();
+        ArrayList<FineTuningStimulus> history = orderFineTuningHistory(stimulae);
+        String fileName = "Fine_tuning_history_shortened_" + "_" + millis + ".csv";
+        System.out.println("writeCsvFile: " + Constants.OUTPUT_DIRECTORY + fileName);
+        final File csvFile = new File(Constants.OUTPUT_DIRECTORY, fileName);
+        final FileWriter csvFileWriter = new FileWriter(csvFile, false);
+        csvFileWriter.write("BandNumber;overallCorrectness;visitingTime\n");
+        for (FineTuningStimulus stimulus : history) {
+            String row = stimulus.getBandNumber()
+                    + ";" + stimulus.getOverallCorrectness()
+                    + ";" + stimulus.getVisitingTime();
+            csvFileWriter.write(row + "\n");
         }
         csvFileWriter.close();
     }
@@ -181,120 +216,53 @@ public class Main {
         return actualStopBand;
     }
 
-    public static int simulateFineTuningAllCorrect(FineTuning fineTuning, int lastBandFromFastTrack) {
-        ArrayList<ArrayList<FineTuningStimulus>> stimulae = fineTuning.getStimulae();
-        boolean enoughStimulae = true;
-        boolean correctness;
-        int bandCounter = lastBandFromFastTrack-1;
-        int cycles2Counter = 0;
-        int[] stimulusCounterInBand = new int[Constants.NUMBER_OF_BANDS];
-        while (enoughStimulae && cycles2Counter < Constants.UPPER_BOUND_FOR_2CYCLES && bandCounter >= 0 && enoughStimulae && bandCounter<Constants.NUMBER_OF_BANDS) {
-            enoughStimulae = stimulusCounterInBand[bandCounter] < stimulae.get(bandCounter).size();
-            if (enoughStimulae) {
-                // simulating fully correct answer
-                boolean[] answers = simulatingCorrectAnswer(fineTuning, bandCounter, stimulusCounterInBand[bandCounter]);
-                //
-                correctness = fineTuning.runStep(bandCounter, stimulusCounterInBand[bandCounter],  answers);
-                stimulusCounterInBand[bandCounter]++;
-                if (correctness) {
-                    bandCounter++;
-                } else {
-                    bandCounter--;
-                }
-            }
-        }
-        int retVal = bandCounter+1;
-         if (bandCounter<0) {
-            retVal++;
-        }
-        if (bandCounter>=Constants.NUMBER_OF_BANDS) {
-            retVal--;
-        }
+    public static int simulateFineTuningAllCorrect(FineTuning fineTuning, int lastBandFromFastTrack) throws Exception{
+        int retVal = simulateFineTuningProbabilistic(fineTuning, lastBandFromFastTrack, 1);
         System.out.println(retVal);
         return retVal;
     }
-    
-    public static int simulateFineTuningAllWrong(FineTuning fineTuning, int lastBandFromFastTrack) {
-        ArrayList<ArrayList<FineTuningStimulus>> stimulae = fineTuning.getStimulae();
-        boolean enoughStimulae = true;
-        boolean correctness;
-        int bandCounter = lastBandFromFastTrack-1;
-        int cycles2Counter = 0;
-        int[] stimulusCounterInBand = new int[Constants.NUMBER_OF_BANDS];
-        while (enoughStimulae && cycles2Counter < Constants.UPPER_BOUND_FOR_2CYCLES && bandCounter >= 0 && enoughStimulae && bandCounter<Constants.NUMBER_OF_BANDS) {
-            enoughStimulae = stimulusCounterInBand[bandCounter] < stimulae.get(bandCounter).size();
-            if (enoughStimulae) {
-                // simulating fully correct answer
-                boolean[] answers = simulatingWrongAnswer(fineTuning, bandCounter, stimulusCounterInBand[bandCounter]);
-                //
-                correctness = fineTuning.runStep(bandCounter, stimulusCounterInBand[bandCounter],  answers);
-                stimulusCounterInBand[bandCounter]++;
-                if (correctness) {
-                    bandCounter++;
-                } else {
-                    bandCounter--;
-                }
-            }
-        }
-        int retVal = bandCounter+1;
-        if (bandCounter<0) {
-            retVal++;
-        }
-        if (bandCounter>=Constants.NUMBER_OF_BANDS) {
-            retVal--;
-        }
+
+    public static int simulateFineTuningAllWrong(FineTuning fineTuning, int lastBandFromFastTrack) throws Exception{
+        int retVal = simulateFineTuningProbabilistic(fineTuning, lastBandFromFastTrack, -1);
         System.out.println(retVal);
         return retVal;
     }
-    
-    /*
-    private static int simulateFineTuning(FineTuning fineTuning, int lastBandFromFastTrack, Method answerer) {
-        ArrayList<ArrayList<FineTuningStimulus>> stimulae = fineTuning.getStimulae();
-        boolean enoughStimulae = true;
-        boolean correctness;
-        int bandCounter = lastBandFromFastTrack-1;
-        int cycles2Counter = 0;
-        int[] stimulusCounterInBand = new int[Constants.NUMBER_OF_BANDS];
-        while (enoughStimulae && cycles2Counter < Constants.UPPER_BOUND_FOR_2CYCLES && bandCounter >= 0 && enoughStimulae && bandCounter<Constants.NUMBER_OF_BANDS) {
-            enoughStimulae = stimulusCounterInBand[bandCounter] < stimulae.get(bandCounter).size();
-            if (enoughStimulae) {
-                // simulating fully correct answer
-                boolean[] answers = answerer(fineTuning, bandCounter, stimulusCounterInBand[bandCounter]);
-                //
-                correctness = fineTuning.runStep(bandCounter, stimulusCounterInBand[bandCounter],  answers);
-                stimulusCounterInBand[bandCounter]++;
-                if (correctness) {
-                    bandCounter++;
-                } else {
-                    bandCounter--;
-                }
-            }
-        }
-        int retVal = bandCounter;
-        if (bandCounter<0) {
-            retVal++;
-        }
-        if (bandCounter>=Constants.NUMBER_OF_BANDS) {
-            retVal--;
-        }
+
+    public static int simulateFineTuningHalfCorrect(FineTuning fineTuning, int lastBandFromFastTrack) throws Exception{
+        int retVal = simulateFineTuningProbabilistic(fineTuning, lastBandFromFastTrack, 0.5);
         System.out.println(retVal);
         return retVal;
     }
-*/
-    
-    private static boolean[] simulatingCorrectAnswer(FineTuning fineTuning, int bandCounter, int stimulusCounter){
-        FineTuningStimulus stimulus = fineTuning.getStimulus(bandCounter, stimulusCounter);
-        boolean[] retVal = new boolean[Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE];
-        for (int i=0; i<retVal.length; i++){
-            retVal[i] = stimulus.getAtomStimulusAt(i).getBandNumber()>0;
+
+    private static int simulateFineTuningProbabilistic(FineTuning fineTuning, int lastBandFromFastTrack, double correctnessUpperBound) throws Exception {
+        ArrayList<ArrayList<FineTuningStimulus>> stimulae = fineTuning.getStimulae();
+        boolean enoughStimulae = true;
+        boolean correctness;
+        int bandNumber = lastBandFromFastTrack;
+        int cycles2Counter = 0;
+        int[] stimulusCounterInBand = new int[Constants.NUMBER_OF_BANDS];
+        while (enoughStimulae && cycles2Counter < Constants.UPPER_BOUND_FOR_2CYCLES && bandNumber > 0 && enoughStimulae && bandNumber <= Constants.NUMBER_OF_BANDS) {
+            int bandIndex=bandNumber-1;
+            enoughStimulae = stimulusCounterInBand[bandNumber-1] < stimulae.get(bandIndex).size();
+            if (enoughStimulae) {
+                boolean[] answers = fineTuning.testProbabilisticAnswerer(bandNumber, stimulusCounterInBand[bandIndex], correctnessUpperBound);
+                correctness = fineTuning.runStep(bandNumber, stimulusCounterInBand[bandIndex], answers);
+                stimulusCounterInBand[bandIndex]++;
+                if (correctness) {
+                    bandNumber++;
+                } else {
+                    bandNumber--;
+                }
+            }
         }
-        return retVal;
-    }
-    
-     private static boolean[] simulatingWrongAnswer(FineTuning fineTuning, int bandCounter, int stimulusCounter){
-        boolean[] retVal = simulatingCorrectAnswer(fineTuning,  bandCounter, stimulusCounter);
-        int rndWrong = ThreadLocalRandom.current().nextInt(0, Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE);
-        retVal[rndWrong]=!retVal[rndWrong];
+        int retVal = bandNumber;
+        if (bandNumber == 0) {
+            retVal++;
+        }
+        if (bandNumber > Constants.NUMBER_OF_BANDS) {
+            retVal--;
+        }
+        System.out.println(retVal);
         return retVal;
     }
 

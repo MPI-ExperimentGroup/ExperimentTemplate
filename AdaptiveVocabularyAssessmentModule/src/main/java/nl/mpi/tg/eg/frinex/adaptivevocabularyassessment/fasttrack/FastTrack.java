@@ -64,10 +64,13 @@ public class FastTrack extends Series {
                 int nonWordCounter = nonwordsCopy.size();
                 int nonwordIndex = ThreadLocalRandom.current().nextInt(0, nonWordCounter);
                 this.stimulae.add(this.nonwords.get(nonwordIndex));
+                this.nonwords.get(nonwordIndex).setIsUsed(true);
                 nonwordsCopy.remove(nonwordIndex);
             } else {
                 int wordNumber = ThreadLocalRandom.current().nextInt(0, Constants.WORDS_PER_BAND);
                 this.stimulae.add(this.words[bandCounter][wordNumber]);
+                
+                this.words[bandCounter][wordNumber].setIsUsed(true);
                 bandCounter++;
             }
         }
@@ -85,7 +88,7 @@ public class FastTrack extends Series {
             eval = false;// tool a word as a nonword
         }
         stimulus.setCorrectness(eval);
-        stimulus.setIsUsed(true);
+        
         return eval;
     }
 
