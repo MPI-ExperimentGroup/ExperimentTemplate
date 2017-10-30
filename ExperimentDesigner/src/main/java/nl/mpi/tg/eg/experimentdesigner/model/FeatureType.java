@@ -42,6 +42,7 @@ public enum FeatureType {
     currentStimulusHasTag(true, false, new FeatureAttribute[]{msToNext}, true, false, Contitionals.hasStimulusTag),
     targetButton(false, true, new FeatureAttribute[]{target, styleName}),
     actionButton(true, true, new FeatureAttribute[]{hotKey, styleName}),
+    stimulusButton(true, true, new FeatureAttribute[]{hotKey, styleName}),
     touchInputZone(true, false, new FeatureAttribute[]{showControls, styleName}),
     sendGroupMessageButton(false, true, new FeatureAttribute[]{hotKey, eventTag, repeatIncorrect, incrementPhase, /* incrementPhaseOnDictionaryincrementStimulus */}),
     sendGroupMessage(false, false, new FeatureAttribute[]{eventTag, incrementPhase /*, incrementStimulus */}),
