@@ -358,6 +358,7 @@ public class ComplexView extends SimpleView {
             @Override
             protected void singleShotFired() {
                 if (nextButton.isEnabled()) {
+                    nextButton.addStyleName("optionButtonActivated");
                     presenterListerner.eventFired(nextButton, this);
                 }
                 resetSingleShot();
