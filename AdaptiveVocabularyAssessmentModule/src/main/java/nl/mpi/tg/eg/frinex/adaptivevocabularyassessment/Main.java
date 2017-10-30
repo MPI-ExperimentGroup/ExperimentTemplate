@@ -241,7 +241,9 @@ public class Main {
         int bandNumber = lastBandFromFastTrack;
         int cycles2Counter = 0;
         int[] stimulusCounterInBand = new int[Constants.NUMBER_OF_BANDS];
-        while (enoughStimulae && cycles2Counter < Constants.UPPER_BOUND_FOR_2CYCLES && bandNumber > 0 && enoughStimulae && bandNumber <= Constants.NUMBER_OF_BANDS) {
+        int[] bandTranscript = new int[Constants.UPPER_BOUND_FOR_2CYCLES*2+1];
+        while (enoughStimulae && cycles2Counter < Constants.UPPER_BOUND_FOR_2CYCLES && bandNumber > 0 
+                && bandNumber <= Constants.NUMBER_OF_BANDS) {
             int bandIndex=bandNumber-1;
             enoughStimulae = stimulusCounterInBand[bandNumber-1] < stimulae.get(bandIndex).size();
             if (enoughStimulae) {
@@ -265,5 +267,5 @@ public class Main {
         System.out.println(retVal);
         return retVal;
     }
-
+    
 }
