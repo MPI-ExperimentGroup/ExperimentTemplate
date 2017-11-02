@@ -17,7 +17,7 @@
                 <targetButton featureText="Gobak long wan olfala rikoding" target="SelectUser"/>
             </multipleUsers>
             <singleUser>
-                <autoNextPresenter/>
+                <autoNextPresenter target="Edit_User"/>
             </singleUser>
         </existingUserCheck>
     </presenter>
@@ -50,7 +50,7 @@
                 <stimulusLabel/>
                 <actionButton featureText="Neks">
                     <endAudioRecorderTag eventTier="1" eventTag=""/>
-                    <nextStimulus eventTag="nextStimulusMetadata" repeatIncorrect="false"/>
+                    <nextStimulus repeatIncorrect="false"/>
                 </actionButton>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -120,7 +120,7 @@
                                                             <actionButton featureText="Finis">
                                                                 <endAudioRecorderTag eventTier="1" eventTag="Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis."/>
                                                                 <clearPage/>
-                                                                <nextStimulus eventTag="nextImage" repeatIncorrect="false"/>
+                                                                <nextStimulus repeatIncorrect="false"/>
                                                             </actionButton>
                                                         </stimulusImage>
                                                     </actionButton>
@@ -148,7 +148,7 @@
         <loadSdCardStimulus eventTag="Mekem ol foto" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusImageCapture featureText="Take Photo" msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80"/>
-                <nextStimulusButton featureText="Next" eventTag="nextImage" hotKey="SPACE" repeatIncorrect="false"/>
+                <nextStimulusButton featureText="Next" hotKey="SPACE" repeatIncorrect="false"/>
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="Finis olgeta"/>

@@ -17,7 +17,7 @@
                 <targetButton featureText="Resume Interview" target="SelectUser"/>
             </multipleUsers>
             <singleUser>
-                <autoNextPresenter/>
+                <autoNextPresenter target="Edit_User"/>
             </singleUser>
         </existingUserCheck>
     </presenter>
@@ -34,7 +34,7 @@
                 <stimulusLabel/>
                 <actionButton featureText="next">
                     <endAudioRecorderTag eventTier="1" eventTag=""/>
-                    <nextStimulus eventTag="nextStimulusMetadata" repeatIncorrect="false"/>
+                    <nextStimulus repeatIncorrect="false"/>
                 </actionButton>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -69,14 +69,15 @@
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
                     <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
                         <clearPage/>
-                        <nextStimulus eventTag="nextImage" repeatIncorrect="false"/>
+                        <nextStimulus repeatIncorrect="false"/>
                     </ratingFooterButton>
                 </stimulusImage>
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="end_of_stimuli"/>
-                <targetButton featureText="ExperimentMenu" target="ExperimentMenu"/>
+                <targetButton featureText="Menu" target="ExperimentMenu"/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>Grammaticality</tag>
             </stimuli>
@@ -93,14 +94,15 @@
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
                     <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
                         <clearPage/>
-                        <nextStimulus eventTag="nextImage" repeatIncorrect="false"/>
+                        <nextStimulus repeatIncorrect="false"/>
                     </ratingFooterButton>
                 </stimulusImage>
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="end of stimuli"/>
-                <targetButton featureText="ExperimentMenu" target="ExperimentMenu"/>
+                <targetButton featureText="Menu" target="ExperimentMenu"/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>AntiNominalHierrarchy</tag>
                 <tag>Filler1</tag>
@@ -171,14 +173,15 @@
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
                     <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
                         <clearPage/>
-                        <nextStimulus eventTag="nextImage" repeatIncorrect="false"/>
+                        <nextStimulus repeatIncorrect="false"/>
                     </ratingFooterButton>
                 </stimulusImage>
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="end_of_stimuli"/>
-                <targetButton featureText="Anti Nominal Hierrarchy" target="Anti Nominal Hierrarchy"/>
+                <targetButton featureText="Anti Nominal Hierrarchy" target="Anti_Nominal_Hierrarchy"/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>AntiNominalHierrarchyFillers</tag>
             </stimuli>
@@ -191,7 +194,7 @@
         <menuItem featureText="bodies" target="bodies"/>
         <menuItem featureText="bowped" target="bowped"/>
         <menuItem featureText="Grammaticality" target="Grammaticality"/>
-        <menuItem featureText="Anti Nominal Hierrarchy F" target="Anti Nominal Hierrarchy F"/>
+        <menuItem featureText="Anti Nominal Hierrarchy F" target="Anti_Nominal_Hierrarchy_F"/>
         <menuItem featureText="Pictures" target="Pictures"/>
         <menuItem featureText="Animals" target="Animals"/>
         <menuItem featureText="Frogs" target="Frogs"/>
@@ -210,14 +213,15 @@
                     <actionButton featureText="next">
                         <endAudioRecorderTag eventTier="1" eventTag="the informant talks/says whatever s/he wants"/>
                         <clearPage/>
-                        <nextStimulus eventTag="nextImage" repeatIncorrect="false"/>
+                        <nextStimulus repeatIncorrect="false"/>
                     </actionButton>
                 </stimulusImage>
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="end_of_stimuli"/>
-                <targetButton featureText="ExperimentMenu" target="ExperimentMenu"/>
+                <targetButton featureText="Menu" target="ExperimentMenu"/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>Pictures</tag>
             </stimuli>
@@ -236,14 +240,15 @@
                     <actionButton featureText="next">
                         <endAudioRecorderTag eventTier="1" eventTag="the informant talks/says whatever s/he wants"/>
                         <clearPage/>
-                        <nextStimulus eventTag="nextImage" repeatIncorrect="false"/>
+                        <nextStimulus repeatIncorrect="false"/>
                     </actionButton>
                 </stimulusImage>
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="end_of_stimuli"/>
-                <targetButton featureText="ExperimentMenu" target="ExperimentMenu"/>
+                <targetButton featureText="Menu" target="ExperimentMenu"/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>Animals</tag>
             </stimuli>
@@ -262,14 +267,15 @@
                     <actionButton featureText="next">
                         <endAudioRecorderTag eventTier="1" eventTag="the informant talks/says whatever s/he wants"/>
                         <clearPage/>
-                        <nextStimulus eventTag="nextImage" repeatIncorrect="false"/>
+                        <nextStimulus repeatIncorrect="false"/>
                     </actionButton>
                 </stimulusImage>
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="end_of_stimuli"/>
-                <targetButton featureText="ExperimentMenu" target="ExperimentMenu"/>
+                <targetButton featureText="Menu" target="ExperimentMenu"/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>Frogs</tag>
             </stimuli>
@@ -286,14 +292,15 @@
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
                     <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
                         <clearPage/>
-                        <nextStimulus eventTag="nextImage" repeatIncorrect="false"/>
+                        <nextStimulus repeatIncorrect="false"/>
                     </ratingFooterButton>
                 </stimulusImage>
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="end_of_stimuli"/>
-                <targetButton featureText="ExperimentMenu" target="ExperimentMenu"/>
+                <targetButton featureText="Menu" target="ExperimentMenu"/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>bowped</tag>
             </stimuli>
@@ -310,14 +317,15 @@
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
                     <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
                         <clearPage/>
-                        <nextStimulus eventTag="nextImage" repeatIncorrect="false"/>
+                        <nextStimulus repeatIncorrect="false"/>
                     </ratingFooterButton>
                 </stimulusImage>
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="end_of_stimuli"/>
-                <targetButton featureText="ExperimentMenu" target="ExperimentMenu"/>
+                <targetButton featureText="Menu" target="ExperimentMenu"/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>bodies</tag>
             </stimuli>
@@ -334,14 +342,15 @@
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
                     <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
                         <clearPage/>
-                        <nextStimulus eventTag="nextImage" repeatIncorrect="false"/>
+                        <nextStimulus repeatIncorrect="false"/>
                     </ratingFooterButton>
                 </stimulusImage>
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="end_of_stimuli"/>
-                <targetButton featureText="ExperimentMenu" target="ExperimentMenu"/>
+                <targetButton featureText="Menu" target="ExperimentMenu"/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>vanuatu</tag>
             </stimuli>
@@ -358,14 +367,15 @@
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
                     <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
                         <clearPage/>
-                        <nextStimulus eventTag="nextImage" repeatIncorrect="false"/>
+                        <nextStimulus repeatIncorrect="false"/>
                     </ratingFooterButton>
                 </stimulusImage>
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="end_of_stimuli"/>
-                <targetButton featureText="ExperimentMenu" target="ExperimentMenu"/>
+                <targetButton featureText="Menu" target="ExperimentMenu"/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>grammar</tag>
             </stimuli>
@@ -382,14 +392,15 @@
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
                     <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
                         <clearPage/>
-                        <nextStimulus eventTag="nextImage" repeatIncorrect="false"/>
+                        <nextStimulus repeatIncorrect="false"/>
                     </ratingFooterButton>
                 </stimulusImage>
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="end_of_stimuli"/>
-                <targetButton featureText="ExperimentMenu" target="ExperimentMenu"/>
+                <targetButton featureText="Menu" target="ExperimentMenu"/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>cutbreak</tag>
             </stimuli>
