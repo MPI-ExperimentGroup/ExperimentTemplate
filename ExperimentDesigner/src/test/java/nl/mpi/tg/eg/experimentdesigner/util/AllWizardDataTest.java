@@ -77,7 +77,7 @@ public class AllWizardDataTest {
     @Test
     public void testAllGetWizardData() throws IOException, JAXBException, URISyntaxException {
         System.out.println("testAllGetWizardData");
-//        final DefaultTranslations defaultTranslations = new DefaultTranslations(translationRepository);
+        final DefaultTranslations defaultTranslations = new DefaultTranslations();
 //        defaultTranslations.insertTranslations();
 //        testGetWizardData(new DefaultExperiments().getAllOptionsExperiment(null, null, null));
         testGetWizardData(new DobesAnnotator().getExperiment());
@@ -86,7 +86,7 @@ public class AllWizardDataTest {
         testGetWizardData(new ShawiFieldKit().getShawiExperiment());
         testGetWizardData(new Sara01().getExperiment());
         testGetWizardData(new FactOrFiction().getExperiment());
-//        testGetWizardData(defaultTranslations.applyTranslations(new SynQuiz2().getExperiment()));
+        testGetWizardData(defaultTranslations.applyTranslations(new SynQuiz2().getExperiment()));
         testGetWizardData(new RdExperiment02().getExperiment());
         testGetWizardData(new NblExperiment01().getExperiment());
         testGetWizardData(new HRExperiment01().getExperiment());
@@ -103,32 +103,5 @@ public class AllWizardDataTest {
         testGetWizardData(new SentencesRatingTask().getExperiment());
         testGetWizardData(new WellspringsSamoanFieldKit().getExperiment());
         testGetWizardData(new GuineaPigProject().getExperiment());
-    }
-
-    /**
-     * Test of getWizardData method, of class HRPretest.
-     */
-    @Test
-    public void testGetWizardData() throws IOException, JAXBException, URISyntaxException {
-        System.out.println("getWizardData");
-        HRPretest02 instance = new HRPretest02();
-        URI testXmlUri = this.getClass().getResource("/frinex-rest-output/hrpretest02.xml").toURI();
-        String expResult = new String(Files.readAllBytes(Paths.get(testXmlUri)), StandardCharsets.UTF_8);
-        Experiment result = instance.getExperiment();
-        result.getPresenterScreen().sort(new Comparator<PresenterScreen>() {
-            // because the experiment has not been stored and retrieved from the DB we need to sort this manually
-            @Override
-            public int compare(PresenterScreen o1, PresenterScreen o2) {
-                return Long.compare(o1.getDisplayOrder(), o2.getDisplayOrder());
-            }
-        });
-        JAXBContext jaxbContext = JAXBContext.newInstance(Experiment.class);
-        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        StringWriter stringWriter = new StringWriter();
-//        jaxbMarshaller.marshal(result, System.out);
-        jaxbMarshaller.marshal(result, new File(new File(testXmlUri).getParentFile(), "hrpretest02-testoutput.xml"));
-        jaxbMarshaller.marshal(result, stringWriter);
-        assertEquals(expResult, stringWriter.toString());
     }
 }
