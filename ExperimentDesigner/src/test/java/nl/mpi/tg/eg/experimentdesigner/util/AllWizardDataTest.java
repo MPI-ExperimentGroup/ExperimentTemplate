@@ -38,9 +38,9 @@ import static org.junit.Assert.*;
  * @since Aug 2, 2016 2:24:59 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class HRPretest02Test {
+public class AllWizardDataTest {
 
-    public HRPretest02Test() {
+    public AllWizardDataTest() {
     }
 
     public void testGetWizardData(Experiment experiment) throws IOException, JAXBException, URISyntaxException {
