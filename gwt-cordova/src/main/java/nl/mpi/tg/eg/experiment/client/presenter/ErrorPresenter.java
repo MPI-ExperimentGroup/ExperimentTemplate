@@ -41,7 +41,7 @@ public class ErrorPresenter extends AbstractPresenter implements Presenter {
 
     @Override
     protected String getSelfTag() {
-       return "ErrorScreen";
+        return "ErrorScreen";
     }
 
     @Override
