@@ -22,6 +22,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMenuScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardStimuliJsonMetadataScreen;
 
 /**
@@ -29,6 +30,48 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardStimuliJsonMetadataScr
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public class NonWacq {
+
+    // JSON file per stimulus filled with the form like input (probably metadatata fields)
+    /*    
+    {
+        DateCreated: blaDate,
+        DateSaved: blaDate,
+        Coder: Cder,
+        ChildId: blaC,
+        Informant: bla2,
+        StimulusId: blaId,
+        ChildSpeaks: true,
+        WhoSpeaks: Grandma,
+        Understandable: true,
+        IsChildAddressed: true,
+        WhichLanguage: blaL,
+        LanguageLat: 180,
+        LanguageLon: 10,
+        TimesPlayed: 2,
+        TimesContextPlayed: 1,
+    }
+     */
+    // the JSON should be structured 
+    // the JSON really should be loaded into the fields when the user navigates stimuli
+    // probablly should be a date saved stored in the JSON and that would be also shown / loaded
+    // the next and previous stimuli should have rewind to start could also have skip 10 or 100 etc (nice to have)
+    // some input fields that go into the json file are stored across sessions to be repopulated but can be changed at any time
+    // label for the current stimulus file name minus suffix
+    // two audio files are playable from each screen, base and context where context has an additional file name part eg  _context 
+    // add a geolocated image with click and pointer fir lat and lon
+//    <metadata> perhaps JSON data tag <jsondata>
+    // file name = stimuli base name + .json
+    // some input fields that go into the json file are stored across sessions to be repopulated but can be changed at any time
+//        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Participant ID"/>
+//        an attribute should indicate if the value of a field is included in the JSON file name
+//        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="connectionString" preventServerDuplicates="false" registrationField="connection"/>
+//    </metadata>
+    // two videos, one of just the utterance, the other with the context
+    // perhaps record the number of times each recording is played
+    // fields to collect data like, speaker, language, location
+    // perhaps a popup up map to click on to show the location (record x, y and convert to lat,log later)(or simply use an svg with a window over the lat, long area and coast lines of the actual lat,lon)
+    // perhaps a popup of household individuals to click on, if it can be done cross culturally
+    // for now just collect the string name of individuals, but in the long term have a separate screen to define relations and use kin type strings to select an individual or add an individual
     private final WizardController wizardController = new WizardController();
     private final String[] stimuliString = {
         //        "UttAnnotApp-Logo.png",
@@ -58,7 +101,7 @@ public class NonWacq {
     private WizardStimuliJsonMetadataScreen getJsonMetadataScreenrScreen(final String screenName) {
         final WizardStimuliJsonMetadataScreen jsonMetadataScreenrScreen = new WizardStimuliJsonMetadataScreen(stimuliString);
         jsonMetadataScreenrScreen.setScreenTitle(screenName);
-        jsonMetadataScreenrScreen.setMenuLabel("Terug");
+        jsonMetadataScreenrScreen.setMenuLabel(screenName);
         jsonMetadataScreenrScreen.setScreenTag(screenName);
         jsonMetadataScreenrScreen.setNextButton("Volgende");
         jsonMetadataScreenrScreen.getWizardScreenData().getMetadataFields();
@@ -87,8 +130,8 @@ public class NonWacq {
         wizardData.setShowMenuBar(true);
         wizardData.setTextFontSize(17);
         wizardData.setObfuscateScreenNames(false);
-        final WizardStimuliJsonMetadataScreen jsonMetadataScreenrScreenSdCard = getJsonMetadataScreenrScreen("MetadataScreenrScreenSdCard");
-        final WizardStimuliJsonMetadataScreen jsonMetadataScreenrScreenSample = getJsonMetadataScreenrScreen("jsonMetadataScreenrScreenSample");
+        final WizardStimuliJsonMetadataScreen jsonMetadataScreenrScreenSdCard = getJsonMetadataScreenrScreen("SdCard Stimuli");
+        final WizardStimuliJsonMetadataScreen jsonMetadataScreenrScreenSample = getJsonMetadataScreenrScreen("Sample Stimuli");
 
 //        wizardEditUserScreen.setSendData(true);
 //        wizardEditUserScreen.setOn_Error_Text("Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.");
@@ -108,15 +151,21 @@ public class NonWacq {
 //        wizardAboutScreen.setBackWizardScreen(wizardEditUserScreen);
 //        wizardEditUserScreen.setNextWizardScreen(wizardAboutScreen);
 //        wizardData.addScreen(wizardAboutScreen);
+        jsonMetadataScreenrScreenSample.setUseSdCard(false);
         wizardData.addScreen(jsonMetadataScreenrScreenSample);
         wizardData.addScreen(jsonMetadataScreenrScreenSdCard);
-        final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen(true);
+        final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("About", true);
         wizardData.addScreen(wizardAboutScreen);
-        jsonMetadataScreenrScreenSdCard.setBackWizardScreen(wizardAboutScreen);
-        jsonMetadataScreenrScreenSample.setBackWizardScreen(wizardAboutScreen);
-        wizardAboutScreen.setBackWizardScreen(jsonMetadataScreenrScreenSample);
-        jsonMetadataScreenrScreenSdCard.setNextWizardScreen(jsonMetadataScreenrScreenSample);
-        jsonMetadataScreenrScreenSample.setNextWizardScreen(jsonMetadataScreenrScreenSdCard);
+//        jsonMetadataScreenrScreenSdCard.setNextWizardScreen(jsonMetadataScreenrScreenSample);
+//        jsonMetadataScreenrScreenSample.setNextWizardScreen(jsonMetadataScreenrScreenSdCard);
+        final WizardMenuScreen menuScreen = new WizardMenuScreen();
+        wizardData.addScreen(menuScreen);
+        menuScreen.addTargetScreen(jsonMetadataScreenrScreenSdCard);
+        menuScreen.addTargetScreen(jsonMetadataScreenrScreenSample);
+        menuScreen.addTargetScreen(wizardAboutScreen);
+        jsonMetadataScreenrScreenSdCard.setBackWizardScreen(menuScreen);
+        jsonMetadataScreenrScreenSample.setBackWizardScreen(menuScreen);
+        wizardAboutScreen.setBackWizardScreen(menuScreen);
         return wizardData;
     }
 
