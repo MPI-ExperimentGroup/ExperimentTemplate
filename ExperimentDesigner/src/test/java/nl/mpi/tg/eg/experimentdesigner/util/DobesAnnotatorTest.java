@@ -31,9 +31,9 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
-import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import org.junit.Ignore;
 
 /**
  * @since May 4, 2016 10:23:29 AM (creation date)
@@ -49,6 +49,7 @@ public class DobesAnnotatorTest {
      * @throws java.net.URISyntaxException
      */
     @Test
+    @Ignore
     public void testDobesAnnotator() throws IOException, JAXBException, URISyntaxException {
         System.out.println("getDobesExperiment");
         DobesAnnotator instance = new DobesAnnotator();

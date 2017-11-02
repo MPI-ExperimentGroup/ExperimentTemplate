@@ -31,9 +31,9 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  * @since Jun 16, 2016 2:43:04 PM (creation date)
@@ -52,6 +52,7 @@ public class HRExperiment01Test {
      * @throws java.net.URISyntaxException
      */
     @Test
+    @Ignore
     public void testGetWizardData() throws IOException, JAXBException, URISyntaxException {
         System.out.println("getWizardData");
         HRExperiment01 instance = new HRExperiment01();
