@@ -35,7 +35,7 @@ public abstract class Series {
         this.userName = username;
     }
 
-    protected ArrayList<AtomStimulus> fetchUnusedUnits(AtomStimulus[] units) {
+    protected ArrayList<AtomStimulus> fetchUnusedAtoms(AtomStimulus[] units) {
         ArrayList<AtomStimulus> retVal = new ArrayList<>();
         for (int i = 0; i < units.length; i++) {
             if (!units[i].getIsUsed()) {

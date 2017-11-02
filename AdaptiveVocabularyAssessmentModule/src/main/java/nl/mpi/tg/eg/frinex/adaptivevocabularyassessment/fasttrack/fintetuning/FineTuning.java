@@ -84,7 +84,7 @@ public class FineTuning extends Series {
     }
 
     private ArrayList<FineTuningStimulus> createStimulaeBand(AtomStimulus[] words, ArrayList<AtomStimulus> nonwords) throws Exception{
-        ArrayList<AtomStimulus> unusedWords = this.fetchUnusedUnits(words);
+        ArrayList<AtomStimulus> unusedWords = this.fetchUnusedAtoms(words);
         ArrayList<AtomStimulus> unusedNonwords = this.fetchUnusedUnits(nonwords);
         int length = unusedWords.size() / Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE;
         if (length > unusedNonwords.size()) {

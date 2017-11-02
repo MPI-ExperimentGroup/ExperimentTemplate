@@ -32,11 +32,11 @@ public class Vocabulary {
     
     private final AtomStimulus[][] words = new AtomStimulus[Constants.NUMBER_OF_BANDS][Constants.WORDS_PER_BAND];
     ArrayList<AtomStimulus> nonwords = new ArrayList<>(); // unknow length, cannot allocte in advance
-    final File inputFileWords = new File(Constants.WORD_FILE_LOCATION);
-    final File inputFileNonWords = new File(Constants.NONWORD_FILE_LOCATION);
+    
 
     
-    public void parseWordInputCSV() throws IOException {
+    public void parseWordInputCSV(String wordFileLocation) throws IOException {
+        File inputFileWords = new File(wordFileLocation);
         final Reader reader = new InputStreamReader(inputFileWords.toURL().openStream(), "UTF-8"); // todo: this might need to change to "ISO-8859-1" depending on the usage
         Iterable<CSVRecord> records = CSVFormat.newFormat(';').withHeader().parse(reader);
         int[] counter = new int[Constants.NUMBER_OF_BANDS];
@@ -52,7 +52,8 @@ public class Vocabulary {
         }
     }
     
-    public void parseNonwordInputCSV() throws IOException {
+    public void parseNonwordInputCSV(String nonwordFileLocation) throws IOException {
+        final File inputFileNonWords = new File(nonwordFileLocation);
         final Reader reader = new InputStreamReader(inputFileNonWords.toURL().openStream(), "UTF-8"); // todo: this might need to change to "ISO-8859-1" depending on the usage
         Iterable<CSVRecord> records = CSVFormat.newFormat(';').withHeader().parse(reader);
         for (CSVRecord record : records) {
@@ -70,9 +71,9 @@ public class Vocabulary {
     }
     
     
-    public void initialiseVocabulary() throws IOException {
-        this.parseWordInputCSV();
-        this.parseNonwordInputCSV();
+    public void initialiseVocabulary(String wordFileLocation, String nonwordFileLocation) throws IOException {
+        this.parseWordInputCSV(wordFileLocation);
+        this.parseNonwordInputCSV(nonwordFileLocation);
     }
     
 }

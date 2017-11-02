@@ -80,7 +80,7 @@ public class AtomStimulus {
         this.correctness = eval;
     }
 
-    public static ArrayList<AtomStimulus> copyAromStimulae(ArrayList<AtomStimulus> source) {
+    public static ArrayList<AtomStimulus> copyAtomStimulae(ArrayList<AtomStimulus> source) {
         ArrayList<AtomStimulus> retVal = new ArrayList<>(source.size());
         for (AtomStimulus stimulus : source) {
             AtomStimulus cloneStimulus = new AtomStimulus(stimulus);

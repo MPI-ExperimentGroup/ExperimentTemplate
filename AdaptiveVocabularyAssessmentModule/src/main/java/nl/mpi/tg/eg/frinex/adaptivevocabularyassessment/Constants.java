@@ -40,11 +40,6 @@ public class Constants {
     public static final int FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE = 4;
     
     public static final int UPPER_BOUND_FOR_2CYCLES = 3;
-    
-    public static final String WORD_FILE_LOCATION = "../../Data/2.selection_words_nonwords_w.csv";
-    
-    public static final String NONWORD_FILE_LOCATION = "../../Data/2.selection_words_nonwords.csv";
-    
-    public static final String OUTPUT_DIRECTORY = "../../Data/";
+  
     
 }

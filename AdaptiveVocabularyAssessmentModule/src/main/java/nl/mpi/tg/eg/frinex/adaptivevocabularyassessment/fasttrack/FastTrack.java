@@ -57,7 +57,7 @@ public class FastTrack extends Series {
         ArrayList<Integer> nonWordInd = posChooser.updateAndGetIndices();
 
         int bandCounter = this.startBand - 1;
-        ArrayList<AtomStimulus> nonwordsCopy = AtomStimulus.copyAromStimulae(this.nonwords);
+        ArrayList<AtomStimulus> nonwordsCopy = AtomStimulus.copyAtomStimulae(this.nonwords);
         int sequenceLength = posChooser.getSequenceLength();
         for (int i = 0; i < sequenceLength; i++) {
             if (nonWordInd.contains(i)) { // i is a position for a non-word
