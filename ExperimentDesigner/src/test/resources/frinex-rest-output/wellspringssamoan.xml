@@ -18,7 +18,7 @@
                 <targetButton featureText="Toe fo'i ma fa'auma le pu'eina (go back and finish recording" target="SelectUser"/>
             </multipleUsers>
             <singleUser>
-                <autoNextPresenter/>
+                <autoNextPresenter target="Edit_User"/>
             </singleUser>
         </existingUserCheck>
     </presenter>
@@ -52,7 +52,7 @@
                 <stimulusLabel/>
                 <actionButton featureText="Fa’asolo (continue)">
                     <endAudioRecorderTag eventTier="1" eventTag=""/>
-                    <nextStimulus eventTag="nextStimulusMetadata" repeatIncorrect="false"/>
+                    <nextStimulus repeatIncorrect="false"/>
                 </actionButton>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -77,7 +77,7 @@
                     <actionButton featureText="’Uma (finished)">
                         <endAudioRecorderTag eventTier="1" eventTag="Askem long man o woman wea i toktok se i talem nem blong wanem i stap lo foto long lanwis blong hem."/>
                         <clearPage/>
-                        <nextStimulus eventTag="nextImage" repeatIncorrect="false"/>
+                        <nextStimulus repeatIncorrect="false"/>
                     </actionButton>
                 </stimulusImage>
             </hasMoreStimulus>
