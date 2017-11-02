@@ -35,7 +35,8 @@ public class ShortMultiparticipant01 {
     private final WizardController wizardController = new WizardController();
 
     protected String getExperimentName() {
-        return "SilentGestureRepair01";
+        return "shortmultiparticipant01";
+//        return "SilentGestureRepair01";
     }
 
     public WizardData getWizardData() {
