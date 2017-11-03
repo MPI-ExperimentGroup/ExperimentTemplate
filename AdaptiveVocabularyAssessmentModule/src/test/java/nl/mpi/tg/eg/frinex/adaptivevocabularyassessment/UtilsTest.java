@@ -101,9 +101,34 @@ public class UtilsTest {
     @Test
     public void testMostOftenVisited() {
         System.out.println("mostOftenVisited");
-        int[] arr1 = {0,0,1,2,2,2,1};
+        int[] arr1 = {1,1,2,2,2,2,1};
         int result1 = Utils.mostOftenVisited(arr1);
-        assertEquals(4, result1);
+        assertEquals(3+1, result1); // output is the band nummer
+        // and bund nemmer is band index+1
+        int[] arr2 = {0,1,2,2,2,1,1};
+        // 2 or 3 ?
+        // 0+1+2 vs 2+1+1
+        // 3
+        // 3 or 4
+        //0+1+2+2 vs 1+1
+        //3
+        int result2 = Utils.mostOftenVisited(arr2);
+        assertEquals(3+1, result2);
+    }
+    
+     /**
+     * Test of detectLoop method, of class Utils.
+     */
+    @Test
+    public void testChooseBand() {
+        System.out.println("mostChooseBAnd");
+        int[] arr1 = {1,1,2,2,2,2,1};
+        int result1 = Utils.chooseBand(2,3,arr1);
+        // 1+1+2 vs 2+2+1
+        assertEquals(3, result1);
+        int result2 = Utils.chooseBand(3,4,arr1);
+        // 1+1+2+2 vs 2+1
+        assertEquals(3, result2);
     }
 
     /**

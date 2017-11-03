@@ -28,40 +28,92 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.fintetuning.Fi
  * @author olhshk
  */
 public class Utils {
-    
-    public static void shiftFIFO(int[] fifo, int newelement){
-       for (int i=0; i<fifo.length-1; i++) {
-           fifo[i]=fifo[i+1];
-       }
-       fifo[fifo.length-1] = newelement; 
-    }
-    
-    public static boolean detectLoop(int[] arr){
-       for (int i=0; i<arr.length-2; i++) {
-           if (arr[i+2]!=arr[i]) {
-               return false;
-           }
-       }
-       return true;
-    }
-    
-    public static boolean timeToCountVisits(int changeCounter) {
-        return (changeCounter>Constants.FINE_TUNING_MAX_BAND_CHANGE);
-    }
-    
-    public static int mostOftenVisited(int[] bandVisitCounter) {
-        int retVal = 0;
-        for (int i=1; i<bandVisitCounter.length; i++){
-            if (bandVisitCounter[retVal]<bandVisitCounter[i]){
-                retVal=i;
-            }
-            
+
+    public static void shiftFIFO(int[] fifo, int newelement) {
+        for (int i = 0; i < fifo.length - 1; i++) {
+            fifo[i] = fifo[i + 1];
         }
-        // band nummer is its index plus 1
-        return retVal+1;
+        fifo[fifo.length - 1] = newelement;
+    }
+
+    public static boolean detectLoop(int[] arr) {
+        for (int i = 0; i < arr.length - 2; i++) {
+            if (arr[i + 2] != arr[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean timeToCountVisits(int changeCounter) {
+        return (changeCounter > Constants.FINE_TUNING_MAX_BAND_CHANGE);
+    }
+
+    public static int mostOftenVisited(int[] bandVisitCounter) {
+        int candidate_min = 0;
+        int candidate_max = 0;
+        for (int i = 1; i < bandVisitCounter.length; i++) {
+            if (bandVisitCounter[candidate_min] < bandVisitCounter[i]) {
+                candidate_min = i;
+                candidate_max = i;
+            }
+            if (bandVisitCounter[candidate_min] == bandVisitCounter[i]) {
+                candidate_max = i;
+            }
+        }
+
+        if (candidate_max > candidate_min) {
+            int visits = bandVisitCounter[candidate_min];
+            ArrayList<Integer> candidates = new ArrayList<>();
+            for (int i = 0; i < bandVisitCounter.length; i++) {
+               if (bandVisitCounter[i]==visits){
+                   candidates.add(i);
+               }
+            }
+            int i=0; 
+            boolean found = false;
+            int current = -2;
+            while (i<candidates.size()-1 && !found){
+                int index1 = candidates.get(i);
+                int index2 = candidates.get(i+1);
+                current = chooseBand(index1, index2, bandVisitCounter);
+                if (current == index1){
+                    found = true;
+                } else {
+                    i++;
+                }
+            }
+            return current+1;
+        } else {
+            return candidate_min + 1;
+            // band nummer is its index plus 1
+        }
+
     }
     
-   
+    public static int chooseBand(int index1, int index2, int[] bandVisitCounter){
+        if (index2 > index1) {
+            // count visist below index2
+            int visitsBelow = 0;
+            for (int i = 0; i < index2; i++) {
+                visitsBelow += bandVisitCounter[i];
+            }
+
+            // count visist below candidate_max
+            int visitsAbove = 0;
+            for (int i = index2 + 1; i < bandVisitCounter.length; i++) {
+                visitsAbove += bandVisitCounter[i];
+            }
+            if (visitsBelow > visitsAbove) {
+                return index1;
+            } else {
+                return index2;
+            }
+        } else {
+            return -1; // erroneous input
+        }
+    }
+
     public static void testPrint(Vocabulary bands) {
         AtomStimulus[][] tmpwords = bands.getWords();
         System.out.println("Words \n");
@@ -153,7 +205,7 @@ public class Utils {
         }
     }
 
-   public static void writeCsvFileFineTuningHistoryShortened(ArrayList<ArrayList<FineTuningStimulus>> stimulae, String outputDir, String fileName) throws IOException {
+    public static void writeCsvFileFineTuningHistoryShortened(ArrayList<ArrayList<FineTuningStimulus>> stimulae, String outputDir, String fileName) throws IOException {
         ArrayList<FineTuningStimulus> history = orderFineTuningHistory(stimulae);
         System.out.println("writeCsvFile: " + outputDir + fileName);
         final File csvFile = new File(outputDir, fileName);
@@ -168,6 +220,4 @@ public class Utils {
         csvFileWriter.close();
     }
 
-    
-    
 }
