@@ -34,29 +34,28 @@ import static org.junit.Assert.*;
  * @author olhshk
  */
 public class MainTest {
-    
-      
+
     private final String WORD_FILE_LOCATION = "../../Data/2.selection_words_nonwords_w.csv";
-    
+
     private final String NONWORD_FILE_LOCATION = "../../Data/2.selection_words_nonwords.csv";
-    
+
     private final String OUTPUT_DIRECTORY = "../../Data/";
-    
+
     public MainTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -92,22 +91,22 @@ public class MainTest {
             fineTuning.createStimulae();
             ArrayList<ArrayList<FineTuningStimulus>> fineTuningStimulae = fineTuning.getStimulae();
             //writeCsvFileFineTuningPreset(fineTuningStimulae);
-            //simulateFineTuningAllCorrect(fineTuning, lastCorrectBand);
-            //simulateFineTuningAllWrong(fineTuning, lastCorrectBand);
-            simulateFineTuningHalfCorrect(fineTuning, lastCorrectBand);
+            //String message=simulateFineTuningAllCorrect(fineTuning, lastCorrectBand);
+            //String message=simulateFineTuningAllWrong(fineTuning, lastCorrectBand);
+            String message = simulateFineTuningHalfCorrect(fineTuning, lastCorrectBand);
             //ArrayList<ArrayList<FineTuningStimulus>> fineTuningStimulae = fineTuning.getStimulae();
-            Utils.writeCsvFileFineTuningHistoryShortened(fineTuningStimulae, OUTPUT_DIRECTORY);
+            long millis = System.currentTimeMillis();
+            String fileName = "Fine_tuning_history_" + message + "_" + millis + ".csv";
+            Utils.writeCsvFileFineTuningHistoryShortened(fineTuningStimulae, OUTPUT_DIRECTORY, fileName);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
 
         System.out.println("Done. ");
-    
-    
-       
+
     }
-    
-       // return the number of the band where the last correct answer is produced
+
+    // return the number of the band where the last correct answer is produced
     private int simulateFastTrackUpTo(FastTrack fastTrack, int stopBand) {
         int i = 0;
         boolean correctness = true;
@@ -131,59 +130,123 @@ public class MainTest {
         return actualStopBand;
     }
 
-    
-    
-    private int simulateFineTuningAllCorrect(FineTuning fineTuning, int lastBandFromFastTrack) throws Exception{
-        int retVal = simulateFineTuningProbabilistic(fineTuning, lastBandFromFastTrack, 1);
+    private String simulateFineTuningAllCorrect(FineTuning fineTuning, int lastBandFromFastTrack) throws Exception {
+        String retVal = simulateFineTuningProbabilistic(fineTuning, lastBandFromFastTrack, 1);
         System.out.println(retVal);
         return retVal;
     }
 
-    private int simulateFineTuningAllWrong(FineTuning fineTuning, int lastBandFromFastTrack) throws Exception{
-        int retVal = simulateFineTuningProbabilistic(fineTuning, lastBandFromFastTrack, -1);
+    private String simulateFineTuningAllWrong(FineTuning fineTuning, int lastBandFromFastTrack) throws Exception {
+        String retVal = simulateFineTuningProbabilistic(fineTuning, lastBandFromFastTrack, -1);
         System.out.println(retVal);
         return retVal;
     }
 
-    private int simulateFineTuningHalfCorrect(FineTuning fineTuning, int lastBandFromFastTrack) throws Exception{
-        int retVal = simulateFineTuningProbabilistic(fineTuning, lastBandFromFastTrack, 0.5);
+    private String simulateFineTuningHalfCorrect(FineTuning fineTuning, int lastBandFromFastTrack) throws Exception {
+        String retVal = simulateFineTuningProbabilistic(fineTuning, lastBandFromFastTrack, 0.5);
         System.out.println(retVal);
         return retVal;
     }
 
-    private int simulateFineTuningProbabilistic(FineTuning fineTuning, int lastBandFromFastTrack, double correctnessUpperBound) throws Exception {
+    private String simulateFineTuningProbabilistic(FineTuning fineTuning, int lastBandFromFastTrack, double correctnessUpperBound) throws Exception {
         ArrayList<ArrayList<FineTuningStimulus>> stimulae = fineTuning.getStimulae();
+        String message = "";
         boolean enoughStimulae = true;
         boolean correctness;
         int bandNumber = lastBandFromFastTrack;
-        int cycles2Counter = 0;
         int[] stimulusCounterInBand = new int[Constants.NUMBER_OF_BANDS];
-        int[] bandTranscript = new int[Constants.UPPER_BOUND_FOR_2CYCLES*2+1];
-        while (enoughStimulae && cycles2Counter < Constants.UPPER_BOUND_FOR_2CYCLES && bandNumber > 0 
-                && bandNumber <= Constants.NUMBER_OF_BANDS) {
-            int bandIndex=bandNumber-1;
-            enoughStimulae = stimulusCounterInBand[bandNumber-1] < stimulae.get(bandIndex).size();
+        int[] bandTranscript = new int[Constants.FINE_TUNING_UPPER_BOUND_FOR_2CYCLES * 2 + 1];
+        int[] bandVisitCounter = new int[Constants.NUMBER_OF_BANDS];
+        boolean cycles2 = false;
+        boolean justVisitedFirstBand = (bandNumber == 1);
+        boolean justVisitedLastBand = (bandNumber == Constants.NUMBER_OF_BANDS);
+        int bandChangeCounter = 0;
+        boolean secondStoppingCriterion = false;
+        boolean champion = false;
+        boolean looser = false;
+        while (enoughStimulae
+                && !cycles2
+                && !secondStoppingCriterion
+                && bandNumber > 0
+                && bandNumber <= Constants.NUMBER_OF_BANDS
+                && !champion
+                && !looser) {
+
+            int bandIndex = bandNumber - 1;
+            bandVisitCounter[bandIndex]++;
+
+            enoughStimulae = stimulusCounterInBand[bandIndex] < stimulae.get(bandIndex).size();
             if (enoughStimulae) {
                 boolean[] answers = fineTuning.testProbabilisticAnswerer(bandNumber, stimulusCounterInBand[bandIndex], correctnessUpperBound);
                 correctness = fineTuning.runStep(bandNumber, stimulusCounterInBand[bandIndex], answers);
                 stimulusCounterInBand[bandIndex]++;
+                Utils.shiftFIFO(bandTranscript, bandNumber);
+                cycles2 = Utils.detectLoop(bandTranscript);
+                secondStoppingCriterion = Utils.timeToCountVisits(bandChangeCounter);
                 if (correctness) {
-                    bandNumber++;
+                    if (bandNumber < Constants.NUMBER_OF_BANDS) { // usual on-success iteration
+                        justVisitedLastBand = false;
+                        bandNumber++;
+                        bandChangeCounter++;
+                    } else {
+                        if (!justVisitedLastBand) {
+                            justVisitedLastBand = true; // double check on the same band 
+                            // on the next iteration if the user is indeed a champion
+                        } else {
+                            // chamipon, already visited the last band, on next iteration stops
+                            champion = true;
+                        }
+                    }
                 } else {
-                    bandNumber--;
+                    if (bandNumber > 1) {// usual on-mistake iteration
+                        bandNumber--;
+                        justVisitedFirstBand = false;
+                        bandChangeCounter++;
+                    } else {
+                        if (!justVisitedFirstBand) {
+                            justVisitedFirstBand = true; // recovery chance: 1 more attempt on the first band
+                        } else {
+                            // second time on the first band
+                            looser = true;
+                        }
+                    }
                 }
             }
         }
-        int retVal = bandNumber;
-        if (bandNumber == 0) {
-            retVal++;
+
+        int score = -1;
+
+        if (enoughStimulae) {
+            if (cycles2) {
+                System.out.println("Detected: three times looping between two neighbouring bands");
+                message += "_oscillation_between_two_bands";
+                score = bandTranscript[0];
+                for (int i = 1; i < bandTranscript.length; i++) {
+                    if (score > bandTranscript[i]) {
+                        score = bandTranscript[i];
+                    }
+                }
+            }
+            if (secondStoppingCriterion) {
+                score = Utils.mostOftenVisited(bandVisitCounter);
+                System.out.println("Detected: second stopping criterion");
+                message += "_second_stopping_criterion_" + bandVisitCounter[score - 1];
+
+            }
+            if (looser) {
+                score = 1;
+                message += "_looser_hit_the_first_band_twise";
+            }
+            if (champion) {
+                score = Constants.NUMBER_OF_BANDS;
+                message += "_champion_hit_the_last_band_twise";
+            }
+
+        } else {
+            message += "_erroneous_situation_out_of_stimulae";// erroenous case, something is not taken into account
         }
-        if (bandNumber > Constants.NUMBER_OF_BANDS) {
-            retVal--;
-        }
-        System.out.println(retVal);
-        return retVal;
+        System.out.println(message + "_" + score);
+        return message + "_" + score;
     }
-     
-    
+
 }

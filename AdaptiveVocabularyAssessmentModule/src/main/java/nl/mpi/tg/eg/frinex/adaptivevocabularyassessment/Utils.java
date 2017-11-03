@@ -45,6 +45,23 @@ public class Utils {
        return true;
     }
     
+    public static boolean timeToCountVisits(int changeCounter) {
+        return (changeCounter>Constants.FINE_TUNING_MAX_BAND_CHANGE);
+    }
+    
+    public static int mostOftenVisited(int[] bandVisitCounter) {
+        int retVal = 0;
+        for (int i=1; i<bandVisitCounter.length; i++){
+            if (bandVisitCounter[retVal]<bandVisitCounter[i]){
+                retVal=i;
+            }
+            
+        }
+        // band nummer is its index plus 1
+        return retVal+1;
+    }
+    
+   
     public static void testPrint(Vocabulary bands) {
         AtomStimulus[][] tmpwords = bands.getWords();
         System.out.println("Words \n");
@@ -136,10 +153,8 @@ public class Utils {
         }
     }
 
-   public static void writeCsvFileFineTuningHistoryShortened(ArrayList<ArrayList<FineTuningStimulus>> stimulae, String outputDir) throws IOException {
-        long millis = System.currentTimeMillis();
+   public static void writeCsvFileFineTuningHistoryShortened(ArrayList<ArrayList<FineTuningStimulus>> stimulae, String outputDir, String fileName) throws IOException {
         ArrayList<FineTuningStimulus> history = orderFineTuningHistory(stimulae);
-        String fileName = "Fine_tuning_history_shortened_" + "_" + millis + ".csv";
         System.out.println("writeCsvFile: " + outputDir + fileName);
         final File csvFile = new File(outputDir, fileName);
         final FileWriter csvFileWriter = new FileWriter(csvFile, false);

@@ -39,7 +39,9 @@ public class Constants {
     
     public static final int FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE = 4;
     
-    public static final int UPPER_BOUND_FOR_2CYCLES = 3;
+    public static final int FINE_TUNING_UPPER_BOUND_FOR_2CYCLES = 3;
+    
+    public static final int FINE_TUNING_MAX_BAND_CHANGE = 33;
   
     
 }

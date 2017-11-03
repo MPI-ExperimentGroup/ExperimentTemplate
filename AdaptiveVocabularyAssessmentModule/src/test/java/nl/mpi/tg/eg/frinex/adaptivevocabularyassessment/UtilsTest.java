@@ -81,6 +81,30 @@ public class UtilsTest {
         boolean result3 = Utils.detectLoop(arr3);
         assertEquals(false, result3);
     }
+    
+      /**
+     * Test of detectLoop method, of class Utils.
+     */
+    @Test
+    public void testTimeToCountVisits() {
+        System.out.println("timeToCountVisits");
+        boolean result1 = Utils.timeToCountVisits(34);
+        assertEquals(true, result1);
+        boolean result2 = Utils.timeToCountVisits(32);
+        assertEquals(false, result2);
+        
+    }
+    
+     /**
+     * Test of detectLoop method, of class Utils.
+     */
+    @Test
+    public void testMostOftenVisited() {
+        System.out.println("mostOftenVisited");
+        int[] arr1 = {0,0,1,2,2,2,1};
+        int result1 = Utils.mostOftenVisited(arr1);
+        assertEquals(4, result1);
+    }
 
     /**
      * Test of testPrint method, of class Utils.
