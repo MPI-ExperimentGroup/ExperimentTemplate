@@ -58,7 +58,7 @@
                     <stimulusHasRatingOptions>
                         <conditionTrue>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-                                <nextStimulus eventTag="NextStimulusPretest Screen" repeatIncorrect="false"/>
+                                <nextStimulus repeatIncorrect="false"/>
                             </stimulusRatingButton>
                         </conditionTrue>
                         <conditionFalse>
@@ -102,7 +102,7 @@
                         <stimulusAudio msToNext="100" showPlaybackIndicator="false">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-                                <nextStimulus eventTag="NextStimulusstimuliC" repeatIncorrect="false"/>
+                                <nextStimulus repeatIncorrect="false"/>
                             </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>
@@ -139,7 +139,7 @@
                 <stimulusAudio msToNext="100" showPlaybackIndicator="false">
                     <addPadding/>
                     <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-                        <nextStimulus eventTag="NextStimulusstimuliN" repeatIncorrect="false"/>
+                        <nextStimulus repeatIncorrect="false"/>
                     </stimulusRatingButton>
                 </stimulusAudio>
             </hasMoreStimulus>
