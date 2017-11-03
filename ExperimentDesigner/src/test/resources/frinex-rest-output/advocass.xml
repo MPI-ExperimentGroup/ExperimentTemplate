@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment appNameDisplay="Adaptive Vocabulary Assessment" appNameInternal="advocass" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="false" textFontSize="17">
     <metadata>
-        <field controlledMessage="Entrez au moins trois lettres." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="code identifiant"/>
+        <field controlledMessage="Input at least 3 letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="identification code"/>
         <field controlledMessage="." controlledRegex=".*" postName="stimuli" preventServerDuplicates="false" registrationField="stimuli"/>
-        <field controlledMessage="Entrez au moins trois lettres." controlledRegex="['\\'S'\\'s]'{'3,'}'" postName="feedBack" preventServerDuplicates="false" registrationField=""/>
+        <field controlledMessage="Input at least 3 letters." controlledRegex="['\\'S'\\'s]'{'3,'}'" postName="feedBack" preventServerDuplicates="false" registrationField=""/>
     </metadata>
     <presenter displayOrder="1" menuLabel="Edit User" next="Accord" type="metadata" self="Edit_User" title="Edit User">
-        <htmlText featureText="Entrez votre code identifiant ici:"/>
+        <htmlText featureText="Input your identification code here:"/>
         <metadataField fieldName="workerId"/>
-        <saveMetadataButton featureText="Suivant" sendData="true" networkErrorMessage="Impossible de contacter le serveur, vérifiez votre connexion Internet s'il vous plaît.">
+        <saveMetadataButton featureText="Next" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
             <onError/>
             <onSuccess>
                 <autoNextPresenter/>
@@ -16,8 +16,8 @@
         </saveMetadataButton>
     </presenter>
     <presenter displayOrder="2" menuLabel="Accord" next="stimuliScreen" type="metadata" self="Accord" title="Accord">
-        <htmlText featureText="Merci beaucoup pour votre intérêt pour cette expérience scientifique en ligne!&lt;br/&gt;&lt;br/&gt;"/>
-        <targetButton featureText="Je suis d'accord" target="stimuliScreen"/>
+        <htmlText featureText="Thank you very much for your interest in this online science experiment!&lt;br/&gt;&lt;br/&gt;"/>
+        <targetButton featureText="Start experiment" target="stimuliScreen"/>
     </presenter>
     <presenter displayOrder="9" menuLabel="stimuliN" next="EditUser" type="stimulus" self="stimuliScreen" title="stimuliScreen">
         <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.service.AdVocAssStimuliProvider"  repeatRandomWindow="0" eventTag="stimuliN" randomise="false" maxStimuli="1000" repeatCount="1">
@@ -38,28 +38,28 @@
             <stimuli/>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="10" menuLabel="EditUser" next="Fini" type="metadata" self="EditUser" title="EditUser">
-        <htmlText featureText="D'après vous, quel est le thème/but de cette expérience?"/>
+    <presenter displayOrder="10" menuLabel="EditUser" next="End" type="metadata" self="EditUser" title="EditUser">
+        <htmlText featureText="What do you think is the theme / purpose of this experiment?"/>
         <metadataField fieldName="feedBack"/>
-        <saveMetadataButton featureText="Suivant" sendData="true" networkErrorMessage="Impossible de contacter le serveur, vérifiez votre connexion Internet s'il vous plaît.">
+        <saveMetadataButton featureText="Next" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
             <onError/>
             <onSuccess>
                 <autoNextPresenter/>
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter displayOrder="11" menuLabel="Fini" type="transmission" self="Fini" title="Fini">
+    <presenter displayOrder="11" menuLabel="End" type="transmission" self="End" title="End">
         <sendAllData>
             <onSuccess>
-                <htmlText featureText="L'expérience est terminée.&lt;br/&gt;&lt;br/&gt;Voici votre code d'expérience. Vos devez le mettre sur Crowdflower afin d'être payé.&lt;br/&gt;&lt;br/&gt;Merci beaucoup pour votre participation!"/>
+                <htmlText featureText="The experiment is over.&lt;br/&gt;&lt;br/&gt;Here is your experiment code. You must put it on Crowdflower in order to get paid.&lt;br/&gt;&lt;br/&gt;Heel erg bedankt voor het deelnemen!"/>
                 <addPadding/>
                 <generateCompletionCode/>
                 <addPadding/>
                 <eraseUsersDataButton featureText="Opnieuw beginnen"/>
             </onSuccess>
             <onError>
-                <plainText featureText="Impossible de contacter le serveur, vérifiez votre connexion Internet s'il vous plaît."/>
-                <targetButton featureText="Réessayer" target="Fini"/>
+                <plainText featureText="Cannot connect to the server, please check your internet connection."/>
+                <targetButton featureText="Retry" target="End"/>
             </onError>
         </sendAllData>
     </presenter>
@@ -69,7 +69,7 @@
         <localStorageData/>
     </presenter>
     <stimuli>        
-        <stimulus audioPath="" code="" identifier="example1" pauseMs="0" ratingLabels="arrête,continue">
+        <stimulus audioPath="" code="" identifier="example1" pauseMs="0" ratingLabels="stopped,continue">
             <tag>set1</tag>
             <tag>set2</tag>
             <tag>set3</tag>
