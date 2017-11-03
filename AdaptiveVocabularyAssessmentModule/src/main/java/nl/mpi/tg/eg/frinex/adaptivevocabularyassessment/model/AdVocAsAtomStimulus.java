@@ -23,14 +23,14 @@ import nl.mpi.tg.eg.frinex.common.model.AbstractStimulus;
  * @since Oct 27, 2017 2:13:03 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class AdVocAssStimulus extends AbstractStimulus {
+public class AdVocAsAtomStimulus extends AbstractStimulus {
 
     public enum Tag implements nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag {
 
         tag_set1, tag_set2, tag_set3
     }
-
-    public AdVocAssStimulus(String uniqueId, Tag[] tags, String label, String ratingLabels, String correctResponses) {
+   
+    public AdVocAsAtomStimulus(String uniqueId, Tag[] tags, String label, String ratingLabels, String correctResponses) {
         super(uniqueId, tags, label, ratingLabels, correctResponses);
     }
 }

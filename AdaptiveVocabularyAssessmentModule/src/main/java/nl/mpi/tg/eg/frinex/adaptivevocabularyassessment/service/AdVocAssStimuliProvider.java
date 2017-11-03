@@ -19,9 +19,9 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.model.AdVocAssStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.model.AdVocAssStimulus.Tag;
-import static nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.model.AdVocAssStimulus.Tag.tag_set1;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.model.AdVocAsAtomStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.model.AdVocAsAtomStimulus.Tag;
+import static nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.model.AdVocAsAtomStimulus.Tag.tag_set1;
 import nl.mpi.tg.eg.frinex.common.AbstractStimuliProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
@@ -37,9 +37,15 @@ public class AdVocAssStimuliProvider extends AbstractStimuliProvider {
     @Override
     public void getAll() {
         stimuliList.clear();
-        stimuliList.add(new AdVocAssStimulus("AdVocAssStimulus_1", new Tag[]{tag_set1}, "label one", "left,right", "left"));
-        stimuliList.add(new AdVocAssStimulus("AdVocAssStimulus_2", new Tag[]{tag_set1}, "label two", "left,right", "right"));
-        stimuliList.add(new AdVocAssStimulus("AdVocAssStimulus_3", new Tag[]{tag_set1}, "label three", "left,right", ""));
+        //
+        //AdVocAssStimulus(String uniqueId, Tag[] tags, String label, String ratingLabels, String correctResponses)
+        // tag referred from the  corresponding presenter part of the xml
+        // label = a word, a content of a stimulus
+        // rating labels == correct/incorrect ?
+        
+        stimuliList.add(new AdVocAsAtomStimulus("AdVocAssStimulus_1", new Tag[]{tag_set1}, "rhabarber", "word,nonword", "word"));
+        stimuliList.add(new AdVocAsAtomStimulus("AdVocAssStimulus_2", new Tag[]{tag_set1}, "rabarba", "word,nonword", "nonword"));
+        stimuliList.add(new AdVocAsAtomStimulus("AdVocAssStimulus_3", new Tag[]{tag_set1}, "lion", "word,nonword", "word"));
     }
 
     @Override
