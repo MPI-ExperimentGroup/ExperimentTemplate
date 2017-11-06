@@ -69,8 +69,8 @@ public abstract class AbstractStimuliProvider implements StimuliProvider {
     }
 
     @Override
-    public void loadStoredStimulusList(String storedStimulusList) {
-        throw new UnsupportedOperationException("loadStoredStimulusList");
+    public void initialiseStimuliState(String storedStimulusList) {
+        throw new UnsupportedOperationException("initialiseStimuliState");
     }
 
     @Override
@@ -81,5 +81,10 @@ public abstract class AbstractStimuliProvider implements StimuliProvider {
     @Override
     public List<Stimulus> getDistractorList(int maxStimuli) {
         throw new UnsupportedOperationException("getDistractorList");
+    }
+
+    @Override
+    public boolean isCorrectResponse(Stimulus stimulus, String stimulusResponse) {
+        return (stimulusResponse != null) ? stimulusResponse.matches(stimulus.getCorrectResponses()) : false;
     }
 }

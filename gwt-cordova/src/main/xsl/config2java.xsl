@@ -481,8 +481,9 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@styleName) then concat(', &quot;', @styleName, '&quot;') else ''" />        
         <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />        
         <xsl:value-of select="if(@autoPlay) then concat(', ', @autoPlay) else ''" />        
-        <xsl:value-of select="if(@repeatIncorrect) then concat(', ', @repeatIncorrect eq 'true') else ''" />
-        <xsl:value-of select="if(@hotKey eq '-1') then ', -1' else if(@hotKey) then concat(', ExtendedKeyCodes.KEY_', @hotKey) else ''" />
+        <xsl:value-of select="if(local-name() eq 'nextStimulusButton') then ', ' else ''" />        
+        <xsl:value-of select="if(@repeatIncorrect) then @repeatIncorrect eq 'true' else ''" />
+        <xsl:value-of select="if(@hotKey eq '-1' or @hotKey eq '') then ', -1' else if(@hotKey) then concat(', ExtendedKeyCodes.KEY_', @hotKey) else ''" />
         <xsl:value-of select="if(@incrementPhase) then concat(', callerPhase, ', @incrementPhase, ',expectedRespondents') else ''" />
         <!--<xsl:value-of select="if(@incrementStimulus) then concat(', ', @incrementStimulus) else ''" />-->
         <xsl:if test="local-name() eq 'audioButton' or local-name() eq 'touchInputZone'">

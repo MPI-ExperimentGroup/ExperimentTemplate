@@ -30,13 +30,30 @@ public interface StimuliProvider {
 
     void getAll();
 
+    /**
+     * getCurrentStimulus returns the currently selected stimulus
+     *
+     * @return Stimulus
+     */
     Stimulus getCurrentStimulus();
 
     String getCurrentStimulusUniqueId();
 
+    /**
+     * getCurrentStimulusIndex returns the current stimulus index, this will be
+     * called at times and the result will be stored between sessions
+     *
+     * @return stimuliIndex
+     */
     int getCurrentStimulusIndex();
 
-    String getLoadedStimulusString();
+    /**
+     * generateStimuliStateSnapshot called at various times during the screens
+     * existence and is used to capture the current state of the StimuliProvider
+     *
+     * @return stimuliStateSnapshot
+     */
+    String generateStimuliStateSnapshot();
 
     List<Stimulus> getDistractorList(int maxStimuli);
 
@@ -56,15 +73,55 @@ public interface StimuliProvider {
 
     void getSubset(final Stimulus.Tag similarity, final int maxWordUse, final List<Stimulus.Tag> wordTags, final String storedStimulusList, final int currentStimuliIndex);
 
+    /**
+     * getTotalStimuli returns the total number of stimuli
+     *
+     * @return stimuliIndex
+     */
     int getTotalStimuli();
 
+    /**
+     * hasNextStimulus tests if the stimulus indicated by the provided increment
+     * exists
+     *
+     * @param increment
+     * @return true if the stimulus exists
+     */
     boolean hasNextStimulus(final int increment);
 
-    void loadStoredStimulusList(String storedStimulusList);
+    /**
+     * initialiseStimuliState called by the system when a screen starts and
+     * allows the state to be restored from a previous snapshot if available
+     *
+     * @param stimuliStateSnapshot
+     */
+    void initialiseStimuliState(String stimuliStateSnapshot);
 
+    /**
+     * nextStimulus selects the stimulus indicated by the provided increment
+     *
+     * @param increment
+     */
     void nextStimulus(final int increment);
 
     void pushCurrentStimulusToEnd();
 
-    void setCurrentStimuliIndex(int currentStimuliIndex);
+    /**
+     * setCurrentStimuliIndex selects the stimulus indicated by the provided
+     * stimuliIndex, this will be called when the screen starts and will be
+     * passed the previous stimuliIndex if previous session data exists
+     *
+     * @param stimuliIndex
+     */
+    void setCurrentStimuliIndex(int stimuliIndex);
+
+    /**
+     * isCorrectResponse tests if the provided stimulusResponse is correct when
+     * checked against the stimulus
+     *
+     * @param stimulus
+     * @param stimulusResponse
+     * @return true if the response is correct
+     */
+    boolean isCorrectResponse(Stimulus stimulus, String stimulusResponse);
 }

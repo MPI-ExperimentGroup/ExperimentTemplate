@@ -218,7 +218,7 @@ public class StimulusProviderTest {
             seenStimuliCounter++;
         }
         final int currentStimulusIndex = instance1.getCurrentStimulusIndex();
-        final String loadedStimulusString = instance1.getLoadedStimulusString();
+        final String loadedStimulusString = instance1.generateStimuliStateSnapshot();
         System.out.println("loadedStimulusString: " + loadedStimulusString);
         System.out.println("currentStimulusIndex: " + currentStimulusIndex);
         StimulusProvider instance2 = new StimulusProvider();
@@ -249,7 +249,7 @@ public class StimulusProviderTest {
         final String pngshape2version1version1zeroversion1roun = "-9.png:shape2:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant3:moveRotated270-19.png:shape3:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated135-17.png:shape3:version1:version1zero:version1round2:version1round3:version1round4:version1round5:version2:quadrant4:moveRotated315-7.png:shape1:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated135-22.png:shape4:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant1:moveRotated60-28.png:shape4:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant3:moveRotated225-5.png:shape1:version1:version1zero:version1round2:version1round3:version1round4:version1round5:version6:quadrant1:moveRotated30-22.png:shape4:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant1:moveRotated60-9.png:shape2:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant3:moveRotated270-10.png:shape2:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated150-10.png:shape2:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated150-19.png:shape3:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated135-28.png:shape4:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant3:moveRotated225-7.png:shape1:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated135-9.png:shape2:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant3:moveRotated270-17.png:shape3:version1:version1zero:version1round2:version1round3:version1round4:version1round5:version2:quadrant4:moveRotated315-5.png:shape1:version1:version1zero:version1round2:version1round3:version1round4:version1round5:version6:quadrant1:moveRotated30-19.png:shape3:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated135-10.png:shape2:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated150-7.png:shape1:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated135-17.png:shape3:version1:version1zero:version1round2:version1round3:version1round4:version1round5:version2:quadrant4:moveRotated315-22.png:shape4:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant1:moveRotated60-28.png:shape4:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant3:moveRotated225-";
         instance.getSubset(Arrays.asList(new nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag[]{Tag.tag_version1zero}), 23, true, 6, 3, 0, pngshape2version1version1zeroversion1roun, -1);
         assertEquals(23, instance.getTotalStimuli());
-        assertEquals(pngshape2version1version1zeroversion1roun, instance.getLoadedStimulusString());
+        assertEquals(pngshape2version1version1zeroversion1roun, instance.generateStimuliStateSnapshot());
     }
 
     /**
@@ -286,7 +286,7 @@ public class StimulusProviderTest {
                 + "-10.png:shape2:version1:version1zero:version1round2:version1round3:version1round4:version1round5:quadrant2:moveRotated150"
                 + "-";
         StimulusProvider instance = new StimulusProvider();
-        instance.loadStoredStimulusList(storedStimulusList);
+        instance.initialiseStimuliState(storedStimulusList);
         assertEquals(23, instance.getTotalStimuli());
         instance.applyAdjacencyCheck(adjacencyThreshold);
         instance.nextStimulus(1);

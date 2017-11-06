@@ -66,7 +66,7 @@ public abstract class SimuliValidationRunner {
 //        for (int sampleCount = 0; sampleCount < cyclesToRun; sampleCount++) {
                 final StimulusProvider stimulusProvider = new StimulusProvider();
                 stimulusProvider.getSubset(allocatedTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, storedStimulusList, 0);
-                final String loadedStimulusString = stimulusProvider.getLoadedStimulusString();
+                final String loadedStimulusString = stimulusProvider.generateStimuliStateSnapshot();
 //            appendOutput(loadedStimulusString);
                 if (calculatedStimuliSet.add(loadedStimulusString)) {
                     appendUniqueStimuliList(loadedStimulusString);

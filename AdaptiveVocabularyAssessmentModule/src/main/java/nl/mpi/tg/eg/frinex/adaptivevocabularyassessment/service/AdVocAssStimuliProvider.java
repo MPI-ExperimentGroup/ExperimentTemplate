@@ -42,7 +42,7 @@ public class AdVocAssStimuliProvider extends AbstractStimuliProvider {
         // tag referred from the  corresponding presenter part of the xml
         // label = a word, a content of a stimulus
         // rating labels == correct/incorrect ?
-        
+
         stimuliList.add(new AdVocAsAtomStimulus("AdVocAssStimulus_1", new Tag[]{tag_set1}, "rhabarber", "word,nonword", "word"));
         stimuliList.add(new AdVocAsAtomStimulus("AdVocAssStimulus_2", new Tag[]{tag_set1}, "rabarba", "word,nonword", "nonword"));
         stimuliList.add(new AdVocAsAtomStimulus("AdVocAssStimulus_3", new Tag[]{tag_set1}, "lion", "word,nonword", "word"));
@@ -85,7 +85,12 @@ public class AdVocAssStimuliProvider extends AbstractStimuliProvider {
     }
 
     @Override
-    public String getLoadedStimulusString() {
+    public String generateStimuliStateSnapshot() {
         return ""; //todo: serialise your current stimuli list here
+    }
+
+    @Override
+    public boolean isCorrectResponse(Stimulus stimulus, String stimulusResponse) {
+        return super.isCorrectResponse(stimulus, stimulusResponse); // @todo: incorporate your response validation here
     }
 }

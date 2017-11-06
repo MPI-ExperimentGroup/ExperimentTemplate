@@ -481,7 +481,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         final int currentStimulusIndex = stimulusProvider.getCurrentStimulusIndex();
         final String subDirectory = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag());
         localStorage.setStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag() + ((subDirectory != null) ? subDirectory : ""), Integer.toString(currentStimulusIndex));
-        localStorage.setStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag() + ((subDirectory != null) ? subDirectory : ""), stimulusProvider.getLoadedStimulusString());
+        localStorage.setStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag() + ((subDirectory != null) ? subDirectory : ""), stimulusProvider.generateStimuliStateSnapshot());
         localStorage.storeUserScore(userResults);
         if (stimulusProvider.hasNextStimulus(increment)) {
             stimulusProvider.nextStimulus(increment);
@@ -539,7 +539,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     userResults.getUserData().getUserId().toString(),
                     getSelfTag(), groupMembers, groupCommunicationChannels,
                     phasesPerStimulus,
-                    stimulusProvider.getLoadedStimulusString(),
+                    stimulusProvider.generateStimuliStateSnapshot(),
                     new TimedStimulusListener() {
                 @Override
                 public void postLoadTimerFired() {
@@ -571,8 +571,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     ((ComplexView) simpleView).addText("synchronising the stimuli");
                     final String stimuliListGroup = groupParticipantService.getStimuliListGroup();
                     // when the stimuli list for this screen does not match that of the group, this listener is fired to: save the group stimuli list and then load the group stimuli list
-                    stimulusProvider.loadStoredStimulusList(stimuliListGroup);
-                    final String loadedStimulusString = stimulusProvider.getLoadedStimulusString();
+                    stimulusProvider.initialiseStimuliState(stimuliListGroup);
+                    final String loadedStimulusString = stimulusProvider.generateStimuliStateSnapshot();
                     localStorage.setStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag(), loadedStimulusString);
                     groupParticipantService.setStimuliListLoaded(loadedStimulusString);
                     groupKickTimer.schedule(1000);
@@ -1038,21 +1038,20 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     public void stimulusRatingButton(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final String ratingLabelLeft, final String ratingLabelRight, final int eventTier) {
-        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, timedStimulusListener, stimulusProvider.getCurrentStimulus().getUniqueId(), stimulusProvider.getCurrentStimulus().getRatingLabels(), stimulusProvider.getCurrentStimulus().getCorrectResponses(), eventTier), ratingLabelLeft, ratingLabelRight, false);
+        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, timedStimulusListener, stimulusProvider.getCurrentStimulus().getUniqueId(), stimulusProvider.getCurrentStimulus().getRatingLabels(), eventTier), ratingLabelLeft, ratingLabelRight, false);
     }
 
     public void ratingButton(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final int eventTier) {
-        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, timedStimulusListener, stimulusProvider.getCurrentStimulus().getUniqueId(), ratingLabels, null, eventTier), ratingLabelLeft, ratingLabelRight, false);
+        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, timedStimulusListener, stimulusProvider.getCurrentStimulus().getUniqueId(), ratingLabels, eventTier), ratingLabelLeft, ratingLabelRight, false);
     }
 
     public void ratingFooterButton(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final int eventTier) {
-        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, timedStimulusListener, stimulusProvider.getCurrentStimulus().getUniqueId(), ratingLabels, null, eventTier), ratingLabelLeft, ratingLabelRight, true);
+        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, timedStimulusListener, stimulusProvider.getCurrentStimulus().getUniqueId(), ratingLabels, eventTier), ratingLabelLeft, ratingLabelRight, true);
     }
 
-    public List<PresenterEventListner> getRatingEventListners(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final String stimulusString, final String ratingLabels, final String correctLabels, final int eventTier) {
+    public List<PresenterEventListner> getRatingEventListners(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final String stimulusString, final String ratingLabels, final int eventTier) {
         ArrayList<PresenterEventListner> eventListners = new ArrayList<>();
         final String[] splitRatingLabels = ratingLabels.split(",");
-        final String[] splitCorrectLabels = (correctLabels != null) ? correctLabels.split(",") : new String[]{};
         for (final String ratingItem : splitRatingLabels) {
             int derivedHotKey = -1;
             if (ratingItem.equals("0")) {
@@ -1095,11 +1094,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
                     endAudioRecorderTag(eventTier, ratingItem);
                     submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), "RatingButton", stimulusString, ratingItem, duration.elapsedMillis());
-                    boolean itemIsCorrect = Arrays.asList(splitCorrectLabels).contains(ratingItem);
-                    if (itemIsCorrect) {
-                        userResults.getUserData().addPotentialScore(true);
-                    } else if (splitCorrectLabels.length > 0) {
-                        userResults.getUserData().addPotentialScore(false);
+                    if (stimulusProvider.getCurrentStimulus().hasCorrectResponses()) {
+                        // if there are correct responses to this stimulus then increment the score
+                        userResults.getUserData().addPotentialScore(stimulusProvider.isCorrectResponse(stimulusProvider.getCurrentStimulus(), ratingItem));
                     }
                     timedStimulusListener.postLoadTimerFired();
                 }
@@ -1344,10 +1341,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
             // @todo: checking the free text boxes is also done in the group stimulus sync code, therefore this should be shared in a single function
             submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), stimulusFreeText.getPostName(), stimulusProvider.getCurrentStimulus().getUniqueId(), stimulusFreeText.getValue(), duration.elapsedMillis());
-            final String correctResponses = stimulusProvider.getCurrentStimulus().getCorrectResponses();
-            if (correctResponses != null && !correctResponses.isEmpty()) {
+            if (stimulusProvider.getCurrentStimulus().hasCorrectResponses()) {
                 // if there are correct responses to this stimulus then increment the score
-                userResults.getUserData().addPotentialScore(stimulusFreeText.getValue().matches(correctResponses));
+                userResults.getUserData().addPotentialScore(stimulusProvider.isCorrectResponse(stimulusProvider.getCurrentStimulus(), stimulusFreeText.getValue()));
             }
         }
         if (repeatIncorrect && userResults.getUserData().isCurrentIncorrect()) {

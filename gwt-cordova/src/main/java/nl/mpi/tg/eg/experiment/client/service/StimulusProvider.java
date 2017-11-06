@@ -17,7 +17,6 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
-import nl.mpi.tg.eg.frinex.common.StimuliProvider;
 import com.google.gwt.regexp.shared.MatchResult;
 import com.google.gwt.regexp.shared.RegExp;
 import java.util.ArrayList;
@@ -30,6 +29,7 @@ import java.util.Random;
 import java.util.Set;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
+import nl.mpi.tg.eg.frinex.common.AbstractStimuliProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag;
 
@@ -37,7 +37,7 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag;
  * @since Jun 23, 2015 11:07:47 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class StimulusProvider implements StimuliProvider {
+public class StimulusProvider extends AbstractStimuliProvider {
 
     private final List<Stimulus> stimulusArray = new ArrayList<>();
     private final List<Stimulus> stimulusSelectionArray = new ArrayList<>();
@@ -153,7 +153,7 @@ public class StimulusProvider implements StimuliProvider {
     }
 
     @Override
-    public void loadStoredStimulusList(String storedStimulusList) {
+    public void initialiseStimuliState(String storedStimulusList) {
         loadStoredStimulusList(storedStimulusList, stimulusArray);
     }
 
@@ -396,6 +396,7 @@ public class StimulusProvider implements StimuliProvider {
         return this.stimulusSubsetArray.get(currentStimuliIndex);
     }
 
+    @Override
     public String getCurrentStimulusUniqueId() {
         try {
             final Stimulus currentStimulus = getCurrentStimulus();
@@ -416,7 +417,7 @@ public class StimulusProvider implements StimuliProvider {
     }
 
     @Override
-    public String getLoadedStimulusString() {
+    public String generateStimuliStateSnapshot() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("-");
         for (Stimulus stimulus : this.stimulusSubsetArray) {
