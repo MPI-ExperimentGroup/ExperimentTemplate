@@ -384,10 +384,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void countdownLabel(final String timesUpLabel, final int postLoadMs, final String msLabelFormat, final TimedStimulusListener timedStimulusListener) {
-        countdownLabel(timesUpLabel, postLoadMs, msLabelFormat, null, timedStimulusListener);
+        countdownLabel(timesUpLabel, null, postLoadMs, msLabelFormat, timedStimulusListener);
     }
 
-    protected void countdownLabel(final String timesUpLabel, final int postLoadMs, final String msLabelFormat, String styleName, final TimedStimulusListener timedStimulusListener) {
+    protected void countdownLabel(final String timesUpLabel, String styleName, final int postLoadMs, final String msLabelFormat, final TimedStimulusListener timedStimulusListener) {
         final Duration labelDuration = new Duration();
         final DateTimeFormat formatter = DateTimeFormat.getFormat(msLabelFormat);
         final HTML html = ((TimedStimulusView) simpleView).addHtmlText(formatter.format(new Date((long) postLoadMs)), styleName);
