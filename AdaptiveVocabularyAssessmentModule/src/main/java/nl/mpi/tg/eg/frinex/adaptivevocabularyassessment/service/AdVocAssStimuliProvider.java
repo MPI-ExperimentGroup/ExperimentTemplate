@@ -35,7 +35,7 @@ public class AdVocAssStimuliProvider extends AbstractStimuliProvider {
     private int stimuliIndex = 0;
 
     @Override
-    public void getAll() {
+    public void initialiseStimuliState(String stimuliStateSnapshot) {
         stimuliList.clear();
         //
         //AdVocAssStimulus(String uniqueId, Tag[] tags, String label, String ratingLabels, String correctResponses)

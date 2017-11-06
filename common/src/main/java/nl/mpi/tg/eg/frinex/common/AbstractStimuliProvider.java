@@ -44,33 +44,33 @@ public abstract class AbstractStimuliProvider implements StimuliProvider {
     }
 
     @Override
-    public void getSubset(List<Stimulus.Tag> selectionTags, boolean randomise, int repeatCount, int repeatRandomWindow, int adjacencyThreshold, String storedStimulusList, int currentStimuliIndex) {
-        getAll();
+    public void getAll() {
+        initialiseStimuliState(null);
     }
 
     @Override
-    public void getSubset(List<Stimulus.Tag> selectionTags, int maxStimulusCount, boolean randomise, int repeatCount, int repeatRandomWindow, int adjacencyThreshold, String storedStimulusList, int currentStimuliIndex) {
-        getAll();
+    public void getSubset(List<Stimulus.Tag> selectionTags, boolean randomise, int repeatCount, int repeatRandomWindow, int adjacencyThreshold, String stimuliStateSnapshot, int currentStimuliIndex) {
+        initialiseStimuliState(stimuliStateSnapshot);
     }
 
     @Override
-    public void getSubset(List<Stimulus.Tag> selectionTags, int maxStimulusCount, boolean randomise, int repeatCount, int repeatRandomWindow, int adjacencyThreshold, String storedStimulusList, List<Stimulus> stimulusListCopy) {
-        getAll();
+    public void getSubset(List<Stimulus.Tag> selectionTags, int maxStimulusCount, boolean randomise, int repeatCount, int repeatRandomWindow, int adjacencyThreshold, String stimuliStateSnapshot, int currentStimuliIndex) {
+        initialiseStimuliState(stimuliStateSnapshot);
     }
 
     @Override
-    public void getSubset(int maxWordUse, String storedStimulusList, int currentStimuliIndex, List<Stimulus.Tag> speakerTags, List<Stimulus.Tag> wordTags, int maxSpeakerWordCount) {
-        getAll();
+    public void getSubset(List<Stimulus.Tag> selectionTags, int maxStimulusCount, boolean randomise, int repeatCount, int repeatRandomWindow, int adjacencyThreshold, String stimuliStateSnapshot, List<Stimulus> stimulusListCopy) {
+        initialiseStimuliState(stimuliStateSnapshot);
     }
 
     @Override
-    public void getSubset(Stimulus.Tag similarity, int maxWordUse, List<Stimulus.Tag> wordTags, String storedStimulusList, int currentStimuliIndex) {
-        getAll();
+    public void getSubset(int maxWordUse, String stimuliStateSnapshot, int currentStimuliIndex, List<Stimulus.Tag> speakerTags, List<Stimulus.Tag> wordTags, int maxSpeakerWordCount) {
+        initialiseStimuliState(stimuliStateSnapshot);
     }
 
     @Override
-    public void initialiseStimuliState(String storedStimulusList) {
-        throw new UnsupportedOperationException("initialiseStimuliState");
+    public void getSubset(Stimulus.Tag similarity, int maxWordUse, List<Stimulus.Tag> wordTags, String stimuliStateSnapshot, int currentStimuliIndex) {
+        initialiseStimuliState(stimuliStateSnapshot);
     }
 
     @Override
