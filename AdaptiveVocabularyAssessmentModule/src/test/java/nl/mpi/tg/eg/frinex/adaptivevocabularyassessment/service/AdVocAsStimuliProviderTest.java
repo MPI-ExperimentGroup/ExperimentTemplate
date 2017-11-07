@@ -29,9 +29,9 @@ import static org.junit.Assert.*;
  *
  * @author olhshk
  */
-public class AdVocAssStimuliProviderTest {
+public class AdVocAsStimuliProviderTest {
     
-    public AdVocAssStimuliProviderTest() {
+    public AdVocAsStimuliProviderTest() {
     }
     
     @BeforeClass
