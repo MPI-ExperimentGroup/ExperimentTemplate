@@ -56,22 +56,28 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
                 final String[] splitScreenText = stimulusLine.split(":", 6);
                 tagSet.addAll(Arrays.asList(splitScreenText[0].split("/")));
                 final String audioPath;
+                final String videoPath;
+                final String mediaPath;
                 final String codeVideoPath;
                 final String responseOptions;
                 final String stimuliCorrectResponses;
+                final boolean isVideo;
                 if (useCodeVideo || useCodeAudio) {
-                    audioPath = splitScreenText[2].replaceAll(BASE_FILE_REGEX, "");
+                    isVideo = splitScreenText[2].matches(IS_VIDEO_REGEX);
+                    mediaPath = splitScreenText[2].replaceAll(BASE_FILE_REGEX, "");
                     codeVideoPath = splitScreenText[1].replaceAll(BASE_FILE_REGEX, "");
                     responseOptions = splitScreenText[3];
                     stimuliCorrectResponses = (splitScreenText.length > 4) ? splitScreenText[4] : null;
                 } else {
-                    audioPath = splitScreenText[1].replaceAll(BASE_FILE_REGEX, "");
+                    isVideo = splitScreenText[1].matches(IS_VIDEO_REGEX);
+                    mediaPath = splitScreenText[1].replaceAll(BASE_FILE_REGEX, "");
                     codeVideoPath = null;
                     responseOptions = (splitScreenText[2].length() > 0) ? splitScreenText[2] : null;
                     stimuliCorrectResponses = (splitScreenText.length > 3) ? splitScreenText[3] : null;
                 }
-
-                stimulus = new Stimulus(stimulusLine, audioPath, null, null, null, codeVideoPath, 0, tagSet, responseOptions, stimuliCorrectResponses);
+                videoPath = (isVideo) ? mediaPath : null;
+                audioPath = (isVideo) ? null : mediaPath;
+                stimulus = new Stimulus(stimulusLine, audioPath, videoPath, null, null, codeVideoPath, 0, tagSet, responseOptions, stimuliCorrectResponses);
                 stimuliList.add(stimulus);
             }
             wizardScreenData.setStimuli(stimuliList);
@@ -79,6 +85,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
 
         this.wizardScreenData.setScreenBoolean(0, useCodeVideo);
         this.wizardScreenData.setScreenBoolean(1, useCodeAudio);
+        this.wizardScreenData.setScreenBoolean(8, false);
         this.wizardScreenData.setStimuliRandomTags(randomStimuliTags);
         this.wizardScreenData.setScreenText(5, null);
         setStimulusMsDelay(stimulusMsDelay);
@@ -95,6 +102,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         setAllowFreeText(false, null, null, null, null, null);
         setRepeatIncorrect(false);
     }
+    private static final String IS_VIDEO_REGEX = ".*\\.[MmPpEeGgOoVvAaVvIi]+$";
 
     final public void setUseCodeVideo(boolean useCodeVideo) {
         this.wizardScreenData.setScreenBoolean(0, useCodeVideo);
@@ -126,6 +134,14 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
 
     private boolean isShowRatingAfterStimuliResponse(WizardScreenData storedWizardScreenData) {
         return storedWizardScreenData.getScreenBoolean(7);
+    }
+
+    final public void setStimuliTypeAny(boolean stimuliTypeAny) {
+        this.wizardScreenData.setScreenBoolean(8, stimuliTypeAny);
+    }
+
+    private boolean isStimuliTypeAny(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenBoolean(8);
     }
 
     final public void setAllowFreeText(boolean allowFreeText, String nextStimulusButton,
@@ -204,7 +220,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenBooleanInfo(int index) {
-        return new String[]{"Use Code Video", "Use Code Audio", "Randomise Stimuli", "Show Progress", "Show Hurry Indicator", "Allow Free Text", "Repeat Incorrect", "ShowRatingAfterStimuliResponse"}[index];
+        return new String[]{"Use Code Video", "Use Code Audio", "Randomise Stimuli", "Show Progress", "Show Hurry Indicator", "Allow Free Text", "Repeat Incorrect", "ShowRatingAfterStimuliResponse", "StimuliTypeAny"}[index];
     }
 
     @Override
@@ -268,7 +284,14 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
 //        if (isAllowFreeText(storedWizardScreenData)) {
 //            hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
 //        }
-        final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusAudio, null);
+        final PresenterFeature imageFeature;
+
+        if (isStimuliTypeAny(storedWizardScreenData)) {
+            imageFeature = new PresenterFeature(FeatureType.stimulusImage, null); // todo: frenchconversation requires video and audio thus this must use stimulusImage (although it should be renamed) and have the required parameters   
+        } else {
+            imageFeature = new PresenterFeature(FeatureType.stimulusAudio, null);
+        }
+
 //        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
 //        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
         imageFeature.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(isShowHurryIndicator(storedWizardScreenData)));
@@ -295,6 +318,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
             pauseFeature.getPresenterFeatureList().add(imageFeature);
         } else if (useCodeAudio) {
             final PresenterFeature codeAudioFeature = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
+            codeAudioFeature.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(false));
             codeAudioFeature.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>");
             codeAudioFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getStimulusMsDelay(storedWizardScreenData)));
             hasMoreStimulusFeature.getPresenterFeatureList().add(codeAudioFeature);
@@ -344,7 +368,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         stimulusRatingButton.addFeatureAttributes(FeatureAttribute.eventTier, "1");
         final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
         nextStimulusFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, (isRepeatIncorrect(storedWizardScreenData)) ? "true" : "false");
-        nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "NextStimulus" + storedWizardScreenData.getScreenTitle());
+//        nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "NextStimulus" + storedWizardScreenData.getScreenTitle());
         if (isShowRatingAfterStimuliResponse(storedWizardScreenData)) {
             final PresenterFeature ratingFooterButtonFeature = new PresenterFeature(FeatureType.ratingButton, null);
             ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabels, storedWizardScreenData.getStimulusResponseOptions());
@@ -362,6 +386,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
             final PresenterFeature stimulusHasRatingOptions = new PresenterFeature(FeatureType.stimulusHasRatingOptions, null);
             final PresenterFeature stimulusFreeText = new PresenterFeature(FeatureType.stimulusFreeText, getFreeTextValidationChallenge(storedWizardScreenData));
             stimulusFreeText.addFeatureAttributes(FeatureAttribute.validationRegex, getFreeTextValidationRegex(storedWizardScreenData));
+            stimulusFreeText.addFeatureAttributes(FeatureAttribute.inputErrorMessage, " ");
             if (getFreeTextAllowedCharCodes(storedWizardScreenData) != null) {
                 stimulusFreeText.addFeatureAttributes(FeatureAttribute.allowedCharCodes, getFreeTextAllowedCharCodes(storedWizardScreenData));
             }
