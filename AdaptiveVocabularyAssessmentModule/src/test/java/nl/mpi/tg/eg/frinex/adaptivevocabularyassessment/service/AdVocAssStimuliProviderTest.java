@@ -51,24 +51,24 @@ public class AdVocAssStimuliProviderTest {
     }
 
     /**
-     * Test of getAll method, of class AdVocAssStimuliProvider.
+     * Test of getAll method, of class AdVocAsStimuliProvider.
      */
     @Test
     public void testGetAll() {
         System.out.println("getAll");
-        AdVocAssStimuliProvider instance = new AdVocAssStimuliProvider();
+        AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
         instance.getAll();
         // TODO review the generated test code and remove the default call to fail.
        //fail("The test case is a prototype.");
     }
 
     /**
-     * Test of getCurrentStimulus method, of class AdVocAssStimuliProvider.
+     * Test of getCurrentStimulus method, of class AdVocAsStimuliProvider.
      */
     @Test
     public void testGetCurrentStimulus() {
         System.out.println("getCurrentStimulus");
-        //AdVocAssStimuliProvider instance = new AdVocAssStimuliProvider();
+        //AdVocAssStimuliProvider instance = new AdVocAsStimuliProvider();
         Stimulus expResult = null;
         //Stimulus result = instance.getCurrentStimulus();
         //assertEquals(expResult, result);
@@ -77,12 +77,12 @@ public class AdVocAssStimuliProviderTest {
     }
 
     /**
-     * Test of getCurrentStimulusIndex method, of class AdVocAssStimuliProvider.
+     * Test of getCurrentStimulusIndex method, of class AdVocAsStimuliProvider.
      */
     @Test
     public void testGetCurrentStimulusIndex() {
         System.out.println("getCurrentStimulusIndex");
-        AdVocAssStimuliProvider instance = new AdVocAssStimuliProvider();
+        AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
         int expResult = 0;
         int result = instance.getCurrentStimulusIndex();
         //assertEquals(expResult, result);
@@ -91,12 +91,12 @@ public class AdVocAssStimuliProviderTest {
     }
 
     /**
-     * Test of getTotalStimuli method, of class AdVocAssStimuliProvider.
+     * Test of getTotalStimuli method, of class AdVocAsStimuliProvider.
      */
     @Test
     public void testGetTotalStimuli() {
         System.out.println("getTotalStimuli");
-        AdVocAssStimuliProvider instance = new AdVocAssStimuliProvider();
+        AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
         int expResult = 0;
         int result = instance.getTotalStimuli();
         //assertEquals(expResult, result);
@@ -105,13 +105,13 @@ public class AdVocAssStimuliProviderTest {
     }
 
     /**
-     * Test of hasNextStimulus method, of class AdVocAssStimuliProvider.
+     * Test of hasNextStimulus method, of class AdVocAsStimuliProvider.
      */
     @Test
     public void testHasNextStimulus() {
         System.out.println("hasNextStimulus");
         int increment = 0;
-        AdVocAssStimuliProvider instance = new AdVocAssStimuliProvider();
+        AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
         boolean expResult = false;
         //boolean result = instance.hasNextStimulus(increment);
         //assertEquals(expResult, result);
@@ -120,38 +120,38 @@ public class AdVocAssStimuliProviderTest {
     }
 
     /**
-     * Test of nextStimulus method, of class AdVocAssStimuliProvider.
+     * Test of nextStimulus method, of class AdVocAsStimuliProvider.
      */
     @Test
     public void testNextStimulus() {
         System.out.println("nextStimulus");
         int increment = 0;
-        AdVocAssStimuliProvider instance = new AdVocAssStimuliProvider();
+        AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
         //instance.nextStimulus(increment);
         // TODO review the generated test code and remove the default call to fail.
        //fail("The test case is a prototype.");
     }
 
     /**
-     * Test of setCurrentStimuliIndex method, of class AdVocAssStimuliProvider.
+     * Test of setCurrentStimuliIndex method, of class AdVocAsStimuliProvider.
      */
     @Test
     public void testSetCurrentStimuliIndex() {
         System.out.println("setCurrentStimuliIndex");
         int currentStimuliIndex = 0;
-        AdVocAssStimuliProvider instance = new AdVocAssStimuliProvider();
+        AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
         //instance.setCurrentStimuliIndex(currentStimuliIndex);
         // TODO review the generated test code and remove the default call to fail.
        //fail("The test case is a prototype.");
     }
 
     /**
-     * Test of getCurrentStimulusUniqueId method, of class AdVocAssStimuliProvider.
+     * Test of getCurrentStimulusUniqueId method, of class AdVocAsStimuliProvider.
      */
     @Test
     public void testGetCurrentStimulusUniqueId() {
         System.out.println("getCurrentStimulusUniqueId");
-        AdVocAssStimuliProvider instance = new AdVocAssStimuliProvider();
+        AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
         String expResult = "";
         //String result = instance.getCurrentStimulusUniqueId();
         //assertEquals(expResult, result);
@@ -160,12 +160,12 @@ public class AdVocAssStimuliProviderTest {
     }
 
     /**
-     * Test of getLoadedStimulusString method, of class AdVocAssStimuliProvider.
+     * Test of getLoadedStimulusString method, of class AdVocAsStimuliProvider.
      */
     @Test
     public void testGetLoadedStimulusString() {
         System.out.println("getLoadedStimulusString");
-        AdVocAssStimuliProvider instance = new AdVocAssStimuliProvider();
+        AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
         String expResult = "";
         //String result = instance.getLoadedStimulusString();
         //assertEquals(expResult, result);
