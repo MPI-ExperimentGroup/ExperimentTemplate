@@ -81,8 +81,8 @@ public class VocabularyTest {
     public void testGetWords() {
         System.out.println("getWords");
         Vocabulary instance = new Vocabulary();
-        AtomStimulus[][] expResult = null;
-        AtomStimulus[][] result = instance.getWords();
+        AtomBookkeepingStimulus[][] expResult = null;
+        AtomBookkeepingStimulus[][] result = instance.getWords();
         //assertArrayEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
        //fail("The test case is a prototype.");
@@ -95,8 +95,8 @@ public class VocabularyTest {
     public void testGetNonwords() {
         System.out.println("getNonwords");
         Vocabulary instance = new Vocabulary();
-        ArrayList<AtomStimulus> expResult = null;
-        ArrayList<AtomStimulus> result = instance.getNonwords();
+        ArrayList<AtomBookkeepingStimulus> expResult = null;
+        ArrayList<AtomBookkeepingStimulus> result = instance.getNonwords();
         //assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
        //fail("The test case is a prototype.");

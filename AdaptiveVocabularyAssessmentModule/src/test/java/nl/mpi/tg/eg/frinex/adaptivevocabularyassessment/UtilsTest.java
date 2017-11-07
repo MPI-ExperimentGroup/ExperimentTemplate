@@ -18,7 +18,7 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
 import java.util.ArrayList;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.fintetuning.FineTuningStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.fintetuning.FineTuningBookkeepingStimulus;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -149,7 +149,7 @@ public class UtilsTest {
     @Test
     public void testWriteCsvFileFastTrack() throws Exception {
         System.out.println("writeCsvFileFastTrack");
-        ArrayList<AtomStimulus> stimulae = null;
+        ArrayList<AtomBookkeepingStimulus> stimulae = null;
         int stopBand = 0;
         //Utils.writeCsvFileFastTrack(stimulae, stopBand);
         // TODO review the generated test code and remove the default call to fail.
@@ -162,7 +162,7 @@ public class UtilsTest {
     @Test
     public void testWriteCsvFileFineTuningPreset() throws Exception {
         System.out.println("writeCsvFileFineTuningPreset");
-        ArrayList<ArrayList<FineTuningStimulus>> stimulae = null;
+        ArrayList<ArrayList<FineTuningBookkeepingStimulus>> stimulae = null;
         //Utils.writeCsvFileFineTuningPreset(stimulae);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
@@ -175,7 +175,7 @@ public class UtilsTest {
     public void testOrderFineTuningHistory() {
         System.out.println("orderFineTuningHistory");
         //ArrayList<ArrayList<FineTuningStimulus>> stimulae = null;
-        ArrayList<FineTuningStimulus> expResult = null;
+        ArrayList<FineTuningBookkeepingStimulus> expResult = null;
         //ArrayList<FineTuningStimulus> result = Utils.orderFineTuningHistory(stimulae);
         //assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
@@ -188,8 +188,8 @@ public class UtilsTest {
     @Test
     public void testInsertSortFineTuningHistory() {
         System.out.println("insertSortFineTuningHistory");
-        ArrayList<FineTuningStimulus> stimulae = null;
-        FineTuningStimulus stimulus = null;
+        ArrayList<FineTuningBookkeepingStimulus> stimulae = null;
+        FineTuningBookkeepingStimulus stimulus = null;
         //Utils.insertSortFineTuningHistory(stimulae, stimulus);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
@@ -201,7 +201,7 @@ public class UtilsTest {
     @Test
     public void testWriteCsvFileFineTuningHistoryShortened() throws Exception {
         System.out.println("writeCsvFileFineTuningHistoryShortened");
-        ArrayList<ArrayList<FineTuningStimulus>> stimulae = null;
+        ArrayList<ArrayList<FineTuningBookkeepingStimulus>> stimulae = null;
         //Utils.writeCsvFileFineTuningHistoryShortened(stimulae);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");

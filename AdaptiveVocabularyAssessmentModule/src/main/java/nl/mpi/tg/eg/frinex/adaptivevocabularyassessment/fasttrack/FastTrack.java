@@ -19,7 +19,7 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack;
 
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.AtomStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.AtomBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.Constants;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.Series;
 
@@ -32,9 +32,9 @@ public class FastTrack extends Series {
     private final int startBand;
     private final int averageNonwordPosition;
     private final int nonWordsPerBlock;
-    private ArrayList<AtomStimulus> stimulae;
+    private ArrayList<AtomBookkeepingStimulus> bookkeepingStimuli;
 
-    public FastTrack(String username, AtomStimulus[][] wrds, ArrayList<AtomStimulus> nonwrds, int nonWordsPerBlock, int startBand, int averageNonwordPosition) {
+    public FastTrack(String username, AtomBookkeepingStimulus[][] wrds, ArrayList<AtomBookkeepingStimulus> nonwrds, int nonWordsPerBlock, int startBand, int averageNonwordPosition) {
         super(username, wrds, nonwrds);
         this.startBand = startBand;
         this.averageNonwordPosition = averageNonwordPosition;
@@ -49,36 +49,39 @@ public class FastTrack extends Series {
     @Override
     public void createStimulae() {
 
-        this.stimulae = new ArrayList<>();
+        this.bookkeepingStimuli = new ArrayList<>();
 
         //we need to choose the positions for nonwords (from 0 to sequenceLength-1) 
         //int upperBound, int nonwordsPerBlock, int n
         RandomNonWordIndeces posChooser = new RandomNonWordIndeces(this.startBand, this.nonWordsPerBlock, this.averageNonwordPosition, this.nonwords.size());
         ArrayList<Integer> nonWordInd = posChooser.updateAndGetIndices();
 
-        int bandCounter = this.startBand - 1;
-        ArrayList<AtomStimulus> nonwordsCopy = AtomStimulus.copyAtomStimulae(this.nonwords);
+        int bandIndex = this.startBand - 1;
+        int nonwordIndex = -1; 
+        ArrayList<AtomBookkeepingStimulus> nonwordsCopy = AtomBookkeepingStimulus.copyAtomStimulae(this.nonwords);
         int sequenceLength = posChooser.getSequenceLength();
         for (int i = 0; i < sequenceLength; i++) {
             if (nonWordInd.contains(i)) { // i is a position for a non-word
-                int nonWordCounter = nonwordsCopy.size();
-                int nonwordIndex = ThreadLocalRandom.current().nextInt(0, nonWordCounter);
-                this.stimulae.add(this.nonwords.get(nonwordIndex));
+                //int nonWordCounter = nonwordsCopy.size();
+                //int nonwordIndex = ThreadLocalRandom.current().nextInt(0, nonWordCounter);
+                nonwordIndex++; // temporary we pick up the next nonword as the stimulus for the fast tracks
+                this.bookkeepingStimuli.add(this.nonwords.get(nonwordIndex));
                 this.nonwords.get(nonwordIndex).setIsUsed(true);
                 nonwordsCopy.remove(nonwordIndex);
             } else {
-                int wordNumber = ThreadLocalRandom.current().nextInt(0, Constants.WORDS_PER_BAND);
-                this.stimulae.add(this.words[bandCounter][wordNumber]);
+                //int wordNumber = ThreadLocalRandom.current().nextInt(0, Constants.WORDS_PER_BAND);
+                int wordNumber = 0; // temporary we pick up the first word in the band as the stimulus for the fast tracks
+                this.bookkeepingStimuli.add(this.words[bandIndex][wordNumber]);
                 
-                this.words[bandCounter][wordNumber].setIsUsed(true);
-                bandCounter++;
+                this.words[bandIndex][wordNumber].setIsUsed(true);
+                bandIndex++;
             }
         }
 
     }
 
     public boolean runStep(int stimulusNumber, boolean answer) {
-        AtomStimulus stimulus = this.stimulae.get(stimulusNumber);
+        AtomBookkeepingStimulus stimulus = this.bookkeepingStimuli.get(stimulusNumber);
         stimulus.setReaction(answer);
         boolean eval = true;
         if (stimulus.getBandNumber() < 0 && answer) {
@@ -92,8 +95,8 @@ public class FastTrack extends Series {
         return eval;
     }
 
-    public ArrayList<AtomStimulus> getStimulae() {
-        return this.stimulae;
+    public ArrayList<AtomBookkeepingStimulus> getStimulae() {
+        return this.bookkeepingStimuli;
     }
 
     private void debugTestNonwordFrequences(RandomNonWordIndeces posChooser) {

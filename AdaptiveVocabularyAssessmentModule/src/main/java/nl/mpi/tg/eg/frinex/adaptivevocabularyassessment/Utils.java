@@ -21,7 +21,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.fintetuning.FineTuningStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.fintetuning.FineTuningBookkeepingStimulus;
 
 /**
  *
@@ -115,25 +115,25 @@ public class Utils {
     }
 
     public static void testPrint(Vocabulary bands) {
-        AtomStimulus[][] tmpwords = bands.getWords();
+        AtomBookkeepingStimulus[][] tmpwords = bands.getWords();
         System.out.println("Words \n");
 
         for (int i = 0; i < tmpwords.length; i++) {
             System.out.println(i + 1);
-            for (AtomStimulus unit : tmpwords[i]) {
+            for (AtomBookkeepingStimulus unit : tmpwords[i]) {
                 System.out.println(unit.getSpelling());
                 System.out.println(unit.getIsUsed());
             }
         }
-        ArrayList<AtomStimulus> tmpnonwords = bands.getNonwords();
+        ArrayList<AtomBookkeepingStimulus> tmpnonwords = bands.getNonwords();
         System.out.println("Non words \n");
-        for (AtomStimulus nonword : tmpnonwords) {
+        for (AtomBookkeepingStimulus nonword : tmpnonwords) {
             System.out.println(nonword.getSpelling());
             System.out.println(nonword.getIsUsed());
         }
     }
 
-    public static void writeCsvFileFastTrack(ArrayList<AtomStimulus> stimulae, int stopBand, String outputDir) throws IOException {
+    public static void writeCsvFileFastTrack(ArrayList<AtomBookkeepingStimulus> stimulae, int stopBand, String outputDir) throws IOException {
         long millis = System.currentTimeMillis();
         int blockSize = Constants.NONWORDS_PER_BLOCK * Constants.AVRERAGE_NON_WORD_POSITION;
         String fileName = "Fast_track_test_stopped_at_band" + stopBand + "_" + blockSize + "_" + millis + ".csv";
@@ -143,7 +143,7 @@ public class Utils {
         csvFileWriter.write("Spelling;BandNumber;UserAnswer;Correctness;isUsed;NonwordsFrequencyAtThisPoint\n");
         int counter = 0;
         int counterNonwords = 0;
-        for (AtomStimulus stimulus : stimulae) {
+        for (AtomBookkeepingStimulus stimulus : stimulae) {
             counter++;
             if (stimulus.getBandNumber() == -1) {
                 counterNonwords++;
@@ -158,7 +158,7 @@ public class Utils {
         csvFileWriter.close();
     }
 
-    public static void writeCsvFileFineTuningPreset(ArrayList<ArrayList<FineTuningStimulus>> stimulae, String outputDir) throws IOException {
+    public static void writeCsvFileFineTuningPreset(ArrayList<ArrayList<FineTuningBookkeepingStimulus>> stimulae, String outputDir) throws IOException {
         long millis = System.currentTimeMillis();
         String fileName = "Fine_tuning_preset_" + "_" + millis + ".csv";
         System.out.println("writeCsvFile: " + outputDir + fileName);
@@ -167,9 +167,9 @@ public class Utils {
         csvFileWriter.write("QuadrupleNummer;Spelling;BandNumber;UserAnswer;Correctness;isUsed\n");
         int quadrupleCounter = 0;
         for (int bandCounter = 0; bandCounter < stimulae.size(); bandCounter++) {
-            for (FineTuningStimulus stimulus : stimulae.get(bandCounter)) {
+            for (FineTuningBookkeepingStimulus stimulus : stimulae.get(bandCounter)) {
                 for (int i = 0; i < Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE; i++) {
-                    AtomStimulus aStimulus = stimulus.getAtomStimulusAt(i);
+                    AtomBookkeepingStimulus aStimulus = stimulus.getAtomStimulusAt(i);
                     String row = quadrupleCounter + ";" + aStimulus.getSpelling()
                             + ";" + aStimulus.getBandNumber()
                             + ";" + aStimulus.getReaction() + ";" + aStimulus.getCorrectness()
@@ -183,17 +183,17 @@ public class Utils {
         csvFileWriter.close();
     }
 
-    public static ArrayList<FineTuningStimulus> orderFineTuningHistory(ArrayList<ArrayList<FineTuningStimulus>> stimulae) {
-        ArrayList<FineTuningStimulus> retVal = new ArrayList<>();
+    public static ArrayList<FineTuningBookkeepingStimulus> orderFineTuningHistory(ArrayList<ArrayList<FineTuningBookkeepingStimulus>> stimulae) {
+        ArrayList<FineTuningBookkeepingStimulus> retVal = new ArrayList<>();
         for (int bandCounter = 0; bandCounter < stimulae.size(); bandCounter++) {
-            for (FineTuningStimulus stimulus : stimulae.get(bandCounter)) {
+            for (FineTuningBookkeepingStimulus stimulus : stimulae.get(bandCounter)) {
                 insertSortFineTuningHistory(retVal, stimulus);
             }
         }
         return retVal;
     }
 
-    public static void insertSortFineTuningHistory(ArrayList<FineTuningStimulus> stimulae, FineTuningStimulus stimulus) {
+    public static void insertSortFineTuningHistory(ArrayList<FineTuningBookkeepingStimulus> stimulae, FineTuningBookkeepingStimulus stimulus) {
         if (stimulus.getVisitingTime() > 0) {
             for (int i = 0; i < stimulae.size(); i++) {
                 if (stimulus.getVisitingTime() < stimulae.get(i).getVisitingTime()) {
@@ -205,13 +205,13 @@ public class Utils {
         }
     }
 
-    public static void writeCsvFileFineTuningHistoryShortened(ArrayList<ArrayList<FineTuningStimulus>> stimulae, String outputDir, String fileName) throws IOException {
-        ArrayList<FineTuningStimulus> history = orderFineTuningHistory(stimulae);
+    public static void writeCsvFileFineTuningHistoryShortened(ArrayList<ArrayList<FineTuningBookkeepingStimulus>> stimulae, String outputDir, String fileName) throws IOException {
+        ArrayList<FineTuningBookkeepingStimulus> history = orderFineTuningHistory(stimulae);
         System.out.println("writeCsvFile: " + outputDir + fileName);
         final File csvFile = new File(outputDir, fileName);
         final FileWriter csvFileWriter = new FileWriter(csvFile, false);
         csvFileWriter.write("BandNumber;overallCorrectness;visitingTime\n");
-        for (FineTuningStimulus stimulus : history) {
+        for (FineTuningBookkeepingStimulus stimulus : history) {
             String row = stimulus.getBandNumber()
                     + ";" + stimulus.getOverallCorrectness()
                     + ";" + stimulus.getVisitingTime();

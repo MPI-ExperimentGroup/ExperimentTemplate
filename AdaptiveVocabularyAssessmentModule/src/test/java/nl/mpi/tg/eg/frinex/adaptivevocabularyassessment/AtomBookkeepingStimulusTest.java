@@ -29,9 +29,9 @@ import static org.junit.Assert.*;
  *
  * @author olhshk
  */
-public class AtomStimulusTest {
+public class AtomBookkeepingStimulusTest {
 
-    public AtomStimulusTest() {
+    public AtomBookkeepingStimulusTest() {
     }
 
     @BeforeClass
@@ -51,114 +51,114 @@ public class AtomStimulusTest {
     }
 
     /**
-     * Test of getSpelling method, of class AtomStimulus.
+     * Test of getSpelling method, of class AtomBookkeepingStimulus.
      */
     @Test
     public void testGetSpelling() {
         System.out.println("getSpelling");
-        AtomStimulus instance = new AtomStimulus("test-spelling", 37);
+        AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus("test-spelling", 37);
         String expResult = "test-spelling";
         String result = instance.getSpelling();
         assertEquals(expResult, result);
     }
 
     /**
-     * Test of getIsUsed method, of class AtomStimulus.
+     * Test of getIsUsed method, of class AtomBookkeepingStimulus.
      */
     @Test
     public void testGetIsUsed() {
         System.out.println("getIsUsed");
-        AtomStimulus instance = new AtomStimulus("test-spelling", 37);
+        AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus("test-spelling", 37);
         boolean result = instance.getIsUsed();
         assertEquals(false, result);
     }
 
     /**
-     * Test of getBandNumber method, of class AtomStimulus.
+     * Test of getBandNumber method, of class AtomBookkeepingStimulus.
      */
     @Test
     public void testGetBandNumber() {
         System.out.println("getBandNumber");
-        AtomStimulus instance = new AtomStimulus("test-spelling", 37);
+        AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus("test-spelling", 37);
         int result = instance.getBandNumber();
         assertEquals(37, result);
     }
 
     /**
-     * Test of setIsUsed method, of class AtomStimulus.
+     * Test of setIsUsed method, of class AtomBookkeepingStimulus.
      */
     @Test
     public void testSetIsUsed() {
         System.out.println("setIsUsed");
-        AtomStimulus instance = new AtomStimulus("test-spelling", 37);
+        AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus("test-spelling", 37);
         instance.setIsUsed(true);
         boolean result = instance.getIsUsed();
         assertEquals(true, result);
     }
 
     /**
-     * Test of getReaction method, of class AtomStimulus.
+     * Test of getReaction method, of class AtomBookkeepingStimulus.
      */
     @Test
     public void testGetReaction() {
         System.out.println("getReaction");
-        AtomStimulus instance = new AtomStimulus("test-spelling", 37);
+        AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus("test-spelling", 37);
         Boolean result = instance.getReaction();
         assertEquals(null, result);
     }
 
     /**
-     * Test of getCorrectness method, of class AtomStimulus.
+     * Test of getCorrectness method, of class AtomBookkeepingStimulus.
      */
     @Test
     public void testGetCorrectness() {
         System.out.println("getCorrectness");
-        AtomStimulus instance = new AtomStimulus("test-spelling", 37);
+        AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus("test-spelling", 37);
         Boolean result = instance.getCorrectness();
         assertEquals(null, result);
     }
 
     /**
-     * Test of setReaction method, of class AtomStimulus.
+     * Test of setReaction method, of class AtomBookkeepingStimulus.
      */
     @Test
     public void testSetReaction() {
         System.out.println("setReaction");
-        AtomStimulus instance = new AtomStimulus("test-spelling", 37);
+        AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus("test-spelling", 37);
         instance.setReaction(false);
         Boolean result = instance.getReaction();
         assertEquals(false, result);
     }
 
     /**
-     * Test of setCorrectness method, of class AtomStimulus.
+     * Test of setCorrectness method, of class AtomBookkeepingStimulus.
      */
     @Test
     public void testSetCorrectness() {
         System.out.println("setCorrectness");
-        AtomStimulus instance = new AtomStimulus("test-spelling", 37);
+        AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus("test-spelling", 37);
         instance.setCorrectness(true);
         Boolean result = instance.getCorrectness();
         assertEquals(true, result);
     }
 
     /**
-     * Test of copyAtomStimulae method, of class AtomStimulus.
+     * Test of copyAtomStimulae method, of class AtomBookkeepingStimulus.
      */
     @Test
     public void testCopyAtomStimulae() {
         System.out.println("copyAtomStimulae");
-        ArrayList<AtomStimulus> source = new ArrayList<>();
-        AtomStimulus st1 = new AtomStimulus("test-spelling-1", 37);
-        AtomStimulus st2 = new AtomStimulus("test-spelling-2", 39);
+        ArrayList<AtomBookkeepingStimulus> source = new ArrayList<>();
+        AtomBookkeepingStimulus st1 = new AtomBookkeepingStimulus("test-spelling-1", 37);
+        AtomBookkeepingStimulus st2 = new AtomBookkeepingStimulus("test-spelling-2", 39);
         source.add(st1);
         source.add(st2);
-        ArrayList<AtomStimulus> expResult = new ArrayList<>();
-        AtomStimulus st3 = new AtomStimulus(st1);
-        AtomStimulus st4 = new AtomStimulus(st2);
+        ArrayList<AtomBookkeepingStimulus> expResult = new ArrayList<>();
+        AtomBookkeepingStimulus st3 = new AtomBookkeepingStimulus(st1);
+        AtomBookkeepingStimulus st4 = new AtomBookkeepingStimulus(st2);
         expResult.add(st3);
         expResult.add(st4);
-        ArrayList<AtomStimulus> result = AtomStimulus.copyAtomStimulae(source);
+        ArrayList<AtomBookkeepingStimulus> result = AtomBookkeepingStimulus.copyAtomStimulae(source);
         for (int i = 0; i < 2; i++) {
             assertNotEquals(expResult.get(i), result.get(i));
             assertEquals(expResult.get(i).getSpelling(), result.get(i).getSpelling());

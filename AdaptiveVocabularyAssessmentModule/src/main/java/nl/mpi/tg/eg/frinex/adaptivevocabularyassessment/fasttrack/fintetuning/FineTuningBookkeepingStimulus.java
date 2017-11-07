@@ -17,21 +17,21 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.fintetuning;
 
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.AtomStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.AtomBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.Constants;
 
 /**
  *
  * @author olhshk
  */
-public class FineTuningStimulus {
+public class FineTuningBookkeepingStimulus {
 
-    private final AtomStimulus[] atomStimulae;
+    private final AtomBookkeepingStimulus[] atomStimulae;
     private Boolean overallCorrectness;
     private long visitingTime;
     private int bandNumber;
 
-    public FineTuningStimulus(AtomStimulus[] arrStimulae) throws Exception {
+    public FineTuningBookkeepingStimulus(AtomBookkeepingStimulus[] arrStimulae) throws Exception {
         this.atomStimulae = arrStimulae;// will be changed "in place", setting isUsed, userReaction, and evaluation
         this.visitingTime = -1;
         this.overallCorrectness = null;
@@ -61,7 +61,7 @@ public class FineTuningStimulus {
         }
     }
 
-    public AtomStimulus getAtomStimulusAt(int i) {
+    public AtomBookkeepingStimulus getAtomStimulusAt(int i) {
         return (this.atomStimulae)[i];
     }
     

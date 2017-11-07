@@ -30,8 +30,8 @@ import org.apache.commons.csv.CSVRecord;
  */
 public class Vocabulary {
     
-    private final AtomStimulus[][] words = new AtomStimulus[Constants.NUMBER_OF_BANDS][Constants.WORDS_PER_BAND];
-    ArrayList<AtomStimulus> nonwords = new ArrayList<>(); // unknow length, cannot allocte in advance
+    private final AtomBookkeepingStimulus[][] words = new AtomBookkeepingStimulus[Constants.NUMBER_OF_BANDS][Constants.WORDS_PER_BAND];
+    ArrayList<AtomBookkeepingStimulus> nonwords = new ArrayList<>(); // unknow length, cannot allocte in advance
     
 
     
@@ -46,7 +46,7 @@ public class Vocabulary {
         for (CSVRecord record : records) {
             //String number = record.get("nr");
             int bandNumber = Integer.parseInt(record.get("Band"));
-            AtomStimulus stimulus = new AtomStimulus(record.get("spelling"), bandNumber);
+            AtomBookkeepingStimulus stimulus = new AtomBookkeepingStimulus(record.get("spelling"), bandNumber);
             this.words[bandNumber-1][counter[bandNumber-1]]=stimulus;
             counter[bandNumber-1]++;
         }
@@ -57,16 +57,16 @@ public class Vocabulary {
         final Reader reader = new InputStreamReader(inputFileNonWords.toURL().openStream(), "UTF-8"); // todo: this might need to change to "ISO-8859-1" depending on the usage
         Iterable<CSVRecord> records = CSVFormat.newFormat(';').withHeader().parse(reader);
         for (CSVRecord record : records) {
-            AtomStimulus unit = new AtomStimulus(record.get("spelling"), -1);
+            AtomBookkeepingStimulus unit = new AtomBookkeepingStimulus(record.get("spelling"), -1);
             nonwords.add(unit);
         }
     }
     
-    public AtomStimulus[][] getWords(){
+    public AtomBookkeepingStimulus[][] getWords(){
         return words;
     }
     
-    public ArrayList<AtomStimulus> getNonwords(){
+    public ArrayList<AtomBookkeepingStimulus> getNonwords(){
         return nonwords;
     }
     

@@ -102,7 +102,7 @@ public class FineTuningTest {
     public void testGetStimulae() {
         System.out.println("getStimulae");
         //FineTuning instance = null;
-        ArrayList<ArrayList<FineTuningStimulus>> expResult = null;
+        ArrayList<ArrayList<FineTuningBookkeepingStimulus>> expResult = null;
         //ArrayList<ArrayList<FineTuningStimulus>> result = instance.getStimulae();
         //assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.

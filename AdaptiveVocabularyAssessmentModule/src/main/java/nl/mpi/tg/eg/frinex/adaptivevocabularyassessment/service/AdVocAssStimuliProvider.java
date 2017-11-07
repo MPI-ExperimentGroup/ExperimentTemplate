@@ -20,8 +20,6 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.service;
 import java.util.ArrayList;
 import java.util.List;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.model.AdVocAsAtomStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.model.AdVocAsAtomStimulus.Tag;
-import static nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.model.AdVocAsAtomStimulus.Tag.tag_set1;
 import nl.mpi.tg.eg.frinex.common.AbstractStimuliProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
@@ -43,9 +41,9 @@ public class AdVocAssStimuliProvider extends AbstractStimuliProvider {
         // label = a word, a content of a stimulus
         // rating labels == correct/incorrect ?
 
-        stimuliList.add(new AdVocAsAtomStimulus("AdVocAssStimulus_1", new Tag[]{tag_set1}, "rhabarber", "word,nonword", "word"));
-        stimuliList.add(new AdVocAsAtomStimulus("AdVocAssStimulus_2", new Tag[]{tag_set1}, "rabarba", "word,nonword", "nonword"));
-        stimuliList.add(new AdVocAsAtomStimulus("AdVocAssStimulus_3", new Tag[]{tag_set1}, "lion", "word,nonword", "word"));
+        stimuliList.add(new AdVocAsAtomStimulus("AdVocAssStimulus_1", "rhabarber", "word", 1));
+        stimuliList.add(new AdVocAsAtomStimulus("AdVocAssStimulus_2", "rabarba", "nonword", -1));
+        stimuliList.add(new AdVocAsAtomStimulus("AdVocAssStimulus_3", "lion", "word", 2));
     }
 
     @Override

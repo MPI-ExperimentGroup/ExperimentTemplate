@@ -18,38 +18,39 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
 import java.util.ArrayList;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.model.AdVocAsAtomStimulus;
 
 /**
  *
  * @author olhshk
  */
-public class AtomStimulus {
+public class AtomBookkeepingStimulus {
 
-    private final String spelling;
-    private final int bandNumber;
+    private final AdVocAsAtomStimulus stimulus;
     private boolean isUsed;
 
     private Boolean userReaction;
     private Boolean correctness;
 
-    public AtomStimulus(String spelling, int bandNumber) {
-        this.spelling = spelling;
-        this.bandNumber = bandNumber;
+    public AtomBookkeepingStimulus(String spelling, int bandNumber) {
+        long millis = System.currentTimeMillis();
+        String correct = bandNumber < -1 ? "word" :" nonword";
+        this.stimulus = new AdVocAsAtomStimulus(spelling+"_"+millis, spelling, correct, bandNumber);
         this.isUsed = false;
         this.userReaction = null;
         this.correctness = null;
     }
+   
 
-    public AtomStimulus(AtomStimulus source) {
-        this.spelling = source.spelling;
-        this.bandNumber = source.bandNumber;
+    public AtomBookkeepingStimulus(AtomBookkeepingStimulus source) {
+        this.stimulus = source.stimulus;
         this.isUsed = source.isUsed;
         this.userReaction = source.userReaction;
         this.correctness = source.correctness;
     }
 
     public String getSpelling() {
-        return this.spelling;
+        return this.stimulus.getLabel();
     }
 
     public boolean getIsUsed() {
@@ -57,7 +58,7 @@ public class AtomStimulus {
     }
 
     public int getBandNumber() {
-        return this.bandNumber;
+        return this.stimulus.getBandNumber();
     }
 
     public void setIsUsed(boolean value) {
@@ -80,10 +81,10 @@ public class AtomStimulus {
         this.correctness = eval;
     }
 
-    public static ArrayList<AtomStimulus> copyAtomStimulae(ArrayList<AtomStimulus> source) {
-        ArrayList<AtomStimulus> retVal = new ArrayList<>(source.size());
-        for (AtomStimulus stimulus : source) {
-            AtomStimulus cloneStimulus = new AtomStimulus(stimulus);
+    public static ArrayList<AtomBookkeepingStimulus> copyAtomStimulae(ArrayList<AtomBookkeepingStimulus> source) {
+        ArrayList<AtomBookkeepingStimulus> retVal = new ArrayList<>(source.size());
+        for (AtomBookkeepingStimulus stimulus : source) {
+            AtomBookkeepingStimulus cloneStimulus = new AtomBookkeepingStimulus(stimulus);
             retVal.add(cloneStimulus);
         }
     return retVal;

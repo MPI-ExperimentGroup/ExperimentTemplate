@@ -17,7 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.fintetuning;
 
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.AtomStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.AtomBookkeepingStimulus;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -58,7 +58,7 @@ public class FineTuningStimulusTest {
         System.out.println("getAtomStimulusAt");
         int i = 0;
         //FineTuningStimulus instance = null;
-        AtomStimulus expResult = null;
+        AtomBookkeepingStimulus expResult = null;
         //AtomStimulus result = instance.getAtomStimulusAt(i);
         //assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.

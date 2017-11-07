@@ -25,18 +25,18 @@ import java.util.ArrayList;
  */
 public abstract class Series {
     
-    protected AtomStimulus[][] words;
-    protected ArrayList<AtomStimulus> nonwords;
+    protected AtomBookkeepingStimulus[][] words;
+    protected ArrayList<AtomBookkeepingStimulus> nonwords;
     protected String userName;
   
-    public Series(String username, AtomStimulus[][] wrds, ArrayList<AtomStimulus> nonwrds){
+    public Series(String username, AtomBookkeepingStimulus[][] wrds, ArrayList<AtomBookkeepingStimulus> nonwrds){
         this.words = wrds;
         this.nonwords=nonwrds;
         this.userName = username;
     }
 
-    protected ArrayList<AtomStimulus> fetchUnusedAtoms(AtomStimulus[] units) {
-        ArrayList<AtomStimulus> retVal = new ArrayList<>();
+    protected ArrayList<AtomBookkeepingStimulus> fetchUnusedAtoms(AtomBookkeepingStimulus[] units) {
+        ArrayList<AtomBookkeepingStimulus> retVal = new ArrayList<>();
         for (int i = 0; i < units.length; i++) {
             if (!units[i].getIsUsed()) {
                 retVal.add(units[i]);
@@ -45,8 +45,8 @@ public abstract class Series {
         return retVal;
     }
 
-    protected ArrayList<AtomStimulus> fetchUnusedUnits(ArrayList<AtomStimulus> units) {
-        ArrayList<AtomStimulus> retVal = new ArrayList<>();
+    protected ArrayList<AtomBookkeepingStimulus> fetchUnusedAtomBookkeepingStimulus(ArrayList<AtomBookkeepingStimulus> units) {
+        ArrayList<AtomBookkeepingStimulus> retVal = new ArrayList<>();
         for (int i = 0; i < units.size(); i++) {
             if (!units.get(i).getIsUsed()) {
                 retVal.add(units.get(i));

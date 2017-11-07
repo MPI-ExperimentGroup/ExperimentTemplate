@@ -18,7 +18,7 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack;
 
 import java.util.ArrayList;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.AtomStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.AtomBookkeepingStimulus;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -100,7 +100,7 @@ public class FastTrackTest {
     public void testGetStimulae() {
         System.out.println("getStimulae");
         FastTrack instance = null;
-        ArrayList<AtomStimulus> expResult = null;
+        ArrayList<AtomBookkeepingStimulus> expResult = null;
         //ArrayList<AtomStimulus> result = instance.getStimulae();
         //assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.

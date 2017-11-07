@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.FastTrack;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.fintetuning.FineTuning;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.fintetuning.FineTuningStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.fintetuning.FineTuningBookkeepingStimulus;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -70,14 +70,14 @@ public class MainTest {
         try {
 
             vocab.initialiseVocabulary(WORD_FILE_LOCATION, NONWORD_FILE_LOCATION);
-            AtomStimulus[][] words = vocab.getWords();
-            ArrayList<AtomStimulus> nonwords = vocab.getNonwords();
+            AtomBookkeepingStimulus[][] words = vocab.getWords();
+            ArrayList<AtomBookkeepingStimulus> nonwords = vocab.getNonwords();
 
             System.out.println("Fast track ");
-            //FastTrack(String username, AtomStimulus[][] wrds, ArrayList<AtomStimulus> nonwrds, int nonWordsPerBlock, int startBand, int averageNonwordPosition)
+            //FastTrack(String username, AtomBookkeepingStimulus[][] wrds, ArrayList<AtomStimulus> nonwrds, int nonWordsPerBlock, int startBand, int averageNonwordPosition)
             FastTrack fastTrack = new FastTrack(Constants.DEFAULT_USER, words, nonwords, Constants.NONWORDS_PER_BLOCK, Constants.START_BAND, Constants.AVRERAGE_NON_WORD_POSITION);
             fastTrack.createStimulae();
-            ArrayList<AtomStimulus> fastTrackSequence = fastTrack.getStimulae();
+            ArrayList<AtomBookkeepingStimulus> fastTrackSequence = fastTrack.getStimulae();
 
             int stopBand = 37;
             int lastCorrectBand = simulateFastTrackUpTo(fastTrack, stopBand);
@@ -86,10 +86,10 @@ public class MainTest {
 
             /**/
             System.out.println("Fine tuning ");
-            // FineTuning(String username, AtomStimulus[][] wrds, ArrayList<AtomStimulus> nonwrds)
+            // FineTuning(String username, AtomBookkeepingStimulus[][] wrds, ArrayList<AtomStimulus> nonwrds)
             FineTuning fineTuning = new FineTuning(Constants.DEFAULT_USER, words, nonwords);
             fineTuning.createStimulae();
-            ArrayList<ArrayList<FineTuningStimulus>> fineTuningStimulae = fineTuning.getStimulae();
+            ArrayList<ArrayList<FineTuningBookkeepingStimulus>> fineTuningStimulae = fineTuning.getStimulae();
             //writeCsvFileFineTuningPreset(fineTuningStimulae);
             //String message=simulateFineTuningAllCorrect(fineTuning, lastCorrectBand);
             //String message=simulateFineTuningAllWrong(fineTuning, lastCorrectBand);
@@ -110,7 +110,7 @@ public class MainTest {
     private int simulateFastTrackUpTo(FastTrack fastTrack, int stopBand) {
         int i = 0;
         boolean correctness = true;
-        ArrayList<AtomStimulus> stimulae = fastTrack.getStimulae();
+        ArrayList<AtomBookkeepingStimulus> stimulae = fastTrack.getStimulae();
         int actualStopBand = 0;
         while (i < stimulae.size() && correctness) {
             int currentBand = stimulae.get(i).getBandNumber();
@@ -143,13 +143,13 @@ public class MainTest {
     }
 
     private String simulateFineTuningHalfCorrect(FineTuning fineTuning, int lastBandFromFastTrack) throws Exception {
-        String retVal = simulateFineTuningProbabilistic(fineTuning, lastBandFromFastTrack, 0.5);
+        String retVal = simulateFineTuningProbabilistic(fineTuning, lastBandFromFastTrack, 0.6);
         System.out.println(retVal);
         return retVal;
     }
 
     private String simulateFineTuningProbabilistic(FineTuning fineTuning, int lastBandFromFastTrack, double correctnessUpperBound) throws Exception {
-        ArrayList<ArrayList<FineTuningStimulus>> stimulae = fineTuning.getStimulae();
+        ArrayList<ArrayList<FineTuningBookkeepingStimulus>> stimulae = fineTuning.getStimulae();
         String message = "";
         boolean enoughStimulae = true;
         boolean correctness;

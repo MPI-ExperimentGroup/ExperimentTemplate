@@ -56,9 +56,9 @@ public class SeriesTest {
     @Test
     public void testFetchUnusedUnits_AtomStimulusArr() {
         System.out.println("fetchUnusedUnits");
-        AtomStimulus[] units = null;
+        AtomBookkeepingStimulus[] units = null;
         Series instance = null;
-        ArrayList<AtomStimulus> expResult = null;
+        ArrayList<AtomBookkeepingStimulus> expResult = null;
         //ArrayList<AtomStimulus> result = instance.fetchUnusedAtoms(units);
         //assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
@@ -71,10 +71,10 @@ public class SeriesTest {
     @Test
     public void testFetchUnusedUnits_ArrayList() {
         System.out.println("fetchUnusedUnits");
-        ArrayList<AtomStimulus> units = null;
+        ArrayList<AtomBookkeepingStimulus> units = null;
         Series instance = null;
-        ArrayList<AtomStimulus> expResult = null;
-        //ArrayList<AtomStimulus> result = instance.fetchUnusedUnits(units);
+        ArrayList<AtomBookkeepingStimulus> expResult = null;
+        //ArrayList<AtomStimulus> result = instance.fetchUnusedAtomBookkeepingStimulus(units);
         //assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");

@@ -25,12 +25,14 @@ import nl.mpi.tg.eg.frinex.common.model.AbstractStimulus;
  */
 public class AdVocAsAtomStimulus extends AbstractStimulus {
 
-    public enum Tag implements nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag {
-
-        tag_set1, tag_set2, tag_set3
-    }
+    private final int bandNumber; 
    
-    public AdVocAsAtomStimulus(String uniqueId, Tag[] tags, String label, String ratingLabels, String correctResponses) {
-        super(uniqueId, tags, label, ratingLabels, correctResponses);
+    public AdVocAsAtomStimulus(String uniqueId, String label, String correctResponses, int bandNumber) {
+        super(uniqueId, new Tag[0], label, "word,nonword", correctResponses);
+        this.bandNumber = bandNumber;
+    }
+    
+    public int getBandNumber (){
+        return this.bandNumber;
     }
 }
