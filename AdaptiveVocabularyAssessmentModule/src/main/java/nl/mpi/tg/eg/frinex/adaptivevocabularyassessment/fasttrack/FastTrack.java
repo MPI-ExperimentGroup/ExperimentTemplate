@@ -72,7 +72,6 @@ public class FastTrack extends Series {
                 //int wordNumber = ThreadLocalRandom.current().nextInt(0, Constants.WORDS_PER_BAND);
                 int wordNumber = 0; // temporary we pick up the first word in the band as the stimulus for the fast tracks
                 this.bookkeepingStimuli.add(this.words[bandIndex][wordNumber]);
-                
                 this.words[bandIndex][wordNumber].setIsUsed(true);
                 bandIndex++;
             }

@@ -35,14 +35,9 @@ public class AdVocAssStimuliProvider extends AbstractStimuliProvider {
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
         stimuliList.clear();
-        //
-        //AdVocAssStimulus(String uniqueId, Tag[] tags, String label, String ratingLabels, String correctResponses)
-        // tag referred from the  corresponding presenter part of the xml
-        // label = a word, a content of a stimulus
-        // rating labels == correct/incorrect ?
-
+      
         stimuliList.add(new AdVocAsAtomStimulus("AdVocAssStimulus_1", "rhabarber", "word", 1));
-        stimuliList.add(new AdVocAsAtomStimulus("AdVocAssStimulus_2", "rabarba", "nonword", -1));
+        stimuliList.add(new AdVocAsAtomStimulus("AdVocAssStimulus_2", "despacito", "nonword", -1));
         stimuliList.add(new AdVocAsAtomStimulus("AdVocAssStimulus_3", "lion", "word", 2));
     }
 
