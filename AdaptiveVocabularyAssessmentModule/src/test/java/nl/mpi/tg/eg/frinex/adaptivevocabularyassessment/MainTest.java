@@ -211,6 +211,10 @@ public class MainTest {
                         }
                     }
                 }
+            } else {
+                System.out.println(" out of stimuli");
+                System.out.println(bandIndex);
+            
             }
         }
 

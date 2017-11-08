@@ -41,7 +41,7 @@ public class AtomBookkeepingStimulus {
         this.correctness = null;
     }
    
-
+   
     public AtomBookkeepingStimulus(AtomBookkeepingStimulus source) {
         this.stimulus = source.stimulus;
         this.isUsed = source.isUsed;
@@ -49,6 +49,10 @@ public class AtomBookkeepingStimulus {
         this.correctness = source.correctness;
     }
 
+    public AdVocAsAtomStimulus getPureStimulus(){
+        return this.stimulus;
+    }
+    
     public String getSpelling() {
         return this.stimulus.getLabel();
     }

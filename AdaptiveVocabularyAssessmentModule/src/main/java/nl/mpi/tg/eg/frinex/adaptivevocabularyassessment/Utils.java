@@ -21,7 +21,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.fintetuning.FineTuningBookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.model.AdVocAsAtomStimulus;
 
 /**
  *
@@ -220,4 +222,11 @@ public class Utils {
         csvFileWriter.close();
     }
 
+    public static ArrayList<AdVocAsAtomStimulus> getPureStimuli(ArrayList<AtomBookkeepingStimulus> bookkeepingStimuli){
+        ArrayList<AdVocAsAtomStimulus> retVal = new ArrayList<>(bookkeepingStimuli.size());
+        for (AtomBookkeepingStimulus bStimulus : bookkeepingStimuli) {
+            retVal.add(bStimulus.getPureStimulus());
+        }
+        return retVal;
+    }
 }

@@ -18,9 +18,7 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack;
 
 import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.AtomBookkeepingStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.Constants;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.Series;
 
 /**

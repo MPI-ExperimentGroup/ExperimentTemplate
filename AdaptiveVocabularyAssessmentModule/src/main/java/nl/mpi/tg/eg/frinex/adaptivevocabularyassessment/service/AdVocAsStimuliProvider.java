@@ -17,8 +17,13 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.service;
 
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.AtomBookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.Constants;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.Utils;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.Vocabulary;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.FastTrack;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.model.AdVocAsAtomStimulus;
 import nl.mpi.tg.eg.frinex.common.AbstractStimuliProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -29,16 +34,31 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  */
 public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
 
-    final private List<Stimulus> stimuliList = new ArrayList();
+    private final String WORD_FILE_LOCATION = "../../Data/2.selection_words_nonwords_w.csv";
+
+    private final String NONWORD_FILE_LOCATION = "../../Data/2.selection_words_nonwords.csv";
+
+    private final String OUTPUT_DIRECTORY = "../../Data/";
+
+    private ArrayList<AdVocAsAtomStimulus> stimuliList = new ArrayList();
+    private boolean isCurrentCorrect = true;
     private int stimuliIndex = 0;
 
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
         stimuliList.clear();
-      
-        stimuliList.add(new AdVocAsAtomStimulus("AdVocAssStimulus_1", "rhabarber", "word", 1));
-        stimuliList.add(new AdVocAsAtomStimulus("AdVocAssStimulus_2", "despacito", "nonword", -1));
-        stimuliList.add(new AdVocAsAtomStimulus("AdVocAssStimulus_3", "lion", "word", 2));
+        Vocabulary vocab = new Vocabulary();
+        try {
+            vocab.initialiseVocabulary(WORD_FILE_LOCATION, NONWORD_FILE_LOCATION);
+            AtomBookkeepingStimulus[][] words = vocab.getWords();
+            ArrayList<AtomBookkeepingStimulus> nonwords = vocab.getNonwords();
+            FastTrack fastTrack = new FastTrack(Constants.DEFAULT_USER, words, nonwords, Constants.NONWORDS_PER_BLOCK, Constants.START_BAND, Constants.AVRERAGE_NON_WORD_POSITION);
+            fastTrack.createStimulae();
+            ArrayList<AtomBookkeepingStimulus> fastTrackSequence = fastTrack.getStimulae();
+            stimuliList = Utils.getPureStimuli(fastTrackSequence);
+        } catch (IOException ex) {
+            stimuliList.add(new AdVocAsAtomStimulus("Failure", "inform the researcher that the test generation has failed", "word,nonword", 1));
+        }
     }
 
     @Override
@@ -58,7 +78,11 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
 
     @Override
     public boolean hasNextStimulus(int increment) {
-        return stimuliIndex + increment < stimuliList.size() && stimuliIndex + increment >= 0;
+        if (this.isCurrentCorrect) {
+            return stimuliIndex + increment < stimuliList.size() && stimuliIndex + increment >= 0;
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -84,6 +108,7 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
 
     @Override
     public boolean isCorrectResponse(Stimulus stimulus, String stimulusResponse) {
-        return super.isCorrectResponse(stimulus, stimulusResponse); // @todo: incorporate your response validation here
+        this.isCurrentCorrect = super.isCorrectResponse(stimulus, stimulusResponse); // @todo: incorporate your response validation here
+        return this.isCurrentCorrect;
     }
 }
