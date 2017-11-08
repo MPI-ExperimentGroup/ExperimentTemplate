@@ -20,7 +20,7 @@
         <targetButton featureText="Start experiment" target="stimuliScreen"/>
     </presenter>
     <presenter displayOrder="9" menuLabel="stimuliN" next="EditUser" type="stimulus" self="stimuliScreen" title="stimuliScreen">
-        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.service.AdVocAsStimuliProvider"  repeatRandomWindow="0" eventTag="stimuliN" randomise="false" maxStimuli="1000" repeatCount="1">
+        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider"  repeatRandomWindow="0" eventTag="stimuliN" randomise="false" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
                 <centrePage/>
