@@ -288,14 +288,14 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
 
         if (isStimuliTypeAny(storedWizardScreenData)) {
             imageFeature = new PresenterFeature(FeatureType.stimulusImage, null); // todo: frenchconversation requires video and audio thus this must use stimulusImage (although it should be renamed) and have the required parameters   
+            imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
+            imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
+            imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
+            imageFeature.addFeatureAttributes(FeatureAttribute.animate, "none");
         } else {
             imageFeature = new PresenterFeature(FeatureType.stimulusAudio, null);
+            imageFeature.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(isShowHurryIndicator(storedWizardScreenData)));
         }
-
-//        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
-//        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
-        imageFeature.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(isShowHurryIndicator(storedWizardScreenData)));
-//        imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
         imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getStimulusMsDelay(storedWizardScreenData)));
 
         boolean useCodeVideo = isUseCodeVideo(storedWizardScreenData);
