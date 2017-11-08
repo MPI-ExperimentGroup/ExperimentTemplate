@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.fintetuning;
 
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.fintetuning.FineTuningBookkeepingStimulus;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;

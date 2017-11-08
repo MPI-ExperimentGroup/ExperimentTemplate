@@ -15,15 +15,16 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
+package utils;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.fintetuning.FineTuningBookkeepingStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.model.AdVocAsAtomStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.fintetuning.FineTuningBookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 
 /**
  *
@@ -116,22 +117,20 @@ public class Utils {
         }
     }
 
-    public static void testPrint(Vocabulary bands) {
-        AtomBookkeepingStimulus[][] tmpwords = bands.getWords();
+    public static void testPrint() {
+        AdVocAsAtomStimulus[][] tmpwords = Vocabulary.getWords();
         System.out.println("Words \n");
 
         for (int i = 0; i < tmpwords.length; i++) {
             System.out.println(i + 1);
-            for (AtomBookkeepingStimulus unit : tmpwords[i]) {
-                System.out.println(unit.getSpelling());
-                System.out.println(unit.getIsUsed());
+            for (AdVocAsAtomStimulus unit : tmpwords[i]) {
+                System.out.println(unit.getLabel());
             }
         }
-        ArrayList<AtomBookkeepingStimulus> tmpnonwords = bands.getNonwords();
+        ArrayList<AdVocAsAtomStimulus> tmpnonwords =  Vocabulary.getNonwords();
         System.out.println("Non words \n");
-        for (AtomBookkeepingStimulus nonword : tmpnonwords) {
-            System.out.println(nonword.getSpelling());
-            System.out.println(nonword.getIsUsed());
+        for (AdVocAsAtomStimulus nonword : tmpnonwords) {
+            System.out.println(nonword.getLabel());
         }
     }
 

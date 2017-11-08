@@ -15,10 +15,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
+package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client;
 
 import java.util.ArrayList;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.model.AdVocAsAtomStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 
 /**
  *
@@ -32,10 +32,8 @@ public class AtomBookkeepingStimulus {
     private Boolean userReaction;
     private Boolean correctness;
 
-    public AtomBookkeepingStimulus(String spelling, int bandNumber) {
-        long millis = System.currentTimeMillis();
-        String correct = bandNumber < -1 ? "word" :" nonword";
-        this.stimulus = new AdVocAsAtomStimulus(spelling+"_"+millis, spelling, correct, bandNumber);
+    public AtomBookkeepingStimulus(AdVocAsAtomStimulus pureStimulus) {
+        this.stimulus = pureStimulus;
         this.isUsed = false;
         this.userReaction = null;
         this.correctness = null;

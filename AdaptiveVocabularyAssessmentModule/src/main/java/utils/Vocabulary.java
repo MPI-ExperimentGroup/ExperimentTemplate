@@ -15,13 +15,15 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
+package utils;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 /**
@@ -30,12 +32,12 @@ import org.apache.commons.csv.CSVRecord;
  */
 public class Vocabulary {
     
-    private final AtomBookkeepingStimulus[][] words = new AtomBookkeepingStimulus[Constants.NUMBER_OF_BANDS][Constants.WORDS_PER_BAND];
-    ArrayList<AtomBookkeepingStimulus> nonwords = new ArrayList<>(); // unknow length, cannot allocte in advance
+    private static final AdVocAsAtomStimulus[][] WORDS = new AdVocAsAtomStimulus[Constants.NUMBER_OF_BANDS][Constants.WORDS_PER_BAND];
+    private static final ArrayList<AdVocAsAtomStimulus> NONWORDS = new ArrayList<>(); // unknow length, cannot allocte in advance
     
 
     
-    public void parseWordInputCSV(String wordFileLocation) throws IOException {
+    private static void parseWordInputCSV(String wordFileLocation) throws IOException {
         File inputFileWords = new File(wordFileLocation);
         final Reader reader = new InputStreamReader(inputFileWords.toURL().openStream(), "UTF-8"); // todo: this might need to change to "ISO-8859-1" depending on the usage
         Iterable<CSVRecord> records = CSVFormat.newFormat(';').withHeader().parse(reader);
@@ -46,34 +48,41 @@ public class Vocabulary {
         for (CSVRecord record : records) {
             //String number = record.get("nr");
             int bandNumber = Integer.parseInt(record.get("Band"));
-            AtomBookkeepingStimulus stimulus = new AtomBookkeepingStimulus(record.get("spelling"), bandNumber);
-            this.words[bandNumber-1][counter[bandNumber-1]]=stimulus;
+            //String uniqueId, String label, String correctResponses, int bandNumber)
+            String spelling = record.get("spelling");
+            long millis = System.currentTimeMillis();
+            String id = spelling + "_" + millis;
+            AdVocAsAtomStimulus stimulus = new AdVocAsAtomStimulus(id, spelling, "word", bandNumber);
+            WORDS[bandNumber-1][counter[bandNumber-1]]=stimulus;
             counter[bandNumber-1]++;
         }
     }
     
-    public void parseNonwordInputCSV(String nonwordFileLocation) throws IOException {
+    public static void parseNonwordInputCSV(String nonwordFileLocation) throws IOException {
         final File inputFileNonWords = new File(nonwordFileLocation);
         final Reader reader = new InputStreamReader(inputFileNonWords.toURL().openStream(), "UTF-8"); // todo: this might need to change to "ISO-8859-1" depending on the usage
         Iterable<CSVRecord> records = CSVFormat.newFormat(';').withHeader().parse(reader);
         for (CSVRecord record : records) {
-            AtomBookkeepingStimulus unit = new AtomBookkeepingStimulus(record.get("spelling"), -1);
-            nonwords.add(unit);
+            String spelling = record.get("spelling");
+            long millis = System.currentTimeMillis();
+            String id = spelling + "_" + millis;
+            AdVocAsAtomStimulus stimulus = new AdVocAsAtomStimulus(id, spelling, "nonword", -1);
+            NONWORDS.add(stimulus);
         }
     }
     
-    public AtomBookkeepingStimulus[][] getWords(){
-        return words;
+    public static AdVocAsAtomStimulus[][] getWords(){
+        return WORDS;
     }
     
-    public ArrayList<AtomBookkeepingStimulus> getNonwords(){
-        return nonwords;
+    public static ArrayList<AdVocAsAtomStimulus> getNonwords(){
+        return NONWORDS;
     }
     
     
-    public void initialiseVocabulary(String wordFileLocation, String nonwordFileLocation) throws IOException {
-        this.parseWordInputCSV(wordFileLocation);
-        this.parseNonwordInputCSV(nonwordFileLocation);
+    public static void initialiseVocabulary(String wordFileLocation, String nonwordFileLocation) throws IOException {
+        parseWordInputCSV(wordFileLocation);
+        parseNonwordInputCSV(nonwordFileLocation);
     }
     
 }

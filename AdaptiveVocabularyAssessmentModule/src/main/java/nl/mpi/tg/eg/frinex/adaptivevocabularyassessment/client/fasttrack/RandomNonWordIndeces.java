@@ -15,12 +15,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack;
+package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.ThreadLocalRandom;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.Constants;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 
 /**
  * produces the collection of [p * N] indices(for non-word) from 0 to N-1, where

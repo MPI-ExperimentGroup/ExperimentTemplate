@@ -17,29 +17,30 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Main;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
+import utils.Vocabulary;
+import utils.Utils;
 import java.io.IOException;
 import java.util.ArrayList;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.FastTrack;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.fintetuning.FineTuning;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.fintetuning.FineTuningBookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.FastTrack;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.fintetuning.FineTuning;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.fintetuning.FineTuningBookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
  * @author olhshk
  */
 public class MainTest {
-
-    private final String WORD_FILE_LOCATION = "../../Data/2.selection_words_nonwords_w.csv";
-
-    private final String NONWORD_FILE_LOCATION = "../../Data/2.selection_words_nonwords.csv";
-
-    private final String OUTPUT_DIRECTORY = "../../Data/";
+    
+    final String OUTPUT_DIRECTORY = "../../Data/";
 
     public MainTest() {
     }
@@ -66,13 +67,11 @@ public class MainTest {
     @Test
     public void testMain() throws Exception {
         System.out.println("main");
-        Vocabulary vocab = new Vocabulary();
+        String[] input = new String[0];
+        Main.main(input);
         try {
-
-            vocab.initialiseVocabulary(WORD_FILE_LOCATION, NONWORD_FILE_LOCATION);
-            AtomBookkeepingStimulus[][] words = vocab.getWords();
-            ArrayList<AtomBookkeepingStimulus> nonwords = vocab.getNonwords();
-
+            AdVocAsAtomStimulus[][] words = Vocabulary.getWords();
+            ArrayList<AdVocAsAtomStimulus> nonwords = Vocabulary.getNonwords();
             System.out.println("Fast track ");
             //FastTrack(String username, AtomBookkeepingStimulus[][] wrds, ArrayList<AtomStimulus> nonwrds, int nonWordsPerBlock, int startBand, int averageNonwordPosition)
             FastTrack fastTrack = new FastTrack(Constants.DEFAULT_USER, words, nonwords, Constants.NONWORDS_PER_BLOCK, Constants.START_BAND, Constants.AVRERAGE_NON_WORD_POSITION);

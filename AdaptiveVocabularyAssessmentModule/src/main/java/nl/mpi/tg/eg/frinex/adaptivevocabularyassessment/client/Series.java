@@ -15,9 +15,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
+package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client;
 
 import java.util.ArrayList;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 
 /**
  *
@@ -29,11 +30,13 @@ public abstract class Series {
     protected ArrayList<AtomBookkeepingStimulus> nonwords;
     protected String userName;
   
-    public Series(String username, AtomBookkeepingStimulus[][] wrds, ArrayList<AtomBookkeepingStimulus> nonwrds){
-        this.words = wrds;
-        this.nonwords=nonwrds;
+    public Series(String username, AdVocAsAtomStimulus[][] wrds, ArrayList<AdVocAsAtomStimulus> nonwrds){
+        this.words = this.initialiseWords(wrds);
+        this.nonwords=this.initialiseNonwords(nonwrds);
         this.userName = username;
     }
+    
+    
 
     protected ArrayList<AtomBookkeepingStimulus> fetchUnusedAtoms(AtomBookkeepingStimulus[] units) {
         ArrayList<AtomBookkeepingStimulus> retVal = new ArrayList<>();
@@ -51,6 +54,26 @@ public abstract class Series {
             if (!units.get(i).getIsUsed()) {
                 retVal.add(units.get(i));
             }
+        }
+        return retVal;
+    }
+    
+    private AtomBookkeepingStimulus[][] initialiseWords(AdVocAsAtomStimulus[][] wrds){
+        AtomBookkeepingStimulus[][] retVal = new AtomBookkeepingStimulus[Constants.NUMBER_OF_BANDS][Constants.WORDS_PER_BAND];
+        for (int bandIndex=0; bandIndex<wrds.length; bandIndex++){
+           for (int wordCounter=0; wordCounter<wrds[bandIndex].length; wordCounter++){
+             AtomBookkeepingStimulus stimulus = new AtomBookkeepingStimulus(wrds[bandIndex][wordCounter]);
+             retVal[bandIndex][wordCounter] = stimulus;
+          }  
+        }
+        return retVal;
+    }
+    
+    private ArrayList<AtomBookkeepingStimulus> initialiseNonwords(ArrayList<AdVocAsAtomStimulus> nonwrds){
+        ArrayList<AtomBookkeepingStimulus> retVal = new ArrayList<>(nonwrds.size());
+        for (AdVocAsAtomStimulus nonword: nonwrds){
+             AtomBookkeepingStimulus stimulus = new AtomBookkeepingStimulus(nonword);
+             retVal.add(stimulus);
         }
         return retVal;
     }

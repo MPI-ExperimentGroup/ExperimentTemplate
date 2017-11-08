@@ -17,7 +17,9 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
 import java.util.ArrayList;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -56,7 +58,9 @@ public class AtomBookkeepingStimulusTest {
     @Test
     public void testGetSpelling() {
         System.out.println("getSpelling");
-        AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus("test-spelling", 37);
+        //AdVocAsAtomStimulus(String uniqueId, String label, String correctResponses, int bandNumber)
+        AdVocAsAtomStimulus pureStimulus = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling", "word", 37);
+        AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus(pureStimulus);
         String expResult = "test-spelling";
         String result = instance.getSpelling();
         assertEquals(expResult, result);
@@ -68,7 +72,8 @@ public class AtomBookkeepingStimulusTest {
     @Test
     public void testGetIsUsed() {
         System.out.println("getIsUsed");
-        AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus("test-spelling", 37);
+        AdVocAsAtomStimulus pureStimulus = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling", "word", 37);
+        AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus(pureStimulus);
         boolean result = instance.getIsUsed();
         assertEquals(false, result);
     }
@@ -79,7 +84,8 @@ public class AtomBookkeepingStimulusTest {
     @Test
     public void testGetBandNumber() {
         System.out.println("getBandNumber");
-        AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus("test-spelling", 37);
+        AdVocAsAtomStimulus pureStimulus = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling", "word", 37);
+        AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus(pureStimulus);
         int result = instance.getBandNumber();
         assertEquals(37, result);
     }
@@ -90,7 +96,9 @@ public class AtomBookkeepingStimulusTest {
     @Test
     public void testSetIsUsed() {
         System.out.println("setIsUsed");
-        AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus("test-spelling", 37);
+        AdVocAsAtomStimulus pureStimulus = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling", "word", 37);
+        
+        AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus(pureStimulus);
         instance.setIsUsed(true);
         boolean result = instance.getIsUsed();
         assertEquals(true, result);
@@ -102,7 +110,9 @@ public class AtomBookkeepingStimulusTest {
     @Test
     public void testGetReaction() {
         System.out.println("getReaction");
-        AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus("test-spelling", 37);
+        AdVocAsAtomStimulus pureStimulus = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling", "word", 37);
+        
+        AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus(pureStimulus);
         Boolean result = instance.getReaction();
         assertEquals(null, result);
     }
@@ -113,7 +123,9 @@ public class AtomBookkeepingStimulusTest {
     @Test
     public void testGetCorrectness() {
         System.out.println("getCorrectness");
-        AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus("test-spelling", 37);
+        AdVocAsAtomStimulus pureStimulus = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling", "word", 37);
+        
+        AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus(pureStimulus);
         Boolean result = instance.getCorrectness();
         assertEquals(null, result);
     }
@@ -124,7 +136,9 @@ public class AtomBookkeepingStimulusTest {
     @Test
     public void testSetReaction() {
         System.out.println("setReaction");
-        AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus("test-spelling", 37);
+        AdVocAsAtomStimulus pureStimulus = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling", "word", 37);
+        
+        AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus(pureStimulus);
         instance.setReaction(false);
         Boolean result = instance.getReaction();
         assertEquals(false, result);
@@ -136,7 +150,9 @@ public class AtomBookkeepingStimulusTest {
     @Test
     public void testSetCorrectness() {
         System.out.println("setCorrectness");
-        AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus("test-spelling", 37);
+        AdVocAsAtomStimulus pureStimulus = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling", "word", 37);
+        
+        AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus(pureStimulus);
         instance.setCorrectness(true);
         Boolean result = instance.getCorrectness();
         assertEquals(true, result);
@@ -149,8 +165,10 @@ public class AtomBookkeepingStimulusTest {
     public void testCopyAtomStimulae() {
         System.out.println("copyAtomStimulae");
         ArrayList<AtomBookkeepingStimulus> source = new ArrayList<>();
-        AtomBookkeepingStimulus st1 = new AtomBookkeepingStimulus("test-spelling-1", 37);
-        AtomBookkeepingStimulus st2 = new AtomBookkeepingStimulus("test-spelling-2", 39);
+        AdVocAsAtomStimulus pureStimulus1 = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling-1", "word", 37);
+        AtomBookkeepingStimulus st1 = new AtomBookkeepingStimulus(pureStimulus1);
+        AdVocAsAtomStimulus pureStimulus2 = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling-2", "word", 39);
+        AtomBookkeepingStimulus st2 = new AtomBookkeepingStimulus(pureStimulus2);
         source.add(st1);
         source.add(st2);
         ArrayList<AtomBookkeepingStimulus> expResult = new ArrayList<>();

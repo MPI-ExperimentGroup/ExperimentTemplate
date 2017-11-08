@@ -15,10 +15,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.fintetuning;
+package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.fintetuning;
 
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.AtomBookkeepingStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.Constants;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 
 /**
  *

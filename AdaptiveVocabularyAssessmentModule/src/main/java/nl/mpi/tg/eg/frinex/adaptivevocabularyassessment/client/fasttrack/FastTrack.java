@@ -15,11 +15,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack;
+package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack;
 
 import java.util.ArrayList;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.AtomBookkeepingStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.Series;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Series;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 
 /**
  *
@@ -32,7 +33,7 @@ public class FastTrack extends Series {
     private final int nonWordsPerBlock;
     private ArrayList<AtomBookkeepingStimulus> bookkeepingStimuli;
 
-    public FastTrack(String username, AtomBookkeepingStimulus[][] wrds, ArrayList<AtomBookkeepingStimulus> nonwrds, int nonWordsPerBlock, int startBand, int averageNonwordPosition) {
+    public FastTrack(String username, AdVocAsAtomStimulus[][] wrds, ArrayList<AdVocAsAtomStimulus> nonwrds, int nonWordsPerBlock, int startBand, int averageNonwordPosition) {
         super(username, wrds, nonwrds);
         this.startBand = startBand;
         this.averageNonwordPosition = averageNonwordPosition;

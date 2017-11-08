@@ -17,13 +17,14 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
+import utils.Vocabulary;
 import java.util.ArrayList;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -80,9 +81,7 @@ public class VocabularyTest {
     @Test
     public void testGetWords() {
         System.out.println("getWords");
-        Vocabulary instance = new Vocabulary();
-        AtomBookkeepingStimulus[][] expResult = null;
-        AtomBookkeepingStimulus[][] result = instance.getWords();
+        AdVocAsAtomStimulus[][] result = Vocabulary.getWords();
         //assertArrayEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
        //fail("The test case is a prototype.");
@@ -94,9 +93,7 @@ public class VocabularyTest {
     @Test
     public void testGetNonwords() {
         System.out.println("getNonwords");
-        Vocabulary instance = new Vocabulary();
-        ArrayList<AtomBookkeepingStimulus> expResult = null;
-        ArrayList<AtomBookkeepingStimulus> result = instance.getNonwords();
+        ArrayList<AdVocAsAtomStimulus> result = Vocabulary.getNonwords();
         //assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
        //fail("The test case is a prototype.");
@@ -108,7 +105,6 @@ public class VocabularyTest {
     @Test
     public void testInitialiseVocabulary() throws Exception {
         System.out.println("initialiseVocabulary");
-        Vocabulary instance = new Vocabulary();
         //instance.initialiseVocabulary("dummylocation", "dummylocation");
         // TODO review the generated test code and remove the default call to fail.
        //fail("The test case is a prototype.");

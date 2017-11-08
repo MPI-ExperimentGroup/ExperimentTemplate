@@ -17,6 +17,8 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Series;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;

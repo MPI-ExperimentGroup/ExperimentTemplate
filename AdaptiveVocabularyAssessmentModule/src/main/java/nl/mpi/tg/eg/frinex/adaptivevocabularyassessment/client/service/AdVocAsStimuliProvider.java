@@ -15,16 +15,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.service;
+package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.AtomBookkeepingStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.Constants;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.Utils;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.Vocabulary;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.FastTrack;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.model.AdVocAsAtomStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.FastTrack;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 import nl.mpi.tg.eg.frinex.common.AbstractStimuliProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
@@ -34,12 +31,6 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  */
 public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
 
-    private final String WORD_FILE_LOCATION = "../../Data/2.selection_words_nonwords_w.csv";
-
-    private final String NONWORD_FILE_LOCATION = "../../Data/2.selection_words_nonwords.csv";
-
-    private final String OUTPUT_DIRECTORY = "../../Data/";
-
     private ArrayList<AdVocAsAtomStimulus> stimuliList = new ArrayList();
     private boolean isCurrentCorrect = true;
     private int stimuliIndex = 0;
@@ -47,18 +38,13 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
         stimuliList.clear();
-        Vocabulary vocab = new Vocabulary();
-        try {
-            vocab.initialiseVocabulary(WORD_FILE_LOCATION, NONWORD_FILE_LOCATION);
-            AtomBookkeepingStimulus[][] words = vocab.getWords();
-            ArrayList<AtomBookkeepingStimulus> nonwords = vocab.getNonwords();
-            FastTrack fastTrack = new FastTrack(Constants.DEFAULT_USER, words, nonwords, Constants.NONWORDS_PER_BLOCK, Constants.START_BAND, Constants.AVRERAGE_NON_WORD_POSITION);
-            fastTrack.createStimulae();
-            ArrayList<AtomBookkeepingStimulus> fastTrackSequence = fastTrack.getStimulae();
-            stimuliList = Utils.getPureStimuli(fastTrackSequence);
-        } catch (IOException ex) {
-            stimuliList.add(new AdVocAsAtomStimulus("Failure", "inform the researcher that the test generation has failed", "word,nonword", 1));
-        }
+        AdVocAsAtomStimulus[][] words = Constants.WORDS;
+        ArrayList<AdVocAsAtomStimulus> nonwords = Constants.NONWORDS;
+        FastTrack fastTrack = new FastTrack(Constants.DEFAULT_USER, words, nonwords, Constants.NONWORDS_PER_BLOCK, Constants.START_BAND, Constants.AVRERAGE_NON_WORD_POSITION);
+        fastTrack.createStimulae();
+        ArrayList<AtomBookkeepingStimulus> fastTrackSequence = fastTrack.getStimulae();
+        //stimuliList = Utils.getPureStimuli(fastTrackSequence);
+
     }
 
     @Override

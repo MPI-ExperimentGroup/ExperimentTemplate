@@ -15,13 +15,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.fintetuning;
+package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.fintetuning;
 
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.AtomBookkeepingStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.Constants;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.Series;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Series;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 
 /**
  *
@@ -33,7 +34,7 @@ public class FineTuning extends Series {
     
     private int stepCounter;
 
-    public FineTuning(String username, AtomBookkeepingStimulus[][] wrds, ArrayList<AtomBookkeepingStimulus> nonwrds) {
+    public FineTuning(String username, AdVocAsAtomStimulus[][] wrds, ArrayList<AdVocAsAtomStimulus> nonwrds) {
         super(username, wrds, nonwrds);
         stepCounter = 0;
     }

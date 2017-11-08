@@ -15,7 +15,9 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
+package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client;
+
+import utils.Vocabulary;
 
 /**
  * @since Oct 20, 2017 11:38:57 AM (creation date)
@@ -28,11 +30,15 @@ public class Main {
      */
     public static void main(String[] args) throws Exception {
 
-        
+        final String WORD_FILE_LOCATION = "../../Data/2.selection_words_nonwords_w.csv";
 
+        final String NONWORD_FILE_LOCATION = "../../Data/2.selection_words_nonwords.csv";
+
+        Vocabulary.initialiseVocabulary(WORD_FILE_LOCATION, NONWORD_FILE_LOCATION);
+
+        Constants.WORDS = Vocabulary.getWords();
+
+        Constants.NONWORDS = Vocabulary.getNonwords();
     }
 
-    
-   
-   
 }

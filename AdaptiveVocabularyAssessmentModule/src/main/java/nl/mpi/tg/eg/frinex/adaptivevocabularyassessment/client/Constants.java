@@ -15,7 +15,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
+package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client;
+
+import java.util.ArrayList;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 
 /**
  *
@@ -43,5 +46,8 @@ public class Constants {
     
     public static final int FINE_TUNING_MAX_BAND_CHANGE = 33;
   
-    
+    public static AdVocAsAtomStimulus[][] WORDS;
+        
+    public static ArrayList<AdVocAsAtomStimulus> NONWORDS;
+
 }
