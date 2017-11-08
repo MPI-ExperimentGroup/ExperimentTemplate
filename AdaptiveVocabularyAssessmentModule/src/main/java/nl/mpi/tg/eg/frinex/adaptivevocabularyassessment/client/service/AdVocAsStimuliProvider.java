@@ -41,21 +41,14 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
 
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
-        try {
-            Vocabulary.initialiseVocabulary(WORD_FILE_LOCATION, NONWORD_FILE_LOCATION);
-            Constants.WORDS = Vocabulary.getWords();
-            Constants.NONWORDS = Vocabulary.getNonwords();
-            stimuliList.clear();
-            AdVocAsAtomStimulus[][] words = Constants.WORDS;
-            ArrayList<AdVocAsAtomStimulus> nonwords = Constants.NONWORDS;
-            FastTrack fastTrack = new FastTrack(Constants.DEFAULT_USER, words, nonwords, Constants.NONWORDS_PER_BLOCK, Constants.START_BAND, Constants.AVRERAGE_NON_WORD_POSITION);
-            fastTrack.createStimulae();
-            ArrayList<AtomBookkeepingStimulus> fastTrackSequence = fastTrack.getStimulae();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-        //stimuliList = Utils.getPureStimuli(fastTrackSequence);
+        stimuliList.clear();
+        AdVocAsAtomStimulus[][] words = Constants.WORDS;
+        ArrayList<AdVocAsAtomStimulus> nonwords = Constants.NONWORDS;
+        FastTrack fastTrack = new FastTrack(Constants.DEFAULT_USER, words, nonwords, Constants.NONWORDS_PER_BLOCK, Constants.START_BAND, Constants.AVRERAGE_NON_WORD_POSITION);
+        fastTrack.createStimulae();
+        ArrayList<AtomBookkeepingStimulus> fastTrackSequence = fastTrack.getStimulae();
 
+        //stimuliList = Utils.getPureStimuli(fastTrackSequence);
     }
 
     @Override
