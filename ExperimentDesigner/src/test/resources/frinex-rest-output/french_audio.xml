@@ -58,11 +58,11 @@
                     <stimulusHasRatingOptions>
                         <conditionTrue>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-                                <nextStimulus eventTag="NextStimulusPretest Screen" repeatIncorrect="false"/>
+                                <nextStimulus repeatIncorrect="false"/>
                             </stimulusRatingButton>
                         </conditionTrue>
                         <conditionFalse>
-                            <stimulusFreeText featureText="Entrez au moins trois lettres." validationRegex=".{1,}"/>
+                            <stimulusFreeText featureText="Entrez au moins trois lettres." validationRegex=".{1,}" inputErrorMessage=" "/>
                             <nextStimulusButton featureText="Next [TAB + ENTER]" eventTag="Next [TAB + ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
                         </conditionFalse>
                     </stimulusHasRatingOptions>
@@ -95,14 +95,14 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusCodeAudio msToNext="100" codeFormat="&lt;code&gt;">
+                <stimulusCodeAudio msToNext="100" codeFormat="&lt;code&gt;" showPlaybackIndicator="false">
                     <clearPage/>
                     <centrePage/>
                     <pause msToNext="100">
                         <stimulusAudio msToNext="100" showPlaybackIndicator="false">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-                                <nextStimulus eventTag="NextStimulusstimuliC" repeatIncorrect="false"/>
+                                <nextStimulus repeatIncorrect="false"/>
                             </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>
@@ -139,7 +139,7 @@
                 <stimulusAudio msToNext="100" showPlaybackIndicator="false">
                     <addPadding/>
                     <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-                        <nextStimulus eventTag="NextStimulusstimuliN" repeatIncorrect="false"/>
+                        <nextStimulus repeatIncorrect="false"/>
                     </stimulusRatingButton>
                 </stimulusAudio>
             </hasMoreStimulus>

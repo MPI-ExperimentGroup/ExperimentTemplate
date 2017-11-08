@@ -42,7 +42,7 @@
                         <stimulusAudio msToNext="1000" showPlaybackIndicator="false">
                             <addPadding/>
                             <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-                                <nextStimulus eventTag="NextStimulusVideoAudioOption" repeatIncorrect="false"/>
+                                <nextStimulus repeatIncorrect="false"/>
                             </stimulusRatingButton>
                         </stimulusAudio>
                     </pause>

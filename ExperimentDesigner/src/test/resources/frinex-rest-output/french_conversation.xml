@@ -83,7 +83,7 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusImage msToNext="100" showPlaybackIndicator="false">
+                <stimulusImage msToNext="100" maxHeight="80" percentOfPage="0" animate="none" maxWidth="80">
                     <addPadding/>
                     <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
                         <nextStimulus repeatIncorrect="false"/>
