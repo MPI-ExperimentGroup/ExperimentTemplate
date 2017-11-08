@@ -18,7 +18,7 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.fintetuning;
 
 import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Random;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Series;
@@ -95,9 +95,10 @@ public class FineTuning extends Series {
 
         int wordsCounter = 0;
         int nonwordsCounter = 0;
+        Random rnd = new Random();
         for (int i = 0; i < length; i++) {
             AtomBookkeepingStimulus[] tuple = new AtomBookkeepingStimulus[Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE];
-            int nonwordPosition = ThreadLocalRandom.current().nextInt(0, Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE);
+            int nonwordPosition = rnd.nextInt(Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE);
             for (int j = 0; j < Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE; j++) {
                 if (j != nonwordPosition) {
                     tuple[j] = unusedWords.get(wordsCounter);
@@ -119,9 +120,11 @@ public class FineTuning extends Series {
         for (int i = 0; i < Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE; i++) {
             retVal[i] = (stimulus.getAtomStimulusAt(i).getBandNumber() > 0);
         }
-        double rnd = ThreadLocalRandom.current().nextDouble();
-        if (rnd > correctnessUpperBound) { // spoil the answer
-            int j = ThreadLocalRandom.current().nextInt(0, Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE);
+        Random rnd = new Random();
+        double rndDouble = rnd.nextDouble();
+        System.out.println(rndDouble);
+        if (rndDouble > correctnessUpperBound) { // spoil the answer
+            int j = rnd.nextInt(Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE);
             retVal[j] = !retVal[j];
         }
         return retVal;

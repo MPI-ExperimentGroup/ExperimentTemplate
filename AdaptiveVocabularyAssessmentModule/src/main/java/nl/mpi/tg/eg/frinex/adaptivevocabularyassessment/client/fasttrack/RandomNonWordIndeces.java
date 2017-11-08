@@ -19,7 +19,7 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Random;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 
 /**
@@ -72,6 +72,7 @@ public class RandomNonWordIndeces {
         int randOffset;
         int blockSize = nonwordsPerBlock * this.averageNonwordPosition;
         int numberOfBlocks = this.sequenceLength / blockSize;
+        Random rnd = new Random();
         for (int i = 0; i < numberOfBlocks; i++) {
             ArrayList<Integer> offsetBuffer = new ArrayList<>(blockSize-1); // the last element in the block should be always a word to avoid 2 words in a row
 
@@ -80,7 +81,7 @@ public class RandomNonWordIndeces {
             }
             for (int k = 0; k < this.nonwordsPerBlock; k++) {
                 int n=offsetBuffer.size();
-                int indOffset = ThreadLocalRandom.current().nextInt(0, n); // excl.n
+                int indOffset = rnd.nextInt(n); // excl.n
                 int offset = offsetBuffer.get(indOffset);
                 retVal.add(i * blockSize + offset);
                 offsetBuffer.remove(new Integer(offset));
@@ -99,7 +100,7 @@ public class RandomNonWordIndeces {
         int n = remainderBlock;
         int nonwordsRemainder = this.numberOfNonwords - retVal.size();
         for (int k = 0; k < nonwordsRemainder; k++) {
-            randOffset = ThreadLocalRandom.current().nextInt(0, n);
+            randOffset = rnd.nextInt(n);
             retVal.add(blockSize * numberOfBlocks + offsetBuffer.get(randOffset));
             offsetBuffer.remove(randOffset);
             n--;

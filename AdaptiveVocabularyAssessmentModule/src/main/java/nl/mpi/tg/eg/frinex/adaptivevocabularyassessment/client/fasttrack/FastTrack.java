@@ -62,13 +62,13 @@ public class FastTrack extends Series {
         for (int i = 0; i < sequenceLength; i++) {
             if (nonWordInd.contains(i)) { // i is a position for a non-word
                 //int nonWordCounter = nonwordsCopy.size();
-                //int nonwordIndex = ThreadLocalRandom.current().nextInt(0, nonWordCounter);
+                //int nonwordIndex = rnd.nextInt(nonWordCounter);
                 nonwordIndex++; // temporary we pick up the next nonword as the stimulus for the fast tracks
                 this.bookkeepingStimuli.add(this.nonwords.get(nonwordIndex));
                 this.nonwords.get(nonwordIndex).setIsUsed(true);
                 nonwordsCopy.remove(nonwordIndex);
             } else {
-                //int wordNumber = ThreadLocalRandom.current().nextInt(0, Constants.WORDS_PER_BAND);
+                //int wordNumber = rnd.nextInt(Constants.WORDS_PER_BAND);
                 int wordNumber = 0; // temporary we pick up the first word in the band as the stimulus for the fast tracks
                 this.bookkeepingStimuli.add(this.words[bandIndex][wordNumber]);
                 this.words[bandIndex][wordNumber].setIsUsed(true);

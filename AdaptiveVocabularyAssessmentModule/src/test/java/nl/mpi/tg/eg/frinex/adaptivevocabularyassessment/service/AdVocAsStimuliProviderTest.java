@@ -58,7 +58,7 @@ public class AdVocAsStimuliProviderTest {
     public void testGetAll() {
         System.out.println("getAll");
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-        instance.getAll();
+        instance.initialiseStimuliState("");
         // TODO review the generated test code and remove the default call to fail.
        //fail("The test case is a prototype.");
     }

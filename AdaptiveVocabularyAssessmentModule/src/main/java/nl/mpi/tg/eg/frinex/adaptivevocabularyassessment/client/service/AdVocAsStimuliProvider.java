@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
@@ -24,6 +25,7 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.FastTra
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 import nl.mpi.tg.eg.frinex.common.AbstractStimuliProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
+import utils.Vocabulary;
 
 /**
  * @since Oct 27, 2017 2:01:33 PM (creation date)
@@ -34,15 +36,24 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
     private ArrayList<AdVocAsAtomStimulus> stimuliList = new ArrayList();
     private boolean isCurrentCorrect = true;
     private int stimuliIndex = 0;
+    final String WORD_FILE_LOCATION = "2.selection_words_nonwords_w.csv";
+    final String NONWORD_FILE_LOCATION = "2.selection_words_nonwords.csv";
 
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
-        stimuliList.clear();
-        AdVocAsAtomStimulus[][] words = Constants.WORDS;
-        ArrayList<AdVocAsAtomStimulus> nonwords = Constants.NONWORDS;
-        FastTrack fastTrack = new FastTrack(Constants.DEFAULT_USER, words, nonwords, Constants.NONWORDS_PER_BLOCK, Constants.START_BAND, Constants.AVRERAGE_NON_WORD_POSITION);
-        fastTrack.createStimulae();
-        ArrayList<AtomBookkeepingStimulus> fastTrackSequence = fastTrack.getStimulae();
+        try {
+            Vocabulary.initialiseVocabulary(WORD_FILE_LOCATION, NONWORD_FILE_LOCATION);
+            Constants.WORDS = Vocabulary.getWords();
+            Constants.NONWORDS = Vocabulary.getNonwords();
+            stimuliList.clear();
+            AdVocAsAtomStimulus[][] words = Constants.WORDS;
+            ArrayList<AdVocAsAtomStimulus> nonwords = Constants.NONWORDS;
+            FastTrack fastTrack = new FastTrack(Constants.DEFAULT_USER, words, nonwords, Constants.NONWORDS_PER_BLOCK, Constants.START_BAND, Constants.AVRERAGE_NON_WORD_POSITION);
+            fastTrack.createStimulae();
+            ArrayList<AtomBookkeepingStimulus> fastTrackSequence = fastTrack.getStimulae();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
         //stimuliList = Utils.getPureStimuli(fastTrackSequence);
 
     }
