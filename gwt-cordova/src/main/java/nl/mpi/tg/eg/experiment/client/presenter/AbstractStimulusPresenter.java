@@ -1332,7 +1332,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), stimulusProvider.getCurrentStimulus(), storedStimulusJSONObject);
         for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
             if (!stimulusFreeText.isValid()) {
-                ((MetadataFieldWidget) stimulusFreeText).getFocusWidget().setFocus(true);
+                stimulusFreeText.getFocusWidget().setFocus(true);
                 return;
             }
         }
@@ -1354,6 +1354,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).stopAudio();
         ((TimedStimulusView) simpleView).stopVideo();
         ((TimedStimulusView) simpleView).clearPage();
+        nextButtonEventListnerList.clear(); // clear this now to prevent refires of the event
         stimulusFreeTextList.clear();
         buttonList.clear();
         showStimulus(null, increment);
@@ -1466,7 +1467,6 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                nextButtonEventListnerList.clear(); // clear this now to prevent refires of the event
                 nextStimulus(repeatIncorrect, -1);
             }
         };
@@ -1491,7 +1491,6 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                nextButtonEventListnerList.clear(); // clear this now to prevent refires of the event
                 nextStimulus(repeatIncorrect, 1);
             }
         };

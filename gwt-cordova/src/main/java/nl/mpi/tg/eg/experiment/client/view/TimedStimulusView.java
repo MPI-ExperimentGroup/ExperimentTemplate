@@ -32,6 +32,7 @@ import com.google.gwt.media.client.Video;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.ButtonBase;
+import com.google.gwt.user.client.ui.FocusWidget;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
@@ -266,6 +267,12 @@ public class TimedStimulusView extends ComplexView {
             public String getPostName() {
                 return postName;
             }
+
+            @Override
+            public FocusWidget getFocusWidget() {
+                return textBox;
+            }
+
         };
 
         return stimulusFreeText;

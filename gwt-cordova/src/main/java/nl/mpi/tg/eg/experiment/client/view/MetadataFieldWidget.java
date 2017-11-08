@@ -44,6 +44,7 @@ public class MetadataFieldWidget implements StimulusFreeText {
     final private Label label;
     final private Label errorLabel;
     final private VerticalPanel labelPanel;
+    final DateOfBirthField dateOfBirthField;
 
     public MetadataFieldWidget(MetadataField metadataField, String initialValue) {
         this.metadataField = metadataField;
@@ -54,18 +55,20 @@ public class MetadataFieldWidget implements StimulusFreeText {
 //            final DateBox dateBox = new DateBox();
 //            dateBox.getDatePicker().setYearAndMonthDropdownVisible(true);
 //            dateBox.setFormat(new DateBox.DefaultFormat(dateFormat)); 
-            final DateOfBirthField dateOfBirthField = new DateOfBirthField();
+            dateOfBirthField = new DateOfBirthField();
             focusWidget = dateOfBirthField.getTextBox();
             if (initialValue != null) {
                 dateOfBirthField.setDate(initialValue);
             }
             widget = dateOfBirthField;
         } else if (metadataField.isCheckBox()) {
+            dateOfBirthField = null;
             label = new Label();
             focusWidget = new CheckBox(metadataField.getFieldLabel());
             ((CheckBox) focusWidget).setValue((initialValue == null) ? false : Boolean.parseBoolean(initialValue));
             widget = focusWidget;
         } else if (metadataField.isListBox()) {
+            dateOfBirthField = null;
             label = new Label(metadataField.getFieldLabel());
             focusWidget = new ListBox();
             int selectedIndex = 0;
@@ -83,6 +86,7 @@ public class MetadataFieldWidget implements StimulusFreeText {
             ((ListBox) focusWidget).setSelectedIndex(selectedIndex);
             widget = focusWidget;
         } else {
+            dateOfBirthField = null;
             label = new Label(metadataField.getFieldLabel());
             if (metadataField.isMultiLine()) {
                 focusWidget = new TextArea();
@@ -127,7 +131,9 @@ public class MetadataFieldWidget implements StimulusFreeText {
 
     @Override
     public String getValue() {
-        if (focusWidget instanceof CheckBox) {
+        if (dateOfBirthField != null) {
+            return dateOfBirthField.getValue();
+        } else if (focusWidget instanceof CheckBox) {
             return Boolean.toString(((CheckBox) focusWidget).getValue());
         } else if (focusWidget instanceof ListBox) {
             return ((ListBox) focusWidget).getSelectedValue();

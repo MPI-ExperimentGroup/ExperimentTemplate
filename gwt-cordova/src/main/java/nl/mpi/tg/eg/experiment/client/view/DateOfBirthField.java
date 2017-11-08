@@ -21,7 +21,7 @@ import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.i18n.client.LocaleInfo;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.ListBox;
-import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.IntegerBox;
 
 /**
  * @since Aug 23, 2016 5:02:34 PM (creation date)
@@ -30,27 +30,7 @@ import com.google.gwt.user.client.ui.TextBox;
 public class DateOfBirthField extends HorizontalPanel {
 
     final DateTimeFormat dateFormat = DateTimeFormat.getFormat("dd/MM/yyyy");
-    private final TextBox dayBox = new TextBox() {
-        @Override
-        public String getValue() {
-            try {
-                // format the date without localisation and without timezones
-                final int dayInteger = Integer.parseInt(super.getValue());
-                final int monthInteger = Integer.parseInt(monthSelect.getSelectedValue());
-                final String formattedDate
-                        = ((dayInteger < 10) ? "0" : "") + dayInteger
-                        + "/"
-                        + ((monthInteger < 10) ? "0" : "") + monthInteger
-                        + "/"
-                        + yearBox.getValue(); // do not pad the year so that the date validator can check it
-//                DateOfBirthField.this.add(new Label(formattedDate));
-                dateFormat.parseStrict(formattedDate);
-                return formattedDate;
-            } catch (IllegalArgumentException exception) {
-//                DateOfBirthField.this.add(new Label(exception.getMessage()));
-                return "";
-            }
-        }
+    private final IntegerBox dayBox = new IntegerBox() { // todo: make this numerical only
 
         @Override
         public void setStylePrimaryName(String style) {
@@ -61,7 +41,7 @@ public class DateOfBirthField extends HorizontalPanel {
 
     };
     private final ListBox monthSelect = new ListBox();
-    private final TextBox yearBox = new TextBox();
+    private final IntegerBox yearBox = new IntegerBox(); // todo: make this numerical only
 
     public DateOfBirthField() {
         int index = 0;
@@ -72,7 +52,7 @@ public class DateOfBirthField extends HorizontalPanel {
         }
     }
 
-    public TextBox getTextBox() {
+    public IntegerBox getTextBox() {
         dayBox.setWidth("50px");
         yearBox.setWidth("100px");
         dayBox.setMaxLength(2);
@@ -88,9 +68,32 @@ public class DateOfBirthField extends HorizontalPanel {
             String[] splitString = dateString.split("/");
             if (splitString.length == 3) {
                 monthSelect.setSelectedIndex(Integer.parseInt(splitString[1]));
-                dayBox.setValue(splitString[0]);
-                yearBox.setValue(splitString[2]);
+                dayBox.setValue(Integer.parseInt(splitString[0]));
+                yearBox.setValue(Integer.parseInt(splitString[2]));
             }
+        }
+    }
+
+    public String getValue() {
+        try {
+            // format the date without localisation and without timezones
+            final Integer dayInteger = dayBox.getValue();
+            final int monthInteger = Integer.parseInt(monthSelect.getSelectedValue());
+            if (dayInteger == null) {
+                return "";
+            }
+            final String formattedDate
+                    = ((dayInteger < 10) ? "0" : "") + dayInteger
+                    + "/"
+                    + ((monthInteger < 10) ? "0" : "") + monthInteger
+                    + "/"
+                    + yearBox.getValue(); // do not pad the year so that the date validator can check it
+//                DateOfBirthField.this.add(new Label(formattedDate));
+            dateFormat.parseStrict(formattedDate);
+            return formattedDate;
+        } catch (IllegalArgumentException exception) {
+//                DateOfBirthField.this.add(new Label(exception.getMessage()));
+            return "";
         }
     }
 }

@@ -17,6 +17,8 @@
  */
 package nl.mpi.tg.eg.experiment.client.model;
 
+import com.google.gwt.user.client.ui.FocusWidget;
+
 /**
  * @since Jun 29, 2016 3:52:50 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
@@ -28,4 +30,6 @@ public interface StimulusFreeText {
     public String getValue();
 
     public boolean isValid();
+
+    public FocusWidget getFocusWidget();
 }
