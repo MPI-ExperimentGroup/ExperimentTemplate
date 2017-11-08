@@ -17,15 +17,12 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.FastTrack;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 import nl.mpi.tg.eg.frinex.common.AbstractStimuliProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
-import utils.Vocabulary;
 
 /**
  * @since Oct 27, 2017 2:01:33 PM (creation date)
@@ -46,11 +43,12 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
         ArrayList<AdVocAsAtomStimulus> nonwords = Constants.NONWORDS;
         FastTrack fastTrack = new FastTrack(Constants.DEFAULT_USER, words, nonwords, Constants.NONWORDS_PER_BLOCK, Constants.START_BAND, Constants.AVRERAGE_NON_WORD_POSITION);
         fastTrack.createStimulae();
-        ArrayList<AtomBookkeepingStimulus> fastTrackSequence = fastTrack.getStimulae();
-
-        //stimuliList = Utils.getPureStimuli(fastTrackSequence);
+        stimuliList = fastTrack.getPureStimuli();
+        stimuliList.add(new AdVocAsAtomStimulus("xxx", "fake", "word", 0));
+        System.out.println(stimuliList.size());
     }
-
+    
+    
     @Override
     public Stimulus getCurrentStimulus() {
         return stimuliList.get(stimuliIndex);

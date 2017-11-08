@@ -17,6 +17,8 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.service;
 
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Main;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import org.junit.After;
@@ -31,22 +33,22 @@ import static org.junit.Assert.*;
  * @author olhshk
  */
 public class AdVocAsStimuliProviderTest {
-    
+
     public AdVocAsStimuliProviderTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -55,12 +57,26 @@ public class AdVocAsStimuliProviderTest {
      * Test of getAll method, of class AdVocAsStimuliProvider.
      */
     @Test
-    public void testGetAll() {
-        System.out.println("getAll");
-        AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-        //instance.initialiseStimuliState("");
+    public void testinItialiseStimuliState() {
+        System.out.println("initialiseStimuliState");
+        String[] input = new String[0];
+        try {
+            Main.main(input);
+            AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
+            instance.initialiseStimuliState("");
+            int lengthWords = Constants.WORDS.length;
+            assertEquals(Constants.NUMBER_OF_BANDS, lengthWords);
+            int lengthWords37 = Constants.WORDS[36].length;
+            assertEquals(Constants.WORDS_PER_BAND, lengthWords37);
+            int totalStimuli = instance.getTotalStimuli();
+            assertTrue(totalStimuli>0);
+            System.out.println(totalStimuli);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            assertTrue(ex.getMessage(), true);
+        }
         // TODO review the generated test code and remove the default call to fail.
-       //fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -74,7 +90,7 @@ public class AdVocAsStimuliProviderTest {
         //Stimulus result = instance.getCurrentStimulus();
         //assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-       //fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -88,7 +104,7 @@ public class AdVocAsStimuliProviderTest {
         int result = instance.getCurrentStimulusIndex();
         //assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-       //fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -102,7 +118,7 @@ public class AdVocAsStimuliProviderTest {
         int result = instance.getTotalStimuli();
         //assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-       //fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -117,7 +133,7 @@ public class AdVocAsStimuliProviderTest {
         //boolean result = instance.hasNextStimulus(increment);
         //assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-       //fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -130,7 +146,7 @@ public class AdVocAsStimuliProviderTest {
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
         //instance.nextStimulus(increment);
         // TODO review the generated test code and remove the default call to fail.
-       //fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -143,11 +159,12 @@ public class AdVocAsStimuliProviderTest {
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
         //instance.setCurrentStimuliIndex(currentStimuliIndex);
         // TODO review the generated test code and remove the default call to fail.
-       //fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
-     * Test of getCurrentStimulusUniqueId method, of class AdVocAsStimuliProvider.
+     * Test of getCurrentStimulusUniqueId method, of class
+     * AdVocAsStimuliProvider.
      */
     @Test
     public void testGetCurrentStimulusUniqueId() {
@@ -157,7 +174,7 @@ public class AdVocAsStimuliProviderTest {
         //String result = instance.getCurrentStimulusUniqueId();
         //assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-       //fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -171,7 +188,7 @@ public class AdVocAsStimuliProviderTest {
         //String result = instance.getLoadedStimulusString();
         //assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-       //fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
-    
+
 }

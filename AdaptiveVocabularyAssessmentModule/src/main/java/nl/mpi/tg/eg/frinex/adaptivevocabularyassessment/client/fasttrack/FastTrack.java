@@ -96,6 +96,14 @@ public class FastTrack extends Series {
     public ArrayList<AtomBookkeepingStimulus> getStimulae() {
         return this.bookkeepingStimuli;
     }
+    
+     public ArrayList<AdVocAsAtomStimulus> getPureStimuli() {
+        ArrayList<AdVocAsAtomStimulus> retVal = new ArrayList<>(this.bookkeepingStimuli.size());
+        for (AtomBookkeepingStimulus bStimulus : bookkeepingStimuli) {
+            retVal.add(bStimulus.getPureStimulus());
+        }
+        return retVal;
+    }
 
     private void debugTestNonwordFrequences(RandomNonWordIndeces posChooser) {
         posChooser.updateFrequencesOfNonWordIndices();
