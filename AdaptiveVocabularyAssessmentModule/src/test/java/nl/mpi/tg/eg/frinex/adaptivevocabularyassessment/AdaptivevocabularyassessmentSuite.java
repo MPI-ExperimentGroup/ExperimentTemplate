@@ -29,7 +29,7 @@ import org.junit.runners.Suite;
  * @author olhshk
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.SeriesTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.service.ServiceSuite.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.model.ModelSuite.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.AtomBookkeepingStimulusTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.UtilsTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.MainTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.FasttrackSuite.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.VocabularyTest.class})
+@Suite.SuiteClasses({nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.service.ServiceSuite.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.model.ModelSuite.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.AtomBookkeepingStimulusTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.UtilsTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.MainTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.FasttrackSuite.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.VocabularyTest.class})
 public class AdaptivevocabularyassessmentSuite {
 
     @BeforeClass

@@ -72,28 +72,28 @@ public class MainTest {
         try {
             AdVocAsAtomStimulus[][] words = Vocabulary.getWords();
             ArrayList<AdVocAsAtomStimulus> nonwords = Vocabulary.getNonwords();
-            System.out.println("Fast track ");
-            //FastTrack(String username, AtomBookkeepingStimulus[][] wrds, ArrayList<AtomStimulus> nonwrds, int nonWordsPerBlock, int startBand, int averageNonwordPosition)
+            
+            System.out.println("Create fast track sequence");
             FastTrack fastTrack = new FastTrack(Constants.DEFAULT_USER, words, nonwords, Constants.NONWORDS_PER_BLOCK, Constants.START_BAND, Constants.AVRERAGE_NON_WORD_POSITION);
             fastTrack.createStimulae();
-            ArrayList<AtomBookkeepingStimulus> fastTrackSequence = fastTrack.getStimulae();
-
+            
+            System.out.println("Create fine tuning  sequences");
+            AtomBookkeepingStimulus[][] bookkeepingWords = fastTrack.getBookkeepingWords();
+            ArrayList<AtomBookkeepingStimulus> bookkeepingNonwords = fastTrack.getBookkeepingNonwords();
+            FineTuning fineTuning = new FineTuning(Constants.DEFAULT_USER, bookkeepingWords, bookkeepingNonwords);
+            fineTuning.createStimulae();
+            
+            System.out.println("Run fast track sequence");
             int stopBand = 37;
             int lastCorrectBand = simulateFastTrackUpTo(fastTrack, stopBand);
+            ArrayList<AtomBookkeepingStimulus> fastTrackSequence = fastTrack.getUserRecords();
             System.out.println("last correct band " + lastCorrectBand);
             Utils.writeCsvFileFastTrack(fastTrackSequence, stopBand, OUTPUT_DIRECTORY);
 
-            /**/
-            System.out.println("Fine tuning ");
-            // FineTuning(String username, AtomBookkeepingStimulus[][] wrds, ArrayList<AtomStimulus> nonwrds)
-            FineTuning fineTuning = new FineTuning(Constants.DEFAULT_USER, words, nonwords);
-            fineTuning.createStimulae();
-            ArrayList<ArrayList<FineTuningBookkeepingStimulus>> fineTuningStimulae = fineTuning.getStimulae();
+            System.out.println("Run fine tuning ");
             //writeCsvFileFineTuningPreset(fineTuningStimulae);
-            //String message=simulateFineTuningAllCorrect(fineTuning, lastCorrectBand);
-            //String message=simulateFineTuningAllWrong(fineTuning, lastCorrectBand);
-            String message = simulateFineTuningHalfCorrect(fineTuning, lastCorrectBand);
-            //ArrayList<ArrayList<FineTuningStimulus>> fineTuningStimulae = fineTuning.getStimulae();
+            String message = simulateFineTuning(fineTuning, lastCorrectBand);
+            ArrayList<ArrayList<FineTuningBookkeepingStimulus>> fineTuningStimulae = fineTuning.getUserRecords();
             long millis = System.currentTimeMillis();
             String fileName = "Fine_tuning_history_" + message + "_" + millis + ".csv";
             Utils.writeCsvFileFineTuningHistoryShortened(fineTuningStimulae, OUTPUT_DIRECTORY, fileName);
@@ -109,7 +109,7 @@ public class MainTest {
     private int simulateFastTrackUpTo(FastTrack fastTrack, int stopBand) {
         int i = 0;
         boolean correctness = true;
-        ArrayList<AtomBookkeepingStimulus> stimulae = fastTrack.getStimulae();
+        ArrayList<AtomBookkeepingStimulus> stimulae = fastTrack.getUserRecords();
         int actualStopBand = 0;
         while (i < stimulae.size() && correctness) {
             int currentBand = stimulae.get(i).getBandNumber();
@@ -129,26 +129,15 @@ public class MainTest {
         return actualStopBand;
     }
 
-    private String simulateFineTuningAllCorrect(FineTuning fineTuning, int lastBandFromFastTrack) throws Exception {
-        String retVal = simulateFineTuningProbabilistic(fineTuning, lastBandFromFastTrack, 1);
-        System.out.println(retVal);
-        return retVal;
-    }
-
-    private String simulateFineTuningAllWrong(FineTuning fineTuning, int lastBandFromFastTrack) throws Exception {
-        String retVal = simulateFineTuningProbabilistic(fineTuning, lastBandFromFastTrack, -1);
-        System.out.println(retVal);
-        return retVal;
-    }
-
-    private String simulateFineTuningHalfCorrect(FineTuning fineTuning, int lastBandFromFastTrack) throws Exception {
+  
+    private String simulateFineTuning(FineTuning fineTuning, int lastBandFromFastTrack) throws Exception {
         String retVal = simulateFineTuningProbabilistic(fineTuning, lastBandFromFastTrack, 0.6);
         System.out.println(retVal);
         return retVal;
     }
 
     private String simulateFineTuningProbabilistic(FineTuning fineTuning, int lastBandFromFastTrack, double correctnessUpperBound) throws Exception {
-        ArrayList<ArrayList<FineTuningBookkeepingStimulus>> stimulae = fineTuning.getStimulae();
+        ArrayList<ArrayList<FineTuningBookkeepingStimulus>> stimulae = fineTuning.getUserRecords();
         String message = "";
         boolean enoughStimulae = true;
         boolean correctness;

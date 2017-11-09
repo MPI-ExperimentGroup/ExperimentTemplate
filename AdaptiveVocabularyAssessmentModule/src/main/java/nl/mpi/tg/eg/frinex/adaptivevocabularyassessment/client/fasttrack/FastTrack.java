@@ -19,33 +19,39 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack;
 
 import java.util.ArrayList;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Series;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 
 /**
  *
  * @author olhshk
  */
-public class FastTrack extends Series {
+public class FastTrack {
 
+    protected AtomBookkeepingStimulus[][] words;
+    protected ArrayList<AtomBookkeepingStimulus> nonwords;
+    protected String userName;
+
+    
     private final int startBand;
     private final int averageNonwordPosition;
     private final int nonWordsPerBlock;
     private ArrayList<AtomBookkeepingStimulus> bookkeepingStimuli;
 
     public FastTrack(String username, AdVocAsAtomStimulus[][] wrds, ArrayList<AdVocAsAtomStimulus> nonwrds, int nonWordsPerBlock, int startBand, int averageNonwordPosition) {
-        super(username, wrds, nonwrds);
+        this.userName=username;
+        this.words = this.initialiseWords(wrds);
+        this.nonwords = this.initialiseNonwords(nonwrds);
         this.startBand = startBand;
         this.averageNonwordPosition = averageNonwordPosition;
         this.nonWordsPerBlock = nonWordsPerBlock;
 
     }
-    
-    public int getStartBand(){
-       return this.startBand; 
+
+    public int getStartBand() {
+        return this.startBand;
     }
 
-    @Override
     public void createStimulae() {
 
         this.bookkeepingStimuli = new ArrayList<>();
@@ -56,7 +62,7 @@ public class FastTrack extends Series {
         ArrayList<Integer> nonWordInd = posChooser.updateAndGetIndices();
 
         int bandIndex = this.startBand - 1;
-        int nonwordIndex = -1; 
+        int nonwordIndex = -1;
         ArrayList<AtomBookkeepingStimulus> nonwordsCopy = AtomBookkeepingStimulus.copyAtomStimulae(this.nonwords);
         int sequenceLength = posChooser.getSequenceLength();
         for (int i = 0; i < sequenceLength; i++) {
@@ -89,18 +95,61 @@ public class FastTrack extends Series {
             eval = false;// tool a word as a nonword
         }
         stimulus.setCorrectness(eval);
-        
+
         return eval;
     }
-
-    public ArrayList<AtomBookkeepingStimulus> getStimulae() {
+    
+     public ArrayList<AtomBookkeepingStimulus> getUserRecords(){
         return this.bookkeepingStimuli;
     }
     
-     public ArrayList<AdVocAsAtomStimulus> getPureStimuli() {
+    
+    public AtomBookkeepingStimulus[][] getBookkeepingWords(){
+        return this.words;
+    }
+    
+    public ArrayList<AtomBookkeepingStimulus> getBookkeepingNonwords(){
+        return this.nonwords;
+    }
+
+
+    public ArrayList<AdVocAsAtomStimulus> getPureStimuli() {
         ArrayList<AdVocAsAtomStimulus> retVal = new ArrayList<>(this.bookkeepingStimuli.size());
         for (AtomBookkeepingStimulus bStimulus : bookkeepingStimuli) {
             retVal.add(bStimulus.getPureStimulus());
+        }
+        return retVal;
+    }
+
+    private AtomBookkeepingStimulus[][] initialiseWords(AdVocAsAtomStimulus[][] wrds) {
+        if (wrds == null || wrds.length == 0) {
+            System.out.println("Empty array of words in bands");
+            return new AtomBookkeepingStimulus[0][0];
+        }
+        AtomBookkeepingStimulus[][] retVal = new AtomBookkeepingStimulus[Constants.NUMBER_OF_BANDS][Constants.WORDS_PER_BAND];
+        for (int bandIndex = 0; bandIndex < wrds.length; bandIndex++) {
+            if (wrds[bandIndex] == null && wrds[bandIndex].length == 0) {
+                System.out.println("Empty array of words for band " + bandIndex);
+                retVal[bandIndex] = new AtomBookkeepingStimulus[0];
+            } else {
+                for (int wordCounter = 0; wordCounter < wrds[bandIndex].length; wordCounter++) {
+                    AtomBookkeepingStimulus stimulus = new AtomBookkeepingStimulus(wrds[bandIndex][wordCounter]);
+                    retVal[bandIndex][wordCounter] = stimulus;
+                }
+            }
+        }
+        return retVal;
+    }
+
+    private ArrayList<AtomBookkeepingStimulus> initialiseNonwords(ArrayList<AdVocAsAtomStimulus> nonwrds) {
+        if (nonwrds == null || nonwrds.isEmpty()) {
+            System.out.println("Empty array of nonwords");
+            return new ArrayList<>();
+        }
+        ArrayList<AtomBookkeepingStimulus> retVal = new ArrayList<>(nonwrds.size());
+        for (AdVocAsAtomStimulus nonword : nonwrds) {
+            AtomBookkeepingStimulus stimulus = new AtomBookkeepingStimulus(nonword);
+            retVal.add(stimulus);
         }
         return retVal;
     }
@@ -114,7 +163,5 @@ public class FastTrack extends Series {
         }
 
     }
-    
-  
 
 }
