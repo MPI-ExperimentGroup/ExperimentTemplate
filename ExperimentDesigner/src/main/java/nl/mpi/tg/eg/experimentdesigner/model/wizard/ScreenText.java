@@ -45,4 +45,8 @@ public class ScreenText implements Serializable {
     public String getScreenText() {
         return screenText;
     }
+
+    public void setScreenText(String screenText) {
+        this.screenText = screenText;
+    }
 }
