@@ -135,7 +135,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <div class="featurestable">
                             <div>
                                 <div th:fragment="featuresrow" class="featuresrow">
-                                    <form th:id="${'wizardScreenForm' + wizardScreen.screenTag}">
+                                    <div th:id="${'wizardScreenForm' + wizardScreen.screenTag}">
                                         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                                         <div class="featureTypeHeader"
                                              th:id="${'wizardScreenHeader' + wizardScreen.getScreenTag()}"
@@ -235,7 +235,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                                     private Integer taskIndex = null;-->
                                                 <span th:replace="wizard :: wizardCheckBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel='Centre Screen', wizardFragmentValue=${wizardScreen.centreScreen}, wizardFragmentName='centreScreen')"></span>
                                                 <div th:each="screenText : ${wizardScreen.getScreenText()}">      
-                                                    <span th:replace="wizard :: wizardTextArea(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel=${wizardScreen.getWizardScreenType().wizardScreen.getScreenTextInfo(screenTextStat.index)}, wizardFragmentValue=${screenText.getScreenText()}, wizardFragmentName=${'screenText'+ screenText.getId()})"></span>
+                                                    <span th:replace="wizard :: wizardTextArea(wizardScreenId=${wizardScreen.getId()}, screenTextId=${screenText.getId()}, wizardFragmentLabel=${wizardScreen.getWizardScreenType().wizardScreen.getScreenTextInfo(screenTextStat.index)}, wizardFragmentValue=${screenText.getScreenText()}, wizardFragmentName=${'screenText'+ screenText.getId()})"></span>
                                                 </div>    
                                                 <div th:each="nextButtonLabel : ${wizardScreen.nextButton}">      
                                                     <span th:replace="wizard :: wizardTextBox(wizardScreenId=${wizardScreen.getId()}, wizardFragmentLabel=${wizardScreen.getWizardScreenType().wizardScreen.getNextButtonInfo(nextButtonLabelStat.index)}, wizardFragmentValue=${nextButtonLabel}, wizardFragmentName=${'nextButtonLabel'+nextButtonLabelStat.index})"></span>
@@ -354,7 +354,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                                                                         <input type="hidden" th:value="${features.getFeatureType()}" name="featureType"/>
                                                                                         <input type="hidden" th:name="${(objectType eq 'PresenterScreen')? 'screenId' : 'featureId'}" th:value="${presenterScreen.getId()}"/>
                                                                                     </span>-->
-                                    </form>
+                                    </div>
                                     <!--<div th:replace="screens :: features(presenterScreen=${features}, objectType='PresenterFeature')"></div>-->
                                 </div>
                             </div>
@@ -377,6 +377,30 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             </div>
             <script th:inline="javascript">
                 /*<![CDATA[*/
+                function startEditing(wizardFragmentName) {
+                    $('#editButton' + wizardFragmentName).hide();
+                    $('#editingPanel' + wizardFragmentName).show();
+                }
+                function cancelEditing(typeString, wizardFragmentName) {
+                    var targetUrl = /*[[${contextPath + '/wizard/update/'}]]*/'';
+                    $.get(targetUrl + typeString).done(function (data) {
+                        $('#editFragment' + wizardFragmentName).replaceWith(data);
+                    }).fail(function (data) {
+                        var jsonResponse = JSON.parse(data.responseText);
+                        $('#errorDiv' + wizardFragmentName).show();
+                        $('#errorDiv' + wizardFragmentName).text(jsonResponse.message);
+                    });
+                }
+                function saveEditing(typeString, wizardFragmentName) {
+                    var targetUrl = /*[[${contextPath + '/wizard/update/'}]]*/'';
+                    $.post(targetUrl + typeString, $('#editingForm' + wizardFragmentName).serialize()).done(function (data) {
+                        $('#editFragment' + wizardFragmentName).replaceWith(data);
+                    }).fail(function (data) {
+                        var jsonResponse = JSON.parse(data.responseText);
+                        $('#errorDiv' + wizardFragmentName).show();
+                        $('#errorDiv' + wizardFragmentName).text(jsonResponse.message);
+                    });
+                }
                 function hideShowDetails(wizardScreenTag)
                 {
                     if ($('#wizardScreenDetailsCheckBox' + wizardScreenTag).is(":checked"))
@@ -519,16 +543,30 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <br/>
                 </div>
             </span>
-            <span th:fragment="wizardTextArea(wizardScreenId, wizardFragmentLabel, wizardFragmentValue, wizardFragmentName)">
+            <span th:id="${'editFragment' + wizardFragmentName}" th:fragment="wizardTextArea(wizardScreenId, screenTextId, wizardFragmentLabel, wizardFragmentValue, wizardFragmentName)">
                 <div class="featuresrow" th:if="${wizardFragmentValue != null}">
                     <div class="featureTypeHeader">
                         <span class="featurescell" th:text="${wizardFragmentLabel}">wizardTextArea</span>
                     </div>
                     <div class="featurescell">
                         <span th:utext="${wizardFragmentValue}" />
-                        <button type="button" class="wizardScreenEditCheckBox" name="editScreenId" th:onclick="${'$(' + wizardFragmentName + ').show();'}">Edit</button>
-                        <textarea style="display: none" class="wizardTextbox" th:id="${wizardFragmentName}" th:name="${wizardFragmentName}" th:text="${wizardFragmentValue}" th:onchange="${'$(updateFeatureButton' + wizardScreenId + ').show();'}">
-                        </textarea>
+                        <button type="button" class="wizardScreenEditCheckBox" th:id="${'editButton' + wizardFragmentName}" th:onclick="'startEditing(\'' + ${wizardFragmentName} + '\');'">Edit</button>
+                        <div th:id="${'editingPanel' + wizardFragmentName}" style="display: none">
+                            <form th:id="${'editingForm' + wizardFragmentName}">
+                                <textarea class="wizardTextbox" th:id="${wizardFragmentName}" th:name="${wizardFragmentName}" th:text="${wizardFragmentValue}">
+                                </textarea>
+                                <input type="hidden" name="wizardScreenId" th:value="${wizardScreenId}" />
+                                <input type="hidden" name="screenTextId" th:value="${screenTextId}" />
+                                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                            </form>
+                            <br/>
+                            <span class="wizardScreenEditCheckBox">
+                                <button type="button" th:id="${'cancelEditingButton' + wizardFragmentName}" th:onclick="'cancelEditing(\'screenText\',\'' + ${wizardFragmentName} + '\');'">Cancel</button>
+                                &nbsp;
+                                <button type="button" th:id="${'saveEditingButton' + wizardFragmentName}" th:onclick="'saveEditing(\'screenText\',\'' + ${wizardFragmentName} + '\');'">Save Changes</button>
+                            </span>
+                        </div>
+                        <div class="errorDiv" th:id="${'errorDiv' + wizardFragmentName}" style="display: none" />
                     </div>
                     <br/>
                 </div>
