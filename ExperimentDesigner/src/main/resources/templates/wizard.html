@@ -381,15 +381,19 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     $('#editButton' + wizardFragmentName).hide();
                     $('#editingPanel' + wizardFragmentName).show();
                 }
-                function cancelEditing(typeString, wizardFragmentName) {
-                    var targetUrl = /*[[${contextPath + '/wizard/update/'}]]*/'';
-                    $.get(targetUrl + typeString).done(function (data) {
-                        $('#editFragment' + wizardFragmentName).replaceWith(data);
-                    }).fail(function (data) {
-                        var jsonResponse = JSON.parse(data.responseText);
-                        $('#errorDiv' + wizardFragmentName).show();
-                        $('#errorDiv' + wizardFragmentName).text(jsonResponse.message);
-                    });
+                function cancelEditing(typeString, wizardFragmentName, wizardFragmentValue) {
+//                    var targetUrl = /*[[${contextPath + '/wizard/update/'}]]*/'';
+//                    $.get(targetUrl + typeString).done(function (data) {
+//                        $('#editFragment' + wizardFragmentName).replaceWith(data);
+//                    }).fail(function (data) {
+//                        var jsonResponse = JSON.parse(data.responseText);
+//                        $('#errorDiv' + wizardFragmentName).show();
+//                        $('#errorDiv' + wizardFragmentName).text(jsonResponse.message);
+//                    });
+                    $('#editButton' + wizardFragmentName).show();
+                    $('#editingPanel' + wizardFragmentName).hide();
+                    $('#' + wizardFragmentName).val(wizardFragmentValue);
+
                 }
                 function saveEditing(typeString, wizardFragmentName) {
                     var targetUrl = /*[[${contextPath + '/wizard/update/'}]]*/'';
@@ -553,15 +557,18 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         <button type="button" class="wizardScreenEditCheckBox" th:id="${'editButton' + wizardFragmentName}" th:onclick="'startEditing(\'' + ${wizardFragmentName} + '\');'">Edit</button>
                         <div th:id="${'editingPanel' + wizardFragmentName}" style="display: none">
                             <form th:id="${'editingForm' + wizardFragmentName}">
-                                <textarea class="wizardTextbox" th:id="${wizardFragmentName}" th:name="${wizardFragmentName}" th:text="${wizardFragmentValue}">
+                                <textarea class="wizardTextbox" th:id="${wizardFragmentName}" th:name="screenText" th:text="${wizardFragmentValue}">
                                 </textarea>
+                                <input type="hidden" name="wizardData" th:value="${wizardData.getId()}" />
                                 <input type="hidden" name="wizardScreenId" th:value="${wizardScreenId}" />
                                 <input type="hidden" name="screenTextId" th:value="${screenTextId}" />
+                                <input type="hidden" name="wizardFragmentLabel" th:value="${wizardFragmentLabel}" />
+                                <input type="hidden" name="wizardFragmentName" th:value="${wizardFragmentName}" />
                                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                             </form>
                             <br/>
                             <span class="wizardScreenEditCheckBox">
-                                <button type="button" th:id="${'cancelEditingButton' + wizardFragmentName}" th:onclick="'cancelEditing(\'screenText\',\'' + ${wizardFragmentName} + '\');'">Cancel</button>
+                                <button type="button" th:id="${'cancelEditingButton' + wizardFragmentName}" th:onclick="'cancelEditing(\'screenText\',\'' + ${wizardFragmentName} + '\',\'' + ${wizardFragmentValue} + '\');'">Cancel</button>
                                 &nbsp;
                                 <button type="button" th:id="${'saveEditingButton' + wizardFragmentName}" th:onclick="'saveEditing(\'screenText\',\'' + ${wizardFragmentName} + '\');'">Save Changes</button>
                             </span>
