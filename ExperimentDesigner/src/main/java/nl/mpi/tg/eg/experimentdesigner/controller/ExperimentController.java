@@ -31,6 +31,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.util.DefaultExperiments;
 import nl.mpi.tg.eg.experimentdesigner.util.DobesAnnotator;
 import nl.mpi.tg.eg.experimentdesigner.util.FactOrFiction;
+import nl.mpi.tg.eg.experimentdesigner.util.GuineaPigProject;
 import nl.mpi.tg.eg.experimentdesigner.util.HRExperiment01;
 import nl.mpi.tg.eg.experimentdesigner.util.HRPretest;
 import nl.mpi.tg.eg.experimentdesigner.util.HRPretest02;
@@ -39,11 +40,14 @@ import nl.mpi.tg.eg.experimentdesigner.util.KinOathExample;
 import nl.mpi.tg.eg.experimentdesigner.util.ManipulatedContours;
 import nl.mpi.tg.eg.experimentdesigner.util.MultiParticipant;
 import nl.mpi.tg.eg.experimentdesigner.util.NblExperiment01;
+import nl.mpi.tg.eg.experimentdesigner.util.NonWacq;
 import nl.mpi.tg.eg.experimentdesigner.util.Parcours;
 import nl.mpi.tg.eg.experimentdesigner.util.RdExperiment02;
 import nl.mpi.tg.eg.experimentdesigner.util.RosselFieldKit;
 import nl.mpi.tg.eg.experimentdesigner.util.Sara01;
+import nl.mpi.tg.eg.experimentdesigner.util.SentencesRatingTask;
 import nl.mpi.tg.eg.experimentdesigner.util.ShawiFieldKit;
+import nl.mpi.tg.eg.experimentdesigner.util.ShortMultiparticipant01;
 import nl.mpi.tg.eg.experimentdesigner.util.SynQuiz2;
 import nl.mpi.tg.eg.experimentdesigner.util.TransmissionChain;
 import nl.mpi.tg.eg.experimentdesigner.util.WellspringsSamoanFieldKit;
@@ -136,7 +140,11 @@ public class ExperimentController {
             "RosselFieldKit",
             "WellspringsSamoan",
             "Zinnen Beoordelen",
-            "ManipulatedContours"};
+            "ManipulatedContours",
+            "ShortMultiparticipant01",
+            "NonWacq",
+            "SentencesRatingTask",
+            "GuineaPigProject"};
         Arrays.sort(wizardTemplateList);
         model.addAttribute("templateList", wizardTemplateList);
         model.addAttribute("existingWizardList", wizardRepository.findDistinctAppName());
@@ -207,6 +215,18 @@ public class ExperimentController {
                     break;
                 case "Parcours01":
                     wizardData = new Parcours().getWizardData();
+                    break;
+                case "ShortMultiparticipant01":
+                    wizardData = new ShortMultiparticipant01().getWizardData();
+                    break;
+                case "NonWacq":
+                    wizardData = new NonWacq().getWizardData();
+                    break;
+                case "SentencesRatingTask":
+                    wizardData = new SentencesRatingTask().getWizardData();
+                    break;
+                case "GuineaPigProject":
+                    wizardData = new GuineaPigProject().getWizardData();
                     break;
             }
         }
