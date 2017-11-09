@@ -24,21 +24,26 @@ import nl.mpi.tg.eg.experimentdesigner.dao.MetadataRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterFeatureRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PresenterScreenRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PublishEventRepository;
+import nl.mpi.tg.eg.experimentdesigner.dao.ScreenTextRepository;
+import nl.mpi.tg.eg.experimentdesigner.dao.WizardRepository;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.ScreenText;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreenData;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import static nl.mpi.tg.eg.experimentdesigner.util.DefaultExperiments.getDefault;
-import nl.mpi.tg.eg.experimentdesigner.util.HRPretest02;
-import nl.mpi.tg.eg.experimentdesigner.util.JenaFieldKit;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * @since Feb 22, 2016 4:23:36 PM (creation date)
@@ -58,21 +63,43 @@ public class WizardController {
     MetadataRepository metadataRepository;
     @Autowired
     ExperimentRepository experimentRepository;
+    @Autowired
+    WizardRepository wizardRepository;
+    @Autowired
+    ScreenTextRepository screenTextRepository;
 
-//    @RequestMapping(value = "/experiments/wizard/json", method = RequestMethod.GET)
+//    @RequestMapping(value = "/wizard/json/{wizardData}", method = RequestMethod.GET, produces = {"application/xml", "application/json"})
+//    @ResponseStatus(HttpStatus.OK)
 //    public @ResponseBody
-//    WizardData getJson() {
-//        return new HRPretest02().getWizardData();
+//    WizardData getJson(@PathVariable WizardData wizardData) {
+//        return wizardData;
 //    }
 
-//    @RequestMapping(value = "/experiments/wizard/create", method = RequestMethod.POST)
-//    public String create(final HttpServletRequest req, @ModelAttribute WizardData wizardData) {
-////        final Experiment experiment = getExperiment(wizardData);
-//        final Experiment experiment = new JenaFieldKit().getExperiment();
+//    @RequestMapping(value = "/experiments/wizard/create/{wizardData}")
+//    public String create(final HttpServletRequest req, @PathVariable WizardData wizardData) {
+//        final Experiment experiment = getExperiment(wizardData);
+////        final Experiment experiment = wizardData.getExperiment();
 ////        final Experiment experiment = new Sara01().getExperiment();
 //        experimentRepository.save(experiment);
 //        return "redirect:/experiment/" + experiment.getId();
 //    }
+
+    @RequestMapping(value = "/wizard/update/screenText", method = RequestMethod.POST)
+    public String screenText(final HttpServletRequest req,
+            final Model model,
+            final @ModelAttribute("screenTextId") ScreenText screenTextId,
+            final @ModelAttribute("wizardData") WizardData wizardData,
+            final @ModelAttribute("wizardScreenId") String wizardScreenId,
+            final @ModelAttribute("wizardFragmentLabel") String wizardFragmentLabel,
+            final @ModelAttribute("wizardFragmentName") String wizardFragmentName,
+            final @ModelAttribute("screenText") String screenText
+    ) {
+        screenTextId.setScreenText(screenText);
+        screenTextRepository.save(screenTextId);
+        // todo: consider adding an owner to the screentext for permissions
+        model.addAttribute("wizardFragmentValue", screenTextRepository.findOne(screenTextId.getId()).getScreenText());
+        return "wizard :: wizardTextArea";
+    }
 
     public Experiment getExperiment(WizardData wizardData) {
         final Experiment experiment = getExperiment(wizardData.getAppName().replaceAll("[^A-Za-z0-9]", "_"), wizardData.getAppName(), wizardData.isShowMenuBar());
