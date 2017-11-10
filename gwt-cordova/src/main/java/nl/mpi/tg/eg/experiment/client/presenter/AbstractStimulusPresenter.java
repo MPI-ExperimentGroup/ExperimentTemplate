@@ -874,18 +874,22 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
-        stimulusImage(stimulusProvider.getCurrentStimulus(), percentOfPage, maxHeight, maxWidth, animateType, null, postLoadMs, null, null, timedStimulusListener, null);
+        stimulusImage(stimulusProvider.getCurrentStimulus(), percentOfPage, maxHeight, maxWidth, animateType, true, null, postLoadMs, null, null, timedStimulusListener, null);
+    }
+
+    protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final boolean showControls, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+        stimulusImage(stimulusProvider.getCurrentStimulus(), percentOfPage, maxHeight, maxWidth, animateType, showControls, null, postLoadMs, null, null, timedStimulusListener, null);
     }
 
     protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, String regex, String replacement, final TimedStimulusListener timedStimulusListener) {
-        stimulusImage(stimulusProvider.getCurrentStimulus(), percentOfPage, maxHeight, maxWidth, animateType, null, postLoadMs, regex, replacement, timedStimulusListener, null);
+        stimulusImage(stimulusProvider.getCurrentStimulus(), percentOfPage, maxHeight, maxWidth, animateType, true, null, postLoadMs, regex, replacement, timedStimulusListener, null);
     }
 
     protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final Integer fixedPositionY, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
-        stimulusImage(stimulusProvider.getCurrentStimulus(), percentOfPage, maxHeight, maxWidth, animateType, fixedPositionY, postLoadMs, null, null, timedStimulusListener, null);
+        stimulusImage(stimulusProvider.getCurrentStimulus(), percentOfPage, maxHeight, maxWidth, animateType, true, fixedPositionY, postLoadMs, null, null, timedStimulusListener, null);
     }
 
-    protected void stimulusImage(final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final Integer fixedPositionY, int postLoadMs, String regex, String replacement, final TimedStimulusListener timedStimulusListener, final TimedStimulusListener clickedStimulusListener) {
+    protected void stimulusImage(final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final boolean showControls, final Integer fixedPositionY, int postLoadMs, String regex, String replacement, final TimedStimulusListener timedStimulusListener, final TimedStimulusListener clickedStimulusListener) {
         if (currentStimulus.hasImage()) {
             final String image;
             if (regex != null && replacement != null) {
@@ -946,7 +950,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), "StimulusVideoShown", currentStimulus.getUniqueId(), currentStimulus.getVideo(), duration.elapsedMillis());
                 }
             };
-            ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, null, true, postLoadMs, shownStimulusListener, timedStimulusListener);
+            ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, null, showControls, postLoadMs, shownStimulusListener, timedStimulusListener);
         } else if (currentStimulus.getLabel() != null) {
             ((TimedStimulusView) simpleView).addHtmlText(currentStimulus.getLabel(), null);
             // send label shown tag
@@ -1205,14 +1209,14 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         while (matchingStimuliGroup.getNextStimulus(stimulusProvider)) {
             yPos += ySpacing;
             if (matchingStimuliGroup.isCorrect(stimulusProvider.getCurrentStimulus())) {
-                stimulusImage(stimulusProvider.getCurrentStimulus(), 0, maxWidth, maxWidth, animateType, yPos - (maxWidth / 2), postLoadCorrectMs, null, null, new TimedStimulusListener() {
+                stimulusImage(stimulusProvider.getCurrentStimulus(), 0, maxWidth, maxWidth, animateType, false, yPos - (maxWidth / 2), postLoadCorrectMs, null, null, new TimedStimulusListener() {
                     @Override
                     public void postLoadTimerFired() {
 
                     }
                 }, correctListener);
             } else {
-                stimulusImage(stimulusProvider.getCurrentStimulus(), 0, maxWidth, maxWidth, animateType, yPos - (maxWidth / 2), postLoadIncorrectMs, null, null, new TimedStimulusListener() {
+                stimulusImage(stimulusProvider.getCurrentStimulus(), 0, maxWidth, maxWidth, animateType, false, yPos - (maxWidth / 2), postLoadIncorrectMs, null, null, new TimedStimulusListener() {
                     @Override
                     public void postLoadTimerFired() {
 
@@ -1361,7 +1365,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void groupResponseStimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
-        stimulusImage(stimulusProvider.getStimuliFromString(groupParticipantService.getResponseStimulusId()), percentOfPage, maxHeight, maxWidth, animateType, null, postLoadMs, null, null, timedStimulusListener, null);
+        stimulusImage(stimulusProvider.getStimuliFromString(groupParticipantService.getResponseStimulusId()), percentOfPage, maxHeight, maxWidth, animateType, false, null, postLoadMs, null, null, timedStimulusListener, null);
     }
 
     protected void sendGroupEndOfStimuli(final String eventTag) {
