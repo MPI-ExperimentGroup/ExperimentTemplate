@@ -99,7 +99,7 @@ public class FastTrack {
         return eval;
     }
     
-     public ArrayList<AtomBookkeepingStimulus> getUserRecords(){
+     public ArrayList<AtomBookkeepingStimulus> getBookeepingStimuli(){
         return this.bookkeepingStimuli;
     }
     
@@ -111,7 +111,8 @@ public class FastTrack {
     public ArrayList<AtomBookkeepingStimulus> getBookkeepingNonwords(){
         return this.nonwords;
     }
-
+    
+  
 
     public ArrayList<AdVocAsAtomStimulus> getPureStimuli() {
         ArrayList<AdVocAsAtomStimulus> retVal = new ArrayList<>(this.bookkeepingStimuli.size());

@@ -15,27 +15,17 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client;
-
-import utils.Vocabulary;
+package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.fintetuning;
 
 /**
- * @since Oct 20, 2017 11:38:57 AM (creation date)
- * @author Peter Withers <peter.withers@mpi.nl>
+ *
+ * @author olhshk
  */
-public class Main {
+public class FineTuningException extends Exception{
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) throws Exception {
-
-        final String WORD_FILE_LOCATION = "2.selection_words_nonwords_w.csv";
-
-        final String NONWORD_FILE_LOCATION = "2.selection_words_nonwords.csv";
-
-        Vocabulary.initialiseVocabulary(WORD_FILE_LOCATION, NONWORD_FILE_LOCATION);
-        
+    protected FineTuningException(String message) {
+        super(message);
     }
-
+    
+    
 }

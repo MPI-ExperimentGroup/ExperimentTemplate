@@ -31,7 +31,7 @@ public class FineTuningBookkeepingStimulus {
     private long visitingTime;
     private int bandNumber;
 
-    public FineTuningBookkeepingStimulus(AtomBookkeepingStimulus[] arrStimulae) throws Exception {
+    public FineTuningBookkeepingStimulus(AtomBookkeepingStimulus[] arrStimulae) throws FineTuningException {
         this.atomStimulae = arrStimulae;// will be changed "in place", setting isUsed, userReaction, and evaluation
         this.visitingTime = -1;
         this.overallCorrectness = null;
@@ -42,7 +42,7 @@ public class FineTuningBookkeepingStimulus {
             if (arrStimulae[i].getBandNumber() > 0) {
                 if (currentBandNumber > -2) {
                     if (currentBandNumber != arrStimulae[i].getBandNumber()) {
-                        throw new Exception("Ill-formed stimulus in fine tuning, there are words from different bands, " + arrStimulae[i].getBandNumber() + " and " + currentBandNumber);
+                        throw new FineTuningException("Ill-formed stimulus in fine tuning, there are words from different bands, " + arrStimulae[i].getBandNumber() + " and " + currentBandNumber);
                     }
                 } else {
                     currentBandNumber = arrStimulae[i].getBandNumber();
@@ -50,14 +50,14 @@ public class FineTuningBookkeepingStimulus {
             } else {
                 nonwordCounter++;
                 if (nonwordCounter > 1) {
-                    throw new Exception("Ill-formed stimulus in fine tuning, there is more than 1 nonword. ");
+                    throw new FineTuningException("Ill-formed stimulus in fine tuning, there is more than 1 nonword. ");
                 }
             }
         }
         if (nonwordCounter > 0) {
             this.bandNumber = currentBandNumber;
         } else {
-          throw new Exception("Ill-formed stimulus in fine tuning, there are no nonwords. "); 
+          throw new FineTuningException("Ill-formed stimulus in fine tuning, there are no nonwords. "); 
         }
     }
 

@@ -28,10 +28,12 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.FastTra
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.fintetuning.FineTuning;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.fintetuning.FineTuningBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -86,14 +88,14 @@ public class MainTest {
             System.out.println("Run fast track sequence");
             int stopBand = 37;
             int lastCorrectBand = simulateFastTrackUpTo(fastTrack, stopBand);
-            ArrayList<AtomBookkeepingStimulus> fastTrackSequence = fastTrack.getUserRecords();
+            ArrayList<AtomBookkeepingStimulus> fastTrackSequence = fastTrack.getBookeepingStimuli();
             System.out.println("last correct band " + lastCorrectBand);
             Utils.writeCsvFileFastTrack(fastTrackSequence, stopBand, OUTPUT_DIRECTORY);
 
             System.out.println("Run fine tuning ");
             //writeCsvFileFineTuningPreset(fineTuningStimulae);
             String message = simulateFineTuning(fineTuning, lastCorrectBand);
-            ArrayList<ArrayList<FineTuningBookkeepingStimulus>> fineTuningStimulae = fineTuning.getUserRecords();
+            ArrayList<ArrayList<FineTuningBookkeepingStimulus>> fineTuningStimulae = fineTuning.getStimuli();
             long millis = System.currentTimeMillis();
             String fileName = "Fine_tuning_history_" + message + "_" + millis + ".csv";
             Utils.writeCsvFileFineTuningHistoryShortened(fineTuningStimulae, OUTPUT_DIRECTORY, fileName);
@@ -109,7 +111,7 @@ public class MainTest {
     private int simulateFastTrackUpTo(FastTrack fastTrack, int stopBand) {
         int i = 0;
         boolean correctness = true;
-        ArrayList<AtomBookkeepingStimulus> stimulae = fastTrack.getUserRecords();
+        ArrayList<AtomBookkeepingStimulus> stimulae = fastTrack.getBookeepingStimuli();
         int actualStopBand = 0;
         while (i < stimulae.size() && correctness) {
             int currentBand = stimulae.get(i).getBandNumber();
@@ -137,7 +139,7 @@ public class MainTest {
     }
 
     private String simulateFineTuningProbabilistic(FineTuning fineTuning, int lastBandFromFastTrack, double correctnessUpperBound) throws Exception {
-        ArrayList<ArrayList<FineTuningBookkeepingStimulus>> stimulae = fineTuning.getUserRecords();
+        ArrayList<ArrayList<FineTuningBookkeepingStimulus>> stimulae = fineTuning.getStimuli();
         String message = "";
         boolean enoughStimulae = true;
         boolean correctness;
@@ -168,9 +170,9 @@ public class MainTest {
                 boolean[] answers = fineTuning.testProbabilisticAnswerer(bandNumber, stimulusCounterInBand[bandIndex], correctnessUpperBound);
                 correctness = fineTuning.runStep(bandNumber, stimulusCounterInBand[bandIndex], answers);
                 stimulusCounterInBand[bandIndex]++;
-                Utils.shiftFIFO(bandTranscript, bandNumber);
-                cycles2 = Utils.detectLoop(bandTranscript);
-                secondStoppingCriterion = Utils.timeToCountVisits(bandChangeCounter);
+                AdVocAsStimuliProvider.shiftFIFO(bandTranscript, bandNumber);
+                cycles2 = AdVocAsStimuliProvider.detectLoop(bandTranscript);
+                secondStoppingCriterion = AdVocAsStimuliProvider.timeToCountVisits(bandChangeCounter);
                 if (correctness) {
                     if (bandNumber < Constants.NUMBER_OF_BANDS) { // usual on-success iteration
                         justVisitedLastBand = false;
@@ -220,7 +222,7 @@ public class MainTest {
                 }
             }
             if (secondStoppingCriterion) {
-                score = Utils.mostOftenVisited(bandVisitCounter);
+                score = AdVocAsStimuliProvider.mostOftenVisited(bandVisitCounter);
                 System.out.println("Detected: second stopping criterion");
                 message += "_second_stopping_criterion_" + bandVisitCounter[score - 1];
 

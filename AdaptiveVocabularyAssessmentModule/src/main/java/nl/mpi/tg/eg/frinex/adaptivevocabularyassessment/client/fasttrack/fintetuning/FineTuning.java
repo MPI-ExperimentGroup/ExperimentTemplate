@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.Random;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 
 /**
  *
@@ -37,19 +36,28 @@ public class FineTuning {
 
     private int stepCounter;
 
+    private int totalStimuli=0;
+    private int currentlyAddedStimIndex;
+
     public FineTuning(String username, AtomBookkeepingStimulus[][] words, ArrayList<AtomBookkeepingStimulus> nonwords) {
         this.userName = username;
         this.words = words;
         this.nonwords = nonwords;
-        stepCounter = 0;
+        this.stepCounter = 0;
+        this.currentlyAddedStimIndex = 0;
     }
 
-    public void createStimulae() throws Exception {
-        for (int i = 0; i < Constants.NUMBER_OF_BANDS; i++) {
-            ArrayList<FineTuningBookkeepingStimulus> currentBand = this.createStimulaeBand(this.words[i], this.nonwords);
+    public void createStimulae() throws FineTuningException {
+        for (int bandIndex = 0; bandIndex < Constants.NUMBER_OF_BANDS; bandIndex++) {
+            ArrayList<FineTuningBookkeepingStimulus> currentBand = this.createStimulaeBand(this.words[bandIndex], this.nonwords);
+            this.totalStimuli += currentBand.size() * Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE;
             this.stimulae.add(currentBand);
         }
 
+    }
+    
+    public int getTotalStimuli(){
+        return this.totalStimuli;
     }
 
     // return true if the answer is correct, and false otherwise
@@ -82,11 +90,12 @@ public class FineTuning {
         return this.stimulae.get(bandNumber).get(stimulusIndex);
     }
 
-    public ArrayList<ArrayList<FineTuningBookkeepingStimulus>> getUserRecords() {
+    public ArrayList<ArrayList<FineTuningBookkeepingStimulus>> getStimuli() { // matrix form
         return this.stimulae;
     }
 
-    private ArrayList<FineTuningBookkeepingStimulus> createStimulaeBand(AtomBookkeepingStimulus[] words, ArrayList<AtomBookkeepingStimulus> nonwords) throws Exception {
+  
+    private ArrayList<FineTuningBookkeepingStimulus> createStimulaeBand(AtomBookkeepingStimulus[] words, ArrayList<AtomBookkeepingStimulus> nonwords) throws FineTuningException{
         ArrayList<AtomBookkeepingStimulus> unusedWords = this.fetchUnusedAtomBookkeepingStimulus(words);
         ArrayList<AtomBookkeepingStimulus> unusedNonwords = this.fetchUnusedAtomBookkeepingStimulus(nonwords);
         int length = unusedWords.size() / Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE;
@@ -110,6 +119,7 @@ public class FineTuning {
                     nonwordsCounter++;
                 }
                 tuple[j].setIsUsed(true);
+                this.currentlyAddedStimIndex++;
             }
             FineTuningBookkeepingStimulus stimulus = new FineTuningBookkeepingStimulus(tuple);
             retVal.add(stimulus);

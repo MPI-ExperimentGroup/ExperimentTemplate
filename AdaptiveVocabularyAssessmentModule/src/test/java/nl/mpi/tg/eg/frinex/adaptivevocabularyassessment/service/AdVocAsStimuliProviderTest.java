@@ -18,7 +18,9 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.service;
 
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsWords;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Main;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import org.junit.After;
@@ -61,16 +63,16 @@ public class AdVocAsStimuliProviderTest {
         System.out.println("initialiseStimuliState");
         String[] input = new String[0];
         try {
-            Main.main(input);
             AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
             instance.initialiseStimuliState("");
-            int lengthWords = Constants.WORDS.length;
+            int lengthWords = ConstantsWords.WORDS.length;
             assertEquals(Constants.NUMBER_OF_BANDS, lengthWords);
-            int lengthWords37 = Constants.WORDS[36].length;
+            int lengthWords37 = ConstantsWords.WORDS[36].length;
             assertEquals(Constants.WORDS_PER_BAND, lengthWords37);
             int totalStimuli = instance.getTotalStimuli();
-            assertTrue(totalStimuli>0);
+            assertTrue(totalStimuli > 0);
             System.out.println(totalStimuli);
+            
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             assertTrue(ex.getMessage(), true);
@@ -85,8 +87,13 @@ public class AdVocAsStimuliProviderTest {
     @Test
     public void testGetCurrentStimulus() {
         System.out.println("getCurrentStimulus");
-        //AdVocAssStimuliProvider instance = new AdVocAsStimuliProvider();
-        Stimulus expResult = null;
+        AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
+        instance.initialiseStimuliState("");
+        Stimulus stimulus = instance.getCurrentStimulus();
+        assertTrue(stimulus != null);
+        String label = stimulus.getLabel();
+        assertTrue(label != null);
+        System.out.println(label);
         //Stimulus result = instance.getCurrentStimulus();
         //assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
@@ -102,7 +109,7 @@ public class AdVocAsStimuliProviderTest {
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
         int expResult = 0;
         int result = instance.getCurrentStimulusIndex();
-        //assertEquals(expResult, result);
+        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
@@ -189,6 +196,86 @@ public class AdVocAsStimuliProviderTest {
         //assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of detectLoop method, of class AdVocAsStimuliProvider.
+     */
+    @Test
+    public void testDetectLoop() {
+        System.out.println("detectLoop");
+        int[] arr1 = {42, 43, 42, 43, 42, 43, 42};
+        boolean result1 = AdVocAsStimuliProvider.detectLoop(arr1);
+        assertEquals(true, result1);
+        int[] arr2 = {42, 43, 42, 43, 42, 43, 45};
+        boolean result2 = AdVocAsStimuliProvider.detectLoop(arr2);
+        assertEquals(false, result2);
+        int[] arr3 = {43, 42, 43, 42, 43, 42, 45, 42};
+        boolean result3 = AdVocAsStimuliProvider.detectLoop(arr3);
+        assertEquals(false, result3);
+    }
+
+    /**
+     * Test of shiftFIFO method, of class AdVocAsStimuliProvider.
+     */
+    @Test
+    public void testShiftFIFO() {
+        System.out.println("shiftFIFO");
+        int[] fifo = {0, 1, 2, 3, 4, 5, 6};
+        int newelement = 7;
+        AdVocAsStimuliProvider.shiftFIFO(fifo, newelement);
+        for (int i = 0; i < 7; i++) {
+            assertEquals(i + 1, fifo[i]);
+        }
+    }
+
+    /**
+     * Test of detectLoop method, of class AdVocAsStimuliProvider.
+     */
+    @Test
+    public void testTimeToCountVisits() {
+        System.out.println("timeToCountVisits");
+        boolean result1 = AdVocAsStimuliProvider.timeToCountVisits(34);
+        assertEquals(true, result1);
+        boolean result2 = AdVocAsStimuliProvider.timeToCountVisits(32);
+        assertEquals(false, result2);
+
+    }
+
+    /**
+     * Test of detectLoop method, of class AdVocAsStimuliProvider.
+     */
+    @Test
+    public void testMostOftenVisited() {
+        System.out.println("mostOftenVisited");
+        int[] arr1 = {1, 1, 2, 2, 2, 2, 1};
+        int result1 = AdVocAsStimuliProvider.mostOftenVisited(arr1);
+        assertEquals(3 + 1, result1); // output is the band nummer
+        // and bund nemmer is band index+1
+        int[] arr2 = {0, 1, 2, 2, 2, 1, 1};
+        // 2 or 3 ?
+        // 0+1+2 vs 2+1+1
+        // 3
+        // 3 or 4
+        //0+1+2+2 vs 1+1
+        //3
+        int result2 = AdVocAsStimuliProvider.mostOftenVisited(arr2);
+        assertEquals(3 + 1, result2);
+    }
+
+    /**
+     * Test of detectLoop method, of class AdVocAsStimuliProvider.
+     */
+    @Test
+    public void testChooseBand() {
+        System.out.println("mostChooseBAnd");
+        int[] arr1 = {1, 1, 2, 2, 2, 2, 1};
+        int result1 = AdVocAsStimuliProvider.chooseBand(2, 3, arr1);
+        // 1+1+2 vs 2+2+1
+        assertEquals(3, result1);
+        int result2 = AdVocAsStimuliProvider.chooseBand(3, 4, arr1);
+        // 1+1+2+2 vs 2+1
+        assertEquals(3, result2);
     }
 
 }
