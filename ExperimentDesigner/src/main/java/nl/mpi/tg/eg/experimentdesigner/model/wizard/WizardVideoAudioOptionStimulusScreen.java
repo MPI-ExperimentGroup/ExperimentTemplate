@@ -292,6 +292,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
             imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
             imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
             imageFeature.addFeatureAttributes(FeatureAttribute.animate, "none");
+            imageFeature.addFeatureAttributes(FeatureAttribute.showControls, "false");
         } else {
             imageFeature = new PresenterFeature(FeatureType.stimulusAudio, null);
             imageFeature.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(isShowHurryIndicator(storedWizardScreenData)));
