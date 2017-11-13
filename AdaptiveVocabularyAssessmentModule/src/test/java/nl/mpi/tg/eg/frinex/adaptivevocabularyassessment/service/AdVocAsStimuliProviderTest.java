@@ -17,9 +17,6 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.service;
 
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsWords;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Main;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -56,40 +53,20 @@ public class AdVocAsStimuliProviderTest {
     }
 
     /**
-     * Test of getAll method, of class AdVocAsStimuliProvider.
+     * Test of estinItialiseStimuliState method, of class
+     * AdVocAsStimuliProvider.
      */
     @Test
     public void testinItialiseStimuliState() {
         System.out.println("initialiseStimuliState");
-        String[] input = new String[0];
-        try {
-            AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-            instance.initialiseStimuliState("");
-            int totalStimuli = instance.getTotalStimuli();
-            assertTrue(totalStimuli > 0);
-            System.out.println(totalStimuli);
-            
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            assertTrue(ex.getMessage(), true);
-        }
-    }
-
-    /**
-     * Test of getCurrentStimulus method, of class AdVocAsStimuliProvider.
-     */
-    @Test
-    public void testGetCurrentStimulus() {
-        System.out.println("getCurrentStimulus");
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
         instance.initialiseStimuliState("");
-        Stimulus stimulus = instance.getCurrentStimulus();
-        assertTrue(stimulus != null);
-        String label = stimulus.getLabel();
-        assertTrue(label != null);
-        System.out.println("Label: " +label);
+        int totalStimuli = instance.getTotalStimuli();
+        assertTrue(totalStimuli > 0);
+        System.out.println(totalStimuli);
     }
-
+    
+    
     /**
      * Test of getCurrentStimulusIndex method, of class AdVocAsStimuliProvider.
      */
@@ -97,12 +74,41 @@ public class AdVocAsStimuliProviderTest {
     public void testGetCurrentStimulusIndex() {
         System.out.println("getCurrentStimulusIndex");
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-        
+        instance.initialiseStimuliState("");
+        instance.hasNextStimulus(0);
         int result = instance.getCurrentStimulusIndex();
         assertEquals(1, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
+    
+      /**
+     * Test of getCurrentStimulus method, of class AdVocAsStimuliProvider.
+     */
+    @Test
+    public void testGetCurrentStimulus() {
+        System.out.println("getCurrentStimulus");
+        AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
+        instance.initialiseStimuliState("");
+        instance.hasNextStimulus(0);
+        Stimulus stimulus = instance.getCurrentStimulus();
+        assertTrue(stimulus != null);
+        String label = stimulus.getLabel();
+        assertTrue(label != null);
+        System.out.println("Label: " + label);
+    }
+
+    @Test
+    public void testIsCorrectResponse() {
+        System.out.println("isCorrectResponse");
+        AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
+        instance.initialiseStimuliState("");
+        instance.hasNextStimulus(0);
+        Stimulus stimulus = instance.getCurrentStimulus();
+        boolean result = instance.isCorrectResponse(stimulus, stimulus.getCorrectResponses());
+        assertTrue(result);
+    }
+
+  
+
 
     /**
      * Test of getTotalStimuli method, of class AdVocAsStimuliProvider.
@@ -111,52 +117,70 @@ public class AdVocAsStimuliProviderTest {
     public void testGetTotalStimuli() {
         System.out.println("getTotalStimuli");
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-        int expResult = 0;
-        int result = instance.getTotalStimuli();
-        //assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        instance.initialiseStimuliState("");
+        int totalStimuli = instance.getTotalStimuli();
+        assertTrue(totalStimuli > 0);
+        System.out.println(totalStimuli);
     }
 
     /**
      * Test of hasNextStimulus method, of class AdVocAsStimuliProvider.
      */
     @Test
-    public void testHasNextStimulus() {
+    public void testHasNextStimulus() throws Exception{
         System.out.println("hasNextStimulus");
-        int increment = 0;
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-        boolean expResult = false;
-        //boolean result = instance.hasNextStimulus(increment);
-        //assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        instance.initialiseStimuliState("");
+        boolean result = instance.hasNextStimulus(0);// does not depend on increment
+        // but on internal state of the process
+        assertTrue(result);
+
+        // 1 step, correct
+        
+        int ind1 = instance.getCurrentStimulusIndex();
+        assertEquals(1, ind1);
+        AdVocAsAtomStimulus stimulus = instance.getCurrentStimulus();
+        instance.isCorrectResponse(stimulus, stimulus.getCorrectResponses());
+        boolean result1 = instance.hasNextStimulus(0);
+        assertTrue(result1);
+
+        // 2nd step, incorrect
+        // anyway go the the fine tuning
+        int ind2 = instance.getCurrentStimulusIndex();
+        assertEquals(2, ind2);
+        
+        AdVocAsAtomStimulus stimulus2 = instance.getCurrentStimulus();
+        String correctResponse = stimulus2.getCorrectResponses();
+        String response = null;
+        if (correctResponse.equals("word")) {
+            response = "nonword";
+        }
+        if (correctResponse.equals("nonword")) {
+            response = "word";
+        }
+        if (response == null) {
+            throw new Exception("Wrong reaction");
+        }
+        instance.isCorrectResponse(stimulus2, response);
+        
+        boolean result12 = instance.hasNextStimulus(0); // trasnfer to fine tuning
+        
+        int ind3 = instance.getCurrentStimulusIndex();
+        assertEquals(3, ind3);
+        
+        assertTrue(result12);
     }
 
-    /**
-     * Test of nextStimulus method, of class AdVocAsStimuliProvider.
-     */
-    @Test
-    public void testNextStimulus() {
-        System.out.println("nextStimulus");
-        int increment = 0;
-        AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-        //instance.nextStimulus(increment);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-
+ 
     /**
      * Test of setCurrentStimuliIndex method, of class AdVocAsStimuliProvider.
      */
     @Test
     public void testSetCurrentStimuliIndex() {
         System.out.println("setCurrentStimuliIndex");
-        int currentStimuliIndex = 0;
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-        //instance.setCurrentStimuliIndex(currentStimuliIndex);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        instance.initialiseStimuliState("");
+        instance.setCurrentStimuliIndex(0);// actually does nothing
     }
 
     /**
@@ -167,25 +191,10 @@ public class AdVocAsStimuliProviderTest {
     public void testGetCurrentStimulusUniqueId() {
         System.out.println("getCurrentStimulusUniqueId");
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-        String expResult = "";
-        //String result = instance.getCurrentStimulusUniqueId();
-        //assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getLoadedStimulusString method, of class AdVocAsStimuliProvider.
-     */
-    @Test
-    public void testGetLoadedStimulusString() {
-        System.out.println("getLoadedStimulusString");
-        AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-        String expResult = "";
-        //String result = instance.getLoadedStimulusString();
-        //assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        instance.initialiseStimuliState("");
+        instance.hasNextStimulus(0);
+        String result = instance.getCurrentStimulusUniqueId();
+        assertTrue(result != null);
     }
 
     /**

@@ -81,9 +81,9 @@ public class FineTuningBookkeepingStimulus {
         (this.atomStimulae)[i].setIsUsed(true);
     }
 
-    public void setVisitTime(long currentMillis) throws Exception {
+    public void setVisitTime(long currentMillis){
         if (this.visitingTime > 0) {
-            throw new Exception("this stimulae is vsisted more than 1 time. Setting of the test sequence has a flaw!!");
+            System.out.println("this stimulae is vsisted more than 1 time. Setting of the fien tuning sequence has a flaw!!");
         }
         this.visitingTime = currentMillis;
     }

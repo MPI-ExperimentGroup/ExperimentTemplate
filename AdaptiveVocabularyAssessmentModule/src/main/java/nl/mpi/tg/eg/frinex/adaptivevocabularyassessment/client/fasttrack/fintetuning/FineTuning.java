@@ -61,7 +61,7 @@ public class FineTuning {
     }
 
     // return true if the answer is correct, and false otherwise
-    public boolean runStep(int bandNumber, int stimulusIndex, boolean[] answers) throws Exception {
+    public boolean runStep(int bandNumber, int stimulusIndex, boolean[] answers){
         int bandIndex = bandNumber - 1;
         FineTuningBookkeepingStimulus stimulus = this.stimulae.get(bandIndex).get(stimulusIndex);
         // checking for mistakes

@@ -84,8 +84,8 @@ public class FastTrack {
 
     }
 
-    public boolean runStep(int stimulusNumber, boolean answer) {
-        AtomBookkeepingStimulus stimulus = this.bookkeepingStimuli.get(stimulusNumber);
+    public boolean runStep(int stimulusIndex, boolean answer) {
+        AtomBookkeepingStimulus stimulus = this.bookkeepingStimuli.get(stimulusIndex);
         stimulus.setReaction(answer);
         boolean eval = true;
         if (stimulus.getBandNumber() < 0 && answer) {
