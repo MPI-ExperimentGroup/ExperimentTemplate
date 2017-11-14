@@ -32,6 +32,8 @@
                 </stimulusRatingButton>
             </hasMoreStimulus>
             <endOfStimulus>
+                <sendStimuliReport eventTag="results" />
+                <showStimuliReport/>
                 <autoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
