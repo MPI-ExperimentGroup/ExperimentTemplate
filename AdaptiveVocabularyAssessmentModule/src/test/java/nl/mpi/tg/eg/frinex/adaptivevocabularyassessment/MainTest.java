@@ -78,7 +78,7 @@ public class MainTest {
         while (hasNextStimulus) {
             provider.nextStimulus(0);
             currentExperimentCount = provider.getCurrentStimulusIndex();
-            System.out.println(currentExperimentCount);
+            //System.out.println(currentExperimentCount);
             AdVocAsAtomStimulus stimulus = provider.getCurrentStimulus();
             String answer = this.probabilisticAnswerer(stimulus, 0.9, rnd);
             boolean isCorrect = provider.isCorrectResponse(stimulus, answer);
@@ -91,22 +91,19 @@ public class MainTest {
         boolean champion = provider.getChampion();
         boolean looser = provider.getLooser();
         
-        System.out.println("Stimul used (steps): "+currentExperimentCount);
-        System.out.println("Score: "+provider.getScore());
-
-        ArrayList<AtomBookkeepingStimulus> fastTrackSequence = provider.getFastTrackStimuli();
         int lastCorrectBandFastTrack = provider.getBestFastTrackBand();
         System.out.println("last correct band fast track: " + lastCorrectBandFastTrack);
-        Utils.writeCsvFileFastTrack(fastTrackSequence, lastCorrectBandFastTrack, OUTPUT_DIRECTORY);
+        //Utils.writeCsvFileFastTrack(provider, lastCorrectBandFastTrack, OUTPUT_DIRECTORY);
 
         String message = "_secondStopping_" + secondStoppingCriterion + "__cycel2_" + cycle2
                 + "__champion_" + champion + "__looser_" + looser + "__enough_" + enoughFineTuningStimulae;
 
-        ArrayList<ArrayList<FineTuningBookkeepingStimulus>> fineTuningStimulae = provider.getFineTuningStimuli();
         long millis = System.currentTimeMillis();
-        String fileName = "Fine_tuning_short_history_" + message + "_" + millis + ".csv";
-        Utils.writeCsvFileFineTuningHistoryShortened(fineTuningStimulae, OUTPUT_DIRECTORY, fileName);
-
+        //String fileNameCSV = "Fine_tuning_short_history_" + message + "_" + millis + ".csv";
+        //Utils.writeCsvFileFineTuningHistoryShortened(provider, OUTPUT_DIRECTORY, fileNameCSV);
+        
+        String fileNameHTML = "Full_user_history_" + message + "_" + millis + ".html";
+        Utils.writeHtmlFullUserResults(provider, OUTPUT_DIRECTORY, fileNameHTML);
         System.out.println("Done. ");
 
     }

@@ -17,6 +17,7 @@
  */
 package utils;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -25,6 +26,7 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingSt
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.fintetuning.FineTuningBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
 
 /**
  *
@@ -32,7 +34,6 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtom
  */
 public class Utils {
 
-   
     public static void testPrint() {
         AdVocAsAtomStimulus[][] tmpwords = Vocabulary.getWords();
         System.out.println("Words \n");
@@ -43,36 +44,36 @@ public class Utils {
                 System.out.println(unit.getLabel());
             }
         }
-        ArrayList<AdVocAsAtomStimulus> tmpnonwords =  Vocabulary.getNonwords();
+        ArrayList<AdVocAsAtomStimulus> tmpnonwords = Vocabulary.getNonwords();
         System.out.println("Non words \n");
         for (AdVocAsAtomStimulus nonword : tmpnonwords) {
             System.out.println(nonword.getLabel());
         }
     }
 
-    public static void writeCsvFileFastTrack(ArrayList<AtomBookkeepingStimulus> stimulae, int stopBand, String outputDir) throws IOException {
+    public static void writeCsvFileFastTrack(AdVocAsStimuliProvider provider, int stopBand, String outputDir) throws IOException {
         long millis = System.currentTimeMillis();
         int blockSize = Constants.NONWORDS_PER_BLOCK * Constants.AVRERAGE_NON_WORD_POSITION;
         String fileName = "Fast_track_test_stopped_at_band_" + stopBand + "_" + blockSize + "_" + millis + ".csv";
         System.out.println("writeCsvFile: " + outputDir + fileName);
         final File csvFile = new File(outputDir, fileName);
-        final FileWriter csvFileWriter = new FileWriter(csvFile, false);
-        csvFileWriter.write("Spelling;BandNumber;UserAnswer;Correctness;isUsed;NonwordsFrequencyAtThisPoint\n");
-        int counter = 0;
-        int counterNonwords = 0;
-        for (AtomBookkeepingStimulus stimulus : stimulae) {
-            counter++;
-            if (stimulus.getBandNumber() == -1) {
-                counterNonwords++;
-            }
-            double frequency = ((double) counterNonwords) / ((double) counter);
-            String row = stimulus.getSpelling() + ";" + stimulus.getBandNumber()
-                    + ";" + stimulus.getReaction() + ";" + stimulus.getCorrectness()
-                    + ";" + stimulus.getIsUsed() + ";" + frequency;
-            //System.out.println(row);
-            csvFileWriter.write(row + "\n");
-        }
-        csvFileWriter.close();
+        String inhoud = provider.getStringFastTrack("", "\n", "", ";");
+        BufferedWriter output = new BufferedWriter(new FileWriter(csvFile));
+        output.write(inhoud);
+        output.close();
+    }
+
+    public static void writeHtmlFileFastTrack(AdVocAsStimuliProvider provider, int stopBand, String outputDir) throws IOException {
+        long millis = System.currentTimeMillis();
+        int blockSize = Constants.NONWORDS_PER_BLOCK * Constants.AVRERAGE_NON_WORD_POSITION;
+        String fileName = "Fast_track_test_stopped_at_band_" + stopBand + "_" + blockSize + "_" + millis + ".html";
+        System.out.println("writeCsvFile: " + outputDir + fileName);
+        final File htmlFile = new File(outputDir, fileName);
+        String inhoud = provider.getStringFastTrack("<tr>", "</tr>", "<td>", "</td>");
+        String htmlString = "<!DOCTYPE html><html><body><table border=1>" + inhoud + "</table></body></html>";
+        BufferedWriter output = new BufferedWriter(new FileWriter(htmlFile));
+        output.write(htmlString);
+        output.close();
     }
 
     public static void writeCsvFileFineTuningPreset(ArrayList<ArrayList<FineTuningBookkeepingStimulus>> stimulae, String outputDir) throws IOException {
@@ -100,48 +101,36 @@ public class Utils {
         csvFileWriter.close();
     }
 
-    public static ArrayList<FineTuningBookkeepingStimulus> orderFineTuningHistory(ArrayList<ArrayList<FineTuningBookkeepingStimulus>> stimulae) {
-        ArrayList<FineTuningBookkeepingStimulus> retVal = new ArrayList<>();
-        for (int bandCounter = 0; bandCounter < stimulae.size(); bandCounter++) {
-            for (FineTuningBookkeepingStimulus stimulus : stimulae.get(bandCounter)) {
-                insertSortFineTuningHistory(retVal, stimulus);
-            }
-        }
-        return retVal;
-    }
-
-    public static void insertSortFineTuningHistory(ArrayList<FineTuningBookkeepingStimulus> stimulae, FineTuningBookkeepingStimulus stimulus) {
-        if (stimulus.getVisitingTime() > 0) {
-            for (int i = 0; i < stimulae.size(); i++) {
-                if (stimulus.getVisitingTime() < stimulae.get(i).getVisitingTime()) {
-                    stimulae.add(i, stimulus);
-                    return;
-                }
-            }
-            stimulae.add(stimulus);
-        }
-    }
-
-    public static void writeCsvFileFineTuningHistoryShortened(ArrayList<ArrayList<FineTuningBookkeepingStimulus>> stimulae, String outputDir, String fileName) throws IOException {
-        ArrayList<FineTuningBookkeepingStimulus> history = orderFineTuningHistory(stimulae);
+    public static void writeCsvFileFineTuningHistoryShortened(AdVocAsStimuliProvider provider, String outputDir, String fileName) throws IOException {
         System.out.println("writeCsvFile: " + outputDir + fileName);
         final File csvFile = new File(outputDir, fileName);
-        final FileWriter csvFileWriter = new FileWriter(csvFile, false);
-        csvFileWriter.write("BandNumber;overallCorrectness;visitingTime\n");
-        for (FineTuningBookkeepingStimulus stimulus : history) {
-            String row = stimulus.getBandNumber()
-                    + ";" + stimulus.getOverallCorrectness()
-                    + ";" + stimulus.getVisitingTime();
-            csvFileWriter.write(row + "\n");
-        }
-        csvFileWriter.close();
+        String inhoud = provider.getStringFineTuningHistoryShortened("", "\n", "", ";");
+        BufferedWriter output = new BufferedWriter(new FileWriter(csvFile));
+        output.write(inhoud);
+        output.close();
     }
 
-    public static ArrayList<AdVocAsAtomStimulus> getPureStimuli(ArrayList<AtomBookkeepingStimulus> bookkeepingStimuli){
-        ArrayList<AdVocAsAtomStimulus> retVal = new ArrayList<>(bookkeepingStimuli.size());
-        for (AtomBookkeepingStimulus bStimulus : bookkeepingStimuli) {
-            retVal.add(bStimulus.getPureStimulus());
-        }
-        return retVal;
+    public static void writeHtmlFileFineTuningHistoryShortened(AdVocAsStimuliProvider provider, String outputDir, String fileName) throws IOException {
+        System.out.println("writeHtmlFile: " + outputDir + fileName);
+        final File htmlFile = new File(outputDir, fileName);
+        String inhoud = provider.getStringFineTuningHistoryShortened("<tr>", "<tr>", "<td>", "<td>");
+        BufferedWriter output = new BufferedWriter(new FileWriter(htmlFile));
+        String htmlString = "<!DOCTYPE html><html><body><table border=1>" + inhoud + "</table></body></html>";
+        output.write(htmlString);
+        output.close();
     }
+
+    public static void writeHtmlFullUserResults(AdVocAsStimuliProvider provider, String outputDir, String fileName) throws IOException {
+        System.out.println("write full history htm file: " + outputDir + fileName);
+        final File htmlFile = new File(outputDir, fileName);
+        StringBuilder htmlStringBuilder = new StringBuilder();
+        String report = provider.getHtmlStimuliReport();
+        htmlStringBuilder.append("<!DOCTYPE html><html><body>");
+        htmlStringBuilder.append(report);
+        htmlStringBuilder.append("</body></html>");
+        BufferedWriter output = new BufferedWriter(new FileWriter(htmlFile));
+        output.write(htmlStringBuilder.toString());
+        output.close();
+    }
+
 }

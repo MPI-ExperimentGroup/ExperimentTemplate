@@ -77,7 +77,7 @@ public class AdVocAsStimuliProviderTest {
         instance.initialiseStimuliState("");
         instance.hasNextStimulus(0);
         int result = instance.getCurrentStimulusIndex();
-        assertEquals(1, result);
+        assertEquals(0, result);
     }
     
       /**
@@ -138,7 +138,7 @@ public class AdVocAsStimuliProviderTest {
         // 1 step, correct
         
         int ind1 = instance.getCurrentStimulusIndex();
-        assertEquals(1, ind1);
+        assertEquals(0, ind1);
         AdVocAsAtomStimulus stimulus = instance.getCurrentStimulus();
         instance.isCorrectResponse(stimulus, stimulus.getCorrectResponses());
         boolean result1 = instance.hasNextStimulus(0);
@@ -147,7 +147,7 @@ public class AdVocAsStimuliProviderTest {
         // 2nd step, incorrect
         // anyway go the the fine tuning
         int ind2 = instance.getCurrentStimulusIndex();
-        assertEquals(2, ind2);
+        assertEquals(1, ind2);
         
         AdVocAsAtomStimulus stimulus2 = instance.getCurrentStimulus();
         String correctResponse = stimulus2.getCorrectResponses();
@@ -166,7 +166,7 @@ public class AdVocAsStimuliProviderTest {
         boolean result12 = instance.hasNextStimulus(0); // trasnfer to fine tuning
         
         int ind3 = instance.getCurrentStimulusIndex();
-        assertEquals(3, ind3);
+        assertEquals(2, ind3);
         
         assertTrue(result12);
     }

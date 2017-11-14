@@ -15,14 +15,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-
 // /Users/olhshk/Documents/ExperimentTemplate/FieldKitRecorder/src/android/nl/mpi/tg/eg/frinex/FieldKitRecorder.java
-
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsNonWords;
@@ -34,12 +31,13 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.fintetu
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 import nl.mpi.tg.eg.frinex.common.AbstractStimuliProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
-//import org.json.simple.JSONObject;
 
 /**
  * @since Oct 27, 2017 2:01:33 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
+
+
 public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
 
     FastTrack fastTrack = null;
@@ -48,7 +46,7 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
     private int totalStimuli;
     private int score = -1;
     private Boolean isCorrectCurrentResponse;
-    private int experimentCount = 1;
+    private int experimentCount = 0;
 
     // fast track stuff
     private int fastTrackStimuliIndex = 0;
@@ -71,11 +69,16 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
     private boolean justVisitedLastBand = false;
     private boolean justVisitedFirstBand = false;
 
-    private HashMap currentDump;
-
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
 
+        for (String splitValue : stimuliStateSnapshot.split(",")) {
+            switch (splitValue) {
+                case "bestFastrTrackRecord:":
+                    break;
+            }
+
+        }
         AdVocAsAtomStimulus[][] words = ConstantsWords.WORDS;
         ArrayList<AdVocAsAtomStimulus> nonwords = new ArrayList<>();
         nonwords.addAll(Arrays.asList(ConstantsNonWords.NONWORDS_ARRAY));
@@ -209,27 +212,20 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
 
     @Override
     public String generateStimuliStateSnapshot() {
-        if (this.champion || this.cycle2 || !this.enoughFineTuningStimulae || this.secondStoppingCriterion || this.looser) {
-            this.currentDump.put("bestFastrTrackRecord", this.bestBandFastTrack);
-            this.currentDump.put("champion", this.champion);
-            this.currentDump.put("cycle2", this.cycle2);
-            this.currentDump.put("experimentCount", this.experimentCount);
-            this.currentDump.put("fastTrackRecord", this.getFastTrackStimuli());
-            this.currentDump.put("finetuningTrackRecord", this.fineTuning.getStimuli());
-            this.currentDump.put("outOfFineStimuli", !this.enoughFineTuningStimulae);
-            this.currentDump.put("score", this.score);
-            this.currentDump.put("secondStopping", this.secondStoppingCriterion);
-            this.currentDump.put("looser", this.looser);
-            //JSONObject json = new JSONObject();
-            //return json.toString();
-        }
-
         return "";
     }
 
     @Override
     public String getHtmlStimuliReport() {
-        return "<table><tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr><tr><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>0</td></tr></table>";
+        String summary = this.getStringSummary("<tr>", "</tr>", "<td>", "</td>");
+        String inhoudFastTrack = this.getStringFastTrack("<tr>", "</tr>", "<td>", "</td>");
+        String inhoudFineTuning = this.getStringFineTuningHistoryShortened("<tr>", "<tr>", "<td>", "<td>");
+        StringBuilder htmlStringBuilder = new StringBuilder();
+        htmlStringBuilder.append("<p>User summary</p><table border=1>").append(summary).append("</table><br>");
+        htmlStringBuilder.append("<p>Fast Track History</p><table border=1>").append(inhoudFastTrack).append("</table><br>");
+        htmlStringBuilder.append("<p>Fine tuning short history</p><table border=1>").append(inhoudFineTuning).append("</table>");
+        return htmlStringBuilder.toString();
+        //return "<table><tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr><tr><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>0</td></tr></table>";
     }
 
     @Override
@@ -263,7 +259,7 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
 
     // also updates indices 
     private boolean fastTrackToBeContinued() {
-        if (this.experimentCount == 1) {// just started the first experiment..
+        if (this.experimentCount == 0) {// just started the first experiment..
             return true;
         }
         if (this.isCorrectCurrentResponse) {
@@ -273,15 +269,16 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
             }
         } else {
             // hit incorrect? go back one band and transfer to fine tuning!
-            this.fastTrackStimuliIndex = this.fastTrackStimuliIndex > 0 ? (fastTrackStimuliIndex--) : 0;
-
+            
+            System.out.println(this.fastTrackStimuliIndex);
+            this.fastTrackStimuliIndex = this.fastTrackStimuliIndex > 0 ? (this.fastTrackStimuliIndex-1) : 0;
+            System.out.println(this.fastTrackStimuliIndex);
         }
         return false;
     }
 
     private void switchToFineTuning() {
-        int index = this.findMaxWordIndex();
-        this.bestBandFastTrack = this.getFastTrackStimuli().get(index).getBandNumber();
+        this.bestBandFastTrack = this.findMaxWordBand();
 
         // to initialise for fine tuning :     
         //private int counterInTupleFTuning = 0;
@@ -301,7 +298,8 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
 
     }
 
-    private int findMaxWordIndex() {
+    private int findMaxWordBand() {
+       
         for (int i = this.fastTrackStimuliIndex; i >= 0; i--) {
             int bandNumber = this.getFastTrackStimuli().get(i).getBandNumber();
             if (bandNumber > 0) {
@@ -315,7 +313,7 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
     private boolean fineTuningToBeContinued() {
 
         if (this.counterInTupleFTuning < Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE - 1) {
-            // we did not hit the last atom in the tuple
+            // we have not hit the last atom in the tuple yet
             this.counterInTupleFTuning++;
             return true;
         }
@@ -352,7 +350,6 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
             return false;
         }
 
-        // correctness actually influences only the transition to th next band
         int nextBand = this.bandIndexFineTuning;
         if (this.isCorrectCurrentResponse) {
             if (currentBand == Constants.NUMBER_OF_BANDS) { // the last band is hit
@@ -490,4 +487,121 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
         }
     }
 
+    public String getStringFastTrack(String startRow, String endRow, String startColumn, String endColumn) {
+        ArrayList<AtomBookkeepingStimulus> stimuli = this.getFastTrackStimuli();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(startRow);
+        stringBuilder.append(startColumn).append("Spelling").append(endColumn);
+        stringBuilder.append(startColumn).append("BandNumber").append(endColumn);
+        stringBuilder.append(startColumn).append("UserAnswer").append(endColumn);
+        stringBuilder.append(startColumn).append("IsAnswerCorrect").append(endColumn);
+        stringBuilder.append(startColumn).append("IsUsedForTest").append(endColumn);
+        stringBuilder.append(startColumn).append("NonwordsFrequencyAtThisPoint").append(endColumn);
+        stringBuilder.append(endRow);
+        int counter = 0;
+        int counterNonwords = 0;
+        for (AtomBookkeepingStimulus stimulus : stimuli) {
+            counter++;
+            if (stimulus.getBandNumber() == -1) {
+                counterNonwords++;
+            }
+            double frequency = ((double) counterNonwords) / ((double) counter);
+
+            StringBuilder row = new StringBuilder();
+            row.append(startColumn).append(stimulus.getSpelling()).append(endColumn);
+            row.append(startColumn).append(stimulus.getBandNumber()).append(endColumn);
+            row.append(startColumn).append(stimulus.getReaction()).append(endColumn);
+            row.append(startColumn).append(stimulus.getCorrectness()).append(endColumn);
+            row.append(startColumn).append(stimulus.getIsUsed()).append(endColumn);
+            row.append(startColumn).append(frequency).append(endColumn);
+            stringBuilder.append(startRow).append(row).append(endRow);
+        }
+        return stringBuilder.toString();
+
+    }
+
+    public static ArrayList<FineTuningBookkeepingStimulus> orderFineTuningHistory(ArrayList<ArrayList<FineTuningBookkeepingStimulus>> stimulae) {
+        ArrayList<FineTuningBookkeepingStimulus> retVal = new ArrayList<>();
+        for (int bandCounter = 0; bandCounter < stimulae.size(); bandCounter++) {
+            for (FineTuningBookkeepingStimulus stimulus : stimulae.get(bandCounter)) {
+                insertSortFineTuningHistory(retVal, stimulus);
+            }
+        }
+        return retVal;
+    }
+
+    public static void insertSortFineTuningHistory(ArrayList<FineTuningBookkeepingStimulus> stimulae, FineTuningBookkeepingStimulus stimulus) {
+        if (stimulus.getVisitingTime() > 0) {
+            for (int i = 0; i < stimulae.size(); i++) {
+                if (stimulus.getVisitingTime() < stimulae.get(i).getVisitingTime()) {
+                    stimulae.add(i, stimulus);
+                    return;
+                }
+            }
+            stimulae.add(stimulus);
+        }
+    }
+
+    public String getStringFineTuningHistoryShortened(String startRow, String endRow, String startColumn, String endColumn) {
+        ArrayList<ArrayList<FineTuningBookkeepingStimulus>> stimuli = this.getFineTuningStimuli();
+        ArrayList<FineTuningBookkeepingStimulus> history = orderFineTuningHistory(stimuli);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(startRow);
+        stringBuilder.append(startColumn).append("BandNumber").append(endColumn);
+        stringBuilder.append(startColumn).append("SummaryTupleCorrectness").append(endColumn);
+        stringBuilder.append(startColumn).append("VisitingTime").append(endColumn);
+        stringBuilder.append(endRow);
+        for (FineTuningBookkeepingStimulus stimulus : history) {
+
+            StringBuilder row = new StringBuilder();
+            row.append(startColumn).append(stimulus.getBandNumber()).append(endColumn);
+            row.append(startColumn).append(stimulus.getOverallCorrectness()).append(endColumn);
+            row.append(startColumn).append(stimulus.getVisitingTime()).append(endColumn);
+            stringBuilder.append(startRow).append(row).append(endRow);
+        }
+        return stringBuilder.toString();
+    }
+
+    public String getStringSummary(String startRow, String endRow, String startColumn, String endColumn) {
+
+        // fine tuning stopping
+        //private boolean enoughFineTuningStimulae = true;
+        //private boolean cycle2 = false;
+        //private boolean secondStoppingCriterion = false;
+        //private boolean champion = false;
+        //private boolean looser = false;
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(startRow);
+        stringBuilder.append(startColumn).append("Score").append(endColumn);
+        stringBuilder.append(startColumn).append("BestFastTrack").append(endColumn);
+        stringBuilder.append(startColumn).append("SecondStoppingCriterion").append(endColumn);
+        stringBuilder.append(startColumn).append("Cycel2oscillation").append(endColumn);
+        stringBuilder.append(startColumn).append("EnoughFineTuningStimuli").append(endColumn);
+        stringBuilder.append(startColumn).append("Champion").append(endColumn);
+        stringBuilder.append(startColumn).append("Looser").append(endColumn);
+        stringBuilder.append(endRow);
+        stringBuilder.append(startRow);
+        stringBuilder.append(startColumn).append(this.score).append(endColumn);
+        stringBuilder.append(startColumn).append(this.bestBandFastTrack).append(endColumn);
+        stringBuilder.append(startColumn).append(this.secondStoppingCriterion).append(endColumn);
+        stringBuilder.append(startColumn).append(this.cycle2).append(endColumn);
+        stringBuilder.append(startColumn).append(this.enoughFineTuningStimulae).append(endColumn);
+        stringBuilder.append(startColumn).append(this.champion).append(endColumn);
+        stringBuilder.append(startColumn).append(this.looser).append(endColumn);
+        stringBuilder.append(endRow);
+        return stringBuilder.toString();
+    }
+    
+    public String getCompleteUserResultsHtmlString(){
+        String summary = this.getStringSummary("<tr>", "</tr>", "<td>", "</td>");
+        String inhoudFastTrack = this.getStringFastTrack("<tr>", "</tr>", "<td>", "</td>");
+        String inhoudFineTuning = this.getStringFineTuningHistoryShortened("<tr>", "<tr>", "<td>", "<td>");
+        StringBuilder htmlStringBuilder = new StringBuilder();
+        htmlStringBuilder.append("<p>User summary</p><table border=1>").append(summary).append("</table><br>");
+        htmlStringBuilder.append("<p>Fast Track History</p><table border=1>").append(inhoudFastTrack).append("</table><br>");
+        htmlStringBuilder.append("<p>Fine tuning short history</p><table border=1>").append(inhoudFineTuning).append("</table>");
+        return htmlStringBuilder.toString();
+    }
+    
+    
 }
