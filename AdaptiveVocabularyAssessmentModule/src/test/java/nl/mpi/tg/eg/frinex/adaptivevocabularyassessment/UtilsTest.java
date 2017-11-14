@@ -19,7 +19,6 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
 import utils.Vocabulary;
-import utils.Utils;
 import java.util.ArrayList;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.fintetuning.FineTuningBookkeepingStimulus;
 import org.junit.After;
@@ -27,7 +26,6 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *

@@ -53,7 +53,7 @@ public class Utils {
     public static void writeCsvFileFastTrack(ArrayList<AtomBookkeepingStimulus> stimulae, int stopBand, String outputDir) throws IOException {
         long millis = System.currentTimeMillis();
         int blockSize = Constants.NONWORDS_PER_BLOCK * Constants.AVRERAGE_NON_WORD_POSITION;
-        String fileName = "Fast_track_test_stopped_at_band" + stopBand + "_" + blockSize + "_" + millis + ".csv";
+        String fileName = "Fast_track_test_stopped_at_band_" + stopBand + "_" + blockSize + "_" + millis + ".csv";
         System.out.println("writeCsvFile: " + outputDir + fileName);
         final File csvFile = new File(outputDir, fileName);
         final FileWriter csvFileWriter = new FileWriter(csvFile, false);

@@ -24,6 +24,7 @@ import utils.Vocabulary;
 import utils.Utils;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.FastTrack;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.fintetuning.FineTuning;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.fintetuning.FineTuningBookkeepingStimulus;
@@ -33,7 +34,6 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -41,7 +41,7 @@ import org.junit.Test;
  * @author olhshk
  */
 public class MainTest {
-    
+
     final String OUTPUT_DIRECTORY = "../../Data/";
 
     public MainTest() {
@@ -68,43 +68,69 @@ public class MainTest {
      */
     @Test
     public void testMain() throws Exception {
-        System.out.println("main");
-        String[] input = new String[0];
-        Main.main(input);
-        try {
-            AdVocAsAtomStimulus[][] words = Vocabulary.getWords();
-            ArrayList<AdVocAsAtomStimulus> nonwords = Vocabulary.getNonwords();
-            
-            System.out.println("Create fast track sequence");
-            FastTrack fastTrack = new FastTrack(Constants.DEFAULT_USER, words, nonwords, Constants.NONWORDS_PER_BLOCK, Constants.START_BAND, Constants.AVRERAGE_NON_WORD_POSITION);
-            fastTrack.createStimulae();
-            
-            System.out.println("Create fine tuning  sequences");
-            AtomBookkeepingStimulus[][] bookkeepingWords = fastTrack.getBookkeepingWords();
-            ArrayList<AtomBookkeepingStimulus> bookkeepingNonwords = fastTrack.getBookkeepingNonwords();
-            FineTuning fineTuning = new FineTuning(Constants.DEFAULT_USER, bookkeepingWords, bookkeepingNonwords);
-            fineTuning.createStimulae();
-            
-            System.out.println("Run fast track sequence");
-            int stopBand = 37;
-            int lastCorrectBand = simulateFastTrackUpTo(fastTrack, stopBand);
-            ArrayList<AtomBookkeepingStimulus> fastTrackSequence = fastTrack.getBookeepingStimuli();
-            System.out.println("last correct band " + lastCorrectBand);
-            Utils.writeCsvFileFastTrack(fastTrackSequence, stopBand, OUTPUT_DIRECTORY);
+        Random rnd = new Random();
 
-            System.out.println("Run fine tuning ");
-            //writeCsvFileFineTuningPreset(fineTuningStimulae);
-            String message = simulateFineTuning(fineTuning, lastCorrectBand);
-            ArrayList<ArrayList<FineTuningBookkeepingStimulus>> fineTuningStimulae = fineTuning.getStimuli();
-            long millis = System.currentTimeMillis();
-            String fileName = "Fine_tuning_history_" + message + "_" + millis + ".csv";
-            Utils.writeCsvFileFineTuningHistoryShortened(fineTuningStimulae, OUTPUT_DIRECTORY, fileName);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
+        provider.initialiseStimuliState("");
+
+        boolean hasNextStimulus = provider.hasNextStimulus(0);
+        int currentExperimentCount = 0;
+        while (hasNextStimulus) {
+            provider.nextStimulus(0);
+            currentExperimentCount = provider.getCurrentStimulusIndex();
+            System.out.println(currentExperimentCount);
+            AdVocAsAtomStimulus stimulus = provider.getCurrentStimulus();
+            String answer = this.probabilisticAnswerer(stimulus, 0.9, rnd);
+            boolean isCorrect = provider.isCorrectResponse(stimulus, answer);
+            hasNextStimulus = provider.hasNextStimulus(0);
         }
+
+        boolean enoughFineTuningStimulae = provider.getEnoughFinetuningStimuli();
+        boolean cycle2 = provider.getCycel2();
+        boolean secondStoppingCriterion = provider.getSecondStoppingCriterion();
+        boolean champion = provider.getChampion();
+        boolean looser = provider.getLooser();
+        
+        System.out.println("Stimul used (steps): "+currentExperimentCount);
+        System.out.println("Score: "+provider.getScore());
+
+        ArrayList<AtomBookkeepingStimulus> fastTrackSequence = provider.getFastTrackStimuli();
+        int lastCorrectBandFastTrack = provider.getBestFastTrackBand();
+        System.out.println("last correct band fast track: " + lastCorrectBandFastTrack);
+        Utils.writeCsvFileFastTrack(fastTrackSequence, lastCorrectBandFastTrack, OUTPUT_DIRECTORY);
+
+        String message = "_secondStopping_" + secondStoppingCriterion + "__cycel2_" + cycle2
+                + "__champion_" + champion + "__looser_" + looser + "__enough_" + enoughFineTuningStimulae;
+
+        ArrayList<ArrayList<FineTuningBookkeepingStimulus>> fineTuningStimulae = provider.getFineTuningStimuli();
+        long millis = System.currentTimeMillis();
+        String fileName = "Fine_tuning_short_history_" + message + "_" + millis + ".csv";
+        Utils.writeCsvFileFineTuningHistoryShortened(fineTuningStimulae, OUTPUT_DIRECTORY, fileName);
 
         System.out.println("Done. ");
 
+    }
+
+    private String probabilisticAnswerer(AdVocAsAtomStimulus stimulus, double correctnessUpperBound, Random rnd) throws Exception {
+        String retVal = stimulus.getCorrectResponses();
+        double rndDouble = rnd.nextDouble();
+        //System.out.println("*****");
+        //System.out.println(retVal);
+        //System.out.println(rndDouble);
+        if (rndDouble > correctnessUpperBound) { // spoil the answer
+            if (retVal.equals("word")) {
+                retVal = "nonword";
+            } else {
+                if (retVal.equals("nonword")) {
+                    retVal ="word";
+                } else {
+                    throw new Exception("Wrong correct reaction in the stimulus, neither word, nor nonword: " + retVal);
+                }
+            }
+        }
+        //System.out.println(retVal);
+        //System.out.println("*****");
+        return retVal;
     }
 
     // return the number of the band where the last correct answer is produced
@@ -131,7 +157,6 @@ public class MainTest {
         return actualStopBand;
     }
 
-  
     private String simulateFineTuning(FineTuning fineTuning, int lastBandFromFastTrack) throws Exception {
         String retVal = simulateFineTuningProbabilistic(fineTuning, lastBandFromFastTrack, 0.6);
         System.out.println(retVal);
@@ -204,7 +229,7 @@ public class MainTest {
             } else {
                 System.out.println(" out of stimuli");
                 System.out.println(bandIndex);
-            
+
             }
         }
 

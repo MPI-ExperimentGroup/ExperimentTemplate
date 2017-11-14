@@ -17,8 +17,6 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client;
 
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
-
 /**
  *
  * @author olhshk

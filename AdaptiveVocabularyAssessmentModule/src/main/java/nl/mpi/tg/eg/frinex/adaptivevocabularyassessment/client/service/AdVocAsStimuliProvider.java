@@ -15,10 +15,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
+
+// /Users/olhshk/Documents/ExperimentTemplate/FieldKitRecorder/src/android/nl/mpi/tg/eg/frinex/FieldKitRecorder.java
+
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsNonWords;
@@ -30,6 +34,7 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.fintetu
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 import nl.mpi.tg.eg.frinex.common.AbstractStimuliProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
+//import org.json.simple.JSONObject;
 
 /**
  * @since Oct 27, 2017 2:01:33 PM (creation date)
@@ -66,6 +71,8 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
     private boolean justVisitedLastBand = false;
     private boolean justVisitedFirstBand = false;
 
+    private HashMap currentDump;
+
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
 
@@ -87,12 +94,48 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
             System.out.println("Error when creating a fine-tuning stimulus: " + ex.getMessage());
         }
     }
+    
+    public boolean getEnoughFinetuningStimuli(){
+        return this.enoughFineTuningStimulae;
+    }
+    
+    public boolean getCycel2(){
+        return this.cycle2;
+    }
+    
+    public boolean getSecondStoppingCriterion(){
+        return this.secondStoppingCriterion;
+    }
+    
+    public boolean getChampion(){
+        return this.champion;
+    }
+    
+    public boolean getLooser(){
+        return this.looser;
+    }
+    
+    public int getBestFastTrackBand(){
+        return this.bestBandFastTrack;
+    }
+    
+    public int getScore(){
+        return this.score;
+    }
+    
+    public int getExperimentCount(){
+        return this.experimentCount;
+    }
 
     public ArrayList<AtomBookkeepingStimulus> getFastTrackStimuli() {
         return this.fastTrack.getBookeepingStimuli();
     }
     
-    public int getFastTrackIndex(){
+    public ArrayList<ArrayList<FineTuningBookkeepingStimulus>> getFineTuningStimuli() {
+        return this.fineTuning.getStimuli();
+    }
+
+    public int getFastTrackIndex() {
         return this.fastTrackStimuliIndex;
     }
 
@@ -166,7 +209,22 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
 
     @Override
     public String generateStimuliStateSnapshot() {
-        return ""; //todo: serialise your current stimuli list here
+        if (this.champion || this.cycle2 || !this.enoughFineTuningStimulae || this.secondStoppingCriterion || this.looser) {
+            this.currentDump.put("bestFastrTrackRecord", this.bestBandFastTrack);
+            this.currentDump.put("champion", this.champion);
+            this.currentDump.put("cycle2", this.cycle2);
+            this.currentDump.put("experimentCount", this.experimentCount);
+            this.currentDump.put("fastTrackRecord", this.getFastTrackStimuli());
+            this.currentDump.put("finetuningTrackRecord", this.fineTuning.getStimuli());
+            this.currentDump.put("outOfFineStimuli", !this.enoughFineTuningStimulae);
+            this.currentDump.put("score", this.score);
+            this.currentDump.put("secondStopping", this.secondStoppingCriterion);
+            this.currentDump.put("looser", this.looser);
+            //JSONObject json = new JSONObject();
+            //return json.toString();
+        }
+
+        return "";
     }
 
     @Override
@@ -206,7 +264,7 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
         } else {
             // hit incorrect? go back one band and transfer to fine tuning!
             this.fastTrackStimuliIndex = this.fastTrackStimuliIndex > 0 ? (fastTrackStimuliIndex--) : 0;
-            
+
         }
         return false;
     }
@@ -214,7 +272,7 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
     private void switchToFineTuning() {
         int index = this.findMaxWordIndex();
         this.bestBandFastTrack = this.getFastTrackStimuli().get(index).getBandNumber();
-
+       
         // to initialise for fine tuning :     
         //private int counterInTupleFTuning = 0;
         //private int bandIndexFineTuning = -1;
@@ -232,14 +290,15 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
         }
 
     }
-    
-    private int findMaxWordIndex(){
-        for (int i=this.fastTrackStimuliIndex; i>=0; i--){
-            if (this.getFastTrackStimuli().get(i).getBandNumber()>0) {
-                return i;
+
+    private int findMaxWordIndex() {
+        for (int i = this.fastTrackStimuliIndex; i >= 0; i--) {
+            int bandNumber = this.getFastTrackStimuli().get(i).getBandNumber();
+            if (bandNumber > 0) {
+                return bandNumber;
             }
         }
-        return -1;
+        return Constants.START_BAND;
     }
 
     //also updates the indices
@@ -289,6 +348,7 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
             if (currentBand == Constants.NUMBER_OF_BANDS) { // the last band is hit
                 if (this.justVisitedLastBand) {
                     this.champion = true;
+                    this.score = Constants.NUMBER_OF_BANDS;
                     return false; // stop interation, the last band visiedt twice in a row
                 } else {
                     this.justVisitedLastBand = true; // the second trial to be sure
@@ -304,6 +364,7 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
             if (currentBand == 1) {
                 if (this.justVisitedFirstBand) {
                     this.looser = true;// stop interation, the first band is visited twice in a row
+                    this.score =1;
                     return false;
                 } else {
                     this.justVisitedFirstBand = true; // the second chance
@@ -329,6 +390,7 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
             }
             return true;
         }
+        this.score = AdVocAsStimuliProvider.mostOftenVisited(this.bandVisitCounter);
         System.out.println("Not enough fine-tuning compound stimula left for the next band " + nextBand + ". Index: " + indexNextStimulus + "; size: " + this.fineTuning.getStimuli().get(nextBand).size());
         return false;
     }
