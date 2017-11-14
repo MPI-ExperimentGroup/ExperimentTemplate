@@ -94,43 +94,43 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
             System.out.println("Error when creating a fine-tuning stimulus: " + ex.getMessage());
         }
     }
-    
-    public boolean getEnoughFinetuningStimuli(){
+
+    public boolean getEnoughFinetuningStimuli() {
         return this.enoughFineTuningStimulae;
     }
-    
-    public boolean getCycel2(){
+
+    public boolean getCycel2() {
         return this.cycle2;
     }
-    
-    public boolean getSecondStoppingCriterion(){
+
+    public boolean getSecondStoppingCriterion() {
         return this.secondStoppingCriterion;
     }
-    
-    public boolean getChampion(){
+
+    public boolean getChampion() {
         return this.champion;
     }
-    
-    public boolean getLooser(){
+
+    public boolean getLooser() {
         return this.looser;
     }
-    
-    public int getBestFastTrackBand(){
+
+    public int getBestFastTrackBand() {
         return this.bestBandFastTrack;
     }
-    
-    public int getScore(){
+
+    public int getScore() {
         return this.score;
     }
-    
-    public int getExperimentCount(){
+
+    public int getExperimentCount() {
         return this.experimentCount;
     }
 
     public ArrayList<AtomBookkeepingStimulus> getFastTrackStimuli() {
         return this.fastTrack.getBookeepingStimuli();
     }
-    
+
     public ArrayList<ArrayList<FineTuningBookkeepingStimulus>> getFineTuningStimuli() {
         return this.fineTuning.getStimuli();
     }
@@ -228,6 +228,16 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
     }
 
     @Override
+    public String getHtmlStimuliReport() {
+        return "<table><tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr><tr><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>0</td></tr></table>";
+    }
+
+    @Override
+    public String getStimuliReport() {
+        return "1,2,3,4,5,6,7,8,9\n2,3,4,5,6,7,8,9,0";
+    }
+
+    @Override
     public boolean isCorrectResponse(Stimulus stimulus, String stimulusResponse) {
         this.experimentCount++; // in any case, count experiment as done
         boolean isResponseWord = true;
@@ -272,7 +282,7 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
     private void switchToFineTuning() {
         int index = this.findMaxWordIndex();
         this.bestBandFastTrack = this.getFastTrackStimuli().get(index).getBandNumber();
-       
+
         // to initialise for fine tuning :     
         //private int counterInTupleFTuning = 0;
         //private int bandIndexFineTuning = -1;
@@ -364,7 +374,7 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
             if (currentBand == 1) {
                 if (this.justVisitedFirstBand) {
                     this.looser = true;// stop interation, the first band is visited twice in a row
-                    this.score =1;
+                    this.score = 1;
                     return false;
                 } else {
                     this.justVisitedFirstBand = true; // the second chance

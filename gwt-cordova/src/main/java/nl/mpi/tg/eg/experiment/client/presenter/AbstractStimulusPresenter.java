@@ -349,6 +349,14 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         showStimulus(null, 0);
     }
 
+    protected void sendStimuliReport() {
+        submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "stimuliReport", stimulusProvider.getStimuliReport(), duration.elapsedMillis());
+    }
+
+    protected void showStimuliReport() {
+        ((TimedStimulusView) simpleView).addHtmlText(stimulusProvider.getHtmlStimuliReport(), null);
+    }
+
     protected void withMatchingStimulus(String eventTag, final String matchingRegex, final int maxStimulusCount, final boolean randomise, int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         matchingStimuliGroup = new MatchingStimuliGroup(stimulusProvider.getCurrentStimulus(), stimulusProvider.getMatchingStimuli(matchingRegex, maxStimulusCount), randomise, repeatCount, hasMoreStimulusListener, endOfStimulusListener);
         matchingStimuliGroup.getNextStimulus(stimulusProvider);

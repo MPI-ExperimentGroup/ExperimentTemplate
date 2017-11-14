@@ -55,6 +55,10 @@ public interface StimuliProvider {
      */
     String generateStimuliStateSnapshot();
 
+    String getHtmlStimuliReport();
+
+    String getStimuliReport();
+
     List<Stimulus> getDistractorList(int maxStimuli);
 
     List<Stimulus> getMatchingStimuli(final String matchingRegex, final int maxStimulusCount);

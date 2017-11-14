@@ -430,6 +430,16 @@ public class StimulusProvider extends AbstractStimuliProvider {
         return stringBuilder.toString();
     }
 
+    @Override
+    public String getHtmlStimuliReport() {
+        throw new UnsupportedOperationException("getHtmlStimuliReport is not supported yet.");
+    }
+
+    @Override
+    public String getStimuliReport() {
+        throw new UnsupportedOperationException("getStimuliReport is not supported yet.");
+    }
+
     /*public void setCurrentStimulus(Stimulus currentStimulus) {
         this.stimulusSubsetArray.get(currentStimuliIndex);
     }*/

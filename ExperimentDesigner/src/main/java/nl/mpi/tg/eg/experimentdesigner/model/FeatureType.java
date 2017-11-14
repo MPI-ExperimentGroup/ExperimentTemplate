@@ -40,6 +40,8 @@ public enum FeatureType {
     loadSdCardStimulus(false, false, new FeatureAttribute[]{eventTag, /*minStimuliPerTag, maxStimuliPerTag,*/ maxStimuli, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, true, Contitionals.hasMoreStimulus),
     loadAllStimulus(false, false, new FeatureAttribute[]{eventTag, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, false, Contitionals.hasMoreStimulus),
     currentStimulusHasTag(true, false, new FeatureAttribute[]{msToNext}, true, false, Contitionals.hasStimulusTag),
+    showStimuliReport(false, false, null),
+    sendStimuliReport(false, false, null),
     targetButton(false, true, new FeatureAttribute[]{target, styleName}),
     actionButton(true, true, new FeatureAttribute[]{hotKey, styleName}),
     stimulusButton(true, true, new FeatureAttribute[]{hotKey, styleName}),
