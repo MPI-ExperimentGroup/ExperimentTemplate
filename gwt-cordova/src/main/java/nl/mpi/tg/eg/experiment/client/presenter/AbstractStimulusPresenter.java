@@ -36,6 +36,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
@@ -350,7 +351,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void sendStimuliReport() {
-        submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "stimuliReport", stimulusProvider.getStimuliReport(), duration.elapsedMillis());
+        final Map<String, String> stimuliReport = stimulusProvider.getStimuliReport();
+        for (String keyString : stimuliReport.keySet()) {
+            submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), keyString, stimuliReport.get(keyString), duration.elapsedMillis());
+        }
     }
 
     protected void showStimuliReport() {

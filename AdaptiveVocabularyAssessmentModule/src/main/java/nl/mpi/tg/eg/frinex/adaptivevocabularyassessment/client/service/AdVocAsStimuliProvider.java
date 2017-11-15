@@ -20,6 +20,8 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsNonWords;
@@ -231,8 +233,11 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
     }
 
     @Override
-    public String getStimuliReport() {
-        return "1,2,3,4,5,6,7,8,9\n2,3,4,5,6,7,8,9,0";
+    public Map<String, String> getStimuliReport() {
+        final HashMap<String, String> returnMap = new HashMap<>();
+        returnMap.put("example", "1,2,3,4,5,6,7,8,9\n2,3,4,5,6,7,8,9,0");
+        returnMap.put("number", "1");
+        return returnMap;
     }
 
     @Override

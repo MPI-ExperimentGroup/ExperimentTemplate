@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.frinex.common;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
@@ -57,7 +58,7 @@ public interface StimuliProvider {
 
     String getHtmlStimuliReport();
 
-    String getStimuliReport();
+    Map<String, String> getStimuliReport();
 
     List<Stimulus> getDistractorList(int maxStimuli);
 

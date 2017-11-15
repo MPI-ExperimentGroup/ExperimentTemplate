@@ -25,6 +25,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
@@ -436,7 +437,7 @@ public class StimulusProvider extends AbstractStimuliProvider {
     }
 
     @Override
-    public String getStimuliReport() {
+    public Map<String, String> getStimuliReport() {
         throw new UnsupportedOperationException("getStimuliReport is not supported yet.");
     }
 
