@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.service;
 
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -62,7 +63,10 @@ public class AdVocAsStimuliProviderTest {
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
         instance.initialiseStimuliState("");
         int totalStimuli = instance.getTotalStimuli();
-        assertTrue(totalStimuli > 0);
+        int minPreparedFineTuning = (Constants.FINE_TUNING_MAX_BAND_CHANGE+1)*Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE;
+        int minPreparedFastTrack = Constants.NUMBER_OF_BANDS - Constants.START_BAND+1;
+        int minAmountOfPreparedExperiments = minPreparedFastTrack + minPreparedFineTuning;
+        assertTrue(totalStimuli >  minAmountOfPreparedExperiments);
         System.out.println(totalStimuli);
     }
     

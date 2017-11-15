@@ -36,8 +36,6 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  * @since Oct 27, 2017 2:01:33 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-
-
 public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
 
     FastTrack fastTrack = null;
@@ -91,8 +89,9 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
         this.fineTuning = new FineTuning(Constants.DEFAULT_USER, bookkeepingWords, bookkeepingNonwords);
         try {
             fineTuning.createStimulae();
-            int totalFTuning = fineTuning.getTotalStimuli();
-            this.totalStimuli = this.getFastTrackStimuli().size() + totalFTuning;
+            //int totalFTuning = fineTuning.getTotalStimuli();
+            int maxFTuning = (Constants.FINE_TUNING_MAX_BAND_CHANGE + 1) * Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE;
+            this.totalStimuli = this.getFastTrackStimuli().size() + maxFTuning;
         } catch (FineTuningException ex) {
             System.out.println("Error when creating a fine-tuning stimulus: " + ex.getMessage());
         }
@@ -219,11 +218,14 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
     public String getHtmlStimuliReport() {
         String summary = this.getStringSummary("<tr>", "</tr>", "<td>", "</td>");
         String inhoudFastTrack = this.getStringFastTrack("<tr>", "</tr>", "<td>", "</td>");
-        String inhoudFineTuning = this.getStringFineTuningHistoryShortened("<tr>", "<tr>", "<td>", "<td>");
+        String inhoudFineTuningBrief = this.getStringFineTuningHistoryShortened("<tr>", "<tr>", "<td>", "<td>");
+        String inhoudFineTuningDetailed = this.getStringFineTuningHistoryDetailed("<tr>", "<tr>", "<td>", "<td>");
         StringBuilder htmlStringBuilder = new StringBuilder();
         htmlStringBuilder.append("<p>User summary</p><table border=1>").append(summary).append("</table><br>");
         htmlStringBuilder.append("<p>Fast Track History</p><table border=1>").append(inhoudFastTrack).append("</table><br>");
-        htmlStringBuilder.append("<p>Fine tuning short history</p><table border=1>").append(inhoudFineTuning).append("</table>");
+        htmlStringBuilder.append("<p>Fine tuning short history</p><table border=1>").append(inhoudFineTuningBrief).append("</table>");
+        htmlStringBuilder.append("<p><p>");
+        htmlStringBuilder.append("<p>Fine tuning detailed history</p><table border=1>").append(inhoudFineTuningDetailed).append("</table>");
         return htmlStringBuilder.toString();
         //return "<table><tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr><tr><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>0</td></tr></table>";
     }
@@ -269,9 +271,9 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
             }
         } else {
             // hit incorrect? go back one band and transfer to fine tuning!
-            
+
             System.out.println(this.fastTrackStimuliIndex);
-            this.fastTrackStimuliIndex = this.fastTrackStimuliIndex > 0 ? (this.fastTrackStimuliIndex-1) : 0;
+            this.fastTrackStimuliIndex = this.fastTrackStimuliIndex > 0 ? (this.fastTrackStimuliIndex - 1) : 0;
             System.out.println(this.fastTrackStimuliIndex);
         }
         return false;
@@ -299,7 +301,7 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
     }
 
     private int findMaxWordBand() {
-       
+
         for (int i = this.fastTrackStimuliIndex; i >= 0; i--) {
             int bandNumber = this.getFastTrackStimuli().get(i).getBandNumber();
             if (bandNumber > 0) {
@@ -398,7 +400,8 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
             return true;
         }
         this.score = AdVocAsStimuliProvider.mostOftenVisited(this.bandVisitCounter);
-        System.out.println("Not enough fine-tuning compound stimula left for the next band " + nextBand + ". Index: " + indexNextStimulus + "; size: " + this.fineTuning.getStimuli().get(nextBand).size());
+        int failingBandNumber = nextBand + 1;
+        System.out.println("Not enough fine-tuning compound stimula left for the next band " + failingBandNumber + ". Index: " + indexNextStimulus + "; size: " + this.fineTuning.getStimuli().get(nextBand).size());
         return false;
     }
 
@@ -591,17 +594,35 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
         stringBuilder.append(endRow);
         return stringBuilder.toString();
     }
-    
-    public String getCompleteUserResultsHtmlString(){
-        String summary = this.getStringSummary("<tr>", "</tr>", "<td>", "</td>");
-        String inhoudFastTrack = this.getStringFastTrack("<tr>", "</tr>", "<td>", "</td>");
-        String inhoudFineTuning = this.getStringFineTuningHistoryShortened("<tr>", "<tr>", "<td>", "<td>");
-        StringBuilder htmlStringBuilder = new StringBuilder();
-        htmlStringBuilder.append("<p>User summary</p><table border=1>").append(summary).append("</table><br>");
-        htmlStringBuilder.append("<p>Fast Track History</p><table border=1>").append(inhoudFastTrack).append("</table><br>");
-        htmlStringBuilder.append("<p>Fine tuning short history</p><table border=1>").append(inhoudFineTuning).append("</table>");
-        return htmlStringBuilder.toString();
+
+    public String getStringFineTuningHistoryDetailed(String startRow, String endRow, String startColumn, String endColumn) {
+        ArrayList<ArrayList<FineTuningBookkeepingStimulus>> stimuli = this.getFineTuningStimuli();
+        ArrayList<FineTuningBookkeepingStimulus> history = orderFineTuningHistory(stimuli);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(startRow);
+        stringBuilder.append(startColumn).append("BandNumber").append(endColumn);
+        stringBuilder.append(startColumn).append("Spelling").append(endColumn);
+        stringBuilder.append(startColumn).append("UserAnswer").append(endColumn);
+        stringBuilder.append(startColumn).append("Correctness").append(endColumn);
+        stringBuilder.append(startColumn).append("SummaryTupleCorrectness").append(endColumn);
+        stringBuilder.append(startColumn).append("VisitingTime").append(endColumn);
+        stringBuilder.append(endRow);
+        stringBuilder.append(startRow).append(endRow); // skip 1 row between tuples
+        for (FineTuningBookkeepingStimulus stimulus : history) {
+            for (int i = 0; i < Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE; i++) {
+                AtomBookkeepingStimulus atom = stimulus.getAtomStimulusAt(i);
+                StringBuilder row = new StringBuilder();
+                row.append(startColumn).append(atom.getBandNumber()).append(endColumn);
+                row.append(startColumn).append(atom.getSpelling()).append(endColumn);
+                row.append(startColumn).append(atom.getReaction()).append(endColumn);
+                row.append(startColumn).append(atom.getCorrectness()).append(endColumn);
+                row.append(startColumn).append(stimulus.getOverallCorrectness()).append(endColumn);
+                row.append(startColumn).append(stimulus.getVisitingTime()).append(endColumn);
+                stringBuilder.append(startRow).append(row).append(endRow);
+            }
+            stringBuilder.append(startRow).append(endRow); // skip 1 row between tuples
+        }
+        return stringBuilder.toString();
     }
-    
-    
+
 }
