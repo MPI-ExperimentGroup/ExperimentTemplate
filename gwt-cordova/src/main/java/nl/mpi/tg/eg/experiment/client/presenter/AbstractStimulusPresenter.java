@@ -353,7 +353,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     protected void sendStimuliReport() {
         final Map<String, String> stimuliReport = stimulusProvider.getStimuliReport();
         for (String keyString : stimuliReport.keySet()) {
-            submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), keyString, stimuliReport.get(keyString), duration.elapsedMillis());
+            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), "stimuliReport", keyString, stimuliReport.get(keyString), duration.elapsedMillis());
         }
     }
 
