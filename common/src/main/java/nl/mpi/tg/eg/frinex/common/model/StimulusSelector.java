@@ -31,7 +31,7 @@ public class StimulusSelector {
     final Integer maxCount;
 
     public StimulusSelector(Tag tag) {
-        this.alias = null;
+        this.alias = tag.name();
         this.tag = tag;
         this.minCount = null;
         this.maxCount = null;
