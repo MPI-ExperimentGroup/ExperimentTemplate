@@ -235,31 +235,37 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
     @Override
     public Map<String, String> getStimuliReport() {
         final HashMap<String, String> returnMap = new HashMap<>();
-
+        
         String summary = this.getStringSummary("", "\n", "", ";");
         HashMap<String, String> summaryMap = this.makeMapFromCsvString(summary, "Summary");
         for (String key : summaryMap.keySet()) {
             returnMap.put(key, summaryMap.get(key));
         }
-
+        
         String inhoudFastTrack = this.getStringFastTrack("", "\n", "", ";");
         HashMap<String, String> fastTrackMap = this.makeMapFromCsvString(inhoudFastTrack, "Fast_Track");
         for (String key : fastTrackMap.keySet()) {
             returnMap.put(key, fastTrackMap.get(key));
         }
-
+  
         String inhoudFineTuningBrief = this.getStringFineTuningHistoryShortened("", "\n", "", ";");
         HashMap<String, String> fineTuningBriefMap = this.makeMapFromCsvString(inhoudFineTuningBrief, "Fine_Tuning_Brief");
         for (String key : fineTuningBriefMap.keySet()) {
             returnMap.put(key, fineTuningBriefMap.get(key));
         }
-
+        
         String inhoudFineTuningDetailed = this.getStringFineTuningHistoryDetailed("", "\n", "", ";");
         HashMap<String, String> fineTuningDetailedMap = this.makeMapFromCsvString(inhoudFineTuningDetailed, "Fine_Tuning_Detailed");
         for (String key : fineTuningDetailedMap.keySet()) {
             returnMap.put(key, fineTuningDetailedMap.get(key));
-        }
-        //returnMap.put("example", "1,2,3,4,5,6,7,8,9\n2,3,4,5,6,7,8,9,0");
+        } 
+        
+        
+        //returnMap.put("example_1", "1;2;3;4;5;6;7;8;9");
+        //returnMap.put("example_2", "A;B;C;D;E;F;G;H;I");
+        //returnMap.put("example_3", "X;X;X;X;X;X");
+        //returnMap.put("number", "1");
+        //returnMap.put("example", "1,2,3,4,5,6,7,8,9 \n 2,3,4,5,6,7,8,9,0");
         //returnMap.put("number", "1");
         return returnMap;
     }
