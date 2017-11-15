@@ -634,9 +634,9 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
     <xsl:template match="stimuli|randomGrouping" mode="stimuliTags">
         <xsl:text>, new StimulusSelector[]{</xsl:text>
         <xsl:for-each select="tag">
-            <xsl:text>new StimulusSelector(</xsl:text>
-            <xsl:value-of select="if(@alias) then concat('&quot;', @alias, '&quot;,') else ''" />
-            <xsl:text>Tag.tag_</xsl:text>
+            <xsl:text>new StimulusSelector("</xsl:text>
+            <xsl:value-of select="if(@alias) then @alias else text()" />
+            <xsl:text>", Tag.tag_</xsl:text>
             <xsl:value-of select="text()" />
             <xsl:text>)</xsl:text>
             <xsl:if test="position() != last()">
