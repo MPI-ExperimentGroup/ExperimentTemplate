@@ -22,6 +22,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.fintetuning.FineTuningBookkeepingStimulus;
@@ -130,6 +131,19 @@ public class Utils {
         htmlStringBuilder.append("</body></html>");
         BufferedWriter output = new BufferedWriter(new FileWriter(htmlFile));
         output.write(htmlStringBuilder.toString());
+        output.close();
+    }
+    
+    public static void writeCsvMapAsOneCsv(AdVocAsStimuliProvider provider, String outputDir, String fileName) throws IOException {
+        System.out.println("write full history htm file: " + outputDir + fileName);
+        final File txtFile = new File(outputDir, fileName);
+        Map<String,String> tables = provider.getStimuliReport();
+        StringBuilder txtStringBuilder = new StringBuilder();
+        for (String rowName : tables.keySet()){
+            txtStringBuilder.append(rowName).append(";").append(tables.get(rowName)).append("\n");
+        }
+        BufferedWriter output = new BufferedWriter(new FileWriter(txtFile));
+        output.write(txtStringBuilder.toString());
         output.close();
     }
 

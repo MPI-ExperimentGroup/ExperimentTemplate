@@ -235,8 +235,32 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
     @Override
     public Map<String, String> getStimuliReport() {
         final HashMap<String, String> returnMap = new HashMap<>();
-        returnMap.put("example", "1,2,3,4,5,6,7,8,9\n2,3,4,5,6,7,8,9,0");
-        returnMap.put("number", "1");
+
+        String summary = this.getStringSummary("", "\n", "", ";");
+        HashMap<String, String> summaryMap = this.makeMapFromCsvString(summary, "Summary");
+        for (String key : summaryMap.keySet()) {
+            returnMap.put(key, summaryMap.get(key));
+        }
+
+        String inhoudFastTrack = this.getStringFastTrack("", "\n", "", ";");
+        HashMap<String, String> fastTrackMap = this.makeMapFromCsvString(inhoudFastTrack, "Fast_Track");
+        for (String key : fastTrackMap.keySet()) {
+            returnMap.put(key, fastTrackMap.get(key));
+        }
+
+        String inhoudFineTuningBrief = this.getStringFineTuningHistoryShortened("", "\n", "", ";");
+        HashMap<String, String> fineTuningBriefMap = this.makeMapFromCsvString(inhoudFineTuningBrief, "Fine_Tuning_Brief");
+        for (String key : fineTuningBriefMap.keySet()) {
+            returnMap.put(key, fineTuningBriefMap.get(key));
+        }
+
+        String inhoudFineTuningDetailed = this.getStringFineTuningHistoryDetailed("", "\n", "", ";");
+        HashMap<String, String> fineTuningDetailedMap = this.makeMapFromCsvString(inhoudFineTuningDetailed, "Fine_Tuning_Detailed");
+        for (String key : fineTuningDetailedMap.keySet()) {
+            returnMap.put(key, fineTuningDetailedMap.get(key));
+        }
+        //returnMap.put("example", "1,2,3,4,5,6,7,8,9\n2,3,4,5,6,7,8,9,0");
+        //returnMap.put("number", "1");
         return returnMap;
     }
 
@@ -628,6 +652,16 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
             stringBuilder.append(startRow).append(endRow); // skip 1 row between tuples
         }
         return stringBuilder.toString();
+    }
+
+    private HashMap<String, String> makeMapFromCsvString(String csvTable, String tableName) {
+        String[] rows = csvTable.split("\n");
+        HashMap<String, String> retVal = new HashMap();
+        retVal.put("Stimuli_report_" + tableName + "_" + "head", rows[0]);
+        for (int i = 1; i < rows.length; i++) {
+            retVal.put("Stimuli_report_" + tableName + "_row_" + i, rows[i]);
+        }
+        return retVal;
     }
 
 }

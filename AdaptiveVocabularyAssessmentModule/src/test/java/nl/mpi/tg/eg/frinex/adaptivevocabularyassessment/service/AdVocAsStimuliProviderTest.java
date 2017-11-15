@@ -17,6 +17,9 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.service;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
@@ -112,8 +115,6 @@ public class AdVocAsStimuliProviderTest {
     }
 
   
-
-
     /**
      * Test of getTotalStimuli method, of class AdVocAsStimuliProvider.
      */
@@ -125,6 +126,26 @@ public class AdVocAsStimuliProviderTest {
         int totalStimuli = instance.getTotalStimuli();
         assertTrue(totalStimuli > 0);
         System.out.println(totalStimuli);
+    }
+
+
+    /**
+     * Test of getTotalStimuli method, of class AdVocAsStimuliProvider.
+     */
+    @Test
+    public void getStimuliReport() {
+        System.out.println("getStimuliReport");
+        AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
+        instance.initialiseStimuliState("");
+        Map<String,String> result= instance.getStimuliReport();
+        Set<String>  keys = result.keySet();
+        // 4 is the amount of headers
+        assertTrue(keys.size()>4);
+        for (String key : keys) {
+            String row = result.get(key);
+            int index = row.indexOf(";");
+            assertTrue(index>-1);
+        }
     }
 
     /**

@@ -17,12 +17,9 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Main;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
-import utils.Vocabulary;
 import utils.Utils;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.FastTrack;
@@ -104,6 +101,8 @@ public class MainTest {
         
         String fileNameHTML = "Full_user_history_" + message + "_" + millis + ".html";
         Utils.writeHtmlFullUserResults(provider, OUTPUT_DIRECTORY, fileNameHTML);
+        
+        Utils.writeCsvMapAsOneCsv(provider, OUTPUT_DIRECTORY, "Full_user_history_" + message + "_" + millis + ".csv");
         System.out.println("Done. ");
 
     }
