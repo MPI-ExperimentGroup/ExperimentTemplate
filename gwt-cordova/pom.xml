@@ -116,7 +116,7 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
-            <version>3.1.0</version>
+            <version>3.2.1</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
@@ -161,8 +161,12 @@
                                 <resource>
                                     <directory>src/main/static/${experiment.configuration.name}</directory>
                                     <excludes>
+                                        <exclude>**/*.xlsx</exclude>
+                                        <exclude>**/*.docx</exclude>
+                                        <exclude>**/*.mov</exclude>
                                         <exclude>**/*.wav</exclude>
                                         <exclude>**/*.avi</exclude>
+                                        <exclude>**/*.mpeg</exclude>
                                     </excludes>            
                                 </resource>
                             </resources>              
@@ -346,6 +350,12 @@
                                 </fileMapper>
                             </fileMappers>
                             <outputDir>${project.build.directory}/generated-sources/gwt/nl/mpi/tg/eg/experiment/client</outputDir>
+                            <parameters>
+                                <parameter>
+                                    <name>targetClientDirectory</name>
+                                    <value>${project.build.directory}/generated-sources/gwt/nl/mpi/tg/eg/experiment/client</value>
+                                </parameter>
+                            </parameters>
                         </transformationSet>
                         <transformationSet>
                             <dir>${experiment.configuration.path}</dir>
