@@ -34,7 +34,8 @@
             <endOfStimulus>
                 <sendStimuliReport eventTag="results" />
                 <showStimuliReport/>
-                <autoNextPresenter/>
+                 <targetButton featureText="Next" target="EditUser"/>
+<!--                <autoNextPresenter/>-->
             </endOfStimulus>
             <randomGrouping/>
             <stimuli/>
