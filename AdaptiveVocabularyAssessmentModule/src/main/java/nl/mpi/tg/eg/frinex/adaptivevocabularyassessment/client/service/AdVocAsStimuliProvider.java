@@ -26,6 +26,7 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingSt
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsNonWords;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsWords;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Vocabulary;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.FastTrack;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.fintetuning.FineTuning;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.fintetuning.FineTuningBookkeepingStimulus;
@@ -79,16 +80,16 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
             }
 
         }
-        AdVocAsAtomStimulus[][] words = ConstantsWords.WORDS;
-        ArrayList<AdVocAsAtomStimulus> nonwords = new ArrayList<>();
-        nonwords.addAll(Arrays.asList(ConstantsNonWords.NONWORDS_ARRAY));
-
-        this.fastTrack = new FastTrack(Constants.DEFAULT_USER, words, nonwords, Constants.NONWORDS_PER_BLOCK, Constants.START_BAND, Constants.AVRERAGE_NON_WORD_POSITION);
+        Vocabulary vocab = new Vocabulary();
+        AtomBookkeepingStimulus[][] words = vocab.initialiseWords(ConstantsWords.WORDS);
+        ArrayList<AdVocAsAtomStimulus> nonwordstmp = new ArrayList<>();
+        nonwordstmp.addAll(Arrays.asList(ConstantsNonWords.NONWORDS_ARRAY));
+        ArrayList<AtomBookkeepingStimulus> nonwords = vocab.initialiseNonwords(nonwordstmp);
+        
+        
+        this.fastTrack = new FastTrack(words, nonwords, Constants.NONWORDS_PER_BLOCK, Constants.START_BAND, Constants.AVRERAGE_NON_WORD_POSITION);
         this.fastTrack.createStimulae();
-
-        AtomBookkeepingStimulus[][] bookkeepingWords = this.fastTrack.getBookkeepingWords();
-        ArrayList<AtomBookkeepingStimulus> bookkeepingNonwords = this.fastTrack.getBookkeepingNonwords();
-        this.fineTuning = new FineTuning(Constants.DEFAULT_USER, bookkeepingWords, bookkeepingNonwords);
+        this.fineTuning = new FineTuning(words, nonwords);
         try {
             fineTuning.createStimulae();
             //int totalFTuning = fineTuning.getTotalStimuli();
@@ -235,32 +236,31 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
     @Override
     public Map<String, String> getStimuliReport() {
         final HashMap<String, String> returnMap = new HashMap<>();
-        
+
         String summary = this.getStringSummary("", "\n", "", ";");
         HashMap<String, String> summaryMap = this.makeMapFromCsvString(summary, "Summary");
         for (String key : summaryMap.keySet()) {
             returnMap.put(key, summaryMap.get(key));
         }
-        
+
         String inhoudFastTrack = this.getStringFastTrack("", "\n", "", ";");
         HashMap<String, String> fastTrackMap = this.makeMapFromCsvString(inhoudFastTrack, "Fast_Track");
         for (String key : fastTrackMap.keySet()) {
             returnMap.put(key, fastTrackMap.get(key));
         }
-  
+
         String inhoudFineTuningBrief = this.getStringFineTuningHistoryShortened("", "\n", "", ";");
         HashMap<String, String> fineTuningBriefMap = this.makeMapFromCsvString(inhoudFineTuningBrief, "Fine_Tuning_Brief");
         for (String key : fineTuningBriefMap.keySet()) {
             returnMap.put(key, fineTuningBriefMap.get(key));
         }
-        
+
         String inhoudFineTuningDetailed = this.getStringFineTuningHistoryDetailed("", "\n", "", ";");
         HashMap<String, String> fineTuningDetailedMap = this.makeMapFromCsvString(inhoudFineTuningDetailed, "Fine_Tuning_Detailed");
         for (String key : fineTuningDetailedMap.keySet()) {
             returnMap.put(key, fineTuningDetailedMap.get(key));
-        } 
-        
-        
+        }
+
         //returnMap.put("example_1", "1;2;3;4;5;6;7;8;9");
         //returnMap.put("example_2", "A;B;C;D;E;F;G;H;I");
         //returnMap.put("example_3", "X;X;X;X;X;X");

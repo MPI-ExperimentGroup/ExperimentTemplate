@@ -19,13 +19,20 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack;
 
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.FastTrack;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsNonWords;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsWords;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Vocabulary;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -72,10 +79,34 @@ public class FastTrackTest {
     @Test
     public void testCreateStimulae() {
         System.out.println("createStimulae");
-        //FastTrack instance = null;
-        //instance.createStimulae();
-        // TODO review the generated test code and remove the default call to fail.
-       //fail("The test case is a prototype.");
+        // test fails if the repetitis are discovered
+      
+        Vocabulary vocab = new Vocabulary();
+        AtomBookkeepingStimulus[][] words = vocab.initialiseWords(ConstantsWords.WORDS);
+        ArrayList<AdVocAsAtomStimulus> nonwordstmp = new ArrayList<>();
+        nonwordstmp.addAll(Arrays.asList(ConstantsNonWords.NONWORDS_ARRAY));
+        ArrayList<AtomBookkeepingStimulus> nonwords = vocab.initialiseNonwords(nonwordstmp);
+        
+       
+        FastTrack fastTrack = new FastTrack(words, nonwords, Constants.NONWORDS_PER_BLOCK, Constants.START_BAND, Constants.AVRERAGE_NON_WORD_POSITION);
+        fastTrack.createStimulae();
+        ArrayList<AtomBookkeepingStimulus> stimuli = fastTrack.getBookeepingStimuli();
+        ArrayList<String> spellings = new ArrayList<>(stimuli.size());
+        for (AtomBookkeepingStimulus stimulus : stimuli){
+            spellings.add(stimulus.getSpelling());
+        }
+        HashSet<String> set = new HashSet(spellings);
+        assertEquals(set.size(), spellings.size());
+        
+        // checking if the Equality is implemented OK on Strings
+        ArrayList<String> testEqualityList = new ArrayList<>(2);
+        testEqualityList.add("rhabarber");
+        testEqualityList.add("rhabarber");
+        assertEquals(2, testEqualityList.size());
+        HashSet<String> testEqualitySet = new HashSet(testEqualityList);
+        assertEquals(1, testEqualitySet.size());
+        
+        
     }
 
     /**

@@ -17,7 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
-import utils.Vocabulary;
+import utils.VocabularyFromFiles;
 import java.util.ArrayList;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 import org.junit.After;
@@ -30,9 +30,9 @@ import org.junit.Test;
  *
  * @author olhshk
  */
-public class VocabularyTest {
+public class VocabularyFromFilesTest {
     
-    public VocabularyTest() {
+    public VocabularyFromFilesTest() {
     }
     
     @BeforeClass
@@ -52,55 +52,55 @@ public class VocabularyTest {
     }
 
     /**
-     * Test of parseWordInputCSV method, of class Vocabulary.
+     * Test of parseWordInputCSV method, of class VocabularyFromFiles.
      */
     @Test
     public void testParseWordInputCSV() throws Exception {
         System.out.println("parseWordInputCSV");
-        Vocabulary instance = new Vocabulary();
+        VocabularyFromFiles instance = new VocabularyFromFiles();
         //instance.parseWordInputCSV("dummylocation");
         // TODO review the generated test code and remove the default call to fail.
        //fail("The test case is a prototype.");
     }
 
     /**
-     * Test of parseNonwordInputCSV method, of class Vocabulary.
+     * Test of parseNonwordInputCSV method, of class VocabularyFromFiles.
      */
     @Test
     public void testParseNonwordInputCSV() throws Exception {
         System.out.println("parseNonwordInputCSV");
-        Vocabulary instance = new Vocabulary();
+        VocabularyFromFiles instance = new VocabularyFromFiles();
         //instance.parseNonwordInputCSV("dummylocation");
         // TODO review the generated test code and remove the default call to fail.
        //fail("The test case is a prototype.");
     }
 
     /**
-     * Test of getWords method, of class Vocabulary.
+     * Test of getWords method, of class VocabularyFromFiles.
      */
     @Test
     public void testGetWords() {
         System.out.println("getWords");
-        AdVocAsAtomStimulus[][] result = Vocabulary.getWords();
+        AdVocAsAtomStimulus[][] result = VocabularyFromFiles.getWords();
         //assertArrayEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
        //fail("The test case is a prototype.");
     }
 
     /**
-     * Test of getNonwords method, of class Vocabulary.
+     * Test of getNonwords method, of class VocabularyFromFiles.
      */
     @Test
     public void testGetNonwords() {
         System.out.println("getNonwords");
-        ArrayList<AdVocAsAtomStimulus> result = Vocabulary.getNonwords();
+        ArrayList<AdVocAsAtomStimulus> result = VocabularyFromFiles.getNonwords();
         //assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
        //fail("The test case is a prototype.");
     }
 
     /**
-     * Test of initialiseVocabulary method, of class Vocabulary.
+     * Test of initialiseVocabulary method, of class VocabularyFromFiles.
      */
     @Test
     public void testInitialiseVocabulary() throws Exception {

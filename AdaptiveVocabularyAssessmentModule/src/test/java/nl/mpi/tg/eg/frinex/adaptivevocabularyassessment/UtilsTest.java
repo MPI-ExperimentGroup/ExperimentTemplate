@@ -18,7 +18,7 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
-import utils.Vocabulary;
+import utils.VocabularyFromFiles;
 import java.util.ArrayList;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.fintetuning.FineTuningBookkeepingStimulus;
 import org.junit.After;
@@ -59,7 +59,7 @@ public class UtilsTest {
     @Test
     public void testTestPrint() {
         System.out.println("testPrint");
-        Vocabulary bands = null;
+        VocabularyFromFiles bands = null;
         //Utils.testPrint(bands);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");

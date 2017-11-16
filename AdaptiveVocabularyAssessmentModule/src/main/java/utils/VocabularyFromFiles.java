@@ -31,7 +31,7 @@ import org.apache.commons.csv.CSVRecord;
  *
  * @author olhshk
  */
-public class Vocabulary {
+public class VocabularyFromFiles {
 
     private static final AdVocAsAtomStimulus[][] localWORDS = new AdVocAsAtomStimulus[Constants.NUMBER_OF_BANDS][Constants.WORDS_PER_BAND];
     private static final ArrayList<AdVocAsAtomStimulus> localNONWORDS = new ArrayList<>(); // unknow length, cannot allocte in advance

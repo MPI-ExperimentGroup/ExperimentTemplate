@@ -17,7 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client;
 
-import utils.Vocabulary;
+import utils.VocabularyFromFiles;
 
 /**
  * @since Oct 20, 2017 11:38:57 AM (creation date)
@@ -34,7 +34,7 @@ public class Main {
 
         final String NONWORD_FILE_LOCATION = "2.selection_words_nonwords.csv";
 
-        Vocabulary.initialiseVocabulary(WORD_FILE_LOCATION, NONWORD_FILE_LOCATION);
+        VocabularyFromFiles.initialiseVocabulary(WORD_FILE_LOCATION, NONWORD_FILE_LOCATION);
         
     }
 

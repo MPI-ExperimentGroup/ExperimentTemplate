@@ -17,9 +17,9 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack;
 
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.RandomIndexing;
 import java.util.ArrayList;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 
 /**
@@ -30,18 +30,15 @@ public class FastTrack {
 
     protected AtomBookkeepingStimulus[][] words;
     protected ArrayList<AtomBookkeepingStimulus> nonwords;
-    protected String userName;
 
-    
     private final int startBand;
     private final int averageNonwordPosition;
     private final int nonWordsPerBlock;
     private ArrayList<AtomBookkeepingStimulus> bookkeepingStimuli;
 
-    public FastTrack(String username, AdVocAsAtomStimulus[][] wrds, ArrayList<AdVocAsAtomStimulus> nonwrds, int nonWordsPerBlock, int startBand, int averageNonwordPosition) {
-        this.userName=username;
-        this.words = this.initialiseWords(wrds);
-        this.nonwords = this.initialiseNonwords(nonwrds);
+    public FastTrack(AtomBookkeepingStimulus[][] wrds, ArrayList<AtomBookkeepingStimulus> nonwrds, int nonWordsPerBlock, int startBand, int averageNonwordPosition) {
+        this.words = wrds;
+        this.nonwords = nonwrds;
         this.startBand = startBand;
         this.averageNonwordPosition = averageNonwordPosition;
         this.nonWordsPerBlock = nonWordsPerBlock;
@@ -58,26 +55,21 @@ public class FastTrack {
 
         //we need to choose the positions for nonwords (from 0 to sequenceLength-1) 
         //int upperBound, int nonwordsPerBlock, int n
-        RandomNonWordIndeces posChooser = new RandomNonWordIndeces(this.startBand, this.nonWordsPerBlock, this.averageNonwordPosition, this.nonwords.size());
+        RandomIndexing posChooser = new RandomIndexing(this.startBand, this.nonWordsPerBlock, this.averageNonwordPosition, this.nonwords.size());
         ArrayList<Integer> nonWordInd = posChooser.updateAndGetIndices();
 
         int bandIndex = this.startBand - 1;
         int nonwordIndex = -1;
-        ArrayList<AtomBookkeepingStimulus> nonwordsCopy = AtomBookkeepingStimulus.copyAtomStimulae(this.nonwords);
-        int sequenceLength = posChooser.getSequenceLength();
+        int sequenceLength = posChooser.getFastTrackSequenceLength();
         for (int i = 0; i < sequenceLength; i++) {
             if (nonWordInd.contains(i)) { // i is a position for a non-word
-                //int nonWordCounter = nonwordsCopy.size();
-                //int nonwordIndex = rnd.nextInt(nonWordCounter);
-                nonwordIndex++; // temporary we pick up the next nonword as the stimulus for the fast tracks
+                nonwordIndex++; // pick up the next nonword in the randmomized list of nonwords
                 this.bookkeepingStimuli.add(this.nonwords.get(nonwordIndex));
                 this.nonwords.get(nonwordIndex).setIsUsed(true);
-                nonwordsCopy.remove(nonwordIndex);
             } else {
-                //int wordNumber = rnd.nextInt(Constants.WORDS_PER_BAND);
-                int wordNumber = 0; // temporary we pick up the first word in the band as the stimulus for the fast tracks
-                this.bookkeepingStimuli.add(this.words[bandIndex][wordNumber]);
-                this.words[bandIndex][wordNumber].setIsUsed(true);
+                //we pick up the first word in the randomized band as the stimulus for the fast tracks
+                this.bookkeepingStimuli.add(this.words[bandIndex][0]);
+                this.words[bandIndex][0].setIsUsed(true);
                 bandIndex++;
             }
         }
@@ -95,24 +87,20 @@ public class FastTrack {
             eval = false;// tool a word as a nonword
         }
         stimulus.setCorrectness(eval);
-
         return eval;
     }
-    
-     public ArrayList<AtomBookkeepingStimulus> getBookeepingStimuli(){
+
+    public ArrayList<AtomBookkeepingStimulus> getBookeepingStimuli() {
         return this.bookkeepingStimuli;
     }
-    
-    
-    public AtomBookkeepingStimulus[][] getBookkeepingWords(){
+
+    public AtomBookkeepingStimulus[][] getBookkeepingWords() {
         return this.words;
     }
-    
-    public ArrayList<AtomBookkeepingStimulus> getBookkeepingNonwords(){
+
+    public ArrayList<AtomBookkeepingStimulus> getBookkeepingNonwords() {
         return this.nonwords;
     }
-    
-  
 
     public ArrayList<AdVocAsAtomStimulus> getPureStimuli() {
         ArrayList<AdVocAsAtomStimulus> retVal = new ArrayList<>(this.bookkeepingStimuli.size());
@@ -122,47 +110,6 @@ public class FastTrack {
         return retVal;
     }
 
-    private AtomBookkeepingStimulus[][] initialiseWords(AdVocAsAtomStimulus[][] wrds) {
-        if (wrds == null || wrds.length == 0) {
-            System.out.println("Empty array of words in bands");
-            return new AtomBookkeepingStimulus[0][0];
-        }
-        AtomBookkeepingStimulus[][] retVal = new AtomBookkeepingStimulus[Constants.NUMBER_OF_BANDS][Constants.WORDS_PER_BAND];
-        for (int bandIndex = 0; bandIndex < wrds.length; bandIndex++) {
-            if (wrds[bandIndex] == null && wrds[bandIndex].length == 0) {
-                System.out.println("Empty array of words for band " + bandIndex);
-                retVal[bandIndex] = new AtomBookkeepingStimulus[0];
-            } else {
-                for (int wordCounter = 0; wordCounter < wrds[bandIndex].length; wordCounter++) {
-                    AtomBookkeepingStimulus stimulus = new AtomBookkeepingStimulus(wrds[bandIndex][wordCounter]);
-                    retVal[bandIndex][wordCounter] = stimulus;
-                }
-            }
-        }
-        return retVal;
-    }
-
-    private ArrayList<AtomBookkeepingStimulus> initialiseNonwords(ArrayList<AdVocAsAtomStimulus> nonwrds) {
-        if (nonwrds == null || nonwrds.isEmpty()) {
-            System.out.println("Empty array of nonwords");
-            return new ArrayList<>();
-        }
-        ArrayList<AtomBookkeepingStimulus> retVal = new ArrayList<>(nonwrds.size());
-        for (AdVocAsAtomStimulus nonword : nonwrds) {
-            AtomBookkeepingStimulus stimulus = new AtomBookkeepingStimulus(nonword);
-            retVal.add(stimulus);
-        }
-        return retVal;
-    }
-
-    private void debugTestNonwordFrequences(RandomNonWordIndeces posChooser) {
-        posChooser.updateFrequencesOfNonWordIndices();
-        double[] freq = posChooser.getFrequencesOfNonWordindices();
-        System.out.println("Array of frequences is of length " + freq.length);
-        for (int i = 0; i < freq.length; i++) {
-            System.out.println(freq[i]);
-        }
-
-    }
+   
 
 }

@@ -30,7 +30,6 @@ public class FineTuning {
 
     protected AtomBookkeepingStimulus[][] words;
     protected ArrayList<AtomBookkeepingStimulus> nonwords;
-    protected String userName;
 
     ArrayList<ArrayList<FineTuningBookkeepingStimulus>> stimulae = new ArrayList<>(Constants.NUMBER_OF_BANDS);
 
@@ -39,8 +38,7 @@ public class FineTuning {
     private int totalStimuli=0;
     private int currentlyAddedStimIndex;
 
-    public FineTuning(String username, AtomBookkeepingStimulus[][] words, ArrayList<AtomBookkeepingStimulus> nonwords) {
-        this.userName = username;
+    public FineTuning(AtomBookkeepingStimulus[][] words, ArrayList<AtomBookkeepingStimulus> nonwords) {
         this.words = words;
         this.nonwords = nonwords;
         this.stepCounter = 0;

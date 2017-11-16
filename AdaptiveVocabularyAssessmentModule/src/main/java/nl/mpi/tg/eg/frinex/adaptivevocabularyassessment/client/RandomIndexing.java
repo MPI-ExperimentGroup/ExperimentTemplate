@@ -15,12 +15,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack;
+package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 
 /**
  * produces the collection of [p * N] indices(for non-word) from 0 to N-1, where
@@ -28,9 +27,9 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
  *
  * @author olhshk
  */
-public class RandomNonWordIndeces {
+public class RandomIndexing {
 
-    private int sequenceLength; //  N
+    private int fastTrackSequenceLength; //  N
 
     private final int averageNonwordPosition; // n
 
@@ -44,26 +43,26 @@ public class RandomNonWordIndeces {
 
     private double[] frequences;
 
-    public RandomNonWordIndeces(int startBand, int nonwordsPerBlock, int averageNonwordPosition, int nonwordsAvailable) {
+    public RandomIndexing(int startBand, int nonwordsPerBlock, int averageNonwordPosition, int nonwordsAvailable) {
         this.averageNonwordPosition = averageNonwordPosition;
         this.nonwordsPerBlock = nonwordsPerBlock;
         int wordsAvailable = Constants.NUMBER_OF_BANDS - (startBand - 1);// one from each band
-        // number of nonwords = 1/n * sequenceLength
-        // number of words = (n-1)/n * sequenceLength
-        this.sequenceLength = (averageNonwordPosition * wordsAvailable) / (averageNonwordPosition - 1);
-        if (this.sequenceLength > nonwordsAvailable){
-            this.sequenceLength = nonwordsAvailable;
-            this.numberOfWords = (this.sequenceLength * (averageNonwordPosition - 1))/averageNonwordPosition; 
+        // number of nonwords = 1/n * fastTrackSequenceLength
+        // number of words = (n-1)/n * fastTrackSequenceLength
+        this.fastTrackSequenceLength = (averageNonwordPosition * wordsAvailable) / (averageNonwordPosition - 1);
+        if (this.fastTrackSequenceLength > nonwordsAvailable){
+            this.fastTrackSequenceLength = nonwordsAvailable;
+            this.numberOfWords = (this.fastTrackSequenceLength * (averageNonwordPosition - 1))/averageNonwordPosition; 
         } else {
             this.numberOfWords = wordsAvailable;
         }
         
-        this.numberOfNonwords = this.sequenceLength - this.numberOfWords;
+        this.numberOfNonwords = this.fastTrackSequenceLength - this.numberOfWords;
     }
 
    
 
-    // we divide all the indices from 0 to sequenceLength-1 on blocks,
+    // we divide all the indices from 0 to fastTrackSequenceLength-1 on blocks,
     // each block has size nonwordsPerBlock*averageNonwordPosition positions
     // and we pick nonwordsPerBlock positions for non-words in each block
     private ArrayList<Integer> calculateRandomIndices() {
@@ -71,10 +70,10 @@ public class RandomNonWordIndeces {
         ArrayList<Integer> retVal = new ArrayList<>();
         int randOffset;
         int blockSize = nonwordsPerBlock * this.averageNonwordPosition;
-        int numberOfBlocks = this.sequenceLength / blockSize;
+        int numberOfBlocks = this.fastTrackSequenceLength / blockSize;
         Random rnd = new Random();
         for (int i = 0; i < numberOfBlocks; i++) {
-            ArrayList<Integer> offsetBuffer = new ArrayList<>(blockSize-1); // the last element in the block should be always a word to avoid 2 words in a row
+            ArrayList<Integer> offsetBuffer = new ArrayList<>(blockSize-1); // the last element in the block should be always a word to avoid 2 nonwords in a row
 
             for (int j = 0; j < blockSize-1; j++) {
                 offsetBuffer.add(j);
@@ -92,7 +91,7 @@ public class RandomNonWordIndeces {
         }
 
         // if there are positions to pick up left
-        int remainderBlock = this.sequenceLength - blockSize * numberOfBlocks;
+        int remainderBlock = this.fastTrackSequenceLength - blockSize * numberOfBlocks;
         ArrayList<Integer> offsetBuffer = new ArrayList<>(remainderBlock);
         for (int j = 0; j < remainderBlock; j++) {
             offsetBuffer.add(j);
@@ -116,7 +115,7 @@ public class RandomNonWordIndeces {
     // the last positin in any sequence must be always a word (from a band 54)
     private void correctLastPosition(ArrayList<Integer> sortedIndices) {
         int lastNonwordPosition = sortedIndices.get(sortedIndices.size() - 1);
-        if (lastNonwordPosition == this.sequenceLength - 1) {
+        if (lastNonwordPosition == this.fastTrackSequenceLength - 1) {
             int wordAt = this.findLastWordPositionWithGap(sortedIndices, sortedIndices.size() - 1);
             sortedIndices.set(sortedIndices.size() - 1, wordAt);
         }
@@ -141,9 +140,9 @@ public class RandomNonWordIndeces {
     }
 
     private double[] calculateFrequencesOfNonWordIndices() {
-        double[] retVal = new double[this.sequenceLength];
+        double[] retVal = new double[this.fastTrackSequenceLength];
         int nonwordsCounter;
-        for (int i = 0; i < this.sequenceLength; i++) {
+        for (int i = 0; i < this.fastTrackSequenceLength; i++) {
             nonwordsCounter = amountOfSelectedIndecesBetween(0, i);
             retVal[i] = ((double) nonwordsCounter) / ((double) (i + 1));
         }
@@ -167,8 +166,35 @@ public class RandomNonWordIndeces {
         return this.frequences;
     }
 
-    public int getSequenceLength() {
-        return this.sequenceLength;
+    public int getFastTrackSequenceLength() {
+        return this.fastTrackSequenceLength;
+    }
+    
+    public static int[] generateRandomArray(int n) {
+        int[] index = new int[n];
+        for (int i = 0; i < index.length; i++) {
+            index[i] = i;
+        }
+        randomize(index, index.length);
+        return index;
+    }
+
+    private static void randomize(int arr[], int n) {
+        // Creating a object for Random class
+        Random r = new Random();
+
+        // Start from the last element and swap one by one. We don't
+        // need to run for the first element that's why i > 0
+        for (int i = n - 1; i > 0; i--) {
+
+            // Pick a random index from 0 to i
+            int j = r.nextInt(i);
+
+            // Swap arr[i] with the element at random index
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
     }
 
 }

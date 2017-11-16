@@ -36,7 +36,7 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsSt
 public class Utils {
 
     public static void testPrint() {
-        AdVocAsAtomStimulus[][] tmpwords = Vocabulary.getWords();
+        AdVocAsAtomStimulus[][] tmpwords = VocabularyFromFiles.getWords();
         System.out.println("Words \n");
 
         for (int i = 0; i < tmpwords.length; i++) {
@@ -45,7 +45,7 @@ public class Utils {
                 System.out.println(unit.getLabel());
             }
         }
-        ArrayList<AdVocAsAtomStimulus> tmpnonwords = Vocabulary.getNonwords();
+        ArrayList<AdVocAsAtomStimulus> tmpnonwords = VocabularyFromFiles.getNonwords();
         System.out.println("Non words \n");
         for (AdVocAsAtomStimulus nonword : tmpnonwords) {
             System.out.println(nonword.getLabel());

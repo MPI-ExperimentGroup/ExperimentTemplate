@@ -61,7 +61,7 @@ public class AdVocAsStimuliProviderTest {
      * AdVocAsStimuliProvider.
      */
     @Test
-    public void testinItialiseStimuliState() {
+    public void testItialiseStimuliState() {
         System.out.println("initialiseStimuliState");
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
         instance.initialiseStimuliState("");
@@ -74,6 +74,7 @@ public class AdVocAsStimuliProviderTest {
     }
     
     
+   
     /**
      * Test of getCurrentStimulusIndex method, of class AdVocAsStimuliProvider.
      */
