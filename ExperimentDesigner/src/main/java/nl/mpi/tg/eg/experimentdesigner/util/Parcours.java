@@ -17,23 +17,12 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.util;
 
-import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
-import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
-import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardRandomStimulusScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
-
 /**
  * @since Jan 25, 2017 16:39:41 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class Parcours {
+public class Parcours extends SentenceCompletion {
 
-    private final WizardController wizardController = new WizardController();
     final String agreementScreenText = "Toestemmingsverklaring voor deelname aan het onderzoek:<br/>"
             + "<br/>"
             + "Ik stem geheel vrijwillig in met deelname aan dit onderzoek. Ik behoud daarbij het recht deze instemming weer in te trekken zonder dat ik daarvoor een reden hoef op te geven en besef dat ik op elk moment mag stoppen met het experiment. Als mijn onderzoeksresultaten gebruikt zullen worden in wetenschappelijke publicaties, dan wel op een andere manier openbaar worden gemaakt, zal dit volledig geanonimiseerd gebeuren. Mijn persoonsgegevens zullen niet door derden worden ingezien zonder mijn uitdrukkelijke toestemming. <br/>"
@@ -423,88 +412,42 @@ public class Parcours {
         "setnr_107/cond_c/list_c:Joep is in de kelder aan het rommelen.<br/>Jolijne vraagt: wat ben je daar beneden aan het doen?<br/>Joep zegt: ik ben eventjes op zoek naar de",
         "setnr_108/cond_c/list_c:Rutger werkt als restaurateur en is al een tijd bezig aan een groot project.<br/>Margriet vraagt: hoe ziet het er nu uit?<br/>Rutger zegt: je kunt momenteel nog steeds de beschadigingen op de"};
 
-    public WizardData getWizardData() {
-        WizardData wizardData = new WizardData();
-        wizardData.setAppName("Parcours01");
-        wizardData.setShowMenuBar(true);
-        wizardData.setTextFontSize(17);
-        wizardData.setObfuscateScreenNames(false);
-        WizardTextScreen wizardTextScreen = new WizardTextScreen("Informatie", informationScreenText,
-                "volgende [ spatiebalk ]"
-        );
-        wizardTextScreen.setMenuLabel("Terug");
-        //Information screen 
-        //Agreement
-        WizardAgreementScreen agreementScreen = new WizardAgreementScreen("Toestemming", agreementScreenText, "Akkoord");
-        agreementScreen.setMenuLabel("Terug");
-//        wizardData.setAgreementText("agreementText");
-//        wizardData.setDisagreementScreenText("disagreementScreenText");
-        //metadata
-        final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
-        wizardEditUserScreen.setScreenTitle("Gegevens");
-        wizardEditUserScreen.setMenuLabel("Terug");
-        wizardEditUserScreen.setScreenTag("Gegevens");
-        wizardEditUserScreen.setNextButton("Volgende");
-        wizardEditUserScreen.setSendData(true);
-        wizardEditUserScreen.setOn_Error_Text("Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.");
-//        wizardData.setAgeField(true);
-        wizardEditUserScreen.setCustomFields(new String[]{
-            "workerId:Proefpersoon ID:.'{'3,'}':Voer minimaal drie letters.",
-            "age:Leeftijd:[0-9]+:Voer een getal.",
-            //            "firstName:Voornaam:.'{'3,'}':Voer minimaal drie letters.",
-            //            "lastName:Achternaam:.'{'3,'}':Voer minimaal drie letters.",
-            //            "education:Opleidingsniveau:primair onderwijs (basisschool)|voortgezet onderwijs|middelbaar beroepsonderwijs (MBO)|hoger onderwijs (HBO, universiteit)|anders:.",
-            "education:Opleidingsniveau:basisonderwijs|voortgezet onderwijs|MBO|HBO|universiteit|anders:.",
-            "educationOther:Opleidingsniveau (anders, namelijk):.*:.",
-            //            "education:Opleidingsniveau:.'{'3,'}':Voer minimaal drie letters.",
-            "gender:Geslacht:|man|vrouw|anders:."
-        });
-
-        wizardData.addScreen(agreementScreen);
-        wizardData.addScreen(wizardTextScreen);
-        wizardData.addScreen(wizardEditUserScreen);
-
-        final WizardRandomStimulusScreen list1234Screen = new WizardRandomStimulusScreen("Zinnen afmaken", false, stimuliString,
-                new String[]{"list_a",
-                    "list_b",
-                    "list_c"}, 1000, true, null, 0, 0, null, null, null, null, "Volgende [tab + enter]");
-        list1234Screen.setStimulusFreeText(true, ".{2,}",
-                "Vul één of enkele woorden in die volgens u het beste aan het eind van de zin passen.");
-        list1234Screen.getWizardScreenData().setStimulusResponseLabelLeft("");
-        list1234Screen.getWizardScreenData().setStimulusResponseLabelRight("");
-        list1234Screen.setAllowHotkeyButtons(false);
-        wizardData.addScreen(list1234Screen);
-
-        // @todo: remove the restart button
-        // 
-        WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, false, true,
-                //                "Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop.",
-                "<br/>"
-                + "Het bovenstaande nummer is het bewijs dat u het experiment heeft voltooid, en is vereist voor het in orde maken van uw vergoeding. Gelieve het nummer te kopieëren en per email terug te sturen naar de onderzoeker:  <br/>"
-                + "marlou.rasenberg@mpi.nl",
-                "Opnieuw beginnen",
-                "Einde van het experiment",
-                "Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.",
-                "Probeer opnieuw");
-        wizardData.addScreen(completionScreen);
-        completionScreen.setScreenTag("completion");
-        wizardTextScreen.setNextWizardScreen(wizardEditUserScreen);
-        agreementScreen.setNextWizardScreen(wizardTextScreen);
-        wizardEditUserScreen.setNextWizardScreen(list1234Screen);
-        list1234Screen.setNextWizardScreen(completionScreen);
-
-        wizardEditUserScreen.setBackWizardScreen(wizardTextScreen);
-        wizardTextScreen.setBackWizardScreen(agreementScreen);
-//        list1234Screen.setBackWizardScreen(wizardEditUserScreen);
-        //completionScreen.setBackWizardScreen(list1234Screen);
-        final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("Over", false);
-        wizardAboutScreen.setBackWizardScreen(wizardEditUserScreen);
-        wizardData.addScreen(wizardAboutScreen);
-
-        return wizardData;
+    @Override
+    String getInstructionsText() {
+        return informationScreenText;
     }
 
-    public Experiment getExperiment() {
-        return wizardController.getExperiment(getWizardData());
+    @Override
+    String getAgreementText() {
+        return agreementScreenText;
+    }
+
+    @Override
+    String getDebriefingText1() {
+        return completionScreenText1;
+    }
+
+    @Override
+    String getDebriefingText2() {
+        return "<br/>"
+                + "Het bovenstaande nummer is het bewijs dat u het experiment heeft voltooid, en is vereist voor het in orde maken van uw vergoeding. Gelieve het nummer te kopieëren en per email terug te sturen naar de onderzoeker:  <br/>"
+                + "marlou.rasenberg@mpi.nl";
+    }
+
+    @Override
+    String[] getStimuliArray() {
+        return stimuliString;
+    }
+
+    @Override
+    String[] getRandomStimuliTags() {
+        return new String[]{"list_a",
+            "list_b",
+            "list_c"};
+    }
+
+    @Override
+    String getExperimentTitle() {
+        return "Parcours01";
     }
 }
