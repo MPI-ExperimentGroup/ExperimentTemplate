@@ -440,6 +440,16 @@ public class Parcours extends SentenceCompletion {
     }
 
     @Override
+    boolean isShowProgress() {
+        return false;
+    }
+
+    @Override
+    boolean isAllowUserRestart() {
+        return false;
+    }
+
+    @Override
     String[] getRandomStimuliTags() {
         return new String[]{"list_a",
             "list_b",
