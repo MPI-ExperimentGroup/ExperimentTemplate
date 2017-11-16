@@ -41,6 +41,10 @@ public abstract class SentenceCompletion {
 
     abstract String getAgreementText();
 
+    abstract boolean isShowProgress();
+
+    abstract boolean isAllowUserRestart();
+
     abstract String getDebriefingText1();
 
     abstract String getDebriefingText2();
@@ -94,14 +98,19 @@ public abstract class SentenceCompletion {
                 getRandomStimuliTags(), 1000, true, null, 0, 0, null, null, null, null, "Volgende [tab + enter]");
         list1234Screen.setStimulusFreeText(true, ".{2,}",
                 "Vul één of enkele woorden in die volgens u het beste aan het eind van de zin passen.");
+        list1234Screen.setInputKeyErrorMessage("Sorry, dit teken is niet toegestaan.");
         list1234Screen.getWizardScreenData().setStimulusResponseLabelLeft("");
         list1234Screen.getWizardScreenData().setStimulusResponseLabelRight("");
+        list1234Screen.setRandomStimuliTagsField("item");
         list1234Screen.setAllowHotkeyButtons(false);
+        if (isShowProgress()) {
+            list1234Screen.setShowProgress(true);
+        }
         wizardData.addScreen(list1234Screen);
 
         // @todo: remove the restart button
         // 
-        WizardCompletionScreen completionScreen = new WizardCompletionScreen(getDebriefingText1(), false, true,
+        WizardCompletionScreen completionScreen = new WizardCompletionScreen(getDebriefingText1(), isAllowUserRestart(), true,
                 //                "Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop.",
                 getDebriefingText2(),
                 "Opnieuw beginnen",
