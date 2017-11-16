@@ -52,7 +52,7 @@
                                 <logTimeStamp eventTag="hetAntwoordIs"/>
                                 <addPadding/>
                                 <ratingButton eventTier="1" ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" ratingLabelLeft="zeer waarschijnlijk negatief">
-                                    <nextStimulus eventTag="NextStimulusStimulusScreenP" repeatIncorrect="false"/>
+                                    <nextStimulus repeatIncorrect="false"/>
                                 </ratingButton>
                             </stimulusCodeAudio>
                         </pause>
@@ -85,7 +85,7 @@
                                 <logTimeStamp eventTag="hetAntwoordIs"/>
                                 <addPadding/>
                                 <ratingButton eventTier="1" ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" ratingLabelLeft="zeer waarschijnlijk negatief">
-                                    <nextStimulus eventTag="NextStimulusStimulusScreenE" repeatIncorrect="false"/>
+                                    <nextStimulus repeatIncorrect="false"/>
                                 </ratingButton>
                             </stimulusCodeAudio>
                         </pause>

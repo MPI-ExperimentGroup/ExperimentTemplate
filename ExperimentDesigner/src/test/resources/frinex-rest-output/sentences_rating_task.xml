@@ -60,7 +60,7 @@
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
                     <ratingButton eventTier="1" ratingLabelRight="7 = substantial change" ratingLabels="1,2,3,4,5,6,7" ratingLabelLeft="1 = no change">
-                        <nextStimulus eventTag="NextStimulusTo which degree is the object changed visibly?" repeatIncorrect="false"/>
+                        <nextStimulus repeatIncorrect="false"/>
                     </ratingButton>
                 </stimulusImage>
             </hasMoreStimulus>
@@ -83,7 +83,7 @@
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
                     <ratingButton eventTier="1" ratingLabelRight="7 = very familiar" ratingLabels="1,2,3,4,5,6,7" ratingLabelLeft="1 = not familiar at all">
-                        <nextStimulus eventTag="NextStimulusIs this action familiar?" repeatIncorrect="false"/>
+                        <nextStimulus repeatIncorrect="false"/>
                     </ratingButton>
                 </stimulusImage>
             </hasMoreStimulus>
@@ -106,7 +106,7 @@
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
                     <ratingButton eventTier="1" ratingLabelRight="7 = very imageable" ratingLabels="1,2,3,4,5,6,7" ratingLabelLeft="1 = not imageable at all">
-                        <nextStimulus eventTag="NextStimulusCan you create a clear mental image of the situation?" repeatIncorrect="false"/>
+                        <nextStimulus repeatIncorrect="false"/>
                     </ratingButton>
                 </stimulusImage>
             </hasMoreStimulus>

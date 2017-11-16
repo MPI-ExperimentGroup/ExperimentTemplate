@@ -6,7 +6,7 @@
         <field controlledMessage="." controlledRegex="basisonderwijs|voortgezet onderwijs|MBO|HBO|universiteit|anders" postName="education" preventServerDuplicates="false" registrationField="Opleidingsniveau"/>
         <field controlledMessage="." controlledRegex=".*" postName="educationOther" preventServerDuplicates="false" registrationField="Opleidingsniveau (anders, namelijk)"/>
         <field controlledMessage="." controlledRegex="|man|vrouw|anders" postName="gender" preventServerDuplicates="false" registrationField="Geslacht"/>
-        <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_Zinnen_afmaken" preventServerDuplicates="false" registrationField="groupAllocation_Zinnen_afmaken"/>
+        <field controlledMessage="." controlledRegex=".*" postName="item" preventServerDuplicates="false" registrationField="item"/>
     </metadata>
     <presenter displayOrder="1" menuLabel="Terug" next="Informatie" type="metadata" self="Toestemming" title="Toestemming">
         <htmlText featureText="Toestemmingsverklaring voor deelname aan het onderzoek:&lt;br/&gt;&lt;br/&gt;Ik stem geheel vrijwillig in met deelname aan dit onderzoek. Ik behoud daarbij het recht deze instemming weer in te trekken zonder dat ik daarvoor een reden hoef op te geven en besef dat ik op elk moment mag stoppen met het experiment. Als mijn onderzoeksresultaten gebruikt zullen worden in wetenschappelijke publicaties, dan wel op een andere manier openbaar worden gemaakt, zal dit volledig geanonimiseerd gebeuren. Mijn persoonsgegevens zullen niet door derden worden ingezien zonder mijn uitdrukkelijke toestemming. &lt;br/&gt;&lt;br/&gt;Als u ermee instemt om door te gaan met dit experiment, klik dan op 'Akkoord' om verder te gaan.&lt;br/&gt;&lt;br/&gt;Als u besluit niet deel te nemen aan het experiment, kunt u de pagina sluiten of naar een andere website gaan."/>
@@ -34,16 +34,16 @@
             <hasMoreStimulus>
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
-                    <stimulusFreeText featureText="Vul één of enkele woorden in die volgens u het beste aan het eind van de zin passen." validationRegex=".{2,}"/>
+                    <stimulusFreeText featureText="Vul één of enkele woorden in die volgens u het beste aan het eind van de zin passen." validationRegex=".{2,}" inputErrorMessage="Sorry, dit teken is niet toegestaan."/>
                     <actionButton featureText="Volgende [tab + enter]" eventTag="Volgende [tab + enter]">
-                        <nextStimulus eventTag="nextStimulusZinnen afmaken" repeatIncorrect="false"/>
+                        <nextStimulus repeatIncorrect="false"/>
                     </actionButton>
                 </stimulusImage>
             </hasMoreStimulus>
             <endOfStimulus>
                 <autoNextPresenter/>
             </endOfStimulus>
-            <randomGrouping storageField="groupAllocation_Zinnen_afmaken">
+            <randomGrouping storageField="item">
                 <tag>list_a</tag>
                 <tag>list_b</tag>
                 <tag>list_c</tag>

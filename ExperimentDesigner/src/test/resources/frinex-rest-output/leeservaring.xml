@@ -34,7 +34,7 @@
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
                     <actionButton featureText="volgende [ spatiebalk ]" eventTag="volgende [ spatiebalk ]" hotKey="SPACE">
-                        <nextStimulus eventTag="nextStimulusIntroduction" repeatIncorrect="false"/>
+                        <nextStimulus repeatIncorrect="false"/>
                     </actionButton>
                 </stimulusImage>
             </hasMoreStimulus>
@@ -56,7 +56,7 @@
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
                     <actionButton featureText="volgende [ spatiebalk ]" eventTag="volgende [ spatiebalk ]" hotKey="SPACE">
-                        <nextStimulus eventTag="nextStimulusStoryPresentation" repeatIncorrect="false"/>
+                        <nextStimulus repeatIncorrect="false"/>
                     </actionButton>
                 </stimulusImage>
             </hasMoreStimulus>
@@ -85,7 +85,7 @@
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
                     <ratingButton eventTier="1" ratingLabelRight="helemaal van toepassing" ratingLabels="1,2,3,4,5,6,7" ratingLabelLeft="helemaal niet van toepassing">
-                        <nextStimulus eventTag="NextStimulusSurvey1" repeatIncorrect="false"/>
+                        <nextStimulus repeatIncorrect="false"/>
                     </ratingButton>
                 </stimulusImage>
             </hasMoreStimulus>
@@ -105,7 +105,7 @@
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
                     <ratingButton eventTier="1" ratingLabelRight="helemaal van toepassing" ratingLabels="1,2,3,4,5,6,7" ratingLabelLeft="helemaal niet van toepassing">
-                        <nextStimulus eventTag="NextStimulusSurvey2" repeatIncorrect="false"/>
+                        <nextStimulus repeatIncorrect="false"/>
                     </ratingButton>
                 </stimulusImage>
             </hasMoreStimulus>
@@ -137,7 +137,7 @@
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
                     <ratingButton eventTier="1" ratingLabelRight="" ratingLabels="ja [ z ],nee [ . ]" ratingLabelLeft="">
-                        <nextStimulus eventTag="NextStimulusPictureTask" repeatIncorrect="false"/>
+                        <nextStimulus repeatIncorrect="false"/>
                     </ratingButton>
                 </stimulusImage>
             </hasMoreStimulus>
@@ -161,7 +161,7 @@
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
                     <ratingButton eventTier="1" ratingLabelRight="" ratingLabels="1,2,3,4,5,6,7" ratingLabelLeft="">
-                        <nextStimulus eventTag="NextStimulusReadingBehavior" repeatIncorrect="false"/>
+                        <nextStimulus repeatIncorrect="false"/>
                     </ratingButton>
                 </stimulusImage>
             </hasMoreStimulus>
