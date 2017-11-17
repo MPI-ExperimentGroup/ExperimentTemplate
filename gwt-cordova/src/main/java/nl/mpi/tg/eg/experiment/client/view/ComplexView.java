@@ -25,6 +25,7 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.event.dom.client.MouseMoveEvent;
 import com.google.gwt.event.dom.client.TouchCancelEvent;
 import com.google.gwt.event.dom.client.TouchEndEvent;
 import com.google.gwt.event.dom.client.TouchMoveEvent;
@@ -329,6 +330,7 @@ public class ComplexView extends SimpleView {
         domHandlerArray.add(root.addDomHandler(touchInputCapture, TouchMoveEvent.getType()));
         domHandlerArray.add(root.addDomHandler(touchInputCapture, TouchEndEvent.getType()));
         domHandlerArray.add(root.addDomHandler(touchInputCapture, TouchCancelEvent.getType()));
+        domHandlerArray.add(root.addDomHandler(touchInputCapture, MouseMoveEvent.getType()));
     }
 
     private void addHotKeyListner(final PresenterEventListner presenterListerner, final SingleShotEventListner singleShotEventListner) {
