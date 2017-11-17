@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.frinex.model;
 
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -42,6 +43,7 @@ public class TagPairData {
     private String screenName;
     private String eventTag;
     private String tagValue1;
+    @Column(length = 4096)
     private String tagValue2;
     private String userId;
     private int eventMs;
@@ -49,7 +51,7 @@ public class TagPairData {
     public TagPairData() {
     }
 
-    public TagPairData(String userId, String screenName, String eventTag, String tagValue1, String tagValue2, int eventMs, Date tagDate){
+    public TagPairData(String userId, String screenName, String eventTag, String tagValue1, String tagValue2, int eventMs, Date tagDate) {
         this.tagDate = tagDate;
         this.screenName = screenName;
         this.eventTag = eventTag;
