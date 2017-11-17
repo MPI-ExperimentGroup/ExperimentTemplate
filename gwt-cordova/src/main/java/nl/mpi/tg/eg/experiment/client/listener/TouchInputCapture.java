@@ -20,31 +20,41 @@ package nl.mpi.tg.eg.experiment.client.listener;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.dom.client.Touch;
 import com.google.gwt.event.dom.client.HandlesAllTouchEvents;
+import com.google.gwt.event.dom.client.MouseMoveEvent;
+import com.google.gwt.event.dom.client.MouseMoveHandler;
 import com.google.gwt.event.dom.client.TouchCancelEvent;
 import com.google.gwt.event.dom.client.TouchEndEvent;
 import com.google.gwt.event.dom.client.TouchEvent;
 import com.google.gwt.event.dom.client.TouchMoveEvent;
 import com.google.gwt.event.dom.client.TouchStartEvent;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * @since Oct 23, 2017 2:10:09 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public abstract class TouchInputCapture extends HandlesAllTouchEvents {
+public abstract class TouchInputCapture extends HandlesAllTouchEvents implements MouseMoveHandler {
 
-    private Set<String> releventStyleNames = new HashSet<>();
-
-    public void addReleventStyleName(String releventStyleNames) {
-        this.releventStyleNames.add(releventStyleNames);
-    }
+    private final StringBuilder recordedTouches = new StringBuilder();
 
     public abstract void setDebugLabel(String debugLabel);
 
+    private void appendTouch(int xPos, int yPos) {
+        recordedTouches.append(xPos);
+        recordedTouches.append(",");
+        recordedTouches.append(yPos);
+        recordedTouches.append(" ");
+    }
+
+    private void recordTouches(TouchEvent event) {
+        final JsArray<Touch> targetTouches = event.getTouches();
+        for (int index = 0; index < targetTouches.length(); index++) {
+            appendTouch(targetTouches.get(index).getScreenX(), targetTouches.get(index).getScreenY());
+        }
+    }
+
     private void touchesToDebugLabel(TouchEvent event) {
         StringBuilder builder = new StringBuilder();
-        final JsArray<Touch> targetTouches = event.getTargetTouches();
+        final JsArray<Touch> targetTouches = event.getTouches();
         for (int index = 0; index < targetTouches.length(); index++) {
             builder.append(targetTouches.get(index).getScreenX());
             builder.append(", ");
@@ -57,20 +67,34 @@ public abstract class TouchInputCapture extends HandlesAllTouchEvents {
     @Override
     public void onTouchStart(TouchStartEvent event) {
         touchesToDebugLabel(event);
+        recordTouches(event);
     }
 
     @Override
     public void onTouchMove(TouchMoveEvent event) {
         touchesToDebugLabel(event);
+        recordTouches(event);
     }
 
     @Override
     public void onTouchEnd(TouchEndEvent event) {
         touchesToDebugLabel(event);
+        recordTouches(event);
     }
 
     @Override
     public void onTouchCancel(TouchCancelEvent event) {
         touchesToDebugLabel(event);
+        recordTouches(event);
+    }
+
+    @Override
+    public void onMouseMove(MouseMoveEvent event) {
+        appendTouch(event.getClientX(), event.getClientY());
+        setDebugLabel(event.toDebugString() + " " + event.getClientX() + "," + event.getClientY());
+    }
+
+    public String getTouchReport() {
+        return recordedTouches.toString();
     }
 }
