@@ -1443,7 +1443,14 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addOptionButton(eventListner);
     }
 
-    protected void touchInputZone(final boolean showDebug, final String styleName, final TimedStimulusListener timedStimulusListener) {
+    protected void touchInputReportSubmit() {
+        if (touchInputCapture != null) {
+            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), "touchInputReport", stimulusProvider.getCurrentStimulus().getUniqueId(), touchInputCapture.getTouchReport(), duration.elapsedMillis());
+        }
+        touchInputCapture = null;
+    }
+
+    protected void touchInputCaptureStart(final boolean showDebug) {
         if (touchInputCapture == null) {
             final HTML debugHtmlLabel;
             if (showDebug) {
@@ -1465,7 +1472,6 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             };
             ((TimedStimulusView) simpleView).addTouchInputCapture(touchInputCapture);
         }
-        touchInputCapture.addReleventStyleName(styleName);
     }
 
     protected void prevStimulusButton(final String eventTag, final String buttonLabel, final boolean repeatIncorrect, final int hotKey) {
