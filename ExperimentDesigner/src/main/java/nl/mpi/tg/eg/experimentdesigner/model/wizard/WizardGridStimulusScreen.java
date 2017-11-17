@@ -328,16 +328,9 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
 //        rowFeature.getPresenterFeatureList().add(rightColumnFeature);
         stimulusCodeAudio1.getPresenterFeatureList().add(stimulusCodeVideoL);
         stimulusCodeAudio1.getPresenterFeatureList().add(stimulusCodeVideoR);
-        final PresenterFeature touchInputZoneL = new PresenterFeature(FeatureType.touchInputZone, null);
-        touchInputZoneL.addFeatureAttributes(FeatureAttribute.showControls, "true");
-        touchInputZoneL.addFeatureAttributes(FeatureAttribute.styleName, "borderedVideoLeft"); // style name is used to select an existing DOM object for touch interaction
-//        touchInputZoneL.addFeatureAttributes(FeatureAttribute.hotKey, "Z");
-        hasMoreStimulusFeature.getPresenterFeatureList().add(touchInputZoneL);
-        final PresenterFeature touchInputZoneR = new PresenterFeature(FeatureType.touchInputZone, null);
-        touchInputZoneR.addFeatureAttributes(FeatureAttribute.showControls, "true");
-        touchInputZoneR.addFeatureAttributes(FeatureAttribute.styleName, "borderedVideoRight");
-//        touchInputZoneR.addFeatureAttributes(FeatureAttribute.hotKey, "M");
-        hasMoreStimulusFeature.getPresenterFeatureList().add(touchInputZoneR);
+        final PresenterFeature touchInputCaptureStart = new PresenterFeature(FeatureType.touchInputCaptureStart, null);
+        touchInputCaptureStart.addFeatureAttributes(FeatureAttribute.showControls, "true");
+        hasMoreStimulusFeature.getPresenterFeatureList().add(touchInputCaptureStart);
 //        final PresenterFeature nextStimulusL = new PresenterFeature(FeatureType.nextStimulus, null);
 //        nextStimulusL.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusL");
 //        nextStimulusL.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
@@ -368,12 +361,15 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         repeatStimulusButton.addFeatureAttributes(FeatureAttribute.eventTag, "Repeat");
         repeatStimulusButton.addFeatureAttributes(FeatureAttribute.hotKey, "R1_MA_A");
         final PresenterFeature repeatStimulus = new PresenterFeature(FeatureType.showStimulus, null);
+        repeatStimulusButton.getPresenterFeatureList().add(new PresenterFeature(FeatureType.touchInputReportSubmit, null));
         repeatStimulusButton.getPresenterFeatureList().add(repeatStimulus);
-        final PresenterFeature nextStimulus = new PresenterFeature(FeatureType.nextStimulusButton, "Next");
-        nextStimulus.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusR");
-        nextStimulus.addFeatureAttributes(FeatureAttribute.hotKey, "ENTER");
+        final PresenterFeature nextStimulusButton = new PresenterFeature(FeatureType.actionButton, "Next");
+        nextStimulusButton.addFeatureAttributes(FeatureAttribute.eventTag, "Next");
+        nextStimulusButton.addFeatureAttributes(FeatureAttribute.hotKey, "ENTER");
+        final PresenterFeature nextStimulus = new PresenterFeature(FeatureType.nextStimulus, null);
         nextStimulus.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
-
+        nextStimulusButton.getPresenterFeatureList().add(new PresenterFeature(FeatureType.touchInputReportSubmit, null));
+        nextStimulusButton.getPresenterFeatureList().add(nextStimulus);
         final PresenterFeature tableFeature = new PresenterFeature(FeatureType.table, null);
         tableFeature.addFeatureAttributes(FeatureAttribute.styleName, "titleBarButton");
         stimulusCodeAudio3.getPresenterFeatureList().add(tableFeature);
@@ -388,7 +384,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         final PresenterFeature rightColumnFeature = new PresenterFeature(FeatureType.column, null);
         rowFeature.getPresenterFeatureList().add(rightColumnFeature);
         leftColumnFeature.getPresenterFeatureList().add(repeatStimulusButton);
-        rightColumnFeature.getPresenterFeatureList().add(nextStimulus);
+        rightColumnFeature.getPresenterFeatureList().add(nextStimulusButton);
 
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
         final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
