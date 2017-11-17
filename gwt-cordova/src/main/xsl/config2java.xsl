@@ -469,7 +469,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="touchInputZone|logTimeStamp|audioButton|prevStimulusButton|nextStimulusButton|nextStimulus|nextMatchingStimulus|sendGroupMessageButton|sendGroupMessage|sendGroupEndOfStimuli|sendGroupStoredMessage">
+    <xsl:template match="touchInputCaptureStart|touchInputReportSubmit|logTimeStamp|audioButton|prevStimulusButton|nextStimulusButton|nextStimulus|nextMatchingStimulus|sendGroupMessageButton|sendGroupMessage|sendGroupEndOfStimuli|sendGroupStoredMessage">
         <xsl:text>    </xsl:text>
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
@@ -486,7 +486,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@hotKey eq '-1' or @hotKey eq '') then ', -1' else if(@hotKey) then concat(', ExtendedKeyCodes.KEY_', @hotKey) else ''" />
         <xsl:value-of select="if(@incrementPhase) then concat(', callerPhase, ', @incrementPhase, ',expectedRespondents') else ''" />
         <!--<xsl:value-of select="if(@incrementStimulus) then concat(', ', @incrementStimulus) else ''" />-->
-        <xsl:if test="local-name() eq 'audioButton' or local-name() eq 'touchInputZone'">
+        <xsl:if test="local-name() eq 'audioButton'">
             <xsl:text>, new TimedStimulusListener() {
 
                 @Override
