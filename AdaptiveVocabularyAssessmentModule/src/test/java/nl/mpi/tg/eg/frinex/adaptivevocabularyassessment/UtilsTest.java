@@ -20,7 +20,6 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
 import utils.VocabularyFromFiles;
 import java.util.ArrayList;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.fintetuning.FineTuningBookkeepingStimulus;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -78,55 +77,4 @@ public class UtilsTest {
         //fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of writeCsvFileFineTuningPreset method, of class Utils.
-     */
-    @Test
-    public void testWriteCsvFileFineTuningPreset() throws Exception {
-        System.out.println("writeCsvFileFineTuningPreset");
-        ArrayList<ArrayList<FineTuningBookkeepingStimulus>> stimulae = null;
-        //Utils.writeCsvFileFineTuningPreset(stimulae);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of orderFineTuningHistory method, of class Utils.
-     */
-    @Test
-    public void testOrderFineTuningHistory() {
-        System.out.println("orderFineTuningHistory");
-        //ArrayList<ArrayList<FineTuningStimulus>> stimulae = null;
-        ArrayList<FineTuningBookkeepingStimulus> expResult = null;
-        //ArrayList<FineTuningStimulus> result = Utils.orderFineTuningHistory(stimulae);
-        //assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of insertSortFineTuningHistory method, of class Utils.
-     */
-    @Test
-    public void testInsertSortFineTuningHistory() {
-        System.out.println("insertSortFineTuningHistory");
-        ArrayList<FineTuningBookkeepingStimulus> stimulae = null;
-        FineTuningBookkeepingStimulus stimulus = null;
-        //Utils.insertSortFineTuningHistory(stimulae, stimulus);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of writeCsvFileFineTuningHistoryShortened method, of class Utils.
-     */
-    @Test
-    public void testWriteCsvFileFineTuningHistoryShortened() throws Exception {
-        System.out.println("writeCsvFileFineTuningHistoryShortened");
-        ArrayList<ArrayList<FineTuningBookkeepingStimulus>> stimulae = null;
-        //Utils.writeCsvFileFineTuningHistoryShortened(stimulae);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-    
 }

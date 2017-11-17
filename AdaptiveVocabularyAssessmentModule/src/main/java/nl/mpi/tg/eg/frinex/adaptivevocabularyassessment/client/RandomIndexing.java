@@ -46,7 +46,8 @@ public class RandomIndexing {
     public RandomIndexing(int startBand, int nonwordsPerBlock, int averageNonwordPosition, int nonwordsAvailable) {
         this.averageNonwordPosition = averageNonwordPosition;
         this.nonwordsPerBlock = nonwordsPerBlock;
-        int wordsAvailable = Constants.NUMBER_OF_BANDS - (startBand - 1);// one from each band
+        int help = Constants.NUMBER_OF_BANDS - startBand +1;
+        int wordsAvailable = help*2;// one from each band, possibly stying 2 times on one band because of the second chance
         // number of nonwords = 1/n * fastTrackSequenceLength
         // number of words = (n-1)/n * fastTrackSequenceLength
         this.fastTrackSequenceLength = (averageNonwordPosition * wordsAvailable) / (averageNonwordPosition - 1);

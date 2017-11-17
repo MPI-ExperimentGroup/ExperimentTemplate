@@ -25,7 +25,6 @@ import java.util.ArrayList;
 import java.util.Map;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.fintetuning.FineTuningBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
 
@@ -77,44 +76,21 @@ public class Utils {
         output.close();
     }
 
-    public static void writeCsvFileFineTuningPreset(ArrayList<ArrayList<FineTuningBookkeepingStimulus>> stimulae, String outputDir) throws IOException {
-        long millis = System.currentTimeMillis();
-        String fileName = "Fine_tuning_preset_" + "_" + millis + ".csv";
-        System.out.println("writeCsvFile: " + outputDir + fileName);
-        final File csvFile = new File(outputDir, fileName);
-        final FileWriter csvFileWriter = new FileWriter(csvFile, false);
-        csvFileWriter.write("QuadrupleNummer;Spelling;BandNumber;UserAnswer;Correctness;isUsed\n");
-        int quadrupleCounter = 0;
-        for (int bandCounter = 0; bandCounter < stimulae.size(); bandCounter++) {
-            for (FineTuningBookkeepingStimulus stimulus : stimulae.get(bandCounter)) {
-                for (int i = 0; i < Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE; i++) {
-                    AtomBookkeepingStimulus aStimulus = stimulus.getAtomStimulusAt(i);
-                    String row = quadrupleCounter + ";" + aStimulus.getSpelling()
-                            + ";" + aStimulus.getBandNumber()
-                            + ";" + aStimulus.getReaction() + ";" + aStimulus.getCorrectness()
-                            + ";" + aStimulus.getIsUsed();
-                    //System.out.println(row);
-                    //System.out.println(row);
-                    csvFileWriter.write(row + "\n");
-                }
-            }
-        }
-        csvFileWriter.close();
-    }
+   
 
-    public static void writeCsvFileFineTuningHistoryShortened(AdVocAsStimuliProvider provider, String outputDir, String fileName) throws IOException {
+    public static void writeCsvFileFineTuningHistory(AdVocAsStimuliProvider provider, String outputDir, String fileName) throws IOException {
         System.out.println("writeCsvFile: " + outputDir + fileName);
         final File csvFile = new File(outputDir, fileName);
-        String inhoud = provider.getStringFineTuningHistoryShortened("", "\n", "", ";");
+        String inhoud = provider.getStringFineTuningHistory("", "\n", "", ";");
         BufferedWriter output = new BufferedWriter(new FileWriter(csvFile));
         output.write(inhoud);
         output.close();
     }
 
-    public static void writeHtmlFileFineTuningHistoryShortened(AdVocAsStimuliProvider provider, String outputDir, String fileName) throws IOException {
+    public static void writeHtmlFileFineTuningHistory(AdVocAsStimuliProvider provider, String outputDir, String fileName) throws IOException {
         System.out.println("writeHtmlFile: " + outputDir + fileName);
         final File htmlFile = new File(outputDir, fileName);
-        String inhoud = provider.getStringFineTuningHistoryShortened("<tr>", "<tr>", "<td>", "<td>");
+        String inhoud = provider.getStringFineTuningHistory("<tr>", "<tr>", "<td>", "<td>");
         BufferedWriter output = new BufferedWriter(new FileWriter(htmlFile));
         String htmlString = "<!DOCTYPE html><html><body><table border=1>" + inhoud + "</table></body></html>";
         output.write(htmlString);

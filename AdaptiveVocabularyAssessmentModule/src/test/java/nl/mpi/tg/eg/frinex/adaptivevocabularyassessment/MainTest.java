@@ -17,14 +17,8 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
 import utils.Utils;
-import java.util.ArrayList;
 import java.util.Random;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.FastTrack;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.fintetuning.FineTuning;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.fasttrack.fintetuning.FineTuningBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
 import org.junit.After;
@@ -65,6 +59,14 @@ public class MainTest {
      */
     @Test
     public void testMain() throws Exception {
+        for (int i = 0; i<=10; i++) {
+            double prob = 0.5+i*0.05;
+            System.out.println(prob);
+            this.testRound(prob);
+        }
+    }
+    
+    private void testRound(double prob) throws Exception{
         Random rnd = new Random();
 
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
@@ -77,14 +79,13 @@ public class MainTest {
             currentExperimentCount = provider.getCurrentStimulusIndex();
             //System.out.println(currentExperimentCount);
             AdVocAsAtomStimulus stimulus = provider.getCurrentStimulus();
-            String answer = this.probabilisticAnswerer(stimulus, 0.9, rnd);
+            String answer = this.probabilisticAnswerer(stimulus, prob, rnd);
             boolean isCorrect = provider.isCorrectResponse(stimulus, answer);
             hasNextStimulus = provider.hasNextStimulus(0);
         }
 
         boolean enoughFineTuningStimulae = provider.getEnoughFinetuningStimuli();
         boolean cycle2 = provider.getCycel2();
-        boolean secondStoppingCriterion = provider.getSecondStoppingCriterion();
         boolean champion = provider.getChampion();
         boolean looser = provider.getLooser();
         
@@ -92,7 +93,7 @@ public class MainTest {
         System.out.println("last correct band fast track: " + lastCorrectBandFastTrack);
         //Utils.writeCsvFileFastTrack(provider, lastCorrectBandFastTrack, OUTPUT_DIRECTORY);
 
-        String message = "_secondStopping_" + secondStoppingCriterion + "__cycel2_" + cycle2
+        String message = "correct_"+prob+"__cycel2_" + cycle2
                 + "__champion_" + champion + "__looser_" + looser + "__enough_" + enoughFineTuningStimulae;
 
         long millis = System.currentTimeMillis();
@@ -103,8 +104,7 @@ public class MainTest {
         Utils.writeHtmlFullUserResults(provider, OUTPUT_DIRECTORY, fileNameHTML);
         
         Utils.writeCsvMapAsOneCsv(provider, OUTPUT_DIRECTORY, "Full_user_history_" + message + "_" + millis + ".csv");
-        System.out.println("Done. ");
-
+        System.out.println("Done with probability  "+prob);
     }
 
     private String probabilisticAnswerer(AdVocAsAtomStimulus stimulus, double correctnessUpperBound, Random rnd) throws Exception {
@@ -129,139 +129,5 @@ public class MainTest {
         return retVal;
     }
 
-    // return the number of the band where the last correct answer is produced
-    private int simulateFastTrackUpTo(FastTrack fastTrack, int stopBand) {
-        int i = 0;
-        boolean correctness = true;
-        ArrayList<AtomBookkeepingStimulus> stimulae = fastTrack.getBookeepingStimuli();
-        int actualStopBand = 0;
-        while (i < stimulae.size() && correctness) {
-            int currentBand = stimulae.get(i).getBandNumber();
-            boolean answer = currentBand > 0; // correct answer, true if word, no if non-word
-            if (currentBand > stopBand) { // make a mistake
-                answer = !answer;
-            } else {
-                if (currentBand > 0) {
-                    actualStopBand = currentBand;
-                }
-            }
-            correctness = fastTrack.runStep(i, answer);
-            i++;
-        }
-        System.out.println("actual stop band : " + actualStopBand);
-        System.out.println("expected stop band : " + stopBand);
-        return actualStopBand;
-    }
-
-    private String simulateFineTuning(FineTuning fineTuning, int lastBandFromFastTrack) throws Exception {
-        String retVal = simulateFineTuningProbabilistic(fineTuning, lastBandFromFastTrack, 0.6);
-        System.out.println(retVal);
-        return retVal;
-    }
-
-    private String simulateFineTuningProbabilistic(FineTuning fineTuning, int lastBandFromFastTrack, double correctnessUpperBound) throws Exception {
-        ArrayList<ArrayList<FineTuningBookkeepingStimulus>> stimulae = fineTuning.getStimuli();
-        String message = "";
-        boolean enoughStimulae = true;
-        boolean correctness;
-        int bandNumber = lastBandFromFastTrack;
-        int[] stimulusCounterInBand = new int[Constants.NUMBER_OF_BANDS];
-        int[] bandTranscript = new int[Constants.FINE_TUNING_UPPER_BOUND_FOR_2CYCLES * 2 + 1];
-        int[] bandVisitCounter = new int[Constants.NUMBER_OF_BANDS];
-        boolean cycles2 = false;
-        boolean justVisitedFirstBand = (bandNumber == 1);
-        boolean justVisitedLastBand = (bandNumber == Constants.NUMBER_OF_BANDS);
-        int bandChangeCounter = 0;
-        boolean secondStoppingCriterion = false;
-        boolean champion = false;
-        boolean looser = false;
-        while (enoughStimulae
-                && !cycles2
-                && !secondStoppingCriterion
-                && bandNumber > 0
-                && bandNumber <= Constants.NUMBER_OF_BANDS
-                && !champion
-                && !looser) {
-
-            int bandIndex = bandNumber - 1;
-            bandVisitCounter[bandIndex]++;
-
-            enoughStimulae = stimulusCounterInBand[bandIndex] < stimulae.get(bandIndex).size();
-            if (enoughStimulae) {
-                boolean[] answers = fineTuning.testProbabilisticAnswerer(bandNumber, stimulusCounterInBand[bandIndex], correctnessUpperBound);
-                correctness = fineTuning.runStep(bandNumber, stimulusCounterInBand[bandIndex], answers);
-                stimulusCounterInBand[bandIndex]++;
-                AdVocAsStimuliProvider.shiftFIFO(bandTranscript, bandNumber);
-                cycles2 = AdVocAsStimuliProvider.detectLoop(bandTranscript);
-                secondStoppingCriterion = AdVocAsStimuliProvider.timeToCountVisits(bandChangeCounter);
-                if (correctness) {
-                    if (bandNumber < Constants.NUMBER_OF_BANDS) { // usual on-success iteration
-                        justVisitedLastBand = false;
-                        bandNumber++;
-                        bandChangeCounter++;
-                    } else {
-                        if (!justVisitedLastBand) {
-                            justVisitedLastBand = true; // double check on the same band 
-                            // on the next iteration if the user is indeed a champion
-                        } else {
-                            // chamipon, already visited the last band, on next iteration stops
-                            champion = true;
-                        }
-                    }
-                } else {
-                    if (bandNumber > 1) {// usual on-mistake iteration
-                        bandNumber--;
-                        justVisitedFirstBand = false;
-                        bandChangeCounter++;
-                    } else {
-                        if (!justVisitedFirstBand) {
-                            justVisitedFirstBand = true; // recovery chance: 1 more attempt on the first band
-                        } else {
-                            // second time on the first band
-                            looser = true;
-                        }
-                    }
-                }
-            } else {
-                System.out.println(" out of stimuli");
-                System.out.println(bandIndex);
-
-            }
-        }
-
-        int score = -1;
-
-        if (enoughStimulae) {
-            if (cycles2) {
-                System.out.println("Detected: three times looping between two neighbouring bands");
-                message += "_oscillation_between_two_bands";
-                score = bandTranscript[0];
-                for (int i = 1; i < bandTranscript.length; i++) {
-                    if (score > bandTranscript[i]) {
-                        score = bandTranscript[i];
-                    }
-                }
-            }
-            if (secondStoppingCriterion) {
-                score = AdVocAsStimuliProvider.mostOftenVisited(bandVisitCounter);
-                System.out.println("Detected: second stopping criterion");
-                message += "_second_stopping_criterion_" + bandVisitCounter[score - 1];
-
-            }
-            if (looser) {
-                score = 1;
-                message += "_looser_hit_the_first_band_twise";
-            }
-            if (champion) {
-                score = Constants.NUMBER_OF_BANDS;
-                message += "_champion_hit_the_last_band_twise";
-            }
-
-        } else {
-            message += "_erroneous_situation_out_of_stimulae";// erroenous case, something is not taken into account
-        }
-        System.out.println(message + "_" + score);
-        return message + "_" + score;
-    }
-
+ 
 }

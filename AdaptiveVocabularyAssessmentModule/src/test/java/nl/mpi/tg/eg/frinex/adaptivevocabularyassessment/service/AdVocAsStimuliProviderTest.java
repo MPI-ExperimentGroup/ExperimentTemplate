@@ -17,10 +17,12 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.service;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsNonWords;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -65,12 +67,25 @@ public class AdVocAsStimuliProviderTest {
         System.out.println("initialiseStimuliState");
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
         instance.initialiseStimuliState("");
-        int totalStimuli = instance.getTotalStimuli();
-        int minPreparedFineTuning = (Constants.FINE_TUNING_MAX_BAND_CHANGE+1)*Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE;
-        int minPreparedFastTrack = Constants.NUMBER_OF_BANDS - Constants.START_BAND+1;
-        int minAmountOfPreparedExperiments = minPreparedFastTrack + minPreparedFineTuning;
-        assertTrue(totalStimuli >  minAmountOfPreparedExperiments);
-        System.out.println(totalStimuli);
+        
+        AtomBookkeepingStimulus[][] words = instance.getWords();
+        assertEquals(Constants.NUMBER_OF_BANDS, words.length);
+        for (int i=0; i<Constants.NUMBER_OF_BANDS; i++){
+            assertEquals(Constants.WORDS_PER_BAND, words[i].length);
+        }
+        
+        ArrayList<AtomBookkeepingStimulus> nonwords = instance.getNonwords();
+        assertEquals(ConstantsNonWords.NONWORDS_ARRAY.length, nonwords.size());
+        
+        int expectedTotalsStimuli = Constants.NUMBER_OF_BANDS * Constants.WORDS_PER_BAND + ConstantsNonWords.NONWORDS_ARRAY.length;
+        assertEquals(expectedTotalsStimuli, instance.getTotalStimuli());
+        
+        ArrayList<Integer> nonWordIndices = instance.getNonWordsIndices();
+        int expectedWords = (Constants.NUMBER_OF_BANDS - Constants.START_BAND+1)*2;
+        int expectedLength = (expectedWords * Constants.AVRERAGE_NON_WORD_POSITION)/(Constants.AVRERAGE_NON_WORD_POSITION -1);
+        int expectedNonwords = expectedLength / Constants.AVRERAGE_NON_WORD_POSITION;
+        assertEquals(expectedNonwords,nonWordIndices.size());
+        
     }
     
     
@@ -84,6 +99,7 @@ public class AdVocAsStimuliProviderTest {
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
         instance.initialiseStimuliState("");
         instance.hasNextStimulus(0);
+        instance.nextStimulus(0);
         int result = instance.getCurrentStimulusIndex();
         assertEquals(0, result);
     }
@@ -92,16 +108,47 @@ public class AdVocAsStimuliProviderTest {
      * Test of getCurrentStimulus method, of class AdVocAsStimuliProvider.
      */
     @Test
-    public void testGetCurrentStimulus() {
-        System.out.println("getCurrentStimulus");
+    public void testGetCurrentStimulus1() {
+        System.out.println("getCurrentStimulus1");
+        this.testGetCurrentStimulus();
+        
+    }
+    
+       /**
+     * Test of getCurrentStimulus method, of class AdVocAsStimuliProvider.
+     */
+    @Test
+    public void testGetCurrentStimulus2() {
+        System.out.println("getCurrentStimulus2");
+        this.testGetCurrentStimulus();
+        
+    }
+    
+        /**
+     * Test of getCurrentStimulus method, of class AdVocAsStimuliProvider.
+     */
+    @Test
+    public void testGetCurrentStimulus3() {
+        System.out.println("getCurrentStimulus3");
+        this.testGetCurrentStimulus();
+        
+    }
+    
+    private void testGetCurrentStimulus() {
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
         instance.initialiseStimuliState("");
         instance.hasNextStimulus(0);
+        instance.nextStimulus(0);
+        assertEquals(1, instance.getResponseRecord().size());
         Stimulus stimulus = instance.getCurrentStimulus();
         assertTrue(stimulus != null);
         String label = stimulus.getLabel();
         assertTrue(label != null);
         System.out.println("Label: " + label);
+        AtomBookkeepingStimulus bStimulus = instance.getResponseRecord().get(instance.getCurrentStimulusIndex());
+        assertTrue(bStimulus.getIsUsed());
+        int expectedBand = stimulus.getCorrectResponses().equals("word") ? Constants.START_BAND : -1;
+        assertEquals(expectedBand, bStimulus.getBandNumber());
     }
 
     @Test
@@ -110,9 +157,17 @@ public class AdVocAsStimuliProviderTest {
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
         instance.initialiseStimuliState("");
         instance.hasNextStimulus(0);
+        instance.nextStimulus(0);
         Stimulus stimulus = instance.getCurrentStimulus();
         boolean result = instance.isCorrectResponse(stimulus, stimulus.getCorrectResponses());
         assertTrue(result);
+        
+        AtomBookkeepingStimulus bStimulus = instance.getResponseRecord().get(instance.getCurrentStimulusIndex());
+        assertTrue(bStimulus.getCorrectness());
+        
+        boolean expectedResult = stimulus.getCorrectResponses().equals("word");
+        assertEquals(expectedResult, bStimulus.getReaction());
+        
     }
 
   
@@ -125,8 +180,7 @@ public class AdVocAsStimuliProviderTest {
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
         instance.initialiseStimuliState("");
         int totalStimuli = instance.getTotalStimuli();
-        assertTrue(totalStimuli > 0);
-        System.out.println(totalStimuli);
+        assertEquals(ConstantsNonWords.NONWORDS_ARRAY.length+Constants.NUMBER_OF_BANDS*Constants.WORDS_PER_BAND, totalStimuli);
     }
 
 
@@ -134,14 +188,13 @@ public class AdVocAsStimuliProviderTest {
      * Test of getTotalStimuli method, of class AdVocAsStimuliProvider.
      */
     @Test
-    public void getStimuliReport() {
+    public void getStimuliReport() throws Exception{
         System.out.println("getStimuliReport");
-        AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-        instance.initialiseStimuliState("");
+        AdVocAsStimuliProvider instance = this.testHasNextStimulus();
         Map<String,String> result= instance.getStimuliReport();
         Set<String>  keys = result.keySet();
-        // 4 is the amount of headers
-        assertTrue(keys.size()>4);
+        // 3 is the amount of headers (tables)
+        assertTrue(keys.size()>3);
         for (String key : keys) {
             String row = result.get(key);
             int index = row.indexOf(";");
@@ -153,25 +206,52 @@ public class AdVocAsStimuliProviderTest {
      * Test of hasNextStimulus method, of class AdVocAsStimuliProvider.
      */
     @Test
-    public void testHasNextStimulus() throws Exception{
-        System.out.println("hasNextStimulus");
+     public void testHasNextStimulus1() throws Exception{
+         System.out.println("hasNextStimulus-1");
+         this.testHasNextStimulus();
+     }
+     
+      /**
+     * Test of hasNextStimulus method, of class AdVocAsStimuliProvider.
+     */
+    @Test
+     public void testHasNextStimulus2() throws Exception{
+         System.out.println("hasNextStimulus-2");
+         this.testHasNextStimulus();
+     }
+    
+         /**
+     * Test of hasNextStimulus method, of class AdVocAsStimuliProvider.
+     */
+    @Test
+     public void testHasNextStimulus3() throws Exception{
+         System.out.println("hasNextStimulus-3");
+         this.testHasNextStimulus();
+     }
+    
+    
+    private AdVocAsStimuliProvider testHasNextStimulus() throws Exception{
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
         instance.initialiseStimuliState("");
         boolean result = instance.hasNextStimulus(0);// does not depend on increment
         // but on internal state of the process
         assertTrue(result);
-
-        // 1 step, correct
+        instance.nextStimulus(0);
         
+        //experiment 1, correct answer
         int ind1 = instance.getCurrentStimulusIndex();
         assertEquals(0, ind1);
         AdVocAsAtomStimulus stimulus = instance.getCurrentStimulus();
         instance.isCorrectResponse(stimulus, stimulus.getCorrectResponses());
         boolean result1 = instance.hasNextStimulus(0);
         assertTrue(result1);
-
-        // 2nd step, incorrect
-        // anyway go the the fine tuning
+        int expectedBand = stimulus.getCorrectResponses().equals("word") ? (Constants.START_BAND+1) : Constants.START_BAND;
+        assertEquals(expectedBand, instance.getCurrentBand());
+        
+        instance.nextStimulus(0);
+        
+         //experiment 1, correct answer
+        // second chance
         int ind2 = instance.getCurrentStimulusIndex();
         assertEquals(1, ind2);
         
@@ -187,28 +267,43 @@ public class AdVocAsStimuliProviderTest {
         if (response == null) {
             throw new Exception("Wrong reaction");
         }
-        instance.isCorrectResponse(stimulus2, response);
         
-        boolean result12 = instance.hasNextStimulus(0); // trasnfer to fine tuning
+        instance.isCorrectResponse(stimulus2, response);
+        boolean result12 = instance.hasNextStimulus(0); 
+        assertTrue(result12);
+        assertEquals(expectedBand, instance.getCurrentBand());
+        assertEquals(-1, instance.getBestFastTrackBand()); // stil on fast track, expecting the secind chance
+        
+        
+        instance.nextStimulus(0); // give the second chance
+        
         
         int ind3 = instance.getCurrentStimulusIndex();
         assertEquals(2, ind3);
+        AdVocAsAtomStimulus stimulus3 = instance.getCurrentStimulus();
+        String correctResponse3 = stimulus3.getCorrectResponses();
+        String response3 = null;
+        if (correctResponse3.equals("word")) {
+            response3 = "nonword";
+        }
+        if (correctResponse3.equals("nonword")) {
+            response3 = "word";
+        }
+        if (response3 == null) {
+            throw new Exception("Wrong reaction");
+        }
         
-        assertTrue(result12);
+        boolean result3 = instance.hasNextStimulus(0); 
+        assertTrue(result3); 
+        // now current band represents the last cirrect band on the fast track
+        assertEquals(expectedBand, instance.getCurrentBand());
+        assertEquals(instance.getCurrentBand(), instance.getBestFastTrackBand()); // stil on fast track, expecting the secind chance
+        
+        return instance;
+        
     }
 
  
-    /**
-     * Test of setCurrentStimuliIndex method, of class AdVocAsStimuliProvider.
-     */
-    @Test
-    public void testSetCurrentStimuliIndex() {
-        System.out.println("setCurrentStimuliIndex");
-        AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-        instance.initialiseStimuliState("");
-        instance.setCurrentStimuliIndex(0);// actually does nothing
-    }
-
     /**
      * Test of getCurrentStimulusUniqueId method, of class
      * AdVocAsStimuliProvider.
@@ -219,6 +314,7 @@ public class AdVocAsStimuliProviderTest {
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
         instance.initialiseStimuliState("");
         instance.hasNextStimulus(0);
+        instance.nextStimulus(0);
         String result = instance.getCurrentStimulusUniqueId();
         assertTrue(result != null);
     }
@@ -254,19 +350,7 @@ public class AdVocAsStimuliProviderTest {
         }
     }
 
-    /**
-     * Test of detectLoop method, of class AdVocAsStimuliProvider.
-     */
-    @Test
-    public void testTimeToCountVisits() {
-        System.out.println("timeToCountVisits");
-        boolean result1 = AdVocAsStimuliProvider.timeToCountVisits(34);
-        assertEquals(true, result1);
-        boolean result2 = AdVocAsStimuliProvider.timeToCountVisits(32);
-        assertEquals(false, result2);
-
-    }
-
+ 
     /**
      * Test of detectLoop method, of class AdVocAsStimuliProvider.
      */
@@ -274,33 +358,17 @@ public class AdVocAsStimuliProviderTest {
     public void testMostOftenVisited() {
         System.out.println("mostOftenVisited");
         int[] arr1 = {1, 1, 2, 2, 2, 2, 1};
-        int result1 = AdVocAsStimuliProvider.mostOftenVisited(arr1);
-        assertEquals(3 + 1, result1); // output is the band nummer
-        // and bund nemmer is band index+1
+        AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
+        instance.initialiseStimuliState(" ");
+        int result1 = instance.mostOftenVisited(arr1);
+        // the currrentBAndIndex is Constants.START_BAND
+        assertEquals(5, result1); // output is the band nummer
+        // and bund number is band index+1
         int[] arr2 = {0, 1, 2, 2, 2, 1, 1};
-        // 2 or 3 ?
-        // 0+1+2 vs 2+1+1
-        // 3
-        // 3 or 4
-        //0+1+2+2 vs 1+1
-        //3
-        int result2 = AdVocAsStimuliProvider.mostOftenVisited(arr2);
-        assertEquals(3 + 1, result2);
+        int result2 = instance.mostOftenVisited(arr2);
+        assertEquals(4, result2);
     }
 
-    /**
-     * Test of detectLoop method, of class AdVocAsStimuliProvider.
-     */
-    @Test
-    public void testChooseBand() {
-        System.out.println("mostChooseBAnd");
-        int[] arr1 = {1, 1, 2, 2, 2, 2, 1};
-        int result1 = AdVocAsStimuliProvider.chooseBand(2, 3, arr1);
-        // 1+1+2 vs 2+2+1
-        assertEquals(3, result1);
-        int result2 = AdVocAsStimuliProvider.chooseBand(3, 4, arr1);
-        // 1+1+2+2 vs 2+1
-        assertEquals(3, result2);
-    }
+ 
 
 }

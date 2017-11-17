@@ -30,7 +30,7 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.service.ServiceSuite.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.model.ModelSuite.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.AtomBookkeepingStimulusTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.UtilsTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.MainTest.class, 
-    nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.fasttrack.FasttrackSuite.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.VocabularyFromFilesTest.class})
+    nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.VocabularyFromFilesTest.class})
 public class AdaptivevocabularyassessmentSuite {
 
     @BeforeClass

@@ -105,7 +105,7 @@ public class RandomIndexingTest {
         ArrayList<Integer> result = instance.updateAndGetIndices();
         instance.updateFrequencesOfNonWordIndices();
         double[] frequences= instance.getFrequencesOfNonWordindices();
-        int allWords = (Constants.NUMBER_OF_BANDS - startBand)+1;
+        int allWords = ((Constants.NUMBER_OF_BANDS - startBand)+1)*2;
         int expectedFastTrackSequenceLength = (allWords* 3)/2;
         assertEquals(expectedFastTrackSequenceLength, frequences.length);
         double oneThird = 1.0/3.0;
@@ -126,7 +126,7 @@ public class RandomIndexingTest {
         int averageNonwordPosition = 3;
         int nonWordsPerBlock = 4; // smotheness regulator
         RandomIndexing instance = new RandomIndexing(startBand, nonWordsPerBlock, averageNonwordPosition, nonWordsAvailable);
-        int allWords = (Constants.NUMBER_OF_BANDS - startBand)+1;
+        int allWords = ((Constants.NUMBER_OF_BANDS - startBand)+1)*2;
         int expectedFastTrackSequenceLength = (allWords*3)/2;
         assertEquals(expectedFastTrackSequenceLength, instance.getFastTrackSequenceLength());
     }
