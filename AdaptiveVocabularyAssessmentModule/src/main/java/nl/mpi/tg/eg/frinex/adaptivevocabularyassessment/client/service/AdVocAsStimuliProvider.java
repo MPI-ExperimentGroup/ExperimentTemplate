@@ -21,6 +21,7 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Random;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
@@ -41,14 +42,12 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
 
     private int score = -1;
     private Boolean isCorrectCurrentResponse;
-    private int currentNonWordIndex = 0;
-    private final int[] currentWordIndexInBand = new int[Constants.NUMBER_OF_BANDS];
     private int currentBandIndex = 0;
     private int totalStimuli;
     private RandomIndexing rndIndexing;
     private ArrayList<Integer> nonWordsIndexes;
 
-    private AtomBookkeepingStimulus[][] words;
+    private ArrayList<ArrayList<AtomBookkeepingStimulus>> words;
     private ArrayList<AtomBookkeepingStimulus> nonwords;
     private ArrayList<AtomBookkeepingStimulus> responseRecord;
 
@@ -59,10 +58,8 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
     private int timeTickEndFastTrack = -1;
 
     // fine tuning stuff
-    private int counterInTupleFTuning = 0;
-    private final AtomBookkeepingStimulus[] tupleFT = new AtomBookkeepingStimulus[Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE];
+    private final ArrayList<AtomBookkeepingStimulus> tupleFT = new ArrayList<>(Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE);
     private Random rnd;
-    private final int[] bandVisitCounter = new int[Constants.NUMBER_OF_BANDS];
 
     // fine tuning stopping
     private boolean enoughFineTuningStimulae = true;
@@ -91,7 +88,7 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
 
         this.totalStimuli = this.nonwords.size();
         for (int i = 0; i < Constants.NUMBER_OF_BANDS; i++) {
-            this.totalStimuli += this.words[i].length;
+            this.totalStimuli += this.words.get(i).size();
         }
 
         this.responseRecord = new ArrayList<>();
@@ -105,7 +102,7 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
         this.currentBandIndex = Constants.START_BAND - 1;
     }
 
-    public AtomBookkeepingStimulus[][] getWords() {
+    public ArrayList<ArrayList<AtomBookkeepingStimulus>> getWords() {
         return this.words;
     }
 
@@ -145,8 +142,8 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
         return this.score;
     }
 
-    public int getCurrentBand() {
-        return this.currentBandIndex + 1;
+    public int getCurrentBandNumber() {
+        return (this.currentBandIndex + 1);
     }
 
     // prepared by next stimulus
@@ -172,11 +169,12 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
     public boolean hasNextStimulus(int increment) {
         if (this.isFastTrackIsStillOn) { // fast track is still on, update it
             this.isFastTrackIsStillOn = this.fastTrackToBeContinued();
-            if (!this.isFastTrackIsStillOn) {
-                // prepare indices for the fine tuning
-                this.switchToFineTuning();
+            if (this.isFastTrackIsStillOn) {
+                return true;
+            } else {
+                // return false if not enough stimuli left
+                return this.switchToFineTuning();
             }
-            return true;
         } else {
             return this.fineTuningToBeContinued();
         }
@@ -190,17 +188,16 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
         if (this.isFastTrackIsStillOn) {
             int nextExperimentIndex = this.responseRecord.size();
             if (this.nonWordsIndexes.contains(nextExperimentIndex)) {
-                bStimulus = this.nonwords.get(this.currentNonWordIndex);
+                bStimulus = this.nonwords.remove(0);
             } else {
-                int index = this.currentWordIndexInBand[this.currentBandIndex];
-                bStimulus = this.words[this.currentBandIndex][index];
+                bStimulus = this.words.get(this.currentBandIndex).remove(0);
             }
         } else {
-            bStimulus = this.tupleFT[this.counterInTupleFTuning];
+            bStimulus = this.tupleFT.remove(0);
         }
         bStimulus.setIsUsed(true);
         this.responseRecord.add(bStimulus);
-    
+
     }
 
     @Override
@@ -223,12 +220,11 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
     public String getHtmlStimuliReport() {
         String summary = this.getStringSummary("<tr>", "</tr>", "<td>", "</td>");
         String inhoudFastTrack = this.getStringFastTrack("<tr>", "</tr>", "<td>", "</td>");
-        String inhoudFineTuning = this.getStringFineTuningHistory("<tr>", "<tr>", "<td>", "<td>");
+        String inhoudFineTuning = this.getStringFineTuningHistory("<tr>", "</tr>", "<td>", "</td>");
         StringBuilder htmlStringBuilder = new StringBuilder();
-        htmlStringBuilder.append("<p>User summary</p><table border=1>").append(summary).append("</table><br>");
-        htmlStringBuilder.append("<p><p>Fast Track History</p><table border=1>").append(inhoudFastTrack).append("</table><br>");
-        htmlStringBuilder.append("<p><p>Fine tuning History</p><table border=1>").append(inhoudFineTuning).append("</table>");
-        htmlStringBuilder.append("<p><p>");
+        htmlStringBuilder.append("<p>User summary</p><table border=1>").append(summary).append("</table><br><br>");
+        htmlStringBuilder.append("<p>Fast Track History</p><table border=1>").append(inhoudFastTrack).append("</table><br><b>");
+        htmlStringBuilder.append("<p>Fine tuning History</p><table border=1>").append(inhoudFineTuning).append("</table>");
         return htmlStringBuilder.toString();
         //return "<table><tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr><tr><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>0</td></tr></table>";
     }
@@ -298,7 +294,6 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
         if (this.isCorrectCurrentResponse) {
             this.secondChanceFastTrackIsFired = false;
             if (isWord) {
-                this.currentWordIndexInBand[this.currentBandIndex]++;
                 if (this.currentBandIndex == (Constants.NUMBER_OF_BANDS - 1)) {
                     retVal = false;
                 } else {
@@ -306,7 +301,6 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
                     retVal = true;
                 }
             } else {
-                this.currentNonWordIndex++;
                 retVal = true;
             }
         } else {
@@ -316,11 +310,6 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
             } else {
                 // giving the second chanse
                 this.secondChanceFastTrackIsFired = true;
-                if (isWord) {
-                    this.currentWordIndexInBand[this.currentBandIndex]++;
-                } else {
-                    this.currentNonWordIndex++;
-                }
                 retVal = true;
             }
         }
@@ -329,13 +318,13 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
             // check if we still have data for the next experiment
             int nextExperimentIndex = this.responseRecord.size();
 
-            if (this.nonWordsIndexes.contains(nextExperimentIndex) && this.currentNonWordIndex >= nonwords.size()) {
+            if (this.nonWordsIndexes.contains(nextExperimentIndex) && nonwords.size() < 1) { // we have at least 1 nonword left
                 System.out.println("We do not have nonwords left for the Fast Track!");
                 retVal = false;
             }
 
             if (!this.nonWordsIndexes.contains(nextExperimentIndex)
-                    && this.currentWordIndexInBand[this.currentBandIndex] >= this.words[this.currentBandIndex].length) {
+                    && this.words.get(this.currentBandIndex).size() < 1) { // we have at least 1 word left
                 System.out.println("We do not have words in band " + this.currentBandIndex + "  left for the Fast Track!");
                 retVal = false;
             }
@@ -344,52 +333,49 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
         return retVal;
     }
 
-    private void switchToFineTuning() {
-        this.timeTickEndFastTrack = this.responseRecord.size() - 1; // the last time on fast track
+    private boolean switchToFineTuning() {
+        this.timeTickEndFastTrack = this.responseRecord.size() - 1; // the last time on fast track (if we start counting form zero)
         this.bestBandFastTrack = this.currentBandIndex + 1; // band number is 1 more w.r.t bandIndex, with indexing offsets start woth zero
-        this.initialiseNextFineTuningTuple();
+        return this.initialiseNextFineTuningTuple();
     }
 
-    // we already at the right band
-    private void initialiseNextFineTuningTuple() {
-        this.counterInTupleFTuning = 0;
+    // we already at the right band, the last band in the fast track with the correct answer
+    // return false if there is not enough words and nonwords
+    private boolean initialiseNextFineTuningTuple() {
+        if (this.nonwords.size() < 1) {
+            return false;
+        }
+        if (this.words.get(this.currentBandIndex).size() < Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE - 1) {
+            return false;
+        }
         int nonWordPos = rnd.nextInt(Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE);
-        int startWordPos = this.currentWordIndexInBand[this.currentBandIndex] + 1;
-        System.out.println("***");
+        AtomBookkeepingStimulus bStimulus;
         for (int i = 0; i < nonWordPos; i++) {
-            this.tupleFT[i] = this.words[this.currentBandIndex][startWordPos + i];
-            System.out.println(this.tupleFT[i].getBandNumber());
-            System.out.println(this.currentBandIndex+1);
+            bStimulus = this.words.get(this.currentBandIndex).remove(0);
+            this.tupleFT.add(bStimulus);
         }
-        this.tupleFT[nonWordPos] = this.nonwords.get(this.currentNonWordIndex);
-        for (int i = nonWordPos + 1; i < this.tupleFT.length; i++) {
-            this.tupleFT[i] = this.words[this.currentBandIndex][startWordPos + (i - nonWordPos)];
-            System.out.println(this.tupleFT[i].getBandNumber());
-            System.out.println(this.currentBandIndex+1);
+        bStimulus = this.nonwords.remove(0);
+        this.tupleFT.add(bStimulus);
+        for (int i = nonWordPos + 1; i < Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE; i++) {
+            bStimulus = this.words.get(this.currentBandIndex).remove(0);
+            this.tupleFT.add(bStimulus);
         }
-        
-        this.bandVisitCounter[this.currentBandIndex]++;
-
+        return true;
     }
 
     //(also) updates the indices
     private boolean fineTuningToBeContinued() {
 
-        if (this.getCurrentStimulus().getCorrectResponses().equals("words")) {
-            this.currentWordIndexInBand[this.currentBandIndex]++;
-        } else {
-            this.currentNonWordIndex++;
-        }
-
         boolean retVal;
-        int currentBand = this.currentBandIndex + 1; // memoise currentBandNumber == index +1
+        int currentBandNumber = this.currentBandIndex + 1; // memoise currentBandNumber == index +1
 
         if (this.isCorrectCurrentResponse) {
-            if (this.counterInTupleFTuning < Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE - 1) {
+            if (this.tupleFT.size() > 0) {
                 // we have not hit the last atom in the tuple yet
-                this.counterInTupleFTuning++;
+                // continue
                 return true;
-            } else { // tranistion to the higher band ?
+            } else {
+                // tranistion to the higher band ?
                 if (this.currentBandIndex == Constants.NUMBER_OF_BANDS - 1) { // the last band is hit
                     if (this.justVisitedLastBand) {
                         this.champion = true;
@@ -401,7 +387,7 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
                         retVal = true;
                     }
                 } else {
-                    // ordinary next band interation
+                    // ordinary next band iteration
                     this.justVisitedLastBand = false;
                     // go to the next band
                     this.currentBandIndex++;
@@ -409,6 +395,22 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
                 }
             }
         } else {
+            // put back unused element of the tuple
+            // recycling
+            boolean ended = this.tupleFT.isEmpty();
+            while (!ended) {
+                AtomBookkeepingStimulus bStimulus = this.tupleFT.remove(0);
+                int bandNumber = bStimulus.getBandNumber();
+                if (bandNumber > -1) { // a word
+                    // bandIndex is 1 less then band number 
+                    this.words.get(bandNumber - 1).add(bStimulus);
+                } else {
+                    this.nonwords.add(bStimulus);
+                }
+                ended = this.tupleFT.isEmpty();
+            }
+
+            // detecting is should be stopped
             this.cycle2 = detectLoop(cycle2helper);
             if (this.cycle2) {
                 System.out.println("Detected: three times oscillation between two neighbouring bands");
@@ -440,18 +442,15 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
         }
 
         if (retVal) {
-            shiftFIFO(cycle2helper, currentBand);
+            shiftFIFO(cycle2helper, currentBandNumber);
             // check if there are enough stimuli left
-            this.enoughFineTuningStimulae
-                    = (this.currentWordIndexInBand[this.currentBandIndex] + 1 + Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE - 2 < this.words[this.currentBandIndex].length)
-                    && (this.currentNonWordIndex < this.nonwords.size());
-            if (this.enoughFineTuningStimulae) {
-                this.initialiseNextFineTuningTuple();
-            } else {
+            this.enoughFineTuningStimulae = this.initialiseNextFineTuningTuple();
+            if (!this.enoughFineTuningStimulae) {
                 System.out.println("Not enough fine-tuning compound stimula left for the band " + this.currentBandIndex);
                 retVal = false;
-                this.score = this.mostOftenVisited(this.bandVisitCounter) + 1;
+                this.score = this.mostOftenVisitedBandBumber();
             }
+
         }
         return retVal;
     }
@@ -475,7 +474,21 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
         fifo[fifo.length - 1] = newelement;
     }
 
-    public int mostOftenVisited(int[] bandVisitCounter) {
+    public int mostOftenVisitedBandBumber() {
+        int[] bandVisitCounter = new int[Constants.NUMBER_OF_BANDS];
+        for (int i = this.timeTickEndFastTrack + 1; i < this.responseRecord.size(); i++) {
+            AtomBookkeepingStimulus bStimulus = this.responseRecord.get(i);
+            int bandIndex = bStimulus.getBandNumber() - 1;
+            bandVisitCounter[bandIndex]++;
+        }
+
+        int retVal = this.mostOftenVisitedBandBumberHelp(bandVisitCounter, this.currentBandIndex);
+        return retVal;
+
+    }
+
+    public int mostOftenVisitedBandBumberHelp(int[] bandVisitCounter, int controlIndex) {
+
         int max = bandVisitCounter[0];
         ArrayList<Integer> indices = new ArrayList<>();
         indices.add(0);
@@ -493,14 +506,31 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
 
         // choose the band from "indices" which is closest to currentIndex;
         int retVal = indices.get(0);
-        int diff = Math.abs(retVal - this.currentBandIndex);
+        int diff = Math.abs(retVal - controlIndex);
+        int ind = 0;
         for (int i = 1; i < indices.size(); i++) {
-            if (Math.abs(indices.get(i) - this.currentBandIndex) < diff) {
+            if (Math.abs(indices.get(i) - controlIndex) < diff) {
                 retVal = indices.get(i);
-                diff = Math.abs(retVal - this.currentBandIndex);
+                diff = Math.abs(retVal - controlIndex);
+                ind = i;
             }
         }
-        return retVal;
+
+        int retValSym = indices.get(indices.size() - 1);
+        diff = Math.abs(retValSym - controlIndex);
+        int indexSym = indices.size() - 1;
+        for (int i = indices.size() - 2; i >= 0; i--) {
+            if (Math.abs(indices.get(i) - controlIndex) < diff) {
+                retValSym = indices.get(i);
+                diff = Math.abs(retValSym - controlIndex);
+                indexSym = i;
+            }
+        }
+
+        if (indices.size() - indexSym >= ind + 1) {
+            retVal = retValSym;
+        }
+        return retVal + 1;
 
     }
 
@@ -543,6 +573,7 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
         stringBuilder.append(startColumn).append("VisitingTime").append(endColumn);
         stringBuilder.append(endRow);
         int modCounter = 0;
+        ArrayList<String> spellingsCheck = new ArrayList<>();
         for (int i = this.timeTickEndFastTrack + 1; i < this.responseRecord.size(); i++) {
             AtomBookkeepingStimulus stimulus = this.responseRecord.get(i);
             StringBuilder row = new StringBuilder();
@@ -559,6 +590,15 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
                 stringBuilder.append(startRow).append(endRow);
                 modCounter = 0;
             }
+            spellingsCheck.add(stimulus.getSpelling());
+        }
+        
+        // check if there are repititions
+        HashSet<String> set = new HashSet(spellingsCheck);
+        if (set.size() < spellingsCheck.size()){
+            stringBuilder.append(startRow).append(startColumn)
+                    .append("Repetitions of stimuli detected")
+                    .append(endColumn).append(endRow);
         }
         return stringBuilder.toString();
     }

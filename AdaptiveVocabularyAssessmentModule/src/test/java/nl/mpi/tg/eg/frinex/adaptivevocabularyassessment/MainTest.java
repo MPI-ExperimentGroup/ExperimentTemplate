@@ -59,9 +59,9 @@ public class MainTest {
      */
     @Test
     public void testMain() throws Exception {
-        for (int i = 0; i<=10; i++) {
+        for (int i = 1; i<10; i++) {
             double prob = 0.5+i*0.05;
-            System.out.println(prob);
+            //System.out.println(prob);
             this.testRound(prob);
         }
     }

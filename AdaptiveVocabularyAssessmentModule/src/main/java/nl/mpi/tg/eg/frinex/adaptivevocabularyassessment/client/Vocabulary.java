@@ -27,22 +27,24 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtom
 public class Vocabulary {
     
      // the sequence of words in each band should be randomly reshuffled any time we generate it
-    public AtomBookkeepingStimulus[][] initialiseWords(AdVocAsAtomStimulus[][] wrds) {
+    public ArrayList<ArrayList<AtomBookkeepingStimulus>> initialiseWords(AdVocAsAtomStimulus[][] wrds) {
         if (wrds == null || wrds.length == 0) {
             System.out.println("Empty array of words in bands");
-            return new AtomBookkeepingStimulus[0][0];
+            return new ArrayList<>();
         }
-        AtomBookkeepingStimulus[][] retVal = new AtomBookkeepingStimulus[Constants.NUMBER_OF_BANDS][Constants.WORDS_PER_BAND];
+        ArrayList<ArrayList<AtomBookkeepingStimulus>> retVal = new ArrayList<>(Constants.NUMBER_OF_BANDS);
         for (int bandIndex = 0; bandIndex < wrds.length; bandIndex++) {
             if (wrds[bandIndex] == null && wrds[bandIndex].length == 0) {
                 System.out.println("Empty array of words for band " + bandIndex + "is empty.");
-                retVal[bandIndex] = new AtomBookkeepingStimulus[0];
+                retVal.add(new ArrayList<>());
             } else {
                 int[] index =RandomIndexing.generateRandomArray(wrds[bandIndex].length);
+                
+                retVal.add(new ArrayList<>(Constants.WORDS_PER_BAND));
                 for (int i = 0;i < wrds[bandIndex].length; i ++) {
                     int ind = index[i];
                     AtomBookkeepingStimulus stimulus = new AtomBookkeepingStimulus(wrds[bandIndex][ind]);
-                    retVal[bandIndex][i] = stimulus;
+                    retVal.get(bandIndex).add(stimulus);
                 }
             }
         }

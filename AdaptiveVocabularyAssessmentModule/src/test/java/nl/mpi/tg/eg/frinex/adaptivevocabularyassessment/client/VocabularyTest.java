@@ -60,12 +60,13 @@ public class VocabularyTest {
     public void testInitialiseWords() {
         System.out.println("initialiseWords");
         Vocabulary instance = new Vocabulary();
-        AtomBookkeepingStimulus[][] words = instance.initialiseWords(ConstantsWords.WORDS);
-        assertEquals(Constants.NUMBER_OF_BANDS, words.length);
+        ArrayList<ArrayList<AtomBookkeepingStimulus>> words = instance.initialiseWords(ConstantsWords.WORDS);
+        assertEquals(Constants.NUMBER_OF_BANDS, words.size());
         for (int i = 0; i < Constants.NUMBER_OF_BANDS; i++) {
-            ArrayList<String> spellings = new ArrayList<>(words[i].length);
-            for (AtomBookkeepingStimulus stimulus : words[i]) {
+            ArrayList<String> spellings = new ArrayList<>(words.get(i).size());
+            for (AtomBookkeepingStimulus stimulus : words.get(i)) {
                 spellings.add(stimulus.getSpelling());
+                assertEquals(i+1,stimulus.getBandNumber());
             }
             HashSet<String> set = new HashSet(spellings);
             assertEquals(ConstantsWords.WORDS[i].length, set.size()); // fails if there are repititions or permutation was incorrect
@@ -88,6 +89,15 @@ public class VocabularyTest {
         }
         HashSet<String> set = new HashSet(spellings);
         assertEquals(ConstantsNonWords.NONWORDS_ARRAY.length, set.size()); // fails if there are repititions or permutation was incorrect
+       
+        // checking if the Equality is implemented OK on Strings
+        ArrayList<String> testEqualityList = new ArrayList<>(2);
+        testEqualityList.add("ok");
+        testEqualityList.add("ok");
+        assertEquals(2, testEqualityList.size());
+        HashSet<String> testEqualitySet = new HashSet(testEqualityList);
+        assertEquals(1, testEqualitySet.size());
+    
     }
 
 }

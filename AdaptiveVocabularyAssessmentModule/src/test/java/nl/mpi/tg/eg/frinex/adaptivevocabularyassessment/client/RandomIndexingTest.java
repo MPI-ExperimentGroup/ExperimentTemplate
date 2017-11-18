@@ -19,7 +19,6 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Random;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -59,12 +58,12 @@ public class RandomIndexingTest {
     public void testUpdateAndGetIndices() {
         System.out.println("updateAndGetIndices");
         int startBand = 20;
-        int nonWordsAvailable = 100;
+        int nonWordsAvailable = 300;
         int averageNonwordPosition = 3;
         int nonWordsPerBlock = 4; // smotheness regulator
         RandomIndexing instance = new RandomIndexing(startBand, nonWordsPerBlock, averageNonwordPosition, nonWordsAvailable);
         ArrayList<Integer> result = instance.updateAndGetIndices();
-        int allWords = (Constants.NUMBER_OF_BANDS - startBand)+1;
+        int allWords = (Constants.NUMBER_OF_BANDS - startBand+1)*2; // 2 times on one band because of the second chance
         int expectedFastTrackSequenceLength = (allWords* 3)/2;
         int expectedAmountOfNonWords = expectedFastTrackSequenceLength/3; 
         assertEquals(expectedAmountOfNonWords, result.size());
@@ -98,7 +97,7 @@ public class RandomIndexingTest {
     public void testGetUpdateFrequencesOfNonWordIndices() {
         System.out.println("update and get FrequencesOfNonWordIndices");
         int startBand = 20;
-        int nonWordsAvailable = 100;
+        int nonWordsAvailable = 200;
         int averageNonwordPosition = 3;
         int nonWordsPerBlock = 4; // smotheness regulator
         RandomIndexing instance = new RandomIndexing(startBand, nonWordsPerBlock, averageNonwordPosition, nonWordsAvailable);
@@ -122,7 +121,7 @@ public class RandomIndexingTest {
     public void testGetSequenceLength() {
         System.out.println("getSequenceLength");
         int startBand = 20;
-        int nonWordsAvailable = 100;
+        int nonWordsAvailable = 200;
         int averageNonwordPosition = 3;
         int nonWordsPerBlock = 4; // smotheness regulator
         RandomIndexing instance = new RandomIndexing(startBand, nonWordsPerBlock, averageNonwordPosition, nonWordsAvailable);

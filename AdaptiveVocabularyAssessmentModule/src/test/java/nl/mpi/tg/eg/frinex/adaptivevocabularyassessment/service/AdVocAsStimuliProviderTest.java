@@ -68,10 +68,10 @@ public class AdVocAsStimuliProviderTest {
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
         instance.initialiseStimuliState("");
         
-        AtomBookkeepingStimulus[][] words = instance.getWords();
-        assertEquals(Constants.NUMBER_OF_BANDS, words.length);
+        ArrayList<ArrayList<AtomBookkeepingStimulus>> words = instance.getWords();
+        assertEquals(Constants.NUMBER_OF_BANDS, words.size());
         for (int i=0; i<Constants.NUMBER_OF_BANDS; i++){
-            assertEquals(Constants.WORDS_PER_BAND, words[i].length);
+            assertEquals(Constants.WORDS_PER_BAND, words.get(i).size());
         }
         
         ArrayList<AtomBookkeepingStimulus> nonwords = instance.getNonwords();
@@ -238,20 +238,21 @@ public class AdVocAsStimuliProviderTest {
         assertTrue(result);
         instance.nextStimulus(0);
         
-        //experiment 1, correct answer
+        //experiment 0, correct answer
         int ind1 = instance.getCurrentStimulusIndex();
         assertEquals(0, ind1);
         AdVocAsAtomStimulus stimulus = instance.getCurrentStimulus();
+        
         instance.isCorrectResponse(stimulus, stimulus.getCorrectResponses());
+        
         boolean result1 = instance.hasNextStimulus(0);
         assertTrue(result1);
         int expectedBand = stimulus.getCorrectResponses().equals("word") ? (Constants.START_BAND+1) : Constants.START_BAND;
-        assertEquals(expectedBand, instance.getCurrentBand());
+        assertEquals(expectedBand, instance.getCurrentBandNumber());
         
         instance.nextStimulus(0);
         
-         //experiment 1, correct answer
-        // second chance
+         //experiment 1, wrong answer, second chance must be given
         int ind2 = instance.getCurrentStimulusIndex();
         assertEquals(1, ind2);
         
@@ -271,7 +272,7 @@ public class AdVocAsStimuliProviderTest {
         instance.isCorrectResponse(stimulus2, response);
         boolean result12 = instance.hasNextStimulus(0); 
         assertTrue(result12);
-        assertEquals(expectedBand, instance.getCurrentBand());
+        assertEquals(expectedBand, instance.getCurrentBandNumber());
         assertEquals(-1, instance.getBestFastTrackBand()); // stil on fast track, expecting the secind chance
         
         
@@ -296,8 +297,8 @@ public class AdVocAsStimuliProviderTest {
         boolean result3 = instance.hasNextStimulus(0); 
         assertTrue(result3); 
         // now current band represents the last cirrect band on the fast track
-        assertEquals(expectedBand, instance.getCurrentBand());
-        assertEquals(instance.getCurrentBand(), instance.getBestFastTrackBand()); // stil on fast track, expecting the secind chance
+        assertEquals(expectedBand, instance.getCurrentBandNumber());
+        assertEquals(instance.getCurrentBandNumber(), instance.getBestFastTrackBand()); // stil on fast track, expecting the secind chance
         
         return instance;
         
@@ -350,25 +351,24 @@ public class AdVocAsStimuliProviderTest {
         }
     }
 
- 
-    /**
-     * Test of detectLoop method, of class AdVocAsStimuliProvider.
+     /**
+     * Test of shiftFIFO method, of class AdVocAsStimuliProvider.
      */
     @Test
-    public void testMostOftenVisited() {
-        System.out.println("mostOftenVisited");
-        int[] arr1 = {1, 1, 2, 2, 2, 2, 1};
+    public void testMostOftenVisitedBandBumberHelp() {
+        System.out.println(" MostOftenVisitedBandBumberHelp");
+        int[] visitCounter = {1, 3, 2, 3, 3, 3, 1};
+        // indices {1,3,4,5}
+        // ind = 1, indSym = 2
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-        instance.initialiseStimuliState(" ");
-        int result1 = instance.mostOftenVisited(arr1);
-        // the currrentBAndIndex is Constants.START_BAND
-        assertEquals(5, result1); // output is the band nummer
-        // and bund number is band index+1
-        int[] arr2 = {0, 1, 2, 2, 2, 1, 1};
-        int result2 = instance.mostOftenVisited(arr2);
-        assertEquals(4, result2);
+        int currentIndex1=2; // at 2
+        int bandNumber1 = instance.mostOftenVisitedBandBumberHelp(visitCounter, currentIndex1);
+        assertEquals(4, bandNumber1);
+        
+        int currentIndex2=3; // at 3
+        int bandNumber2 = instance.mostOftenVisitedBandBumberHelp(visitCounter, currentIndex2);
+        assertEquals(4, bandNumber2); 
     }
-
- 
+   
 
 }
