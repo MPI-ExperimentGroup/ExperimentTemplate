@@ -24,7 +24,7 @@
             <hasMoreStimulus>
                 <clearPage/>
                 <centrePage/>
-                <showStimulusProgress/>
+<!--                <showStimulusProgress/>-->
                 <stimulusLabel/>
                 <addPadding/>
                 <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
@@ -54,7 +54,7 @@
     <presenter displayOrder="11" menuLabel="End" type="transmission" self="End" title="End">
         <sendAllData>
             <onSuccess>
-                <htmlText featureText="The experiment is over.&lt;br/&gt;&lt;br/&gt;Here is your experiment code. You must put it on Crowdflower in order to get paid.&lt;br/&gt;&lt;br/&gt;Heel erg bedankt voor het deelnemen!"/>
+                <!--<htmlText featureText="The experiment is over.&lt;br/&gt;&lt;br/&gt;Here is your experiment code. You must put it on Crowdflower in order to get paid.&lt;br/&gt;&lt;br/&gt;Heel erg bedankt voor het deelnemen!"/>-->
                 <addPadding/>
                 <generateCompletionCode/>
                 <addPadding/>
