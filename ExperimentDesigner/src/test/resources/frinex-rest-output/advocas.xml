@@ -42,7 +42,7 @@
         </loadStimulus>
     </presenter>
     <presenter displayOrder="10" menuLabel="EditUser" next="End" type="metadata" self="EditUser" title="EditUser">
-        <htmlText featureText="What do you think is the theme / purpose of this experiment?"/>
+        <htmlText featureText="What do you think about this experiment?"/>
         <metadataField fieldName="feedBack"/>
         <saveMetadataButton featureText="Next" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
             <onError/>
@@ -54,7 +54,7 @@
     <presenter displayOrder="11" menuLabel="End" type="transmission" self="End" title="End">
         <sendAllData>
             <onSuccess>
-                <!--<htmlText featureText="The experiment is over.&lt;br/&gt;&lt;br/&gt;Here is your experiment code. You must put it on Crowdflower in order to get paid.&lt;br/&gt;&lt;br/&gt;Heel erg bedankt voor het deelnemen!"/>-->
+                <htmlText featureText="Gedaan! Heel erg bedankt voor het deelnemen!"/>-->
                 <addPadding/>
                 <generateCompletionCode/>
                 <addPadding/>
