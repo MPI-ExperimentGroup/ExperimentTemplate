@@ -36,11 +36,11 @@ public class Vocabulary {
         for (int bandIndex = 0; bandIndex < wrds.length; bandIndex++) {
             if (wrds[bandIndex] == null && wrds[bandIndex].length == 0) {
                 System.out.println("Empty array of words for band " + bandIndex + "is empty.");
-                retVal.add(new ArrayList<>());
+                retVal.add(new ArrayList<AtomBookkeepingStimulus>());
             } else {
                 int[] index =RandomIndexing.generateRandomArray(wrds[bandIndex].length);
                 
-                retVal.add(new ArrayList<>(Constants.WORDS_PER_BAND));
+                retVal.add(new ArrayList<AtomBookkeepingStimulus>(Constants.WORDS_PER_BAND));
                 for (int i = 0;i < wrds[bandIndex].length; i ++) {
                     int ind = index[i];
                     AtomBookkeepingStimulus stimulus = new AtomBookkeepingStimulus(wrds[bandIndex][ind]);
