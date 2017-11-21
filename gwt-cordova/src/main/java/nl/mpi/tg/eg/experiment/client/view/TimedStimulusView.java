@@ -190,7 +190,7 @@ public class TimedStimulusView extends ComplexView {
     }
 
     public StimulusFreeText addStimulusFreeText(final String postName, final String validationRegex, final String keyCodeChallenge, final String validationChallenge, final String allowedCharCodes, final SingleShotEventListner enterKeyListner, final int hotKey, final String styleName, final String textValue) {
-        final int inputLengthLimit = 28;
+        final int inputLengthLimit = 28; // todo: make this a parameter from the configuraiton file
         final Label errorLabel = new Label(validationChallenge);
         errorLabel.setStylePrimaryName("metadataErrorMessage");
         errorLabel.setVisible(false);
@@ -218,7 +218,7 @@ public class TimedStimulusView extends ComplexView {
                     enterKeyListner.eventFired();
                     errorLabel.setVisible(false);
                 } else if (allowedCharCodes != null) {
-                    if (0 > allowedCharCodes.indexOf(charCode) || textBox.getText().length() <= inputLengthLimit) {
+                    if (0 > allowedCharCodes.indexOf(charCode) || textBox.getText().length() > inputLengthLimit) {
                         event.getNativeEvent().preventDefault();
                         final char invertedCaseCode = (Character.isLowerCase(charCode)) ? Character.toUpperCase(charCode) : Character.toLowerCase(charCode);
                         if (0 > allowedCharCodes.indexOf(invertedCaseCode) || textBox.getText().length() <= inputLengthLimit) {
