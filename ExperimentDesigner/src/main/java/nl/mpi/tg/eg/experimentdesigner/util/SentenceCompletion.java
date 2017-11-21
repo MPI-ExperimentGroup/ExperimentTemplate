@@ -37,6 +37,12 @@ public abstract class SentenceCompletion {
 
     abstract String getExperimentTitle();
 
+    abstract String getAllowedCharCodes();
+
+    abstract String getFreeTextValidationMessage();
+
+    abstract String getFeedbackScreenText();
+
     abstract String getInstructionsText();
 
     abstract String getAgreementText();
@@ -97,7 +103,8 @@ public abstract class SentenceCompletion {
         final WizardRandomStimulusScreen list1234Screen = new WizardRandomStimulusScreen("Zinnen afmaken", false, getStimuliArray(),
                 getRandomStimuliTags(), 1000, true, null, 0, 0, null, null, null, null, "Volgende [tab + enter]");
         list1234Screen.setStimulusFreeText(true, ".{2,}",
-                "Vul één of enkele woorden in die volgens u het beste aan het eind van de zin passen.");
+                getFreeTextValidationMessage());
+        list1234Screen.setAllowedCharCodes(getAllowedCharCodes());
         list1234Screen.setInputKeyErrorMessage("Sorry, dit teken is niet toegestaan.");
         list1234Screen.getWizardScreenData().setStimulusResponseLabelLeft("");
         list1234Screen.getWizardScreenData().setStimulusResponseLabelRight("");
@@ -119,10 +126,28 @@ public abstract class SentenceCompletion {
                 "Probeer opnieuw");
         wizardData.addScreen(completionScreen);
         completionScreen.setScreenTag("completion");
+
+        if (getFeedbackScreenText() != null) {
+            final WizardEditUserScreen wizardFeedbackScreen = new WizardEditUserScreen();
+            wizardFeedbackScreen.setScreenTitle("Opmerkingen");
+            wizardFeedbackScreen.setScreenTag("opmerkingen");
+            wizardFeedbackScreen.setMenuLabel("Opmerkingen");
+            wizardFeedbackScreen.setScreenText(getFeedbackScreenText());
+            wizardFeedbackScreen.setSendData(true);
+            wizardFeedbackScreen.setNextButton("Volgende");
+            wizardFeedbackScreen.setOn_Error_Text("Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.");
+            wizardFeedbackScreen.setCustomFields(new String[]{
+                "feedBack::.*:."
+            });
+            wizardData.addScreen(wizardFeedbackScreen);
+            list1234Screen.setNextWizardScreen(wizardFeedbackScreen);
+            wizardFeedbackScreen.setNextWizardScreen(completionScreen);
+        } else {
+            list1234Screen.setNextWizardScreen(completionScreen);
+        }
         wizardTextScreen.setNextWizardScreen(wizardEditUserScreen);
         agreementScreen.setNextWizardScreen(wizardTextScreen);
         wizardEditUserScreen.setNextWizardScreen(list1234Screen);
-        list1234Screen.setNextWizardScreen(completionScreen);
 
         wizardEditUserScreen.setBackWizardScreen(wizardTextScreen);
         wizardTextScreen.setBackWizardScreen(agreementScreen);
