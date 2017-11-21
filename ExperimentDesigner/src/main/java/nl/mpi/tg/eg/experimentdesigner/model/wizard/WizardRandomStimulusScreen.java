@@ -140,7 +140,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenTextInfo(int index) {
-        return new String[]{"FreeTextValidationMessage", "FreeTextValidationRegex", "RandomStimuliTagsField", "InputKeyErrorMessage", "AllowedCharCodes"}[index];
+        return new String[]{"FreeTextValidationMessage", "FreeTextValidationRegex", "RandomStimuliTagsField", "InputKeyErrorMessage", "AllowedCharCodes (case sensitive, input will be switched to an allowed case if it exists)"}[index];
     }
 
     @Override
