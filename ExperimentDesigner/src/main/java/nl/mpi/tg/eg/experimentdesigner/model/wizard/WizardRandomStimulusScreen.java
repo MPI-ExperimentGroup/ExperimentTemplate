@@ -140,7 +140,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenTextInfo(int index) {
-        return new String[]{"FreeTextValidationMessage", "FreeTextValidationRegex", "RandomStimuliTagsField", "InputKeyErrorMessage"}[index];
+        return new String[]{"FreeTextValidationMessage", "FreeTextValidationRegex", "RandomStimuliTagsField", "InputKeyErrorMessage", "AllowedCharCodes"}[index];
     }
 
     @Override
@@ -154,6 +154,14 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
 
     final public void setInputKeyErrorMessage(String inputErrorMessage) {
         this.wizardScreenData.setScreenText(3, inputErrorMessage);
+    }
+
+    private String getAllowedCharCodes(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(4);
+    }
+
+    final public void setAllowedCharCodes(String allowedCharCodes) {
+        this.wizardScreenData.setScreenText(4, allowedCharCodes);
     }
 
     private int getStimulusMsDelay(WizardScreenData storedWizardScreenData) {
@@ -326,7 +334,9 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         if (isStimulusFreeText(storedWizardScreenData)) {
             final PresenterFeature stimulusFreeTextFeature = new PresenterFeature(FeatureType.stimulusFreeText, getFreeTextValidationMessage(storedWizardScreenData));
             stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.validationRegex, getFreeTextValidationRegex(storedWizardScreenData));
-//            stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.excludedCharCodes, storedWizardScreenData.getExcludedCharCodes());
+            if (getAllowedCharCodes(storedWizardScreenData) != null) {
+                stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.allowedCharCodes, getAllowedCharCodes(storedWizardScreenData));
+            }
             if (getInputKeyErrorMessage(storedWizardScreenData) != null) {
                 stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.inputErrorMessage, getInputKeyErrorMessage(storedWizardScreenData));
             }
