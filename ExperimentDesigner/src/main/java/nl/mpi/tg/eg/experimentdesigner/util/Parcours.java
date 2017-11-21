@@ -418,6 +418,21 @@ public class Parcours extends SentenceCompletion {
     }
 
     @Override
+    String getAllowedCharCodes() {
+        return null;
+    }
+
+    @Override
+    String getFreeTextValidationMessage() {
+        return "Vul één of enkele woorden in die volgens u het beste aan het eind van de zin passen.";
+    }
+
+    @Override
+    String getFeedbackScreenText() {
+        return null;
+    }
+
+    @Override
     String getAgreementText() {
         return agreementScreenText;
     }
