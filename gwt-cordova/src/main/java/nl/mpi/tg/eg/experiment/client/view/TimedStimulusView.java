@@ -190,7 +190,7 @@ public class TimedStimulusView extends ComplexView {
     }
 
     public StimulusFreeText addStimulusFreeText(final String postName, final String validationRegex, final String keyCodeChallenge, final String validationChallenge, final String allowedCharCodes, final SingleShotEventListner enterKeyListner, final int hotKey, final String styleName, final String textValue) {
-        final int inputLengthLimit = 28; // todo: make this a parameter from the configuraiton file
+        final int inputLengthLimit = 28; // todo: make this a parameter from the configuraiton file, remove allowedCharCodes and do a regex test on each key?
         final Label errorLabel = new Label(validationChallenge);
         errorLabel.setStylePrimaryName("metadataErrorMessage");
         errorLabel.setVisible(false);
@@ -217,15 +217,22 @@ public class TimedStimulusView extends ComplexView {
                     event.getNativeEvent().preventDefault();
                     enterKeyListner.eventFired();
                     errorLabel.setVisible(false);
+                } else if (textBox.getText().length() > inputLengthLimit) {
+                    event.getNativeEvent().preventDefault();
+                    // todo: update this to give a sensible message
+                    errorLabel.setText(keyCodeChallenge.replace("<keycode>", "" + inputLengthLimit) + validationChallenge);
+                    errorLabel.setVisible(true);
                 } else if (allowedCharCodes != null) {
-                    if (0 > allowedCharCodes.indexOf(charCode) || textBox.getText().length() > inputLengthLimit) {
+                    if (0 > allowedCharCodes.indexOf(charCode)) {
                         event.getNativeEvent().preventDefault();
                         final char invertedCaseCode = (Character.isLowerCase(charCode)) ? Character.toUpperCase(charCode) : Character.toLowerCase(charCode);
-                        if (0 > allowedCharCodes.indexOf(invertedCaseCode) || textBox.getText().length() <= inputLengthLimit) {
+                        if (0 > allowedCharCodes.indexOf(invertedCaseCode)) {
+                            // if the key is not allowed, then show a message
 //                            final String messageString = "The key '<keycode>' is not allowed. " + validationChallenge;
                             errorLabel.setText(keyCodeChallenge.replace("<keycode>", "" + charCode) + validationChallenge);
                             errorLabel.setVisible(true);
                         } else {
+                            // if the case is not allowed, then modify the case to what is
                             final int cursorPos = textBox.getCursorPos();
                             String pretext = textBox.getText().substring(0, cursorPos);
                             String posttext = textBox.getText().substring(textBox.getCursorPos());
