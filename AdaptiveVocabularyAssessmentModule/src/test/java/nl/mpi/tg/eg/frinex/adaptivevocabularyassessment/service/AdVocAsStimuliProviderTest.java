@@ -152,21 +152,45 @@ public class AdVocAsStimuliProviderTest {
     }
 
     @Test
-    public void testIsCorrectResponse() {
+    public void testIsCorrectResponse() throws Exception{
         System.out.println("isCorrectResponse");
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
         instance.initialiseStimuliState("");
+        
+        //stimulus 1
         instance.hasNextStimulus(0);
         instance.nextStimulus(0);
         Stimulus stimulus = instance.getCurrentStimulus();
         boolean result = instance.isCorrectResponse(stimulus, stimulus.getCorrectResponses());
         assertTrue(result);
         
-        AtomBookkeepingStimulus bStimulus = instance.getResponseRecord().get(instance.getCurrentStimulusIndex());
+        AtomBookkeepingStimulus bStimulus = instance.getResponseRecord().get(0);
         assertTrue(bStimulus.getCorrectness());
         
-        boolean expectedResult = stimulus.getCorrectResponses().equals("word");
-        assertEquals(expectedResult, bStimulus.getReaction());
+        boolean expectedReaction = stimulus.getCorrectResponses().equals("word");
+        assertEquals(expectedReaction, bStimulus.getReaction());
+        
+        // stimulus 2
+        instance.hasNextStimulus(0);
+        instance.nextStimulus(0);
+        Stimulus stimulus2 = instance.getCurrentStimulus();
+        // making worng response
+        String response = "nonword";
+        if (stimulus2.getCorrectResponses().equals("nonword")){
+            response = "word";
+        } else {
+            if (!stimulus2.getCorrectResponses().equals("word")){
+               throw new Exception("The reaction is neither nonword nor word, something went terribly worng.") ;
+            }
+        }
+        boolean result2 = instance.isCorrectResponse(stimulus2, response);
+        assertFalse(result2);
+        
+        AtomBookkeepingStimulus bStimulus2 = instance.getResponseRecord().get(1);
+        assertFalse(bStimulus2.getCorrectness());
+        
+        boolean expectedCorrectReaction2 = stimulus.getCorrectResponses().equals("word");
+        assertEquals(!expectedCorrectReaction2, bStimulus2.getReaction());
         
     }
 
