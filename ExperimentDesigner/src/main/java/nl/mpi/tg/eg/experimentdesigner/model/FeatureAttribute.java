@@ -41,6 +41,7 @@ public enum FeatureAttribute {
     replacement,
     src,
     link,
+    type,
     percentOfPage,
     maxHeight,
     maxWidth,
@@ -71,7 +72,7 @@ public enum FeatureAttribute {
     @Deprecated
     webm,
     wavFormat,
-    poster, 
+    poster,
     autoPlay,
     columnCount,
     kintypestring,
