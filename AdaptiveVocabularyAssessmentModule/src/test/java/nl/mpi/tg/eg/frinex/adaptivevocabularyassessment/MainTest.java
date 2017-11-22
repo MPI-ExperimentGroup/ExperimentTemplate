@@ -17,14 +17,17 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
+import java.util.ArrayList;
 import utils.Utils;
 import java.util.Random;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -57,6 +60,7 @@ public class MainTest {
     /**
      * Test of main method, of class Main.
      */
+    @Ignore
     @Test
     public void testMain() throws Exception {
         for (int i = 1; i<10; i++) {
@@ -84,6 +88,9 @@ public class MainTest {
             hasNextStimulus = provider.hasNextStimulus(0);
         }
 
+        ArrayList<AtomBookkeepingStimulus> records = provider.getResponseRecord();
+        
+        
         boolean enoughFineTuningStimulae = provider.getEnoughFinetuningStimuli();
         boolean cycle2 = provider.getCycel2();
         boolean champion = provider.getChampion();

@@ -76,8 +76,6 @@ public class Utils {
         output.close();
     }
 
-   
-
     public static void writeCsvFileFineTuningHistory(AdVocAsStimuliProvider provider, String outputDir, String fileName) throws IOException {
         System.out.println("writeCsvFile: " + outputDir + fileName);
         final File csvFile = new File(outputDir, fileName);
@@ -109,15 +107,27 @@ public class Utils {
         output.write(htmlStringBuilder.toString());
         output.close();
     }
-    
+
     public static void writeCsvMapAsOneCsv(AdVocAsStimuliProvider provider, String outputDir, String fileName) throws IOException {
         System.out.println("write full history htm file: " + outputDir + fileName);
         final File txtFile = new File(outputDir, fileName);
-        Map<String,String> tables = provider.getStimuliReport();
+
         StringBuilder txtStringBuilder = new StringBuilder();
-        for (String rowName : tables.keySet()){
-            txtStringBuilder.append(rowName).append(";").append(tables.get(rowName)).append("\n");
+        Map<String, String> table = provider.getStimuliReport("user_summary");
+        for (String rowName : table.keySet()) {
+            txtStringBuilder.append(rowName).append(";").append(table.get(rowName)).append("\n");
         }
+        txtStringBuilder.append("\n\n");
+        table = provider.getStimuliReport("fast_track");
+        for (String rowName : table.keySet()) {
+            txtStringBuilder.append(rowName).append(";").append(table.get(rowName)).append("\n");
+        }
+        txtStringBuilder.append("\n\n");
+        table = provider.getStimuliReport("fine_tuning");
+        for (String rowName : table.keySet()) {
+            txtStringBuilder.append(rowName).append(";").append(table.get(rowName)).append("\n");
+        }
+
         BufferedWriter output = new BufferedWriter(new FileWriter(txtFile));
         output.write(txtStringBuilder.toString());
         output.close();

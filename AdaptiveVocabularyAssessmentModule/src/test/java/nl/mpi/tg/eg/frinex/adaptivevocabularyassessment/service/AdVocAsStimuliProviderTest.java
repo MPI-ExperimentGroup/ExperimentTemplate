@@ -214,10 +214,31 @@ public class AdVocAsStimuliProviderTest {
     public void getStimuliReport() throws Exception{
         System.out.println("getStimuliReport");
         AdVocAsStimuliProvider instance = this.testHasNextStimulus();
-        Map<String,String> result= instance.getStimuliReport();
+        
+        Map<String,String> result= instance.getStimuliReport("user_summary");
         Set<String>  keys = result.keySet();
-        // 3 is the amount of headers (tables)
-        assertTrue(keys.size()>3);
+        // header + data
+        assertTrue(keys.size() == 2);
+        for (String key : keys) {
+            String row = result.get(key);
+            int index = row.indexOf(";");
+            assertTrue(index>-1);
+        }
+        
+        result= instance.getStimuliReport("fast_track");
+        keys = result.keySet();
+        // header + data
+        assertTrue(keys.size()>2);
+        for (String key : keys) {
+            String row = result.get(key);
+            int index = row.indexOf(";");
+            assertTrue(index>-1);
+        }
+        
+        result= instance.getStimuliReport("fine_tuning");
+        keys = result.keySet();
+        // header + data
+        assertTrue(keys.size()>=1);
         for (String key : keys) {
             String row = result.get(key);
             int index = row.indexOf(";");
@@ -252,14 +273,21 @@ public class AdVocAsStimuliProviderTest {
          this.testHasNextStimulus();
      }
     
+     // also tests nextStimulus
     
     private AdVocAsStimuliProvider testHasNextStimulus() throws Exception{
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
         instance.initialiseStimuliState("");
         boolean result = instance.hasNextStimulus(0);// does not depend on increment
+        int invariant = instance.getResponseRecord().size() + instance.getNonwords().size()+this.getListOfListLength(instance.getWords());
+        
         // but on internal state of the process
         assertTrue(result);
+         
         instance.nextStimulus(0);
+        assertEquals(1,instance.getResponseRecord().size());
+        int invariant1 = instance.getResponseRecord().size() + instance.getNonwords().size()+this.getListOfListLength(instance.getWords());
+        assertEquals(invariant, invariant1);
         
         //experiment 0, correct answer
         int ind1 = instance.getCurrentStimulusIndex();
@@ -274,6 +302,9 @@ public class AdVocAsStimuliProviderTest {
         assertEquals(expectedBand, instance.getCurrentBandNumber());
         
         instance.nextStimulus(0);
+        assertEquals(2,instance.getResponseRecord().size());
+        int invariant2 = instance.getResponseRecord().size() + instance.getNonwords().size()+this.getListOfListLength(instance.getWords());
+        assertEquals(invariant, invariant2);
         
          //experiment 1, wrong answer, second chance must be given
         int ind2 = instance.getCurrentStimulusIndex();
@@ -300,7 +331,9 @@ public class AdVocAsStimuliProviderTest {
         
         
         instance.nextStimulus(0); // give the second chance
-        
+        assertEquals(3,instance.getResponseRecord().size());
+        int invariant3 = instance.getResponseRecord().size() + instance.getNonwords().size()+this.getListOfListLength(instance.getWords());
+        assertEquals(invariant, invariant3);
         
         int ind3 = instance.getCurrentStimulusIndex();
         assertEquals(2, ind3);
@@ -393,5 +426,12 @@ public class AdVocAsStimuliProviderTest {
         assertEquals(4, bandNumber2); 
     }
    
+    private int getListOfListLength(ArrayList<ArrayList<AtomBookkeepingStimulus>> ll) {
+        int retVal = 0;
+        for (ArrayList<AtomBookkeepingStimulus> l : ll) {
+            retVal += l.size();
+        }
+        return retVal;
+    }
 
 }

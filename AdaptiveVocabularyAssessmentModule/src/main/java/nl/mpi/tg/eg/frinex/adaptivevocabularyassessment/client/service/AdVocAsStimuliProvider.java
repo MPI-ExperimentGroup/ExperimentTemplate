@@ -229,25 +229,36 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
     }
 
     @Override
-    public Map<String, String> getStimuliReport() {
+    public Map<String, String> getStimuliReport(String reportType) {
         final HashMap<String, String> returnMap = new HashMap<>();
 
-        String summary = this.getStringSummary("", "\n", "", ";");
-        HashMap<String, String> summaryMap = this.makeMapFromCsvString(summary, "Summary");
-        for (String key : summaryMap.keySet()) {
-            returnMap.put(key, summaryMap.get(key));
-        }
+        switch (reportType) {
+            case "user_summary": {
+                String summary = this.getStringSummary("", "\n", "", ";");
+                HashMap<String, String> summaryMap = this.makeMapFromCsvString(summary);
+                for (String key : summaryMap.keySet()) {
+                    returnMap.put(key, summaryMap.get(key));
+                }
+                break;
+            }
+            case "fast_track": {
+                String inhoudFastTrack = this.getStringFastTrack("", "\n", "", ";");
+                HashMap<String, String> fastTrackMap = this.makeMapFromCsvString(inhoudFastTrack);
+                for (String key : fastTrackMap.keySet()) {
+                    returnMap.put(key, fastTrackMap.get(key));
+                }
+                break;
+            }
+            case "fine_tuning": {
+                String inhoudFineTuning = this.getStringFineTuningHistory("", "\n", "", ";");
+                HashMap<String, String> fineTuningBriefMap = this.makeMapFromCsvString(inhoudFineTuning);
+                for (String key : fineTuningBriefMap.keySet()) {
+                    returnMap.put(key, fineTuningBriefMap.get(key));
+                }
+                break;
+            }
+            default: break;
 
-        String inhoudFastTrack = this.getStringFastTrack("", "\n", "", ";");
-        HashMap<String, String> fastTrackMap = this.makeMapFromCsvString(inhoudFastTrack, "Fast_Track");
-        for (String key : fastTrackMap.keySet()) {
-            returnMap.put(key, fastTrackMap.get(key));
-        }
-
-        String inhoudFineTuning = this.getStringFineTuningHistory("", "\n", "", ";");
-        HashMap<String, String> fineTuningBriefMap = this.makeMapFromCsvString(inhoudFineTuning, "Fine_Tuning");
-        for (String key : fineTuningBriefMap.keySet()) {
-            returnMap.put(key, fineTuningBriefMap.get(key));
         }
 
         //returnMap.put("example_1", "1;2;3;4;5;6;7;8;9");
@@ -591,10 +602,10 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
             }
             spellingsCheck.add(stimulus.getSpelling());
         }
-        
+
         // check if there are repititions
         HashSet<String> set = new HashSet(spellingsCheck);
-        if (set.size() < spellingsCheck.size()){
+        if (set.size() < spellingsCheck.size()) {
             stringBuilder.append(startRow).append(startColumn)
                     .append("Repetitions of stimuli detected")
                     .append(endColumn).append(endRow);
@@ -624,12 +635,11 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
         return stringBuilder.toString();
     }
 
-    private HashMap<String, String> makeMapFromCsvString(String csvTable, String tableName) {
+    private HashMap<String, String> makeMapFromCsvString(String csvTable) {
         String[] rows = csvTable.split("\n");
         HashMap<String, String> retVal = new HashMap();
-        retVal.put("Stimuli_report_" + tableName + "_" + "head", rows[0]);
-        for (int i = 1; i < rows.length; i++) {
-            retVal.put("Stimuli_report_" + tableName + "_row_" + i, rows[i]);
+        for (int i = 0; i < rows.length; i++) {
+            retVal.put("row_" + i, rows[i]);
         }
         return retVal;
     }
