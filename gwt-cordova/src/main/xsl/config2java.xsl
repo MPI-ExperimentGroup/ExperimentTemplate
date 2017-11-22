@@ -432,7 +432,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
     <xsl:template match="showStimuliReport|sendStimuliReport|htmlTokenText|submitGroupEvent|helpDialogue|eraseUsersDataButton|saveMetadataButton|localStorageData|stimulusMetadataField|allMetadataFields|metadataField|metadataFieldConnection|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|disableStimulusButtons|showStimulus|showStimulusProgress|hideStimulusButtons|showStimulusButtons|generateCompletionCode|sendAllData|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|removeMatchingStimulus|stimulusLabel">
         <xsl:text>    </xsl:text>    
         <xsl:value-of select ="local-name()"/>
-        <xsl:text>(</xsl:text>            
+        <xsl:text>(</xsl:text>   
+        <xsl:value-of select="if(@type) then concat('&quot;', @type, '&quot;') else ''" />   
         <xsl:value-of select="if(@featureText) then concat('messages.', generate-id(.), '()') else ''" />    
         <xsl:value-of select="if(@fieldName) then concat('metadataFieldProvider.', @fieldName, 'MetadataField') else ''" />
         <xsl:value-of select="if(@linkedFieldName) then concat(', metadataFieldProvider.', @linkedFieldName, 'MetadataField') else ''" />
