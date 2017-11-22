@@ -24,7 +24,7 @@
             <hasMoreStimulus>
                 <clearPage/>
                 <centrePage/>
-<!--                <showStimulusProgress/>-->
+                <!--                <showStimulusProgress/>-->
                 <stimulusLabel/>
                 <addPadding/>
                 <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
@@ -32,10 +32,12 @@
                 </stimulusRatingButton>
             </hasMoreStimulus>
             <endOfStimulus>
-                <sendStimuliReport eventTag="results" />
+                <sendStimuliReport type="user_summary" />
+                <sendStimuliReport type="fasts_track" />
+                <sendStimuliReport type="fine_tuning" />
                 <showStimuliReport/>
-                 <targetButton featureText="Next" target="EditUser"/>
-<!--                <autoNextPresenter/>-->
+                <targetButton featureText="Next" target="EditUser"/>
+                <!--                <autoNextPresenter/>-->
             </endOfStimulus>
             <randomGrouping/>
             <stimuli/>
