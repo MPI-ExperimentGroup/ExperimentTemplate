@@ -195,7 +195,6 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
         } else {
             bStimulus = this.tupleFT.remove(0);
         }
-        bStimulus.setIsUsed(true);
         this.responseRecord.add(bStimulus);
 
     }

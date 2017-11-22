@@ -146,7 +146,6 @@ public class AdVocAsStimuliProviderTest {
         assertTrue(label != null);
         System.out.println("Label: " + label);
         AtomBookkeepingStimulus bStimulus = instance.getResponseRecord().get(instance.getCurrentStimulusIndex());
-        assertTrue(bStimulus.getIsUsed());
         int expectedBand = stimulus.getCorrectResponses().equals("word") ? Constants.START_BAND : -1;
         assertEquals(expectedBand, bStimulus.getBandNumber());
     }

@@ -27,14 +27,12 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtom
 public class AtomBookkeepingStimulus {
 
     private final AdVocAsAtomStimulus stimulus;
-    private boolean isUsed;
 
     private Boolean userReaction;
     private Boolean correctness;
 
     public AtomBookkeepingStimulus(AdVocAsAtomStimulus pureStimulus) {
         this.stimulus = pureStimulus;
-        this.isUsed = false;
         this.userReaction = null;
         this.correctness = null;
     }
@@ -42,7 +40,6 @@ public class AtomBookkeepingStimulus {
    
     public AtomBookkeepingStimulus(AtomBookkeepingStimulus source) {
         this.stimulus = source.stimulus;
-        this.isUsed = source.isUsed;
         this.userReaction = source.userReaction;
         this.correctness = source.correctness;
     }
@@ -55,18 +52,13 @@ public class AtomBookkeepingStimulus {
         return this.stimulus.getLabel();
     }
 
-    public boolean getIsUsed() {
-        return this.isUsed;
-    }
+ 
 
     public int getBandNumber() {
         return this.stimulus.getBandNumber();
     }
 
-    public void setIsUsed(boolean value) {
-        this.isUsed = value;
-    }
-
+   
     public Boolean getReaction() {
         return this.userReaction;
     }

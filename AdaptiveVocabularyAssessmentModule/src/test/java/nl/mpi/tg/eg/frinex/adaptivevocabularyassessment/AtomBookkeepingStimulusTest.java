@@ -66,18 +66,7 @@ public class AtomBookkeepingStimulusTest {
         assertEquals(expResult, result);
     }
 
-    /**
-     * Test of getIsUsed method, of class AtomBookkeepingStimulus.
-     */
-    @Test
-    public void testGetIsUsed() {
-        System.out.println("getIsUsed");
-        AdVocAsAtomStimulus pureStimulus = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling", "word", 37);
-        AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus(pureStimulus);
-        boolean result = instance.getIsUsed();
-        assertEquals(false, result);
-    }
-
+  
     /**
      * Test of getBandNumber method, of class AtomBookkeepingStimulus.
      */
@@ -90,20 +79,7 @@ public class AtomBookkeepingStimulusTest {
         assertEquals(37, result);
     }
 
-    /**
-     * Test of setIsUsed method, of class AtomBookkeepingStimulus.
-     */
-    @Test
-    public void testSetIsUsed() {
-        System.out.println("setIsUsed");
-        AdVocAsAtomStimulus pureStimulus = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling", "word", 37);
-        
-        AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus(pureStimulus);
-        instance.setIsUsed(true);
-        boolean result = instance.getIsUsed();
-        assertEquals(true, result);
-    }
-
+  
     /**
      * Test of getReaction method, of class AtomBookkeepingStimulus.
      */
