@@ -174,21 +174,21 @@ public class AdVocAsStimuliProviderTest {
         instance.nextStimulus(0);
         Stimulus stimulus2 = instance.getCurrentStimulus();
         // making worng response
-        String response = "nonword";
+        String response2 = "nonword";
         if (stimulus2.getCorrectResponses().equals("nonword")){
-            response = "word";
+            response2 = "word";
         } else {
             if (!stimulus2.getCorrectResponses().equals("word")){
                throw new Exception("The reaction is neither nonword nor word, something went terribly worng.") ;
             }
         }
-        boolean result2 = instance.isCorrectResponse(stimulus2, response);
+        boolean result2 = instance.isCorrectResponse(stimulus2, response2);
         assertFalse(result2);
         
         AtomBookkeepingStimulus bStimulus2 = instance.getResponseRecord().get(1);
         assertFalse(bStimulus2.getCorrectness());
         
-        boolean expectedCorrectReaction2 = stimulus.getCorrectResponses().equals("word");
+        boolean expectedCorrectReaction2 = stimulus2.getCorrectResponses().equals("word");
         assertEquals(!expectedCorrectReaction2, bStimulus2.getReaction());
         
     }
