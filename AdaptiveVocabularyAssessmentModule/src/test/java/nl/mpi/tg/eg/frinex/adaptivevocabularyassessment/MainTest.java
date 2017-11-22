@@ -60,7 +60,6 @@ public class MainTest {
     /**
      * Test of main method, of class Main.
      */
-    @Ignore
     @Test
     public void testMain() throws Exception {
         for (int i = 1; i<10; i++) {
@@ -68,6 +67,7 @@ public class MainTest {
             //System.out.println(prob);
             this.testRound(prob);
         }
+        this.longTest();
     }
     
     private void testRound(double prob) throws Exception{
@@ -88,8 +88,6 @@ public class MainTest {
             hasNextStimulus = provider.hasNextStimulus(0);
         }
 
-        ArrayList<AtomBookkeepingStimulus> records = provider.getResponseRecord();
-        
         
         boolean enoughFineTuningStimulae = provider.getEnoughFinetuningStimuli();
         boolean cycle2 = provider.getCycel2();
@@ -113,6 +111,64 @@ public class MainTest {
         Utils.writeCsvMapAsOneCsv(provider, OUTPUT_DIRECTORY, "Full_user_history_" + message + "_" + millis + ".csv");
         System.out.println("Done with probability  "+prob);
     }
+    
+    @Test
+    public void longTest() throws Exception{
+        
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
+        provider.initialiseStimuliState("");
+        
+        // make to wrong answers to start fine tuning immediately
+        provider.hasNextStimulus(0);
+        provider.nextStimulus(0);
+        AdVocAsAtomStimulus stimulus = provider.getCurrentStimulus();
+        String answer = this.makeResponseWrong(stimulus);
+        boolean isCorrect = provider.isCorrectResponse(stimulus, answer);
+        
+        provider.hasNextStimulus(0);
+        provider.nextStimulus(0);
+        stimulus = provider.getCurrentStimulus();
+        answer = this.makeResponseWrong(stimulus);
+        isCorrect = provider.isCorrectResponse(stimulus, answer);
+        
+        boolean hasNextStimulus = provider.hasNextStimulus(0);
+        // fine tuning correct till the band is 53 or more then back till the band is 20 or less
+        int currentExperimentCount = 0;
+        boolean runHigher=true;
+        while (hasNextStimulus) {
+            if (runHigher && provider.getCurrentBandNumber() == 54) {
+               runHigher = false; // start climbing backwards
+            }
+            if (!runHigher && provider.getCurrentBandNumber() == 20) {
+               runHigher = true; // start climbing forward
+            }
+            provider.nextStimulus(0);
+            currentExperimentCount = provider.getCurrentStimulusIndex();
+            //System.out.println(currentExperimentCount);
+            stimulus = provider.getCurrentStimulus();
+            if (runHigher) {
+                answer = stimulus.getCorrectResponses();
+            } else {
+                answer = this.makeResponseWrong(stimulus);
+             }
+            isCorrect = provider.isCorrectResponse(stimulus, answer);
+            hasNextStimulus = provider.hasNextStimulus(0);
+        }
+        boolean enoughFineTuningStimulae = provider.getEnoughFinetuningStimuli();
+        boolean cycle2 = provider.getCycel2();
+        boolean champion = provider.getChampion();
+        boolean looser = provider.getLooser();
+        
+       
+        String message = "longtest"+"__cycel2_" + cycle2
+                + "__champion_" + champion + "__looser_" + looser + "__enough_" + enoughFineTuningStimulae;
+
+        String fileNameHTML = "Full_user_history_" + message + ".html";
+        Utils.writeHtmlFullUserResults(provider, OUTPUT_DIRECTORY, fileNameHTML);
+        
+        Utils.writeCsvMapAsOneCsv(provider, OUTPUT_DIRECTORY, "Full_user_history_" + message +  ".csv");
+        System.out.println("Done with the long test");
+    }
 
     private String probabilisticAnswerer(AdVocAsAtomStimulus stimulus, double correctnessUpperBound, Random rnd) throws Exception {
         String retVal = stimulus.getCorrectResponses();
@@ -134,6 +190,14 @@ public class MainTest {
         //System.out.println(retVal);
         //System.out.println("*****");
         return retVal;
+    }
+    
+    private String makeResponseWrong(AdVocAsAtomStimulus stimulus){
+       String answer = "nonword";
+        if (stimulus.getCorrectResponses().equals("nonword")) {
+            answer = "word";
+        };
+        return answer;
     }
 
  

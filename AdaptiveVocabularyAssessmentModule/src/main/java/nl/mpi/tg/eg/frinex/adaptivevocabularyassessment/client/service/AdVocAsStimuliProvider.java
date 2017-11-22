@@ -63,6 +63,7 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
 
     // fine tuning stopping
     private boolean enoughFineTuningStimulae = true;
+    private final int[] bandVisitCounter = new int[Constants.NUMBER_OF_BANDS];
     private final int[] cycle2helper = new int[Constants.FINE_TUNING_UPPER_BOUND_FOR_2CYCLES * 2 + 1];
     private boolean cycle2 = false;
     private boolean champion = false;
@@ -385,6 +386,10 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
                 // continue
                 return true;
             } else {
+                // register finishing band 
+                this.bandVisitCounter[this.currentBandIndex]++; 
+                
+                
                 // tranistion to the higher band ?
                 if (this.currentBandIndex == Constants.NUMBER_OF_BANDS - 1) { // the last band is hit
                     if (this.justVisitedLastBand) {
@@ -405,6 +410,9 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
                 }
             }
         } else {
+             // register finishing band 
+            this.bandVisitCounter[this.currentBandIndex]++; 
+                
             // put back unused element of the tuple
             // recycling
             boolean ended = this.tupleFT.isEmpty();
@@ -458,7 +466,7 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
             if (!this.enoughFineTuningStimulae) {
                 System.out.println("Not enough fine-tuning compound stimula left for the band " + this.currentBandIndex);
                 retVal = false;
-                this.score = this.mostOftenVisitedBandBumber();
+                this.score = this.mostOftenVisitedBandNumber(this.bandVisitCounter, this.currentBandIndex);
             }
 
         }
@@ -484,20 +492,9 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
         fifo[fifo.length - 1] = newelement;
     }
 
-    public int mostOftenVisitedBandBumber() {
-        int[] bandVisitCounter = new int[Constants.NUMBER_OF_BANDS];
-        for (int i = this.timeTickEndFastTrack + 1; i < this.responseRecord.size(); i++) {
-            AtomBookkeepingStimulus bStimulus = this.responseRecord.get(i);
-            int bandIndex = bStimulus.getBandNumber() - 1;
-            bandVisitCounter[bandIndex]++;
-        }
+    
 
-        int retVal = this.mostOftenVisitedBandBumberHelp(bandVisitCounter, this.currentBandIndex);
-        return retVal;
-
-    }
-
-    public int mostOftenVisitedBandBumberHelp(int[] bandVisitCounter, int controlIndex) {
+    public int mostOftenVisitedBandNumber(int[] bandVisitCounter, int controlIndex) {
 
         int max = bandVisitCounter[0];
         ArrayList<Integer> indices = new ArrayList<>();

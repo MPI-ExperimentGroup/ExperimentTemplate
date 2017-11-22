@@ -418,11 +418,11 @@ public class AdVocAsStimuliProviderTest {
         // ind = 1, indSym = 2
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
         int currentIndex1=2; // at 2
-        int bandNumber1 = instance.mostOftenVisitedBandBumberHelp(visitCounter, currentIndex1);
+        int bandNumber1 = instance.mostOftenVisitedBandNumber(visitCounter, currentIndex1);
         assertEquals(4, bandNumber1);
         
         int currentIndex2=3; // at 3
-        int bandNumber2 = instance.mostOftenVisitedBandBumberHelp(visitCounter, currentIndex2);
+        int bandNumber2 = instance.mostOftenVisitedBandNumber(visitCounter, currentIndex2);
         assertEquals(4, bandNumber2); 
     }
    
