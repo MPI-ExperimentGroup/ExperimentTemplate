@@ -33,7 +33,7 @@
             </hasMoreStimulus>
             <endOfStimulus>
                 <sendStimuliReport type="user_summary" />
-                <sendStimuliReport type="fasts_track" />
+                <sendStimuliReport type="fast_track" />
                 <sendStimuliReport type="fine_tuning" />
                 <showStimuliReport/>
                 <targetButton featureText="Next" target="EditUser"/>
