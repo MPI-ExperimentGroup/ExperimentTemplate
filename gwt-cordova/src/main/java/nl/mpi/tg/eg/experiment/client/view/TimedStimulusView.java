@@ -217,6 +217,9 @@ public class TimedStimulusView extends ComplexView {
                     event.getNativeEvent().preventDefault();
                     enterKeyListner.eventFired();
                     errorLabel.setVisible(false);
+                } else if (charCode == 0) {
+                    // firefox needs these events to be handled by allowing the event to pass
+                    return;
                 } else if (textBox.getText().length() > inputLengthLimit) {
                     event.getNativeEvent().preventDefault();
                     // todo: update this to give a sensible message
