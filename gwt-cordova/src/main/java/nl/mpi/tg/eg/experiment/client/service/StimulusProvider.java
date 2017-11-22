@@ -437,7 +437,7 @@ public class StimulusProvider extends AbstractStimuliProvider {
     }
 
     @Override
-    public Map<String, String> getStimuliReport() {
+    public Map<String, String> getStimuliReport(String reportType) {
         throw new UnsupportedOperationException("getStimuliReport is not supported yet.");
     }
 
