@@ -58,7 +58,7 @@ public interface StimuliProvider {
 
     String getHtmlStimuliReport();
 
-    Map<String, String> getStimuliReport();
+    Map<String, String> getStimuliReport(String reportType);
 
     List<Stimulus> getDistractorList(int maxStimuli);
 
