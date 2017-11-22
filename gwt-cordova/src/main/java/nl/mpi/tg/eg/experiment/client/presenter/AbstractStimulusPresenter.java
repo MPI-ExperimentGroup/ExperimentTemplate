@@ -350,10 +350,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         showStimulus(null, 0);
     }
 
-    protected void sendStimuliReport() {
-        final Map<String, String> stimuliReport = stimulusProvider.getStimuliReport();
+    protected void sendStimuliReport(String reportType) {
+        final Map<String, String> stimuliReport = stimulusProvider.getStimuliReport(reportType);
         for (String keyString : stimuliReport.keySet()) {
-            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), "stimuliReport", keyString, stimuliReport.get(keyString), duration.elapsedMillis());
+            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), reportType, keyString, stimuliReport.get(keyString), duration.elapsedMillis());
         }
     }
 
