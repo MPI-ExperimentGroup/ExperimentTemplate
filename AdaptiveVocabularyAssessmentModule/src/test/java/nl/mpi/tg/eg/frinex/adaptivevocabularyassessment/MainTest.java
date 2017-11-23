@@ -63,7 +63,7 @@ public class MainTest {
     @Ignore
     @Test
     public void testMain() throws Exception {
-        for (int i = 1; i<10; i++) {
+        for (int i = 1; i<11; i++) {
             double prob = 0.5+i*0.05;
             //System.out.println(prob);
             this.testRound(prob);
@@ -113,8 +113,7 @@ public class MainTest {
         System.out.println("Done with probability  "+prob);
     }
     
-    @Ignore
-    @Test
+    
     public void longTest() throws Exception{
         
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();

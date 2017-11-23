@@ -18,6 +18,7 @@
 // /Users/olhshk/Documents/ExperimentTemplate/FieldKitRecorder/src/android/nl/mpi/tg/eg/frinex/FieldKitRecorder.java
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -220,7 +221,7 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
     public String getHtmlStimuliReport() {
         String summary = this.getStringSummary("<tr>", "</tr>", "<td>", "</td>");
         String inhoudFastTrack = this.getStringFastTrack("<tr>", "</tr>", "<td>", "</td>");
-        String inhoudFineTuning = this.getStringFineTuningHistory("<tr>", "</tr>", "<td>", "</td>");
+        String inhoudFineTuning = this.getStringFineTuningHistory("<tr>", "</tr>", "<td>", "</td>", "html");
         StringBuilder htmlStringBuilder = new StringBuilder();
         htmlStringBuilder.append("<p>User summary</p><table border=1>").append(summary).append("</table><br><br>");
         htmlStringBuilder.append("<p>Fast Track History</p><table border=1>").append(inhoudFastTrack).append("</table><br><b>");
@@ -251,14 +252,15 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
                 break;
             }
             case "fine_tuning": {
-                String inhoudFineTuning = this.getStringFineTuningHistory("", "\n", "", ";");
+                String inhoudFineTuning = this.getStringFineTuningHistory("", "\n", "", ";", "csv");
                 HashMap<String, String> fineTuningBriefMap = this.makeMapFromCsvString(inhoudFineTuning);
                 for (String key : fineTuningBriefMap.keySet()) {
                     returnMap.put(key, fineTuningBriefMap.get(key));
                 }
                 break;
             }
-            default: break;
+            default:
+                break;
 
         }
 
@@ -387,9 +389,8 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
                 return true;
             } else {
                 // register finishing band 
-                this.bandVisitCounter[this.currentBandIndex]++; 
-                
-                
+                this.bandVisitCounter[this.currentBandIndex]++;
+
                 // tranistion to the higher band ?
                 if (this.currentBandIndex == Constants.NUMBER_OF_BANDS - 1) { // the last band is hit
                     if (this.justVisitedLastBand) {
@@ -410,9 +411,9 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
                 }
             }
         } else {
-             // register finishing band 
-            this.bandVisitCounter[this.currentBandIndex]++; 
-                
+            // register finishing band 
+            this.bandVisitCounter[this.currentBandIndex]++;
+
             // put back unused element of the tuple
             // recycling
             boolean ended = this.tupleFT.isEmpty();
@@ -492,8 +493,6 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
         fifo[fifo.length - 1] = newelement;
     }
 
-    
-
     public int mostOftenVisitedBandNumber(int[] bandVisitCounter, int controlIndex) {
 
         int max = bandVisitCounter[0];
@@ -570,7 +569,7 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
 
     }
 
-    public String getStringFineTuningHistory(String startRow, String endRow, String startColumn, String endColumn) {
+    public String getStringFineTuningHistory(String startRow, String endRow, String startColumn, String endColumn, String format) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(startRow);
         stringBuilder.append(startColumn).append("BandNumber").append(endColumn);
@@ -590,12 +589,13 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
             row.append(startColumn).append(stimulus.getCorrectness()).append(endColumn);
             row.append(startColumn).append(i).append(endColumn);
             stringBuilder.append(startRow).append(row).append(endRow);
-            modCounter++;
-            if (!stimulus.getCorrectness() || modCounter == 4) {
-                stringBuilder.append(startRow).append(endRow); // skeep between tuples
-                stringBuilder.append(startRow).append(endRow);
-                stringBuilder.append(startRow).append(endRow);
-                modCounter = 0;
+            if (!format.equals("csv")) {
+                modCounter++;
+                if (!stimulus.getCorrectness() || modCounter == 4) {
+                    stringBuilder.append(startRow).append(endRow); // skeep between tuples
+                    stringBuilder.append(startRow).append(endRow);
+                    modCounter = 0;
+                }
             }
             spellingsCheck.add(stimulus.getSpelling());
         }
@@ -636,7 +636,11 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
         String[] rows = csvTable.split("\n");
         HashMap<String, String> retVal = new HashMap();
         for (int i = 0; i < rows.length; i++) {
-            retVal.put("row_" + i, rows[i]);
+            String paddedInt = "" + i;
+            while (paddedInt.length() < 6) {
+                paddedInt = "0" + paddedInt;
+            }
+            retVal.put("row" + paddedInt, rows[i]);
         }
         return retVal;
     }

@@ -79,7 +79,7 @@ public class Utils {
     public static void writeCsvFileFineTuningHistory(AdVocAsStimuliProvider provider, String outputDir, String fileName) throws IOException {
         System.out.println("writeCsvFile: " + outputDir + fileName);
         final File csvFile = new File(outputDir, fileName);
-        String inhoud = provider.getStringFineTuningHistory("", "\n", "", ";");
+        String inhoud = provider.getStringFineTuningHistory("", "\n", "", ";", "csv");
         BufferedWriter output = new BufferedWriter(new FileWriter(csvFile));
         output.write(inhoud);
         output.close();
@@ -88,7 +88,7 @@ public class Utils {
     public static void writeHtmlFileFineTuningHistory(AdVocAsStimuliProvider provider, String outputDir, String fileName) throws IOException {
         System.out.println("writeHtmlFile: " + outputDir + fileName);
         final File htmlFile = new File(outputDir, fileName);
-        String inhoud = provider.getStringFineTuningHistory("<tr>", "<tr>", "<td>", "<td>");
+        String inhoud = provider.getStringFineTuningHistory("<tr>", "<tr>", "<td>", "<td>",  "html");
         BufferedWriter output = new BufferedWriter(new FileWriter(htmlFile));
         String htmlString = "<!DOCTYPE html><html><body><table border=1>" + inhoud + "</table></body></html>";
         output.write(htmlString);
