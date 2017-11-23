@@ -152,9 +152,15 @@ public class LocalStorage {
     public void deleteStoredScreenData(UserId userId, String endpoint, String segmentToDelete) {
         loadStorage();
         final String sentStoredData = getCleanStoredData(SCREEN_DATA + endpoint + "." + userId.toString());
-        // replacing this segment will sometimes fail due to non matching strings, but the result of failure is only a second transmission of the data which is a preferred option over complexity
-        final String remainingStoredData = sentStoredData.replace(segmentToDelete, "").replaceFirst("^,", "");
-        dataStore.setItem(SCREEN_DATA + endpoint + "." + userId.toString(), remainingStoredData);
+        String remainingStoredData = sentStoredData.replaceFirst("^,", "") + ",";
+// replacing this segment will sometimes fail due to non matching strings, but the result of failure is only a second transmission of the data which is a preferred option over complexity
+        for (String segment : segmentToDelete.split("\\},\\{")) {
+            segment = (segment.startsWith("{")) ? segment : "{" + segment;
+            segment = segment.replaceFirst(",$", "");
+            segment = (segment.endsWith("}")) ? segment + "," : segment + "},";
+            remainingStoredData = remainingStoredData.replace(segment, "");
+        }
+        dataStore.setItem(SCREEN_DATA + endpoint + "." + userId.toString(), remainingStoredData.replaceFirst("^,", "").replaceFirst(",$", ""));
 //        stowSentData(userId, segmentToDelete);
     }
 
