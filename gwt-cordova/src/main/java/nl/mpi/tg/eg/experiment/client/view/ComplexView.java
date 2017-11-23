@@ -309,8 +309,11 @@ public class ComplexView extends SimpleView {
         final HorizontalPanel buttonsPanel = new HorizontalPanel();
         for (PresenterEventListner listener : presenterListeners) {
             Button nextButton = getOptionButton(listener);
-            nextButton.addStyleName("footerButton");
+            if (footerButtons) {
+                nextButton.addStyleName("footerButton");
+            }
             buttonsPanel.add(nextButton);
+            buttonsPanel.setCellWidth(nextButton, (100 / presenterListeners.size()) + "%");
         }
         verticalPanel.setWidth("100%");
         labelsPanel.setWidth("100%");
