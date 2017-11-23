@@ -25,6 +25,7 @@ import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.i18n.shared.DateTimeFormat;
+import com.google.gwt.user.client.Timer;
 import java.util.Date;
 import java.util.Random;
 import java.util.logging.Level;
@@ -205,38 +206,40 @@ public class DataSubmissionService extends AbstractSubmissionService {
             }
         }
     }
-//    private Timer dataSubmitTimer = null;
+    private final Timer[] dataSubmitTimer = new Timer[ServiceEndpoint.values().length];
 
     private void submitData(final ServiceEndpoint endpoint, final UserId userId, final String jsonData) {
         localStorage.addStoredScreenData(userId, endpoint.name(), jsonData);
-//        if (dataSubmitTimer == null) {
-//            dataSubmitTimer = new Timer() {
-//                @Override
-//                public void run() {
-//                    dataSubmitTimer = null;
-        final String storedScreenData = localStorage.getStoredScreenData(userId, endpoint.name());
-        submitData(endpoint, userId, "[" + storedScreenData + "]", new DataSubmissionListener() {
+        if (dataSubmitTimer[endpoint.ordinal()] == null) {
+            dataSubmitTimer[endpoint.ordinal()] = new Timer() {
+                @Override
+                public void run() {
+                    final String storedScreenData = localStorage.getStoredScreenData(userId, endpoint.name());
+                    submitData(endpoint, userId, "[" + storedScreenData + "]", new DataSubmissionListener() {
 
-            @Override
-            public void scoreSubmissionFailed(DataSubmissionException exception) {
-            }
+                        @Override
+                        public void scoreSubmissionFailed(DataSubmissionException exception) {
+                            dataSubmitTimer[endpoint.ordinal()] = null;
+                        }
 
-            @Override
-            public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
-                localStorage.deleteStoredScreenData(userId, endpoint.name(), storedScreenData);
-            }
-        });
-//                }
-//            };
-//        }
-//        // clear previous schedule and set the timer to run 5 seconds.
-//        dataSubmitTimer.schedule(5000);
+                        @Override
+                        public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
+                            localStorage.deleteStoredScreenData(userId, endpoint.name(), storedScreenData);
+                            dataSubmitTimer[endpoint.ordinal()] = null;
+                        }
+                    });
+                }
+            };
+            // clear previous schedule and set the timer to run 5 seconds.
+            dataSubmitTimer[endpoint.ordinal()].schedule(1000);
+        }
     }
 
     private void submitData(final ServiceEndpoint endpoint, final UserId userId, final String jsonData, final DataSubmissionListener dataSubmissionListener) {
         final RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, serviceLocations.dataSubmitUrl() + endpoint.name());
         builder.setHeader("Content-type", "application/json");
         RequestCallback requestCallback = new RequestCallback() {
+
             @Override
             public void onError(Request request, Throwable exception) {
                 logger.warning(builder.getUrl());
