@@ -18,7 +18,6 @@
 // /Users/olhshk/Documents/ExperimentTemplate/FieldKitRecorder/src/android/nl/mpi/tg/eg/frinex/FieldKitRecorder.java
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -275,19 +274,21 @@ public class AdVocAsStimuliProvider extends AbstractStimuliProvider {
 
     @Override
     public boolean isCorrectResponse(Stimulus stimulus, String stimulusResponse) {
-        if (!(stimulusResponse.equals("word") || (stimulusResponse.equals("nonword")))) {
+        String stimulusResponseProcessed = new String(stimulusResponse);
+        stimulusResponseProcessed=stimulusResponseProcessed.replaceAll(",","&#44;");
+        if (!(stimulusResponseProcessed.equals(Constants.WORD) || (stimulusResponseProcessed.equals(Constants.NONWORD)))) {
             System.out.println("Erroenous input neither word nor nonword; something went terrible wrong.");
             return false;
         }
         int index = this.getCurrentStimulusIndex();
         if (this.responseRecord.get(index).getBandNumber() > -1) {
-            this.isCorrectCurrentResponse = stimulusResponse.equals("word");
+            this.isCorrectCurrentResponse = stimulusResponseProcessed.equals(Constants.WORD);
         } else {
-            this.isCorrectCurrentResponse = stimulusResponse.equals("nonword");
+            this.isCorrectCurrentResponse = stimulusResponseProcessed.equals(Constants.NONWORD);
         }
         this.responseRecord.get(index).setCorrectness(this.isCorrectCurrentResponse);
 
-        if (stimulusResponse.equals("word")) {
+        if (stimulusResponseProcessed.equals(Constants.WORD)) {
             this.responseRecord.get(index).setReaction(true);
         } else {
             this.responseRecord.get(index).setReaction(false);

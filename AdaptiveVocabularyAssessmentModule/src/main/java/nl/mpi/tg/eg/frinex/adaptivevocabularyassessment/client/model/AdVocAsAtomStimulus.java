@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model;
 
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 import nl.mpi.tg.eg.frinex.common.model.AbstractStimulus;
 
 /**
@@ -28,7 +29,7 @@ public class AdVocAsAtomStimulus extends AbstractStimulus {
     private final int bandNumber; 
    
     public AdVocAsAtomStimulus(String uniqueId, String label, String correctResponses, int bandNumber) {
-        super(uniqueId, new Tag[0], label, "word,nonword", correctResponses);
+        super(uniqueId, new Tag[0], label, Constants.WORD+','+Constants.NONWORD, correctResponses);
         this.bandNumber = bandNumber;
     }
     

@@ -17,10 +17,9 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
-import java.util.ArrayList;
 import utils.Utils;
 import java.util.Random;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
 import org.junit.After;
@@ -60,7 +59,6 @@ public class MainTest {
     /**
      * Test of main method, of class Main.
      */
-    @Ignore
     @Test
     public void testMain() throws Exception {
         for (int i = 1; i<11; i++) {
@@ -178,11 +176,11 @@ public class MainTest {
         //System.out.println(retVal);
         //System.out.println(rndDouble);
         if (rndDouble > correctnessUpperBound) { // spoil the answer
-            if (retVal.equals("word")) {
-                retVal = "nonword";
+            if (retVal.equals(Constants.WORD)) {
+                retVal = Constants.NONWORD;
             } else {
-                if (retVal.equals("nonword")) {
-                    retVal ="word";
+                if (retVal.equals(Constants.NONWORD)) {
+                    retVal =Constants.WORD;
                 } else {
                     throw new Exception("Wrong correct reaction in the stimulus, neither word, nor nonword: " + retVal);
                 }
@@ -194,9 +192,9 @@ public class MainTest {
     }
     
     private String makeResponseWrong(AdVocAsAtomStimulus stimulus){
-       String answer = "nonword";
-        if (stimulus.getCorrectResponses().equals("nonword")) {
-            answer = "word";
+       String answer = Constants.NONWORD;
+        if (stimulus.getCorrectResponses().equals(Constants.NONWORD)) {
+            answer = Constants.WORD;
         };
         return answer;
     }

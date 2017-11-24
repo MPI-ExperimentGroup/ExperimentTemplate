@@ -146,7 +146,7 @@ public class AdVocAsStimuliProviderTest {
         assertTrue(label != null);
         System.out.println("Label: " + label);
         AtomBookkeepingStimulus bStimulus = instance.getResponseRecord().get(instance.getCurrentStimulusIndex());
-        int expectedBand = stimulus.getCorrectResponses().equals("word") ? Constants.START_BAND : -1;
+        int expectedBand = stimulus.getCorrectResponses().equals(Constants.WORD) ? Constants.START_BAND : -1;
         assertEquals(expectedBand, bStimulus.getBandNumber());
     }
 
@@ -166,7 +166,7 @@ public class AdVocAsStimuliProviderTest {
         AtomBookkeepingStimulus bStimulus = instance.getResponseRecord().get(0);
         assertTrue(bStimulus.getCorrectness());
         
-        boolean expectedReaction = stimulus.getCorrectResponses().equals("word");
+        boolean expectedReaction = stimulus.getCorrectResponses().equals(Constants.WORD);
         assertEquals(expectedReaction, bStimulus.getReaction());
         
         // stimulus 2
@@ -174,11 +174,11 @@ public class AdVocAsStimuliProviderTest {
         instance.nextStimulus(0);
         Stimulus stimulus2 = instance.getCurrentStimulus();
         // making worng response
-        String response2 = "nonword";
-        if (stimulus2.getCorrectResponses().equals("nonword")){
-            response2 = "word";
+        String response2 = Constants.NONWORD;
+        if (stimulus2.getCorrectResponses().equals(Constants.NONWORD)){
+            response2 = Constants.WORD;
         } else {
-            if (!stimulus2.getCorrectResponses().equals("word")){
+            if (!stimulus2.getCorrectResponses().equals(Constants.WORD)){
                throw new Exception("The reaction is neither nonword nor word, something went terribly worng.") ;
             }
         }
@@ -188,7 +188,7 @@ public class AdVocAsStimuliProviderTest {
         AtomBookkeepingStimulus bStimulus2 = instance.getResponseRecord().get(1);
         assertFalse(bStimulus2.getCorrectness());
         
-        boolean expectedCorrectReaction2 = stimulus2.getCorrectResponses().equals("word");
+        boolean expectedCorrectReaction2 = stimulus2.getCorrectResponses().equals(Constants.WORD);
         assertEquals(!expectedCorrectReaction2, bStimulus2.getReaction());
         
     }
@@ -298,7 +298,7 @@ public class AdVocAsStimuliProviderTest {
         
         boolean result1 = instance.hasNextStimulus(0);
         assertTrue(result1);
-        int expectedBand = stimulus.getCorrectResponses().equals("word") ? (Constants.START_BAND+1) : Constants.START_BAND;
+        int expectedBand = stimulus.getCorrectResponses().equals(Constants.WORD) ? (Constants.START_BAND+1) : Constants.START_BAND;
         assertEquals(expectedBand, instance.getCurrentBandNumber());
         
         instance.nextStimulus(0);
@@ -313,11 +313,11 @@ public class AdVocAsStimuliProviderTest {
         AdVocAsAtomStimulus stimulus2 = instance.getCurrentStimulus();
         String correctResponse = stimulus2.getCorrectResponses();
         String response = null;
-        if (correctResponse.equals("word")) {
-            response = "nonword";
+        if (correctResponse.equals(Constants.WORD)) {
+            response = Constants.NONWORD;
         }
-        if (correctResponse.equals("nonword")) {
-            response = "word";
+        if (correctResponse.equals(Constants.NONWORD)) {
+            response = Constants.WORD;
         }
         if (response == null) {
             throw new Exception("Wrong reaction");
@@ -340,11 +340,11 @@ public class AdVocAsStimuliProviderTest {
         AdVocAsAtomStimulus stimulus3 = instance.getCurrentStimulus();
         String correctResponse3 = stimulus3.getCorrectResponses();
         String response3 = null;
-        if (correctResponse3.equals("word")) {
-            response3 = "nonword";
+        if (correctResponse3.equals(Constants.WORD)) {
+            response3 = Constants.NONWORD;
         }
-        if (correctResponse3.equals("nonword")) {
-            response3 = "word";
+        if (correctResponse3.equals(Constants.NONWORD)) {
+            response3 = Constants.WORD;
         }
         if (response3 == null) {
             throw new Exception("Wrong reaction");

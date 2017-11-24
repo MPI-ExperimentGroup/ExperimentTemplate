@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
 import java.util.ArrayList;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -59,7 +60,7 @@ public class AtomBookkeepingStimulusTest {
     public void testGetSpelling() {
         System.out.println("getSpelling");
         //AdVocAsAtomStimulus(String uniqueId, String label, String correctResponses, int bandNumber)
-        AdVocAsAtomStimulus pureStimulus = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling", "word", 37);
+        AdVocAsAtomStimulus pureStimulus = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling", Constants.WORD, 37);
         AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus(pureStimulus);
         String expResult = "test-spelling";
         String result = instance.getSpelling();
@@ -73,7 +74,7 @@ public class AtomBookkeepingStimulusTest {
     @Test
     public void testGetBandNumber() {
         System.out.println("getBandNumber");
-        AdVocAsAtomStimulus pureStimulus = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling", "word", 37);
+        AdVocAsAtomStimulus pureStimulus = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling", Constants.WORD, 37);
         AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus(pureStimulus);
         int result = instance.getBandNumber();
         assertEquals(37, result);
@@ -86,7 +87,7 @@ public class AtomBookkeepingStimulusTest {
     @Test
     public void testGetReaction() {
         System.out.println("getReaction");
-        AdVocAsAtomStimulus pureStimulus = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling", "word", 37);
+        AdVocAsAtomStimulus pureStimulus = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling", Constants.WORD, 37);
         
         AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus(pureStimulus);
         Boolean result = instance.getReaction();
@@ -99,7 +100,7 @@ public class AtomBookkeepingStimulusTest {
     @Test
     public void testGetCorrectness() {
         System.out.println("getCorrectness");
-        AdVocAsAtomStimulus pureStimulus = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling", "word", 37);
+        AdVocAsAtomStimulus pureStimulus = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling", Constants.WORD, 37);
         
         AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus(pureStimulus);
         Boolean result = instance.getCorrectness();
@@ -112,7 +113,7 @@ public class AtomBookkeepingStimulusTest {
     @Test
     public void testSetReaction() {
         System.out.println("setReaction");
-        AdVocAsAtomStimulus pureStimulus = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling", "word", 37);
+        AdVocAsAtomStimulus pureStimulus = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling", Constants.WORD, 37);
         
         AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus(pureStimulus);
         instance.setReaction(false);
@@ -126,7 +127,7 @@ public class AtomBookkeepingStimulusTest {
     @Test
     public void testSetCorrectness() {
         System.out.println("setCorrectness");
-        AdVocAsAtomStimulus pureStimulus = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling", "word", 37);
+        AdVocAsAtomStimulus pureStimulus = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling", Constants.WORD, 37);
         
         AtomBookkeepingStimulus instance = new AtomBookkeepingStimulus(pureStimulus);
         instance.setCorrectness(true);
@@ -141,9 +142,9 @@ public class AtomBookkeepingStimulusTest {
     public void testCopyAtomStimulae() {
         System.out.println("copyAtomStimulae");
         ArrayList<AtomBookkeepingStimulus> source = new ArrayList<>();
-        AdVocAsAtomStimulus pureStimulus1 = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling-1", "word", 37);
+        AdVocAsAtomStimulus pureStimulus1 = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling-1", Constants.WORD, 37);
         AtomBookkeepingStimulus st1 = new AtomBookkeepingStimulus(pureStimulus1);
-        AdVocAsAtomStimulus pureStimulus2 = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling-2", "word", 39);
+        AdVocAsAtomStimulus pureStimulus2 = new AdVocAsAtomStimulus("test_"+System.currentTimeMillis(), "test-spelling-2", Constants.WORD, 39);
         AtomBookkeepingStimulus st2 = new AtomBookkeepingStimulus(pureStimulus2);
         source.add(st1);
         source.add(st2);

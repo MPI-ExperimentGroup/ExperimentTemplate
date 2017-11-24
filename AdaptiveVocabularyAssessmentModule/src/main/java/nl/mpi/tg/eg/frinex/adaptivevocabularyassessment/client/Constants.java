@@ -41,6 +41,8 @@ public class Constants {
 
     public static final int FINE_TUNING_MAX_BAND_CHANGE = 33;
 
-    
+    public static final String NONWORD = "NEE&#44; ik ken dit woord niet";
+            
+    public static final String WORD = "JA&#44; ik ken dit woord";
 
 }

@@ -51,7 +51,7 @@ public class VocabularyFromFiles {
             String spelling = record.get("spelling");
             long millis = System.currentTimeMillis();
             String id = spelling + "_" + millis;
-            AdVocAsAtomStimulus stimulus = new AdVocAsAtomStimulus(id, spelling, "word", bandNumber);
+            AdVocAsAtomStimulus stimulus = new AdVocAsAtomStimulus(id, spelling, Constants.WORD, bandNumber);
             localWORDS[bandNumber - 1][counter[bandNumber - 1]] = stimulus;
             counter[bandNumber - 1]++;
         }
@@ -62,7 +62,7 @@ public class VocabularyFromFiles {
                 String id = localWORDS[bandIndex][i].getUniqueId();
                 String spelling = localWORDS[bandIndex][i].getLabel();
                 int bandNumber = localWORDS[bandIndex][i].getBandNumber();
-                //AdVocAsAtomStimulus[][] test = { {new AdVocAsAtomStimulus(id, spelling, "word", bandNumber)}, {}};
+                //AdVocAsAtomStimulus[][] test = { {new AdVocAsAtomStimulus(id, spelling, Constants.WORD, bandNumber)}, {}};
                 System.out.println("new AdVocAsAtomStimulus(\"" + id + "\", \"" + spelling + "\", \"word\", " + bandNumber + "),");
             }
             System.out.println(" }, ");
@@ -81,7 +81,7 @@ public class VocabularyFromFiles {
             long millis = System.currentTimeMillis();
             String id = spelling + "_" + millis;
             System.out.println("new AdVocAsAtomStimulus(\"" + id + "\", \"" + spelling + "\", \"nonword\" " + "),");
-            AdVocAsAtomStimulus stimulus = new AdVocAsAtomStimulus(id, spelling, "nonword", -1);
+            AdVocAsAtomStimulus stimulus = new AdVocAsAtomStimulus(id, spelling, Constants.NONWORD, -1);
             localNONWORDS.add(stimulus);
         }
         System.out.println(" }; ");
