@@ -29,7 +29,7 @@ public class AdVocAsAtomStimulus extends AbstractStimulus {
     private final int bandNumber; 
    
     public AdVocAsAtomStimulus(String uniqueId, String label, String correctResponses, int bandNumber) {
-        super(uniqueId, new Tag[0], label, Constants.WORD+','+Constants.NONWORD, correctResponses);
+        super(uniqueId, new Tag[0], label, Constants.NONWORD+','+Constants.WORD, correctResponses);
         this.bandNumber = bandNumber;
     }
     
