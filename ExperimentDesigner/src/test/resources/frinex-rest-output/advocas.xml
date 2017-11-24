@@ -6,7 +6,7 @@
         <field controlledMessage="Input at least 3 letters." controlledRegex="['\\'S'\\'s]'{'3,'}'" postName="feedBack" preventServerDuplicates="false" registrationField=""/>
     </metadata>
     <presenter displayOrder="1" menuLabel="Edit User" next="Accord" type="metadata" self="Edit_User" title="Edit User">
-        <htmlText featureText="Input your identification code here:"/>
+        <htmlText featureText="Wat is je naam?"/>
         <metadataField fieldName="workerId"/>
         <saveMetadataButton featureText="Next" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
             <onError/>
@@ -16,7 +16,13 @@
         </saveMetadataButton>
     </presenter>
     <presenter displayOrder="2" menuLabel="Accord" next="stimuliScreen" type="metadata" self="Accord" title="Accord">
-        <htmlText featureText="Thank you very much for your interest in this online science experiment!&lt;br/&gt;&lt;br/&gt;"/>
+        <htmlText featureText="Welkom bij dit experiment!&lt;br/&gt;&lt;br/&gt;
+In dit experiment krijg je een aantal woorden aangeboden. Sommige zijn bestaande Nederlands woorden en sommige zijn nepwoorden.&lt;br/&gt;
+Geef voor elk woord aan of het een woord is dat jij kent of niet.&lt;br/&gt;&lt;br/&gt;
+Rechter knop: JA, ik ken dit woord&lt;br/&gt;
+Linker knop: NEE, ik ken dit woord niet&lt;br/&gt;&lt;br/&gt;
+Let op: zeg geen ja bij woorden die je niet kent, omdat ja-antwoorden voor nepwoorden streng bestraft worden.&lt;br/&gt;&lt;br/&gt;
+Veel succes!"/>
         <targetButton featureText="Start experiment" target="stimuliScreen"/>
     </presenter>
     <presenter displayOrder="9" menuLabel="stimuliN" next="EditUser" type="stimulus" self="stimuliScreen" title="stimuliScreen">
